@@ -11,11 +11,17 @@ const defaultConfig = {
   weddingDate: "12 de septiembre de 2027",
 };
 
+const emptySetupConfig = {
+  coupleNames: "",
+  inviteMessage: "",
+  weddingDate: "",
+};
+
 const normalizeConfig = (rawConfig = {}) => {
   return {
-    coupleNames: rawConfig.coupleNames?.trim() || defaultConfig.coupleNames,
-    inviteMessage: rawConfig.inviteMessage?.trim() || defaultConfig.inviteMessage,
-    weddingDate: rawConfig.weddingDate?.trim() || defaultConfig.weddingDate,
+    coupleNames: typeof rawConfig.coupleNames === "string" ? rawConfig.coupleNames : "",
+    inviteMessage: typeof rawConfig.inviteMessage === "string" ? rawConfig.inviteMessage : "",
+    weddingDate: typeof rawConfig.weddingDate === "string" ? rawConfig.weddingDate : "",
   };
 };
 
@@ -28,7 +34,8 @@ export default function App() {
   const [adminPasswordInput, setAdminPasswordInput] = useState("");
   const [authError, setAuthError] = useState("");
   const [saveMessage, setSaveMessage] = useState("");
-  const [config, setConfig] = useState(defaultConfig);
+  const [config, setConfig] = useState(emptySetupConfig);
+  const [hasStoredConfig, setHasStoredConfig] = useState(false);
   const [newAdminPassword, setNewAdminPassword] = useState("");
   const [initialPasswordHint, setInitialPasswordHint] = useState("");
 
@@ -56,10 +63,16 @@ export default function App() {
       try {
         const parsed = JSON.parse(storedConfig);
         setConfig(normalizeConfig(parsed));
+        setHasStoredConfig(true);
       } catch {
-        setConfig(defaultConfig);
+        setConfig(emptySetupConfig);
+        setHasStoredConfig(false);
       }
+      return;
     }
+
+    setConfig(emptySetupConfig);
+    setHasStoredConfig(false);
   }, []);
 
   useEffect(() => {
@@ -143,9 +156,14 @@ export default function App() {
 
   const handleSaveSetup = (event) => {
     event.preventDefault();
-    const normalized = normalizeConfig(config);
-    localStorage.setItem(APP_CONFIG_KEY, JSON.stringify(normalized));
-    setConfig(normalized);
+    const configToStore = {
+      coupleNames: config.coupleNames.trim(),
+      inviteMessage: config.inviteMessage.trim(),
+      weddingDate: config.weddingDate.trim(),
+    };
+    localStorage.setItem(APP_CONFIG_KEY, JSON.stringify(configToStore));
+    setConfig(configToStore);
+    setHasStoredConfig(true);
     localStorage.setItem(ADMIN_SETUP_COMPLETE_KEY, "true");
 
     if (newAdminPassword.trim()) {
@@ -245,8 +263,9 @@ export default function App() {
                 className="setup-button setup-button--ghost"
                 onClick={() => {
                   localStorage.removeItem(APP_CONFIG_KEY);
-                  setConfig(defaultConfig);
-                  setSaveMessage("Configuracion restaurada a valores por defecto.");
+                  setConfig(emptySetupConfig);
+                  setHasStoredConfig(false);
+                  setSaveMessage("Configuracion eliminada. Sin datos guardados.");
                 }}
               >
                 Restablecer
@@ -254,6 +273,31 @@ export default function App() {
             </div>
             {saveMessage ? <p className="setup-success">{saveMessage}</p> : null}
           </form>
+        </section>
+      </main>
+    );
+  }
+
+  if (!hasStoredConfig) {
+    return (
+      <main className="setup-layout allow-select">
+        <section className="setup-card animate-card-reveal allow-select">
+          <p className="setup-eyebrow">Estado inicial</p>
+          <h1 className="setup-title">No existen datos guardados</h1>
+          <p className="setup-subtitle">
+            Esta invitacion aun no tiene configuracion. Pulsa Aceptar para continuar al setup.
+          </p>
+          <div className="setup-actions">
+            <button
+              type="button"
+              className="setup-button"
+              onClick={() => {
+                window.location.hash = "#setup";
+              }}
+            >
+              Aceptar
+            </button>
+          </div>
         </section>
       </main>
     );
