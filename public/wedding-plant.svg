@@ -1,0 +1,18 @@
+<svg width="320" height="640" viewBox="0 0 320 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="320" height="640" fill="none"/>
+  <path d="M160 568C160 568 144 486 148 430C152 374 168 344 168 344" stroke="#8C6A1D" stroke-width="8" stroke-linecap="round"/>
+  <path d="M160 568C160 568 176 486 172 430C168 374 152 344 152 344" stroke="#8C6A1D" stroke-width="8" stroke-linecap="round"/>
+  <path d="M154 474C136 446 124 418 124 388C124 356 132 326 146 298" stroke="#A17D27" stroke-width="6" stroke-linecap="round"/>
+  <path d="M166 474C184 446 196 418 196 388C196 356 188 326 174 298" stroke="#A17D27" stroke-width="6" stroke-linecap="round"/>
+  <path d="M140 430C128 402 122 370 122 338C122 308 132 282 144 256" stroke="#B89A57" stroke-width="5" stroke-linecap="round"/>
+  <path d="M180 430C192 402 198 370 198 338C198 308 188 282 176 256" stroke="#B89A57" stroke-width="5" stroke-linecap="round"/>
+  <path d="M163 244C152 228 140 214 132 196C124 178 124 156 132 140C140 122 154 112 168 112C182 112 196 122 204 140C212 156 212 178 204 196C196 214 184 228 173 244" fill="#D5C08E"/>
+  <path d="M126 214C118 200 114 184 116 166C118 148 126 132 140 122C154 112 172 112 186 120C200 128 210 142 214 158C218 174 214 190 204 204C194 218 180 228 164 228C150 228 138 224 126 214Z" fill="#DDC99B"/>
+  <path d="M117 196C102 182 96 161 100 142C104 124 116 110 132 104C148 98 166 102 178 116C190 130 194 146 194 164C194 182 188 198 176 212C164 226 146 232 130 228C124 226 120 218 117 196Z" fill="#E7D6B0"/>
+  <path d="M203 196C218 182 224 161 220 142C216 124 204 110 188 104C172 98 154 102 142 116C130 130 126 146 126 164C126 182 132 198 144 212C156 226 174 232 190 228C196 226 200 218 203 196Z" fill="#E7D6B0"/>
+  <path d="M138 160C140 140 150 124 164 116C178 108 194 110 206 120" stroke="#9A7D2A" stroke-width="4" stroke-linecap="round"/>
+  <path d="M132 202C142 214 154 220 168 220C182 220 194 214 204 202" stroke="#9A7D2A" stroke-width="4" stroke-linecap="round"/>
+  <path d="M150 240C146 252 144 264 144 278C144 292 148 306 154 318" stroke="#8C6A1D" stroke-width="4" stroke-linecap="round"/>
+  <path d="M170 240C174 252 176 264 176 278C176 292 172 306 166 318" stroke="#8C6A1D" stroke-width="4" stroke-linecap="round"/>
+  <ellipse cx="160" cy="560" rx="42" ry="14" fill="#8C6A1D" fill-opacity="0.12"/>
+</svg>
