@@ -1270,6 +1270,19 @@ export default function App() {
     setAdminMessage(`Token restablecido correctamente. Nuevo token de un solo uso: ${nextToken}`);
   };
 
+  const handleResetTokenFromLogin = () => {
+    const shouldResetToken = window.confirm("¿Quieres restablecer el token automático de setup? El token actual dejará de ser válido.");
+    if (!shouldResetToken) {
+      return;
+    }
+
+    setSaveMessage("");
+    setSaveError("");
+    setAdminMessage("");
+    const nextToken = refreshSetupToken();
+    setAuthMessage(`Token restablecido correctamente. Nuevo token de un solo uso: ${nextToken}`);
+  };
+
   const handleClearRsvpEntries = async () => {
     // Limpia el historial RSVP para reiniciar confirmaciones.
     try {
@@ -1744,6 +1757,9 @@ export default function App() {
                   />
                   <button className="setup-button" type="button" onClick={handleAdminLogin} disabled={isAuthSubmitting}>
                     {isAuthSubmitting ? "Entrando..." : "Entrar con email"}
+                  </button>
+                  <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleResetTokenFromLogin}>
+                    Restablecer token automático
                   </button>
                 </>
               )}
