@@ -3,11 +3,29 @@ import heroBackdropSrc from "./assets/rings.png";
 import maplibregl from "maplibre-gl";
 import { useEffect, useMemo, useRef, useState } from "react";
 import "maplibre-gl/dist/maplibre-gl.css";
+import { initializeApp } from "firebase/app";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, getFirestore, serverTimestamp, setDoc } from "firebase/firestore";
 
-// Claves de persistencia local para configuracion y respuestas RSVP.
-const APP_CONFIG_KEY = "weddingAppConfig";
-const APP_SETUP_TOKEN_KEY = "weddingSetupToken";
-const APP_RSVP_RESPONSES_KEY = "weddingRsvpResponses";
+const firebaseConfig = {
+  apiKey: "AIzaSyCNF9woM_se26u4Mz9CIcNoBqxdLIcffuI",
+  authDomain: "wedingo-6c26a.firebaseapp.com",
+  projectId: "wedingo-6c26a",
+  storageBucket: "wedingo-6c26a.firebasestorage.app",
+  messagingSenderId: "222572038554",
+  appId: "1:222572038554:web:b894dbd62b270c22551223"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const ADMIN_ALLOWED_EMAILS = new Set([
+  "adriancl2001@gmail.com",
+]);
+const ALLOWED_UPLOAD_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
+const MAX_UPLOAD_SIZE_BYTES = 5 * 1024 * 1024;
+const INVITATION_DOC_REF = doc(db, "publicConfig", "invitation");
+const RSVP_COLLECTION_REF = collection(db, "rsvpResponses");
 // Estilos de OpenFreeMap usados para generar vistas previas del fondo.
 const OPENFREEMAP_STYLES = [
   {
@@ -114,6 +132,7 @@ const STORY_SECTION_ORDER = ["hero", "details", "rsvp"];
 
 // Estado minimo de la invitacion cuando no existe configuracion guardada.
 const defaultConfig = {
+  adminLoginEmail: "",
   firstName: "",
   secondName: "",
   inviteMessage: "",
@@ -132,6 +151,8 @@ const defaultConfig = {
 };
 
 const normalizeConfig = (value) => ({
+  adminLoginEmail:
+    typeof value?.adminLoginEmail === "string" ? value.adminLoginEmail.trim().toLowerCase() : "",
   firstName: typeof value?.firstName === "string" ? value.firstName.trim() : "",
   secondName: typeof value?.secondName === "string" ? value.secondName.trim() : "",
   inviteMessage: typeof value?.inviteMessage === "string" ? value.inviteMessage.trim() : "",
@@ -347,6 +368,8 @@ export default function App() {
   const [config, setConfig] = useState(defaultConfig);
   const [formData, setFormData] = useState(defaultConfig);
   const [hasStoredConfig, setHasStoredConfig] = useState(false);
+  const [isConfigLoading, setIsConfigLoading] = useState(true);
+  const [configLoadError, setConfigLoadError] = useState("");
   const [isSetupRoute, setIsSetupRoute] = useState(false);
   const [isAdminRoute, setIsAdminRoute] = useState(false);
   const [saveMessage, setSaveMessage] = useState("");
@@ -354,6 +377,12 @@ export default function App() {
   const [setupToken, setSetupToken] = useState("");
   const [setupTokenInput, setSetupTokenInput] = useState("");
   const [adminMessage, setAdminMessage] = useState("");
+  const [authMessage, setAuthMessage] = useState("");
+  const [isAuthLoading, setIsAuthLoading] = useState(true);
+  const [isAuthSubmitting, setIsAuthSubmitting] = useState(false);
+  const [adminEmail, setAdminEmail] = useState("");
+  const [adminLoginEmail, setAdminLoginEmail] = useState("");
+  const [adminLoginPassword, setAdminLoginPassword] = useState("");
   const [rsvpEntries, setRsvpEntries] = useState([]);
   const [previewBackgrounds, setPreviewBackgrounds] = useState([]);
   const [isPreviewLoading, setIsPreviewLoading] = useState(false);
@@ -383,6 +412,7 @@ export default function App() {
   const [rsvpMessage, setRsvpMessage] = useState("");
 
   const isStoryTransitioning = storyTransition.toIndex !== null;
+  const isAdminAllowed = Boolean(adminEmail) && ADMIN_ALLOWED_EMAILS.has(adminEmail.toLowerCase());
 
   // Calcula estilos de entrada/salida para transiciones entre secciones.
   const getStorySectionStyle = (sectionKey) => {
@@ -444,53 +474,87 @@ export default function App() {
   };
 
   useEffect(() => {
-    // Hidrata configuracion guardada al arrancar la app.
-    const storedConfig = localStorage.getItem(APP_CONFIG_KEY);
-    if (!storedConfig) {
-      return;
-    }
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setAdminEmail((user?.email || "").trim().toLowerCase());
+      setIsAuthLoading(false);
+    });
 
-    try {
-      const parsed = normalizeConfig(JSON.parse(storedConfig));
-      const hydrated = {
-        ...defaultConfig,
-        ...parsed,
-      };
-      setConfig(hydrated);
-      setFormData(hydrated);
-      setHasStoredConfig(true);
-    } catch {
-      setHasStoredConfig(false);
-    }
+    return () => unsubscribe();
   }, []);
 
   useEffect(() => {
-    // Recupera respuestas RSVP para el panel privado.
-    const storedResponses = localStorage.getItem(APP_RSVP_RESPONSES_KEY);
-    if (!storedResponses) {
-      return;
-    }
+    // Hidrata configuracion guardada desde Firestore al arrancar la app.
+    const hydrateConfig = async () => {
+      setConfigLoadError("");
+      try {
+        const snapshot = await getDoc(INVITATION_DOC_REF);
+        if (!snapshot.exists()) {
+          setHasStoredConfig(false);
+          return;
+        }
 
-    try {
-      const parsedResponses = JSON.parse(storedResponses);
-      if (Array.isArray(parsedResponses)) {
-        setRsvpEntries(parsedResponses);
+        const parsed = normalizeConfig(snapshot.data());
+        const hydrated = {
+          ...defaultConfig,
+          ...parsed,
+        };
+
+        setConfig(hydrated);
+        setFormData(hydrated);
+        setHasStoredConfig(true);
+      } catch {
+        setHasStoredConfig(false);
+        setConfigLoadError("No se pudo cargar la configuración guardada. Revisa la conexión e inténtalo de nuevo.");
+      } finally {
+        setIsConfigLoading(false);
       }
-    } catch {
-      setRsvpEntries([]);
-    }
+    };
+
+    hydrateConfig();
   }, []);
 
   useEffect(() => {
-    // Si no existe configuracion, prepara/recupera token temporal de setup.
-    if (localStorage.getItem(APP_CONFIG_KEY)) {
+    if (!hasStoredConfig) {
       return;
     }
 
-    const storedToken = localStorage.getItem(APP_SETUP_TOKEN_KEY);
-    if (storedToken) {
-      setSetupToken(storedToken);
-      setSetupTokenInput(storedToken);
+    if (config.adminLoginEmail && !adminLoginEmail) {
+      setAdminLoginEmail(config.adminLoginEmail);
+    }
+  }, [adminLoginEmail, config.adminLoginEmail, hasStoredConfig]);
+
+  useEffect(() => {
+    // Recupera respuestas RSVP desde Firestore.
+    const hydrateRsvp = async () => {
+      try {
+        const snapshot = await getDocs(RSVP_COLLECTION_REF);
+        const entries = snapshot.docs
+          .map((entryDoc) => {
+            const data = entryDoc.data();
+            const submittedDate = data.submittedAt?.toDate?.();
+            return {
+              id: entryDoc.id,
+              guestName: data.guestName || "",
+              attendance: data.attendance || "no",
+              companions: Number.isFinite(data.companions) ? data.companions : 0,
+              note: data.note || "",
+              submittedAt: submittedDate ? submittedDate.toISOString() : new Date().toISOString(),
+            };
+          })
+          .sort((a, b) => new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime());
+
+        setRsvpEntries(entries);
+      } catch {
+        setRsvpEntries([]);
+      }
+    };
+
+    hydrateRsvp();
+  }, []);
+
+  useEffect(() => {
+    // Si no existe configuracion, prepara token temporal de setup.
+    if (hasStoredConfig) {
       return;
     }
 
@@ -530,12 +594,11 @@ export default function App() {
   }, [hasStoredConfig, isAdminRoute, isSetupRoute]);
 
   const shouldShowSetup = !hasStoredConfig;
-  const shouldShowAdmin = hasStoredConfig && isAdminRoute;
+  const shouldShowAdmin = hasStoredConfig && isAdminRoute && isAdminAllowed;
 
   const refreshSetupToken = () => {
     // Rota y persiste token temporal.
     const nextToken = generateSetupToken();
-    localStorage.setItem(APP_SETUP_TOKEN_KEY, nextToken);
     setSetupToken(nextToken);
     setSetupTokenInput(nextToken);
     return nextToken;
@@ -911,11 +974,25 @@ export default function App() {
   };
 
   const handleBackgroundUpload = (event) => {
-    // Convierte imagen local a base64 para guardarla en localStorage.
+    // Convierte imagen local a base64 para enviarla dentro de la configuracion.
     const file = event.target.files?.[0];
     if (!file) {
       return;
     }
+
+    if (!ALLOWED_UPLOAD_TYPES.has(file.type)) {
+      setSaveError("Formato no permitido. Usa JPG, PNG o WebP.");
+      event.target.value = "";
+      return;
+    }
+
+    if (file.size > MAX_UPLOAD_SIZE_BYTES) {
+      setSaveError("La imagen supera 5 MB. Usa una imagen más ligera.");
+      event.target.value = "";
+      return;
+    }
+
+    setSaveError("");
 
     const reader = new FileReader();
     reader.onload = () => {
@@ -1017,7 +1094,7 @@ export default function App() {
     updateFormField(field, normalized.slice(0, 18));
   };
 
-  const handleSaveSetup = (event) => {
+  const handleSaveSetup = async (event) => {
     // Valida y persiste toda la configuracion desde setup/admin.
     event.preventDefault();
     setSaveError("");
@@ -1031,6 +1108,18 @@ export default function App() {
     }
 
     const sanitized = normalizeConfig(formData);
+    if (!hasStoredConfig) {
+      if (!sanitized.adminLoginEmail) {
+        setSaveError("Indica un email para la autenticación de administrador.");
+        return;
+      }
+
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(sanitized.adminLoginEmail)) {
+        setSaveError("Escribe un email válido para la autenticación.");
+        return;
+      }
+    }
+
     if (!sanitized.firstName || !sanitized.secondName) {
       setSaveError("Indica ambos nombres para continuar.");
       return;
@@ -1092,18 +1181,22 @@ export default function App() {
       ...sanitized,
     };
 
-    localStorage.setItem(APP_CONFIG_KEY, JSON.stringify(payload));
-    localStorage.removeItem(APP_SETUP_TOKEN_KEY);
-    setConfig(payload);
-    setFormData(payload);
-    setHasStoredConfig(true);
-    setSetupToken("");
-    setSetupTokenInput("");
-    setSaveMessage("Configuración guardada correctamente.");
+    try {
+      await setDoc(INVITATION_DOC_REF, payload);
+      setConfig(payload);
+      setFormData(payload);
+      setAdminLoginEmail(payload.adminLoginEmail);
+      setHasStoredConfig(true);
+      setSetupToken("");
+      setSetupTokenInput("");
+      setSaveMessage("Configuración guardada correctamente.");
+    } catch {
+      setSaveError("No se pudo guardar la configuración. Si es la primera vez, prueba a iniciar sesión en #admin.");
+    }
   };
 
-  const handleRsvpSubmit = (event) => {
-    // Registra RSVP en localStorage y actualiza feedback al invitado.
+  const handleRsvpSubmit = async (event) => {
+    // Registra RSVP en Firestore y actualiza feedback al invitado.
     event.preventDefault();
 
     const guestName = rsvpForm.guestName.trim();
@@ -1114,26 +1207,34 @@ export default function App() {
 
     const companions = Number.parseInt(rsvpForm.companions, 10);
     const companionsCount = Number.isNaN(companions) ? 0 : Math.max(0, companions);
-    const responseRecord = {
-      id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+    const responsePayload = {
       guestName,
       attendance: rsvpForm.attendance,
       companions: companionsCount,
       note: rsvpForm.note.trim(),
-      submittedAt: new Date().toISOString(),
+      submittedAt: serverTimestamp(),
     };
 
-    setRsvpEntries((currentEntries) => {
-      const nextEntries = [responseRecord, ...currentEntries];
-      localStorage.setItem(APP_RSVP_RESPONSES_KEY, JSON.stringify(nextEntries));
-      return nextEntries;
-    });
+    try {
+      const createdDoc = await addDoc(RSVP_COLLECTION_REF, responsePayload);
+      const responseRecord = {
+        ...responsePayload,
+        id: createdDoc.id,
+        submittedAt: new Date().toISOString(),
+      };
 
-    setRsvpMessage(
-      rsvpForm.attendance === "yes"
-        ? `Gracias, ${guestName}. Tu asistencia quedó marcada con ${companionsCount} acompañante${companionsCount === 1 ? "" : "s"}.`
-        : `Gracias, ${guestName}. Lamentamos que no puedas asistir.`,
-    );
+      setRsvpEntries((currentEntries) => {
+        return [responseRecord, ...currentEntries];
+      });
+
+      setRsvpMessage(
+        rsvpForm.attendance === "yes"
+          ? `Gracias, ${guestName}. Tu asistencia quedó marcada con ${companionsCount} acompañante${companionsCount === 1 ? "" : "s"}.`
+          : `Gracias, ${guestName}. Lamentamos que no puedas asistir.`,
+      );
+    } catch {
+      setRsvpMessage("No pudimos guardar tu confirmación. Inténtalo de nuevo en unos minutos.");
+    }
   };
 
   const updateRsvpField = (field, value) => {
@@ -1143,11 +1244,16 @@ export default function App() {
 
   const handleResetSetupToken = () => {
     // Accion de regeneracion de token desde el setup inicial.
+    const shouldResetToken = window.confirm("¿Quieres restablecer el token automático de setup? El token actual dejará de ser válido.");
+    if (!shouldResetToken) {
+      return;
+    }
+
     setSaveMessage("");
     setSaveError("");
     setAdminMessage("");
     const nextToken = refreshSetupToken();
-    setSaveMessage(`Se generó una nueva contraseña de un solo uso: ${nextToken}`);
+    setSaveMessage(`Token restablecido correctamente. Nuevo token de un solo uso: ${nextToken}`);
   };
 
   const handleResetTokenFromAdmin = () => {
@@ -1159,12 +1265,96 @@ export default function App() {
     setAdminMessage(`Se generó una nueva contraseña de un solo uso: ${nextToken}`);
   };
 
-  const handleClearRsvpEntries = () => {
+  const handleClearRsvpEntries = async () => {
     // Limpia el historial RSVP para reiniciar confirmaciones.
-    localStorage.removeItem(APP_RSVP_RESPONSES_KEY);
-    setRsvpEntries([]);
-    setAdminMessage("Se vació el registro de asistencia.");
+    try {
+      const snapshot = await getDocs(RSVP_COLLECTION_REF);
+      await Promise.all(snapshot.docs.map((entryDoc) => deleteDoc(entryDoc.ref)));
+      setRsvpEntries([]);
+      setAdminMessage("Se vació el registro de asistencia.");
+    } catch {
+      setAdminMessage("No se pudo vaciar el registro de asistencia.");
+    }
   };
+
+  const handleAdminLogin = async () => {
+    setAuthMessage("");
+    const normalizedEmail = adminLoginEmail.trim().toLowerCase();
+    const configuredAdminEmail = (config.adminLoginEmail || "").trim().toLowerCase();
+    if (!normalizedEmail || !adminLoginPassword) {
+      setAuthMessage("Escribe email y contraseña para continuar.");
+      return;
+    }
+
+    const isAllowedBySetup = configuredAdminEmail ? normalizedEmail === configuredAdminEmail : false;
+    const isAllowedByFallbackList = !configuredAdminEmail && ADMIN_ALLOWED_EMAILS.has(normalizedEmail);
+    if (!isAllowedBySetup && !isAllowedByFallbackList) {
+      setAuthMessage("Este correo no tiene permisos de administración.");
+      return;
+    }
+
+    setIsAuthSubmitting(true);
+    try {
+      const result = await signInWithEmailAndPassword(auth, normalizedEmail, adminLoginPassword);
+      const nextEmail = (result.user.email || "").trim().toLowerCase();
+      const isAuthorizedEmail = configuredAdminEmail
+        ? nextEmail === configuredAdminEmail
+        : ADMIN_ALLOWED_EMAILS.has(nextEmail);
+      if (!isAuthorizedEmail) {
+        await signOut(auth);
+        setAuthMessage("Este correo no tiene permisos de administración.");
+      }
+    } catch {
+      setAuthMessage("No se pudo iniciar sesión.");
+    } finally {
+      setIsAuthSubmitting(false);
+    }
+  };
+
+  const handleAdminLogout = async () => {
+    try {
+      await signOut(auth);
+    } catch {
+      setAuthMessage("No se pudo cerrar sesión. Inténtalo de nuevo.");
+    }
+  };
+
+  if (isConfigLoading) {
+    return (
+      <div className="setup-layout">
+        <section className="setup-card allow-select" aria-label="Cargando configuración">
+          <header className="setup-header">
+            <div>
+              <p className="setup-eyebrow">Configuración</p>
+              <h1 className="setup-title">Cargando invitación</h1>
+              <p className="setup-subtitle">Estamos recuperando la configuración guardada.</p>
+            </div>
+          </header>
+        </section>
+      </div>
+    );
+  }
+
+  if (configLoadError) {
+    return (
+      <div className="setup-layout">
+        <section className="setup-card allow-select" aria-label="Error de carga">
+          <header className="setup-header">
+            <div>
+              <p className="setup-eyebrow">Error de conexión</p>
+              <h1 className="setup-title">No pudimos cargar la invitación</h1>
+              <p className="setup-subtitle">{configLoadError}</p>
+            </div>
+          </header>
+          <div className="setup-actions">
+            <button className="setup-button" type="button" onClick={() => window.location.reload()}>
+              Reintentar
+            </button>
+          </div>
+        </section>
+      </div>
+    );
+  }
 
   const configuredCoordinates = getValidCoordinates(config.weddingLatitude, config.weddingLongitude);
   const hasLocationData = Boolean(config.weddingPlace || configuredCoordinates);
@@ -1173,6 +1363,10 @@ export default function App() {
     : configuredCoordinates
       ? `Coordenadas: ${configuredCoordinates.latitude}, ${configuredCoordinates.longitude}`
       : "";
+
+  const handleAdvanceStorySection = () => {
+    window.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowDown" }));
+  };
 
   if (shouldShowSetup) {
     return (
@@ -1191,21 +1385,38 @@ export default function App() {
           <form className="setup-form" onSubmit={handleSaveSetup}>
             {!hasStoredConfig ? (
               <div className="setup-token-card">
+                <label className="setup-label setup-label--tight" htmlFor="setupAdminEmail">
+                  Email de acceso
+                </label>
+                <p className="setup-help setup-help--tight">
+                  Será el correo usado para autenticación en el área privada.
+                </p>
+                <input
+                  id="setupAdminEmail"
+                  className="setup-input"
+                  type="email"
+                  value={formData.adminLoginEmail}
+                  onChange={(event) => updateFormField("adminLoginEmail", event.target.value.toLowerCase().slice(0, 120))}
+                  placeholder="admin@ejemplo.com"
+                  autoComplete="email"
+                />
                 <p className="setup-label setup-label--tight">Código de acceso temporal</p>
                 <p className="setup-help setup-help--tight">
-                  Se creó automáticamente la primera vez. Úsalo para guardar los cambios.
+                  Esta será la contraseña (token) para entrar en administración. Si crees que se filtró,
+                  restablécelo antes de guardar.
                 </p>
                 <input
                   className="setup-input setup-token-input"
                   value={setupTokenInput}
                   onChange={(event) => setSetupTokenInput(event.target.value.toUpperCase())}
                   placeholder="AAAA-BBBB-CCCC-DDDD"
+                  maxLength={19}
                   autoComplete="off"
                   spellCheck="false"
                 />
                 {setupToken ? <p className="setup-token-display">Token actual: {setupToken}</p> : null}
                 <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleResetSetupToken}>
-                  Generar nuevo código
+                  Restablecer token automático
                 </button>
               </div>
             ) : null}
@@ -1482,6 +1693,75 @@ export default function App() {
     );
   }
 
+  if (hasStoredConfig && isAdminRoute && !isAdminAllowed) {
+    return (
+      <div className="setup-layout">
+        <section className="setup-card allow-select" aria-label="Acceso administrativo">
+          <header className="setup-header">
+            <div>
+              <p className="setup-eyebrow">Área privada</p>
+              <h1 className="setup-title">Acceso de administrador</h1>
+              <p className="setup-subtitle">
+                Inicia sesión con una cuenta autorizada para editar la invitación.
+              </p>
+            </div>
+          </header>
+
+          <div className="setup-form">
+            <div className="setup-token-card">
+              {isAuthLoading ? (
+                <p className="setup-help setup-help--tight">Comprobando sesión...</p>
+              ) : (
+                <>
+                  <label className="setup-label" htmlFor="adminLoginEmail">
+                    Email
+                  </label>
+                  <input
+                    id="adminLoginEmail"
+                    className="setup-input"
+                    type="email"
+                    value={adminLoginEmail}
+                    onChange={(event) => setAdminLoginEmail(event.target.value)}
+                    placeholder={config.adminLoginEmail || "admin@ejemplo.com"}
+                    autoComplete="email"
+                  />
+                  <label className="setup-label" htmlFor="adminLoginPassword">
+                    Contraseña
+                  </label>
+                  <input
+                    id="adminLoginPassword"
+                    className="setup-input"
+                    type="password"
+                    value={adminLoginPassword}
+                    onChange={(event) => setAdminLoginPassword(event.target.value)}
+                    placeholder="Token de setup"
+                    autoComplete="current-password"
+                  />
+                  <button className="setup-button" type="button" onClick={handleAdminLogin} disabled={isAuthSubmitting}>
+                    {isAuthSubmitting ? "Entrando..." : "Entrar con email"}
+                  </button>
+                </>
+              )}
+              {authMessage ? <p className="setup-error">{authMessage}</p> : null}
+            </div>
+
+            <div className="setup-actions">
+              <button
+                className="setup-button setup-button--ghost"
+                type="button"
+                onClick={() => {
+                  window.location.hash = "";
+                }}
+              >
+                Volver a la portada
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    );
+  }
+
   if (shouldShowAdmin) {
     const confirmedResponses = rsvpEntries.filter((entry) => entry.attendance === "yes").length;
     const declinedResponses = rsvpEntries.filter((entry) => entry.attendance === "no").length;
@@ -1500,12 +1780,18 @@ export default function App() {
           </header>
 
           <div className="setup-form">
-            <form className="setup-form" onSubmit={handleSaveSetup}>
-              <section className="setup-token-card" aria-label="Invitación">
-                <p className="setup-label setup-label--tight">Editar invitación</p>
-                <p className="setup-help setup-help--tight">
-                  Aquí puedes cambiar los mismos datos que usa la portada principal.
-                </p>
+            <details className="setup-collapsible" open>
+              <summary className="setup-collapsible__summary">
+                <span className="setup-collapsible__title">Editar invitación</span>
+                <span className="setup-collapsible__hint">Nombres, fecha, mensaje, ubicación y fondo</span>
+              </summary>
+
+              <div className="setup-collapsible__content">
+                <form className="setup-form setup-form--nested" onSubmit={handleSaveSetup}>
+                  <section className="setup-token-card" aria-label="Invitación">
+                    <p className="setup-help setup-help--tight">
+                      Aquí puedes cambiar los mismos datos que usa la portada principal.
+                    </p>
 
                 <fieldset className="setup-name-group">
                   <legend className="setup-label">Nombres</legend>
@@ -1745,75 +2031,96 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="setup-actions">
-                  <button className="setup-button" type="submit">
-                    Guardar cambios
-                  </button>
-                </div>
-              </section>
-            </form>
+                    <div className="setup-actions">
+                      <button className="setup-button" type="submit">
+                        Guardar cambios
+                      </button>
+                    </div>
+                  </section>
+                </form>
 
-            <section className="setup-token-card" aria-label="Asistencia">
-              <p className="setup-label setup-label--tight">Asistencia</p>
-              <p className="setup-help setup-help--tight">
-                Aquí se concentran las respuestas enviadas desde el formulario RSVP.
-              </p>
-              <p className="setup-token-display">
-                Confirmados: {confirmedResponses} · No asistirán: {declinedResponses} · Total: {rsvpEntries.length}
-              </p>
-              {rsvpEntries.length ? (
-                <div className="setup-background-grid">
-                  {rsvpEntries.map((entry) => (
-                    <article key={entry.id} className="setup-background-card">
-                      <span className="setup-background-card__title">{entry.guestName}</span>
-                      <span className="setup-background-card__description">
-                        {entry.attendance === "yes"
-                          ? `Asistirá con ${entry.companions} acompañante${entry.companions === 1 ? "" : "s"}`
-                          : "No asistirá"}
-                      </span>
-                      {entry.note ? <span className="setup-background-card__description">Nota: {entry.note}</span> : null}
-                      <span className="setup-background-card__description">
-                        {new Date(entry.submittedAt).toLocaleString("es-ES", {
-                          dateStyle: "medium",
-                          timeStyle: "short",
-                        })}
-                      </span>
-                    </article>
-                  ))}
-                </div>
-              ) : (
-                <p className="setup-help setup-help--tight">Todavía no hay respuestas registradas.</p>
-              )}
-              <div className="setup-actions">
-                <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleClearRsvpEntries}>
-                  Vaciar asistencia
-                </button>
+                {saveMessage ? <p className="setup-success">{saveMessage}</p> : null}
+                {saveError ? <p className="setup-error">{saveError}</p> : null}
               </div>
-            </section>
+            </details>
 
-            {saveMessage ? <p className="setup-success">{saveMessage}</p> : null}
-            {saveError ? <p className="setup-error">{saveError}</p> : null}
+            <details className="setup-collapsible">
+              <summary className="setup-collapsible__summary">
+                <span className="setup-collapsible__title">Asistencia</span>
+                <span className="setup-collapsible__hint">{rsvpEntries.length} respuesta{rsvpEntries.length === 1 ? "" : "s"}</span>
+              </summary>
 
-            <section className="setup-token-card" aria-label="Cuenta">
-              <p className="setup-label setup-label--tight">Acceso</p>
-              <p className="setup-help setup-help--tight">
-                Usa este bloque para regenerar el código de acceso temporal que protege la primera configuración.
-              </p>
-              <input
-                className="setup-input setup-token-input"
-                value={setupToken || ""}
-                readOnly
-                autoComplete="off"
-                spellCheck="false"
-                placeholder="Sin código activo"
-              />
-              {setupToken ? <p className="setup-token-display">Token actual: {setupToken}</p> : null}
-              <div className="setup-actions">
-                <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleResetTokenFromAdmin}>
-                  Generar nuevo código
-                </button>
+              <div className="setup-collapsible__content">
+                <section className="setup-token-card" aria-label="Asistencia">
+                  <p className="setup-help setup-help--tight">
+                    Aquí se concentran las respuestas enviadas desde el formulario RSVP.
+                  </p>
+                  <p className="setup-token-display">
+                    Confirmados: {confirmedResponses} · No asistirán: {declinedResponses} · Total: {rsvpEntries.length}
+                  </p>
+                  {rsvpEntries.length ? (
+                    <div className="setup-background-grid">
+                      {rsvpEntries.map((entry) => (
+                        <article key={entry.id} className="setup-background-card">
+                          <span className="setup-background-card__title">{entry.guestName}</span>
+                          <span className="setup-background-card__description">
+                            {entry.attendance === "yes"
+                              ? `Asistirá con ${entry.companions} acompañante${entry.companions === 1 ? "" : "s"}`
+                              : "No asistirá"}
+                          </span>
+                          {entry.note ? <span className="setup-background-card__description">Nota: {entry.note}</span> : null}
+                          <span className="setup-background-card__description">
+                            {new Date(entry.submittedAt).toLocaleString("es-ES", {
+                              dateStyle: "medium",
+                              timeStyle: "short",
+                            })}
+                          </span>
+                        </article>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="setup-help setup-help--tight">Todavía no hay respuestas registradas.</p>
+                  )}
+                  <div className="setup-actions">
+                    <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleClearRsvpEntries}>
+                      Vaciar asistencia
+                    </button>
+                  </div>
+                </section>
               </div>
-            </section>
+            </details>
+
+            <details className="setup-collapsible">
+              <summary className="setup-collapsible__summary">
+                <span className="setup-collapsible__title">Acceso</span>
+                <span className="setup-collapsible__hint">Sesión y token de configuración</span>
+              </summary>
+
+              <div className="setup-collapsible__content">
+                <section className="setup-token-card" aria-label="Cuenta">
+                  <p className="setup-help setup-help--tight">
+                    Usa este bloque para regenerar el código de acceso temporal que protege la primera configuración.
+                  </p>
+                  <input
+                    className="setup-input setup-token-input"
+                    value={setupToken || ""}
+                    readOnly
+                    autoComplete="off"
+                    spellCheck="false"
+                    placeholder="Sin código activo"
+                  />
+                  {setupToken ? <p className="setup-token-display">Token activo en esta sesión.</p> : null}
+                  <div className="setup-actions">
+                    <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleResetTokenFromAdmin}>
+                      Generar nuevo código
+                    </button>
+                    <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleAdminLogout}>
+                      Cerrar sesión
+                    </button>
+                  </div>
+                </section>
+              </div>
+            </details>
 
             <div className="setup-actions">
               <button
@@ -1850,6 +2157,17 @@ export default function App() {
           className="wedding-decoration__image"
         />
       </div>
+
+      {activeStorySection !== "rsvp" ? (
+        <button
+          type="button"
+          className="story-scroll-hint"
+          onClick={handleAdvanceStorySection}
+          aria-label="Ir a la siguiente sección"
+        >
+          <span className="story-scroll-hint__arrow" aria-hidden="true">↓</span>
+        </button>
+      ) : null}
 
       <section
         data-story-section="hero"
