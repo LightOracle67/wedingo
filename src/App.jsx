@@ -5,7 +5,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { initializeApp } from "firebase/app";
 import { initializeAppCheck, ReCaptchaEnterpriseProvider } from "firebase/app-check";
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, getFirestore, serverTimestamp, setDoc } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -18,7 +17,6 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
 const db = getFirestore(app);
 
 if (import.meta.env.VITE_RECAPTCHA_ENTERPRISE_KEY) {
@@ -27,12 +25,6 @@ if (import.meta.env.VITE_RECAPTCHA_ENTERPRISE_KEY) {
     isTokenAutoRefreshEnabled: true,
   });
 }
-const ADMIN_ALLOWED_EMAILS = new Set(
-  (import.meta.env.VITE_ADMIN_EMAILS || "")
-    .split(",")
-    .map((email) => email.trim().toLowerCase())
-    .filter(Boolean),
-);
 const ALLOWED_UPLOAD_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
 const MAX_UPLOAD_SIZE_BYTES = 5 * 1024 * 1024;
 const INVITATION_DOC_REF = doc(db, "publicConfig", "invitation");
@@ -374,28 +366,6 @@ const normalizeTokenValue = (value) => {
   return value.trim().toUpperCase().replace(/[^A-Z0-9]/g, "");
 };
 
-const getAdminLoginErrorMessage = (error) => {
-  const errorCode = typeof error?.code === "string" ? error.code : "";
-
-  switch (errorCode) {
-    case "auth/invalid-email":
-      return "El formato del email no es válido.";
-    case "auth/user-not-found":
-      return "No existe una cuenta con ese email.";
-    case "auth/wrong-password":
-    case "auth/invalid-credential":
-      return "Email o contraseña incorrectos.";
-    case "auth/too-many-requests":
-      return "Demasiados intentos fallidos. Espera unos minutos e inténtalo de nuevo.";
-    case "auth/network-request-failed":
-      return "No hay conexión con el servicio de autenticación. Revisa Internet e inténtalo de nuevo.";
-    default:
-      return errorCode
-        ? `No se pudo iniciar sesión (${errorCode}).`
-        : "No se pudo iniciar sesión. Revisa email y contraseña.";
-  }
-};
-
 export default function App() {
   const maxAllowedYear = new Date().getFullYear() + 4;
   // Estado persistido y estado de edicion temporal del formulario.
@@ -416,11 +386,8 @@ export default function App() {
   const [adminMessage, setAdminMessage] = useState("");
   const [authMessage, setAuthMessage] = useState("");
   const [authMessageType, setAuthMessageType] = useState("error");
-  const [isAuthLoading, setIsAuthLoading] = useState(true);
-  const [isAuthSubmitting, setIsAuthSubmitting] = useState(false);
-  const [adminEmail, setAdminEmail] = useState("");
   const [adminLoginEmail, setAdminLoginEmail] = useState("");
-  const [adminLoginPassword, setAdminLoginPassword] = useState("");
+  const [generatedToken, setGeneratedToken] = useState("");
   const [rsvpEntries, setRsvpEntries] = useState([]);
   const [previewBackgrounds, setPreviewBackgrounds] = useState([]);
   const [isPreviewLoading, setIsPreviewLoading] = useState(false);
@@ -452,7 +419,9 @@ export default function App() {
   const rsvpSubmitTimeoutRef = useRef(null);
 
   const isStoryTransitioning = storyTransition.toIndex !== null;
-  const isAdminAllowed = Boolean(adminEmail) && ADMIN_ALLOWED_EMAILS.has(adminEmail.toLowerCase());
+  const isAdminTokenLoggedIn = isTokenVerified && tokenLoginEmail && (
+    config.adminLoginEmail === tokenLoginEmail
+  );
 
   // Calcula estilos de entrada/salida para transiciones entre secciones.
   const getStorySectionStyle = (sectionKey) => {
@@ -514,12 +483,6 @@ export default function App() {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setAdminEmail((user?.email || "").trim().toLowerCase());
-      setIsAuthLoading(false);
-    });
-
-    return () => unsubscribe();
   }, []);
 
   useEffect(() => {
@@ -552,16 +515,6 @@ export default function App() {
 
     hydrateConfig();
   }, []);
-
-  useEffect(() => {
-    if (!hasStoredConfig) {
-      return;
-    }
-
-    if (config.adminLoginEmail && !adminLoginEmail) {
-      setAdminLoginEmail(config.adminLoginEmail);
-    }
-  }, [adminLoginEmail, config.adminLoginEmail, hasStoredConfig]);
 
   useEffect(() => {
     // Recupera respuestas RSVP desde Firestore.
@@ -641,7 +594,7 @@ export default function App() {
   }, [hasStoredConfig, isAdminRoute, isSetupRoute]);
 
   const shouldShowSetup = !hasStoredConfig;
-  const shouldShowAdmin = hasStoredConfig && isAdminRoute && isAdminAllowed;
+  const shouldShowAdmin = hasStoredConfig && isAdminRoute && isAdminTokenLoggedIn;
 
   const refreshSetupToken = async () => {
     const nextToken = generateSetupToken();
@@ -1403,50 +1356,109 @@ export default function App() {
     }
   };
 
-  const handleAdminLogin = async () => {
+  const handleGenerateToken = async () => {
     setAuthMessageType("error");
     setAuthMessage("");
-    const normalizedEmail = adminLoginEmail.trim().toLowerCase();
-    const configuredAdminEmail = (config.adminLoginEmail || "").trim().toLowerCase();
-    if (!normalizedEmail || !adminLoginPassword) {
-      setAuthMessage("Escribe email y contraseña para continuar.");
+    setGeneratedToken("");
+
+    const email = adminLoginEmail.trim().toLowerCase();
+    if (!email) {
+      setAuthMessage("Escribe tu email primero.");
       return;
     }
 
-    const isAllowedBySetup = configuredAdminEmail ? normalizedEmail === configuredAdminEmail : false;
-    const isAllowedByFallbackList = !configuredAdminEmail && ADMIN_ALLOWED_EMAILS.has(normalizedEmail);
-    if (!isAllowedBySetup && !isAllowedByFallbackList) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setAuthMessage("Escribe un email válido.");
+      return;
+    }
+
+    const configuredEmail = (config.adminLoginEmail || "").trim().toLowerCase();
+    if (configuredEmail && email !== configuredEmail) {
+      setAuthMessage("Este email no tiene permisos de administración.");
+      return;
+    }
+
+    const nextToken = generateSetupToken();
+    const normalizedToken = normalizeTokenValue(nextToken);
+
+    try {
+      await setDoc(doc(db, "setupTokens", normalizedToken), {
+        email,
+        used: false,
+        createdAt: serverTimestamp(),
+      });
+      setGeneratedToken(nextToken);
+      setSetupTokenInput(normalizedToken);
+      setAuthMessageType("success");
+      setAuthMessage("Código generado. Ahora puedes iniciar sesión.");
+    } catch {
+      setAuthMessage("No se pudo generar el código. Inténtalo de nuevo.");
+    }
+  };
+
+  const handleAdminTokenLogin = async () => {
+    setAuthMessageType("error");
+    setAuthMessage("");
+
+    const email = adminLoginEmail.trim().toLowerCase();
+    const enteredToken = normalizeTokenValue(setupTokenInput);
+    if (!email || !enteredToken) {
+      setAuthMessage("Escribe tu email y el código de acceso.");
+      return;
+    }
+
+    const configuredEmail = (config.adminLoginEmail || "").trim().toLowerCase();
+    if (configuredEmail && email !== configuredEmail) {
       setAuthMessage("Credenciales no válidas.");
       return;
     }
 
-    setIsAuthSubmitting(true);
+    setIsTokenVerifying(true);
     try {
-      const result = await signInWithEmailAndPassword(auth, normalizedEmail, adminLoginPassword);
-      const nextEmail = (result.user.email || "").trim().toLowerCase();
-      const isAuthorizedEmail = configuredAdminEmail
-        ? nextEmail === configuredAdminEmail
-        : ADMIN_ALLOWED_EMAILS.has(nextEmail);
-      if (!isAuthorizedEmail) {
-        await signOut(auth);
-        setAuthMessage("Este correo no tiene permisos de administración.");
-        setAuthMessageType("error");
+      const tokenDocRef = doc(db, "setupTokens", enteredToken);
+      const tokenDoc = await getDoc(tokenDocRef);
+
+      if (!tokenDoc.exists || tokenDoc.data().used === true) {
+        setAuthMessage("Código no válido o ya ha sido usado.");
+        setIsTokenVerifying(false);
+        return;
       }
-    } catch (error) {
-      setAuthMessageType("error");
-      setAuthMessage(getAdminLoginErrorMessage(error));
+
+      const tokenEmail = (tokenDoc.data().email || "").trim().toLowerCase();
+      if (tokenEmail && tokenEmail !== email) {
+        setAuthMessage("El código no corresponde a este email.");
+        setIsTokenVerifying(false);
+        return;
+      }
+
+      await setDoc(tokenDocRef, {
+        email,
+        used: true,
+        createdAt: tokenDoc.data().createdAt,
+        usedAt: serverTimestamp(),
+      });
+
+      setTokenLoginEmail(email);
+      setSetupToken("");
+      setSetupTokenInput("");
+      setGeneratedToken("");
+      setIsTokenVerified(true);
+      setAuthMessageType("success");
+      setAuthMessage("Sesión iniciada correctamente.");
+    } catch {
+      setAuthMessage("No se pudo verificar el código. Inténtalo de nuevo.");
     } finally {
-      setIsAuthSubmitting(false);
+      setIsTokenVerifying(false);
     }
   };
 
-  const handleAdminLogout = async () => {
-    try {
-      await signOut(auth);
-    } catch {
-      setAuthMessageType("error");
-      setAuthMessage("No se pudo cerrar sesión. Inténtalo de nuevo.");
-    }
+  const handleAdminLogout = () => {
+    setIsTokenVerified(false);
+    setTokenLoginEmail("");
+    setSetupToken("");
+    setSetupTokenInput("");
+    setGeneratedToken("");
+    setAuthMessage("");
   };
 
   if (isConfigLoading) {
@@ -1847,7 +1859,7 @@ export default function App() {
     );
   }
 
-  if (hasStoredConfig && isAdminRoute && !isAdminAllowed) {
+  if (hasStoredConfig && isAdminRoute && !isAdminTokenLoggedIn) {
     return (
       <div className="setup-layout">
         <section className="setup-card allow-select" aria-label="Acceso administrativo">
@@ -1856,54 +1868,62 @@ export default function App() {
               <p className="setup-eyebrow">Área privada</p>
               <h1 className="setup-title">Acceso de administrador</h1>
               <p className="setup-subtitle">
-                Inicia sesión con una cuenta autorizada para editar la invitación.
-              </p>
-              <p className="setup-help setup-help--tight">
-                Usa la contraseña de tu cuenta de Firebase. El token de setup solo protege la configuración inicial.
+                Introduce tu email y genera un código de acceso de un solo uso.
               </p>
             </div>
           </header>
 
           <div className="setup-form">
             <div className="setup-token-card">
-              {isAuthLoading ? (
-                <p className="setup-help setup-help--tight">Comprobando sesión...</p>
-              ) : (
-                <>
-                  <label className="setup-label" htmlFor="adminLoginEmail">
-                    Email
-                  </label>
+              <label className="setup-label" htmlFor="adminLoginEmail">
+                Email
+              </label>
+              <input
+                id="adminLoginEmail"
+                className="setup-input"
+                type="email"
+                value={adminLoginEmail}
+                onChange={(event) => setAdminLoginEmail(event.target.value.toLowerCase().slice(0, 120))}
+                placeholder={config.adminLoginEmail || "admin@ejemplo.com"}
+                autoComplete="email"
+              />
+
+              <div className="setup-actions" style={{ marginTop: "1rem" }}>
+                <button className="setup-button" type="button" onClick={handleGenerateToken}>
+                  Generar código de acceso
+                </button>
+              </div>
+
+              {generatedToken ? (
+                <div className="setup-token-card" style={{ marginTop: "1rem" }}>
+                  <p className="setup-label setup-label--tight">Código generado (único uso)</p>
+                  <p className="setup-help setup-help--tight">
+                    Cópialo o haz clic en "Iniciar sesión" para usarlo ahora.
+                  </p>
+                  <p className="setup-token-display" style={{ fontSize: "1.2em", letterSpacing: "0.15em", textAlign: "center" }}>
+                    {generatedToken}
+                  </p>
                   <input
-                    id="adminLoginEmail"
-                    className="setup-input"
-                    type="email"
-                    value={adminLoginEmail}
-                    onChange={(event) => setAdminLoginEmail(event.target.value)}
-                    placeholder={config.adminLoginEmail || "admin@ejemplo.com"}
-                    autoComplete="email"
+                    className="setup-input setup-token-input"
+                    value={setupTokenInput}
+                    onChange={(event) => setSetupTokenInput(event.target.value.toUpperCase())}
+                    placeholder="AAAA-BBBB-CCCC-DDDD"
+                    maxLength={19}
+                    autoComplete="off"
+                    spellCheck="false"
                   />
-                  <label className="setup-label" htmlFor="adminLoginPassword">
-                    Contraseña
-                  </label>
-                  <input
-                    id="adminLoginPassword"
-                    className="setup-input"
-                    type="password"
-                    value={adminLoginPassword}
-                    onChange={(event) => setAdminLoginPassword(event.target.value)}
-                    placeholder="Contraseña de Firebase"
-                    autoComplete="current-password"
-                  />
-                  <button className="setup-button" type="button" onClick={handleAdminLogin} disabled={isAuthSubmitting}>
-                    {isAuthSubmitting ? "Entrando..." : "Entrar con email"}
+                  <button className="setup-button" type="button" onClick={handleAdminTokenLogin} disabled={isTokenVerifying}>
+                    {isTokenVerifying ? "Verificando..." : "Iniciar sesión"}
                   </button>
-                  <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleResetTokenFromLogin}>
-                    Restablecer token automático
-                  </button>
-                </>
-              )}
-              {authMessage ? <p className={authMessageType === "success" ? "setup-success" : "setup-error"}>{authMessage}</p> : null}
+                </div>
+              ) : null}
+
+              <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleResetTokenFromLogin}>
+                Restablecer código automático
+              </button>
             </div>
+
+            {authMessage ? <p className={authMessageType === "success" ? "setup-success" : "setup-error"}>{authMessage}</p> : null}
 
             <div className="setup-actions">
               <button
