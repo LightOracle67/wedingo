@@ -189,14 +189,6 @@
   --wedding-decoration-right-filter: hue-rotate(26deg) saturate(1.12) brightness(1.03);
   --wedding-decoration-left-opacity: 0.98;
   --wedding-decoration-right-opacity: 0.94;
-  --wedding-decoration-left-transform: rotate(180deg) scale(1.07);
-  --wedding-decoration-right-transform: scale(1.03) rotate(-1deg);
-  --wedding-decoration-left-mobile-transform: translateY(0) rotate(180deg) scale(0.99);
-  --wedding-decoration-right-mobile-transform: scale(0.97) rotate(-1deg);
-  --wedding-decoration-left-filter: hue-rotate(10deg) saturate(1.16) brightness(1.06);
-  --wedding-decoration-right-filter: hue-rotate(22deg) saturate(1.12) brightness(1.03);
-  --wedding-decoration-left-opacity: 0.98;
-  --wedding-decoration-right-opacity: 0.95;
 }
 
 :root[data-wedding-theme="onyx-gold"] {
@@ -612,6 +604,47 @@ body::after {
   line-height: 1.5;
 }
 
+.story-scroll-hint {
+  position: fixed;
+  left: 50%;
+  bottom: 1rem;
+  z-index: 30;
+  width: 2.7rem;
+  height: 2.7rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--invite-shell-border) 74%, transparent);
+  background: color-mix(in srgb, var(--invite-shell-bg) 78%, transparent);
+  color: var(--invite-title-color);
+  display: grid;
+  place-items: center;
+  box-shadow:
+    0 10px 26px color-mix(in srgb, var(--invite-shell-shadow) 60%, transparent),
+    0 0 16px color-mix(in srgb, var(--invite-shell-glow) 48%, transparent);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  transition: transform 180ms ease, opacity 180ms ease;
+  animation: story-scroll-hint-float 1400ms ease-in-out infinite;
+}
+
+.story-scroll-hint:hover {
+  transform: translateY(-2px);
+}
+
+.story-scroll-hint__arrow {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+@keyframes story-scroll-hint-float {
+  0%,
+  100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, -4px);
+  }
+}
+
 .story-calendar-actions {
   margin-top: 0.65rem;
   display: flex;
@@ -975,6 +1008,59 @@ h6 {
   margin-top: 1.25rem;
   display: grid;
   gap: 0.75rem;
+}
+
+.setup-form--nested {
+  margin-top: 0;
+}
+
+.setup-collapsible {
+  border-radius: 1rem;
+  border: 1px solid color-mix(in srgb, var(--setup-border) 72%, transparent);
+  background: color-mix(in srgb, var(--setup-field-bg) 62%, transparent);
+  overflow: clip;
+}
+
+.setup-collapsible__summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  cursor: pointer;
+  padding: 0.85rem 1rem;
+  color: var(--setup-title);
+  font-weight: 700;
+}
+
+.setup-collapsible__summary::-webkit-details-marker {
+  display: none;
+}
+
+.setup-collapsible__title {
+  font-size: 0.95rem;
+}
+
+.setup-collapsible__hint {
+  color: var(--setup-muted);
+  font-weight: 500;
+  font-size: 0.82rem;
+}
+
+.setup-collapsible__summary::after {
+  content: "+";
+  color: var(--setup-accent);
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.setup-collapsible[open] .setup-collapsible__summary::after {
+  content: "-";
+}
+
+.setup-collapsible__content {
+  padding: 0 0.85rem 0.85rem;
 }
 
 .setup-token-card {

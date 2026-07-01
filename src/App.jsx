@@ -4,24 +4,35 @@ import maplibregl from "maplibre-gl";
 import { useEffect, useMemo, useRef, useState } from "react";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { initializeApp } from "firebase/app";
+import { initializeAppCheck, ReCaptchaEnterpriseProvider } from "firebase/app-check";
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, getFirestore, serverTimestamp, setDoc } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCNF9woM_se26u4Mz9CIcNoBqxdLIcffuI",
-  authDomain: "wedingo-6c26a.firebaseapp.com",
-  projectId: "wedingo-6c26a",
-  storageBucket: "wedingo-6c26a.firebasestorage.app",
-  messagingSenderId: "222572038554",
-  appId: "1:222572038554:web:b894dbd62b270c22551223"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-const ADMIN_ALLOWED_EMAILS = new Set([
-  "adriancl2001@gmail.com",
-]);
+
+if (import.meta.env.VITE_RECAPTCHA_ENTERPRISE_KEY) {
+  initializeAppCheck(app, {
+    provider: new ReCaptchaEnterpriseProvider(import.meta.env.VITE_RECAPTCHA_ENTERPRISE_KEY),
+    isTokenAutoRefreshEnabled: true,
+  });
+}
+const ADMIN_ALLOWED_EMAILS = new Set(
+  (import.meta.env.VITE_ADMIN_EMAILS || "")
+    .split(",")
+    .map((email) => email.trim().toLowerCase())
+    .filter(Boolean),
+);
 const ALLOWED_UPLOAD_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
 const MAX_UPLOAD_SIZE_BYTES = 5 * 1024 * 1024;
 const INVITATION_DOC_REF = doc(db, "publicConfig", "invitation");
@@ -345,20 +356,13 @@ const buildOpenFreeMapPreviewUrl = async (location, style) => {
   }
 };
 
-// Genera un token legible de un solo uso para proteger el setup inicial.
 const generateSetupToken = () => {
   const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-  const bytes = new Uint8Array(16);
-
-  if (typeof crypto !== "undefined" && crypto.getRandomValues) {
-    crypto.getRandomValues(bytes);
-  } else {
-    for (let index = 0; index < bytes.length; index += 1) {
-      bytes[index] = Math.floor(Math.random() * 256);
-    }
-  }
-
-  const rawToken = Array.from(bytes, (byte) => alphabet[byte % alphabet.length]).join("");
+  const alphabetLen = alphabet.length;
+  const maxValid = 256 - (256 % alphabetLen);
+  const bytes = new Uint8Array(32);
+  crypto.getRandomValues(bytes);
+  const rawToken = Array.from(bytes, (byte) => alphabet[byte < maxValid ? byte % alphabetLen : 0]).join("");
   return rawToken.match(/.{1,4}/g)?.join("-") ?? rawToken;
 };
 
@@ -441,6 +445,8 @@ export default function App() {
     note: "",
   });
   const [rsvpMessage, setRsvpMessage] = useState("");
+  const [isRsvpSubmitting, setIsRsvpSubmitting] = useState(false);
+  const rsvpSubmitTimeoutRef = useRef(null);
 
   const isStoryTransitioning = storyTransition.toIndex !== null;
   const isAdminAllowed = Boolean(adminEmail) && ADMIN_ALLOWED_EMAILS.has(adminEmail.toLowerCase());
@@ -1229,8 +1235,8 @@ export default function App() {
   };
 
   const handleRsvpSubmit = async (event) => {
-    // Registra RSVP en Firestore y actualiza feedback al invitado.
     event.preventDefault();
+    if (isRsvpSubmitting) return;
 
     const guestName = rsvpForm.guestName.trim();
     if (!guestName) {
@@ -1248,6 +1254,7 @@ export default function App() {
       submittedAt: serverTimestamp(),
     };
 
+    setIsRsvpSubmitting(true);
     try {
       const createdDoc = await addDoc(RSVP_COLLECTION_REF, responsePayload);
       const responseRecord = {
@@ -1267,6 +1274,11 @@ export default function App() {
       );
     } catch {
       setRsvpMessage("No pudimos guardar tu confirmación. Inténtalo de nuevo en unos minutos.");
+    } finally {
+      if (rsvpSubmitTimeoutRef.current) clearTimeout(rsvpSubmitTimeoutRef.current);
+      rsvpSubmitTimeoutRef.current = setTimeout(() => {
+        setIsRsvpSubmitting(false);
+      }, 5000);
     }
   };
 
@@ -1285,12 +1297,11 @@ export default function App() {
     setSaveMessage("");
     setSaveError("");
     setAdminMessage("");
-    const nextToken = refreshSetupToken();
-    setSaveMessage(`Token restablecido correctamente. Nuevo token de un solo uso: ${nextToken}`);
+    refreshSetupToken();
+    setSaveMessage("Token restablecido correctamente. Copia el código del campo superior antes de guardar.");
   };
 
   const handleResetTokenFromAdmin = () => {
-    // Accion de regeneracion de token desde el panel admin.
     const shouldResetToken = window.confirm("¿Quieres restablecer el token automático de setup? El token actual dejará de ser válido.");
     if (!shouldResetToken) {
       return;
@@ -1299,8 +1310,8 @@ export default function App() {
     setSaveMessage("");
     setSaveError("");
     setAdminMessage("");
-    const nextToken = refreshSetupToken();
-    setAdminMessage(`Token de setup restablecido: ${nextToken}. Este cambio no modifica la contraseña de Firebase.`);
+    refreshSetupToken();
+    setAdminMessage("Token de setup restablecido. Este cambio no modifica la contraseña de Firebase.");
   };
 
   const handleResetTokenFromLogin = () => {
@@ -1312,13 +1323,13 @@ export default function App() {
     setSaveMessage("");
     setSaveError("");
     setAdminMessage("");
-    const nextToken = refreshSetupToken();
+    refreshSetupToken();
     setAuthMessageType("success");
-    setAuthMessage(`Token de setup restablecido: ${nextToken}. Este cambio no modifica la contraseña de Firebase.`);
+    setAuthMessage("Token de setup restablecido. Este cambio no modifica la contraseña de Firebase.");
   };
 
   const handleClearRsvpEntries = async () => {
-    // Limpia el historial RSVP para reiniciar confirmaciones.
+    if (!window.confirm("¿Borrar todas las respuestas de asistencia? Esta acción no se puede deshacer.")) return;
     try {
       const snapshot = await getDocs(RSVP_COLLECTION_REF);
       await Promise.all(snapshot.docs.map((entryDoc) => deleteDoc(entryDoc.ref)));
@@ -1342,11 +1353,7 @@ export default function App() {
     const isAllowedBySetup = configuredAdminEmail ? normalizedEmail === configuredAdminEmail : false;
     const isAllowedByFallbackList = !configuredAdminEmail && ADMIN_ALLOWED_EMAILS.has(normalizedEmail);
     if (!isAllowedBySetup && !isAllowedByFallbackList) {
-      if (configuredAdminEmail) {
-        setAuthMessage(`Este correo no tiene permisos. Usa el email configurado en setup: ${configuredAdminEmail}`);
-      } else {
-        setAuthMessage("Este correo no tiene permisos de administración.");
-      }
+      setAuthMessage("Credenciales no válidas.");
       return;
     }
 
@@ -1474,7 +1481,7 @@ export default function App() {
                   autoComplete="off"
                   spellCheck="false"
                 />
-                {setupToken ? <p className="setup-token-display">Token actual: {setupToken}</p> : null}
+                {setupToken ? <p className="setup-token-display">Token activo (visible solo para ti).</p> : null}
                 <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleResetSetupToken}>
                   Restablecer token automático
                 </button>
@@ -2175,7 +2182,7 @@ export default function App() {
                     spellCheck="false"
                     placeholder="Sin código activo"
                   />
-                  {setupToken ? <p className="setup-token-display">Token activo en esta sesión.</p> : null}
+                  {setupToken ? <p className="setup-token-display">Token activo (visible solo para ti).</p> : null}
                   <div className="setup-actions">
                     <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleResetTokenFromAdmin}>
                       Restablecer token automático
@@ -2349,7 +2356,7 @@ export default function App() {
               id="rsvpName"
               className="setup-input"
               value={rsvpForm.guestName}
-              onChange={(event) => updateRsvpField("guestName", event.target.value)}
+              onChange={(event) => updateRsvpField("guestName", event.target.value.slice(0, 120))}
               placeholder="Tu nombre completo"
               autoComplete="off"
             />
@@ -2399,8 +2406,8 @@ export default function App() {
             />
 
             <div className="setup-actions">
-              <button className="setup-button" type="submit">
-                Confirmar asistencia
+              <button className="setup-button" type="submit" disabled={isRsvpSubmitting}>
+                {isRsvpSubmitting ? "Enviando..." : "Confirmar asistencia"}
               </button>
             </div>
           </form>
