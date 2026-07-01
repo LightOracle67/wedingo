@@ -362,6 +362,36 @@ const generateSetupToken = () => {
   return rawToken.match(/.{1,4}/g)?.join("-") ?? rawToken;
 };
 
+const normalizeTokenValue = (value) => {
+  if (typeof value !== "string") {
+    return "";
+  }
+
+  return value.trim().toUpperCase().replace(/[^A-Z0-9]/g, "");
+};
+
+const getAdminLoginErrorMessage = (error) => {
+  const errorCode = typeof error?.code === "string" ? error.code : "";
+
+  switch (errorCode) {
+    case "auth/invalid-email":
+      return "El formato del email no es válido.";
+    case "auth/user-not-found":
+      return "No existe una cuenta con ese email.";
+    case "auth/wrong-password":
+    case "auth/invalid-credential":
+      return "Email o contraseña incorrectos.";
+    case "auth/too-many-requests":
+      return "Demasiados intentos fallidos. Espera unos minutos e inténtalo de nuevo.";
+    case "auth/network-request-failed":
+      return "No hay conexión con el servicio de autenticación. Revisa Internet e inténtalo de nuevo.";
+    default:
+      return errorCode
+        ? `No se pudo iniciar sesión (${errorCode}).`
+        : "No se pudo iniciar sesión. Revisa email y contraseña.";
+  }
+};
+
 export default function App() {
   const maxAllowedYear = new Date().getFullYear() + 4;
   // Estado persistido y estado de edicion temporal del formulario.
@@ -1101,8 +1131,10 @@ export default function App() {
     setSaveMessage("");
 
     if (!hasStoredConfig) {
-      if (!setupToken || setupTokenInput.trim() !== setupToken) {
-        setSaveError("La contraseña de un solo uso no coincide.");
+      const enteredToken = normalizeTokenValue(setupTokenInput);
+      const expectedToken = normalizeTokenValue(setupToken);
+      if (!expectedToken || enteredToken !== expectedToken) {
+        setSaveError("El token de setup no coincide. Copia el token actual o restablécelo.");
         return;
       }
     }
@@ -1267,7 +1299,7 @@ export default function App() {
     setSaveError("");
     setAdminMessage("");
     const nextToken = refreshSetupToken();
-    setAdminMessage(`Token restablecido correctamente. Nuevo token de un solo uso: ${nextToken}`);
+    setAdminMessage(`Token de setup restablecido: ${nextToken}. Este cambio no modifica la contraseña de Firebase.`);
   };
 
   const handleResetTokenFromLogin = () => {
@@ -1280,7 +1312,7 @@ export default function App() {
     setSaveError("");
     setAdminMessage("");
     const nextToken = refreshSetupToken();
-    setAuthMessage(`Token restablecido correctamente. Nuevo token de un solo uso: ${nextToken}`);
+    setAuthMessage(`Token de setup restablecido: ${nextToken}. Este cambio no modifica la contraseña de Firebase.`);
   };
 
   const handleClearRsvpEntries = async () => {
@@ -1307,7 +1339,11 @@ export default function App() {
     const isAllowedBySetup = configuredAdminEmail ? normalizedEmail === configuredAdminEmail : false;
     const isAllowedByFallbackList = !configuredAdminEmail && ADMIN_ALLOWED_EMAILS.has(normalizedEmail);
     if (!isAllowedBySetup && !isAllowedByFallbackList) {
-      setAuthMessage("Este correo no tiene permisos de administración.");
+      if (configuredAdminEmail) {
+        setAuthMessage(`Este correo no tiene permisos. Usa el email configurado en setup: ${configuredAdminEmail}`);
+      } else {
+        setAuthMessage("Este correo no tiene permisos de administración.");
+      }
       return;
     }
 
@@ -1322,8 +1358,8 @@ export default function App() {
         await signOut(auth);
         setAuthMessage("Este correo no tiene permisos de administración.");
       }
-    } catch {
-      setAuthMessage("No se pudo iniciar sesión.");
+    } catch (error) {
+      setAuthMessage(getAdminLoginErrorMessage(error));
     } finally {
       setIsAuthSubmitting(false);
     }
@@ -1722,6 +1758,9 @@ export default function App() {
               <p className="setup-subtitle">
                 Inicia sesión con una cuenta autorizada para editar la invitación.
               </p>
+              <p className="setup-help setup-help--tight">
+                Usa la contraseña de tu cuenta de Firebase. El token de setup solo protege la configuración inicial.
+              </p>
             </div>
           </header>
 
@@ -1752,7 +1791,7 @@ export default function App() {
                     type="password"
                     value={adminLoginPassword}
                     onChange={(event) => setAdminLoginPassword(event.target.value)}
-                    placeholder="Token de setup"
+                    placeholder="Contraseña de Firebase"
                     autoComplete="current-password"
                   />
                   <button className="setup-button" type="button" onClick={handleAdminLogin} disabled={isAuthSubmitting}>
