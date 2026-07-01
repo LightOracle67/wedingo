@@ -1,11 +1,32 @@
 import eucalyptusSrc from "./assets/eucalyptus.png";
 import heroBackdropSrc from "./assets/rings.png";
+import maplibregl from "maplibre-gl";
 import { useEffect, useMemo, useRef, useState } from "react";
+import "maplibre-gl/dist/maplibre-gl.css";
 
 const APP_CONFIG_KEY = "weddingAppConfig";
 const APP_SETUP_TOKEN_KEY = "weddingSetupToken";
 const APP_RSVP_RESPONSES_KEY = "weddingRsvpResponses";
-const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY?.trim() || "";
+const OPENFREEMAP_STYLES = [
+  {
+    id: "liberty",
+    label: "Liberty",
+    description: "Equilibrado y legible, con un aspecto limpio.",
+    styleUrl: "https://tiles.openfreemap.org/styles/liberty",
+  },
+  {
+    id: "bright",
+    label: "Bright",
+    description: "Más luminoso y claro, ideal para fondos suaves.",
+    styleUrl: "https://tiles.openfreemap.org/styles/bright",
+  },
+  {
+    id: "dark",
+    label: "Dark",
+    description: "Un tono más sobrio para ubicaciones con contraste.",
+    styleUrl: "https://tiles.openfreemap.org/styles/dark",
+  },
+];
 const MONTH_OPTIONS = [
   { value: "enero", label: "Enero" },
   { value: "febrero", label: "Febrero" },
@@ -20,6 +41,21 @@ const MONTH_OPTIONS = [
   { value: "noviembre", label: "Noviembre" },
   { value: "diciembre", label: "Diciembre" },
 ];
+
+const MONTH_VALUE_TO_NUMBER = {
+  enero: 1,
+  febrero: 2,
+  marzo: 3,
+  abril: 4,
+  mayo: 5,
+  junio: 6,
+  julio: 7,
+  agosto: 8,
+  septiembre: 9,
+  octubre: 10,
+  noviembre: 11,
+  diciembre: 12,
+};
 
 const THEME_OPTIONS = [
   {
@@ -72,27 +108,6 @@ const THEME_GROUPS = [
   { value: "oscuros", label: "Temas oscuros" },
 ];
 
-const BACKGROUND_PREVIEW_OPTIONS = [
-  {
-    id: "roadmap",
-    label: "Mapa",
-    description: "Vista clara del lugar con calles y referencias.",
-    mapType: "roadmap",
-  },
-  {
-    id: "satellite",
-    label: "Satélite",
-    description: "Vista más visual con imagen real del entorno.",
-    mapType: "satellite",
-  },
-  {
-    id: "terrain",
-    label: "Terreno",
-    description: "Una lectura más suave del paisaje y accesos.",
-    mapType: "terrain",
-  },
-];
-
 const STORY_SECTION_ORDER = ["hero", "details", "rsvp"];
 
 const defaultConfig = {
@@ -100,9 +115,13 @@ const defaultConfig = {
   secondName: "",
   inviteMessage: "",
   weddingPlace: "",
+  weddingLatitude: "",
+  weddingLongitude: "",
   weddingDay: "",
   weddingMonth: "",
   weddingYear: "",
+  weddingHour: "",
+  weddingMinute: "",
   theme: "golden",
   backgroundImage: "",
   backgroundImageLabel: "",
@@ -114,9 +133,13 @@ const normalizeConfig = (value) => ({
   secondName: typeof value?.secondName === "string" ? value.secondName.trim() : "",
   inviteMessage: typeof value?.inviteMessage === "string" ? value.inviteMessage.trim() : "",
   weddingPlace: typeof value?.weddingPlace === "string" ? value.weddingPlace.trim() : "",
+  weddingLatitude: typeof value?.weddingLatitude === "string" ? value.weddingLatitude.trim() : "",
+  weddingLongitude: typeof value?.weddingLongitude === "string" ? value.weddingLongitude.trim() : "",
   weddingDay: typeof value?.weddingDay === "string" ? value.weddingDay.trim() : "",
   weddingMonth: typeof value?.weddingMonth === "string" ? value.weddingMonth.trim() : "",
   weddingYear: typeof value?.weddingYear === "string" ? value.weddingYear.trim() : "",
+  weddingHour: typeof value?.weddingHour === "string" ? value.weddingHour.trim() : "",
+  weddingMinute: typeof value?.weddingMinute === "string" ? value.weddingMinute.trim() : "",
   theme:
     typeof value?.theme === "string" && THEME_VALUES.has(value.theme.trim())
       ? value.theme.trim()
@@ -128,13 +151,167 @@ const normalizeConfig = (value) => ({
     typeof value?.backgroundImageSource === "string" ? value.backgroundImageSource.trim() : "",
 });
 
-const buildGoogleMapsPreviewUrl = (place, mapType) => {
-  if (!GOOGLE_MAPS_API_KEY || !place) {
+const geocodeLocation = async (place) => {
+  if (!place) {
+    return null;
+  }
+
+  const response = await fetch(
+    `https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&q=${encodeURIComponent(place)}`,
+    {
+      headers: {
+        Accept: "application/json",
+      },
+    },
+  );
+
+  if (!response.ok) {
+    return null;
+  }
+
+  const results = await response.json();
+  const firstResult = Array.isArray(results) ? results[0] : null;
+  if (!firstResult) {
+    return null;
+  }
+
+  const latitude = Number.parseFloat(firstResult.lat);
+  const longitude = Number.parseFloat(firstResult.lon);
+  if (Number.isNaN(latitude) || Number.isNaN(longitude)) {
+    return null;
+  }
+
+  return {
+    latitude,
+    longitude,
+    label: firstResult.display_name || place,
+  };
+};
+
+const parseCoordinate = (value) => {
+  if (typeof value !== "string") {
+    return null;
+  }
+
+  const normalizedValue = value.trim().replace(",", ".");
+  if (!normalizedValue) {
+    return null;
+  }
+
+  const parsedValue = Number.parseFloat(normalizedValue);
+  if (!Number.isFinite(parsedValue)) {
+    return null;
+  }
+
+  return parsedValue;
+};
+
+const getValidCoordinates = (latitudeValue, longitudeValue) => {
+  const latitude = parseCoordinate(latitudeValue);
+  const longitude = parseCoordinate(longitudeValue);
+
+  if (latitude === null || longitude === null) {
+    return null;
+  }
+
+  if (latitude < -90 || latitude > 90 || longitude < -180 || longitude > 180) {
+    return null;
+  }
+
+  return {
+    latitude,
+    longitude,
+  };
+};
+
+const resolveLocationTarget = async ({ place, latitudeValue, longitudeValue }) => {
+  const exactCoordinates = getValidCoordinates(latitudeValue, longitudeValue);
+  if (exactCoordinates) {
+    return {
+      ...exactCoordinates,
+      label: place || "Ubicacion configurada",
+    };
+  }
+
+  return geocodeLocation(place);
+};
+
+const buildGoogleMapsUrl = (location) =>
+  `https://www.google.com/maps/search/?api=1&query=${location.latitude},${location.longitude}`;
+
+const buildAppleMapsUrl = (location, placeLabel) => {
+  const label = encodeURIComponent(placeLabel || location.label || "Boda");
+  return `https://maps.apple.com/?ll=${location.latitude},${location.longitude}&q=${label}`;
+};
+
+const padDatePart = (value) => String(value).padStart(2, "0");
+
+const formatCalendarDateTime = (date) =>
+  `${date.getFullYear()}${padDatePart(date.getMonth() + 1)}${padDatePart(date.getDate())}T${padDatePart(date.getHours())}${padDatePart(date.getMinutes())}00`;
+
+const buildGoogleCalendarUrl = ({ title, description, place, startDate, endDate }) => {
+  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone || "Europe/Madrid";
+  const params = new URLSearchParams({
+    action: "TEMPLATE",
+    text: title,
+    details: description,
+    location: place,
+    dates: `${formatCalendarDateTime(startDate)}/${formatCalendarDateTime(endDate)}`,
+    ctz: timezone,
+  });
+
+  return `https://calendar.google.com/calendar/render?${params.toString()}`;
+};
+
+const buildOpenFreeMapPreviewUrl = async (location, style) => {
+  if (!location || !style) {
     return "";
   }
 
-  const encodedPlace = encodeURIComponent(place);
-  return `https://maps.googleapis.com/maps/api/staticmap?center=${encodedPlace}&zoom=16&size=1200x800&scale=2&maptype=${mapType}&markers=color:0xd8b24a%7C${encodedPlace}&key=${GOOGLE_MAPS_API_KEY}`;
+  const container = document.createElement("div");
+  container.style.position = "fixed";
+  container.style.left = "-10000px";
+  container.style.top = "-10000px";
+  container.style.width = "1200px";
+  container.style.height = "800px";
+  document.body.appendChild(container);
+
+  try {
+    const map = new maplibregl.Map({
+      container,
+      style: style.styleUrl,
+      center: [location.longitude, location.latitude],
+      zoom: 15,
+      bearing: -12,
+      pitch: 40,
+      interactive: false,
+      attributionControl: false,
+      preserveDrawingBuffer: true,
+    });
+
+    const markerElement = document.createElement("div");
+    markerElement.style.width = "18px";
+    markerElement.style.height = "18px";
+    markerElement.style.borderRadius = "999px";
+    markerElement.style.background = "#d8b24a";
+    markerElement.style.border = "3px solid rgba(255, 255, 255, 0.95)";
+    markerElement.style.boxShadow = "0 0 0 8px rgba(216, 178, 74, 0.18)";
+
+    new maplibregl.Marker({ element: markerElement, anchor: "center" })
+      .setLngLat([location.longitude, location.latitude])
+      .addTo(map);
+
+    await new Promise((resolve, reject) => {
+      map.once("error", reject);
+      map.once("idle", resolve);
+    });
+
+    const previewUrl = map.getCanvas().toDataURL("image/png");
+    map.remove();
+    return previewUrl;
+  } finally {
+    container.remove();
+  }
 };
 
 const generateSetupToken = () => {
@@ -166,6 +343,11 @@ export default function App() {
   const [setupTokenInput, setSetupTokenInput] = useState("");
   const [adminMessage, setAdminMessage] = useState("");
   const [rsvpEntries, setRsvpEntries] = useState([]);
+  const [previewBackgrounds, setPreviewBackgrounds] = useState([]);
+  const [isPreviewLoading, setIsPreviewLoading] = useState(false);
+  const [locationMapError, setLocationMapError] = useState("");
+  const [locationMapLoading, setLocationMapLoading] = useState(false);
+  const [locationMapTarget, setLocationMapTarget] = useState(null);
   const [activeStorySection, setActiveStorySection] = useState("hero");
   const [storyTransition, setStoryTransition] = useState({
     fromIndex: 0,
@@ -178,6 +360,8 @@ export default function App() {
     toIndex: null,
     direction: 1,
   });
+  const previewRequestRef = useRef(0);
+  const locationMapContainerRef = useRef(null);
   const [rsvpForm, setRsvpForm] = useState({
     guestName: "",
     attendance: "yes",
@@ -363,6 +547,145 @@ export default function App() {
   }, [storyTransition]);
 
   useEffect(() => {
+    const place = formData.weddingPlace.trim();
+    const hasExactCoordinates = Boolean(getValidCoordinates(formData.weddingLatitude, formData.weddingLongitude));
+    if (!place && !hasExactCoordinates) {
+      setPreviewBackgrounds([]);
+      setIsPreviewLoading(false);
+      return undefined;
+    }
+
+    const requestId = previewRequestRef.current + 1;
+    previewRequestRef.current = requestId;
+    setIsPreviewLoading(true);
+
+    const timeoutId = window.setTimeout(async () => {
+      try {
+        const resolvedLocation = await resolveLocationTarget({
+          place,
+          latitudeValue: formData.weddingLatitude,
+          longitudeValue: formData.weddingLongitude,
+        });
+        if (!resolvedLocation) {
+          if (previewRequestRef.current === requestId) {
+            setPreviewBackgrounds([]);
+          }
+          return;
+        }
+
+        const previews = await Promise.all(
+          OPENFREEMAP_STYLES.map(async (style) => {
+            const src = await buildOpenFreeMapPreviewUrl(resolvedLocation, style);
+            return src ? { ...style, src } : null;
+          }),
+        );
+
+        if (previewRequestRef.current !== requestId) {
+          return;
+        }
+
+        setPreviewBackgrounds(previews.filter(Boolean));
+      } finally {
+        if (previewRequestRef.current === requestId) {
+          setIsPreviewLoading(false);
+        }
+      }
+    }, 350);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [formData.weddingPlace, formData.weddingLatitude, formData.weddingLongitude]);
+
+  useEffect(() => {
+    if (shouldShowSetup || shouldShowAdmin) {
+      setLocationMapError("");
+      setLocationMapLoading(false);
+      return undefined;
+    }
+
+    const place = config.weddingPlace.trim();
+    const container = locationMapContainerRef.current;
+    const hasExactCoordinates = Boolean(getValidCoordinates(config.weddingLatitude, config.weddingLongitude));
+    if ((!place && !hasExactCoordinates) || !container) {
+      setLocationMapError("");
+      setLocationMapLoading(false);
+      setLocationMapTarget(null);
+      return undefined;
+    }
+
+    let isCancelled = false;
+    let mapInstance = null;
+    setLocationMapError("");
+    setLocationMapLoading(true);
+    setLocationMapTarget(null);
+
+    const timeoutId = window.setTimeout(async () => {
+      try {
+        const geocodedLocation = await resolveLocationTarget({
+          place,
+          latitudeValue: config.weddingLatitude,
+          longitudeValue: config.weddingLongitude,
+        });
+        if (isCancelled || !container.isConnected) {
+          return;
+        }
+
+        if (!geocodedLocation) {
+          setLocationMapError("No pudimos localizar este lugar.");
+          setLocationMapLoading(false);
+          return;
+        }
+
+        setLocationMapTarget(geocodedLocation);
+
+        mapInstance = new maplibregl.Map({
+          container,
+          style: "https://tiles.openfreemap.org/styles/liberty",
+          center: [geocodedLocation.longitude, geocodedLocation.latitude],
+          zoom: 15,
+          bearing: -12,
+          pitch: 35,
+          interactive: false,
+          attributionControl: true,
+        });
+
+        const markerElement = document.createElement("div");
+        markerElement.style.width = "18px";
+        markerElement.style.height = "18px";
+        markerElement.style.borderRadius = "999px";
+        markerElement.style.background = "#d8b24a";
+        markerElement.style.border = "3px solid rgba(255, 255, 255, 0.95)";
+        markerElement.style.boxShadow = "0 0 0 8px rgba(216, 178, 74, 0.18)";
+
+        new maplibregl.Marker({ element: markerElement, anchor: "center" })
+          .setLngLat([geocodedLocation.longitude, geocodedLocation.latitude])
+          .addTo(mapInstance);
+
+        mapInstance.once("load", () => {
+          if (!isCancelled) {
+            setLocationMapLoading(false);
+          }
+        });
+      } catch {
+        if (!isCancelled) {
+          setLocationMapError("No pudimos cargar el mapa.");
+          setLocationMapLoading(false);
+        }
+      }
+    }, 0);
+
+    return () => {
+      isCancelled = true;
+      window.clearTimeout(timeoutId);
+      setLocationMapTarget(null);
+      if (mapInstance) {
+        mapInstance.remove();
+      }
+    };
+  }, [config.weddingPlace, config.weddingLatitude, config.weddingLongitude, shouldShowAdmin, shouldShowSetup]);
+
+  useEffect(() => {
     if (shouldShowSetup || shouldShowAdmin) {
       document.body.style.overflow = "";
       return undefined;
@@ -478,17 +801,72 @@ export default function App() {
     return `${day} de ${monthLabel} de ${year}`;
   }, [config]);
 
-  const previewBackgrounds = useMemo(() => {
-    const place = formData.weddingPlace.trim();
-    if (!place || !GOOGLE_MAPS_API_KEY) {
-      return [];
+  const formattedTime = useMemo(() => {
+    const hour = config.weddingHour.trim();
+    const minute = config.weddingMinute.trim();
+    if (!hour || !minute) {
+      return "";
     }
 
-    return BACKGROUND_PREVIEW_OPTIONS.map((option) => ({
-      ...option,
-      src: buildGoogleMapsPreviewUrl(place, option.mapType),
-    })).filter((option) => option.src);
-  }, [formData.weddingPlace]);
+    return `${hour.padStart(2, "0")}:${minute.padStart(2, "0")}`;
+  }, [config.weddingHour, config.weddingMinute]);
+
+  const calendarLink = useMemo(() => {
+    const day = Number.parseInt(config.weddingDay.trim(), 10);
+    const month = MONTH_VALUE_TO_NUMBER[config.weddingMonth.trim()];
+    const year = Number.parseInt(config.weddingYear.trim(), 10);
+    const hour = Number.parseInt(config.weddingHour.trim(), 10);
+    const minute = Number.parseInt(config.weddingMinute.trim(), 10);
+
+    if (
+      !month
+      || Number.isNaN(day)
+      || Number.isNaN(year)
+      || Number.isNaN(hour)
+      || Number.isNaN(minute)
+    ) {
+      return null;
+    }
+
+    const startDate = new Date(year, month - 1, day, hour, minute, 0, 0);
+    if (
+      startDate.getFullYear() !== year
+      || startDate.getMonth() !== month - 1
+      || startDate.getDate() !== day
+    ) {
+      return null;
+    }
+
+    const endDate = new Date(startDate.getTime() + 2 * 60 * 60 * 1000);
+    const coupleNames = [config.firstName, config.secondName].filter(Boolean).join(" & ") || "Nuestra boda";
+    const title = `Boda de ${coupleNames}`;
+    const place = config.weddingPlace || "Lugar por confirmar";
+    const description = [
+      "Te esperamos para celebrar este momento especial.",
+      formattedTime ? `Hora: ${formattedTime}` : "",
+      config.weddingPlace ? `Lugar: ${config.weddingPlace}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    return buildGoogleCalendarUrl({
+      title,
+      description,
+      place,
+      startDate,
+      endDate,
+    });
+  }, [
+    config.firstName,
+    config.secondName,
+    config.weddingDay,
+    config.weddingMonth,
+    config.weddingYear,
+    config.weddingHour,
+    config.weddingMinute,
+    config.weddingPlace,
+    formattedTime,
+  ]);
 
   const updateFormField = (field, value) => {
     setFormData((current) => ({ ...current, [field]: value }));
@@ -521,8 +899,8 @@ export default function App() {
     event.target.value = "";
   };
 
-  const handleSelectPreviewBackground = (backgroundImage, backgroundImageLabel) => {
-    applyBackgroundImage(backgroundImage, backgroundImageLabel, "google-maps");
+  const handleSelectPreviewBackground = (backgroundImage, backgroundImageLabel, backgroundImageSource = "openfreemap") => {
+    applyBackgroundImage(backgroundImage, backgroundImageLabel, backgroundImageSource);
   };
 
   const handleClearBackground = () => {
@@ -541,6 +919,47 @@ export default function App() {
     updateFormField("weddingDay", String(clamped));
   };
 
+  const handleHourChange = (value) => {
+    const digits = value.replace(/[^0-9]/g, "").slice(0, 2);
+    if (!digits) {
+      updateFormField("weddingHour", "");
+      return;
+    }
+
+    const numericHour = Number.parseInt(digits, 10);
+    const clamped = Math.min(23, Math.max(0, numericHour));
+    updateFormField("weddingHour", String(clamped));
+  };
+
+  const handleMinuteChange = (value) => {
+    const digits = value.replace(/[^0-9]/g, "").slice(0, 2);
+    if (!digits) {
+      updateFormField("weddingMinute", "");
+      return;
+    }
+
+    if (digits.length === 1) {
+      updateFormField("weddingMinute", digits);
+      return;
+    }
+
+    const numericMinute = Number.parseInt(digits, 10);
+    const clamped = Math.min(59, Math.max(0, numericMinute));
+    updateFormField("weddingMinute", String(clamped).padStart(2, "0"));
+  };
+
+  const handleMinuteBlur = () => {
+    const digits = formData.weddingMinute.replace(/[^0-9]/g, "").slice(0, 2);
+    if (!digits) {
+      updateFormField("weddingMinute", "");
+      return;
+    }
+
+    const numericMinute = Number.parseInt(digits, 10);
+    const clamped = Math.min(59, Math.max(0, numericMinute));
+    updateFormField("weddingMinute", String(clamped).padStart(2, "0"));
+  };
+
   const handleYearChange = (value) => {
     const digits = value.replace(/[^0-9]/g, "").slice(0, 4);
     if (!digits) {
@@ -555,6 +974,11 @@ export default function App() {
     }
 
     updateFormField("weddingYear", digits);
+  };
+
+  const handleCoordinateChange = (field, value) => {
+    const normalized = value.replace(/,/g, ".").replace(/[^0-9.-]/g, "");
+    updateFormField(field, normalized.slice(0, 18));
   };
 
   const handleSaveSetup = (event) => {
@@ -575,7 +999,7 @@ export default function App() {
       return;
     }
 
-    if (!sanitized.weddingDay || !sanitized.weddingMonth || !sanitized.weddingYear) {
+    if (!sanitized.weddingDay || !sanitized.weddingMonth || !sanitized.weddingYear || !sanitized.weddingHour || !sanitized.weddingMinute) {
       setSaveError("Completa la fecha de la boda.");
       return;
     }
@@ -591,8 +1015,32 @@ export default function App() {
       return;
     }
 
+    const parsedHour = Number.parseInt(sanitized.weddingHour, 10);
+    if (Number.isNaN(parsedHour) || parsedHour < 0 || parsedHour > 23) {
+      setSaveError("La hora debe estar entre 0 y 23.");
+      return;
+    }
+
+    const parsedMinute = Number.parseInt(sanitized.weddingMinute, 10);
+    if (Number.isNaN(parsedMinute) || parsedMinute < 0 || parsedMinute > 59) {
+      setSaveError("Los minutos deben estar entre 00 y 59.");
+      return;
+    }
+
     if (!THEME_VALUES.has(sanitized.theme)) {
       setSaveError("Selecciona un tema valido.");
+      return;
+    }
+
+    const hasLatitude = Boolean(sanitized.weddingLatitude);
+    const hasLongitude = Boolean(sanitized.weddingLongitude);
+    if (hasLatitude !== hasLongitude) {
+      setSaveError("Si usas coordenadas exactas, completa latitud y longitud.");
+      return;
+    }
+
+    if (hasLatitude && hasLongitude && !getValidCoordinates(sanitized.weddingLatitude, sanitized.weddingLongitude)) {
+      setSaveError("Las coordenadas no son validas. Latitud: -90 a 90, longitud: -180 a 180.");
       return;
     }
 
@@ -675,6 +1123,14 @@ export default function App() {
     setRsvpEntries([]);
     setAdminMessage("Se vació el registro de asistencia.");
   };
+
+  const configuredCoordinates = getValidCoordinates(config.weddingLatitude, config.weddingLongitude);
+  const hasLocationData = Boolean(config.weddingPlace || configuredCoordinates);
+  const locationDescription = config.weddingPlace
+    ? config.weddingPlace
+    : configuredCoordinates
+      ? `Coordenadas: ${configuredCoordinates.latitude}, ${configuredCoordinates.longitude}`
+      : "";
 
   if (shouldShowSetup) {
     return (
@@ -779,17 +1235,48 @@ export default function App() {
               autoComplete="off"
             />
             <p className="setup-help">
-              Si defines el lugar, podrás elegir una vista de Google Maps o subir una foto propia para usarla como fondo.
+              Puedes escribir dirección y, si quieres máxima precisión, añadir coordenadas exactas.
             </p>
+
+            <div className="setup-date-grid">
+              <div>
+                <label className="setup-label" htmlFor="weddingLatitude">
+                  Latitud (opcional)
+                </label>
+                <input
+                  id="weddingLatitude"
+                  className="setup-input"
+                  value={formData.weddingLatitude}
+                  onChange={(event) => handleCoordinateChange("weddingLatitude", event.target.value)}
+                  placeholder="40.4168"
+                  inputMode="decimal"
+                  autoComplete="off"
+                />
+              </div>
+              <div>
+                <label className="setup-label" htmlFor="weddingLongitude">
+                  Longitud (opcional)
+                </label>
+                <input
+                  id="weddingLongitude"
+                  className="setup-input"
+                  value={formData.weddingLongitude}
+                  onChange={(event) => handleCoordinateChange("weddingLongitude", event.target.value)}
+                  placeholder="-3.7038"
+                  inputMode="decimal"
+                  autoComplete="off"
+                />
+              </div>
+            </div>
 
             <div className="setup-background-panel">
               <div className="setup-background-panel__header">
                 <div>
                   <p className="setup-label setup-label--tight">Fondo de la portada</p>
                   <p className="setup-help setup-help--tight">
-                    {GOOGLE_MAPS_API_KEY
-                      ? "Elige una de las vistas sugeridas o sube tu propia imagen."
-                      : "Para ver las vistas de Google Maps necesitas VITE_GOOGLE_MAPS_API_KEY; mientras tanto, sube tu propia foto."}
+                    {isPreviewLoading
+                      ? "Generando vistas de OpenFreeMap..."
+                      : "Elige una de las vistas sugeridas de OpenFreeMap o sube tu propia imagen."}
                   </p>
                 </div>
                 {formData.backgroundImage ? (
@@ -830,6 +1317,8 @@ export default function App() {
                     </button>
                   ))}
                 </div>
+              ) : isPreviewLoading ? (
+                <p className="setup-help setup-help--tight">Buscando la ubicación y preparando las vistas.</p>
               ) : null}
             </div>
 
@@ -882,6 +1371,39 @@ export default function App() {
                 <p className="setup-help">Máximo permitido: {maxAllowedYear}</p>
               </div>
             </div>
+              <div className="setup-date-grid">
+                <div>
+                  <label className="setup-label" htmlFor="weddingHour">
+                    Hora
+                  </label>
+                  <input
+                    id="weddingHour"
+                    className="setup-input"
+                    value={formData.weddingHour}
+                    onChange={(event) => handleHourChange(event.target.value)}
+                    placeholder="14"
+                    inputMode="numeric"
+                    autoComplete="off"
+                  />
+                  <p className="setup-help">De 0 a 23</p>
+                </div>
+                <div>
+                  <label className="setup-label" htmlFor="weddingMinute">
+                    Minutos
+                  </label>
+                  <input
+                    id="weddingMinute"
+                    className="setup-input"
+                    value={formData.weddingMinute}
+                    onChange={(event) => handleMinuteChange(event.target.value)}
+                    onBlur={handleMinuteBlur}
+                    placeholder="30"
+                    inputMode="numeric"
+                    autoComplete="off"
+                  />
+                  <p className="setup-help">De 00 a 59</p>
+                </div>
+              </div>
 
             <div className="setup-actions">
               <button className="setup-button" type="submit">
@@ -1010,17 +1532,48 @@ export default function App() {
                   autoComplete="off"
                 />
                 <p className="setup-help">
-                  Si defines el lugar, podrás elegir una vista de Google Maps o subir una foto propia para usarla como fondo.
+                  Puedes escribir dirección y, si quieres máxima precisión, añadir coordenadas exactas.
                 </p>
+
+                <div className="setup-date-grid">
+                  <div>
+                    <label className="setup-label" htmlFor="adminWeddingLatitude">
+                      Latitud (opcional)
+                    </label>
+                    <input
+                      id="adminWeddingLatitude"
+                      className="setup-input"
+                      value={formData.weddingLatitude}
+                      onChange={(event) => handleCoordinateChange("weddingLatitude", event.target.value)}
+                      placeholder="40.4168"
+                      inputMode="decimal"
+                      autoComplete="off"
+                    />
+                  </div>
+                  <div>
+                    <label className="setup-label" htmlFor="adminWeddingLongitude">
+                      Longitud (opcional)
+                    </label>
+                    <input
+                      id="adminWeddingLongitude"
+                      className="setup-input"
+                      value={formData.weddingLongitude}
+                      onChange={(event) => handleCoordinateChange("weddingLongitude", event.target.value)}
+                      placeholder="-3.7038"
+                      inputMode="decimal"
+                      autoComplete="off"
+                    />
+                  </div>
+                </div>
 
                 <div className="setup-background-panel">
                   <div className="setup-background-panel__header">
                     <div>
                       <p className="setup-label setup-label--tight">Fondo de la portada</p>
                       <p className="setup-help setup-help--tight">
-                        {GOOGLE_MAPS_API_KEY
-                          ? "Elige una de las vistas sugeridas o sube tu propia imagen."
-                          : "Para ver las vistas de Google Maps necesitas VITE_GOOGLE_MAPS_API_KEY; mientras tanto, sube tu propia foto."}
+                        {isPreviewLoading
+                          ? "Generando vistas de OpenFreeMap..."
+                          : "Elige una de las vistas sugeridas de OpenFreeMap o sube tu propia imagen."}
                       </p>
                     </div>
                     {formData.backgroundImage ? (
@@ -1061,6 +1614,8 @@ export default function App() {
                         </button>
                       ))}
                     </div>
+                  ) : isPreviewLoading ? (
+                    <p className="setup-help setup-help--tight">Buscando la ubicación y preparando las vistas.</p>
                   ) : null}
                 </div>
 
@@ -1111,6 +1666,40 @@ export default function App() {
                       autoComplete="off"
                     />
                     <p className="setup-help">Máximo permitido: {maxAllowedYear}</p>
+                  </div>
+                </div>
+
+                <div className="setup-date-grid">
+                  <div>
+                    <label className="setup-label" htmlFor="adminWeddingHour">
+                      Hora
+                    </label>
+                    <input
+                      id="adminWeddingHour"
+                      className="setup-input"
+                      value={formData.weddingHour}
+                      onChange={(event) => handleHourChange(event.target.value)}
+                      placeholder="14"
+                      inputMode="numeric"
+                      autoComplete="off"
+                    />
+                    <p className="setup-help">De 0 a 23</p>
+                  </div>
+                  <div>
+                    <label className="setup-label" htmlFor="adminWeddingMinute">
+                      Minutos
+                    </label>
+                    <input
+                      id="adminWeddingMinute"
+                      className="setup-input"
+                      value={formData.weddingMinute}
+                      onChange={(event) => handleMinuteChange(event.target.value)}
+                      onBlur={handleMinuteBlur}
+                      placeholder="30"
+                      inputMode="numeric"
+                      autoComplete="off"
+                    />
+                    <p className="setup-help">De 00 a 59</p>
                   </div>
                 </div>
 
@@ -1186,15 +1775,6 @@ export default function App() {
 
             <div className="setup-actions">
               <button
-                className="setup-button"
-                type="button"
-                onClick={() => {
-                  window.location.hash = "#setup";
-                }}
-              >
-                Ir a la primera configuración
-              </button>
-              <button
                 className="setup-button setup-button--ghost"
                 type="button"
                 onClick={() => {
@@ -1264,15 +1844,62 @@ export default function App() {
         <div className="story-card story-panel story-card--details w-full max-w-[min(100%,40rem)] text-center">
           <p className="story-eyebrow">Fecha y lugar</p>
           <h2 className="story-title">{formattedDate || "Fecha por definir"}</h2>
-          {config.weddingPlace ? (
-            <p className="story-copy">{config.weddingPlace}</p>
+          {formattedTime ? <p className="story-copy">Hora de la celebración: {formattedTime}</p> : null}
+          {hasLocationData ? (
+            <p className="story-copy">{locationDescription}</p>
           ) : (
             <p className="story-copy">El lugar de la celebración aparecerá aquí.</p>
           )}
           <div className="story-divider" />
           <p className="story-note">
-            Aquí puedes incluir la dirección, referencias, horarios o un enlace al mapa.
+            {formattedTime
+              ? `Te esperamos para compartir este momento tan especial. Comenzamos a las ${formattedTime}. Más abajo encontrarás el mapa de ubicación.`
+              : "Te esperamos para compartir este momento tan especial. Más abajo encontrarás el mapa de ubicación."}
           </p>
+          {calendarLink ? (
+            <div className="story-calendar-actions">
+              <a
+                className="setup-button setup-button--ghost setup-button--compact"
+                href={calendarLink}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Añadir al calendario
+              </a>
+            </div>
+          ) : null}
+          {hasLocationData ? (
+            <div className="story-map">
+              <div
+                ref={locationMapContainerRef}
+                className="story-map__canvas"
+                aria-label={`Mapa de ${locationDescription || "la ubicacion"}`}
+              />
+              {locationMapLoading ? <p className="story-map__status">Cargando el mapa de OpenFreeMap...</p> : null}
+              {locationMapError ? <p className="story-map__status story-map__status--error">{locationMapError}</p> : null}
+              {locationMapTarget ? (
+                <div className="story-map__actions">
+                  <a
+                    className="setup-button setup-button--ghost setup-button--compact"
+                    href={buildGoogleMapsUrl(locationMapTarget)}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Abrir en Google Maps
+                  </a>
+                  <a
+                    className="setup-button setup-button--ghost setup-button--compact"
+                    href={buildAppleMapsUrl(locationMapTarget, config.weddingPlace)}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Abrir en Apple Maps
+                  </a>
+                </div>
+              ) : null}
+              <p className="story-map__caption">Mapa de ubicación</p>
+            </div>
+          ) : null}
         </div>
       </section>
 
