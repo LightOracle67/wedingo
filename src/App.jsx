@@ -4,9 +4,11 @@ import maplibregl from "maplibre-gl";
 import { useEffect, useMemo, useRef, useState } from "react";
 import "maplibre-gl/dist/maplibre-gl.css";
 
+// Claves de persistencia local para configuracion y respuestas RSVP.
 const APP_CONFIG_KEY = "weddingAppConfig";
 const APP_SETUP_TOKEN_KEY = "weddingSetupToken";
 const APP_RSVP_RESPONSES_KEY = "weddingRsvpResponses";
+// Estilos de OpenFreeMap usados para generar vistas previas del fondo.
 const OPENFREEMAP_STYLES = [
   {
     id: "liberty",
@@ -110,6 +112,7 @@ const THEME_GROUPS = [
 
 const STORY_SECTION_ORDER = ["hero", "details", "rsvp"];
 
+// Estado minimo de la invitacion cuando no existe configuracion guardada.
 const defaultConfig = {
   firstName: "",
   secondName: "",
@@ -151,6 +154,7 @@ const normalizeConfig = (value) => ({
     typeof value?.backgroundImageSource === "string" ? value.backgroundImageSource.trim() : "",
 });
 
+// Convierte una direccion en coordenadas usando Nominatim (OpenStreetMap).
 const geocodeLocation = async (place) => {
   if (!place) {
     return null;
@@ -188,6 +192,7 @@ const geocodeLocation = async (place) => {
   };
 };
 
+// Parseo tolerante de coordenadas para admitir coma o punto decimal.
 const parseCoordinate = (value) => {
   if (typeof value !== "string") {
     return null;
@@ -206,6 +211,7 @@ const parseCoordinate = (value) => {
   return parsedValue;
 };
 
+// Valida coordenadas geograficas en rangos reales de latitud y longitud.
 const getValidCoordinates = (latitudeValue, longitudeValue) => {
   const latitude = parseCoordinate(latitudeValue);
   const longitude = parseCoordinate(longitudeValue);
@@ -224,6 +230,7 @@ const getValidCoordinates = (latitudeValue, longitudeValue) => {
   };
 };
 
+// Prioriza coordenadas exactas del admin; si no existen, geocodifica direccion.
 const resolveLocationTarget = async ({ place, latitudeValue, longitudeValue }) => {
   const exactCoordinates = getValidCoordinates(latitudeValue, longitudeValue);
   if (exactCoordinates) {
@@ -236,6 +243,7 @@ const resolveLocationTarget = async ({ place, latitudeValue, longitudeValue }) =
   return geocodeLocation(place);
 };
 
+// Enlaces externos para abrir navegacion en apps de mapas.
 const buildGoogleMapsUrl = (location) =>
   `https://www.google.com/maps/search/?api=1&query=${location.latitude},${location.longitude}`;
 
@@ -249,6 +257,7 @@ const padDatePart = (value) => String(value).padStart(2, "0");
 const formatCalendarDateTime = (date) =>
   `${date.getFullYear()}${padDatePart(date.getMonth() + 1)}${padDatePart(date.getDate())}T${padDatePart(date.getHours())}${padDatePart(date.getMinutes())}00`;
 
+// Crea una URL prellenada de Google Calendar para evitar generar ficheros ICS.
 const buildGoogleCalendarUrl = ({ title, description, place, startDate, endDate }) => {
   const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone || "Europe/Madrid";
   const params = new URLSearchParams({
@@ -263,6 +272,7 @@ const buildGoogleCalendarUrl = ({ title, description, place, startDate, endDate 
   return `https://calendar.google.com/calendar/render?${params.toString()}`;
 };
 
+// Renderiza una imagen del mapa en memoria para usarla como preview de fondo.
 const buildOpenFreeMapPreviewUrl = async (location, style) => {
   if (!location || !style) {
     return "";
@@ -314,6 +324,7 @@ const buildOpenFreeMapPreviewUrl = async (location, style) => {
   }
 };
 
+// Genera un token legible de un solo uso para proteger el setup inicial.
 const generateSetupToken = () => {
   const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
   const bytes = new Uint8Array(16);
@@ -332,6 +343,7 @@ const generateSetupToken = () => {
 
 export default function App() {
   const maxAllowedYear = new Date().getFullYear() + 4;
+  // Estado persistido y estado de edicion temporal del formulario.
   const [config, setConfig] = useState(defaultConfig);
   const [formData, setFormData] = useState(defaultConfig);
   const [hasStoredConfig, setHasStoredConfig] = useState(false);
@@ -372,6 +384,7 @@ export default function App() {
 
   const isStoryTransitioning = storyTransition.toIndex !== null;
 
+  // Calcula estilos de entrada/salida para transiciones entre secciones.
   const getStorySectionStyle = (sectionKey) => {
     const sectionIndex = STORY_SECTION_ORDER.indexOf(sectionKey);
     const activeIndex = STORY_SECTION_ORDER.indexOf(activeStorySection);
@@ -431,6 +444,7 @@ export default function App() {
   };
 
   useEffect(() => {
+    // Hidrata configuracion guardada al arrancar la app.
     const storedConfig = localStorage.getItem(APP_CONFIG_KEY);
     if (!storedConfig) {
       return;
@@ -451,6 +465,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    // Recupera respuestas RSVP para el panel privado.
     const storedResponses = localStorage.getItem(APP_RSVP_RESPONSES_KEY);
     if (!storedResponses) {
       return;
@@ -467,6 +482,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    // Si no existe configuracion, prepara/recupera token temporal de setup.
     if (localStorage.getItem(APP_CONFIG_KEY)) {
       return;
     }
@@ -482,6 +498,7 @@ export default function App() {
   }, [hasStoredConfig]);
 
   useEffect(() => {
+    // Sincroniza rutas hash (#setup / #admin) con el estado React.
     const syncSetupRoute = () => {
       setIsSetupRoute(window.location.hash.toLowerCase() === "#setup");
     };
@@ -501,6 +518,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    // Redirecciona automaticamente cuando la ruta no coincide con el estado.
     if (hasStoredConfig && isSetupRoute) {
       window.location.hash = "#admin";
       return;
@@ -515,6 +533,7 @@ export default function App() {
   const shouldShowAdmin = hasStoredConfig && isAdminRoute;
 
   const refreshSetupToken = () => {
+    // Rota y persiste token temporal.
     const nextToken = generateSetupToken();
     localStorage.setItem(APP_SETUP_TOKEN_KEY, nextToken);
     setSetupToken(nextToken);
@@ -525,11 +544,13 @@ export default function App() {
   const isEditingInvitation = shouldShowSetup || shouldShowAdmin;
 
   useEffect(() => {
+    // Aplica tema activo al root para que CSS variable-driven cambie toda la UI.
     const activeTheme = isEditingInvitation ? formData.theme || config.theme : config.theme;
     document.documentElement.dataset.weddingTheme = activeTheme || "golden";
   }, [config.theme, formData.theme, isEditingInvitation]);
 
   useEffect(() => {
+    // Sincroniza imagen de fondo global (preview en setup/admin y real en portada).
     const activeBackground = isEditingInvitation ? formData.backgroundImage || config.backgroundImage : config.backgroundImage;
     const encodedBackground = activeBackground ? `url('${activeBackground.replace(/'/g, "\\'")}')` : "none";
     document.documentElement.style.setProperty(
@@ -547,6 +568,7 @@ export default function App() {
   }, [storyTransition]);
 
   useEffect(() => {
+    // Genera previews de mapas al editar lugar/coordenadas.
     const place = formData.weddingPlace.trim();
     const hasExactCoordinates = Boolean(getValidCoordinates(formData.weddingLatitude, formData.weddingLongitude));
     if (!place && !hasExactCoordinates) {
@@ -598,6 +620,7 @@ export default function App() {
   }, [formData.weddingPlace, formData.weddingLatitude, formData.weddingLongitude]);
 
   useEffect(() => {
+    // Renderiza el mapa real de la portada solo fuera de setup/admin.
     if (shouldShowSetup || shouldShowAdmin) {
       setLocationMapError("");
       setLocationMapLoading(false);
@@ -686,6 +709,7 @@ export default function App() {
   }, [config.weddingPlace, config.weddingLatitude, config.weddingLongitude, shouldShowAdmin, shouldShowSetup]);
 
   useEffect(() => {
+    // Habilita navegacion por scroll/teclado/touch entre secciones tipo storytelling.
     if (shouldShowSetup || shouldShowAdmin) {
       document.body.style.overflow = "";
       return undefined;
@@ -791,6 +815,7 @@ export default function App() {
   }, [shouldShowSetup, shouldShowAdmin]);
 
   const formattedDate = useMemo(() => {
+    // Presentacion de fecha legible en castellano.
     const day = config.weddingDay.trim();
     const month = config.weddingMonth.trim();
     const year = config.weddingYear.trim();
@@ -802,6 +827,7 @@ export default function App() {
   }, [config]);
 
   const formattedTime = useMemo(() => {
+    // Normaliza hora para visualizacion HH:MM.
     const hour = config.weddingHour.trim();
     const minute = config.weddingMinute.trim();
     if (!hour || !minute) {
@@ -812,6 +838,7 @@ export default function App() {
   }, [config.weddingHour, config.weddingMinute]);
 
   const calendarLink = useMemo(() => {
+    // Construye enlace de calendario solo cuando fecha/hora son validas.
     const day = Number.parseInt(config.weddingDay.trim(), 10);
     const month = MONTH_VALUE_TO_NUMBER[config.weddingMonth.trim()];
     const year = Number.parseInt(config.weddingYear.trim(), 10);
@@ -869,10 +896,12 @@ export default function App() {
   ]);
 
   const updateFormField = (field, value) => {
+    // Actualizacion generica de campos del formulario de configuracion.
     setFormData((current) => ({ ...current, [field]: value }));
   };
 
   const applyBackgroundImage = (backgroundImage, backgroundImageLabel, backgroundImageSource) => {
+    // Centraliza la seleccion de fondo para mantener metadatos consistentes.
     setFormData((current) => ({
       ...current,
       backgroundImage,
@@ -882,6 +911,7 @@ export default function App() {
   };
 
   const handleBackgroundUpload = (event) => {
+    // Convierte imagen local a base64 para guardarla en localStorage.
     const file = event.target.files?.[0];
     if (!file) {
       return;
@@ -908,6 +938,7 @@ export default function App() {
   };
 
   const handleDayChange = (value) => {
+    // Limita dia a 1..31 durante la escritura.
     const digits = value.replace(/[^0-9]/g, "").slice(0, 2);
     if (!digits) {
       updateFormField("weddingDay", "");
@@ -920,6 +951,7 @@ export default function App() {
   };
 
   const handleHourChange = (value) => {
+    // Limita hora a 0..23 durante la escritura.
     const digits = value.replace(/[^0-9]/g, "").slice(0, 2);
     if (!digits) {
       updateFormField("weddingHour", "");
@@ -932,6 +964,7 @@ export default function App() {
   };
 
   const handleMinuteChange = (value) => {
+    // Permite escribir minutos de forma natural y ajusta rango 0..59.
     const digits = value.replace(/[^0-9]/g, "").slice(0, 2);
     if (!digits) {
       updateFormField("weddingMinute", "");
@@ -949,6 +982,7 @@ export default function App() {
   };
 
   const handleMinuteBlur = () => {
+    // Al perder foco, completa formato de minutos a dos digitos.
     const digits = formData.weddingMinute.replace(/[^0-9]/g, "").slice(0, 2);
     if (!digits) {
       updateFormField("weddingMinute", "");
@@ -961,6 +995,7 @@ export default function App() {
   };
 
   const handleYearChange = (value) => {
+    // Restringe anio al maximo permitido para evitar fechas absurdas.
     const digits = value.replace(/[^0-9]/g, "").slice(0, 4);
     if (!digits) {
       updateFormField("weddingYear", "");
@@ -977,11 +1012,13 @@ export default function App() {
   };
 
   const handleCoordinateChange = (field, value) => {
+    // Sanitiza coordenadas admitiendo punto/menos y longitud controlada.
     const normalized = value.replace(/,/g, ".").replace(/[^0-9.-]/g, "");
     updateFormField(field, normalized.slice(0, 18));
   };
 
   const handleSaveSetup = (event) => {
+    // Valida y persiste toda la configuracion desde setup/admin.
     event.preventDefault();
     setSaveError("");
     setSaveMessage("");
@@ -1066,6 +1103,7 @@ export default function App() {
   };
 
   const handleRsvpSubmit = (event) => {
+    // Registra RSVP en localStorage y actualiza feedback al invitado.
     event.preventDefault();
 
     const guestName = rsvpForm.guestName.trim();
@@ -1099,10 +1137,12 @@ export default function App() {
   };
 
   const updateRsvpField = (field, value) => {
+    // Actualizacion generica de campos del formulario RSVP.
     setRsvpForm((current) => ({ ...current, [field]: value }));
   };
 
   const handleResetSetupToken = () => {
+    // Accion de regeneracion de token desde el setup inicial.
     setSaveMessage("");
     setSaveError("");
     setAdminMessage("");
@@ -1111,6 +1151,7 @@ export default function App() {
   };
 
   const handleResetTokenFromAdmin = () => {
+    // Accion de regeneracion de token desde el panel admin.
     setSaveMessage("");
     setSaveError("");
     setAdminMessage("");
@@ -1119,6 +1160,7 @@ export default function App() {
   };
 
   const handleClearRsvpEntries = () => {
+    // Limpia el historial RSVP para reiniciar confirmaciones.
     localStorage.removeItem(APP_RSVP_RESPONSES_KEY);
     setRsvpEntries([]);
     setAdminMessage("Se vació el registro de asistencia.");
