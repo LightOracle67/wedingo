@@ -44,6 +44,14 @@
   --theme-switcher-select-bg: rgba(255, 247, 225, 0.9);
   --theme-switcher-select-text: #3f3113;
   --theme-switcher-select-border: rgba(255, 225, 145, 0.52);
+  --wedding-decoration-left-transform: rotate(180deg) scale(1.02);
+  --wedding-decoration-right-transform: none;
+  --wedding-decoration-left-mobile-transform: translateY(0) rotate(180deg) scale(0.98);
+  --wedding-decoration-right-mobile-transform: none;
+  --wedding-decoration-left-filter: saturate(1.04) sepia(0.08) brightness(1.02);
+  --wedding-decoration-right-filter: saturate(1.04) sepia(0.08) brightness(1.02);
+  --wedding-decoration-left-opacity: 0.95;
+  --wedding-decoration-right-opacity: 0.95;
 }
 
 :root[data-wedding-theme="forest"] {
@@ -81,6 +89,14 @@
   --theme-switcher-select-bg: rgba(231, 252, 242, 0.9);
   --theme-switcher-select-text: #194638;
   --theme-switcher-select-border: rgba(133, 212, 179, 0.58);
+  --wedding-decoration-left-transform: rotate(180deg) scale(1.04);
+  --wedding-decoration-right-transform: scale(1.02);
+  --wedding-decoration-left-mobile-transform: translateY(0) rotate(180deg) scale(0.99);
+  --wedding-decoration-right-mobile-transform: scale(0.97);
+  --wedding-decoration-left-filter: hue-rotate(108deg) saturate(0.86) brightness(1.08);
+  --wedding-decoration-right-filter: hue-rotate(122deg) saturate(0.9) brightness(1.04);
+  --wedding-decoration-left-opacity: 0.96;
+  --wedding-decoration-right-opacity: 0.92;
 }
 
 :root[data-wedding-theme="rose"] {
@@ -118,6 +134,14 @@
   --theme-switcher-select-bg: rgba(255, 238, 247, 0.9);
   --theme-switcher-select-text: #65203c;
   --theme-switcher-select-border: rgba(248, 174, 206, 0.6);
+  --wedding-decoration-left-transform: rotate(180deg) scale(1.03);
+  --wedding-decoration-right-transform: scale(1.01);
+  --wedding-decoration-left-mobile-transform: translateY(0) rotate(180deg) scale(0.98);
+  --wedding-decoration-right-mobile-transform: scale(0.96);
+  --wedding-decoration-left-filter: hue-rotate(308deg) saturate(1.12) brightness(1.05);
+  --wedding-decoration-right-filter: hue-rotate(315deg) saturate(1.08) brightness(1.03);
+  --wedding-decoration-left-opacity: 0.95;
+  --wedding-decoration-right-opacity: 0.93;
 }
 
 :root[data-wedding-theme="amber-night"] {
@@ -155,6 +179,22 @@
   --theme-switcher-select-bg: rgba(255, 247, 221, 0.92);
   --theme-switcher-select-text: #4a3411;
   --theme-switcher-select-border: rgba(230, 193, 102, 0.6);
+  --wedding-decoration-left-transform: rotate(180deg) scale(1.08);
+  --wedding-decoration-right-transform: scale(1.05) rotate(1deg);
+  --wedding-decoration-left-mobile-transform: translateY(0) rotate(180deg) scale(1);
+  --wedding-decoration-right-mobile-transform: scale(0.98) rotate(1deg);
+  --wedding-decoration-left-filter: hue-rotate(18deg) saturate(1.08) brightness(1.06);
+  --wedding-decoration-right-filter: hue-rotate(26deg) saturate(1.12) brightness(1.03);
+  --wedding-decoration-left-opacity: 0.98;
+  --wedding-decoration-right-opacity: 0.94;
+  --wedding-decoration-left-transform: rotate(180deg) scale(1.07);
+  --wedding-decoration-right-transform: scale(1.03) rotate(-1deg);
+  --wedding-decoration-left-mobile-transform: translateY(0) rotate(180deg) scale(0.99);
+  --wedding-decoration-right-mobile-transform: scale(0.97) rotate(-1deg);
+  --wedding-decoration-left-filter: hue-rotate(10deg) saturate(1.16) brightness(1.06);
+  --wedding-decoration-right-filter: hue-rotate(22deg) saturate(1.12) brightness(1.03);
+  --wedding-decoration-left-opacity: 0.98;
+  --wedding-decoration-right-opacity: 0.95;
 }
 
 :root[data-wedding-theme="onyx-gold"] {
@@ -192,6 +232,14 @@
   --theme-switcher-select-bg: rgba(255, 248, 227, 0.92);
   --theme-switcher-select-text: #413218;
   --theme-switcher-select-border: rgba(206, 165, 67, 0.6);
+  --wedding-decoration-left-transform: rotate(180deg) scale(1.06);
+  --wedding-decoration-right-transform: scale(1.02) rotate(-1deg);
+  --wedding-decoration-left-mobile-transform: translateY(0) rotate(180deg) scale(0.98);
+  --wedding-decoration-right-mobile-transform: scale(0.96) rotate(-1deg);
+  --wedding-decoration-left-filter: hue-rotate(194deg) saturate(0.9) brightness(1.06);
+  --wedding-decoration-right-filter: hue-rotate(206deg) saturate(0.94) brightness(1.04);
+  --wedding-decoration-left-opacity: 0.97;
+  --wedding-decoration-right-opacity: 0.93;
 }
 
 :root[data-wedding-theme="linen-soft"] {
@@ -266,6 +314,14 @@
   --theme-switcher-select-bg: rgba(255, 248, 225, 0.94);
   --theme-switcher-select-text: #203158;
   --theme-switcher-select-border: rgba(224, 184, 75, 0.62);
+  --wedding-decoration-left-transform: rotate(180deg) scale(1.09);
+  --wedding-decoration-right-transform: scale(1.04) rotate(2deg);
+  --wedding-decoration-left-mobile-transform: translateY(0) rotate(180deg) scale(1);
+  --wedding-decoration-right-mobile-transform: scale(0.98) rotate(2deg);
+  --wedding-decoration-left-filter: hue-rotate(176deg) saturate(1.02) brightness(1.04);
+  --wedding-decoration-right-filter: hue-rotate(190deg) saturate(1.06) brightness(1.02);
+  --wedding-decoration-left-opacity: 0.98;
+  --wedding-decoration-right-opacity: 0.95;
 }
 
 body {
@@ -286,6 +342,7 @@ body {
   color: #f7f2e8;
   overflow-x: hidden;
   animation: body-fade-in 800ms ease-out both;
+  scroll-behavior: smooth;
   transition:
     color 280ms ease,
     background-color 280ms ease;
@@ -390,6 +447,214 @@ body::after {
   z-index: 1;
 }
 
+.app-scene {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+.app-scene--transitioning .story-panel {
+  filter: blur(4px) saturate(0.9);
+}
+
+.app-scene--transitioning .story-section--is-active .story-panel {
+  filter: blur(0) saturate(1);
+}
+
+.story-section {
+  position: absolute;
+  inset: 0;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background-color 520ms ease,
+    background-image 520ms ease;
+  pointer-events: none;
+}
+
+.story-section--hero {
+  overflow: hidden;
+}
+
+.story-section--details {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0));
+}
+
+.story-section--rsvp {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.06));
+}
+
+.story-card {
+  position: relative;
+  z-index: 1;
+  padding: clamp(1.2rem, 3vw, 2rem);
+  border-radius: 1.6rem;
+  border: 1px solid color-mix(in srgb, var(--invite-shell-border) 72%, transparent);
+  background: color-mix(in srgb, var(--invite-shell-bg) 74%, transparent);
+  box-shadow:
+    0 22px 60px color-mix(in srgb, var(--invite-shell-shadow) 92%, transparent),
+    0 0 30px color-mix(in srgb, var(--invite-shell-glow) 70%, transparent);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.story-card--details {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.story-card--rsvp {
+  display: grid;
+  gap: 1rem;
+}
+
+.story-panel {
+  transition:
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 700ms ease,
+    filter 700ms ease;
+}
+
+.story-section:not(.story-section--is-active) .story-panel {
+  opacity: 0;
+  transform: translateY(52px) scale(0.97);
+  filter: blur(6px) saturate(0.88);
+}
+
+.story-section--is-active .story-panel {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0) saturate(1);
+}
+
+.story-section--is-active {
+  z-index: 2;
+  pointer-events: auto;
+}
+
+.story-section:not(.story-section--is-active) {
+  z-index: 1;
+}
+
+.story-section--is-active .wedding-decoration__image,
+.story-section--is-active .invite-rings {
+  animation: subtle-float 5.4s ease-in-out infinite;
+}
+
+.story-section--details,
+.story-section--rsvp {
+  opacity: 0;
+  transform: translateY(26px) scale(0.985);
+}
+
+.story-section--details.story-section--is-active,
+.story-section--rsvp.story-section--is-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.story-section--details,
+.story-section--rsvp,
+.story-section--hero {
+  transition:
+    opacity 700ms ease,
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.story-eyebrow {
+  margin: 0;
+  font-family: var(--font-body);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.74rem;
+  color: var(--setup-accent);
+  font-weight: 700;
+}
+
+.story-title {
+  margin: 0;
+  color: var(--invite-title-color);
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.08;
+  text-shadow:
+    0 0 14px color-mix(in srgb, var(--invite-text-shadow) 72%, transparent),
+    0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.story-copy {
+  margin: 0;
+  color: var(--invite-copy-color);
+  font-size: clamp(1rem, 2.4vw, 1.2rem);
+  line-height: 1.55;
+  text-shadow:
+    0 0 12px color-mix(in srgb, var(--invite-text-shadow) 64%, transparent),
+    0 2px 3px rgba(0, 0, 0, 0.42);
+}
+
+.story-divider {
+  width: min(6rem, 30%);
+  height: 1px;
+  margin: 0.5rem auto 0;
+  background: color-mix(in srgb, var(--setup-accent) 72%, transparent);
+}
+
+.story-note {
+  margin: 0;
+  color: var(--setup-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.rsvp-form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.rsvp-form .setup-label {
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.rsvp-choice-grid {
+  margin-top: 0.15rem;
+}
+
+.rsvp-feedback {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border-radius: 0.9rem;
+  border: 1px solid color-mix(in srgb, var(--setup-accent) 34%, transparent);
+  background: color-mix(in srgb, var(--setup-field-bg) 84%, transparent);
+  color: var(--invite-title-color);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 640px) {
+  .story-title {
+    font-size: clamp(1.6rem, 7vw, 2.3rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .app-scene {
+    inset: 0;
+  }
+}
+
+@keyframes subtle-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
 h1,
 h2,
 h3,
@@ -400,6 +665,7 @@ h6 {
 }
 
 .wedding-decoration {
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -427,15 +693,15 @@ h6 {
   }
 
   .wedding-decoration--left {
-    left: -0.25rem;
+    left: -0.35rem;
     top: 18%;
-    transform: translateY(0) rotate(180deg);
+    transform: var(--wedding-decoration-left-mobile-transform, translateY(0) rotate(180deg));
   }
 
   .wedding-decoration--right {
-    right: -0.25rem;
-    bottom: -0.25rem;
-    transform: none;
+    right: -0.35rem;
+    bottom: -0.35rem;
+    transform: var(--wedding-decoration-right-mobile-transform, none);
   }
 }
 
@@ -451,17 +717,27 @@ h6 {
   width: 100%;
   height: auto;
   object-fit: contain;
-  opacity: 0.95;
+  opacity: var(--wedding-decoration-image-opacity, 0.95);
 }
 
 .wedding-decoration--left {
   top: 0;
-  left: -0.5rem;
-  transform: rotate(180deg);
+  left: -0.35rem;
+  transform: var(--wedding-decoration-left-transform, rotate(180deg));
 }
 
 .wedding-decoration--right {
-  transform: none;
+  transform: var(--wedding-decoration-right-transform, none);
+}
+
+.wedding-decoration--left .wedding-decoration__image {
+  filter: var(--wedding-decoration-left-filter, none);
+  opacity: var(--wedding-decoration-left-opacity, 0.95);
+}
+
+.wedding-decoration--right .wedding-decoration__image {
+  filter: var(--wedding-decoration-right-filter, none);
+  opacity: var(--wedding-decoration-right-opacity, 0.95);
 }
 
 .animate-card-reveal {
@@ -619,6 +895,28 @@ h6 {
   margin-top: 1.25rem;
   display: grid;
   gap: 0.75rem;
+}
+
+.setup-token-card {
+  display: grid;
+  gap: 0.45rem;
+  padding: 0.95rem 1rem;
+  border-radius: 1rem;
+  border: 1px solid color-mix(in srgb, var(--setup-accent) 42%, transparent);
+  background: color-mix(in srgb, var(--setup-field-bg) 78%, transparent);
+}
+
+.setup-token-input {
+  letter-spacing: 0.14em;
+  font-weight: 700;
+}
+
+.setup-token-display {
+  margin: 0;
+  color: var(--setup-muted);
+  font-size: 0.86rem;
+  line-height: 1.35;
+  word-break: break-all;
 }
 
 .setup-name-group {
