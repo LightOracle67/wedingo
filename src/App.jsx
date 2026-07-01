@@ -1258,11 +1258,16 @@ export default function App() {
 
   const handleResetTokenFromAdmin = () => {
     // Accion de regeneracion de token desde el panel admin.
+    const shouldResetToken = window.confirm("¿Quieres restablecer el token automático de setup? El token actual dejará de ser válido.");
+    if (!shouldResetToken) {
+      return;
+    }
+
     setSaveMessage("");
     setSaveError("");
     setAdminMessage("");
     const nextToken = refreshSetupToken();
-    setAdminMessage(`Se generó una nueva contraseña de un solo uso: ${nextToken}`);
+    setAdminMessage(`Token restablecido correctamente. Nuevo token de un solo uso: ${nextToken}`);
   };
 
   const handleClearRsvpEntries = async () => {
@@ -2099,7 +2104,7 @@ export default function App() {
               <div className="setup-collapsible__content">
                 <section className="setup-token-card" aria-label="Cuenta">
                   <p className="setup-help setup-help--tight">
-                    Usa este bloque para regenerar el código de acceso temporal que protege la primera configuración.
+                    Usa este bloque para restablecer el token automático que protege la primera configuración.
                   </p>
                   <input
                     className="setup-input setup-token-input"
@@ -2112,7 +2117,7 @@ export default function App() {
                   {setupToken ? <p className="setup-token-display">Token activo en esta sesión.</p> : null}
                   <div className="setup-actions">
                     <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleResetTokenFromAdmin}>
-                      Generar nuevo código
+                      Restablecer token automático
                     </button>
                     <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleAdminLogout}>
                       Cerrar sesión
