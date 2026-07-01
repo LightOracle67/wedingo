@@ -410,6 +410,9 @@ export default function App() {
   const [saveError, setSaveError] = useState("");
   const [setupToken, setSetupToken] = useState("");
   const [setupTokenInput, setSetupTokenInput] = useState("");
+  const [isTokenVerifying, setIsTokenVerifying] = useState(false);
+  const [isTokenVerified, setIsTokenVerified] = useState(false);
+  const [tokenLoginEmail, setTokenLoginEmail] = useState("");
   const [adminMessage, setAdminMessage] = useState("");
   const [authMessage, setAuthMessage] = useState("");
   const [authMessageType, setAuthMessageType] = useState("error");
@@ -590,12 +593,19 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    // Si no existe configuracion, prepara token temporal de setup.
+    if (isTokenVerified && !hasStoredConfig && tokenLoginEmail) {
+      setFormData((current) => ({ ...current, adminLoginEmail: tokenLoginEmail }));
+    }
+  }, [isTokenVerified, tokenLoginEmail, hasStoredConfig]);
+
+  useEffect(() => {
     if (hasStoredConfig) {
       return;
     }
 
-    refreshSetupToken();
+    (async () => {
+      await refreshSetupToken();
+    })();
   }, [hasStoredConfig]);
 
   useEffect(() => {
@@ -633,11 +643,21 @@ export default function App() {
   const shouldShowSetup = !hasStoredConfig;
   const shouldShowAdmin = hasStoredConfig && isAdminRoute && isAdminAllowed;
 
-  const refreshSetupToken = () => {
-    // Rota y persiste token temporal.
+  const refreshSetupToken = async () => {
     const nextToken = generateSetupToken();
-    setSetupToken(nextToken);
-    setSetupTokenInput(nextToken);
+    const normalizedToken = normalizeTokenValue(nextToken);
+    setSetupToken(normalizedToken);
+    setSetupTokenInput(normalizedToken);
+
+    try {
+      await setDoc(doc(db, "setupTokens", normalizedToken), {
+        used: false,
+        createdAt: serverTimestamp(),
+      });
+    } catch {
+      // Firestore write failed; token still works in memory for this session
+    }
+
     return nextToken;
   };
 
@@ -1132,16 +1152,13 @@ export default function App() {
   };
 
   const handleSaveSetup = async (event) => {
-    // Valida y persiste toda la configuracion desde setup/admin.
     event.preventDefault();
     setSaveError("");
     setSaveMessage("");
 
     if (!hasStoredConfig) {
-      const enteredToken = normalizeTokenValue(setupTokenInput);
-      const expectedToken = normalizeTokenValue(setupToken);
-      if (!expectedToken || enteredToken !== expectedToken) {
-        setSaveError("El token de setup no coincide. Copia el token actual o restablécelo.");
+      if (!isTokenVerified) {
+        setSaveError("Verifica el código de acceso antes de guardar.");
         return;
       }
     }
@@ -1287,8 +1304,7 @@ export default function App() {
     setRsvpForm((current) => ({ ...current, [field]: value }));
   };
 
-  const handleResetSetupToken = () => {
-    // Accion de regeneracion de token desde el setup inicial.
+  const handleResetSetupToken = async () => {
     const shouldResetToken = window.confirm("¿Quieres restablecer el token automático de setup? El token actual dejará de ser válido.");
     if (!shouldResetToken) {
       return;
@@ -1297,11 +1313,11 @@ export default function App() {
     setSaveMessage("");
     setSaveError("");
     setAdminMessage("");
-    refreshSetupToken();
+    await refreshSetupToken();
     setSaveMessage("Token restablecido correctamente. Copia el código del campo superior antes de guardar.");
   };
 
-  const handleResetTokenFromAdmin = () => {
+  const handleResetTokenFromAdmin = async () => {
     const shouldResetToken = window.confirm("¿Quieres restablecer el token automático de setup? El token actual dejará de ser válido.");
     if (!shouldResetToken) {
       return;
@@ -1310,11 +1326,11 @@ export default function App() {
     setSaveMessage("");
     setSaveError("");
     setAdminMessage("");
-    refreshSetupToken();
+    await refreshSetupToken();
     setAdminMessage("Token de setup restablecido. Este cambio no modifica la contraseña de Firebase.");
   };
 
-  const handleResetTokenFromLogin = () => {
+  const handleResetTokenFromLogin = async () => {
     const shouldResetToken = window.confirm("¿Quieres restablecer el token automático de setup? El token actual dejará de ser válido.");
     if (!shouldResetToken) {
       return;
@@ -1323,7 +1339,7 @@ export default function App() {
     setSaveMessage("");
     setSaveError("");
     setAdminMessage("");
-    refreshSetupToken();
+    await refreshSetupToken();
     setAuthMessageType("success");
     setAuthMessage("Token de setup restablecido. Este cambio no modifica la contraseña de Firebase.");
   };
@@ -1337,6 +1353,53 @@ export default function App() {
       setAdminMessage("Se vació el registro de asistencia.");
     } catch {
       setAdminMessage("No se pudo vaciar el registro de asistencia.");
+    }
+  };
+
+  const handleTokenLogin = async () => {
+    setAuthMessageType("error");
+    setAuthMessage("");
+
+    const email = tokenLoginEmail.trim().toLowerCase();
+    const enteredToken = normalizeTokenValue(setupTokenInput);
+    if (!email || !enteredToken) {
+      setAuthMessage("Escribe tu email y el código de acceso.");
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setAuthMessage("Escribe un email válido.");
+      return;
+    }
+
+    setIsTokenVerifying(true);
+    try {
+      const tokenDocRef = doc(db, "setupTokens", enteredToken);
+      const tokenDoc = await getDoc(tokenDocRef);
+
+      if (!tokenDoc.exists || tokenDoc.data().used === true) {
+        setAuthMessage("Código de acceso no válido o ya ha sido usado.");
+        setIsTokenVerifying(false);
+        return;
+      }
+
+      await setDoc(tokenDocRef, {
+        used: true,
+        email,
+        createdAt: tokenDoc.data().createdAt,
+        usedAt: serverTimestamp(),
+      });
+
+      setTokenLoginEmail(email);
+      setSetupToken("");
+      setSetupTokenInput("");
+      setIsTokenVerified(true);
+      setAuthMessageType("success");
+      setAuthMessage("Código verificado correctamente.");
+    } catch {
+      setAuthMessage("No se pudo verificar el código. Inténtalo de nuevo.");
+    } finally {
+      setIsTokenVerifying(false);
     }
   };
 
@@ -1435,7 +1498,68 @@ export default function App() {
     window.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowDown" }));
   };
 
-  if (shouldShowSetup) {
+  if (shouldShowSetup && !isTokenVerified) {
+    return (
+      <div className="setup-layout">
+        <section className="setup-card allow-select" aria-label="Acceso con código">
+          <header className="setup-header">
+            <div>
+              <p className="setup-eyebrow">Configuración inicial</p>
+              <h1 className="setup-title">Accede con tu código</h1>
+              <p className="setup-subtitle">
+                Introduce el email y el código de acceso que se generó al abrir la página por primera vez.
+              </p>
+            </div>
+          </header>
+
+          <div className="setup-form">
+            <div className="setup-token-card">
+              <label className="setup-label" htmlFor="tokenLoginEmail">
+                Email
+              </label>
+              <input
+                id="tokenLoginEmail"
+                className="setup-input"
+                type="email"
+                value={tokenLoginEmail}
+                onChange={(event) => setTokenLoginEmail(event.target.value.toLowerCase().slice(0, 120))}
+                placeholder="admin@ejemplo.com"
+                autoComplete="email"
+              />
+
+              <label className="setup-label" htmlFor="tokenLoginCode">
+                Código de acceso
+              </label>
+              <p className="setup-help setup-help--tight">
+                Cópialo exactamente como se muestra. Si no lo tienes, restablécelo.
+              </p>
+              <input
+                id="tokenLoginCode"
+                className="setup-input setup-token-input"
+                value={setupTokenInput}
+                onChange={(event) => setSetupTokenInput(event.target.value.toUpperCase())}
+                placeholder="AAAA-BBBB-CCCC-DDDD"
+                maxLength={19}
+                autoComplete="off"
+                spellCheck="false"
+              />
+              {setupToken ? <p className="setup-token-display">Token activo (visible solo para ti).</p> : null}
+              <button className="setup-button" type="button" onClick={handleTokenLogin} disabled={isTokenVerifying}>
+                {isTokenVerifying ? "Verificando..." : "Entrar con código"}
+              </button>
+              <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleResetSetupToken}>
+                Restablecer código automático
+              </button>
+            </div>
+
+            {authMessage ? <p className={authMessageType === "success" ? "setup-success" : "setup-error"}>{authMessage}</p> : null}
+          </div>
+        </section>
+      </div>
+    );
+  }
+
+  if (shouldShowSetup && isTokenVerified) {
     return (
       <div className="setup-layout">
         <section className="setup-card allow-select" aria-label="Configuración inicial">
@@ -1444,49 +1568,12 @@ export default function App() {
               <p className="setup-eyebrow">Configuración inicial</p>
               <h1 className="setup-title">Preparamos tu invitación</h1>
               <p className="setup-subtitle">
-                Completa estos campos para ver la portada lista al instante.
+                Email verificado. Completa los datos de la invitación.
               </p>
             </div>
           </header>
 
           <form className="setup-form" onSubmit={handleSaveSetup}>
-            {!hasStoredConfig ? (
-              <div className="setup-token-card">
-                <label className="setup-label setup-label--tight" htmlFor="setupAdminEmail">
-                  Email de acceso
-                </label>
-                <p className="setup-help setup-help--tight">
-                  Será el correo usado para autenticación en el área privada.
-                </p>
-                <input
-                  id="setupAdminEmail"
-                  className="setup-input"
-                  type="email"
-                  value={formData.adminLoginEmail}
-                  onChange={(event) => updateFormField("adminLoginEmail", event.target.value.toLowerCase().slice(0, 120))}
-                  placeholder="admin@ejemplo.com"
-                  autoComplete="email"
-                />
-                <p className="setup-label setup-label--tight">Código de acceso temporal</p>
-                <p className="setup-help setup-help--tight">
-                  Esta será la contraseña (token) para entrar en administración. Si crees que se filtró,
-                  restablécelo antes de guardar.
-                </p>
-                <input
-                  className="setup-input setup-token-input"
-                  value={setupTokenInput}
-                  onChange={(event) => setSetupTokenInput(event.target.value.toUpperCase())}
-                  placeholder="AAAA-BBBB-CCCC-DDDD"
-                  maxLength={19}
-                  autoComplete="off"
-                  spellCheck="false"
-                />
-                {setupToken ? <p className="setup-token-display">Token activo (visible solo para ti).</p> : null}
-                <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleResetSetupToken}>
-                  Restablecer token automático
-                </button>
-              </div>
-            ) : null}
 
             <fieldset className="setup-name-group">
               <legend className="setup-label">Nombres</legend>

@@ -53,6 +53,19 @@ service cloud.firestore {
       allow delete: if false;
     }
 
+    match /setupTokens/{tokenId} {
+      allow create: if !exists(/databases/$(database)/documents/setupTokens/$(tokenId))
+        && request.resource.data.keys().hasOnly(['used', 'createdAt'])
+        && request.resource.data.used == false;
+      allow read: if resource.data.used == false;
+      allow update: if resource.data.used == false
+        && request.resource.data.used == true
+        && request.resource.data.keys().hasAll(['used', 'email', 'createdAt', 'usedAt'])
+        && request.resource.data.email is string
+        && isValidEmail(request.resource.data.email);
+      allow delete: if false;
+    }
+
     match /publicConfig/invitation {
       allow read: if true;
       allow create: if isAdmin()
