@@ -22,22 +22,53 @@ const MONTH_OPTIONS = [
 const THEME_OPTIONS = [
   {
     value: "golden",
-    label: "Dorado clasico",
-    hint: "Elegante y luminoso con acentos dorados.",
+    label: "Dorado clásico",
+    hint: "Elegante y luminoso, con acentos dorados.",
+    group: "claros",
   },
   {
     value: "forest",
     label: "Eucalipto fresco",
     hint: "Natural y sobrio con verdes suaves.",
+    group: "claros",
   },
   {
     value: "rose",
-    label: "Romantico rosado",
-    hint: "Calido y delicado con matices rosados.",
+    label: "Romántico rosado",
+    hint: "Cálido y delicado, con matices rosados.",
+    group: "claros",
+  },
+  {
+    value: "linen-soft",
+    label: "Lino suave",
+    hint: "Claro y neutro, con una presencia serena y atemporal.",
+    group: "claros",
+  },
+  {
+    value: "amber-night",
+    label: "Noche ámbar",
+    hint: "Oscuro y elegante, con destellos ámbar y dorados.",
+    group: "oscuros",
+  },
+  {
+    value: "onyx-gold",
+    label: "Ónix dorado",
+    hint: "Profundo y sofisticado, con oro intenso sobre fondo oscuro.",
+    group: "oscuros",
+  },
+  {
+    value: "midnight-royal",
+    label: "Medianoche real",
+    hint: "Azul muy oscuro con dorado intenso y presencia solemne.",
+    group: "oscuros",
   },
 ];
 
 const THEME_VALUES = new Set(THEME_OPTIONS.map((theme) => theme.value));
+const THEME_GROUPS = [
+  { value: "claros", label: "Temas claros" },
+  { value: "oscuros", label: "Temas oscuros" },
+];
 
 const BACKGROUND_PREVIEW_OPTIONS = [
   {
@@ -48,14 +79,14 @@ const BACKGROUND_PREVIEW_OPTIONS = [
   },
   {
     id: "satellite",
-    label: "Satelite",
-    description: "Vista mas visual con imagen real del entorno.",
+    label: "Satélite",
+    description: "Vista más visual con imagen real del entorno.",
     mapType: "satellite",
   },
   {
     id: "terrain",
     label: "Terreno",
-    description: "Una lectura mas suave del paisaje y accesos.",
+    description: "Una lectura más suave del paisaje y accesos.",
     mapType: "terrain",
   },
 ];
@@ -281,7 +312,7 @@ export default function App() {
 
     const parsedYear = Number.parseInt(sanitized.weddingYear, 10);
     if (Number.isNaN(parsedYear) || parsedYear > maxAllowedYear) {
-      setSaveError(`El ano no puede ser mayor a ${maxAllowedYear}.`);
+      setSaveError(`El año no puede ser mayor a ${maxAllowedYear}.`);
       return;
     }
 
@@ -294,47 +325,46 @@ export default function App() {
     setConfig(payload);
     setFormData(payload);
     setHasStoredConfig(true);
-    setSaveMessage("Configuracion guardada correctamente.");
+    setSaveMessage("Configuración guardada correctamente.");
   };
 
   if (shouldShowSetup) {
     return (
       <div className="setup-layout">
-        <section className="setup-card allow-select" aria-label="Configuracion inicial">
+        <section className="setup-card allow-select" aria-label="Configuración inicial">
           <header className="setup-header">
             <div>
-              <p className="setup-eyebrow">Configuracion inicial</p>
-              <h1 className="setup-title">Hagamos que tu invitacion sea unica</h1>
+              <p className="setup-eyebrow">Configuración inicial</p>
+              <h1 className="setup-title">Hagamos que tu invitación sea única</h1>
               <p className="setup-subtitle">
-                Completa estos campos y veras la portada lista al instante.
+                Completa estos campos y verás la portada lista al instante.
               </p>
             </div>
           </header>
 
           <form className="setup-form" onSubmit={handleSaveSetup}>
-            <label className="setup-label" htmlFor="firstName">
-              Primer nombre
-            </label>
-            <input
-              id="firstName"
-              className="setup-input"
-              value={formData.firstName}
-              onChange={(event) => updateFormField("firstName", event.target.value.slice(0, 20))}
-              placeholder="Antonio"
-              autoComplete="off"
-            />
+            <fieldset className="setup-name-group">
+              <legend className="setup-label">Nombres</legend>
+              <div className="setup-name-grid">
+                <input
+                  id="firstName"
+                  className="setup-input"
+                  value={formData.firstName}
+                  onChange={(event) => updateFormField("firstName", event.target.value.slice(0, 20))}
+                  placeholder="Antonio"
+                  autoComplete="off"
+                />
 
-            <label className="setup-label" htmlFor="secondName">
-              Segundo nombre
-            </label>
-            <input
-              id="secondName"
-              className="setup-input"
-              value={formData.secondName}
-              onChange={(event) => updateFormField("secondName", event.target.value.slice(0, 20))}
-              placeholder="Jose"
-              autoComplete="off"
-            />
+                <input
+                  id="secondName"
+                  className="setup-input"
+                  value={formData.secondName}
+                  onChange={(event) => updateFormField("secondName", event.target.value.slice(0, 20))}
+                  placeholder="José"
+                  autoComplete="off"
+                />
+              </div>
+            </fieldset>
 
             <label className="setup-label" htmlFor="inviteMessage">
               Mensaje principal
@@ -344,7 +374,7 @@ export default function App() {
               className="setup-textarea"
               value={formData.inviteMessage}
               onChange={(event) => updateFormField("inviteMessage", event.target.value.slice(0, 220))}
-              placeholder="Nos encantaria celebrar este dia contigo."
+              placeholder="Nos encantaría celebrar este día contigo."
             />
 
             <label className="setup-label" htmlFor="themeSelect">
@@ -356,10 +386,14 @@ export default function App() {
               value={formData.theme}
               onChange={(event) => updateFormField("theme", event.target.value)}
             >
-              {THEME_OPTIONS.map((theme) => (
-                <option key={theme.value} value={theme.value}>
-                  {theme.label}
-                </option>
+              {THEME_GROUPS.map((group) => (
+                <optgroup key={group.value} label={group.label}>
+                  {THEME_OPTIONS.filter((theme) => theme.group === group.value).map((theme) => (
+                    <option key={theme.value} value={theme.value}>
+                      {theme.label}
+                    </option>
+                  ))}
+                </optgroup>
               ))}
             </select>
             <p className="setup-help">{THEME_OPTIONS.find((theme) => theme.value === formData.theme)?.hint}</p>
@@ -372,33 +406,33 @@ export default function App() {
               className="setup-input"
               value={formData.weddingPlace}
               onChange={(event) => updateFormField("weddingPlace", event.target.value.slice(0, 120))}
-              placeholder="Finca, hotel, parroquia o direccion"
+              placeholder="Finca, hotel, parroquia o dirección"
               autoComplete="off"
             />
             <p className="setup-help">
-              Si defines el lugar, puedes elegir una vista de Google Maps o subir una foto propia para usarla de fondo.
+              Si defines el lugar, puedes elegir una vista de Google Maps o subir una foto propia para usarla como fondo.
             </p>
 
             <div className="setup-background-panel">
               <div className="setup-background-panel__header">
                 <div>
-                  <p className="setup-label setup-label--tight">Fondo de portada</p>
+                  <p className="setup-label setup-label--tight">Fondo de la portada</p>
                   <p className="setup-help setup-help--tight">
                     {GOOGLE_MAPS_API_KEY
                       ? "Elige una de las vistas sugeridas o sube tu propia imagen."
-                      : "Para ver las vistas de Google Maps necesitas VITE_GOOGLE_MAPS_API_KEY; mientras tanto, sube tu foto."}
+                      : "Para ver las vistas de Google Maps necesitas VITE_GOOGLE_MAPS_API_KEY; mientras tanto, sube tu propia foto."}
                   </p>
                 </div>
                 {formData.backgroundImage ? (
                   <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleClearBackground}>
-                    Quitar fondo
+                    Quitar el fondo
                   </button>
                 ) : null}
               </div>
 
               <label className="setup-upload" htmlFor="backgroundUpload">
                 <span className="setup-upload__title">Subir foto del lugar</span>
-                <span className="setup-upload__subtitle">Acepta JPG, PNG o WebP</span>
+                <span className="setup-upload__subtitle">Acepta JPG, PNG o WebP.</span>
               </label>
               <input id="backgroundUpload" className="setup-upload__input" type="file" accept="image/*" onChange={handleBackgroundUpload} />
 
@@ -433,7 +467,7 @@ export default function App() {
             <div className="setup-date-grid">
               <div>
                 <label className="setup-label" htmlFor="weddingDay">
-                  Dia
+                  Día
                 </label>
                 <input
                   id="weddingDay"
@@ -466,7 +500,7 @@ export default function App() {
               </div>
               <div>
                 <label className="setup-label" htmlFor="weddingYear">
-                  Ano
+                  Año
                 </label>
                 <input
                   id="weddingYear"
@@ -476,7 +510,7 @@ export default function App() {
                   placeholder="2027"
                   autoComplete="off"
                 />
-                <p className="setup-help">Maximo permitido: {maxAllowedYear}</p>
+                <p className="setup-help">Máximo permitido: {maxAllowedYear}</p>
               </div>
             </div>
 
@@ -491,7 +525,7 @@ export default function App() {
                   window.location.hash = "";
                 }}
               >
-                Ir a la invitacion
+                Ir a la invitación
               </button>
             </div>
           </form>
@@ -499,7 +533,7 @@ export default function App() {
           {saveMessage ? <p className="setup-success">{saveMessage}</p> : null}
           {saveError ? <p className="setup-error">{saveError}</p> : null}
           <p className="setup-help">
-            Puedes volver cuando quieras entrando a <strong>#setup</strong> en la URL.
+            Puedes volver cuando quieras escribiendo <strong>#setup</strong> en la URL.
           </p>
         </section>
       </div>
@@ -511,46 +545,44 @@ export default function App() {
       <div className="pointer-events-none absolute left-[-0.5rem] top-0 z-0 wedding-decoration wedding-decoration--left">
         <img
           src={eucalyptusSrc}
-          alt="Eucalyptus branch decoration"
+          alt="Decoración de rama de eucalipto"
           className="wedding-decoration__image"
         />
       </div>
       <div className="pointer-events-none absolute right-[-0.5rem] bottom-[-0.5rem] z-0 wedding-decoration wedding-decoration--right">
         <img
           src={eucalyptusSrc}
-          alt="Eucalyptus branch decoration"
+          alt="Decoración de rama de eucalipto"
           className="wedding-decoration__image"
         />
       </div>
 
       <div className="invite-shell relative z-10 mx-auto w-full max-w-[min(100%,38rem)] overflow-hidden rounded-[2rem] bg-transparent px-3 py-5 text-center shadow-2xl sm:px-6 sm:py-8 lg:px-8 lg:py-10">
-        <div className="invite-core relative z-20 mx-auto w-full max-w-[32rem] overflow-hidden rounded-[1.5rem] bg-transparent px-2 py-3 sm:px-4 sm:py-5">
-          <div className="relative z-20">
-            <div className="relative mx-auto w-fit">
-              <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-[42%]">
-                <img
-                  src={heroBackdropSrc}
-                  alt=""
-                  aria-hidden="true"
-                  className="invite-rings block h-auto w-[clamp(11rem,44vw,18rem)] object-contain object-center sm:w-[clamp(13rem,34vw,20rem)]"
-                />
-              </div>
-              <h1 className="invite-title relative z-10 text-[clamp(2rem,7vw,4.5rem)] leading-tight font-serif text-boda-texto sm:text-[clamp(2.5rem,6vw,4.75rem)] lg:text-[clamp(3rem,5vw,5.5rem)]">
-                {config.firstName} & {config.secondName}
-              </h1>
+        <div className="relative z-20">
+          <div className="relative mx-auto w-fit">
+            <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-[42%]">
+              <img
+                src={heroBackdropSrc}
+                alt=""
+                aria-hidden="true"
+                className="invite-rings block h-auto w-[clamp(11rem,44vw,18rem)] object-contain object-center sm:w-[clamp(13rem,34vw,20rem)]"
+              />
             </div>
-            <p className="invite-copy mt-3 text-[clamp(0.95rem,2.8vw,1.25rem)] leading-relaxed font-serif text-boda-texto sm:mt-4 sm:text-[clamp(1rem,2.5vw,1.35rem)]">
-              {config.inviteMessage}
-            </p>
-            <p className="invite-copy mt-2 text-[clamp(0.95rem,2.8vw,1.2rem)] leading-relaxed font-serif text-boda-texto sm:mt-3 sm:text-[clamp(1rem,2.4vw,1.3rem)]">
-              {formattedDate}
-            </p>
-            {config.weddingPlace ? (
-              <p className="invite-place mt-3 text-[0.88rem] uppercase tracking-[0.22em] text-boda-texto sm:mt-4">
-                {config.weddingPlace}
-              </p>
-            ) : null}
+            <h1 className="invite-title relative z-10 text-[clamp(2rem,7vw,4.5rem)] leading-tight font-serif text-boda-texto sm:text-[clamp(2.5rem,6vw,4.75rem)] lg:text-[clamp(3rem,5vw,5.5rem)]">
+              {config.firstName} & {config.secondName}
+            </h1>
           </div>
+          <p className="invite-copy mt-3 text-[clamp(0.95rem,2.8vw,1.25rem)] leading-relaxed font-serif text-boda-texto sm:mt-4 sm:text-[clamp(1rem,2.5vw,1.35rem)]">
+            {config.inviteMessage}
+          </p>
+          <p className="invite-copy mt-2 text-[clamp(0.95rem,2.8vw,1.2rem)] leading-relaxed font-serif text-boda-texto sm:mt-3 sm:text-[clamp(1rem,2.4vw,1.3rem)]">
+            {formattedDate}
+          </p>
+          {config.weddingPlace ? (
+            <p className="invite-place mt-3 text-[0.88rem] uppercase tracking-[0.22em] text-boda-texto sm:mt-4">
+              {config.weddingPlace}
+            </p>
+          ) : null}
         </div>
       </div>
     </div>
