@@ -5,6 +5,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
+/* Variables base del tema por defecto (dorado clasico). */
 :root {
   --font-heading: "Great Vibes", cursive;
   --font-body: "Cormorant Garamond", serif;
@@ -54,6 +55,7 @@
   --wedding-decoration-right-opacity: 0.95;
 }
 
+/* Variantes de tema aplicadas via data attribute en <html>. */
 :root[data-wedding-theme="forest"] {
   --font-heading: "Marcellus", serif;
   --font-body: "Quicksand", sans-serif;
@@ -278,6 +280,8 @@
   --theme-switcher-select-text: #4b3a26;
   --theme-switcher-select-border: rgba(220, 205, 183, 0.6);
 }
+
+/* Componentes de la seccion de detalles: calendario y mapa. */
 
 :root[data-wedding-theme="midnight-royal"] {
   --font-heading: "Cinzel", serif;
@@ -681,6 +685,8 @@ body::after {
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
+
+/* Seccion RSVP y elementos de formulario compartidos. */
 
 .rsvp-form {
   display: grid;
