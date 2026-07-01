@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./index.css";
 
-// Punto de entrada de la SPA: monta la invitacion en el nodo raiz.
 ReactDOM.createRoot(document.getElementById("root")).render(
-  // StrictMode ayuda a detectar efectos secundarios durante el desarrollo.
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>,
 );

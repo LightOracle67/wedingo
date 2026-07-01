@@ -273,6 +273,325 @@
   --theme-switcher-select-border: rgba(220, 205, 183, 0.6);
 }
 
+/* Temas claros adicionales */
+
+:root[data-wedding-theme="blush-pearl"] {
+  --font-heading: "Cinzel", serif;
+  --font-body: "Cormorant Garamond", serif;
+  --page-wash: rgba(255, 235, 242, 0.2);
+  --page-blur-offset: 0.1px;
+  --spark-1: rgba(255, 204, 221, 0.22);
+  --spark-2: rgba(242, 166, 196, 0.16);
+  --spark-size-1: 270px 270px;
+  --spark-size-2: 320px 320px;
+  --spark-opacity: 0.6;
+  --setup-grad-start: rgba(62, 28, 40, 0.92);
+  --setup-grad-end: rgba(108, 52, 72, 0.82);
+  --setup-border: rgba(255, 207, 220, 0.36);
+  --setup-accent: #e8a0b4;
+  --setup-accent-text: #3a1a26;
+  --setup-field-bg: rgba(26, 10, 16, 0.38);
+  --setup-field-border: rgba(250, 214, 228, 0.28);
+  --setup-title: #fff5f8;
+  --setup-subtitle: rgba(255, 228, 238, 0.84);
+  --setup-muted: rgba(250, 214, 229, 0.72);
+  --invite-shell-bg: rgba(255, 238, 245, 0.44);
+  --invite-shell-border: rgba(245, 197, 216, 0.38);
+  --invite-shell-shadow: rgba(98, 38, 58, 0.32);
+  --invite-shell-glow: rgba(255, 176, 207, 0.22);
+  --invite-core-border: rgba(255, 210, 229, 0.66);
+  --invite-core-glow: rgba(242, 139, 180, 0.2);
+  --invite-title-color: #fff0f5;
+  --invite-copy-color: #fde8ef;
+  --invite-text-shadow: rgba(104, 34, 56, 0.44);
+  --invite-rings-filter: hue-rotate(320deg) saturate(1.06) brightness(1.05);
+  --theme-switcher-bg: rgba(74, 26, 44, 0.44);
+  --theme-switcher-label: rgba(255, 230, 242, 0.9);
+  --theme-switcher-select-bg: rgba(255, 240, 248, 0.92);
+  --theme-switcher-select-text: #602642;
+  --theme-switcher-select-border: rgba(250, 180, 208, 0.58);
+  --wedding-decoration-left-transform: rotate(180deg) scale(1.04);
+  --wedding-decoration-right-transform: scale(1.02);
+  --wedding-decoration-left-mobile-transform: translateY(0) rotate(180deg) scale(0.98);
+  --wedding-decoration-right-mobile-transform: scale(0.96);
+  --wedding-decoration-left-filter: hue-rotate(322deg) saturate(1.1) brightness(1.06);
+  --wedding-decoration-right-filter: hue-rotate(328deg) saturate(1.06) brightness(1.04);
+  --wedding-decoration-left-opacity: 0.94;
+  --wedding-decoration-right-opacity: 0.92;
+}
+
+:root[data-wedding-theme="lavender-mist"] {
+  --font-heading: "Marcellus", serif;
+  --font-body: "Quicksand", sans-serif;
+  --page-wash: rgba(235, 230, 255, 0.2);
+  --page-blur-offset: 0.05px;
+  --spark-1: rgba(214, 202, 255, 0.22);
+  --spark-2: rgba(190, 174, 245, 0.16);
+  --spark-size-1: 260px 260px;
+  --spark-size-2: 310px 310px;
+  --spark-opacity: 0.58;
+  --setup-grad-start: rgba(36, 24, 56, 0.92);
+  --setup-grad-end: rgba(68, 48, 100, 0.82);
+  --setup-border: rgba(208, 190, 235, 0.36);
+  --setup-accent: #b8a0d8;
+  --setup-accent-text: #241a36;
+  --setup-field-bg: rgba(16, 10, 26, 0.4);
+  --setup-field-border: rgba(218, 204, 240, 0.28);
+  --setup-title: #f5f0ff;
+  --setup-subtitle: rgba(234, 224, 252, 0.84);
+  --setup-muted: rgba(224, 214, 244, 0.72);
+  --invite-shell-bg: rgba(240, 234, 255, 0.44);
+  --invite-shell-border: rgba(206, 188, 238, 0.38);
+  --invite-shell-shadow: rgba(44, 28, 74, 0.32);
+  --invite-shell-glow: rgba(196, 170, 240, 0.22);
+  --invite-core-border: rgba(220, 208, 248, 0.66);
+  --invite-core-glow: rgba(180, 150, 234, 0.2);
+  --invite-title-color: #f5eeff;
+  --invite-copy-color: #ede4fc;
+  --invite-text-shadow: rgba(44, 26, 76, 0.44);
+  --invite-rings-filter: hue-rotate(240deg) saturate(0.9) brightness(1.06);
+  --theme-switcher-bg: rgba(40, 26, 66, 0.44);
+  --theme-switcher-label: rgba(234, 224, 255, 0.9);
+  --theme-switcher-select-bg: rgba(242, 236, 255, 0.92);
+  --theme-switcher-select-text: #382860;
+  --theme-switcher-select-border: rgba(200, 180, 238, 0.58);
+  --wedding-decoration-left-transform: rotate(180deg) scale(1.04);
+  --wedding-decoration-right-transform: scale(1.02);
+  --wedding-decoration-left-mobile-transform: translateY(0) rotate(180deg) scale(0.98);
+  --wedding-decoration-right-mobile-transform: scale(0.96);
+  --wedding-decoration-left-filter: hue-rotate(242deg) saturate(0.92) brightness(1.06);
+  --wedding-decoration-right-filter: hue-rotate(248deg) saturate(0.94) brightness(1.04);
+  --wedding-decoration-left-opacity: 0.94;
+  --wedding-decoration-right-opacity: 0.92;
+}
+
+:root[data-wedding-theme="champagne-bubble"] {
+  --font-heading: "Great Vibes", cursive;
+  --font-body: "Cormorant Garamond", serif;
+  --page-wash: rgba(255, 248, 230, 0.22);
+  --page-blur-offset: 0.08px;
+  --spark-1: rgba(255, 235, 176, 0.22);
+  --spark-2: rgba(242, 218, 148, 0.16);
+  --spark-size-1: 280px 280px;
+  --spark-size-2: 330px 330px;
+  --spark-opacity: 0.56;
+  --setup-grad-start: rgba(62, 50, 26, 0.9);
+  --setup-grad-end: rgba(120, 96, 52, 0.78);
+  --setup-border: rgba(240, 220, 168, 0.36);
+  --setup-accent: #d4b86a;
+  --setup-accent-text: #2e2614;
+  --setup-field-bg: rgba(24, 20, 10, 0.36);
+  --setup-field-border: rgba(240, 226, 186, 0.28);
+  --setup-title: #fffcf0;
+  --setup-subtitle: rgba(248, 240, 218, 0.84);
+  --setup-muted: rgba(236, 226, 200, 0.72);
+  --invite-shell-bg: rgba(255, 250, 238, 0.44);
+  --invite-shell-border: rgba(236, 218, 170, 0.38);
+  --invite-shell-shadow: rgba(72, 54, 24, 0.3);
+  --invite-shell-glow: rgba(240, 216, 148, 0.2);
+  --invite-core-border: rgba(245, 234, 200, 0.68);
+  --invite-core-glow: rgba(230, 198, 126, 0.2);
+  --invite-title-color: #fffcf0;
+  --invite-copy-color: #f8f0e0;
+  --invite-text-shadow: rgba(68, 48, 20, 0.4);
+  --invite-rings-filter: saturate(1.02) sepia(0.12) brightness(1.04);
+  --theme-switcher-bg: rgba(66, 52, 26, 0.42);
+  --theme-switcher-label: rgba(252, 244, 220, 0.9);
+  --theme-switcher-select-bg: rgba(255, 250, 236, 0.94);
+  --theme-switcher-select-text: #54401e;
+  --theme-switcher-select-border: rgba(236, 216, 166, 0.58);
+  --wedding-decoration-left-transform: rotate(180deg) scale(1.03);
+  --wedding-decoration-right-transform: scale(1.01);
+  --wedding-decoration-left-mobile-transform: translateY(0) rotate(180deg) scale(0.98);
+  --wedding-decoration-right-mobile-transform: scale(0.96);
+  --wedding-decoration-left-filter: saturate(1.06) sepia(0.14) brightness(1.04);
+  --wedding-decoration-right-filter: saturate(1.04) sepia(0.1) brightness(1.02);
+  --wedding-decoration-left-opacity: 0.94;
+  --wedding-decoration-right-opacity: 0.92;
+}
+
+/* Temas oscuros adicionales */
+
+:root[data-wedding-theme="burgundy-velvet"] {
+  --font-heading: "Cinzel", serif;
+  --font-body: "Cormorant Garamond", serif;
+  --page-wash: rgba(70, 18, 28, 0.26);
+  --page-blur-offset: 0.2px;
+  --spark-1: rgba(255, 200, 180, 0.22);
+  --spark-2: rgba(220, 140, 130, 0.16);
+  --spark-size-1: 300px 300px;
+  --spark-size-2: 360px 360px;
+  --spark-opacity: 0.6;
+  --setup-grad-start: rgba(40, 8, 14, 0.94);
+  --setup-grad-end: rgba(80, 24, 36, 0.84);
+  --setup-border: rgba(216, 156, 150, 0.36);
+  --setup-accent: #c87870;
+  --setup-accent-text: #241012;
+  --setup-field-bg: rgba(18, 4, 8, 0.44);
+  --setup-field-border: rgba(212, 156, 152, 0.28);
+  --setup-title: #fff5f2;
+  --setup-subtitle: rgba(248, 226, 220, 0.84);
+  --setup-muted: rgba(232, 210, 204, 0.72);
+  --invite-shell-bg: rgba(34, 12, 18, 0.44);
+  --invite-shell-border: rgba(210, 148, 142, 0.36);
+  --invite-shell-shadow: rgba(0, 0, 0, 0.44);
+  --invite-shell-glow: rgba(214, 142, 130, 0.22);
+  --invite-core-border: rgba(238, 200, 194, 0.58);
+  --invite-core-glow: rgba(204, 126, 112, 0.24);
+  --invite-title-color: #fff5f2;
+  --invite-copy-color: #f8e6e0;
+  --invite-text-shadow: rgba(40, 8, 16, 0.58);
+  --invite-rings-filter: hue-rotate(340deg) saturate(1.12) brightness(1.04);
+  --theme-switcher-bg: rgba(44, 10, 18, 0.5);
+  --theme-switcher-label: rgba(250, 228, 222, 0.92);
+  --theme-switcher-select-bg: rgba(255, 244, 240, 0.92);
+  --theme-switcher-select-text: #541e28;
+  --theme-switcher-select-border: rgba(216, 156, 150, 0.6);
+  --wedding-decoration-left-transform: rotate(180deg) scale(1.08);
+  --wedding-decoration-right-transform: scale(1.04) rotate(1deg);
+  --wedding-decoration-left-mobile-transform: translateY(0) rotate(180deg) scale(1);
+  --wedding-decoration-right-mobile-transform: scale(0.98) rotate(1deg);
+  --wedding-decoration-left-filter: hue-rotate(342deg) saturate(1.14) brightness(1.05);
+  --wedding-decoration-right-filter: hue-rotate(348deg) saturate(1.1) brightness(1.03);
+  --wedding-decoration-left-opacity: 0.97;
+  --wedding-decoration-right-opacity: 0.94;
+}
+
+:root[data-wedding-theme="sapphire-night"] {
+  --font-heading: "Marcellus", serif;
+  --font-body: "Cormorant Garamond", serif;
+  --page-wash: rgba(8, 18, 48, 0.26);
+  --page-blur-offset: 0.16px;
+  --spark-1: rgba(196, 216, 255, 0.22);
+  --spark-2: rgba(148, 178, 242, 0.16);
+  --spark-size-1: 310px 310px;
+  --spark-size-2: 370px 370px;
+  --spark-opacity: 0.58;
+  --setup-grad-start: rgba(4, 10, 32, 0.94);
+  --setup-grad-end: rgba(12, 26, 72, 0.84);
+  --setup-border: rgba(170, 198, 236, 0.36);
+  --setup-accent: #8898cc;
+  --setup-accent-text: #0e142c;
+  --setup-field-bg: rgba(4, 8, 24, 0.44);
+  --setup-field-border: rgba(174, 200, 238, 0.28);
+  --setup-title: #f0f4ff;
+  --setup-subtitle: rgba(224, 234, 254, 0.84);
+  --setup-muted: rgba(210, 222, 244, 0.72);
+  --invite-shell-bg: rgba(14, 20, 48, 0.44);
+  --invite-shell-border: rgba(164, 192, 234, 0.36);
+  --invite-shell-shadow: rgba(0, 0, 0, 0.44);
+  --invite-shell-glow: rgba(148, 184, 238, 0.22);
+  --invite-core-border: rgba(210, 224, 250, 0.58);
+  --invite-core-glow: rgba(130, 168, 232, 0.24);
+  --invite-title-color: #f0f4ff;
+  --invite-copy-color: #e4eaf8;
+  --invite-text-shadow: rgba(4, 12, 40, 0.58);
+  --invite-rings-filter: hue-rotate(210deg) saturate(0.92) brightness(1.06);
+  --theme-switcher-bg: rgba(8, 14, 38, 0.5);
+  --theme-switcher-label: rgba(224, 234, 255, 0.92);
+  --theme-switcher-select-bg: rgba(240, 244, 255, 0.92);
+  --theme-switcher-select-text: #1c2860;
+  --theme-switcher-select-border: rgba(170, 198, 236, 0.6);
+  --wedding-decoration-left-transform: rotate(180deg) scale(1.08);
+  --wedding-decoration-right-transform: scale(1.04) rotate(-1deg);
+  --wedding-decoration-left-mobile-transform: translateY(0) rotate(180deg) scale(1);
+  --wedding-decoration-right-mobile-transform: scale(0.98) rotate(-1deg);
+  --wedding-decoration-left-filter: hue-rotate(212deg) saturate(0.94) brightness(1.06);
+  --wedding-decoration-right-filter: hue-rotate(218deg) saturate(0.96) brightness(1.04);
+  --wedding-decoration-left-opacity: 0.96;
+  --wedding-decoration-right-opacity: 0.93;
+}
+
+:root[data-wedding-theme="emerald-grove"] {
+  --font-heading: "Marcellus", serif;
+  --font-body: "Quicksand", sans-serif;
+  --page-wash: rgba(0, 40, 24, 0.24);
+  --page-blur-offset: 0.14px;
+  --spark-1: rgba(160, 230, 196, 0.22);
+  --spark-2: rgba(114, 204, 166, 0.16);
+  --spark-size-1: 300px 300px;
+  --spark-size-2: 360px 360px;
+  --spark-opacity: 0.58;
+  --setup-grad-start: rgba(2, 28, 16, 0.94);
+  --setup-grad-end: rgba(8, 52, 34, 0.84);
+  --setup-border: rgba(160, 216, 184, 0.36);
+  --setup-accent: #70b890;
+  --setup-accent-text: #0c2418;
+  --setup-field-bg: rgba(2, 14, 8, 0.44);
+  --setup-field-border: rgba(160, 218, 186, 0.28);
+  --setup-title: #f0fff6;
+  --setup-subtitle: rgba(220, 248, 234, 0.84);
+  --setup-muted: rgba(206, 234, 220, 0.72);
+  --invite-shell-bg: rgba(8, 30, 18, 0.44);
+  --invite-shell-border: rgba(154, 214, 182, 0.36);
+  --invite-shell-shadow: rgba(0, 0, 0, 0.42);
+  --invite-shell-glow: rgba(138, 210, 176, 0.22);
+  --invite-core-border: rgba(200, 238, 216, 0.58);
+  --invite-core-glow: rgba(120, 200, 160, 0.24);
+  --invite-title-color: #f0fff6;
+  --invite-copy-color: #e0f2e8;
+  --invite-text-shadow: rgba(0, 20, 10, 0.56);
+  --invite-rings-filter: hue-rotate(130deg) saturate(0.88) brightness(1.06);
+  --theme-switcher-bg: rgba(4, 30, 16, 0.5);
+  --theme-switcher-label: rgba(220, 248, 234, 0.92);
+  --theme-switcher-select-bg: rgba(236, 255, 246, 0.92);
+  --theme-switcher-select-text: #14402a;
+  --theme-switcher-select-border: rgba(160, 216, 184, 0.6);
+  --wedding-decoration-left-transform: rotate(180deg) scale(1.08);
+  --wedding-decoration-right-transform: scale(1.04) rotate(1deg);
+  --wedding-decoration-left-mobile-transform: translateY(0) rotate(180deg) scale(1);
+  --wedding-decoration-right-mobile-transform: scale(0.98) rotate(1deg);
+  --wedding-decoration-left-filter: hue-rotate(130deg) saturate(0.9) brightness(1.06);
+  --wedding-decoration-right-filter: hue-rotate(138deg) saturate(0.92) brightness(1.04);
+  --wedding-decoration-left-opacity: 0.96;
+  --wedding-decoration-right-opacity: 0.93;
+}
+
+:root[data-wedding-theme="plum-twilight"] {
+  --font-heading: "Cinzel", serif;
+  --font-body: "Cormorant Garamond", serif;
+  --page-wash: rgba(40, 8, 48, 0.26);
+  --page-blur-offset: 0.2px;
+  --spark-1: rgba(230, 180, 240, 0.22);
+  --spark-2: rgba(206, 144, 226, 0.16);
+  --spark-size-1: 310px 310px;
+  --spark-size-2: 370px 370px;
+  --spark-opacity: 0.6;
+  --setup-grad-start: rgba(28, 4, 36, 0.94);
+  --setup-grad-end: rgba(56, 16, 72, 0.84);
+  --setup-border: rgba(214, 170, 226, 0.36);
+  --setup-accent: #c088c8;
+  --setup-accent-text: #201226;
+  --setup-field-bg: rgba(12, 2, 16, 0.44);
+  --setup-field-border: rgba(216, 172, 228, 0.28);
+  --setup-title: #fdf0ff;
+  --setup-subtitle: rgba(240, 220, 248, 0.84);
+  --setup-muted: rgba(226, 208, 236, 0.72);
+  --invite-shell-bg: rgba(24, 10, 32, 0.44);
+  --invite-shell-border: rgba(210, 164, 224, 0.36);
+  --invite-shell-shadow: rgba(0, 0, 0, 0.44);
+  --invite-shell-glow: rgba(210, 158, 228, 0.22);
+  --invite-core-border: rgba(236, 204, 248, 0.58);
+  --invite-core-glow: rgba(196, 138, 220, 0.24);
+  --invite-title-color: #fdf0ff;
+  --invite-copy-color: #f0e0f6;
+  --invite-text-shadow: rgba(20, 4, 32, 0.58);
+  --invite-rings-filter: hue-rotate(280deg) saturate(1.08) brightness(1.04);
+  --theme-switcher-bg: rgba(32, 8, 40, 0.5);
+  --theme-switcher-label: rgba(240, 222, 250, 0.92);
+  --theme-switcher-select-bg: rgba(250, 240, 255, 0.92);
+  --theme-switcher-select-text: #3c1a52;
+  --theme-switcher-select-border: rgba(214, 170, 226, 0.6);
+  --wedding-decoration-left-transform: rotate(180deg) scale(1.08);
+  --wedding-decoration-right-transform: scale(1.04) rotate(1deg);
+  --wedding-decoration-left-mobile-transform: translateY(0) rotate(180deg) scale(1);
+  --wedding-decoration-right-mobile-transform: scale(0.98) rotate(1deg);
+  --wedding-decoration-left-filter: hue-rotate(282deg) saturate(1.1) brightness(1.05);
+  --wedding-decoration-right-filter: hue-rotate(288deg) saturate(1.06) brightness(1.03);
+  --wedding-decoration-left-opacity: 0.97;
+  --wedding-decoration-right-opacity: 0.94;
+}
+
 /* Componentes de la seccion de detalles: calendario y mapa. */
 
 :root[data-wedding-theme="midnight-royal"] {
@@ -324,6 +643,7 @@ body {
   font-family: var(--font-body);
   margin: 0;
   min-height: 100dvh;
+  min-height: 100svh;
   isolation: isolate;
   background-color: #ede6d8;
   background-image: var(--wedding-background-image), url("./assets/background.jpg");
@@ -347,6 +667,11 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   -webkit-touch-callout: none;
+  font-size: clamp(1rem, 1.6vw, 1.1rem);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
 }
 
 img {
@@ -447,6 +772,8 @@ body::after {
   position: fixed;
   inset: 0;
   overflow: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 .app-scene--transitioning .story-panel {
@@ -485,7 +812,7 @@ body::after {
 .story-card {
   position: relative;
   z-index: 1;
-  padding: clamp(1.2rem, 3vw, 2rem);
+  padding: clamp(1.4rem, 3.5vw, 2.2rem);
   border-radius: 1.6rem;
   border: 1px solid color-mix(in srgb, var(--invite-shell-border) 72%, transparent);
   background: color-mix(in srgb, var(--invite-shell-bg) 74%, transparent);
@@ -498,12 +825,12 @@ body::after {
 
 .story-card--details {
   display: grid;
-  gap: 0.7rem;
+  gap: 0.9rem;
 }
 
 .story-card--rsvp {
   display: grid;
-  gap: 1rem;
+  gap: 1.15rem;
 }
 
 .story-panel {
@@ -574,7 +901,7 @@ body::after {
   color: var(--invite-title-color);
   font-family: var(--font-heading);
   font-size: clamp(1.8rem, 4vw, 3rem);
-  line-height: 1.08;
+  line-height: 1.12;
   text-shadow:
     0 0 14px color-mix(in srgb, var(--invite-text-shadow) 72%, transparent),
     0 2px 4px rgba(0, 0, 0, 0.5);
@@ -583,8 +910,8 @@ body::after {
 .story-copy {
   margin: 0;
   color: var(--invite-copy-color);
-  font-size: clamp(1rem, 2.4vw, 1.2rem);
-  line-height: 1.55;
+  font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+  line-height: 1.65;
   text-shadow:
     0 0 12px color-mix(in srgb, var(--invite-text-shadow) 64%, transparent),
     0 2px 3px rgba(0, 0, 0, 0.42);
@@ -600,8 +927,8 @@ body::after {
 .story-note {
   margin: 0;
   color: var(--setup-muted);
-  font-size: 0.95rem;
-  line-height: 1.5;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  line-height: 1.6;
 }
 
 .story-scroll-hint {
@@ -691,8 +1018,8 @@ body::after {
 .story-map__status {
   margin: 0;
   color: var(--setup-muted);
-  font-size: 0.92rem;
-  line-height: 1.4;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 .story-map__status--error {
@@ -714,7 +1041,7 @@ body::after {
   margin: 0;
   color: var(--setup-accent);
   font-family: var(--font-body);
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
@@ -737,18 +1064,26 @@ body::after {
 
 .rsvp-feedback {
   margin: 0;
-  padding: 0.85rem 1rem;
+  padding: 0.95rem 1.1rem;
   border-radius: 0.9rem;
   border: 1px solid color-mix(in srgb, var(--setup-accent) 34%, transparent);
   background: color-mix(in srgb, var(--setup-field-bg) 84%, transparent);
   color: var(--invite-title-color);
-  font-size: 0.95rem;
-  line-height: 1.45;
+  font-size: 1rem;
+  line-height: 1.55;
 }
 
 @media (max-width: 640px) {
   .story-title {
     font-size: clamp(1.6rem, 7vw, 2.3rem);
+  }
+
+  .story-scroll-hint {
+    bottom: 4.5rem;
+  }
+
+  a[aria-label="Compartir por WhatsApp"] {
+    bottom: 1rem !important;
   }
 }
 
@@ -953,10 +1288,12 @@ h6 {
 }
 
 .setup-layout {
-  min-height: 100vh;
+  min-height: 100dvh;
   display: grid;
   place-items: center;
-  padding: 1.5rem;
+  padding: clamp(0.75rem, 2.5vw, 1.5rem);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .setup-card {
@@ -965,11 +1302,11 @@ h6 {
   border: 1px solid var(--setup-border);
   border-radius: 1.4rem;
   box-shadow:
-    0 25px 60px rgba(0, 0, 0, 0.36),
+    0 25px 60px rgba(0, 0, 0, 0.38),
     inset 0 1px 0 rgba(255, 255, 255, 0.18);
-  padding: clamp(1.2rem, 3vw, 2rem);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
+  padding: clamp(1.35rem, 3.5vw, 2.2rem);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .setup-header {
@@ -999,9 +1336,10 @@ h6 {
 }
 
 .setup-subtitle {
-  margin: 0.55rem 0 0;
+  margin: 0.6rem 0 0;
   color: var(--setup-subtitle);
-  font-size: 1rem;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  line-height: 1.55;
 }
 
 .setup-form {
@@ -1247,8 +1585,9 @@ h6 {
 }
 
 .setup-label {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--setup-title);
+  line-height: 1.4;
 }
 
 .setup-input,
@@ -1264,6 +1603,19 @@ h6 {
   transition:
     border-color 220ms ease,
     box-shadow 220ms ease;
+}
+
+select.setup-input {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23fdf8ec' d='M1 1l4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  padding-right: 2rem;
+  cursor: pointer;
+  box-sizing: border-box;
+  height: auto;
+  line-height: 1.4;
 }
 
 .setup-input:focus,
@@ -1327,11 +1679,43 @@ h6 {
   border-bottom: 1px solid rgba(247, 242, 232, 0.5);
 }
 
+.setup-button:focus-visible {
+  outline: 2px solid var(--setup-accent);
+  outline-offset: 2px;
+}
+
+.setup-input:focus-visible,
+.setup-textarea:focus-visible {
+  outline: 2px solid var(--setup-accent);
+  outline-offset: 1px;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--setup-accent);
+  outline-offset: 2px;
+}
+
+.story-scroll-hint:focus-visible {
+  outline: 2px solid var(--setup-accent);
+  outline-offset: 2px;
+}
+
+.setup-background-card:focus-visible {
+  outline: 2px solid var(--setup-accent);
+  outline-offset: 2px;
+}
+
+.setup-upload:focus-visible {
+  outline: 2px solid var(--setup-accent);
+  outline-offset: 2px;
+}
+
 .setup-help,
 .setup-success,
 .setup-error {
   margin: 0.4rem 0 0;
-  font-size: 0.88rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
 }
 
 .setup-help {
@@ -1378,20 +1762,19 @@ h6 {
   color: var(--invite-title-color);
   letter-spacing: 0.02em;
   text-shadow:
-    0 0 18px color-mix(in srgb, var(--invite-text-shadow) 72%, transparent),
-    0 2px 4px rgba(0, 0, 0, 0.55);
+    0 0 24px color-mix(in srgb, var(--invite-text-shadow) 78%, transparent),
+    0 2px 6px rgba(0, 0, 0, 0.6);
 }
 
 .invite-copy {
   color: var(--invite-copy-color);
   text-shadow:
-    0 0 13px color-mix(in srgb, var(--invite-text-shadow) 64%, transparent),
-    0 2px 3px rgba(0, 0, 0, 0.52);
+    0 0 18px color-mix(in srgb, var(--invite-text-shadow) 72%, transparent),
+    0 2px 4px rgba(0, 0, 0, 0.55);
 }
 
 .invite-rings {
   opacity: 0.98;
-  filter: var(--invite-rings-filter);
   mix-blend-mode: screen;
   filter:
     var(--invite-rings-filter)
@@ -1428,4 +1811,427 @@ h6 {
 .theme-switcher__select:focus {
   border-color: color-mix(in srgb, var(--theme-switcher-select-border) 90%, #fff);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--theme-switcher-select-border) 35%, transparent);
+}
+
+/* ── SetupPage: save transition ── */
+.setup-page-transition {
+  transition: opacity 400ms ease, transform 400ms ease;
+}
+
+.setup-page-fade-out {
+  opacity: 0;
+  transform: translateY(12px) scale(0.97);
+  pointer-events: none;
+}
+
+.setup-page-hidden {
+  display: none;
+}
+
+.setup-success-card {
+  display: grid;
+  gap: 0.6rem;
+  padding: 1.5rem 1.2rem;
+  text-align: center;
+  border-radius: 1.2rem;
+  border: 1px solid color-mix(in srgb, var(--setup-accent) 50%, transparent);
+  background: color-mix(in srgb, var(--setup-field-bg) 70%, transparent);
+  margin-top: 1rem;
+}
+
+.setup-success-card__icon {
+  font-size: 2.2rem;
+  line-height: 1;
+  color: #a3f07a;
+}
+
+.setup-success-card__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+  color: var(--setup-title);
+  font-weight: 500;
+}
+
+.setup-success-card__names {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--setup-accent);
+  font-weight: 700;
+}
+
+.setup-success-card__text {
+  margin: 0;
+  color: var(--setup-muted);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+/* ── Admin: Tabs ── */
+.admin-tabs {
+  display: flex;
+  gap: 0.35rem;
+  margin-top: 1.25rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--setup-border) 60%, transparent);
+  padding-bottom: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.admin-tab {
+  flex-shrink: 0;
+  border: 0;
+  background: transparent;
+  color: var(--setup-muted);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 0.6rem 1.1rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 200ms, border-color 200ms;
+}
+
+.admin-tab--active {
+  color: var(--setup-accent);
+  border-bottom-color: var(--setup-accent);
+}
+
+.admin-tab:hover:not(.admin-tab--active) {
+  color: var(--setup-title);
+}
+
+/* ── Admin: Stats grid ── */
+.admin-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+.admin-stats-card {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.85rem;
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--setup-field-bg) 72%, transparent);
+  border: 1px solid color-mix(in srgb, var(--setup-border) 60%, transparent);
+  text-align: center;
+}
+
+.admin-stats-card__value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--setup-title);
+  line-height: 1.1;
+}
+
+.admin-stats-card__label {
+  font-size: 0.88rem;
+  color: var(--setup-muted);
+  font-weight: 500;
+}
+
+/* ── Admin: Panel actions row ── */
+.admin-panel-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: 0.85rem;
+}
+
+/* ── Admin: Recent responses ── */
+.admin-recent-section {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.admin-recent-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.75rem;
+  background: color-mix(in srgb, var(--setup-field-bg) 60%, transparent);
+  border: 1px solid color-mix(in srgb, var(--setup-border) 50%, transparent);
+  font-size: 0.88rem;
+}
+
+.admin-recent-row__name {
+  font-weight: 600;
+  color: var(--setup-title);
+}
+
+.admin-recent-row__date {
+  color: var(--setup-muted);
+  font-size: 0.8rem;
+}
+
+/* ── Admin: Attendance filters ── */
+.admin-filters {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.admin-filters .setup-input {
+  flex: 1 1 200px;
+  min-width: 0;
+}
+
+.admin-filter-buttons {
+  display: flex;
+  gap: 0.35rem;
+}
+
+/* ── Admin: Table ── */
+.admin-table-wrapper {
+  margin-top: 0.75rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.admin-table th {
+  text-align: left;
+  padding: 0.7rem 0.85rem;
+  color: var(--setup-muted);
+  font-weight: 700;
+  font-size: 0.85rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--setup-border) 60%, transparent);
+  white-space: nowrap;
+  letter-spacing: 0.04em;
+}
+
+.admin-table td {
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--setup-border) 40%, transparent);
+  color: var(--setup-title);
+  line-height: 1.45;
+}
+
+.admin-table tbody tr:hover {
+  background: color-mix(in srgb, var(--setup-field-bg) 60%, transparent);
+}
+
+.admin-table__name {
+  font-weight: 600;
+}
+
+.admin-table__note {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.admin-table__date {
+  white-space: nowrap;
+  font-size: 0.82rem;
+  color: var(--setup-muted);
+}
+
+/* ── Admin: Badges ── */
+.admin-badge {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.admin-badge--yes {
+  background: color-mix(in srgb, #a3f07a 30%, transparent);
+  color: #b8ffa0;
+}
+
+.admin-badge--no {
+  background: color-mix(in srgb, #f07a7a 30%, transparent);
+  color: #ffb0b0;
+}
+
+@media (max-width: 820px) {
+  .admin-table th:nth-child(4),
+  .admin-table td:nth-child(4) {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .admin-recent-row {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+
+  .admin-table th:nth-child(5),
+  .admin-table td:nth-child(5) {
+    display: none;
+  }
+
+  .admin-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .admin-filters .setup-input {
+    flex: 1 1 100%;
+  }
+
+  .admin-filter-buttons {
+    width: 100%;
+  }
+
+  .admin-filter-buttons .setup-button {
+    flex: 1;
+  }
+
+  .admin-table th,
+  .admin-table td {
+    padding: 0.5rem 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-tabs {
+    gap: 0.15rem;
+  }
+
+  .admin-tab {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.7rem;
+  }
+
+  .admin-stats-card {
+    padding: 0.65rem;
+  }
+
+  .admin-stats-card__value {
+    font-size: 1.4rem;
+  }
+}
+
+/* ── Responsive: SetupPage / form elements ── */
+@media (max-width: 480px) {
+  .setup-layout {
+    padding: 0.6rem;
+  }
+
+  .setup-card {
+    padding: clamp(0.9rem, 3.5vw, 1.2rem);
+    border-radius: 1.1rem;
+  }
+
+  .setup-title {
+    font-size: clamp(1.3rem, 5vw, 1.65rem);
+  }
+
+  .setup-actions {
+    gap: 0.5rem;
+  }
+
+  .setup-actions .setup-button {
+    flex: 1;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.85rem;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .setup-background-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .setup-token-card {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 640px) and (min-width: 481px) {
+  .setup-background-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── Responsive: Story sections ── */
+@media (max-width: 480px) {
+  .story-card {
+    padding: clamp(1rem, 4vw, 1.4rem);
+    border-radius: 1.3rem;
+  }
+
+  .story-title {
+    font-size: clamp(1.4rem, 7vw, 1.8rem);
+  }
+
+  .story-copy {
+    font-size: clamp(0.95rem, 3.5vw, 1.05rem);
+  }
+
+  .story-map__canvas {
+    min-height: 12rem;
+  }
+
+  .story-scroll-hint {
+    width: 2.4rem;
+    height: 2.4rem;
+    bottom: 0.8rem;
+  }
+
+  .story-map__actions {
+    flex-direction: column;
+  }
+
+  .story-map__actions .setup-button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .invite-rings {
+    width: clamp(9rem, 40vw, 11rem) !important;
+  }
+
+  .story-calendar-actions .setup-button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .rsvp-form .setup-button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ── Responsive: Wedding decorations ── */
+@media (max-width: 380px) {
+  .wedding-decoration {
+    width: 120px;
+    max-width: 120px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .setup-card {
+    width: min(100%, 720px);
+    padding: clamp(1.5rem, 3vw, 2.2rem);
+  }
+}
+
+/* ── Responsive: Map and large screens ── */
+@media (min-width: 1280px) {
+  .story-card {
+    max-width: min(100%, 44rem);
+  }
+
+  .story-title {
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+  }
 }

@@ -1,0 +1,177 @@
+import { useEffect, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
+import { useApp } from "../contexts/AppContext";
+import SetupForm from "../components/SetupForm";
+
+export default function SetupPage() {
+  const navigate = useNavigate();
+  const {
+    hasStoredConfig, isConfigLoading, configLoadError,
+    setupToken, setupTokenInput, setSetupTokenInput,
+    tokenLoginUsername, setTokenLoginUsername,
+    isTokenVerifying, isTokenVerified,
+    authMessage, authMessageType,
+    handleTokenLogin, handleResetSetupToken,
+    saveMessage, config,
+  } = useApp();
+
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  useEffect(() => {
+    if (saveMessage && hasStoredConfig) {
+      setIsTransitioning(true);
+      const timer = setTimeout(() => {
+        setShowSuccess(true);
+        setIsTransitioning(false);
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [saveMessage, hasStoredConfig]);
+
+  if (isConfigLoading) {
+    return (
+      <div className="setup-layout">
+        <section className="setup-card allow-select" aria-label="Cargando configuración">
+          <header className="setup-header">
+            <div>
+              <p className="setup-eyebrow">Configuración</p>
+              <h1 className="setup-title">Cargando invitación</h1>
+              <p className="setup-subtitle">Estamos cargando los datos guardados.</p>
+            </div>
+          </header>
+        </section>
+      </div>
+    );
+  }
+
+  if (configLoadError) {
+    return (
+      <div className="setup-layout">
+        <section className="setup-card allow-select" aria-label="Error de carga">
+          <header className="setup-header">
+            <div>
+              <p className="setup-eyebrow">Error de conexión</p>
+              <h1 className="setup-title">No pudimos cargar la invitación</h1>
+              <p className="setup-subtitle">{configLoadError}</p>
+            </div>
+          </header>
+          <div className="setup-actions">
+            <button className="setup-button" type="button" onClick={() => window.location.reload()}>
+              Reintentar
+            </button>
+          </div>
+        </section>
+      </div>
+    );
+  }
+
+  if (hasStoredConfig && !showSuccess && !saveMessage) {
+    return <Navigate to="/admin" replace />;
+  }
+
+  if (!isTokenVerified) {
+    return (
+      <div className="setup-layout">
+        <section className="setup-card allow-select" aria-label="Acceso con código">
+          <header className="setup-header">
+            <div>
+              <p className="setup-eyebrow">Primeros pasos</p>
+              <h1 className="setup-title">Accede con tu código</h1>
+              <p className="setup-subtitle">
+                Introduce tu usuario y el código de acceso para gestionar la invitación.
+              </p>
+            </div>
+          </header>
+
+          <form className="setup-form" onSubmit={(e) => { e.preventDefault(); handleTokenLogin(); }}>
+            <div className="setup-token-card">
+              <label className="setup-label" htmlFor="setupTokenLoginUsername">
+                Usuario
+              </label>
+              <input
+                id="setupTokenLoginUsername"
+                className="setup-input"
+                value={tokenLoginUsername}
+                onChange={(e) => setTokenLoginUsername(e.target.value.toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 50))}
+                placeholder="Escribe tu nombre de usuario"
+                autoComplete="username"
+                name="username"
+              />
+
+              <label className="setup-label" htmlFor="setupTokenLoginCode">
+                Código de acceso
+              </label>
+              <p className="setup-help setup-help--tight">
+                Cópialo tal como aparece. Si no lo tienes, genera uno nuevo.
+              </p>
+              <input
+                id="setupTokenLoginCode"
+                className="setup-input setup-token-input"
+                type="password"
+                value={setupTokenInput}
+                onChange={(e) => setSetupTokenInput(e.target.value.toUpperCase())}
+                placeholder="Pega aquí el código de acceso"
+                maxLength={19}
+                autoComplete="current-password"
+                spellCheck="false"
+              />
+              {setupToken ? <p className="setup-token-display">Código activo (solo tú lo ves).</p> : null}
+              <button className="setup-button" type="submit" disabled={isTokenVerifying}>
+                {isTokenVerifying ? "Comprobando..." : "Entrar"}
+              </button>
+              <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleResetSetupToken}>
+                Generar nuevo código
+              </button>
+            </div>
+
+            {authMessage ? <p className={authMessageType === "success" ? "setup-success" : "setup-error"}>{authMessage}</p> : null}
+          </form>
+        </section>
+      </div>
+    );
+  }
+
+  const coupleName = `${config.firstName} & ${config.secondName}`;
+
+  return (
+    <div className="setup-layout">
+      <section className="setup-card allow-select" aria-label="Configuración inicial">
+        <header className="setup-header">
+          <div>
+            <p className="setup-eyebrow">Configuración inicial</p>
+            <h1 className="setup-title">Preparamos tu invitación</h1>
+            <p className="setup-subtitle">
+              {showSuccess ? "Tu invitación está lista" : "Completa los datos de la invitación."}
+            </p>
+          </div>
+        </header>
+
+        <div className={`setup-page-transition ${isTransitioning ? "setup-page-fade-out" : ""} ${showSuccess ? "setup-page-hidden" : ""}`}>
+          <div className="setup-form">
+            <SetupForm prefix="setup" />
+          </div>
+        </div>
+
+        {showSuccess ? (
+          <div className="setup-success-card animate-card-reveal">
+            <div className="setup-success-card__icon">✓</div>
+            <p className="setup-success-card__title">Invitación creada</p>
+            <p className="setup-success-card__names">{coupleName}</p>
+            <p className="setup-success-card__text">
+              Los datos están guardados y la invitación ya está disponible.
+            </p>
+            <div className="setup-actions" style={{ justifyContent: "center", marginTop: "0.5rem" }}>
+              <button className="setup-button" type="button" onClick={() => navigate("/admin")}>
+                Ir al panel
+              </button>
+              <button className="setup-button setup-button--ghost" type="button" onClick={() => navigate("/")}>
+                Ver portada
+              </button>
+            </div>
+          </div>
+        ) : null}
+      </section>
+    </div>
+  );
+}
