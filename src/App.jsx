@@ -408,6 +408,7 @@ export default function App() {
   const [setupTokenInput, setSetupTokenInput] = useState("");
   const [adminMessage, setAdminMessage] = useState("");
   const [authMessage, setAuthMessage] = useState("");
+  const [authMessageType, setAuthMessageType] = useState("error");
   const [isAuthLoading, setIsAuthLoading] = useState(true);
   const [isAuthSubmitting, setIsAuthSubmitting] = useState(false);
   const [adminEmail, setAdminEmail] = useState("");
@@ -1312,6 +1313,7 @@ export default function App() {
     setSaveError("");
     setAdminMessage("");
     const nextToken = refreshSetupToken();
+    setAuthMessageType("success");
     setAuthMessage(`Token de setup restablecido: ${nextToken}. Este cambio no modifica la contraseña de Firebase.`);
   };
 
@@ -1328,6 +1330,7 @@ export default function App() {
   };
 
   const handleAdminLogin = async () => {
+    setAuthMessageType("error");
     setAuthMessage("");
     const normalizedEmail = adminLoginEmail.trim().toLowerCase();
     const configuredAdminEmail = (config.adminLoginEmail || "").trim().toLowerCase();
@@ -1357,8 +1360,10 @@ export default function App() {
       if (!isAuthorizedEmail) {
         await signOut(auth);
         setAuthMessage("Este correo no tiene permisos de administración.");
+        setAuthMessageType("error");
       }
     } catch (error) {
+      setAuthMessageType("error");
       setAuthMessage(getAdminLoginErrorMessage(error));
     } finally {
       setIsAuthSubmitting(false);
@@ -1369,6 +1374,7 @@ export default function App() {
     try {
       await signOut(auth);
     } catch {
+      setAuthMessageType("error");
       setAuthMessage("No se pudo cerrar sesión. Inténtalo de nuevo.");
     }
   };
@@ -1802,7 +1808,7 @@ export default function App() {
                   </button>
                 </>
               )}
-              {authMessage ? <p className="setup-error">{authMessage}</p> : null}
+              {authMessage ? <p className={authMessageType === "success" ? "setup-success" : "setup-error"}>{authMessage}</p> : null}
             </div>
 
             <div className="setup-actions">
