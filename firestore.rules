@@ -1,0 +1,84 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isAdmin() {
+      let adminDoc = get(/databases/$(database)/documents/admin/access);
+      return request.auth != null
+        && request.auth.token.email != null
+        && adminDoc.exists
+        && adminDoc.data.allowedEmails.hasAny([request.auth.token.email]);
+    }
+
+    function isValidEmail(value) {
+      return value is string
+        && value.matches('^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$')
+        && value.size() <= 320;
+    }
+
+    function isSafeText(value) {
+      return value is string
+        && !value.matches('.*[<>&\"\'\\\\].*')
+        && value.size() <= 5000;
+    }
+
+    function isValidInvitationData() {
+      let data = request.resource.data;
+      return data.keys().hasAll(['firstName', 'secondName', 'weddingDay', 'weddingMonth', 'weddingYear', 'weddingHour', 'weddingMinute'])
+        && data.firstName is string && data.firstName.size() > 0 && data.firstName.size() <= 100 && isSafeText(data.firstName)
+        && data.secondName is string && data.secondName.size() > 0 && data.secondName.size() <= 100 && isSafeText(data.secondName)
+        && data.inviteMessage is string && data.inviteMessage.size() <= 500 && isSafeText(data.inviteMessage)
+        && data.weddingPlace is string && data.weddingPlace.size() <= 300 && isSafeText(data.weddingPlace)
+        && data.weddingDay is string && data.weddingDay.matches('^(0?[1-9]|[12][0-9]|3[01])$')
+        && data.weddingMonth is string
+        && data.weddingYear is string && data.weddingYear.matches('^[12][0-9]{3}$')
+        && data.weddingHour is string && data.weddingHour.matches('^([01]?[0-9]|2[0-3])$')
+        && data.weddingMinute is string && data.weddingMinute.matches('^[0-5]?[0-9]$')
+        && data.theme in ['golden', 'forest', 'rose', 'linen-soft', 'amber-night', 'onyx-gold', 'midnight-royal']
+        && data.adminLoginEmail is string && isValidEmail(data.adminLoginEmail);
+    }
+
+    match /admin/access {
+      allow read: if isAdmin();
+      allow create: if !exists(/databases/$(database)/documents/admin/access)
+        && request.resource.data.keys().hasAll(['allowedEmails'])
+        && request.resource.data.allowedEmails is list
+        && request.resource.data.allowedEmails.size() >= 1
+        && request.resource.data.allowedEmails.size() <= 20
+        && request.resource.data.allowedEmails.hasAll([request.auth.token.email]);
+      allow update: if isAdmin()
+        && request.resource.data.keys().hasOnly(['allowedEmails'])
+        && request.resource.data.allowedEmails is list
+        && request.resource.data.allowedEmails.size() >= 1
+        && request.resource.data.allowedEmails.size() <= 20;
+      allow delete: if false;
+    }
+
+    match /publicConfig/invitation {
+      allow read: if true;
+      allow create: if isAdmin()
+        || (!exists(/databases/$(database)/documents/publicConfig/invitation)
+          && request.auth == null
+          && isValidInvitationData());
+      allow update: if isAdmin()
+        && isValidInvitationData();
+      allow delete: if isAdmin();
+    }
+
+    match /rsvpResponses/{responseId} {
+      allow create: if request.resource.data.keys().hasAll(['guestName', 'attendance', 'companions', 'note', 'submittedAt'])
+        && request.resource.data.guestName is string
+        && request.resource.data.guestName.size() > 0
+        && request.resource.data.guestName.size() <= 120
+        && isSafeText(request.resource.data.guestName)
+        && request.resource.data.attendance in ['yes', 'no']
+        && request.resource.data.companions is int
+        && request.resource.data.companions >= 0
+        && request.resource.data.companions <= 10
+        && request.resource.data.note is string
+        && request.resource.data.note.size() <= 240
+        && isSafeText(request.resource.data.note);
+
+      allow read, update, delete: if isAdmin();
+    }
+  }
+}
