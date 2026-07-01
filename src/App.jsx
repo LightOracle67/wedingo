@@ -1,5 +1,5 @@
-import eucalyptusSrc from './assets/eucalyptus.png';
-import heroBackdropSrc from './assets/rings.png';
+import eucalyptusSrc from "./assets/eucalyptus.png";
+import heroBackdropSrc from "./assets/rings.png";
 
 export default function App() {
   return (
