@@ -1,5 +1,4 @@
 import { memo } from "react";
-import eucalyptusSrc from "../../assets/eucalyptus.png";
 import heroBackdropSrc from "../../assets/rings.png";
 
 const HeroSection = memo(function HeroSection({ style, className, firstName, secondName, inviteMessage, countdown }) {
@@ -45,13 +44,6 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
             </div>
           ) : null}
         </div>
-      </div>
-
-      <div className="pointer-events-none absolute left-[-0.5rem] top-0 z-0 wedding-decoration wedding-decoration--left">
-        <img src={eucalyptusSrc} alt="Decoración de rama de eucalipto" className="wedding-decoration__image" />
-      </div>
-      <div className="pointer-events-none absolute right-[-0.5rem] bottom-[-0.5rem] z-0 wedding-decoration wedding-decoration--right">
-        <img src={eucalyptusSrc} alt="Decoración de rama de eucalipto" className="wedding-decoration__image" />
       </div>
     </section>
   );
