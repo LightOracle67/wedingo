@@ -1717,6 +1717,16 @@ select.setup-input {
   margin-top: 0.35rem;
 }
 
+.setup-form--nested > .setup-actions {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  background: linear-gradient(180deg, transparent, var(--setup-field-bg) 30%);
+  margin: 0 -0.85rem -0.85rem;
+  padding: 2rem 0.85rem 0.85rem;
+  pointer-events: auto;
+}
+
 .setup-date-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
