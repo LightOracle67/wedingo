@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useApp } from "../contexts/AppContext";
 import SetupForm from "../components/SetupForm";
@@ -21,19 +21,50 @@ function formatDate(iso) {
   }
 }
 
+function NavigateUnauthenticated() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const timer = setTimeout(() => navigate("/setup", { replace: true }), 4000);
+    return () => clearTimeout(timer);
+  }, [navigate]);
+
+  return (
+    <div className="setup-layout">
+      <section className="setup-card" style={{ textAlign: "center" }}>
+        <header className="setup-header" style={{ justifyContent: "center" }}>
+          <div>
+            <p className="setup-eyebrow">Acceso restringido</p>
+            <h1 className="setup-title">No has iniciado sesión</h1>
+            <p className="setup-subtitle">
+              Para acceder al panel de administración necesitas iniciar sesión desde la página de configuración.
+            </p>
+          </div>
+        </header>
+        <p className="setup-help" style={{ marginTop: "1rem" }}>
+          Serás redirigido automáticamente en unos segundos...
+        </p>
+        <div className="setup-actions" style={{ justifyContent: "center", marginTop: "1.25rem" }}>
+          <button className="setup-button" type="button" onClick={() => navigate("/setup", { replace: true })}>
+            Ir a configuración
+          </button>
+          <button className="setup-button setup-button--ghost" type="button" onClick={() => navigate("/")}>
+            Volver a la portada
+          </button>
+        </div>
+      </section>
+    </div>
+  );
+}
+
 export default function AdminPage() {
   const navigate = useNavigate();
   const {
     hasStoredConfig, isConfigLoading, configLoadError,
     isAdminTokenLoggedIn, config,
-    adminLoginUsername, setAdminLoginUsername,
-    setupToken, setupTokenInput, setSetupTokenInput,
-    generatedToken,
-    isTokenVerifying,
-    authMessage, authMessageType,
+    setupToken,
     rsvpEntries,
     adminMessage,
-    handleGenerateToken, handleAdminTokenLogin,
     handleAdminLogout, handleResetTokenFromAdmin,
     handleClearRsvpEntries,
   } = useApp();
@@ -128,81 +159,7 @@ export default function AdminPage() {
   }
 
   if (!isAdminTokenLoggedIn) {
-    return (
-      <div className="setup-layout">
-        <section className="setup-card allow-select" aria-label="Acceso administrativo">
-          <header className="setup-header">
-            <div>
-              <p className="setup-eyebrow">Área privada</p>
-              <h1 className="setup-title">Acceso de administrador</h1>
-              <p className="setup-subtitle">
-                Introduce tu usuario y genera un código de acceso de un solo uso.
-              </p>
-            </div>
-          </header>
-
-          <form className="setup-form" onSubmit={(e) => { e.preventDefault(); handleAdminTokenLogin(); }}>
-            <div className="setup-token-card">
-              <label className="setup-label" htmlFor="adminLoginUsername">Usuario</label>
-              <input
-                id="adminLoginUsername"
-                className="setup-input"
-                value={adminLoginUsername}
-                onChange={(e) => setAdminLoginUsername(e.target.value.toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 50))}
-                placeholder="Escribe tu nombre de usuario"
-                autoComplete="username"
-                name="username"
-              />
-              <div className="setup-actions" style={{ marginTop: "1rem" }}>
-                <button className="setup-button" type="button" onClick={handleGenerateToken}>
-                  Generar código de acceso
-                </button>
-              </div>
-              {generatedToken ? (
-                <div className="setup-token-card" style={{ marginTop: "1rem" }}>
-                  <p className="setup-label setup-label--tight">Código generado (único uso)</p>
-                  <p className="setup-help setup-help--tight">
-                    Cópialo o haz clic en "Entrar" para usarlo ahora.
-                  </p>
-                  <label className="setup-label" htmlFor="adminGeneratedToken" style={{ textAlign: "center", display: "block" }}>Código generado</label>
-                  <p
-                    id="adminGeneratedToken"
-                    className="setup-token-display"
-                    role="textbox"
-                    aria-readonly="true"
-                    tabIndex={0}
-                    style={{ fontSize: "1.2em", letterSpacing: "0.15em", textAlign: "center" }}
-                  >
-                    {generatedToken}
-                  </p>
-                  <label className="setup-label" htmlFor="adminTokenInput" style={{ marginTop: "1rem", display: "block" }}>Introduce el código de acceso</label>
-                  <input
-                    id="adminTokenInput"
-                    className="setup-input setup-token-input"
-                    type="password"
-                    value={setupTokenInput}
-                    onChange={(e) => setSetupTokenInput(e.target.value.toUpperCase())}
-                    placeholder="Pega aquí el código de acceso"
-                    maxLength={19}
-                    autoComplete="current-password"
-                    spellCheck="false"
-                  />
-                  <button className="setup-button" type="submit" disabled={isTokenVerifying}>
-                    {isTokenVerifying ? "Comprobando..." : "Entrar"}
-                  </button>
-                </div>
-              ) : null}
-            </div>
-            {authMessage ? <p className={authMessageType === "success" ? "setup-success" : "setup-error"}>{authMessage}</p> : null}
-            <div className="setup-actions">
-              <button className="setup-button setup-button--ghost" type="button" onClick={() => navigate("/")}>
-                Volver a la portada
-              </button>
-            </div>
-          </form>
-        </section>
-      </div>
-    );
+    return <NavigateUnauthenticated />;
   }
 
   const confirmedResponses = rsvpEntries.filter((e) => e.attendance === "yes").length;
