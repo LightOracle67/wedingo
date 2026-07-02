@@ -187,13 +187,18 @@ export default function AdminPage() {
   );
 
   const exportCsv = () => {
+    const sanitize = (val) => {
+      const s = String(val);
+      if (/^[=+\-@]/.test(s)) return `"'${s}"`;
+      return `"${s.replace(/"/g, '""')}"`;
+    };
     const header = "Nombre,Asistencia,Acompañantes,Nota,Fecha";
     const rows = rsvpEntries.map((e) =>
       [
-        `"${e.guestName}"`,
+        sanitize(e.guestName),
         e.attendance === "yes" ? "Sí" : "No",
         e.attendance === "yes" ? e.companions : 0,
-        `"${(e.note || "").replace(/"/g, '""')}"`,
+        sanitize(e.note || ""),
         formatDate(e.submittedAt),
       ].join(","),
     );

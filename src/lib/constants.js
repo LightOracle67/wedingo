@@ -1,6 +1,5 @@
 export const ALLOWED_UPLOAD_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
 export const MAX_UPLOAD_SIZE_BYTES = 20 * 1024 * 1024;
-export const COMPRESSED_TARGET_BYTES = 500 * 1024;
 
 export const MONTH_OPTIONS = [
   { value: "enero", label: "Enero" },

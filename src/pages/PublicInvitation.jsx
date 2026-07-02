@@ -506,45 +506,47 @@ export default function PublicInvitation() {
             Tu respuesta nos ayuda a organizar cada detalle de la celebración.
           </p>
 
-          <form className="rsvp-form" onSubmit={handleRsvpSubmit}>
-            <label className="setup-label" htmlFor="rsvpName">Tu nombre</label>
-            <input
-              id="rsvpName"
-              className="setup-input"
-              value={rsvpForm.guestName}
-              onChange={(e) => updateRsvpField("guestName", e.target.value.slice(0, 120))}
-              placeholder="Escribe tu nombre y apellidos"
-              autoComplete="off"
-            />
+            <form className="rsvp-form" onSubmit={handleRsvpSubmit}>
+              <label className="setup-label" htmlFor="rsvpName">Tu nombre</label>
+              <input
+                id="rsvpName"
+                className="setup-input"
+                value={rsvpForm.guestName}
+                onChange={(e) => updateRsvpField("guestName", e.target.value.slice(0, 120))}
+                placeholder="Escribe tu nombre y apellidos"
+                autoComplete="off"
+                required
+              />
 
-            <div className="setup-date-grid rsvp-choice-grid">
-              <div>
-                <label className="setup-label" htmlFor="rsvpAttendance">¿Asistirás?</label>
-                <select
-                  id="rsvpAttendance"
-                  className="setup-input"
-                  value={rsvpForm.attendance}
-                  onChange={(e) => updateRsvpField("attendance", e.target.value)}
-                >
-                  <option value="yes">Sí, asistiré</option>
-                  <option value="no">No podré asistir</option>
-                </select>
+              <div className="setup-date-grid rsvp-choice-grid">
+                <div>
+                  <label className="setup-label" htmlFor="rsvpAttendance">¿Asistirás?</label>
+                  <select
+                    id="rsvpAttendance"
+                    className="setup-input"
+                    value={rsvpForm.attendance}
+                    onChange={(e) => updateRsvpField("attendance", e.target.value)}
+                  >
+                    <option value="yes">Sí, asistiré</option>
+                    <option value="no">No podré asistir</option>
+                  </select>
+                </div>
+                <div style={{ opacity: rsvpForm.attendance === "no" ? 0.4 : 1 }}>
+                  <label className="setup-label" htmlFor="rsvpCompanions">Acompañantes</label>
+                  <input
+                    id="rsvpCompanions"
+                    className="setup-input"
+                    type="number"
+                    min="0"
+                    max="10"
+                    value={rsvpForm.attendance === "no" ? "" : rsvpForm.companions}
+                    onChange={(e) => updateRsvpField("companions", e.target.value)}
+                    disabled={rsvpForm.attendance === "no"}
+                    placeholder="Número de acompañantes"
+                    tabIndex={rsvpForm.attendance === "no" ? -1 : 0}
+                  />
+                </div>
               </div>
-              <div>
-                <label className="setup-label" htmlFor="rsvpCompanions">Acompañantes</label>
-                <input
-                  id="rsvpCompanions"
-                  className="setup-input"
-                  type="number"
-                  min="0"
-                  max="10"
-                  value={rsvpForm.companions}
-                  onChange={(e) => updateRsvpField("companions", e.target.value)}
-                  disabled={rsvpForm.attendance === "no"}
-                  placeholder="Número de acompañantes"
-                />
-              </div>
-            </div>
 
             <label className="setup-label" htmlFor="rsvpNote">Mensaje opcional</label>
             <textarea
@@ -562,7 +564,7 @@ export default function PublicInvitation() {
             </div>
           </form>
 
-          {rsvpMessage ? <p className="rsvp-feedback">{rsvpMessage}</p> : null}
+          {rsvpMessage ? <p className="rsvp-feedback" aria-live="polite">{rsvpMessage}</p> : null}
         </div>
       </section>
     </div>
