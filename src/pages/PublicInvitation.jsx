@@ -321,10 +321,8 @@ export default function PublicInvitation() {
       <button
         type="button"
         onClick={() => {
-          const guestName = window.prompt("¿Cómo te llamas?");
-          if (!guestName || !guestName.trim()) return;
           const message = [
-            `¡Hola! Soy ${guestName.trim()} y quería compartir contigo la invitación de boda de ${config.firstName} & ${config.secondName}.`,
+            `Te invito a la boda de ${config.firstName} & ${config.secondName}.`,
             formattedDate ? `Será el ${formattedDate}.` : "",
             `${window.location.origin}`,
           ].filter(Boolean).join("\n\n");
