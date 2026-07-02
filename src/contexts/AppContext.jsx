@@ -141,12 +141,25 @@ export function AppProvider({ children }) {
     (async () => {
       await refreshSetupToken();
     })();
-  }, [hasStoredConfig, refreshSetupToken]);
+  }, [hasStoredConfig]);
 
   useEffect(() => {
     return () => {
       if (rsvpSubmitTimeoutRef.current) clearTimeout(rsvpSubmitTimeoutRef.current);
     };
+  }, []);
+
+  const updateFormField = useCallback((field, value) => {
+    setFormData((current) => ({ ...current, [field]: value }));
+  }, []);
+
+  const applyBackgroundImage = useCallback((backgroundImage, backgroundImageLabel, backgroundImageSource) => {
+    setFormData((current) => ({
+      ...current,
+      backgroundImage,
+      backgroundImageLabel,
+      backgroundImageSource,
+    }));
   }, []);
 
   const refreshSetupToken = useCallback(async () => {
@@ -166,19 +179,6 @@ export function AppProvider({ children }) {
     }
 
     return nextToken;
-  }, []);
-
-  const updateFormField = useCallback((field, value) => {
-    setFormData((current) => ({ ...current, [field]: value }));
-  }, []);
-
-  const applyBackgroundImage = useCallback((backgroundImage, backgroundImageLabel, backgroundImageSource) => {
-    setFormData((current) => ({
-      ...current,
-      backgroundImage,
-      backgroundImageLabel,
-      backgroundImageSource,
-    }));
   }, []);
 
   const updateRsvpField = useCallback((field, value) => {
