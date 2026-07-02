@@ -834,6 +834,35 @@ body::after {
     0 0 30px color-mix(in srgb, var(--invite-shell-glow) 70%, transparent);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
+  overflow: hidden;
+}
+
+.story-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--invite-shell-glow) 60%, transparent) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.story-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--setup-accent) 8%, transparent) 10%,
+    color-mix(in srgb, var(--setup-accent) 30%, transparent) 50%,
+    color-mix(in srgb, var(--setup-accent) 8%, transparent) 90%,
+    transparent 100%
+  );
+  pointer-events: none;
 }
 
 .story-card--details {
@@ -942,10 +971,23 @@ body::after {
 }
 
 .story-divider {
-  width: min(6rem, 30%);
+  width: min(7rem, 35%);
   height: 1px;
-  margin: 0.5rem auto 0;
-  background: color-mix(in srgb, var(--setup-accent) 72%, transparent);
+  margin: 0.7rem auto 0;
+  background: color-mix(in srgb, var(--setup-accent) 20%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.story-divider::after {
+  content: "";
+  width: 0.35rem;
+  height: 0.35rem;
+  border: 1px solid color-mix(in srgb, var(--setup-accent) 50%, transparent);
+  border-radius: 1px;
+  transform: rotate(45deg);
+  background: color-mix(in srgb, var(--invite-shell-bg) 70%, transparent);
 }
 
 .story-note {
