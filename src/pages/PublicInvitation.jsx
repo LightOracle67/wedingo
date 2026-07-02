@@ -323,8 +323,8 @@ export default function PublicInvitation() {
         onClick={() => {
           const inviteLink = window.location.origin;
           const message = formattedDate
-            ? `${config.firstName} & ${config.secondName} — ${formattedDate}.\n\n${inviteLink}`
-            : `${config.firstName} & ${config.secondName} — invitación de boda.\n\n${inviteLink}`;
+            ? `Te invitamos a la boda de ${config.firstName} & ${config.secondName} el ${formattedDate}.\n\n${inviteLink}`
+            : `Te invitamos a la boda de ${config.firstName} & ${config.secondName}.\n\n${inviteLink}`;
           window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, "_blank", "noreferrer");
         }}
         style={{ border: "none", outline: "none" }}
