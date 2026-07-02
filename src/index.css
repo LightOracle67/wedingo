@@ -1211,6 +1211,38 @@ h6 {
   }
 }
 
+.wedding-decoration--left {
+  animation: subtle-float 6s ease-in-out infinite;
+}
+
+.wedding-decoration--right {
+  animation: subtle-float 6s ease-in-out infinite reverse;
+}
+
+.landing-bg {
+  position: relative;
+}
+
+.landing-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255, 255, 255, 0.08) 0%, transparent 100%),
+    radial-gradient(ellipse 60% 50% at 50% 100%, rgba(255, 255, 255, 0.06) 0%, transparent 100%);
+  animation: landing-pulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes landing-pulse {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 @media (min-width: 1024px) {
   .wedding-decoration {
     width: clamp(220px, 24vw, 360px);
@@ -1659,6 +1691,21 @@ h6 {
   color: var(--setup-muted);
   font-size: 0.85rem;
   line-height: 1.35;
+}
+
+.setup-location-preview {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--setup-border) 72%, transparent);
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--setup-field-bg) 76%, transparent);
+}
+
+.setup-location-preview__image {
+  display: block;
+  width: 100%;
+  border-radius: 0.65rem;
+  margin-top: 0.5rem;
 }
 
 .setup-button--compact {

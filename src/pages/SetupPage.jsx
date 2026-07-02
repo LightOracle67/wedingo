@@ -13,6 +13,7 @@ export default function SetupPage() {
     authMessage, authMessageType,
     handleTokenLogin, handleResetSetupToken,
     saveMessage, config,
+    confirmTokenInput, setConfirmTokenInput,
   } = useApp();
 
   const [showSuccess, setShowSuccess] = useState(false);
@@ -85,42 +86,59 @@ export default function SetupPage() {
           </header>
 
           <form className="setup-form" onSubmit={(e) => { e.preventDefault(); handleTokenLogin(); }}>
-            <div className="setup-token-card">
-              <label className="setup-label" htmlFor="setupTokenLoginUsername">
-                Usuario
-              </label>
-              <input
-                id="setupTokenLoginUsername"
-                className="setup-input"
-                value={tokenLoginUsername}
-                onChange={(e) => setTokenLoginUsername(e.target.value.toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 50))}
-                placeholder="Escribe tu nombre de usuario"
-                autoComplete="username"
-                name="username"
-              />
+            <label className="setup-label" htmlFor="setupTokenLoginUsername">
+              Usuario
+            </label>
+            <input
+              id="setupTokenLoginUsername"
+              className="setup-input"
+              value={tokenLoginUsername}
+              onChange={(e) => setTokenLoginUsername(e.target.value.toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 50))}
+              placeholder="Escribe tu nombre de usuario"
+              autoComplete="username"
+              name="username"
+            />
 
-              <label className="setup-label" htmlFor="setupTokenLoginCode">
-                Código de acceso
-              </label>
-              <p className="setup-help setup-help--tight">
-                Cópialo tal como aparece. Si no lo tienes, genera uno nuevo.
-              </p>
-              <input
-                id="setupTokenLoginCode"
-                className="setup-input setup-token-input"
-                type="password"
-                value={setupTokenInput}
-                onChange={(e) => setSetupTokenInput(e.target.value.toUpperCase())}
-                placeholder="Pega aquí el código de acceso"
-                maxLength={19}
-                autoComplete="current-password"
-                spellCheck="false"
-              />
-              {setupToken ? <p className="setup-token-display">Código activo (solo tú lo ves).</p> : null}
+            <label className="setup-label" htmlFor="setupTokenLoginCode">
+              Código de acceso
+            </label>
+            <p className="setup-help setup-help--tight">
+              Cópialo tal como aparece. Si no lo tienes, genera uno nuevo.
+            </p>
+            <input
+              id="setupTokenLoginCode"
+              className="setup-input setup-token-input"
+              type="password"
+              value={setupTokenInput}
+              onChange={(e) => setSetupTokenInput(e.target.value.toUpperCase())}
+              placeholder="Pega aquí el código de acceso"
+              maxLength={19}
+              autoComplete="current-password"
+              spellCheck="false"
+            />
+            {setupToken ? <p className="setup-token-display">Código activo (solo tú lo ves).</p> : null}
+
+            <label className="setup-label" htmlFor="setupConfirmReset">
+              Confirmar
+            </label>
+            <p className="setup-help setup-help--tight">
+              Para generar un código nuevo, escribe el código de acceso actual.
+            </p>
+            <input
+              id="setupConfirmReset"
+              className="setup-input"
+              value={confirmTokenInput}
+              onChange={(e) => setConfirmTokenInput(e.target.value)}
+              placeholder="Pega aquí el código actual"
+              autoComplete="off"
+              spellCheck="false"
+            />
+
+            <div className="setup-actions">
               <button className="setup-button" type="submit" disabled={isTokenVerifying}>
                 {isTokenVerifying ? "Comprobando..." : "Entrar"}
               </button>
-              <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleResetSetupToken}>
+              <button className="setup-button setup-button--ghost" type="button" onClick={handleResetSetupToken}>
                 Generar nuevo código
               </button>
             </div>

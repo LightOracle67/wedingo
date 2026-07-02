@@ -41,7 +41,13 @@ export default function PublicInvitation() {
     isAdminTokenLoggedIn,
   } = useApp();
 
-  const sectionOrder = useMemo(() => parseSectionOrder(config.sectionOrder), [config.sectionOrder]);
+  const sectionOrder = useMemo(() => {
+    const parsed = parseSectionOrder(config.sectionOrder);
+    if (isAdminTokenLoggedIn || isInviteMode) {
+      return parsed.includes("rsvp") ? parsed : [...parsed, "rsvp"];
+    }
+    return parsed;
+  }, [config.sectionOrder, isAdminTokenLoggedIn, isInviteMode]);
   const showRsvp = isAdminTokenLoggedIn || isInviteMode;
   const visibleOrder = useMemo(
     () => showRsvp ? sectionOrder : sectionOrder.filter((s) => s !== "rsvp"),
@@ -381,6 +387,8 @@ export default function PublicInvitation() {
     updateRsvpField, handleRsvpSubmit,
   ]);
 
+  const isEmpty = !config.firstName && !config.secondName && !isInviteMode;
+
   return (
     <div className={`app-scene ${isStoryTransitioning ? "app-scene--transitioning" : ""}`}>
       <div className="pointer-events-none fixed left-[-0.5rem] top-0 z-0 wedding-decoration wedding-decoration--left">
@@ -390,7 +398,29 @@ export default function PublicInvitation() {
         <img src={eucalyptusSrc} alt="" aria-hidden="true" className="wedding-decoration__image" />
       </div>
 
-      {showScrollHint ? (
+      {isEmpty ? (
+        <section className="story-section story-section--is-active landing-bg flex min-h-screen items-center justify-center px-4">
+          <div className="story-panel story-panel--hero w-full max-w-md text-center">
+            <h1 className="hero-title invite-title text-[clamp(2.5rem,8vw,4.5rem)] leading-tight font-serif text-boda-texto">
+              Wedingo
+            </h1>
+            <p className="mt-4 text-[clamp(1rem,3vw,1.35rem)] leading-relaxed font-serif text-boda-texto/80">
+              Crea y comparte tu invitación de boda personalizada.
+            </p>
+            <div className="story-divider my-6" />
+            <p className="text-[0.95rem] leading-relaxed text-boda-texto/60">
+              Gestiona los datos de tu invitación, comparte un enlace único con tus invitados y recibe sus confirmaciones de asistencia.
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <a href="/setup" className="setup-button text-sm">
+                Crear invitación
+              </a>
+            </div>
+          </div>
+        </section>
+      ) : (
+        <>
+          {showScrollHint ? (
         <button
           type="button"
           className="story-scroll-hint"
@@ -413,19 +443,21 @@ export default function PublicInvitation() {
         </svg>
       </button>
 
-      {sectionOrder.map((sectionKey) => {
-        if (sectionKey === "rsvp" && !showRsvp) return null;
-        const Component = SECTION_COMPONENTS[sectionKey];
-        if (!Component) return null;
-        return (
-          <Component
-            key={sectionKey}
-            style={getStorySectionStyle(sectionKey)}
-            className={getStorySectionClassName(sectionKey)}
-            {...sectionProps[sectionKey]}
-          />
-        );
-      })}
+          {sectionOrder.map((sectionKey) => {
+            if (sectionKey === "rsvp" && !showRsvp) return null;
+            const Component = SECTION_COMPONENTS[sectionKey];
+            if (!Component) return null;
+            return (
+              <Component
+                key={sectionKey}
+                style={getStorySectionStyle(sectionKey)}
+                className={getStorySectionClassName(sectionKey)}
+                {...sectionProps[sectionKey]}
+              />
+            );
+          })}
+        </>
+      )}
     </div>
   );
 }

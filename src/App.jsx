@@ -38,6 +38,9 @@ function AppShell() {
         <nav className="admin-bar" role="navigation" aria-label="Sesión">
           <div className="admin-bar__inner">
             <span className="admin-bar__title">No has iniciado sesión</span>
+            <div className="admin-bar__links">
+              <Link className="admin-bar__link" to="/setup">Iniciar sesión</Link>
+            </div>
           </div>
         </nav>
       ) : null}

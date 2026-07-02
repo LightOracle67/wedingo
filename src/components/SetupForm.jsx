@@ -207,6 +207,18 @@ export default function SetupForm({ prefix = "" }) {
           </div>
         </fieldset>
 
+        {(() => {
+          if (!previewBackgrounds.length) return null;
+          const locationPreview = previewBackgrounds.find((bg) => bg.id === "default");
+          if (!locationPreview) return null;
+          return (
+            <div className="setup-location-preview">
+              <p className="setup-label setup-label--tight">Previsualización del mapa</p>
+              <img src={locationPreview.src} alt="Mapa de la ubicación" className="setup-location-preview__image" />
+            </div>
+          );
+        })()}
+
         <label className="setup-label" htmlFor={id("weddingSchedule")}>
           Horario de la boda
         </label>
@@ -268,7 +280,7 @@ export default function SetupForm({ prefix = "" }) {
 
           {previewBackgrounds.length ? (
             <div className="setup-background-grid">
-              {previewBackgrounds.map((bg) => (
+              {previewBackgrounds.filter((bg) => bg.id !== "default").map((bg) => (
                 <button
                   key={bg.id}
                   className="setup-background-card"
