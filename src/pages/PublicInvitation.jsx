@@ -31,11 +31,16 @@ export default function PublicInvitation() {
     locationMapContainerRef, locationMapError, setLocationMapError,
     locationMapLoading, setLocationMapLoading, locationMapTarget, setLocationMapTarget,
     handleRsvpSubmit, updateRsvpField,
+    isAdminTokenLoggedIn,
   } = useApp();
 
   const sectionOrder = useMemo(() => parseSectionOrder(config.sectionOrder), [config.sectionOrder]);
-  const sectionOrderRef = useRef(sectionOrder);
-  useEffect(() => { sectionOrderRef.current = sectionOrder; }, [sectionOrder]);
+  const visibleOrder = useMemo(
+    () => isAdminTokenLoggedIn ? sectionOrder : sectionOrder.filter((s) => s !== "rsvp"),
+    [sectionOrder, isAdminTokenLoggedIn],
+  );
+  const visibleOrderRef = useRef(visibleOrder);
+  useEffect(() => { visibleOrderRef.current = visibleOrder; }, [visibleOrder]);
 
   const [activeStorySection, setActiveStorySection] = useState(sectionOrder[0] || "hero");
   const [storyTransition, setStoryTransition] = useState({
@@ -85,7 +90,7 @@ export default function PublicInvitation() {
   }, [weddingDate]);
 
   const getStorySectionStyle = useCallback((sectionKey) => {
-    const order = sectionOrderRef.current;
+    const order = visibleOrderRef.current;
     const sectionIndex = order.indexOf(sectionKey);
     const activeIndex = order.indexOf(activeStorySection);
     const { fromIndex, toIndex, direction } = storyTransition;
@@ -127,7 +132,7 @@ export default function PublicInvitation() {
   }, [activeStorySection, storyTransition]);
 
   const getStorySectionClassName = useCallback((sectionKey) => {
-    const order = sectionOrderRef.current;
+    const order = visibleOrderRef.current;
     const sectionIndex = order.indexOf(sectionKey);
     const activeIndex = order.indexOf(activeStorySection);
     const { fromIndex, toIndex } = storyTransition;
@@ -156,7 +161,7 @@ export default function PublicInvitation() {
     const startTransition = (direction) => {
       if (storyTransitionRef.current.toIndex !== null) return;
 
-      const order = sectionOrderRef.current;
+      const order = visibleOrderRef.current;
       const currentIndex = order.indexOf(activeStorySectionRef.current);
       const targetIndex = Math.max(0, Math.min(order.length - 1, currentIndex + direction));
       if (targetIndex === currentIndex) return;
@@ -317,8 +322,7 @@ export default function PublicInvitation() {
     window.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowDown" }));
   }, []);
 
-  const lastSectionKey = sectionOrder[sectionOrder.length - 1];
-  const showScrollHint = activeStorySection !== lastSectionKey;
+  const showScrollHint = activeStorySection !== visibleOrder[visibleOrder.length - 1];
 
   const handleWhatsAppShare = useCallback(() => {
     const inviteLink = window.location.origin;
@@ -394,6 +398,7 @@ export default function PublicInvitation() {
       </button>
 
       {sectionOrder.map((sectionKey) => {
+        if (sectionKey === "rsvp" && !isAdminTokenLoggedIn) return null;
         const Component = SECTION_COMPONENTS[sectionKey];
         if (!Component) return null;
         return (
