@@ -1,5 +1,5 @@
 import { useApp } from "../contexts/AppContext";
-import { MONTH_OPTIONS, THEME_GROUPS, THEME_OPTIONS } from "../lib/constants";
+import { MONTH_OPTIONS, THEME_GROUPS, THEME_OPTIONS, THEME_PREVIEW_COLORS } from "../lib/constants";
 
 export default function SetupForm({ prefix = "" }) {
   const {
@@ -54,24 +54,39 @@ export default function SetupForm({ prefix = "" }) {
           placeholder="Escribe el mensaje de la invitación"
         />
 
-        <label className="setup-label" htmlFor={id("themeSelect")}>
-          Tema visual
-        </label>
-        <select
-          id={id("themeSelect")}
-          className="setup-input"
-          value={formData.theme}
-          onChange={(e) => updateFormField("theme", e.target.value)}
-        >
+        <fieldset className="theme-picker">
+          <legend className="setup-label">Tema visual</legend>
           {THEME_GROUPS.map((group) => (
-            <optgroup key={group.value} label={group.label}>
-              {THEME_OPTIONS.filter((t) => t.group === group.value).map((theme) => (
-                <option key={theme.value} value={theme.value}>{theme.label}</option>
-              ))}
-            </optgroup>
+            <div key={group.value}>
+              <p className="theme-picker__group">{group.label}</p>
+              <div className="theme-picker__grid">
+                {THEME_OPTIONS.filter((t) => t.group === group.value).map((theme) => {
+                  const colors = THEME_PREVIEW_COLORS[theme.value];
+                  return (
+                    <button
+                      key={theme.value}
+                      type="button"
+                      className={`theme-picker__card ${formData.theme === theme.value ? "theme-picker__card--active" : ""}`}
+                      onClick={() => updateFormField("theme", theme.value)}
+                      aria-pressed={formData.theme === theme.value}
+                    >
+                      <span
+                        className="theme-picker__swatch"
+                        style={{ background: `linear-gradient(135deg, ${colors.bg} 0%, ${colors.bg} 50%, ${colors.accent} 100%)` }}
+                      >
+                        <span className="theme-picker__dot" style={{ background: colors.accent }} />
+                      </span>
+                      <span className="theme-picker__info">
+                        <span className="theme-picker__name">{theme.label}</span>
+                        <span className="theme-picker__hint">{theme.hint}</span>
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
           ))}
-        </select>
-        <p className="setup-help">{THEME_OPTIONS.find((t) => t.value === formData.theme)?.hint}</p>
+        </fieldset>
 
         <label className="setup-label" htmlFor={id("weddingPlace")}>
           Lugar de la boda

@@ -1,14 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Marcellus&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap");
 @import "tailwindcss";
 
 /* Variables base del tema por defecto (dorado clasico). */
 :root {
-  --font-heading: "Great Vibes", cursive;
-  --font-body: "Cormorant Garamond", serif;
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Lora", serif;
   --wedding-background-image: none;
   --page-wash: rgba(255, 246, 220, 0.16);
   --page-blur-min: 2.1px;
@@ -57,8 +54,8 @@
 
 /* Variantes de tema aplicadas via data attribute en <html>. */
 :root[data-wedding-theme="forest"] {
-  --font-heading: "Marcellus", serif;
-  --font-body: "Quicksand", sans-serif;
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Lora", serif;
   --page-wash: rgba(211, 245, 231, 0.16);
   --page-blur-offset: -0.15px;
   --spark-1: rgba(171, 237, 213, 0.21);
@@ -102,8 +99,8 @@
 }
 
 :root[data-wedding-theme="rose"] {
-  --font-heading: "Cinzel", serif;
-  --font-body: "Cormorant Garamond", serif;
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Lora", serif;
   --page-wash: rgba(255, 228, 238, 0.2);
   --page-blur-offset: 0.2px;
   --spark-1: rgba(255, 204, 224, 0.22);
@@ -147,8 +144,8 @@
 }
 
 :root[data-wedding-theme="amber-night"] {
-  --font-heading: "Cinzel", serif;
-  --font-body: "Cormorant Garamond", serif;
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Lora", serif;
   --page-wash: rgba(72, 44, 14, 0.18);
   --page-blur-offset: 0.2px;
   --spark-1: rgba(255, 216, 133, 0.24);
@@ -192,8 +189,8 @@
 }
 
 :root[data-wedding-theme="onyx-gold"] {
-  --font-heading: "Marcellus", serif;
-  --font-body: "Cormorant Garamond", serif;
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Lora", serif;
   --page-wash: rgba(35, 22, 10, 0.24);
   --page-blur-offset: 0.1px;
   --spark-1: rgba(241, 205, 126, 0.22);
@@ -237,8 +234,8 @@
 }
 
 :root[data-wedding-theme="linen-soft"] {
-  --font-heading: "Marcellus", serif;
-  --font-body: "Cormorant Garamond", serif;
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Lora", serif;
   --page-wash: rgba(255, 250, 242, 0.22);
   --page-blur-offset: -0.05px;
   --spark-1: rgba(213, 186, 141, 0.2);
@@ -276,8 +273,8 @@
 /* Temas claros adicionales */
 
 :root[data-wedding-theme="blush-pearl"] {
-  --font-heading: "Cinzel", serif;
-  --font-body: "Cormorant Garamond", serif;
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Lora", serif;
   --page-wash: rgba(255, 235, 242, 0.2);
   --page-blur-offset: 0.1px;
   --spark-1: rgba(255, 204, 221, 0.22);
@@ -321,8 +318,8 @@
 }
 
 :root[data-wedding-theme="lavender-mist"] {
-  --font-heading: "Marcellus", serif;
-  --font-body: "Quicksand", sans-serif;
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Lora", serif;
   --page-wash: rgba(235, 230, 255, 0.2);
   --page-blur-offset: 0.05px;
   --spark-1: rgba(214, 202, 255, 0.22);
@@ -366,8 +363,8 @@
 }
 
 :root[data-wedding-theme="champagne-bubble"] {
-  --font-heading: "Great Vibes", cursive;
-  --font-body: "Cormorant Garamond", serif;
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Lora", serif;
   --page-wash: rgba(255, 248, 230, 0.22);
   --page-blur-offset: 0.08px;
   --spark-1: rgba(255, 235, 176, 0.22);
@@ -413,8 +410,8 @@
 /* Temas oscuros adicionales */
 
 :root[data-wedding-theme="burgundy-velvet"] {
-  --font-heading: "Cinzel", serif;
-  --font-body: "Cormorant Garamond", serif;
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Lora", serif;
   --page-wash: rgba(70, 18, 28, 0.26);
   --page-blur-offset: 0.2px;
   --spark-1: rgba(255, 200, 180, 0.22);
@@ -458,8 +455,8 @@
 }
 
 :root[data-wedding-theme="sapphire-night"] {
-  --font-heading: "Marcellus", serif;
-  --font-body: "Cormorant Garamond", serif;
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Lora", serif;
   --page-wash: rgba(8, 18, 48, 0.26);
   --page-blur-offset: 0.16px;
   --spark-1: rgba(196, 216, 255, 0.22);
@@ -503,8 +500,8 @@
 }
 
 :root[data-wedding-theme="emerald-grove"] {
-  --font-heading: "Marcellus", serif;
-  --font-body: "Quicksand", sans-serif;
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Lora", serif;
   --page-wash: rgba(0, 40, 24, 0.24);
   --page-blur-offset: 0.14px;
   --spark-1: rgba(160, 230, 196, 0.22);
@@ -548,8 +545,8 @@
 }
 
 :root[data-wedding-theme="plum-twilight"] {
-  --font-heading: "Cinzel", serif;
-  --font-body: "Cormorant Garamond", serif;
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Lora", serif;
   --page-wash: rgba(40, 8, 48, 0.26);
   --page-blur-offset: 0.2px;
   --spark-1: rgba(230, 180, 240, 0.22);
@@ -595,8 +592,8 @@
 /* Componentes de la seccion de detalles: calendario y mapa. */
 
 :root[data-wedding-theme="midnight-royal"] {
-  --font-heading: "Cinzel", serif;
-  --font-body: "Cormorant Garamond", serif;
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Lora", serif;
   --page-wash: rgba(12, 24, 54, 0.26);
   --page-blur-offset: 0.18px;
   --spark-1: rgba(236, 194, 93, 0.22);
@@ -1388,6 +1385,7 @@ h6 {
 }
 
 .setup-card {
+  position: relative;
   width: min(100%, 760px);
   background: linear-gradient(150deg, var(--setup-grad-start), var(--setup-grad-end));
   border: 1px solid var(--setup-border);
@@ -2424,4 +2422,120 @@ a:focus-visible {
   background: rgba(247, 227, 170, 0.1);
   color: var(--setup-accent);
   font-weight: 600;
+}
+
+/* ── Theme picker ── */
+.theme-picker {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.theme-picker__group {
+  margin: 0 0 0.5rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--setup-muted);
+  font-weight: 600;
+}
+
+.theme-picker__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.55rem;
+}
+
+.theme-picker__card {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid color-mix(in srgb, var(--setup-border) 70%, transparent);
+  border-radius: 0.75rem;
+  background: color-mix(in srgb, var(--setup-field-bg) 50%, transparent);
+  cursor: pointer;
+  text-align: left;
+  transition: background 180ms, border-color 180ms, box-shadow 180ms;
+  font-family: inherit;
+}
+
+.theme-picker__card:hover {
+  background: color-mix(in srgb, var(--setup-field-bg) 80%, transparent);
+  border-color: color-mix(in srgb, var(--setup-border) 90%, transparent);
+}
+
+.theme-picker__card--active {
+  border-color: var(--setup-accent);
+  background: color-mix(in srgb, var(--setup-accent) 14%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--setup-accent) 30%, transparent);
+}
+
+.theme-picker__swatch {
+  flex-shrink: 0;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 0.5rem;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.theme-picker__dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 999px;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+}
+
+.theme-picker__info {
+  display: grid;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.theme-picker__name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--setup-title);
+  line-height: 1.2;
+}
+
+.theme-picker__hint {
+  font-size: 0.74rem;
+  color: var(--setup-muted);
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Admin panel distinct style ── */
+.setup-card {
+  border: 1px solid color-mix(in srgb, var(--setup-accent) 20%, transparent);
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.38),
+    0 0 0 1px color-mix(in srgb, var(--setup-accent) 8%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.setup-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 1.5rem;
+  right: 1.5rem;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--setup-accent), transparent);
+  border-radius: 0 0 2px 2px;
+  opacity: 0.6;
+}
+
+.setup-header {
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--setup-border) 30%, transparent);
+  margin-bottom: 0.25rem;
 }

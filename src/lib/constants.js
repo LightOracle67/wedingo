@@ -41,6 +41,23 @@ export const THEME_OPTIONS = [
 
 export const THEME_VALUES = new Set(THEME_OPTIONS.map((t) => t.value));
 
+export const THEME_PREVIEW_COLORS = {
+  golden: { accent: "#d8b24a", bg: "#2a2418" },
+  forest: { accent: "#97c87a", bg: "#1a3d2e" },
+  rose: { accent: "#efb0c7", bg: "#4e1a2c" },
+  "linen-soft": { accent: "#c8ad7a", bg: "#5c4430" },
+  "blush-pearl": { accent: "#e8a0b4", bg: "#4a1e30" },
+  "lavender-mist": { accent: "#b8a0d8", bg: "#2e1848" },
+  "champagne-bubble": { accent: "#d4b86a", bg: "#52401e" },
+  "amber-night": { accent: "#ddb24b", bg: "#1e140e" },
+  "onyx-gold": { accent: "#d8ad43", bg: "#12100c" },
+  "midnight-royal": { accent: "#e0b84b", bg: "#0a102a" },
+  "burgundy-velvet": { accent: "#c87870", bg: "#2a0c14" },
+  "sapphire-night": { accent: "#8898cc", bg: "#080c20" },
+  "emerald-grove": { accent: "#70b890", bg: "#041c10" },
+  "plum-twilight": { accent: "#c088c8", bg: "#1c0824" },
+};
+
 export const THEME_GROUPS = [
   { value: "claros", label: "Temas claros" },
   { value: "oscuros", label: "Temas oscuros" },
