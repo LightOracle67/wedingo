@@ -35,6 +35,7 @@ export default function AdminPage() {
     handleGenerateToken, handleAdminTokenLogin,
     handleAdminLogout, handleResetTokenFromAdmin,
     handleClearRsvpEntries,
+    confirmTokenInput, setConfirmTokenInput,
   } = useApp();
 
   const [activeTab, setActiveTab] = useState("panel");
@@ -141,42 +142,59 @@ export default function AdminPage() {
           </header>
 
           <form className="setup-form" onSubmit={(e) => { e.preventDefault(); handleAdminTokenLogin(); }}>
-            <div className="setup-token-card">
-              <label className="setup-label" htmlFor="adminTokenLoginUsername">
-                Usuario
-              </label>
-              <input
-                id="adminTokenLoginUsername"
-                className="setup-input"
-                value={adminLoginUsername}
-                onChange={(e) => setAdminLoginUsername(e.target.value.toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 50))}
-                placeholder="Escribe tu nombre de usuario"
-                autoComplete="username"
-                name="username"
-              />
+            <label className="setup-label" htmlFor="adminTokenLoginUsername">
+              Usuario
+            </label>
+            <input
+              id="adminTokenLoginUsername"
+              className="setup-input"
+              value={adminLoginUsername}
+              onChange={(e) => setAdminLoginUsername(e.target.value.toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 50))}
+              placeholder="Escribe tu nombre de usuario"
+              autoComplete="username"
+              name="username"
+            />
 
-              <label className="setup-label" htmlFor="adminTokenLoginCode">
-                Código de acceso
-              </label>
-              <p className="setup-help setup-help--tight">
-                Cópialo tal como aparece. Si no lo tienes, genera uno nuevo.
-              </p>
-              <input
-                id="adminTokenLoginCode"
-                className="setup-input setup-token-input"
-                type="password"
-                value={setupTokenInput}
-                onChange={(e) => setSetupTokenInput(e.target.value.toUpperCase())}
-                placeholder="Pega aquí el código de acceso"
-                maxLength={19}
-                autoComplete="current-password"
-                spellCheck="false"
-              />
-              {setupToken ? <p className="setup-token-display">Código activo (solo tú lo ves).</p> : null}
+            <label className="setup-label" htmlFor="adminTokenLoginCode">
+              Código de acceso
+            </label>
+            <p className="setup-help setup-help--tight">
+              Cópialo tal como aparece. Si no lo tienes, genera uno nuevo.
+            </p>
+            <input
+              id="adminTokenLoginCode"
+              className="setup-input setup-token-input"
+              type="password"
+              value={setupTokenInput}
+              onChange={(e) => setSetupTokenInput(e.target.value.toUpperCase())}
+              placeholder="Pega aquí el código de acceso"
+              maxLength={19}
+              autoComplete="current-password"
+              spellCheck="false"
+            />
+            {setupToken ? <p className="setup-token-display">Código activo (solo tú lo ves).</p> : null}
+
+            <label className="setup-label" htmlFor="adminConfirmGenerate">
+              Confirmar
+            </label>
+            <p className="setup-help setup-help--tight">
+              Escribe <strong>CONFIRMAR</strong> para generar un código nuevo.
+            </p>
+            <input
+              id="adminConfirmGenerate"
+              className="setup-input"
+              value={confirmTokenInput}
+              onChange={(e) => setConfirmTokenInput(e.target.value)}
+              placeholder="Escribe CONFIRMAR"
+              autoComplete="off"
+              spellCheck="false"
+            />
+
+            <div className="setup-actions">
               <button className="setup-button" type="submit" disabled={isTokenVerifying}>
                 {isTokenVerifying ? "Comprobando..." : "Entrar"}
               </button>
-              <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleGenerateToken}>
+              <button className="setup-button setup-button--ghost" type="button" onClick={handleGenerateToken}>
                 Generar nuevo código
               </button>
             </div>
@@ -256,6 +274,8 @@ export default function AdminPage() {
               setupToken={setupToken}
               handleResetTokenFromAdmin={handleResetTokenFromAdmin}
               handleAdminLogout={handleAdminLogout}
+              confirmTokenInput={confirmTokenInput}
+              setConfirmTokenInput={setConfirmTokenInput}
             />
           )}
 

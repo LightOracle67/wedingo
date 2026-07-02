@@ -1,6 +1,6 @@
 import { memo } from "react";
 
-const AccessTab = memo(function AccessTab({ setupToken, handleResetTokenFromAdmin, handleAdminLogout }) {
+const AccessTab = memo(function AccessTab({ setupToken, handleResetTokenFromAdmin, handleAdminLogout, confirmTokenInput, setConfirmTokenInput }) {
   return (
     <>
       <div className="setup-token-card">
@@ -16,6 +16,23 @@ const AccessTab = memo(function AccessTab({ setupToken, handleResetTokenFromAdmi
           placeholder="Pulsa «Generar» para crear un código nuevo"
         />
         {setupToken ? <p className="setup-token-display">Código activo (solo tú lo ves).</p> : null}
+
+        <label className="setup-label" htmlFor="accessConfirmReset">
+          Confirmar
+        </label>
+        <p className="setup-help setup-help--tight">
+          Para generar un código nuevo, escribe el código de acceso actual.
+        </p>
+        <input
+          id="accessConfirmReset"
+          className="setup-input"
+          value={confirmTokenInput}
+          onChange={(e) => setConfirmTokenInput(e.target.value)}
+          placeholder="Pega aquí el código actual"
+          autoComplete="off"
+          spellCheck="false"
+        />
+
         <div className="setup-actions">
           <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleResetTokenFromAdmin}>
             Generar código nuevo

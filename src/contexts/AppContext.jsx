@@ -1,6 +1,8 @@
 import { createContext, useContext, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 import {
   addDoc,
+  clearIndexedDbPersistence,
   deleteDoc,
   doc,
   getDoc,
@@ -47,6 +49,7 @@ export function AppProvider({ children }) {
   const [adminMessage, setAdminMessage] = useState("");
   const [authMessage, setAuthMessage] = useState("");
   const [authMessageType, setAuthMessageType] = useState("error");
+  const [confirmTokenInput, setConfirmTokenInput] = useState("");
 
   const [rsvpEntries, setRsvpEntries] = useState([]);
 
@@ -75,8 +78,17 @@ export function AppProvider({ children }) {
     [isTokenVerified, tokenLoginUsername, config.adminUsername],
   );
 
+  const location = useLocation();
+
+  useEffect(() => {
+    clearIndexedDbPersistence(db).catch(() => {});
+  }, []);
+
   useEffect(() => {
     const hash = window.location.hash;
+    const isInvite = new URLSearchParams(window.location.search).has("invitar");
+    const isAdminRoute = location.pathname === "/setup" || location.pathname === "/admin";
+
     if (hash && hash.length > 1) {
       try {
         const parsed = decodeInviteConfig(hash.slice(1));
@@ -87,9 +99,25 @@ export function AppProvider({ children }) {
         setIsConfigLoading(false);
         return;
       } catch {
-        // hash inválido o no es config; ignora
+        if (isInvite) {
+          setIsConfigLoading(false);
+          setConfigLoadError("El enlace de invitación no es válido.");
+          return;
+        }
       }
     }
+
+    if (isInvite) {
+      setIsConfigLoading(false);
+      return;
+    }
+
+    if (!isAdminRoute) {
+      setIsConfigLoading(false);
+      return;
+    }
+
+    setIsConfigLoading(true);
 
     const hydrateConfig = async () => {
       setConfigLoadError("");
@@ -115,7 +143,7 @@ export function AppProvider({ children }) {
     };
 
     hydrateConfig();
-  }, []);
+  }, [location.pathname, location.hash]);
 
   useEffect(() => {
     const hydrateRsvp = async () => {
@@ -566,7 +594,11 @@ export function AppProvider({ children }) {
   const handleGenerateToken = useCallback(async () => {
     setAuthMessageType("error");
     setAuthMessage("");
-    setGeneratedToken("");
+
+    if (confirmTokenInput !== "CONFIRMAR") {
+      setAuthMessage("Escribe CONFIRMAR para generar un código nuevo.");
+      return;
+    }
 
     const username = adminLoginUsername.trim().toLowerCase();
     if (!username) {
@@ -603,10 +635,11 @@ export function AppProvider({ children }) {
       setSetupTokenInput(normalizedToken);
       setAuthMessageType("success");
       setAuthMessage("Código generado. Ahora puedes entrar.");
+      setConfirmTokenInput("");
     } catch {
       setAuthMessage("No se pudo generar el código. Inténtalo de nuevo.");
     }
-  }, [adminLoginUsername, config]);
+  }, [adminLoginUsername, config, confirmTokenInput]);
 
   const handleAdminTokenLogin = useCallback(async () => {
     setAuthMessageType("error");
@@ -665,23 +698,29 @@ export function AppProvider({ children }) {
   }, [adminLoginUsername, setupTokenInput, config]);
 
   const handleResetSetupToken = useCallback(async () => {
-    const shouldResetToken = window.confirm("¿Quieres generar un código nuevo? El actual dejará de ser válido.");
-    if (!shouldResetToken) return;
+    if (!setupToken || confirmTokenInput !== setupToken) {
+      setAuthMessage("Escribe el código de acceso actual para generar uno nuevo.");
+      return;
+    }
 
     setAuthMessage("");
     await refreshSetupToken();
     setAuthMessageType("success");
     setAuthMessage("Código nuevo generado. Cópialo del campo superior antes de guardar.");
-  }, [refreshSetupToken]);
+    setConfirmTokenInput("");
+  }, [refreshSetupToken, setupToken, confirmTokenInput]);
 
   const handleResetTokenFromAdmin = useCallback(async () => {
-    const shouldResetToken = window.confirm("¿Quieres generar un código nuevo? El actual dejará de ser válido.");
-    if (!shouldResetToken) return;
+    if (!setupToken || confirmTokenInput !== setupToken) {
+      setAdminMessage("Escribe el código de acceso actual para generar uno nuevo.");
+      return;
+    }
 
     setAdminMessage("");
     await refreshSetupToken();
     setAdminMessage("Código renovado. Esto no cambia la contraseña de la aplicación.");
-  }, [refreshSetupToken]);
+    setConfirmTokenInput("");
+  }, [refreshSetupToken, setupToken, confirmTokenInput]);
 
   useEffect(() => {
     const place = formData.weddingPlace.trim();
@@ -797,6 +836,7 @@ export function AppProvider({ children }) {
     handleBackgroundUpload, handleClearBackground, handleSelectPreviewBackground,
     handleDayChange, handleHourChange, handleMinuteChange, handleMinuteBlur,
     handleYearChange, handleCoordinateChange,
+    confirmTokenInput, setConfirmTokenInput,
   }), [
     config, formData, hasStoredConfig,
     isConfigLoading, configLoadError,
@@ -822,6 +862,7 @@ export function AppProvider({ children }) {
     handleBackgroundUpload, handleClearBackground, handleSelectPreviewBackground,
     handleDayChange, handleHourChange, handleMinuteChange, handleMinuteBlur,
     handleYearChange, handleCoordinateChange,
+    confirmTokenInput, setConfirmTokenInput,
   ]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
