@@ -22,24 +22,28 @@ export default function SetupForm({ prefix = "" }) {
         <fieldset className="setup-name-group">
           <legend className="setup-label">Nombres</legend>
           <div className="setup-name-grid">
-            <label className="setup-label" htmlFor={id("firstName")}>Primer contrayente</label>
-            <input
-              id={id("firstName")}
-              className="setup-input"
-              value={formData.firstName}
-              onChange={(e) => updateFormField("firstName", e.target.value.slice(0, 20))}
-              placeholder="Nombre"
-              autoComplete="off"
-            />
-            <label className="setup-label" htmlFor={id("secondName")}>Segundo contrayente</label>
-            <input
-              id={id("secondName")}
-              className="setup-input"
-              value={formData.secondName}
-              onChange={(e) => updateFormField("secondName", e.target.value.slice(0, 20))}
-              placeholder="Nombre"
-              autoComplete="off"
-            />
+            <div className="setup-name-col">
+              <label className="setup-label" htmlFor={id("firstName")}>Primer contrayente</label>
+              <input
+                id={id("firstName")}
+                className="setup-input"
+                value={formData.firstName}
+                onChange={(e) => updateFormField("firstName", e.target.value.slice(0, 20))}
+                placeholder="Nombre"
+                autoComplete="off"
+              />
+            </div>
+            <div className="setup-name-col">
+              <label className="setup-label" htmlFor={id("secondName")}>Segundo contrayente</label>
+              <input
+                id={id("secondName")}
+                className="setup-input"
+                value={formData.secondName}
+                onChange={(e) => updateFormField("secondName", e.target.value.slice(0, 20))}
+                placeholder="Nombre"
+                autoComplete="off"
+              />
+            </div>
           </div>
         </fieldset>
 
@@ -103,31 +107,26 @@ export default function SetupForm({ prefix = "" }) {
           Dirección del lugar. Si quieres más precisión, añade coordenadas.
         </p>
 
+        <label className="setup-label">Coordenadas del mapa (opcional)</label>
         <div className="setup-date-grid">
           <div>
-              <label className="setup-label" htmlFor={id("weddingLatitude")}>
-                Coordenada del mapa (opcional)
-              </label>
             <input
               id={id("weddingLatitude")}
               className="setup-input"
               value={formData.weddingLatitude}
               onChange={(e) => handleCoordinateChange("weddingLatitude", e.target.value)}
-              placeholder="Ejemplo: 40.4168"
+              placeholder="Latitud — Ejemplo: 40.4168"
               inputMode="decimal"
               autoComplete="off"
             />
           </div>
           <div>
-              <label className="setup-label" htmlFor={id("weddingLongitude")}>
-                Coordenada del mapa (opcional)
-              </label>
             <input
               id={id("weddingLongitude")}
               className="setup-input"
               value={formData.weddingLongitude}
               onChange={(e) => handleCoordinateChange("weddingLongitude", e.target.value)}
-              placeholder="Ejemplo: -3.7038"
+              placeholder="Longitud — Ejemplo: -3.7038"
               inputMode="decimal"
               autoComplete="off"
             />
