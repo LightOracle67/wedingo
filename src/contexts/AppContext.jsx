@@ -149,19 +149,6 @@ export function AppProvider({ children }) {
     };
   }, []);
 
-  const updateFormField = useCallback((field, value) => {
-    setFormData((current) => ({ ...current, [field]: value }));
-  }, []);
-
-  const applyBackgroundImage = useCallback((backgroundImage, backgroundImageLabel, backgroundImageSource) => {
-    setFormData((current) => ({
-      ...current,
-      backgroundImage,
-      backgroundImageLabel,
-      backgroundImageSource,
-    }));
-  }, []);
-
   const refreshSetupToken = useCallback(async () => {
     const nextToken = generateSetupToken();
     const normalizedToken = normalizeTokenValue(nextToken);
@@ -179,6 +166,19 @@ export function AppProvider({ children }) {
     }
 
     return nextToken;
+  }, []);
+
+  const updateFormField = useCallback((field, value) => {
+    setFormData((current) => ({ ...current, [field]: value }));
+  }, []);
+
+  const applyBackgroundImage = useCallback((backgroundImage, backgroundImageLabel, backgroundImageSource) => {
+    setFormData((current) => ({
+      ...current,
+      backgroundImage,
+      backgroundImageLabel,
+      backgroundImageSource,
+    }));
   }, []);
 
   const updateRsvpField = useCallback((field, value) => {

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Routes, Route, Navigate, Link, useLocation } from "react-router-dom";
 import { AppProvider, useApp } from "./contexts/AppContext";
+import ErrorBoundary from "./components/ErrorBoundary";
 import PublicInvitation from "./pages/PublicInvitation";
 import SetupPage from "./pages/SetupPage";
 import AdminPage from "./pages/AdminPage";
@@ -44,7 +45,7 @@ function AppShell() {
         <Routes>
           <Route path="/" element={<PublicInvitation />} />
           <Route path="/setup" element={<SetupPage />} />
-          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/admin" element={<ErrorBoundary><AdminPage /></ErrorBoundary>} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
