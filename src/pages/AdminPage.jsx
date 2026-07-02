@@ -48,6 +48,17 @@ export default function AdminPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [attendanceFilter, setAttendanceFilter] = useState("all");
 
+  const filteredEntries = useMemo(() => {
+    let result = rsvpEntries;
+    if (attendanceFilter === "yes") result = result.filter((e) => e.attendance === "yes");
+    if (attendanceFilter === "no") result = result.filter((e) => e.attendance === "no");
+    if (searchQuery.trim()) {
+      const q = searchQuery.trim().toLowerCase();
+      result = result.filter((e) => e.guestName.toLowerCase().includes(q));
+    }
+    return result;
+  }, [rsvpEntries, attendanceFilter, searchQuery]);
+
   if (isConfigLoading) {
     return (
       <div className="setup-layout">
@@ -127,10 +138,20 @@ export default function AdminPage() {
                   <p className="setup-help setup-help--tight">
                     Cópialo o haz clic en "Entrar" para usarlo ahora.
                   </p>
-                  <p className="setup-token-display" style={{ fontSize: "1.2em", letterSpacing: "0.15em", textAlign: "center" }}>
+                  <label className="setup-label" htmlFor="adminGeneratedToken" style={{ textAlign: "center", display: "block" }}>Código generado</label>
+                  <p
+                    id="adminGeneratedToken"
+                    className="setup-token-display"
+                    role="textbox"
+                    aria-readonly="true"
+                    tabIndex={0}
+                    style={{ fontSize: "1.2em", letterSpacing: "0.15em", textAlign: "center" }}
+                  >
                     {generatedToken}
                   </p>
+                  <label className="setup-label" htmlFor="adminTokenInput" style={{ marginTop: "1rem", display: "block" }}>Introduce el código de acceso</label>
                   <input
+                    id="adminTokenInput"
                     className="setup-input setup-token-input"
                     type="password"
                     value={setupTokenInput}
@@ -164,17 +185,6 @@ export default function AdminPage() {
   const totalGuests = rsvpEntries.reduce(
     (sum, e) => sum + (e.attendance === "yes" ? 1 + e.companions : 0), 0,
   );
-
-  const filteredEntries = useMemo(() => {
-    let result = rsvpEntries;
-    if (attendanceFilter === "yes") result = result.filter((e) => e.attendance === "yes");
-    if (attendanceFilter === "no") result = result.filter((e) => e.attendance === "no");
-    if (searchQuery.trim()) {
-      const q = searchQuery.trim().toLowerCase();
-      result = result.filter((e) => e.guestName.toLowerCase().includes(q));
-    }
-    return result;
-  }, [rsvpEntries, attendanceFilter, searchQuery]);
 
   const exportCsv = () => {
     const header = "Nombre,Asistencia,Acompañantes,Nota,Fecha";
@@ -272,7 +282,9 @@ export default function AdminPage() {
           {activeTab === "asistencia" && (
             <>
               <div className="admin-filters">
+                <label className="sr-only" htmlFor="adminSearchName">Buscar por nombre</label>
                 <input
+                  id="adminSearchName"
                   className="setup-input"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { Routes, Route, Navigate, Link, useLocation } from "react-router-dom";
 import { AppProvider, useApp } from "./contexts/AppContext";
 import PublicInvitation from "./pages/PublicInvitation";
 import SetupPage from "./pages/SetupPage";
@@ -23,12 +23,32 @@ function AppShell() {
   }, [config.backgroundImage, formData.backgroundImage, isEditingRoute]);
 
   return (
-    <Routes>
-      <Route path="/" element={<PublicInvitation />} />
-      <Route path="/setup" element={<SetupPage />} />
-      <Route path="/admin" element={<AdminPage />} />
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+    <>
+      <a href="#main-content" className="skip-link" tabIndex={0}>
+        Saltar al contenido principal
+      </a>
+
+      {isAdminTokenLoggedIn ? (
+        <nav className="admin-bar" role="navigation" aria-label="Barra de administración">
+          <div className="admin-bar__inner">
+            <span className="admin-bar__title">Administración</span>
+            <div className="admin-bar__links">
+              <Link className={`admin-bar__link ${location.pathname === "/" ? "admin-bar__link--active" : ""}`} to="/">Invitación</Link>
+              <Link className={`admin-bar__link ${location.pathname === "/admin" ? "admin-bar__link--active" : ""}`} to="/admin">Panel</Link>
+            </div>
+          </div>
+        </nav>
+      ) : null}
+
+      <main id="main-content" role="main" tabIndex={-1} style={{ paddingTop: isAdminTokenLoggedIn ? "2.5rem" : "0" }}>
+        <Routes>
+          <Route path="/" element={<PublicInvitation />} />
+          <Route path="/setup" element={<SetupPage />} />
+          <Route path="/admin" element={<AdminPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </main>
+    </>
   );
 }
 

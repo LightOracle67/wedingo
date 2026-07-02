@@ -22,20 +22,22 @@ export default function SetupForm({ prefix = "" }) {
         <fieldset className="setup-name-group">
           <legend className="setup-label">Nombres</legend>
           <div className="setup-name-grid">
+            <label className="setup-label" htmlFor={id("firstName")}>Primer contrayente</label>
             <input
               id={id("firstName")}
               className="setup-input"
               value={formData.firstName}
               onChange={(e) => updateFormField("firstName", e.target.value.slice(0, 20))}
-                placeholder="Primer contrayente"
+              placeholder="Nombre"
               autoComplete="off"
             />
+            <label className="setup-label" htmlFor={id("secondName")}>Segundo contrayente</label>
             <input
               id={id("secondName")}
               className="setup-input"
               value={formData.secondName}
               onChange={(e) => updateFormField("secondName", e.target.value.slice(0, 20))}
-                placeholder="Segundo contrayente"
+              placeholder="Nombre"
               autoComplete="off"
             />
           </div>
