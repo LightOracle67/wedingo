@@ -321,11 +321,10 @@ export default function PublicInvitation() {
       <button
         type="button"
         onClick={() => {
-          const message = [
-            `Te invito a la boda de ${config.firstName} & ${config.secondName}.`,
-            formattedDate ? `Será el ${formattedDate}.` : "",
-            `${window.location.origin}`,
-          ].filter(Boolean).join("\n\n");
+          const inviteLink = window.location.origin;
+          const message = formattedDate
+            ? `Te esperamos el ${formattedDate} para celebrar la boda de ${config.firstName} & ${config.secondName}.\n\n${inviteLink}`
+            : `Compartimos contigo la invitación de boda de ${config.firstName} & ${config.secondName}.\n\n${inviteLink}`;
           window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, "_blank", "noreferrer");
         }}
         style={{ border: "none", outline: "none" }}
