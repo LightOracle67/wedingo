@@ -339,8 +339,8 @@ export default function PublicInvitation() {
       >
         <div className="invite-shell story-panel story-panel--hero relative z-10 mx-auto w-full max-w-[min(100%,38rem)] overflow-hidden rounded-[2rem] bg-transparent px-3 py-5 text-center shadow-2xl sm:px-6 sm:py-8 lg:px-8 lg:py-10">
           <div className="relative z-20">
-            <div className="relative mx-auto w-fit">
-              <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-[42%]">
+              <div className="relative mx-auto w-fit">
+              <div className="hero-rings pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-[42%]">
                 <img
                   src={heroBackdropSrc}
                   alt=""
@@ -348,15 +348,15 @@ export default function PublicInvitation() {
                   className="invite-rings block h-auto w-[clamp(11rem,44vw,18rem)] object-contain object-center sm:w-[clamp(13rem,34vw,20rem)]"
                 />
               </div>
-              <h1 className="invite-title relative z-10 text-[clamp(2rem,7vw,4.5rem)] leading-tight font-serif text-boda-texto sm:text-[clamp(2.5rem,6vw,4.75rem)] lg:text-[clamp(3rem,5vw,5.5rem)]">
+              <h1 className="hero-title invite-title relative z-10 text-[clamp(2rem,7vw,4.5rem)] leading-tight font-serif text-boda-texto sm:text-[clamp(2.5rem,6vw,4.75rem)] lg:text-[clamp(3rem,5vw,5.5rem)]">
                 {config.firstName} & {config.secondName}
               </h1>
             </div>
-            <p className="invite-copy mt-3 text-[clamp(0.95rem,2.8vw,1.25rem)] leading-relaxed font-serif text-boda-texto sm:mt-4 sm:text-[clamp(1rem,2.5vw,1.35rem)]">
+            <p className="hero-message invite-copy mt-3 text-[clamp(0.95rem,2.8vw,1.25rem)] leading-relaxed font-serif text-boda-texto sm:mt-4 sm:text-[clamp(1rem,2.5vw,1.35rem)]">
               {config.inviteMessage}
             </p>
             {countdown ? (
-              <div className="mt-6">
+              <div className="hero-countdown mt-6">
                 <p className="text-[clamp(0.8rem,2.2vw,1rem)] font-sans tracking-widest uppercase text-boda-texto/60">
                   {countdown.expired ? "Hoy es la boda" : "Faltan"}
                 </p>
@@ -384,7 +384,7 @@ export default function PublicInvitation() {
         <div className="story-card story-panel story-card--details w-full max-w-[min(100%,40rem)] text-center">
           <p className="story-eyebrow">Fecha y lugar</p>
           <h2 className="story-title">{formattedDate || "Fecha por definir"}</h2>
-          {formattedTime ? <p className="story-copy">Hora de la celebración: {formattedTime}</p> : null}
+          <p className="story-copy">{formattedTime ? `Hora de la celebración: ${formattedTime}` : "Horario por confirmar"}</p>
           {hasLocationData ? (
             <p className="story-copy">{locationDescription}</p>
           ) : (
@@ -425,7 +425,7 @@ export default function PublicInvitation() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Abrir en Google Maps
+                    Ver en Google Maps
                   </a>
                   <a
                     className="setup-button setup-button--ghost setup-button--compact"
@@ -433,18 +433,26 @@ export default function PublicInvitation() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Abrir en Apple Maps
+                    Ver en Apple Maps
                   </a>
                 </div>
               ) : null}
-              <p className="story-map__caption">Mapa de ubicación</p>
             </div>
           ) : null}
-          {config.weddingSchedule ? (
-            <>
-              <div className="story-divider" />
-              <h3 className="story-eyebrow">Horario de la celebración</h3>
-              <div className="mt-2 space-y-1 text-left">
+        </div>
+      </section>
+
+      <section
+        data-story-section="info"
+        className={`${getStorySectionClassName("info")} flex min-h-screen items-center justify-center px-3 py-6 sm:px-6 sm:py-10 lg:px-8 lg:py-12`}
+        style={getStorySectionStyle("info")}
+      >
+        <div className="story-card story-panel story-card--info w-full max-w-[min(100%,40rem)] text-center">
+          <>
+            <p className="story-eyebrow">Itinerario</p>
+            <h2 className="story-title">Horario de la celebración</h2>
+            {config.weddingSchedule ? (
+              <div className="mt-4 space-y-1 text-left">
                 {config.weddingSchedule.split("\n").filter(Boolean).map((line, i) => {
                   const timeMatch = line.match(/^(\d{1,2}:\d{2})\s*(.*)/);
                   return (
@@ -461,21 +469,24 @@ export default function PublicInvitation() {
                   );
                 })}
               </div>
-            </>
-          ) : null}
-          {config.weddingDressCode ? (
-            <>
-              <div className="story-divider" />
-              <div className="space-y-2">
-                {config.weddingDressCode ? (
-                  <p className="story-copy">
-                    <span className="font-semibold">Vestimenta: </span>
-                    {config.weddingDressCode}
-                  </p>
-                ) : null}
-              </div>
-            </>
-          ) : null}
+            ) : (
+              <p className="story-copy" style={{ fontStyle: "italic" }}>
+                El horario detallado se compartirá próximamente con todos los invitados.
+              </p>
+            )}
+          </>
+          <>
+            <div className="story-divider" />
+            <p className="story-eyebrow">Código de vestimenta</p>
+            <h3 className="story-subheading">Etiqueta sugerida</h3>
+            {config.weddingDressCode ? (
+              <p className="story-copy">{config.weddingDressCode}</p>
+            ) : (
+              <p className="story-copy" style={{ fontStyle: "italic" }}>
+                El código de vestimenta se comunicará más adelante.
+              </p>
+            )}
+          </>
         </div>
       </section>
 
@@ -486,7 +497,7 @@ export default function PublicInvitation() {
       >
         <div className="story-card story-panel story-card--rsvp allow-select w-full max-w-[min(100%,42rem)]">
           <p className="story-eyebrow text-center">Confirmación de asistencia</p>
-          <h2 className="story-title text-center">Confirma si vendrás y cuántos acompañantes traerás</h2>
+          <h2 className="story-title text-center">Confirma tu asistencia</h2>
           <p className="story-copy text-center">
             Tu respuesta nos ayuda a organizar cada detalle de la celebración.
           </p>

@@ -262,9 +262,9 @@
   --invite-shell-glow: rgba(205, 181, 141, 0.18);
   --invite-core-border: rgba(233, 223, 207, 0.7);
   --invite-core-glow: rgba(199, 170, 119, 0.18);
-  --invite-title-color: #fffaf2;
-  --invite-copy-color: #f4ede4;
-  --invite-text-shadow: rgba(67, 49, 29, 0.4);
+  --invite-title-color: #f7eedd;
+  --invite-copy-color: #c8b8a4;
+  --invite-text-shadow: rgba(67, 49, 29, 0.55);
   --invite-rings-filter: saturate(0.88) brightness(1.06);
   --theme-switcher-bg: rgba(59, 45, 28, 0.42);
   --theme-switcher-label: rgba(250, 242, 230, 0.92);
@@ -301,9 +301,9 @@
   --invite-shell-glow: rgba(255, 176, 207, 0.22);
   --invite-core-border: rgba(255, 210, 229, 0.66);
   --invite-core-glow: rgba(242, 139, 180, 0.2);
-  --invite-title-color: #fff0f5;
-  --invite-copy-color: #fde8ef;
-  --invite-text-shadow: rgba(104, 34, 56, 0.44);
+  --invite-title-color: #fae6ed;
+  --invite-copy-color: #d4bcc8;
+  --invite-text-shadow: rgba(104, 34, 56, 0.55);
   --invite-rings-filter: hue-rotate(320deg) saturate(1.06) brightness(1.05);
   --theme-switcher-bg: rgba(74, 26, 44, 0.44);
   --theme-switcher-label: rgba(255, 230, 242, 0.9);
@@ -346,9 +346,9 @@
   --invite-shell-glow: rgba(196, 170, 240, 0.22);
   --invite-core-border: rgba(220, 208, 248, 0.66);
   --invite-core-glow: rgba(180, 150, 234, 0.2);
-  --invite-title-color: #f5eeff;
-  --invite-copy-color: #ede4fc;
-  --invite-text-shadow: rgba(44, 26, 76, 0.44);
+  --invite-title-color: #e8dff8;
+  --invite-copy-color: #c8bcd8;
+  --invite-text-shadow: rgba(44, 26, 76, 0.55);
   --invite-rings-filter: hue-rotate(240deg) saturate(0.9) brightness(1.06);
   --theme-switcher-bg: rgba(40, 26, 66, 0.44);
   --theme-switcher-label: rgba(234, 224, 255, 0.9);
@@ -391,9 +391,9 @@
   --invite-shell-glow: rgba(240, 216, 148, 0.2);
   --invite-core-border: rgba(245, 234, 200, 0.68);
   --invite-core-glow: rgba(230, 198, 126, 0.2);
-  --invite-title-color: #fffcf0;
-  --invite-copy-color: #f8f0e0;
-  --invite-text-shadow: rgba(68, 48, 20, 0.4);
+  --invite-title-color: #f7f0e0;
+  --invite-copy-color: #d4c4a8;
+  --invite-text-shadow: rgba(68, 48, 20, 0.55);
   --invite-rings-filter: saturate(1.02) sepia(0.12) brightness(1.04);
   --theme-switcher-bg: rgba(66, 52, 26, 0.42);
   --theme-switcher-label: rgba(252, 244, 220, 0.9);
@@ -713,9 +713,25 @@ body::before {
   transform: scale(1.04);
   transform-origin: center;
   opacity: 0.9;
-  will-change: filter, transform;
+  will-change: filter, transform, background-position;
   pointer-events: none;
   z-index: 0;
+  animation: bg-shimmer 24s ease-in-out infinite alternate;
+}
+
+@keyframes bg-shimmer {
+  0% {
+    filter: blur(var(--page-blur)) brightness(1);
+    transform: scale(1.04);
+  }
+  50% {
+    filter: blur(var(--page-blur)) brightness(1.04);
+    transform: scale(1.045);
+  }
+  100% {
+    filter: blur(var(--page-blur)) brightness(1);
+    transform: scale(1.04);
+  }
 }
 
 body::after {
@@ -891,7 +907,7 @@ body::after {
   font-family: var(--font-body);
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  font-size: 0.74rem;
+  font-size: 0.78rem;
   color: var(--setup-accent);
   font-weight: 700;
 }
@@ -904,6 +920,17 @@ body::after {
   line-height: 1.12;
   text-shadow:
     0 0 14px color-mix(in srgb, var(--invite-text-shadow) 72%, transparent),
+    0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.story-subheading {
+  margin: 0;
+  color: var(--invite-title-color);
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  line-height: 1.15;
+  text-shadow:
+    0 0 10px color-mix(in srgb, var(--invite-text-shadow) 68%, transparent),
     0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
@@ -936,8 +963,8 @@ body::after {
   left: 50%;
   bottom: 1rem;
   z-index: 30;
-  width: 2.7rem;
-  height: 2.7rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 999px;
   border: 1px solid color-mix(in srgb, var(--invite-shell-border) 74%, transparent);
   background: color-mix(in srgb, var(--invite-shell-bg) 78%, transparent);
@@ -958,7 +985,7 @@ body::after {
 }
 
 .story-scroll-hint__arrow {
-  font-size: 1.15rem;
+  font-size: 1.3rem;
   line-height: 1;
 }
 
@@ -1091,6 +1118,70 @@ body::after {
   .app-scene {
     inset: 0;
   }
+}
+
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes rings-reveal {
+  from {
+    opacity: 0;
+    filter: blur(6px) saturate(0.7);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0) saturate(1);
+  }
+}
+
+@keyframes invite-shell-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+.story-panel--hero {
+  animation: invite-shell-enter 1200ms cubic-bezier(0.22, 1, 0.36, 1) 200ms both;
+}
+
+.hero-title {
+  animation: hero-fade-up 900ms cubic-bezier(0.22, 1, 0.36, 1) 500ms both;
+}
+
+.hero-message {
+  animation: hero-fade-up 900ms cubic-bezier(0.22, 1, 0.36, 1) 700ms both;
+}
+
+.hero-countdown {
+  animation: hero-fade-up 900ms cubic-bezier(0.22, 1, 0.36, 1) 900ms both;
+}
+
+.hero-rings {
+  animation: rings-reveal 1400ms cubic-bezier(0.22, 1, 0.36, 1) 300ms both;
+}
+
+.invite-shell:hover {
+  box-shadow:
+    0 28px 72px color-mix(in srgb, var(--invite-shell-shadow) 96%, transparent),
+    0 0 48px color-mix(in srgb, var(--invite-shell-glow) 80%, transparent);
+  transition: box-shadow 600ms ease;
 }
 
 @keyframes subtle-float {
@@ -1321,7 +1412,7 @@ h6 {
   font-family: var(--font-body);
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: var(--setup-accent);
   font-weight: 700;
 }
@@ -1902,6 +1993,11 @@ a:focus-visible {
   color: var(--setup-title);
 }
 
+.admin-tab:focus-visible {
+  outline: 2px solid var(--setup-accent);
+  outline-offset: -2px;
+}
+
 /* ── Admin: Stats grid ── */
 .admin-stats-grid {
   display: grid;
@@ -2007,7 +2103,7 @@ a:focus-visible {
   padding: 0.7rem 0.85rem;
   color: var(--setup-muted);
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   border-bottom: 1px solid color-mix(in srgb, var(--setup-border) 60%, transparent);
   white-space: nowrap;
   letter-spacing: 0.04em;
@@ -2234,4 +2330,98 @@ a:focus-visible {
   .story-title {
     font-size: clamp(2rem, 3.5vw, 3.2rem);
   }
+}
+
+/* ── Screen-reader only ── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Skip to content ── */
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: 0.5rem;
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  background: var(--setup-accent);
+  color: var(--setup-accent-text);
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 0 0 0.5rem 0.5rem;
+  text-decoration: none;
+  transition: top 180ms ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ── Admin bar ── */
+.admin-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9998;
+  background: rgba(20, 18, 14, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(247, 227, 170, 0.2);
+  font-family: var(--font-body);
+}
+
+.admin-bar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0.45rem 1rem;
+}
+
+.admin-bar__title {
+  color: var(--setup-accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.admin-bar__links {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.admin-bar__link {
+  display: inline-block;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.9rem;
+  color: rgba(255, 246, 220, 0.75);
+  text-decoration: none;
+  border-radius: 0.4rem;
+  transition: background 150ms ease, color 150ms ease;
+}
+
+.admin-bar__link:hover,
+.admin-bar__link:focus-visible {
+  background: rgba(247, 227, 170, 0.12);
+  color: #fff6dc;
+  outline: none;
+}
+
+.admin-bar__link--active {
+  background: rgba(247, 227, 170, 0.1);
+  color: var(--setup-accent);
+  font-weight: 600;
 }

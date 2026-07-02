@@ -46,7 +46,7 @@ export const THEME_GROUPS = [
   { value: "oscuros", label: "Temas oscuros" },
 ];
 
-export const STORY_SECTION_ORDER = ["hero", "details", "rsvp"];
+export const STORY_SECTION_ORDER = ["hero", "details", "info", "rsvp"];
 
 export const defaultConfig = {
   adminUsername: "",
