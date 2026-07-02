@@ -1,16 +1,51 @@
-# React + Vite
+# boda-ja — Wedding Invitation Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Invitación web para bodas con panel de administración. Construida con React, Firebase, y MapLibre GL.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Frontend:** React 19 + Vite + Tailwind v4 + react-router-dom v7
+- **Backend:** Firebase Data Connect + Firestore
+- **Auth:** Token-based (códigos de un solo uso en colección `setupTokens`)
+- **Mapas:** MapLibre GL
+- **Tipografía:** Playfair Display (títulos) + Lora (cuerpo)
 
-## React Compiler
+## Estructura
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```
+src/
+├── components/
+│   └── SetupForm.jsx       # Formulario de edición de la invitación
+├── contexts/
+│   └── AppContext.jsx       # Estado global, auth, operaciones Firestore
+├── lib/
+│   ├── constants.js        # Temas, meses, orden de secciones
+│   ├── firebase.js         # Inicialización de Firebase
+│   └── utils.js            # Utilidades (mapa, fecha)
+├── pages/
+│   ├── AdminPage.jsx       # Panel de administración
+│   ├── PublicInvitation.jsx # Portada pública de la invitación
+│   └── SetupPage.jsx       # Configuración inicial
+├── App.jsx                 # Shell principal (ruteo, tema, admin bar)
+└── index.css               # Todos los estilos globales
+```
 
-## Expanding the Oxlint configuration
+## Rutas
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+| Ruta     | Descripción                     |
+|----------|---------------------------------|
+| `/`      | Portada pública de la invitación |
+| `/setup` | Configuración inicial           |
+| `/admin` | Panel de administración         |
+
+## Desarrollo
+
+```bash
+npm run dev       # Servidor de desarrollo (puerto 5173)
+npm run build     # Build producción
+npx firebase deploy --only hosting  # Despliegue
+```
+
+## Despliegue
+
+`npx firebase deploy --only hosting` → `https://wedingo-6c26a.web.app`

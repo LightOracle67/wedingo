@@ -694,7 +694,7 @@ export function AppProvider({ children }) {
     if (!day || !month || !year) return "";
     const monthLabel = month.charAt(0).toUpperCase() + month.slice(1);
     return `${day} de ${monthLabel} de ${year}`;
-  }, [config]);
+  }, [config.weddingDay, config.weddingMonth, config.weddingYear]);
 
   const formattedTime = useMemo(() => {
     const hour = config.weddingHour.trim();
@@ -728,15 +728,15 @@ export function AppProvider({ children }) {
     return buildGoogleCalendarUrl({ title, description, place, startDate, endDate });
   }, [config, formattedTime]);
 
-  const value = {
-    config, setConfig, formData, setFormData, hasStoredConfig,
+  const value = useMemo(() => ({
+    config, formData, hasStoredConfig,
     isConfigLoading, configLoadError,
     setupToken, setupTokenInput, setSetupTokenInput,
     isTokenVerifying, isTokenVerified, tokenLoginUsername, setTokenLoginUsername,
-    adminLoginUsername, setAdminLoginUsername, generatedToken, setGeneratedToken,
-    saveMessage, setSaveMessage, saveError, setSaveError,
-    adminMessage, setAdminMessage,
-    authMessage, setAuthMessage, authMessageType, setAuthMessageType,
+    adminLoginUsername, setAdminLoginUsername, generatedToken,
+    saveMessage, saveError,
+    adminMessage,
+    authMessage, authMessageType,
     rsvpEntries,
     previewBackgrounds, isPreviewLoading,
     locationMapContainerRef, locationMapError, setLocationMapError,
@@ -753,8 +753,23 @@ export function AppProvider({ children }) {
     handleBackgroundUpload, handleClearBackground, handleSelectPreviewBackground,
     handleDayChange, handleHourChange, handleMinuteChange, handleMinuteBlur,
     handleYearChange, handleCoordinateChange,
-    setRsvpMessage,
-  };
+  }), [
+    config, formData, hasStoredConfig,
+    isConfigLoading, configLoadError,
+    setupToken, setupTokenInput, setSetupTokenInput,
+    isTokenVerifying, isTokenVerified, tokenLoginUsername,
+    adminLoginUsername, generatedToken,
+    saveMessage, saveError,
+    adminMessage,
+    authMessage, authMessageType,
+    rsvpEntries,
+    previewBackgrounds, isPreviewLoading,
+    locationMapContainerRef, locationMapError, setLocationMapError,
+    locationMapLoading, setLocationMapLoading, locationMapTarget, setLocationMapTarget,
+    rsvpForm, rsvpMessage, isRsvpSubmitting,
+    maxAllowedYear, isAdminTokenLoggedIn,
+    formattedDate, formattedTime, calendarLink,
+  ]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }

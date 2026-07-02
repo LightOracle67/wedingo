@@ -160,8 +160,10 @@ export const compressImage = (file) =>
     img.src = URL.createObjectURL(file);
   });
 
-export const buildOpenFreeMapPreviewUrl = async (location, style) => {
-  if (!location || !style) return "";
+const OPEN_FREE_MAP_STYLE = "https://tiles.openfreemap.org/styles/liberty";
+
+export const buildOpenFreeMapPreviewUrl = async (location, _style) => {
+  if (!location) return "";
 
   const container = document.createElement("div");
   container.style.position = "fixed";
@@ -175,7 +177,7 @@ export const buildOpenFreeMapPreviewUrl = async (location, style) => {
     const maplibregl = (await import("maplibre-gl")).default;
     const map = new maplibregl.Map({
       container,
-      style: style.styleUrl,
+      style: OPEN_FREE_MAP_STYLE,
       center: [location.longitude, location.latitude],
       zoom: 15,
       bearing: -12,

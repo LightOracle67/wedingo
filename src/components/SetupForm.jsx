@@ -107,31 +107,35 @@ export default function SetupForm({ prefix = "" }) {
           Dirección del lugar. Si quieres más precisión, añade coordenadas.
         </p>
 
-        <label className="setup-label">Coordenadas del mapa (opcional)</label>
-        <div className="setup-date-grid">
-          <div>
-            <input
-              id={id("weddingLatitude")}
-              className="setup-input"
-              value={formData.weddingLatitude}
-              onChange={(e) => handleCoordinateChange("weddingLatitude", e.target.value)}
-              placeholder="Latitud — Ejemplo: 40.4168"
-              inputMode="decimal"
-              autoComplete="off"
-            />
+        <fieldset className="setup-name-group">
+          <legend className="setup-label">Coordenadas del mapa (opcional)</legend>
+          <div className="setup-date-grid">
+            <div>
+              <label className="setup-label" htmlFor={id("weddingLatitude")}>Latitud</label>
+              <input
+                id={id("weddingLatitude")}
+                className="setup-input"
+                value={formData.weddingLatitude}
+                onChange={(e) => handleCoordinateChange("weddingLatitude", e.target.value)}
+                placeholder="Ejemplo: 40.4168"
+                inputMode="decimal"
+                autoComplete="off"
+              />
+            </div>
+            <div>
+              <label className="setup-label" htmlFor={id("weddingLongitude")}>Longitud</label>
+              <input
+                id={id("weddingLongitude")}
+                className="setup-input"
+                value={formData.weddingLongitude}
+                onChange={(e) => handleCoordinateChange("weddingLongitude", e.target.value)}
+                placeholder="Ejemplo: -3.7038"
+                inputMode="decimal"
+                autoComplete="off"
+              />
+            </div>
           </div>
-          <div>
-            <input
-              id={id("weddingLongitude")}
-              className="setup-input"
-              value={formData.weddingLongitude}
-              onChange={(e) => handleCoordinateChange("weddingLongitude", e.target.value)}
-              placeholder="Longitud — Ejemplo: -3.7038"
-              inputMode="decimal"
-              autoComplete="off"
-            />
-          </div>
-        </div>
+        </fieldset>
 
         <div className="setup-background-panel">
           <div className="setup-background-panel__header">
