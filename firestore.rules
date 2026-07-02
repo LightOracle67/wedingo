@@ -34,7 +34,8 @@ service cloud.firestore {
         && (!data.keys().hasAny(['backgroundImageLabel']) || (data.backgroundImageLabel is string && data.backgroundImageLabel.size() <= 200))
         && (!data.keys().hasAny(['backgroundImageSource']) || (data.backgroundImageSource is string && data.backgroundImageSource.size() <= 50))
         && (!data.keys().hasAny(['weddingLatitude']) || (data.weddingLatitude is string && data.weddingLatitude.size() <= 20))
-        && (!data.keys().hasAny(['weddingLongitude']) || (data.weddingLongitude is string && data.weddingLongitude.size() <= 20));
+        && (!data.keys().hasAny(['weddingLongitude']) || (data.weddingLongitude is string && data.weddingLongitude.size() <= 20))
+        && (!data.keys().hasAny(['sectionOrder']) || (data.sectionOrder is string && data.sectionOrder.size() <= 50));
     }
 
     match /publicConfig/invitation {

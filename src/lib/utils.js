@@ -1,4 +1,4 @@
-import { THEME_VALUES } from "./constants";
+import { STORY_SECTION_ORDER, THEME_VALUES } from "./constants";
 
 export const normalizeConfig = (value) => ({
   adminUsername:
@@ -25,6 +25,8 @@ export const normalizeConfig = (value) => ({
     typeof value?.backgroundImageLabel === "string" ? value.backgroundImageLabel.trim() : "",
   backgroundImageSource:
     typeof value?.backgroundImageSource === "string" ? value.backgroundImageSource.trim() : "",
+  sectionOrder:
+    typeof value?.sectionOrder === "string" ? value.sectionOrder.trim() : STORY_SECTION_ORDER.join(","),
 });
 
 export const geocodeLocation = async (place) => {

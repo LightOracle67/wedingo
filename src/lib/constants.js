@@ -64,6 +64,20 @@ export const THEME_GROUPS = [
 
 export const STORY_SECTION_ORDER = ["hero", "details", "info", "rsvp"];
 
+export const SECTION_LABELS = {
+  hero: "Portada",
+  details: "Fecha y lugar",
+  info: "Itinerario",
+  rsvp: "Confirmación",
+};
+
+export const SECTION_MOVABLE = {
+  hero: false,
+  details: true,
+  info: true,
+  rsvp: true,
+};
+
 export const defaultConfig = {
   adminUsername: "",
   firstName: "",
@@ -84,4 +98,6 @@ export const defaultConfig = {
   backgroundImage: "",
   backgroundImageLabel: "",
   backgroundImageSource: "",
+
+  sectionOrder: STORY_SECTION_ORDER.join(","),
 };
