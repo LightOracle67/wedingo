@@ -12,15 +12,15 @@ function AppShell() {
   const isEditingRoute = location.pathname === "/setup" || (location.pathname === "/admin" && isAdminTokenLoggedIn);
 
   useEffect(() => {
-    const activeTheme = isEditingRoute ? formData.theme || config.theme : config.theme;
+    const activeTheme = isEditingRoute ? "golden" : formData.theme || config.theme;
     document.documentElement.dataset.weddingTheme = activeTheme || "golden";
-  }, [config.theme, formData.theme, isEditingRoute]);
+  }, [formData.theme, config.theme, isEditingRoute]);
 
   useEffect(() => {
-    const activeBackground = isEditingRoute ? formData.backgroundImage || config.backgroundImage : config.backgroundImage;
+    const activeBackground = isEditingRoute ? null : config.backgroundImage;
     const encodedBackground = activeBackground ? `url('${activeBackground.replace(/'/g, "\\'")}')` : "none";
     document.documentElement.style.setProperty("--wedding-background-image", encodedBackground);
-  }, [config.backgroundImage, formData.backgroundImage, isEditingRoute]);
+  }, [config.backgroundImage, isEditingRoute]);
 
   return (
     <>
