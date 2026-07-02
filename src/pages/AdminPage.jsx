@@ -1,7 +1,10 @@
-import { useState, useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useApp } from "../contexts/AppContext";
 import SetupForm from "../components/SetupForm";
+import PanelTab from "./admin/PanelTab";
+import AttendanceTab from "./admin/AttendanceTab";
+import AccessTab from "./admin/AccessTab";
 
 const TABS = [
   { key: "panel", label: "Panel" },
@@ -16,15 +19,6 @@ function formatDate(iso) {
   } catch {
     return iso;
   }
-}
-
-function StatsCard({ label, value, accent }) {
-  return (
-    <div className="admin-stats-card">
-      <span className="admin-stats-card__value">{value}</span>
-      <span className="admin-stats-card__label">{label}</span>
-    </div>
-  );
 }
 
 export default function AdminPage() {
@@ -58,6 +52,39 @@ export default function AdminPage() {
     }
     return result;
   }, [rsvpEntries, attendanceFilter, searchQuery]);
+
+  const setActiveTabAndFilter = useCallback((tab) => {
+    setActiveTab(tab);
+  }, []);
+
+  const setAttendanceFilterValue = useCallback((filter) => {
+    setAttendanceFilter(filter);
+  }, []);
+
+  const exportCsv = useCallback(() => {
+    const sanitize = (val) => {
+      const s = String(val);
+      if (/^[=+\-@]/.test(s)) return `"'${s}"`;
+      return `"${s.replace(/"/g, '""')}"`;
+    };
+    const header = "Nombre,Asistencia,Acompañantes,Nota,Fecha";
+    const rows = rsvpEntries.map((e) =>
+      [
+        sanitize(e.guestName),
+        e.attendance === "yes" ? "Sí" : "No",
+        e.attendance === "yes" ? e.companions : 0,
+        sanitize(e.note || ""),
+        formatDate(e.submittedAt),
+      ].join(","),
+    );
+    const blob = new Blob(["\uFEFF" + header + "\n" + rows.join("\n")], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `invitados_${config.firstName}_${config.secondName}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }, [rsvpEntries, config.firstName, config.secondName]);
 
   if (isConfigLoading) {
     return (
@@ -100,7 +127,6 @@ export default function AdminPage() {
     return <Navigate to="/setup" replace />;
   }
 
-  // ---- LOGIN FORM ----
   if (!isAdminTokenLoggedIn) {
     return (
       <div className="setup-layout">
@@ -179,37 +205,11 @@ export default function AdminPage() {
     );
   }
 
-  // ---- ADMIN LOGGED IN ----
   const confirmedResponses = rsvpEntries.filter((e) => e.attendance === "yes").length;
   const declinedResponses = rsvpEntries.filter((e) => e.attendance === "no").length;
   const totalGuests = rsvpEntries.reduce(
     (sum, e) => sum + (e.attendance === "yes" ? 1 + e.companions : 0), 0,
   );
-
-  const exportCsv = () => {
-    const sanitize = (val) => {
-      const s = String(val);
-      if (/^[=+\-@]/.test(s)) return `"'${s}"`;
-      return `"${s.replace(/"/g, '""')}"`;
-    };
-    const header = "Nombre,Asistencia,Acompañantes,Nota,Fecha";
-    const rows = rsvpEntries.map((e) =>
-      [
-        sanitize(e.guestName),
-        e.attendance === "yes" ? "Sí" : "No",
-        e.attendance === "yes" ? e.companions : 0,
-        sanitize(e.note || ""),
-        formatDate(e.submittedAt),
-      ].join(","),
-    );
-    const blob = new Blob(["\uFEFF" + header + "\n" + rows.join("\n")], { type: "text/csv;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `invitados_${config.firstName}_${config.secondName}.csv`;
-    a.click();
-    URL.revokeObjectURL(url);
-  };
 
   const coupleName = `${config.firstName} & ${config.secondName}`;
 
@@ -220,7 +220,7 @@ export default function AdminPage() {
           <div>
             <p className="setup-eyebrow">Área privada</p>
             <h1 className="setup-title">{coupleName}</h1>
-              <p className="setup-subtitle">Gestiona tu invitación de boda</p>
+            <p className="setup-subtitle">Gestiona tu invitación de boda</p>
           </div>
         </header>
 
@@ -239,159 +239,41 @@ export default function AdminPage() {
         </nav>
 
         <div className="setup-form">
-          {/* ---- TAB: PANEL ---- */}
           {activeTab === "panel" && (
-            <>
-              <div className="admin-stats-grid">
-                <StatsCard label="Confirmados" value={confirmedResponses} accent="yes" />
-                <StatsCard label="No asistirán" value={declinedResponses} accent="no" />
-                <StatsCard label="Sin responder" value={Math.max(0, rsvpEntries.length - confirmedResponses - declinedResponses)} accent="pending" />
-                <StatsCard label="Total invitados" value={totalGuests} accent="total" />
-              </div>
-
-              <div className="admin-panel-actions">
-                <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={() => { setActiveTab("asistencia"); setAttendanceFilter("all"); }}>
-                  Ver lista completa
-                </button>
-                <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={exportCsv}>
-                  Exportar CSV
-                </button>
-                <a className="setup-button setup-button--ghost setup-button--compact" href={window.location.origin} target="_blank" rel="noreferrer">
-                  Ver portada
-                </a>
-              </div>
-
-              {rsvpEntries.length > 0 ? (
-                <div className="admin-recent-section">
-                  <p className="setup-label setup-label--tight">Últimas respuestas</p>
-                  {rsvpEntries.slice(0, 5).map((entry) => (
-                    <div key={entry.id} className="admin-recent-row">
-                      <span className="admin-recent-row__name">{entry.guestName}</span>
-                      <span className={`admin-recent-row__status admin-recent-row__status--${entry.attendance}`}>
-                        {entry.attendance === "yes" ? `Sí (${entry.companions} acompañante${entry.companions === 1 ? "" : "s"})` : "No asistirá"}
-                      </span>
-                      <span className="admin-recent-row__date">{formatDate(entry.submittedAt)}</span>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <p className="setup-help">Todavía no hay respuestas de asistencia.</p>
-              )}
-            </>
+            <PanelTab
+              confirmedResponses={confirmedResponses}
+              declinedResponses={declinedResponses}
+              totalGuests={totalGuests}
+              rsvpEntries={rsvpEntries}
+              setActiveTab={setActiveTabAndFilter}
+              setAttendanceFilter={setAttendanceFilterValue}
+              exportCsv={exportCsv}
+              formatDate={formatDate}
+            />
           )}
 
-          {/* ---- TAB: INVITACIÓN ---- */}
           {activeTab === "invitacion" && <SetupForm prefix="admin" />}
 
-          {/* ---- TAB: ASISTENCIA ---- */}
           {activeTab === "asistencia" && (
-            <>
-              <div className="admin-filters">
-                <label className="sr-only" htmlFor="adminSearchName">Buscar por nombre</label>
-                <input
-                  id="adminSearchName"
-                  className="setup-input"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Buscar por nombre..."
-                  autoComplete="off"
-                />
-                <div className="admin-filter-buttons">
-                  {["all", "yes", "no"].map((f) => (
-                    <button
-                      key={f}
-                      className={`setup-button setup-button--compact ${attendanceFilter === f ? "" : "setup-button--ghost"}`}
-                      type="button"
-                      onClick={() => setAttendanceFilter(f)}
-                    >
-                      {f === "all" ? "Todos" : f === "yes" ? "Confirmados" : "No asisten"}
-                    </button>
-                  ))}
-                </div>
-                <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={exportCsv}>
-                  Exportar CSV
-                </button>
-              </div>
-
-              {filteredEntries.length > 0 ? (
-                <div className="admin-table-wrapper">
-                  <table className="admin-table">
-                    <thead>
-                      <tr>
-                        <th>Nombre</th>
-                        <th>Asistencia</th>
-                        <th>Acompañantes</th>
-                        <th>Nota</th>
-                        <th>Fecha</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {filteredEntries.map((entry) => (
-                        <tr key={entry.id}>
-                          <td className="admin-table__name">{entry.guestName}</td>
-                          <td>
-                            <span className={`admin-badge admin-badge--${entry.attendance}`}>
-                              {entry.attendance === "yes" ? "Sí" : "No"}
-                            </span>
-                          </td>
-                          <td>{entry.attendance === "yes" ? entry.companions : "—"}</td>
-                          <td className="admin-table__note">{entry.note || "—"}</td>
-                          <td className="admin-table__date">{formatDate(entry.submittedAt)}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              ) : (
-                <p className="setup-help">
-                  {searchQuery || attendanceFilter !== "all"
-                    ? "No se encontraron resultados con ese filtro."
-                    : "Todavía no hay respuestas de asistencia."}
-                </p>
-              )}
-
-              {rsvpEntries.length > 0 && (
-                <div className="setup-actions">
-                  <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleClearRsvpEntries}>
-                    Vaciar asistencia
-                  </button>
-                </div>
-              )}
-            </>
+            <AttendanceTab
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+              attendanceFilter={attendanceFilter}
+              setAttendanceFilter={setAttendanceFilterValue}
+              filteredEntries={filteredEntries}
+              exportCsv={exportCsv}
+              rsvpEntries={rsvpEntries}
+              handleClearRsvpEntries={handleClearRsvpEntries}
+              formatDate={formatDate}
+            />
           )}
 
-          {/* ---- TAB: ACCESO ---- */}
           {activeTab === "acceso" && (
-            <>
-              <div className="setup-token-card">
-                <p className="setup-help setup-help--tight">
-                  Usa esta sección para generar un código nuevo. El código anterior dejará de servir.
-                </p>
-                <input
-                  className="setup-input setup-token-input"
-                  value={setupToken || ""}
-                  readOnly
-                  autoComplete="off"
-                  spellCheck="false"
-                  placeholder="Pulsa «Generar» para crear un código nuevo"
-                />
-                {setupToken ? <p className="setup-token-display">Código activo (solo tú lo ves).</p> : null}
-                <div className="setup-actions">
-                  <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleResetTokenFromAdmin}>
-                    Generar código nuevo
-                  </button>
-                  <button className="setup-button" type="button" onClick={handleAdminLogout}>
-                    Cerrar sesión
-                  </button>
-                </div>
-              </div>
-
-              <div className="setup-actions">
-                <a className="setup-button setup-button--ghost" href={window.location.origin} target="_blank" rel="noreferrer">
-                  Volver a la portada
-                </a>
-              </div>
-            </>
+            <AccessTab
+              setupToken={setupToken}
+              handleResetTokenFromAdmin={handleResetTokenFromAdmin}
+              handleAdminLogout={handleAdminLogout}
+            />
           )}
 
           {adminMessage ? <p className="setup-success">{adminMessage}</p> : null}

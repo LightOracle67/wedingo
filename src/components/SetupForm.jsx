@@ -1,5 +1,7 @@
 import { useApp } from "../contexts/AppContext";
 import { MONTH_OPTIONS, THEME_GROUPS, THEME_OPTIONS, THEME_PREVIEW_COLORS } from "../lib/constants";
+import CollapsibleSection from "./CollapsibleSection";
+import SectionOrderEditor from "./SectionOrderEditor";
 
 export default function SetupForm({ prefix = "" }) {
   const {
@@ -14,11 +16,7 @@ export default function SetupForm({ prefix = "" }) {
 
   return (
     <form className="setup-form setup-form--nested" onSubmit={handleSaveSetup}>
-      <section className="setup-token-card" aria-label="Invitación">
-          <p className="setup-help setup-help--tight">
-          Modifica los datos que se muestran en la portada de la invitación.
-        </p>
-
+      <CollapsibleSection title="Portada" hint="Nombres, mensaje y tema" defaultOpen>
         <fieldset className="setup-name-group">
           <legend className="setup-label">Nombres</legend>
           <div className="setup-name-grid">
@@ -91,101 +89,9 @@ export default function SetupForm({ prefix = "" }) {
             </div>
           ))}
         </fieldset>
+      </CollapsibleSection>
 
-        <label className="setup-label" htmlFor={id("weddingPlace")}>
-          Lugar de la boda
-        </label>
-        <input
-          id={id("weddingPlace")}
-          className="setup-input"
-          value={formData.weddingPlace}
-          onChange={(e) => updateFormField("weddingPlace", e.target.value.slice(0, 120))}
-          placeholder="Nombre o dirección del lugar de la celebración"
-          autoComplete="off"
-        />
-        <p className="setup-help">
-          Dirección del lugar. Si quieres más precisión, añade coordenadas.
-        </p>
-
-        <fieldset className="setup-name-group">
-          <legend className="setup-label">Coordenadas del mapa (opcional)</legend>
-          <div className="setup-date-grid">
-            <div>
-              <label className="setup-label" htmlFor={id("weddingLatitude")}>Latitud</label>
-              <input
-                id={id("weddingLatitude")}
-                className="setup-input"
-                value={formData.weddingLatitude}
-                onChange={(e) => handleCoordinateChange("weddingLatitude", e.target.value)}
-                placeholder="Ejemplo: 40.4168"
-                inputMode="decimal"
-                autoComplete="off"
-              />
-            </div>
-            <div>
-              <label className="setup-label" htmlFor={id("weddingLongitude")}>Longitud</label>
-              <input
-                id={id("weddingLongitude")}
-                className="setup-input"
-                value={formData.weddingLongitude}
-                onChange={(e) => handleCoordinateChange("weddingLongitude", e.target.value)}
-                placeholder="Ejemplo: -3.7038"
-                inputMode="decimal"
-                autoComplete="off"
-              />
-            </div>
-          </div>
-        </fieldset>
-
-        <div className="setup-background-panel">
-          <div className="setup-background-panel__header">
-            <div>
-              <p className="setup-label setup-label--tight">Fondo de la portada</p>
-              <p className="setup-help setup-help--tight">
-                Sube una foto o elige un fondo para la portada.
-              </p>
-            </div>
-            {formData.backgroundImage ? (
-              <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleClearBackground}>
-                Quitar el fondo
-              </button>
-            ) : null}
-          </div>
-
-          <label className="setup-upload" htmlFor={id("backgroundUpload")}>
-                <span className="setup-upload__title">Subir foto</span>
-            <span className="setup-upload__subtitle">Máximo 20 MB. Se comprimirá automáticamente.</span>
-          </label>
-          <input id={id("backgroundUpload")} className="setup-upload__input" type="file" accept="image/*" onChange={handleBackgroundUpload} />
-
-          {formData.backgroundImage ? (
-            <div className="setup-selected-background">
-              <img src={formData.backgroundImage} alt="Fondo seleccionado" className="setup-selected-background__image" />
-              <div>
-                <p className="setup-selected-background__title">Fondo actual</p>
-                <p className="setup-help setup-help--tight">{formData.backgroundImageLabel || "Imagen seleccionada"}</p>
-              </div>
-            </div>
-          ) : null}
-
-          {previewBackgrounds.length ? (
-            <div className="setup-background-grid">
-              {previewBackgrounds.map((bg) => (
-                <button
-                  key={bg.id}
-                  className="setup-background-card"
-                  type="button"
-                  onClick={() => handleSelectPreviewBackground(bg.src, `${formData.weddingPlace} · ${bg.label}`)}
-                >
-                  <img src={bg.src} alt={bg.label} className="setup-background-card__image" />
-                  <span className="setup-background-card__title">{bg.label}</span>
-                  <span className="setup-background-card__description">{bg.description}</span>
-                </button>
-              ))}
-            </div>
-          ) : null}
-        </div>
-
+      <CollapsibleSection title="Fecha y lugar" hint="Cuándo y dónde">
         <div className="setup-date-grid">
           <div>
             <label className="setup-label" htmlFor={id("weddingDay")}>Día</label>
@@ -256,6 +162,51 @@ export default function SetupForm({ prefix = "" }) {
           </div>
         </div>
 
+        <label className="setup-label" htmlFor={id("weddingPlace")}>
+          Lugar de la boda
+        </label>
+        <input
+          id={id("weddingPlace")}
+          className="setup-input"
+          value={formData.weddingPlace}
+          onChange={(e) => updateFormField("weddingPlace", e.target.value.slice(0, 120))}
+          placeholder="Nombre o dirección del lugar de la celebración"
+          autoComplete="off"
+        />
+        <p className="setup-help">
+          Dirección del lugar. Si quieres más precisión, añade coordenadas.
+        </p>
+
+        <fieldset className="setup-name-group">
+          <legend className="setup-label">Coordenadas del mapa (opcional)</legend>
+          <div className="setup-date-grid">
+            <div>
+              <label className="setup-label" htmlFor={id("weddingLatitude")}>Latitud</label>
+              <input
+                id={id("weddingLatitude")}
+                className="setup-input"
+                value={formData.weddingLatitude}
+                onChange={(e) => handleCoordinateChange("weddingLatitude", e.target.value)}
+                placeholder="Ejemplo: 40.4168"
+                inputMode="decimal"
+                autoComplete="off"
+              />
+            </div>
+            <div>
+              <label className="setup-label" htmlFor={id("weddingLongitude")}>Longitud</label>
+              <input
+                id={id("weddingLongitude")}
+                className="setup-input"
+                value={formData.weddingLongitude}
+                onChange={(e) => handleCoordinateChange("weddingLongitude", e.target.value)}
+                placeholder="Ejemplo: -3.7038"
+                inputMode="decimal"
+                autoComplete="off"
+              />
+            </div>
+          </div>
+        </fieldset>
+
         <label className="setup-label" htmlFor={id("weddingSchedule")}>
           Horario de la boda
         </label>
@@ -281,14 +232,69 @@ export default function SetupForm({ prefix = "" }) {
           autoComplete="off"
         />
         <p className="setup-help">Sugerencia sobre cómo vestir para la celebración.</p>
+      </CollapsibleSection>
 
+      <CollapsibleSection title="Personalización" hint="Fondo de portada y orden">
+        <div className="setup-background-panel">
+          <div className="setup-background-panel__header">
+            <div>
+              <p className="setup-label setup-label--tight">Fondo de la portada</p>
+              <p className="setup-help setup-help--tight">
+                Sube una foto o elige un fondo para la portada.
+              </p>
+            </div>
+            {formData.backgroundImage ? (
+              <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleClearBackground}>
+                Quitar el fondo
+              </button>
+            ) : null}
+          </div>
 
-        <div className="setup-actions">
-          <button className="setup-button" type="submit">
-            Guardar cambios
-          </button>
+          <label className="setup-upload" htmlFor={id("backgroundUpload")}>
+            <span className="setup-upload__title">Subir foto</span>
+            <span className="setup-upload__subtitle">Máximo 20 MB. Se comprimirá automáticamente.</span>
+          </label>
+          <input id={id("backgroundUpload")} className="setup-upload__input" type="file" accept="image/*" onChange={handleBackgroundUpload} />
+
+          {formData.backgroundImage ? (
+            <div className="setup-selected-background">
+              <img src={formData.backgroundImage} alt="Fondo seleccionado" className="setup-selected-background__image" />
+              <div>
+                <p className="setup-selected-background__title">Fondo actual</p>
+                <p className="setup-help setup-help--tight">{formData.backgroundImageLabel || "Imagen seleccionada"}</p>
+              </div>
+            </div>
+          ) : null}
+
+          {previewBackgrounds.length ? (
+            <div className="setup-background-grid">
+              {previewBackgrounds.map((bg) => (
+                <button
+                  key={bg.id}
+                  className="setup-background-card"
+                  type="button"
+                  onClick={() => handleSelectPreviewBackground(bg.src, `${formData.weddingPlace} · ${bg.label}`)}
+                >
+                  <img src={bg.src} alt={bg.label} className="setup-background-card__image" />
+                  <span className="setup-background-card__title">{bg.label}</span>
+                  <span className="setup-background-card__description">{bg.description}</span>
+                </button>
+              ))}
+            </div>
+          ) : null}
         </div>
-      </section>
+
+        <SectionOrderEditor
+          value={formData.sectionOrder}
+          onChange={updateFormField}
+        />
+      </CollapsibleSection>
+
+      <div className="setup-actions" style={{ padding: "0.25rem 0" }}>
+        <button className="setup-button" type="submit">
+          Guardar cambios
+        </button>
+      </div>
 
       {saveMessage ? <p className="setup-success">{saveMessage}</p> : null}
       {saveError ? <p className="setup-error">{saveError}</p> : null}

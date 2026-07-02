@@ -2,7 +2,7 @@ import { queryRef, executeQuery, validateArgsWithOptions, mutationRef, executeMu
 
 export const connectorConfig = {
   connector: 'example',
-  service: 'boda-ja',
+  service: 'wedingo',
   location: 'us-east4'
 };
 export const dataConnectSettings = {

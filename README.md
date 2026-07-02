@@ -1,4 +1,4 @@
-# boda-ja — Wedding Invitation Web App
+# wedingo — Wedding Invitation Web App
 
 Invitación web para bodas con panel de administración. Construida con React, Firebase, y MapLibre GL.
 

@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { createContext, useContext, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   addDoc,
   deleteDoc,
@@ -9,7 +9,7 @@ import {
   setDoc,
 } from "firebase/firestore";
 import { db, INVITATION_DOC_REF, RSVP_COLLECTION_REF } from "../lib/firebase";
-import { ALLOWED_UPLOAD_TYPES, defaultConfig, MAX_UPLOAD_SIZE_BYTES, MONTH_OPTIONS, MONTH_VALUE_TO_NUMBER, THEME_VALUES } from "../lib/constants";
+import { ALLOWED_UPLOAD_TYPES, defaultConfig, MAX_UPLOAD_SIZE_BYTES, MONTH_OPTIONS, MONTH_VALUE_TO_NUMBER, STORY_SECTION_ORDER, THEME_VALUES } from "../lib/constants";
 import {
   buildGoogleCalendarUrl,
   compressImage,
@@ -69,8 +69,9 @@ export function AppProvider({ children }) {
 
   const previewRequestRef = useRef(0);
 
-  const isAdminTokenLoggedIn = isTokenVerified && tokenLoginUsername && (
-    config.adminUsername === tokenLoginUsername
+  const isAdminTokenLoggedIn = useMemo(() =>
+    isTokenVerified && tokenLoginUsername && config.adminUsername === tokenLoginUsername,
+    [isTokenVerified, tokenLoginUsername, config.adminUsername],
   );
 
   useEffect(() => {
@@ -140,7 +141,7 @@ export function AppProvider({ children }) {
     (async () => {
       await refreshSetupToken();
     })();
-  }, [hasStoredConfig]);
+  }, [hasStoredConfig, refreshSetupToken]);
 
   useEffect(() => {
     return () => {
@@ -148,20 +149,20 @@ export function AppProvider({ children }) {
     };
   }, []);
 
-  const updateFormField = (field, value) => {
+  const updateFormField = useCallback((field, value) => {
     setFormData((current) => ({ ...current, [field]: value }));
-  };
+  }, []);
 
-  const applyBackgroundImage = (backgroundImage, backgroundImageLabel, backgroundImageSource) => {
+  const applyBackgroundImage = useCallback((backgroundImage, backgroundImageLabel, backgroundImageSource) => {
     setFormData((current) => ({
       ...current,
       backgroundImage,
       backgroundImageLabel,
       backgroundImageSource,
     }));
-  };
+  }, []);
 
-  const refreshSetupToken = async () => {
+  const refreshSetupToken = useCallback(async () => {
     const nextToken = generateSetupToken();
     const normalizedToken = normalizeTokenValue(nextToken);
     setSetupToken(normalizedToken);
@@ -178,9 +179,142 @@ export function AppProvider({ children }) {
     }
 
     return nextToken;
-  };
+  }, []);
 
-  const handleSaveSetup = async (event) => {
+  const updateRsvpField = useCallback((field, value) => {
+    if (field === "attendance" && value === "no") {
+      setRsvpForm((current) => ({ ...current, attendance: value, companions: "0" }));
+      return;
+    }
+    setRsvpForm((current) => ({ ...current, [field]: value }));
+  }, []);
+
+  const handleAdminLogout = useCallback(() => {
+    setIsTokenVerified(false);
+    setTokenLoginUsername("");
+    setSetupToken("");
+    setSetupTokenInput("");
+    setGeneratedToken("");
+    setAuthMessage("");
+  }, []);
+
+  const handleClearRsvpEntries = useCallback(async () => {
+    if (!window.confirm("¿Borrar todas las respuestas de asistencia? Esta acción no se puede deshacer.")) return;
+    try {
+      const snapshot = await getDocs(RSVP_COLLECTION_REF);
+      await Promise.all(snapshot.docs.map((entryDoc) => deleteDoc(entryDoc.ref)));
+      setRsvpEntries([]);
+      setAdminMessage("Se vació el registro de asistencia.");
+    } catch {
+      setAdminMessage("No se pudo vaciar el registro de asistencia.");
+    }
+  }, []);
+
+  const handleClearBackground = useCallback(() => {
+    applyBackgroundImage("", "", "");
+  }, [applyBackgroundImage]);
+
+  const handleSelectPreviewBackground = useCallback((backgroundImage, backgroundImageLabel, backgroundImageSource = "openfreemap") => {
+    applyBackgroundImage(backgroundImage, backgroundImageLabel, backgroundImageSource);
+  }, [applyBackgroundImage]);
+
+  const handleDayChange = useCallback((value) => {
+    const digits = value.replace(/[^0-9]/g, "").slice(0, 2);
+    if (!digits) {
+      updateFormField("weddingDay", "");
+      return;
+    }
+    const numericDay = Number.parseInt(digits, 10);
+    const clamped = Math.min(31, Math.max(1, numericDay));
+    updateFormField("weddingDay", String(clamped));
+  }, [updateFormField]);
+
+  const handleHourChange = useCallback((value) => {
+    const digits = value.replace(/[^0-9]/g, "").slice(0, 2);
+    if (!digits) {
+      updateFormField("weddingHour", "");
+      return;
+    }
+    const numericHour = Number.parseInt(digits, 10);
+    const clamped = Math.min(23, Math.max(0, numericHour));
+    updateFormField("weddingHour", String(clamped));
+  }, [updateFormField]);
+
+  const handleMinuteChange = useCallback((value) => {
+    const digits = value.replace(/[^0-9]/g, "").slice(0, 2);
+    if (!digits) {
+      updateFormField("weddingMinute", "");
+      return;
+    }
+    if (digits.length === 1) {
+      updateFormField("weddingMinute", digits);
+      return;
+    }
+    const numericMinute = Number.parseInt(digits, 10);
+    const clamped = Math.min(59, Math.max(0, numericMinute));
+    updateFormField("weddingMinute", String(clamped).padStart(2, "0"));
+  }, [updateFormField]);
+
+  const handleMinuteBlur = useCallback(() => {
+    const digits = formData.weddingMinute.replace(/[^0-9]/g, "").slice(0, 2);
+    if (!digits) {
+      updateFormField("weddingMinute", "");
+      return;
+    }
+    const numericMinute = Number.parseInt(digits, 10);
+    const clamped = Math.min(59, Math.max(0, numericMinute));
+    updateFormField("weddingMinute", String(clamped).padStart(2, "0"));
+  }, [updateFormField, formData.weddingMinute]);
+
+  const handleYearChange = useCallback((value) => {
+    const digits = value.replace(/[^0-9]/g, "").slice(0, 4);
+    if (!digits) {
+      updateFormField("weddingYear", "");
+      return;
+    }
+    const parsedYear = Number.parseInt(digits, 10);
+    if (digits.length === 4 && parsedYear > maxAllowedYear) {
+      updateFormField("weddingYear", String(maxAllowedYear));
+      return;
+    }
+    updateFormField("weddingYear", digits);
+  }, [updateFormField, maxAllowedYear]);
+
+  const handleCoordinateChange = useCallback((field, value) => {
+    const normalized = value.replace(/,/g, ".").replace(/[^0-9.-]/g, "");
+    updateFormField(field, normalized.slice(0, 18));
+  }, [updateFormField]);
+
+  const handleBackgroundUpload = useCallback((event) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    if (!ALLOWED_UPLOAD_TYPES.has(file.type)) {
+      setSaveError("Formato no permitido. Usa JPG o PNG.");
+      event.target.value = "";
+      return;
+    }
+
+    if (file.size > MAX_UPLOAD_SIZE_BYTES) {
+      setSaveError("La imagen supera 20 MB. Usa una imagen más ligera.");
+      event.target.value = "";
+      return;
+    }
+
+    setSaveError("");
+    setSaveMessage("Comprimiendo imagen...");
+
+    compressImage(file).then((dataUrl) => {
+      applyBackgroundImage(dataUrl, file.name, "upload");
+      setSaveMessage("");
+    }).catch(() => {
+      setSaveError("No se pudo procesar la imagen. Intenta con otra.");
+    });
+
+    event.target.value = "";
+  }, [applyBackgroundImage]);
+
+  const handleSaveSetup = useCallback(async (event) => {
     event.preventDefault();
     setSaveError("");
     setSaveMessage("");
@@ -247,6 +381,18 @@ export function AppProvider({ children }) {
       return;
     }
 
+    const orderArray = (sanitized.sectionOrder || "").split(",").filter(Boolean);
+    const validSectionKeys = new Set(STORY_SECTION_ORDER);
+    if (orderArray.length !== STORY_SECTION_ORDER.length || !orderArray.every((s) => validSectionKeys.has(s))) {
+      setSaveError("El orden de las secciones no es válido.");
+      return;
+    }
+
+    if (orderArray[0] !== "hero") {
+      setSaveError("La portada debe ser la primera sección.");
+      return;
+    }
+
     const hasLatitude = Boolean(sanitized.weddingLatitude);
     const hasLongitude = Boolean(sanitized.weddingLongitude);
     if (hasLatitude !== hasLongitude) {
@@ -280,9 +426,9 @@ export function AppProvider({ children }) {
     } catch {
       setSaveError("No se pudo guardar la configuración. Si es la primera vez, prueba a entrar desde el panel privado.");
     }
-  };
+  }, [hasStoredConfig, isTokenVerified, formData, maxAllowedYear]);
 
-  const handleRsvpSubmit = async (event) => {
+  const handleRsvpSubmit = useCallback(async (event) => {
     event.preventDefault();
     if (isRsvpSubmitting) return;
 
@@ -332,17 +478,9 @@ export function AppProvider({ children }) {
         setIsRsvpSubmitting(false);
       }, 5000);
     }
-  };
+  }, [isRsvpSubmitting, rsvpForm]);
 
-  const updateRsvpField = (field, value) => {
-    if (field === "attendance" && value === "no") {
-      setRsvpForm((current) => ({ ...current, attendance: value, companions: "0" }));
-      return;
-    }
-    setRsvpForm((current) => ({ ...current, [field]: value }));
-  };
-
-  const handleTokenLogin = async () => {
+  const handleTokenLogin = useCallback(async () => {
     setAuthMessageType("error");
     setAuthMessage("");
 
@@ -392,9 +530,9 @@ export function AppProvider({ children }) {
     } finally {
       setIsTokenVerifying(false);
     }
-  };
+  }, [tokenLoginUsername, setupTokenInput]);
 
-  const handleGenerateToken = async () => {
+  const handleGenerateToken = useCallback(async () => {
     setAuthMessageType("error");
     setAuthMessage("");
     setGeneratedToken("");
@@ -437,9 +575,9 @@ export function AppProvider({ children }) {
     } catch {
       setAuthMessage("No se pudo generar el código. Inténtalo de nuevo.");
     }
-  };
+  }, [adminLoginUsername, config]);
 
-  const handleAdminTokenLogin = async () => {
+  const handleAdminTokenLogin = useCallback(async () => {
     setAuthMessageType("error");
     setAuthMessage("");
 
@@ -493,18 +631,9 @@ export function AppProvider({ children }) {
     } finally {
       setIsTokenVerifying(false);
     }
-  };
+  }, [adminLoginUsername, setupTokenInput, config]);
 
-  const handleAdminLogout = () => {
-    setIsTokenVerified(false);
-    setTokenLoginUsername("");
-    setSetupToken("");
-    setSetupTokenInput("");
-    setGeneratedToken("");
-    setAuthMessage("");
-  };
-
-  const handleResetSetupToken = async () => {
+  const handleResetSetupToken = useCallback(async () => {
     const shouldResetToken = window.confirm("¿Quieres generar un código nuevo? El actual dejará de ser válido.");
     if (!shouldResetToken) return;
 
@@ -512,132 +641,16 @@ export function AppProvider({ children }) {
     await refreshSetupToken();
     setAuthMessageType("success");
     setAuthMessage("Código nuevo generado. Cópialo del campo superior antes de guardar.");
-  };
+  }, [refreshSetupToken]);
 
-  const handleResetTokenFromAdmin = async () => {
+  const handleResetTokenFromAdmin = useCallback(async () => {
     const shouldResetToken = window.confirm("¿Quieres generar un código nuevo? El actual dejará de ser válido.");
     if (!shouldResetToken) return;
 
     setAdminMessage("");
     await refreshSetupToken();
     setAdminMessage("Código renovado. Esto no cambia la contraseña de la aplicación.");
-  };
-
-  const handleClearRsvpEntries = async () => {
-    if (!window.confirm("¿Borrar todas las respuestas de asistencia? Esta acción no se puede deshacer.")) return;
-    try {
-      const snapshot = await getDocs(RSVP_COLLECTION_REF);
-      await Promise.all(snapshot.docs.map((entryDoc) => deleteDoc(entryDoc.ref)));
-      setRsvpEntries([]);
-      setAdminMessage("Se vació el registro de asistencia.");
-    } catch {
-      setAdminMessage("No se pudo vaciar el registro de asistencia.");
-    }
-  };
-
-  const handleBackgroundUpload = (event) => {
-    const file = event.target.files?.[0];
-    if (!file) return;
-
-    if (!ALLOWED_UPLOAD_TYPES.has(file.type)) {
-      setSaveError("Formato no permitido. Usa JPG o PNG.");
-      event.target.value = "";
-      return;
-    }
-
-    if (file.size > MAX_UPLOAD_SIZE_BYTES) {
-      setSaveError("La imagen supera 20 MB. Usa una imagen más ligera.");
-      event.target.value = "";
-      return;
-    }
-
-    setSaveError("");
-    setSaveMessage("Comprimiendo imagen...");
-
-    compressImage(file).then((dataUrl) => {
-      applyBackgroundImage(dataUrl, file.name, "upload");
-      setSaveMessage("");
-    }).catch(() => {
-      setSaveError("No se pudo procesar la imagen. Intenta con otra.");
-    });
-
-    event.target.value = "";
-  };
-
-  const handleClearBackground = () => {
-    applyBackgroundImage("", "", "");
-  };
-
-  const handleSelectPreviewBackground = (backgroundImage, backgroundImageLabel, backgroundImageSource = "openfreemap") => {
-    applyBackgroundImage(backgroundImage, backgroundImageLabel, backgroundImageSource);
-  };
-
-  const handleDayChange = (value) => {
-    const digits = value.replace(/[^0-9]/g, "").slice(0, 2);
-    if (!digits) {
-      updateFormField("weddingDay", "");
-      return;
-    }
-    const numericDay = Number.parseInt(digits, 10);
-    const clamped = Math.min(31, Math.max(1, numericDay));
-    updateFormField("weddingDay", String(clamped));
-  };
-
-  const handleHourChange = (value) => {
-    const digits = value.replace(/[^0-9]/g, "").slice(0, 2);
-    if (!digits) {
-      updateFormField("weddingHour", "");
-      return;
-    }
-    const numericHour = Number.parseInt(digits, 10);
-    const clamped = Math.min(23, Math.max(0, numericHour));
-    updateFormField("weddingHour", String(clamped));
-  };
-
-  const handleMinuteChange = (value) => {
-    const digits = value.replace(/[^0-9]/g, "").slice(0, 2);
-    if (!digits) {
-      updateFormField("weddingMinute", "");
-      return;
-    }
-    if (digits.length === 1) {
-      updateFormField("weddingMinute", digits);
-      return;
-    }
-    const numericMinute = Number.parseInt(digits, 10);
-    const clamped = Math.min(59, Math.max(0, numericMinute));
-    updateFormField("weddingMinute", String(clamped).padStart(2, "0"));
-  };
-
-  const handleMinuteBlur = () => {
-    const digits = formData.weddingMinute.replace(/[^0-9]/g, "").slice(0, 2);
-    if (!digits) {
-      updateFormField("weddingMinute", "");
-      return;
-    }
-    const numericMinute = Number.parseInt(digits, 10);
-    const clamped = Math.min(59, Math.max(0, numericMinute));
-    updateFormField("weddingMinute", String(clamped).padStart(2, "0"));
-  };
-
-  const handleYearChange = (value) => {
-    const digits = value.replace(/[^0-9]/g, "").slice(0, 4);
-    if (!digits) {
-      updateFormField("weddingYear", "");
-      return;
-    }
-    const parsedYear = Number.parseInt(digits, 10);
-    if (digits.length === 4 && parsedYear > maxAllowedYear) {
-      updateFormField("weddingYear", String(maxAllowedYear));
-      return;
-    }
-    updateFormField("weddingYear", digits);
-  };
-
-  const handleCoordinateChange = (field, value) => {
-    const normalized = value.replace(/,/g, ".").replace(/[^0-9.-]/g, "");
-    updateFormField(field, normalized.slice(0, 18));
-  };
+  }, [refreshSetupToken]);
 
   useEffect(() => {
     const place = formData.weddingPlace.trim();
@@ -756,7 +769,7 @@ export function AppProvider({ children }) {
   }), [
     config, formData, hasStoredConfig,
     isConfigLoading, configLoadError,
-    setupToken, setupTokenInput, setSetupTokenInput,
+    setupToken, setupTokenInput,
     isTokenVerifying, isTokenVerified, tokenLoginUsername,
     adminLoginUsername, generatedToken,
     saveMessage, saveError,
@@ -764,11 +777,20 @@ export function AppProvider({ children }) {
     authMessage, authMessageType,
     rsvpEntries,
     previewBackgrounds, isPreviewLoading,
-    locationMapContainerRef, locationMapError, setLocationMapError,
-    locationMapLoading, setLocationMapLoading, locationMapTarget, setLocationMapTarget,
+    locationMapContainerRef, locationMapError,
+    locationMapLoading, locationMapTarget,
     rsvpForm, rsvpMessage, isRsvpSubmitting,
     maxAllowedYear, isAdminTokenLoggedIn,
     formattedDate, formattedTime, calendarLink,
+    updateFormField, refreshSetupToken,
+    handleSaveSetup, handleRsvpSubmit, updateRsvpField,
+    handleTokenLogin, handleAdminTokenLogin, handleGenerateToken,
+    handleAdminLogout,
+    handleResetSetupToken, handleResetTokenFromAdmin,
+    handleClearRsvpEntries,
+    handleBackgroundUpload, handleClearBackground, handleSelectPreviewBackground,
+    handleDayChange, handleHourChange, handleMinuteChange, handleMinuteBlur,
+    handleYearChange, handleCoordinateChange,
   ]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
