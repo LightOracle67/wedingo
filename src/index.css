@@ -1572,6 +1572,11 @@ h6 {
   gap: 0.75rem;
 }
 
+.setup-name-col {
+  display: grid;
+  gap: 0.35rem;
+}
+
 @media (max-width: 640px) {
   .setup-name-grid {
     grid-template-columns: 1fr;
@@ -1723,6 +1728,9 @@ h6 {
 
 .setup-input,
 .setup-textarea {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   border: 1px solid var(--setup-field-border);
   background: var(--setup-field-bg);
   color: #fdf8ec;
@@ -1737,6 +1745,9 @@ h6 {
 }
 
 select.setup-input {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   appearance: none;
   -webkit-appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23fdf8ec' d='M1 1l4 4 4-4'/%3E%3C/svg%3E");
@@ -1744,7 +1755,6 @@ select.setup-input {
   background-position: right 0.75rem center;
   padding-right: 2rem;
   cursor: pointer;
-  box-sizing: border-box;
   height: auto;
   line-height: 1.4;
 }
@@ -1769,14 +1779,17 @@ select.setup-input {
 
 .setup-date-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 0.55rem;
 }
 
-@media (max-width: 640px) {
-  .setup-date-grid {
-    grid-template-columns: 1fr;
-  }
+.setup-date-grid .setup-label {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.setup-date-grid .setup-help {
+  margin-top: 0.15rem;
 }
 
 .setup-button {
@@ -2486,8 +2499,14 @@ a:focus-visible {
 
 .theme-picker__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 0.55rem;
+}
+
+@media (max-width: 400px) {
+  .theme-picker__grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .theme-picker__card {
