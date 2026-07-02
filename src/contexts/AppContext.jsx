@@ -19,6 +19,7 @@ import {
   normalizeTokenValue,
   resolveLocationTarget,
   buildOpenFreeMapPreviewUrl,
+  decodeInviteConfig,
 } from "../lib/utils";
 
 
@@ -75,6 +76,21 @@ export function AppProvider({ children }) {
   );
 
   useEffect(() => {
+    const hash = window.location.hash;
+    if (hash && hash.length > 1) {
+      try {
+        const parsed = decodeInviteConfig(hash.slice(1));
+        const hydrated = { ...defaultConfig, ...normalizeConfig(parsed) };
+        setConfig(hydrated);
+        setFormData(hydrated);
+        setHasStoredConfig(false);
+        setIsConfigLoading(false);
+        return;
+      } catch {
+        // hash inválido o no es config; ignora
+      }
+    }
+
     const hydrateConfig = async () => {
       setConfigLoadError("");
       try {
@@ -373,6 +389,21 @@ export function AppProvider({ children }) {
     const parsedMinute = Number.parseInt(sanitized.weddingMinute, 10);
     if (Number.isNaN(parsedMinute) || parsedMinute < 0 || parsedMinute > 59) {
       setSaveError("Los minutos deben estar entre 00 y 59.");
+      return;
+    }
+
+    const monthNum = MONTH_VALUE_TO_NUMBER[sanitized.weddingMonth];
+    const enteredDate = new Date(
+      Number.parseInt(sanitized.weddingYear, 10),
+      monthNum - 1,
+      Number.parseInt(sanitized.weddingDay, 10),
+      Number.parseInt(sanitized.weddingHour, 10),
+      Number.parseInt(sanitized.weddingMinute, 10),
+    );
+    const today = new Date();
+    today.setSeconds(0, 0);
+    if (enteredDate < today) {
+      setSaveError("La fecha de la boda no puede ser anterior a hoy.");
       return;
     }
 

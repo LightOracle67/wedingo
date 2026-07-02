@@ -7,10 +7,15 @@ import SetupPage from "./pages/SetupPage";
 import AdminPage from "./pages/AdminPage";
 
 function AppShell() {
-  const { config, formData, isAdminTokenLoggedIn } = useApp();
+  const { config, formData, isAdminTokenLoggedIn, tokenLoginUsername } = useApp();
   const location = useLocation();
 
+  const searchParams = new URLSearchParams(location.search);
+  const isInviteMode = searchParams.has("invitar");
+
   const isEditingRoute = location.pathname === "/setup" || (location.pathname === "/admin" && isAdminTokenLoggedIn);
+  const showSessionBar = !isInviteMode && location.pathname === "/" && !isAdminTokenLoggedIn;
+  const topBarPadding = isAdminTokenLoggedIn || showSessionBar ? "2.5rem" : "0";
 
   useEffect(() => {
     const activeTheme = isEditingRoute ? "golden" : formData.theme || config.theme;
@@ -29,10 +34,18 @@ function AppShell() {
         Saltar al contenido principal
       </a>
 
+      {showSessionBar ? (
+        <nav className="admin-bar" role="navigation" aria-label="Sesión">
+          <div className="admin-bar__inner">
+            <span className="admin-bar__title">No has iniciado sesión</span>
+          </div>
+        </nav>
+      ) : null}
+
       {isAdminTokenLoggedIn ? (
         <nav className="admin-bar" role="navigation" aria-label="Barra de administración">
           <div className="admin-bar__inner">
-            <span className="admin-bar__title">Administración</span>
+            <span className="admin-bar__title">{tokenLoginUsername || config.adminUsername || "Administración"}</span>
             <div className="admin-bar__links">
               <Link className={`admin-bar__link ${location.pathname === "/" ? "admin-bar__link--active" : ""}`} to="/">Invitación</Link>
               <Link className={`admin-bar__link ${location.pathname === "/admin" ? "admin-bar__link--active" : ""}`} to="/admin">Panel</Link>
@@ -41,7 +54,7 @@ function AppShell() {
         </nav>
       ) : null}
 
-      <main id="main-content" role="main" tabIndex={-1} style={{ paddingTop: isAdminTokenLoggedIn ? "2.5rem" : "0" }}>
+      <main id="main-content" role="main" tabIndex={-1} style={{ paddingTop: topBarPadding }}>
         <Routes>
           <Route path="/" element={<PublicInvitation />} />
           <Route path="/setup" element={<SetupPage />} />

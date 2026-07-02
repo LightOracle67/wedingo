@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useApp } from "../contexts/AppContext";
@@ -7,6 +8,8 @@ import {
   resolveLocationTarget,
 } from "../lib/utils";
 import { STORY_SECTION_ORDER, MONTH_VALUE_TO_NUMBER } from "../lib/constants";
+import { encodeInviteConfig } from "../lib/utils";
+import eucalyptusSrc from "../assets/eucalyptus.png";
 import HeroSection from "./sections/HeroSection";
 import DetailsSection from "./sections/DetailsSection";
 import InfoSection from "./sections/InfoSection";
@@ -25,6 +28,10 @@ function parseSectionOrder(raw) {
 }
 
 export default function PublicInvitation() {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const isInviteMode = searchParams.has("invitar");
+
   const {
     config, formattedDate, formattedTime, calendarLink,
     rsvpForm, rsvpMessage, isRsvpSubmitting,
@@ -35,9 +42,10 @@ export default function PublicInvitation() {
   } = useApp();
 
   const sectionOrder = useMemo(() => parseSectionOrder(config.sectionOrder), [config.sectionOrder]);
+  const showRsvp = isAdminTokenLoggedIn || isInviteMode;
   const visibleOrder = useMemo(
-    () => isAdminTokenLoggedIn ? sectionOrder : sectionOrder.filter((s) => s !== "rsvp"),
-    [sectionOrder, isAdminTokenLoggedIn],
+    () => showRsvp ? sectionOrder : sectionOrder.filter((s) => s !== "rsvp"),
+    [sectionOrder, showRsvp],
   );
   const visibleOrderRef = useRef(visibleOrder);
   useEffect(() => { visibleOrderRef.current = visibleOrder; }, [visibleOrder]);
@@ -325,12 +333,13 @@ export default function PublicInvitation() {
   const showScrollHint = activeStorySection !== visibleOrder[visibleOrder.length - 1];
 
   const handleWhatsAppShare = useCallback(() => {
-    const inviteLink = window.location.origin;
+    const configHash = encodeInviteConfig(config);
+    const inviteLink = `${window.location.origin}/?invitar=1#${configHash}`;
     const message = formattedDate
       ? `${config.firstName} & ${config.secondName} te invitan a su boda, que se celebrará el ${formattedDate}. Nos encantaría contar contigo.\n\n${inviteLink}`
       : `${config.firstName} & ${config.secondName} te invitan a su boda. Nos encantaría contar contigo.\n\n${inviteLink}`;
     window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, "_blank", "noreferrer");
-  }, [formattedDate, config.firstName, config.secondName]);
+  }, [formattedDate, config.firstName, config.secondName, config]);
 
   const sectionProps = useMemo(() => ({
     hero: {
@@ -374,6 +383,13 @@ export default function PublicInvitation() {
 
   return (
     <div className={`app-scene ${isStoryTransitioning ? "app-scene--transitioning" : ""}`}>
+      <div className="pointer-events-none fixed left-[-0.5rem] top-0 z-0 wedding-decoration wedding-decoration--left">
+        <img src={eucalyptusSrc} alt="" aria-hidden="true" className="wedding-decoration__image" />
+      </div>
+      <div className="pointer-events-none fixed right-[-0.5rem] bottom-[-0.5rem] z-0 wedding-decoration wedding-decoration--right">
+        <img src={eucalyptusSrc} alt="" aria-hidden="true" className="wedding-decoration__image" />
+      </div>
+
       {showScrollHint ? (
         <button
           type="button"
@@ -398,7 +414,7 @@ export default function PublicInvitation() {
       </button>
 
       {sectionOrder.map((sectionKey) => {
-        if (sectionKey === "rsvp" && !isAdminTokenLoggedIn) return null;
+        if (sectionKey === "rsvp" && !showRsvp) return null;
         const Component = SECTION_COMPONENTS[sectionKey];
         if (!Component) return null;
         return (
