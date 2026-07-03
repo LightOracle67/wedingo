@@ -19,41 +19,26 @@ service cloud.firestore {
         && value.size() <= 5000;
     }
 
-    function isValidInvitationData() {
-      let data = request.resource.data;
+    function isValidInvitationWrite(data) {
       return data.keys().hasAll(['firstName', 'secondName', 'weddingDay', 'weddingMonth', 'weddingYear', 'weddingHour', 'weddingMinute'])
         && data.firstName is string && data.firstName.size() > 0 && data.firstName.size() <= 100 && isSafeText(data.firstName)
         && data.secondName is string && data.secondName.size() > 0 && data.secondName.size() <= 100 && isSafeText(data.secondName)
-        && data.inviteMessage is string && data.inviteMessage.size() <= 500 && isSafeText(data.inviteMessage)
-        && data.weddingPlace is string && data.weddingPlace.size() <= 300 && isSafeText(data.weddingPlace)
         && data.weddingDay is string && data.weddingDay.matches('^(0?[1-9]|[12][0-9]|3[01])$')
         && data.weddingMonth is string
         && data.weddingYear is string && data.weddingYear.matches('^[12][0-9]{3}$')
         && data.weddingHour is string && data.weddingHour.matches('^([01]?[0-9]|2[0-3])$')
         && data.weddingMinute is string && data.weddingMinute.matches('^[0-5]?[0-9]$')
-        && data.theme in ['golden', 'forest', 'rose', 'linen-soft', 'blush-pearl', 'lavender-mist', 'champagne-bubble', 'amber-night', 'onyx-gold', 'midnight-royal', 'burgundy-velvet', 'sapphire-night', 'emerald-grove', 'plum-twilight']
-        && data.adminUsername is string && isValidUsername(data.adminUsername)
-        && data.weddingSchedule is string && data.weddingSchedule.size() <= 2000 && isSafeText(data.weddingSchedule)
-        && (!data.keys().hasAny(['weddingDressCode']) || (data.weddingDressCode is string && data.weddingDressCode.size() <= 200))
-        && (!data.keys().hasAny(['backgroundImage']) || (data.backgroundImage is string && data.backgroundImage.size() <= 300000))
-        && (!data.keys().hasAny(['backgroundImageLabel']) || (data.backgroundImageLabel is string && data.backgroundImageLabel.size() <= 200))
-        && (!data.keys().hasAny(['backgroundImageSource']) || (data.backgroundImageSource is string && data.backgroundImageSource.size() <= 50))
-        && (!data.keys().hasAny(['weddingLatitude']) || (data.weddingLatitude is string && data.weddingLatitude.size() <= 20))
-        && (!data.keys().hasAny(['weddingLongitude']) || (data.weddingLongitude is string && data.weddingLongitude.size() <= 20))
-        && (!data.keys().hasAny(['sectionOrder']) || (data.sectionOrder is string && data.sectionOrder.size() <= 120))
-        && (!data.keys().hasAny(['hiddenSections']) || (data.hiddenSections is string && data.hiddenSections.size() <= 60))
-        && (!data.keys().hasAny(['storyText']) || (data.storyText is string && data.storyText.size() <= 2000 && isSafeText(data.storyText)))
-        && (!data.keys().hasAny(['giftsInfo']) || (data.giftsInfo is string && data.giftsInfo.size() <= 2000 && isSafeText(data.giftsInfo)))
-        && (!data.keys().hasAny(['accommodationInfo']) || (data.accommodationInfo is string && data.accommodationInfo.size() <= 2000 && isSafeText(data.accommodationInfo)))
-        && (!data.keys().hasAny(['kidsPolicy']) || (data.kidsPolicy is string && data.kidsPolicy.size() <= 500 && isSafeText(data.kidsPolicy)));
+        && data.theme in ['golden', 'forest', 'rose', 'linen-soft', 'blush-pearl', 'lavender-mist', 'champagne-bubble', 'amber-night', 'onyx-gold', 'midnight-royal', 'burgundy-velvet', 'sapphire-night', 'emerald-grove', 'plum-twilight'];
     }
 
     match /invitations/{tokenId} {
       allow read: if true;
-      allow create: if request.auth != null
-        || !exists(/databases/$(database)/documents/invitations/$(tokenId));
-      allow update: if request.auth != null
-        || exists(/databases/$(database)/documents/sessions/$(request.resource.data.adminUsername));
+      allow create: if isValidInvitationWrite(request.resource.data)
+        && (request.auth != null
+          || !exists(/databases/$(database)/documents/invitations/$(tokenId)));
+      allow update: if isValidInvitationWrite(request.resource.data)
+        && (request.auth != null
+          || exists(/databases/$(database)/documents/sessions/$(request.resource.data.adminUsername)));
       allow delete: if isSuperAdmin();
     }
 
