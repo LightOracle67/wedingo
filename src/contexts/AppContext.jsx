@@ -23,6 +23,7 @@ import {
   buildOpenFreeMapPreviewUrl,
   decodeInviteConfig,
 } from "../lib/utils";
+import { saveSession, getSession, renewSession } from "../lib/sessionVars";
 
 
 const AppContext = createContext(null);
@@ -172,6 +173,29 @@ export function AppProvider({ children }) {
 
     hydrateRsvp();
   }, []);
+
+  const renewRef = useRef(null);
+
+  useEffect(() => {
+    const session = getSession();
+    if (session && (session.type === "setup" || session.type === "admin")) {
+      setTokenLoginUsername(session.identifier);
+      setSetupToken("");
+      setSetupTokenInput("");
+      setGeneratedToken("");
+      setIsTokenVerified(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isTokenVerified) {
+      renewSession();
+      renewRef.current = setInterval(() => renewSession(), 60_000);
+    } else {
+      if (renewRef.current) clearInterval(renewRef.current);
+    }
+    return () => { if (renewRef.current) clearInterval(renewRef.current); };
+  }, [isTokenVerified]);
 
   useEffect(() => {
     if (isTokenVerified && !hasStoredConfig && tokenLoginUsername) {
@@ -582,6 +606,7 @@ export function AppProvider({ children }) {
       setSetupToken("");
       setSetupTokenInput("");
       setIsTokenVerified(true);
+      saveSession("setup", username);
       setAuthMessageType("success");
       setAuthMessage("Código verificado correctamente.");
     } catch {
@@ -688,6 +713,7 @@ export function AppProvider({ children }) {
       setSetupTokenInput("");
       setGeneratedToken("");
       setIsTokenVerified(true);
+      saveSession("admin", username);
       setAuthMessageType("success");
       setAuthMessage("Has entrado correctamente.");
     } catch {
