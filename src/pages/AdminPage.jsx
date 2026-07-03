@@ -1,6 +1,7 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useApp } from "../contexts/AppContext";
+import { useToast } from "../contexts/ToastContext";
 import SetupForm from "../components/SetupForm";
 import PanelTab from "./admin/PanelTab";
 import AttendanceTab from "./admin/AttendanceTab";
@@ -27,7 +28,6 @@ export default function AdminPage() {
     isAdminTokenLoggedIn, config,
     setupToken, setupTokenInput, setSetupTokenInput,
     adminLoginUsername, setAdminLoginUsername,
-    generatedToken,
     isTokenVerifying,
     authMessage, authMessageType,
     rsvpEntries,
@@ -37,6 +37,16 @@ export default function AdminPage() {
     handleClearRsvpEntries,
     confirmTokenInput, setConfirmTokenInput,
   } = useApp();
+
+  const { addToast } = useToast();
+
+  useEffect(() => {
+    if (authMessage) addToast(authMessageType === "success" ? "success" : "error", authMessage);
+  }, [authMessage, authMessageType, addToast]);
+
+  useEffect(() => {
+    if (adminMessage) addToast("success", adminMessage);
+  }, [adminMessage, addToast]);
 
   const [activeTab, setActiveTab] = useState("panel");
   const [searchQuery, setSearchQuery] = useState("");
@@ -199,7 +209,6 @@ export default function AdminPage() {
               </button>
             </div>
 
-            {authMessage ? <p className={authMessageType === "success" ? "setup-success" : "setup-error"}>{authMessage}</p> : null}
           </form>
         </section>
       </div>
@@ -279,7 +288,6 @@ export default function AdminPage() {
             />
           )}
 
-          {adminMessage ? <p className="setup-success">{adminMessage}</p> : null}
         </div>
       </section>
     </div>

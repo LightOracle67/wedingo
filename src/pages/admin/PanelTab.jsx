@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useCallback } from "react";
 import StatsCard from "./StatsCard";
 
 const PanelTab = memo(function PanelTab({
@@ -7,6 +7,13 @@ const PanelTab = memo(function PanelTab({
 }) {
   const pendingResponses = Math.max(0, rsvpEntries.length - confirmedResponses - declinedResponses);
 
+  const copyLink = useCallback(async () => {
+    const url = window.location.origin;
+    try {
+      await navigator.clipboard.writeText(url);
+    } catch {}
+  }, []);
+
   return (
     <>
       <div className="admin-stats-grid">
@@ -14,6 +21,30 @@ const PanelTab = memo(function PanelTab({
         <StatsCard label="No asistirán" value={declinedResponses} />
         <StatsCard label="Sin responder" value={pendingResponses} />
         <StatsCard label="Total invitados" value={totalGuests} />
+      </div>
+
+      <div className="setup-token-card" style={{ marginBottom: "1rem", padding: "0.7rem 1rem" }}>
+        <p style={{ margin: 0, color: "var(--setup-muted)", fontSize: "0.8rem" }}>
+          Tu invitación está publicada en:
+        </p>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginTop: "0.25rem" }}>
+          <a
+            href={window.location.origin}
+            target="_blank"
+            rel="noreferrer"
+            style={{ color: "var(--setup-accent)", fontSize: "0.9rem", wordBreak: "break-all" }}
+          >
+            {window.location.origin}
+          </a>
+          <button
+            className="setup-button setup-button--ghost setup-button--compact"
+            type="button"
+            onClick={copyLink}
+            style={{ fontSize: "0.75rem", padding: "0.2rem 0.5rem", flexShrink: 0 }}
+          >
+            Copiar
+          </button>
+        </div>
       </div>
 
       <div className="admin-panel-actions">
