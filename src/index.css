@@ -2816,3 +2816,24 @@ a:focus-visible {
     transform: translateX(0);
   }
 }
+
+.page-loading {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-loading::after {
+  content: "";
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid var(--setup-field-border);
+  border-top-color: var(--setup-accent);
+  border-radius: 50%;
+  animation: page-loading-spin 0.6s linear infinite;
+}
+
+@keyframes page-loading-spin {
+  to { transform: rotate(360deg); }
+}

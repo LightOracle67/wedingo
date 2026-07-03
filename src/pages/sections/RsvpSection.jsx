@@ -60,13 +60,22 @@ const RsvpSection = memo(function RsvpSection({
             </div>
           </div>
 
+          <label className="setup-label" htmlFor="rsvpDietary">Preferencias alimentarias</label>
+          <textarea
+            id="rsvpDietary"
+            className="setup-textarea"
+            value={rsvpForm.dietaryInfo}
+            onChange={(e) => updateRsvpField("dietaryInfo", e.target.value.slice(0, 240))}
+            placeholder="Alergias, intolerancias, dieta vegana/vegetariana..."
+          />
+
           <label className="setup-label" htmlFor="rsvpNote">Mensaje opcional</label>
           <textarea
             id="rsvpNote"
             className="setup-textarea"
             value={rsvpForm.note}
             onChange={(e) => updateRsvpField("note", e.target.value.slice(0, 240))}
-            placeholder="Cuéntanos cualquier detalle importante (alergias, etc.)"
+            placeholder="Cuéntanos cualquier otro detalle importante"
           />
 
           <div className="setup-actions">

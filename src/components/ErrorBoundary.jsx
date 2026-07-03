@@ -17,7 +17,7 @@ export default class ErrorBoundary extends Component {
           <section className="setup-card" style={{ textAlign: "center" }}>
             <h2 style={{ color: "var(--setup-title)", margin: 0 }}>Algo salió mal</h2>
             <p style={{ color: "var(--setup-muted)", marginTop: "0.5rem" }}>
-              {this.state.error.message}
+              {import.meta.env.DEV ? this.state.error.message : "Por favor, recarga la página para intentarlo de nuevo."}
             </p>
             <button className="setup-button" style={{ marginTop: "1rem" }} onClick={() => window.location.reload()}>
               Recargar página

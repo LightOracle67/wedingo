@@ -1,15 +1,16 @@
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { Routes, Route, Navigate, Link, useLocation } from "react-router-dom";
 import { AppProvider, useApp } from "./contexts/AppContext";
 import { SuperAdminProvider } from "./contexts/SuperAdminContext";
 import { ToastProvider } from "./contexts/ToastContext";
 import ErrorBoundary from "./components/ErrorBoundary";
-import PublicInvitation from "./pages/PublicInvitation";
-import SetupPage from "./pages/SetupPage";
-import AdminPage from "./pages/AdminPage";
-import SuperAdminLogin from "./pages/SuperAdminLogin";
-import SuperAdminPanel from "./pages/SuperAdminPanel";
 import { SUPERADMIN_ROUTE, SUPERADMIN_DASHBOARD } from "./lib/superadmin";
+
+const PublicInvitation = lazy(() => import("./pages/PublicInvitation"));
+const SetupPage = lazy(() => import("./pages/SetupPage"));
+const AdminPage = lazy(() => import("./pages/AdminPage"));
+const SuperAdminLogin = lazy(() => import("./pages/SuperAdminLogin"));
+const SuperAdminPanel = lazy(() => import("./pages/SuperAdminPanel"));
 
 function AppShell() {
   const { config, formData, isAdminTokenLoggedIn, tokenLoginUsername } = useApp();
@@ -63,6 +64,7 @@ function AppShell() {
       ) : null}
 
       <main id="main-content" role="main" tabIndex={-1} style={{ paddingTop: topBarPadding }}>
+        <Suspense fallback={<div className="page-loading" />}>
         <Routes>
           <Route path="/" element={<PublicInvitation />} />
           <Route path="/setup" element={<SetupPage />} />
@@ -71,6 +73,7 @@ function AppShell() {
           <Route path={SUPERADMIN_DASHBOARD} element={<SuperAdminPanel />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+        </Suspense>
       </main>
     </>
   );

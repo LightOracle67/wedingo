@@ -33,6 +33,10 @@ export const normalizeConfig = (value) => ({
     typeof value?.storyText === "string" ? value.storyText.trim() : "",
   giftsInfo:
     typeof value?.giftsInfo === "string" ? value.giftsInfo.trim() : "",
+  accommodationInfo:
+    typeof value?.accommodationInfo === "string" ? value.accommodationInfo.trim() : "",
+  kidsPolicy:
+    typeof value?.kidsPolicy === "string" ? value.kidsPolicy.trim() : "",
 });
 
 export const geocodeLocation = async (place) => {
@@ -228,6 +232,7 @@ const INVITE_KEY_MAP = {
   sc: "weddingSchedule", dc: "weddingDressCode",
   th: "theme", so: "sectionOrder", hs: "hiddenSections",
   st: "storyText", gi: "giftsInfo",
+  ai: "accommodationInfo", kp: "kidsPolicy",
 };
 
 const INVITE_KEY_REV = Object.fromEntries(
