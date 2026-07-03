@@ -32,7 +32,7 @@ export default function AdminPage() {
     isTokenVerifying,
     authMessage, authMessageType,
     rsvpEntries,
-    adminMessage,
+    adminMessage, adminMessageType,
     handleGenerateToken, handleAdminTokenLogin,
     handleAdminLogout, handleResetTokenFromAdmin,
     handleClearRsvpEntries,
@@ -46,8 +46,8 @@ export default function AdminPage() {
   }, [authMessage, authMessageType, addToast]);
 
   useEffect(() => {
-    if (adminMessage) addToast("success", adminMessage);
-  }, [adminMessage, addToast]);
+    if (adminMessage) addToast(adminMessageType === "error" ? "error" : "success", adminMessage);
+  }, [adminMessage, adminMessageType, addToast]);
 
   const [activeTab, setActiveTab] = useState("panel");
   const [searchQuery, setSearchQuery] = useState("");

@@ -29,7 +29,8 @@ const SECTION_COMPONENTS = {
 
 function parseSectionOrder(raw) {
   const order = (raw || STORY_SECTION_ORDER.join(",")).split(",").filter(Boolean);
-  return STORY_SECTION_ORDER.filter((s) => order.includes(s));
+  const valid = new Set(STORY_SECTION_ORDER);
+  return order.filter((s) => valid.has(s));
 }
 
 export default function PublicInvitation() {
@@ -209,13 +210,17 @@ export default function PublicInvitation() {
       }, 650);
     };
 
+    const IGNORE_SELECTOR = "input, textarea, select, [contenteditable]";
+
     const handleWheel = (event) => {
+      if (event.target.closest(IGNORE_SELECTOR)) return;
       event.preventDefault();
       if (event.deltaY === 0) return;
       startTransition(event.deltaY > 0 ? 1 : -1);
     };
 
     const handleKeyDown = (event) => {
+      if (event.target.closest(IGNORE_SELECTOR)) return;
       if (event.key === "ArrowDown" || event.key === "PageDown" || event.key === " ") {
         event.preventDefault();
         startTransition(1);
@@ -227,6 +232,10 @@ export default function PublicInvitation() {
     };
 
     const handleTouchStart = (event) => {
+      if (event.target.closest(IGNORE_SELECTOR)) {
+        touchStartY = null;
+        return;
+      }
       touchStartY = event.touches[0]?.clientY ?? null;
     };
 

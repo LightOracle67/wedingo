@@ -259,8 +259,8 @@ export default function SetupForm({ prefix = "" }) {
       <CollapsibleSection
         title="Lugar y horario"
         hint="Dirección, mapa y horario"
-        sectionKey="details"
-        isHidden={hiddenSet.has("details")}
+        sectionKey="place"
+        isHidden={hiddenSet.has("place")}
         onToggleVisibility={toggleVisibility}
       >
         <label className="setup-label" htmlFor={id("weddingPlace")}>

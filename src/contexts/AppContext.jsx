@@ -50,6 +50,7 @@ export function AppProvider({ children }) {
   const [saveMessage, setSaveMessage] = useState("");
   const [saveError, setSaveError] = useState("");
   const [adminMessage, setAdminMessage] = useState("");
+  const [adminMessageType, setAdminMessageType] = useState("success");
   const [authMessage, setAuthMessage] = useState("");
   const [authMessageType, setAuthMessageType] = useState("error");
   const [confirmTokenInput, setConfirmTokenInput] = useState("");
@@ -112,7 +113,7 @@ export function AppProvider({ children }) {
       }
     }
 
-    if (isInvite) {
+    if (isInvite && !isTokenRoute) {
       setIsConfigLoading(false);
       return;
     }
@@ -137,6 +138,9 @@ export function AppProvider({ children }) {
         const snapshot = await getDoc(invitationDocRef(inviteToken));
         if (!snapshot.exists()) {
           setHasStoredConfig(false);
+          setConfig(defaultConfig);
+          setFormData(defaultConfig);
+          setIsConfigLoading(false);
           return;
         }
 
@@ -298,8 +302,10 @@ export function AppProvider({ children }) {
       const snapshot = await getDocs(rsvpByInviteRef(inviteToken));
       await Promise.all(snapshot.docs.map((entryDoc) => deleteDoc(entryDoc.ref)));
       setRsvpEntries([]);
+      setAdminMessageType("success");
       setAdminMessage("Se vació el registro de asistencia.");
     } catch {
+      setAdminMessageType("error");
       setAdminMessage("No se pudo vaciar el registro de asistencia.");
     }
   }, [inviteToken]);
@@ -426,6 +432,7 @@ export function AppProvider({ children }) {
 
   useEffect(() => {
     if (!hasStoredConfig || !inviteToken) return;
+    if (JSON.stringify(formData) === JSON.stringify(config)) return;
     if (autoSaveTimerRef.current) clearTimeout(autoSaveTimerRef.current);
     autoSaveTimerRef.current = setTimeout(async () => {
       const ok = await doSave(formData);
@@ -437,7 +444,7 @@ export function AppProvider({ children }) {
     return () => {
       if (autoSaveTimerRef.current) clearTimeout(autoSaveTimerRef.current);
     };
-  }, [formData, hasStoredConfig, inviteToken, doSave]);
+  }, [formData, hasStoredConfig, inviteToken, doSave, config]);
 
   const handleSaveSetup = useCallback(async (event) => {
     event.preventDefault();
@@ -505,14 +512,19 @@ export function AppProvider({ children }) {
         return;
       }
 
+      const parsedYear = Number.parseInt(sanitized.weddingYear, 10);
       const monthNum = MONTH_VALUE_TO_NUMBER[sanitized.weddingMonth];
       const enteredDate = new Date(
-        Number.parseInt(sanitized.weddingYear, 10),
+        parsedYear,
         monthNum - 1,
-        Number.parseInt(sanitized.weddingDay, 10),
+        parsedDay,
         Number.parseInt(sanitized.weddingHour, 10),
         Number.parseInt(sanitized.weddingMinute, 10),
       );
+      if (enteredDate.getDate() !== parsedDay || enteredDate.getMonth() !== monthNum - 1 || enteredDate.getFullYear() !== parsedYear) {
+        setSaveError("La fecha introducida no es válida (ej. 30 de febrero no existe).");
+        return;
+      }
       const today = new Date();
       today.setSeconds(0, 0);
       if (enteredDate < today) {
@@ -520,7 +532,6 @@ export function AppProvider({ children }) {
         return;
       }
 
-      const parsedYear = Number.parseInt(sanitized.weddingYear, 10);
       if (Number.isNaN(parsedYear) || parsedYear > maxAllowedYear) {
         setSaveError(`El año no puede ser mayor a ${maxAllowedYear}.`);
         return;
@@ -749,26 +760,20 @@ export function AppProvider({ children }) {
     setIsTokenVerifying(true);
     try {
       const tokenDocRef = doc(db, "setupTokens", enteredToken);
-      const tokenDoc = await getDoc(tokenDocRef);
-
-      if (!tokenDoc.exists || tokenDoc.data().used === true) {
-        setAuthMessage("Código no válido o ya ha sido usado.");
-        setIsTokenVerifying(false);
-        return;
-      }
-
-      const tokenUsername = (tokenDoc.data().username || "").trim().toLowerCase();
-      if (tokenUsername && tokenUsername !== username) {
-        setAuthMessage("El código no corresponde a este usuario.");
-        setIsTokenVerifying(false);
-        return;
-      }
-
-      await setDoc(tokenDocRef, {
-        username,
-        used: true,
-        createdAt: tokenDoc.data().createdAt,
-        usedAt: serverTimestamp(),
+      await runTransaction(db, async (transaction) => {
+        const tokenDoc = await transaction.get(tokenDocRef);
+        if (!tokenDoc.exists || tokenDoc.data().used === true) {
+          throw new Error("Código no válido o ya ha sido usado.");
+        }
+        const tokenUsername = (tokenDoc.data().username || "").trim().toLowerCase();
+        if (tokenUsername && tokenUsername !== username) {
+          throw new Error("El código no corresponde a este usuario.");
+        }
+        transaction.update(tokenDocRef, {
+          username,
+          used: true,
+          usedAt: serverTimestamp(),
+        });
       });
 
       setTokenLoginUsername(username);
@@ -779,8 +784,13 @@ export function AppProvider({ children }) {
       saveSession("admin", username);
       setAuthMessageType("success");
       setAuthMessage("Has entrado correctamente.");
-    } catch {
-      setAuthMessage("No se pudo verificar el código. Inténtalo de nuevo.");
+    } catch (err) {
+      const message = err?.message;
+      if (message === "Código no válido o ya ha sido usado." || message === "El código no corresponde a este usuario.") {
+        setAuthMessage(message);
+      } else {
+        setAuthMessage("No se pudo verificar el código. Inténtalo de nuevo.");
+      }
     } finally {
       setIsTokenVerifying(false);
     }
@@ -801,12 +811,14 @@ export function AppProvider({ children }) {
 
   const handleResetTokenFromAdmin = useCallback(async () => {
     if (!setupToken || confirmTokenInput !== setupToken) {
+      setAdminMessageType("error");
       setAdminMessage("Escribe el código de acceso actual para generar uno nuevo.");
       return;
     }
 
     setAdminMessage("");
     await refreshSetupToken();
+    setAdminMessageType("success");
     setAdminMessage("Código renovado. Esto no cambia la contraseña de la aplicación.");
     setConfirmTokenInput("");
   }, [refreshSetupToken, setupToken, confirmTokenInput]);
@@ -907,7 +919,7 @@ export function AppProvider({ children }) {
     isTokenVerifying, isTokenVerified, tokenLoginUsername, setTokenLoginUsername,
     adminLoginUsername, setAdminLoginUsername, generatedToken,
     saveMessage, saveError,
-    adminMessage,
+    adminMessage, adminMessageType,
     authMessage, authMessageType,
     rsvpEntries,
     previewBackgrounds, isPreviewLoading,
@@ -933,7 +945,7 @@ export function AppProvider({ children }) {
     isTokenVerifying, isTokenVerified, tokenLoginUsername,
     adminLoginUsername, generatedToken,
     saveMessage, saveError,
-    adminMessage,
+    adminMessage, adminMessageType,
     authMessage, authMessageType,
     rsvpEntries,
     previewBackgrounds, isPreviewLoading,
