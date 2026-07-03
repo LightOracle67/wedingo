@@ -1,13 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import { useSuperAdmin } from "../contexts/SuperAdminContext";
+import { useToast } from "../contexts/ToastContext";
 import { SUPERADMIN_DASHBOARD } from "../lib/superadmin";
 
 export default function SuperAdminLogin() {
   const { isSuperAdmin, isLoading, login, error } = useSuperAdmin();
+  const { addToast } = useToast();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (error) addToast("error", error);
+  }, [error, addToast]);
 
   if (isLoading) {
     return (
@@ -83,8 +89,6 @@ export default function SuperAdminLogin() {
               {submitting ? "Entrando..." : "Entrar"}
             </button>
           </div>
-
-          {error ? <p className="setup-error">{error}</p> : null}
         </form>
       </section>
     </div>

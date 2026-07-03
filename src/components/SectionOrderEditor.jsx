@@ -9,6 +9,7 @@ function parseOrder(raw) {
 export default function SectionOrderEditor({ value, onChange }) {
   const [items, setItems] = useState(() => parseOrder(value));
   const [dragIndex, setDragIndex] = useState(null);
+  const [overIndex, setOverIndex] = useState(null);
 
   const sync = useCallback((next) => {
     setItems(next);
@@ -17,33 +18,39 @@ export default function SectionOrderEditor({ value, onChange }) {
 
   const handleDragStart = useCallback((e, index) => {
     setDragIndex(index);
+    setOverIndex(null);
     e.dataTransfer.effectAllowed = "move";
     e.dataTransfer.setData("text/plain", String(index));
   }, []);
 
-  const handleDragOver = useCallback((e, index) => {
+  const handleDragEnter = useCallback((e, index) => {
+    e.preventDefault();
+    if (index !== overIndex) setOverIndex(index);
+  }, [overIndex]);
+
+  const handleDragOver = useCallback((e) => {
     e.preventDefault();
     e.dataTransfer.dropEffect = "move";
-    if (dragIndex === null || dragIndex === index) return;
-    if (index === 0) return;
-
-    const next = [...items];
-    const [moved] = next.splice(dragIndex, 1);
-    next.splice(index, 0, moved);
-    setDragIndex(index);
-    setItems(next);
-  }, [dragIndex, items]);
+  }, []);
 
   const handleDrop = useCallback((e) => {
     e.preventDefault();
+    const from = dragIndex;
+    const to = overIndex;
     setDragIndex(null);
-    onChange("sectionOrder", items.join(","));
-  }, [items, onChange]);
+    setOverIndex(null);
+    if (from === null || to === null || from === to) return;
+    if (to === 0) return;
+    const next = [...items];
+    const [moved] = next.splice(from, 1);
+    next.splice(to, 0, moved);
+    sync(next);
+  }, [dragIndex, overIndex, items, sync]);
 
   const handleDragEnd = useCallback(() => {
     setDragIndex(null);
-    onChange("sectionOrder", items.join(","));
-  }, [items, onChange]);
+    setOverIndex(null);
+  }, []);
 
   const moveUp = useCallback((index) => {
     if (index <= 1) return;
@@ -61,6 +68,13 @@ export default function SectionOrderEditor({ value, onChange }) {
 
   const isFirstMovable = (index) => index === 1 && items[0] === "hero";
 
+  const getDropIndicator = (index) => {
+    if (index === 0) return null;
+    if (dragIndex === null || overIndex === null) return null;
+    if (dragIndex === overIndex) return null;
+    return overIndex === index ? "section-order-item--drop-target" : "";
+  };
+
   return (
     <div className="setup-token-card">
       <p className="setup-label setup-label--tight">Orden de las secciones</p>
@@ -74,10 +88,11 @@ export default function SectionOrderEditor({ value, onChange }) {
           return (
             <div
               key={sectionKey}
-              className={`section-order-item ${isDragging ? "section-order-item--dragging" : ""} ${isHero ? "section-order-item--fixed" : ""}`}
+              className={`section-order-item ${isDragging ? "section-order-item--dragging" : ""} ${isHero ? "section-order-item--fixed" : ""} ${getDropIndicator(index)}`}
               draggable={!isHero}
               onDragStart={(e) => handleDragStart(e, index)}
-              onDragOver={(e) => handleDragOver(e, index)}
+              onDragEnter={(e) => handleDragEnter(e, index)}
+              onDragOver={handleDragOver}
               onDrop={handleDrop}
               onDragEnd={handleDragEnd}
             >

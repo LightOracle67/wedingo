@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Routes, Route, Navigate, Link, useLocation } from "react-router-dom";
 import { AppProvider, useApp } from "./contexts/AppContext";
 import { SuperAdminProvider } from "./contexts/SuperAdminContext";
+import { ToastProvider } from "./contexts/ToastContext";
 import ErrorBoundary from "./components/ErrorBoundary";
 import PublicInvitation from "./pages/PublicInvitation";
 import SetupPage from "./pages/SetupPage";
@@ -79,7 +80,9 @@ export default function App() {
   return (
     <AppProvider>
       <SuperAdminProvider>
-        <AppShell />
+        <ToastProvider>
+          <AppShell />
+        </ToastProvider>
       </SuperAdminProvider>
     </AppProvider>
   );
