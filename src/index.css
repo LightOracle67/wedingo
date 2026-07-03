@@ -2482,6 +2482,11 @@ a:focus-visible {
   font-weight: 600;
 }
 
+.admin-bar__text {
+  font-size: 0.85rem;
+  color: rgba(255, 246, 220, 0.6);
+}
+
 /* ── Theme picker ── */
 .theme-picker {
   border: 0;

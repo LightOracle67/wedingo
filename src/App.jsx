@@ -48,13 +48,17 @@ function AppShell() {
           <div className="admin-bar__inner">
             <span className="admin-bar__title">No has iniciado sesión</span>
             <div className="admin-bar__links">
-              <Link className="admin-bar__link" to={`/${storedToken || ""}/setup`}>Iniciar sesión</Link>
+              {storedToken ? (
+                <Link className="admin-bar__link" to={`/${storedToken}/setup`}>Iniciar sesión</Link>
+              ) : (
+                <span className="admin-bar__text">Crea una invitación para empezar</span>
+              )}
             </div>
           </div>
         </nav>
       ) : null}
 
-      {isAdminTokenLoggedIn ? (
+      {isAdminTokenLoggedIn && inviteToken ? (
         <nav className="admin-bar" role="navigation" aria-label="Barra de administración">
           <div className="admin-bar__inner">
             <span className="admin-bar__title">{tokenLoginUsername || config.adminUsername || "Administración"}</span>
