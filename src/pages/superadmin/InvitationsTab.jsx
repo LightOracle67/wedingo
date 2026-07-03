@@ -1,13 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
-import { getDoc, deleteDoc } from "firebase/firestore";
+import { getDocs, deleteDoc, doc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import { INVITATION_DOC_REF } from "../../lib/firebase";
-import { formatDate } from "../../lib/superadmin";
+import { db, INVITATIONS_COLLECTION_REF } from "../../lib/firebase";
 
 export default function InvitationsTab() {
   const navigate = useNavigate();
   const [exists, setExists] = useState(null);
-  const [lastUpdated, setLastUpdated] = useState("");
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
@@ -16,16 +14,10 @@ export default function InvitationsTab() {
   useEffect(() => {
     const load = async () => {
       try {
-        const snap = await getDoc(INVITATION_DOC_REF);
-        if (snap.exists()) {
-          setExists(true);
-          const updated = snap.data()._updatedAt?.toDate?.();
-          if (updated) setLastUpdated(updated.toISOString());
-        } else {
-          setExists(false);
-        }
+        const snap = await getDocs(INVITATIONS_COLLECTION_REF);
+        setExists(snap.size > 0);
       } catch {
-        setError("No se pudo comprobar el estado de la invitación.");
+        setError("No se pudo comprobar el estado de las invitaciones.");
       } finally {
         setLoading(false);
       }
@@ -37,24 +29,24 @@ export default function InvitationsTab() {
     setError("");
     setMessage("");
     try {
-      await deleteDoc(INVITATION_DOC_REF);
+      const snap = await getDocs(INVITATIONS_COLLECTION_REF);
+      await Promise.all(snap.docs.map((d) => deleteDoc(doc(db, "invitations", d.id))));
       setExists(false);
-      setLastUpdated("");
-      setMessage("Invitación eliminada correctamente.");
+      setMessage("Invitaciones eliminadas correctamente.");
       setShowConfirm(false);
     } catch {
-      setError("No se pudo eliminar la invitación.");
+      setError("No se pudieron eliminar las invitaciones.");
     }
   }, []);
 
   const handleBackup = useCallback(async () => {
     try {
-      const snap = await getDoc(INVITATION_DOC_REF);
-      if (!snap.exists()) {
-        setError("No hay invitación que respaldar.");
+      const snap = await getDocs(INVITATIONS_COLLECTION_REF);
+      if (snap.empty) {
+        setError("No hay invitaciones que respaldar.");
         return;
       }
-      const data = snap.data();
+      const data = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
       const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
@@ -84,13 +76,8 @@ export default function InvitationsTab() {
         <>
           <div className="setup-token-card" style={{ marginBottom: "1rem" }}>
             <p style={{ margin: 0, color: "var(--setup-title)", fontSize: "0.95rem" }}>
-              <strong>Estado:</strong> Invitación publicada
+              <strong>Estado:</strong> Invitaciones publicadas
             </p>
-            {lastUpdated && (
-              <p style={{ margin: "0.25rem 0 0", color: "var(--setup-muted)", fontSize: "0.85rem" }}>
-                Última actualización: {formatDate(lastUpdated)}
-              </p>
-            )}
           </div>
 
           <div className="setup-actions" style={{ marginBottom: "1.5rem" }}>

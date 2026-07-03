@@ -1,6 +1,9 @@
-import { useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 
-export default function CollapsibleSection({ title, hint, defaultOpen = false, children }) {
+export default function CollapsibleSection({
+  title, hint, defaultOpen = false, children,
+  sectionKey, isHidden, onToggleVisibility,
+}) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
   const [maxHeight, setMaxHeight] = useState(defaultOpen ? undefined : 0);
   const contentRef = useRef(null);
@@ -33,6 +36,13 @@ export default function CollapsibleSection({ title, hint, defaultOpen = false, c
     }
   };
 
+  const handleVisibilityClick = useCallback((e) => {
+    e.stopPropagation();
+    if (sectionKey && onToggleVisibility) {
+      onToggleVisibility(sectionKey);
+    }
+  }, [sectionKey, onToggleVisibility]);
+
   return (
     <div className="setup-collapsible" data-open={isOpen}>
       <button
@@ -41,8 +51,24 @@ export default function CollapsibleSection({ title, hint, defaultOpen = false, c
         onClick={toggle}
         aria-expanded={isOpen}
       >
-        <span className="setup-collapsible__title">{title}</span>
+        <span className="setup-collapsible__summary-text">
+          {isHidden ? <span className="setup-collapsible__hidden-badge">Oculta</span> : null}
+          <span className="setup-collapsible__title">{title}</span>
+        </span>
         {hint ? <span className="setup-collapsible__hint">{hint}</span> : null}
+        {sectionKey && onToggleVisibility ? (
+          <span
+            className={`setup-collapsible__vis-toggle ${isHidden ? "setup-collapsible__vis-toggle--off" : ""}`}
+            onClick={handleVisibilityClick}
+            role="switch"
+            aria-checked={!isHidden}
+            aria-label={`${isHidden ? "Mostrar" : "Ocultar"} sección`}
+            tabIndex={0}
+            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") handleVisibilityClick(e); }}
+          >
+            {isHidden ? "Mostrar" : "Visible"}
+          </span>
+        ) : null}
       </button>
       <div
         className="setup-collapsible__wrap"

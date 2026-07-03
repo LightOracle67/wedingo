@@ -23,5 +23,8 @@ if (import.meta.env.VITE_RECAPTCHA_ENTERPRISE_KEY) {
   });
 }
 
-export const INVITATION_DOC_REF = doc(db, "publicConfig", "invitation");
+export function invitationDocRef(token) {
+  return doc(db, "invitations", token);
+}
+export const INVITATIONS_COLLECTION_REF = collection(db, "invitations");
 export const RSVP_COLLECTION_REF = collection(db, "rsvpResponses");

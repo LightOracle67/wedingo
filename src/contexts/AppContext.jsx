@@ -10,7 +10,7 @@ import {
   serverTimestamp,
   setDoc,
 } from "firebase/firestore";
-import { db, INVITATION_DOC_REF, RSVP_COLLECTION_REF } from "../lib/firebase";
+import { db, invitationDocRef, RSVP_COLLECTION_REF } from "../lib/firebase";
 import { ALLOWED_UPLOAD_TYPES, defaultConfig, MAX_UPLOAD_SIZE_BYTES, MONTH_OPTIONS, MONTH_VALUE_TO_NUMBER, STORY_SECTION_ORDER, THEME_VALUES } from "../lib/constants";
 import {
   buildGoogleCalendarUrl,
@@ -36,6 +36,8 @@ export function AppProvider({ children }) {
   const [hasStoredConfig, setHasStoredConfig] = useState(false);
   const [isConfigLoading, setIsConfigLoading] = useState(true);
   const [configLoadError, setConfigLoadError] = useState("");
+
+  const [inviteToken, setInviteToken] = useState("");
 
   const [setupToken, setSetupToken] = useState("");
   const [setupTokenInput, setSetupTokenInput] = useState("");
@@ -87,7 +89,10 @@ export function AppProvider({ children }) {
   useEffect(() => {
     const hash = window.location.hash;
     const isInvite = new URLSearchParams(window.location.search).has("invitar");
-    const isAdminRoute = location.pathname === "/setup" || location.pathname === "/admin";
+    const pathParts = location.pathname.split("/").filter(Boolean);
+    const firstSegment = pathParts[0] || "";
+    const isTokenRoute = /^[a-zA-Z0-9]{8,12}$/.test(firstSegment) && !["setup", "admin", "superadmin-login", "superadmin"].includes(firstSegment);
+    const isAdminRoute = pathParts[1] === "setup" || pathParts[1] === "admin";
 
     if (hash && hash.length > 1) {
       try {
@@ -112,7 +117,13 @@ export function AppProvider({ children }) {
       return;
     }
 
-    if (!isAdminRoute) {
+    if (isTokenRoute && inviteToken !== firstSegment) {
+      setInviteToken(firstSegment);
+      setIsConfigLoading(true);
+      return;
+    }
+
+    if (!isAdminRoute && !isTokenRoute) {
       setIsConfigLoading(false);
       return;
     }
@@ -122,7 +133,8 @@ export function AppProvider({ children }) {
     const hydrateConfig = async () => {
       setConfigLoadError("");
       try {
-        const snapshot = await getDoc(INVITATION_DOC_REF);
+        if (!inviteToken) { setIsConfigLoading(false); return; }
+        const snapshot = await getDoc(invitationDocRef(inviteToken));
         if (!snapshot.exists()) {
           setHasStoredConfig(false);
           return;
@@ -143,7 +155,7 @@ export function AppProvider({ children }) {
     };
 
     hydrateConfig();
-  }, [location.pathname, location.hash]);
+  }, [location.pathname, location.hash, inviteToken]);
 
   useEffect(() => {
     const hydrateRsvp = async () => {
@@ -508,7 +520,7 @@ export function AppProvider({ children }) {
     const payload = { ...defaultConfig, ...sanitized };
 
     try {
-      await setDoc(INVITATION_DOC_REF, payload);
+      await setDoc(invitationDocRef(inviteToken), payload);
       setConfig(payload);
       setFormData(payload);
       setAdminLoginUsername(payload.adminUsername);
@@ -520,7 +532,7 @@ export function AppProvider({ children }) {
     } catch {
       setSaveError("No se pudo guardar la configuración. Si es la primera vez, prueba a entrar desde el panel privado.");
     }
-  }, [hasStoredConfig, isTokenVerified, formData, maxAllowedYear]);
+  }, [hasStoredConfig, isTokenVerified, formData, maxAllowedYear, inviteToken]);
 
   const handleRsvpSubmit = useCallback(async (event) => {
     event.preventDefault();
@@ -846,7 +858,7 @@ export function AppProvider({ children }) {
 
   const value = useMemo(() => ({
     config, formData, hasStoredConfig,
-    isConfigLoading, configLoadError,
+    isConfigLoading, configLoadError, inviteToken,
     setupToken, setupTokenInput, setSetupTokenInput,
     isTokenVerifying, isTokenVerified, tokenLoginUsername, setTokenLoginUsername,
     adminLoginUsername, setAdminLoginUsername, generatedToken,
@@ -872,7 +884,7 @@ export function AppProvider({ children }) {
     confirmTokenInput, setConfirmTokenInput,
   }), [
     config, formData, hasStoredConfig,
-    isConfigLoading, configLoadError,
+    isConfigLoading, configLoadError, inviteToken,
     setupToken, setupTokenInput,
     isTokenVerifying, isTokenVerified, tokenLoginUsername,
     adminLoginUsername, generatedToken,

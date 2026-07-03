@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { useApp } from "../contexts/AppContext";
+import { useToast } from "../contexts/ToastContext";
 import SetupForm from "../components/SetupForm";
 
 export default function SetupPage() {
   const navigate = useNavigate();
+  const { inviteToken } = useParams();
   const {
     hasStoredConfig, isConfigLoading, configLoadError,
     setupToken, setupTokenInput, setSetupTokenInput,
@@ -15,6 +17,14 @@ export default function SetupPage() {
     saveMessage, config,
     confirmTokenInput, setConfirmTokenInput,
   } = useApp();
+
+  const { addToast } = useToast();
+
+  useEffect(() => {
+    if (authMessage) {
+      addToast(authMessageType === "success" ? "success" : "error", authMessage);
+    }
+  }, [authMessage, authMessageType, addToast]);
 
   const [showSuccess, setShowSuccess] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -68,7 +78,7 @@ export default function SetupPage() {
   }
 
   if (hasStoredConfig && !showSuccess && !saveMessage) {
-    return <Navigate to="/admin" replace />;
+    return <Navigate to={`/${inviteToken}/admin`} replace />;
   }
 
   if (!isTokenVerified) {
@@ -143,7 +153,6 @@ export default function SetupPage() {
               </button>
             </div>
 
-            {authMessage ? <p className={authMessageType === "success" ? "setup-success" : "setup-error"}>{authMessage}</p> : null}
           </form>
         </section>
       </div>
@@ -180,10 +189,10 @@ export default function SetupPage() {
               Los datos están guardados y la invitación ya está disponible.
             </p>
             <div className="setup-actions" style={{ justifyContent: "center", marginTop: "0.5rem" }}>
-              <button className="setup-button" type="button" onClick={() => navigate("/admin")}>
+              <button className="setup-button" type="button" onClick={() => navigate(`/${inviteToken}/admin`)}>
                 Ir al panel
               </button>
-              <button className="setup-button setup-button--ghost" type="button" onClick={() => navigate("/")}>
+              <button className="setup-button setup-button--ghost" type="button" onClick={() => navigate(`/${inviteToken}`)}>
                 Ver portada
               </button>
             </div>

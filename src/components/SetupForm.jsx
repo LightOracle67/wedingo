@@ -1,5 +1,6 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { useApp } from "../contexts/AppContext";
+import { useToast } from "../contexts/ToastContext";
 import { MONTH_OPTIONS, THEME_GROUPS, THEME_OPTIONS, THEME_PREVIEW_COLORS } from "../lib/constants";
 import CollapsibleSection from "./CollapsibleSection";
 import SectionOrderEditor from "./SectionOrderEditor";
@@ -13,10 +14,27 @@ export default function SetupForm({ prefix = "" }) {
     saveMessage, saveError, maxAllowedYear,
   } = useApp();
 
+  const { addToast } = useToast();
+
+  useEffect(() => {
+    if (saveMessage) addToast("success", saveMessage);
+  }, [saveMessage, addToast]);
+
+  useEffect(() => {
+    if (saveError) addToast("error", saveError);
+  }, [saveError, addToast]);
+
   const hiddenSet = useMemo(() => {
     const raw = formData.hiddenSections || "";
     return new Set(raw.split(",").filter(Boolean));
   }, [formData.hiddenSections]);
+
+  const toggleVisibility = (key) => {
+    const next = new Set(hiddenSet);
+    if (next.has(key)) next.delete(key);
+    else next.add(key);
+    updateFormField("hiddenSections", [...next].join(","));
+  };
 
   const id = (name) => `${prefix}${name}`;
 
@@ -29,7 +47,14 @@ export default function SetupForm({ prefix = "" }) {
         onHiddenChange={updateFormField}
       />
 
-      <CollapsibleSection title="Portada" hint="Nombres, mensaje y tema" defaultOpen>
+      <CollapsibleSection
+        title="Portada"
+        hint="Nombres, mensaje y tema"
+        defaultOpen
+        sectionKey="hero"
+        isHidden={hiddenSet.has("hero")}
+        onToggleVisibility={toggleVisibility}
+      >
         <fieldset className="setup-name-group">
           <legend className="setup-label">Nombres</legend>
           <div className="setup-name-grid">
@@ -102,9 +127,64 @@ export default function SetupForm({ prefix = "" }) {
             </div>
           ))}
         </fieldset>
+
+        <div className="setup-background-panel">
+          <div className="setup-background-panel__header">
+            <div>
+              <p className="setup-label setup-label--tight">Fondo de la portada</p>
+              <p className="setup-help setup-help--tight">
+                Sube una foto o elige un fondo para la portada.
+              </p>
+            </div>
+            {formData.backgroundImage ? (
+              <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleClearBackground}>
+                Quitar el fondo
+              </button>
+            ) : null}
+          </div>
+
+          <label className="setup-upload" htmlFor={id("backgroundUpload")}>
+            <span className="setup-upload__title">Subir foto</span>
+            <span className="setup-upload__subtitle">Máximo 20 MB. Se comprimirá automáticamente.</span>
+          </label>
+          <input id={id("backgroundUpload")} className="setup-upload__input" type="file" accept="image/*" onChange={handleBackgroundUpload} />
+
+          {formData.backgroundImage ? (
+            <div className="setup-selected-background">
+              <img src={formData.backgroundImage} alt="Fondo seleccionado" className="setup-selected-background__image" />
+              <div>
+                <p className="setup-selected-background__title">Fondo actual</p>
+                <p className="setup-help setup-help--tight">{formData.backgroundImageLabel || "Imagen seleccionada"}</p>
+              </div>
+            </div>
+          ) : null}
+
+          {previewBackgrounds.length ? (
+            <div className="setup-background-grid">
+              {previewBackgrounds.filter((bg) => bg.id !== "default").map((bg) => (
+                <button
+                  key={bg.id}
+                  className="setup-background-card"
+                  type="button"
+                  onClick={() => handleSelectPreviewBackground(bg.src, `${formData.weddingPlace} · ${bg.label}`)}
+                >
+                  <img src={bg.src} alt={bg.label} className="setup-background-card__image" />
+                  <span className="setup-background-card__title">{bg.label}</span>
+                  <span className="setup-background-card__description">{bg.description}</span>
+                </button>
+              ))}
+            </div>
+          ) : null}
+        </div>
       </CollapsibleSection>
 
-      <CollapsibleSection title="Fecha y lugar" hint="Cuándo y dónde">
+      <CollapsibleSection
+        title="Fecha y hora"
+        hint="Día, mes, año y hora"
+        sectionKey="details"
+        isHidden={hiddenSet.has("details")}
+        onToggleVisibility={toggleVisibility}
+      >
         <div className="setup-date-grid">
           <div>
             <label className="setup-label" htmlFor={id("weddingDay")}>Día</label>
@@ -174,7 +254,15 @@ export default function SetupForm({ prefix = "" }) {
             <p className="setup-help">De 00 a 59</p>
           </div>
         </div>
+      </CollapsibleSection>
 
+      <CollapsibleSection
+        title="Lugar y horario"
+        hint="Dirección, mapa y horario"
+        sectionKey="details"
+        isHidden={hiddenSet.has("details")}
+        onToggleVisibility={toggleVisibility}
+      >
         <label className="setup-label" htmlFor={id("weddingPlace")}>
           Lugar de la boda
         </label>
@@ -257,129 +345,90 @@ export default function SetupForm({ prefix = "" }) {
           autoComplete="off"
         />
         <p className="setup-help">Sugerencia sobre cómo vestir para la celebración.</p>
-
-        {!hiddenSet.has("info") && (
-          <>
-            <label className="setup-label" htmlFor={id("kidsPolicy")}>
-              Sobre los niños
-            </label>
-            <textarea
-              id={id("kidsPolicy")}
-              className="setup-textarea"
-              value={formData.kidsPolicy}
-              onChange={(e) => updateFormField("kidsPolicy", e.target.value.slice(0, 500))}
-              placeholder="Ejemplo: Los niños son bienvenidos, habrá zona de juegos habilitada."
-              rows={3}
-            />
-            <p className="setup-help">Indica si los niños son bienvenidos o si prefieres que no asistan.</p>
-          </>
-        )}
       </CollapsibleSection>
 
-      {(!hiddenSet.has("story") || !hiddenSet.has("gifts") || !hiddenSet.has("accommodation")) && (
-        <CollapsibleSection title="Contenido extra" hint="Historia, regalos y alojamiento">
-          {!hiddenSet.has("story") && (
-            <>
-              <label className="setup-label" htmlFor={id("storyText")}>
-                Nuestra historia
-              </label>
-              <textarea
-                id={id("storyText")}
-                className="setup-textarea"
-                value={formData.storyText}
-                onChange={(e) => updateFormField("storyText", e.target.value.slice(0, 2000))}
-                placeholder="Ejemplo: Nos conocimos en…"
-                rows={4}
-              />
-              <p className="setup-help">Un texto libre sobre vuestra historia de amor.</p>
-            </>
-          )}
+      <CollapsibleSection
+        title="Sobre los invitados"
+        hint="Niños, restricciones"
+        sectionKey="info"
+        isHidden={hiddenSet.has("info")}
+        onToggleVisibility={toggleVisibility}
+      >
+        <label className="setup-label" htmlFor={id("kidsPolicy")}>
+          Sobre los niños
+        </label>
+        <textarea
+          id={id("kidsPolicy")}
+          className="setup-textarea"
+          value={formData.kidsPolicy}
+          onChange={(e) => updateFormField("kidsPolicy", e.target.value.slice(0, 500))}
+          placeholder="Ejemplo: Los niños son bienvenidos, habrá zona de juegos habilitada."
+          rows={3}
+        />
+        <p className="setup-help">Indica si los niños son bienvenidos o si prefieres que no asistan.</p>
+      </CollapsibleSection>
 
-          {!hiddenSet.has("gifts") && (
-            <>
-              <label className="setup-label" htmlFor={id("giftsInfo")}>
-                Información de regalos
-              </label>
-              <textarea
-                id={id("giftsInfo")}
-                className="setup-textarea"
-                value={formData.giftsInfo}
-                onChange={(e) => updateFormField("giftsInfo", e.target.value.slice(0, 2000))}
-                placeholder="Ejemplo: Preferimos un detalle en efectivo…"
-                rows={4}
-              />
-              <p className="setup-help">Indica si preferís una lluvia de sobres, número de cuenta, etc.</p>
-            </>
-          )}
+      <CollapsibleSection
+        title="Nuestra historia"
+        hint="Texto libre sobre la pareja"
+        sectionKey="story"
+        isHidden={hiddenSet.has("story")}
+        onToggleVisibility={toggleVisibility}
+      >
+        <label className="setup-label" htmlFor={id("storyText")}>
+          Nuestra historia
+        </label>
+        <textarea
+          id={id("storyText")}
+          className="setup-textarea"
+          value={formData.storyText}
+          onChange={(e) => updateFormField("storyText", e.target.value.slice(0, 2000))}
+          placeholder="Ejemplo: Nos conocimos en…"
+          rows={4}
+        />
+        <p className="setup-help">Un texto libre sobre vuestra historia de amor.</p>
+      </CollapsibleSection>
 
-          {!hiddenSet.has("accommodation") && (
-            <>
-              <label className="setup-label" htmlFor={id("accommodationInfo")}>
-                Alojamiento
-              </label>
-              <textarea
-                id={id("accommodationInfo")}
-                className="setup-textarea"
-                value={formData.accommodationInfo}
-                onChange={(e) => updateFormField("accommodationInfo", e.target.value.slice(0, 2000))}
-                placeholder="Ejemplo: Hotel recomendado: … Código descuento: …"
-                rows={4}
-              />
-              <p className="setup-help">Hoteles, códigos de descuento y opciones para los invitados.</p>
-            </>
-          )}
-        </CollapsibleSection>
-      )}
+      <CollapsibleSection
+        title="Regalos"
+        hint="Preferencias y datos bancarios"
+        sectionKey="gifts"
+        isHidden={hiddenSet.has("gifts")}
+        onToggleVisibility={toggleVisibility}
+      >
+        <label className="setup-label" htmlFor={id("giftsInfo")}>
+          Información de regalos
+        </label>
+        <textarea
+          id={id("giftsInfo")}
+          className="setup-textarea"
+          value={formData.giftsInfo}
+          onChange={(e) => updateFormField("giftsInfo", e.target.value.slice(0, 2000))}
+          placeholder="Ejemplo: Preferimos un detalle en efectivo…"
+          rows={4}
+        />
+        <p className="setup-help">Indica si preferís una lluvia de sobres, número de cuenta, etc.</p>
+      </CollapsibleSection>
 
-      <CollapsibleSection title="Personalización" hint="Fondo de portada">
-        <div className="setup-background-panel">
-          <div className="setup-background-panel__header">
-            <div>
-              <p className="setup-label setup-label--tight">Fondo de la portada</p>
-              <p className="setup-help setup-help--tight">
-                Sube una foto o elige un fondo para la portada.
-              </p>
-            </div>
-            {formData.backgroundImage ? (
-              <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleClearBackground}>
-                Quitar el fondo
-              </button>
-            ) : null}
-          </div>
-
-          <label className="setup-upload" htmlFor={id("backgroundUpload")}>
-            <span className="setup-upload__title">Subir foto</span>
-            <span className="setup-upload__subtitle">Máximo 20 MB. Se comprimirá automáticamente.</span>
-          </label>
-          <input id={id("backgroundUpload")} className="setup-upload__input" type="file" accept="image/*" onChange={handleBackgroundUpload} />
-
-          {formData.backgroundImage ? (
-            <div className="setup-selected-background">
-              <img src={formData.backgroundImage} alt="Fondo seleccionado" className="setup-selected-background__image" />
-              <div>
-                <p className="setup-selected-background__title">Fondo actual</p>
-                <p className="setup-help setup-help--tight">{formData.backgroundImageLabel || "Imagen seleccionada"}</p>
-              </div>
-            </div>
-          ) : null}
-
-          {previewBackgrounds.length ? (
-            <div className="setup-background-grid">
-              {previewBackgrounds.filter((bg) => bg.id !== "default").map((bg) => (
-                <button
-                  key={bg.id}
-                  className="setup-background-card"
-                  type="button"
-                  onClick={() => handleSelectPreviewBackground(bg.src, `${formData.weddingPlace} · ${bg.label}`)}
-                >
-                  <img src={bg.src} alt={bg.label} className="setup-background-card__image" />
-                  <span className="setup-background-card__title">{bg.label}</span>
-                  <span className="setup-background-card__description">{bg.description}</span>
-                </button>
-              ))}
-            </div>
-          ) : null}
-        </div>
+      <CollapsibleSection
+        title="Alojamiento"
+        hint="Hoteles y descuentos"
+        sectionKey="accommodation"
+        isHidden={hiddenSet.has("accommodation")}
+        onToggleVisibility={toggleVisibility}
+      >
+        <label className="setup-label" htmlFor={id("accommodationInfo")}>
+          Alojamiento
+        </label>
+        <textarea
+          id={id("accommodationInfo")}
+          className="setup-textarea"
+          value={formData.accommodationInfo}
+          onChange={(e) => updateFormField("accommodationInfo", e.target.value.slice(0, 2000))}
+          placeholder="Ejemplo: Hotel recomendado: … Código descuento: …"
+          rows={4}
+        />
+        <p className="setup-help">Hoteles, códigos de descuento y opciones para los invitados.</p>
       </CollapsibleSection>
 
       <div className="setup-actions" style={{ padding: "0.25rem 0" }}>
@@ -387,9 +436,6 @@ export default function SetupForm({ prefix = "" }) {
           Guardar cambios
         </button>
       </div>
-
-      {saveMessage ? <p className="setup-success">{saveMessage}</p> : null}
-      {saveError ? <p className="setup-error">{saveError}</p> : null}
     </form>
   );
 }

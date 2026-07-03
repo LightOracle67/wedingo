@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 import { useApp } from "../contexts/AppContext";
 import {
@@ -7,7 +7,7 @@ import {
   resolveLocationTarget,
 } from "../lib/utils";
 import { STORY_SECTION_ORDER, MONTH_VALUE_TO_NUMBER } from "../lib/constants";
-import { encodeInviteConfig } from "../lib/utils";
+
 import eucalyptusSrc from "../assets/eucalyptus.png";
 import HeroSection from "./sections/HeroSection";
 import DetailsSection from "./sections/DetailsSection";
@@ -34,6 +34,7 @@ function parseSectionOrder(raw) {
 
 export default function PublicInvitation() {
   const location = useLocation();
+  const { inviteToken } = useParams();
   const searchParams = new URLSearchParams(location.search);
   const isInviteMode = searchParams.has("invitar");
 
@@ -360,13 +361,12 @@ export default function PublicInvitation() {
   const showScrollHint = activeStorySection !== visibleOrder[visibleOrder.length - 1];
 
   const handleWhatsAppShare = useCallback(() => {
-    const configHash = encodeInviteConfig(config);
-    const inviteLink = `${window.location.origin}/?invitar=1#${configHash}`;
+    const inviteLink = `${window.location.origin}/${inviteToken}`;
     const message = formattedDate
       ? `${config.firstName} & ${config.secondName} te invitan a su boda, que se celebrará el ${formattedDate}. Nos encantaría contar contigo.\n\n${inviteLink}`
       : `${config.firstName} & ${config.secondName} te invitan a su boda. Nos encantaría contar contigo.\n\n${inviteLink}`;
     window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, "_blank", "noreferrer");
-  }, [formattedDate, config.firstName, config.secondName, config]);
+  }, [formattedDate, config.firstName, config.secondName, inviteToken]);
 
   const sectionProps = useMemo(() => ({
     hero: {
