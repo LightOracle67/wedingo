@@ -1,6 +1,11 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+    function isSuperAdmin() {
+      return request.auth != null
+        && request.auth.token.email in ['adriancl2001@gmail.com'];
+    }
+
     function isValidUsername(value) {
       return value is string
         && value.size() >= 1
@@ -40,37 +45,41 @@ service cloud.firestore {
 
     match /publicConfig/invitation {
       allow read: if true;
-      allow create: if (!exists(/databases/$(database)/documents/publicConfig/invitation)
-        && request.auth == null
-        && isValidInvitationData());
-      allow update: if isValidInvitationData()
-        && (
-          request.auth != null
-          || (
-            request.resource.data.adminUsername is string
-            && isValidUsername(request.resource.data.adminUsername)
-          )
-        );
-      allow delete: if false;
+      allow create: if isSuperAdmin()
+        || (!exists(/databases/$(database)/documents/publicConfig/invitation)
+          && request.auth == null
+          && isValidInvitationData());
+      allow update: if isSuperAdmin()
+        || (isValidInvitationData()
+          && (
+            request.auth != null
+            || (
+              request.resource.data.adminUsername is string
+              && isValidUsername(request.resource.data.adminUsername)
+            )
+          ));
+      allow delete: if isSuperAdmin();
     }
 
     match /setupTokens/{tokenId} {
-      allow create: if !exists(/databases/$(database)/documents/setupTokens/$(tokenId))
-        && (
-          (request.resource.data.keys().hasOnly(['used', 'createdAt', 'username'])
-            && request.resource.data.used == false)
-          ||
-          (request.resource.data.keys().hasOnly(['used', 'createdAt', 'autoGen'])
-            && request.resource.data.used == false
-            && request.resource.data.autoGen == true)
-        );
-      allow read: if resource.data.used == false;
-      allow update: if resource.data.used == false
-        && request.resource.data.used == true
-        && request.resource.data.keys().hasAll(['used', 'username', 'createdAt', 'usedAt'])
-        && request.resource.data.username is string
-        && isValidUsername(request.resource.data.username);
-      allow delete: if false;
+      allow create: if isSuperAdmin()
+        || (!exists(/databases/$(database)/documents/setupTokens/$(tokenId))
+          && (
+            (request.resource.data.keys().hasOnly(['used', 'createdAt', 'username'])
+              && request.resource.data.used == false)
+            ||
+            (request.resource.data.keys().hasOnly(['used', 'createdAt', 'autoGen'])
+              && request.resource.data.used == false
+              && request.resource.data.autoGen == true)
+          ));
+      allow read: if isSuperAdmin() || resource.data.used == false;
+      allow update: if isSuperAdmin()
+        || (resource.data.used == false
+          && request.resource.data.used == true
+          && request.resource.data.keys().hasAll(['used', 'username', 'createdAt', 'usedAt'])
+          && request.resource.data.username is string
+          && isValidUsername(request.resource.data.username));
+      allow delete: if isSuperAdmin();
     }
 
     match /rsvpResponses/{responseId} {
@@ -87,9 +96,9 @@ service cloud.firestore {
         && request.resource.data.note.size() <= 240
         && isSafeText(request.resource.data.note);
 
-      allow read: if request.auth != null;
+      allow read: if request.auth != null || isSuperAdmin();
       allow update: if false;
-      allow delete: if request.auth != null;
+      allow delete: if request.auth != null || isSuperAdmin();
     }
   }
 }

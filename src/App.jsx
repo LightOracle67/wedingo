@@ -1,10 +1,14 @@
 import { useEffect } from "react";
 import { Routes, Route, Navigate, Link, useLocation } from "react-router-dom";
 import { AppProvider, useApp } from "./contexts/AppContext";
+import { SuperAdminProvider } from "./contexts/SuperAdminContext";
 import ErrorBoundary from "./components/ErrorBoundary";
 import PublicInvitation from "./pages/PublicInvitation";
 import SetupPage from "./pages/SetupPage";
 import AdminPage from "./pages/AdminPage";
+import SuperAdminLogin from "./pages/SuperAdminLogin";
+import SuperAdminPanel from "./pages/SuperAdminPanel";
+import { SUPERADMIN_ROUTE, SUPERADMIN_DASHBOARD } from "./lib/superadmin";
 
 function AppShell() {
   const { config, formData, isAdminTokenLoggedIn, tokenLoginUsername } = useApp();
@@ -62,6 +66,8 @@ function AppShell() {
           <Route path="/" element={<PublicInvitation />} />
           <Route path="/setup" element={<SetupPage />} />
           <Route path="/admin" element={<ErrorBoundary><AdminPage /></ErrorBoundary>} />
+          <Route path={SUPERADMIN_ROUTE} element={<SuperAdminLogin />} />
+          <Route path={SUPERADMIN_DASHBOARD} element={<SuperAdminPanel />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
@@ -72,7 +78,9 @@ function AppShell() {
 export default function App() {
   return (
     <AppProvider>
-      <AppShell />
+      <SuperAdminProvider>
+        <AppShell />
+      </SuperAdminProvider>
     </AppProvider>
   );
 }
