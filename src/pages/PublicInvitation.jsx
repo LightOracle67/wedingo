@@ -72,7 +72,7 @@ export default function PublicInvitation() {
   const visibleOrderRef = useRef(visibleOrder);
   useEffect(() => { visibleOrderRef.current = visibleOrder; }, [visibleOrder]);
 
-  const [activeStorySection, setActiveStorySection] = useState(sectionOrder[0] || "hero");
+  const [activeStorySection, setActiveStorySection] = useState(visibleOrder[0] || "hero");
   const [storyTransition, setStoryTransition] = useState({
     fromIndex: 0,
     toIndex: null,
@@ -264,7 +264,7 @@ export default function PublicInvitation() {
   }, [storyTransition]);
 
   useEffect(() => {
-    const place = config.weddingPlace.trim();
+    const place = (config.weddingPlace || "").trim();
     const container = locationMapContainerRef.current;
     const hasExactCoordinates = Boolean(getValidCoordinates(config.weddingLatitude, config.weddingLongitude));
     if ((!place && !hasExactCoordinates) || !container) {
@@ -474,8 +474,7 @@ export default function PublicInvitation() {
         </svg>
       </button>
 
-          {sectionOrder.map((sectionKey) => {
-            if (sectionKey === "rsvp" && !showRsvp) return null;
+          {visibleOrder.map((sectionKey) => {
             const Component = SECTION_COMPONENTS[sectionKey];
             if (!Component) return null;
             return (
