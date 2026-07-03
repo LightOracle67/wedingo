@@ -44,7 +44,7 @@ function AppShell() {
 
   useEffect(() => {
     const activeBackground = isEditingRoute ? null : config.backgroundImage;
-    const encodedBackground = activeBackground ? `url('${activeBackground.replace(/'/g, "\\'")}')` : "none";
+    const encodedBackground = activeBackground ? `url('${activeBackground.replace(/'/g, "\\'").replace(/\\/g, "\\\\").replace(/\)/g, "\\)").replace(/\n/g, "")}')` : "none";
     document.documentElement.style.setProperty("--wedding-background-image", encodedBackground);
   }, [config.backgroundImage, isEditingRoute]);
 

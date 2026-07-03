@@ -45,17 +45,19 @@ export default function CollapsibleSection({
 
   return (
     <div className="setup-collapsible" data-open={isOpen}>
-      <button
-        type="button"
-        className="setup-collapsible__summary"
-        onClick={toggle}
-        aria-expanded={isOpen}
-      >
-        <span className="setup-collapsible__summary-text">
-          {isHidden ? <span className="setup-collapsible__hidden-badge">Oculta</span> : null}
-          <span className="setup-collapsible__title">{title}</span>
-        </span>
-        {hint ? <span className="setup-collapsible__hint">{hint}</span> : null}
+      <div className="setup-collapsible__summary">
+        <button
+          type="button"
+          className="setup-collapsible__summary-btn"
+          onClick={toggle}
+          aria-expanded={isOpen}
+        >
+          <span className="setup-collapsible__summary-text">
+            {isHidden ? <span className="setup-collapsible__hidden-badge">Oculta</span> : null}
+            <span className="setup-collapsible__title">{title}</span>
+          </span>
+          {hint ? <span className="setup-collapsible__hint">{hint}</span> : null}
+        </button>
         {sectionKey && onToggleVisibility ? (
           <span
             className={`setup-collapsible__vis-toggle ${isHidden ? "setup-collapsible__vis-toggle--off" : ""}`}
@@ -69,7 +71,7 @@ export default function CollapsibleSection({
             {isHidden ? "Mostrar" : "Visible"}
           </span>
         ) : null}
-      </button>
+      </div>
       <div
         className="setup-collapsible__wrap"
         style={{ maxHeight: maxHeight === undefined ? "none" : `${maxHeight}px` }}
