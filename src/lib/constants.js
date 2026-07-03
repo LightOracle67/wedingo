@@ -62,12 +62,14 @@ export const THEME_GROUPS = [
   { value: "oscuros", label: "Temas oscuros" },
 ];
 
-export const STORY_SECTION_ORDER = ["hero", "details", "info", "rsvp"];
+export const STORY_SECTION_ORDER = ["hero", "details", "info", "story", "gifts", "rsvp"];
 
 export const SECTION_LABELS = {
   hero: "Portada",
   details: "Fecha y lugar",
   info: "Itinerario",
+  story: "Nuestra historia",
+  gifts: "Regalos",
   rsvp: "Confirmación",
 };
 
@@ -75,6 +77,8 @@ export const SECTION_MOVABLE = {
   hero: false,
   details: true,
   info: true,
+  story: true,
+  gifts: true,
   rsvp: true,
 };
 
@@ -100,4 +104,7 @@ export const defaultConfig = {
   backgroundImageSource: "",
 
   sectionOrder: STORY_SECTION_ORDER.join(","),
+  hiddenSections: "",
+  storyText: "",
+  giftsInfo: "",
 };

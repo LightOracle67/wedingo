@@ -13,12 +13,16 @@ import eucalyptusSrc from "../assets/eucalyptus.png";
 import HeroSection from "./sections/HeroSection";
 import DetailsSection from "./sections/DetailsSection";
 import InfoSection from "./sections/InfoSection";
+import StorySection from "./sections/StorySection";
+import GiftsSection from "./sections/GiftsSection";
 import RsvpSection from "./sections/RsvpSection";
 
 const SECTION_COMPONENTS = {
   hero: HeroSection,
   details: DetailsSection,
   info: InfoSection,
+  story: StorySection,
+  gifts: GiftsSection,
   rsvp: RsvpSection,
 };
 
@@ -41,6 +45,11 @@ export default function PublicInvitation() {
     isAdminTokenLoggedIn,
   } = useApp();
 
+  const hiddenSet = useMemo(() => {
+    const raw = config.hiddenSections || "";
+    return new Set(raw.split(",").filter(Boolean));
+  }, [config.hiddenSections]);
+
   const sectionOrder = useMemo(() => {
     const parsed = parseSectionOrder(config.sectionOrder);
     if (isAdminTokenLoggedIn || isInviteMode) {
@@ -50,8 +59,14 @@ export default function PublicInvitation() {
   }, [config.sectionOrder, isAdminTokenLoggedIn, isInviteMode]);
   const showRsvp = isAdminTokenLoggedIn || isInviteMode;
   const visibleOrder = useMemo(
-    () => showRsvp ? sectionOrder : sectionOrder.filter((s) => s !== "rsvp"),
-    [sectionOrder, showRsvp],
+    () => {
+      let filtered = showRsvp ? sectionOrder : sectionOrder.filter((s) => s !== "rsvp");
+      if (!isAdminTokenLoggedIn && !isInviteMode) {
+        filtered = filtered.filter((s) => !hiddenSet.has(s));
+      }
+      return filtered;
+    },
+    [sectionOrder, showRsvp, hiddenSet, isAdminTokenLoggedIn, isInviteMode],
   );
   const visibleOrderRef = useRef(visibleOrder);
   useEffect(() => { visibleOrderRef.current = visibleOrder; }, [visibleOrder]);
@@ -370,6 +385,12 @@ export default function PublicInvitation() {
       weddingSchedule: config.weddingSchedule,
       weddingDressCode: config.weddingDressCode,
     },
+    story: {
+      storyText: config.storyText,
+    },
+    gifts: {
+      giftsInfo: config.giftsInfo,
+    },
     rsvp: {
       rsvpForm,
       rsvpMessage,
@@ -379,7 +400,7 @@ export default function PublicInvitation() {
     },
   }), [
     config.firstName, config.secondName, config.inviteMessage,
-    config.weddingPlace, config.weddingSchedule, config.weddingDressCode,
+    config.weddingPlace, config.weddingSchedule, config.weddingDressCode, config.storyText, config.giftsInfo,
     countdown, formattedDate, formattedTime,
     hasLocationData, locationDescription, calendarLink,
     locationMapContainerRef, locationMapLoading, locationMapError, locationMapTarget,

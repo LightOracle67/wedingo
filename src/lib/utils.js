@@ -27,6 +27,12 @@ export const normalizeConfig = (value) => ({
     typeof value?.backgroundImageSource === "string" ? value.backgroundImageSource.trim() : "",
   sectionOrder:
     typeof value?.sectionOrder === "string" ? value.sectionOrder.trim() : STORY_SECTION_ORDER.join(","),
+  hiddenSections:
+    typeof value?.hiddenSections === "string" ? value.hiddenSections.trim() : "",
+  storyText:
+    typeof value?.storyText === "string" ? value.storyText.trim() : "",
+  giftsInfo:
+    typeof value?.giftsInfo === "string" ? value.giftsInfo.trim() : "",
 });
 
 export const geocodeLocation = async (place) => {
@@ -220,7 +226,8 @@ const INVITE_KEY_MAP = {
   dd: "weddingDay", mm: "weddingMonth", yy: "weddingYear",
   hh: "weddingHour", mi: "weddingMinute",
   sc: "weddingSchedule", dc: "weddingDressCode",
-  th: "theme", so: "sectionOrder",
+  th: "theme", so: "sectionOrder", hs: "hiddenSections",
+  st: "storyText", gi: "giftsInfo",
 };
 
 const INVITE_KEY_REV = Object.fromEntries(
