@@ -408,8 +408,40 @@ export function AppProvider({ children }) {
     event.target.value = "";
   }, [applyBackgroundImage]);
 
+  const autoSaveTimerRef = useRef(null);
+
+  const doSave = useCallback(async (data) => {
+    const payload = { ...defaultConfig, ...normalizeConfig(data) };
+    try {
+      await setDoc(invitationDocRef(inviteToken), payload);
+      setConfig(payload);
+      setAdminLoginUsername(payload.adminUsername);
+      setTokenLoginUsername(payload.adminUsername);
+      setHasStoredConfig(true);
+      return true;
+    } catch {
+      return false;
+    }
+  }, [inviteToken]);
+
+  useEffect(() => {
+    if (!hasStoredConfig || !inviteToken) return;
+    if (autoSaveTimerRef.current) clearTimeout(autoSaveTimerRef.current);
+    autoSaveTimerRef.current = setTimeout(async () => {
+      const ok = await doSave(formData);
+      if (ok) {
+        setSaveMessage("Cambios guardados");
+        setTimeout(() => setSaveMessage(""), 2000);
+      }
+    }, 1500);
+    return () => {
+      if (autoSaveTimerRef.current) clearTimeout(autoSaveTimerRef.current);
+    };
+  }, [formData, hasStoredConfig, inviteToken, doSave]);
+
   const handleSaveSetup = useCallback(async (event) => {
     event.preventDefault();
+    if (autoSaveTimerRef.current) clearTimeout(autoSaveTimerRef.current);
     setSaveError("");
     setSaveMessage("");
 
