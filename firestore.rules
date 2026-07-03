@@ -33,9 +33,9 @@ service cloud.firestore {
         && data.weddingMinute is string && data.weddingMinute.matches('^[0-5]?[0-9]$')
         && data.theme in ['golden', 'forest', 'rose', 'linen-soft', 'blush-pearl', 'lavender-mist', 'champagne-bubble', 'amber-night', 'onyx-gold', 'midnight-royal', 'burgundy-velvet', 'sapphire-night', 'emerald-grove', 'plum-twilight']
         && data.adminUsername is string && isValidUsername(data.adminUsername)
-        && data.weddingSchedule is string && data.weddingSchedule.size() <= 2000
+        && data.weddingSchedule is string && data.weddingSchedule.size() <= 2000 && isSafeText(data.weddingSchedule)
         && (!data.keys().hasAny(['weddingDressCode']) || (data.weddingDressCode is string && data.weddingDressCode.size() <= 200))
-        && (!data.keys().hasAny(['backgroundImage']) || (data.backgroundImage is string && data.backgroundImage.size() <= 700000))
+        && (!data.keys().hasAny(['backgroundImage']) || (data.backgroundImage is string && data.backgroundImage.size() <= 300000))
         && (!data.keys().hasAny(['backgroundImageLabel']) || (data.backgroundImageLabel is string && data.backgroundImageLabel.size() <= 200))
         && (!data.keys().hasAny(['backgroundImageSource']) || (data.backgroundImageSource is string && data.backgroundImageSource.size() <= 50))
         && (!data.keys().hasAny(['weddingLatitude']) || (data.weddingLatitude is string && data.weddingLatitude.size() <= 20))
@@ -70,6 +70,8 @@ service cloud.firestore {
     }
 
     match /setupTokens/{tokenId} {
+      allow get: if isSuperAdmin() || (resource.data.used == false);
+      allow list: if isSuperAdmin();
       allow create: if isSuperAdmin()
         || (!exists(/databases/$(database)/documents/setupTokens/$(tokenId))
           && (
@@ -91,7 +93,7 @@ service cloud.firestore {
     }
 
     match /rsvpResponses/{responseId} {
-      allow create: if request.resource.data.keys().hasAll(['guestName', 'attendance', 'companions', 'dietaryInfo', 'note', 'submittedAt'])
+      allow create: if request.resource.data.keys().hasAll(['guestName', 'attendance', 'companions', 'dietaryInfo', 'note', 'submittedAt', 'inviteToken'])
         && request.resource.data.guestName is string
         && request.resource.data.guestName.size() > 0
         && request.resource.data.guestName.size() <= 120
@@ -107,16 +109,17 @@ service cloud.firestore {
         && request.resource.data.note.size() <= 240
         && isSafeText(request.resource.data.note);
 
-      allow read: if true;
+      allow read: if isSuperAdmin();
+
       allow update: if false;
       allow delete: if isSuperAdmin();
     }
 
     match /sessions/{username} {
-      allow read: if true;
+      allow read: if isSuperAdmin();
       allow create: if !exists(/databases/$(database)/documents/sessions/$(username))
         && request.resource.data.createdAt is timestamp;
-      allow delete: if true;
+      allow delete: if isSuperAdmin();
       allow update: if false;
     }
   }

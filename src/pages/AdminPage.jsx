@@ -241,6 +241,7 @@ export default function AdminPage() {
               key={tab.key}
               role="tab"
               aria-selected={activeTab === tab.key}
+              aria-controls={"tabpanel-" + tab.key}
               className={`admin-tab ${activeTab === tab.key ? "admin-tab--active" : ""}`}
               onClick={() => setActiveTab(tab.key)}
             >
@@ -249,7 +250,7 @@ export default function AdminPage() {
           ))}
         </nav>
 
-        <div className="setup-form">
+        <div className="setup-form" role="tabpanel" id={"tabpanel-" + activeTab} aria-labelledby={"tab-" + activeTab}>
           {activeTab === "panel" && (
             <PanelTab
               inviteToken={inviteToken}

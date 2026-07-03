@@ -39,7 +39,7 @@ export default function PublicInvitation() {
   const isInviteMode = searchParams.has("invitar");
 
   const {
-    config, formattedDate, formattedTime, calendarLink,
+    config, configLoadError, formattedDate, formattedTime, calendarLink,
     rsvpForm, rsvpMessage, isRsvpSubmitting,
     locationMapContainerRef, locationMapError, setLocationMapError,
     locationMapLoading, setLocationMapLoading, locationMapTarget, setLocationMapTarget,
@@ -419,6 +419,35 @@ export default function PublicInvitation() {
   ]);
 
   const isEmpty = !config.firstName && !config.secondName && !isInviteMode;
+  const hasHash = location.hash.length > 1;
+
+  if (configLoadError) {
+    return (
+      <div className="app-scene">
+        <section className="story-section story-section--is-active landing-bg flex min-h-screen items-center justify-center px-4">
+          <div className="story-panel story-panel--hero w-full max-w-md text-center">
+            <h1 className="hero-title invite-title text-[clamp(2.5rem,8vw,4.5rem)] leading-tight font-serif text-boda-texto">
+              Wedingo
+            </h1>
+            <p className="mt-4 text-[clamp(1rem,3vw,1.35rem)] leading-relaxed font-serif text-boda-texto/80">
+              No pudimos cargar tu invitación.
+            </p>
+            <div className="story-divider my-6" />
+            <p className="text-[0.95rem] leading-relaxed text-boda-texto/60">
+              {configLoadError}
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <button className="setup-button text-sm" type="button" onClick={() => window.location.reload()}>
+                Reintentar
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    );
+  }
+
+  const showMissingToken = isEmpty && !hasHash && (Boolean(inviteToken) || isInviteMode);
 
   return (
     <div className={`app-scene ${isStoryTransitioning ? "app-scene--transitioning" : ""}`}>
@@ -429,7 +458,22 @@ export default function PublicInvitation() {
         <img src={eucalyptusSrc} alt="" aria-hidden="true" className="wedding-decoration__image" />
       </div>
 
-      {isEmpty ? (
+      {showMissingToken ? (
+        <section className="story-section story-section--is-active landing-bg flex min-h-screen items-center justify-center px-4">
+          <div className="story-panel story-panel--hero w-full max-w-md text-center">
+            <h1 className="hero-title invite-title text-[clamp(2.5rem,8vw,4.5rem)] leading-tight font-serif text-boda-texto">
+              Wedingo
+            </h1>
+            <p className="mt-4 text-[clamp(1rem,3vw,1.35rem)] leading-relaxed font-serif text-boda-texto/80">
+              Invitación no encontrada
+            </p>
+            <div className="story-divider my-6" />
+            <p className="text-[0.95rem] leading-relaxed text-boda-texto/60">
+              No encontramos una invitación con este enlace. Si crees que es un error, contacta con los anfitriones.
+            </p>
+          </div>
+        </section>
+      ) : isEmpty ? (
         <section className="story-section story-section--is-active landing-bg flex min-h-screen items-center justify-center px-4">
           <div className="story-panel story-panel--hero w-full max-w-md text-center">
             <h1 className="hero-title invite-title text-[clamp(2.5rem,8vw,4.5rem)] leading-tight font-serif text-boda-texto">
@@ -465,8 +509,8 @@ export default function PublicInvitation() {
       <button
         type="button"
         onClick={handleWhatsAppShare}
-        style={{ border: "none", outline: "none" }}
-        className="fixed right-4 bottom-4 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform hover:scale-110 active:scale-95 cursor-pointer"
+        style={{ border: "none" }}
+        className="whatsapp-share-btn fixed right-4 bottom-4 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform hover:scale-110 active:scale-95 cursor-pointer"
         aria-label="Compartir por WhatsApp"
       >
         <svg viewBox="0 0 24 24" fill="currentColor" className="h-7 w-7">
