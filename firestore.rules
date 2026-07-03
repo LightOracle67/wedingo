@@ -60,6 +60,15 @@ service cloud.firestore {
       allow delete: if isSuperAdmin();
     }
 
+    match /invitations/{tokenId} {
+      allow read: if true;
+      allow create: if request.auth != null
+        || !exists(/databases/$(database)/documents/invitations/$(tokenId));
+      allow update: if request.auth != null
+        || exists(/databases/$(database)/documents/sessions/$(request.resource.data.adminUsername));
+      allow delete: if isSuperAdmin();
+    }
+
     match /setupTokens/{tokenId} {
       allow create: if isSuperAdmin()
         || (!exists(/databases/$(database)/documents/setupTokens/$(tokenId))

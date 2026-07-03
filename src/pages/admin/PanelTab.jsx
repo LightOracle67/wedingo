@@ -2,17 +2,17 @@ import { memo, useCallback } from "react";
 import StatsCard from "./StatsCard";
 
 const PanelTab = memo(function PanelTab({
-  confirmedResponses, declinedResponses, totalGuests, rsvpEntries,
+  inviteToken, confirmedResponses, declinedResponses, totalGuests, rsvpEntries,
   setActiveTab, setAttendanceFilter, exportCsv, formatDate,
 }) {
   const pendingResponses = Math.max(0, rsvpEntries.length - confirmedResponses - declinedResponses);
+  const inviteUrl = `${window.location.origin}/${inviteToken}`;
 
   const copyLink = useCallback(async () => {
-    const url = window.location.origin;
     try {
-      await navigator.clipboard.writeText(url);
+      await navigator.clipboard.writeText(inviteUrl);
     } catch {}
-  }, []);
+  }, [inviteUrl]);
 
   return (
     <>
@@ -29,12 +29,12 @@ const PanelTab = memo(function PanelTab({
         </p>
         <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginTop: "0.25rem" }}>
           <a
-            href={window.location.origin}
+            href={inviteUrl}
             target="_blank"
             rel="noreferrer"
             style={{ color: "var(--setup-accent)", fontSize: "0.9rem", wordBreak: "break-all" }}
           >
-            {window.location.origin}
+            {inviteUrl}
           </a>
           <button
             className="setup-button setup-button--ghost setup-button--compact"
@@ -54,7 +54,7 @@ const PanelTab = memo(function PanelTab({
         <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={exportCsv}>
           Exportar CSV
         </button>
-        <a className="setup-button setup-button--ghost setup-button--compact" href={window.location.origin} target="_blank" rel="noreferrer">
+        <a className="setup-button setup-button--ghost setup-button--compact" href={inviteUrl} target="_blank" rel="noreferrer">
           Ver portada
         </a>
       </div>

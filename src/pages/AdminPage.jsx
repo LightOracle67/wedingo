@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { useApp } from "../contexts/AppContext";
 import { useToast } from "../contexts/ToastContext";
 import SetupForm from "../components/SetupForm";
@@ -23,6 +23,7 @@ function formatDate(iso) {
 }
 
 export default function AdminPage() {
+  const { inviteToken } = useParams();
   const {
     hasStoredConfig, isConfigLoading, configLoadError,
     isAdminTokenLoggedIn, config,
@@ -134,7 +135,7 @@ export default function AdminPage() {
   }
 
   if (!hasStoredConfig) {
-    return <Navigate to="/setup" replace />;
+    return <Navigate to={`/${inviteToken}/setup`} replace />;
   }
 
   if (!isAdminTokenLoggedIn) {
@@ -251,6 +252,7 @@ export default function AdminPage() {
         <div className="setup-form">
           {activeTab === "panel" && (
             <PanelTab
+              inviteToken={inviteToken}
               confirmedResponses={confirmedResponses}
               declinedResponses={declinedResponses}
               totalGuests={totalGuests}

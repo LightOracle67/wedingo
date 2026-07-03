@@ -1456,7 +1456,6 @@ h6 {
   all: unset;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 0.75rem;
   cursor: pointer;
   padding: 0.85rem 1rem;
@@ -1466,6 +1465,12 @@ h6 {
   width: 100%;
   box-sizing: border-box;
   transition: color 200ms;
+}
+
+.setup-collapsible__summary-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .setup-collapsible__summary:hover {
@@ -1513,6 +1518,42 @@ h6 {
 
 .setup-collapsible__content {
   padding: 0 0.85rem 0.85rem;
+}
+
+.setup-collapsible__hidden-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--setup-muted);
+  background: color-mix(in srgb, var(--setup-border) 40%, transparent);
+  padding: 0.1rem 0.45rem;
+  border-radius: 0.35rem;
+}
+
+.setup-collapsible__vis-toggle {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--setup-accent);
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.35rem;
+  border: 1px solid var(--setup-accent);
+  background: transparent;
+  transition: background 200ms, color 200ms;
+  user-select: none;
+  margin-left: auto;
+}
+
+.setup-collapsible__vis-toggle:hover {
+  background: var(--setup-accent);
+  color: #fff;
+}
+
+.setup-collapsible__vis-toggle--off {
+  opacity: 0.55;
+  border-color: var(--setup-muted);
+  color: var(--setup-muted);
 }
 
 .setup-token-card {

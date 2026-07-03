@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
-import { collection, getCountFromServer, getDocs, query, where, getDoc } from "firebase/firestore";
-import { db, RSVP_COLLECTION_REF, INVITATION_DOC_REF } from "../../lib/firebase";
-import { formatDate } from "../../lib/superadmin";
+import { getCountFromServer, getDocs, query, where } from "firebase/firestore";
+import { db, RSVP_COLLECTION_REF, INVITATIONS_COLLECTION_REF } from "../../lib/firebase";
 import StatsCard from "../admin/StatsCard";
 
 export default function DashboardTab() {
   const [stats, setStats] = useState({ rsvpTotal: 0, rsvpYes: 0, rsvpNo: 0, totalGuests: 0, tokensTotal: 0, tokensUsed: 0, invitationCount: 0 });
-  const [lastUpdated, setLastUpdated] = useState("");
   const [projectId, setProjectId] = useState("");
   const [loading, setLoading] = useState(true);
 
@@ -19,12 +17,8 @@ export default function DashboardTab() {
         const rsvpNo = rsvps.filter((r) => r.attendance === "no").length;
         const totalGuests = rsvps.reduce((sum, r) => sum + (r.attendance === "yes" ? 1 + (r.companions || 0) : 0), 0);
 
-        const invDoc = await getDoc(INVITATION_DOC_REF);
-        const invExists = invDoc.exists();
-        if (invExists) {
-          const updated = invDoc.data()._updatedAt?.toDate?.();
-          if (updated) setLastUpdated(updated.toISOString());
-        }
+        const invSnap = await getDocs(INVITATIONS_COLLECTION_REF);
+        const invExists = invSnap.size > 0;
 
         const tokCount = await getCountFromServer(query(collection(db, "setupTokens")));
         const usedTokCount = await getCountFromServer(query(collection(db, "setupTokens"), where("used", "==", true)));
@@ -72,13 +66,8 @@ export default function DashboardTab() {
 
       <div className="setup-token-card" style={{ marginBottom: "1rem" }}>
         <p style={{ margin: 0, color: "var(--setup-title)", fontSize: "0.95rem" }}>
-          <strong>Invitación:</strong> {stats.invitationCount ? "Creada y configurada" : "Sin configurar"}
+          <strong>Invitaciones:</strong> {stats.invitationCount}
         </p>
-        {lastUpdated && (
-          <p style={{ margin: "0.25rem 0 0", color: "var(--setup-muted)", fontSize: "0.85rem" }}>
-            Última actualización: {formatDate(lastUpdated)}
-          </p>
-        )}
       </div>
 
       {projectId && (
