@@ -16,7 +16,7 @@ export default function TokensTab() {
       const snap = await getDocs(q);
       const list = snap.docs.map((d) => ({
         id: d.id,
-        ...d.data(),
+        used: d.data().used === true,
         createdAtDate: d.data().createdAt?.toDate?.() || null,
         usedAtDate: d.data().usedAt?.toDate?.() || null,
       }));
@@ -28,9 +28,7 @@ export default function TokensTab() {
     }
   }, []);
 
-  useEffect(() => {
-    loadTokens();
-  }, [loadTokens]);
+  useEffect(() => { loadTokens(); }, [loadTokens]);
 
   const handleCreate = useCallback(async () => {
     setError("");
@@ -43,7 +41,7 @@ export default function TokensTab() {
         autoGen: true,
         createdAt: serverTimestamp(),
       });
-      setMessage(`Token creado: ${rawToken}. Cópialo antes de salir.`);
+      setMessage(`Token creado: ${rawToken}`);
       await loadTokens();
     } catch {
       setError("No se pudo crear el token.");
@@ -55,7 +53,7 @@ export default function TokensTab() {
     setMessage("");
     try {
       await deleteDoc(doc(db, "setupTokens", tokenId));
-      setMessage(`Token ${tokenId} revocado.`);
+      setMessage("Token revocado.");
       await loadTokens();
     } catch {
       setError("No se pudo revocar el token.");
@@ -66,8 +64,16 @@ export default function TokensTab() {
     return <p className="setup-subtitle" style={{ textAlign: "center" }}>Cargando tokens...</p>;
   }
 
+  const usedCount = tokens.filter((t) => t.used).length;
+
   return (
     <div>
+      <div className="setup-token-card" style={{ marginBottom: "1rem" }}>
+        <p style={{ margin: 0, color: "var(--setup-title)", fontSize: "0.9rem" }}>
+          <strong>{tokens.length}</strong> tokens · <strong>{usedCount}</strong> usados · <strong>{tokens.length - usedCount}</strong> disponibles
+        </p>
+      </div>
+
       <div className="setup-actions" style={{ marginBottom: "1rem" }}>
         <button className="setup-button" type="button" onClick={handleCreate}>
           Generar nuevo token
@@ -99,7 +105,7 @@ export default function TokensTab() {
                   {t.id}
                 </p>
                 <p style={{ margin: "0.2rem 0 0", color: "var(--setup-muted)", fontSize: "0.8rem" }}>
-                  {t.used ? `Usado por ${t.username || "desconocido"}` : "No usado"}
+                  {t.used ? "Usado" : "Disponible"}
                   {t.createdAtDate ? ` · Creado: ${formatDate(t.createdAtDate.toISOString())}` : ""}
                   {t.usedAtDate ? ` · Usado: ${formatDate(t.usedAtDate.toISOString())}` : ""}
                 </p>

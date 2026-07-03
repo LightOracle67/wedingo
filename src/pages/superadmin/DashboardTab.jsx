@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import { collection, getCountFromServer, getDocs, query } from "firebase/firestore";
-import { db, RSVP_COLLECTION_REF } from "../../lib/firebase";
+import { collection, getCountFromServer, getDocs, query, where, getDoc } from "firebase/firestore";
+import { db, RSVP_COLLECTION_REF, INVITATION_DOC_REF } from "../../lib/firebase";
 import { formatDate } from "../../lib/superadmin";
 import StatsCard from "../admin/StatsCard";
 
 export default function DashboardTab() {
-  const [stats, setStats] = useState({ rsvpTotal: 0, rsvpYes: 0, rsvpNo: 0, totalGuests: 0, tokensTotal: 0, tokensUsed: 0 });
-  const [recentRsvps, setRecentRsvps] = useState([]);
-  const [invitationExists, setInvitationExists] = useState(false);
+  const [stats, setStats] = useState({ rsvpTotal: 0, rsvpYes: 0, rsvpNo: 0, totalGuests: 0, tokensTotal: 0, tokensUsed: 0, invitationCount: 0 });
   const [lastUpdated, setLastUpdated] = useState("");
+  const [projectId, setProjectId] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -20,35 +19,28 @@ export default function DashboardTab() {
         const rsvpNo = rsvps.filter((r) => r.attendance === "no").length;
         const totalGuests = rsvps.reduce((sum, r) => sum + (r.attendance === "yes" ? 1 + (r.companions || 0) : 0), 0);
 
-        setStats({ rsvpTotal: rsvps.length, rsvpYes, rsvpNo, totalGuests, tokensTotal: 0, tokensUsed: 0 });
-
-        const sorted = rsvps.sort((a, b) => {
-          const aTime = a.submittedAt?.toDate?.()?.getTime() || 0;
-          const bTime = b.submittedAt?.toDate?.()?.getTime() || 0;
-          return bTime - aTime;
-        });
-        setRecentRsvps(sorted.slice(0, 5));
-
-        const invSnap = await getDocs(query(collection(db, "setupTokens"), limit(100)));
-        const tokens = invSnap.docs.map((d) => d.data());
-        setStats((prev) => ({
-          ...prev,
-          tokensTotal: tokens.length,
-          tokensUsed: tokens.filter((t) => t.used === true).length,
-        }));
-
-        const invDoc = await getDocs(collection(db, "publicConfig"));
-        const invDocData = invDoc.docs.find((d) => d.id === "invitation");
-        if (invDocData && invDocData.exists()) {
-          setInvitationExists(true);
-          const updated = invDocData.data()._updatedAt?.toDate?.();
+        const invDoc = await getDoc(INVITATION_DOC_REF);
+        const invExists = invDoc.exists();
+        if (invExists) {
+          const updated = invDoc.data()._updatedAt?.toDate?.();
           if (updated) setLastUpdated(updated.toISOString());
         }
 
         const tokCount = await getCountFromServer(query(collection(db, "setupTokens")));
-        setStats((prev) => ({ ...prev, tokensTotal: tokCount.data().count }));
+        const usedTokCount = await getCountFromServer(query(collection(db, "setupTokens"), where("used", "==", true)));
+
+        setStats({
+          rsvpTotal: rsvps.length,
+          rsvpYes,
+          rsvpNo,
+          totalGuests,
+          tokensTotal: tokCount.data().count,
+          tokensUsed: usedTokCount.data().count,
+          invitationCount: invExists ? 1 : 0,
+        });
+
+        setProjectId(import.meta.env.VITE_FIREBASE_PROJECT_ID || "");
       } catch {
-        // Silently handle errors
       } finally {
         setLoading(false);
       }
@@ -70,53 +62,30 @@ export default function DashboardTab() {
   return (
     <div>
       <div style={cardStyle}>
-        <StatsCard value={stats.rsvpTotal} label="Respuestas RSVP" />
-        <StatsCard value={stats.rsvpYes} label="Confirmados" />
-        <StatsCard value={stats.rsvpNo} label="Declinados" />
+        <StatsCard value={stats.rsvpTotal} label="Respuestas totales" />
+        <StatsCard value={stats.rsvpYes} label="Confirmaciones" />
+        <StatsCard value={stats.rsvpNo} label="Declinaciones" />
         <StatsCard value={stats.totalGuests} label="Invitados totales" />
         <StatsCard value={stats.tokensTotal} label="Tokens generados" />
         <StatsCard value={stats.tokensUsed} label="Tokens usados" />
       </div>
 
-      {invitationExists && (
-        <div className="setup-token-card" style={{ marginBottom: "1.25rem" }}>
-          <p style={{ margin: 0, color: "var(--setup-title)", fontSize: "0.95rem" }}>
-            <strong>Invitación:</strong> Creada y configurada
+      <div className="setup-token-card" style={{ marginBottom: "1rem" }}>
+        <p style={{ margin: 0, color: "var(--setup-title)", fontSize: "0.95rem" }}>
+          <strong>Invitación:</strong> {stats.invitationCount ? "Creada y configurada" : "Sin configurar"}
+        </p>
+        {lastUpdated && (
+          <p style={{ margin: "0.25rem 0 0", color: "var(--setup-muted)", fontSize: "0.85rem" }}>
+            Última actualización: {formatDate(lastUpdated)}
           </p>
-          {lastUpdated && (
-            <p style={{ margin: 0, color: "var(--setup-muted)", fontSize: "0.85rem" }}>
-              Última actualización: {formatDate(lastUpdated)}
-            </p>
-          )}
-        </div>
-      )}
+        )}
+      </div>
 
-      {recentRsvps.length > 0 && (
-        <div>
-          <h3 className="setup-label" style={{ fontSize: "1rem", marginBottom: "0.5rem" }}>
-            Últimas confirmaciones
-          </h3>
-          <div style={{ display: "grid", gap: "0.4rem" }}>
-            {recentRsvps.map((r) => (
-              <div
-                key={r.id}
-                className="setup-token-card"
-                style={{ padding: "0.6rem 0.85rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}
-              >
-                <div>
-                  <span style={{ color: "var(--setup-title)", fontWeight: 700 }}>
-                    {r.guestName}
-                  </span>
-                  <span style={{ color: "var(--setup-muted)", fontSize: "0.85rem", marginLeft: "0.5rem" }}>
-                    {r.attendance === "yes" ? `✓ Acompañantes: ${r.companions || 0}` : "✗ No asiste"}
-                  </span>
-                </div>
-                <span style={{ color: "var(--setup-muted)", fontSize: "0.8rem" }}>
-                  {r.submittedAt?.toDate?.() ? formatDate(r.submittedAt.toDate().toISOString()) : ""}
-                </span>
-              </div>
-            ))}
-          </div>
+      {projectId && (
+        <div className="setup-token-card">
+          <p style={{ margin: 0, color: "var(--setup-muted)", fontSize: "0.8rem" }}>
+            Firebase: {projectId}
+          </p>
         </div>
       )}
     </div>
