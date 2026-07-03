@@ -23,7 +23,7 @@ import {
   buildOpenFreeMapPreviewUrl,
   decodeInviteConfig,
 } from "../lib/utils";
-import { saveSession, getSession, renewSession } from "../lib/sessionVars";
+import { saveSession, getSession, renewSession, clearSession } from "../lib/sessionVars";
 
 
 const AppContext = createContext(null);
@@ -76,7 +76,9 @@ export function AppProvider({ children }) {
   const previewRequestRef = useRef(0);
 
   const isAdminTokenLoggedIn = useMemo(() =>
-    isTokenVerified && tokenLoginUsername && config.adminUsername === tokenLoginUsername,
+    isTokenVerified && tokenLoginUsername && (
+      !config.adminUsername || config.adminUsername === tokenLoginUsername
+    ),
     [isTokenVerified, tokenLoginUsername, config.adminUsername],
   );
 
@@ -262,6 +264,7 @@ export function AppProvider({ children }) {
     setSetupTokenInput("");
     setGeneratedToken("");
     setAuthMessage("");
+    clearSession();
     if (username) {
       try {
         await deleteDoc(doc(db, "sessions", username));
@@ -533,10 +536,6 @@ export function AppProvider({ children }) {
     const companions = Number.parseInt(companionsParam, 10);
     const companionsCount = Number.isNaN(companions) ? 0 : Math.max(0, Math.min(10, companions));
 
-    if (rsvpForm.attendance === "yes" && companionsCount > 10) {
-      setRsvpMessage("El número de acompañantes no puede ser mayor a 10.");
-      return;
-    }
     const responsePayload = {
       guestName,
       attendance: rsvpForm.attendance,

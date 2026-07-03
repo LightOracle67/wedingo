@@ -105,8 +105,9 @@ service cloud.firestore {
 
     match /sessions/{username} {
       allow read: if true;
-      allow create: if request.resource.data.createdAt is timestamp;
-      allow delete: if isSuperAdmin();
+      allow create: if !exists(/databases/$(database)/documents/sessions/$(username))
+        && request.resource.data.createdAt is timestamp;
+      allow delete: if true;
       allow update: if false;
     }
   }

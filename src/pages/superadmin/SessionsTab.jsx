@@ -33,8 +33,8 @@ export default function SessionsTab() {
 
           <div style={{ display: "flex", gap: "0.5rem", justifyContent: "flex-end" }}>
             <button
-              className="setup-btn setup-btn--danger"
-              style={{ padding: "0.3rem 0.6rem", fontSize: "0.8rem" }}
+              className="setup-button"
+              style={{ padding: "0.3rem 0.6rem", fontSize: "0.8rem", background: "var(--setup-accent)", color: "var(--setup-accent-text)" }}
               onClick={handleClear}
             >
               Cerrar sesión
