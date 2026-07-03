@@ -48,18 +48,6 @@ service cloud.firestore {
         && (!data.keys().hasAny(['kidsPolicy']) || (data.kidsPolicy is string && data.kidsPolicy.size() <= 500 && isSafeText(data.kidsPolicy)));
     }
 
-    match /publicConfig/invitation {
-      allow read: if true;
-      allow create: if isSuperAdmin()
-        || (!exists(/databases/$(database)/documents/publicConfig/invitation)
-          && request.auth == null
-          && isValidInvitationData());
-      allow update: if isSuperAdmin()
-        || (isValidInvitationData()
-          && exists(/databases/$(database)/documents/sessions/$(request.resource.data.adminUsername)));
-      allow delete: if isSuperAdmin();
-    }
-
     match /invitations/{tokenId} {
       allow read: if true;
       allow create: if request.auth != null
