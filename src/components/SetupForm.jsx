@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useApp } from "../contexts/AppContext";
 import { MONTH_OPTIONS, THEME_GROUPS, THEME_OPTIONS, THEME_PREVIEW_COLORS } from "../lib/constants";
 import CollapsibleSection from "./CollapsibleSection";
@@ -12,10 +13,22 @@ export default function SetupForm({ prefix = "" }) {
     saveMessage, saveError, maxAllowedYear,
   } = useApp();
 
+  const hiddenSet = useMemo(() => {
+    const raw = formData.hiddenSections || "";
+    return new Set(raw.split(",").filter(Boolean));
+  }, [formData.hiddenSections]);
+
   const id = (name) => `${prefix}${name}`;
 
   return (
     <form className="setup-form setup-form--nested" onSubmit={handleSaveSetup}>
+      <SectionOrderEditor
+        value={formData.sectionOrder}
+        onChange={updateFormField}
+        hiddenValue={formData.hiddenSections}
+        onHiddenChange={updateFormField}
+      />
+
       <CollapsibleSection title="Portada" hint="Nombres, mensaje y tema" defaultOpen>
         <fieldset className="setup-name-group">
           <legend className="setup-label">Nombres</legend>
@@ -246,35 +259,45 @@ export default function SetupForm({ prefix = "" }) {
         <p className="setup-help">Sugerencia sobre cómo vestir para la celebración.</p>
       </CollapsibleSection>
 
-      <CollapsibleSection title="Contenido extra" hint="Historia y regalos">
-        <label className="setup-label" htmlFor={id("storyText")}>
-          Nuestra historia
-        </label>
-        <textarea
-          id={id("storyText")}
-          className="setup-textarea"
-          value={formData.storyText}
-          onChange={(e) => updateFormField("storyText", e.target.value.slice(0, 2000))}
-          placeholder="Ejemplo: Nos conocimos en…"
-          rows={4}
-        />
-        <p className="setup-help">Un texto libre sobre vuestra historia de amor.</p>
+      {(!hiddenSet.has("story") || !hiddenSet.has("gifts")) && (
+        <CollapsibleSection title="Contenido extra" hint="Historia y regalos">
+          {!hiddenSet.has("story") && (
+            <>
+              <label className="setup-label" htmlFor={id("storyText")}>
+                Nuestra historia
+              </label>
+              <textarea
+                id={id("storyText")}
+                className="setup-textarea"
+                value={formData.storyText}
+                onChange={(e) => updateFormField("storyText", e.target.value.slice(0, 2000))}
+                placeholder="Ejemplo: Nos conocimos en…"
+                rows={4}
+              />
+              <p className="setup-help">Un texto libre sobre vuestra historia de amor.</p>
+            </>
+          )}
 
-        <label className="setup-label" htmlFor={id("giftsInfo")}>
-          Información de regalos
-        </label>
-        <textarea
-          id={id("giftsInfo")}
-          className="setup-textarea"
-          value={formData.giftsInfo}
-          onChange={(e) => updateFormField("giftsInfo", e.target.value.slice(0, 2000))}
-          placeholder="Ejemplo: Preferimos un detalle en efectivo…"
-          rows={4}
-        />
-        <p className="setup-help">Indica si preferís una lluvia de sobres, número de cuenta, etc.</p>
-      </CollapsibleSection>
+          {!hiddenSet.has("gifts") && (
+            <>
+              <label className="setup-label" htmlFor={id("giftsInfo")}>
+                Información de regalos
+              </label>
+              <textarea
+                id={id("giftsInfo")}
+                className="setup-textarea"
+                value={formData.giftsInfo}
+                onChange={(e) => updateFormField("giftsInfo", e.target.value.slice(0, 2000))}
+                placeholder="Ejemplo: Preferimos un detalle en efectivo…"
+                rows={4}
+              />
+              <p className="setup-help">Indica si preferís una lluvia de sobres, número de cuenta, etc.</p>
+            </>
+          )}
+        </CollapsibleSection>
+      )}
 
-      <CollapsibleSection title="Personalización" hint="Fondo de portada y orden">
+      <CollapsibleSection title="Personalización" hint="Fondo de portada">
         <div className="setup-background-panel">
           <div className="setup-background-panel__header">
             <div>
@@ -323,13 +346,6 @@ export default function SetupForm({ prefix = "" }) {
             </div>
           ) : null}
         </div>
-
-        <SectionOrderEditor
-          value={formData.sectionOrder}
-          onChange={updateFormField}
-          hiddenValue={formData.hiddenSections}
-          onHiddenChange={updateFormField}
-        />
       </CollapsibleSection>
 
       <div className="setup-actions" style={{ padding: "0.25rem 0" }}>
