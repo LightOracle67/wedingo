@@ -411,6 +411,8 @@ export function AppProvider({ children }) {
     }
 
     const sanitized = normalizeConfig(formData);
+    const hiddenArray = (sanitized.hiddenSections || "").split(",").filter(Boolean);
+    const hiddenSet = new Set(hiddenArray);
 
     if (!hasStoredConfig) {
       if (!sanitized.adminUsername) {
@@ -434,47 +436,67 @@ export function AppProvider({ children }) {
       return;
     }
 
-    if (!sanitized.weddingDay || !sanitized.weddingMonth || !sanitized.weddingYear || !sanitized.weddingHour || !sanitized.weddingMinute) {
-      setSaveError("Completa la fecha de la boda.");
-      return;
-    }
+    if (!hiddenSet.has("details")) {
+      if (!sanitized.weddingDay || !sanitized.weddingMonth || !sanitized.weddingYear || !sanitized.weddingHour || !sanitized.weddingMinute) {
+        setSaveError("Completa la fecha de la boda.");
+        return;
+      }
 
-    const parsedDay = Number.parseInt(sanitized.weddingDay, 10);
-    if (Number.isNaN(parsedDay) || parsedDay < 1 || parsedDay > 31) {
-      setSaveError("El día debe estar entre 1 y 31.");
-      return;
-    }
+      const parsedDay = Number.parseInt(sanitized.weddingDay, 10);
+      if (Number.isNaN(parsedDay) || parsedDay < 1 || parsedDay > 31) {
+        setSaveError("El día debe estar entre 1 y 31.");
+        return;
+      }
 
-    if (!MONTH_OPTIONS.some((monthOption) => monthOption.value === sanitized.weddingMonth)) {
-      setSaveError("Selecciona un mes válido.");
-      return;
-    }
+      if (!MONTH_OPTIONS.some((monthOption) => monthOption.value === sanitized.weddingMonth)) {
+        setSaveError("Selecciona un mes válido.");
+        return;
+      }
 
-    const parsedHour = Number.parseInt(sanitized.weddingHour, 10);
-    if (Number.isNaN(parsedHour) || parsedHour < 0 || parsedHour > 23) {
-      setSaveError("La hora debe estar entre 0 y 23.");
-      return;
-    }
+      const parsedHour = Number.parseInt(sanitized.weddingHour, 10);
+      if (Number.isNaN(parsedHour) || parsedHour < 0 || parsedHour > 23) {
+        setSaveError("La hora debe estar entre 0 y 23.");
+        return;
+      }
 
-    const parsedMinute = Number.parseInt(sanitized.weddingMinute, 10);
-    if (Number.isNaN(parsedMinute) || parsedMinute < 0 || parsedMinute > 59) {
-      setSaveError("Los minutos deben estar entre 00 y 59.");
-      return;
-    }
+      const parsedMinute = Number.parseInt(sanitized.weddingMinute, 10);
+      if (Number.isNaN(parsedMinute) || parsedMinute < 0 || parsedMinute > 59) {
+        setSaveError("Los minutos deben estar entre 00 y 59.");
+        return;
+      }
 
-    const monthNum = MONTH_VALUE_TO_NUMBER[sanitized.weddingMonth];
-    const enteredDate = new Date(
-      Number.parseInt(sanitized.weddingYear, 10),
-      monthNum - 1,
-      Number.parseInt(sanitized.weddingDay, 10),
-      Number.parseInt(sanitized.weddingHour, 10),
-      Number.parseInt(sanitized.weddingMinute, 10),
-    );
-    const today = new Date();
-    today.setSeconds(0, 0);
-    if (enteredDate < today) {
-      setSaveError("La fecha de la boda no puede ser anterior a hoy.");
-      return;
+      const monthNum = MONTH_VALUE_TO_NUMBER[sanitized.weddingMonth];
+      const enteredDate = new Date(
+        Number.parseInt(sanitized.weddingYear, 10),
+        monthNum - 1,
+        Number.parseInt(sanitized.weddingDay, 10),
+        Number.parseInt(sanitized.weddingHour, 10),
+        Number.parseInt(sanitized.weddingMinute, 10),
+      );
+      const today = new Date();
+      today.setSeconds(0, 0);
+      if (enteredDate < today) {
+        setSaveError("La fecha de la boda no puede ser anterior a hoy.");
+        return;
+      }
+
+      const parsedYear = Number.parseInt(sanitized.weddingYear, 10);
+      if (Number.isNaN(parsedYear) || parsedYear > maxAllowedYear) {
+        setSaveError(`El año no puede ser mayor a ${maxAllowedYear}.`);
+        return;
+      }
+
+      const hasLatitude = Boolean(sanitized.weddingLatitude);
+      const hasLongitude = Boolean(sanitized.weddingLongitude);
+      if (hasLatitude !== hasLongitude) {
+        setSaveError("Si escribes coordenadas, rellena los dos campos.");
+        return;
+      }
+
+      if (hasLatitude && hasLongitude && !getValidCoordinates(sanitized.weddingLatitude, sanitized.weddingLongitude)) {
+        setSaveError("Las coordenadas no son válidas. Revisa los números e inténtalo de nuevo.");
+        return;
+      }
     }
 
     if (!THEME_VALUES.has(sanitized.theme)) {
@@ -488,7 +510,6 @@ export function AppProvider({ children }) {
       setSaveError("El orden de las secciones no es válido.");
       return;
     }
-    const hiddenArray = (sanitized.hiddenSections || "").split(",").filter(Boolean);
     if (!hiddenArray.every((s) => validSectionKeys.has(s))) {
       setSaveError("Las secciones ocultas no son válidas.");
       return;
@@ -496,24 +517,6 @@ export function AppProvider({ children }) {
 
     if (orderArray[0] !== "hero") {
       setSaveError("La portada debe ser la primera sección.");
-      return;
-    }
-
-    const hasLatitude = Boolean(sanitized.weddingLatitude);
-    const hasLongitude = Boolean(sanitized.weddingLongitude);
-    if (hasLatitude !== hasLongitude) {
-      setSaveError("Si escribes coordenadas, rellena los dos campos.");
-      return;
-    }
-
-    if (hasLatitude && hasLongitude && !getValidCoordinates(sanitized.weddingLatitude, sanitized.weddingLongitude)) {
-      setSaveError("Las coordenadas no son válidas. Revisa los números e inténtalo de nuevo.");
-      return;
-    }
-
-    const parsedYear = Number.parseInt(sanitized.weddingYear, 10);
-    if (Number.isNaN(parsedYear) || parsedYear > maxAllowedYear) {
-      setSaveError(`El año no puede ser mayor a ${maxAllowedYear}.`);
       return;
     }
 
