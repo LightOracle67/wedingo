@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { SECTION_LABELS, STORY_SECTION_ORDER } from "../lib/constants";
 
 function parseOrder(raw) {
@@ -13,6 +13,9 @@ function parseHidden(raw) {
 export default function SectionOrderEditor({ value, onChange, hiddenValue, onHiddenChange }) {
   const [items, setItems] = useState(() => parseOrder(value));
   const [hidden, setHidden] = useState(() => parseHidden(hiddenValue));
+
+  useEffect(() => { setItems(parseOrder(value)); }, [value]);
+  useEffect(() => { setHidden(parseHidden(hiddenValue)); }, [hiddenValue]);
   const [dragIndex, setDragIndex] = useState(null);
   const [overIndex, setOverIndex] = useState(null);
 
