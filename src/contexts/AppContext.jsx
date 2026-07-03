@@ -466,8 +466,13 @@ export function AppProvider({ children }) {
 
     const orderArray = (sanitized.sectionOrder || "").split(",").filter(Boolean);
     const validSectionKeys = new Set(STORY_SECTION_ORDER);
-    if (orderArray.length !== STORY_SECTION_ORDER.length || !orderArray.every((s) => validSectionKeys.has(s))) {
+    if (orderArray.length < 1 || !orderArray.every((s) => validSectionKeys.has(s))) {
       setSaveError("El orden de las secciones no es válido.");
+      return;
+    }
+    const hiddenArray = (sanitized.hiddenSections || "").split(",").filter(Boolean);
+    if (!hiddenArray.every((s) => validSectionKeys.has(s))) {
+      setSaveError("Las secciones ocultas no son válidas.");
       return;
     }
 

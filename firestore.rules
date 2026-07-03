@@ -40,7 +40,10 @@ service cloud.firestore {
         && (!data.keys().hasAny(['backgroundImageSource']) || (data.backgroundImageSource is string && data.backgroundImageSource.size() <= 50))
         && (!data.keys().hasAny(['weddingLatitude']) || (data.weddingLatitude is string && data.weddingLatitude.size() <= 20))
         && (!data.keys().hasAny(['weddingLongitude']) || (data.weddingLongitude is string && data.weddingLongitude.size() <= 20))
-        && (!data.keys().hasAny(['sectionOrder']) || (data.sectionOrder is string && data.sectionOrder.size() <= 50));
+        && (!data.keys().hasAny(['sectionOrder']) || (data.sectionOrder is string && data.sectionOrder.size() <= 120))
+        && (!data.keys().hasAny(['hiddenSections']) || (data.hiddenSections is string && data.hiddenSections.size() <= 60))
+        && (!data.keys().hasAny(['storyText']) || (data.storyText is string && data.storyText.size() <= 2000 && isSafeText(data.storyText)))
+        && (!data.keys().hasAny(['giftsInfo']) || (data.giftsInfo is string && data.giftsInfo.size() <= 2000 && isSafeText(data.giftsInfo)));
     }
 
     match /publicConfig/invitation {

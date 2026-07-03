@@ -6,8 +6,13 @@ function parseOrder(raw) {
   return STORY_SECTION_ORDER.filter((s) => order.includes(s));
 }
 
-export default function SectionOrderEditor({ value, onChange }) {
+function parseHidden(raw) {
+  return new Set((raw || "").split(",").filter(Boolean));
+}
+
+export default function SectionOrderEditor({ value, onChange, hiddenValue, onHiddenChange }) {
   const [items, setItems] = useState(() => parseOrder(value));
+  const [hidden, setHidden] = useState(() => parseHidden(hiddenValue));
   const [dragIndex, setDragIndex] = useState(null);
   const [overIndex, setOverIndex] = useState(null);
 
@@ -16,12 +21,26 @@ export default function SectionOrderEditor({ value, onChange }) {
     onChange("sectionOrder", next.join(","));
   }, [onChange]);
 
+  const syncHidden = useCallback((next) => {
+    setHidden(next);
+    onHiddenChange("hiddenSections", [...next].join(","));
+  }, [onHiddenChange]);
+
+  const toggleVisibility = useCallback((key) => {
+    const next = new Set(hidden);
+    if (next.has(key)) next.delete(key);
+    else next.add(key);
+    syncHidden(next);
+  }, [hidden, syncHidden]);
+
   const handleDragStart = useCallback((e, index) => {
+    const isHero = items[index] === "hero";
+    if (isHero) return;
     setDragIndex(index);
     setOverIndex(null);
     e.dataTransfer.effectAllowed = "move";
     e.dataTransfer.setData("text/plain", String(index));
-  }, []);
+  }, [items]);
 
   const handleDragEnter = useCallback((e, index) => {
     e.preventDefault();
@@ -66,8 +85,6 @@ export default function SectionOrderEditor({ value, onChange }) {
     sync(next);
   }, [items, sync]);
 
-  const isFirstMovable = (index) => index === 1 && items[0] === "hero";
-
   const getDropIndicator = (index) => {
     if (index === 0) return null;
     if (dragIndex === null || overIndex === null) return null;
@@ -77,18 +94,19 @@ export default function SectionOrderEditor({ value, onChange }) {
 
   return (
     <div className="setup-token-card">
-      <p className="setup-label setup-label--tight">Orden de las secciones</p>
+      <p className="setup-label setup-label--tight">Orden y visibilidad</p>
       <p className="setup-help setup-help--tight">
-        Arrastra o usa los botones para reordenar. La portada siempre va primero.
+        Arrastra para reordenar, usa los botones para mover, y activa o desactiva cada sección.
       </p>
       <div className="section-order-list">
         {items.map((sectionKey, index) => {
           const isHero = sectionKey === "hero";
           const isDragging = dragIndex === index;
+          const isHidden = hidden.has(sectionKey);
           return (
             <div
               key={sectionKey}
-              className={`section-order-item ${isDragging ? "section-order-item--dragging" : ""} ${isHero ? "section-order-item--fixed" : ""} ${getDropIndicator(index)}`}
+              className={`section-order-item ${isDragging ? "section-order-item--dragging" : ""} ${isHero ? "section-order-item--fixed" : ""} ${getDropIndicator(index)} ${isHidden ? "section-order-item--hidden" : ""}`}
               draggable={!isHero}
               onDragStart={(e) => handleDragStart(e, index)}
               onDragEnter={(e) => handleDragEnter(e, index)}
@@ -99,14 +117,25 @@ export default function SectionOrderEditor({ value, onChange }) {
               <span className="section-order-item__grip" aria-hidden="true">
                 {isHero ? "🔒" : "⠿"}
               </span>
-              <span className="section-order-item__label">{SECTION_LABELS[sectionKey] || sectionKey}</span>
+              <span className={`section-order-item__label ${isHidden ? "section-order-item__label--hidden" : ""}`}>
+                {SECTION_LABELS[sectionKey] || sectionKey}
+                {isHidden && <span className="section-order-item__badge">oculta</span>}
+              </span>
               {!isHero && (
                 <span className="section-order-item__actions">
                   <button
                     type="button"
+                    className={`section-order-item__toggle ${isHidden ? "" : "section-order-item__toggle--on"}`}
+                    onClick={() => toggleVisibility(sectionKey)}
+                    aria-label={`${isHidden ? "Mostrar" : "Ocultar"} ${SECTION_LABELS[sectionKey]}`}
+                  >
+                    {isHidden ? "✕" : "✓"}
+                  </button>
+                  <button
+                    type="button"
                     className="section-order-item__btn"
                     onClick={() => moveUp(index)}
-                    disabled={isFirstMovable(index)}
+                    disabled={index <= 1 && items[0] === "hero"}
                     aria-label={`Mover ${SECTION_LABELS[sectionKey]} hacia arriba`}
                   >
                     ↑
