@@ -1154,10 +1154,10 @@ body::after {
 @keyframes subtle-float {
   0%,
   100% {
-    transform: translateY(0);
+    translate: 0 0;
   }
   50% {
-    transform: translateY(-4px);
+    translate: 0 -4px;
   }
 }
 
