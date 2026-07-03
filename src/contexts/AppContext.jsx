@@ -2,11 +2,11 @@ import { createContext, useContext, useCallback, useEffect, useMemo, useRef, use
 import { useLocation } from "react-router-dom";
 import {
   addDoc,
-  clearIndexedDbPersistence,
   deleteDoc,
   doc,
   getDoc,
   getDocs,
+  runTransaction,
   serverTimestamp,
   setDoc,
 } from "firebase/firestore";
@@ -66,6 +66,7 @@ export function AppProvider({ children }) {
     guestName: "",
     attendance: "yes",
     companions: "0",
+    dietaryInfo: "",
     note: "",
   });
   const [rsvpMessage, setRsvpMessage] = useState("");
@@ -80,10 +81,6 @@ export function AppProvider({ children }) {
   );
 
   const location = useLocation();
-
-  useEffect(() => {
-    clearIndexedDbPersistence(db).catch(() => {});
-  }, []);
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -257,14 +254,20 @@ export function AppProvider({ children }) {
     setRsvpForm((current) => ({ ...current, [field]: value }));
   }, []);
 
-  const handleAdminLogout = useCallback(() => {
+  const handleAdminLogout = useCallback(async () => {
+    const username = tokenLoginUsername;
     setIsTokenVerified(false);
     setTokenLoginUsername("");
     setSetupToken("");
     setSetupTokenInput("");
     setGeneratedToken("");
     setAuthMessage("");
-  }, []);
+    if (username) {
+      try {
+        await deleteDoc(doc(db, "sessions", username));
+      } catch { }
+    }
+  }, [tokenLoginUsername]);
 
   const handleClearRsvpEntries = useCallback(async () => {
     if (!window.confirm("¿Borrar todas las respuestas de asistencia? Esta acción no se puede deshacer.")) return;
@@ -538,6 +541,7 @@ export function AppProvider({ children }) {
       guestName,
       attendance: rsvpForm.attendance,
       companions: companionsCount,
+      dietaryInfo: rsvpForm.dietaryInfo.trim(),
       note: rsvpForm.note.trim(),
       submittedAt: serverTimestamp(),
     };
@@ -592,20 +596,19 @@ export function AppProvider({ children }) {
     setIsTokenVerifying(true);
     try {
       const tokenDocRef = doc(db, "setupTokens", enteredToken);
-      const tokenDoc = await getDoc(tokenDocRef);
-
-      if (!tokenDoc.exists || tokenDoc.data().used === true) {
-        setAuthMessage("Código de acceso no válido o ya ha sido usado.");
-        setIsTokenVerifying(false);
-        return;
-      }
-
-      await setDoc(tokenDocRef, {
-        used: true,
-        username,
-        createdAt: tokenDoc.data().createdAt,
-        usedAt: serverTimestamp(),
+      await runTransaction(db, async (transaction) => {
+        const tokenDoc = await transaction.get(tokenDocRef);
+        if (!tokenDoc.exists || tokenDoc.data().used === true) {
+          throw new Error("Token ya usado");
+        }
+        transaction.update(tokenDocRef, {
+          used: true,
+          username,
+          usedAt: serverTimestamp(),
+        });
       });
+
+      await setDoc(doc(db, "sessions", username), { createdAt: serverTimestamp() });
 
       setTokenLoginUsername(username);
       setSetupToken("");

@@ -1,6 +1,6 @@
 import { memo } from "react";
 
-const InfoSection = memo(function InfoSection({ style, className, weddingSchedule, weddingDressCode }) {
+const InfoSection = memo(function InfoSection({ style, className, weddingSchedule, weddingDressCode, kidsPolicy }) {
   return (
     <section
       data-story-section="info"
@@ -47,6 +47,14 @@ const InfoSection = memo(function InfoSection({ style, className, weddingSchedul
             </p>
           )}
         </>
+        {kidsPolicy ? (
+          <>
+            <div className="story-divider" />
+            <p className="story-eyebrow">Niños</p>
+            <h3 className="story-subheading">Sobre los más pequeños</h3>
+            <p className="story-copy whitespace-pre-line">{kidsPolicy}</p>
+          </>
+        ) : null}
       </div>
     </section>
   );

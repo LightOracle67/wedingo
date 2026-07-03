@@ -43,7 +43,9 @@ service cloud.firestore {
         && (!data.keys().hasAny(['sectionOrder']) || (data.sectionOrder is string && data.sectionOrder.size() <= 120))
         && (!data.keys().hasAny(['hiddenSections']) || (data.hiddenSections is string && data.hiddenSections.size() <= 60))
         && (!data.keys().hasAny(['storyText']) || (data.storyText is string && data.storyText.size() <= 2000 && isSafeText(data.storyText)))
-        && (!data.keys().hasAny(['giftsInfo']) || (data.giftsInfo is string && data.giftsInfo.size() <= 2000 && isSafeText(data.giftsInfo)));
+        && (!data.keys().hasAny(['giftsInfo']) || (data.giftsInfo is string && data.giftsInfo.size() <= 2000 && isSafeText(data.giftsInfo)))
+        && (!data.keys().hasAny(['accommodationInfo']) || (data.accommodationInfo is string && data.accommodationInfo.size() <= 2000 && isSafeText(data.accommodationInfo)))
+        && (!data.keys().hasAny(['kidsPolicy']) || (data.kidsPolicy is string && data.kidsPolicy.size() <= 500 && isSafeText(data.kidsPolicy)));
     }
 
     match /publicConfig/invitation {
@@ -54,13 +56,7 @@ service cloud.firestore {
           && isValidInvitationData());
       allow update: if isSuperAdmin()
         || (isValidInvitationData()
-          && (
-            request.auth != null
-            || (
-              request.resource.data.adminUsername is string
-              && isValidUsername(request.resource.data.adminUsername)
-            )
-          ));
+          && exists(/databases/$(database)/documents/sessions/$(request.resource.data.adminUsername)));
       allow delete: if isSuperAdmin();
     }
 
@@ -86,7 +82,7 @@ service cloud.firestore {
     }
 
     match /rsvpResponses/{responseId} {
-      allow create: if request.resource.data.keys().hasAll(['guestName', 'attendance', 'companions', 'note', 'submittedAt'])
+      allow create: if request.resource.data.keys().hasAll(['guestName', 'attendance', 'companions', 'dietaryInfo', 'note', 'submittedAt'])
         && request.resource.data.guestName is string
         && request.resource.data.guestName.size() > 0
         && request.resource.data.guestName.size() <= 120
@@ -95,13 +91,23 @@ service cloud.firestore {
         && request.resource.data.companions is int
         && request.resource.data.companions >= 0
         && request.resource.data.companions <= 10
+        && request.resource.data.dietaryInfo is string
+        && request.resource.data.dietaryInfo.size() <= 240
+        && isSafeText(request.resource.data.dietaryInfo)
         && request.resource.data.note is string
         && request.resource.data.note.size() <= 240
         && isSafeText(request.resource.data.note);
 
-      allow read: if request.auth != null || isSuperAdmin();
+      allow read: if true;
       allow update: if false;
-      allow delete: if request.auth != null || isSuperAdmin();
+      allow delete: if isSuperAdmin();
+    }
+
+    match /sessions/{username} {
+      allow read: if true;
+      allow create: if request.resource.data.createdAt is timestamp;
+      allow delete: if isSuperAdmin();
+      allow update: if false;
     }
   }
 }

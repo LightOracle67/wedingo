@@ -257,10 +257,27 @@ export default function SetupForm({ prefix = "" }) {
           autoComplete="off"
         />
         <p className="setup-help">Sugerencia sobre cómo vestir para la celebración.</p>
+
+        {!hiddenSet.has("info") && (
+          <>
+            <label className="setup-label" htmlFor={id("kidsPolicy")}>
+              Sobre los niños
+            </label>
+            <textarea
+              id={id("kidsPolicy")}
+              className="setup-textarea"
+              value={formData.kidsPolicy}
+              onChange={(e) => updateFormField("kidsPolicy", e.target.value.slice(0, 500))}
+              placeholder="Ejemplo: Los niños son bienvenidos, habrá zona de juegos habilitada."
+              rows={3}
+            />
+            <p className="setup-help">Indica si los niños son bienvenidos o si prefieres que no asistan.</p>
+          </>
+        )}
       </CollapsibleSection>
 
-      {(!hiddenSet.has("story") || !hiddenSet.has("gifts")) && (
-        <CollapsibleSection title="Contenido extra" hint="Historia y regalos">
+      {(!hiddenSet.has("story") || !hiddenSet.has("gifts") || !hiddenSet.has("accommodation")) && (
+        <CollapsibleSection title="Contenido extra" hint="Historia, regalos y alojamiento">
           {!hiddenSet.has("story") && (
             <>
               <label className="setup-label" htmlFor={id("storyText")}>
@@ -292,6 +309,23 @@ export default function SetupForm({ prefix = "" }) {
                 rows={4}
               />
               <p className="setup-help">Indica si preferís una lluvia de sobres, número de cuenta, etc.</p>
+            </>
+          )}
+
+          {!hiddenSet.has("accommodation") && (
+            <>
+              <label className="setup-label" htmlFor={id("accommodationInfo")}>
+                Alojamiento
+              </label>
+              <textarea
+                id={id("accommodationInfo")}
+                className="setup-textarea"
+                value={formData.accommodationInfo}
+                onChange={(e) => updateFormField("accommodationInfo", e.target.value.slice(0, 2000))}
+                placeholder="Ejemplo: Hotel recomendado: … Código descuento: …"
+                rows={4}
+              />
+              <p className="setup-help">Hoteles, códigos de descuento y opciones para los invitados.</p>
             </>
           )}
         </CollapsibleSection>

@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
-import maplibregl from "maplibre-gl";
-import "maplibre-gl/dist/maplibre-gl.css";
+
 import { useApp } from "../contexts/AppContext";
 import {
   getValidCoordinates,
@@ -15,6 +14,7 @@ import DetailsSection from "./sections/DetailsSection";
 import InfoSection from "./sections/InfoSection";
 import StorySection from "./sections/StorySection";
 import GiftsSection from "./sections/GiftsSection";
+import AccommodationSection from "./sections/AccommodationSection";
 import RsvpSection from "./sections/RsvpSection";
 
 const SECTION_COMPONENTS = {
@@ -23,6 +23,7 @@ const SECTION_COMPONENTS = {
   info: InfoSection,
   story: StorySection,
   gifts: GiftsSection,
+  accommodation: AccommodationSection,
   rsvp: RsvpSection,
 };
 
@@ -281,6 +282,11 @@ export default function PublicInvitation() {
 
     const timeoutId = window.setTimeout(async () => {
       try {
+        const [maplibreglModule] = await Promise.all([
+          import("maplibre-gl"),
+          import("maplibre-gl/dist/maplibre-gl.css"),
+        ]);
+        const maplibregl = maplibreglModule.default;
         const geocodedLocation = await resolveLocationTarget({
           place,
           latitudeValue: config.weddingLatitude,
@@ -384,12 +390,16 @@ export default function PublicInvitation() {
     info: {
       weddingSchedule: config.weddingSchedule,
       weddingDressCode: config.weddingDressCode,
+      kidsPolicy: config.kidsPolicy,
     },
     story: {
       storyText: config.storyText,
     },
     gifts: {
       giftsInfo: config.giftsInfo,
+    },
+    accommodation: {
+      accommodationInfo: config.accommodationInfo,
     },
     rsvp: {
       rsvpForm,
@@ -400,7 +410,7 @@ export default function PublicInvitation() {
     },
   }), [
     config.firstName, config.secondName, config.inviteMessage,
-    config.weddingPlace, config.weddingSchedule, config.weddingDressCode, config.storyText, config.giftsInfo,
+    config.weddingPlace, config.weddingSchedule, config.weddingDressCode, config.kidsPolicy, config.storyText, config.giftsInfo, config.accommodationInfo,
     countdown, formattedDate, formattedTime,
     hasLocationData, locationDescription, calendarLink,
     locationMapContainerRef, locationMapLoading, locationMapError, locationMapTarget,
