@@ -62,7 +62,7 @@ export const geocodeLocation = async (place) => {
 
 export const parseCoordinate = (value) => {
   if (typeof value !== "string") return null;
-  const normalizedValue = value.trim().replace(",", ".");
+  const normalizedValue = value.trim().replace(/,/g, ".");
   if (!normalizedValue) return null;
   const parsedValue = Number.parseFloat(normalizedValue);
   if (!Number.isFinite(parsedValue)) return null;
@@ -276,9 +276,11 @@ export function decodeInviteConfig(hash) {
 
 export function generateInviteToken() {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  const array = new Uint8Array(10);
+  crypto.getRandomValues(array);
   let result = "";
   for (let i = 0; i < 10; i++) {
-    result += chars.charAt(Math.floor(Math.random() * chars.length));
+    result += chars.charAt(array[i] % chars.length);
   }
   return result;
 }

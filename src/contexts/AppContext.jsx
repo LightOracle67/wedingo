@@ -10,7 +10,7 @@ import {
   serverTimestamp,
   setDoc,
 } from "firebase/firestore";
-import { db, invitationDocRef, RSVP_COLLECTION_REF } from "../lib/firebase";
+import { db, invitationDocRef, RSVP_COLLECTION_REF, rsvpByInviteRef } from "../lib/firebase";
 import { ALLOWED_UPLOAD_TYPES, defaultConfig, MAX_UPLOAD_SIZE_BYTES, MONTH_OPTIONS, MONTH_VALUE_TO_NUMBER, STORY_SECTION_ORDER, THEME_VALUES } from "../lib/constants";
 import {
   buildGoogleCalendarUrl,
@@ -159,8 +159,9 @@ export function AppProvider({ children }) {
 
   useEffect(() => {
     const hydrateRsvp = async () => {
+      if (!inviteToken) return;
       try {
-        const snapshot = await getDocs(RSVP_COLLECTION_REF);
+        const snapshot = await getDocs(rsvpByInviteRef(inviteToken));
         const entries = snapshot.docs
           .map((entryDoc) => {
             const data = entryDoc.data();
@@ -183,7 +184,7 @@ export function AppProvider({ children }) {
     };
 
     hydrateRsvp();
-  }, []);
+  }, [inviteToken]);
 
   const renewRef = useRef(null);
 
@@ -287,14 +288,14 @@ export function AppProvider({ children }) {
   const handleClearRsvpEntries = useCallback(async () => {
     if (!window.confirm("¿Borrar todas las respuestas de asistencia? Esta acción no se puede deshacer.")) return;
     try {
-      const snapshot = await getDocs(RSVP_COLLECTION_REF);
+      const snapshot = await getDocs(rsvpByInviteRef(inviteToken));
       await Promise.all(snapshot.docs.map((entryDoc) => deleteDoc(entryDoc.ref)));
       setRsvpEntries([]);
       setAdminMessage("Se vació el registro de asistencia.");
     } catch {
       setAdminMessage("No se pudo vaciar el registro de asistencia.");
     }
-  }, []);
+  }, [inviteToken]);
 
   const handleClearBackground = useCallback(() => {
     applyBackgroundImage("", "", "");
@@ -557,6 +558,7 @@ export function AppProvider({ children }) {
       companions: companionsCount,
       dietaryInfo: rsvpForm.dietaryInfo.trim(),
       note: rsvpForm.note.trim(),
+      inviteToken: inviteToken,
       submittedAt: serverTimestamp(),
     };
 

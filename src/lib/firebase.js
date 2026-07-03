@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { initializeAppCheck, ReCaptchaEnterpriseProvider } from "firebase/app-check";
-import { collection, doc, getFirestore } from "firebase/firestore";
+import { collection, doc, getFirestore, query, where } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
@@ -28,3 +28,4 @@ export function invitationDocRef(token) {
 }
 export const INVITATIONS_COLLECTION_REF = collection(db, "invitations");
 export const RSVP_COLLECTION_REF = collection(db, "rsvpResponses");
+export const rsvpByInviteRef = (token) => query(RSVP_COLLECTION_REF, where("inviteToken", "==", token));
