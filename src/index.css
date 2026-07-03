@@ -2487,6 +2487,45 @@ a:focus-visible {
   color: rgba(255, 246, 220, 0.6);
 }
 
+.admin-bar__return-form {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.admin-bar__return-input {
+  all: unset;
+  font-size: 0.85rem;
+  padding: 0.3rem 0.55rem;
+  border-radius: 0.35rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff6dc;
+  width: 8rem;
+  font-family: monospace;
+  letter-spacing: 0.04em;
+}
+
+.admin-bar__return-input::placeholder {
+  color: rgba(255, 246, 220, 0.4);
+}
+
+.admin-bar__return-btn {
+  all: unset;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.32rem 0.6rem;
+  border-radius: 0.35rem;
+  background: var(--setup-accent);
+  color: #1e1e1e;
+  cursor: pointer;
+  transition: opacity 200ms;
+}
+
+.admin-bar__return-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
 /* ── Theme picker ── */
 .theme-picker {
   border: 0;

@@ -1,5 +1,5 @@
-import { lazy, Suspense, useEffect } from "react";
-import { Routes, Route, Navigate, Link, useLocation } from "react-router-dom";
+import { lazy, Suspense, useEffect, useState } from "react";
+import { Routes, Route, Navigate, Link, useLocation, useNavigate } from "react-router-dom";
 import { AppProvider, useApp } from "./contexts/AppContext";
 import { SuperAdminProvider } from "./contexts/SuperAdminContext";
 import { ToastProvider } from "./contexts/ToastContext";
@@ -15,7 +15,9 @@ const SuperAdminPanel = lazy(() => import("./pages/SuperAdminPanel"));
 
 function AppShell() {
   const { config, formData, isAdminTokenLoggedIn, tokenLoginUsername, inviteToken } = useApp();
+  const navigate = useNavigate();
   const location = useLocation();
+  const [returnToken, setReturnToken] = useState("");
 
   const searchParams = new URLSearchParams(location.search);
   const isInviteMode = searchParams.has("invitar");
@@ -25,6 +27,15 @@ function AppShell() {
   const topBarPadding = isAdminTokenLoggedIn || showSessionBar ? "2.5rem" : "0";
 
   const storedToken = sessionStorage.getItem("weddingo_invite_token");
+
+  const handleReturnAccess = (e) => {
+    e.preventDefault();
+    const token = returnToken.trim();
+    if (/^[a-zA-Z0-9]{8,12}$/.test(token)) {
+      sessionStorage.setItem("weddingo_invite_token", token);
+      navigate(`/${token}/setup`);
+    }
+  };
 
   useEffect(() => {
     const activeTheme = isEditingRoute ? "golden" : formData.theme || config.theme;
@@ -51,7 +62,21 @@ function AppShell() {
               {storedToken ? (
                 <Link className="admin-bar__link" to={`/${storedToken}/setup`}>Iniciar sesión</Link>
               ) : (
-                <span className="admin-bar__text">Crea una invitación para empezar</span>
+                <form className="admin-bar__return-form" onSubmit={handleReturnAccess}>
+                  <input
+                    className="admin-bar__return-input"
+                    type="text"
+                    value={returnToken}
+                    onChange={(e) => setReturnToken(e.target.value.replace(/[^a-zA-Z0-9]/g, "").slice(0, 12))}
+                    placeholder="Tu código de invitación"
+                    aria-label="Código de invitación"
+                    maxLength={12}
+                    spellCheck="false"
+                  />
+                  <button className="admin-bar__return-btn" type="submit" disabled={returnToken.length < 8}>
+                    Acceder
+                  </button>
+                </form>
               )}
             </div>
           </div>
