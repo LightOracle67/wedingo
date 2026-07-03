@@ -158,6 +158,13 @@ export function AppProvider({ children }) {
   }, [location.pathname, location.hash, inviteToken]);
 
   useEffect(() => {
+    setSaveMessage("");
+    setSaveError("");
+    setAuthMessage("");
+    setAdminMessage("");
+  }, [location.pathname]);
+
+  useEffect(() => {
     const hydrateRsvp = async () => {
       if (!inviteToken) return;
       try {
@@ -586,7 +593,7 @@ export function AppProvider({ children }) {
         setIsRsvpSubmitting(false);
       }, 5000);
     }
-  }, [isRsvpSubmitting, rsvpForm]);
+  }, [isRsvpSubmitting, rsvpForm, inviteToken]);
 
   const handleTokenLogin = useCallback(async () => {
     setAuthMessageType("error");

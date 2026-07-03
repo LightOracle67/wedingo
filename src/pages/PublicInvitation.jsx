@@ -39,7 +39,7 @@ export default function PublicInvitation() {
   const isInviteMode = searchParams.has("invitar");
 
   const {
-    config, configLoadError, formattedDate, formattedTime, calendarLink,
+    config, isConfigLoading, configLoadError, formattedDate, formattedTime, calendarLink,
     rsvpForm, rsvpMessage, isRsvpSubmitting,
     locationMapContainerRef, locationMapError, setLocationMapError,
     locationMapLoading, setLocationMapLoading, locationMapTarget, setLocationMapTarget,
@@ -420,6 +420,20 @@ export default function PublicInvitation() {
 
   const isEmpty = !config.firstName && !config.secondName && !isInviteMode;
   const hasHash = location.hash.length > 1;
+
+  if (isConfigLoading) {
+    return (
+      <div className="app-scene">
+        <section className="story-section story-section--is-active landing-bg flex min-h-screen items-center justify-center px-4">
+          <div className="story-panel story-panel--hero w-full max-w-md text-center">
+            <p className="text-[clamp(1rem,3vw,1.35rem)] leading-relaxed font-serif text-boda-texto/60">
+              Cargando invitación…
+            </p>
+          </div>
+        </section>
+      </div>
+    );
+  }
 
   if (configLoadError) {
     return (
