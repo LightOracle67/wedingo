@@ -755,6 +755,7 @@ body::after {
   z-index: 1;
   padding: clamp(1.4rem, 3.5vw, 2.2rem);
   border-radius: 1.6rem;
+  width: min(100%, 44rem);
   border: 1px solid color-mix(in srgb, var(--invite-shell-border) 72%, transparent);
   background: color-mix(in srgb, var(--invite-shell-bg) 74%, transparent);
   box-shadow:
@@ -986,7 +987,7 @@ body::after {
 }
 
 .story-map__canvas {
-  min-height: 16rem;
+  min-height: clamp(12rem, 30vh, 20rem);
   border-radius: 1.2rem;
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--invite-shell-border) 70%, transparent);
@@ -998,7 +999,7 @@ body::after {
 .story-map__image {
   display: block;
   width: 100%;
-  min-height: 16rem;
+  min-height: clamp(12rem, 30vh, 20rem);
   object-fit: cover;
   border-radius: 1.2rem;
   border: 1px solid color-mix(in srgb, var(--invite-shell-border) 70%, transparent);
@@ -1128,6 +1129,14 @@ body::after {
 
 .story-panel--hero {
   animation: invite-shell-enter 1200ms cubic-bezier(0.22, 1, 0.36, 1) 200ms both;
+  max-width: min(100%, 480px);
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .story-panel--hero {
+    max-width: min(100%, 520px);
+  }
 }
 
 .hero-title {
@@ -1476,6 +1485,14 @@ h6 {
   padding: clamp(1.35rem, 3.5vw, 2.2rem);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+}
+
+.setup-card--wide {
+  width: min(100%, 900px);
+}
+
+.setup-card--narrow {
+  width: min(100%, 500px);
 }
 
 .setup-header {
@@ -2166,7 +2183,7 @@ a:focus-visible {
 .admin-stats-card {
   display: grid;
   gap: 0.2rem;
-  padding: 0.85rem;
+  padding: clamp(0.65rem, 2vw, 0.85rem);
   border-radius: 1rem;
   background: color-mix(in srgb, var(--setup-field-bg) 72%, transparent);
   border: 1px solid color-mix(in srgb, var(--setup-border) 60%, transparent);
@@ -2174,14 +2191,14 @@ a:focus-visible {
 }
 
 .admin-stats-card__value {
-  font-size: 1.75rem;
+  font-size: clamp(1.4rem, 3.5vw, 1.75rem);
   font-weight: 700;
   color: var(--setup-title);
   line-height: 1.1;
 }
 
 .admin-stats-card__label {
-  font-size: 0.88rem;
+  font-size: clamp(0.78rem, 1.8vw, 0.88rem);
   color: var(--setup-muted);
   font-weight: 500;
 }
@@ -2258,7 +2275,7 @@ a:focus-visible {
 
 .admin-table th {
   text-align: left;
-  padding: 0.7rem 0.85rem;
+  padding: clamp(0.5rem, 1.5vw, 0.7rem) clamp(0.5rem, 1.5vw, 0.85rem);
   color: var(--setup-muted);
   font-weight: 700;
   font-size: 0.9rem;
@@ -2267,7 +2284,7 @@ a:focus-visible {
 }
 
 .admin-table td {
-  padding: 0.65rem 0.85rem;
+  padding: clamp(0.4rem, 1.2vw, 0.65rem) clamp(0.4rem, 1.2vw, 0.85rem);
   border-bottom: 1px solid color-mix(in srgb, var(--setup-border) 40%, transparent);
   color: var(--setup-title);
   line-height: 1.45;
@@ -2486,6 +2503,38 @@ a:focus-visible {
   .setup-card {
     width: min(100%, 720px);
     padding: clamp(1.5rem, 3vw, 2.2rem);
+  }
+
+  .setup-card--wide {
+    width: min(100%, 900px);
+  }
+
+  .story-card {
+    max-width: min(100%, 46rem);
+  }
+
+  .story-panel--hero {
+    max-width: min(100%, 520px);
+  }
+}
+
+@media (min-width: 1400px) {
+  .setup-card {
+    width: min(100%, 820px);
+  }
+
+  .setup-card--wide {
+    width: min(100%, 960px);
+  }
+}
+
+@media (min-width: 1800px) {
+  .setup-card {
+    width: min(100%, 900px);
+  }
+
+  .setup-card--wide {
+    width: min(100%, 1040px);
   }
 }
 
