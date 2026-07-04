@@ -66,7 +66,7 @@ export const STORY_SECTION_ORDER = ["hero", "details", "info", "story", "gifts",
 
 export const SECTION_LABELS = {
   hero: "Portada",
-  details: "Fecha y lugar",
+  details: "Lugar, Fecha y Hora",
   info: "Itinerario",
   story: "Nuestra historia",
   gifts: "Regalos",

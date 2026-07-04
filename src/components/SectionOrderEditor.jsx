@@ -1,15 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
-import { SECTION_LABELS, STORY_SECTION_ORDER } from "../lib/constants";
-
-function parseOrder(raw) {
-  const order = (raw || STORY_SECTION_ORDER.join(",")).split(",").filter(Boolean);
-  const valid = new Set(STORY_SECTION_ORDER);
-  return order.filter((s) => valid.has(s));
-}
-
-function parseHidden(raw) {
-  return new Set((raw || "").split(",").filter(Boolean));
-}
+import { SECTION_LABELS } from "../lib/constants";
+import { parseSectionOrder as parseOrder, parseHidden } from "../lib/section-utils";
 
 export default function SectionOrderEditor({ value, onChange, hiddenValue, onHiddenChange }) {
   const [items, setItems] = useState(() => parseOrder(value));

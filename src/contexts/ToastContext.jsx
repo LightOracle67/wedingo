@@ -52,6 +52,7 @@ export function ToastProvider({ children, containerId = "toast-root" }) {
   );
 }
 
+// eslint-disable-next-line react/only-export-components
 export function useToast() {
   const ctx = useContext(ToastContext);
   if (!ctx) throw new Error("useToast debe usarse dentro de ToastProvider");

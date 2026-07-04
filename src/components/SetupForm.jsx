@@ -11,7 +11,7 @@ export default function SetupForm({ prefix = "" }) {
     handleHourChange, handleMinuteChange, handleMinuteBlur, handleYearChange,
     handleCoordinateChange, handleBackgroundUpload, handleClearBackground,
     handleSelectPreviewBackground, previewBackgrounds,
-    saveMessage, saveError, maxAllowedYear,
+    saveMessage, saveError, maxAllowedYear, isTokenVerified,
   } = useApp();
 
   const { addToast } = useToast();
@@ -29,13 +29,6 @@ export default function SetupForm({ prefix = "" }) {
     return new Set(raw.split(",").filter(Boolean));
   }, [formData.hiddenSections]);
 
-  const toggleVisibility = (key) => {
-    const next = new Set(hiddenSet);
-    if (next.has(key)) next.delete(key);
-    else next.add(key);
-    updateFormField("hiddenSections", [...next].join(","));
-  };
-
   const id = (name) => `${prefix}${name}`;
 
   return (
@@ -47,13 +40,11 @@ export default function SetupForm({ prefix = "" }) {
         onHiddenChange={updateFormField}
       />
 
+      {!isTokenVerified ? (
       <CollapsibleSection
         title="Acceso"
         hint="Tu nombre de usuario"
         defaultOpen
-        sectionKey="account"
-        isHidden={false}
-        onToggleVisibility={() => {}}
       >
         <label className="setup-label" htmlFor={id("adminUsername")}>
           Nombre de usuario
@@ -71,14 +62,12 @@ export default function SetupForm({ prefix = "" }) {
           Usa letras y números. Lo necesitarás para acceder al panel cuando tu sesión expire.
         </p>
       </CollapsibleSection>
+      ) : null}
 
       <CollapsibleSection
         title="Portada"
         hint="Nombres, mensaje y tema"
         defaultOpen
-        sectionKey="hero"
-        isHidden={hiddenSet.has("hero")}
-        onToggleVisibility={toggleVisibility}
       >
         <fieldset className="setup-name-group">
           <legend className="setup-label">Nombres</legend>
@@ -203,13 +192,68 @@ export default function SetupForm({ prefix = "" }) {
         </div>
       </CollapsibleSection>
 
+      {!hiddenSet.has("details") ? (
       <CollapsibleSection
-        title="Fecha y hora"
-        hint="Día, mes, año y hora"
-        sectionKey="details"
-        isHidden={hiddenSet.has("details")}
-        onToggleVisibility={toggleVisibility}
+        title="Lugar, Fecha y Hora"
+        hint="Dónde, cuándo y a qué hora"
       >
+        <label className="setup-label" htmlFor={id("weddingPlace")}>
+          Lugar de la boda
+        </label>
+        <input
+          id={id("weddingPlace")}
+          className="setup-input"
+          value={formData.weddingPlace}
+          onChange={(e) => updateFormField("weddingPlace", e.target.value.slice(0, 120))}
+          placeholder="Nombre o dirección del lugar de la celebración"
+          autoComplete="off"
+        />
+        <p className="setup-help">
+          Dirección del lugar. Si quieres más precisión, añade coordenadas.
+        </p>
+
+        <fieldset className="setup-name-group">
+          <legend className="setup-label">Coordenadas del mapa (opcional)</legend>
+          <div className="setup-date-grid">
+            <div>
+              <label className="setup-label" htmlFor={id("weddingLatitude")}>Latitud</label>
+              <input
+                id={id("weddingLatitude")}
+                className="setup-input"
+                value={formData.weddingLatitude}
+                onChange={(e) => handleCoordinateChange("weddingLatitude", e.target.value)}
+                placeholder="Ejemplo: 40.4168"
+                inputMode="decimal"
+                autoComplete="off"
+              />
+            </div>
+            <div>
+              <label className="setup-label" htmlFor={id("weddingLongitude")}>Longitud</label>
+              <input
+                id={id("weddingLongitude")}
+                className="setup-input"
+                value={formData.weddingLongitude}
+                onChange={(e) => handleCoordinateChange("weddingLongitude", e.target.value)}
+                placeholder="Ejemplo: -3.7038"
+                inputMode="decimal"
+                autoComplete="off"
+              />
+            </div>
+          </div>
+        </fieldset>
+
+        {(() => {
+          if (!previewBackgrounds.length) return null;
+          const locationPreview = previewBackgrounds.find((bg) => bg.id === "default");
+          if (!locationPreview) return null;
+          return (
+            <div className="setup-location-preview">
+              <p className="setup-label setup-label--tight">Previsualización del mapa</p>
+              <img src={locationPreview.src} alt="Mapa de la ubicación" className="setup-location-preview__image" />
+            </div>
+          );
+        })()}
+
         <div className="setup-date-grid">
           <div>
             <label className="setup-label" htmlFor={id("weddingDay")}>Día</label>
@@ -279,71 +323,6 @@ export default function SetupForm({ prefix = "" }) {
             <p className="setup-help">De 00 a 59</p>
           </div>
         </div>
-      </CollapsibleSection>
-
-      <CollapsibleSection
-        title="Lugar y horario"
-        hint="Dirección, mapa y horario"
-        sectionKey="place"
-        isHidden={hiddenSet.has("place")}
-        onToggleVisibility={toggleVisibility}
-      >
-        <label className="setup-label" htmlFor={id("weddingPlace")}>
-          Lugar de la boda
-        </label>
-        <input
-          id={id("weddingPlace")}
-          className="setup-input"
-          value={formData.weddingPlace}
-          onChange={(e) => updateFormField("weddingPlace", e.target.value.slice(0, 120))}
-          placeholder="Nombre o dirección del lugar de la celebración"
-          autoComplete="off"
-        />
-        <p className="setup-help">
-          Dirección del lugar. Si quieres más precisión, añade coordenadas.
-        </p>
-
-        <fieldset className="setup-name-group">
-          <legend className="setup-label">Coordenadas del mapa (opcional)</legend>
-          <div className="setup-date-grid">
-            <div>
-              <label className="setup-label" htmlFor={id("weddingLatitude")}>Latitud</label>
-              <input
-                id={id("weddingLatitude")}
-                className="setup-input"
-                value={formData.weddingLatitude}
-                onChange={(e) => handleCoordinateChange("weddingLatitude", e.target.value)}
-                placeholder="Ejemplo: 40.4168"
-                inputMode="decimal"
-                autoComplete="off"
-              />
-            </div>
-            <div>
-              <label className="setup-label" htmlFor={id("weddingLongitude")}>Longitud</label>
-              <input
-                id={id("weddingLongitude")}
-                className="setup-input"
-                value={formData.weddingLongitude}
-                onChange={(e) => handleCoordinateChange("weddingLongitude", e.target.value)}
-                placeholder="Ejemplo: -3.7038"
-                inputMode="decimal"
-                autoComplete="off"
-              />
-            </div>
-          </div>
-        </fieldset>
-
-        {(() => {
-          if (!previewBackgrounds.length) return null;
-          const locationPreview = previewBackgrounds.find((bg) => bg.id === "default");
-          if (!locationPreview) return null;
-          return (
-            <div className="setup-location-preview">
-              <p className="setup-label setup-label--tight">Previsualización del mapa</p>
-              <img src={locationPreview.src} alt="Mapa de la ubicación" className="setup-location-preview__image" />
-            </div>
-          );
-        })()}
 
         <label className="setup-label" htmlFor={id("weddingSchedule")}>
           Horario de la boda
@@ -371,13 +350,12 @@ export default function SetupForm({ prefix = "" }) {
         />
         <p className="setup-help">Sugerencia sobre cómo vestir para la celebración.</p>
       </CollapsibleSection>
+      ) : null}
 
+      {!hiddenSet.has("info") ? (
       <CollapsibleSection
         title="Sobre los invitados"
         hint="Niños, restricciones"
-        sectionKey="info"
-        isHidden={hiddenSet.has("info")}
-        onToggleVisibility={toggleVisibility}
       >
         <label className="setup-label" htmlFor={id("kidsPolicy")}>
           Sobre los niños
@@ -392,13 +370,12 @@ export default function SetupForm({ prefix = "" }) {
         />
         <p className="setup-help">Indica si los niños son bienvenidos o si prefieres que no asistan.</p>
       </CollapsibleSection>
+      ) : null}
 
+      {!hiddenSet.has("story") ? (
       <CollapsibleSection
         title="Nuestra historia"
         hint="Texto libre sobre la pareja"
-        sectionKey="story"
-        isHidden={hiddenSet.has("story")}
-        onToggleVisibility={toggleVisibility}
       >
         <label className="setup-label" htmlFor={id("storyText")}>
           Nuestra historia
@@ -413,13 +390,12 @@ export default function SetupForm({ prefix = "" }) {
         />
         <p className="setup-help">Un texto libre sobre vuestra historia de amor.</p>
       </CollapsibleSection>
+      ) : null}
 
+      {!hiddenSet.has("gifts") ? (
       <CollapsibleSection
         title="Regalos"
         hint="Preferencias y datos bancarios"
-        sectionKey="gifts"
-        isHidden={hiddenSet.has("gifts")}
-        onToggleVisibility={toggleVisibility}
       >
         <label className="setup-label" htmlFor={id("giftsInfo")}>
           Información de regalos
@@ -434,13 +410,12 @@ export default function SetupForm({ prefix = "" }) {
         />
         <p className="setup-help">Indica si preferís una lluvia de sobres, número de cuenta, etc.</p>
       </CollapsibleSection>
+      ) : null}
 
+      {!hiddenSet.has("accommodation") ? (
       <CollapsibleSection
         title="Alojamiento"
         hint="Hoteles y descuentos"
-        sectionKey="accommodation"
-        isHidden={hiddenSet.has("accommodation")}
-        onToggleVisibility={toggleVisibility}
       >
         <label className="setup-label" htmlFor={id("accommodationInfo")}>
           Alojamiento
@@ -455,6 +430,7 @@ export default function SetupForm({ prefix = "" }) {
         />
         <p className="setup-help">Hoteles, códigos de descuento y opciones para los invitados.</p>
       </CollapsibleSection>
+      ) : null}
 
       <div className="setup-actions" style={{ padding: "0.25rem 0" }}>
         <button className="setup-button" type="submit">

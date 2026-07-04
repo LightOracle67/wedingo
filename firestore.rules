@@ -44,7 +44,7 @@ service cloud.firestore {
             (request.resource.data.keys().hasOnly(['used', 'createdAt', 'username'])
               && request.resource.data.used == false)
             ||
-            (request.resource.data.keys().hasOnly(['used', 'createdAt', 'autoGen'])
+            (request.resource.data.keys().hasOnly(['used', 'createdAt', 'autoGen', 'inviteToken'])
               && request.resource.data.used == false
               && request.resource.data.autoGen == true)
           ));
