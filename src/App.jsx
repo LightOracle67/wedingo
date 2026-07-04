@@ -19,21 +19,20 @@ function AppShell() {
   const location = useLocation();
   const [returnToken, setReturnToken] = useState("");
 
-  const searchParams = new URLSearchParams(location.search);
-  const isInviteMode = searchParams.has("invitar");
-
   const isEditingRoute = location.pathname.endsWith("/setup") || (location.pathname.endsWith("/admin") && isAdminTokenLoggedIn);
-  const showSessionBar = !isInviteMode && location.pathname === "/" && !isAdminTokenLoggedIn;
+  const showSessionBar = false;
   const topBarPadding = isAdminTokenLoggedIn || showSessionBar ? "2.5rem" : "0";
 
   const storedToken = sessionStorage.getItem("weddingo_invite_token");
 
   const handleReturnAccess = (e) => {
     e.preventDefault();
-    const token = returnToken.trim();
-    if (/^[a-zA-Z0-9]{8,12}$/.test(token)) {
-      sessionStorage.setItem("weddingo_invite_token", token);
-      navigate(`/${token}/setup`);
+    let raw = returnToken.trim();
+    const urlMatch = raw.match(/\/([a-zA-Z0-9]{8,12})(?:\/|$)/);
+    if (urlMatch) raw = urlMatch[1];
+    if (/^[a-zA-Z0-9]{8,12}$/.test(raw)) {
+      sessionStorage.setItem("weddingo_invite_token", raw);
+      navigate(`/${raw}/setup`);
     }
   };
 
@@ -67,10 +66,10 @@ function AppShell() {
                     className="admin-bar__return-input"
                     type="text"
                     value={returnToken}
-                    onChange={(e) => setReturnToken(e.target.value.replace(/[^a-zA-Z0-9]/g, "").slice(0, 12))}
-                    placeholder="Tu código de invitación"
-                    aria-label="Código de invitación"
-                    maxLength={12}
+                    onChange={(e) => setReturnToken(e.target.value.replace(/[^a-zA-Z0-9/:.?=&-]/g, "").slice(0, 80))}
+                    placeholder="Pega el enlace o el código de la URL"
+                    aria-label="Enlace o código de invitación"
+                    maxLength={80}
                     spellCheck="false"
                   />
                   <button className="admin-bar__return-btn" type="submit" disabled={returnToken.length < 8}>
@@ -83,7 +82,7 @@ function AppShell() {
         </nav>
       ) : null}
 
-      {isAdminTokenLoggedIn && inviteToken ? (
+      {isAdminTokenLoggedIn && inviteToken && !location.pathname.endsWith("/setup") ? (
         <nav className="admin-bar" role="navigation" aria-label="Barra de administración">
           <div className="admin-bar__inner">
             <span className="admin-bar__title">{tokenLoginUsername || config.adminUsername || "Administración"}</span>

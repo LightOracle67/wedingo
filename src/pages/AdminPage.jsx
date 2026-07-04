@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { useApp } from "../contexts/AppContext";
 import { useToast } from "../contexts/ToastContext";
+import { formatDate } from "../lib/section-utils";
 import SetupForm from "../components/SetupForm";
 import PanelTab from "./admin/PanelTab";
 import AttendanceTab from "./admin/AttendanceTab";
@@ -14,26 +15,15 @@ const TABS = [
   { key: "acceso", label: "Acceso" },
 ];
 
-function formatDate(iso) {
-  try {
-    return new Date(iso).toLocaleString("es-ES", { dateStyle: "medium", timeStyle: "short" });
-  } catch {
-    return iso;
-  }
-}
-
 export default function AdminPage() {
   const { inviteToken } = useParams();
   const {
     hasStoredConfig, isConfigLoading, configLoadError,
     isAdminTokenLoggedIn, config,
-    setupToken, setupTokenInput, setSetupTokenInput,
-    adminLoginUsername, setAdminLoginUsername,
-    isTokenVerifying,
+    setupToken,
     authMessage, authMessageType,
     rsvpEntries,
     adminMessage, adminMessageType,
-    handleGenerateToken, handleAdminTokenLogin,
     handleAdminLogout, handleResetTokenFromAdmin,
     handleClearRsvpEntries,
     confirmTokenInput, setConfirmTokenInput,
@@ -139,81 +129,7 @@ export default function AdminPage() {
   }
 
   if (!isAdminTokenLoggedIn) {
-    return (
-      <div className="setup-layout">
-        <section className="setup-card allow-select" aria-label="Acceso al panel">
-          <header className="setup-header">
-            <div>
-              <p className="setup-eyebrow">Acceso restringido</p>
-              <h1 className="setup-title">No has iniciado sesión</h1>
-              <p className="setup-subtitle">
-                Introduce tu usuario y código de acceso para gestionar la invitación.
-              </p>
-            </div>
-          </header>
-
-          <form className="setup-form" onSubmit={(e) => { e.preventDefault(); handleAdminTokenLogin(); }}>
-            <label className="setup-label" htmlFor="adminTokenLoginUsername">
-              Usuario
-            </label>
-            <input
-              id="adminTokenLoginUsername"
-              className="setup-input"
-              value={adminLoginUsername}
-              onChange={(e) => setAdminLoginUsername(e.target.value.toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 50))}
-              placeholder="Escribe tu nombre de usuario"
-              autoComplete="username"
-              name="username"
-            />
-
-            <label className="setup-label" htmlFor="adminTokenLoginCode">
-              Código de acceso
-            </label>
-            <p className="setup-help setup-help--tight">
-              Cópialo tal como aparece. Si no lo tienes, genera uno nuevo.
-            </p>
-            <input
-              id="adminTokenLoginCode"
-              className="setup-input setup-token-input"
-              type="password"
-              value={setupTokenInput}
-              onChange={(e) => setSetupTokenInput(e.target.value.toUpperCase())}
-              placeholder="Pega aquí el código de acceso"
-              maxLength={19}
-              autoComplete="current-password"
-              spellCheck="false"
-            />
-            {setupToken ? <p className="setup-token-display">Código activo (solo tú lo ves).</p> : null}
-
-            <label className="setup-label" htmlFor="adminConfirmGenerate">
-              Confirmar
-            </label>
-            <p className="setup-help setup-help--tight">
-              Escribe <strong>CONFIRMAR</strong> para generar un código nuevo.
-            </p>
-            <input
-              id="adminConfirmGenerate"
-              className="setup-input"
-              value={confirmTokenInput}
-              onChange={(e) => setConfirmTokenInput(e.target.value)}
-              placeholder="Escribe CONFIRMAR"
-              autoComplete="off"
-              spellCheck="false"
-            />
-
-            <div className="setup-actions">
-              <button className="setup-button" type="submit" disabled={isTokenVerifying}>
-                {isTokenVerifying ? "Comprobando..." : "Entrar"}
-              </button>
-              <button className="setup-button setup-button--ghost" type="button" onClick={handleGenerateToken}>
-                Generar nuevo código
-              </button>
-            </div>
-
-          </form>
-        </section>
-      </div>
-    );
+    return <Navigate to={`/${inviteToken}`} replace />;
   }
 
   const confirmedResponses = rsvpEntries.filter((e) => e.attendance === "yes").length;

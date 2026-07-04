@@ -1,4 +1,5 @@
 import { createContext, useContext, useCallback, useEffect, useMemo, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
@@ -12,6 +13,7 @@ const SUPERADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAILS?.split(",")[0]?.trim(
 const SuperAdminContext = createContext(null);
 
 export function SuperAdminProvider({ children }) {
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
@@ -73,7 +75,12 @@ export function SuperAdminProvider({ children }) {
     clearSession();
     await signOut(auth);
     setUser(null);
-  }, []);
+    try {
+      const keys = Object.keys(localStorage).filter((k) => k.startsWith("wedin_invite_cache_"));
+      keys.forEach((k) => localStorage.removeItem(k));
+    } catch {}
+    navigate("/");
+  }, [navigate]);
 
   const value = useMemo(() => ({
     isSuperAdmin: user !== null,
@@ -88,6 +95,7 @@ export function SuperAdminProvider({ children }) {
   return <SuperAdminContext.Provider value={value}>{children}</SuperAdminContext.Provider>;
 }
 
+// eslint-disable-next-line react/only-export-components
 export function useSuperAdmin() {
   const context = useContext(SuperAdminContext);
   if (!context) throw new Error("useSuperAdmin debe usarse dentro de SuperAdminProvider");

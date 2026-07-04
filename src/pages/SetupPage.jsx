@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { useApp } from "../contexts/AppContext";
 import { useToast } from "../contexts/ToastContext";
@@ -10,7 +10,6 @@ export default function SetupPage() {
   const {
     hasStoredConfig, isConfigLoading, configLoadError,
     setupToken, setupTokenInput, setSetupTokenInput,
-    tokenLoginUsername, setTokenLoginUsername,
     isTokenVerifying, isTokenVerified,
     authMessage, authMessageType,
     handleTokenLogin, handleResetSetupToken,
@@ -28,6 +27,17 @@ export default function SetupPage() {
 
   const [showSuccess, setShowSuccess] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const hasRedirectedRef = useRef(false);
+
+  useEffect(() => {
+    if (saveMessage && hasStoredConfig && !hasRedirectedRef.current) {
+      hasRedirectedRef.current = true;
+      const timer = setTimeout(() => {
+        navigate(`/${inviteToken}`, { replace: true });
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [saveMessage, hasStoredConfig, navigate, inviteToken]);
 
   useEffect(() => {
     if (saveMessage && hasStoredConfig) {
@@ -109,7 +119,7 @@ export default function SetupPage() {
               value={setupTokenInput}
               onChange={(e) => setSetupTokenInput(e.target.value.toUpperCase())}
               placeholder="Pega aquí el código de acceso"
-              maxLength={19}
+              maxLength={47}
               autoComplete="current-password"
               spellCheck="false"
             />
