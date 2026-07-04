@@ -7,11 +7,13 @@ import SetupForm from "../components/SetupForm";
 import PanelTab from "./admin/PanelTab";
 import AttendanceTab from "./admin/AttendanceTab";
 import AccessTab from "./admin/AccessTab";
+import ShareTab from "./admin/ShareTab";
 
 const TABS = [
   { key: "panel", label: "Panel" },
   { key: "invitacion", label: "Invitación" },
   { key: "asistencia", label: "Asistencia" },
+  { key: "compartir", label: "Compartir" },
   { key: "acceso", label: "Acceso" },
 ];
 
@@ -27,6 +29,7 @@ export default function AdminPage() {
     handleAdminLogout, handleResetTokenFromAdmin,
     handleClearRsvpEntries,
     confirmTokenInput, setConfirmTokenInput,
+    formattedDate,
   } = useApp();
 
   const { addToast } = useToast();
@@ -194,6 +197,14 @@ export default function AdminPage() {
               rsvpEntries={rsvpEntries}
               handleClearRsvpEntries={handleClearRsvpEntries}
               formatDate={formatDate}
+            />
+          )}
+
+          {activeTab === "compartir" && (
+            <ShareTab
+              inviteToken={inviteToken}
+              config={config}
+              formattedDate={formattedDate}
             />
           )}
 
