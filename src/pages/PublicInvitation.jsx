@@ -42,6 +42,7 @@ export default function PublicInvitation() {
     locationMapLoading, setLocationMapLoading, locationMapTarget, setLocationMapTarget,
     handleRsvpSubmit, updateRsvpField,
     isAdminTokenLoggedIn,
+    handleDietaryToggle, DIETARY_OPTIONS,
   } = useApp();
 
   const hiddenSet = useMemo(() => {
@@ -419,6 +420,8 @@ export default function PublicInvitation() {
       hasSubmitted,
       updateRsvpField,
       handleRsvpSubmit,
+      handleDietaryToggle,
+      DIETARY_OPTIONS,
     },
   }), [
     config.firstName, config.secondName, config.inviteMessage,
@@ -427,7 +430,7 @@ export default function PublicInvitation() {
     hasLocationData, locationDescription, calendarLink,
     locationMapContainerRef, locationMapLoading, locationMapError, locationMapTarget,
     rsvpForm, rsvpEntries, rsvpMessage, isRsvpSubmitting, hasSubmitted,
-    updateRsvpField, handleRsvpSubmit,
+    updateRsvpField, handleRsvpSubmit, handleDietaryToggle, DIETARY_OPTIONS,
   ]);
 
   const isEmpty = !config.firstName && !config.secondName && !isInviteMode;

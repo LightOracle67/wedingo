@@ -58,6 +58,7 @@ export function AppProvider({ children }) {
   const {
     rsvpEntries, rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted,
     updateRsvpField, handleRsvpSubmit, handleClearRsvpEntries,
+    handleDietaryToggle, dietaryInfoStr, DIETARY_OPTIONS,
   } = useRsvp(inviteToken, setAdminMessage, setAdminMessageType);
 
   const { formattedDate, formattedTime, calendarLink } = useCalendar(config);
@@ -383,9 +384,10 @@ export function AppProvider({ children }) {
     locationMapLoading, setLocationMapLoading, locationMapTarget, setLocationMapTarget,
     rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted,
     maxAllowedYear, isAdminTokenLoggedIn,
-    formattedDate, formattedTime, calendarLink,
+    formattedDate, formattedTime, calendarLink, dietaryInfoStr, DIETARY_OPTIONS,
     updateFormField, refreshSetupToken, reloadConfig,
     handleSaveSetup, handleRsvpSubmit, updateRsvpField,
+    handleDietaryToggle,
     handleTokenLogin, handleAdminTokenLogin, handleGenerateToken,
     handleAdminLogout,
     handleResetSetupToken, handleResetTokenFromAdmin,
@@ -409,9 +411,10 @@ export function AppProvider({ children }) {
     locationMapLoading, locationMapTarget,
     rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted,
     maxAllowedYear, isAdminTokenLoggedIn,
-    formattedDate, formattedTime, calendarLink,
+    formattedDate, formattedTime, calendarLink, dietaryInfoStr, DIETARY_OPTIONS,
     updateFormField, refreshSetupToken, reloadConfig,
     handleSaveSetup, handleRsvpSubmit, updateRsvpField,
+    handleDietaryToggle,
     handleTokenLogin, handleAdminTokenLogin, handleGenerateToken,
     handleAdminLogout,
     handleResetSetupToken, handleResetTokenFromAdmin,

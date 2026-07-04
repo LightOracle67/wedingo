@@ -3,7 +3,7 @@ import { memo, useMemo } from "react";
 const RsvpSection = memo(function RsvpSection({
   style, className,
   rsvpForm, rsvpEntries, rsvpMessage, isRsvpSubmitting, hasSubmitted,
-  updateRsvpField, handleRsvpSubmit,
+  updateRsvpField, handleRsvpSubmit, handleDietaryToggle, DIETARY_OPTIONS,
 }) {
   const alreadySubmitted = useMemo(() => {
     const name = rsvpForm.guestName.trim().toLowerCase();
@@ -67,15 +67,37 @@ const RsvpSection = memo(function RsvpSection({
             </div>
           </div>
 
-          <label className="setup-label" htmlFor="rsvpDietary">Preferencias alimentarias</label>
-          <textarea
-            id="rsvpDietary"
-            className="setup-textarea"
-            rows={2}
-            value={rsvpForm.dietaryInfo}
-            onChange={(e) => updateRsvpField("dietaryInfo", e.target.value.slice(0, 240))}
-            placeholder="Alergias, intolerancias, dieta vegana/vegetariana..."
-          />
+          <fieldset style={{ border: "none", padding: 0, margin: 0, minInlineSize: 0 }}>
+            <legend className="setup-label" style={{ marginBottom: "0.4rem" }}>Preferencias alimentarias</legend>
+            <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))" }}>
+              {DIETARY_OPTIONS.map((opt) => (
+                <label key={opt.value} className="setup-checkbox-label" style={{
+                  display: "flex", alignItems: "center", gap: "0.4rem",
+                  padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem",
+                  color: rsvpForm.attendance === "no" ? "var(--setup-muted)" : "var(--setup-title)",
+                  opacity: rsvpForm.attendance === "no" ? 0.5 : 1,
+                }}>
+                  <input
+                    type="checkbox"
+                    checked={rsvpForm.dietarySelection.includes(opt.value)}
+                    onChange={() => handleDietaryToggle(opt.value)}
+                    disabled={rsvpForm.attendance === "no"}
+                    style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }}
+                  />
+                  {opt.label}
+                </label>
+              ))}
+            </div>
+            <input
+              className="setup-input"
+              style={{ marginTop: "0.4rem" }}
+              value={rsvpForm.dietaryOther}
+              onChange={(e) => updateRsvpField("dietaryOther", e.target.value.slice(0, 120))}
+              placeholder="Otra (especificar)"
+              disabled={rsvpForm.attendance === "no"}
+              autoComplete="off"
+            />
+          </fieldset>
 
           <label className="setup-label" htmlFor="rsvpNote">Mensaje opcional</label>
           <textarea
