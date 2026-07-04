@@ -2,19 +2,32 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { addDoc, deleteDoc, getDocs, serverTimestamp } from "firebase/firestore";
 import { RSVP_COLLECTION_REF, rsvpByInviteRef } from "../lib/firebase";
 
+const DIETARY_OPTIONS = [
+  { value: "vegetariano", label: "Vegetariano" },
+  { value: "vegano", label: "Vegano" },
+  { value: "sin gluten", label: "Sin gluten" },
+  { value: "sin lactosa", label: "Sin lactosa" },
+  { value: "alergia frutos secos", label: "Alergia a frutos secos" },
+  { value: "alergia mariscos", label: "Alergia a mariscos" },
+  { value: "sin cerdo", label: "Sin cerdo" },
+];
+
 export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType) {
   const [rsvpEntries, setRsvpEntries] = useState([]);
   const [rsvpForm, setRsvpForm] = useState({
     guestName: "",
     attendance: "yes",
     companions: "0",
-    dietaryInfo: "",
+    dietarySelection: [],
+    dietaryOther: "",
     note: "",
   });
   const [rsvpMessage, setRsvpMessage] = useState("");
   const [isRsvpSubmitting, setIsRsvpSubmitting] = useState(false);
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const rsvpSubmitTimeoutRef = useRef(null);
+
+  const dietaryInfoStr = [rsvpForm.dietarySelection, rsvpForm.dietaryOther].flat().filter(Boolean).join(", ");
 
   useEffect(() => {
     return () => {
@@ -36,6 +49,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType) {
               guestName: data.guestName || "",
               attendance: data.attendance || "no",
               companions: Number.isFinite(data.companions) ? data.companions : 0,
+              dietaryInfo: data.dietaryInfo || "",
               note: data.note || "",
               submittedAt: submittedDate ? submittedDate.toISOString() : new Date().toISOString(),
             };
@@ -48,6 +62,18 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType) {
     };
     hydrateRsvp();
   }, [inviteToken]);
+
+  const handleDietaryToggle = useCallback((value) => {
+    setRsvpForm((current) => {
+      const exists = current.dietarySelection.includes(value);
+      return {
+        ...current,
+        dietarySelection: exists
+          ? current.dietarySelection.filter((v) => v !== value)
+          : [...current.dietarySelection, value],
+      };
+    });
+  }, []);
 
   const updateRsvpField = useCallback((field, value) => {
     if (field === "attendance" && value === "no") {
@@ -71,11 +97,12 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType) {
     const companions = Number.parseInt(companionsParam, 10);
     const companionsCount = Number.isNaN(companions) ? 0 : Math.max(0, Math.min(10, companions));
 
+    const dietaryInfo = [rsvpForm.dietarySelection, rsvpForm.dietaryOther].flat().filter(Boolean).join(", ");
     const responsePayload = {
       guestName,
       attendance: rsvpForm.attendance,
       companions: companionsCount,
-      dietaryInfo: rsvpForm.dietaryInfo.trim(),
+      dietaryInfo,
       note: rsvpForm.note.trim(),
       inviteToken: inviteToken,
       submittedAt: serverTimestamp(),
@@ -120,6 +147,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType) {
   return {
     rsvpEntries, rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted,
     updateRsvpField, handleRsvpSubmit, handleClearRsvpEntries,
+    handleDietaryToggle, dietaryInfoStr, DIETARY_OPTIONS,
     setRsvpMessage, setRsvpForm,
   };
 }
