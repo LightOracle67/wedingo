@@ -1,10 +1,17 @@
-import { memo } from "react";
+import { memo, useMemo } from "react";
 
 const RsvpSection = memo(function RsvpSection({
   style, className,
-  rsvpForm, rsvpMessage, isRsvpSubmitting,
+  rsvpForm, rsvpEntries, rsvpMessage, isRsvpSubmitting, hasSubmitted,
   updateRsvpField, handleRsvpSubmit,
 }) {
+  const alreadySubmitted = useMemo(() => {
+    const name = rsvpForm.guestName.trim().toLowerCase();
+    if (!name) return false;
+    return rsvpEntries.some((e) => e.guestName.trim().toLowerCase() === name);
+  }, [rsvpForm.guestName, rsvpEntries]);
+
+  const isDisabled = isRsvpSubmitting || hasSubmitted || alreadySubmitted;
   return (
     <section
       data-story-section="rsvp"
@@ -81,8 +88,8 @@ const RsvpSection = memo(function RsvpSection({
           />
 
           <div className="setup-actions">
-            <button className="setup-button" type="submit" disabled={isRsvpSubmitting}>
-              {isRsvpSubmitting ? "Enviando..." : "Confirmar asistencia"}
+            <button className="setup-button" type="submit" disabled={isDisabled}>
+              {isRsvpSubmitting ? "Enviando..." : isDisabled ? "Asistencia confirmada" : "Confirmar asistencia"}
             </button>
           </div>
         </form>

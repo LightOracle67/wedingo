@@ -56,7 +56,7 @@ export function AppProvider({ children }) {
   } = useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessageType, setConfig, setHasStoredConfig);
 
   const {
-    rsvpEntries, rsvpForm, rsvpMessage, isRsvpSubmitting,
+    rsvpEntries, rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted,
     updateRsvpField, handleRsvpSubmit, handleClearRsvpEntries,
   } = useRsvp(inviteToken, setAdminMessage, setAdminMessageType);
 
@@ -381,7 +381,7 @@ export function AppProvider({ children }) {
     previewBackgrounds, isPreviewLoading,
     locationMapContainerRef, locationMapError, setLocationMapError,
     locationMapLoading, setLocationMapLoading, locationMapTarget, setLocationMapTarget,
-    rsvpForm, rsvpMessage, isRsvpSubmitting,
+    rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted,
     maxAllowedYear, isAdminTokenLoggedIn,
     formattedDate, formattedTime, calendarLink,
     updateFormField, refreshSetupToken, reloadConfig,
@@ -407,7 +407,7 @@ export function AppProvider({ children }) {
     previewBackgrounds, isPreviewLoading,
     locationMapContainerRef, locationMapError,
     locationMapLoading, locationMapTarget,
-    rsvpForm, rsvpMessage, isRsvpSubmitting,
+    rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted,
     maxAllowedYear, isAdminTokenLoggedIn,
     formattedDate, formattedTime, calendarLink,
     updateFormField, refreshSetupToken, reloadConfig,
