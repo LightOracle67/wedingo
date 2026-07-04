@@ -30,6 +30,7 @@ export default function AdminPage() {
     handleClearRsvpEntries,
     confirmTokenInput, setConfirmTokenInput,
     formattedDate,
+    reloadConfig,
   } = useApp();
 
   const { addToast } = useToast();
@@ -181,6 +182,7 @@ export default function AdminPage() {
               setAttendanceFilter={setAttendanceFilterValue}
               exportCsv={exportCsv}
               formatDate={formatDate}
+              onRestore={reloadConfig}
             />
           )}
 
