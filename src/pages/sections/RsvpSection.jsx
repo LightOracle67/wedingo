@@ -8,7 +8,7 @@ const RsvpSection = memo(function RsvpSection({
   return (
     <section
       data-story-section="rsvp"
-      className={`${className} flex min-h-screen items-center justify-center px-3 py-6 sm:px-6 sm:py-10 lg:px-8 lg:py-12`}
+      className={`${className} flex min-h-dvh items-center justify-center px-3 py-4 sm:px-6 sm:py-8 lg:px-8 lg:py-10`}
       style={style}
     >
       <div className="story-card story-panel story-card--rsvp allow-select w-full max-w-[min(100%,42rem)]">
@@ -64,6 +64,7 @@ const RsvpSection = memo(function RsvpSection({
           <textarea
             id="rsvpDietary"
             className="setup-textarea"
+            rows={2}
             value={rsvpForm.dietaryInfo}
             onChange={(e) => updateRsvpField("dietaryInfo", e.target.value.slice(0, 240))}
             placeholder="Alergias, intolerancias, dieta vegana/vegetariana..."
@@ -73,6 +74,7 @@ const RsvpSection = memo(function RsvpSection({
           <textarea
             id="rsvpNote"
             className="setup-textarea"
+            rows={2}
             value={rsvpForm.note}
             onChange={(e) => updateRsvpField("note", e.target.value.slice(0, 240))}
             placeholder="Cuéntanos cualquier otro detalle importante"
