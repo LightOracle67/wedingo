@@ -2,14 +2,16 @@ const STORAGE_KEY = "wedin_session";
 const SESSION_DURATION = 3 * 60 * 60 * 1000;
 
 export function saveSession(type, identifier, extra = {}) {
-  const data = {
-    type,
-    identifier,
-    ...extra,
-    createdAt: Date.now(),
-    expiresAt: Date.now() + SESSION_DURATION,
-  };
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  try {
+    const data = {
+      type,
+      identifier,
+      ...extra,
+      createdAt: Date.now(),
+      expiresAt: Date.now() + SESSION_DURATION,
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  } catch {}
 }
 
 export function getSession() {

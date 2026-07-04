@@ -48,6 +48,31 @@ export default function SetupForm({ prefix = "" }) {
       />
 
       <CollapsibleSection
+        title="Acceso"
+        hint="Tu nombre de usuario"
+        defaultOpen
+        sectionKey="account"
+        isHidden={false}
+        onToggleVisibility={() => {}}
+      >
+        <label className="setup-label" htmlFor={id("adminUsername")}>
+          Nombre de usuario
+        </label>
+        <input
+          id={id("adminUsername")}
+          className="setup-input"
+          value={formData.adminUsername}
+          onChange={(e) => updateFormField("adminUsername", e.target.value.toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 50))}
+          placeholder="Escribe un nombre de usuario"
+          autoComplete="username"
+          name="username"
+        />
+        <p className="setup-help">
+          Usa letras y números. Lo necesitarás para acceder al panel cuando tu sesión expire.
+        </p>
+      </CollapsibleSection>
+
+      <CollapsibleSection
         title="Portada"
         hint="Nombres, mensaje y tema"
         defaultOpen

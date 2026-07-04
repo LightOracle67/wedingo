@@ -79,10 +79,8 @@ export function AppProvider({ children }) {
   const previewRequestRef = useRef(0);
 
   const isAdminTokenLoggedIn = useMemo(() =>
-    isTokenVerified && tokenLoginUsername && (
-      !config.adminUsername || config.adminUsername === tokenLoginUsername
-    ),
-    [isTokenVerified, tokenLoginUsername, config.adminUsername],
+    isTokenVerified,
+    [isTokenVerified],
   );
 
   const location = useLocation();
@@ -221,10 +219,10 @@ export function AppProvider({ children }) {
   }, [isTokenVerified]);
 
   useEffect(() => {
-    if (isTokenVerified && !hasStoredConfig && tokenLoginUsername) {
-      setFormData((current) => ({ ...current, adminUsername: tokenLoginUsername }));
+    if (isTokenVerified && tokenLoginUsername) {
+      saveSession("setup", tokenLoginUsername);
     }
-  }, [isTokenVerified, tokenLoginUsername, hasStoredConfig]);
+  }, [isTokenVerified, tokenLoginUsername]);
 
   useEffect(() => {
     if (hasStoredConfig) return;
@@ -642,20 +640,9 @@ export function AppProvider({ children }) {
     setAuthMessageType("error");
     setAuthMessage("");
 
-    const username = tokenLoginUsername.trim().toLowerCase();
     const enteredToken = normalizeTokenValue(setupTokenInput);
-    if (!username || !enteredToken) {
-      setAuthMessage("Escribe tu usuario y el código de acceso.");
-      return;
-    }
-
-    if (!/^[a-zA-Z0-9]+$/.test(username)) {
-      setAuthMessage("El usuario solo puede contener letras y números.");
-      return;
-    }
-
-    if (username.length > 50) {
-      setAuthMessage("El usuario no puede superar los 50 caracteres.");
+    if (!enteredToken) {
+      setAuthMessage("Introduce el código de acceso.");
       return;
     }
 
@@ -669,18 +656,17 @@ export function AppProvider({ children }) {
         }
         transaction.update(tokenDocRef, {
           used: true,
-          username,
           usedAt: serverTimestamp(),
         });
       });
 
-      await setDoc(doc(db, "sessions", username), { createdAt: serverTimestamp() });
+      await setDoc(doc(db, "sessions", inviteToken), { createdAt: serverTimestamp() });
 
-      setTokenLoginUsername(username);
+      setTokenLoginUsername(inviteToken);
       setSetupToken("");
       setSetupTokenInput("");
       setIsTokenVerified(true);
-      saveSession("setup", username);
+      saveSession("setup", inviteToken);
       setAuthMessageType("success");
       setAuthMessage("Código verificado correctamente.");
     } catch {
@@ -688,7 +674,7 @@ export function AppProvider({ children }) {
     } finally {
       setIsTokenVerifying(false);
     }
-  }, [tokenLoginUsername, setupTokenInput]);
+  }, [setupTokenInput, inviteToken]);
 
   const handleGenerateToken = useCallback(async () => {
     setAuthMessageType("error");

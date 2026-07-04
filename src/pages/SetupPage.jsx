@@ -96,19 +96,6 @@ export default function SetupPage() {
           </header>
 
           <form className="setup-form" onSubmit={(e) => { e.preventDefault(); handleTokenLogin(); }}>
-            <label className="setup-label" htmlFor="setupTokenLoginUsername">
-              Usuario
-            </label>
-            <input
-              id="setupTokenLoginUsername"
-              className="setup-input"
-              value={tokenLoginUsername}
-              onChange={(e) => setTokenLoginUsername(e.target.value.toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 50))}
-              placeholder="Escribe tu nombre de usuario"
-              autoComplete="username"
-              name="username"
-            />
-
             <label className="setup-label" htmlFor="setupTokenLoginCode">
               Código de acceso
             </label>
