@@ -825,6 +825,8 @@ body::after {
 .story-section--is-active {
   z-index: 2;
   pointer-events: auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .story-section:not(.story-section--is-active) {
@@ -1380,6 +1382,9 @@ h6 {
   padding: 2rem 1.5rem 1.5rem;
   width: 100%;
   max-width: 380px;
+  max-height: calc(100dvh - 2rem);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
@@ -1511,6 +1516,7 @@ h6 {
   margin-top: 1.25rem;
   display: grid;
   gap: 0.75rem;
+  min-width: 0;
 }
 
 .setup-form--nested {
@@ -2241,6 +2247,7 @@ a:focus-visible {
   margin-top: 0.75rem;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  max-width: 100%;
 }
 
 .admin-table {
@@ -2346,6 +2353,10 @@ a:focus-visible {
 @media (max-width: 480px) {
   .admin-tabs {
     gap: 0.15rem;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 
   .admin-tab {
@@ -2360,6 +2371,12 @@ a:focus-visible {
   .admin-stats-card__value {
     font-size: 1.4rem;
   }
+
+  .setup-token-card {
+    padding: 0.75rem;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
 }
 
 /* ── Responsive: SetupPage / form elements ── */
@@ -2371,6 +2388,7 @@ a:focus-visible {
   .setup-card {
     padding: clamp(0.9rem, 3.5vw, 1.2rem);
     border-radius: 1.1rem;
+    width: 100%;
   }
 
   .setup-title {
@@ -2409,6 +2427,9 @@ a:focus-visible {
   .story-card {
     padding: clamp(1rem, 4vw, 1.4rem);
     border-radius: 1.3rem;
+    max-height: calc(100dvh - 2rem);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .story-title {
