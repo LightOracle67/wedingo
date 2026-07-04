@@ -2,7 +2,7 @@ import { createContext, useContext, useCallback, useEffect, useMemo, useRef, use
 import { useLocation } from "react-router-dom";
 import { getDoc, setDoc } from "firebase/firestore";
 import { invitationDocRef } from "../lib/firebase";
-import { defaultConfig, MONTH_OPTIONS, MONTH_VALUE_TO_NUMBER, STORY_SECTION_ORDER, THEME_VALUES } from "../lib/constants";
+import { ALLOWED_UPLOAD_TYPES, defaultConfig, MONTH_OPTIONS, MONTH_VALUE_TO_NUMBER, STORY_SECTION_ORDER, THEME_VALUES } from "../lib/constants";
 import { normalizeConfig } from "../lib/normalize-config";
 import { decodeInviteConfig } from "../lib/invite-config-codec";
 import { getValidCoordinates } from "../lib/geo-utils";
@@ -86,7 +86,7 @@ export function AppProvider({ children }) {
     handleYearChange, handleCoordinateChange,
   } = useFieldHandlers(updateFormField, maxAllowedYear, formData.weddingMinute);
 
-  const { autoSaveTimerRef, doSave: _doSave } = useAutoSave(hasStoredConfig, inviteToken, formData, config, setSaveMessage);
+  const { autoSaveTimerRef } = useAutoSave(hasStoredConfig, inviteToken, formData, config, setSaveMessage);
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -197,8 +197,6 @@ export function AppProvider({ children }) {
   const handleBackgroundUpload = useCallback((event) => {
     const file = event.target.files?.[0];
     if (!file) return;
-    const ALLOWED_UPLOAD_TYPES = new Set(["image/jpeg", "image/png"]);
-    const MAX_UPLOAD_SIZE_BYTES = 20 * 1024 * 1024;
     if (!ALLOWED_UPLOAD_TYPES.has(file.type)) {
       setSaveError("Formato no permitido. Usa JPG o PNG.");
       event.target.value = "";
@@ -235,7 +233,7 @@ export function AppProvider({ children }) {
     const hiddenArray = (sanitized.hiddenSections || "").split(",").filter(Boolean);
     const hiddenSet = new Set(hiddenArray);
 
-    if (!hasStoredConfig && !isTokenVerified) {
+    if (!hasStoredConfig) {
       if (!sanitized.adminUsername) {
         setSaveError("Indica un nombre de usuario para poder entrar después.");
         return;

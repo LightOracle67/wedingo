@@ -10,13 +10,13 @@ export function saveSession(type, identifier, extra = {}) {
       createdAt: Date.now(),
       expiresAt: Date.now() + SESSION_DURATION,
     };
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   } catch {}
 }
 
 export function getSession() {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = sessionStorage.getItem(STORAGE_KEY);
     if (!raw) return null;
     const data = JSON.parse(raw);
     if (data.expiresAt && Date.now() < data.expiresAt) {
@@ -32,14 +32,14 @@ export function getSession() {
 
 export function renewSession() {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = sessionStorage.getItem(STORAGE_KEY);
     if (!raw) return;
     const data = JSON.parse(raw);
     data.expiresAt = Date.now() + SESSION_DURATION;
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   } catch {}
 }
 
 export function clearSession() {
-  localStorage.removeItem(STORAGE_KEY);
+  sessionStorage.removeItem(STORAGE_KEY);
 }

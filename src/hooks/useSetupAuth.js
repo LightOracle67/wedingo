@@ -51,7 +51,13 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
     }
   }, [isTokenVerified, tokenLoginUsername]);
 
-  const refreshSetupToken = useCallback(async () => {
+  const refreshSetupToken = useCallback(async (oldToken) => {
+    if (oldToken) {
+      try {
+        const oldRef = doc(db, "setupTokens", oldToken);
+        await setDoc(oldRef, { used: true, usedAt: serverTimestamp() }, { merge: true });
+      } catch {}
+    }
     const nextToken = generateSetupToken();
     const normalizedToken = normalizeTokenValue(nextToken);
     setSetupToken(normalizedToken);
@@ -230,7 +236,6 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
   }, [adminLoginUsername, config, confirmTokenInput]);
 
   const handleAdminLogout = useCallback(async () => {
-    const username = tokenLoginUsername;
     const token = inviteToken;
     setIsTokenVerified(false);
     setTokenLoginUsername("");
@@ -240,15 +245,13 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
     setAuthMessage("");
     clearSession();
     if (token) {
-      try { localStorage.removeItem(`wedin_invite_cache_${token}`); } catch {}
-    }
-    if (username) {
       try {
-        await deleteDoc(doc(db, "sessions", username));
+        localStorage.removeItem(`wedin_invite_cache_${token}`);
+        await deleteDoc(doc(db, "sessions", token));
       } catch {}
     }
     navigate("/");
-  }, [tokenLoginUsername, inviteToken, navigate]);
+  }, [inviteToken, navigate]);
 
   const handleResetSetupToken = useCallback(async () => {
     if (!setupToken || confirmTokenInput !== setupToken) {
@@ -256,7 +259,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
       return;
     }
     setAuthMessage("");
-    await refreshSetupToken();
+    await refreshSetupToken(setupToken);
     setAuthMessageType("success");
     setAuthMessage("Código nuevo generado. Cópialo del campo superior antes de guardar.");
     setConfirmTokenInput("");
@@ -269,7 +272,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
       return;
     }
     setAdminMessage("");
-    await refreshSetupToken();
+    await refreshSetupToken(setupToken);
     setAdminMessageType("success");
     setAdminMessage("Código renovado. Esto no cambia la contraseña de la aplicación.");
     setConfirmTokenInput("");

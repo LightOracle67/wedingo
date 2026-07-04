@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getDoc, doc } from "firebase/firestore";
 import { db, invitationDocRef } from "../lib/firebase";
@@ -17,6 +17,31 @@ export default function LandingPage() {
   const [tokenInput, setTokenInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+
+  const modalRef = useRef(null);
+  const closeButtonRef = useRef(null);
+
+  useEffect(() => {
+    if (!showModal) return;
+    const prev = document.activeElement;
+    closeButtonRef.current?.focus();
+    const handleKey = (e) => {
+      if (e.key === "Escape") setShowModal(false);
+      if (e.key === "Tab") {
+        const focusable = modalRef.current?.querySelectorAll('button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        if (!focusable || focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => {
+      window.removeEventListener("keydown", handleKey);
+      prev?.focus();
+    };
+  }, [showModal]);
 
   const handleCreate = () => {
     const token = generateInviteToken();
@@ -119,9 +144,9 @@ export default function LandingPage() {
       </section>
 
       {showModal && (
-        <div className="modal-overlay" onClick={() => setShowModal(false)}>
-          <div className="modal-card" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={() => setShowModal(false)} aria-label="Cerrar">
+        <div className="modal-overlay" onClick={() => setShowModal(false)} role="dialog" aria-modal="true" aria-label="Acceder a tu invitación">
+          <div className="modal-card" ref={modalRef} onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" ref={closeButtonRef} onClick={() => setShowModal(false)} aria-label="Cerrar">
               &times;
             </button>
             <form onSubmit={handleLogin}>

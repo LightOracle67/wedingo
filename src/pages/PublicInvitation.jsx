@@ -112,7 +112,7 @@ export default function PublicInvitation() {
       });
     };
     tick();
-    const id = setInterval(tick, 60000);
+    const id = setInterval(tick, 1000);
     return () => clearInterval(id);
   }, [weddingDate]);
 

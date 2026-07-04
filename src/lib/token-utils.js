@@ -19,11 +19,14 @@ export const normalizeTokenValue = (value) => {
 
 export function generateInviteToken() {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  const array = new Uint8Array(10);
-  crypto.getRandomValues(array);
+  const len = chars.length;
+  const maxValid = 256 - (256 % len);
+  const needed = 10;
+  const bytes = new Uint8Array(needed * 2);
+  crypto.getRandomValues(bytes);
   let result = "";
-  for (let i = 0; i < 10; i++) {
-    result += chars.charAt(array[i] % chars.length);
+  for (let i = 0; i < bytes.length && result.length < needed; i++) {
+    if (bytes[i] < maxValid) result += chars[bytes[i] % len];
   }
   return result;
 }

@@ -7,13 +7,7 @@ export function parseSectionOrder(raw) {
 }
 
 export function parseHidden(raw) {
-  return new Set((raw || "").split(",").filter(Boolean));
+  return new Set((raw || "").split(",").map((s) => s.trim()).filter(Boolean));
 }
 
-export function formatDate(iso) {
-  try {
-    return new Date(iso).toLocaleString("es-ES", { dateStyle: "medium", timeStyle: "short" });
-  } catch {
-    return iso;
-  }
-}
+export { formatDate } from "./superadmin";

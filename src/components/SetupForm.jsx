@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from "react";
 import { useApp } from "../contexts/AppContext";
 import { useToast } from "../contexts/ToastContext";
-import { MONTH_OPTIONS, THEME_GROUPS, THEME_OPTIONS, THEME_PREVIEW_COLORS } from "../lib/constants";
+import { ALLOWED_UPLOAD_TYPES, MONTH_OPTIONS, THEME_GROUPS, THEME_OPTIONS, THEME_PREVIEW_COLORS } from "../lib/constants";
 import CollapsibleSection from "./CollapsibleSection";
 import SectionOrderEditor from "./SectionOrderEditor";
 
@@ -161,7 +161,7 @@ export default function SetupForm({ prefix = "" }) {
             <span className="setup-upload__title">Subir foto</span>
             <span className="setup-upload__subtitle">Máximo 20 MB. Se comprimirá automáticamente.</span>
           </label>
-          <input id={id("backgroundUpload")} className="setup-upload__input" type="file" accept="image/*" onChange={handleBackgroundUpload} />
+          <input id={id("backgroundUpload")} className="setup-upload__input" type="file" accept={[...ALLOWED_UPLOAD_TYPES].join(",")} onChange={handleBackgroundUpload} />
 
           {formData.backgroundImage ? (
             <div className="setup-selected-background">
