@@ -5,13 +5,15 @@ import { SUPERADMIN_ROUTE } from "../lib/superadmin";
 import DashboardTab from "./superadmin/DashboardTab";
 import InvitationsTab from "./superadmin/InvitationsTab";
 import TokensTab from "./superadmin/TokensTab";
+import RsvpsTab from "./superadmin/RsvpsTab";
 import SettingsTab from "./superadmin/SettingsTab";
 
 const TABS = [
   { key: "dashboard", label: "Panel" },
   { key: "invitaciones", label: "Invitaciones" },
+  { key: "asistencia", label: "Asistencia" },
   { key: "tokens", label: "Tokens" },
-  { key: "ajustes", label: "Sesión y ajustes" },
+  { key: "ajustes", label: "Sesión" },
 ];
 
 export default function SuperAdminPanel() {
@@ -65,6 +67,7 @@ export default function SuperAdminPanel() {
         <div className="setup-form">
           {activeTab === "dashboard" && <DashboardTab />}
           {activeTab === "invitaciones" && <InvitationsTab />}
+          {activeTab === "asistencia" && <RsvpsTab />}
           {activeTab === "tokens" && <TokensTab />}
           {activeTab === "ajustes" && <SettingsTab />}
         </div>

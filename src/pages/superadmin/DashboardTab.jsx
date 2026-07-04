@@ -1,82 +1,83 @@
 import { useEffect, useState } from "react";
-import { collection, getCountFromServer, getDocs, query, where } from "firebase/firestore";
+import { getDocs, collection, query, where, getCountFromServer } from "firebase/firestore";
 import { db, RSVP_COLLECTION_REF, INVITATIONS_COLLECTION_REF } from "../../lib/firebase";
+import { calcGlobalStats, tokenUsageOverTime, rsvpOverTime } from "../../lib/superadmin-utils";
+import { DonutChart, MiniBar, Legend } from "../../lib/chart-utils";
 import StatsCard from "../admin/StatsCard";
 
 export default function DashboardTab() {
-  const [stats, setStats] = useState({ rsvpTotal: 0, rsvpYes: 0, rsvpNo: 0, totalGuests: 0, tokensTotal: 0, tokensUsed: 0, invitationCount: 0 });
-  const [projectId, setProjectId] = useState("");
+  const [stats, setStats] = useState(null);
+  const [tokenTimeline, setTokenTimeline] = useState([]);
+  const [rsvpTimeline, setRsvpTimeline] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const load = async () => {
       try {
-        const rsvpSnap = await getDocs(RSVP_COLLECTION_REF);
+        const [rsvpSnap, invSnap, tokSnap] = await Promise.all([
+          getDocs(RSVP_COLLECTION_REF),
+          getDocs(INVITATIONS_COLLECTION_REF),
+          getDocs(collection(db, "setupTokens")),
+        ]);
         const rsvps = rsvpSnap.docs.map((d) => ({ id: d.id, ...d.data() }));
-        const rsvpYes = rsvps.filter((r) => r.attendance === "yes").length;
-        const rsvpNo = rsvps.filter((r) => r.attendance === "no").length;
-        const totalGuests = rsvps.reduce((sum, r) => sum + (r.attendance === "yes" ? 1 + (r.companions || 0) : 0), 0);
-
-        const invSnap = await getDocs(INVITATIONS_COLLECTION_REF);
-        const invExists = invSnap.size > 0;
-
-        const tokCount = await getCountFromServer(query(collection(db, "setupTokens")));
-        const usedTokCount = await getCountFromServer(query(collection(db, "setupTokens"), where("used", "==", true)));
-
-        setStats({
-          rsvpTotal: rsvps.length,
-          rsvpYes,
-          rsvpNo,
-          totalGuests,
-          tokensTotal: tokCount.data().count,
-          tokensUsed: usedTokCount.data().count,
-          invitationCount: invExists ? 1 : 0,
-        });
-
-        setProjectId(import.meta.env.VITE_FIREBASE_PROJECT_ID || "");
-      } catch {
-      } finally {
-        setLoading(false);
-      }
+        const invitations = invSnap.docs.map((d) => ({ id: d.id, ...d.data() }));
+        const tokens = tokSnap.docs.map((d) => ({ id: d.id, ...d.data() }));
+        setStats(calcGlobalStats(invitations, rsvps, tokens));
+        setTokenTimeline(tokenUsageOverTime(tokens));
+        setRsvpTimeline(rsvpOverTime(rsvps));
+      } catch { /* ignore */ } finally { setLoading(false); }
     };
     load();
   }, []);
 
-  if (loading) {
-    return <p className="setup-subtitle" style={{ textAlign: "center" }}>Cargando estadísticas...</p>;
-  }
-
-  const cardStyle = {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
-    gap: "0.75rem",
-    marginBottom: "1.25rem",
-  };
+  if (loading) return <p className="setup-subtitle" style={{ textAlign: "center" }}>Cargando estadísticas...</p>;
+  if (!stats) return <p className="setup-error">Error al cargar estadísticas.</p>;
 
   return (
     <div>
-      <div style={cardStyle}>
+      <div className="admin-stats-grid">
         <StatsCard value={stats.rsvpTotal} label="Respuestas totales" />
         <StatsCard value={stats.rsvpYes} label="Confirmaciones" />
         <StatsCard value={stats.rsvpNo} label="Declinaciones" />
         <StatsCard value={stats.totalGuests} label="Invitados totales" />
         <StatsCard value={stats.tokensTotal} label="Tokens generados" />
         <StatsCard value={stats.tokensUsed} label="Tokens usados" />
+        <StatsCard value={stats.tokensAvailable} label="Tokens disponibles" />
+        <StatsCard value={stats.invitationCount} label="Invitaciones" />
       </div>
 
-      <div className="setup-token-card" style={{ marginBottom: "1rem" }}>
-        <p style={{ margin: 0, color: "var(--setup-title)", fontSize: "0.95rem" }}>
-          <strong>Invitaciones:</strong> {stats.invitationCount}
-        </p>
-      </div>
-
-      {projectId && (
-        <div className="setup-token-card">
-          <p style={{ margin: 0, color: "var(--setup-muted)", fontSize: "0.8rem" }}>
-            Firebase: {projectId}
-          </p>
+      {stats.rsvpTotal > 0 && (
+        <div className="setup-token-card" style={{ marginTop: "1rem", padding: "1rem" }}>
+          <p className="setup-label" style={{ marginBottom: "0.5rem" }}>Distribución de respuestas</p>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <DonutChart yes={stats.rsvpYes} no={stats.rsvpNo} pending={0} size={140} />
+          </div>
+          <Legend items={[
+            { label: "Confirman", value: stats.rsvpYes, color: "var(--accent, #22c55e)" },
+            { label: "Declinan", value: stats.rsvpNo, color: "#ef4444" },
+          ]} />
         </div>
       )}
+
+      {rsvpTimeline.length > 1 && (
+        <div className="setup-token-card" style={{ marginTop: "1rem", padding: "1rem" }}>
+          <p className="setup-label" style={{ marginBottom: "0.5rem" }}>Respuestas por día</p>
+          <MiniBar items={rsvpTimeline.map((d) => ({ label: d.date.slice(5), value: d.total }))} height={100} color="var(--accent, #22c55e)" />
+        </div>
+      )}
+
+      {tokenTimeline.length > 1 && (
+        <div className="setup-token-card" style={{ marginTop: "1rem", padding: "1rem" }}>
+          <p className="setup-label" style={{ marginBottom: "0.5rem" }}>Tokens generados por día</p>
+          <MiniBar items={tokenTimeline.map((d) => ({ label: d.date.slice(5), value: d.count }))} height={100} color="#8b5cf6" />
+        </div>
+      )}
+
+      <div className="setup-token-card" style={{ marginTop: "1rem" }}>
+        <p style={{ margin: 0, color: "var(--setup-muted)", fontSize: "0.8rem" }}>
+          Firebase: {import.meta.env.VITE_FIREBASE_PROJECT_ID || "—"}
+        </p>
+      </div>
     </div>
   );
 }
