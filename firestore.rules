@@ -6,13 +6,6 @@ service cloud.firestore {
         && request.auth.token.email in ['adriancl2001@gmail.com'];
     }
 
-    function isValidUsername(value) {
-      return value is string
-        && value.size() >= 1
-        && value.size() <= 50
-        && value.matches('^[a-zA-Z0-9]+$');
-    }
-
     function isSafeText(value) {
       return value is string
         && !value.matches('.*[<>&\"\'\\\\].*')
