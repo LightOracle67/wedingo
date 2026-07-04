@@ -1,6 +1,8 @@
-import { memo, useCallback, useRef, useState } from "react";
-import { setDoc, doc } from "firebase/firestore";
-import { db, invitationDocRef } from "../../lib/firebase";
+import { memo, useCallback, useMemo, useRef, useState } from "react";
+import { setDoc } from "firebase/firestore";
+import { invitationDocRef } from "../../lib/firebase";
+import { calcRSVPSummary, getDietarySummary } from "../../lib/admin-utils";
+import { DonutChart, Legend } from "../../lib/chart-utils";
 import StatsCard from "./StatsCard";
 
 const PanelTab = memo(function PanelTab({
@@ -12,11 +14,21 @@ const PanelTab = memo(function PanelTab({
   const restoreRef = useRef(null);
   const [restoreMsg, setRestoreMsg] = useState("");
 
+  const summary = useMemo(() => calcRSVPSummary(rsvpEntries), [rsvpEntries]);
+  const dietary = useMemo(() => getDietarySummary(rsvpEntries).slice(0, 5), [rsvpEntries]);
+
   const copyLink = useCallback(async () => {
-    try {
-      await navigator.clipboard.writeText(inviteUrl);
-    } catch {}
+    try { await navigator.clipboard.writeText(inviteUrl); } catch {}
   }, [inviteUrl]);
+
+  const handleEditInvitation = useCallback(() => {
+    setActiveTab("invitacion");
+  }, [setActiveTab]);
+
+  const handleViewAttendance = useCallback(() => {
+    setActiveTab("asistencia");
+    setAttendanceFilter("all");
+  }, [setActiveTab, setAttendanceFilter]);
 
   const handleBackup = useCallback(async () => {
     const { getDocs } = await import("firebase/firestore");
@@ -66,39 +78,59 @@ const PanelTab = memo(function PanelTab({
         <StatsCard label="Total invitados" value={totalGuests} />
       </div>
 
+      {summary.confirmed + summary.declined > 0 && (
+        <div className="setup-token-card" style={{ marginBottom: "1rem", padding: "1rem", textAlign: "center" }}>
+          <DonutChart yes={summary.confirmed} no={summary.declined} pending={pendingResponses} size={120} />
+          <Legend items={[
+            { label: "Confirman", value: summary.confirmed, color: "var(--accent, #22c55e)" },
+            { label: "Declinan", value: summary.declined, color: "#ef4444" },
+            { label: "Pendientes", value: pendingResponses, color: "#f59e0b" },
+          ]} />
+        </div>
+      )}
+
+      {dietary.length > 0 && (
+        <div className="setup-token-card" style={{ marginBottom: "1rem", padding: "0.7rem 1rem" }}>
+          <p className="setup-label" style={{ marginBottom: "0.3rem", fontSize: "0.8rem" }}>
+            Preferencias alimentarias
+          </p>
+          {dietary.map((d) => (
+            <div key={d.item} style={{ display: "flex", justifyContent: "space-between", fontSize: "0.8rem", padding: "0.15rem 0", borderBottom: "1px solid var(--setup-border)" }}>
+              <span style={{ textTransform: "capitalize" }}>{d.item}</span>
+              <span style={{ fontWeight: 600 }}>{d.count}</span>
+            </div>
+          ))}
+        </div>
+      )}
+
       <div className="setup-token-card" style={{ marginBottom: "1rem", padding: "0.7rem 1rem" }}>
         <p style={{ margin: 0, color: "var(--setup-muted)", fontSize: "0.8rem" }}>
           Tu invitación está publicada en:
         </p>
         <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginTop: "0.25rem" }}>
-          <a
-            href={inviteUrl}
-            target="_blank"
-            rel="noreferrer"
-            style={{ color: "var(--setup-accent)", fontSize: "0.9rem", wordBreak: "break-all" }}
-          >
+          <a href={inviteUrl} target="_blank" rel="noreferrer"
+            style={{ color: "var(--setup-accent)", fontSize: "0.9rem", wordBreak: "break-all" }}>
             {inviteUrl}
           </a>
-          <button
-            className="setup-button setup-button--ghost setup-button--compact"
-            type="button"
-            onClick={copyLink}
-            style={{ fontSize: "0.75rem", padding: "0.2rem 0.5rem", flexShrink: 0 }}
-          >
+          <button className="setup-button setup-button--ghost setup-button--compact" type="button"
+            onClick={copyLink} style={{ fontSize: "0.75rem", padding: "0.2rem 0.5rem", flexShrink: 0 }}>
             Copiar
           </button>
         </div>
       </div>
 
-      <div className="admin-panel-actions">
-        <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={() => { setActiveTab("asistencia"); setAttendanceFilter("all"); }}>
-          Ver lista completa
+      <div className="admin-panel-actions" style={{ marginBottom: "0.75rem" }}>
+        <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleEditInvitation}>
+          Editar invitación
+        </button>
+        <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleViewAttendance}>
+          Ver asistencia
         </button>
         <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={exportCsv}>
           Exportar CSV
         </button>
         <a className="setup-button setup-button--ghost setup-button--compact" href={inviteUrl} target="_blank" rel="noreferrer">
-          Ver portada
+          Vista previa
         </a>
       </div>
 
