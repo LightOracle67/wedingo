@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { collection, deleteDoc, doc, getDocs, query, orderBy, serverTimestamp, setDoc } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDocs, query, orderBy, serverTimestamp, setDoc, where, writeBatch } from "firebase/firestore";
 import { db } from "../../lib/firebase";
 import { formatDate } from "../../lib/superadmin";
 import { generateSetupToken, normalizeTokenValue } from "../../lib/utils";
@@ -60,6 +60,26 @@ export default function TokensTab() {
     }
   }, [loadTokens]);
 
+  const handleCleanup = useCallback(async () => {
+    setError("");
+    setMessage("");
+    try {
+      const q = query(collection(db, "setupTokens"), where("used", "==", false));
+      const snap = await getDocs(q);
+      if (snap.empty) {
+        setMessage("No hay tokens no usados que limpiar.");
+        return;
+      }
+      const batch = writeBatch(db);
+      snap.docs.forEach((d) => batch.delete(d.ref));
+      await batch.commit();
+      setMessage(`Se eliminaron ${snap.size} tokens no usados.`);
+      await loadTokens();
+    } catch {
+      setError("No se pudieron limpiar los tokens.");
+    }
+  }, [loadTokens]);
+
   if (loading) {
     return <p className="setup-subtitle" style={{ textAlign: "center" }}>Cargando tokens...</p>;
   }
@@ -77,6 +97,9 @@ export default function TokensTab() {
       <div className="setup-actions" style={{ marginBottom: "1rem" }}>
         <button className="setup-button" type="button" onClick={handleCreate}>
           Generar nuevo token
+        </button>
+        <button className="setup-button setup-button--ghost" type="button" onClick={handleCleanup}>
+          Limpiar no usados
         </button>
       </div>
 
