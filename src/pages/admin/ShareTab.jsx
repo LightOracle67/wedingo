@@ -1,7 +1,8 @@
 import { memo, useCallback } from "react";
 
 const ShareTab = memo(function ShareTab({ inviteToken, config, formattedDate }) {
-  const inviteUrl = `${window.location.origin}/${inviteToken}`;
+  const baseUrl = `${window.location.origin}/${inviteToken}`;
+  const inviteUrl = `${baseUrl}?invitar`;
   const coupleName = `${config.firstName} & ${config.secondName}`;
 
   const shareVia = useCallback((url) => {
@@ -27,8 +28,8 @@ const ShareTab = memo(function ShareTab({ inviteToken, config, formattedDate }) 
   }, [coupleName, inviteUrl, shareVia]);
 
   const printPdf = useCallback(() => {
-    window.open(`${inviteUrl}?imprimir`, "_blank");
-  }, [inviteUrl]);
+    window.open(`${baseUrl}?imprimir`, "_blank");
+  }, [baseUrl]);
 
   const copyLink = useCallback(async () => {
     try {
