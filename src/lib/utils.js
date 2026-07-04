@@ -115,9 +115,13 @@ export const generateSetupToken = () => {
   const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
   const alphabetLen = alphabet.length;
   const maxValid = 256 - (256 % alphabetLen);
-  const bytes = new Uint8Array(32);
+  const needed = 32;
+  const bytes = new Uint8Array(needed * 2);
   crypto.getRandomValues(bytes);
-  const rawToken = Array.from(bytes, (byte) => alphabet[byte < maxValid ? byte % alphabetLen : 0]).join("");
+  const rawToken = Array.from(bytes, (byte) => {
+    if (byte < maxValid) return alphabet[byte % alphabetLen];
+    return "";
+  }).filter(Boolean).join("").slice(0, needed);
   return rawToken.match(/.{1,4}/g)?.join("-") ?? rawToken;
 };
 

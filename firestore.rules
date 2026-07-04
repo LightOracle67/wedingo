@@ -38,7 +38,7 @@ service cloud.firestore {
           || !exists(/databases/$(database)/documents/invitations/$(tokenId)));
       allow update: if isValidInvitationWrite(request.resource.data)
         && (request.auth != null
-          || exists(/databases/$(database)/documents/sessions/$(request.resource.data.adminUsername)));
+          || exists(/databases/$(database)/documents/sessions/$(tokenId)));
       allow delete: if isSuperAdmin();
     }
 
@@ -59,9 +59,7 @@ service cloud.firestore {
       allow update: if isSuperAdmin()
         || (resource.data.used == false
           && request.resource.data.used == true
-          && request.resource.data.keys().hasAll(['used', 'username', 'createdAt', 'usedAt'])
-          && request.resource.data.username is string
-          && isValidUsername(request.resource.data.username));
+          && request.resource.data.usedAt is timestamp);
       allow delete: if isSuperAdmin();
     }
 
@@ -88,12 +86,10 @@ service cloud.firestore {
       allow delete: if isSuperAdmin();
     }
 
-    match /sessions/{username} {
+    match /sessions/{sessionId} {
       allow read: if isSuperAdmin();
-      allow create: if !exists(/databases/$(database)/documents/sessions/$(username))
-        && request.resource.data.createdAt is timestamp;
+      allow write: if request.resource.data.createdAt is timestamp;
       allow delete: if isSuperAdmin();
-      allow update: if false;
     }
   }
 }

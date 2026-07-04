@@ -3,7 +3,8 @@ import { SECTION_LABELS, STORY_SECTION_ORDER } from "../lib/constants";
 
 function parseOrder(raw) {
   const order = (raw || STORY_SECTION_ORDER.join(",")).split(",").filter(Boolean);
-  return STORY_SECTION_ORDER.filter((s) => order.includes(s));
+  const valid = new Set(STORY_SECTION_ORDER);
+  return order.filter((s) => valid.has(s));
 }
 
 function parseHidden(raw) {
