@@ -174,6 +174,25 @@ export function AppProvider({ children }) {
     hydrateConfig();
   }, [location.pathname, location.hash, inviteToken]);
 
+  const reloadConfig = useCallback(async () => {
+    if (!inviteToken) return;
+    try {
+      localStorage.removeItem(`wedin_invite_cache_${inviteToken}`);
+      const snapshot = await getDoc(invitationDocRef(inviteToken));
+      if (!snapshot.exists()) {
+        setHasStoredConfig(false);
+        setConfig(defaultConfig);
+        setFormData(defaultConfig);
+        return;
+      }
+      const parsed = normalizeConfig(snapshot.data());
+      const hydrated = { ...defaultConfig, ...parsed };
+      setConfig(hydrated);
+      setFormData(hydrated);
+      setHasStoredConfig(true);
+    } catch {}
+  }, [inviteToken]);
+
   useEffect(() => {
     setSaveMessage("");
     setSaveError("");
@@ -365,7 +384,7 @@ export function AppProvider({ children }) {
     rsvpForm, rsvpMessage, isRsvpSubmitting,
     maxAllowedYear, isAdminTokenLoggedIn,
     formattedDate, formattedTime, calendarLink,
-    updateFormField, refreshSetupToken,
+    updateFormField, refreshSetupToken, reloadConfig,
     handleSaveSetup, handleRsvpSubmit, updateRsvpField,
     handleTokenLogin, handleAdminTokenLogin, handleGenerateToken,
     handleAdminLogout,
@@ -391,7 +410,7 @@ export function AppProvider({ children }) {
     rsvpForm, rsvpMessage, isRsvpSubmitting,
     maxAllowedYear, isAdminTokenLoggedIn,
     formattedDate, formattedTime, calendarLink,
-    updateFormField, refreshSetupToken,
+    updateFormField, refreshSetupToken, reloadConfig,
     handleSaveSetup, handleRsvpSubmit, updateRsvpField,
     handleTokenLogin, handleAdminTokenLogin, handleGenerateToken,
     handleAdminLogout,

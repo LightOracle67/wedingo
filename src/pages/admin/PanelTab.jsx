@@ -5,7 +5,7 @@ import StatsCard from "./StatsCard";
 
 const PanelTab = memo(function PanelTab({
   inviteToken, confirmedResponses, declinedResponses, totalGuests, rsvpEntries,
-  setActiveTab, setAttendanceFilter, exportCsv, formatDate,
+  setActiveTab, setAttendanceFilter, exportCsv, formatDate, onRestore,
 }) {
   const pendingResponses = Math.max(0, rsvpEntries.length - confirmedResponses - declinedResponses);
   const inviteUrl = `${window.location.origin}/${inviteToken}`;
@@ -38,6 +38,7 @@ const PanelTab = memo(function PanelTab({
     const file = e.target.files?.[0];
     if (!file) return;
     setRestoreMsg("");
+    let count = 0;
     try {
       const text = await file.text();
       const data = JSON.parse(text);
@@ -46,13 +47,15 @@ const PanelTab = memo(function PanelTab({
         if (!item.id) continue;
         const { id, ...rest } = item;
         await setDoc(invitationDocRef(id), rest);
+        count++;
       }
-      setRestoreMsg(`Restauradas ${data.length} invitaciones. Recarga la página.`);
+      if (onRestore) await onRestore();
+      setRestoreMsg(`Restauradas ${count} invitaciones correctamente.`);
     } catch {
       setRestoreMsg("No se pudo restaurar la copia. Revisa el archivo.");
     }
     e.target.value = "";
-  }, []);
+  }, [onRestore]);
 
   return (
     <>
