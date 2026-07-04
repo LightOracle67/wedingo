@@ -86,10 +86,16 @@ export default function PublicInvitation() {
   const isStoryTransitioning = storyTransition.toIndex !== null;
 
   useEffect(() => {
-    if (isPrintMode && !isConfigLoading) {
-      const t = setTimeout(() => window.print(), 500);
-      return () => clearTimeout(t);
-    }
+    if (!isPrintMode || isConfigLoading) return;
+
+    const printWhenReady = async () => {
+      await document.fonts.ready;
+      await new Promise((r) => { if (document.readyState === "complete") r(); else window.addEventListener("load", r, { once: true }); });
+      await new Promise((r) => setTimeout(r, 800));
+      window.onafterprint = () => window.close();
+      window.print();
+    };
+    printWhenReady();
   }, [isPrintMode, isConfigLoading]);
 
   const [countdown, setCountdown] = useState(null);
