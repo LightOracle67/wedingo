@@ -1448,11 +1448,15 @@ h6 {
 
 .setup-layout {
   min-height: 100dvh;
+  max-height: 100dvh;
   display: grid;
-  place-items: center;
+  place-items: start center;
+  align-content: start;
   padding: clamp(0.75rem, 2.5vw, 1.5rem);
   width: 100%;
   box-sizing: border-box;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .setup-card {

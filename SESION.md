@@ -35,6 +35,9 @@
 - M5: Autosave y save manual sin transacción (race condition)
 
 ## Invitación de prueba
-- URL: https://wedingo-6c26a.web.app/zgx7qa6knj
-- Usuario: carmadri66
-- Código: MQRWKHPGVVVWQN5SQYJ6JAP9SF8NYHE7
+- URL: https://wedingo-6c26a.web.app/20nbp13d1
+- Usuario: ajemrrfz42
+- Código: QQLQH6RW0LFA03NSBLT31J4T9B4TXFYX
+
+## Notas
+- Se borraron todos los datos de Firestore (16 invitations, 5 rsvpResponses, 31 setupTokens, 2 sessions) y se creó esta única invitación fresca.
