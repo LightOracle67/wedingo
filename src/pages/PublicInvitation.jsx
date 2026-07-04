@@ -37,7 +37,7 @@ export default function PublicInvitation() {
 
   const {
     config, isConfigLoading, configLoadError, formattedDate, formattedTime, calendarLink,
-    rsvpForm, rsvpMessage, isRsvpSubmitting,
+    rsvpForm, rsvpEntries, rsvpMessage, isRsvpSubmitting, hasSubmitted,
     locationMapContainerRef, locationMapError, setLocationMapError,
     locationMapLoading, setLocationMapLoading, locationMapTarget, setLocationMapTarget,
     handleRsvpSubmit, updateRsvpField,
@@ -413,8 +413,10 @@ export default function PublicInvitation() {
     },
     rsvp: {
       rsvpForm,
+      rsvpEntries,
       rsvpMessage,
       isRsvpSubmitting,
+      hasSubmitted,
       updateRsvpField,
       handleRsvpSubmit,
     },
@@ -424,7 +426,7 @@ export default function PublicInvitation() {
     countdown, formattedDate, formattedTime,
     hasLocationData, locationDescription, calendarLink,
     locationMapContainerRef, locationMapLoading, locationMapError, locationMapTarget,
-    rsvpForm, rsvpMessage, isRsvpSubmitting,
+    rsvpForm, rsvpEntries, rsvpMessage, isRsvpSubmitting, hasSubmitted,
     updateRsvpField, handleRsvpSubmit,
   ]);
 

@@ -13,6 +13,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType) {
   });
   const [rsvpMessage, setRsvpMessage] = useState("");
   const [isRsvpSubmitting, setIsRsvpSubmitting] = useState(false);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
   const rsvpSubmitTimeoutRef = useRef(null);
 
   useEffect(() => {
@@ -94,13 +95,11 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType) {
           ? `Gracias, ${guestName}. Tu asistencia quedó marcada con ${companionsCount} acompañante${companionsCount === 1 ? "" : "s"}.`
           : `Gracias, ${guestName}. Lamentamos que no puedas asistir.`,
       );
+      setHasSubmitted(true);
     } catch {
       setRsvpMessage("No pudimos guardar tu confirmación. Inténtalo de nuevo en unos minutos.");
     } finally {
-      if (rsvpSubmitTimeoutRef.current) clearTimeout(rsvpSubmitTimeoutRef.current);
-      rsvpSubmitTimeoutRef.current = setTimeout(() => {
-        setIsRsvpSubmitting(false);
-      }, 5000);
+      setIsRsvpSubmitting(false);
     }
   }, [isRsvpSubmitting, rsvpForm, inviteToken]);
 
@@ -119,7 +118,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType) {
   }, [inviteToken, setAdminMessage, setAdminMessageType]);
 
   return {
-    rsvpEntries, rsvpForm, rsvpMessage, isRsvpSubmitting,
+    rsvpEntries, rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted,
     updateRsvpField, handleRsvpSubmit, handleClearRsvpEntries,
     setRsvpMessage, setRsvpForm,
   };
