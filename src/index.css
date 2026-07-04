@@ -3010,3 +3010,46 @@ a:focus-visible {
 @keyframes page-loading-spin {
   to { transform: rotate(360deg); }
 }
+
+@media print {
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .app-scene {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .story-section {
+    position: static !important;
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    z-index: auto !important;
+    min-height: auto !important;
+    padding: 2rem 1rem !important;
+    break-inside: avoid;
+  }
+
+  .admin-bar,
+  .story-scroll-hint,
+  .whatsapp-share-btn,
+  .wedding-decoration {
+    display: none !important;
+  }
+
+  .story-card {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+  }
+
+  .story-panel--hero {
+    background: #fafafa !important;
+  }
+
+  #main-content {
+    padding-top: 0 !important;
+  }
+}

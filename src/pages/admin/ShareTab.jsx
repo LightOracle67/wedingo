@@ -27,8 +27,8 @@ const ShareTab = memo(function ShareTab({ inviteToken, config, formattedDate }) 
   }, [coupleName, inviteUrl, shareVia]);
 
   const printPdf = useCallback(() => {
-    window.print();
-  }, []);
+    window.open(`${inviteUrl}?imprimir`, "_blank");
+  }, [inviteUrl]);
 
   const copyLink = useCallback(async () => {
     try {

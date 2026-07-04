@@ -33,6 +33,7 @@ export default function PublicInvitation() {
   const { inviteToken } = useParams();
   const searchParams = new URLSearchParams(location.search);
   const isInviteMode = searchParams.has("invitar");
+  const isPrintMode = searchParams.has("imprimir");
 
   const {
     config, isConfigLoading, configLoadError, formattedDate, formattedTime, calendarLink,
@@ -83,6 +84,13 @@ export default function PublicInvitation() {
   });
 
   const isStoryTransitioning = storyTransition.toIndex !== null;
+
+  useEffect(() => {
+    if (isPrintMode && !isConfigLoading) {
+      const t = setTimeout(() => window.print(), 500);
+      return () => clearTimeout(t);
+    }
+  }, [isPrintMode, isConfigLoading]);
 
   const [countdown, setCountdown] = useState(null);
 
