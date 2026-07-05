@@ -92,7 +92,7 @@ export default function PublicInvitation() {
     const printWhenReady = async () => {
       await document.fonts.ready;
       await new Promise((r) => { if (document.readyState === "complete") r(); else window.addEventListener("load", r, { once: true }); });
-      await new Promise((r) => setTimeout(r, 800));
+      await new Promise((r) => setTimeout(r, 200));
       window.onafterprint = () => window.close();
       window.print();
     };
