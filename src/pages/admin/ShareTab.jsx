@@ -1,45 +1,42 @@
-import { memo, useCallback, useMemo } from "react";
-import { randomMessage } from "../../lib/invite-messages";
+import { memo, useCallback, useState } from "react";
+import { WEDDING_MESSAGES, randomMessage } from "../../lib/invite-messages";
+
+const APPS = [
+  { key: "whatsapp", label: "WhatsApp", url: (text) => `https://wa.me/?text=${encodeURIComponent(text)}` },
+  { key: "telegram", label: "Telegram", url: (text) => `https://t.me/share/url?url=${encodeURIComponent(text.split("\n").pop())}&text=${encodeURIComponent(text)}` },
+  { key: "sms", label: "SMS", url: (text) => `sms:?body=${encodeURIComponent(text)}` },
+];
 
 const ShareTab = memo(function ShareTab({ inviteToken, config, formattedDate, addToast }) {
   const baseUrl = `${window.location.origin}/${inviteToken}`;
   const inviteUrl = `${baseUrl}?invitar`;
   const coupleName = `${config.firstName} & ${config.secondName}`;
 
-  const shareMessage = useMemo(() => randomMessage(coupleName), [coupleName]);
+  const generateMessage = useCallback(
+    () => `${randomMessage(coupleName)}\n\n${inviteUrl}`,
+    [coupleName, inviteUrl],
+  );
+
+  const [message, setMessage] = useState(generateMessage);
+
+  const handleRandom = useCallback(() => {
+    setMessage(generateMessage());
+  }, [generateMessage]);
 
   const shareVia = useCallback((url) => {
     window.open(url, "_blank", "noreferrer");
   }, []);
 
-  const shareWhatsApp = useCallback(() => {
-    const message = `${shareMessage}\n\n${inviteUrl}`;
-    shareVia(`https://wa.me/?text=${encodeURIComponent(message)}`);
-  }, [shareMessage, inviteUrl, shareVia]);
-
-  const shareInstagram = useCallback(async () => {
-    const text = `${shareMessage}\n\n${inviteUrl}`;
+  const copyLink = useCallback(async () => {
     try {
-      await navigator.clipboard.writeText(text);
-      if (addToast) addToast("success", "Mensaje copiado. Pégalo en Instagram.");
-    } catch {
-      if (addToast) addToast("error", "No se pudo copiar el mensaje.");
-    }
-  }, [shareMessage, inviteUrl, addToast]);
-
-  const shareFacebook = useCallback(() => {
-    shareVia(`https://facebook.com/sharer/sharer.php?${new URLSearchParams({ u: inviteUrl, quote: shareMessage })}`);
-  }, [shareMessage, inviteUrl, shareVia]);
+      await navigator.clipboard.writeText(inviteUrl);
+      if (addToast) addToast("success", "Enlace copiado.");
+    } catch {}
+  }, [inviteUrl, addToast]);
 
   const printPdf = useCallback(() => {
     window.open(`${baseUrl}?imprimir`, "_blank");
   }, [baseUrl]);
-
-  const copyLink = useCallback(async () => {
-    try {
-      await navigator.clipboard.writeText(inviteUrl);
-    } catch {}
-  }, [inviteUrl]);
 
   const btnClass = "setup-button setup-button--compact";
   const btnGhostClass = "setup-button setup-button--ghost setup-button--compact";
@@ -65,17 +62,29 @@ const ShareTab = memo(function ShareTab({ inviteToken, config, formattedDate, ad
         </div>
       </div>
 
-      <div className="setup-label" style={{ marginBottom: "0.5rem" }}>Compartir en redes</div>
+      <div className="setup-label" style={{ marginBottom: "0.5rem" }}>Mensaje</div>
+      <div className="setup-token-card" style={{ marginBottom: "1rem", padding: "0.7rem 1rem" }}>
+        <textarea
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          rows={6}
+          style={{ width: "100%", resize: "vertical", fontFamily: "inherit", fontSize: "0.9rem", padding: "0.5rem", borderRadius: "6px", border: "1px solid var(--setup-border)", background: "var(--setup-bg)", color: "var(--setup-text)" }}
+        />
+        <button className={btnGhostClass} type="button" onClick={handleRandom} style={{ marginTop: "0.5rem" }}>
+          Generar otro mensaje
+        </button>
+        <button className={btnGhostClass} type="button" onClick={() => { navigator.clipboard.writeText(message); if (addToast) addToast("success", "Mensaje copiado."); }} style={{ marginTop: "0.5rem", marginLeft: "0.5rem" }}>
+          Copiar mensaje
+        </button>
+      </div>
+
+      <div className="setup-label" style={{ marginBottom: "0.5rem" }}>Compartir por</div>
       <div style={{ display: "grid", gap: "0.5rem" }}>
-        <button className={btnClass} type="button" onClick={shareWhatsApp}>
-          WhatsApp
-        </button>
-        <button className={btnClass} type="button" onClick={shareInstagram}>
-          Instagram
-        </button>
-        <button className={btnClass} type="button" onClick={shareFacebook}>
-          Facebook
-        </button>
+        {APPS.map((app) => (
+          <button key={app.key} className={btnClass} type="button" onClick={() => shareVia(app.url(message))}>
+            {app.label}
+          </button>
+        ))}
       </div>
 
       <hr style={{ margin: "1rem 0", border: "none", borderTop: "1px solid var(--setup-border)" }} />
