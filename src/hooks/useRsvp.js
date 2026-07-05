@@ -120,7 +120,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType) {
       setRsvpEntries((currentEntries) => [responseRecord, ...currentEntries]);
       setRsvpMessage(
         rsvpForm.attendance === "yes"
-          ? `Gracias, ${guestName}. Tu asistencia quedó marcada con ${companionsCount} acompañante${companionsCount === 1 ? "" : "s"}.`
+          ? `Gracias, ${guestName}. Tu asistencia quedó registrada (${companionsCount} acompañante${companionsCount === 1 ? "" : "s"}, contándote a ti).`
           : `Gracias, ${guestName}. Lamentamos que no puedas asistir.`,
       );
       setHasSubmitted(true);

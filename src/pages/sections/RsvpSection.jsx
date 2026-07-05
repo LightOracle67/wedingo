@@ -51,7 +51,7 @@ const RsvpSection = memo(function RsvpSection({
               </select>
             </div>
             <div style={{ opacity: rsvpForm.attendance === "no" ? 0.4 : 1 }}>
-              <label className="setup-label" htmlFor="rsvpCompanions">Acompañantes</label>
+              <label className="setup-label" htmlFor="rsvpCompanions">Acompañantes (incluyéndote)</label>
               <input
                 id="rsvpCompanions"
                 className="setup-input"
@@ -61,7 +61,7 @@ const RsvpSection = memo(function RsvpSection({
                 value={rsvpForm.attendance === "no" ? "" : rsvpForm.companions}
                 onChange={(e) => updateRsvpField("companions", e.target.value)}
                 disabled={rsvpForm.attendance === "no"}
-                placeholder="Número de acompañantes"
+                placeholder="0 = solo tú, 1 = tú + 1, etc."
                 tabIndex={rsvpForm.attendance === "no" ? -1 : 0}
               />
             </div>

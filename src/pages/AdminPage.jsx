@@ -139,7 +139,7 @@ export default function AdminPage() {
   const confirmedResponses = rsvpEntries.filter((e) => e.attendance === "yes").length;
   const declinedResponses = rsvpEntries.filter((e) => e.attendance === "no").length;
   const totalGuests = rsvpEntries.reduce(
-    (sum, e) => sum + (e.attendance === "yes" ? 1 + e.companions : 0), 0,
+    (sum, e) => sum + (e.attendance === "yes" ? e.companions : 0), 0,
   );
 
   const coupleName = `${config.firstName} & ${config.secondName}`;
