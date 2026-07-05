@@ -9,7 +9,7 @@ const PanelTab = memo(function PanelTab({
   inviteToken, confirmedResponses, declinedResponses, totalGuests, rsvpEntries,
   setActiveTab, setAttendanceFilter, exportCsv, formatDate, onRestore,
 }) {
-  const pendingResponses = Math.max(0, rsvpEntries.length - confirmedResponses - declinedResponses);
+  const pendingResponses = rsvpEntries.filter((e) => e.attendance !== "yes" && e.attendance !== "no").length;
   const inviteUrl = `${window.location.origin}/${inviteToken}`;
   const restoreRef = useRef(null);
   const [restoreMsg, setRestoreMsg] = useState("");
@@ -31,20 +31,20 @@ const PanelTab = memo(function PanelTab({
   }, [setActiveTab, setAttendanceFilter]);
 
   const handleBackup = useCallback(async () => {
-    const { getDocs } = await import("firebase/firestore");
-    const { INVITATIONS_COLLECTION_REF } = await import("../../lib/firebase");
+    const { getDoc } = await import("firebase/firestore");
     try {
-      const snap = await getDocs(INVITATIONS_COLLECTION_REF);
-      const data = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+      const snap = await getDoc(invitationDocRef(inviteToken));
+      if (!snap.exists()) { setRestoreMsg("No se encontró la invitación."); return; }
+      const data = { id: snap.id, ...snap.data() };
       const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `wedingo-backup-${Date.now()}.json`;
+      a.download = `wedingo-${inviteToken}-backup-${Date.now()}.json`;
       a.click();
       URL.revokeObjectURL(url);
     } catch {}
-  }, []);
+  }, [inviteToken]);
 
   const handleRestore = useCallback(async (e) => {
     const file = e.target.files?.[0];
