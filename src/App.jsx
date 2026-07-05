@@ -20,10 +20,9 @@ function AppShell() {
   const [returnToken, setReturnToken] = useState("");
 
   const isEditingRoute = location.pathname.endsWith("/setup") || (location.pathname.endsWith("/admin") && isAdminTokenLoggedIn);
-  const showSessionBar = false;
-  const topBarPadding = isAdminTokenLoggedIn || showSessionBar ? "2.5rem" : "0";
+  const topBarPadding = isAdminTokenLoggedIn ? "2.5rem" : "0";
 
-  const storedToken = sessionStorage.getItem("weddingo_invite_token");
+  const storedToken = sessionStorage.getItem("wedin_invite_token");
 
   const handleReturnAccess = (e) => {
     e.preventDefault();
@@ -31,7 +30,7 @@ function AppShell() {
     const urlMatch = raw.match(/\/([a-zA-Z0-9]{8,12})(?:\/|$)/);
     if (urlMatch) raw = urlMatch[1];
     if (/^[a-zA-Z0-9]{8,12}$/.test(raw)) {
-      sessionStorage.setItem("weddingo_invite_token", raw);
+      sessionStorage.setItem("wedin_invite_token", raw);
       navigate(`/${raw}/setup`);
     }
   };
@@ -102,11 +101,11 @@ function AppShell() {
         <Suspense fallback={<div className="page-loading" />}>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/:inviteToken" element={<PublicInvitation />} />
-          <Route path="/:inviteToken/setup" element={<SetupPage />} />
+          <Route path="/:inviteToken" element={<ErrorBoundary><PublicInvitation /></ErrorBoundary>} />
+          <Route path="/:inviteToken/setup" element={<ErrorBoundary><SetupPage /></ErrorBoundary>} />
           <Route path="/:inviteToken/admin" element={<ErrorBoundary><AdminPage /></ErrorBoundary>} />
-          <Route path={SUPERADMIN_ROUTE} element={<SuperAdminLogin />} />
-          <Route path={SUPERADMIN_DASHBOARD} element={<SuperAdminPanel />} />
+          <Route path={SUPERADMIN_ROUTE} element={<ErrorBoundary><SuperAdminLogin /></ErrorBoundary>} />
+          <Route path={SUPERADMIN_DASHBOARD} element={<ErrorBoundary><SuperAdminPanel /></ErrorBoundary>} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         </Suspense>

@@ -11,7 +11,6 @@ export default function RsvpsTab() {
   const [search, setSearch] = useState("");
   const [filterAttendance, setFilterAttendance] = useState("all");
   const [filterInvite, setFilterInvite] = useState("");
-  const [expandedInvite, setExpandedInvite] = useState(null);
 
   const load = useCallback(async () => {
     setLoading(true);
