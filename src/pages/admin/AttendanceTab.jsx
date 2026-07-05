@@ -1,5 +1,7 @@
-import { memo, useMemo } from "react";
+import { memo, useEffect, useMemo, useState } from "react";
 import { getDietarySummary } from "../../lib/admin-utils";
+
+const PAGE_SIZES = [10, 25, 50, 100];
 
 const AttendanceTab = memo(function AttendanceTab({
   searchQuery, setSearchQuery,
@@ -8,6 +10,15 @@ const AttendanceTab = memo(function AttendanceTab({
   rsvpEntries, handleClearRsvpEntries, formatDate,
 }) {
   const dietary = useMemo(() => getDietarySummary(rsvpEntries), [rsvpEntries]);
+
+  const [page, setPage] = useState(0);
+  const [pageSize, setPageSize] = useState(25);
+
+  const totalPages = Math.max(1, Math.ceil(filteredEntries.length / pageSize));
+  const safePage = Math.min(page, totalPages - 1);
+  const paginated = filteredEntries.slice(safePage * pageSize, (safePage + 1) * pageSize);
+
+  useEffect(() => { setPage(0); }, [searchQuery, attendanceFilter]);
 
   const stats = useMemo(() => {
     const yes = rsvpEntries.filter((e) => e.attendance === "yes").length;
@@ -79,7 +90,7 @@ const AttendanceTab = memo(function AttendanceTab({
               </tr>
             </thead>
             <tbody>
-              {filteredEntries.map((entry) => (
+              {paginated.map((entry) => (
                 <tr key={entry.id}>
                   <td className="admin-table__name">{entry.guestName}</td>
                   <td>
@@ -95,6 +106,27 @@ const AttendanceTab = memo(function AttendanceTab({
               ))}
             </tbody>
           </table>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", justifyContent: "space-between", marginTop: "0.5rem", flexWrap: "wrap" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}>
+              <span className="setup-help" style={{ fontSize: "0.75rem" }}>Mostrar</span>
+              <select value={pageSize} onChange={(e) => { setPageSize(Number(e.target.value)); setPage(0); }}
+                style={{ fontSize: "0.75rem", padding: "0.15rem 0.3rem", borderRadius: "4px", border: "1px solid var(--setup-border)", background: "var(--setup-bg)", color: "var(--setup-text)" }}>
+                {PAGE_SIZES.map((s) => <option key={s} value={s}>{s}</option>)}
+              </select>
+              <span className="setup-help" style={{ fontSize: "0.75rem" }}>
+                &middot; {filteredEntries.length} en total
+              </span>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}>
+              <button className="setup-button setup-button--ghost setup-button--compact" type="button"
+                disabled={safePage === 0} onClick={() => setPage(safePage - 1)}
+                style={{ fontSize: "0.75rem", padding: "0.2rem 0.5rem" }}>←</button>
+              <span className="setup-help" style={{ fontSize: "0.75rem" }}>{safePage + 1} / {totalPages}</span>
+              <button className="setup-button setup-button--ghost setup-button--compact" type="button"
+                disabled={safePage >= totalPages - 1} onClick={() => setPage(safePage + 1)}
+                style={{ fontSize: "0.75rem", padding: "0.2rem 0.5rem" }}>→</button>
+            </div>
+          </div>
         </div>
       ) : (
         <p className="setup-help">
