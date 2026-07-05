@@ -1,5 +1,5 @@
-import { lazy, Suspense, useEffect, useState } from "react";
-import { Routes, Route, Navigate, Link, useLocation, useNavigate } from "react-router-dom";
+import { lazy, Suspense, useEffect } from "react";
+import { Routes, Route, Navigate, Link, useLocation } from "react-router-dom";
 import { AppProvider, useApp } from "./contexts/AppContext";
 import { SuperAdminProvider } from "./contexts/SuperAdminContext";
 import { ToastProvider } from "./contexts/ToastContext";
@@ -15,25 +15,10 @@ const SuperAdminPanel = lazy(() => import("./pages/SuperAdminPanel"));
 
 function AppShell() {
   const { config, formData, isAdminTokenLoggedIn, tokenLoginUsername, inviteToken } = useApp();
-  const navigate = useNavigate();
   const location = useLocation();
-  const [returnToken, setReturnToken] = useState("");
 
   const isEditingRoute = location.pathname.endsWith("/setup") || (location.pathname.endsWith("/admin") && isAdminTokenLoggedIn);
   const topBarPadding = isAdminTokenLoggedIn ? "2.5rem" : "0";
-
-  const storedToken = sessionStorage.getItem("wedin_invite_token");
-
-  const handleReturnAccess = (e) => {
-    e.preventDefault();
-    let raw = returnToken.trim();
-    const urlMatch = raw.match(/\/([a-zA-Z0-9]{8,12})(?:\/|$)/);
-    if (urlMatch) raw = urlMatch[1];
-    if (/^[a-zA-Z0-9]{8,12}$/.test(raw)) {
-      sessionStorage.setItem("wedin_invite_token", raw);
-      navigate(`/${raw}/setup`);
-    }
-  };
 
   useEffect(() => {
     const activeTheme = isEditingRoute ? "golden" : formData.theme || config.theme;
@@ -55,35 +40,6 @@ function AppShell() {
       <a href="#main-content" className="skip-link" tabIndex={0}>
         Saltar al contenido principal
       </a>
-
-      {showSessionBar ? (
-        <nav className="admin-bar" role="navigation" aria-label="Sesión">
-          <div className="admin-bar__inner">
-            <span className="admin-bar__title">No has iniciado sesión</span>
-            <div className="admin-bar__links">
-              {storedToken ? (
-                <Link className="admin-bar__link" to={`/${storedToken}/setup`}>Iniciar sesión</Link>
-              ) : (
-                <form className="admin-bar__return-form" onSubmit={handleReturnAccess}>
-                  <input
-                    className="admin-bar__return-input"
-                    type="text"
-                    value={returnToken}
-                    onChange={(e) => setReturnToken(e.target.value.replace(/[^a-zA-Z0-9/:.?=&-]/g, "").slice(0, 80))}
-                    placeholder="Pega el enlace o el código de la URL"
-                    aria-label="Enlace o código de invitación"
-                    maxLength={80}
-                    spellCheck="false"
-                  />
-                  <button className="admin-bar__return-btn" type="submit" disabled={returnToken.length < 8}>
-                    Acceder
-                  </button>
-                </form>
-              )}
-            </div>
-          </div>
-        </nav>
-      ) : null}
 
       {isAdminTokenLoggedIn && inviteToken && !location.pathname.endsWith("/setup") ? (
         <nav className="admin-bar" role="navigation" aria-label="Barra de administración">

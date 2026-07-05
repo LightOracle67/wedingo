@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getDoc, doc } from "firebase/firestore";
+import { getDoc, doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { db, invitationDocRef } from "../lib/firebase";
 import { normalizeTokenValue } from "../lib/token-utils";
 import { generateInviteToken } from "../lib/utils";
@@ -103,6 +103,7 @@ export default function LandingPage() {
       saveSession("admin", username);
       setTokenLoginUsername(username);
       setIsTokenVerified(true);
+      setDoc(doc(db, "sessions", target), { createdAt: serverTimestamp() }).catch(() => {});
       navigate(`/${target}`);
     } catch {
       setError("No se pudo verificar el código. Inténtalo de nuevo.");
