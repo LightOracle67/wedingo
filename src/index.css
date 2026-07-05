@@ -758,7 +758,7 @@ body::after {
   padding: clamp(1.4rem, 3.5vw, 2.2rem);
   border-radius: 1.6rem;
   width: min(100%, 44rem);
-  max-height: 90dvh;
+  max-height: 95dvh;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
@@ -1578,7 +1578,7 @@ h6 {
 .setup-card {
   position: relative;
   width: min(100%, 760px);
-  max-height: 90dvh;
+  max-height: 95dvh;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
