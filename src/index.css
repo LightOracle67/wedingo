@@ -729,6 +729,7 @@ body::after {
 .story-section {
   position: absolute;
   inset: 0;
+  height: 100dvh;
   isolation: isolate;
   display: flex;
   align-items: center;
@@ -757,6 +758,11 @@ body::after {
   padding: clamp(1.4rem, 3.5vw, 2.2rem);
   border-radius: 1.6rem;
   width: min(100%, 44rem);
+  max-height: 90dvh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
   border: 1px solid color-mix(in srgb, var(--invite-shell-border) 72%, transparent);
   background: color-mix(in srgb, var(--invite-shell-bg) 74%, transparent);
   box-shadow:
@@ -764,7 +770,6 @@ body::after {
     0 0 30px color-mix(in srgb, var(--invite-shell-glow) 70%, transparent);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
-  overflow: hidden;
 }
 
 .story-card::before {
