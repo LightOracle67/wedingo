@@ -349,6 +349,19 @@ export default function SetupForm({ prefix = "" }) {
           autoComplete="off"
         />
         <p className="setup-help">Sugerencia sobre cómo vestir para la celebración.</p>
+
+        <label className="setup-label" htmlFor={id("accommodationInfo")}>
+          Alojamiento
+        </label>
+        <textarea
+          id={id("accommodationInfo")}
+          className="setup-textarea"
+          value={formData.accommodationInfo}
+          onChange={(e) => updateFormField("accommodationInfo", e.target.value.slice(0, 2000))}
+          placeholder="Ejemplo: Hotel recomendado: … Código descuento: …"
+          rows={4}
+        />
+        <p className="setup-help">Hoteles, códigos de descuento y opciones para los invitados.</p>
       </CollapsibleSection>
       ) : null}
 
@@ -409,26 +422,6 @@ export default function SetupForm({ prefix = "" }) {
           rows={4}
         />
         <p className="setup-help">Indica si preferís una lluvia de sobres, número de cuenta, etc.</p>
-      </CollapsibleSection>
-      ) : null}
-
-      {!hiddenSet.has("accommodation") ? (
-      <CollapsibleSection
-        title="Alojamiento"
-        hint="Hoteles y descuentos"
-      >
-        <label className="setup-label" htmlFor={id("accommodationInfo")}>
-          Alojamiento
-        </label>
-        <textarea
-          id={id("accommodationInfo")}
-          className="setup-textarea"
-          value={formData.accommodationInfo}
-          onChange={(e) => updateFormField("accommodationInfo", e.target.value.slice(0, 2000))}
-          placeholder="Ejemplo: Hotel recomendado: … Código descuento: …"
-          rows={4}
-        />
-        <p className="setup-help">Hoteles, códigos de descuento y opciones para los invitados.</p>
       </CollapsibleSection>
       ) : null}
 
