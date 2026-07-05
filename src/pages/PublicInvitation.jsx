@@ -61,12 +61,12 @@ export default function PublicInvitation() {
   const visibleOrder = useMemo(
     () => {
       let filtered = showRsvp ? sectionOrder : sectionOrder.filter((s) => s !== "rsvp");
-      if (!isAdminTokenLoggedIn && !isInviteMode) {
+      if (!isInviteMode) {
         filtered = filtered.filter((s) => !hiddenSet.has(s));
       }
       return filtered;
     },
-    [sectionOrder, showRsvp, hiddenSet, isAdminTokenLoggedIn, isInviteMode],
+    [sectionOrder, showRsvp, hiddenSet, isInviteMode],
   );
   const visibleOrderRef = useRef(visibleOrder);
   useEffect(() => { visibleOrderRef.current = visibleOrder; }, [visibleOrder]);
