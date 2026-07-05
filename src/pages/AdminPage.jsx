@@ -207,6 +207,7 @@ export default function AdminPage() {
               inviteToken={inviteToken}
               config={config}
               formattedDate={formattedDate}
+              addToast={addToast}
             />
           )}
 
