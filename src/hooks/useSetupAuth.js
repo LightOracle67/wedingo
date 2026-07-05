@@ -33,13 +33,15 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
       setGeneratedToken("");
       setIsTokenVerified(true);
 
-      getDoc(doc(db, "sessions", inviteToken)).then(snap => {
-        if (!snap.exists()) {
-          clearSession();
-          setIsTokenVerified(false);
-          setTokenLoginUsername("");
-        }
-      }).catch(() => {});
+      if (inviteToken) {
+        getDoc(doc(db, "sessions", inviteToken)).then(snap => {
+          if (!snap.exists()) {
+            clearSession();
+            setIsTokenVerified(false);
+            setTokenLoginUsername("");
+          }
+        }).catch(() => {});
+      }
     }
   }, [inviteToken]);
 
