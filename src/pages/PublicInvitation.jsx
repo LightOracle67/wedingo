@@ -439,9 +439,9 @@ export default function PublicInvitation() {
   if (isConfigLoading) {
     return (
       <div className="app-scene">
-        <section className="story-section story-section--is-active landing-bg flex min-h-screen items-center justify-center px-4">
-          <div className="story-panel story-panel--hero w-full max-w-md text-center">
-            <p className="text-[clamp(1rem,3vw,1.35rem)] leading-relaxed font-serif text-boda-texto/60">
+        <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
+          <div className="w-full max-w-md text-center story-panel story-panel--hero">
+            <p className="font-serif text-[clamp(1rem,3vw,1.35rem)] text-boda-texto/60 leading-relaxed">
               Cargando invitación…
             </p>
           </div>
@@ -453,20 +453,20 @@ export default function PublicInvitation() {
   if (configLoadError) {
     return (
       <div className="app-scene">
-        <section className="story-section story-section--is-active landing-bg flex min-h-screen items-center justify-center px-4">
-          <div className="story-panel story-panel--hero w-full max-w-md text-center">
-            <h1 className="hero-title invite-title text-[clamp(2.5rem,8vw,4.5rem)] leading-tight font-serif text-boda-texto">
+        <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
+          <div className="w-full max-w-md text-center story-panel story-panel--hero">
+            <h1 className="font-serif text-[clamp(2.5rem,8vw,4.5rem)] text-boda-texto leading-tight hero-title invite-title">
               Wedingo
             </h1>
-            <p className="mt-4 text-[clamp(1rem,3vw,1.35rem)] leading-relaxed font-serif text-boda-texto/80">
+            <p className="mt-4 font-serif text-[clamp(1rem,3vw,1.35rem)] text-boda-texto/80 leading-relaxed">
               No pudimos cargar tu invitación.
             </p>
-            <div className="story-divider my-6" />
-            <p className="text-[0.95rem] leading-relaxed text-boda-texto/60">
+            <div className="my-6 story-divider" />
+            <p className="text-[0.95rem] text-boda-texto/60 leading-relaxed">
               {configLoadError}
             </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <button className="setup-button text-sm" type="button" onClick={() => window.location.reload()}>
+            <div className="flex flex-wrap justify-center gap-3 mt-8">
+              <button className="text-sm setup-button" type="button" onClick={() => window.location.reload()}>
                 Reintentar
               </button>
             </div>
@@ -480,43 +480,43 @@ export default function PublicInvitation() {
 
   return (
     <div className={`app-scene ${isStoryTransitioning ? "app-scene--transitioning" : ""}`}>
-      <div className="pointer-events-none fixed left-[-0.5rem] top-0 z-0 wedding-decoration wedding-decoration--left">
+      <div className="fixed top-0 z-0 pointer-events-none left-2 wedding-decoration--left wedding-decoration">
         <img src={eucalyptusSrc} alt="" aria-hidden="true" className="wedding-decoration__image" />
       </div>
-      <div className="pointer-events-none fixed right-[-0.5rem] bottom-[-0.5rem] z-0 wedding-decoration wedding-decoration--right">
+      <div className="fixed z-0 pointer-events-none right-2 bottom-2 wedding-decoration--right wedding-decoration">
         <img src={eucalyptusSrc} alt="" aria-hidden="true" className="wedding-decoration__image" />
       </div>
 
       {showMissingToken ? (
-        <section className="story-section story-section--is-active landing-bg flex min-h-screen items-center justify-center px-4">
-          <div className="story-panel story-panel--hero w-full max-w-md text-center">
-            <h1 className="hero-title invite-title text-[clamp(2.5rem,8vw,4.5rem)] leading-tight font-serif text-boda-texto">
+        <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
+          <div className="w-full max-w-md text-center story-panel story-panel--hero">
+            <h1 className="font-serif text-[clamp(2.5rem,8vw,4.5rem)] text-boda-texto leading-tight hero-title invite-title">
               Wedingo
             </h1>
-            <p className="mt-4 text-[clamp(1rem,3vw,1.35rem)] leading-relaxed font-serif text-boda-texto/80">
+            <p className="mt-4 font-serif text-[clamp(1rem,3vw,1.35rem)] text-boda-texto/80 leading-relaxed">
               Invitación no encontrada
             </p>
-            <div className="story-divider my-6" />
-            <p className="text-[0.95rem] leading-relaxed text-boda-texto/60">
+            <div className="my-6 story-divider" />
+            <p className="text-[0.95rem] text-boda-texto/60 leading-relaxed">
               No encontramos una invitación con este enlace. Si crees que es un error, contacta con los anfitriones.
             </p>
           </div>
         </section>
       ) : isEmpty ? (
-        <section className="story-section story-section--is-active landing-bg flex min-h-screen items-center justify-center px-4">
-          <div className="story-panel story-panel--hero w-full max-w-md text-center">
-            <h1 className="hero-title invite-title text-[clamp(2.5rem,8vw,4.5rem)] leading-tight font-serif text-boda-texto">
+        <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
+          <div className="w-full max-w-md text-center story-panel story-panel--hero">
+            <h1 className="font-serif text-[clamp(2.5rem,8vw,4.5rem)] text-boda-texto leading-tight hero-title invite-title">
               Wedingo
             </h1>
-            <p className="mt-4 text-[clamp(1rem,3vw,1.35rem)] leading-relaxed font-serif text-boda-texto/80">
+            <p className="mt-4 font-serif text-[clamp(1rem,3vw,1.35rem)] text-boda-texto/80 leading-relaxed">
               Crea y comparte tu invitación de boda personalizada.
             </p>
-            <div className="story-divider my-6" />
-            <p className="text-[0.95rem] leading-relaxed text-boda-texto/60">
+            <div className="my-6 story-divider" />
+            <p className="text-[0.95rem] text-boda-texto/60 leading-relaxed">
               Gestiona los datos de tu invitación, comparte un enlace único con tus invitados y recibe sus confirmaciones de asistencia.
             </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <a href="/setup" className="setup-button text-sm">
+            <div className="flex flex-wrap justify-center gap-3 mt-8">
+              <a href="/setup" className="text-sm setup-button">
                 Crear invitación
               </a>
             </div>

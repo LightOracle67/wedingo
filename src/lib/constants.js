@@ -104,6 +104,7 @@ export const defaultConfig = {
   backgroundImage: "",
   backgroundImageLabel: "",
   backgroundImageSource: "",
+  backgroundImageStorage: "",
 
   sectionOrder: STORY_SECTION_ORDER.join(","),
   hiddenSections: "",

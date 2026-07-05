@@ -2,11 +2,12 @@ import { createContext, useContext, useCallback, useEffect, useMemo, useRef, use
 import { useLocation } from "react-router-dom";
 import { getDoc, setDoc } from "firebase/firestore";
 import { invitationDocRef } from "../lib/firebase";
-import { ALLOWED_UPLOAD_TYPES, defaultConfig, MONTH_OPTIONS, MONTH_VALUE_TO_NUMBER, STORY_SECTION_ORDER, THEME_VALUES } from "../lib/constants";
+import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES, defaultConfig, MONTH_OPTIONS, MONTH_VALUE_TO_NUMBER, STORY_SECTION_ORDER, THEME_VALUES } from "../lib/constants";
 import { normalizeConfig } from "../lib/normalize-config";
 import { decodeInviteConfig } from "../lib/invite-config-codec";
 import { getValidCoordinates } from "../lib/geo-utils";
 import { compressImage } from "../lib/image-utils";
+import { uploadBackgroundImage, deleteBackgroundImage } from "../lib/storage-utils";
 import { useCalendar } from "../hooks/useCalendar";
 import { useFieldHandlers } from "../hooks/useFieldHandlers";
 import { useRsvp } from "../hooks/useRsvp";
@@ -36,6 +37,7 @@ export function AppProvider({ children }) {
   const [locationMapLoading, setLocationMapLoading] = useState(false);
   const [locationMapTarget, setLocationMapTarget] = useState(null);
   const locationMapContainerRef = useRef(null);
+  const isSavingRef = useRef(false);
 
   const location = useLocation();
 
@@ -87,7 +89,7 @@ export function AppProvider({ children }) {
     handleYearChange, handleCoordinateChange,
   } = useFieldHandlers(updateFormField, maxAllowedYear, formData.weddingMinute);
 
-  const { autoSaveTimerRef } = useAutoSave(hasStoredConfig, inviteToken, formData, config, setSaveMessage);
+  const { autoSaveTimerRef } = useAutoSave(hasStoredConfig, inviteToken, formData, config, setSaveMessage, isSavingRef);
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -207,16 +209,29 @@ export function AppProvider({ children }) {
   }, [hasStoredConfig, refreshSetupToken]);
 
   const handleClearBackground = useCallback(() => {
+    const storagePath = formData.backgroundImageStorage;
+    if (storagePath) {
+      deleteBackgroundImage(storagePath);
+    }
     applyBackgroundImage("", "", "");
-  }, [applyBackgroundImage]);
+    setFormData(prev => ({ ...prev, backgroundImageStorage: "" }));
+  }, [applyBackgroundImage, formData.backgroundImageStorage]);
 
-  const handleSelectPreviewBackground = useCallback((backgroundImage, backgroundImageLabel, backgroundImageSource = "openfreemap") => {
-    applyBackgroundImage(backgroundImage, backgroundImageLabel, backgroundImageSource);
-  }, [applyBackgroundImage]);
+  const handleSelectPreviewBackground = useCallback(async (backgroundImage, backgroundImageLabel, backgroundImageSource = "openfreemap") => {
+    const prevStoragePath = formData.backgroundImageStorage;
+    try {
+      const { downloadUrl, storagePath } = await uploadBackgroundImage(inviteToken, backgroundImage);
+      applyBackgroundImage(downloadUrl, backgroundImageLabel, backgroundImageSource);
+      setFormData(prev => ({ ...prev, backgroundImageStorage: storagePath }));
+      if (prevStoragePath) deleteBackgroundImage(prevStoragePath);
+    } catch {
+      applyBackgroundImage(backgroundImage, backgroundImageLabel, backgroundImageSource);
+    }
+  }, [inviteToken, applyBackgroundImage, formData.backgroundImageStorage]);
 
-  const handleBackgroundUpload = useCallback((event) => {
+  const handleBackgroundUpload = useCallback(async (event) => {
     const file = event.target.files?.[0];
-    if (!file) return;
+    if (!file) { event.target.value = ""; return; }
     if (!ALLOWED_UPLOAD_TYPES.has(file.type)) {
       setSaveError("Formato no permitido. Usa JPG o PNG.");
       event.target.value = "";
@@ -228,19 +243,26 @@ export function AppProvider({ children }) {
       return;
     }
     setSaveError("");
-    setSaveMessage("Comprimiendo imagen...");
-    compressImage(file).then((dataUrl) => {
-      applyBackgroundImage(dataUrl, file.name, "upload");
+    setSaveMessage("Subiendo imagen...");
+    try {
+      const dataUrl = await compressImage(file);
+      const { downloadUrl, storagePath } = await uploadBackgroundImage(inviteToken, dataUrl);
+      applyBackgroundImage(downloadUrl, file.name, "upload");
+      setFormData(prev => ({ ...prev, backgroundImageStorage: storagePath }));
       setSaveMessage("");
-    }).catch(() => {
+    } catch {
       setSaveError("No se pudo procesar la imagen. Intenta con otra.");
-    });
+    }
     event.target.value = "";
-  }, [applyBackgroundImage]);
+  }, [inviteToken, applyBackgroundImage]);
 
   const handleSaveSetup = useCallback(async (event) => {
     event.preventDefault();
     if (autoSaveTimerRef.current) clearTimeout(autoSaveTimerRef.current);
+    if (isSavingRef.current) {
+      setSaveError("Ya se está guardando. Espera un momento.");
+      return;
+    }
     setSaveError("");
     setSaveMessage("");
 
@@ -347,7 +369,18 @@ export function AppProvider({ children }) {
       return;
     }
 
-    const payload = { ...defaultConfig, ...sanitized };
+    let backgroundToSave = sanitized.backgroundImage;
+    let storagePathToSave = sanitized.backgroundImageStorage;
+
+    if (backgroundToSave && backgroundToSave.startsWith("data:image/") && !storagePathToSave) {
+      try {
+        const result = await uploadBackgroundImage(inviteToken, backgroundToSave);
+        backgroundToSave = result.downloadUrl;
+        storagePathToSave = result.storagePath;
+      } catch {}
+    }
+
+    const payload = { ...defaultConfig, ...sanitized, backgroundImage: backgroundToSave, backgroundImageStorage: storagePathToSave };
     if (hiddenSet.has("details") && hasStoredConfig) {
       payload.weddingDay = config.weddingDay;
       payload.weddingMonth = config.weddingMonth;
@@ -356,6 +389,7 @@ export function AppProvider({ children }) {
       payload.weddingMinute = config.weddingMinute;
     }
 
+    isSavingRef.current = true;
     try {
       await setDoc(invitationDocRef(inviteToken), payload);
       setConfig(payload);
@@ -366,8 +400,10 @@ export function AppProvider({ children }) {
       setSaveMessage("Configuración guardada correctamente.");
     } catch {
       setSaveError("No se pudo guardar la configuración. Si es la primera vez, prueba a entrar desde el panel privado.");
+    } finally {
+      isSavingRef.current = false;
     }
-  }, [hasStoredConfig, isTokenVerified, formData, maxAllowedYear, inviteToken, config, autoSaveTimerRef, setSetupToken, setSetupTokenInput]);
+  }, [hasStoredConfig, isTokenVerified, formData, maxAllowedYear, inviteToken, config, autoSaveTimerRef, isSavingRef, setSetupToken, setSetupTokenInput]);
 
   const value = useMemo(() => ({
     config, formData, hasStoredConfig,

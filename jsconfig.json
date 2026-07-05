@@ -6,10 +6,6 @@
     "checkJs": true,
     "strict": false,
     "jsx": "react-jsx",
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    },
     "skipLibCheck": true,
     "noEmit": true,
     "forceConsistentCasingInFileNames": true,

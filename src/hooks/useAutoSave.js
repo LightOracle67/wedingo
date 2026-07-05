@@ -4,18 +4,22 @@ import { invitationDocRef } from "../lib/firebase";
 import { normalizeConfig } from "../lib/utils";
 import { defaultConfig } from "../lib/constants";
 
-export function useAutoSave(hasStoredConfig, inviteToken, formData, config, onSaveMessage) {
+export function useAutoSave(hasStoredConfig, inviteToken, formData, config, onSaveMessage, isSavingRef) {
   const autoSaveTimerRef = useRef(null);
 
   const doSave = useCallback(async (data) => {
+    if (isSavingRef?.current) return null;
+    if (isSavingRef) isSavingRef.current = true;
     const payload = { ...defaultConfig, ...normalizeConfig(data) };
     try {
       await setDoc(invitationDocRef(inviteToken), payload);
       return payload;
     } catch {
       return null;
+    } finally {
+      if (isSavingRef) isSavingRef.current = false;
     }
-  }, [inviteToken]);
+  }, [inviteToken, isSavingRef]);
 
   useEffect(() => {
     if (!hasStoredConfig || !inviteToken) return;
