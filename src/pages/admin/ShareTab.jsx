@@ -1,31 +1,29 @@
-import { memo, useCallback } from "react";
+import { memo, useCallback, useMemo } from "react";
+import { randomMessage } from "../../lib/invite-messages";
 
 const ShareTab = memo(function ShareTab({ inviteToken, config, formattedDate }) {
   const baseUrl = `${window.location.origin}/${inviteToken}`;
   const inviteUrl = `${baseUrl}?invitar`;
   const coupleName = `${config.firstName} & ${config.secondName}`;
 
+  const shareMessage = useMemo(() => randomMessage(coupleName), [coupleName]);
+
   const shareVia = useCallback((url) => {
     window.open(url, "_blank", "noreferrer");
   }, []);
 
   const shareWhatsApp = useCallback(() => {
-    const message = formattedDate
-      ? `${coupleName} te invitan a su boda, que se celebrará el ${formattedDate}. Nos encantaría contar contigo.\n\n${inviteUrl}`
-      : `${coupleName} te invitan a su boda. Nos encantaría contar contigo.\n\n${inviteUrl}`;
+    const message = `${shareMessage}\n\n${inviteUrl}`;
     shareVia(`https://wa.me/?text=${encodeURIComponent(message)}`);
-  }, [coupleName, formattedDate, inviteUrl, shareVia]);
+  }, [shareMessage, inviteUrl, shareVia]);
 
   const shareInstagram = useCallback(() => {
-    const text = formattedDate
-      ? `${coupleName} nos casamos el ${formattedDate}. ${inviteUrl}`
-      : `${coupleName} nos casamos. ${inviteUrl}`;
-    shareVia(`https://instagram.com?${new URLSearchParams({ text })}`);
-  }, [coupleName, formattedDate, inviteUrl, shareVia]);
+    shareVia(`https://instagram.com?${new URLSearchParams({ text: `${shareMessage}\n\n${inviteUrl}` })}`);
+  }, [shareMessage, inviteUrl, shareVia]);
 
   const shareFacebook = useCallback(() => {
-    shareVia(`https://facebook.com/sharer/sharer.php?${new URLSearchParams({ u: inviteUrl, quote: `${coupleName} te invitan a su boda.` })}`);
-  }, [coupleName, inviteUrl, shareVia]);
+    shareVia(`https://facebook.com/sharer/sharer.php?${new URLSearchParams({ u: inviteUrl, quote: shareMessage })}`);
+  }, [shareMessage, inviteUrl, shareVia]);
 
   const printPdf = useCallback(() => {
     window.open(`${baseUrl}?imprimir`, "_blank");
