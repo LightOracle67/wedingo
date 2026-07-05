@@ -1,7 +1,7 @@
 import { memo, useCallback, useMemo } from "react";
 import { randomMessage } from "../../lib/invite-messages";
 
-const ShareTab = memo(function ShareTab({ inviteToken, config, formattedDate }) {
+const ShareTab = memo(function ShareTab({ inviteToken, config, formattedDate, addToast }) {
   const baseUrl = `${window.location.origin}/${inviteToken}`;
   const inviteUrl = `${baseUrl}?invitar`;
   const coupleName = `${config.firstName} & ${config.secondName}`;
@@ -17,9 +17,15 @@ const ShareTab = memo(function ShareTab({ inviteToken, config, formattedDate }) 
     shareVia(`https://wa.me/?text=${encodeURIComponent(message)}`);
   }, [shareMessage, inviteUrl, shareVia]);
 
-  const shareInstagram = useCallback(() => {
-    shareVia(`https://instagram.com?${new URLSearchParams({ text: `${shareMessage}\n\n${inviteUrl}` })}`);
-  }, [shareMessage, inviteUrl, shareVia]);
+  const shareInstagram = useCallback(async () => {
+    const text = `${shareMessage}\n\n${inviteUrl}`;
+    try {
+      await navigator.clipboard.writeText(text);
+      if (addToast) addToast("success", "Mensaje copiado. Pégalo en Instagram.");
+    } catch {
+      if (addToast) addToast("error", "No se pudo copiar el mensaje.");
+    }
+  }, [shareMessage, inviteUrl, addToast]);
 
   const shareFacebook = useCallback(() => {
     shareVia(`https://facebook.com/sharer/sharer.php?${new URLSearchParams({ u: inviteUrl, quote: shareMessage })}`);
