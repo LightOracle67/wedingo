@@ -73,7 +73,7 @@ service cloud.firestore {
         && request.resource.data.note.size() <= 240
         && isSafeText(request.resource.data.note);
 
-      allow read: if isSuperAdmin();
+      allow read: if true;
 
       allow update: if false;
       allow delete: if isSuperAdmin();
