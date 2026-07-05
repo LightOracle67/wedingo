@@ -9,12 +9,8 @@ export default function SetupPage() {
   const { inviteToken } = useParams();
   const {
     hasStoredConfig, isConfigLoading, configLoadError,
-    setupToken, setupTokenInput, setSetupTokenInput,
-    isTokenVerifying, isTokenVerified,
     authMessage, authMessageType,
-    handleTokenLogin, handleResetSetupToken,
     saveMessage, config,
-    confirmTokenInput, setConfirmTokenInput,
   } = useApp();
 
   const { addToast } = useToast();
@@ -91,70 +87,7 @@ export default function SetupPage() {
     return <Navigate to={`/${inviteToken}/admin`} replace />;
   }
 
-  if (!isTokenVerified) {
-    return (
-      <div className="setup-layout">
-        <section className="setup-card allow-select" aria-label="Acceso con código">
-          <header className="setup-header">
-            <div>
-              <p className="setup-eyebrow">Primeros pasos</p>
-              <h1 className="setup-title">Accede con tu código</h1>
-              <p className="setup-subtitle">
-                Introduce tu usuario y el código de acceso para gestionar la invitación.
-              </p>
-            </div>
-          </header>
 
-          <form className="setup-form" onSubmit={(e) => { e.preventDefault(); handleTokenLogin(); }}>
-            <label className="setup-label" htmlFor="setupTokenLoginCode">
-              Código de acceso
-            </label>
-            <p className="setup-help setup-help--tight">
-              Cópialo tal como aparece. Si no lo tienes, genera uno nuevo.
-            </p>
-            <input
-              id="setupTokenLoginCode"
-              className="setup-input setup-token-input"
-              type="password"
-              value={setupTokenInput}
-              onChange={(e) => setSetupTokenInput(e.target.value.toUpperCase())}
-              placeholder="Pega aquí el código de acceso"
-              maxLength={47}
-              autoComplete="current-password"
-              spellCheck="false"
-            />
-            {setupToken ? <p className="setup-token-display">Código activo (solo tú lo ves).</p> : null}
-
-            <label className="setup-label" htmlFor="setupConfirmReset">
-              Confirmar
-            </label>
-            <p className="setup-help setup-help--tight">
-              Para generar un código nuevo, escribe el código de acceso actual.
-            </p>
-            <input
-              id="setupConfirmReset"
-              className="setup-input"
-              value={confirmTokenInput}
-              onChange={(e) => setConfirmTokenInput(e.target.value)}
-              placeholder="Pega aquí el código actual"
-              autoComplete="off"
-              spellCheck="false"
-            />
-
-            <div className="setup-actions">
-              <button className="setup-button" type="submit" disabled={isTokenVerifying}>
-                {isTokenVerifying ? "Comprobando..." : "Entrar"}
-              </button>
-              <button className="setup-button setup-button--ghost" type="button" onClick={handleResetSetupToken}>
-                Generar nuevo código
-              </button>
-            </div>
-
-          </form>
-        </section>
-      </div>
-    );
-  }
 
   const coupleName = `${config.firstName} & ${config.secondName}`;
 
