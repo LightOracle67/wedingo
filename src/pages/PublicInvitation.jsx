@@ -92,7 +92,12 @@ export default function PublicInvitation() {
     const printWhenReady = async () => {
       await document.fonts.ready;
       await new Promise((r) => { if (document.readyState === "complete") r(); else window.addEventListener("load", r, { once: true }); });
-      await new Promise((r) => setTimeout(r, 200));
+      await new Promise((r) => setTimeout(r, 500));
+      document.body.style.overflow = "";
+      const mapContainer = document.querySelector(".maplibregl-map");
+      if (mapContainer) {
+        await new Promise((r) => window.requestAnimationFrame(r));
+      }
       window.onafterprint = () => window.close();
       window.print();
     };
