@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
-import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
-import { db, INVITATIONS_COLLECTION_REF } from "../../lib/firebase";
+import { deleteDoc, doc, getDocs } from "firebase/firestore";
+import { INVITATIONS_COLLECTION_REF } from "../../lib/firebase";
 import { searchInvitations, formatBytes } from "../../lib/superadmin-utils";
 
 export default function InvitationsTab() {

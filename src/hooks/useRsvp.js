@@ -30,8 +30,9 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType) {
   const dietaryInfoStr = [rsvpForm.dietarySelection, rsvpForm.dietaryOther].flat().filter(Boolean).join(", ");
 
   useEffect(() => {
+    const timeout = rsvpSubmitTimeoutRef.current;
     return () => {
-      if (rsvpSubmitTimeoutRef.current) clearTimeout(rsvpSubmitTimeoutRef.current);
+      if (timeout) clearTimeout(timeout);
     };
   }, []);
 
@@ -77,7 +78,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType) {
 
   const updateRsvpField = useCallback((field, value) => {
     if (field === "attendance" && value === "no") {
-      setRsvpForm((current) => ({ ...current, attendance: value, companions: "0" }));
+      setRsvpForm((current) => ({ ...current, attendance: value, companions: 0 }));
       return;
     }
     setRsvpForm((current) => ({ ...current, [field]: value }));

@@ -34,7 +34,7 @@ export const getValidCoordinates = (latitudeValue, longitudeValue) => {
 export const resolveLocationTarget = async ({ place, latitudeValue, longitudeValue }) => {
   const exactCoordinates = getValidCoordinates(latitudeValue, longitudeValue);
   if (exactCoordinates) {
-    return { ...exactCoordinates, label: place || "Ubicacion configurada" };
+    return { ...exactCoordinates, label: place || "Ubicación configurada" };
   }
   return geocodeLocation(place);
 };

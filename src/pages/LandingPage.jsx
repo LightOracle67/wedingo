@@ -45,7 +45,7 @@ export default function LandingPage() {
 
   const handleCreate = () => {
     const token = generateInviteToken();
-    sessionStorage.setItem("weddingo_invite_token", token);
+    sessionStorage.setItem("wedin_invite_token", token);
     navigate(`/${token}/setup`);
   };
 
@@ -99,7 +99,7 @@ export default function LandingPage() {
         } catch {}
       }
 
-      sessionStorage.setItem("weddingo_invite_token", target);
+      sessionStorage.setItem("wedin_invite_token", target);
       saveSession("admin", username);
       setTokenLoginUsername(username);
       setIsTokenVerified(true);
