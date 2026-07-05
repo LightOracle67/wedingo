@@ -1578,6 +1578,11 @@ h6 {
 .setup-card {
   position: relative;
   width: min(100%, 760px);
+  max-height: 90dvh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
   background: linear-gradient(150deg, var(--setup-grad-start), var(--setup-grad-end));
   border: 1px solid var(--setup-border);
   border-radius: 1.4rem;
