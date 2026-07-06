@@ -16,7 +16,6 @@ import InfoSection from "./sections/InfoSection";
 import StorySection from "./sections/StorySection";
 import GiftsSection from "./sections/GiftsSection";
 import AccommodationSection from "./sections/AccommodationSection";
-import TransportSection from "./sections/TransportSection";
 import GallerySection from "./sections/GallerySection";
 import RsvpSection from "./sections/RsvpSection";
 
@@ -27,7 +26,6 @@ const SECTION_COMPONENTS = {
   story: StorySection,
   gifts: GiftsSection,
   accommodation: AccommodationSection,
-  transport: TransportSection,
   gallery: GallerySection,
   rsvp: RsvpSection,
 };
@@ -416,6 +414,7 @@ export default function PublicInvitation() {
       locationMapError,
       locationMapTarget,
       configWeddingPlace: config.weddingPlace,
+      transportInfo: config.transportInfo,
     },
     info: {
       weddingSchedule: config.weddingSchedule,
@@ -431,9 +430,6 @@ export default function PublicInvitation() {
     },
     accommodation: {
       accommodationInfo: config.accommodationInfo,
-    },
-    transport: {
-      transportInfo: config.transportInfo,
     },
     gallery: {
       galleryImages: config.galleryImages,

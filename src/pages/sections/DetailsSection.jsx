@@ -6,7 +6,7 @@ const DetailsSection = memo(function DetailsSection({
   formattedDate, formattedTime, hasLocationData, locationDescription,
   calendarLink,
   locationMapContainerRef, locationMapLoading, locationMapError, locationMapTarget,
-  configWeddingPlace,
+  configWeddingPlace, transportInfo,
 }) {
   return (
     <section
@@ -39,6 +39,15 @@ const DetailsSection = memo(function DetailsSection({
             >
               Añadir al calendario
             </a>
+          </div>
+        ) : null}
+        {transportInfo ? (
+          <div className="story-divider" />
+        ) : null}
+        {transportInfo ? (
+          <div style={{ marginTop: "0.5rem" }}>
+            <p className="story-eyebrow" style={{ fontSize: "0.72rem" }}>Transporte</p>
+            <p className="story-note whitespace-pre-line" style={{ marginTop: "0.2rem" }}>{transportInfo}</p>
           </div>
         ) : null}
         {hasLocationData ? (
