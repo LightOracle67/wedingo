@@ -1,7 +1,7 @@
 import { memo, useRef, useState, useEffect } from "react";
 import heroBackdropSrc from "../../assets/rings.png";
 
-const HeroSection = memo(function HeroSection({ style, className, firstName, secondName, inviteMessage, countdown, couplePhoto, musicUrl, darkMode }) {
+const HeroSection = memo(function HeroSection({ style, className, firstName, secondName, inviteMessage, countdown, couplePhoto, musicUrl, darkMode, godparent1, godparent2 }) {
   const [playing, setPlaying] = useState(false);
   const audioRef = useRef(null);
 
@@ -48,6 +48,11 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
           <p className="hero-message invite-copy mt-3 text-[clamp(0.95rem,2.8vw,1.25rem)] leading-relaxed font-serif text-boda-texto sm:mt-4 sm:text-[clamp(1rem,2.5vw,1.35rem)]">
             {inviteMessage}
           </p>
+          {godparent1 && godparent2 ? (
+            <p className="invite-copy mt-2" style={{ fontSize: "clamp(0.8rem, 2vw, 1rem)", opacity: 0.7, fontStyle: "italic", letterSpacing: "0.04em" }}>
+              Con la bendición de sus padrinos {godparent1} y {godparent2}
+            </p>
+          ) : null}
           {countdown ? (
             <div className="hero-countdown mt-6">
               <p className="text-[clamp(0.8rem,2.2vw,1rem)] font-sans tracking-widest uppercase text-boda-texto/60">
