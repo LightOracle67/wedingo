@@ -247,6 +247,21 @@ export default function SetupForm({ prefix = "" }) {
           ) : null}
         </div>
 
+        <fieldset className="setup-name-group">
+          <legend className="setup-label">Padrinos (opcional)</legend>
+          <div className="setup-name-grid">
+            <div className="setup-name-col">
+              <label className="setup-label" htmlFor={id("godparent1")}>Primer padrino/madrina</label>
+              <input id={id("godparent1")} className="setup-input" value={formData.godparent1} onChange={(e) => updateFormField("godparent1", e.target.value.slice(0, 40))} placeholder="Nombre" autoComplete="off" />
+            </div>
+            <div className="setup-name-col">
+              <label className="setup-label" htmlFor={id("godparent2")}>Segundo padrino/madrina</label>
+              <input id={id("godparent2")} className="setup-input" value={formData.godparent2} onChange={(e) => updateFormField("godparent2", e.target.value.slice(0, 40))} placeholder="Nombre" autoComplete="off" />
+            </div>
+          </div>
+          <p className="setup-help">Si escribes un nombre, el otro también es obligatorio.</p>
+        </fieldset>
+
         <label className="setup-label" htmlFor={id("musicUrl")}>Música de fondo</label>
         <input id={id("musicUrl")} className="setup-input" value={formData.musicUrl} onChange={(e) => updateFormField("musicUrl", e.target.value.slice(0, 500))} placeholder="https://example.com/cancion.mp3" autoComplete="off" />
         <p className="setup-help">Enlace a un archivo de audio MP3 para reproducir en la portada.</p>
@@ -524,25 +539,7 @@ export default function SetupForm({ prefix = "" }) {
       </CollapsibleSection>
       ) : null}
 
-      {!hiddenSet.has("godparents") ? (
-      <CollapsibleSection
-        title="Padrinos"
-        hint="Nombres de los padrinos"
-      >
-        <label className="setup-label" htmlFor={id("godparents")}>
-          Padrinos y testigos
-        </label>
-        <textarea
-          id={id("godparents")}
-          className="setup-textarea"
-          value={formData.godparents}
-          onChange={(e) => updateFormField("godparents", e.target.value.slice(0, 1000))}
-          placeholder="Ejemplo: Padrinos: María García y Juan Pérez. Testigos: Ana López y Pedro Sánchez."
-          rows={3}
-        />
-        <p className="setup-help">Nombres de los padrinos y/o testigos de la boda.</p>
-      </CollapsibleSection>
-      ) : null}
+
 
       {!hiddenSet.has("gallery") ? (
       <CollapsibleSection

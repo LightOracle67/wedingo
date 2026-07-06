@@ -436,7 +436,8 @@ export default function PublicInvitation() {
       transportInfo: config.transportInfo,
     },
     godparents: {
-      godparents: config.godparents,
+      godparent1: config.godparent1,
+      godparent2: config.godparent2,
     },
     gallery: {
       galleryImages: config.galleryImages,
@@ -456,7 +457,7 @@ export default function PublicInvitation() {
     config.firstName, config.secondName, config.inviteMessage,
     config.weddingPlace, config.weddingSchedule, config.weddingDressCode,
     config.kidsPolicy, config.storyText, config.giftsInfo, config.accommodationInfo,
-    config.transportInfo, config.godparents, config.galleryImages,
+    config.transportInfo, config.godparent1, config.godparent2, config.galleryImages,
     config.couplePhoto, config.musicUrl, config.darkMode, config.bankInfo,
     countdown, formattedDate, formattedTime,
     hasLocationData, locationDescription, calendarLink,

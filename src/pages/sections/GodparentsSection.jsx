@@ -1,6 +1,7 @@
 import { memo } from "react";
 
-const GodparentsSection = memo(function GodparentsSection({ style, className, godparents }) {
+const GodparentsSection = memo(function GodparentsSection({ style, className, godparent1, godparent2 }) {
+  const hasAny = godparent1 || godparent2;
   return (
     <section
       data-story-section="godparents"
@@ -10,8 +11,10 @@ const GodparentsSection = memo(function GodparentsSection({ style, className, go
       <div className="story-card story-panel story-card--info w-full text-center">
         <p className="story-eyebrow">Padrinos</p>
         <h2 className="story-title">Nuestros padrinos</h2>
-        {godparents ? (
-          <p className="story-copy mt-4 whitespace-pre-line">{godparents}</p>
+        {hasAny ? (
+          <p className="story-copy mt-4">
+            {godparent1 && godparent2 ? `${godparent1} & ${godparent2}` : godparent1 || godparent2}
+          </p>
         ) : (
           <p className="story-copy mt-4" style={{ fontStyle: "italic" }}>
             Pronto compartiremos los nombres de nuestros padrinos.
