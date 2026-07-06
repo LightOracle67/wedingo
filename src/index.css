@@ -2547,8 +2547,7 @@ a:focus-visible {
   margin-top: 1.25rem;
   border-bottom: 1px solid color-mix(in srgb, var(--setup-border) 60%, transparent);
   padding-bottom: 0;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  flex-wrap: wrap;
 }
 
 .admin-tab {
