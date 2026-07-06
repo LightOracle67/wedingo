@@ -36,8 +36,6 @@ export const normalizeConfig = (value) => ({
   bankInfo: s(value?.bankInfo),
   accommodationInfo: s(value?.accommodationInfo),
   transportInfo: s(value?.transportInfo),
-  godparent1: s(value?.godparent1),
-  godparent2: s(value?.godparent2),
   musicUrl: s(value?.musicUrl),
   galleryImages: s(value?.galleryImages),
   kidsPolicy: s(value?.kidsPolicy),
