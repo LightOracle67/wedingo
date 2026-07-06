@@ -1594,19 +1594,32 @@ h6 {
 .setup-card {
   position: relative;
   width: min(100%, 760px);
-  height: calc(100dvh - var(--navbar-height, 0px) - clamp(1.5rem, 5vw, 3rem));
+  min-height: calc(100dvh - var(--navbar-height, 0px) - clamp(1.5rem, 5vw, 3rem));
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
   scrollbar-width: thin;
-  background: linear-gradient(150deg, var(--setup-grad-start), var(--setup-grad-end));
-  border: 1px solid var(--setup-border);
+  background: var(--invite-shell-bg);
+  border: 1px solid var(--invite-shell-border);
   border-radius: 1.4rem;
   box-shadow:
-    0 25px 60px rgba(0, 0, 0, 0.38),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+    0 22px 60px var(--invite-shell-shadow),
+    0 0 0 1px color-mix(in srgb, var(--invite-shell-border) 70%, transparent),
+    0 0 34px var(--invite-shell-glow);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.setup-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 18% 20%, color-mix(in srgb, var(--invite-shell-glow) 85%, transparent) 0%, transparent 46%),
+    linear-gradient(165deg, color-mix(in srgb, var(--invite-shell-bg) 65%, transparent), transparent 62%);
+  opacity: 0.86;
+  pointer-events: none;
 }
 
 .setup-card--wide {
