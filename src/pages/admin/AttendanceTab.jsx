@@ -6,7 +6,7 @@ const PAGE_SIZES = [10, 25, 50, 100];
 const AttendanceTab = memo(function AttendanceTab({
   searchQuery, setSearchQuery,
   attendanceFilter, setAttendanceFilter,
-  filteredEntries, exportCsv,
+  filteredEntries,
   rsvpEntries, handleClearRsvpEntries, formatDate,
 }) {
   const dietary = useMemo(() => getDietarySummary(rsvpEntries), [rsvpEntries]);
@@ -45,9 +45,6 @@ const AttendanceTab = memo(function AttendanceTab({
             </button>
           ))}
         </div>
-        <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={exportCsv}>
-          Exportar CSV
-        </button>
       </div>
 
       <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginBottom: "0.75rem" }}>

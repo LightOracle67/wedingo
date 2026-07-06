@@ -66,30 +66,6 @@ export default function AdminPage() {
     setAttendanceFilter(filter);
   }, []);
 
-  const exportCsv = useCallback(() => {
-    const sanitize = (val) => {
-      const s = String(val);
-      if (/^[=+\-@]/.test(s)) return `"'${s}"`;
-      return `"${s.replace(/"/g, '""')}"`;
-    };
-    const header = "Nombre,Asistencia,Acompañantes,Nota,Fecha";
-    const rows = rsvpEntries.map((e) =>
-      [
-        sanitize(e.guestName),
-        e.attendance === "yes" ? "Sí" : "No",
-        e.attendance === "yes" ? e.companions : 0,
-        sanitize(e.note || ""),
-        formatDate(e.submittedAt),
-      ].join(","),
-    );
-    const blob = new Blob(["\uFEFF" + header + "\n" + rows.join("\n")], { type: "text/csv;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `invitados_${config.firstName}_${config.secondName}.csv`;
-    a.click();
-    URL.revokeObjectURL(url);
-  }, [rsvpEntries, config.firstName, config.secondName]);
 
   if (isConfigLoading) {
     return (
@@ -205,7 +181,6 @@ export default function AdminPage() {
               rsvpEntries={rsvpEntries}
               setActiveTab={setActiveTabAndFilter}
               setAttendanceFilter={setAttendanceFilterValue}
-              exportCsv={exportCsv}
               exportPdf={exportPdf}
               formatDate={formatDate}
               onRestore={reloadConfig}
@@ -222,7 +197,6 @@ export default function AdminPage() {
               attendanceFilter={attendanceFilter}
               setAttendanceFilter={setAttendanceFilterValue}
               filteredEntries={filteredEntries}
-              exportCsv={exportCsv}
               rsvpEntries={rsvpEntries}
               handleClearRsvpEntries={handleClearRsvpEntries}
               formatDate={formatDate}
