@@ -28,7 +28,16 @@ const DetailsSection = memo(function DetailsSection({
           {formattedTime
             ? `Te esperamos para compartir este momento tan especial. Comenzamos a las ${formattedTime}. Más abajo encontrarás el mapa de ubicación.`
             : "Te esperamos para compartir este momento tan especial. Más abajo encontrarás el mapa de ubicación."}
-        </p>
+          </p>
+        {transportInfo ? (
+          <div className="story-divider" />
+        ) : null}
+        {transportInfo ? (
+          <div style={{ marginTop: "0.5rem" }}>
+            <p className="story-eyebrow" style={{ fontSize: "0.72rem" }}>Transporte</p>
+            <p className="story-note whitespace-pre-line" style={{ marginTop: "0.2rem" }}>{transportInfo}</p>
+          </div>
+        ) : null}
         {calendarLink ? (
           <div className="story-calendar-actions">
             <a
@@ -39,15 +48,6 @@ const DetailsSection = memo(function DetailsSection({
             >
               Añadir al calendario
             </a>
-          </div>
-        ) : null}
-        {transportInfo ? (
-          <div className="story-divider" />
-        ) : null}
-        {transportInfo ? (
-          <div style={{ marginTop: "0.5rem" }}>
-            <p className="story-eyebrow" style={{ fontSize: "0.72rem" }}>Transporte</p>
-            <p className="story-note whitespace-pre-line" style={{ marginTop: "0.2rem" }}>{transportInfo}</p>
           </div>
         ) : null}
         {hasLocationData ? (
