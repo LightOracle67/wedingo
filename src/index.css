@@ -729,7 +729,6 @@ body::after {
 .story-section {
   position: absolute;
   inset: 0;
-  height: 100dvh;
   isolation: isolate;
   display: flex;
   align-items: center;
@@ -757,7 +756,7 @@ body::after {
   z-index: 1;
   border-radius: 1.6rem;
   width: min(100%, 44rem);
-  height: calc(100dvh - var(--navbar-height, 0px) - 2rem);
+  height: calc(100dvh - var(--navbar-height, 0px) - clamp(3rem, 8vw, 6rem));
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
