@@ -25,7 +25,7 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
       className={`${className} relative flex items-center justify-center px-3 py-6 sm:px-6 sm:py-10 lg:px-8 lg:py-12`}
       style={style}
     >
-      <div className="invite-shell story-panel story-panel--hero relative z-10 mx-auto w-full rounded-[2rem] bg-transparent text-center shadow-2xl" style={{ maxWidth: "min(100%, 50rem)", minHeight: "calc(100dvh - var(--navbar-height, 0px) - clamp(3rem, 8vw, 6rem))", padding: "clamp(0.75rem, 2.5vw, 1.5rem)", boxSizing: "border-box", overflowY: "auto" }}>
+      <div className="invite-shell story-panel story-panel--hero relative z-10 mx-auto w-full rounded-[2rem] bg-transparent text-center shadow-2xl" style={{ maxWidth: "min(100%, 32rem)", padding: "clamp(0.6rem, 2vw, 1.2rem)", boxSizing: "border-box", overflowY: "auto" }}>
         <div className="relative z-20">
           {couplePhoto ? (
             <div className="mx-auto mb-4 w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-2" style={{ borderColor: "color-mix(in srgb, var(--invite-shell-border) 80%, transparent)" }}>

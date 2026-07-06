@@ -765,9 +765,8 @@ body::after {
   position: relative;
   z-index: 1;
   border-radius: 1.6rem;
-  width: min(100%, 36rem);
-  min-height: calc(100dvh - var(--navbar-height, 0px) - clamp(3rem, 8vw, 6rem));
-  padding: clamp(0.75rem, 2.5vw, 1.5rem);
+  width: min(100%, 32rem);
+  padding: clamp(0.6rem, 2vw, 1.2rem);
   box-sizing: border-box;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -782,8 +781,8 @@ body::after {
   -webkit-backdrop-filter: blur(3px);
 }
 
-.story-card > * + * {
-  margin-top: 0.75rem;
+.story-section--is-active .story-card {
+  max-height: calc(100dvh - var(--navbar-height, 0px) - clamp(3rem, 8vw, 6rem));
 }
 
 .story-card .story-title {
@@ -2683,7 +2682,7 @@ a:focus-visible {
 /* ── Responsive: Map and large screens ── */
 @media (min-width: 1280px) {
   .story-card {
-    max-width: min(100%, 36rem);
+    max-width: min(100%, 32rem);
   }
 
   .story-title {
