@@ -1,10 +1,11 @@
-import { memo, useMemo } from "react";
+import { memo, useMemo, useState } from "react";
 
 const RsvpSection = memo(function RsvpSection({
   style, className,
   rsvpForm, rsvpEntries, rsvpMessage, isRsvpSubmitting, hasSubmitted,
   updateRsvpField, handleRsvpSubmit, handleDietaryToggle, DIETARY_OPTIONS,
 }) {
+  const [useGroupMode, setUseGroupMode] = useState(false);
   const alreadySubmitted = useMemo(() => {
     const name = rsvpForm.guestName.trim().toLowerCase();
     if (!name) return false;
@@ -12,6 +13,7 @@ const RsvpSection = memo(function RsvpSection({
   }, [rsvpForm.guestName, rsvpEntries]);
 
   const isDisabled = isRsvpSubmitting || hasSubmitted || alreadySubmitted;
+
   return (
     <section
       data-story-section="rsvp"
@@ -26,20 +28,42 @@ const RsvpSection = memo(function RsvpSection({
         </p>
 
         <form className="rsvp-form" onSubmit={handleRsvpSubmit}>
-          <label className="setup-label" htmlFor="rsvpName">Tu nombre</label>
-          <input
-            id="rsvpName"
-            className="setup-input"
-            value={rsvpForm.guestName}
-            onChange={(e) => updateRsvpField("guestName", e.target.value.slice(0, 120))}
-            placeholder="Escribe tu nombre y apellidos"
-            autoComplete="off"
-            required
-          />
+          <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", cursor: "pointer", color: "var(--setup-title)" }}>
+            <input type="checkbox" checked={useGroupMode} onChange={(e) => setUseGroupMode(e.target.checked)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem" }} />
+            Confirmar para varios invitados
+          </label>
+
+          {useGroupMode ? (
+            <>
+              <label className="setup-label" htmlFor="rsvpGroupList">Lista de invitados (un nombre por línea)</label>
+              <textarea
+                id="rsvpGroupList"
+                className="setup-textarea"
+                rows={4}
+                value={rsvpForm.guestList}
+                onChange={(e) => updateRsvpField("guestList", e.target.value.slice(0, 500))}
+                placeholder="María García López&#10;Juan Pérez Sánchez&#10;Ana Martínez Ruiz"
+                autoComplete="off"
+              />
+            </>
+          ) : (
+            <>
+              <label className="setup-label" htmlFor="rsvpName">Tu nombre</label>
+              <input
+                id="rsvpName"
+                className="setup-input"
+                value={rsvpForm.guestName}
+                onChange={(e) => updateRsvpField("guestName", e.target.value.slice(0, 120))}
+                placeholder="Escribe tu nombre y apellidos"
+                autoComplete="off"
+                required
+              />
+            </>
+          )}
 
           <div className="setup-date-grid rsvp-choice-grid">
             <div>
-              <label className="setup-label" htmlFor="rsvpAttendance">¿Asistirás?</label>
+              <label className="setup-label" htmlFor="rsvpAttendance">¿Asistiréis?</label>
               <select
                 id="rsvpAttendance"
                 className="setup-input"

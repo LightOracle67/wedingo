@@ -1,7 +1,7 @@
 import { createContext, useContext, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { getDoc, setDoc } from "firebase/firestore";
-import { invitationDocRef } from "../lib/firebase";
+import { getDoc, setDoc, increment, updateDoc } from "firebase/firestore";
+import { db, invitationDocRef } from "../lib/firebase";
 import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES, defaultConfig, MONTH_OPTIONS, MONTH_VALUE_TO_NUMBER, STORY_SECTION_ORDER, THEME_VALUES } from "../lib/constants";
 import { normalizeConfig } from "../lib/normalize-config";
 import { decodeInviteConfig } from "../lib/invite-config-codec";
@@ -39,6 +39,17 @@ export function AppProvider({ children }) {
   const locationMapContainerRef = useRef(null);
   const isSavingRef = useRef(false);
   const loadedTokenRef = useRef("");
+  const [visitCount, setVisitCount] = useState(0);
+  const trackedRef = useRef(false);
+
+  const trackVisit = useCallback(async (token) => {
+    if (!token || trackedRef.current) return;
+    trackedRef.current = true;
+    try {
+      const ref = invitationDocRef(token);
+      await updateDoc(ref, { _visits: increment(1) });
+    } catch {}
+  }, []);
 
   const location = useLocation();
 
@@ -172,8 +183,13 @@ export function AppProvider({ children }) {
         const hydrated = { ...defaultConfig, ...parsed };
         setConfig(hydrated);
         setFormData(hydrated);
+        setVisitCount(typeof snapshot.data()._visits === "number" ? snapshot.data()._visits : 0);
         setHasStoredConfig(true);
         loadedTokenRef.current = inviteToken;
+        const firstSegment = location.pathname.split("/").filter(Boolean)[0] || "";
+        if (/^[a-zA-Z0-9]{8,12}$/.test(firstSegment) && !["setup", "admin"].includes(firstSegment)) {
+          trackVisit(inviteToken);
+        }
       } catch {
         setHasStoredConfig(false);
         setConfigLoadError("No se pudo cargar la configuración guardada. Revisa la conexión e inténtalo de nuevo.");
@@ -439,6 +455,7 @@ export function AppProvider({ children }) {
     handleDayChange, handleHourChange, handleMinuteChange, handleMinuteBlur,
     handleYearChange, handleCoordinateChange,
     confirmTokenInput, setConfirmTokenInput,
+    visitCount,
   }), [
     config, formData, hasStoredConfig,
     isConfigLoading, configLoadError, inviteToken,
@@ -466,6 +483,7 @@ export function AppProvider({ children }) {
     handleDayChange, handleHourChange, handleMinuteChange, handleMinuteBlur,
     handleYearChange, handleCoordinateChange,
     confirmTokenInput, setConfirmTokenInput,
+    visitCount,
   ]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

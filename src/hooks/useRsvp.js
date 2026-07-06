@@ -16,6 +16,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType) {
   const [rsvpEntries, setRsvpEntries] = useState([]);
   const [rsvpForm, setRsvpForm] = useState({
     guestName: "",
+    guestList: "",
     attendance: "yes",
     companions: "0",
     dietarySelection: [],
@@ -94,40 +95,52 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType) {
     event.preventDefault();
     if (isRsvpSubmitting) return;
 
-    const guestName = rsvpForm.guestName.trim();
-    if (!guestName) {
-      setRsvpMessage("Escribe tu nombre para confirmar la asistencia.");
-      return;
+    const guestNames = rsvpForm.guestList.trim()
+      ? rsvpForm.guestList.split("\n").map(s => s.trim()).filter(Boolean)
+      : [];
+
+    if (rsvpForm.guestList.trim()) {
+      if (!guestNames.length) {
+        setRsvpMessage("Escribe al menos un nombre en la lista de invitados.");
+        return;
+      }
+    } else {
+      const single = rsvpForm.guestName.trim();
+      if (!single) {
+        setRsvpMessage("Escribe tu nombre para confirmar la asistencia.");
+        return;
+      }
+      guestNames.push(single);
     }
 
     const companionsParam = rsvpForm.attendance === "yes" ? rsvpForm.companions : "0";
     const companions = Number.parseInt(companionsParam, 10);
     const companionsCount = Number.isNaN(companions) ? 0 : Math.max(0, Math.min(10, companions));
-
     const dietaryInfo = [rsvpForm.dietarySelection, rsvpForm.dietaryOther].flat().filter(Boolean).join(", ");
-    const responsePayload = {
-      guestName,
-      attendance: rsvpForm.attendance,
-      companions: companionsCount,
-      dietaryInfo,
-      note: rsvpForm.note.trim(),
-      inviteToken: inviteToken,
-      submittedAt: serverTimestamp(),
-    };
 
     setIsRsvpSubmitting(true);
+    const now = new Date().toISOString();
+    const results = [];
     try {
-      const createdDoc = await addDoc(RSVP_COLLECTION_REF, responsePayload);
-      const responseRecord = {
-        ...responsePayload,
-        id: createdDoc.id,
-        submittedAt: new Date().toISOString(),
-      };
-      setRsvpEntries((currentEntries) => [responseRecord, ...currentEntries]);
+      for (const name of guestNames) {
+        const payload = {
+          guestName: name,
+          attendance: rsvpForm.attendance,
+          companions: companionsCount,
+          dietaryInfo,
+          note: rsvpForm.note.trim(),
+          inviteToken,
+          submittedAt: serverTimestamp(),
+        };
+        const doc = await addDoc(RSVP_COLLECTION_REF, payload);
+        results.push({ ...payload, id: doc.id, submittedAt: now });
+      }
+      setRsvpEntries((current) => [...results, ...current]);
+      const count = guestNames.length;
       setRsvpMessage(
         rsvpForm.attendance === "yes"
-          ? `Gracias, ${guestName}. Tu asistencia quedó registrada (${companionsCount} acompañante${companionsCount === 1 ? "" : "s"}, contándote a ti).`
-          : `Gracias, ${guestName}. Lamentamos que no puedas asistir.`,
+          ? `Gracias. ${count} asistencia${count > 1 ? "s" : ""} registrada${count > 1 ? "s" : ""}.`
+          : `Gracias. ${count} confirmación${count > 1 ? "es" : ""} registrada${count > 1 ? "s" : ""}.`,
       );
       setHasSubmitted(true);
     } catch {

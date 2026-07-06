@@ -144,6 +144,15 @@ export default function AdminPage() {
 
   const coupleName = `${config.firstName} & ${config.secondName}`;
 
+  const exportPdf = useCallback(() => {
+    const rows = rsvpEntries.map((e) =>
+      `<tr><td>${e.guestName}</td><td>${e.attendance === "yes" ? "Sí" : "No"}</td><td>${e.attendance === "yes" ? e.companions : 0}</td><td>${e.dietaryInfo || ""}</td></tr>`
+    ).join("");
+    const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Invitados ${coupleName}</title><style>body{font-family:sans-serif;padding:2rem}table{width:100%;border-collapse:collapse}th,td{border:1px solid #ccc;padding:0.5rem;text-align:left}th{background:#f5f5f5}</style></head><body><h1>Lista de invitados - ${coupleName}</h1><table><thead><tr><th>Nombre</th><th>Asistencia</th><th>Acompañantes</th><th>Dieta</th></tr></thead><tbody>${rows}</tbody></table><p>Total: ${rsvpEntries.length} respuestas</p></body></html>`;
+    const w = window.open("", "_blank");
+    if (w) { w.document.write(html); w.document.close(); w.focus(); w.print(); }
+  }, [rsvpEntries, coupleName]);
+
   return (
     <div className="setup-layout">
       <section className="setup-card allow-select" aria-label="Panel de administración">
@@ -181,8 +190,10 @@ export default function AdminPage() {
               setActiveTab={setActiveTabAndFilter}
               setAttendanceFilter={setAttendanceFilterValue}
               exportCsv={exportCsv}
+              exportPdf={exportPdf}
               formatDate={formatDate}
               onRestore={reloadConfig}
+              visitCount={config._visits || 0}
             />
           )}
 

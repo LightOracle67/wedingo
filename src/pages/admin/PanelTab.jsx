@@ -7,7 +7,7 @@ import StatsCard from "./StatsCard";
 
 const PanelTab = memo(function PanelTab({
   inviteToken, confirmedResponses, declinedResponses, totalGuests, rsvpEntries,
-  setActiveTab, setAttendanceFilter, exportCsv, formatDate, onRestore,
+  setActiveTab, setAttendanceFilter, exportCsv, exportPdf, formatDate, onRestore, visitCount,
 }) {
   const inviteUrl = `${window.location.origin}/${inviteToken}`;
   const restoreRef = useRef(null);
@@ -77,6 +77,10 @@ const PanelTab = memo(function PanelTab({
         <StatsCard label="Total invitados" value={totalGuests} />
       </div>
 
+      <div className="setup-help" style={{ marginBottom: "0.5rem", fontSize: "0.8rem", textAlign: "center" }}>
+        {visitCount > 0 ? `👁 ${visitCount} visita${visitCount === 1 ? "" : "s"}` : "Sin visitas registradas"}
+      </div>
+
       {summary.confirmed + summary.declined > 0 && (
         <div className="setup-token-card" style={{ marginBottom: "1rem", padding: "1rem", textAlign: "center" }}>
           <DonutChart yes={summary.confirmed} no={summary.declined} pending={summary.pending} size={120} />
@@ -128,8 +132,14 @@ const PanelTab = memo(function PanelTab({
         <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={exportCsv}>
           Exportar CSV
         </button>
+        <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={exportPdf}>
+          Exportar PDF
+        </button>
         <a className="setup-button setup-button--ghost setup-button--compact" href={inviteUrl} target="_blank" rel="noreferrer">
           Vista previa
+        </a>
+        <a className="setup-button setup-button--ghost setup-button--compact" href={`${inviteUrl}?invitar`} target="_blank" rel="noreferrer">
+          Como invitado
         </a>
       </div>
 
