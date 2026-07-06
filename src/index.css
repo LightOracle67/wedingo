@@ -729,6 +729,7 @@ body::after {
 .story-section {
   position: absolute;
   inset: 0;
+  height: 100%;
   isolation: isolate;
   display: flex;
   align-items: center;

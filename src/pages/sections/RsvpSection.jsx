@@ -15,7 +15,7 @@ const RsvpSection = memo(function RsvpSection({
   return (
     <section
       data-story-section="rsvp"
-      className={`${className} flex min-h-dvh items-center justify-center px-3 py-4 sm:px-6 sm:py-8 lg:px-8 lg:py-10`}
+      className={`${className} flex items-center justify-center px-3 py-4 sm:px-6 sm:py-8 lg:px-8 lg:py-10`}
       style={style}
     >
       <div className="story-card story-panel story-card--rsvp allow-select w-full max-w-[min(100%,42rem)]">

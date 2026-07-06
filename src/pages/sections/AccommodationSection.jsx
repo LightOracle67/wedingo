@@ -4,7 +4,7 @@ const AccommodationSection = memo(function AccommodationSection({ style, classNa
   return (
     <section
       data-story-section="accommodation"
-      className={`${className} flex min-h-screen items-center justify-center px-3 py-6 sm:px-6 sm:py-10 lg:px-8 lg:py-12`}
+      className={`${className} flex items-center justify-center px-3 py-6 sm:px-6 sm:py-10 lg:px-8 lg:py-12`}
       style={style}
     >
       <div className="story-card story-panel story-card--info w-full max-w-[min(100%,40rem)] text-center">
