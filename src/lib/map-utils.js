@@ -37,10 +37,13 @@ export const buildOpenFreeMapPreviewUrl = async (location, _style) => {
       .setLngLat([location.longitude, location.latitude])
       .addTo(map);
 
-    await new Promise((resolve, reject) => {
-      map.once("error", reject);
-      map.once("idle", resolve);
-    });
+    await Promise.race([
+      new Promise((resolve, reject) => {
+        map.once("error", reject);
+        map.once("idle", resolve);
+      }),
+      new Promise((_, reject) => setTimeout(() => reject(new Error("timeout")), 20000)),
+    ]);
 
     const previewUrl = map.getCanvas().toDataURL("image/png");
     map.remove();

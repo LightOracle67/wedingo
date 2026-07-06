@@ -71,7 +71,12 @@ export default function PublicInvitation() {
   const visibleOrderRef = useRef(visibleOrder);
   useEffect(() => { visibleOrderRef.current = visibleOrder; }, [visibleOrder]);
 
-  const [activeStorySection, setActiveStorySection] = useState(visibleOrder[0] || "hero");
+  const [activeStorySection, setActiveStorySection] = useState("hero");
+  useEffect(() => {
+    if (!visibleOrder.includes(activeStorySection) && visibleOrder.length > 0) {
+      setActiveStorySection(visibleOrder[0]);
+    }
+  }, [visibleOrder, activeStorySection]);
   const [storyTransition, setStoryTransition] = useState({
     fromIndex: 0,
     toIndex: null,

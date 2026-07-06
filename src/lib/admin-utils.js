@@ -8,7 +8,7 @@ export function calcRSVPSummary(entries) {
     confirmed: confirmedCount,
     declined: declinedCount,
     pending: Math.max(0, entries.length - confirmedCount - declinedCount),
-    totalGuests: guestsWithCompanions,
+    totalGuests: entries.reduce((sum, e) => sum + (e.attendance === "yes" ? 1 + (Number(e.companions) || 0) : 1), 0),
     confirmedGuests: guestsWithCompanions,
     allEntries: entries.length,
   };
@@ -35,7 +35,10 @@ export function formatRSVPsForCSV(entries) {
     const date = e.submittedAt ? new Date(e.submittedAt).toLocaleDateString("es-ES") : "";
     const attendance = e.attendance === "yes" ? "Confirmado" : "No asiste";
     const companions = e.attendance === "yes" ? e.companions : 0;
-    const escape = (v) => `"${(v || "").replace(/"/g, '""')}"`;
+    const escape = (v) => {
+      const s = (v || "").replace(/"/g, '""');
+      return /^[=+\-@]/.test(s) ? `"'${s}"` : `"${s}"`;
+    };
     return [escape(e.guestName), escape(attendance), companions, escape(e.dietaryInfo), escape(e.note), escape(date)].join(",");
   });
   return [header, ...rows].join("\n");

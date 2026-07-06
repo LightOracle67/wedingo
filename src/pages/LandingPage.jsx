@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getDoc, doc, setDoc, serverTimestamp } from "firebase/firestore";
+import { getDoc, doc, serverTimestamp, runTransaction } from "firebase/firestore";
 import { db, invitationDocRef } from "../lib/firebase";
 import { normalizeTokenValue } from "../lib/token-utils";
 import { generateInviteToken } from "../lib/utils";
@@ -99,11 +99,24 @@ export default function LandingPage() {
         } catch {}
       }
 
+      try {
+        await runTransaction(db, async (transaction) => {
+          const tokenDocRef = doc(db, "setupTokens", normalized);
+          const tokenDoc = await transaction.get(tokenDocRef);
+          if (!tokenDoc.exists || tokenDoc.data().used) throw new Error();
+          transaction.update(tokenDocRef, { used: true, usedAt: serverTimestamp() });
+          transaction.set(doc(db, "sessions", target), { createdAt: serverTimestamp() });
+        });
+      } catch {
+        setError("No se pudo completar el acceso. Inténtalo de nuevo.");
+        setIsLoading(false);
+        return;
+      }
+
       sessionStorage.setItem("wedin_invite_token", target);
       saveSession("admin", username);
       setTokenLoginUsername(username);
       setIsTokenVerified(true);
-      setDoc(doc(db, "sessions", target), { createdAt: serverTimestamp() }).catch(() => {});
       navigate(`/${target}`);
     } catch {
       setError("No se pudo verificar el código. Inténtalo de nuevo.");

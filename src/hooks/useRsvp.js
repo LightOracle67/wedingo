@@ -44,7 +44,13 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType) {
         const entries = snapshot.docs
           .map((entryDoc) => {
             const data = entryDoc.data();
-            const submittedDate = data.submittedAt?.toDate?.();
+            const submittedAt = typeof data.submittedAt?.toDate === "function"
+              ? data.submittedAt.toDate().toISOString()
+              : typeof data.submittedAt === "string"
+                ? data.submittedAt
+                : data.submittedAt?.seconds
+                  ? new Date(data.submittedAt.seconds * 1000).toISOString()
+                  : new Date().toISOString();
             return {
               id: entryDoc.id,
               guestName: data.guestName || "",
@@ -52,7 +58,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType) {
               companions: Number.isFinite(data.companions) ? data.companions : 0,
               dietaryInfo: data.dietaryInfo || "",
               note: data.note || "",
-              submittedAt: submittedDate ? submittedDate.toISOString() : new Date().toISOString(),
+              submittedAt,
             };
           })
           .sort((a, b) => new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime());

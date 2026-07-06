@@ -38,6 +38,7 @@ export function AppProvider({ children }) {
   const [locationMapTarget, setLocationMapTarget] = useState(null);
   const locationMapContainerRef = useRef(null);
   const isSavingRef = useRef(false);
+  const loadedTokenRef = useRef("");
 
   const location = useLocation();
 
@@ -55,7 +56,7 @@ export function AppProvider({ children }) {
     handleTokenLogin, handleAdminTokenLogin,
     handleGenerateToken, handleAdminLogout,
     handleResetSetupToken, handleResetTokenFromAdmin,
-  } = useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessageType, setConfig, setHasStoredConfig);
+  } = useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessageType, setHasStoredConfig);
 
   const {
     rsvpEntries, rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted,
@@ -140,6 +141,11 @@ export function AppProvider({ children }) {
       try {
         if (!inviteToken) { setIsConfigLoading(false); return; }
 
+        if (inviteToken === loadedTokenRef.current && hasStoredConfig) {
+          setIsConfigLoading(false);
+          return;
+        }
+
         const cached = localStorage.getItem(`wedin_invite_cache_${inviteToken}`);
         if (cached) {
           try {
@@ -167,6 +173,7 @@ export function AppProvider({ children }) {
         setConfig(hydrated);
         setFormData(hydrated);
         setHasStoredConfig(true);
+        loadedTokenRef.current = inviteToken;
       } catch {
         setHasStoredConfig(false);
         setConfigLoadError("No se pudo cargar la configuración guardada. Revisa la conexión e inténtalo de nuevo.");
@@ -175,7 +182,7 @@ export function AppProvider({ children }) {
       }
     };
     hydrateConfig();
-  }, [location.pathname, location.hash, inviteToken]);
+  }, [location.pathname, location.hash, inviteToken, hasStoredConfig]);
 
   const reloadConfig = useCallback(async () => {
     if (!inviteToken) return;
@@ -204,9 +211,9 @@ export function AppProvider({ children }) {
   }, [location.pathname, setAuthMessage]);
 
   useEffect(() => {
-    if (hasStoredConfig) return;
+    if (hasStoredConfig || !inviteToken) return;
     (async () => { await refreshSetupToken(); })();
-  }, [hasStoredConfig, refreshSetupToken]);
+  }, [hasStoredConfig, inviteToken, refreshSetupToken]);
 
   const handleClearBackground = useCallback(() => {
     const storagePath = formData.backgroundImageStorage;
