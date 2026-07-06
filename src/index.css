@@ -35,9 +35,9 @@ html {
   --invite-shell-glow: rgba(255, 227, 140, 0.2);
   --invite-core-border: rgba(255, 238, 194, 0.58);
   --invite-core-glow: rgba(255, 212, 115, 0.22);
-  --invite-title-color: #fff5da;
-  --invite-copy-color: #f8f1e1;
-  --invite-text-shadow: rgba(98, 69, 14, 0.48);
+  --invite-title-color: #f0e2c8;
+  --invite-copy-color: #e0d0b8;
+  --invite-text-shadow: rgba(98, 69, 14, 0.55);
   --invite-rings-filter: saturate(1.06) sepia(0.08);
   --wedding-decoration-left-transform: scale(-1, -1);
   --wedding-decoration-right-transform: none;
@@ -76,9 +76,9 @@ html {
   --invite-shell-glow: rgba(152, 228, 197, 0.24);
   --invite-core-border: rgba(187, 230, 208, 0.7);
   --invite-core-glow: rgba(117, 210, 175, 0.25);
-  --invite-title-color: #e9fff4;
-  --invite-copy-color: #def7ec;
-  --invite-text-shadow: rgba(12, 63, 45, 0.46);
+  --invite-title-color: #c8e8d8;
+  --invite-copy-color: #b8d8c8;
+  --invite-text-shadow: rgba(12, 63, 45, 0.55);
   --invite-rings-filter: hue-rotate(118deg) saturate(0.86) brightness(1.07);
   --wedding-decoration-left-transform: scale(-1, -1) scale(1.04);
   --wedding-decoration-right-transform: scale(1.02);
@@ -116,9 +116,9 @@ html {
   --invite-shell-glow: rgba(255, 176, 207, 0.25);
   --invite-core-border: rgba(255, 210, 229, 0.7);
   --invite-core-glow: rgba(242, 139, 180, 0.22);
-  --invite-title-color: #ffe9f3;
-  --invite-copy-color: #ffe4ef;
-  --invite-text-shadow: rgba(112, 31, 60, 0.46);
+  --invite-title-color: #e8c8d4;
+  --invite-copy-color: #d4b8c4;
+  --invite-text-shadow: rgba(112, 31, 60, 0.55);
   --invite-rings-filter: hue-rotate(305deg) saturate(1.08) brightness(1.06);
   --wedding-decoration-left-transform: scale(-1, -1) scale(1.03);
   --wedding-decoration-right-transform: scale(1.01);
@@ -236,9 +236,9 @@ html {
   --invite-shell-glow: rgba(205, 181, 141, 0.18);
   --invite-core-border: rgba(233, 223, 207, 0.7);
   --invite-core-glow: rgba(199, 170, 119, 0.18);
-  --invite-title-color: #f7eedd;
-  --invite-copy-color: #c8b8a4;
-  --invite-text-shadow: rgba(67, 49, 29, 0.55);
+  --invite-title-color: #e8d5b8;
+  --invite-copy-color: #b8a690;
+  --invite-text-shadow: rgba(67, 49, 29, 0.6);
   --invite-rings-filter: saturate(0.88) brightness(1.06);
 }
 
@@ -270,9 +270,9 @@ html {
   --invite-shell-glow: rgba(255, 176, 207, 0.22);
   --invite-core-border: rgba(255, 210, 229, 0.66);
   --invite-core-glow: rgba(242, 139, 180, 0.2);
-  --invite-title-color: #fae6ed;
-  --invite-copy-color: #d4bcc8;
-  --invite-text-shadow: rgba(104, 34, 56, 0.55);
+  --invite-title-color: #e8cad4;
+  --invite-copy-color: #ccb0bc;
+  --invite-text-shadow: rgba(104, 34, 56, 0.6);
   --invite-rings-filter: hue-rotate(320deg) saturate(1.06) brightness(1.05);
   --wedding-decoration-left-transform: scale(-1, -1) scale(1.04);
   --wedding-decoration-right-transform: scale(1.02);
@@ -310,9 +310,9 @@ html {
   --invite-shell-glow: rgba(196, 170, 240, 0.22);
   --invite-core-border: rgba(220, 208, 248, 0.66);
   --invite-core-glow: rgba(180, 150, 234, 0.2);
-  --invite-title-color: #e8dff8;
-  --invite-copy-color: #c8bcd8;
-  --invite-text-shadow: rgba(44, 26, 76, 0.55);
+  --invite-title-color: #d8cce8;
+  --invite-copy-color: #b8acc8;
+  --invite-text-shadow: rgba(44, 26, 76, 0.6);
   --invite-rings-filter: hue-rotate(240deg) saturate(0.9) brightness(1.06);
   --wedding-decoration-left-transform: scale(-1, -1) scale(1.04);
   --wedding-decoration-right-transform: scale(1.02);
@@ -350,9 +350,9 @@ html {
   --invite-shell-glow: rgba(240, 216, 148, 0.2);
   --invite-core-border: rgba(245, 234, 200, 0.68);
   --invite-core-glow: rgba(230, 198, 126, 0.2);
-  --invite-title-color: #f7f0e0;
-  --invite-copy-color: #d4c4a8;
-  --invite-text-shadow: rgba(68, 48, 20, 0.55);
+  --invite-title-color: #e8dcc0;
+  --invite-copy-color: #c4b498;
+  --invite-text-shadow: rgba(68, 48, 20, 0.6);
   --invite-rings-filter: saturate(1.02) sepia(0.12) brightness(1.04);
   --wedding-decoration-left-transform: scale(-1, -1) scale(1.03);
   --wedding-decoration-right-transform: scale(1.01);
