@@ -5,6 +5,7 @@ import { SuperAdminProvider } from "./contexts/SuperAdminContext";
 import { ToastProvider } from "./contexts/ToastContext";
 import ErrorBoundary from "./components/ErrorBoundary";
 import LandingPage from "./pages/LandingPage";
+import LegalPage from "./pages/LegalPage";
 import { SUPERADMIN_ROUTE, SUPERADMIN_DASHBOARD } from "./lib/superadmin";
 
 const PublicInvitation = lazy(() => import("./pages/PublicInvitation"));
@@ -12,7 +13,6 @@ const SetupPage = lazy(() => import("./pages/SetupPage"));
 const AdminPage = lazy(() => import("./pages/AdminPage"));
 const SuperAdminLogin = lazy(() => import("./pages/SuperAdminLogin"));
 const SuperAdminPanel = lazy(() => import("./pages/SuperAdminPanel"));
-const LegalPage = lazy(() => import("./pages/LegalPage"));
 
 function AppShell() {
   const { config, formData, isAdminTokenLoggedIn, tokenLoginUsername, inviteToken } = useApp();
@@ -69,7 +69,7 @@ function AppShell() {
           {SUPERADMIN_DASHBOARD && (
             <Route path={SUPERADMIN_DASHBOARD} element={<ErrorBoundary><SuperAdminPanel /></ErrorBoundary>} />
           )}
-          <Route path="/legal" element={<ErrorBoundary><LegalPage /></ErrorBoundary>} />
+          <Route path="/legal" element={<LegalPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         </Suspense>

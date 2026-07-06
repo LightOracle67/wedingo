@@ -8,11 +8,13 @@ import { normalizeConfig } from "../lib/normalize-config";
 import { defaultConfig } from "../lib/constants";
 import { saveSession } from "../lib/sessionVars";
 import { useApp } from "../contexts/AppContext";
+import LegalModal from "../components/LegalModal";
 
 export default function LandingPage() {
   const navigate = useNavigate();
   const { setIsTokenVerified, setTokenLoginUsername } = useApp();
   const [showModal, setShowModal] = useState(false);
+  const [legalSection, setLegalSection] = useState("");
   const [usernameInput, setUsernameInput] = useState("");
   const [tokenInput, setTokenInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -155,14 +157,16 @@ export default function LandingPage() {
             </button>
           </div>
           <div className="mt-6 text-center">
-            <a href="/legal?s=privacy" className="text-[0.7rem] text-boda-texto/35 hover:text-boda-texto/55 transition-colors" target="_blank" rel="noreferrer" style={{ textDecoration: "underline" }}>Política de Privacidad</a>
+            <button type="button" onClick={() => setLegalSection("privacy")} className="text-[0.7rem] text-boda-texto/35 hover:text-boda-texto/55 transition-colors" style={{ textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-body)" }}>Política de Privacidad</button>
             <span className="text-[0.7rem] text-boda-texto/25 mx-1">·</span>
-            <a href="/legal?s=terms" className="text-[0.7rem] text-boda-texto/35 hover:text-boda-texto/55 transition-colors" target="_blank" rel="noreferrer" style={{ textDecoration: "underline" }}>Términos</a>
+            <button type="button" onClick={() => setLegalSection("terms")} className="text-[0.7rem] text-boda-texto/35 hover:text-boda-texto/55 transition-colors" style={{ textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-body)" }}>Términos</button>
             <span className="text-[0.7rem] text-boda-texto/25 mx-1">·</span>
-            <a href="/legal?s=legal" className="text-[0.7rem] text-boda-texto/35 hover:text-boda-texto/55 transition-colors" target="_blank" rel="noreferrer" style={{ textDecoration: "underline" }}>Aviso Legal</a>
+            <button type="button" onClick={() => setLegalSection("legal")} className="text-[0.7rem] text-boda-texto/35 hover:text-boda-texto/55 transition-colors" style={{ textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-body)" }}>Aviso Legal</button>
           </div>
         </div>
       </section>
+      {legalSection && <LegalModal section={legalSection} onClose={() => setLegalSection("")} />}
+
       {showModal && (
         <div className="modal-overlay" onClick={() => setShowModal(false)} role="dialog" aria-modal="true" aria-label="Acceder a tu invitación">
           <div className="modal-card" ref={modalRef} onClick={(e) => e.stopPropagation()}>
