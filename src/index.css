@@ -1601,8 +1601,9 @@ h6 {
 
 .setup-card {
   position: relative;
-  width: min(100%, 760px);
-  min-height: calc(100dvh - var(--navbar-height, 0px) - clamp(1.5rem, 5vw, 3rem));
+  width: min(100%, 36rem);
+  padding: clamp(0.6rem, 2vw, 1.2rem);
+  box-sizing: border-box;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
