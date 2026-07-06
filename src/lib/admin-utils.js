@@ -36,8 +36,9 @@ export function formatRSVPsForCSV(entries) {
     const attendance = e.attendance === "yes" ? "Confirmado" : "No asiste";
     const companions = e.attendance === "yes" ? e.companions : 0;
     const escape = (v) => {
-      const s = (v || "").replace(/"/g, '""');
-      return /^[=+\-@]/.test(s) ? `"'${s}"` : `"${s}"`;
+      let s = (v || "").replace(/"/g, '""');
+      if (/^[=+\-@|\t\r]/.test(s)) s = `'${s}`;
+      return `"${s}"`;
     };
     return [escape(e.guestName), escape(attendance), companions, escape(e.dietaryInfo), escape(e.note), escape(date)].join(",");
   });
