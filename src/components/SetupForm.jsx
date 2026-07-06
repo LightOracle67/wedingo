@@ -567,6 +567,13 @@ export default function SetupForm({ prefix = "" }) {
       </CollapsibleSection>
       ) : null}
 
+      {!hasStoredConfig ? (
+        <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.85rem", cursor: "pointer" }}>
+          <input type="checkbox" checked={formData._privacyConsent === "true"} onChange={(e) => updateFormField("_privacyConsent", e.target.checked ? "true" : "false")} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+          <span>He leído y acepto la <a href="/legal/privacy" target="_blank" rel="noreferrer" style={{ color: "var(--setup-accent)", textDecoration: "underline" }}>Política de Privacidad</a></span>
+        </label>
+      ) : null}
+
       <div className="setup-actions" style={{ padding: "0.25rem 0" }}>
         <button className="setup-button" type="submit">
           Guardar cambios

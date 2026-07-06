@@ -1,13 +1,15 @@
 import { createContext, useContext, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
-import { getDoc, setDoc, increment, updateDoc } from "firebase/firestore";
-import { db, invitationDocRef } from "../lib/firebase";
+import { useLocation, useNavigate } from "react-router-dom";
+import { getDoc, setDoc, increment, updateDoc, deleteDoc, getDocs, writeBatch } from "firebase/firestore";
+import { ref, deleteObject } from "firebase/storage";
+import { db, storage, invitationDocRef, rsvpByInviteRef } from "../lib/firebase";
 import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES, defaultConfig, MONTH_OPTIONS, MONTH_VALUE_TO_NUMBER, STORY_SECTION_ORDER, THEME_VALUES } from "../lib/constants";
 import { normalizeConfig } from "../lib/normalize-config";
 import { decodeInviteConfig } from "../lib/invite-config-codec";
 import { getValidCoordinates } from "../lib/geo-utils";
 import { compressImage } from "../lib/image-utils";
 import { uploadBackgroundImage, deleteBackgroundImage } from "../lib/storage-utils";
+import { clearSession } from "../lib/sessionVars";
 import { useCalendar } from "../hooks/useCalendar";
 import { useFieldHandlers } from "../hooks/useFieldHandlers";
 import { useRsvp } from "../hooks/useRsvp";
@@ -52,6 +54,7 @@ export function AppProvider({ children }) {
   }, []);
 
   const location = useLocation();
+  const navigate = useNavigate();
 
   const {
     setupToken, setSetupToken,
@@ -306,6 +309,10 @@ export function AppProvider({ children }) {
     const hiddenSet = new Set(hiddenArray);
 
     if (!hasStoredConfig) {
+      if (formData._privacyConsent !== "true") {
+        setSaveError("Debes aceptar la Política de Privacidad para crear la invitación.");
+        return;
+      }
       if (!sanitized.adminUsername) {
         setSaveError("Indica un nombre de usuario para poder entrar después.");
         return;
@@ -439,6 +446,28 @@ export function AppProvider({ children }) {
     }
   }, [hasStoredConfig, isTokenVerified, formData, maxAllowedYear, inviteToken, config, autoSaveTimerRef, isSavingRef, setSetupToken, setSetupTokenInput]);
 
+  const handleDeleteInvitation = useCallback(async () => {
+    if (!inviteToken) return;
+    if (!window.confirm("¿Eliminar toda tu invitación? Se borrarán todos los datos, fotos y confirmaciones. No se puede deshacer.")) return;
+    try {
+      const snap = await getDocs(rsvpByInviteRef(inviteToken));
+      const batch = writeBatch(db);
+      snap.docs.forEach((d) => batch.delete(d.ref));
+      batch.delete(invitationDocRef(inviteToken));
+      batch.delete(doc(db, "sessions", inviteToken));
+      await batch.commit();
+      const paths = [formData.backgroundImageStorage, formData.couplePhotoStorage].filter(Boolean);
+      await Promise.allSettled(paths.map((p) => deleteObject(ref(storage, p)).catch(() => {})));
+      localStorage.removeItem(`wedin_invite_cache_${inviteToken}`);
+      clearSession();
+      setIsTokenVerified(false);
+      setTokenLoginUsername("");
+      navigate("/");
+    } catch {
+      setSaveError("No se pudo eliminar la invitación. Inténtalo de nuevo.");
+    }
+  }, [inviteToken, formData.backgroundImageStorage, formData.couplePhotoStorage, navigate]);
+
   const value = useMemo(() => ({
     config, formData, hasStoredConfig,
     isConfigLoading, configLoadError, inviteToken,
@@ -462,6 +491,7 @@ export function AppProvider({ children }) {
     handleAdminLogout,
     handleResetSetupToken, handleResetTokenFromAdmin,
     handleClearRsvpEntries,
+    handleDeleteInvitation,
     handleBackgroundUpload, handleClearBackground, handleSelectPreviewBackground,
     handleDayChange, handleHourChange, handleMinuteChange, handleMinuteBlur,
     handleYearChange, handleCoordinateChange,
@@ -490,6 +520,7 @@ export function AppProvider({ children }) {
     handleAdminLogout,
     handleResetSetupToken, handleResetTokenFromAdmin,
     handleClearRsvpEntries,
+    handleDeleteInvitation,
     handleBackgroundUpload, handleClearBackground, handleSelectPreviewBackground,
     handleDayChange, handleHourChange, handleMinuteChange, handleMinuteBlur,
     handleYearChange, handleCoordinateChange,

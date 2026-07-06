@@ -157,6 +157,13 @@ export default function LandingPage() {
         </div>
       </section>
 
+      <div className="mt-8 text-center">
+        <a href="/legal/privacy" className="text-[0.75rem] text-boda-texto/40 hover:text-boda-texto/60 transition-colors" target="_blank" rel="noreferrer" style={{ textDecoration: "underline" }}>Política de Privacidad</a>
+        <span className="text-[0.75rem] text-boda-texto/30 mx-2">·</span>
+        <a href="/legal/terms" className="text-[0.75rem] text-boda-texto/40 hover:text-boda-texto/60 transition-colors" target="_blank" rel="noreferrer" style={{ textDecoration: "underline" }}>Términos</a>
+        <span className="text-[0.75rem] text-boda-texto/30 mx-2">·</span>
+        <a href="/legal/legal" className="text-[0.75rem] text-boda-texto/40 hover:text-boda-texto/60 transition-colors" target="_blank" rel="noreferrer" style={{ textDecoration: "underline" }}>Aviso Legal</a>
+      </div>
       {showModal && (
         <div className="modal-overlay" onClick={() => setShowModal(false)} role="dialog" aria-modal="true" aria-label="Acceder a tu invitación">
           <div className="modal-card" ref={modalRef} onClick={(e) => e.stopPropagation()}>

@@ -27,7 +27,7 @@ export default function AdminPage() {
     rsvpEntries,
     adminMessage, adminMessageType,
     handleAdminLogout, handleResetTokenFromAdmin,
-    handleClearRsvpEntries,
+    handleClearRsvpEntries, handleDeleteInvitation,
     confirmTokenInput, setConfirmTokenInput,
     formattedDate,
     reloadConfig,
@@ -219,6 +219,7 @@ export default function AdminPage() {
               handleAdminLogout={handleAdminLogout}
               confirmTokenInput={confirmTokenInput}
               setConfirmTokenInput={setConfirmTokenInput}
+              handleDeleteInvitation={handleDeleteInvitation}
             />
           )}
 

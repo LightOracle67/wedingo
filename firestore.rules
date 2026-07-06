@@ -6,6 +6,11 @@ service cloud.firestore {
         && request.auth.token.email in ['adriancl2001@gmail.com'];
     }
 
+    function isAdminOf(tokenId) {
+      return request.auth != null
+        || exists(/databases/$(database)/documents/sessions/$(tokenId));
+    }
+
     function isSafeText(value) {
       return value is string
         && !value.matches('.*[<>&\"\'\\\\].*')
@@ -25,7 +30,7 @@ service cloud.firestore {
     }
 
     match /invitations/{tokenId} {
-      allow read: if true;
+      allow read: if isSuperAdmin() || isAdminOf(tokenId);
       allow create: if isValidInvitationWrite(request.resource.data)
         && (request.auth != null
           || !exists(/databases/$(database)/documents/invitations/$(tokenId)));

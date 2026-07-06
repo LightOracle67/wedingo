@@ -1,6 +1,6 @@
 import { memo } from "react";
 
-const AccessTab = memo(function AccessTab({ setupToken, handleResetTokenFromAdmin, handleAdminLogout, confirmTokenInput, setConfirmTokenInput }) {
+const AccessTab = memo(function AccessTab({ setupToken, handleResetTokenFromAdmin, handleAdminLogout, confirmTokenInput, setConfirmTokenInput, handleDeleteInvitation }) {
   return (
     <>
       <div className="setup-token-card">
@@ -46,6 +46,15 @@ const AccessTab = memo(function AccessTab({ setupToken, handleResetTokenFromAdmi
       <div className="setup-actions">
         <button className="setup-button setup-button--ghost" type="button" onClick={handleAdminLogout}>
           Cerrar sesión
+        </button>
+      </div>
+      <hr style={{ margin: "1rem 0", border: "none", borderTop: "1px solid var(--setup-border)" }} />
+      <p className="setup-help" style={{ fontSize: "0.8rem", textAlign: "center" }}>
+        Si deseas ejercer tus derechos ARSO, puedes eliminar todos tus datos.
+      </p>
+      <div className="setup-actions">
+        <button className="setup-button setup-button--ghost" type="button" onClick={handleDeleteInvitation} style={{ borderColor: "#e06060", color: "#e06060" }}>
+          Eliminar mi invitación y todos mis datos
         </button>
       </div>
     </>

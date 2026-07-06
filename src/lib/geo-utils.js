@@ -2,7 +2,7 @@ export const geocodeLocation = async (place) => {
   if (!place) return null;
   const response = await fetch(
     `https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&q=${encodeURIComponent(place)}`,
-    { headers: { Accept: "application/json" } },
+    { headers: { Accept: "application/json", "User-Agent": "Wedingo/1.0 (adriancl2001@gmail.com)" } },
   );
   if (!response.ok) return null;
   const results = await response.json();
