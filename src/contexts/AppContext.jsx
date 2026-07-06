@@ -101,7 +101,12 @@ export function AppProvider({ children }) {
     handleYearChange, handleCoordinateChange,
   } = useFieldHandlers(updateFormField, maxAllowedYear, formData.weddingMinute);
 
-  const { autoSaveTimerRef } = useAutoSave(hasStoredConfig, inviteToken, formData, config, setSaveMessage, isSavingRef);
+  const handleAutoSaved = useCallback((payload) => {
+    setConfig(payload);
+    setFormData(payload);
+  }, []);
+
+  const { autoSaveTimerRef } = useAutoSave(hasStoredConfig, inviteToken, formData, config, setSaveMessage, isSavingRef, handleAutoSaved);
 
   useEffect(() => {
     const hash = window.location.hash;

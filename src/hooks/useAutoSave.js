@@ -2,16 +2,15 @@ import { useCallback, useEffect, useRef } from "react";
 import { setDoc } from "firebase/firestore";
 import { invitationDocRef } from "../lib/firebase";
 import { normalizeConfig } from "../lib/utils";
-import { defaultConfig } from "../lib/constants";
 
-export function useAutoSave(hasStoredConfig, inviteToken, formData, config, onSaveMessage, isSavingRef) {
+export function useAutoSave(hasStoredConfig, inviteToken, formData, config, onSaveMessage, isSavingRef, onAutoSaved) {
   const autoSaveTimerRef = useRef(null);
   const autoSavingRef = useRef(false);
 
   const doSave = useCallback(async (data) => {
     if (isSavingRef?.current || autoSavingRef.current) return null;
     autoSavingRef.current = true;
-    const payload = { ...defaultConfig, ...normalizeConfig(data) };
+    const payload = normalizeConfig(data);
     try {
       await setDoc(invitationDocRef(inviteToken), payload);
       return payload;
@@ -30,12 +29,13 @@ export function useAutoSave(hasStoredConfig, inviteToken, formData, config, onSa
       const result = await doSave(formData);
       if (result && onSaveMessage) {
         onSaveMessage("Cambios guardados");
+        if (onAutoSaved) onAutoSaved(result);
       }
-    }, 1500);
+    }, 800);
     return () => {
       if (autoSaveTimerRef.current) clearTimeout(autoSaveTimerRef.current);
     };
-  }, [formData, hasStoredConfig, inviteToken, doSave, config, onSaveMessage]);
+  }, [formData, hasStoredConfig, inviteToken, doSave, config, onSaveMessage, onAutoSaved]);
 
   return { autoSaveTimerRef, doSave };
 }
