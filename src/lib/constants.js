@@ -77,7 +77,7 @@ export const THEME_GROUPS = [
   { value: "lgtbiq+", label: "LGTBIQ+" },
 ];
 
-export const STORY_SECTION_ORDER = ["hero", "details", "info", "story", "gifts", "accommodation", "transport", "gallery", "rsvp"];
+export const STORY_SECTION_ORDER = ["hero", "details", "info", "story", "gifts", "accommodation", "gallery", "rsvp"];
 
 export const SECTION_LABELS = {
   hero: "Portada",
@@ -86,7 +86,6 @@ export const SECTION_LABELS = {
   story: "Nuestra historia",
   gifts: "Regalos",
   accommodation: "Alojamiento",
-  transport: "Transporte",
   gallery: "Galería",
   rsvp: "Confirmación",
 };
@@ -98,7 +97,6 @@ export const SECTION_MOVABLE = {
   story: true,
   gifts: true,
   accommodation: true,
-  transport: true,
   gallery: true,
   rsvp: true,
 };
