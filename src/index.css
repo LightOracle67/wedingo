@@ -1108,6 +1108,7 @@ body::after {
 
 .story-calendar-actions .setup-button {
   text-decoration: none;
+  padding: 0;
 }
 
 .story-map {
@@ -1163,6 +1164,7 @@ body::after {
 
 .story-map__actions .setup-button {
   text-decoration: none;
+  padding: 0;
 }
 
 .story-map__caption {
