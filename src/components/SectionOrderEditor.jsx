@@ -94,7 +94,7 @@ export default function SectionOrderEditor({ value, onChange, hiddenValue, onHid
         Arrastra para reordenar, usa los botones para mover, y activa o desactiva cada sección.
       </p>
       <div className="section-order-list">
-        {items.map((sectionKey, index) => {
+        {items.filter(s => s !== "godparents").map((sectionKey, index) => {
           const isHero = sectionKey === "hero";
           const isDragging = dragIndex === index;
           const isHidden = hidden.has(sectionKey);
