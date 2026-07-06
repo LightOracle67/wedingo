@@ -1,10 +1,12 @@
 import { memo, useMemo, useState } from "react";
+import { useApp } from "../../contexts/AppContext";
 
 const RsvpSection = memo(function RsvpSection({
   style, className,
   rsvpForm, rsvpEntries, rsvpMessage, isRsvpSubmitting, hasSubmitted,
   updateRsvpField, handleRsvpSubmit, handleDietaryToggle, DIETARY_OPTIONS,
 }) {
+  const { setLegalModal } = useApp();
   const [useGroupMode, setUseGroupMode] = useState(false);
   const alreadySubmitted = useMemo(() => {
     const name = rsvpForm.guestName.trim().toLowerCase();
@@ -135,7 +137,7 @@ const RsvpSection = memo(function RsvpSection({
 
           <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.85rem", cursor: "pointer" }}>
             <input type="checkbox" checked={rsvpForm.privacyConsent} onChange={(e) => updateRsvpField("privacyConsent", e.target.checked)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} required />
-            <span>Acepto la <a href="/legal?s=privacy" target="_blank" rel="noreferrer" style={{ color: "var(--setup-accent)", textDecoration: "underline" }}>Política de Privacidad</a></span>
+            <span>Acepto la <button type="button" onClick={() => setLegalModal("privacy")} style={{ color: "var(--setup-accent)", textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", fontSize: "inherit", padding: 0 }}>Política de Privacidad</button></span>
           </label>
 
           <div className="setup-actions">
