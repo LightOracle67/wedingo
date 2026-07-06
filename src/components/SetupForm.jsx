@@ -12,7 +12,7 @@ export default function SetupForm({ prefix = "" }) {
     handleHourChange, handleMinuteChange, handleMinuteBlur, handleYearChange,
     handleCoordinateChange, handleBackgroundUpload, handleClearBackground,
     handleSelectPreviewBackground, previewBackgrounds,
-    saveMessage, saveError, maxAllowedYear, isTokenVerified, inviteToken, setLegalModal,
+    saveMessage, saveError, maxAllowedYear, isTokenVerified, inviteToken, hasStoredConfig, setLegalModal,
   } = useApp();
 
   const { addToast } = useToast();
