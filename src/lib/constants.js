@@ -36,6 +36,13 @@ export const THEME_OPTIONS = [
   { value: "sapphire-night", label: "Noche zafiro", hint: "Azul profundo con acentos plateados y presencia serena.", group: "oscuros" },
   { value: "emerald-grove", label: "Esmeralda bosque", hint: "Verde profundo natural con matices dorados y elegantes.", group: "oscuros" },
   { value: "plum-twilight", label: "Crepúsculo ciruela", hint: "Púrpura intenso con destellos rosados y románticos.", group: "oscuros" },
+  { value: "rainbow", label: "Arcoíris", hint: "Celebración del amor diverso con los colores del arcoíris.", group: "lgtbiq+" },
+  { value: "trans", label: "Trans", hint: "Azul, rosa y blanco en homenaje a la bandera trans.", group: "lgtbiq+" },
+  { value: "nonbinary", label: "No binario", hint: "Amarillo, blanco, morado y negro por la bandera no binaria.", group: "lgtbiq+" },
+  { value: "lesbian", label: "Lesbian Pride", hint: "Naranja, blanco y rosa de la bandera lésbica.", group: "lgtbiq+" },
+  { value: "bi", label: "Bisexual", hint: "Rosa, morado y azul de la bandera bi.", group: "lgtbiq+" },
+  { value: "pan", label: "Pansexual", hint: "Rosa, amarillo y azul de la bandera pan.", group: "lgtbiq+" },
+  { value: "ace", label: "Asexual", hint: "Negro, gris, blanco y morado de la bandera asexual.", group: "lgtbiq+" },
 ];
 
 export const THEME_VALUES = new Set(THEME_OPTIONS.map((t) => t.value));
@@ -55,11 +62,19 @@ export const THEME_PREVIEW_COLORS = {
   "sapphire-night": { accent: "#8898cc", bg: "#080c20" },
   "emerald-grove": { accent: "#70b890", bg: "#041c10" },
   "plum-twilight": { accent: "#c088c8", bg: "#1c0824" },
+  rainbow: { accent: "#ff6b6b", bg: "#1a1a2e" },
+  trans: { accent: "#88c8e8", bg: "#1a2a3e" },
+  nonbinary: { accent: "#f0e060", bg: "#1a1a2a" },
+  lesbian: { accent: "#e87860", bg: "#2a1a1e" },
+  bi: { accent: "#c060c0", bg: "#1a122a" },
+  pan: { accent: "#60c8e8", bg: "#1a1828" },
+  ace: { accent: "#b088c8", bg: "#121212" },
 };
 
 export const THEME_GROUPS = [
   { value: "claros", label: "Temas claros" },
   { value: "oscuros", label: "Temas oscuros" },
+  { value: "lgtbiq+", label: "LGTBIQ+" },
 ];
 
 export const STORY_SECTION_ORDER = ["hero", "details", "info", "story", "gifts", "accommodation", "transport", "godparents", "gallery", "rsvp"];
