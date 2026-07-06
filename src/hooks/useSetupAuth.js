@@ -3,11 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { doc, deleteDoc, getDoc, runTransaction, serverTimestamp, setDoc } from "firebase/firestore";
 import { db, invitationDocRef } from "../lib/firebase";
 import { defaultConfig } from "../lib/constants";
-import { normalizeConfig } from "../lib/normalize-config";
 import { generateSetupToken, normalizeTokenValue } from "../lib/token-utils";
 import { saveSession, getSession, renewSession, clearSession } from "../lib/sessionVars";
 
-export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessageType, setConfig, setHasStoredConfig) {
+export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessageType, setHasStoredConfig) {
   const navigate = useNavigate();
   const [setupToken, setSetupToken] = useState("");
   const [setupTokenInput, setSetupTokenInput] = useState("");
@@ -102,26 +101,25 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
         if (!tokenDoc.exists || tokenDoc.data().used === true) {
           throw new Error("Token ya usado");
         }
+
+        const inviteSnap = await transaction.get(invitationDocRef(inviteToken));
+        if (!inviteSnap.exists()) {
+          transaction.set(invitationDocRef(inviteToken), defaultConfig);
+        }
+
+        transaction.set(doc(db, "sessions", inviteToken), { createdAt: serverTimestamp() });
+
         transaction.update(tokenDocRef, {
           used: true,
           usedAt: serverTimestamp(),
         });
       });
 
-      await setDoc(doc(db, "sessions", inviteToken), { createdAt: serverTimestamp() });
-
-      const inviteSnap = await getDoc(invitationDocRef(inviteToken));
-      if (!inviteSnap.exists()) {
-        await setDoc(invitationDocRef(inviteToken), defaultConfig);
-        const hydrated = { ...defaultConfig, ...normalizeConfig(defaultConfig) };
-        setConfig(hydrated);
-        setHasStoredConfig(true);
-      }
-
       setTokenLoginUsername(inviteToken);
       setSetupToken("");
       setSetupTokenInput("");
       setIsTokenVerified(true);
+      setHasStoredConfig(true);
       saveSession("setup", inviteToken);
       setAuthMessageType("success");
       setAuthMessage("Código verificado correctamente.");
@@ -130,7 +128,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
     } finally {
       setIsTokenVerifying(false);
     }
-  }, [setupTokenInput, inviteToken, setConfig, setHasStoredConfig]);
+  }, [setupTokenInput, inviteToken, setHasStoredConfig]);
 
   const handleAdminTokenLogin = useCallback(async () => {
     setAuthMessageType("error");
@@ -161,6 +159,14 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
         if (tokenUsername && tokenUsername !== username) {
           throw new Error("El código no corresponde a este usuario.");
         }
+
+        const inviteSnap = await transaction.get(invitationDocRef(inviteToken));
+        if (!inviteSnap.exists()) {
+          transaction.set(invitationDocRef(inviteToken), defaultConfig);
+        }
+
+        transaction.set(doc(db, "sessions", inviteToken), { createdAt: serverTimestamp() });
+
         transaction.update(tokenDocRef, {
           username,
           used: true,
@@ -168,21 +174,12 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
         });
       });
 
-      const inviteSnap = await getDoc(invitationDocRef(inviteToken));
-      if (!inviteSnap.exists()) {
-        await setDoc(invitationDocRef(inviteToken), defaultConfig);
-        const hydrated = { ...defaultConfig, ...normalizeConfig(defaultConfig) };
-        setConfig(hydrated);
-        setHasStoredConfig(true);
-      }
-
-      await setDoc(doc(db, "sessions", inviteToken), { createdAt: serverTimestamp() });
-
       setTokenLoginUsername(username);
       setSetupToken("");
       setSetupTokenInput("");
       setGeneratedToken("");
       setIsTokenVerified(true);
+      setHasStoredConfig(true);
       saveSession("admin", username);
       setAuthMessageType("success");
       setAuthMessage("Has entrado correctamente.");
@@ -196,7 +193,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
     } finally {
       setIsTokenVerifying(false);
     }
-  }, [adminLoginUsername, setupTokenInput, config, inviteToken, setConfig, setHasStoredConfig]);
+  }, [adminLoginUsername, setupTokenInput, config, inviteToken, setHasStoredConfig]);
 
   const handleGenerateToken = useCallback(async () => {
     setAuthMessageType("error");

@@ -36,7 +36,7 @@ service cloud.firestore {
     }
 
     match /setupTokens/{tokenId} {
-      allow get: if isSuperAdmin() || (resource.data.used == false);
+      allow get: if isSuperAdmin() || resource.data.used == false;
       allow list: if isSuperAdmin();
       allow create: if isSuperAdmin()
         || (!exists(/databases/$(database)/documents/setupTokens/$(tokenId))
@@ -48,7 +48,6 @@ service cloud.firestore {
               && request.resource.data.used == false
               && request.resource.data.autoGen == true)
           ));
-      allow read: if isSuperAdmin() || resource.data.used == false;
       allow update: if isSuperAdmin()
         || (resource.data.used == false
           && request.resource.data.used == true
@@ -73,16 +72,21 @@ service cloud.firestore {
         && request.resource.data.note.size() <= 240
         && isSafeText(request.resource.data.note);
 
-      allow read: if true;
+      allow read: if isSuperAdmin()
+        || (resource.data.inviteToken is string
+          && exists(/databases/$(database)/documents/sessions/$(resource.data.inviteToken)));
 
       allow update: if false;
       allow delete: if isSuperAdmin();
     }
 
     match /sessions/{sessionId} {
-      allow read: if true;
-      allow write: if request.resource.data.createdAt is timestamp;
-      allow delete: if true;
+      allow read: if isSuperAdmin();
+      allow create: if request.resource.data.createdAt is timestamp
+        && exists(/databases/$(database)/documents/setupTokens/$(sessionId))
+        && get(/databases/$(database)/documents/setupTokens/$(sessionId)).data.used == true;
+      allow update: if false;
+      allow delete: if isSuperAdmin();
     }
   }
 }

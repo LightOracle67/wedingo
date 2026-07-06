@@ -6,10 +6,11 @@ import { defaultConfig } from "../lib/constants";
 
 export function useAutoSave(hasStoredConfig, inviteToken, formData, config, onSaveMessage, isSavingRef) {
   const autoSaveTimerRef = useRef(null);
+  const autoSavingRef = useRef(false);
 
   const doSave = useCallback(async (data) => {
-    if (isSavingRef?.current) return null;
-    if (isSavingRef) isSavingRef.current = true;
+    if (isSavingRef?.current || autoSavingRef.current) return null;
+    autoSavingRef.current = true;
     const payload = { ...defaultConfig, ...normalizeConfig(data) };
     try {
       await setDoc(invitationDocRef(inviteToken), payload);
@@ -17,7 +18,7 @@ export function useAutoSave(hasStoredConfig, inviteToken, formData, config, onSa
     } catch {
       return null;
     } finally {
-      if (isSavingRef) isSavingRef.current = false;
+      autoSavingRef.current = false;
     }
   }, [inviteToken, isSavingRef]);
 

@@ -9,7 +9,6 @@ const PanelTab = memo(function PanelTab({
   inviteToken, confirmedResponses, declinedResponses, totalGuests, rsvpEntries,
   setActiveTab, setAttendanceFilter, exportCsv, formatDate, onRestore,
 }) {
-  const pendingResponses = rsvpEntries.filter((e) => e.attendance !== "yes" && e.attendance !== "no").length;
   const inviteUrl = `${window.location.origin}/${inviteToken}`;
   const restoreRef = useRef(null);
   const [restoreMsg, setRestoreMsg] = useState("");
@@ -35,7 +34,7 @@ const PanelTab = memo(function PanelTab({
     try {
       const snap = await getDoc(invitationDocRef(inviteToken));
       if (!snap.exists()) { setRestoreMsg("No se encontró la invitación."); return; }
-      const data = { id: snap.id, ...snap.data() };
+      const data = [{ id: snap.id, ...snap.data() }];
       const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
@@ -74,17 +73,17 @@ const PanelTab = memo(function PanelTab({
       <div className="admin-stats-grid">
         <StatsCard label="Confirmados" value={confirmedResponses} />
         <StatsCard label="No asistirán" value={declinedResponses} />
-        <StatsCard label="Sin responder" value={pendingResponses} />
+        <StatsCard label="Sin responder" value={summary.pending} />
         <StatsCard label="Total invitados" value={totalGuests} />
       </div>
 
       {summary.confirmed + summary.declined > 0 && (
         <div className="setup-token-card" style={{ marginBottom: "1rem", padding: "1rem", textAlign: "center" }}>
-          <DonutChart yes={summary.confirmed} no={summary.declined} pending={pendingResponses} size={120} />
+          <DonutChart yes={summary.confirmed} no={summary.declined} pending={summary.pending} size={120} />
           <Legend items={[
             { label: "Confirman", value: summary.confirmed, color: "var(--accent, #22c55e)" },
             { label: "Declinan", value: summary.declined, color: "#ef4444" },
-            { label: "Pendientes", value: pendingResponses, color: "#f59e0b" },
+            { label: "Pendientes", value: summary.pending, color: "#f59e0b" },
           ]} />
         </div>
       )}

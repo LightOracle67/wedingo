@@ -29,7 +29,7 @@ function AppShell() {
     const activeBackground = isEditingRoute ? null : config.backgroundImage;
     let encodedBackground = "none";
     if (activeBackground && activeBackground.startsWith("data:image/")) {
-      const safe = activeBackground.replace(/['\\)\n]/g, "");
+      const safe = activeBackground.replace(/['"@\\)\n]/g, "").replace(/javascript:/gi, "");
       encodedBackground = `url('${safe}')`;
     }
     document.documentElement.style.setProperty("--wedding-background-image", encodedBackground);
