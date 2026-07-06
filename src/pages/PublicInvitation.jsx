@@ -404,6 +404,8 @@ export default function PublicInvitation() {
       couplePhoto: config.couplePhoto,
       musicUrl: config.musicUrl,
       darkMode: config.darkMode,
+      godparent1: config.godparent1,
+      godparent2: config.godparent2,
     },
     details: {
       formattedDate,
@@ -458,7 +460,7 @@ export default function PublicInvitation() {
     config.weddingPlace, config.weddingSchedule, config.weddingDressCode,
     config.kidsPolicy, config.storyText, config.giftsInfo, config.accommodationInfo,
     config.transportInfo, config.godparent1, config.godparent2, config.galleryImages,
-    config.couplePhoto, config.musicUrl, config.darkMode, config.bankInfo,
+    config.couplePhoto, config.musicUrl, config.darkMode, config.bankInfo, config.godparent1, config.godparent2,
     countdown, formattedDate, formattedTime,
     hasLocationData, locationDescription, calendarLink,
     locationMapContainerRef, locationMapLoading, locationMapError, locationMapTarget,
