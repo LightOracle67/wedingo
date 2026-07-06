@@ -44,9 +44,9 @@ const AccessTab = memo(function AccessTab({ setupToken, handleResetTokenFromAdmi
       </div>
 
       <div className="setup-actions">
-        <a className="setup-button setup-button--ghost" href={window.location.origin} target="_blank" rel="noreferrer">
-          Volver a la portada
-        </a>
+        <button className="setup-button setup-button--ghost" type="button" onClick={handleAdminLogout}>
+          Cerrar sesión
+        </button>
       </div>
     </>
   );
