@@ -83,8 +83,7 @@ service cloud.firestore {
     match /sessions/{sessionId} {
       allow read: if isSuperAdmin();
       allow create: if request.resource.data.createdAt is timestamp
-        && exists(/databases/$(database)/documents/setupTokens/$(sessionId))
-        && get(/databases/$(database)/documents/setupTokens/$(sessionId)).data.used == true;
+        && !exists(/databases/$(database)/documents/sessions/$(sessionId));
       allow update: if false;
       allow delete: if isSuperAdmin();
     }

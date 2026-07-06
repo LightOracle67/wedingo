@@ -96,19 +96,21 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
     setIsTokenVerifying(true);
     try {
       const tokenDocRef = doc(db, "setupTokens", enteredToken);
+      const sessionRef = doc(db, "sessions", inviteToken);
+      const inviteRef = invitationDocRef(inviteToken);
+
       await runTransaction(db, async (transaction) => {
         const tokenDoc = await transaction.get(tokenDocRef);
         if (!tokenDoc.exists || tokenDoc.data().used === true) {
           throw new Error("Token ya usado");
         }
 
-        const inviteSnap = await transaction.get(invitationDocRef(inviteToken));
+        const inviteSnap = await transaction.get(inviteRef);
         if (!inviteSnap.exists()) {
-          transaction.set(invitationDocRef(inviteToken), defaultConfig);
+          transaction.set(inviteRef, defaultConfig);
         }
 
-        transaction.set(doc(db, "sessions", inviteToken), { createdAt: serverTimestamp() });
-
+        transaction.set(sessionRef, { createdAt: serverTimestamp() });
         transaction.update(tokenDocRef, {
           used: true,
           usedAt: serverTimestamp(),
