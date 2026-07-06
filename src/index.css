@@ -848,6 +848,48 @@ html {
   --wedding-decoration-right-opacity: 0.93;
 }
 
+:root[data-wedding-theme="rainbow"] .story-card,
+:root[data-wedding-theme="rainbow"] .invite-shell {
+  background:
+    radial-gradient(ellipse at 50% 40%, #ff0000bb 0%, #ff8800bb 15%, #ffdd00bb 30%, #00cc44bb 50%, #0088ffbb 70%, #8800ffbb 85%);
+}
+
+:root[data-wedding-theme="trans"] .story-card,
+:root[data-wedding-theme="trans"] .invite-shell {
+  background:
+    radial-gradient(ellipse at 50% 40%, #88c8e8cc 0%, #f0a0b8cc 30%, #ffffffcc 50%, #f0a0b8cc 70%, #88c8e8cc 100%);
+}
+
+:root[data-wedding-theme="nonbinary"] .story-card,
+:root[data-wedding-theme="nonbinary"] .invite-shell {
+  background:
+    radial-gradient(ellipse at 50% 40%, #f0e060cc 0%, #ffffffcc 30%, #b088c8cc 60%, #1a1a1acc 100%);
+}
+
+:root[data-wedding-theme="lesbian"] .story-card,
+:root[data-wedding-theme="lesbian"] .invite-shell {
+  background:
+    radial-gradient(ellipse at 50% 40%, #d86000cc 0%, #ff8800cc 15%, #ffffffcc 35%, #e87090cc 55%, #a04080cc 80%, #600040cc 100%);
+}
+
+:root[data-wedding-theme="bi"] .story-card,
+:root[data-wedding-theme="bi"] .invite-shell {
+  background:
+    radial-gradient(ellipse at 50% 40%, #d86090cc 0%, #d86090cc 30%, #8844aacc 50%, #4488cccc 70%, #4488cccc 100%);
+}
+
+:root[data-wedding-theme="pan"] .story-card,
+:root[data-wedding-theme="pan"] .invite-shell {
+  background:
+    radial-gradient(ellipse at 50% 40%, #e86090cc 0%, #e86090cc 25%, #f0d060cc 50%, #60c0e0cc 75%, #60c0e0cc 100%);
+}
+
+:root[data-wedding-theme="ace"] .story-card,
+:root[data-wedding-theme="ace"] .invite-shell {
+  background:
+    radial-gradient(ellipse at 50% 40%, #1a1a1acc 0%, #444444cc 25%, #888888cc 50%, #ddddddcc 70%, #b088c8cc 100%);
+}
+
 :root[data-dark-mode="true"] {
   --page-wash: rgba(0, 0, 0, 0.4);
   --spark-1: rgba(255, 255, 255, 0.06);
