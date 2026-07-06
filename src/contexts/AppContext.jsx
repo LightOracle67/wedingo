@@ -161,7 +161,7 @@ export function AppProvider({ children }) {
         if (cached) {
           try {
             const parsed = JSON.parse(cached);
-            if (parsed.data && parsed.cachedAt && Date.now() - parsed.cachedAt < 60000) {
+            if (parsed.data && parsed.cachedAt && Date.now() - parsed.cachedAt < 120000) {
               setConfig(parsed.data);
               setFormData(parsed.data);
               setHasStoredConfig(true);
@@ -183,6 +183,7 @@ export function AppProvider({ children }) {
         const hydrated = { ...defaultConfig, ...parsed };
         setConfig(hydrated);
         setFormData(hydrated);
+        localStorage.setItem(`wedin_invite_cache_${inviteToken}`, JSON.stringify({ data: hydrated, cachedAt: Date.now() }));
         setVisitCount(typeof snapshot.data()._visits === "number" ? snapshot.data()._visits : 0);
         setHasStoredConfig(true);
         loadedTokenRef.current = inviteToken;
@@ -191,8 +192,9 @@ export function AppProvider({ children }) {
           trackVisit(inviteToken);
         }
       } catch {
-        setHasStoredConfig(false);
-        setConfigLoadError("No se pudo cargar la configuración guardada. Revisa la conexión e inténtalo de nuevo.");
+        if (!hasStoredConfig) {
+          setConfigLoadError("No se pudo cargar la configuración. Revisa la conexión e inténtalo de nuevo.");
+        }
       } finally {
         setIsConfigLoading(false);
       }
