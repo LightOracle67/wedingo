@@ -1587,21 +1587,18 @@ h6 {
 }
 
 .setup-layout {
-  min-height: calc(100dvh - var(--navbar-height, 0px));
-  max-height: calc(100dvh - var(--navbar-height, 0px));
+  height: calc(100dvh - var(--navbar-height, 0px));
   display: grid;
-  place-items: start center;
-  align-content: start;
+  place-items: center center;
   padding: clamp(0.75rem, 2.5vw, 1.5rem);
   width: 100%;
   box-sizing: border-box;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
 .setup-card {
   position: relative;
   width: min(100%, 36rem);
+  max-height: calc(100dvh - var(--navbar-height, 0px) - clamp(1.5rem, 5vw, 3rem));
   padding: clamp(0.6rem, 2vw, 1.2rem);
   box-sizing: border-box;
   overflow-y: auto;
