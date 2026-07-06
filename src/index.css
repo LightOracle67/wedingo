@@ -756,7 +756,9 @@ body::after {
   z-index: 1;
   border-radius: 1.6rem;
   width: min(100%, 44rem);
-  height: calc(100dvh - var(--navbar-height, 0px) - clamp(3rem, 8vw, 6rem));
+  min-height: calc(100dvh - var(--navbar-height, 0px) - clamp(3rem, 8vw, 6rem));
+  padding: clamp(0.75rem, 2.5vw, 1.5rem);
+  box-sizing: border-box;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
@@ -768,6 +770,22 @@ body::after {
     0 0 30px color-mix(in srgb, var(--invite-shell-glow) 70%, transparent);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
+}
+
+.story-card .story-title {
+  font-size: clamp(1.5rem, 3.4vw, 2.4rem);
+}
+
+.story-card .story-copy {
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+}
+
+.story-card .story-note {
+  font-size: clamp(0.82rem, 1.7vw, 0.92rem);
+}
+
+.story-card .story-subheading {
+  font-size: clamp(1.1rem, 2.6vw, 1.5rem);
 }
 
 .story-card::before {
