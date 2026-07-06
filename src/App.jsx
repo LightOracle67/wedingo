@@ -69,8 +69,7 @@ function AppShell() {
           {SUPERADMIN_DASHBOARD && (
             <Route path={SUPERADMIN_DASHBOARD} element={<ErrorBoundary><SuperAdminPanel /></ErrorBoundary>} />
           )}
-          <Route path="/legal/:section" element={<ErrorBoundary><LegalPage /></ErrorBoundary>} />
-          <Route path="/legal" element={<Navigate to="/legal/privacy" replace />} />
+          <Route path="/legal" element={<ErrorBoundary><LegalPage /></ErrorBoundary>} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         </Suspense>
