@@ -417,18 +417,23 @@ export default function SetupForm({ prefix = "" }) {
         />
         <p className="setup-help">Escribe el horario, un salto de línea por cada evento.</p>
 
-        <label className="setup-label" htmlFor={id("weddingDressCode")}>
-          Código de vestimenta
-        </label>
-        <input
-          id={id("weddingDressCode")}
-          className="setup-input"
-          value={formData.weddingDressCode}
-          onChange={(e) => updateFormField("weddingDressCode", e.target.value.slice(0, 200))}
-          placeholder="Ejemplo: Etiqueta informal"
-          autoComplete="off"
-        />
-        <p className="setup-help">Sugerencia sobre cómo vestir para la celebración.</p>
+        <label className="setup-label">Código de vestimenta</label>
+        <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))" }}>
+          {["Traje de gala", "Etiqueta informal", "Vestimenta formal", "Cóctel elegante", "Ropa cómoda"].map((opt) => (
+            <label key={opt} className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem", color: "var(--setup-title)" }}>
+              <input type="checkbox" checked={formData.weddingDressCode === opt} onChange={() => updateFormField("weddingDressCode", formData.weddingDressCode === opt ? "" : opt)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+              {opt}
+            </label>
+          ))}
+          <label key="_other_dc" className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem", color: "var(--setup-title)" }}>
+            <input type="checkbox" checked={!["Traje de gala", "Etiqueta informal", "Vestimenta formal", "Cóctel elegante", "Ropa cómoda", ""].includes(formData.weddingDressCode)} onChange={() => updateFormField("weddingDressCode", "")} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+            Otro
+          </label>
+        </div>
+        {!["Traje de gala", "Etiqueta informal", "Vestimenta formal", "Cóctel elegante", "Ropa cómoda", ""].includes(formData.weddingDressCode) && (
+          <input className="setup-input" value={formData.weddingDressCode} onChange={(e) => updateFormField("weddingDressCode", e.target.value.slice(0, 100))} placeholder="Describe el código de vestimenta" autoComplete="off" style={{ marginTop: "0.3rem" }} />
+        )}
+        <p className="setup-help">Selecciona una opción o elige "Otro" para personalizarlo.</p>
 
         <label className="setup-label" htmlFor={id("accommodationInfo")}>
           Alojamiento
@@ -463,18 +468,27 @@ export default function SetupForm({ prefix = "" }) {
         title="Sobre los invitados"
         hint="Niños, restricciones"
       >
-        <label className="setup-label" htmlFor={id("kidsPolicy")}>
-          Sobre los niños
-        </label>
-        <textarea
-          id={id("kidsPolicy")}
-          className="setup-textarea"
-          value={formData.kidsPolicy}
-          onChange={(e) => updateFormField("kidsPolicy", e.target.value.slice(0, 500))}
-          placeholder="Ejemplo: Los niños son bienvenidos, habrá zona de juegos habilitada."
-          rows={3}
-        />
-        <p className="setup-help">Indica si los niños son bienvenidos o si prefieres que no asistan.</p>
+        <label className="setup-label">Sobre los niños</label>
+        <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))" }}>
+          {[
+            { value: "Bienvenidos con zona de juegos", label: "Bienvenidos con zona de juegos" },
+            { value: "Bienvenidos bajo supervisión", label: "Bienvenidos bajo supervisión" },
+            { value: "Solo para adultos", label: "Solo para adultos" },
+          ].map((opt) => (
+            <label key={opt.value} className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem", color: "var(--setup-title)" }}>
+              <input type="checkbox" checked={formData.kidsPolicy === opt.value} onChange={() => updateFormField("kidsPolicy", formData.kidsPolicy === opt.value ? "" : opt.value)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+              {opt.label}
+            </label>
+          ))}
+          <label key="_other_kids" className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem", color: "var(--setup-title)" }}>
+            <input type="checkbox" checked={!["Bienvenidos con zona de juegos", "Bienvenidos bajo supervisión", "Solo para adultos", ""].includes(formData.kidsPolicy)} onChange={() => updateFormField("kidsPolicy", "")} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+            Otro
+          </label>
+        </div>
+        {!["Bienvenidos con zona de juegos", "Bienvenidos bajo supervisión", "Solo para adultos", ""].includes(formData.kidsPolicy) && (
+          <textarea className="setup-textarea" value={formData.kidsPolicy} onChange={(e) => updateFormField("kidsPolicy", e.target.value.slice(0, 500))} placeholder="Especifica tu preferencia" rows={2} style={{ marginTop: "0.3rem" }} />
+        )}
+        <p className="setup-help">Selecciona una opción o elige "Otro" para personalizarlo.</p>
       </CollapsibleSection>
       ) : null}
 
