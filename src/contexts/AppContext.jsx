@@ -16,6 +16,7 @@ import { useRsvp } from "../hooks/useRsvp";
 import { useMapPreview } from "../hooks/useMapPreview";
 import { useSetupAuth } from "../hooks/useSetupAuth";
 import { useAutoSave } from "../hooks/useAutoSave";
+import LegalModal from "../components/LegalModal";
 
 const AppContext = createContext(null);
 
@@ -35,6 +36,7 @@ export function AppProvider({ children }) {
   const [adminMessage, setAdminMessage] = useState("");
   const [adminMessageType, setAdminMessageType] = useState("success");
 
+  const [legalModal, setLegalModal] = useState("");
   const [locationMapError, setLocationMapError] = useState("");
   const [locationMapLoading, setLocationMapLoading] = useState(false);
   const [locationMapTarget, setLocationMapTarget] = useState(null);
@@ -471,6 +473,7 @@ export function AppProvider({ children }) {
   const value = useMemo(() => ({
     config, formData, hasStoredConfig,
     isConfigLoading, configLoadError, inviteToken,
+    legalModal, setLegalModal,
     setupToken, setupTokenInput, setSetupTokenInput,
     isTokenVerifying, isTokenVerified, setIsTokenVerified, tokenLoginUsername, setTokenLoginUsername,
     adminLoginUsername, setAdminLoginUsername, generatedToken,
@@ -525,10 +528,15 @@ export function AppProvider({ children }) {
     handleDayChange, handleHourChange, handleMinuteChange, handleMinuteBlur,
     handleYearChange, handleCoordinateChange,
     confirmTokenInput, setConfirmTokenInput,
-    visitCount,
+    visitCount, legalModal,
   ]);
 
-  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
+  return (
+    <AppContext.Provider value={value}>
+      {legalModal && <LegalModal section={legalModal} onClose={() => setLegalModal("")} />}
+      {children}
+    </AppContext.Provider>
+  );
 }
 
 // eslint-disable-next-line react/only-export-components
