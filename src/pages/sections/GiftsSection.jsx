@@ -1,6 +1,6 @@
 import { memo } from "react";
 
-const GiftsSection = memo(function GiftsSection({ style, className, giftsInfo }) {
+const GiftsSection = memo(function GiftsSection({ style, className, giftsInfo, bankInfo }) {
   return (
     <section
       data-story-section="gifts"
@@ -17,6 +17,12 @@ const GiftsSection = memo(function GiftsSection({ style, className, giftsInfo })
             La información sobre regalos se compartirá próximamente.
           </p>
         )}
+        {bankInfo ? (
+          <div className="mt-4 p-3 rounded-xl" style={{ background: "color-mix(in srgb, var(--setup-field-bg) 80%, transparent)", border: "1px solid color-mix(in srgb, var(--setup-accent) 30%, transparent)" }}>
+            <p className="story-eyebrow" style={{ fontSize: "0.72rem" }}>Datos bancarios</p>
+            <p className="story-note mt-1 whitespace-pre-line" style={{ fontFamily: "monospace", fontSize: "0.85rem" }}>{bankInfo}</p>
+          </div>
+        ) : null}
       </div>
     </section>
   );

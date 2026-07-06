@@ -62,7 +62,7 @@ export const THEME_GROUPS = [
   { value: "oscuros", label: "Temas oscuros" },
 ];
 
-export const STORY_SECTION_ORDER = ["hero", "details", "info", "story", "gifts", "accommodation", "rsvp"];
+export const STORY_SECTION_ORDER = ["hero", "details", "info", "story", "gifts", "accommodation", "transport", "godparents", "gallery", "rsvp"];
 
 export const SECTION_LABELS = {
   hero: "Portada",
@@ -71,6 +71,9 @@ export const SECTION_LABELS = {
   story: "Nuestra historia",
   gifts: "Regalos",
   accommodation: "Alojamiento",
+  transport: "Transporte",
+  godparents: "Padrinos",
+  gallery: "Galería",
   rsvp: "Confirmación",
 };
 
@@ -81,6 +84,9 @@ export const SECTION_MOVABLE = {
   story: true,
   gifts: true,
   accommodation: true,
+  transport: true,
+  godparents: true,
+  gallery: true,
   rsvp: true,
 };
 
@@ -101,15 +107,24 @@ export const defaultConfig = {
   weddingDressCode: "",
 
   theme: "golden",
+  darkMode: "false",
   backgroundImage: "",
   backgroundImageLabel: "",
   backgroundImageSource: "",
   backgroundImageStorage: "",
 
+  couplePhoto: "",
+  couplePhotoStorage: "",
+
   sectionOrder: STORY_SECTION_ORDER.join(","),
   hiddenSections: "",
   storyText: "",
   giftsInfo: "",
+  bankInfo: "",
   accommodationInfo: "",
+  transportInfo: "",
+  godparents: "",
+  musicUrl: "",
+  galleryImages: "",
   kidsPolicy: "",
 };

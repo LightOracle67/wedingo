@@ -1,7 +1,8 @@
-import { useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import { useApp } from "../contexts/AppContext";
 import { useToast } from "../contexts/ToastContext";
-import { ALLOWED_UPLOAD_TYPES, MONTH_OPTIONS, THEME_GROUPS, THEME_OPTIONS, THEME_PREVIEW_COLORS } from "../lib/constants";
+import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES, MONTH_OPTIONS, THEME_GROUPS, THEME_OPTIONS, THEME_PREVIEW_COLORS } from "../lib/constants";
+import { compressImage } from "../lib/image-utils";
 import CollapsibleSection from "./CollapsibleSection";
 import SectionOrderEditor from "./SectionOrderEditor";
 
@@ -11,10 +12,12 @@ export default function SetupForm({ prefix = "" }) {
     handleHourChange, handleMinuteChange, handleMinuteBlur, handleYearChange,
     handleCoordinateChange, handleBackgroundUpload, handleClearBackground,
     handleSelectPreviewBackground, previewBackgrounds,
-    saveMessage, saveError, maxAllowedYear, isTokenVerified,
+    saveMessage, saveError, maxAllowedYear, isTokenVerified, inviteToken,
   } = useApp();
 
   const { addToast } = useToast();
+  const photoRef = useRef(null);
+  const galleryRef = useRef(null);
 
   useEffect(() => {
     if (saveMessage) addToast("success", saveMessage);
@@ -30,6 +33,41 @@ export default function SetupForm({ prefix = "" }) {
   }, [formData.hiddenSections]);
 
   const id = (name) => `${prefix}${name}`;
+
+  const handleCouplePhotoUpload = useCallback(async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (!ALLOWED_UPLOAD_TYPES.has(file.type)) { addToast("error", "Formato no permitido. Usa JPG o PNG."); return; }
+    if (file.size > MAX_UPLOAD_SIZE_BYTES) { addToast("error", "La imagen supera 20 MB."); return; }
+    try {
+      const dataUrl = await compressImage(file);
+      const { uploadBackgroundImage } = await import("../lib/storage-utils");
+      const { downloadUrl } = await uploadBackgroundImage(inviteToken, dataUrl);
+      updateFormField("couplePhoto", downloadUrl);
+      updateFormField("couplePhotoStorage", `invitations/${inviteToken}/couplePhoto.${dataUrl.startsWith("data:image/png") ? "png" : "jpg"}`);
+      addToast("success", "Foto subida correctamente.");
+    } catch { addToast("error", "No se pudo subir la foto."); }
+    e.target.value = "";
+  }, [inviteToken, updateFormField, addToast]);
+
+  const handleGalleryUpload = useCallback(async (e) => {
+    const files = Array.from(e.target.files || []);
+    if (!files.length) return;
+    const valid = files.filter(f => ALLOWED_UPLOAD_TYPES.has(f.type) && f.size <= MAX_UPLOAD_SIZE_BYTES);
+    if (!valid.length) { addToast("error", "Ningún archivo válido. Máximo 20 MB, JPG/PNG."); return; }
+    try {
+      const existing = (() => { try { return JSON.parse(formData.galleryImages || "[]"); } catch { return []; } })();
+      const { uploadBackgroundImage } = await import("../lib/storage-utils");
+      for (const file of valid) {
+        const dataUrl = await compressImage(file);
+        const { downloadUrl } = await uploadBackgroundImage(inviteToken, dataUrl);
+        existing.push(downloadUrl);
+      }
+      updateFormField("galleryImages", JSON.stringify(existing));
+      addToast("success", `${valid.length} foto(s) subida(s) correctamente.`);
+    } catch { addToast("error", "No se pudieron subir las fotos."); }
+    e.target.value = "";
+  }, [inviteToken, formData.galleryImages, updateFormField, addToast]);
 
   return (
     <form className="setup-form setup-form--nested" onSubmit={handleSaveSetup}>
@@ -190,6 +228,34 @@ export default function SetupForm({ prefix = "" }) {
             </div>
           ) : null}
         </div>
+
+        <div className="setup-background-panel" style={{ marginTop: "0.75rem" }}>
+          <p className="setup-label">Foto de los novios</p>
+          <label className="setup-upload" htmlFor={id("couplePhoto")}>
+            <span className="setup-upload__title">Subir foto</span>
+            <span className="setup-upload__subtitle">Foto de la pareja para la portada.</span>
+          </label>
+          <input ref={photoRef} id={id("couplePhoto")} className="setup-upload__input" type="file" accept="image/jpeg,image/png,image/webp" onChange={handleCouplePhotoUpload} />
+          {formData.couplePhoto ? (
+            <div className="setup-selected-background">
+              <img src={formData.couplePhoto} alt="" className="setup-selected-background__image" style={{ borderRadius: "50%", aspectRatio: "1", width: "5rem" }} />
+              <div>
+                <p className="setup-selected-background__title">Foto actual</p>
+                <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => { updateFormField("couplePhoto", ""); updateFormField("couplePhotoStorage", ""); }}>Quitar</button>
+              </div>
+            </div>
+          ) : null}
+        </div>
+
+        <label className="setup-label" htmlFor={id("musicUrl")}>Música de fondo</label>
+        <input id={id("musicUrl")} className="setup-input" value={formData.musicUrl} onChange={(e) => updateFormField("musicUrl", e.target.value.slice(0, 500))} placeholder="https://example.com/cancion.mp3" autoComplete="off" />
+        <p className="setup-help">Enlace a un archivo de audio MP3 para reproducir en la portada.</p>
+
+        <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginTop: "0.5rem" }}>
+          <input type="checkbox" checked={formData.darkMode === "true"} onChange={(e) => updateFormField("darkMode", e.target.checked ? "true" : "false")} style={{ accentColor: "var(--setup-accent)", width: "1.1rem", height: "1.1rem" }} />
+          <span style={{ color: "var(--setup-title)" }}>Modo oscuro</span>
+        </label>
+        <p className="setup-help">Fondo más oscuro independientemente del tema seleccionado.</p>
       </CollapsibleSection>
 
       {!hiddenSet.has("details") ? (
@@ -422,6 +488,92 @@ export default function SetupForm({ prefix = "" }) {
           rows={4}
         />
         <p className="setup-help">Indica si preferís una lluvia de sobres, número de cuenta, etc.</p>
+
+        <label className="setup-label" htmlFor={id("bankInfo")}>
+          Datos bancarios (IBAN)
+        </label>
+        <input
+          id={id("bankInfo")}
+          className="setup-input"
+          value={formData.bankInfo}
+          onChange={(e) => updateFormField("bankInfo", e.target.value.slice(0, 100))}
+          placeholder="Ejemplo: ES00 0000 0000 00 0000000000"
+          autoComplete="off"
+        />
+        <p className="setup-help">Número de cuenta para transferencias, si procede.</p>
+      </CollapsibleSection>
+      ) : null}
+
+      {!hiddenSet.has("transport") ? (
+      <CollapsibleSection
+        title="Transporte"
+        hint="Cómo llegar al evento"
+      >
+        <label className="setup-label" htmlFor={id("transportInfo")}>
+          Información de transporte
+        </label>
+        <textarea
+          id={id("transportInfo")}
+          className="setup-textarea"
+          value={formData.transportInfo}
+          onChange={(e) => updateFormField("transportInfo", e.target.value.slice(0, 2000))}
+          placeholder="Ejemplo: Autobús desde la Plaza Mayor a las 17:00. Parking gratuito en el recinto."
+          rows={4}
+        />
+        <p className="setup-help">Indica opciones de transporte, horarios de autobús, parking, etc.</p>
+      </CollapsibleSection>
+      ) : null}
+
+      {!hiddenSet.has("godparents") ? (
+      <CollapsibleSection
+        title="Padrinos"
+        hint="Nombres de los padrinos"
+      >
+        <label className="setup-label" htmlFor={id("godparents")}>
+          Padrinos y testigos
+        </label>
+        <textarea
+          id={id("godparents")}
+          className="setup-textarea"
+          value={formData.godparents}
+          onChange={(e) => updateFormField("godparents", e.target.value.slice(0, 1000))}
+          placeholder="Ejemplo: Padrinos: María García y Juan Pérez. Testigos: Ana López y Pedro Sánchez."
+          rows={3}
+        />
+        <p className="setup-help">Nombres de los padrinos y/o testigos de la boda.</p>
+      </CollapsibleSection>
+      ) : null}
+
+      {!hiddenSet.has("gallery") ? (
+      <CollapsibleSection
+        title="Galería"
+        hint="Fotos de la pareja"
+      >
+        <label className="setup-upload" htmlFor={id("galleryUpload")}>
+          <span className="setup-upload__title">Subir fotos</span>
+          <span className="setup-upload__subtitle">Máximo 20 MB cada una. Puedes seleccionar varias.</span>
+        </label>
+        <input ref={galleryRef} id={id("galleryUpload")} className="setup-upload__input" type="file" accept="image/jpeg,image/png,image/webp" multiple onChange={handleGalleryUpload} />
+        {(() => {
+          try {
+            const images = JSON.parse(formData.galleryImages || "[]");
+            if (!images.length) return null;
+            return (
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(80px, 1fr))", gap: "0.4rem", marginTop: "0.5rem" }}>
+                {images.map((src, i) => (
+                  <div key={i} style={{ position: "relative" }}>
+                    <img src={src} alt="" style={{ width: "100%", aspectRatio: "1", objectFit: "cover", borderRadius: "0.5rem" }} />
+                    <button type="button" onClick={() => {
+                      const arr = JSON.parse(formData.galleryImages || "[]");
+                      arr.splice(i, 1);
+                      updateFormField("galleryImages", JSON.stringify(arr));
+                    }} style={{ position: "absolute", top: "2px", right: "2px", width: "1.2rem", height: "1.2rem", borderRadius: "999px", border: "none", background: "rgba(0,0,0,0.6)", color: "#fff", fontSize: "0.7rem", cursor: "pointer", display: "grid", placeItems: "center" }}>×</button>
+                  </div>
+                ))}
+              </div>
+            );
+          } catch { return null; }
+        })()}
       </CollapsibleSection>
       ) : null}
 

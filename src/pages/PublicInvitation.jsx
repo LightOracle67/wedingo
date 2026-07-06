@@ -16,6 +16,9 @@ import InfoSection from "./sections/InfoSection";
 import StorySection from "./sections/StorySection";
 import GiftsSection from "./sections/GiftsSection";
 import AccommodationSection from "./sections/AccommodationSection";
+import TransportSection from "./sections/TransportSection";
+import GodparentsSection from "./sections/GodparentsSection";
+import GallerySection from "./sections/GallerySection";
 import RsvpSection from "./sections/RsvpSection";
 
 const SECTION_COMPONENTS = {
@@ -25,6 +28,9 @@ const SECTION_COMPONENTS = {
   story: StorySection,
   gifts: GiftsSection,
   accommodation: AccommodationSection,
+  transport: TransportSection,
+  godparents: GodparentsSection,
+  gallery: GallerySection,
   rsvp: RsvpSection,
 };
 
@@ -395,6 +401,9 @@ export default function PublicInvitation() {
       secondName: config.secondName,
       inviteMessage: config.inviteMessage,
       countdown,
+      couplePhoto: config.couplePhoto,
+      musicUrl: config.musicUrl,
+      darkMode: config.darkMode,
     },
     details: {
       formattedDate,
@@ -418,9 +427,19 @@ export default function PublicInvitation() {
     },
     gifts: {
       giftsInfo: config.giftsInfo,
+      bankInfo: config.bankInfo,
     },
     accommodation: {
       accommodationInfo: config.accommodationInfo,
+    },
+    transport: {
+      transportInfo: config.transportInfo,
+    },
+    godparents: {
+      godparents: config.godparents,
+    },
+    gallery: {
+      galleryImages: config.galleryImages,
     },
     rsvp: {
       rsvpForm,
@@ -435,7 +454,10 @@ export default function PublicInvitation() {
     },
   }), [
     config.firstName, config.secondName, config.inviteMessage,
-    config.weddingPlace, config.weddingSchedule, config.weddingDressCode, config.kidsPolicy, config.storyText, config.giftsInfo, config.accommodationInfo,
+    config.weddingPlace, config.weddingSchedule, config.weddingDressCode,
+    config.kidsPolicy, config.storyText, config.giftsInfo, config.accommodationInfo,
+    config.transportInfo, config.godparents, config.galleryImages,
+    config.couplePhoto, config.musicUrl, config.darkMode, config.bankInfo,
     countdown, formattedDate, formattedTime,
     hasLocationData, locationDescription, calendarLink,
     locationMapContainerRef, locationMapLoading, locationMapError, locationMapTarget,

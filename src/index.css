@@ -568,6 +568,15 @@ html {
   --wedding-decoration-right-opacity: 0.95;
 }
 
+:root[data-dark-mode="true"] {
+  --page-wash: rgba(0, 0, 0, 0.4);
+  --spark-1: rgba(255, 255, 255, 0.06);
+  --spark-2: rgba(255, 255, 255, 0.04);
+  --invite-shell-bg: color-mix(in srgb, var(--invite-shell-bg) 60%, black);
+  --invite-shell-shadow: rgba(0, 0, 0, 0.7);
+  --invite-shell-border: color-mix(in srgb, var(--invite-shell-border) 50%, transparent);
+}
+
 body {
   font-family: var(--font-body);
   margin: 0;

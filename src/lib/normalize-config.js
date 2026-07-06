@@ -1,42 +1,43 @@
 import { STORY_SECTION_ORDER, THEME_VALUES } from "./constants";
 
+const s = (v) => (typeof v === "string" ? v.trim() : "");
+
 export const normalizeConfig = (value) => ({
-  adminUsername:
-    typeof value?.adminUsername === "string" ? value.adminUsername.trim().toLowerCase() : "",
-  firstName: typeof value?.firstName === "string" ? value.firstName.trim() : "",
-  secondName: typeof value?.secondName === "string" ? value.secondName.trim() : "",
-  inviteMessage: typeof value?.inviteMessage === "string" ? value.inviteMessage.trim() : "",
-  weddingPlace: typeof value?.weddingPlace === "string" ? value.weddingPlace.trim() : "",
-  weddingLatitude: typeof value?.weddingLatitude === "string" ? value.weddingLatitude.trim() : "",
-  weddingLongitude: typeof value?.weddingLongitude === "string" ? value.weddingLongitude.trim() : "",
-  weddingDay: typeof value?.weddingDay === "string" ? value.weddingDay.trim() : "",
-  weddingMonth: typeof value?.weddingMonth === "string" ? value.weddingMonth.trim() : "",
-  weddingYear: typeof value?.weddingYear === "string" ? value.weddingYear.trim() : "",
-  weddingHour: typeof value?.weddingHour === "string" ? value.weddingHour.trim() : "",
-  weddingMinute: typeof value?.weddingMinute === "string" ? value.weddingMinute.trim() : "",
-  weddingSchedule: typeof value?.weddingSchedule === "string" ? value.weddingSchedule.trim() : "",
-  weddingDressCode: typeof value?.weddingDressCode === "string" ? value.weddingDressCode.trim() : "",
+  adminUsername: s(value?.adminUsername).toLowerCase(),
+  firstName: s(value?.firstName),
+  secondName: s(value?.secondName),
+  inviteMessage: s(value?.inviteMessage),
+  weddingPlace: s(value?.weddingPlace),
+  weddingLatitude: s(value?.weddingLatitude),
+  weddingLongitude: s(value?.weddingLongitude),
+  weddingDay: s(value?.weddingDay),
+  weddingMonth: s(value?.weddingMonth),
+  weddingYear: s(value?.weddingYear),
+  weddingHour: s(value?.weddingHour),
+  weddingMinute: s(value?.weddingMinute),
+  weddingSchedule: s(value?.weddingSchedule),
+  weddingDressCode: s(value?.weddingDressCode),
   theme:
     typeof value?.theme === "string" && THEME_VALUES.has(value.theme.trim())
       ? value.theme.trim()
       : "golden",
-  backgroundImage: typeof value?.backgroundImage === "string" ? value.backgroundImage.trim() : "",
-  backgroundImageLabel:
-    typeof value?.backgroundImageLabel === "string" ? value.backgroundImageLabel.trim() : "",
-  backgroundImageSource:
-    typeof value?.backgroundImageSource === "string" ? value.backgroundImageSource.trim() : "",
-  backgroundImageStorage:
-    typeof value?.backgroundImageStorage === "string" ? value.backgroundImageStorage.trim() : "",
+  darkMode: s(value?.darkMode) === "true" ? "true" : "false",
+  backgroundImage: s(value?.backgroundImage),
+  backgroundImageLabel: s(value?.backgroundImageLabel),
+  backgroundImageSource: s(value?.backgroundImageSource),
+  backgroundImageStorage: s(value?.backgroundImageStorage),
+  couplePhoto: s(value?.couplePhoto),
+  couplePhotoStorage: s(value?.couplePhotoStorage),
   sectionOrder:
     typeof value?.sectionOrder === "string" ? value.sectionOrder.trim() : STORY_SECTION_ORDER.join(","),
-  hiddenSections:
-    typeof value?.hiddenSections === "string" ? value.hiddenSections.trim() : "",
-  storyText:
-    typeof value?.storyText === "string" ? value.storyText.trim() : "",
-  giftsInfo:
-    typeof value?.giftsInfo === "string" ? value.giftsInfo.trim() : "",
-  accommodationInfo:
-    typeof value?.accommodationInfo === "string" ? value.accommodationInfo.trim() : "",
-  kidsPolicy:
-    typeof value?.kidsPolicy === "string" ? value.kidsPolicy.trim() : "",
+  hiddenSections: s(value?.hiddenSections),
+  storyText: s(value?.storyText),
+  giftsInfo: s(value?.giftsInfo),
+  bankInfo: s(value?.bankInfo),
+  accommodationInfo: s(value?.accommodationInfo),
+  transportInfo: s(value?.transportInfo),
+  godparents: s(value?.godparents),
+  musicUrl: s(value?.musicUrl),
+  galleryImages: s(value?.galleryImages),
+  kidsPolicy: s(value?.kidsPolicy),
 });

@@ -1,7 +1,24 @@
-import { memo } from "react";
+import { memo, useRef, useState, useEffect } from "react";
 import heroBackdropSrc from "../../assets/rings.png";
 
-const HeroSection = memo(function HeroSection({ style, className, firstName, secondName, inviteMessage, countdown }) {
+const HeroSection = memo(function HeroSection({ style, className, firstName, secondName, inviteMessage, countdown, couplePhoto, musicUrl, darkMode }) {
+  const [playing, setPlaying] = useState(false);
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    if (darkMode === "true") {
+      document.documentElement.dataset.darkMode = "true";
+    } else {
+      delete document.documentElement.dataset.darkMode;
+    }
+  }, [darkMode]);
+
+  const toggleMusic = () => {
+    if (!audioRef.current) return;
+    if (playing) { audioRef.current.pause(); setPlaying(false); }
+    else { audioRef.current.play().then(() => setPlaying(true)).catch(() => {}); }
+  };
+
   return (
     <section
       data-story-section="hero"
@@ -10,6 +27,11 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
     >
       <div className="invite-shell story-panel story-panel--hero relative z-10 mx-auto w-full rounded-[2rem] bg-transparent text-center shadow-2xl" style={{ maxWidth: "min(100%, 50rem)", minHeight: "calc(100dvh - var(--navbar-height, 0px) - clamp(3rem, 8vw, 6rem))", padding: "clamp(0.75rem, 2.5vw, 1.5rem)", boxSizing: "border-box", overflowY: "auto" }}>
         <div className="relative z-20">
+          {couplePhoto ? (
+            <div className="mx-auto mb-4 w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-2" style={{ borderColor: "color-mix(in srgb, var(--invite-shell-border) 80%, transparent)" }}>
+              <img src={couplePhoto} alt="" className="w-full h-full object-cover" />
+            </div>
+          ) : null}
           <div className="relative mx-auto w-fit">
             <div className="hero-rings pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-[42%]">
               <img
@@ -41,6 +63,14 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
               ) : (
                 <p className="mt-1 text-[clamp(1.5rem,4vw,2.5rem)] leading-tight font-serif text-boda-texto">¡Hoy es el gran día!</p>
               )}
+            </div>
+          ) : null}
+          {musicUrl ? (
+            <div className="mt-4">
+              <audio ref={audioRef} src={musicUrl} loop />
+              <button type="button" onClick={toggleMusic} className="setup-button setup-button--ghost setup-button--compact" style={{ fontSize: "0.8rem" }}>
+                {playing ? "⏸ Pausar música" : "▶ Reproducir música"}
+              </button>
             </div>
           ) : null}
         </div>
