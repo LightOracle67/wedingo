@@ -8,7 +8,7 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
       className={`${className} relative flex min-h-screen items-center justify-center px-3 py-6 sm:px-6 sm:py-10 lg:px-8 lg:py-12`}
       style={style}
     >
-      <div className="invite-shell story-panel story-panel--hero relative z-10 mx-auto w-full max-w-[min(100%,38rem)] rounded-[2rem] bg-transparent text-center shadow-2xl" style={{ height: "calc(100dvh - var(--navbar-height, 0px) - clamp(3rem, 8vw, 6rem))", overflowY: "auto" }}>
+      <div className="invite-shell story-panel story-panel--hero relative z-10 mx-auto w-full max-w-[min(100%,38rem)] rounded-[2rem] bg-transparent text-center shadow-2xl" style={{ minHeight: "calc(100dvh - var(--navbar-height, 0px) - clamp(3rem, 8vw, 6rem))", padding: "clamp(0.75rem, 2.5vw, 1.5rem)", boxSizing: "border-box", overflowY: "auto" }}>
         <div className="relative z-20">
           <div className="relative mx-auto w-fit">
             <div className="hero-rings pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-[42%]">
