@@ -425,15 +425,8 @@ export default function SetupForm({ prefix = "" }) {
               {opt}
             </label>
           ))}
-          <label key="_other_dc" className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem", color: "var(--setup-title)" }}>
-            <input type="checkbox" checked={!["Traje de gala", "Etiqueta informal", "Vestimenta formal", "Cóctel elegante", "Ropa cómoda", ""].includes(formData.weddingDressCode)} onChange={() => updateFormField("weddingDressCode", "")} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
-            Otro
-          </label>
         </div>
-        {!["Traje de gala", "Etiqueta informal", "Vestimenta formal", "Cóctel elegante", "Ropa cómoda", ""].includes(formData.weddingDressCode) && (
-          <input className="setup-input" value={formData.weddingDressCode} onChange={(e) => updateFormField("weddingDressCode", e.target.value.slice(0, 100))} placeholder="Describe el código de vestimenta" autoComplete="off" style={{ marginTop: "0.3rem" }} />
-        )}
-        <p className="setup-help">Selecciona una opción o elige "Otro" para personalizarlo.</p>
+        <p className="setup-help">Selecciona el código de vestimenta de la celebración.</p>
 
         <label className="setup-label" htmlFor={id("accommodationInfo")}>
           Alojamiento
@@ -480,15 +473,8 @@ export default function SetupForm({ prefix = "" }) {
               {opt.label}
             </label>
           ))}
-          <label key="_other_kids" className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem", color: "var(--setup-title)" }}>
-            <input type="checkbox" checked={!["Bienvenidos con zona de juegos", "Bienvenidos bajo supervisión", "Solo para adultos", ""].includes(formData.kidsPolicy)} onChange={() => updateFormField("kidsPolicy", "")} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
-            Otro
-          </label>
         </div>
-        {!["Bienvenidos con zona de juegos", "Bienvenidos bajo supervisión", "Solo para adultos", ""].includes(formData.kidsPolicy) && (
-          <textarea className="setup-textarea" value={formData.kidsPolicy} onChange={(e) => updateFormField("kidsPolicy", e.target.value.slice(0, 500))} placeholder="Especifica tu preferencia" rows={2} style={{ marginTop: "0.3rem" }} />
-        )}
-        <p className="setup-help">Selecciona una opción o elige "Otro" para personalizarlo.</p>
+        <p className="setup-help">Selecciona la política sobre niños para la celebración.</p>
       </CollapsibleSection>
       ) : null}
 
