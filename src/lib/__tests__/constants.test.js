@@ -44,7 +44,7 @@ describe("THEME_OPTIONS", () => {
       expect(t.value).toBeTruthy();
       expect(t.label).toBeTruthy();
       expect(t.hint).toBeTruthy();
-      expect(["claros", "oscuros"]).toContain(t.group);
+      expect(["claros", "oscuros", "lgtbiq+"]).toContain(t.group);
     }
   });
 
