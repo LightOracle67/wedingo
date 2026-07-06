@@ -17,6 +17,7 @@ import StorySection from "./sections/StorySection";
 import GiftsSection from "./sections/GiftsSection";
 import AccommodationSection from "./sections/AccommodationSection";
 import TransportSection from "./sections/TransportSection";
+import GodparentsSection from "./sections/GodparentsSection";
 import GallerySection from "./sections/GallerySection";
 import RsvpSection from "./sections/RsvpSection";
 
@@ -28,6 +29,7 @@ const SECTION_COMPONENTS = {
   gifts: GiftsSection,
   accommodation: AccommodationSection,
   transport: TransportSection,
+  godparents: GodparentsSection,
   gallery: GallerySection,
   rsvp: RsvpSection,
 };
@@ -433,6 +435,10 @@ export default function PublicInvitation() {
     transport: {
       transportInfo: config.transportInfo,
     },
+    godparents: {
+      godparent1: config.godparent1,
+      godparent2: config.godparent2,
+    },
     gallery: {
       galleryImages: config.galleryImages,
     },
@@ -451,7 +457,7 @@ export default function PublicInvitation() {
     config.firstName, config.secondName, config.inviteMessage,
     config.weddingPlace, config.weddingSchedule, config.weddingDressCode,
     config.kidsPolicy, config.storyText, config.giftsInfo, config.accommodationInfo,
-    config.transportInfo, config.galleryImages,
+    config.transportInfo, config.godparent1, config.godparent2, config.galleryImages,
     config.couplePhoto, config.musicUrl, config.darkMode, config.bankInfo,
     countdown, formattedDate, formattedTime,
     hasLocationData, locationDescription, calendarLink,

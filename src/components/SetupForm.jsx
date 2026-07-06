@@ -135,7 +135,22 @@ export default function SetupForm({ prefix = "" }) {
           </div>
         </fieldset>
 
-<label className="setup-label" htmlFor={id("inviteMessage")}>
+        <fieldset className="setup-name-group">
+          <legend className="setup-label">Padrinos (opcional)</legend>
+          <div className="setup-name-grid">
+            <div className="setup-name-col">
+              <label className="setup-label" htmlFor={id("godparent1")}>Primer padrino/madrina</label>
+              <input id={id("godparent1")} className="setup-input" value={formData.godparent1} onChange={(e) => updateFormField("godparent1", e.target.value.slice(0, 40))} placeholder="Nombre" autoComplete="off" />
+            </div>
+            <div className="setup-name-col">
+              <label className="setup-label" htmlFor={id("godparent2")}>Segundo padrino/madrina</label>
+              <input id={id("godparent2")} className="setup-input" value={formData.godparent2} onChange={(e) => updateFormField("godparent2", e.target.value.slice(0, 40))} placeholder="Nombre" autoComplete="off" />
+            </div>
+          </div>
+          <p className="setup-help">Si escribes un nombre, el otro también es obligatorio.</p>
+        </fieldset>
+
+        <label className="setup-label" htmlFor={id("inviteMessage")}>
           Mensaje principal
         </label>
         <textarea

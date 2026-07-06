@@ -394,6 +394,10 @@ export function AppProvider({ children }) {
       setSaveError("Las secciones ocultas no son válidas.");
       return;
     }
+    if (Boolean(sanitized.godparent1) !== Boolean(sanitized.godparent2)) {
+      setSaveError("Si escribes un padrino, ambos nombres son obligatorios.");
+      return;
+    }
     if (orderArray[0] !== "hero") {
       setSaveError("La portada debe ser la primera sección.");
       return;

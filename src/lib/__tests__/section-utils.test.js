@@ -4,7 +4,7 @@ import { parseSectionOrder, parseHidden } from "../section-utils";
 describe("parseSectionOrder", () => {
   it("returns default order for empty input", () => {
     const result = parseSectionOrder("");
-    expect(result).toContain("hero"); expect(result.length).toBe(9);
+    expect(result).toEqual(["hero", "details", "info", "story", "gifts", "accommodation", "transport", "godparents", "gallery", "rsvp"]);
   });
 
   it("returns default order for null", () => {
@@ -14,12 +14,12 @@ describe("parseSectionOrder", () => {
 
   it("parses comma-separated string", () => {
     const result = parseSectionOrder("hero,details,story");
-    expect(result.slice(0, 3)).toEqual(["hero", "details", "story"]); expect(result.length).toBe(9);
+    expect(result).toEqual(["hero", "details", "story"]);
   });
 
   it("filters out invalid sections", () => {
     const result = parseSectionOrder("hero,invalid,details");
-    expect(result.slice(0, 2)).toEqual(["hero", "details"]); expect(result.length).toBe(9);
+    expect(result).toEqual(["hero", "details"]);
   });
 
   it("preserves custom order", () => {

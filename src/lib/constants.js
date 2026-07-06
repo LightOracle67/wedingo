@@ -77,7 +77,7 @@ export const THEME_GROUPS = [
   { value: "lgtbiq+", label: "LGTBIQ+" },
 ];
 
-export const STORY_SECTION_ORDER = ["hero", "details", "info", "story", "gifts", "accommodation", "transport", "gallery", "rsvp"];
+export const STORY_SECTION_ORDER = ["hero", "details", "info", "story", "gifts", "accommodation", "transport", "godparents", "gallery", "rsvp"];
 
 export const SECTION_LABELS = {
   hero: "Portada",
@@ -87,6 +87,7 @@ export const SECTION_LABELS = {
   gifts: "Regalos",
   accommodation: "Alojamiento",
   transport: "Transporte",
+  godparents: "Padrinos",
   gallery: "Galería",
   rsvp: "Confirmación",
 };
@@ -99,6 +100,7 @@ export const SECTION_MOVABLE = {
   gifts: true,
   accommodation: true,
   transport: true,
+  godparents: true,
   gallery: true,
   rsvp: true,
 };
@@ -136,6 +138,8 @@ export const defaultConfig = {
   bankInfo: "",
   accommodationInfo: "",
   transportInfo: "",
+  godparent1: "",
+  godparent2: "",
   musicUrl: "",
   galleryImages: "",
   kidsPolicy: "",
