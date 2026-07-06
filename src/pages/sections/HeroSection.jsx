@@ -49,7 +49,7 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
             {inviteMessage}
           </p>
           {godparent1 && godparent2 ? (
-            <p className="invite-copy mt-2" style={{ fontSize: "clamp(0.8rem, 2vw, 1rem)", opacity: 0.7, fontStyle: "italic", letterSpacing: "0.04em" }}>
+            <p className="hero-message invite-copy mt-2" style={{ fontSize: "clamp(0.8rem, 2vw, 1rem)", opacity: 0.7, fontStyle: "italic", letterSpacing: "0.04em" }}>
               Con la bendición de sus padrinos {godparent1} y {godparent2}
             </p>
           ) : null}
