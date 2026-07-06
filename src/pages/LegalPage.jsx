@@ -46,40 +46,64 @@ Este sitio web utiliza Firebase (Google LLC) como infraestructura de hosting y a
 export default function LegalPage() {
   const [params] = useSearchParams();
   const [open, setOpen] = useState(() => params.get("s") || "");
-
   const toggle = (id) => setOpen((prev) => (prev === id ? "" : id));
 
   return (
-    <div className="setup-layout">
-      <section className="setup-card allow-select">
-        <h1 className="setup-title" style={{ marginBottom: "1rem" }}>Información legal</h1>
-
+    <div style={{
+      minHeight: "100dvh", display: "flex", alignItems: "center", justifyContent: "center",
+      padding: "clamp(1rem, 3vw, 2rem)", boxSizing: "border-box",
+    }}>
+      <div style={{
+        width: "min(100%, 42rem)", maxHeight: "calc(100dvh - 2rem)", overflowY: "auto",
+        background: "rgba(255, 255, 255, 0.12)", backdropFilter: "blur(8px)",
+        WebkitBackdropFilter: "blur(8px)", borderRadius: "1.2rem",
+        border: "1px solid rgba(255, 255, 255, 0.14)",
+        boxShadow: "0 20px 60px rgba(0,0,0,0.2)",
+      }}>
         {SECTIONS.map((s) => (
-          <div key={s.id} id={s.id} style={{ marginBottom: "0.75rem" }}>
+          <div key={s.id}>
             <button type="button" onClick={() => toggle(s.id)}
               style={{
-                width: "100%", textAlign: "left", padding: "0.7rem 1rem",
-                borderRadius: "0.7rem", border: "1px solid color-mix(in srgb, var(--setup-accent) 40%, transparent)",
-                background: open === s.id ? "color-mix(in srgb, var(--setup-field-bg) 90%, transparent)" : "transparent",
-                color: "var(--setup-title)", fontSize: "1rem", fontWeight: 700, cursor: "pointer",
-                display: "flex", justifyContent: "space-between", alignItems: "center",
-              }}>
+                width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center",
+                padding: "1rem 1.2rem", border: "none", borderBottom: "1px solid rgba(255,255,255,0.08)",
+                background: "transparent", color: "#f0e8d8", cursor: "pointer",
+                fontSize: "1rem", fontWeight: 600, fontFamily: "var(--font-body)",
+                letterSpacing: "0.02em", transition: "background 200ms",
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.background = "rgba(255,255,255,0.05)"}
+              onMouseLeave={(e) => e.currentTarget.style.background = "transparent"}
+            >
               <span>{s.label}</span>
-              <span style={{ transform: open === s.id ? "rotate(45deg)" : "none", transition: "transform 200ms", fontSize: "1.2rem" }}>+</span>
+              <span style={{
+                transform: open === s.id ? "rotate(135deg)" : "rotate(0deg)",
+                transition: "transform 300ms ease", fontSize: "1.1rem", opacity: 0.5,
+              }}>+</span>
             </button>
-            {open === s.id && (
+            <div style={{
+              maxHeight: open === s.id ? "500px" : "0px", overflow: "hidden",
+              transition: "max-height 400ms ease, opacity 300ms ease",
+              opacity: open === s.id ? 1 : 0,
+            }}>
               <div style={{
-                padding: "0.75rem 1rem", color: "var(--setup-subtitle)", fontSize: "0.92rem",
-                lineHeight: 1.7, whiteSpace: "pre-line", borderBottom: "1px solid color-mix(in srgb, var(--setup-accent) 20%, transparent)",
+                padding: "0.8rem 1.2rem 1.2rem", color: "rgba(240, 232, 216, 0.8)",
+                fontSize: "0.92rem", lineHeight: 1.7, whiteSpace: "pre-line",
+                fontFamily: "var(--font-body)",
               }}>
                 {s.content}
               </div>
-            )}
+            </div>
           </div>
         ))}
-
-        <a href="/" className="setup-button setup-button--ghost" style={{ display: "inline-block", marginTop: "0.75rem", fontSize: "0.85rem", textDecoration: "none" }}>Volver</a>
-      </section>
+        <div style={{ padding: "0.8rem 1.2rem", textAlign: "center" }}>
+          <a href="/" style={{
+            color: "rgba(240, 232, 216, 0.5)", fontSize: "0.85rem",
+            textDecoration: "underline", transition: "color 200ms",
+          }}
+          onMouseEnter={(e) => e.currentTarget.style.color = "rgba(240, 232, 216, 0.8)"}
+          onMouseLeave={(e) => e.currentTarget.style.color = "rgba(240, 232, 216, 0.5)"}
+          >Volver</a>
+        </div>
+      </div>
     </div>
   );
 }
