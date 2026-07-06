@@ -442,6 +442,19 @@ export default function SetupForm({ prefix = "" }) {
           rows={4}
         />
         <p className="setup-help">Hoteles, códigos de descuento y opciones para los invitados.</p>
+
+        <label className="setup-label" htmlFor={id("transportInfo")}>
+          Transporte
+        </label>
+        <textarea
+          id={id("transportInfo")}
+          className="setup-textarea"
+          value={formData.transportInfo}
+          onChange={(e) => updateFormField("transportInfo", e.target.value.slice(0, 2000))}
+          placeholder="Ejemplo: Autobús desde la Plaza Mayor a las 17:00. Parking gratuito en el recinto."
+          rows={4}
+        />
+        <p className="setup-help">Opciones de transporte, horarios de autobús, parking, etc.</p>
       </CollapsibleSection>
       ) : null}
 
@@ -518,25 +531,6 @@ export default function SetupForm({ prefix = "" }) {
       </CollapsibleSection>
       ) : null}
 
-      {!hiddenSet.has("transport") ? (
-      <CollapsibleSection
-        title="Transporte"
-        hint="Cómo llegar al evento"
-      >
-        <label className="setup-label" htmlFor={id("transportInfo")}>
-          Información de transporte
-        </label>
-        <textarea
-          id={id("transportInfo")}
-          className="setup-textarea"
-          value={formData.transportInfo}
-          onChange={(e) => updateFormField("transportInfo", e.target.value.slice(0, 2000))}
-          placeholder="Ejemplo: Autobús desde la Plaza Mayor a las 17:00. Parking gratuito en el recinto."
-          rows={4}
-        />
-        <p className="setup-help">Indica opciones de transporte, horarios de autobús, parking, etc.</p>
-      </CollapsibleSection>
-      ) : null}
 
 
 
