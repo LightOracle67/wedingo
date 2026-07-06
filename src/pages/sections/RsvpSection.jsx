@@ -135,7 +135,7 @@ const RsvpSection = memo(function RsvpSection({
 
           <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.85rem", cursor: "pointer" }}>
             <input type="checkbox" checked={rsvpForm.privacyConsent} onChange={(e) => updateRsvpField("privacyConsent", e.target.checked)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} required />
-            <span>Acepto la <a href="/legal/privacy" target="_blank" rel="noreferrer" style={{ color: "var(--setup-accent)", textDecoration: "underline" }}>Política de Privacidad</a></span>
+            <span>Acepto la <a href="/legal?s=privacy" target="_blank" rel="noreferrer" style={{ color: "var(--setup-accent)", textDecoration: "underline" }}>Política de Privacidad</a></span>
           </label>
 
           <div className="setup-actions">

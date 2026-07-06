@@ -155,11 +155,11 @@ export default function LandingPage() {
             </button>
           </div>
           <div className="mt-6 text-center">
-            <a href="/legal/privacy" className="text-[0.7rem] text-boda-texto/35 hover:text-boda-texto/55 transition-colors" target="_blank" rel="noreferrer" style={{ textDecoration: "underline" }}>Política de Privacidad</a>
+            <a href="/legal?s=privacy" className="text-[0.7rem] text-boda-texto/35 hover:text-boda-texto/55 transition-colors" target="_blank" rel="noreferrer" style={{ textDecoration: "underline" }}>Política de Privacidad</a>
             <span className="text-[0.7rem] text-boda-texto/25 mx-1">·</span>
-            <a href="/legal/terms" className="text-[0.7rem] text-boda-texto/35 hover:text-boda-texto/55 transition-colors" target="_blank" rel="noreferrer" style={{ textDecoration: "underline" }}>Términos</a>
+            <a href="/legal?s=terms" className="text-[0.7rem] text-boda-texto/35 hover:text-boda-texto/55 transition-colors" target="_blank" rel="noreferrer" style={{ textDecoration: "underline" }}>Términos</a>
             <span className="text-[0.7rem] text-boda-texto/25 mx-1">·</span>
-            <a href="/legal/legal" className="text-[0.7rem] text-boda-texto/35 hover:text-boda-texto/55 transition-colors" target="_blank" rel="noreferrer" style={{ textDecoration: "underline" }}>Aviso Legal</a>
+            <a href="/legal?s=legal" className="text-[0.7rem] text-boda-texto/35 hover:text-boda-texto/55 transition-colors" target="_blank" rel="noreferrer" style={{ textDecoration: "underline" }}>Aviso Legal</a>
           </div>
         </div>
       </section>
