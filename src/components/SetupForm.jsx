@@ -491,6 +491,43 @@ export default function SetupForm({ prefix = "" }) {
           ))}
         </div>
         <p className="setup-help">Selecciona la política sobre niños para la celebración.</p>
+
+        <div className="story-divider" style={{ margin: "0.75rem 0" }} />
+        <label className="setup-label" style={{ marginBottom: "0.3rem", display: "block" }}>Menú de la celebración *</label>
+
+        <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.9rem", cursor: "pointer", marginBottom: "0.5rem" }}>
+          <input type="checkbox" checked={formData.menuEnabled === "true"} onChange={(e) => updateFormField("menuEnabled", e.target.checked ? "true" : "false")} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+          <span>Los invitados pueden elegir su menú</span>
+        </label>
+
+        {formData.menuEnabled === "true" ? (
+          <>
+            <p className="setup-help" style={{ marginBottom: "0.4rem" }}>Describe cada menú. Si no se ofrece, déjalo vacío.</p>
+            {[
+              { key: "menuCarne", label: "Menú de carne", ph: "Describe el menú de carne..." },
+              { key: "menuPescado", label: "Menú de pescado", ph: "Describe el menú de pescado..." },
+              { key: "menuVegano", label: "Menú vegano/vegetariano", ph: "Describe el menú vegano..." },
+              { key: "menuPostre", label: "Postre", ph: "Describe el postre" },
+            ].map(({ key, label, ph }) => {
+              const val = formData[key] || "";
+              return (
+                <div key={key} style={{ marginBottom: "0.5rem" }}>
+                  <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", cursor: "pointer", fontSize: "0.85rem", color: "var(--setup-title)" }}>
+                    <input type="checkbox" checked={!!val} onChange={(e) => { if (!e.target.checked) updateFormField(key, ""); }} style={{ accentColor: "var(--setup-accent)", width: "0.9rem", height: "0.9rem", flexShrink: 0 }} />
+                    {label}
+                  </label>
+                  {!!val && <textarea className="setup-textarea" value={val} onChange={(e) => updateFormField(key, e.target.value)} placeholder={ph} rows={2} style={{ marginTop: "0.15rem", fontSize: "0.85rem" }} />}
+                </div>
+              );
+            })}
+            <p className="setup-help">Obligatorio: al menos un menú debe estar descrito.</p>
+          </>
+        ) : (
+          <>
+            <textarea className="setup-textarea" value={formData.menuTexto} onChange={(e) => updateFormField("menuTexto", e.target.value.slice(0, 2000))} placeholder="Describe el menú: entrante, plato principal, postre..." rows={3} />
+            <p className="setup-help">Describe el menú que has preparado. Los invitados lo verán al confirmar.</p>
+          </>
+        )}
       </CollapsibleSection>
       ) : null}
 
