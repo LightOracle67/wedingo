@@ -2137,16 +2137,8 @@ h6 {
 .setup-layout--full .setup-card--full {
   width: 100% !important;
   height: 100%;
-  overflow-y: hidden;
-  align-self: stretch;
-  display: flex;
-  flex-direction: column;
-}
-
-.setup-layout--full .setup-card--full .setup-form {
-  flex: 1;
-  min-height: 0;
   overflow-y: auto;
+  align-self: stretch;
 }
 
 .setup-card--narrow {
