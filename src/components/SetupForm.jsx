@@ -589,18 +589,55 @@ export default function SetupForm({ prefix = "" }) {
         hint="Platos y opciones para los invitados"
       >
         <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.9rem", cursor: "pointer" }}>
-          <input type="checkbox" checked={formData.menuEnabled === "true"} onChange={(e) => updateFormField("menuEnabled", e.target.checked ? "true" : "false")} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+          <input type="checkbox" checked={formData.menuEnabled === "true"} onChange={(e) => {
+            updateFormField("menuEnabled", e.target.checked ? "true" : "false");
+            if (e.target.checked) updateFormField("menuOptions", "");
+          }} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
           <span>Los invitados podrán elegir su plato</span>
         </label>
-        {formData.menuEnabled === "true" && (
+        {formData.menuEnabled === "true" ? (
           <>
-            <label className="setup-label" htmlFor={id("menuOptions")} style={{ marginTop: "0.3rem" }}>Platos disponibles</label>
-            <input id={id("menuOptions")} className="setup-input" value={formData.menuOptions} onChange={(e) => updateFormField("menuOptions", e.target.value.slice(0, 500))} placeholder="Ejemplo: Solomillo, Lubina, Lasagna vegana" autoComplete="off" />
-            <p className="setup-help">Escribe los platos separados por coma. Cada invitado podrá elegir entre carne, pescado, vegano u otro.</p>
+            <p className="setup-help" style={{ marginTop: "0.3rem" }}>Marca los tipos de plato que ofrecerás y escribe cada opción.</p>
+            {["carne", "pescado", "vegano"].map((tipo) => {
+              const checked = formData.menuOptions?.includes(`[${tipo}]`);
+              return (
+                <div key={tipo} style={{ marginBottom: "0.4rem" }}>
+                  <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", cursor: "pointer", fontSize: "0.9rem", color: "var(--setup-title)" }}>
+                    <input type="checkbox" checked={checked} onChange={(e) => {
+                      const current = formData.menuOptions || "";
+                      const tag = `[${tipo}]`;
+                      let next = current;
+                      if (e.target.checked) {
+                        next = next + (next ? "\n" : "") + tag;
+                      } else {
+                        const lines = next.split("\n").filter(l => !l.startsWith(tag));
+                        next = lines.join("\n");
+                      }
+                      updateFormField("menuOptions", next);
+                    }} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+                    {tipo.charAt(0).toUpperCase() + tipo.slice(1)}
+                  </label>
+                  {checked && (
+                    <input className="setup-input" value={((formData.menuOptions || "").split("\n").find(l => l.startsWith(`[${tipo}]`)) || "").replace(`[${tipo}]`, "")} onChange={(e) => {
+                      const lines = (formData.menuOptions || "").split("\n");
+                      const idx = lines.findIndex(l => l.startsWith(`[${tipo}]`));
+                      if (idx !== -1) {
+                        lines[idx] = `[${tipo}]${e.target.value}`;
+                        updateFormField("menuOptions", lines.join("\n"));
+                      }
+                    }} placeholder={`Plato de ${tipo}`} autoComplete="off" style={{ marginTop: "0.2rem" }} />
+                  )}
+                </div>
+              );
+            })}
+            <p className="setup-help">Los invitados elegirán entre las opciones marcadas.</p>
           </>
-        )}
-        {formData.menuEnabled !== "true" && (
-          <p className="setup-help">Si esta sección está visible pero los invitados no eligen plato, el menú lo decides tú.</p>
+        ) : (
+          <>
+            <label className="setup-label" htmlFor={id("menuOptions")} style={{ marginTop: "0.3rem" }}>Menú</label>
+            <textarea id={id("menuOptions")} className="setup-textarea" value={formData.menuOptions} onChange={(e) => updateFormField("menuOptions", e.target.value.slice(0, 2000))} placeholder="Describe el menú: entrante, plato principal, postre..." rows={4} />
+            <p className="setup-help">Describe el menú que has preparado para los invitados.</p>
+          </>
         )}
       </CollapsibleSection>
       ) : null}
