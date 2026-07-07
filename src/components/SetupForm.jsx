@@ -491,18 +491,6 @@ export default function SetupForm({ prefix = "" }) {
           ))}
         </div>
         <p className="setup-help">Selecciona la política sobre niños para la celebración.</p>
-
-        <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.9rem", cursor: "pointer", marginTop: "0.5rem" }}>
-          <input type="checkbox" checked={formData.menuEnabled === "true"} onChange={(e) => updateFormField("menuEnabled", e.target.checked ? "true" : "false")} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
-          <span>Habrá menú cerrado (sin opción de elegir plato)</span>
-        </label>
-        {formData.menuEnabled === "true" && (
-          <>
-            <label className="setup-label" htmlFor={id("menuOptions")} style={{ marginTop: "0.3rem" }}>Platos disponibles</label>
-            <input id={id("menuOptions")} className="setup-input" value={formData.menuOptions} onChange={(e) => updateFormField("menuOptions", e.target.value.slice(0, 500))} placeholder="Ejemplo: Carne, Pescado, Vegano" autoComplete="off" />
-            <p className="setup-help">Escribe los platos separados por coma. Cada invitado podrá elegir uno.</p>
-          </>
-        )}
       </CollapsibleSection>
       ) : null}
 
@@ -592,6 +580,28 @@ export default function SetupForm({ prefix = "" }) {
             );
           } catch { return null; }
         })()}
+      </CollapsibleSection>
+      ) : null}
+
+      {!hiddenSet.has("menu") ? (
+      <CollapsibleSection
+        title="Menú"
+        hint="Platos y opciones para los invitados"
+      >
+        <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.9rem", cursor: "pointer" }}>
+          <input type="checkbox" checked={formData.menuEnabled === "true"} onChange={(e) => updateFormField("menuEnabled", e.target.checked ? "true" : "false")} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+          <span>Los invitados podrán elegir su plato</span>
+        </label>
+        {formData.menuEnabled === "true" && (
+          <>
+            <label className="setup-label" htmlFor={id("menuOptions")} style={{ marginTop: "0.3rem" }}>Platos disponibles</label>
+            <input id={id("menuOptions")} className="setup-input" value={formData.menuOptions} onChange={(e) => updateFormField("menuOptions", e.target.value.slice(0, 500))} placeholder="Ejemplo: Solomillo, Lubina, Lasagna vegana" autoComplete="off" />
+            <p className="setup-help">Escribe los platos separados por coma. Cada invitado podrá elegir entre carne, pescado, vegano u otro.</p>
+          </>
+        )}
+        {formData.menuEnabled !== "true" && (
+          <p className="setup-help">Si esta sección está visible pero los invitados no eligen plato, el menú lo decides tú.</p>
+        )}
       </CollapsibleSection>
       ) : null}
 
