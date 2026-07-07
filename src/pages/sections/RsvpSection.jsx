@@ -194,7 +194,7 @@ const RsvpSection = memo(function RsvpSection({
                 autoComplete="off"
               />
             </fieldset>
-          )}
+          ) : null}
 
           <div style={{ opacity: rsvpForm.attendance === "no" ? 0.4 : 1 }}>
             <label className="setup-label" htmlFor="rsvpNote">Mensaje opcional</label>
