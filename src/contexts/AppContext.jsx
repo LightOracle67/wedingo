@@ -6,7 +6,6 @@ import { db, storage, invitationDocRef, rsvpByInviteRef } from "../lib/firebase"
 import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES, defaultConfig, MONTH_OPTIONS, MONTH_VALUE_TO_NUMBER, STORY_SECTION_ORDER, THEME_VALUES } from "../lib/constants";
 import { normalizeConfig } from "../lib/normalize-config";
 import { decodeInviteConfig } from "../lib/invite-config-codec";
-import { getValidCoordinates } from "../lib/geo-utils";
 import { compressImage } from "../lib/image-utils";
 import { uploadBackgroundImage, deleteBackgroundImage } from "../lib/storage-utils";
 import { clearSession } from "../lib/sessionVars";
@@ -372,16 +371,6 @@ export function AppProvider({ children }) {
       }
       if (Number.isNaN(parsedYear) || parsedYear > maxAllowedYear) {
         setSaveError(`El año no puede ser mayor a ${maxAllowedYear}.`);
-        return;
-      }
-      const hasLatitude = Boolean(sanitized.weddingLatitude);
-      const hasLongitude = Boolean(sanitized.weddingLongitude);
-      if (hasLatitude !== hasLongitude) {
-        setSaveError("Si escribes coordenadas, rellena los dos campos.");
-        return;
-      }
-      if (hasLatitude && hasLongitude && !getValidCoordinates(sanitized.weddingLatitude, sanitized.weddingLongitude)) {
-        setSaveError("Las coordenadas no son válidas. Revisa los números e inténtalo de nuevo.");
         return;
       }
     }
