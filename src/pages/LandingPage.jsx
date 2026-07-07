@@ -72,8 +72,8 @@ export default function LandingPage() {
 
     try {
       const snap = await getDoc(doc(db, "setupTokens", normalized));
-      if (!snap.exists() || snap.data().used) {
-        setError("El código no es válido o ya ha sido usado.");
+      if (!snap.exists()) {
+        setError("El código no es válido.");
         setIsLoading(false);
         return;
       }
@@ -114,8 +114,7 @@ export default function LandingPage() {
         await runTransaction(db, async (transaction) => {
           const tokenDocRef = doc(db, "setupTokens", normalized);
           const tokenDoc = await transaction.get(tokenDocRef);
-          if (!tokenDoc.exists || tokenDoc.data().used) throw new Error();
-          transaction.update(tokenDocRef, { used: true, usedAt: serverTimestamp() });
+          if (!tokenDoc.exists) throw new Error();
           transaction.set(doc(db, "sessions", target), { createdAt: serverTimestamp() });
         });
       } catch {
