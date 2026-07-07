@@ -2131,7 +2131,7 @@ h6 {
 
 .setup-card--full {
   width: 100% !important;
-  max-height: 100%;
+  height: 100%;
   overflow-y: auto;
 }
 
