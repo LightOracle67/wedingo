@@ -3040,7 +3040,12 @@ a:focus-visible {
 
 /* ── Responsive: SetupPage / form elements ── */
 @media (max-width: 480px) {
-  .setup-layout {
+@keyframes musicBar {
+  from { height: 3px; }
+  to { height: 8px; }
+}
+
+.setup-layout {
     padding: 0.6rem;
   }
 
