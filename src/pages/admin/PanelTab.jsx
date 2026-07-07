@@ -7,7 +7,7 @@ import StatsCard from "./StatsCard";
 
 const PanelTab = memo(function PanelTab({
   inviteToken, confirmedResponses, declinedResponses, totalGuests, rsvpEntries,
-  setActiveTab, setAttendanceFilter, exportPdf, formatDate, onRestore, visitCount,
+  setActiveTab, setAttendanceFilter, formatDate, onRestore, visitCount,
 }) {
   const inviteUrl = `${window.location.origin}/${inviteToken}`;
   const restoreRef = useRef(null);
@@ -128,9 +128,6 @@ const PanelTab = memo(function PanelTab({
         </button>
         <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleViewAttendance}>
           Ver asistencia
-        </button>
-        <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={exportPdf}>
-          Exportar PDF
         </button>
         <a className="setup-button setup-button--ghost setup-button--compact" href={inviteUrl} target="_blank" rel="noreferrer">
           Vista previa

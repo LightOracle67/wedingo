@@ -197,6 +197,7 @@ export default function AdminPage() {
               attendanceFilter={attendanceFilter}
               setAttendanceFilter={setAttendanceFilterValue}
               filteredEntries={filteredEntries}
+              exportPdf={exportPdf}
               rsvpEntries={rsvpEntries}
               handleClearRsvpEntries={handleClearRsvpEntries}
               formatDate={formatDate}
