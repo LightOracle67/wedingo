@@ -76,16 +76,18 @@ const RsvpSection = memo(function RsvpSection({
                     <p className="story-note whitespace-pre-line" style={{ fontSize: "0.82rem" }}>{menuPostre}</p>
                   </div>
                 ) : null}
-                <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "0.5rem" }}>
-                  <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", cursor: "pointer", fontSize: "0.9rem", color: rsvpForm.attendance === "no" ? "var(--setup-muted)" : "var(--setup-title)" }}>
-                    <input type="checkbox" checked={rsvpForm.noGluten} onChange={(e) => updateRsvpField("noGluten", e.target.checked)} disabled={rsvpForm.attendance === "no"} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
-                    Sin gluten
-                  </label>
-                  <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", cursor: "pointer", fontSize: "0.9rem", color: rsvpForm.attendance === "no" ? "var(--setup-muted)" : "var(--setup-title)" }}>
-                    <input type="checkbox" checked={rsvpForm.noLactosa} onChange={(e) => updateRsvpField("noLactosa", e.target.checked)} disabled={rsvpForm.attendance === "no"} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
-                    Sin lactosa
-                  </label>
+                <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))", marginTop: "0.5rem" }}>
+                  {DIETARY_OPTIONS.map((opt) => (
+                    <label key={opt.value} className="setup-checkbox-label" style={{
+                      display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem",
+                      color: rsvpForm.attendance === "no" ? "var(--setup-muted)" : "var(--setup-title)", opacity: rsvpForm.attendance === "no" ? 0.5 : 1,
+                    }}>
+                      <input type="checkbox" checked={rsvpForm.dietarySelection.includes(opt.value)} onChange={() => handleDietaryToggle(opt.value)} disabled={rsvpForm.attendance === "no"} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+                      {opt.label}
+                    </label>
+                  ))}
                 </div>
+                <input className="setup-input" style={{ marginTop: "0.4rem" }} value={rsvpForm.dietaryOther} onChange={(e) => updateRsvpField("dietaryOther", e.target.value.slice(0, 120))} placeholder="Otra alergia (especificar)" disabled={rsvpForm.attendance === "no"} autoComplete="off" />
               </div>
             </fieldset>
           ) : menuTexto?.trim() ? (

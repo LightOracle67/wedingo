@@ -15,8 +15,6 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
     guestName: "",
     attendance: "yes",
     mealChoice: "",
-    noGluten: false,
-    noLactosa: false,
     dietarySelection: [],
     dietaryOther: "",
     privacyConsent: false,
@@ -110,19 +108,15 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
       return;
     }
 
-    const hasHealthData = rsvpForm.dietarySelection.length > 0 || rsvpForm.dietaryOther.trim() || rsvpForm.noGluten || rsvpForm.noLactosa;
+    const hasHealthData = rsvpForm.dietarySelection.length > 0 || rsvpForm.dietaryOther.trim();
     if (hasHealthData && !rsvpForm.healthConsent) {
       setRsvpMessage("Debes consentir el tratamiento de tus datos de salud.");
       return;
     }
 
-    const extras = [];
-    if (rsvpForm.noGluten) extras.push("Sin gluten");
-    if (rsvpForm.noLactosa) extras.push("Sin lactosa");
-    const dietaryParts = rsvpForm.attendance === "yes" && menuEnabled
-      ? [`Menú: ${rsvpForm.mealChoice}`, ...extras]
-      : [rsvpForm.dietaryOther];
-    const dietaryInfo = dietaryParts.filter(Boolean).join(" | ");
+    const base = rsvpForm.attendance === "yes" && menuEnabled ? `Menú: ${rsvpForm.mealChoice}` : "";
+    const diet = rsvpForm.dietaryOther?.trim() ? [...rsvpForm.dietarySelection, rsvpForm.dietaryOther.trim()] : rsvpForm.dietarySelection;
+    const dietaryInfo = [base, ...diet].filter(Boolean).join(" | ");
 
     setIsRsvpSubmitting(true);
     const now = new Date().toISOString();
@@ -145,7 +139,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
           : `Gracias, ${single}. Lamentamos que no puedas asistir.`,
       );
       setRsvpForm({
-        guestName: "", attendance: "yes", mealChoice: "", noGluten: false, noLactosa: false,
+        guestName: "", attendance: "yes", mealChoice: "",
         dietarySelection: [], dietaryOther: "", privacyConsent: false, healthConsent: false,
       });
       setHasSubmitted(true);
