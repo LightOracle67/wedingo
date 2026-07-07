@@ -7,7 +7,6 @@ const RsvpSection = memo(function RsvpSection({
   updateRsvpField, handleRsvpSubmit, handleDietaryToggle, DIETARY_OPTIONS, menuEnabled, menuCarne, menuPescado, menuVegano, menuPostre,
 }) {
   const { setLegalModal } = useApp();
-  const [useGroupMode, setUseGroupMode] = useState(false);
 
   const alreadySubmitted = useMemo(() => {
     const name = rsvpForm.guestName.trim().toLowerCase();
@@ -18,87 +17,24 @@ const RsvpSection = memo(function RsvpSection({
   const isDisabled = isRsvpSubmitting || hasSubmitted || alreadySubmitted;
 
   return (
-    <section
-      data-story-section="rsvp"
-      className={`${className} flex items-center justify-center px-3 py-4 sm:px-6 sm:py-8 lg:px-8 lg:py-10`}
-      style={style}
-    >
+    <section data-story-section="rsvp" className={`${className} flex items-center justify-center px-3 py-4 sm:px-6 sm:py-8 lg:px-8 lg:py-10`} style={style}>
       <div className="story-card story-panel story-card--rsvp allow-select w-full max-w-[min(100%,42rem)]">
         <p className="story-eyebrow text-center">Confirmación de asistencia</p>
         <h2 className="story-title text-center">Confirma tu asistencia</h2>
-        <p className="story-copy text-center">
-          Tu respuesta nos ayuda a organizar cada detalle de la celebración.
-        </p>
+        <p className="story-copy text-center">Tu respuesta nos ayuda a organizar cada detalle de la celebración.</p>
 
         <form className="rsvp-form" onSubmit={handleRsvpSubmit}>
-          <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", cursor: "pointer", color: "var(--setup-title)" }}>
-            <input type="checkbox" checked={useGroupMode} onChange={(e) => setUseGroupMode(e.target.checked)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem" }} />
-            Confirmar para varios invitados
-          </label>
-
-          {useGroupMode ? (
-            <>
-              <label className="setup-label" htmlFor="rsvpGroupList">Lista de invitados (un nombre por línea)</label>
-              <textarea
-                id="rsvpGroupList"
-                className="setup-textarea"
-                rows={4}
-                value={rsvpForm.guestList}
-                onChange={(e) => updateRsvpField("guestList", e.target.value.slice(0, 500))}
-                placeholder="María García López&#10;Juan Pérez Sánchez&#10;Ana Martínez Ruiz"
-                autoComplete="off"
-              />
-            </>
-          ) : (
-            <>
-              <label className="setup-label" htmlFor="rsvpName">Tu nombre</label>
-              <input
-                id="rsvpName"
-                className="setup-input"
-                value={rsvpForm.guestName}
-                onChange={(e) => updateRsvpField("guestName", e.target.value.slice(0, 120))}
-                placeholder="Escribe tu nombre y apellidos"
-                autoComplete="off"
-                required
-              />
-            </>
-          )}
+          <label className="setup-label" htmlFor="rsvpName">Tu nombre</label>
+          <input id="rsvpName" className="setup-input" value={rsvpForm.guestName} onChange={(e) => updateRsvpField("guestName", e.target.value.slice(0, 120))} placeholder="Escribe tu nombre y apellidos" autoComplete="off" required />
 
           <div className="setup-date-grid rsvp-choice-grid">
             <div>
-              <label className="setup-label" htmlFor="rsvpAttendance">¿Asistiréis?</label>
-              <select
-                id="rsvpAttendance"
-                className="setup-input"
-                value={rsvpForm.attendance}
-                onChange={(e) => updateRsvpField("attendance", e.target.value)}
-              >
+              <label className="setup-label" htmlFor="rsvpAttendance">¿Asistirás?</label>
+              <select id="rsvpAttendance" className="setup-input" value={rsvpForm.attendance} onChange={(e) => updateRsvpField("attendance", e.target.value)}>
                 <option value="yes">Sí, asistiré</option>
                 <option value="no">No podré asistir</option>
               </select>
             </div>
-            {!useGroupMode ? (
-              <div style={{ opacity: rsvpForm.attendance === "no" ? 0.4 : 1 }}>
-                <label className="setup-label" htmlFor="rsvpCompanions">Acompañantes (incluyéndote)</label>
-                <input
-                  id="rsvpCompanions"
-                  className="setup-input"
-                  type="number"
-                  min="0"
-                  max="10"
-                  value={rsvpForm.attendance === "no" ? "" : rsvpForm.companions}
-                  onChange={(e) => updateRsvpField("companions", e.target.value)}
-                  disabled={rsvpForm.attendance === "no"}
-                  placeholder="0 = solo tú, 1 = tú + 1, etc."
-                  tabIndex={rsvpForm.attendance === "no" ? -1 : 0}
-                />
-              </div>
-            ) : (
-              <div style={{ opacity: rsvpForm.attendance === "no" ? 0.4 : 1 }}>
-                <label className="setup-label" style={{ color: "var(--setup-muted)", fontSize: "0.85rem" }}>Invitados</label>
-                <p className="setup-help" style={{ marginTop: "0.3rem" }}>Cada línea cuenta como un invitado</p>
-              </div>
-            )}
           </div>
 
           {menuEnabled ? (
@@ -160,51 +96,25 @@ const RsvpSection = memo(function RsvpSection({
           ) : null}
           {!menuEnabled ? (
             <fieldset style={{ border: "none", padding: 0, margin: 0, minInlineSize: 0 }}>
-              <legend className="setup-label" style={{ marginBottom: "0.4rem" }}>Preferencias alimentarias</legend>
+              <legend className="setup-label" style={{ marginBottom: "0.4rem" }}>Alergias e intolerancias</legend>
               <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))" }}>
                 {DIETARY_OPTIONS.map((opt) => (
                   <label key={opt.value} className="setup-checkbox-label" style={{
-                    display: "flex", alignItems: "center", gap: "0.4rem",
-                    padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem",
-                    color: rsvpForm.attendance === "no" ? "var(--setup-muted)" : "var(--setup-title)",
-                    opacity: rsvpForm.attendance === "no" ? 0.5 : 1,
+                    display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem",
+                    color: rsvpForm.attendance === "no" ? "var(--setup-muted)" : "var(--setup-title)", opacity: rsvpForm.attendance === "no" ? 0.5 : 1,
                   }}>
-                    <input
-                      type="checkbox"
-                      checked={rsvpForm.dietarySelection.includes(opt.value)}
-                      onChange={() => handleDietaryToggle(opt.value)}
-                      disabled={rsvpForm.attendance === "no"}
-                      style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }}
-                    />
+                    <input type="checkbox" checked={rsvpForm.dietarySelection.includes(opt.value)} onChange={() => handleDietaryToggle(opt.value)} disabled={rsvpForm.attendance === "no"} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
                     {opt.label}
                   </label>
                 ))}
               </div>
-              <input
-                className="setup-input"
-                style={{ marginTop: "0.4rem" }}
-                value={rsvpForm.dietaryOther}
-                onChange={(e) => updateRsvpField("dietaryOther", e.target.value.slice(0, 120))}
-                placeholder="Otra (especificar)"
-                disabled={rsvpForm.attendance === "no"}
-                autoComplete="off"
-              />
+              <input className="setup-input" style={{ marginTop: "0.4rem" }} value={rsvpForm.dietaryOther} onChange={(e) => updateRsvpField("dietaryOther", e.target.value.slice(0, 120))} placeholder="Otra alergia (especificar)" disabled={rsvpForm.attendance === "no"} autoComplete="off" />
             </fieldset>
           ) : null}
 
-          <div style={{ opacity: rsvpForm.attendance === "no" ? 0.4 : 1 }}>
-            <label className="setup-label" htmlFor="rsvpNote">Mensaje opcional</label>
-            <textarea
-              id="rsvpNote"
-              className="setup-textarea"
-              rows={2}
-              value={rsvpForm.note}
-              onChange={(e) => updateRsvpField("note", e.target.value.slice(0, 240))}
-              placeholder="Cuéntanos cualquier otro detalle importante"
-              disabled={rsvpForm.attendance === "no"}
-              tabIndex={rsvpForm.attendance === "no" ? -1 : 0}
-            />
-          </div>
+          {!menuEnabled ? null : (
+            <p className="setup-help" style={{ fontSize: "0.8rem" }}>Indica si tienes alergias o intolerancias marcando las casillas superiores.</p>
+          )}
 
           <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.85rem", cursor: "pointer" }}>
             <input type="checkbox" checked={rsvpForm.privacyConsent} onChange={(e) => updateRsvpField("privacyConsent", e.target.checked)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} required />
