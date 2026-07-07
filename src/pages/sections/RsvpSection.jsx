@@ -110,14 +110,30 @@ const RsvpSection = memo(function RsvpSection({
 
           {menuEnabled ? (
             <fieldset style={{ border: "none", padding: 0, margin: 0, minInlineSize: 0 }}>
-              <legend className="setup-label" style={{ marginBottom: "0.4rem" }}>Elección de menú</legend>
+              <legend className="setup-label" style={{ marginBottom: "0.4rem" }}>Elección de menú *</legend>
               <div style={{ opacity: rsvpForm.attendance === "no" ? 0.4 : 1 }}>
-                <select className="setup-input" value={rsvpForm.mealChoice} onChange={(e) => updateRsvpField("mealChoice", e.target.value)} disabled={rsvpForm.attendance === "no"} required={rsvpForm.attendance === "yes"} style={{ marginBottom: "0.4rem" }}>
-                  <option value="">Selecciona tu menú</option>
-                  {mealOptions.map((opt) => (
-                    <option key={opt} value={opt}>{opt}</option>
-                  ))}
-                </select>
+                <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))" }}>
+                  <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem", color: rsvpForm.attendance === "no" ? "var(--setup-muted)" : "var(--setup-title)" }}>
+                    <input type="checkbox" checked={rsvpForm.mealChoice === "carne"} onChange={() => updateRsvpField("mealChoice", rsvpForm.mealChoice === "carne" ? "" : "carne")} disabled={rsvpForm.attendance === "no"} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+                    Carne
+                  </label>
+                  <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem", color: rsvpForm.attendance === "no" ? "var(--setup-muted)" : "var(--setup-title)" }}>
+                    <input type="checkbox" checked={rsvpForm.mealChoice === "pescado"} onChange={() => updateRsvpField("mealChoice", rsvpForm.mealChoice === "pescado" ? "" : "pescado")} disabled={rsvpForm.attendance === "no"} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+                    Pescado
+                  </label>
+                  <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem", color: rsvpForm.attendance === "no" ? "var(--setup-muted)" : "var(--setup-title)" }}>
+                    <input type="checkbox" checked={rsvpForm.mealChoice === "vegano"} onChange={() => updateRsvpField("mealChoice", rsvpForm.mealChoice === "vegano" ? "" : "vegano")} disabled={rsvpForm.attendance === "no"} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+                    Vegano/Vegetariano
+                  </label>
+                  <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem", color: rsvpForm.attendance === "no" ? "var(--setup-muted)" : "var(--setup-title)" }}>
+                    <input type="checkbox" checked={rsvpForm.mealChoice === "otro"} onChange={() => updateRsvpField("mealChoice", rsvpForm.mealChoice === "otro" ? "" : "otro")} disabled={rsvpForm.attendance === "no"} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+                    Otro
+                  </label>
+                </div>
+                {rsvpForm.mealChoice === "otro" && (
+                  <input className="setup-input" value={rsvpForm.mealOther} onChange={(e) => updateRsvpField("mealOther", e.target.value.slice(0, 120))} placeholder="Especifica tu preferencia" autoComplete="off" style={{ marginTop: "0.3rem" }} disabled={rsvpForm.attendance === "no"} />
+                )}
+                <p className="setup-help" style={{ marginBottom: "0.4rem" }}>Selecciona una opción.</p>
                 <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
                   <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", cursor: "pointer", fontSize: "0.9rem", color: rsvpForm.attendance === "no" ? "var(--setup-muted)" : "var(--setup-title)" }}>
                     <input type="checkbox" checked={rsvpForm.noGluten} onChange={(e) => updateRsvpField("noGluten", e.target.checked)} disabled={rsvpForm.attendance === "no"} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
