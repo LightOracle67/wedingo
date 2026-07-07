@@ -2129,6 +2129,10 @@ h6 {
   width: min(100%, 900px);
 }
 
+.setup-card--full {
+  width: 100% !important;
+}
+
 .setup-card--narrow {
   width: min(100%, 500px);
 }
