@@ -135,6 +135,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
         submittedAt: serverTimestamp(),
         privacyConsent: true,
         privacyConsentAt: serverTimestamp(),
+        privacyPolicyVersion: "2026-07-07",
         healthConsent: rsvpForm.healthConsent,
         healthConsentAt: rsvpForm.healthConsent ? serverTimestamp() : null,
       };
