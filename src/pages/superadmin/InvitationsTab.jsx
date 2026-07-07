@@ -61,11 +61,7 @@ export default function InvitationsTab() {
 
       <div className="admin-filters" style={{ marginBottom: "1rem" }}>
         <input className="setup-input" value={search} onChange={(e) => setSearch(e.target.value)}
-          placeholder="Buscar por nombre, usuario o token..." autoComplete="off" />
-        <button className="setup-button setup-button--ghost setup-button--compact" type="button"
-          onClick={handleExportAll} disabled={!invitations.length}>
-          Exportar JSON
-        </button>
+          placeholder="Buscar por token..." autoComplete="off" />
       </div>
 
       <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginBottom: "1rem" }}>
@@ -83,8 +79,6 @@ export default function InvitationsTab() {
           <table className="admin-table">
             <thead>
               <tr>
-                <th>Pareja</th>
-                <th>Usuario</th>
                 <th>Token</th>
                 <th>Tema</th>
                 <th>Fecha boda</th>
@@ -94,9 +88,7 @@ export default function InvitationsTab() {
             <tbody>
               {filtered.map((inv) => (
                 <tr key={inv.id}>
-                  <td className="admin-table__name">{inv.firstName || "—"} {inv.secondName || ""}</td>
-                  <td>{inv.adminUsername || "—"}</td>
-                  <td style={{ fontSize: "0.7rem", fontFamily: "monospace", maxWidth: 120, overflow: "hidden", textOverflow: "ellipsis" }}>
+                  <td style={{ fontSize: "0.7rem", fontFamily: "monospace" }}>
                     {inv.id}
                   </td>
                   <td>{inv.theme || "—"}</td>
@@ -106,10 +98,6 @@ export default function InvitationsTab() {
                       : "—"}
                   </td>
                   <td style={{ whiteSpace: "nowrap" }}>
-                    <a className="setup-button setup-button--ghost setup-button--compact" style={{ fontSize: "0.7rem" }}
-                      href={`/${inv.id}`} target="_blank" rel="noreferrer">
-                      Abrir
-                    </a>
                     <button className="setup-button setup-button--ghost setup-button--compact" style={{ fontSize: "0.7rem", color: "#ef4444" }}
                       type="button" onClick={() => handleDelete(inv.id)} disabled={deleting === inv.id}>
                       {deleting === inv.id ? "…" : "Eliminar"}
