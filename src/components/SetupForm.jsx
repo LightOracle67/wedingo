@@ -498,9 +498,9 @@ export default function SetupForm({ prefix = "" }) {
         </label>
         {formData.menuEnabled === "true" && (
           <>
-            <label className="setup-label" htmlFor={id("menuOptions")} style={{ marginTop: "0.3rem" }}>Opciones del menú</label>
-            <textarea id={id("menuOptions")} className="setup-textarea" value={formData.menuOptions} onChange={(e) => updateFormField("menuOptions", e.target.value.slice(0, 2000))} placeholder="Describe el menú: entrante, plato principal, postre..." rows={4} />
-            <p className="setup-help">Al activar esta opción, los invitados solo podrán indicar alergias e intolerancias, no elegir plato.</p>
+            <label className="setup-label" htmlFor={id("menuOptions")} style={{ marginTop: "0.3rem" }}>Platos disponibles</label>
+            <input id={id("menuOptions")} className="setup-input" value={formData.menuOptions} onChange={(e) => updateFormField("menuOptions", e.target.value.slice(0, 500))} placeholder="Ejemplo: Carne, Pescado, Vegano" autoComplete="off" />
+            <p className="setup-help">Escribe los platos separados por coma. Cada invitado podrá elegir uno.</p>
           </>
         )}
       </CollapsibleSection>

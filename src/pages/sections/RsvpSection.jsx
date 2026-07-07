@@ -8,6 +8,7 @@ const RsvpSection = memo(function RsvpSection({
 }) {
   const { setLegalModal } = useApp();
   const [useGroupMode, setUseGroupMode] = useState(false);
+  const mealOptions = useMemo(() => (menuOptions || "").split(",").map(s => s.trim()).filter(Boolean), [menuOptions]);
   const alreadySubmitted = useMemo(() => {
     const name = rsvpForm.guestName.trim().toLowerCase();
     if (!name) return false;
@@ -113,9 +114,9 @@ const RsvpSection = memo(function RsvpSection({
               <div style={{ opacity: rsvpForm.attendance === "no" ? 0.4 : 1 }}>
                 <select className="setup-input" value={rsvpForm.mealChoice} onChange={(e) => updateRsvpField("mealChoice", e.target.value)} disabled={rsvpForm.attendance === "no"} required={rsvpForm.attendance === "yes"} style={{ marginBottom: "0.4rem" }}>
                   <option value="">Selecciona tu menú</option>
-                  <option value="Carne">Carne</option>
-                  <option value="Pescado">Pescado</option>
-                  <option value="Vegano">Vegano</option>
+                  {mealOptions.map((opt) => (
+                    <option key={opt} value={opt}>{opt}</option>
+                  ))}
                 </select>
                 <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
                   <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", cursor: "pointer", fontSize: "0.9rem", color: rsvpForm.attendance === "no" ? "var(--setup-muted)" : "var(--setup-title)" }}>
