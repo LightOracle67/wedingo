@@ -33,7 +33,7 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
                 className="invite-rings block h-auto w-[clamp(11rem,44vw,18rem)] object-contain object-center sm:w-[clamp(13rem,34vw,20rem)]"
               />
             </div>
-            <h1 className="hero-title invite-title relative z-10 mt-4 whitespace-nowrap text-[clamp(1.4rem,5vw,3rem)] leading-tight font-serif text-boda-texto sm:text-[clamp(1.6rem,4vw,3.2rem)] lg:text-[clamp(1.8rem,3.5vw,3.5rem)]">
+            <h1 className="hero-title invite-title relative z-10 mt-4 text-[clamp(1.2rem,4.5vw,2.6rem)] leading-tight font-serif text-boda-texto sm:text-[clamp(1.4rem,3.5vw,2.8rem)] lg:text-[clamp(1.6rem,3vw,3rem)]">
               {firstName} & {secondName}
             </h1>
           </div>
