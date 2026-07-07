@@ -1,17 +1,9 @@
 import { memo, useRef, useState, useEffect } from "react";
 import heroBackdropSrc from "../../assets/rings.png";
 
-const HeroSection = memo(function HeroSection({ style, className, firstName, secondName, inviteMessage, countdown, couplePhoto, musicUrl, darkMode, godparent1, godparent2 }) {
+const HeroSection = memo(function HeroSection({ style, className, firstName, secondName, inviteMessage, countdown, couplePhoto, musicUrl, godparent1, godparent2 }) {
   const [playing, setPlaying] = useState(false);
   const audioRef = useRef(null);
-
-  useEffect(() => {
-    if (darkMode === "true") {
-      document.documentElement.dataset.darkMode = "true";
-    } else {
-      delete document.documentElement.dataset.darkMode;
-    }
-  }, [darkMode]);
 
   const toggleMusic = () => {
     if (!audioRef.current) return;

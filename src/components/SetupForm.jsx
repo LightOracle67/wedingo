@@ -265,11 +265,7 @@ export default function SetupForm({ prefix = "" }) {
         <input id={id("musicUrl")} className="setup-input" value={formData.musicUrl} onChange={(e) => updateFormField("musicUrl", e.target.value.slice(0, 500))} placeholder="https://example.com/cancion.mp3" autoComplete="off" />
         <p className="setup-help">Enlace a un archivo de audio MP3 para reproducir en la portada.</p>
 
-        <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginTop: "0.5rem" }}>
-          <input type="checkbox" checked={formData.darkMode === "true"} onChange={(e) => updateFormField("darkMode", e.target.checked ? "true" : "false")} style={{ accentColor: "var(--setup-accent)", width: "1.1rem", height: "1.1rem" }} />
-          <span style={{ color: "var(--setup-title)" }}>Modo oscuro</span>
-        </label>
-        <p className="setup-help">Fondo más oscuro independientemente del tema seleccionado.</p>
+
       </CollapsibleSection>
 
       {!hiddenSet.has("details") ? (
