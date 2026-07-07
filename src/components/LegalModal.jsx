@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
+export const PRIVACY_POLICY_VERSION = "2026-07-07";
+
 const SECTIONS = [
   {
     id: "privacy",

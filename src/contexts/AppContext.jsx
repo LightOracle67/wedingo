@@ -484,6 +484,7 @@ export function AppProvider({ children }) {
     isSavingRef.current = true;
     try {
       if (payload.bankInfo) payload.bankInfo = await encrypt(payload.bankInfo, inviteToken);
+      if (!hasStoredConfig) payload.privacyPolicyVersion = "2026-07-07";
       await setDoc(invitationDocRef(inviteToken), payload);
       if (payload.bankInfo) payload.bankInfo = await decrypt(payload.bankInfo, inviteToken);
       setConfig(payload);
