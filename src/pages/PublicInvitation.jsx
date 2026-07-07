@@ -237,7 +237,14 @@ export default function PublicInvitation() {
 
     const handleWheel = (event) => {
       if (event.target.closest(IGNORE_SELECTOR)) return;
-      event.preventDefault();
+      const card = event.target.closest(".story-card");
+      if (card) {
+        const { scrollTop, scrollHeight, clientHeight } = card;
+        const atTop = scrollTop <= 0;
+        const atBottom = scrollTop + clientHeight >= scrollHeight - 2;
+        if (event.deltaY < 0 && !atTop) return;
+        if (event.deltaY > 0 && !atBottom) return;
+      }
       if (event.deltaY === 0) return;
       startTransition(event.deltaY > 0 ? 1 : -1);
     };

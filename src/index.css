@@ -1202,8 +1202,6 @@ body::after {
 .story-section--is-active {
   z-index: 2;
   pointer-events: auto;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
 .story-section:not(.story-section--is-active) {
