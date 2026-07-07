@@ -410,9 +410,15 @@ export function AppProvider({ children }) {
       return;
     }
 
-    if (sanitized.menuEnabled === "true" && !sanitized.menuCarne && !sanitized.menuPescado && !sanitized.menuVegano && !sanitized.menuPostre) {
-      setSaveError("Si los invitados pueden elegir menú, al menos uno debe estar descrito.");
-      return;
+    if (sanitized.menuEnabled === "true") {
+      if (!sanitized.menuPostre) {
+        setSaveError("El postre es obligatorio.");
+        return;
+      }
+      if (!sanitized.menuCarne && !sanitized.menuPescado && !sanitized.menuVegano) {
+        setSaveError("Describe al menos un menú principal (carne, pescado o vegano).");
+        return;
+      }
     }
     if (sanitized.menuEnabled !== "true" && !sanitized.menuTexto) {
       setSaveError("Describe el menú de la celebración.");

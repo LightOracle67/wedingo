@@ -507,7 +507,6 @@ export default function SetupForm({ prefix = "" }) {
               { key: "menuCarne", label: "Menú de carne", ph: "Describe el menú de carne..." },
               { key: "menuPescado", label: "Menú de pescado", ph: "Describe el menú de pescado..." },
               { key: "menuVegano", label: "Menú vegano/vegetariano", ph: "Describe el menú vegano..." },
-              { key: "menuPostre", label: "Postre", ph: "Describe el postre" },
             ].map(({ key, label, ph }) => {
               const val = formData[key] || "";
               return (
@@ -520,7 +519,11 @@ export default function SetupForm({ prefix = "" }) {
                 </div>
               );
             })}
-            <p className="setup-help">Obligatorio: al menos un menú debe estar descrito.</p>
+            <div style={{ marginBottom: "0.5rem" }}>
+              <p className="setup-label" style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}>Postre *</p>
+              <textarea className="setup-textarea" value={formData.menuPostre || ""} onChange={(e) => updateFormField("menuPostre", e.target.value)} placeholder="Describe el postre" rows={2} style={{ fontSize: "0.85rem" }} />
+            </div>
+            <p className="setup-help">Obligatorio: postre y al menos un menú principal.</p>
           </>
         ) : (
           <>
