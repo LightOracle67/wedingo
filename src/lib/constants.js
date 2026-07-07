@@ -82,7 +82,7 @@ export const STORY_SECTION_ORDER = ["hero", "details", "info", "story", "gallery
 export const SECTION_LABELS = {
   hero: "Portada",
   details: "Lugar, Fecha y Hora",
-  info: "Itinerario",
+  info: "Sobre los invitados",
   story: "Nuestra historia",
   gifts: "Regalos",
   accommodation: "Alojamiento",
