@@ -29,7 +29,7 @@ export default function SetupPage() {
     if (saveMessage && hasStoredConfig && !hasRedirectedRef.current) {
       hasRedirectedRef.current = true;
       const timer = setTimeout(() => {
-        navigate(`/${inviteToken}`, { replace: true });
+        navigate(`/${inviteToken}/admin`, { replace: true });
       }, 1000);
       return () => clearTimeout(timer);
     }

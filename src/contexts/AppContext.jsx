@@ -1,13 +1,13 @@
 import { createContext, useContext, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { getDoc, setDoc, increment, updateDoc, getDocs, writeBatch, doc } from "firebase/firestore";
+import { getDoc, setDoc, increment, updateDoc, getDocs, writeBatch, doc, serverTimestamp } from "firebase/firestore";
 import { db, invitationDocRef, rsvpByInviteRef } from "../lib/firebase";
 import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES, defaultConfig, MONTH_OPTIONS, MONTH_VALUE_TO_NUMBER, STORY_SECTION_ORDER, THEME_VALUES } from "../lib/constants";
 import { normalizeConfig } from "../lib/normalize-config";
 import { decodeInviteConfig } from "../lib/invite-config-codec";
 import { compressImage } from "../lib/image-utils";
 import { uploadImage, loadDecryptedField, deleteGallery } from "../lib/image-store";
-import { clearSession } from "../lib/sessionVars";
+import { saveSession, clearSession } from "../lib/sessionVars";
 import { encrypt, decrypt } from "../lib/crypto-utils";
 import { useCalendar } from "../hooks/useCalendar";
 import { useFieldHandlers } from "../hooks/useFieldHandlers";
@@ -486,6 +486,14 @@ export function AppProvider({ children }) {
       setHasStoredConfig(true);
       setSetupToken("");
       setSetupTokenInput("");
+      if (!isTokenVerified) {
+        try {
+          await setDoc(doc(db, "sessions", inviteToken), { createdAt: serverTimestamp() });
+          setIsTokenVerified(true);
+          setTokenLoginUsername(config.adminUsername || inviteToken);
+          saveSession("admin", config.adminUsername || inviteToken);
+        } catch {}
+      }
       setSaveMessage("Configuración guardada correctamente.");
     } catch {
       setSaveError("No se pudo guardar la configuración. Si es la primera vez, prueba a entrar desde el panel privado.");
