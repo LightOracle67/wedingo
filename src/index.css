@@ -2129,10 +2129,16 @@ h6 {
   width: min(100%, 900px);
 }
 
-section.setup-card.setup-card--full {
+.setup-layout--full {
+  grid-template-rows: 1fr;
+  place-items: start center;
+}
+
+.setup-layout--full .setup-card--full {
   width: 100% !important;
   height: 100%;
   overflow-y: auto;
+  align-self: stretch;
 }
 
 .setup-card--narrow {

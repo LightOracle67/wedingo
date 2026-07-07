@@ -40,7 +40,7 @@ export default function SuperAdminPanel() {
   }
 
   return (
-    <div className="setup-layout">
+    <div className="setup-layout setup-layout--full">
       <section className="setup-card setup-card--full allow-select" aria-label="Panel de administración">
         <header className="setup-header">
           <div>
