@@ -2131,8 +2131,7 @@ h6 {
 
 .setup-card--full {
   width: 100% !important;
-  height: calc(100dvh - var(--navbar-height, 0px) - clamp(1.5rem, 5vw, 3rem)) !important;
-  min-height: calc(100dvh - var(--navbar-height, 0px) - clamp(1.5rem, 5vw, 3rem)) !important;
+  max-height: 100%;
   overflow-y: auto;
 }
 
