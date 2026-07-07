@@ -6,7 +6,7 @@ const PAGE_SIZES = [10, 25, 50, 100];
 const AttendanceTab = memo(function AttendanceTab({
   searchQuery, setSearchQuery,
   attendanceFilter, setAttendanceFilter,
-  filteredEntries,
+  filteredEntries, exportPdf,
   rsvpEntries, handleClearRsvpEntries, formatDate,
 }) {
   const dietary = useMemo(() => getDietarySummary(rsvpEntries), [rsvpEntries]);
@@ -135,6 +135,9 @@ const AttendanceTab = memo(function AttendanceTab({
 
       {rsvpEntries.length > 0 && (
         <div className="setup-actions">
+          <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={exportPdf}>
+            Exportar PDF
+          </button>
           <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleClearRsvpEntries}>
             Vaciar asistencia
           </button>
