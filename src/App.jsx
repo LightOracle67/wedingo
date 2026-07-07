@@ -58,7 +58,7 @@ function AppShell() {
         </nav>
       ) : null}
 
-      <main id="main-content" role="main" tabIndex={-1}>
+      <main id="main-content" role="main" tabIndex={-1} style={{ paddingTop: topBarPadding }}>
         <Suspense fallback={<div className="page-loading" />}>
         <Routes>
           <Route path="/" element={<LandingPage />} />
