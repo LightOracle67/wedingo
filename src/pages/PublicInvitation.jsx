@@ -353,7 +353,8 @@ export default function PublicInvitation() {
 
         L.marker([geocodedLocation.latitude, geocodedLocation.longitude], { icon }).addTo(mapInstance);
 
-        mapInstance.once("load", () => {
+        mapInstance.whenReady(() => {
+          mapInstance.invalidateSize();
           if (!isCancelled) setLocationMapLoading(false);
         });
       } catch {
