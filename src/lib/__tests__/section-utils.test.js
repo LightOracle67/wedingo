@@ -4,7 +4,7 @@ import { parseSectionOrder, parseHidden } from "../section-utils";
 describe("parseSectionOrder", () => {
   it("returns default order for empty input", () => {
     const result = parseSectionOrder("");
-    expect(result).toEqual(["hero", "details", "info", "story", "gifts", "accommodation", "gallery", "menu", "rsvp"]);
+    expect(result).toEqual(["hero", "details", "info", "story", "gallery", "menu", "gifts", "accommodation", "rsvp"]);
   });
 
   it("returns default order for null", () => {
