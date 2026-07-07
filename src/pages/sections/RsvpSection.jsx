@@ -115,17 +115,22 @@ const RsvpSection = memo(function RsvpSection({
           ) : null}
 
           {!menuEnabled ? null : (
-            <p className="setup-help" style={{ fontSize: "0.8rem" }}>Indica si tienes alergias o intolerancias marcando las casillas superiores.</p>
+            <p className="setup-help" style={{ fontSize: "0.8rem" }}>Indica solo alergias e intolerancias alimentarias. No introduzcas información médica no solicitada.</p>
           )}
 
           <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.85rem", cursor: "pointer" }}>
             <input type="checkbox" checked={rsvpForm.privacyConsent} onChange={(e) => updateRsvpField("privacyConsent", e.target.checked)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} required />
-            <span>Acepto la <button type="button" onClick={() => setLegalModal("privacy")} style={{ color: "var(--setup-accent)", textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", fontSize: "inherit", padding: 0 }}>Política de Privacidad</button></span>
+            <span>He sido informado y acepto la <button type="button" onClick={() => setLegalModal("privacy")} style={{ color: "var(--setup-accent)", textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", fontSize: "inherit", padding: 0 }}>Política de Privacidad</button></span>
           </label>
 
           <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.85rem", cursor: "pointer" }}>
             <input type="checkbox" checked={rsvpForm.healthConsent} onChange={(e) => updateRsvpField("healthConsent", e.target.checked)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
-            <span>Consiento el tratamiento de mis datos de salud para la organización del evento</span>
+            <span>Consiento el tratamiento de mis datos de salud (alergias e intolerancias) para adaptar el menú de la celebración</span>
+          </label>
+
+          <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.85rem", cursor: "pointer" }}>
+            <input type="checkbox" checked={rsvpForm.ageConsent} onChange={(e) => updateRsvpField("ageConsent", e.target.checked)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} required />
+            <span>Declaro ser mayor de 14 años o, si soy menor, tener el consentimiento de mis padres o tutores</span>
           </label>
 
           <div className="setup-actions">

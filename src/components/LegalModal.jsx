@@ -4,19 +4,31 @@ const SECTIONS = [
   {
     id: "privacy",
     label: "Política de Privacidad",
-    content: `Responsable del tratamiento: Adrian Carrasco Lopez. Finalidad: gestión de invitaciones de boda, confirmación de asistencia y comunicación de eventos.
+    content: `Responsable del tratamiento: Adrian Carrasco Lopez. Contacto: adriancl2001@gmail.com. Finalidad: gestión de invitaciones de boda, confirmación de asistencia y comunicación de eventos.
 
-Base legal: ejecución de un acuerdo (art. 6.1.b RGPD) y consentimiento del interesado (art. 6.1.a RGPD). Los datos de salud (alergias) se tratan con consentimiento explícito (art. 9.2.a RGPD).
+Base legal: consentimiento del interesado (art. 6.1.a RGPD). Los datos de salud (alergias e intolerancias alimentarias) se tratan con consentimiento explícito (art. 9.2.a RGPD) con la finalidad de adaptar el menú de la celebración.
 
-Datos recogidos: nombre, datos de contacto, preferencias alimentarias, mensajes voluntarios, imágenes subidas, datos bancarios si se proporcionan voluntariamente.
+Datos recogidos: nombre, preferencias alimentarias (alergias e intolerancias), imágenes subidas voluntariamente, datos bancarios si se proporcionan voluntariamente.
 
-Destinatarios: Google LLC (Firebase, Google Cloud Platform) con sede en EE.UU. Las transferencias internacionales se amparan en las Cláusulas Contractuales Tipo (SCC) suscritas con Google.
+Destinatarios: Google LLC (Firebase, Google Cloud Platform) con sede en EE.UU. Google ha suscrito las Cláusulas Contractuales Tipo (SCC) aprobadas por la Comisión Europea y dispone de un Data Processing Agreement (DPA) conforme al art. 28 RGPD.
 
-Plazo de conservación: los datos se conservan hasta 12 meses después de la fecha del evento o hasta que el usuario solicite su eliminación.
+Transferencias internacionales: los datos se almacenan en servidores de Google Cloud en la región eur3 (Europa). No se realizan transferencias a terceros países sin garantías adecuadas.
 
-Derechos: acceso, rectificación, supresión, limitación, portabilidad y oposición. Ejercerlos escribiendo a adriancl2001@gmail.com o desde el panel de administración de tu invitación.
+Plazo de conservación: los datos de los invitados se conservan hasta 12 meses después de la fecha del evento, plazo necesario para la organización y desarrollo de la celebración. Transcurrido ese plazo, se procederá a su eliminación automática. Los datos de configuración del creador se conservan mientras la cuenta esté activa.
 
-Puede presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD).`,
+Derechos: puedes ejercer tus derechos de acceso, rectificación, supresión, limitación, portabilidad y oposición escribiendo a adriancl2001@gmail.com. Los invitados pueden solicitar la eliminación de sus datos indicando su nombre y la invitación a la que asistieron.
+
+Derecho a retirar el consentimiento: puedes retirar tu consentimiento en cualquier momento. La retirada no afectará a la licitud del tratamiento basado en el consentimiento previo a su retirada.
+
+Menores de edad: si el interesado es menor de 14 años, se requiere el consentimiento de sus padres o tutores legales.
+
+Decisiones automatizadas: no se toman decisiones automatizadas basadas en tus datos.
+
+Consecuencias de no facilitar los datos: si no facilitas tus datos personales, no podremos gestionar tu confirmación de asistencia a la celebración.
+
+DPO: este sitio web no requiere Delegado de Protección de Datos según el art. 37 RGPD al no cumplirse los supuestos del art. 37.1.
+
+Reclamaciones: puedes presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD).`,
   },
   {
     id: "terms",

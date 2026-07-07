@@ -70,13 +70,19 @@ service cloud.firestore {
         && request.resource.data.dietaryInfo is string
         && request.resource.data.dietaryInfo.size() <= 240
         && isSafeText(request.resource.data.dietaryInfo)
-        && request.resource.data.privacyConsent == true;
+        && request.resource.data.privacyConsent == true
+        && (request.resource.data.keys().hasOnly(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent', 'privacyConsentAt'])
+          || (request.resource.data.keys().hasAll(['healthConsent'])
+            && request.resource.data.healthConsent == true));
 
       allow read: if isSuperAdmin()
         || (resource.data.inviteToken is string
           && exists(/databases/$(database)/documents/sessions/$(resource.data.inviteToken)));
 
-      allow update: if false;
+      allow update: if request.resource.data.attendance in ['yes', 'no']
+        && request.resource.data.dietaryInfo is string
+        && resource.data.inviteToken is string
+        && exists(/databases/$(database)/documents/sessions/$(resource.data.inviteToken));
       allow delete: if isSuperAdmin();
     }
 

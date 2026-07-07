@@ -19,6 +19,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
     dietaryOther: "",
     privacyConsent: false,
     healthConsent: false,
+    ageConsent: false,
   });
   const [rsvpMessage, setRsvpMessage] = useState("");
   const [isRsvpSubmitting, setIsRsvpSubmitting] = useState(false);
@@ -108,6 +109,11 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
       return;
     }
 
+    if (!rsvpForm.ageConsent) {
+      setRsvpMessage("Debes confirmar tu edad o tener consentimiento parental.");
+      return;
+    }
+
     const hasHealthData = rsvpForm.dietarySelection.length > 0 || rsvpForm.dietaryOther.trim();
     if (hasHealthData && !rsvpForm.healthConsent) {
       setRsvpMessage("Debes consentir el tratamiento de tus datos de salud.");
@@ -130,6 +136,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
         privacyConsent: true,
         privacyConsentAt: serverTimestamp(),
         healthConsent: rsvpForm.healthConsent,
+        healthConsentAt: rsvpForm.healthConsent ? serverTimestamp() : null,
       };
       const doc = await addDoc(RSVP_COLLECTION_REF, payload);
       setRsvpEntries((current) => [{ ...payload, id: doc.id, submittedAt: now }, ...current]);
@@ -140,7 +147,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
       );
       setRsvpForm({
         guestName: "", attendance: "yes", mealChoice: "",
-        dietarySelection: [], dietaryOther: "", privacyConsent: false, healthConsent: false,
+        dietarySelection: [], dietaryOther: "", privacyConsent: false, healthConsent: false, ageConsent: false,
       });
       setHasSubmitted(true);
     } catch {

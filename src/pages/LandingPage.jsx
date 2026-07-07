@@ -157,11 +157,11 @@ export default function LandingPage() {
             </button>
           </div>
           <div className="mt-6 text-center">
-            <button type="button" onClick={() => setLegalSection("privacy")} className="text-[0.7rem] text-boda-texto/35 hover:text-boda-texto/55 transition-colors" style={{ textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-body)" }}>Política de Privacidad</button>
-            <span className="text-[0.7rem] text-boda-texto/25 mx-1">·</span>
-            <button type="button" onClick={() => setLegalSection("terms")} className="text-[0.7rem] text-boda-texto/35 hover:text-boda-texto/55 transition-colors" style={{ textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-body)" }}>Términos</button>
-            <span className="text-[0.7rem] text-boda-texto/25 mx-1">·</span>
-            <button type="button" onClick={() => setLegalSection("legal")} className="text-[0.7rem] text-boda-texto/35 hover:text-boda-texto/55 transition-colors" style={{ textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-body)" }}>Aviso Legal</button>
+            <button type="button" onClick={() => setLegalSection("privacy")} className="text-[0.8rem] text-boda-texto/60 hover:text-boda-texto/80 transition-colors" style={{ textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-body)" }}>Política de Privacidad</button>
+            <span className="text-[0.8rem] text-boda-texto/50 mx-1">·</span>
+            <button type="button" onClick={() => setLegalSection("terms")} className="text-[0.8rem] text-boda-texto/60 hover:text-boda-texto/80 transition-colors" style={{ textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-body)" }}>Términos</button>
+            <span className="text-[0.8rem] text-boda-texto/50 mx-1">·</span>
+            <button type="button" onClick={() => setLegalSection("legal")} className="text-[0.8rem] text-boda-texto/60 hover:text-boda-texto/80 transition-colors" style={{ textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-body)" }}>Aviso Legal</button>
           </div>
         </div>
       </section>

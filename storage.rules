@@ -8,7 +8,8 @@ service firebase.storage {
         || firestore.exists(/databases/(default)/documents/sessions/$(token)))
         && request.resource.size < 20 * 1024 * 1024
         && request.resource.contentType.matches('image/.*');
-      allow delete: if false;
+      allow delete: if request.auth != null
+        || firestore.exists(/databases/(default)/documents/sessions/$(token));
     }
   }
 }
