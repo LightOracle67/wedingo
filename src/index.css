@@ -2131,9 +2131,8 @@ h6 {
 
 .setup-card--full {
   width: 100% !important;
-  align-self: stretch;
-  justify-self: stretch;
-  height: 100%;
+  height: calc(100dvh - var(--navbar-height, 0px) - clamp(1.5rem, 5vw, 3rem)) !important;
+  min-height: calc(100dvh - var(--navbar-height, 0px) - clamp(1.5rem, 5vw, 3rem)) !important;
   overflow-y: auto;
 }
 
