@@ -10,7 +10,7 @@ export default function SetupForm({ prefix = "" }) {
   const {
     formData, updateFormField, handleSaveSetup, handleDayChange,
     handleHourChange, handleMinuteChange, handleMinuteBlur, handleYearChange,
-    handleCoordinateChange, handleBackgroundUpload, handleClearBackground,
+    handleBackgroundUpload, handleClearBackground,
     handleSelectPreviewBackground, previewBackgrounds,
     saveMessage, saveError, maxAllowedYear, isTokenVerified, inviteToken, hasStoredConfig, setLegalModal,
   } = useApp();
@@ -316,7 +316,6 @@ export default function SetupForm({ prefix = "" }) {
             }, 200)}
             placeholder="Escribe el nombre del lugar para buscar..."
             autoComplete="off"
-            disabled={Boolean(formData.weddingLatitude || formData.weddingLongitude)}
           />
           <div id="weddingPlaceResults" style={{
             position: "absolute", top: "100%", left: 0, right: 0, zIndex: 10,
@@ -325,49 +324,9 @@ export default function SetupForm({ prefix = "" }) {
             maxHeight: "200px", overflowY: "auto",
           }} />
         </div>
-        <p className="setup-help">
-          {formData.weddingLatitude || formData.weddingLongitude
-            ? "Desactivado porque has introducido coordenadas."
-            : "Escribe el lugar y selecciona uno de los resultados."}
-        </p>
+        <p className="setup-help">Escribe el lugar y selecciona uno de los resultados.</p>
 
-        {formData.weddingPlace ? null : (
-          <fieldset className="setup-name-group">
-            <legend className="setup-label">Coordenadas del mapa</legend>
-            <div className="setup-date-grid">
-              <div>
-                <label className="setup-label" htmlFor={id("weddingLatitude")}>Latitud</label>
-                <input
-                  id={id("weddingLatitude")}
-                  className="setup-input"
-                  value={formData.weddingLatitude}
-                  onChange={(e) => {
-                    handleCoordinateChange("weddingLatitude", e.target.value);
-                    if (e.target.value) updateFormField("weddingPlace", "");
-                  }}
-                  placeholder="Ejemplo: 40.4168"
-                  inputMode="decimal"
-                  autoComplete="off"
-                />
-              </div>
-              <div>
-                <label className="setup-label" htmlFor={id("weddingLongitude")}>Longitud</label>
-                <input
-                  id={id("weddingLongitude")}
-                  className="setup-input"
-                  value={formData.weddingLongitude}
-                  onChange={(e) => {
-                    handleCoordinateChange("weddingLongitude", e.target.value);
-                    if (e.target.value) updateFormField("weddingPlace", "");
-                  }}
-                  placeholder="Ejemplo: -3.7038"
-                  inputMode="decimal"
-                  autoComplete="off"
-                />
-              </div>
-            </div>
-          </fieldset>
-        )}
+
 
         {(() => {
           if (!previewBackgrounds.length) return null;
