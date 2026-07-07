@@ -41,7 +41,7 @@ service cloud.firestore {
     }
 
     match /setupTokens/{tokenId} {
-      allow get: if isSuperAdmin() || resource.data.used == false;
+      allow get: if true;
       allow list: if isSuperAdmin();
       allow create: if isSuperAdmin()
         || (!exists(/databases/$(database)/documents/setupTokens/$(tokenId))
