@@ -18,6 +18,7 @@ import StorySection from "./sections/StorySection";
 import GiftsSection from "./sections/GiftsSection";
 import AccommodationSection from "./sections/AccommodationSection";
 import GallerySection from "./sections/GallerySection";
+import MenuSection from "./sections/MenuSection";
 import RsvpSection from "./sections/RsvpSection";
 
 const SECTION_COMPONENTS = {
@@ -28,6 +29,7 @@ const SECTION_COMPONENTS = {
   gifts: GiftsSection,
   accommodation: AccommodationSection,
   gallery: GallerySection,
+  menu: MenuSection,
   rsvp: RsvpSection,
 };
 
@@ -436,6 +438,11 @@ export default function PublicInvitation() {
     },
     gallery: {
       galleryImages: config.galleryImages,
+    },
+    menu: {
+      menuOptions: config.menuOptions,
+      rsvpForm,
+      updateRsvpField,
     },
     rsvp: {
       rsvpForm,
