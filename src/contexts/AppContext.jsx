@@ -305,7 +305,7 @@ export function AppProvider({ children }) {
     }
 
     const sanitized = normalizeConfig(formData);
-    const hiddenArray = (sanitized.hiddenSections || "").split(",").filter(Boolean);
+    const hiddenArray = (sanitized.hiddenSections || "").split(",").filter(Boolean).filter(s => s !== "menu" && s !== "transport" && s !== "godparents");
     const hiddenSet = new Set(hiddenArray);
 
     if (!hasStoredConfig) {
@@ -391,7 +391,7 @@ export function AppProvider({ children }) {
       return;
     }
 
-    const orderArray = (sanitized.sectionOrder || "").split(",").filter(Boolean);
+    const orderArray = (sanitized.sectionOrder || "").split(",").filter(Boolean).filter(s => !["menu", "transport", "godparents"].includes(s));
     const validSectionKeys = new Set(STORY_SECTION_ORDER);
     if (orderArray.length < 1 || !orderArray.every((s) => validSectionKeys.has(s))) {
       setSaveError("El orden de las secciones no es válido.");
