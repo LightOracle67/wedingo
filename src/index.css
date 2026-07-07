@@ -568,6 +568,20 @@ html {
   --wedding-decoration-right-opacity: 0.95;
 }
 
+p, h1, h2, h3, h4, h5, h6, span, a, li, label, td, th, button, input, textarea {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.story-card, .setup-card, .invite-shell {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.story-card p, .setup-card p, .invite-shell p {
+  max-width: 100%;
+}
+
 :root[data-wedding-theme="rainbow"] {
   --font-heading: "Playfair Display", serif;
   --font-body: "Lora", serif;
