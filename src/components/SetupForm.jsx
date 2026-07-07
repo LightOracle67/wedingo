@@ -621,7 +621,7 @@ export default function SetupForm({ prefix = "" }) {
         ) : (
           <>
             <label className="setup-label" style={{ marginTop: "0.3rem" }}>Menú</label>
-            <textarea className="setup-textarea" value={formData.menuCarne} onChange={(e) => updateFormField("menuCarne", e.target.value.slice(0, 2000))} placeholder="Describe el menú: entrante, plato principal, postre..." rows={4} />
+            <textarea className="setup-textarea" value={formData.menuTexto} onChange={(e) => updateFormField("menuTexto", e.target.value.slice(0, 2000))} placeholder="Describe el menú: entrante, plato principal, postre..." rows={4} />
             <p className="setup-help">Describe el menú que has preparado para los invitados.</p>
           </>
         )}

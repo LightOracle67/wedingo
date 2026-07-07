@@ -6,7 +6,7 @@ const MAINS = [
   { key: "menuVegano", label: "Vegano/Vegetariano" },
 ];
 
-const MenuSection = memo(function MenuSection({ style, className, menuCarne, menuPescado, menuVegano, menuPostre, menuEnabled }) {
+const MenuSection = memo(function MenuSection({ style, className, menuCarne, menuPescado, menuVegano, menuPostre, menuEnabled, menuTexto }) {
   const mains = MAINS.map(m => ({ ...m, value: ({ menuCarne, menuPescado, menuVegano })[m.key]?.trim() })).filter(m => m.value);
   const postre = menuPostre?.trim();
 
@@ -16,30 +16,31 @@ const MenuSection = memo(function MenuSection({ style, className, menuCarne, men
         <p className="story-eyebrow">Menú</p>
         <h2 className="story-title">Nuestro menú</h2>
 
-        {mains.length === 0 && !postre ? (
-          <p className="story-copy mt-4" style={{ fontStyle: "italic" }}>El menú se compartirá próximamente.</p>
-        ) : menuEnabled === "true" ? (
-          <>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "0.5rem", marginTop: "0.75rem" }}>
-              {mains.map(m => (
-                <div key={m.key} style={{ padding: "0.6rem 0.6rem", borderRadius: "0.7rem", background: "color-mix(in srgb, var(--setup-field-bg) 60%, transparent)", border: "1px solid color-mix(in srgb, var(--setup-accent) 20%, transparent)" }}>
-                  <p className="story-eyebrow" style={{ fontSize: "0.75rem", marginBottom: "0.2rem" }}>{m.label}</p>
-                  <p className="story-note whitespace-pre-line" style={{ fontSize: "0.82rem" }}>{m.value}</p>
-                </div>
-              ))}
-            </div>
-            {postre ? (
-              <div style={{ marginTop: "0.5rem", padding: "0.6rem 0.8rem", borderRadius: "0.7rem", background: "color-mix(in srgb, var(--setup-field-bg) 60%, transparent)", border: "1px solid color-mix(in srgb, var(--setup-accent) 20%, transparent)" }}>
-                <p className="story-eyebrow" style={{ fontSize: "0.75rem", marginBottom: "0.2rem" }}>Postre</p>
-                <p className="story-note whitespace-pre-line" style={{ fontSize: "0.82rem" }}>{postre}</p>
+        {menuEnabled === "true" ? (
+          mains.length === 0 && !postre ? (
+            <p className="story-copy mt-4" style={{ fontStyle: "italic" }}>El menú se compartirá próximamente.</p>
+          ) : (
+            <>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "0.5rem", marginTop: "0.75rem" }}>
+                {mains.map(m => (
+                  <div key={m.key} style={{ padding: "0.6rem 0.6rem", borderRadius: "0.7rem", background: "color-mix(in srgb, var(--setup-field-bg) 60%, transparent)", border: "1px solid color-mix(in srgb, var(--setup-accent) 20%, transparent)" }}>
+                    <p className="story-eyebrow" style={{ fontSize: "0.75rem", marginBottom: "0.2rem" }}>{m.label}</p>
+                    <p className="story-note whitespace-pre-line" style={{ fontSize: "0.82rem" }}>{m.value}</p>
+                  </div>
+                ))}
               </div>
-            ) : null}
-          </>
+              {postre ? (
+                <div style={{ marginTop: "0.5rem", padding: "0.6rem 0.8rem", borderRadius: "0.7rem", background: "color-mix(in srgb, var(--setup-field-bg) 60%, transparent)", border: "1px solid color-mix(in srgb, var(--setup-accent) 20%, transparent)" }}>
+                  <p className="story-eyebrow" style={{ fontSize: "0.75rem", marginBottom: "0.2rem" }}>Postre</p>
+                  <p className="story-note whitespace-pre-line" style={{ fontSize: "0.82rem" }}>{postre}</p>
+                </div>
+              ) : null}
+            </>
+          )
+        ) : menuTexto?.trim() ? (
+          <p className="story-copy mt-4 whitespace-pre-line">{menuTexto}</p>
         ) : (
-          <div style={{ marginTop: "0.75rem" }}>
-            {mains.map(m => <p key={m.key} className="story-copy mt-2 whitespace-pre-line">{m.value}</p>)}
-            {postre ? <p className="story-copy mt-2 whitespace-pre-line">{postre}</p> : null}
-          </div>
+          <p className="story-copy mt-4" style={{ fontStyle: "italic" }}>El menú se compartirá próximamente.</p>
         )}
       </div>
     </section>

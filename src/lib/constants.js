@@ -141,6 +141,7 @@ export const defaultConfig = {
   galleryImages: "",
   kidsPolicy: "",
   menuEnabled: "false",
+  menuTexto: "",
   menuCarne: "",
   menuPescado: "",
   menuVegano: "",

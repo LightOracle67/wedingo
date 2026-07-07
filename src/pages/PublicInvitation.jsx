@@ -445,6 +445,7 @@ export default function PublicInvitation() {
       menuVegano: config.menuVegano,
       menuPostre: config.menuPostre,
       menuEnabled: config.menuEnabled,
+      menuTexto: config.menuTexto,
     },
     rsvp: {
       rsvpForm,
@@ -461,13 +462,14 @@ export default function PublicInvitation() {
       menuPescado: config.menuPescado,
       menuVegano: config.menuVegano,
       menuPostre: config.menuPostre,
+      menuTexto: config.menuTexto,
     },
   }), [
     config.firstName, config.secondName, config.inviteMessage,
     config.weddingPlace, config.weddingSchedule, config.weddingDressCode,
     config.kidsPolicy, config.storyText, config.giftsInfo, config.accommodationInfo,
     config.transportInfo, config.godparent1, config.godparent2, config.galleryImages,
-    config.couplePhoto, config.musicUrl, config.bankInfo, config.menuEnabled, config.menuCarne, config.menuPescado, config.menuVegano, config.menuPostre,
+    config.couplePhoto, config.musicUrl, config.bankInfo, config.menuEnabled, config.menuTexto, config.menuCarne, config.menuPescado, config.menuVegano, config.menuPostre,
     countdown, formattedDate, formattedTime,
     hasLocationData, locationDescription, calendarLink,
     locationMapContainerRef, locationMapLoading, locationMapError, locationMapTarget,

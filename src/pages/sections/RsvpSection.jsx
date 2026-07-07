@@ -4,7 +4,7 @@ import { useApp } from "../../contexts/AppContext";
 const RsvpSection = memo(function RsvpSection({
   style, className,
   rsvpForm, rsvpEntries, rsvpMessage, isRsvpSubmitting, hasSubmitted,
-  updateRsvpField, handleRsvpSubmit, handleDietaryToggle, DIETARY_OPTIONS, menuEnabled, menuCarne, menuPescado, menuVegano, menuPostre,
+  updateRsvpField, handleRsvpSubmit, handleDietaryToggle, DIETARY_OPTIONS, menuEnabled, menuCarne, menuPescado, menuVegano, menuPostre, menuTexto,
 }) {
   const { setLegalModal } = useApp();
 
@@ -88,10 +88,10 @@ const RsvpSection = memo(function RsvpSection({
                 </div>
               </div>
             </fieldset>
-          ) : menuCarne?.trim() ? (
+          ) : menuTexto?.trim() ? (
             <div style={{ marginBottom: "0.5rem", padding: "0.6rem", borderRadius: "0.6rem", background: "color-mix(in srgb, var(--setup-field-bg) 60%, transparent)" }}>
               <p className="story-eyebrow" style={{ fontSize: "0.72rem", marginBottom: "0.2rem" }}>Menú</p>
-              <p className="story-note whitespace-pre-line" style={{ fontSize: "0.85rem" }}>{menuCarne}</p>
+              <p className="story-note whitespace-pre-line" style={{ fontSize: "0.85rem" }}>{menuTexto}</p>
             </div>
           ) : null}
           {!menuEnabled ? (
