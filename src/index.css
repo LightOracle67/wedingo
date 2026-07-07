@@ -2129,7 +2129,7 @@ h6 {
   width: min(100%, 900px);
 }
 
-.setup-layout--full {
+.setup-layout--full.setup-layout {
   display: block;
   height: auto;
   min-height: calc(100dvh - var(--navbar-height, 0px));
@@ -2138,8 +2138,9 @@ h6 {
 
 .setup-layout--full .setup-card--full {
   width: 100% !important;
-  height: calc(100dvh - var(--navbar-height, 0px) - clamp(1.5rem, 5vw, 3rem));
-  overflow-y: auto;
+  height: calc(100dvh - var(--navbar-height, 0px) - clamp(1.5rem, 5vw, 3rem)) !important;
+  max-height: calc(100dvh - var(--navbar-height, 0px) - clamp(1.5rem, 5vw, 3rem)) !important;
+  overflow-y: auto !important;
   margin: 0;
 }
 
