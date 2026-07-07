@@ -8,6 +8,7 @@ import PanelTab from "./admin/PanelTab";
 import AttendanceTab from "./admin/AttendanceTab";
 import AccessTab from "./admin/AccessTab";
 import ShareTab from "./admin/ShareTab";
+import SupportTab from "./admin/SupportTab";
 
 const TABS = [
   { key: "panel", label: "Panel" },
@@ -15,6 +16,7 @@ const TABS = [
   { key: "asistencia", label: "Asistencia" },
   { key: "compartir", label: "Compartir" },
   { key: "acceso", label: "Acceso" },
+  { key: "soporte", label: "Soporte" },
 ];
 
 export default function AdminPage() {
@@ -222,6 +224,8 @@ export default function AdminPage() {
               handleDeleteInvitation={handleDeleteInvitation}
             />
           )}
+
+          {activeTab === "soporte" && <SupportTab />}
 
         </div>
       </section>
