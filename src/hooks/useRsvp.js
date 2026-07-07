@@ -3,13 +3,10 @@ import { addDoc, deleteDoc, getDocs, serverTimestamp } from "firebase/firestore"
 import { RSVP_COLLECTION_REF, rsvpByInviteRef } from "../lib/firebase";
 
 const DIETARY_OPTIONS = [
-  { value: "vegetariano", label: "Vegetariano" },
-  { value: "vegano", label: "Vegano" },
   { value: "sin gluten", label: "Sin gluten" },
   { value: "sin lactosa", label: "Sin lactosa" },
   { value: "alergia frutos secos", label: "Alergia a frutos secos" },
   { value: "alergia mariscos", label: "Alergia a mariscos" },
-  { value: "sin cerdo", label: "Sin cerdo" },
 ];
 
 export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuEnabled) {
