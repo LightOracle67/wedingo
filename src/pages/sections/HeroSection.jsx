@@ -3,6 +3,7 @@ import heroBackdropSrc from "../../assets/rings.png";
 
 const HeroSection = memo(function HeroSection({ style, className, firstName, secondName, inviteMessage, countdown, couplePhoto, musicUrl, godparent1, godparent2 }) {
   const [playing, setPlaying] = useState(false);
+  const [photoLoaded, setPhotoLoaded] = useState(false);
   const audioRef = useRef(null);
 
   const toggleMusic = () => {
@@ -20,8 +21,9 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
       <div className="invite-shell story-panel story-panel--hero relative z-10 mx-auto w-full rounded-[2rem] bg-transparent text-center shadow-2xl" style={{ maxWidth: "min(100%, 32rem)", padding: "clamp(0.6rem, 2vw, 1.2rem)", boxSizing: "border-box", overflowY: "auto" }}>
         <div className="relative z-20">
           {couplePhoto ? (
-            <div className="mx-auto mb-4 w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-2" style={{ borderColor: "color-mix(in srgb, var(--invite-shell-border) 80%, transparent)" }}>
-              <img src={couplePhoto} alt="" className="w-full h-full object-cover" />
+            <div className="mx-auto mb-4 w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-2" style={{ borderColor: "color-mix(in srgb, var(--invite-shell-border) 80%, transparent)", background: "color-mix(in srgb, var(--setup-field-bg) 50%, transparent)" }}>
+              {!photoLoaded ? <div className="page-loading" style={{ width: "100%", height: "100%", minHeight: 0 }} /> : null}
+              <img src={couplePhoto} alt="" onLoad={() => setPhotoLoaded(true)} className="w-full h-full object-cover" style={{ display: photoLoaded ? "block" : "none" }} />
             </div>
           ) : null}
           <div className="relative mx-auto w-fit">
