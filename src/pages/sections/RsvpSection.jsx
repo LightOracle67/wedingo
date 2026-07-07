@@ -4,11 +4,11 @@ import { useApp } from "../../contexts/AppContext";
 const RsvpSection = memo(function RsvpSection({
   style, className,
   rsvpForm, rsvpEntries, rsvpMessage, isRsvpSubmitting, hasSubmitted,
-  updateRsvpField, handleRsvpSubmit, handleDietaryToggle, DIETARY_OPTIONS, menuOptions, menuEnabled,
+  updateRsvpField, handleRsvpSubmit, handleDietaryToggle, DIETARY_OPTIONS, menuEnabled,
 }) {
   const { setLegalModal } = useApp();
   const [useGroupMode, setUseGroupMode] = useState(false);
-  const mealOptions = useMemo(() => (menuOptions || "").split(",").map(s => s.trim()).filter(Boolean), [menuOptions]);
+
   const alreadySubmitted = useMemo(() => {
     const name = rsvpForm.guestName.trim().toLowerCase();
     if (!name) return false;
@@ -100,13 +100,6 @@ const RsvpSection = memo(function RsvpSection({
               </div>
             )}
           </div>
-
-          {menuOptions ? (
-            <div style={{ padding: "0.6rem 0.8rem", borderRadius: "0.7rem", border: "1px solid color-mix(in srgb, var(--setup-accent) 30%, transparent)", background: "color-mix(in srgb, var(--setup-field-bg) 60%, transparent)" }}>
-              <p className="setup-label" style={{ fontSize: "0.8rem", marginBottom: "0.2rem" }}>Menú</p>
-              <p className="story-note" style={{ fontSize: "0.85rem", whiteSpace: "pre-line" }}>{menuOptions}</p>
-            </div>
-          ) : null}
 
           {menuEnabled ? (
             <fieldset style={{ border: "none", padding: 0, margin: 0, minInlineSize: 0 }}>

@@ -423,7 +423,7 @@ export function AppProvider({ children }) {
       } catch {}
     }
 
-    const payload = { ...defaultConfig, ...sanitized, backgroundImage: backgroundToSave, backgroundImageStorage: storagePathToSave, menuEnabled: formData.menuEnabled || "false", menuOptions: formData.menuOptions || "" };
+    const payload = { ...defaultConfig, ...sanitized, backgroundImage: backgroundToSave, backgroundImageStorage: storagePathToSave };
     if (hiddenSet.has("details") && hasStoredConfig) {
       payload.weddingDay = config.weddingDay;
       payload.weddingMonth = config.weddingMonth;

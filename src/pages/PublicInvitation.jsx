@@ -440,9 +440,11 @@ export default function PublicInvitation() {
       galleryImages: config.galleryImages,
     },
     menu: {
-      menuOptions: config.menuOptions,
-      rsvpForm,
-      updateRsvpField,
+      menuCarne: config.menuCarne,
+      menuPescado: config.menuPescado,
+      menuVegano: config.menuVegano,
+      menuPostre: config.menuPostre,
+      menuEnabled: config.menuEnabled,
     },
     rsvp: {
       rsvpForm,
@@ -454,7 +456,6 @@ export default function PublicInvitation() {
       handleRsvpSubmit,
       handleDietaryToggle,
       DIETARY_OPTIONS,
-      menuOptions: config.menuOptions,
       menuEnabled: config.menuEnabled === "true",
     },
   }), [
@@ -462,7 +463,7 @@ export default function PublicInvitation() {
     config.weddingPlace, config.weddingSchedule, config.weddingDressCode,
     config.kidsPolicy, config.storyText, config.giftsInfo, config.accommodationInfo,
     config.transportInfo, config.godparent1, config.godparent2, config.galleryImages,
-    config.couplePhoto, config.musicUrl, config.bankInfo, config.menuEnabled, config.menuOptions,
+    config.couplePhoto, config.musicUrl, config.bankInfo, config.menuEnabled, config.menuCarne, config.menuPescado, config.menuVegano, config.menuPostre,
     countdown, formattedDate, formattedTime,
     hasLocationData, locationDescription, calendarLink,
     locationMapContainerRef, locationMapLoading, locationMapError, locationMapTarget,

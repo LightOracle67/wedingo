@@ -41,5 +41,8 @@ export const normalizeConfig = (value) => ({
   galleryImages: s(value?.galleryImages),
   kidsPolicy: s(value?.kidsPolicy),
   menuEnabled: s(value?.menuEnabled) === "true" ? "true" : "false",
-  menuOptions: s(value?.menuOptions),
+  menuCarne: s(value?.menuCarne),
+  menuPescado: s(value?.menuPescado),
+  menuVegano: s(value?.menuVegano),
+  menuPostre: s(value?.menuPostre),
 });

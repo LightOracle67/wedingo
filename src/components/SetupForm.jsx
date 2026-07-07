@@ -598,35 +598,21 @@ export default function SetupForm({ prefix = "" }) {
         {formData.menuEnabled === "true" ? (
           <>
             <p className="setup-help" style={{ marginTop: "0.3rem" }}>Marca los menús que ofrecerás y describe cada uno.</p>
-            {["carne", "pescado", "vegano", "postre"].map((tipo) => {
-              const checked = formData.menuOptions?.includes(`[${tipo}]`);
-              const label = tipo === "vegano" ? "Menú vegano/vegetariano" : tipo === "carne" ? "Menú de carne" : tipo === "pescado" ? "Menú de pescado" : "Postre";
+            {[
+              { key: "menuCarne", label: "Menú de carne", placeholder: "Describe el menú de carne: entrante, principal, postre..." },
+              { key: "menuPescado", label: "Menú de pescado", placeholder: "Describe el menú de pescado: entrante, principal, postre..." },
+              { key: "menuVegano", label: "Menú vegano/vegetariano", placeholder: "Describe el menú vegano: entrante, principal, postre..." },
+              { key: "menuPostre", label: "Postre", placeholder: "Describe el postre" },
+            ].map(({ key, label, placeholder }) => {
+              const val = formData[key] || "";
               return (
-                <div key={tipo} style={{ marginBottom: "0.6rem" }}>
+                <div key={key} style={{ marginBottom: "0.6rem" }}>
                   <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", cursor: "pointer", fontSize: "0.9rem", color: "var(--setup-title)" }}>
-                    <input type="checkbox" checked={checked} onChange={(e) => {
-                      const current = formData.menuOptions || "";
-                      const tag = `[${tipo}]`;
-                      let next = current;
-                      if (e.target.checked) {
-                        next = next + (next ? "\n" : "") + tag;
-                      } else {
-                        const lines = next.split("\n").filter(l => !l.startsWith(tag));
-                        next = lines.join("\n");
-                      }
-                      updateFormField("menuOptions", next);
-                    }} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+                    <input type="checkbox" checked={!!val} onChange={(e) => updateFormField(key, e.target.checked ? " " : "")} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
                     {label}
                   </label>
-                  {checked && (
-                    <textarea className="setup-textarea" value={((formData.menuOptions || "").split("\n").find(l => l.startsWith(`[${tipo}]`)) || "").replace(`[${tipo}]`, "")} onChange={(e) => {
-                      const lines = (formData.menuOptions || "").split("\n");
-                      const idx = lines.findIndex(l => l.startsWith(`[${tipo}]`));
-                      if (idx !== -1) {
-                        lines[idx] = `[${tipo}]${e.target.value}`;
-                        updateFormField("menuOptions", lines.join("\n"));
-                      }
-                    }}                     placeholder={tipo === "vegano" ? "Describe el menú vegano: entrante, principal, postre..." : tipo === "postre" ? "Describe el postre" : `Describe el menú de ${tipo}: entrante, principal, postre...`} autoComplete="off" rows={3} style={{ marginTop: "0.2rem" }} />
+                  {val && (
+                    <textarea className="setup-textarea" value={val} onChange={(e) => updateFormField(key, e.target.value)} placeholder={placeholder} autoComplete="off" rows={3} style={{ marginTop: "0.2rem" }} />
                   )}
                 </div>
               );
@@ -635,8 +621,8 @@ export default function SetupForm({ prefix = "" }) {
           </>
         ) : (
           <>
-            <label className="setup-label" htmlFor={id("menuOptions")} style={{ marginTop: "0.3rem" }}>Menú</label>
-            <textarea id={id("menuOptions")} className="setup-textarea" value={formData.menuOptions} onChange={(e) => updateFormField("menuOptions", e.target.value.slice(0, 2000))} placeholder="Describe el menú: entrante, plato principal, postre..." rows={4} />
+            <label className="setup-label" style={{ marginTop: "0.3rem" }}>Menú</label>
+            <textarea className="setup-textarea" value={formData.menuCarne} onChange={(e) => updateFormField("menuCarne", e.target.value.slice(0, 2000))} placeholder="Describe el menú: entrante, plato principal, postre..." rows={4} />
             <p className="setup-help">Describe el menú que has preparado para los invitados.</p>
           </>
         )}
