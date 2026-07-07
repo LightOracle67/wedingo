@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
+import "leaflet/dist/leaflet.css";
 
 import { useApp } from "../contexts/AppContext";
 import {
@@ -314,7 +315,6 @@ export default function PublicInvitation() {
 
     const timeoutId = window.setTimeout(async () => {
       try {
-        await import("leaflet/dist/leaflet.css");
         const L = (await import("leaflet")).default;
         const geocodedLocation = await resolveLocationTarget({
           place,
@@ -344,14 +344,14 @@ export default function PublicInvitation() {
           attribution: "&copy; OpenStreetMap contributors",
         }).addTo(mapInstance);
 
-        const icon = L.divIcon({
-          className: "",
-          html: '<div style="width:18px;height:18px;border-radius:999px;background:#d8b24a;border:3px solid rgba(255,255,255,0.95);box-shadow:0 0 0 8px rgba(216,178,74,0.18)"></div>',
-          iconSize: [18, 18],
-          iconAnchor: [9, 9],
-        });
-
-        L.marker([geocodedLocation.latitude, geocodedLocation.longitude], { icon }).addTo(mapInstance);
+        L.circleMarker([geocodedLocation.latitude, geocodedLocation.longitude], {
+          radius: 10,
+          color: "#d8b24a",
+          fillColor: "#d8b24a",
+          fillOpacity: 0.9,
+          weight: 3,
+          opacity: 0.8,
+        }).addTo(mapInstance);
 
         mapInstance.whenReady(() => {
           mapInstance.invalidateSize();
