@@ -3,6 +3,7 @@ import { useApp } from "../contexts/AppContext";
 import { useToast } from "../contexts/ToastContext";
 import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES, MONTH_OPTIONS, THEME_GROUPS, THEME_OPTIONS, THEME_PREVIEW_COLORS } from "../lib/constants";
 import { compressImage } from "../lib/image-utils";
+import { uploadImage, saveImageField, addGalleryImage } from "../lib/image-store";
 import CollapsibleSection from "./CollapsibleSection";
 import SectionOrderEditor from "./SectionOrderEditor";
 
@@ -40,11 +41,9 @@ export default function SetupForm({ prefix = "" }) {
     if (!ALLOWED_UPLOAD_TYPES.has(file.type)) { addToast("error", "Formato no permitido. Usa JPG o PNG."); return; }
     if (file.size > MAX_UPLOAD_SIZE_BYTES) { addToast("error", "La imagen supera 20 MB."); return; }
     try {
-      const dataUrl = await compressImage(file);
-      const { uploadBackgroundImage } = await import("../lib/storage-utils");
-      const { downloadUrl } = await uploadBackgroundImage(inviteToken, dataUrl);
-      updateFormField("couplePhoto", downloadUrl);
-      updateFormField("couplePhotoStorage", `invitations/${inviteToken}/couplePhoto.${dataUrl.startsWith("data:image/png") ? "png" : "jpg"}`);
+      const { encrypted, dataUrl } = await uploadImage(inviteToken, file);
+      await saveImageField(inviteToken, "couplePhoto", encrypted);
+      updateFormField("couplePhoto", dataUrl);
       addToast("success", "Foto subida correctamente.");
     } catch { addToast("error", "No se pudo subir la foto."); }
     e.target.value = "";
@@ -56,18 +55,14 @@ export default function SetupForm({ prefix = "" }) {
     const valid = files.filter(f => ALLOWED_UPLOAD_TYPES.has(f.type) && f.size <= MAX_UPLOAD_SIZE_BYTES);
     if (!valid.length) { addToast("error", "Ningún archivo válido. Máximo 20 MB, JPG/PNG."); return; }
     try {
-      const existing = (() => { try { return JSON.parse(formData.galleryImages || "[]"); } catch { return []; } })();
-      const { uploadBackgroundImage } = await import("../lib/storage-utils");
       for (const file of valid) {
-        const dataUrl = await compressImage(file);
-        const { downloadUrl } = await uploadBackgroundImage(inviteToken, dataUrl);
-        existing.push(downloadUrl);
+        const { encrypted, dataUrl } = await uploadImage(inviteToken, file);
+        await addGalleryImage(inviteToken, encrypted, dataUrl);
       }
-      updateFormField("galleryImages", JSON.stringify(existing));
       addToast("success", `${valid.length} foto(s) subida(s) correctamente.`);
     } catch { addToast("error", "No se pudieron subir las fotos."); }
     e.target.value = "";
-  }, [inviteToken, formData.galleryImages, updateFormField, addToast]);
+  }, [inviteToken, updateFormField, addToast]);
 
   return (
     <form className="setup-form setup-form--nested" onSubmit={handleSaveSetup}>

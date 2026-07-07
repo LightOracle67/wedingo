@@ -1,9 +1,19 @@
-import { memo, useCallback, useMemo, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useState } from "react";
 
-const GallerySection = memo(function GallerySection({ style, className, galleryImages }) {
-  const images = useMemo(() => {
-    try { return JSON.parse(galleryImages || "[]"); } catch { return []; }
-  }, [galleryImages]);
+const GallerySection = memo(function GallerySection({ style, className, inviteToken }) {
+  const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!inviteToken) return;
+    let cancelled = false;
+    (async () => {
+      const { loadGallery } = await import("../../lib/image-store");
+      const result = await loadGallery(inviteToken);
+      if (!cancelled) { setImages(result); setLoading(false); }
+    })();
+    return () => { cancelled = true; };
+  }, [inviteToken]);
 
   const [idx, setIdx] = useState(0);
   const clamped = Math.max(0, Math.min(idx, images.length - 1));
@@ -11,6 +21,7 @@ const GallerySection = memo(function GallerySection({ style, className, galleryI
   const prev = useCallback(() => setIdx((i) => (i - 1 + images.length) % images.length), [images.length]);
   const next = useCallback(() => setIdx((i) => (i + 1) % images.length), [images.length]);
 
+  if (loading) return null;
   if (!images.length) {
     return (
       <section data-story-section="gallery" className={`${className} flex items-center justify-center px-3 py-6 sm:px-6 sm:py-10 lg:px-8 lg:py-12`} style={style}>
@@ -57,7 +68,9 @@ const GallerySection = memo(function GallerySection({ style, className, galleryI
         <div style={{ display: "flex", justifyContent: "center", gap: "0.4rem", marginTop: "0.6rem", flexWrap: "wrap" }}>
           {images.map((src, i) => (
             <button key={i} type="button" onClick={() => setIdx(i)} aria-label={`Foto ${i + 1}`} style={{
-              width: "2.5rem", height: "2.5rem", borderRadius: "0.4rem", overflow: "hidden", cursor: "pointer", padding: 0, border: i === clamped ? "2px solid var(--setup-accent)" : "2px solid transparent", opacity: i === clamped ? 1 : 0.55, transition: "opacity 200ms, border-color 200ms", background: "none",
+              width: "2.5rem", height: "2.5rem", borderRadius: "0.4rem", overflow: "hidden", cursor: "pointer", padding: 0,
+              border: i === clamped ? "2px solid var(--setup-accent)" : "2px solid transparent",
+              opacity: i === clamped ? 1 : 0.55, transition: "opacity 200ms, border-color 200ms", background: "none",
             }}>
               <img src={src} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
             </button>

@@ -416,7 +416,7 @@ export default function PublicInvitation() {
       accommodationInfo: config.accommodationInfo,
     },
     gallery: {
-      galleryImages: config.galleryImages,
+      inviteToken,
     },
     rsvp: {
       rsvpForm,
@@ -439,7 +439,7 @@ export default function PublicInvitation() {
     config.firstName, config.secondName, config.inviteMessage,
     config.weddingPlace, config.weddingSchedule, config.weddingDressCode,
     config.kidsPolicy, config.storyText, config.giftsInfo, config.accommodationInfo,
-    config.transportInfo, config.godparent1, config.godparent2, config.galleryImages,
+    config.transportInfo, config.godparent1, config.godparent2, inviteToken,
     config.couplePhoto, config.musicUrl, config.bankInfo, config.menuEnabled,
     countdown, formattedDate, formattedTime,
     hasLocationData, locationDescription, calendarLink,
