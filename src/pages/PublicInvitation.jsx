@@ -36,7 +36,6 @@ export default function PublicInvitation() {
   const { inviteToken } = useParams();
   const searchParams = new URLSearchParams(location.search);
   const isInviteMode = searchParams.has("invitar");
-  const isPrintMode = searchParams.has("imprimir");
 
   const {
     config, isConfigLoading, configLoadError, formattedDate, formattedTime, calendarLink,
@@ -93,24 +92,6 @@ export default function PublicInvitation() {
   });
 
   const isStoryTransitioning = storyTransition.toIndex !== null;
-
-  useEffect(() => {
-    if (!isPrintMode || isConfigLoading) return;
-
-    const printWhenReady = async () => {
-      await document.fonts.ready;
-      await new Promise((r) => { if (document.readyState === "complete") r(); else window.addEventListener("load", r, { once: true }); });
-      await new Promise((r) => setTimeout(r, 500));
-      document.body.style.overflow = "";
-      const mapContainer = document.querySelector(".maplibregl-map");
-      if (mapContainer) {
-        await new Promise((r) => window.requestAnimationFrame(r));
-      }
-      window.onafterprint = () => window.close();
-      window.print();
-    };
-    printWhenReady();
-  }, [isPrintMode, isConfigLoading]);
 
   const [countdown, setCountdown] = useState(null);
 

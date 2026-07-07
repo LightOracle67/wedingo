@@ -35,8 +35,8 @@ const ShareTab = memo(function ShareTab({ inviteToken, config, formattedDate, ad
   }, [inviteUrl, addToast]);
 
   const printPdf = useCallback(() => {
-    window.open(`${baseUrl}?imprimir`, "_blank");
-  }, [baseUrl]);
+    window.open(`${window.location.origin}/${inviteToken}/print`, "_blank");
+  }, [inviteToken]);
 
   const btnClass = "setup-button setup-button--compact";
   const btnGhostClass = "setup-button setup-button--ghost setup-button--compact";

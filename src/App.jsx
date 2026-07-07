@@ -12,6 +12,7 @@ const SetupPage = lazy(() => import("./pages/SetupPage"));
 const AdminPage = lazy(() => import("./pages/AdminPage"));
 const SuperAdminLogin = lazy(() => import("./pages/SuperAdminLogin"));
 const SuperAdminPanel = lazy(() => import("./pages/SuperAdminPanel"));
+const PrintPage = lazy(() => import("./pages/PrintPage"));
 
 function AppShell() {
   const { config, formData, isAdminTokenLoggedIn, tokenLoginUsername, inviteToken } = useApp();
@@ -45,7 +46,7 @@ function AppShell() {
         Saltar al contenido principal
       </a>
 
-      {isAdminTokenLoggedIn && inviteToken && !location.pathname.endsWith("/setup") ? (
+      {isAdminTokenLoggedIn && inviteToken && !location.pathname.endsWith("/setup") && !location.pathname.endsWith("/print") ? (
         <nav className="admin-bar" role="navigation" aria-label="Barra de administración">
           <div className="admin-bar__inner">
             <span className="admin-bar__title">{tokenLoginUsername || config.adminUsername || "Administración"}</span>
@@ -65,6 +66,7 @@ function AppShell() {
           <Route path="/:inviteToken/setup" element={<ErrorBoundary><SetupPage /></ErrorBoundary>} />
           <Route path="/:inviteToken/admin" element={<ErrorBoundary><AdminPage /></ErrorBoundary>} />
           <Route path={SUPERADMIN_ROUTE} element={<ErrorBoundary><SuperAdminLogin /></ErrorBoundary>} />
+          <Route path="/:inviteToken/print" element={<PrintPage />} />
           {SUPERADMIN_DASHBOARD && (
             <Route path={SUPERADMIN_DASHBOARD} element={<ErrorBoundary><SuperAdminPanel /></ErrorBoundary>} />
           )}
