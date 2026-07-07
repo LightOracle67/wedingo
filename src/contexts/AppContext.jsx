@@ -425,6 +425,53 @@ export function AppProvider({ children }) {
       return;
     }
 
+    if (sanitized.bankInfo && !/^[A-Z]{2}\d{2}[ ]?\d{4}[ ]?\d{4}[ ]?\d{4}[ ]?\d{4}[ ]?\d{0,4}$/.test(sanitized.bankInfo.toUpperCase())) {
+      setSaveError("El formato del IBAN no es válido.");
+      return;
+    }
+
+    if (sanitized.musicUrl && !/^https?:\/\/.+\..+/.test(sanitized.musicUrl)) {
+      setSaveError("El enlace de música debe ser una URL válida (https://...).");
+      return;
+    }
+
+    if (sanitized.galleryImages) {
+      try { JSON.parse(sanitized.galleryImages); } catch {
+        setSaveError("El formato de las imágenes de galería no es válido.");
+        return;
+      }
+    }
+
+    if (sanitized.sectionOrder) {
+      const expected = STORY_SECTION_ORDER.length;
+      const actual = orderArray.length;
+      if (actual !== expected) {
+        setSaveError(`El orden de secciones tiene ${actual} elementos, se esperaban ${expected}.`);
+        return;
+      }
+    }
+
+    if (sanitized.inviteMessage && sanitized.inviteMessage.length > 500) {
+      setSaveError("El mensaje de invitación no puede superar los 500 caracteres.");
+      return;
+    }
+    if (sanitized.weddingSchedule && sanitized.weddingSchedule.length > 2000) {
+      setSaveError("El horario no puede superar los 2000 caracteres.");
+      return;
+    }
+    if (sanitized.storyText && sanitized.storyText.length > 2000) {
+      setSaveError("La historia no puede superar los 2000 caracteres.");
+      return;
+    }
+    if (sanitized.giftsInfo && sanitized.giftsInfo.length > 2000) {
+      setSaveError("La información de regalos no puede superar los 2000 caracteres.");
+      return;
+    }
+    if (sanitized.transportInfo && sanitized.transportInfo.length > 2000) {
+      setSaveError("La información de transporte no puede superar los 2000 caracteres.");
+      return;
+    }
+
     let backgroundToSave = sanitized.backgroundImage;
     let storagePathToSave = sanitized.backgroundImageStorage;
 

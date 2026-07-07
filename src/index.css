@@ -1458,8 +1458,8 @@ body::after {
 }
 
 .story-map__canvas {
-  height: clamp(12rem, 30vh, 20rem);
-  min-height: clamp(12rem, 30vh, 20rem);
+  height: clamp(10rem, 25vh, 16rem);
+  min-height: clamp(10rem, 25vh, 16rem);
   border-radius: 1.2rem;
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--invite-shell-border) 70%, transparent);

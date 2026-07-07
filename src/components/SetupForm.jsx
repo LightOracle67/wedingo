@@ -276,67 +276,98 @@ export default function SetupForm({ prefix = "" }) {
         <label className="setup-label" htmlFor={id("weddingPlace")}>
           Lugar de la boda
         </label>
-        <input
-          id={id("weddingPlace")}
-          className="setup-input"
-          value={formData.weddingPlace}
-          onChange={(e) => {
-            updateFormField("weddingPlace", e.target.value.slice(0, 120));
-            if (e.target.value.slice(0, 120)) {
+        <div style={{ position: "relative" }}>
+          <input
+            id={id("weddingPlace")}
+            className="setup-input"
+            value={formData.weddingPlace}
+            onChange={(e) => {
+              const val = e.target.value.slice(0, 120);
+              updateFormField("weddingPlace", val);
               updateFormField("weddingLatitude", "");
               updateFormField("weddingLongitude", "");
-            }
-          }}
-          placeholder="Nombre o dirección del lugar de la celebración"
-          autoComplete="off"
-          disabled={Boolean(formData.weddingLatitude || formData.weddingLongitude)}
-        />
+              if (val.length >= 3) {
+                import("../lib/geo-utils").then(({ searchLocations }) => {
+                  searchLocations(val).then(results => {
+                    const el = document.getElementById("weddingPlaceResults");
+                    if (el) {
+                      el.innerHTML = results.map(r =>
+                        `<button type="button" style="display:block;width:100%;text-align:left;padding:0.5rem 0.6rem;border:none;border-bottom:1px solid color-mix(in srgb,var(--setup-border) 50%,transparent);background:transparent;color:var(--setup-title);cursor:pointer;font-size:0.85rem;font-family:inherit" data-lat="${r.latitude}" data-lon="${r.longitude}" data-label="${r.label.replace(/"/g,'&quot;')}">${r.label}</button>`
+                      ).join("");
+                      el.querySelectorAll("button").forEach(btn => {
+                        btn.onclick = () => {
+                          updateFormField("weddingPlace", btn.dataset.label.slice(0, 120));
+                          updateFormField("weddingLatitude", btn.dataset.lat);
+                          updateFormField("weddingLongitude", btn.dataset.lon);
+                          el.innerHTML = "";
+                        };
+                      });
+                    }
+                  });
+                });
+              } else {
+                const el = document.getElementById("weddingPlaceResults");
+                if (el) el.innerHTML = "";
+              }
+            }}
+            onBlur={() => setTimeout(() => {
+              const el = document.getElementById("weddingPlaceResults");
+              if (el) el.innerHTML = "";
+            }, 200)}
+            placeholder="Escribe el nombre del lugar para buscar..."
+            autoComplete="off"
+            disabled={Boolean(formData.weddingLatitude || formData.weddingLongitude)}
+          />
+          <div id="weddingPlaceResults" style={{
+            position: "absolute", top: "100%", left: 0, right: 0, zIndex: 10,
+            background: "color-mix(in srgb, var(--setup-grad-start) 96%, transparent)",
+            border: "1px solid var(--setup-border)", borderRadius: "0 0 0.7rem 0.7rem",
+            maxHeight: "200px", overflowY: "auto",
+          }} />
+        </div>
         <p className="setup-help">
           {formData.weddingLatitude || formData.weddingLongitude
             ? "Desactivado porque has introducido coordenadas."
-            : "Dirección del lugar. Al escribirla se desactivan las coordenadas."}
+            : "Escribe el lugar y selecciona uno de los resultados."}
         </p>
 
-        <fieldset className="setup-name-group">
-          <legend className="setup-label">Coordenadas del mapa (opcional)</legend>
-          {formData.weddingPlace ? (
-            <p className="setup-help">Introduce un lugar para desactivar las coordenadas.</p>
-          ) : null}
-          <div className="setup-date-grid">
-            <div>
-              <label className="setup-label" htmlFor={id("weddingLatitude")}>Latitud</label>
-              <input
-                id={id("weddingLatitude")}
-                className="setup-input"
-                value={formData.weddingLatitude}
-                onChange={(e) => {
-                  handleCoordinateChange("weddingLatitude", e.target.value);
-                  if (e.target.value) updateFormField("weddingPlace", "");
-                }}
-                placeholder="Ejemplo: 40.4168"
-                inputMode="decimal"
-                autoComplete="off"
-                disabled={Boolean(formData.weddingPlace)}
-              />
+        {formData.weddingPlace ? null : (
+          <fieldset className="setup-name-group">
+            <legend className="setup-label">Coordenadas del mapa</legend>
+            <div className="setup-date-grid">
+              <div>
+                <label className="setup-label" htmlFor={id("weddingLatitude")}>Latitud</label>
+                <input
+                  id={id("weddingLatitude")}
+                  className="setup-input"
+                  value={formData.weddingLatitude}
+                  onChange={(e) => {
+                    handleCoordinateChange("weddingLatitude", e.target.value);
+                    if (e.target.value) updateFormField("weddingPlace", "");
+                  }}
+                  placeholder="Ejemplo: 40.4168"
+                  inputMode="decimal"
+                  autoComplete="off"
+                />
+              </div>
+              <div>
+                <label className="setup-label" htmlFor={id("weddingLongitude")}>Longitud</label>
+                <input
+                  id={id("weddingLongitude")}
+                  className="setup-input"
+                  value={formData.weddingLongitude}
+                  onChange={(e) => {
+                    handleCoordinateChange("weddingLongitude", e.target.value);
+                    if (e.target.value) updateFormField("weddingPlace", "");
+                  }}
+                  placeholder="Ejemplo: -3.7038"
+                  inputMode="decimal"
+                  autoComplete="off"
+                />
+              </div>
             </div>
-            <div>
-              <label className="setup-label" htmlFor={id("weddingLongitude")}>Longitud</label>
-              <input
-                id={id("weddingLongitude")}
-                className="setup-input"
-                value={formData.weddingLongitude}
-                onChange={(e) => {
-                  handleCoordinateChange("weddingLongitude", e.target.value);
-                  if (e.target.value) updateFormField("weddingPlace", "");
-                }}
-                placeholder="Ejemplo: -3.7038"
-                inputMode="decimal"
-                autoComplete="off"
-                disabled={Boolean(formData.weddingPlace)}
-              />
-            </div>
-          </div>
-        </fieldset>
+          </fieldset>
+        )}
 
         {(() => {
           if (!previewBackgrounds.length) return null;
