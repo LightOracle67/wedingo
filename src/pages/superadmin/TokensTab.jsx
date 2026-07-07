@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { collection, deleteDoc, doc, getDocs, query, orderBy, serverTimestamp, setDoc, where, writeBatch } from "firebase/firestore";
 import { db } from "../../lib/firebase";
 import { formatDate } from "../../lib/superadmin";
-import { generateSetupToken, normalizeTokenValue } from "../../lib/utils";
+import { generateSetupToken, normalizeTokenValue } from "../../lib/token-utils";
 
 export default function TokensTab() {
   const [tokens, setTokens] = useState([]);

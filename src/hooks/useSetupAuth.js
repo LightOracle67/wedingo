@@ -20,6 +20,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
   const [confirmTokenInput, setConfirmTokenInput] = useState("");
 
   const renewRef = useRef(null);
+  const sessionTypeRef = useRef("");
 
   const isAdminTokenLoggedIn = useMemo(() => isTokenVerified, [isTokenVerified]);
 
@@ -27,6 +28,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
     const session = getSession();
     if (session && (session.type === "setup" || session.type === "admin")) {
       setTokenLoginUsername(session.identifier);
+      sessionTypeRef.current = session.type;
       setSetupToken("");
       setSetupTokenInput("");
       setGeneratedToken("");
@@ -38,6 +40,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
             clearSession();
             setIsTokenVerified(false);
             setTokenLoginUsername("");
+            sessionTypeRef.current = "";
           }
         }).catch(() => {});
       }
@@ -55,8 +58,8 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
   }, [isTokenVerified]);
 
   useEffect(() => {
-    if (isTokenVerified && tokenLoginUsername) {
-      saveSession("setup", tokenLoginUsername);
+    if (isTokenVerified && tokenLoginUsername && sessionTypeRef.current) {
+      saveSession(sessionTypeRef.current, tokenLoginUsername);
     }
   }, [isTokenVerified, tokenLoginUsername]);
 
@@ -98,12 +101,14 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
       const tokenDocRef = doc(db, "setupTokens", enteredToken);
       const sessionRef = doc(db, "sessions", inviteToken);
       const inviteRef = invitationDocRef(inviteToken);
+      let tokenUsername = "";
 
       await runTransaction(db, async (transaction) => {
         const tokenDoc = await transaction.get(tokenDocRef);
         if (!tokenDoc.exists || tokenDoc.data().used === true) {
           throw new Error("Token ya usado");
         }
+        tokenUsername = (tokenDoc.data().username || "").trim().toLowerCase();
 
         const inviteSnap = await transaction.get(inviteRef);
         if (!inviteSnap.exists()) {
@@ -117,12 +122,14 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
         });
       });
 
-      setTokenLoginUsername(inviteToken);
+      const displayName = tokenUsername || inviteToken;
+      setTokenLoginUsername(displayName);
+      sessionTypeRef.current = tokenUsername ? "admin" : "setup";
       setSetupToken("");
       setSetupTokenInput("");
       setIsTokenVerified(true);
       setHasStoredConfig(true);
-      saveSession("setup", inviteToken);
+      saveSession(sessionTypeRef.current, displayName);
       setAuthMessageType("success");
       setAuthMessage("Código verificado correctamente.");
     } catch {
@@ -177,6 +184,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
       });
 
       setTokenLoginUsername(username);
+      sessionTypeRef.current = "admin";
       setSetupToken("");
       setSetupTokenInput("");
       setGeneratedToken("");
@@ -248,6 +256,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
     const token = inviteToken;
     setIsTokenVerified(false);
     setTokenLoginUsername("");
+    sessionTypeRef.current = "";
     setSetupToken("");
     setSetupTokenInput("");
     setGeneratedToken("");
