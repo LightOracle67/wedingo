@@ -37,10 +37,10 @@ const RsvpSection = memo(function RsvpSection({
             </div>
           </div>
 
-          {menuEnabled ? (
+          {rsvpForm.attendance === "yes" && menuEnabled ? (
             <fieldset style={{ border: "none", padding: 0, margin: 0, minInlineSize: 0 }}>
               <legend className="setup-label" style={{ marginBottom: "0.4rem" }}>Elección de menú *</legend>
-              <div style={{ opacity: rsvpForm.attendance === "no" ? 0.4 : 1 }}>
+              <div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))", gap: "0.4rem" }}>
                   {[
                     { value: "carne", label: "Carne" },
@@ -52,10 +52,9 @@ const RsvpSection = memo(function RsvpSection({
                       fontSize: "0.9rem", borderRadius: "0.6rem",
                       background: rsvpForm.mealChoice === opt.value ? "color-mix(in srgb, var(--setup-accent) 18%, transparent)" : "color-mix(in srgb, var(--setup-field-bg) 70%, transparent)",
                       border: rsvpForm.mealChoice === opt.value ? "1px solid color-mix(in srgb, var(--setup-accent) 40%, transparent)" : "1px solid transparent",
-                      color: rsvpForm.attendance === "no" ? "var(--setup-muted)" : "var(--setup-title)",
-                      transition: "background 200ms, border-color 200ms",
+                      color: "var(--setup-title)", transition: "background 200ms, border-color 200ms",
                     }}>
-                      <input type="checkbox" checked={rsvpForm.mealChoice === opt.value} onChange={() => updateRsvpField("mealChoice", rsvpForm.mealChoice === opt.value ? "" : opt.value)} disabled={rsvpForm.attendance === "no"} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+                      <input type="checkbox" checked={rsvpForm.mealChoice === opt.value} onChange={() => updateRsvpField("mealChoice", rsvpForm.mealChoice === opt.value ? "" : opt.value)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
                       {opt.label}
                     </label>
                   ))}
@@ -80,53 +79,55 @@ const RsvpSection = memo(function RsvpSection({
                   {DIETARY_OPTIONS.map((opt) => (
                     <label key={opt.value} className="setup-checkbox-label" style={{
                       display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem",
-                      color: rsvpForm.attendance === "no" ? "var(--setup-muted)" : "var(--setup-title)", opacity: rsvpForm.attendance === "no" ? 0.5 : 1,
+                      color: "var(--setup-title)",
                     }}>
-                      <input type="checkbox" checked={rsvpForm.dietarySelection.includes(opt.value)} onChange={() => handleDietaryToggle(opt.value)} disabled={rsvpForm.attendance === "no"} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+                      <input type="checkbox" checked={rsvpForm.dietarySelection.includes(opt.value)} onChange={() => handleDietaryToggle(opt.value)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
                       {opt.label}
                     </label>
                   ))}
                 </div>
-                <input className="setup-input" style={{ marginTop: "0.4rem" }} value={rsvpForm.dietaryOther} onChange={(e) => updateRsvpField("dietaryOther", e.target.value.slice(0, 120))} placeholder="Otra alergia (especificar)" disabled={rsvpForm.attendance === "no"} autoComplete="off" />
+                <input className="setup-input" style={{ marginTop: "0.4rem" }} value={rsvpForm.dietaryOther} onChange={(e) => updateRsvpField("dietaryOther", e.target.value.slice(0, 120))} placeholder="Otra alergia (especificar)" autoComplete="off" />
               </div>
             </fieldset>
-          ) : menuTexto?.trim() ? (
+          ) : rsvpForm.attendance === "yes" && menuTexto?.trim() ? (
             <div style={{ marginBottom: "0.5rem", padding: "0.6rem", borderRadius: "0.6rem", background: "color-mix(in srgb, var(--setup-field-bg) 60%, transparent)" }}>
               <p className="story-eyebrow" style={{ fontSize: "0.72rem", marginBottom: "0.2rem" }}>Menú</p>
               <p className="story-note whitespace-pre-line" style={{ fontSize: "0.85rem" }}>{menuTexto}</p>
             </div>
           ) : null}
-          {!menuEnabled ? (
+          {rsvpForm.attendance === "yes" && !menuEnabled ? (
             <fieldset style={{ border: "none", padding: 0, margin: 0, minInlineSize: 0 }}>
               <legend className="setup-label" style={{ marginBottom: "0.4rem" }}>Alergias e intolerancias</legend>
               <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))" }}>
                 {DIETARY_OPTIONS.map((opt) => (
                   <label key={opt.value} className="setup-checkbox-label" style={{
                     display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem",
-                    color: rsvpForm.attendance === "no" ? "var(--setup-muted)" : "var(--setup-title)", opacity: rsvpForm.attendance === "no" ? 0.5 : 1,
+                    color: "var(--setup-title)",
                   }}>
-                    <input type="checkbox" checked={rsvpForm.dietarySelection.includes(opt.value)} onChange={() => handleDietaryToggle(opt.value)} disabled={rsvpForm.attendance === "no"} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+                    <input type="checkbox" checked={rsvpForm.dietarySelection.includes(opt.value)} onChange={() => handleDietaryToggle(opt.value)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
                     {opt.label}
                   </label>
                 ))}
               </div>
-              <input className="setup-input" style={{ marginTop: "0.4rem" }} value={rsvpForm.dietaryOther} onChange={(e) => updateRsvpField("dietaryOther", e.target.value.slice(0, 120))} placeholder="Otra alergia (especificar)" disabled={rsvpForm.attendance === "no"} autoComplete="off" />
+              <input className="setup-input" style={{ marginTop: "0.4rem" }} value={rsvpForm.dietaryOther} onChange={(e) => updateRsvpField("dietaryOther", e.target.value.slice(0, 120))} placeholder="Otra alergia (especificar)" autoComplete="off" />
             </fieldset>
           ) : null}
 
-          {!menuEnabled ? null : (
+          {rsvpForm.attendance === "yes" && menuEnabled ? (
             <p className="setup-help" style={{ fontSize: "0.8rem" }}>Indica solo alergias e intolerancias alimentarias. No introduzcas información médica no solicitada.</p>
-          )}
+          ) : null}
 
           <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.85rem", cursor: "pointer" }}>
             <input type="checkbox" checked={rsvpForm.privacyConsent} onChange={(e) => updateRsvpField("privacyConsent", e.target.checked)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} required />
             <span>He sido informado y acepto la <button type="button" onClick={() => setLegalModal("privacy")} style={{ color: "var(--setup-accent)", textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", fontSize: "inherit", padding: 0 }}>Política de Privacidad</button></span>
           </label>
 
-          <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.85rem", cursor: "pointer" }}>
-            <input type="checkbox" checked={rsvpForm.healthConsent} onChange={(e) => updateRsvpField("healthConsent", e.target.checked)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
-            <span>Consiento el tratamiento de mis datos de salud (alergias e intolerancias) para adaptar el menú de la celebración</span>
-          </label>
+          {rsvpForm.attendance === "yes" ? (
+            <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.85rem", cursor: "pointer" }}>
+              <input type="checkbox" checked={rsvpForm.healthConsent} onChange={(e) => updateRsvpField("healthConsent", e.target.checked)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+              <span>Consiento el tratamiento de mis datos de salud (alergias e intolerancias) para adaptar el menú de la celebración</span>
+            </label>
+          ) : null}
 
           <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.85rem", cursor: "pointer" }}>
             <input type="checkbox" checked={rsvpForm.ageConsent} onChange={(e) => updateRsvpField("ageConsent", e.target.checked)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} required />
