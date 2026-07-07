@@ -3,6 +3,7 @@ import { getDocs, collection, deleteDoc, doc, writeBatch, query, where } from "f
 import { ref, deleteObject, listAll } from "firebase/storage";
 import { db, storage, RSVP_COLLECTION_REF, INVITATIONS_COLLECTION_REF } from "../../lib/firebase";
 import { calcGlobalStats, tokenUsageOverTime, rsvpOverTime } from "../../lib/superadmin-utils";
+import { logAudit } from "../../lib/audit";
 import { DonutChart, MiniBar, Legend } from "../../lib/chart-utils";
 import StatsCard from "../admin/StatsCard";
 
@@ -64,6 +65,7 @@ export default function DashboardTab() {
         count++;
       } catch {}
     }
+    await logAudit("cleanup_expired", `Eliminadas ${count} invitaciones expiradas`);
     setCleaning(false);
     await load();
   }, [expired, load]);
