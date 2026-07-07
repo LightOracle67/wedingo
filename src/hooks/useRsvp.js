@@ -137,10 +137,11 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
         submittedAt: serverTimestamp(),
         privacyConsent: true,
         privacyConsentAt: serverTimestamp(),
-        privacyPolicyVersion: "2026-07-07",
-        healthConsent: rsvpForm.healthConsent,
-        healthConsentAt: rsvpForm.healthConsent ? serverTimestamp() : null,
       };
+      if (rsvpForm.healthConsent) {
+        payload.healthConsent = true;
+        payload.healthConsentAt = serverTimestamp();
+      }
       const doc = await addDoc(RSVP_COLLECTION_REF, payload);
       setRsvpEntries((current) => [{ ...payload, id: doc.id, submittedAt: now }, ...current]);
       setRsvpMessage(
