@@ -101,6 +101,15 @@ export default function LandingPage() {
         } catch {}
       }
 
+      const sessionSnap = await getDoc(doc(db, "sessions", target));
+      if (sessionSnap.exists()) {
+        setIsLoading(false);
+        if (!window.confirm("Ya hay una sesión activa para esta invitación. ¿Quieres iniciar sesión de todos modos? La sesión anterior se cerrará.")) {
+          return;
+        }
+        setIsLoading(true);
+      }
+
       try {
         await runTransaction(db, async (transaction) => {
           const tokenDocRef = doc(db, "setupTokens", normalized);
