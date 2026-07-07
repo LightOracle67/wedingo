@@ -41,7 +41,7 @@ export default function SuperAdminPanel() {
 
   return (
     <div className="setup-layout">
-      <section className="setup-card allow-select" aria-label="Panel de administración">
+      <section className="setup-card setup-card--full allow-select" aria-label="Panel de administración">
         <header className="setup-header">
           <div>
             <p className="setup-eyebrow">Superadmin</p>
