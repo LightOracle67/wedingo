@@ -64,22 +64,35 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
   }, [isTokenVerified, tokenLoginUsername]);
 
   const refreshSetupToken = useCallback(async (oldToken) => {
-    if (oldToken) {
+    const storageKey = `wedin_setup_token_${inviteToken || ""}`;
+
+    if (!oldToken && inviteToken) {
       try {
-        const oldRef = doc(db, "setupTokens", oldToken);
-        await setDoc(oldRef, { used: true, usedAt: serverTimestamp() }, { merge: true });
+        const saved = sessionStorage.getItem(storageKey);
+        if (saved) {
+          const snap = await getDoc(doc(db, "setupTokens", saved));
+          if (snap.exists() && !snap.data().used) {
+            setSetupToken(saved);
+            setSetupTokenInput(saved);
+            return saved;
+          }
+        }
       } catch {}
     }
+
+    if (oldToken) {
+      try {
+        await setDoc(doc(db, "setupTokens", oldToken), { used: true, usedAt: serverTimestamp() }, { merge: true });
+      } catch {}
+    }
+
     const nextToken = generateSetupToken();
     const normalizedToken = normalizeTokenValue(nextToken);
     setSetupToken(normalizedToken);
     setSetupTokenInput(normalizedToken);
+    if (inviteToken) sessionStorage.setItem(storageKey, normalizedToken);
     try {
-      const payload = {
-        used: false,
-        autoGen: true,
-        createdAt: serverTimestamp(),
-      };
+      const payload = { used: false, autoGen: true, createdAt: serverTimestamp() };
       if (inviteToken) payload.inviteToken = inviteToken;
       await setDoc(doc(db, "setupTokens", normalizedToken), payload);
     } catch {}
