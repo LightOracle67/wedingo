@@ -66,6 +66,8 @@ export default function AdminPage() {
     setAttendanceFilter(filter);
   }, []);
 
+  const coupleName = `${config.firstName} & ${config.secondName}`;
+
   const exportPdf = useCallback(() => {
     const sanitize = (v) => String(v || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     const rows = rsvpEntries.map((e) =>
@@ -142,7 +144,6 @@ export default function AdminPage() {
     (sum, e) => sum + (e.attendance === "yes" ? e.companions : 0), 0,
   );
 
-  const coupleName = `${config.firstName} & ${config.secondName}`;
 
   return (
     <div className="setup-layout">
