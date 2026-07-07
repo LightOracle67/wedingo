@@ -71,18 +71,12 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
         const saved = sessionStorage.getItem(storageKey);
         if (saved) {
           const snap = await getDoc(doc(db, "setupTokens", saved));
-          if (snap.exists() && !snap.data().used) {
+          if (snap.exists()) {
             setSetupToken(saved);
             setSetupTokenInput(saved);
             return saved;
           }
         }
-      } catch {}
-    }
-
-    if (oldToken) {
-      try {
-        await setDoc(doc(db, "setupTokens", oldToken), { used: true, usedAt: serverTimestamp() }, { merge: true });
       } catch {}
     }
 
@@ -111,6 +105,15 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
 
     setIsTokenVerifying(true);
     try {
+      const sessionSnap = await getDoc(doc(db, "sessions", inviteToken));
+      if (sessionSnap.exists()) {
+        setIsTokenVerifying(false);
+        if (!window.confirm("Ya hay una sesión activa para esta invitación. ¿Quieres iniciar sesión de todos modos? La sesión anterior se cerrará.")) {
+          return;
+        }
+        setIsTokenVerifying(true);
+      }
+
       const tokenDocRef = doc(db, "setupTokens", enteredToken);
       const sessionRef = doc(db, "sessions", inviteToken);
       const inviteRef = invitationDocRef(inviteToken);
@@ -118,8 +121,8 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
 
       await runTransaction(db, async (transaction) => {
         const tokenDoc = await transaction.get(tokenDocRef);
-        if (!tokenDoc.exists || tokenDoc.data().used === true) {
-          throw new Error("Token ya usado");
+        if (!tokenDoc.exists) {
+          throw new Error("Token no válido");
         }
         tokenUsername = (tokenDoc.data().username || "").trim().toLowerCase();
 
@@ -129,10 +132,6 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
         }
 
         transaction.set(sessionRef, { createdAt: serverTimestamp() });
-        transaction.update(tokenDocRef, {
-          used: true,
-          usedAt: serverTimestamp(),
-        });
       });
 
       const displayName = tokenUsername || inviteToken;
@@ -171,11 +170,20 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
 
     setIsTokenVerifying(true);
     try {
+      const sessionSnap = await getDoc(doc(db, "sessions", inviteToken));
+      if (sessionSnap.exists()) {
+        setIsTokenVerifying(false);
+        if (!window.confirm("Ya hay una sesión activa para esta invitación. ¿Quieres iniciar sesión de todos modos? La sesión anterior se cerrará.")) {
+          return;
+        }
+        setIsTokenVerifying(true);
+      }
+
       const tokenDocRef = doc(db, "setupTokens", enteredToken);
       await runTransaction(db, async (transaction) => {
         const tokenDoc = await transaction.get(tokenDocRef);
-        if (!tokenDoc.exists || tokenDoc.data().used === true) {
-          throw new Error("Código no válido o ya ha sido usado.");
+        if (!tokenDoc.exists) {
+          throw new Error("Código no válido.");
         }
         const tokenUsername = (tokenDoc.data().username || "").trim().toLowerCase();
         if (tokenUsername && tokenUsername !== username) {
@@ -188,12 +196,6 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
         }
 
         transaction.set(doc(db, "sessions", inviteToken), { createdAt: serverTimestamp() });
-
-        transaction.update(tokenDocRef, {
-          username,
-          used: true,
-          usedAt: serverTimestamp(),
-        });
       });
 
       setTokenLoginUsername(username);
@@ -208,7 +210,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
       setAuthMessage("Has entrado correctamente.");
     } catch (err) {
       const message = err?.message;
-      if (message === "Código no válido o ya ha sido usado." || message === "El código no corresponde a este usuario.") {
+      if (message === "Código no válido." || message === "El código no corresponde a este usuario.") {
         setAuthMessage(message);
       } else {
         setAuthMessage("No se pudo verificar el código. Inténtalo de nuevo.");
