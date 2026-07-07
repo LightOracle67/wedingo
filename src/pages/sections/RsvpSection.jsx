@@ -4,7 +4,7 @@ import { useApp } from "../../contexts/AppContext";
 const RsvpSection = memo(function RsvpSection({
   style, className,
   rsvpForm, rsvpEntries, rsvpMessage, isRsvpSubmitting, hasSubmitted,
-  updateRsvpField, handleRsvpSubmit, handleDietaryToggle, DIETARY_OPTIONS, menuOptions,
+  updateRsvpField, handleRsvpSubmit, handleDietaryToggle, DIETARY_OPTIONS, menuOptions, menuEnabled,
 }) {
   const { setLegalModal } = useApp();
   const [useGroupMode, setUseGroupMode] = useState(false);
@@ -107,37 +107,61 @@ const RsvpSection = memo(function RsvpSection({
             </div>
           ) : null}
 
-          <fieldset style={{ border: "none", padding: 0, margin: 0, minInlineSize: 0 }}>
-            <legend className="setup-label" style={{ marginBottom: "0.4rem" }}>Preferencias alimentarias</legend>
-            <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))" }}>
-              {DIETARY_OPTIONS.map((opt) => (
-                <label key={opt.value} className="setup-checkbox-label" style={{
-                  display: "flex", alignItems: "center", gap: "0.4rem",
-                  padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem",
-                  color: rsvpForm.attendance === "no" ? "var(--setup-muted)" : "var(--setup-title)",
-                  opacity: rsvpForm.attendance === "no" ? 0.5 : 1,
-                }}>
-                  <input
-                    type="checkbox"
-                    checked={rsvpForm.dietarySelection.includes(opt.value)}
-                    onChange={() => handleDietaryToggle(opt.value)}
-                    disabled={rsvpForm.attendance === "no"}
-                    style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }}
-                  />
-                  {opt.label}
-                </label>
-              ))}
-            </div>
-            <input
-              className="setup-input"
-              style={{ marginTop: "0.4rem" }}
-              value={rsvpForm.dietaryOther}
-              onChange={(e) => updateRsvpField("dietaryOther", e.target.value.slice(0, 120))}
-              placeholder="Otra (especificar)"
-              disabled={rsvpForm.attendance === "no"}
-              autoComplete="off"
-            />
-          </fieldset>
+          {menuEnabled ? (
+            <fieldset style={{ border: "none", padding: 0, margin: 0, minInlineSize: 0 }}>
+              <legend className="setup-label" style={{ marginBottom: "0.4rem" }}>Elección de menú</legend>
+              <div style={{ opacity: rsvpForm.attendance === "no" ? 0.4 : 1 }}>
+                <select className="setup-input" value={rsvpForm.mealChoice} onChange={(e) => updateRsvpField("mealChoice", e.target.value)} disabled={rsvpForm.attendance === "no"} required={rsvpForm.attendance === "yes"} style={{ marginBottom: "0.4rem" }}>
+                  <option value="">Selecciona tu menú</option>
+                  <option value="Carne">Carne</option>
+                  <option value="Pescado">Pescado</option>
+                  <option value="Vegano">Vegano</option>
+                </select>
+                <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+                  <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", cursor: "pointer", fontSize: "0.9rem", color: rsvpForm.attendance === "no" ? "var(--setup-muted)" : "var(--setup-title)" }}>
+                    <input type="checkbox" checked={rsvpForm.noGluten} onChange={(e) => updateRsvpField("noGluten", e.target.checked)} disabled={rsvpForm.attendance === "no"} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+                    Sin gluten
+                  </label>
+                  <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", cursor: "pointer", fontSize: "0.9rem", color: rsvpForm.attendance === "no" ? "var(--setup-muted)" : "var(--setup-title)" }}>
+                    <input type="checkbox" checked={rsvpForm.noLactosa} onChange={(e) => updateRsvpField("noLactosa", e.target.checked)} disabled={rsvpForm.attendance === "no"} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+                    Sin lactosa
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          ) : (
+            <fieldset style={{ border: "none", padding: 0, margin: 0, minInlineSize: 0 }}>
+              <legend className="setup-label" style={{ marginBottom: "0.4rem" }}>Preferencias alimentarias</legend>
+              <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))" }}>
+                {DIETARY_OPTIONS.map((opt) => (
+                  <label key={opt.value} className="setup-checkbox-label" style={{
+                    display: "flex", alignItems: "center", gap: "0.4rem",
+                    padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem",
+                    color: rsvpForm.attendance === "no" ? "var(--setup-muted)" : "var(--setup-title)",
+                    opacity: rsvpForm.attendance === "no" ? 0.5 : 1,
+                  }}>
+                    <input
+                      type="checkbox"
+                      checked={rsvpForm.dietarySelection.includes(opt.value)}
+                      onChange={() => handleDietaryToggle(opt.value)}
+                      disabled={rsvpForm.attendance === "no"}
+                      style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }}
+                    />
+                    {opt.label}
+                  </label>
+                ))}
+              </div>
+              <input
+                className="setup-input"
+                style={{ marginTop: "0.4rem" }}
+                value={rsvpForm.dietaryOther}
+                onChange={(e) => updateRsvpField("dietaryOther", e.target.value.slice(0, 120))}
+                placeholder="Otra (especificar)"
+                disabled={rsvpForm.attendance === "no"}
+                autoComplete="off"
+              />
+            </fieldset>
+          )}
 
           <div style={{ opacity: rsvpForm.attendance === "no" ? 0.4 : 1 }}>
             <label className="setup-label" htmlFor="rsvpNote">Mensaje opcional</label>

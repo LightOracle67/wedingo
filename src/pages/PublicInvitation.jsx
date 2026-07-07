@@ -446,10 +446,9 @@ export default function PublicInvitation() {
       updateRsvpField,
       handleRsvpSubmit,
       handleDietaryToggle,
-      DIETARY_OPTIONS: config.menuEnabled === "true"
-        ? DIETARY_OPTIONS.filter((o) => o.value !== "sin lactosa")
-        : DIETARY_OPTIONS,
+      DIETARY_OPTIONS,
       menuOptions: config.menuOptions,
+      menuEnabled: config.menuEnabled === "true",
     },
   }), [
     config.firstName, config.secondName, config.inviteMessage,
