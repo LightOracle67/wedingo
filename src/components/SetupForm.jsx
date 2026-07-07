@@ -280,16 +280,28 @@ export default function SetupForm({ prefix = "" }) {
           id={id("weddingPlace")}
           className="setup-input"
           value={formData.weddingPlace}
-          onChange={(e) => updateFormField("weddingPlace", e.target.value.slice(0, 120))}
+          onChange={(e) => {
+            updateFormField("weddingPlace", e.target.value.slice(0, 120));
+            if (e.target.value.slice(0, 120)) {
+              updateFormField("weddingLatitude", "");
+              updateFormField("weddingLongitude", "");
+            }
+          }}
           placeholder="Nombre o dirección del lugar de la celebración"
           autoComplete="off"
+          disabled={Boolean(formData.weddingLatitude || formData.weddingLongitude)}
         />
         <p className="setup-help">
-          Dirección del lugar. Si quieres más precisión, añade coordenadas.
+          {formData.weddingLatitude || formData.weddingLongitude
+            ? "Desactivado porque has introducido coordenadas."
+            : "Dirección del lugar. Al escribirla se desactivan las coordenadas."}
         </p>
 
         <fieldset className="setup-name-group">
           <legend className="setup-label">Coordenadas del mapa (opcional)</legend>
+          {formData.weddingPlace ? (
+            <p className="setup-help">Introduce un lugar para desactivar las coordenadas.</p>
+          ) : null}
           <div className="setup-date-grid">
             <div>
               <label className="setup-label" htmlFor={id("weddingLatitude")}>Latitud</label>
@@ -297,10 +309,14 @@ export default function SetupForm({ prefix = "" }) {
                 id={id("weddingLatitude")}
                 className="setup-input"
                 value={formData.weddingLatitude}
-                onChange={(e) => handleCoordinateChange("weddingLatitude", e.target.value)}
+                onChange={(e) => {
+                  handleCoordinateChange("weddingLatitude", e.target.value);
+                  if (e.target.value) updateFormField("weddingPlace", "");
+                }}
                 placeholder="Ejemplo: 40.4168"
                 inputMode="decimal"
                 autoComplete="off"
+                disabled={Boolean(formData.weddingPlace)}
               />
             </div>
             <div>
@@ -309,10 +325,14 @@ export default function SetupForm({ prefix = "" }) {
                 id={id("weddingLongitude")}
                 className="setup-input"
                 value={formData.weddingLongitude}
-                onChange={(e) => handleCoordinateChange("weddingLongitude", e.target.value)}
+                onChange={(e) => {
+                  handleCoordinateChange("weddingLongitude", e.target.value);
+                  if (e.target.value) updateFormField("weddingPlace", "");
+                }}
                 placeholder="Ejemplo: -3.7038"
                 inputMode="decimal"
                 autoComplete="off"
+                disabled={Boolean(formData.weddingPlace)}
               />
             </div>
           </div>
