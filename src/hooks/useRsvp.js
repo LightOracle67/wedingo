@@ -12,13 +12,16 @@ const DIETARY_OPTIONS = [
   { value: "sin cerdo", label: "Sin cerdo" },
 ];
 
-export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType) {
+export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuEnabled) {
   const [rsvpEntries, setRsvpEntries] = useState([]);
   const [rsvpForm, setRsvpForm] = useState({
     guestName: "",
     guestList: "",
     attendance: "yes",
     companions: "0",
+    mealChoice: "",
+    noGluten: false,
+    noLactosa: false,
     dietarySelection: [],
     dietaryOther: "",
     note: "",
@@ -117,7 +120,13 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType) {
     const companionsParam = !numNames && rsvpForm.attendance === "yes" ? rsvpForm.companions : "0";
     const companions = Number.parseInt(companionsParam, 10);
     const companionsCount = Number.isNaN(companions) ? 0 : Math.max(0, Math.min(10, companions));
-    const dietaryInfo = [rsvpForm.dietarySelection, rsvpForm.dietaryOther].flat().filter(Boolean).join(", ");
+    const extras = [];
+    if (rsvpForm.noGluten) extras.push("Sin gluten");
+    if (rsvpForm.noLactosa) extras.push("Sin lactosa");
+    const dietaryParts = rsvpForm.attendance === "yes" && menuEnabled
+      ? [`Menú: ${rsvpForm.mealChoice}`, ...extras]
+      : [rsvpForm.dietaryOther];
+    const dietaryInfo = dietaryParts.filter(Boolean).join(" | ");
 
     setIsRsvpSubmitting(true);
     const now = new Date().toISOString();

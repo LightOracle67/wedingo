@@ -78,7 +78,7 @@ export function AppProvider({ children }) {
     rsvpEntries, rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted,
     updateRsvpField, handleRsvpSubmit, handleClearRsvpEntries,
     handleDietaryToggle, dietaryInfoStr, DIETARY_OPTIONS,
-  } = useRsvp(inviteToken, setAdminMessage, setAdminMessageType);
+  } = useRsvp(inviteToken, setAdminMessage, setAdminMessageType, config.menuEnabled === "true");
 
   const { formattedDate, formattedTime, calendarLink } = useCalendar(config);
 
