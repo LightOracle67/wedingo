@@ -35,9 +35,9 @@ html {
   --invite-shell-glow: rgba(255, 227, 140, 0.2);
   --invite-core-border: rgba(255, 238, 194, 0.58);
   --invite-core-glow: rgba(255, 212, 115, 0.22);
-  --invite-title-color: #f0e2c8;
-  --invite-copy-color: #e0d0b8;
-  --invite-text-shadow: rgba(98, 69, 14, 0.55);
+  --invite-title-color: #dcc8a8;
+  --invite-copy-color: #c8b898;
+  --invite-text-shadow: rgba(98, 69, 14, 0.6);
   --invite-rings-filter: saturate(1.06) sepia(0.08);
   --wedding-decoration-left-transform: scale(-1, -1);
   --wedding-decoration-right-transform: none;
@@ -76,9 +76,9 @@ html {
   --invite-shell-glow: rgba(152, 228, 197, 0.24);
   --invite-core-border: rgba(187, 230, 208, 0.7);
   --invite-core-glow: rgba(117, 210, 175, 0.25);
-  --invite-title-color: #c8e8d8;
-  --invite-copy-color: #b8d8c8;
-  --invite-text-shadow: rgba(12, 63, 45, 0.55);
+  --invite-title-color: #b0d8c0;
+  --invite-copy-color: #a0c8b0;
+  --invite-text-shadow: rgba(12, 63, 45, 0.6);
   --invite-rings-filter: hue-rotate(118deg) saturate(0.86) brightness(1.07);
   --wedding-decoration-left-transform: scale(-1, -1) scale(1.04);
   --wedding-decoration-right-transform: scale(1.02);
@@ -2701,9 +2701,10 @@ a:focus-visible {
 
 .invite-copy {
   color: var(--invite-copy-color);
+  -webkit-text-stroke: 0.3px rgba(0, 0, 0, 0.35);
   text-shadow:
-    0 0 18px color-mix(in srgb, var(--invite-text-shadow) 72%, transparent),
-    0 2px 4px rgba(0, 0, 0, 0.55);
+    0 0 20px color-mix(in srgb, var(--invite-text-shadow) 80%, transparent),
+    0 2px 6px rgba(0, 0, 0, 0.6);
 }
 
 .invite-rings {
