@@ -1,40 +1,92 @@
-import { useEffect, useState } from "react";
-import { getDocs, collection } from "firebase/firestore";
-import { db, RSVP_COLLECTION_REF, INVITATIONS_COLLECTION_REF } from "../../lib/firebase";
+import { useCallback, useEffect, useState } from "react";
+import { getDocs, collection, deleteDoc, doc, writeBatch, query, where } from "firebase/firestore";
+import { ref, deleteObject, listAll } from "firebase/storage";
+import { db, storage, RSVP_COLLECTION_REF, INVITATIONS_COLLECTION_REF } from "../../lib/firebase";
 import { calcGlobalStats, tokenUsageOverTime, rsvpOverTime } from "../../lib/superadmin-utils";
 import { DonutChart, MiniBar, Legend } from "../../lib/chart-utils";
 import StatsCard from "../admin/StatsCard";
 
 export default function DashboardTab() {
   const [stats, setStats] = useState(null);
+  const [invitations, setInvitations] = useState([]);
   const [tokenTimeline, setTokenTimeline] = useState([]);
   const [rsvpTimeline, setRsvpTimeline] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [cleaning, setCleaning] = useState(false);
 
-  useEffect(() => {
-    const load = async () => {
-      try {
-        const [rsvpSnap, invSnap, tokSnap] = await Promise.all([
-          getDocs(RSVP_COLLECTION_REF),
-          getDocs(INVITATIONS_COLLECTION_REF),
-          getDocs(collection(db, "setupTokens")),
-        ]);
-        const rsvps = rsvpSnap.docs.map((d) => ({ id: d.id, ...d.data() }));
-        const invitations = invSnap.docs.map((d) => ({ id: d.id, ...d.data() }));
-        const tokens = tokSnap.docs.map((d) => ({ id: d.id, ...d.data() }));
-        setStats(calcGlobalStats(invitations, rsvps, tokens));
-        setTokenTimeline(tokenUsageOverTime(tokens));
-        setRsvpTimeline(rsvpOverTime(rsvps));
-      } catch { /* ignore */ } finally { setLoading(false); }
-    };
-    load();
+  const load = useCallback(async () => {
+    try {
+      const [rsvpSnap, invSnap, tokSnap] = await Promise.all([
+        getDocs(RSVP_COLLECTION_REF),
+        getDocs(INVITATIONS_COLLECTION_REF),
+        getDocs(collection(db, "setupTokens")),
+      ]);
+      const rsvps = rsvpSnap.docs.map((d) => ({ id: d.id, ...d.data() }));
+      const invs = invSnap.docs.map((d) => ({ id: d.id, ...d.data() }));
+      const tokens = tokSnap.docs.map((d) => ({ id: d.id, ...d.data() }));
+      setInvitations(invs);
+      setStats(calcGlobalStats(invs, rsvps, tokens));
+      setTokenTimeline(tokenUsageOverTime(tokens));
+      setRsvpTimeline(rsvpOverTime(rsvps));
+    } catch { /* ignore */ } finally { setLoading(false); }
   }, []);
+
+  useEffect(() => { load(); }, [load]);
+
+  const twelveMonthsAgo = Date.now() - 365 * 24 * 60 * 60 * 1000;
+
+  const expired = invitations.filter((inv) => {
+    if (!inv.weddingYear || !inv.weddingMonth) return false;
+    const d = new Date(Number(inv.weddingYear), 0, 1);
+    return d.getTime() > 0 && Date.now() - d.getTime() > twelveMonthsAgo;
+  });
+
+  const handleCleanup = useCallback(async () => {
+    if (!window.confirm(`¿Eliminar ${expired.length} invitaciones expiradas? Los datos de invitados asociados también se eliminarán.`)) return;
+    setCleaning(true);
+    let count = 0;
+    for (const inv of expired) {
+      try {
+        const batch = writeBatch(db);
+        const rsvpQ = query(RSVP_COLLECTION_REF, where("inviteToken", "==", inv.id));
+        const rsvpSnap = await getDocs(rsvpQ);
+        rsvpSnap.docs.forEach((d) => batch.delete(d.ref));
+        const tokQ = query(collection(db, "setupTokens"), where("inviteToken", "==", inv.id));
+        const tokSnap = await getDocs(tokQ);
+        tokSnap.docs.forEach((d) => batch.delete(d.ref));
+        batch.delete(doc(INVITATIONS_COLLECTION_REF, inv.id));
+        await batch.commit();
+        try {
+          const prefix = `invitations/${inv.id}/`;
+          const list = await listAll(ref(storage, prefix));
+          await Promise.allSettled(list.items.map((item) => deleteObject(item)));
+        } catch {}
+        count++;
+      } catch {}
+    }
+    setCleaning(false);
+    await load();
+  }, [expired, load]);
 
   if (loading) return <p className="setup-subtitle" style={{ textAlign: "center" }}>Cargando estadísticas...</p>;
   if (!stats) return <p className="setup-error">Error al cargar estadísticas.</p>;
 
   return (
     <div>
+      {expired.length > 0 ? (
+        <div className="setup-token-card" style={{ marginBottom: "1rem", padding: "0.7rem 1rem", borderColor: "#e06060" }}>
+          <p style={{ margin: 0, color: "var(--setup-title)", fontSize: "0.9rem" }}>
+            <strong>{expired.length}</strong> invitación{expired.length > 1 ? "es" : ""} con más de 12 meses desde la boda
+          </p>
+          <p className="setup-help" style={{ margin: "0.3rem 0" }}>
+            Según la política de privacidad, estos datos deberían haberse eliminado automáticamente.
+          </p>
+          <button className="setup-button" type="button" onClick={handleCleanup} disabled={cleaning} style={{ fontSize: "0.85rem" }}>
+            {cleaning ? "Limpiando..." : `Eliminar ${expired.length} invitación${expired.length > 1 ? "es" : ""}`}
+          </button>
+        </div>
+      ) : null}
+
       <div className="admin-stats-grid">
         <StatsCard value={stats.rsvpTotal} label="Respuestas totales" />
         <StatsCard value={stats.rsvpYes} label="Confirmaciones" />
