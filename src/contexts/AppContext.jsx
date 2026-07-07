@@ -1,13 +1,12 @@
 import { createContext, useContext, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getDoc, setDoc, increment, updateDoc, getDocs, writeBatch, doc } from "firebase/firestore";
-import { ref, deleteObject } from "firebase/storage";
-import { db, storage, invitationDocRef, rsvpByInviteRef } from "../lib/firebase";
+import { db, invitationDocRef, rsvpByInviteRef } from "../lib/firebase";
 import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES, defaultConfig, MONTH_OPTIONS, MONTH_VALUE_TO_NUMBER, STORY_SECTION_ORDER, THEME_VALUES } from "../lib/constants";
 import { normalizeConfig } from "../lib/normalize-config";
 import { decodeInviteConfig } from "../lib/invite-config-codec";
 import { compressImage } from "../lib/image-utils";
-import { uploadBackgroundImage, deleteBackgroundImage } from "../lib/storage-utils";
+import { uploadImage, saveImageField, loadDecryptedField, loadGallery, deleteGallery } from "../lib/image-store";
 import { clearSession } from "../lib/sessionVars";
 import { encrypt, decrypt } from "../lib/crypto-utils";
 import { useCalendar } from "../hooks/useCalendar";
@@ -186,6 +185,8 @@ export function AppProvider({ children }) {
         }
         const parsed = normalizeConfig(snapshot.data());
         if (parsed.bankInfo) parsed.bankInfo = await decrypt(parsed.bankInfo, inviteToken);
+        if (parsed.backgroundImage) parsed.backgroundImage = await loadDecryptedField(inviteToken, parsed.backgroundImage);
+        if (parsed.couplePhoto) parsed.couplePhoto = await loadDecryptedField(inviteToken, parsed.couplePhoto);
         const hydrated = { ...defaultConfig, ...parsed };
         setConfig(hydrated);
         setFormData(hydrated);
@@ -221,6 +222,8 @@ export function AppProvider({ children }) {
       }
       const parsed = normalizeConfig(snapshot.data());
       if (parsed.bankInfo) parsed.bankInfo = await decrypt(parsed.bankInfo, inviteToken);
+      if (parsed.backgroundImage) parsed.backgroundImage = await loadDecryptedField(inviteToken, parsed.backgroundImage);
+      if (parsed.couplePhoto) parsed.couplePhoto = await loadDecryptedField(inviteToken, parsed.couplePhoto);
       const hydrated = { ...defaultConfig, ...parsed };
       setConfig(hydrated);
       setFormData(hydrated);
@@ -241,25 +244,20 @@ export function AppProvider({ children }) {
   }, [hasStoredConfig, inviteToken, refreshSetupToken]);
 
   const handleClearBackground = useCallback(() => {
-    const storagePath = formData.backgroundImageStorage;
-    if (storagePath) {
-      deleteBackgroundImage(storagePath);
-    }
     applyBackgroundImage("", "", "");
-    setFormData(prev => ({ ...prev, backgroundImageStorage: "" }));
-  }, [applyBackgroundImage, formData.backgroundImageStorage]);
+    setFormData(prev => ({ ...prev, backgroundImage: "" }));
+  }, [applyBackgroundImage]);
 
-  const handleSelectPreviewBackground = useCallback(async (backgroundImage, backgroundImageLabel, backgroundImageSource = "openfreemap") => {
-    const prevStoragePath = formData.backgroundImageStorage;
+  const handleSelectPreviewBackground = useCallback(async (image, label, source = "openfreemap") => {
     try {
-      const { downloadUrl, storagePath } = await uploadBackgroundImage(inviteToken, backgroundImage);
-      applyBackgroundImage(downloadUrl, backgroundImageLabel, backgroundImageSource);
-      setFormData(prev => ({ ...prev, backgroundImageStorage: storagePath }));
-      if (prevStoragePath) deleteBackgroundImage(prevStoragePath);
+      const { encrypted } = await uploadImage(inviteToken, new File([image], "preview.jpg", { type: "image/jpeg" }));
+      await saveImageField(inviteToken, "backgroundImage", encrypted);
+      const decrypted = await loadDecryptedField(inviteToken, encrypted);
+      applyBackgroundImage(decrypted, label, source);
     } catch {
-      applyBackgroundImage(backgroundImage, backgroundImageLabel, backgroundImageSource);
+      applyBackgroundImage(image, label, source);
     }
-  }, [inviteToken, applyBackgroundImage, formData.backgroundImageStorage]);
+  }, [inviteToken, applyBackgroundImage]);
 
   const handleBackgroundUpload = useCallback(async (event) => {
     const file = event.target.files?.[0];
@@ -277,10 +275,9 @@ export function AppProvider({ children }) {
     setSaveError("");
     setSaveMessage("Subiendo imagen...");
     try {
-      const dataUrl = await compressImage(file);
-      const { downloadUrl, storagePath } = await uploadBackgroundImage(inviteToken, dataUrl);
-      applyBackgroundImage(downloadUrl, file.name, "upload");
-      setFormData(prev => ({ ...prev, backgroundImageStorage: storagePath }));
+      const { encrypted, dataUrl } = await uploadImage(inviteToken, file);
+      await saveImageField(inviteToken, "backgroundImage", encrypted);
+      applyBackgroundImage(dataUrl, file.name, "upload");
       setSaveMessage("");
     } catch {
       setSaveError("No se pudo procesar la imagen. Intenta con otra.");
@@ -461,18 +458,7 @@ export function AppProvider({ children }) {
       return;
     }
 
-    let backgroundToSave = sanitized.backgroundImage;
-    let storagePathToSave = sanitized.backgroundImageStorage;
-
-    if (backgroundToSave && backgroundToSave.startsWith("data:image/") && !storagePathToSave) {
-      try {
-        const result = await uploadBackgroundImage(inviteToken, backgroundToSave);
-        backgroundToSave = result.downloadUrl;
-        storagePathToSave = result.storagePath;
-      } catch {}
-    }
-
-    const payload = { ...defaultConfig, ...sanitized, backgroundImage: backgroundToSave, backgroundImageStorage: storagePathToSave };
+    const payload = { ...defaultConfig, ...sanitized };
     if (hiddenSet.has("details") && hasStoredConfig) {
       payload.weddingDay = config.weddingDay;
       payload.weddingMonth = config.weddingMonth;
@@ -507,11 +493,10 @@ export function AppProvider({ children }) {
       const snap = await getDocs(rsvpByInviteRef(inviteToken));
       const batch = writeBatch(db);
       snap.docs.forEach((d) => batch.delete(d.ref));
+      await deleteGallery(inviteToken);
       batch.delete(invitationDocRef(inviteToken));
       batch.delete(doc(db, "sessions", inviteToken));
       await batch.commit();
-      const paths = [formData.backgroundImageStorage, formData.couplePhotoStorage].filter(Boolean);
-      await Promise.allSettled(paths.map((p) => deleteObject(ref(storage, p)).catch(() => {})));
       localStorage.removeItem(`wedin_invite_cache_${inviteToken}`);
       clearSession();
       setIsTokenVerified(false);
@@ -520,7 +505,7 @@ export function AppProvider({ children }) {
     } catch {
       setSaveError("No se pudo eliminar la invitación. Inténtalo de nuevo.");
     }
-  }, [inviteToken, formData.backgroundImageStorage, formData.couplePhotoStorage, navigate]);
+  }, [inviteToken, navigate]);
 
   const value = useMemo(() => ({
     config, formData, hasStoredConfig,
