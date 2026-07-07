@@ -600,7 +600,7 @@ export default function SetupForm({ prefix = "" }) {
             <p className="setup-help" style={{ marginTop: "0.3rem" }}>Marca los menús que ofrecerás y describe cada uno.</p>
             {["carne", "pescado", "vegano", "postre"].map((tipo) => {
               const checked = formData.menuOptions?.includes(`[${tipo}]`);
-              const label = tipo === "vegano" ? "Menú vegano/vegetariano" : tipo === "postre" ? "Postre" : `Menú de ${tipo}`;
+              const label = tipo === "vegano" ? "Menú vegano/vegetariano" : tipo === "carne" ? "Menú de carne" : tipo === "pescado" ? "Menú de pescado" : "Postre";
               return (
                 <div key={tipo} style={{ marginBottom: "0.6rem" }}>
                   <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", cursor: "pointer", fontSize: "0.9rem", color: "var(--setup-title)" }}>
@@ -626,7 +626,7 @@ export default function SetupForm({ prefix = "" }) {
                         lines[idx] = `[${tipo}]${e.target.value}`;
                         updateFormField("menuOptions", lines.join("\n"));
                       }
-                    }} placeholder={`Describe el menú de ${tipo}: entrante, principal, postre...`} autoComplete="off" rows={3} style={{ marginTop: "0.2rem" }} />
+                    }}                     placeholder={tipo === "vegano" ? "Describe el menú vegano: entrante, principal, postre..." : tipo === "postre" ? "Describe el postre" : `Describe el menú de ${tipo}: entrante, principal, postre...`} autoComplete="off" rows={3} style={{ marginTop: "0.2rem" }} />
                   )}
                 </div>
               );
