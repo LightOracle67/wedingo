@@ -1,4 +1,4 @@
-import { memo, useMemo, useState } from "react";
+import { memo, useMemo } from "react";
 import { useApp } from "../../contexts/AppContext";
 
 const RsvpSection = memo(function RsvpSection({

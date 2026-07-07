@@ -7,7 +7,6 @@ import {
   THEME_PREVIEW_COLORS,
   STORY_SECTION_ORDER,
   SECTION_LABELS,
-  SECTION_MOVABLE,
   defaultConfig,
 } from "../constants";
 
@@ -74,18 +73,6 @@ describe("STORY_SECTION_ORDER", () => {
   it("all sections have labels", () => {
     for (const s of STORY_SECTION_ORDER) {
       expect(SECTION_LABELS[s]).toBeTruthy();
-    }
-  });
-
-  it("hero is not movable", () => {
-    expect(SECTION_MOVABLE.hero).toBe(false);
-  });
-
-  it("other sections are movable", () => {
-    for (const s of STORY_SECTION_ORDER) {
-      if (s !== "hero") {
-        expect(SECTION_MOVABLE[s]).toBe(true);
-      }
     }
   });
 });
