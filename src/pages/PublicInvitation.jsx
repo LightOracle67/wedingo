@@ -314,11 +314,8 @@ export default function PublicInvitation() {
 
     const timeoutId = window.setTimeout(async () => {
       try {
-        const [maplibreglModule] = await Promise.all([
-          import("maplibre-gl"),
-          import("maplibre-gl/dist/maplibre-gl.css"),
-        ]);
-        const maplibregl = maplibreglModule.default;
+        await import("leaflet/dist/leaflet.css");
+        const L = (await import("leaflet")).default;
         const geocodedLocation = await resolveLocationTarget({
           place,
           latitudeValue: config.weddingLatitude,
@@ -334,28 +331,27 @@ export default function PublicInvitation() {
 
         setLocationMapTarget(geocodedLocation);
 
-        mapInstance = new maplibregl.Map({
-          container,
-          style: "https://tiles.openfreemap.org/styles/liberty",
-          center: [geocodedLocation.longitude, geocodedLocation.latitude],
+        mapInstance = L.map(container, {
+          center: [geocodedLocation.latitude, geocodedLocation.longitude],
           zoom: 15,
-          bearing: -12,
-          pitch: 35,
-          interactive: false,
+          zoomControl: false,
           attributionControl: true,
+          scrollWheelZoom: false,
+          dragging: false,
         });
 
-        const markerElement = document.createElement("div");
-        markerElement.style.width = "18px";
-        markerElement.style.height = "18px";
-        markerElement.style.borderRadius = "999px";
-        markerElement.style.background = "#d8b24a";
-        markerElement.style.border = "3px solid rgba(255, 255, 255, 0.95)";
-        markerElement.style.boxShadow = "0 0 0 8px rgba(216, 178, 74, 0.18)";
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution: "&copy; OpenStreetMap contributors",
+        }).addTo(mapInstance);
 
-        new maplibregl.Marker({ element: markerElement, anchor: "center" })
-          .setLngLat([geocodedLocation.longitude, geocodedLocation.latitude])
-          .addTo(mapInstance);
+        const icon = L.divIcon({
+          className: "",
+          html: '<div style="width:18px;height:18px;border-radius:999px;background:#d8b24a;border:3px solid rgba(255,255,255,0.95);box-shadow:0 0 0 8px rgba(216,178,74,0.18)"></div>',
+          iconSize: [18, 18],
+          iconAnchor: [9, 9],
+        });
+
+        L.marker([geocodedLocation.latitude, geocodedLocation.longitude], { icon }).addTo(mapInstance);
 
         mapInstance.once("load", () => {
           if (!isCancelled) setLocationMapLoading(false);
