@@ -76,21 +76,28 @@ const RsvpSection = memo(function RsvpSection({
                 <option value="no">No podré asistir</option>
               </select>
             </div>
-            <div style={{ opacity: rsvpForm.attendance === "no" ? 0.4 : 1 }}>
-              <label className="setup-label" htmlFor="rsvpCompanions">Acompañantes (incluyéndote)</label>
-              <input
-                id="rsvpCompanions"
-                className="setup-input"
-                type="number"
-                min="0"
-                max="10"
-                value={rsvpForm.attendance === "no" ? "" : rsvpForm.companions}
-                onChange={(e) => updateRsvpField("companions", e.target.value)}
-                disabled={rsvpForm.attendance === "no"}
-                placeholder="0 = solo tú, 1 = tú + 1, etc."
-                tabIndex={rsvpForm.attendance === "no" ? -1 : 0}
-              />
-            </div>
+            {!useGroupMode ? (
+              <div style={{ opacity: rsvpForm.attendance === "no" ? 0.4 : 1 }}>
+                <label className="setup-label" htmlFor="rsvpCompanions">Acompañantes (incluyéndote)</label>
+                <input
+                  id="rsvpCompanions"
+                  className="setup-input"
+                  type="number"
+                  min="0"
+                  max="10"
+                  value={rsvpForm.attendance === "no" ? "" : rsvpForm.companions}
+                  onChange={(e) => updateRsvpField("companions", e.target.value)}
+                  disabled={rsvpForm.attendance === "no"}
+                  placeholder="0 = solo tú, 1 = tú + 1, etc."
+                  tabIndex={rsvpForm.attendance === "no" ? -1 : 0}
+                />
+              </div>
+            ) : (
+              <div style={{ opacity: rsvpForm.attendance === "no" ? 0.4 : 1 }}>
+                <label className="setup-label" style={{ color: "var(--setup-muted)", fontSize: "0.85rem" }}>Invitados</label>
+                <p className="setup-help" style={{ marginTop: "0.3rem" }}>Cada línea cuenta como un invitado</p>
+              </div>
+            )}
           </div>
 
           {menuOptions ? (

@@ -113,7 +113,8 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType) {
       guestNames.push(single);
     }
 
-    const companionsParam = rsvpForm.attendance === "yes" ? rsvpForm.companions : "0";
+    const numNames = rsvpForm.guestList.trim() ? guestNames.length : 0;
+    const companionsParam = !numNames && rsvpForm.attendance === "yes" ? rsvpForm.companions : "0";
     const companions = Number.parseInt(companionsParam, 10);
     const companionsCount = Number.isNaN(companions) ? 0 : Math.max(0, Math.min(10, companions));
     const dietaryInfo = [rsvpForm.dietarySelection, rsvpForm.dietaryOther].flat().filter(Boolean).join(", ");
