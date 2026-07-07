@@ -27,33 +27,53 @@ const MenuSection = memo(function MenuSection({ style, className, menuOptions, r
 
         {dishes.length > 0 ? (
           <>
-            {isStructured ? (
-              <>
-                <p className="story-copy mt-4">Selecciona el tipo de plato que prefieras.</p>
-                <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", marginTop: "0.75rem" }}>
-                  {dishes.map((d) => (
-                    <label key={d.type} className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.4rem 0", cursor: "pointer", fontSize: "0.95rem", color: "var(--setup-title)" }}>
-                      <input type="checkbox" checked={selected === d.type} onChange={() => setSelected(selected === d.type ? "" : d.type)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
-                      {d.type.charAt(0).toUpperCase() + d.type.slice(1)}
-                    </label>
-                  ))}
-                  <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.4rem 0", cursor: "pointer", fontSize: "0.95rem", color: "var(--setup-title)" }}>
-                    <input type="checkbox" checked={selected === "otro"} onChange={() => setSelected(selected === "otro" ? "" : "otro")} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
-                    Otro
-                  </label>
-                </div>
-                {selected === "otro" && (
-                  <input className="setup-input" value={rsvpForm?.mealOther || ""} onChange={(e) => updateRsvpField?.("mealOther", e.target.value.slice(0, 120))} placeholder="Especifica tu preferencia" autoComplete="off" style={{ marginTop: "0.3rem", maxWidth: "20rem" }} />
+                {isStructured ? (
+                  <>
+                    <p className="story-copy mt-4">Selecciona tu menú:</p>
+                    <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))", marginTop: "0.75rem" }}>
+                      {dishes.map((d) => {
+                        const lbl = d.type === "vegano" ? "Vegano/Vegetariano" : d.type.charAt(0).toUpperCase() + d.type.slice(1);
+                        return (
+                          <label key={d.type} className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.4rem 0", cursor: "pointer", fontSize: "0.95rem", color: "var(--setup-title)" }}>
+                            <input type="checkbox" checked={selected === d.type} onChange={() => setSelected(selected === d.type ? "" : d.type)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+                            {lbl}
+                          </label>
+                        );
+                      })}
+                      <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.4rem 0", cursor: "pointer", fontSize: "0.95rem", color: "var(--setup-title)" }}>
+                        <input type="checkbox" checked={selected === "otro"} onChange={() => setSelected(selected === "otro" ? "" : "otro")} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+                        Otro
+                      </label>
+                    </div>
+                    {selected === "otro" && (
+                      <input className="setup-input" value={rsvpForm?.mealOther || ""} onChange={(e) => updateRsvpField?.("mealOther", e.target.value.slice(0, 120))} placeholder="Especifica tu preferencia" autoComplete="off" style={{ marginTop: "0.3rem", maxWidth: "20rem" }} />
+                    )}
+                    <div className="story-divider" style={{ marginTop: "0.75rem" }} />
+                    {selected && selected !== "otro" ? (
+                      <div style={{ marginTop: "0.5rem", padding: "0.8rem", borderRadius: "0.8rem", background: "color-mix(in srgb, var(--setup-field-bg) 70%, transparent)", border: "1px solid color-mix(in srgb, var(--setup-accent) 25%, transparent)" }}>
+                        <p className="story-eyebrow" style={{ fontSize: "0.75rem", marginBottom: "0.3rem" }}>
+                          {selected === "vegano" ? "Menú vegano/vegetariano" : `Menú de ${selected}`}
+                        </p>
+                        <p className="story-note whitespace-pre-line" style={{ fontSize: "0.9rem" }}>{dishes.find(d => d.type === selected)?.dish}</p>
+                      </div>
+                    ) : null}
+                    {!selected ? (
+                      <div style={{ marginTop: "0.5rem" }}>
+                        {dishes.map((d, i) => {
+                          const lbl = d.type === "vegano" ? "Vegano/Vegetariano" : d.type.charAt(0).toUpperCase() + d.type.slice(1);
+                          return (
+                            <div key={i} style={{ marginBottom: "0.5rem", padding: "0.6rem 0.8rem", borderRadius: "0.7rem", background: "color-mix(in srgb, var(--setup-field-bg) 60%, transparent)" }}>
+                              <p className="story-eyebrow" style={{ fontSize: "0.75rem", marginBottom: "0.2rem" }}>Menú {lbl}</p>
+                              <p className="story-note whitespace-pre-line" style={{ fontSize: "0.85rem" }}>{d.dish}</p>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    ) : null}
+                  </>
+                ) : (
+                  <p className="story-copy mt-4 whitespace-pre-line">{menuOptions}</p>
                 )}
-                <div className="story-divider" style={{ marginTop: "0.75rem" }} />
-                <p className="story-note mt-2" style={{ fontSize: "0.9rem" }}>Platos disponibles:</p>
-                {dishes.map((d, i) => (
-                  <p key={i} className="story-note" style={{ fontSize: "0.9rem", padding: "0.15rem 0" }}>• {d.type.charAt(0).toUpperCase() + d.type.slice(1)}: {d.dish}</p>
-                ))}
-              </>
-            ) : (
-              <p className="story-copy mt-4 whitespace-pre-line">{menuOptions}</p>
-            )}
 
             {isStructured ? (
               <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center", marginTop: "0.75rem" }}>

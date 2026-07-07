@@ -597,11 +597,12 @@ export default function SetupForm({ prefix = "" }) {
         </label>
         {formData.menuEnabled === "true" ? (
           <>
-            <p className="setup-help" style={{ marginTop: "0.3rem" }}>Marca los tipos de plato que ofrecerás y escribe cada opción.</p>
+            <p className="setup-help" style={{ marginTop: "0.3rem" }}>Marca los menús que ofrecerás y describe cada uno.</p>
             {["carne", "pescado", "vegano"].map((tipo) => {
               const checked = formData.menuOptions?.includes(`[${tipo}]`);
+              const label = tipo === "vegano" ? "Menú vegano/vegetariano" : `Menú de ${tipo}`;
               return (
-                <div key={tipo} style={{ marginBottom: "0.4rem" }}>
+                <div key={tipo} style={{ marginBottom: "0.6rem" }}>
                   <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", cursor: "pointer", fontSize: "0.9rem", color: "var(--setup-title)" }}>
                     <input type="checkbox" checked={checked} onChange={(e) => {
                       const current = formData.menuOptions || "";
@@ -615,22 +616,22 @@ export default function SetupForm({ prefix = "" }) {
                       }
                       updateFormField("menuOptions", next);
                     }} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
-                    {tipo.charAt(0).toUpperCase() + tipo.slice(1)}
+                    {label}
                   </label>
                   {checked && (
-                    <input className="setup-input" value={((formData.menuOptions || "").split("\n").find(l => l.startsWith(`[${tipo}]`)) || "").replace(`[${tipo}]`, "")} onChange={(e) => {
+                    <textarea className="setup-textarea" value={((formData.menuOptions || "").split("\n").find(l => l.startsWith(`[${tipo}]`)) || "").replace(`[${tipo}]`, "")} onChange={(e) => {
                       const lines = (formData.menuOptions || "").split("\n");
                       const idx = lines.findIndex(l => l.startsWith(`[${tipo}]`));
                       if (idx !== -1) {
                         lines[idx] = `[${tipo}]${e.target.value}`;
                         updateFormField("menuOptions", lines.join("\n"));
                       }
-                    }} placeholder={`Plato de ${tipo}`} autoComplete="off" style={{ marginTop: "0.2rem" }} />
+                    }} placeholder={`Describe el menú de ${tipo}: entrante, principal, postre...`} autoComplete="off" rows={3} style={{ marginTop: "0.2rem" }} />
                   )}
                 </div>
               );
             })}
-            <p className="setup-help">Los invitados elegirán entre las opciones marcadas.</p>
+            <p className="setup-help">Los invitados elegirán entre los menús disponibles.</p>
           </>
         ) : (
           <>
