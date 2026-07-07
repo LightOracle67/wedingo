@@ -3,7 +3,7 @@ import { useApp } from "../contexts/AppContext";
 import { useToast } from "../contexts/ToastContext";
 import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES, MONTH_OPTIONS, THEME_GROUPS, THEME_OPTIONS, THEME_PREVIEW_COLORS } from "../lib/constants";
 import { compressImage } from "../lib/image-utils";
-import { uploadImage, saveImageField, addGalleryImage } from "../lib/image-store";
+import { uploadImage, addGalleryImage } from "../lib/image-store";
 import CollapsibleSection from "./CollapsibleSection";
 import SectionOrderEditor from "./SectionOrderEditor";
 
@@ -41,8 +41,7 @@ export default function SetupForm({ prefix = "" }) {
     if (!ALLOWED_UPLOAD_TYPES.has(file.type)) { addToast("error", "Formato no permitido. Usa JPG o PNG."); return; }
     if (file.size > MAX_UPLOAD_SIZE_BYTES) { addToast("error", "La imagen supera 20 MB."); return; }
     try {
-      const { encrypted, dataUrl } = await uploadImage(inviteToken, file);
-      await saveImageField(inviteToken, "couplePhoto", encrypted);
+      const { dataUrl } = await uploadImage(inviteToken, file);
       updateFormField("couplePhoto", dataUrl);
       addToast("success", "Foto subida correctamente.");
     } catch { addToast("error", "No se pudo subir la foto."); }

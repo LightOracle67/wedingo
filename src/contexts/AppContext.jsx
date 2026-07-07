@@ -6,7 +6,7 @@ import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES, defaultConfig, MONTH_OPTIO
 import { normalizeConfig } from "../lib/normalize-config";
 import { decodeInviteConfig } from "../lib/invite-config-codec";
 import { compressImage } from "../lib/image-utils";
-import { uploadImage, saveImageField, loadDecryptedField, loadGallery, deleteGallery } from "../lib/image-store";
+import { uploadImage, loadDecryptedField, deleteGallery } from "../lib/image-store";
 import { clearSession } from "../lib/sessionVars";
 import { encrypt, decrypt } from "../lib/crypto-utils";
 import { useCalendar } from "../hooks/useCalendar";
@@ -248,14 +248,16 @@ export function AppProvider({ children }) {
     setFormData(prev => ({ ...prev, backgroundImage: "" }));
   }, [applyBackgroundImage]);
 
-  const handleSelectPreviewBackground = useCallback(async (image, label, source = "openfreemap") => {
+  const handleSelectPreviewBackground = useCallback(async (imageDataUrl, label, source = "openfreemap") => {
     try {
-      const { encrypted } = await uploadImage(inviteToken, new File([image], "preview.jpg", { type: "image/jpeg" }));
-      await saveImageField(inviteToken, "backgroundImage", encrypted);
-      const decrypted = await loadDecryptedField(inviteToken, encrypted);
-      applyBackgroundImage(decrypted, label, source);
+      const response = await fetch(imageDataUrl);
+      const blob = await response.blob();
+      const file = new File([blob], "preview.jpg", { type: "image/jpeg" });
+      const { dataUrl } = await uploadImage(inviteToken, file);
+      setFormData(prev => ({ ...prev, backgroundImage: dataUrl }));
+      applyBackgroundImage(dataUrl, label, source);
     } catch {
-      applyBackgroundImage(image, label, source);
+      applyBackgroundImage(imageDataUrl, label, source);
     }
   }, [inviteToken, applyBackgroundImage]);
 
@@ -275,8 +277,8 @@ export function AppProvider({ children }) {
     setSaveError("");
     setSaveMessage("Subiendo imagen...");
     try {
-      const { encrypted, dataUrl } = await uploadImage(inviteToken, file);
-      await saveImageField(inviteToken, "backgroundImage", encrypted);
+      const { dataUrl } = await uploadImage(inviteToken, file);
+      setFormData(prev => ({ ...prev, backgroundImage: dataUrl }));
       applyBackgroundImage(dataUrl, file.name, "upload");
       setSaveMessage("");
     } catch {
@@ -469,10 +471,16 @@ export function AppProvider({ children }) {
 
     isSavingRef.current = true;
     try {
+      const bgOrig = payload.backgroundImage?.startsWith("data:") ? payload.backgroundImage : null;
+      const cpOrig = payload.couplePhoto?.startsWith("data:") ? payload.couplePhoto : null;
       if (payload.bankInfo) payload.bankInfo = await encrypt(payload.bankInfo, inviteToken);
+      if (bgOrig) payload.backgroundImage = await encrypt(bgOrig, inviteToken);
+      if (cpOrig) payload.couplePhoto = await encrypt(cpOrig, inviteToken);
       if (!hasStoredConfig) payload.privacyPolicyVersion = "2026-07-07";
       await setDoc(invitationDocRef(inviteToken), payload);
       if (payload.bankInfo) payload.bankInfo = await decrypt(payload.bankInfo, inviteToken);
+      if (bgOrig) payload.backgroundImage = bgOrig;
+      if (cpOrig) payload.couplePhoto = cpOrig;
       setConfig(payload);
       setFormData(payload);
       setHasStoredConfig(true);
