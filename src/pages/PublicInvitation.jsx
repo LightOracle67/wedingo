@@ -18,7 +18,6 @@ import StorySection from "./sections/StorySection";
 import GiftsSection from "./sections/GiftsSection";
 import AccommodationSection from "./sections/AccommodationSection";
 import GallerySection from "./sections/GallerySection";
-import MenuSection from "./sections/MenuSection";
 import RsvpSection from "./sections/RsvpSection";
 
 const SECTION_COMPONENTS = {
@@ -29,7 +28,6 @@ const SECTION_COMPONENTS = {
   gifts: GiftsSection,
   accommodation: AccommodationSection,
   gallery: GallerySection,
-  menu: MenuSection,
   rsvp: RsvpSection,
 };
 
@@ -439,14 +437,6 @@ export default function PublicInvitation() {
     gallery: {
       galleryImages: config.galleryImages,
     },
-    menu: {
-      menuCarne: config.menuCarne,
-      menuPescado: config.menuPescado,
-      menuVegano: config.menuVegano,
-      menuPostre: config.menuPostre,
-      menuEnabled: config.menuEnabled,
-      menuTexto: config.menuTexto,
-    },
     rsvp: {
       rsvpForm,
       rsvpEntries,
@@ -469,7 +459,7 @@ export default function PublicInvitation() {
     config.weddingPlace, config.weddingSchedule, config.weddingDressCode,
     config.kidsPolicy, config.storyText, config.giftsInfo, config.accommodationInfo,
     config.transportInfo, config.godparent1, config.godparent2, config.galleryImages,
-    config.couplePhoto, config.musicUrl, config.bankInfo, config.menuEnabled, config.menuTexto, config.menuCarne, config.menuPescado, config.menuVegano, config.menuPostre,
+    config.couplePhoto, config.musicUrl, config.bankInfo, config.menuEnabled,
     countdown, formattedDate, formattedTime,
     hasLocationData, locationDescription, calendarLink,
     locationMapContainerRef, locationMapLoading, locationMapError, locationMapTarget,

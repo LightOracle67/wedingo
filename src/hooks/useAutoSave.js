@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef } from "react";
 import { setDoc } from "firebase/firestore";
 import { invitationDocRef } from "../lib/firebase";
 import { normalizeConfig } from "../lib/utils";
+import { encrypt } from "../lib/crypto-utils";
 
 export function useAutoSave(hasStoredConfig, inviteToken, formData, config, onSaveMessage, isSavingRef) {
   const autoSaveTimerRef = useRef(null);
@@ -12,6 +13,7 @@ export function useAutoSave(hasStoredConfig, inviteToken, formData, config, onSa
     autoSavingRef.current = true;
     const payload = normalizeConfig(data);
     try {
+      if (payload.bankInfo) payload.bankInfo = await encrypt(payload.bankInfo, inviteToken);
       await setDoc(invitationDocRef(inviteToken), payload);
       return payload;
     } catch {
@@ -30,7 +32,7 @@ export function useAutoSave(hasStoredConfig, inviteToken, formData, config, onSa
       if (result && onSaveMessage) {
         onSaveMessage("Cambios guardados");
       }
-    }, 2000);
+    }, 3000);
     return () => {
       if (autoSaveTimerRef.current) clearTimeout(autoSaveTimerRef.current);
     };

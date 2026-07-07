@@ -10,6 +10,7 @@ import { getValidCoordinates } from "../lib/geo-utils";
 import { compressImage } from "../lib/image-utils";
 import { uploadBackgroundImage, deleteBackgroundImage } from "../lib/storage-utils";
 import { clearSession } from "../lib/sessionVars";
+import { encrypt, decrypt } from "../lib/crypto-utils";
 import { useCalendar } from "../hooks/useCalendar";
 import { useFieldHandlers } from "../hooks/useFieldHandlers";
 import { useRsvp } from "../hooks/useRsvp";
@@ -185,6 +186,7 @@ export function AppProvider({ children }) {
           return;
         }
         const parsed = normalizeConfig(snapshot.data());
+        if (parsed.bankInfo) parsed.bankInfo = await decrypt(parsed.bankInfo, inviteToken);
         const hydrated = { ...defaultConfig, ...parsed };
         setConfig(hydrated);
         setFormData(hydrated);
@@ -219,6 +221,7 @@ export function AppProvider({ children }) {
         return;
       }
       const parsed = normalizeConfig(snapshot.data());
+      if (parsed.bankInfo) parsed.bankInfo = await decrypt(parsed.bankInfo, inviteToken);
       const hydrated = { ...defaultConfig, ...parsed };
       setConfig(hydrated);
       setFormData(hydrated);
@@ -407,6 +410,11 @@ export function AppProvider({ children }) {
       return;
     }
 
+    if (sanitized.menuEnabled === "true" && !sanitized.menuCarne && !sanitized.menuPescado && !sanitized.menuVegano && !sanitized.menuPostre) {
+      setSaveError("Si los invitados pueden elegir menú, al menos uno debe estar descrito.");
+      return;
+    }
+
     let backgroundToSave = sanitized.backgroundImage;
     let storagePathToSave = sanitized.backgroundImageStorage;
 
@@ -429,7 +437,9 @@ export function AppProvider({ children }) {
 
     isSavingRef.current = true;
     try {
+      if (payload.bankInfo) payload.bankInfo = await encrypt(payload.bankInfo, inviteToken);
       await setDoc(invitationDocRef(inviteToken), payload);
+      if (payload.bankInfo) payload.bankInfo = await decrypt(payload.bankInfo, inviteToken);
       setConfig(payload);
       setFormData(payload);
       setHasStoredConfig(true);
