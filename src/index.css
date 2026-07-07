@@ -2130,15 +2130,17 @@ h6 {
 }
 
 .setup-layout--full {
-  grid-template-rows: 1fr;
-  place-items: start center;
+  display: block;
+  height: auto;
+  min-height: calc(100dvh - var(--navbar-height, 0px));
+  padding: clamp(0.75rem, 2.5vw, 1.5rem);
 }
 
 .setup-layout--full .setup-card--full {
   width: 100% !important;
-  height: 100%;
+  height: calc(100dvh - var(--navbar-height, 0px) - clamp(1.5rem, 5vw, 3rem));
   overflow-y: auto;
-  align-self: stretch;
+  margin: 0;
 }
 
 .setup-card--narrow {
