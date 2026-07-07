@@ -4,7 +4,7 @@ import { useApp } from "../../contexts/AppContext";
 const RsvpSection = memo(function RsvpSection({
   style, className,
   rsvpForm, rsvpEntries, rsvpMessage, isRsvpSubmitting, hasSubmitted,
-  updateRsvpField, handleRsvpSubmit, handleDietaryToggle, DIETARY_OPTIONS, menuEnabled,
+  updateRsvpField, handleRsvpSubmit, handleDietaryToggle, DIETARY_OPTIONS, menuEnabled, menuCarne, menuPescado, menuVegano, menuPostre,
 }) {
   const { setLegalModal } = useApp();
   const [useGroupMode, setUseGroupMode] = useState(false);
@@ -128,6 +128,22 @@ const RsvpSection = memo(function RsvpSection({
                 {rsvpForm.mealChoice === "otro" && (
                   <input className="setup-input" value={rsvpForm.mealOther} onChange={(e) => updateRsvpField("mealOther", e.target.value.slice(0, 120))} placeholder="Especifica tu preferencia" autoComplete="off" style={{ marginTop: "0.3rem" }} disabled={rsvpForm.attendance === "no"} />
                 )}
+                {rsvpForm.mealChoice && rsvpForm.mealChoice !== "otro" && (() => {
+                  const desc = { carne: menuCarne, pescado: menuPescado, vegano: menuVegano }[rsvpForm.mealChoice];
+                  const lbl = { carne: "Carne", pescado: "Pescado", vegano: "Vegano/Vegetariano" }[rsvpForm.mealChoice];
+                  return desc ? (
+                    <div style={{ marginTop: "0.4rem", padding: "0.6rem", borderRadius: "0.6rem", background: "color-mix(in srgb, var(--setup-field-bg) 70%, transparent)", border: "1px solid color-mix(in srgb, var(--setup-accent) 20%, transparent)" }}>
+                      <p className="story-eyebrow" style={{ fontSize: "0.72rem", marginBottom: "0.15rem" }}>{lbl}</p>
+                      <p className="story-note whitespace-pre-line" style={{ fontSize: "0.82rem" }}>{desc}</p>
+                    </div>
+                  ) : null;
+                })()}
+                {menuPostre?.trim() ? (
+                  <div style={{ marginTop: "0.3rem", padding: "0.5rem", borderRadius: "0.6rem", background: "color-mix(in srgb, var(--setup-field-bg) 60%, transparent)" }}>
+                    <p className="story-eyebrow" style={{ fontSize: "0.72rem", marginBottom: "0.15rem" }}>Postre</p>
+                    <p className="story-note whitespace-pre-line" style={{ fontSize: "0.82rem" }}>{menuPostre}</p>
+                  </div>
+                ) : null}
                 <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "0.5rem" }}>
                   <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", cursor: "pointer", fontSize: "0.9rem", color: rsvpForm.attendance === "no" ? "var(--setup-muted)" : "var(--setup-title)" }}>
                     <input type="checkbox" checked={rsvpForm.noGluten} onChange={(e) => updateRsvpField("noGluten", e.target.checked)} disabled={rsvpForm.attendance === "no"} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
@@ -140,7 +156,13 @@ const RsvpSection = memo(function RsvpSection({
                 </div>
               </div>
             </fieldset>
-          ) : (
+          ) : menuCarne?.trim() ? (
+            <div style={{ marginBottom: "0.5rem", padding: "0.6rem", borderRadius: "0.6rem", background: "color-mix(in srgb, var(--setup-field-bg) 60%, transparent)" }}>
+              <p className="story-eyebrow" style={{ fontSize: "0.72rem", marginBottom: "0.2rem" }}>Menú</p>
+              <p className="story-note whitespace-pre-line" style={{ fontSize: "0.85rem" }}>{menuCarne}</p>
+            </div>
+          ) : null}
+          {!menuEnabled ? (
             <fieldset style={{ border: "none", padding: 0, margin: 0, minInlineSize: 0 }}>
               <legend className="setup-label" style={{ marginBottom: "0.4rem" }}>Preferencias alimentarias</legend>
               <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))" }}>

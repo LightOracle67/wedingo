@@ -457,6 +457,10 @@ export default function PublicInvitation() {
       handleDietaryToggle,
       DIETARY_OPTIONS,
       menuEnabled: config.menuEnabled === "true",
+      menuCarne: config.menuCarne,
+      menuPescado: config.menuPescado,
+      menuVegano: config.menuVegano,
+      menuPostre: config.menuPostre,
     },
   }), [
     config.firstName, config.secondName, config.inviteMessage,
