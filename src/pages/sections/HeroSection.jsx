@@ -1,4 +1,4 @@
-import { memo, useRef, useState, useEffect } from "react";
+import { memo, useRef, useState } from "react";
 import heroBackdropSrc from "../../assets/rings.png";
 
 const HeroSection = memo(function HeroSection({ style, className, firstName, secondName, inviteMessage, countdown, couplePhoto, musicUrl, godparent1, godparent2 }) {

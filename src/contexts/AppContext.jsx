@@ -1,6 +1,6 @@
 import { createContext, useContext, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { getDoc, setDoc, increment, updateDoc, deleteDoc, getDocs, writeBatch } from "firebase/firestore";
+import { getDoc, setDoc, increment, updateDoc, getDocs, writeBatch, doc } from "firebase/firestore";
 import { ref, deleteObject } from "firebase/storage";
 import { db, storage, invitationDocRef, rsvpByInviteRef } from "../lib/firebase";
 import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES, defaultConfig, MONTH_OPTIONS, MONTH_VALUE_TO_NUMBER, STORY_SECTION_ORDER, THEME_VALUES } from "../lib/constants";

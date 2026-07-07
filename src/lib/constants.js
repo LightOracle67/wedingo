@@ -90,16 +90,6 @@ export const SECTION_LABELS = {
   rsvp: "Confirmación",
 };
 
-export const SECTION_MOVABLE = {
-  hero: false,
-  details: true,
-  info: true,
-  story: true,
-  gifts: true,
-  accommodation: true,
-  gallery: true,
-  rsvp: true,
-};
 
 export const defaultConfig = {
   adminUsername: "",
