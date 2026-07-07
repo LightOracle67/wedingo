@@ -139,15 +139,19 @@ const RsvpSection = memo(function RsvpSection({
             />
           </fieldset>
 
-          <label className="setup-label" htmlFor="rsvpNote">Mensaje opcional</label>
-          <textarea
-            id="rsvpNote"
-            className="setup-textarea"
-            rows={2}
-            value={rsvpForm.note}
-            onChange={(e) => updateRsvpField("note", e.target.value.slice(0, 240))}
-            placeholder="Cuéntanos cualquier otro detalle importante"
-          />
+          <div style={{ opacity: rsvpForm.attendance === "no" ? 0.4 : 1 }}>
+            <label className="setup-label" htmlFor="rsvpNote">Mensaje opcional</label>
+            <textarea
+              id="rsvpNote"
+              className="setup-textarea"
+              rows={2}
+              value={rsvpForm.note}
+              onChange={(e) => updateRsvpField("note", e.target.value.slice(0, 240))}
+              placeholder="Cuéntanos cualquier otro detalle importante"
+              disabled={rsvpForm.attendance === "no"}
+              tabIndex={rsvpForm.attendance === "no" ? -1 : 0}
+            />
+          </div>
 
           <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.85rem", cursor: "pointer" }}>
             <input type="checkbox" checked={rsvpForm.privacyConsent} onChange={(e) => updateRsvpField("privacyConsent", e.target.checked)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} required />
