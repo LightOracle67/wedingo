@@ -23,10 +23,9 @@ describe("useRsvp", () => {
   });
 
   it("initializes with empty form", () => {
-    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType));
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
     expect(result.current.rsvpForm.guestName).toBe("");
     expect(result.current.rsvpForm.attendance).toBe("yes");
-    expect(result.current.rsvpForm.companions).toBe("0");
     expect(result.current.rsvpForm.dietarySelection).toEqual([]);
     expect(result.current.rsvpEntries).toEqual([]);
     expect(result.current.hasSubmitted).toBe(false);

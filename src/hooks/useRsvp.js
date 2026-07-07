@@ -13,15 +13,14 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
   const [rsvpEntries, setRsvpEntries] = useState([]);
   const [rsvpForm, setRsvpForm] = useState({
     guestName: "",
-    guestList: "",
     attendance: "yes",
-    companions: "0",
     mealChoice: "",
     noGluten: false,
     noLactosa: false,
     dietarySelection: [],
     dietaryOther: "",
-    note: "",
+    privacyConsent: false,
+    healthConsent: false,
   });
   const [rsvpMessage, setRsvpMessage] = useState("");
   const [isRsvpSubmitting, setIsRsvpSubmitting] = useState(false);
@@ -95,22 +94,10 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
     event.preventDefault();
     if (isRsvpSubmitting) return;
 
-    const guestNames = rsvpForm.guestList.trim()
-      ? rsvpForm.guestList.split("\n").map(s => s.trim()).filter(Boolean)
-      : [];
-
-    if (rsvpForm.guestList.trim()) {
-      if (!guestNames.length) {
-        setRsvpMessage("Escribe al menos un nombre en la lista de invitados.");
-        return;
-      }
-    } else {
-      const single = rsvpForm.guestName.trim();
-      if (!single) {
-        setRsvpMessage("Escribe tu nombre para confirmar la asistencia.");
-        return;
-      }
-      guestNames.push(single);
+    const single = rsvpForm.guestName.trim();
+    if (!single) {
+      setRsvpMessage("Escribe tu nombre para confirmar la asistencia.");
+      return;
     }
 
     if (menuEnabled && rsvpForm.attendance === "yes" && !rsvpForm.mealChoice) {
@@ -118,11 +105,17 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
       return;
     }
 
+    if (!rsvpForm.privacyConsent) {
+      setRsvpMessage("Debes aceptar la Política de Privacidad.");
+      return;
+    }
 
-    const numNames = rsvpForm.guestList.trim() ? guestNames.length : 0;
-    const companionsParam = !numNames && rsvpForm.attendance === "yes" ? rsvpForm.companions : "0";
-    const companions = Number.parseInt(companionsParam, 10);
-    const companionsCount = Number.isNaN(companions) ? 0 : Math.max(0, Math.min(10, companions));
+    const hasHealthData = rsvpForm.dietarySelection.length > 0 || rsvpForm.dietaryOther.trim() || rsvpForm.noGluten || rsvpForm.noLactosa;
+    if (hasHealthData && !rsvpForm.healthConsent) {
+      setRsvpMessage("Debes consentir el tratamiento de tus datos de salud.");
+      return;
+    }
+
     const extras = [];
     if (rsvpForm.noGluten) extras.push("Sin gluten");
     if (rsvpForm.noLactosa) extras.push("Sin lactosa");
@@ -133,28 +126,28 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
 
     setIsRsvpSubmitting(true);
     const now = new Date().toISOString();
-    const results = [];
     try {
-      for (const name of guestNames) {
-        const payload = {
-          guestName: name,
-          attendance: rsvpForm.attendance,
-          companions: companionsCount,
-          dietaryInfo,
-          note: rsvpForm.note.trim(),
-          inviteToken,
-          submittedAt: serverTimestamp(),
-        };
-        const doc = await addDoc(RSVP_COLLECTION_REF, payload);
-        results.push({ ...payload, id: doc.id, submittedAt: now });
-      }
-      setRsvpEntries((current) => [...results, ...current]);
-      const count = guestNames.length;
+      const payload = {
+        guestName: single,
+        attendance: rsvpForm.attendance,
+        dietaryInfo,
+        inviteToken,
+        submittedAt: serverTimestamp(),
+        privacyConsent: true,
+        privacyConsentAt: serverTimestamp(),
+        healthConsent: rsvpForm.healthConsent,
+      };
+      const doc = await addDoc(RSVP_COLLECTION_REF, payload);
+      setRsvpEntries((current) => [{ ...payload, id: doc.id, submittedAt: now }, ...current]);
       setRsvpMessage(
         rsvpForm.attendance === "yes"
-          ? `Gracias. ${count} asistencia${count > 1 ? "s" : ""} registrada${count > 1 ? "s" : ""}.`
-          : `Gracias. ${count} confirmación${count > 1 ? "es" : ""} registrada${count > 1 ? "s" : ""}.`,
+          ? `Gracias, ${single}. Tu asistencia quedó registrada.`
+          : `Gracias, ${single}. Lamentamos que no puedas asistir.`,
       );
+      setRsvpForm({
+        guestName: "", attendance: "yes", mealChoice: "", noGluten: false, noLactosa: false,
+        dietarySelection: [], dietaryOther: "", privacyConsent: false, healthConsent: false,
+      });
       setHasSubmitted(true);
     } catch {
       setRsvpMessage("No pudimos guardar tu confirmación. Inténtalo de nuevo en unos minutos.");

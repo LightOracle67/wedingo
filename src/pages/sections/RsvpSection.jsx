@@ -121,6 +121,11 @@ const RsvpSection = memo(function RsvpSection({
             <span>Acepto la <button type="button" onClick={() => setLegalModal("privacy")} style={{ color: "var(--setup-accent)", textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", fontSize: "inherit", padding: 0 }}>Política de Privacidad</button></span>
           </label>
 
+          <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.85rem", cursor: "pointer" }}>
+            <input type="checkbox" checked={rsvpForm.healthConsent} onChange={(e) => updateRsvpField("healthConsent", e.target.checked)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+            <span>Consiento el tratamiento de mis datos de salud para la organización del evento</span>
+          </label>
+
           <div className="setup-actions">
             <button className="setup-button" type="submit" disabled={isDisabled}>
               {isRsvpSubmitting ? "Enviando..." : isDisabled ? "Asistencia confirmada" : "Confirmar asistencia"}

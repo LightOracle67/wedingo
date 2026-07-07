@@ -8,7 +8,7 @@ service cloud.firestore {
 
     function isAdminOf(tokenId) {
       return request.auth != null
-        || exists(/databases/$(database)/documents/sessions/$(tokenId));
+        && exists(/databases/$(database)/documents/sessions/$(tokenId));
     }
 
     function isSafeText(value) {
@@ -61,21 +61,16 @@ service cloud.firestore {
     }
 
     match /rsvpResponses/{responseId} {
-      allow create: if request.resource.data.keys().hasAll(['guestName', 'attendance', 'companions', 'dietaryInfo', 'note', 'submittedAt', 'inviteToken'])
+      allow create: if request.resource.data.keys().hasAll(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent'])
         && request.resource.data.guestName is string
         && request.resource.data.guestName.size() > 0
         && request.resource.data.guestName.size() <= 120
         && isSafeText(request.resource.data.guestName)
         && request.resource.data.attendance in ['yes', 'no']
-        && request.resource.data.companions is int
-        && request.resource.data.companions >= 0
-        && request.resource.data.companions <= 10
         && request.resource.data.dietaryInfo is string
         && request.resource.data.dietaryInfo.size() <= 240
         && isSafeText(request.resource.data.dietaryInfo)
-        && request.resource.data.note is string
-        && request.resource.data.note.size() <= 240
-        && isSafeText(request.resource.data.note);
+        && request.resource.data.privacyConsent == true;
 
       allow read: if isSuperAdmin()
         || (resource.data.inviteToken is string
@@ -87,9 +82,8 @@ service cloud.firestore {
 
     match /sessions/{sessionId} {
       allow read: if isSuperAdmin();
-      allow write: if request.resource.data.createdAt is timestamp;
-      allow delete: if request.auth != null
-        || resource.data.createdAt is timestamp;
+      allow create: if request.resource.data.createdAt is timestamp;
+      allow delete: if request.auth != null;
     }
   }
 }

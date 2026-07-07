@@ -69,27 +69,26 @@ export default function AdminPage() {
   const coupleName = `${config.firstName} & ${config.secondName}`;
 
   const exportPdf = useCallback(() => {
-    const sanitize = (v) => String(v || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    const s = (v) => String(v || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
     const rows = rsvpEntries.map((e) =>
-      `<tr><td>${sanitize(e.guestName)}</td><td>${e.attendance === "yes" ? "Sí" : "No"}</td><td>${e.attendance === "yes" ? e.companions : 0}</td><td>${sanitize(e.dietaryInfo)}</td><td>${sanitize(e.note)}</td></tr>`
+      `<tr><td>${s(e.guestName)}</td><td>${e.attendance === "yes" ? "Sí" : "No"}</td><td>${e.attendance === "yes" ? e.companions : 0}</td><td>${s(e.dietaryInfo)}</td></tr>`
     ).join("");
-    const totalConfirmed = rsvpEntries.filter(e => e.attendance === "yes").length;
-    const totalDeclined = rsvpEntries.filter(e => e.attendance === "no").length;
-    const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Invitados ${sanitize(coupleName)}</title><style>
-      @page{margin:2cm}body{font-family:system-ui,sans-serif;font-size:12px;color:#222;padding:2rem}h1{font-size:18px;margin-bottom:4px}.sub{color:#666;margin-bottom:16px}table{width:100%;border-collapse:collapse;margin-top:8px}th{background:#f0ede8;font-weight:600;text-align:left}th,td{border:1px solid #d4d0c8;padding:6px 8px}tr:nth-child(even){background:#faf8f5}.stats{display:flex;gap:1rem;margin:12px 0;font-size:13px}.stat{background:#f5f3ef;padding:8px 14px;border-radius:8px}@media print{body{padding:0}}
+    const tc = rsvpEntries.filter(e => e.attendance === "yes").length;
+    const td = rsvpEntries.filter(e => e.attendance === "no").length;
+    const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Invitados ${s(coupleName)}</title><style>
+      @page{margin:2cm}body{font-family:system-ui,sans-serif;font-size:12px;color:#222;padding:2rem}h1{font-size:18px;margin-bottom:4px}table{width:100%;border-collapse:collapse;margin-top:8px}th,td{border:1px solid #d4d0c8;padding:6px 8px}tr:nth-child(even){background:#faf8f5}.stats{display:flex;gap:1rem;margin:12px 0;font-size:13px}.stat{background:#f5f3ef;padding:8px 14px;border-radius:8px}@media print{body{padding:0}}
     </style></head><body>
-    <h1>Lista de invitados — ${sanitize(coupleName)}</h1>
-    <div class="sub">Generado el ${new Date().toLocaleDateString("es-ES",{day:"numeric",month:"long",year:"numeric",hour:"2-digit",minute:"2-digit"})}</div>
-    <div class="stats"><div class="stat">${totalConfirmed} confirmados</div><div class="stat">${totalDeclined} no asisten</div><div class="stat">${rsvpEntries.length} respuestas</div></div>
-    <table><thead><tr><th>Nombre</th><th>Asistencia</th><th>Acomps</th><th>Dieta</th><th>Nota</th></tr></thead><tbody>${rows}</tbody></table>
-    <p style="margin-top:12px;color:#888;font-size:11px">Wedingo — invitaciones de boda</p>
+    <h1>Invitados — ${s(coupleName)}</h1>
+    <p style="color:#666;font-size:13px">${new Date().toLocaleDateString("es-ES",{day:"numeric",month:"long",year:"numeric",hour:"2-digit",minute:"2-digit"})}</p>
+    <div class="stats"><div class="stat">${tc} confirmados</div><div class="stat">${td} no asisten</div><div class="stat">${rsvpEntries.length} respuestas</div></div>
+    <table><thead><tr><th>Nombre</th><th>Asistencia</th><th>Acomps</th><th>Dieta</th></tr></thead><tbody>${rows}</tbody></table>
+    <p style="margin-top:12px;color:#888;font-size:11px">Wedingo</p>
     </body></html>`;
-    const w = window.open("", "_blank");
+    const blob = new Blob([html], { type: "text/html;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const w = window.open(url, "_blank");
     if (w) {
-      w.document.write(html);
-      w.document.close();
-      w.document.title = `Invitados ${sanitize(coupleName)}`;
-      setTimeout(() => { w.focus(); w.print(); }, 500);
+      setTimeout(() => { w.focus(); w.print(); URL.revokeObjectURL(url); }, 500);
     }
   }, [rsvpEntries, coupleName]);
 

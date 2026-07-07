@@ -106,12 +106,7 @@ export function AppProvider({ children }) {
     handleYearChange, handleCoordinateChange,
   } = useFieldHandlers(updateFormField, maxAllowedYear, formData.weddingMinute);
 
-  const handleAutoSaved = useCallback((payload) => {
-    setConfig(payload);
-    setFormData(payload);
-  }, []);
-
-  const { autoSaveTimerRef } = useAutoSave(hasStoredConfig, inviteToken, formData, config, setSaveMessage, isSavingRef, handleAutoSaved);
+  const { autoSaveTimerRef } = useAutoSave(hasStoredConfig, inviteToken, formData, config, setSaveMessage, isSavingRef);
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -301,7 +296,7 @@ export function AppProvider({ children }) {
     setSaveError("");
     setSaveMessage("");
 
-    if (!hasStoredConfig && !isTokenVerified) {
+    if (!hasStoredConfig && !isTokenVerified && !setupToken) {
       setSaveError("Verifica el código de acceso antes de guardar.");
       return;
     }

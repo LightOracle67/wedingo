@@ -3,7 +3,7 @@ import { setDoc } from "firebase/firestore";
 import { invitationDocRef } from "../lib/firebase";
 import { normalizeConfig } from "../lib/utils";
 
-export function useAutoSave(hasStoredConfig, inviteToken, formData, config, onSaveMessage, isSavingRef, onAutoSaved) {
+export function useAutoSave(hasStoredConfig, inviteToken, formData, config, onSaveMessage, isSavingRef) {
   const autoSaveTimerRef = useRef(null);
   const autoSavingRef = useRef(false);
 
@@ -29,13 +29,12 @@ export function useAutoSave(hasStoredConfig, inviteToken, formData, config, onSa
       const result = await doSave(formData);
       if (result && onSaveMessage) {
         onSaveMessage("Cambios guardados");
-        if (onAutoSaved) onAutoSaved(result);
       }
-    }, 800);
+    }, 2000);
     return () => {
       if (autoSaveTimerRef.current) clearTimeout(autoSaveTimerRef.current);
     };
-  }, [formData, hasStoredConfig, inviteToken, doSave, config, onSaveMessage, onAutoSaved]);
+  }, [formData, hasStoredConfig, inviteToken, doSave, config, onSaveMessage]);
 
   return { autoSaveTimerRef, doSave };
 }
