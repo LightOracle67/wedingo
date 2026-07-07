@@ -414,6 +414,10 @@ export function AppProvider({ children }) {
       setSaveError("Si los invitados pueden elegir menú, al menos uno debe estar descrito.");
       return;
     }
+    if (sanitized.menuEnabled !== "true" && !sanitized.menuTexto) {
+      setSaveError("Describe el menú de la celebración.");
+      return;
+    }
 
     let backgroundToSave = sanitized.backgroundImage;
     let storagePathToSave = sanitized.backgroundImageStorage;
