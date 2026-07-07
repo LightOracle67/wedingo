@@ -114,10 +114,12 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
       return;
     }
 
-    const hasHealthData = rsvpForm.dietarySelection.length > 0 || rsvpForm.dietaryOther.trim();
-    if (hasHealthData && !rsvpForm.healthConsent) {
-      setRsvpMessage("Debes consentir el tratamiento de tus datos de salud.");
-      return;
+    if (rsvpForm.attendance === "yes") {
+      const hasHealthData = rsvpForm.dietarySelection.length > 0 || rsvpForm.dietaryOther.trim();
+      if (hasHealthData && !rsvpForm.healthConsent) {
+        setRsvpMessage("Debes consentir el tratamiento de tus datos de salud.");
+        return;
+      }
     }
 
     const base = rsvpForm.attendance === "yes" && menuEnabled ? `Menú: ${rsvpForm.mealChoice}` : "";
