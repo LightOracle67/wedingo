@@ -2120,10 +2120,8 @@ h6 {
 }
 
 .setup-layout--full.setup-layout {
-  display: block;
-  height: calc(100dvh - var(--navbar-height, 0px));
-  padding: clamp(0.75rem, 2.5vw, 1.5rem);
-  overflow: hidden;
+  min-height: 100%;
+  display: inline-flex;
 }
 
 .setup-layout--full .setup-card--full {
