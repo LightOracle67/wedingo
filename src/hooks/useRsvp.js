@@ -20,7 +20,6 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
     attendance: "yes",
     companions: "0",
     mealChoice: "",
-    mealOther: "",
     noGluten: false,
     noLactosa: false,
     dietarySelection: [],
@@ -121,10 +120,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
       setRsvpMessage("Selecciona una opción de menú.");
       return;
     }
-    if (rsvpForm.mealChoice === "otro" && !rsvpForm.mealOther.trim()) {
-      setRsvpMessage("Especifica tu preferencia de menú.");
-      return;
-    }
+
 
     const numNames = rsvpForm.guestList.trim() ? guestNames.length : 0;
     const companionsParam = !numNames && rsvpForm.attendance === "yes" ? rsvpForm.companions : "0";
@@ -134,7 +130,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
     if (rsvpForm.noGluten) extras.push("Sin gluten");
     if (rsvpForm.noLactosa) extras.push("Sin lactosa");
     const dietaryParts = rsvpForm.attendance === "yes" && menuEnabled
-      ? [`Menú: ${rsvpForm.mealChoice === "otro" ? rsvpForm.mealOther : rsvpForm.mealChoice}`, ...extras]
+      ? [`Menú: ${rsvpForm.mealChoice}`, ...extras]
       : [rsvpForm.dietaryOther];
     const dietaryInfo = dietaryParts.filter(Boolean).join(" | ");
 

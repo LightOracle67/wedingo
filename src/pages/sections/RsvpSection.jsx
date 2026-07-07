@@ -110,7 +110,6 @@ const RsvpSection = memo(function RsvpSection({
                     { value: "carne", label: "Carne" },
                     { value: "pescado", label: "Pescado" },
                     { value: "vegano", label: "Vegano/Vegetariano" },
-                    { value: "otro", label: "Otro" },
                   ].map(opt => (
                     <label key={opt.value} className="setup-checkbox-label" style={{
                       display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.5rem 0.6rem", cursor: "pointer",
@@ -125,10 +124,7 @@ const RsvpSection = memo(function RsvpSection({
                     </label>
                   ))}
                 </div>
-                {rsvpForm.mealChoice === "otro" && (
-                  <input className="setup-input" value={rsvpForm.mealOther} onChange={(e) => updateRsvpField("mealOther", e.target.value.slice(0, 120))} placeholder="Especifica tu preferencia" autoComplete="off" style={{ marginTop: "0.3rem" }} disabled={rsvpForm.attendance === "no"} />
-                )}
-                {rsvpForm.mealChoice && rsvpForm.mealChoice !== "otro" && (() => {
+                {rsvpForm.mealChoice && (() => {
                   const desc = { carne: menuCarne, pescado: menuPescado, vegano: menuVegano }[rsvpForm.mealChoice];
                   const lbl = { carne: "Carne", pescado: "Pescado", vegano: "Vegano/Vegetariano" }[rsvpForm.mealChoice];
                   return desc ? (
