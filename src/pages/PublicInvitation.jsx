@@ -446,14 +446,17 @@ export default function PublicInvitation() {
       updateRsvpField,
       handleRsvpSubmit,
       handleDietaryToggle,
-      DIETARY_OPTIONS,
+      DIETARY_OPTIONS: config.menuEnabled === "true"
+        ? DIETARY_OPTIONS.filter((o) => o.value !== "sin lactosa")
+        : DIETARY_OPTIONS,
+      menuOptions: config.menuOptions,
     },
   }), [
     config.firstName, config.secondName, config.inviteMessage,
     config.weddingPlace, config.weddingSchedule, config.weddingDressCode,
     config.kidsPolicy, config.storyText, config.giftsInfo, config.accommodationInfo,
     config.transportInfo, config.godparent1, config.godparent2, config.galleryImages,
-    config.couplePhoto, config.musicUrl, config.bankInfo,
+    config.couplePhoto, config.musicUrl, config.bankInfo, config.menuEnabled, config.menuOptions,
     countdown, formattedDate, formattedTime,
     hasLocationData, locationDescription, calendarLink,
     locationMapContainerRef, locationMapLoading, locationMapError, locationMapTarget,

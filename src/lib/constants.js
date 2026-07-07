@@ -138,4 +138,6 @@ export const defaultConfig = {
   musicUrl: "",
   galleryImages: "",
   kidsPolicy: "",
+  menuEnabled: "false",
+  menuOptions: "",
 };

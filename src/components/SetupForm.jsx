@@ -491,6 +491,18 @@ export default function SetupForm({ prefix = "" }) {
           ))}
         </div>
         <p className="setup-help">Selecciona la política sobre niños para la celebración.</p>
+
+        <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.9rem", cursor: "pointer", marginTop: "0.5rem" }}>
+          <input type="checkbox" checked={formData.menuEnabled === "true"} onChange={(e) => updateFormField("menuEnabled", e.target.checked ? "true" : "false")} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+          <span>Habrá menú cerrado (sin opción de elegir plato)</span>
+        </label>
+        {formData.menuEnabled === "true" && (
+          <>
+            <label className="setup-label" htmlFor={id("menuOptions")} style={{ marginTop: "0.3rem" }}>Opciones del menú</label>
+            <textarea id={id("menuOptions")} className="setup-textarea" value={formData.menuOptions} onChange={(e) => updateFormField("menuOptions", e.target.value.slice(0, 2000))} placeholder="Describe el menú: entrante, plato principal, postre..." rows={4} />
+            <p className="setup-help">Al activar esta opción, los invitados solo podrán indicar alergias e intolerancias, no elegir plato.</p>
+          </>
+        )}
       </CollapsibleSection>
       ) : null}
 

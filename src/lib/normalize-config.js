@@ -40,4 +40,6 @@ export const normalizeConfig = (value) => ({
   musicUrl: s(value?.musicUrl),
   galleryImages: s(value?.galleryImages),
   kidsPolicy: s(value?.kidsPolicy),
+  menuEnabled: s(value?.menuEnabled) === "true" ? "true" : "false",
+  menuOptions: s(value?.menuOptions),
 });
