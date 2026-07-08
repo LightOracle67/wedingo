@@ -83,57 +83,59 @@ const GROUPS = [
 export default function LanguageSwitcher() {
   const { i18n } = useTranslation();
   const [open, setOpen] = useState(false);
-  const modalRef = useRef(null);
+  const popupRef = useRef(null);
   const currentLang = i18n.language?.split("-")[0] || "es";
   const currentLabel = GROUPS.flatMap(g => g.options).find(l => l.code === currentLang)?.label || currentLang.toUpperCase();
 
   useEffect(() => {
     if (!open) return;
-    modalRef.current?.focus();
+    const handleClick = (e) => {
+      if (popupRef.current && !popupRef.current.contains(e.target)) setOpen(false);
+    };
     const handleKey = (e) => { if (e.key === "Escape") setOpen(false); };
+    document.addEventListener("mousedown", handleClick);
     window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
+    return () => {
+      document.removeEventListener("mousedown", handleClick);
+      window.removeEventListener("keydown", handleKey);
+    };
   }, [open]);
 
   return (
-    <>
+    <div className="lang-wrapper">
       <button
         type="button"
         className="lang-trigger"
-        onClick={() => setOpen(true)}
+        onClick={() => setOpen(!open)}
         aria-label="Seleccionar idioma"
+        aria-expanded={open}
+        aria-haspopup="true"
       >
         🌐 {currentLabel}
       </button>
 
       {open && (
-        <div className="lang-overlay" onClick={() => setOpen(false)} role="dialog" aria-modal="true" aria-label="Seleccionar idioma">
-          <div className="modal-card lang-modal" ref={modalRef} onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={() => setOpen(false)} aria-label="Cerrar">&times;</button>
-            <p className="modal-title">Seleccionar idioma</p>
-            <div className="lang-modal__grid">
-              {GROUPS.map((group) => (
-                <div key={group.label} className="lang-modal__group">
-                  <p className="lang-modal__group-title">{group.label}</p>
-                  <div className="lang-modal__options">
-                    {group.options.map((lang) => (
-                      <button
-                        key={lang.code}
-                        type="button"
-                        className={`lang-modal__btn ${currentLang === lang.code ? "lang-modal__btn--active" : ""}`}
-                        onClick={() => { i18n.changeLanguage(lang.code); setOpen(false); }}
-                      >
-                        <span className="lang-modal__code">{lang.code.toUpperCase()}</span>
-                        <span className="lang-modal__name">{lang.label.split(" — ")[1] || lang.label}</span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              ))}
+        <div className="lang-popup" ref={popupRef}>
+          {GROUPS.map((group) => (
+            <div key={group.label} className="lang-popup__group">
+              <p className="lang-popup__group-title">{group.label}</p>
+              <div className="lang-popup__options">
+                {group.options.map((lang) => (
+                  <button
+                    key={lang.code}
+                    type="button"
+                    className={`lang-popup__btn ${currentLang === lang.code ? "lang-popup__btn--active" : ""}`}
+                    onClick={() => { i18n.changeLanguage(lang.code); setOpen(false); }}
+                  >
+                    <span className="lang-popup__code">{lang.code.toUpperCase()}</span>
+                    <span className="lang-popup__name">{lang.label.split(" — ")[1] || lang.label}</span>
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       )}
-    </>
+    </div>
   );
 }
