@@ -4078,6 +4078,7 @@ a:focus-visible {
 .lang-modal {
   max-width: 560px;
   max-height: calc(100dvh - 3rem);
+  margin: auto;
   overflow-y: auto;
   background: linear-gradient(150deg, rgba(60,50,40,0.94), rgba(40,30,20,0.90));
   border: 1px solid var(--setup-border);
