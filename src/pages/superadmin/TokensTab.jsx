@@ -3,8 +3,10 @@ import { collection, deleteDoc, doc, getDocs, query, orderBy, serverTimestamp, s
 import { db } from "../../lib/firebase";
 import { formatDate } from "../../lib/superadmin";
 import { generateSetupToken, normalizeTokenValue } from "../../lib/token-utils";
+import { useTranslation } from "react-i18next";
 
 export default function TokensTab() {
+  const { t } = useTranslation();
   const [tokens, setTokens] = useState([]);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
@@ -22,11 +24,11 @@ export default function TokensTab() {
       }));
       setTokens(list);
     } catch {
-      setError("No se pudieron cargar los tokens.");
+      setError(t("superadmin:tokenLoadError"));
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [t]);
 
   useEffect(() => { loadTokens(); }, [loadTokens]);
 
@@ -41,24 +43,24 @@ export default function TokensTab() {
         autoGen: true,
         createdAt: serverTimestamp(),
       });
-      setMessage(`Token creado: ${rawToken}`);
+      setMessage(t("superadmin:tokenCreated", { token: rawToken }));
       await loadTokens();
     } catch {
-      setError("No se pudo crear el token.");
+      setError(t("superadmin:tokenCreateError"));
     }
-  }, [loadTokens]);
+  }, [loadTokens, t]);
 
   const handleRevoke = useCallback(async (tokenId) => {
     setError("");
     setMessage("");
     try {
       await deleteDoc(doc(db, "setupTokens", tokenId));
-      setMessage("Token revocado.");
+      setMessage(t("superadmin:tokenRevoked"));
       await loadTokens();
     } catch {
-      setError("No se pudo revocar el token.");
+      setError(t("superadmin:tokenRevokeError"));
     }
-  }, [loadTokens]);
+  }, [loadTokens, t]);
 
   const handleCleanup = useCallback(async () => {
     setError("");
@@ -67,51 +69,51 @@ export default function TokensTab() {
       const q = query(collection(db, "setupTokens"), where("used", "==", false));
       const snap = await getDocs(q);
       if (snap.empty) {
-        setMessage("No hay tokens no usados que limpiar.");
+        setMessage(t("superadmin:noTokensToClean"));
         return;
       }
       const batch = writeBatch(db);
       snap.docs.forEach((d) => batch.delete(d.ref));
       await batch.commit();
-      setMessage(`Se eliminaron ${snap.size} tokens no usados.`);
+      setMessage(t("superadmin:tokensCleaned", { count: snap.size }));
       await loadTokens();
     } catch {
-      setError("No se pudieron limpiar los tokens.");
+      setError(t("superadmin:tokenCleanError"));
     }
-  }, [loadTokens]);
+  }, [loadTokens, t]);
 
   if (loading) {
-    return <p className="setup-subtitle" style={{ textAlign: "center" }}>Cargando tokens...</p>;
+    return <p className="setup-subtitle" style={{ textAlign: "center" }}>{t("superadmin:tokensLoading")}</p>;
   }
 
-  const usedCount = tokens.filter((t) => t.used).length;
+  const usedCount = tokens.filter((tt) => tt.used).length;
 
   return (
     <div>
       <div className="setup-token-card" style={{ marginBottom: "1rem" }}>
         <p style={{ margin: 0, color: "var(--setup-title)", fontSize: "0.9rem" }}>
-          <strong>{tokens.length}</strong> tokens · <strong>{usedCount}</strong> usados · <strong>{tokens.length - usedCount}</strong> disponibles
+          {t("superadmin:tokensStats", { total: tokens.length, used: usedCount, available: tokens.length - usedCount })}
         </p>
       </div>
 
       <div className="setup-actions" style={{ marginBottom: "1rem" }}>
         <button className="setup-button" type="button" onClick={handleCreate}>
-          Generar nuevo token
+          {t("superadmin:generateToken")}
         </button>
         <button className="setup-button setup-button--ghost" type="button" onClick={handleCleanup}>
-          Limpiar no usados
+          {t("superadmin:cleanUnused")}
         </button>
       </div>
 
       {tokens.length === 0 ? (
         <div className="setup-token-card" style={{ textAlign: "center" }}>
-          <p style={{ color: "var(--setup-muted)", margin: 0 }}>No hay tokens todavía.</p>
+          <p style={{ color: "var(--setup-muted)", margin: 0 }}>{t("superadmin:noTokens")}</p>
         </div>
       ) : (
         <div style={{ display: "grid", gap: "0.4rem" }}>
-          {tokens.map((t) => (
+          {tokens.map((tt) => (
             <div
-              key={t.id}
+              key={tt.id}
               className="setup-token-card"
               style={{
                 padding: "0.6rem 0.85rem",
@@ -120,27 +122,27 @@ export default function TokensTab() {
                 alignItems: "center",
                 flexWrap: "wrap",
                 gap: "0.5rem",
-                opacity: t.used ? 0.6 : 1,
+                opacity: tt.used ? 0.6 : 1,
               }}
             >
               <div>
                 <p style={{ margin: 0, color: "var(--setup-title)", fontFamily: "monospace", fontSize: "0.9rem" }}>
-                  {t.id}
+                  {tt.id}
                 </p>
                 <p style={{ margin: "0.2rem 0 0", color: "var(--setup-muted)", fontSize: "0.8rem" }}>
-                  {t.used ? "Usado" : "Disponible"}
-                  {t.createdAtDate ? ` · Creado: ${formatDate(t.createdAtDate.toISOString())}` : ""}
-                  {t.usedAtDate ? ` · Usado: ${formatDate(t.usedAtDate.toISOString())}` : ""}
+                  {tt.used ? t("superadmin:statusUsed") : t("superadmin:statusAvailable")}
+                  {tt.createdAtDate ? ` · ${t("superadmin:createdLabel", { date: formatDate(tt.createdAtDate.toISOString()) })}` : ""}
+                  {tt.usedAtDate ? ` · ${t("superadmin:usedLabel", { date: formatDate(tt.usedAtDate.toISOString()) })}` : ""}
                 </p>
               </div>
-              {!t.used && (
+              {!tt.used && (
                 <button
                   className="setup-button setup-button--ghost"
                   type="button"
                   style={{ padding: "0.3rem 0.7rem", fontSize: "0.8rem", borderColor: "#f6c7c7", color: "#f6c7c7" }}
-                  onClick={() => handleRevoke(t.id)}
+                  onClick={() => handleRevoke(tt.id)}
                 >
-                  Revocar
+                  {t("superadmin:revokeButton")}
                 </button>
               )}
             </div>
