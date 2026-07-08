@@ -57,7 +57,7 @@ function AppShell() {
             <div className="admin-bar__links">
               <Link className={`admin-bar__link ${location.pathname === `/${inviteToken}` ? "admin-bar__link--active" : ""}`} to={`/${inviteToken}`}>{t("admin.tabs.invitation")}</Link>
               <Link className={`admin-bar__link ${location.pathname === `/${inviteToken}/admin` ? "admin-bar__link--active" : ""}`} to={`/${inviteToken}/admin`}>{t("admin.tabs.panel")}</Link>
-              <LanguageSwitcher inline />
+               <LanguageSwitcher />
             </div>
           </div>
         </nav>

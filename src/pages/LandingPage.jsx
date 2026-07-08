@@ -175,7 +175,7 @@ export default function LandingPage() {
             <button type="button" onClick={() => setLegalSection("legal")} className="text-[0.8rem] text-boda-texto/60 hover:text-boda-texto/80 transition-colors" style={{ textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-body)" }}>{t("landing.legalNotice")}</button>
           </div>
           <div className="mt-3 text-center">
-            <LanguageSwitcher inline />
+            <LanguageSwitcher />
           </div>
         </div>
       </section>
