@@ -6,14 +6,19 @@ service cloud.firestore {
         && request.auth.token.email in ['adriancl2001@gmail.com'];
     }
 
+    function hasActiveSession(tokenId) {
+      return exists(/databases/$(database)/documents/sessions/$(tokenId));
+    }
+
     function isAdminOf(tokenId) {
       return request.auth != null
-        && exists(/databases/$(database)/documents/sessions/$(tokenId));
+        && hasActiveSession(tokenId);
     }
 
     function isSafeText(value) {
       return value is string
-        && !value.matches('.*[<>&\"\'\\\\].*')
+        && !value.matches('.*[<>\"\'\\\\`].*')
+        && !value.matches('(?i).*javascript:.*')
         && value.size() <= 5000;
     }
 
@@ -22,7 +27,7 @@ service cloud.firestore {
         && data.firstName is string && data.firstName.size() > 0 && data.firstName.size() <= 100 && isSafeText(data.firstName)
         && data.secondName is string && data.secondName.size() > 0 && data.secondName.size() <= 100 && isSafeText(data.secondName)
         && data.weddingDay is string && data.weddingDay.matches('^(0?[1-9]|[12][0-9]|3[01])$')
-        && data.weddingMonth is string
+        && data.weddingMonth is string && data.weddingMonth.matches('^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)$')
         && data.weddingYear is string && data.weddingYear.matches('^[12][0-9]{3}$')
         && data.weddingHour is string && data.weddingHour.matches('^([01]?[0-9]|2[0-3])$')
         && data.weddingMinute is string && data.weddingMinute.matches('^[0-5]?[0-9]$')
@@ -35,8 +40,7 @@ service cloud.firestore {
         && (request.auth != null
           || !exists(/databases/$(database)/documents/invitations/$(tokenId)));
       allow update: if isValidInvitationWrite(request.resource.data)
-        && (request.auth != null
-          || exists(/databases/$(database)/documents/sessions/$(tokenId)));
+        && (request.auth != null || hasActiveSession(tokenId));
       allow delete: if isSuperAdmin();
     }
 
@@ -53,10 +57,7 @@ service cloud.firestore {
               && request.resource.data.used == false
               && request.resource.data.autoGen == true)
           ));
-      allow update: if isSuperAdmin()
-        || (resource.data.used == false
-          && request.resource.data.used == true
-          && request.resource.data.usedAt is timestamp);
+      allow update: if isSuperAdmin();
       allow delete: if isSuperAdmin();
     }
 
@@ -69,28 +70,34 @@ service cloud.firestore {
         && request.resource.data.attendance in ['yes', 'no']
         && request.resource.data.dietaryInfo is string
         && request.resource.data.dietaryInfo.size() <= 4000
+        && request.resource.data.inviteToken is string
+        && hasActiveSession(request.resource.data.inviteToken)
         && request.resource.data.privacyConsent == true
-        && (request.resource.data.keys().hasOnly(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent', 'privacyConsentAt', 'birthDate', 'parentalConsent', 'menuSelection'])
-          || (request.resource.data.keys().hasAll(['healthConsent'])
-            && request.resource.data.healthConsent == true));
+        && (request.resource.data.keys().hasOnly(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent', 'privacyConsentAt', 'birthDate', 'parentalConsent', 'menuSelection', 'healthConsent'])
+          || request.resource.data.keys().hasOnly(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent', 'privacyConsentAt', 'birthDate', 'parentalConsent', 'menuSelection']));
 
       allow read: if isSuperAdmin()
         || (resource.data.inviteToken is string
-          && exists(/databases/$(database)/documents/sessions/$(resource.data.inviteToken)));
+          && hasActiveSession(resource.data.inviteToken));
 
       allow update: if request.resource.data.attendance in ['yes', 'no']
         && request.resource.data.dietaryInfo is string
-        && resource.data.inviteToken is string
-        && exists(/databases/$(database)/documents/sessions/$(resource.data.inviteToken));
+        && request.resource.data.inviteToken is string
+        && hasActiveSession(resource.data.inviteToken)
+        && request.resource.data.keys().hasOnly(['attendance', 'dietaryInfo', 'privacyConsent', 'privacyConsentAt', 'healthConsent', 'birthDate', 'parentalConsent', 'menuSelection', 'guestName', 'submittedAt', 'inviteToken']);
+
       allow delete: if isSuperAdmin()
         || (resource.data.inviteToken is string
-          && exists(/databases/$(database)/documents/sessions/$(resource.data.inviteToken)));
+          && hasActiveSession(resource.data.inviteToken));
     }
 
     match /sessions/{sessionId} {
-      allow read: if true;
-      allow write: if request.resource.data.createdAt is timestamp;
-      allow delete: if request.auth != null;
+      allow read: if isSuperAdmin();
+      allow create: if request.resource.data.createdAt is timestamp
+        && request.auth == null
+        && exists(/databases/$(database)/documents/setupTokens/$(request.resource.data.token))
+        && get(/databases/$(database)/documents/setupTokens/$(request.resource.data.token)).data.inviteToken == sessionId;
+      allow delete: if isSuperAdmin() || hasActiveSession(sessionId);
     }
   }
 }

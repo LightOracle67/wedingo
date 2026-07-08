@@ -3,6 +3,7 @@ import { getDocs, collection, deleteDoc, doc, writeBatch, query, where } from "f
 import { ref, deleteObject, listAll } from "firebase/storage";
 import { db, storage, RSVP_COLLECTION_REF, INVITATIONS_COLLECTION_REF } from "../../lib/firebase";
 import { calcGlobalStats, tokenUsageOverTime, rsvpOverTime } from "../../lib/superadmin-utils";
+import { MONTH_VALUE_TO_NUMBER } from "../../lib/constants";
 import { logAudit } from "../../lib/audit";
 import { DonutChart, MiniBar, Legend } from "../../lib/chart-utils";
 import StatsCard from "../admin/StatsCard";
@@ -40,8 +41,10 @@ export default function DashboardTab() {
 
   const expired = invitations.filter((inv) => {
     if (!inv.weddingYear || !inv.weddingMonth) return false;
-    const d = new Date(Number(inv.weddingYear), 0, 1);
-    return d.getTime() > 0 && Date.now() - d.getTime() > twelveMonthsAgo;
+    const monthIndex = (MONTH_VALUE_TO_NUMBER[inv.weddingMonth] || 1) - 1;
+    const day = Number(inv.weddingDay) || 1;
+    const d = new Date(Number(inv.weddingYear), monthIndex, day);
+    return d.getTime() > 0 && d.getTime() < twelveMonthsAgo;
   });
 
   const handleCleanup = useCallback(async () => {

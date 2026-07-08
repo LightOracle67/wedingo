@@ -9,7 +9,7 @@ export function hasStorageConsent() {
 }
 
 export function safeSetItem(key, value, storage = localStorage) {
-  if (!hasStorageConsent()) return false;
+  if (storage === localStorage && !hasStorageConsent()) return false;
   try {
     storage.setItem(key, value);
     return true;
@@ -19,7 +19,7 @@ export function safeSetItem(key, value, storage = localStorage) {
 }
 
 export function safeGetItem(key, storage = localStorage) {
-  if (!hasStorageConsent()) return null;
+  if (storage === localStorage && !hasStorageConsent()) return null;
   try {
     return storage.getItem(key);
   } catch {

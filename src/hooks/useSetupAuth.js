@@ -288,29 +288,35 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
   }, [inviteToken, navigate]);
 
   const handleResetSetupToken = useCallback(async () => {
-    if (!setupToken || confirmTokenInput !== setupToken) {
+    const storageKey = `wedin_setup_token_${inviteToken || ""}`;
+    const storedToken = safeGetItem(storageKey, sessionStorage) || "";
+    const currentToken = setupToken || storedToken;
+    if (!currentToken || confirmTokenInput !== currentToken) {
       setAuthMessage("Escribe el código de acceso actual para generar uno nuevo.");
       return;
     }
     setAuthMessage("");
-    await refreshSetupToken(setupToken);
+    await refreshSetupToken(currentToken);
     setAuthMessageType("success");
     setAuthMessage("Código nuevo generado. Cópialo del campo superior antes de guardar.");
     setConfirmTokenInput("");
-  }, [refreshSetupToken, setupToken, confirmTokenInput]);
+  }, [refreshSetupToken, setupToken, confirmTokenInput, inviteToken]);
 
   const handleResetTokenFromAdmin = useCallback(async () => {
-    if (!setupToken || confirmTokenInput !== setupToken) {
+    const storageKey = `wedin_setup_token_${inviteToken || ""}`;
+    const storedToken = safeGetItem(storageKey, sessionStorage) || "";
+    const currentToken = setupToken || storedToken;
+    if (!currentToken || confirmTokenInput !== currentToken) {
       setAdminMessageType("error");
       setAdminMessage("Escribe el código de acceso actual para generar uno nuevo.");
       return;
     }
     setAdminMessage("");
-    await refreshSetupToken(setupToken);
+    await refreshSetupToken(currentToken);
     setAdminMessageType("success");
     setAdminMessage("Código renovado. Esto no cambia la contraseña de la aplicación.");
     setConfirmTokenInput("");
-  }, [refreshSetupToken, setupToken, confirmTokenInput, setAdminMessage, setAdminMessageType]);
+  }, [refreshSetupToken, setupToken, confirmTokenInput, setAdminMessage, setAdminMessageType, inviteToken]);
 
   return {
     setupToken, setSetupToken,

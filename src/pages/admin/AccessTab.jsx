@@ -45,11 +45,6 @@ const AccessTab = memo(function AccessTab({ setupToken, handleResetTokenFromAdmi
         </div>
       </div>
 
-      <div className="setup-actions">
-        <button className="setup-button setup-button--ghost" type="button" onClick={handleAdminLogout}>
-          {t("access.logout")}
-        </button>
-      </div>
       <hr style={{ margin: "1rem 0", border: "none", borderTop: "1px solid var(--setup-border)" }} />
       <p className="setup-help" style={{ fontSize: "0.8rem", textAlign: "center" }}>
         {t("access.deleteDataDescription")}

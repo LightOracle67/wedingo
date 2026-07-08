@@ -36,7 +36,8 @@ const PanelTab = memo(function PanelTab({
     try {
       const snap = await getDoc(invitationDocRef(inviteToken));
       if (!snap.exists()) { setRestoreMsg(t("panel.restoreNotFound")); return; }
-      const data = [{ id: snap.id, ...snap.data() }];
+      const rawData = snap.data();
+      const data = [{ id: snap.id, ...rawData, bankInfo: rawData.bankInfo ? "[REDACTED]" : "" }];
       const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");

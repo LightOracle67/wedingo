@@ -13,7 +13,20 @@
     "confirm": "Confirmar",
     "yes": "Sí",
     "no": "No",
-    "back": "Volver"
+    "back": "Volver",
+    "errorBoundary": {
+      "title": "Algo salió mal",
+      "message": "Por favor, recarga la página para intentarlo de nuevo.",
+      "reload": "Recargar página"
+    },
+    "toast": {
+      "close": "Cerrar"
+    },
+    "skipToContent": "Saltar al contenido principal",
+    "adminBar": {
+      "ariaLabel": "Barra de administración",
+      "fallback": "Administración"
+    }
   },
   "landing": {
     "title": "Wedingo — Invitaciones de boda",
@@ -48,7 +61,9 @@
     "daysAndHours": "{{days}} día(s) y {{hours}} hora(s)",
     "minutes": "{{minutes}} minuto(s)",
     "todayIsTheDay": "¡Hoy es el gran día!",
-    "audioError": "No se pudo cargar el audio. Revisa el enlace."
+    "audioError": "No se pudo cargar el audio. Revisa el enlace.",
+    "days": "{{days}} días",
+    "hours": "{{hours}} horas"
   },
   "details": {
     "sectionLabel": "Fecha y lugar",
@@ -145,7 +160,10 @@
     "scrollAria": "Ir a la siguiente sección",
     "privacyPolicy": "Política de Privacidad",
     "terms": "Términos",
-    "legalNotice": "Aviso Legal"
+    "legalNotice": "Aviso Legal",
+    "locationNotFound": "No pudimos localizar este lugar.",
+    "locationMapError": "No pudimos cargar el mapa.",
+    "locationCoordinates": "Coordenadas: {{lat}}, {{lng}}"
   },
   "setup": {
     "loadingTitle": "Cargando invitación",

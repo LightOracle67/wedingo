@@ -19,7 +19,7 @@ export function getDietarySummary(entries) {
   if (!confirmed.length) return [];
   const counts = {};
   for (const e of confirmed) {
-    const items = e.dietaryInfo.split(",").map((s) => s.trim().toLowerCase());
+    const items = e.dietaryInfo.split(" | ").map((s) => s.trim().toLowerCase()).filter((s) => s && !s.startsWith("menú:"));
     for (const item of items) {
       if (item) counts[item] = (counts[item] || 0) + 1;
     }

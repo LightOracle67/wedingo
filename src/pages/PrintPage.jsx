@@ -68,7 +68,7 @@ export default function PrintPage() {
   const bg = theme.bg;
 
   const formattedDate = formatDate(config.weddingDay, config.weddingMonth, config.weddingYear);
-  const timeStr = config.weddingHour ? `${config.weddingHour}:${String(config.weddingMinute || "0").padStart(2, "0")}` : "";
+  const timeStr = config.weddingHour ? `${String(config.weddingHour).padStart(2, "0")}:${String(config.weddingMinute || "0").padStart(2, "0")}` : "";
   const place = config.weddingPlace || "";
   const lat = config.weddingLatitude ? Number(config.weddingLatitude) : 0;
   const lng = config.weddingLongitude ? Number(config.weddingLongitude) : 0;

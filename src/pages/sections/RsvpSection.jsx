@@ -132,7 +132,8 @@ const RsvpSection = memo(function RsvpSection({
           ) : null}
 
           <label className="setup-label" htmlFor="rsvpBirthDate" style={{ marginTop: "0.5rem" }}>{t("rsvp.birthDateLabel")}</label>
-          <input id="rsvpBirthDate" type="date" className="setup-input" value={rsvpForm.birthDate} onChange={(e) => updateRsvpField("birthDate", e.target.value)} style={{ colorScheme: "light" }} disabled={isAlreadySubmitted} />
+          <input id="rsvpBirthDate"               type="date"
+              max={new Date().toISOString().split("T")[0]} className="setup-input" value={rsvpForm.birthDate} onChange={(e) => updateRsvpField("birthDate", e.target.value)} style={{ colorScheme: "light" }} disabled={isAlreadySubmitted} />
 
           {isUnder14 ? (
             <p style={{ fontSize: "0.82rem", color: "#e88b2c", margin: "0.3rem 0" }}>{t("rsvp.ageUnder14Warning")}</p>

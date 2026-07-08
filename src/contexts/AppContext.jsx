@@ -413,14 +413,13 @@ export function AppProvider({ children }) {
         return;
       }
     }
-    if (sanitized.menuEnabled !== "true" && !sanitized.menuTexto) {
-      setSaveError(t("errors.menuTextRequired"));
-      return;
-    }
-
-    if (sanitized.bankInfo && !/^[A-Z]{2}\d{2}[ ]?\d{4}[ ]?\d{4}[ ]?\d{4}[ ]?\d{4}[ ]?\d{0,4}$/.test(sanitized.bankInfo.toUpperCase())) {
-      setSaveError(t("errors.ibanInvalid"));
-      return;
+    if (sanitized.bankInfo) {
+      const upper = sanitized.bankInfo.toUpperCase();
+      const looksLikeIban = /^[A-Z]{2}\d/.test(upper);
+      if (looksLikeIban && !/^[A-Z]{2}\d{2}[ ]?\d{4}[ ]?\d{4}[ ]?\d{4}[ ]?\d{4}[ ]?\d{0,4}$/.test(upper)) {
+        setSaveError(t("errors.ibanInvalid"));
+        return;
+      }
     }
 
     if (sanitized.musicUrl && !/^https?:\/\/.+\..+/.test(sanitized.musicUrl)) {

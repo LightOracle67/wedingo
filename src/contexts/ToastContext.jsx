@@ -1,10 +1,11 @@
 import { createContext, useContext, useCallback, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const ToastContext = createContext(null);
 
 let toastId = 0;
 
-export function ToastProvider({ children, containerId = "toast-root" }) {
+function ToastProviderInner({ children, containerId = "toast-root", t }) {
   const [toasts, setToasts] = useState([]);
   const timersRef = useRef({});
 
@@ -42,7 +43,7 @@ export function ToastProvider({ children, containerId = "toast-root" }) {
               {t.type === "success" ? "✓" : t.type === "warning" ? "!" : "✕"}
             </span>
             <span className="toast__text">{t.message}</span>
-            <button className="toast__close" onClick={() => remove(t.id)} aria-label="Cerrar">
+            <button className="toast__close" onClick={() => remove(t.id)} aria-label={t("common.toast.close")}>
               ✕
             </button>
           </div>
@@ -53,6 +54,11 @@ export function ToastProvider({ children, containerId = "toast-root" }) {
 }
 
 // eslint-disable-next-line react/only-export-components
+export function ToastProvider(props) {
+  const { t } = useTranslation();
+  return <ToastProviderInner {...props} t={t} />;
+}
+
 export function useToast() {
   const ctx = useContext(ToastContext);
   if (!ctx) throw new Error("useToast debe usarse dentro de ToastProvider");
