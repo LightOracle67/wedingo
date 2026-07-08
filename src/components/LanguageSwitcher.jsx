@@ -107,7 +107,7 @@ export default function LanguageSwitcher() {
       </button>
 
       {open && (
-        <div className="modal-overlay modal-overlay--clear" onClick={() => setOpen(false)} role="dialog" aria-modal="true" aria-label="Seleccionar idioma">
+        <div className="modal-overlay" onClick={() => setOpen(false)} role="dialog" aria-modal="true" aria-label="Seleccionar idioma">
           <div className="modal-card lang-modal" ref={modalRef} onClick={(e) => e.stopPropagation()}>
             <button className="modal-close" onClick={() => setOpen(false)} aria-label="Cerrar">&times;</button>
             <p className="modal-title">Seleccionar idioma</p>
