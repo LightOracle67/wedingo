@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
 
 const GROUPS = [
@@ -89,16 +90,9 @@ export default function LanguageSwitcher() {
 
   useEffect(() => {
     if (!open) return;
-    const handleClick = (e) => {
-      if (popupRef.current && !popupRef.current.contains(e.target)) setOpen(false);
-    };
     const handleKey = (e) => { if (e.key === "Escape") setOpen(false); };
-    document.addEventListener("mousedown", handleClick);
     window.addEventListener("keydown", handleKey);
-    return () => {
-      document.removeEventListener("mousedown", handleClick);
-      window.removeEventListener("keydown", handleKey);
-    };
+    return () => window.removeEventListener("keydown", handleKey);
   }, [open]);
 
   return (
@@ -114,29 +108,30 @@ export default function LanguageSwitcher() {
         🌐 {currentLabel}
       </button>
 
-      {open && (
+      {open && createPortal(
         <div className="lang-popup" onClick={() => setOpen(false)}>
           <div className="lang-popup__card" ref={popupRef} onClick={(e) => e.stopPropagation()}>
-          {GROUPS.map((group) => (
-            <div key={group.label} className="lang-popup__group">
-              <p className="lang-popup__group-title">{group.label}</p>
-              <div className="lang-popup__options">
-                {group.options.map((lang) => (
-                  <button
-                    key={lang.code}
-                    type="button"
-                    className={`lang-popup__btn ${currentLang === lang.code ? "lang-popup__btn--active" : ""}`}
-                    onClick={() => { i18n.changeLanguage(lang.code); setOpen(false); }}
-                  >
-                    <span className="lang-popup__code">{lang.code.toUpperCase()}</span>
-                    <span className="lang-popup__name">{lang.label.split(" — ")[1] || lang.label}</span>
-                  </button>
-                ))}
+            {GROUPS.map((group) => (
+              <div key={group.label} className="lang-popup__group">
+                <p className="lang-popup__group-title">{group.label}</p>
+                <div className="lang-popup__options">
+                  {group.options.map((lang) => (
+                    <button
+                      key={lang.code}
+                      type="button"
+                      className={`lang-popup__btn ${currentLang === lang.code ? "lang-popup__btn--active" : ""}`}
+                      onClick={() => { i18n.changeLanguage(lang.code); setOpen(false); }}
+                    >
+                      <span className="lang-popup__code">{lang.code.toUpperCase()}</span>
+                      <span className="lang-popup__name">{lang.label.split(" — ")[1] || lang.label}</span>
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );
