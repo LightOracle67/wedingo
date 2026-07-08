@@ -115,7 +115,8 @@ export default function LanguageSwitcher() {
       </button>
 
       {open && (
-        <div className="lang-popup" ref={popupRef}>
+        <div className="lang-popup" onClick={() => setOpen(false)}>
+          <div className="lang-popup__card" ref={popupRef} onClick={(e) => e.stopPropagation()}>
           {GROUPS.map((group) => (
             <div key={group.label} className="lang-popup__group">
               <p className="lang-popup__group-title">{group.label}</p>
@@ -134,6 +135,7 @@ export default function LanguageSwitcher() {
               </div>
             </div>
           ))}
+          </div>
         </div>
       )}
     </div>

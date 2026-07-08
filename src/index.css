@@ -4076,10 +4076,17 @@ a:focus-visible {
 }
 
 .lang-popup {
-  position: absolute;
-  bottom: calc(100% + 0.5rem);
-  right: 0;
+  position: fixed;
+  inset: 0;
   z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.lang-popup__card {
+  pointer-events: auto;
   background: linear-gradient(150deg, rgba(28,22,16,0.98), rgba(18,12,8,0.96));
   border: 1px solid var(--setup-border);
   border-radius: 0.8rem;
