@@ -11,8 +11,8 @@ const InfoSection = memo(function InfoSection({ style, className, weddingSchedul
     >
       <div className="story-card story-panel story-card--info w-full text-center">
         <>
-          <p className="story-eyebrow">{t("info:sectionLabel")}</p>
-          <h2 className="story-title">{t("info:scheduleTitle")}</h2>
+          <p className="story-eyebrow">{t("info.sectionLabel")}</p>
+          <h2 className="story-title">{t("info.scheduleTitle")}</h2>
           {weddingSchedule ? (
             <div className="mt-4 space-y-1 text-left">
               {weddingSchedule.split("\n").filter(Boolean).map((line, i) => {
@@ -33,27 +33,27 @@ const InfoSection = memo(function InfoSection({ style, className, weddingSchedul
             </div>
           ) : (
             <p className="story-copy" style={{ fontStyle: "italic" }}>
-              {t("info:schedulePending")}
+              {t("info.schedulePending")}
             </p>
           )}
         </>
         <>
           <div className="story-divider" />
-          <p className="story-eyebrow">{t("info:dressCodeLabel")}</p>
-          <h3 className="story-subheading">{t("info:dressCodeTitle")}</h3>
+          <p className="story-eyebrow">{t("info.dressCodeLabel")}</p>
+          <h3 className="story-subheading">{t("info.dressCodeTitle")}</h3>
           {weddingDressCode ? (
             <p className="story-copy">{weddingDressCode}</p>
           ) : (
             <p className="story-copy" style={{ fontStyle: "italic" }}>
-              {t("info:dressCodePending")}
+              {t("info.dressCodePending")}
             </p>
           )}
         </>
         {kidsPolicy ? (
           <>
             <div className="story-divider" />
-            <p className="story-eyebrow">{t("info:kidsLabel")}</p>
-            <h3 className="story-subheading">{t("info:kidsTitle")}</h3>
+            <p className="story-eyebrow">{t("info.kidsLabel")}</p>
+            <h3 className="story-subheading">{t("info.kidsTitle")}</h3>
             <p className="story-copy whitespace-pre-line">{kidsPolicy}</p>
           </>
         ) : null}

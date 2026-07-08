@@ -40,13 +40,13 @@ export default function SetupForm({ prefix = "" }) {
   const handleCouplePhotoUpload = useCallback(async (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    if (!ALLOWED_UPLOAD_TYPES.has(file.type)) { addToast("error", t("setup:errorFileFormat")); return; }
-    if (file.size > MAX_UPLOAD_SIZE_BYTES) { addToast("error", t("setup:errorFileSize")); return; }
+    if (!ALLOWED_UPLOAD_TYPES.has(file.type)) { addToast("error", t("setup.errorFileFormat")); return; }
+    if (file.size > MAX_UPLOAD_SIZE_BYTES) { addToast("error", t("setup.errorFileSize")); return; }
     try {
       const { dataUrl } = await uploadImage(inviteToken, file);
       updateFormField("couplePhoto", dataUrl);
-      addToast("success", t("setup:photoUploaded"));
-    } catch { addToast("error", t("setup:photoUploadFailed")); }
+      addToast("success", t("setup.photoUploaded"));
+    } catch { addToast("error", t("setup.photoUploadFailed")); }
     e.target.value = "";
   }, [inviteToken, updateFormField, addToast]);
 
@@ -54,14 +54,14 @@ export default function SetupForm({ prefix = "" }) {
     const files = Array.from(e.target.files || []);
     if (!files.length) return;
     const valid = files.filter(f => ALLOWED_UPLOAD_TYPES.has(f.type) && f.size <= MAX_UPLOAD_SIZE_BYTES);
-    if (!valid.length) { addToast("error", t("setup:noValidFiles")); return; }
+    if (!valid.length) { addToast("error", t("setup.noValidFiles")); return; }
     try {
       for (const file of valid) {
         const { encrypted, dataUrl } = await uploadImage(inviteToken, file);
         await addGalleryImage(inviteToken, encrypted, dataUrl);
       }
-      addToast("success", t("setup:galleryUploadSuccess", { count: valid.length }));
-    } catch { addToast("error", t("setup:galleryUploadFailed")); }
+      addToast("success", t("setup.galleryUploadSuccess", { count: valid.length }));
+    } catch { addToast("error", t("setup.galleryUploadFailed")); }
     e.target.value = "";
   }, [inviteToken, updateFormField, addToast]);
 
@@ -76,55 +76,55 @@ export default function SetupForm({ prefix = "" }) {
 
       {!isTokenVerified ? (
       <CollapsibleSection
-        title={t("setup:accessSectionTitle")}
-        hint={t("setup:accessSectionHint")}
+        title={t("setup.accessSectionTitle")}
+        hint={t("setup.accessSectionHint")}
         defaultOpen
       >
         <label className="setup-label" htmlFor={id("adminUsername")}>
-          {t("setup:usernameLabel")}
+          {t("setup.usernameLabel")}
         </label>
         <input
           id={id("adminUsername")}
           className="setup-input"
           value={formData.adminUsername}
           onChange={(e) => updateFormField("adminUsername", e.target.value.toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 50))}
-          placeholder={t("setup:usernamePlaceholder")}
+          placeholder={t("setup.usernamePlaceholder")}
           autoComplete="username"
           name="username"
         />
         <p className="setup-help">
-          {t("setup:usernameHint")}
+          {t("setup.usernameHint")}
         </p>
       </CollapsibleSection>
       ) : null}
 
       <CollapsibleSection
-        title={t("setup:coverSectionTitle")}
-        hint={t("setup:coverSectionHint")}
+        title={t("setup.coverSectionTitle")}
+        hint={t("setup.coverSectionHint")}
         defaultOpen
       >
         <fieldset className="setup-name-group">
-          <legend className="setup-label">{t("setup:namesLegend")}</legend>
+          <legend className="setup-label">{t("setup.namesLegend")}</legend>
           <div className="setup-name-grid">
             <div className="setup-name-col">
-              <label className="setup-label" htmlFor={id("firstName")}>{t("setup:firstNameLabel")}</label>
+              <label className="setup-label" htmlFor={id("firstName")}>{t("setup.firstNameLabel")}</label>
               <input
                 id={id("firstName")}
                 className="setup-input"
                 value={formData.firstName}
                 onChange={(e) => updateFormField("firstName", e.target.value.slice(0, 20))}
-                placeholder={t("setup:namePlaceholder")}
+                placeholder={t("setup.namePlaceholder")}
                 autoComplete="off"
               />
             </div>
             <div className="setup-name-col">
-              <label className="setup-label" htmlFor={id("secondName")}>{t("setup:secondNameLabel")}</label>
+              <label className="setup-label" htmlFor={id("secondName")}>{t("setup.secondNameLabel")}</label>
               <input
                 id={id("secondName")}
                 className="setup-input"
                 value={formData.secondName}
                 onChange={(e) => updateFormField("secondName", e.target.value.slice(0, 20))}
-                placeholder={t("setup:namePlaceholder")}
+                placeholder={t("setup.namePlaceholder")}
                 autoComplete="off"
               />
             </div>
@@ -132,34 +132,34 @@ export default function SetupForm({ prefix = "" }) {
         </fieldset>
 
         <fieldset className="setup-name-group">
-          <legend className="setup-label">{t("setup:godparentsLegend")}</legend>
+          <legend className="setup-label">{t("setup.godparentsLegend")}</legend>
           <div className="setup-name-grid">
             <div className="setup-name-col">
-              <label className="setup-label" htmlFor={id("godparent1")}>{t("setup:godparent1Label")}</label>
-              <input id={id("godparent1")} className="setup-input" value={formData.godparent1} onChange={(e) => updateFormField("godparent1", e.target.value.slice(0, 40))} placeholder={t("setup:namePlaceholder")} autoComplete="off" />
+              <label className="setup-label" htmlFor={id("godparent1")}>{t("setup.godparent1Label")}</label>
+              <input id={id("godparent1")} className="setup-input" value={formData.godparent1} onChange={(e) => updateFormField("godparent1", e.target.value.slice(0, 40))} placeholder={t("setup.namePlaceholder")} autoComplete="off" />
             </div>
             <div className="setup-name-col">
-              <label className="setup-label" htmlFor={id("godparent2")}>{t("setup:godparent2Label")}</label>
-              <input id={id("godparent2")} className="setup-input" value={formData.godparent2} onChange={(e) => updateFormField("godparent2", e.target.value.slice(0, 40))} placeholder={t("setup:namePlaceholder")} autoComplete="off" />
+              <label className="setup-label" htmlFor={id("godparent2")}>{t("setup.godparent2Label")}</label>
+              <input id={id("godparent2")} className="setup-input" value={formData.godparent2} onChange={(e) => updateFormField("godparent2", e.target.value.slice(0, 40))} placeholder={t("setup.namePlaceholder")} autoComplete="off" />
             </div>
           </div>
-          <p className="setup-help">{t("setup:godparentsHint")}</p>
+          <p className="setup-help">{t("setup.godparentsHint")}</p>
         </fieldset>
 
         <label className="setup-label" htmlFor={id("inviteMessage")}>
-          {t("setup:messageLabel")}
+          {t("setup.messageLabel")}
         </label>
         <textarea
           id={id("inviteMessage")}
           className="setup-textarea"
           value={formData.inviteMessage}
           onChange={(e) => updateFormField("inviteMessage", e.target.value.slice(0, 220))}
-          placeholder={t("setup:messagePlaceholder")}
+          placeholder={t("setup.messagePlaceholder")}
         />
 
-        <p className="setup-label">{t("setup:themeLabel")}</p>
+        <p className="setup-label">{t("setup.themeLabel")}</p>
         {THEME_GROUPS.map((group) => (
-          <CollapsibleSection key={group.value} title={group.label} hint={t("setup:themeGroupCount", { count: THEME_OPTIONS.filter((t) => t.group === group.value).length })}>
+          <CollapsibleSection key={group.value} title={group.label} hint={t("setup.themeGroupCount", { count: THEME_OPTIONS.filter((t) => t.group === group.value).length })}>
             <div className="theme-picker__grid">
               {THEME_OPTIONS.filter((t) => t.group === group.value).map((theme) => {
                 const colors = THEME_PREVIEW_COLORS[theme.value];
@@ -191,30 +191,30 @@ export default function SetupForm({ prefix = "" }) {
         <div className="setup-background-panel">
           <div className="setup-background-panel__header">
             <div>
-              <p className="setup-label setup-label--tight">{t("setup:backgroundLabel")}</p>
+              <p className="setup-label setup-label--tight">{t("setup.backgroundLabel")}</p>
               <p className="setup-help setup-help--tight">
-                {t("setup:backgroundText")}
+                {t("setup.backgroundText")}
               </p>
             </div>
             {formData.backgroundImage ? (
               <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleClearBackground}>
-                {t("setup:removeBackground")}
+                {t("setup.removeBackground")}
               </button>
             ) : null}
           </div>
 
           <label className="setup-upload" htmlFor={id("backgroundUpload")}>
-            <span className="setup-upload__title">{t("setup:uploadTitle")}</span>
-            <span className="setup-upload__subtitle">{t("setup:uploadSubtitle")}</span>
+            <span className="setup-upload__title">{t("setup.uploadTitle")}</span>
+            <span className="setup-upload__subtitle">{t("setup.uploadSubtitle")}</span>
           </label>
           <input id={id("backgroundUpload")} className="setup-upload__input" type="file" accept={[...ALLOWED_UPLOAD_TYPES].join(",")} onChange={handleBackgroundUpload} />
 
           {formData.backgroundImage ? (
             <div className="setup-selected-background">
-              <img src={formData.backgroundImage} alt={t("setup:currentBackground")} className="setup-selected-background__image" />
+              <img src={formData.backgroundImage} alt={t("setup.currentBackground")} className="setup-selected-background__image" />
               <div>
-                <p className="setup-selected-background__title">{t("setup:currentBackground")}</p>
-                <p className="setup-help setup-help--tight">{formData.backgroundImageLabel || t("setup:selectedImage")}</p>
+                <p className="setup-selected-background__title">{t("setup.currentBackground")}</p>
+                <p className="setup-help setup-help--tight">{formData.backgroundImageLabel || t("setup.selectedImage")}</p>
               </div>
             </div>
           ) : null}
@@ -238,37 +238,37 @@ export default function SetupForm({ prefix = "" }) {
         </div>
 
         <div className="setup-background-panel" style={{ marginTop: "0.75rem" }}>
-          <p className="setup-label">{t("setup:couplePhotoLabel")}</p>
+          <p className="setup-label">{t("setup.couplePhotoLabel")}</p>
           <label className="setup-upload" htmlFor={id("couplePhoto")}>
-            <span className="setup-upload__title">{t("setup:couplePhotoUpload")}</span>
-            <span className="setup-upload__subtitle">{t("setup:couplePhotoHint")}</span>
+            <span className="setup-upload__title">{t("setup.couplePhotoUpload")}</span>
+            <span className="setup-upload__subtitle">{t("setup.couplePhotoHint")}</span>
           </label>
           <input ref={photoRef} id={id("couplePhoto")} className="setup-upload__input" type="file" accept="image/jpeg,image/png,image/webp" onChange={handleCouplePhotoUpload} />
           {formData.couplePhoto ? (
             <div className="setup-selected-background">
-              <img src={formData.couplePhoto} alt={t("setup:couplePhotoLabel")} className="setup-selected-background__image" style={{ borderRadius: "50%", aspectRatio: "1", width: "5rem" }} />
+              <img src={formData.couplePhoto} alt={t("setup.couplePhotoLabel")} className="setup-selected-background__image" style={{ borderRadius: "50%", aspectRatio: "1", width: "5rem" }} />
               <div>
-                <p className="setup-selected-background__title">{t("setup:currentPhoto")}</p>
-                <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => { updateFormField("couplePhoto", ""); updateFormField("couplePhotoStorage", ""); }}>{t("setup:remove")}</button>
+                <p className="setup-selected-background__title">{t("setup.currentPhoto")}</p>
+                <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => { updateFormField("couplePhoto", ""); updateFormField("couplePhotoStorage", ""); }}>{t("setup.remove")}</button>
               </div>
             </div>
           ) : null}
         </div>
 
-        <label className="setup-label" htmlFor={id("musicUrl")}>{t("setup:musicLabel")}</label>
-        <input id={id("musicUrl")} className="setup-input" value={formData.musicUrl} onChange={(e) => updateFormField("musicUrl", e.target.value.slice(0, 500))} placeholder={t("setup:musicPlaceholder")} autoComplete="off" />
-        <p className="setup-help">{t("setup:musicHint")}</p>
+        <label className="setup-label" htmlFor={id("musicUrl")}>{t("setup.musicLabel")}</label>
+        <input id={id("musicUrl")} className="setup-input" value={formData.musicUrl} onChange={(e) => updateFormField("musicUrl", e.target.value.slice(0, 500))} placeholder={t("setup.musicPlaceholder")} autoComplete="off" />
+        <p className="setup-help">{t("setup.musicHint")}</p>
 
 
       </CollapsibleSection>
 
       {!hiddenSet.has("details") ? (
       <CollapsibleSection
-        title={t("setup:dateSectionTitle")}
-        hint={t("setup:dateSectionHint")}
+        title={t("setup.dateSectionTitle")}
+        hint={t("setup.dateSectionHint")}
       >
         <label className="setup-label" htmlFor={id("weddingPlace")}>
-          {t("setup:placeLabel")}
+          {t("setup.placeLabel")}
         </label>
         <div style={{ position: "relative" }}>
           <input
@@ -308,7 +308,7 @@ export default function SetupForm({ prefix = "" }) {
               const el = document.getElementById("weddingPlaceResults");
               if (el) el.innerHTML = "";
             }, 200)}
-            placeholder={t("setup:placePlaceholder")}
+            placeholder={t("setup.placePlaceholder")}
             autoComplete="off"
           />
           <div id="weddingPlaceResults" style={{
@@ -318,7 +318,7 @@ export default function SetupForm({ prefix = "" }) {
             maxHeight: "200px", overflowY: "auto",
           }} />
         </div>
-        <p className="setup-help">{t("setup:placeHint")}</p>
+        <p className="setup-help">{t("setup.placeHint")}</p>
 
 
 
@@ -328,103 +328,103 @@ export default function SetupForm({ prefix = "" }) {
           if (!locationPreview) return null;
           return (
             <div className="setup-location-preview">
-              <p className="setup-label setup-label--tight">{t("setup:mapPreview")}</p>
-              <img src={locationPreview.src} alt={t("setup:mapPreview")} className="setup-location-preview__image" />
+              <p className="setup-label setup-label--tight">{t("setup.mapPreview")}</p>
+              <img src={locationPreview.src} alt={t("setup.mapPreview")} className="setup-location-preview__image" />
             </div>
           );
         })()}
 
         <div className="setup-date-grid">
           <div>
-            <label className="setup-label" htmlFor={id("weddingDay")}>{t("setup:dayLabel")}</label>
+            <label className="setup-label" htmlFor={id("weddingDay")}>{t("setup.dayLabel")}</label>
             <input
               id={id("weddingDay")}
               className="setup-input"
               value={formData.weddingDay}
               onChange={(e) => handleDayChange(e.target.value)}
-              placeholder={t("setup:dayPlaceholder")}
+              placeholder={t("setup.dayPlaceholder")}
               autoComplete="off"
             />
           </div>
           <div>
-            <label className="setup-label" htmlFor={id("weddingMonth")}>{t("setup:monthLabel")}</label>
+            <label className="setup-label" htmlFor={id("weddingMonth")}>{t("setup.monthLabel")}</label>
             <select
               id={id("weddingMonth")}
               className="setup-input"
               value={formData.weddingMonth}
               onChange={(e) => updateFormField("weddingMonth", e.target.value)}
             >
-              <option value="" disabled>{t("setup:monthPlaceholder")}</option>
+              <option value="" disabled>{t("setup.monthPlaceholder")}</option>
               {MONTH_OPTIONS.map((mo) => (
                 <option key={mo.value} value={mo.value}>{mo.label}</option>
               ))}
             </select>
           </div>
           <div>
-            <label className="setup-label" htmlFor={id("weddingYear")}>{t("setup:yearLabel")}</label>
+            <label className="setup-label" htmlFor={id("weddingYear")}>{t("setup.yearLabel")}</label>
             <input
               id={id("weddingYear")}
               className="setup-input"
               value={formData.weddingYear}
               onChange={(e) => handleYearChange(e.target.value)}
-              placeholder={t("setup:yearPlaceholder")}
+              placeholder={t("setup.yearPlaceholder")}
               autoComplete="off"
             />
-            <p className="setup-help">{t("setup:yearMaxHint", { year: maxAllowedYear })}</p>
+            <p className="setup-help">{t("setup.yearMaxHint", { year: maxAllowedYear })}</p>
           </div>
         </div>
 
         <div className="setup-date-grid">
           <div>
-            <label className="setup-label" htmlFor={id("weddingHour")}>{t("setup:hourLabel")}</label>
+            <label className="setup-label" htmlFor={id("weddingHour")}>{t("setup.hourLabel")}</label>
             <input
               id={id("weddingHour")}
               className="setup-input"
               value={formData.weddingHour}
               onChange={(e) => handleHourChange(e.target.value)}
-              placeholder={t("setup:hourPlaceholder")}
+              placeholder={t("setup.hourPlaceholder")}
               inputMode="numeric"
               autoComplete="off"
             />
-            <p className="setup-help">{t("setup:hourHint")}</p>
+            <p className="setup-help">{t("setup.hourHint")}</p>
           </div>
           <div>
-            <label className="setup-label" htmlFor={id("weddingMinute")}>{t("setup:minuteLabel")}</label>
+            <label className="setup-label" htmlFor={id("weddingMinute")}>{t("setup.minuteLabel")}</label>
             <input
               id={id("weddingMinute")}
               className="setup-input"
               value={formData.weddingMinute}
               onChange={(e) => handleMinuteChange(e.target.value)}
               onBlur={handleMinuteBlur}
-              placeholder={t("setup:minutePlaceholder")}
+              placeholder={t("setup.minutePlaceholder")}
               inputMode="numeric"
               autoComplete="off"
             />
-            <p className="setup-help">{t("setup:minuteHint")}</p>
+            <p className="setup-help">{t("setup.minuteHint")}</p>
           </div>
         </div>
 
         <label className="setup-label" htmlFor={id("weddingSchedule")}>
-          {t("setup:scheduleLabel")}
+          {t("setup.scheduleLabel")}
         </label>
         <textarea
           id={id("weddingSchedule")}
           className="setup-textarea"
           value={formData.weddingSchedule}
           onChange={(e) => updateFormField("weddingSchedule", e.target.value.slice(0, 2000))}
-          placeholder={t("setup:schedulePlaceholder")}
+          placeholder={t("setup.schedulePlaceholder")}
           rows={4}
         />
-        <p className="setup-help">{t("setup:scheduleHint")}</p>
+        <p className="setup-help">{t("setup.scheduleHint")}</p>
 
-        <label className="setup-label">{t("setup:dressCodeLabel")}</label>
+        <label className="setup-label">{t("setup.dressCodeLabel")}</label>
         <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))" }}>
           {[
-            { value: "Traje de gala", key: "setup:dressCodeGala" },
-            { value: "Etiqueta informal", key: "setup:dressCodeCasual" },
-            { value: "Vestimenta formal", key: "setup:dressCodeFormal" },
-            { value: "Cóctel elegante", key: "setup:dressCodeCocktail" },
-            { value: "Ropa cómoda", key: "setup:dressCodeComfortable" },
+            { value: "Traje de gala", key: "setup.dressCodeGala" },
+            { value: "Etiqueta informal", key: "setup.dressCodeCasual" },
+            { value: "Vestimenta formal", key: "setup.dressCodeFormal" },
+            { value: "Cóctel elegante", key: "setup.dressCodeCocktail" },
+            { value: "Ropa cómoda", key: "setup.dressCodeComfortable" },
           ].map(({ value, key }) => (
             <label key={value} className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem", color: "var(--setup-title)" }}>
               <input type="checkbox" checked={formData.weddingDressCode === value} onChange={() => updateFormField("weddingDressCode", formData.weddingDressCode === value ? "" : value)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
@@ -432,47 +432,47 @@ export default function SetupForm({ prefix = "" }) {
             </label>
           ))}
         </div>
-        <p className="setup-help">{t("setup:dressCodeHint")}</p>
+        <p className="setup-help">{t("setup.dressCodeHint")}</p>
 
         <label className="setup-label" htmlFor={id("accommodationInfo")}>
-          {t("setup:accommodationLabel")}
+          {t("setup.accommodationLabel")}
         </label>
         <textarea
           id={id("accommodationInfo")}
           className="setup-textarea"
           value={formData.accommodationInfo}
           onChange={(e) => updateFormField("accommodationInfo", e.target.value.slice(0, 2000))}
-          placeholder={t("setup:accommodationPlaceholder")}
+          placeholder={t("setup.accommodationPlaceholder")}
           rows={4}
         />
-        <p className="setup-help">{t("setup:accommodationHint")}</p>
+        <p className="setup-help">{t("setup.accommodationHint")}</p>
 
         <label className="setup-label" htmlFor={id("transportInfo")}>
-          {t("setup:transportLabel")}
+          {t("setup.transportLabel")}
         </label>
         <textarea
           id={id("transportInfo")}
           className="setup-textarea"
           value={formData.transportInfo}
           onChange={(e) => updateFormField("transportInfo", e.target.value.slice(0, 2000))}
-          placeholder={t("setup:transportPlaceholder")}
+          placeholder={t("setup.transportPlaceholder")}
           rows={4}
         />
-        <p className="setup-help">{t("setup:transportHint")}</p>
+        <p className="setup-help">{t("setup.transportHint")}</p>
       </CollapsibleSection>
       ) : null}
 
       {!hiddenSet.has("info") ? (
       <CollapsibleSection
-        title={t("setup:guestsSectionTitle")}
-        hint={t("setup:guestsSectionHint")}
+        title={t("setup.guestsSectionTitle")}
+        hint={t("setup.guestsSectionHint")}
       >
-        <label className="setup-label">{t("setup:kidsLabel")}</label>
+        <label className="setup-label">{t("setup.kidsLabel")}</label>
         <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))" }}>
           {[
-            { value: "Bienvenidos con zona de juegos", key: "setup:kidsWelcome" },
-            { value: "Bienvenidos bajo supervisión", key: "setup:kidsSupervised" },
-            { value: "Solo para adultos", key: "setup:kidsAdultOnly" },
+            { value: "Bienvenidos con zona de juegos", key: "setup.kidsWelcome" },
+            { value: "Bienvenidos bajo supervisión", key: "setup.kidsSupervised" },
+            { value: "Solo para adultos", key: "setup.kidsAdultOnly" },
           ].map(({ value, key }) => (
             <label key={value} className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem", color: "var(--setup-title)" }}>
               <input type="checkbox" checked={formData.kidsPolicy === value} onChange={() => updateFormField("kidsPolicy", formData.kidsPolicy === value ? "" : value)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
@@ -480,23 +480,23 @@ export default function SetupForm({ prefix = "" }) {
             </label>
           ))}
         </div>
-        <p className="setup-help">{t("setup:kidsHint")}</p>
+        <p className="setup-help">{t("setup.kidsHint")}</p>
 
         <div className="story-divider" style={{ margin: "0.75rem 0" }} />
-        <label className="setup-label" style={{ marginBottom: "0.3rem", display: "block" }}>{t("setup:menuCelebrationLabel")}</label>
+        <label className="setup-label" style={{ marginBottom: "0.3rem", display: "block" }}>{t("setup.menuCelebrationLabel")}</label>
 
         <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.9rem", cursor: "pointer", marginBottom: "0.5rem" }}>
           <input type="checkbox" checked={formData.menuEnabled === "true"} onChange={(e) => updateFormField("menuEnabled", e.target.checked ? "true" : "false")} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
-          <span>{t("setup:menuEnabledLabel")}</span>
+          <span>{t("setup.menuEnabledLabel")}</span>
         </label>
 
         {formData.menuEnabled === "true" ? (
           <>
-            <p className="setup-help" style={{ marginBottom: "0.4rem" }}>{t("setup:menuHint")}</p>
+            <p className="setup-help" style={{ marginBottom: "0.4rem" }}>{t("setup.menuHint")}</p>
             {[
-              { key: "menuCarne", labelKey: "setup:menuCarneLabel", phKey: "setup:menuCarnePlaceholder" },
-              { key: "menuPescado", labelKey: "setup:menuPescadoLabel", phKey: "setup:menuPescadoPlaceholder" },
-              { key: "menuVegano", labelKey: "setup:menuVeganoLabel", phKey: "setup:menuVeganoPlaceholder" },
+              { key: "menuCarne", labelKey: "setup.menuCarneLabel", phKey: "setup.menuCarnePlaceholder" },
+              { key: "menuPescado", labelKey: "setup.menuPescadoLabel", phKey: "setup.menuPescadoPlaceholder" },
+              { key: "menuVegano", labelKey: "setup.menuVeganoLabel", phKey: "setup.menuVeganoPlaceholder" },
             ].map(({ key, labelKey, phKey }) => {
               const val = formData[key] || "";
               return (
@@ -510,15 +510,15 @@ export default function SetupForm({ prefix = "" }) {
               );
             })}
             <div style={{ marginBottom: "0.5rem" }}>
-              <p className="setup-label" style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}>{t("setup:postreLabel")}</p>
-              <textarea className="setup-textarea" value={formData.menuPostre || ""} onChange={(e) => updateFormField("menuPostre", e.target.value)} placeholder={t("setup:postrePlaceholder")} rows={2} style={{ fontSize: "0.85rem" }} />
+              <p className="setup-label" style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}>{t("setup.postreLabel")}</p>
+              <textarea className="setup-textarea" value={formData.menuPostre || ""} onChange={(e) => updateFormField("menuPostre", e.target.value)} placeholder={t("setup.postrePlaceholder")} rows={2} style={{ fontSize: "0.85rem" }} />
             </div>
-            <p className="setup-help">{t("setup:menuRequiredText")}</p>
+            <p className="setup-help">{t("setup.menuRequiredText")}</p>
           </>
         ) : (
           <>
-            <textarea className="setup-textarea" value={formData.menuTexto} onChange={(e) => updateFormField("menuTexto", e.target.value.slice(0, 2000))} placeholder={t("setup:menuTextoPlaceholder")} rows={3} />
-            <p className="setup-help">{t("setup:menuTextoHint")}</p>
+            <textarea className="setup-textarea" value={formData.menuTexto} onChange={(e) => updateFormField("menuTexto", e.target.value.slice(0, 2000))} placeholder={t("setup.menuTextoPlaceholder")} rows={3} />
+            <p className="setup-help">{t("setup.menuTextoHint")}</p>
           </>
         )}
       </CollapsibleSection>
@@ -526,54 +526,54 @@ export default function SetupForm({ prefix = "" }) {
 
       {!hiddenSet.has("story") ? (
       <CollapsibleSection
-        title={t("setup:storySectionTitle")}
-        hint={t("setup:storySectionHint")}
+        title={t("setup.storySectionTitle")}
+        hint={t("setup.storySectionHint")}
       >
         <label className="setup-label" htmlFor={id("storyText")}>
-          {t("setup:storyLabel")}
+          {t("setup.storyLabel")}
         </label>
         <textarea
           id={id("storyText")}
           className="setup-textarea"
           value={formData.storyText}
           onChange={(e) => updateFormField("storyText", e.target.value.slice(0, 2000))}
-          placeholder={t("setup:storyPlaceholder")}
+          placeholder={t("setup.storyPlaceholder")}
           rows={4}
         />
-        <p className="setup-help">{t("setup:storyHint")}</p>
+        <p className="setup-help">{t("setup.storyHint")}</p>
       </CollapsibleSection>
       ) : null}
 
       {!hiddenSet.has("gifts") ? (
       <CollapsibleSection
-        title={t("setup:giftsSectionTitle")}
-        hint={t("setup:giftsSectionHint")}
+        title={t("setup.giftsSectionTitle")}
+        hint={t("setup.giftsSectionHint")}
       >
         <label className="setup-label" htmlFor={id("giftsInfo")}>
-          {t("setup:giftsInfoLabel")}
+          {t("setup.giftsInfoLabel")}
         </label>
         <textarea
           id={id("giftsInfo")}
           className="setup-textarea"
           value={formData.giftsInfo}
           onChange={(e) => updateFormField("giftsInfo", e.target.value.slice(0, 2000))}
-          placeholder={t("setup:giftsInfoPlaceholder")}
+          placeholder={t("setup.giftsInfoPlaceholder")}
           rows={4}
         />
-        <p className="setup-help">{t("setup:giftsInfoHint")}</p>
+        <p className="setup-help">{t("setup.giftsInfoHint")}</p>
 
         <label className="setup-label" htmlFor={id("bankInfo")}>
-          {t("setup:bankInfoLabel")}
+          {t("setup.bankInfoLabel")}
         </label>
         <input
           id={id("bankInfo")}
           className="setup-input"
           value={formData.bankInfo}
           onChange={(e) => updateFormField("bankInfo", e.target.value.slice(0, 100))}
-          placeholder={t("setup:bankInfoPlaceholder")}
+          placeholder={t("setup.bankInfoPlaceholder")}
           autoComplete="off"
         />
-        <p className="setup-help">{t("setup:bankInfoHint")}</p>
+        <p className="setup-help">{t("setup.bankInfoHint")}</p>
       </CollapsibleSection>
       ) : null}
 
@@ -582,12 +582,12 @@ export default function SetupForm({ prefix = "" }) {
 
       {!hiddenSet.has("gallery") ? (
       <CollapsibleSection
-        title={t("setup:gallerySectionTitle")}
-        hint={t("setup:gallerySectionHint")}
+        title={t("setup.gallerySectionTitle")}
+        hint={t("setup.gallerySectionHint")}
       >
         <label className="setup-upload" htmlFor={id("galleryUpload")}>
-          <span className="setup-upload__title">{t("setup:galleryUploadLabel")}</span>
-          <span className="setup-upload__subtitle">{t("setup:galleryUploadHint")}</span>
+          <span className="setup-upload__title">{t("setup.galleryUploadLabel")}</span>
+          <span className="setup-upload__subtitle">{t("setup.galleryUploadHint")}</span>
         </label>
         <input ref={galleryRef} id={id("galleryUpload")} className="setup-upload__input" type="file" accept="image/jpeg,image/png,image/webp" multiple onChange={handleGalleryUpload} />
         {(() => {
@@ -598,7 +598,7 @@ export default function SetupForm({ prefix = "" }) {
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(80px, 1fr))", gap: "0.4rem", marginTop: "0.5rem" }}>
                 {images.map((src, i) => (
                   <div key={i} style={{ position: "relative" }}>
-                    <img src={src} alt={t("setup:galleryUploadLabel")} style={{ width: "100%", aspectRatio: "1", objectFit: "cover", borderRadius: "0.5rem" }} />
+                    <img src={src} alt={t("setup.galleryUploadLabel")} style={{ width: "100%", aspectRatio: "1", objectFit: "cover", borderRadius: "0.5rem" }} />
                     <button type="button" onClick={() => {
                       const arr = JSON.parse(formData.galleryImages || "[]");
                       arr.splice(i, 1);
@@ -617,13 +617,13 @@ export default function SetupForm({ prefix = "" }) {
       {!hasStoredConfig ? (
         <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.85rem", cursor: "pointer" }}>
           <input type="checkbox" checked={formData._privacyConsent === "true"} onChange={(e) => updateFormField("_privacyConsent", e.target.checked ? "true" : "false")} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
-          <Trans i18nKey="setup:privacyConsent" components={{ link: <button type="button" onClick={() => setLegalModal("privacy")} style={{ color: "var(--setup-accent)", textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", fontSize: "inherit", padding: 0 }} /> }} />
+          <Trans i18nKey="setup.privacyConsent" components={{ link: <button type="button" onClick={() => setLegalModal("privacy")} style={{ color: "var(--setup-accent)", textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", fontSize: "inherit", padding: 0 }} /> }} />
         </label>
       ) : null}
 
       <div className="setup-actions" style={{ padding: "0.25rem 0" }}>
         <button className="setup-button" type="submit">
-          {t("common:save")}
+          {t("common.save")}
         </button>
       </div>
     </form>

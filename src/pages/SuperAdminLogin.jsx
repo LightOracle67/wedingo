@@ -20,11 +20,11 @@ export default function SuperAdminLogin() {
   if (isLoading) {
     return (
       <div className="setup-layout">
-        <section className="setup-card allow-select" aria-label={t("common:loading")}>
+        <section className="setup-card allow-select" aria-label={t("common.loading")}>
           <header className="setup-header">
             <div>
-              <p className="setup-eyebrow">{t("superadmin:superadmin")}</p>
-              <h1 className="setup-title">{t("common:loading")}</h1>
+              <p className="setup-eyebrow">{t("superadmin.superadmin")}</p>
+              <h1 className="setup-title">{t("common.loading")}</h1>
             </div>
           </header>
         </section>
@@ -46,13 +46,13 @@ export default function SuperAdminLogin() {
 
   return (
     <div className="setup-layout">
-      <section className="setup-card allow-select" aria-label={t("superadmin:controlPanel")}>
+      <section className="setup-card allow-select" aria-label={t("superadmin.controlPanel")}>
         <header className="setup-header">
           <div>
-            <p className="setup-eyebrow">{t("superadmin:superadmin")}</p>
-            <h1 className="setup-title">{t("superadmin:controlPanel")}</h1>
+            <p className="setup-eyebrow">{t("superadmin.superadmin")}</p>
+            <h1 className="setup-title">{t("superadmin.controlPanel")}</h1>
             <p className="setup-subtitle">
-              {t("superadmin:managePlatform")}
+              {t("superadmin.managePlatform")}
             </p>
           </div>
         </header>
@@ -88,7 +88,7 @@ export default function SuperAdminLogin() {
 
           <div className="setup-actions">
             <button className="setup-button" type="submit" disabled={submitting}>
-              {submitting ? t("common:loading") : "Entrar"}
+              {submitting ? t("common.loading") : "Entrar"}
             </button>
           </div>
         </form>

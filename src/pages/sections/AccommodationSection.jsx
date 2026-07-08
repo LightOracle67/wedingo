@@ -10,13 +10,13 @@ const AccommodationSection = memo(function AccommodationSection({ style, classNa
       style={style}
     >
       <div className="story-card story-panel story-card--info w-full text-center">
-        <p className="story-eyebrow">{t("accommodation:sectionLabel")}</p>
-        <h2 className="story-title">{t("accommodation:title")}</h2>
+        <p className="story-eyebrow">{t("accommodation.sectionLabel")}</p>
+        <h2 className="story-title">{t("accommodation.title")}</h2>
         {accommodationInfo ? (
           <p className="story-copy mt-4 whitespace-pre-line">{accommodationInfo}</p>
         ) : (
           <p className="story-copy mt-4" style={{ fontStyle: "italic" }}>
-            {t("accommodation:pending")}
+            {t("accommodation.pending")}
           </p>
         )}
       </div>

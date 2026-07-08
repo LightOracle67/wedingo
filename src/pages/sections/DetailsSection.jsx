@@ -17,26 +17,26 @@ const DetailsSection = memo(function DetailsSection({
       style={style}
     >
       <div className="story-card story-panel story-card--details w-full text-center">
-        <p className="story-eyebrow">{t("details:sectionLabel")}</p>
-        <h2 className="story-title">{formattedDate || t("details:datePending")}</h2>
-        <p className="story-copy">{formattedTime ? t("details:timeLabel", { time: formattedTime }) : t("details:timePending")}</p>
+        <p className="story-eyebrow">{t("details.sectionLabel")}</p>
+        <h2 className="story-title">{formattedDate || t("details.datePending")}</h2>
+        <p className="story-copy">{formattedTime ? t("details.timeLabel", { time: formattedTime }) : t("details.timePending")}</p>
         {hasLocationData ? (
           <p className="story-copy">{locationDescription}</p>
         ) : (
-          <p className="story-copy">{t("details:placePending")}</p>
+          <p className="story-copy">{t("details.placePending")}</p>
         )}
         <div className="story-divider" />
         <p className="story-note">
           {formattedTime
-            ? t("details:welcomeWithTime", { time: formattedTime })
-            : t("details:welcomeWithoutTime")}
+            ? t("details.welcomeWithTime", { time: formattedTime })
+            : t("details.welcomeWithoutTime")}
           </p>
         {transportInfo ? (
           <div className="story-divider" />
         ) : null}
         {transportInfo ? (
           <div style={{ marginTop: "0.5rem" }}>
-            <p className="story-eyebrow" style={{ fontSize: "0.72rem" }}>{t("details:transport")}</p>
+            <p className="story-eyebrow" style={{ fontSize: "0.72rem" }}>{t("details.transport")}</p>
             <p className="story-note whitespace-pre-line" style={{ marginTop: "0.2rem" }}>{transportInfo}</p>
           </div>
         ) : null}
@@ -48,7 +48,7 @@ const DetailsSection = memo(function DetailsSection({
               target="_blank"
               rel="noreferrer"
             >
-              {t("details:addToCalendar")}
+              {t("details.addToCalendar")}
             </a>
           </div>
         ) : null}
@@ -57,9 +57,9 @@ const DetailsSection = memo(function DetailsSection({
             <div
               ref={locationMapContainerRef}
               className="story-map__canvas"
-              aria-label={t("details:mapAriaLabel", { location: locationDescription || t("details:placePending") })}
+              aria-label={t("details.mapAriaLabel", { location: locationDescription || t("details.placePending") })}
             />
-            {locationMapLoading ? <p className="story-map__status">{t("details:mapLoading")}</p> : null}
+            {locationMapLoading ? <p className="story-map__status">{t("details.mapLoading")}</p> : null}
             {locationMapError ? <p className="story-map__status story-map__status--error">{locationMapError}</p> : null}
             {locationMapTarget ? (
               <div className="story-map__actions">
@@ -69,7 +69,7 @@ const DetailsSection = memo(function DetailsSection({
                   target="_blank"
                   rel="noreferrer"
                 >
-                  {t("details:viewGoogleMaps")}
+                  {t("details.viewGoogleMaps")}
                 </a>
                 <a
                   className="setup-button setup-button--ghost setup-button--compact"
@@ -77,7 +77,7 @@ const DetailsSection = memo(function DetailsSection({
                   target="_blank"
                   rel="noreferrer"
                 >
-                  {t("details:viewAppleMaps")}
+                  {t("details.viewAppleMaps")}
                 </a>
               </div>
             ) : null}

@@ -33,11 +33,11 @@ export default function SuperAdminPanel() {
   if (isLoading) {
     return (
       <div className="setup-layout">
-        <section className="setup-card allow-select" aria-label={t("common:loading")}>
+        <section className="setup-card allow-select" aria-label={t("common.loading")}>
           <header className="setup-header">
             <div>
-              <p className="setup-eyebrow">{t("superadmin:superadmin")}</p>
-              <h1 className="setup-title">{t("common:loading")}</h1>
+              <p className="setup-eyebrow">{t("superadmin.superadmin")}</p>
+              <h1 className="setup-title">{t("common.loading")}</h1>
             </div>
           </header>
         </section>
@@ -51,16 +51,16 @@ export default function SuperAdminPanel() {
 
   return (
     <div className="setup-layout setup-layout--full">
-      <section className="setup-card setup-card--full allow-select" aria-label={t("superadmin:controlPanel")}>
+      <section className="setup-card setup-card--full allow-select" aria-label={t("superadmin.controlPanel")}>
         <header className="setup-header">
           <div>
-            <p className="setup-eyebrow">{t("superadmin:superadmin")}</p>
-            <h1 className="setup-title">{t("superadmin:controlPanel")}</h1>
-            <p className="setup-subtitle">{t("superadmin:managePlatform")}</p>
+            <p className="setup-eyebrow">{t("superadmin.superadmin")}</p>
+            <h1 className="setup-title">{t("superadmin.controlPanel")}</h1>
+            <p className="setup-subtitle">{t("superadmin.managePlatform")}</p>
           </div>
         </header>
 
-        <nav className="admin-tabs" role="tablist" aria-label={t("superadmin:superadmin")}>
+        <nav className="admin-tabs" role="tablist" aria-label={t("superadmin.superadmin")}>
           {TABS.map((tab) => (
             <button
               key={tab.key}

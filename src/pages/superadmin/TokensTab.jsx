@@ -24,7 +24,7 @@ export default function TokensTab() {
       }));
       setTokens(list);
     } catch {
-      setError(t("superadmin:tokenLoadError"));
+      setError(t("superadmin.tokenLoadError"));
     } finally {
       setLoading(false);
     }
@@ -43,10 +43,10 @@ export default function TokensTab() {
         autoGen: true,
         createdAt: serverTimestamp(),
       });
-      setMessage(t("superadmin:tokenCreated", { token: rawToken }));
+      setMessage(t("superadmin.tokenCreated", { token: rawToken }));
       await loadTokens();
     } catch {
-      setError(t("superadmin:tokenCreateError"));
+      setError(t("superadmin.tokenCreateError"));
     }
   }, [loadTokens, t]);
 
@@ -55,10 +55,10 @@ export default function TokensTab() {
     setMessage("");
     try {
       await deleteDoc(doc(db, "setupTokens", tokenId));
-      setMessage(t("superadmin:tokenRevoked"));
+      setMessage(t("superadmin.tokenRevoked"));
       await loadTokens();
     } catch {
-      setError(t("superadmin:tokenRevokeError"));
+      setError(t("superadmin.tokenRevokeError"));
     }
   }, [loadTokens, t]);
 
@@ -69,21 +69,21 @@ export default function TokensTab() {
       const q = query(collection(db, "setupTokens"), where("used", "==", false));
       const snap = await getDocs(q);
       if (snap.empty) {
-        setMessage(t("superadmin:noTokensToClean"));
+        setMessage(t("superadmin.noTokensToClean"));
         return;
       }
       const batch = writeBatch(db);
       snap.docs.forEach((d) => batch.delete(d.ref));
       await batch.commit();
-      setMessage(t("superadmin:tokensCleaned", { count: snap.size }));
+      setMessage(t("superadmin.tokensCleaned", { count: snap.size }));
       await loadTokens();
     } catch {
-      setError(t("superadmin:tokenCleanError"));
+      setError(t("superadmin.tokenCleanError"));
     }
   }, [loadTokens, t]);
 
   if (loading) {
-    return <p className="setup-subtitle" style={{ textAlign: "center" }}>{t("superadmin:tokensLoading")}</p>;
+    return <p className="setup-subtitle" style={{ textAlign: "center" }}>{t("superadmin.tokensLoading")}</p>;
   }
 
   const usedCount = tokens.filter((tt) => tt.used).length;
@@ -92,22 +92,22 @@ export default function TokensTab() {
     <div>
       <div className="setup-token-card" style={{ marginBottom: "1rem" }}>
         <p style={{ margin: 0, color: "var(--setup-title)", fontSize: "0.9rem" }}>
-          {t("superadmin:tokensStats", { total: tokens.length, used: usedCount, available: tokens.length - usedCount })}
+          {t("superadmin.tokensStats", { total: tokens.length, used: usedCount, available: tokens.length - usedCount })}
         </p>
       </div>
 
       <div className="setup-actions" style={{ marginBottom: "1rem" }}>
         <button className="setup-button" type="button" onClick={handleCreate}>
-          {t("superadmin:generateToken")}
+          {t("superadmin.generateToken")}
         </button>
         <button className="setup-button setup-button--ghost" type="button" onClick={handleCleanup}>
-          {t("superadmin:cleanUnused")}
+          {t("superadmin.cleanUnused")}
         </button>
       </div>
 
       {tokens.length === 0 ? (
         <div className="setup-token-card" style={{ textAlign: "center" }}>
-          <p style={{ color: "var(--setup-muted)", margin: 0 }}>{t("superadmin:noTokens")}</p>
+          <p style={{ color: "var(--setup-muted)", margin: 0 }}>{t("superadmin.noTokens")}</p>
         </div>
       ) : (
         <div style={{ display: "grid", gap: "0.4rem" }}>
@@ -130,9 +130,9 @@ export default function TokensTab() {
                   {tt.id}
                 </p>
                 <p style={{ margin: "0.2rem 0 0", color: "var(--setup-muted)", fontSize: "0.8rem" }}>
-                  {tt.used ? t("superadmin:statusUsed") : t("superadmin:statusAvailable")}
-                  {tt.createdAtDate ? ` · ${t("superadmin:createdLabel", { date: formatDate(tt.createdAtDate.toISOString()) })}` : ""}
-                  {tt.usedAtDate ? ` · ${t("superadmin:usedLabel", { date: formatDate(tt.usedAtDate.toISOString()) })}` : ""}
+                  {tt.used ? t("superadmin.statusUsed") : t("superadmin.statusAvailable")}
+                  {tt.createdAtDate ? ` · ${t("superadmin.createdLabel", { date: formatDate(tt.createdAtDate.toISOString()) })}` : ""}
+                  {tt.usedAtDate ? ` · ${t("superadmin.usedLabel", { date: formatDate(tt.usedAtDate.toISOString()) })}` : ""}
                 </p>
               </div>
               {!tt.used && (
@@ -142,7 +142,7 @@ export default function TokensTab() {
                   style={{ padding: "0.3rem 0.7rem", fontSize: "0.8rem", borderColor: "#f6c7c7", color: "#f6c7c7" }}
                   onClick={() => handleRevoke(tt.id)}
                 >
-                  {t("superadmin:revokeButton")}
+                  {t("superadmin.revokeButton")}
                 </button>
               )}
             </div>
