@@ -3948,27 +3948,25 @@ a:focus-visible {
   color: #ccc;
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
+  background: var(--print-bg, #2a2418);
 }
 
 .print-section {
   position: relative;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2.5rem 2rem;
   overflow: hidden;
   page-break-after: always;
+  background: linear-gradient(150deg, var(--print-bg, #2a2418), color-mix(in srgb, var(--print-bg, #2a2418) 25%, #000));
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
 
 .print-section:last-of-type {
   page-break-after: auto;
-}
-
-.print-section__bg {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(150deg, var(--print-bg, #2a2418), color-mix(in srgb, var(--print-bg, #2a2418) 40%, #000));
 }
 
 .print-section__deco {
