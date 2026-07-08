@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 const GROUPS = [
@@ -81,23 +82,58 @@ const GROUPS = [
 
 export default function LanguageSwitcher() {
   const { i18n } = useTranslation();
+  const [open, setOpen] = useState(false);
+  const modalRef = useRef(null);
+  const currentLang = i18n.language?.split("-")[0] || "es";
+  const currentLabel = GROUPS.flatMap(g => g.options).find(l => l.code === currentLang)?.label || currentLang.toUpperCase();
+
+  useEffect(() => {
+    if (!open) return;
+    modalRef.current?.focus();
+    const handleKey = (e) => { if (e.key === "Escape") setOpen(false); };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [open]);
 
   return (
-    <select
-      className="language-switcher"
-      aria-label="Idioma"
-      value={i18n.language?.split("-")[0] || "es"}
-      onChange={(e) => i18n.changeLanguage(e.target.value)}
-    >
-      {GROUPS.map((group) => (
-        <optgroup key={group.label} label={group.label}>
-          {group.options.map((lang) => (
-            <option key={lang.code} value={lang.code}>
-              {lang.label}
-            </option>
-          ))}
-        </optgroup>
-      ))}
-    </select>
+    <>
+      <button
+        type="button"
+        className="lang-trigger"
+        onClick={() => setOpen(true)}
+        aria-label="Seleccionar idioma"
+      >
+        {currentLang.toUpperCase()}
+      </button>
+
+      {open && (
+        <div className="modal-overlay" onClick={() => setOpen(false)} role="dialog" aria-modal="true" aria-label="Seleccionar idioma">
+          <div className="modal-card lang-modal" ref={modalRef} onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={() => setOpen(false)} aria-label="Cerrar">&times;</button>
+            <p className="modal-title">Seleccionar idioma</p>
+            <div className="lang-modal__grid">
+              {GROUPS.map((group) => (
+                <div key={group.label} className="lang-modal__group">
+                  <p className="lang-modal__group-title">{group.label}</p>
+                  <div className="lang-modal__options">
+                    {group.options.map((lang) => (
+                      <button
+                        key={lang.code}
+                        type="button"
+                        className={`lang-modal__btn ${currentLang === lang.code ? "lang-modal__btn--active" : ""}`}
+                        onClick={() => { i18n.changeLanguage(lang.code); setOpen(false); }}
+                      >
+                        <span className="lang-modal__code">{lang.code.toUpperCase()}</span>
+                        <span className="lang-modal__name">{lang.label.split(" — ")[1] || lang.label}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

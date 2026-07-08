@@ -126,6 +126,12 @@
     "submitButton": "Baieztatu bertaratzea",
     "submittingButton": "Bidaltzen...",
     "confirmedButton": "Bertaratzea baieztatuta",
+    "alreadySubmitted": "Dagoeneko baieztatu duzu zure bertaratzea",
+    "withdrawButton": "Nire baieztapena atzera bota",
+    "withdrawConfirm": "Ziur zaude zure baieztapena atzera bota nahi duzula?",
+    "birthDateLabel": "Jaiotze data",
+    "ageUnder14Warning": "14 urtetik beherakoa zara. Zure gurasoen edo tutoreen baimena behar duzu.",
+    "parentalConsent": "Nire gurasoek edo tutoreek nire parte-hartzea baimendu dute",
     "downloadData": "Deskargatu nire datuak"
   },
   "public": {
@@ -136,6 +142,9 @@
     "emptyText": "Sortu eta partekatu zure ezkontza gonbidapen pertsonalizatua.",
     "emptyDescription": "Kudeatu zure gonbidapenaren datuak, partekatu esteka bakarra gonbidatuekin eta jaso haien bertaratze baieztapenak.",
     "createLink": "Sortu gonbidapena",
+    "privacyPolicy": "Pribatutasun Politika",
+    "terms": "Baldintzak",
+    "legalNotice": "Lege Oharra",
     "scrollAria": "Joan hurrengo atalera"
   },
   "setup": {
@@ -253,6 +262,10 @@
     "bankInfoHint": "Kontu zenbakia transferentzietarako, hala badagokio.",
     "galleryUploadLabel": "Igo argazkiak",
     "galleryUploadHint": "Gehienez 20 MB bakoitza. Hainbat hauta ditzakezu.",
+    "namesLegend": "Izenak",
+    "godparentsLegend": "Aitabitxiak (aukerakoa)",
+    "menuCelebrationLabel": "Ospakizunaren menua *",
+    "themeGroupCount": "{{count}} gai",
     "privacyConsent": "Irakurri eta onartzen dut Pribatutasun Politika",
     "errorFileFormat": "Formatu ez onartua. Erabili JPG edo PNG.",
     "errorFileSize": "Irudiak 20 MB gainditzen ditu.",
@@ -385,7 +398,12 @@
     "title": "Cookie baimena",
     "text": "Wedingok gonbidapenaren funtzionamendurako beharrezko biltegiratze lokala erabiltzen du (zure saioa eta lehentasunak gordetzeko). Ez ditugu hirugarrenen cookierik edo jarraitzailerik erabiltzen.",
     "accept": "Onartu",
-    "reject": "Ukatu"
+    "reject": "Ukatu",
+    "configure": "Konfiguratu",
+    "necessary": "Beharrezko biltegiratzea",
+    "analytics": "Bisita estatistikak",
+    "savePreferences": "Gorde lehentasunak",
+    "settingsTitle": "Cookie-ak konfiguratu"
   },
   "legal": {
     "sectionPrivacy": "Pribatutasun Politika",

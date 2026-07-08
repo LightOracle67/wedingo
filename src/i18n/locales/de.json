@@ -126,6 +126,12 @@
     "submitButton": "Teilnahme bestätigen",
     "submittingButton": "Wird gesendet...",
     "confirmedButton": "Teilnahme bestätigt",
+    "alreadySubmitted": "Du hast deine Teilnahme bereits bestätigt",
+    "withdrawButton": "Meine Bestätigung zurückziehen",
+    "withdrawConfirm": "Bist du sicher, dass du deine Bestätigung zurückziehen möchtest?",
+    "birthDateLabel": "Geburtsdatum",
+    "ageUnder14Warning": "Du bist unter 14 Jahre alt. Du brauchst die Zustimmung deiner Eltern oder Erziehungsberechtigten.",
+    "parentalConsent": "Meine Eltern oder Erziehungsberechtigten stimmen meiner Teilnahme zu",
     "downloadData": "Meine Daten herunterladen"
   },
   "public": {
@@ -136,6 +142,9 @@
     "emptyText": "Erstelle und teile deine persönliche Hochzeitseinladung.",
     "emptyDescription": "Verwalte die Daten deiner Einladung, teile einen exklusiven Link mit deinen Gästen und erhalte ihre Rückmeldungen.",
     "createLink": "Einladung erstellen",
+    "privacyPolicy": "Datenschutzerklärung",
+    "terms": "AGB",
+    "legalNotice": "Impressum",
     "scrollAria": "Zum nächsten Abschnitt"
   },
   "setup": {
@@ -253,6 +262,10 @@
     "bankInfoHint": "Kontonummer für Überweisungen, falls gewünscht.",
     "galleryUploadLabel": "Fotos hochladen",
     "galleryUploadHint": "Maximal 20 MB pro Datei. Du kannst mehrere auswählen.",
+    "namesLegend": "Namen",
+    "godparentsLegend": "Paten (optional)",
+    "menuCelebrationLabel": "Menü der Feier *",
+    "themeGroupCount": "{{count}} Designs",
     "privacyConsent": "Ich habe die Datenschutzerklärung gelesen und akzeptiere sie",
     "errorFileFormat": "Format nicht erlaubt. Bitte verwende JPG oder PNG.",
     "errorFileSize": "Das Bild überschreitet 20 MB.",
@@ -385,7 +398,12 @@
     "title": "Cookie-Zustimmung",
     "text": "Wedingo verwendet notwendige lokale Speicherung für den Betrieb der Einladung (Speicherung deiner Sitzung und Einstellungen). Wir verwenden keine Drittanbieter-Cookies oder Tracker.",
     "accept": "Akzeptieren",
-    "reject": "Ablehnen"
+    "reject": "Ablehnen",
+    "configure": "Konfigurieren",
+    "necessary": "Notwendige Speicherung",
+    "analytics": "Besuchsstatistik",
+    "savePreferences": "Einstellungen speichern",
+    "settingsTitle": "Cookies konfigurieren"
   },
   "legal": {
     "sectionPrivacy": "Datenschutzerklärung",

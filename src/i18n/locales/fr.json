@@ -126,6 +126,12 @@
     "submitButton": "Confirmer ma présence",
     "submittingButton": "Envoi en cours...",
     "confirmedButton": "Présence confirmée",
+    "alreadySubmitted": "Vous avez déjà confirmé votre présence",
+    "withdrawButton": "Retirer ma confirmation",
+    "withdrawConfirm": "Êtes-vous sûr de vouloir retirer votre confirmation ?",
+    "birthDateLabel": "Date de naissance",
+    "ageUnder14Warning": "Vous avez moins de 14 ans. Vous avez besoin du consentement de vos parents ou tuteurs.",
+    "parentalConsent": "Mes parents ou tuteurs consentent à ma participation",
     "downloadData": "Télécharger mes données"
   },
   "public": {
@@ -136,6 +142,9 @@
     "emptyText": "Créez et partagez votre faire-part de mariage personnalisé.",
     "emptyDescription": "Gérez les informations de votre faire-part, partagez un lien unique avec vos invités et recevez leurs confirmations de présence.",
     "createLink": "Créer un faire-part",
+    "privacyPolicy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation",
+    "legalNotice": "Mentions légales",
     "scrollAria": "Aller à la section suivante"
   },
   "setup": {
@@ -253,6 +262,10 @@
     "bankInfoHint": "Numéro de compte pour virements, le cas échéant.",
     "galleryUploadLabel": "Télécharger des photos",
     "galleryUploadHint": "20 Mo max chacune. Vous pouvez en sélectionner plusieurs.",
+    "namesLegend": "Prénoms",
+    "godparentsLegend": "Parrains/marraines (optionnel)",
+    "menuCelebrationLabel": "Menu de la célébration *",
+    "themeGroupCount": "{{count}} thèmes",
     "privacyConsent": "J'ai lu et j'accepte la Politique de confidentialité",
     "errorFileFormat": "Format non autorisé. Utilisez JPG ou PNG.",
     "errorFileSize": "L'image dépasse 20 Mo.",
@@ -385,7 +398,12 @@
     "title": "Consentement aux cookies",
     "text": "Wedingo utilise un stockage local nécessaire au fonctionnement du faire-part (conserver votre session et vos préférences). Nous n'utilisons pas de cookies tiers ni de traceurs.",
     "accept": "Accepter",
-    "reject": "Refuser"
+    "reject": "Refuser",
+    "configure": "Configurer",
+    "necessary": "Stockage nécessaire",
+    "analytics": "Statistiques de visite",
+    "savePreferences": "Enregistrer les préférences",
+    "settingsTitle": "Configurer les cookies"
   },
   "legal": {
     "sectionPrivacy": "Politique de confidentialité",

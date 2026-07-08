@@ -126,6 +126,12 @@
     "submitButton": "Confirmar presença",
     "submittingButton": "A enviar...",
     "confirmedButton": "Presença confirmada",
+    "alreadySubmitted": "Já confirmaste a tua presença",
+    "withdrawButton": "Retirar a minha confirmação",
+    "withdrawConfirm": "Tens a certeza de que queres retirar a tua confirmação?",
+    "birthDateLabel": "Data de nascimento",
+    "ageUnder14Warning": "Tens menos de 14 anos. Precisas do consentimento dos teus pais ou tutores.",
+    "parentalConsent": "Os meus pais ou tutores consentem a minha participação",
     "downloadData": "Descarregar os meus dados"
   },
   "public": {
@@ -136,6 +142,9 @@
     "emptyText": "Cria e partilha o teu convite de casamento personalizado.",
     "emptyDescription": "Gerencia os dados do teu convite, partilha um link único com os teus convidados e recebe as confirmações de presença.",
     "createLink": "Criar convite",
+    "privacyPolicy": "Política de Privacidade",
+    "terms": "Termos",
+    "legalNotice": "Aviso Legal",
     "scrollAria": "Ir para a próxima secção"
   },
   "setup": {
@@ -253,6 +262,10 @@
     "bankInfoHint": "Número de conta para transferências, se aplicável.",
     "galleryUploadLabel": "Carregar fotos",
     "galleryUploadHint": "Máximo 20 MB cada. Podes selecionar várias.",
+    "namesLegend": "Nomes",
+    "godparentsLegend": "Padrinhos (opcional)",
+    "menuCelebrationLabel": "Menu da celebração *",
+    "themeGroupCount": "{{count}} temas",
     "privacyConsent": "Li e aceito a Política de Privacidade",
     "errorFileFormat": "Formato não permitido. Usa JPG ou PNG.",
     "errorFileSize": "A imagem excede 20 MB.",
@@ -385,7 +398,12 @@
     "title": "Consentimento de cookies",
     "text": "O Wedingo utiliza armazenamento local necessário para o funcionamento do convite (guardar a tua sessão e preferências). Não usamos cookies de terceiros nem rastreadores.",
     "accept": "Aceitar",
-    "reject": "Rejeitar"
+    "reject": "Rejeitar",
+    "configure": "Configurar",
+    "necessary": "Armazenamento necessário",
+    "analytics": "Estatísticas de visita",
+    "savePreferences": "Guardar preferências",
+    "settingsTitle": "Configurar cookies"
   },
   "legal": {
     "sectionPrivacy": "Política de Privacidade",
