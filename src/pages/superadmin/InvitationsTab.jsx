@@ -2,8 +2,10 @@ import { useCallback, useEffect, useState } from "react";
 import { deleteDoc, doc, getDocs } from "firebase/firestore";
 import { INVITATIONS_COLLECTION_REF } from "../../lib/firebase";
 import { searchInvitations, formatBytes } from "../../lib/superadmin-utils";
+import { useTranslation } from "react-i18next";
 
 export default function InvitationsTab() {
+  const { t } = useTranslation();
   const [invitations, setInvitations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -17,21 +19,21 @@ export default function InvitationsTab() {
       const list = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
       setInvitations(list);
       setError("");
-    } catch { setError("No se pudieron cargar las invitaciones."); }
+    } catch { setError(t("superadmin:invitationLoadError")); }
     setLoading(false);
-  }, []);
+  }, [t]);
 
   useEffect(() => { load(); }, [load]);
 
   const handleDelete = useCallback(async (id) => {
-    if (!window.confirm(`¿Eliminar la invitación "${id}" permanentemente?`)) return;
+    if (!window.confirm(t("superadmin:deleteConfirmInvitation", { id }))) return;
     setDeleting(id);
     try {
       await deleteDoc(doc(INVITATIONS_COLLECTION_REF, id));
       setInvitations((prev) => prev.filter((i) => i.id !== id));
-    } catch { setError("No se pudo eliminar la invitación."); }
+    } catch { setError(t("superadmin:deleteError")); }
     setDeleting(null);
-  }, []);
+  }, [t]);
 
   const handleExportAll = useCallback(async () => {
     try {
@@ -45,15 +47,15 @@ export default function InvitationsTab() {
       a.download = `wedingo-invitaciones-${Date.now()}.json`;
       a.click();
       URL.revokeObjectURL(url);
-    } catch { setError("Error al exportar."); }
-  }, []);
+    } catch { setError(t("superadmin:exportError")); }
+  }, [t]);
 
   const filtered = searchInvitations(invitations, search);
   const totalBytes = invitations.reduce((acc, d) => {
     try { return acc + new Blob([JSON.stringify(d)]).size; } catch { return acc; }
   }, 0);
 
-  if (loading) return <p className="setup-subtitle" style={{ textAlign: "center" }}>Cargando invitaciones...</p>;
+  if (loading) return <p className="setup-subtitle" style={{ textAlign: "center" }}>{t("common:loading")}</p>;
 
   return (
     <div>
@@ -61,28 +63,28 @@ export default function InvitationsTab() {
 
       <div className="admin-filters" style={{ marginBottom: "1rem" }}>
         <input className="setup-input" value={search} onChange={(e) => setSearch(e.target.value)}
-          placeholder="Buscar por token..." autoComplete="off" />
+          placeholder={t("superadmin:searchTokenPlaceholder")} autoComplete="off" />
       </div>
 
       <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginBottom: "1rem" }}>
         <span className="setup-help" style={{ margin: 0 }}>
-          <strong>{invitations.length}</strong> invitaciones &middot; <strong>{formatBytes(totalBytes)}</strong> ocupados
+          {t("superadmin:invitationsCount", { count: invitations.length, size: formatBytes(totalBytes) })}
         </span>
       </div>
 
       {filtered.length === 0 ? (
         <p className="setup-help">
-          {search ? "No se encontraron invitaciones con ese criterio." : "No hay invitaciones todavía."}
+          {search ? t("superadmin:noResultsFilter") : t("superadmin:noInvitations")}
         </p>
       ) : (
         <div className="admin-table-wrapper">
           <table className="admin-table">
             <thead>
               <tr>
-                <th>Token</th>
-                <th>Tema</th>
-                <th>Fecha boda</th>
-                <th>Acciones</th>
+                <th>{t("superadmin:tableToken")}</th>
+                <th>{t("superadmin:tableTheme")}</th>
+                <th>{t("superadmin:tableDate")}</th>
+                <th>{t("superadmin:tableActions")}</th>
               </tr>
             </thead>
             <tbody>
@@ -100,7 +102,7 @@ export default function InvitationsTab() {
                   <td style={{ whiteSpace: "nowrap" }}>
                     <button className="setup-button setup-button--ghost setup-button--compact" style={{ fontSize: "0.7rem", color: "#ef4444" }}
                       type="button" onClick={() => handleDelete(inv.id)} disabled={deleting === inv.id}>
-                      {deleting === inv.id ? "…" : "Eliminar"}
+                      {deleting === inv.id ? "…" : t("superadmin:deleteButton")}
                     </button>
                   </td>
                 </tr>
