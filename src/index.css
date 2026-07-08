@@ -2246,6 +2246,10 @@ h6 {
   box-sizing: border-box;
 }
 
+.setup-layout--flush {
+  padding: 0;
+}
+
 .setup-card {
   position: relative;
   width: min(100%, 36rem);
@@ -2268,8 +2272,11 @@ h6 {
 
 .setup-card--wide {
   width: 100%;
-  height: calc(100dvh - var(--navbar-height, 0px) - clamp(1.5rem, 5vw, 3rem));
+  height: calc(100dvh - var(--navbar-height, 0px));
   max-height: none;
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
 }
 
 .setup-layout--full.setup-layout {

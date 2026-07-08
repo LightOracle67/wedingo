@@ -158,7 +158,7 @@ export default function AdminPage() {
 
 
   return (
-    <div className="setup-layout">
+    <div className="setup-layout setup-layout--flush">
       <section className="setup-card setup-card--wide allow-select" aria-label={t("admin.privateArea")}>
         <header className="setup-header">
           <div>
