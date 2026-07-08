@@ -125,7 +125,8 @@
     "ageConsent": "Ich bestätige, dass ich mindestens 14 Jahre alt bin oder, falls ich minderjährig bin, die Einwilligung meiner Eltern oder Erziehungsberechtigten habe",
     "submitButton": "Teilnahme bestätigen",
     "submittingButton": "Wird gesendet...",
-    "confirmedButton": "Teilnahme bestätigt"
+    "confirmedButton": "Teilnahme bestätigt",
+    "downloadData": "Meine Daten herunterladen"
   },
   "public": {
     "loadingInvitation": "Einladung wird geladen…",

@@ -125,7 +125,8 @@
     "ageConsent": "Declaro ser maior de 14 anos ou, se menor, ter o consentimento dos meus pais ou tutores",
     "submitButton": "Confirmar presença",
     "submittingButton": "A enviar...",
-    "confirmedButton": "Presença confirmada"
+    "confirmedButton": "Presença confirmada",
+    "downloadData": "Descarregar os meus dados"
   },
   "public": {
     "loadingInvitation": "Carregando convite…",

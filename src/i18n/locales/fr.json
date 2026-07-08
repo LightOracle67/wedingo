@@ -125,7 +125,8 @@
     "ageConsent": "Je déclare être âgé(e) de plus de 14 ans ou, si je suis mineur(e), avoir le consentement de mes parents ou tuteurs",
     "submitButton": "Confirmer ma présence",
     "submittingButton": "Envoi en cours...",
-    "confirmedButton": "Présence confirmée"
+    "confirmedButton": "Présence confirmée",
+    "downloadData": "Télécharger mes données"
   },
   "public": {
     "loadingInvitation": "Chargement du faire-part…",

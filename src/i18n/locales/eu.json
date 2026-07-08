@@ -125,7 +125,8 @@
     "ageConsent": "Adierazten dut 14 urtetik gorakoa naizela edo, adingabea banago, gurasoen edo tutoreen baimena dudala",
     "submitButton": "Baieztatu bertaratzea",
     "submittingButton": "Bidaltzen...",
-    "confirmedButton": "Bertaratzea baieztatuta"
+    "confirmedButton": "Bertaratzea baieztatuta",
+    "downloadData": "Deskargatu nire datuak"
   },
   "public": {
     "loadingInvitation": "Gonbidapena kargatzen…",

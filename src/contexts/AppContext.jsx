@@ -17,7 +17,7 @@ import { useRsvp } from "../hooks/useRsvp";
 import { useMapPreview } from "../hooks/useMapPreview";
 import { useSetupAuth } from "../hooks/useSetupAuth";
 import { useAutoSave } from "../hooks/useAutoSave";
-import LegalModal from "../components/LegalModal";
+import LegalModal, { PRIVACY_POLICY_VERSION } from "../components/LegalModal";
 
 const AppContext = createContext(null);
 
@@ -78,8 +78,10 @@ export function AppProvider({ children }) {
 
   const {
     rsvpEntries, rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted,
-    updateRsvpField, handleRsvpSubmit, handleClearRsvpEntries,
+    alreadySubmittedEntry,
+    updateRsvpField, handleRsvpSubmit, handleClearRsvpEntries, handleDeleteRsvp,
     handleDietaryToggle, dietaryInfoStr, DIETARY_OPTIONS,
+    computeAge,
   } = useRsvp(inviteToken, setAdminMessage, setAdminMessageType, config.menuEnabled === "true");
 
   const { formattedDate, formattedTime, calendarLink } = useCalendar(config);
@@ -479,7 +481,7 @@ export function AppProvider({ children }) {
       if (payload.bankInfo) payload.bankInfo = await encrypt(payload.bankInfo, inviteToken);
       if (bgOrig) payload.backgroundImage = await encrypt(bgOrig, inviteToken);
       if (cpOrig) payload.couplePhoto = await encrypt(cpOrig, inviteToken);
-      if (!hasStoredConfig) payload.privacyPolicyVersion = "2026-07-07";
+      if (!hasStoredConfig) payload.privacyPolicyVersion = PRIVACY_POLICY_VERSION;
       await setDoc(invitationDocRef(inviteToken), payload);
       if (payload.bankInfo) payload.bankInfo = await decrypt(payload.bankInfo, inviteToken);
       if (bgOrig) payload.backgroundImage = bgOrig;
@@ -540,12 +542,12 @@ export function AppProvider({ children }) {
     previewBackgrounds, isPreviewLoading,
     locationMapContainerRef, locationMapError, setLocationMapError,
     locationMapLoading, setLocationMapLoading, locationMapTarget, setLocationMapTarget,
-    rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted,
+    rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
     maxAllowedYear, isAdminTokenLoggedIn,
     formattedDate, formattedTime, calendarLink, dietaryInfoStr, DIETARY_OPTIONS,
     updateFormField, refreshSetupToken, reloadConfig,
     handleSaveSetup, handleRsvpSubmit, updateRsvpField,
-    handleDietaryToggle,
+    handleDietaryToggle, handleDeleteRsvp, computeAge,
     handleTokenLogin, handleAdminTokenLogin, handleGenerateToken,
     handleAdminLogout,
     handleResetSetupToken, handleResetTokenFromAdmin,
@@ -569,12 +571,12 @@ export function AppProvider({ children }) {
     previewBackgrounds, isPreviewLoading,
     locationMapContainerRef, locationMapError,
     locationMapLoading, locationMapTarget,
-    rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted,
+    rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
     maxAllowedYear, isAdminTokenLoggedIn,
     formattedDate, formattedTime, calendarLink, dietaryInfoStr, DIETARY_OPTIONS,
     updateFormField, refreshSetupToken, reloadConfig,
     handleSaveSetup, handleRsvpSubmit, updateRsvpField,
-    handleDietaryToggle,
+    handleDietaryToggle, handleDeleteRsvp, computeAge,
     handleTokenLogin, handleAdminTokenLogin, handleGenerateToken,
     handleAdminLogout,
     handleResetSetupToken, handleResetTokenFromAdmin,

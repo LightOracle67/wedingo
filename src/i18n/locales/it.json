@@ -125,7 +125,8 @@
     "ageConsent": "Dichiaro di essere maggiorenne o, se minorenne, di avere il consenso dei miei genitori o tutori",
     "submitButton": "Conferma partecipazione",
     "submittingButton": "Invio...",
-    "confirmedButton": "Partecipazione confermata"
+    "confirmedButton": "Partecipazione confermata",
+    "downloadData": "Scarica i miei dati"
   },
   "public": {
     "loadingInvitation": "Caricamento invito…",

@@ -125,7 +125,14 @@
     "ageConsent": "I declare that I am over 14 years of age, or if I am a minor, that I have the consent of my parents or guardians",
     "submitButton": "Confirm attendance",
     "submittingButton": "Sending...",
-    "confirmedButton": "Attendance confirmed"
+    "confirmedButton": "Attendance confirmed",
+    "alreadySubmitted": "You have already confirmed your attendance",
+    "withdrawButton": "Withdraw my confirmation",
+    "withdrawConfirm": "Are you sure you want to withdraw your confirmation?",
+    "birthDateLabel": "Date of birth",
+    "ageUnder14Warning": "You are under 14 years of age. You need your parents' or guardians' consent.",
+    "parentalConsent": "My parents or guardians consent to my participation",
+    "downloadData": "Download my data"
   },
   "public": {
     "loadingInvitation": "Loading invitation…",
@@ -135,7 +142,10 @@
     "emptyText": "Create and share your personalized wedding invitation.",
     "emptyDescription": "Manage your invitation details, share a unique link with your guests, and receive their RSVPs.",
     "createLink": "Create invitation",
-    "scrollAria": "Go to next section"
+    "scrollAria": "Go to next section",
+    "privacyPolicy": "Privacy Policy",
+    "terms": "Terms",
+    "legalNotice": "Legal Notice"
   },
   "setup": {
     "loadingTitle": "Loading invitation",
@@ -384,14 +394,19 @@
     "title": "Cookie consent",
     "text": "Wedingo uses local storage necessary for the invitation to function (saving your session and preferences). We do not use third-party cookies or trackers.",
     "accept": "Accept",
-    "reject": "Reject"
+    "reject": "Reject",
+    "configure": "Configure",
+    "necessary": "Necessary storage",
+    "analytics": "Visit statistics",
+    "savePreferences": "Save preferences",
+    "settingsTitle": "Cookie settings"
   },
   "legal": {
     "sectionPrivacy": "Privacy Policy",
     "sectionTerms": "Terms of Use",
     "sectionLegal": "Legal Notice",
     "modalTitle": "Legal information",
-    "privacyPolicy": "Data controller: Adrián Carrasco López. Contact: adriancl2001@gmail.com. Purpose: wedding invitation management, RSVP and event communication.\n\nLegal basis: consent of the data subject (Art. 6.1.a GDPR). Health data (allergies and food intolerances) is processed with explicit consent (Art. 9.2.a GDPR) to adapt the wedding menu.\n\nData collected: name, dietary preferences (allergies and intolerances), voluntarily uploaded images, bank details if voluntarily provided.\n\nRecipients: Google LLC (Firebase, Google Cloud Platform) based in the USA. Google has signed the Standard Contractual Clauses (SCC) approved by the European Commission (Implementing Decision 2021/914) and has a Data Processing Agreement (DPA) in accordance with Art. 28 GDPR. In addition, Google complies with the Data Privacy Framework (DPF) EU-US, UK-US and Switzerland-US, a certification that guarantees an adequate level of protection for international data transfers.\n\nInternational transfers: data is stored on Google Cloud servers in the eur3 region (Europe, Frankfurt). When data transfer to the US is necessary, it is covered by the SCC and Google's DPF certification.\n\nRetention period: guest data is retained for up to 12 months after the event date. After this period, it will be automatically deleted. The creator's configuration data is retained while the account is active.\n\nRights: you may exercise your rights of access, rectification, erasure, restriction, portability and objection by writing to adriancl2001@gmail.com. Guests may request deletion of their data by providing their name and the invitation. We will respond to your request within a maximum of 30 days.\n\nRight to withdraw consent: you may withdraw your consent at any time without affecting the lawfulness of processing based on consent before its withdrawal.\n\nRight to lodge a complaint: you have the right to lodge a complaint with a supervisory authority, in particular in the Member State of your habitual residence, place of work or place of the alleged infringement.\n\nCCPA/CPRA: If you are a California resident, you have the right to know what personal information is collected, the right to request deletion, and the right to opt out of the sale of personal information. Wedingo does not sell personal data.\n\nLGPD (Brazil): If you are in Brazil, you have the rights under the Lei Geral de Proteção de Dados (LGPD), including confirmation of processing, access, correction, anonymization, blocking, deletion, portability, and revocation of consent.\n\nPIPEDA (Canada): If you are in Canada, your personal information is handled in accordance with PIPEDA. You have the right to access and challenge the accuracy of your personal information.\n\nPOPIA (South Africa): If you are in South Africa, you have the rights under the Protection of Personal Information Act (POPIA), including access, correction, deletion, and objection to processing.",
+    "privacyPolicy": "Data controller: Adrián Carrasco López. Contact: adriancl2001@gmail.com. Purpose: wedding invitation management, RSVP and event communication.\n\nLegal basis: consent of the data subject (Art. 6.1.a GDPR). Health data (allergies and food intolerances) is processed with explicit consent (Art. 9.2.a GDPR) to adapt the wedding menu.\n\nData collected: name, dietary preferences (allergies and intolerances), voluntarily uploaded images, bank details if voluntarily provided.\n\nRecipients: Google LLC (Firebase, Google Cloud Platform) based in the USA. Google has signed the Standard Contractual Clauses (SCC) approved by the European Commission (Implementing Decision 2021/914) and has a Data Processing Agreement (DPA) in accordance with Art. 28 GDPR. In addition, Google complies with the Data Privacy Framework (DPF) EU-US, UK-US and Switzerland-US, a certification that guarantees an adequate level of protection for international data transfers.\n\nInternational transfers: data is stored on Google Cloud servers in the eur3 region (Europe, Frankfurt). When data transfer to the US is necessary, it is covered by the SCC and Google's DPF certification.\n\nRetention period: guest data is retained for up to 12 months after the event date. After this period, it will be automatically deleted. The creator's configuration data is retained while the account is active.\n\nRights: you may exercise your rights of access, rectification, erasure, restriction, portability and objection by writing to adriancl2001@gmail.com. Guests may request deletion of their data by providing their name and the invitation. We will respond to your request within a maximum of 30 days.\n\nRight to withdraw consent: you may withdraw your consent at any time without affecting the lawfulness of processing based on consent before its withdrawal.\n\nRight to lodge a complaint: you have the right to lodge a complaint with a supervisory authority, in particular in the Member State of your habitual residence, place of work or place of the alleged infringement.\n\nCCPA/CPRA: If you are a California resident, you have the right to know what personal information is collected, the right to request deletion, and the right to opt out of the sale of personal information. Wedingo does not sell personal data.\n\nLGPD (Brazil): If you are in Brazil, you have the rights under the Lei Geral de Proteção de Dados (LGPD), including confirmation of processing, access, correction, anonymization, blocking, deletion, portability, and revocation of consent. DPO: same data controller. Contact: adriancl2001@gmail.com. Rights under Art. 18 LGPD: confirmation, access, correction, anonymization/blocking/deletion, portability, information about sharing, withdrawal of consent, review of automated decisions, opposition.\n\nPIPEDA (Canada): If you are in Canada, your personal information is handled in accordance with PIPEDA. PIPEDA principles: accountability (Adrián Carrasco López), identifying purposes, consent, limiting collection, limiting use/disclosure/retention, accuracy, safeguards, openness, individual access, challenging compliance. Mandatory breach notification to the OPC.\n\nPOPIA (South Africa): If you are in South Africa, you have the rights under the Protection of Personal Information Act (POPIA), including access, correction, deletion, and objection to processing. Conditions for cross-border transfers (Section 72 POPIA): data is transferred to Google LLC (USA) which provides an adequate level of protection through SCCs and DPF. The controller ensures the recipient applies processing principles similar to those of POPIA.\n\nSecurity breach response plan: in the event of a personal data breach, Wedingo will notify the competent supervisory authority within a maximum of 72 hours (GDPR Art. 33). If the breach poses a high risk to the rights and freedoms of data subjects, they will be notified without undue delay (GDPR Art. 34). Notifications will be sent by email to the contact address provided.",
     "termsText": "By using Wedingo you accept these terms. Wedingo is a platform for creating and managing wedding invitations.\n\nUsers agree not to use the platform for unlawful purposes or to send offensive content.\n\nWedingo is not responsible for user-generated content or for how guests use their personal data.\n\nWe reserve the right to modify these terms. Changes will be notified through the platform.\n\nFor California residents: in the event of a conflict between these terms and the CCPA, the rights granted by the CCPA shall prevail.",
     "legalText": "In compliance with applicable laws, the following information is provided:\n\nData controller: Adrián Carrasco López\nEmail: adriancl2001@gmail.com\nWebsite purpose: personalized wedding invitation platform.\n\nThis website uses Firebase (Google LLC) as hosting and storage infrastructure, with servers in the European Union."
   },

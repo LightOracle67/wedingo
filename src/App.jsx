@@ -18,12 +18,16 @@ const SuperAdminPanel = lazy(() => import("./pages/SuperAdminPanel"));
 const PrintPage = lazy(() => import("./pages/PrintPage"));
 
 function AppShell() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { config, formData, isAdminTokenLoggedIn, tokenLoginUsername, inviteToken } = useApp();
   const location = useLocation();
 
   const isEditingRoute = location.pathname.endsWith("/setup") || (location.pathname.endsWith("/admin") && isAdminTokenLoggedIn);
   const topBarPadding = isAdminTokenLoggedIn ? "2.5rem" : "0";
+
+  useEffect(() => {
+    document.documentElement.lang = i18n.language || "es";
+  }, [i18n.language]);
 
   useEffect(() => {
     const activeTheme = isEditingRoute ? "golden" : formData.theme || config.theme;

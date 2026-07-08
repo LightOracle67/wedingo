@@ -68,10 +68,9 @@ service cloud.firestore {
         && isSafeText(request.resource.data.guestName)
         && request.resource.data.attendance in ['yes', 'no']
         && request.resource.data.dietaryInfo is string
-        && request.resource.data.dietaryInfo.size() <= 240
-        && isSafeText(request.resource.data.dietaryInfo)
+        && request.resource.data.dietaryInfo.size() <= 4000
         && request.resource.data.privacyConsent == true
-        && (request.resource.data.keys().hasOnly(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent', 'privacyConsentAt'])
+        && (request.resource.data.keys().hasOnly(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent', 'privacyConsentAt', 'birthDate', 'parentalConsent', 'menuSelection'])
           || (request.resource.data.keys().hasAll(['healthConsent'])
             && request.resource.data.healthConsent == true));
 

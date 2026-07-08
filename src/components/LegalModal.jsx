@@ -38,6 +38,7 @@ export default function LegalModal({ section, onClose }) {
           {SECTIONS.map((s) => (
             <div key={s.id}>
               <button type="button" onClick={() => toggle(s.id)}
+                aria-expanded={open === s.id ? "true" : "false"}
                 style={{
                   width: "100%", textAlign: "left", padding: "0.7rem 0",
                   border: "none", borderBottom: "1px solid var(--setup-border)",
