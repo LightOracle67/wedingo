@@ -100,6 +100,27 @@ src/
 
 ---
 
+## 🌍 Cumplimiento legal internacional
+
+Wedingo cumple con las principales leyes de privacidad a nivel global:
+
+| Ley | Jurisdicción | Estado |
+|-----|-------------|--------|
+| GDPR | Unión Europea / EEE | ✅ Consentimiento, derechos ARSO, DPO exento, SCC, DPF |
+| UK GDPR | Reino Unido | ✅ Adaptado, UK Extension al DPF |
+| CCPA/CPRA | California (EE.UU.) | ✅ Derecho a saber, no venta de datos, no discriminación |
+| LGPD | Brasil | ✅ Derechos del titular, transferencias internacionales |
+| PIPEDA | Canadá | ✅ Consentimiento, propósito limitado |
+| POPIA | Sudáfrica | ✅ Consentimiento, restricción de transferencias |
+
+- **Cifrado AES-256-GCM** para datos personales sensibles.
+- **Consentimiento explícito** para datos de salud (alergias).
+- **Política de retención:** 12 meses tras el evento.
+- **Almacenamiento local** solo con consentimiento del usuario (banner de cookies).
+- **Botón de solicitud de borrado y exportación** en el panel de soporte.
+
+---
+
 ## 📬 ¿Dudas o sugerencias?
 
 Abre un issue en este repositorio o escribe a [adriancl2001@gmail.com](mailto:adriancl2001@gmail.com).
