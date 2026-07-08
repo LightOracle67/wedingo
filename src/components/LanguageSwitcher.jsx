@@ -103,7 +103,7 @@ export default function LanguageSwitcher() {
         onClick={() => setOpen(true)}
         aria-label="Seleccionar idioma"
       >
-        {currentLang.toUpperCase()}
+        🌐 {currentLabel}
       </button>
 
       {open && (
