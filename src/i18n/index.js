@@ -12,21 +12,25 @@ import gl from "./locales/gl.json";
 import eu from "./locales/eu.json";
 import va from "./locales/va.json";
 
+function toNamespaces(src) {
+  return Object.fromEntries(Object.entries(src).map(([k, v]) => [k, { translation: v }]));
+}
+
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     resources: {
-      es: { translation: es },
-      en: { translation: en },
-      fr: { translation: fr },
-      pt: { translation: pt },
-      de: { translation: de },
-      it: { translation: it },
-      ca: { translation: ca },
-      gl: { translation: gl },
-      eu: { translation: eu },
-      va: { translation: va },
+      es: toNamespaces(es),
+      en: toNamespaces(en),
+      fr: toNamespaces(fr),
+      pt: toNamespaces(pt),
+      de: toNamespaces(de),
+      it: toNamespaces(it),
+      ca: toNamespaces(ca),
+      gl: toNamespaces(gl),
+      eu: toNamespaces(eu),
+      va: toNamespaces(va),
     },
     fallbackLng: "es",
     interpolation: { escapeValue: false },
