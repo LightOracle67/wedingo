@@ -1,241 +1,109 @@
-# 💍 Wedingo — Wedding Invitation Web App
+# 💍 Wedingo — Invitaciones de boda elegantes
 
-Una aplicación web moderna para invitaciones a bodas con panel de administración completo. Permite a los novios gestionar su invitación de boda de forma elegante, incluyendo confirmación de asistencia, gestión de invitados y mapas interactivos.
+Crea una invitación de boda digital con tu propio estilo, comparte el enlace con tus invitados y gestiona las confirmaciones desde un panel privado. Sin complicaciones.
 
-📱 **Sitio en vivo:** [https://wedingo-6c26a.web.app](https://wedingo-6c26a.web.app)
-
----
-
-## 🎯 Características
-
-- ✨ **Portada pública elegante** - Diseño responsivo y moderno para invitados
-- 🔐 **Sistema de autenticación seguro** - Tokens únicos de un solo uso para cada invitado
-- ⚙️ **Panel de administración completo** - Editar detalles, gestionar invitados y ver confirmaciones
-- 🗺️ **Mapas interactivos** - Ubicación de la boda con MapLibre GL
-- 🎨 **Temas personalizables** - Diferentes esquemas de color para diferentes bodas
-- 📱 **Totalmente responsivo** - Funciona en desktop, tablet y móvil
-- ⚡ **Rendimiento optimizado** - React 19 con Vite para una experiencia rápida
-- 🔄 **Sincronización en tiempo real** - Firestore para datos actualizados al instante
+📱 **Visita la web:** [https://wedingo-6c26a.web.app](https://wedingo-6c26a.web.app)
 
 ---
 
-## 🛠️ Stack Tecnológico
+## ✨ Cómo funciona
 
-### Frontend
-- **React 19** - Framework principal
-- **Vite** - Bundler y servidor de desarrollo
-- **Tailwind CSS v4** - Estilos y diseño responsivo
-- **react-router-dom v7** - Enrutamiento de páginas
-- **MapLibre GL** - Mapas interactivos
-
-### Backend
-- **Firebase Data Connect** - Conexión a base de datos
-- **Firestore** - Base de datos NoSQL en tiempo real
-- **Firebase Hosting** - Despliegue
-
-### Autenticación
-- **Token-based** - Códigos únicos almacenados en colección `setupTokens`
-- **Un solo uso** - Mayor seguridad para los invitados
-
-### Tipografía
-- **Playfair Display** - Títulos elegantes
-- **Lora** - Cuerpo de texto legible
+1. **Consigue tu código de acceso** — El organizador te da un código único para configurar tu invitación.
+2. **Personaliza** — Elige fecha, lugar, tema, fotos, menú, música y más.
+3. **Comparte** — Tus invitados abren el enlace, ven la invitación y confirman asistencia.
+4. **Gestiona** — Desde el panel admin ves quién viene, qué menú elige y exportas los datos.
 
 ---
 
-## 📂 Estructura del Proyecto
+## 🎨 Lo que incluye
 
-```
-src/
-├── components/
-│   └── SetupForm.jsx              # Formulario de edición de la invitación
-├── contexts/
-│   └── AppContext.jsx             # Estado global, auth, operaciones Firestore
-├── lib/
-│   ├── constants.js               # Temas, meses, orden de secciones
-│   ├── firebase.js                # Inicialización de Firebase
-│   └── utils.js                   # Utilidades (mapa, fecha)
-├── pages/
-│   ├── AdminPage.jsx              # Panel de administración
-│   ├── PublicInvitation.jsx       # Portada pública de la invitación
-│   └── SetupPage.jsx              # Configuración inicial
-├── App.jsx                        # Shell principal (ruteo, tema, admin bar)
-└── index.css                      # Estilos globales
-```
+- **21 temas visuales** — Desde clásicos dorados hasta estilos arcoíris, trans, no binario y más.
+- **Confirmación de asistencia** — Cada invitado confirma si viene y selecciona su menú.
+- **Menús personalizados** — Carne, pescado, vegano y postre, cada uno con su propia descripción.
+- **Galería de fotos cifrada** — Las imágenes se guardan cifradas en la nube por privacidad.
+- **Mapa del lugar** — Ubicación interactiva con OpenStreetMap.
+- **Música ambiental** — Añade una canción y se reproducirá al abrir la invitación.
+- **Secciones a medida** — Elige qué secciones mostrar y en qué orden.
+- **Impresión bonita** — Vista previa para imprimir la invitación en papel.
+- **Privacidad total** — Consentimiento RGPD/LOPDGDD, cifrado de datos personales y fotos.
 
 ---
 
-## 🛣️ Rutas de la Aplicación
+## 🛠️ Tecnología
 
-| Ruta | Descripción |
-|------|-------------|
-| `/` | 🎉 Portada pública de la invitación (visible para invitados) |
-| `/setup` | ⚙️ Configuración inicial (para novios sin invitación configurada) |
-| `/admin` | 👨‍💼 Panel de administración (para novios registrados) |
+| Parte | Usamos |
+|-------|--------|
+| Frontend | React 19, Vite |
+| Estilos | CSS moderno (variables, gradientes, color-mix) |
+| Base de datos | Firestore (noSQL) |
+| Alojamiento | Firebase Hosting |
+| Mapas | Leaflet + OpenStreetMap |
+| Cifrado | AES-256-GCM (en el navegador) |
 
 ---
 
-## 🚀 Inicio Rápido
+## 🚀 Para desarrolladores
 
-### Requisitos Previos
+### Requisitos
 - Node.js 18+
-- npm o yarn
-- Cuenta de Firebase
+- Una cuenta de Firebase (plan Spark gratis vale)
 
-### Instalación
-
-1. **Clonar el repositorio**
-   ```bash
-   git clone https://github.com/LightOracle67/lightoracle67.github.io
-   cd lightoracle67.github.io
-   ```
-
-2. **Instalar dependencias**
-   ```bash
-   npm install
-   ```
-
-3. **Configurar variables de entorno**
-   ```bash
-   # Crear archivo .env con credenciales de Firebase
-   VITE_FIREBASE_API_KEY=xxx
-   VITE_FIREBASE_AUTH_DOMAIN=xxx
-   VITE_FIREBASE_PROJECT_ID=xxx
-   # ... resto de variables
-   ```
-
-4. **Ejecutar servidor de desarrollo**
-   ```bash
-   npm run dev
-   ```
-   La aplicación estará disponible en `http://localhost:5173`
-
----
-
-## 📦 Comandos Disponibles
+### Poner en marcha
 
 ```bash
-# Desarrollo
-npm run dev              # Inicia servidor de desarrollo (puerto 5173)
-
-# Producción
-npm run build            # Genera build de producción
-npm run preview          # Vista previa del build
-
-# Despliegue
-npx firebase deploy --only hosting   # Despliega a Firebase Hosting
+git clone https://github.com/LightOracle67/lightoracle67.github.io
+cd lightoracle67.github.io
+npm install
 ```
 
----
+Crea un archivo `.env` con las credenciales de tu proyecto Firebase:
 
-## 🌐 Despliegue
+```env
+VITE_FIREBASE_API_KEY=...
+VITE_FIREBASE_AUTH_DOMAIN=...
+VITE_FIREBASE_PROJECT_ID=...
+VITE_FIREBASE_STORAGE_BUCKET=...
+VITE_FIREBASE_MESSAGING_SENDER_ID=...
+VITE_FIREBASE_APP_ID=...
+VITE_ADMIN_EMAILS=tu@email.com
+VITE_SUPERADMIN_ROUTE=/_/console
+```
 
-### Firebase Hosting
+```bash
+npm run dev        # Desarrollo en http://localhost:5173
+npm run build      # Build de producción
+npm run preview    # Vista previa del build
+```
+
+### Desplegar
+
 ```bash
 npx firebase deploy --only hosting
 ```
 
-**URL de producción:** https://wedingo-6c26a.web.app
+---
+
+## 📁 Estructura rápida
+
+```
+src/
+├── components/     # Componentes reutilizables (SetupForm, LegalModal…)
+├── contexts/       # Estado global con React Context
+├── hooks/          # Lógica reutilizable (RSVP, autoSave, sesión…)
+├── lib/            # Utilidades, constantes, Firebase, cifrado, auditoría
+├── pages/          # Páginas y secciones de la app
+│   ├── admin/      # Panel de administración (pestañas)
+│   ├── superadmin/ # Panel de superadmin
+│   └── sections/   # Secciones de la invitación pública (Hero, Rsvp…)
+└── index.css       # Todos los estilos
+```
 
 ---
 
-## 🔧 Configuración Firebase
+## 📬 ¿Dudas o sugerencias?
 
-Este proyecto utiliza:
-- **Firebase Data Connect** - Para gestionar queries y mutations
-- **Firestore** - Almacenamiento de datos
-- **Firebase Authentication** - Sistema de autenticación
-- **Firebase Hosting** - Alojamiento
-
-### Archivos generados
-Los archivos en `src/dataconnect-generated/` son generados automáticamente por Firebase Data Connect SDK.
+Abre un issue en este repositorio o escribe a [adriancl2001@gmail.com](mailto:adriancl2001@gmail.com).
 
 ---
 
-## 📱 Flujo de Uso
-
-### Para Novios (Administradores)
-1. Acceden a `/setup` con su token único
-2. Configuran detalles de la boda (fecha, hora, ubicación, etc.)
-3. Personalizan el tema y colores
-4. Acceden a `/admin` para ver confirmaciones de invitados
-
-### Para Invitados
-1. Reciben enlace a `/` con su token
-2. Ven la invitación personalizada con información de la boda
-3. Confirman asistencia (Sí/No/Quizás)
-4. Ven el mapa de ubicación
-5. Reciben información de contacto
-
----
-
-## 🎨 Personalización
-
-### Temas
-Los temas se definen en `src/lib/constants.js` y pueden incluir:
-- Colores primarios y secundarios
-- Tipografía
-- Estilos de componentes
-
-### Agregar nuevo tema
-1. Editar `constants.js`
-2. Añadir nueva configuración de tema
-3. Seleccionar en panel admin
-
----
-
-## 🛡️ Seguridad
-
-- ✅ Tokens únicos por invitado
-- ✅ Validación de tokens en backend
-- ✅ Reglas de seguridad en Firestore
-- ✅ Datos protegidos por autenticación
-- ✅ HTTPS en producción
-
----
-
-## 🤝 Contribuir
-
-Las contribuciones son bienvenidas. Por favor:
-
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
-
----
-
-## 📝 Licencia
-
-Este proyecto está bajo licencia MIT. Ver `LICENSE` para más detalles.
-
----
-
-## 📧 Contacto
-
-**Autor:** LightOracle67
-
-Para reportar bugs o sugerencias, abre un issue en el repositorio.
-
----
-
-## 🙏 Créditos
-
-- Diseño inspirado en invitaciones modernas
-- Iconografía y colores elegidos para bodas
-- Integración completa con ecosistema Firebase
-
----
-
-## 📚 Recursos Útiles
-
-- [Firebase Documentation](https://firebase.google.com/docs)
-- [React 19 Docs](https://react.dev)
-- [Tailwind CSS](https://tailwindcss.com)
-- [MapLibre GL](https://maplibre.org/)
-- [Vite Guide](https://vitejs.dev)
-
----
-
-**¡Que disfrutes tu boda! 💒✨**
+Hecho con ❤️ para bodas diversas.
