@@ -168,7 +168,7 @@ export default function AdminPage() {
           </div>
         </header>
 
-        <nav className="admin-tabs" role="tablist" aria-label={t("admin.tabs.panel")}>
+        <nav className="admin-tabs" role="tablist" aria-label="Secciones">
           {TABS.map((tab) => (
             <button
               key={tab.key}
@@ -178,7 +178,7 @@ export default function AdminPage() {
               className={`admin-tab ${activeTab === tab.key ? "admin-tab--active" : ""}`}
               onClick={() => setActiveTab(tab.key)}
             >
-              {t(`admin:tabs.${TAB_KEY_MAP[tab.key]}`)}
+              {t(`admin.tabs.${TAB_KEY_MAP[tab.key]}`)}
             </button>
           ))}
         </nav>
