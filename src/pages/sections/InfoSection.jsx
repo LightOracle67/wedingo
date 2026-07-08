@@ -1,6 +1,8 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 
 const InfoSection = memo(function InfoSection({ style, className, weddingSchedule, weddingDressCode, kidsPolicy }) {
+  const { t } = useTranslation();
   return (
     <section
       data-story-section="info"
@@ -9,8 +11,8 @@ const InfoSection = memo(function InfoSection({ style, className, weddingSchedul
     >
       <div className="story-card story-panel story-card--info w-full text-center">
         <>
-          <p className="story-eyebrow">Itinerario</p>
-          <h2 className="story-title">Horario de la celebración</h2>
+          <p className="story-eyebrow">{t("info:sectionLabel")}</p>
+          <h2 className="story-title">{t("info:scheduleTitle")}</h2>
           {weddingSchedule ? (
             <div className="mt-4 space-y-1 text-left">
               {weddingSchedule.split("\n").filter(Boolean).map((line, i) => {
@@ -31,27 +33,27 @@ const InfoSection = memo(function InfoSection({ style, className, weddingSchedul
             </div>
           ) : (
             <p className="story-copy" style={{ fontStyle: "italic" }}>
-              El horario detallado se compartirá próximamente con todos los invitados.
+              {t("info:schedulePending")}
             </p>
           )}
         </>
         <>
           <div className="story-divider" />
-          <p className="story-eyebrow">Código de vestimenta</p>
-          <h3 className="story-subheading">Etiqueta sugerida</h3>
+          <p className="story-eyebrow">{t("info:dressCodeLabel")}</p>
+          <h3 className="story-subheading">{t("info:dressCodeTitle")}</h3>
           {weddingDressCode ? (
             <p className="story-copy">{weddingDressCode}</p>
           ) : (
             <p className="story-copy" style={{ fontStyle: "italic" }}>
-              El código de vestimenta se comunicará más adelante.
+              {t("info:dressCodePending")}
             </p>
           )}
         </>
         {kidsPolicy ? (
           <>
             <div className="story-divider" />
-            <p className="story-eyebrow">Niños</p>
-            <h3 className="story-subheading">Sobre los más pequeños</h3>
+            <p className="story-eyebrow">{t("info:kidsLabel")}</p>
+            <h3 className="story-subheading">{t("info:kidsTitle")}</h3>
             <p className="story-copy whitespace-pre-line">{kidsPolicy}</p>
           </>
         ) : null}

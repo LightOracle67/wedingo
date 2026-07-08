@@ -1,6 +1,8 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 
 const AccommodationSection = memo(function AccommodationSection({ style, className, accommodationInfo }) {
+  const { t } = useTranslation();
   return (
     <section
       data-story-section="accommodation"
@@ -8,13 +10,13 @@ const AccommodationSection = memo(function AccommodationSection({ style, classNa
       style={style}
     >
       <div className="story-card story-panel story-card--info w-full text-center">
-        <p className="story-eyebrow">Alojamiento</p>
-        <h2 className="story-title">Dónde alojarse</h2>
+        <p className="story-eyebrow">{t("accommodation:sectionLabel")}</p>
+        <h2 className="story-title">{t("accommodation:title")}</h2>
         {accommodationInfo ? (
           <p className="story-copy mt-4 whitespace-pre-line">{accommodationInfo}</p>
         ) : (
           <p className="story-copy mt-4" style={{ fontStyle: "italic" }}>
-            La información sobre alojamiento se compartirá próximamente.
+            {t("accommodation:pending")}
           </p>
         )}
       </div>

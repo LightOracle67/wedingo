@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { useSuperAdmin } from "../contexts/SuperAdminContext";
 import { SUPERADMIN_ROUTE } from "../lib/superadmin";
 import DashboardTab from "./superadmin/DashboardTab";
@@ -8,26 +9,35 @@ import TokensTab from "./superadmin/TokensTab";
 import SettingsTab from "./superadmin/SettingsTab";
 import ComplianceTab from "./superadmin/ComplianceTab";
 
+const TAB_KEY_MAP = {
+  dashboard: "dashboard",
+  invitaciones: "invitations",
+  tokens: "tokens",
+  ajustes: "session",
+  cumplimiento: "compliance",
+};
+
 const TABS = [
-  { key: "dashboard", label: "Panel" },
-  { key: "invitaciones", label: "Invitaciones" },
-  { key: "tokens", label: "Tokens" },
-  { key: "ajustes", label: "Sesión" },
-  { key: "cumplimiento", label: "Cumplimiento" },
+  { key: "dashboard" },
+  { key: "invitaciones" },
+  { key: "tokens" },
+  { key: "ajustes" },
+  { key: "cumplimiento" },
 ];
 
 export default function SuperAdminPanel() {
+  const { t } = useTranslation();
   const { isSuperAdmin, isLoading } = useSuperAdmin();
   const [activeTab, setActiveTab] = useState("dashboard");
 
   if (isLoading) {
     return (
       <div className="setup-layout">
-        <section className="setup-card allow-select" aria-label="Cargando">
+        <section className="setup-card allow-select" aria-label={t("common:loading")}>
           <header className="setup-header">
             <div>
-              <p className="setup-eyebrow">Panel privado</p>
-              <h1 className="setup-title">Cargando...</h1>
+              <p className="setup-eyebrow">{t("superadmin:superadmin")}</p>
+              <h1 className="setup-title">{t("common:loading")}</h1>
             </div>
           </header>
         </section>
@@ -41,16 +51,16 @@ export default function SuperAdminPanel() {
 
   return (
     <div className="setup-layout setup-layout--full">
-      <section className="setup-card setup-card--full allow-select" aria-label="Panel de administración">
+      <section className="setup-card setup-card--full allow-select" aria-label={t("superadmin:controlPanel")}>
         <header className="setup-header">
           <div>
-            <p className="setup-eyebrow">Superadmin</p>
-            <h1 className="setup-title">Panel de control</h1>
-            <p className="setup-subtitle">Gestiona la plataforma Wedingo</p>
+            <p className="setup-eyebrow">{t("superadmin:superadmin")}</p>
+            <h1 className="setup-title">{t("superadmin:controlPanel")}</h1>
+            <p className="setup-subtitle">{t("superadmin:managePlatform")}</p>
           </div>
         </header>
 
-        <nav className="admin-tabs" role="tablist" aria-label="Secciones">
+        <nav className="admin-tabs" role="tablist" aria-label={t("superadmin:superadmin")}>
           {TABS.map((tab) => (
             <button
               key={tab.key}
@@ -59,7 +69,7 @@ export default function SuperAdminPanel() {
               className={`admin-tab ${activeTab === tab.key ? "admin-tab--active" : ""}`}
               onClick={() => setActiveTab(tab.key)}
             >
-              {tab.label}
+              {t(`superadmin:tabs.${TAB_KEY_MAP[tab.key]}`)}
             </button>
           ))}
         </nav>

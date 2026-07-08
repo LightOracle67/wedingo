@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "../components/LanguageSwitcher";
 import "leaflet/dist/leaflet.css";
 
 import { useApp } from "../contexts/AppContext";
@@ -32,6 +34,7 @@ const SECTION_COMPONENTS = {
 };
 
 export default function PublicInvitation() {
+  const { t } = useTranslation();
   const location = useLocation();
   const { inviteToken } = useParams();
   const searchParams = new URLSearchParams(location.search);
@@ -457,7 +460,7 @@ export default function PublicInvitation() {
         <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
           <div className="w-full max-w-md text-center story-panel story-panel--hero">
             <p className="font-serif text-[clamp(1rem,3vw,1.35rem)] text-boda-texto/60 leading-relaxed">
-              Cargando invitación…
+              {t("public:loadingInvitation")}
             </p>
           </div>
         </section>
@@ -471,10 +474,10 @@ export default function PublicInvitation() {
         <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
           <div className="w-full max-w-md text-center story-panel story-panel--hero">
             <h1 className="font-serif text-[clamp(2.5rem,8vw,4.5rem)] text-boda-texto leading-tight hero-title invite-title">
-              Wedingo
+              {t("public:emptyTitle")}
             </h1>
             <p className="mt-4 font-serif text-[clamp(1rem,3vw,1.35rem)] text-boda-texto/80 leading-relaxed">
-              No pudimos cargar tu invitación.
+              {t("setup:errorTitle")}
             </p>
             <div className="my-6 story-divider" />
             <p className="text-[0.95rem] text-boda-texto/60 leading-relaxed">
@@ -482,7 +485,7 @@ export default function PublicInvitation() {
             </p>
             <div className="flex flex-wrap justify-center gap-3 mt-8">
               <button className="text-sm setup-button" type="button" onClick={() => window.location.reload()}>
-                Reintentar
+                {t("common:retry")}
               </button>
             </div>
           </div>
@@ -506,14 +509,14 @@ export default function PublicInvitation() {
         <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
           <div className="w-full max-w-md text-center story-panel story-panel--hero">
             <h1 className="font-serif text-[clamp(2.5rem,8vw,4.5rem)] text-boda-texto leading-tight hero-title invite-title">
-              Wedingo
+              {t("public:emptyTitle")}
             </h1>
             <p className="mt-4 font-serif text-[clamp(1rem,3vw,1.35rem)] text-boda-texto/80 leading-relaxed">
-              Invitación no encontrada
+              {t("public:notFoundTitle")}
             </p>
             <div className="my-6 story-divider" />
             <p className="text-[0.95rem] text-boda-texto/60 leading-relaxed">
-              No encontramos una invitación con este enlace. Si crees que es un error, contacta con los anfitriones.
+              {t("public:notFoundText")}
             </p>
           </div>
         </section>
@@ -521,18 +524,18 @@ export default function PublicInvitation() {
         <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
           <div className="w-full max-w-md text-center story-panel story-panel--hero">
             <h1 className="font-serif text-[clamp(2.5rem,8vw,4.5rem)] text-boda-texto leading-tight hero-title invite-title">
-              Wedingo
+              {t("public:emptyTitle")}
             </h1>
             <p className="mt-4 font-serif text-[clamp(1rem,3vw,1.35rem)] text-boda-texto/80 leading-relaxed">
-              Crea y comparte tu invitación de boda personalizada.
+              {t("public:emptyText")}
             </p>
             <div className="my-6 story-divider" />
             <p className="text-[0.95rem] text-boda-texto/60 leading-relaxed">
-              Gestiona los datos de tu invitación, comparte un enlace único con tus invitados y recibe sus confirmaciones de asistencia.
+              {t("public:emptyDescription")}
             </p>
             <div className="flex flex-wrap justify-center gap-3 mt-8">
               <a href="/setup" className="text-sm setup-button">
-                Crear invitación
+                {t("public:createLink")}
               </a>
             </div>
           </div>
@@ -544,7 +547,7 @@ export default function PublicInvitation() {
           type="button"
           className="story-scroll-hint"
           onClick={handleAdvanceStorySection}
-          aria-label="Ir a la siguiente sección"
+          aria-label={t("public:scrollAria")}
         >
           <span className="story-scroll-hint__arrow" aria-hidden="true">↓</span>
         </button>
@@ -562,6 +565,10 @@ export default function PublicInvitation() {
               />
             );
           })}
+
+          <div style={{ position: "fixed", bottom: "1rem", right: "1rem", zIndex: 999 }}>
+            <LanguageSwitcher />
+          </div>
         </>
       )}
     </div>

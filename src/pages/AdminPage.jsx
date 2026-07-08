@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { useApp } from "../contexts/AppContext";
 import { useToast } from "../contexts/ToastContext";
 import { formatDate } from "../lib/section-utils";
@@ -10,16 +11,26 @@ import AccessTab from "./admin/AccessTab";
 import ShareTab from "./admin/ShareTab";
 import SupportTab from "./admin/SupportTab";
 
+const TAB_KEY_MAP = {
+  panel: "panel",
+  invitacion: "invitation",
+  asistencia: "attendance",
+  compartir: "share",
+  acceso: "access",
+  soporte: "support",
+};
+
 const TABS = [
-  { key: "panel", label: "Panel" },
-  { key: "invitacion", label: "Invitación" },
-  { key: "asistencia", label: "Asistencia" },
-  { key: "compartir", label: "Compartir" },
-  { key: "acceso", label: "Acceso" },
-  { key: "soporte", label: "Soporte" },
+  { key: "panel" },
+  { key: "invitacion" },
+  { key: "asistencia" },
+  { key: "compartir" },
+  { key: "acceso" },
+  { key: "soporte" },
 ];
 
 export default function AdminPage() {
+  const { t } = useTranslation();
   const { inviteToken } = useParams();
   const {
     hasStoredConfig, isConfigLoading, configLoadError,
@@ -73,17 +84,17 @@ export default function AdminPage() {
   const exportPdf = useCallback(() => {
     const s = (v) => String(v || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
     const rows = rsvpEntries.map((e) =>
-      `<tr><td>${s(e.guestName)}</td><td>${e.attendance === "yes" ? "Sí" : "No"}</td><td>${e.attendance === "yes" ? e.companions : 0}</td><td>${s(e.dietaryInfo)}</td></tr>`
+      `<tr><td>${s(e.guestName)}</td><td>${e.attendance === "yes" ? t("panel:attends") : t("panel:notAttends")}</td><td>${e.attendance === "yes" ? e.companions : 0}</td><td>${s(e.dietaryInfo)}</td></tr>`
     ).join("");
     const tc = rsvpEntries.filter(e => e.attendance === "yes").length;
     const td = rsvpEntries.filter(e => e.attendance === "no").length;
-    const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Invitados ${s(coupleName)}</title><style>
+    const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${t("admin:pdfTitle", { name: s(coupleName) })}</title><style>
       @page{margin:2cm}body{font-family:system-ui,sans-serif;font-size:12px;color:#222;padding:2rem}h1{font-size:18px;margin-bottom:4px}table{width:100%;border-collapse:collapse;margin-top:8px}th,td{border:1px solid #d4d0c8;padding:6px 8px}tr:nth-child(even){background:#faf8f5}.stats{display:flex;gap:1rem;margin:12px 0;font-size:13px}.stat{background:#f5f3ef;padding:8px 14px;border-radius:8px}@media print{body{padding:0}}
     </style></head><body>
-    <h1>Invitados — ${s(coupleName)}</h1>
+    <h1>${t("admin:pdfTitle", { name: s(coupleName) })}</h1>
     <p style="color:#666;font-size:13px">${new Date().toLocaleDateString("es-ES",{day:"numeric",month:"long",year:"numeric",hour:"2-digit",minute:"2-digit"})}</p>
-    <div class="stats"><div class="stat">${tc} confirmados</div><div class="stat">${td} no asisten</div><div class="stat">${rsvpEntries.length} respuestas</div></div>
-    <table><thead><tr><th>Nombre</th><th>Asistencia</th><th>Acomps</th><th>Dieta</th></tr></thead><tbody>${rows}</tbody></table>
+    <div class="stats"><div class="stat">${tc} ${t("admin:pdfConfirmed")}</div><div class="stat">${td} ${t("admin:pdfNotAttending")}</div><div class="stat">${rsvpEntries.length} ${t("admin:pdfResponses")}</div></div>
+    <table><thead><tr><th>${t("admin:pdfTableName")}</th><th>${t("admin:pdfTableAttendance")}</th><th>${t("admin:pdfTableCompanions")}</th><th>${t("admin:pdfTableDiet")}</th></tr></thead><tbody>${rows}</tbody></table>
     <p style="margin-top:12px;color:#888;font-size:11px">Wedingo</p>
     </body></html>`;
     const blob = new Blob([html], { type: "text/html;charset=utf-8" });
@@ -92,17 +103,17 @@ export default function AdminPage() {
     if (w) {
       setTimeout(() => { w.focus(); w.print(); URL.revokeObjectURL(url); }, 500);
     }
-  }, [rsvpEntries, coupleName]);
+  }, [rsvpEntries, coupleName, t]);
 
   if (isConfigLoading) {
     return (
       <div className="setup-layout">
-        <section className="setup-card allow-select" aria-label="Cargando configuración">
+        <section className="setup-card allow-select" aria-label={t("setup:loadingTitle")}>
           <header className="setup-header">
             <div>
-              <p className="setup-eyebrow">Configuración</p>
-              <h1 className="setup-title">Cargando invitación</h1>
-              <p className="setup-subtitle">Estamos recuperando la configuración guardada.</p>
+              <p className="setup-eyebrow">{t("setup:configTitle")}</p>
+              <h1 className="setup-title">{t("setup:loadingTitle")}</h1>
+              <p className="setup-subtitle">{t("admin:loadingConfig")}</p>
             </div>
           </header>
         </section>
@@ -113,17 +124,17 @@ export default function AdminPage() {
   if (configLoadError) {
     return (
       <div className="setup-layout">
-        <section className="setup-card allow-select" aria-label="Error de carga">
+        <section className="setup-card allow-select" aria-label={t("common:error")}>
           <header className="setup-header">
             <div>
-              <p className="setup-eyebrow">Error de conexión</p>
-              <h1 className="setup-title">No pudimos cargar la invitación</h1>
+              <p className="setup-eyebrow">{t("common:error")}</p>
+              <h1 className="setup-title">{t("admin:errorLoadingConfig")}</h1>
               <p className="setup-subtitle">{configLoadError}</p>
             </div>
           </header>
           <div className="setup-actions">
             <button className="setup-button" type="button" onClick={() => window.location.reload()}>
-              Reintentar
+              {t("common:retry")}
             </button>
           </div>
         </section>
@@ -148,16 +159,16 @@ export default function AdminPage() {
 
   return (
     <div className="setup-layout">
-      <section className="setup-card allow-select" aria-label="Panel de administración">
+      <section className="setup-card allow-select" aria-label={t("admin:privateArea")}>
         <header className="setup-header">
           <div>
-            <p className="setup-eyebrow">Área privada</p>
+            <p className="setup-eyebrow">{t("admin:privateArea")}</p>
             <h1 className="setup-title">{coupleName}</h1>
-            <p className="setup-subtitle">Gestiona tu invitación de boda</p>
+            <p className="setup-subtitle">{t("admin:manageInvitation")}</p>
           </div>
         </header>
 
-        <nav className="admin-tabs" role="tablist" aria-label="Secciones">
+        <nav className="admin-tabs" role="tablist" aria-label={t("admin:tabs.panel")}>
           {TABS.map((tab) => (
             <button
               key={tab.key}
@@ -167,7 +178,7 @@ export default function AdminPage() {
               className={`admin-tab ${activeTab === tab.key ? "admin-tab--active" : ""}`}
               onClick={() => setActiveTab(tab.key)}
             >
-              {tab.label}
+              {t(`admin:tabs.${TAB_KEY_MAP[tab.key]}`)}
             </button>
           ))}
         </nav>

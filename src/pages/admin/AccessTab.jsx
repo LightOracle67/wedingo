@@ -1,11 +1,13 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 
 const AccessTab = memo(function AccessTab({ setupToken, handleResetTokenFromAdmin, handleAdminLogout, confirmTokenInput, setConfirmTokenInput, handleDeleteInvitation }) {
+  const { t } = useTranslation();
   return (
     <>
       <div className="setup-token-card">
         <p className="setup-help setup-help--tight">
-          Usa esta sección para generar un código nuevo. El código anterior dejará de servir.
+          {t("access:description")}
         </p>
         <input
           className="setup-input setup-token-input"
@@ -13,48 +15,48 @@ const AccessTab = memo(function AccessTab({ setupToken, handleResetTokenFromAdmi
           readOnly
           autoComplete="off"
           spellCheck="false"
-          placeholder="Pulsa «Generar» para crear un código nuevo"
+          placeholder={t("access:newTokenPlaceholder")}
         />
-        {setupToken ? <p className="setup-token-display">Código activo (solo tú lo ves).</p> : null}
+        {setupToken ? <p className="setup-token-display">{t("access:activeToken")}</p> : null}
 
         <label className="setup-label" htmlFor="accessConfirmReset">
-          Confirmar
+          {t("access:confirmLabel")}
         </label>
         <p className="setup-help setup-help--tight">
-          Para generar un código nuevo, escribe el código de acceso actual.
+          {t("access:currentTokenDescription")}
         </p>
         <input
           id="accessConfirmReset"
           className="setup-input"
           value={confirmTokenInput}
           onChange={(e) => setConfirmTokenInput(e.target.value)}
-          placeholder="Pega aquí el código actual"
+          placeholder={t("access:currentTokenPlaceholder")}
           autoComplete="off"
           spellCheck="false"
         />
 
         <div className="setup-actions">
           <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleResetTokenFromAdmin}>
-            Generar código nuevo
+            {t("access:generateToken")}
           </button>
           <button className="setup-button" type="button" onClick={handleAdminLogout}>
-            Cerrar sesión
+            {t("access:logout")}
           </button>
         </div>
       </div>
 
       <div className="setup-actions">
         <button className="setup-button setup-button--ghost" type="button" onClick={handleAdminLogout}>
-          Cerrar sesión
+          {t("access:logout")}
         </button>
       </div>
       <hr style={{ margin: "1rem 0", border: "none", borderTop: "1px solid var(--setup-border)" }} />
       <p className="setup-help" style={{ fontSize: "0.8rem", textAlign: "center" }}>
-        Si deseas ejercer tus derechos ARSO, puedes eliminar todos tus datos.
+        {t("access:deleteDataDescription")}
       </p>
       <div className="setup-actions">
         <button className="setup-button setup-button--ghost" type="button" onClick={handleDeleteInvitation} style={{ borderColor: "#e06060", color: "#e06060" }}>
-          Eliminar mi invitación y todos mis datos
+          {t("access:deleteInvitation")}
         </button>
       </div>
     </>

@@ -3989,3 +3989,42 @@ a:focus-visible {
   font-size: 0.8rem;
   padding: 0.4rem 0.8rem;
 }
+
+.language-switcher {
+  display: flex;
+  gap: 2px;
+  background: color-mix(in srgb, var(--setup-field-bg) 60%, transparent);
+  border-radius: 0.5rem;
+  padding: 2px;
+}
+
+.language-switcher--inline {
+  display: inline-flex;
+}
+
+.language-switcher__btn {
+  all: unset;
+  padding: 0.25rem 0.55rem;
+  border-radius: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  color: var(--setup-muted);
+  cursor: pointer;
+  transition: background 200ms, color 200ms;
+  line-height: 1;
+}
+
+.language-switcher__btn:hover {
+  color: var(--setup-title);
+}
+
+.language-switcher__btn--active {
+  background: color-mix(in srgb, var(--setup-accent) 25%, transparent);
+  color: var(--setup-title);
+}
+
+.language-switcher__btn:focus-visible {
+  outline: 2px solid var(--setup-accent);
+  outline-offset: 2px;
+}
