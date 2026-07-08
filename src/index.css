@@ -4062,6 +4062,7 @@ a:focus-visible {
   max-width: 560px;
   max-height: calc(100dvh - 3rem);
   overflow-y: auto;
+  background: linear-gradient(150deg, var(--setup-grad-start), var(--setup-grad-end));
 }
 
 .lang-modal__grid {
