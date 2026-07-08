@@ -2267,7 +2267,9 @@ h6 {
 }
 
 .setup-card--wide {
-  width: min(100%, 1100px);
+  width: 100%;
+  height: calc(100dvh - var(--navbar-height, 0px) - clamp(1.5rem, 5vw, 3rem));
+  max-height: none;
 }
 
 .setup-layout--full.setup-layout {
