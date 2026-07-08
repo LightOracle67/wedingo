@@ -1958,6 +1958,11 @@ h6 {
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px);
   animation: overlay-in 200ms ease;
+
+.modal-overlay--clear {
+  background: transparent;
+  backdrop-filter: none;
+}
   padding: 1rem;
 }
 
