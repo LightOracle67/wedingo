@@ -918,6 +918,118 @@ p, h1, h2, h3, h4, h5, h6, span, a, li, label, td, th, button, input, textarea {
     linear-gradient(to top right, #1a1a1a99 0%, #44444499 25%, #88888899 50%, #dddddd99 70%, #b088c899 100%);
 }
 
+:root[data-wedding-theme="golden"] .story-card,
+:root[data-wedding-theme="golden"] .invite-shell {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background:
+    linear-gradient(to top right, #2a2418cc 0%, #5a3d18aa 35%, #8a6b3099 70%, #d8b24a80 100%);
+}
+
+:root[data-wedding-theme="forest"] .story-card,
+:root[data-wedding-theme="forest"] .invite-shell {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background:
+    linear-gradient(to top right, #1a3d2ecc 0%, #2d5a44aa 35%, #70b89099 70%, #97c87a80 100%);
+}
+
+:root[data-wedding-theme="rose"] .story-card,
+:root[data-wedding-theme="rose"] .invite-shell {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background:
+    linear-gradient(to top right, #4e1a2ccc 0%, #6e2a40aa 35%, #c8789099 70%, #efb0c780 100%);
+}
+
+:root[data-wedding-theme="linen-soft"] .story-card,
+:root[data-wedding-theme="linen-soft"] .invite-shell {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background:
+    linear-gradient(to top right, #5c4430cc 0%, #8a6b48aa 35%, #c8ad7a99 70%, #e0c89880 100%);
+}
+
+:root[data-wedding-theme="blush-pearl"] .story-card,
+:root[data-wedding-theme="blush-pearl"] .invite-shell {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background:
+    linear-gradient(to top right, #4a1e30cc 0%, #6e2a48aa 35%, #b8709099 70%, #e8a0b480 100%);
+}
+
+:root[data-wedding-theme="lavender-mist"] .story-card,
+:root[data-wedding-theme="lavender-mist"] .invite-shell {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background:
+    linear-gradient(to top right, #2e1848cc 0%, #482868aa 35%, #9078b099 70%, #b8a0d880 100%);
+}
+
+:root[data-wedding-theme="champagne-bubble"] .story-card,
+:root[data-wedding-theme="champagne-bubble"] .invite-shell {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background:
+    linear-gradient(to top right, #52401ecc 0%, #7a6030aa 35%, #b8985099 70%, #d4b86a80 100%);
+}
+
+:root[data-wedding-theme="amber-night"] .story-card,
+:root[data-wedding-theme="amber-night"] .invite-shell {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background:
+    linear-gradient(to top right, #1e140ecc 0%, #3a2818aa 35%, #8a683099 70%, #ddb24b80 100%);
+}
+
+:root[data-wedding-theme="onyx-gold"] .story-card,
+:root[data-wedding-theme="onyx-gold"] .invite-shell {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background:
+    linear-gradient(to top right, #12100ccc 0%, #2a2210aa 35%, #6a552099 70%, #d8ad4380 100%);
+}
+
+:root[data-wedding-theme="midnight-royal"] .story-card,
+:root[data-wedding-theme="midnight-royal"] .invite-shell {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background:
+    linear-gradient(to top right, #0a102acc 0%, #182048aa 35%, #3850a099 70%, #e0b84b80 100%);
+}
+
+:root[data-wedding-theme="burgundy-velvet"] .story-card,
+:root[data-wedding-theme="burgundy-velvet"] .invite-shell {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background:
+    linear-gradient(to top right, #2a0c14cc 0%, #4a1828aa 35%, #90505099 70%, #c8787080 100%);
+}
+
+:root[data-wedding-theme="sapphire-night"] .story-card,
+:root[data-wedding-theme="sapphire-night"] .invite-shell {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background:
+    linear-gradient(to top right, #080c20cc 0%, #101840aa 35%, #3858a099 70%, #8898cc80 100%);
+}
+
+:root[data-wedding-theme="emerald-grove"] .story-card,
+:root[data-wedding-theme="emerald-grove"] .invite-shell {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background:
+    linear-gradient(to top right, #041c10cc 0%, #083820aa 35%, #28705099 70%, #70b89080 100%);
+}
+
+:root[data-wedding-theme="plum-twilight"] .story-card,
+:root[data-wedding-theme="plum-twilight"] .invite-shell {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background:
+    linear-gradient(to top right, #1c0824cc 0%, #3a1848aa 35%, #7858a099 70%, #c088c880 100%);
+}
+
 body {
   font-family: var(--font-body);
   margin: 0;
