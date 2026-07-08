@@ -4067,7 +4067,7 @@ a:focus-visible {
   max-width: 560px;
   max-height: calc(100dvh - 3rem);
   overflow-y: auto;
-  background: linear-gradient(150deg, rgba(0,0,0,0.92), rgba(0,0,0,0.85));
+  background: linear-gradient(150deg, rgba(60,50,40,0.94), rgba(40,30,20,0.90));
   border: 1px solid var(--setup-border);
   box-shadow: 0 20px 50px rgba(0,0,0,0.5);
 }
