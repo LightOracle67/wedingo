@@ -83,6 +83,7 @@ const GROUPS = [
       { code: "my", label: "MY — မြန်မာဘာသာ" },
       { code: "lo", label: "LO — ລາວ" },
       { code: "km", label: "KM — ភាសាខ្មែរ" },
+      { code: "wuu", label: "WUU — 吴语" },
     ],
   },
   {
@@ -95,6 +96,8 @@ const GROUPS = [
       { code: "mr", label: "MR — मराठी" },
       { code: "gu", label: "GU — ગુજરાતી" },
       { code: "ur", label: "UR — اردو" },
+      { code: "ne", label: "NE — नेपाली" },
+      { code: "si", label: "SI — සිංහල" },
     ],
   },
   {
@@ -105,6 +108,8 @@ const GROUPS = [
       { code: "ms", label: "MS — Bahasa Melayu" },
       { code: "id", label: "ID — Bahasa Indonesia" },
       { code: "tl", label: "TL — Tagalog" },
+      { code: "jv", label: "JV — Basa Jawa" },
+      { code: "su", label: "SU — Basa Sunda" },
     ],
   },
   {
@@ -116,6 +121,8 @@ const GROUPS = [
       { code: "fa", label: "FA — فارسی" },
       { code: "kk", label: "KK — Қазақша" },
       { code: "uz", label: "UZ — O'zbek" },
+      { code: "ku", label: "KU — Kurdî" },
+      { code: "ps", label: "PS — پښتو" },
     ],
   },
   {
@@ -129,6 +136,7 @@ const GROUPS = [
       { code: "zu", label: "ZU — isiZulu" },
       { code: "rw", label: "RW — Kinyarwanda" },
       { code: "om", label: "OM — Afaan Oromoo" },
+      { code: "mg", label: "MG — Malagasy" },
     ],
   },
   {

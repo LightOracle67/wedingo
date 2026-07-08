@@ -77,6 +77,14 @@ import quRaw from "./locales/qu.json";
 import gnRaw from "./locales/gn.json";
 import htRaw from "./locales/ht.json";
 import eoRaw from "./locales/eo.json";
+import jvRaw from "./locales/jv.json";
+import wuuRaw from "./locales/wuu.json";
+import kuRaw from "./locales/ku.json";
+import psRaw from "./locales/ps.json";
+import neRaw from "./locales/ne.json";
+import siRaw from "./locales/si.json";
+import mgRaw from "./locales/mg.json";
+import suRaw from "./locales/su.json";
 
 function wrap(data) {
   return { translation: data };
@@ -106,6 +114,8 @@ i18n
       uz: wrap(uzRaw), am: wrap(amRaw), ha: wrap(haRaw), yo: wrap(yoRaw),
       ig: wrap(igRaw), zu: wrap(zuRaw), rw: wrap(rwRaw), om: wrap(omRaw),
       qu: wrap(quRaw), gn: wrap(gnRaw), ht: wrap(htRaw), eo: wrap(eoRaw),
+      jv: wrap(jvRaw), wuu: wrap(wuuRaw), ku: wrap(kuRaw), ps: wrap(psRaw),
+      ne: wrap(neRaw), si: wrap(siRaw), mg: wrap(mgRaw), su: wrap(suRaw),
     },
     fallbackLng: "es",
     interpolation: { escapeValue: false },
