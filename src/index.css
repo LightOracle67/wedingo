@@ -4120,8 +4120,15 @@ a:focus-visible {
 
 .lang-popup__grid {
   display: grid;
-  gap: 1rem;
-  margin-top: 0.75rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem 1.5rem;
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 640px) {
+  .lang-popup__grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .lang-popup__group-title {
