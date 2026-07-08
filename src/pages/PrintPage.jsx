@@ -7,7 +7,6 @@ import { parseSectionOrder, formatDate } from "../lib/section-utils";
 function Section({ eyebrow, title, children, accent, bg }) {
   return (
     <section className="print-section">
-      <div className="print-section__bg" />
       <div className="print-section__deco print-section__deco--left">
         <svg viewBox="0 0 200 600" xmlns="http://www.w3.org/2000/svg" style={{ width: 140, height: "auto" }} opacity="0.15">
           <path d="M100,30 Q140,60 130,100 Q120,80 100,70 Q80,60 60,80 Q40,100 30,130 Q20,100 40,70 Q60,40 100,30" fill={accent} />
