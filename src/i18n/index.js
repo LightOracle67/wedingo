@@ -12,6 +12,8 @@ import gl from "./locales/gl.json";
 import eu from "./locales/eu.json";
 import va from "./locales/va.json";
 
+const NAMESPACES = Object.keys(es);
+
 function toNamespaces(src) {
   return Object.fromEntries(Object.entries(src).map(([k, v]) => [k, { translation: v }]));
 }
@@ -32,8 +34,13 @@ i18n
       eu: toNamespaces(eu),
       va: toNamespaces(va),
     },
+    ns: NAMESPACES,
+    defaultNS: "common",
     fallbackLng: "es",
     interpolation: { escapeValue: false },
+    initImmediate: false,
+    returnObjects: false,
+    returnNull: false,
   });
 
 export default i18n;
