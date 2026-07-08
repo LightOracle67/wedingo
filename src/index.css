@@ -4075,23 +4075,36 @@ a:focus-visible {
   outline-offset: 2px;
 }
 
-.lang-modal {
-  max-width: 560px;
-  max-height: calc(100dvh - 3rem);
-  margin: auto;
-  overflow-y: auto;
-  background: linear-gradient(150deg, rgba(60,50,40,0.94), rgba(40,30,20,0.90));
+.lang-popup {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  z-index: 1000;
+  background: linear-gradient(150deg, rgba(28,22,16,0.98), rgba(18,12,8,0.96));
   border: 1px solid var(--setup-border);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  border-radius: 0.8rem;
+  padding: 1rem;
+  max-width: min(90vw, 600px);
+  max-height: calc(100dvh - 4rem);
+  overflow-y: auto;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
 }
 
-.lang-modal__grid {
+.lang-popup__group {
+  margin-bottom: 0.8rem;
+}
+
+.lang-popup__group:last-child {
+  margin-bottom: 0;
+}
+
+.lang-popup__grid {
   display: grid;
   gap: 1rem;
   margin-top: 0.75rem;
 }
 
-.lang-modal__group-title {
+.lang-popup__group-title {
   margin: 0 0 0.4rem;
   font-size: 0.7rem;
   font-weight: 700;
@@ -4100,13 +4113,13 @@ a:focus-visible {
   color: var(--setup-muted);
 }
 
-.lang-modal__options {
+.lang-popup__options {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 0.3rem;
 }
 
-.lang-modal__btn {
+.lang-popup__btn {
   all: unset;
   display: flex;
   align-items: center;
@@ -4119,22 +4132,22 @@ a:focus-visible {
   transition: background 180ms, color 180ms;
 }
 
-.lang-modal__btn:hover {
+.lang-popup__btn:hover {
   background: color-mix(in srgb, var(--setup-accent) 10%, transparent);
   color: var(--setup-title);
 }
 
-.lang-modal__btn--active {
+.lang-popup__btn--active {
   background: color-mix(in srgb, var(--setup-accent) 18%, transparent);
   color: var(--setup-title);
 }
 
-.lang-modal__btn:focus-visible {
+.lang-popup__btn:focus-visible {
   outline: 2px solid var(--setup-accent);
   outline-offset: 1px;
 }
 
-.lang-modal__code {
+.lang-popup__code {
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.03em;
@@ -4142,6 +4155,6 @@ a:focus-visible {
   min-width: 2em;
 }
 
-.lang-modal__name {
+.lang-popup__name {
   font-size: 0.85rem;
 }
