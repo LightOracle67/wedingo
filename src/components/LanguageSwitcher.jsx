@@ -1,16 +1,16 @@
 import { useTranslation } from "react-i18next";
 
 const LANGUAGES = [
-  { code: "es", label: "Español" },
-  { code: "en", label: "English" },
-  { code: "fr", label: "Français" },
-  { code: "pt", label: "Português" },
-  { code: "de", label: "Deutsch" },
-  { code: "it", label: "Italiano" },
-  { code: "ca", label: "Català" },
-  { code: "gl", label: "Galego" },
-  { code: "eu", label: "Euskara" },
-  { code: "va", label: "Valencià" },
+  { code: "es", label: "ES" },
+  { code: "en", label: "EN" },
+  { code: "fr", label: "FR" },
+  { code: "pt", label: "PT" },
+  { code: "de", label: "DE" },
+  { code: "it", label: "IT" },
+  { code: "ca", label: "CA" },
+  { code: "gl", label: "GL" },
+  { code: "eu", label: "EU" },
+  { code: "va", label: "VA" },
 ];
 
 export default function LanguageSwitcher() {
