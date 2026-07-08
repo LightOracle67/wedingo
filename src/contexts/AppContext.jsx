@@ -129,7 +129,7 @@ export function AppProvider({ children }) {
       } catch {
         if (isInvite) {
           setIsConfigLoading(false);
-          setConfigLoadError(t("errors:invalidLink"));
+          setConfigLoadError(t("errors.invalidLink"));
           return;
         }
       }
@@ -202,7 +202,7 @@ export function AppProvider({ children }) {
         }
       } catch {
         if (!hasStoredConfig) {
-          setConfigLoadError(t("errors:configLoadFailed"));
+          setConfigLoadError(t("errors.configLoadFailed"));
         }
       } finally {
         setIsConfigLoading(false);
@@ -267,24 +267,24 @@ export function AppProvider({ children }) {
     const file = event.target.files?.[0];
     if (!file) { event.target.value = ""; return; }
     if (!ALLOWED_UPLOAD_TYPES.has(file.type)) {
-      setSaveError(t("errors:fileFormat"));
+      setSaveError(t("errors.fileFormat"));
       event.target.value = "";
       return;
     }
     if (file.size > MAX_UPLOAD_SIZE_BYTES) {
-      setSaveError(t("errors:fileSize"));
+      setSaveError(t("errors.fileSize"));
       event.target.value = "";
       return;
     }
     setSaveError("");
-    setSaveMessage(t("errors:uploadingImage"));
+    setSaveMessage(t("errors.uploadingImage"));
     try {
       const { dataUrl } = await uploadImage(inviteToken, file);
       setFormData(prev => ({ ...prev, backgroundImage: dataUrl }));
       applyBackgroundImage(dataUrl, file.name, "upload");
       setSaveMessage("");
     } catch {
-      setSaveError(t("errors:imageProcessingFailed"));
+      setSaveError(t("errors.imageProcessingFailed"));
     }
     event.target.value = "";
   }, [inviteToken, applyBackgroundImage]);
@@ -293,14 +293,14 @@ export function AppProvider({ children }) {
     event.preventDefault();
     if (autoSaveTimerRef.current) clearTimeout(autoSaveTimerRef.current);
     if (isSavingRef.current) {
-      setSaveError(t("errors:alreadySaving"));
+      setSaveError(t("errors.alreadySaving"));
       return;
     }
     setSaveError("");
     setSaveMessage("");
 
     if (!hasStoredConfig && !isTokenVerified && !setupToken) {
-      setSaveError(t("errors:verifyTokenFirst"));
+      setSaveError(t("errors.verifyTokenFirst"));
       return;
     }
 
@@ -310,50 +310,50 @@ export function AppProvider({ children }) {
 
     if (!hasStoredConfig) {
       if (formData._privacyConsent !== "true") {
-        setSaveError(t("errors:acceptPrivacyPolicy"));
+        setSaveError(t("errors.acceptPrivacyPolicy"));
         return;
       }
       if (!sanitized.adminUsername) {
-        setSaveError(t("errors:usernameRequired"));
+        setSaveError(t("errors.usernameRequired"));
         return;
       }
       if (!/^[a-zA-Z0-9]+$/.test(sanitized.adminUsername)) {
-        setSaveError(t("errors:usernameInvalid"));
+        setSaveError(t("errors.usernameInvalid"));
         return;
       }
       if (sanitized.adminUsername.length > 50) {
-        setSaveError(t("errors:usernameTooLong"));
+        setSaveError(t("errors.usernameTooLong"));
         return;
       }
     }
 
     if (!sanitized.firstName || !sanitized.secondName) {
-      setSaveError(t("errors:bothNamesRequired"));
+      setSaveError(t("errors.bothNamesRequired"));
       return;
     }
 
     if (!hiddenSet.has("details") || !hasStoredConfig) {
       if (!sanitized.weddingDay || !sanitized.weddingMonth || !sanitized.weddingYear || !sanitized.weddingHour || !sanitized.weddingMinute) {
-        setSaveError(t("errors:dateIncomplete"));
+        setSaveError(t("errors.dateIncomplete"));
         return;
       }
       const parsedDay = Number.parseInt(sanitized.weddingDay, 10);
       if (Number.isNaN(parsedDay) || parsedDay < 1 || parsedDay > 31) {
-        setSaveError(t("errors:dayInvalid"));
+        setSaveError(t("errors.dayInvalid"));
         return;
       }
       if (!MONTH_OPTIONS.some((monthOption) => monthOption.value === sanitized.weddingMonth)) {
-        setSaveError(t("errors:monthInvalid"));
+        setSaveError(t("errors.monthInvalid"));
         return;
       }
       const parsedHour = Number.parseInt(sanitized.weddingHour, 10);
       if (Number.isNaN(parsedHour) || parsedHour < 0 || parsedHour > 23) {
-        setSaveError(t("errors:hourInvalid"));
+        setSaveError(t("errors.hourInvalid"));
         return;
       }
       const parsedMinute = Number.parseInt(sanitized.weddingMinute, 10);
       if (Number.isNaN(parsedMinute) || parsedMinute < 0 || parsedMinute > 59) {
-        setSaveError(t("errors:minuteInvalid"));
+        setSaveError(t("errors.minuteInvalid"));
         return;
       }
       const parsedYear = Number.parseInt(sanitized.weddingYear, 10);
@@ -361,73 +361,73 @@ export function AppProvider({ children }) {
       const enteredDate = new Date(parsedYear, monthNum - 1, parsedDay,
         Number.parseInt(sanitized.weddingHour, 10), Number.parseInt(sanitized.weddingMinute, 10));
       if (enteredDate.getDate() !== parsedDay || enteredDate.getMonth() !== monthNum - 1 || enteredDate.getFullYear() !== parsedYear) {
-        setSaveError(t("errors:dateNotValid"));
+        setSaveError(t("errors.dateNotValid"));
         return;
       }
       const today = new Date();
       today.setSeconds(0, 0);
       if (enteredDate < today) {
-        setSaveError(t("errors:dateBeforeToday"));
+        setSaveError(t("errors.dateBeforeToday"));
         return;
       }
       if (Number.isNaN(parsedYear) || parsedYear > maxAllowedYear) {
-        setSaveError(t("errors:yearTooFar", { year: maxAllowedYear }));
+        setSaveError(t("errors.yearTooFar", { year: maxAllowedYear }));
         return;
       }
     }
 
     if (!THEME_VALUES.has(sanitized.theme)) {
-      setSaveError(t("errors:themeInvalid"));
+      setSaveError(t("errors.themeInvalid"));
       return;
     }
 
     const orderArray = (sanitized.sectionOrder || "").split(",").filter(Boolean).filter(s => !["menu", "transport", "godparents"].includes(s));
     const validSectionKeys = new Set(STORY_SECTION_ORDER);
     if (orderArray.length < 1 || !orderArray.every((s) => validSectionKeys.has(s))) {
-      setSaveError(t("errors:sectionOrderInvalid"));
+      setSaveError(t("errors.sectionOrderInvalid"));
       return;
     }
     if (!hiddenArray.every((s) => validSectionKeys.has(s))) {
-      setSaveError(t("errors:hiddenSectionsInvalid"));
+      setSaveError(t("errors.hiddenSectionsInvalid"));
       return;
     }
     if (Boolean(sanitized.godparent1) !== Boolean(sanitized.godparent2)) {
-      setSaveError(t("errors:godparentsRequired"));
+      setSaveError(t("errors.godparentsRequired"));
       return;
     }
     if (orderArray[0] !== "hero") {
-      setSaveError(t("errors:coverFirst"));
+      setSaveError(t("errors.coverFirst"));
       return;
     }
 
     if (sanitized.menuEnabled === "true") {
       if (!sanitized.menuPostre) {
-        setSaveError(t("errors:postreRequired"));
+        setSaveError(t("errors.postreRequired"));
         return;
       }
       if (!sanitized.menuCarne && !sanitized.menuPescado && !sanitized.menuVegano) {
-        setSaveError(t("errors:menuRequired"));
+        setSaveError(t("errors.menuRequired"));
         return;
       }
     }
     if (sanitized.menuEnabled !== "true" && !sanitized.menuTexto) {
-      setSaveError(t("errors:menuTextRequired"));
+      setSaveError(t("errors.menuTextRequired"));
       return;
     }
 
     if (sanitized.bankInfo && !/^[A-Z]{2}\d{2}[ ]?\d{4}[ ]?\d{4}[ ]?\d{4}[ ]?\d{4}[ ]?\d{0,4}$/.test(sanitized.bankInfo.toUpperCase())) {
-      setSaveError(t("errors:ibanInvalid"));
+      setSaveError(t("errors.ibanInvalid"));
       return;
     }
 
     if (sanitized.musicUrl && !/^https?:\/\/.+\..+/.test(sanitized.musicUrl)) {
-      setSaveError(t("errors:musicUrlInvalid"));
+      setSaveError(t("errors.musicUrlInvalid"));
       return;
     }
 
     if (sanitized.galleryImages) {
       try { JSON.parse(sanitized.galleryImages); } catch {
-        setSaveError(t("errors:galleryFormatInvalid"));
+        setSaveError(t("errors.galleryFormatInvalid"));
         return;
       }
     }
@@ -436,29 +436,29 @@ export function AppProvider({ children }) {
       const expected = STORY_SECTION_ORDER.length;
       const actual = orderArray.length;
       if (actual !== expected) {
-        setSaveError(t("errors:sectionOrderMismatch", { actual, expected }));
+        setSaveError(t("errors.sectionOrderMismatch", { actual, expected }));
         return;
       }
     }
 
     if (sanitized.inviteMessage && sanitized.inviteMessage.length > 500) {
-      setSaveError(t("errors:messageTooLong"));
+      setSaveError(t("errors.messageTooLong"));
       return;
     }
     if (sanitized.weddingSchedule && sanitized.weddingSchedule.length > 2000) {
-      setSaveError(t("errors:scheduleTooLong"));
+      setSaveError(t("errors.scheduleTooLong"));
       return;
     }
     if (sanitized.storyText && sanitized.storyText.length > 2000) {
-      setSaveError(t("errors:storyTooLong"));
+      setSaveError(t("errors.storyTooLong"));
       return;
     }
     if (sanitized.giftsInfo && sanitized.giftsInfo.length > 2000) {
-      setSaveError(t("errors:giftsTooLong"));
+      setSaveError(t("errors.giftsTooLong"));
       return;
     }
     if (sanitized.transportInfo && sanitized.transportInfo.length > 2000) {
-      setSaveError(t("errors:transportTooLong"));
+      setSaveError(t("errors.transportTooLong"));
       return;
     }
 
@@ -496,9 +496,9 @@ export function AppProvider({ children }) {
           saveSession("admin", config.adminUsername || inviteToken);
         } catch {}
       }
-      setSaveMessage(t("errors:configSaved"));
+      setSaveMessage(t("errors.configSaved"));
     } catch {
-      setSaveError(t("errors:configSaveFailed"));
+      setSaveError(t("errors.configSaveFailed"));
     } finally {
       isSavingRef.current = false;
     }
@@ -506,7 +506,7 @@ export function AppProvider({ children }) {
 
   const handleDeleteInvitation = useCallback(async () => {
     if (!inviteToken) return;
-    if (!window.confirm(t("errors:deleteConfirm"))) return;
+    if (!window.confirm(t("errors.deleteConfirm"))) return;
     try {
       const snap = await getDocs(rsvpByInviteRef(inviteToken));
       const batch = writeBatch(db);
@@ -521,7 +521,7 @@ export function AppProvider({ children }) {
       setTokenLoginUsername("");
       navigate("/");
     } catch {
-      setSaveError(t("errors:deleteFailed"));
+      setSaveError(t("errors.deleteFailed"));
     }
   }, [inviteToken, navigate]);
 

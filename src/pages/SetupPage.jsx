@@ -51,12 +51,12 @@ export default function SetupPage() {
   if (isConfigLoading) {
     return (
       <div className="setup-layout">
-        <section className="setup-card allow-select" aria-label={t("setup:loadingTitle")}>
+        <section className="setup-card allow-select" aria-label={t("setup.loadingTitle")}>
           <header className="setup-header">
             <div>
-              <p className="setup-eyebrow">{t("setup:configTitle")}</p>
-              <h1 className="setup-title">{t("setup:loadingTitle")}</h1>
-              <p className="setup-subtitle">{t("setup:loadingText")}</p>
+              <p className="setup-eyebrow">{t("setup.configTitle")}</p>
+              <h1 className="setup-title">{t("setup.loadingTitle")}</h1>
+              <p className="setup-subtitle">{t("setup.loadingText")}</p>
             </div>
           </header>
         </section>
@@ -67,17 +67,17 @@ export default function SetupPage() {
   if (configLoadError) {
     return (
       <div className="setup-layout">
-        <section className="setup-card allow-select" aria-label={t("setup:errorTitle")}>
+        <section className="setup-card allow-select" aria-label={t("setup.errorTitle")}>
           <header className="setup-header">
             <div>
-              <p className="setup-eyebrow">{t("common:error")}</p>
-              <h1 className="setup-title">{t("setup:errorTitle")}</h1>
+              <p className="setup-eyebrow">{t("common.error")}</p>
+              <h1 className="setup-title">{t("setup.errorTitle")}</h1>
               <p className="setup-subtitle">{configLoadError}</p>
             </div>
           </header>
           <div className="setup-actions">
             <button className="setup-button" type="button" onClick={() => window.location.reload()}>
-              {t("common:retry")}
+              {t("common.retry")}
             </button>
           </div>
         </section>
@@ -95,13 +95,13 @@ export default function SetupPage() {
 
   return (
     <div className="setup-layout">
-      <section className="setup-card allow-select" aria-label={t("setup:configTitle")}>
+      <section className="setup-card allow-select" aria-label={t("setup.configTitle")}>
         <header className="setup-header">
           <div>
-            <p className="setup-eyebrow">{t("setup:configTitle")}</p>
-            <h1 className="setup-title">{t("setup:configSubtitle")}</h1>
+            <p className="setup-eyebrow">{t("setup.configTitle")}</p>
+            <h1 className="setup-title">{t("setup.configSubtitle")}</h1>
             <p className="setup-subtitle">
-              {showSuccess ? t("setup:readyText") : t("setup:configText")}
+              {showSuccess ? t("setup.readyText") : t("setup.configText")}
             </p>
           </div>
         </header>
@@ -115,17 +115,17 @@ export default function SetupPage() {
         {showSuccess ? (
           <div className="setup-success-card animate-card-reveal">
             <div className="setup-success-card__icon">✓</div>
-            <p className="setup-success-card__title">{t("setup:successTitle")}</p>
+            <p className="setup-success-card__title">{t("setup.successTitle")}</p>
             <p className="setup-success-card__names">{coupleName}</p>
             <p className="setup-success-card__text">
-              {t("setup:successText")}
+              {t("setup.successText")}
             </p>
             <div className="setup-actions" style={{ justifyContent: "center", marginTop: "0.5rem" }}>
               <button className="setup-button" type="button" onClick={() => navigate(`/${inviteToken}/admin`)}>
-                {t("setup:goToPanel")}
+                {t("setup.goToPanel")}
               </button>
               <button className="setup-button setup-button--ghost" type="button" onClick={() => navigate(`/${inviteToken}`)}>
-                {t("setup:viewCover")}
+                {t("setup.viewCover")}
               </button>
             </div>
           </div>

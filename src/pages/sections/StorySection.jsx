@@ -10,13 +10,13 @@ const StorySection = memo(function StorySection({ style, className, storyText })
       style={style}
     >
       <div className="story-card story-panel story-card--info w-full text-center">
-        <p className="story-eyebrow">{t("story:sectionLabel")}</p>
-        <h2 className="story-title">{t("story:title")}</h2>
+        <p className="story-eyebrow">{t("story.sectionLabel")}</p>
+        <h2 className="story-title">{t("story.title")}</h2>
         {storyText ? (
           <p className="story-copy mt-4 whitespace-pre-line">{storyText}</p>
         ) : (
           <p className="story-copy mt-4" style={{ fontStyle: "italic" }}>
-            {t("story:pending")}
+            {t("story.pending")}
           </p>
         )}
       </div>

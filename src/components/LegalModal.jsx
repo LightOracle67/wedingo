@@ -9,9 +9,9 @@ export default function LegalModal({ section, onClose }) {
   const modalRef = useRef(null);
 
   const SECTIONS = [
-    { id: "privacy", label: t("legal:sectionPrivacy"), content: t("legal:privacyPolicy") },
-    { id: "terms", label: t("legal:sectionTerms"), content: t("legal:termsText") },
-    { id: "legal", label: t("legal:sectionLegal"), content: t("legal:legalText") },
+    { id: "privacy", label: t("legal.sectionPrivacy"), content: t("legal.privacyPolicy") },
+    { id: "terms", label: t("legal.sectionTerms"), content: t("legal.termsText") },
+    { id: "legal", label: t("legal.sectionLegal"), content: t("legal.legalText") },
   ];
 
   useEffect(() => {
@@ -29,11 +29,11 @@ export default function LegalModal({ section, onClose }) {
   const toggle = (id) => setOpen((prev) => (prev === id ? "" : id));
 
   return (
-    <div className="modal-overlay" onClick={onClose} role="dialog" aria-modal="true" aria-label={t("legal:modalTitle")}>
+    <div className="modal-overlay" onClick={onClose} role="dialog" aria-modal="true" aria-label={t("legal.modalTitle")}>
       <div className="modal-card" ref={modalRef} onClick={(e) => e.stopPropagation()}
         style={{ maxWidth: "520px", maxHeight: "calc(100dvh - 2rem)", display: "flex", flexDirection: "column" }}>
-        <button className="modal-close" onClick={onClose} aria-label={t("common:close")}>&times;</button>
-        <p className="modal-title">{t("legal:modalTitle")}</p>
+        <button className="modal-close" onClick={onClose} aria-label={t("common.close")}>&times;</button>
+        <p className="modal-title">{t("legal.modalTitle")}</p>
         <div style={{ overflowY: "auto", flex: 1, marginTop: "0.5rem" }}>
           {SECTIONS.map((s) => (
             <div key={s.id}>

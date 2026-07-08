@@ -460,7 +460,7 @@ export default function PublicInvitation() {
         <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
           <div className="w-full max-w-md text-center story-panel story-panel--hero">
             <p className="font-serif text-[clamp(1rem,3vw,1.35rem)] text-boda-texto/60 leading-relaxed">
-              {t("public:loadingInvitation")}
+              {t("public.loadingInvitation")}
             </p>
           </div>
         </section>
@@ -474,10 +474,10 @@ export default function PublicInvitation() {
         <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
           <div className="w-full max-w-md text-center story-panel story-panel--hero">
             <h1 className="font-serif text-[clamp(2.5rem,8vw,4.5rem)] text-boda-texto leading-tight hero-title invite-title">
-              {t("public:emptyTitle")}
+              {t("public.emptyTitle")}
             </h1>
             <p className="mt-4 font-serif text-[clamp(1rem,3vw,1.35rem)] text-boda-texto/80 leading-relaxed">
-              {t("setup:errorTitle")}
+              {t("setup.errorTitle")}
             </p>
             <div className="my-6 story-divider" />
             <p className="text-[0.95rem] text-boda-texto/60 leading-relaxed">
@@ -485,7 +485,7 @@ export default function PublicInvitation() {
             </p>
             <div className="flex flex-wrap justify-center gap-3 mt-8">
               <button className="text-sm setup-button" type="button" onClick={() => window.location.reload()}>
-                {t("common:retry")}
+                {t("common.retry")}
               </button>
             </div>
           </div>
@@ -509,14 +509,14 @@ export default function PublicInvitation() {
         <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
           <div className="w-full max-w-md text-center story-panel story-panel--hero">
             <h1 className="font-serif text-[clamp(2.5rem,8vw,4.5rem)] text-boda-texto leading-tight hero-title invite-title">
-              {t("public:emptyTitle")}
+              {t("public.emptyTitle")}
             </h1>
             <p className="mt-4 font-serif text-[clamp(1rem,3vw,1.35rem)] text-boda-texto/80 leading-relaxed">
-              {t("public:notFoundTitle")}
+              {t("public.notFoundTitle")}
             </p>
             <div className="my-6 story-divider" />
             <p className="text-[0.95rem] text-boda-texto/60 leading-relaxed">
-              {t("public:notFoundText")}
+              {t("public.notFoundText")}
             </p>
           </div>
         </section>
@@ -524,18 +524,18 @@ export default function PublicInvitation() {
         <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
           <div className="w-full max-w-md text-center story-panel story-panel--hero">
             <h1 className="font-serif text-[clamp(2.5rem,8vw,4.5rem)] text-boda-texto leading-tight hero-title invite-title">
-              {t("public:emptyTitle")}
+              {t("public.emptyTitle")}
             </h1>
             <p className="mt-4 font-serif text-[clamp(1rem,3vw,1.35rem)] text-boda-texto/80 leading-relaxed">
-              {t("public:emptyText")}
+              {t("public.emptyText")}
             </p>
             <div className="my-6 story-divider" />
             <p className="text-[0.95rem] text-boda-texto/60 leading-relaxed">
-              {t("public:emptyDescription")}
+              {t("public.emptyDescription")}
             </p>
             <div className="flex flex-wrap justify-center gap-3 mt-8">
               <a href="/setup" className="text-sm setup-button">
-                {t("public:createLink")}
+                {t("public.createLink")}
               </a>
             </div>
           </div>
@@ -547,7 +547,7 @@ export default function PublicInvitation() {
           type="button"
           className="story-scroll-hint"
           onClick={handleAdvanceStorySection}
-          aria-label={t("public:scrollAria")}
+          aria-label={t("public.scrollAria")}
         >
           <span className="story-scroll-hint__arrow" aria-hidden="true">↓</span>
         </button>

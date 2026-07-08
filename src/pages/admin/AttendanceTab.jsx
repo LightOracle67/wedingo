@@ -35,15 +35,15 @@ const AttendanceTab = memo(function AttendanceTab({
   return (
     <>
       <div className="admin-filters">
-        <label className="sr-only" htmlFor="adminSearchName">{t("attendance:searchLabel")}</label>
+        <label className="sr-only" htmlFor="adminSearchName">{t("attendance.searchLabel")}</label>
         <input id="adminSearchName" className="setup-input" value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)} placeholder={t("attendance:searchPlaceholder")} autoComplete="off" />
+          onChange={(e) => setSearchQuery(e.target.value)} placeholder={t("attendance.searchPlaceholder")} autoComplete="off" />
         <div className="admin-filter-buttons">
           {["all", "yes", "no"].map((f) => (
             <button key={f}
               className={`setup-button setup-button--compact ${attendanceFilter === f ? "" : "setup-button--ghost"}`}
               type="button" onClick={() => setAttendanceFilter(f)}>
-              {f === "all" ? t("attendance:all") : f === "yes" ? t("attendance:confirmed") : t("attendance:notAttending")}
+              {f === "all" ? t("attendance.all") : f === "yes" ? t("attendance.confirmed") : t("attendance.notAttending")}
             </button>
           ))}
         </div>
@@ -51,7 +51,7 @@ const AttendanceTab = memo(function AttendanceTab({
 
       <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginBottom: "0.75rem" }}>
         <span className="setup-help" style={{ margin: 0, fontSize: "0.8rem" }}>
-          {t("attendance:statsLine", { yes: stats.yes, no: stats.no, companions: stats.totalCompanions, diet: stats.withDietary })}
+          {t("attendance.statsLine", { yes: stats.yes, no: stats.no, companions: stats.totalCompanions, diet: stats.withDietary })}
         </span>
       </div>
 
@@ -59,7 +59,7 @@ const AttendanceTab = memo(function AttendanceTab({
         <div className="setup-token-card" style={{ marginBottom: "0.75rem", padding: "0.5rem 0.75rem" }}>
           <details>
             <summary style={{ cursor: "pointer", fontSize: "0.8rem", fontWeight: 600, color: "var(--setup-title)" }}>
-              {t("attendance:dietarySummary", { count: dietary.length })}
+              {t("attendance.dietarySummary", { count: dietary.length })}
             </summary>
             <div style={{ marginTop: "0.4rem", display: "flex", flexDirection: "column", gap: "0.2rem" }}>
               {dietary.map((d) => (
@@ -78,12 +78,12 @@ const AttendanceTab = memo(function AttendanceTab({
           <table className="admin-table">
             <thead>
               <tr>
-                <th>{t("attendance:tableName")}</th>
-                <th>{t("attendance:tableAttendance")}</th>
-                <th>{t("attendance:tableCompanions")}</th>
-                <th>{t("attendance:tableDiet")}</th>
-                <th>{t("attendance:tableNote")}</th>
-                <th>{t("attendance:tableDate")}</th>
+                <th>{t("attendance.tableName")}</th>
+                <th>{t("attendance.tableAttendance")}</th>
+                <th>{t("attendance.tableCompanions")}</th>
+                <th>{t("attendance.tableDiet")}</th>
+                <th>{t("attendance.tableNote")}</th>
+                <th>{t("attendance.tableDate")}</th>
               </tr>
             </thead>
             <tbody>
@@ -92,7 +92,7 @@ const AttendanceTab = memo(function AttendanceTab({
                   <td className="admin-table__name">{entry.guestName}</td>
                   <td>
                     <span className={`admin-badge admin-badge--${entry.attendance}`}>
-                      {entry.attendance === "yes" ? t("attendance:attendingValue") : t("attendance:notAttendingValue")}
+                      {entry.attendance === "yes" ? t("attendance.attendingValue") : t("attendance.notAttendingValue")}
                     </span>
                   </td>
                   <td>{entry.attendance === "yes" ? entry.companions : "—"}</td>
@@ -105,20 +105,20 @@ const AttendanceTab = memo(function AttendanceTab({
           </table>
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", justifyContent: "space-between", marginTop: "0.5rem", flexWrap: "wrap" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}>
-              <span className="setup-help" style={{ fontSize: "0.75rem" }}>{t("attendance:show")}</span>
+              <span className="setup-help" style={{ fontSize: "0.75rem" }}>{t("attendance.show")}</span>
               <select value={pageSize} onChange={(e) => { setPageSize(Number(e.target.value)); setPage(0); }}
                 style={{ fontSize: "0.75rem", padding: "0.15rem 0.3rem", borderRadius: "4px", border: "1px solid var(--setup-border)", background: "var(--setup-bg)", color: "var(--setup-text)" }}>
                 {PAGE_SIZES.map((s) => <option key={s} value={s}>{s}</option>)}
               </select>
               <span className="setup-help" style={{ fontSize: "0.75rem" }}>
-                &middot; {t("attendance:total", { count: filteredEntries.length })}
+                &middot; {t("attendance.total", { count: filteredEntries.length })}
               </span>
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}>
               <button className="setup-button setup-button--ghost setup-button--compact" type="button"
                 disabled={safePage === 0} onClick={() => setPage(safePage - 1)}
                 style={{ fontSize: "0.75rem", padding: "0.2rem 0.5rem" }}>←</button>
-              <span className="setup-help" style={{ fontSize: "0.75rem" }}>{t("attendance:page", { current: safePage + 1, total: totalPages })}</span>
+              <span className="setup-help" style={{ fontSize: "0.75rem" }}>{t("attendance.page", { current: safePage + 1, total: totalPages })}</span>
               <button className="setup-button setup-button--ghost setup-button--compact" type="button"
                 disabled={safePage >= totalPages - 1} onClick={() => setPage(safePage + 1)}
                 style={{ fontSize: "0.75rem", padding: "0.2rem 0.5rem" }}>→</button>
@@ -128,18 +128,18 @@ const AttendanceTab = memo(function AttendanceTab({
       ) : (
         <p className="setup-help">
           {searchQuery || attendanceFilter !== "all"
-            ? t("attendance:noResultsFilter")
-            : t("attendance:noResults")}
+            ? t("attendance.noResultsFilter")
+            : t("attendance.noResults")}
         </p>
       )}
 
       {rsvpEntries.length > 0 && (
         <div className="setup-actions">
           <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={exportPdf}>
-            {t("attendance:exportPdf")}
+            {t("attendance.exportPdf")}
           </button>
           <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleClearRsvpEntries}>
-            {t("attendance:clearAttendance")}
+            {t("attendance.clearAttendance")}
           </button>
         </div>
       )}

@@ -37,17 +37,17 @@ export default function CookieConsent() {
   if (!visible) return null;
 
   return (
-    <div className="cookie-consent-overlay" role="dialog" aria-label={t("cookie:title")}>
+    <div className="cookie-consent-overlay" role="dialog" aria-label={t("cookie.title")}>
       <div className="cookie-consent-card">
         <p className="cookie-consent-text">
-          {t("cookie:text")}
+          {t("cookie.text")}
         </p>
         <div className="cookie-consent-actions">
           <button className="setup-button setup-button--primary" onClick={handleAccept}>
-            {t("cookie:accept")}
+            {t("cookie.accept")}
           </button>
           <button className="setup-button" onClick={handleReject}>
-            {t("cookie:reject")}
+            {t("cookie.reject")}
           </button>
         </div>
       </div>

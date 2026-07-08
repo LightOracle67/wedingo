@@ -58,14 +58,14 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
           {couplePhoto ? (
             <div className="mx-auto mb-4 w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-2" style={{ borderColor: "color-mix(in srgb, var(--invite-shell-border) 80%, transparent)", background: "color-mix(in srgb, var(--setup-field-bg) 50%, transparent)" }}>
               {!photoLoaded ? <div className="page-loading" style={{ width: "100%", height: "100%", minHeight: 0 }} /> : null}
-              <img src={couplePhoto} alt={t("hero:couplePhotoAlt")} onLoad={() => setPhotoLoaded(true)} className="w-full h-full object-cover" style={{ display: photoLoaded ? "block" : "none" }} />
+              <img src={couplePhoto} alt={t("hero.couplePhotoAlt")} onLoad={() => setPhotoLoaded(true)} className="w-full h-full object-cover" style={{ display: photoLoaded ? "block" : "none" }} />
             </div>
           ) : null}
           <div className="relative mx-auto w-fit">
             <div className="hero-rings pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-[42%]">
               <img
                 src={heroBackdropSrc}
-                alt={t("hero:couplePhotoAlt")}
+                alt={t("hero.couplePhotoAlt")}
                 aria-hidden="true"
                 className="invite-rings block h-auto w-[clamp(11rem,44vw,18rem)] object-contain object-center sm:w-[clamp(13rem,34vw,20rem)]"
               />
@@ -79,26 +79,26 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
           </p>
           {godparent1 && godparent2 ? (
             <p className="hero-message invite-copy mt-2" style={{ fontSize: "clamp(0.8rem, 2vw, 1rem)", opacity: 0.7, fontStyle: "italic", letterSpacing: "0.04em" }}>
-              {t("hero:withBlessing", { godparent1, godparent2 })}
+              {t("hero.withBlessing", { godparent1, godparent2 })}
             </p>
           ) : null}
           {countdown ? (
             <div className="hero-countdown mt-6">
               <p className="text-[clamp(0.8rem,2.2vw,1rem)] font-sans tracking-widest uppercase text-boda-texto/60">
-                {countdown.expired ? t("hero:todayIsWedding") : t("hero:missing")}
+                {countdown.expired ? t("hero.todayIsWedding") : t("hero.missing")}
               </p>
               {!countdown.expired ? (
                 <p className="text-[clamp(2rem,6vw,3.5rem)] leading-tight font-serif tracking-wider text-boda-texto">
                   {countdown.days > 0 && countdown.hours > 0
-                    ? t("hero:daysAndHours", { days: countdown.days, hours: countdown.hours })
+                    ? t("hero.daysAndHours", { days: countdown.days, hours: countdown.hours })
                     : countdown.days > 0
-                      ? t("hero:daysAndHours", { days: countdown.days, hours: 0 })
+                      ? t("hero.daysAndHours", { days: countdown.days, hours: 0 })
                       : countdown.hours > 0
-                        ? t("hero:daysAndHours", { days: 0, hours: countdown.hours })
-                        : t("hero:minutes", { minutes: countdown.minutes })}
+                        ? t("hero.daysAndHours", { days: 0, hours: countdown.hours })
+                        : t("hero.minutes", { minutes: countdown.minutes })}
                 </p>
               ) : (
-                <p className="mt-1 text-[clamp(1.5rem,4vw,2.5rem)] leading-tight font-serif text-boda-texto">{t("hero:todayIsTheDay")}</p>
+                <p className="mt-1 text-[clamp(1.5rem,4vw,2.5rem)] leading-tight font-serif text-boda-texto">{t("hero.todayIsTheDay")}</p>
               )}
             </div>
           ) : null}
@@ -106,7 +106,7 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
             <div className="mt-4">
               <audio ref={audioRef} src={musicUrl} loop preload="auto" />
               {audioError ? (
-                <p className="setup-help" style={{ color: "#e06060", fontSize: "0.75rem", marginTop: "0.3rem" }}>{t("hero:audioError")}</p>
+                <p className="setup-help" style={{ color: "#e06060", fontSize: "0.75rem", marginTop: "0.3rem" }}>{t("hero.audioError")}</p>
               ) : (
                 <>
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "0.5rem", flexWrap: "wrap" }}>
