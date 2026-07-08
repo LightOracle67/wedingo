@@ -3991,16 +3991,15 @@ a:focus-visible {
 }
 
 .language-switcher {
-  all: unset;
   padding: 0.3rem 0.6rem;
   border-radius: 0.5rem;
   font-size: 0.78rem;
   font-family: var(--font-body);
+  line-height: 1.4;
   color: var(--setup-title);
   background: color-mix(in srgb, var(--setup-field-bg) 60%, transparent);
   border: 1px solid color-mix(in srgb, var(--setup-border) 40%, transparent);
   cursor: pointer;
-  appearance: auto;
   max-width: 10rem;
 }
 
