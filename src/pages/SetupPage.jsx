@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { useApp } from "../contexts/AppContext";
 import { useToast } from "../contexts/ToastContext";
 import SetupForm from "../components/SetupForm";
 
 export default function SetupPage() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { inviteToken } = useParams();
   const {
@@ -49,12 +51,12 @@ export default function SetupPage() {
   if (isConfigLoading) {
     return (
       <div className="setup-layout">
-        <section className="setup-card allow-select" aria-label="Cargando configuración">
+        <section className="setup-card allow-select" aria-label={t("setup:loadingTitle")}>
           <header className="setup-header">
             <div>
-              <p className="setup-eyebrow">Configuración</p>
-              <h1 className="setup-title">Cargando invitación</h1>
-              <p className="setup-subtitle">Estamos cargando los datos guardados.</p>
+              <p className="setup-eyebrow">{t("setup:configTitle")}</p>
+              <h1 className="setup-title">{t("setup:loadingTitle")}</h1>
+              <p className="setup-subtitle">{t("setup:loadingText")}</p>
             </div>
           </header>
         </section>
@@ -65,17 +67,17 @@ export default function SetupPage() {
   if (configLoadError) {
     return (
       <div className="setup-layout">
-        <section className="setup-card allow-select" aria-label="Error de carga">
+        <section className="setup-card allow-select" aria-label={t("setup:errorTitle")}>
           <header className="setup-header">
             <div>
-              <p className="setup-eyebrow">Error de conexión</p>
-              <h1 className="setup-title">No pudimos cargar la invitación</h1>
+              <p className="setup-eyebrow">{t("common:error")}</p>
+              <h1 className="setup-title">{t("setup:errorTitle")}</h1>
               <p className="setup-subtitle">{configLoadError}</p>
             </div>
           </header>
           <div className="setup-actions">
             <button className="setup-button" type="button" onClick={() => window.location.reload()}>
-              Reintentar
+              {t("common:retry")}
             </button>
           </div>
         </section>
@@ -93,13 +95,13 @@ export default function SetupPage() {
 
   return (
     <div className="setup-layout">
-      <section className="setup-card allow-select" aria-label="Configuración inicial">
+      <section className="setup-card allow-select" aria-label={t("setup:configTitle")}>
         <header className="setup-header">
           <div>
-            <p className="setup-eyebrow">Configuración inicial</p>
-            <h1 className="setup-title">Preparamos tu invitación</h1>
+            <p className="setup-eyebrow">{t("setup:configTitle")}</p>
+            <h1 className="setup-title">{t("setup:configSubtitle")}</h1>
             <p className="setup-subtitle">
-              {showSuccess ? "Tu invitación está lista" : "Completa los datos de la invitación."}
+              {showSuccess ? t("setup:readyText") : t("setup:configText")}
             </p>
           </div>
         </header>
@@ -113,17 +115,17 @@ export default function SetupPage() {
         {showSuccess ? (
           <div className="setup-success-card animate-card-reveal">
             <div className="setup-success-card__icon">✓</div>
-            <p className="setup-success-card__title">Invitación creada</p>
+            <p className="setup-success-card__title">{t("setup:successTitle")}</p>
             <p className="setup-success-card__names">{coupleName}</p>
             <p className="setup-success-card__text">
-              Los datos están guardados y la invitación ya está disponible.
+              {t("setup:successText")}
             </p>
             <div className="setup-actions" style={{ justifyContent: "center", marginTop: "0.5rem" }}>
               <button className="setup-button" type="button" onClick={() => navigate(`/${inviteToken}/admin`)}>
-                Ir al panel
+                {t("setup:goToPanel")}
               </button>
               <button className="setup-button setup-button--ghost" type="button" onClick={() => navigate(`/${inviteToken}`)}>
-                Ver portada
+                {t("setup:viewCover")}
               </button>
             </div>
           </div>

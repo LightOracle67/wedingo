@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { useSuperAdmin } from "../contexts/SuperAdminContext";
 import { useToast } from "../contexts/ToastContext";
 import { SUPERADMIN_DASHBOARD } from "../lib/superadmin";
 
 export default function SuperAdminLogin() {
+  const { t } = useTranslation();
   const { isSuperAdmin, isLoading, login, error } = useSuperAdmin();
   const { addToast } = useToast();
   const [email, setEmail] = useState("");
@@ -18,11 +20,11 @@ export default function SuperAdminLogin() {
   if (isLoading) {
     return (
       <div className="setup-layout">
-        <section className="setup-card allow-select" aria-label="Cargando">
+        <section className="setup-card allow-select" aria-label={t("common:loading")}>
           <header className="setup-header">
             <div>
-              <p className="setup-eyebrow">Panel privado</p>
-              <h1 className="setup-title">Cargando...</h1>
+              <p className="setup-eyebrow">{t("superadmin:superadmin")}</p>
+              <h1 className="setup-title">{t("common:loading")}</h1>
             </div>
           </header>
         </section>
@@ -44,13 +46,13 @@ export default function SuperAdminLogin() {
 
   return (
     <div className="setup-layout">
-      <section className="setup-card allow-select" aria-label="Acceso restringido">
+      <section className="setup-card allow-select" aria-label={t("superadmin:controlPanel")}>
         <header className="setup-header">
           <div>
-            <p className="setup-eyebrow">Acceso restringido</p>
-            <h1 className="setup-title">Panel de administración</h1>
+            <p className="setup-eyebrow">{t("superadmin:superadmin")}</p>
+            <h1 className="setup-title">{t("superadmin:controlPanel")}</h1>
             <p className="setup-subtitle">
-              Introduce tus credenciales para acceder al panel privado.
+              {t("superadmin:managePlatform")}
             </p>
           </div>
         </header>
@@ -86,7 +88,7 @@ export default function SuperAdminLogin() {
 
           <div className="setup-actions">
             <button className="setup-button" type="submit" disabled={submitting}>
-              {submitting ? "Entrando..." : "Entrar"}
+              {submitting ? t("common:loading") : "Entrar"}
             </button>
           </div>
         </form>

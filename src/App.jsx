@@ -1,10 +1,12 @@
 import { lazy, Suspense, useEffect } from "react";
 import { Routes, Route, Navigate, Link, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { AppProvider, useApp } from "./contexts/AppContext";
 import { SuperAdminProvider } from "./contexts/SuperAdminContext";
 import { ToastProvider } from "./contexts/ToastContext";
 import ErrorBoundary from "./components/ErrorBoundary";
 import CookieConsent from "./components/CookieConsent";
+import LanguageSwitcher from "./components/LanguageSwitcher";
 import LandingPage from "./pages/LandingPage";
 import { SUPERADMIN_ROUTE, SUPERADMIN_DASHBOARD } from "./lib/superadmin";
 
@@ -16,6 +18,7 @@ const SuperAdminPanel = lazy(() => import("./pages/SuperAdminPanel"));
 const PrintPage = lazy(() => import("./pages/PrintPage"));
 
 function AppShell() {
+  const { t } = useTranslation();
   const { config, formData, isAdminTokenLoggedIn, tokenLoginUsername, inviteToken } = useApp();
   const location = useLocation();
 
@@ -52,8 +55,9 @@ function AppShell() {
           <div className="admin-bar__inner">
             <span className="admin-bar__title">{tokenLoginUsername || config.adminUsername || "Administración"}</span>
             <div className="admin-bar__links">
-              <Link className={`admin-bar__link ${location.pathname === `/${inviteToken}` ? "admin-bar__link--active" : ""}`} to={`/${inviteToken}`}>Invitación</Link>
-              <Link className={`admin-bar__link ${location.pathname === `/${inviteToken}/admin` ? "admin-bar__link--active" : ""}`} to={`/${inviteToken}/admin`}>Panel</Link>
+              <Link className={`admin-bar__link ${location.pathname === `/${inviteToken}` ? "admin-bar__link--active" : ""}`} to={`/${inviteToken}`}>{t("admin:tabs.invitation")}</Link>
+              <Link className={`admin-bar__link ${location.pathname === `/${inviteToken}/admin` ? "admin-bar__link--active" : ""}`} to={`/${inviteToken}/admin`}>{t("admin:tabs.panel")}</Link>
+              <LanguageSwitcher inline />
             </div>
           </div>
         </nav>

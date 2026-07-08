@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getDoc, doc, serverTimestamp, runTransaction } from "firebase/firestore";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "../components/LanguageSwitcher";
 import { db, invitationDocRef } from "../lib/firebase";
 import { normalizeTokenValue } from "../lib/token-utils";
 import { generateInviteToken } from "../lib/utils";
@@ -11,6 +13,7 @@ import { useApp } from "../contexts/AppContext";
 import LegalModal from "../components/LegalModal";
 
 export default function LandingPage() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { setIsTokenVerified, setTokenLoginUsername } = useApp();
   const [showModal, setShowModal] = useState(false);
@@ -56,7 +59,7 @@ export default function LandingPage() {
     const username = (usernameInput || "").trim();
     const raw = (tokenInput || "").trim();
     if (!username || !raw) {
-      setError("Introduce tu nombre de usuario y el código de acceso.");
+      setError(t("landing:errorEmpty"));
       return;
     }
 
@@ -65,7 +68,7 @@ export default function LandingPage() {
 
     const normalized = normalizeTokenValue(raw);
     if (normalized.length < 20) {
-      setError("El código de acceso no es válido.");
+      setError(t("landing:errorInvalidToken"));
       setIsLoading(false);
       return;
     }
@@ -73,21 +76,21 @@ export default function LandingPage() {
     try {
       const snap = await getDoc(doc(db, "setupTokens", normalized));
       if (!snap.exists()) {
-        setError("El código no es válido.");
+        setError(t("landing:errorTokenNotFound"));
         setIsLoading(false);
         return;
       }
 
       const tokenUsername = (snap.data().username || "").trim().toLowerCase();
       if (tokenUsername && tokenUsername !== username.trim().toLowerCase()) {
-        setError("El código no corresponde a este usuario.");
+        setError(t("landing:errorUsernameMismatch"));
         setIsLoading(false);
         return;
       }
 
       const target = snap.data().inviteToken;
       if (!target) {
-        setError("El código no está asociado a ninguna invitación.");
+        setError(t("landing:errorNoInvite"));
         setIsLoading(false);
         return;
       }
@@ -104,7 +107,7 @@ export default function LandingPage() {
       const sessionSnap = await getDoc(doc(db, "sessions", target));
       if (sessionSnap.exists()) {
         setIsLoading(false);
-        if (!window.confirm("Ya hay una sesión activa para esta invitación. ¿Quieres iniciar sesión de todos modos? La sesión anterior se cerrará.")) {
+        if (!window.confirm(t("landing:sessionExists"))) {
           return;
         }
         setIsLoading(true);
@@ -118,7 +121,7 @@ export default function LandingPage() {
           transaction.set(doc(db, "sessions", target), { createdAt: serverTimestamp() });
         });
       } catch {
-        setError("No se pudo completar el acceso. Inténtalo de nuevo.");
+        setError(t("landing:errorTransactionFailed"));
         setIsLoading(false);
         return;
       }
@@ -129,7 +132,7 @@ export default function LandingPage() {
       setIsTokenVerified(true);
       navigate(`/${target}`);
     } catch {
-      setError("No se pudo verificar el código. Inténtalo de nuevo.");
+      setError(t("landing:errorVerifyFailed"));
     }
 
     setIsLoading(false);
@@ -147,44 +150,47 @@ export default function LandingPage() {
       <section className="story-section story-section--is-active landing-bg flex min-h-screen items-center justify-center px-4">
         <div className="story-panel story-panel--hero w-full max-w-md text-center">
           <h1 className="hero-title invite-title text-[clamp(2.5rem,8vw,4.5rem)] leading-tight font-serif text-boda-texto">
-            Wedingo - Invitaciones de boda
+            {t("landing:title")}
           </h1>
           <p className="mt-4 text-[clamp(1rem,3vw,1.35rem)] leading-relaxed font-serif text-boda-texto/80">
-            Crea y comparte tu invitación de boda personalizada.
+            {t("landing:subtitle")}
           </p>
           <div className="story-divider my-6" />
           <p className="text-[0.95rem] leading-relaxed text-boda-texto/60">
-            Gestiona los datos de tu invitación, comparte un enlace único con tus invitados y recibe sus confirmaciones de asistencia.
+            {t("landing:description")}
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <button type="button" className="setup-button text-sm" onClick={handleCreate}>
-              Crear tu invitación
+              {t("landing:createInvitation")}
             </button>
             <button type="button" className="setup-button setup-button--ghost text-sm" onClick={openModal}>
-              Ya tengo una invitación
+              {t("landing:haveInvitation")}
             </button>
           </div>
           <div className="mt-6 text-center">
-            <button type="button" onClick={() => setLegalSection("privacy")} className="text-[0.8rem] text-boda-texto/60 hover:text-boda-texto/80 transition-colors" style={{ textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-body)" }}>Política de Privacidad</button>
+            <button type="button" onClick={() => setLegalSection("privacy")} className="text-[0.8rem] text-boda-texto/60 hover:text-boda-texto/80 transition-colors" style={{ textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-body)" }}>{t("landing:privacyPolicy")}</button>
             <span className="text-[0.8rem] text-boda-texto/50 mx-1">·</span>
-            <button type="button" onClick={() => setLegalSection("terms")} className="text-[0.8rem] text-boda-texto/60 hover:text-boda-texto/80 transition-colors" style={{ textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-body)" }}>Términos</button>
+            <button type="button" onClick={() => setLegalSection("terms")} className="text-[0.8rem] text-boda-texto/60 hover:text-boda-texto/80 transition-colors" style={{ textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-body)" }}>{t("landing:terms")}</button>
             <span className="text-[0.8rem] text-boda-texto/50 mx-1">·</span>
-            <button type="button" onClick={() => setLegalSection("legal")} className="text-[0.8rem] text-boda-texto/60 hover:text-boda-texto/80 transition-colors" style={{ textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-body)" }}>Aviso Legal</button>
+            <button type="button" onClick={() => setLegalSection("legal")} className="text-[0.8rem] text-boda-texto/60 hover:text-boda-texto/80 transition-colors" style={{ textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-body)" }}>{t("landing:legalNotice")}</button>
+          </div>
+          <div className="mt-3 text-center">
+            <LanguageSwitcher inline />
           </div>
         </div>
       </section>
       {legalSection && <LegalModal section={legalSection} onClose={() => setLegalSection("")} />}
 
       {showModal && (
-        <div className="modal-overlay" onClick={() => setShowModal(false)} role="dialog" aria-modal="true" aria-label="Acceder a tu invitación">
+        <div className="modal-overlay" onClick={() => setShowModal(false)} role="dialog" aria-modal="true" aria-label={t("landing:modalTitle")}>
           <div className="modal-card" ref={modalRef} onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" ref={closeButtonRef} onClick={() => setShowModal(false)} aria-label="Cerrar">
+            <button className="modal-close" ref={closeButtonRef} onClick={() => setShowModal(false)} aria-label={t("common:close")}>
               &times;
             </button>
             <form onSubmit={handleLogin}>
-              <p className="modal-title">Acceder a tu invitación</p>
+              <p className="modal-title">{t("landing:modalTitle")}</p>
               <label className="setup-label" htmlFor="loginUsernameInput">
-                Nombre de usuario
+                {t("landing:usernameLabel")}
               </label>
               <input
                 id="loginUsernameInput"
@@ -192,13 +198,13 @@ export default function LandingPage() {
                 type="text"
                 value={usernameInput}
                 onChange={(e) => setUsernameInput(e.target.value.replace(/[^a-zA-Z0-9\sáéíóúñÁÉÍÓÚÑ]/g, "").slice(0, 50))}
-                placeholder="Tu nombre de usuario"
+                placeholder={t("landing:usernamePlaceholder")}
                 autoComplete="username"
                 spellCheck="false"
                 autoFocus
               />
               <label className="setup-label" htmlFor="loginTokenInput" style={{ marginTop: "0.75rem" }}>
-                Código de acceso
+                {t("landing:tokenLabel")}
               </label>
               <input
                 id="loginTokenInput"
@@ -206,14 +212,14 @@ export default function LandingPage() {
                 type="password"
                 value={tokenInput}
                 onChange={(e) => setTokenInput(e.target.value.replace(/[^a-zA-Z0-9/:.?=&-]/g, "").slice(0, 80))}
-                placeholder="Pega el código de acceso"
+                placeholder={t("landing:tokenPlaceholder")}
                 autoComplete="current-password"
                 spellCheck="false"
               />
               {error && <p className="setup-error">{error}</p>}
               <div className="setup-actions">
                 <button className="setup-button" type="submit" disabled={isLoading || usernameInput.trim().length < 1 || tokenInput.trim().length < 20}>
-                  {isLoading ? "Buscando..." : "Acceder"}
+                  {isLoading ? t("landing:loginLoading") : t("landing:loginButton")}
                 </button>
               </div>
             </form>

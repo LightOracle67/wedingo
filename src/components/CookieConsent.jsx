@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 const STORAGE_KEY = "wedin_cookie_consent";
 
@@ -15,6 +16,7 @@ export function rejectCookies() {
 }
 
 export default function CookieConsent() {
+  const { t } = useTranslation();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -35,18 +37,17 @@ export default function CookieConsent() {
   if (!visible) return null;
 
   return (
-    <div className="cookie-consent-overlay" role="dialog" aria-label="Consentimiento de cookies">
+    <div className="cookie-consent-overlay" role="dialog" aria-label={t("cookie:title")}>
       <div className="cookie-consent-card">
         <p className="cookie-consent-text">
-          Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación
-          (guardar tu sesión y preferencias). No usamos cookies de terceros ni rastreadores.
+          {t("cookie:text")}
         </p>
         <div className="cookie-consent-actions">
           <button className="setup-button setup-button--primary" onClick={handleAccept}>
-            Aceptar
+            {t("cookie:accept")}
           </button>
           <button className="setup-button" onClick={handleReject}>
-            Rechazar
+            {t("cookie:reject")}
           </button>
         </div>
       </div>

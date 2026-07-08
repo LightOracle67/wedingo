@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { buildGoogleMapsUrl, buildAppleMapsUrl } from "../../lib/utils";
 
 const DetailsSection = memo(function DetailsSection({
@@ -8,6 +9,7 @@ const DetailsSection = memo(function DetailsSection({
   locationMapContainerRef, locationMapLoading, locationMapError, locationMapTarget,
   configWeddingPlace, transportInfo,
 }) {
+  const { t } = useTranslation();
   return (
     <section
       data-story-section="details"
@@ -15,26 +17,26 @@ const DetailsSection = memo(function DetailsSection({
       style={style}
     >
       <div className="story-card story-panel story-card--details w-full text-center">
-        <p className="story-eyebrow">Fecha y lugar</p>
-        <h2 className="story-title">{formattedDate || "Fecha por definir"}</h2>
-        <p className="story-copy">{formattedTime ? `Hora de la celebración: ${formattedTime}` : "Horario por confirmar"}</p>
+        <p className="story-eyebrow">{t("details:sectionLabel")}</p>
+        <h2 className="story-title">{formattedDate || t("details:datePending")}</h2>
+        <p className="story-copy">{formattedTime ? t("details:timeLabel", { time: formattedTime }) : t("details:timePending")}</p>
         {hasLocationData ? (
           <p className="story-copy">{locationDescription}</p>
         ) : (
-          <p className="story-copy">El lugar de la celebración aparecerá aquí.</p>
+          <p className="story-copy">{t("details:placePending")}</p>
         )}
         <div className="story-divider" />
         <p className="story-note">
           {formattedTime
-            ? `Te esperamos para compartir este momento tan especial. Comenzamos a las ${formattedTime}. Más abajo encontrarás el mapa de ubicación.`
-            : "Te esperamos para compartir este momento tan especial. Más abajo encontrarás el mapa de ubicación."}
+            ? t("details:welcomeWithTime", { time: formattedTime })
+            : t("details:welcomeWithoutTime")}
           </p>
         {transportInfo ? (
           <div className="story-divider" />
         ) : null}
         {transportInfo ? (
           <div style={{ marginTop: "0.5rem" }}>
-            <p className="story-eyebrow" style={{ fontSize: "0.72rem" }}>Transporte</p>
+            <p className="story-eyebrow" style={{ fontSize: "0.72rem" }}>{t("details:transport")}</p>
             <p className="story-note whitespace-pre-line" style={{ marginTop: "0.2rem" }}>{transportInfo}</p>
           </div>
         ) : null}
@@ -46,7 +48,7 @@ const DetailsSection = memo(function DetailsSection({
               target="_blank"
               rel="noreferrer"
             >
-              Añadir al calendario
+              {t("details:addToCalendar")}
             </a>
           </div>
         ) : null}
@@ -55,9 +57,9 @@ const DetailsSection = memo(function DetailsSection({
             <div
               ref={locationMapContainerRef}
               className="story-map__canvas"
-              aria-label={`Mapa de ${locationDescription || "la ubicación"}`}
+              aria-label={t("details:mapAriaLabel", { location: locationDescription || t("details:placePending") })}
             />
-            {locationMapLoading ? <p className="story-map__status">Cargando el mapa...</p> : null}
+            {locationMapLoading ? <p className="story-map__status">{t("details:mapLoading")}</p> : null}
             {locationMapError ? <p className="story-map__status story-map__status--error">{locationMapError}</p> : null}
             {locationMapTarget ? (
               <div className="story-map__actions">
@@ -67,7 +69,7 @@ const DetailsSection = memo(function DetailsSection({
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Ver en Google Maps
+                  {t("details:viewGoogleMaps")}
                 </a>
                 <a
                   className="setup-button setup-button--ghost setup-button--compact"
@@ -75,7 +77,7 @@ const DetailsSection = memo(function DetailsSection({
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Ver en Apple Maps
+                  {t("details:viewAppleMaps")}
                 </a>
               </div>
             ) : null}
