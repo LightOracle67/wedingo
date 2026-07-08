@@ -31,7 +31,7 @@ export default function LegalModal({ section, onClose }) {
   return (
     <div className="modal-overlay" onClick={onClose} role="dialog" aria-modal="true" aria-label={t("legal.modalTitle")}>
       <div className="modal-card" ref={modalRef} onClick={(e) => e.stopPropagation()}
-        style={{ width: "min(95vw, 760px)", minWidth: "360px", maxHeight: "calc(100dvh - 2rem)", display: "flex", flexDirection: "column" }}>
+        style={{ width: "min(95vw, 760px)", minWidth: "360px", maxHeight: "calc(100dvh - 2rem)", display: "flex", flexDirection: "column", padding: "1.2rem 1rem 1rem" }}>
         <button className="modal-close" onClick={onClose} aria-label={t("common.close")}>&times;</button>
         <p className="modal-title">{t("legal.modalTitle")}</p>
         <div style={{ overflowY: "auto", flex: 1, marginTop: "0.5rem" }}>
