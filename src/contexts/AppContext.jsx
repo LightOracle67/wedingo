@@ -9,6 +9,7 @@ import { decodeInviteConfig } from "../lib/invite-config-codec";
 import { compressImage } from "../lib/image-utils";
 import { uploadImage, loadDecryptedField, deleteGallery } from "../lib/image-store";
 import { saveSession, clearSession } from "../lib/sessionVars";
+import { safeSetItem, safeGetItem, safeRemoveItem } from "../lib/storage";
 import { encrypt, decrypt } from "../lib/crypto-utils";
 import { useCalendar } from "../hooks/useCalendar";
 import { useFieldHandlers } from "../hooks/useFieldHandlers";
@@ -163,7 +164,7 @@ export function AppProvider({ children }) {
           return;
         }
 
-        const cached = localStorage.getItem(`wedin_invite_cache_${inviteToken}`);
+        const cached = safeGetItem(`wedin_invite_cache_${inviteToken}`);
         if (cached) {
           try {
             const parsed = JSON.parse(cached);
@@ -192,12 +193,12 @@ export function AppProvider({ children }) {
         const hydrated = { ...defaultConfig, ...parsed };
         setConfig(hydrated);
         setFormData(hydrated);
-        localStorage.setItem(`wedin_invite_cache_${inviteToken}`, JSON.stringify({ data: hydrated, cachedAt: Date.now() }));
+        safeSetItem(`wedin_invite_cache_${inviteToken}`, JSON.stringify({ data: hydrated, cachedAt: Date.now() }));
         setVisitCount(typeof snapshot.data()._visits === "number" ? snapshot.data()._visits : 0);
         setHasStoredConfig(true);
         loadedTokenRef.current = inviteToken;
         const firstSegment = location.pathname.split("/").filter(Boolean)[0] || "";
-        if (/^[a-zA-Z0-9]{8,12}$/.test(firstSegment) && !["setup", "admin"].includes(firstSegment)) {
+        if (/^[a-zA-Z0-9]{8,12}$/.test(firstSegment) && !["setup", "admin"].includes(firstSegment) && safeGetItem("wedin_cookie_consent") === "accepted") {
           trackVisit(inviteToken);
         }
       } catch {
@@ -214,7 +215,7 @@ export function AppProvider({ children }) {
   const reloadConfig = useCallback(async () => {
     if (!inviteToken) return;
     try {
-      localStorage.removeItem(`wedin_invite_cache_${inviteToken}`);
+      safeRemoveItem(`wedin_invite_cache_${inviteToken}`);
       const snapshot = await getDoc(invitationDocRef(inviteToken));
       if (!snapshot.exists()) {
         setHasStoredConfig(false);
@@ -515,7 +516,7 @@ export function AppProvider({ children }) {
       batch.delete(invitationDocRef(inviteToken));
       batch.delete(doc(db, "sessions", inviteToken));
       await batch.commit();
-      localStorage.removeItem(`wedin_invite_cache_${inviteToken}`);
+      safeRemoveItem(`wedin_invite_cache_${inviteToken}`);
       clearSession();
       setIsTokenVerified(false);
       setTokenLoginUsername("");

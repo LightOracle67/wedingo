@@ -8,6 +8,7 @@ import { normalizeTokenValue } from "../lib/token-utils";
 import { generateInviteToken } from "../lib/utils";
 import { normalizeConfig } from "../lib/normalize-config";
 import { defaultConfig } from "../lib/constants";
+import { safeSetItem, safeGetItem } from "../lib/storage";
 import { saveSession } from "../lib/sessionVars";
 import { useApp } from "../contexts/AppContext";
 import LegalModal from "../components/LegalModal";
@@ -50,7 +51,7 @@ export default function LandingPage() {
 
   const handleCreate = () => {
     const token = generateInviteToken();
-    sessionStorage.setItem("wedin_invite_token", token);
+    safeSetItem("wedin_invite_token", token, sessionStorage);
     navigate(`/${token}/setup`);
   };
 
@@ -100,7 +101,7 @@ export default function LandingPage() {
         try {
           const parsed = normalizeConfig(inviteSnap.data());
           const hydrated = { ...defaultConfig, ...parsed };
-          localStorage.setItem(`wedin_invite_cache_${target}`, JSON.stringify({ data: hydrated, cachedAt: Date.now() }));
+          safeSetItem(`wedin_invite_cache_${target}`, JSON.stringify({ data: hydrated, cachedAt: Date.now() }));
         } catch {}
       }
 
@@ -126,7 +127,7 @@ export default function LandingPage() {
         return;
       }
 
-      sessionStorage.setItem("wedin_invite_token", target);
+      safeSetItem("wedin_invite_token", target, sessionStorage);
       saveSession("admin", username);
       setTokenLoginUsername(username);
       setIsTokenVerified(true);

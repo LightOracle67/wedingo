@@ -5,6 +5,7 @@ import { db, invitationDocRef } from "../lib/firebase";
 import { defaultConfig } from "../lib/constants";
 import { generateSetupToken, normalizeTokenValue } from "../lib/token-utils";
 import { saveSession, getSession, renewSession, clearSession } from "../lib/sessionVars";
+import { safeSetItem, safeGetItem, safeRemoveItem } from "../lib/storage";
 
 export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessageType, setHasStoredConfig) {
   const navigate = useNavigate();
@@ -68,7 +69,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
 
     if (!oldToken && inviteToken) {
       try {
-        const saved = sessionStorage.getItem(storageKey);
+        const saved = safeGetItem(storageKey, sessionStorage);
         if (saved) {
           const snap = await getDoc(doc(db, "setupTokens", saved));
           if (snap.exists()) {
@@ -84,7 +85,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
     const normalizedToken = normalizeTokenValue(nextToken);
     setSetupToken(normalizedToken);
     setSetupTokenInput(normalizedToken);
-    if (inviteToken) sessionStorage.setItem(storageKey, normalizedToken);
+    if (inviteToken) safeSetItem(storageKey, normalizedToken, sessionStorage);
     try {
       const payload = { used: false, autoGen: true, createdAt: serverTimestamp() };
       if (inviteToken) payload.inviteToken = inviteToken;
@@ -279,7 +280,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
     clearSession();
     if (token) {
       try {
-        localStorage.removeItem(`wedin_invite_cache_${token}`);
+        safeRemoveItem(`wedin_invite_cache_${token}`);
         await deleteDoc(doc(db, "sessions", token));
       } catch {}
     }
