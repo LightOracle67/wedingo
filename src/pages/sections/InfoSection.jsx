@@ -13,7 +13,7 @@ const InfoSection = memo(function InfoSection({ style, className, weddingSchedul
         <>
           <p className="story-eyebrow">{t("info.sectionLabel")}</p>
           <h2 className="story-title">{t("info.scheduleTitle")}</h2>
-          {weddingSchedule ? (
+          {(weddingSchedule || "").trim() ? (
             <div className="mt-4 space-y-1 text-left">
               {weddingSchedule.split("\n").filter(Boolean).map((line, i) => {
                 const timeMatch = line.match(/^(\d{1,2}:\d{2})\s*(.*)/);

@@ -13,7 +13,20 @@
     "confirm": "Confirm",
     "yes": "Yes",
     "no": "No",
-    "back": "Back"
+    "back": "Back",
+    "errorBoundary": {
+      "title": "Something went wrong",
+      "message": "Please reload the page to try again.",
+      "reload": "Reload page"
+    },
+    "toast": {
+      "close": "Close"
+    },
+    "skipToContent": "Skip to main content",
+    "adminBar": {
+      "ariaLabel": "Administration bar",
+      "fallback": "Administration"
+    }
   },
   "landing": {
     "title": "Wedingo — Wedding invitations",
@@ -48,7 +61,9 @@
     "daysAndHours": "{{days}} day(s) and {{hours}} hour(s)",
     "minutes": "{{minutes}} minute(s)",
     "todayIsTheDay": "Today is the big day!",
-    "audioError": "Could not load audio. Please check the link."
+    "audioError": "Could not load audio. Please check the link.",
+    "days": "{{days}} days",
+    "hours": "{{hours}} hours"
   },
   "details": {
     "sectionLabel": "Date & venue",
@@ -145,7 +160,10 @@
     "scrollAria": "Go to next section",
     "privacyPolicy": "Privacy Policy",
     "terms": "Terms",
-    "legalNotice": "Legal Notice"
+    "legalNotice": "Legal Notice",
+    "locationNotFound": "Could not locate this place.",
+    "locationMapError": "Could not load the map.",
+    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}"
   },
   "setup": {
     "loadingTitle": "Loading invitation",

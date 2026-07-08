@@ -13,8 +13,14 @@ export function useAutoSave(hasStoredConfig, inviteToken, formData, config, onSa
     autoSavingRef.current = true;
     const payload = normalizeConfig(data);
     try {
+      const bgOrig = payload.backgroundImage?.startsWith("data:") ? payload.backgroundImage : null;
+      const cpOrig = payload.couplePhoto?.startsWith("data:") ? payload.couplePhoto : null;
       if (payload.bankInfo) payload.bankInfo = await encrypt(payload.bankInfo, inviteToken);
+      if (bgOrig) payload.backgroundImage = await encrypt(bgOrig, inviteToken);
+      if (cpOrig) payload.couplePhoto = await encrypt(cpOrig, inviteToken);
       await setDoc(invitationDocRef(inviteToken), payload);
+      if (bgOrig) payload.backgroundImage = bgOrig;
+      if (cpOrig) payload.couplePhoto = cpOrig;
       return payload;
     } catch {
       return null;

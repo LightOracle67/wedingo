@@ -316,7 +316,7 @@ export default function PublicInvitation() {
         if (isCancelled || !container.isConnected) return;
 
         if (!geocodedLocation) {
-          setLocationMapError("No pudimos localizar este lugar.");
+          setLocationMapError(t("public.locationNotFound"));
           setLocationMapLoading(false);
           return;
         }
@@ -351,7 +351,7 @@ export default function PublicInvitation() {
         });
       } catch {
         if (!isCancelled) {
-          setLocationMapError("No pudimos cargar el mapa.");
+          setLocationMapError(t("public.locationMapError"));
           setLocationMapLoading(false);
         }
       }
@@ -371,7 +371,7 @@ export default function PublicInvitation() {
   const locationDescription = config.weddingPlace
     ? config.weddingPlace
     : configuredCoordinates
-      ? `Coordenadas: ${configuredCoordinates.latitude}, ${configuredCoordinates.longitude}`
+      ? t("public.locationCoordinates", { lat: configuredCoordinates.latitude, lng: configuredCoordinates.longitude })
       : "";
 
   const handleAdvanceStorySection = useCallback(() => {

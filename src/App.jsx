@@ -51,13 +51,13 @@ function AppShell() {
   return (
     <>
       <a href="#main-content" className="skip-link" tabIndex={0}>
-        Saltar al contenido principal
+        {t("common.skipToContent")}
       </a>
 
       {isAdminTokenLoggedIn && inviteToken && !location.pathname.endsWith("/setup") && !location.pathname.endsWith("/print") ? (
-        <nav className="admin-bar" role="navigation" aria-label="Barra de administración">
+        <nav className="admin-bar" role="navigation" aria-label={t("common.adminBar.ariaLabel")}>
           <div className="admin-bar__inner">
-            <span className="admin-bar__title">{tokenLoginUsername || config.adminUsername || "Administración"}</span>
+            <span className="admin-bar__title">{tokenLoginUsername || config.adminUsername || t("common.adminBar.fallback")}</span>
             <div className="admin-bar__links">
               <Link className={`admin-bar__link ${location.pathname === `/${inviteToken}` ? "admin-bar__link--active" : ""}`} to={`/${inviteToken}`}>{t("admin.tabs.invitation")}</Link>
               <Link className={`admin-bar__link ${location.pathname === `/${inviteToken}/admin` ? "admin-bar__link--active" : ""}`} to={`/${inviteToken}/admin`}>{t("admin.tabs.panel")}</Link>

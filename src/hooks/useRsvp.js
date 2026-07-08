@@ -213,6 +213,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
         guestName: single,
         attendance: rsvpForm.attendance,
         dietaryInfo: encryptedDietaryInfo,
+        mealChoice: rsvpForm.mealChoice || "",
         inviteToken,
         submittedAt: serverTimestamp(),
         privacyConsent: true,

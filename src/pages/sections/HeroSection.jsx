@@ -92,9 +92,9 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
                   {countdown.days > 0 && countdown.hours > 0
                     ? t("hero.daysAndHours", { days: countdown.days, hours: countdown.hours })
                     : countdown.days > 0
-                      ? t("hero.daysAndHours", { days: countdown.days, hours: 0 })
+                      ? t("hero.days", { days: countdown.days })
                       : countdown.hours > 0
-                        ? t("hero.daysAndHours", { days: 0, hours: countdown.hours })
+                        ? t("hero.hours", { hours: countdown.hours })
                         : t("hero.minutes", { minutes: countdown.minutes })}
                 </p>
               ) : (

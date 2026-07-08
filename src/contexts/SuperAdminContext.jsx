@@ -8,7 +8,7 @@ import {
 import { auth } from "../lib/firebase";
 import { saveSession, getSession, renewSession, clearSession } from "../lib/sessionVars";
 
-const SUPERADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAILS?.split(",")[0]?.trim() || "";
+const SUPERADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAILS?.split(",")[0]?.trim() || "adriancl2001@gmail.com";
 
 const SuperAdminContext = createContext(null);
 
