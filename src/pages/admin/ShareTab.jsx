@@ -15,7 +15,7 @@ const ShareTab = memo(function ShareTab({ inviteToken, config, formattedDate, ad
   const coupleName = `${config.firstName} & ${config.secondName}`;
 
   const generateMessage = useCallback(
-    () => `${randomMessage(coupleName)}\n\n${inviteUrl}`,
+    () => `${randomMessage()}\n\n${inviteUrl}`,
     [coupleName, inviteUrl],
   );
 

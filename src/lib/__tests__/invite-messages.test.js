@@ -6,28 +6,23 @@ describe("WEDDING_MESSAGES", () => {
     expect(WEDDING_MESSAGES.length).toBeGreaterThanOrEqual(20);
   });
 
-  it("every message contains {coupleName} placeholder", () => {
+  it("every message is a non-empty string", () => {
     for (const msg of WEDDING_MESSAGES) {
-      expect(msg).toContain("{coupleName}");
+      expect(typeof msg).toBe("string");
+      expect(msg.length).toBeGreaterThan(0);
     }
   });
 });
 
 describe("randomMessage", () => {
-  it("replaces {coupleName} placeholder", () => {
-    const result = randomMessage("Ana & Luis");
-    expect(result).toContain("Ana & Luis");
-    expect(result).not.toContain("{coupleName}");
-  });
-
-  it("returns one of the predefined messages", () => {
-    const result = randomMessage("Test");
-    const normalized = result.replace("Test", "{coupleName}");
-    expect(WEDDING_MESSAGES).toContain(normalized);
+  it("returns a string from the message list", () => {
+    const result = randomMessage();
+    expect(typeof result).toBe("string");
+    expect(WEDDING_MESSAGES).toContain(result);
   });
 
   it("returns different messages on multiple calls", () => {
-    const results = new Set(Array.from({ length: 50 }, () => randomMessage("X")));
+    const results = new Set(Array.from({ length: 50 }, () => randomMessage()));
     expect(results.size).toBeGreaterThan(1);
   });
 });
