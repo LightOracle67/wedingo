@@ -244,7 +244,7 @@ export default function SetupForm({ prefix = "" }) {
           <input ref={photoRef} id={id("couplePhoto")} className="setup-upload__input" type="file" accept="image/jpeg,image/png,image/webp" onChange={handleCouplePhotoUpload} />
           {formData.couplePhoto ? (
             <div className="setup-selected-background">
-              <img src={formData.couplePhoto} alt="" className="setup-selected-background__image" style={{ borderRadius: "50%", aspectRatio: "1", width: "5rem" }} />
+              <img src={formData.couplePhoto} alt="Foto de los novios seleccionada" className="setup-selected-background__image" style={{ borderRadius: "50%", aspectRatio: "1", width: "5rem" }} />
               <div>
                 <p className="setup-selected-background__title">Foto actual</p>
                 <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => { updateFormField("couplePhoto", ""); updateFormField("couplePhotoStorage", ""); }}>Quitar</button>
@@ -592,7 +592,7 @@ export default function SetupForm({ prefix = "" }) {
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(80px, 1fr))", gap: "0.4rem", marginTop: "0.5rem" }}>
                 {images.map((src, i) => (
                   <div key={i} style={{ position: "relative" }}>
-                    <img src={src} alt="" style={{ width: "100%", aspectRatio: "1", objectFit: "cover", borderRadius: "0.5rem" }} />
+                    <img src={src} alt="Vista previa de imagen" style={{ width: "100%", aspectRatio: "1", objectFit: "cover", borderRadius: "0.5rem" }} />
                     <button type="button" onClick={() => {
                       const arr = JSON.parse(formData.galleryImages || "[]");
                       arr.splice(i, 1);

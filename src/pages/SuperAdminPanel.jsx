@@ -6,12 +6,14 @@ import DashboardTab from "./superadmin/DashboardTab";
 import InvitationsTab from "./superadmin/InvitationsTab";
 import TokensTab from "./superadmin/TokensTab";
 import SettingsTab from "./superadmin/SettingsTab";
+import ComplianceTab from "./superadmin/ComplianceTab";
 
 const TABS = [
   { key: "dashboard", label: "Panel" },
   { key: "invitaciones", label: "Invitaciones" },
   { key: "tokens", label: "Tokens" },
   { key: "ajustes", label: "Sesión" },
+  { key: "cumplimiento", label: "Cumplimiento" },
 ];
 
 export default function SuperAdminPanel() {
@@ -67,6 +69,7 @@ export default function SuperAdminPanel() {
           {activeTab === "invitaciones" && <InvitationsTab />}
           {activeTab === "tokens" && <TokensTab />}
           {activeTab === "ajustes" && <SettingsTab />}
+          {activeTab === "cumplimiento" && <ComplianceTab />}
         </div>
       </section>
     </div>

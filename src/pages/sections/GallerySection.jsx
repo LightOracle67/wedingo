@@ -57,7 +57,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
               <div className="page-loading" />
             </div>
           ) : null}
-          <img src={images[clamped]} alt="" onLoad={() => setLoaded((p) => ({ ...p, [clamped]: true }))} style={{
+          <img src={images[clamped]} alt="Foto de la galería" onLoad={() => setLoaded((p) => ({ ...p, [clamped]: true }))} style={{
             width: "100%", aspectRatio: "16/10", objectFit: "cover",
             borderRadius: "0.9rem", display: loaded[clamped] ? "block" : "none",
             border: "1px solid color-mix(in srgb, var(--invite-shell-border) 70%, transparent)",
@@ -89,7 +89,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
               opacity: i === clamped ? 1 : 0.55, transition: "opacity 200ms, border-color 200ms", background: "color-mix(in srgb, var(--setup-field-bg) 50%, transparent)",
             }}>
               {!loaded[i] ? <div className="page-loading" style={{ width: "100%", height: "100%", minHeight: 0 }} /> : null}
-              <img src={src} alt="" onLoad={() => setLoaded((p) => ({ ...p, [i]: true }))} style={{ width: "100%", height: "100%", objectFit: "cover", display: loaded[i] ? "block" : "none" }} />
+              <img src={src} alt="Miniatura de foto de la galería" onLoad={() => setLoaded((p) => ({ ...p, [i]: true }))} style={{ width: "100%", height: "100%", objectFit: "cover", display: loaded[i] ? "block" : "none" }} />
             </button>
           ))}
         </div>
