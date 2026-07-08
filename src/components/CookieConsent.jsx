@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { clearAllStorage } from "../lib/storage";
 
 const STORAGE_KEY = "wedin_cookie_consent";
 
@@ -31,6 +32,7 @@ export default function CookieConsent() {
 
   const handleReject = () => {
     rejectCookies();
+    clearAllStorage();
     setVisible(false);
   };
 

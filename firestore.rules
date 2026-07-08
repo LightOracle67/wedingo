@@ -83,7 +83,9 @@ service cloud.firestore {
         && request.resource.data.dietaryInfo is string
         && resource.data.inviteToken is string
         && exists(/databases/$(database)/documents/sessions/$(resource.data.inviteToken));
-      allow delete: if isSuperAdmin();
+      allow delete: if isSuperAdmin()
+        || (resource.data.inviteToken is string
+          && exists(/databases/$(database)/documents/sessions/$(resource.data.inviteToken)));
     }
 
     match /sessions/{sessionId} {
