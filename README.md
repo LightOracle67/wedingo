@@ -25,7 +25,31 @@ Crea una invitación de boda digital con tu propio estilo, comparte el enlace co
 - **Música ambiental** — Añade una canción y se reproducirá al abrir la invitación.
 - **Secciones a medida** — Elige qué secciones mostrar y en qué orden.
 - **Impresión bonita** — Vista previa para imprimir la invitación en papel.
+- **84 idiomas** — Cobertura del 95% de la población mundial.
+- **Animaciones** — Entrada y salida en modales y popups.
 - **Privacidad total** — Consentimiento RGPD/LOPDGDD, cifrado de datos personales y fotos.
+- **Cumplimiento legal internacional** — GDPR, UK GDPR, CCPA/CPRA, LGPD, PIPEDA, POPIA.
+
+---
+
+## 🌍 Cumplimiento legal internacional
+
+| Ley | Jurisdicción | Estado |
+|-----|-------------|--------|
+| GDPR | Unión Europea / EEE | ✅ Consentimiento, derechos ARSO, SCC, DPF |
+| UK GDPR | Reino Unido | ✅ Adaptado, UK Extension al DPF |
+| CCPA/CPRA | California (EE.UU.) | ✅ Derecho a saber, no venta de datos |
+| LGPD | Brasil | ✅ Derechos del titular, transferencias internacionales |
+| PIPEDA | Canadá | ✅ Consentimiento, propósito limitado |
+| POPIA | Sudáfrica | ✅ Consentimiento, restricción de transferencias |
+
+- **Cifrado AES-256-GCM** para datos personales sensibles.
+- **Consentimiento explícito** para datos de salud (alergias).
+- **Política de retención:** 12 meses tras el evento.
+- **Almacenamiento local** solo con consentimiento del usuario.
+- **Botón de solicitud de borrado y exportación** en el panel de soporte.
+- **Plan de respuesta a brechas** documentado (72h notificación).
+- **Registro de actividades** (Art. 30 GDPR) en panel superadmin.
 
 ---
 
@@ -34,11 +58,12 @@ Crea una invitación de boda digital con tu propio estilo, comparte el enlace co
 | Parte | Usamos |
 |-------|--------|
 | Frontend | React 19, Vite |
-| Estilos | CSS moderno (variables, gradientes, color-mix) |
+| Estilos | CSS moderno (variables, gradientes, color-mix, animaciones) |
+| i18n | react-i18next (84 idiomas, selector con portal y popup) |
 | Base de datos | Firestore (noSQL) |
 | Alojamiento | Firebase Hosting |
 | Mapas | Leaflet + OpenStreetMap |
-| Cifrado | AES-256-GCM (en el navegador) |
+| Cifrado | AES-256-GCM (en el navegador, PBKDF2) |
 
 ---
 
@@ -78,7 +103,9 @@ npm run preview    # Vista previa del build
 ### Desplegar
 
 ```bash
-npx firebase deploy --only hosting
+rm -rf dist .firebase && npm run build
+npx firebase-tools hosting:channel:deploy dev   # Canal de pruebas
+npx firebase-tools deploy --only hosting         # Producción
 ```
 
 ---
@@ -90,6 +117,7 @@ src/
 ├── components/     # Componentes reutilizables (SetupForm, LegalModal…)
 ├── contexts/       # Estado global con React Context
 ├── hooks/          # Lógica reutilizable (RSVP, autoSave, sesión…)
+├── i18n/           # 84 idiomas con traducciones completas
 ├── lib/            # Utilidades, constantes, Firebase, cifrado, auditoría
 ├── pages/          # Páginas y secciones de la app
 │   ├── admin/      # Panel de administración (pestañas)
@@ -97,27 +125,6 @@ src/
 │   └── sections/   # Secciones de la invitación pública (Hero, Rsvp…)
 └── index.css       # Todos los estilos
 ```
-
----
-
-## 🌍 Cumplimiento legal internacional
-
-Wedingo cumple con las principales leyes de privacidad a nivel global:
-
-| Ley | Jurisdicción | Estado |
-|-----|-------------|--------|
-| GDPR | Unión Europea / EEE | ✅ Consentimiento, derechos ARSO, DPO exento, SCC, DPF |
-| UK GDPR | Reino Unido | ✅ Adaptado, UK Extension al DPF |
-| CCPA/CPRA | California (EE.UU.) | ✅ Derecho a saber, no venta de datos, no discriminación |
-| LGPD | Brasil | ✅ Derechos del titular, transferencias internacionales |
-| PIPEDA | Canadá | ✅ Consentimiento, propósito limitado |
-| POPIA | Sudáfrica | ✅ Consentimiento, restricción de transferencias |
-
-- **Cifrado AES-256-GCM** para datos personales sensibles.
-- **Consentimiento explícito** para datos de salud (alergias).
-- **Política de retención:** 12 meses tras el evento.
-- **Almacenamiento local** solo con consentimiento del usuario (banner de cookies).
-- **Botón de solicitud de borrado y exportación** en el panel de soporte.
 
 ---
 
