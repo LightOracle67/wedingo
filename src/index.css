@@ -4077,7 +4077,7 @@ a:focus-visible {
 
 .lang-popup {
   position: absolute;
-  top: calc(100% + 0.5rem);
+  bottom: calc(100% + 0.5rem);
   right: 0;
   z-index: 1000;
   background: linear-gradient(150deg, rgba(28,22,16,0.98), rgba(18,12,8,0.96));
