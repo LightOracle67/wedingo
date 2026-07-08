@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
 
@@ -84,23 +84,34 @@ const GROUPS = [
 export default function LanguageSwitcher() {
   const { i18n } = useTranslation();
   const [open, setOpen] = useState(false);
+  const [closing, setClosing] = useState(false);
   const popupRef = useRef(null);
   const currentLang = i18n.language?.split("-")[0] || "es";
   const currentLabel = GROUPS.flatMap(g => g.options).find(l => l.code === currentLang)?.label || currentLang.toUpperCase();
 
+  const handleClose = useCallback(() => {
+    setClosing(true);
+    setTimeout(() => { setClosing(false); setOpen(false); }, 200);
+  }, []);
+
+  const handleSelect = useCallback((code) => {
+    i18n.changeLanguage(code);
+    handleClose();
+  }, [i18n, handleClose]);
+
   useEffect(() => {
-    if (!open) return;
-    const handleKey = (e) => { if (e.key === "Escape") setOpen(false); };
+    if (!open || closing) return;
+    const handleKey = (e) => { if (e.key === "Escape") handleClose(); };
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
-  }, [open]);
+  }, [open, closing, handleClose]);
 
   return (
     <div className="lang-wrapper">
       <button
         type="button"
         className="lang-trigger"
-        onClick={() => setOpen(!open)}
+        onClick={() => setOpen(true)}
         aria-label="Seleccionar idioma"
         aria-expanded={open}
         aria-haspopup="true"
@@ -109,8 +120,8 @@ export default function LanguageSwitcher() {
       </button>
 
       {open && createPortal(
-        <div className="lang-popup" onClick={() => setOpen(false)}>
-          <div className="lang-popup__card" ref={popupRef} onClick={(e) => e.stopPropagation()}>
+        <div className={`lang-popup ${closing ? "lang-popup--closing" : ""}`} onClick={handleClose}>
+          <div className={`lang-popup__card ${closing ? "lang-popup__card--closing" : ""}`} ref={popupRef} onClick={(e) => e.stopPropagation()}>
             <div className="lang-popup__grid">
             {GROUPS.map((group) => (
               <div key={group.label} className="lang-popup__group">
@@ -121,7 +132,7 @@ export default function LanguageSwitcher() {
                       key={lang.code}
                       type="button"
                       className={`lang-popup__btn ${currentLang === lang.code ? "lang-popup__btn--active" : ""}`}
-                      onClick={() => { i18n.changeLanguage(lang.code); setOpen(false); }}
+                      onClick={() => handleSelect(lang.code)}
                     >
                       <span className="lang-popup__code">{lang.code.toUpperCase()}</span>
                       <span className="lang-popup__name">{lang.label.split(" — ")[1] || lang.label}</span>

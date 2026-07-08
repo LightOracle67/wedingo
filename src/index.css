@@ -1948,6 +1948,22 @@ h6 {
   to { opacity: 1; }
 }
 
+@keyframes overlay-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes modal-exit {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+}
+
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -1958,6 +1974,11 @@ h6 {
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px);
   animation: overlay-in 200ms ease;
+}
+
+.modal-overlay--closing {
+  animation: overlay-out 200ms ease forwards;
+}
 
 .modal-overlay--clear {
   background: transparent;
@@ -1975,9 +1996,6 @@ h6 {
   backdrop-filter: none;
   animation: overlay-in 200ms ease;
 }
-  padding: 1rem;
-}
-
 .modal-card {
   position: relative;
   background: linear-gradient(150deg, var(--setup-grad-start), var(--setup-grad-end));
@@ -1993,6 +2011,10 @@ h6 {
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   animation: modal-enter 250ms ease;
+}
+
+.modal-card--closing {
+  animation: modal-exit 200ms ease forwards;
 }
 
 .modal-close {
@@ -4108,6 +4130,25 @@ a:focus-visible {
     opacity: 1;
     transform: scale(1) translateY(0);
   }
+}
+
+@keyframes popup-scale-out {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.94) translateY(8px);
+  }
+}
+
+.lang-popup--closing {
+  animation: overlay-out 200ms ease forwards;
+}
+
+.lang-popup__card--closing {
+  animation: popup-scale-out 200ms ease forwards;
 }
 
 .lang-popup__group {

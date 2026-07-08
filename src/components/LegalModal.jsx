@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 
 export const PRIVACY_POLICY_VERSION = "2026-07-08";
@@ -6,6 +6,7 @@ export const PRIVACY_POLICY_VERSION = "2026-07-08";
 export default function LegalModal({ section, onClose }) {
   const { t } = useTranslation();
   const [open, setOpen] = useState(section || "");
+  const [closing, setClosing] = useState(false);
   const modalRef = useRef(null);
 
   const SECTIONS = [
@@ -21,18 +22,23 @@ export default function LegalModal({ section, onClose }) {
   useEffect(() => {
     const prev = document.activeElement;
     modalRef.current?.focus();
-    const handleKey = (e) => { if (e.key === "Escape") onClose(); };
+    const handleKey = (e) => { if (e.key === "Escape") handleClose(); };
     window.addEventListener("keydown", handleKey);
     return () => { window.removeEventListener("keydown", handleKey); prev?.focus(); };
+  });
+
+  const handleClose = useCallback(() => {
+    setClosing(true);
+    setTimeout(() => { setClosing(false); onClose(); }, 200);
   }, [onClose]);
 
   const toggle = (id) => setOpen((prev) => (prev === id ? "" : id));
 
   return (
-    <div className="modal-overlay" onClick={onClose} role="dialog" aria-modal="true" aria-label={t("legal.modalTitle")}>
-      <div className="modal-card" ref={modalRef} onClick={(e) => e.stopPropagation()}
+    <div className={`modal-overlay ${closing ? "modal-overlay--closing" : ""}`} onClick={handleClose} role="dialog" aria-modal="true" aria-label={t("legal.modalTitle")}>
+      <div className={`modal-card ${closing ? "modal-card--closing" : ""}`} ref={modalRef} onClick={(e) => e.stopPropagation()}
         style={{ width: "min(95vw, 760px)", minWidth: "360px", maxHeight: "calc(100dvh - 2rem)", display: "flex", flexDirection: "column", padding: "1.2rem 1rem 1rem" }}>
-        <button className="modal-close" onClick={onClose} aria-label={t("common.close")}>&times;</button>
+        <button className="modal-close" onClick={handleClose} aria-label={t("common.close")}>&times;</button>
         <p className="modal-title">{t("legal.modalTitle")}</p>
         <div style={{ overflowY: "auto", flex: 1, marginTop: "0.5rem" }}>
           {SECTIONS.map((s) => (
