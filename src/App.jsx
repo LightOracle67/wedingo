@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { Routes, Route, Navigate, Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { AppProvider, useApp } from "./contexts/AppContext";
@@ -8,6 +8,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import CookieConsent from "./components/CookieConsent";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 import MusicPlayer from "./components/MusicPlayer";
+import AccessibilityPanel from "./components/AccessibilityPanel";
 import LandingPage from "./pages/LandingPage";
 import { SUPERADMIN_ROUTE, SUPERADMIN_DASHBOARD } from "./lib/superadmin";
 
@@ -22,6 +23,7 @@ function AppShell() {
   const { t, i18n } = useTranslation();
   const { config, formData, isAdminTokenLoggedIn, tokenLoginUsername, inviteToken } = useApp();
   const location = useLocation();
+  const [showA11y, setShowA11y] = useState(false);
 
   const isEditingRoute = location.pathname.endsWith("/setup") || (location.pathname.endsWith("/admin") && isAdminTokenLoggedIn);
   const topBarPadding = isAdminTokenLoggedIn ? "2.5rem" : "0";
@@ -87,6 +89,17 @@ function AppShell() {
         </Suspense>
         <CookieConsent />
       </main>
+
+      <button
+        type="button"
+        className="a11y-trigger"
+        onClick={() => setShowA11y(true)}
+        aria-label="Accesibilidad"
+        style={{ position: "fixed", bottom: "0.75rem", left: "0.75rem", zIndex: 400 }}
+      >
+        ♿
+      </button>
+      <AccessibilityPanel open={showA11y} onClose={() => setShowA11y(false)} />
     </>
   );
 }
