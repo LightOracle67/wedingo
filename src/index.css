@@ -4484,6 +4484,57 @@ html {
   font-size: calc(1rem * var(--a11y-font-scale, 1));
 }
 
+/* App footer */
+
+.app-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 400;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 0.75rem;
+  background: color-mix(in srgb, var(--setup-grad-start, #1f1a10) 85%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-top: 1px solid color-mix(in srgb, var(--setup-accent, #d8b24a) 15%, transparent);
+  gap: 0.5rem;
+}
+
+.app-footer__left,
+.app-footer__right {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.app-footer__link {
+  all: unset;
+  cursor: pointer;
+  font-size: 0.7rem;
+  font-family: var(--font-body);
+  color: var(--setup-muted);
+  transition: color 200ms ease;
+}
+
+.app-footer__link:hover {
+  color: var(--setup-title);
+  text-decoration: underline;
+}
+
+.app-footer__sep {
+  font-size: 0.7rem;
+  color: var(--setup-muted);
+  opacity: 0.4;
+  user-select: none;
+}
+
+@media print {
+  .app-footer { display: none !important; }
+}
+
 .support-section {
   grid-column: 1 / -1;
 }
