@@ -43,9 +43,8 @@ service cloud.firestore {
       allow update: if isValidInvitationWrite(request.resource.data)
         && (request.auth != null || hasActiveSession(tokenId));
       allow update: if request.auth == null
-        && (request.resource.data.keys().hasOnly(['activeSession'])
-          || (request.resource.data.keys().hasOnly(['activeSession', 'firstName', 'secondName', 'weddingDay', 'weddingMonth', 'weddingYear', 'weddingHour', 'weddingMinute', 'theme'])))
-        && request.resource.data.activeSession is timestamp;
+        && request.resource.data.activeSession is timestamp
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['activeSession']);
       allow delete: if isSuperAdmin();
     }
 
