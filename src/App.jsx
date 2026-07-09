@@ -55,7 +55,7 @@ function AppShell() {
         {t("common.skipToContent")}
       </a>
 
-      {isAdminTokenLoggedIn && inviteToken && location.pathname.endsWith("/admin") ? (
+      {isAdminTokenLoggedIn && inviteToken && !location.pathname.endsWith("/setup") && !location.pathname.endsWith("/print") ? (
         <nav className="admin-bar" role="navigation" aria-label={t("common.adminBar.ariaLabel")}>
           <div className="admin-bar__inner">
             <span className="admin-bar__title">{tokenLoginUsername || config.adminUsername || t("common.adminBar.fallback")}</span>
