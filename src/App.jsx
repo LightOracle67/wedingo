@@ -10,6 +10,7 @@ import LanguageSwitcher from "./components/LanguageSwitcher";
 import MusicPlayer from "./components/MusicPlayer";
 import AccessibilityPanel from "./components/AccessibilityPanel";
 import LegalModal from "./components/LegalModal";
+import { APP_VERSION } from "./lib/constants";
 import LandingPage from "./pages/LandingPage";
 import { SUPERADMIN_ROUTE, SUPERADMIN_DASHBOARD } from "./lib/superadmin";
 
@@ -103,6 +104,8 @@ function AppShell() {
           <button type="button" onClick={() => setLegalSection("terms")} className="app-footer__link">{t("public.terms")}</button>
           <span className="app-footer__sep">·</span>
           <button type="button" onClick={() => setLegalSection("legal")} className="app-footer__link">{t("public.legalNotice")}</button>
+          <span className="app-footer__sep">·</span>
+          <span className="app-footer__link" style={{ cursor: "default", opacity: 0.4 }}>v{APP_VERSION}</span>
         </div>
       </footer>
 
