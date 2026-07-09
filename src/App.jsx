@@ -68,7 +68,7 @@ function AppShell() {
         </nav>
       ) : null}
 
-      {!isEditingRoute && config.musicUrl ? <MusicPlayer musicUrl={config.musicUrl} /> : null}
+      {!isEditingRoute ? <MusicPlayer musicUrl={config.musicUrl} /> : null}
 
       <main id="main-content" role="main" tabIndex={-1} style={{ paddingTop: topBarPadding }}>
         <Suspense fallback={<div className="page-loading" />}>
