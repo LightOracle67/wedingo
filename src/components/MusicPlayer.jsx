@@ -108,10 +108,8 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }) {
       >
         <span className={`music-player__fab-icon${playing ? " music-player__fab-icon--spin" : ""}`}>
           <svg viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="10.5" fill="none" stroke="currentColor" strokeWidth="1.8" />
-            <circle cx="12" cy="12" r="7" fill="none" stroke="currentColor" strokeWidth="0.6" opacity="0.5" />
-            <circle cx="12" cy="12" r="3.5" fill="none" stroke="currentColor" strokeWidth="0.5" opacity="0.35" />
-            <circle cx="12" cy="12" r="1.5" fill="currentColor" />
+            <path d="M12 3C12 3 11 8 11 12C11 16 12 21 12 21" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+            <circle cx="12" cy="12" r="10.5" fill="none" stroke="currentColor" strokeWidth="1.6" opacity="0.25" />
           </svg>
         </span>
         {!hasMusic ? <span className="music-player__fab-dot" /> : null}
