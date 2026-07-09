@@ -4606,10 +4606,10 @@ html.a11y-high-contrast legend,
 html.a11y-high-contrast a,
 html.a11y-high-contrast button {
   text-shadow:
-    -1px -1px 0 #000,
-     1px -1px 0 #000,
-    -1px  1px 0 #000,
-     1px  1px 0 #000 !important;
+    -1px -1px 0 #fff,
+     1px -1px 0 #fff,
+    -1px  1px 0 #fff,
+     1px  1px 0 #fff !important;
 }
 
 html.a11y-high-contrast a,
