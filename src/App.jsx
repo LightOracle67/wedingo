@@ -30,6 +30,7 @@ function AppShell() {
 
   const isEditingRoute = location.pathname.endsWith("/setup") || (location.pathname.endsWith("/admin") && isAdminTokenLoggedIn);
   const topBarPadding = isAdminTokenLoggedIn ? "2.5rem" : "0";
+  const publicNavPadding = !isEditingRoute ? "2.2rem" : "0";
 
   useEffect(() => {
     document.documentElement.lang = i18n.language || "es";
@@ -75,7 +76,7 @@ function AppShell() {
 
       {inviteToken && location.pathname === `/${inviteToken}` ? <MusicPlayer musicUrl={config.musicUrl} /> : null}
 
-      <main id="main-content" role="main" tabIndex={-1} style={{ paddingTop: topBarPadding }}>
+      <main id="main-content" role="main" tabIndex={-1} style={{ paddingTop: topBarPadding || publicNavPadding }}>
         <Suspense fallback={<div className="page-loading" />}>
         <Routes>
           <Route path="/" element={<LandingPage />} />
@@ -93,21 +94,23 @@ function AppShell() {
         <CookieConsent />
       </main>
 
-      <footer className="app-footer">
-        <div className="app-footer__left">
-          <LanguageSwitcher />
-          <button type="button" className="a11y-trigger" onClick={() => setShowA11y(true)} aria-label="Accesibilidad">♿</button>
-        </div>
-        <div className="app-footer__right">
-          <button type="button" onClick={() => setLegalSection("privacy")} className="app-footer__link">{t("public.privacyPolicy")}</button>
-          <span className="app-footer__sep">·</span>
-          <button type="button" onClick={() => setLegalSection("terms")} className="app-footer__link">{t("public.terms")}</button>
-          <span className="app-footer__sep">·</span>
-          <button type="button" onClick={() => setLegalSection("legal")} className="app-footer__link">{t("public.legalNotice")}</button>
-          <span className="app-footer__sep">·</span>
-          <span className="app-footer__link" style={{ cursor: "default", opacity: 0.4 }}>v{APP_VERSION}</span>
-        </div>
-      </footer>
+      {!isEditingRoute && (
+        <footer className="app-footer">
+          <div className="app-footer__left">
+            <LanguageSwitcher />
+            <button type="button" className="a11y-trigger" onClick={() => setShowA11y(true)} aria-label="Accesibilidad">♿</button>
+          </div>
+          <div className="app-footer__right">
+            <button type="button" onClick={() => setLegalSection("privacy")} className="app-footer__link">{t("public.privacyPolicy")}</button>
+            <span className="app-footer__sep">·</span>
+            <button type="button" onClick={() => setLegalSection("terms")} className="app-footer__link">{t("public.terms")}</button>
+            <span className="app-footer__sep">·</span>
+            <button type="button" onClick={() => setLegalSection("legal")} className="app-footer__link">{t("public.legalNotice")}</button>
+            <span className="app-footer__sep">·</span>
+            <span className="app-footer__link" style={{ cursor: "default", opacity: 0.4 }}>v{APP_VERSION}</span>
+          </div>
+        </footer>
+      )}
 
       <AccessibilityPanel open={showA11y} onClose={() => setShowA11y(false)} />
       {legalSection ? <LegalModal section={legalSection} onClose={() => setLegalSection("")} /> : null}

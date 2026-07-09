@@ -4705,7 +4705,7 @@ html.a11y-font-scale select {
 
 .app-footer {
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
   right: 0;
   z-index: 400;
@@ -4714,7 +4714,7 @@ html.a11y-font-scale select {
   justify-content: space-between;
   padding: 0.35rem 1rem;
   min-height: 2.2rem;
-  background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.5) 100%);
+  background: linear-gradient(0deg, transparent 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.5) 100%);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   gap: 0.5rem;

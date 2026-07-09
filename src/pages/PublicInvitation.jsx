@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import LegalModal from "../components/LegalModal";
 import "leaflet/dist/leaflet.css";
 
 import { useApp } from "../contexts/AppContext";
@@ -97,7 +96,6 @@ export default function PublicInvitation() {
   const isStoryTransitioning = storyTransition.toIndex !== null;
 
   const [countdown, setCountdown] = useState(null);
-  const [legalSection, setLegalSection] = useState("");
 
   const weddingDate = useMemo(() => {
     const day = Number.parseInt(config.weddingDay, 10);
@@ -555,18 +553,6 @@ export default function PublicInvitation() {
               />
             );
           })}
-
-          <div className="invitation-legal-links">
-            <button type="button" onClick={() => setLegalSection("privacy")} className="text-[0.8rem] text-boda-texto/60 hover:text-boda-texto/80 transition-colors" style={{ textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-body)" }}>{t("public.privacyPolicy")}</button>
-            <span className="text-[0.8rem] text-boda-texto/50 mx-1">·</span>
-            <button type="button" onClick={() => setLegalSection("terms")} className="text-[0.8rem] text-boda-texto/60 hover:text-boda-texto/80 transition-colors" style={{ textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-body)" }}>{t("public.terms")}</button>
-            <span className="text-[0.8rem] text-boda-texto/50 mx-1">·</span>
-            <button type="button" onClick={() => setLegalSection("legal")} className="text-[0.8rem] text-boda-texto/60 hover:text-boda-texto/80 transition-colors" style={{ textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-body)" }}>{t("public.legalNotice")}</button>
-            <span className="text-[0.8rem] text-boda-texto/50 mx-1">·</span>
-            <span className="text-[0.8rem] text-boda-texto/50">{t("public.ccpaDoNotSell")}</span>
-          </div>
-
-          {legalSection && <LegalModal section={legalSection} onClose={() => setLegalSection("")} />}
         </>
       )}
     </div>
