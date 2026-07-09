@@ -4194,13 +4194,18 @@ a:focus-visible {
 }
 
 .music-player__fab--expanded .music-player__fab-icon {
-  width: 1rem;
-  height: 1rem;
+  width: 1.3rem;
+  height: 1.3rem;
   position: absolute;
-  top: 0.6rem;
-  right: 0.6rem;
-  opacity: 0.6;
+  top: 0.55rem;
+  right: 0.55rem;
+  opacity: 0.7;
   cursor: pointer;
+  transition: opacity 200ms;
+}
+
+.music-player__fab--expanded .music-player__fab-icon:hover {
+  opacity: 1;
 }
 
 .music-player__fab-icon--spin {
