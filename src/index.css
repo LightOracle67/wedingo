@@ -4455,33 +4455,212 @@ a:focus-visible {
   outline-offset: 2px;
 }
 
-html.a11y-high-contrast {
-  --setup-title: #fff !important;
-  --setup-subtitle: #ddd !important;
-  --setup-muted: #bbb !important;
+/* Accesibilidad */
+
+@font-face {
+  font-family: "OpenDyslexic";
+  src: url("https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/otf/OpenDyslexic-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+.a11y-section {
+  margin-bottom: 0.8rem;
+}
+
+.a11y-label {
+  font-size: 0.82rem;
+  color: var(--setup-subtitle);
+  margin: 0 0 0.4rem;
+  font-weight: 500;
+}
+
+.a11y-btn-row {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.a11y-btn {
+  all: unset;
+  cursor: pointer;
+  padding: 0.35rem 0.7rem;
+  border-radius: 0.5rem;
+  font-size: 0.8rem;
+  font-family: var(--font-body);
+  color: var(--setup-muted);
+  background: color-mix(in srgb, var(--setup-field-bg) 60%, transparent);
+  border: 1px solid color-mix(in srgb, var(--setup-border) 30%, transparent);
+  transition: background 200ms, color 200ms, border-color 200ms;
+}
+
+.a11y-btn:hover {
+  color: var(--setup-title);
+  border-color: var(--setup-accent);
+}
+
+.a11y-btn--active {
+  background: color-mix(in srgb, var(--setup-accent) 18%, transparent);
+  border-color: var(--setup-accent);
+  color: var(--setup-title);
+}
+
+.a11y-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.82rem;
+  color: var(--setup-subtitle);
+}
+
+.a11y-toggle input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.a11y-toggle__track {
+  width: 2.4rem;
+  height: 1.3rem;
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--setup-field-bg) 80%, transparent);
+  border: 1px solid color-mix(in srgb, var(--setup-border) 30%, transparent);
+  position: relative;
+  transition: background 200ms, border-color 200ms;
+  flex-shrink: 0;
+}
+
+.a11y-toggle__track::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: calc(1.3rem - 6px);
+  height: calc(1.3rem - 6px);
+  border-radius: 50%;
+  background: var(--setup-muted);
+  transition: transform 200ms, background 200ms;
+}
+
+.a11y-toggle input:checked + .a11y-toggle__track {
+  background: color-mix(in srgb, var(--setup-accent) 30%, transparent);
+  border-color: var(--setup-accent);
+}
+
+.a11y-toggle input:checked + .a11y-toggle__track::after {
+  transform: translateX(calc(2.4rem - 1.3rem));
+  background: var(--setup-accent);
+}
+
+.a11y-trigger {
+  all: unset;
+  cursor: pointer;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1.1rem;
+  background: color-mix(in srgb, var(--setup-accent) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--setup-accent) 25%, transparent);
+  color: var(--setup-title);
+  transition: background 200ms, border-color 200ms;
+}
+
+.a11y-trigger:hover {
+  background: color-mix(in srgb, var(--setup-accent) 22%, transparent);
+  border-color: color-mix(in srgb, var(--setup-accent) 45%, transparent);
+}
+
+.a11y-trigger:focus-visible {
+  outline: 2px solid var(--setup-accent);
+  outline-offset: 2px;
+}
+
+/* High contrast */
+html.a11y-high-contrast body {
+  background: #000 !important;
 }
 
 html.a11y-high-contrast .story-card,
-html.a11y-high-contrast .setup-card {
+html.a11y-high-contrast .setup-card,
+html.a11y-high-contrast .invite-shell,
+html.a11y-high-contrast .modal-card,
+html.a11y-high-contrast .music-player__card,
+html.a11y-high-contrast .music-player__fab {
   background: #000 !important;
   border-color: #fff !important;
+  box-shadow: 0 0 0 2px #fff !important;
 }
 
+html.a11y-high-contrast * {
+  color: #fff !important;
+  text-shadow: none !important;
+}
+
+html.a11y-high-contrast a,
+html.a11y-high-contrast button,
+html.a11y-high-contrast .setup-accent,
+html.a11y-high-contrast [style*="accent"] {
+  color: #ff0 !important;
+}
+
+html.a11y-high-contrast input,
+html.a11y-high-contrast textarea,
+html.a11y-high-contrast select {
+  border-color: #fff !important;
+  background: #000 !important;
+  color: #fff !important;
+}
+
+html.a11y-high-contrast ::placeholder {
+  color: #ccc !important;
+}
+
+html.a11y-high-contrast .app-footer {
+  background: #000 !important;
+  border-top-color: #fff !important;
+}
+
+/* Reduced motion */
 html.a11y-reduced-motion *,
 html.a11y-reduced-motion *::before,
 html.a11y-reduced-motion *::after {
-  animation-duration: 0.01ms !important;
-  animation-iteration-count: 1 !important;
-  transition-duration: 0.01ms !important;
+  animation-duration: 0s !important;
+  animation-iteration-count: 0 !important;
+  transition-duration: 0s !important;
 }
 
+/* Dyslexia font */
 html.a11y-dyslexia-font {
-  --font-heading: "Comic Sans MS", cursive, sans-serif;
-  --font-body: "Comic Sans MS", cursive, sans-serif;
+  --font-heading: "OpenDyslexic", "Arial", sans-serif;
+  --font-body: "OpenDyslexic", "Arial", sans-serif;
 }
 
+/* More spacing between letters */
+html.a11y-more-spacing body {
+  letter-spacing: 0.12em !important;
+  word-spacing: 0.16em !important;
+}
+
+/* Underline all links */
+html.a11y-underline-links a,
+html.a11y-underline-links button:not(.a11y-btn):not(.music-player__play):not(.a11y-trigger) {
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+}
+
+/* Big cursor */
+html.a11y-big-cursor,
+html.a11y-big-cursor * {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='8' cy='8' r='7' fill='white' stroke='black' stroke-width='2'/%3E%3C/svg%3E") 4 4, auto !important;
+}
+
+/* Line spacing */
 html {
   font-size: calc(1rem * var(--a11y-font-scale, 1));
+  line-height: calc(1.5 + var(--a11y-line-spacing, 0));
 }
 
 /* App footer */
