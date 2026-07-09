@@ -1,6 +1,7 @@
+import { memo } from "react";
 import { useTranslation } from "react-i18next";
 
-export default function ComplianceTab() {
+const ComplianceTab = memo(function ComplianceTab() {
   const { t } = useTranslation();
   return (
     <div className="support-section">
@@ -88,4 +89,6 @@ export default function ComplianceTab() {
       </ul>
     </div>
   );
-}
+});
+
+export default ComplianceTab;

@@ -1,6 +1,7 @@
+import { memo } from "react";
 import { useTranslation } from "react-i18next";
 
-export default function SupportTab() {
+const SupportTab = memo(function SupportTab() {
   const { t } = useTranslation();
 
   const handleDeleteMail = () => {
@@ -47,4 +48,6 @@ export default function SupportTab() {
       <p className="support-copyright">{t("support.copyright", { year: new Date().getFullYear() })}</p>
     </div>
   );
-}
+});
+
+export default SupportTab;

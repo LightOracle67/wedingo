@@ -1,11 +1,11 @@
-import { useCallback, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { collection, deleteDoc, doc, getDocs, query, orderBy, serverTimestamp, setDoc, where, writeBatch } from "firebase/firestore";
 import { db } from "../../lib/firebase";
 import { formatDate } from "../../lib/superadmin";
 import { generateSetupToken, normalizeTokenValue } from "../../lib/token-utils";
 import { useTranslation } from "react-i18next";
 
-export default function TokensTab() {
+const TokensTab = memo(function TokensTab() {
   const { t } = useTranslation();
   const [tokens, setTokens] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -154,4 +154,6 @@ export default function TokensTab() {
       {error ? <p className="setup-error">{error}</p> : null}
     </div>
   );
-}
+});
+
+export default TokensTab;

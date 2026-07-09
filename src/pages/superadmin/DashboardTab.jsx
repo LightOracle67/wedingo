@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { getDocs, collection, deleteDoc, doc, writeBatch, query, where } from "firebase/firestore";
 import { ref, deleteObject, listAll } from "firebase/storage";
 import { db, storage, RSVP_COLLECTION_REF, INVITATIONS_COLLECTION_REF } from "../../lib/firebase";
@@ -9,7 +9,7 @@ import { DonutChart, MiniBar, Legend } from "../../lib/chart-utils";
 import StatsCard from "../admin/StatsCard";
 import { useTranslation } from "react-i18next";
 
-export default function DashboardTab() {
+const DashboardTab = memo(function DashboardTab() {
   const { t } = useTranslation();
   const [stats, setStats] = useState(null);
   const [invitations, setInvitations] = useState([]);
@@ -139,4 +139,6 @@ export default function DashboardTab() {
       </div>
     </div>
   );
-}
+});
+
+export default DashboardTab;

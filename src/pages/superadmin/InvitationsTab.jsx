@@ -1,10 +1,10 @@
-import { useCallback, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { deleteDoc, doc, getDocs } from "firebase/firestore";
 import { INVITATIONS_COLLECTION_REF } from "../../lib/firebase";
 import { searchInvitations, formatBytes } from "../../lib/superadmin-utils";
 import { useTranslation } from "react-i18next";
 
-export default function InvitationsTab() {
+const InvitationsTab = memo(function InvitationsTab() {
   const { t } = useTranslation();
   const [invitations, setInvitations] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -113,4 +113,6 @@ export default function InvitationsTab() {
       )}
     </div>
   );
-}
+});
+
+export default InvitationsTab;

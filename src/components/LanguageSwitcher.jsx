@@ -1,9 +1,10 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { memo, useState, useEffect, useRef, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
 
 const GROUPS = [
   {
+    id: "spain",
     label: "España",
     options: [
       { code: "es", label: "ES — Español" },
@@ -14,6 +15,7 @@ const GROUPS = [
     ],
   },
   {
+    id: "westernEurope",
     label: "Europa Occidental",
     options: [
       { code: "en", label: "EN — English" },
@@ -27,6 +29,7 @@ const GROUPS = [
     ],
   },
   {
+    id: "nordicEurope",
     label: "Europa Nórdica",
     options: [
       { code: "da", label: "DA — Dansk" },
@@ -38,6 +41,7 @@ const GROUPS = [
     ],
   },
   {
+    id: "centralEurope",
     label: "Europa Central",
     options: [
       { code: "pl", label: "PL — Polski" },
@@ -52,6 +56,7 @@ const GROUPS = [
     ],
   },
   {
+    id: "southernEurope",
     label: "Europa Sur / Balcanes",
     options: [
       { code: "el", label: "EL — Ελληνικά" },
@@ -64,6 +69,7 @@ const GROUPS = [
     ],
   },
   {
+    id: "easternEurope",
     label: "Europa Este / Cáucaso",
     options: [
       { code: "uk", label: "UK — Українська" },
@@ -75,6 +81,7 @@ const GROUPS = [
     ],
   },
   {
+    id: "eastAsia",
     label: "Asia Oriental",
     options: [
       { code: "zh", label: "ZH — 简体中文" },
@@ -87,6 +94,7 @@ const GROUPS = [
     ],
   },
   {
+    id: "southAsia",
     label: "Sur de Asia",
     options: [
       { code: "hi", label: "HI — हिन्दी" },
@@ -101,6 +109,7 @@ const GROUPS = [
     ],
   },
   {
+    id: "southeastAsia",
     label: "Sudeste de Asia",
     options: [
       { code: "th", label: "TH — ไทย" },
@@ -113,6 +122,7 @@ const GROUPS = [
     ],
   },
   {
+    id: "centralAsia",
     label: "Asia Central / Medio Oriente",
     options: [
       { code: "ar", label: "AR — العربية" },
@@ -126,6 +136,7 @@ const GROUPS = [
     ],
   },
   {
+    id: "africa",
     label: "África",
     options: [
       { code: "sw", label: "SW — Kiswahili" },
@@ -140,6 +151,7 @@ const GROUPS = [
     ],
   },
   {
+    id: "americas",
     label: "América",
     options: [
       { code: "qu", label: "QU — Runasimi" },
@@ -149,8 +161,8 @@ const GROUPS = [
   },
 ];
 
-export default function LanguageSwitcher() {
-  const { i18n } = useTranslation();
+const LanguageSwitcher = memo(function LanguageSwitcher() {
+  const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
   const popupRef = useRef(null);
@@ -193,7 +205,7 @@ export default function LanguageSwitcher() {
             <div className="lang-popup__grid">
             {GROUPS.map((group) => (
               <div key={group.label} className="lang-popup__group">
-                <p className="lang-popup__group-title">{group.label}</p>
+                <p className="lang-popup__group-title">{t(`langGroups.${group.id}`, group.label)}</p>
                 <div className="lang-popup__options">
                   {group.options.map((lang) => (
                     <button
@@ -216,4 +228,6 @@ export default function LanguageSwitcher() {
       )}
     </div>
   );
-}
+});
+
+export default LanguageSwitcher;
