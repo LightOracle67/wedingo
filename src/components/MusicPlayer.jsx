@@ -1,4 +1,15 @@
-import { memo, useCallback, useEffect, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
+
+function songName(url) {
+  try {
+    const path = new URL(url).pathname;
+    const last = path.split("/").filter(Boolean).pop() || "";
+    const name = decodeURIComponent(last).replace(/\.[^.]+$/, "");
+    return name.replace(/[-_]+/g, " ").trim() || "Audio";
+  } catch {
+    return "Audio";
+  }
+}
 
 const MusicPlayer = memo(function MusicPlayer({ musicUrl }) {
   const [playing, setPlaying] = useState(false);
@@ -6,6 +17,7 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }) {
   const [loading, setLoading] = useState(false);
   const [volume, setVolume] = useState(0.5);
   const audioRef = useRef(null);
+  const name = useMemo(() => songName(musicUrl), [musicUrl]);
 
   useEffect(() => {
     const el = audioRef.current;
@@ -48,9 +60,10 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }) {
     <div className="music-player">
       <audio ref={audioRef} src={musicUrl} loop preload="auto" />
       {error ? (
-        <span className="music-player__error">⚠</span>
+        <span className="music-player__error" title={name}>✕</span>
       ) : (
         <div className="music-player__controls">
+          <span className="music-player__name" title={musicUrl}>{name}</span>
           <button type="button" className="music-player__btn" onClick={toggleMusic} disabled={loading} aria-label={playing ? "Pausar" : "Reproducir"}>
             {loading ? (
               <span className="music-player__spinner" />
