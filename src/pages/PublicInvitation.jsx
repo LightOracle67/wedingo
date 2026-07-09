@@ -376,11 +376,6 @@ export default function PublicInvitation() {
       ? t("public.locationCoordinates", { lat: configuredCoordinates.latitude, lng: configuredCoordinates.longitude })
       : "";
 
-  const handleAdvanceStorySection = useCallback(() => {
-    window.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowDown" }));
-  }, []);
-
-  const showScrollHint = activeStorySection !== visibleOrder[visibleOrder.length - 1];
 
   const sectionProps = useMemo(() => ({
     hero: {
@@ -547,16 +542,6 @@ export default function PublicInvitation() {
         </section>
       ) : (
         <>
-          {showScrollHint ? (
-        <button
-          type="button"
-          className="story-scroll-hint"
-          onClick={handleAdvanceStorySection}
-          aria-label={t("public.scrollAria")}
-        >
-          <span className="story-scroll-hint__arrow" aria-hidden="true">↓</span>
-        </button>
-      ) : null}
 
           {visibleOrder.map((sectionKey) => {
             const Component = SECTION_COMPONENTS[sectionKey];
