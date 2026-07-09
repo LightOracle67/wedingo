@@ -4155,11 +4155,13 @@ a:focus-visible {
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: color-mix(in srgb, var(--invite-shell-bg) 90%, transparent);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  border: 1px solid color-mix(in srgb, var(--invite-shell-border) 72%, transparent);
-  box-shadow: 0 22px 60px color-mix(in srgb, var(--invite-shell-shadow) 92%, transparent), 0 0 30px color-mix(in srgb, var(--invite-shell-glow) 70%, transparent);
+  background: var(--invite-shell-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--invite-shell-border);
+  box-shadow:
+    0 22px 60px var(--invite-shell-shadow),
+    0 0 30px var(--invite-shell-glow);
   color: var(--invite-title-color, #dcc8a8);
   position: absolute;
   top: 0;
@@ -4170,7 +4172,9 @@ a:focus-visible {
 
 .music-player__fab:hover {
   border-color: var(--invite-core-border);
-  box-shadow: 0 22px 60px color-mix(in srgb, var(--invite-shell-shadow) 92%, transparent), 0 0 40px color-mix(in srgb, var(--invite-shell-glow) 85%, transparent);
+  box-shadow:
+    0 22px 60px var(--invite-shell-shadow),
+    0 0 40px color-mix(in srgb, var(--invite-shell-glow) 85%, transparent);
 }
 
 .music-player__fab-dot {
@@ -4190,10 +4194,10 @@ a:focus-visible {
   align-items: center;
   gap: 0;
   width: 250px;
-  background: color-mix(in srgb, var(--invite-shell-bg) 94%, transparent);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  border: 1px solid color-mix(in srgb, var(--invite-core-border) 70%, transparent);
+  background: var(--invite-shell-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--invite-core-border);
   border-radius: 1.4rem;
   padding: 1.2rem 1rem 0.9rem;
   box-shadow: 0 22px 60px color-mix(in srgb, var(--invite-shell-shadow) 92%, transparent), 0 0 30px color-mix(in srgb, var(--invite-shell-glow) 70%, transparent);
