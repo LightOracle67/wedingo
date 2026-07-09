@@ -4140,6 +4140,98 @@ a:focus-visible {
   z-index: 1;
 }
 
+.music-player {
+  position: fixed;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 500;
+}
+
+.music-player__controls {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: color-mix(in srgb, var(--setup-grad-start, #1f1a10) 92%, transparent);
+  border: 1px solid color-mix(in srgb, var(--setup-accent, #d8b24a) 35%, transparent);
+  border-radius: 2rem;
+  padding: 0.3rem 0.6rem;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.music-player__error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--setup-grad-start, #1f1a10) 92%, transparent);
+  border: 1px solid rgba(224, 96, 96, 0.5);
+  font-size: 0.8rem;
+  backdrop-filter: blur(8px);
+}
+
+.music-player__btn {
+  all: unset;
+  cursor: pointer;
+  width: 1.8rem;
+  height: 1.8rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  color: var(--setup-accent, #d8b24a);
+  transition: background 200ms;
+  flex-shrink: 0;
+}
+
+.music-player__btn:hover {
+  background: color-mix(in srgb, var(--setup-accent, #d8b24a) 15%, transparent);
+}
+
+.music-player__btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.music-player__spinner {
+  width: 0.7rem;
+  height: 0.7rem;
+  border: 2px solid color-mix(in srgb, var(--setup-accent, #d8b24a) 30%, transparent);
+  border-top-color: var(--setup-accent, #d8b24a);
+  border-radius: 50%;
+  animation: spin 800ms linear infinite;
+}
+
+.music-player__bars {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  height: 1rem;
+}
+
+.music-player__bar {
+  width: 3px;
+  background: var(--setup-accent, #d8b24a);
+  border-radius: 2px;
+  animation: musicBar 600ms ease-in-out infinite alternate;
+  opacity: 0.8;
+}
+
+.music-player__volume {
+  width: 4rem;
+  height: 3px;
+  accent-color: var(--setup-accent, #d8b24a);
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 200ms;
+}
+
+.music-player__volume:hover {
+  opacity: 1;
+}
+
 .support-section {
   grid-column: 1 / -1;
 }
