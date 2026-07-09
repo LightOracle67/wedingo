@@ -4602,8 +4602,14 @@ html.a11y-high-contrast p,
 html.a11y-high-contrast span,
 html.a11y-high-contrast li,
 html.a11y-high-contrast label,
-html.a11y-high-contrast legend {
-  text-shadow: none !important;
+html.a11y-high-contrast legend,
+html.a11y-high-contrast a,
+html.a11y-high-contrast button {
+  text-shadow:
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000 !important;
 }
 
 html.a11y-high-contrast a,
