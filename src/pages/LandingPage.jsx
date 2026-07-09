@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getDoc, doc, serverTimestamp, runTransaction } from "firebase/firestore";
 import { useTranslation } from "react-i18next";
-import LanguageSwitcher from "../components/LanguageSwitcher";
 import { db, invitationDocRef } from "../lib/firebase";
 import { normalizeTokenValue } from "../lib/token-utils";
 import { generateInviteToken } from "../lib/utils";
@@ -11,14 +10,12 @@ import { defaultConfig } from "../lib/constants";
 import { safeSetItem, safeGetItem } from "../lib/storage";
 import { saveSession } from "../lib/sessionVars";
 import { useApp } from "../contexts/AppContext";
-import LegalModal from "../components/LegalModal";
 
 export default function LandingPage() {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { setIsTokenVerified, setTokenLoginUsername } = useApp();
   const [showModal, setShowModal] = useState(false);
-  const [legalSection, setLegalSection] = useState("");
   const [usernameInput, setUsernameInput] = useState("");
   const [tokenInput, setTokenInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -173,20 +170,8 @@ export default function LandingPage() {
               {t("landing.haveInvitation")}
             </button>
           </div>
-          <div className="mt-6 text-center">
-            <button type="button" onClick={() => setLegalSection("privacy")} className="text-[0.8rem] text-boda-texto/60 hover:text-boda-texto/80 transition-colors" style={{ textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-body)" }}>{t("landing.privacyPolicy")}</button>
-            <span className="text-[0.8rem] text-boda-texto/50 mx-1">·</span>
-            <button type="button" onClick={() => setLegalSection("terms")} className="text-[0.8rem] text-boda-texto/60 hover:text-boda-texto/80 transition-colors" style={{ textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-body)" }}>{t("landing.terms")}</button>
-            <span className="text-[0.8rem] text-boda-texto/50 mx-1">·</span>
-            <button type="button" onClick={() => setLegalSection("legal")} className="text-[0.8rem] text-boda-texto/60 hover:text-boda-texto/80 transition-colors" style={{ textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-body)" }}>{t("landing.legalNotice")}</button>
-          </div>
-          <div className="mt-3 text-center">
-            <LanguageSwitcher />
-          </div>
         </div>
       </section>
-      {legalSection && <LegalModal section={legalSection} onClose={() => setLegalSection("")} />}
-
       {showModal && (
         <div className="modal-overlay" onClick={() => setShowModal(false)} role="dialog" aria-modal="true" aria-label={t("landing.modalTitle")}>
           <div className="modal-card" ref={modalRef} onClick={(e) => e.stopPropagation()}>
