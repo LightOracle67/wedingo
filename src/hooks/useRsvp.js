@@ -4,10 +4,10 @@ import { RSVP_COLLECTION_REF, rsvpByInviteRef } from "../lib/firebase";
 import { encrypt, decrypt } from "../lib/crypto-utils";
 
 const DIETARY_OPTIONS = [
-  { value: "sin gluten", label: "Sin gluten" },
-  { value: "sin lactosa", label: "Sin lactosa" },
-  { value: "alergia frutos secos", label: "Alergia a frutos secos" },
-  { value: "alergia mariscos", label: "Alergia a mariscos" },
+  { value: "sin gluten", label: "Gluten" },
+  { value: "sin lactosa", label: "Lactosa" },
+  { value: "alergia frutos secos", label: "F. Secos" },
+  { value: "alergia mariscos", label: "Mariscos" },
 ];
 
 function computeAge(birthDateStr) {
