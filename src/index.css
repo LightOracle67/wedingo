@@ -4181,6 +4181,8 @@ a:focus-visible {
   white-space: nowrap;
   line-height: 1.2;
 }
+
+.music-player__btn {
   all: unset;
   cursor: pointer;
   width: 1.8rem;
