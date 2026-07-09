@@ -12,7 +12,7 @@ function ToastProviderInner({ children, containerId = "toast-root", t }) {
   const remove = useCallback((id) => {
     clearTimeout(timersRef.current[id]);
     delete timersRef.current[id];
-    setToasts((prev) => prev.filter((t) => t.id !== id));
+    setToasts((prev) => prev.filter((toast) => toast.id !== id));
   }, []);
 
   const addToast = useCallback((type, message, duration = 5000) => {
@@ -20,7 +20,7 @@ function ToastProviderInner({ children, containerId = "toast-root", t }) {
     setToasts((prev) => [...prev, { id, type, message, exiting: false }]);
     timersRef.current[id] = setTimeout(() => {
       setToasts((prev) =>
-        prev.map((t) => (t.id === id ? { ...t, exiting: true } : t))
+        prev.map((toast) => (toast.id === id ? { ...toast, exiting: true } : toast))
       );
       setTimeout(() => remove(id), 300);
     }, duration);
@@ -33,17 +33,17 @@ function ToastProviderInner({ children, containerId = "toast-root", t }) {
     <ToastContext.Provider value={value}>
       {children}
       <div id={containerId} className="toast-container">
-        {toasts.map((t) => (
+        {toasts.map((toast) => (
           <div
-            key={t.id}
-            className={`toast toast--${t.type}${t.exiting ? " toast--exiting" : ""}`}
+            key={toast.id}
+            className={`toast toast--${toast.type}${toast.exiting ? " toast--exiting" : ""}`}
             role="alert"
           >
             <span className="toast__icon">
-              {t.type === "success" ? "✓" : t.type === "warning" ? "!" : "✕"}
+              {toast.type === "success" ? "✓" : toast.type === "warning" ? "!" : "✕"}
             </span>
-            <span className="toast__text">{t.message}</span>
-            <button className="toast__close" onClick={() => remove(t.id)} aria-label={t("common.toast.close")}>
+            <span className="toast__text">{toast.message}</span>
+            <button className="toast__close" onClick={() => remove(toast.id)} aria-label={t("common.toast.close")}>
               ✕
             </button>
           </div>
