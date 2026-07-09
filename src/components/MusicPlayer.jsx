@@ -107,10 +107,11 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }) {
         aria-label="Música"
       >
         <span className={`music-player__fab-icon${playing ? " music-player__fab-icon--spin" : ""}`}>
-          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M12 2 C12 2 9 6 9 12 C9 12 9 19 12 22" />
-            <path d="M12 2 C12 2 15 6 15 12 C15 12 15 19 12 22" />
-            <circle cx="12" cy="12" r="10" opacity="0.2" />
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <g fill="currentColor">
+              <circle cx="11" cy="19" r="1.2" />
+              <path d="M13 19C13 14 15.5 9 15.5 6.5C15.5 3.5 14 2 11.7 2C9 2 8 3.8 8 6.2C8 8 9 10 11 12.5L10 12C10 14.5 11 17 11 19H13Z" />
+            </g>
           </svg>
         </span>
         {!hasMusic ? <span className="music-player__fab-dot" /> : null}
@@ -118,11 +119,11 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }) {
         <div className={`music-player__body${showControls ? " music-player__body--visible" : ""}`}>
           <div className="music-player__artwork">
             <span className={`music-player__artwork-inner${playing ? " music-player__artwork-inner--spin" : ""}`}>
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <circle cx="12" cy="12" r="10.5" fill="none" stroke="currentColor" strokeWidth="1.5" />
-                <circle cx="12" cy="12" r="7" fill="none" stroke="currentColor" strokeWidth="0.5" opacity="0.5" />
-                <circle cx="12" cy="12" r="3.5" fill="none" stroke="currentColor" strokeWidth="0.5" opacity="0.35" />
-                <circle cx="12" cy="12" r="1.5" fill="currentColor" />
+              <svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true">
+                <g fill="currentColor">
+                  <circle cx="11" cy="19" r="1.2" />
+                  <path d="M13 19C13 14 15.5 9 15.5 6.5C15.5 3.5 14 2 11.7 2C9 2 8 3.8 8 6.2C8 8 9 10 11 12.5L10 12C10 14.5 11 17 11 19H13Z" />
+                </g>
               </svg>
             </span>
           </div>
