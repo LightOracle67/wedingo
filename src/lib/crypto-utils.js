@@ -35,5 +35,5 @@ export async function decrypt(ciphertext, token) {
     const data = raw.slice(12);
     const decrypted = await crypto.subtle.decrypt({ ...ALGORITHM, iv }, key, data);
     return new TextDecoder().decode(decrypted);
-  } catch { return ciphertext; }
+  } catch { return ""; }
 }
