@@ -82,10 +82,10 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }) {
   const handleToggle = useCallback(() => {
     if (open) {
       setShowControls(false);
-      setTimeout(() => setOpen(false), 300);
+      setTimeout(() => setOpen(false), 400);
     } else {
       setOpen(true);
-      setTimeout(() => setShowControls(true), 350);
+      setTimeout(() => setShowControls(true), 450);
     }
   }, [open]);
 

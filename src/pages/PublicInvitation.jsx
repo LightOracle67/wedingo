@@ -118,6 +118,8 @@ export default function PublicInvitation() {
         return;
       }
       setCountdown({
+        years: Math.floor(diff / (1000 * 60 * 60 * 24 * 365)),
+        months: Math.floor((diff / (1000 * 60 * 60 * 24 * 30.44)) % 12),
         days: Math.floor(diff / (1000 * 60 * 60 * 24)),
         hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
         minutes: Math.floor((diff / (1000 * 60)) % 60),

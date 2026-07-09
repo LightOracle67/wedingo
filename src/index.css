@@ -4161,7 +4161,7 @@ a:focus-visible {
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid color-mix(in srgb, var(--setup-accent, #d8b24a) 35%, transparent);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35), 0 0 0 1px color-mix(in srgb, var(--setup-accent, #d8b24a) 10%, transparent);
-  transition: width 350ms cubic-bezier(0.22, 1, 0.36, 1), height 350ms cubic-bezier(0.22, 1, 0.36, 1), border-radius 350ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 350ms ease;
+  transition: width 400ms cubic-bezier(0.25, 0.1, 0.25, 1), height 400ms cubic-bezier(0.25, 0.1, 0.25, 1), border-radius 400ms cubic-bezier(0.25, 0.1, 0.25, 1), padding 350ms ease, box-shadow 400ms ease;
   color: var(--setup-accent, #d8b24a);
   position: relative;
   overflow: hidden;
@@ -4225,7 +4225,7 @@ a:focus-visible {
 
 .music-player__body {
   opacity: 0;
-  transition: opacity 300ms ease;
+  transition: opacity 400ms ease 150ms;
   pointer-events: none;
   display: flex;
   flex-direction: column;
