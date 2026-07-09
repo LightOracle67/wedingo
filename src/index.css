@@ -4145,10 +4145,6 @@ a:focus-visible {
   top: 0.75rem;
   right: 0.75rem;
   z-index: 500;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.5rem;
 }
 
 .music-player__fab {
@@ -4165,7 +4161,9 @@ a:focus-visible {
   border: 1px solid color-mix(in srgb, var(--setup-accent, #d8b24a) 35%, transparent);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
   color: var(--setup-accent, #d8b24a);
-  position: relative;
+  position: absolute;
+  top: 0;
+  right: 0;
   flex-shrink: 0;
   transition: border-color 200ms, box-shadow 200ms;
 }
@@ -4201,6 +4199,9 @@ a:focus-visible {
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
   opacity: 0;
   transition: opacity 250ms ease;
+  position: absolute;
+  top: 2.8rem;
+  right: 0;
 }
 
 .music-player__card--open {
