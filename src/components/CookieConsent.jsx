@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { memo, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { clearAllStorage } from "../lib/storage";
 
@@ -32,7 +32,7 @@ export function hasAnalyticsConsent() {
   return prefs?.analytics === true;
 }
 
-export default function CookieConsent() {
+const CookieConsent = memo(function CookieConsent() {
   const { t } = useTranslation();
   const [visible, setVisible] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
@@ -127,4 +127,6 @@ export default function CookieConsent() {
       </div>
     </div>
   );
-}
+});
+
+export default CookieConsent;

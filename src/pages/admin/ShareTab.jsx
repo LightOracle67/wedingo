@@ -9,13 +9,13 @@ const APPS = (t) => [
 ];
 
 const ShareTab = memo(function ShareTab({ inviteToken, config, formattedDate, addToast }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const baseUrl = `${window.location.origin}/${inviteToken}`;
   const inviteUrl = `${baseUrl}?invitar`;
   const coupleName = `${config.firstName} & ${config.secondName}`;
 
   const generateMessage = useCallback(
-    () => `${randomMessage()}\n\n${inviteUrl}`,
+    () => `${randomMessage(i18n.language)}\n\n${inviteUrl}`,
     [coupleName, inviteUrl],
   );
 
