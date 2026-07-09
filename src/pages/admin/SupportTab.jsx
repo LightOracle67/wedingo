@@ -1,5 +1,6 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
+import { APP_VERSION } from "../../lib/constants";
 
 const SupportTab = memo(function SupportTab() {
   const { t } = useTranslation();
@@ -46,7 +47,7 @@ const SupportTab = memo(function SupportTab() {
       <h3>{t("support.appTitle")}</h3>
       <p>{t("support.appDescription")}</p>
       <p className="support-copyright">{t("support.copyright", { year: new Date().getFullYear() })}</p>
-      <p style={{ fontSize: "0.7rem", color: "var(--setup-muted)", marginTop: "0.2rem" }}>v2.0.0</p>
+      <p style={{ fontSize: "0.7rem", color: "var(--setup-muted)", marginTop: "0.2rem" }}>v{APP_VERSION}</p>
     </div>
   );
 });
