@@ -4628,9 +4628,10 @@ html.a11y-high-contrast select {
 html.a11y-reduced-motion *,
 html.a11y-reduced-motion *::before,
 html.a11y-reduced-motion *::after {
-  animation-duration: 0s !important;
-  animation-iteration-count: 0 !important;
-  transition-duration: 0s !important;
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
 }
 
 /* Dyslexia font */
