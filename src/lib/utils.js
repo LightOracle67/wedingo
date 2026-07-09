@@ -5,3 +5,7 @@ export { generateSetupToken, normalizeTokenValue, generateInviteToken } from "./
 export { compressImage } from "./image-utils";
 export { buildOpenFreeMapPreviewUrl } from "./map-utils";
 export { encodeInviteConfig, decodeInviteConfig } from "./invite-config-codec";
+
+export function escHtml(s) {
+  return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+}

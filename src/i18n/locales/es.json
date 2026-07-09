@@ -161,6 +161,7 @@
     "privacyPolicy": "Política de Privacidad",
     "terms": "Términos",
     "legalNotice": "Aviso Legal",
+    "ccpaDoNotSell": "No vender mi información personal",
     "locationNotFound": "No pudimos localizar este lugar.",
     "locationMapError": "No pudimos cargar el mapa.",
     "locationCoordinates": "Coordenadas: {{lat}}, {{lng}}"
@@ -600,5 +601,17 @@
     "measureStorage": "Almacenamiento local mínimo y solo con consentimiento",
     "measureRetention": "Política de retención: 12 meses post-evento para datos de invitados",
     "measureSuperadmin": "Superadmin protegido por Firebase Authentication + ruta oculta"
+  },
+  "csv": {
+    "headerName": "Nombre",
+    "headerAttendance": "Asistencia",
+    "headerCompanions": "Acompañantes",
+    "headerDietary": "Info alimentaria",
+    "headerNote": "Nota",
+    "headerDate": "Fecha",
+    "attendanceYes": "Confirmado",
+    "attendanceNo": "No asiste",
+    "companion_one": "1 acompañante",
+    "companion_other": "{{count}} acompañantes"
   }
 }

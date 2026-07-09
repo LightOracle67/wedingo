@@ -161,6 +161,7 @@
     "privacyPolicy": "Privacy Policy",
     "terms": "Terms",
     "legalNotice": "Legal Notice",
+    "ccpaDoNotSell": "Do Not Sell My Personal Information",
     "locationNotFound": "Could not locate this place.",
     "locationMapError": "Could not load the map.",
     "locationCoordinates": "Coordinates: {{lat}}, {{lng}}"
@@ -600,5 +601,17 @@
     "measureStorage": "Minimal local storage with consent only",
     "measureRetention": "Retention policy: 12 months post-event for guest data",
     "measureSuperadmin": "Superadmin protected by Firebase Authentication + hidden route"
+  },
+  "csv": {
+    "headerName": "Name",
+    "headerAttendance": "Attendance",
+    "headerCompanions": "Companions",
+    "headerDietary": "Diet info",
+    "headerNote": "Note",
+    "headerDate": "Date",
+    "attendanceYes": "Confirmed",
+    "attendanceNo": "Not attending",
+    "companion_one": "1 companion",
+    "companion_other": "{{count}} companions"
   }
 }

@@ -18,7 +18,8 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
   }, [inviteToken]);
 
   const [idx, setIdx] = useState(0);
-  const [loaded, setLoaded] = useState({});
+  const [mainLoaded, setMainLoaded] = useState({});
+  const [thumbLoaded, setThumbLoaded] = useState({});
   const clamped = Math.max(0, Math.min(idx, images.length - 1));
 
   const prev = useCallback(() => setIdx((i) => (i - 1 + images.length) % images.length), [images.length]);
@@ -54,14 +55,14 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
         <h2 className="story-title">{t("gallery.title")}</h2>
 
         <div className="mt-4" style={{ position: "relative", userSelect: "none" }}>
-          {!loaded[clamped] ? (
+          {!mainLoaded[clamped] ? (
             <div style={{ width: "100%", aspectRatio: "16/10", borderRadius: "0.9rem", background: "color-mix(in srgb, var(--setup-field-bg) 60%, transparent)", display: "grid", placeItems: "center" }}>
               <div className="page-loading" />
             </div>
           ) : null}
-          <img src={images[clamped]} alt={t("gallery.imageAlt")} onLoad={() => setLoaded((p) => ({ ...p, [clamped]: true }))} style={{
+          <img src={images[clamped]} alt={t("gallery.imageAlt")} onLoad={() => setMainLoaded((p) => ({ ...p, [clamped]: true }))} style={{
             width: "100%", aspectRatio: "16/10", objectFit: "cover",
-            borderRadius: "0.9rem", display: loaded[clamped] ? "block" : "none",
+            borderRadius: "0.9rem", display: mainLoaded[clamped] ? "block" : "none",
             border: "1px solid color-mix(in srgb, var(--invite-shell-border) 70%, transparent)",
           }} />
 
@@ -90,8 +91,8 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
               border: i === clamped ? "2px solid var(--setup-accent)" : "2px solid transparent",
               opacity: i === clamped ? 1 : 0.55, transition: "opacity 200ms, border-color 200ms", background: "color-mix(in srgb, var(--setup-field-bg) 50%, transparent)",
             }}>
-              {!loaded[i] ? <div className="page-loading" style={{ width: "100%", height: "100%", minHeight: 0 }} /> : null}
-              <img src={src} alt={t("gallery.thumbnailAlt")} onLoad={() => setLoaded((p) => ({ ...p, [i]: true }))} style={{ width: "100%", height: "100%", objectFit: "cover", display: loaded[i] ? "block" : "none" }} />
+              {!thumbLoaded[i] ? <div className="page-loading" style={{ width: "100%", height: "100%", minHeight: 0 }} /> : null}
+              <img src={src} alt={t("gallery.thumbnailAlt")} onLoad={() => setThumbLoaded((p) => ({ ...p, [i]: true }))} style={{ width: "100%", height: "100%", objectFit: "cover", display: thumbLoaded[i] ? "block" : "none" }} />
             </button>
           ))}
         </div>

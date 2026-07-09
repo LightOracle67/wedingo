@@ -3995,6 +3995,7 @@ a:focus-visible {
   max-width: 500px;
   width: 100%;
   text-align: center;
+  page-break-inside: avoid;
 }
 
 .print-section__card::after {
@@ -4062,8 +4063,8 @@ a:focus-visible {
 }
 
 .print-hero-pic {
-  max-width: 180px;
-  max-height: 180px;
+  max-width: 250px;
+  max-height: 250px;
   border-radius: 50%;
   object-fit: cover;
   margin: 0 auto 22px;

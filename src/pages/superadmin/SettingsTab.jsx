@@ -41,7 +41,7 @@ export default function SettingsTab() {
               {session.type === "superadmin" ? t("superadmin.sessionTypeSuperadmin") : session.type === "setup" ? t("superadmin.sessionTypeSetup") : t("superadmin.sessionTypeAdmin")}
             </div>
             <div style={{ color: "var(--setup-muted)", fontSize: "0.75rem" }}>
-              {t("superadmin.sessionExpires", { date: new Date(session.expiresAt).toLocaleString("es-ES", { dateStyle: "medium", timeStyle: "short" }) })}
+              {t("superadmin.sessionExpires", { date: new Date(session.expiresAt).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" }) })}
             </div>
           </div>
         )}
