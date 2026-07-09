@@ -1,51 +1,10 @@
-import { memo, useCallback, useEffect, useRef, useState } from "react";
+import { memo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import heroBackdropSrc from "../../assets/rings.png";
 
-const HeroSection = memo(function HeroSection({ style, className, firstName, secondName, inviteMessage, countdown, couplePhoto, musicUrl, godparent1, godparent2 }) {
+const HeroSection = memo(function HeroSection({ style, className, firstName, secondName, inviteMessage, countdown, couplePhoto, godparent1, godparent2 }) {
   const { t } = useTranslation();
-  const [playing, setPlaying] = useState(false);
-  const [audioError, setAudioError] = useState(false);
-  const [audioLoading, setAudioLoading] = useState(false);
-  const [volume, setVolume] = useState(0.5);
-  const [showVolume, setShowVolume] = useState(false);
   const [photoLoaded, setPhotoLoaded] = useState(false);
-  const audioRef = useRef(null);
-
-  useEffect(() => {
-    const el = audioRef.current;
-    if (!el) return;
-    const onError = () => { setAudioLoading(false); setAudioError(true); setPlaying(false); };
-    const onCanPlay = () => { setAudioLoading(false); setAudioError(false); };
-    const onEnded = () => setPlaying(false);
-    el.addEventListener("error", onError);
-    el.addEventListener("canplay", onCanPlay);
-    el.addEventListener("ended", onEnded);
-    return () => {
-      el.removeEventListener("error", onError);
-      el.removeEventListener("canplay", onCanPlay);
-      el.removeEventListener("ended", onEnded);
-    };
-  }, [musicUrl]);
-
-  const handleVolume = useCallback((e) => {
-    const v = Number(e.target.value);
-    setVolume(v);
-    if (audioRef.current) audioRef.current.volume = v;
-  }, []);
-
-  const toggleMusic = useCallback(() => {
-    const el = audioRef.current;
-    if (!el) return;
-    if (playing) {
-      el.pause();
-      setPlaying(false);
-    } else {
-      setAudioError(false);
-      setAudioLoading(true);
-      el.play().then(() => { setPlaying(true); setAudioLoading(false); }).catch(() => { setAudioLoading(false); setAudioError(true); });
-    }
-  }, [playing]);
 
   return (
     <section
@@ -97,53 +56,6 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
                 </p>
               ) : (
                 <p className="mt-1 text-[clamp(1.5rem,4vw,2.5rem)] leading-tight font-serif text-boda-texto">{t("hero.todayIsTheDay")}</p>
-              )}
-            </div>
-          ) : null}
-          {musicUrl ? (
-            <div className="mt-4">
-              <audio ref={audioRef} src={musicUrl} loop preload="auto" />
-              {audioError ? (
-                <p className="setup-help" style={{ color: "#e06060", fontSize: "0.75rem", marginTop: "0.3rem" }}>{t("hero.audioError")}</p>
-              ) : (
-                <>
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "0.5rem", flexWrap: "wrap" }}>
-                    <button type="button" onClick={toggleMusic} disabled={audioLoading}
-                      style={{
-                        background: "none", border: "1px solid color-mix(in srgb, var(--setup-accent) 50%, transparent)",
-                        borderRadius: "999px", width: "2.4rem", height: "2.4rem", cursor: "pointer", display: "grid", placeItems: "center",
-                        color: "var(--setup-accent)", fontSize: "1rem", transition: "background 200ms",
-                        opacity: audioLoading ? 0.5 : 1,
-                      }}
-                      onMouseEnter={(e) => e.currentTarget.style.background = "color-mix(in srgb, var(--setup-accent) 15%, transparent)"}
-                      onMouseLeave={(e) => e.currentTarget.style.background = "transparent"}
-                    >
-                      {audioLoading ? (
-                        <span style={{ width: "1rem", height: "1rem", border: "2px solid color-mix(in srgb, var(--setup-accent) 30%, transparent)", borderTopColor: "var(--setup-accent)", borderRadius: "50%", animation: "spin 800ms linear infinite" }} />
-                      ) : playing ? "⏸" : "▶"}
-                    </button>
-                    {playing ? (
-                      <span style={{ display: "flex", gap: "2px", alignItems: "center", height: "1rem" }}>
-                        {[3, 5, 4, 6, 3].map((h, i) => (
-                          <span key={i} style={{
-                            width: "3px", height: `${h}px`, background: "var(--setup-accent)", borderRadius: "2px",
-                            animation: "musicBar 600ms ease-in-out infinite alternate",
-                            animationDelay: `${i * 100}ms`, opacity: 0.8,
-                          }} />
-                        ))}
-                      </span>
-                    ) : null}
-                    <button type="button" onClick={() => setShowVolume((v) => !v)}
-                      style={{ background: "none", border: "none", cursor: "pointer", color: "var(--setup-muted)", fontSize: "0.85rem", padding: "0.2rem" }}>
-                      {showVolume ? "🔊" : "🔉"}
-                    </button>
-                  </div>
-                  {showVolume ? (
-                    <input type="range" min="0" max="1" step="0.05" value={volume} onChange={handleVolume}
-                      style={{ width: "8rem", marginTop: "0.3rem", accentColor: "var(--setup-accent)", cursor: "pointer" }}
-                    />
-                  ) : null}
-                </>
               )}
             </div>
           ) : null}

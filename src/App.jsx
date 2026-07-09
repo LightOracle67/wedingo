@@ -7,6 +7,7 @@ import { ToastProvider } from "./contexts/ToastContext";
 import ErrorBoundary from "./components/ErrorBoundary";
 import CookieConsent from "./components/CookieConsent";
 import LanguageSwitcher from "./components/LanguageSwitcher";
+import MusicPlayer from "./components/MusicPlayer";
 import LandingPage from "./pages/LandingPage";
 import { SUPERADMIN_ROUTE, SUPERADMIN_DASHBOARD } from "./lib/superadmin";
 
@@ -66,6 +67,8 @@ function AppShell() {
           </div>
         </nav>
       ) : null}
+
+      {!isEditingRoute && config.musicUrl ? <MusicPlayer musicUrl={config.musicUrl} /> : null}
 
       <main id="main-content" role="main" tabIndex={-1} style={{ paddingTop: topBarPadding }}>
         <Suspense fallback={<div className="page-loading" />}>
