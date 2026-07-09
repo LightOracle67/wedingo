@@ -22,7 +22,14 @@ function applyPrefs(prefs) {
   root.classList.toggle("a11y-more-spacing", !!prefs.moreSpacing);
   root.classList.toggle("a11y-underline-links", !!prefs.underlineLinks);
   root.classList.toggle("a11y-big-cursor", !!prefs.bigCursor);
-  root.style.setProperty("--a11y-font-scale", prefs.fontSize || "1");
+  if (prefs.fontSize && prefs.fontSize !== "1") {
+    root.style.setProperty("--a11y-font-scale", prefs.fontSize);
+    root.classList.add("a11y-font-scale");
+  } else {
+    root.style.removeProperty("--a11y-font-scale");
+    root.classList.remove("a11y-font-scale");
+  }
+  root.style.setProperty("--a11y-line-spacing", `${prefs.lineSpacing || "0"}rem`);
 }
 
 export default function AccessibilityPanel({ open, onClose }) {

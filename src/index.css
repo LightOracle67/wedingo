@@ -4660,8 +4660,25 @@ html.a11y-big-cursor * {
 
 /* Line spacing */
 html {
-  font-size: calc(1rem * var(--a11y-font-scale, 1));
   line-height: calc(1.5 + var(--a11y-line-spacing, 0));
+}
+
+html.a11y-font-scale body,
+html.a11y-font-scale p,
+html.a11y-font-scale span,
+html.a11y-font-scale li,
+html.a11y-font-scale a,
+html.a11y-font-scale label,
+html.a11y-font-scale legend,
+html.a11y-font-scale button,
+html.a11y-font-scale h1,
+html.a11y-font-scale h2,
+html.a11y-font-scale h3,
+html.a11y-font-scale h4,
+html.a11y-font-scale input,
+html.a11y-font-scale textarea,
+html.a11y-font-scale select {
+  font-size: calc(1em * var(--a11y-font-scale, 1)) !important;
 }
 
 /* App footer */
