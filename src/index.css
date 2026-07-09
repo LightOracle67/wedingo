@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "OpenDyslexic";
+  src: url("https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/otf/OpenDyslexic-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
 html {
   font-size: clamp(13px, 0.8125rem + 0.2vw, 15px);
 }
@@ -4457,12 +4464,7 @@ a:focus-visible {
 
 /* Accesibilidad */
 
-@font-face {
-  font-family: "OpenDyslexic";
-  src: url("https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/otf/OpenDyslexic-Regular.otf") format("opentype");
-  font-weight: 400;
-  font-style: normal;
-}
+/* Accesibilidad */
 
 .a11y-section {
   margin-bottom: 0.8rem;
