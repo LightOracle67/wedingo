@@ -4155,12 +4155,12 @@ a:focus-visible {
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: linear-gradient(150deg, var(--setup-grad-start, rgba(31,26,16,0.92)), var(--setup-grad-end, rgba(68,52,24,0.82)));
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid color-mix(in srgb, var(--setup-accent, #d8b24a) 35%, transparent);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-  color: var(--setup-accent, #d8b24a);
+  background: color-mix(in srgb, var(--invite-shell-bg) 74%, transparent);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  border: 1px solid color-mix(in srgb, var(--invite-shell-border) 72%, transparent);
+  box-shadow: 0 22px 60px color-mix(in srgb, var(--invite-shell-shadow) 92%, transparent), 0 0 30px color-mix(in srgb, var(--invite-shell-glow) 70%, transparent);
+  color: var(--invite-title-color, #dcc8a8);
   position: absolute;
   top: 0;
   right: 0;
@@ -4169,8 +4169,8 @@ a:focus-visible {
 }
 
 .music-player__fab:hover {
-  border-color: color-mix(in srgb, var(--setup-accent, #d8b24a) 60%, transparent);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  border-color: var(--invite-core-border);
+  box-shadow: 0 22px 60px color-mix(in srgb, var(--invite-shell-shadow) 92%, transparent), 0 0 40px color-mix(in srgb, var(--invite-shell-glow) 85%, transparent);
 }
 
 .music-player__fab-dot {
@@ -4190,13 +4190,13 @@ a:focus-visible {
   align-items: center;
   gap: 0;
   width: 250px;
-  background: linear-gradient(150deg, var(--setup-grad-start, rgba(31,26,16,0.92)), var(--setup-grad-end, rgba(68,52,24,0.82)));
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid color-mix(in srgb, var(--setup-accent, #d8b24a) 30%, transparent);
-  border-radius: 1.2rem;
+  background: color-mix(in srgb, var(--invite-shell-bg) 74%, transparent);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  border: 1px solid color-mix(in srgb, var(--invite-core-border) 70%, transparent);
+  border-radius: 1.4rem;
   padding: 1.2rem 1rem 0.9rem;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 22px 60px color-mix(in srgb, var(--invite-shell-shadow) 92%, transparent), 0 0 30px color-mix(in srgb, var(--invite-shell-glow) 70%, transparent);
   opacity: 0;
   transition: opacity 250ms ease;
   position: absolute;
@@ -4222,8 +4222,8 @@ a:focus-visible {
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  background: color-mix(in srgb, var(--setup-accent, #d8b24a) 10%, transparent);
-  color: var(--setup-accent, #d8b24a);
+  background: color-mix(in srgb, var(--invite-core-glow) 40%, transparent);
+  color: var(--invite-title-color, #dcc8a8);
 }
 
 .music-player__artwork-inner--spin {
@@ -4238,7 +4238,7 @@ a:focus-visible {
 .music-player__track {
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--setup-title, #eee);
+  color: var(--invite-title-color, #dcc8a8);
   font-family: var(--font-body), system-ui, sans-serif;
   max-width: 200px;
   overflow: hidden;
@@ -4250,7 +4250,7 @@ a:focus-visible {
 
 .music-player__status {
   font-size: 0.65rem;
-  color: #ff453a;
+  color: #e06060;
   margin-bottom: 2px;
 }
 
@@ -4264,7 +4264,7 @@ a:focus-visible {
 
 .music-player__time {
   font-size: 0.55rem;
-  color: var(--setup-muted, rgba(255,255,255,0.3));
+  color: var(--invite-copy-color, #c8b898);
   font-variant-numeric: tabular-nums;
   min-width: 1.8rem;
   text-align: center;
@@ -4295,7 +4295,7 @@ a:focus-visible {
   width: 2.4rem;
   height: 2.4rem;
   border-radius: 50%;
-  background: var(--setup-accent, #d8b24a);
+  background: color-mix(in srgb, var(--invite-title-color, #dcc8a8) 90%, transparent);
   display: grid;
   place-items: center;
   color: var(--setup-accent-text, #1f1b11);
