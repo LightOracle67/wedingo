@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useApp } from "../contexts/AppContext";
 import { useToast } from "../contexts/ToastContext";
 import { formatDate } from "../lib/section-utils";
+import { escHtml } from "../lib/utils";
 import SetupForm from "../components/SetupForm";
 import PanelTab from "./admin/PanelTab";
 import AttendanceTab from "./admin/AttendanceTab";
@@ -82,17 +83,16 @@ export default function AdminPage() {
   const coupleName = `${config.firstName} & ${config.secondName}`;
 
   const exportPdf = useCallback(() => {
-    const s = (v) => String(v || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
     const rows = rsvpEntries.map((e) =>
-      `<tr><td>${s(e.guestName)}</td><td>${e.attendance === "yes" ? t("panel.attends") : t("panel.notAttends")}</td><td>${e.attendance === "yes" ? e.companions : 0}</td><td>${s(e.dietaryInfo)}</td></tr>`
+      `<tr><td>${escHtml(e.guestName)}</td><td>${e.attendance === "yes" ? t("panel.attends") : t("panel.notAttends")}</td><td>${e.attendance === "yes" ? e.companions : 0}</td><td>${escHtml(e.dietaryInfo)}</td></tr>`
     ).join("");
     const tc = rsvpEntries.filter(e => e.attendance === "yes").length;
     const td = rsvpEntries.filter(e => e.attendance === "no").length;
-    const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${t("admin.pdfTitle", { name: s(coupleName) })}</title><style>
+    const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${t("admin.pdfTitle", { name: escHtml(coupleName) })}</title><style>
       @page{margin:2cm}body{font-family:system-ui,sans-serif;font-size:12px;color:#222;padding:2rem}h1{font-size:18px;margin-bottom:4px}table{width:100%;border-collapse:collapse;margin-top:8px}th,td{border:1px solid #d4d0c8;padding:6px 8px}tr:nth-child(even){background:#faf8f5}.stats{display:flex;gap:1rem;margin:12px 0;font-size:13px}.stat{background:#f5f3ef;padding:8px 14px;border-radius:8px}@media print{body{padding:0}}
     </style></head><body>
-    <h1>${t("admin.pdfTitle", { name: s(coupleName) })}</h1>
-    <p style="color:#666;font-size:13px">${new Date().toLocaleDateString("es-ES",{day:"numeric",month:"long",year:"numeric",hour:"2-digit",minute:"2-digit"})}</p>
+    <h1>${t("admin.pdfTitle", { name: escHtml(coupleName) })}</h1>
+    <p style="color:#666;font-size:13px">${new Date().toLocaleDateString(undefined,{day:"numeric",month:"long",year:"numeric",hour:"2-digit",minute:"2-digit"})}</p>
     <div class="stats"><div class="stat">${tc} ${t("admin.pdfConfirmed")}</div><div class="stat">${td} ${t("admin.pdfNotAttending")}</div><div class="stat">${rsvpEntries.length} ${t("admin.pdfResponses")}</div></div>
     <table><thead><tr><th>${t("admin.pdfTableName")}</th><th>${t("admin.pdfTableAttendance")}</th><th>${t("admin.pdfTableCompanions")}</th><th>${t("admin.pdfTableDiet")}</th></tr></thead><tbody>${rows}</tbody></table>
     <p style="margin-top:12px;color:#888;font-size:11px">Wedingo</p>

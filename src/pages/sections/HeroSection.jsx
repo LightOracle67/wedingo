@@ -15,7 +15,7 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
   useEffect(() => {
     const el = audioRef.current;
     if (!el) return;
-    const onError = () => { setAudioLoading(false); setAudioError(true); };
+    const onError = () => { setAudioLoading(false); setAudioError(true); setPlaying(false); };
     const onCanPlay = () => { setAudioLoading(false); setAudioError(false); };
     const onEnded = () => setPlaying(false);
     el.addEventListener("error", onError);
@@ -89,13 +89,11 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
               </p>
               {!countdown.expired ? (
                 <p className="text-[clamp(2rem,6vw,3.5rem)] leading-tight font-serif tracking-wider text-boda-texto">
-                  {countdown.days > 0 && countdown.hours > 0
-                    ? t("hero.daysAndHours", { days: countdown.days, hours: countdown.hours })
-                    : countdown.days > 0
-                      ? t("hero.days", { days: countdown.days })
-                      : countdown.hours > 0
-                        ? t("hero.hours", { hours: countdown.hours })
-                        : t("hero.minutes", { minutes: countdown.minutes })}
+                  {(() => {
+                    if (countdown.days > 0) return t("hero.daysAndHours", { days: countdown.days, hours: countdown.hours });
+                    if (countdown.hours > 0) return t("hero.hours", { hours: countdown.hours });
+                    return t("hero.minutes", { minutes: countdown.minutes });
+                  })()}
                 </p>
               ) : (
                 <p className="mt-1 text-[clamp(1.5rem,4vw,2.5rem)] leading-tight font-serif text-boda-texto">{t("hero.todayIsTheDay")}</p>

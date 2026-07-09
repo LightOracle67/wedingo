@@ -1,8 +1,9 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useApp } from "../contexts/AppContext";
 import { THEME_PREVIEW_COLORS } from "../lib/constants";
 import { parseSectionOrder, formatDate } from "../lib/section-utils";
+import { escHtml } from "../lib/utils";
 
 function Section({ eyebrow, title, children, accent, bg }) {
   return (
@@ -39,20 +40,13 @@ function Section({ eyebrow, title, children, accent, bg }) {
   );
 }
 
-function S({ children, ...rest }) {
-  return <span {...rest}>{String(children || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;")}</span>;
-}
-
-const MONTHS = {
-  enero: "enero", febrero: "febrero", marzo: "marzo", abril: "abril", mayo: "mayo", junio: "junio",
-  julio: "julio", agosto: "agosto", septiembre: "septiembre", octubre: "octubre", noviembre: "noviembre", diciembre: "diciembre",
-};
 
 export default function PrintPage() {
   const { inviteToken } = useParams();
   const { config, isConfigLoading } = useApp();
   const printed = useRef(false);
   const [loaded, setLoaded] = useState(false);
+  const [showCloseHint, setShowCloseHint] = useState(false);
 
   const hiddenSet = useMemo(() => {
     const raw = config.hiddenSections || "";
@@ -86,11 +80,18 @@ export default function PrintPage() {
     const doPrint = async () => {
       await document.fonts.ready;
       await new Promise(r => setTimeout(r, 400));
-      window.onafterprint = () => { try { window.close(); } catch {} };
+      const cleanup = () => {
+        try { window.close(); } catch {}
+      };
+      window.onafterprint = cleanup;
+      window.onbeforeunload = null;
       window.print();
+      setTimeout(() => setShowCloseHint(true), 2000);
     };
     doPrint();
   }, [loaded]);
+
+  const handleCloseWindow = useCallback(() => { try { window.close(); } catch {} }, []);
 
   if (isConfigLoading || !loaded) {
     return <div style={{ padding: "3rem", textAlign: "center", fontFamily: "Georgia, serif", color: "#888" }}>Preparando impresión...</div>;
@@ -101,10 +102,10 @@ export default function PrintPage() {
       {sectionOrder.includes("hero") && (
         <Section accent={accent} bg={bg}>
           {config.couplePhoto ? <img src={config.couplePhoto} alt="Foto de los novios" className="print-hero-pic" /> : null}
-          <h1 className="print-hero-couple"><S>{config.firstName}</S> & <S>{config.secondName}</S></h1>
-          <p className="print-hero-msg"><S>{config.inviteMessage}</S></p>
+          <h1 className="print-hero-couple">{escHtml(config.firstName)} & {escHtml(config.secondName)}</h1>
+          <p className="print-hero-msg">{escHtml(config.inviteMessage)}</p>
           {config.godparent1 && config.godparent2 ? (
-            <p className="print-godparents">Con la bendición de sus padrinos <S>{config.godparent1}</S> y <S>{config.godparent2}</S></p>
+            <p className="print-godparents">Con la bendición de sus padrinos {escHtml(config.godparent1)} y {escHtml(config.godparent2)}</p>
           ) : null}
         </Section>
       )}
@@ -112,13 +113,13 @@ export default function PrintPage() {
       {sectionOrder.includes("details") && (
         <Section eyebrow="Fecha y lugar" title={formattedDate} accent={accent} bg={bg}>
           {timeStr ? <p className="print-body print-body--tight">Hora de la celebración: {timeStr}h</p> : null}
-          {place ? <p className="print-body print-body--tight"><S>{place}</S></p> : null}
+          {place ? <p className="print-body print-body--tight">{escHtml(place)}</p> : null}
           {mapsUrl ? <p className="print-body print-body--tight"><a href={mapsUrl} className="print-link">Ver ubicación en Google Maps</a></p> : null}
           <p className="print-body print-body--tight" style={{ marginTop: 12, fontStyle: "italic" }}>Te esperamos para compartir este momento tan especial.</p>
           {config.transportInfo ? (
             <div className="print-info-box">
               <p><strong>Transporte</strong></p>
-              <p className="print-body print-body--tight"><S>{config.transportInfo}</S></p>
+              <p className="print-body print-body--tight">{escHtml(config.transportInfo)}</p>
             </div>
           ) : null}
         </Section>
@@ -140,14 +141,14 @@ export default function PrintPage() {
           <h3 className="print-subtitle">Código de vestimenta</h3>
           {config.weddingDressCode ? (
             <div style={{ marginTop: 6 }}>
-              {config.weddingDressCode.split(",").map((d, i) => <span key={i} className="print-dress"><S>{d.trim()}</S></span>)}
+              {config.weddingDressCode.split(",").map((d, i) => <span key={i} className="print-dress">{escHtml(d.trim())}</span>)}
             </div>
           ) : <p className="print-body print-body--tight">Se comunicará más adelante.</p>}
           {config.kidsPolicy ? (
             <>
               <div className="print-divider" />
               <h3 className="print-subtitle">Sobre los niños</h3>
-              <p className="print-body print-body--tight"><S>{config.kidsPolicy}</S></p>
+              <p className="print-body print-body--tight">{escHtml(config.kidsPolicy)}</p>
             </>
           ) : null}
         </Section>
@@ -155,17 +156,17 @@ export default function PrintPage() {
 
       {sectionOrder.includes("story") && (
         <Section eyebrow="Nuestra historia" title="Cómo empezó todo" accent={accent} bg={bg}>
-          <p className="print-body"><S>{config.storyText || "La historia se compartirá pronto."}</S></p>
+          <p className="print-body">{escHtml(config.storyText || "La historia se compartirá pronto.")}</p>
         </Section>
       )}
 
       {sectionOrder.includes("gifts") && (
         <Section eyebrow="Regalos" title="Tu presencia es el mejor regalo" accent={accent} bg={bg}>
-          <p className="print-body"><S>{config.giftsInfo || "La información sobre regalos se compartirá próximamente."}</S></p>
+          <p className="print-body">{escHtml(config.giftsInfo || "La información sobre regalos se compartirá próximamente.")}</p>
           {config.bankInfo ? (
             <div className="print-info-box" style={{ marginTop: 12 }}>
               <p><strong>Datos bancarios</strong></p>
-              <p className="print-body print-body--tight"><S>{config.bankInfo}</S></p>
+              <p className="print-body print-body--tight">{escHtml(config.bankInfo)}</p>
             </div>
           ) : null}
         </Section>
@@ -173,11 +174,20 @@ export default function PrintPage() {
 
       {sectionOrder.includes("accommodation") && (
         <Section eyebrow="Alojamiento" title="Dónde alojarse" accent={accent} bg={bg}>
-          <p className="print-body"><S>{config.accommodationInfo || "La información sobre alojamiento se compartirá próximamente."}</S></p>
+          <p className="print-body">{escHtml(config.accommodationInfo || "La información sobre alojamiento se compartirá próximamente.")}</p>
         </Section>
       )}
 
-      <p className="print-footer">Wedingo</p>
+      <p className="print-footer">Wedingo · Política de privacidad en wedingo-6c26a.web.app</p>
+      {showCloseHint ? (
+        <div style={{ textAlign: "center", padding: "0.5rem 1rem 1.5rem" }}>
+          <button type="button" onClick={handleCloseWindow} style={{
+            background: "var(--print-accent, #d8b24a)", color: "#fff", border: "none",
+            borderRadius: "0.5rem", padding: "0.5rem 1.5rem", fontFamily: "inherit",
+            fontSize: "0.9rem", cursor: "pointer",
+          }}>Cerrar ventana</button>
+        </div>
+      ) : null}
     </div>
   );
 }

@@ -7,7 +7,7 @@ export const SUPERADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAILS?.split(",")[0]
 
 export function formatDate(iso) {
   try {
-    return new Date(iso).toLocaleString("es-ES", { dateStyle: "medium", timeStyle: "short" });
+    return new Date(iso).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" });
   } catch {
     return iso;
   }

@@ -576,6 +576,8 @@ export default function PublicInvitation() {
             <button type="button" onClick={() => setLegalSection("terms")} className="text-[0.8rem] text-boda-texto/60 hover:text-boda-texto/80 transition-colors" style={{ textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-body)" }}>{t("public.terms")}</button>
             <span className="text-[0.8rem] text-boda-texto/50 mx-1">·</span>
             <button type="button" onClick={() => setLegalSection("legal")} className="text-[0.8rem] text-boda-texto/60 hover:text-boda-texto/80 transition-colors" style={{ textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-body)" }}>{t("public.legalNotice")}</button>
+            <span className="text-[0.8rem] text-boda-texto/50 mx-1">·</span>
+            <span className="text-[0.8rem] text-boda-texto/50">{t("public.ccpaDoNotSell")}</span>
           </div>
 
           {legalSection && <LegalModal section={legalSection} onClose={() => setLegalSection("")} />}

@@ -1,6 +1,6 @@
 import { memo, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { WEDDING_MESSAGES, randomMessage } from "../../lib/invite-messages";
+import { randomMessage } from "../../lib/invite-messages";
 
 const APPS = (t) => [
   { key: "whatsapp", label: t("share.whatsapp"), url: (text) => `https://wa.me/?text=${encodeURIComponent(text)}` },

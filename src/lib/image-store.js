@@ -1,4 +1,4 @@
-import { doc, getDoc, setDoc, addDoc, getDocs, collection, writeBatch } from "firebase/firestore";
+import { getDoc, addDoc, getDocs, collection, writeBatch } from "firebase/firestore";
 import { db } from "./firebase";
 import { compressImage } from "./image-utils";
 import { encrypt, decrypt } from "./crypto-utils";
@@ -13,9 +13,6 @@ export async function uploadImage(inviteToken, file) {
   return { encrypted, dataUrl };
 }
 
-export async function saveImageField(inviteToken, field, encrypted) {
-  await setDoc(doc(db, "invitations", inviteToken), { [field]: encrypted }, { merge: true });
-}
 
 export async function addGalleryImage(inviteToken, encrypted, dataUrl) {
   await addDoc(GALLERY_COL(inviteToken), { data: encrypted, createdAt: new Date().toISOString() });

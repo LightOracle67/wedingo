@@ -80,7 +80,7 @@ export function AppProvider({ children }) {
     rsvpEntries, rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted,
     alreadySubmittedEntry,
     updateRsvpField, handleRsvpSubmit, handleClearRsvpEntries, handleDeleteRsvp,
-    handleDietaryToggle, dietaryInfoStr, DIETARY_OPTIONS,
+    handleDietaryToggle, DIETARY_OPTIONS,
     computeAge,
   } = useRsvp(inviteToken, setAdminMessage, setAdminMessageType, config.menuEnabled === "true");
 
@@ -543,7 +543,7 @@ export function AppProvider({ children }) {
     locationMapLoading, setLocationMapLoading, locationMapTarget, setLocationMapTarget,
     rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
     maxAllowedYear, isAdminTokenLoggedIn,
-    formattedDate, formattedTime, calendarLink, dietaryInfoStr, DIETARY_OPTIONS,
+    formattedDate, formattedTime, calendarLink, DIETARY_OPTIONS,
     updateFormField, refreshSetupToken, reloadConfig,
     handleSaveSetup, handleRsvpSubmit, updateRsvpField,
     handleDietaryToggle, handleDeleteRsvp, computeAge,
@@ -572,7 +572,7 @@ export function AppProvider({ children }) {
     locationMapLoading, locationMapTarget,
     rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
     maxAllowedYear, isAdminTokenLoggedIn,
-    formattedDate, formattedTime, calendarLink, dietaryInfoStr, DIETARY_OPTIONS,
+    formattedDate, formattedTime, calendarLink, DIETARY_OPTIONS,
     updateFormField, refreshSetupToken, reloadConfig,
     handleSaveSetup, handleRsvpSubmit, updateRsvpField,
     handleDietaryToggle, handleDeleteRsvp, computeAge,

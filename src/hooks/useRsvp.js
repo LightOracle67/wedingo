@@ -66,8 +66,6 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
   const rsvpSubmitTimeoutRef = useRef(null);
   const prefillRef = useRef(null);
 
-  const dietaryInfoStr = [rsvpForm.dietarySelection, rsvpForm.dietaryOther].flat().filter(Boolean).join(", ");
-
   useEffect(() => {
     const timeout = rsvpSubmitTimeoutRef.current;
     return () => {
@@ -152,8 +150,12 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
   }, []);
 
   const updateRsvpField = useCallback((field, value) => {
-    if (field === "attendance" && value === "no") {
-      setRsvpForm((current) => ({ ...current, attendance: value, companions: 0 }));
+    if (field === "attendance") {
+      setRsvpForm((current) => ({
+        ...current,
+        attendance: value,
+        companions: value === "no" ? 0 : (current.companions ?? 0),
+      }));
       return;
     }
     if (field === "guestName") {
@@ -289,7 +291,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
     rsvpEntries, rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted,
     alreadySubmittedEntry,
     updateRsvpField, handleRsvpSubmit, handleClearRsvpEntries, handleDeleteRsvp,
-    handleDietaryToggle, dietaryInfoStr, DIETARY_OPTIONS,
+    handleDietaryToggle, DIETARY_OPTIONS,
     setRsvpMessage, setRsvpForm, computeAge,
   };
 }
