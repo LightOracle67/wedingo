@@ -105,8 +105,7 @@ export default function LandingPage() {
         } catch {}
       }
 
-      const sessionSnap = await getDoc(doc(db, "sessions", target));
-      if (sessionSnap.exists()) {
+      if (inviteSnap.exists() && inviteSnap.data().activeSession) {
         setIsLoading(false);
         if (!window.confirm(t("landing.sessionExists"))) {
           return;
@@ -119,7 +118,13 @@ export default function LandingPage() {
           const tokenDocRef = doc(db, "setupTokens", normalized);
           const tokenDoc = await transaction.get(tokenDocRef);
           if (!tokenDoc.exists) throw new Error();
-          transaction.set(doc(db, "sessions", target), { createdAt: serverTimestamp() });
+          const inviteRef = invitationDocRef(target);
+          const inviteSnapInTx = await transaction.get(inviteRef);
+          if (!inviteSnapInTx.exists()) {
+            transaction.set(inviteRef, { ...defaultConfig, activeSession: serverTimestamp() });
+          } else {
+            transaction.update(inviteRef, { activeSession: serverTimestamp() });
+          }
         });
       } catch {
         setError(t("landing.errorTransactionFailed"));

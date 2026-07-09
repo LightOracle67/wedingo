@@ -492,7 +492,7 @@ export function AppProvider({ children }) {
       setSetupTokenInput("");
       if (!isTokenVerified) {
         try {
-          await setDoc(doc(db, "sessions", inviteToken), { createdAt: serverTimestamp() });
+          await updateDoc(invitationDocRef(inviteToken), { activeSession: serverTimestamp() });
           setIsTokenVerified(true);
           setTokenLoginUsername(config.adminUsername || inviteToken);
           saveSession("admin", config.adminUsername || inviteToken);
@@ -515,7 +515,6 @@ export function AppProvider({ children }) {
       snap.docs.forEach((d) => batch.delete(d.ref));
       await deleteGallery(inviteToken);
       batch.delete(invitationDocRef(inviteToken));
-      batch.delete(doc(db, "sessions", inviteToken));
       await batch.commit();
       safeRemoveItem(`wedin_invite_cache_${inviteToken}`);
       clearSession();

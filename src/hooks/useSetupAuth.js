@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { doc, deleteDoc, getDoc, runTransaction, serverTimestamp, setDoc } from "firebase/firestore";
+import { doc, getDoc, runTransaction, serverTimestamp, setDoc, updateDoc } from "firebase/firestore";
 import { db, invitationDocRef } from "../lib/firebase";
 import { defaultConfig } from "../lib/constants";
 import { generateSetupToken, normalizeTokenValue } from "../lib/token-utils";
@@ -36,8 +36,8 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
       setIsTokenVerified(true);
 
       if (inviteToken) {
-        getDoc(doc(db, "sessions", inviteToken)).then(snap => {
-          if (!snap.exists()) {
+        getDoc(invitationDocRef(inviteToken)).then(snap => {
+          if (!snap.exists() || !snap.data().activeSession) {
             clearSession();
             setIsTokenVerified(false);
             setTokenLoginUsername("");
@@ -106,8 +106,8 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
 
     setIsTokenVerifying(true);
     try {
-      const sessionSnap = await getDoc(doc(db, "sessions", inviteToken));
-      if (sessionSnap.exists()) {
+      const inviteSnapActive = await getDoc(invitationDocRef(inviteToken));
+      if (inviteSnapActive.exists() && inviteSnapActive.data().activeSession) {
         setIsTokenVerifying(false);
         if (!window.confirm("Ya hay una sesión activa para esta invitación. ¿Quieres iniciar sesión de todos modos? La sesión anterior se cerrará.")) {
           return;
@@ -116,7 +116,6 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
       }
 
       const tokenDocRef = doc(db, "setupTokens", enteredToken);
-      const sessionRef = doc(db, "sessions", inviteToken);
       const inviteRef = invitationDocRef(inviteToken);
       let tokenUsername = "";
 
@@ -129,10 +128,10 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
 
         const inviteSnap = await transaction.get(inviteRef);
         if (!inviteSnap.exists()) {
-          transaction.set(inviteRef, defaultConfig);
+          transaction.set(inviteRef, { ...defaultConfig, activeSession: serverTimestamp() });
+        } else {
+          transaction.update(inviteRef, { activeSession: serverTimestamp() });
         }
-
-        transaction.set(sessionRef, { createdAt: serverTimestamp() });
       });
 
       const displayName = tokenUsername || inviteToken;
@@ -171,8 +170,8 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
 
     setIsTokenVerifying(true);
     try {
-      const sessionSnap = await getDoc(doc(db, "sessions", inviteToken));
-      if (sessionSnap.exists()) {
+      const inviteSnapActive = await getDoc(invitationDocRef(inviteToken));
+      if (inviteSnapActive.exists() && inviteSnapActive.data().activeSession) {
         setIsTokenVerifying(false);
         if (!window.confirm("Ya hay una sesión activa para esta invitación. ¿Quieres iniciar sesión de todos modos? La sesión anterior se cerrará.")) {
           return;
@@ -181,6 +180,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
       }
 
       const tokenDocRef = doc(db, "setupTokens", enteredToken);
+      const inviteRef = invitationDocRef(inviteToken);
       await runTransaction(db, async (transaction) => {
         const tokenDoc = await transaction.get(tokenDocRef);
         if (!tokenDoc.exists) {
@@ -191,12 +191,12 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
           throw new Error("El código no corresponde a este usuario.");
         }
 
-        const inviteSnap = await transaction.get(invitationDocRef(inviteToken));
+        const inviteSnap = await transaction.get(inviteRef);
         if (!inviteSnap.exists()) {
-          transaction.set(invitationDocRef(inviteToken), defaultConfig);
+          transaction.set(inviteRef, { ...defaultConfig, activeSession: serverTimestamp() });
+        } else {
+          transaction.update(inviteRef, { activeSession: serverTimestamp() });
         }
-
-        transaction.set(doc(db, "sessions", inviteToken), { createdAt: serverTimestamp() });
       });
 
       setTokenLoginUsername(username);
@@ -281,7 +281,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
     if (token) {
       try {
         safeRemoveItem(`wedin_invite_cache_${token}`);
-        await deleteDoc(doc(db, "sessions", token));
+        await updateDoc(invitationDocRef(token), { activeSession: null });
       } catch {}
     }
     navigate("/");

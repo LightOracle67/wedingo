@@ -7,7 +7,8 @@ service cloud.firestore {
     }
 
     function hasActiveSession(tokenId) {
-      return exists(/databases/$(database)/documents/sessions/$(tokenId));
+      return exists(/databases/$(database)/documents/invitations/$(tokenId))
+        && get(/databases/$(database)/documents/invitations/$(tokenId)).data.activeSession is timestamp;
     }
 
     function isAdminOf(tokenId) {
@@ -41,6 +42,10 @@ service cloud.firestore {
           || !exists(/databases/$(database)/documents/invitations/$(tokenId)));
       allow update: if isValidInvitationWrite(request.resource.data)
         && (request.auth != null || hasActiveSession(tokenId));
+      allow update: if request.auth == null
+        && (request.resource.data.keys().hasOnly(['activeSession'])
+          || (request.resource.data.keys().hasOnly(['activeSession', 'firstName', 'secondName', 'weddingDay', 'weddingMonth', 'weddingYear', 'weddingHour', 'weddingMinute', 'theme'])))
+        && request.resource.data.activeSession is timestamp;
       allow delete: if isSuperAdmin();
     }
 
@@ -89,13 +94,6 @@ service cloud.firestore {
       allow delete: if isSuperAdmin()
         || (resource.data.inviteToken is string
           && hasActiveSession(resource.data.inviteToken));
-    }
-
-    match /sessions/{sessionId} {
-      allow read: if true;
-      allow create: if request.resource.data.createdAt is timestamp
-        && request.auth == null;
-      allow delete: if isSuperAdmin() || hasActiveSession(sessionId);
     }
   }
 }
