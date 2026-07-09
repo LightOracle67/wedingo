@@ -4155,7 +4155,7 @@ a:focus-visible {
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: color-mix(in srgb, var(--invite-shell-bg) 74%, transparent);
+  background: color-mix(in srgb, var(--invite-shell-bg) 90%, transparent);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
   border: 1px solid color-mix(in srgb, var(--invite-shell-border) 72%, transparent);
@@ -4190,7 +4190,7 @@ a:focus-visible {
   align-items: center;
   gap: 0;
   width: 250px;
-  background: color-mix(in srgb, var(--invite-shell-bg) 74%, transparent);
+  background: color-mix(in srgb, var(--invite-shell-bg) 94%, transparent);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
   border: 1px solid color-mix(in srgb, var(--invite-core-border) 70%, transparent);
