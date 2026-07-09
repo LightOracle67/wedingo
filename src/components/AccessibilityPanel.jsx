@@ -22,6 +22,8 @@ function applyPrefs(prefs) {
   root.classList.toggle("a11y-more-spacing", !!prefs.moreSpacing);
   root.classList.toggle("a11y-underline-links", !!prefs.underlineLinks);
   root.classList.toggle("a11y-big-cursor", !!prefs.bigCursor);
+  root.classList.toggle("a11y-desaturate", !!prefs.desaturate);
+  root.classList.toggle("a11y-strong-focus", !!prefs.strongFocus);
   if (prefs.fontSize && prefs.fontSize !== "1") {
     root.style.setProperty("--a11y-font-scale", prefs.fontSize);
     root.classList.add("a11y-font-scale");
@@ -29,7 +31,13 @@ function applyPrefs(prefs) {
     root.style.removeProperty("--a11y-font-scale");
     root.classList.remove("a11y-font-scale");
   }
-  root.style.setProperty("--a11y-line-spacing", `${prefs.lineSpacing || "0"}rem`);
+  if (prefs.lineSpacing && prefs.lineSpacing !== "0") {
+    root.style.setProperty("--a11y-line-spacing", `${prefs.lineSpacing}rem`);
+    root.classList.add("a11y-line-spacing");
+  } else {
+    root.style.removeProperty("--a11y-line-spacing");
+    root.classList.remove("a11y-line-spacing");
+  }
 }
 
 export default function AccessibilityPanel({ open, onClose }) {
@@ -173,6 +181,24 @@ export default function AccessibilityPanel({ open, onClose }) {
             <input type="checkbox" checked={!!prefs.bigCursor} onChange={() => toggle("bigCursor")} />
             <span className="a11y-toggle__track" />
             <span>Cursor grande</span>
+          </label>
+        </div>
+
+        {/* Desaturar */}
+        <div className="a11y-section">
+          <label className="a11y-toggle">
+            <input type="checkbox" checked={!!prefs.desaturate} onChange={() => toggle("desaturate")} />
+            <span className="a11y-toggle__track" />
+            <span>Escala de grises</span>
+          </label>
+        </div>
+
+        {/* Foco mejorado */}
+        <div className="a11y-section">
+          <label className="a11y-toggle">
+            <input type="checkbox" checked={!!prefs.strongFocus} onChange={() => toggle("strongFocus")} />
+            <span className="a11y-toggle__track" />
+            <span>Indicadores de foco visibles</span>
           </label>
         </div>
       </div>
