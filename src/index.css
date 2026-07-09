@@ -4155,7 +4155,7 @@ a:focus-visible {
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: linear-gradient(150deg, var(--setup-grad-start), var(--setup-grad-end));
+  background: color-mix(in srgb, var(--invite-shell-bg) 88%, transparent);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid var(--invite-shell-border);
@@ -4194,8 +4194,9 @@ a:focus-visible {
   align-items: center;
   gap: 0;
   width: 250px;
-  background: linear-gradient(150deg, var(--setup-grad-start), var(--setup-grad-end));
-  backdrop-filter: blur(8px);
+  background: color-mix(in srgb, var(--invite-shell-bg) 92%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid var(--invite-core-border);
   border-radius: 1.4rem;
@@ -4226,12 +4227,8 @@ a:focus-visible {
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  background: color-mix(in srgb, var(--invite-core-glow) 40%, transparent);
+  background: color-mix(in srgb, var(--invite-shell-bg) 70%, transparent);
   color: var(--invite-title-color, #dcc8a8);
-}
-
-.music-player__artwork-inner--spin {
-  animation: music-spin 4s linear infinite;
 }
 
 @keyframes music-spin {

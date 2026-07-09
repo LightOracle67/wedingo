@@ -104,7 +104,7 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }) {
         {open ? (
           <>
             <div className="music-player__artwork">
-              <span className={`music-player__artwork-inner${playing ? " music-player__artwork-inner--spin" : ""}`}>
+              <span className="music-player__artwork-inner">
                 <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
                   <path d="M9 18V6l11-2v12" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
                   <circle cx="7" cy="18" r="2.5" fill="currentColor"/>
