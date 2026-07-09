@@ -4172,7 +4172,15 @@ a:focus-visible {
   backdrop-filter: blur(8px);
 }
 
-.music-player__btn {
+.music-player__name {
+  font-size: 0.72rem;
+  color: var(--setup-subtitle, #ccc);
+  max-width: 10rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.2;
+}
   all: unset;
   cursor: pointer;
   width: 1.8rem;
