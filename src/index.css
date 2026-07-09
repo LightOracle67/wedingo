@@ -4589,9 +4589,9 @@ html.a11y-high-contrast .music-player__card,
 html.a11y-high-contrast .music-player__fab,
 html.a11y-high-contrast .lang-popup__card,
 html.a11y-high-contrast .app-footer {
-  background: #111 !important;
-  border-color: #fff !important;
-  box-shadow: 0 0 0 2px #fff !important;
+  border: 2px solid #fff !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
 }
 
 html.a11y-high-contrast h1,
@@ -4602,15 +4602,12 @@ html.a11y-high-contrast p,
 html.a11y-high-contrast span,
 html.a11y-high-contrast li,
 html.a11y-high-contrast label,
-html.a11y-high-contrast legend,
-html.a11y-high-contrast button:not(.music-player__play) {
-  color: #fff !important;
+html.a11y-high-contrast legend {
   text-shadow: none !important;
 }
 
 html.a11y-high-contrast a,
 html.a11y-high-contrast .app-footer__link {
-  color: #ff0 !important;
   text-decoration: underline !important;
   text-underline-offset: 3px;
 }
@@ -4619,13 +4616,6 @@ html.a11y-high-contrast input,
 html.a11y-high-contrast textarea,
 html.a11y-high-contrast select {
   border: 2px solid #fff !important;
-  background: #111 !important;
-  color: #fff !important;
-}
-
-html.a11y-high-contrast input::placeholder,
-html.a11y-high-contrast textarea::placeholder {
-  color: #bbb !important;
 }
 
 /* Reduced motion */
