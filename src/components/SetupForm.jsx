@@ -285,28 +285,34 @@ export default function SetupForm({ prefix = "" }) {
                   searchLocations(val).then(results => {
                     const el = document.getElementById("weddingPlaceResults");
                     if (el) {
-                      el.innerHTML = results.map(r =>
-                        `<button type="button" style="display:block;width:100%;text-align:left;padding:0.5rem 0.6rem;border:none;border-bottom:1px solid color-mix(in srgb,var(--setup-border) 50%,transparent);background:transparent;color:var(--setup-title);cursor:pointer;font-size:0.85rem;font-family:inherit" data-lat="${r.latitude}" data-lon="${r.longitude}" data-label="${r.label.replace(/"/g,'&quot;')}">${r.label}</button>`
-                      ).join("");
-                      el.querySelectorAll("button").forEach(btn => {
+                      el.textContent = "";
+                      results.forEach(r => {
+                        const btn = document.createElement("button");
+                        btn.type = "button";
+                        btn.style.cssText = "display:block;width:100%;text-align:left;padding:0.5rem 0.6rem;border:none;border-bottom:1px solid color-mix(in srgb,var(--setup-border) 50%,transparent);background:transparent;color:var(--setup-title);cursor:pointer;font-size:0.85rem;font-family:inherit";
+                        btn.dataset.lat = r.latitude;
+                        btn.dataset.lon = r.longitude;
+                        btn.dataset.label = r.label;
+                        btn.textContent = r.label;
                         btn.onclick = () => {
-                          updateFormField("weddingPlace", btn.dataset.label.slice(0, 120));
-                          updateFormField("weddingLatitude", btn.dataset.lat);
-                          updateFormField("weddingLongitude", btn.dataset.lon);
-                          el.innerHTML = "";
+                          updateFormField("weddingPlace", r.label.slice(0, 120));
+                          updateFormField("weddingLatitude", r.latitude);
+                          updateFormField("weddingLongitude", r.longitude);
+                          el.textContent = "";
                         };
+                        el.appendChild(btn);
                       });
                     }
                   });
                 });
               } else {
                 const el = document.getElementById("weddingPlaceResults");
-                if (el) el.innerHTML = "";
+                if (el) el.textContent = "";
               }
             }}
             onBlur={() => setTimeout(() => {
               const el = document.getElementById("weddingPlaceResults");
-              if (el) el.innerHTML = "";
+              if (el) el.textContent = "";
             }, 200)}
             placeholder={t("setup.placePlaceholder")}
             autoComplete="off"
