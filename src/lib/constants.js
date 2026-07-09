@@ -1,6 +1,6 @@
 import { WEDDING_MESSAGES } from "./invite-messages";
 
-export const APP_VERSION = "2.0.1";
+export const APP_VERSION = "2.1.0";
 
 export const ALLOWED_UPLOAD_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
 export const MAX_UPLOAD_SIZE_BYTES = 20 * 1024 * 1024;
