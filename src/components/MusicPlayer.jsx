@@ -105,7 +105,11 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }) {
           <>
             <div className="music-player__artwork">
               <span className={`music-player__artwork-inner${playing ? " music-player__artwork-inner--spin" : ""}`}>
-                <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><g fill="currentColor"><circle cx="11" cy="19" r="1.2"/><path d="M13 19C13 14 15.5 9 15.5 6.5C15.5 3.5 14 2 11.7 2C9 2 8 3.8 8 6.2C8 8 9 10 11 12.5L10 12C10 14.5 11 17 11 19H13Z"/></g></svg>
+                <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+                  <path d="M9 18V6l11-2v12" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                  <circle cx="7" cy="18" r="2.5" fill="currentColor"/>
+                  <circle cx="18" cy="16" r="2.5" fill="currentColor"/>
+                </svg>
               </span>
             </div>
             <span className="music-player__track">{name}</span>
@@ -130,9 +134,13 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }) {
 
       <button type="button" className="music-player__fab" onClick={handleToggle} aria-label="Música">
         {open ? (
-          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 6L18 18M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>
+          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M6 6L18 18M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>
         ) : (
-          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><g fill="currentColor"><circle cx="11" cy="19" r="1.2"/><path d="M13 19C13 14 15.5 9 15.5 6.5C15.5 3.5 14 2 11.7 2C9 2 8 3.8 8 6.2C8 8 9 10 11 12.5L10 12C10 14.5 11 17 11 19H13Z"/></g></svg>
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+            <path d="M9 18V6l11-2v12" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+            <circle cx="7" cy="18" r="2" fill="currentColor"/>
+            <circle cx="18" cy="16" r="2" fill="currentColor"/>
+          </svg>
         )}
         {!hasMusic ? <span className="music-player__fab-dot" /> : null}
       </button>
