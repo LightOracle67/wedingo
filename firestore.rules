@@ -94,9 +94,7 @@ service cloud.firestore {
     match /sessions/{sessionId} {
       allow read: if isSuperAdmin();
       allow create: if request.resource.data.createdAt is timestamp
-        && request.auth == null
-        && exists(/databases/$(database)/documents/setupTokens/$(request.resource.data.token))
-        && get(/databases/$(database)/documents/setupTokens/$(request.resource.data.token)).data.inviteToken == sessionId;
+        && request.auth == null;
       allow delete: if isSuperAdmin() || hasActiveSession(sessionId);
     }
   }
