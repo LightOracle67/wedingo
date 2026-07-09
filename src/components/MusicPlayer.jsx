@@ -12,12 +12,21 @@ function songName(url) {
   }
 }
 
+function formatTime(sec) {
+  if (!isFinite(sec) || sec < 0) return "0:00";
+  const m = Math.floor(sec / 60);
+  const s = Math.floor(sec % 60);
+  return `${m}:${String(s).padStart(2, "0")}`;
+}
+
 const MusicPlayer = memo(function MusicPlayer({ musicUrl }) {
   const [playing, setPlaying] = useState(false);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [volume, setVolume] = useState(0.5);
   const [open, setOpen] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
   const audioRef = useRef(null);
   const name = useMemo(() => songName(musicUrl) || "Sin música", [musicUrl]);
   const hasMusic = Boolean(musicUrl);
@@ -26,15 +35,21 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }) {
     const el = audioRef.current;
     if (!el || !musicUrl) return;
     const onError = () => { setLoading(false); setError(true); setPlaying(false); };
-    const onCanPlay = () => { setLoading(false); setError(false); };
+    const onCanPlay = () => { setLoading(false); setError(false); setDuration(el.duration || 0); };
     const onEnded = () => setPlaying(false);
+    const onTime = () => setCurrentTime(el.currentTime);
+    const onLoaded = () => setDuration(el.duration || 0);
     el.addEventListener("error", onError);
     el.addEventListener("canplay", onCanPlay);
     el.addEventListener("ended", onEnded);
+    el.addEventListener("timeupdate", onTime);
+    el.addEventListener("loadedmetadata", onLoaded);
     return () => {
       el.removeEventListener("error", onError);
       el.removeEventListener("canplay", onCanPlay);
       el.removeEventListener("ended", onEnded);
+      el.removeEventListener("timeupdate", onTime);
+      el.removeEventListener("loadedmetadata", onLoaded);
     };
   }, [musicUrl]);
 
@@ -42,6 +57,12 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }) {
     const v = Number(e.target.value);
     setVolume(v);
     if (audioRef.current) audioRef.current.volume = v;
+  }, []);
+
+  const handleSeek = useCallback((e) => {
+    const t = Number(e.target.value);
+    setCurrentTime(t);
+    if (audioRef.current) audioRef.current.currentTime = t;
   }, []);
 
   const toggleMusic = useCallback(() => {
@@ -57,48 +78,111 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }) {
     }
   }, [playing, musicUrl]);
 
+  useEffect(() => {
+    if (!open) return;
+    const handleClick = (e) => {
+      if (!e.target.closest(".music-player")) setOpen(false);
+    };
+    const handleKey = (e) => { if (e.key === "Escape") setOpen(false); };
+    document.addEventListener("mousedown", handleClick);
+    window.addEventListener("keydown", handleKey);
+    return () => {
+      document.removeEventListener("mousedown", handleClick);
+      window.removeEventListener("keydown", handleKey);
+    };
+  }, [open]);
+
   return (
-    <div className="music-player">
-      {musicUrl ? <audio ref={audioRef} src={musicUrl} loop preload="auto" /> : null}
-      <div className={`music-player__controls${open ? " music-player__controls--open" : ""}`}>
-        {open ? (
-          <>
-            <span className="music-player__name">{name}</span>
-            {error ? (
-              <span className="music-player__error-inline">✕</span>
-            ) : (
-              <button type="button" className="music-player__btn" onClick={toggleMusic} disabled={loading || !hasMusic} aria-label={playing ? "Pausar" : "Reproducir"}>
-                {loading ? (
-                  <span className="music-player__spinner" />
-                ) : !hasMusic ? "▶" : playing ? "⏸" : "▶"}
-              </button>
-            )}
-            {playing ? (
-              <span className="music-player__bars">
-                {[3, 5, 4, 6, 3].map((h, i) => (
-                  <span key={i} className="music-player__bar" style={{ height: h, animationDelay: `${i * 100}ms` }} />
-                ))}
-              </span>
-            ) : null}
-            <input type="range" min="0" max="1" step="0.05" value={volume} onChange={handleVolume} className="music-player__volume" aria-label="Volumen" disabled={!hasMusic} />
-          </>
-        ) : null}
-      </div>
+    <div className={`music-player${open ? " music-player--open" : ""}`}>
       <button
         type="button"
-        className={`music-player__trigger${open ? " music-player__trigger--active" : ""}`}
+        className="music-player__fab"
         onClick={() => setOpen((v) => !v)}
         aria-label="Música"
         title={name}
       >
-        <svg viewBox="0 0 24 24" className="music-player__vinyl" aria-hidden="true">
-          <circle cx="12" cy="12" r="11" fill="#111" stroke="currentColor" strokeWidth="1.5" />
-          <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" strokeWidth="0.5" opacity="0.4" />
-          <circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" strokeWidth="0.5" opacity="0.3" />
-          <circle cx="12" cy="12" r="2" fill="currentColor" opacity="0.6" />
-        </svg>
-        {!hasMusic ? <span className="music-player__no-music" aria-hidden="true" /> : null}
+        <span className={`music-player__fab-icon${playing ? " music-player__fab-icon--spin" : ""}`}>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="10.5" fill="none" stroke="currentColor" strokeWidth="1.8" />
+            <circle cx="12" cy="12" r="7" fill="none" stroke="currentColor" strokeWidth="0.6" opacity="0.5" />
+            <circle cx="12" cy="12" r="3.5" fill="none" stroke="currentColor" strokeWidth="0.5" opacity="0.35" />
+            <circle cx="12" cy="12" r="1.5" fill="currentColor" />
+          </svg>
+        </span>
+        {!hasMusic ? <span className="music-player__fab-dot" /> : null}
       </button>
+
+      {open ? (
+        <div className="music-player__card">
+          <div className="music-player__artwork">
+            <span className={`music-player__artwork-inner${playing ? " music-player__artwork-inner--spin" : ""}`}>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="10.5" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                <circle cx="12" cy="12" r="7" fill="none" stroke="currentColor" strokeWidth="0.5" opacity="0.5" />
+                <circle cx="12" cy="12" r="3.5" fill="none" stroke="currentColor" strokeWidth="0.5" opacity="0.35" />
+                <circle cx="12" cy="12" r="1.5" fill="currentColor" />
+              </svg>
+            </span>
+          </div>
+
+          <div className="music-player__info">
+            <span className="music-player__track">{name}</span>
+            {error ? <span className="music-player__status">Error al cargar</span> : null}
+          </div>
+
+          <div className="music-player__scrubber">
+            <span className="music-player__time">{formatTime(currentTime)}</span>
+            <input
+              type="range"
+              min="0"
+              max={duration || 1}
+              step="0.1"
+              value={currentTime}
+              onChange={handleSeek}
+              className="music-player__seek"
+              disabled={!hasMusic}
+              aria-label="Progreso"
+            />
+            <span className="music-player__time">{formatTime(duration)}</span>
+          </div>
+
+          <div className="music-player__actions">
+            <button
+              type="button"
+              className="music-player__play"
+              onClick={toggleMusic}
+              disabled={loading || !hasMusic}
+              aria-label={playing ? "Pausar" : "Reproducir"}
+            >
+              {loading ? (
+                <span className="music-player__spinner" />
+              ) : playing ? (
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><rect x="5" y="4" width="5" height="16" rx="1" /><rect x="14" y="4" width="5" height="16" rx="1" /></svg>
+              ) : (
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><polygon points="7,4 20,12 7,20" /></svg>
+              )}
+            </button>
+          </div>
+
+          <div className="music-player__volume-row">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" opacity="0.5">
+              <polygon points="3,9 7,9 12,4 12,20 7,15 3,15" />
+              {volume > 0 ? <><path d="M15,9a4.5,4.5 0 0 1 0,6" /><path d="M18,6a9,9 0 0 1 0,12" /></> : null}
+            </svg>
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.05"
+              value={volume}
+              onChange={handleVolume}
+              className="music-player__volume"
+              disabled={!hasMusic}
+              aria-label="Volumen"
+            />
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 });
