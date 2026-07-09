@@ -134,7 +134,7 @@
     "allergiesLegend": "Alergias e intolerancias",
     "allergiesPlaceholder": "Otra alergia (especificar)",
     "allergiesHint": "Indica solo alergias e intolerancias alimentarias. No introduzcas información médica no solicitada.",
-    "privacyConsent": "He sido informado y acepto la {{link}}",
+    "privacyConsent": "He sido informado y acepto la <link>Política de Privacidad</link>",
     "privacyLink": "Política de Privacidad",
     "healthConsent": "Consiento el tratamiento de mis datos de salud (alergias e intolerancias) para adaptar el menú de la celebración",
     "ageConsent": "Declaro ser mayor de 14 años o, si soy menor, tener el consentimiento de mis padres o tutores",

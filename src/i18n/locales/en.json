@@ -134,7 +134,7 @@
     "allergiesLegend": "Allergies & intolerances",
     "allergiesPlaceholder": "Other allergy (specify)",
     "allergiesHint": "Only indicate food allergies and intolerances. Do not enter unsolicited medical information.",
-    "privacyConsent": "I have been informed and I accept the {{link}}",
+    "privacyConsent": "I have been informed and I accept the <link>Privacy Policy</link>",
     "privacyLink": "Privacy Policy",
     "healthConsent": "I consent to the processing of my health data (allergies and intolerances) to adapt the wedding menu",
     "ageConsent": "I declare that I am over 14 years of age, or if I am a minor, that I have the consent of my parents or guardians",
