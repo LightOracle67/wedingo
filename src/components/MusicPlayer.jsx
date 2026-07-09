@@ -107,9 +107,10 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }) {
         aria-label="Música"
       >
         <span className={`music-player__fab-icon${playing ? " music-player__fab-icon--spin" : ""}`}>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 3C12 3 11 8 11 12C11 16 12 21 12 21" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-            <circle cx="12" cy="12" r="10.5" fill="none" stroke="currentColor" strokeWidth="1.6" opacity="0.25" />
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 2 C12 2 9 6 9 12 C9 12 9 19 12 22" />
+            <path d="M12 2 C12 2 15 6 15 12 C15 12 15 19 12 22" />
+            <circle cx="12" cy="12" r="10" opacity="0.2" />
           </svg>
         </span>
         {!hasMusic ? <span className="music-player__fab-dot" /> : null}
