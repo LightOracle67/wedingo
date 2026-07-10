@@ -79,7 +79,7 @@ const DashboardTab = memo(function DashboardTab() {
   if (!stats) return <p className="setup-error">{t("superadmin.dashboardError")}</p>;
 
   return (
-    <div>
+    <div style={{ display: "flex", flexDirection: "column", height: "100%", minHeight: 0 }}>
       {expired.length > 0 ? (
         <div className="setup-token-card" style={{ marginBottom: "1rem", padding: "0.7rem 1rem", borderColor: "#e06060" }}>
           <p style={{ margin: 0, color: "var(--setup-title)", fontSize: "0.9rem" }}>

@@ -57,7 +57,7 @@ const InvitationsTab = memo(function InvitationsTab() {
   if (loading) return <p className="setup-subtitle" style={{ textAlign: "center" }}>{t("common.loading")}</p>;
 
   return (
-    <div>
+    <div style={{ display: "flex", flexDirection: "column", height: "100%", minHeight: 0 }}>
       {error && <p className="setup-error">{error}</p>}
 
       <div className="admin-filters" style={{ marginBottom: "1rem" }}>

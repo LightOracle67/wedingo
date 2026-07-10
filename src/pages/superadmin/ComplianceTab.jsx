@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 const ComplianceTab = memo(function ComplianceTab() {
   const { t } = useTranslation();
   return (
-    <div className="support-section">
+    <div style={{ display: "flex", flexDirection: "column", height: "100%", minHeight: 0 }}>
       <h3>{t("compliance.title")}</h3>
       <p style={{ fontSize: "0.8rem", color: "var(--setup-subtitle)", marginBottom: "1rem" }}>
         {t("compliance.updated")}

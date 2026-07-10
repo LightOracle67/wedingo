@@ -15,7 +15,7 @@ const SettingsTab = memo(function SettingsTab() {
   }, []);
 
   return (
-    <div>
+    <div style={{ display: "flex", flexDirection: "column", height: "100%", minHeight: 0 }}>
       <div className="setup-token-card" style={{ marginBottom: "1rem" }}>
         <p style={{ margin: 0, color: "var(--setup-title)", fontSize: "0.95rem" }}>
           {t("superadmin.accountEmail", { email: SUPERADMIN_EMAIL })}
