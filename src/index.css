@@ -4965,3 +4965,87 @@ html.a11y-font-scale select {
 .lang-popup__name {
   font-size: 0.85rem;
 }
+
+/* ═══════════════════════════════════════════════════════
+   GALERÍA — FADE Y NAVEGACIÓN
+   ═══════════════════════════════════════════════════════ */
+
+/** Contenedor de la imagen con posición relativa para capas de fade. */
+.gallery-fade {
+  transition: opacity 350ms ease;
+}
+
+/** Imagen saliente: se desvanece a transparente. */
+.gallery-fade--out {
+  opacity: 0;
+  z-index: 1;
+}
+
+/** Imagen entrante: aparece desde transparente con ligero zoom. */
+.gallery-fade--in {
+  animation: gallery-fade-in 350ms ease both;
+}
+
+@keyframes gallery-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/** Botones de navegación circular (anterior / siguiente). */
+.gallery-nav {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 999px;
+  border: none;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  line-height: 1;
+  transition: background 200ms, opacity 200ms;
+}
+
+.gallery-nav:hover {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.gallery-nav:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.gallery-nav--prev {
+  left: 0.5rem;
+}
+
+.gallery-nav--next {
+  right: 0.5rem;
+}
+
+/** Miniaturas inferiores. */
+.gallery-thumb {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.4rem;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 200ms, border-color 200ms;
+  background: color-mix(in srgb, var(--setup-field-bg) 50%, transparent);
+}
+
+.gallery-thumb:hover {
+  opacity: 0.85 !important;
+}
