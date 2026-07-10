@@ -88,7 +88,7 @@ export default function SuperAdminLogin() {
 
           <div className="setup-actions">
             <button className="setup-button" type="submit" disabled={submitting}>
-              {submitting ? t("common.loading") : "Entrar"}
+              {submitting ? t("common.loading") : t("superadmin.login")}
             </button>
           </div>
         </form>

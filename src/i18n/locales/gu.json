@@ -574,7 +574,8 @@
       "partialDelete": "Solo se eliminaron {{deleted}} de {{total}}. Revisa los permisos.",
       "deleteFailed": "Error al eliminar. Verifica la consola.",
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
-    }
+    },
+    "login": "Entrar"
   },
   "compliance": {
     "title": "પ્રક્રિયા પ્રવૃત્તિઓનો રેકોર્ડ (GDPR કલમ 30)",
