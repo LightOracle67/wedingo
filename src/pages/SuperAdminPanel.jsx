@@ -8,11 +8,13 @@ import InvitationsTab from "./superadmin/InvitationsTab";
 import TokensTab from "./superadmin/TokensTab";
 import SettingsTab from "./superadmin/SettingsTab";
 import ComplianceTab from "./superadmin/ComplianceTab";
+import DataTab from "./superadmin/DataTab";
 
 const TAB_KEY_MAP = {
   dashboard: "dashboard",
   invitaciones: "invitations",
   tokens: "tokens",
+  datos: "data",
   ajustes: "session",
   cumplimiento: "compliance",
 };
@@ -21,6 +23,7 @@ const TABS = [
   { key: "dashboard" },
   { key: "invitaciones" },
   { key: "tokens" },
+  { key: "datos" },
   { key: "ajustes" },
   { key: "cumplimiento" },
 ];
@@ -78,6 +81,7 @@ export default function SuperAdminPanel() {
           {activeTab === "dashboard" && <DashboardTab />}
           {activeTab === "invitaciones" && <InvitationsTab />}
           {activeTab === "tokens" && <TokensTab />}
+          {activeTab === "datos" && <DataTab />}
           {activeTab === "ajustes" && <SettingsTab />}
           {activeTab === "cumplimiento" && <ComplianceTab />}
         </div>
