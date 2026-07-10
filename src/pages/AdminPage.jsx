@@ -210,7 +210,7 @@ export default function AdminPage() {
 
   return (
     <div className="setup-layout setup-layout--flush setup-layout--full">
-      <section className="setup-card setup-card--wide setup-card--full allow-select" aria-label={t("admin.privateArea")}>
+      <section className="setup-card setup-card--wide setup-card--full allow-select" aria-label={t("admin.privateArea")} style={{ margin: "2em", borderRadius: "1rem" }}>
         {/* ── Cabecera del panel ── */}
         <header className="setup-header">
           <div>
