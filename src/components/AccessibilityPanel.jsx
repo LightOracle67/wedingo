@@ -33,7 +33,7 @@ function applyPrefs(prefs) {
     root.classList.remove("a11y-font-scale");
   }
   if (prefs.lineSpacing && prefs.lineSpacing !== "0") {
-    root.style.setProperty("--a11y-line-spacing", `${prefs.lineSpacing}rem`);
+    root.style.setProperty("--a11y-line-spacing", prefs.lineSpacing);
     root.classList.add("a11y-line-spacing");
   } else {
     root.style.removeProperty("--a11y-line-spacing");
