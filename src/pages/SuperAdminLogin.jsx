@@ -67,7 +67,7 @@ export default function SuperAdminLogin() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="tu@email.com"
+            placeholder={t("superadmin.emailPlaceholder")}
             autoComplete="email"
             required
           />
@@ -81,7 +81,7 @@ export default function SuperAdminLogin() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Contraseña"
+            placeholder={t("superadmin.passwordPlaceholder")}
             autoComplete="current-password"
             required
           />

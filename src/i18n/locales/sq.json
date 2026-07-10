@@ -13,7 +13,13 @@
     "confirm": "Konfirmo",
     "yes": "Po",
     "no": "Jo",
-    "back": "Kthehu"
+    "back": "Kthehu",
+    "accessibility": "Accesibilidad",
+    "show": "Mostrar",
+    "hide": "Ocultar",
+    "section": "sección",
+    "visible": "Visible",
+    "hidden": "Oculta"
   },
   "landing": {
     "title": "Wedingo — Ftesa dasme",
@@ -273,7 +279,8 @@
     "photoUploadFailed": "Nuk u arrit të ngarkohej foto.",
     "galleryUploadSuccess": "{{count}} foto(t) u ngarkuan me sukses.",
     "galleryUploadFailed": "Nuk u arritën të ngarkoheshin fotot.",
-    "noValidFiles": "Asnjë skedar i vlefshëm. Maksimumi 20 MB, JPG/PNG."
+    "noValidFiles": "Asnjë skedar i vlefshëm. Maksimumi 20 MB, JPG/PNG.",
+    "hiddenSectionBadge": "oculta"
   },
   "admin": {
     "tabs": {
@@ -295,7 +302,8 @@
     "pdfTableName": "Emri",
     "pdfTableAttendance": "Pjesëmarrja",
     "pdfTableCompanions": "Shoqërues",
-    "pdfTableDiet": "Dieta"
+    "pdfTableDiet": "Dieta",
+    "sectionsLabel": "Secciones"
   },
   "panel": {
     "confirmed": "Të konfirmuar",
@@ -530,7 +538,9 @@
     "sessionExpires": "Skadon: {{date}}",
     "logoutButton": "Dil",
     "firebaseAccount": "Për të menaxhuar llogarinë tënde superadmin, përdor konsolën Firebase:",
-    "firebaseLink": "Shko te Firebase Auth"
+    "firebaseLink": "Shko te Firebase Auth",
+    "emailPlaceholder": "tu@email.com",
+    "passwordPlaceholder": "Contraseña"
   },
   "compliance": {
     "title": "Regjistri i aktiviteteve të trajtimit (GDPR Art. 30)",
@@ -582,5 +592,73 @@
     "measureStorage": "Ruajtje minimale lokale dhe vetëm me pëlqim",
     "measureRetention": "Politika e ruajtjes: 12 muaj pas ngjarjes për të dhënat e të ftuarve",
     "measureSuperadmin": "Superadmin i mbrojtur nga Firebase Authentication + shteg i fshehur"
+  },
+  "a11y": {
+    "title": "Accesibilidad",
+    "close": "Cerrar",
+    "fontSize": "Tamaño de texto",
+    "fontNormal": "Normal",
+    "fontLarge": "Grande",
+    "fontExtraLarge": "Extra grande",
+    "lineSpacing": "Espaciado entre líneas",
+    "lineNormal": "Normal",
+    "lineWide": "Amplio",
+    "lineVeryWide": "Muy amplio",
+    "highContrast": "Alto contraste",
+    "reducedMotion": "Reducir animaciones",
+    "dyslexiaFont": "Fuente OpenDyslexic",
+    "moreSpacing": "Mayor espaciado de letras",
+    "underlineLinks": "Subrayar todos los enlaces",
+    "bigCursor": "Cursor grande",
+    "desaturate": "Escala de grises",
+    "strongFocus": "Indicadores de foco visibles"
+  },
+  "music": {
+    "noMusic": "Sin música",
+    "loadError": "Error al cargar",
+    "label": "Música"
+  },
+  "print": {
+    "preparing": "Preparando impresión...",
+    "couplePhoto": "Foto de los novios",
+    "godparentsText": "Con la bendición de sus padrinos",
+    "dateAndPlace": "Fecha y lugar",
+    "celebrationTime": "Hora de la celebración: ",
+    "viewInGoogleMaps": "Ver ubicación en Google Maps",
+    "celebrationMessage": "Te esperamos para compartir este momento tan especial.",
+    "transport": "Transporte",
+    "aboutGuests": "Sobre los invitados",
+    "scheduleTitle": "Horario de la celebración",
+    "scheduleFallback": "El horario detallado se compartirá próximamente.",
+    "dressCode": "Código de vestimenta",
+    "dressCodeFallback": "Se comunicará más adelante.",
+    "aboutKids": "Sobre los niños",
+    "ourStory": "Nuestra historia",
+    "storyStarted": "Cómo empezó todo",
+    "storyFallback": "La historia se compartirá pronto.",
+    "gifts": "Regalos",
+    "bestGift": "Tu presencia es el mejor regalo",
+    "giftsFallback": "La información sobre regalos se compartirá próximamente.",
+    "bankDetails": "Datos bancarios",
+    "accommodation": "Alojamiento",
+    "whereToStay": "Dónde alojarse",
+    "accommodationFallback": "La información sobre alojamiento se compartirá próximamente.",
+    "footer": "Wedingo · Política de privacidad en wedingo-6c26a.web.app",
+    "closeWindow": "Cerrar ventana"
+  },
+  "sectionOrder": {
+    "moveUp": "Mover hacia arriba",
+    "moveDown": "Mover hacia abajo"
+  },
+  "chart": {
+    "noData": "Sin datos",
+    "confirmed": "confirmados",
+    "notAttending": "no asisten",
+    "noResponse": "sin responder",
+    "barChart": "Gráfico de barras",
+    "total": "total"
+  },
+  "langSwitcher": {
+    "label": "Seleccionar idioma"
   }
 }

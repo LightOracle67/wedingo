@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const STORAGE_KEY = "wedin_a11y";
 
@@ -41,6 +42,7 @@ function applyPrefs(prefs) {
 }
 
 export default function AccessibilityPanel({ open, onClose }) {
+  const { t } = useTranslation();
   const [prefs, setPrefs] = useState(loadPrefs);
   const modalRef = useRef(null);
 
@@ -83,19 +85,18 @@ export default function AccessibilityPanel({ open, onClose }) {
   if (!open) return null;
 
   return (
-    <div className="modal-overlay" onClick={onClose} role="dialog" aria-modal="true" aria-label="Accesibilidad">
+    <div className="modal-overlay" onClick={onClose} role="dialog" aria-modal="true" aria-label={t("a11y.title")}>
       <div className="modal-card" ref={modalRef} onClick={(e) => e.stopPropagation()} style={{ maxWidth: "400px", padding: "1.2rem 1rem 1rem" }}>
-        <button className="modal-close" onClick={onClose} aria-label="Cerrar">&times;</button>
-        <p className="modal-title">Accesibilidad</p>
+        <button className="modal-close" onClick={onClose} aria-label={t("a11y.close")}>&times;</button>
+        <p className="modal-title">{t("a11y.title")}</p>
 
-        {/* Tamaño de fuente */}
         <div className="a11y-section">
-          <p className="a11y-label">Tamaño de texto</p>
+          <p className="a11y-label">{t("a11y.fontSize")}</p>
           <div className="a11y-btn-row">
             {[
-              { val: "1", label: "Normal" },
-              { val: "1.15", label: "Grande" },
-              { val: "1.3", label: "Extra grande" },
+              { val: "1", key: "fontNormal" },
+              { val: "1.15", key: "fontLarge" },
+              { val: "1.3", key: "fontExtraLarge" },
             ].map((opt) => (
               <button
                 key={opt.val}
@@ -103,20 +104,19 @@ export default function AccessibilityPanel({ open, onClose }) {
                 className={`a11y-btn ${prefs.fontSize === opt.val || (!prefs.fontSize && opt.val === "1") ? "a11y-btn--active" : ""}`}
                 onClick={() => setFontSize(opt.val)}
               >
-                {opt.label}
+                {t(`a11y.${opt.key}`)}
               </button>
             ))}
           </div>
         </div>
 
-        {/* Espaciado de línea */}
         <div className="a11y-section">
-          <p className="a11y-label">Espaciado entre líneas</p>
+          <p className="a11y-label">{t("a11y.lineSpacing")}</p>
           <div className="a11y-btn-row">
             {[
-              { val: "0", label: "Normal" },
-              { val: "0.4", label: "Amplio" },
-              { val: "0.8", label: "Muy amplio" },
+              { val: "0", key: "lineNormal" },
+              { val: "0.4", key: "lineWide" },
+              { val: "0.8", key: "lineVeryWide" },
             ].map((opt) => (
               <button
                 key={opt.val}
@@ -124,81 +124,73 @@ export default function AccessibilityPanel({ open, onClose }) {
                 className={`a11y-btn ${(prefs.lineSpacing || "0") === opt.val ? "a11y-btn--active" : ""}`}
                 onClick={() => setLineSpacing(opt.val)}
               >
-                {opt.label}
+                {t(`a11y.${opt.key}`)}
               </button>
             ))}
           </div>
         </div>
 
-        {/* Alto contraste */}
         <div className="a11y-section">
           <label className="a11y-toggle">
             <input type="checkbox" checked={!!prefs.highContrast} onChange={() => toggle("highContrast")} />
             <span className="a11y-toggle__track" />
-            <span>Alto contraste</span>
+            <span>{t("a11y.highContrast")}</span>
           </label>
         </div>
 
-        {/* Reducir animaciones */}
         <div className="a11y-section">
           <label className="a11y-toggle">
             <input type="checkbox" checked={!!prefs.reducedMotion} onChange={() => toggle("reducedMotion")} />
             <span className="a11y-toggle__track" />
-            <span>Reducir animaciones</span>
+            <span>{t("a11y.reducedMotion")}</span>
           </label>
         </div>
 
-        {/* Fuente dislexia */}
         <div className="a11y-section">
           <label className="a11y-toggle">
             <input type="checkbox" checked={!!prefs.dyslexiaFont} onChange={() => toggle("dyslexiaFont")} />
             <span className="a11y-toggle__track" />
-            <span>Fuente OpenDyslexic</span>
+            <span>{t("a11y.dyslexiaFont")}</span>
           </label>
         </div>
 
-        {/* Espaciado mejorado */}
         <div className="a11y-section">
           <label className="a11y-toggle">
             <input type="checkbox" checked={!!prefs.moreSpacing} onChange={() => toggle("moreSpacing")} />
             <span className="a11y-toggle__track" />
-            <span>Mayor espaciado de letras</span>
+            <span>{t("a11y.moreSpacing")}</span>
           </label>
         </div>
 
-        {/* Subrayar enlaces */}
         <div className="a11y-section">
           <label className="a11y-toggle">
             <input type="checkbox" checked={!!prefs.underlineLinks} onChange={() => toggle("underlineLinks")} />
             <span className="a11y-toggle__track" />
-            <span>Subrayar todos los enlaces</span>
+            <span>{t("a11y.underlineLinks")}</span>
           </label>
         </div>
 
-        {/* Cursor grande */}
         <div className="a11y-section">
           <label className="a11y-toggle">
             <input type="checkbox" checked={!!prefs.bigCursor} onChange={() => toggle("bigCursor")} />
             <span className="a11y-toggle__track" />
-            <span>Cursor grande</span>
+            <span>{t("a11y.bigCursor")}</span>
           </label>
         </div>
 
-        {/* Desaturar */}
         <div className="a11y-section">
           <label className="a11y-toggle">
             <input type="checkbox" checked={!!prefs.desaturate} onChange={() => toggle("desaturate")} />
             <span className="a11y-toggle__track" />
-            <span>Escala de grises</span>
+            <span>{t("a11y.desaturate")}</span>
           </label>
         </div>
 
-        {/* Foco mejorado */}
         <div className="a11y-section">
           <label className="a11y-toggle">
             <input type="checkbox" checked={!!prefs.strongFocus} onChange={() => toggle("strongFocus")} />
             <span className="a11y-toggle__track" />
-            <span>Indicadores de foco visibles</span>
+            <span>{t("a11y.strongFocus")}</span>
           </label>
         </div>
       </div>

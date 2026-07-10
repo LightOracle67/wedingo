@@ -13,7 +13,13 @@
     "confirm": "Emeza",
     "yes": "Yego",
     "no": "Oya",
-    "back": "Subira inyuma"
+    "back": "Subira inyuma",
+    "accessibility": "Accesibilidad",
+    "show": "Mostrar",
+    "hide": "Ocultar",
+    "section": "sección",
+    "visible": "Visible",
+    "hidden": "Oculta"
   },
   "landing": {
     "title": "Wedingo — Ubutumire bw'ubukwe",
@@ -273,7 +279,8 @@
     "photoUploadFailed": "Ntibyashobotse gushyira ifoto.",
     "galleryUploadSuccess": "Ifoto/amafoto {{count}} yashyizweho neza.",
     "galleryUploadFailed": "Ntibyashobotse gushyira amafoto.",
-    "noValidFiles": "Nta dosiye yemewe. Ntarenga 20 MB, JPG/PNG."
+    "noValidFiles": "Nta dosiye yemewe. Ntarenga 20 MB, JPG/PNG.",
+    "hiddenSectionBadge": "oculta"
   },
   "admin": {
     "tabs": {
@@ -295,7 +302,8 @@
     "pdfTableName": "Izina",
     "pdfTableAttendance": "Ukuhaba",
     "pdfTableCompanions": "Abaherekeza",
-    "pdfTableDiet": "Indyo"
+    "pdfTableDiet": "Indyo",
+    "sectionsLabel": "Secciones"
   },
   "panel": {
     "confirmed": "Byemewe",
@@ -530,7 +538,9 @@
     "sessionExpires": "Irarangira: {{date}}",
     "logoutButton": "Sohoka",
     "firebaseAccount": "Kugira ngo umenyeshe konti yawe ya superadmin, koresha konsoli ya Firebase:",
-    "firebaseLink": "Jya kuri Firebase Auth"
+    "firebaseLink": "Jya kuri Firebase Auth",
+    "emailPlaceholder": "tu@email.com",
+    "passwordPlaceholder": "Contraseña"
   },
   "compliance": {
     "title": "Igitabo cy'ibikorwa byo gutunganya (Ingingo 30 GDPR)",
@@ -582,5 +592,73 @@
     "measureStorage": "Ububiko bw'ahantu buke kandi hamwe n'uburenganzira gusa",
     "measureRetention": "Politiki yo kubika: amezi 12 nyuma y'ibirori ku makuru y'abashyitsi",
     "measureSuperadmin": "Superadmin irinzwe na Firebase Authentication + inzira yihishe"
+  },
+  "a11y": {
+    "title": "Accesibilidad",
+    "close": "Cerrar",
+    "fontSize": "Tamaño de texto",
+    "fontNormal": "Normal",
+    "fontLarge": "Grande",
+    "fontExtraLarge": "Extra grande",
+    "lineSpacing": "Espaciado entre líneas",
+    "lineNormal": "Normal",
+    "lineWide": "Amplio",
+    "lineVeryWide": "Muy amplio",
+    "highContrast": "Alto contraste",
+    "reducedMotion": "Reducir animaciones",
+    "dyslexiaFont": "Fuente OpenDyslexic",
+    "moreSpacing": "Mayor espaciado de letras",
+    "underlineLinks": "Subrayar todos los enlaces",
+    "bigCursor": "Cursor grande",
+    "desaturate": "Escala de grises",
+    "strongFocus": "Indicadores de foco visibles"
+  },
+  "music": {
+    "noMusic": "Sin música",
+    "loadError": "Error al cargar",
+    "label": "Música"
+  },
+  "print": {
+    "preparing": "Preparando impresión...",
+    "couplePhoto": "Foto de los novios",
+    "godparentsText": "Con la bendición de sus padrinos",
+    "dateAndPlace": "Fecha y lugar",
+    "celebrationTime": "Hora de la celebración: ",
+    "viewInGoogleMaps": "Ver ubicación en Google Maps",
+    "celebrationMessage": "Te esperamos para compartir este momento tan especial.",
+    "transport": "Transporte",
+    "aboutGuests": "Sobre los invitados",
+    "scheduleTitle": "Horario de la celebración",
+    "scheduleFallback": "El horario detallado se compartirá próximamente.",
+    "dressCode": "Código de vestimenta",
+    "dressCodeFallback": "Se comunicará más adelante.",
+    "aboutKids": "Sobre los niños",
+    "ourStory": "Nuestra historia",
+    "storyStarted": "Cómo empezó todo",
+    "storyFallback": "La historia se compartirá pronto.",
+    "gifts": "Regalos",
+    "bestGift": "Tu presencia es el mejor regalo",
+    "giftsFallback": "La información sobre regalos se compartirá próximamente.",
+    "bankDetails": "Datos bancarios",
+    "accommodation": "Alojamiento",
+    "whereToStay": "Dónde alojarse",
+    "accommodationFallback": "La información sobre alojamiento se compartirá próximamente.",
+    "footer": "Wedingo · Política de privacidad en wedingo-6c26a.web.app",
+    "closeWindow": "Cerrar ventana"
+  },
+  "sectionOrder": {
+    "moveUp": "Mover hacia arriba",
+    "moveDown": "Mover hacia abajo"
+  },
+  "chart": {
+    "noData": "Sin datos",
+    "confirmed": "confirmados",
+    "notAttending": "no asisten",
+    "noResponse": "sin responder",
+    "barChart": "Gráfico de barras",
+    "total": "total"
+  },
+  "langSwitcher": {
+    "label": "Seleccionar idioma"
   }
 }

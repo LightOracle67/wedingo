@@ -13,7 +13,13 @@
     "confirm": "確認",
     "yes": "はい",
     "no": "いいえ",
-    "back": "戻る"
+    "back": "戻る",
+    "accessibility": "Accesibilidad",
+    "show": "Mostrar",
+    "hide": "Ocultar",
+    "section": "sección",
+    "visible": "Visible",
+    "hidden": "Oculta"
   },
   "landing": {
     "title": "Wedingo — 結婚式の招待状",
@@ -273,7 +279,8 @@
     "photoUploadFailed": "写真をアップロードできませんでした。",
     "galleryUploadSuccess": "{{count}}枚の写真が正常にアップロードされました。",
     "galleryUploadFailed": "写真をアップロードできませんでした。",
-    "noValidFiles": "有効なファイルがありません。最大20MB、JPG/PNG。"
+    "noValidFiles": "有効なファイルがありません。最大20MB、JPG/PNG。",
+    "hiddenSectionBadge": "oculta"
   },
   "admin": {
     "tabs": {
@@ -295,7 +302,8 @@
     "pdfTableName": "名前",
     "pdfTableAttendance": "出欠",
     "pdfTableCompanions": "同伴者",
-    "pdfTableDiet": "食事"
+    "pdfTableDiet": "食事",
+    "sectionsLabel": "Secciones"
   },
   "panel": {
     "confirmed": "出席",
@@ -530,7 +538,9 @@
     "sessionExpires": "有効期限：{{date}}",
     "logoutButton": "ログアウト",
     "firebaseAccount": "スーパー管理者アカウントを管理するには、Firebaseコンソールを使用してください：",
-    "firebaseLink": "Firebase Authへ"
+    "firebaseLink": "Firebase Authへ",
+    "emailPlaceholder": "tu@email.com",
+    "passwordPlaceholder": "Contraseña"
   },
   "compliance": {
     "title": "処理活動記録（GDPR第30条）",
@@ -582,5 +592,73 @@
     "measureStorage": "最小限のローカルストレージ、同意がある場合のみ",
     "measureRetention": "保持ポリシー：ゲストデータはイベント後12か月",
     "measureSuperadmin": "Firebase Authentication + 隠しルートで保護されたスーパー管理者"
+  },
+  "a11y": {
+    "title": "Accesibilidad",
+    "close": "Cerrar",
+    "fontSize": "Tamaño de texto",
+    "fontNormal": "Normal",
+    "fontLarge": "Grande",
+    "fontExtraLarge": "Extra grande",
+    "lineSpacing": "Espaciado entre líneas",
+    "lineNormal": "Normal",
+    "lineWide": "Amplio",
+    "lineVeryWide": "Muy amplio",
+    "highContrast": "Alto contraste",
+    "reducedMotion": "Reducir animaciones",
+    "dyslexiaFont": "Fuente OpenDyslexic",
+    "moreSpacing": "Mayor espaciado de letras",
+    "underlineLinks": "Subrayar todos los enlaces",
+    "bigCursor": "Cursor grande",
+    "desaturate": "Escala de grises",
+    "strongFocus": "Indicadores de foco visibles"
+  },
+  "music": {
+    "noMusic": "Sin música",
+    "loadError": "Error al cargar",
+    "label": "Música"
+  },
+  "print": {
+    "preparing": "Preparando impresión...",
+    "couplePhoto": "Foto de los novios",
+    "godparentsText": "Con la bendición de sus padrinos",
+    "dateAndPlace": "Fecha y lugar",
+    "celebrationTime": "Hora de la celebración: ",
+    "viewInGoogleMaps": "Ver ubicación en Google Maps",
+    "celebrationMessage": "Te esperamos para compartir este momento tan especial.",
+    "transport": "Transporte",
+    "aboutGuests": "Sobre los invitados",
+    "scheduleTitle": "Horario de la celebración",
+    "scheduleFallback": "El horario detallado se compartirá próximamente.",
+    "dressCode": "Código de vestimenta",
+    "dressCodeFallback": "Se comunicará más adelante.",
+    "aboutKids": "Sobre los niños",
+    "ourStory": "Nuestra historia",
+    "storyStarted": "Cómo empezó todo",
+    "storyFallback": "La historia se compartirá pronto.",
+    "gifts": "Regalos",
+    "bestGift": "Tu presencia es el mejor regalo",
+    "giftsFallback": "La información sobre regalos se compartirá próximamente.",
+    "bankDetails": "Datos bancarios",
+    "accommodation": "Alojamiento",
+    "whereToStay": "Dónde alojarse",
+    "accommodationFallback": "La información sobre alojamiento se compartirá próximamente.",
+    "footer": "Wedingo · Política de privacidad en wedingo-6c26a.web.app",
+    "closeWindow": "Cerrar ventana"
+  },
+  "sectionOrder": {
+    "moveUp": "Mover hacia arriba",
+    "moveDown": "Mover hacia abajo"
+  },
+  "chart": {
+    "noData": "Sin datos",
+    "confirmed": "confirmados",
+    "notAttending": "no asisten",
+    "noResponse": "sin responder",
+    "barChart": "Gráfico de barras",
+    "total": "total"
+  },
+  "langSwitcher": {
+    "label": "Seleccionar idioma"
   }
 }

@@ -221,7 +221,7 @@ export default function AdminPage() {
         </header>
 
         {/* ── Navegación por pestañas ── */}
-        <nav className="admin-tabs" role="tablist" aria-label="Secciones">
+        <nav className="admin-tabs" role="tablist" aria-label={t("admin.sectionsLabel")}>
           {TABS.map((tab) => (
             <button
               key={tab.key}

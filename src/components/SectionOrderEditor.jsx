@@ -1,8 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { SECTION_LABELS } from "../lib/constants";
 import { parseSectionOrder as parseOrder, parseHidden } from "../lib/section-utils";
 
 export default function SectionOrderEditor({ value, onChange, hiddenValue, onHiddenChange }) {
+  const { t } = useTranslation();
   const [items, setItems] = useState(() => parseOrder(value));
   const [hidden, setHidden] = useState(() => parseHidden(hiddenValue));
 
@@ -114,7 +116,7 @@ export default function SectionOrderEditor({ value, onChange, hiddenValue, onHid
               </span>
               <span className={`section-order-item__label ${isHidden ? "section-order-item__label--hidden" : ""}`}>
                 {SECTION_LABELS[sectionKey] || sectionKey}
-                {isHidden && <span className="section-order-item__badge">oculta</span>}
+                {isHidden && <span className="section-order-item__badge">{t("setup.hiddenSectionBadge")}</span>}
               </span>
               {!isHero && (
                 <span className="section-order-item__actions">
@@ -122,7 +124,7 @@ export default function SectionOrderEditor({ value, onChange, hiddenValue, onHid
                     type="button"
                     className={`section-order-item__toggle ${isHidden ? "" : "section-order-item__toggle--on"}`}
                     onClick={() => toggleVisibility(sectionKey)}
-                    aria-label={`${isHidden ? "Mostrar" : "Ocultar"} ${SECTION_LABELS[sectionKey]}`}
+                    aria-label={`${isHidden ? t("common.show") : t("common.hide")} ${SECTION_LABELS[sectionKey]}`}
                   >
                     {isHidden ? "✕" : "✓"}
                   </button>
@@ -131,7 +133,7 @@ export default function SectionOrderEditor({ value, onChange, hiddenValue, onHid
                     className="section-order-item__btn"
                     onClick={() => moveUp(index)}
                     disabled={index <= 1 && items[0] === "hero"}
-                    aria-label={`Mover ${SECTION_LABELS[sectionKey]} hacia arriba`}
+                    aria-label={`${t("sectionOrder.moveUp")} ${SECTION_LABELS[sectionKey]}`}
                   >
                     ↑
                   </button>
@@ -140,7 +142,7 @@ export default function SectionOrderEditor({ value, onChange, hiddenValue, onHid
                     className="section-order-item__btn"
                     onClick={() => moveDown(index)}
                     disabled={index === items.length - 1}
-                    aria-label={`Mover ${SECTION_LABELS[sectionKey]} hacia abajo`}
+                    aria-label={`${t("sectionOrder.moveDown")} ${SECTION_LABELS[sectionKey]}`}
                   >
                     ↓
                   </button>

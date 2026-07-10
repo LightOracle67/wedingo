@@ -192,7 +192,7 @@ const LanguageSwitcher = memo(function LanguageSwitcher() {
         type="button"
         className="lang-trigger"
         onClick={() => setOpen(true)}
-        aria-label="Seleccionar idioma"
+        aria-label={t("langSwitcher.label")}
         aria-expanded={open}
         aria-haspopup="true"
       >

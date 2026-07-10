@@ -98,7 +98,7 @@ function AppShell() {
         <footer className="app-footer">
           <div className="app-footer__left">
             <LanguageSwitcher />
-            <button type="button" className="a11y-trigger" onClick={() => setShowA11y(true)} aria-label="Accesibilidad">♿</button>
+            <button type="button" className="a11y-trigger" onClick={() => setShowA11y(true)} aria-label={t("common.accessibility")}>♿</button>
           </div>
           <div className="app-footer__right">
             <button type="button" onClick={() => setLegalSection("privacy")} className="app-footer__link">{t("public.privacyPolicy")}</button>

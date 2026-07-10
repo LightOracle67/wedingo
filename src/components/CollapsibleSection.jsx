@@ -1,9 +1,11 @@
 import { useCallback, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function CollapsibleSection({
   title, hint, defaultOpen = false, children,
   sectionKey, isHidden, onToggleVisibility,
 }) {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(defaultOpen);
   const [maxHeight, setMaxHeight] = useState(defaultOpen ? undefined : 0);
   const contentRef = useRef(null);
@@ -53,7 +55,7 @@ export default function CollapsibleSection({
           aria-expanded={isOpen}
         >
           <span className="setup-collapsible__summary-text">
-            {isHidden ? <span className="setup-collapsible__hidden-badge">Oculta</span> : null}
+            {isHidden ? <span className="setup-collapsible__hidden-badge">{t("common.hidden")}</span> : null}
             <span className="setup-collapsible__title">{title}</span>
           </span>
           {hint ? <span className="setup-collapsible__hint">{hint}</span> : null}
@@ -64,11 +66,11 @@ export default function CollapsibleSection({
             onClick={handleVisibilityClick}
             role="switch"
             aria-checked={!isHidden}
-            aria-label={`${isHidden ? "Mostrar" : "Ocultar"} sección`}
+            aria-label={`${isHidden ? t("common.show") : t("common.hide")} ${t("common.section")}`}
             tabIndex={0}
             onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") handleVisibilityClick(e); }}
           >
-            {isHidden ? "Mostrar" : "Visible"}
+            {isHidden ? t("common.show") : t("common.visible")}
           </span>
         ) : null}
       </div>

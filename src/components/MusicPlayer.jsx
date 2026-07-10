@@ -1,4 +1,5 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 function songName(url) {
   if (!url) return "";
@@ -20,6 +21,7 @@ function formatTime(sec) {
 }
 
 const MusicPlayer = memo(function MusicPlayer({ musicUrl }) {
+  const { t } = useTranslation();
   const [playing, setPlaying] = useState(false);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -29,7 +31,7 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }) {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const audioRef = useRef(null);
-  const name = useMemo(() => songName(musicUrl) || "Sin música", [musicUrl]);
+  const name = useMemo(() => songName(musicUrl) || t("music.noMusic"), [musicUrl, t]);
   const hasMusic = Boolean(musicUrl);
 
   useEffect(() => {
@@ -113,7 +115,7 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }) {
               </span>
             </div>
             <span className="music-player__track">{name}</span>
-            {error ? <span className="music-player__status">Error al cargar</span> : null}
+            {error ? <span className="music-player__status">{t("music.loadError")}</span> : null}
             <div className="music-player__scrubber">
               <span className="music-player__time">{formatTime(currentTime)}</span>
               <input type="range" min="0" max={duration || 1} step="0.1" value={currentTime} onChange={handleSeek} className="music-player__seek" disabled={!hasMusic} />
@@ -132,7 +134,7 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }) {
         ) : null}
       </div>
 
-      <button type="button" className="music-player__fab" onClick={handleToggle} aria-label="Música">
+      <button type="button" className="music-player__fab" onClick={handleToggle} aria-label={t("music.label")}>
         {open ? (
           <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M6 6L18 18M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>
         ) : (
