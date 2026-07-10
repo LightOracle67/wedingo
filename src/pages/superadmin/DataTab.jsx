@@ -264,9 +264,9 @@ export default function DataTab() {
 
   if (loading) {
     return (
-      <div className="setup-card allow-select">
-        <div className="page-loading" style={{ minHeight: "12rem" }} />
-        <p style={{ textAlign: "center", color: "var(--setup-muted)", fontSize: "0.85rem" }}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "12rem", height: "100%" }}>
+        <div className="page-loading" style={{ minHeight: "6rem" }} />
+        <p style={{ textAlign: "center", color: "var(--setup-muted)", fontSize: "0.85rem", marginTop: "0.5rem" }}>
           {t("common.loading")}
         </p>
       </div>
@@ -278,9 +278,9 @@ export default function DataTab() {
   const isEmptyCount = emptyIds.size;
 
   return (
-    <div className="setup-card allow-select">
+    <div style={{ display: "flex", flexDirection: "column", height: "100%", minHeight: 0 }}>
       {/* ── Acciones en lote ── */}
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem", marginBottom: "0.8rem", alignItems: "center" }}>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem", marginBottom: "0.8rem", alignItems: "center", flexShrink: 0 }}>
         <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={selectAll} disabled={busy}>
           {t("superadmin.data.selectAll")}
         </button>
@@ -347,7 +347,7 @@ export default function DataTab() {
       </div>
 
       {/* ── Tabla de invitaciones ── */}
-      <div className="invitation-list" style={{ maxHeight: "60vh", overflowY: "auto" }}>
+      <div style={{ flex: 1, minHeight: 0, overflowY: "auto", border: "1px solid var(--setup-border)", borderRadius: "0.5rem" }}>
         <table className="superadmin-table" style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.82rem" }}>
           <thead>
             <tr style={{ position: "sticky", top: 0, background: "var(--setup-card-bg)", zIndex: 1 }}>
