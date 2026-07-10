@@ -290,8 +290,10 @@
     "errorFileSize": "La imagen supera 20 MB.",
     "photoUploaded": "Foto subida correctamente.",
     "photoUploadFailed": "No se pudo subir la foto.",
+    "photoUploading": "Subiendo foto...",
     "galleryUploadSuccess": "{{count}} foto(s) subida(s) correctamente.",
     "galleryUploadFailed": "No se pudieron subir las fotos.",
+    "galleryUploading": "Subiendo {{total}} foto(s)...",
     "noValidFiles": "Ningún archivo válido. Máximo 20 MB, JPG/PNG."
   },
   "admin": {
