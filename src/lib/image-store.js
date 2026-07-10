@@ -20,11 +20,17 @@ const GALLERY_COL = (token) => collection(db, "invitations", token, "gallery");
  */
 export async function uploadImage(inviteToken, file, onProgress) {
   onProgress?.(10);
+  console.log("[upload] comprimiendo imagen...");
   const dataUrl = await compressImage(file);
+  console.log("[upload] comprimido:", Math.round(dataUrl.length / 1024), "KB");
   onProgress?.(40);
+  console.log("[upload] cifrando...");
   const encrypted = await encrypt(dataUrl, inviteToken);
+  if (!encrypted) throw new Error("El cifrado de la imagen falló.");
+  console.log("[upload] cifrado:", Math.round(encrypted.length / 1024), "KB");
   onProgress?.(70);
   const size = Math.round((encrypted.length * 3) / 4);
+  console.log("[upload] tamaño estimado:", Math.round(size / 1024), "KB");
   if (size > 800 * 1024) throw new Error("La imagen es demasiado grande incluso comprimida.");
   onProgress?.(80);
   return { encrypted, dataUrl };
@@ -42,8 +48,10 @@ export async function uploadImage(inviteToken, file, onProgress) {
  */
 export async function addGalleryImage(inviteToken, encrypted, dataUrl, onProgress) {
   onProgress?.(85);
+  console.log("[upload] guardando en Firestore...");
   await addDoc(GALLERY_COL(inviteToken), { data: encrypted, createdAt: new Date().toISOString() });
   onProgress?.(95);
+  console.log("[upload] guardado OK");
   return dataUrl;
 }
 
