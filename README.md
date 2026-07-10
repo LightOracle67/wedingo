@@ -64,6 +64,7 @@ Crea una invitación de boda digital con tu propio estilo, comparte el enlace co
 | Alojamiento | Firebase Hosting |
 | Mapas | Leaflet + OpenStreetMap |
 | Cifrado | AES-256-GCM (en el navegador, PBKDF2) |
+| Tests | Vitest + jsdom + @testing-library/react (168 tests, 10 archivos) |
 
 ---
 
@@ -116,9 +117,11 @@ npx firebase-tools deploy --only hosting         # Producción
 src/
 ├── components/     # Componentes reutilizables (SetupForm, LegalModal…)
 ├── contexts/       # Estado global con React Context
-├── hooks/          # Lógica reutilizable (RSVP, autoSave, sesión…)
+├── hooks/          # Lógica reutilizable (RSVP, autoSave, navegación…)
+│   └── __tests__/  # Tests de hooks
 ├── i18n/           # 84 idiomas con traducciones completas
 ├── lib/            # Utilidades, constantes, Firebase, cifrado, auditoría
+│   └── __tests__/  # Tests unitarios de utilidades
 ├── pages/          # Páginas y secciones de la app
 │   ├── admin/      # Panel de administración (pestañas)
 │   ├── superadmin/ # Panel de superadmin
