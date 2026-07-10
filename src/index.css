@@ -3876,12 +3876,6 @@ a:focus-visible {
 .toast--progress .toast__icon {
   background: rgba(110, 160, 255, 0.18);
   color: #6ea0ff;
-  animation: toast-spin 1.2s linear infinite;
-}
-
-@keyframes toast-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
 
 .toast__body {
