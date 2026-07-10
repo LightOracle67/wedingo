@@ -51,6 +51,10 @@ service cloud.firestore {
       match /gallery/{imageId} {
         allow read: if true;
         allow create: if hasActiveSession(tokenId) && request.resource.data.data is string;
+        allow update: if hasActiveSession(tokenId)
+          && request.resource.data.keys().hasOnly(['description'])
+          && request.resource.data.description is string
+          && request.resource.data.description.size() <= 200;
         allow delete: if isSuperAdmin() || hasActiveSession(tokenId);
       }
     }

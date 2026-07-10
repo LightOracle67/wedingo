@@ -5081,3 +5081,20 @@ html.a11y-font-scale select {
 .gallery-thumb:hover {
   opacity: 0.85 !important;
 }
+
+/** Contador "3 / 10" sobre la galería. */
+.gallery-counter {
+  font-size: 0.78rem;
+  color: var(--setup-muted);
+  margin: 0.25rem 0 0;
+}
+
+/** Descripción/de pie de foto bajo la imagen principal. */
+.gallery-caption {
+  font-size: 0.88rem;
+  color: var(--setup-subtitle);
+  margin-top: 0.5rem;
+  font-style: italic;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}

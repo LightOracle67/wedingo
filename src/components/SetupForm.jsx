@@ -132,9 +132,9 @@ export default function SetupForm({ prefix = "" }) {
           upload.update(fileBase + Math.round((p / 100) * fileSpan));
         };
         const { encrypted, dataUrl } = await uploadImage(inviteToken, file, onFileProgress);
-        await addGalleryImage(inviteToken, encrypted, dataUrl, onFileProgress);
-        // Añade la imagen a la vista previa de miniaturas en tiempo real
-        currentImages.push(dataUrl);
+        const saved = await addGalleryImage(inviteToken, encrypted, dataUrl, onFileProgress);
+        // Guarda como objeto con ID para permitir editar descripción
+        currentImages.push({ id: saved.id, url: saved.dataUrl, description: "" });
         updateFormField("galleryImages", JSON.stringify(currentImages));
       }
       upload.complete(t("setup.galleryUploadSuccess", { count: toUpload.length }));
@@ -708,23 +708,59 @@ export default function SetupForm({ prefix = "" }) {
           <span className="setup-upload__subtitle">{t("setup.galleryUploadHint")}</span>
         </label>
         <input ref={galleryRef} id={id("galleryUpload")} className="setup-upload__input" type="file" accept="image/jpeg,image/png,image/webp" multiple onChange={handleGalleryUpload} />
-        {/* Grid de miniaturas de la galería con botón de eliminación */}
+        {/* Grid de miniaturas con descripción editable */}
         {(() => {
           try {
             const images = JSON.parse(formData.galleryImages || "[]");
             if (!images.length) return null;
             return (
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(80px, 1fr))", gap: "0.4rem", marginTop: "0.5rem" }}>
-                {images.map((src, i) => (
-                  <div key={i} style={{ position: "relative" }}>
-                    <img src={src} alt={t("setup.galleryUploadLabel")} style={{ width: "100%", aspectRatio: "1", objectFit: "cover", borderRadius: "0.5rem" }} />
-                    <button type="button" onClick={() => {
-                      const arr = JSON.parse(formData.galleryImages || "[]");
-                      arr.splice(i, 1);
-                      updateFormField("galleryImages", JSON.stringify(arr));
-                    }} style={{ position: "absolute", top: "2px", right: "2px", width: "1.2rem", height: "1.2rem", borderRadius: "999px", border: "none", background: "rgba(0,0,0,0.6)", color: "#fff", fontSize: "0.7rem", cursor: "pointer", display: "grid", placeItems: "center" }}>×</button>
-                  </div>
-                ))}
+              <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "0.6rem", marginTop: "0.6rem" }}>
+                {images.map((item, i) => {
+                  // Soporta tanto strings (legacy) como objetos { id, url, description }
+                  const src = typeof item === "string" ? item : item.url || "";
+                  const desc = typeof item === "string" ? "" : item.description || "";
+                  const docId = typeof item === "string" ? null : item.id || null;
+                  return (
+                    <div key={docId || i} style={{ display: "flex", gap: "0.5rem", alignItems: "center", background: "color-mix(in srgb, var(--setup-field-bg) 40%, transparent)", borderRadius: "0.5rem", padding: "0.5rem" }}>
+                      <div style={{ position: "relative", flexShrink: 0 }}>
+                        <img src={src} alt={desc || t("setup.galleryUploadLabel")} style={{ width: "4.5rem", height: "4.5rem", objectFit: "cover", borderRadius: "0.4rem" }} />
+                        <button type="button" onClick={async () => {
+                          const arr = JSON.parse(formData.galleryImages || "[]");
+                          const removed = arr.splice(i, 1)[0];
+                          updateFormField("galleryImages", JSON.stringify(arr));
+                          // Elimina también de Firestore si tiene ID
+                          if (removed?.id || docId) {
+                            const imgId = removed?.id || docId;
+                            try {
+                              const { deleteGalleryImage } = await import("../lib/image-store");
+                              await deleteGalleryImage(inviteToken, imgId);
+                            } catch {}
+                          }
+                        }} style={{ position: "absolute", top: "-4px", right: "-4px", width: "1.2rem", height: "1.2rem", borderRadius: "999px", border: "none", background: "rgba(0,0,0,0.65)", color: "#fff", fontSize: "0.7rem", cursor: "pointer", display: "grid", placeItems: "center", lineHeight: 1 }}>×</button>
+                      </div>
+                      <input
+                        type="text"
+                        className="setup-input"
+                        value={desc}
+                        onChange={async (e) => {
+                          const val = e.target.value.slice(0, 200);
+                          const arr = JSON.parse(formData.galleryImages || "[]");
+                          arr[i] = typeof arr[i] === "string" ? { url: arr[i], description: val, id: docId } : { ...arr[i], description: val };
+                          updateFormField("galleryImages", JSON.stringify(arr));
+                        }}
+                        onBlur={async () => {
+                          if (!docId) return;
+                          try {
+                            const { updateGalleryDescription } = await import("../lib/image-store");
+                            await updateGalleryDescription(inviteToken, docId, desc);
+                          } catch {}
+                        }}
+                        placeholder={t("setup.galleryDescriptionPlaceholder")}
+                        style={{ flex: 1, fontSize: "0.82rem", padding: "0.35rem 0.5rem" }}
+                      />
+                    </div>
+                  );
+                })}
               </div>
             );
           } catch { return null; }

@@ -296,6 +296,7 @@
     "galleryUploading": "Subiendo {{total}} foto(s)...",
     "galleryMaxReached": "Máximo {{max}} imágenes en la galería.",
     "galleryTrimmed": "Se subirán {{max}} de {{selected}} imágenes (límite de galería).",
+    "galleryDescriptionPlaceholder": "Descripción de la imagen...",
     "noValidFiles": "Ningún archivo válido. Máximo 20 MB, JPG/PNG."
   },
   "admin": {
