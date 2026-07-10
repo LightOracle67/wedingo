@@ -1,3 +1,17 @@
+/**
+ * SetupForm.jsx
+ * ─────────────────────────────────────────────────────────────
+ * Formulario principal de configuración de la invitación de boda.
+ * Contiene todos los campos editables: portada, fecha, menú,
+ * galería, regalos, etc.
+ *
+ * Cada sección se renderiza dentro de un CollapsibleSection.
+ * Soporta validación de archivos, subida de imágenes y vista
+ * previa de mapa.
+ *
+ * @module SetupForm
+ */
+
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import { useTranslation, Trans } from "react-i18next";
 import { useApp } from "../contexts/AppContext";
@@ -8,7 +22,15 @@ import { uploadImage, addGalleryImage } from "../lib/image-store";
 import CollapsibleSection from "./CollapsibleSection";
 import SectionOrderEditor from "./SectionOrderEditor";
 
+/**
+ * Componente del formulario de configuración.
+ *
+ * @param {{ prefix?: string }} props - Prefijo opcional para IDs de campos
+ *                                      (útil cuando hay múltiples formularios en la página).
+ * @returns {JSX.Element} Formulario con todas las secciones de configuración.
+ */
 export default function SetupForm({ prefix = "" }) {
+  // ─── Extrae estado y handlers del contexto global ───────
   const {
     formData, updateFormField, handleSaveSetup, handleDayChange,
     handleHourChange, handleMinuteChange, handleMinuteBlur, handleYearChange,
@@ -19,9 +41,12 @@ export default function SetupForm({ prefix = "" }) {
 
   const { addToast } = useToast();
   const { t } = useTranslation();
+
+  /** Referencias a los inputs de archivo para resetearlos tras subida. */
   const photoRef = useRef(null);
   const galleryRef = useRef(null);
 
+  // ── Muestra mensajes de éxito/error como toasts ─────────
   useEffect(() => {
     if (saveMessage) addToast("success", saveMessage);
   }, [saveMessage, addToast]);
@@ -30,13 +55,24 @@ export default function SetupForm({ prefix = "" }) {
     if (saveError) addToast("error", saveError);
   }, [saveError, addToast]);
 
+  /**
+   * Conjunto de secciones ocultas derivado del formulario.
+   * Se memoiza para evitar re-cálculos en cada render.
+   */
   const hiddenSet = useMemo(() => {
     const raw = formData.hiddenSections || "";
     return new Set(raw.split(",").filter(Boolean));
   }, [formData.hiddenSections]);
 
+  /** Genera un ID único con prefijo para evitar colisiones en páginas con múltiples formularios. */
   const id = (name) => `${prefix}${name}`;
 
+  /**
+   * Maneja la subida de la foto de pareja.
+   * Valida tipo y tamaño, sube la imagen y actualiza el estado.
+   *
+   * @param {Event} e - Evento change del input file.
+   */
   const handleCouplePhotoUpload = useCallback(async (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -50,6 +86,12 @@ export default function SetupForm({ prefix = "" }) {
     e.target.value = "";
   }, [inviteToken, updateFormField, addToast]);
 
+  /**
+   * Maneja la subida de múltiples imágenes a la galería.
+   * Filtra archivos inválidos, sube cada uno y actualiza el estado.
+   *
+   * @param {Event} e - Evento change del input file múltiple.
+   */
   const handleGalleryUpload = useCallback(async (e) => {
     const files = Array.from(e.target.files || []);
     if (!files.length) return;
@@ -67,6 +109,7 @@ export default function SetupForm({ prefix = "" }) {
 
   return (
     <form className="setup-form setup-form--nested" onSubmit={handleSaveSetup}>
+      {/* ── Editor de orden de secciones ── */}
       <SectionOrderEditor
         value={formData.sectionOrder}
         onChange={updateFormField}
@@ -74,6 +117,7 @@ export default function SetupForm({ prefix = "" }) {
         onHiddenChange={updateFormField}
       />
 
+      {/* ── Sección de acceso (solo visible antes del primer guardado) ── */}
       {!isTokenVerified ? (
       <CollapsibleSection
         title={t("setup.accessSectionTitle")}
@@ -87,6 +131,7 @@ export default function SetupForm({ prefix = "" }) {
           id={id("adminUsername")}
           className="setup-input"
           value={formData.adminUsername}
+          /* Sanitiza el nombre de usuario: solo minúsculas, letras y números, máx 50 caracteres */
           onChange={(e) => updateFormField("adminUsername", e.target.value.toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 50))}
           placeholder={t("setup.usernamePlaceholder")}
           autoComplete="username"
@@ -98,11 +143,13 @@ export default function SetupForm({ prefix = "" }) {
       </CollapsibleSection>
       ) : null}
 
+      {/* ── Sección de portada: nombres, padrinos, mensaje, tema, fondo ── */}
       <CollapsibleSection
         title={t("setup.coverSectionTitle")}
         hint={t("setup.coverSectionHint")}
         defaultOpen
       >
+        {/* ── Nombres de los novios ── */}
         <fieldset className="setup-name-group">
           <legend className="setup-label">{t("setup.namesLegend")}</legend>
           <div className="setup-name-grid">
@@ -131,6 +178,7 @@ export default function SetupForm({ prefix = "" }) {
           </div>
         </fieldset>
 
+        {/* ── Padrinos ── */}
         <fieldset className="setup-name-group">
           <legend className="setup-label">{t("setup.godparentsLegend")}</legend>
           <div className="setup-name-grid">
@@ -146,6 +194,7 @@ export default function SetupForm({ prefix = "" }) {
           <p className="setup-help">{t("setup.godparentsHint")}</p>
         </fieldset>
 
+        {/* ── Mensaje de invitación ── */}
         <label className="setup-label" htmlFor={id("inviteMessage")}>
           {t("setup.messageLabel")}
         </label>
@@ -157,6 +206,7 @@ export default function SetupForm({ prefix = "" }) {
           placeholder={t("setup.messagePlaceholder")}
         />
 
+        {/* ── Selector de tema con grupos colapsables ── */}
         <p className="setup-label">{t("setup.themeLabel")}</p>
         {THEME_GROUPS.map((group) => (
           <CollapsibleSection key={group.value} title={group.label} hint={t("setup.themeGroupCount", { count: THEME_OPTIONS.filter((t) => t.group === group.value).length })}>
@@ -188,6 +238,7 @@ export default function SetupForm({ prefix = "" }) {
           </CollapsibleSection>
         ))}
 
+        {/* ── Panel de subida de fondo personalizado ── */}
         <div className="setup-background-panel">
           <div className="setup-background-panel__header">
             <div>
@@ -196,6 +247,7 @@ export default function SetupForm({ prefix = "" }) {
                 {t("setup.backgroundText")}
               </p>
             </div>
+            {/* Botón para eliminar el fondo actual (solo si hay uno) */}
             {formData.backgroundImage ? (
               <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleClearBackground}>
                 {t("setup.removeBackground")}
@@ -203,12 +255,14 @@ export default function SetupForm({ prefix = "" }) {
             ) : null}
           </div>
 
+          {/* Zona de drop/upload */}
           <label className="setup-upload" htmlFor={id("backgroundUpload")}>
             <span className="setup-upload__title">{t("setup.uploadTitle")}</span>
             <span className="setup-upload__subtitle">{t("setup.uploadSubtitle")}</span>
           </label>
           <input id={id("backgroundUpload")} className="setup-upload__input" type="file" accept={[...ALLOWED_UPLOAD_TYPES].join(",")} onChange={handleBackgroundUpload} />
 
+          {/* Previsualización de la imagen seleccionada */}
           {formData.backgroundImage ? (
             <div className="setup-selected-background">
               <img src={formData.backgroundImage} alt={t("setup.currentBackground")} className="setup-selected-background__image" />
@@ -219,6 +273,7 @@ export default function SetupForm({ prefix = "" }) {
             </div>
           ) : null}
 
+          {/* Grid de fondos predefinidos desde el mapa */}
           {previewBackgrounds.length ? (
             <div className="setup-background-grid">
               {previewBackgrounds.filter((bg) => bg.id !== "default").map((bg) => (
@@ -237,6 +292,7 @@ export default function SetupForm({ prefix = "" }) {
           ) : null}
         </div>
 
+        {/* ── Subida de foto de pareja ── */}
         <div className="setup-background-panel" style={{ marginTop: "0.75rem" }}>
           <p className="setup-label">{t("setup.couplePhotoLabel")}</p>
           <label className="setup-upload" htmlFor={id("couplePhoto")}>
@@ -255,18 +311,19 @@ export default function SetupForm({ prefix = "" }) {
           ) : null}
         </div>
 
+        {/* ── URL de música de fondo ── */}
         <label className="setup-label" htmlFor={id("musicUrl")}>{t("setup.musicLabel")}</label>
         <input id={id("musicUrl")} className="setup-input" value={formData.musicUrl} onChange={(e) => updateFormField("musicUrl", e.target.value.slice(0, 500))} placeholder={t("setup.musicPlaceholder")} autoComplete="off" />
         <p className="setup-help">{t("setup.musicHint")}</p>
-
-
       </CollapsibleSection>
 
+      {/* ── Sección de fecha y lugar (si no está oculta) ── */}
       {!hiddenSet.has("details") ? (
       <CollapsibleSection
         title={t("setup.dateSectionTitle")}
         hint={t("setup.dateSectionHint")}
       >
+        {/* ── Búsqueda de lugar con geolocalización ── */}
         <label className="setup-label" htmlFor={id("weddingPlace")}>
           {t("setup.placeLabel")}
         </label>
@@ -278,8 +335,10 @@ export default function SetupForm({ prefix = "" }) {
             onChange={(e) => {
               const val = e.target.value.slice(0, 120);
               updateFormField("weddingPlace", val);
+              // Resetea coordenadas al cambiar el lugar manualmente
               updateFormField("weddingLatitude", "");
               updateFormField("weddingLongitude", "");
+              // Búsqueda dinámica de ubicaciones (mínimo 3 caracteres)
               if (val.length >= 3) {
                 import("../lib/geo-utils").then(({ searchLocations }) => {
                   searchLocations(val).then(results => {
@@ -294,6 +353,7 @@ export default function SetupForm({ prefix = "" }) {
                         btn.dataset.lon = r.longitude;
                         btn.dataset.label = r.label;
                         btn.textContent = r.label;
+                        // Al hacer clic, rellena el lugar y las coordenadas
                         btn.onclick = () => {
                           updateFormField("weddingPlace", r.label.slice(0, 120));
                           updateFormField("weddingLatitude", r.latitude);
@@ -306,10 +366,12 @@ export default function SetupForm({ prefix = "" }) {
                   });
                 });
               } else {
+                // Limpia resultados si hay menos de 3 caracteres
                 const el = document.getElementById("weddingPlaceResults");
                 if (el) el.textContent = "";
               }
             }}
+            /* Cierra el dropdown al perder el foco (con retraso para permitir clics) */
             onBlur={() => setTimeout(() => {
               const el = document.getElementById("weddingPlaceResults");
               if (el) el.textContent = "";
@@ -317,6 +379,7 @@ export default function SetupForm({ prefix = "" }) {
             placeholder={t("setup.placePlaceholder")}
             autoComplete="off"
           />
+          {/* Dropdown de resultados de búsqueda */}
           <div id="weddingPlaceResults" style={{
             position: "absolute", top: "100%", left: 0, right: 0, zIndex: 10,
             background: "color-mix(in srgb, var(--setup-grad-start) 96%, transparent)",
@@ -326,8 +389,7 @@ export default function SetupForm({ prefix = "" }) {
         </div>
         <p className="setup-help">{t("setup.placeHint")}</p>
 
-
-
+        {/* ── Previsualización del mapa (imagen estática) ── */}
         {(() => {
           if (!previewBackgrounds.length) return null;
           const locationPreview = previewBackgrounds.find((bg) => bg.id === "default");
@@ -340,6 +402,7 @@ export default function SetupForm({ prefix = "" }) {
           );
         })()}
 
+        {/* ── Selectores de fecha: día, mes, año ── */}
         <div className="setup-date-grid">
           <div>
             <label className="setup-label" htmlFor={id("weddingDay")}>{t("setup.dayLabel")}</label>
@@ -380,6 +443,7 @@ export default function SetupForm({ prefix = "" }) {
           </div>
         </div>
 
+        {/* ── Selectores de hora: hora, minuto ── */}
         <div className="setup-date-grid">
           <div>
             <label className="setup-label" htmlFor={id("weddingHour")}>{t("setup.hourLabel")}</label>
@@ -410,6 +474,7 @@ export default function SetupForm({ prefix = "" }) {
           </div>
         </div>
 
+        {/* ── Cronograma del evento ── */}
         <label className="setup-label" htmlFor={id("weddingSchedule")}>
           {t("setup.scheduleLabel")}
         </label>
@@ -423,6 +488,7 @@ export default function SetupForm({ prefix = "" }) {
         />
         <p className="setup-help">{t("setup.scheduleHint")}</p>
 
+        {/* ── Código de vestimenta ── */}
         <label className="setup-label">{t("setup.dressCodeLabel")}</label>
         <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))" }}>
           {[
@@ -440,6 +506,7 @@ export default function SetupForm({ prefix = "" }) {
         </div>
         <p className="setup-help">{t("setup.dressCodeHint")}</p>
 
+        {/* ── Información de alojamiento ── */}
         <label className="setup-label" htmlFor={id("accommodationInfo")}>
           {t("setup.accommodationLabel")}
         </label>
@@ -453,6 +520,7 @@ export default function SetupForm({ prefix = "" }) {
         />
         <p className="setup-help">{t("setup.accommodationHint")}</p>
 
+        {/* ── Información de transporte ── */}
         <label className="setup-label" htmlFor={id("transportInfo")}>
           {t("setup.transportLabel")}
         </label>
@@ -468,11 +536,13 @@ export default function SetupForm({ prefix = "" }) {
       </CollapsibleSection>
       ) : null}
 
+      {/* ── Sección de invitados y menú (si no está oculta) ── */}
       {!hiddenSet.has("info") ? (
       <CollapsibleSection
         title={t("setup.guestsSectionTitle")}
         hint={t("setup.guestsSectionHint")}
       >
+        {/* ── Política de niños ── */}
         <label className="setup-label">{t("setup.kidsLabel")}</label>
         <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))" }}>
           {[
@@ -491,11 +561,13 @@ export default function SetupForm({ prefix = "" }) {
         <div className="story-divider" style={{ margin: "0.75rem 0" }} />
         <label className="setup-label" style={{ marginBottom: "0.3rem", display: "block" }}>{t("setup.menuCelebrationLabel")}</label>
 
+        {/* ── Toggle de menú habilitado ── */}
         <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.9rem", cursor: "pointer", marginBottom: "0.5rem" }}>
           <input type="checkbox" checked={formData.menuEnabled === "true"} onChange={(e) => updateFormField("menuEnabled", e.target.checked ? "true" : "false")} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
           <span>{t("setup.menuEnabledLabel")}</span>
         </label>
 
+        {/* ── Opciones de menú (carne, pescado, vegano, postre) ── */}
         {formData.menuEnabled === "true" ? (
           <>
             <p className="setup-help" style={{ marginBottom: "0.4rem" }}>{t("setup.menuHint")}</p>
@@ -504,6 +576,7 @@ export default function SetupForm({ prefix = "" }) {
               { key: "menuPescado", labelKey: "setup.menuPescadoLabel", phKey: "setup.menuPescadoPlaceholder" },
               { key: "menuVegano", labelKey: "setup.menuVeganoLabel", phKey: "setup.menuVeganoPlaceholder" },
             ].map(({ key, labelKey, phKey }) => {
+              // Solo muestra el textarea si la opción está seleccionada
               const val = formData[key] || "";
               return (
                 <div key={key} style={{ marginBottom: "0.5rem" }}>
@@ -522,6 +595,7 @@ export default function SetupForm({ prefix = "" }) {
             <p className="setup-help">{t("setup.menuRequiredText")}</p>
           </>
         ) : (
+          /* ── Texto libre de menú (si no está habilitado el menú estructurado) ── */
           <>
             <textarea className="setup-textarea" value={formData.menuTexto} onChange={(e) => updateFormField("menuTexto", e.target.value.slice(0, 2000))} placeholder={t("setup.menuTextoPlaceholder")} rows={3} />
             <p className="setup-help">{t("setup.menuTextoHint")}</p>
@@ -530,6 +604,7 @@ export default function SetupForm({ prefix = "" }) {
       </CollapsibleSection>
       ) : null}
 
+      {/* ── Sección de historia de los novios (si no está oculta) ── */}
       {!hiddenSet.has("story") ? (
       <CollapsibleSection
         title={t("setup.storySectionTitle")}
@@ -550,6 +625,7 @@ export default function SetupForm({ prefix = "" }) {
       </CollapsibleSection>
       ) : null}
 
+      {/* ── Sección de regalos (si no está oculta) ── */}
       {!hiddenSet.has("gifts") ? (
       <CollapsibleSection
         title={t("setup.giftsSectionTitle")}
@@ -568,6 +644,7 @@ export default function SetupForm({ prefix = "" }) {
         />
         <p className="setup-help">{t("setup.giftsInfoHint")}</p>
 
+        {/* ── Información bancaria (IBAN, etc.) - se encripta antes de guardar ── */}
         <label className="setup-label" htmlFor={id("bankInfo")}>
           {t("setup.bankInfoLabel")}
         </label>
@@ -583,9 +660,7 @@ export default function SetupForm({ prefix = "" }) {
       </CollapsibleSection>
       ) : null}
 
-
-
-
+      {/* ── Sección de galería de fotos (si no está oculta) ── */}
       {!hiddenSet.has("gallery") ? (
       <CollapsibleSection
         title={t("setup.gallerySectionTitle")}
@@ -596,6 +671,7 @@ export default function SetupForm({ prefix = "" }) {
           <span className="setup-upload__subtitle">{t("setup.galleryUploadHint")}</span>
         </label>
         <input ref={galleryRef} id={id("galleryUpload")} className="setup-upload__input" type="file" accept="image/jpeg,image/png,image/webp" multiple onChange={handleGalleryUpload} />
+        {/* Grid de miniaturas de la galería con botón de eliminación */}
         {(() => {
           try {
             const images = JSON.parse(formData.galleryImages || "[]");
@@ -619,7 +695,7 @@ export default function SetupForm({ prefix = "" }) {
       </CollapsibleSection>
       ) : null}
 
-
+      {/* ── Consentimiento de privacidad (solo primer guardado) ── */}
       {!hasStoredConfig ? (
         <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.85rem", cursor: "pointer" }}>
           <input type="checkbox" checked={formData._privacyConsent === "true"} onChange={(e) => updateFormField("_privacyConsent", e.target.checked ? "true" : "false")} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
@@ -627,6 +703,7 @@ export default function SetupForm({ prefix = "" }) {
         </label>
       ) : null}
 
+      {/* ── Botón de guardar ── */}
       <div className="setup-actions" style={{ padding: "0.25rem 0" }}>
         <button className="setup-button" type="submit">
           {t("common.save")}

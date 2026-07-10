@@ -37,7 +37,6 @@ const InvitationsTab = memo(function InvitationsTab() {
 
   const handleExportAll = useCallback(async () => {
     try {
-      const { getDocs } = await import("firebase/firestore");
       const snap = await getDocs(INVITATIONS_COLLECTION_REF);
       const data = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
       const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });

@@ -1,5 +1,3 @@
-import { WEDDING_MESSAGES } from "./invite-messages";
-
 export const APP_VERSION = "2.1.4";
 
 export const ALLOWED_UPLOAD_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);

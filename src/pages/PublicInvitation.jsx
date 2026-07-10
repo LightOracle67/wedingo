@@ -1,9 +1,28 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+/**
+ * PublicInvitation.jsx
+ * ─────────────────────────────────────────────────────────────
+ * Página pública de la invitación de boda.
+ *
+ * Renderiza las secciones de la invitación (héroe, detalles,
+ * historia, regalos, RSVP, etc.) con navegación por scroll,
+ * teclado y touch. Gestiona:
+ *
+ * - Transiciones animadas entre secciones (scroll snap-like).
+ * - Cuenta regresiva hasta la fecha de la boda.
+ * - Mapa interactivo con Leaflet para la ubicación.
+ * - Decoraciones laterales (eucalipto) con animación.
+ * - Estados de carga, error, vacío y token inválido.
+ *
+ * @module PublicInvitation
+ */
+
+import { useEffect, useMemo, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "leaflet/dist/leaflet.css";
 
 import { useApp } from "../contexts/AppContext";
+import { useStoryNavigation } from "../hooks/useStoryNavigation";
 import {
   getValidCoordinates,
   resolveLocationTarget,
@@ -11,7 +30,10 @@ import {
 import { MONTH_VALUE_TO_NUMBER } from "../lib/constants";
 import { parseSectionOrder } from "../lib/section-utils";
 
+// ─── Assets ──────────────────────────────────────────────
 import eucalyptusSrc from "../assets/eucalyptus.png";
+
+// ─── Componentes de sección ──────────────────────────────
 import HeroSection from "./sections/HeroSection";
 import DetailsSection from "./sections/DetailsSection";
 import InfoSection from "./sections/InfoSection";
@@ -21,6 +43,10 @@ import AccommodationSection from "./sections/AccommodationSection";
 import GallerySection from "./sections/GallerySection";
 import RsvpSection from "./sections/RsvpSection";
 
+/**
+ * Mapa de claves de sección a sus componentes React.
+ * Permite renderizado dinámico según el orden configurado.
+ */
 const SECTION_COMPONENTS = {
   hero: HeroSection,
   details: DetailsSection,
@@ -32,13 +58,21 @@ const SECTION_COMPONENTS = {
   rsvp: RsvpSection,
 };
 
+/**
+ * Página principal de la invitación pública.
+ * Muestra las secciones configuradas con navegación animada.
+ *
+ * @returns {JSX.Element} Página de invitación.
+ */
 export default function PublicInvitation() {
   const { t } = useTranslation();
   const location = useLocation();
   const { inviteToken } = useParams();
   const searchParams = new URLSearchParams(location.search);
+  /** Modo "invitar": muestra la invitación completa incluyendo RSVP. */
   const isInviteMode = searchParams.has("invitar");
 
+  // ─── Estado global del contexto ────────────────────────
   const {
     config, isConfigLoading, configLoadError, formattedDate, formattedTime, calendarLink,
     rsvpForm, rsvpEntries, rsvpMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
@@ -49,11 +83,17 @@ export default function PublicInvitation() {
     handleDietaryToggle, DIETARY_OPTIONS, computeAge,
   } = useApp();
 
+  // ─── Secciones ocultas derivadas de la configuración ───
   const hiddenSet = useMemo(() => {
     const raw = config.hiddenSections || "";
     return new Set(raw.split(",").filter(Boolean));
   }, [config.hiddenSections]);
 
+  // ─── Orden de secciones visible ────────────────────────
+  /**
+   * Calcula el orden de secciones a mostrar.
+   * Si el usuario es admin o está en modo invitar, incluye siempre RSVP.
+   */
   const sectionOrder = useMemo(() => {
     const parsed = parseSectionOrder(config.sectionOrder);
     if (isAdminTokenLoggedIn || isInviteMode) {
@@ -61,7 +101,14 @@ export default function PublicInvitation() {
     }
     return parsed;
   }, [config.sectionOrder, isAdminTokenLoggedIn, isInviteMode]);
+
+  /** Indica si se debe mostrar la sección RSVP. */
   const showRsvp = isAdminTokenLoggedIn || isInviteMode;
+
+  /**
+   * Orden final de secciones visibles, excluyendo las ocultas
+   * (excepto en modo invitar, donde se muestran todas).
+   */
   const visibleOrder = useMemo(
     () => {
       let filtered = showRsvp ? sectionOrder : sectionOrder.filter((s) => s !== "rsvp");
@@ -72,31 +119,29 @@ export default function PublicInvitation() {
     },
     [sectionOrder, showRsvp, hiddenSet, isInviteMode],
   );
-  const visibleOrderRef = useRef(visibleOrder);
-  useEffect(() => { visibleOrderRef.current = visibleOrder; }, [visibleOrder]);
 
-  const [activeStorySection, setActiveStorySection] = useState("hero");
-  useEffect(() => {
-    if (!visibleOrder.includes(activeStorySection) && visibleOrder.length > 0) {
-      setActiveStorySection(visibleOrder[0]);
-    }
-  }, [visibleOrder, activeStorySection]);
-  const [storyTransition, setStoryTransition] = useState({
-    fromIndex: 0,
-    toIndex: null,
-    direction: 1,
-  });
-  const activeStorySectionRef = useRef(activeStorySection);
-  const storyTransitionRef = useRef({
-    fromIndex: 0,
-    toIndex: null,
-    direction: 1,
-  });
+  // ─── Navegación entre secciones (hook extraído) ─────────
+  /**
+   * Hook que gestiona la navegación por scroll, teclado y touch
+   * entre las secciones de la invitación. Controla el estado activo,
+   * las transiciones animadas y los estilos CSS dinámicos.
+   *
+   * Se usan alias para mantener compatibilidad con el resto del componente.
+   */
+  const {
+    activeSection: activeStorySection,
+    isTransitioning: isStoryTransitioning,
+    getSectionStyle: getStorySectionStyle,
+    getSectionClassName: getStorySectionClassName,
+  } = useStoryNavigation(visibleOrder);
 
-  const isStoryTransitioning = storyTransition.toIndex !== null;
-
+  // ─── Cuenta regresiva ──────────────────────────────────
   const [countdown, setCountdown] = useState(null);
 
+  /**
+   * Construye el objeto Date de la boda a partir de los campos de configuración.
+   * Retorna null si algún campo no es válido.
+   */
   const weddingDate = useMemo(() => {
     const day = Number.parseInt(config.weddingDay, 10);
     const month = MONTH_VALUE_TO_NUMBER[config.weddingMonth];
@@ -107,6 +152,10 @@ export default function PublicInvitation() {
     return new Date(year, month - 1, day, hour, minute);
   }, [config]);
 
+  /**
+   * Actualiza la cuenta regresiva cada segundo.
+   * Calcula años, meses, días, horas y minutos restantes.
+   */
   useEffect(() => {
     if (!weddingDate) return;
     const tick = () => {
@@ -129,169 +178,20 @@ export default function PublicInvitation() {
     return () => clearInterval(id);
   }, [weddingDate]);
 
-  const getStorySectionStyle = useCallback((sectionKey) => {
-    const order = visibleOrderRef.current;
-    const sectionIndex = order.indexOf(sectionKey);
-    const activeIndex = order.indexOf(activeStorySection);
-    const { fromIndex, toIndex, direction } = storyTransition;
+  // ═══════════════════════════════════════════════════════
+  // MAPA INTERACTIVO (Leaflet)
+  // ═══════════════════════════════════════════════════════
 
-    if (toIndex === null) {
-      const isActive = sectionIndex === activeIndex;
-      return {
-        opacity: isActive ? 1 : 0,
-        transform: isActive ? "translateY(0) scale(1)" : "translateY(36px) scale(0.985)",
-        pointerEvents: isActive ? "auto" : "none",
-        zIndex: isActive ? 2 : 1,
-      };
-    }
-
-    if (sectionIndex === fromIndex) {
-      return {
-        opacity: 0,
-        transform: `translateY(${direction > 0 ? -32 : 32}px) scale(0.985)`,
-        pointerEvents: "auto",
-        zIndex: 3,
-      };
-    }
-
-    if (sectionIndex === toIndex) {
-      return {
-        opacity: 1,
-        transform: "translateY(0) scale(1)",
-        pointerEvents: "auto",
-        zIndex: 4,
-      };
-    }
-
-    return {
-      opacity: 0,
-      transform: "translateY(44px) scale(0.97)",
-      pointerEvents: "none",
-      zIndex: 1,
-    };
-  }, [activeStorySection, storyTransition]);
-
-  const getStorySectionClassName = useCallback((sectionKey) => {
-    const order = visibleOrderRef.current;
-    const sectionIndex = order.indexOf(sectionKey);
-    const activeIndex = order.indexOf(activeStorySection);
-    const { fromIndex, toIndex } = storyTransition;
-
-    const isActiveSection = sectionIndex === activeIndex;
-    const isTransitionSection = toIndex !== null && (sectionIndex === fromIndex || sectionIndex === toIndex);
-
-    return [
-      "story-section",
-      `story-section--${sectionKey}`,
-      isActiveSection || isTransitionSection ? "story-section--is-active" : "",
-    ].filter(Boolean).join(" ");
-  }, [activeStorySection, storyTransition]);
-
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-
-    let touchStartY = null;
-    let transitionTimeoutId = null;
-
-    const setTransitionState = (nextState) => {
-      storyTransitionRef.current = nextState;
-      setStoryTransition(nextState);
-    };
-
-    const startTransition = (direction) => {
-      if (storyTransitionRef.current.toIndex !== null) return;
-
-      const order = visibleOrderRef.current;
-      const currentIndex = order.indexOf(activeStorySectionRef.current);
-      const targetIndex = Math.max(0, Math.min(order.length - 1, currentIndex + direction));
-      if (targetIndex === currentIndex) return;
-
-      setTransitionState({ fromIndex: currentIndex, toIndex: targetIndex, direction });
-
-      if (transitionTimeoutId) window.clearTimeout(transitionTimeoutId);
-
-      transitionTimeoutId = window.setTimeout(() => {
-        const completedSection = order[targetIndex];
-        activeStorySectionRef.current = completedSection;
-        setActiveStorySection(completedSection);
-        setTransitionState({ fromIndex: targetIndex, toIndex: null, direction });
-      }, 650);
-    };
-
-    const IGNORE_SELECTOR = "input, textarea, select, [contenteditable]";
-
-    const handleWheel = (event) => {
-      if (event.target.closest(IGNORE_SELECTOR)) return;
-      const card = event.target.closest(".story-card");
-      if (card) {
-        const { scrollTop, scrollHeight, clientHeight } = card;
-        const atTop = scrollTop <= 0;
-        const atBottom = scrollTop + clientHeight >= scrollHeight - 2;
-        if (event.deltaY < 0 && !atTop) return;
-        if (event.deltaY > 0 && !atBottom) return;
-      }
-      if (event.deltaY === 0) return;
-      startTransition(event.deltaY > 0 ? 1 : -1);
-    };
-
-    const handleKeyDown = (event) => {
-      if (event.target.closest(IGNORE_SELECTOR)) return;
-      if (event.key === "ArrowDown" || event.key === "PageDown" || event.key === " ") {
-        event.preventDefault();
-        startTransition(1);
-      }
-      if (event.key === "ArrowUp" || event.key === "PageUp") {
-        event.preventDefault();
-        startTransition(-1);
-      }
-    };
-
-    const handleTouchStart = (event) => {
-      if (event.target.closest(IGNORE_SELECTOR)) {
-        touchStartY = null;
-        return;
-      }
-      touchStartY = event.touches[0]?.clientY ?? null;
-    };
-
-    const handleTouchEnd = (event) => {
-      const touchEndY = event.changedTouches[0]?.clientY ?? null;
-      if (touchStartY === null || touchEndY === null) return;
-
-      const distance = touchStartY - touchEndY;
-      if (Math.abs(distance) >= 28) {
-        startTransition(distance > 0 ? 1 : -1);
-      }
-      touchStartY = null;
-    };
-
-    window.addEventListener("wheel", handleWheel, { passive: false });
-    window.addEventListener("keydown", handleKeyDown);
-    window.addEventListener("touchstart", handleTouchStart, { passive: true });
-    window.addEventListener("touchend", handleTouchEnd, { passive: true });
-
-    return () => {
-      window.removeEventListener("wheel", handleWheel);
-      window.removeEventListener("keydown", handleKeyDown);
-      window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchend", handleTouchEnd);
-      if (transitionTimeoutId) window.clearTimeout(transitionTimeoutId);
-      document.body.style.overflow = "";
-    };
-  }, []);
-
-  useEffect(() => {
-    activeStorySectionRef.current = activeStorySection;
-  }, [activeStorySection]);
-
-  useEffect(() => {
-    storyTransitionRef.current = storyTransition;
-  }, [storyTransition]);
-
+  /**
+   * Inicializa el mapa de Leaflet cuando cambia la ubicación.
+   * Carga Leaflet dinámicamente (code splitting) para reducir el bundle inicial.
+   * Resuelve coordenadas mediante geocodificación si no hay coordenadas exactas.
+   */
   useEffect(() => {
     const place = (config.weddingPlace || "").trim();
     const container = locationMapContainerRef.current;
     const hasExactCoordinates = Boolean(getValidCoordinates(config.weddingLatitude, config.weddingLongitude));
+    // No hace nada si no hay lugar ni coordenadas, o si no hay contenedor
     if ((!place && !hasExactCoordinates) || !container) {
       setLocationMapError("");
       setLocationMapLoading(false);
@@ -307,6 +207,7 @@ export default function PublicInvitation() {
 
     const timeoutId = window.setTimeout(async () => {
       try {
+        // Importación dinámica de Leaflet (solo cuando se necesita)
         const L = (await import("leaflet")).default;
         const geocodedLocation = await resolveLocationTarget({
           place,
@@ -323,6 +224,7 @@ export default function PublicInvitation() {
 
         setLocationMapTarget(geocodedLocation);
 
+        // Inicializa el mapa con opciones de solo lectura
         mapInstance = L.map(container, {
           center: [geocodedLocation.latitude, geocodedLocation.longitude],
           zoom: 15,
@@ -336,6 +238,7 @@ export default function PublicInvitation() {
           attribution: "&copy; OpenStreetMap contributors",
         }).addTo(mapInstance);
 
+        // Marcador circular en la ubicación
         L.circleMarker([geocodedLocation.latitude, geocodedLocation.longitude], {
           radius: 10,
           color: "#d8b24a",
@@ -357,6 +260,7 @@ export default function PublicInvitation() {
       }
     }, 0);
 
+    // ── Limpieza del mapa al desmontar o cambiar ubicación ──
     return () => {
       isCancelled = true;
       window.clearTimeout(timeoutId);
@@ -366,6 +270,7 @@ export default function PublicInvitation() {
   }, [config.weddingPlace, config.weddingLatitude, config.weddingLongitude,
       locationMapContainerRef, setLocationMapError, setLocationMapLoading, setLocationMapTarget]);
 
+  // ─── Datos de ubicación derivados ──────────────────────
   const configuredCoordinates = getValidCoordinates(config.weddingLatitude, config.weddingLongitude);
   const hasLocationData = Boolean(config.weddingPlace || configuredCoordinates);
   const locationDescription = config.weddingPlace
@@ -374,7 +279,14 @@ export default function PublicInvitation() {
       ? t("public.locationCoordinates", { lat: configuredCoordinates.latitude, lng: configuredCoordinates.longitude })
       : "";
 
+  // ═══════════════════════════════════════════════════════
+  // PROPS PARA CADA SECCIÓN (MEMOIZADOS)
+  // ═══════════════════════════════════════════════════════
 
+  /**
+   * Props pre-calculadas para cada componente de sección.
+   * Se memoiza para evitar re-renders innecesarios.
+   */
   const sectionProps = useMemo(() => ({
     hero: {
       firstName: config.firstName,
@@ -449,9 +361,15 @@ export default function PublicInvitation() {
     updateRsvpField, handleRsvpSubmit, handleDeleteRsvp, handleDietaryToggle, DIETARY_OPTIONS, computeAge,
   ]);
 
+  // ─── Estados de UI condicionales ───────────────────────
   const isEmpty = !config.firstName && !config.secondName && !isInviteMode;
   const hasHash = location.hash.length > 1;
 
+  // ═══════════════════════════════════════════════════════
+  // RENDERIZADO CONDICIONAL
+  // ═══════════════════════════════════════════════════════
+
+  // ── Estado de carga ──
   if (isConfigLoading) {
     return (
       <div className="app-scene">
@@ -466,6 +384,7 @@ export default function PublicInvitation() {
     );
   }
 
+  // ── Error de carga ──
   if (configLoadError) {
     return (
       <div className="app-scene">
@@ -492,10 +411,15 @@ export default function PublicInvitation() {
     );
   }
 
+  /** ¿Mostrar pantalla de token no encontrado o invitación vacía? */
   const showMissingToken = isEmpty && !hasHash && (Boolean(inviteToken) || isInviteMode);
 
+  // ═══════════════════════════════════════════════════════
+  // RENDERIZADO PRINCIPAL
+  // ═══════════════════════════════════════════════════════
   return (
     <div className={`app-scene ${isStoryTransitioning ? "app-scene--transitioning" : ""}`}>
+      {/* ── Decoraciones laterales (eucalipto) ── */}
       <div className="fixed top-0 z-0 pointer-events-none left-2 wedding-decoration--left wedding-decoration">
         <img src={eucalyptusSrc} alt="" aria-hidden="true" className="wedding-decoration__image" />
       </div>
@@ -503,6 +427,7 @@ export default function PublicInvitation() {
         <img src={eucalyptusSrc} alt="" aria-hidden="true" className="wedding-decoration__image" />
       </div>
 
+      {/* ── Token no encontrado (invitación no configurada) ── */}
       {showMissingToken ? (
         <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
           <div className="w-full max-w-md text-center story-panel story-panel--hero">
@@ -519,6 +444,7 @@ export default function PublicInvitation() {
           </div>
         </section>
       ) : isEmpty ? (
+        /* ── Invitación vacía (sin configurar) ── */
         <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
           <div className="w-full max-w-md text-center story-panel story-panel--hero">
             <h1 className="font-serif text-[clamp(2.5rem,8vw,4.5rem)] text-boda-texto leading-tight hero-title invite-title">
@@ -539,8 +465,8 @@ export default function PublicInvitation() {
           </div>
         </section>
       ) : (
+        /* ── Invitación completa: renderiza cada sección en orden ── */
         <>
-
           {visibleOrder.map((sectionKey) => {
             const Component = SECTION_COMPONENTS[sectionKey];
             if (!Component) return null;
@@ -549,6 +475,7 @@ export default function PublicInvitation() {
                 key={sectionKey}
                 style={getStorySectionStyle(sectionKey)}
                 className={getStorySectionClassName(sectionKey)}
+                // Propaga las props específicas de cada sección
                 {...sectionProps[sectionKey]}
               />
             );

@@ -1,8 +1,30 @@
+/**
+ * useRsvp.js
+ * ─────────────────────────────────────────────────────────────
+ * Hook personalizado para gestionar las confirmaciones de
+ * asistencia (RSVP) de los invitados.
+ *
+ * Funcionalidades:
+ * - Cargar las respuestas RSVP desde Firestore.
+ * - Gestionar el formulario de confirmación (nombre, asistencia,
+ *   menú, restricciones alimentarias).
+ * - Validar consentimientos (privacidad, salud, edad, menores).
+ * - Encriptar información dietética antes de guardar.
+ * - Pre-llenar el formulario si el invitado ya confirmó.
+ * - Eliminar respuestas individuales o en lote.
+ *
+ * @module useRsvp
+ */
+
 import { useCallback, useEffect, useRef, useState } from "react";
 import { addDoc, deleteDoc, doc, getDocs, serverTimestamp } from "firebase/firestore";
 import { RSVP_COLLECTION_REF, rsvpByInviteRef } from "../lib/firebase";
 import { encrypt, decrypt } from "../lib/crypto-utils";
 
+/**
+ * Opciones predefinidas de restricciones alimentarias.
+ * Cada opción tiene un valor (clave interna) y una etiqueta visible.
+ */
 const DIETARY_OPTIONS = [
   { value: "sin gluten", label: "Gluten" },
   { value: "sin lactosa", label: "Lactosa" },
@@ -10,11 +32,18 @@ const DIETARY_OPTIONS = [
   { value: "alergia mariscos", label: "Mariscos" },
 ];
 
+/**
+ * Calcula la edad a partir de una fecha de nacimiento.
+ *
+ * @param {string} birthDateStr - Fecha en formato YYYY-MM-DD.
+ * @returns {number|null} Edad en años, o null si no se proporciona fecha.
+ */
 function computeAge(birthDateStr) {
   if (!birthDateStr) return null;
   const birth = new Date(birthDateStr + "T00:00:00");
   const today = new Date();
   let age = today.getFullYear() - birth.getFullYear();
+  // Ajusta si aún no ha cumplido años este año
   const m = today.getMonth() - birth.getMonth();
   if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) {
     age--;
@@ -22,6 +51,14 @@ function computeAge(birthDateStr) {
   return age;
 }
 
+/**
+ * Parsea la cadena de información dietética en sus componentes.
+ * Formato esperado: "Menú: <elección> | <restricción1> | <restricción2> | <otro>"
+ *
+ * @param {string} dietaryInfo - Cadena con la información dietética.
+ * @param {boolean} menuEnabled - Si el menú estructurado está habilitado.
+ * @returns {{ mealChoice: string, dietarySelection: string[], dietaryOther: string }}
+ */
 function parseDietaryInfo(dietaryInfo, menuEnabled) {
   const parts = (dietaryInfo || "").split(" | ").filter(Boolean);
   let mealChoice = "";
@@ -29,11 +66,13 @@ function parseDietaryInfo(dietaryInfo, menuEnabled) {
   let dietaryOther = "";
 
   let startIdx = 0;
+  // La primera parte puede ser la elección de menú
   if (menuEnabled && parts[0] && parts[0].startsWith("Menú: ")) {
     mealChoice = parts[0].slice("Menú: ".length);
     startIdx = 1;
   }
 
+  // Las partes restantes son restricciones o texto libre
   for (let i = startIdx; i < parts.length; i++) {
     const part = parts[i];
     if (DIETARY_OPTIONS.some((opt) => opt.value === part)) {
@@ -46,7 +85,17 @@ function parseDietaryInfo(dietaryInfo, menuEnabled) {
   return { mealChoice, dietarySelection, dietaryOther };
 }
 
+/**
+ * Hook de gestión de RSVP.
+ *
+ * @param {string} inviteToken - Token de la invitación.
+ * @param {function} setAdminMessage - Setter para mensajes en panel admin.
+ * @param {function} setAdminMessageType - Setter para tipo de mensaje admin.
+ * @param {boolean} menuEnabled - Si el menú está habilitado.
+ * @returns {object} Estado y handlers del RSVP.
+ */
 export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuEnabled) {
+  // ─── Estados del RSVP ──────────────────────────────────
   const [rsvpEntries, setRsvpEntries] = useState([]);
   const [rsvpForm, setRsvpForm] = useState({
     guestName: "",
@@ -63,9 +112,12 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
   const [isRsvpSubmitting, setIsRsvpSubmitting] = useState(false);
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [alreadySubmittedEntry, setAlreadySubmittedEntry] = useState(null);
+  /** Timeout para limpiar el estado de envío. */
   const rsvpSubmitTimeoutRef = useRef(null);
+  /** Referencia para evitar re-precarga cíclica del formulario. */
   const prefillRef = useRef(null);
 
+  // ─── Limpieza del timeout al desmontar ─────────────────
   useEffect(() => {
     const timeout = rsvpSubmitTimeoutRef.current;
     return () => {
@@ -73,6 +125,10 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
     };
   }, []);
 
+  /**
+   * Carga las respuestas RSVP desde Firestore y las ordena por fecha.
+   * Desencripta la información dietética de cada entrada.
+   */
   useEffect(() => {
     const hydrateRsvp = async () => {
       if (!inviteToken) return;
@@ -81,6 +137,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
         const entries = (await Promise.all(snapshot.docs
           .map(async (entryDoc) => {
             const data = entryDoc.data();
+            // Normaliza la fecha de envío (puede ser Timestamp, string o número)
             const submittedAt = typeof data.submittedAt?.toDate === "function"
               ? data.submittedAt.toDate().toISOString()
               : typeof data.submittedAt === "string"
@@ -99,6 +156,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
               submittedAt,
             };
           })))
+          // Ordena por fecha, más reciente primero
           .sort((a, b) => new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime());
         setRsvpEntries(entries);
       } catch {
@@ -108,6 +166,10 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
     hydrateRsvp();
   }, [inviteToken]);
 
+  /**
+   * Detecta si el invitado ya confirmó (por nombre) y pre-llena el formulario.
+   * Usa prefillRef para evitar bucles de actualización.
+   */
   useEffect(() => {
     const name = rsvpForm.guestName.trim().toLowerCase();
     if (!name) {
@@ -117,6 +179,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
     }
     const match = rsvpEntries.find((e) => e.guestName.trim().toLowerCase() === name) || null;
     if (match) {
+      // Solo pre-llena si es una entrada nueva (diferente ID)
       if (match.id !== prefillRef.current) {
         prefillRef.current = match.id;
         const parsed = parseDietaryInfo(match.dietaryInfo || "", menuEnabled);
@@ -137,6 +200,11 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
     }
   }, [rsvpForm.guestName, rsvpEntries, menuEnabled]);
 
+  /**
+   * Alterna una restricción alimentaria en la selección del formulario.
+   *
+   * @param {string} value - Valor de la restricción a alternar.
+   */
   const handleDietaryToggle = useCallback((value) => {
     setRsvpForm((current) => {
       const exists = current.dietarySelection.includes(value);
@@ -149,6 +217,14 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
     });
   }, []);
 
+  /**
+   * Actualiza un campo individual del formulario RSVP.
+   * Si cambia la asistencia a "no", resetea los acompañantes a 0.
+   * Si cambia el nombre, resetea la referencia de precarga.
+   *
+   * @param {string} field - Nombre del campo.
+   * @param {*} value - Nuevo valor.
+   */
   const updateRsvpField = useCallback((field, value) => {
     if (field === "attendance") {
       setRsvpForm((current) => ({
@@ -164,8 +240,22 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
     setRsvpForm((current) => ({ ...current, [field]: value }));
   }, []);
 
+  /**
+   * Envía la confirmación de asistencia.
+   *
+   * Validaciones:
+   * - Nombre obligatorio.
+   * - Elección de menú obligatoria si el menú está habilitado.
+   * - Consentimiento de privacidad obligatorio.
+   * - Fecha de nacimiento obligatoria.
+   * - Consentimiento parental para menores de 14 años.
+   * - Consentimiento de datos de salud si hay restricciones alimentarias.
+   *
+   * @param {Event} event - Evento submit del formulario.
+   */
   const handleRsvpSubmit = useCallback(async (event) => {
     event.preventDefault();
+    // Previene envíos duplicados
     if (isRsvpSubmitting) return;
 
     const single = rsvpForm.guestName.trim();
@@ -195,6 +285,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
       return;
     }
 
+    // Consentimiento de datos de salud requerido si hay datos sensibles
     if (rsvpForm.attendance === "yes") {
       const hasHealthData = rsvpForm.dietarySelection.length > 0 || rsvpForm.dietaryOther.trim();
       if (hasHealthData && !rsvpForm.healthConsent) {
@@ -203,6 +294,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
       }
     }
 
+    // Construye la cadena de información dietética
     const base = rsvpForm.attendance === "yes" && menuEnabled ? `Menú: ${rsvpForm.mealChoice}` : "";
     const diet = rsvpForm.dietaryOther?.trim() ? [...rsvpForm.dietarySelection, rsvpForm.dietaryOther.trim()] : rsvpForm.dietarySelection;
     const dietaryInfo = [base, ...diet].filter(Boolean).join(" | ");
@@ -210,6 +302,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
     setIsRsvpSubmitting(true);
     const now = new Date().toISOString();
     try {
+      // Encripta la información dietética antes de guardar
       const encryptedDietaryInfo = await encrypt(dietaryInfo, inviteToken);
       const payload = {
         guestName: single,
@@ -221,23 +314,28 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
         privacyConsent: true,
         privacyConsentAt: serverTimestamp(),
       };
+      // Incluye fecha de nacimiento si se proporcionó
       if (rsvpForm.birthDate) {
         payload.birthDate = rsvpForm.birthDate;
       }
+      // Marca consentimiento parental para menores
       if (age !== null && age < 14) {
         payload.parentalConsent = true;
       }
+      // Marca consentimiento de datos de salud
       if (rsvpForm.healthConsent) {
         payload.healthConsent = true;
         payload.healthConsentAt = serverTimestamp();
       }
       const docRef = await addDoc(RSVP_COLLECTION_REF, payload);
+      // Añade la entrada a la lista local
       setRsvpEntries((current) => [{ ...payload, id: docRef.id, submittedAt: now, dietaryInfo }, ...current]);
       setRsvpMessage(
         rsvpForm.attendance === "yes"
           ? `Gracias, ${single}. Tu asistencia quedó registrada.`
           : `Gracias, ${single}. Lamentamos que no puedas asistir.`,
       );
+      // Resetea el formulario tras envío exitoso
       setRsvpForm({
         guestName: "", attendance: "yes", mealChoice: "",
         dietarySelection: [], dietaryOther: "", privacyConsent: false, healthConsent: false,
@@ -253,6 +351,10 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
     }
   }, [isRsvpSubmitting, rsvpForm, inviteToken, menuEnabled]);
 
+  /**
+   * Elimina la confirmación de asistencia del invitado actual.
+   * Requiere confirmación del usuario.
+   */
   const handleDeleteRsvp = useCallback(async () => {
     if (!alreadySubmittedEntry?.id) return;
     if (!window.confirm("¿Estás seguro de retirar tu confirmación?")) return;
@@ -260,6 +362,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
       await deleteDoc(doc(RSVP_COLLECTION_REF, alreadySubmittedEntry.id));
       setRsvpEntries((current) => current.filter((e) => e.id !== alreadySubmittedEntry.id));
       setRsvpMessage("Tu confirmación ha sido retirada.");
+      // Resetea el formulario
       setRsvpForm({
         guestName: "", attendance: "yes", mealChoice: "",
         dietarySelection: [], dietaryOther: "", privacyConsent: false, healthConsent: false,
@@ -273,6 +376,10 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
     }
   }, [alreadySubmittedEntry]);
 
+  /**
+   * Vacía todas las respuestas de asistencia (solo admin).
+   * Requiere confirmación del usuario.
+   */
   const handleClearRsvpEntries = useCallback(async () => {
     if (!window.confirm("¿Borrar todas las respuestas de asistencia? Esta acción no se puede deshacer.")) return;
     try {
