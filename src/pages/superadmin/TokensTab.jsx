@@ -125,7 +125,7 @@ const TokensTab = memo(function TokensTab() {
                 opacity: tt.used ? 0.6 : 1,
               }}
             >
-              <div>
+    <div style={{ display: "flex", flexDirection: "column", height: "100%", minHeight: 0 }}>
                 <p style={{ margin: 0, color: "var(--setup-title)", fontFamily: "monospace", fontSize: "0.9rem" }}>
                   {tt.id}
                 </p>
