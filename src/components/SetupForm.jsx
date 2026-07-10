@@ -100,11 +100,16 @@ export default function SetupForm({ prefix = "" }) {
    */
   const handleGalleryUpload = useCallback(async (e) => {
     const files = Array.from(e.target.files || []);
+    const input = e.target;
     if (!files.length) return;
     const valid = files.filter(f => ALLOWED_UPLOAD_TYPES.has(f.type) && f.size <= MAX_UPLOAD_SIZE_BYTES);
     if (!valid.length) { addToast("error", t("setup.noValidFiles")); return; }
     const upload = startUploadToast(t("setup.galleryUploading", { total: valid.length }));
     try {
+      // Acumula los dataUrls subidos para mostrarlos como miniaturas
+      const currentImages = (() => {
+        try { return JSON.parse(formData.galleryImages || "[]"); } catch { return []; }
+      })();
       for (let i = 0; i < valid.length; i++) {
         const file = valid[i];
         // Cada archivo ocupa un segmento del progreso total (0→100).
@@ -116,13 +121,16 @@ export default function SetupForm({ prefix = "" }) {
         };
         const { encrypted, dataUrl } = await uploadImage(inviteToken, file, onFileProgress);
         await addGalleryImage(inviteToken, encrypted, dataUrl, onFileProgress);
+        // Añade la imagen a la vista previa de miniaturas en tiempo real
+        currentImages.push(dataUrl);
+        updateFormField("galleryImages", JSON.stringify(currentImages));
       }
       upload.complete(t("setup.galleryUploadSuccess", { count: valid.length }));
     } catch {
       upload.error(t("setup.galleryUploadFailed"));
     }
-    e.target.value = "";
-  }, [inviteToken, updateFormField, startUploadToast, addToast]);
+    if (input) input.value = "";
+  }, [inviteToken, formData.galleryImages, updateFormField, startUploadToast, addToast, t]);
 
   return (
     <form className="setup-form setup-form--nested" onSubmit={handleSaveSetup}>
