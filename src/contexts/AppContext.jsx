@@ -25,7 +25,7 @@ import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES, defaultConfig, MONTH_OPTIO
 import { normalizeConfig } from "../lib/normalize-config";
 import { decodeInviteConfig } from "../lib/invite-config-codec";
 import { compressImage } from "../lib/image-utils";
-import { uploadImage, loadDecryptedField, deleteGallery } from "../lib/image-store";
+import { uploadImage, loadDecryptedField, deleteGallery, loadGallery } from "../lib/image-store";
 import { saveSession, clearSession } from "../lib/sessionVars";
 import { safeSetItem, safeGetItem, safeRemoveItem } from "../lib/storage";
 import { encrypt, decrypt } from "../lib/crypto-utils";
@@ -278,6 +278,15 @@ export function AppProvider({ children }) {
         const hydrated = { ...defaultConfig, ...parsed };
         setConfig(hydrated);
         setFormData(hydrated);
+        // Carga las imágenes de la galería desde Firestore para mostrarlas
+        // como miniaturas en el formulario de administración (máx 10).
+        if (isAdminRoute || location.pathname.includes("/setup")) {
+          loadGallery(inviteToken).then((urls) => {
+            if (urls.length) {
+              setFormData((prev) => ({ ...prev, galleryImages: JSON.stringify(urls.slice(0, 10)) }));
+            }
+          }).catch(() => {});
+        }
         // Guarda en caché local
         safeSetItem(`wedin_invite_cache_${inviteToken}`, JSON.stringify({ data: hydrated, cachedAt: Date.now() }));
         setVisitCount(typeof snapshot.data()._visits === "number" ? snapshot.data()._visits : 0);
@@ -322,6 +331,12 @@ export function AppProvider({ children }) {
       setConfig(hydrated);
       setFormData(hydrated);
       setHasStoredConfig(true);
+      // Recarga también la galería al restaurar
+      loadGallery(inviteToken).then((urls) => {
+        if (urls.length) {
+          setFormData((prev) => ({ ...prev, galleryImages: JSON.stringify(urls.slice(0, 10)) }));
+        }
+      }).catch(() => {});
     } catch {}
   }, [inviteToken]);
 

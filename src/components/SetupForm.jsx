@@ -104,17 +104,29 @@ export default function SetupForm({ prefix = "" }) {
     if (!files.length) return;
     const valid = files.filter(f => ALLOWED_UPLOAD_TYPES.has(f.type) && f.size <= MAX_UPLOAD_SIZE_BYTES);
     if (!valid.length) { addToast("error", t("setup.noValidFiles")); return; }
-    const upload = startUploadToast(t("setup.galleryUploading", { total: valid.length }));
+    // Acumula los dataUrls subidos para mostrarlos como miniaturas
+    const currentImages = (() => {
+      try { return JSON.parse(formData.galleryImages || "[]"); } catch { return []; }
+    })();
+    // Límite de 10 imágenes en la galería
+    const MAX_GALLERY = 10;
+    if (currentImages.length >= MAX_GALLERY) {
+      addToast("error", t("setup.galleryMaxReached", { max: MAX_GALLERY }));
+      if (input) input.value = "";
+      return;
+    }
+    const remaining = MAX_GALLERY - currentImages.length;
+    const toUpload = valid.slice(0, remaining);
+    if (valid.length > remaining) {
+      addToast("warning", t("setup.galleryTrimmed", { selected: valid.length, max: MAX_GALLERY }));
+    }
+    const upload = startUploadToast(t("setup.galleryUploading", { total: toUpload.length }));
     try {
-      // Acumula los dataUrls subidos para mostrarlos como miniaturas
-      const currentImages = (() => {
-        try { return JSON.parse(formData.galleryImages || "[]"); } catch { return []; }
-      })();
-      for (let i = 0; i < valid.length; i++) {
-        const file = valid[i];
+      for (let i = 0; i < toUpload.length; i++) {
+        const file = toUpload[i];
         // Cada archivo ocupa un segmento del progreso total (0→100).
-        const fileBase = Math.round((i / valid.length) * 100);
-        const fileSpan = Math.round(100 / valid.length);
+        const fileBase = Math.round((i / toUpload.length) * 100);
+        const fileSpan = Math.round(100 / toUpload.length);
         const onFileProgress = (p) => {
           // Escala el progreso del archivo (0–100) al rango del segmento.
           upload.update(fileBase + Math.round((p / 100) * fileSpan));
@@ -125,7 +137,7 @@ export default function SetupForm({ prefix = "" }) {
         currentImages.push(dataUrl);
         updateFormField("galleryImages", JSON.stringify(currentImages));
       }
-      upload.complete(t("setup.galleryUploadSuccess", { count: valid.length }));
+      upload.complete(t("setup.galleryUploadSuccess", { count: toUpload.length }));
     } catch {
       upload.error(t("setup.galleryUploadFailed"));
     }

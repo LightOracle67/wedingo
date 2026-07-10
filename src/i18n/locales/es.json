@@ -294,6 +294,8 @@
     "galleryUploadSuccess": "{{count}} foto(s) subida(s) correctamente.",
     "galleryUploadFailed": "No se pudieron subir las fotos.",
     "galleryUploading": "Subiendo {{total}} foto(s)...",
+    "galleryMaxReached": "Máximo {{max}} imágenes en la galería.",
+    "galleryTrimmed": "Se subirán {{max}} de {{selected}} imágenes (límite de galería).",
     "noValidFiles": "Ningún archivo válido. Máximo 20 MB, JPG/PNG."
   },
   "admin": {
