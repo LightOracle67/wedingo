@@ -39,7 +39,7 @@ export default function SetupForm({ prefix = "" }) {
     saveMessage, saveError, maxAllowedYear, isTokenVerified, inviteToken, hasStoredConfig, setLegalModal,
   } = useApp();
 
-  const { addToast } = useToast();
+  const { addToast, startUploadToast } = useToast();
   const { t } = useTranslation();
 
   /** Referencias a los inputs de archivo para resetearlos tras subida. */
@@ -78,13 +78,17 @@ export default function SetupForm({ prefix = "" }) {
     if (!file) return;
     if (!ALLOWED_UPLOAD_TYPES.has(file.type)) { addToast("error", t("setup.errorFileFormat")); return; }
     if (file.size > MAX_UPLOAD_SIZE_BYTES) { addToast("error", t("setup.errorFileSize")); return; }
+    const upload = startUploadToast(t("setup.photoUploading"));
     try {
-      const { dataUrl } = await uploadImage(inviteToken, file);
+      const { dataUrl } = await uploadImage(inviteToken, file, (p) => upload.update(p));
+      upload.update(90);
       updateFormField("couplePhoto", dataUrl);
-      addToast("success", t("setup.photoUploaded"));
-    } catch { addToast("error", t("setup.photoUploadFailed")); }
+      upload.complete(t("setup.photoUploaded"));
+    } catch {
+      upload.error(t("setup.photoUploadFailed"));
+    }
     e.target.value = "";
-  }, [inviteToken, updateFormField, addToast]);
+  }, [inviteToken, updateFormField, startUploadToast, addToast]);
 
   /**
    * Maneja la subida de múltiples imágenes a la galería.
@@ -97,15 +101,26 @@ export default function SetupForm({ prefix = "" }) {
     if (!files.length) return;
     const valid = files.filter(f => ALLOWED_UPLOAD_TYPES.has(f.type) && f.size <= MAX_UPLOAD_SIZE_BYTES);
     if (!valid.length) { addToast("error", t("setup.noValidFiles")); return; }
+    const upload = startUploadToast(t("setup.galleryUploading", { total: valid.length }));
     try {
-      for (const file of valid) {
-        const { encrypted, dataUrl } = await uploadImage(inviteToken, file);
-        await addGalleryImage(inviteToken, encrypted, dataUrl);
+      for (let i = 0; i < valid.length; i++) {
+        const file = valid[i];
+        // Cada archivo ocupa un segmento del progreso total (0→100).
+        const fileBase = Math.round((i / valid.length) * 100);
+        const fileSpan = Math.round(100 / valid.length);
+        const onFileProgress = (p) => {
+          // Escala el progreso del archivo (0–100) al rango del segmento.
+          upload.update(fileBase + Math.round((p / 100) * fileSpan));
+        };
+        const { encrypted, dataUrl } = await uploadImage(inviteToken, file, onFileProgress);
+        await addGalleryImage(inviteToken, encrypted, dataUrl, onFileProgress);
       }
-      addToast("success", t("setup.galleryUploadSuccess", { count: valid.length }));
-    } catch { addToast("error", t("setup.galleryUploadFailed")); }
+      upload.complete(t("setup.galleryUploadSuccess", { count: valid.length }));
+    } catch {
+      upload.error(t("setup.galleryUploadFailed"));
+    }
     e.target.value = "";
-  }, [inviteToken, updateFormField, addToast]);
+  }, [inviteToken, updateFormField, startUploadToast, addToast]);
 
   return (
     <form className="setup-form setup-form--nested" onSubmit={handleSaveSetup}>
