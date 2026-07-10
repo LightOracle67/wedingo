@@ -1,3 +1,22 @@
+/**
+ * AdminPage.jsx
+ * ─────────────────────────────────────────────────────────────
+ * Página de administración de la invitación de boda.
+ *
+ * Contiene pestañas para:
+ * - Panel: Estadísticas, acciones rápidas, exportar PDF.
+ * - Invitación: Formulario de edición de la configuración.
+ * - Asistencia: Lista de RSVPs con filtros y búsqueda.
+ * - Compartir: Enlace de invitación, WhatsApp, QR.
+ * - Acceso: Gestión de tokens y sesiones.
+ * - Soporte: Información de ayuda y contacto.
+ *
+ * Protegida: redirige a /setup si no hay configuración guardada
+ * o a la invitación pública si no hay sesión de admin activa.
+ *
+ * @module AdminPage
+ */
+
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -12,6 +31,9 @@ import AccessTab from "./admin/AccessTab";
 import ShareTab from "./admin/ShareTab";
 import SupportTab from "./admin/SupportTab";
 
+/**
+ * Mapa de claves de pestaña a IDs de traducción.
+ */
 const TAB_KEY_MAP = {
   panel: "panel",
   invitacion: "invitation",
@@ -21,6 +43,9 @@ const TAB_KEY_MAP = {
   soporte: "support",
 };
 
+/**
+ * Definición de las pestañas disponibles en el panel de admin.
+ */
 const TABS = [
   { key: "panel" },
   { key: "invitacion" },
@@ -30,9 +55,15 @@ const TABS = [
   { key: "soporte" },
 ];
 
+/**
+ * Página principal de administración de la boda.
+ *
+ * @returns {JSX.Element} Panel de administración con pestañas.
+ */
 export default function AdminPage() {
   const { t } = useTranslation();
   const { inviteToken } = useParams();
+  // ─── Estados del contexto global ───────────────────────
   const {
     hasStoredConfig, isConfigLoading, configLoadError,
     isAdminTokenLoggedIn, config,
@@ -49,6 +80,7 @@ export default function AdminPage() {
 
   const { addToast } = useToast();
 
+  // ─── Muestra mensajes de auth como toasts ──────────────
   useEffect(() => {
     if (authMessage) addToast(authMessageType === "success" ? "success" : "error", authMessage);
   }, [authMessage, authMessageType, addToast]);
@@ -57,10 +89,15 @@ export default function AdminPage() {
     if (adminMessage) addToast(adminMessageType === "error" ? "error" : "success", adminMessage);
   }, [adminMessage, adminMessageType, addToast]);
 
+  // ─── Estados locales de UI ─────────────────────────────
   const [activeTab, setActiveTab] = useState("panel");
   const [searchQuery, setSearchQuery] = useState("");
   const [attendanceFilter, setAttendanceFilter] = useState("all");
 
+  /**
+   * Filtra las entradas RSVP según el filtro de asistencia y la búsqueda.
+   * Se recalcula cuando cambian las entradas, el filtro o la búsqueda.
+   */
   const filteredEntries = useMemo(() => {
     let result = rsvpEntries;
     if (attendanceFilter === "yes") result = result.filter((e) => e.attendance === "yes");
@@ -72,22 +109,31 @@ export default function AdminPage() {
     return result;
   }, [rsvpEntries, attendanceFilter, searchQuery]);
 
+  /** Callback memoizado para cambiar de pestaña. */
   const setActiveTabAndFilter = useCallback((tab) => {
     setActiveTab(tab);
   }, []);
 
+  /** Callback memoizado para cambiar el filtro de asistencia. */
   const setAttendanceFilterValue = useCallback((filter) => {
     setAttendanceFilter(filter);
   }, []);
 
+  /** Nombre de la pareja formateado para mostrar en el panel. */
   const coupleName = `${config.firstName} & ${config.secondName}`;
 
+  /**
+   * Genera y abre un PDF imprimible con la lista de asistentes.
+   * Crea un HTML con estilos de impresión y abre la ventana de impresión.
+   */
   const exportPdf = useCallback(() => {
+    // Construye las filas de la tabla con escape HTML para prevenir XSS
     const rows = rsvpEntries.map((e) =>
       `<tr><td>${escHtml(e.guestName)}</td><td>${e.attendance === "yes" ? t("panel.attends") : t("panel.notAttends")}</td><td>${e.attendance === "yes" ? e.companions : 0}</td><td>${escHtml(e.dietaryInfo)}</td></tr>`
     ).join("");
     const tc = rsvpEntries.filter(e => e.attendance === "yes").length;
     const td = rsvpEntries.filter(e => e.attendance === "no").length;
+    // HTML completo con estilos para impresión
     const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${t("admin.pdfTitle", { name: escHtml(coupleName) })}</title><style>
       @page{margin:2cm}body{font-family:system-ui,sans-serif;font-size:12px;color:#222;padding:2rem}h1{font-size:18px;margin-bottom:4px}table{width:100%;border-collapse:collapse;margin-top:8px}th,td{border:1px solid #d4d0c8;padding:6px 8px}tr:nth-child(even){background:#faf8f5}.stats{display:flex;gap:1rem;margin:12px 0;font-size:13px}.stat{background:#f5f3ef;padding:8px 14px;border-radius:8px}@media print{body{padding:0}}
     </style></head><body>
@@ -101,10 +147,12 @@ export default function AdminPage() {
     const url = URL.createObjectURL(blob);
     const w = window.open(url, "_blank");
     if (w) {
+      // Abre el diálogo de impresión tras un pequeño retraso
       setTimeout(() => { w.focus(); w.print(); URL.revokeObjectURL(url); }, 500);
     }
   }, [rsvpEntries, coupleName, t]);
 
+  // ─── Estados de carga ──────────────────────────────────
   if (isConfigLoading) {
     return (
       <div className="setup-layout">
@@ -121,6 +169,7 @@ export default function AdminPage() {
     );
   }
 
+  // ─── Error de carga ────────────────────────────────────
   if (configLoadError) {
     return (
       <div className="setup-layout">
@@ -142,24 +191,27 @@ export default function AdminPage() {
     );
   }
 
+  // ─── Redirección si no hay configuración guardada ──────
   if (!hasStoredConfig) {
     return <Navigate to={`/${inviteToken}/setup`} replace />;
   }
 
+  // ─── Redirección si no hay sesión de admin activa ──────
   if (!isAdminTokenLoggedIn) {
     return <Navigate to={`/${inviteToken}`} replace />;
   }
 
+  // ─── Cálculo de estadísticas de asistencia ─────────────
   const confirmedResponses = rsvpEntries.filter((e) => e.attendance === "yes").length;
   const declinedResponses = rsvpEntries.filter((e) => e.attendance === "no").length;
   const totalGuests = rsvpEntries.reduce(
     (sum, e) => sum + (e.attendance === "yes" ? e.companions : 0), 0,
   );
 
-
   return (
     <div className="setup-layout setup-layout--flush">
       <section className="setup-card setup-card--wide allow-select" aria-label={t("admin.privateArea")}>
+        {/* ── Cabecera del panel ── */}
         <header className="setup-header">
           <div>
             <p className="setup-eyebrow">{t("admin.privateArea")}</p>
@@ -168,6 +220,7 @@ export default function AdminPage() {
           </div>
         </header>
 
+        {/* ── Navegación por pestañas ── */}
         <nav className="admin-tabs" role="tablist" aria-label="Secciones">
           {TABS.map((tab) => (
             <button
@@ -183,7 +236,9 @@ export default function AdminPage() {
           ))}
         </nav>
 
+        {/* ── Contenido de la pestaña activa ── */}
         <div className="setup-form" role="tabpanel" id={"tabpanel-" + activeTab} aria-labelledby={"tab-" + activeTab}>
+          {/* Pestaña: Panel de control */}
           {activeTab === "panel" && (
             <PanelTab
               inviteToken={inviteToken}
@@ -200,8 +255,10 @@ export default function AdminPage() {
             />
           )}
 
+          {/* Pestaña: Editar invitación */}
           {activeTab === "invitacion" && <SetupForm prefix="admin" />}
 
+          {/* Pestaña: Lista de asistencia */}
           {activeTab === "asistencia" && (
             <AttendanceTab
               searchQuery={searchQuery}
@@ -216,6 +273,7 @@ export default function AdminPage() {
             />
           )}
 
+          {/* Pestaña: Compartir invitación */}
           {activeTab === "compartir" && (
             <ShareTab
               inviteToken={inviteToken}
@@ -225,6 +283,7 @@ export default function AdminPage() {
             />
           )}
 
+          {/* Pestaña: Gestión de acceso */}
           {activeTab === "acceso" && (
             <AccessTab
               setupToken={setupToken}
@@ -236,8 +295,8 @@ export default function AdminPage() {
             />
           )}
 
+          {/* Pestaña: Soporte */}
           {activeTab === "soporte" && <SupportTab />}
-
         </div>
       </section>
     </div>

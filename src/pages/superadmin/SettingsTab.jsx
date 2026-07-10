@@ -1,10 +1,10 @@
-import { useState, useCallback } from "react";
+import { memo, useState, useCallback } from "react";
 import { useSuperAdmin } from "../../contexts/SuperAdminContext";
 import { SUPERADMIN_EMAIL } from "../../lib/superadmin";
 import { getSession, clearSession } from "../../lib/sessionVars";
 import { useTranslation } from "react-i18next";
 
-export default function SettingsTab() {
+const SettingsTab = memo(function SettingsTab() {
   const { t } = useTranslation();
   const { user, logout } = useSuperAdmin();
   const [session, setSession] = useState(() => getSession());
@@ -68,4 +68,6 @@ export default function SettingsTab() {
       </div>
     </div>
   );
-}
+});
+
+export default SettingsTab;
