@@ -150,27 +150,20 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
         <div className="mt-4" style={{ position: "relative", userSelect: "none" }}>
           {/* Skeleton de carga mientras la imagen no está lista. */}
           {!mainLoaded[clamped] ? (
-            <div style={{ width: "100%", aspectRatio: "16/10", borderRadius: "0.9rem", background: "color-mix(in srgb, var(--setup-field-bg) 60%, transparent)", display: "grid", placeItems: "center" }}>
+            <div className="gallery-main-skeleton">
               <div className="page-loading" />
             </div>
           ) : null}
 
-          {/* Capa de fondo (siempre presente para evitar parpadeo). */}
-          <div style={{
-            width: "100%", aspectRatio: "16/10", borderRadius: "0.9rem", overflow: "hidden",
-            position: "relative", display: mainLoaded[clamped] ? "block" : "none",
-          }}>
+          {/* Contenedor de la imagen: se adapta al tamaño natural, máx 70vh. */}
+          <div className="gallery-main-container" style={{ display: mainLoaded[clamped] ? "flex" : "none" }}>
             {/* Imagen saliente (fade out). */}
             {fading && prevClamped !== null && mainLoaded[prevClamped] && (
               <img
                 src={images[prevClamped]}
                 alt=""
                 aria-hidden="true"
-                className="gallery-fade gallery-fade--out"
-                style={{
-                  width: "100%", height: "100%", objectFit: "cover",
-                  position: "absolute", inset: 0,
-                }}
+                className="gallery-fade gallery-fade--out gallery-main-img"
               />
             )}
 
@@ -179,12 +172,8 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
               src={images[clamped]}
               alt={t("gallery.imageAlt")}
               onLoad={() => setMainLoaded((p) => ({ ...p, [clamped]: true }))}
-              className={fading ? "gallery-fade gallery-fade--in" : ""}
-              style={{
-                width: "100%", height: "100%", objectFit: "cover",
-                display: "block",
-                border: "1px solid color-mix(in srgb, var(--invite-shell-border) 70%, transparent)",
-              }}
+              className={`gallery-main-img${fading ? " gallery-fade gallery-fade--in" : ""}`}
+              style={{ position: fading ? "absolute" : "relative" }}
             />
           </div>
 
