@@ -37,10 +37,10 @@ const LegalModal = memo(function LegalModal({ section, onClose }) {
   return (
     <div className={`modal-overlay ${closing ? "modal-overlay--closing" : ""}`} onClick={handleClose} role="dialog" aria-modal="true" aria-label={t("legal.modalTitle")}>
       <div className={`modal-card ${closing ? "modal-card--closing" : ""}`} ref={modalRef} onClick={(e) => e.stopPropagation()}
-        style={{ width: "min(95vw, 760px)", minWidth: "360px", maxHeight: "calc(100dvh - 2rem)", display: "flex", flexDirection: "column", padding: "1.2rem 1rem 1rem" }}>
+        style={{ width: "min(95vw, 960px)", minWidth: "360px", maxHeight: "calc(100dvh - 2rem)", display: "flex", flexDirection: "column", padding: "1.2rem 1rem 1rem" }}>
         <button className="modal-close" onClick={handleClose} aria-label={t("common.close")}>&times;</button>
         <p className="modal-title">{t("legal.modalTitle")}</p>
-        <div style={{ overflowY: "auto", flex: 1, marginTop: "0.5rem" }}>
+        <div style={{ overflowY: "auto", overflowX: "hidden", flex: 1, marginTop: "0.5rem", wordBreak: "break-word" }}>
           {SECTIONS.map((s) => (
             <div key={s.id}>
               <button type="button" onClick={() => toggle(s.id)}
