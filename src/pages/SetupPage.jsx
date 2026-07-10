@@ -50,8 +50,8 @@ export default function SetupPage() {
 
   if (isConfigLoading) {
     return (
-      <div className="setup-layout">
-        <section className="setup-card allow-select" aria-label={t("setup.loadingTitle")}>
+      <div className="setup-layout setup-layout--full">
+        <section className="setup-card setup-card--full allow-select" aria-label={t("setup.loadingTitle")}>
           <header className="setup-header">
             <div>
               <p className="setup-eyebrow">{t("setup.configTitle")}</p>
@@ -66,8 +66,8 @@ export default function SetupPage() {
 
   if (configLoadError) {
     return (
-      <div className="setup-layout">
-        <section className="setup-card allow-select" aria-label={t("setup.errorTitle")}>
+      <div className="setup-layout setup-layout--full">
+        <section className="setup-card setup-card--full allow-select" aria-label={t("setup.errorTitle")}>
           <header className="setup-header">
             <div>
               <p className="setup-eyebrow">{t("common.error")}</p>
@@ -94,8 +94,8 @@ export default function SetupPage() {
   const coupleName = `${config.firstName} & ${config.secondName}`;
 
   return (
-    <div className="setup-layout">
-      <section className="setup-card allow-select" aria-label={t("setup.configTitle")}>
+    <div className="setup-layout setup-layout--full">
+      <section className="setup-card setup-card--full allow-select" aria-label={t("setup.configTitle")}>
         <header className="setup-header">
           <div>
             <p className="setup-eyebrow">{t("setup.configTitle")}</p>

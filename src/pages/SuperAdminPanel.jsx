@@ -35,8 +35,8 @@ export default function SuperAdminPanel() {
 
   if (isLoading) {
     return (
-      <div className="setup-layout">
-        <section className="setup-card allow-select" aria-label={t("common.loading")}>
+      <div className="setup-layout setup-layout--full">
+        <section className="setup-card setup-card--full allow-select" aria-label={t("common.loading")}>
           <header className="setup-header">
             <div>
               <p className="setup-eyebrow">{t("superadmin.superadmin")}</p>

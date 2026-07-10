@@ -155,8 +155,8 @@ export default function AdminPage() {
   // ─── Estados de carga ──────────────────────────────────
   if (isConfigLoading) {
     return (
-      <div className="setup-layout">
-        <section className="setup-card allow-select" aria-label={t("setup.loadingTitle")}>
+      <div className="setup-layout setup-layout--full">
+        <section className="setup-card setup-card--full allow-select" aria-label={t("setup.loadingTitle")}>
           <header className="setup-header">
             <div>
               <p className="setup-eyebrow">{t("setup.configTitle")}</p>
@@ -172,8 +172,8 @@ export default function AdminPage() {
   // ─── Error de carga ────────────────────────────────────
   if (configLoadError) {
     return (
-      <div className="setup-layout">
-        <section className="setup-card allow-select" aria-label={t("common.error")}>
+      <div className="setup-layout setup-layout--full">
+        <section className="setup-card setup-card--full allow-select" aria-label={t("common.error")}>
           <header className="setup-header">
             <div>
               <p className="setup-eyebrow">{t("common.error")}</p>
@@ -209,8 +209,8 @@ export default function AdminPage() {
   );
 
   return (
-    <div className="setup-layout setup-layout--flush">
-      <section className="setup-card setup-card--wide allow-select" aria-label={t("admin.privateArea")}>
+    <div className="setup-layout setup-layout--flush setup-layout--full">
+      <section className="setup-card setup-card--wide setup-card--full allow-select" aria-label={t("admin.privateArea")}>
         {/* ── Cabecera del panel ── */}
         <header className="setup-header">
           <div>
