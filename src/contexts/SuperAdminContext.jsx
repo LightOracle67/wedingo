@@ -18,11 +18,16 @@ export function SuperAdminProvider({ children }) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const renewRef = useRef(null);
+  /** Flag para evitar que onAuthStateChanged cierre sesión durante el login. */
+  const loggingInRef = useRef(false);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       const local = getSession();
       if (firebaseUser && firebaseUser.email === SUPERADMIN_EMAIL && local?.type === "superadmin") {
+        setUser(firebaseUser);
+      } else if (firebaseUser && firebaseUser.email === SUPERADMIN_EMAIL && loggingInRef.current) {
+        // Login en curso: no forzar cierre, esperar a que login() guarde la sesión
         setUser(firebaseUser);
       } else {
         if (firebaseUser && firebaseUser.email === SUPERADMIN_EMAIL) {
@@ -47,17 +52,21 @@ export function SuperAdminProvider({ children }) {
 
   const login = useCallback(async (email, password) => {
     setError("");
+    loggingInRef.current = true;
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
       if (result.user.email !== SUPERADMIN_EMAIL) {
         await signOut(auth);
         setError("Esta cuenta no tiene permisos de administración.");
+        loggingInRef.current = false;
         return false;
       }
       saveSession("superadmin", result.user.email, { uid: result.user.uid });
       setUser(result.user);
+      loggingInRef.current = false;
       return true;
     } catch (err) {
+      loggingInRef.current = false;
       if (err.code === "auth/user-not-found" || err.code === "auth/wrong-password" || err.code === "auth/invalid-credential") {
         setError("Credenciales incorrectas.");
       } else if (err.code === "auth/too-many-requests") {
