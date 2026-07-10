@@ -147,10 +147,13 @@ export function useStoryNavigation(visibleOrder) {
     let touchStartY = null;
     const IGNORE_SELECTOR = "input, textarea, select, [contenteditable]";
 
+    /** Verifica si el target es un Element del DOM antes de llamar a closest. */
+    const isElement = (target) => target instanceof Element;
+
     const handleWheel = (event) => {
-      if (event.target.closest(IGNORE_SELECTOR)) return;
+      if (isElement(event.target) && event.target.closest(IGNORE_SELECTOR)) return;
       // Si el scroll está dentro de una tarjeta, no navega salvo que llegue al borde.
-      const card = event.target.closest(".story-card");
+      const card = isElement(event.target) ? event.target.closest(".story-card") : null;
       if (card) {
         const { scrollTop, scrollHeight, clientHeight } = card;
         const atTop = scrollTop <= 0;
@@ -163,7 +166,7 @@ export function useStoryNavigation(visibleOrder) {
     };
 
     const handleKeyDown = (event) => {
-      if (event.target.closest(IGNORE_SELECTOR)) return;
+      if (isElement(event.target) && event.target.closest(IGNORE_SELECTOR)) return;
       if (event.key === "ArrowDown" || event.key === "PageDown" || event.key === " ") {
         event.preventDefault();
         startTransition(1);
@@ -175,7 +178,7 @@ export function useStoryNavigation(visibleOrder) {
     };
 
     const handleTouchStart = (event) => {
-      if (event.target.closest(IGNORE_SELECTOR)) {
+      if (isElement(event.target) && event.target.closest(IGNORE_SELECTOR)) {
         touchStartY = null;
         return;
       }
