@@ -723,7 +723,7 @@ export default function SetupForm({ prefix = "" }) {
                   return (
                     <div key={docId || i} style={{ display: "flex", gap: "0.5rem", alignItems: "center", background: "color-mix(in srgb, var(--setup-field-bg) 40%, transparent)", borderRadius: "0.5rem", padding: "0.5rem" }}>
                       <div style={{ position: "relative", flexShrink: 0 }}>
-                        <img src={src} alt={desc || t("setup.galleryUploadLabel")} style={{ width: "4.5rem", height: "4.5rem", objectFit: "cover", borderRadius: "0.4rem" }} />
+                        <img src={src} alt={desc || t("setup.galleryUploadLabel")} style={{ width: "5rem", height: "5rem", objectFit: "cover", borderRadius: "0.4rem", flexShrink: 0 }} />
                         <button type="button" onClick={async () => {
                           const arr = JSON.parse(formData.galleryImages || "[]");
                           const removed = arr.splice(i, 1)[0];
