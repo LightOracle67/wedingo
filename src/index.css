@@ -4971,6 +4971,38 @@ html.a11y-font-scale select {
    ═══════════════════════════════════════════════════════ */
 
 /** Contenedor de la imagen con posición relativa para capas de fade. */
+
+/** Skeleton de carga: ocupa el ancho completo con altura mínima. */
+.gallery-main-skeleton {
+  width: 100%;
+  min-height: 220px;
+  border-radius: 0.9rem;
+  background: color-mix(in srgb, var(--setup-field-bg) 60%, transparent);
+  display: grid;
+  place-items: center;
+}
+
+/** Contenedor principal de la imagen: se adapta al tamaño natural. */
+.gallery-main-container {
+  width: 100%;
+  max-height: 70vh;
+  border-radius: 0.9rem;
+  overflow: hidden;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  background: color-mix(in srgb, var(--setup-field-bg) 30%, transparent);
+}
+
+/** Imagen principal: se ajusta al contenedor sin recortar. */
+.gallery-main-img {
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 0.9rem;
+  border: 1px solid color-mix(in srgb, var(--invite-shell-border) 70%, transparent);
+}
+
 .gallery-fade {
   transition: opacity 350ms ease;
 }
