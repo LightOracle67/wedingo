@@ -75,6 +75,7 @@ export default function SetupForm({ prefix = "" }) {
    */
   const handleCouplePhotoUpload = useCallback(async (e) => {
     const file = e.target.files?.[0];
+    const input = e.target;
     if (!file) return;
     if (!ALLOWED_UPLOAD_TYPES.has(file.type)) { addToast("error", t("setup.errorFileFormat")); return; }
     if (file.size > MAX_UPLOAD_SIZE_BYTES) { addToast("error", t("setup.errorFileSize")); return; }
@@ -84,11 +85,12 @@ export default function SetupForm({ prefix = "" }) {
       upload.update(90);
       updateFormField("couplePhoto", dataUrl);
       upload.complete(t("setup.photoUploaded"));
-    } catch {
+    } catch (err) {
+      console.error("[upload] couplePhoto error:", err);
       upload.error(t("setup.photoUploadFailed"));
     }
-    e.target.value = "";
-  }, [inviteToken, updateFormField, startUploadToast, addToast]);
+    if (input) input.value = "";
+  }, [inviteToken, updateFormField, startUploadToast, addToast, t]);
 
   /**
    * Maneja la subida de múltiples imágenes a la galería.
