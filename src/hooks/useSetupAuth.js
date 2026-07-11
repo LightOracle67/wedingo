@@ -20,7 +20,7 @@ import { doc, getDoc, runTransaction, serverTimestamp, setDoc, updateDoc } from 
 import { db, invitationDocRef } from "../lib/firebase";
 import { defaultConfig } from "../lib/constants";
 import { generateSetupToken, normalizeTokenValue } from "../lib/token-utils";
-import { saveSession, getSession, renewSession, clearSession } from "../lib/sessionVars";
+import { saveSession, getSession, renewSession, clearSession, firestoreSessionExpiry } from "../lib/sessionVars";
 import { safeSetItem, safeGetItem, safeRemoveItem } from "../lib/storage";
 
 /**
@@ -186,9 +186,9 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
 
         const inviteSnap = await transaction.get(inviteRef);
         if (!inviteSnap.exists()) {
-          transaction.set(inviteRef, { ...defaultConfig, activeSession: serverTimestamp() });
+          transaction.set(inviteRef, { ...defaultConfig, activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry() });
         } else {
-          transaction.update(inviteRef, { activeSession: serverTimestamp() });
+          transaction.update(inviteRef, { activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry() });
         }
       });
 
@@ -258,9 +258,9 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
 
         const inviteSnap = await transaction.get(inviteRef);
         if (!inviteSnap.exists()) {
-          transaction.set(inviteRef, { ...defaultConfig, activeSession: serverTimestamp() });
+          transaction.set(inviteRef, { ...defaultConfig, activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry() });
         } else {
-          transaction.update(inviteRef, { activeSession: serverTimestamp() });
+          transaction.update(inviteRef, { activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry() });
         }
       });
 
@@ -355,7 +355,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
     if (token) {
       try {
         safeRemoveItem(`wedin_invite_cache_${token}`);
-        await updateDoc(invitationDocRef(token), { activeSession: null });
+        await updateDoc(invitationDocRef(token), { activeSession: null, sessionExpiresAt: null });
       } catch {}
     }
     navigate("/");

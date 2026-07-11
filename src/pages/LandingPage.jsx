@@ -8,7 +8,7 @@ import { generateInviteToken } from "../lib/utils";
 import { normalizeConfig } from "../lib/normalize-config";
 import { defaultConfig } from "../lib/constants";
 import { safeSetItem, safeGetItem } from "../lib/storage";
-import { saveSession } from "../lib/sessionVars";
+import { saveSession, firestoreSessionExpiry } from "../lib/sessionVars";
 import { useApp } from "../contexts/AppContext";
 
 export default function LandingPage() {
@@ -118,9 +118,9 @@ export default function LandingPage() {
           const inviteRef = invitationDocRef(target);
           const inviteSnapInTx = await transaction.get(inviteRef);
           if (!inviteSnapInTx.exists()) {
-            transaction.set(inviteRef, { ...defaultConfig, activeSession: serverTimestamp() });
+            transaction.set(inviteRef, { ...defaultConfig, activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry() });
           } else {
-            transaction.update(inviteRef, { activeSession: serverTimestamp() });
+            transaction.update(inviteRef, { activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry() });
           }
         });
       } catch {

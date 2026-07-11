@@ -12,7 +12,9 @@ service cloud.firestore {
 
     function hasActiveSession(tokenId) {
       return sessionExists(tokenId)
-        && get(/databases/$(database)/documents/invitations/$(tokenId)).data.activeSession is timestamp;
+        && get(/databases/$(database)/documents/invitations/$(tokenId)).data.activeSession is timestamp
+        && get(/databases/$(database)/documents/invitations/$(tokenId)).data.sessionExpiresAt is timestamp
+        && get(/databases/$(database)/documents/invitations/$(tokenId)).data.sessionExpiresAt > request.time;
     }
 
     function isAdminOf(tokenId) {
@@ -49,7 +51,8 @@ service cloud.firestore {
         && (request.auth != null || hasActiveSession(tokenId));
       allow update: if request.auth == null
         && request.resource.data.activeSession is timestamp
-        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['activeSession']);
+        && request.resource.data.sessionExpiresAt is timestamp
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['activeSession', 'sessionExpiresAt']);
       allow delete: if isSuperAdmin();
 
       /** Subcolección de imágenes de la galería (cifradas). */
