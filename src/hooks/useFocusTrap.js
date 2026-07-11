@@ -34,3 +34,17 @@ export function useFocusTrap(open) {
 
   return ref;
 }
+
+/**
+ * Hook que ejecuta un callback al pulsar Escape.
+ * @param {function} onEscape - Callback a ejecutar.
+ * @param {boolean} [enabled=true] - Si el hook está activo.
+ */
+export function useEscapeKey(onEscape, enabled = true) {
+  useEffect(() => {
+    if (!enabled) return;
+    const handleKey = (e) => { if (e.key === "Escape") onEscape(); };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [onEscape, enabled]);
+}

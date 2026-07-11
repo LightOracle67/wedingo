@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useFocusTrap } from "../hooks/useFocusTrap";
+import { useFocusTrap, useEscapeKey } from "../hooks/useFocusTrap";
 
 const STORAGE_KEY = "wedin_a11y";
 
@@ -46,17 +46,11 @@ export default function AccessibilityPanel({ open, onClose }) {
   const { t } = useTranslation();
   const [prefs, setPrefs] = useState(loadPrefs);
   const modalRef = useFocusTrap(open);
+  useEscapeKey(onClose, open);
 
   useEffect(() => {
     applyPrefs(prefs);
   }, [prefs]);
-
-  useEffect(() => {
-    if (!open) return;
-    const handleKey = (e) => { if (e.key === "Escape") onClose(); };
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
-  }, [open, onClose]);
 
   const toggle = (key) => {
     setPrefs((prev) => {
