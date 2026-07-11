@@ -17,7 +17,7 @@
  * @module AdminPage
  */
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { lazy, useCallback, useEffect, useMemo, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useApp } from "../contexts/AppContext";
@@ -25,11 +25,13 @@ import { useToast } from "../contexts/ToastContext";
 import { formatDate } from "../lib/section-utils";
 import { escHtml } from "../lib/utils";
 import SetupForm from "../components/SetupForm";
-import PanelTab from "./admin/PanelTab";
-import AttendanceTab from "./admin/AttendanceTab";
-import AccessTab from "./admin/AccessTab";
-import ShareTab from "./admin/ShareTab";
-import SupportTab from "./admin/SupportTab";
+
+// ─── Tabs de AdminPage (carga diferida) ────────────────────────────
+const PanelTab = lazy(() => import("./admin/PanelTab"));
+const AttendanceTab = lazy(() => import("./admin/AttendanceTab"));
+const AccessTab = lazy(() => import("./admin/AccessTab"));
+const ShareTab = lazy(() => import("./admin/ShareTab"));
+const SupportTab = lazy(() => import("./admin/SupportTab"));
 
 /**
  * Mapa de claves de pestaña a IDs de traducción.
@@ -225,6 +227,7 @@ export default function AdminPage() {
           {TABS.map((tab) => (
             <button
               key={tab.key}
+              id={"tab-" + tab.key}
               role="tab"
               aria-selected={activeTab === tab.key}
               aria-controls={"tabpanel-" + tab.key}

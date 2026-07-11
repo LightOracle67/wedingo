@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useFocusTrap } from "../hooks/useFocusTrap";
 
 const STORAGE_KEY = "wedin_a11y";
 
@@ -44,7 +45,7 @@ function applyPrefs(prefs) {
 export default function AccessibilityPanel({ open, onClose }) {
   const { t } = useTranslation();
   const [prefs, setPrefs] = useState(loadPrefs);
-  const modalRef = useRef(null);
+  const modalRef = useFocusTrap(open);
 
   useEffect(() => {
     applyPrefs(prefs);
@@ -52,7 +53,6 @@ export default function AccessibilityPanel({ open, onClose }) {
 
   useEffect(() => {
     if (!open) return;
-    modalRef.current?.focus();
     const handleKey = (e) => { if (e.key === "Escape") onClose(); };
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);

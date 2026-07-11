@@ -40,6 +40,12 @@ import LegalModal, { PRIVACY_POLICY_VERSION } from "../components/LegalModal";
 /** Contexto de React — se crea vacío, se llena en AppProvider. */
 const AppContext = createContext(null);
 
+/** Contextos divididos para evitar re-renders globales. */
+const ConfigContext = createContext(null);
+const AuthContext = createContext(null);
+const RsvpContext = createContext(null);
+const UIContext = createContext(null);
+
 /**
  * Proveedor del contexto global de Wedingo.
  * Envuelve toda la aplicación y expone el estado compartido
@@ -702,79 +708,87 @@ export function AppProvider({ children }) {
     } catch {
       setSaveError(t("errors.deleteFailed"));
     }
-  }, [inviteToken, navigate]);
+  }, [inviteToken, navigate, setIsTokenVerified, setTokenLoginUsername]);
 
-  /**
-   * Valor memorizado del contexto.
-   * Se recalcula solo cuando cambian las dependencias listadas.
-   */
-  const value = useMemo(() => ({
-    config, formData, hasStoredConfig,
-    isConfigLoading, configLoadError, inviteToken,
+  const configValue = useMemo(() => ({
+    config, formData, hasStoredConfig, isConfigLoading, configLoadError, inviteToken,
+    maxAllowedYear, previewBackgrounds, isPreviewLoading,
+    formattedDate, formattedTime, calendarLink, visitCount,
+    updateFormField, reloadConfig, handleSaveSetup,
+    handleBackgroundUpload, handleClearBackground, handleSelectPreviewBackground,
+    handleDayChange, handleHourChange, handleMinuteChange, handleMinuteBlur,
+    handleYearChange, handleCoordinateChange, handleDeleteInvitation,
+  }), [
+    config, formData, hasStoredConfig, isConfigLoading, configLoadError, inviteToken,
+    maxAllowedYear, previewBackgrounds, isPreviewLoading,
+    formattedDate, formattedTime, calendarLink, visitCount,
+    updateFormField, reloadConfig, handleSaveSetup,
+    handleBackgroundUpload, handleClearBackground, handleSelectPreviewBackground,
+    handleDayChange, handleHourChange, handleMinuteChange, handleMinuteBlur,
+    handleYearChange, handleCoordinateChange, handleDeleteInvitation,
+  ]);
+
+  const authValue = useMemo(() => ({
+    setupToken, setupTokenInput, isTokenVerifying, isTokenVerified,
+    tokenLoginUsername, adminLoginUsername, generatedToken,
+    isAdminTokenLoggedIn, confirmTokenInput,
+    refreshSetupToken,
+    handleTokenLogin, handleAdminTokenLogin, handleGenerateToken,
+    handleAdminLogout, handleResetSetupToken, handleResetTokenFromAdmin,
+    setSetupTokenInput, setIsTokenVerified, setTokenLoginUsername,
+    setAdminLoginUsername, setConfirmTokenInput,
+  }), [
+    setupToken, setupTokenInput, isTokenVerifying, isTokenVerified,
+    tokenLoginUsername, adminLoginUsername, generatedToken,
+    isAdminTokenLoggedIn, confirmTokenInput,
+    refreshSetupToken,
+    handleTokenLogin, handleAdminTokenLogin, handleGenerateToken,
+    handleAdminLogout, handleResetSetupToken, handleResetTokenFromAdmin,
+    setSetupTokenInput, setIsTokenVerified, setTokenLoginUsername,
+    setAdminLoginUsername, setConfirmTokenInput,
+  ]);
+
+  const rsvpValue = useMemo(() => ({
+    rsvpEntries, rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted,
+    alreadySubmittedEntry, DIETARY_OPTIONS,
+    updateRsvpField, handleRsvpSubmit, handleDietaryToggle,
+    handleDeleteRsvp, computeAge, handleClearRsvpEntries,
+  }), [
+    rsvpEntries, rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted,
+    alreadySubmittedEntry, DIETARY_OPTIONS,
+    updateRsvpField, handleRsvpSubmit, handleDietaryToggle,
+    handleDeleteRsvp, computeAge, handleClearRsvpEntries,
+  ]);
+
+  const uiValue = useMemo(() => ({
     legalModal, setLegalModal,
-    setupToken, setupTokenInput, setSetupTokenInput,
-    isTokenVerifying, isTokenVerified, setIsTokenVerified, tokenLoginUsername, setTokenLoginUsername,
-    adminLoginUsername, setAdminLoginUsername, generatedToken,
     saveMessage, saveError,
     adminMessage, adminMessageType,
     authMessage, authMessageType,
-    rsvpEntries,
-    previewBackgrounds, isPreviewLoading,
     locationMapContainerRef, locationMapError, setLocationMapError,
     locationMapLoading, setLocationMapLoading, locationMapTarget, setLocationMapTarget,
-    rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
-    maxAllowedYear, isAdminTokenLoggedIn,
-    formattedDate, formattedTime, calendarLink, DIETARY_OPTIONS,
-    updateFormField, refreshSetupToken, reloadConfig,
-    handleSaveSetup, handleRsvpSubmit, updateRsvpField,
-    handleDietaryToggle, handleDeleteRsvp, computeAge,
-    handleTokenLogin, handleAdminTokenLogin, handleGenerateToken,
-    handleAdminLogout,
-    handleResetSetupToken, handleResetTokenFromAdmin,
-    handleClearRsvpEntries,
-    handleDeleteInvitation,
-    handleBackgroundUpload, handleClearBackground, handleSelectPreviewBackground,
-    handleDayChange, handleHourChange, handleMinuteChange, handleMinuteBlur,
-    handleYearChange, handleCoordinateChange,
-    confirmTokenInput, setConfirmTokenInput,
-    visitCount,
   }), [
-    config, formData, hasStoredConfig,
-    isConfigLoading, configLoadError, inviteToken,
-    setupToken, setupTokenInput, setSetupTokenInput,
-    isTokenVerifying, isTokenVerified, setIsTokenVerified, tokenLoginUsername, setTokenLoginUsername,
-    adminLoginUsername, setAdminLoginUsername, generatedToken,
-    saveMessage, saveError,
+    legalModal, saveMessage, saveError,
     adminMessage, adminMessageType,
     authMessage, authMessageType,
-    rsvpEntries,
-    previewBackgrounds, isPreviewLoading,
     locationMapContainerRef, locationMapError,
     locationMapLoading, locationMapTarget,
-    rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
-    maxAllowedYear, isAdminTokenLoggedIn,
-    formattedDate, formattedTime, calendarLink, DIETARY_OPTIONS,
-    updateFormField, refreshSetupToken, reloadConfig,
-    handleSaveSetup, handleRsvpSubmit, updateRsvpField,
-    handleDietaryToggle, handleDeleteRsvp, computeAge,
-    handleTokenLogin, handleAdminTokenLogin, handleGenerateToken,
-    handleAdminLogout,
-    handleResetSetupToken, handleResetTokenFromAdmin,
-    handleClearRsvpEntries,
-    handleDeleteInvitation,
-    handleBackgroundUpload, handleClearBackground, handleSelectPreviewBackground,
-    handleDayChange, handleHourChange, handleMinuteChange, handleMinuteBlur,
-    handleYearChange, handleCoordinateChange,
-    confirmTokenInput, setConfirmTokenInput,
-    visitCount, legalModal,
   ]);
 
   return (
-    <AppContext.Provider value={value}>
-      {/* Modal legal (privacidad, cookies, términos) — solo se renderiza si está abierto */}
-      {legalModal && <LegalModal section={legalModal} onClose={() => setLegalModal("")} />}
-      {children}
-    </AppContext.Provider>
+    <ConfigContext.Provider value={configValue}>
+      <AuthContext.Provider value={authValue}>
+        <RsvpContext.Provider value={rsvpValue}>
+          <UIContext.Provider value={uiValue}>
+            <AppContext.Provider value={{ ...configValue, ...authValue, ...rsvpValue, ...uiValue }}>
+              {/* Modal legal (privacidad, cookies, términos) — solo se renderiza si está abierto */}
+              {legalModal && <LegalModal section={legalModal} onClose={() => setLegalModal("")} />}
+              {children}
+            </AppContext.Provider>
+          </UIContext.Provider>
+        </RsvpContext.Provider>
+      </AuthContext.Provider>
+    </ConfigContext.Provider>
   );
 }
 
@@ -790,4 +804,36 @@ export function useApp() {
   const context = useContext(AppContext);
   if (!context) throw new Error("useApp debe usarse dentro de AppProvider");
   return context;
+}
+
+/** Hook selector para el contexto de configuración. */
+// eslint-disable-next-line react/only-export-components
+export function useConfig() {
+  const ctx = useContext(ConfigContext);
+  if (!ctx) throw new Error("useConfig debe usarse dentro de AppProvider");
+  return ctx;
+}
+
+/** Hook selector para el contexto de autenticación. */
+// eslint-disable-next-line react/only-export-components
+export function useAuth() {
+  const ctx = useContext(AuthContext);
+  if (!ctx) throw new Error("useAuth debe usarse dentro de AppProvider");
+  return ctx;
+}
+
+/** Hook selector para el contexto de RSVP. */
+// eslint-disable-next-line react/only-export-components
+export function useRsvpContext() {
+  const ctx = useContext(RsvpContext);
+  if (!ctx) throw new Error("useRsvpContext debe usarse dentro de AppProvider");
+  return ctx;
+}
+
+/** Hook selector para el contexto de UI (mensajes, modales, mapa). */
+// eslint-disable-next-line react/only-export-components
+export function useAppUI() {
+  const ctx = useContext(UIContext);
+  if (!ctx) throw new Error("useAppUI debe usarse dentro de AppProvider");
+  return ctx;
 }

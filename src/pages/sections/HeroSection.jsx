@@ -1,6 +1,6 @@
 import { memo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import heroBackdropSrc from "../../assets/rings.png";
+import heroBackdropSrc from "../../assets/rings.webp";
 
 const HeroSection = memo(function HeroSection({ style, className, firstName, secondName, inviteMessage, countdown, couplePhoto, godparent1, godparent2 }) {
   const { t } = useTranslation();
@@ -24,8 +24,9 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
             <div className="hero-rings pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-[42%]">
               <img
                 src={heroBackdropSrc}
-                alt={t("hero.couplePhotoAlt")}
+                alt=""
                 aria-hidden="true"
+                loading="lazy"
                 className="invite-rings block h-auto w-[clamp(11rem,44vw,18rem)] object-contain object-center sm:w-[clamp(13rem,34vw,20rem)]"
               />
             </div>

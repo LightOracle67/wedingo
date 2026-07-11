@@ -1,6 +1,7 @@
-import { memo, useState, useEffect, useRef, useCallback } from "react";
+import { memo, useState, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
+import { useFocusTrap } from "../hooks/useFocusTrap";
 
 const GROUPS = [
   {
@@ -165,7 +166,7 @@ const LanguageSwitcher = memo(function LanguageSwitcher() {
   const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
-  const popupRef = useRef(null);
+  const trapRef = useFocusTrap(open && !closing);
   const currentLang = i18n.language?.split("-")[0] || "es";
   const currentLabel = GROUPS.flatMap(g => g.options).find(l => l.code === currentLang)?.label || currentLang.toUpperCase();
 
@@ -200,8 +201,8 @@ const LanguageSwitcher = memo(function LanguageSwitcher() {
       </button>
 
       {open && createPortal(
-        <div className={`lang-popup ${closing ? "lang-popup--closing" : ""}`} onClick={handleClose}>
-          <div className={`lang-popup__card ${closing ? "lang-popup__card--closing" : ""}`} ref={popupRef} onClick={(e) => e.stopPropagation()}>
+        <div className={`lang-popup ${closing ? "lang-popup--closing" : ""}`} onClick={handleClose} role="dialog" aria-modal="true" aria-label={t("langSwitcher.label")}>
+          <div className={`lang-popup__card ${closing ? "lang-popup__card--closing" : ""}`} ref={trapRef} onClick={(e) => e.stopPropagation()}>
             <div className="lang-popup__grid">
             {GROUPS.map((group) => (
               <div key={group.label} className="lang-popup__group">

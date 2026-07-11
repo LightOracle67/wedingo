@@ -62,26 +62,24 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
    */
   useEffect(() => {
     const session = getSession();
-    if (session && (session.type === "setup" || session.type === "admin")) {
-      setTokenLoginUsername(session.identifier);
-      sessionTypeRef.current = session.type;
-      setSetupToken("");
-      setSetupTokenInput("");
-      setGeneratedToken("");
-      setIsTokenVerified(true);
+    if (!session || (session.type !== "setup" && session.type !== "admin")) return;
+    if (!inviteToken) return;
 
-      // Verifica que la sesión no haya sido revocada en Firestore
-      if (inviteToken) {
-        getDoc(invitationDocRef(inviteToken)).then(snap => {
-          if (!snap.exists() || !snap.data().activeSession) {
-            clearSession();
-            setIsTokenVerified(false);
-            setTokenLoginUsername("");
-            sessionTypeRef.current = "";
-          }
-        }).catch(() => {});
+    // Verifica primero en Firestore que la sesión siga activa antes de restaurar
+    getDoc(invitationDocRef(inviteToken)).then(snap => {
+      if (snap.exists() && snap.data().activeSession) {
+        setTokenLoginUsername(session.identifier);
+        sessionTypeRef.current = session.type;
+        setSetupToken("");
+        setSetupTokenInput("");
+        setGeneratedToken("");
+        setIsTokenVerified(true);
+      } else {
+        clearSession();
       }
-    }
+    }).catch(() => {
+      clearSession();
+    });
   }, [inviteToken]);
 
   /**
