@@ -1,7 +1,7 @@
 import { memo, useState, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
-import { useFocusTrap } from "../hooks/useFocusTrap";
+import { useFocusTrap, useEscapeKey } from "../hooks/useFocusTrap";
 
 const GROUPS = [
   {
@@ -180,12 +180,7 @@ const LanguageSwitcher = memo(function LanguageSwitcher() {
     handleClose();
   }, [i18n, handleClose]);
 
-  useEffect(() => {
-    if (!open || closing) return;
-    const handleKey = (e) => { if (e.key === "Escape") handleClose(); };
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
-  }, [open, closing, handleClose]);
+  useEscapeKey(handleClose, open && !closing);
 
   return (
     <div className="lang-wrapper">

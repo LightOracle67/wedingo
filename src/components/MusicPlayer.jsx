@@ -1,5 +1,6 @@
-import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useFocusTrap, useEscapeKey } from "../hooks/useFocusTrap";
 
 function songName(url) {
   if (!url) return "";
@@ -91,12 +92,7 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }) {
     }
   }, [open]);
 
-  useEffect(() => {
-    if (!open) return;
-    const handleKey = (e) => { if (e.key === "Escape") handleToggle(); };
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
-  }, [open, handleToggle]);
+  useEscapeKey(handleToggle, open);
 
   return (
     <div className="music-player">

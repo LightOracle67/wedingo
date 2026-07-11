@@ -21,7 +21,7 @@ import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getDoc, setDoc, increment, updateDoc, getDocs, writeBatch, doc, serverTimestamp } from "firebase/firestore";
 import { db, invitationDocRef, rsvpByInviteRef } from "../lib/firebase";
-import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES, defaultConfig, MONTH_OPTIONS, MONTH_VALUE_TO_NUMBER, STORY_SECTION_ORDER, THEME_VALUES } from "../lib/constants";
+import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES, defaultConfig, STORY_SECTION_ORDER, THEME_VALUES } from "../lib/constants";
 import { normalizeConfig } from "../lib/normalize-config";
 import { decodeInviteConfig } from "../lib/invite-config-codec";
 import { compressImage } from "../lib/image-utils";
@@ -36,6 +36,7 @@ import { useMapPreview } from "../hooks/useMapPreview";
 import { useSetupAuth } from "../hooks/useSetupAuth";
 import { useAutoSave } from "../hooks/useAutoSave";
 import LegalModal, { PRIVACY_POLICY_VERSION } from "../components/LegalModal";
+import { validateWeddingDate } from "../lib/date-utils";
 
 /** Contexto de React — se crea vacío, se llena en AppProvider. */
 const AppContext = createContext(null);
@@ -491,50 +492,10 @@ export function AppProvider({ children }) {
     }
 
     // ── Validación de fecha (si la sección detalles no está oculta) ──
-    if (!hiddenSet.has("details") || !hasStoredConfig) {
-      if (!sanitized.weddingDay || !sanitized.weddingMonth || !sanitized.weddingYear || !sanitized.weddingHour || !sanitized.weddingMinute) {
-        setSaveError(t("errors.dateIncomplete"));
-        return;
-      }
-      const parsedDay = Number.parseInt(sanitized.weddingDay, 10);
-      if (Number.isNaN(parsedDay) || parsedDay < 1 || parsedDay > 31) {
-        setSaveError(t("errors.dayInvalid"));
-        return;
-      }
-      if (!MONTH_OPTIONS.some((monthOption) => monthOption.value === sanitized.weddingMonth)) {
-        setSaveError(t("errors.monthInvalid"));
-        return;
-      }
-      const parsedHour = Number.parseInt(sanitized.weddingHour, 10);
-      if (Number.isNaN(parsedHour) || parsedHour < 0 || parsedHour > 23) {
-        setSaveError(t("errors.hourInvalid"));
-        return;
-      }
-      const parsedMinute = Number.parseInt(sanitized.weddingMinute, 10);
-      if (Number.isNaN(parsedMinute) || parsedMinute < 0 || parsedMinute > 59) {
-        setSaveError(t("errors.minuteInvalid"));
-        return;
-      }
-      const parsedYear = Number.parseInt(sanitized.weddingYear, 10);
-      const monthNum = MONTH_VALUE_TO_NUMBER[sanitized.weddingMonth];
-      const enteredDate = new Date(parsedYear, monthNum - 1, parsedDay,
-        Number.parseInt(sanitized.weddingHour, 10), Number.parseInt(sanitized.weddingMinute, 10));
-      // Verifica que la fecha sea válida (ej: 31 de febrero no existe)
-      if (enteredDate.getDate() !== parsedDay || enteredDate.getMonth() !== monthNum - 1 || enteredDate.getFullYear() !== parsedYear) {
-        setSaveError(t("errors.dateNotValid"));
-        return;
-      }
-      // La fecha debe ser futura
-      const today = new Date();
-      today.setSeconds(0, 0);
-      if (enteredDate < today) {
-        setSaveError(t("errors.dateBeforeToday"));
-        return;
-      }
-      if (Number.isNaN(parsedYear) || parsedYear > maxAllowedYear) {
-        setSaveError(t("errors.yearTooFar", { year: maxAllowedYear }));
-        return;
-      }
+    const dateErrorKey = validateWeddingDate(sanitized, maxAllowedYear, hiddenSet, hasStoredConfig);
+    if (dateErrorKey) {
+      setSaveError(t(dateErrorKey, { year: maxAllowedYear }));
+      return;
     }
 
     // ── Validación de tema ──

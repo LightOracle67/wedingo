@@ -1,6 +1,6 @@
 import { memo, useEffect, useRef, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useFocusTrap } from "../hooks/useFocusTrap";
+import { useFocusTrap, useEscapeKey } from "../hooks/useFocusTrap";
 
 export const PRIVACY_POLICY_VERSION = "2026-07-08";
 

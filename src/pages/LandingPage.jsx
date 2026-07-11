@@ -7,9 +7,9 @@ import { normalizeTokenValue } from "../lib/token-utils";
 import { generateInviteToken } from "../lib/utils";
 import { normalizeConfig } from "../lib/normalize-config";
 import { defaultConfig } from "../lib/constants";
-import { safeSetItem, safeGetItem } from "../lib/storage";
+import { safeSetItem } from "../lib/storage";
 import { saveSession, firestoreSessionExpiry } from "../lib/sessionVars";
-import { useApp } from "../contexts/AppContext";
+import { useFocusTrap, useEscapeKey } from "../hooks/useFocusTrap";
 
 export default function LandingPage() {
   const { t } = useTranslation();
@@ -21,30 +21,9 @@ export default function LandingPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const modalRef = useRef(null);
+  const modalRef = useFocusTrap(showModal);
+  useEscapeKey(() => setShowModal(false), showModal);
   const closeButtonRef = useRef(null);
-
-  useEffect(() => {
-    if (!showModal) return;
-    const prev = document.activeElement;
-    closeButtonRef.current?.focus();
-    const handleKey = (e) => {
-      if (e.key === "Escape") setShowModal(false);
-      if (e.key === "Tab") {
-        const focusable = modalRef.current?.querySelectorAll('button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
-        if (!focusable || focusable.length === 0) return;
-        const first = focusable[0];
-        const last = focusable[focusable.length - 1];
-        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-      }
-    };
-    window.addEventListener("keydown", handleKey);
-    return () => {
-      window.removeEventListener("keydown", handleKey);
-      prev?.focus();
-    };
-  }, [showModal]);
 
   const handleCreate = () => {
     const token = generateInviteToken();

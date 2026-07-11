@@ -20,70 +20,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { addDoc, deleteDoc, doc, getDocs, serverTimestamp } from "firebase/firestore";
 import { RSVP_COLLECTION_REF, rsvpByInviteRef } from "../lib/firebase";
 import { encrypt, decrypt } from "../lib/crypto-utils";
-
-/**
- * Opciones predefinidas de restricciones alimentarias.
- * Cada opción tiene un valor (clave interna) y una etiqueta visible.
- */
-const DIETARY_OPTIONS = [
-  { value: "sin gluten", label: "Gluten" },
-  { value: "sin lactosa", label: "Lactosa" },
-  { value: "alergia frutos secos", label: "F. Secos" },
-  { value: "alergia mariscos", label: "Mariscos" },
-];
-
-/**
- * Calcula la edad a partir de una fecha de nacimiento.
- *
- * @param {string} birthDateStr - Fecha en formato YYYY-MM-DD.
- * @returns {number|null} Edad en años, o null si no se proporciona fecha.
- */
-function computeAge(birthDateStr) {
-  if (!birthDateStr) return null;
-  const birth = new Date(birthDateStr + "T00:00:00");
-  const today = new Date();
-  let age = today.getFullYear() - birth.getFullYear();
-  // Ajusta si aún no ha cumplido años este año
-  const m = today.getMonth() - birth.getMonth();
-  if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) {
-    age--;
-  }
-  return age;
-}
-
-/**
- * Parsea la cadena de información dietética en sus componentes.
- * Formato esperado: "Menú: <elección> | <restricción1> | <restricción2> | <otro>"
- *
- * @param {string} dietaryInfo - Cadena con la información dietética.
- * @param {boolean} menuEnabled - Si el menú estructurado está habilitado.
- * @returns {{ mealChoice: string, dietarySelection: string[], dietaryOther: string }}
- */
-function parseDietaryInfo(dietaryInfo, menuEnabled) {
-  const parts = (dietaryInfo || "").split(" | ").filter(Boolean);
-  let mealChoice = "";
-  const dietarySelection = [];
-  let dietaryOther = "";
-
-  let startIdx = 0;
-  // La primera parte puede ser la elección de menú
-  if (menuEnabled && parts[0] && parts[0].startsWith("Menú: ")) {
-    mealChoice = parts[0].slice("Menú: ".length);
-    startIdx = 1;
-  }
-
-  // Las partes restantes son restricciones o texto libre
-  for (let i = startIdx; i < parts.length; i++) {
-    const part = parts[i];
-    if (DIETARY_OPTIONS.some((opt) => opt.value === part)) {
-      dietarySelection.push(part);
-    } else {
-      dietaryOther = part;
-    }
-  }
-
-  return { mealChoice, dietarySelection, dietaryOther };
-}
+import { computeAge } from "../lib/date-utils";
+import { DIETARY_OPTIONS, parseDietaryInfo } from "../lib/rsvp-utils";
 
 /**
  * Hook de gestión de RSVP.

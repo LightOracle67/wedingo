@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { getDocs, deleteDoc, doc, collection, writeBatch, getDoc } from "firebase/firestore";
 import { db, INVITATIONS_COLLECTION_REF, RSVP_COLLECTION_REF, rsvpByInviteRef } from "../../lib/firebase";
 import { useToast } from "../../contexts/ToastContext";
+import { downloadJson } from "../../lib/file-utils";
 
 /**
  * Pestaña de gestión de datos para el superadmin.
@@ -422,24 +423,6 @@ export default function DataTab() {
 
 const thStyle = { padding: "0.4rem 0.5rem", textAlign: "left", fontWeight: 600, borderBottom: "2px solid var(--setup-border)", whiteSpace: "nowrap" };
 const tdStyle = { padding: "0.35rem 0.5rem", verticalAlign: "middle" };
-
-/**
- * Descarga un objeto como archivo JSON en el navegador.
- *
- * @param {string} filename - Nombre del archivo.
- * @param {object} data - Datos a serializar.
- */
-function downloadJson(filename, data) {
-  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = filename;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-}
 
 /**
  * Elimina en cascada una invitación y todos sus datos asociados:
