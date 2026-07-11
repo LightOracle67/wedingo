@@ -26,7 +26,7 @@ import { normalizeConfig } from "../lib/normalize-config";
 import { decodeInviteConfig } from "../lib/invite-config-codec";
 import { compressImage } from "../lib/image-utils";
 import { uploadImage, loadDecryptedField, deleteGallery, loadGallery } from "../lib/image-store";
-import { saveSession, clearSession } from "../lib/sessionVars";
+import { saveSession, clearSession, firestoreSessionExpiry } from "../lib/sessionVars";
 import { safeSetItem, safeGetItem, safeRemoveItem } from "../lib/storage";
 import { encrypt, decrypt } from "../lib/crypto-utils";
 import { useCalendar } from "../hooks/useCalendar";
@@ -668,7 +668,7 @@ export function AppProvider({ children }) {
       // Activa la sesión en Firestore
       if (!isTokenVerified) {
         try {
-          await updateDoc(invitationDocRef(inviteToken), { activeSession: serverTimestamp() });
+          await updateDoc(invitationDocRef(inviteToken), { activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry() });
           setIsTokenVerified(true);
           setTokenLoginUsername(config.adminUsername || inviteToken);
           saveSession("admin", config.adminUsername || inviteToken);
