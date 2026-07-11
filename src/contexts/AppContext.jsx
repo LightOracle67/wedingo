@@ -588,7 +588,7 @@ export function AppProvider({ children }) {
     }
 
     // ── Validación de URL de música ──
-    if (sanitized.musicUrl && !/^https?:\/\/.+\..+/.test(sanitized.musicUrl)) {
+    if (sanitized.musicUrl && !/^https:\/\/.+\..+/.test(sanitized.musicUrl)) {
       setSaveError(t("errors.musicUrlInvalid"));
       return;
     }

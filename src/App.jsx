@@ -66,7 +66,7 @@ function AppShell() {
       </a>
 
       {isAdminTokenLoggedIn && inviteToken && !location.pathname.endsWith("/setup") && !location.pathname.endsWith("/print") ? (
-        <nav className="admin-bar" role="navigation" aria-label={t("common.adminBar.ariaLabel")}>
+        <nav className="admin-bar" aria-label={t("common.adminBar.ariaLabel")}>
           <div className="admin-bar__inner">
             <span className="admin-bar__title">{tokenLoginUsername || config.adminUsername || t("common.adminBar.fallback")}</span>
             <div className="admin-bar__links">
@@ -80,7 +80,7 @@ function AppShell() {
 
       {inviteToken && location.pathname === `/${inviteToken}` ? <MusicPlayer musicUrl={config.musicUrl} /> : null}
 
-      <main id="main-content" role="main" tabIndex={-1} style={{ paddingTop: topBarPadding || publicNavPadding }}>
+      <main id="main-content" tabIndex={-1} style={{ paddingTop: topBarPadding || publicNavPadding }}>
         <Suspense fallback={<div className="page-loading" />}>
         <Routes>
           <Route path="/" element={<ErrorBoundary><LandingPage /></ErrorBoundary>} />

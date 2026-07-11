@@ -55,16 +55,6 @@ export function tokenUsageOverTime(tokens) {
   return Object.entries(byDate).sort(([a], [b]) => a.localeCompare(b)).map(([date, count]) => ({ date, count }));
 }
 
-export function rsvpByInvitation(rsvps) {
-  const grouped = {};
-  for (const r of rsvps) {
-    const key = r.inviteToken || "__unknown__";
-    if (!grouped[key]) grouped[key] = [];
-    grouped[key].push(r);
-  }
-  return grouped;
-}
-
 export function rsvpOverTime(rsvps) {
   const byDate = {};
   for (const r of rsvps) {

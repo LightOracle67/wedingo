@@ -85,8 +85,7 @@ export default function SetupForm({ prefix = "" }) {
       upload.update(90);
       updateFormField("couplePhoto", dataUrl);
       upload.complete(t("setup.photoUploaded"));
-    } catch (err) {
-      console.error("[upload] couplePhoto error:", err);
+    } catch {
       upload.error(t("setup.photoUploadFailed"));
     }
     if (input) input.value = "";
