@@ -16,11 +16,13 @@ import { useCallback, useEffect, useMemo, useRef } from "react";
 import { useTranslation, Trans } from "react-i18next";
 import { useApp } from "../contexts/AppContext";
 import { useToast } from "../contexts/ToastContext";
-import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES, MONTH_OPTIONS, THEME_GROUPS, THEME_OPTIONS, THEME_PREVIEW_COLORS } from "../lib/constants";
+import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES, MONTH_OPTIONS } from "../lib/constants";
 import { compressImage } from "../lib/image-utils";
 import { uploadImage, addGalleryImage } from "../lib/image-store";
 import CollapsibleSection from "./CollapsibleSection";
 import SectionOrderEditor from "./SectionOrderEditor";
+import ThemePicker from "./ThemePicker";
+import GalleryManager from "./GalleryManager";
 
 /**
  * Componente del formulario de configuración.
@@ -244,35 +246,7 @@ export default function SetupForm({ prefix = "" }) {
 
         {/* ── Selector de tema con grupos colapsables ── */}
         <p className="setup-label">{t("setup.themeLabel")}</p>
-        {THEME_GROUPS.map((group) => (
-          <CollapsibleSection key={group.value} title={group.label} hint={t("setup.themeGroupCount", { count: THEME_OPTIONS.filter((t) => t.group === group.value).length })}>
-            <div className="theme-picker__grid">
-              {THEME_OPTIONS.filter((t) => t.group === group.value).map((theme) => {
-                const colors = THEME_PREVIEW_COLORS[theme.value];
-                return (
-                  <button
-                    key={theme.value}
-                    type="button"
-                    className={`theme-picker__card ${formData.theme === theme.value ? "theme-picker__card--active" : ""}`}
-                    onClick={() => updateFormField("theme", theme.value)}
-                    aria-pressed={formData.theme === theme.value}
-                  >
-                    <span
-                      className="theme-picker__swatch"
-                      style={{ background: `linear-gradient(135deg, ${colors.bg} 0%, ${colors.bg} 50%, ${colors.accent} 100%)` }}
-                    >
-                      <span className="theme-picker__dot" style={{ background: colors.accent }} />
-                    </span>
-                    <span className="theme-picker__info">
-                      <span className="theme-picker__name">{theme.label}</span>
-                      <span className="theme-picker__hint">{theme.hint}</span>
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-          </CollapsibleSection>
-        ))}
+        <ThemePicker value={formData.theme} onChange={(val) => updateFormField("theme", val)} t={t} />
 
         {/* ── Panel de subida de fondo personalizado ── */}
         <div className="setup-background-panel">
@@ -707,63 +681,7 @@ export default function SetupForm({ prefix = "" }) {
           <span className="setup-upload__subtitle">{t("setup.galleryUploadHint")}</span>
         </label>
         <input ref={galleryRef} id={id("galleryUpload")} className="setup-upload__input" type="file" accept="image/jpeg,image/png,image/webp" multiple onChange={handleGalleryUpload} />
-        {/* Grid de miniaturas con descripción editable */}
-        {(() => {
-          try {
-            const images = JSON.parse(formData.galleryImages || "[]");
-            if (!images.length) return null;
-            return (
-              <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "0.6rem", marginTop: "0.6rem" }}>
-                {images.map((item, i) => {
-                  // Soporta tanto strings (legacy) como objetos { id, url, description }
-                  const src = typeof item === "string" ? item : item.url || "";
-                  const desc = typeof item === "string" ? "" : item.description || "";
-                  const docId = typeof item === "string" ? null : item.id || null;
-                  return (
-                    <div key={docId || i} style={{ display: "flex", gap: "0.5rem", alignItems: "center", background: "color-mix(in srgb, var(--setup-field-bg) 40%, transparent)", borderRadius: "0.5rem", padding: "0.5rem" }}>
-                      <div style={{ position: "relative", flexShrink: 0 }}>
-                        <img src={src} alt={desc || t("setup.galleryUploadLabel")} style={{ width: "5rem", height: "5rem", objectFit: "cover", borderRadius: "0.4rem", flexShrink: 0 }} />
-                        <button type="button" onClick={async () => {
-                          const arr = JSON.parse(formData.galleryImages || "[]");
-                          const removed = arr.splice(i, 1)[0];
-                          updateFormField("galleryImages", JSON.stringify(arr));
-                          // Elimina también de Firestore si tiene ID
-                          if (removed?.id || docId) {
-                            const imgId = removed?.id || docId;
-                            try {
-                              const { deleteGalleryImage } = await import("../lib/image-store");
-                              await deleteGalleryImage(inviteToken, imgId);
-                            } catch {}
-                          }
-                        }} style={{ position: "absolute", top: "-4px", right: "-4px", width: "1.2rem", height: "1.2rem", borderRadius: "999px", border: "none", background: "rgba(0,0,0,0.65)", color: "#fff", fontSize: "0.7rem", cursor: "pointer", display: "grid", placeItems: "center", lineHeight: 1 }}>×</button>
-                      </div>
-                      <input
-                        type="text"
-                        className="setup-input"
-                        value={desc}
-                        onChange={async (e) => {
-                          const val = e.target.value.slice(0, 200);
-                          const arr = JSON.parse(formData.galleryImages || "[]");
-                          arr[i] = typeof arr[i] === "string" ? { url: arr[i], description: val, id: docId } : { ...arr[i], description: val };
-                          updateFormField("galleryImages", JSON.stringify(arr));
-                        }}
-                        onBlur={async () => {
-                          if (!docId) return;
-                          try {
-                            const { updateGalleryDescription } = await import("../lib/image-store");
-                            await updateGalleryDescription(inviteToken, docId, desc);
-                          } catch {}
-                        }}
-                        placeholder={t("setup.galleryDescriptionPlaceholder")}
-                        style={{ flex: 1, fontSize: "0.82rem", padding: "0.35rem 0.5rem" }}
-                      />
-                    </div>
-                  );
-                })}
-              </div>
-            );
-          } catch { return null; }
-        })()}
+        <GalleryManager images={formData.galleryImages} onChange={(val) => updateFormField("galleryImages", val)} inviteToken={inviteToken} onUpload={handleGalleryUpload} id={id} t={t} />
       </CollapsibleSection>
       ) : null}
 
