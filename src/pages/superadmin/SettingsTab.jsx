@@ -5,7 +5,7 @@ import { getSession, clearSession } from "../../lib/sessionVars";
 import { useTranslation } from "react-i18next";
 
 const SettingsTab = memo(function SettingsTab() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { user, logout } = useSuperAdmin();
   const [session, setSession] = useState(() => getSession());
 
@@ -41,7 +41,7 @@ const SettingsTab = memo(function SettingsTab() {
               {session.type === "superadmin" ? t("superadmin.sessionTypeSuperadmin") : session.type === "setup" ? t("superadmin.sessionTypeSetup") : t("superadmin.sessionTypeAdmin")}
             </div>
             <div style={{ color: "var(--setup-muted)", fontSize: "0.75rem" }}>
-              {t("superadmin.sessionExpires", { date: new Date(session.expiresAt).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" }) })}
+              {t("superadmin.sessionExpires", { date: new Date(session.expiresAt).toLocaleString(i18n.language, { dateStyle: "medium", timeStyle: "short" }) })}
             </div>
           </div>
         )}

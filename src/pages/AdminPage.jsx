@@ -63,7 +63,7 @@ const TABS = [
  * @returns {JSX.Element} Panel de administración con pestañas.
  */
 export default function AdminPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { inviteToken } = useParams();
   // ─── Estados del contexto global ───────────────────────
   const {
@@ -140,7 +140,7 @@ export default function AdminPage() {
       @page{margin:2cm}body{font-family:system-ui,sans-serif;font-size:12px;color:#222;padding:2rem}h1{font-size:18px;margin-bottom:4px}table{width:100%;border-collapse:collapse;margin-top:8px}th,td{border:1px solid #d4d0c8;padding:6px 8px}tr:nth-child(even){background:#faf8f5}.stats{display:flex;gap:1rem;margin:12px 0;font-size:13px}.stat{background:#f5f3ef;padding:8px 14px;border-radius:8px}@media print{body{padding:0}}
     </style></head><body>
     <h1>${t("admin.pdfTitle", { name: escHtml(coupleName) })}</h1>
-    <p style="color:#666;font-size:13px">${new Date().toLocaleDateString(undefined,{day:"numeric",month:"long",year:"numeric",hour:"2-digit",minute:"2-digit"})}</p>
+    <p style="color:#666;font-size:13px">${new Date().toLocaleDateString(i18n.language,{day:"numeric",month:"long",year:"numeric",hour:"2-digit",minute:"2-digit"})}</p>
     <div class="stats"><div class="stat">${tc} ${t("admin.pdfConfirmed")}</div><div class="stat">${td} ${t("admin.pdfNotAttending")}</div><div class="stat">${rsvpEntries.length} ${t("admin.pdfResponses")}</div></div>
     <table><thead><tr><th>${t("admin.pdfTableName")}</th><th>${t("admin.pdfTableAttendance")}</th><th>${t("admin.pdfTableCompanions")}</th><th>${t("admin.pdfTableDiet")}</th></tr></thead><tbody>${rows}</tbody></table>
     <p style="margin-top:12px;color:#888;font-size:11px">Wedingo</p>

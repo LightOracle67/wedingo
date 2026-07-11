@@ -112,10 +112,10 @@ service cloud.firestore {
         || (resource.data.inviteToken is string
           && hasActiveSession(resource.data.inviteToken));
     }
-  }
 
     /* Denegar acceso a colecciones obsoletas. */
     match /couples/{document=**} { allow read, write: if false; }
     match /dataconnect/{document=**} { allow read, write: if false; }
   }
 }
+
