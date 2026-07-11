@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Security: CSP meta tag fallback (las cabeceras HTTP tienen prioridad). */
+/* La CSP completa está en firebase.json → headers. */
+
 /* Google Fonts auto-hospedadas via @fontsource (GDPR compliant). */
 @import "@fontsource/playfair-display/400.css";
 @import "@fontsource/playfair-display/400-italic.css";

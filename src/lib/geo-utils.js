@@ -14,24 +14,6 @@ export const geocodeLocation = async (place) => {
   return { latitude, longitude, label: firstResult.display_name || place };
 };
 
-export const searchLocations = async (query) => {
-  if (!query || query.trim().length < 3) return [];
-  try {
-    const resp = await fetch(
-      `https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&q=${encodeURIComponent(query.trim())}`,
-      { headers: { Accept: "application/json", "User-Agent": "Wedingo/1.0 (adriancl2001@gmail.com)" } },
-    );
-    if (!resp.ok) return [];
-    const data = await resp.json();
-    if (!Array.isArray(data)) return [];
-    return data.map(r => ({
-      label: r.display_name,
-      latitude: Number.parseFloat(r.lat),
-      longitude: Number.parseFloat(r.lon),
-    })).filter(r => Number.isFinite(r.latitude) && Number.isFinite(r.longitude));
-  } catch { return []; }
-};
-
 export const parseCoordinate = (value) => {
   if (typeof value !== "string") return null;
   const normalizedValue = value.trim().replace(/,/g, ".");

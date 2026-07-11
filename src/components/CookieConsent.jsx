@@ -71,7 +71,7 @@ const CookieConsent = memo(function CookieConsent() {
   if (!visible) return null;
 
   return (
-    <div className="cookie-consent-overlay" role="dialog" aria-label={t("cookie.title")}>
+    <div className="cookie-consent-overlay" role="region" aria-label={t("cookie.title")}>
       <div className="cookie-consent-card">
         {!showSettings ? (
           <>

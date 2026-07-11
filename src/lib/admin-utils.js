@@ -29,48 +29,4 @@ export function getDietarySummary(entries) {
     .map(([item, count]) => ({ item, count }));
 }
 
-export function formatRSVPsForCSV(entries, t) {
-  const header = t
-    ? `${t("csv.headerName")},${t("csv.headerAttendance")},${t("csv.headerCompanions")},${t("csv.headerDietary")},${t("csv.headerNote")},${t("csv.headerDate")}`
-    : "Nombre,Asistencia,Acompañantes,Info alimentaria,Nota,Fecha";
-  const rows = entries.map((e) => {
-    const date = e.submittedAt ? new Date(e.submittedAt).toLocaleDateString() : "";
-    const attendance = e.attendance === "yes"
-      ? (t ? t("csv.attendanceYes") : "Confirmado")
-      : (t ? t("csv.attendanceNo") : "No asiste");
-    const companions = e.attendance === "yes" ? e.companions : 0;
-    const escape = (v) => {
-      let s = (v || "").replace(/"/g, '""');
-      if (/^[=+\-@|\t\r]/.test(s)) s = `'${s}`;
-      return `"${s}"`;
-    };
-    return [escape(e.guestName), escape(attendance), companions, escape(e.dietaryInfo), escape(e.note), escape(date)].join(",");
-  });
-  return [header, ...rows].join("\n");
-}
-
-export function groupRSVPsByAttendance(entries) {
-  return {
-    yes: entries.filter((e) => e.attendance === "yes"),
-    no: entries.filter((e) => e.attendance === "no"),
-  };
-}
-
-export function formatGuestDate(isoString) {
-  if (!isoString) return "—";
-  try {
-    return new Date(isoString).toLocaleDateString(undefined, {
-      day: "numeric", month: "short", year: "numeric",
-      hour: "2-digit", minute: "2-digit",
-    });
-  } catch {
-    return "—";
-  }
-}
-
-export function getCompanionList(entry, t) {
-  const count = entry.attendance === "yes" ? Number(entry.companions) || 0 : 0;
-  if (count === 0) return [];
-  if (count === 1) return [t ? t("csv.companion_one") : "1 acompañante"];
-  return [t ? t("csv.companion_other", { count }) : `${count} acompañantes`];
-}
+/* formatRSVPsForCSV, groupRSVPsByAttendance, formatGuestDate, getCompanionList eliminados por dead code. */

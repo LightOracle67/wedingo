@@ -3,19 +3,20 @@ const ALGORITHM = { name: "AES-GCM", length: 256 };
 /**
  * Deriva una clave AES-256 a partir del secreto usando PBKDF2.
  * El secreto se rellena/trunca a 32 bytes y se usa como contraseña
- * con salt fijo "wedingo-salt-v1" y 10.000 iteraciones.
+ * con un salt derivado del secreto (único por invitación) y 10.000 iteraciones.
  *
  * @param {string} secret - Token/secreto de la invitación.
  * @returns {Promise<CryptoKey>} Clave AES-256-GCM derivada.
  */
 async function getKey(secret) {
   const enc = new TextEncoder();
+  const salt = enc.encode("wedingo-" + secret.slice(0, 16));
   const keyMaterial = await crypto.subtle.importKey(
     "raw", enc.encode(secret.padEnd(32, "x").slice(0, 32)),
     { name: "PBKDF2" }, false, ["deriveKey"]
   );
   return crypto.subtle.deriveKey(
-    { name: "PBKDF2", salt: enc.encode("wedingo-salt-v1"), iterations: 10000, hash: "SHA-256" },
+    { name: "PBKDF2", salt, iterations: 10000, hash: "SHA-256" },
     keyMaterial, ALGORITHM, false, ["encrypt", "decrypt"]
   );
 }

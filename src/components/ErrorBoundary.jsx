@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { withTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 class ErrorBoundaryInner extends Component {
   constructor(props) {
@@ -32,5 +32,7 @@ class ErrorBoundaryInner extends Component {
   }
 }
 
-const ErrorBoundary = withTranslation()(ErrorBoundaryInner);
-export default ErrorBoundary;
+export default function ErrorBoundary({ children }) {
+  const { t } = useTranslation();
+  return <ErrorBoundaryInner t={t}>{children}</ErrorBoundaryInner>;
+}
