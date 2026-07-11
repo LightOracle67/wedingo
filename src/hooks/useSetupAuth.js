@@ -146,6 +146,40 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
   }, [inviteToken]);
 
   /**
+   * Intenta activar la sesión usando un token de setup.
+   * Retorna el username del token (si existe) o lanza error.
+   */
+  const activateSessionWithToken = useCallback(async (enteredToken, validateToken) => {
+    const inviteSnapActive = await getDoc(invitationDocRef(inviteToken));
+    if (inviteSnapActive.exists() && inviteSnapActive.data().activeSession) {
+      setIsTokenVerifying(false);
+      if (!window.confirm("Ya hay una sesión activa para esta invitación. ¿Quieres iniciar sesión de todos modos? La sesión anterior se cerrará.")) {
+        return null;
+      }
+      setIsTokenVerifying(true);
+    }
+
+    const tokenDocRef = doc(db, "setupTokens", enteredToken);
+    const inviteRef = invitationDocRef(inviteToken);
+    let tokenUsername = "";
+
+    await runTransaction(db, async (transaction) => {
+      const tokenDoc = await transaction.get(tokenDocRef);
+      if (!tokenDoc.exists) throw new Error("Token no válido");
+      tokenUsername = (tokenDoc.data().username || "").trim().toLowerCase();
+      if (validateToken) validateToken(tokenDoc, tokenUsername);
+
+      const inviteSnap = await transaction.get(inviteRef);
+      if (!inviteSnap.exists()) {
+        transaction.set(inviteRef, { ...defaultConfig, activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry() });
+      } else {
+        transaction.update(inviteRef, { activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry() });
+      }
+    });
+    return tokenUsername;
+  }, [inviteToken]);
+
+  /**
    * Inicia sesión con token de setup (sin usuario).
    * Verifica el token en Firestore y activa la sesión.
    * Si ya hay una sesión activa, pide confirmación para sobrescribir.
@@ -162,35 +196,8 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
 
     setIsTokenVerifying(true);
     try {
-      // Detecta si ya hay una sesión activa para esta invitación
-      const inviteSnapActive = await getDoc(invitationDocRef(inviteToken));
-      if (inviteSnapActive.exists() && inviteSnapActive.data().activeSession) {
-        setIsTokenVerifying(false);
-        if (!window.confirm("Ya hay una sesión activa para esta invitación. ¿Quieres iniciar sesión de todos modos? La sesión anterior se cerrará.")) {
-          return;
-        }
-        setIsTokenVerifying(true);
-      }
-
-      const tokenDocRef = doc(db, "setupTokens", enteredToken);
-      const inviteRef = invitationDocRef(inviteToken);
-      let tokenUsername = "";
-
-      // Transacción atómica: lee el token y activa sesión en la invitación
-      await runTransaction(db, async (transaction) => {
-        const tokenDoc = await transaction.get(tokenDocRef);
-        if (!tokenDoc.exists) {
-          throw new Error("Token no válido");
-        }
-        tokenUsername = (tokenDoc.data().username || "").trim().toLowerCase();
-
-        const inviteSnap = await transaction.get(inviteRef);
-        if (!inviteSnap.exists()) {
-          transaction.set(inviteRef, { ...defaultConfig, activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry() });
-        } else {
-          transaction.update(inviteRef, { activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry() });
-        }
-      });
+      const tokenUsername = await activateSessionWithToken(enteredToken);
+      if (tokenUsername === null) return; // Usuario canceló
 
       const displayName = tokenUsername || inviteToken;
       setTokenLoginUsername(displayName);
@@ -207,7 +214,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
     } finally {
       setIsTokenVerifying(false);
     }
-  }, [setupTokenInput, inviteToken, setHasStoredConfig]);
+  }, [activateSessionWithToken, setupTokenInput, inviteToken, setHasStoredConfig]);
 
   /**
    * Inicia sesión como administrador (requiere usuario + token).
@@ -233,36 +240,12 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
 
     setIsTokenVerifying(true);
     try {
-      // Detecta sesión activa existente
-      const inviteSnapActive = await getDoc(invitationDocRef(inviteToken));
-      if (inviteSnapActive.exists() && inviteSnapActive.data().activeSession) {
-        setIsTokenVerifying(false);
-        if (!window.confirm("Ya hay una sesión activa para esta invitación. ¿Quieres iniciar sesión de todos modos? La sesión anterior se cerrará.")) {
-          return;
-        }
-        setIsTokenVerifying(true);
-      }
-
-      const tokenDocRef = doc(db, "setupTokens", enteredToken);
-      const inviteRef = invitationDocRef(inviteToken);
-      await runTransaction(db, async (transaction) => {
-        const tokenDoc = await transaction.get(tokenDocRef);
-        if (!tokenDoc.exists) {
-          throw new Error("Código no válido.");
-        }
-        const tokenUsername = (tokenDoc.data().username || "").trim().toLowerCase();
-        // El token debe pertenecer al usuario que intenta entrar
-        if (tokenUsername && tokenUsername !== username) {
+      const tokenUsername = await activateSessionWithToken(enteredToken, (tokenDoc, tu) => {
+        if (tu && tu !== username) {
           throw new Error("El código no corresponde a este usuario.");
         }
-
-        const inviteSnap = await transaction.get(inviteRef);
-        if (!inviteSnap.exists()) {
-          transaction.set(inviteRef, { ...defaultConfig, activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry() });
-        } else {
-          transaction.update(inviteRef, { activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry() });
-        }
       });
+      if (tokenUsername === null) return;
 
       setTokenLoginUsername(username);
       sessionTypeRef.current = "admin";
@@ -276,7 +259,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
       setAuthMessage("Has entrado correctamente.");
     } catch (err) {
       const message = err?.message;
-      if (message === "Código no válido." || message === "El código no corresponde a este usuario.") {
+      if (message === "El código no corresponde a este usuario.") {
         setAuthMessage(message);
       } else {
         setAuthMessage("No se pudo verificar el código. Inténtalo de nuevo.");
@@ -284,7 +267,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
     } finally {
       setIsTokenVerifying(false);
     }
-  }, [adminLoginUsername, setupTokenInput, config, inviteToken, setHasStoredConfig]);
+  }, [activateSessionWithToken, adminLoginUsername, setupTokenInput, config, inviteToken, setHasStoredConfig]);
 
   /**
    * Genera un nuevo token de acceso vinculado a un usuario administrador.
