@@ -6,10 +6,10 @@ import { calcRSVPSummary, getDietarySummary } from "../../lib/admin-utils";
 import { DonutChart, Legend } from "../../lib/chart-utils";
 import StatsCard from "./StatsCard";
 
-const PanelTab = memo(function PanelTab({
+const PanelTab = memo(function PanelTab({ config: {
   inviteToken, confirmedResponses, declinedResponses, totalGuests, rsvpEntries,
   setActiveTab, setAttendanceFilter, formatDate, onRestore, visitCount,
-}) {
+} }) {
   const { t } = useTranslation();
   const inviteUrl = `${window.location.origin}/${inviteToken}`;
   const restoreRef = useRef(null);

@@ -207,8 +207,36 @@ export default function AdminPage() {
   const confirmedResponses = rsvpEntries.filter((e) => e.attendance === "yes").length;
   const declinedResponses = rsvpEntries.filter((e) => e.attendance === "no").length;
   const totalGuests = rsvpEntries.reduce(
-    (sum, e) => sum + (e.attendance === "yes" ? e.companions : 0), 0,
+    (s, r) => s + 1 + (Number(r.companions) || 0), 0,
   );
+
+  /** Props agrupadas para PanelTab (reduce prop drilling). */
+  const panelConfig = useMemo(() => ({
+    inviteToken,
+    confirmedResponses,
+    declinedResponses,
+    totalGuests,
+    rsvpEntries,
+    setActiveTab: setActiveTabAndFilter,
+    setAttendanceFilter: setAttendanceFilterValue,
+    exportPdf,
+    formatDate,
+    onRestore: reloadConfig,
+    visitCount: config._visits || 0,
+  }), [inviteToken, confirmedResponses, declinedResponses, totalGuests, rsvpEntries, setActiveTabAndFilter, setAttendanceFilterValue, exportPdf, formatDate, reloadConfig, config._visits]);
+
+  /** Props agrupadas para AttendanceTab. */
+  const attendanceConfig = useMemo(() => ({
+    searchQuery,
+    setSearchQuery,
+    attendanceFilter,
+    setAttendanceFilter: setAttendanceFilterValue,
+    filteredEntries,
+    exportPdf,
+    rsvpEntries,
+    handleClearRsvpEntries,
+    formatDate,
+  }), [searchQuery, setSearchQuery, attendanceFilter, setAttendanceFilterValue, filteredEntries, exportPdf, rsvpEntries, handleClearRsvpEntries, formatDate]);
 
   return (
     <div className="setup-layout setup-layout--flush setup-layout--full" style={{ padding: "2em" }}>
@@ -242,39 +270,13 @@ export default function AdminPage() {
         {/* ── Contenido de la pestaña activa ── */}
         <div className="setup-form" role="tabpanel" id={"tabpanel-" + activeTab} aria-labelledby={"tab-" + activeTab}>
           {/* Pestaña: Panel de control */}
-          {activeTab === "panel" && (
-            <PanelTab
-              inviteToken={inviteToken}
-              confirmedResponses={confirmedResponses}
-              declinedResponses={declinedResponses}
-              totalGuests={totalGuests}
-              rsvpEntries={rsvpEntries}
-              setActiveTab={setActiveTabAndFilter}
-              setAttendanceFilter={setAttendanceFilterValue}
-              exportPdf={exportPdf}
-              formatDate={formatDate}
-              onRestore={reloadConfig}
-              visitCount={config._visits || 0}
-            />
-          )}
+          {activeTab === "panel" && <PanelTab config={panelConfig} />}
 
           {/* Pestaña: Editar invitación */}
           {activeTab === "invitacion" && <SetupForm prefix="admin" />}
 
           {/* Pestaña: Lista de asistencia */}
-          {activeTab === "asistencia" && (
-            <AttendanceTab
-              searchQuery={searchQuery}
-              setSearchQuery={setSearchQuery}
-              attendanceFilter={attendanceFilter}
-              setAttendanceFilter={setAttendanceFilterValue}
-              filteredEntries={filteredEntries}
-              exportPdf={exportPdf}
-              rsvpEntries={rsvpEntries}
-              handleClearRsvpEntries={handleClearRsvpEntries}
-              formatDate={formatDate}
-            />
-          )}
+          {activeTab === "asistencia" && <AttendanceTab config={attendanceConfig} />}
 
           {/* Pestaña: Compartir invitación */}
           {activeTab === "compartir" && (

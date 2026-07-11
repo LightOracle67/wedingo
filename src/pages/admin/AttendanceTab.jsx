@@ -4,12 +4,12 @@ import { getDietarySummary } from "../../lib/admin-utils";
 
 const PAGE_SIZES = [10, 25, 50, 100];
 
-const AttendanceTab = memo(function AttendanceTab({
+const AttendanceTab = memo(function AttendanceTab({ config: {
   searchQuery, setSearchQuery,
   attendanceFilter, setAttendanceFilter,
   filteredEntries, exportPdf,
   rsvpEntries, handleClearRsvpEntries, formatDate,
-}) {
+} }) {
   const { t } = useTranslation();
   const dietary = useMemo(() => getDietarySummary(rsvpEntries), [rsvpEntries]);
 
