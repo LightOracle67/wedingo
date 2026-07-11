@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { buildGoogleMapsUrl, buildAppleMapsUrl } from "../../lib/utils";
+import WeddingMap from "../../components/WeddingMap";
 
 const DetailsSection = memo(function DetailsSection({
   style, className,
@@ -53,34 +54,26 @@ const DetailsSection = memo(function DetailsSection({
           </div>
         ) : null}
         {hasLocationData ? (
-          <div className="story-map">
-            <div
-              ref={locationMapContainerRef}
-              className="story-map__canvas"
-              aria-label={t("details.mapAriaLabel", { location: locationDescription || t("details.placePending") })}
-            />
-            {locationMapLoading ? <p className="story-map__status">{t("details.mapLoading")}</p> : null}
-            {locationMapError ? <p className="story-map__status story-map__status--error">{locationMapError}</p> : null}
-            {locationMapTarget ? (
-              <div className="story-map__actions">
-                <a
-                  className="setup-button setup-button--ghost setup-button--compact"
-                  href={buildGoogleMapsUrl(locationMapTarget)}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {t("details.viewGoogleMaps")}
-                </a>
-                <a
-                  className="setup-button setup-button--ghost setup-button--compact"
-                  href={buildAppleMapsUrl(locationMapTarget, configWeddingPlace)}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {t("details.viewAppleMaps")}
-                </a>
-              </div>
-            ) : null}
+          <WeddingMap weddingPlace={configWeddingPlace} weddingLatitude={locationMapTarget?.latitude} weddingLongitude={locationMapTarget?.longitude} t={t} />
+        ) : null}
+        {locationMapTarget ? (
+          <div className="story-map__actions" style={{ marginTop: "0.5rem" }}>
+            <a
+              className="setup-button setup-button--ghost setup-button--compact"
+              href={buildGoogleMapsUrl(locationMapTarget)}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {t("details.viewGoogleMaps")}
+            </a>
+            <a
+              className="setup-button setup-button--ghost setup-button--compact"
+              href={buildAppleMapsUrl(locationMapTarget, configWeddingPlace)}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {t("details.viewAppleMaps")}
+            </a>
           </div>
         ) : null}
       </div>
