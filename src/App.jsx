@@ -32,8 +32,12 @@ function AppShell() {
   const topBarPadding = isAdminTokenLoggedIn ? "2.5rem" : "0";
   const publicNavPadding = !isEditingRoute ? "2.2rem" : "0";
 
+  const RTL_LANGS = new Set(["ar", "he", "ur", "fa", "ps", "ku"]);
+
   useEffect(() => {
-    document.documentElement.lang = i18n.language || "es";
+    const lang = i18n.language?.split("-")[0] || "es";
+    document.documentElement.lang = lang;
+    document.documentElement.dir = RTL_LANGS.has(lang) ? "rtl" : "ltr";
   }, [i18n.language]);
 
   useEffect(() => {
@@ -79,12 +83,12 @@ function AppShell() {
       <main id="main-content" role="main" tabIndex={-1} style={{ paddingTop: topBarPadding || publicNavPadding }}>
         <Suspense fallback={<div className="page-loading" />}>
         <Routes>
-          <Route path="/" element={<LandingPage />} />
+          <Route path="/" element={<ErrorBoundary><LandingPage /></ErrorBoundary>} />
           <Route path="/:inviteToken" element={<ErrorBoundary><PublicInvitation /></ErrorBoundary>} />
           <Route path="/:inviteToken/setup" element={<ErrorBoundary><SetupPage /></ErrorBoundary>} />
           <Route path="/:inviteToken/admin" element={<ErrorBoundary><AdminPage /></ErrorBoundary>} />
           <Route path={SUPERADMIN_ROUTE} element={<ErrorBoundary><SuperAdminLogin /></ErrorBoundary>} />
-          <Route path="/:inviteToken/print" element={<PrintPage />} />
+          <Route path="/:inviteToken/print" element={<ErrorBoundary><PrintPage /></ErrorBoundary>} />
           {SUPERADMIN_DASHBOARD && (
             <Route path={SUPERADMIN_DASHBOARD} element={<ErrorBoundary><SuperAdminPanel /></ErrorBoundary>} />
           )}

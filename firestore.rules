@@ -6,8 +6,12 @@ service cloud.firestore {
         && request.auth.token.email in ['adriancl2001@gmail.com'];
     }
 
+    function sessionExists(tokenId) {
+      return exists(/databases/$(database)/documents/invitations/$(tokenId));
+    }
+
     function hasActiveSession(tokenId) {
-      return exists(/databases/$(database)/documents/invitations/$(tokenId))
+      return sessionExists(tokenId)
         && get(/databases/$(database)/documents/invitations/$(tokenId)).data.activeSession is timestamp;
     }
 
@@ -70,7 +74,8 @@ service cloud.firestore {
             ||
             (request.resource.data.keys().hasOnly(['used', 'createdAt', 'autoGen', 'inviteToken'])
               && request.resource.data.used == false
-              && request.resource.data.autoGen == true)
+              && request.resource.data.autoGen == true
+              && hasActiveSession(request.resource.data.inviteToken))
           ));
       allow update: if isSuperAdmin();
       allow delete: if isSuperAdmin();
@@ -99,6 +104,7 @@ service cloud.firestore {
         && request.resource.data.dietaryInfo is string
         && request.resource.data.inviteToken is string
         && hasActiveSession(resource.data.inviteToken)
+        && request.resource.data.privacyConsent == true
         && request.resource.data.keys().hasOnly(['attendance', 'dietaryInfo', 'privacyConsent', 'privacyConsentAt', 'healthConsent', 'birthDate', 'parentalConsent', 'menuSelection', 'guestName', 'submittedAt', 'inviteToken']);
 
       allow delete: if isSuperAdmin()

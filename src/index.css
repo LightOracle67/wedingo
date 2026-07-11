@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+/* Google Fonts auto-hospedadas via @fontsource (GDPR compliant). */
+@import "@fontsource/playfair-display/400.css";
+@import "@fontsource/playfair-display/400-italic.css";
+@import "@fontsource/playfair-display/500.css";
+@import "@fontsource/playfair-display/500-italic.css";
+@import "@fontsource/playfair-display/600.css";
+@import "@fontsource/playfair-display/600-italic.css";
+@import "@fontsource/playfair-display/700.css";
+@import "@fontsource/lora/400.css";
+@import "@fontsource/lora/400-italic.css";
+@import "@fontsource/lora/500.css";
+@import "@fontsource/lora/500-italic.css";
+@import "@fontsource/lora/600.css";
+@import "@fontsource/lora/600-italic.css";
+@import "@fontsource/lora/700.css";
+
 @font-face {
   font-family: "OpenDyslexic";
   src: url("https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/otf/OpenDyslexic-Regular.otf") format("opentype");
@@ -1044,8 +1060,8 @@ body {
   height: 100svh;
   overflow: hidden;
   isolation: isolate;
-  background-color: #ede6d8;
-  background-image: var(--wedding-background-image), url("./assets/background.jpg");
+  background-color: #1f1b14;
+  background-image: var(--wedding-background-image), url("./assets/background.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1086,7 +1102,7 @@ body::before {
   background-image:
     linear-gradient(var(--page-wash), var(--page-wash)),
     var(--wedding-background-image),
-    url("./assets/background.jpg");
+    url("./assets/background.webp");
   background-position:
     center,
     center,
@@ -1478,7 +1494,7 @@ body::after {
 
 .story-copy {
   margin: 0;
-  color: var(--invite-copy-color);
+  color: color-mix(in srgb, var(--invite-copy-color) 75%, #000);
   font-size: clamp(1.05rem, 2.4vw, 1.3rem);
   line-height: 1.65;
   text-shadow:
@@ -2138,7 +2154,7 @@ h6 {
   transition: border-color 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
 }
 
-.setup-input:focus, .setup-textarea:focus {
+.setup-input:focus-visible, .setup-textarea:focus-visible {
   border-color: var(--setup-accent);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--setup-accent) 20%, transparent);
   background: color-mix(in srgb, var(--setup-field-bg) 90%, transparent);
@@ -2684,10 +2700,14 @@ h6 {
   padding: 0.72rem 0.85rem;
   font-family: var(--font-body);
   font-size: 1rem;
-  outline: none;
   transition:
     border-color 220ms ease,
     box-shadow 220ms ease;
+}
+
+.setup-input:focus-visible {
+  outline: 2px solid var(--setup-accent);
+  outline-offset: 2px;
 }
 
 select.setup-input {
@@ -2868,7 +2888,7 @@ a:focus-visible {
 }
 
 .invite-copy {
-  color: var(--invite-copy-color);
+  color: color-mix(in srgb, var(--invite-copy-color) 75%, #000);
   -webkit-text-stroke: 0.3px rgba(0, 0, 0, 0.35);
   text-shadow:
     0 0 20px color-mix(in srgb, var(--invite-text-shadow) 80%, transparent),
@@ -3449,7 +3469,8 @@ a:focus-visible {
 .admin-bar__link:focus-visible {
   background: rgba(247, 227, 170, 0.12);
   color: #fff6dc;
-  outline: none;
+  outline: 2px solid var(--setup-accent);
+  outline-offset: 2px;
 }
 
 .admin-bar__link--active {
@@ -4307,7 +4328,7 @@ a:focus-visible {
 
 .music-player__time {
   font-size: 0.55rem;
-  color: var(--invite-copy-color, #c8b898);
+  color: color-mix(in srgb, var(--invite-copy-color, #c8b898) 75%, #000);
   font-variant-numeric: tabular-nums;
   min-width: 1.8rem;
   text-align: center;

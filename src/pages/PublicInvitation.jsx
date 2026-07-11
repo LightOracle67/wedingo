@@ -16,10 +16,9 @@
  * @module PublicInvitation
  */
 
-import { useEffect, useMemo, useState } from "react";
+import { lazy, useEffect, useMemo, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import "leaflet/dist/leaflet.css";
 
 import { useApp } from "../contexts/AppContext";
 import { useStoryNavigation } from "../hooks/useStoryNavigation";
@@ -31,17 +30,19 @@ import { MONTH_VALUE_TO_NUMBER } from "../lib/constants";
 import { parseSectionOrder } from "../lib/section-utils";
 
 // ─── Assets ──────────────────────────────────────────────
-import eucalyptusSrc from "../assets/eucalyptus.png";
+import eucalyptusSrc from "../assets/eucalyptus.webp";
 
-// ─── Componentes de sección ──────────────────────────────
+// ─── Componentes de sección (visibles al inicio, carga directa) ────
 import HeroSection from "./sections/HeroSection";
 import DetailsSection from "./sections/DetailsSection";
 import InfoSection from "./sections/InfoSection";
 import StorySection from "./sections/StorySection";
-import GiftsSection from "./sections/GiftsSection";
-import AccommodationSection from "./sections/AccommodationSection";
-import GallerySection from "./sections/GallerySection";
-import RsvpSection from "./sections/RsvpSection";
+
+// ─── Secciones secundarias (carga diferida) ────────────────────────
+const GiftsSection = lazy(() => import("./sections/GiftsSection"));
+const AccommodationSection = lazy(() => import("./sections/AccommodationSection"));
+const GallerySection = lazy(() => import("./sections/GallerySection"));
+const RsvpSection = lazy(() => import("./sections/RsvpSection"));
 
 /**
  * Mapa de claves de sección a sus componentes React.
@@ -208,6 +209,7 @@ export default function PublicInvitation() {
     const timeoutId = window.setTimeout(async () => {
       try {
         // Importación dinámica de Leaflet (solo cuando se necesita)
+        await import("leaflet/dist/leaflet.css");
         const L = (await import("leaflet")).default;
         const geocodedLocation = await resolveLocationTarget({
           place,
@@ -369,12 +371,12 @@ export default function PublicInvitation() {
   // RENDERIZADO CONDICIONAL
   // ═══════════════════════════════════════════════════════
 
-  // ── Estado de carga ──
+   // ── Estado de carga ──
   if (isConfigLoading) {
     return (
       <div className="app-scene">
         <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
-          <div className="w-full max-w-md text-center story-panel story-panel--hero">
+          <div className="w-full max-w-md text-center story-panel story-panel--hero" aria-live="polite" aria-busy="true">
             <p className="font-serif text-[clamp(1rem,3vw,1.35rem)] text-boda-texto/60 leading-relaxed">
               {t("public.loadingInvitation")}
             </p>
@@ -421,10 +423,10 @@ export default function PublicInvitation() {
     <div className={`app-scene ${isStoryTransitioning ? "app-scene--transitioning" : ""}`}>
       {/* ── Decoraciones laterales (eucalipto) ── */}
       <div className="fixed top-0 z-0 pointer-events-none left-2 wedding-decoration--left wedding-decoration">
-        <img src={eucalyptusSrc} alt="" aria-hidden="true" className="wedding-decoration__image" />
+        <img src={eucalyptusSrc} alt="" aria-hidden="true" loading="lazy" className="wedding-decoration__image" />
       </div>
       <div className="fixed z-0 pointer-events-none right-2 bottom-2 wedding-decoration--right wedding-decoration">
-        <img src={eucalyptusSrc} alt="" aria-hidden="true" className="wedding-decoration__image" />
+        <img src={eucalyptusSrc} alt="" aria-hidden="true" loading="lazy" className="wedding-decoration__image" />
       </div>
 
       {/* ── Token no encontrado (invitación no configurada) ── */}

@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { lazy, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useSuperAdmin } from "../contexts/SuperAdminContext";
 import { SUPERADMIN_ROUTE } from "../lib/superadmin";
-import DashboardTab from "./superadmin/DashboardTab";
-import InvitationsTab from "./superadmin/InvitationsTab";
-import TokensTab from "./superadmin/TokensTab";
-import SettingsTab from "./superadmin/SettingsTab";
-import ComplianceTab from "./superadmin/ComplianceTab";
-import DataTab from "./superadmin/DataTab";
+
+// ─── Tabs de SuperAdmin (carga diferida) ───────────────────────────
+const DashboardTab = lazy(() => import("./superadmin/DashboardTab"));
+const InvitationsTab = lazy(() => import("./superadmin/InvitationsTab"));
+const TokensTab = lazy(() => import("./superadmin/TokensTab"));
+const SettingsTab = lazy(() => import("./superadmin/SettingsTab"));
+const ComplianceTab = lazy(() => import("./superadmin/ComplianceTab"));
+const DataTab = lazy(() => import("./superadmin/DataTab"));
 
 const TAB_KEY_MAP = {
   dashboard: "dashboard",

@@ -1,5 +1,6 @@
 import { memo, useEffect, useRef, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
+import { useFocusTrap } from "../hooks/useFocusTrap";
 
 export const PRIVACY_POLICY_VERSION = "2026-07-08";
 
@@ -7,7 +8,9 @@ const LegalModal = memo(function LegalModal({ section, onClose }) {
   const { t } = useTranslation();
   const [open, setOpen] = useState(section || "");
   const [closing, setClosing] = useState(false);
-  const modalRef = useRef(null);
+  const isOpen = Boolean(section || open);
+  const modalRef = useFocusTrap(isOpen);
+  const closeRef = useRef(null);
 
   const SECTIONS = [
     { id: "privacy", label: t("legal.sectionPrivacy"), content: t("legal.privacyPolicy") },
@@ -20,12 +23,12 @@ const LegalModal = memo(function LegalModal({ section, onClose }) {
   }, [section]);
 
   useEffect(() => {
-    const prev = document.activeElement;
-    modalRef.current?.focus();
+    if (!isOpen) return;
     const handleKey = (e) => { if (e.key === "Escape") handleClose(); };
     window.addEventListener("keydown", handleKey);
-    return () => { window.removeEventListener("keydown", handleKey); prev?.focus(); };
-  });
+    closeRef.current = handleKey;
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [isOpen]);
 
   const handleClose = useCallback(() => {
     setClosing(true);
