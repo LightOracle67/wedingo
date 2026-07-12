@@ -119,6 +119,7 @@
     "imageAlt": "Gallery photo",
     "prev": "Previous",
     "next": "Next",
+    "carouselLabel": "Image gallery, use arrow keys to navigate",
     "thumbnailAria": "Photo {{number}}",
     "thumbnailAlt": "Gallery photo thumbnail"
   },

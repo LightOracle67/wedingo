@@ -119,6 +119,7 @@
     "imageAlt": "Foto de la galería",
     "prev": "Anterior",
     "next": "Siguiente",
+    "carouselLabel": "Galería de imágenes, usa las flechas del teclado para navegar",
     "thumbnailAria": "Foto {{number}}",
     "thumbnailAlt": "Miniatura de foto de la galería"
   },

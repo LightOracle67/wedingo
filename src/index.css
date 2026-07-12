@@ -262,7 +262,7 @@ html {
   --invite-shell-glow: rgba(205, 181, 141, 0.18);
   --invite-core-border: rgba(233, 223, 207, 0.7);
   --invite-core-glow: rgba(199, 170, 119, 0.18);
-  --invite-title-color: #e8d5b8;
+  --invite-title-color: #4a3520;
   --invite-copy-color: #d4c4b0;
   --invite-text-shadow: rgba(67, 49, 29, 0.6);
   --invite-rings-filter: saturate(0.88) brightness(1.06);
@@ -296,7 +296,7 @@ html {
   --invite-shell-glow: rgba(255, 176, 207, 0.22);
   --invite-core-border: rgba(255, 210, 229, 0.66);
   --invite-core-glow: rgba(242, 139, 180, 0.2);
-  --invite-title-color: #e8cad4;
+  --invite-title-color: #5c2d3c;
   --invite-copy-color: #e0ccd4;
   --invite-text-shadow: rgba(104, 34, 56, 0.6);
   --invite-rings-filter: hue-rotate(320deg) saturate(1.06) brightness(1.05);
@@ -336,7 +336,7 @@ html {
   --invite-shell-glow: rgba(196, 170, 240, 0.22);
   --invite-core-border: rgba(220, 208, 248, 0.66);
   --invite-core-glow: rgba(180, 150, 234, 0.2);
-  --invite-title-color: #d8cce8;
+  --invite-title-color: #3c2d4e;
   --invite-copy-color: #d4cce0;
   --invite-text-shadow: rgba(44, 26, 76, 0.6);
   --invite-rings-filter: hue-rotate(240deg) saturate(0.9) brightness(1.06);
@@ -376,7 +376,7 @@ html {
   --invite-shell-glow: rgba(240, 216, 148, 0.2);
   --invite-core-border: rgba(245, 234, 200, 0.68);
   --invite-core-glow: rgba(230, 198, 126, 0.2);
-  --invite-title-color: #e8dcc0;
+  --invite-title-color: #4a3c1e;
   --invite-copy-color: #dcccba;
   --invite-text-shadow: rgba(68, 48, 20, 0.6);
   --invite-rings-filter: saturate(1.02) sepia(0.12) brightness(1.04);

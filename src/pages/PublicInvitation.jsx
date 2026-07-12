@@ -391,7 +391,7 @@ export default function PublicInvitation() {
     return (
       <div className="app-scene">
         <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
-          <div className="w-full max-w-md text-center story-panel story-panel--hero">
+          <div className="w-full max-w-md text-center story-panel story-panel--hero" aria-live="assertive">
             <h1 className="font-serif text-[clamp(2.5rem,8vw,4.5rem)] text-boda-texto leading-tight hero-title invite-title">
               {t("public.emptyTitle")}
             </h1>
@@ -432,7 +432,7 @@ export default function PublicInvitation() {
       {/* ── Token no encontrado (invitación no configurada) ── */}
       {showMissingToken ? (
         <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
-          <div className="w-full max-w-md text-center story-panel story-panel--hero">
+          <div className="w-full max-w-md text-center story-panel story-panel--hero" aria-live="assertive">
             <h1 className="font-serif text-[clamp(2.5rem,8vw,4.5rem)] text-boda-texto leading-tight hero-title invite-title">
               {t("public.emptyTitle")}
             </h1>
@@ -448,7 +448,7 @@ export default function PublicInvitation() {
       ) : isEmpty ? (
         /* ── Invitación vacía (sin configurar) ── */
         <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
-          <div className="w-full max-w-md text-center story-panel story-panel--hero">
+          <div className="w-full max-w-md text-center story-panel story-panel--hero" aria-live="assertive">
             <h1 className="font-serif text-[clamp(2.5rem,8vw,4.5rem)] text-boda-texto leading-tight hero-title invite-title">
               {t("public.emptyTitle")}
             </h1>

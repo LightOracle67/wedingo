@@ -196,7 +196,17 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
             </div>
           ) : null}
 
-          <div className="gallery-main-container" style={{ display: mainLoaded[clamped] ? "flex" : "none" }}>
+          <div
+            className="gallery-main-container"
+            style={{ display: mainLoaded[clamped] ? "flex" : "none" }}
+            tabIndex={0}
+            role="group"
+            aria-label={t("gallery.carouselLabel")}
+            onKeyDown={(e) => {
+              if (e.key === "ArrowLeft") { e.preventDefault(); prev(); }
+              else if (e.key === "ArrowRight") { e.preventDefault(); next(); }
+            }}
+          >
             {fading && prevClamped !== null && mainLoaded[prevClamped] && (
               <img
                 src={images[prevClamped].url || images[prevClamped]}
