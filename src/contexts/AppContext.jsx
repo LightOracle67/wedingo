@@ -14,8 +14,8 @@
  * - Rastrear visitas a la invitación (analytics).
  *
  * @module AppContext
- */
 
+ */
 import { createContext, useContext, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -53,7 +53,7 @@ const UIContext = createContext(null);
  * (configuración de boda, RSVP, autenticación, etc.).
  *
  * @param {{ children: React.ReactNode }} props - Componentes hijos envueltos.
- * @returns {JSX.Element} Provider con el valor del contexto.
+ * @returns {React.JSX.Element} Provider con el valor del contexto.
  */
 export function AppProvider({ children }) {
   const { t } = useTranslation();

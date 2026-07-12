@@ -4,7 +4,7 @@ import { useFocusTrap, useEscapeKey } from "../hooks/useFocusTrap";
 
 export const PRIVACY_POLICY_VERSION = "2026-07-08";
 
-const LegalModal = memo(function LegalModal({ section, onClose }) {
+const LegalModal = memo(/** @param {{ section: string, onClose: () => void }} props */ function LegalModal({ section, onClose }) {
   const { t } = useTranslation();
   const [open, setOpen] = useState(section || "");
   const [closing, setClosing] = useState(false);

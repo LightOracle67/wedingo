@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useFocusTrap, useEscapeKey } from "../hooks/useFocusTrap";
 
@@ -20,8 +20,10 @@ function formatTime(sec) {
   const s = Math.floor(sec % 60);
   return `${m}:${String(s).padStart(2, "0")}`;
 }
-
-const MusicPlayer = memo(function MusicPlayer({ musicUrl }) {
+ 
+const MusicPlayer = memo(
+  /** @param {{ musicUrl: string }} props */
+  function MusicPlayer({ musicUrl }) {
   const { t } = useTranslation();
   const [playing, setPlaying] = useState(false);
   const [error, setError] = useState(false);
