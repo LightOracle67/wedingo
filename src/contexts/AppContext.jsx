@@ -19,12 +19,11 @@
 import { createContext, useContext, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
-import { getDoc, setDoc, increment, updateDoc, getDocs, writeBatch, doc, serverTimestamp } from "firebase/firestore";
+import { getDoc, setDoc, increment, updateDoc, getDocs, writeBatch, serverTimestamp } from "firebase/firestore";
 import { db, invitationDocRef, rsvpByInviteRef } from "../lib/firebase";
 import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES, defaultConfig, STORY_SECTION_ORDER, THEME_VALUES } from "../lib/constants";
 import { normalizeConfig } from "../lib/normalize-config";
 import { decodeInviteConfig } from "../lib/invite-config-codec";
-import { compressImage } from "../lib/image-utils";
 import { uploadImage, loadDecryptedField, deleteGallery, loadGallery } from "../lib/image-store";
 import { saveSession, clearSession, firestoreSessionExpiry } from "../lib/sessionVars";
 import { safeSetItem, safeGetItem, safeRemoveItem } from "../lib/storage";

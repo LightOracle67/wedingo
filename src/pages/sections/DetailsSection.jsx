@@ -7,7 +7,7 @@ const DetailsSection = memo(function DetailsSection({
   style, className,
   formattedDate, formattedTime, hasLocationData, locationDescription,
   calendarLink,
-  locationMapContainerRef, locationMapLoading, locationMapError, locationMapTarget,
+  locationMapTarget,
   configWeddingPlace, transportInfo,
 }) {
   const { t } = useTranslation();

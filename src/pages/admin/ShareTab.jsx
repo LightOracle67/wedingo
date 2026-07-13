@@ -8,7 +8,7 @@ const APPS = (t) => [
   { key: "sms", label: t("share.sms"), url: (text) => `sms:?body=${encodeURIComponent(text)}` },
 ];
 
-const ShareTab = memo(function ShareTab({ inviteToken, config, formattedDate, addToast }) {
+const ShareTab = memo(function ShareTab({ inviteToken, config, addToast }) {
   const { t, i18n } = useTranslation();
   const baseUrl = `${window.location.origin}/${inviteToken}`;
   const inviteUrl = `${baseUrl}?invitar`;

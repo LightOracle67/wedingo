@@ -1,6 +1,6 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useFocusTrap, useEscapeKey } from "../hooks/useFocusTrap";
+import { useEscapeKey } from "../hooks/useFocusTrap";
 
 function songName(url) {
   if (!url) return "";

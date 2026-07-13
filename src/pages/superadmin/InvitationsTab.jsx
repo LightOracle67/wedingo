@@ -65,10 +65,18 @@ const InvitationsTab = memo(function InvitationsTab() {
           placeholder={t("superadmin.searchTokenPlaceholder")} autoComplete="off" />
       </div>
 
-      <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginBottom: "1rem" }}>
+      <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", marginBottom: "1rem" }}>
         <span className="setup-help" style={{ margin: 0 }}>
           {t("superadmin.invitationsCount", { count: invitations.length, size: formatBytes(totalBytes) })}
         </span>
+        <button
+          type="button"
+          className="setup-button setup-button--ghost setup-button--compact"
+          onClick={handleExportAll}
+          disabled={!invitations.length}
+        >
+          {t("superadmin.exportAllBtn")}
+        </button>
       </div>
 
       {filtered.length === 0 ? (
