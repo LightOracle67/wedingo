@@ -13,7 +13,6 @@ export function useFocusTrap(open) {
     if (!el) return;
     const focusable = el.querySelectorAll(FOCUSABLE);
     const first = focusable[0];
-    const last = focusable[focusable.length - 1];
     first?.focus();
 
     const handleKey = (e) => {

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { getDocs, deleteDoc, doc, collection, writeBatch, getDoc } from "firebase/firestore";
+import { getDocs, doc, collection, writeBatch, getDoc } from "firebase/firestore";
 import { db, INVITATIONS_COLLECTION_REF, RSVP_COLLECTION_REF, rsvpByInviteRef } from "../../lib/firebase";
 import { useToast } from "../../contexts/ToastContext";
 import { downloadJson } from "../../lib/file-utils";
@@ -431,31 +431,33 @@ const tdStyle = { padding: "0.35rem 0.5rem", verticalAlign: "middle" };
  * @param {string} token - Token/ID de la invitación.
  */
 async function cascadeDelete(token) {
-  const batch = writeBatch(db);
-  const batchSize = 500;
+  const BATCH_SIZE = 500;
+  const refsToDelete = [];
 
   // RSVPs
   const rsvpSnap = await getDocs(rsvpByInviteRef(token));
-  for (const d of rsvpSnap.docs) {
-    batch.delete(d.ref);
-  }
+  for (const d of rsvpSnap.docs) refsToDelete.push(d.ref);
 
   // Gallery images
   const gallerySnap = await getDocs(collection(db, "invitations", token, "gallery"));
-  for (const d of gallerySnap.docs) {
-    batch.delete(d.ref);
-  }
+  for (const d of gallerySnap.docs) refsToDelete.push(d.ref);
 
   // Setup tokens (busca por inviteToken)
   const tokenSnap = await getDocs(collection(db, "setupTokens"));
   for (const d of tokenSnap.docs) {
-    if (d.data().inviteToken === token) {
-      batch.delete(d.ref);
-    }
+    if (d.data().inviteToken === token) refsToDelete.push(d.ref);
   }
 
-  // Invitation doc
-  batch.delete(doc(db, "invitations", token));
+  // Invitation doc (siempre al final)
+  refsToDelete.push(doc(db, "invitations", token));
 
-  await batch.commit();
+  // Firestore permite un máximo de 500 operaciones por batch.
+  // Troceamos las referencias en lotes y confirmamos cada uno por separado
+  // para evitar que invitaciones con muchos RSVPs/imágenes fallen silenciosamente.
+  for (let i = 0; i < refsToDelete.length; i += BATCH_SIZE) {
+    const chunk = refsToDelete.slice(i, i + BATCH_SIZE);
+    const batch = writeBatch(db);
+    for (const ref of chunk) batch.delete(ref);
+    await batch.commit();
+  }
 }

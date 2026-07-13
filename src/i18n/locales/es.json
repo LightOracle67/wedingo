@@ -511,6 +511,7 @@
     "deleteConfirmInvitation": "¿Eliminar la invitación \"{{id}}\" permanentemente?",
     "deleteError": "No se pudo eliminar la invitación.",
     "exportError": "Error al exportar.",
+    "exportAllBtn": "Exportar todo",
     "tokensLoading": "Cargando tokens...",
     "tokensStats": "{{total}} tokens · {{used}} usados · {{available}} disponibles",
     "generateToken": "Generar nuevo token",

@@ -130,7 +130,7 @@ export default function PublicInvitation() {
    * Se usan alias para mantener compatibilidad con el resto del componente.
    */
   const {
-    activeSection: activeStorySection,
+    activeSection: _activeStorySection,
     isTransitioning: isStoryTransitioning,
     getSectionStyle: getStorySectionStyle,
     getSectionClassName: getStorySectionClassName,
@@ -356,6 +356,7 @@ export default function PublicInvitation() {
     config.kidsPolicy, config.storyText, config.giftsInfo, config.accommodationInfo,
     config.transportInfo, config.godparent1, config.godparent2, inviteToken,
     config.couplePhoto, config.bankInfo, config.menuEnabled,
+    config.menuCarne, config.menuPescado, config.menuVegano, config.menuPostre, config.menuTexto,
     countdown, formattedDate, formattedTime,
     hasLocationData, locationDescription, calendarLink,
     locationMapContainerRef, locationMapLoading, locationMapError, locationMapTarget,

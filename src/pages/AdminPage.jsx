@@ -154,6 +154,41 @@ export default function AdminPage() {
     }
   }, [rsvpEntries, coupleName, t]);
 
+  // ─── Cálculo de estadísticas de asistencia ─────────────
+  const confirmedResponses = rsvpEntries.filter((e) => e.attendance === "yes").length;
+  const declinedResponses = rsvpEntries.filter((e) => e.attendance === "no").length;
+  const totalGuests = rsvpEntries.reduce(
+    (s, r) => s + 1 + (Number(r.companions) || 0), 0,
+  );
+
+  /** Props agrupadas para PanelTab (reduce prop drilling). */
+  const panelConfig = useMemo(() => ({
+    inviteToken,
+    confirmedResponses,
+    declinedResponses,
+    totalGuests,
+    rsvpEntries,
+    setActiveTab: setActiveTabAndFilter,
+    setAttendanceFilter: setAttendanceFilterValue,
+    exportPdf,
+    formatDate,
+    onRestore: reloadConfig,
+    visitCount: config._visits || 0,
+  }), [inviteToken, confirmedResponses, declinedResponses, totalGuests, rsvpEntries, setActiveTabAndFilter, setAttendanceFilterValue, exportPdf, formatDate, reloadConfig, config._visits]);
+
+  /** Props agrupadas para AttendanceTab. */
+  const attendanceConfig = useMemo(() => ({
+    searchQuery,
+    setSearchQuery,
+    attendanceFilter,
+    setAttendanceFilter: setAttendanceFilterValue,
+    filteredEntries,
+    exportPdf,
+    rsvpEntries,
+    handleClearRsvpEntries,
+    formatDate,
+  }), [searchQuery, setSearchQuery, attendanceFilter, setAttendanceFilterValue, filteredEntries, exportPdf, rsvpEntries, handleClearRsvpEntries, formatDate]);
+
   // ─── Estados de carga ──────────────────────────────────
   if (isConfigLoading) {
     return (
@@ -203,40 +238,6 @@ export default function AdminPage() {
     return <Navigate to={`/${inviteToken}`} replace />;
   }
 
-  // ─── Cálculo de estadísticas de asistencia ─────────────
-  const confirmedResponses = rsvpEntries.filter((e) => e.attendance === "yes").length;
-  const declinedResponses = rsvpEntries.filter((e) => e.attendance === "no").length;
-  const totalGuests = rsvpEntries.reduce(
-    (s, r) => s + 1 + (Number(r.companions) || 0), 0,
-  );
-
-  /** Props agrupadas para PanelTab (reduce prop drilling). */
-  const panelConfig = useMemo(() => ({
-    inviteToken,
-    confirmedResponses,
-    declinedResponses,
-    totalGuests,
-    rsvpEntries,
-    setActiveTab: setActiveTabAndFilter,
-    setAttendanceFilter: setAttendanceFilterValue,
-    exportPdf,
-    formatDate,
-    onRestore: reloadConfig,
-    visitCount: config._visits || 0,
-  }), [inviteToken, confirmedResponses, declinedResponses, totalGuests, rsvpEntries, setActiveTabAndFilter, setAttendanceFilterValue, exportPdf, formatDate, reloadConfig, config._visits]);
-
-  /** Props agrupadas para AttendanceTab. */
-  const attendanceConfig = useMemo(() => ({
-    searchQuery,
-    setSearchQuery,
-    attendanceFilter,
-    setAttendanceFilter: setAttendanceFilterValue,
-    filteredEntries,
-    exportPdf,
-    rsvpEntries,
-    handleClearRsvpEntries,
-    formatDate,
-  }), [searchQuery, setSearchQuery, attendanceFilter, setAttendanceFilterValue, filteredEntries, exportPdf, rsvpEntries, handleClearRsvpEntries, formatDate]);
 
   return (
     <div className="setup-layout setup-layout--flush setup-layout--full" style={{ padding: "2em" }}>

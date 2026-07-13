@@ -17,7 +17,6 @@ import { useTranslation, Trans } from "react-i18next";
 import { useApp } from "../contexts/AppContext";
 import { useToast } from "../contexts/ToastContext";
 import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES, MONTH_OPTIONS } from "../lib/constants";
-import { compressImage } from "../lib/image-utils";
 import { uploadImage, addGalleryImage } from "../lib/image-store";
 import CollapsibleSection from "./CollapsibleSection";
 import SectionOrderEditor from "./SectionOrderEditor";

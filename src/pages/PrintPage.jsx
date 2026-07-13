@@ -6,7 +6,7 @@ import { parseSectionOrder, formatDate } from "../lib/section-utils";
 import { escHtml } from "../lib/utils";
 import { useTranslation } from "react-i18next";
 
-function Section({ eyebrow, title, children, accent, bg }) {
+function Section({ eyebrow, title, children, accent }) {
   return (
     <section className="print-section">
       <div className="print-section__deco print-section__deco--left">
@@ -44,7 +44,6 @@ function Section({ eyebrow, title, children, accent, bg }) {
 
 export default function PrintPage() {
   const { t } = useTranslation();
-  const { inviteToken } = useParams();
   const { config, isConfigLoading } = useApp();
   const printed = useRef(false);
   const [loaded, setLoaded] = useState(false);

@@ -1,6 +1,6 @@
 import { memo, useCallback } from "react";
 
-const GalleryManager = memo(function GalleryManager({ images, onChange, inviteToken, onUpload, id, t }) {
+const GalleryManager = memo(function GalleryManager({ images, onChange, inviteToken, t }) {
   const handleDelete = useCallback(async (index, item) => {
     const arr = JSON.parse(images || "[]");
     const removed = arr.splice(index, 1)[0];

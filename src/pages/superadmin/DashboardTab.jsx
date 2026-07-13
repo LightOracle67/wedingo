@@ -1,5 +1,5 @@
 import { memo, useCallback, useEffect, useState } from "react";
-import { getDocs, collection, deleteDoc, doc, writeBatch, query, where } from "firebase/firestore";
+import { getDocs, collection, doc, writeBatch, query, where } from "firebase/firestore";
 import { ref, deleteObject, listAll } from "firebase/storage";
 import { db, storage, RSVP_COLLECTION_REF, INVITATIONS_COLLECTION_REF } from "../../lib/firebase";
 import { calcGlobalStats, tokenUsageOverTime, rsvpOverTime } from "../../lib/superadmin-utils";

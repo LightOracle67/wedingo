@@ -4,7 +4,7 @@ import { useApp } from "../../contexts/AppContext";
 
 const RsvpSection = memo(function RsvpSection({
   style, className,
-  rsvpForm, rsvpEntries, rsvpMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
+  rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
   updateRsvpField, handleRsvpSubmit, handleDeleteRsvp, handleDietaryToggle, DIETARY_OPTIONS, menuEnabled, menuCarne, menuPescado, menuVegano, menuPostre, menuTexto, computeAge,
 }) {
   const { t } = useTranslation();
