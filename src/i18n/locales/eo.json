@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Ŝarĝado...",
     "error": "Eraro",
     "close": "Fermi",
     "retry": "Reprovi",
     "save": "Konservi ŝanĝojn",
-    "saving": "Konservado...",
-    "cancel": "Nuligi",
     "copy": "Kopii",
-    "copied": "Kopiita",
-    "confirm": "Konfirmi",
-    "yes": "Jes",
-    "no": "Ne",
     "back": "Reen",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Administru la datumojn de via invito, dividu unikan ligilon kun viaj gastoj kaj ricevu iliajn ĉeestkonfirmojn.",
     "createInvitation": "Krei vian inviton",
     "haveInvitation": "Mi jam havas inviton",
-    "privacyPolicy": "Privateca Politiko",
-    "terms": "Kondiĉoj",
-    "legalNotice": "Jura Avizo",
     "modalTitle": "Aliri vian inviton",
     "usernameLabel": "Uzantnomo",
     "usernamePlaceholder": "Via uzantnomo",
@@ -51,10 +41,7 @@
     "withBlessing": "Kun la beno de iliaj baptopatroj {{godparent1}} kaj {{godparent2}}",
     "todayIsWedding": "Hodiaŭ estas la geedziĝo",
     "missing": "Mankas",
-    "daysAndHours": "{{days}} tago(j) kaj {{hours}} horo(j)",
-    "minutes": "{{minutes}} minuto(j)",
-    "todayIsTheDay": "Hodiaŭ estas la granda tago!",
-    "audioError": "Ne eblis ŝargi la sonon. Kontrolu la ligilon."
+    "todayIsTheDay": "Hodiaŭ estas la granda tago!"
   },
   "details": {
     "sectionLabel": "Dato kaj loko",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Ni atendas vin por dividi ĉi tiun specialan momenton. Sube vi trovos la mapon de la loko.",
     "transport": "Transporto",
     "addToCalendar": "Aldoni al kalendaro",
-    "mapLoading": "Ŝarĝante la mapon...",
     "viewGoogleMaps": "Vidi en Google Maps",
-    "viewAppleMaps": "Vidi en Apple Maps",
-    "mapAriaLabel": "Mapo de {{location}}"
+    "viewAppleMaps": "Vidi en Apple Maps"
   },
   "info": {
     "sectionLabel": "Pri la gastoj",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Alia alergio (specifi)",
     "allergiesHint": "Indiku nur nutrajn alergiojn kaj netolerojn. Ne enigu nepetitajn medicinajn informojn.",
     "privacyConsent": "Mi estis informita kaj akceptas la {{link}}",
-    "privacyLink": "Privateca Politiko",
     "healthConsent": "Mi konsentas pri la traktado de miaj sandatumoj (alergioj kaj netoleroj) por adapti la menuon de la festo",
-    "ageConsent": "Mi deklaras esti pli ol 14-jara aŭ, se mi estas malpli aĝa, havi la konsenton de miaj gepatroj aŭ zorgantoj",
     "submitButton": "Konfirmi ĉeeston",
     "submittingButton": "Sendante...",
     "confirmedButton": "Ĉeesto konfirmita",
     "alreadySubmitted": "Vi jam konfirmis vian ĉeeston",
     "withdrawButton": "Retiri mian konfirmon",
-    "withdrawConfirm": "Ĉu vi certas pri retiri vian konfirmon?",
     "birthDateLabel": "Naskiĝdato",
     "ageUnder14Warning": "Vi estas malpli ol 14-jara. Vi bezonas la konsenton de viaj gepatroj aŭ zorgantoj.",
-    "parentalConsent": "Miaj gepatroj aŭ zorgantoj konsentas mian partoprenon",
-    "downloadData": "Elŝuti miajn datumojn"
+    "parentalConsent": "Miaj gepatroj aŭ zorgantoj konsentas mian partoprenon"
   },
   "public": {
     "loadingInvitation": "Ŝarĝante inviton…",
@@ -148,7 +129,6 @@
     "emptyText": "Kreu kaj dividu vian personecigitan geedziĝan inviton.",
     "emptyDescription": "Administru la datumojn de via invito, dividu unikan ligilon kun viaj gastoj kaj ricevu iliajn ĉeestkonfirmojn.",
     "createLink": "Krei inviton",
-    "scrollAria": "Iri al la sekva sekcio",
     "privacyPolicy": "Privateca Politiko",
     "terms": "Kondiĉoj",
     "legalNotice": "Jura Avizo"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

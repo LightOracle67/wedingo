@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "読み込み中...",
     "error": "エラー",
     "close": "閉じる",
     "retry": "再試行",
     "save": "変更を保存",
-    "saving": "保存中...",
-    "cancel": "キャンセル",
     "copy": "コピー",
-    "copied": "コピーしました",
-    "confirm": "確認",
-    "yes": "はい",
-    "no": "いいえ",
     "back": "戻る",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "招待状のデータを管理し、ゲストと固有のリンクを共有して、出欠確認を受け取ります。",
     "createInvitation": "招待状を作成する",
     "haveInvitation": "すでに招待状を持っています",
-    "privacyPolicy": "プライバシーポリシー",
-    "terms": "利用規約",
-    "legalNotice": "法的通知",
     "modalTitle": "招待状にアクセス",
     "usernameLabel": "ユーザー名",
     "usernamePlaceholder": "あなたのユーザー名",
@@ -51,10 +41,7 @@
     "withBlessing": "ゴッドペアレント{{godparent1}}と{{godparent2}}の祝福を受けて",
     "todayIsWedding": "今日は結婚式です",
     "missing": "残り",
-    "daysAndHours": "{{days}}日と{{hours}}時間",
-    "minutes": "{{minutes}}分",
-    "todayIsTheDay": "今日が大切な日です！",
-    "audioError": "音声を読み込めませんでした。リンクを確認してください。"
+    "todayIsTheDay": "今日が大切な日です！"
   },
   "details": {
     "sectionLabel": "日付と場所",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "この特別なひとときを皆さまと共有できることを楽しみにしています。以下に場所の地図があります。",
     "transport": "交通手段",
     "addToCalendar": "カレンダーに追加",
-    "mapLoading": "地図を読み込み中...",
     "viewGoogleMaps": "Googleマップで見る",
-    "viewAppleMaps": "Appleマップで見る",
-    "mapAriaLabel": "{{location}}の地図"
+    "viewAppleMaps": "Appleマップで見る"
   },
   "info": {
     "sectionLabel": "ゲストについて",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "その他のアレルギー（具体的に）",
     "allergiesHint": "食物アレルギーと不耐性のみを記入してください。不要な医療情報は入力しないでください。",
     "privacyConsent": "私は{{link}}について説明を受け、同意します",
-    "privacyLink": "プライバシーポリシー",
     "healthConsent": "式のメニュー調整のため、私の健康データ（アレルギー・不耐性）の処理に同意します",
-    "ageConsent": "私は14歳以上であること、または未成年の場合は両親もしくは保護者の同意があることを宣言します",
     "submitButton": "出欠を送信",
     "submittingButton": "送信中...",
     "confirmedButton": "出欠確認済み",
     "alreadySubmitted": "すでに出欠を返信済みです",
     "withdrawButton": "返信を取り消す",
-    "withdrawConfirm": "本当に返信を取り消しますか？",
     "birthDateLabel": "生年月日",
     "ageUnder14Warning": "14歳未満です。両親または保護者の同意が必要です。",
-    "parentalConsent": "両親または保護者が私の参加に同意します",
-    "downloadData": "自分のデータをダウンロード"
+    "parentalConsent": "両親または保護者が私の参加に同意します"
   },
   "public": {
     "loadingInvitation": "招待状を読み込み中…",
@@ -148,7 +129,6 @@
     "emptyText": "あなただけの結婚式招待状を作成して共有しましょう。",
     "emptyDescription": "招待状のデータを管理し、ゲストと固有のリンクを共有して、出欠確認を受け取ります。",
     "createLink": "招待状を作成",
-    "scrollAria": "次のセクションへ",
     "privacyPolicy": "プライバシーポリシー",
     "terms": "利用規約",
     "legalNotice": "法的通知"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

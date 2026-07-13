@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Betöltés...",
     "error": "Hiba",
     "close": "Bezárás",
     "retry": "Újra",
     "save": "Változások mentése",
-    "saving": "Mentés...",
-    "cancel": "Mégse",
     "copy": "Másolás",
-    "copied": "Másolva",
-    "confirm": "Megerősítés",
-    "yes": "Igen",
-    "no": "Nem",
     "back": "Vissza",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Kezeld meghívód adatait, ossz meg egyedi linket vendégeiddel, és fogadd visszajelzéseiket.",
     "createInvitation": "Meghívó létrehozása",
     "haveInvitation": "Már van meghívóm",
-    "privacyPolicy": "Adatvédelmi irányelvek",
-    "terms": "Feltételek",
-    "legalNotice": "Jogi nyilatkozat",
     "modalTitle": "Hozzáférés a meghívóhoz",
     "usernameLabel": "Felhasználónév",
     "usernamePlaceholder": "A felhasználóneved",
@@ -51,10 +41,7 @@
     "withBlessing": "{{godparent1}} és {{godparent2}} keresztszülők áldásával",
     "todayIsWedding": "Ma van az esküvő",
     "missing": "Hátravan",
-    "daysAndHours": "{{days}} nap és {{hours}} óra",
-    "minutes": "{{minutes}} perc",
-    "todayIsTheDay": "Ma van a nagy nap!",
-    "audioError": "Nem sikerült betölteni a hangot. Ellenőrizd a linket."
+    "todayIsTheDay": "Ma van a nagy nap!"
   },
   "details": {
     "sectionLabel": "Dátum és helyszín",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Szeretettel várunk, hogy megosszuk veled ezt a különleges pillanatot. Lent találod a helyszín térképét.",
     "transport": "Közlekedés",
     "addToCalendar": "Hozzáadás a naptárhoz",
-    "mapLoading": "Térkép betöltése...",
     "viewGoogleMaps": "Megtekintés Google Maps-en",
-    "viewAppleMaps": "Megtekintés Apple Maps-en",
-    "mapAriaLabel": "{{location}} térképe"
+    "viewAppleMaps": "Megtekintés Apple Maps-en"
   },
   "info": {
     "sectionLabel": "A vendégekről",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Egyéb allergia (pontosítsd)",
     "allergiesHint": "Csak ételallergiákat és intoleranciákat adj meg. Ne adj meg nem kért orvosi adatokat.",
     "privacyConsent": "Elolvastam és elfogadom az {{link}}",
-    "privacyLink": "Adatvédelmi irányelveket",
     "healthConsent": "Hozzájárulok egészségügyi adataim (allergiák és intoleranciák) kezeléséhez az ünnepség menüjének testreszabásához",
-    "ageConsent": "Kijelentem, hogy elmúltam 14 éves, vagy ha kiskorú vagyok, szüleim vagy gyámjaim hozzájárulásával rendelkezem",
     "submitButton": "Részvétel megerősítése",
     "submittingButton": "Küldés...",
     "confirmedButton": "Részvétel megerősítve",
     "alreadySubmitted": "Már megerősítetted a részvételed",
     "withdrawButton": "Megerősítésem visszavonása",
-    "withdrawConfirm": "Biztosan vissza szeretnéd vonni a megerősítésed?",
     "birthDateLabel": "Születési dátum",
     "ageUnder14Warning": "14 év alatti vagy. Szükséged van szüleid vagy gyámjaid hozzájárulására.",
-    "parentalConsent": "Szüleim vagy gyámjaim beleegyeznek a részvét elembe",
-    "downloadData": "Adataim letöltése"
+    "parentalConsent": "Szüleim vagy gyámjaim beleegyeznek a részvét elembe"
   },
   "public": {
     "loadingInvitation": "Meghívó betöltése…",
@@ -148,7 +129,6 @@
     "emptyText": "Hozd létre és oszd meg személyre szabott esküvői meghívódat.",
     "emptyDescription": "Kezeld meghívód adatait, ossz meg egyedi linket vendégeiddel, és fogadd visszajelzéseiket.",
     "createLink": "Meghívó létrehozása",
-    "scrollAria": "Ugrás a következő szakaszra",
     "privacyPolicy": "Adatvédelmi irányelvek",
     "terms": "Feltételek",
     "legalNotice": "Jogi nyilatkozat"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

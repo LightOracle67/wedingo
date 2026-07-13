@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Ielādē...",
     "error": "Kļūda",
     "close": "Aizvērt",
     "retry": "Mēģināt vēlreiz",
     "save": "Saglabāt izmaiņas",
-    "saving": "Saglabā...",
-    "cancel": "Atcelt",
     "copy": "Kopēt",
-    "copied": "Nokopēts",
-    "confirm": "Apstiprināt",
-    "yes": "Jā",
-    "no": "Nē",
     "back": "Atpakaļ",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Pārvaldiet ielūguma datus, kopīgojiet unikālu saiti ar viesiem un saņemiet viņu apstiprinājumus.",
     "createInvitation": "Izveidot ielūgumu",
     "haveInvitation": "Man jau ir ielūgums",
-    "privacyPolicy": "Privātuma politika",
-    "terms": "Noteikumi",
-    "legalNotice": "Juridiskais paziņojums",
     "modalTitle": "Piekļūt ielūgumam",
     "usernameLabel": "Lietotājvārds",
     "usernamePlaceholder": "Jūsu lietotājvārds",
@@ -51,10 +41,7 @@
     "withBlessing": "Ar krustvecāku {{godparent1}} un {{godparent2}} svētību",
     "todayIsWedding": "Šodien ir kāzas",
     "missing": "Atlikuši",
-    "daysAndHours": "{{days}} diena(s) un {{hours}} stunda(s)",
-    "minutes": "{{minutes}} minūte(s)",
-    "todayIsTheDay": "Šodien ir lielā diena!",
-    "audioError": "Neizdevās ielādēt audio. Pārbaudiet saiti."
+    "todayIsTheDay": "Šodien ir lielā diena!"
   },
   "details": {
     "sectionLabel": "Datums un vieta",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Gaidām jūs, lai dalītos šajā īpašajā brīdī. Zemāk atradīsiet atrašanās vietas karti.",
     "transport": "Transports",
     "addToCalendar": "Pievienot kalendāram",
-    "mapLoading": "Ielādē karti...",
     "viewGoogleMaps": "Skatīt Google Maps",
-    "viewAppleMaps": "Skatīt Apple Maps",
-    "mapAriaLabel": "{{location}} karte"
+    "viewAppleMaps": "Skatīt Apple Maps"
   },
   "info": {
     "sectionLabel": "Par viesiem",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Cita alerģija (precizējiet)",
     "allergiesHint": "Norādiet tikai pārtikas alerģijas un nepanesības. Neievadiet nepieprasītu medicīnisku informāciju.",
     "privacyConsent": "Esmu informēts(-a) un piekrītu {{link}}",
-    "privacyLink": "Privātuma politikai",
     "healthConsent": "Es piekrītu savu veselības datu (alerģiju un nepanesību) apstrādei, lai pielāgotu svinību ēdienkarti",
-    "ageConsent": "Apliecinu, ka esmu vecāks par 14 gadiem vai, ja esmu nepilngadīgs, man ir vecāku vai aizbildņu piekrišana",
     "submitButton": "Apstiprināt dalību",
     "submittingButton": "Sūta...",
     "confirmedButton": "Dalība apstiprināta",
     "alreadySubmitted": "Jūs jau esat apstiprinājis savu dalību",
     "withdrawButton": "Atsaukt manu apstiprinājumu",
-    "withdrawConfirm": "Vai tiešām vēlaties atsaukt savu apstiprinājumu?",
     "birthDateLabel": "Dzimšanas datums",
     "ageUnder14Warning": "Jūs esat jaunāks par 14 gadiem. Jums nepieciešama vecāku vai aizbildņu piekrišana.",
-    "parentalConsent": "Mani vecāki vai aizbildņi piekrīt manai dalībai",
-    "downloadData": "Lejupielādēt manus datus"
+    "parentalConsent": "Mani vecāki vai aizbildņi piekrīt manai dalībai"
   },
   "public": {
     "loadingInvitation": "Ielādē ielūgumu…",
@@ -148,7 +129,6 @@
     "emptyText": "Izveidojiet un kopīgojiet savu personalizēto kāzu ielūgumu.",
     "emptyDescription": "Pārvaldiet ielūguma datus, kopīgojiet unikālu saiti ar viesiem un saņemiet viņu apstiprinājumus.",
     "createLink": "Izveidot ielūgumu",
-    "scrollAria": "Pāriet uz nākamo sadaļu",
     "privacyPolicy": "Privātuma politika",
     "terms": "Noteikumi",
     "legalNotice": "Juridiskais paziņojums"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

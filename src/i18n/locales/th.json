@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "กำลังโหลด...",
     "error": "ข้อผิดพลาด",
     "close": "ปิด",
     "retry": "ลองอีกครั้ง",
     "save": "บันทึกการเปลี่ยนแปลง",
-    "saving": "กำลังบันทึก...",
-    "cancel": "ยกเลิก",
     "copy": "คัดลอก",
-    "copied": "คัดลอกแล้ว",
-    "confirm": "ยืนยัน",
-    "yes": "ใช่",
-    "no": "ไม่",
     "back": "กลับ",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "จัดการข้อมูลบัตรเชิญของคุณ แชร์ลิงก์ไม่ซ้ำกับแขก และรับคำตอบการเข้าร่วม",
     "createInvitation": "สร้างบัตรเชิญของคุณ",
     "haveInvitation": "ฉันมีบัตรเชิญแล้ว",
-    "privacyPolicy": "นโยบายความเป็นส่วนตัว",
-    "terms": "ข้อกำหนด",
-    "legalNotice": "ประกาศทางกฎหมาย",
     "modalTitle": "เข้าถึงบัตรเชิญของคุณ",
     "usernameLabel": "ชื่อผู้ใช้",
     "usernamePlaceholder": "ชื่อผู้ใช้ของคุณ",
@@ -51,10 +41,7 @@
     "withBlessing": "ด้วยพรจากพ่อแม่อุปถัมภ์ {{godparent1}} และ {{godparent2}}",
     "todayIsWedding": "วันนี้เป็นวันแต่งงาน",
     "missing": "เหลืออีก",
-    "daysAndHours": "{{days}} วัน และ {{hours}} ชั่วโมง",
-    "minutes": "{{minutes}} นาที",
-    "todayIsTheDay": "วันนี้เป็นวันสำคัญ!",
-    "audioError": "ไม่สามารถโหลดไฟล์เสียงได้ กรุณาตรวจสอบลิงก์"
+    "todayIsTheDay": "วันนี้เป็นวันสำคัญ!"
   },
   "details": {
     "sectionLabel": "วันที่และสถานที่",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "เราหวังว่าจะได้พบคุณเพื่อร่วมแบ่งปันช่วงเวลาพิเศษนี้ ด้านล่างนี้คุณจะพบแผนที่",
     "transport": "การเดินทาง",
     "addToCalendar": "เพิ่มลงในปฏิทิน",
-    "mapLoading": "กำลังโหลดแผนที่...",
     "viewGoogleMaps": "ดูใน Google Maps",
-    "viewAppleMaps": "ดูใน Apple Maps",
-    "mapAriaLabel": "แผนที่ของ {{location}}"
+    "viewAppleMaps": "ดูใน Apple Maps"
   },
   "info": {
     "sectionLabel": "เกี่ยวกับแขก",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "อาการแพ้อื่นๆ (ระบุ)",
     "allergiesHint": "ระบุเฉพาะการแพ้อาหารเท่านั้น ห้ามป้อนข้อมูลทางการแพทย์ที่ไม่จำเป็น",
     "privacyConsent": "ฉันได้รับทราบและยอมรับ {{link}}",
-    "privacyLink": "นโยบายความเป็นส่วนตัว",
     "healthConsent": "ฉันยินยอมให้ประมวลผลข้อมูลสุขภาพของฉัน (การแพ้และการแพ้อาหาร) เพื่อปรับเมนูของงานเฉลิมฉลอง",
-    "ageConsent": "ฉันขอรับรองว่าฉันมีอายุมากกว่า 14 ปี หรือหากอายุน้อยกว่า ได้รับความยินยอมจากผู้ปกครองหรือผู้ดูแล",
     "submitButton": "ยืนยันการเข้าร่วม",
     "submittingButton": "กำลังส่ง...",
     "confirmedButton": "ยืนยันการเข้าร่วมแล้ว",
     "alreadySubmitted": "คุณได้ยืนยันการเข้าร่วมแล้ว",
     "withdrawButton": "ถอนการยืนยันของฉัน",
-    "withdrawConfirm": "คุณแน่ใจหรือไม่ที่จะถอนการยืนยัน?",
     "birthDateLabel": "วันเกิด",
     "ageUnder14Warning": "คุณอายุต่ำกว่า 14 ปี คุณต้องได้รับความยินยอมจากผู้ปกครองหรือผู้ดูแล",
-    "parentalConsent": "ผู้ปกครองหรือผู้ดูแลของฉันยินยอมให้ฉันเข้าร่วม",
-    "downloadData": "ดาวน์โหลดข้อมูลของฉัน"
+    "parentalConsent": "ผู้ปกครองหรือผู้ดูแลของฉันยินยอมให้ฉันเข้าร่วม"
   },
   "public": {
     "loadingInvitation": "กำลังโหลดบัตรเชิญ…",
@@ -148,7 +129,6 @@
     "emptyText": "สร้างและแชร์บัตรเชิญงานแต่งงานแบบปรับแต่งของคุณ",
     "emptyDescription": "จัดการข้อมูลบัตรเชิญของคุณ แชร์ลิงก์ไม่ซ้ำกับแขก และรับคำตอบการเข้าร่วม",
     "createLink": "สร้างบัตรเชิญ",
-    "scrollAria": "ไปยังส่วนถัดไป",
     "privacyPolicy": "นโยบายความเป็นส่วนตัว",
     "terms": "ข้อกำหนด",
     "legalNotice": "ประกาศทางกฎหมาย"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

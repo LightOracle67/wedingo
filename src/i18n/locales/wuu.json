@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "加载中...",
     "error": "错误",
     "close": "关闭",
     "retry": "重试",
     "save": "保存更改",
-    "saving": "保存中...",
-    "cancel": "取消",
     "copy": "复制",
-    "copied": "已复制",
-    "confirm": "确认",
-    "yes": "是",
-    "no": "否",
     "back": "返回",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "管理您的请柬数据，与宾客分享专属链接，并接收他们的出席确认。",
     "createInvitation": "创建您的请柬",
     "haveInvitation": "我已有请柬",
-    "privacyPolicy": "隐私政策",
-    "terms": "条款",
-    "legalNotice": "法律声明",
     "modalTitle": "访问您的请柬",
     "usernameLabel": "用户名",
     "usernamePlaceholder": "您的用户名",
@@ -51,10 +41,7 @@
     "withBlessing": "在{{godparent1}}和{{godparent2}}的祝福下",
     "todayIsWedding": "今天就是婚礼",
     "missing": "还差",
-    "daysAndHours": "{{days}}天又{{hours}}小时",
-    "minutes": "{{minutes}}分钟",
-    "todayIsTheDay": "今天就是大日子！",
-    "audioError": "无法加载音频。请检查链接。"
+    "todayIsTheDay": "今天就是大日子！"
   },
   "details": {
     "sectionLabel": "日期和地点",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "我们期待与您分享这一特别时刻。下方是位置地图。",
     "transport": "交通",
     "addToCalendar": "添加到日历",
-    "mapLoading": "加载地图中...",
     "viewGoogleMaps": "在Google地图中查看",
-    "viewAppleMaps": "在Apple地图中查看",
-    "mapAriaLabel": "{{location}}的地图"
+    "viewAppleMaps": "在Apple地图中查看"
   },
   "info": {
     "sectionLabel": "关于宾客",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "其他过敏（请注明）",
     "allergiesHint": "仅注明食物过敏和不耐受。请勿提供未请求的医疗信息。",
     "privacyConsent": "我已被告知并接受{{link}}",
-    "privacyLink": "隐私政策",
     "healthConsent": "我同意处理我的健康数据（过敏和不耐受）以调整庆祝菜单",
-    "ageConsent": "我声明自己年满14岁，或如未满年龄，已获得父母或监护人的同意",
     "submitButton": "确认出席",
     "submittingButton": "提交中...",
     "confirmedButton": "出席已确认",
     "alreadySubmitted": "您已确认出席",
     "withdrawButton": "撤回我的确认",
-    "withdrawConfirm": "您确定要撤回确认吗？",
     "birthDateLabel": "出生日期",
     "ageUnder14Warning": "您未满14岁。需要父母或监护人的同意。",
-    "parentalConsent": "我的父母或监护人同意我参与",
-    "downloadData": "下载我的数据"
+    "parentalConsent": "我的父母或监护人同意我参与"
   },
   "public": {
     "loadingInvitation": "加载请柬中…",
@@ -148,7 +129,6 @@
     "emptyText": "创建并分享您的个性化婚礼请柬。",
     "emptyDescription": "管理您的请柬数据，与宾客分享专属链接，并接收他们的出席确认。",
     "createLink": "创建请柬",
-    "scrollAria": "转到下一节",
     "privacyPolicy": "隐私政策",
     "terms": "条款",
     "legalNotice": "法律声明"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Q'ipikuchkan...",
     "error": "Pantasqa",
     "close": "Wichq'ay",
     "retry": "Huktawan yanapaykachiy",
     "save": "Hukchasqata waqaychay",
-    "saving": "Waqaychachkan...",
-    "cancel": "Amaña",
     "copy": "Iskaychay",
-    "copied": "Iskaychasqa",
-    "confirm": "Chiqañchay",
-    "yes": "Arí",
-    "no": "Manam",
     "back": "Kutiy",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Waqyarikuyniykipa willaykunata kamachiy, waqyarisqaykikunaman sapaq t'inkita t'aqay, hamunankumanta kutichiyninkutapas chaskiy.",
     "createInvitation": "Waqyarikuyta ruray",
     "haveInvitation": "Ña waqyarikuyta kapuwan",
-    "privacyPolicy": "Sapanchay Kamachiy",
-    "terms": "Ruwaykuna",
-    "legalNotice": "Kamachiy Willay",
     "modalTitle": "Waqyarikuyniykiman yaykuy",
     "usernameLabel": "Llamk'apakuq sutiyki",
     "usernamePlaceholder": "Llamk'apakuq sutiyki",
@@ -51,10 +41,7 @@
     "withBlessing": "Padrino/madrina {{godparent1}} hinaspa {{godparent2}} saminchasqanwan",
     "todayIsWedding": "Kunanmi casamientu",
     "missing": "Pisichkan",
-    "daysAndHours": "{{days}} p'unchaw(kuna) hinaspa {{hours}} ura(kuna)",
-    "minutes": "{{minutes}} minutu(kuna)",
-    "todayIsTheDay": "¡Kunanmi hatun p'unchaw!",
-    "audioError": "Uyarinata q'ipiyta mana atirqanichu. T'inkita qhawariy."
+    "todayIsTheDay": "¡Kunanmi hatun p'unchaw!"
   },
   "details": {
     "sectionLabel": "P'unchaw hinaspa kuska",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Kay sapaq pachata qanwan kuska qunakunapaq suyachkayku. Urayninpi tarikuy kuskamanta qhawana tarikun.",
     "transport": "Apaysikuy",
     "addToCalendar": "P'unchawchapaman yapay",
-    "mapLoading": "Qhawanata q'ipichkan...",
     "viewGoogleMaps": "Google Maps nisqapi qhaway",
-    "viewAppleMaps": "Apple Maps nisqapi qhaway",
-    "mapAriaLabel": "{{location}} qhawana"
+    "viewAppleMaps": "Apple Maps nisqapi qhaway"
   },
   "info": {
     "sectionLabel": "Waqyarisqakunamanta",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Huk alirhiya (sut'inchay)",
     "allergiesHint": "Mikuy alirhiyakunallata hinaspa mana ayapaykunallata willariy. Ama mana mañakusqa hampimanta willayta churankichu.",
     "privacyConsent": "Willasqa karqani hinaspa chaskinim {{link}}",
-    "privacyLink": "Sapanchay Kamachiy",
     "healthConsent": "Qali kayniymanta willayta (alirhiyakuna hinaspa mana aypay) raymipaq mikuyta allichapaq llamk'achiyta awninim",
-    "ageConsent": "14 watamanta aswan kuraq kasqayta willanim, utaq aswan sullka kaspay, tayta-mamaypa utaq qhawapakuqniypa awniyninta kapusqanta",
     "submitButton": "Hamunayta chiqañchay",
     "submittingButton": "Kachachkan...",
     "confirmedButton": "Hamunay chiqañchasqa",
     "alreadySubmitted": "Ñam hamunaykita chiqañcharqankiña",
     "withdrawButton": "Chiqañchasqayta qarachiy",
-    "withdrawConfirm": "¿Chiqañchasqaykita qarachiyta munanki chiqaqchu?",
     "birthDateLabel": "Paqariy p'unchaw",
     "ageUnder14Warning": "14 watamanta aswan sullkan kanki. Tayta-mamaykipa utaq qhawapakuqniykipa awniynin munasqa.",
-    "parentalConsent": "Tayta-mamay utaq qhawapakuqniy yaykunayta awnin",
-    "downloadData": "Willayniyta uraykachiy"
+    "parentalConsent": "Tayta-mamay utaq qhawapakuqniy yaykunayta awnin"
   },
   "public": {
     "loadingInvitation": "Waqyarikuyta q'ipichkan…",
@@ -148,7 +129,6 @@
     "emptyText": "Kikillayki casamientopaq waqyarikuyta ruray, t'aqaypas.",
     "emptyDescription": "Waqyarikuyniykipa willaykunata kamachiy, waqyarisqaykikunaman sapaq t'inkita t'aqay, hamunankumanta kutichiyninkutapas chaskiy.",
     "createLink": "Waqyarikuyta ruray",
-    "scrollAria": "Qhipan rakimanga riy",
     "privacyPolicy": "Sapanchay Kamachiy",
     "terms": "Ruwaykuna",
     "legalNotice": "Kamachiy Willay"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

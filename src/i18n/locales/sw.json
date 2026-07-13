@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Inapakia...",
     "error": "Hitilafu",
     "close": "Funga",
     "retry": "Jaribu tena",
     "save": "Hifadhi mabadiliko",
-    "saving": "Inahifadhi...",
-    "cancel": "Ghairi",
     "copy": "Nakili",
-    "copied": "Imenakiliwa",
-    "confirm": "Thibitisha",
-    "yes": "Ndiyo",
-    "no": "Hapana",
     "back": "Rudi",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Dhibiti data ya mwaliko wako, shiriki kiungo cha kipekee na wageni wako na upokee uthibitisho wao wa kuhudhuria.",
     "createInvitation": "Unda mwaliko wako",
     "haveInvitation": "Tayari nina mwaliko",
-    "privacyPolicy": "Sera ya Faragha",
-    "terms": "Masharti",
-    "legalNotice": "Ilani ya Kisheria",
     "modalTitle": "Fikia mwaliko wako",
     "usernameLabel": "Jina la mtumiaji",
     "usernamePlaceholder": "Jina lako la mtumiaji",
@@ -51,10 +41,7 @@
     "withBlessing": "Kwa baraka za wadhamini {{godparent1}} na {{godparent2}}",
     "todayIsWedding": "Leo ni harusi",
     "missing": "Zimesalia",
-    "daysAndHours": "siku {{days}} na masaa {{hours}}",
-    "minutes": "dakika {{minutes}}",
-    "todayIsTheDay": "Leo ni siku kuu!",
-    "audioError": "Haikuwezekana kupakia sauti. Angalia kiungo."
+    "todayIsTheDay": "Leo ni siku kuu!"
   },
   "details": {
     "sectionLabel": "Tarehe na mahali",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Tunakutarajia kushiriki nasi wakati huu maalum. Chini utapata ramani ya eneo.",
     "transport": "Usafiri",
     "addToCalendar": "Ongeza kwenye kalenda",
-    "mapLoading": "Inapakia ramani...",
     "viewGoogleMaps": "Tazama kwenye Google Maps",
-    "viewAppleMaps": "Tazama kwenye Apple Maps",
-    "mapAriaLabel": "Ramani ya {{location}}"
+    "viewAppleMaps": "Tazama kwenye Apple Maps"
   },
   "info": {
     "sectionLabel": "Kuhusu wageni",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Mzio mwingine (bainisha)",
     "allergiesHint": "Bainisha tu mizio na kutovumilia kwa vyakula. Usiweke maelezo ya kiafya ambayo hayajaombwa.",
     "privacyConsent": "Nimearifiwa na ninakubali {{link}}",
-    "privacyLink": "Sera ya Faragha",
     "healthConsent": "Ninakubali kuchakatwa kwa data yangu ya afya (mizio na kutovumilia) ili kurekebisha menyu ya sherehe",
-    "ageConsent": "Ninathibitisha kuwa nina umri wa zaidi ya miaka 14 au, nikiwa mdogo, nina idhini ya wazazi au walezi wangu",
     "submitButton": "Thibitisha kuhudhuria",
     "submittingButton": "Inatuma...",
     "confirmedButton": "Uhudhuriaji umethibitishwa",
     "alreadySubmitted": "Tayari umethibitisha kuhudhuria kwako",
     "withdrawButton": "Ondoa uthibitisho wangu",
-    "withdrawConfirm": "Una uhakika unataka kuondoa uthibitisho wako?",
     "birthDateLabel": "Tarehe ya kuzaliwa",
     "ageUnder14Warning": "Una umri wa chini ya miaka 14. Unahitaji idhini ya wazazi au walezi wako.",
-    "parentalConsent": "Wazazi au walezi wangu wanakubali ushiriki wangu",
-    "downloadData": "Pakua data yangu"
+    "parentalConsent": "Wazazi au walezi wangu wanakubali ushiriki wangu"
   },
   "public": {
     "loadingInvitation": "Inapakia mwaliko…",
@@ -148,7 +129,6 @@
     "emptyText": "Unda na ushiriki mwaliko wako wa harusi uliobinafsishwa.",
     "emptyDescription": "Dhibiti data ya mwaliko wako, shiriki kiungo cha kipekee na wageni wako na upokee uthibitisho wao wa kuhudhuria.",
     "createLink": "Unda mwaliko",
-    "scrollAria": "Nenda kwenye sehemu inayofuata",
     "privacyPolicy": "Sera ya Faragha",
     "terms": "Masharti",
     "legalNotice": "Ilani ya Kisheria"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

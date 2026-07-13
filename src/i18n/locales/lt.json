@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Įkeliama...",
     "error": "Klaida",
     "close": "Uždaryti",
     "retry": "Bandyti dar kartą",
     "save": "Išsaugoti pakeitimus",
-    "saving": "Išsaugoma...",
-    "cancel": "Atšaukti",
     "copy": "Kopijuoti",
-    "copied": "Nukopijuota",
-    "confirm": "Patvirtinti",
-    "yes": "Taip",
-    "no": "Ne",
     "back": "Atgal",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Tvarkykite kvietimo duomenis, bendrinkite unikalią nuorodą su svečiais ir gaukite jų atsakymus dėl dalyvavimo.",
     "createInvitation": "Sukurti kvietimą",
     "haveInvitation": "Jau turiu kvietimą",
-    "privacyPolicy": "Privatumo politika",
-    "terms": "Sąlygos",
-    "legalNotice": "Teisinė pastaba",
     "modalTitle": "Prieiga prie kvietimo",
     "usernameLabel": "Naudotojo vardas",
     "usernamePlaceholder": "Jūsų naudotojo vardas",
@@ -51,10 +41,7 @@
     "withBlessing": "Su krikštatėvių {{godparent1}} ir {{godparent2}} palaiminimu",
     "todayIsWedding": "Šiandien vestuvės",
     "missing": "Liko",
-    "daysAndHours": "{{days}} d. ir {{hours}} val.",
-    "minutes": "{{minutes}} min.",
-    "todayIsTheDay": "Šiandien yra didžioji diena!",
-    "audioError": "Nepavyko įkelti garso. Patikrinkite nuorodą."
+    "todayIsTheDay": "Šiandien yra didžioji diena!"
   },
   "details": {
     "sectionLabel": "Data ir vieta",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Laukiame jūsų, kad pasidalintume šia ypatinga akimirka. Žemiau rasite vietos žemėlapį.",
     "transport": "Transportas",
     "addToCalendar": "Įtraukti į kalendorių",
-    "mapLoading": "Įkeliamas žemėlapis...",
     "viewGoogleMaps": "Žiūrėti Google Maps",
-    "viewAppleMaps": "Žiūrėti Apple Maps",
-    "mapAriaLabel": "{{location}} žemėlapis"
+    "viewAppleMaps": "Žiūrėti Apple Maps"
   },
   "info": {
     "sectionLabel": "Apie svečius",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Kita alergija (patikslinkite)",
     "allergiesHint": "Nurodykite tik maisto alergijas ir netoleravimus. Neįveskite neprašytos medicininės informacijos.",
     "privacyConsent": "Esu informuotas(-a) ir sutinku su {{link}}",
-    "privacyLink": "Privatumo politika",
     "healthConsent": "Sutinku, kad būtų tvarkomi mano sveikatos duomenys (alergijos ir netoleravimai), siekiant pritaikyti šventės meniu",
-    "ageConsent": "Teigiu, kad esu vyresnis nei 14 metų, arba, jei esu nepilnametis, turiu tėvų ar globėjų sutikimą",
     "submitButton": "Patvirtinti dalyvavimą",
     "submittingButton": "Siunčiama...",
     "confirmedButton": "Dalyvavimas patvirtintas",
     "alreadySubmitted": "Jau patvirtinote savo dalyvavimą",
     "withdrawButton": "Atsiimti savo patvirtinimą",
-    "withdrawConfirm": "Ar tikrai norite atsiimti savo patvirtinimą?",
     "birthDateLabel": "Gimimo data",
     "ageUnder14Warning": "Esate jaunesnis nei 14 metų. Jums reikia tėvų ar globėjų sutikimo.",
-    "parentalConsent": "Mano tėvai ar globėjai sutinka su mano dalyvavimu",
-    "downloadData": "Atsisiųsti mano duomenis"
+    "parentalConsent": "Mano tėvai ar globėjai sutinka su mano dalyvavimu"
   },
   "public": {
     "loadingInvitation": "Įkeliamas kvietimas…",
@@ -148,7 +129,6 @@
     "emptyText": "Sukurkite ir bendrinkite asmeninį vestuvių kvietimą.",
     "emptyDescription": "Tvarkykite kvietimo duomenis, bendrinkite unikalią nuorodą su svečiais ir gaukite jų atsakymus dėl dalyvavimo.",
     "createLink": "Sukurti kvietimą",
-    "scrollAria": "Eiti į kitą skyrių",
     "privacyPolicy": "Privatumo politika",
     "terms": "Sąlygos",
     "legalNotice": "Teisinė pastaba"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

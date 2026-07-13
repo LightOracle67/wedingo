@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Mampiditra...",
     "error": "Hadisoana",
     "close": "Akatona",
     "retry": "Andramo indray",
     "save": "Tehirizo ny fanovana",
-    "saving": "Mitehiry...",
-    "cancel": "Ajanony",
     "copy": "Adika",
-    "copied": "Voapetaka",
-    "confirm": "Hamafiso",
-    "yes": "Eny",
-    "no": "Tsia",
     "back": "Miverina",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Tantano ny angon-dresaky ny fanasanao, zarao amin'ny vahiny ny rohy tokana ary raiso ny fanamafisana ny fanatrehan'izy ireo.",
     "createInvitation": "Mamorona ny fanasanao",
     "haveInvitation": "Manana fanasana sahady aho",
-    "privacyPolicy": "Politika momba ny tsiambaratelo",
-    "terms": "Fepetra",
-    "legalNotice": "Filazana ara-dalana",
     "modalTitle": "Miditra amin'ny fanasanao",
     "usernameLabel": "Anaran'ny mpampiasa",
     "usernamePlaceholder": "Ny anaranao mpampiasa",
@@ -51,10 +41,7 @@
     "withBlessing": "Miaraka amin'ny fitahian'i {{godparent1}} sy {{godparent2}}",
     "todayIsWedding": "Androany no mariazy",
     "missing": "Mbola",
-    "daysAndHours": "{{days}} andro sy {{hours}} ora",
-    "minutes": "{{minutes}} minitra",
-    "todayIsTheDay": "Androany no andro lehibe!",
-    "audioError": "Tsy azo nalefa ny feo. Zahao ny rohy."
+    "todayIsTheDay": "Androany no andro lehibe!"
   },
   "details": {
     "sectionLabel": "Daty sy toerana",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Miandry anao izahay hizara ity fotoana manokana ity. Eto ambany ny sarintanin'ny toerana.",
     "transport": "Fitaterana",
     "addToCalendar": "Ampidiro amin'ny kalandrie",
-    "mapLoading": "Mampiditra ny sarintany...",
     "viewGoogleMaps": "Hijery amin'ny Google Maps",
-    "viewAppleMaps": "Hijery amin'ny Apple Maps",
-    "mapAriaLabel": "Sarintanin'i {{location}}"
+    "viewAppleMaps": "Hijery amin'ny Apple Maps"
   },
   "info": {
     "sectionLabel": "Momba ny vahiny",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Alèrjia hafa (lazao)",
     "allergiesHint": "Alèrjia sy tsy fandeferana sakafo ihany no ambarao. Aza mampiditra fampahalalana ara-pitsaboana tsy nangatahana.",
     "privacyConsent": "Efa nampahafantarina aho ary manaiky ny {{link}}",
-    "privacyLink": "Politika momba ny tsiambaratelo",
     "healthConsent": "Manaiky ny fanodinana ny angon-drakitra momba ny fahasalamako (alèrjia sy tsy fandeferana) aho mba hampifanaraka ny sakafo",
-    "ageConsent": "Manambara aho fa mihoatra ny 14 taona, na raha latsaka, dia manana ny faneken'ny ray aman-dreniko na mpitaiza ahy",
     "submitButton": "Hamafiso ny fanatrehana",
     "submittingButton": "Mandefa...",
     "confirmedButton": "Voamarina ny fanatrehana",
     "alreadySubmitted": "Efa nanamafy ny fanatrehanao ianao",
     "withdrawButton": "Esory ny fanamafisako",
-    "withdrawConfirm": "Azonao antoka ve fa te hanesorana ny fanamafisana?",
     "birthDateLabel": "Daty nahaterahana",
     "ageUnder14Warning": "Latsaky ny 14 taona ianao. Mila ny faneken'ny ray aman-dreninao na mpitaiza anao.",
-    "parentalConsent": "Manaiky ny fandraisako anjara ny ray aman-dreniko na mpitaiza ahy",
-    "downloadData": "Ampidino ny angon-drakitro"
+    "parentalConsent": "Manaiky ny fandraisako anjara ny ray aman-dreniko na mpitaiza ahy"
   },
   "public": {
     "loadingInvitation": "Mampiditra fanasana…",
@@ -148,7 +129,6 @@
     "emptyText": "Mamorona sy zarao ny fanasan-dravinao manokana.",
     "emptyDescription": "Tantano ny angon-dresaky ny fanasanao, zarao amin'ny vahiny ny rohy tokana ary raiso ny fanamafisana ny fanatrehan'izy ireo.",
     "createLink": "Mamorona fanasana",
-    "scrollAria": "Mandehana any amin'ny fizarana manaraka",
     "privacyPolicy": "Politika momba ny tsiambaratelo",
     "terms": "Fepetra",
     "legalNotice": "Filazana ara-dalana"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

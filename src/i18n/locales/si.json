@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "පූරණය වෙමින්...",
     "error": "දෝෂය",
     "close": "වසන්න",
     "retry": "නැවත උත්සාහ කරන්න",
     "save": "වෙනස්කම් සුරකින්න",
-    "saving": "සුරකිමින්...",
-    "cancel": "අවලංගු කරන්න",
     "copy": "පිටපත් කරන්න",
-    "copied": "පිටපත් කළා",
-    "confirm": "තහවුරු කරන්න",
-    "yes": "ඔව්",
-    "no": "නැත",
     "back": "ආපසු",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "ඔබේ ආරාධනා දත්ත කළමනාකරණය කරන්න, අමුත්තන් සමඟ අනන්‍ය සබැඳියක් බෙදාගන්න සහ ඔවුන්ගේ සහභාගීත්ව තහවුරු කිරීම් ලබාගන්න.",
     "createInvitation": "ඔබේ ආරාධනාව සාදන්න",
     "haveInvitation": "මට දැනටමත් ආරාධනාවක් ඇත",
-    "privacyPolicy": "රහස්‍යතා ප්‍රතිපත්තිය",
-    "terms": "කොන්දේසි",
-    "legalNotice": "නීතිමය දැන්වීම",
     "modalTitle": "ඔබේ ආරාධනාවට ප්‍රවේශ වන්න",
     "usernameLabel": "පරිශීලක නම",
     "usernamePlaceholder": "ඔබේ පරිශීලක නම",
@@ -51,10 +41,7 @@
     "withBlessing": "{{godparent1}} සහ {{godparent2}} ගේ ආශිර්වාදය සමඟ",
     "todayIsWedding": "අද විවාහ දිනයයි",
     "missing": "ඉතිරි",
-    "daysAndHours": "දින {{days}} සහ පැය {{hours}}",
-    "minutes": "මිනිත්තු {{minutes}}",
-    "todayIsTheDay": "අද විශේෂ දිනයයි!",
-    "audioError": "ශ්‍රව්‍ය පූරණය කළ නොහැකි විය. සබැඳිය පරීක්ෂා කරන්න."
+    "todayIsTheDay": "අද විශේෂ දිනයයි!"
   },
   "details": {
     "sectionLabel": "දිනය සහ ස්ථානය",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "මෙම විශේෂ මොහොත බෙදාගැනීමට අපි ඔබ එනතුරු බලා සිටිමු. පහත ස්ථාන සිතියම ඇත.",
     "transport": "ප්‍රවාහනය",
     "addToCalendar": "දිනදර්ශනයට එක් කරන්න",
-    "mapLoading": "සිතියම පූරණය වෙමින්...",
     "viewGoogleMaps": "Google Maps හි බලන්න",
-    "viewAppleMaps": "Apple Maps හි බලන්න",
-    "mapAriaLabel": "{{location}} හි සිතියම"
+    "viewAppleMaps": "Apple Maps හි බලන්න"
   },
   "info": {
     "sectionLabel": "අමුත්තන් ගැන",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "වෙනත් ආසාත්මිකතා (සඳහන් කරන්න)",
     "allergiesHint": "ආහාර ආසාත්මිකතා සහ නොඉවසුම් පමණක් සඳහන් කරන්න. ඉල්ලා නොසිටි වෛද්‍ය තොරතුරු ඇතුළත් නොකරන්න.",
     "privacyConsent": "මම දැනුවත් කර ඇති අතර {{link}} පිළිගනිමි",
-    "privacyLink": "රහස්‍යතා ප්‍රතිපත්තිය",
     "healthConsent": "උත්සව මෙනුව අනුවර්තනය කිරීම සඳහා මගේ සෞඛ්‍ය දත්ත (ආසාත්මිකතා සහ නොඉවසුම්) සැකසීමට මම කැමැත්ත දෙමි",
-    "ageConsent": "මම වයස අවුරුදු 14ට වැඩි බව හෝ අඩු වයස් නම්, මගේ දෙමාපියන්ගේ හෝ භාරකරුවන්ගේ කැමැත්ත ඇති බව ප්‍රකාශ කරමි",
     "submitButton": "සහභාගීත්වය තහවුරු කරන්න",
     "submittingButton": "යවමින්...",
     "confirmedButton": "සහභාගීත්වය තහවුරු කරන ලදී",
     "alreadySubmitted": "ඔබ දැනටමත් ඔබේ සහභාගීත්වය තහවුරු කර ඇත",
     "withdrawButton": "මගේ තහවුරු කිරීම ඉල්ලා අස්කර ගන්න",
-    "withdrawConfirm": "ඔබේ තහවුරු කිරීම ඉල්ලා අස්කර ගැනීමට ඔබට විශ්වාසද?",
     "birthDateLabel": "උපන් දිනය",
     "ageUnder14Warning": "ඔබ වයස අවුරුදු 14ට අඩුය. දෙමාපියන්ගේ හෝ භාරකරුවන්ගේ කැමැත්ත අවශ්‍ය වේ.",
-    "parentalConsent": "මගේ දෙමාපියන් හෝ භාරකරුවන් මගේ සහභාගීත්වයට කැමැත්ත දෙයි",
-    "downloadData": "මගේ දත්ත බාගන්න"
+    "parentalConsent": "මගේ දෙමාපියන් හෝ භාරකරුවන් මගේ සහභාගීත්වයට කැමැත්ත දෙයි"
   },
   "public": {
     "loadingInvitation": "ආරාධනාව පූරණය වෙමින්…",
@@ -148,7 +129,6 @@
     "emptyText": "ඔබේ පුද්ගලාරෝපිත විවාහ ආරාධනාව සාදා බෙදාගන්න.",
     "emptyDescription": "ඔබේ ආරාධනා දත්ත කළමනාකරණය කරන්න, අමුත්තන් සමඟ අනන්‍ය සබැඳියක් බෙදාගන්න සහ ඔවුන්ගේ සහභාගීත්ව තහවුරු කිරීම් ලබාගන්න.",
     "createLink": "ආරාධනාව සාදන්න",
-    "scrollAria": "ඊළඟ කොටසට යන්න",
     "privacyPolicy": "රහස්‍යතා ප්‍රතිපත්තිය",
     "terms": "කොන්දේසි",
     "legalNotice": "නීතිමය දැන්වීම"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

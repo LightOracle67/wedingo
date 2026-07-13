@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "로딩 중...",
     "error": "오류",
     "close": "닫기",
     "retry": "다시 시도",
     "save": "변경 사항 저장",
-    "saving": "저장 중...",
-    "cancel": "취소",
     "copy": "복사",
-    "copied": "복사됨",
-    "confirm": "확인",
-    "yes": "예",
-    "no": "아니요",
     "back": "뒤로",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "초대장 데이터를 관리하고, 하객들과 고유 링크를 공유하며, 참석 여부를 확인받으세요.",
     "createInvitation": "초대장 만들기",
     "haveInvitation": "이미 초대장이 있어요",
-    "privacyPolicy": "개인정보 처리방침",
-    "terms": "이용약관",
-    "legalNotice": "법적 고지",
     "modalTitle": "초대장에 접근하기",
     "usernameLabel": "사용자 이름",
     "usernamePlaceholder": "사용자 이름",
@@ -51,10 +41,7 @@
     "withBlessing": "증인 {{godparent1}}님과 {{godparent2}}님의 축복과 함께",
     "todayIsWedding": "오늘은 결혼식 날입니다",
     "missing": "남은 시간",
-    "daysAndHours": "{{days}}일 {{hours}}시간",
-    "minutes": "{{minutes}}분",
-    "todayIsTheDay": "오늘이 바로 그 특별한 날입니다!",
-    "audioError": "오디오를 불러올 수 없습니다. 링크를 확인해 주세요."
+    "todayIsTheDay": "오늘이 바로 그 특별한 날입니다!"
   },
   "details": {
     "sectionLabel": "날짜 및 장소",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "이 특별한 순간을 함께 나눌 수 있기를 기대합니다. 아래에서 장소 지도를 확인하세요.",
     "transport": "교통편",
     "addToCalendar": "캘린더에 추가",
-    "mapLoading": "지도 로딩 중...",
     "viewGoogleMaps": "Google 지도에서 보기",
-    "viewAppleMaps": "Apple 지도에서 보기",
-    "mapAriaLabel": "{{location}} 지도"
+    "viewAppleMaps": "Apple 지도에서 보기"
   },
   "info": {
     "sectionLabel": "하객 안내",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "기타 알레르기 (구체적으로 기재)",
     "allergiesHint": "식품 알레르기와 과민증만 기재해 주세요. 불필요한 의료 정보는 입력하지 마세요.",
     "privacyConsent": "저는 {{link}}에 대해 안내받았으며 동의합니다",
-    "privacyLink": "개인정보 처리방침",
     "healthConsent": "예식 메뉴 조정을 위해 건강 데이터(알레르기 및 과민증) 처리에 동의합니다",
-    "ageConsent": "본인은 14세 이상임을 확인하며, 미성년자인 경우 부모님 또는 보호자의 동의를 받았음을 확인합니다",
     "submitButton": "참석 여부 제출",
     "submittingButton": "제출 중...",
     "confirmedButton": "참석 확인 완료",
     "alreadySubmitted": "이미 참석 여부를 확인하셨습니다",
     "withdrawButton": "확인 철회하기",
-    "withdrawConfirm": "정말 확인을 철회하시겠습니까?",
     "birthDateLabel": "생년월일",
     "ageUnder14Warning": "14세 미만입니다. 부모님 또는 보호자의 동의가 필요합니다.",
-    "parentalConsent": "부모님 또는 보호자가 참여에 동의합니다",
-    "downloadData": "내 데이터 다운로드"
+    "parentalConsent": "부모님 또는 보호자가 참여에 동의합니다"
   },
   "public": {
     "loadingInvitation": "초대장 불러오는 중…",
@@ -148,7 +129,6 @@
     "emptyText": "나만의 맞춤 결혼식 초대장을 만들고 공유하세요.",
     "emptyDescription": "초대장 데이터를 관리하고, 하객들과 고유 링크를 공유하며, 참석 여부를 확인받으세요.",
     "createLink": "초대장 만들기",
-    "scrollAria": "다음 섹션으로 이동",
     "privacyPolicy": "개인정보 처리방침",
     "terms": "이용약관",
     "legalNotice": "법적 고지"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

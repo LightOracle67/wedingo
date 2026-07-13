@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Duke ngarkuar...",
     "error": "Gabim",
     "close": "Mbyll",
     "retry": "Riprovo",
     "save": "Ruaj ndryshimet",
-    "saving": "Duke ruajtur...",
-    "cancel": "Anulo",
     "copy": "Kopjo",
-    "copied": "U kopjua",
-    "confirm": "Konfirmo",
-    "yes": "Po",
-    "no": "Jo",
     "back": "Kthehu",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Menaxho të dhënat e ftesës, ndaj një lidhje unike me të ftuarit dhe merr konfirmimet e tyre të pjesëmarrjes.",
     "createInvitation": "Krijo ftesën tënde",
     "haveInvitation": "Tashmë kam një ftesë",
-    "privacyPolicy": "Politika e Privatësisë",
-    "terms": "Kushtet",
-    "legalNotice": "Shënim Ligjor",
     "modalTitle": "Hyrja në ftesën tënde",
     "usernameLabel": "Emri i përdoruesit",
     "usernamePlaceholder": "Emri yt i përdoruesit",
@@ -51,10 +41,7 @@
     "withBlessing": "Me bekimin e nunëve {{godparent1}} dhe {{godparent2}}",
     "todayIsWedding": "Sot është dasma",
     "missing": "Mungojnë",
-    "daysAndHours": "{{days}} ditë(s) dhe {{hours}} orë(a)",
-    "minutes": "{{minutes}} minut(a)",
-    "todayIsTheDay": "Sot është dita e madhe!",
-    "audioError": "Nuk u arrit të ngarkohej audio. Kontrollo lidhjen."
+    "todayIsTheDay": "Sot është dita e madhe!"
   },
   "details": {
     "sectionLabel": "Data dhe vendi",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Të presim për të ndarë këtë moment kaq të veçantë. Më poshtë do të gjesh hartën e vendndodhjes.",
     "transport": "Transporti",
     "addToCalendar": "Shto në kalendar",
-    "mapLoading": "Duke ngarkuar hartën...",
     "viewGoogleMaps": "Shiko në Google Maps",
-    "viewAppleMaps": "Shiko në Apple Maps",
-    "mapAriaLabel": "Harta e {{location}}"
+    "viewAppleMaps": "Shiko në Apple Maps"
   },
   "info": {
     "sectionLabel": "Rreth të ftuarve",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Alergji tjetër (specifiko)",
     "allergiesHint": "Trego vetëm alergjitë ushqimore dhe intolerancat. Mos fut informacion mjekësor të pa kërkuar.",
     "privacyConsent": "Jam informuar dhe pranoj {{link}}",
-    "privacyLink": "Politikën e Privatësisë",
     "healthConsent": "Pranoj përpunimin e të dhënave të mia shëndetësore (alergjitë dhe intolerancat) për të përshtatur menunë e festës",
-    "ageConsent": "Deklaroj se jam mbi 14 vjeç ose, nëse jam më i vogël, se kam pëlqimin e prindërve ose kujdestarëve të mi",
     "submitButton": "Konfirmo pjesëmarrjen",
     "submittingButton": "Duke dërguar...",
     "confirmedButton": "Pjesëmarrja u konfirmua",
     "alreadySubmitted": "Tashmë ke konfirmuar pjesëmarrjen tënde",
     "withdrawButton": "Tërhiq konfirmimin tim",
-    "withdrawConfirm": "Je i sigurt që dëshiron të tërheqësh konfirmimin tënd?",
     "birthDateLabel": "Data e lindjes",
     "ageUnder14Warning": "Je nën 14 vjeç. Nevojitet pëlqimi i prindërve ose kujdestarëve.",
-    "parentalConsent": "Prindërit ose kujdestarët e mi pranojnë pjesëmarrjen time",
-    "downloadData": "Shkarko të dhënat e mia"
+    "parentalConsent": "Prindërit ose kujdestarët e mi pranojnë pjesëmarrjen time"
   },
   "public": {
     "loadingInvitation": "Duke ngarkuar ftesën…",
@@ -148,7 +129,6 @@
     "emptyText": "Krijo dhe ndaj ftesën tënde të personalizuar të dasmës.",
     "emptyDescription": "Menaxho të dhënat e ftesës, ndaj një lidhje unike me të ftuarit dhe merr konfirmimet e tyre të pjesëmarrjes.",
     "createLink": "Krijo ftesë",
-    "scrollAria": "Shko te seksioni tjetër",
     "privacyPolicy": "Politika e Privatësisë",
     "terms": "Kushtet",
     "legalNotice": "Shënim Ligjor"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

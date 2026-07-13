@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "იტვირთება...",
     "error": "შეცდომა",
     "close": "დახურვა",
     "retry": "ხელახლა ცდა",
     "save": "ცვლილებების შენახვა",
-    "saving": "ინახება...",
-    "cancel": "გაუქმება",
     "copy": "კოპირება",
-    "copied": "დაკოპირებულია",
-    "confirm": "დადასტურება",
-    "yes": "დიახ",
-    "no": "არა",
     "back": "უკან",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "მართეთ თქვენი მოსაწვევის მონაცემები, გაუზიარეთ უნიკალური ბმული თქვენს სტუმრებს და მიიღეთ მათი დასწრების დადასტურება.",
     "createInvitation": "თქვენი მოსაწვევის შექმნა",
     "haveInvitation": "მე უკვე მაქვს მოსაწვევი",
-    "privacyPolicy": "კონფიდენციალურობის პოლიტიკა",
-    "terms": "პირობები",
-    "legalNotice": "იურიდიული შეტყობინება",
     "modalTitle": "თქვენს მოსაწვევზე წვდომა",
     "usernameLabel": "მომხმარებლის სახელი",
     "usernamePlaceholder": "თქვენი მომხმარებლის სახელი",
@@ -51,10 +41,7 @@
     "withBlessing": "მათი ნათლიების {{godparent1}} და {{godparent2}} ლოცვა-კურთხევით",
     "todayIsWedding": "დღეს ქორწილია",
     "missing": "დარჩენილია",
-    "daysAndHours": "{{days}} დღე და {{hours}} საათი",
-    "minutes": "{{minutes}} წუთი",
-    "todayIsTheDay": "დღეს დიდი დღეა!",
-    "audioError": "აუდიო ვერ ჩაიტვირთა. შეამოწმეთ ბმული."
+    "todayIsTheDay": "დღეს დიდი დღეა!"
   },
   "details": {
     "sectionLabel": "თარიღი და ადგილი",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "გელოდებით ამ განსაკუთრებული მომენტის გასაზიარებლად. ქვემოთ იხილავთ ადგილმდებარეობის რუკას.",
     "transport": "ტრანსპორტი",
     "addToCalendar": "კალენდარში დამატება",
-    "mapLoading": "რუკა იტვირთება...",
     "viewGoogleMaps": "ნახვა Google Maps-ში",
-    "viewAppleMaps": "ნახვა Apple Maps-ში",
-    "mapAriaLabel": "{{location}}-ის რუკა"
+    "viewAppleMaps": "ნახვა Apple Maps-ში"
   },
   "info": {
     "sectionLabel": "სტუმრების შესახებ",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "სხვა ალერგია (დააკონკრეტეთ)",
     "allergiesHint": "მიუთითეთ მხოლოდ კვებითი ალერგიები და აუტანლობები. არ შეიყვანოთ მოუთხოვნელი სამედიცინო ინფორმაცია.",
     "privacyConsent": "ინფორმირებული ვარ და ვეთანხმები {{link}}",
-    "privacyLink": "კონფიდენციალურობის პოლიტიკა",
     "healthConsent": "ვეთანხმები ჩემი ჯანმრთელობის მონაცემების (ალერგიები და აუტანლობები) დამუშავებას ზეიმის მენიუს მოსარგებად",
-    "ageConsent": "ვაცხადებ, რომ ვარ 14 წელზე უფროსი ან, თუ არასრულწლოვანი ვარ, მაქვს მშობლების ან მეურვეების თანხმობა",
     "submitButton": "დასწრების დადასტურება",
     "submittingButton": "იგზავნება...",
     "confirmedButton": "დასწრება დადასტურებულია",
     "alreadySubmitted": "თქვენ უკვე დაადასტურეთ დასწრება",
     "withdrawButton": "ჩემი დადასტურების გაუქმება",
-    "withdrawConfirm": "დარწმუნებული ხართ, რომ გსურთ დადასტურების გაუქმება?",
     "birthDateLabel": "დაბადების თარიღი",
     "ageUnder14Warning": "თქვენ ხართ 14 წელზე უმცროსი. გჭირდებათ მშობლების ან მეურვეების თანხმობა.",
-    "parentalConsent": "ჩემი მშობლები ან მეურვეები თანხმდებიან ჩემს მონაწილეობაზე",
-    "downloadData": "ჩემი მონაცემების ჩამოტვირთვა"
+    "parentalConsent": "ჩემი მშობლები ან მეურვეები თანხმდებიან ჩემს მონაწილეობაზე"
   },
   "public": {
     "loadingInvitation": "მოსაწვევი იტვირთება...",
@@ -148,7 +129,6 @@
     "emptyText": "შექმენით და გააზიარეთ თქვენი პერსონალური საქორწინო მოსაწვევი.",
     "emptyDescription": "მართეთ თქვენი მოსაწვევის მონაცემები, გაუზიარეთ უნიკალური ბმული თქვენს სტუმრებს და მიიღეთ მათი დასწრების დადასტურება.",
     "createLink": "მოსაწვევის შექმნა",
-    "scrollAria": "შემდეგ სექციაზე გადასვლა",
     "privacyPolicy": "კონფიდენციალურობის პოლიტიკა",
     "terms": "პირობები",
     "legalNotice": "იურიდიული შეტყობინება"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

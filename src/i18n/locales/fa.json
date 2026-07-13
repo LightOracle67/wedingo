@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "در حال بارگذاری...",
     "error": "خطا",
     "close": "بستن",
     "retry": "تلاش دوباره",
     "save": "ذخیره تغییرات",
-    "saving": "در حال ذخیره...",
-    "cancel": "انصراف",
     "copy": "کپی",
-    "copied": "کپی شد",
-    "confirm": "تأیید",
-    "yes": "بله",
-    "no": "خیر",
     "back": "بازگشت",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "اطلاعات دعوتنامه خود را مدیریت کنید، لینک منحصر به فرد را با مهمانان به اشتراک بگذارید و تأیید حضور آنها را دریافت کنید.",
     "createInvitation": "ساخت دعوتنامه",
     "haveInvitation": "من قبلاً دعوتنامه دارم",
-    "privacyPolicy": "سیاست حفظ حریم خصوصی",
-    "terms": "شرایط",
-    "legalNotice": "اطلاعیه قانونی",
     "modalTitle": "دسترسی به دعوتنامه شما",
     "usernameLabel": "نام کاربری",
     "usernamePlaceholder": "نام کاربری شما",
@@ -51,10 +41,7 @@
     "withBlessing": "با دعای خیر {{godparent1}} و {{godparent2}}",
     "todayIsWedding": "امروز روز عروسی است",
     "missing": "باقی مانده",
-    "daysAndHours": "{{days}} روز و {{hours}} ساعت",
-    "minutes": "{{minutes}} دقیقه",
-    "todayIsTheDay": "امروز روز بزرگ است!",
-    "audioError": "صدا بارگذاری نشد. لینک را بررسی کنید."
+    "todayIsTheDay": "امروز روز بزرگ است!"
   },
   "details": {
     "sectionLabel": "تاریخ و مکان",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "منتظر شما هستیم تا این لحظه خاص را با هم به اشتراک بگذاریم. در زیر نقشه موقعیت را پیدا خواهید کرد.",
     "transport": "حمل و نقل",
     "addToCalendar": "افزودن به تقویم",
-    "mapLoading": "در حال بارگذاری نقشه...",
     "viewGoogleMaps": "مشاهده در Google Maps",
-    "viewAppleMaps": "مشاهده در Apple Maps",
-    "mapAriaLabel": "نقشه {{location}}"
+    "viewAppleMaps": "مشاهده در Apple Maps"
   },
   "info": {
     "sectionLabel": "درباره مهمانان",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "آلرژی دیگر (توضیح دهید)",
     "allergiesHint": "فقط آلرژی و عدم تحمل غذایی را ذکر کنید. اطلاعات پزشکی نامربوط را وارد نکنید.",
     "privacyConsent": "مطلع شده‌ام و {{link}} را می‌پذیرم",
-    "privacyLink": "سیاست حفظ حریم خصوصی",
     "healthConsent": "با پردازش اطلاعات سلامتی خود (آلرژی و عدم تحمل) برای تطبیق منوی مراسم موافقت می‌کنم",
-    "ageConsent": "اعلام می‌کنم که بالای ۱۴ سال سن دارم یا در صورت کمتر بودن، رضایت والدین یا سرپرستان خود را دارم",
     "submitButton": "تأیید حضور",
     "submittingButton": "در حال ارسال...",
     "confirmedButton": "حضور تأیید شد",
     "alreadySubmitted": "شما قبلاً حضور خود را تأیید کرده‌اید",
     "withdrawButton": "انصراف از تأیید",
-    "withdrawConfirm": "آیا از انصراف تأیید خود مطمئن هستید؟",
     "birthDateLabel": "تاریخ تولد",
     "ageUnder14Warning": "شما کمتر از ۱۴ سال سن دارید. نیاز به رضایت والدین یا سرپرستان دارید.",
-    "parentalConsent": "والدین یا سرپرستان من با شرکت من موافقت می‌کنند",
-    "downloadData": "دانلود اطلاعات من"
+    "parentalConsent": "والدین یا سرپرستان من با شرکت من موافقت می‌کنند"
   },
   "public": {
     "loadingInvitation": "در حال بارگذاری دعوتنامه...",
@@ -148,7 +129,6 @@
     "emptyText": "دعوتنامه عروسی شخصی خود را بسازید و به اشتراک بگذارید.",
     "emptyDescription": "اطلاعات دعوتنامه خود را مدیریت کنید، لینک منحصر به فرد را با مهمانان به اشتراک بگذارید و تأیید حضور آنها را دریافت کنید.",
     "createLink": "ساخت دعوتنامه",
-    "scrollAria": "رفتن به بخش بعدی",
     "privacyPolicy": "سیاست حفظ حریم خصوصی",
     "terms": "شرایط",
     "legalNotice": "اطلاعیه قانونی"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

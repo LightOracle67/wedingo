@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Učitavanje...",
     "error": "Greška",
     "close": "Zatvori",
     "retry": "Pokušaj ponovo",
     "save": "Sačuvaj promjene",
-    "saving": "Čuvanje...",
-    "cancel": "Otkaži",
     "copy": "Kopiraj",
-    "copied": "Kopirano",
-    "confirm": "Potvrdi",
-    "yes": "Da",
-    "no": "Ne",
     "back": "Nazad",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Upravljaj podacima svoje pozivnice, podijeli jedinstveni link s gostima i primaj njihove potvrde dolaska.",
     "createInvitation": "Kreiraj svoju pozivnicu",
     "haveInvitation": "Već imam pozivnicu",
-    "privacyPolicy": "Politika privatnosti",
-    "terms": "Uslovi",
-    "legalNotice": "Pravno obavještenje",
     "modalTitle": "Pristup tvojoj pozivnici",
     "usernameLabel": "Korisničko ime",
     "usernamePlaceholder": "Tvoje korisničko ime",
@@ -51,10 +41,7 @@
     "withBlessing": "Sa blagoslovom kumova {{godparent1}} i {{godparent2}}",
     "todayIsWedding": "Danas je vjenčanje",
     "missing": "Nedostaje",
-    "daysAndHours": "{{days}} dan(a) i {{hours}} sat(i)",
-    "minutes": "{{minutes}} minut(a)",
-    "todayIsTheDay": "Danas je veliki dan!",
-    "audioError": "Nije moguće učitati audio. Provjeri link."
+    "todayIsTheDay": "Danas je veliki dan!"
   },
   "details": {
     "sectionLabel": "Datum i mjesto",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Očekujemo te da podijelimo ovaj poseban trenutak. Ispod ćeš pronaći mapu lokacije.",
     "transport": "Prijevoz",
     "addToCalendar": "Dodaj u kalendar",
-    "mapLoading": "Učitavanje mape...",
     "viewGoogleMaps": "Pogledaj na Google Maps",
-    "viewAppleMaps": "Pogledaj na Apple Maps",
-    "mapAriaLabel": "Mapa {{location}}"
+    "viewAppleMaps": "Pogledaj na Apple Maps"
   },
   "info": {
     "sectionLabel": "O gostima",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Druga alergija (navesti)",
     "allergiesHint": "Navedi samo alergije na hranu i intolerancije. Ne unosi neželjene medicinske informacije.",
     "privacyConsent": "Informisan/a sam i prihvatam {{link}}",
-    "privacyLink": "Politiku privatnosti",
     "healthConsent": "Pristajem na obradu mojih zdravstvenih podataka (alergije i intolerancije) radi prilagođavanja menija proslave",
-    "ageConsent": "Izjavljujem da imam više od 14 godina ili, ako sam mlađi/a, da imam pristanak svojih roditelja ili staratelja",
     "submitButton": "Potvrdi dolazak",
     "submittingButton": "Slanje...",
     "confirmedButton": "Dolazak potvrđen",
     "alreadySubmitted": "Već si potvrdio/la svoj dolazak",
     "withdrawButton": "Povuci moju potvrdu",
-    "withdrawConfirm": "Jesi li siguran/na da želiš povući svoju potvrdu?",
     "birthDateLabel": "Datum rođenja",
     "ageUnder14Warning": "Imaš manje od 14 godina. Potreban je pristanak roditelja ili staratelja.",
-    "parentalConsent": "Moji roditelji ili staratelji pristaju na moje učešće",
-    "downloadData": "Preuzmi moje podatke"
+    "parentalConsent": "Moji roditelji ili staratelji pristaju na moje učešće"
   },
   "public": {
     "loadingInvitation": "Učitavanje pozivnice…",
@@ -148,7 +129,6 @@
     "emptyText": "Kreiraj i podijeli svoju personaliziranu pozivnicu za vjenčanje.",
     "emptyDescription": "Upravljaj podacima svoje pozivnice, podijeli jedinstveni link s gostima i primaj njihove potvrde dolaska.",
     "createLink": "Kreiraj pozivnicu",
-    "scrollAria": "Idi na sljedeći odjeljak",
     "privacyPolicy": "Politika privatnosti",
     "terms": "Uslovi",
     "legalNotice": "Pravno obavještenje"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

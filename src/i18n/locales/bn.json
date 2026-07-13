@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "লোড হচ্ছে...",
     "error": "ত্রুটি",
     "close": "বন্ধ করুন",
     "retry": "আবার চেষ্টা করুন",
     "save": "পরিবর্তন সংরক্ষণ করুন",
-    "saving": "সংরক্ষণ হচ্ছে...",
-    "cancel": "বাতিল করুন",
     "copy": "কপি করুন",
-    "copied": "কপি করা হয়েছে",
-    "confirm": "নিশ্চিত করুন",
-    "yes": "হ্যাঁ",
-    "no": "না",
     "back": "ফিরুন",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "আপনার আমন্ত্রণের তথ্য পরিচালনা করুন, অতিথিদের সাথে একটি অনন্য লিঙ্ক শেয়ার করুন এবং তাদের উপস্থিতি নিশ্চিতকরণ গ্রহণ করুন।",
     "createInvitation": "আপনার আমন্ত্রণ তৈরি করুন",
     "haveInvitation": "আমার ইতিমধ্যে একটি আমন্ত্রণ আছে",
-    "privacyPolicy": "গোপনীয়তা নীতি",
-    "terms": "শর্তাবলী",
-    "legalNotice": "আইনি নোটিশ",
     "modalTitle": "আপনার আমন্ত্রণে প্রবেশ করুন",
     "usernameLabel": "ব্যবহারকারীর নাম",
     "usernamePlaceholder": "আপনার ব্যবহারকারীর নাম",
@@ -51,10 +41,7 @@
     "withBlessing": "{{godparent1}} এবং {{godparent2}} এর আশীর্বাদে",
     "todayIsWedding": "আজ বিয়ে",
     "missing": "বাকি",
-    "daysAndHours": "{{days}} দিন এবং {{hours}} ঘণ্টা",
-    "minutes": "{{minutes}} মিনিট",
-    "todayIsTheDay": "আজই সেই মহান দিন!",
-    "audioError": "অডিও লোড করা যায়নি। লিঙ্কটি পরীক্ষা করুন।"
+    "todayIsTheDay": "আজই সেই মহান দিন!"
   },
   "details": {
     "sectionLabel": "তারিখ ও স্থান",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "এই বিশেষ মুহূর্তটি ভাগ করে নিতে আমরা আপনাকে অপেক্ষা করছি। নিচে অবস্থানের মানচিত্র পাবেন।",
     "transport": "পরিবহন",
     "addToCalendar": "ক্যালেন্ডারে যোগ করুন",
-    "mapLoading": "মানচিত্র লোড হচ্ছে...",
     "viewGoogleMaps": "Google Maps-এ দেখুন",
-    "viewAppleMaps": "Apple Maps-এ দেখুন",
-    "mapAriaLabel": "{{location}} এর মানচিত্র"
+    "viewAppleMaps": "Apple Maps-এ দেখুন"
   },
   "info": {
     "sectionLabel": "অতিথিদের সম্পর্কে",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "অন্যান্য অ্যালার্জি (উল্লেখ করুন)",
     "allergiesHint": "শুধুমাত্র খাদ্য অ্যালার্জি ও অসহিষ্ণুতা উল্লেখ করুন। অপ্রয়োজনীয় চিকিৎসা তথ্য দেবেন না।",
     "privacyConsent": "আমি অবহিত হয়েছি এবং গ্রহণ করছি {{link}}",
-    "privacyLink": "গোপনীয়তা নীতি",
     "healthConsent": "আমি অনুষ্ঠানের মেনু অভিযোজনের জন্য আমার স্বাস্থ্য তথ্য (অ্যালার্জি ও অসহিষ্ণুতা) প্রক্রিয়াকরণে সম্মতি দিচ্ছি",
-    "ageConsent": "আমি ঘোষণা করছি যে আমার বয়স ১৪ বছরের বেশি অথবা কম হলে পিতামাতা বা অভিভাবকের সম্মতি আছে",
     "submitButton": "উপস্থিতি নিশ্চিত করুন",
     "submittingButton": "পাঠানো হচ্ছে...",
     "confirmedButton": "উপস্থিতি নিশ্চিত হয়েছে",
     "alreadySubmitted": "আপনি ইতিমধ্যে আপনার উপস্থিতি নিশ্চিত করেছেন",
     "withdrawButton": "আমার নিশ্চিতকরণ প্রত্যাহার করুন",
-    "withdrawConfirm": "আপনি কি নিশ্চিত যে আপনি আপনার নিশ্চিতকরণ প্রত্যাহার করতে চান?",
     "birthDateLabel": "জন্ম তারিখ",
     "ageUnder14Warning": "আপনার বয়স ১৪ বছরের কম। আপনার পিতামাতা বা অভিভাবকের সম্মতি প্রয়োজন।",
-    "parentalConsent": "আমার পিতামাতা বা অভিভাবক আমার অংশগ্রহণে সম্মতি দিচ্ছেন",
-    "downloadData": "আমার তথ্য ডাউনলোড করুন"
+    "parentalConsent": "আমার পিতামাতা বা অভিভাবক আমার অংশগ্রহণে সম্মতি দিচ্ছেন"
   },
   "public": {
     "loadingInvitation": "আমন্ত্রণ লোড হচ্ছে…",
@@ -148,7 +129,6 @@
     "emptyText": "আপনার ব্যক্তিগতকৃত বিয়ের আমন্ত্রণ তৈরি করুন এবং শেয়ার করুন।",
     "emptyDescription": "আপনার আমন্ত্রণের তথ্য পরিচালনা করুন, অতিথিদের সাথে একটি অনন্য লিঙ্ক শেয়ার করুন এবং তাদের উপস্থিতি নিশ্চিতকরণ গ্রহণ করুন।",
     "createLink": "আমন্ত্রণ তৈরি করুন",
-    "scrollAria": "পরবর্তী বিভাগে যান",
     "privacyPolicy": "গোপনীয়তা নীতি",
     "terms": "শর্তাবলী",
     "legalNotice": "আইনি নোটিশ"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

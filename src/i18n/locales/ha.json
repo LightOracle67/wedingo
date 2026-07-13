@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Ana lodawa...",
     "error": "Kuskure",
     "close": "Rufe",
     "retry": "Sake gwadawa",
     "save": "Ajiye canje-canje",
-    "saving": "Ana ajiyewa...",
-    "cancel": "Soke",
     "copy": "Kwafa",
-    "copied": "An kwafa",
-    "confirm": "Tabbatarwa",
-    "yes": "Ee",
-    "no": "A'a",
     "back": "Koma baya",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Sarrafa bayanan gayyatarka, raba mahaɗi na musamman ga baƙi kuma karɓi tabbacin halartarsu.",
     "createInvitation": "Ƙirƙiri gayyatarka",
     "haveInvitation": "Ina da gayyata",
-    "privacyPolicy": "Manufar Sirri",
-    "terms": "Sharuɗɗa",
-    "legalNotice": "Sanarwar Shari'a",
     "modalTitle": "Shiga gayyatarka",
     "usernameLabel": "Sunan mai amfani",
     "usernamePlaceholder": "Sunan mai amfani naka",
@@ -51,10 +41,7 @@
     "withBlessing": "Da albarkar {{godparent1}} da {{godparent2}}",
     "todayIsWedding": "Yau ne bikin aure",
     "missing": "Ya rage",
-    "daysAndHours": "Kwanaki {{days}} da sa'o'i {{hours}}",
-    "minutes": "Minti {{minutes}}",
-    "todayIsTheDay": "Yau ce babbar rana!",
-    "audioError": "An kasa loda sautin. Duba mahaɗin."
+    "todayIsTheDay": "Yau ce babbar rana!"
   },
   "details": {
     "sectionLabel": "Kwanan wata da wuri",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Muna jiran ku don raba wannan lokaci na musamman. A ƙasa za ku sami taswirar wuri.",
     "transport": "Sufuri",
     "addToCalendar": "Ƙara zuwa kalanda",
-    "mapLoading": "Ana loda taswira...",
     "viewGoogleMaps": "Duba a Google Maps",
-    "viewAppleMaps": "Duba a Apple Maps",
-    "mapAriaLabel": "Taswirar {{location}}"
+    "viewAppleMaps": "Duba a Apple Maps"
   },
   "info": {
     "sectionLabel": "Game da baƙi",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Wani allergy (ƙayyade)",
     "allergiesHint": "Nuna allergies na abinci da rashin haƙuri kawai. Kar a shigar da bayanan likita da ba a nema ba.",
     "privacyConsent": "An sanar da ni kuma na yarda da {{link}}",
-    "privacyLink": "Manufar Sirri",
     "healthConsent": "Na yarda a sarrafa bayanan lafiyata (allergies da rashin haƙuri) don daidaita menu na bikin",
-    "ageConsent": "Na bayyana cewa na wuce shekara 14 ko kuma, idan ban kai ba, ina da izinin iyayena ko masu kula da ni",
     "submitButton": "Tabbatar da halarta",
     "submittingButton": "Ana aikawa...",
     "confirmedButton": "An tabbatar da halarta",
     "alreadySubmitted": "Ka riga ka tabbatar da halartarka",
     "withdrawButton": "Janye tabbacina",
-    "withdrawConfirm": "Ka tabbata kana son janye tabbacinka?",
     "birthDateLabel": "Ranar haihuwa",
     "ageUnder14Warning": "Ba ka kai shekara 14 ba. Kana buƙatar izinin iyayenka ko masu kula da kai.",
-    "parentalConsent": "Iyayena ko masu kula da ni sun yarda da halartata",
-    "downloadData": "Sauke bayanana"
+    "parentalConsent": "Iyayena ko masu kula da ni sun yarda da halartata"
   },
   "public": {
     "loadingInvitation": "Ana loda gayyata...",
@@ -148,7 +129,6 @@
     "emptyText": "Ƙirƙira ka raba gayyatar aurenka na musamman.",
     "emptyDescription": "Sarrafa bayanan gayyatarka, raba mahaɗi na musamman ga baƙi kuma karɓi tabbacin halartarsu.",
     "createLink": "Ƙirƙiri gayyata",
-    "scrollAria": "Je zuwa sashe na gaba",
     "privacyPolicy": "Manufar Sirri",
     "terms": "Sharuɗɗa",
     "legalNotice": "Sanarwar Shari'a"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

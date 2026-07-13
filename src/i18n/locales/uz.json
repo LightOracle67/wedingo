@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Yuklanmoqda...",
     "error": "Xato",
     "close": "Yopish",
     "retry": "Qayta urinish",
     "save": "O'zgarishlarni saqlash",
-    "saving": "Saqlanmoqda...",
-    "cancel": "Bekor qilish",
     "copy": "Nusxalash",
-    "copied": "Nusxalandi",
-    "confirm": "Tasdiqlash",
-    "yes": "Ha",
-    "no": "Yo'q",
     "back": "Orqaga",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Taklifnoma ma'lumotlaringizni boshqaring, mehmonlaringiz bilan noyob havola ulashing va ularning ishtirok tasdiqlarini oling.",
     "createInvitation": "Taklifnoma yaratish",
     "haveInvitation": "Menda taklifnoma bor",
-    "privacyPolicy": "Maxfiylik siyosati",
-    "terms": "Shartlar",
-    "legalNotice": "Yuridik bildirishnoma",
     "modalTitle": "Taklifnomangizga kirish",
     "usernameLabel": "Foydalanuvchi nomi",
     "usernamePlaceholder": "Foydalanuvchi nomingiz",
@@ -51,10 +41,7 @@
     "withBlessing": "{{godparent1}} va {{godparent2}} duosi bilan",
     "todayIsWedding": "Bugun to'y",
     "missing": "Qoldi",
-    "daysAndHours": "{{days}} kun va {{hours}} soat",
-    "minutes": "{{minutes}} daqiqa",
-    "todayIsTheDay": "Bugun katta kun!",
-    "audioError": "Audio yuklanmadi. Havolani tekshiring."
+    "todayIsTheDay": "Bugun katta kun!"
   },
   "details": {
     "sectionLabel": "Sana va joy",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Ushbu maxsus lahzani birga baham ko'rish uchun sizni kutamiz. Quyida joylashuv xaritasini topasiz.",
     "transport": "Transport",
     "addToCalendar": "Taqvimga qo'shish",
-    "mapLoading": "Xarita yuklanmoqda...",
     "viewGoogleMaps": "Google Mapsda ko'rish",
-    "viewAppleMaps": "Apple Mapsda ko'rish",
-    "mapAriaLabel": "{{location}} xaritasi"
+    "viewAppleMaps": "Apple Mapsda ko'rish"
   },
   "info": {
     "sectionLabel": "Mehmonlar haqida",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Boshqa allergiya (aniqlang)",
     "allergiesHint": "Faqat oziq-ovqat allergiyalari va toqat qila olmaslikni ko'rsating. So'ralmagan tibbiy ma'lumot kiritmang.",
     "privacyConsent": "Menga xabar berildi va men {{link}} ni qabul qilaman",
-    "privacyLink": "Maxfiylik siyosati",
     "healthConsent": "Bayram menyusini moslashtirish uchun sog'liq ma'lumotlarim (allergiyalar va toqat qila olmaslik) qayta ishlanishiga rozilik beraman",
-    "ageConsent": "14 yoshdan katta ekanligimni yoki voyaga yetmagan bo'lsam, ota-onam yoki vasiyimning roziligi borligini bildiraman",
     "submitButton": "Ishtirokni tasdiqlash",
     "submittingButton": "Yuborilmoqda...",
     "confirmedButton": "Ishtirok tasdiqlandi",
     "alreadySubmitted": "Siz allaqachon ishtirokingizni tasdiqlagansiz",
     "withdrawButton": "Tasdiqimni qaytarib olish",
-    "withdrawConfirm": "Tasdiqingizni qaytarib olishga aminmisiz?",
     "birthDateLabel": "Tug'ilgan sana",
     "ageUnder14Warning": "Siz 14 yoshga to'lmagansiz. Ota-onangiz yoki vasiyingizning roziligi kerak.",
-    "parentalConsent": "Ota-onam yoki vasiyim mening ishtirokimga rozilik beradi",
-    "downloadData": "Ma'lumotlarimni yuklab olish"
+    "parentalConsent": "Ota-onam yoki vasiyim mening ishtirokimga rozilik beradi"
   },
   "public": {
     "loadingInvitation": "Taklifnoma yuklanmoqda...",
@@ -148,7 +129,6 @@
     "emptyText": "Shaxsiy to'y taklifnomasini yarating va ulashing.",
     "emptyDescription": "Taklifnoma ma'lumotlaringizni boshqaring, mehmonlaringiz bilan noyob havola ulashing va ularning ishtirok tasdiqlarini oling.",
     "createLink": "Taklifnoma yaratish",
-    "scrollAria": "Keyingi bo'limga o'tish",
     "privacyPolicy": "Maxfiylik siyosati",
     "terms": "Shartlar",
     "legalNotice": "Yuridik bildirishnoma"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

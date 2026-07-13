@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "ກຳລັງໂຫລດ...",
     "error": "ຂໍ້ຜິດພາດ",
     "close": "ປິດ",
     "retry": "ລອງໃໝ່",
     "save": "ບັນທຶກການປ່ຽນແປງ",
-    "saving": "ກຳລັງບັນທຶກ...",
-    "cancel": "ຍົກເລີກ",
     "copy": "ສຳເນົາ",
-    "copied": "ສຳເນົາແລ້ວ",
-    "confirm": "ຢືນຢັນ",
-    "yes": "ແມ່ນ",
-    "no": "ບໍ່",
     "back": "ກັບຄືນ",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "ຈັດການຂໍ້ມູນບັດເຊີນຂອງທ່ານ ແບ່ງປັນລິ້ງທີ່ເປັນເອກະລັກກັບແຂກຂອງທ່ານ ແລະ ຮັບການຢືນຢັນການເຂົ້າຮ່ວມ.",
     "createInvitation": "ສ້າງບັດເຊີນຂອງທ່ານ",
     "haveInvitation": "ຂ້ອຍມີບັດເຊີນແລ້ວ",
-    "privacyPolicy": "ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ",
-    "terms": "ເງື່ອນໄຂ",
-    "legalNotice": "ແຈ້ງການທາງກົດໝາຍ",
     "modalTitle": "ເຂົ້າສູ່ບັດເຊີນຂອງທ່ານ",
     "usernameLabel": "ຊື່ຜູ້ໃຊ້",
     "usernamePlaceholder": "ຊື່ຜູ້ໃຊ້ຂອງທ່ານ",
@@ -51,10 +41,7 @@
     "withBlessing": "ດ້ວຍພອນຈາກພໍ່ທູນຫົວ {{godparent1}} ແລະ {{godparent2}}",
     "todayIsWedding": "ມື້ນີ້ແມ່ນມື້ແຕ່ງງານ",
     "missing": "ຍັງເຫຼືອ",
-    "daysAndHours": "{{days}} ມື້ ແລະ {{hours}} ຊົ່ວໂມງ",
-    "minutes": "{{minutes}} ນາທີ",
-    "todayIsTheDay": "ມື້ນີ້ແມ່ນມື້ພິເສດ!",
-    "audioError": "ບໍ່ສາມາດໂຫລດສຽງ. ກວດສອບລິ້ງ."
+    "todayIsTheDay": "ມື້ນີ້ແມ່ນມື້ພິເສດ!"
   },
   "details": {
     "sectionLabel": "ວັນທີ ແລະ ສະຖານທີ່",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "ພວກເຮົາລໍຖ້າທ່ານເພື່ອແບ່ງປັນຊ່ວງເວລາພິເສດນີ້. ດ້ານລຸ່ມທ່ານຈະເຫັນແຜນທີ່ສະຖານທີ່.",
     "transport": "ການຂົນສົ່ງ",
     "addToCalendar": "ເພີ່ມໃສ່ປະຕິທິນ",
-    "mapLoading": "ກຳລັງໂຫລດແຜນທີ່...",
     "viewGoogleMaps": "ເບິ່ງໃນ Google Maps",
-    "viewAppleMaps": "ເບິ່ງໃນ Apple Maps",
-    "mapAriaLabel": "ແຜນທີ່ຂອງ {{location}}"
+    "viewAppleMaps": "ເບິ່ງໃນ Apple Maps"
   },
   "info": {
     "sectionLabel": "ກ່ຽວກັບແຂກ",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "ອາການແພ້ອື່ນໆ (ລະບຸ)",
     "allergiesHint": "ລະບຸສະເພາະອາການແພ້ອາຫານ ແລະ ການບໍ່ທົນທານ. ຢ່າໃສ່ຂໍ້ມູນທາງການແພດທີ່ບໍ່ໄດ້ຮ້ອງຂໍ.",
     "privacyConsent": "ຂ້ອຍໄດ້ຮັບຂໍ້ມູນ ແລະ ຍອມຮັບ {{link}}",
-    "privacyLink": "ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ",
     "healthConsent": "ຂ້ອຍຍິນຍອມໃຫ້ປະມວນຜົນຂໍ້ມູນສຸຂະພາບຂອງຂ້ອຍ (ອາການແພ້ ແລະ ການບໍ່ທົນທານ) ເພື່ອປັບລາຍການອາຫານຂອງງານສະຫຼອງ",
-    "ageConsent": "ຂ້ອຍປະກາດວ່າຂ້ອຍມີອາຍຸເກີນ 14 ປີ ຫຼື ຖ້າອາຍຸຕໍ່າກວ່າ ມີການຍິນຍອມຈາກພໍ່ແມ່ ຫຼື ຜູ້ປົກຄອງ",
     "submitButton": "ຢືນຢັນການເຂົ້າຮ່ວມ",
     "submittingButton": "ກຳລັງສົ່ງ...",
     "confirmedButton": "ຢືນຢັນການເຂົ້າຮ່ວມແລ້ວ",
     "alreadySubmitted": "ທ່ານໄດ້ຢືນຢັນການເຂົ້າຮ່ວມແລ້ວ",
     "withdrawButton": "ຖອນການຢືນຢັນຂອງຂ້ອຍ",
-    "withdrawConfirm": "ທ່ານແນ່ໃຈບໍວ່າຕ້ອງການຖອນການຢືນຢັນ?",
     "birthDateLabel": "ວັນເດືອນປີເກີດ",
     "ageUnder14Warning": "ທ່ານມີອາຍຸຕໍ່າກວ່າ 14 ປີ. ທ່ານຕ້ອງການການຍິນຍອມຈາກພໍ່ແມ່ ຫຼື ຜູ້ປົກຄອງ.",
-    "parentalConsent": "ພໍ່ແມ່ ຫຼື ຜູ້ປົກຄອງຂອງຂ້ອຍຍິນຍອມໃຫ້ຂ້ອຍເຂົ້າຮ່ວມ",
-    "downloadData": "ດາວໂຫລດຂໍ້ມູນຂອງຂ້ອຍ"
+    "parentalConsent": "ພໍ່ແມ່ ຫຼື ຜູ້ປົກຄອງຂອງຂ້ອຍຍິນຍອມໃຫ້ຂ້ອຍເຂົ້າຮ່ວມ"
   },
   "public": {
     "loadingInvitation": "ກຳລັງໂຫລດບັດເຊີນ...",
@@ -148,7 +129,6 @@
     "emptyText": "ສ້າງ ແລະ ແບ່ງປັນບັດເຊີນງານແຕ່ງແບບສ່ວນຕົວຂອງທ່ານ.",
     "emptyDescription": "ຈັດການຂໍ້ມູນບັດເຊີນຂອງທ່ານ ແບ່ງປັນລິ້ງທີ່ເປັນເອກະລັກກັບແຂກຂອງທ່ານ ແລະ ຮັບການຢືນຢັນການເຂົ້າຮ່ວມ.",
     "createLink": "ສ້າງບັດເຊີນ",
-    "scrollAria": "ໄປທີ່ສ່ວນຕໍ່ໄປ",
     "privacyPolicy": "ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ",
     "terms": "ເງື່ອນໄຂ",
     "legalNotice": "ແຈ້ງການທາງກົດໝາຍ"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

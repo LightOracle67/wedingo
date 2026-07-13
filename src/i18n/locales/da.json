@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Indlæser...",
     "error": "Fejl",
     "close": "Luk",
     "retry": "Prøv igen",
     "save": "Gem ændringer",
-    "saving": "Gemmer...",
-    "cancel": "Annuller",
     "copy": "Kopiér",
-    "copied": "Kopieret",
-    "confirm": "Bekræft",
-    "yes": "Ja",
-    "no": "Nej",
     "back": "Tilbage",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Administrér dine invitationsoplysninger, del et unikt link med dine gæster, og modtag deres tilbagemeldinger.",
     "createInvitation": "Opret din invitation",
     "haveInvitation": "Jeg har allerede en invitation",
-    "privacyPolicy": "Privatlivspolitik",
-    "terms": "Vilkår",
-    "legalNotice": "Juridisk meddelelse",
     "modalTitle": "Få adgang til din invitation",
     "usernameLabel": "Brugernavn",
     "usernamePlaceholder": "Dit brugernavn",
@@ -51,10 +41,7 @@
     "withBlessing": "Med velsignelse fra deres faddere {{godparent1}} og {{godparent2}}",
     "todayIsWedding": "I dag er brylluppet",
     "missing": "Mangler",
-    "daysAndHours": "{{days}} dag(e) og {{hours}} time(r)",
-    "minutes": "{{minutes}} minut(ter)",
-    "todayIsTheDay": "I dag er den store dag!",
-    "audioError": "Kunne ikke indlæse lyden. Tjek linket."
+    "todayIsTheDay": "I dag er den store dag!"
   },
   "details": {
     "sectionLabel": "Dato og sted",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Vi glæder os til at dele dette særlige øjeblik med dig. Længere nede finder du kortet.",
     "transport": "Transport",
     "addToCalendar": "Tilføj til kalender",
-    "mapLoading": "Indlæser kort...",
     "viewGoogleMaps": "Se i Google Maps",
-    "viewAppleMaps": "Se i Apple Maps",
-    "mapAriaLabel": "Kort over {{location}}"
+    "viewAppleMaps": "Se i Apple Maps"
   },
   "info": {
     "sectionLabel": "Om gæsterne",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Anden allergi (angiv)",
     "allergiesHint": "Angiv kun fødevareallergier og -intolerancer. Indtast ikke uopfordrede helbredsoplysninger.",
     "privacyConsent": "Jeg er informeret og accepterer {{link}}",
-    "privacyLink": "Privatlivspolitikken",
     "healthConsent": "Jeg giver samtykke til behandling af mine helbredsdata (allergier og intolerancer) for at tilpasse festmenuen",
-    "ageConsent": "Jeg erklærer at være over 14 år, eller hvis jeg er yngre, at have mine forældres eller værgers samtykke",
     "submitButton": "Bekræft deltagelse",
     "submittingButton": "Sender...",
     "confirmedButton": "Deltagelse bekræftet",
     "alreadySubmitted": "Du har allerede bekræftet din deltagelse",
     "withdrawButton": "Træk min bekræftelse tilbage",
-    "withdrawConfirm": "Er du sikker på, at du vil trække din bekræftelse tilbage?",
     "birthDateLabel": "Fødselsdato",
     "ageUnder14Warning": "Du er under 14 år. Du har brug for dine forældres eller værgers samtykke.",
-    "parentalConsent": "Mine forældre eller værger giver samtykke til min deltagelse",
-    "downloadData": "Download mine data"
+    "parentalConsent": "Mine forældre eller værger giver samtykke til min deltagelse"
   },
   "public": {
     "loadingInvitation": "Indlæser invitation…",
@@ -148,7 +129,6 @@
     "emptyText": "Opret og del din personlige bryllupsinvitation.",
     "emptyDescription": "Administrér dine invitationsoplysninger, del et unikt link med dine gæster, og modtag deres tilbagemeldinger.",
     "createLink": "Opret invitation",
-    "scrollAria": "Gå til næste sektion",
     "privacyPolicy": "Privatlivspolitik",
     "terms": "Vilkår",
     "legalNotice": "Juridisk meddelelse"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

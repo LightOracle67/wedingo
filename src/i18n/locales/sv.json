@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Laddar...",
     "error": "Fel",
     "close": "Stäng",
     "retry": "Försök igen",
     "save": "Spara ändringar",
-    "saving": "Sparar...",
-    "cancel": "Avbryt",
     "copy": "Kopiera",
-    "copied": "Kopierad",
-    "confirm": "Bekräfta",
-    "yes": "Ja",
-    "no": "Nej",
     "back": "Tillbaka",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Hantera din inbjudans data, dela en unik länk med dina gäster och ta emot deras svar.",
     "createInvitation": "Skapa din inbjudan",
     "haveInvitation": "Jag har redan en inbjudan",
-    "privacyPolicy": "Integritetspolicy",
-    "terms": "Villkor",
-    "legalNotice": "Juridisk information",
     "modalTitle": "Få tillgång till din inbjudan",
     "usernameLabel": "Användarnamn",
     "usernamePlaceholder": "Ditt användarnamn",
@@ -51,10 +41,7 @@
     "withBlessing": "Med välsignelse från deras faddrar {{godparent1}} och {{godparent2}}",
     "todayIsWedding": "Idag är bröllopet",
     "missing": "Kvar",
-    "daysAndHours": "{{days}} dag(ar) och {{hours}} timme/timmar",
-    "minutes": "{{minutes}} minut(er)",
-    "todayIsTheDay": "Idag är den stora dagen!",
-    "audioError": "Ljudet kunde inte laddas. Kontrollera länken."
+    "todayIsTheDay": "Idag är den stora dagen!"
   },
   "details": {
     "sectionLabel": "Datum och plats",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Vi ser fram emot att dela detta speciella ögonblick med dig. Nedan hittar du kartan.",
     "transport": "Transport",
     "addToCalendar": "Lägg till i kalender",
-    "mapLoading": "Laddar karta...",
     "viewGoogleMaps": "Visa i Google Maps",
-    "viewAppleMaps": "Visa i Apple Maps",
-    "mapAriaLabel": "Karta över {{location}}"
+    "viewAppleMaps": "Visa i Apple Maps"
   },
   "info": {
     "sectionLabel": "Om gästerna",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Annan allergi (specificera)",
     "allergiesHint": "Ange endast matallergier och intoleranser. Ange inte oönskad medicinsk information.",
     "privacyConsent": "Jag har informerats och accepterar {{link}}",
-    "privacyLink": "Integritetspolicyn",
     "healthConsent": "Jag samtycker till behandling av mina hälsouppgifter (allergier och intoleranser) för att anpassa firandets meny",
-    "ageConsent": "Jag intygar att jag är över 14 år eller, om jag är minderårig, har mina föräldrars eller vårdnadshavares samtycke",
     "submitButton": "Bekräfta närvaro",
     "submittingButton": "Skickar...",
     "confirmedButton": "Närvaro bekräftad",
     "alreadySubmitted": "Du har redan bekräftat din närvaro",
     "withdrawButton": "Återkalla min bekräftelse",
-    "withdrawConfirm": "Är du säker på att du vill återkalla din bekräftelse?",
     "birthDateLabel": "Födelsedatum",
     "ageUnder14Warning": "Du är under 14 år. Du behöver dina föräldrars eller vårdnadshavares samtycke.",
-    "parentalConsent": "Mina föräldrar eller vårdnadshavare samtycker till mitt deltagande",
-    "downloadData": "Ladda ner mina data"
+    "parentalConsent": "Mina föräldrar eller vårdnadshavare samtycker till mitt deltagande"
   },
   "public": {
     "loadingInvitation": "Laddar inbjudan...",
@@ -148,7 +129,6 @@
     "emptyText": "Skapa och dela din personliga bröllopsinbjudan.",
     "emptyDescription": "Hantera din inbjudans data, dela en unik länk med dina gäster och ta emot deras svar.",
     "createLink": "Skapa inbjudan",
-    "scrollAria": "Gå till nästa avsnitt",
     "privacyPolicy": "Integritetspolicy",
     "terms": "Villkor",
     "legalNotice": "Juridisk information"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Á lódáil...",
     "error": "Earráid",
     "close": "Dún",
     "retry": "Bain triail eile as",
     "save": "Sábháil athruithe",
-    "saving": "Á shábháil...",
-    "cancel": "Cealaigh",
     "copy": "Cóipeáil",
-    "copied": "Cóipeáilte",
-    "confirm": "Deimhnigh",
-    "yes": "Tá",
-    "no": "Níl",
     "back": "Ar ais",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Bainistigh sonraí do chuireadh, roinn nasc uathúil le d'aíonna agus faigh a ndearbhuithe freastail.",
     "createInvitation": "Cruthaigh do chuireadh",
     "haveInvitation": "Tá cuireadh agam cheana",
-    "privacyPolicy": "Polasaí Príobháideachais",
-    "terms": "Téarmaí",
-    "legalNotice": "Fógra Dlíthiúil",
     "modalTitle": "Rochtain ar do chuireadh",
     "usernameLabel": "Ainm úsáideora",
     "usernamePlaceholder": "D'ainm úsáideora",
@@ -51,10 +41,7 @@
     "withBlessing": "Le beannacht a mbáistí {{godparent1}} agus {{godparent2}}",
     "todayIsWedding": "Inniu an bhainis",
     "missing": "In easnamh",
-    "daysAndHours": "{{days}} lá/lae agus {{hours}} uair an chloig",
-    "minutes": "{{minutes}} nóiméad/nóiméid",
-    "todayIsTheDay": "Inniu an lá mór!",
-    "audioError": "Níorbh fhéidir an fuaim a lódáil. Seiceáil an nasc."
+    "todayIsTheDay": "Inniu an lá mór!"
   },
   "details": {
     "sectionLabel": "Dáta agus áit",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Táimid ag fanacht leat chun an nóiméad speisialta seo a roinnt. Thíos gheobhaidh tú an léarscáil suímh.",
     "transport": "Iompar",
     "addToCalendar": "Cuir leis an bhféilire",
-    "mapLoading": "Léarscáil á lódáil...",
     "viewGoogleMaps": "Féach in Google Maps",
-    "viewAppleMaps": "Féach in Apple Maps",
-    "mapAriaLabel": "Léarscáil de {{location}}"
+    "viewAppleMaps": "Féach in Apple Maps"
   },
   "info": {
     "sectionLabel": "Maidir leis na haíonna",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Ailléirge eile (sonraigh)",
     "allergiesHint": "Luaigh ailléirgí bia agus éadulaingtí amháin. Ná cuir isteach faisnéis leighis nár iarradh.",
     "privacyConsent": "Cuireadh ar an eolas mé agus glacaim le {{link}}",
-    "privacyLink": "an Polasaí Príobháideachais",
     "healthConsent": "Toilím le próiseáil mo shonraí sláinte (ailléirgí agus éadulaingtí) chun biachlár an cheiliúrtha a oiriúnú",
-    "ageConsent": "Dearbhaím go bhfuilim os cionn 14 bliana d'aois nó, má táim níos óige, go bhfuil toiliú mo thuismitheoirí nó mo chaomhnóirí agam",
     "submitButton": "Deimhnigh freastal",
     "submittingButton": "Á sheoladh...",
     "confirmedButton": "Freastal deimhnithe",
     "alreadySubmitted": "Tá d'fhreastal deimhnithe agat cheana",
     "withdrawButton": "Tarraing siar mo dheimhniú",
-    "withdrawConfirm": "An bhfuil tú cinnte gur mhaith leat do dheimhniú a tharraingt siar?",
     "birthDateLabel": "Dáta breithe",
     "ageUnder14Warning": "Tá tú faoi bhun 14 bliana d'aois. Teastaíonn toiliú do thuismitheoirí nó do chaomhnóirí uait.",
-    "parentalConsent": "Toilíonn mo thuismitheoirí nó mo chaomhnóirí le mo rannpháirtíocht",
-    "downloadData": "Íoslódáil mo shonraí"
+    "parentalConsent": "Toilíonn mo thuismitheoirí nó mo chaomhnóirí le mo rannpháirtíocht"
   },
   "public": {
     "loadingInvitation": "Cuireadh á lódáil…",
@@ -148,7 +129,6 @@
     "emptyText": "Cruthaigh agus roinn do chuireadh bainise pearsantaithe.",
     "emptyDescription": "Bainistigh sonraí do chuireadh, roinn nasc uathúil le d'aíonna agus faigh a ndearbhuithe freastail.",
     "createLink": "Cruthaigh cuireadh",
-    "scrollAria": "Téigh go dtí an chéad roinn eile",
     "privacyPolicy": "Polasaí Príobháideachais",
     "terms": "Téarmaí",
     "legalNotice": "Fógra Dlíthiúil"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

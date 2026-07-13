@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Đang tải...",
     "error": "Lỗi",
     "close": "Đóng",
     "retry": "Thử lại",
     "save": "Lưu thay đổi",
-    "saving": "Đang lưu...",
-    "cancel": "Hủy",
     "copy": "Sao chép",
-    "copied": "Đã sao chép",
-    "confirm": "Xác nhận",
-    "yes": "Có",
-    "no": "Không",
     "back": "Quay lại",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Quản lý dữ liệu thiệp mời, chia sẻ liên kết độc quyền với khách mời và nhận xác nhận tham dự.",
     "createInvitation": "Tạo thiệp mời của bạn",
     "haveInvitation": "Tôi đã có thiệp mời",
-    "privacyPolicy": "Chính sách bảo mật",
-    "terms": "Điều khoản",
-    "legalNotice": "Thông báo pháp lý",
     "modalTitle": "Truy cập thiệp mời của bạn",
     "usernameLabel": "Tên người dùng",
     "usernamePlaceholder": "Tên người dùng của bạn",
@@ -51,10 +41,7 @@
     "withBlessing": "Với lời chúc phúc của cha mẹ đỡ đầu {{godparent1}} và {{godparent2}}",
     "todayIsWedding": "Hôm nay là đám cưới",
     "missing": "Còn",
-    "daysAndHours": "{{days}} ngày và {{hours}} giờ",
-    "minutes": "{{minutes}} phút",
-    "todayIsTheDay": "Hôm nay là ngày trọng đại!",
-    "audioError": "Không thể tải âm thanh. Kiểm tra liên kết."
+    "todayIsTheDay": "Hôm nay là ngày trọng đại!"
   },
   "details": {
     "sectionLabel": "Ngày và địa điểm",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Chúng tôi mong đợi bạn đến chia sẻ khoảnh khắc đặc biệt này. Bên dưới bạn sẽ tìm thấy bản đồ.",
     "transport": "Phương tiện",
     "addToCalendar": "Thêm vào lịch",
-    "mapLoading": "Đang tải bản đồ...",
     "viewGoogleMaps": "Xem trên Google Maps",
-    "viewAppleMaps": "Xem trên Apple Maps",
-    "mapAriaLabel": "Bản đồ {{location}}"
+    "viewAppleMaps": "Xem trên Apple Maps"
   },
   "info": {
     "sectionLabel": "Về khách mời",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Dị ứng khác (ghi rõ)",
     "allergiesHint": "Chỉ ghi dị ứng và không dung nạp thực phẩm. Không nhập thông tin y tế không được yêu cầu.",
     "privacyConsent": "Tôi đã được thông báo và chấp nhận {{link}}",
-    "privacyLink": "Chính sách bảo mật",
     "healthConsent": "Tôi đồng ý cho xử lý dữ liệu sức khỏe của tôi (dị ứng và không dung nạp) để điều chỉnh thực đơn buổi lễ",
-    "ageConsent": "Tôi xác nhận tôi trên 14 tuổi hoặc nếu nhỏ hơn, có sự đồng ý của cha mẹ hoặc người giám hộ",
     "submitButton": "Xác nhận tham dự",
     "submittingButton": "Đang gửi...",
     "confirmedButton": "Đã xác nhận tham dự",
     "alreadySubmitted": "Bạn đã xác nhận tham dự",
     "withdrawButton": "Rút lại xác nhận của tôi",
-    "withdrawConfirm": "Bạn có chắc muốn rút lại xác nhận không?",
     "birthDateLabel": "Ngày sinh",
     "ageUnder14Warning": "Bạn dưới 14 tuổi. Bạn cần sự đồng ý của cha mẹ hoặc người giám hộ.",
-    "parentalConsent": "Cha mẹ hoặc người giám hộ của tôi đồng ý cho tôi tham gia",
-    "downloadData": "Tải dữ liệu của tôi"
+    "parentalConsent": "Cha mẹ hoặc người giám hộ của tôi đồng ý cho tôi tham gia"
   },
   "public": {
     "loadingInvitation": "Đang tải thiệp mời…",
@@ -148,7 +129,6 @@
     "emptyText": "Tạo và chia sẻ thiệp cưới tùy chỉnh của bạn.",
     "emptyDescription": "Quản lý dữ liệu thiệp mời, chia sẻ liên kết độc quyền với khách mời và nhận xác nhận tham dự.",
     "createLink": "Tạo thiệp mời",
-    "scrollAria": "Đi đến phần tiếp theo",
     "privacyPolicy": "Chính sách bảo mật",
     "terms": "Điều khoản",
     "legalNotice": "Thông báo pháp lý"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

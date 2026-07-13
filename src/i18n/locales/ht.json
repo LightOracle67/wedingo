@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Chaje...",
     "error": "Erè",
     "close": "Fèmen",
     "retry": "Rekoumanse",
     "save": "Anrejistre chanjman yo",
-    "saving": "Anrejistre...",
-    "cancel": "Anile",
     "copy": "Kopiye",
-    "copied": "Kopiye",
-    "confirm": "Konfime",
-    "yes": "Wi",
-    "no": "Non",
     "back": "Retounen",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Jere done envitasyon ou, pataje yon lyen inik ak envite w yo epi resevwa repons asistans yo.",
     "createInvitation": "Kreye envitasyon ou",
     "haveInvitation": "Mwen deja gen yon envitasyon",
-    "privacyPolicy": "Politik Konfidansyalite",
-    "terms": "Tèm",
-    "legalNotice": "Avi Legal",
     "modalTitle": "Antre nan envitasyon ou",
     "usernameLabel": "Non itilizatè",
     "usernamePlaceholder": "Non itilizatè ou",
@@ -51,10 +41,7 @@
     "withBlessing": "Avèk benediksyon parenn {{godparent1}} ak {{godparent2}}",
     "todayIsWedding": "Jodi a se maryaj la",
     "missing": "Manke",
-    "daysAndHours": "{{days}} jou ak {{hours}} lè",
-    "minutes": "{{minutes}} minit",
-    "todayIsTheDay": "¡Jodi a se gwo jou a!",
-    "audioError": "Pa t kapab chaje odyo a. Tcheke lyen an."
+    "todayIsTheDay": "¡Jodi a se gwo jou a!"
   },
   "details": {
     "sectionLabel": "Dat ak kote",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Nou ap tann ou pou pataje moman espesyal sa a. Pi ba ou ap jwenn kat jewografik la.",
     "transport": "Transpò",
     "addToCalendar": "Ajoute nan kalandriye a",
-    "mapLoading": "Chaje kat la...",
     "viewGoogleMaps": "Gade nan Google Maps",
-    "viewAppleMaps": "Gade nan Apple Maps",
-    "mapAriaLabel": "Kat {{location}}"
+    "viewAppleMaps": "Gade nan Apple Maps"
   },
   "info": {
     "sectionLabel": "Sou envite yo",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Lòt alèji (presize)",
     "allergiesHint": "Endike sèlman alèji ak entolerans alimantè. Pa antre enfòmasyon medikal ki pa mande.",
     "privacyConsent": "Mwen te enfòme epi mwen aksepte {{link}}",
-    "privacyLink": "Politik Konfidansyalite",
     "healthConsent": "Mwen konsanti pou tretman done sante mwen (alèji ak entolerans) pou adapte meni selebrasyon an",
-    "ageConsent": "Mwen deklare mwen gen plis pase 14 zan oswa, si mwen pi piti, mwen gen konsantman paran mwen oswa responsab mwen",
     "submitButton": "Konfime asistans",
     "submittingButton": "Voye...",
     "confirmedButton": "Asistans konfime",
     "alreadySubmitted": "Ou deja konfime asistans ou",
     "withdrawButton": "Retire konfimasyon mwen",
-    "withdrawConfirm": "Èske ou sèten ou vle retire konfimasyon ou?",
     "birthDateLabel": "Dat nesans",
     "ageUnder14Warning": "Ou gen mwens pase 14 zan. Ou bezwen konsantman paran ou oswa responsab ou.",
-    "parentalConsent": "Paran mwen oswa responsab mwen konsanti pou patisipasyon mwen",
-    "downloadData": "Telechaje done mwen yo"
+    "parentalConsent": "Paran mwen oswa responsab mwen konsanti pou patisipasyon mwen"
   },
   "public": {
     "loadingInvitation": "Chaje envitasyon…",
@@ -148,7 +129,6 @@
     "emptyText": "Kreye epi pataje envitasyon maryaj pèsonalize ou.",
     "emptyDescription": "Jere done envitasyon ou, pataje yon lyen inik ak envite w yo epi resevwa repons asistans yo.",
     "createLink": "Kreye envitasyon",
-    "scrollAria": "Ale nan seksyon kap vini an",
     "privacyPolicy": "Politik Konfidansyalite",
     "terms": "Tèm",
     "legalNotice": "Avi Legal"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

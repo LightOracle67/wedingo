@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Φόρτωση...",
     "error": "Σφάλμα",
     "close": "Κλείσιμο",
     "retry": "Επανάληψη",
     "save": "Αποθήκευση αλλαγών",
-    "saving": "Αποθήκευση...",
-    "cancel": "Ακύρωση",
     "copy": "Αντιγραφή",
-    "copied": "Αντιγράφηκε",
-    "confirm": "Επιβεβαίωση",
-    "yes": "Ναι",
-    "no": "Όχι",
     "back": "Πίσω",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Διαχειριστείτε τα στοιχεία της πρόσκλησής σας, μοιραστείτε έναν μοναδικό σύνδεσμο με τους καλεσμένους σας και λάβετε τις επιβεβαιώσεις συμμετοχής τους.",
     "createInvitation": "Δημιουργία πρόσκλησης",
     "haveInvitation": "Έχω ήδη πρόσκληση",
-    "privacyPolicy": "Πολιτική Απορρήτου",
-    "terms": "Όροι",
-    "legalNotice": "Νομική Σημείωση",
     "modalTitle": "Πρόσβαση στην πρόσκλησή σας",
     "usernameLabel": "Όνομα χρήστη",
     "usernamePlaceholder": "Το όνομα χρήστη σας",
@@ -51,10 +41,7 @@
     "withBlessing": "Με την ευλογία των κουμπάρων τους {{godparent1}} και {{godparent2}}",
     "todayIsWedding": "Σήμερα είναι ο γάμος",
     "missing": "Απομένουν",
-    "daysAndHours": "{{days}} ημέρα(ες) και {{hours}} ώρα(ες)",
-    "minutes": "{{minutes}} λεπτό(ά)",
-    "todayIsTheDay": "Σήμερα είναι η μεγάλη μέρα!",
-    "audioError": "Δεν ήταν δυνατή η φόρτωση του ήχου. Ελέγξτε τον σύνδεσμο."
+    "todayIsTheDay": "Σήμερα είναι η μεγάλη μέρα!"
   },
   "details": {
     "sectionLabel": "Ημερομηνία και τοποθεσία",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Σας περιμένουμε για να μοιραστούμε αυτή την ξεχωριστή στιγμή. Παρακάτω θα βρείτε τον χάρτη τοποθεσίας.",
     "transport": "Μεταφορά",
     "addToCalendar": "Προσθήκη στο ημερολόγιο",
-    "mapLoading": "Φόρτωση χάρτη...",
     "viewGoogleMaps": "Προβολή στους Χάρτες Google",
-    "viewAppleMaps": "Προβολή στους Χάρτες Apple",
-    "mapAriaLabel": "Χάρτης της {{location}}"
+    "viewAppleMaps": "Προβολή στους Χάρτες Apple"
   },
   "info": {
     "sectionLabel": "Σχετικά με τους καλεσμένους",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Άλλη αλλεργία (διευκρινίστε)",
     "allergiesHint": "Αναφέρετε μόνο τροφικές αλλεργίες και δυσανεξίες. Μην εισάγετε ιατρικές πληροφορίες που δεν ζητήθηκαν.",
     "privacyConsent": "Έχω ενημερωθεί και αποδέχομαι την {{link}}",
-    "privacyLink": "Πολιτική Απορρήτου",
     "healthConsent": "Συναινώ στην επεξεργασία των δεδομένων υγείας μου (αλλεργίες και δυσανεξίες) για την προσαρμογή του μενού της δεξίωσης",
-    "ageConsent": "Δηλώνω ότι είμαι άνω των 14 ετών ή, αν είμαι ανήλικος, έχω τη συγκατάθεση των γονέων ή κηδεμόνων μου",
     "submitButton": "Επιβεβαίωση συμμετοχής",
     "submittingButton": "Αποστολή...",
     "confirmedButton": "Συμμετοχή επιβεβαιωμένη",
     "alreadySubmitted": "Έχετε ήδη επιβεβαιώσει τη συμμετοχή σας",
     "withdrawButton": "Ανάκληση της επιβεβαίωσής μου",
-    "withdrawConfirm": "Είστε βέβαιοι ότι θέλετε να ανακαλέσετε την επιβεβαίωσή σας;",
     "birthDateLabel": "Ημερομηνία γέννησης",
     "ageUnder14Warning": "Είστε κάτω των 14 ετών. Χρειάζεστε τη συγκατάθεση των γονέων ή κηδεμόνων σας.",
-    "parentalConsent": "Οι γονείς ή κηδεμόνες μου συναινούν στη συμμετοχή μου",
-    "downloadData": "Λήψη των δεδομένων μου"
+    "parentalConsent": "Οι γονείς ή κηδεμόνες μου συναινούν στη συμμετοχή μου"
   },
   "public": {
     "loadingInvitation": "Φόρτωση πρόσκλησης…",
@@ -148,7 +129,6 @@
     "emptyText": "Δημιουργήστε και μοιραστείτε την προσωπική σας γαμήλια πρόσκληση.",
     "emptyDescription": "Διαχειριστείτε τα στοιχεία της πρόσκλησής σας, μοιραστείτε έναν μοναδικό σύνδεσμο με τους καλεσμένους σας και λάβετε τις επιβεβαιώσεις συμμετοχής τους.",
     "createLink": "Δημιουργία πρόσκλησης",
-    "scrollAria": "Μετάβαση στην επόμενη ενότητα",
     "privacyPolicy": "Πολιτική Απορρήτου",
     "terms": "Όροι",
     "legalNotice": "Νομική Σημείωση"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Hleður...",
     "error": "Villa",
     "close": "Loka",
     "retry": "Reyna aftur",
     "save": "Vista breytingar",
-    "saving": "Vistar...",
-    "cancel": "Hætta við",
     "copy": "Afrita",
-    "copied": "Afritað",
-    "confirm": "Staðfesta",
-    "yes": "Já",
-    "no": "Nei",
     "back": "Til baka",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Stjórnaðu upplýsingum boðskortsins, deildu einstökum hlekk með gestunum og fáðu staðfestingar á mætingu.",
     "createInvitation": "Búa til boðskort",
     "haveInvitation": "Ég er þegar með boðskort",
-    "privacyPolicy": "Persónuverndarstefna",
-    "terms": "Skilmálar",
-    "legalNotice": "Lagaleg tilkynning",
     "modalTitle": "Fá aðgang að boðskortinu þínu",
     "usernameLabel": "Notandanafn",
     "usernamePlaceholder": "Þitt notandanafn",
@@ -51,10 +41,7 @@
     "withBlessing": "Með blessun guðforeldra sinna {{godparent1}} og {{godparent2}}",
     "todayIsWedding": "Í dag er brúðkaupið",
     "missing": "Eftir",
-    "daysAndHours": "{{days}} dagur/dagar og {{hours}} klukkutími/klukkutímar",
-    "minutes": "{{minutes}} mínúta/mínútur",
-    "todayIsTheDay": "Í dag er stóri dagurinn!",
-    "audioError": "Ekki tókst að hlaða hljóði. Athugaðu hlekkinn."
+    "todayIsTheDay": "Í dag er stóri dagurinn!"
   },
   "details": {
     "sectionLabel": "Dagsetning og staðsetning",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Við hlökkum til að deila þessari sérstöku stund með þér. Hér fyrir neðan finnur þú staðsetningarkortið.",
     "transport": "Samgöngur",
     "addToCalendar": "Bæta við dagatal",
-    "mapLoading": "Hleður korti...",
     "viewGoogleMaps": "Skoða í Google Maps",
-    "viewAppleMaps": "Skoða í Apple Maps",
-    "mapAriaLabel": "Kort af {{location}}"
+    "viewAppleMaps": "Skoða í Apple Maps"
   },
   "info": {
     "sectionLabel": "Um gestina",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Annað ofnæmi (tilgreinið)",
     "allergiesHint": "Tilgreinið aðeins fæðuofnæmi og -óþol. Ekki slá inn óumbeðnar læknisfræðilegar upplýsingar.",
     "privacyConsent": "Ég hef verið upplýst/ur og samþykki {{link}}",
-    "privacyLink": "Persónuverndarstefnuna",
     "healthConsent": "Ég samþykki vinnslu heilbrigðisgagna minna (ofnæmi og óþol) til að aðlaga matseðil hátíðarinnar",
-    "ageConsent": "Ég lýsi því yfir að ég sé eldri en 14 ára eða, ef ég er yngri, að ég hafi samþykki foreldra minna eða forráðamanna",
     "submitButton": "Staðfesta mætingu",
     "submittingButton": "Sendi...",
     "confirmedButton": "Mæting staðfest",
     "alreadySubmitted": "Þú hefur þegar staðfest mætingu þína",
     "withdrawButton": "Afturkalla staðfestingu mína",
-    "withdrawConfirm": "Ertu viss um að þú viljir afturkalla staðfestinguna?",
     "birthDateLabel": "Fæðingardagur",
     "ageUnder14Warning": "Þú ert yngri en 14 ára. Þú þarft samþykki foreldra eða forráðamanna.",
-    "parentalConsent": "Foreldrar mínir eða forráðamenn samþykkja þátttöku mína",
-    "downloadData": "Sækja gögnin mín"
+    "parentalConsent": "Foreldrar mínir eða forráðamenn samþykkja þátttöku mína"
   },
   "public": {
     "loadingInvitation": "Hleður boðskorti…",
@@ -148,7 +129,6 @@
     "emptyText": "Búðu til og deildu þínu persónulega brúðkaupsboðskorti.",
     "emptyDescription": "Stjórnaðu upplýsingum boðskortsins, deildu einstökum hlekk með gestunum og fáðu staðfestingar á mætingu.",
     "createLink": "Búa til boðskort",
-    "scrollAria": "Fara í næsta hluta",
     "privacyPolicy": "Persónuverndarstefna",
     "terms": "Skilmálar",
     "legalNotice": "Lagaleg tilkynning"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

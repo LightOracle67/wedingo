@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Tagħbija...",
     "error": "Żball",
     "close": "Agħlaq",
     "retry": "Erġa' pprova",
     "save": "Salva l-bidliet",
-    "saving": "Qed issalva...",
-    "cancel": "Ikkanċella",
     "copy": "Ikkopja",
-    "copied": "Ikkupjat",
-    "confirm": "Ikkonferma",
-    "yes": "Iva",
-    "no": "Le",
     "back": "Lura",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Immaniġġja d-dejta tal-istedina tiegħek, aqsam link uniku mal-mistednin tiegħek u rċievi l-konfermi tal-attendenza tagħhom.",
     "createInvitation": "Oħloq l-istedina tiegħek",
     "haveInvitation": "Diġà għandi stedina",
-    "privacyPolicy": "Politika tal-Privatezza",
-    "terms": "Termini",
-    "legalNotice": "Avviż Legali",
     "modalTitle": "Aċċedi għall-istedina tiegħek",
     "usernameLabel": "Isem l-utent",
     "usernamePlaceholder": "L-isem tal-utent tiegħek",
@@ -51,10 +41,7 @@
     "withBlessing": "Bil-barka tal-parrini tagħhom {{godparent1}} u {{godparent2}}",
     "todayIsWedding": "Illum hu t-tieġ",
     "missing": "Nieqsa",
-    "daysAndHours": "{{days}} jum/jum u {{hours}} siegħa/siegħa",
-    "minutes": "{{minutes}} minuta/minuti",
-    "todayIsTheDay": "Illum hu l-jum il-kbir!",
-    "audioError": "Ma setax jitgħabba l-awdjo. Iċċekkja l-link."
+    "todayIsTheDay": "Illum hu l-jum il-kbir!"
   },
   "details": {
     "sectionLabel": "Data u post",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Nistennewk biex naqsmu dan il-mument speċjali. Hawn taħt issib il-mappa tal-post.",
     "transport": "Trasport",
     "addToCalendar": "Żid mal-kalendarju",
-    "mapLoading": "Tagħbija tal-mappa...",
     "viewGoogleMaps": "Ara fuq Google Maps",
-    "viewAppleMaps": "Ara fuq Apple Maps",
-    "mapAriaLabel": "Mappa ta' {{location}}"
+    "viewAppleMaps": "Ara fuq Apple Maps"
   },
   "info": {
     "sectionLabel": "Dwar il-mistednin",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Allerġija oħra (speċifika)",
     "allergiesHint": "Indika biss allerġiji u intolleranzi alimentari. Daħħalx informazzjoni medika mhux mitluba.",
     "privacyConsent": "Ġejt informat u naċċetta l-{{link}}",
-    "privacyLink": "Politika tal-Privatezza",
     "healthConsent": "Nagħti l-kunsens tiegħi għat-trattament tad-dejta tas-saħħa tiegħi (allerġiji u intolleranzi) biex jiġi adattat il-menu taċ-ċelebrazzjoni",
-    "ageConsent": "Niddikjara li għandi aktar minn 14-il sena jew, jekk minorenni, li għandi l-kunsens tal-ġenituri jew tat-tuturi tiegħi",
     "submitButton": "Ikkonferma l-attendenza",
     "submittingButton": "Qed jintbagħat...",
     "confirmedButton": "Attendenza kkonfermata",
     "alreadySubmitted": "Diġà kkonfermajt l-attendenza tiegħek",
     "withdrawButton": "Irtira l-konferma tiegħi",
-    "withdrawConfirm": "Int ċert li trid tirtira l-konferma tiegħek?",
     "birthDateLabel": "Data tat-twelid",
     "ageUnder14Warning": "Għandek inqas minn 14-il sena. Għandek bżonn il-kunsens tal-ġenituri jew tat-tuturi tiegħek.",
-    "parentalConsent": "Il-ġenituri jew it-tuturi tiegħi jagħtu l-kunsens għall-parteċipazzjoni tiegħi",
-    "downloadData": "Niżżel id-dejta tiegħi"
+    "parentalConsent": "Il-ġenituri jew it-tuturi tiegħi jagħtu l-kunsens għall-parteċipazzjoni tiegħi"
   },
   "public": {
     "loadingInvitation": "Tagħbija tal-istedina...",
@@ -148,7 +129,6 @@
     "emptyText": "Oħloq u aqsam l-istedina tat-tieġ personalizzata tiegħek.",
     "emptyDescription": "Immaniġġja d-dejta tal-istedina tiegħek, aqsam link uniku mal-mistednin tiegħek u rċievi l-konfermi tal-attendenza tagħhom.",
     "createLink": "Oħloq stedina",
-    "scrollAria": "Mur fit-taqsima li jmiss",
     "privacyPolicy": "Politika tal-Privatezza",
     "terms": "Termini",
     "legalNotice": "Avviż Legali"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

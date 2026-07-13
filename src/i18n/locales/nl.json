@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Laden...",
     "error": "Fout",
     "close": "Sluiten",
     "retry": "Opnieuw proberen",
     "save": "Wijzigingen opslaan",
-    "saving": "Opslaan...",
-    "cancel": "Annuleren",
     "copy": "Kopiëren",
-    "copied": "Gekopieerd",
-    "confirm": "Bevestigen",
-    "yes": "Ja",
-    "no": "Nee",
     "back": "Terug",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Beheer de gegevens van je uitnodiging, deel een unieke link met je gasten en ontvang hun aanwezigheidsbevestigingen.",
     "createInvitation": "Maak je uitnodiging",
     "haveInvitation": "Ik heb al een uitnodiging",
-    "privacyPolicy": "Privacybeleid",
-    "terms": "Voorwaarden",
-    "legalNotice": "Juridische kennisgeving",
     "modalTitle": "Toegang tot je uitnodiging",
     "usernameLabel": "Gebruikersnaam",
     "usernamePlaceholder": "Jouw gebruikersnaam",
@@ -51,10 +41,7 @@
     "withBlessing": "Met de zegen van hun getuigen {{godparent1}} en {{godparent2}}",
     "todayIsWedding": "Vandaag is de bruiloft",
     "missing": "Nog",
-    "daysAndHours": "{{days}} dag(en) en {{hours}} uur/uren",
-    "minutes": "{{minutes}} minuut/minuten",
-    "todayIsTheDay": "Vandaag is de grote dag!",
-    "audioError": "Audio kon niet worden geladen. Controleer de link."
+    "todayIsTheDay": "Vandaag is de grote dag!"
   },
   "details": {
     "sectionLabel": "Datum en locatie",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "We kijken ernaar uit om dit bijzondere moment met je te delen. Hieronder vind je de locatiekaart.",
     "transport": "Vervoer",
     "addToCalendar": "Toevoegen aan agenda",
-    "mapLoading": "Kaart laden...",
     "viewGoogleMaps": "Bekijken in Google Maps",
-    "viewAppleMaps": "Bekijken in Apple Maps",
-    "mapAriaLabel": "Kaart van {{location}}"
+    "viewAppleMaps": "Bekijken in Apple Maps"
   },
   "info": {
     "sectionLabel": "Over de gasten",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Andere allergie (specificeer)",
     "allergiesHint": "Vermeld alleen voedselallergieën en -intoleranties. Voer geen ongevraagde medische informatie in.",
     "privacyConsent": "Ik ben geïnformeerd en accepteer de {{link}}",
-    "privacyLink": "Privacybeleid",
     "healthConsent": "Ik stem in met de verwerking van mijn gezondheidsgegevens (allergieën en intoleranties) om het menu van de viering aan te passen",
-    "ageConsent": "Ik verklaar ouder dan 14 jaar te zijn, of als ik minderjarig ben, toestemming te hebben van mijn ouders of voogden",
     "submitButton": "Aanwezigheid bevestigen",
     "submittingButton": "Verzenden...",
     "confirmedButton": "Aanwezigheid bevestigd",
     "alreadySubmitted": "Je hebt je aanwezigheid al bevestigd",
     "withdrawButton": "Mijn bevestiging intrekken",
-    "withdrawConfirm": "Weet je zeker dat je je bevestiging wilt intrekken?",
     "birthDateLabel": "Geboortedatum",
     "ageUnder14Warning": "Je bent jonger dan 14 jaar. Je hebt toestemming van je ouders of voogden nodig.",
-    "parentalConsent": "Mijn ouders of voogden stemmen in met mijn deelname",
-    "downloadData": "Mijn gegevens downloaden"
+    "parentalConsent": "Mijn ouders of voogden stemmen in met mijn deelname"
   },
   "public": {
     "loadingInvitation": "Uitnodiging laden...",
@@ -148,7 +129,6 @@
     "emptyText": "Maak en deel je gepersonaliseerde trouwuitnodiging.",
     "emptyDescription": "Beheer de gegevens van je uitnodiging, deel een unieke link met je gasten en ontvang hun aanwezigheidsbevestigingen.",
     "createLink": "Uitnodiging maken",
-    "scrollAria": "Naar de volgende sectie gaan",
     "privacyPolicy": "Privacybeleid",
     "terms": "Voorwaarden",
     "legalNotice": "Juridische kennisgeving"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

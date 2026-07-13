@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Chargement...",
     "error": "Erreur",
     "close": "Fermer",
     "retry": "Réessayer",
     "save": "Enregistrer",
-    "saving": "Enregistrement...",
-    "cancel": "Annuler",
     "copy": "Copier",
-    "copied": "Copié",
-    "confirm": "Confirmer",
-    "yes": "Oui",
-    "no": "Non",
     "back": "Retour",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Gérez les informations de votre faire-part, partagez un lien unique avec vos invités et recevez leurs confirmations de présence.",
     "createInvitation": "Créer votre faire-part",
     "haveInvitation": "J'ai déjà un faire-part",
-    "privacyPolicy": "Politique de confidentialité",
-    "terms": "Conditions d'utilisation",
-    "legalNotice": "Mentions légales",
     "modalTitle": "Accéder à votre faire-part",
     "usernameLabel": "Nom d'utilisateur",
     "usernamePlaceholder": "Votre nom d'utilisateur",
@@ -51,10 +41,7 @@
     "withBlessing": "Avec la bénédiction de leurs parrains {{godparent1}} et {{godparent2}}",
     "todayIsWedding": "C'est le jour du mariage",
     "missing": "Plus que",
-    "daysAndHours": "{{days}} jour(s) et {{hours}} heure(s)",
-    "minutes": "{{minutes}} minute(s)",
-    "todayIsTheDay": "C'est le grand jour !",
-    "audioError": "Impossible de charger l'audio. Vérifiez le lien."
+    "todayIsTheDay": "C'est le grand jour !"
   },
   "details": {
     "sectionLabel": "Date et lieu",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Nous vous attendons pour partager ce moment si spécial. Vous trouverez le plan d'accès ci-dessous.",
     "transport": "Transport",
     "addToCalendar": "Ajouter au calendrier",
-    "mapLoading": "Chargement de la carte...",
     "viewGoogleMaps": "Voir sur Google Maps",
-    "viewAppleMaps": "Voir sur Apple Maps",
-    "mapAriaLabel": "Carte de {{location}}"
+    "viewAppleMaps": "Voir sur Apple Maps"
   },
   "info": {
     "sectionLabel": "Informations pour les invités",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Autre allergie (précisez)",
     "allergiesHint": "Indiquez uniquement les allergies et intolérances alimentaires. Ne fournissez pas d'informations médicales non sollicitées.",
     "privacyConsent": "J'ai été informé(e) et j'accepte la {{link}}",
-    "privacyLink": "Politique de confidentialité",
     "healthConsent": "Je consens au traitement de mes données de santé (allergies et intolérances) pour l'adaptation du menu de la célébration",
-    "ageConsent": "Je déclare être âgé(e) de plus de 14 ans ou, si je suis mineur(e), avoir le consentement de mes parents ou tuteurs",
     "submitButton": "Confirmer ma présence",
     "submittingButton": "Envoi en cours...",
     "confirmedButton": "Présence confirmée",
     "alreadySubmitted": "Vous avez déjà confirmé votre présence",
     "withdrawButton": "Retirer ma confirmation",
-    "withdrawConfirm": "Êtes-vous sûr de vouloir retirer votre confirmation ?",
     "birthDateLabel": "Date de naissance",
     "ageUnder14Warning": "Vous avez moins de 14 ans. Vous avez besoin du consentement de vos parents ou tuteurs.",
-    "parentalConsent": "Mes parents ou tuteurs consentent à ma participation",
-    "downloadData": "Télécharger mes données"
+    "parentalConsent": "Mes parents ou tuteurs consentent à ma participation"
   },
   "public": {
     "loadingInvitation": "Chargement du faire-part…",
@@ -150,8 +131,7 @@
     "createLink": "Créer un faire-part",
     "privacyPolicy": "Politique de confidentialité",
     "terms": "Conditions d'utilisation",
-    "legalNotice": "Mentions légales",
-    "scrollAria": "Aller à la section suivante"
+    "legalNotice": "Mentions légales"
   },
   "setup": {
     "loadingTitle": "Chargement du faire-part",
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

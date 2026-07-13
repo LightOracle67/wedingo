@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Bardike...",
     "error": "Xeletî",
     "close": "Bigir",
     "retry": "Dîsa biceribîne",
     "save": "Guhartinan tomar bike",
-    "saving": "Tê tomarkirin...",
-    "cancel": "Betal",
     "copy": "Kopî bike",
-    "copied": "Hat kopîkirin",
-    "confirm": "Piştrast bike",
-    "yes": "Erê",
-    "no": "Na",
     "back": "Vegere",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Daneyên dawetnameya xwe bi rê ve bibe, girêdanek taybet bi mêvanên xwe re parve bike û bersivên beşdariya wan werbigire.",
     "createInvitation": "Dawetnameya xwe biafirîne",
     "haveInvitation": "Dawetnameyek min heye",
-    "privacyPolicy": "Siyaseta Nepenîtiyê",
-    "terms": "Merc",
-    "legalNotice": "Daxuyaniya Hiqûqî",
     "modalTitle": "Têketina dawetnameya xwe",
     "usernameLabel": "Navê bikarhêner",
     "usernamePlaceholder": "Navê bikarhênerê te",
@@ -51,10 +41,7 @@
     "withBlessing": "Bi bereketa {{godparent1}} û {{godparent2}}",
     "todayIsWedding": "Îro roja zewacê ye",
     "missing": "Mane",
-    "daysAndHours": "{{days}} roj û {{hours}} saet",
-    "minutes": "{{minutes}} deqe",
-    "todayIsTheDay": "Îro roja mezin e!",
-    "audioError": "Deng nehat barkirin. Girêdanê kontrol bike."
+    "todayIsTheDay": "Îro roja mezin e!"
   },
   "details": {
     "sectionLabel": "Dîrok û cih",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Em li benda te ne ji bo parvekirina vê kêliya taybet. Li jêr nexşeya cih heye.",
     "transport": "Veguhastin",
     "addToCalendar": "Tevlî salnameyê bike",
-    "mapLoading": "Nexşe tê barkirin...",
     "viewGoogleMaps": "Li Google Maps bibîne",
-    "viewAppleMaps": "Li Apple Maps bibîne",
-    "mapAriaLabel": "Nexşeya {{location}}"
+    "viewAppleMaps": "Li Apple Maps bibîne"
   },
   "info": {
     "sectionLabel": "Derbarê mêvanan",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Alarjiyeke din (eşkere bike)",
     "allergiesHint": "Tenê alarjî û netehammuliyên xwarinê binivîse. Agahiyên tibî yên nexwestî neke.",
     "privacyConsent": "Ez haydar bûme û {{link}} qebûl dikim",
-    "privacyLink": "Siyaseta Nepenîtiyê",
     "healthConsent": "Ez razî me ku daneyên tenduristiya min (alarjî û netehammulî) ji bo guncandina menuyê werin bikaranîn",
-    "ageConsent": "Ez diyar dikim ku ez ji 14 salî mezintir im, an eger biçûktir bim, destûra dêûbav an welîyên min heye",
     "submitButton": "Piştrastkirina beşdariyê",
     "submittingButton": "Tê şandin...",
     "confirmedButton": "Beşdarî hat piştrastkirin",
     "alreadySubmitted": "Te berê jî beşdariya xwe piştrast kiriye",
     "withdrawButton": "Piştrastkirina min betal bike",
-    "withdrawConfirm": "Tu piştrast î ku dixwazî piştrastkirina xwe betal bikî?",
     "birthDateLabel": "Rojbûn",
     "ageUnder14Warning": "Tu ji 14 salî piçûktir î. Destûra dêûbav an welîyên te lazim e.",
-    "parentalConsent": "Dêûbav an welîyên min razî ne ku ez beşdar bibim",
-    "downloadData": "Daneyên min daxîne"
+    "parentalConsent": "Dêûbav an welîyên min razî ne ku ez beşdar bibim"
   },
   "public": {
     "loadingInvitation": "Dawetname tê barkirin…",
@@ -148,7 +129,6 @@
     "emptyText": "Dawetnameya xwe ya kesane biafirîne û parve bike.",
     "emptyDescription": "Daneyên dawetnameya xwe bi rê ve bibe, girêdanek taybet bi mêvanên xwe re parve bike û bersivên beşdariya wan werbigire.",
     "createLink": "Dawetnameyê biafirîne",
-    "scrollAria": "Here beşa din",
     "privacyPolicy": "Siyaseta Nepenîtiyê",
     "terms": "Merc",
     "legalNotice": "Daxuyaniya Hiqûqî"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

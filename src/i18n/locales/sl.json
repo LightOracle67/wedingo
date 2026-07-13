@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Nalaganje...",
     "error": "Napaka",
     "close": "Zapri",
     "retry": "Poskusi znova",
     "save": "Shrani spremembe",
-    "saving": "Shranjevanje...",
-    "cancel": "Prekliči",
     "copy": "Kopiraj",
-    "copied": "Kopirano",
-    "confirm": "Potrdi",
-    "yes": "Da",
-    "no": "Ne",
     "back": "Nazaj",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Upravljajte podatke svojega vabila, delite edinstveno povezavo z gosti in prejemajte njihove potrditve udeležbe.",
     "createInvitation": "Ustvarite svoje vabilo",
     "haveInvitation": "Že imam vabilo",
-    "privacyPolicy": "Politika zasebnosti",
-    "terms": "Pogoji",
-    "legalNotice": "Pravno obvestilo",
     "modalTitle": "Dostop do vabila",
     "usernameLabel": "Uporabniško ime",
     "usernamePlaceholder": "Vaše uporabniško ime",
@@ -51,10 +41,7 @@
     "withBlessing": "Z blagoslovom botrov {{godparent1}} in {{godparent2}}",
     "todayIsWedding": "Danes je poroka",
     "missing": "Manjka",
-    "daysAndHours": "{{days}} dan/dni in {{hours}} ura/ur",
-    "minutes": "{{minutes}} minuta/minut",
-    "todayIsTheDay": "Danes je veliki dan!",
-    "audioError": "Zvoka ni bilo mogoče naložiti. Preverite povezavo."
+    "todayIsTheDay": "Danes je veliki dan!"
   },
   "details": {
     "sectionLabel": "Datum in kraj",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Veselimo se, da bomo delili ta poseben trenutek z vami. Spodaj najdete zemljevid lokacije.",
     "transport": "Prevoz",
     "addToCalendar": "Dodaj v koledar",
-    "mapLoading": "Nalaganje zemljevida...",
     "viewGoogleMaps": "Prikaži v Google Maps",
-    "viewAppleMaps": "Prikaži v Apple Maps",
-    "mapAriaLabel": "Zemljevid {{location}}"
+    "viewAppleMaps": "Prikaži v Apple Maps"
   },
   "info": {
     "sectionLabel": "O gostih",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Druga alergija (navedite)",
     "allergiesHint": "Navedite samo alergije na hrano in intolerance. Ne vnašajte nenaročenih zdravstvenih informacij.",
     "privacyConsent": "Bil/a sem obveščen/a in sprejemam {{link}}",
-    "privacyLink": "Politiko zasebnosti",
     "healthConsent": "Soglašam z obdelavo mojih zdravstvenih podatkov (alergij in intoleranc) za prilagoditev menija slavja",
-    "ageConsent": "Izjavljam, da sem starejši/a od 14 let ali, če sem mladoleten/a, imam soglasje staršev ali skrbnikov",
     "submitButton": "Potrdi udeležbo",
     "submittingButton": "Pošiljanje...",
     "confirmedButton": "Udeležba potrjena",
     "alreadySubmitted": "Svojo udeležbo ste že potrdili",
     "withdrawButton": "Umakni potrditev",
-    "withdrawConfirm": "Ste prepričani, da želite umakniti potrditev?",
     "birthDateLabel": "Datum rojstva",
     "ageUnder14Warning": "Ste mlajši od 14 let. Potrebujete soglasje staršev ali skrbnikov.",
-    "parentalConsent": "Moji starši ali skrbniki soglašajo z mojo udeležbo",
-    "downloadData": "Prenesi moje podatke"
+    "parentalConsent": "Moji starši ali skrbniki soglašajo z mojo udeležbo"
   },
   "public": {
     "loadingInvitation": "Nalaganje vabila...",
@@ -148,7 +129,6 @@
     "emptyText": "Ustvarite in delite svoje personalizirano poročno vabilo.",
     "emptyDescription": "Upravljajte podatke svojega vabila, delite edinstveno povezavo z gosti in prejemajte njihove potrditve udeležbe.",
     "createLink": "Ustvari vabilo",
-    "scrollAria": "Pojdi na naslednji razdelek",
     "privacyPolicy": "Politika zasebnosti",
     "terms": "Pogoji",
     "legalNotice": "Pravno obvestilo"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

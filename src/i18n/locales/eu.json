@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Kargatzen...",
     "error": "Errorea",
     "close": "Itxi",
     "retry": "Berriro saiatu",
     "save": "Gorde aldaketak",
-    "saving": "Gordetzen...",
-    "cancel": "Utzi",
     "copy": "Kopiatu",
-    "copied": "Kopiatuta",
-    "confirm": "Baieztatu",
-    "yes": "Bai",
-    "no": "Ez",
     "back": "Atzera",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Kudeatu zure gonbidapenaren datuak, partekatu esteka bakarra zure gonbidatuekin eta jaso haien bertaratze baieztapenak.",
     "createInvitation": "Sortu zure gonbidapena",
     "haveInvitation": "Badut gonbidapen bat",
-    "privacyPolicy": "Pribatutasun Politika",
-    "terms": "Baldintzak",
-    "legalNotice": "Lege Oharra",
     "modalTitle": "Sartu zure gonbidapenean",
     "usernameLabel": "Erabiltzaile izena",
     "usernamePlaceholder": "Zure erabiltzaile izena",
@@ -51,10 +41,7 @@
     "withBlessing": "{{godparent1}} eta {{godparent2}} aitabitxien bedeinkapenarekin",
     "todayIsWedding": "Gaur da ezkontza",
     "missing": "Falta dira",
-    "daysAndHours": "{{days}} egun eta {{hours}} ordu",
-    "minutes": "{{minutes}} minutu",
-    "todayIsTheDay": "Gaur da egun handia!",
-    "audioError": "Ezin izan da audioa kargatu. Begiratu esteka."
+    "todayIsTheDay": "Gaur da egun handia!"
   },
   "details": {
     "sectionLabel": "Data eta lekua",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Zain egongo zaitugu une berezi hau partekatzeko. Beherago kokapenaren mapa aurkituko duzu.",
     "transport": "Garraioa",
     "addToCalendar": "Gehitu egutegira",
-    "mapLoading": "Mapa kargatzen...",
     "viewGoogleMaps": "Ikusi Google Maps-en",
-    "viewAppleMaps": "Ikusi Apple Maps-en",
-    "mapAriaLabel": "{{location}}ren mapa"
+    "viewAppleMaps": "Ikusi Apple Maps-en"
   },
   "info": {
     "sectionLabel": "Gonbidatuei buruz",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Beste alergia bat (zehaztu)",
     "allergiesHint": "Adierazi elikagai alergiak eta intolerantziak soilik. Ez sartu eskatu gabeko informazio medikorik.",
     "privacyConsent": "Informatua izan naiz eta {{link}} onartzen dut",
-    "privacyLink": "Pribatutasun Politika",
     "healthConsent": "Onartzen dut nire osasun datuen tratamendua (alergiak eta intolerantziak) ospakizuneko menua egokitzeko",
-    "ageConsent": "Adierazten dut 14 urtetik gorakoa naizela edo, adingabea banago, gurasoen edo tutoreen baimena dudala",
     "submitButton": "Baieztatu bertaratzea",
     "submittingButton": "Bidaltzen...",
     "confirmedButton": "Bertaratzea baieztatuta",
     "alreadySubmitted": "Dagoeneko baieztatu duzu zure bertaratzea",
     "withdrawButton": "Nire baieztapena atzera bota",
-    "withdrawConfirm": "Ziur zaude zure baieztapena atzera bota nahi duzula?",
     "birthDateLabel": "Jaiotze data",
     "ageUnder14Warning": "14 urtetik beherakoa zara. Zure gurasoen edo tutoreen baimena behar duzu.",
-    "parentalConsent": "Nire gurasoek edo tutoreek nire parte-hartzea baimendu dute",
-    "downloadData": "Deskargatu nire datuak"
+    "parentalConsent": "Nire gurasoek edo tutoreek nire parte-hartzea baimendu dute"
   },
   "public": {
     "loadingInvitation": "Gonbidapena kargatzen…",
@@ -150,8 +131,7 @@
     "createLink": "Sortu gonbidapena",
     "privacyPolicy": "Pribatutasun Politika",
     "terms": "Baldintzak",
-    "legalNotice": "Lege Oharra",
-    "scrollAria": "Joan hurrengo atalera"
+    "legalNotice": "Lege Oharra"
   },
   "setup": {
     "loadingTitle": "Gonbidapena kargatzen",
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

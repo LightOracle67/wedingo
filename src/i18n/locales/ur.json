@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "لوڈ ہو رہا ہے...",
     "error": "خرابی",
     "close": "بند کریں",
     "retry": "دوبارہ کوشش کریں",
     "save": "تبدیلیاں محفوظ کریں",
-    "saving": "محفوظ ہو رہا ہے...",
-    "cancel": "منسوخ کریں",
     "copy": "کاپی کریں",
-    "copied": "کاپی ہو گیا",
-    "confirm": "تصدیق کریں",
-    "yes": "جی ہاں",
-    "no": "نہیں",
     "back": "واپس جائیں",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "اپنے دعوت نامے کا ڈیٹا منظم کریں، مہمانوں کے ساتھ منفرد لنک شیئر کریں، اور ان کی حاضری کی تصدیق وصول کریں۔",
     "createInvitation": "اپنا دعوت نامہ بنائیں",
     "haveInvitation": "میرے پاس پہلے سے دعوت نامہ ہے",
-    "privacyPolicy": "رازداری کی پالیسی",
-    "terms": "شرائط",
-    "legalNotice": "قانونی اطلاع",
     "modalTitle": "اپنے دعوت نامے تک رسائی حاصل کریں",
     "usernameLabel": "صارف کا نام",
     "usernamePlaceholder": "آپ کا صارف نام",
@@ -51,10 +41,7 @@
     "withBlessing": "{{godparent1}} اور {{godparent2}} کی دعاؤں کے ساتھ",
     "todayIsWedding": "آج شادی ہے",
     "missing": "باقی ہیں",
-    "daysAndHours": "{{days}} دن اور {{hours}} گھنٹے",
-    "minutes": "{{minutes}} منٹ",
-    "todayIsTheDay": "آج بڑا دن ہے!",
-    "audioError": "آڈیو لوڈ نہیں ہو سکی۔ لنک چیک کریں۔"
+    "todayIsTheDay": "آج بڑا دن ہے!"
   },
   "details": {
     "sectionLabel": "تاریخ اور مقام",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "ہم اس خاص لمحے کو آپ کے ساتھ بانٹنے کے منتظر ہیں۔ نیچے آپ کو مقام کا نقشہ ملے گا۔",
     "transport": "نقل و حمل",
     "addToCalendar": "کیلنڈر میں شامل کریں",
-    "mapLoading": "نقشہ لوڈ ہو رہا ہے...",
     "viewGoogleMaps": "Google Maps میں دیکھیں",
-    "viewAppleMaps": "Apple Maps میں دیکھیں",
-    "mapAriaLabel": "{{location}} کا نقشہ"
+    "viewAppleMaps": "Apple Maps میں دیکھیں"
   },
   "info": {
     "sectionLabel": "مہمانوں کے بارے میں",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "دیگر الرجی (وضاحت کریں)",
     "allergiesHint": "صرف کھانے کی الرجی اور عدم برداشت بتائیں۔ غیر متعلقہ طبی معلومات درج نہ کریں۔",
     "privacyConsent": "مجھے مطلع کیا گیا ہے اور میں {{link}} کو قبول کرتا ہوں",
-    "privacyLink": "رازداری کی پالیسی",
     "healthConsent": "میں تقریب کے مینو کو ڈھالنے کے لیے اپنے صحت کے ڈیٹا (الرجی اور عدم برداشت) کی پروسیسنگ کی منظوری دیتا ہوں",
-    "ageConsent": "میں اعلان کرتا ہوں کہ میری عمر 14 سال سے زیادہ ہے یا، اگر کم عمر ہوں، تو میرے والدین یا سرپرستوں کی رضامندی ہے",
     "submitButton": "حاضری کی تصدیق کریں",
     "submittingButton": "بھیجا جا رہا ہے...",
     "confirmedButton": "حاضری کی تصدیق ہو گئی",
     "alreadySubmitted": "آپ پہلے ہی اپنی حاضری کی تصدیق کر چکے ہیں",
     "withdrawButton": "اپنی تصدیق واپس لیں",
-    "withdrawConfirm": "کیا آپ واقعی اپنی تصدیق واپس لینا چاہتے ہیں؟",
     "birthDateLabel": "تاریخ پیدائش",
     "ageUnder14Warning": "آپ کی عمر 14 سال سے کم ہے۔ آپ کو اپنے والدین یا سرپرستوں کی رضامندی درکار ہے۔",
-    "parentalConsent": "میرے والدین یا سرپرست میری شرکت کی منظوری دیتے ہیں",
-    "downloadData": "میرا ڈیٹا ڈاؤن لوڈ کریں"
+    "parentalConsent": "میرے والدین یا سرپرست میری شرکت کی منظوری دیتے ہیں"
   },
   "public": {
     "loadingInvitation": "دعوت نامہ لوڈ ہو رہا ہے...",
@@ -148,7 +129,6 @@
     "emptyText": "اپنا ذاتی شادی کا دعوت نامہ بنائیں اور شیئر کریں۔",
     "emptyDescription": "اپنے دعوت نامے کا ڈیٹا منظم کریں، مہمانوں کے ساتھ منفرد لنک شیئر کریں، اور ان کی حاضری کی تصدیق وصول کریں۔",
     "createLink": "دعوت نامہ بنائیں",
-    "scrollAria": "اگلے حصے پر جائیں",
     "privacyPolicy": "رازداری کی پالیسی",
     "terms": "شرائط",
     "legalNotice": "قانونی اطلاع"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

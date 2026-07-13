@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Fe'aa...",
     "error": "Dogoggora",
     "close": "Cufi",
     "retry": "Irra deebi'ii yaali",
     "save": "Jijjiirama olkaa'i",
-    "saving": "Olkaa'aa...",
-    "cancel": "Dhiisi",
     "copy": "Garargalchi",
-    "copied": "Garargalfame",
-    "confirm": "Mirkaneessi",
-    "yes": "Eeyyee",
-    "no": "Lakki",
     "back": "Duubatti deebi'i",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Odeeffannoo affeerraa kee bulchi, geessitoota keetiif linkii addaa qooddi, deebii isaanii irraa argadhu.",
     "createInvitation": "Affeerraa kee tolchi",
     "haveInvitation": "Affeerraa duraan qaba",
-    "privacyPolicy": "Imaammata Dhuunfaa",
-    "terms": "Haal-duree",
-    "legalNotice": "Beeksisa Seeraa",
     "modalTitle": "Affeerraa kee seenadhu",
     "usernameLabel": "Maqaa fayyadamaa",
     "usernamePlaceholder": "Maqaa fayyadamaa kee",
@@ -51,10 +41,7 @@
     "withBlessing": "Eebba warra guddiftuu {{godparent1}} fi {{godparent2}} waliin",
     "todayIsWedding": "Har'a cidha",
     "missing": "Hanqina",
-    "daysAndHours": "{{days}} guyyaa(f) fi {{hours}} sa'aa(tii)",
-    "minutes": "{{minutes}} daqiiqaa",
-    "todayIsTheDay": "Har'a guyyaan guddaa!",
-    "audioError": "Sagalee fe'uu hin dandeenye. Linkii ilaali."
+    "todayIsTheDay": "Har'a guyyaan guddaa!"
   },
   "details": {
     "sectionLabel": "Guyyaa fi bakka",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Yeroo addaa kana waliin qooddachuuf si eegna. Gadiin kaartaa bakkaa argatta.",
     "transport": "Geejjiba",
     "addToCalendar": "Kaalandarii irratti dabali",
-    "mapLoading": "Kaartaa fe'aa...",
     "viewGoogleMaps": "Google Maps irratti ilaali",
-    "viewAppleMaps": "Apple Maps irratti ilaali",
-    "mapAriaLabel": "Kaartaa {{location}}"
+    "viewAppleMaps": "Apple Maps irratti ilaali"
   },
   "info": {
     "sectionLabel": "Waa'ee geessitoota",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Adanyaa biraa (ibsadhu)",
     "allergiesHint": "Adanyaa fi fudhachuu dhabuu nyaataa qofa ibsi. Odeeffannoo fayyaa hin gaafatamne hin galchitini.",
     "privacyConsent": "Hubadheera nan fudhadha {{link}}",
-    "privacyLink": "Imaammata Dhuunfaa",
     "healthConsent": "Odeeffannoo fayyaa koo (adanyaa fi hin fudhachuu) menuu ayyaanaa cimsuuf akka kennamu nan eeyyama",
-    "ageConsent": "Umriin koo waggaa 14 oli akka ta'e ykn waggaa 14 gadi yoo ta'e warri koo ykn guddiftuun koo akka naa eeyyaman nan labsa",
     "submitButton": "Deebii mirkaneessi",
     "submittingButton": "Ergaa...",
     "confirmedButton": "Deebiin mirkanaa'e",
     "alreadySubmitted": "Deebiin kee duraan mirkanaa'eera",
     "withdrawButton": "Mirkaneessitii koo fudhadhu",
-    "withdrawConfirm": "Mirkaneessitii kee fudhachuu barbaadda dhugaa?",
     "birthDateLabel": "Guyyaa dhalootaa",
     "ageUnder14Warning": "Umriin kee waggaa 14 gadi. Eeyyama warra kee ykn guddiftuu kee barbaachisa.",
-    "parentalConsent": "Warri koo ykn guddiftuun koo hirmaachuu koo ni eeyyamu",
-    "downloadData": "Odeeffannoo koo buusi"
+    "parentalConsent": "Warri koo ykn guddiftuun koo hirmaachuu koo ni eeyyamu"
   },
   "public": {
     "loadingInvitation": "Affeerraa fe'aa…",
@@ -148,7 +129,6 @@
     "emptyText": "Affeerraa cidhaa mataa kee tolchiitii qooddachuu.",
     "emptyDescription": "Odeeffannoo affeerraa kee bulchi, geessitoota keetiif linkii addaa qooddi, deebii isaanii irraa argadhu.",
     "createLink": "Affeerraa tolchi",
-    "scrollAria": "Gara kutaatti itti aanutti deemi",
     "privacyPolicy": "Imaammata Dhuunfaa",
     "terms": "Haal-duree",
     "legalNotice": "Beeksisa Seeraa"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

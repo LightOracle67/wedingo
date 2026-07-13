@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Memuat...",
     "error": "Error",
     "close": "Tutup",
     "retry": "Coba lagi",
     "save": "Simpan perubahan",
-    "saving": "Menyimpan...",
-    "cancel": "Batal",
     "copy": "Salin",
-    "copied": "Tersalin",
-    "confirm": "Konfirmasi",
-    "yes": "Ya",
-    "no": "Tidak",
     "back": "Kembali",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Kelola data undangan Anda, bagikan tautan unik dengan tamu, dan terima konfirmasi kehadiran mereka.",
     "createInvitation": "Buat undangan Anda",
     "haveInvitation": "Saya sudah punya undangan",
-    "privacyPolicy": "Kebijakan Privasi",
-    "terms": "Ketentuan",
-    "legalNotice": "Pemberitahuan Hukum",
     "modalTitle": "Akses undangan Anda",
     "usernameLabel": "Nama pengguna",
     "usernamePlaceholder": "Nama pengguna Anda",
@@ -51,10 +41,7 @@
     "withBlessing": "Dengan restu dari wali {{godparent1}} dan {{godparent2}}",
     "todayIsWedding": "Hari ini adalah pernikahan",
     "missing": "Tersisa",
-    "daysAndHours": "{{days}} hari dan {{hours}} jam",
-    "minutes": "{{minutes}} menit",
-    "todayIsTheDay": "Hari ini adalah hari istimewa!",
-    "audioError": "Tidak dapat memuat audio. Periksa tautannya."
+    "todayIsTheDay": "Hari ini adalah hari istimewa!"
   },
   "details": {
     "sectionLabel": "Tanggal dan tempat",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Kami menantikan Anda untuk berbagi momen istimewa ini. Di bawah ini Anda akan menemukan peta lokasi.",
     "transport": "Transportasi",
     "addToCalendar": "Tambahkan ke kalender",
-    "mapLoading": "Memuat peta...",
     "viewGoogleMaps": "Lihat di Google Maps",
-    "viewAppleMaps": "Lihat di Apple Maps",
-    "mapAriaLabel": "Peta {{location}}"
+    "viewAppleMaps": "Lihat di Apple Maps"
   },
   "info": {
     "sectionLabel": "Tentang tamu",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Alergi lainnya (sebutkan)",
     "allergiesHint": "Hanya sebutkan alergi dan intoleransi makanan. Jangan masukkan informasi medis yang tidak diminta.",
     "privacyConsent": "Saya telah diberitahu dan menerima {{link}}",
-    "privacyLink": "Kebijakan Privasi",
     "healthConsent": "Saya menyetujui pemrosesan data kesehatan saya (alergi dan intoleransi) untuk menyesuaikan menu perayaan",
-    "ageConsent": "Saya menyatakan berusia di atas 14 tahun atau, jika di bawah umur, memiliki persetujuan dari orang tua atau wali saya",
     "submitButton": "Konfirmasi kehadiran",
     "submittingButton": "Mengirim...",
     "confirmedButton": "Kehadiran terkonfirmasi",
     "alreadySubmitted": "Anda sudah mengkonfirmasi kehadiran Anda",
     "withdrawButton": "Tarik konfirmasi saya",
-    "withdrawConfirm": "Apakah Anda yakin ingin menarik konfirmasi Anda?",
     "birthDateLabel": "Tanggal lahir",
     "ageUnder14Warning": "Anda berusia di bawah 14 tahun. Anda memerlukan persetujuan dari orang tua atau wali Anda.",
-    "parentalConsent": "Orang tua atau wali saya menyetujui partisipasi saya",
-    "downloadData": "Unduh data saya"
+    "parentalConsent": "Orang tua atau wali saya menyetujui partisipasi saya"
   },
   "public": {
     "loadingInvitation": "Memuat undangan...",
@@ -148,7 +129,6 @@
     "emptyText": "Buat dan bagikan undangan pernikahan pribadi Anda.",
     "emptyDescription": "Kelola data undangan Anda, bagikan tautan unik dengan tamu, dan terima konfirmasi kehadiran mereka.",
     "createLink": "Buat undangan",
-    "scrollAria": "Pergi ke bagian berikutnya",
     "privacyPolicy": "Kebijakan Privasi",
     "terms": "Ketentuan",
     "legalNotice": "Pemberitahuan Hukum"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

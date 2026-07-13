@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "लोड हुँदै...",
     "error": "त्रुटि",
     "close": "बन्द गर्नुहोस्",
     "retry": "पुन: प्रयास",
     "save": "परिवर्तन सुरक्षित गर्नुहोस्",
-    "saving": "सुरक्षित हुँदै...",
-    "cancel": "रद्द गर्नुहोस्",
     "copy": "प्रतिलिपि",
-    "copied": "प्रतिलिपि भयो",
-    "confirm": "पुष्टि गर्नुहोस्",
-    "yes": "हो",
-    "no": "होइन",
     "back": "पछाडि",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "आफ्नो निमन्त्रणाको विवरण व्यवस्थापन गर्नुहोस्, पाहुनाहरूसँग अद्वितीय लिङ्क साझा गर्नुहोस् र उनीहरूको उपस्थिति पुष्टि प्राप्त गर्नुहोस्।",
     "createInvitation": "आफ्नो निमन्त्रणा बनाउनुहोस्",
     "haveInvitation": "मसँग पहिल्यै निमन्त्रणा छ",
-    "privacyPolicy": "गोपनीयता नीति",
-    "terms": "सर्तहरू",
-    "legalNotice": "कानूनी सूचना",
     "modalTitle": "आफ्नो निमन्त्रणामा पहुँच",
     "usernameLabel": "प्रयोगकर्ता नाम",
     "usernamePlaceholder": "तपाईंको प्रयोगकर्ता नाम",
@@ -51,10 +41,7 @@
     "withBlessing": "{{godparent1}} र {{godparent2}} को आशीर्वाद साथ",
     "todayIsWedding": "आज विवाह हो",
     "missing": "बाँकी",
-    "daysAndHours": "{{days}} दिन र {{hours}} घण्टा",
-    "minutes": "{{minutes}} मिनेट",
-    "todayIsTheDay": "आज ठूलो दिन हो!",
-    "audioError": "अडियो लोड गर्न सकिएन। लिङ्क जाँच गर्नुहोस्।"
+    "todayIsTheDay": "आज ठूलो दिन हो!"
   },
   "details": {
     "sectionLabel": "मिति र स्थान",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "हामी यो विशेष पल साझा गर्न तपाईंको प्रतीक्षामा छौं। तल स्थानको नक्सा छ।",
     "transport": "यातायात",
     "addToCalendar": "क्यालेन्डरमा थप्नुहोस्",
-    "mapLoading": "नक्सा लोड हुँदै...",
     "viewGoogleMaps": "Google Maps मा हेर्नुहोस्",
-    "viewAppleMaps": "Apple Maps मा हेर्नुहोस्",
-    "mapAriaLabel": "{{location}} को नक्सा"
+    "viewAppleMaps": "Apple Maps मा हेर्नुहोस्"
   },
   "info": {
     "sectionLabel": "पाहुनाहरूबारे",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "अन्य एलर्जी (उल्लेख गर्नुहोस्)",
     "allergiesHint": "केवल खाद्य एलर्जी र असहिष्णुता उल्लेख गर्नुहोस्। अनावश्यक चिकित्सीय जानकारी नदिनुहोस्।",
     "privacyConsent": "मलाई जानकारी गराइएको छ र म {{link}} स्वीकार गर्दछु",
-    "privacyLink": "गोपनीयता नीति",
     "healthConsent": "म उत्सवको मेनु अनुकूलन गर्न मेरो स्वास्थ्य डेटा (एलर्जी र असहिष्णुता) प्रशोधन गर्न सहमत छु",
-    "ageConsent": "म १४ वर्षभन्दा माथिको भएको वा कम उमेरको भए मेरो अभिभावकको सहमति भएको घोषणा गर्दछु",
     "submitButton": "उपस्थिति पुष्टि गर्नुहोस्",
     "submittingButton": "पठाउँदै...",
     "confirmedButton": "उपस्थिति पुष्टि भयो",
     "alreadySubmitted": "तपाईंले पहिल्यै उपस्थिति पुष्टि गरिसक्नुभयो",
     "withdrawButton": "मेरो पुष्टि फिर्ता लिनुहोस्",
-    "withdrawConfirm": "के तपाईं पुष्टि फिर्ता लिन निश्चित हुनुहुन्छ?",
     "birthDateLabel": "जन्म मिति",
     "ageUnder14Warning": "तपाईं १४ वर्षभन्दा कम हुनुहुन्छ। अभिभावकको सहमति चाहिन्छ।",
-    "parentalConsent": "मेरा अभिभावक मेरो सहभागितामा सहमत छन्",
-    "downloadData": "मेरो डेटा डाउनलोड गर्नुहोस्"
+    "parentalConsent": "मेरा अभिभावक मेरो सहभागितामा सहमत छन्"
   },
   "public": {
     "loadingInvitation": "निमन्त्रणा लोड हुँदै…",
@@ -148,7 +129,6 @@
     "emptyText": "आफ्नो व्यक्तिगत विवाह निमन्त्रणा बनाउनुहोस् र साझा गर्नुहोस्।",
     "emptyDescription": "आफ्नो निमन्त्रणाको विवरण व्यवस्थापन गर्नुहोस्, पाहुनाहरूसँग अद्वितीय लिङ्क साझा गर्नुहोस् र उनीहरूको उपस्थिति पुष्टि प्राप्त गर्नुहोस्।",
     "createLink": "निमन्त्रणा बनाउनुहोस्",
-    "scrollAria": "अर्को खण्डमा जानुहोस्",
     "privacyPolicy": "गोपनीयता नीति",
     "terms": "सर्तहरू",
     "legalNotice": "कानूनी सूचना"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

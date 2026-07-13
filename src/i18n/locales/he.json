@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "וודינגו",
     "loading": "טוען...",
     "error": "שגיאה",
     "close": "סגור",
     "retry": "נסה שוב",
     "save": "שמור שינויים",
-    "saving": "שומר...",
-    "cancel": "ביטול",
     "copy": "העתק",
-    "copied": "הועתק",
-    "confirm": "אשר",
-    "yes": "כן",
-    "no": "לא",
     "back": "חזור",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "נהל את נתוני ההזמנה שלך, שתף קישור ייחודי עם האורחים שלך וקבל את אישורי ההגעה שלהם.",
     "createInvitation": "צור הזמנה",
     "haveInvitation": "כבר יש לי הזמנה",
-    "privacyPolicy": "מדיניות פרטיות",
-    "terms": "תנאים",
-    "legalNotice": "הצהרה משפטית",
     "modalTitle": "גישה להזמנה שלך",
     "usernameLabel": "שם משתמש",
     "usernamePlaceholder": "שם המשתמש שלך",
@@ -51,10 +41,7 @@
     "withBlessing": "בברכת הסנדקים {{godparent1}} ו־{{godparent2}}",
     "todayIsWedding": "היום החתונה",
     "missing": "חסרים",
-    "daysAndHours": "{{days}} ימים ו־{{hours}} שעות",
-    "minutes": "{{minutes}} דקות",
-    "todayIsTheDay": "היום הוא היום הגדול!",
-    "audioError": "לא ניתן לטעון את השמע. בדוק את הקישור."
+    "todayIsTheDay": "היום הוא היום הגדול!"
   },
   "details": {
     "sectionLabel": "תאריך ומיקום",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "נשמח לראותך ולחלוק איתך את הרגע המיוחד הזה. מפת המיקום למטה.",
     "transport": "הסעות",
     "addToCalendar": "הוסף ליומן",
-    "mapLoading": "טוען מפה...",
     "viewGoogleMaps": "צפה ב־Google Maps",
-    "viewAppleMaps": "צפה ב־Apple Maps",
-    "mapAriaLabel": "מפה של {{location}}"
+    "viewAppleMaps": "צפה ב־Apple Maps"
   },
   "info": {
     "sectionLabel": "לאורחים",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "אלרגיה אחרת (פרט)",
     "allergiesHint": "ציין רק אלרגיות ורגישויות למזון. אל תזין מידע רפואי לא נדרש.",
     "privacyConsent": "קיבלתי מידע ואני מסכים ל{{link}}",
-    "privacyLink": "מדיניות פרטיות",
     "healthConsent": "אני מסכים לעיבוד נתוני הבריאות שלי (אלרגיות ורגישויות) להתאמת תפריט האירוע",
-    "ageConsent": "אני מצהיר שאני מעל גיל 14, או שאם אני קטין, יש לי הסכמת הוריי או אפוטרופסיי",
     "submitButton": "אשר הגעה",
     "submittingButton": "שולח...",
     "confirmedButton": "ההגעה אושרה",
     "alreadySubmitted": "כבר אישרת את הגעתך",
     "withdrawButton": "בטל את האישור שלי",
-    "withdrawConfirm": "האם אתה בטוח שברצונך לבטל את האישור?",
     "birthDateLabel": "תאריך לידה",
     "ageUnder14Warning": "אתה מתחת לגיל 14. נדרשת הסכמת הורים או אפוטרופסים.",
-    "parentalConsent": "הוריי או האפוטרופסים שלי מסכימים להשתתפותי",
-    "downloadData": "הורד את הנתונים שלי"
+    "parentalConsent": "הוריי או האפוטרופסים שלי מסכימים להשתתפותי"
   },
   "public": {
     "loadingInvitation": "טוען הזמנה...",
@@ -148,7 +129,6 @@
     "emptyText": "צור ושתף את הזמנת החתונה המותאמת אישית שלך.",
     "emptyDescription": "נהל את נתוני ההזמנה שלך, שתף קישור ייחודי עם האורחים שלך וקבל את אישורי ההגעה שלהם.",
     "createLink": "צור הזמנה",
-    "scrollAria": "עבור לפרק הבא",
     "privacyPolicy": "מדיניות פרטיות",
     "terms": "תנאים",
     "legalNotice": "הצהרה משפטית"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

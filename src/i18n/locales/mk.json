@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Се вчитува...",
     "error": "Грешка",
     "close": "Затвори",
     "retry": "Обиди се повторно",
     "save": "Зачувај промени",
-    "saving": "Зачувување...",
-    "cancel": "Откажи",
     "copy": "Копирај",
-    "copied": "Копирано",
-    "confirm": "Потврди",
-    "yes": "Да",
-    "no": "Не",
     "back": "Назад",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Управувај со податоците на поканата, сподели уникатен линк со гостите и добивај ги нивните потврди за присуство.",
     "createInvitation": "Креирај твоја покана",
     "haveInvitation": "Веќе имам покана",
-    "privacyPolicy": "Политика за приватност",
-    "terms": "Услови",
-    "legalNotice": "Правна напомена",
     "modalTitle": "Пристап до твојата покана",
     "usernameLabel": "Корисничко име",
     "usernamePlaceholder": "Твоето корисничко име",
@@ -51,10 +41,7 @@
     "withBlessing": "Со благослов на кумовите {{godparent1}} и {{godparent2}}",
     "todayIsWedding": "Денес е свадбата",
     "missing": "Недостасуваат",
-    "daysAndHours": "{{days}} ден(а) и {{hours}} час(а)",
-    "minutes": "{{minutes}} минут(и)",
-    "todayIsTheDay": "Денес е големиот ден!",
-    "audioError": "Не можеше да се вчита аудиото. Провери го линкот."
+    "todayIsTheDay": "Денес е големиот ден!"
   },
   "details": {
     "sectionLabel": "Датум и место",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Те очекуваме за да го споделиме овој посебен момент. Подолу ќе ја најдеш мапата со локацијата.",
     "transport": "Транспорт",
     "addToCalendar": "Додај во календар",
-    "mapLoading": "Се вчитува мапата...",
     "viewGoogleMaps": "Види на Google Maps",
-    "viewAppleMaps": "Види на Apple Maps",
-    "mapAriaLabel": "Мапа на {{location}}"
+    "viewAppleMaps": "Види на Apple Maps"
   },
   "info": {
     "sectionLabel": "За гостите",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Друга алергија (наведи)",
     "allergiesHint": "Наведи само алергии на храна и интолеранции. Не внесувај непобарани медицински информации.",
     "privacyConsent": "Информиран/а сум и прифаќам {{link}}",
-    "privacyLink": "Политиката за приватност",
     "healthConsent": "Се согласувам со обработка на моите здравствени податоци (алергии и интолеранции) за прилагодување на менито на прославата",
-    "ageConsent": "Изјавувам дека имам над 14 години или, ако сум помал/а, дека имам согласност од моите родители или старатели",
     "submitButton": "Потврди присуство",
     "submittingButton": "Испраќање...",
     "confirmedButton": "Присуството е потврдено",
     "alreadySubmitted": "Веќе си го потврдил/а присуството",
     "withdrawButton": "Повлечи ја мојата потврда",
-    "withdrawConfirm": "Дали си сигурен/а дека сакаш да ја повлечеш потврдата?",
     "birthDateLabel": "Датум на раѓање",
     "ageUnder14Warning": "Имаш помалку од 14 години. Потребна е согласност од родителите или старателите.",
-    "parentalConsent": "Моите родители или старатели се согласуваат со моето учество",
-    "downloadData": "Превземи ги моите податоци"
+    "parentalConsent": "Моите родители или старатели се согласуваат со моето учество"
   },
   "public": {
     "loadingInvitation": "Се вчитува поканата…",
@@ -148,7 +129,6 @@
     "emptyText": "Креирај и сподели ја твојата персонализирана покана за свадба.",
     "emptyDescription": "Управувај со податоците на поканата, сподели уникатен линк со гостите и добивај ги нивните потврди за присуство.",
     "createLink": "Креирај покана",
-    "scrollAria": "Оди до следниот дел",
     "privacyPolicy": "Политика за приватност",
     "terms": "Услови",
     "legalNotice": "Правна напомена"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

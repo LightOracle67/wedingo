@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Lädt...",
     "error": "Fehler",
     "close": "Schließen",
     "retry": "Erneut versuchen",
     "save": "Änderungen speichern",
-    "saving": "Speichern...",
-    "cancel": "Abbrechen",
     "copy": "Kopieren",
-    "copied": "Kopiert",
-    "confirm": "Bestätigen",
-    "yes": "Ja",
-    "no": "Nein",
     "back": "Zurück",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Verwalte die Daten deiner Einladung, teile einen exklusiven Link mit deinen Gästen und erhalte ihre Rückmeldungen.",
     "createInvitation": "Einladung erstellen",
     "haveInvitation": "Ich habe bereits eine Einladung",
-    "privacyPolicy": "Datenschutzerklärung",
-    "terms": "AGB",
-    "legalNotice": "Impressum",
     "modalTitle": "Auf deine Einladung zugreifen",
     "usernameLabel": "Benutzername",
     "usernamePlaceholder": "Dein Benutzername",
@@ -51,10 +41,7 @@
     "withBlessing": "Mit dem Segen ihrer Paten {{godparent1}} und {{godparent2}}",
     "todayIsWedding": "Heute ist die Hochzeit",
     "missing": "Noch",
-    "daysAndHours": "{{days}} Tag(e) und {{hours}} Stunde(n)",
-    "minutes": "{{minutes}} Minute(n)",
-    "todayIsTheDay": "Heute ist der große Tag!",
-    "audioError": "Die Audiodatei konnte nicht geladen werden. Bitte überprüfe den Link."
+    "todayIsTheDay": "Heute ist der große Tag!"
   },
   "details": {
     "sectionLabel": "Datum und Ort",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Wir freuen uns, diesen besonderen Moment mit dir zu teilen. Unten findest du die Wegbeschreibung.",
     "transport": "Anreise",
     "addToCalendar": "Zum Kalender hinzufügen",
-    "mapLoading": "Karte wird geladen...",
     "viewGoogleMaps": "In Google Maps anzeigen",
-    "viewAppleMaps": "In Apple Maps anzeigen",
-    "mapAriaLabel": "Karte von {{location}}"
+    "viewAppleMaps": "In Apple Maps anzeigen"
   },
   "info": {
     "sectionLabel": "Über die Gäste",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Weitere Allergie (bitte angeben)",
     "allergiesHint": "Bitte gib nur Lebensmittelallergien und -unverträglichkeiten an. Keine medizinischen Informationen, die nicht erfragt wurden.",
     "privacyConsent": "Ich wurde informiert und akzeptiere die {{link}}",
-    "privacyLink": "Datenschutzerklärung",
     "healthConsent": "Ich willige in die Verarbeitung meiner Gesundheitsdaten (Allergien und Unverträglichkeiten) zur Anpassung des Menüs ein",
-    "ageConsent": "Ich bestätige, dass ich mindestens 14 Jahre alt bin oder, falls ich minderjährig bin, die Einwilligung meiner Eltern oder Erziehungsberechtigten habe",
     "submitButton": "Teilnahme bestätigen",
     "submittingButton": "Wird gesendet...",
     "confirmedButton": "Teilnahme bestätigt",
     "alreadySubmitted": "Du hast deine Teilnahme bereits bestätigt",
     "withdrawButton": "Meine Bestätigung zurückziehen",
-    "withdrawConfirm": "Bist du sicher, dass du deine Bestätigung zurückziehen möchtest?",
     "birthDateLabel": "Geburtsdatum",
     "ageUnder14Warning": "Du bist unter 14 Jahre alt. Du brauchst die Zustimmung deiner Eltern oder Erziehungsberechtigten.",
-    "parentalConsent": "Meine Eltern oder Erziehungsberechtigten stimmen meiner Teilnahme zu",
-    "downloadData": "Meine Daten herunterladen"
+    "parentalConsent": "Meine Eltern oder Erziehungsberechtigten stimmen meiner Teilnahme zu"
   },
   "public": {
     "loadingInvitation": "Einladung wird geladen…",
@@ -150,8 +131,7 @@
     "createLink": "Einladung erstellen",
     "privacyPolicy": "Datenschutzerklärung",
     "terms": "AGB",
-    "legalNotice": "Impressum",
-    "scrollAria": "Zum nächsten Abschnitt"
+    "legalNotice": "Impressum"
   },
   "setup": {
     "loadingTitle": "Einladung wird geladen",
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

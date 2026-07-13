@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Načítava sa...",
     "error": "Chyba",
     "close": "Zavrieť",
     "retry": "Skúsiť znova",
     "save": "Uložiť zmeny",
-    "saving": "Ukladá sa...",
-    "cancel": "Zrušiť",
     "copy": "Kopírovať",
-    "copied": "Skopírované",
-    "confirm": "Potvrdiť",
-    "yes": "Áno",
-    "no": "Nie",
     "back": "Späť",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Spravujte údaje svojho oznámenia, zdieľajte jedinečný odkaz s hosťami a prijímajte ich potvrdenia účasti.",
     "createInvitation": "Vytvoriť oznámenie",
     "haveInvitation": "Už mám oznámenie",
-    "privacyPolicy": "Zásady ochrany osobných údajov",
-    "terms": "Podmienky",
-    "legalNotice": "Právne informácie",
     "modalTitle": "Prístup k oznámeniu",
     "usernameLabel": "Používateľské meno",
     "usernamePlaceholder": "Vaše používateľské meno",
@@ -51,10 +41,7 @@
     "withBlessing": "S požehnaním krstných rodičov {{godparent1}} a {{godparent2}}",
     "todayIsWedding": "Dnes je svadba",
     "missing": "Zostáva",
-    "daysAndHours": "{{days}} deň/dní a {{hours}} hodina/hodín",
-    "minutes": "{{minutes}} minúta/minút",
-    "todayIsTheDay": "Dnes je ten veľký deň!",
-    "audioError": "Zvuk sa nepodarilo načítať. Skontrolujte odkaz."
+    "todayIsTheDay": "Dnes je ten veľký deň!"
   },
   "details": {
     "sectionLabel": "Dátum a miesto",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Tešíme sa, že s vami môžeme zdieľať túto výnimočnú chvíľu. Nižšie nájdete mapu.",
     "transport": "Doprava",
     "addToCalendar": "Pridať do kalendára",
-    "mapLoading": "Načítavanie mapy...",
     "viewGoogleMaps": "Zobraziť v Google Maps",
-    "viewAppleMaps": "Zobraziť v Apple Maps",
-    "mapAriaLabel": "Mapa {{location}}"
+    "viewAppleMaps": "Zobraziť v Apple Maps"
   },
   "info": {
     "sectionLabel": "O hosťoch",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Iná alergia (špecifikujte)",
     "allergiesHint": "Uveďte len potravinové alergie a intolerancie. Nezadávajte nevyžiadané lekárske informácie.",
     "privacyConsent": "Bol som informovaný a súhlasím s {{link}}",
-    "privacyLink": "Zásadami ochrany osobných údajov",
     "healthConsent": "Súhlasím so spracovaním mojich zdravotných údajov (alergií a intolerancií) na prispôsobenie menu oslavy",
-    "ageConsent": "Vyhlasujem, že mám viac ako 14 rokov alebo, ak som neplnoletý, mám súhlas svojich rodičov alebo zákonných zástupcov",
     "submitButton": "Potvrdiť účasť",
     "submittingButton": "Odosiela sa...",
     "confirmedButton": "Účasť potvrdená",
     "alreadySubmitted": "Svoju účasť ste už potvrdili",
     "withdrawButton": "Stiahnuť potvrdenie",
-    "withdrawConfirm": "Ste si istí, že chcete stiahnuť svoje potvrdenie?",
     "birthDateLabel": "Dátum narodenia",
     "ageUnder14Warning": "Máte menej ako 14 rokov. Potrebujete súhlas svojich rodičov alebo zákonných zástupcov.",
-    "parentalConsent": "Moji rodičia alebo zákonní zástupcovia súhlasia s mojou účasťou",
-    "downloadData": "Stiahnuť moje údaje"
+    "parentalConsent": "Moji rodičia alebo zákonní zástupcovia súhlasia s mojou účasťou"
   },
   "public": {
     "loadingInvitation": "Načítavanie oznámenia…",
@@ -148,7 +129,6 @@
     "emptyText": "Vytvorte a zdieľajte svoje personalizované svadobné oznámenie.",
     "emptyDescription": "Spravujte údaje svojho oznámenia, zdieľajte jedinečný odkaz s hosťami a prijímajte ich potvrdenia účasti.",
     "createLink": "Vytvoriť oznámenie",
-    "scrollAria": "Prejsť na ďalšiu sekciu",
     "privacyPolicy": "Zásady ochrany osobných údajov",
     "terms": "Podmienky",
     "legalNotice": "Právne informácie"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

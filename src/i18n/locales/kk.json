@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Жүктелуде...",
     "error": "Қате",
     "close": "Жабу",
     "retry": "Қайталау",
     "save": "Өзгерістерді сақтау",
-    "saving": "Сақталуда...",
-    "cancel": "Бас тарту",
     "copy": "Көшіру",
-    "copied": "Көшірілді",
-    "confirm": "Растау",
-    "yes": "Иә",
-    "no": "Жоқ",
     "back": "Артқа",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Шақыру деректерін басқарыңыз, қонақтарыңызбен бірегей сілтемемен бөлісіңіз және олардың қатысу растауларын алыңыз.",
     "createInvitation": "Шақыруыңызды жасау",
     "haveInvitation": "Менде шақыру бар",
-    "privacyPolicy": "Құпиялылық саясаты",
-    "terms": "Шарттар",
-    "legalNotice": "Заңды ескерту",
     "modalTitle": "Шақыруыңызға кіру",
     "usernameLabel": "Пайдаланушы аты",
     "usernamePlaceholder": "Пайдаланушы атыңыз",
@@ -51,10 +41,7 @@
     "withBlessing": "Құдалары {{godparent1}} және {{godparent2}} батасымен",
     "todayIsWedding": "Бүгін үйлену тойы",
     "missing": "Қалды",
-    "daysAndHours": "{{days}} күн және {{hours}} сағат",
-    "minutes": "{{minutes}} минут",
-    "todayIsTheDay": "Бүгін үлкен күн!",
-    "audioError": "Аудионы жүктеу мүмкін болмады. Сілтемені тексеріңіз."
+    "todayIsTheDay": "Бүгін үлкен күн!"
   },
   "details": {
     "sectionLabel": "Күні мен орны",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Осы ерекше сәтті бірге бөлісу үшін сізді күтеміз. Төменде орналасу картасын табасыз.",
     "transport": "Көлік",
     "addToCalendar": "Күнтізбеге қосу",
-    "mapLoading": "Карта жүктелуде...",
     "viewGoogleMaps": "Google Maps-те көру",
-    "viewAppleMaps": "Apple Maps-те көру",
-    "mapAriaLabel": "{{location}} картасы"
+    "viewAppleMaps": "Apple Maps-те көру"
   },
   "info": {
     "sectionLabel": "Қонақтар туралы",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Басқа аллергия (нақтылаңыз)",
     "allergiesHint": "Тек тағам аллергиялары мен төзбеушіліктерін көрсетіңіз. Сұралмаған медициналық ақпаратты енгізбеңіз.",
     "privacyConsent": "Маған хабарланды және мен {{link}}-мен келісемін",
-    "privacyLink": "Құпиялылық саясаты",
     "healthConsent": "Той мәзірін бейімдеу үшін денсаулық деректерімді (аллергиялар мен төзбеушіліктер) өңдеуге келісім беремін",
-    "ageConsent": "14 жастан асқанымды, немесе кәмелетке толмаған болсам, ата-анамның немесе қамқоршымның келісімі бар екенін мәлімдеймін",
     "submitButton": "Қатысуды растау",
     "submittingButton": "Жіберілуде...",
     "confirmedButton": "Қатысу расталды",
     "alreadySubmitted": "Сіз қатысуыңызды растап қойдыңыз",
     "withdrawButton": "Растауымды қайтарып алу",
-    "withdrawConfirm": "Растауыңызды қайтарып алуға сенімдісіз бе?",
     "birthDateLabel": "Туған күні",
     "ageUnder14Warning": "Сіз 14 жасқа толмағансыз. Ата-анаңыздың немесе қамқоршыңыздың келісімі қажет.",
-    "parentalConsent": "Менің ата-анам немесе қамқоршым менің қатысуыма келіседі",
-    "downloadData": "Деректерімді жүктеп алу"
+    "parentalConsent": "Менің ата-анам немесе қамқоршым менің қатысуыма келіседі"
   },
   "public": {
     "loadingInvitation": "Шақыру жүктелуде…",
@@ -148,7 +129,6 @@
     "emptyText": "Өзіңіздің жеке үйлену тойы шақыруыңызды жасаңыз және бөлісіңіз.",
     "emptyDescription": "Шақыру деректерін басқарыңыз, қонақтарыңызбен бірегей сілтемемен бөлісіңіз және олардың қатысу растауларын алыңыз.",
     "createLink": "Шақыру жасау",
-    "scrollAria": "Келесі бөлімге өту",
     "privacyPolicy": "Құпиялылық саясаты",
     "terms": "Шарттар",
     "legalNotice": "Заңды ескерту"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Բեռնվում է...",
     "error": "Սխալ",
     "close": "Փակել",
     "retry": "Կրկին փորձել",
     "save": "Պահպանել փոփոխությունները",
-    "saving": "Պահպանվում է...",
-    "cancel": "Չեղարկել",
     "copy": "Պատճենել",
-    "copied": "Պատճենված է",
-    "confirm": "Հաստատել",
-    "yes": "Այո",
-    "no": "Ոչ",
     "back": "Վերադառնալ",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Կառավարեք ձեր հրավերի տվյալները, կիսվեք եզակի հղումով ձեր հյուրերի հետ և ստացեք նրանց մասնակցության հաստատումները։",
     "createInvitation": "Ստեղծել ձեր հրավերը",
     "haveInvitation": "Ես արդեն ունեմ հրավեր",
-    "privacyPolicy": "Գաղտնիության քաղաքականություն",
-    "terms": "Պայմաններ",
-    "legalNotice": "Իրավական ծանուցում",
     "modalTitle": "Մուտք ձեր հրավերին",
     "usernameLabel": "Օգտանուն",
     "usernamePlaceholder": "Ձեր օգտանունը",
@@ -51,10 +41,7 @@
     "withBlessing": "{{godparent1}} և {{godparent2}} կնքահայրերի օրհնությամբ",
     "todayIsWedding": "Այսօր հարսանիքն է",
     "missing": "Մնացել է",
-    "daysAndHours": "{{days}} օր և {{hours}} ժամ",
-    "minutes": "{{minutes}} րոպե",
-    "todayIsTheDay": "Այսօր մեծ օրն է!",
-    "audioError": "Աուդիոն չբեռնվեց։ Ստուգեք հղումը։"
+    "todayIsTheDay": "Այսօր մեծ օրն է!"
   },
   "details": {
     "sectionLabel": "Ամսաթիվ և վայր",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Սպասում ենք ձեզ՝ կիսելու այս առանձնահատուկ պահը։ Ներքևում կգտնեք տեղանքի քարտեզը։",
     "transport": "Տրանսպորտ",
     "addToCalendar": "Ավելացնել օրացույցին",
-    "mapLoading": "Քարտեզը բեռնվում է...",
     "viewGoogleMaps": "Դիտել Google Maps-ում",
-    "viewAppleMaps": "Դիտել Apple Maps-ում",
-    "mapAriaLabel": "{{location}}-ի քարտեզ"
+    "viewAppleMaps": "Դիտել Apple Maps-ում"
   },
   "info": {
     "sectionLabel": "Հյուրերի մասին",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Այլ ալերգիա (նշեք)",
     "allergiesHint": "Նշեք միայն սննդային ալերգիաները և անհանդուրժողականությունները։ Մի մուտքագրեք չպահանջված բժշկական տեղեկատվություն։",
     "privacyConsent": "Ինձ տեղեկացրել են և ես ընդունում եմ {{link}}",
-    "privacyLink": "Գաղտնիության քաղաքականություն",
     "healthConsent": "Համաձայն եմ իմ առողջական տվյալների (ալերգիաներ և անհանդուրժողականություններ) մշակմանը տոնակատարության ճաշացանկը հարմարեցնելու համար",
-    "ageConsent": "Հայտարարում եմ, որ 14 տարեկանից բարձր եմ, կամ եթե անչափահաս եմ, ունեմ ծնողներիս կամ խնամակալներիս համաձայնությունը",
     "submitButton": "Հաստատել մասնակցությունը",
     "submittingButton": "Ուղարկվում է...",
     "confirmedButton": "Մասնակցությունը հաստատված է",
     "alreadySubmitted": "Դուք արդեն հաստատել եք մասնակցությունը",
     "withdrawButton": "Հետ վերցնել իմ հաստատումը",
-    "withdrawConfirm": "Վստա՞հ եք, որ ցանկանում եք հետ վերցնել հաստատումը:",
     "birthDateLabel": "Ծննդյան ամսաթիվ",
     "ageUnder14Warning": "Դուք 14 տարեկանից ցածր եք։ Անհրաժեշտ է ծնողների կամ խնամակալների համաձայնությունը։",
-    "parentalConsent": "Իմ ծնողները կամ խնամակալները համաձայն են իմ մասնակցությանը",
-    "downloadData": "Ներբեռնել իմ տվյալները"
+    "parentalConsent": "Իմ ծնողները կամ խնամակալները համաձայն են իմ մասնակցությանը"
   },
   "public": {
     "loadingInvitation": "Հրավերը բեռնվում է...",
@@ -148,7 +129,6 @@
     "emptyText": "Ստեղծեք և կիսվեք ձեր անհատական հարսանեկան հրավերով։",
     "emptyDescription": "Կառավարեք ձեր հրավերի տվյալները, կիսվեք եզակի հղումով ձեր հյուրերի հետ և ստացեք նրանց մասնակցության հաստատումները։",
     "createLink": "Ստեղծել հրավեր",
-    "scrollAria": "Անցնել հաջորդ բաժնին",
     "privacyPolicy": "Գաղտնիության քաղաքականություն",
     "terms": "Պայմաններ",
     "legalNotice": "Իրավական ծանուցում"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

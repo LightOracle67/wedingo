@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Yüklənir...",
     "error": "Xəta",
     "close": "Bağla",
     "retry": "Yenidən cəhd et",
     "save": "Dəyişiklikləri yadda saxla",
-    "saving": "Saxlanılır...",
-    "cancel": "Ləğv et",
     "copy": "Kopyala",
-    "copied": "Kopyalandı",
-    "confirm": "Təsdiqlə",
-    "yes": "Bəli",
-    "no": "Xeyr",
     "back": "Geri",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Dəvətnamənizin məlumatlarını idarə edin, qonaqlarınızla unikal keçid paylaşın və onların iştirak təsdiqlərini alın.",
     "createInvitation": "Dəvətnamənizi yaradın",
     "haveInvitation": "Artıq dəvətnaməm var",
-    "privacyPolicy": "Məxfilik Siyasəti",
-    "terms": "Şərtlər",
-    "legalNotice": "Hüquqi Bildiriş",
     "modalTitle": "Dəvətnamənizə giriş",
     "usernameLabel": "İstifadəçi adı",
     "usernamePlaceholder": "İstifadəçi adınız",
@@ -51,10 +41,7 @@
     "withBlessing": "{{godparent1}} və {{godparent2}} xaç valideynlərinin xeyir-duası ilə",
     "todayIsWedding": "Bu gün toydur",
     "missing": "Qalıb",
-    "daysAndHours": "{{days}} gün və {{hours}} saat",
-    "minutes": "{{minutes}} dəqiqə",
-    "todayIsTheDay": "Bu gün böyük gündür!",
-    "audioError": "Audio yüklənə bilmədi. Keçidi yoxlayın."
+    "todayIsTheDay": "Bu gün böyük gündür!"
   },
   "details": {
     "sectionLabel": "Tarix və məkan",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Bu xüsusi anı bölüşmək üçün sizi gözləyirik. Aşağıda yer xəritəsini tapacaqsınız.",
     "transport": "Nəqliyyat",
     "addToCalendar": "Təqvimə əlavə et",
-    "mapLoading": "Xəritə yüklənir...",
     "viewGoogleMaps": "Google Maps-də bax",
-    "viewAppleMaps": "Apple Maps-də bax",
-    "mapAriaLabel": "{{location}} xəritəsi"
+    "viewAppleMaps": "Apple Maps-də bax"
   },
   "info": {
     "sectionLabel": "Qonaqlar haqqında",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Digər allergiya (göstərin)",
     "allergiesHint": "Yalnız qida allergiyalarını və dözümsüzlükləri göstərin. Tələb olunmayan tibbi məlumat daxil etməyin.",
     "privacyConsent": "Məlumatlandırılmışam və {{link}} qəbul edirəm",
-    "privacyLink": "Məxfilik Siyasəti",
     "healthConsent": "Tədbirin menyusunu uyğunlaşdırmaq üçün sağlamlıq məlumatlarımın (allergiyalar və dözümsüzlüklər) işlənməsinə razıyam",
-    "ageConsent": "14 yaşdan yuxarı olduğumu və ya azyaşlı olduğum halda valideynlərimin və ya qəyyumlarımın razılığının olduğunu bəyan edirəm",
     "submitButton": "İştirakı təsdiqlə",
     "submittingButton": "Göndərilir...",
     "confirmedButton": "İştirak təsdiqləndi",
     "alreadySubmitted": "Artıq iştirakınızı təsdiqləmisiniz",
     "withdrawButton": "Təsdiqimi geri götür",
-    "withdrawConfirm": "Təsdiqinizi geri götürmək istədiyinizə əminsiniz?",
     "birthDateLabel": "Doğum tarixi",
     "ageUnder14Warning": "14 yaşdan kiçiksiniz. Valideynlərinizin və ya qəyyumlarınızın razılığı lazımdır.",
-    "parentalConsent": "Valideynlərim və ya qəyyumlarım iştirakıma razıdır",
-    "downloadData": "Məlumatlarımı endir"
+    "parentalConsent": "Valideynlərim və ya qəyyumlarım iştirakıma razıdır"
   },
   "public": {
     "loadingInvitation": "Dəvətnamə yüklənir...",
@@ -148,7 +129,6 @@
     "emptyText": "Şəxsi toy dəvətnamənizi yaradın və paylaşın.",
     "emptyDescription": "Dəvətnamənizin məlumatlarını idarə edin, qonaqlarınızla unikal keçid paylaşın və onların iştirak təsdiqlərini alın.",
     "createLink": "Dəvətnamə yaradın",
-    "scrollAria": "Növbəti bölməyə keç",
     "privacyPolicy": "Məxfilik Siyasəti",
     "terms": "Şərtlər",
     "legalNotice": "Hüquqi Bildiriş"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

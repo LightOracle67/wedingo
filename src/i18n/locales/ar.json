@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "ويدنغو",
     "loading": "جارٍ التحميل...",
     "error": "خطأ",
     "close": "إغلاق",
     "retry": "إعادة المحاولة",
     "save": "حفظ التغييرات",
-    "saving": "جارٍ الحفظ...",
-    "cancel": "إلغاء",
     "copy": "نسخ",
-    "copied": "تم النسخ",
-    "confirm": "تأكيد",
-    "yes": "نعم",
-    "no": "لا",
     "back": "عودة",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "أدر بيانات دعوتك، شارك رابطًا فريدًا مع ضيوفك واستلم تأكيدات حضورهم.",
     "createInvitation": "أنشئ دعوتك",
     "haveInvitation": "لدي دعوة بالفعل",
-    "privacyPolicy": "سياسة الخصوصية",
-    "terms": "الشروط",
-    "legalNotice": "إشعار قانوني",
     "modalTitle": "الدخول إلى دعوتك",
     "usernameLabel": "اسم المستخدم",
     "usernamePlaceholder": "اسم المستخدم الخاص بك",
@@ -51,10 +41,7 @@
     "withBlessing": "بمباركة العرابين {{godparent1}} و {{godparent2}}",
     "todayIsWedding": "اليوم هو يوم الزفاف",
     "missing": "متبقٍ",
-    "daysAndHours": "{{days}} يومًا و {{hours}} ساعة",
-    "minutes": "{{minutes}} دقيقة",
-    "todayIsTheDay": "اليوم هو اليوم الكبير!",
-    "audioError": "تعذر تحميل الصوت. تحقق من الرابط."
+    "todayIsTheDay": "اليوم هو اليوم الكبير!"
   },
   "details": {
     "sectionLabel": "التاريخ والمكان",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "ننتظرك لمشاركة هذه اللحظة المميزة. ستجد خريطة الموقع أدناه.",
     "transport": "وسائل النقل",
     "addToCalendar": "أضف إلى التقويم",
-    "mapLoading": "جارٍ تحميل الخريطة...",
     "viewGoogleMaps": "عرض في خرائط Google",
-    "viewAppleMaps": "عرض في خرائط Apple",
-    "mapAriaLabel": "خريطة {{location}}"
+    "viewAppleMaps": "عرض في خرائط Apple"
   },
   "info": {
     "sectionLabel": "حول الضيوف",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "حساسية أخرى (حدد)",
     "allergiesHint": "أشر فقط إلى الحساسية الغذائية. لا تدخل معلومات طبية غير مطلوبة.",
     "privacyConsent": "تم إبلاغي وأوافق على {{link}}",
-    "privacyLink": "سياسة الخصوصية",
     "healthConsent": "أوافق على معالجة بياناتي الصحية (الحساسية) لتكييف قائمة الاحتفال",
-    "ageConsent": "أقر بأن عمري يزيد عن 14 عامًا، أو إذا كنت أصغر، فلدي موافقة والديّ أو الأوصياء",
     "submitButton": "تأكيد الحضور",
     "submittingButton": "جارٍ الإرسال...",
     "confirmedButton": "تم تأكيد الحضور",
     "alreadySubmitted": "لقد أكدت حضورك بالفعل",
     "withdrawButton": "سحب تأكيدي",
-    "withdrawConfirm": "هل أنت متأكد من سحب تأكيدك؟",
     "birthDateLabel": "تاريخ الميلاد",
     "ageUnder14Warning": "عمرك أقل من 14 عامًا. تحتاج إلى موافقة والديك أو الأوصياء.",
-    "parentalConsent": "والداي أو الأوصياء يوافقون على مشاركتي",
-    "downloadData": "تنزيل بياناتي"
+    "parentalConsent": "والداي أو الأوصياء يوافقون على مشاركتي"
   },
   "public": {
     "loadingInvitation": "جارٍ تحميل الدعوة...",
@@ -148,7 +129,6 @@
     "emptyText": "أنشئ وشارك دعوة زفافك المخصصة.",
     "emptyDescription": "أدر بيانات دعوتك، شارك رابطًا فريدًا مع ضيوفك واستلم تأكيدات حضورهم.",
     "createLink": "أنشئ دعوة",
-    "scrollAria": "الانتقال إلى القسم التالي",
     "privacyPolicy": "سياسة الخصوصية",
     "terms": "الشروط",
     "legalNotice": "إشعار قانوني"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

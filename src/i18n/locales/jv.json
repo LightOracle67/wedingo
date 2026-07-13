@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Muat...",
     "error": "Kasalahan",
     "close": "Tutup",
     "retry": "Njajal manèh",
     "save": "Simpen owahan",
-    "saving": "Nyimpen...",
-    "cancel": "Batal",
     "copy": "Salin",
-    "copied": "Kasalin",
-    "confirm": "Konfirmasi",
-    "yes": "Iya",
-    "no": "Ora",
     "back": "Bali",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Atur data undanganmu, bagèkaké tautan unik marang tamu-tamumu, lan tampa konfirmasi rawuhé.",
     "createInvitation": "Gawe undanganmu",
     "haveInvitation": "Aku wis nduwé undangan",
-    "privacyPolicy": "Kawicaksanan Privasi",
-    "terms": "Ketentuan",
-    "legalNotice": "Wara-wara Sah",
     "modalTitle": "Mlebu menyang undanganmu",
     "usernameLabel": "Jeneng panganggo",
     "usernamePlaceholder": "Jeneng panggongomu",
@@ -51,10 +41,7 @@
     "withBlessing": "Kanthi pangèstu saka {{godparent1}} lan {{godparent2}}",
     "todayIsWedding": "Dina iki mantènan",
     "missing": "Kurang",
-    "daysAndHours": "{{days}} dina lan {{hours}} jam",
-    "minutes": "{{minutes}} menit",
-    "todayIsTheDay": "Dina iki dina gedhéné!",
-    "audioError": "Ora bisa muter audio. Priksa tautané."
+    "todayIsTheDay": "Dina iki dina gedhéné!"
   },
   "details": {
     "sectionLabel": "Tanggal lan papan",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Awaké dhéwé ngentèni rawuhmu kanggo ngrayakaké wektu istiméwa iki. Ing ngisor iki ana péta lokasi.",
     "transport": "Transportasi",
     "addToCalendar": "Tambahaké menyang kalènder",
-    "mapLoading": "Muat péta...",
     "viewGoogleMaps": "Deleng ing Google Maps",
-    "viewAppleMaps": "Deleng ing Apple Maps",
-    "mapAriaLabel": "Péta {{location}}"
+    "viewAppleMaps": "Deleng ing Apple Maps"
   },
   "info": {
     "sectionLabel": "Babagan para tamu",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Alergi liyané (jlèntrèhaké)",
     "allergiesHint": "Sebutna mung alergi lan ora tahan panganan. Aja lebokaké informasi mèdhis sing ora dijaluk.",
     "privacyConsent": "Aku wis dikabari lan sarujuk marang {{link}}",
-    "privacyLink": "Kawicaksanan Privasi",
     "healthConsent": "Aku sarujuk data kaséhatanku (alergi lan ora tahan panganan) diolah kanggo nyocogaké menu acara",
-    "ageConsent": "Aku nyatakaké umurku luwih saka 14 taun, utawa yèn luwih enom, aku duwé idin saka wong tuwa utawa waliku",
     "submitButton": "Konfirmasi rawuh",
     "submittingButton": "Ngirim...",
     "confirmedButton": "Rawuh wis dikonfirmasi",
     "alreadySubmitted": "Kowé wis konfirmasi rawuh",
     "withdrawButton": "Tarik konfirmasiku",
-    "withdrawConfirm": "Apa kowé yakin arep narik konfirmasi?",
     "birthDateLabel": "Tanggal lair",
     "ageUnder14Warning": "Umurmu kurang saka 14 taun. Kowé butuh idin saka wong tuwa utawa walimu.",
-    "parentalConsent": "Wong tuwa utawa waliku sarujuk karo partisipasiku",
-    "downloadData": "Undhuh dataku"
+    "parentalConsent": "Wong tuwa utawa waliku sarujuk karo partisipasiku"
   },
   "public": {
     "loadingInvitation": "Muat undangan…",
@@ -148,7 +129,6 @@
     "emptyText": "Gawe lan bagèkaké undangan mantèn pribadimu.",
     "emptyDescription": "Atur data undanganmu, bagèkaké tautan unik marang tamu-tamumu, lan tampa konfirmasi rawuhé.",
     "createLink": "Gawe undangan",
-    "scrollAria": "Menyang sèksi sabanjuré",
     "privacyPolicy": "Kawicaksanan Privasi",
     "terms": "Ketentuan",
     "legalNotice": "Wara-wara Sah"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

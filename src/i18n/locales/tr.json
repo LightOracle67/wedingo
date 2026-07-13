@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Yükleniyor...",
     "error": "Hata",
     "close": "Kapat",
     "retry": "Tekrar dene",
     "save": "Değişiklikleri kaydet",
-    "saving": "Kaydediliyor...",
-    "cancel": "İptal",
     "copy": "Kopyala",
-    "copied": "Kopyalandı",
-    "confirm": "Onayla",
-    "yes": "Evet",
-    "no": "Hayır",
     "back": "Geri",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Davetiye bilgilerinizi yönetin, misafirlerinizle benzersiz bir bağlantı paylaşın ve katılım onaylarını alın.",
     "createInvitation": "Davetiyenizi oluşturun",
     "haveInvitation": "Zaten bir davetiyem var",
-    "privacyPolicy": "Gizlilik Politikası",
-    "terms": "Şartlar",
-    "legalNotice": "Yasal Uyarı",
     "modalTitle": "Davetiyenize erişin",
     "usernameLabel": "Kullanıcı adı",
     "usernamePlaceholder": "Kullanıcı adınız",
@@ -51,10 +41,7 @@
     "withBlessing": "{{godparent1}} ve {{godparent2}}nin hayır dualarıyla",
     "todayIsWedding": "Bugün düğün",
     "missing": "Kaldı",
-    "daysAndHours": "{{days}} gün ve {{hours}} saat",
-    "minutes": "{{minutes}} dakika",
-    "todayIsTheDay": "Bugün büyük gün!",
-    "audioError": "Ses yüklenemedi. Bağlantıyı kontrol edin."
+    "todayIsTheDay": "Bugün büyük gün!"
   },
   "details": {
     "sectionLabel": "Tarih ve yer",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Bu özel anı paylaşmanızı bekliyoruz. Aşağıda konum haritasını bulacaksınız.",
     "transport": "Ulaşım",
     "addToCalendar": "Takvime ekle",
-    "mapLoading": "Harita yükleniyor...",
     "viewGoogleMaps": "Google Haritalar'da görüntüle",
-    "viewAppleMaps": "Apple Haritalar'da görüntüle",
-    "mapAriaLabel": "{{location}} haritası"
+    "viewAppleMaps": "Apple Haritalar'da görüntüle"
   },
   "info": {
     "sectionLabel": "Misafirler hakkında",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Diğer alerji (belirtiniz)",
     "allergiesHint": "Sadece gıda alerjilerini ve intoleranslarını belirtin. Talep edilmeyen tıbbi bilgi girmeyin.",
     "privacyConsent": "Bilgilendirildim ve kabul ediyorum: {{link}}",
-    "privacyLink": "Gizlilik Politikası",
     "healthConsent": "Kutlama menüsünü uyarlamak için sağlık verilerimin (alerjiler ve intoleranslar) işlenmesine onay veriyorum",
-    "ageConsent": "14 yaşından büyük olduğumu veya daha küçüksem ebeveynlerimin veya vasilerimin onayına sahip olduğumu beyan ederim",
     "submitButton": "Katılımı onayla",
     "submittingButton": "Gönderiliyor...",
     "confirmedButton": "Katılım onaylandı",
     "alreadySubmitted": "Katılımınızı zaten onayladınız",
     "withdrawButton": "Onayımı geri çek",
-    "withdrawConfirm": "Onayınızı geri çekmek istediğinizden emin misiniz?",
     "birthDateLabel": "Doğum tarihi",
     "ageUnder14Warning": "14 yaşından küçüksünüz. Ebeveynlerinizin veya vasilerinizin onayına ihtiyacınız var.",
-    "parentalConsent": "Ebeveynlerim veya vasilerim katılımıma onay veriyor",
-    "downloadData": "Verilerimi indir"
+    "parentalConsent": "Ebeveynlerim veya vasilerim katılımıma onay veriyor"
   },
   "public": {
     "loadingInvitation": "Davetiye yükleniyor…",
@@ -148,7 +129,6 @@
     "emptyText": "Kişiselleştirilmiş düğün davetiyenizi oluşturun ve paylaşın.",
     "emptyDescription": "Davetiye bilgilerinizi yönetin, misafirlerinizle benzersiz bir bağlantı paylaşın ve katılım onaylarını alın.",
     "createLink": "Davetiye oluştur",
-    "scrollAria": "Sonraki bölüme git",
     "privacyPolicy": "Gizlilik Politikası",
     "terms": "Şartlar",
     "legalNotice": "Yasal Uyarı"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

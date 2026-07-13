@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Se încarcă...",
     "error": "Eroare",
     "close": "Închide",
     "retry": "Reîncearcă",
     "save": "Salvează modificările",
-    "saving": "Se salvează...",
-    "cancel": "Anulează",
     "copy": "Copiază",
-    "copied": "Copiat",
-    "confirm": "Confirmă",
-    "yes": "Da",
-    "no": "Nu",
     "back": "Înapoi",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Gestionează datele invitației tale, partajează un link unic cu invitații tăi și primește confirmările lor de participare.",
     "createInvitation": "Creează invitația ta",
     "haveInvitation": "Am deja o invitație",
-    "privacyPolicy": "Politica de confidențialitate",
-    "terms": "Termeni",
-    "legalNotice": "Aviz legal",
     "modalTitle": "Accesează invitația ta",
     "usernameLabel": "Nume de utilizator",
     "usernamePlaceholder": "Numele tău de utilizator",
@@ -51,10 +41,7 @@
     "withBlessing": "Cu binecuvântarea nașilor {{godparent1}} și {{godparent2}}",
     "todayIsWedding": "Astăzi este nunta",
     "missing": "Mai sunt",
-    "daysAndHours": "{{days}} zi(le) și {{hours}} oră(ore)",
-    "minutes": "{{minutes}} minut(e)",
-    "todayIsTheDay": "Astăzi este ziua cea mare!",
-    "audioError": "Sunetul nu a putut fi încărcat. Verifică linkul."
+    "todayIsTheDay": "Astăzi este ziua cea mare!"
   },
   "details": {
     "sectionLabel": "Dată și locație",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Te așteptăm să împărtășim acest moment special. Mai jos găsești harta locației.",
     "transport": "Transport",
     "addToCalendar": "Adaugă în calendar",
-    "mapLoading": "Se încarcă harta...",
     "viewGoogleMaps": "Vezi pe Google Maps",
-    "viewAppleMaps": "Vezi pe Apple Maps",
-    "mapAriaLabel": "Harta {{location}}"
+    "viewAppleMaps": "Vezi pe Apple Maps"
   },
   "info": {
     "sectionLabel": "Despre invitați",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Altă alergie (specifică)",
     "allergiesHint": "Indică doar alergiile și intoleranțele alimentare. Nu introduce informații medicale nesolicitate.",
     "privacyConsent": "Am fost informat și accept {{link}}",
-    "privacyLink": "Politica de confidențialitate",
     "healthConsent": "Consimt la prelucrarea datelor mele de sănătate (alergii și intoleranțe) pentru adaptarea meniului ceremoniei",
-    "ageConsent": "Declar că am peste 14 ani sau, dacă sunt minor, am consimțământul părinților sau tutorilor mei",
     "submitButton": "Confirmă participarea",
     "submittingButton": "Se trimite...",
     "confirmedButton": "Participare confirmată",
     "alreadySubmitted": "Ai confirmat deja participarea",
     "withdrawButton": "Retrage confirmarea mea",
-    "withdrawConfirm": "Ești sigur că vrei să retragi confirmarea?",
     "birthDateLabel": "Data nașterii",
     "ageUnder14Warning": "Ai sub 14 ani. Ai nevoie de consimțământul părinților sau tutorilor tăi.",
-    "parentalConsent": "Părinții sau tutorii mei consimt la participarea mea",
-    "downloadData": "Descarcă datele mele"
+    "parentalConsent": "Părinții sau tutorii mei consimt la participarea mea"
   },
   "public": {
     "loadingInvitation": "Se încarcă invitația...",
@@ -148,7 +129,6 @@
     "emptyText": "Creează și partajează invitația ta de nuntă personalizată.",
     "emptyDescription": "Gestionează datele invitației tale, partajează un link unic cu invitații tăi și primește confirmările lor de participare.",
     "createLink": "Creează invitația",
-    "scrollAria": "Mergi la secțiunea următoare",
     "privacyPolicy": "Politica de confidențialitate",
     "terms": "Termeni",
     "legalNotice": "Aviz legal"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

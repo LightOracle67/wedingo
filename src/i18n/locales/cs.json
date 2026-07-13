@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Načítání...",
     "error": "Chyba",
     "close": "Zavřít",
     "retry": "Zkusit znovu",
     "save": "Uložit změny",
-    "saving": "Ukládání...",
-    "cancel": "Zrušit",
     "copy": "Kopírovat",
-    "copied": "Zkopírováno",
-    "confirm": "Potvrdit",
-    "yes": "Ano",
-    "no": "Ne",
     "back": "Zpět",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Spravujte data svého oznámení, sdílejte jedinečný odkaz s hosty a přijímejte jejich potvrzení účasti.",
     "createInvitation": "Vytvořit oznámení",
     "haveInvitation": "Už mám pozvánku",
-    "privacyPolicy": "Zásady ochrany osobních údajů",
-    "terms": "Podmínky",
-    "legalNotice": "Právní informace",
     "modalTitle": "Přístup k oznámení",
     "usernameLabel": "Uživatelské jméno",
     "usernamePlaceholder": "Vaše uživatelské jméno",
@@ -51,10 +41,7 @@
     "withBlessing": "S požehnáním kmotrů {{godparent1}} a {{godparent2}}",
     "todayIsWedding": "Dnes je svatba",
     "missing": "Zbývá",
-    "daysAndHours": "{{days}} den/dní a {{hours}} hodina/hodin",
-    "minutes": "{{minutes}} minuta/minut",
-    "todayIsTheDay": "Dnes je ten velký den!",
-    "audioError": "Zvuk se nepodařilo načíst. Zkontrolujte odkaz."
+    "todayIsTheDay": "Dnes je ten velký den!"
   },
   "details": {
     "sectionLabel": "Datum a místo",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Těšíme se, že s vámi budeme sdílet tuto výjimečnou chvíli. Níže najdete mapu.",
     "transport": "Doprava",
     "addToCalendar": "Přidat do kalendáře",
-    "mapLoading": "Načítání mapy...",
     "viewGoogleMaps": "Zobrazit v Google Maps",
-    "viewAppleMaps": "Zobrazit v Apple Maps",
-    "mapAriaLabel": "Mapa {{location}}"
+    "viewAppleMaps": "Zobrazit v Apple Maps"
   },
   "info": {
     "sectionLabel": "O hostech",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Jiná alergie (upřesněte)",
     "allergiesHint": "Uveďte pouze potravinové alergie a intolerance. Nezadávejte nevyžádané lékařské informace.",
     "privacyConsent": "Byl/a jsem informován/a a přijímám {{link}}",
-    "privacyLink": "Zásady ochrany osobních údajů",
     "healthConsent": "Souhlasím se zpracováním mých zdravotních údajů (alergií a intolerancí) pro přizpůsobení menu oslavy",
-    "ageConsent": "Prohlašuji, že jsem starší 14 let nebo, pokud jsem nezletilý/á, mám souhlas svých rodičů nebo zákonných zástupců",
     "submitButton": "Potvrdit účast",
     "submittingButton": "Odesílání...",
     "confirmedButton": "Účast potvrzena",
     "alreadySubmitted": "Svou účast jste již potvrdili",
     "withdrawButton": "Stáhnout potvrzení",
-    "withdrawConfirm": "Jste si jisti, že chcete stáhnout své potvrzení?",
     "birthDateLabel": "Datum narození",
     "ageUnder14Warning": "Je vám méně než 14 let. Potřebujete souhlas svých rodičů nebo zákonných zástupců.",
-    "parentalConsent": "Moji rodiče nebo zákonní zástupci souhlasí s mou účastí",
-    "downloadData": "Stáhnout moje údaje"
+    "parentalConsent": "Moji rodiče nebo zákonní zástupci souhlasí s mou účastí"
   },
   "public": {
     "loadingInvitation": "Načítání pozvánky…",
@@ -148,7 +129,6 @@
     "emptyText": "Vytvořte a sdílejte své personalizované svatební oznámení.",
     "emptyDescription": "Spravujte data svého oznámení, sdílejte jedinečný odkaz s hosty a přijímejte jejich potvrzení účasti.",
     "createLink": "Vytvořit pozvánku",
-    "scrollAria": "Přejít na další sekci",
     "privacyPolicy": "Zásady ochrany osobních údajů",
     "terms": "Podmínky",
     "legalNotice": "Právní informace"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

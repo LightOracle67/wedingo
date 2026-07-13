@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Ń gbẹ́rù...",
     "error": "Àṣìṣe",
     "close": "Tìí",
     "retry": "Tún gbìyànjú",
     "save": "Fàyè àwọn àyípadà pamọ́",
-    "saving": "Ń fayè pamọ́...",
-    "cancel": "Fagilé",
     "copy": "Dàákọ",
-    "copied": "Ti dàákọ",
-    "confirm": "Fidimúlẹ̀",
-    "yes": "Bẹ́ẹ̀ni",
-    "no": "Bẹ́ẹ̀kọ́",
     "back": "Padà sẹ́yìn",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Ṣàkóso àwọn ìsọfúnni ìwé ìpè rẹ, pín ọ̀na àsopọ̀ àrà ọ̀tọ̀ pẹ̀lú àwọn àlejò rẹ kí o sì gba àwọn ìfidimúlẹ̀ wíwá wọn.",
     "createInvitation": "Ṣẹ̀dá ìwé ìpè rẹ",
     "haveInvitation": "Mo ní ìwé ìpè kan",
-    "privacyPolicy": "Ìlànà Àṣírí",
-    "terms": "Àwọn Òfin",
-    "legalNotice": "Ìkéde Òfin",
     "modalTitle": "Wọ ìwé ìpè rẹ",
     "usernameLabel": "Orúkọ olùṣàmúlò",
     "usernamePlaceholder": "Orúkọ olùṣàmúlò rẹ",
@@ -51,10 +41,7 @@
     "withBlessing": "Pẹ̀lú ìbùkún {{godparent1}} àti {{godparent2}}",
     "todayIsWedding": "Òní ni ìgbéyàwó",
     "missing": "Ó kù",
-    "daysAndHours": "Ọjọ́ {{days}} àti wákàtí {{hours}}",
-    "minutes": "Ìṣẹ́jú {{minutes}}",
-    "todayIsTheDay": "Òní ni ọjọ́ ńlá!",
-    "audioError": "A kò lè gbé ohùn náà. Ṣàyẹ̀wò ọ̀na àsopọ̀."
+    "todayIsTheDay": "Òní ni ọjọ́ ńlá!"
   },
   "details": {
     "sectionLabel": "Ọjọ́ àti ibi",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "A ń retí rẹ láti pín àkókò pàtàkì yìí. Nísàlẹ̀ o ó rí àwòrán ilẹ̀.",
     "transport": "Ọkọ̀",
     "addToCalendar": "Fi kún kàlẹ́ńdà",
-    "mapLoading": "Ń gbé àwòrán ilẹ̀...",
     "viewGoogleMaps": "Wò ní Google Maps",
-    "viewAppleMaps": "Wò ní Apple Maps",
-    "mapAriaLabel": "Àwòrán ilẹ̀ {{location}}"
+    "viewAppleMaps": "Wò ní Apple Maps"
   },
   "info": {
     "sectionLabel": "Nípa àwọn àlejò",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Ohun ara kò gbà mìíràn (sọ pàtó)",
     "allergiesHint": "Sọ àwọn ohun oúnjẹ tí ara kò gbà nìkan. Má ṣe fi ìsọfúnni ìṣègùn tí a kò béèrè sílẹ̀.",
     "privacyConsent": "A ti sọ fún mi, mo sì gba {{link}}",
-    "privacyLink": "Ìlànà Àṣírí",
     "healthConsent": "Mo gba láti jẹ́ kí a ṣàkóso ìsọfúnni ìlera mi (ohun ara kò gbà) láti mú àtòjọ oúnjẹ ìgbéyàwó bá àìní mi mu",
-    "ageConsent": "Mo jẹ́wọ́ pé mo ti lé ní ọdún 14 tàbí, bí mo bá kéré, mo ní ìyọ̀ǹda àwọn òbí tàbí alágbàtọ́ mi",
     "submitButton": "Fidimúlẹ̀ wíwá",
     "submittingButton": "Ń fíránṣẹ́...",
     "confirmedButton": "Wíwá ti fídimúlẹ̀",
     "alreadySubmitted": "O ti fidimúlẹ̀ wíwá rẹ",
     "withdrawButton": "Fa ìfidimúlẹ̀ mi padà",
-    "withdrawConfirm": "Ṣé ó dá ọ lójú pé o fẹ́ fa ìfidimúlẹ̀ rẹ padà?",
     "birthDateLabel": "Ọjọ́ ìbí",
     "ageUnder14Warning": "O kéré sí ọdún 14. O nílò ìyọ̀ǹda àwọn òbí tàbí alágbàtọ́ rẹ.",
-    "parentalConsent": "Àwọn òbí tàbí alágbàtọ́ mi gbà láti jẹ́ kí n kópa",
-    "downloadData": "Ṣàgbéjáde ìsọfúnni mi"
+    "parentalConsent": "Àwọn òbí tàbí alágbàtọ́ mi gbà láti jẹ́ kí n kópa"
   },
   "public": {
     "loadingInvitation": "Ń gbé ìwé ìpè...",
@@ -148,7 +129,6 @@
     "emptyText": "Ṣẹ̀dá kí o sì pín ìwé ìpè ìgbéyàwó rẹ.",
     "emptyDescription": "Ṣàkóso àwọn ìsọfúnni ìwé ìpè rẹ, pín ọ̀na àsopọ̀ àrà ọ̀tọ̀ pẹ̀lú àwọn àlejò rẹ kí o sì gba àwọn ìfidimúlẹ̀ wíwá wọn.",
     "createLink": "Ṣẹ̀dá ìwé ìpè",
-    "scrollAria": "Lọ sí apá tókàn",
     "privacyPolicy": "Ìlànà Àṣírí",
     "terms": "Àwọn Òfin",
     "legalNotice": "Ìkéde Òfin"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

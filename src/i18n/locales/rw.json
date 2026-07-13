@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Irarimo...",
     "error": "Ikosa",
     "close": "Funga",
     "retry": "Ongera ugerageze",
     "save": "Bika impinduka",
-    "saving": "Irabika...",
-    "cancel": "Kureka",
     "copy": "Koporora",
-    "copied": "Byakoporowe",
-    "confirm": "Emeza",
-    "yes": "Yego",
-    "no": "Oya",
     "back": "Subira inyuma",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Menyesha amakuru y'ubutumire bwawe, sangiza umurongo wihariye n'abashyitsi bawe kandi wakire ibyemezo by'ukuhaba kwabo.",
     "createInvitation": "Kora ubutumire bwawe",
     "haveInvitation": "Mfite ubutumire",
-    "privacyPolicy": "Politiki y'Ibanga",
-    "terms": "Amategeko",
-    "legalNotice": "Itangazo ry'Amategeko",
     "modalTitle": "Injira mu butumire bwawe",
     "usernameLabel": "Izina ry'ukoresha",
     "usernamePlaceholder": "Izina ryawe ry'ukoresha",
@@ -51,10 +41,7 @@
     "withBlessing": "N'umugisha wa {{godparent1}} na {{godparent2}}",
     "todayIsWedding": "Uyu munsi ni ubukwe",
     "missing": "Hasigaye",
-    "daysAndHours": "Iminsi {{days}} n'amasaha {{hours}}",
-    "minutes": "Iminota {{minutes}}",
-    "todayIsTheDay": "Uyu ni umunsi ukomeye!",
-    "audioError": "Ntibyashobotse gukoresha amajwi. Reba umurongo."
+    "todayIsTheDay": "Uyu ni umunsi ukomeye!"
   },
   "details": {
     "sectionLabel": "Itariki n'ahantu",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Turakuziye kugira ngo dusangire iki gihe cyihariye. Hasi uzabona ikarita y'ahantu.",
     "transport": "Ubwikorezi",
     "addToCalendar": "Ongera kuri kalendari",
-    "mapLoading": "Irimo gupakira ikarita...",
     "viewGoogleMaps": "Reba kuri Google Maps",
-    "viewAppleMaps": "Reba kuri Apple Maps",
-    "mapAriaLabel": "Ikarita ya {{location}}"
+    "viewAppleMaps": "Reba kuri Apple Maps"
   },
   "info": {
     "sectionLabel": "Ku bashyitsi",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Ikindi kintu giteye allergie (sobanura)",
     "allergiesHint": "Garagaza gusa ibintu by'ibiribwa biteye allergie no kudashobora kwihanganira. Ntushyiremo amakuru y'ubuvuzi utasabwe.",
     "privacyConsent": "Narabimenyeshejwe kandi ndemera {{link}}",
-    "privacyLink": "Politiki y'Ibanga",
     "healthConsent": "Ndemeye ko amakuru yanjye y'ubuzima (allergie no kudashobora kwihanganira) akoreshwa kugira ngo meni y'ibirori ihuze n'ibyo nkeneye",
-    "ageConsent": "Ndemeza ko ndi hejuru y'imyaka 14 cyangwa, niba ndi muto, mfite uburenganzira bw'ababyeyi banjye cyangwa abandera",
     "submitButton": "Emeza ukuhaba",
     "submittingButton": "Irohereza...",
     "confirmedButton": "Ukuhaba kwemewe",
     "alreadySubmitted": "Wamaze kwemeza ukuhaba kwawe",
     "withdrawButton": "Kura icyemezo cyanjye",
-    "withdrawConfirm": "Uremeza ko ushaka gukura icyemezo cyawe?",
     "birthDateLabel": "Itariki y'amavuko",
     "ageUnder14Warning": "Ufite munsi y'imyaka 14. Ukeneye uburenganzira bw'ababyeyi bawe cyangwa abakureze.",
-    "parentalConsent": "Ababyeyi banjye cyangwa abandera bemera uruhare rwanjye",
-    "downloadData": "Kuramo amakuru yanjye"
+    "parentalConsent": "Ababyeyi banjye cyangwa abandera bemera uruhare rwanjye"
   },
   "public": {
     "loadingInvitation": "Irimo gupakira ubutumire...",
@@ -148,7 +129,6 @@
     "emptyText": "Kora kandi usangize ubutumire bwawe bw'ubukwe bwihariye.",
     "emptyDescription": "Menyesha amakuru y'ubutumire bwawe, sangiza umurongo wihariye n'abashyitsi bawe kandi wakire ibyemezo by'ukuhaba kwabo.",
     "createLink": "Kora ubutumire",
-    "scrollAria": "Jya ku gice gikurikira",
     "privacyPolicy": "Politiki y'Ibanga",
     "terms": "Amategeko",
     "legalNotice": "Itangazo ry'Amategeko"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

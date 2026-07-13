@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Ngamuat...",
     "error": "Kasalahan",
     "close": "Tutup",
     "retry": "Cobian deui",
     "save": "Simpen parobahan",
-    "saving": "Nyimpen...",
-    "cancel": "Bolay",
     "copy": "Salin",
-    "copied": "Disalin",
-    "confirm": "Konfirmasi",
-    "yes": "Enya",
-    "no": "Henteu",
     "back": "Balik",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Atur data ondangan Anjeun, bagikeun tumbu unik ka tamu-tamu Anjeun, jeung tarima konfirmasi kahadiran maranéhna.",
     "createInvitation": "Jieun ondangan Anjeun",
     "haveInvitation": "Abdi tos gaduh ondangan",
-    "privacyPolicy": "Kawijakan Privasi",
-    "terms": "Katangtuan",
-    "legalNotice": "Bewara Hukum",
     "modalTitle": "Aksés ondangan Anjeun",
     "usernameLabel": "Ngaran pamaké",
     "usernamePlaceholder": "Ngaran pamaké Anjeun",
@@ -51,10 +41,7 @@
     "withBlessing": "Kalayan pangéstu ti {{godparent1}} sareng {{godparent2}}",
     "todayIsWedding": "Dinten ieu kawinan",
     "missing": "Kirang",
-    "daysAndHours": "{{days}} dinten sareng {{hours}} jam",
-    "minutes": "{{minutes}} menit",
-    "todayIsTheDay": "Dinten ieu dinten ageung!",
-    "audioError": "Henteu tiasa ngamuat audio. Pariksa tumbuna."
+    "todayIsTheDay": "Dinten ieu dinten ageung!"
   },
   "details": {
     "sectionLabel": "Tanggal sareng tempat",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Sim kuring ngantosan Anjeun pikeun ngabagi momen istiméwa ieu. Di handap ieu aya peta lokasi.",
     "transport": "Angkutan",
     "addToCalendar": "Tambihkeun ka kalénder",
-    "mapLoading": "Ngamuat peta...",
     "viewGoogleMaps": "Tingali di Google Maps",
-    "viewAppleMaps": "Tingali di Apple Maps",
-    "mapAriaLabel": "Peta {{location}}"
+    "viewAppleMaps": "Tingali di Apple Maps"
   },
   "info": {
     "sectionLabel": "Ngeunaan tamu",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Alérgi sanés (sebutkeun)",
     "allergiesHint": "Sebutkeun ukur alérgi sareng intoleransi pangan. Entong lebetkeun inpormasi médis anu henteu dipénta.",
     "privacyConsent": "Abdi parantos dibéjaan sareng nampi {{link}}",
-    "privacyLink": "Kawijakan Privasi",
     "healthConsent": "Abdi nyatujuan pamrosésan data kaséhatan abdi (alérgi sareng intoleransi) pikeun nyaluyukeun ménu hajatan",
-    "ageConsent": "Abdi nyatakeun yuswa abdi langkung ti 14 taun, atanapi upami kirang, gaduh idin ti kolot atanapi wali abdi",
     "submitButton": "Konfirmasikeun kahadiran",
     "submittingButton": "Ngirim...",
     "confirmedButton": "Kahadiran dikonfirmasi",
     "alreadySubmitted": "Anjeun parantos ngonfirmasikeun kahadiran",
     "withdrawButton": "Tarik konfirmasi abdi",
-    "withdrawConfirm": "Naha Anjeun yakin badé narik konfirmasi?",
     "birthDateLabel": "Tanggal lahir",
     "ageUnder14Warning": "Yuswa Anjeun kirang ti 14 taun. Peryogi idin ti kolot atanapi wali.",
-    "parentalConsent": "Kolot atanapi wali abdi nyatujuan partisipasi abdi",
-    "downloadData": "Unduh data abdi"
+    "parentalConsent": "Kolot atanapi wali abdi nyatujuan partisipasi abdi"
   },
   "public": {
     "loadingInvitation": "Ngamuat ondangan…",
@@ -148,7 +129,6 @@
     "emptyText": "Jieun jeung bagikeun ondangan kawinan pribadi Anjeun.",
     "emptyDescription": "Atur data ondangan Anjeun, bagikeun tumbu unik ka tamu-tamu Anjeun, jeung tarima konfirmasi kahadiran maranéhna.",
     "createLink": "Jieun ondangan",
-    "scrollAria": "Angkat ka bagian salajengna",
     "privacyPolicy": "Kawijakan Privasi",
     "terms": "Katangtuan",
     "legalNotice": "Bewara Hukum"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Iyalayisha...",
     "error": "Iphutha",
     "close": "Vala",
     "retry": "Zama futhi",
     "save": "Gcina izinguquko",
-    "saving": "Iyagcina...",
-    "cancel": "Khansela",
     "copy": "Kopisha",
-    "copied": "Ikopishiwe",
-    "confirm": "Qinisekisa",
-    "yes": "Yebo",
-    "no": "Cha",
     "back": "Emuva",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Phatha idatha yesimemo sakho, yabelana ngesixhumanisi esiyingqayizivele nezivakashi zakho futhi uthole iziqinisekiso zokuba khona kwazo.",
     "createInvitation": "Dala isimemo sakho",
     "haveInvitation": "Senginesimemo",
-    "privacyPolicy": "Inqubomgomo Yobumfihlo",
-    "terms": "Imigomo",
-    "legalNotice": "Isaziso Sezomthetho",
     "modalTitle": "Finyelela isimemo sakho",
     "usernameLabel": "Igama lomsebenzisi",
     "usernamePlaceholder": "Igama lakho lomsebenzisi",
@@ -51,10 +41,7 @@
     "withBlessing": "Ngesibusiso sika-{{godparent1}} no-{{godparent2}}",
     "todayIsWedding": "Namuhla umshado",
     "missing": "Kusele",
-    "daysAndHours": "Izinsuku ezingu-{{days}} namahora angu-{{hours}}",
-    "minutes": "Imizuzu engu-{{minutes}}",
-    "todayIsTheDay": "Namuhla usuku olukhulu!",
-    "audioError": "Ukulayisha umsindo akuphumelelanga. Hlola isixhumanisi."
+    "todayIsTheDay": "Namuhla usuku olukhulu!"
   },
   "details": {
     "sectionLabel": "Usuku nendawo",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Sikulindele ukwabelana nathi ngesikhathi esikhethekile. Ngezansi uzothola ibalazwe lendawo.",
     "transport": "Ezokuthutha",
     "addToCalendar": "Faka kukhalenda",
-    "mapLoading": "Iyalayisha ibalazwe...",
     "viewGoogleMaps": "Buka ku-Google Maps",
-    "viewAppleMaps": "Buka ku-Apple Maps",
-    "mapAriaLabel": "Ibalazwe lase-{{location}}"
+    "viewAppleMaps": "Buka ku-Apple Maps"
   },
   "info": {
     "sectionLabel": "Ngezivakashi",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Okunye ukungezwani (cacisa)",
     "allergiesHint": "Khombisa kuphela ukungezwani nokudla nokungabekezeleli. Ungafaki ulwazi lwezokwelapha olungaceliwe.",
     "privacyConsent": "Ngazisiwe futhi ngiyayamukela i-{{link}}",
-    "privacyLink": "Inqubomgomo Yobumfihlo",
     "healthConsent": "Ngiyavuma ukucutshungulwa kwedatha yami yezempilo (ukungezwani nokungabekezeleli) ukuze kuhambisane nemenyu yomgubho",
-    "ageConsent": "Ngiyamemezela ukuthi ngineminyaka engaphezu kwe-14 noma, uma ngingaphansi, nginemvume yabazali bami noma yabanakekeli bami",
     "submitButton": "Qinisekisa ukuba khona",
     "submittingButton": "Iyathumela...",
     "confirmedButton": "Ukuba khona kuqinisekisiwe",
     "alreadySubmitted": "Usuvele uqinisekise ukuba khona kwakho",
     "withdrawButton": "Hoxisa isiqinisekiso sami",
-    "withdrawConfirm": "Ingabe uqinisekile ukuthi ufuna ukuhoxisa isiqinisekiso sakho?",
     "birthDateLabel": "Usuku lokuzalwa",
     "ageUnder14Warning": "Uneminyaka engaphansi kwe-14. Udinga imvume yabazali bakho noma yabanakekeli bakho.",
-    "parentalConsent": "Abazali bami noma abanakekeli bami bayavuma ukubamba kwami iqhaza",
-    "downloadData": "Landa idatha yami"
+    "parentalConsent": "Abazali bami noma abanakekeli bami bayavuma ukubamba kwami iqhaza"
   },
   "public": {
     "loadingInvitation": "Iyalayisha isimemo...",
@@ -148,7 +129,6 @@
     "emptyText": "Dala futhi wabelane ngesimemo sakho somshado esiqondene nawe.",
     "emptyDescription": "Phatha idatha yesimemo sakho, yabelana ngesixhumanisi esiyingqayizivele nezivakashi zakho futhi uthole iziqinisekiso zokuba khona kwazo.",
     "createLink": "Dala isimemo",
-    "scrollAria": "Yiya esigabeni esilandelayo",
     "privacyPolicy": "Inqubomgomo Yobumfihlo",
     "terms": "Imigomo",
     "legalNotice": "Isaziso Sezomthetho"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

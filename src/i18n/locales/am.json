@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "በመጫን ላይ...",
     "error": "ስህተት",
     "close": "ዝጋ",
     "retry": "እንደገና ሞክር",
     "save": "ለውጦችን አስቀምጥ",
-    "saving": "በማስቀመጥ ላይ...",
-    "cancel": "ሰርዝ",
     "copy": "ቅዳ",
-    "copied": "ተቀድቷል",
-    "confirm": "አረጋግጥ",
-    "yes": "አዎ",
-    "no": "አይ",
     "back": "ተመለስ",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "የግብዣዎን ውሂብ ያስተዳድሩ፣ ልዩ ማገናኛን ለእንግዶችዎ ያጋሩ እና የተገኝነት ማረጋገጫቸውን ይቀበሉ።",
     "createInvitation": "ግብዣዎን ይፍጠሩ",
     "haveInvitation": "ግብዣ አለኝ",
-    "privacyPolicy": "የግላዊነት ፖሊሲ",
-    "terms": "ውሎች",
-    "legalNotice": "የህግ ማስታወቂያ",
     "modalTitle": "ግብዣዎን ይድረሱ",
     "usernameLabel": "የተጠቃሚ ስም",
     "usernamePlaceholder": "የተጠቃሚ ስምዎ",
@@ -51,10 +41,7 @@
     "withBlessing": "በ{{godparent1}} እና {{godparent2}} ቡራኬ",
     "todayIsWedding": "ዛሬ ሰርጉ ነው",
     "missing": "ቀረ",
-    "daysAndHours": "{{days}} ቀን(ታት) እና {{hours}} ሰዓት(ታት)",
-    "minutes": "{{minutes}} ደቂቃ(ታት)",
-    "todayIsTheDay": "ዛሬ ታላቁ ቀን ነው!",
-    "audioError": "ድምጹን መጫን አልተቻለም። ማገናኛውን ያረጋግጡ።"
+    "todayIsTheDay": "ዛሬ ታላቁ ቀን ነው!"
   },
   "details": {
     "sectionLabel": "ቀን እና ቦታ",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "ይህን ልዩ ጊዜ አብረን ለማካፈል እንጠብቅዎታለን። ከታች የአካባቢ ካርታ ያገኛሉ።",
     "transport": "መጓጓዣ",
     "addToCalendar": "ወደ ቀን መቁጠሪያ አክል",
-    "mapLoading": "ካርታ በመጫን ላይ...",
     "viewGoogleMaps": "በGoogle Maps ይመልከቱ",
-    "viewAppleMaps": "በApple Maps ይመልከቱ",
-    "mapAriaLabel": "የ{{location}} ካርታ"
+    "viewAppleMaps": "በApple Maps ይመልከቱ"
   },
   "info": {
     "sectionLabel": "ስለ እንግዶች",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "ሌላ አለርጂ (ይጥቀሱ)",
     "allergiesHint": "የምግብ አለርጂዎችን እና አለመቻቻሎችን ብቻ ያመልክቱ። ያልተጠየቀ የሕክምና መረጃ አያስገቡ።",
     "privacyConsent": "ተነግሮኛል እና {{link}} ን እቀበላለሁ",
-    "privacyLink": "የግላዊነት ፖሊሲ",
     "healthConsent": "የክብረ በዓሉን ምናሌ ለማስማማት የጤና ውሂቤ (አለርጂዎች እና አለመቻቻሎች) እንዲሰራበት እስማማለሁ",
-    "ageConsent": "ከ14 ዓመት በላይ መሆኔን ወይም ለአካለ መጠን ያልደረስኩ ከሆነ የወላጆቼ ወይም የአሳዳጊዎቼ ፈቃድ እንዳለኝ አረጋግጣለሁ",
     "submitButton": "መገኘትን አረጋግጥ",
     "submittingButton": "በመላክ ላይ...",
     "confirmedButton": "መገኘት ተረጋግጧል",
     "alreadySubmitted": "አስቀድመው መገኘትዎን አረጋግጠዋል",
     "withdrawButton": "ማረጋገጫዬን መልስ",
-    "withdrawConfirm": "ማረጋገጫዎን መመለስ እርግጠኛ ነዎት?",
     "birthDateLabel": "የልደት ቀን",
     "ageUnder14Warning": "ከ14 ዓመት በታች ነዎት። የወላጆችዎ ወይም የአሳዳጊዎችዎ ፈቃድ ያስፈልጋል።",
-    "parentalConsent": "ወላጆቼ ወይም አሳዳጊዎቼ በእኔ ተሳትፎ ይስማማሉ",
-    "downloadData": "ውሂቤን አውርድ"
+    "parentalConsent": "ወላጆቼ ወይም አሳዳጊዎቼ በእኔ ተሳትፎ ይስማማሉ"
   },
   "public": {
     "loadingInvitation": "ግብዣ በመጫን ላይ...",
@@ -148,7 +129,6 @@
     "emptyText": "የግል የሰርግ ግብዣዎን ይፍጠሩ እና ያጋሩ።",
     "emptyDescription": "የግብዣዎን ውሂብ ያስተዳድሩ፣ ልዩ ማገናኛን ለእንግዶችዎ ያጋሩ እና የተገኝነት ማረጋገጫቸውን ይቀበሉ።",
     "createLink": "ግብዣ ይፍጠሩ",
-    "scrollAria": "ወደ ቀጣዩ ክፍል ሂድ",
     "privacyPolicy": "የግላዊነት ፖሊሲ",
     "terms": "ውሎች",
     "legalNotice": "የህግ ማስታወቂያ"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

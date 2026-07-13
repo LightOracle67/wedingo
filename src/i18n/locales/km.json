@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "កំពុងផ្ទុក...",
     "error": "កំហុស",
     "close": "បិទ",
     "retry": "ព្យាយាមម្តងទៀត",
     "save": "រក្សាទុកការផ្លាស់ប្តូរ",
-    "saving": "កំពុងរក្សាទុក...",
-    "cancel": "បោះបង់",
     "copy": "ចម្លង",
-    "copied": "បានចម្លង",
-    "confirm": "បញ្ជាក់",
-    "yes": "បាទ/ចាស",
-    "no": "ទេ",
     "back": "ត្រឡប់ក្រោយ",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "គ្រប់គ្រងទិន្នន័យការអញ្ជើញរបស់អ្នក ចែករំលែកតំណតែមួយគត់ជាមួយភ្ញៀវរបស់អ្នក និងទទួលការបញ្ជាក់វត្តមាន។",
     "createInvitation": "បង្កើតការអញ្ជើញរបស់អ្នក",
     "haveInvitation": "ខ្ញុំមានការអញ្ជើញរួចហើយ",
-    "privacyPolicy": "គោលការណ៍ឯកជនភាព",
-    "terms": "លក្ខខណ្ឌ",
-    "legalNotice": "ការជូនដំណឹងផ្នែកច្បាប់",
     "modalTitle": "ចូលទៅកាន់ការអញ្ជើញរបស់អ្នក",
     "usernameLabel": "ឈ្មោះអ្នកប្រើប្រាស់",
     "usernamePlaceholder": "ឈ្មោះអ្នកប្រើប្រាស់របស់អ្នក",
@@ -51,10 +41,7 @@
     "withBlessing": "ដោយមានពរជ័យពីឪពុកម្ដាយធម៌ {{godparent1}} និង {{godparent2}}",
     "todayIsWedding": "ថ្ងៃនេះជាថ្ងៃអាពាហ៍ពិពាហ៍",
     "missing": "នៅសល់",
-    "daysAndHours": "{{days}} ថ្ងៃ និង {{hours}} ម៉ោង",
-    "minutes": "{{minutes}} នាទី",
-    "todayIsTheDay": "ថ្ងៃនេះជាថ្ងៃពិសេស!",
-    "audioError": "មិនអាចផ្ទុកសំឡេងបាន។ ពិនិត្យតំណ។"
+    "todayIsTheDay": "ថ្ងៃនេះជាថ្ងៃពិសេស!"
   },
   "details": {
     "sectionLabel": "កាលបរិច្ឆេទនិងទីកន្លែង",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "យើងរង់ចាំអ្នកដើម្បីចែករំលែកពេលវេលាពិសេសនេះ។ ខាងក្រោមអ្នកនឹងឃើញផែនទីទីតាំង។",
     "transport": "ការដឹកជញ្ជូន",
     "addToCalendar": "បន្ថែមទៅប្រតិទិន",
-    "mapLoading": "កំពុងផ្ទុកផែនទី...",
     "viewGoogleMaps": "មើលក្នុង Google Maps",
-    "viewAppleMaps": "មើលក្នុង Apple Maps",
-    "mapAriaLabel": "ផែនទីនៃ {{location}}"
+    "viewAppleMaps": "មើលក្នុង Apple Maps"
   },
   "info": {
     "sectionLabel": "អំពីភ្ញៀវ",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "ប្រតិកម្មផ្សេងទៀត (បញ្ជាក់)",
     "allergiesHint": "បង្ហាញតែប្រតិកម្មនិងការមិនអត់ឱនចំពោះអាហារ។ កុំបញ្ចូលព័ត៌មានវេជ្ជសាស្ត្រដែលមិនបានស្នើសុំ។",
     "privacyConsent": "ខ្ញុំបានទទួលព័ត៌មាននិងទទួលយក {{link}}",
-    "privacyLink": "គោលការណ៍ឯកជនភាព",
     "healthConsent": "ខ្ញុំយល់ព្រមចំពោះដំណើរការទិន្នន័យសុខភាពរបស់ខ្ញុំ (ប្រតិកម្មនិងការមិនអត់ឱន) ដើម្បីកែសម្រួលមុខម្ហូបនៃពិធី",
-    "ageConsent": "ខ្ញុំប្រកាសថាខ្ញុំមានអាយុលើសពី 14 ឆ្នាំ ឬបើខ្ញុំនៅក្មេងជាង មានការយល់ព្រមពីឪពុកម្តាយឬអាណាព្យាបាល",
     "submitButton": "បញ្ជាក់វត្តមាន",
     "submittingButton": "កំពុងផ្ញើ...",
     "confirmedButton": "បានបញ្ជាក់វត្តមាន",
     "alreadySubmitted": "អ្នកបានបញ្ជាក់វត្តមានរួចហើយ",
     "withdrawButton": "ដកការបញ្ជាក់របស់ខ្ញុំ",
-    "withdrawConfirm": "តើអ្នកប្រាកដថាចង់ដកការបញ្ជាក់របស់អ្នកទេ?",
     "birthDateLabel": "ថ្ងៃខែឆ្នាំកំណើត",
     "ageUnder14Warning": "អ្នកមានអាយុក្រោម 14 ឆ្នាំ។ អ្នកត្រូវការការយល់ព្រមពីឪពុកម្តាយឬអាណាព្យាបាលរបស់អ្នក។",
-    "parentalConsent": "ឪពុកម្តាយឬអាណាព្យាបាលរបស់ខ្ញុំយល់ព្រមចំពោះការចូលរួមរបស់ខ្ញុំ",
-    "downloadData": "ទាញយកទិន្នន័យរបស់ខ្ញុំ"
+    "parentalConsent": "ឪពុកម្តាយឬអាណាព្យាបាលរបស់ខ្ញុំយល់ព្រមចំពោះការចូលរួមរបស់ខ្ញុំ"
   },
   "public": {
     "loadingInvitation": "កំពុងផ្ទុកការអញ្ជើញ...",
@@ -148,7 +129,6 @@
     "emptyText": "បង្កើតនិងចែករំលែកការអញ្ជើញអាពាហ៍ពិពាហ៍ផ្ទាល់ខ្លួនរបស់អ្នក។",
     "emptyDescription": "គ្រប់គ្រងទិន្នន័យការអញ្ជើញរបស់អ្នក ចែករំលែកតំណតែមួយគត់ជាមួយភ្ញៀវរបស់អ្នក និងទទួលការបញ្ជាក់វត្តមាន។",
     "createLink": "បង្កើតការអញ្ជើញ",
-    "scrollAria": "ទៅផ្នែកបន្ទាប់",
     "privacyPolicy": "គោលការណ៍ឯកជនភាព",
     "terms": "លក្ខខណ្ឌ",
     "legalNotice": "ការជូនដំណឹងផ្នែកច្បាប់"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

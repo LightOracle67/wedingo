@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Cargando...",
     "error": "Erro",
     "close": "Pechar",
     "retry": "Reintentar",
     "save": "Gardar cambios",
-    "saving": "Gardando...",
-    "cancel": "Cancelar",
     "copy": "Copiar",
-    "copied": "Copiado",
-    "confirm": "Confirmar",
-    "yes": "Si",
-    "no": "Non",
     "back": "Volver",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Xestiona os datos da túa invitación, comparte unha ligazón única cos teus invitados e recibe as súas confirmacións de asistencia.",
     "createInvitation": "Crear a túa invitación",
     "haveInvitation": "Xa teño unha invitación",
-    "privacyPolicy": "Política de Privacidade",
-    "terms": "Termos",
-    "legalNotice": "Aviso Legal",
     "modalTitle": "Acceder á túa invitación",
     "usernameLabel": "Nome de usuario",
     "usernamePlaceholder": "O teu nome de usuario",
@@ -51,10 +41,7 @@
     "withBlessing": "Coa bendición dos seus padriños {{godparent1}} e {{godparent2}}",
     "todayIsWedding": "Hoxe é a voda",
     "missing": "Faltan",
-    "daysAndHours": "{{days}} día(s) e {{hours}} hora(s)",
-    "minutes": "{{minutes}} minuto(s)",
-    "todayIsTheDay": "Hoxe é o gran día!",
-    "audioError": "Non se puido cargar o audio. Revisa a ligazón."
+    "todayIsTheDay": "Hoxe é o gran día!"
   },
   "details": {
     "sectionLabel": "Data e lugar",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Agardámoste para compartir este momento tan especial. Máis abaixo atoparás o mapa de localización.",
     "transport": "Transporte",
     "addToCalendar": "Engadir ao calendario",
-    "mapLoading": "Cargando o mapa...",
     "viewGoogleMaps": "Ver en Google Maps",
-    "viewAppleMaps": "Ver en Apple Maps",
-    "mapAriaLabel": "Mapa de {{location}}"
+    "viewAppleMaps": "Ver en Apple Maps"
   },
   "info": {
     "sectionLabel": "Sobre os invitados",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Outra alerxia (especificar)",
     "allergiesHint": "Indica só alerxias e intolerancias alimentarias. Non introduzas información médica non solicitada.",
     "privacyConsent": "Fun informado e acepto a {{link}}",
-    "privacyLink": "Política de Privacidade",
     "healthConsent": "Consinto o tratamento dos meus datos de saúde (alerxias e intolerancias) para adaptar o menú da celebración",
-    "ageConsent": "Declaro ser maior de 14 anos ou, se son menor, ter o consentimento dos meus pais ou titores",
     "submitButton": "Confirmar asistencia",
     "submittingButton": "Enviando...",
     "confirmedButton": "Asistencia confirmada",
     "alreadySubmitted": "Xa confirmaches a túa asistencia",
     "withdrawButton": "Retirar a miña confirmación",
-    "withdrawConfirm": "Estás seguro de retirar a túa confirmación?",
     "birthDateLabel": "Data de nacemento",
     "ageUnder14Warning": "Es menor de 14 anos. Necesitas o consentimento dos teus pais ou titores.",
-    "parentalConsent": "Os meus pais ou titores consenten a miña participación",
-    "downloadData": "Descargar os meus datos"
+    "parentalConsent": "Os meus pais ou titores consenten a miña participación"
   },
   "public": {
     "loadingInvitation": "Cargando invitación…",
@@ -150,8 +131,7 @@
     "createLink": "Crear invitación",
     "privacyPolicy": "Política de Privacidade",
     "terms": "Termos",
-    "legalNotice": "Aviso Legal",
-    "scrollAria": "Ir á seguinte sección"
+    "legalNotice": "Aviso Legal"
   },
   "setup": {
     "loadingTitle": "Cargando invitación",
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

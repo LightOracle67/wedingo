@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "લોડ થઈ રહ્યું છે...",
     "error": "ભૂલ",
     "close": "બંધ કરો",
     "retry": "ફરી પ્રયાસ કરો",
     "save": "ફેરફારો સાચવો",
-    "saving": "સાચવી રહ્યું છે...",
-    "cancel": "રદ કરો",
     "copy": "કૉપિ કરો",
-    "copied": "કૉપિ થયું",
-    "confirm": "પુષ્ટિ કરો",
-    "yes": "હા",
-    "no": "ના",
     "back": "પાછા જાઓ",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "તમારા આમંત્રણનો ડેટા મેનેજ કરો, તમારા મહેમાનો સાથે એક અનન્ય લિંક શેર કરો અને તેમની હાજરીની પુષ્ટિ મેળવો.",
     "createInvitation": "તમારું આમંત્રણ બનાવો",
     "haveInvitation": "મારી પાસે પહેલેથી આમંત્રણ છે",
-    "privacyPolicy": "ગોપનીયતા નીતિ",
-    "terms": "શરતો",
-    "legalNotice": "કાનૂની સૂચના",
     "modalTitle": "તમારા આમંત્રણમાં પ્રવેશ કરો",
     "usernameLabel": "વપરાશકર્તા નામ",
     "usernamePlaceholder": "તમારું વપરાશકર્તા નામ",
@@ -51,10 +41,7 @@
     "withBlessing": "તેમના ગોડપેરન્ટ {{godparent1}} અને {{godparent2}} ના આશીર્વાદ સાથે",
     "todayIsWedding": "આજે લગ્ન છે",
     "missing": "બાકી છે",
-    "daysAndHours": "{{days}} દિવસ(ઓ) અને {{hours}} કલાક(ઓ)",
-    "minutes": "{{minutes}} મિનિટ(ઓ)",
-    "todayIsTheDay": "આજે મોટો દિવસ છે!",
-    "audioError": "ઑડિયો લોડ થઈ શક્યો નહીં. લિંક તપાસો."
+    "todayIsTheDay": "આજે મોટો દિવસ છે!"
   },
   "details": {
     "sectionLabel": "તારીખ અને સ્થળ",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "અમે તમારી રાહ જોઈ રહ્યા છીએ આ ખાસ ક્ષણ શેર કરવા માટે. નીચે તમને સ્થાનનો નકશો મળશે.",
     "transport": "પરિવહન",
     "addToCalendar": "કૅલેન્ડરમાં ઉમેરો",
-    "mapLoading": "નકશો લોડ થઈ રહ્યો છે...",
     "viewGoogleMaps": "Google Maps માં જુઓ",
-    "viewAppleMaps": "Apple Maps માં જુઓ",
-    "mapAriaLabel": "{{location}} નો નકશો"
+    "viewAppleMaps": "Apple Maps માં જુઓ"
   },
   "info": {
     "sectionLabel": "મહેમાનો વિશે",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "બીજી એલર્જી (સ્પષ્ટ કરો)",
     "allergiesHint": "ફક્ત ખોરાકની એલર્જી અને અસહિષ્ણુતા દર્શાવો. બિનજરૂરી તબીબી માહિતી દાખલ કરશો નહીં.",
     "privacyConsent": "મને જાણ કરવામાં આવી છે અને હું {{link}} સ્વીકારું છું",
-    "privacyLink": "ગોપનીયતા નીતિ",
     "healthConsent": "ઉજવણીના મેનૂને અનુકૂળ બનાવવા માટે હું મારા સ્વાસ્થ્ય ડેટા (એલર્જી અને અસહિષ્ણુતા) ની પ્રક્રિયા માટે સંમતિ આપું છું",
-    "ageConsent": "હું જાહેર કરું છું કે હું 14 વર્ષથી મોટો/મોટી છું અથવા, જો હું નાનો/નાની હોઉં, તો મારા માતાપિતા અથવા વાલીઓની સંમતિ છે",
     "submitButton": "હાજરીની પુષ્ટિ કરો",
     "submittingButton": "મોકલી રહ્યું છે...",
     "confirmedButton": "હાજરી પુષ્ટિ થઈ",
     "alreadySubmitted": "તમે પહેલેથી તમારી હાજરીની પુષ્ટિ કરી દીધી છે",
     "withdrawButton": "મારી પુષ્ટિ પાછી ખેંચો",
-    "withdrawConfirm": "શું તમે ખરેખર તમારી પુષ્ટિ પાછી ખેંચવા માંગો છો?",
     "birthDateLabel": "જન્મ તારીખ",
     "ageUnder14Warning": "તમે 14 વર્ષથી નાના છો. તમારે તમારા માતાપિતા અથવા વાલીઓની સંમતિની જરૂર છે.",
-    "parentalConsent": "મારા માતાપિતા અથવા વાલીઓ મારી ભાગીદારી માટે સંમતિ આપે છે",
-    "downloadData": "મારો ડેટા ડાઉનલોડ કરો"
+    "parentalConsent": "મારા માતાપિતા અથવા વાલીઓ મારી ભાગીદારી માટે સંમતિ આપે છે"
   },
   "public": {
     "loadingInvitation": "આમંત્રણ લોડ થઈ રહ્યું છે…",
@@ -148,7 +129,6 @@
     "emptyText": "તમારું વ્યક્તિગત લગ્ન આમંત્રણ બનાવો અને શેર કરો.",
     "emptyDescription": "તમારા આમંત્રણનો ડેટા મેનેજ કરો, તમારા મહેમાનો સાથે એક અનન્ય લિંક શેર કરો અને તેમની હાજરીની પુષ્ટિ મેળવો.",
     "createLink": "આમંત્રણ બનાવો",
-    "scrollAria": "આગલા વિભાગમાં જાઓ",
     "privacyPolicy": "ગોપનીયતા નીતિ",
     "terms": "શરતો",
     "legalNotice": "કાનૂની સૂચના"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

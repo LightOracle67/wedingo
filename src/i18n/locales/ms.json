@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Memuatkan...",
     "error": "Ralat",
     "close": "Tutup",
     "retry": "Cuba lagi",
     "save": "Simpan perubahan",
-    "saving": "Menyimpan...",
-    "cancel": "Batal",
     "copy": "Salin",
-    "copied": "Disalin",
-    "confirm": "Sahkan",
-    "yes": "Ya",
-    "no": "Tidak",
     "back": "Kembali",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Urus data jemputan anda, kongsi pautan unik dengan tetamu dan terima pengesahan kehadiran mereka.",
     "createInvitation": "Cipta jemputan anda",
     "haveInvitation": "Saya sudah ada jemputan",
-    "privacyPolicy": "Dasar Privasi",
-    "terms": "Terma",
-    "legalNotice": "Notis Undang-Undang",
     "modalTitle": "Akses jemputan anda",
     "usernameLabel": "Nama pengguna",
     "usernamePlaceholder": "Nama pengguna anda",
@@ -51,10 +41,7 @@
     "withBlessing": "Dengan restu wali {{godparent1}} dan {{godparent2}}",
     "todayIsWedding": "Hari ini hari perkahwinan",
     "missing": "Tinggal",
-    "daysAndHours": "{{days}} hari dan {{hours}} jam",
-    "minutes": "{{minutes}} minit",
-    "todayIsTheDay": "Hari ini hari yang dinanti!",
-    "audioError": "Tidak dapat memuatkan audio. Semak pautan."
+    "todayIsTheDay": "Hari ini hari yang dinanti!"
   },
   "details": {
     "sectionLabel": "Tarikh dan Tempat",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Kami menantikan kehadiran anda untuk berkongsi detik istimewa ini. Peta lokasi ada di bawah.",
     "transport": "Pengangkutan",
     "addToCalendar": "Tambah ke kalendar",
-    "mapLoading": "Memuatkan peta...",
     "viewGoogleMaps": "Lihat di Google Maps",
-    "viewAppleMaps": "Lihat di Apple Maps",
-    "mapAriaLabel": "Peta {{location}}"
+    "viewAppleMaps": "Lihat di Apple Maps"
   },
   "info": {
     "sectionLabel": "Tentang Tetamu",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Alahan lain (nyatakan)",
     "allergiesHint": "Hanya nyatakan alahan makanan dan intoleransi. Jangan masukkan maklumat perubatan yang tidak diminta.",
     "privacyConsent": "Saya telah dimaklumkan dan menerima {{link}}",
-    "privacyLink": "Dasar Privasi",
     "healthConsent": "Saya bersetuju dengan pemprosesan data kesihatan saya (alahan dan intoleransi) untuk menyesuaikan menu majlis",
-    "ageConsent": "Saya mengaku berumur lebih 14 tahun, atau jika di bawah umur, saya mendapat kebenaran ibu bapa atau penjaga",
     "submitButton": "Sahkan kehadiran",
     "submittingButton": "Menghantar...",
     "confirmedButton": "Kehadiran disahkan",
     "alreadySubmitted": "Anda telah mengesahkan kehadiran",
     "withdrawButton": "Tarik balik pengesahan saya",
-    "withdrawConfirm": "Adakah anda pasti mahu menarik balik pengesahan?",
     "birthDateLabel": "Tarikh lahir",
     "ageUnder14Warning": "Anda berumur bawah 14 tahun. Anda memerlukan kebenaran ibu bapa atau penjaga.",
-    "parentalConsent": "Ibu bapa atau penjaga saya bersetuju dengan penyertaan saya",
-    "downloadData": "Muat turun data saya"
+    "parentalConsent": "Ibu bapa atau penjaga saya bersetuju dengan penyertaan saya"
   },
   "public": {
     "loadingInvitation": "Memuatkan jemputan…",
@@ -148,7 +129,6 @@
     "emptyText": "Cipta dan kongsi jemputan perkahwinan peribadi anda.",
     "emptyDescription": "Urus data jemputan anda, kongsi pautan unik dengan tetamu dan terima pengesahan kehadiran mereka.",
     "createLink": "Cipta jemputan",
-    "scrollAria": "Pergi ke bahagian seterusnya",
     "privacyPolicy": "Dasar Privasi",
     "terms": "Terma",
     "legalNotice": "Notis Undang-Undang"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

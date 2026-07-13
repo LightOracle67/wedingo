@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Завантаження...",
     "error": "Помилка",
     "close": "Закрити",
     "retry": "Повторити",
     "save": "Зберегти зміни",
-    "saving": "Збереження...",
-    "cancel": "Скасувати",
     "copy": "Копіювати",
-    "copied": "Скопійовано",
-    "confirm": "Підтвердити",
-    "yes": "Так",
-    "no": "Ні",
     "back": "Назад",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Керуйте даними вашого запрошення, діліться унікальним посиланням із гостями та отримуйте підтвердження присутності.",
     "createInvitation": "Створити запрошення",
     "haveInvitation": "У мене вже є запрошення",
-    "privacyPolicy": "Політика конфіденційності",
-    "terms": "Умови",
-    "legalNotice": "Юридичне повідомлення",
     "modalTitle": "Доступ до вашого запрошення",
     "usernameLabel": "Ім'я користувача",
     "usernamePlaceholder": "Ваше ім'я користувача",
@@ -51,10 +41,7 @@
     "withBlessing": "З благословення хрещених {{godparent1}} та {{godparent2}}",
     "todayIsWedding": "Сьогодні весілля",
     "missing": "Залишилось",
-    "daysAndHours": "{{days}} дн. і {{hours}} год.",
-    "minutes": "{{minutes}} хв.",
-    "todayIsTheDay": "Сьогодні великий день!",
-    "audioError": "Не вдалося завантажити аудіо. Перевірте посилання."
+    "todayIsTheDay": "Сьогодні великий день!"
   },
   "details": {
     "sectionLabel": "Дата та місце",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Чекаємо вас, щоб розділити цю особливу мить. Нижче ви знайдете карту.",
     "transport": "Транспорт",
     "addToCalendar": "Додати в календар",
-    "mapLoading": "Завантаження карти...",
     "viewGoogleMaps": "Переглянути в Google Картах",
-    "viewAppleMaps": "Переглянути в Apple Картах",
-    "mapAriaLabel": "Карта {{location}}"
+    "viewAppleMaps": "Переглянути в Apple Картах"
   },
   "info": {
     "sectionLabel": "Про гостей",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Інша алергія (вкажіть)",
     "allergiesHint": "Вказуйте лише харчові алергії та непереносимості. Не вводьте непотрібну медичну інформацію.",
     "privacyConsent": "Я ознайомлений і приймаю {{link}}",
-    "privacyLink": "Політику конфіденційності",
     "healthConsent": "Я погоджуюсь на обробку моїх даних про здоров'я (алергії та непереносимості) для адаптації меню святкування",
-    "ageConsent": "Я заявляю, що мені більше 14 років або, якщо я молодший, маю згоду батьків чи опікунів",
     "submitButton": "Підтвердити присутність",
     "submittingButton": "Надсилання...",
     "confirmedButton": "Присутність підтверджено",
     "alreadySubmitted": "Ви вже підтвердили свою присутність",
     "withdrawButton": "Відкликати моє підтвердження",
-    "withdrawConfirm": "Ви впевнені, що хочете відкликати підтвердження?",
     "birthDateLabel": "Дата народження",
     "ageUnder14Warning": "Вам менше 14 років. Вам потрібна згода батьків або опікунів.",
-    "parentalConsent": "Мої батьки або опікуни погоджуються на мою участь",
-    "downloadData": "Завантажити мої дані"
+    "parentalConsent": "Мої батьки або опікуни погоджуються на мою участь"
   },
   "public": {
     "loadingInvitation": "Завантаження запрошення…",
@@ -148,7 +129,6 @@
     "emptyText": "Створіть і поділіться своїм персоналізованим весільним запрошенням.",
     "emptyDescription": "Керуйте даними вашого запрошення, діліться унікальним посиланням із гостями та отримуйте підтвердження присутності.",
     "createLink": "Створити запрошення",
-    "scrollAria": "Перейти до наступного розділу",
     "privacyPolicy": "Політика конфіденційності",
     "terms": "Умови",
     "legalNotice": "Юридичне повідомлення"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

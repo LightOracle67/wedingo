@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "లోడ్ అవుతోంది...",
     "error": "లోపం",
     "close": "మూసివేయి",
     "retry": "మళ్ళీ ప్రయత్నించండి",
     "save": "మార్పులను సేవ్ చేయి",
-    "saving": "సేవ్ అవుతోంది...",
-    "cancel": "రద్దు చేయి",
     "copy": "కాపీ చేయి",
-    "copied": "కాపీ చేయబడింది",
-    "confirm": "నిర్ధారించు",
-    "yes": "అవును",
-    "no": "కాదు",
     "back": "వెనుకకు",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "మీ ఆహ్వానం డేటాను నిర్వహించండి, అతిథులతో ప్రత్యేక లింక్‌ను భాగస్వామ్యం చేయండి మరియు వారి హాజరు నిర్ధారణలను స్వీకరించండి.",
     "createInvitation": "మీ ఆహ్వానాన్ని సృష్టించండి",
     "haveInvitation": "నాకు ఇప్పటికే ఆహ్వానం ఉంది",
-    "privacyPolicy": "గోప్యతా విధానం",
-    "terms": "నిబంధనలు",
-    "legalNotice": "చట్టపరమైన నోటీసు",
     "modalTitle": "మీ ఆహ్వానాన్ని యాక్సెస్ చేయండి",
     "usernameLabel": "వినియోగదారు పేరు",
     "usernamePlaceholder": "మీ వినియోగదారు పేరు",
@@ -51,10 +41,7 @@
     "withBlessing": "{{godparent1}} మరియు {{godparent2}} ల ఆశీస్సులతో",
     "todayIsWedding": "ఈరోజు వివాహం",
     "missing": "మిగిలి ఉంది",
-    "daysAndHours": "{{days}} రోజు(లు) మరియు {{hours}} గంట(లు)",
-    "minutes": "{{minutes}} నిమిషం(లు)",
-    "todayIsTheDay": "ఈరోజే గొప్ప రోజు!",
-    "audioError": "ఆడియో లోడ్ కాలేదు. లింక్ తనిఖీ చేయండి."
+    "todayIsTheDay": "ఈరోజే గొప్ప రోజు!"
   },
   "details": {
     "sectionLabel": "తేదీ మరియు స్థలం",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "ఈ ప్రత్యేక క్షణాన్ని మీతో పంచుకోవడానికి మేము ఎదురుచూస్తున్నాము. క్రింద స్థాన మ్యాప్ కనుగొంటారు.",
     "transport": "రవాణా",
     "addToCalendar": "క్యాలెండర్‌కు జోడించు",
-    "mapLoading": "మ్యాప్ లోడ్ అవుతోంది...",
     "viewGoogleMaps": "Google Maps లో చూడండి",
-    "viewAppleMaps": "Apple Maps లో చూడండి",
-    "mapAriaLabel": "{{location}} మ్యాప్"
+    "viewAppleMaps": "Apple Maps లో చూడండి"
   },
   "info": {
     "sectionLabel": "అతిథుల గురించి",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "ఇతర అలర్జీ (పేర్కొనండి)",
     "allergiesHint": "ఆహార అలర్జీలు మరియు అసహనాలను మాత్రమే సూచించండి. అభ్యర్థించని వైద్య సమాచారాన్ని నమోదు చేయవద్దు.",
     "privacyConsent": "నాకు తెలియజేయబడింది మరియు నేను {{link}} ను అంగీకరిస్తున్నాను",
-    "privacyLink": "గోప్యతా విధానం",
     "healthConsent": "వేడుక మెనూను అనుకూలీకరించడానికి నా ఆరోగ్య డేటా (అలర్జీలు మరియు అసహనాలు) ప్రాసెసింగ్‌కు నేను సమ్మతిస్తున్నాను",
-    "ageConsent": "నాకు 14 సంవత్సరాలకు పైగా వయస్సు ఉందని లేదా, తక్కువ వయస్సు ఉంటే, నా తల్లిదండ్రులు లేదా సంరక్షకుల అనుమతి ఉందని ప్రకటిస్తున్నాను",
     "submitButton": "హాజరును నిర్ధారించు",
     "submittingButton": "పంపుతోంది...",
     "confirmedButton": "హాజరు నిర్ధారించబడింది",
     "alreadySubmitted": "మీరు ఇప్పటికే మీ హాజరును నిర్ధారించారు",
     "withdrawButton": "నా నిర్ధారణను ఉపసంహరించు",
-    "withdrawConfirm": "మీరు మీ నిర్ధారణను ఉపసంహరించాలని ఖచ్చితంగా అనుకుంటున్నారా?",
     "birthDateLabel": "పుట్టిన తేదీ",
     "ageUnder14Warning": "మీకు 14 సంవత్సరాల కంటే తక్కువ వయస్సు. మీకు తల్లిదండ్రులు లేదా సంరక్షకుల అనుమతి అవసరం.",
-    "parentalConsent": "నా తల్లిదండ్రులు లేదా సంరక్షకులు నా పాల్గొనడానికి అంగీకరిస్తున్నారు",
-    "downloadData": "నా డేటాను డౌన్‌లోడ్ చేయి"
+    "parentalConsent": "నా తల్లిదండ్రులు లేదా సంరక్షకులు నా పాల్గొనడానికి అంగీకరిస్తున్నారు"
   },
   "public": {
     "loadingInvitation": "ఆహ్వానం లోడ్ అవుతోంది...",
@@ -148,7 +129,6 @@
     "emptyText": "మీ వ్యక్తిగత వివాహ ఆహ్వాన పత్రికను సృష్టించండి మరియు భాగస్వామ్యం చేయండి.",
     "emptyDescription": "మీ ఆహ్వానం డేటాను నిర్వహించండి, అతిథులతో ప్రత్యేక లింక్‌ను భాగస్వామ్యం చేయండి మరియు వారి హాజరు నిర్ధారణలను స్వీకరించండి.",
     "createLink": "ఆహ్వానాన్ని సృష్టించండి",
-    "scrollAria": "తదుపరి విభాగానికి వెళ్ళండి",
     "privacyPolicy": "గోప్యతా విధానం",
     "terms": "నిబంధనలు",
     "legalNotice": "చట్టపరమైన నోటీసు"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

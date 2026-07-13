@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Ladataan...",
     "error": "Virhe",
     "close": "Sulje",
     "retry": "Yritä uudelleen",
     "save": "Tallenna muutokset",
-    "saving": "Tallennetaan...",
-    "cancel": "Peruuta",
     "copy": "Kopioi",
-    "copied": "Kopioitu",
-    "confirm": "Vahvista",
-    "yes": "Kyllä",
-    "no": "Ei",
     "back": "Takaisin",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Hallinnoi kutsusi tietoja, jaa ainutlaatuinen linkki vieraillesi ja vastaanota heidän osallistumisilmoituksensa.",
     "createInvitation": "Luo kutsusi",
     "haveInvitation": "Minulla on jo kutsu",
-    "privacyPolicy": "Tietosuojaseloste",
-    "terms": "Ehdot",
-    "legalNotice": "Oikeudellinen huomautus",
     "modalTitle": "Pääsy kutsuusi",
     "usernameLabel": "Käyttäjätunnus",
     "usernamePlaceholder": "Käyttäjätunnuksesi",
@@ -51,10 +41,7 @@
     "withBlessing": "Kummiensa {{godparent1}} ja {{godparent2}} siunauksella",
     "todayIsWedding": "Tänään on häät",
     "missing": "Jäljellä",
-    "daysAndHours": "{{days}} päivä(ä) ja {{hours}} tunti(a)",
-    "minutes": "{{minutes}} minuutti(a)",
-    "todayIsTheDay": "Tänään on suuri päivä!",
-    "audioError": "Ääntä ei voitu ladata. Tarkista linkki."
+    "todayIsTheDay": "Tänään on suuri päivä!"
   },
   "details": {
     "sectionLabel": "Päivämäärä ja paikka",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Tervetuloa jakamaan tämä erityinen hetki kanssamme. Alempana löydät sijaintikartan.",
     "transport": "Kuljetus",
     "addToCalendar": "Lisää kalenteriin",
-    "mapLoading": "Ladataan karttaa...",
     "viewGoogleMaps": "Näytä Google Mapsissa",
-    "viewAppleMaps": "Näytä Apple Mapsissa",
-    "mapAriaLabel": "Kartta paikasta {{location}}"
+    "viewAppleMaps": "Näytä Apple Mapsissa"
   },
   "info": {
     "sectionLabel": "Tietoa vieraista",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Muu allergia (täsmennä)",
     "allergiesHint": "Ilmoita vain ruoka-allergiat ja -intoleranssit. Älä syötä tarpeettomia terveystietoja.",
     "privacyConsent": "Olen saanut tiedotteen ja hyväksyn {{link}}",
-    "privacyLink": "Tietosuojaselosteen",
     "healthConsent": "Annan suostumukseni terveystietojeni (allergiat ja intoleranssit) käsittelyyn juhlan menun mukauttamiseksi",
-    "ageConsent": "Vakuutan olevani yli 14-vuotias, tai jos olen alaikäinen, minulla on vanhempieni tai huoltajieni suostumus",
     "submitButton": "Vahvista osallistuminen",
     "submittingButton": "Lähetetään...",
     "confirmedButton": "Osallistuminen vahvistettu",
     "alreadySubmitted": "Olet jo vahvistanut osallistumisesi",
     "withdrawButton": "Peruuta vahvistukseni",
-    "withdrawConfirm": "Oletko varma, että haluat peruuttaa vahvistuksesi?",
     "birthDateLabel": "Syntymäaika",
     "ageUnder14Warning": "Olet alle 14-vuotias. Tarvitset vanhempiesi tai huoltajiesi suostumuksen.",
-    "parentalConsent": "Vanhempani tai huoltajani suostuvat osallistumiseeni",
-    "downloadData": "Lataa tietoni"
+    "parentalConsent": "Vanhempani tai huoltajani suostuvat osallistumiseeni"
   },
   "public": {
     "loadingInvitation": "Ladataan kutsua…",
@@ -148,7 +129,6 @@
     "emptyText": "Luo ja jaa oma henkilökohtainen hääkutsusi.",
     "emptyDescription": "Hallinnoi kutsusi tietoja, jaa ainutlaatuinen linkki vieraillesi ja vastaanota heidän osallistumisilmoituksensa.",
     "createLink": "Luo kutsu",
-    "scrollAria": "Siirry seuraavaan osioon",
     "privacyPolicy": "Tietosuojaseloste",
     "terms": "Ehdot",
     "legalNotice": "Oikeudellinen huomautus"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Ładowanie...",
     "error": "Błąd",
     "close": "Zamknij",
     "retry": "Spróbuj ponownie",
     "save": "Zapisz zmiany",
-    "saving": "Zapisywanie...",
-    "cancel": "Anuluj",
     "copy": "Kopiuj",
-    "copied": "Skopiowano",
-    "confirm": "Potwierdź",
-    "yes": "Tak",
-    "no": "Nie",
     "back": "Wstecz",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Zarządzaj danymi zaproszenia, udostępnij unikalny link gościom i otrzymuj ich potwierdzenia obecności.",
     "createInvitation": "Stwórz zaproszenie",
     "haveInvitation": "Mam już zaproszenie",
-    "privacyPolicy": "Polityka prywatności",
-    "terms": "Warunki",
-    "legalNotice": "Informacja prawna",
     "modalTitle": "Dostęp do zaproszenia",
     "usernameLabel": "Nazwa użytkownika",
     "usernamePlaceholder": "Twoja nazwa użytkownika",
@@ -51,10 +41,7 @@
     "withBlessing": "Z błogosławieństwem rodziców chrzestnych {{godparent1}} i {{godparent2}}",
     "todayIsWedding": "Dziś jest ślub",
     "missing": "Pozostało",
-    "daysAndHours": "{{days}} dni i {{hours}} godzin(y)",
-    "minutes": "{{minutes}} minut(y)",
-    "todayIsTheDay": "Dziś jest ten wielki dzień!",
-    "audioError": "Nie udało się załadować dźwięku. Sprawdź link."
+    "todayIsTheDay": "Dziś jest ten wielki dzień!"
   },
   "details": {
     "sectionLabel": "Data i miejsce",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Czekamy na Ciebie, aby dzielić tę wyjątkową chwilę. Poniżej znajdziesz mapę lokalizacji.",
     "transport": "Transport",
     "addToCalendar": "Dodaj do kalendarza",
-    "mapLoading": "Ładowanie mapy...",
     "viewGoogleMaps": "Zobacz w Google Maps",
-    "viewAppleMaps": "Zobacz w Apple Maps",
-    "mapAriaLabel": "Mapa {{location}}"
+    "viewAppleMaps": "Zobacz w Apple Maps"
   },
   "info": {
     "sectionLabel": "O gościach",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Inna alergia (określ)",
     "allergiesHint": "Podaj tylko alergie i nietolerancje pokarmowe. Nie wprowadzaj niezamówionych informacji medycznych.",
     "privacyConsent": "Zostałem poinformowany i akceptuję {{link}}",
-    "privacyLink": "Politykę prywatności",
     "healthConsent": "Wyrażam zgodę na przetwarzanie moich danych zdrowotnych (alergii i nietolerancji) w celu dostosowania menu uroczystości",
-    "ageConsent": "Oświadczam, że mam ukończone 14 lat lub, jeśli jestem niepełnoletni, posiadam zgodę rodziców lub opiekunów",
     "submitButton": "Potwierdź obecność",
     "submittingButton": "Wysyłanie...",
     "confirmedButton": "Obecność potwierdzona",
     "alreadySubmitted": "Już potwierdziłeś swoją obecność",
     "withdrawButton": "Wycofaj potwierdzenie",
-    "withdrawConfirm": "Czy na pewno chcesz wycofać potwierdzenie?",
     "birthDateLabel": "Data urodzenia",
     "ageUnder14Warning": "Masz mniej niż 14 lat. Potrzebujesz zgody rodziców lub opiekunów.",
-    "parentalConsent": "Moi rodzice lub opiekunowie wyrażają zgodę na mój udział",
-    "downloadData": "Pobierz moje dane"
+    "parentalConsent": "Moi rodzice lub opiekunowie wyrażają zgodę na mój udział"
   },
   "public": {
     "loadingInvitation": "Ładowanie zaproszenia...",
@@ -148,7 +129,6 @@
     "emptyText": "Stwórz i udostępnij swoje spersonalizowane zaproszenie ślubne.",
     "emptyDescription": "Zarządzaj danymi zaproszenia, udostępnij unikalny link gościom i otrzymuj ich potwierdzenia obecności.",
     "createLink": "Stwórz zaproszenie",
-    "scrollAria": "Przejdź do następnej sekcji",
     "privacyPolicy": "Polityka prywatności",
     "terms": "Warunki",
     "legalNotice": "Informacja prawna"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

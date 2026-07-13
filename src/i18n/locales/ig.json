@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Na-ebu...",
     "error": "Njehie",
     "close": "Mechie",
     "retry": "Nwagharịa",
     "save": "Chekwaa mgbanwe",
-    "saving": "Na-echekwa...",
-    "cancel": "Kagbuo",
     "copy": "Detuo",
-    "copied": "E detuola",
-    "confirm": "Kwenye",
-    "yes": "Ee",
-    "no": "Mba",
     "back": "Laghachi azụ",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Jikwaa data akwụkwọ ịkpọ òkù gị, kesaa njikọ pụrụ iche na ndị ọbịa gị ma nata nkwenye ọbịbịa ha.",
     "createInvitation": "Mepụta akwụkwọ ịkpọ òkù gị",
     "haveInvitation": "Enwere m akwụkwọ ịkpọ òkù",
-    "privacyPolicy": "Iwu Nzuzo",
-    "terms": "Usoro",
-    "legalNotice": "Ọkwa Iwu",
     "modalTitle": "Banye na akwụkwọ ịkpọ òkù gị",
     "usernameLabel": "Aha njirimara",
     "usernamePlaceholder": "Aha njirimara gị",
@@ -51,10 +41,7 @@
     "withBlessing": "Site na ngọzi nke {{godparent1}} na {{godparent2}}",
     "todayIsWedding": "Taa bụ agbamakwụkwọ",
     "missing": "Fọdụrụ",
-    "daysAndHours": "Ụbọchị {{days}} na awa {{hours}}",
-    "minutes": "Nkeji {{minutes}}",
-    "todayIsTheDay": "Taa bụ nnukwu ụbọchị!",
-    "audioError": "Enweghị ike iburu ọdịyo. Lelee njikọ ahụ."
+    "todayIsTheDay": "Taa bụ nnukwu ụbọchị!"
   },
   "details": {
     "sectionLabel": "Ụbọchị na ebe",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Anyị na-echere gị ikere òkè n'oge pụrụ iche a. N'okpuru, ị ga-ahụ map ọnọdụ.",
     "transport": "Ụgbọ njem",
     "addToCalendar": "Tinye na kalenda",
-    "mapLoading": "Na-ebu map...",
     "viewGoogleMaps": "Lelee na Google Maps",
-    "viewAppleMaps": "Lelee na Apple Maps",
-    "mapAriaLabel": "Map nke {{location}}"
+    "viewAppleMaps": "Lelee na Apple Maps"
   },
   "info": {
     "sectionLabel": "Banyere ndị ọbịa",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Ihe nfụkasị ọzọ (kọwaa)",
     "allergiesHint": "Gosi naanị ihe nfụkasị nri na enweghị ndidi. Etinyela ozi ahụike a na-arịọghị.",
     "privacyConsent": "A gwara m, m wee kweta {{link}}",
-    "privacyLink": "Iwu Nzuzo",
     "healthConsent": "M kwetere nhazi nke data ahụike m (ihe nfụkasị na enweghị ndidi) iji gbanwee nri emume",
-    "ageConsent": "M na-ekwupụta na m karịrị afọ 14 ma ọ bụ, ọ bụrụ na m erubeghị, enwere m nkwenye nke ndị mụrụ m ma ọ bụ ndị nlekọta m",
     "submitButton": "Kwenye ọbịbịa",
     "submittingButton": "Na-ezipu...",
     "confirmedButton": "E kwenyela ọbịbịa",
     "alreadySubmitted": "Ị kwenyelarịrị ọbịbịa gị",
     "withdrawButton": "Wepụ nkwenye m",
-    "withdrawConfirm": "Ị ji n'aka na ị chọrọ ịwepụ nkwenye gị?",
     "birthDateLabel": "Ụbọchị ọmụmụ",
     "ageUnder14Warning": "Ị rubeghi afọ 14. Ị chọrọ nkwenye nke ndị mụrụ gị ma ọ bụ ndị nlekọta gị.",
-    "parentalConsent": "Ndị mụrụ m ma ọ bụ ndị nlekọta m kwetere isonye m",
-    "downloadData": "Budata data m"
+    "parentalConsent": "Ndị mụrụ m ma ọ bụ ndị nlekọta m kwetere isonye m"
   },
   "public": {
     "loadingInvitation": "Na-ebu akwụkwọ ịkpọ òkù...",
@@ -148,7 +129,6 @@
     "emptyText": "Mepụta ma kesaa akwụkwọ ịkpọ òkù agbamakwụkwọ nke gị.",
     "emptyDescription": "Jikwaa data akwụkwọ ịkpọ òkù gị, kesaa njikọ pụrụ iche na ndị ọbịa gị ma nata nkwenye ọbịbịa ha.",
     "createLink": "Mepụta akwụkwọ ịkpọ òkù",
-    "scrollAria": "Gaa na ngalaba na-esote",
     "privacyPolicy": "Iwu Nzuzo",
     "terms": "Usoro",
     "legalNotice": "Ọkwa Iwu"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

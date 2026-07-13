@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Učitavanje...",
     "error": "Greška",
     "close": "Zatvori",
     "retry": "Pokušaj ponovo",
     "save": "Spremi promjene",
-    "saving": "Spremanje...",
-    "cancel": "Odustani",
     "copy": "Kopiraj",
-    "copied": "Kopirano",
-    "confirm": "Potvrdi",
-    "yes": "Da",
-    "no": "Ne",
     "back": "Natrag",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Upravljajte podacima svoje pozivnice, podijelite jedinstvenu poveznicu sa svojim gostima i primajte njihove potvrde dolaska.",
     "createInvitation": "Izradite svoju pozivnicu",
     "haveInvitation": "Već imam pozivnicu",
-    "privacyPolicy": "Pravila o privatnosti",
-    "terms": "Uvjeti",
-    "legalNotice": "Pravna obavijest",
     "modalTitle": "Pristup pozivnici",
     "usernameLabel": "Korisničko ime",
     "usernamePlaceholder": "Vaše korisničko ime",
@@ -51,10 +41,7 @@
     "withBlessing": "Uz blagoslov njihovih kumova {{godparent1}} i {{godparent2}}",
     "todayIsWedding": "Danas je vjenčanje",
     "missing": "Preostaje",
-    "daysAndHours": "{{days}} dan(a) i {{hours}} sat(i)",
-    "minutes": "{{minutes}} minut(a)",
-    "todayIsTheDay": "Danas je veliki dan!",
-    "audioError": "Nije bilo moguće učitati zvuk. Provjerite poveznicu."
+    "todayIsTheDay": "Danas je veliki dan!"
   },
   "details": {
     "sectionLabel": "Datum i mjesto",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Veselimo se što ćemo podijeliti ovaj poseban trenutak s vama. Ispod ćete pronaći kartu lokacije.",
     "transport": "Prijevoz",
     "addToCalendar": "Dodaj u kalendar",
-    "mapLoading": "Učitavanje karte...",
     "viewGoogleMaps": "Prikaži na Google kartama",
-    "viewAppleMaps": "Prikaži na Apple kartama",
-    "mapAriaLabel": "Karta lokacije {{location}}"
+    "viewAppleMaps": "Prikaži na Apple kartama"
   },
   "info": {
     "sectionLabel": "O gostima",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Druga alergija (navedite)",
     "allergiesHint": "Navedite samo alergije i intolerancije na hranu. Ne unosite medicinske podatke koji nisu traženi.",
     "privacyConsent": "Obaviješten/a sam i prihvaćam {{link}}",
-    "privacyLink": "Pravila o privatnosti",
     "healthConsent": "Pristajem na obradu svojih zdravstvenih podataka (alergije i intolerancije) radi prilagodbe jelovnika proslave",
-    "ageConsent": "Izjavljujem da imam više od 14 godina ili, ako sam mlađi/a, da imam suglasnost roditelja ili skrbnika",
     "submitButton": "Potvrdi dolazak",
     "submittingButton": "Slanje...",
     "confirmedButton": "Dolazak potvrđen",
     "alreadySubmitted": "Već ste potvrdili svoj dolazak",
     "withdrawButton": "Povuci svoju potvrdu",
-    "withdrawConfirm": "Jeste li sigurni da želite povući svoju potvrdu?",
     "birthDateLabel": "Datum rođenja",
     "ageUnder14Warning": "Mlađi ste od 14 godina. Potrebna vam je suglasnost roditelja ili skrbnika.",
-    "parentalConsent": "Moji roditelji ili skrbnici pristaju na moje sudjelovanje",
-    "downloadData": "Preuzmi moje podatke"
+    "parentalConsent": "Moji roditelji ili skrbnici pristaju na moje sudjelovanje"
   },
   "public": {
     "loadingInvitation": "Učitavanje pozivnice…",
@@ -148,7 +129,6 @@
     "emptyText": "Izradite i podijelite svoju personaliziranu pozivnicu za vjenčanje.",
     "emptyDescription": "Upravljajte podacima svoje pozivnice, podijelite jedinstvenu poveznicu sa svojim gostima i primajte njihove potvrde dolaska.",
     "createLink": "Izradi pozivnicu",
-    "scrollAria": "Idi na sljedeći odjeljak",
     "privacyPolicy": "Pravila o privatnosti",
     "terms": "Uvjeti",
     "legalNotice": "Pravna obavijest"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

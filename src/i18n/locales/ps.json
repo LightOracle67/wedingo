@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "پورته کېږي...",
     "error": "تېروتنه",
     "close": "وتړئ",
     "retry": "بيا هڅه",
     "save": "بدلونونه خوندي کړئ",
-    "saving": "خوندي کېږي...",
-    "cancel": "لغوه",
     "copy": "کاپي",
-    "copied": "کاپي شو",
-    "confirm": "تایید",
-    "yes": "هو",
-    "no": "نه",
     "back": "بېرته",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "د خپلې بلنې معلومات اداره کړئ، له خپلو مېلمنو سره ځانګړی لېنک شریک کړئ او د هغوی د گډون تایید ترلاسه کړئ.",
     "createInvitation": "خپله بلنه جوړه کړئ",
     "haveInvitation": "زه له وړاندې بلنه لرم",
-    "privacyPolicy": "د محرمیت تګلاره",
-    "terms": "شرایط",
-    "legalNotice": "قانوني خبرتیا",
     "modalTitle": "خپلې بلنې ته ننوځئ",
     "usernameLabel": "کارن نوم",
     "usernamePlaceholder": "ستاسې کارن نوم",
@@ -51,10 +41,7 @@
     "withBlessing": "د {{godparent1}} او {{godparent2}} په برکت",
     "todayIsWedding": "نن واده دی",
     "missing": "پاتې",
-    "daysAndHours": "{{days}} ورځې او {{hours}} ساعته",
-    "minutes": "{{minutes}} دقیقې",
-    "todayIsTheDay": "نن لویه ورځ ده!",
-    "audioError": "غږ پورته نه شو. لېنک وګورئ."
+    "todayIsTheDay": "نن لویه ورځ ده!"
   },
   "details": {
     "sectionLabel": "نیټه او ځای",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "موږ ستاسې په تمه یو چې دا ځانګړې شیبه شریکه کړو. لاندې د موقعیت نقشه ده.",
     "transport": "ترانسپورت",
     "addToCalendar": "تقویم ته اضافه کړئ",
-    "mapLoading": "نقشه پورته کېږي...",
     "viewGoogleMaps": "په Google Maps کې وګورئ",
-    "viewAppleMaps": "په Apple Maps کې وګورئ",
-    "mapAriaLabel": "د {{location}} نقشه"
+    "viewAppleMaps": "په Apple Maps کې وګورئ"
   },
   "info": {
     "sectionLabel": "د مېلمنو په اړه",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "بله الرجي (مشخص کړئ)",
     "allergiesHint": "یوازې خوراکي الرجي او نه زغمل ولیکئ. غیر غوښتل شوي طبي معلومات مه داخل کړئ.",
     "privacyConsent": "زه خبر شوی یم او {{link}} منم",
-    "privacyLink": "د محرمیت تګلاره",
     "healthConsent": "زه د خپلو روغتیایي معلوماتو (الرجي او نه زغمل) پروسس د لمانځغونډې د خواړو د برابرولو لپاره منم",
-    "ageConsent": "زه اعلانوم چې له ۱۴ کلو څخه لوړ یم، یا که ځوان یم، د خپلو والدینو یا سرپرستانو رضایت لرم",
     "submitButton": "گډون تایید کړئ",
     "submittingButton": "لېږل کېږي...",
     "confirmedButton": "گډون تایید شو",
     "alreadySubmitted": "تاسې له وړاندې خپل گډون تایید کړی",
     "withdrawButton": "زما تایید بېرته واخلئ",
-    "withdrawConfirm": "آیا ډاډه یاست چې غواړئ خپل تایید بېرته واخلئ؟",
     "birthDateLabel": "د زېږون نیټه",
     "ageUnder14Warning": "تاسې له ۱۴ کلو څخه ځوان یاست. د والدینو یا سرپرستانو رضایت ته اړتیا لرئ.",
-    "parentalConsent": "زما والدین یا سرپرستان زما گډون مني",
-    "downloadData": "زما معلومات ډاونلوډ کړئ"
+    "parentalConsent": "زما والدین یا سرپرستان زما گډون مني"
   },
   "public": {
     "loadingInvitation": "بلنه پورته کېږي…",
@@ -148,7 +129,6 @@
     "emptyText": "خپله ځانګړې واده بلنه جوړه او شریکه کړئ.",
     "emptyDescription": "د خپلې بلنې معلومات اداره کړئ، له خپلو مېلمنو سره ځانګړی لېنک شریک کړئ او د هغوی د گډون تایید ترلاسه کړئ.",
     "createLink": "بلنه جوړه کړئ",
-    "scrollAria": "بلې برخې ته لاړ شئ",
     "privacyPolicy": "د محرمیت تګلاره",
     "terms": "شرایط",
     "legalNotice": "قانوني خبرتیا"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

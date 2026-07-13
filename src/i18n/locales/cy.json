@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Yn llwytho...",
     "error": "Gwall",
     "close": "Cau",
     "retry": "Ceisio eto",
     "save": "Cadw newidiadau",
-    "saving": "Yn cadw...",
-    "cancel": "Canslo",
     "copy": "Copïo",
-    "copied": "Wedi'i gopïo",
-    "confirm": "Cadarnhau",
-    "yes": "Iawn",
-    "no": "Na",
     "back": "Yn ôl",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Rheolwch ddata eich gwahoddiad, rhannwch ddolen unigryw gyda'ch gwesteion a derbyniwch eu cadarnhadau presenoldeb.",
     "createInvitation": "Crëwch eich gwahoddiad",
     "haveInvitation": "Mae gen i wahoddiad eisoes",
-    "privacyPolicy": "Polisi Preifatrwydd",
-    "terms": "Telerau",
-    "legalNotice": "Hysbysiad Cyfreithiol",
     "modalTitle": "Mynediad i'ch gwahoddiad",
     "usernameLabel": "Enw defnyddiwr",
     "usernamePlaceholder": "Eich enw defnyddiwr",
@@ -51,10 +41,7 @@
     "withBlessing": "Gyda bendith eu rhieni bedydd {{godparent1}} a {{godparent2}}",
     "todayIsWedding": "Heddiw mae'r briodas",
     "missing": "Ar ôl",
-    "daysAndHours": "{{days}} diwrnod(au) a {{hours}} awr(au)",
-    "minutes": "{{minutes}} munud(au)",
-    "todayIsTheDay": "Heddiw yw'r diwrnod mawr!",
-    "audioError": "Ni ellid llwytho'r sain. Gwiriwch y ddolen."
+    "todayIsTheDay": "Heddiw yw'r diwrnod mawr!"
   },
   "details": {
     "sectionLabel": "Dyddiad a lleoliad",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Rydym yn eich disgwyl i rannu'r foment arbennig hon. Isod fe welwch y map lleoliad.",
     "transport": "Cludiant",
     "addToCalendar": "Ychwanegu at y calendr",
-    "mapLoading": "Yn llwytho'r map...",
     "viewGoogleMaps": "Gweld yn Google Maps",
-    "viewAppleMaps": "Gweld yn Apple Maps",
-    "mapAriaLabel": "Map o {{location}}"
+    "viewAppleMaps": "Gweld yn Apple Maps"
   },
   "info": {
     "sectionLabel": "Am y gwesteion",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Alergedd arall (manylu)",
     "allergiesHint": "Nodwch alergeddau bwyd ac anoddefiadau yn unig. Peidiwch â rhoi gwybodaeth feddygol na ofynnwyd amdani.",
     "privacyConsent": "Rwyf wedi cael gwybod ac yn derbyn {{link}}",
-    "privacyLink": "y Polisi Preifatrwydd",
     "healthConsent": "Rwy'n cydsynio i brosesu fy nata iechyd (alergeddau ac anoddefiadau) i addasu bwydlen y dathliad",
-    "ageConsent": "Rwy'n datgan fy mod dros 14 oed neu, os wyf yn iau, fod gennyf gydsyniad fy rhieni neu warcheidwaid",
     "submitButton": "Cadarnhau presenoldeb",
     "submittingButton": "Yn anfon...",
     "confirmedButton": "Presenoldeb wedi'i gadarnhau",
     "alreadySubmitted": "Rydych eisoes wedi cadarnhau eich presenoldeb",
     "withdrawButton": "Tynnu fy nghadarnhad yn ôl",
-    "withdrawConfirm": "Ydych chi'n siŵr eich bod am dynnu eich cadarnhad yn ôl?",
     "birthDateLabel": "Dyddiad geni",
     "ageUnder14Warning": "Rydych o dan 14 oed. Mae angen cydsyniad eich rhieni neu warcheidwaid.",
-    "parentalConsent": "Mae fy rhieni neu warcheidwaid yn cydsynio i'm cyfranogiad",
-    "downloadData": "Lawrlwytho fy nata"
+    "parentalConsent": "Mae fy rhieni neu warcheidwaid yn cydsynio i'm cyfranogiad"
   },
   "public": {
     "loadingInvitation": "Yn llwytho gwahoddiad…",
@@ -148,7 +129,6 @@
     "emptyText": "Crëwch a rhannwch eich gwahoddiad priodas personol.",
     "emptyDescription": "Rheolwch ddata eich gwahoddiad, rhannwch ddolen unigryw gyda'ch gwesteion a derbyniwch eu cadarnhadau presenoldeb.",
     "createLink": "Crëwch wahoddiad",
-    "scrollAria": "Mynd i'r adran nesaf",
     "privacyPolicy": "Polisi Preifatrwydd",
     "terms": "Telerau",
     "legalNotice": "Hysbysiad Cyfreithiol"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

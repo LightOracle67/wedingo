@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "वेडिंगो",
     "loading": "लोड हो रहा है...",
     "error": "त्रुटि",
     "close": "बंद करें",
     "retry": "पुनः प्रयास करें",
     "save": "परिवर्तन सहेजें",
-    "saving": "सहेज रहा है...",
-    "cancel": "रद्द करें",
     "copy": "कॉपी करें",
-    "copied": "कॉपी हो गया",
-    "confirm": "पुष्टि करें",
-    "yes": "हाँ",
-    "no": "नहीं",
     "back": "वापस जाएँ",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "अपने निमंत्रण का डेटा प्रबंधित करें, मेहमानों के साथ एक अनूठा लिंक साझा करें और उनकी उपस्थिति की पुष्टि प्राप्त करें।",
     "createInvitation": "अपना निमंत्रण बनाएँ",
     "haveInvitation": "मेरे पास पहले से निमंत्रण है",
-    "privacyPolicy": "गोपनीयता नीति",
-    "terms": "शर्तें",
-    "legalNotice": "कानूनी सूचना",
     "modalTitle": "अपने निमंत्रण तक पहुँचें",
     "usernameLabel": "उपयोगकर्ता नाम",
     "usernamePlaceholder": "आपका उपयोगकर्ता नाम",
@@ -51,10 +41,7 @@
     "withBlessing": "गॉडपेरेंट्स {{godparent1}} और {{godparent2}} के आशीर्वाद से",
     "todayIsWedding": "आज शादी है",
     "missing": "शेष",
-    "daysAndHours": "{{days}} दिन और {{hours}} घंटे",
-    "minutes": "{{minutes}} मिनट",
-    "todayIsTheDay": "आज का दिन बड़ा खास है!",
-    "audioError": "ऑडियो लोड नहीं हो सका। लिंक की जाँच करें।"
+    "todayIsTheDay": "आज का दिन बड़ा खास है!"
   },
   "details": {
     "sectionLabel": "तारीख और स्थान",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "हम इस खास पल को आपके साथ साझा करने की उम्मीद करते हैं। नीचे स्थान का नक्शा देखें।",
     "transport": "परिवहन",
     "addToCalendar": "कैलेंडर में जोड़ें",
-    "mapLoading": "नक्शा लोड हो रहा है...",
     "viewGoogleMaps": "Google Maps में देखें",
-    "viewAppleMaps": "Apple Maps में देखें",
-    "mapAriaLabel": "{{location}} का नक्शा"
+    "viewAppleMaps": "Apple Maps में देखें"
   },
   "info": {
     "sectionLabel": "मेहमानों के बारे में",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "अन्य एलर्जी (निर्दिष्ट करें)",
     "allergiesHint": "केवल खाद्य एलर्जी और असहिष्णुता बताएँ। अनावश्यक चिकित्सा जानकारी न दें।",
     "privacyConsent": "मुझे सूचित किया गया है और मैं {{link}} स्वीकार करता/करती हूँ",
-    "privacyLink": "गोपनीयता नीति",
     "healthConsent": "मैं समारोह के मेनू को अनुकूलित करने के लिए अपने स्वास्थ्य डेटा (एलर्जी और असहिष्णुता) के प्रसंस्करण के लिए सहमति देता/देती हूँ",
-    "ageConsent": "मैं घोषणा करता/करती हूँ कि मेरी आयु 14 वर्ष से अधिक है, या यदि मैं नाबालिग हूँ, तो मेरे माता-पिता या अभिभावकों की सहमति है",
     "submitButton": "उपस्थिति की पुष्टि करें",
     "submittingButton": "भेज रहा है...",
     "confirmedButton": "उपस्थिति की पुष्टि हो गई",
     "alreadySubmitted": "आप पहले ही अपनी उपस्थिति की पुष्टि कर चुके हैं",
     "withdrawButton": "अपनी पुष्टि वापस लें",
-    "withdrawConfirm": "क्या आप वाकई अपनी पुष्टि वापस लेना चाहते हैं?",
     "birthDateLabel": "जन्म तिथि",
     "ageUnder14Warning": "आपकी आयु 14 वर्ष से कम है। आपको अपने माता-पिता या अभिभावकों की सहमति की आवश्यकता है।",
-    "parentalConsent": "मेरे माता-पिता या अभिभावक मेरी भागीदारी के लिए सहमति देते हैं",
-    "downloadData": "मेरा डेटा डाउनलोड करें"
+    "parentalConsent": "मेरे माता-पिता या अभिभावक मेरी भागीदारी के लिए सहमति देते हैं"
   },
   "public": {
     "loadingInvitation": "निमंत्रण लोड हो रहा है...",
@@ -148,7 +129,6 @@
     "emptyText": "अपना व्यक्तिगत विवाह निमंत्रण बनाएँ और साझा करें।",
     "emptyDescription": "अपने निमंत्रण का डेटा प्रबंधित करें, मेहमानों के साथ एक अनूठा लिंक साझा करें और उनकी उपस्थिति की पुष्टि प्राप्त करें।",
     "createLink": "निमंत्रण बनाएँ",
-    "scrollAria": "अगले अनुभाग पर जाएँ",
     "privacyPolicy": "गोपनीयता नीति",
     "terms": "शर्तें",
     "legalNotice": "कानूनी सूचना"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

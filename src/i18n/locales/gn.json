@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Ojehupytéma...",
     "error": "Jejavy",
     "close": "Mboty",
     "retry": "Eñeha'ãjey",
     "save": "Ñongatu moambuepyre",
-    "saving": "Oñeñongatúma...",
-    "cancel": "Moĩ'ỹ",
     "copy": "Mboguejy",
-    "copied": "Oñemboguejy",
-    "confirm": "Moañete",
-    "yes": "Héẽ",
-    "no": "Nahániri",
     "back": "Jevy",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Eñangareko nde ñepepyrũ marandu rehe, emboguapy joajuha tee umi oñepepyrũvape ha ereko umi mba'ete hikuái.",
     "createInvitation": "Ejapo nde ñepepyrũ",
     "haveInvitation": "Arekóma peteĩ ñepepyrũ",
-    "privacyPolicy": "Ñemigua Ñangarekorã",
-    "terms": "Ñepyrũmby",
-    "legalNotice": "Léi Marandu",
     "modalTitle": "Eiké nde ñepepyrũme",
     "usernameLabel": "Puruhára réra",
     "usernamePlaceholder": "Nde puruhára réra",
@@ -51,10 +41,7 @@
     "withBlessing": "Ituvakuéra {{godparent1}} ha {{godparent2}} rovánguéra ndive",
     "todayIsWedding": "Ko árape menda",
     "missing": "Oĩ'ỹva",
-    "daysAndHours": "{{days}} ára(kuéra) ha {{hours}} aravo(kuéra)",
-    "minutes": "{{minutes}} aravo'i(kuéra)",
-    "todayIsTheDay": "¡Ko árape ára guasu!",
-    "audioError": "Ndaikatúi ojehupi purahéi. Ehecha joajuha."
+    "todayIsTheDay": "¡Ko árape ára guasu!"
   },
   "details": {
     "sectionLabel": "Ara ha tenda",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Rohayhu eju emboja'o ko ára ijojaha'ỹva. Yvy gotyo ejuhúta tenda ñemoha'ãnga.",
     "transport": "Gueraha",
     "addToCalendar": "Embojoaju arapapáme",
-    "mapLoading": "Oñehupytéma ñemoha'ãnga...",
     "viewGoogleMaps": "Ehecha Google Maps-pe",
-    "viewAppleMaps": "Ehecha Apple Maps-pe",
-    "mapAriaLabel": "{{location}} ñemoha'ãnga"
+    "viewAppleMaps": "Ehecha Apple Maps-pe"
   },
   "info": {
     "sectionLabel": "Oñepepyrũvakuéra rehegua",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Ambue allergia (emoñe'ẽ)",
     "allergiesHint": "Tembi'u allergiakuéra ha jejoko añónte emombe'u. Aníke emoĩ pohã rehegua marandu ojejerure'ỹva.",
     "privacyConsent": "Aikuaaukáma ha amoneĩ {{link}}",
-    "privacyLink": "Ñemigua Ñangarekorã",
     "healthConsent": "Amoneĩ che tesãi marandu (allergiakuéra ha jejoko) oñeñangareko haguã tembi'u arete peguarã",
-    "ageConsent": "Aikuaauka aguerekoha 14 ary guive térã, imichĩvéramo, areko che tuvakuéra térã che ñangarekohára moneĩ",
     "submitButton": "Emoañete jeju",
     "submittingButton": "Oñemondóma...",
     "confirmedButton": "Jeju oñemoañetéma",
     "alreadySubmitted": "Nde jeju oñemoañetéma",
     "withdrawButton": "Aipe'a che moañetepyre",
-    "withdrawConfirm": "¿Añetehápepa eipe'ase nde moañetepyre?",
     "birthDateLabel": "Heñói ára",
     "ageUnder14Warning": "Imitãve 14 ary. Eikotevẽ nde tuvakuéra térã ñangarekohára moneĩ.",
-    "parentalConsent": "Che tuvakuéra térã che ñangarekohára omoneĩ che jeike",
-    "downloadData": "Emboguejy che marandu"
+    "parentalConsent": "Che tuvakuéra térã che ñangarekohára omoneĩ che jeike"
   },
   "public": {
     "loadingInvitation": "Ojehupytéma ñepepyrũ…",
@@ -148,7 +129,6 @@
     "emptyText": "Ejapo ha emboguapy nde menda ñepepyrũ.",
     "emptyDescription": "Eñangareko nde ñepepyrũ marandu rehe, emboguapy joajuha tee umi oñepepyrũvape ha ereko umi mba'ete hikuái.",
     "createLink": "Ejapo ñepepyrũ",
-    "scrollAria": "Eho ambue voreme",
     "privacyPolicy": "Ñemigua Ñangarekorã",
     "terms": "Ñepyrũmby",
     "legalNotice": "Léi Marandu"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

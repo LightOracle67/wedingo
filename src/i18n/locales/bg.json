@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Зареждане...",
     "error": "Грешка",
     "close": "Затвори",
     "retry": "Опитай отново",
     "save": "Запази промените",
-    "saving": "Запазване...",
-    "cancel": "Отказ",
     "copy": "Копирай",
-    "copied": "Копирано",
-    "confirm": "Потвърди",
-    "yes": "Да",
-    "no": "Не",
     "back": "Назад",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Управлявай данните на поканата си, сподели уникален линк с гостите и получавай потвържденията им за присъствие.",
     "createInvitation": "Създай своята покана",
     "haveInvitation": "Вече имам покана",
-    "privacyPolicy": "Политика за поверителност",
-    "terms": "Условия",
-    "legalNotice": "Правна информация",
     "modalTitle": "Достъп до твоята покана",
     "usernameLabel": "Потребителско име",
     "usernamePlaceholder": "Твоето потребителско име",
@@ -51,10 +41,7 @@
     "withBlessing": "С благословията на кумовете {{godparent1}} и {{godparent2}}",
     "todayIsWedding": "Днес е сватбата",
     "missing": "Остават",
-    "daysAndHours": "{{days}} ден(дни) и {{hours}} час(а)",
-    "minutes": "{{minutes}} минут(и)",
-    "todayIsTheDay": "Днес е големият ден!",
-    "audioError": "Аудиото не можа да се зареди. Провери линка."
+    "todayIsTheDay": "Днес е големият ден!"
   },
   "details": {
     "sectionLabel": "Дата и място",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Очакваме те, за да споделим този специален момент. По-долу ще намериш картата с местоположението.",
     "transport": "Транспорт",
     "addToCalendar": "Добави в календара",
-    "mapLoading": "Зареждане на картата...",
     "viewGoogleMaps": "Виж в Google Maps",
-    "viewAppleMaps": "Виж в Apple Maps",
-    "mapAriaLabel": "Карта на {{location}}"
+    "viewAppleMaps": "Виж в Apple Maps"
   },
   "info": {
     "sectionLabel": "За гостите",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Друга алергия (посочи)",
     "allergiesHint": "Посочи само хранителни алергии и непоносимости. Не въвеждай непотърсена медицинска информация.",
     "privacyConsent": "Информиран/а съм и приемам {{link}}",
-    "privacyLink": "Политиката за поверителност",
     "healthConsent": "Съгласен/а съм с обработването на здравните ми данни (алергии и непоносимости) за адаптиране на менюто на тържеството",
-    "ageConsent": "Декларирам, че съм над 14 години или, ако съм по-малък/малка, че имам съгласието на моите родители или настойници",
     "submitButton": "Потвърди присъствие",
     "submittingButton": "Изпращане...",
     "confirmedButton": "Присъствието е потвърдено",
     "alreadySubmitted": "Вече си потвърдил/а присъствието си",
     "withdrawButton": "Оттегли потвърждението ми",
-    "withdrawConfirm": "Сигурен/а ли си, че искаш да оттеглиш потвърждението си?",
     "birthDateLabel": "Дата на раждане",
     "ageUnder14Warning": "Ти си под 14 години. Необходимо е съгласието на твоите родители или настойници.",
-    "parentalConsent": "Моите родители или настойници дават съгласие за участието ми",
-    "downloadData": "Изтегли моите данни"
+    "parentalConsent": "Моите родители или настойници дават съгласие за участието ми"
   },
   "public": {
     "loadingInvitation": "Зареждане на поканата…",
@@ -148,7 +129,6 @@
     "emptyText": "Създай и сподели своята персонализирана сватбена покана.",
     "emptyDescription": "Управлявай данните на поканата си, сподели уникален линк с гостите и получавай потвържденията им за присъствие.",
     "createLink": "Създай покана",
-    "scrollAria": "Отиди на следващата секция",
     "privacyPolicy": "Политика за поверителност",
     "terms": "Условия",
     "legalNotice": "Правна информация"
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

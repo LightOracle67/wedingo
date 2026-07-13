@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Carregant...",
     "error": "Error",
     "close": "Tancar",
     "retry": "Reintentar",
     "save": "Guardar canvis",
-    "saving": "Guardant...",
-    "cancel": "Cancel·lar",
     "copy": "Copiar",
-    "copied": "Copiat",
-    "confirm": "Confirmar",
-    "yes": "Sí",
-    "no": "No",
     "back": "Tornar",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Gestiona les dades de la teua invitació, compartix un enllaç únic amb els teus convidats i rep les seues confirmacions d'assistència.",
     "createInvitation": "Crear la teua invitació",
     "haveInvitation": "Ja tinc una invitació",
-    "privacyPolicy": "Política de Privacitat",
-    "terms": "Termes",
-    "legalNotice": "Avís Legal",
     "modalTitle": "Accedir a la teua invitació",
     "usernameLabel": "Nom d'usuari",
     "usernamePlaceholder": "El teu nom d'usuari",
@@ -51,10 +41,7 @@
     "withBlessing": "Amb la benedicció dels seus padrins {{godparent1}} i {{godparent2}}",
     "todayIsWedding": "Hui és la boda",
     "missing": "Falten",
-    "daysAndHours": "{{days}} dia(s) i {{hours}} hora(es)",
-    "minutes": "{{minutes}} minut(s)",
-    "todayIsTheDay": "Hui és el gran dia!",
-    "audioError": "No es va poder carregar l'àudio. Revisa l'enllaç."
+    "todayIsTheDay": "Hui és el gran dia!"
   },
   "details": {
     "sectionLabel": "Data i lloc",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "T'esperem per a compartir este moment tan especial. Més avall trobaràs el mapa d'ubicació.",
     "transport": "Transport",
     "addToCalendar": "Afegir al calendari",
-    "mapLoading": "Carregant el mapa...",
     "viewGoogleMaps": "Veure en Google Maps",
-    "viewAppleMaps": "Veure en Apple Maps",
-    "mapAriaLabel": "Mapa de {{location}}"
+    "viewAppleMaps": "Veure en Apple Maps"
   },
   "info": {
     "sectionLabel": "Sobre els convidats",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Una altra al·lèrgia (especificar)",
     "allergiesHint": "Indica només al·lèrgies i intoleràncies alimentàries. No introduïsques informació mèdica no sol·licitada.",
     "privacyConsent": "He sigut informat i accepte la {{link}}",
-    "privacyLink": "Política de Privacitat",
     "healthConsent": "Consent el tractament de les meues dades de salut (al·lèrgies i intoleràncies) per a adaptar el menú de la celebració",
-    "ageConsent": "Declare ser major de 14 anys o, si soc menor, tindre el consentiment dels meus pares o tutors",
     "submitButton": "Confirmar assistència",
     "submittingButton": "Enviant...",
     "confirmedButton": "Assistència confirmada",
     "alreadySubmitted": "Ja has confirmat la teua assistència",
     "withdrawButton": "Retirar la meua confirmació",
-    "withdrawConfirm": "Estàs segur de retirar la teua confirmació?",
     "birthDateLabel": "Data de naixement",
     "ageUnder14Warning": "Eres menor de 14 anys. Necessites el consentiment dels teus pares o tutors.",
-    "parentalConsent": "Els meus pares o tutors consenten la meua participació",
-    "downloadData": "Descarregar les meues dades"
+    "parentalConsent": "Els meus pares o tutors consenten la meua participació"
   },
   "public": {
     "loadingInvitation": "Carregant invitació…",
@@ -150,8 +131,7 @@
     "createLink": "Crear invitació",
     "privacyPolicy": "Política de Privacitat",
     "terms": "Termes",
-    "legalNotice": "Avís Legal",
-    "scrollAria": "Anar a la següent secció"
+    "legalNotice": "Avís Legal"
   },
   "setup": {
     "loadingTitle": "Carregant invitació",
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"

@@ -1,18 +1,11 @@
 {
   "common": {
-    "appName": "Wedingo",
     "loading": "Caricamento...",
     "error": "Errore",
     "close": "Chiudi",
     "retry": "Riprova",
     "save": "Salva modifiche",
-    "saving": "Salvataggio...",
-    "cancel": "Annulla",
     "copy": "Copia",
-    "copied": "Copiato",
-    "confirm": "Conferma",
-    "yes": "Sì",
-    "no": "No",
     "back": "Indietro",
     "accessibility": "Accesibilidad",
     "show": "Mostrar",
@@ -27,9 +20,6 @@
     "description": "Gestisci i dati del tuo invito, condividi un link unico con i tuoi invitati e ricevi le loro conferme di partecipazione.",
     "createInvitation": "Crea il tuo invito",
     "haveInvitation": "Ho già un invito",
-    "privacyPolicy": "Informativa sulla Privacy",
-    "terms": "Termini",
-    "legalNotice": "Note Legali",
     "modalTitle": "Accedi al tuo invito",
     "usernameLabel": "Nome utente",
     "usernamePlaceholder": "Il tuo nome utente",
@@ -51,10 +41,7 @@
     "withBlessing": "Con la benedizione dei loro testimoni {{godparent1}} e {{godparent2}}",
     "todayIsWedding": "Oggi è il matrimonio",
     "missing": "Mancano",
-    "daysAndHours": "{{days}} giorno(i) e {{hours}} ora(e)",
-    "minutes": "{{minutes}} minuto(i)",
-    "todayIsTheDay": "Oggi è il grande giorno!",
-    "audioError": "Impossibile caricare l'audio. Controlla il link."
+    "todayIsTheDay": "Oggi è il grande giorno!"
   },
   "details": {
     "sectionLabel": "Data e luogo",
@@ -66,10 +53,8 @@
     "welcomeWithoutTime": "Ti aspettiamo per condividere questo momento speciale. Più sotto troverai la mappa della location.",
     "transport": "Trasporto",
     "addToCalendar": "Aggiungi al calendario",
-    "mapLoading": "Caricamento mappa...",
     "viewGoogleMaps": "Vedi su Google Maps",
-    "viewAppleMaps": "Vedi su Apple Maps",
-    "mapAriaLabel": "Mappa di {{location}}"
+    "viewAppleMaps": "Vedi su Apple Maps"
   },
   "info": {
     "sectionLabel": "Informazioni sugli invitati",
@@ -126,19 +111,15 @@
     "allergiesPlaceholder": "Altra allergia (specificare)",
     "allergiesHint": "Indica solo allergie e intolleranze alimentari. Non inserire informazioni mediche non richieste.",
     "privacyConsent": "Sono stato informato e accetto la {{link}}",
-    "privacyLink": "Informativa sulla Privacy",
     "healthConsent": "Acconsento al trattamento dei miei dati sanitari (allergie e intolleranze) per personalizzare il menu della celebrazione",
-    "ageConsent": "Dichiaro di essere maggiorenne o, se minorenne, di avere il consenso dei miei genitori o tutori",
     "submitButton": "Conferma partecipazione",
     "submittingButton": "Invio...",
     "confirmedButton": "Partecipazione confermata",
     "alreadySubmitted": "Hai già confermato la tua partecipazione",
     "withdrawButton": "Ritira la mia conferma",
-    "withdrawConfirm": "Sei sicuro di voler ritirare la tua conferma?",
     "birthDateLabel": "Data di nascita",
     "ageUnder14Warning": "Hai meno di 14 anni. Hai bisogno del consenso dei tuoi genitori o tutori.",
-    "parentalConsent": "I miei genitori o tutori acconsentono alla mia partecipazione",
-    "downloadData": "Scarica i miei dati"
+    "parentalConsent": "I miei genitori o tutori acconsentono alla mia partecipazione"
   },
   "public": {
     "loadingInvitation": "Caricamento invito…",
@@ -150,8 +131,7 @@
     "createLink": "Crea invito",
     "privacyPolicy": "Informativa sulla Privacy",
     "terms": "Termini",
-    "legalNotice": "Note Legali",
-    "scrollAria": "Vai alla sezione successiva"
+    "legalNotice": "Note Legali"
   },
   "setup": {
     "loadingTitle": "Caricamento invito",
@@ -684,14 +664,6 @@
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo"
-  },
-  "chart": {
-    "noData": "Sin datos",
-    "confirmed": "confirmados",
-    "notAttending": "no asisten",
-    "noResponse": "sin responder",
-    "barChart": "Gráfico de barras",
-    "total": "total"
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"
