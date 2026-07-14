@@ -12,7 +12,20 @@
     "hide": "Ocultar",
     "section": "sección",
     "visible": "Visible",
-    "hidden": "Oculta"
+    "hidden": "Oculta",
+    "errorBoundary": {
+      "title": "Something went wrong",
+      "message": "Please reload the page to try again.",
+      "reload": "Reload page"
+    },
+    "toast": {
+      "close": "Close"
+    },
+    "skipToContent": "Skip to main content",
+    "adminBar": {
+      "ariaLabel": "Administration bar",
+      "fallback": "Administration"
+    }
   },
   "landing": {
     "title": "Wedingo — Faire-part de mariage",
@@ -90,7 +103,8 @@
     "prev": "Précédente",
     "next": "Suivante",
     "thumbnailAria": "Photo {{number}}",
-    "thumbnailAlt": "Miniature de photo de la galerie"
+    "thumbnailAlt": "Miniature de photo de la galerie",
+    "carouselLabel": "Image gallery, use arrow keys to navigate"
   },
   "rsvp": {
     "sectionLabel": "Confirmation de présence",
@@ -131,7 +145,10 @@
     "createLink": "Créer un faire-part",
     "privacyPolicy": "Politique de confidentialité",
     "terms": "Conditions d'utilisation",
-    "legalNotice": "Mentions légales"
+    "legalNotice": "Mentions légales",
+    "locationNotFound": "Could not locate this place.",
+    "locationMapError": "Could not load the map.",
+    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}"
   },
   "setup": {
     "loadingTitle": "Chargement du faire-part",
@@ -609,63 +626,81 @@
     "measureSuperadmin": "Super-administrateur protégé par Firebase Authentication + route cachée"
   },
   "a11y": {
-    "title": "Accesibilidad",
-    "close": "Cerrar",
-    "fontSize": "Tamaño de texto",
-    "fontNormal": "Normal",
+    "title": "Accessibilité",
+    "close": "Fermer",
+    "fontSize": "Taille du texte",
+    "fontNormal": "Normale",
     "fontLarge": "Grande",
     "fontExtraLarge": "Extra grande",
-    "lineSpacing": "Espaciado entre líneas",
+    "lineSpacing": "Espacement des lignes",
     "lineNormal": "Normal",
-    "lineWide": "Amplio",
-    "lineVeryWide": "Muy amplio",
-    "highContrast": "Alto contraste",
-    "reducedMotion": "Reducir animaciones",
-    "dyslexiaFont": "Fuente OpenDyslexic",
-    "moreSpacing": "Mayor espaciado de letras",
-    "underlineLinks": "Subrayar todos los enlaces",
-    "bigCursor": "Cursor grande",
-    "desaturate": "Escala de grises",
-    "strongFocus": "Indicadores de foco visibles"
+    "lineWide": "Large",
+    "lineVeryWide": "Très large",
+    "highContrast": "Contraste élevé",
+    "reducedMotion": "Réduire les animations",
+    "dyslexiaFont": "Police OpenDyslexic",
+    "moreSpacing": "Espacement des lettres accru",
+    "underlineLinks": "Souligner tous les liens",
+    "bigCursor": "Grand curseur",
+    "desaturate": "Niveaux de gris",
+    "strongFocus": "Indicateurs de focus visibles"
   },
   "music": {
-    "noMusic": "Sin música",
-    "loadError": "Error al cargar",
-    "label": "Música"
+    "noMusic": "Pas de musique",
+    "loadError": "Erreur de chargement",
+    "label": "Musique"
   },
   "print": {
-    "preparing": "Preparando impresión...",
-    "couplePhoto": "Foto de los novios",
-    "godparentsText": "Con la bendición de sus padrinos",
-    "dateAndPlace": "Fecha y lugar",
-    "celebrationTime": "Hora de la celebración: ",
-    "viewInGoogleMaps": "Ver ubicación en Google Maps",
-    "celebrationMessage": "Te esperamos para compartir este momento tan especial.",
-    "transport": "Transporte",
-    "aboutGuests": "Sobre los invitados",
-    "scheduleTitle": "Horario de la celebración",
-    "scheduleFallback": "El horario detallado se compartirá próximamente.",
-    "dressCode": "Código de vestimenta",
-    "dressCodeFallback": "Se comunicará más adelante.",
-    "aboutKids": "Sobre los niños",
-    "ourStory": "Nuestra historia",
-    "storyStarted": "Cómo empezó todo",
-    "storyFallback": "La historia se compartirá pronto.",
-    "gifts": "Regalos",
-    "bestGift": "Tu presencia es el mejor regalo",
-    "giftsFallback": "La información sobre regalos se compartirá próximamente.",
-    "bankDetails": "Datos bancarios",
-    "accommodation": "Alojamiento",
-    "whereToStay": "Dónde alojarse",
-    "accommodationFallback": "La información sobre alojamiento se compartirá próximamente.",
-    "footer": "Wedingo · Política de privacidad en wedingo-6c26a.web.app",
-    "closeWindow": "Cerrar ventana"
+    "preparing": "Préparation de l'impression…",
+    "couplePhoto": "Photo des mariés",
+    "godparentsText": "Avec la bénédiction de leurs parrains",
+    "dateAndPlace": "Date et lieu",
+    "celebrationTime": "Heure de la célébration : ",
+    "viewInGoogleMaps": "Voir sur Google Maps",
+    "celebrationMessage": "Nous vous attendons pour partager ce moment si spécial.",
+    "transport": "Transport",
+    "aboutGuests": "À propos des invités",
+    "scheduleTitle": "Programme de la célébration",
+    "scheduleFallback": "Le programme détaillé sera communiqué prochainement.",
+    "dressCode": "Code vestimentaire",
+    "dressCodeFallback": "Sera communiqué ultérieurement.",
+    "aboutKids": "Enfants",
+    "ourStory": "Notre histoire",
+    "storyStarted": "Comment tout a commencé",
+    "storyFallback": "Notre histoire sera bientôt partagée.",
+    "gifts": "Cadeaux",
+    "bestGift": "Votre présence est le plus beau des cadeaux",
+    "giftsFallback": "Les informations cadeaux seront bientôt disponibles.",
+    "bankDetails": "Coordonnées bancaires",
+    "accommodation": "Hébergement",
+    "whereToStay": "Où se loger",
+    "accommodationFallback": "Les informations sur l'hébergement seront bientôt disponibles.",
+    "footer": "Wedingo · Politique de confidentialité sur wedingo-6c26a.web.app",
+    "closeWindow": "Fermer la fenêtre"
   },
   "sectionOrder": {
-    "moveUp": "Mover hacia arriba",
-    "moveDown": "Mover hacia abajo"
+    "moveUp": "Déplacer vers le haut",
+    "moveDown": "Déplacer vers le bas"
   },
   "langSwitcher": {
-    "label": "Seleccionar idioma"
+    "label": "Choisir la langue"
+  },
+  "csv": {
+    "companion_one": "1 companion",
+    "companion_other": "{{count}} companions"
+  },
+  "langGroups": {
+    "spain": "Spain",
+    "westernEurope": "Western Europe",
+    "nordicEurope": "Nordic Europe",
+    "centralEurope": "Central Europe",
+    "southernEurope": "Southern Europe / Balkans",
+    "easternEurope": "Eastern Europe / Caucasus",
+    "eastAsia": "East Asia",
+    "southAsia": "South Asia",
+    "southeastAsia": "Southeast Asia",
+    "centralAsia": "Central Asia / Middle East",
+    "africa": "Africa",
+    "americas": "Americas"
   }
 }

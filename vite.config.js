@@ -19,6 +19,17 @@ function buildTimestamp() {
 export default defineConfig({
   plugins: [react(), tailwindcss(), buildTimestamp()],
   base: "/",
+  build: {
+    chunkSizeWarningLimit: 600,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes("/node_modules/firebase/")) return "firebase";
+          if (id.includes("/node_modules/leaflet/")) return "leaflet";
+        },
+      },
+    },
+  },
   test: {
     environment: "jsdom",
     environmentOptions: {
