@@ -28,3 +28,12 @@ dist-ssr
 .firebase
 SECURITY.md
 SESION.md
+AUDITORIA.md
+AUDITORIA.md.bak
+README.md
+skills-lock.json
+.env.example
+.github/
+.agents/
+jsconfig.json
+1
