@@ -94,7 +94,7 @@ Focus trap en `LegalModal`/`AccessibilityPanel`/`LanguageSwitcher` (`useFocusTra
 
 ---
 
-## 5. 🎯 Hallazgos resueltos (v2.1.25 — 2026-07-15)
+## 5. 🎯 Hallazgos resueltos (v2.1.26 — 2026-07-15)
 
 | Categoría | Hallazgo | Fix |
 |---|---|---|
