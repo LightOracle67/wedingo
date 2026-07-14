@@ -1,5 +1,5 @@
 import { memo, useCallback, useMemo, useRef, useState } from "react";
-import { setDoc } from "firebase/firestore";
+import { getDoc, setDoc } from "firebase/firestore";
 import { useTranslation } from "react-i18next";
 import { invitationDocRef } from "../../lib/firebase";
 import { calcRSVPSummary, getDietarySummary } from "../../lib/admin-utils";
@@ -32,7 +32,6 @@ const PanelTab = memo(function PanelTab({ config: {
   }, [setActiveTab, setAttendanceFilter]);
 
   const handleBackup = useCallback(async () => {
-    const { getDoc } = await import("firebase/firestore");
     try {
       const snap = await getDoc(invitationDocRef(inviteToken));
       if (!snap.exists()) { setRestoreMsg(t("panel.restoreNotFound")); return; }

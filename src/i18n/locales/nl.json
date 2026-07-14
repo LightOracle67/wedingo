@@ -12,7 +12,20 @@
     "hide": "Ocultar",
     "section": "sección",
     "visible": "Visible",
-    "hidden": "Oculta"
+    "hidden": "Oculta",
+    "errorBoundary": {
+      "title": "Something went wrong",
+      "message": "Please reload the page to try again.",
+      "reload": "Reload page"
+    },
+    "toast": {
+      "close": "Close"
+    },
+    "skipToContent": "Skip to main content",
+    "adminBar": {
+      "ariaLabel": "Administration bar",
+      "fallback": "Administration"
+    }
   },
   "landing": {
     "title": "Wedingo — Trouwuitnodigingen",
@@ -90,7 +103,8 @@
     "prev": "Vorige",
     "next": "Volgende",
     "thumbnailAria": "Foto {{number}}",
-    "thumbnailAlt": "Thumbnail van galerijfoto"
+    "thumbnailAlt": "Thumbnail van galerijfoto",
+    "carouselLabel": "Image gallery, use arrow keys to navigate"
   },
   "rsvp": {
     "sectionLabel": "Aanwezigheidsbevestiging",
@@ -131,7 +145,10 @@
     "createLink": "Uitnodiging maken",
     "privacyPolicy": "Privacybeleid",
     "terms": "Voorwaarden",
-    "legalNotice": "Juridische kennisgeving"
+    "legalNotice": "Juridische kennisgeving",
+    "locationNotFound": "Could not locate this place.",
+    "locationMapError": "Could not load the map.",
+    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}"
   },
   "setup": {
     "loadingTitle": "Uitnodiging laden",
@@ -609,63 +626,81 @@
     "measureSuperadmin": "Superadmin beveiligd door Firebase Authentication + verborgen route"
   },
   "a11y": {
-    "title": "Accesibilidad",
-    "close": "Cerrar",
-    "fontSize": "Tamaño de texto",
-    "fontNormal": "Normal",
-    "fontLarge": "Grande",
-    "fontExtraLarge": "Extra grande",
-    "lineSpacing": "Espaciado entre líneas",
-    "lineNormal": "Normal",
-    "lineWide": "Amplio",
-    "lineVeryWide": "Muy amplio",
-    "highContrast": "Alto contraste",
-    "reducedMotion": "Reducir animaciones",
-    "dyslexiaFont": "Fuente OpenDyslexic",
-    "moreSpacing": "Mayor espaciado de letras",
-    "underlineLinks": "Subrayar todos los enlaces",
-    "bigCursor": "Cursor grande",
-    "desaturate": "Escala de grises",
-    "strongFocus": "Indicadores de foco visibles"
+    "title": "Toegankelijkheid",
+    "close": "Sluiten",
+    "fontSize": "Tekstgrootte",
+    "fontNormal": "Normaal",
+    "fontLarge": "Groot",
+    "fontExtraLarge": "Extra groot",
+    "lineSpacing": "Regelafstand",
+    "lineNormal": "Normaal",
+    "lineWide": "Breed",
+    "lineVeryWide": "Zeer breed",
+    "highContrast": "Hoog contrast",
+    "reducedMotion": "Animaties verminderen",
+    "dyslexiaFont": "OpenDyslexic-lettertype",
+    "moreSpacing": "Meer letterafstand",
+    "underlineLinks": "Alle links onderstrepen",
+    "bigCursor": "Grote cursor",
+    "desaturate": "Grijstinten",
+    "strongFocus": "Zichtbare focusindicatoren"
   },
   "music": {
-    "noMusic": "Sin música",
-    "loadError": "Error al cargar",
-    "label": "Música"
+    "noMusic": "Geen muziek",
+    "loadError": "Fout bij laden",
+    "label": "Muziek"
   },
   "print": {
-    "preparing": "Preparando impresión...",
-    "couplePhoto": "Foto de los novios",
-    "godparentsText": "Con la bendición de sus padrinos",
-    "dateAndPlace": "Fecha y lugar",
-    "celebrationTime": "Hora de la celebración: ",
-    "viewInGoogleMaps": "Ver ubicación en Google Maps",
-    "celebrationMessage": "Te esperamos para compartir este momento tan especial.",
-    "transport": "Transporte",
-    "aboutGuests": "Sobre los invitados",
-    "scheduleTitle": "Horario de la celebración",
-    "scheduleFallback": "El horario detallado se compartirá próximamente.",
-    "dressCode": "Código de vestimenta",
-    "dressCodeFallback": "Se comunicará más adelante.",
-    "aboutKids": "Sobre los niños",
-    "ourStory": "Nuestra historia",
-    "storyStarted": "Cómo empezó todo",
-    "storyFallback": "La historia se compartirá pronto.",
-    "gifts": "Regalos",
-    "bestGift": "Tu presencia es el mejor regalo",
-    "giftsFallback": "La información sobre regalos se compartirá próximamente.",
-    "bankDetails": "Datos bancarios",
-    "accommodation": "Alojamiento",
-    "whereToStay": "Dónde alojarse",
-    "accommodationFallback": "La información sobre alojamiento se compartirá próximamente.",
-    "footer": "Wedingo · Política de privacidad en wedingo-6c26a.web.app",
-    "closeWindow": "Cerrar ventana"
+    "preparing": "Afdruk voorbereiden…",
+    "couplePhoto": "Foto van het stel",
+    "godparentsText": "Met de zegen van hun peetouders",
+    "dateAndPlace": "Datum en locatie",
+    "celebrationTime": "Tijd van de viering: ",
+    "viewInGoogleMaps": "Bekijk op Google Maps",
+    "celebrationMessage": "We zien ernaar uit dit bijzondere moment met u te delen.",
+    "transport": "Vervoer",
+    "aboutGuests": "Over de gasten",
+    "scheduleTitle": "Programma van de viering",
+    "scheduleFallback": "Het gedetailleerde programma wordt binnenkort gedeeld.",
+    "dressCode": "Kledingvoorschrift",
+    "dressCodeFallback": "Wordt later meegedeeld.",
+    "aboutKids": "Kinderen",
+    "ourStory": "Ons verhaal",
+    "storyStarted": "Hoe het allemaal begon",
+    "storyFallback": "Het verhaal wordt binnenkort gedeeld.",
+    "gifts": "Cadeaus",
+    "bestGift": "Uw aanwezigheid is het mooiste cadeau",
+    "giftsFallback": "Cadeau-informatie wordt binnenkort gedeeld.",
+    "bankDetails": "Bankgegevens",
+    "accommodation": "Accommodatie",
+    "whereToStay": "Waar te verblijven",
+    "accommodationFallback": "Accommodatie-informatie wordt binnenkort gedeeld.",
+    "footer": "Wedingo · Privacybeleid op wedingo-6c26a.web.app",
+    "closeWindow": "Venster sluiten"
   },
   "sectionOrder": {
-    "moveUp": "Mover hacia arriba",
-    "moveDown": "Mover hacia abajo"
+    "moveUp": "Omhoog",
+    "moveDown": "Omlaag"
   },
   "langSwitcher": {
-    "label": "Seleccionar idioma"
+    "label": "Taal selecteren"
+  },
+  "csv": {
+    "companion_one": "1 companion",
+    "companion_other": "{{count}} companions"
+  },
+  "langGroups": {
+    "spain": "Spain",
+    "westernEurope": "Western Europe",
+    "nordicEurope": "Nordic Europe",
+    "centralEurope": "Central Europe",
+    "southernEurope": "Southern Europe / Balkans",
+    "easternEurope": "Eastern Europe / Caucasus",
+    "eastAsia": "East Asia",
+    "southAsia": "South Asia",
+    "southeastAsia": "Southeast Asia",
+    "centralAsia": "Central Asia / Middle East",
+    "africa": "Africa",
+    "americas": "Americas"
   }
 }

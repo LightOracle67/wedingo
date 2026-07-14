@@ -312,7 +312,7 @@ export function AppProvider({ children }) {
       }
     };
     hydrateConfig();
-  }, [location.pathname, location.hash, inviteToken, hasStoredConfig]);
+  }, [location.pathname, location.hash, inviteToken, hasStoredConfig, trackVisit, t]);
 
   /**
    * Recarga la configuración desde Firestore, ignorando la caché.
@@ -425,7 +425,7 @@ export function AppProvider({ children }) {
       setSaveError(t("errors.imageProcessingFailed"));
     }
     event.target.value = "";
-  }, [inviteToken, applyBackgroundImage]);
+  }, [inviteToken, applyBackgroundImage, t]);
 
   /**
    * Guarda la configuración de la boda en Firestore.
@@ -640,7 +640,7 @@ export function AppProvider({ children }) {
     } finally {
       isSavingRef.current = false;
     }
-  }, [hasStoredConfig, isTokenVerified, formData, maxAllowedYear, inviteToken, config, autoSaveTimerRef, isSavingRef, setSetupToken, setSetupTokenInput]);
+  }, [hasStoredConfig, isTokenVerified, formData, maxAllowedYear, inviteToken, config, autoSaveTimerRef, isSavingRef, setSetupToken, setSetupTokenInput, setTokenLoginUsername, setupToken, setIsTokenVerified, t]);
 
   /**
    * Elimina la invitación completa: respuestas RSVP, galería, documento.
@@ -668,7 +668,7 @@ export function AppProvider({ children }) {
     } catch {
       setSaveError(t("errors.deleteFailed"));
     }
-  }, [inviteToken, navigate, setIsTokenVerified, setTokenLoginUsername]);
+  }, [inviteToken, navigate, setIsTokenVerified, setTokenLoginUsername, t]);
 
   const configValue = useMemo(() => ({
     config, formData, hasStoredConfig, isConfigLoading, configLoadError, inviteToken,

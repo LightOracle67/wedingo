@@ -52,8 +52,90 @@ export const EN_MESSAGES = [
   "Because love multiplies when shared, we want you to be with us on the day we unite our souls. It will be a celebration full of emotion, music, and moments that will remain etched in our memory forever.",
 ];
 
+export const FR_MESSAGES = [
+  "Aujourd'hui nos cœurs battent à l'unisson et nous voulons que tu fasses partie de ce rêve. L'amour qui nous unit est le même que nous voulons partager avec toi le jour le plus spécial de notre vie.",
+  "Après avoir tant marché ensemble, après tant de rires et de rêves partagés, le moment est venu de franchir le pas. Nous voulons que tu sois témoin du début de notre histoire pour toujours.",
+  "L'amour nous a trouvés quand nous nous y attendions le moins et depuis, nous n'avons cessé d'accumuler des raisons de sourire. Maintenant, nous voulons célébrer avec toi tout ce que nous avons construit et tout ce qui est à venir.",
+  "Chaque histoire d'amor a des chapitres qui méritent d'être rappelés, et la nôtre s'apprête à écrire le plus important de tous. Nous aimerions que tu fasses partie de cette page.",
+  "Il y a des moments dans la vie qui méritent d'être célébrés avec les personnes que nous aimons le plus. Notre mariage est l'un d'eux, et ta présence le rendra inoubliable.",
+  "Entre promesses murmurées à l'oreille et rêves qui se réalisent peu à peu, nous avons décidé d'unir nos vies pour toujours. Et rien ne nous rend plus heureux que de partager ce moment avec toi.",
+  "Rien ne nous rendrait plus heureux que de te voir sourire le jour où nous unirons nos vies. Parce que chaque personne qui a été à nos côtés fait partie de cette histoire d'amour que nous célébrons aujourd'hui.",
+  "Nous avons trouvé l'un dans l'autre un foyer, un refuge et mille raisons de nous réveiller chaque matin. Maintenant, nous voulons t'ouvrir les portes grandes pour que tu célèbres avec nous.",
+  "Décider de passer le reste de ta vie avec quelqu'un est le plus bel acte de foi qui existe. Nous l'avons déjà fait, et maintenant nous voulons partager cette joie avec toi.",
+  "Chaque battement de cœur nous rapproche du moment le plus important de nos vies, et nous ne pouvons pas l'imaginer sans toi. Nous avons passé des mois à préparer chaque détail avec tout l'amour du monde pour que tu passes une journée inoubliable.",
+  "L'amour ne se ressent pas seulement, il se célèbre. Il se danse, se rit, se trinque. Et nous voulons faire tout cela avec toi le jour qui marquera nos vies pour toujours.",
+  "Entre rires, câlins et moments que nous gardons dans notre cœur, nous avons construit une histoire qui mérite d'être célébrée comme il se doit. Et tu es une pièce fondamentale de ce puzzle.",
+  "Quand l'amour est vrai, tout autour de lui s'épanouit. Tu as été témoin de notre croissance, et maintenant nous voulons que tu sois témoin de notre engagement éternel.",
+  "Le jour est venu de nous habiller de bonheur et de nous promettre l'éternité. Nous avons préparé une célébration pleine de détails pensés pour toi, car sans les nôtres, rien n'aurait de sens.",
+  "Chaque pas que nous avons fait ensemble nous a menés jusqu'ici, et chaque personne qui a marché à nos côtés a rendu le chemin plus beau. Tu es l'une d'elles, et nous te voulons à nos côtés en ce jour si spécial.",
+  "Le temps nous a offert des moments inoubliables, et le meilleur est à venir. Nous voulons que tu le vives avec nous, que tu le ressentes, que tu le danses et que tu le gardes dans ton cœur.",
+  "Il n'y a pas de plus belle façon de commencer une vie ensemble qu'entourés des personnes qui ont fait partie de notre chemin. C'est pourquoi nous avons gardé une place très spéciale pour toi.",
+  "Aujourd'hui nos rêves se parent de leurs plus beaux atours et l'amour est le seul invité d'honneur. Mais sans toi, la table est incomplète, la piste de danse vide et la joie à moitié.",
+  "Le véritable amour, ce n'est pas seulement se regarder dans les yeux, c'est regarder ensemble dans la même direction. Nous avons déjà choisi notre route, et nous aimerions que tu marches avec nous pour ce premier pas.",
+  "Nous avons gardé une place spéciale pour toi le jour le plus important de nos vies. Parce que les meilleures célébrations se vivent en compagnie, et tu es une partie indispensable de la nôtre.",
+  "Si l'amour est la réponse, tu fais partie de notre histoire. Accompagne-nous pour célébrer le début de notre « heureux pour toujours » avec une fête dont nous nous souviendrons toute notre vie.",
+  "Chaque personne que nous aimons est une étoile qui éclaire notre chemin. Tu brilles de ta propre lumière, et c'est pourquoi nous voulons que tu illumines aussi le jour le plus heureux de notre vie.",
+  "Nous nous marions. Après des années de complicité, à construire des souvenirs et à rêver les yeux ouverts, le grand jour est arrivé. Et ce ne serait pas pareil sans toi à nos côtés.",
+  "Parce que l'amour se multiplie quand on le partage, nous voulons que tu sois avec nous le jour où nous unirons nos âmes. Ce sera une célébration pleine d'émotion, de musique et de moments qui resteront gravés dans notre mémoire pour toujours.",
+];
+
+export const DE_MESSAGES = [
+  "Heute schlagen unsere Herzen im gleichen Takt und wir möchten, dass du Teil dieses Traums bist. Die Liebe, die uns verbindet, ist dieselbe, die wir mit dir am besonderen Tag unseres Lebens teilen möchten.",
+  "Nach so vielen gemeinsamen Wegen, so viel Lachen und so vielen geteilten Träumen ist der Moment gekommen, den entscheidenden Schritt zu gehen. Wir möchten, dass du Zeuge des Anfangs unserer Geschichte für immer bist.",
+  "Die Liebe fand uns, als wir es am wenigsten erwarteten, und seitdem haben wir nicht aufgehört, Gründe zum Lächeln zu finden. Jetzt möchten wir mit dir feiern, was wir aufgebaut haben und was noch kommt.",
+  "Jede Liebesgeschichte hat Kapitel, die es wert sind, erinnert zu werden, und unsere ist dabei, das wichtigste von allen zu schreiben. Wir würden uns freuen, wenn du Teil dieser Seite wärst.",
+  "Es gibt Momente im Leben, die es verdienen, mit den Menschen gefeiert zu werden, die wir am meisten lieben. Unsere Hochzeit ist einer davon, und deine Anwesenheit wird ihn unvergesslich machen.",
+  "Zwischen ins Ohr geflüsterten Versprechen und Träumen, die nach und nach wahr werden, haben wir beschlossen, unser Leben für immer zu vereinen. Und nichts macht uns glücklicher, als diesen Moment mit dir zu teilen.",
+  "Nichts würde uns glücklicher machen, als dich am Tag unserer Hochzeit lächeln zu sehen. Denn jeder Mensch, der an unserer Seite war, ist Teil dieser Liebesgeschichte, die wir heute feiern.",
+  "Wir haben ineinander ein Zuhause, einen Zufluchtsort und tausend Gründe gefunden, jeden Morgen aufzuwachen. Jetzt möchten wir dir die Türen weit öffnen, damit du mit uns feiern kannst.",
+  "Zu entscheiden, den Rest deines Lebens mit jemandem zu verbringen, ist der schönste Vertrauensakt, den es gibt. Wir haben ihn bereits vollzogen und möchten diese Freude nun mit dir teilen.",
+  "Jeder Herzschlag bringt uns dem wichtigsten Moment unseres Lebens näher, und wir können ihn uns ohne dich nicht vorstellen. Wir haben monatelang jedes Detail mit aller Liebe vorbereitet, damit du einen unvergesslichen Tag erlebst.",
+  "Liebe wird nicht nur gefühlt, sie wird gefeiert. Sie wird getanzt, gelacht und angestoßen. Und das alles möchten wir mit dir an dem Tag tun, der unser Leben für immer prägen wird.",
+  "Zwischen Lachen, Umarmungen und Momenten, die wir in unseren Herzen bewahren, haben wir eine Geschichte aufgebaut, die es verdient, gebührend gefeiert zu werden. Und du bist ein grundlegender Teil dieses Puzzles.",
+  "Wenn die Liebe echt ist, blüht alles um sie herum auf. Du hast unser Wachstum miterlebt, und jetzt möchten wir, dass du Zeuge unseres ewigen Versprechens bist.",
+  "Der Tag ist gekommen, uns mit Glück zu kleiden und uns die Ewigkeit zu versprechen. Wir haben eine Feier voller Details vorbereitet, die für dich gedacht sind, denn ohne unsere Liebsten wäre nichts sinnvoll.",
+  "Jeder gemeinsame Schritt hat uns hierher gebracht, und jeder Mensch, der an unserer Seite gegangen ist, hat den Weg schöner gemacht. Du bist einer von ihnen, und wir möchten dich an diesem besonderen Tag an unserer Seite haben.",
+  "Die Zeit hat uns unvergessliche Momente geschenkt, und der beste kommt noch. Wir möchten, dass du ihn mit uns erlebst, ihn fühlst, ihn tanzt und in deinem Herzen bewahrst.",
+  "Es gibt keinen schöneren Weg, ein gemeinsames Leben zu beginnen, als umgeben von den Menschen, die Teil unseres Weges waren. Deshalb haben wir einen ganz besonderen Platz für dich reserviert.",
+  "Heute kleiden sich unsere Träume in Festtagskleidung und die Liebe ist der einzige Ehrengast. Aber ohne dich ist der Tisch unvollständig, die Tanzfläche leer und die Freude nur halb so groß.",
+  "Wahre Liebe bedeutet nicht nur, sich in die Augen zu schauen, sondern gemeinsam in die gleiche Richtung zu blicken. Wir haben unseren Weg bereits gewählt, und wir würden uns freuen, wenn du uns bei diesem ersten Schritt begleitest.",
+  "Wir haben einen besonderen Platz für dich am wichtigsten Tag unseres Lebens reserviert. Denn die besten Feiern erlebt man in Gesellschaft, und du bist ein unverzichtbarer Teil unserer Feier.",
+  "Wenn Liebe die Antwort ist, bist du Teil unserer Geschichte. Begleite uns, um den Anfang unseres «Für immer glücklich» mit einer Party zu feiern, an die wir uns ein Leben lang erinnern werden.",
+  "Jeder Mensch, den wir lieben, ist ein Stern, der unseren Weg erhellt. Du strahlst mit deinem eigenen Licht, und deshalb möchten wir, dass du auch den glücklichsten Tag unseres Lebens erhellst.",
+  "Wir heiraten. Nach Jahren voller Vertrautheit, gemeinsamer Erinnerungen und Tagträume ist der große Tag gekommen. Und es wäre nicht dasselbe ohne dich an unserer Seite.",
+  "Weil Liebe sich vervielfacht, wenn man sie teilt, möchten wir, dass du an dem Tag bei uns bist, an dem wir unsere Seelen vereinen. Es wird eine Feier voller Emotionen, Musik und Momente, die für immer in unserer Erinnerung bleiben werden.",
+];
+
+export const PT_MESSAGES = [
+  "Hoje os nossos corações batem ao mesmo compasso e queremos que faças parte deste sonho. O amor que nos une é o mesmo que queremos partilhar contigo no dia mais especial das nossas vidas.",
+  "Depois de tanto caminharmos juntos, de tantas risadas e de tantos sonhos partilhados, chegou o momento de dar o passo definitivo. Queremos que sejas testemunha do início da nossa história para sempre.",
+  "O amor encontrou-nos quando menos esperávamos e desde então não paramos de somar motivos para sorrir. Agora queremos celebrar contigo tudo o que construímos e tudo o que está por vir.",
+  "Cada história de amor tem capítulos que merecem ser recordados, e a nossa está prestes a escrever o mais importante de todos. Adoraríamos que fizesses parte desta página.",
+  "Há momentos na vida que merecem ser celebrados com as pessoas que mais amamos. O nosso casamento é um deles, e a tua presença torná-lo-á inesquecível.",
+  "Entre promessas sussurradas ao ouvido e sonhos que aos poucos se tornam realidade, decidimos unir as nossas vidas para sempre. E nada nos faz mais felizes do que partilhar este momento contigo.",
+  "Nada nos faria mais felizes do que ver-te sorrir no dia em que unirmos as nossas vidas. Porque cada pessoa que esteve ao nosso lado faz parte desta história de amor que hoje celebramos.",
+  "Encontrámos um no outro um lar, um refúgio e mil razões para acordar todas as manhãs. Agora queremos abrir-te as portas de par em par para que celebres connosco.",
+  "Decidir passar o resto da tua vida com alguém é o ato de fé mais bonito que existe. Nós já o fizemos, e agora queremos partilhar essa alegria contigo.",
+  "Cada batida aproxima-nos do momento mais importante das nossas vidas, e não podemos imaginá-lo sem ti. Passámos meses a preparar cada detalhe com todo o carinho do mundo para que desfrutes de um dia inesquecível.",
+  "O amor não só se sente, celebra-se. Dança-se, ri-se, brinda-se. E queremos fazer tudo isso contigo no dia que marcará as nossas vidas para sempre.",
+  "Entre risos, abraços e momentos que guardamos no coração, construímos uma história que merece ser celebrada em grande. E tu és uma peça fundamental desse puzzle.",
+  "Quando o amor é verdadeiro, tudo ao seu redor floresce. Tu tens sido testemunha do nosso crescimento, e agora queremos que sejas testemunha do nosso compromisso eterno.",
+  "Chegou o dia de nos vestirmos de felicidade e prometermos eternidade. Preparámos uma celebração cheia de detalhes pensados para ti, porque sem os nossos nada faria sentido.",
+  "Cada passo que demos juntos trouxe-nos até aqui, e cada pessoa que caminhou ao nosso lado tornou o caminho mais bonito. Tu és uma delas, e queremos-te ao nosso lado neste dia tão especial.",
+  "O tempo deu-nos momentos inesquecíveis, e o melhor está para chegar. Queremos que o vivas connosco, que o sintas, que o dances e que o guardes no teu coração.",
+  "Não há forma mais bonita de começar uma vida juntos do que rodeados das pessoas que fizeram parte do nosso caminho. Por isso guardámos um lugar muito especial para ti.",
+  "Hoje os nossos sonhos vestem-se a rigor e o amor é o único convidado de honra. Mas sem ti a mesa está incompleta, a pista de dança vazia e a alegria pela metade.",
+  "O verdadeiro amor não é só olhar nos olhos um do outro, é olhar juntos na mesma direção. Nós já escolhemos o nosso rumo, e adoraríamos que caminhasses connosco neste primeiro passo.",
+  "Guardámos um lugar especial para ti no dia mais importante das nossas vidas. Porque as melhores celebrações vivem-se em companhia, e tu és parte imprescindível da nossa.",
+  "Se o amor é a resposta, tu és parte da nossa história. Acompanha-nos a celebrar o início do nosso «felizes para sempre» com uma festa que recordaremos toda a vida.",
+  "Cada pessoa que amamos é uma estrela que ilumina o nosso caminho. Tu brilhas com luz própria, e por isso queremos que ilumines também o dia mais feliz das nossas vidas.",
+  "Vamos casar. Depois de anos de cumplicidade, de construir memórias e de sonhar acordados, chegou o grande dia. E não seria o mesmo sem ti ao nosso lado.",
+  "Porque o amor multiplica-se quando se partilha, queremos que estejas junto de nós no dia em que uniremos as nossas almas. Será uma celebração cheia de emoção, música e momentos que ficarão gravados na nossa memória para sempre.",
+];
+
 export function randomMessage(lang = "es") {
-  const messages = lang === "en" ? EN_MESSAGES : WEDDING_MESSAGES;
+  const map = { es: WEDDING_MESSAGES, en: EN_MESSAGES, fr: FR_MESSAGES, de: DE_MESSAGES, pt: PT_MESSAGES };
+  const messages = map[lang] || WEDDING_MESSAGES;
   const index = Math.floor(Math.random() * messages.length);
   return messages[index];
 }

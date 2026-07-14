@@ -1,6 +1,6 @@
 # Wedingo — Invitaciones de boda digitales
 
-**Versión:** 2.1.21
+**Versión:** 2.1.25
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas con RSVP online, galería de fotos, mapas, y más.
 
@@ -18,14 +18,14 @@ rm -rf dist .firebase && npm run build
 npx firebase-tools deploy
 ```
 
-## Estado Auditoría (2026-07-11)
+## Estado Auditoría (2026-07-15)
 
 | Eje | % |
 |-----|--:|
-| Seguridad | 74% |
-| Rendimiento | 55% |
+| Seguridad | 78% |
+| Rendimiento | 65% |
 | Accesibilidad | 68% |
-| i18n | 70% |
-| **Global** | **67%** |
+| i18n | 82% |
+| **Global** | **73%** |
 
 Informe completo: `AUDITORIA.md`

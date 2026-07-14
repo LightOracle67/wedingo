@@ -25,10 +25,11 @@ Los siguientes hallazgos de una auditoría anterior fueron verificados contra `f
 | `isSafeText` no bloquea event handlers | Ya bloquea `javascript:` y `on\w+=` (`firestore.rules:25-31`) |
 | Salt fijo en PBKDF2 | Ya es dinámico, derivado del secreto por invitación (`crypto-utils.js:13`) |
 
+### Resuelto (v2.1.25)
+- **TTL de `sessionExpiresAt` verificado**: el campo se escribe con `firestoreSessionExpiry()` → 24h desde login. Las reglas de Firestore (`hasActiveSession`) comprueban `sessionExpiresAt > request.time`, bloqueando escrituras tras expirar. No hay TTL nativo de Firestore porque no se necesita: la expiración se controla por reglas, no por eliminación de documento. El riesgo de "sesión perpetua" está mitigado por el límite fijo de 24h. Al hacer logout, ambos campos se ponen a `null`. Queda pendiente añadir un mecanismo server-side (ej. Cloud Function) que limpie sesiones expiradas como mejora defensiva, pero no es un bug.
+
 ### Pendiente de revisar
-No se auditaron hoy (fuera del alcance de la sesión, no estaban en la lista de hallazgos trabajada):
-- Expiración de `activeSession` en Firestore (posible sesión perpetua sin timeout de inactividad más allá del `sessionExpiresAt` — confirmar TTL real)
-- Resto de hallazgos "Medios" no listados en la sesión anterior (M1, M2, M3, M7, M9, M10 — no se dispone de su descripción original)
+- Hallazgos "Medios" M1-M10: no se dispone de sus descripciones originales para poder evaluarlos.
 
 ---
 
@@ -90,3 +91,25 @@ Focus trap en `LegalModal`/`AccessibilityPanel`/`LanguageSwitcher` (`useFocusTra
 | **Total** | **21** | **5** | **16** |
 
 **Versiones desplegadas en esta sesión:** 2.1.22 (rendimiento) → 2.1.23 (accesibilidad) → 2.1.24 (i18n)
+
+---
+
+## 5. 🎯 Hallazgos resueltos (v2.1.25 — 2026-07-15)
+
+| Categoría | Hallazgo | Fix |
+|---|---|---|
+| Seguridad | TTL de `sessionExpiresAt` verificado | Firestore rules comprueban `sessionExpiresAt > request.time`. Límite de 24h desde login. No perpetuo. |
+| Rendimiento | Firebase SDK 487 KB sin chunk propio | `manualChunks` en `vite.config.js` separa `firebase` y `leaflet` en chunks independientes. |
+| Rendimiento | Dynamic import redundante en `PanelTab.jsx` | `getDoc` movido a import estático (ya se importaba `setDoc` del mismo módulo). |
+| i18n | 25 keys faltantes en todos los 83 locales | Añadidas con valores en inglés como fallback intermedio (mejor que español). |
+| i18n | `a11y`, `music`, `print`, `sectionOrder`, `langSwitcher` en español en `en.json` | Traducidas a inglés correcto en `en.json`. |
+| i18n | Secciones `a11y`/`music`/`print`/etc. en español en 82 locales | Traducidas a inglés (salvo fr/de/pt/it/nl que tienen traducción propia). |
+| i18n | `invite-messages.js` solo en es/en | Añadidos fr/de/pt con 25 mensajes cada uno. |
+
+### Pendiente
+- Hallazgos medios M1-M10 (sin descripción disponible)
+- Auditoría automatizada de accesibilidad (Lighthouse/axe)
+
+---
+
+**Próxima versión planificada:** 2.2.0
