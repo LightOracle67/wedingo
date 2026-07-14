@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.1.27",
+    date: "2026-07-15",
+    changes: [
+      "Versión clickable: muestra el changelog completo en un modal",
+    ],
+  },
+  {
     version: "2.1.26",
     date: "2026-07-15",
     changes: [
@@ -9,7 +16,6 @@ export const CHANGELOG = [
       "manualChunks para firebase y leaflet en vite.config.js",
       "Import estático de getDoc en PanelTab.jsx (eliminado dynamic import redundante)",
       "Verificado TTL de sessionExpiresAt (24h, controlado por Firestore rules)",
-      "Bump de versión a 2.1.26",
     ],
   },
   {
