@@ -1,6 +1,6 @@
 # Wedingo — Invitaciones de boda digitales
 
-**Versión:** 2.1.26
+**Versión:** 2.1.27
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas con RSVP online, galería de fotos, mapas, y más.
 
