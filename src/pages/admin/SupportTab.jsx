@@ -1,9 +1,11 @@
-import { memo } from "react";
+import { memo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { APP_VERSION } from "../../lib/constants";
+import ChangelogModal from "../../components/ChangelogModal";
 
 const SupportTab = memo(function SupportTab() {
   const { t } = useTranslation();
+  const [showChangelog, setShowChangelog] = useState(false);
 
   const handleDeleteMail = () => {
     const subject = encodeURIComponent(t("support.deleteEmailSubject"));
@@ -47,7 +49,8 @@ const SupportTab = memo(function SupportTab() {
       <h3>{t("support.appTitle")}</h3>
       <p>{t("support.appDescription")}</p>
       <p className="support-copyright">{t("support.copyright", { year: new Date().getFullYear() })}</p>
-      <p style={{ fontSize: "0.7rem", color: "var(--setup-muted)", marginTop: "0.2rem" }}>v{APP_VERSION}</p>
+      <button type="button" onClick={() => setShowChangelog(true)} style={{ fontSize: "0.7rem", color: "var(--setup-muted)", marginTop: "0.2rem", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", padding: 0 }}>v{APP_VERSION}</button>
+      {showChangelog ? <ChangelogModal onClose={() => setShowChangelog(false)} /> : null}
     </div>
   );
 });

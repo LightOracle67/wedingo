@@ -12,6 +12,7 @@ import MusicPlayer from "./components/MusicPlayer";
 const RTL_LANGS = new Set(["ar", "he", "ur", "fa", "ps", "ku"]);
 import AccessibilityPanel from "./components/AccessibilityPanel";
 import LegalModal from "./components/LegalModal";
+import ChangelogModal from "./components/ChangelogModal";
 import { APP_VERSION } from "./lib/constants";
 import LandingPage from "./pages/LandingPage";
 import { SUPERADMIN_ROUTE, SUPERADMIN_DASHBOARD } from "./lib/superadmin";
@@ -29,6 +30,7 @@ function AppShell() {
   const location = useLocation();
   const [showA11y, setShowA11y] = useState(false);
   const [legalSection, setLegalSection] = useState("");
+  const [showChangelog, setShowChangelog] = useState(false);
 
   const isEditingRoute = location.pathname.endsWith("/setup") || (location.pathname.endsWith("/admin") && isAdminTokenLoggedIn);
   const topBarPadding = isAdminTokenLoggedIn ? "2.5rem" : "0";
@@ -112,13 +114,14 @@ function AppShell() {
             <span className="app-footer__sep">·</span>
             <button type="button" onClick={() => setLegalSection("legal")} className="app-footer__link">{t("public.legalNotice")}</button>
             <span className="app-footer__sep">·</span>
-            <span className="app-footer__link" style={{ cursor: "default", opacity: 0.4 }}>v{APP_VERSION}</span>
+            <button type="button" onClick={() => setShowChangelog(true)} className="app-footer__link" style={{ opacity: 0.4 }}>v{APP_VERSION}</button>
           </div>
         </footer>
       )}
 
       <AccessibilityPanel open={showA11y} onClose={() => setShowA11y(false)} />
       {legalSection ? <LegalModal section={legalSection} onClose={() => setLegalSection("")} /> : null}
+      {showChangelog ? <ChangelogModal onClose={() => setShowChangelog(false)} /> : null}
     </>
   );
 }
