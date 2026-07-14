@@ -10,108 +10,216 @@ export const CHANGELOG = [
     version: "2.1.26",
     date: "2026-07-15",
     changes: [
-      "Traducciones reales para a11y/music/print/sectionOrder/langSwitcher en fr/de/pt/it/nl",
-      "Mensajes de invitación en fr/de/pt en la sección Compartir",
-      "25 keys faltantes añadidas a los 83 locales",
-      "manualChunks para firebase y leaflet en vite.config.js",
-      "Import estático de getDoc en PanelTab.jsx",
-      "Verificado TTL de sessionExpiresAt (24h, controlado por Firestore rules)",
+      "Alineada versión de APP_VERSION (constants.js) con package.json",
     ],
   },
   {
     version: "2.1.25",
     date: "2026-07-15",
     changes: [
-      "Corregidas dependencias de useMemo, exportación y chunking en cascadeDelete",
-      "Extraído useToast a hook propio, limpiados exports no usados",
+      "Auditoría: traducciones fr/de/pt/it/nl, 25 keys faltantes, manualChunks",
+      "Verificado TTL de sessionExpiresAt",
+      "Import estático de getDoc en PanelTab",
     ],
   },
   {
     version: "2.1.22–24",
     date: "2026-07-13",
     changes: [
-      "i18n: carga dinámica por idioma, chunk principal -87% (3.5 MB → 465 KB)",
-      "Accesibilidad: contraste en 4 temas, teclado en galería, aria-live",
-      "i18n: 61 keys muertas eliminadas de 84 locales (2254 eliminaciones)",
-      "61 keys de traducción completadas en locales parciales",
+      "Carga dinámica de i18n, chunk -87%",
+      "Accesibilidad: contraste, teclado galería, aria-live",
+      "61 keys muertas eliminadas de 84 locales",
     ],
   },
   {
-    version: "2.1.18–21",
+    version: "2.1.21",
     date: "2026-07-12",
     changes: [
-      "Auditoría: resueltos 9 críticos, 12 altos, 22 medios, 4 bajos",
-      "TTL de sesión: sessionExpiresAt en Firestore rules + client (24h)",
-      "CSP font-src, frame-ancestors, getFirestore corregidos",
-      "Componentización: ThemePicker, GalleryManager, WeddingMap",
-      "Galería con thumbnails 5rem, carrusel 3s, contenedor 56rem",
-      "Panel admin full-width/height unificado",
+      "README actualizado con versión y estado de auditoría",
     ],
   },
   {
-    version: "2.1.13–17",
+    version: "2.1.20",
+    date: "2026-07-12",
+    changes: [
+      "Auditoría: resueltos 9 críticos y 12 altos",
+    ],
+  },
+  {
+    version: "2.1.19",
+    date: "2026-07-12",
+    changes: [
+      "Resueltos 22 hallazgos medios; ErrorBoundary hook; dead code eliminado",
+    ],
+  },
+  {
+    version: "2.1.18",
+    date: "2026-07-12",
+    changes: [
+      "Fix desbordamiento: padding en layout en vez de margin en card /admin",
+      "Galería: thumbnails 5rem fijos, carrusel 3s, contenedor más ancho 56rem",
+    ],
+  },
+  {
+    version: "2.1.17",
+    date: "2026-07-12",
+    changes: [
+      "Fix line-height en accesibilidad: calc unitless en vez de rem",
+    ],
+  },
+  {
+    version: "2.1.16",
+    date: "2026-07-12",
+    changes: [
+      "Modal legal más ancho y sin scroll horizontal",
+      "Fix race condition en login superadmin, añadida traducción login",
+    ],
+  },
+  {
+    version: "2.1.15",
+    date: "2026-07-12",
+    changes: [
+      "Full-width/height en /admin, /setup y superadmin loading",
+      "Unificados estilos full-width/height en todos los paneles superadmin",
+      "Fix inglés en DataTab",
+    ],
+  },
+  {
+    version: "2.1.14",
     date: "2026-07-11",
     changes: [
-      "i18n: 50+ keys nuevas en 84 idiomas, cadenas hardcodeadas eliminadas",
-      "Panel datos superadmin: export/eliminación individual y masiva",
-      "Modal legal más ancho y sin scroll horizontal",
-      "Fix line-height accesibilidad: unitless en vez de rem",
-      "Galería con miniaturas en tiempo real, límite 10 imágenes",
-      "Carrusel automático con descripciones editables y contador",
+      "Panel datos superadmin: export y eliminación individual, masiva y completa",
     ],
   },
   {
-    version: "2.1.10–12",
-    date: "2026-07-10",
+    version: "2.1.13",
+    date: "2026-07-11",
     changes: [
-      "Toast con barra de progreso real en subida de imágenes",
-      "Cifrado de imágenes: chunked base64 evita overflow",
-      "Regla Firestore para subcolección gallery",
+      "i18n: 50+ claves nuevas en 84 idiomas, cadenas hardcodeadas eliminadas",
+      "Carrusel automático 1.5s, descripciones editables en galería, contador",
+    ],
+  },
+  {
+    version: "2.1.12",
+    date: "2026-07-11",
+    changes: [
+      "Imágenes de galería se adaptan al contenedor sin recorte fijo",
+    ],
+  },
+  {
+    version: "2.1.11",
+    date: "2026-07-11",
+    changes: [
+      "Carga galería existente al abrir /admin, límite 10 imágenes",
+    ],
+  },
+  {
+    version: "2.1.10",
+    date: "2026-07-11",
+    changes: [
+      "Miniaturas de galería se actualizan en tiempo real en /admin al subir",
+    ],
+  },
+  {
+    version: "2.1.9",
+    date: "2026-07-11",
+    changes: [
       "Fade elegante en galería al cambiar de imagen",
     ],
   },
   {
-    version: "2.1.5–9",
-    date: "2026-07-09",
+    version: "2.1.8",
+    date: "2026-07-11",
     changes: [
-      "Refactor: useStoryNavigation, JSDoc, CSS duplicado eliminado",
-      "Tests: useStoryNavigation, crypto, tokens, storage",
-      "Imágenes adaptables al contenedor sin recorte fijo",
+      "Regla Firestore para subcolección gallery",
     ],
   },
   {
-    version: "2.1.0–4",
-    date: "2026-07-08",
+    version: "2.1.7",
+    date: "2026-07-11",
     changes: [
-      "Reproductor música con glassmorphism y scrubber",
-      "Contador regresivo con años/meses/semanas/días",
-      "Etiquetas alergias: Gluten, Lactosa, Frutos Secos, Mariscos",
-      "Panel accesibilidad: 8 opciones, OpenDyslexic, alto contraste",
-      "Footer con legal, idioma, accesibilidad y versión",
-      "84 idiomas i18n con selector agrupado por región",
-      "Modal legal con toggle animado, accesible globalmente",
-      "Fix XSS en SetupForm, CSP reforzado",
+      "Cifrado de imágenes: chunked base64 evita overflow",
+    ],
+  },
+  {
+    version: "2.1.6",
+    date: "2026-07-11",
+    changes: [
+      "Toast con barra de progreso real en subida de imágenes",
+      "Quitado spinner del icono de subida en toast de progreso",
+    ],
+  },
+  {
+    version: "2.1.5",
+    date: "2026-07-10",
+    changes: [
+      "Extraído useStoryNavigation, documentado con JSDoc",
+      "CSS duplicado e imports limpiados",
+      "Tests: useStoryNavigation, crypto, tokens, storage",
+      "Fix guard en event listeners",
+    ],
+  },
+  {
+    version: "2.1.4",
+    date: "2026-07-10",
+    changes: [
+      "Fix: decrypt devuelve vacío en fallo en vez de ciphertext",
+    ],
+  },
+  {
+    version: "2.1.3",
+    date: "2026-07-10",
+    changes: [
+      "Fix shadowing de t en ToastContext.map",
+    ],
+  },
+  {
+    version: "2.1.2",
+    date: "2026-07-10",
+    changes: [
+      "Fix: footer convertido en navbar superior, legal unificado",
+    ],
+  },
+  {
+    version: "2.1.1",
+    date: "2026-07-10",
+    changes: [
+      "Eliminados idioma y legal del landing, ya en footer",
+    ],
+  },
+  {
+    version: "2.1.0",
+    date: "2026-07-10",
+    changes: [
+      "Bump de versión menor",
     ],
   },
   {
     version: "2.0.1",
-    date: "2026-07-07",
+    date: "2026-07-10",
     changes: [
-      "Sesiones migradas a activeSession en Firestore",
-      "Reproductor música sticky con vinilo y controles",
-      "Página impresión /print con componentes reales",
-      "Compliance GDPR: Art. 30, CCPA, LGPD, PIPEDA, POPIA",
-      "Cookie consent con configuración granular",
-      "Superadmin: dashboard, invitaciones, tokens, compliance",
-      "Imágenes cifradas AES-256-GCM en Firestore",
-      "67 temas visuales con previsualización en vivo",
-      "RSVP grupal con menú, alergias y restricciones",
-      "Autoguardado con debounce 2s",
-      "Galería con carrusel y navegación por teclado",
-      "Mapa Leaflet con coordenadas automáticas",
-      "Landing page con creación de invitación",
-      "Panel admin: dashboard, edición, asistencia, compartir",
-      "Sistema de sesión con renovación automática",
+      "Primera versión estable con versionado semántico",
+    ],
+  },
+  {
+    version: "< 2.0.0",
+    date: "2026-06 — 2026-07",
+    changes: [
+      "Desarrollo inicial de la plataforma Wedingo",
+      "React 19 + Vite + Tailwind CSS + Firebase",
+      "Sistema de invitaciones con RSVP, galería, mapa, música",
+      "Panel admin con edición en vivo y autoguardado",
+      "67 temas visuales con previsualización",
+      "84 idiomas con i18next",
+      "Superadmin con dashboard, tokens y compliance GDPR",
+      "Panel de accesibilidad con 8 opciones",
+      "Reproductor de música con ecualizador",
+      "Cifrado AES-256-GCM de imágenes y datos sensibles",
+      "Sistema de sesiones con renovación automática",
+      "Página de impresión /print",
+      "Modales legales con políticas de privacidad",
+      "Selector de idiomas agrupado por región",
+      "Y mucho más...",
     ],
   },
 ];
