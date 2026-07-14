@@ -46,7 +46,7 @@ const PanelTab = memo(function PanelTab({ config: {
       a.click();
       URL.revokeObjectURL(url);
     } catch {}
-  }, [inviteToken]);
+  }, [inviteToken, t]);
 
   const handleRestore = useCallback(async (e) => {
     const file = e.target.files?.[0];
@@ -69,7 +69,7 @@ const PanelTab = memo(function PanelTab({ config: {
       setRestoreMsg(t("panel.restoreFailed"));
     }
     e.target.value = "";
-  }, [onRestore]);
+  }, [onRestore, t]);
 
   return (
     <>

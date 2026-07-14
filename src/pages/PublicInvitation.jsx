@@ -270,7 +270,7 @@ export default function PublicInvitation() {
       if (mapInstance) mapInstance.remove();
     };
   }, [config.weddingPlace, config.weddingLatitude, config.weddingLongitude,
-      locationMapContainerRef, setLocationMapError, setLocationMapLoading, setLocationMapTarget]);
+      locationMapContainerRef, setLocationMapError, setLocationMapLoading, setLocationMapTarget, t]);
 
   // ─── Datos de ubicación derivados ──────────────────────
   const configuredCoordinates = getValidCoordinates(config.weddingLatitude, config.weddingLongitude);

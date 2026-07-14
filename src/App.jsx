@@ -8,6 +8,8 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import CookieConsent from "./components/CookieConsent";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 import MusicPlayer from "./components/MusicPlayer";
+
+const RTL_LANGS = new Set(["ar", "he", "ur", "fa", "ps", "ku"]);
 import AccessibilityPanel from "./components/AccessibilityPanel";
 import LegalModal from "./components/LegalModal";
 import { APP_VERSION } from "./lib/constants";
@@ -32,7 +34,6 @@ function AppShell() {
   const topBarPadding = isAdminTokenLoggedIn ? "2.5rem" : "0";
   const publicNavPadding = !isEditingRoute ? "2.2rem" : "0";
 
-  const RTL_LANGS = new Set(["ar", "he", "ur", "fa", "ps", "ku"]);
 
   useEffect(() => {
     const lang = i18n.language?.split("-")[0] || "es";

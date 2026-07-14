@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useApp } from "../contexts/AppContext";
-import { useToast } from "../contexts/ToastContext";
+import { useToast } from "../hooks/useToast";
 import SetupForm from "../components/SetupForm";
 
 export default function SetupPage() {

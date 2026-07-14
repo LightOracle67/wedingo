@@ -1,8 +1,9 @@
-import { createContext, useContext, useCallback, useRef, useState } from "react";
+import { createContext, useCallback, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 /** Contexto de React para el sistema de notificaciones toast. */
-const ToastContext = createContext(null);
+// eslint-disable-next-line react-refresh/only-export-components
+export const ToastContext = createContext(null);
 
 /** Contador global para IDs únicos de toast. */
 let toastId = 0;
@@ -147,13 +148,3 @@ export function ToastProvider(props) {
   return <ToastProviderInner {...props} t={t} />;
 }
 
-/**
- * Hook para acceder al sistema de toasts desde cualquier componente.
- *
- * @returns {{ addToast: Function, startUploadToast: Function }}
- */
-export function useToast() {
-  const ctx = useContext(ToastContext);
-  if (!ctx) throw new Error("useToast debe usarse dentro de ToastProvider");
-  return ctx;
-}

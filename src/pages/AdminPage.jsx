@@ -21,7 +21,7 @@ import { lazy, useCallback, useEffect, useMemo, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useApp } from "../contexts/AppContext";
-import { useToast } from "../contexts/ToastContext";
+import { useToast } from "../hooks/useToast";
 import { formatDate } from "../lib/section-utils";
 import { escHtml } from "../lib/utils";
 import SetupForm from "../components/SetupForm";
@@ -152,7 +152,7 @@ export default function AdminPage() {
       // Abre el diálogo de impresión tras un pequeño retraso
       setTimeout(() => { w.focus(); w.print(); URL.revokeObjectURL(url); }, 500);
     }
-  }, [rsvpEntries, coupleName, t]);
+  }, [rsvpEntries, coupleName, t, i18n.language]);
 
   // ─── Cálculo de estadísticas de asistencia ─────────────
   const confirmedResponses = rsvpEntries.filter((e) => e.attendance === "yes").length;
@@ -174,7 +174,7 @@ export default function AdminPage() {
     formatDate,
     onRestore: reloadConfig,
     visitCount: config._visits || 0,
-  }), [inviteToken, confirmedResponses, declinedResponses, totalGuests, rsvpEntries, setActiveTabAndFilter, setAttendanceFilterValue, exportPdf, formatDate, reloadConfig, config._visits]);
+  }), [inviteToken, confirmedResponses, declinedResponses, totalGuests, rsvpEntries, setActiveTabAndFilter, setAttendanceFilterValue, exportPdf, reloadConfig, config._visits]);
 
   /** Props agrupadas para AttendanceTab. */
   const attendanceConfig = useMemo(() => ({
@@ -187,7 +187,7 @@ export default function AdminPage() {
     rsvpEntries,
     handleClearRsvpEntries,
     formatDate,
-  }), [searchQuery, setSearchQuery, attendanceFilter, setAttendanceFilterValue, filteredEntries, exportPdf, rsvpEntries, handleClearRsvpEntries, formatDate]);
+  }), [searchQuery, setSearchQuery, attendanceFilter, setAttendanceFilterValue, filteredEntries, exportPdf, rsvpEntries, handleClearRsvpEntries]);
 
   // ─── Estados de carga ──────────────────────────────────
   if (isConfigLoading) {

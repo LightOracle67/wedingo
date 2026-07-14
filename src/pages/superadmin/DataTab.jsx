@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { getDocs, doc, collection, writeBatch, getDoc } from "firebase/firestore";
 import { db, INVITATIONS_COLLECTION_REF, RSVP_COLLECTION_REF, rsvpByInviteRef } from "../../lib/firebase";
-import { useToast } from "../../contexts/ToastContext";
+import { useToast } from "../../hooks/useToast";
 import { downloadJson } from "../../lib/file-utils";
 
 /**
@@ -90,7 +90,7 @@ export default function DataTab() {
   const toggleSelect = useCallback((id) => {
     setSelected((prev) => {
       const next = new Set(prev);
-      next.has(id) ? next.delete(id) : next.add(id);
+      if (next.has(id)) next.delete(id); else next.add(id);
       return next;
     });
   }, []);

@@ -8,15 +8,14 @@ const APPS = (t) => [
   { key: "sms", label: t("share.sms"), url: (text) => `sms:?body=${encodeURIComponent(text)}` },
 ];
 
-const ShareTab = memo(function ShareTab({ inviteToken, config, addToast }) {
+const ShareTab = memo(function ShareTab({ inviteToken, addToast }) {
   const { t, i18n } = useTranslation();
   const baseUrl = `${window.location.origin}/${inviteToken}`;
   const inviteUrl = `${baseUrl}?invitar`;
-  const coupleName = `${config.firstName} & ${config.secondName}`;
 
   const generateMessage = useCallback(
     () => `${randomMessage(i18n.language)}\n\n${inviteUrl}`,
-    [coupleName, inviteUrl],
+    [inviteUrl, i18n.language],
   );
 
   const [message, setMessage] = useState(generateMessage);
@@ -34,7 +33,7 @@ const ShareTab = memo(function ShareTab({ inviteToken, config, addToast }) {
       await navigator.clipboard.writeText(inviteUrl);
       if (addToast) addToast("success", t("share.linkCopied"));
     } catch {}
-  }, [inviteUrl, addToast]);
+  }, [inviteUrl, addToast, t]);
 
   const printPdf = useCallback(() => {
     window.open(`${window.location.origin}/${inviteToken}/print`, "_blank");

@@ -28,7 +28,7 @@ const LegalModal = memo(/** @param {{ section: string, onClose: () => void }} pr
     window.addEventListener("keydown", handleKey);
     closeRef.current = handleKey;
     return () => window.removeEventListener("keydown", handleKey);
-  }, [isOpen]);
+  }, [isOpen, handleClose]);
 
   const handleClose = useCallback(() => {
     setClosing(true);

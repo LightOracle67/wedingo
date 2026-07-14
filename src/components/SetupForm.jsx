@@ -15,7 +15,7 @@
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import { useTranslation, Trans } from "react-i18next";
 import { useApp } from "../contexts/AppContext";
-import { useToast } from "../contexts/ToastContext";
+import { useToast } from "../hooks/useToast";
 import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES, MONTH_OPTIONS } from "../lib/constants";
 import { uploadImage, addGalleryImage } from "../lib/image-store";
 import CollapsibleSection from "./CollapsibleSection";

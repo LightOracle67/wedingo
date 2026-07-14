@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
 import { useApp } from "../contexts/AppContext";
 import { THEME_PREVIEW_COLORS } from "../lib/constants";
 import { parseSectionOrder, formatDate } from "../lib/section-utils";

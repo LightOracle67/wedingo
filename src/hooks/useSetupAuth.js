@@ -267,7 +267,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
     } finally {
       setIsTokenVerifying(false);
     }
-  }, [activateSessionWithToken, adminLoginUsername, setupTokenInput, config, inviteToken, setHasStoredConfig]);
+  }, [activateSessionWithToken, adminLoginUsername, setupTokenInput, config, setHasStoredConfig]);
 
   /**
    * Genera un nuevo token de acceso vinculado a un usuario administrador.

@@ -5,31 +5,14 @@ import { clearAllStorage } from "../lib/storage";
 const STORAGE_KEY = "wedin_cookie_consent";
 const PREF_STORAGE_KEY = "wedin_cookie_prefs";
 
-export function hasCookieConsent() {
-  return localStorage.getItem(STORAGE_KEY) === "accepted";
-}
-
-export function acceptCookies() {
+function acceptCookies() {
   localStorage.setItem(STORAGE_KEY, "accepted");
   localStorage.setItem(PREF_STORAGE_KEY, JSON.stringify({ necessary: true, analytics: true }));
 }
 
-export function rejectCookies() {
+function rejectCookies() {
   localStorage.setItem(STORAGE_KEY, "rejected");
   localStorage.removeItem(PREF_STORAGE_KEY);
-}
-
-export function getCookiePreferences() {
-  try {
-    const raw = localStorage.getItem(PREF_STORAGE_KEY);
-    if (raw) return JSON.parse(raw);
-  } catch {}
-  return null;
-}
-
-export function hasAnalyticsConsent() {
-  const prefs = getCookiePreferences();
-  return prefs?.analytics === true;
 }
 
 const CookieConsent = memo(function CookieConsent() {
