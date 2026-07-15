@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { setDoc } from "firebase/firestore";
 import { invitationDocRef } from "../lib/firebase";
 import { normalizeConfig } from "../lib/utils";
 import { encrypt } from "../lib/crypto-utils";
 
 export function useAutoSave(hasStoredConfig, inviteToken, formData, config, onSaveMessage, isSavingRef) {
+  const { t } = useTranslation();
   const autoSaveTimerRef = useRef(null);
   const autoSavingRef = useRef(false);
 
@@ -12,6 +14,8 @@ export function useAutoSave(hasStoredConfig, inviteToken, formData, config, onSa
     if (isSavingRef?.current || autoSavingRef.current) return null;
     autoSavingRef.current = true;
     const payload = normalizeConfig(data);
+    // galleryImages se gestiona via subcolección, excluir para no exceder 1MB/doc
+    delete payload.galleryImages;
     try {
       const bgOrig = payload.backgroundImage?.startsWith("data:") ? payload.backgroundImage : null;
       const cpOrig = payload.couplePhoto?.startsWith("data:") ? payload.couplePhoto : null;
@@ -36,13 +40,13 @@ export function useAutoSave(hasStoredConfig, inviteToken, formData, config, onSa
     autoSaveTimerRef.current = setTimeout(async () => {
       const result = await doSave(formData);
       if (result && onSaveMessage) {
-        onSaveMessage("Cambios guardados");
+        onSaveMessage(t("autosave.saved"));
       }
     }, 3000);
     return () => {
       if (autoSaveTimerRef.current) clearTimeout(autoSaveTimerRef.current);
     };
-  }, [formData, hasStoredConfig, inviteToken, doSave, config, onSaveMessage]);
+  }, [formData, hasStoredConfig, inviteToken, doSave, config, onSaveMessage, t]);
 
   return { autoSaveTimerRef, doSave };
 }

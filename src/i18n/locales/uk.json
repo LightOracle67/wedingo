@@ -54,7 +54,8 @@
     "withBlessing": "З благословення хрещених {{godparent1}} та {{godparent2}}",
     "todayIsWedding": "Сьогодні весілля",
     "missing": "Залишилось",
-    "todayIsTheDay": "Сьогодні великий день!"
+    "todayIsTheDay": "Сьогодні великий день!",
+    "sectionLabel": "Обкладинка"
   },
   "details": {
     "sectionLabel": "Дата та місце",
@@ -133,7 +134,24 @@
     "withdrawButton": "Відкликати моє підтвердження",
     "birthDateLabel": "Дата народження",
     "ageUnder14Warning": "Вам менше 14 років. Вам потрібна згода батьків або опікунів.",
-    "parentalConsent": "Мої батьки або опікуни погоджуються на мою участь"
+    "parentalConsent": "Мої батьки або опікуни погоджуються на мою участь",
+    "validation": {
+      "nameRequired": "Enter your name to confirm attendance.",
+      "menuRequired": "Select a menu option.",
+      "privacyRequired": "You must accept the Privacy Policy.",
+      "birthDateRequired": "Enter your date of birth.",
+      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
+      "healthConsentRequired": "You must consent to the processing of your health data."
+    },
+    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
+    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
+    "saveError": "We could not save your response. Please try again in a few minutes.",
+    "withdrawConfirm": "Are you sure you want to withdraw your response?",
+    "withdrawSuccess": "Your response has been withdrawn.",
+    "withdrawError": "Could not withdraw your response. Please try again.",
+    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
+    "clearSuccess": "Attendance records cleared.",
+    "clearError": "Could not clear attendance records."
   },
   "public": {
     "loadingInvitation": "Завантаження запрошення…",
@@ -328,7 +346,9 @@
     "withCompanions": "Так ({{count}} супров.)",
     "confirms": "Підтверджують",
     "declines": "Відмовляються",
-    "pending": "Очікують"
+    "pending": "Очікують",
+    "visits_one": "1 відвідування",
+    "visits_other": "{{count}} відвідувань"
   },
   "attendance": {
     "searchLabel": "Пошук за іменем",
@@ -572,7 +592,9 @@
       "deleteFailed": "Error al eliminar. Verifica la consola.",
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
-    "login": "Entrar"
+    "login": "Entrar",
+    "emailLabel": "Email",
+    "passwordLabel": "Password"
   },
   "compliance": {
     "title": "Реєстр діяльності з обробки даних (ст. 30 GDPR)",
@@ -680,7 +702,9 @@
   },
   "sectionOrder": {
     "moveUp": "Move up",
-    "moveDown": "Move down"
+    "moveDown": "Move down",
+    "title": "Порядок і видимість",
+    "help": "Перетягніть для зміни порядку, використовуйте кнопки для переміщення та вмикайте/вимикайте кожен розділ."
   },
   "langSwitcher": {
     "label": "Select language"
@@ -702,5 +726,78 @@
     "centralAsia": "Central Asia / Middle East",
     "africa": "Africa",
     "americas": "Americas"
+  },
+  "countdown": {
+    "year_one": "{{count}} year",
+    "year_other": "{{count}} years",
+    "month_one": "{{count}} month",
+    "month_other": "{{count}} months",
+    "week_one": "{{count}} week",
+    "week_other": "{{count}} weeks",
+    "day_one": "{{count}} day",
+    "day_other": "{{count}} days",
+    "hour_one": "{{count}} hour",
+    "hour_other": "{{count}} hours",
+    "minute_one": "{{count}} minute",
+    "minute_other": "{{count}} minutes"
+  },
+  "changelog": {
+    "title": "Журнал змін",
+    "close": "Закрити"
+  },
+  "auth": {
+    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
+    "tokenInvalid": "The access code is not valid.",
+    "enterCode": "Enter the access code.",
+    "codeVerified": "Code verified successfully.",
+    "codeVerifyError": "Could not verify the code. Please try again.",
+    "enterUserAndCode": "Enter your username and the access code.",
+    "invalidCredentials": "Incorrect username or code.",
+    "codeUserMismatch": "The code does not match this user.",
+    "loginSuccess": "You have logged in successfully.",
+    "loginError": "Could not verify the code. Please try again.",
+    "confirmRequired": "Type CONFIRM to generate a new code.",
+    "usernameRequired": "Enter your username first.",
+    "usernameInvalid": "Username can only contain letters and numbers.",
+    "usernameTooLong": "Username cannot exceed 50 characters.",
+    "unauthorizedUser": "This user does not have permission to access here.",
+    "tokenGenerated": "Code generated. You can now log in.",
+    "tokenGenerateError": "Could not generate the code. Please try again.",
+    "currentTokenRequired": "Enter the current access code to generate a new one.",
+    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
+    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
+    "superadminNoPermissions": "This account does not have administration permissions.",
+    "superadminWrongCredentials": "Incorrect credentials.",
+    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
+    "superadminInvalidEmail": "The email format is not valid.",
+    "superadminLoginError": "Error logging in. Check your connection."
+  },
+  "autosave": {
+    "saved": "Зміни збережено"
+  },
+  "monthNames": {
+    "1": "Січень",
+    "2": "Лютий",
+    "3": "Березень",
+    "4": "Квітень",
+    "5": "Травень",
+    "6": "Червень",
+    "7": "Липень",
+    "8": "Серпень",
+    "9": "Вересень",
+    "10": "Жовтень",
+    "11": "Листопад",
+    "12": "Грудень"
+  },
+  "themeGroups": {
+    "light": "Світлі теми",
+    "dark": "Темні теми",
+    "lgbtiq": "ЛГБТК+"
+  },
+  "dietary": {
+    "gluten": "Глютен",
+    "lactose": "Лактоза",
+    "nuts": "Горіхи",
+    "shellfish": "Молюски"
   }
 }

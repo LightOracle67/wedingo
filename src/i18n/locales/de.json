@@ -54,7 +54,8 @@
     "withBlessing": "Mit dem Segen ihrer Paten {{godparent1}} und {{godparent2}}",
     "todayIsWedding": "Heute ist die Hochzeit",
     "missing": "Noch",
-    "todayIsTheDay": "Heute ist der große Tag!"
+    "todayIsTheDay": "Heute ist der große Tag!",
+    "sectionLabel": "Titel"
   },
   "details": {
     "sectionLabel": "Datum und Ort",
@@ -133,7 +134,24 @@
     "withdrawButton": "Meine Bestätigung zurückziehen",
     "birthDateLabel": "Geburtsdatum",
     "ageUnder14Warning": "Du bist unter 14 Jahre alt. Du brauchst die Zustimmung deiner Eltern oder Erziehungsberechtigten.",
-    "parentalConsent": "Meine Eltern oder Erziehungsberechtigten stimmen meiner Teilnahme zu"
+    "parentalConsent": "Meine Eltern oder Erziehungsberechtigten stimmen meiner Teilnahme zu",
+    "validation": {
+      "nameRequired": "Geben Sie Ihren Namen ein, um die Teilnahme zu bestätigen.",
+      "menuRequired": "Wählen Sie eine Menüoption.",
+      "privacyRequired": "Sie müssen die Datenschutzrichtlinie akzeptieren.",
+      "birthDateRequired": "Geben Sie Ihr Geburtsdatum ein.",
+      "ageUnder14": "Sie sind unter 14 Jahren. Sie benötigen die Einwilligung Ihrer Eltern oder Erziehungsberechtigten.",
+      "healthConsentRequired": "Sie müssen der Verarbeitung Ihrer Gesundheitsdaten zustimmen."
+    },
+    "successAttending": "Danke, {{name}}. Ihre Teilnahme wurde registriert.",
+    "successNotAttending": "Danke, {{name}}. Es tut uns leid, dass Sie nicht kommen können.",
+    "saveError": "Wir konnten Ihre Antwort nicht speichern. Bitte versuchen Sie es in einigen Minuten erneut.",
+    "withdrawConfirm": "Sind Sie sicher, dass Sie Ihre Antwort zurückziehen möchten?",
+    "withdrawSuccess": "Ihre Antwort wurde zurückgezogen.",
+    "withdrawError": "Antwort konnte nicht zurückgezogen werden. Bitte versuchen Sie es erneut.",
+    "clearConfirm": "Alle Teilnahmebestätigungen löschen? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "clearSuccess": "Teilnahmedatensätze gelöscht.",
+    "clearError": "Teilnahmedatensätze konnten nicht gelöscht werden."
   },
   "public": {
     "loadingInvitation": "Einladung wird geladen…",
@@ -328,7 +346,9 @@
     "withCompanions": "Ja ({{count}} Begleitung(en))",
     "confirms": "Zusagen",
     "declines": "Absagen",
-    "pending": "Ausstehend"
+    "pending": "Ausstehend",
+    "visits_one": "1 Besuch",
+    "visits_other": "{{count}} Besuche"
   },
   "attendance": {
     "searchLabel": "Nach Namen suchen",
@@ -572,7 +592,9 @@
       "deleteFailed": "Error al eliminar. Verifica la consola.",
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
-    "login": "Entrar"
+    "login": "Entrar",
+    "emailLabel": "Email",
+    "passwordLabel": "Password"
   },
   "compliance": {
     "title": "Verzeichnis von Verarbeitungstätigkeiten (Art. 30 DSGVO)",
@@ -680,7 +702,9 @@
   },
   "sectionOrder": {
     "moveUp": "Nach oben",
-    "moveDown": "Nach unten"
+    "moveDown": "Nach unten",
+    "title": "Reihenfolge & Sichtbarkeit",
+    "help": "Ziehen, um neu zu ordnen, die Pfeile zum Verschieben benutzen und jede Sektion ein- oder ausschalten."
   },
   "langSwitcher": {
     "label": "Sprache auswählen"
@@ -702,5 +726,78 @@
     "centralAsia": "Central Asia / Middle East",
     "africa": "Africa",
     "americas": "Americas"
+  },
+  "countdown": {
+    "year_one": "{{count}} Jahr",
+    "year_other": "{{count}} Jahre",
+    "month_one": "{{count}} Monat",
+    "month_other": "{{count}} Monate",
+    "week_one": "{{count}} Woche",
+    "week_other": "{{count}} Wochen",
+    "day_one": "{{count}} Tag",
+    "day_other": "{{count}} Tage",
+    "hour_one": "{{count}} Stunde",
+    "hour_other": "{{count}} Stunden",
+    "minute_one": "{{count}} Minute",
+    "minute_other": "{{count}} Minuten"
+  },
+  "changelog": {
+    "title": "Änderungsprotokoll",
+    "close": "Schließen"
+  },
+  "auth": {
+    "sessionExists": "Für diese Einladung ist bereits eine Sitzung aktiv. Möchten Sie trotzdem einloggen? Die vorherige Sitzung wird geschlossen.",
+    "tokenInvalid": "Der Zugangscode ist ungültig.",
+    "enterCode": "Geben Sie den Zugangscode ein.",
+    "codeVerified": "Code erfolgreich verifiziert.",
+    "codeVerifyError": "Code konnte nicht verifiziert werden. Bitte versuchen Sie es erneut.",
+    "enterUserAndCode": "Geben Sie Ihren Benutzernamen und den Zugangscode ein.",
+    "invalidCredentials": "Falscher Benutzername oder Code.",
+    "codeUserMismatch": "Der Code stimmt nicht mit diesem Benutzer überein.",
+    "loginSuccess": "Sie haben sich erfolgreich angemeldet.",
+    "loginError": "Code konnte nicht verifiziert werden. Bitte versuchen Sie es erneut.",
+    "confirmRequired": "Geben Sie BESTÄTIGEN ein, um einen neuen Code zu generieren.",
+    "usernameRequired": "Geben Sie zuerst Ihren Benutzernamen ein.",
+    "usernameInvalid": "Der Benutzername darf nur Buchstaben und Zahlen enthalten.",
+    "usernameTooLong": "Der Benutzername darf maximal 50 Zeichen lang sein.",
+    "unauthorizedUser": "Dieser Benutzer hat keine Berechtigung für den Zugriff.",
+    "tokenGenerated": "Code generiert. Sie können sich jetzt anmelden.",
+    "tokenGenerateError": "Code konnte nicht generiert werden. Bitte versuchen Sie es erneut.",
+    "currentTokenRequired": "Geben Sie den aktuellen Zugangscode ein, um einen neuen zu generieren.",
+    "tokenRenewed": "Neuer Code generiert. Kopieren Sie ihn vor dem Speichern aus dem oberen Feld.",
+    "tokenRenewedAdmin": "Code erneuert. Dies ändert nicht das App-Passwort.",
+    "superadminNoPermissions": "Dieses Konto hat keine Administratorberechtigungen.",
+    "superadminWrongCredentials": "Falsche Anmeldedaten.",
+    "superadminTooManyAttempts": "Zu viele Versuche. Warten Sie einen Moment und versuchen Sie es erneut.",
+    "superadminInvalidEmail": "Das E-Mail-Format ist ungültig.",
+    "superadminLoginError": "Fehler beim Einloggen. Überprüfen Sie Ihre Verbindung."
+  },
+  "autosave": {
+    "saved": "Änderungen gespeichert"
+  },
+  "monthNames": {
+    "1": "Januar",
+    "2": "Februar",
+    "3": "März",
+    "4": "April",
+    "5": "Mai",
+    "6": "Juni",
+    "7": "Juli",
+    "8": "August",
+    "9": "September",
+    "10": "Oktober",
+    "11": "November",
+    "12": "Dezember"
+  },
+  "themeGroups": {
+    "light": "Helle Themen",
+    "dark": "Dunkle Themen",
+    "lgbtiq": "LGTBIQ+"
+  },
+  "dietary": {
+    "gluten": "Gluten",
+    "lactose": "Laktose",
+    "nuts": "Baumnüsse",
+    "shellfish": "Schalentiere"
   }
 }

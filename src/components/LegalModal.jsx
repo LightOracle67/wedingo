@@ -18,6 +18,11 @@ const LegalModal = memo(/** @param {{ section: string, onClose: () => void }} pr
     { id: "legal", label: t("legal.sectionLegal"), content: t("legal.legalText") },
   ];
 
+  const handleClose = useCallback(() => {
+    setClosing(true);
+    setTimeout(() => { setClosing(false); onClose(); }, 200);
+  }, [onClose]);
+
   useEffect(() => {
     if (section) setOpen(section);
   }, [section]);
@@ -29,11 +34,6 @@ const LegalModal = memo(/** @param {{ section: string, onClose: () => void }} pr
     closeRef.current = handleKey;
     return () => window.removeEventListener("keydown", handleKey);
   }, [isOpen, handleClose]);
-
-  const handleClose = useCallback(() => {
-    setClosing(true);
-    setTimeout(() => { setClosing(false); onClose(); }, 200);
-  }, [onClose]);
 
   const toggle = (id) => setOpen((prev) => (prev === id ? "" : id));
 

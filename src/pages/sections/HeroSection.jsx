@@ -51,29 +51,23 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
                 <p className="text-[clamp(1.4rem,4vw,2.2rem)] leading-tight font-serif tracking-wide text-boda-texto">
                   {(() => {
                     if (countdown.years > 0) {
-                      if (countdown.years === 1) return `${countdown.years} año · ${countdown.months} meses`;
-                      return `${countdown.years} años · ${countdown.months} meses`;
+                      return `${t('countdown.year', { count: countdown.years })} · ${t('countdown.month', { count: countdown.months })}`;
                     }
                     if (countdown.months > 0) {
                       const weeks = Math.floor(countdown.days / 7);
-                      if (countdown.months === 1) return `1 mes · ${weeks} semanas`;
-                      return `${countdown.months} meses · ${weeks} semanas`;
+                      return `${t('countdown.month', { count: countdown.months })} · ${t('countdown.week', { count: weeks })}`;
                     }
                     if (countdown.days >= 7) {
                       const w = Math.floor(countdown.days / 7);
-                      if (w === 1) return `1 semana · ${countdown.days % 7} días`;
-                      return `${w} semanas · ${countdown.days % 7} días`;
+                      return `${t('countdown.week', { count: w })} · ${t('countdown.day', { count: countdown.days % 7 })}`;
                     }
                     if (countdown.days > 0) {
-                      if (countdown.days === 1) return `1 día · ${countdown.hours}h`;
-                      return `${countdown.days} días · ${countdown.hours}h`;
+                      return `${t('countdown.day', { count: countdown.days })} · ${countdown.hours}h`;
                     }
                     if (countdown.hours > 0) {
-                      if (countdown.hours === 1) return `1 hora · ${countdown.minutes} min`;
-                      return `${countdown.hours} horas · ${countdown.minutes} min`;
+                      return `${t('countdown.hour', { count: countdown.hours })} · ${countdown.minutes} min`;
                     }
-                    if (countdown.minutes === 1) return "1 minuto";
-                    return `${countdown.minutes} minutos`;
+                    return t('countdown.minute', { count: countdown.minutes });
                   })()}
                 </p>
               ) : (

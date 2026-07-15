@@ -606,6 +606,9 @@ export function AppProvider({ children }) {
 
     isSavingRef.current = true;
     try {
+      const savedGallery = payload.galleryImages;
+      // galleryImages se gestiona via subcolección, excluir para no exceder 1MB/doc
+      delete payload.galleryImages;
       // Encripta campos sensibles antes de guardar
       const bgOrig = payload.backgroundImage?.startsWith("data:") ? payload.backgroundImage : null;
       const cpOrig = payload.couplePhoto?.startsWith("data:") ? payload.couplePhoto : null;
@@ -620,6 +623,7 @@ export function AppProvider({ children }) {
       if (payload.bankInfo) payload.bankInfo = await decrypt(payload.bankInfo, inviteToken);
       if (bgOrig) payload.backgroundImage = bgOrig;
       if (cpOrig) payload.couplePhoto = cpOrig;
+      payload.galleryImages = savedGallery;
       setConfig(payload);
       setFormData(payload);
       setHasStoredConfig(true);

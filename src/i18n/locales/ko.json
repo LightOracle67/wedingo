@@ -54,7 +54,8 @@
     "withBlessing": "증인 {{godparent1}}님과 {{godparent2}}님의 축복과 함께",
     "todayIsWedding": "오늘은 결혼식 날입니다",
     "missing": "남은 시간",
-    "todayIsTheDay": "오늘이 바로 그 특별한 날입니다!"
+    "todayIsTheDay": "오늘이 바로 그 특별한 날입니다!",
+    "sectionLabel": "표지"
   },
   "details": {
     "sectionLabel": "날짜 및 장소",
@@ -133,7 +134,24 @@
     "withdrawButton": "확인 철회하기",
     "birthDateLabel": "생년월일",
     "ageUnder14Warning": "14세 미만입니다. 부모님 또는 보호자의 동의가 필요합니다.",
-    "parentalConsent": "부모님 또는 보호자가 참여에 동의합니다"
+    "parentalConsent": "부모님 또는 보호자가 참여에 동의합니다",
+    "validation": {
+      "nameRequired": "참석을 확인하려면 이름을 입력하세요.",
+      "menuRequired": "메뉴 옵션을 선택하세요.",
+      "privacyRequired": "개인정보 처리방침에 동의해야 합니다.",
+      "birthDateRequired": "생년월일을 입력하세요.",
+      "ageUnder14": "14세 미만입니다. 부모 또는 보호자의 동의가 필요합니다.",
+      "healthConsentRequired": "건강 데이터 처리에 동의해야 합니다."
+    },
+    "successAttending": "감사합니다, {{name}}. 참석이 기록되었습니다.",
+    "successNotAttending": "감사합니다, {{name}}. 참석하지 못하게 되어 유감입니다.",
+    "saveError": "응답을 저장할 수 없습니다. 몇 분 후에 다시 시도하세요.",
+    "withdrawConfirm": "응답을 철회하시겠습니까?",
+    "withdrawSuccess": "응답이 철회되었습니다.",
+    "withdrawError": "응답을 철회할 수 없습니다. 다시 시도하세요.",
+    "clearConfirm": "모든 참석 응답을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.",
+    "clearSuccess": "참석 기록이 지워졌습니다.",
+    "clearError": "참석 기록을 지울 수 없습니다."
   },
   "public": {
     "loadingInvitation": "초대장 불러오는 중…",
@@ -328,7 +346,9 @@
     "withCompanions": "예 (동반자 {{count}}명)",
     "confirms": "참석",
     "declines": "불참",
-    "pending": "대기"
+    "pending": "대기",
+    "visits_one": "방문 1회",
+    "visits_other": "{{count}}회 방문"
   },
   "attendance": {
     "searchLabel": "이름으로 검색",
@@ -572,7 +592,9 @@
       "deleteFailed": "Error al eliminar. Verifica la consola.",
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
-    "login": "Entrar"
+    "login": "Entrar",
+    "emailLabel": "Email",
+    "passwordLabel": "Password"
   },
   "compliance": {
     "title": "처리 활동 기록 (GDPR 제30조)",
@@ -680,7 +702,9 @@
   },
   "sectionOrder": {
     "moveUp": "Move up",
-    "moveDown": "Move down"
+    "moveDown": "Move down",
+    "title": "순서 및 표시",
+    "help": "드래그하여 재정렬하고, 버튼을 사용하여 이동하며, 각 섹션을 켜거나 끕니다."
   },
   "langSwitcher": {
     "label": "Select language"
@@ -702,5 +726,78 @@
     "centralAsia": "Central Asia / Middle East",
     "africa": "Africa",
     "americas": "Americas"
+  },
+  "countdown": {
+    "year_one": "{{count}}년",
+    "year_other": "{{count}}년",
+    "month_one": "{{count}}개월",
+    "month_other": "{{count}}개월",
+    "week_one": "{{count}}주",
+    "week_other": "{{count}}주",
+    "day_one": "{{count}}일",
+    "day_other": "{{count}}일",
+    "hour_one": "{{count}}시간",
+    "hour_other": "{{count}}시간",
+    "minute_one": "{{count}}분",
+    "minute_other": "{{count}}분"
+  },
+  "changelog": {
+    "title": "변경 내역",
+    "close": "닫기"
+  },
+  "auth": {
+    "sessionExists": "이 초대장에 대해 이미 활성 세션이 있습니다. 그래도 로그인하시겠습니까? 이전 세션이 종료됩니다.",
+    "tokenInvalid": "액세스 코드가 유효하지 않습니다.",
+    "enterCode": "액세스 코드를 입력하세요.",
+    "codeVerified": "코드가 성공적으로 확인되었습니다.",
+    "codeVerifyError": "코드를 확인할 수 없습니다. 다시 시도하세요.",
+    "enterUserAndCode": "사용자 이름과 액세스 코드를 입력하세요.",
+    "invalidCredentials": "사용자 이름 또는 코드가 잘못되었습니다.",
+    "codeUserMismatch": "코드가 이 사용자와 일치하지 않습니다.",
+    "loginSuccess": "로그인되었습니다.",
+    "loginError": "코드를 확인할 수 없습니다. 다시 시도하세요.",
+    "confirmRequired": "새 코드를 생성하려면 확인을 입력하세요.",
+    "usernameRequired": "먼저 사용자 이름을 입력하세요.",
+    "usernameInvalid": "사용자 이름은 문자와 숫자만 포함할 수 있습니다.",
+    "usernameTooLong": "사용자 이름은 50자를 초과할 수 없습니다.",
+    "unauthorizedUser": "이 사용자는 여기에 접근할 권한이 없습니다.",
+    "tokenGenerated": "코드가 생성되었습니다. 이제 로그인할 수 있습니다.",
+    "tokenGenerateError": "코드를 생성할 수 없습니다. 다시 시도하세요.",
+    "currentTokenRequired": "새 코드를 생성하려면 현재 액세스 코드를 입력하세요.",
+    "tokenRenewed": "새 코드가 생성되었습니다. 저장하기 전에 위 필드에서 복사하세요.",
+    "tokenRenewedAdmin": "코드가 갱신되었습니다. 앱 비밀번호는 변경되지 않습니다.",
+    "superadminNoPermissions": "이 계정에는 관리자 권한이 없습니다.",
+    "superadminWrongCredentials": "잘못된 자격 증명입니다.",
+    "superadminTooManyAttempts": "시도 횟수가 너무 많습니다. 잠시 기다렸다가 다시 시도하세요.",
+    "superadminInvalidEmail": "이메일 형식이 유효하지 않습니다.",
+    "superadminLoginError": "로그인 오류. 연결을 확인하세요."
+  },
+  "autosave": {
+    "saved": "변경사항 저장됨"
+  },
+  "monthNames": {
+    "1": "1월",
+    "2": "2월",
+    "3": "3월",
+    "4": "4월",
+    "5": "5월",
+    "6": "6월",
+    "7": "7월",
+    "8": "8월",
+    "9": "9월",
+    "10": "10월",
+    "11": "11월",
+    "12": "12월"
+  },
+  "themeGroups": {
+    "light": "라이트 테마",
+    "dark": "다크 테마",
+    "lgbtiq": "LGTBIQ+"
+  },
+  "dietary": {
+    "gluten": "글루텐",
+    "lactose": "유당",
+    "nuts": "견과류",
+    "shellfish": "갑각류"
   }
 }

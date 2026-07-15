@@ -59,7 +59,7 @@ export default function SuperAdminLogin() {
 
         <form className="setup-form" onSubmit={handleSubmit}>
           <label className="setup-label" htmlFor="superadminEmail">
-            Email
+            {t("superadmin.emailLabel")}
           </label>
           <input
             id="superadminEmail"
@@ -73,7 +73,7 @@ export default function SuperAdminLogin() {
           />
 
           <label className="setup-label" htmlFor="superadminPassword">
-            Contraseña
+            {t("superadmin.passwordLabel")}
           </label>
           <input
             id="superadminPassword"

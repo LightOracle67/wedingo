@@ -54,7 +54,8 @@
     "withBlessing": "Avec la bénédiction de leurs parrains {{godparent1}} et {{godparent2}}",
     "todayIsWedding": "C'est le jour du mariage",
     "missing": "Plus que",
-    "todayIsTheDay": "C'est le grand jour !"
+    "todayIsTheDay": "C'est le grand jour !",
+    "sectionLabel": "Couverture"
   },
   "details": {
     "sectionLabel": "Date et lieu",
@@ -133,7 +134,24 @@
     "withdrawButton": "Retirer ma confirmation",
     "birthDateLabel": "Date de naissance",
     "ageUnder14Warning": "Vous avez moins de 14 ans. Vous avez besoin du consentement de vos parents ou tuteurs.",
-    "parentalConsent": "Mes parents ou tuteurs consentent à ma participation"
+    "parentalConsent": "Mes parents ou tuteurs consentent à ma participation",
+    "validation": {
+      "nameRequired": "Entrez votre nom pour confirmer votre présence.",
+      "menuRequired": "Sélectionnez une option de menu.",
+      "privacyRequired": "Vous devez accepter la Politique de confidentialité.",
+      "birthDateRequired": "Entrez votre date de naissance.",
+      "ageUnder14": "Vous avez moins de 14 ans. Vous avez besoin du consentement de vos parents ou tuteurs.",
+      "healthConsentRequired": "Vous devez consentir au traitement de vos données de santé."
+    },
+    "successAttending": "Merci, {{name}}. Votre présence a été enregistrée.",
+    "successNotAttending": "Merci, {{name}}. Nous sommes désolés que vous ne puissiez pas venir.",
+    "saveError": "Impossible d'enregistrer votre réponse. Veuillez réessayer dans quelques minutes.",
+    "withdrawConfirm": "Êtes-vous sûr de vouloir retirer votre réponse ?",
+    "withdrawSuccess": "Votre réponse a été retirée.",
+    "withdrawError": "Impossible de retirer votre réponse. Veuillez réessayer.",
+    "clearConfirm": "Supprimer toutes les réponses de présence ? Cette action est irréversible.",
+    "clearSuccess": "Registre de présence effacé.",
+    "clearError": "Impossible d'effacer le registre de présence."
   },
   "public": {
     "loadingInvitation": "Chargement du faire-part…",
@@ -328,7 +346,9 @@
     "withCompanions": "Oui ({{count}} accompagnant(s))",
     "confirms": "Confirment",
     "declines": "Déclinent",
-    "pending": "En attente"
+    "pending": "En attente",
+    "visits_one": "1 visite",
+    "visits_other": "{{count}} visites"
   },
   "attendance": {
     "searchLabel": "Rechercher par nom",
@@ -572,7 +592,9 @@
       "deleteFailed": "Error al eliminar. Verifica la consola.",
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
-    "login": "Entrar"
+    "login": "Entrar",
+    "emailLabel": "Email",
+    "passwordLabel": "Password"
   },
   "compliance": {
     "title": "Registre des activités de traitement (Art. 30 RGPD)",
@@ -680,7 +702,9 @@
   },
   "sectionOrder": {
     "moveUp": "Déplacer vers le haut",
-    "moveDown": "Déplacer vers le bas"
+    "moveDown": "Déplacer vers le bas",
+    "title": "Ordre & visibilité",
+    "help": "Glissez pour réorganiser, utilisez les boutons pour déplacer, et activez ou désactivez chaque section."
   },
   "langSwitcher": {
     "label": "Choisir la langue"
@@ -702,5 +726,78 @@
     "centralAsia": "Central Asia / Middle East",
     "africa": "Africa",
     "americas": "Americas"
+  },
+  "countdown": {
+    "year_one": "{{count}} an",
+    "year_other": "{{count}} ans",
+    "month_one": "{{count}} mois",
+    "month_other": "{{count}} mois",
+    "week_one": "{{count}} semaine",
+    "week_other": "{{count}} semaines",
+    "day_one": "{{count}} jour",
+    "day_other": "{{count}} jours",
+    "hour_one": "{{count}} heure",
+    "hour_other": "{{count}} heures",
+    "minute_one": "{{count}} minute",
+    "minute_other": "{{count}} minutes"
+  },
+  "changelog": {
+    "title": "Journal des modifications",
+    "close": "Fermer"
+  },
+  "auth": {
+    "sessionExists": "Une session est déjà active pour cette invitation. Voulez-vous quand même vous connecter ? La session précédente sera fermée.",
+    "tokenInvalid": "Le code d'accès n'est pas valide.",
+    "enterCode": "Entrez le code d'accès.",
+    "codeVerified": "Code vérifié avec succès.",
+    "codeVerifyError": "Impossible de vérifier le code. Veuillez réessayer.",
+    "enterUserAndCode": "Entrez votre nom d'utilisateur et le code d'accès.",
+    "invalidCredentials": "Nom d'utilisateur ou code incorrect.",
+    "codeUserMismatch": "Le code ne correspond pas à cet utilisateur.",
+    "loginSuccess": "Vous êtes connecté avec succès.",
+    "loginError": "Impossible de vérifier le code. Veuillez réessayer.",
+    "confirmRequired": "Tapez CONFIRMER pour générer un nouveau code.",
+    "usernameRequired": "Entrez d'abord votre nom d'utilisateur.",
+    "usernameInvalid": "Le nom d'utilisateur ne peut contenir que des lettres et des chiffres.",
+    "usernameTooLong": "Le nom d'utilisateur ne peut pas dépasser 50 caractères.",
+    "unauthorizedUser": "Cet utilisateur n'a pas la permission d'accéder ici.",
+    "tokenGenerated": "Code généré. Vous pouvez maintenant vous connecter.",
+    "tokenGenerateError": "Impossible de générer le code. Veuillez réessayer.",
+    "currentTokenRequired": "Entrez le code d'accès actuel pour en générer un nouveau.",
+    "tokenRenewed": "Nouveau code généré. Copiez-le depuis le champ ci-dessus avant d'enregistrer.",
+    "tokenRenewedAdmin": "Code renouvelé. Cela ne modifie pas le mot de passe de l'application.",
+    "superadminNoPermissions": "Ce compte n'a pas les permissions d'administration.",
+    "superadminWrongCredentials": "Identifiants incorrects.",
+    "superadminTooManyAttempts": "Trop de tentatives. Attendez un moment et réessayez.",
+    "superadminInvalidEmail": "Le format de l'email n'est pas valide.",
+    "superadminLoginError": "Erreur de connexion. Vérifiez votre connexion."
+  },
+  "autosave": {
+    "saved": "Modifications enregistrées"
+  },
+  "monthNames": {
+    "1": "Janvier",
+    "2": "Février",
+    "3": "Mars",
+    "4": "Avril",
+    "5": "Mai",
+    "6": "Juin",
+    "7": "Juillet",
+    "8": "Août",
+    "9": "Septembre",
+    "10": "Octobre",
+    "11": "Novembre",
+    "12": "Décembre"
+  },
+  "themeGroups": {
+    "light": "Thèmes clairs",
+    "dark": "Thèmes sombres",
+    "lgbtiq": "LGTBIQ+"
+  },
+  "dietary": {
+    "gluten": "Gluten",
+    "lactose": "Lactose",
+    "nuts": "Fruits à coque",
+    "shellfish": "Crustacés"
   }
 }

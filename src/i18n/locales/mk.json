@@ -54,7 +54,8 @@
     "withBlessing": "Со благослов на кумовите {{godparent1}} и {{godparent2}}",
     "todayIsWedding": "Денес е свадбата",
     "missing": "Недостасуваат",
-    "todayIsTheDay": "Денес е големиот ден!"
+    "todayIsTheDay": "Денес е големиот ден!",
+    "sectionLabel": "Cover"
   },
   "details": {
     "sectionLabel": "Датум и место",
@@ -133,7 +134,24 @@
     "withdrawButton": "Повлечи ја мојата потврда",
     "birthDateLabel": "Датум на раѓање",
     "ageUnder14Warning": "Имаш помалку од 14 години. Потребна е согласност од родителите или старателите.",
-    "parentalConsent": "Моите родители или старатели се согласуваат со моето учество"
+    "parentalConsent": "Моите родители или старатели се согласуваат со моето учество",
+    "validation": {
+      "nameRequired": "Enter your name to confirm attendance.",
+      "menuRequired": "Select a menu option.",
+      "privacyRequired": "You must accept the Privacy Policy.",
+      "birthDateRequired": "Enter your date of birth.",
+      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
+      "healthConsentRequired": "You must consent to the processing of your health data."
+    },
+    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
+    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
+    "saveError": "We could not save your response. Please try again in a few minutes.",
+    "withdrawConfirm": "Are you sure you want to withdraw your response?",
+    "withdrawSuccess": "Your response has been withdrawn.",
+    "withdrawError": "Could not withdraw your response. Please try again.",
+    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
+    "clearSuccess": "Attendance records cleared.",
+    "clearError": "Could not clear attendance records."
   },
   "public": {
     "loadingInvitation": "Се вчитува поканата…",
@@ -328,7 +346,9 @@
     "withCompanions": "Да ({{count}} придружник(ци))",
     "confirms": "Потврдуваат",
     "declines": "Одбиваат",
-    "pending": "На чекање"
+    "pending": "На чекање",
+    "visits_one": "1 visit",
+    "visits_other": "{{count}} visits"
   },
   "attendance": {
     "searchLabel": "Пребарај по име",
@@ -572,7 +592,9 @@
       "deleteFailed": "Error al eliminar. Verifica la consola.",
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
-    "login": "Entrar"
+    "login": "Entrar",
+    "emailLabel": "Email",
+    "passwordLabel": "Password"
   },
   "compliance": {
     "title": "Регистар на активности на обработка (GDPR чл. 30)",
@@ -680,7 +702,9 @@
   },
   "sectionOrder": {
     "moveUp": "Move up",
-    "moveDown": "Move down"
+    "moveDown": "Move down",
+    "title": "Order & visibility",
+    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
   },
   "langSwitcher": {
     "label": "Select language"
@@ -702,5 +726,78 @@
     "centralAsia": "Central Asia / Middle East",
     "africa": "Africa",
     "americas": "Americas"
+  },
+  "countdown": {
+    "year_one": "{{count}} year",
+    "year_other": "{{count}} years",
+    "month_one": "{{count}} month",
+    "month_other": "{{count}} months",
+    "week_one": "{{count}} week",
+    "week_other": "{{count}} weeks",
+    "day_one": "{{count}} day",
+    "day_other": "{{count}} days",
+    "hour_one": "{{count}} hour",
+    "hour_other": "{{count}} hours",
+    "minute_one": "{{count}} minute",
+    "minute_other": "{{count}} minutes"
+  },
+  "changelog": {
+    "title": "Changelog",
+    "close": "Close"
+  },
+  "auth": {
+    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
+    "tokenInvalid": "The access code is not valid.",
+    "enterCode": "Enter the access code.",
+    "codeVerified": "Code verified successfully.",
+    "codeVerifyError": "Could not verify the code. Please try again.",
+    "enterUserAndCode": "Enter your username and the access code.",
+    "invalidCredentials": "Incorrect username or code.",
+    "codeUserMismatch": "The code does not match this user.",
+    "loginSuccess": "You have logged in successfully.",
+    "loginError": "Could not verify the code. Please try again.",
+    "confirmRequired": "Type CONFIRM to generate a new code.",
+    "usernameRequired": "Enter your username first.",
+    "usernameInvalid": "Username can only contain letters and numbers.",
+    "usernameTooLong": "Username cannot exceed 50 characters.",
+    "unauthorizedUser": "This user does not have permission to access here.",
+    "tokenGenerated": "Code generated. You can now log in.",
+    "tokenGenerateError": "Could not generate the code. Please try again.",
+    "currentTokenRequired": "Enter the current access code to generate a new one.",
+    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
+    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
+    "superadminNoPermissions": "This account does not have administration permissions.",
+    "superadminWrongCredentials": "Incorrect credentials.",
+    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
+    "superadminInvalidEmail": "The email format is not valid.",
+    "superadminLoginError": "Error logging in. Check your connection."
+  },
+  "autosave": {
+    "saved": "Changes saved"
+  },
+  "monthNames": {
+    "1": "January",
+    "2": "February",
+    "3": "March",
+    "4": "April",
+    "5": "May",
+    "6": "June",
+    "7": "July",
+    "8": "August",
+    "9": "September",
+    "10": "October",
+    "11": "November",
+    "12": "December"
+  },
+  "themeGroups": {
+    "light": "Light themes",
+    "dark": "Dark themes",
+    "lgbtiq": "LGTBIQ+"
+  },
+  "dietary": {
+    "gluten": "Gluten",
+    "lactose": "Lactose",
+    "nuts": "Tree nuts",
+    "shellfish": "Shellfish"
   }
 }

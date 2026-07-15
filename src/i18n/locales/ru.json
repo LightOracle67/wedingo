@@ -54,7 +54,8 @@
     "withBlessing": "С благословения крёстных {{godparent1}} и {{godparent2}}",
     "todayIsWedding": "Сегодня свадьба",
     "missing": "Осталось",
-    "todayIsTheDay": "Сегодня великий день!"
+    "todayIsTheDay": "Сегодня великий день!",
+    "sectionLabel": "Обложка"
   },
   "details": {
     "sectionLabel": "Дата и место",
@@ -133,7 +134,24 @@
     "withdrawButton": "Отозвать моё подтверждение",
     "birthDateLabel": "Дата рождения",
     "ageUnder14Warning": "Вам меньше 14 лет. Вам необходимо согласие родителей или опекунов.",
-    "parentalConsent": "Мои родители или опекуны согласны на моё участие"
+    "parentalConsent": "Мои родители или опекуны согласны на моё участие",
+    "validation": {
+      "nameRequired": "Введите имя для подтверждения присутствия.",
+      "menuRequired": "Выберите опцию меню.",
+      "privacyRequired": "Вы должны принять Политику конфиденциальности.",
+      "birthDateRequired": "Введите дату рождения.",
+      "ageUnder14": "Вам меньше 14 лет. Требуется согласие родителей или опекунов.",
+      "healthConsentRequired": "Вы должны дать согласие на обработку медицинских данных."
+    },
+    "successAttending": "Спасибо, {{name}}. Ваше присутствие записано.",
+    "successNotAttending": "Спасибо, {{name}}. Жаль, что вы не сможете присутствовать.",
+    "saveError": "Не удалось сохранить ответ. Попробуйте через несколько минут.",
+    "withdrawConfirm": "Вы уверены, что хотите отозвать ответ?",
+    "withdrawSuccess": "Ваш ответ отозван.",
+    "withdrawError": "Не удалось отозвать ответ. Попробуйте снова.",
+    "clearConfirm": "Удалить все ответы о присутствии? Это действие нельзя отменить.",
+    "clearSuccess": "Записи о присутствии очищены.",
+    "clearError": "Не удалось очистить записи о присутствии."
   },
   "public": {
     "loadingInvitation": "Загрузка приглашения…",
@@ -328,7 +346,9 @@
     "withCompanions": "Да ({{count}} сопр.)",
     "confirms": "Подтверждают",
     "declines": "Отказываются",
-    "pending": "Ожидают"
+    "pending": "Ожидают",
+    "visits_one": "1 посещение",
+    "visits_other": "{{count}} посещений"
   },
   "attendance": {
     "searchLabel": "Поиск по имени",
@@ -572,7 +592,9 @@
       "deleteFailed": "Error al eliminar. Verifica la consola.",
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
-    "login": "Entrar"
+    "login": "Entrar",
+    "emailLabel": "Email",
+    "passwordLabel": "Password"
   },
   "compliance": {
     "title": "Реестр деятельности по обработке данных (ст. 30 GDPR)",
@@ -680,7 +702,9 @@
   },
   "sectionOrder": {
     "moveUp": "Move up",
-    "moveDown": "Move down"
+    "moveDown": "Move down",
+    "title": "Порядок и видимость",
+    "help": "Перетащите для изменения порядка, используйте кнопки для перемещения и включайте/отключайте каждую секцию."
   },
   "langSwitcher": {
     "label": "Select language"
@@ -702,5 +726,78 @@
     "centralAsia": "Central Asia / Middle East",
     "africa": "Africa",
     "americas": "Americas"
+  },
+  "countdown": {
+    "year_one": "{{count}} год",
+    "year_other": "{{count}} лет",
+    "month_one": "{{count}} месяц",
+    "month_other": "{{count}} месяцев",
+    "week_one": "{{count}} неделя",
+    "week_other": "{{count}} недель",
+    "day_one": "{{count}} день",
+    "day_other": "{{count}} дней",
+    "hour_one": "{{count}} час",
+    "hour_other": "{{count}} часов",
+    "minute_one": "{{count}} минута",
+    "minute_other": "{{count}} минут"
+  },
+  "changelog": {
+    "title": "Журнал изменений",
+    "close": "Закрыть"
+  },
+  "auth": {
+    "sessionExists": "Для этого приглашения уже есть активная сессия. Всё равно войти? Предыдущая сессия будет закрыта.",
+    "tokenInvalid": "Код доступа недействителен.",
+    "enterCode": "Введите код доступа.",
+    "codeVerified": "Код успешно проверен.",
+    "codeVerifyError": "Не удалось проверить код. Попробуйте снова.",
+    "enterUserAndCode": "Введите имя пользователя и код доступа.",
+    "invalidCredentials": "Неверное имя пользователя или код.",
+    "codeUserMismatch": "Код не соответствует этому пользователю.",
+    "loginSuccess": "Вы успешно вошли.",
+    "loginError": "Не удалось проверить код. Попробуйте снова.",
+    "confirmRequired": "Введите ПОДТВЕРДИТЬ для создания нового кода.",
+    "usernameRequired": "Сначала введите имя пользователя.",
+    "usernameInvalid": "Имя пользователя может содержать только буквы и цифры.",
+    "usernameTooLong": "Имя пользователя не может превышать 50 символов.",
+    "unauthorizedUser": "Этот пользователь не имеет доступа сюда.",
+    "tokenGenerated": "Код создан. Теперь вы можете войти.",
+    "tokenGenerateError": "Не удалось создать код. Попробуйте снова.",
+    "currentTokenRequired": "Введите текущий код доступа для создания нового.",
+    "tokenRenewed": "Новый код создан. Скопируйте его из поля выше перед сохранением.",
+    "tokenRenewedAdmin": "Код обновлён. Это не меняет пароль приложения.",
+    "superadminNoPermissions": "Эта учётная запись не имеет прав администратора.",
+    "superadminWrongCredentials": "Неверные учётные данные.",
+    "superadminTooManyAttempts": "Слишком много попыток. Подождите и попробуйте снова.",
+    "superadminInvalidEmail": "Неверный формат email.",
+    "superadminLoginError": "Ошибка входа. Проверьте подключение."
+  },
+  "autosave": {
+    "saved": "Изменения сохранены"
+  },
+  "monthNames": {
+    "1": "Январь",
+    "2": "Февраль",
+    "3": "Март",
+    "4": "Апрель",
+    "5": "Май",
+    "6": "Июнь",
+    "7": "Июль",
+    "8": "Август",
+    "9": "Сентябрь",
+    "10": "Октябрь",
+    "11": "Ноябрь",
+    "12": "Декабрь"
+  },
+  "themeGroups": {
+    "light": "Светлые темы",
+    "dark": "Тёмные темы",
+    "lgbtiq": "ЛГБТК+"
+  },
+  "dietary": {
+    "gluten": "Глютен",
+    "lactose": "Лактоза",
+    "nuts": "Орехи",
+    "shellfish": "Морепродукты"
   }
 }

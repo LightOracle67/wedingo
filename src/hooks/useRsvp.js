@@ -17,6 +17,7 @@
  */
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { addDoc, deleteDoc, doc, getDocs, serverTimestamp } from "firebase/firestore";
 import { RSVP_COLLECTION_REF, rsvpByInviteRef } from "../lib/firebase";
 import { encrypt, decrypt } from "../lib/crypto-utils";
@@ -33,6 +34,7 @@ import { DIETARY_OPTIONS, parseDietaryInfo } from "../lib/rsvp-utils";
  * @returns {object} Estado y handlers del RSVP.
  */
 export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuEnabled) {
+  const { t } = useTranslation();
   // ─── Estados del RSVP ──────────────────────────────────
   const [rsvpEntries, setRsvpEntries] = useState([]);
   const [rsvpForm, setRsvpForm] = useState({
@@ -198,28 +200,28 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
 
     const single = rsvpForm.guestName.trim();
     if (!single) {
-      setRsvpMessage("Escribe tu nombre para confirmar la asistencia.");
+      setRsvpMessage(t("rsvp.validation.nameRequired"));
       return;
     }
 
     if (menuEnabled && rsvpForm.attendance === "yes" && !rsvpForm.mealChoice) {
-      setRsvpMessage("Selecciona una opción de menú.");
+      setRsvpMessage(t("rsvp.validation.menuRequired"));
       return;
     }
 
     if (!rsvpForm.privacyConsent) {
-      setRsvpMessage("Debes aceptar la Política de Privacidad.");
+      setRsvpMessage(t("rsvp.validation.privacyRequired"));
       return;
     }
 
     if (!rsvpForm.birthDate) {
-      setRsvpMessage("Debes indicar tu fecha de nacimiento.");
+      setRsvpMessage(t("rsvp.validation.birthDateRequired"));
       return;
     }
 
     const age = computeAge(rsvpForm.birthDate);
     if (age !== null && age < 14 && !rsvpForm.parentalConsent) {
-      setRsvpMessage("Eres menor de 14 años. Necesitas el consentimiento de tus padres o tutores.");
+      setRsvpMessage(t("rsvp.validation.ageUnder14"));
       return;
     }
 
@@ -227,7 +229,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
     if (rsvpForm.attendance === "yes") {
       const hasHealthData = rsvpForm.dietarySelection.length > 0 || rsvpForm.dietaryOther.trim();
       if (hasHealthData && !rsvpForm.healthConsent) {
-        setRsvpMessage("Debes consentir el tratamiento de tus datos de salud.");
+        setRsvpMessage(t("rsvp.validation.healthConsentRequired"));
         return;
       }
     }
@@ -270,8 +272,8 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
       setRsvpEntries((current) => [{ ...payload, id: docRef.id, submittedAt: now, dietaryInfo }, ...current]);
       setRsvpMessage(
         rsvpForm.attendance === "yes"
-          ? `Gracias, ${single}. Tu asistencia quedó registrada.`
-          : `Gracias, ${single}. Lamentamos que no puedas asistir.`,
+          ? t("rsvp.successAttending", { name: single })
+          : t("rsvp.successNotAttending", { name: single }),
       );
       // Resetea el formulario tras envío exitoso
       setRsvpForm({
@@ -283,11 +285,11 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
       setAlreadySubmittedEntry(null);
       prefillRef.current = null;
     } catch {
-      setRsvpMessage("No pudimos guardar tu confirmación. Inténtalo de nuevo en unos minutos.");
+      setRsvpMessage(t("rsvp.saveError"));
     } finally {
       setIsRsvpSubmitting(false);
     }
-  }, [isRsvpSubmitting, rsvpForm, inviteToken, menuEnabled]);
+  }, [isRsvpSubmitting, rsvpForm, inviteToken, menuEnabled, t]);
 
   /**
    * Elimina la confirmación de asistencia del invitado actual.
@@ -295,11 +297,11 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
    */
   const handleDeleteRsvp = useCallback(async () => {
     if (!alreadySubmittedEntry?.id) return;
-    if (!window.confirm("¿Estás seguro de retirar tu confirmación?")) return;
+    if (!window.confirm(t("rsvp.withdrawConfirm"))) return;
     try {
       await deleteDoc(doc(RSVP_COLLECTION_REF, alreadySubmittedEntry.id));
       setRsvpEntries((current) => current.filter((e) => e.id !== alreadySubmittedEntry.id));
-      setRsvpMessage("Tu confirmación ha sido retirada.");
+      setRsvpMessage(t("rsvp.withdrawSuccess"));
       // Resetea el formulario
       setRsvpForm({
         guestName: "", attendance: "yes", mealChoice: "",
@@ -310,27 +312,27 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
       prefillRef.current = null;
       setHasSubmitted(false);
     } catch {
-      setRsvpMessage("No se pudo retirar tu confirmación. Inténtalo de nuevo.");
+      setRsvpMessage(t("rsvp.withdrawError"));
     }
-  }, [alreadySubmittedEntry]);
+  }, [alreadySubmittedEntry, t]);
 
   /**
    * Vacía todas las respuestas de asistencia (solo admin).
    * Requiere confirmación del usuario.
    */
   const handleClearRsvpEntries = useCallback(async () => {
-    if (!window.confirm("¿Borrar todas las respuestas de asistencia? Esta acción no se puede deshacer.")) return;
+    if (!window.confirm(t("rsvp.clearConfirm"))) return;
     try {
       const snapshot = await getDocs(rsvpByInviteRef(inviteToken));
       await Promise.all(snapshot.docs.map((entryDoc) => deleteDoc(entryDoc.ref)));
       setRsvpEntries([]);
-      setAdminMessage("Se vació el registro de asistencia.");
+      setAdminMessage(t("rsvp.clearSuccess"));
       setAdminMessageType("success");
     } catch {
-      setAdminMessage("No se pudo vaciar el registro de asistencia.");
+      setAdminMessage(t("rsvp.clearError"));
       setAdminMessageType("error");
     }
-  }, [inviteToken, setAdminMessage, setAdminMessageType]);
+  }, [inviteToken, setAdminMessage, setAdminMessageType, t]);
 
   return {
     rsvpEntries, rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted,

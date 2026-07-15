@@ -54,7 +54,8 @@
     "withBlessing": "Z błogosławieństwem rodziców chrzestnych {{godparent1}} i {{godparent2}}",
     "todayIsWedding": "Dziś jest ślub",
     "missing": "Pozostało",
-    "todayIsTheDay": "Dziś jest ten wielki dzień!"
+    "todayIsTheDay": "Dziś jest ten wielki dzień!",
+    "sectionLabel": "Okładka"
   },
   "details": {
     "sectionLabel": "Data i miejsce",
@@ -133,7 +134,24 @@
     "withdrawButton": "Wycofaj potwierdzenie",
     "birthDateLabel": "Data urodzenia",
     "ageUnder14Warning": "Masz mniej niż 14 lat. Potrzebujesz zgody rodziców lub opiekunów.",
-    "parentalConsent": "Moi rodzice lub opiekunowie wyrażają zgodę na mój udział"
+    "parentalConsent": "Moi rodzice lub opiekunowie wyrażają zgodę na mój udział",
+    "validation": {
+      "nameRequired": "Wprowadź imię, aby potwierdzić obecność.",
+      "menuRequired": "Wybierz opcję menu.",
+      "privacyRequired": "Musisz zaakceptować Politykę prywatności.",
+      "birthDateRequired": "Wprowadź datę urodzenia.",
+      "ageUnder14": "Masz mniej niż 14 lat. Potrzebujesz zgody rodziców lub opiekunów.",
+      "healthConsentRequired": "Musisz wyrazić zgodę na przetwarzanie danych zdrowotnych."
+    },
+    "successAttending": "Dziękujemy, {{name}}. Twoja obecność została odnotowana.",
+    "successNotAttending": "Dziękujemy, {{name}}. Przykro nam, że nie możesz uczestniczyć.",
+    "saveError": "Nie udało się zapisać odpowiedzi. Spróbuj ponownie za kilka minut.",
+    "withdrawConfirm": "Czy na pewno chcesz wycofać swoją odpowiedź?",
+    "withdrawSuccess": "Twoja odpowiedź została wycofana.",
+    "withdrawError": "Nie udało się wycofać odpowiedzi. Spróbuj ponownie.",
+    "clearConfirm": "Usunąć wszystkie odpowiedzi o obecności? Tej czynności nie można cofnąć.",
+    "clearSuccess": "Rekordy obecności wyczyszczone.",
+    "clearError": "Nie udało się wyczyścić rekordów obecności."
   },
   "public": {
     "loadingInvitation": "Ładowanie zaproszenia...",
@@ -328,7 +346,9 @@
     "withCompanions": "Tak ({{count}} osoba/osób towarzysząca(e))",
     "confirms": "Potwierdzają",
     "declines": "Odmawiają",
-    "pending": "Oczekujące"
+    "pending": "Oczekujące",
+    "visits_one": "1 wizyta",
+    "visits_other": "{{count}} wizyt"
   },
   "attendance": {
     "searchLabel": "Szukaj po imieniu",
@@ -572,7 +592,9 @@
       "deleteFailed": "Error al eliminar. Verifica la consola.",
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
-    "login": "Entrar"
+    "login": "Entrar",
+    "emailLabel": "Email",
+    "passwordLabel": "Password"
   },
   "compliance": {
     "title": "Rejestr czynności przetwarzania (Art. 30 RODO)",
@@ -680,7 +702,9 @@
   },
   "sectionOrder": {
     "moveUp": "Move up",
-    "moveDown": "Move down"
+    "moveDown": "Move down",
+    "title": "Kolejność i widoczność",
+    "help": "Przeciągnij, aby zmienić kolejność, użyj przycisków do przenoszenia i włącz/wyłącz każdą sekcję."
   },
   "langSwitcher": {
     "label": "Select language"
@@ -702,5 +726,78 @@
     "centralAsia": "Central Asia / Middle East",
     "africa": "Africa",
     "americas": "Americas"
+  },
+  "countdown": {
+    "year_one": "{{count}} rok",
+    "year_other": "{{count}} lat",
+    "month_one": "{{count}} miesiąc",
+    "month_other": "{{count}} miesięcy",
+    "week_one": "{{count}} tydzień",
+    "week_other": "{{count}} tygodni",
+    "day_one": "{{count}} dzień",
+    "day_other": "{{count}} dni",
+    "hour_one": "{{count}} godzina",
+    "hour_other": "{{count}} godzin",
+    "minute_one": "{{count}} minuta",
+    "minute_other": "{{count}} minut"
+  },
+  "changelog": {
+    "title": "Dziennik zmian",
+    "close": "Zamknij"
+  },
+  "auth": {
+    "sessionExists": "Dla tego zaproszenia istnieje już aktywna sesja. Czy mimo to chcesz się zalogować? Poprzednia sesja zostanie zamknięta.",
+    "tokenInvalid": "Kod dostępu jest nieprawidłowy.",
+    "enterCode": "Wprowadź kod dostępu.",
+    "codeVerified": "Kod zweryfikowany pomyślnie.",
+    "codeVerifyError": "Nie można zweryfikować kodu. Spróbuj ponownie.",
+    "enterUserAndCode": "Wprowadź nazwę użytkownika i kod dostępu.",
+    "invalidCredentials": "Nieprawidłowa nazwa użytkownika lub kod.",
+    "codeUserMismatch": "Kod nie pasuje do tego użytkownika.",
+    "loginSuccess": "Zalogowano pomyślnie.",
+    "loginError": "Nie można zweryfikować kodu. Spróbuj ponownie.",
+    "confirmRequired": "Wpisz POTWIERDŹ, aby wygenerować nowy kod.",
+    "usernameRequired": "Najpierw wprowadź nazwę użytkownika.",
+    "usernameInvalid": "Nazwa użytkownika może zawierać tylko litery i cyfry.",
+    "usernameTooLong": "Nazwa użytkownika nie może przekraczać 50 znaków.",
+    "unauthorizedUser": "Ten użytkownik nie ma uprawnień dostępu.",
+    "tokenGenerated": "Kod wygenerowany. Możesz się teraz zalogować.",
+    "tokenGenerateError": "Nie można wygenerować kodu. Spróbuj ponownie.",
+    "currentTokenRequired": "Wprowadź bieżący kod dostępu, aby wygenerować nowy.",
+    "tokenRenewed": "Nowy kod wygenerowany. Skopiuj go z górnego pola przed zapisaniem.",
+    "tokenRenewedAdmin": "Kod odnowiony. Nie zmienia to hasła aplikacji.",
+    "superadminNoPermissions": "To konto nie ma uprawnień administracyjnych.",
+    "superadminWrongCredentials": "Nieprawidłowe dane logowania.",
+    "superadminTooManyAttempts": "Zbyt wiele prób. Odczekaj chwilę i spróbuj ponownie.",
+    "superadminInvalidEmail": "Format adresu email jest nieprawidłowy.",
+    "superadminLoginError": "Błąd logowania. Sprawdź połączenie."
+  },
+  "autosave": {
+    "saved": "Zmiany zapisane"
+  },
+  "monthNames": {
+    "1": "Styczeń",
+    "2": "Luty",
+    "3": "Marzec",
+    "4": "Kwiecień",
+    "5": "Maj",
+    "6": "Czerwiec",
+    "7": "Lipiec",
+    "8": "Sierpień",
+    "9": "Wrzesień",
+    "10": "Październik",
+    "11": "Listopad",
+    "12": "Grudzień"
+  },
+  "themeGroups": {
+    "light": "Jasne motywy",
+    "dark": "Ciemne motywy",
+    "lgbtiq": "LGTBIQ+"
+  },
+  "dietary": {
+    "gluten": "Gluten",
+    "lactose": "Laktoza",
+    "nuts": "Orzechy",
+    "shellfish": "Skorupiaki"
   }
 }

@@ -15,6 +15,7 @@
  */
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { doc, getDoc, runTransaction, serverTimestamp, setDoc, updateDoc } from "firebase/firestore";
 import { db, invitationDocRef } from "../lib/firebase";
@@ -34,6 +35,7 @@ import { safeSetItem, safeGetItem, safeRemoveItem } from "../lib/storage";
  * @returns {object} Estado y handlers de autenticación.
  */
 export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessageType, setHasStoredConfig) {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   // ─── Estados de autenticación ──────────────────────────
   const [setupToken, setSetupToken] = useState("");
@@ -153,7 +155,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
     const inviteSnapActive = await getDoc(invitationDocRef(inviteToken));
     if (inviteSnapActive.exists() && inviteSnapActive.data().activeSession) {
       setIsTokenVerifying(false);
-      if (!window.confirm("Ya hay una sesión activa para esta invitación. ¿Quieres iniciar sesión de todos modos? La sesión anterior se cerrará.")) {
+      if (!window.confirm(t("auth.sessionExists"))) {
         return null;
       }
       setIsTokenVerifying(true);
@@ -177,7 +179,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
       }
     });
     return tokenUsername;
-  }, [inviteToken]);
+  }, [inviteToken, t]);
 
   /**
    * Inicia sesión con token de setup (sin usuario).
@@ -190,7 +192,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
 
     const enteredToken = normalizeTokenValue(setupTokenInput);
     if (!enteredToken) {
-      setAuthMessage("Introduce el código de acceso.");
+      setAuthMessage(t("auth.enterCode"));
       return;
     }
 
@@ -208,13 +210,13 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
       setHasStoredConfig(true);
       saveSession(sessionTypeRef.current, displayName);
       setAuthMessageType("success");
-      setAuthMessage("Código verificado correctamente.");
+      setAuthMessage(t("auth.codeVerified"));
     } catch {
-      setAuthMessage("No se pudo verificar el código. Inténtalo de nuevo.");
+      setAuthMessage(t("auth.codeVerifyError"));
     } finally {
       setIsTokenVerifying(false);
     }
-  }, [activateSessionWithToken, setupTokenInput, inviteToken, setHasStoredConfig]);
+  }, [activateSessionWithToken, setupTokenInput, inviteToken, setHasStoredConfig, t]);
 
   /**
    * Inicia sesión como administrador (requiere usuario + token).
@@ -227,14 +229,14 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
     const username = adminLoginUsername.trim().toLowerCase();
     const enteredToken = normalizeTokenValue(setupTokenInput);
     if (!username || !enteredToken) {
-      setAuthMessage("Escribe tu usuario y el código de acceso.");
+      setAuthMessage(t("auth.enterUserAndCode"));
       return;
     }
 
     // Verifica que el usuario coincida con el configurado en la invitación
     const configuredUsername = (config.adminUsername || "").trim().toLowerCase();
     if (configuredUsername && username !== configuredUsername) {
-      setAuthMessage("Usuario o código incorrecto.");
+      setAuthMessage(t("auth.invalidCredentials"));
       return;
     }
 
@@ -242,7 +244,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
     try {
       const tokenUsername = await activateSessionWithToken(enteredToken, (tokenDoc, tu) => {
         if (tu && tu !== username) {
-          throw new Error("El código no corresponde a este usuario.");
+          throw new Error("codeUserMismatch");
         }
       });
       if (tokenUsername === null) return;
@@ -256,18 +258,18 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
       setHasStoredConfig(true);
       saveSession("admin", username);
       setAuthMessageType("success");
-      setAuthMessage("Has entrado correctamente.");
+      setAuthMessage(t("auth.loginSuccess"));
     } catch (err) {
-      const message = err?.message;
-      if (message === "El código no corresponde a este usuario.") {
-        setAuthMessage(message);
+      const key = err?.message;
+      if (key === "codeUserMismatch") {
+        setAuthMessage(t("auth.codeUserMismatch"));
       } else {
-        setAuthMessage("No se pudo verificar el código. Inténtalo de nuevo.");
+      setAuthMessage(t("auth.codeVerifyError"));
       }
     } finally {
       setIsTokenVerifying(false);
     }
-  }, [activateSessionWithToken, adminLoginUsername, setupTokenInput, config, setHasStoredConfig]);
+  }, [activateSessionWithToken, adminLoginUsername, setupTokenInput, config, setHasStoredConfig, t]);
 
   /**
    * Genera un nuevo token de acceso vinculado a un usuario administrador.
@@ -278,27 +280,27 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
     setAuthMessage("");
 
     if (confirmTokenInput !== "CONFIRMAR") {
-      setAuthMessage("Escribe CONFIRMAR para generar un código nuevo.");
+      setAuthMessage(t("auth.confirmRequired"));
       return;
     }
 
     const username = adminLoginUsername.trim().toLowerCase();
     if (!username) {
-      setAuthMessage("Escribe tu usuario primero.");
+      setAuthMessage(t("auth.usernameRequired"));
       return;
     }
     if (!/^[a-zA-Z0-9]+$/.test(username)) {
-      setAuthMessage("El usuario solo puede contener letras y números.");
+      setAuthMessage(t("auth.usernameInvalid"));
       return;
     }
     if (username.length > 50) {
-      setAuthMessage("El usuario no puede superar los 50 caracteres.");
+      setAuthMessage(t("auth.usernameTooLong"));
       return;
     }
 
     const configuredUsername = (config.adminUsername || "").trim().toLowerCase();
     if (configuredUsername && username !== configuredUsername) {
-      setAuthMessage("Este usuario no tiene permiso para entrar aquí.");
+      setAuthMessage(t("auth.unauthorizedUser"));
       return;
     }
 
@@ -313,12 +315,12 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
       setGeneratedToken(nextToken);
       setSetupTokenInput(normalizedToken);
       setAuthMessageType("success");
-      setAuthMessage("Código generado. Ahora puedes entrar.");
+      setAuthMessage(t("auth.tokenGenerated"));
       setConfirmTokenInput("");
     } catch {
-      setAuthMessage("No se pudo generar el código. Inténtalo de nuevo.");
+      setAuthMessage(t("auth.tokenGenerateError"));
     }
-  }, [adminLoginUsername, config, confirmTokenInput]);
+  }, [adminLoginUsername, config, confirmTokenInput, t]);
 
   /**
    * Cierra la sesión actual.
@@ -353,15 +355,15 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
     const storedToken = safeGetItem(storageKey, sessionStorage) || "";
     const currentToken = setupToken || storedToken;
     if (!currentToken || confirmTokenInput !== currentToken) {
-      setAuthMessage("Escribe el código de acceso actual para generar uno nuevo.");
+      setAuthMessage(t("auth.currentTokenRequired"));
       return;
     }
     setAuthMessage("");
     await refreshSetupToken(currentToken);
     setAuthMessageType("success");
-    setAuthMessage("Código nuevo generado. Cópialo del campo superior antes de guardar.");
+    setAuthMessage(t("auth.tokenRenewed"));
     setConfirmTokenInput("");
-  }, [refreshSetupToken, setupToken, confirmTokenInput, inviteToken]);
+  }, [refreshSetupToken, setupToken, confirmTokenInput, inviteToken, t]);
 
   /**
    * Regenera el token desde el panel de administración.
@@ -373,15 +375,15 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
     const currentToken = setupToken || storedToken;
     if (!currentToken || confirmTokenInput !== currentToken) {
       setAdminMessageType("error");
-      setAdminMessage("Escribe el código de acceso actual para generar uno nuevo.");
+      setAdminMessage(t("auth.currentTokenRequired"));
       return;
     }
     setAdminMessage("");
     await refreshSetupToken(currentToken);
     setAdminMessageType("success");
-    setAdminMessage("Código renovado. Esto no cambia la contraseña de la aplicación.");
+    setAdminMessage(t("auth.tokenRenewedAdmin"));
     setConfirmTokenInput("");
-  }, [refreshSetupToken, setupToken, confirmTokenInput, setAdminMessage, setAdminMessageType, inviteToken]);
+  }, [refreshSetupToken, setupToken, confirmTokenInput, setAdminMessage, setAdminMessageType, inviteToken, t]);
 
   return {
     setupToken, setSetupToken,

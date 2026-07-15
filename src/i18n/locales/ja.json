@@ -54,7 +54,8 @@
     "withBlessing": "ゴッドペアレント{{godparent1}}と{{godparent2}}の祝福を受けて",
     "todayIsWedding": "今日は結婚式です",
     "missing": "残り",
-    "todayIsTheDay": "今日が大切な日です！"
+    "todayIsTheDay": "今日が大切な日です！",
+    "sectionLabel": "表紙"
   },
   "details": {
     "sectionLabel": "日付と場所",
@@ -133,7 +134,24 @@
     "withdrawButton": "返信を取り消す",
     "birthDateLabel": "生年月日",
     "ageUnder14Warning": "14歳未満です。両親または保護者の同意が必要です。",
-    "parentalConsent": "両親または保護者が私の参加に同意します"
+    "parentalConsent": "両親または保護者が私の参加に同意します",
+    "validation": {
+      "nameRequired": "出席を確認するため名前を入力してください。",
+      "menuRequired": "メニューオプションを選択してください。",
+      "privacyRequired": "プライバシーポリシーに同意する必要があります。",
+      "birthDateRequired": "生年月日を入力してください。",
+      "ageUnder14": "14歳未満です。保護者の同意が必要です。",
+      "healthConsentRequired": "健康データの処理に同意する必要があります。"
+    },
+    "successAttending": "ありがとうございます、{{name}}。出席が記録されました。",
+    "successNotAttending": "ありがとうございます、{{name}}。ご出席いただけず残念です。",
+    "saveError": "回答を保存できませんでした。数分後にもう一度お試しください。",
+    "withdrawConfirm": "回答を取り消してもよろしいですか？",
+    "withdrawSuccess": "回答が取り消されました。",
+    "withdrawError": "回答を取り消せませんでした。もう一度お試しください。",
+    "clearConfirm": "すべての出席回答を削除しますか？この操作は元に戻せません。",
+    "clearSuccess": "出席記録が消去されました。",
+    "clearError": "出席記録を消去できませんでした。"
   },
   "public": {
     "loadingInvitation": "招待状を読み込み中…",
@@ -328,7 +346,9 @@
     "withCompanions": "はい（同伴者{{count}}名）",
     "confirms": "出席",
     "declines": "辞退",
-    "pending": "保留"
+    "pending": "保留",
+    "visits_one": "1 回の訪問",
+    "visits_other": "{{count}} 回の訪問"
   },
   "attendance": {
     "searchLabel": "名前で検索",
@@ -572,7 +592,9 @@
       "deleteFailed": "Error al eliminar. Verifica la consola.",
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
-    "login": "Entrar"
+    "login": "Entrar",
+    "emailLabel": "Email",
+    "passwordLabel": "Password"
   },
   "compliance": {
     "title": "処理活動記録（GDPR第30条）",
@@ -680,7 +702,9 @@
   },
   "sectionOrder": {
     "moveUp": "Move up",
-    "moveDown": "Move down"
+    "moveDown": "Move down",
+    "title": "順序と表示",
+    "help": "ドラッグして並べ替え、ボタンで移動し、各セクションのオン/オフを切り替えます。"
   },
   "langSwitcher": {
     "label": "Select language"
@@ -702,5 +726,78 @@
     "centralAsia": "Central Asia / Middle East",
     "africa": "Africa",
     "americas": "Americas"
+  },
+  "countdown": {
+    "year_one": "{{count}}年",
+    "year_other": "{{count}}年",
+    "month_one": "{{count}}ヶ月",
+    "month_other": "{{count}}ヶ月",
+    "week_one": "{{count}}週間",
+    "week_other": "{{count}}週間",
+    "day_one": "{{count}}日",
+    "day_other": "{{count}}日",
+    "hour_one": "{{count}}時間",
+    "hour_other": "{{count}}時間",
+    "minute_one": "{{count}}分",
+    "minute_other": "{{count}}分"
+  },
+  "changelog": {
+    "title": "変更履歴",
+    "close": "閉じる"
+  },
+  "auth": {
+    "sessionExists": "この招待状には既にアクティブなセッションがあります。それでもログインしますか？前のセッションは閉じられます。",
+    "tokenInvalid": "アクセスコードが無効です。",
+    "enterCode": "アクセスコードを入力してください。",
+    "codeVerified": "コードが正常に確認されました。",
+    "codeVerifyError": "コードを確認できませんでした。もう一度お試しください。",
+    "enterUserAndCode": "ユーザー名とアクセスコードを入力してください。",
+    "invalidCredentials": "ユーザー名またはコードが正しくありません。",
+    "codeUserMismatch": "コードがこのユーザーと一致しません。",
+    "loginSuccess": "ログインに成功しました。",
+    "loginError": "コードを確認できませんでした。もう一度お試しください。",
+    "confirmRequired": "新しいコードを生成するには「確認」と入力してください。",
+    "usernameRequired": "最初にユーザー名を入力してください。",
+    "usernameInvalid": "ユーザー名は英数字のみ使用できます。",
+    "usernameTooLong": "ユーザー名は50文字を超えることはできません。",
+    "unauthorizedUser": "このユーザーはアクセス権限がありません。",
+    "tokenGenerated": "コードが生成されました。ログインできます。",
+    "tokenGenerateError": "コードを生成できませんでした。もう一度お試しください。",
+    "currentTokenRequired": "新しいコードを生成するには現在のアクセスコードを入力してください。",
+    "tokenRenewed": "新しいコードが生成されました。保存する前に上のフィールドからコピーしてください。",
+    "tokenRenewedAdmin": "コードが更新されました。アプリのパスワードは変更されません。",
+    "superadminNoPermissions": "このアカウントには管理者権限がありません。",
+    "superadminWrongCredentials": "認証情報が正しくありません。",
+    "superadminTooManyAttempts": "試行回数が多すぎます。しばらく待ってからもう一度お試しください。",
+    "superadminInvalidEmail": "メールアドレスの形式が無効です。",
+    "superadminLoginError": "ログインエラー。接続を確認してください。"
+  },
+  "autosave": {
+    "saved": "変更を保存しました"
+  },
+  "monthNames": {
+    "1": "1月",
+    "2": "2月",
+    "3": "3月",
+    "4": "4月",
+    "5": "5月",
+    "6": "6月",
+    "7": "7月",
+    "8": "8月",
+    "9": "9月",
+    "10": "10月",
+    "11": "11月",
+    "12": "12月"
+  },
+  "themeGroups": {
+    "light": "ライトテーマ",
+    "dark": "ダークテーマ",
+    "lgbtiq": "LGTBIQ+"
+  },
+  "dietary": {
+    "gluten": "グルテン",
+    "lactose": "乳糖",
+    "nuts": "木の実",
+    "shellfish": "甲殻類"
   }
 }

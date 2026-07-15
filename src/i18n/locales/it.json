@@ -54,7 +54,8 @@
     "withBlessing": "Con la benedizione dei loro testimoni {{godparent1}} e {{godparent2}}",
     "todayIsWedding": "Oggi è il matrimonio",
     "missing": "Mancano",
-    "todayIsTheDay": "Oggi è il grande giorno!"
+    "todayIsTheDay": "Oggi è il grande giorno!",
+    "sectionLabel": "Copertina"
   },
   "details": {
     "sectionLabel": "Data e luogo",
@@ -133,7 +134,24 @@
     "withdrawButton": "Ritira la mia conferma",
     "birthDateLabel": "Data di nascita",
     "ageUnder14Warning": "Hai meno di 14 anni. Hai bisogno del consenso dei tuoi genitori o tutori.",
-    "parentalConsent": "I miei genitori o tutori acconsentono alla mia partecipazione"
+    "parentalConsent": "I miei genitori o tutori acconsentono alla mia partecipazione",
+    "validation": {
+      "nameRequired": "Inserisci il tuo nome per confermare la presenza.",
+      "menuRequired": "Seleziona un'opzione del menu.",
+      "privacyRequired": "Devi accettare l'Informativa sulla privacy.",
+      "birthDateRequired": "Inserisci la tua data di nascita.",
+      "ageUnder14": "Hai meno di 14 anni. Hai bisogno del consenso dei tuoi genitori o tutori.",
+      "healthConsentRequired": "Devi acconsentire al trattamento dei tuoi dati sanitari."
+    },
+    "successAttending": "Grazie, {{name}}. La tua presenza è stata registrata.",
+    "successNotAttending": "Grazie, {{name}}. Ci dispiace che tu non possa partecipare.",
+    "saveError": "Impossibile salvare la risposta. Riprova tra qualche minuto.",
+    "withdrawConfirm": "Sei sicuro di voler ritirare la tua risposta?",
+    "withdrawSuccess": "La tua risposta è stata ritirata.",
+    "withdrawError": "Impossibile ritirare la risposta. Riprova.",
+    "clearConfirm": "Cancellare tutte le risposte di presenza? Questa azione non può essere annullata.",
+    "clearSuccess": "Registro presenze cancellato.",
+    "clearError": "Impossibile cancellare il registro presenze."
   },
   "public": {
     "loadingInvitation": "Caricamento invito…",
@@ -328,7 +346,9 @@
     "withCompanions": "Sì ({{count}} accompagnatore/i)",
     "confirms": "Confermano",
     "declines": "Rifiutano",
-    "pending": "In attesa"
+    "pending": "In attesa",
+    "visits_one": "1 visita",
+    "visits_other": "{{count}} visite"
   },
   "attendance": {
     "searchLabel": "Cerca per nome",
@@ -572,7 +592,9 @@
       "deleteFailed": "Error al eliminar. Verifica la consola.",
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
-    "login": "Entrar"
+    "login": "Entrar",
+    "emailLabel": "Email",
+    "passwordLabel": "Password"
   },
   "compliance": {
     "title": "Registro delle attività di trattamento (Art. 30 GDPR)",
@@ -680,7 +702,9 @@
   },
   "sectionOrder": {
     "moveUp": "Sposta su",
-    "moveDown": "Sposta giù"
+    "moveDown": "Sposta giù",
+    "title": "Ordine e visibilità",
+    "help": "Trascina per riordinare, usa i pulsanti per spostare e attiva o disattiva ogni sezione."
   },
   "langSwitcher": {
     "label": "Seleziona lingua"
@@ -702,5 +726,78 @@
     "centralAsia": "Central Asia / Middle East",
     "africa": "Africa",
     "americas": "Americas"
+  },
+  "countdown": {
+    "year_one": "{{count}} anno",
+    "year_other": "{{count}} anni",
+    "month_one": "{{count}} mese",
+    "month_other": "{{count}} mesi",
+    "week_one": "{{count}} settimana",
+    "week_other": "{{count}} settimane",
+    "day_one": "{{count}} giorno",
+    "day_other": "{{count}} giorni",
+    "hour_one": "{{count}} ora",
+    "hour_other": "{{count}} ore",
+    "minute_one": "{{count}} minuto",
+    "minute_other": "{{count}} minuti"
+  },
+  "changelog": {
+    "title": "Registro modifiche",
+    "close": "Chiudi"
+  },
+  "auth": {
+    "sessionExists": "Esiste già una sessione attiva per questo invito. Vuoi accedere comunque? La sessione precedente verrà chiusa.",
+    "tokenInvalid": "Il codice di accesso non è valido.",
+    "enterCode": "Inserisci il codice di accesso.",
+    "codeVerified": "Codice verificato con successo.",
+    "codeVerifyError": "Impossibile verificare il codice. Riprova.",
+    "enterUserAndCode": "Inserisci il tuo nome utente e il codice di accesso.",
+    "invalidCredentials": "Nome utente o codice errato.",
+    "codeUserMismatch": "Il codice non corrisponde a questo utente.",
+    "loginSuccess": "Accesso effettuato con successo.",
+    "loginError": "Impossibile verificare il codice. Riprova.",
+    "confirmRequired": "Scrivi CONFERMA per generare un nuovo codice.",
+    "usernameRequired": "Inserisci prima il tuo nome utente.",
+    "usernameInvalid": "Il nome utente può contenere solo lettere e numeri.",
+    "usernameTooLong": "Il nome utente non può superare i 50 caratteri.",
+    "unauthorizedUser": "Questo utente non ha il permesso di accedere qui.",
+    "tokenGenerated": "Codice generato. Ora puoi accedere.",
+    "tokenGenerateError": "Impossibile generare il codice. Riprova.",
+    "currentTokenRequired": "Inserisci il codice di accesso corrente per generarne uno nuovo.",
+    "tokenRenewed": "Nuovo codice generato. Copialo dal campo superiore prima di salvare.",
+    "tokenRenewedAdmin": "Codice rinnovato. Questo non modifica la password dell'app.",
+    "superadminNoPermissions": "Questo account non ha permessi di amministrazione.",
+    "superadminWrongCredentials": "Credenziali errate.",
+    "superadminTooManyAttempts": "Troppi tentativi. Aspetta un momento e riprova.",
+    "superadminInvalidEmail": "Il formato dell'email non è valido.",
+    "superadminLoginError": "Errore durante l'accesso. Controlla la connessione."
+  },
+  "autosave": {
+    "saved": "Modifiche salvate"
+  },
+  "monthNames": {
+    "1": "Gennaio",
+    "2": "Febbraio",
+    "3": "Marzo",
+    "4": "Aprile",
+    "5": "Maggio",
+    "6": "Giugno",
+    "7": "Luglio",
+    "8": "Agosto",
+    "9": "Settembre",
+    "10": "Ottobre",
+    "11": "Novembre",
+    "12": "Dicembre"
+  },
+  "themeGroups": {
+    "light": "Temi chiari",
+    "dark": "Temi scuri",
+    "lgbtiq": "LGTBIQ+"
+  },
+  "dietary": {
+    "gluten": "Glutine",
+    "lactose": "Lattosio",
+    "nuts": "Frutta a guscio",
+    "shellfish": "Crostacei"
   }
 }

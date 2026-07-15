@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { SECTION_LABELS } from "../lib/constants";
 import { parseSectionOrder as parseOrder, parseHidden } from "../lib/section-utils";
 
 export default function SectionOrderEditor({ value, onChange, hiddenValue, onHiddenChange }) {
@@ -91,10 +90,8 @@ export default function SectionOrderEditor({ value, onChange, hiddenValue, onHid
 
   return (
     <div className="setup-token-card">
-      <p className="setup-label setup-label--tight">Orden y visibilidad</p>
-      <p className="setup-help setup-help--tight">
-        Arrastra para reordenar, usa los botones para mover, y activa o desactiva cada sección.
-      </p>
+      <p className="setup-label setup-label--tight">{t("sectionOrder.title")}</p>
+      <p className="setup-help setup-help--tight">{t("sectionOrder.help")}</p>
       <div className="section-order-list">
         {items.filter(s => s !== "godparents").map((sectionKey, index) => {
           const isHero = sectionKey === "hero";
@@ -115,7 +112,7 @@ export default function SectionOrderEditor({ value, onChange, hiddenValue, onHid
                 {isHero ? "🔒" : "⠿"}
               </span>
               <span className={`section-order-item__label ${isHidden ? "section-order-item__label--hidden" : ""}`}>
-                {SECTION_LABELS[sectionKey] || sectionKey}
+                {t(sectionKey + ".sectionLabel")}
                 {isHidden && <span className="section-order-item__badge">{t("setup.hiddenSectionBadge")}</span>}
               </span>
               {!isHero && (
@@ -124,7 +121,7 @@ export default function SectionOrderEditor({ value, onChange, hiddenValue, onHid
                     type="button"
                     className={`section-order-item__toggle ${isHidden ? "" : "section-order-item__toggle--on"}`}
                     onClick={() => toggleVisibility(sectionKey)}
-                    aria-label={`${isHidden ? t("common.show") : t("common.hide")} ${SECTION_LABELS[sectionKey]}`}
+                    aria-label={`${isHidden ? t("common.show") : t("common.hide")} ${t(sectionKey + ".sectionLabel")}`}
                   >
                     {isHidden ? "✕" : "✓"}
                   </button>
@@ -133,7 +130,7 @@ export default function SectionOrderEditor({ value, onChange, hiddenValue, onHid
                     className="section-order-item__btn"
                     onClick={() => moveUp(index)}
                     disabled={index <= 1 && items[0] === "hero"}
-                    aria-label={`${t("sectionOrder.moveUp")} ${SECTION_LABELS[sectionKey]}`}
+                    aria-label={`${t("sectionOrder.moveUp")} ${t(sectionKey + ".sectionLabel")}`}
                   >
                     ↑
                   </button>
@@ -142,7 +139,7 @@ export default function SectionOrderEditor({ value, onChange, hiddenValue, onHid
                     className="section-order-item__btn"
                     onClick={() => moveDown(index)}
                     disabled={index === items.length - 1}
-                    aria-label={`${t("sectionOrder.moveDown")} ${SECTION_LABELS[sectionKey]}`}
+                    aria-label={`${t("sectionOrder.moveDown")} ${t(sectionKey + ".sectionLabel")}`}
                   >
                     ↓
                   </button>

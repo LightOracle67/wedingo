@@ -1,4 +1,5 @@
 import { createContext, useContext, useCallback, useEffect, useMemo, useState, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import {
   onAuthStateChanged,
@@ -13,6 +14,7 @@ const SUPERADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAILS?.split(",")[0]?.trim(
 const SuperAdminContext = createContext(null);
 
 export function SuperAdminProvider({ children }) {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -57,7 +59,7 @@ export function SuperAdminProvider({ children }) {
       const result = await signInWithEmailAndPassword(auth, email, password);
       if (result.user.email !== SUPERADMIN_EMAIL) {
         await signOut(auth);
-        setError("Esta cuenta no tiene permisos de administración.");
+        setError(t("auth.superadminNoPermissions"));
         loggingInRef.current = false;
         return false;
       }
@@ -68,17 +70,17 @@ export function SuperAdminProvider({ children }) {
     } catch (err) {
       loggingInRef.current = false;
       if (err.code === "auth/user-not-found" || err.code === "auth/wrong-password" || err.code === "auth/invalid-credential") {
-        setError("Credenciales incorrectas.");
+        setError(t("auth.superadminWrongCredentials"));
       } else if (err.code === "auth/too-many-requests") {
-        setError("Demasiados intentos. Espera un momento e inténtalo de nuevo.");
+        setError(t("auth.superadminTooManyAttempts"));
       } else if (err.code === "auth/invalid-email") {
-        setError("El formato del email no es válido.");
+        setError(t("auth.superadminInvalidEmail"));
       } else {
-        setError("Error al iniciar sesión. Comprueba tu conexión.");
+        setError(t("auth.superadminLoginError"));
       }
       return false;
     }
-  }, []);
+  }, [t]);
 
   const logout = useCallback(async () => {
     clearSession();

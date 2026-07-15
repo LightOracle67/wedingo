@@ -20,11 +20,11 @@ const GalleryManager = memo(function GalleryManager({ images, onChange, inviteTo
     onChange(JSON.stringify(arr));
   }, [images, onChange]);
 
-  const handleBlur = useCallback(async (docId) => {
+  const handleBlur = useCallback(async (docId, description) => {
     if (!docId) return;
     try {
       const { updateGalleryDescription } = await import("../lib/image-store");
-      await updateGalleryDescription(inviteToken, docId);
+      await updateGalleryDescription(inviteToken, docId, description);
     } catch {}
   }, [inviteToken]);
 
@@ -49,7 +49,7 @@ const GalleryManager = memo(function GalleryManager({ images, onChange, inviteTo
               className="setup-input"
               value={desc}
               onChange={(e) => handleDescriptionChange(i, e.target.value.slice(0, 200))}
-              onBlur={() => handleBlur(docId)}
+              onBlur={(e) => handleBlur(docId, e.target.value.slice(0, 200))}
               placeholder={t("setup.galleryDescriptionPlaceholder")}
               style={{ flex: 1, fontSize: "0.82rem", padding: "0.35rem 0.5rem" }}
             />

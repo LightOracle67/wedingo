@@ -1,8 +1,10 @@
 import { memo, useEffect, useState, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { useFocusTrap } from "../hooks/useFocusTrap";
 import { CHANGELOG } from "../lib/changelog";
 
 const ChangelogModal = memo(function ChangelogModal({ onClose }) {
+  const { t } = useTranslation();
   const [closing, setClosing] = useState(false);
   const modalRef = useFocusTrap(true);
 
@@ -18,11 +20,11 @@ const ChangelogModal = memo(function ChangelogModal({ onClose }) {
   }, [onClose]);
 
   return (
-    <div className={`modal-overlay ${closing ? "modal-overlay--closing" : ""}`} onClick={handleClose} role="dialog" aria-modal="true" aria-label="Changelog">
+    <div className={`modal-overlay ${closing ? "modal-overlay--closing" : ""}`} onClick={handleClose} role="dialog" aria-modal="true" aria-label={t("changelog.title")}>
       <div className={`modal-card ${closing ? "modal-card--closing" : ""}`} ref={modalRef} onClick={(e) => e.stopPropagation()}
         style={{ width: "min(95vw, 640px)", minWidth: "320px", maxHeight: "calc(100dvh - 2rem)", display: "flex", flexDirection: "column", padding: "1.2rem 1rem 1rem" }}>
-        <button className="modal-close" onClick={handleClose} aria-label="Close">&times;</button>
-        <p className="modal-title">Changelog</p>
+        <button className="modal-close" onClick={handleClose} aria-label={t("changelog.close")}>&times;</button>
+        <p className="modal-title">{t("changelog.title")}</p>
         <div style={{ overflowY: "auto", flex: 1, marginTop: "0.5rem" }}>
           {CHANGELOG.map((entry) => (
             <div key={entry.version} style={{ marginBottom: "1rem", paddingBottom: "1rem", borderBottom: "1px solid var(--setup-border)" }}>

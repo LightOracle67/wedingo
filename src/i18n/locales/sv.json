@@ -54,7 +54,8 @@
     "withBlessing": "Med välsignelse från deras faddrar {{godparent1}} och {{godparent2}}",
     "todayIsWedding": "Idag är bröllopet",
     "missing": "Kvar",
-    "todayIsTheDay": "Idag är den stora dagen!"
+    "todayIsTheDay": "Idag är den stora dagen!",
+    "sectionLabel": "Omslag"
   },
   "details": {
     "sectionLabel": "Datum och plats",
@@ -133,7 +134,24 @@
     "withdrawButton": "Återkalla min bekräftelse",
     "birthDateLabel": "Födelsedatum",
     "ageUnder14Warning": "Du är under 14 år. Du behöver dina föräldrars eller vårdnadshavares samtycke.",
-    "parentalConsent": "Mina föräldrar eller vårdnadshavare samtycker till mitt deltagande"
+    "parentalConsent": "Mina föräldrar eller vårdnadshavare samtycker till mitt deltagande",
+    "validation": {
+      "nameRequired": "Ange ditt namn för att bekräfta närvaro.",
+      "menuRequired": "Välj ett menyalternativ.",
+      "privacyRequired": "Du måste acceptera integritetspolicyn.",
+      "birthDateRequired": "Ange ditt födelsedatum.",
+      "ageUnder14": "Du är under 14 år. Du behöver dina föräldrars eller vårdnadshavares samtycke.",
+      "healthConsentRequired": "Du måste samtycka till behandlingen av dina hälsodata."
+    },
+    "successAttending": "Tack, {{name}}. Din närvaro har registrerats.",
+    "successNotAttending": "Tack, {{name}}. Vi är ledsna att du inte kan komma.",
+    "saveError": "Vi kunde inte spara ditt svar. Försök igen om några minuter.",
+    "withdrawConfirm": "Är du säker på att du vill dra tillbaka ditt svar?",
+    "withdrawSuccess": "Ditt svar har dragits tillbaka.",
+    "withdrawError": "Kunde inte dra tillbaka ditt svar. Försök igen.",
+    "clearConfirm": "Ta bort alla närvarosvar? Denna åtgärd kan inte ångras.",
+    "clearSuccess": "Närvaroregister rensat.",
+    "clearError": "Kunde inte rensa närvaroregistret."
   },
   "public": {
     "loadingInvitation": "Laddar inbjudan...",
@@ -328,7 +346,9 @@
     "withCompanions": "Ja ({{count}} följeslagare)",
     "confirms": "Bekräftar",
     "declines": "Tackar nej",
-    "pending": "Väntande"
+    "pending": "Väntande",
+    "visits_one": "1 besök",
+    "visits_other": "{{count}} besök"
   },
   "attendance": {
     "searchLabel": "Sök efter namn",
@@ -572,7 +592,9 @@
       "deleteFailed": "Error al eliminar. Verifica la consola.",
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
-    "login": "Entrar"
+    "login": "Entrar",
+    "emailLabel": "Email",
+    "passwordLabel": "Password"
   },
   "compliance": {
     "title": "Register över behandlingsaktiviteter (Art. 30 GDPR)",
@@ -680,7 +702,9 @@
   },
   "sectionOrder": {
     "moveUp": "Move up",
-    "moveDown": "Move down"
+    "moveDown": "Move down",
+    "title": "Ordning & synlighet",
+    "help": "Dra för att omordna, använd knapparna för att flytta och slå på/av varje sektion."
   },
   "langSwitcher": {
     "label": "Select language"
@@ -702,5 +726,78 @@
     "centralAsia": "Central Asia / Middle East",
     "africa": "Africa",
     "americas": "Americas"
+  },
+  "countdown": {
+    "year_one": "{{count}} år",
+    "year_other": "{{count}} år",
+    "month_one": "{{count}} månad",
+    "month_other": "{{count}} månader",
+    "week_one": "{{count}} vecka",
+    "week_other": "{{count}} veckor",
+    "day_one": "{{count}} dag",
+    "day_other": "{{count}} dagar",
+    "hour_one": "{{count}} timme",
+    "hour_other": "{{count}} timmar",
+    "minute_one": "{{count}} minut",
+    "minute_other": "{{count}} minuter"
+  },
+  "changelog": {
+    "title": "Ändringslogg",
+    "close": "Stäng"
+  },
+  "auth": {
+    "sessionExists": "Det finns redan en aktiv session för denna inbjudan. Vill du logga in ändå? Den föregående sessionen kommer att stängas.",
+    "tokenInvalid": "Åtkomstkoden är inte giltig.",
+    "enterCode": "Ange åtkomstkoden.",
+    "codeVerified": "Koden verifierades.",
+    "codeVerifyError": "Kunde inte verifiera koden. Försök igen.",
+    "enterUserAndCode": "Ange ditt användarnamn och åtkomstkoden.",
+    "invalidCredentials": "Felaktigt användarnamn eller kod.",
+    "codeUserMismatch": "Koden matchar inte denna användare.",
+    "loginSuccess": "Inloggningen lyckades.",
+    "loginError": "Kunde inte verifiera koden. Försök igen.",
+    "confirmRequired": "Skriv BEKRÄFTA för att generera en ny kod.",
+    "usernameRequired": "Ange först ditt användarnamn.",
+    "usernameInvalid": "Användarnamnet får bara innehålla bokstäver och siffror.",
+    "usernameTooLong": "Användarnamnet får inte överstiga 50 tecken.",
+    "unauthorizedUser": "Denna användare har inte behörighet att komma åt här.",
+    "tokenGenerated": "Kod genererad. Du kan nu logga in.",
+    "tokenGenerateError": "Kunde inte generera koden. Försök igen.",
+    "currentTokenRequired": "Ange den aktuella åtkomstkoden för att generera en ny.",
+    "tokenRenewed": "Ny kod genererad. Kopiera den från fältet ovan innan du sparar.",
+    "tokenRenewedAdmin": "Koden förnyad. Detta ändrar inte appens lösenord.",
+    "superadminNoPermissions": "Detta konto har inte administratörsbehörighet.",
+    "superadminWrongCredentials": "Felaktiga inloggningsuppgifter.",
+    "superadminTooManyAttempts": "För många försök. Vänta en stund och försök igen.",
+    "superadminInvalidEmail": "E-postformatet är inte giltigt.",
+    "superadminLoginError": "Inloggningsfel. Kontrollera din anslutning."
+  },
+  "autosave": {
+    "saved": "Ändringar sparade"
+  },
+  "monthNames": {
+    "1": "Januari",
+    "2": "Februari",
+    "3": "Mars",
+    "4": "April",
+    "5": "Maj",
+    "6": "Juni",
+    "7": "Juli",
+    "8": "Augusti",
+    "9": "September",
+    "10": "Oktober",
+    "11": "November",
+    "12": "December"
+  },
+  "themeGroups": {
+    "light": "Ljusa teman",
+    "dark": "Mörka teman",
+    "lgbtiq": "HBTQI+"
+  },
+  "dietary": {
+    "gluten": "Gluten",
+    "lactose": "Laktos",
+    "nuts": "Trädnötter",
+    "shellfish": "Skaldjur"
   }
 }

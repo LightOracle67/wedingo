@@ -54,7 +54,8 @@
     "withBlessing": "Con la bendición de sus padrinos {{godparent1}} y {{godparent2}}",
     "todayIsWedding": "Hoy es la boda",
     "missing": "Faltan",
-    "todayIsTheDay": "¡Hoy es el gran día!"
+    "todayIsTheDay": "¡Hoy es el gran día!",
+    "sectionLabel": "Portada"
   },
   "details": {
     "sectionLabel": "Fecha y lugar",
@@ -133,7 +134,24 @@
     "withdrawButton": "Retirar mi confirmación",
     "birthDateLabel": "Fecha de nacimiento",
     "ageUnder14Warning": "Eres menor de 14 años. Necesitas el consentimiento de tus padres o tutores.",
-    "parentalConsent": "Mis padres o tutores consienten mi participación"
+    "parentalConsent": "Mis padres o tutores consienten mi participación",
+    "validation": {
+      "nameRequired": "Enter your name to confirm attendance.",
+      "menuRequired": "Select a menu option.",
+      "privacyRequired": "You must accept the Privacy Policy.",
+      "birthDateRequired": "Enter your date of birth.",
+      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
+      "healthConsentRequired": "You must consent to the processing of your health data."
+    },
+    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
+    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
+    "saveError": "We could not save your response. Please try again in a few minutes.",
+    "withdrawConfirm": "Are you sure you want to withdraw your response?",
+    "withdrawSuccess": "Your response has been withdrawn.",
+    "withdrawError": "Could not withdraw your response. Please try again.",
+    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
+    "clearSuccess": "Attendance records cleared.",
+    "clearError": "Could not clear attendance records."
   },
   "public": {
     "loadingInvitation": "Cargando invitación…",
@@ -333,7 +351,9 @@
     "withCompanions": "Sí ({{count}} acompañante(s))",
     "confirms": "Confirman",
     "declines": "Declinan",
-    "pending": "Pendientes"
+    "pending": "Pendientes",
+    "visits_one": "1 visita",
+    "visits_other": "{{count}} visitas"
   },
   "attendance": {
     "searchLabel": "Buscar por nombre",
@@ -578,7 +598,9 @@
       "deleteFailed": "Error al eliminar. Verifica la consola.",
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
-    "login": "Entrar"
+    "login": "Entrar",
+    "emailLabel": "Email",
+    "passwordLabel": "Password"
   },
   "compliance": {
     "title": "Registro de actividades de tratamiento (Art. 30 GDPR)",
@@ -704,9 +726,84 @@
   },
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
-    "moveDown": "Mover hacia abajo"
+    "moveDown": "Mover hacia abajo",
+    "title": "Orden y visibilidad",
+    "help": "Arrastra para reordenar, usa los botones para mover, y activa o desactiva cada sección."
   },
   "langSwitcher": {
     "label": "Seleccionar idioma"
+  },
+  "countdown": {
+    "year_one": "{{count}} año",
+    "year_other": "{{count}} años",
+    "month_one": "{{count}} mes",
+    "month_other": "{{count}} meses",
+    "week_one": "{{count}} semana",
+    "week_other": "{{count}} semanas",
+    "day_one": "{{count}} día",
+    "day_other": "{{count}} días",
+    "hour_one": "{{count}} hora",
+    "hour_other": "{{count}} horas",
+    "minute_one": "{{count}} minuto",
+    "minute_other": "{{count}} minutos"
+  },
+  "changelog": {
+    "title": "Changelog",
+    "close": "Cerrar"
+  },
+  "auth": {
+    "sessionExists": "Ya hay una sesión activa para esta invitación. ¿Quieres iniciar sesión de todos modos? La sesión anterior se cerrará.",
+    "tokenInvalid": "El código de acceso no es válido.",
+    "enterCode": "Introduce el código de acceso.",
+    "codeVerified": "Código verificado correctamente.",
+    "codeVerifyError": "No se pudo verificar el código. Inténtalo de nuevo.",
+    "enterUserAndCode": "Escribe tu usuario y el código de acceso.",
+    "invalidCredentials": "Usuario o código incorrecto.",
+    "codeUserMismatch": "El código no corresponde a este usuario.",
+    "loginSuccess": "Has entrado correctamente.",
+    "loginError": "No se pudo verificar el código. Inténtalo de nuevo.",
+    "confirmRequired": "Escribe CONFIRMAR para generar un código nuevo.",
+    "usernameRequired": "Escribe tu usuario primero.",
+    "usernameInvalid": "El usuario solo puede contener letras y números.",
+    "usernameTooLong": "El usuario no puede superar los 50 caracteres.",
+    "unauthorizedUser": "Este usuario no tiene permiso para entrar aquí.",
+    "tokenGenerated": "Código generado. Ahora puedes entrar.",
+    "tokenGenerateError": "No se pudo generar el código. Inténtalo de nuevo.",
+    "currentTokenRequired": "Escribe el código de acceso actual para generar uno nuevo.",
+    "tokenRenewed": "Código nuevo generado. Cópialo del campo superior antes de guardar.",
+    "tokenRenewedAdmin": "Código renovado. Esto no cambia la contraseña de la aplicación.",
+    "superadminNoPermissions": "Esta cuenta no tiene permisos de administración.",
+    "superadminWrongCredentials": "Credenciales incorrectas.",
+    "superadminTooManyAttempts": "Demasiados intentos. Espera un momento e inténtalo de nuevo.",
+    "superadminInvalidEmail": "El formato del email no es válido.",
+    "superadminLoginError": "Error al iniciar sesión. Comprueba tu conexión."
+  },
+  "autosave": {
+    "saved": "Cambios guardados"
+  },
+  "monthNames": {
+    "1": "Enero",
+    "2": "Febrero",
+    "3": "Marzo",
+    "4": "Abril",
+    "5": "Mayo",
+    "6": "Junio",
+    "7": "Julio",
+    "8": "Agosto",
+    "9": "Septiembre",
+    "10": "Octubre",
+    "11": "Noviembre",
+    "12": "Diciembre"
+  },
+  "themeGroups": {
+    "light": "Temas claros",
+    "dark": "Temas oscuros",
+    "lgbtiq": "LGTBIQ+"
+  },
+  "dietary": {
+    "gluten": "Gluten",
+    "lactose": "Lactosa",
+    "nuts": "Frutos secos",
+    "shellfish": "Mariscos"
   }
 }

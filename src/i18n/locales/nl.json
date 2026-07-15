@@ -54,7 +54,8 @@
     "withBlessing": "Met de zegen van hun getuigen {{godparent1}} en {{godparent2}}",
     "todayIsWedding": "Vandaag is de bruiloft",
     "missing": "Nog",
-    "todayIsTheDay": "Vandaag is de grote dag!"
+    "todayIsTheDay": "Vandaag is de grote dag!",
+    "sectionLabel": "Omslag"
   },
   "details": {
     "sectionLabel": "Datum en locatie",
@@ -133,7 +134,24 @@
     "withdrawButton": "Mijn bevestiging intrekken",
     "birthDateLabel": "Geboortedatum",
     "ageUnder14Warning": "Je bent jonger dan 14 jaar. Je hebt toestemming van je ouders of voogden nodig.",
-    "parentalConsent": "Mijn ouders of voogden stemmen in met mijn deelname"
+    "parentalConsent": "Mijn ouders of voogden stemmen in met mijn deelname",
+    "validation": {
+      "nameRequired": "Voer je naam in om aanwezigheid te bevestigen.",
+      "menuRequired": "Selecteer een menu-optie.",
+      "privacyRequired": "Je moet het Privacybeleid accepteren.",
+      "birthDateRequired": "Voer je geboortedatum in.",
+      "ageUnder14": "Je bent jonger dan 14 jaar. Je hebt toestemming van je ouders of voogden nodig.",
+      "healthConsentRequired": "Je moet toestemming geven voor de verwerking van je gezondheidsgegevens."
+    },
+    "successAttending": "Bedankt, {{name}}. Je aanwezigheid is geregistreerd.",
+    "successNotAttending": "Bedankt, {{name}}. Het spijt ons dat je niet aanwezig kunt zijn.",
+    "saveError": "We konden je antwoord niet opslaan. Probeer het over een paar minuten opnieuw.",
+    "withdrawConfirm": "Weet je zeker dat je je antwoord wilt intrekken?",
+    "withdrawSuccess": "Je antwoord is ingetrokken.",
+    "withdrawError": "Antwoord kon niet worden ingetrokken. Probeer het opnieuw.",
+    "clearConfirm": "Alle aanwezigheidsreacties verwijderen? Deze actie kan niet ongedaan worden gemaakt.",
+    "clearSuccess": "Aanwezigheidsregistratie gewist.",
+    "clearError": "Kon aanwezigheidsregistratie niet wissen."
   },
   "public": {
     "loadingInvitation": "Uitnodiging laden...",
@@ -328,7 +346,9 @@
     "withCompanions": "Ja ({{count}} begeleider(s))",
     "confirms": "Bevestigen",
     "declines": "Afwijzen",
-    "pending": "In afwachting"
+    "pending": "In afwachting",
+    "visits_one": "1 bezoek",
+    "visits_other": "{{count}} bezoeken"
   },
   "attendance": {
     "searchLabel": "Zoeken op naam",
@@ -572,7 +592,9 @@
       "deleteFailed": "Error al eliminar. Verifica la consola.",
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
-    "login": "Entrar"
+    "login": "Entrar",
+    "emailLabel": "Email",
+    "passwordLabel": "Password"
   },
   "compliance": {
     "title": "Register van verwerkingsactiviteiten (Art. 30 GDPR)",
@@ -680,7 +702,9 @@
   },
   "sectionOrder": {
     "moveUp": "Omhoog",
-    "moveDown": "Omlaag"
+    "moveDown": "Omlaag",
+    "title": "Volgorde & zichtbaarheid",
+    "help": "Sleep om te herschikken, gebruik de knoppen om te verplaatsen en schakel elke sectie in of uit."
   },
   "langSwitcher": {
     "label": "Taal selecteren"
@@ -702,5 +726,78 @@
     "centralAsia": "Central Asia / Middle East",
     "africa": "Africa",
     "americas": "Americas"
+  },
+  "countdown": {
+    "year_one": "{{count}} jaar",
+    "year_other": "{{count}} jaar",
+    "month_one": "{{count}} maand",
+    "month_other": "{{count}} maanden",
+    "week_one": "{{count}} week",
+    "week_other": "{{count}} weken",
+    "day_one": "{{count}} dag",
+    "day_other": "{{count}} dagen",
+    "hour_one": "{{count}} uur",
+    "hour_other": "{{count}} uur",
+    "minute_one": "{{count}} minuut",
+    "minute_other": "{{count}} minuten"
+  },
+  "changelog": {
+    "title": "Wijzigingslogboek",
+    "close": "Sluiten"
+  },
+  "auth": {
+    "sessionExists": "Er is al een actieve sessie voor deze uitnodiging. Wil je toch inloggen? De vorige sessie wordt gesloten.",
+    "tokenInvalid": "De toegangscode is niet geldig.",
+    "enterCode": "Voer de toegangscode in.",
+    "codeVerified": "Code succesvol geverifieerd.",
+    "codeVerifyError": "Code kon niet worden geverifieerd. Probeer het opnieuw.",
+    "enterUserAndCode": "Voer je gebruikersnaam en de toegangscode in.",
+    "invalidCredentials": "Gebruikersnaam of code onjuist.",
+    "codeUserMismatch": "De code komt niet overeen met deze gebruiker.",
+    "loginSuccess": "Je bent succesvol ingelogd.",
+    "loginError": "Code kon niet worden geverifieerd. Probeer het opnieuw.",
+    "confirmRequired": "Typ BEVESTIGEN om een nieuwe code te genereren.",
+    "usernameRequired": "Voer eerst je gebruikersnaam in.",
+    "usernameInvalid": "Gebruikersnaam mag alleen letters en cijfers bevatten.",
+    "usernameTooLong": "Gebruikersnaam mag niet langer zijn dan 50 tekens.",
+    "unauthorizedUser": "Deze gebruiker heeft geen toestemming om hier toegang te krijgen.",
+    "tokenGenerated": "Code gegenereerd. Je kunt nu inloggen.",
+    "tokenGenerateError": "Code kon niet worden gegenereerd. Probeer het opnieuw.",
+    "currentTokenRequired": "Voer de huidige toegangscode in om een nieuwe te genereren.",
+    "tokenRenewed": "Nieuwe code gegenereerd. Kopieer deze uit het veld hierboven voordat je opslaat.",
+    "tokenRenewedAdmin": "Code vernieuwd. Dit verandert niet het app-wachtwoord.",
+    "superadminNoPermissions": "Dit account heeft geen beheerdersrechten.",
+    "superadminWrongCredentials": "Onjuiste inloggegevens.",
+    "superadminTooManyAttempts": "Te veel pogingen. Wacht even en probeer het opnieuw.",
+    "superadminInvalidEmail": "Het e-mailformaat is niet geldig.",
+    "superadminLoginError": "Fout bij inloggen. Controleer je verbinding."
+  },
+  "autosave": {
+    "saved": "Wijzigingen opgeslagen"
+  },
+  "monthNames": {
+    "1": "Januari",
+    "2": "Februari",
+    "3": "Maart",
+    "4": "April",
+    "5": "Mei",
+    "6": "Juni",
+    "7": "Juli",
+    "8": "Augustus",
+    "9": "September",
+    "10": "Oktober",
+    "11": "November",
+    "12": "December"
+  },
+  "themeGroups": {
+    "light": "Lichte thema's",
+    "dark": "Donkere thema's",
+    "lgbtiq": "LGTBIQ+"
+  },
+  "dietary": {
+    "gluten": "Gluten",
+    "lactose": "Lactose",
+    "nuts": "Boomnoten",
+    "shellfish": "Schaaldieren"
   }
 }

@@ -54,7 +54,8 @@
     "withBlessing": "गॉडपेरेंट्स {{godparent1}} और {{godparent2}} के आशीर्वाद से",
     "todayIsWedding": "आज शादी है",
     "missing": "शेष",
-    "todayIsTheDay": "आज का दिन बड़ा खास है!"
+    "todayIsTheDay": "आज का दिन बड़ा खास है!",
+    "sectionLabel": "कवर"
   },
   "details": {
     "sectionLabel": "तारीख और स्थान",
@@ -133,7 +134,24 @@
     "withdrawButton": "अपनी पुष्टि वापस लें",
     "birthDateLabel": "जन्म तिथि",
     "ageUnder14Warning": "आपकी आयु 14 वर्ष से कम है। आपको अपने माता-पिता या अभिभावकों की सहमति की आवश्यकता है।",
-    "parentalConsent": "मेरे माता-पिता या अभिभावक मेरी भागीदारी के लिए सहमति देते हैं"
+    "parentalConsent": "मेरे माता-पिता या अभिभावक मेरी भागीदारी के लिए सहमति देते हैं",
+    "validation": {
+      "nameRequired": "Enter your name to confirm attendance.",
+      "menuRequired": "Select a menu option.",
+      "privacyRequired": "You must accept the Privacy Policy.",
+      "birthDateRequired": "Enter your date of birth.",
+      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
+      "healthConsentRequired": "You must consent to the processing of your health data."
+    },
+    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
+    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
+    "saveError": "We could not save your response. Please try again in a few minutes.",
+    "withdrawConfirm": "Are you sure you want to withdraw your response?",
+    "withdrawSuccess": "Your response has been withdrawn.",
+    "withdrawError": "Could not withdraw your response. Please try again.",
+    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
+    "clearSuccess": "Attendance records cleared.",
+    "clearError": "Could not clear attendance records."
   },
   "public": {
     "loadingInvitation": "निमंत्रण लोड हो रहा है...",
@@ -328,7 +346,9 @@
     "withCompanions": "हाँ ({{count}} साथी)",
     "confirms": "पुष्टि करते हैं",
     "declines": "मना करते हैं",
-    "pending": "लंबित"
+    "pending": "लंबित",
+    "visits_one": "1 विज़िट",
+    "visits_other": "{{count}} विज़िट"
   },
   "attendance": {
     "searchLabel": "नाम से खोजें",
@@ -572,7 +592,9 @@
       "deleteFailed": "Error al eliminar. Verifica la consola.",
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
-    "login": "Entrar"
+    "login": "Entrar",
+    "emailLabel": "Email",
+    "passwordLabel": "Password"
   },
   "compliance": {
     "title": "प्रसंस्करण गतिविधियों का रिकॉर्ड (GDPR अनुच्छेद 30)",
@@ -680,7 +702,9 @@
   },
   "sectionOrder": {
     "moveUp": "Move up",
-    "moveDown": "Move down"
+    "moveDown": "Move down",
+    "title": "क्रम और दृश्यता",
+    "help": "पुनः क्रमबद्ध करने के लिए खींचें, स्थानांतरित करने के लिए बटन का उपयोग करें और प्रत्येक अनुभाग को चालू या बंद करें।"
   },
   "langSwitcher": {
     "label": "Select language"
@@ -702,5 +726,78 @@
     "centralAsia": "Central Asia / Middle East",
     "africa": "Africa",
     "americas": "Americas"
+  },
+  "countdown": {
+    "year_one": "{{count}} year",
+    "year_other": "{{count}} years",
+    "month_one": "{{count}} month",
+    "month_other": "{{count}} months",
+    "week_one": "{{count}} week",
+    "week_other": "{{count}} weeks",
+    "day_one": "{{count}} day",
+    "day_other": "{{count}} days",
+    "hour_one": "{{count}} hour",
+    "hour_other": "{{count}} hours",
+    "minute_one": "{{count}} minute",
+    "minute_other": "{{count}} minutes"
+  },
+  "changelog": {
+    "title": "परिवर्तन लॉग",
+    "close": "बंद करें"
+  },
+  "auth": {
+    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
+    "tokenInvalid": "The access code is not valid.",
+    "enterCode": "Enter the access code.",
+    "codeVerified": "Code verified successfully.",
+    "codeVerifyError": "Could not verify the code. Please try again.",
+    "enterUserAndCode": "Enter your username and the access code.",
+    "invalidCredentials": "Incorrect username or code.",
+    "codeUserMismatch": "The code does not match this user.",
+    "loginSuccess": "You have logged in successfully.",
+    "loginError": "Could not verify the code. Please try again.",
+    "confirmRequired": "Type CONFIRM to generate a new code.",
+    "usernameRequired": "Enter your username first.",
+    "usernameInvalid": "Username can only contain letters and numbers.",
+    "usernameTooLong": "Username cannot exceed 50 characters.",
+    "unauthorizedUser": "This user does not have permission to access here.",
+    "tokenGenerated": "Code generated. You can now log in.",
+    "tokenGenerateError": "Could not generate the code. Please try again.",
+    "currentTokenRequired": "Enter the current access code to generate a new one.",
+    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
+    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
+    "superadminNoPermissions": "This account does not have administration permissions.",
+    "superadminWrongCredentials": "Incorrect credentials.",
+    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
+    "superadminInvalidEmail": "The email format is not valid.",
+    "superadminLoginError": "Error logging in. Check your connection."
+  },
+  "autosave": {
+    "saved": "परिवर्तन सहेजे गए"
+  },
+  "monthNames": {
+    "1": "जनवरी",
+    "2": "फरवरी",
+    "3": "मार्च",
+    "4": "अप्रैल",
+    "5": "मई",
+    "6": "जून",
+    "7": "जुलाई",
+    "8": "अगस्त",
+    "9": "सितंबर",
+    "10": "अक्टूबर",
+    "11": "नवंबर",
+    "12": "दिसंबर"
+  },
+  "themeGroups": {
+    "light": "हल्की थीम",
+    "dark": "गहरी थीम",
+    "lgbtiq": "LGTBIQ+"
+  },
+  "dietary": {
+    "gluten": "ग्लूटेन",
+    "lactose": "लैक्टोज",
+    "nuts": "मेवे",
+    "shellfish": "शंख"
   }
 }

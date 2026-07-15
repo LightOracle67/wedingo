@@ -54,7 +54,8 @@
     "withBlessing": "承蒙教父{{godparent1}}和教母{{godparent2}}的祝福",
     "todayIsWedding": "今天是婚礼日",
     "missing": "距离",
-    "todayIsTheDay": "今天就是大喜之日！"
+    "todayIsTheDay": "今天就是大喜之日！",
+    "sectionLabel": "封面"
   },
   "details": {
     "sectionLabel": "日期与地点",
@@ -133,7 +134,24 @@
     "withdrawButton": "撤回我的确认",
     "birthDateLabel": "出生日期",
     "ageUnder14Warning": "您未满14岁，需要父母或监护人的同意。",
-    "parentalConsent": "我的父母或监护人同意我参加"
+    "parentalConsent": "我的父母或监护人同意我参加",
+    "validation": {
+      "nameRequired": "输入您的姓名以确认出席。",
+      "menuRequired": "选择菜单选项。",
+      "privacyRequired": "您必须接受隐私政策。",
+      "birthDateRequired": "输入您的出生日期。",
+      "ageUnder14": "您未满14岁。需要父母或监护人的同意。",
+      "healthConsentRequired": "您必须同意处理您的健康数据。"
+    },
+    "successAttending": "谢谢{{name}}。您的出席已记录。",
+    "successNotAttending": "谢谢{{name}}。很抱歉您无法出席。",
+    "saveError": "无法保存您的回复。请几分钟后重试。",
+    "withdrawConfirm": "确定要撤回您的回复吗？",
+    "withdrawSuccess": "您的回复已撤回。",
+    "withdrawError": "无法撤回您的回复。请重试。",
+    "clearConfirm": "删除所有出席回复？此操作无法撤消。",
+    "clearSuccess": "出席记录已清除。",
+    "clearError": "无法清除出席记录。"
   },
   "public": {
     "loadingInvitation": "加载请柬中…",
@@ -328,7 +346,9 @@
     "withCompanions": "是（{{count}} 位陪同）",
     "confirms": "确认",
     "declines": "婉拒",
-    "pending": "待定"
+    "pending": "待定",
+    "visits_one": "1 次访问",
+    "visits_other": "{{count}} 次访问"
   },
   "attendance": {
     "searchLabel": "按姓名搜索",
@@ -572,7 +592,9 @@
       "deleteFailed": "Error al eliminar. Verifica la consola.",
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
-    "login": "Entrar"
+    "login": "Entrar",
+    "emailLabel": "Email",
+    "passwordLabel": "Password"
   },
   "compliance": {
     "title": "处理活动记录（GDPR第30条）",
@@ -680,7 +702,9 @@
   },
   "sectionOrder": {
     "moveUp": "Move up",
-    "moveDown": "Move down"
+    "moveDown": "Move down",
+    "title": "顺序与可见性",
+    "help": "拖拽重新排序，使用按钮移动，并打开或关闭每个部分。"
   },
   "langSwitcher": {
     "label": "Select language"
@@ -702,5 +726,78 @@
     "centralAsia": "Central Asia / Middle East",
     "africa": "Africa",
     "americas": "Americas"
+  },
+  "countdown": {
+    "year_one": "{{count}} 年",
+    "year_other": "{{count}} 年",
+    "month_one": "{{count}} 个月",
+    "month_other": "{{count}} 个月",
+    "week_one": "{{count}} 周",
+    "week_other": "{{count}} 周",
+    "day_one": "{{count}} 天",
+    "day_other": "{{count}} 天",
+    "hour_one": "{{count}} 小时",
+    "hour_other": "{{count}} 小时",
+    "minute_one": "{{count}} 分钟",
+    "minute_other": "{{count}} 分钟"
+  },
+  "changelog": {
+    "title": "更新日志",
+    "close": "关闭"
+  },
+  "auth": {
+    "sessionExists": "此邀请已有活动会话。是否仍要登录？之前的会话将被关闭。",
+    "tokenInvalid": "访问码无效。",
+    "enterCode": "输入访问码。",
+    "codeVerified": "验证成功。",
+    "codeVerifyError": "无法验证代码。请重试。",
+    "enterUserAndCode": "输入用户名和访问码。",
+    "invalidCredentials": "用户名或代码错误。",
+    "codeUserMismatch": "代码与此用户不匹配。",
+    "loginSuccess": "登录成功。",
+    "loginError": "无法验证代码。请重试。",
+    "confirmRequired": "输入确认以生成新代码。",
+    "usernameRequired": "先输入用户名。",
+    "usernameInvalid": "用户名只能包含字母和数字。",
+    "usernameTooLong": "用户名不能超过50个字符。",
+    "unauthorizedUser": "此用户无权访问。",
+    "tokenGenerated": "代码已生成。您现在可以登录。",
+    "tokenGenerateError": "无法生成代码。请重试。",
+    "currentTokenRequired": "输入当前访问码以生成新代码。",
+    "tokenRenewed": "新代码已生成。保存前请从上方字段复制。",
+    "tokenRenewedAdmin": "代码已更新。这不更改应用密码。",
+    "superadminNoPermissions": "此帐户没有管理员权限。",
+    "superadminWrongCredentials": "凭据错误。",
+    "superadminTooManyAttempts": "尝试次数过多。请稍后再试。",
+    "superadminInvalidEmail": "邮箱格式无效。",
+    "superadminLoginError": "登录错误。检查您的连接。"
+  },
+  "autosave": {
+    "saved": "更改已保存"
+  },
+  "monthNames": {
+    "1": "一月",
+    "2": "二月",
+    "3": "三月",
+    "4": "四月",
+    "5": "五月",
+    "6": "六月",
+    "7": "七月",
+    "8": "八月",
+    "9": "九月",
+    "10": "十月",
+    "11": "十一月",
+    "12": "十二月"
+  },
+  "themeGroups": {
+    "light": "浅色主题",
+    "dark": "深色主题",
+    "lgbtiq": "性多元+"
+  },
+  "dietary": {
+    "gluten": "麸质",
+    "lactose": "乳糖",
+    "nuts": "坚果",
+    "shellfish": "贝类"
   }
 }
