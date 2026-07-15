@@ -148,7 +148,7 @@ export default function PrintPage() {
             <>
               <div className="print-divider" />
               <h3 className="print-subtitle">{t("print.aboutKids")}</h3>
-              <p className="print-body print-body--tight">{escHtml(config.kidsPolicy)}</p>
+              <p className="print-body print-body--tight">{escHtml(config.kidsPolicy === "playArea" || config.kidsPolicy === "supervised" || config.kidsPolicy === "adultOnly" ? t("kidsPolicy.options." + config.kidsPolicy) : config.kidsPolicy)}</p>
             </>
           ) : null}
         </Section>

@@ -555,9 +555,9 @@ export default function SetupForm({ prefix = "" }) {
         <label className="setup-label">{t("setup.kidsLabel")}</label>
         <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))" }}>
           {[
-            { value: "Bienvenidos con zona de juegos", key: "setup.kidsWelcome" },
-            { value: "Bienvenidos bajo supervisión", key: "setup.kidsSupervised" },
-            { value: "Solo para adultos", key: "setup.kidsAdultOnly" },
+            { value: "playArea", key: "kidsPolicy.options.playArea" },
+            { value: "supervised", key: "kidsPolicy.options.supervised" },
+            { value: "adultOnly", key: "kidsPolicy.options.adultOnly" },
           ].map(({ value, key }) => (
             <label key={value} className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem", color: "var(--setup-title)" }}>
               <input type="checkbox" checked={formData.kidsPolicy === value} onChange={() => updateFormField("kidsPolicy", formData.kidsPolicy === value ? "" : value)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />

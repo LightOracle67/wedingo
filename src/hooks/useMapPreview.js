@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import i18n from "../i18n";
 import { getValidCoordinates, resolveLocationTarget } from "../lib/geo-utils";
 import { buildOpenFreeMapPreviewUrl } from "../lib/map-utils";
 
@@ -33,11 +34,11 @@ export function useMapPreview(weddingPlace, weddingLatitude, weddingLongitude) {
         }
         const src = await buildOpenFreeMapPreviewUrl(resolvedLocation, {
           id: "default",
-          label: "Mapa",
-          description: "Vista del mapa en la ubicación indicada.",
+          label: i18n.t("public.mapPreviewAlt"),
+          description: i18n.t("public.mapPreviewAlt"),
         });
         if (previewRequestRef.current !== requestId) return;
-        setPreviewBackgrounds(src ? [{ id: "default", src, label: "Mapa", description: "Vista del mapa en la ubicación indicada." }] : []);
+        setPreviewBackgrounds(src ? [{ id: "default", src, label: i18n.t("public.mapPreviewAlt"), description: i18n.t("public.mapPreviewAlt") }] : []);
       } finally {
         if (previewRequestRef.current === requestId) setIsPreviewLoading(false);
       }

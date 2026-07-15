@@ -24,7 +24,7 @@ const ThemePicker = memo(function ThemePicker({ value, onChange, t }) {
               </span>
               <span className="theme-picker__info">
                 <span className="theme-picker__name">{theme.label}</span>
-                <span className="theme-picker__hint">{theme.hint}</span>
+                <span className="theme-picker__hint">{t("themeHints." + theme.value)}</span>
               </span>
             </button>
           );

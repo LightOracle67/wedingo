@@ -176,7 +176,9 @@
     "legalNotice": "Aviso Legal",
     "locationNotFound": "No pudimos localizar este lugar.",
     "locationMapError": "No pudimos cargar el mapa.",
-    "locationCoordinates": "Coordenadas: {{lat}}, {{lng}}"
+    "locationCoordinates": "Coordenadas: {{lat}}, {{lng}}",
+    "mapPreviewAlt": "Vista del mapa en la ubicación indicada.",
+    "locationSet": "Ubicación configurada"
   },
   "setup": {
     "loadingTitle": "Cargando invitación",
@@ -498,7 +500,11 @@
     "configLoadFailed": "No se pudo cargar la configuración. Revisa la conexión e inténtalo de nuevo.",
     "invalidLink": "El enlace de invitación no es válido.",
     "accommodationTooLong": "La información de alojamiento no puede superar los 2000 caracteres.",
-    "menuTextoTooLong": "La descripción del menú no puede superar los 2000 caracteres."
+    "menuTextoTooLong": "La descripción del menú no puede superar los 2000 caracteres.",
+    "uploadImageFailed": "No se pudo procesar la imagen. Prueba con otra.",
+    "readImageFailed": "No se pudo leer el archivo de imagen.",
+    "encryptFailed": "El cifrado de la imagen falló.",
+    "imageTooLarge": "La imagen es demasiado grande incluso comprimida."
   },
   "superadmin": {
     "tabs": {
@@ -830,5 +836,35 @@
     "invitationText": "Te esperamos para celebrar este momento especial.",
     "timeLabel": "Hora:",
     "placeLabel": "Lugar:"
+  },
+  "themeHints": {
+    "golden": "Elegante y luminoso, con acentos dorados.",
+    "forest": "Natural y sobrio con verdes suaves.",
+    "rose": "Cálido y delicado, con matices rosados.",
+    "linen-soft": "Claro y neutro, con una presencia serena y atemporal.",
+    "blush-pearl": "Suave y romántico, con tonos rosados perlados.",
+    "lavender-mist": "Fresco y sereno, con matices lavanda y malva.",
+    "champagne-bubble": "Luminoso y festivo, con destellos dorados cálidos.",
+    "amber-night": "Oscuro y elegante, con destellos ámbar y dorados.",
+    "onyx-gold": "Profundo y sofisticado, con oro intenso sobre fondo oscuro.",
+    "midnight-royal": "Azul muy oscuro con dorado intenso y presencia solemne.",
+    "burgundy-velvet": "Cálido y envolvente, con vino tinto y destellos dorados.",
+    "sapphire-night": "Azul profundo con acentos plateados y presencia serena.",
+    "emerald-grove": "Verde profundo natural con matices dorados y elegantes.",
+    "plum-twilight": "Púrpura intenso con destellos rosados y románticos.",
+    "rainbow": "Celebración del amor diverso con los colores del arcoíris.",
+    "trans": "Azul, rosa y blanco en homenaje a la bandera trans.",
+    "nonbinary": "Amarillo, blanco, morado y negro por la bandera no binaria.",
+    "lesbian": "Naranja, blanco y rosa de la bandera lésbica.",
+    "bi": "Rosa, morado y azul de la bandera bi.",
+    "pan": "Rosa, amarillo y azul de la bandera pan.",
+    "ace": "Negro, gris, blanco y morado de la bandera asexual."
+  },
+  "kidsPolicy": {
+    "options": {
+      "playArea": "Bienvenidos con zona de juegos",
+      "supervised": "Bienvenidos bajo supervisión",
+      "adultOnly": "Solo para adultos"
+    }
   }
 }

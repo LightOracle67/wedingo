@@ -176,7 +176,9 @@
     "legalNotice": "Juridiskais paziņojums",
     "locationNotFound": "Could not locate this place.",
     "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}"
+    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
+    "mapPreviewAlt": "Map preview at the indicated location.",
+    "locationSet": "Location configured"
   },
   "setup": {
     "loadingTitle": "Ielādē ielūgumu",
@@ -493,7 +495,11 @@
     "configLoadFailed": "Neizdevās ielādēt konfigurāciju. Pārbaudiet savienojumu un mēģiniet vēlreiz.",
     "invalidLink": "Ielūguma saite nav derīga.",
     "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters."
+    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
+    "uploadImageFailed": "Could not process the image. Try another one.",
+    "readImageFailed": "Could not read the image file.",
+    "encryptFailed": "Image encryption failed.",
+    "imageTooLarge": "The image is too large even after compression."
   },
   "superadmin": {
     "tabs": {
@@ -824,5 +830,35 @@
     "invitationText": "We look forward to celebrating this special moment with you.",
     "timeLabel": "Time:",
     "placeLabel": "Venue:"
+  },
+  "themeHints": {
+    "golden": "Elegant and bright, with golden accents.",
+    "forest": "Natural and sober with soft greens.",
+    "rose": "Warm and delicate, with pink hues.",
+    "linen-soft": "Light and neutral, with a serene and timeless presence.",
+    "blush-pearl": "Soft and romantic, with pearly pink tones.",
+    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
+    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
+    "amber-night": "Dark and elegant, with amber and gold highlights.",
+    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
+    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
+    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
+    "sapphire-night": "Deep blue with silver accents and serene presence.",
+    "emerald-grove": "Deep natural green with golden and elegant hues.",
+    "plum-twilight": "Intense purple with pink and romantic sparkles.",
+    "rainbow": "Celebration of diverse love with rainbow colors.",
+    "trans": "Blue, pink and white in tribute to the trans flag.",
+    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
+    "lesbian": "Orange, white and pink of the lesbian flag.",
+    "bi": "Pink, purple and blue of the bi flag.",
+    "pan": "Pink, yellow and blue of the pan flag.",
+    "ace": "Black, gray, white and purple of the asexual flag."
+  },
+  "kidsPolicy": {
+    "options": {
+      "playArea": "Welcome with play area",
+      "supervised": "Welcome under supervision",
+      "adultOnly": "Adults only"
+    }
   }
 }

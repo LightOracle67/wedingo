@@ -1,8 +1,11 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 
+const KNOWN_KIDS = new Set(["playArea", "supervised", "adultOnly"]);
+
 const InfoSection = memo(function InfoSection({ style, className, weddingSchedule, weddingDressCode, kidsPolicy }) {
   const { t } = useTranslation();
+  const kidsLabel = kidsPolicy && KNOWN_KIDS.has(kidsPolicy) ? t("kidsPolicy.options." + kidsPolicy) : kidsPolicy;
   return (
     <section
       data-story-section="info"
@@ -54,7 +57,7 @@ const InfoSection = memo(function InfoSection({ style, className, weddingSchedul
             <div className="story-divider" />
             <p className="story-eyebrow">{t("info.kidsLabel")}</p>
             <h3 className="story-subheading">{t("info.kidsTitle")}</h3>
-            <p className="story-copy whitespace-pre-line">{kidsPolicy}</p>
+            <p className="story-copy whitespace-pre-line">{kidsLabel}</p>
           </>
         ) : null}
       </div>
