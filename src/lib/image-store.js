@@ -1,3 +1,4 @@
+import i18n from "../i18n";
 import { addDoc, getDocs, updateDoc, deleteDoc, collection, writeBatch, doc } from "firebase/firestore";
 import { db } from "./firebase";
 import { compressImage } from "./image-utils";
@@ -23,10 +24,10 @@ export async function uploadImage(inviteToken, file, onProgress) {
   const dataUrl = await compressImage(file);
   onProgress?.(40);
   const encrypted = await encrypt(dataUrl, inviteToken);
-  if (!encrypted) throw new Error("El cifrado de la imagen falló.");
+  if (!encrypted) throw new Error(i18n.t("errors.encryptFailed"));
   onProgress?.(70);
   const size = Math.round((encrypted.length * 3) / 4);
-  if (size > 800 * 1024) throw new Error("La imagen es demasiado grande incluso comprimida.");
+  if (size > 800 * 1024) throw new Error(i18n.t("errors.imageTooLarge"));
   onProgress?.(80);
   return { encrypted, dataUrl };
 }

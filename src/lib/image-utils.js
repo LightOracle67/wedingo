@@ -1,3 +1,5 @@
+import i18n from "../i18n";
+
 const MAX_IMAGE_DIMENSION = 1600;
 const TARGET_BYTES = 500 * 1024;
 
@@ -24,7 +26,7 @@ export const compressImage = (file) =>
       canvas.width = width;
       canvas.height = height;
       const ctx = canvas.getContext("2d");
-      if (!ctx) { reject(new Error("No se pudo procesar la imagen")); return; }
+      if (!ctx) { reject(new Error(i18n.t("errors.uploadImageFailed"))); return; }
       ctx.drawImage(img, 0, 0, width, height);
 
       let quality = 0.85;
@@ -40,6 +42,6 @@ export const compressImage = (file) =>
       };
       tryQuality();
     };
-    img.onerror = () => reject(new Error("No se pudo leer la imagen"));
+    img.onerror = () => reject(new Error(i18n.t("errors.readImageFailed")));
     img.src = URL.createObjectURL(file);
   });

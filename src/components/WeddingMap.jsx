@@ -33,7 +33,7 @@ export default function WeddingMap({ weddingPlace, weddingLatitude, weddingLongi
         if (isCancelled || !container.isConnected) return;
 
         if (!geocodedLocation) {
-          setError(t?.("public.locationNotFound") || "Ubicación no encontrada");
+          setError(t?.("public.locationNotFound") || t("public.locationNotFound"));
           setLoading(false);
           return;
         }
@@ -66,7 +66,7 @@ export default function WeddingMap({ weddingPlace, weddingLatitude, weddingLongi
         });
       } catch {
         if (!isCancelled) {
-          setError(t?.("public.locationMapError") || "Error al cargar el mapa");
+          setError(t?.("public.locationMapError") || t("public.locationMapError"));
           setLoading(false);
         }
       }
