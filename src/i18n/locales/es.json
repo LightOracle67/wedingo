@@ -817,5 +817,18 @@
     "lactose": "Lactosa",
     "nuts": "Frutos secos",
     "shellfish": "Mariscos"
+  },
+  "envelope": {
+    "addressLine1": "Para nuestros queridos",
+    "addressLine2": "Tú y tu familia",
+    "tapHint": "Toca para abrir"
+  },
+  "calendar": {
+    "defaultTitle": "Nuestra boda",
+    "eventTitle": "Boda de {{names}}",
+    "placeUnknown": "Lugar por confirmar",
+    "invitationText": "Te esperamos para celebrar este momento especial.",
+    "timeLabel": "Hora:",
+    "placeLabel": "Lugar:"
   }
 }

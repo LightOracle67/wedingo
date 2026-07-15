@@ -1,8 +1,10 @@
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { MONTH_VALUE_TO_NUMBER } from "../lib/constants";
 import { buildGoogleCalendarUrl } from "../lib/calendar-utils";
 
 export function useCalendar(config) {
+  const { t } = useTranslation();
   const formattedDate = useMemo(() => {
     const day = config.weddingDay.trim();
     const month = config.weddingMonth.trim();
@@ -32,17 +34,17 @@ export function useCalendar(config) {
     if (startDate.getFullYear() !== year || startDate.getMonth() !== month - 1 || startDate.getDate() !== day) return null;
 
     const endDate = new Date(startDate.getTime() + 2 * 60 * 60 * 1000);
-    const coupleNames = [config.firstName, config.secondName].filter(Boolean).join(" & ") || "Nuestra boda";
-    const title = `Boda de ${coupleNames}`;
-    const place = config.weddingPlace || "Lugar por confirmar";
+    const coupleNames = [config.firstName, config.secondName].filter(Boolean).join(" & ") || t("calendar.defaultTitle");
+    const title = t("calendar.eventTitle", { names: coupleNames });
+    const place = config.weddingPlace || t("calendar.placeUnknown");
     const description = [
-      "Te esperamos para celebrar este momento especial.",
-      formattedTime ? `Hora: ${formattedTime}` : "",
-      config.weddingPlace ? `Lugar: ${config.weddingPlace}` : "",
+      t("calendar.invitationText"),
+      formattedTime ? `${t("calendar.timeLabel")} ${formattedTime}` : "",
+      config.weddingPlace ? `${t("calendar.placeLabel")} ${config.weddingPlace}` : "",
     ].filter(Boolean).join("\n");
 
     return buildGoogleCalendarUrl({ title, description, place, startDate, endDate });
-  }, [config, formattedTime]);
+  }, [config, formattedTime, t]);
 
   return { formattedDate, formattedTime, calendarLink };
 }

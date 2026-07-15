@@ -811,5 +811,18 @@
     "lactose": "Laktoosi",
     "nuts": "Pähkinät",
     "shellfish": "Äyriäiset"
+  },
+  "envelope": {
+    "addressLine1": "To our dearest",
+    "addressLine2": "You & Your Family",
+    "tapHint": "Tap to open"
+  },
+  "calendar": {
+    "defaultTitle": "Our wedding",
+    "eventTitle": "Wedding of {{names}}",
+    "placeUnknown": "Location to be confirmed",
+    "invitationText": "We look forward to celebrating this special moment with you.",
+    "timeLabel": "Time:",
+    "placeLabel": "Venue:"
   }
 }

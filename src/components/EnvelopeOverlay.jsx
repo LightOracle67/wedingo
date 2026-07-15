@@ -1,6 +1,8 @@
 import { memo, useState, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 
 const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen }) {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [exiting, setExiting] = useState(false);
 
@@ -22,8 +24,8 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen }) {
           </div>
           <div className="envelope__panel envelope__panel--front">
             <div className="envelope__address">
-              <span className="envelope__address-line">To our dearest</span>
-              <span className="envelope__address-line envelope__address-line--bold">You & Your Family</span>
+              <span className="envelope__address-line">{t("envelope.addressLine1")}</span>
+              <span className="envelope__address-line envelope__address-line--bold">{t("envelope.addressLine2")}</span>
             </div>
             <div className="envelope__stamp">
               <div className="envelope__stamp-inner">♥</div>
@@ -41,7 +43,7 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen }) {
         </div>
       </div>
       {!open ? (
-        <p className="envelope__hint">Tap to open</p>
+        <p className="envelope__hint">{t("envelope.tapHint")}</p>
       ) : null}
     </div>
   );
