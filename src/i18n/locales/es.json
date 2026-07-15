@@ -142,7 +142,10 @@
       "birthDateRequired": "Enter your date of birth.",
       "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
       "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indica al menos una opción de menú."
+      "menuHeadcountRequired": "Indica al menos una opción de menú.",
+      "guestNamesRequired": "Indica los nombres de tus acompañantes.",
+      "guestNamesExceed": "No puedes escribir más nombres que acompañantes.",
+      "headcountExceed": "La suma de opciones de menú no puede superar el número de acompañantes."
     },
     "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
     "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
@@ -155,7 +158,10 @@
     "clearError": "Could not clear attendance records.",
     "companionsLabel": "Acompañantes",
     "headcountLabel": "Personas",
-    "headcountHint": "Indica cuántas personas tomarán cada opción ({{total}} en total)"
+    "headcountHint": "Indica cuántas personas tomarán cada opción ({{total}} en total)",
+    "guestNamesLabel": "Nombres de los invitados",
+    "guestNamesHint": "Escribe el nombre y apellido de cada acompañante (máx {{count}})",
+    "guestNamesPlaceholder": "Nombre1 Apellido1, Nombre2 Apellido2..."
   },
   "public": {
     "loadingInvitation": "Cargando invitación…",

@@ -142,7 +142,10 @@
       "birthDateRequired": "Enter your date of birth.",
       "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
       "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option."
+      "menuHeadcountRequired": "Indicate at least one menu option.",
+      "guestNamesRequired": "Enter the names of your companions.",
+      "guestNamesExceed": "You cannot enter more names than companions.",
+      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
     },
     "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
     "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
@@ -155,7 +158,10 @@
     "clearError": "Could not clear attendance records.",
     "companionsLabel": "Companions",
     "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)"
+    "headcountHint": "How many people for each option ({{total}} total)",
+    "guestNamesLabel": "Guest names",
+    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
+    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
   },
   "public": {
     "loadingInvitation": "Nalaganje vabila...",

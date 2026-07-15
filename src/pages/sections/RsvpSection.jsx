@@ -19,7 +19,11 @@ const RsvpSection = memo(function RsvpSection({
   const showHealthConsent = rsvpForm.attendance === "yes" && hasDietaryData;
 
   const hasStructuredMenu = menuEnabled && (menuCarne || menuPescado || menuVegano);
-  const totalGuests = 1 + (parseInt(rsvpForm.companions, 10) || 0);
+  const companions = parseInt(rsvpForm.companions, 10) || 0;
+  const totalGuests = 1 + companions;
+
+  const guestNamesCount = (rsvpForm.guestNames || "").split(",").filter(n => n.trim()).length;
+  const namesExceed = guestNamesCount > companions;
 
   const updateHeadcount = (key, val) => {
     const num = Math.max(0, parseInt(val, 10) || 0);
@@ -31,6 +35,10 @@ const RsvpSection = memo(function RsvpSection({
     ...(menuPescado ? [{ key: "pescado", label: t("rsvp.menuPescado"), desc: menuPescado }] : []),
     ...(menuVegano ? [{ key: "vegano", label: t("rsvp.menuVegano"), desc: menuVegano }] : []),
   ];
+
+  const hcs = rsvpForm.menuHeadcounts || {};
+  const headcountSum = Object.values(hcs).reduce((a, b) => a + (b || 0), 0);
+  const headcountExceed = headcountSum > companions;
 
   return (
     <section data-story-section="rsvp" className={`${className} flex items-center justify-center px-3 py-4 sm:px-6 sm:py-8 lg:px-8 lg:py-10`} style={style}>
@@ -51,31 +59,56 @@ const RsvpSection = memo(function RsvpSection({
           </div>
         ) : null}
 
-        <form className="rsvp-form" onSubmit={handleRsvpSubmit}>
-          <label className="setup-label" htmlFor="rsvpName">{t("rsvp.nameLabel")}</label>
+        <form className="rsvp-form" onSubmit={handleRsvpSubmit} noValidate>
+          <label className="setup-label" htmlFor="rsvpName">{t("rsvp.nameLabel")} *</label>
           <input id="rsvpName" className="setup-input" value={rsvpForm.guestName} onChange={(e) => updateRsvpField("guestName", e.target.value.slice(0, 120))} placeholder={t("rsvp.namePlaceholder")} autoComplete="off" required disabled={isAlreadySubmitted} />
 
           <div className="setup-date-grid rsvp-choice-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))" }}>
             <div>
-              <label className="setup-label" htmlFor="rsvpAttendance">{t("rsvp.attendanceLabel")}</label>
-              <select id="rsvpAttendance" className="setup-input" value={rsvpForm.attendance} onChange={(e) => updateRsvpField("attendance", e.target.value)} disabled={isAlreadySubmitted}>
+              <label className="setup-label" htmlFor="rsvpAttendance">{t("rsvp.attendanceLabel")} *</label>
+              <select id="rsvpAttendance" className="setup-input" value={rsvpForm.attendance} onChange={(e) => updateRsvpField("attendance", e.target.value)} required disabled={isAlreadySubmitted}>
                 <option value="yes">{t("rsvp.attending")}</option>
                 <option value="no">{t("rsvp.notAttending")}</option>
               </select>
             </div>
             {rsvpForm.attendance === "yes" ? (
               <div>
-                <label className="setup-label" htmlFor="rsvpCompanions">{t("rsvp.companionsLabel")}</label>
+                <label className="setup-label" htmlFor="rsvpCompanions">{t("rsvp.companionsLabel")} *</label>
                 <input id="rsvpCompanions" type="number" min="0" max="50" className="setup-input"
                   value={rsvpForm.companions} onChange={(e) => updateRsvpField("companions", Math.max(0, parseInt(e.target.value, 10) || 0))}
-                  disabled={isAlreadySubmitted} />
+                  required disabled={isAlreadySubmitted} />
               </div>
             ) : null}
           </div>
 
+          {rsvpForm.attendance === "yes" && companions > 0 ? (
+            <div>
+              <label className="setup-label" htmlFor="rsvpGuestNames">{t("rsvp.guestNamesLabel")} *</label>
+              <p className="setup-help" style={{ fontSize: "0.78rem", marginBottom: "0.25rem" }}>
+                {t("rsvp.guestNamesHint", { count: companions })}
+              </p>
+              <textarea
+                id="rsvpGuestNames"
+                className="setup-textarea"
+                value={rsvpForm.guestNames || ""}
+                onChange={(e) => updateRsvpField("guestNames", e.target.value.slice(0, 500))}
+                placeholder={t("rsvp.guestNamesPlaceholder")}
+                rows={Math.min(companions, 6)}
+                required
+                disabled={isAlreadySubmitted}
+                style={namesExceed ? { borderColor: "#ef4444" } : {}}
+              />
+              {namesExceed ? (
+                <p style={{ fontSize: "0.78rem", color: "#ef4444", marginTop: "0.15rem" }}>
+                  {t("rsvp.guestNamesExceed", { max: companions })}
+                </p>
+              ) : null}
+            </div>
+          ) : null}
+
           {rsvpForm.attendance === "yes" && hasStructuredMenu ? (
             <fieldset style={{ border: "none", padding: 0, margin: "0.5rem 0 0", minInlineSize: 0 }}>
-              <legend className="setup-label" style={{ marginBottom: "0.3rem" }}>{t("rsvp.menuLegend")}</legend>
+              <legend className="setup-label" style={{ marginBottom: "0.3rem" }}>{t("rsvp.menuLegend")} *</legend>
               <p className="setup-help" style={{ marginBottom: "0.4rem", fontSize: "0.8rem" }}>
                 {t("rsvp.headcountHint", { total: totalGuests })}
               </p>
@@ -92,11 +125,17 @@ const RsvpSection = memo(function RsvpSection({
                         style={{ width: "4rem", fontSize: "0.85rem", padding: "0.25rem 0.4rem" }}
                         value={(rsvpForm.menuHeadcounts && rsvpForm.menuHeadcounts[opt.key]) || 0}
                         onChange={(e) => updateHeadcount(opt.key, e.target.value)}
+                        required={headcountSum === 0}
                         disabled={isAlreadySubmitted} />
                     </div>
                   </div>
                 </div>
               ))}
+              {headcountExceed ? (
+                <p style={{ fontSize: "0.78rem", color: "#ef4444", marginTop: "0.15rem" }}>
+                  {t("rsvp.headcountExceed")}
+                </p>
+              ) : null}
               {menuPostre?.trim() ? (
                 <div style={{ marginTop: "0.3rem", padding: "0.5rem", borderRadius: "0.6rem", background: "color-mix(in srgb, var(--setup-field-bg) 60%, transparent)" }}>
                   <p className="story-eyebrow" style={{ fontSize: "0.72rem", marginBottom: "0.15rem" }}>{t("rsvp.postre")}</p>
@@ -145,8 +184,8 @@ const RsvpSection = memo(function RsvpSection({
             <p className="setup-help" style={{ fontSize: "0.8rem" }}>{t("rsvp.allergiesHint")}</p>
           ) : null}
 
-          <label className="setup-label" htmlFor="rsvpBirthDate" style={{ marginTop: "0.5rem" }}>{t("rsvp.birthDateLabel")}</label>
-          <input id="rsvpBirthDate" type="date" max={new Date().toISOString().split("T")[0]} className="setup-input" value={rsvpForm.birthDate} onChange={(e) => updateRsvpField("birthDate", e.target.value)} style={{ colorScheme: "light" }} disabled={isAlreadySubmitted} />
+          <label className="setup-label" htmlFor="rsvpBirthDate" style={{ marginTop: "0.5rem" }}>{t("rsvp.birthDateLabel")} *</label>
+          <input id="rsvpBirthDate" type="date" max={new Date().toISOString().split("T")[0]} className="setup-input" value={rsvpForm.birthDate} onChange={(e) => updateRsvpField("birthDate", e.target.value)} style={{ colorScheme: "light" }} required disabled={isAlreadySubmitted} />
 
           {isUnder14 ? (
             <p style={{ fontSize: "0.82rem", color: "#e88b2c", margin: "0.3rem 0" }}>{t("rsvp.ageUnder14Warning")}</p>
@@ -154,7 +193,7 @@ const RsvpSection = memo(function RsvpSection({
 
           {isUnder14 ? (
             <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.85rem", cursor: isAlreadySubmitted ? "default" : "pointer", marginBottom: "0.5rem" }}>
-              <input type="checkbox" checked={rsvpForm.parentalConsent} onChange={(e) => updateRsvpField("parentalConsent", e.target.checked)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} disabled={isAlreadySubmitted} />
+              <input type="checkbox" checked={rsvpForm.parentalConsent} onChange={(e) => updateRsvpField("parentalConsent", e.target.checked)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} required={isUnder14} disabled={isAlreadySubmitted} />
               <span>{t("rsvp.parentalConsent")}</span>
             </label>
           ) : null}
@@ -166,7 +205,7 @@ const RsvpSection = memo(function RsvpSection({
 
           {showHealthConsent ? (
             <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.85rem", cursor: isAlreadySubmitted ? "default" : "pointer" }}>
-              <input type="checkbox" checked={rsvpForm.healthConsent} onChange={(e) => updateRsvpField("healthConsent", e.target.checked)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} disabled={isAlreadySubmitted} />
+              <input type="checkbox" checked={rsvpForm.healthConsent} onChange={(e) => updateRsvpField("healthConsent", e.target.checked)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} required={showHealthConsent} disabled={isAlreadySubmitted} />
               <span>{t("rsvp.healthConsent")}</span>
             </label>
           ) : null}

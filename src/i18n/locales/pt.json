@@ -142,7 +142,10 @@
       "birthDateRequired": "Introduza a sua data de nascimento.",
       "ageUnder14": "Tem menos de 14 anos. Precisa do consentimento dos seus pais ou tutores.",
       "healthConsentRequired": "Deve consentir o tratamento dos seus dados de saúde.",
-      "menuHeadcountRequired": "Indicate at least one menu option."
+      "menuHeadcountRequired": "Indicate at least one menu option.",
+      "guestNamesRequired": "Enter the names of your companions.",
+      "guestNamesExceed": "You cannot enter more names than companions.",
+      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
     },
     "successAttending": "Obrigado, {{name}}. A sua presença foi registada.",
     "successNotAttending": "Obrigado, {{name}}. Lamentamos que não possa comparecer.",
@@ -155,7 +158,10 @@
     "clearError": "Não foi possível limpar o registo de presença.",
     "companionsLabel": "Companions",
     "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)"
+    "headcountHint": "How many people for each option ({{total}} total)",
+    "guestNamesLabel": "Guest names",
+    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
+    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
   },
   "public": {
     "loadingInvitation": "Carregando convite…",

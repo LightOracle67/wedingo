@@ -142,7 +142,10 @@
       "birthDateRequired": "Geben Sie Ihr Geburtsdatum ein.",
       "ageUnder14": "Sie sind unter 14 Jahren. Sie benötigen die Einwilligung Ihrer Eltern oder Erziehungsberechtigten.",
       "healthConsentRequired": "Sie müssen der Verarbeitung Ihrer Gesundheitsdaten zustimmen.",
-      "menuHeadcountRequired": "Indicate at least one menu option."
+      "menuHeadcountRequired": "Indicate at least one menu option.",
+      "guestNamesRequired": "Enter the names of your companions.",
+      "guestNamesExceed": "You cannot enter more names than companions.",
+      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
     },
     "successAttending": "Danke, {{name}}. Ihre Teilnahme wurde registriert.",
     "successNotAttending": "Danke, {{name}}. Es tut uns leid, dass Sie nicht kommen können.",
@@ -155,7 +158,10 @@
     "clearError": "Teilnahmedatensätze konnten nicht gelöscht werden.",
     "companionsLabel": "Companions",
     "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)"
+    "headcountHint": "How many people for each option ({{total}} total)",
+    "guestNamesLabel": "Guest names",
+    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
+    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
   },
   "public": {
     "loadingInvitation": "Einladung wird geladen…",
