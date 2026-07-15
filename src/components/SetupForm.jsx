@@ -239,7 +239,7 @@ export default function SetupForm({ prefix = "" }) {
           id={id("inviteMessage")}
           className="setup-textarea"
           value={formData.inviteMessage}
-          onChange={(e) => updateFormField("inviteMessage", e.target.value.slice(0, 220))}
+          onChange={(e) => updateFormField("inviteMessage", e.target.value.slice(0, 500))}
           placeholder={t("setup.messagePlaceholder")}
         />
 
@@ -590,7 +590,7 @@ export default function SetupForm({ prefix = "" }) {
               return (
                 <div key={key} style={{ marginBottom: "0.5rem" }}>
                   <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", cursor: "pointer", fontSize: "0.85rem", color: "var(--setup-title)" }}>
-                    <input type="checkbox" checked={!!val} onChange={(e) => { if (!e.target.checked) updateFormField(key, ""); }} style={{ accentColor: "var(--setup-accent)", width: "0.9rem", height: "0.9rem", flexShrink: 0 }} />
+                    <input type="checkbox" checked={!!val} onChange={(e) => { updateFormField(key, e.target.checked ? " " : ""); }} style={{ accentColor: "var(--setup-accent)", width: "0.9rem", height: "0.9rem", flexShrink: 0 }} />
                     {t(labelKey)}
                   </label>
                   {!!val && <textarea className="setup-textarea" value={val} onChange={(e) => updateFormField(key, e.target.value)} placeholder={t(phKey)} rows={2} style={{ marginTop: "0.15rem", fontSize: "0.85rem" }} />}
@@ -599,7 +599,7 @@ export default function SetupForm({ prefix = "" }) {
             })}
             <div style={{ marginBottom: "0.5rem" }}>
               <p className="setup-label" style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}>{t("setup.postreLabel")}</p>
-              <textarea className="setup-textarea" value={formData.menuPostre || ""} onChange={(e) => updateFormField("menuPostre", e.target.value)} placeholder={t("setup.postrePlaceholder")} rows={2} style={{ fontSize: "0.85rem" }} />
+              <textarea className="setup-textarea" value={formData.menuPostre || ""} onChange={(e) => updateFormField("menuPostre", e.target.value.slice(0, 2000))} placeholder={t("setup.postrePlaceholder")} rows={2} style={{ fontSize: "0.85rem" }} />
             </div>
             <p className="setup-help">{t("setup.menuRequiredText")}</p>
           </>

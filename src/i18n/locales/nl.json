@@ -141,7 +141,8 @@
       "privacyRequired": "Je moet het Privacybeleid accepteren.",
       "birthDateRequired": "Voer je geboortedatum in.",
       "ageUnder14": "Je bent jonger dan 14 jaar. Je hebt toestemming van je ouders of voogden nodig.",
-      "healthConsentRequired": "Je moet toestemming geven voor de verwerking van je gezondheidsgegevens."
+      "healthConsentRequired": "Je moet toestemming geven voor de verwerking van je gezondheidsgegevens.",
+      "menuHeadcountRequired": "Indicate at least one menu option."
     },
     "successAttending": "Bedankt, {{name}}. Je aanwezigheid is geregistreerd.",
     "successNotAttending": "Bedankt, {{name}}. Het spijt ons dat je niet aanwezig kunt zijn.",
@@ -151,7 +152,10 @@
     "withdrawError": "Antwoord kon niet worden ingetrokken. Probeer het opnieuw.",
     "clearConfirm": "Alle aanwezigheidsreacties verwijderen? Deze actie kan niet ongedaan worden gemaakt.",
     "clearSuccess": "Aanwezigheidsregistratie gewist.",
-    "clearError": "Kon aanwezigheidsregistratie niet wissen."
+    "clearError": "Kon aanwezigheidsregistratie niet wissen.",
+    "companionsLabel": "Companions",
+    "headcountLabel": "People",
+    "headcountHint": "How many people for each option ({{total}} total)"
   },
   "public": {
     "loadingInvitation": "Uitnodiging laden...",
@@ -481,7 +485,9 @@
     "deleteConfirm": "Je volledige uitnodiging verwijderen? Alle gegevens, foto's en bevestigingen worden verwijderd. Dit kan niet ongedaan worden gemaakt.",
     "deleteFailed": "Uitnodiging kon niet worden verwijderd. Probeer opnieuw.",
     "configLoadFailed": "Configuratie kon niet worden geladen. Controleer de verbinding en probeer opnieuw.",
-    "invalidLink": "De uitnodigingslink is ongeldig."
+    "invalidLink": "De uitnodigingslink is ongeldig.",
+    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
+    "menuTextoTooLong": "Menu description cannot exceed 2000 characters."
   },
   "superadmin": {
     "tabs": {

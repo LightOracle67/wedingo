@@ -18,6 +18,20 @@ const RsvpSection = memo(function RsvpSection({
   const hasDietaryData = rsvpForm.dietarySelection.length > 0 || rsvpForm.dietaryOther.trim() !== "";
   const showHealthConsent = rsvpForm.attendance === "yes" && hasDietaryData;
 
+  const hasStructuredMenu = menuEnabled && (menuCarne || menuPescado || menuVegano);
+  const totalGuests = 1 + (parseInt(rsvpForm.companions, 10) || 0);
+
+  const updateHeadcount = (key, val) => {
+    const num = Math.max(0, parseInt(val, 10) || 0);
+    updateRsvpField("menuHeadcounts", { ...(rsvpForm.menuHeadcounts || {}), [key]: num });
+  };
+
+  const menuOptions = [
+    ...(menuCarne ? [{ key: "carne", label: t("rsvp.menuCarne"), desc: menuCarne }] : []),
+    ...(menuPescado ? [{ key: "pescado", label: t("rsvp.menuPescado"), desc: menuPescado }] : []),
+    ...(menuVegano ? [{ key: "vegano", label: t("rsvp.menuVegano"), desc: menuVegano }] : []),
+  ];
+
   return (
     <section data-story-section="rsvp" className={`${className} flex items-center justify-center px-3 py-4 sm:px-6 sm:py-8 lg:px-8 lg:py-10`} style={style}>
       <div className="story-card story-panel story-card--rsvp allow-select w-full max-w-[min(100%,42rem)]">
@@ -41,7 +55,7 @@ const RsvpSection = memo(function RsvpSection({
           <label className="setup-label" htmlFor="rsvpName">{t("rsvp.nameLabel")}</label>
           <input id="rsvpName" className="setup-input" value={rsvpForm.guestName} onChange={(e) => updateRsvpField("guestName", e.target.value.slice(0, 120))} placeholder={t("rsvp.namePlaceholder")} autoComplete="off" required disabled={isAlreadySubmitted} />
 
-          <div className="setup-date-grid rsvp-choice-grid">
+          <div className="setup-date-grid rsvp-choice-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))" }}>
             <div>
               <label className="setup-label" htmlFor="rsvpAttendance">{t("rsvp.attendanceLabel")}</label>
               <select id="rsvpAttendance" className="setup-input" value={rsvpForm.attendance} onChange={(e) => updateRsvpField("attendance", e.target.value)} disabled={isAlreadySubmitted}>
@@ -49,66 +63,66 @@ const RsvpSection = memo(function RsvpSection({
                 <option value="no">{t("rsvp.notAttending")}</option>
               </select>
             </div>
+            {rsvpForm.attendance === "yes" ? (
+              <div>
+                <label className="setup-label" htmlFor="rsvpCompanions">{t("rsvp.companionsLabel")}</label>
+                <input id="rsvpCompanions" type="number" min="0" max="50" className="setup-input"
+                  value={rsvpForm.companions} onChange={(e) => updateRsvpField("companions", Math.max(0, parseInt(e.target.value, 10) || 0))}
+                  disabled={isAlreadySubmitted} />
+              </div>
+            ) : null}
           </div>
 
-          {rsvpForm.attendance === "yes" && menuEnabled ? (
-            <fieldset style={{ border: "none", padding: 0, margin: 0, minInlineSize: 0 }}>
-              <legend className="setup-label" style={{ marginBottom: "0.4rem" }}>{t("rsvp.menuLegend")}</legend>
-              <div>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))", gap: "0.4rem" }}>
-                  {[
-                    { value: "carne", label: t("rsvp.menuCarne") },
-                    { value: "pescado", label: t("rsvp.menuPescado") },
-                    { value: "vegano", label: t("rsvp.menuVegano") },
-                  ].map(opt => (
-                    <label key={opt.value} className="setup-checkbox-label" style={{
-                      display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.5rem 0.6rem", cursor: isAlreadySubmitted ? "default" : "pointer",
-                      fontSize: "0.9rem", borderRadius: "0.6rem",
-                      background: rsvpForm.mealChoice === opt.value ? "color-mix(in srgb, var(--setup-accent) 18%, transparent)" : "color-mix(in srgb, var(--setup-field-bg) 70%, transparent)",
-                      border: rsvpForm.mealChoice === opt.value ? "1px solid color-mix(in srgb, var(--setup-accent) 40%, transparent)" : "1px solid transparent",
-                      color: "var(--setup-title)", transition: "background 200ms, border-color 200ms",
-                    }}>
-                      <input type="checkbox" checked={rsvpForm.mealChoice === opt.value} onChange={() => updateRsvpField("mealChoice", rsvpForm.mealChoice === opt.value ? "" : opt.value)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} disabled={isAlreadySubmitted} />
-                      {opt.label}
-                    </label>
-                  ))}
-                </div>
-                {rsvpForm.mealChoice && (() => {
-                  const desc = { carne: menuCarne, pescado: menuPescado, vegano: menuVegano }[rsvpForm.mealChoice];
-                  const lbl = { carne: t("rsvp.menuCarne"), pescado: t("rsvp.menuPescado"), vegano: t("rsvp.menuVegano") }[rsvpForm.mealChoice];
-                  return desc ? (
-                    <div style={{ marginTop: "0.4rem", padding: "0.6rem", borderRadius: "0.6rem", background: "color-mix(in srgb, var(--setup-field-bg) 70%, transparent)", border: "1px solid color-mix(in srgb, var(--setup-accent) 20%, transparent)" }}>
-                      <p className="story-eyebrow" style={{ fontSize: "0.72rem", marginBottom: "0.15rem" }}>{lbl}</p>
-                      <p className="story-note whitespace-pre-line" style={{ fontSize: "0.82rem" }}>{desc}</p>
+          {rsvpForm.attendance === "yes" && hasStructuredMenu ? (
+            <fieldset style={{ border: "none", padding: 0, margin: "0.5rem 0 0", minInlineSize: 0 }}>
+              <legend className="setup-label" style={{ marginBottom: "0.3rem" }}>{t("rsvp.menuLegend")}</legend>
+              <p className="setup-help" style={{ marginBottom: "0.4rem", fontSize: "0.8rem" }}>
+                {t("rsvp.headcountHint", { total: totalGuests })}
+              </p>
+              {menuOptions.map((opt) => (
+                <div key={opt.key} style={{ marginBottom: "0.4rem", padding: "0.5rem", borderRadius: "0.6rem", background: "color-mix(in srgb, var(--setup-field-bg) 70%, transparent)", border: "1px solid color-mix(in srgb, var(--setup-accent) 15%, transparent)" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <p className="story-eyebrow" style={{ fontSize: "0.72rem", marginBottom: "0.1rem" }}>{opt.label}</p>
+                      <p className="story-note whitespace-pre-line" style={{ fontSize: "0.8rem", margin: 0 }}>{opt.desc}</p>
                     </div>
-                  ) : null;
-                })()}
-                {menuPostre?.trim() ? (
-                  <div style={{ marginTop: "0.3rem", padding: "0.5rem", borderRadius: "0.6rem", background: "color-mix(in srgb, var(--setup-field-bg) 60%, transparent)" }}>
-                    <p className="story-eyebrow" style={{ fontSize: "0.72rem", marginBottom: "0.15rem" }}>{t("rsvp.postre")}</p>
-                    <p className="story-note whitespace-pre-line" style={{ fontSize: "0.82rem" }}>{menuPostre}</p>
+                    <div style={{ display: "flex", alignItems: "center", gap: "0.3rem", flexShrink: 0 }}>
+                      <label style={{ fontSize: "0.78rem", color: "var(--setup-muted)", whiteSpace: "nowrap" }}>{t("rsvp.headcountLabel")}</label>
+                      <input type="number" min="0" max={totalGuests} className="setup-input"
+                        style={{ width: "4rem", fontSize: "0.85rem", padding: "0.25rem 0.4rem" }}
+                        value={(rsvpForm.menuHeadcounts && rsvpForm.menuHeadcounts[opt.key]) || 0}
+                        onChange={(e) => updateHeadcount(opt.key, e.target.value)}
+                        disabled={isAlreadySubmitted} />
+                    </div>
                   </div>
-                ) : null}
-                <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))", marginTop: "0.5rem" }}>
-                  {DIETARY_OPTIONS.map((opt) => (
-                    <label key={opt.value} className="setup-checkbox-label" style={{
-                      display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: isAlreadySubmitted ? "default" : "pointer", fontSize: "0.9rem",
-                      color: "var(--setup-title)",
-                    }}>
-                      <input type="checkbox" checked={rsvpForm.dietarySelection.includes(opt.value)} onChange={() => handleDietaryToggle(opt.value)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} disabled={isAlreadySubmitted} />
-                      {opt.label}
-                    </label>
-                  ))}
                 </div>
-                <input className="setup-input" style={{ marginTop: "0.4rem" }} value={rsvpForm.dietaryOther} onChange={(e) => updateRsvpField("dietaryOther", e.target.value.slice(0, 120))} placeholder={t("rsvp.allergiesPlaceholder")} autoComplete="off" disabled={isAlreadySubmitted} />
+              ))}
+              {menuPostre?.trim() ? (
+                <div style={{ marginTop: "0.3rem", padding: "0.5rem", borderRadius: "0.6rem", background: "color-mix(in srgb, var(--setup-field-bg) 60%, transparent)" }}>
+                  <p className="story-eyebrow" style={{ fontSize: "0.72rem", marginBottom: "0.15rem" }}>{t("rsvp.postre")}</p>
+                  <p className="story-note whitespace-pre-line" style={{ fontSize: "0.82rem" }}>{menuPostre}</p>
+                </div>
+              ) : null}
+              <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))", marginTop: "0.5rem" }}>
+                {DIETARY_OPTIONS.map((opt) => (
+                  <label key={opt.value} className="setup-checkbox-label" style={{
+                    display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: isAlreadySubmitted ? "default" : "pointer", fontSize: "0.9rem",
+                    color: "var(--setup-title)",
+                  }}>
+                    <input type="checkbox" checked={rsvpForm.dietarySelection.includes(opt.value)} onChange={() => handleDietaryToggle(opt.value)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} disabled={isAlreadySubmitted} />
+                    {opt.label}
+                  </label>
+                ))}
               </div>
+              <input className="setup-input" style={{ marginTop: "0.4rem" }} value={rsvpForm.dietaryOther} onChange={(e) => updateRsvpField("dietaryOther", e.target.value.slice(0, 120))} placeholder={t("rsvp.allergiesPlaceholder")} autoComplete="off" disabled={isAlreadySubmitted} />
             </fieldset>
           ) : rsvpForm.attendance === "yes" && menuTexto?.trim() ? (
-            <div style={{ marginBottom: "0.5rem", padding: "0.6rem", borderRadius: "0.6rem", background: "color-mix(in srgb, var(--setup-field-bg) 60%, transparent)" }}>
+            <div style={{ marginBottom: "0.5rem", marginTop: "0.5rem", padding: "0.6rem", borderRadius: "0.6rem", background: "color-mix(in srgb, var(--setup-field-bg) 60%, transparent)" }}>
               <p className="story-eyebrow" style={{ fontSize: "0.72rem", marginBottom: "0.2rem" }}>{t("rsvp.menuLabel")}</p>
               <p className="story-note whitespace-pre-line" style={{ fontSize: "0.85rem" }}>{menuTexto}</p>
             </div>
           ) : null}
+
           {rsvpForm.attendance === "yes" && !menuEnabled ? (
             <fieldset style={{ border: "none", padding: 0, margin: 0, minInlineSize: 0 }}>
               <legend className="setup-label" style={{ marginBottom: "0.4rem" }}>{t("rsvp.allergiesLegend")}</legend>
@@ -132,8 +146,7 @@ const RsvpSection = memo(function RsvpSection({
           ) : null}
 
           <label className="setup-label" htmlFor="rsvpBirthDate" style={{ marginTop: "0.5rem" }}>{t("rsvp.birthDateLabel")}</label>
-          <input id="rsvpBirthDate"               type="date"
-              max={new Date().toISOString().split("T")[0]} className="setup-input" value={rsvpForm.birthDate} onChange={(e) => updateRsvpField("birthDate", e.target.value)} style={{ colorScheme: "light" }} disabled={isAlreadySubmitted} />
+          <input id="rsvpBirthDate" type="date" max={new Date().toISOString().split("T")[0]} className="setup-input" value={rsvpForm.birthDate} onChange={(e) => updateRsvpField("birthDate", e.target.value)} style={{ colorScheme: "light" }} disabled={isAlreadySubmitted} />
 
           {isUnder14 ? (
             <p style={{ fontSize: "0.82rem", color: "#e88b2c", margin: "0.3rem 0" }}>{t("rsvp.ageUnder14Warning")}</p>

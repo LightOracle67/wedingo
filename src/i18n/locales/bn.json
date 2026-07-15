@@ -141,7 +141,8 @@
       "privacyRequired": "You must accept the Privacy Policy.",
       "birthDateRequired": "Enter your date of birth.",
       "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data."
+      "healthConsentRequired": "You must consent to the processing of your health data.",
+      "menuHeadcountRequired": "Indicate at least one menu option."
     },
     "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
     "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
@@ -151,7 +152,10 @@
     "withdrawError": "Could not withdraw your response. Please try again.",
     "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
     "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records."
+    "clearError": "Could not clear attendance records.",
+    "companionsLabel": "Companions",
+    "headcountLabel": "People",
+    "headcountHint": "How many people for each option ({{total}} total)"
   },
   "public": {
     "loadingInvitation": "আমন্ত্রণ লোড হচ্ছে…",
@@ -481,7 +485,9 @@
     "deleteConfirm": "সম্পূর্ণ আমন্ত্রণ মুছে ফেলবেন? সমস্ত তথ্য, ছবি এবং নিশ্চিতকরণ মুছে যাবে। এটি পূর্বাবস্থায় ফেরানো যাবে না।",
     "deleteFailed": "আমন্ত্রণ মুছে ফেলা যায়নি। আবার চেষ্টা করুন।",
     "configLoadFailed": "কনফিগারেশন লোড করা যায়নি। সংযোগ পরীক্ষা করে আবার চেষ্টা করুন।",
-    "invalidLink": "আমন্ত্রণের লিঙ্ক বৈধ নয়।"
+    "invalidLink": "আমন্ত্রণের লিঙ্ক বৈধ নয়।",
+    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
+    "menuTextoTooLong": "Menu description cannot exceed 2000 characters."
   },
   "superadmin": {
     "tabs": {

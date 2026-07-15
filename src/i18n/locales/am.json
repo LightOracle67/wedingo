@@ -141,7 +141,8 @@
       "privacyRequired": "You must accept the Privacy Policy.",
       "birthDateRequired": "Enter your date of birth.",
       "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data."
+      "healthConsentRequired": "You must consent to the processing of your health data.",
+      "menuHeadcountRequired": "Indicate at least one menu option."
     },
     "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
     "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
@@ -151,7 +152,10 @@
     "withdrawError": "Could not withdraw your response. Please try again.",
     "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
     "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records."
+    "clearError": "Could not clear attendance records.",
+    "companionsLabel": "Companions",
+    "headcountLabel": "People",
+    "headcountHint": "How many people for each option ({{total}} total)"
   },
   "public": {
     "loadingInvitation": "ግብዣ በመጫን ላይ...",
@@ -481,7 +485,9 @@
     "deleteConfirm": "ሙሉ ግብዣዎን መሰረዝ ይፈልጋሉ? ሁሉም ውሂቦች፣ ፎቶዎች እና ማረጋገጫዎች ይሰረዛሉ። መመለስ አይቻልም።",
     "deleteFailed": "ግብዣውን መሰረዝ አልተቻለም። እንደገና ይሞክሩ።",
     "configLoadFailed": "ውቅሩን መጫን አልተቻለም። ግንኙነቱን ያረጋግጡ እና እንደገና ይሞክሩ።",
-    "invalidLink": "የግብዣ ማገናኛው ትክክል አይደለም።"
+    "invalidLink": "የግብዣ ማገናኛው ትክክል አይደለም።",
+    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
+    "menuTextoTooLong": "Menu description cannot exceed 2000 characters."
   },
   "superadmin": {
     "tabs": {

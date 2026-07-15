@@ -1,6 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { initializeAppCheck, ReCaptchaEnterpriseProvider } from "firebase/app-check";
-import { collection, doc, getFirestore, getDocs, writeBatch, query, where } from "firebase/firestore";
+import { collection, doc, initializeFirestore, getDocs, writeBatch, query, where } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 
@@ -14,16 +13,12 @@ const firebaseConfig = {
 };
 
 export const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
+export const db = initializeFirestore(app, { experimentalForceLongPolling: true });
 export const auth = getAuth(app);
 export const storage = getStorage(app);
 
-if (import.meta.env.VITE_RECAPTCHA_ENTERPRISE_KEY) {
-  initializeAppCheck(app, {
-    provider: new ReCaptchaEnterpriseProvider(import.meta.env.VITE_RECAPTCHA_ENTERPRISE_KEY),
-    isTokenAutoRefreshEnabled: true,
-  });
-}
+// App Check deshabilitado temporalmente porque los tokens de ReCaptcha Enterprise
+// exceden el límite de URI (414) al combinarse con los parámetros de sesión de Firebase Hosting.
 
 export function invitationDocRef(token) {
   return doc(db, "invitations", token);

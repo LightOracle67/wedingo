@@ -40,6 +40,8 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
   const [rsvpForm, setRsvpForm] = useState({
     guestName: "",
     attendance: "yes",
+    companions: 0,
+    menuHeadcounts: {},
     mealChoice: "",
     dietarySelection: [],
     dietaryOther: "",
@@ -204,7 +206,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
       return;
     }
 
-    if (menuEnabled && rsvpForm.attendance === "yes" && !rsvpForm.mealChoice) {
+    if (menuEnabled && rsvpForm.attendance === "yes" && !rsvpForm.mealChoice && !rsvpForm.menuHeadcounts) {
       setRsvpMessage(t("rsvp.validation.menuRequired"));
       return;
     }
@@ -247,6 +249,8 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
       const payload = {
         guestName: single,
         attendance: rsvpForm.attendance,
+        companions: Math.max(0, parseInt(rsvpForm.companions, 10) || 0),
+        menuHeadcounts: rsvpForm.menuHeadcounts || {},
         dietaryInfo: encryptedDietaryInfo,
         mealChoice: rsvpForm.mealChoice || "",
         inviteToken,
@@ -277,7 +281,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
       );
       // Resetea el formulario tras envío exitoso
       setRsvpForm({
-        guestName: "", attendance: "yes", mealChoice: "",
+        guestName: "", attendance: "yes", companions: 0, menuHeadcounts: {}, mealChoice: "",
         dietarySelection: [], dietaryOther: "", privacyConsent: false, healthConsent: false,
         birthDate: "", parentalConsent: false,
       });
@@ -304,7 +308,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
       setRsvpMessage(t("rsvp.withdrawSuccess"));
       // Resetea el formulario
       setRsvpForm({
-        guestName: "", attendance: "yes", mealChoice: "",
+        guestName: "", attendance: "yes", companions: 0, menuHeadcounts: {}, mealChoice: "",
         dietarySelection: [], dietaryOther: "", privacyConsent: false, healthConsent: false,
         birthDate: "", parentalConsent: false,
       });

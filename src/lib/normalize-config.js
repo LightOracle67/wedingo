@@ -42,6 +42,7 @@ export const normalizeConfig = (value) => ({
   kidsPolicy: s(value?.kidsPolicy),
   menuEnabled: s(value?.menuEnabled) === "true" ? "true" : "false",
   menuTexto: s(value?.menuTexto),
+  privacyPolicyVersion: s(value?.privacyPolicyVersion),
   menuCarne: s(value?.menuCarne),
   menuPescado: s(value?.menuPescado),
   menuVegano: s(value?.menuVegano),

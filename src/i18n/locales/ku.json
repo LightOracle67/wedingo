@@ -141,7 +141,8 @@
       "privacyRequired": "You must accept the Privacy Policy.",
       "birthDateRequired": "Enter your date of birth.",
       "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data."
+      "healthConsentRequired": "You must consent to the processing of your health data.",
+      "menuHeadcountRequired": "Indicate at least one menu option."
     },
     "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
     "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
@@ -151,7 +152,10 @@
     "withdrawError": "Could not withdraw your response. Please try again.",
     "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
     "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records."
+    "clearError": "Could not clear attendance records.",
+    "companionsLabel": "Companions",
+    "headcountLabel": "People",
+    "headcountHint": "How many people for each option ({{total}} total)"
   },
   "public": {
     "loadingInvitation": "Dawetname tê barkirin…",
@@ -481,7 +485,9 @@
     "deleteConfirm": "Hemû dawetnameya xwe jê bibî? Hemû dane, wêne û piştrastkirin dê werin jêbirin. Nayê vegerandin.",
     "deleteFailed": "Dawetname nehat jêbirin. Dîsa biceribîne.",
     "configLoadFailed": "Veavakirin nehat barkirin. Girêdanê kontrol bike û dîsa biceribîne.",
-    "invalidLink": "Girêdana dawetnameyê ne derbasdar e."
+    "invalidLink": "Girêdana dawetnameyê ne derbasdar e.",
+    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
+    "menuTextoTooLong": "Menu description cannot exceed 2000 characters."
   },
   "superadmin": {
     "tabs": {

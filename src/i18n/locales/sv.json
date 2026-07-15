@@ -141,7 +141,8 @@
       "privacyRequired": "Du måste acceptera integritetspolicyn.",
       "birthDateRequired": "Ange ditt födelsedatum.",
       "ageUnder14": "Du är under 14 år. Du behöver dina föräldrars eller vårdnadshavares samtycke.",
-      "healthConsentRequired": "Du måste samtycka till behandlingen av dina hälsodata."
+      "healthConsentRequired": "Du måste samtycka till behandlingen av dina hälsodata.",
+      "menuHeadcountRequired": "Indicate at least one menu option."
     },
     "successAttending": "Tack, {{name}}. Din närvaro har registrerats.",
     "successNotAttending": "Tack, {{name}}. Vi är ledsna att du inte kan komma.",
@@ -151,7 +152,10 @@
     "withdrawError": "Kunde inte dra tillbaka ditt svar. Försök igen.",
     "clearConfirm": "Ta bort alla närvarosvar? Denna åtgärd kan inte ångras.",
     "clearSuccess": "Närvaroregister rensat.",
-    "clearError": "Kunde inte rensa närvaroregistret."
+    "clearError": "Kunde inte rensa närvaroregistret.",
+    "companionsLabel": "Companions",
+    "headcountLabel": "People",
+    "headcountHint": "How many people for each option ({{total}} total)"
   },
   "public": {
     "loadingInvitation": "Laddar inbjudan...",
@@ -481,7 +485,9 @@
     "deleteConfirm": "Radera hela inbjudan? All data, bilder och bekräftelser raderas. Kan inte ångras.",
     "deleteFailed": "Inbjudan kunde inte raderas. Försök igen.",
     "configLoadFailed": "Konfigurationen kunde inte laddas. Kontrollera anslutningen och försök igen.",
-    "invalidLink": "Inbjudningslänken är ogiltig."
+    "invalidLink": "Inbjudningslänken är ogiltig.",
+    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
+    "menuTextoTooLong": "Menu description cannot exceed 2000 characters."
   },
   "superadmin": {
     "tabs": {

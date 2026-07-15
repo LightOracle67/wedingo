@@ -2676,6 +2676,8 @@ h6 {
 .setup-location-preview__image {
   display: block;
   width: 100%;
+  max-height: 14rem;
+  object-fit: cover;
   border-radius: 0.65rem;
   margin-top: 0.5rem;
 }
@@ -5121,4 +5123,172 @@ html.a11y-font-scale select {
   font-style: italic;
   max-width: 100%;
   overflow-wrap: break-word;
+}
+
+/* ── Envelope overlay ── */
+.envelope-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  cursor: pointer; overflow: hidden;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.envelope-overlay--exit {
+  opacity: 0; transform: scale(1.1); pointer-events: none;
+}
+.envelope {
+  position: relative; width: 260px; height: 180px;
+  perspective: 1000px; cursor: pointer;
+}
+.envelope__body {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #f5e6d3 0%, #e8d5c4 100%);
+  border-radius: 8px; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+.envelope__flap {
+  position: absolute; top: 0; left: 0; right: 0; height: 50%;
+  background: linear-gradient(135deg, #e8d5c4 0%, #d4bfa8 100%);
+  border-radius: 8px 8px 0 0;
+  transform-origin: top center;
+  transition: transform 0.6s ease;
+  z-index: 2;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+.envelope--open .envelope__flap {
+  transform: rotateX(180deg);
+}
+.envelope__stamp {
+  width: 40px; height: 40px; border-radius: 4px;
+  background: linear-gradient(135deg, #d8b24a, #c9a03a);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 8px;
+}
+.envelope__heart { color: #fff; font-size: 1.2rem; }
+.envelope__text { color: #8b7355; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.envelope__letter {
+  position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%);
+  font-size: 3rem; animation: letter-rise 0.6s ease forwards;
+}
+.envelope__hint {
+  color: rgba(255,255,255,0.5); font-size: 0.8rem; margin-top: 2rem;
+  animation: pulse-hint 2s ease-in-out infinite; letter-spacing: 0.05em;
+}
+@keyframes letter-rise {
+  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+@keyframes pulse-hint {
+  0%, 100% { opacity: 0.5; }
+  50%      { opacity: 1; }
+}
+
+/* ── Animated backgrounds per theme ── */
+[data-wedding-theme] .story-section {
+  position: relative; overflow: hidden;
+}
+[data-wedding-theme] .story-section::before {
+  content: ""; position: absolute; inset: -50%;
+  opacity: 0.06; pointer-events: none;
+  animation: theme-bg-drift 20s ease-in-out infinite;
+}
+
+[data-wedding-theme="golden"] .story-section::before {
+  background: radial-gradient(ellipse at 30% 50%, #d8b24a 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 50%, #f0d68a 0%, transparent 60%);
+}
+[data-wedding-theme="forest"] .story-section::before {
+  background: radial-gradient(ellipse at 30% 50%, #6abf69 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 50%, #4a9e4a 0%, transparent 60%);
+}
+[data-wedding-theme="rose"] .story-section::before {
+  background: radial-gradient(ellipse at 30% 50%, #efb0c7 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 50%, #d489a8 0%, transparent 60%);
+}
+[data-wedding-theme="linen-soft"] .story-section::before {
+  background: radial-gradient(ellipse at 30% 50%, #c8ad7a 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 50%, #b89d6a 0%, transparent 60%);
+}
+[data-wedding-theme="blush-pearl"] .story-section::before {
+  background: radial-gradient(ellipse at 30% 50%, #e8a0b4 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 50%, #d490a4 0%, transparent 60%);
+}
+[data-wedding-theme="lavender-mist"] .story-section::before {
+  background: radial-gradient(ellipse at 30% 50%, #b8a0d8 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 50%, #a088c8 0%, transparent 60%);
+}
+[data-wedding-theme="champagne-bubble"] .story-section::before {
+  background: radial-gradient(ellipse at 30% 50%, #f0d68a 0%, transparent 60%),
+              radial-gradient(ellipse at 50% 50%, #d4b86a 0%, transparent 60%);
+}
+[data-wedding-theme="amber-night"] .story-section::before {
+  background: radial-gradient(ellipse at 30% 50%, #ddb24b 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 50%, #b8922b 0%, transparent 60%);
+}
+[data-wedding-theme="onyx-gold"] .story-section::before {
+  background: radial-gradient(ellipse at 30% 50%, #d8ad43 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 50%, #c09d2b 0%, transparent 60%);
+}
+[data-wedding-theme="midnight-royal"] .story-section::before {
+  background: radial-gradient(ellipse at 30% 50%, #4a6ab8 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 50%, #3a5aa8 0%, transparent 60%);
+}
+[data-wedding-theme="burgundy-velvet"] .story-section::before {
+  background: radial-gradient(ellipse at 30% 50%, #c87870 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 50%, #b86860 0%, transparent 60%);
+}
+[data-wedding-theme="sapphire-night"] .story-section::before {
+  background: radial-gradient(ellipse at 30% 50%, #5566aa 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 50%, #445599 0%, transparent 60%);
+}
+[data-wedding-theme="emerald-grove"] .story-section::before {
+  background: radial-gradient(ellipse at 30% 50%, #50a878 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 50%, #409868 0%, transparent 60%);
+}
+[data-wedding-theme="plum-twilight"] .story-section::before {
+  background: radial-gradient(ellipse at 30% 50%, #a070b0 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 50%, #9060a0 0%, transparent 60%);
+}
+[data-wedding-theme="rainbow"] .story-section::before {
+  background: radial-gradient(ellipse at 20% 50%, #ff6b6b 0%, transparent 50%),
+              radial-gradient(ellipse at 40% 50%, #ffd93d 0%, transparent 50%),
+              radial-gradient(ellipse at 60% 50%, #6bcb77 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 50%, #4d96ff 0%, transparent 50%);
+}
+[data-wedding-theme="trans"] .story-section::before {
+  background: radial-gradient(ellipse at 30% 50%, #88c8e8 0%, transparent 60%),
+              radial-gradient(ellipse at 50% 50%, #f0a0b0 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 50%, #ffffff 0%, transparent 60%);
+}
+[data-wedding-theme="nonbinary"] .story-section::before {
+  background: radial-gradient(ellipse at 25% 50%, #f0e060 0%, transparent 50%),
+              radial-gradient(ellipse at 50% 50%, #ffffff 0%, transparent 50%),
+              radial-gradient(ellipse at 75% 50%, #b088c8 0%, transparent 50%);
+}
+[data-wedding-theme="lesbian"] .story-section::before {
+  background: radial-gradient(ellipse at 25% 50%, #e87860 0%, transparent 50%),
+              radial-gradient(ellipse at 50% 50%, #f0b0b0 0%, transparent 50%),
+              radial-gradient(ellipse at 75% 50%, #e06090 0%, transparent 50%);
+}
+[data-wedding-theme="bi"] .story-section::before {
+  background: radial-gradient(ellipse at 30% 50%, #c060c0 0%, transparent 50%),
+              radial-gradient(ellipse at 50% 50%, #6060c0 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 50%, #e060a0 0%, transparent 50%);
+}
+[data-wedding-theme="pan"] .story-section::before {
+  background: radial-gradient(ellipse at 30% 50%, #e06080 0%, transparent 50%),
+              radial-gradient(ellipse at 50% 50%, #f0e060 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 50%, #60c0e0 0%, transparent 50%);
+}
+[data-wedding-theme="ace"] .story-section::before {
+  background: radial-gradient(ellipse at 25% 50%, #202020 0%, transparent 50%),
+              radial-gradient(ellipse at 50% 50%, #888888 0%, transparent 50%),
+              radial-gradient(ellipse at 75% 50%, #b088c8 0%, transparent 50%);
+}
+
+@keyframes theme-bg-drift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33%      { transform: translate(5%, 3%) rotate(2deg); }
+  66%      { transform: translate(-3%, 5%) rotate(-1deg); }
 }

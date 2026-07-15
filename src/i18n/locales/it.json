@@ -141,7 +141,8 @@
       "privacyRequired": "Devi accettare l'Informativa sulla privacy.",
       "birthDateRequired": "Inserisci la tua data di nascita.",
       "ageUnder14": "Hai meno di 14 anni. Hai bisogno del consenso dei tuoi genitori o tutori.",
-      "healthConsentRequired": "Devi acconsentire al trattamento dei tuoi dati sanitari."
+      "healthConsentRequired": "Devi acconsentire al trattamento dei tuoi dati sanitari.",
+      "menuHeadcountRequired": "Indicate at least one menu option."
     },
     "successAttending": "Grazie, {{name}}. La tua presenza è stata registrata.",
     "successNotAttending": "Grazie, {{name}}. Ci dispiace che tu non possa partecipare.",
@@ -151,7 +152,10 @@
     "withdrawError": "Impossibile ritirare la risposta. Riprova.",
     "clearConfirm": "Cancellare tutte le risposte di presenza? Questa azione non può essere annullata.",
     "clearSuccess": "Registro presenze cancellato.",
-    "clearError": "Impossibile cancellare il registro presenze."
+    "clearError": "Impossibile cancellare il registro presenze.",
+    "companionsLabel": "Companions",
+    "headcountLabel": "People",
+    "headcountHint": "How many people for each option ({{total}} total)"
   },
   "public": {
     "loadingInvitation": "Caricamento invito…",
@@ -481,7 +485,9 @@
     "deleteConfirm": "Eliminare tutto il tuo invito? Verranno cancellati tutti i dati, le foto e le conferme. Non si può annullare.",
     "deleteFailed": "Impossibile eliminare l'invito. Riprova.",
     "configLoadFailed": "Impossibile caricare la configurazione. Controlla la connessione e riprova.",
-    "invalidLink": "Il link dell'invito non è valido."
+    "invalidLink": "Il link dell'invito non è valido.",
+    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
+    "menuTextoTooLong": "Menu description cannot exceed 2000 characters."
   },
   "superadmin": {
     "tabs": {

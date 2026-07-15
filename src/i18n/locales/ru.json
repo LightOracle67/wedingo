@@ -141,7 +141,8 @@
       "privacyRequired": "Вы должны принять Политику конфиденциальности.",
       "birthDateRequired": "Введите дату рождения.",
       "ageUnder14": "Вам меньше 14 лет. Требуется согласие родителей или опекунов.",
-      "healthConsentRequired": "Вы должны дать согласие на обработку медицинских данных."
+      "healthConsentRequired": "Вы должны дать согласие на обработку медицинских данных.",
+      "menuHeadcountRequired": "Indicate at least one menu option."
     },
     "successAttending": "Спасибо, {{name}}. Ваше присутствие записано.",
     "successNotAttending": "Спасибо, {{name}}. Жаль, что вы не сможете присутствовать.",
@@ -151,7 +152,10 @@
     "withdrawError": "Не удалось отозвать ответ. Попробуйте снова.",
     "clearConfirm": "Удалить все ответы о присутствии? Это действие нельзя отменить.",
     "clearSuccess": "Записи о присутствии очищены.",
-    "clearError": "Не удалось очистить записи о присутствии."
+    "clearError": "Не удалось очистить записи о присутствии.",
+    "companionsLabel": "Companions",
+    "headcountLabel": "People",
+    "headcountHint": "How many people for each option ({{total}} total)"
   },
   "public": {
     "loadingInvitation": "Загрузка приглашения…",
@@ -481,7 +485,9 @@
     "deleteConfirm": "Удалить всё приглашение? Все данные, фото и подтверждения будут удалены. Это нельзя отменить.",
     "deleteFailed": "Не удалось удалить приглашение. Попробуйте ещё раз.",
     "configLoadFailed": "Не удалось загрузить настройки. Проверьте соединение и попробуйте снова.",
-    "invalidLink": "Ссылка приглашения недействительна."
+    "invalidLink": "Ссылка приглашения недействительна.",
+    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
+    "menuTextoTooLong": "Menu description cannot exceed 2000 characters."
   },
   "superadmin": {
     "tabs": {

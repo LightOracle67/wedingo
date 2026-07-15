@@ -141,7 +141,8 @@
       "privacyRequired": "Deve aceitar a Política de Privacidade.",
       "birthDateRequired": "Introduza a sua data de nascimento.",
       "ageUnder14": "Tem menos de 14 anos. Precisa do consentimento dos seus pais ou tutores.",
-      "healthConsentRequired": "Deve consentir o tratamento dos seus dados de saúde."
+      "healthConsentRequired": "Deve consentir o tratamento dos seus dados de saúde.",
+      "menuHeadcountRequired": "Indicate at least one menu option."
     },
     "successAttending": "Obrigado, {{name}}. A sua presença foi registada.",
     "successNotAttending": "Obrigado, {{name}}. Lamentamos que não possa comparecer.",
@@ -151,7 +152,10 @@
     "withdrawError": "Não foi possível retirar a sua resposta. Tente novamente.",
     "clearConfirm": "Eliminar todas as respostas de presença? Esta ação não pode ser desfeita.",
     "clearSuccess": "Registo de presença limpo.",
-    "clearError": "Não foi possível limpar o registo de presença."
+    "clearError": "Não foi possível limpar o registo de presença.",
+    "companionsLabel": "Companions",
+    "headcountLabel": "People",
+    "headcountHint": "How many people for each option ({{total}} total)"
   },
   "public": {
     "loadingInvitation": "Carregando convite…",
@@ -481,7 +485,9 @@
     "deleteConfirm": "Eliminar todo o teu convite? Todos os dados, fotos e confirmações serão apagados. Não pode ser desfeito.",
     "deleteFailed": "Não foi possível eliminar o convite. Tenta novamente.",
     "configLoadFailed": "Não foi possível carregar a configuração. Verifica a ligação e tenta novamente.",
-    "invalidLink": "O link do convite não é válido."
+    "invalidLink": "O link do convite não é válido.",
+    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
+    "menuTextoTooLong": "Menu description cannot exceed 2000 characters."
   },
   "superadmin": {
     "tabs": {

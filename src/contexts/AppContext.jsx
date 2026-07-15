@@ -288,9 +288,9 @@ export function AppProvider({ children }) {
         // como miniaturas en el formulario de administración (máx 10).
         if (isAdminRoute || location.pathname.includes("/setup")) {
           loadGallery(inviteToken).then((urls) => {
-            if (urls.length) {
-              setFormData((prev) => ({ ...prev, galleryImages: JSON.stringify(urls.slice(0, 10)) }));
-            }
+            const str = JSON.stringify(urls.slice(0, 10));
+            setFormData((prev) => ({ ...prev, galleryImages: str }));
+            setConfig((prev) => ({ ...prev, galleryImages: str }));
           }).catch(() => {});
         }
         // Guarda en caché local
@@ -369,7 +369,7 @@ export function AppProvider({ children }) {
    */
   const handleClearBackground = useCallback(() => {
     applyBackgroundImage("", "", "");
-    setFormData(prev => ({ ...prev, backgroundImage: "" }));
+    setFormData(prev => ({ ...prev, backgroundImage: "", backgroundImageStorage: "" }));
   }, [applyBackgroundImage]);
 
   /**
@@ -592,6 +592,14 @@ export function AppProvider({ children }) {
       setSaveError(t("errors.transportTooLong"));
       return;
     }
+    if (sanitized.accommodationInfo && sanitized.accommodationInfo.length > 2000) {
+      setSaveError(t("errors.accommodationTooLong"));
+      return;
+    }
+    if (sanitized.menuTexto && sanitized.menuTexto.length > 2000) {
+      setSaveError(t("errors.menuTextoTooLong"));
+      return;
+    }
 
     // ── Construcción del payload ──
     const payload = { ...defaultConfig, ...sanitized };
@@ -616,7 +624,7 @@ export function AppProvider({ children }) {
       if (bgOrig) payload.backgroundImage = await encrypt(bgOrig, inviteToken);
       if (cpOrig) payload.couplePhoto = await encrypt(cpOrig, inviteToken);
       // Marca la versión de la política de privacidad aceptada
-      if (!hasStoredConfig) payload.privacyPolicyVersion = PRIVACY_POLICY_VERSION;
+      payload.privacyPolicyVersion = PRIVACY_POLICY_VERSION;
       // Guarda en Firestore
       await setDoc(invitationDocRef(inviteToken), payload);
       // Desencripta para uso local

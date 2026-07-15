@@ -13,6 +13,7 @@ export function useAutoSave(hasStoredConfig, inviteToken, formData, config, onSa
   const doSave = useCallback(async (data) => {
     if (isSavingRef?.current || autoSavingRef.current) return null;
     autoSavingRef.current = true;
+    if (isSavingRef) isSavingRef.current = true;
     const payload = normalizeConfig(data);
     // galleryImages se gestiona via subcolección, excluir para no exceder 1MB/doc
     delete payload.galleryImages;

@@ -141,7 +141,8 @@
       "privacyRequired": "Vous devez accepter la Politique de confidentialité.",
       "birthDateRequired": "Entrez votre date de naissance.",
       "ageUnder14": "Vous avez moins de 14 ans. Vous avez besoin du consentement de vos parents ou tuteurs.",
-      "healthConsentRequired": "Vous devez consentir au traitement de vos données de santé."
+      "healthConsentRequired": "Vous devez consentir au traitement de vos données de santé.",
+      "menuHeadcountRequired": "Indicate at least one menu option."
     },
     "successAttending": "Merci, {{name}}. Votre présence a été enregistrée.",
     "successNotAttending": "Merci, {{name}}. Nous sommes désolés que vous ne puissiez pas venir.",
@@ -151,7 +152,10 @@
     "withdrawError": "Impossible de retirer votre réponse. Veuillez réessayer.",
     "clearConfirm": "Supprimer toutes les réponses de présence ? Cette action est irréversible.",
     "clearSuccess": "Registre de présence effacé.",
-    "clearError": "Impossible d'effacer le registre de présence."
+    "clearError": "Impossible d'effacer le registre de présence.",
+    "companionsLabel": "Companions",
+    "headcountLabel": "People",
+    "headcountHint": "How many people for each option ({{total}} total)"
   },
   "public": {
     "loadingInvitation": "Chargement du faire-part…",
@@ -481,7 +485,9 @@
     "deleteConfirm": "Supprimer l'intégralité de votre faire-part ? Toutes les données, photos et confirmations seront effacées. Cette action est irréversible.",
     "deleteFailed": "Impossible de supprimer le faire-part. Veuillez réessayer.",
     "configLoadFailed": "Impossible de charger la configuration. Vérifiez votre connexion et réessayez.",
-    "invalidLink": "Le lien du faire-part n'est pas valide."
+    "invalidLink": "Le lien du faire-part n'est pas valide.",
+    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
+    "menuTextoTooLong": "Menu description cannot exceed 2000 characters."
   },
   "superadmin": {
     "tabs": {

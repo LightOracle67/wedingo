@@ -141,7 +141,8 @@
       "privacyRequired": "您必须接受隐私政策。",
       "birthDateRequired": "输入您的出生日期。",
       "ageUnder14": "您未满14岁。需要父母或监护人的同意。",
-      "healthConsentRequired": "您必须同意处理您的健康数据。"
+      "healthConsentRequired": "您必须同意处理您的健康数据。",
+      "menuHeadcountRequired": "Indicate at least one menu option."
     },
     "successAttending": "谢谢{{name}}。您的出席已记录。",
     "successNotAttending": "谢谢{{name}}。很抱歉您无法出席。",
@@ -151,7 +152,10 @@
     "withdrawError": "无法撤回您的回复。请重试。",
     "clearConfirm": "删除所有出席回复？此操作无法撤消。",
     "clearSuccess": "出席记录已清除。",
-    "clearError": "无法清除出席记录。"
+    "clearError": "无法清除出席记录。",
+    "companionsLabel": "Companions",
+    "headcountLabel": "People",
+    "headcountHint": "How many people for each option ({{total}} total)"
   },
   "public": {
     "loadingInvitation": "加载请柬中…",
@@ -481,7 +485,9 @@
     "deleteConfirm": "是否删除整个请柬？所有数据、照片和确认都将被删除，无法撤销。",
     "deleteFailed": "无法删除请柬。请重试。",
     "configLoadFailed": "无法加载设置。请检查网络连接后重试。",
-    "invalidLink": "请柬链接无效。"
+    "invalidLink": "请柬链接无效。",
+    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
+    "menuTextoTooLong": "Menu description cannot exceed 2000 characters."
   },
   "superadmin": {
     "tabs": {

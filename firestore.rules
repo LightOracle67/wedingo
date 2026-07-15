@@ -97,8 +97,8 @@ service cloud.firestore {
         && request.resource.data.inviteToken is string
         && hasActiveSession(request.resource.data.inviteToken)
         && request.resource.data.privacyConsent == true
-        && (request.resource.data.keys().hasOnly(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent', 'privacyConsentAt', 'birthDate', 'parentalConsent', 'menuSelection', 'healthConsent'])
-          || request.resource.data.keys().hasOnly(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent', 'privacyConsentAt', 'birthDate', 'parentalConsent', 'menuSelection']));
+        && (request.resource.data.keys().hasOnly(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent', 'privacyConsentAt', 'birthDate', 'parentalConsent', 'menuSelection', 'healthConsent', 'companions', 'menuHeadcounts'])
+          || request.resource.data.keys().hasOnly(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent', 'privacyConsentAt', 'birthDate', 'parentalConsent', 'menuSelection', 'companions', 'menuHeadcounts']));
 
       allow read: if isSuperAdmin()
         || (resource.data.inviteToken is string

@@ -141,7 +141,8 @@
       "privacyRequired": "You must accept the Privacy Policy.",
       "birthDateRequired": "Enter your date of birth.",
       "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data."
+      "healthConsentRequired": "You must consent to the processing of your health data.",
+      "menuHeadcountRequired": "Indica al menos una opción de menú."
     },
     "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
     "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
@@ -151,7 +152,10 @@
     "withdrawError": "Could not withdraw your response. Please try again.",
     "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
     "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records."
+    "clearError": "Could not clear attendance records.",
+    "companionsLabel": "Acompañantes",
+    "headcountLabel": "Personas",
+    "headcountHint": "Indica cuántas personas tomarán cada opción ({{total}} en total)"
   },
   "public": {
     "loadingInvitation": "Cargando invitación…",
@@ -486,7 +490,9 @@
     "deleteConfirm": "¿Eliminar toda tu invitación? Se borrarán todos los datos, fotos y confirmaciones. No se puede deshacer.",
     "deleteFailed": "No se pudo eliminar la invitación. Inténtalo de nuevo.",
     "configLoadFailed": "No se pudo cargar la configuración. Revisa la conexión e inténtalo de nuevo.",
-    "invalidLink": "El enlace de invitación no es válido."
+    "invalidLink": "El enlace de invitación no es válido.",
+    "accommodationTooLong": "La información de alojamiento no puede superar los 2000 caracteres.",
+    "menuTextoTooLong": "La descripción del menú no puede superar los 2000 caracteres."
   },
   "superadmin": {
     "tabs": {

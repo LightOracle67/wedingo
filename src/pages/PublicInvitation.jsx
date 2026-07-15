@@ -38,6 +38,9 @@ import DetailsSection from "./sections/DetailsSection";
 import InfoSection from "./sections/InfoSection";
 import StorySection from "./sections/StorySection";
 
+// ─── Componentes globales ─────────────────────────────────────────
+import EnvelopeOverlay from "../components/EnvelopeOverlay";
+
 // ─── Secciones secundarias (carga diferida) ────────────────────────
 const GiftsSection = lazy(() => import("./sections/GiftsSection"));
 const AccommodationSection = lazy(() => import("./sections/AccommodationSection"));
@@ -365,6 +368,7 @@ export default function PublicInvitation() {
   ]);
 
   // ─── Estados de UI condicionales ───────────────────────
+  const [envelopeOpen, setEnvelopeOpen] = useState(false);
   const isEmpty = !config.firstName && !config.secondName && !isInviteMode;
   const hasHash = location.hash.length > 1;
 
@@ -420,8 +424,12 @@ export default function PublicInvitation() {
   // ═══════════════════════════════════════════════════════
   // RENDERIZADO PRINCIPAL
   // ═══════════════════════════════════════════════════════
+  const showEnvelope = !isAdminTokenLoggedIn && !isConfigLoading && !configLoadError && !isEmpty && !showMissingToken && !envelopeOpen;
+
   return (
     <div className={`app-scene ${isStoryTransitioning ? "app-scene--transitioning" : ""}`}>
+      {showEnvelope ? <EnvelopeOverlay onOpen={() => setEnvelopeOpen(true)} /> : null}
+
       {/* ── Decoraciones laterales (eucalipto) ── */}
       <div className="fixed top-0 z-0 pointer-events-none left-2 wedding-decoration--left wedding-decoration">
         <img src={eucalyptusSrc} alt="" aria-hidden="true" loading="lazy" className="wedding-decoration__image" />

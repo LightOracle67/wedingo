@@ -141,7 +141,8 @@
       "privacyRequired": "개인정보 처리방침에 동의해야 합니다.",
       "birthDateRequired": "생년월일을 입력하세요.",
       "ageUnder14": "14세 미만입니다. 부모 또는 보호자의 동의가 필요합니다.",
-      "healthConsentRequired": "건강 데이터 처리에 동의해야 합니다."
+      "healthConsentRequired": "건강 데이터 처리에 동의해야 합니다.",
+      "menuHeadcountRequired": "Indicate at least one menu option."
     },
     "successAttending": "감사합니다, {{name}}. 참석이 기록되었습니다.",
     "successNotAttending": "감사합니다, {{name}}. 참석하지 못하게 되어 유감입니다.",
@@ -151,7 +152,10 @@
     "withdrawError": "응답을 철회할 수 없습니다. 다시 시도하세요.",
     "clearConfirm": "모든 참석 응답을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.",
     "clearSuccess": "참석 기록이 지워졌습니다.",
-    "clearError": "참석 기록을 지울 수 없습니다."
+    "clearError": "참석 기록을 지울 수 없습니다.",
+    "companionsLabel": "Companions",
+    "headcountLabel": "People",
+    "headcountHint": "How many people for each option ({{total}} total)"
   },
   "public": {
     "loadingInvitation": "초대장 불러오는 중…",
@@ -481,7 +485,9 @@
     "deleteConfirm": "전체 초대장을 삭제하시겠습니까? 모든 데이터, 사진 및 확인 내역이 삭제됩니다. 되돌릴 수 없습니다.",
     "deleteFailed": "초대장을 삭제할 수 없습니다. 다시 시도하세요.",
     "configLoadFailed": "설정을 불러올 수 없습니다. 연결을 확인하고 다시 시도하세요.",
-    "invalidLink": "초대장 링크가 유효하지 않습니다."
+    "invalidLink": "초대장 링크가 유효하지 않습니다.",
+    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
+    "menuTextoTooLong": "Menu description cannot exceed 2000 characters."
   },
   "superadmin": {
     "tabs": {

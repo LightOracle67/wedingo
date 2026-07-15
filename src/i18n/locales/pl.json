@@ -141,7 +141,8 @@
       "privacyRequired": "Musisz zaakceptować Politykę prywatności.",
       "birthDateRequired": "Wprowadź datę urodzenia.",
       "ageUnder14": "Masz mniej niż 14 lat. Potrzebujesz zgody rodziców lub opiekunów.",
-      "healthConsentRequired": "Musisz wyrazić zgodę na przetwarzanie danych zdrowotnych."
+      "healthConsentRequired": "Musisz wyrazić zgodę na przetwarzanie danych zdrowotnych.",
+      "menuHeadcountRequired": "Indicate at least one menu option."
     },
     "successAttending": "Dziękujemy, {{name}}. Twoja obecność została odnotowana.",
     "successNotAttending": "Dziękujemy, {{name}}. Przykro nam, że nie możesz uczestniczyć.",
@@ -151,7 +152,10 @@
     "withdrawError": "Nie udało się wycofać odpowiedzi. Spróbuj ponownie.",
     "clearConfirm": "Usunąć wszystkie odpowiedzi o obecności? Tej czynności nie można cofnąć.",
     "clearSuccess": "Rekordy obecności wyczyszczone.",
-    "clearError": "Nie udało się wyczyścić rekordów obecności."
+    "clearError": "Nie udało się wyczyścić rekordów obecności.",
+    "companionsLabel": "Companions",
+    "headcountLabel": "People",
+    "headcountHint": "How many people for each option ({{total}} total)"
   },
   "public": {
     "loadingInvitation": "Ładowanie zaproszenia...",
@@ -481,7 +485,9 @@
     "deleteConfirm": "Usunąć całe zaproszenie? Wszystkie dane, zdjęcia i potwierdzenia zostaną usunięte. Nie można tego cofnąć.",
     "deleteFailed": "Nie udało się usunąć zaproszenia. Spróbuj ponownie.",
     "configLoadFailed": "Nie udało się załadować konfiguracji. Sprawdź połączenie i spróbuj ponownie.",
-    "invalidLink": "Link do zaproszenia jest nieprawidłowy."
+    "invalidLink": "Link do zaproszenia jest nieprawidłowy.",
+    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
+    "menuTextoTooLong": "Menu description cannot exceed 2000 characters."
   },
   "superadmin": {
     "tabs": {

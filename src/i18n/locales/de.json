@@ -141,7 +141,8 @@
       "privacyRequired": "Sie müssen die Datenschutzrichtlinie akzeptieren.",
       "birthDateRequired": "Geben Sie Ihr Geburtsdatum ein.",
       "ageUnder14": "Sie sind unter 14 Jahren. Sie benötigen die Einwilligung Ihrer Eltern oder Erziehungsberechtigten.",
-      "healthConsentRequired": "Sie müssen der Verarbeitung Ihrer Gesundheitsdaten zustimmen."
+      "healthConsentRequired": "Sie müssen der Verarbeitung Ihrer Gesundheitsdaten zustimmen.",
+      "menuHeadcountRequired": "Indicate at least one menu option."
     },
     "successAttending": "Danke, {{name}}. Ihre Teilnahme wurde registriert.",
     "successNotAttending": "Danke, {{name}}. Es tut uns leid, dass Sie nicht kommen können.",
@@ -151,7 +152,10 @@
     "withdrawError": "Antwort konnte nicht zurückgezogen werden. Bitte versuchen Sie es erneut.",
     "clearConfirm": "Alle Teilnahmebestätigungen löschen? Diese Aktion kann nicht rückgängig gemacht werden.",
     "clearSuccess": "Teilnahmedatensätze gelöscht.",
-    "clearError": "Teilnahmedatensätze konnten nicht gelöscht werden."
+    "clearError": "Teilnahmedatensätze konnten nicht gelöscht werden.",
+    "companionsLabel": "Companions",
+    "headcountLabel": "People",
+    "headcountHint": "How many people for each option ({{total}} total)"
   },
   "public": {
     "loadingInvitation": "Einladung wird geladen…",
@@ -481,7 +485,9 @@
     "deleteConfirm": "Möchtest du deine gesamte Einladung löschen? Alle Daten, Fotos und Rückmeldungen werden gelöscht. Dies kann nicht rückgängig gemacht werden.",
     "deleteFailed": "Die Einladung konnte nicht gelöscht werden. Bitte versuche es erneut.",
     "configLoadFailed": "Die Einstellungen konnten nicht geladen werden. Bitte überprüfe deine Verbindung und versuche es erneut.",
-    "invalidLink": "Der Einladungslink ist ungültig."
+    "invalidLink": "Der Einladungslink ist ungültig.",
+    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
+    "menuTextoTooLong": "Menu description cannot exceed 2000 characters."
   },
   "superadmin": {
     "tabs": {

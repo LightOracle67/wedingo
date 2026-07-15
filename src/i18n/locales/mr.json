@@ -141,7 +141,8 @@
       "privacyRequired": "You must accept the Privacy Policy.",
       "birthDateRequired": "Enter your date of birth.",
       "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data."
+      "healthConsentRequired": "You must consent to the processing of your health data.",
+      "menuHeadcountRequired": "Indicate at least one menu option."
     },
     "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
     "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
@@ -151,7 +152,10 @@
     "withdrawError": "Could not withdraw your response. Please try again.",
     "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
     "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records."
+    "clearError": "Could not clear attendance records.",
+    "companionsLabel": "Companions",
+    "headcountLabel": "People",
+    "headcountHint": "How many people for each option ({{total}} total)"
   },
   "public": {
     "loadingInvitation": "आमंत्रण लोड होत आहे...",
@@ -481,7 +485,9 @@
     "deleteConfirm": "तुमचे संपूर्ण आमंत्रण हटवायचे? सर्व डेटा, फोटो आणि नोंदी हटवल्या जातील. पूर्ववत करता येणार नाही.",
     "deleteFailed": "आमंत्रण हटवता आले नाही. पुन्हा प्रयत्न करा.",
     "configLoadFailed": "कॉन्फिगरेशन लोड करता आले नाही. कनेक्शन तपासा आणि पुन्हा प्रयत्न करा.",
-    "invalidLink": "आमंत्रण लिंक वैध नाही."
+    "invalidLink": "आमंत्रण लिंक वैध नाही.",
+    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
+    "menuTextoTooLong": "Menu description cannot exceed 2000 characters."
   },
   "superadmin": {
     "tabs": {

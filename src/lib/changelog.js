@@ -1,5 +1,20 @@
 export const CHANGELOG = [
   {
+    version: "2.2.0",
+    date: "2026-07-16",
+    changes: [
+      "RSVP: nuevos campos acompañantes y recuento por menú",
+      "Animación de sobre al abrir la invitación",
+      "Fondos animados con tema dinámico en cada sección",
+      "Corregido CORS Firestore con long-polling",
+      "Desactivado App Check (tokens demasiado grandes)",
+      "Corregido bug isSavingRef que bloqueaba guardados",
+      "Añadidas validaciones server-side faltantes",
+      "Corregido handleClearBackground (backgroundImageStorage)",
+      "Sincronizada galería entre formData y config",
+    ],
+  },
+  {
     version: "2.1.27",
     date: "2026-07-15",
     changes: [
