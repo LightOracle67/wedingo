@@ -16,7 +16,7 @@
  * @module PublicInvitation
  */
 
-import { lazy, useEffect, useMemo, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -478,19 +478,21 @@ export default function PublicInvitation() {
       ) : (
         /* ── Invitación completa: renderiza cada sección en orden ── */
         <>
-          {visibleOrder.map((sectionKey) => {
-            const Component = SECTION_COMPONENTS[sectionKey];
-            if (!Component) return null;
-            return (
-              <Component
-                key={sectionKey}
-                style={getStorySectionStyle(sectionKey)}
-                className={getStorySectionClassName(sectionKey)}
-                // Propaga las props específicas de cada sección
-                {...sectionProps[sectionKey]}
-              />
-            );
-          })}
+          <Suspense fallback={null}>
+            {visibleOrder.map((sectionKey) => {
+              const Component = SECTION_COMPONENTS[sectionKey];
+              if (!Component) return null;
+              return (
+                <Component
+                  key={sectionKey}
+                  style={getStorySectionStyle(sectionKey)}
+                  className={getStorySectionClassName(sectionKey)}
+                  // Propaga las props específicas de cada sección
+                  {...sectionProps[sectionKey]}
+                />
+              );
+            })}
+          </Suspense>
         </>
       )}
     </div>

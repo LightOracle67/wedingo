@@ -97,8 +97,8 @@ service cloud.firestore {
         && request.resource.data.inviteToken is string
         && hasActiveSession(request.resource.data.inviteToken)
         && request.resource.data.privacyConsent == true
-        && (request.resource.data.keys().hasOnly(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent', 'privacyConsentAt', 'birthDate', 'parentalConsent', 'menuSelection', 'healthConsent', 'companions', 'menuHeadcounts'])
-          || request.resource.data.keys().hasOnly(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent', 'privacyConsentAt', 'birthDate', 'parentalConsent', 'menuSelection', 'companions', 'menuHeadcounts']));
+        && (request.resource.data.keys().hasOnly(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent', 'privacyConsentAt', 'birthDate', 'parentalConsent', 'menuSelection', 'healthConsent', 'companions', 'menuHeadcounts', 'guestNames'])
+          || request.resource.data.keys().hasOnly(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent', 'privacyConsentAt', 'birthDate', 'parentalConsent', 'menuSelection', 'companions', 'menuHeadcounts', 'guestNames']));
 
       allow read: if isSuperAdmin()
         || (resource.data.inviteToken is string
@@ -109,7 +109,7 @@ service cloud.firestore {
         && request.resource.data.inviteToken is string
         && hasActiveSession(resource.data.inviteToken)
         && request.resource.data.privacyConsent == true
-        && request.resource.data.keys().hasOnly(['attendance', 'dietaryInfo', 'privacyConsent', 'privacyConsentAt', 'healthConsent', 'birthDate', 'parentalConsent', 'menuSelection', 'guestName', 'submittedAt', 'inviteToken']);
+        && request.resource.data.keys().hasOnly(['attendance', 'dietaryInfo', 'privacyConsent', 'privacyConsentAt', 'healthConsent', 'birthDate', 'parentalConsent', 'menuSelection', 'guestName', 'submittedAt', 'inviteToken', 'companions', 'menuHeadcounts', 'guestNames']);
 
       allow delete: if isSuperAdmin()
         || (resource.data.inviteToken is string

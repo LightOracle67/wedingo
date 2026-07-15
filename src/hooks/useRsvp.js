@@ -41,6 +41,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
     guestName: "",
     attendance: "yes",
     companions: 0,
+    guestNames: "",
     menuHeadcounts: {},
     mealChoice: "",
     dietarySelection: [],
@@ -206,9 +207,35 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
       return;
     }
 
-    if (menuEnabled && rsvpForm.attendance === "yes" && !rsvpForm.mealChoice && !rsvpForm.menuHeadcounts) {
-      setRsvpMessage(t("rsvp.validation.menuRequired"));
+    const companions = Math.max(0, parseInt(rsvpForm.companions, 10) || 0);
+    if (rsvpForm.attendance === "yes" && !rsvpForm.birthDate) {
+      setRsvpMessage(t("rsvp.validation.birthDateRequired"));
       return;
+    }
+
+    if (rsvpForm.attendance === "yes" && companions > 0) {
+      const names = (rsvpForm.guestNames || "").split(",").filter(n => n.trim());
+      if (names.length === 0) {
+        setRsvpMessage(t("rsvp.validation.guestNamesRequired"));
+        return;
+      }
+      if (names.length > companions) {
+        setRsvpMessage(t("rsvp.validation.guestNamesExceed"));
+        return;
+      }
+    }
+
+    if (rsvpForm.attendance === "yes" && menuEnabled && rsvpForm.menuHeadcounts) {
+      const hcs = rsvpForm.menuHeadcounts;
+      const sum = Object.values(hcs).reduce((a, b) => a + (b || 0), 0);
+      if (sum === 0) {
+        setRsvpMessage(t("rsvp.validation.menuHeadcountRequired"));
+        return;
+      }
+      if (sum > companions) {
+        setRsvpMessage(t("rsvp.validation.headcountExceed"));
+        return;
+      }
     }
 
     if (!rsvpForm.privacyConsent) {
@@ -246,10 +273,12 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
     try {
       // Encripta la información dietética antes de guardar
       const encryptedDietaryInfo = await encrypt(dietaryInfo, inviteToken);
+      const companions = Math.max(0, parseInt(rsvpForm.companions, 10) || 0);
       const payload = {
         guestName: single,
         attendance: rsvpForm.attendance,
-        companions: Math.max(0, parseInt(rsvpForm.companions, 10) || 0),
+        companions,
+        guestNames: rsvpForm.guestNames || "",
         menuHeadcounts: rsvpForm.menuHeadcounts || {},
         dietaryInfo: encryptedDietaryInfo,
         mealChoice: rsvpForm.mealChoice || "",
@@ -281,7 +310,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
       );
       // Resetea el formulario tras envío exitoso
       setRsvpForm({
-        guestName: "", attendance: "yes", companions: 0, menuHeadcounts: {}, mealChoice: "",
+        guestName: "", attendance: "yes", companions: 0, guestNames: "", menuHeadcounts: {}, mealChoice: "",
         dietarySelection: [], dietaryOther: "", privacyConsent: false, healthConsent: false,
         birthDate: "", parentalConsent: false,
       });
@@ -308,7 +337,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
       setRsvpMessage(t("rsvp.withdrawSuccess"));
       // Resetea el formulario
       setRsvpForm({
-        guestName: "", attendance: "yes", companions: 0, menuHeadcounts: {}, mealChoice: "",
+        guestName: "", attendance: "yes", companions: 0, guestNames: "", menuHeadcounts: {}, mealChoice: "",
         dietarySelection: [], dietaryOther: "", privacyConsent: false, healthConsent: false,
         birthDate: "", parentalConsent: false,
       });
