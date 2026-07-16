@@ -5399,10 +5399,9 @@ html.a11y-font-scale select {
 
 /* Background del body por tema */
 body {
-  background: var(--page-bg-gradient, #1f1b14);
-  background-attachment: fixed;
+  background-color: var(--page-bg, #1f1b14);
+  background-image: var(--page-bg-gradient);
   background-size: cover;
-  min-height: 100dvh;
 }
 
 /* Decoraciones ornamentales CSS por tema */
