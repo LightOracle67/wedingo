@@ -16,7 +16,7 @@
  * @module PublicInvitation
  */
 
-import { lazy, useEffect, useMemo, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -45,7 +45,7 @@ import EnvelopeOverlay from "../components/EnvelopeOverlay";
 const GiftsSection = lazy(() => import("./sections/GiftsSection"));
 const AccommodationSection = lazy(() => import("./sections/AccommodationSection"));
 const GallerySection = lazy(() => import("./sections/GallerySection"));
-const RsvpSection = lazy(() => import("./sections/RsvpSection"));
+import RsvpSection from "./sections/RsvpSection";
 
 /**
  * Mapa de claves de sección a sus componentes React.
