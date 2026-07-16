@@ -5249,6 +5249,201 @@ html.a11y-font-scale select {
   to   { opacity: 1; transform: scaleX(1); }
 }
 
+:root[data-wedding-theme="golden"] {
+  --page-bg: #2a2418;
+  --page-bg-secondary: #3d3020;
+  --page-bg-gradient: linear-gradient(160deg, #2a2418 0%, #3d3020 40%, #2a2418 80%, #3d3020 100%);
+  --flower-accent: #d8b24a;
+  --flower-accent-dim: color-mix(in srgb, #d8b24a 30%, transparent);
+}
+:root[data-wedding-theme="forest"] {
+  --page-bg: #1a3d2e;
+  --page-bg-secondary: #2a4d3a;
+  --page-bg-gradient: linear-gradient(160deg, #1a3d2e 0%, #2a4d3a 40%, #1a3d2e 80%, #2a4d3a 100%);
+  --flower-accent: #97c87a;
+  --flower-accent-dim: color-mix(in srgb, #97c87a 30%, transparent);
+}
+:root[data-wedding-theme="rose"] {
+  --page-bg: #4e1a2c;
+  --page-bg-secondary: #6a2a40;
+  --page-bg-gradient: linear-gradient(160deg, #4e1a2c 0%, #6a2a40 40%, #4e1a2c 80%, #6a2a40 100%);
+  --flower-accent: #efb0c7;
+  --flower-accent-dim: color-mix(in srgb, #efb0c7 30%, transparent);
+}
+:root[data-wedding-theme="linen-soft"] {
+  --page-bg: #5c4430;
+  --page-bg-secondary: #7a5c44;
+  --page-bg-gradient: linear-gradient(160deg, #5c4430 0%, #7a5c44 40%, #5c4430 80%, #7a5c44 100%);
+  --flower-accent: #c8ad7a;
+  --flower-accent-dim: color-mix(in srgb, #c8ad7a 30%, transparent);
+}
+:root[data-wedding-theme="blush-pearl"] {
+  --page-bg: #4a1e30;
+  --page-bg-secondary: #6a2e48;
+  --page-bg-gradient: linear-gradient(160deg, #4a1e30 0%, #6a2e48 40%, #4a1e30 80%, #6a2e48 100%);
+  --flower-accent: #e8a0b4;
+  --flower-accent-dim: color-mix(in srgb, #e8a0b4 30%, transparent);
+}
+:root[data-wedding-theme="lavender-mist"] {
+  --page-bg: #2e1848;
+  --page-bg-secondary: #48286a;
+  --page-bg-gradient: linear-gradient(160deg, #2e1848 0%, #48286a 40%, #2e1848 80%, #48286a 100%);
+  --flower-accent: #b8a0d8;
+  --flower-accent-dim: color-mix(in srgb, #b8a0d8 30%, transparent);
+}
+:root[data-wedding-theme="champagne-bubble"] {
+  --page-bg: #52401e;
+  --page-bg-secondary: #6a542a;
+  --page-bg-gradient: linear-gradient(160deg, #52401e 0%, #6a542a 40%, #52401e 80%, #6a542a 100%);
+  --flower-accent: #d4b86a;
+  --flower-accent-dim: color-mix(in srgb, #d4b86a 30%, transparent);
+}
+:root[data-wedding-theme="amber-night"] {
+  --page-bg: #1e140e;
+  --page-bg-secondary: #3a2418;
+  --page-bg-gradient: linear-gradient(160deg, #1e140e 0%, #3a2418 40%, #1e140e 80%, #3a2418 100%);
+  --flower-accent: #ddb24b;
+  --flower-accent-dim: color-mix(in srgb, #ddb24b 30%, transparent);
+}
+:root[data-wedding-theme="onyx-gold"] {
+  --page-bg: #12100c;
+  --page-bg-secondary: #2a2018;
+  --page-bg-gradient: linear-gradient(160deg, #12100c 0%, #2a2018 40%, #12100c 80%, #2a2018 100%);
+  --flower-accent: #d8ad43;
+  --flower-accent-dim: color-mix(in srgb, #d8ad43 30%, transparent);
+}
+:root[data-wedding-theme="midnight-royal"] {
+  --page-bg: #0a102a;
+  --page-bg-secondary: #1a2040;
+  --page-bg-gradient: linear-gradient(160deg, #0a102a 0%, #1a2040 40%, #0a102a 80%, #1a2040 100%);
+  --flower-accent: #e0b84b;
+  --flower-accent-dim: color-mix(in srgb, #e0b84b 30%, transparent);
+}
+:root[data-wedding-theme="burgundy-velvet"] {
+  --page-bg: #2a0c14;
+  --page-bg-secondary: #4a1a28;
+  --page-bg-gradient: linear-gradient(160deg, #2a0c14 0%, #4a1a28 40%, #2a0c14 80%, #4a1a28 100%);
+  --flower-accent: #c87870;
+  --flower-accent-dim: color-mix(in srgb, #c87870 30%, transparent);
+}
+:root[data-wedding-theme="sapphire-night"] {
+  --page-bg: #080c20;
+  --page-bg-secondary: #181c38;
+  --page-bg-gradient: linear-gradient(160deg, #080c20 0%, #181c38 40%, #080c20 80%, #181c38 100%);
+  --flower-accent: #8898cc;
+  --flower-accent-dim: color-mix(in srgb, #8898cc 30%, transparent);
+}
+:root[data-wedding-theme="emerald-grove"] {
+  --page-bg: #041c10;
+  --page-bg-secondary: #183420;
+  --page-bg-gradient: linear-gradient(160deg, #041c10 0%, #183420 40%, #041c10 80%, #183420 100%);
+  --flower-accent: #70b890;
+  --flower-accent-dim: color-mix(in srgb, #70b890 30%, transparent);
+}
+:root[data-wedding-theme="plum-twilight"] {
+  --page-bg: #1c0824;
+  --page-bg-secondary: #341840;
+  --page-bg-gradient: linear-gradient(160deg, #1c0824 0%, #341840 40%, #1c0824 80%, #341840 100%);
+  --flower-accent: #c088c8;
+  --flower-accent-dim: color-mix(in srgb, #c088c8 30%, transparent);
+}
+:root[data-wedding-theme="rainbow"] {
+  --page-bg: #1a1a2e;
+  --page-bg-secondary: #2a1a3e;
+  --page-bg-gradient: linear-gradient(160deg, #1a1a2e 0%, #2a1a3e 40%, #1a1a2e 80%, #2a1a3e 100%);
+  --flower-accent: #ff6b6b;
+  --flower-accent-dim: color-mix(in srgb, #ff6b6b 30%, transparent);
+}
+:root[data-wedding-theme="trans"] {
+  --page-bg: #1a2a3e;
+  --page-bg-secondary: #2a3e54;
+  --page-bg-gradient: linear-gradient(160deg, #1a2a3e 0%, #2a3e54 40%, #1a2a3e 80%, #2a3e54 100%);
+  --flower-accent: #88c8e8;
+  --flower-accent-dim: color-mix(in srgb, #88c8e8 30%, transparent);
+}
+:root[data-wedding-theme="nonbinary"] {
+  --page-bg: #1a1a2a;
+  --page-bg-secondary: #2a2a3e;
+  --page-bg-gradient: linear-gradient(160deg, #1a1a2a 0%, #2a2a3e 40%, #1a1a2a 80%, #2a2a3e 100%);
+  --flower-accent: #f0e060;
+  --flower-accent-dim: color-mix(in srgb, #f0e060 30%, transparent);
+}
+:root[data-wedding-theme="lesbian"] {
+  --page-bg: #2a1a1e;
+  --page-bg-secondary: #402830;
+  --page-bg-gradient: linear-gradient(160deg, #2a1a1e 0%, #402830 40%, #2a1a1e 80%, #402830 100%);
+  --flower-accent: #e87860;
+  --flower-accent-dim: color-mix(in srgb, #e87860 30%, transparent);
+}
+:root[data-wedding-theme="bi"] {
+  --page-bg: #1a122a;
+  --page-bg-secondary: #301c44;
+  --page-bg-gradient: linear-gradient(160deg, #1a122a 0%, #301c44 40%, #1a122a 80%, #301c44 100%);
+  --flower-accent: #c060c0;
+  --flower-accent-dim: color-mix(in srgb, #c060c0 30%, transparent);
+}
+:root[data-wedding-theme="pan"] {
+  --page-bg: #1a1828;
+  --page-bg-secondary: #2a2440;
+  --page-bg-gradient: linear-gradient(160deg, #1a1828 0%, #2a2440 40%, #1a1828 80%, #2a2440 100%);
+  --flower-accent: #60c8e8;
+  --flower-accent-dim: color-mix(in srgb, #60c8e8 30%, transparent);
+}
+:root[data-wedding-theme="ace"] {
+  --page-bg: #121212;
+  --page-bg-secondary: #242428;
+  --page-bg-gradient: linear-gradient(160deg, #121212 0%, #242428 40%, #121212 80%, #242428 100%);
+  --flower-accent: #b088c8;
+  --flower-accent-dim: color-mix(in srgb, #b088c8 30%, transparent);
+}
+
+/* Background del body por tema */
+body {
+  background: var(--page-bg-gradient, #1a1a2e);
+  background-attachment: fixed;
+  min-height: 100dvh;
+}
+
+/* Decoraciones florales CSS por tema */
+.wedding-decoration {
+  position: relative;
+}
+.wedding-decoration::after {
+  content: "";
+  position: absolute;
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, var(--flower-accent) 0%, var(--flower-accent-dim) 60%, transparent 70%);
+  opacity: 0.5;
+  pointer-events: none;
+  animation: flower-drift 8s ease-in-out infinite alternate;
+}
+.wedding-decoration--left::after {
+  top: 50%; left: -20px;
+  box-shadow:
+    0 0 0 8px var(--flower-accent-dim),
+    -20px -30px 0 -4px var(--flower-accent-dim),
+    10px 40px 0 -6px var(--flower-accent-dim);
+}
+.wedding-decoration--right::after {
+  top: 30%; right: -20px;
+  box-shadow:
+    0 0 0 10px var(--flower-accent-dim),
+    20px -40px 0 -6px var(--flower-accent-dim),
+    -15px 30px 0 -4px var(--flower-accent-dim);
+}
+@keyframes flower-drift {
+  0%   { transform: translateY(0) scale(1) rotate(0deg); opacity: 0.4; }
+  50%  { transform: translateY(-10px) scale(1.1) rotate(10deg); opacity: 0.6; }
+  100% { transform: translateY(5px) scale(0.95) rotate(-5deg); opacity: 0.45; }
+}
+
+/* Ajustes de opacidad del eucalipto existente */
+.wedding-decoration__image {
+  opacity: var(--wedding-decoration-opacity, 0.7);
+  filter: var(--wedding-decoration-filter, none);
+}
+
 /* ── Animated backgrounds per theme ── */
 .story-section {
   position: relative; z-index: 0;
