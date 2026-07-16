@@ -111,7 +111,6 @@ export function useStoryNavigation(visibleOrder) {
     const { fromIndex, toIndex } = transition;
 
     const isActiveSection = sectionIndex === activeIndex;
-    const isTransitionSection = toIndex !== null && (sectionIndex === fromIndex || sectionIndex === toIndex);
 
     return [
       "story-section",
