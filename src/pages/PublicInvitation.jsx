@@ -16,7 +16,7 @@
  * @module PublicInvitation
  */
 
-import { lazy, Suspense, useEffect, useMemo, useState } from "react";
+import { lazy, useEffect, useMemo, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -107,7 +107,7 @@ export default function PublicInvitation() {
   }, [config.sectionOrder, isAdminTokenLoggedIn, isInviteMode]);
 
   /** Indica si se debe mostrar la sección RSVP. */
-  const showRsvp = true;
+  const showRsvp = !!(config.firstName || config.secondName);
 
   /**
    * Orden final de secciones visibles, excluyendo las ocultas
@@ -478,21 +478,19 @@ export default function PublicInvitation() {
       ) : (
         /* ── Invitación completa: renderiza cada sección en orden ── */
         <>
-          <Suspense fallback={null}>
-            {visibleOrder.map((sectionKey) => {
-              const Component = SECTION_COMPONENTS[sectionKey];
-              if (!Component) return null;
-              return (
-                <Component
-                  key={sectionKey}
-                  style={getStorySectionStyle(sectionKey)}
-                  className={getStorySectionClassName(sectionKey)}
-                  // Propaga las props específicas de cada sección
-                  {...sectionProps[sectionKey]}
-                />
-              );
-            })}
-          </Suspense>
+          {visibleOrder.map((sectionKey) => {
+            const Component = SECTION_COMPONENTS[sectionKey];
+            if (!Component) return null;
+            return (
+              <Component
+                key={sectionKey}
+                style={getStorySectionStyle(sectionKey)}
+                className={getStorySectionClassName(sectionKey)}
+                // Propaga las props específicas de cada sección
+                {...sectionProps[sectionKey]}
+              />
+            );
+          })}
         </>
       )}
     </div>
