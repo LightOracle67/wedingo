@@ -69,13 +69,40 @@ export function useStoryNavigation(visibleOrder) {
   }, [applyTransition]);
 
   /**
-   * La visibilidad y transiciones se controlan via CSS class story-section--is-active.
-   * Este wrapper mantiene la API pero sin inline styles conflictivos.
+   * Durante transiciones anima dirección, en estado estático usa CSS classes.
    */
-  const getSectionStyle = useCallback(() => ({}), []);
+  const getSectionStyle = useCallback((sectionKey) => {
+    const { fromIndex, toIndex, direction } = transition;
+    if (toIndex === null) return {};
+
+    const order = visibleOrderRef.current;
+    const sectionIndex = order.indexOf(sectionKey);
+
+    // Sección de salida (from) — se desliza hacia afuera
+    if (sectionIndex === fromIndex) {
+      return {
+        opacity: 0,
+        transform: `translateY(${direction > 0 ? -32 : 32}px) scale(0.985)`,
+        zIndex: 3,
+      };
+    }
+
+    // Sección de entrada (to) — entra a posición normal
+    if (sectionIndex === toIndex) {
+      return {
+        opacity: 1,
+        transform: "translateY(0) scale(1)",
+        zIndex: 4,
+      };
+    }
+
+    return {};
+  }, [transition]);
 
   /**
    * Construye la clase CSS para una sección.
+   * Durante transiciones, NO añade story-section--is-active para
+   * que los inline styles de getSectionStyle puedan controlar la animación.
    */
   const getSectionClassName = useCallback((sectionKey) => {
     const order = visibleOrderRef.current;
@@ -89,7 +116,7 @@ export function useStoryNavigation(visibleOrder) {
     return [
       "story-section",
       `story-section--${sectionKey}`,
-      isActiveSection || isTransitionSection ? "story-section--is-active" : "",
+      !toIndex && isActiveSection ? "story-section--is-active" : "",
     ].filter(Boolean).join(" ");
   }, [activeSection, transition]);
 
