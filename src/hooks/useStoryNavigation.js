@@ -162,6 +162,7 @@ export function useStoryNavigation(visibleOrder) {
         if (event.deltaY > 0 && !atBottom) return;
       }
       if (event.deltaY === 0) return;
+      event.preventDefault();
       startTransition(event.deltaY > 0 ? 1 : -1);
     };
 
@@ -190,6 +191,7 @@ export function useStoryNavigation(visibleOrder) {
       if (touchStartY === null || touchEndY === null) return;
       const distance = touchStartY - touchEndY;
       if (Math.abs(distance) >= 28) {
+        event.preventDefault();
         startTransition(distance > 0 ? 1 : -1);
       }
       touchStartY = null;
