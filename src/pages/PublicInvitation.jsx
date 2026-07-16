@@ -107,7 +107,7 @@ export default function PublicInvitation() {
   }, [config.sectionOrder, isAdminTokenLoggedIn, isInviteMode]);
 
   /** Indica si se debe mostrar la sección RSVP. */
-  const showRsvp = isAdminTokenLoggedIn || isInviteMode;
+  const showRsvp = true;
 
   /**
    * Orden final de secciones visibles, excluyendo las ocultas
