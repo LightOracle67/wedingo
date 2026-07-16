@@ -1,5 +1,66 @@
 export const CHANGELOG = [
   {
+    version: "2.3.7",
+    date: "2026-07-17",
+    changes: [
+      "Fix body background Safari: eliminar background-attachment fixed",
+      "Fix isSavingRef trabado por auto-save (nunca se reseteaba a false)",
+      "showRsvp condicional a config.firstName/secondName",
+      "RsvpSection eager load en lugar de lazy (solución definitiva)",
+      "Suspense wrapper para lazy sections restante",
+    ],
+  },
+  {
+    version: "2.3.6",
+    date: "2026-07-17",
+    changes: [
+      "Suspense wrapper para lazy sections, fix navegación entre secciones",
+    ],
+  },
+  {
+    version: "2.3.5",
+    date: "2026-07-17",
+    changes: [
+      "Fix isSavingRef trabado por auto-save (nunca se reseteaba a false)",
+    ],
+  },
+  {
+    version: "2.3.4",
+    date: "2026-07-17",
+    changes: [
+      "RsvpSection eager load en lugar de lazy",
+    ],
+  },
+  {
+    version: "2.3.3",
+    date: "2026-07-17",
+    changes: [
+      "showRsvp condicional a config existente, removido Suspense interno",
+    ],
+  },
+  {
+    version: "2.3.2",
+    date: "2026-07-17",
+    changes: [
+      "Fix showRsvp siempre true para que RSVP se renderice siempre",
+    ],
+  },
+  {
+    version: "2.3.1",
+    date: "2026-07-16",
+    changes: [
+      "Fix position relative en decoraciones rompía layout invitación",
+    ],
+  },
+  {
+    version: "2.3.0",
+    date: "2026-07-16",
+    changes: [
+      "Fondos body por tema con gradiente personalizado",
+      "Decoraciones florales CSS animadas por tema",
+    ],
+  },
+  {
     version: "2.2.0",
     date: "2026-07-16",
     changes: [
