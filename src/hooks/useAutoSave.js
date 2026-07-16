@@ -31,6 +31,7 @@ export function useAutoSave(hasStoredConfig, inviteToken, formData, config, onSa
       return null;
     } finally {
       autoSavingRef.current = false;
+      if (isSavingRef) isSavingRef.current = false;
     }
   }, [inviteToken, isSavingRef]);
 
