@@ -1189,17 +1189,16 @@ body::after {
 
 .setup-layout,
 .app-scene {
-  position: relative;
-  z-index: 1;
-}
-
-.app-scene {
   position: fixed;
   inset: 0;
   top: var(--navbar-height, 0px);
-  overflow: hidden;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
   width: 100%;
   max-width: 100vw;
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
 }
 
 .app-scene--transitioning .story-panel {
@@ -1211,9 +1210,11 @@ body::after {
 }
 
 .story-section {
-  position: absolute;
-  inset: 0;
-  height: 100%;
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: 100%;
+  height: 100dvh;
+  height: 100svh;
   isolation: isolate;
   display: flex;
   align-items: center;
@@ -1221,7 +1222,6 @@ body::after {
   transition:
     background-color 520ms ease,
     background-image 520ms ease;
-  pointer-events: none;
 }
 
 .story-section--hero {
