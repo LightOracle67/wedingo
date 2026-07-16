@@ -69,54 +69,10 @@ export function useStoryNavigation(visibleOrder) {
   }, [applyTransition]);
 
   /**
-   * Calcula el objeto de estilo inline para una sección según su estado
-   * (activa, en transición de entrada, en transición de salida u oculta).
+   * La visibilidad y transiciones se controlan via CSS class story-section--is-active.
+   * Este wrapper mantiene la API pero sin inline styles conflictivos.
    */
-  const getSectionStyle = useCallback((sectionKey) => {
-    const order = visibleOrderRef.current;
-    const sectionIndex = order.indexOf(sectionKey);
-    const activeIndex = order.indexOf(activeSection);
-    const { fromIndex, toIndex, direction } = transition;
-
-    // Sin transición en curso: solo la activa es visible.
-    if (toIndex === null) {
-      const isActive = sectionIndex === activeIndex;
-      return {
-        opacity: isActive ? 1 : 0,
-        transform: isActive ? "translateY(0) scale(1)" : "translateY(36px) scale(0.985)",
-        pointerEvents: isActive ? "auto" : "none",
-        zIndex: isActive ? 2 : 1,
-      };
-    }
-
-    // Sección de salida (from).
-    if (sectionIndex === fromIndex) {
-      return {
-        opacity: 0,
-        transform: `translateY(${direction > 0 ? -32 : 32}px) scale(0.985)`,
-        pointerEvents: "auto",
-        zIndex: 3,
-      };
-    }
-
-    // Sección de entrada (to).
-    if (sectionIndex === toIndex) {
-      return {
-        opacity: 1,
-        transform: "translateY(0) scale(1)",
-        pointerEvents: "auto",
-        zIndex: 4,
-      };
-    }
-
-    // Resto: ocultas.
-    return {
-      opacity: 0,
-      transform: "translateY(44px) scale(0.97)",
-      pointerEvents: "none",
-      zIndex: 1,
-    };
-  }, [activeSection, transition]);
+  const getSectionStyle = useCallback(() => ({}), []);
 
   /**
    * Construye la clase CSS para una sección.
