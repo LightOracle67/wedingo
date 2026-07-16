@@ -1,5 +1,35 @@
 export const CHANGELOG = [
   {
+    version: "2.4.0",
+    date: "2026-07-17",
+    changes: [
+      "Navegación por scroll-snap CSS nativo, eliminado JS navigation",
+      "Eliminados inline styles conflictivos y event listeners",
+      "Secciones apiladas verticalmente con scroll natural",
+    ],
+  },
+  {
+    version: "2.3.10",
+    date: "2026-07-17",
+    changes: [
+      "CSS classes + inline styles solo en transición",
+    ],
+  },
+  {
+    version: "2.3.9",
+    date: "2026-07-17",
+    changes: [
+      "Navegación por CSS classes, no inline styles",
+    ],
+  },
+  {
+    version: "2.3.8",
+    date: "2026-07-17",
+    changes: [
+      "preventDefault en wheel/touch/keyboard para evitar scroll nativo",
+    ],
+  },
+  {
     version: "2.3.7",
     date: "2026-07-17",
     changes: [
