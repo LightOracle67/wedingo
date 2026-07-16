@@ -5399,45 +5399,82 @@ html.a11y-font-scale select {
 
 /* Background del body por tema */
 body {
-  background: var(--page-bg-gradient, #1a1a2e);
+  background: var(--page-bg-gradient, #1f1b14);
   background-attachment: fixed;
+  background-size: cover;
   min-height: 100dvh;
 }
 
-/* Decoraciones florales CSS por tema */
+/* Decoraciones ornamentales CSS por tema */
 .wedding-decoration {
-  position: relative;
+  z-index: 0;
 }
-.wedding-decoration::after {
+.wedding-decoration::after,
+.wedding-decoration::before {
   content: "";
   position: absolute;
-  width: 60px; height: 60px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 40% 40%, var(--flower-accent) 0%, var(--flower-accent-dim) 60%, transparent 70%);
-  opacity: 0.5;
   pointer-events: none;
-  animation: flower-drift 8s ease-in-out infinite alternate;
+  border-radius: 50%;
+  animation: ornament-drift 10s ease-in-out infinite alternate;
 }
 .wedding-decoration--left::after {
-  top: 50%; left: -20px;
+  width: 80px; height: 80px;
+  top: 20%; left: -30px;
+  background: radial-gradient(circle at 35% 35%, var(--flower-accent) 0%, var(--flower-accent-dim) 50%, transparent 70%);
+  box-shadow:
+    0 0 0 12px var(--flower-accent-dim),
+    0 0 0 24px color-mix(in srgb, var(--flower-accent) 10%, transparent),
+    -30px 40px 0 -8px var(--flower-accent),
+    40px -20px 0 -4px var(--flower-accent-dim);
+  opacity: 0.5;
+}
+.wedding-decoration--left::before {
+  width: 50px; height: 50px;
+  top: 60%; left: -10px;
+  background: radial-gradient(circle at 40% 40%, var(--flower-accent) 0%, transparent 60%);
   box-shadow:
     0 0 0 8px var(--flower-accent-dim),
-    -20px -30px 0 -4px var(--flower-accent-dim),
-    10px 40px 0 -6px var(--flower-accent-dim);
+    25px -30px 0 -6px var(--flower-accent),
+    -20px 20px 0 -2px var(--flower-accent-dim);
+  opacity: 0.35;
+  animation-delay: -3s;
+  animation-duration: 12s;
 }
 .wedding-decoration--right::after {
-  top: 30%; right: -20px;
+  width: 100px; height: 100px;
+  top: 15%; right: -35px;
+  background: radial-gradient(circle at 40% 30%, var(--flower-accent) 0%, var(--flower-accent-dim) 45%, transparent 65%);
   box-shadow:
-    0 0 0 10px var(--flower-accent-dim),
-    20px -40px 0 -6px var(--flower-accent-dim),
-    -15px 30px 0 -4px var(--flower-accent-dim);
+    0 0 0 16px var(--flower-accent-dim),
+    0 0 0 32px color-mix(in srgb, var(--flower-accent) 8%, transparent),
+    35px -30px 0 -10px var(--flower-accent),
+    -25px 50px 0 -6px var(--flower-accent-dim),
+    20px -60px 0 -2px var(--flower-accent);
+  opacity: 0.45;
 }
-@keyframes flower-drift {
-  0%   { transform: translateY(0) scale(1) rotate(0deg); opacity: 0.4; }
-  50%  { transform: translateY(-10px) scale(1.1) rotate(10deg); opacity: 0.6; }
-  100% { transform: translateY(5px) scale(0.95) rotate(-5deg); opacity: 0.45; }
+.wedding-decoration--right::before {
+  width: 40px; height: 40px;
+  top: 55%; right: -5px;
+  background: radial-gradient(circle at 35% 35%, var(--flower-accent) 0%, transparent 55%);
+  box-shadow:
+    0 0 0 6px var(--flower-accent-dim),
+    -30px 25px 0 -4px var(--flower-accent);
+  opacity: 0.3;
+  animation-delay: -5s;
+  animation-duration: 8s;
+}
+@keyframes ornament-drift {
+  0%   { transform: translateY(0) scale(1) rotate(0deg); }
+  33%  { transform: translateY(-8px) scale(1.05) rotate(8deg); }
+  66%  { transform: translateY(4px) scale(0.97) rotate(-4deg); }
+  100% { transform: translateY(-3px) scale(1.02) rotate(3deg); }
 }
 
+/* Ajustes de opacidad del eucalipto existente */
+.wedding-decoration__image {
+  opacity: var(--wedding-decoration-opacity, 0.7);
+  filter: var(--wedding-decoration-filter, none);
+}
 /* Ajustes de opacidad del eucalipto existente */
 .wedding-decoration__image {
   opacity: var(--wedding-decoration-opacity, 0.7);
