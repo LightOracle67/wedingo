@@ -1,5 +1,5 @@
 import i18n from "../i18n";
-import { addDoc, getDocs, updateDoc, deleteDoc, collection, writeBatch, doc } from "firebase/firestore";
+import { addDoc, getDocs, updateDoc, deleteDoc, collection, writeBatch, doc, orderBy, query } from "firebase/firestore";
 import { db } from "./firebase";
 import { compressImage } from "./image-utils";
 import { encrypt, decrypt } from "./crypto-utils";
@@ -80,7 +80,8 @@ export async function loadDecryptedField(inviteToken, encrypted) {
  */
 export async function loadGallery(inviteToken) {
   try {
-    const snap = await getDocs(GALLERY_COL(inviteToken));
+    const q = query(GALLERY_COL(inviteToken), orderBy("createdAt", "asc"));
+    const snap = await getDocs(q);
     const result = [];
     for (const d of snap.docs) {
       const enc = d.data().data;
