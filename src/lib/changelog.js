@@ -1,6 +1,15 @@
 export const CHANGELOG = [
   {
-    version: "2.4.7",
+    version: "2.4.9",
+    date: "2026-07-17",
+    changes: [
+      "Glow radial por tema como fondo general de página con latido sutil",
+      "Luciérnagas animadas con box-shadow que flotan lentamente por toda la pantalla",
+      "Eliminado el fondo animado por sección, ahora es global en body",
+    ],
+  },
+  {
+    version: "2.4.8",
     date: "2026-07-17",
     changes: [
       "Nueva compilación para renovar la caché del navegador",
