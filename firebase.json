@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "wedingo-6c26a",
     "public": "dist",
     "ignore": [
       "firebase.json",
