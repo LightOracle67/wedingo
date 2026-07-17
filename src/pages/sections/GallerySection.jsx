@@ -28,7 +28,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
     (async () => {
       const { loadGallery } = await import("../../lib/image-store");
       const result = await loadGallery(inviteToken);
-      if (!cancelled) { setImages(result); setLoading(false); }
+      if (!cancelled) { setImages(result.slice(0, 10)); setLoading(false); }
     })();
     return () => { cancelled = true; };
   }, [inviteToken]);
