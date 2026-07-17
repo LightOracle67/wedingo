@@ -5009,7 +5009,7 @@ html.a11y-font-scale select {
 /** Contenedor principal de la imagen: se adapta al tamaño natural. */
 .gallery-main-container {
   width: 100%;
-  max-height: 70vh;
+  max-height: 50vh;
   border-radius: 0.9rem;
   overflow: hidden;
   position: relative;
@@ -5021,7 +5021,9 @@ html.a11y-font-scale select {
 /** Imagen principal: se ajusta al contenedor sin recortar. */
 .gallery-main-img {
   max-width: 100%;
-  max-height: 70vh;
+  max-height: 50vh;
+  width: auto;
+  height: auto;
   object-fit: contain;
   border-radius: 0.9rem;
   border: 1px solid color-mix(in srgb, var(--invite-shell-border) 70%, transparent);
