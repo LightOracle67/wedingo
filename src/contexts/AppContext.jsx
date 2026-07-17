@@ -286,15 +286,14 @@ export function AppProvider({ children }) {
         delete hydrated.galleryImages;
         setConfig(hydrated);
         setFormData(hydrated);
-        // Carga las imágenes de la galería desde Firestore para mostrarlas
-        // como miniaturas en el formulario de administración (máx 10).
-        if (isAdminRoute || location.pathname.includes("/setup")) {
-          loadGallery(inviteToken).then((urls) => {
-            const str = JSON.stringify(urls.slice(0, 10));
-            setFormData((prev) => ({ ...prev, galleryImages: str }));
-            setConfig((prev) => ({ ...prev, galleryImages: str }));
-          }).catch(() => {});
-        }
+        // Carga las imágenes de la galería desde Firestore (máx 10).
+        // Se hidrata en todas las rutas para que esté disponible tanto en
+        // el editor como en la invitación pública.
+        loadGallery(inviteToken).then((urls) => {
+          const str = JSON.stringify(urls.slice(0, 10));
+          setFormData((prev) => ({ ...prev, galleryImages: str }));
+          setConfig((prev) => ({ ...prev, galleryImages: str }));
+        }).catch(() => {});
         // Guarda en caché local
         safeSetItem(`wedin_invite_cache_${inviteToken}`, JSON.stringify({ data: hydrated, cachedAt: Date.now() }));
         setVisitCount(typeof snapshot.data()._visits === "number" ? snapshot.data()._visits : 0);

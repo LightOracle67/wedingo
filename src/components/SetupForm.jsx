@@ -17,11 +17,11 @@ import { useTranslation, Trans } from "react-i18next";
 import { useApp } from "../contexts/AppContext";
 import { useToast } from "../hooks/useToast";
 import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES, MONTH_OPTIONS } from "../lib/constants";
-import { uploadImage, addGalleryImage } from "../lib/image-store";
+import { uploadImage } from "../lib/image-store";
 import CollapsibleSection from "./CollapsibleSection";
 import SectionOrderEditor from "./SectionOrderEditor";
 import ThemePicker from "./ThemePicker";
-import GalleryManager from "./GalleryManager";
+import GalleryArrayEditor from "./GalleryArrayEditor";
 
 /**
  * Componente del formulario de configuración.
@@ -45,7 +45,6 @@ export default function SetupForm({ prefix = "" }) {
 
   /** Referencias a los inputs de archivo para resetearlos tras subida. */
   const photoRef = useRef(null);
-  const galleryRef = useRef(null);
 
   // ── Muestra mensajes de éxito/error como toasts ─────────
   useEffect(() => {
@@ -91,58 +90,6 @@ export default function SetupForm({ prefix = "" }) {
     }
     if (input) input.value = "";
   }, [inviteToken, updateFormField, startUploadToast, addToast, t]);
-
-  /**
-   * Maneja la subida de múltiples imágenes a la galería.
-   * Filtra archivos inválidos, sube cada uno y actualiza el estado.
-   *
-   * @param {Event} e - Evento change del input file múltiple.
-   */
-  const handleGalleryUpload = useCallback(async (e) => {
-    const files = Array.from(e.target.files || []);
-    const input = e.target;
-    if (!files.length) return;
-    const valid = files.filter(f => ALLOWED_UPLOAD_TYPES.has(f.type) && f.size <= MAX_UPLOAD_SIZE_BYTES);
-    if (!valid.length) { addToast("error", t("setup.noValidFiles")); return; }
-    // Acumula los dataUrls subidos para mostrarlos como miniaturas
-    const currentImages = (() => {
-      try { return JSON.parse(formData.galleryImages || "[]"); } catch { return []; }
-    })();
-    // Límite de 10 imágenes en la galería
-    const MAX_GALLERY = 10;
-    if (currentImages.length >= MAX_GALLERY) {
-      addToast("error", t("setup.galleryMaxReached", { max: MAX_GALLERY }));
-      if (input) input.value = "";
-      return;
-    }
-    const remaining = MAX_GALLERY - currentImages.length;
-    const toUpload = valid.slice(0, remaining);
-    if (valid.length > remaining) {
-      addToast("warning", t("setup.galleryTrimmed", { selected: valid.length, max: MAX_GALLERY }));
-    }
-    const upload = startUploadToast(t("setup.galleryUploading", { total: toUpload.length }));
-    try {
-      for (let i = 0; i < toUpload.length; i++) {
-        const file = toUpload[i];
-        // Cada archivo ocupa un segmento del progreso total (0→100).
-        const fileBase = Math.round((i / toUpload.length) * 100);
-        const fileSpan = Math.round(100 / toUpload.length);
-        const onFileProgress = (p) => {
-          // Escala el progreso del archivo (0–100) al rango del segmento.
-          upload.update(fileBase + Math.round((p / 100) * fileSpan));
-        };
-        const { encrypted, dataUrl } = await uploadImage(inviteToken, file, onFileProgress);
-        const saved = await addGalleryImage(inviteToken, encrypted, dataUrl, onFileProgress);
-        // Guarda como objeto con ID para permitir editar descripción
-        currentImages.push({ id: saved.id, url: saved.dataUrl, description: "" });
-        updateFormField("galleryImages", JSON.stringify(currentImages));
-      }
-      upload.complete(t("setup.galleryUploadSuccess", { count: toUpload.length }));
-    } catch {
-      upload.error(t("setup.galleryUploadFailed"));
-    }
-    if (input) input.value = "";
-  }, [inviteToken, formData.galleryImages, updateFormField, startUploadToast, addToast, t]);
 
   return (
     <form className="setup-form setup-form--nested" onSubmit={handleSaveSetup}>
@@ -675,12 +622,7 @@ export default function SetupForm({ prefix = "" }) {
         title={t("setup.gallerySectionTitle")}
         hint={t("setup.gallerySectionHint")}
       >
-        <label className="setup-upload" htmlFor={id("galleryUpload")}>
-          <span className="setup-upload__title">{t("setup.galleryUploadLabel")}</span>
-          <span className="setup-upload__subtitle">{t("setup.galleryUploadHint")}</span>
-        </label>
-        <input ref={galleryRef} id={id("galleryUpload")} className="setup-upload__input" type="file" accept="image/jpeg,image/png,image/webp" multiple onChange={handleGalleryUpload} />
-        <GalleryManager images={formData.galleryImages} onChange={(val) => updateFormField("galleryImages", val)} inviteToken={inviteToken} onUpload={handleGalleryUpload} id={id} t={t} />
+        <GalleryArrayEditor images={formData.galleryImages} onChange={(val) => updateFormField("galleryImages", val)} inviteToken={inviteToken} t={t} />
       </CollapsibleSection>
       ) : null}
 
