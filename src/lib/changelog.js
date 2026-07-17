@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.4.5",
+    date: "2026-07-17",
+    changes: [
+      "Fix story-panel opacity 0 heredado de animación antigua ocultaba secciones",
+    ],
+  },
+  {
     version: "2.4.4",
     date: "2026-07-17",
     changes: [
