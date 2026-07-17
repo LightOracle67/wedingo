@@ -1199,6 +1199,7 @@ body::after {
   scroll-behavior: smooth;
   display: flex;
   flex-direction: column;
+  background: var(--page-bg, #1f1b14);
 }
 
 .app-scene--transitioning .story-panel {
@@ -1215,6 +1216,7 @@ body::after {
   width: 100%;
   height: 100dvh;
   height: 100svh;
+  min-height: 100vh;
   isolation: isolate;
   display: flex;
   align-items: center;
@@ -5384,8 +5386,24 @@ html.a11y-font-scale select {
 /* Background del body por tema */
 body {
   background-color: var(--page-bg, #1f1b14);
-  background-image: var(--page-bg-gradient);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: var(--page-bg-gradient);
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: theme-bg-shift 30s ease-in-out infinite alternate;
+}
+
+@keyframes theme-bg-shift {
+  0%   { transform: scale(1) translate(0%, 0%); }
+  50%  { transform: scale(1.03) translate(1%, 0.5%); }
+  100% { transform: scale(1) translate(0%, 0%); }
 }
 
 /* Decoraciones ornamentales CSS por tema */
