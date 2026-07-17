@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.4.3",
+    date: "2026-07-17",
+    changes: [
+      "Bump (cacheo de chunks, sin cambios de código)",
+    ],
+  },
+  {
     version: "2.4.2",
     date: "2026-07-17",
     changes: [
