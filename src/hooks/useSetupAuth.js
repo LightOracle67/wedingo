@@ -108,32 +108,58 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
   }, [isTokenVerified, tokenLoginUsername]);
 
   /**
-   * Genera un nuevo token de acceso para el setup.
-   * Si ya existe un token en sessionStorage para esta invitación, lo reutiliza.
-   * Si se pasa un oldToken, fuerza la regeneración.
+   * Recupera o genera un token de acceso para el setup.
    *
-   * @param {string} [oldToken] - Token anterior a reemplazar.
-   * @returns {Promise<string>} El nuevo token generado.
+   * Orden de comprobación para evitar duplicados:
+   * 1. Si se pasa oldToken, fuerza la regeneración (lo borra y crea uno nuevo).
+   * 2. Busca en sessionStorage un token guardado para esta invitación.
+   * 3. Busca en el documento de la invitación el campo _activeSetupToken.
+   * 4. Si nada funciona, genera uno nuevo y lo persiste en la invitación.
+   *
+   * @param {string} [oldToken] - Token anterior a reemplazar (opcional).
+   * @returns {Promise<string>} El token activo.
    */
   const refreshSetupToken = useCallback(async (oldToken) => {
     const storageKey = `wedin_setup_token_${inviteToken || ""}`;
 
-    // Intenta recuperar el token existente de sessionStorage
+    // ── Paso 1: oldToken → fuerza regeneración ──
+    if (oldToken) {
+      try { await setDoc(doc(db, "setupTokens", normalizeTokenValue(oldToken)), { used: true }); } catch {}
+    }
+
+    // ── Paso 2: sessionStorage ──
     if (!oldToken && inviteToken) {
       try {
         const saved = safeGetItem(storageKey, sessionStorage);
         if (saved) {
           const snap = await getDoc(doc(db, "setupTokens", saved));
-          if (snap.exists()) {
+          if (snap.exists() && snap.data().used !== true) {
             setSetupToken(saved);
             setSetupTokenInput(saved);
             return saved;
           }
         }
       } catch {}
+
+      // ── Paso 3: _activeSetupToken en la invitación ──
+      try {
+        const inviteSnap = await getDoc(invitationDocRef(inviteToken));
+        if (inviteSnap.exists()) {
+          const activeToken = inviteSnap.data()._activeSetupToken;
+          if (activeToken) {
+            const snap = await getDoc(doc(db, "setupTokens", activeToken));
+            if (snap.exists() && snap.data().used !== true) {
+              setSetupToken(activeToken);
+              setSetupTokenInput(activeToken);
+              safeSetItem(storageKey, activeToken, sessionStorage);
+              return activeToken;
+            }
+          }
+        }
+      } catch {}
     }
 
-    // Genera un nuevo token y lo guarda en Firestore + sessionStorage
+    // ── Paso 4: generar nuevo token y asociarlo a la invitación ──
     const nextToken = generateSetupToken();
     const normalizedToken = normalizeTokenValue(nextToken);
     setSetupToken(normalizedToken);
@@ -143,6 +169,9 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
       const payload = { used: false, autoGen: true, createdAt: serverTimestamp() };
       if (inviteToken) payload.inviteToken = inviteToken;
       await setDoc(doc(db, "setupTokens", normalizedToken), payload);
+      if (inviteToken) {
+        await updateDoc(invitationDocRef(inviteToken), { _activeSetupToken: normalizedToken });
+      }
     } catch {}
     return nextToken;
   }, [inviteToken]);
