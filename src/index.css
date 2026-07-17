@@ -5431,71 +5431,62 @@ body::before {
 body::after {
   content: "";
   position: fixed;
-  inset: 0;
+  width: 200vw;
+  height: 200vh;
+  top: -50vh;
+  left: -50vw;
   z-index: -1;
   pointer-events: none;
-  animation: firefly-float 24s ease-in-out infinite;
+  animation: firefly-float 30s ease-in-out infinite;
 }
 @keyframes firefly-float {
   0%   { box-shadow:
-      10% 20% 0 0 var(--flower-accent-dim),
-      30% 70% 0 1px var(--flower-accent),
-      50% 30% 0 0 var(--flower-accent-dim),
-      70% 80% 0 1.5px var(--flower-accent),
-      85% 15% 0 0 var(--flower-accent-dim),
-      20% 90% 0 0.5px var(--flower-accent),
-      45% 50% 0 0 var(--flower-accent-dim),
-      65% 10% 0 1px var(--flower-accent),
-      90% 60% 0 0 var(--flower-accent-dim),
-      5%  40% 0 0.5px var(--flower-accent);
+      50px 120px 0 0 var(--flower-accent-dim),
+      300px 640px 0 1px var(--flower-accent),
+      500px 250px 0 0 var(--flower-accent-dim),
+      750px 700px 0 1.5px var(--flower-accent),
+      900px 100px 0 0 var(--flower-accent-dim),
+      180px 820px 0 0.5px var(--flower-accent),
+      420px 450px 0 0 var(--flower-accent-dim),
+      600px 80px 0 1px var(--flower-accent),
+      850px 550px 0 0 var(--flower-accent-dim),
+      60px 380px 0 0.5px var(--flower-accent);
   }
-  25%  { box-shadow:
-      15% 25% 0 0.5px var(--flower-accent),
-      35% 65% 0 0 var(--flower-accent-dim),
-      55% 35% 0 1px var(--flower-accent),
-      75% 75% 0 0 var(--flower-accent-dim),
-      80% 20% 0 0.5px var(--flower-accent),
-      25% 85% 0 0 var(--flower-accent-dim),
-      40% 55% 0 1px var(--flower-accent),
-      60% 15% 0 0 var(--flower-accent-dim),
-      95% 55% 0 0.5px var(--flower-accent),
-      10% 45% 0 0 var(--flower-accent-dim);
+  33%  { box-shadow:
+      120px 200px 0 0.5px var(--flower-accent),
+      350px 580px 0 0 var(--flower-accent-dim),
+      550px 300px 0 1px var(--flower-accent),
+      780px 650px 0 0 var(--flower-accent-dim),
+      820px 150px 0 0.5px var(--flower-accent),
+      250px 780px 0 0 var(--flower-accent-dim),
+      380px 500px 0 1px var(--flower-accent),
+      620px 120px 0 0 var(--flower-accent-dim),
+      920px 500px 0 0.5px var(--flower-accent),
+      80px  400px 0 0 var(--flower-accent-dim);
   }
-  50%  { box-shadow:
-      5%  30% 0 1.5px var(--flower-accent),
-      40% 60% 0 0 var(--flower-accent-dim),
-      60% 25% 0 0.5px var(--flower-accent),
-      80% 70% 0 0 var(--flower-accent-dim),
-      90% 10% 0 1px var(--flower-accent),
-      15% 95% 0 0 var(--flower-accent-dim),
-      50% 40% 0 0 var(--flower-accent),
-      70% 5%  0 0.5px var(--flower-accent-dim),
-      85% 65% 0 1px var(--flower-accent),
-      30% 50% 0 0 var(--flower-accent-dim);
-  }
-  75%  { box-shadow:
-      20% 15% 0 0 var(--flower-accent-dim),
-      45% 75% 0 1px var(--flower-accent),
-      65% 40% 0 0 var(--flower-accent-dim),
-      85% 85% 0 0.5px var(--flower-accent),
-      5%  25% 0 0 var(--flower-accent-dim),
-      35% 90% 0 1px var(--flower-accent),
-      55% 45% 0 0 var(--flower-accent-dim),
-      75% 20% 0 0.5px var(--flower-accent),
-      95% 70% 0 0 var(--flower-accent-dim),
-      15% 35% 0 1px var(--flower-accent);
+  66%  { box-shadow:
+      80px  280px 0 1.5px var(--flower-accent),
+      400px 520px 0 0 var(--flower-accent-dim),
+      600px 220px 0 0.5px var(--flower-accent),
+      820px 600px 0 0 var(--flower-accent-dim),
+      920px 80px  0 1px var(--flower-accent),
+      150px 880px 0 0 var(--flower-accent-dim),
+      500px 380px 0 0 var(--flower-accent),
+      700px 50px  0 0.5px var(--flower-accent-dim),
+      880px 580px 0 1px var(--flower-accent),
+      320px 460px 0 0 var(--flower-accent-dim);
   }
   100% { box-shadow:
-      10% 20% 0 0 var(--flower-accent-dim),
-      30% 70% 0 1px var(--flower-accent),
-      50% 30% 0 0 var(--flower-accent-dim),
-      70% 80% 0 1.5px var(--flower-accent),
-      85% 15% 0 0 var(--flower-accent-dim),
-      20% 90% 0 0.5px var(--flower-accent),
-      45% 50% 0 0 var(--flower-accent-dim),
-      65% 10% 0 1px var(--flower-accent),
-      90% 60% 0 0 var(--flower-accent-dim),
-      5%  40% 0 0.5px var(--flower-accent);
+      50px 120px 0 0 var(--flower-accent-dim),
+      300px 640px 0 1px var(--flower-accent),
+      500px 250px 0 0 var(--flower-accent-dim),
+      750px 700px 0 1.5px var(--flower-accent),
+      900px 100px 0 0 var(--flower-accent-dim),
+      180px 820px 0 0.5px var(--flower-accent),
+      420px 450px 0 0 var(--flower-accent-dim),
+      600px 80px 0 1px var(--flower-accent),
+      850px 550px 0 0 var(--flower-accent-dim),
+      60px 380px 0 0.5px var(--flower-accent);
   }
 }
 
