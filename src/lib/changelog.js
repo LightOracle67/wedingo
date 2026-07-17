@@ -1,5 +1,19 @@
 export const CHANGELOG = [
   {
+    version: "2.4.2",
+    date: "2026-07-17",
+    changes: [
+      "Añadido www.google.com a connect-src CSP (cleardot.gif)",
+    ],
+  },
+  {
+    version: "2.4.1",
+    date: "2026-07-17",
+    changes: [
+      "Fix opacity 0 ocultaba todas las secciones (código legacy del refactor anterior)",
+    ],
+  },
+  {
     version: "2.4.0",
     date: "2026-07-17",
     changes: [
