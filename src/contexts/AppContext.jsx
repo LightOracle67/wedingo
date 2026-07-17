@@ -360,11 +360,13 @@ export function AppProvider({ children }) {
 
   /**
    * Si no hay configuración guardada, regenera el token de setup automáticamente.
+   * Espera a que la configuración termine de cargar para evitar generar
+   * tokens duplicados mientras se hidrata.
    */
   useEffect(() => {
-    if (hasStoredConfig || !inviteToken) return;
+    if (isConfigLoading || hasStoredConfig || !inviteToken) return;
     (async () => { await refreshSetupToken(); })();
-  }, [hasStoredConfig, inviteToken, refreshSetupToken]);
+  }, [isConfigLoading, hasStoredConfig, inviteToken, refreshSetupToken]);
 
   /**
    * Elimina la imagen de fondo seleccionada.

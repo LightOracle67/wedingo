@@ -1,5 +1,15 @@
 export const CHANGELOG = [
   {
+    version: "2.4.19",
+    date: "2026-07-17",
+    changes: [
+      "Corregido: se generaban tokens de setup duplicados cada vez que se cargaba la página",
+      "refreshSetupToken ahora verifica _activeSetupToken en el documento de la invitación antes de generar uno nuevo",
+      "El token generado se persiste en _activeSetupToken para mantenerlo estable entre sesiones",
+      "Añadida espera a isConfigLoading para no generar tokens antes de que termine la carga",
+    ],
+  },
+  {
     version: "2.4.18",
     date: "2026-07-17",
     changes: [
