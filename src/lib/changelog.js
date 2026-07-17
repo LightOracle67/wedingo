@@ -1,5 +1,15 @@
 export const CHANGELOG = [
   {
+    version: "2.4.18",
+    date: "2026-07-17",
+    changes: [
+      "Nuevo GalleryArrayEditor: componente separado para gestionar el array de la galería (añadir, eliminar, reordenar con ↑↓)",
+      "La galería se hidrata en todas las rutas, no solo en admin, para que esté disponible en la invitación pública",
+      "GallerySection usa los datos pre-hidratados en lugar de cargar desde Firestore directamente",
+      "Eliminado GalleryManager antiguo y lógica duplicada de subida en SetupForm",
+    ],
+  },
+  {
     version: "2.4.9",
     date: "2026-07-17",
     changes: [

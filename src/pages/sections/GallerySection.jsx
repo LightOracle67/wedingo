@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
  * @param {{ style: object, className: string, inviteToken: string }} props
  * @returns {JSX.Element} Sección de galería.
  */
-const GallerySection = memo(function GallerySection({ style, className, inviteToken }) {
+const GallerySection = memo(function GallerySection({ style, className, inviteToken, galleryImages }) {
   const { t } = useTranslation();
 
   /** Lista de imágenes con metadatos: { id, url, description }. */
@@ -20,18 +20,28 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
   /** Indica si la galería está cargando. */
   const [loading, setLoading] = useState(true);
 
-  // ── Carga de imágenes desde Firestore ─────────────────
+  // ── Carga de imágenes desde Firestore o datos hidratados ──
 
   useEffect(() => {
     if (!inviteToken) return;
     let cancelled = false;
+    // Si recibimos datos pre-hidratados úsalos directamente
+    if (galleryImages) {
+      let parsed;
+      try { parsed = JSON.parse(galleryImages); } catch { parsed = null; }
+      if (parsed && Array.isArray(parsed) && parsed.length > 0) {
+        if (!cancelled) { setImages(parsed.slice(0, 10)); setLoading(false); }
+        return;
+      }
+    }
+    // Fallback: carga directa desde Firestore
     (async () => {
       const { loadGallery } = await import("../../lib/image-store");
       const result = await loadGallery(inviteToken);
       if (!cancelled) { setImages(result.slice(0, 10)); setLoading(false); }
     })();
     return () => { cancelled = true; };
-  }, [inviteToken]);
+  }, [inviteToken, galleryImages]);
 
   // ── Estado de navegación ──────────────────────────────
 
