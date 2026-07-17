@@ -178,7 +178,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
         onFocus={pause}
         onBlur={resume}
         onKeyDown={(e) => { if (e.key === "ArrowLeft") prev(); else if (e.key === "ArrowRight") next(); }}
-        style={{ maxWidth: "min(100%, 56rem)" }}
+        style={{ maxWidth: "min(100%, 56rem)", touchAction: "none" }}
       >
         <p className="story-eyebrow">{t("gallery.sectionLabel")}</p>
         <h2 className="story-title">{t("gallery.title")}</h2>
