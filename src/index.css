@@ -5390,18 +5390,28 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: -2;
   background: var(--page-bg-gradient);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  animation: theme-bg-shift 30s ease-in-out infinite alternate;
 }
 
-@keyframes theme-bg-shift {
-  0%   { transform: scale(1) translate(0%, 0%); }
-  50%  { transform: scale(1.03) translate(1%, 0.5%); }
-  100% { transform: scale(1) translate(0%, 0%); }
+body::after {
+  content: "";
+  position: fixed;
+  inset: -100%;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse at 30% 50%, var(--flower-accent) 0%, transparent 30%),
+    radial-gradient(ellipse at 70% 50%, var(--flower-accent-dim) 0%, transparent 30%);
+  opacity: 0.12;
+  animation: theme-light-drift 20s linear infinite;
+}
+
+@keyframes theme-light-drift {
+  from { transform: translate(-5%, -5%); }
+  to   { transform: translate(5%, 5%); }
 }
 
 /* Decoraciones ornamentales CSS por tema */
