@@ -60,9 +60,14 @@ service cloud.firestore {
         allow read: if true;
         allow create: if hasActiveSession(tokenId) && request.resource.data.data is string;
         allow update: if hasActiveSession(tokenId)
-          && request.resource.data.keys().hasOnly(['description'])
-          && request.resource.data.description is string
-          && request.resource.data.description.size() <= 200;
+          && (
+            (request.resource.data.keys().hasOnly(['description'])
+              && request.resource.data.description is string
+              && request.resource.data.description.size() <= 200)
+            ||
+            (request.resource.data.keys().hasOnly(['order'])
+              && request.resource.data.order is number)
+          );
         allow delete: if isSuperAdmin() || hasActiveSession(tokenId);
       }
     }

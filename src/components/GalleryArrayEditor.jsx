@@ -56,7 +56,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ images, onChange, 
           upload.update(fileBase + Math.round((p / 100) * fileSpan));
         };
         const { encrypted, dataUrl } = await uploadImage(inviteToken, file, onFileProgress);
-        const saved = await addGalleryImage(inviteToken, encrypted, dataUrl, onFileProgress);
+        const saved = await addGalleryImage(inviteToken, encrypted, dataUrl, newImages.length, onFileProgress);
         newImages.push({ id: saved.id, url: saved.dataUrl, description: "" });
       }
       onChange(JSON.stringify(newImages));
@@ -71,27 +71,39 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ images, onChange, 
     const arr = [...parsed];
     const removed = arr.splice(index, 1)[0];
     onChange(JSON.stringify(arr));
+    persistOrder(arr);
     if (removed?.id) {
       try {
         const { deleteGalleryImage } = await import("../lib/image-store");
         await deleteGalleryImage(inviteToken, removed.id);
       } catch {}
     }
-  }, [parsed, onChange, inviteToken]);
+  }, [parsed, onChange, inviteToken, persistOrder]);
+
+  const persistOrder = useCallback(async (arr) => {
+    const items = arr.map((item, i) => ({ id: item.id, order: i })).filter(item => item.id);
+    if (!items.length) return;
+    try {
+      const { updateGalleryOrder } = await import("../lib/image-store");
+      await updateGalleryOrder(inviteToken, items);
+    } catch {}
+  }, [inviteToken]);
 
   const handleMoveUp = useCallback((index) => {
     if (index <= 0) return;
     const arr = [...parsed];
     [arr[index - 1], arr[index]] = [arr[index], arr[index - 1]];
     onChange(JSON.stringify(arr));
-  }, [parsed, onChange]);
+    persistOrder(arr);
+  }, [parsed, onChange, persistOrder]);
 
   const handleMoveDown = useCallback((index) => {
     if (index >= parsed.length - 1) return;
     const arr = [...parsed];
     [arr[index], arr[index + 1]] = [arr[index + 1], arr[index]];
     onChange(JSON.stringify(arr));
-  }, [parsed, onChange]);
+    persistOrder(arr);
+  }, [parsed, onChange, persistOrder]);
 
   const handleDescriptionChange = useCallback((index, val) => {
     const arr = [...parsed];

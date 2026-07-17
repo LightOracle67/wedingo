@@ -42,11 +42,12 @@ export async function uploadImage(inviteToken, file, onProgress) {
  * @param {Function} [onProgress] - Callback opcional para progreso (0–100).
  * @returns {Promise<{ id: string, dataUrl: string }>} ID del documento y dataUrl.
  */
-export async function addGalleryImage(inviteToken, encrypted, dataUrl, onProgress) {
+export async function addGalleryImage(inviteToken, encrypted, dataUrl, order, onProgress) {
   onProgress?.(85);
   const docRef = await addDoc(GALLERY_COL(inviteToken), {
     data: encrypted,
     description: "",
+    order: order ?? Date.now(),
     createdAt: new Date().toISOString(),
   });
   onProgress?.(95);
@@ -80,7 +81,7 @@ export async function loadDecryptedField(inviteToken, encrypted) {
  */
 export async function loadGallery(inviteToken) {
   try {
-    const q = query(GALLERY_COL(inviteToken), orderBy("createdAt", "asc"));
+    const q = query(GALLERY_COL(inviteToken), orderBy("order", "asc"), orderBy("createdAt", "asc"));
     const snap = await getDocs(q);
     const result = [];
     for (const d of snap.docs) {
@@ -116,4 +117,20 @@ export async function deleteGallery(inviteToken) {
  */
 export async function deleteGalleryImage(inviteToken, imageId) {
   await deleteDoc(doc(db, "invitations", inviteToken, "gallery", imageId));
+}
+
+/**
+ * Actualiza el orden de las imágenes en la galería.
+ * Recibe un array de { id, order } y actualiza cada documento en batch.
+ *
+ * @param {string} inviteToken - Token de la invitación.
+ * @param {Array<{ id: string, order: number }>} items - Lista de IDs con su nuevo orden.
+ */
+export async function updateGalleryOrder(inviteToken, items) {
+  if (!items.length) return;
+  const batch = writeBatch(db);
+  for (const { id, order } of items) {
+    batch.update(doc(db, "invitations", inviteToken, "gallery", id), { order });
+  }
+  await batch.commit();
 }
