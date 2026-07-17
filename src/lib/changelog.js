@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.4.6",
+    date: "2026-07-17",
+    changes: [
+      "Fondo animado: gradiente estático + capa de luz con desplazamiento (sin scale)",
+    ],
+  },
+  {
     version: "2.4.5",
     date: "2026-07-17",
     changes: [
