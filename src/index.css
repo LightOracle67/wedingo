@@ -1262,13 +1262,11 @@ body::after {
   position: relative;
   z-index: 1;
   border-radius: 1.6rem;
-  width: min(100%, 32rem);
-  padding: clamp(0.6rem, 2vw, 1.2rem);
+  width: min(90%, 36rem);
+  max-height: calc(100dvh - var(--navbar-height, 0px) - clamp(5rem, 10vw, 8rem));
+  padding: clamp(0.8rem, 2.5vw, 1.5rem);
   box-sizing: border-box;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
-  scrollbar-width: thin;
+  overflow: visible;
   border: 1px solid color-mix(in srgb, var(--invite-shell-border) 72%, transparent);
   background: color-mix(in srgb, var(--invite-shell-bg) 74%, transparent);
   box-shadow:
@@ -1276,10 +1274,6 @@ body::after {
     0 0 30px color-mix(in srgb, var(--invite-shell-glow) 70%, transparent);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
-}
-
-.story-section--is-active .story-card {
-  max-height: calc(100dvh - var(--navbar-height, 0px) - clamp(3rem, 8vw, 6rem));
 }
 
 .story-card .story-title {
