@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.4.7",
+    date: "2026-07-17",
+    changes: [
+      "Bump + hard deploy (cache invalidation)",
+    ],
+  },
+  {
     version: "2.4.6",
     date: "2026-07-17",
     changes: [
