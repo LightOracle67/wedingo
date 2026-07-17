@@ -1,4 +1,4 @@
-export const APP_VERSION = "2.4.2";
+export const APP_VERSION = "2.4.3";
 
 export const ALLOWED_UPLOAD_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
 export const MAX_UPLOAD_SIZE_BYTES = 20 * 1024 * 1024;
