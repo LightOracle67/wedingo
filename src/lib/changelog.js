@@ -1,5 +1,14 @@
 export const CHANGELOG = [
   {
+    version: "2.4.4",
+    date: "2026-07-17",
+    changes: [
+      "body::before fijo fullscreen con gradiente animado por tema",
+      "app-scene con background del tema para evitar bordes",
+      "Secciones con min-height: 100vh para compatibilidad Safari",
+    ],
+  },
+  {
     version: "2.4.3",
     date: "2026-07-17",
     changes: [
