@@ -282,6 +282,8 @@ export function AppProvider({ children }) {
         if (parsed.backgroundImage) parsed.backgroundImage = await loadDecryptedField(inviteToken, parsed.backgroundImage);
         if (parsed.couplePhoto) parsed.couplePhoto = await loadDecryptedField(inviteToken, parsed.couplePhoto);
         const hydrated = { ...defaultConfig, ...parsed };
+        // galleryImages viene de la subcolección, no del doc principal
+        delete hydrated.galleryImages;
         setConfig(hydrated);
         setFormData(hydrated);
         // Carga las imágenes de la galería desde Firestore para mostrarlas
@@ -334,14 +336,15 @@ export function AppProvider({ children }) {
       if (parsed.backgroundImage) parsed.backgroundImage = await loadDecryptedField(inviteToken, parsed.backgroundImage);
       if (parsed.couplePhoto) parsed.couplePhoto = await loadDecryptedField(inviteToken, parsed.couplePhoto);
       const hydrated = { ...defaultConfig, ...parsed };
+      delete hydrated.galleryImages;
       setConfig(hydrated);
       setFormData(hydrated);
       setHasStoredConfig(true);
       // Recarga también la galería al restaurar
       loadGallery(inviteToken).then((urls) => {
-        if (urls.length) {
-          setFormData((prev) => ({ ...prev, galleryImages: JSON.stringify(urls.slice(0, 10)) }));
-        }
+        const str = JSON.stringify(urls.slice(0, 10));
+        setFormData((prev) => ({ ...prev, galleryImages: str }));
+        setConfig((prev) => ({ ...prev, galleryImages: str }));
       }).catch(() => {});
     } catch {}
   }, [inviteToken]);

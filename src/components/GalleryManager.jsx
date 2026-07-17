@@ -39,10 +39,13 @@ const GalleryManager = memo(function GalleryManager({ images, onChange, inviteTo
         const desc = typeof item === "string" ? "" : item.description || "";
         const docId = typeof item === "string" ? null : item.id || null;
         return (
-          <div key={docId || i} style={{ display: "flex", gap: "0.5rem", alignItems: "center", background: "color-mix(in srgb, var(--setup-field-bg) 40%, transparent)", borderRadius: "0.5rem", padding: "0.5rem" }}>
-            <div style={{ position: "relative", flexShrink: 0 }}>
-              <img src={src} alt={desc || t("setup.galleryUploadLabel")} style={{ width: "5rem", height: "5rem", objectFit: "cover", borderRadius: "0.4rem", flexShrink: 0 }} />
-              <button type="button" onClick={() => handleDelete(i, item)} style={{ position: "absolute", top: "-4px", right: "-4px", width: "1.2rem", height: "1.2rem", borderRadius: "999px", border: "none", background: "rgba(0,0,0,0.65)", color: "#fff", fontSize: "0.7rem", cursor: "pointer", display: "grid", placeItems: "center", lineHeight: 1 }}>×</button>
+          <div key={docId || i} style={{ background: "color-mix(in srgb, var(--setup-field-bg) 40%, transparent)", borderRadius: "0.5rem", padding: "0.5rem" }}>
+            <div style={{ display: "flex", gap: "0.5rem", alignItems: "flex-start" }}>
+              <div style={{ position: "relative", flexShrink: 0 }}>
+                <img src={src} alt={desc || t("setup.galleryUploadLabel")} style={{ width: "5rem", height: "5rem", objectFit: "cover", borderRadius: "0.4rem" }} />
+                <button type="button" onClick={() => handleDelete(i, item)} style={{ position: "absolute", top: "-4px", right: "-4px", width: "1.2rem", height: "1.2rem", borderRadius: "999px", border: "none", background: "rgba(0,0,0,0.65)", color: "#fff", fontSize: "0.7rem", cursor: "pointer", display: "grid", placeItems: "center", lineHeight: 1 }}>×</button>
+              </div>
+              <span style={{ fontSize: "0.8rem", color: "var(--setup-muted)", fontWeight: 600, marginTop: "0.2rem" }}>#{i + 1}</span>
             </div>
             <input
               type="text"
@@ -51,7 +54,7 @@ const GalleryManager = memo(function GalleryManager({ images, onChange, inviteTo
               onChange={(e) => handleDescriptionChange(i, e.target.value.slice(0, 200))}
               onBlur={(e) => handleBlur(docId, e.target.value.slice(0, 200))}
               placeholder={t("setup.galleryDescriptionPlaceholder")}
-              style={{ flex: 1, fontSize: "0.82rem", padding: "0.35rem 0.5rem" }}
+              style={{ width: "100%", marginTop: "0.35rem", fontSize: "0.82rem", padding: "0.35rem 0.5rem", boxSizing: "border-box" }}
             />
           </div>
         );
