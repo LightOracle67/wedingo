@@ -1,7 +1,7 @@
 import { memo } from "react";
 import "./Fireflies.css";
 
-const COUNT = 16;
+const COUNT = 24;
 
 const Fireflies = memo(function Fireflies() {
   return (
