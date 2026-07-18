@@ -13,6 +13,7 @@ const RTL_LANGS = new Set(["ar", "he", "ur", "fa", "ps", "ku"]);
 import AccessibilityPanel from "./components/AccessibilityPanel";
 import LegalModal from "./components/LegalModal";
 import ChangelogModal from "./components/ChangelogModal";
+import Fireflies from "./components/Fireflies";
 import { APP_VERSION } from "./lib/constants";
 import LandingPage from "./pages/LandingPage";
 import { SUPERADMIN_ROUTE, SUPERADMIN_DASHBOARD } from "./lib/superadmin";
@@ -119,6 +120,7 @@ function AppShell() {
         </footer>
       )}
 
+      <Fireflies />
       <AccessibilityPanel open={showA11y} onClose={() => setShowA11y(false)} />
       {legalSection ? <LegalModal section={legalSection} onClose={() => setLegalSection("")} /> : null}
       {showChangelog ? <ChangelogModal onClose={() => setShowChangelog(false)} /> : null}
