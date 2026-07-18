@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES } from "../lib/constants";
 import { useToast } from "../hooks/useToast";
 
@@ -19,6 +19,8 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }) 
   const [slots, setSlots] = useState(Array.from({ length: SLOT_COUNT }, () => null));
   const [loading, setLoading] = useState(true);
   const [uploadingSlots, setUploadingSlots] = useState(new Set());
+  const slotsRef = useRef(slots);
+  slotsRef.current = slots;
 
   const loadGallery = useCallback(async () => {
     if (!inviteToken) return;
@@ -96,7 +98,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }) 
   }, []);
 
   const handleDescriptionBlur = useCallback(async (slotIndex, currentValue) => {
-    const item = slots[slotIndex];
+    const item = slotsRef.current[slotIndex];
     if (!item?.id) return;
     const safe = String(currentValue ?? "").slice(0, 200).trim();
     try {
@@ -104,8 +106,9 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }) 
       await updateGalleryDescription(inviteToken, item.id, safe);
     } catch (err) {
       console.warn("updateGalleryDescription failed", err);
+      addToast("error", t("setup.galleryDescriptionSaveFailed"));
     }
-  }, [inviteToken, slots]);
+  }, [inviteToken, addToast, t]);
 
   if (loading) {
     return <div className="page-loading" />;
