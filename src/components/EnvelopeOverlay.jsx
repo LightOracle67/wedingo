@@ -30,7 +30,6 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secon
               <span className="envelope__address-line envelope__address-line--bold">
                 {firstName} {t("envelope.and")} {secondName}
               </span>
-              <span className="envelope__address-message">{message}</span>
             </div>
             <div className="envelope__stamp">
               <div className="envelope__stamp-inner">♥</div>
