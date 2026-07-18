@@ -1,11 +1,11 @@
 import i18n from "../i18n";
-import { addDoc, getDocs, updateDoc, deleteDoc, collection, writeBatch, doc, orderBy, query, where } from "firebase/firestore";
+import { addDoc, getDocs, updateDoc, deleteDoc, collection, writeBatch, doc, query, where } from "firebase/firestore";
 import { db } from "./firebase";
 import { compressImage } from "./image-utils";
 import { encrypt, decrypt } from "./crypto-utils";
 
 const GALLERY_DATA_COL = collection(db, "galleryData");
-const galDataByToken = (token) => query(GALLERY_DATA_COL, where("inviteToken", "==", token), orderBy("position", "asc"));
+const galDataByToken = (token) => query(GALLERY_DATA_COL, where("inviteToken", "==", token));
 
 /**
  * Comprime y cifra una imagen para su almacenamiento seguro.
@@ -84,6 +84,7 @@ export async function loadGallery(inviteToken) {
         } catch {}
       }
     }
+    result.sort((a, b) => (a.position ?? 99) - (b.position ?? 99));
     return result;
   } catch { return []; }
 }
