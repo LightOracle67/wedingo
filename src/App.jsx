@@ -102,7 +102,7 @@ function AppShell() {
         <CookieConsent />
       </main>
 
-      {!isEditingRoute && (
+      {!isEditingRoute && !isAdminTokenLoggedIn && (
         <footer className="app-footer">
           <div className="app-footer__left">
             <LanguageSwitcher />
