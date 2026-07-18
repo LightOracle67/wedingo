@@ -1729,13 +1729,6 @@ body::after {
   text-align: center;
 }
 
-.invite-shell:hover {
-  box-shadow:
-    0 28px 72px color-mix(in srgb, var(--invite-shell-shadow) 96%, transparent),
-    0 0 48px color-mix(in srgb, var(--invite-shell-glow) 80%, transparent);
-  transition: box-shadow 600ms ease;
-}
-
 @keyframes subtle-float {
   0%,
   100% {
@@ -2150,16 +2143,15 @@ h6 {
   transition: border-color 260ms ease, background-color 260ms ease, box-shadow 260ms ease, transform 300ms ease;
 }
 
-.invite-shell:hover {
-  transform: scale(1.005);
-}
-
 .story-card {
   transition: border-color 260ms ease, background-color 260ms ease, box-shadow 260ms ease, transform 300ms ease;
 }
 
 .story-section--is-active .story-card:hover {
   transform: scale(1.005);
+  box-shadow:
+    0 28px 72px color-mix(in srgb, var(--invite-shell-shadow) 96%, transparent),
+    0 0 48px color-mix(in srgb, var(--invite-shell-glow) 80%, transparent);
 }
 
 .setup-collapsible__summary {
