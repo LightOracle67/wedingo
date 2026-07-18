@@ -27,7 +27,6 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secon
           </div>
           <div className="envelope__panel envelope__panel--front">
             <div className="envelope__address">
-              <span className="envelope__address-line">{t("envelope.addressLine1")}</span>
               <span className="envelope__address-line envelope__address-line--bold">
                 {firstName} {t("envelope.and")} {secondName}
               </span>
