@@ -41,8 +41,9 @@ export async function addGalleryImage(inviteToken, encrypted, dataUrl, position,
 
 export async function updateGalleryDescription(inviteToken, imageId, description) {
   const safe = String(description || "").slice(0, 200).trim();
+  const encrypted = safe ? await encrypt(safe, inviteToken) : "";
   await updateDoc(doc(GALLERY_DATA_COL, imageId), {
-    description: safe,
+    descriptionEncrypted: encrypted,
   });
 }
 
@@ -65,6 +66,8 @@ export async function loadDecryptedField(inviteToken, encrypted) {
 
 /**
  * Carga todas las imágenes de la galería desde galleryData, ordenadas por posición.
+ * Desencripta tanto la imagen como la descripción (descriptionEncrypted),
+ * con fallback al campo description legacy.
  */
 export async function loadGallery(inviteToken) {
   try {
@@ -75,11 +78,17 @@ export async function loadGallery(inviteToken) {
       if (enc) {
         try {
           const url = await decrypt(enc, inviteToken);
+          let description = "";
+          try {
+            const encDesc = d.data().descriptionEncrypted;
+            if (encDesc) description = await decrypt(encDesc, inviteToken);
+          } catch {}
+          if (!description) description = d.data().description || "";
           result.push({
             id: d.id,
             url,
             position: d.data().position,
-            description: d.data().description || "",
+            description,
           });
         } catch {}
       }
