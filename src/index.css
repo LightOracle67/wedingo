@@ -4969,18 +4969,21 @@ html.a11y-font-scale select {
   align-items: center;
   flex-shrink: 0;
   position: relative;
-  min-height: 200px;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 0.7rem;
+  background: rgba(0, 0, 0, 0.04);
 }
 
 /** Imagen principal: se ajusta al contenedor sin recortar. */
 .gallery-main-img {
   max-width: 100%;
-  max-height: 50vh;
+  max-height: 100%;
   width: auto;
   height: auto;
   object-fit: contain;
-  border-radius: 0.9rem;
-  border: 1px solid color-mix(in srgb, var(--invite-shell-border) 70%, transparent);
+  border-radius: 0.5rem;
 }
 
 .gallery-fade {
