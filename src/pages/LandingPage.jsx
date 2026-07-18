@@ -12,6 +12,8 @@ import { safeSetItem } from "../lib/storage";
 import { saveSession, firestoreSessionExpiry } from "../lib/sessionVars";
 import { useFocusTrap, useEscapeKey } from "../hooks/useFocusTrap";
 import "../styles/landing.css";
+import "../styles/admin.css";
+import "../styles/modals.css";
 
 export default function LandingPage() {
   const { t } = useTranslation();
