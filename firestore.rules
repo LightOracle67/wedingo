@@ -68,7 +68,7 @@ service cloud.firestore {
         && request.resource.data.position >= 0
         && request.resource.data.position < 10
         && hasActiveSession(request.resource.data.inviteToken);
-      allow update: if hasActiveSession(resource.data.inviteToken)
+      allow update: if sessionExists(resource.data.inviteToken)
         && (
           (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['description'])
             && request.resource.data.description is string
@@ -79,7 +79,7 @@ service cloud.firestore {
             && request.resource.data.position >= 0
             && request.resource.data.position < 10)
         );
-      allow delete: if isSuperAdmin() || hasActiveSession(resource.data.inviteToken);
+      allow delete: if isSuperAdmin() || sessionExists(resource.data.inviteToken);
     }
 
     match /setupTokens/{tokenId} {
