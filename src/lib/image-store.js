@@ -1,23 +1,14 @@
 import i18n from "../i18n";
-import { addDoc, getDocs, updateDoc, deleteDoc, collection, writeBatch, doc, orderBy, query } from "firebase/firestore";
+import { addDoc, getDocs, updateDoc, deleteDoc, collection, writeBatch, doc, orderBy, query, where } from "firebase/firestore";
 import { db } from "./firebase";
 import { compressImage } from "./image-utils";
 import { encrypt, decrypt } from "./crypto-utils";
 
-const GALLERY_COL = (token) => collection(db, "invitations", token, "gallery");
+const GALLERY_DATA_COL = collection(db, "galleryData");
+const galDataByToken = (token) => query(GALLERY_DATA_COL, where("inviteToken", "==", token), orderBy("position", "asc"));
 
 /**
  * Comprime y cifra una imagen para su almacenamiento seguro.
- *
- * Flujo: comprime la imagen → cifra el data URL con AES-256-GCM →
- * valida que el tamaño cifrado no supere 800 KB.
- *
- * @param {string} inviteToken - Token de la invitación (usado como clave de cifrado).
- * @param {File} file - Archivo de imagen a subir.
- * @param {Function} [onProgress] - Callback opcional para reportar progreso (0–100).
- *        Recibe un número entre 0 y 100 indicando el porcentaje completado.
- * @returns {Promise<{ encrypted: string, dataUrl: string }>} Imagen cifrada y su versión original.
- * @throws {Error} Si la imagen comprimida y cifrada sigue superando 800 KB.
  */
 export async function uploadImage(inviteToken, file, onProgress) {
   onProgress?.(10);
@@ -33,39 +24,38 @@ export async function uploadImage(inviteToken, file, onProgress) {
 }
 
 /**
- * Guarda una imagen cifrada en la subcolección gallery de Firestore
- * con una descripción vacía.
- *
- * @param {string} inviteToken - Token de la invitación.
- * @param {string} encrypted - Imagen cifrada en base64.
- * @param {string} dataUrl - Data URL original sin cifrar (para preview inmediato).
- * @param {Function} [onProgress] - Callback opcional para progreso (0–100).
- * @returns {Promise<{ id: string, dataUrl: string }>} ID del documento y dataUrl.
+ * Guarda una imagen cifrada en la colección galleryData.
  */
-export async function addGalleryImage(inviteToken, encrypted, dataUrl, order, onProgress) {
+export async function addGalleryImage(inviteToken, encrypted, dataUrl, position, onProgress) {
   onProgress?.(85);
-  const docRef = await addDoc(GALLERY_COL(inviteToken), {
+  const docRef = await addDoc(GALLERY_DATA_COL, {
+    inviteToken,
     data: encrypted,
     description: "",
-    order: order ?? Date.now(),
+    position: position ?? 0,
     createdAt: new Date().toISOString(),
   });
   onProgress?.(95);
   return { id: docRef.id, dataUrl };
 }
 
-/**
- * Actualiza la descripción de una imagen de la galería.
- *
- * @param {string} inviteToken - Token de la invitación.
- * @param {string} imageId - ID del documento en Firestore.
- * @param {string} description - Nueva descripción (máx 200 caracteres).
- */
 export async function updateGalleryDescription(inviteToken, imageId, description) {
   const safe = String(description || "").slice(0, 200).trim();
-  await updateDoc(doc(db, "invitations", inviteToken, "gallery", imageId), {
+  await updateDoc(doc(GALLERY_DATA_COL, imageId), {
     description: safe,
   });
+}
+
+/**
+ * Actualiza el orden de las imágenes: recibe { id, position }[] y actualiza en batch.
+ */
+export async function updateGalleryOrder(inviteToken, items) {
+  if (!items.length) return;
+  const batch = writeBatch(db);
+  for (const { id, position } of items) {
+    batch.update(doc(GALLERY_DATA_COL, id), { position });
+  }
+  await batch.commit();
 }
 
 export async function loadDecryptedField(inviteToken, encrypted) {
@@ -74,15 +64,11 @@ export async function loadDecryptedField(inviteToken, encrypted) {
 }
 
 /**
- * Carga todas las imágenes de la galería con sus metadatos.
- *
- * @param {string} inviteToken - Token de la invitación.
- * @returns {Promise<Array<{ id: string, url: string, description: string }>>}
+ * Carga todas las imágenes de la galería desde galleryData, ordenadas por posición.
  */
 export async function loadGallery(inviteToken) {
   try {
-    const q = query(GALLERY_COL(inviteToken), orderBy("order", "asc"), orderBy("createdAt", "asc"));
-    const snap = await getDocs(q);
+    const snap = await getDocs(galDataByToken(inviteToken));
     const result = [];
     for (const d of snap.docs) {
       const enc = d.data().data;
@@ -101,8 +87,11 @@ export async function loadGallery(inviteToken) {
   } catch { return []; }
 }
 
+/**
+ * Elimina TODAS las imágenes de la galería para una invitación.
+ */
 export async function deleteGallery(inviteToken) {
-  const snap = await getDocs(GALLERY_COL(inviteToken));
+  const snap = await getDocs(galDataByToken(inviteToken));
   if (snap.empty) return;
   const batch = writeBatch(db);
   snap.docs.forEach((d) => batch.delete(d.ref));
@@ -110,27 +99,8 @@ export async function deleteGallery(inviteToken) {
 }
 
 /**
- * Elimina una imagen individual de la galería.
- *
- * @param {string} inviteToken - Token de la invitación.
- * @param {string} imageId - ID del documento en Firestore.
+ * Elimina una imagen individual por su ID de documento.
  */
 export async function deleteGalleryImage(inviteToken, imageId) {
-  await deleteDoc(doc(db, "invitations", inviteToken, "gallery", imageId));
-}
-
-/**
- * Actualiza el orden de las imágenes en la galería.
- * Recibe un array de { id, order } y actualiza cada documento en batch.
- *
- * @param {string} inviteToken - Token de la invitación.
- * @param {Array<{ id: string, order: number }>} items - Lista de IDs con su nuevo orden.
- */
-export async function updateGalleryOrder(inviteToken, items) {
-  if (!items.length) return;
-  const batch = writeBatch(db);
-  for (const { id, order } of items) {
-    batch.update(doc(db, "invitations", inviteToken, "gallery", id), { order });
-  }
-  await batch.commit();
+  await deleteDoc(doc(GALLERY_DATA_COL, imageId));
 }

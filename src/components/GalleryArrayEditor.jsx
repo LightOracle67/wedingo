@@ -81,7 +81,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ images, onChange, 
   }, [parsed, onChange, inviteToken, persistOrder]);
 
   const persistOrder = useCallback(async (arr) => {
-    const items = arr.map((item, i) => ({ id: item.id, order: i })).filter(item => item.id);
+    const items = arr.map((item, i) => ({ id: item.id, position: i })).filter(item => item.id);
     if (!items.length) return;
     try {
       const { updateGalleryOrder } = await import("../lib/image-store");
