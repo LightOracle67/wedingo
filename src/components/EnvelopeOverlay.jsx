@@ -13,16 +13,15 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secon
 
   const handleClick = useCallback(() => {
     if (exiting) return;
-    if (!open) { setOpen(true); return; }
-    setOpen(true);
-    const t1 = setTimeout(() => setFlashPhase(1), 550);
-    const t2 = setTimeout(() => { setFlashPhase(2); setGoldenPhase(1); }, 1050);
-    const t3 = setTimeout(() => {
-      setGoldenPhase(2);
-      setExiting(true);
-      setTimeout(() => onOpen(), 800);
-    }, 1400);
-    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
+    if (!open) {
+      setOpen(true);
+      setTimeout(() => setFlashPhase(1), 400);
+      setTimeout(() => { setFlashPhase(2); setGoldenPhase(1); }, 900);
+      return;
+    }
+    setGoldenPhase(2);
+    setExiting(true);
+    setTimeout(() => onOpen(), 800);
   }, [onOpen, open, exiting]);
 
   return (
