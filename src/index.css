@@ -5232,7 +5232,7 @@ html.a11y-font-scale select {
   pointer-events: none;
   background: #fff;
   opacity: 0;
-  transition: opacity 1s ease;
+  transition: opacity 2s ease;
 }
 .envelope-flash--visible {
   opacity: 1;
@@ -5245,6 +5245,20 @@ html.a11y-font-scale select {
   place-items: center;
   margin: 0;
   padding: 2rem;
+  pointer-events: none;
+  transition: opacity 2s ease, transform 2.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.envelope-golden--in {
+  opacity: 0;
+  animation: golden-in 450ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.envelope-golden--out {
+  opacity: 0;
+  transform: translateY(-120%) scale(1.04);
+}
+
+.envelope-golden__glow {
+  display: block;
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(1.4rem, 5vw, 2.4rem);
   line-height: 1.6;
@@ -5256,16 +5270,6 @@ html.a11y-font-scale select {
     0 0 25px rgba(212, 175, 55, 0.5),
     0 0 60px rgba(212, 175, 55, 0.3);
   animation: golden-glow 3.5s ease-in-out infinite;
-  pointer-events: none;
-  transition: opacity 600ms ease, transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-.envelope-golden--in {
-  opacity: 0;
-  animation: golden-in 450ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-.envelope-golden--out {
-  opacity: 0;
-  transform: translateY(-120%) scale(1.04);
 }
 
 @keyframes golden-in {
@@ -5314,7 +5318,7 @@ html.a11y-font-scale select {
   backdrop-filter: blur(14px) brightness(1.15);
   -webkit-backdrop-filter: blur(14px) brightness(1.15);
   cursor: pointer;
-  transition: opacity 1.2s ease, transform 1.2s ease, backdrop-filter 1.2s ease, background 1.2s ease;
+  transition: opacity 2.5s ease, transform 2.5s ease, backdrop-filter 2.5s ease, background 2.5s ease;
 }
 .envelope-overlay--exit {
   opacity: 0; transform: scale(1.08);

@@ -21,14 +21,16 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secon
     }
     setShowText(false);
     setExiting(true);
-    setTimeout(() => onOpen(), 1600);
+    setTimeout(() => onOpen(), 3500);
   }, [onOpen, open, exiting]);
 
   return (
     <div className={`envelope-overlay ${exiting ? "envelope-overlay--exit" : ""}`} onClick={handleClick}>
       <div className={`envelope-flash ${showWhite ? "envelope-flash--visible" : ""}`} />
       {showText && (
-        <p className={`envelope-golden ${!exiting ? "envelope-golden--in" : "envelope-golden--out"}`}>{message}</p>
+        <p className={`envelope-golden ${!exiting ? "envelope-golden--in" : "envelope-golden--out"}`}>
+          <span className="envelope-golden__glow">{message}</span>
+        </p>
       )}
       <div className={`envelope-wrapper ${open ? "envelope-wrapper--open" : ""}`}>
         <div className="envelope">
