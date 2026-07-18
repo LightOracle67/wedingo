@@ -152,8 +152,8 @@
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   background: rgba(0, 0, 0, 0.88);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
   animation: gallery-lightbox-in 250ms ease both;
 }
 @keyframes gallery-lightbox-in {
