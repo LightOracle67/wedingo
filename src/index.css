@@ -5232,7 +5232,7 @@ html.a11y-font-scale select {
   pointer-events: none;
   background: #fff;
   opacity: 0;
-  transition: opacity 500ms ease;
+  transition: opacity 1s ease;
 }
 .envelope-flash--visible {
   opacity: 1;
@@ -5314,7 +5314,7 @@ html.a11y-font-scale select {
   backdrop-filter: blur(14px) brightness(1.15);
   -webkit-backdrop-filter: blur(14px) brightness(1.15);
   cursor: pointer;
-  transition: opacity 0.8s ease, transform 0.8s ease, backdrop-filter 0.8s ease, background 0.8s ease;
+  transition: opacity 1.2s ease, transform 1.2s ease, backdrop-filter 1.2s ease, background 1.2s ease;
 }
 .envelope-overlay--exit {
   opacity: 0; transform: scale(1.08);
