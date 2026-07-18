@@ -47,6 +47,7 @@ const AccommodationSection = lazy(() => import("./sections/AccommodationSection"
 const GallerySection = lazy(() => import("./sections/GallerySection"));
 import RsvpSection from "./sections/RsvpSection";
 import "../styles/decorations.css";
+import "../styles/admin.css";
 
 /**
  * Mapa de claves de sección a sus componentes React.
