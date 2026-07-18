@@ -70,11 +70,11 @@ service cloud.firestore {
         && hasActiveSession(request.resource.data.inviteToken);
       allow update: if hasActiveSession(request.resource.data.inviteToken)
         && (
-          (request.resource.data.keys().hasOnly(['description'])
+          (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['description'])
             && request.resource.data.description is string
             && request.resource.data.description.size() <= 200)
           ||
-          (request.resource.data.keys().hasOnly(['position'])
+          (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['position'])
             && request.resource.data.position is number
             && request.resource.data.position >= 0
             && request.resource.data.position < 10)
