@@ -102,8 +102,7 @@ function AppShell() {
         <CookieConsent />
       </main>
 
-      {!isEditingRoute && (
-        <footer className="app-footer">
+      <footer className="app-footer">
           <div className="app-footer__left">
             <LanguageSwitcher />
             <button type="button" className="a11y-trigger" onClick={() => setShowA11y(true)} aria-label={t("common.accessibility")}>♿</button>
@@ -118,7 +117,6 @@ function AppShell() {
             <button type="button" onClick={() => setShowChangelog(true)} className="app-footer__link" style={{ opacity: 0.4 }}>v{APP_VERSION}</button>
           </div>
         </footer>
-      )}
 
       <Fireflies />
       <AccessibilityPanel open={showA11y} onClose={() => setShowA11y(false)} />
