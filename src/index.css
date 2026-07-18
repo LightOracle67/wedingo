@@ -5028,7 +5028,8 @@ html.a11y-font-scale select {
   position: relative;
   justify-content: center;
   align-items: center;
-  background: color-mix(in srgb, var(--setup-field-bg) 30%, transparent);
+  background: linear-gradient(160deg, rgba(255,255,255,0.95) 0%, rgba(255,248,220,0.85) 40%, rgba(255,215,0,0.18) 100%);
+  padding: 0.75rem;
 }
 
 /** Imagen principal: se ajusta al contenedor sin recortar. */
@@ -5131,11 +5132,13 @@ html.a11y-font-scale select {
 /** Descripción/de pie de foto bajo la imagen principal. */
 .gallery-caption {
   font-size: 0.88rem;
-  color: var(--setup-subtitle);
+  color: #fff;
   margin-top: 0.5rem;
   font-style: italic;
   max-width: 100%;
   overflow-wrap: break-word;
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.35), 0 0 14px rgba(255, 215, 0, 0.15);
+  letter-spacing: 0.02em;
 }
 
 /* ── Envelope overlay ── */
