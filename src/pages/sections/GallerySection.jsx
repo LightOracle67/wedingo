@@ -207,41 +207,43 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
               else if (e.key === "ArrowRight") { e.preventDefault(); next(); }
             }}
           >
-            {fading && prevClamped !== null && mainLoaded[prevClamped] && (
+            <div className="gallery-main-image-wrap">
+              {fading && prevClamped !== null && mainLoaded[prevClamped] && (
+                <img
+                  src={images[prevClamped].url || images[prevClamped]}
+                  alt=""
+                  aria-hidden="true"
+                  className="gallery-fade gallery-fade--out gallery-main-img"
+                />
+              )}
+
               <img
-                src={images[prevClamped].url || images[prevClamped]}
-                alt=""
-                aria-hidden="true"
-                className="gallery-fade gallery-fade--out gallery-main-img"
+                src={currentImage?.url || currentImage}
+                alt={currentImage?.description || t("gallery.imageAlt")}
+                onLoad={() => setMainLoaded((p) => ({ ...p, [clamped]: true }))}
+                className={`gallery-main-img${fading ? " gallery-fade gallery-fade--in" : ""}`}
+                style={{ position: fading ? "absolute" : "relative" }}
               />
+            </div>
+
+            {/* ── Descripción de la imagen actual ── */}
+            {currentImage?.description && (
+              <p className="gallery-caption">{currentImage.description}</p>
             )}
 
-            <img
-              src={currentImage?.url || currentImage}
-              alt={currentImage?.description || t("gallery.imageAlt")}
-              onLoad={() => setMainLoaded((p) => ({ ...p, [clamped]: true }))}
-              className={`gallery-main-img${fading ? " gallery-fade gallery-fade--in" : ""}`}
-              style={{ position: fading ? "absolute" : "relative" }}
-            />
+            {/* ── Controles de navegación ── */}
+            {images.length > 1 && (
+              <>
+                <button type="button" onClick={prev} aria-label={t("gallery.prev")} className="gallery-nav gallery-nav--prev" disabled={fading}>
+                  ‹
+                </button>
+                <button type="button" onClick={next} aria-label={t("gallery.next")} className="gallery-nav gallery-nav--next" disabled={fading}>
+                  ›
+                </button>
+              </>
+            )}
           </div>
-
-          {/* ── Controles de navegación ── */}
-          {images.length > 1 && (
-            <>
-              <button type="button" onClick={prev} aria-label={t("gallery.prev")} className="gallery-nav gallery-nav--prev" disabled={fading}>
-                ‹
-              </button>
-              <button type="button" onClick={next} aria-label={t("gallery.next")} className="gallery-nav gallery-nav--next" disabled={fading}>
-                ›
-              </button>
-            </>
-          )}
         </div>
-
-        {/* ── Descripción de la imagen actual ── */}
-        {currentImage?.description && (
-          <p className="gallery-caption">{currentImage.description}</p>
-        )}
 
         {/* ── Miniaturas ── */}
         <div style={{ display: "flex", justifyContent: "center", gap: "0.4rem", marginTop: "0.6rem", flexWrap: "wrap" }}>
