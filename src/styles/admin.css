@@ -1260,15 +1260,6 @@ select.setup-input {
   min-width: 1.2rem;
   text-align: center;
 }
-  .section-order-item {
-    padding: 0.45rem 0.55rem;
-  }
-  .admin-bar,
-  .story-scroll-hint,
-  .whatsapp-share-btn,
-  .wedding-decoration {
-    display: none !important;
-  }
 .cookie-consent-actions .setup-button {
   flex: 1;
 }
