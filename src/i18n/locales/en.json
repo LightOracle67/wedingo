@@ -822,7 +822,8 @@
   "envelope": {
     "addressLine1": "To our dearest",
     "and": "&",
-    "tapHint": "Tap to open"
+    "tapHint": "Tap to open",
+    "tapContinue": "Tap to continue"
   },
   "calendar": {
     "defaultTitle": "Our wedding",
