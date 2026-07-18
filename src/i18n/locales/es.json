@@ -97,6 +97,7 @@
     "pending": "La información sobre alojamiento se compartirá próximamente."
   },
   "gallery": {
+    "lightboxLabel": "Imagen ampliada",
     "sectionLabel": "Galería",
     "title": "Nuestros momentos",
     "empty": "Pronto compartiremos nuestras fotos.",

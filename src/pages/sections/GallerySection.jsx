@@ -20,6 +20,9 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
   /** Indica si la galería está cargando. */
   const [loading, setLoading] = useState(true);
 
+  /** Índice de la imagen abierta en lightbox, o null si cerrado. */
+  const [lightboxIndex, setLightboxIndex] = useState(null);
+
   // ── Carga de imágenes desde Firestore ──
 
   useEffect(() => {
@@ -98,6 +101,36 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
   // Pausa el carrusel al hacer hover sobre la galería
   const pause = useCallback(() => setPaused(true), []);
   const resume = useCallback(() => setPaused(false), []);
+
+  // ── Lightbox ───────────────────────────────────────
+
+  const openLightbox = useCallback((i) => {
+    setPaused(true);
+    setLightboxIndex(i);
+  }, []);
+
+  const closeLightbox = useCallback(() => {
+    setLightboxIndex(null);
+  }, []);
+
+  const lightboxPrev = useCallback(() => {
+    setLightboxIndex((i) => (i - 1 + images.length) % images.length);
+  }, [images.length]);
+
+  const lightboxNext = useCallback(() => {
+    setLightboxIndex((i) => (i + 1) % images.length);
+  }, [images.length]);
+
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const handler = (e) => {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") lightboxPrev();
+      if (e.key === "ArrowRight") lightboxNext();
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [lightboxIndex, closeLightbox, lightboxPrev, lightboxNext]);
 
   // ── Navegación manual con fade ────────────────────────
 
@@ -221,8 +254,9 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
                 src={currentImage?.url || currentImage}
                 alt={currentImage?.description || t("gallery.imageAlt")}
                 onLoad={() => setMainLoaded((p) => ({ ...p, [clamped]: true }))}
+                onClick={() => openLightbox(clamped)}
                 className={`gallery-main-img${fading ? " gallery-fade gallery-fade--in" : ""}`}
-                style={{ position: fading ? "absolute" : "relative" }}
+                style={{ position: fading ? "absolute" : "relative", cursor: "pointer" }}
               />
             </div>
 
@@ -273,6 +307,52 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
           })}
         </div>
       </div>
+
+      {/* ── Lightbox ── */}
+      {lightboxIndex !== null && images[lightboxIndex] && (
+        <div
+          className="gallery-lightbox"
+          onClick={closeLightbox}
+          role="dialog"
+          aria-modal="true"
+          aria-label={t("gallery.lightboxLabel")}
+        >
+          <button
+            type="button"
+            className="gallery-lightbox__close"
+            onClick={closeLightbox}
+            aria-label={t("common.close")}
+          >×</button>
+
+          {images.length > 1 && (
+            <>
+              <button
+                type="button"
+                className="gallery-lightbox__nav gallery-lightbox__nav--prev"
+                onClick={(e) => { e.stopPropagation(); lightboxPrev(); }}
+                aria-label={t("gallery.prev")}
+              >‹</button>
+              <button
+                type="button"
+                className="gallery-lightbox__nav gallery-lightbox__nav--next"
+                onClick={(e) => { e.stopPropagation(); lightboxNext(); }}
+                aria-label={t("gallery.next")}
+              >›</button>
+            </>
+          )}
+
+          <img
+            className="gallery-lightbox__img"
+            src={images[lightboxIndex].url || images[lightboxIndex]}
+            alt={images[lightboxIndex].description || t("gallery.imageAlt")}
+            onClick={(e) => e.stopPropagation()}
+          />
+
+          {images[lightboxIndex].description && (
+            <p className="gallery-lightbox__caption">{images[lightboxIndex].description}</p>
+          )}
+        </div>
+      )}
     </section>
   );
 });
