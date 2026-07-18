@@ -5226,6 +5226,21 @@ html.a11y-font-scale select {
   max-width: 80vw;
 }
 
+/* ── Envelope flash overlay ── */
+.envelope-flash {
+  position: fixed; inset: 0; z-index: 9998;
+  pointer-events: none;
+  background: #fff;
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+.envelope-flash--in {
+  opacity: 1;
+}
+.envelope-flash--out {
+  opacity: 0;
+}
+
 /* ── Envelope overlay ── */
 .envelope-overlay {
   position: fixed; inset: 0; z-index: 9999;
