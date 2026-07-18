@@ -17,11 +17,18 @@
   animation: firefly-drift 35s ease-in-out infinite;
 }
 
-/* 4 trayectorias distintas con diferente patrón de brillo */
+/* 4 trayectorias · 4 variantes de color */
 .firefly:nth-child(4n+1) { animation-name: firefly-drift-1; }
 .firefly:nth-child(4n+2) { animation-name: firefly-drift-2; }
 .firefly:nth-child(4n+3) { animation-name: firefly-drift-3; }
 .firefly:nth-child(4n+4) { animation-name: firefly-drift-4; }
+
+.firefly:nth-child(6n+1) { filter: saturate(0.7) brightness(0.9); }
+.firefly:nth-child(6n+2) { filter: saturate(1.1) brightness(1.1); }
+.firefly:nth-child(6n+3) { filter: saturate(0.85) brightness(1.05); }
+.firefly:nth-child(6n+4) { filter: saturate(1.2) brightness(0.95); }
+.firefly:nth-child(6n+5) { filter: saturate(0.6) brightness(0.85); }
+.firefly:nth-child(6n+6) { filter: saturate(1.0) brightness(1.2); }
 
 /* ── Trayectoria 1: amplia, lenta, brillo intenso intermitente ── */
 @keyframes firefly-drift-1 {
