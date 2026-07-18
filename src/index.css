@@ -5156,12 +5156,18 @@ html.a11y-font-scale select {
 .envelope-overlay {
   position: fixed; inset: 0; z-index: 9999;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  background: linear-gradient(160deg, #2c1810 0%, #4a2820 30%, #2c1810 60%, #1a0e08 100%);
+  background: rgba(30, 8, 8, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   cursor: pointer;
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition: opacity 0.8s ease, transform 0.8s ease, backdrop-filter 0.8s ease, background 0.8s ease;
 }
 .envelope-overlay--exit {
-  opacity: 0; transform: scale(1.08); pointer-events: none;
+  opacity: 0; transform: scale(1.08);
+  backdrop-filter: blur(0);
+  -webkit-backdrop-filter: blur(0);
+  background: rgba(30, 8, 8, 0.2);
+  pointer-events: none;
 }
 .envelope-wrapper {
   perspective: 1200px;
@@ -5186,9 +5192,17 @@ html.a11y-font-scale select {
 }
 .envelope__flap-inner {
   width: 100%; height: 100%;
-  background: linear-gradient(160deg, #e8d5c0 0%, #dcc4a8 40%, #e0c8aa 100%);
+  background: linear-gradient(160deg, #7a1a1a 0%, #8c2020 30%, #9e2626 60%, #7a1a1a 100%);
   clip-path: polygon(0 0, 100% 0, 50% 85%);
-  box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.3);
+}
+.envelope__flap-inner::after {
+  content: ""; position: absolute; inset: 3px;
+  clip-path: polygon(0 0, 100% 0, 50% 83%);
+  border: 1.5px solid rgba(212, 175, 55, 0.5);
+  border-bottom: none;
+  border-radius: 0;
+  pointer-events: none;
 }
 .envelope__panel {
   position: absolute; inset: 0;
@@ -5196,40 +5210,53 @@ html.a11y-font-scale select {
 }
 .envelope__panel--front {
   z-index: 2;
-  background: linear-gradient(160deg, #f0e0d0 0%, #e8d5c0 50%, #e0c8b0 100%);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.25), 0 2px 8px rgba(0,0,0,0.15);
+  background: linear-gradient(160deg, #6e1818 0%, #8c2020 30%, #7a1a1a 60%, #5c1414 100%);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35), 0 2px 8px rgba(0,0,0,0.2);
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   overflow: hidden;
 }
 .envelope__panel--front::after {
   content: ""; position: absolute; inset: 4px;
-  border: 1px solid rgba(180, 150, 120, 0.25);
+  border: 1.5px solid rgba(212, 175, 55, 0.45);
   border-radius: 4px;
   pointer-events: none;
 }
+.envelope__panel--front .envelope__address::before,
+.envelope__panel--front .envelope__address::after {
+  content: "✦";
+  font-size: 0.9rem;
+  color: rgba(212, 175, 55, 0.5);
+}
 .envelope__panel--back {
   z-index: 1;
-  background: linear-gradient(160deg, #e0c8b0 0%, #d8bca0 100%);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  background: linear-gradient(160deg, #5c1414 0%, #4a1010 100%);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
   display: flex; align-items: center; justify-content: center;
 }
+.envelope__panel--back::before {
+  content: ""; position: absolute; inset: 4px;
+  border: 1.5px solid rgba(212, 175, 55, 0.25);
+  border-radius: 4px;
+  pointer-events: none;
+}
 .envelope__address {
-  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
   z-index: 1;
 }
 .envelope__address-line {
   font-family: Georgia, "Times New Roman", serif;
-  color: #5a4030; font-size: 0.85rem; letter-spacing: 0.04em;
+  color: #d4af37; font-size: 0.85rem; letter-spacing: 0.04em;
 }
 .envelope__address-line--bold {
-  font-size: 1rem; font-weight: 700; color: #3a2820;
-  border-bottom: 1px solid rgba(90, 64, 48, 0.2); padding-bottom: 3px;
+  font-size: 1.05rem; font-weight: 700; color: #f0d68a;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3); padding-bottom: 3px;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.2);
 }
 .envelope__address-message {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 0.7rem;
   line-height: 1.5;
-  color: #6a5040;
+  color: #d4af37;
   text-align: center;
   font-style: italic;
   max-height: 80px;
@@ -5237,29 +5264,30 @@ html.a11y-font-scale select {
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
+  opacity: 0.85;
 }
 .envelope__stamp {
   position: absolute; top: 14px; right: 14px; z-index: 1;
   width: 44px; height: 52px;
-  background: linear-gradient(135deg, #d4b8a0 0%, #c8a888 100%);
-  border: 2px solid rgba(180, 150, 120, 0.4);
+  background: linear-gradient(135deg, #8c2020 0%, #6e1818 100%);
+  border: 2px solid rgba(212, 175, 55, 0.5);
   display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
 }
 .envelope__stamp::after {
   content: ""; position: absolute; inset: 3px;
-  border: 1px dashed rgba(180, 150, 120, 0.3);
+  border: 1px dashed rgba(212, 175, 55, 0.3);
   border-radius: 1px;
 }
 .envelope__stamp-inner {
-  font-size: 1rem; color: #8a6050; z-index: 1;
+  font-size: 1.1rem; color: #d4af37; z-index: 1;
 }
 .envelope__letter {
   width: 88%;
   padding: 1rem 0.9rem;
   background: linear-gradient(160deg, #faf4ec 0%, #f5ece0 100%);
   border-radius: 3px;
-  box-shadow: 0 -1px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 -1px 6px rgba(0,0,0,0.15);
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -5301,7 +5329,7 @@ html.a11y-font-scale select {
 }
 
 .envelope__hint {
-  color: rgba(255,255,255,0.4); font-size: 0.85rem; margin-top: 2.5rem;
+  color: rgba(212, 175, 55, 0.5); font-size: 0.85rem; margin-top: 2.5rem;
   letter-spacing: 0.08em; font-family: Georgia, serif; font-style: italic;
   animation: envelope-hint-pulse 2.5s ease-in-out infinite;
 }
