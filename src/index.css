@@ -1139,23 +1139,14 @@ body::before {
   background-image:
     linear-gradient(var(--page-wash), var(--page-wash)),
     var(--wedding-background-image);
-  background-position:
-    center,
-    center,
-    center;
-  background-repeat:
-    no-repeat,
-    no-repeat,
-    no-repeat;
-  background-size:
-    cover,
-    cover,
-    cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   filter: blur(var(--page-blur));
   transform: scale(1.04);
   transform-origin: center;
   opacity: 0.9;
-  will-change: filter, transform, background-position;
+  will-change: transform;
   pointer-events: none;
   z-index: 0;
   animation: bg-shimmer 24s ease-in-out infinite alternate;
@@ -1163,15 +1154,15 @@ body::before {
 
 @keyframes bg-shimmer {
   0% {
-    filter: blur(var(--page-blur)) brightness(1);
+    filter: blur(var(--page-blur));
     transform: scale(1.04);
   }
   50% {
-    filter: blur(var(--page-blur)) brightness(1.04);
+    filter: blur(var(--page-blur));
     transform: scale(1.045);
   }
   100% {
-    filter: blur(var(--page-blur)) brightness(1);
+    filter: blur(var(--page-blur));
     transform: scale(1.04);
   }
 }
