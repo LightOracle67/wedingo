@@ -1,163 +1,181 @@
-import { memo, useCallback, useRef } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES } from "../lib/constants";
 import { useToast } from "../hooks/useToast";
 
-const MAX_GALLERY = 10;
+const SLOT_COUNT = 10;
 
-const btnBase = {
-  width: "1.5rem",
-  height: "1.5rem",
-  borderRadius: "0.25rem",
-  border: "1px solid var(--setup-field-border)",
-  background: "var(--setup-field-bg)",
-  color: "var(--setup-title)",
-  cursor: "pointer",
-  display: "grid",
-  placeItems: "center",
-  fontSize: "0.8rem",
-  lineHeight: 1,
-  padding: 0,
+const galleryItemStyle = {
+  border: "1px solid var(--setup-border)",
+  borderRadius: "0.5rem",
+  padding: "0.5rem",
+  background: "color-mix(in srgb, var(--setup-field-bg) 30%, transparent)",
+  display: "flex",
+  flexDirection: "column",
+  gap: "0.35rem",
 };
 
-const GalleryArrayEditor = memo(function GalleryArrayEditor({ images, onChange, inviteToken, t }) {
+const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }) {
   const { addToast, startUploadToast } = useToast();
-  const galleryRef = useRef(null);
+  const [slots, setSlots] = useState(Array.from({ length: SLOT_COUNT }, () => null));
+  const [loading, setLoading] = useState(true);
+  const [uploadingSlots, setUploadingSlots] = useState(new Set());
 
-  let parsed;
-  try { parsed = JSON.parse(images || "[]"); } catch { parsed = []; }
-
-  const persistOrder = useCallback(async (arr) => {
-    const items = arr.map((item, i) => ({ id: item.id, position: i })).filter(item => item.id);
-    if (!items.length) return;
+  const loadGallery = useCallback(async () => {
+    if (!inviteToken) return;
+    setLoading(true);
     try {
-      const { updateGalleryOrder } = await import("../lib/image-store");
-      await updateGalleryOrder(inviteToken, items);
-    } catch {}
+      const { loadGallery: loadFn } = await import("../lib/image-store");
+      const images = await loadFn(inviteToken);
+      const newSlots = Array.from({ length: SLOT_COUNT }, () => null);
+      for (const img of images) {
+        if (img.position !== undefined && img.position < SLOT_COUNT) {
+          newSlots[img.position] = { id: img.id, url: img.url, description: img.description || "" };
+        }
+      }
+      setSlots(newSlots);
+    } catch {} finally {
+      setLoading(false);
+    }
   }, [inviteToken]);
 
-  const handleUpload = useCallback(async (e) => {
-    const files = Array.from(e.target.files || []);
+  useEffect(() => { loadGallery(); }, [loadGallery]);
+
+  const handleUpload = useCallback(async (e, slotIndex) => {
+    const file = e.target.files?.[0];
     const input = e.target;
-    if (!files.length) return;
-    const valid = files.filter(f => ALLOWED_UPLOAD_TYPES.has(f.type) && f.size <= MAX_UPLOAD_SIZE_BYTES);
-    if (!valid.length) { addToast("error", t("setup.noValidFiles")); return; }
-    let current;
-    try { current = JSON.parse(images || "[]"); } catch { current = []; }
-    if (current.length >= MAX_GALLERY) {
-      addToast("error", t("setup.galleryMaxReached", { max: MAX_GALLERY }));
-      if (input) input.value = "";
-      return;
-    }
-    const remaining = MAX_GALLERY - current.length;
-    const toUpload = valid.slice(0, remaining);
-    if (valid.length > remaining) {
-      addToast("warning", t("setup.galleryTrimmed", { selected: valid.length, max: MAX_GALLERY }));
-    }
-    const upload = startUploadToast(t("setup.galleryUploading", { total: toUpload.length }));
+    if (!file) return;
+    if (!ALLOWED_UPLOAD_TYPES.has(file.type)) { addToast("error", t("setup.errorFileFormat")); if (input) input.value = ""; return; }
+    if (file.size > MAX_UPLOAD_SIZE_BYTES) { addToast("error", t("setup.errorFileSize")); if (input) input.value = ""; return; }
+
+    setUploadingSlots((prev) => new Set(prev).add(slotIndex));
+    const upload = startUploadToast(t("setup.galleryUploading", { total: 1 }));
     try {
-      const { uploadImage, addGalleryImage } = await import("../lib/image-store");
-      const newImages = [...current];
-      for (let i = 0; i < toUpload.length; i++) {
-        const file = toUpload[i];
-        const fileBase = Math.round((i / toUpload.length) * 100);
-        const fileSpan = Math.round(100 / toUpload.length);
-        const onFileProgress = (p) => {
-          upload.update(fileBase + Math.round((p / 100) * fileSpan));
-        };
-        const { encrypted, dataUrl } = await uploadImage(inviteToken, file, onFileProgress);
-        const saved = await addGalleryImage(inviteToken, encrypted, dataUrl, newImages.length, onFileProgress);
-        newImages.push({ id: saved.id, url: saved.dataUrl, description: "" });
+      const { uploadImage, addGalleryImage, deleteGalleryImage } = await import("../lib/image-store");
+      const { encrypted, dataUrl } = await uploadImage(inviteToken, file, (p) => upload.update(p));
+      const existing = slots[slotIndex];
+      if (existing?.id) {
+        await deleteGalleryImage(inviteToken, existing.id);
       }
-      onChange(JSON.stringify(newImages));
-      upload.complete(t("setup.galleryUploadSuccess", { count: toUpload.length }));
+      const saved = await addGalleryImage(inviteToken, encrypted, dataUrl, slotIndex, (p) => upload.update(85 + Math.round(p * 0.1)));
+      setSlots((prev) => {
+        const next = [...prev];
+        next[slotIndex] = { id: saved.id, url: saved.dataUrl, description: "" };
+        return next;
+      });
+      upload.complete(t("setup.galleryUploadSuccess", { count: 1 }));
     } catch {
       upload.error(t("setup.galleryUploadFailed"));
+    } finally {
+      setUploadingSlots((prev) => { const n = new Set(prev); n.delete(slotIndex); return n; });
     }
     if (input) input.value = "";
-  }, [images, onChange, inviteToken, startUploadToast, addToast, t]);
+  }, [inviteToken, slots, startUploadToast, addToast, t]);
 
-  const handleDelete = useCallback(async (index) => {
-    const arr = [...parsed];
-    const removed = arr.splice(index, 1)[0];
-    onChange(JSON.stringify(arr));
-    persistOrder(arr);
-    if (removed?.id) {
-      try {
-        const { deleteGalleryImage } = await import("../lib/image-store");
-        await deleteGalleryImage(inviteToken, removed.id);
-      } catch {}
-    }
-  }, [parsed, onChange, inviteToken, persistOrder]);
+  const handleDelete = useCallback(async (slotIndex) => {
+    const existing = slots[slotIndex];
+    if (!existing?.id) return;
+    try {
+      const { deleteGalleryImage } = await import("../lib/image-store");
+      await deleteGalleryImage(inviteToken, existing.id);
+      setSlots((prev) => {
+        const next = [...prev];
+        next[slotIndex] = null;
+        return next;
+      });
+    } catch {}
+  }, [inviteToken, slots]);
 
-  const handleMoveUp = useCallback((index) => {
-    if (index <= 0) return;
-    const arr = [...parsed];
-    [arr[index - 1], arr[index]] = [arr[index], arr[index - 1]];
-    onChange(JSON.stringify(arr));
-    persistOrder(arr);
-  }, [parsed, onChange, persistOrder]);
+  const handleDescriptionChange = useCallback((slotIndex, val) => {
+    setSlots((prev) => {
+      const next = [...prev];
+      if (next[slotIndex]) {
+        next[slotIndex] = { ...next[slotIndex], description: val };
+      }
+      return next;
+    });
+  }, []);
 
-  const handleMoveDown = useCallback((index) => {
-    if (index >= parsed.length - 1) return;
-    const arr = [...parsed];
-    [arr[index], arr[index + 1]] = [arr[index + 1], arr[index]];
-    onChange(JSON.stringify(arr));
-    persistOrder(arr);
-  }, [parsed, onChange, persistOrder]);
-
-  const handleDescriptionChange = useCallback((index, val) => {
-    const arr = [...parsed];
-    arr[index] = { ...arr[index], description: val };
-    onChange(JSON.stringify(arr));
-  }, [parsed, onChange]);
-
-  const handleBlur = useCallback(async (index) => {
-    const item = parsed[index];
+  const handleDescriptionBlur = useCallback(async (slotIndex) => {
+    const item = slots[slotIndex];
     if (!item?.id) return;
     try {
       const { updateGalleryDescription } = await import("../lib/image-store");
       await updateGalleryDescription(inviteToken, item.id, item.description);
     } catch {}
-  }, [parsed, inviteToken]);
+  }, [inviteToken, slots]);
+
+  if (loading) {
+    return <div className="page-loading" />;
+  }
 
   return (
     <div>
-      <label className="setup-upload" htmlFor="galleryUpload">
-        <span className="setup-upload__title">{t("setup.galleryUploadLabel")}</span>
-        <span className="setup-upload__subtitle">{t("setup.galleryUploadHint")}</span>
-      </label>
-      <input ref={galleryRef} id="galleryUpload" className="setup-upload__input" type="file" accept="image/jpeg,image/png,image/webp" multiple onChange={handleUpload} />
-
-      {parsed.length > 0 && (
-        <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "0.6rem", marginTop: "0.6rem" }}>
-          {parsed.map((item, i) => (
-            <div key={item.id || i} style={{ background: "color-mix(in srgb, var(--setup-field-bg) 40%, transparent)", borderRadius: "0.5rem", padding: "0.5rem" }}>
-              <div style={{ display: "flex", gap: "0.5rem", alignItems: "flex-start" }}>
-                <div style={{ position: "relative", flexShrink: 0 }}>
-                  <img src={item.url} alt={item.description || t("setup.galleryUploadLabel")} style={{ width: "5rem", height: "5rem", objectFit: "cover", borderRadius: "0.4rem" }} />
-                  <button type="button" onClick={() => handleDelete(i)} style={{ position: "absolute", top: "-4px", right: "-4px", width: "1.2rem", height: "1.2rem", borderRadius: "999px", border: "none", background: "rgba(0,0,0,0.65)", color: "#fff", fontSize: "0.7rem", cursor: "pointer", display: "grid", placeItems: "center", lineHeight: 1 }}>×</button>
-                </div>
-                <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem" }}>
-                  <span style={{ fontSize: "0.8rem", color: "var(--setup-muted)", fontWeight: 600 }}>#{i + 1}</span>
-                  <div style={{ display: "flex", gap: "0.25rem" }}>
-                    <button type="button" onClick={() => handleMoveUp(i)} disabled={i === 0} style={{ ...btnBase, opacity: i === 0 ? 0.3 : 1 }} aria-label={t("setup.galleryMoveUp")}>↑</button>
-                    <button type="button" onClick={() => handleMoveDown(i)} disabled={i >= parsed.length - 1} style={{ ...btnBase, opacity: i >= parsed.length - 1 ? 0.3 : 1 }} aria-label={t("setup.galleryMoveDown")}>↓</button>
-                  </div>
-                </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: "0.75rem" }}>
+        {Array.from({ length: SLOT_COUNT }, (_, i) => {
+          const item = slots[i];
+          const isUploading = uploadingSlots.has(i);
+          return (
+            <div key={i} style={galleryItemStyle}>
+              <div style={{ fontSize: "0.75rem", fontWeight: 600, color: "var(--setup-muted)", marginBottom: "0.15rem" }}>
+                #{i + 1}
               </div>
-              <input
-                type="text"
-                className="setup-input"
-                value={item.description || ""}
-                onChange={(e) => handleDescriptionChange(i, e.target.value.slice(0, 200))}
-                onBlur={() => handleBlur(i)}
-                placeholder={t("setup.galleryDescriptionPlaceholder")}
-                style={{ width: "100%", marginTop: "0.35rem", fontSize: "0.82rem", padding: "0.35rem 0.5rem", boxSizing: "border-box" }}
-              />
+
+              {item ? (
+                <div style={{ display: "flex", flexDirection: "column", gap: "0.35rem" }}>
+                  <div style={{ position: "relative" }}>
+                    <img
+                      src={item.url}
+                      alt={item.description || t("setup.galleryUploadLabel")}
+                      style={{ width: "100%", aspectRatio: "1.5", objectFit: "cover", borderRadius: "0.35rem" }}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => handleDelete(i)}
+                      style={{ position: "absolute", top: "3px", right: "3px", width: "1.3rem", height: "1.3rem", borderRadius: "999px", border: "none", background: "rgba(0,0,0,0.6)", color: "#fff", fontSize: "0.75rem", cursor: "pointer", display: "grid", placeItems: "center", lineHeight: 1 }}
+                      disabled={isUploading}
+                      aria-label={t("common.delete")}
+                    >×</button>
+                  </div>
+                  <input
+                    type="text"
+                    value={item.description}
+                    onChange={(e) => handleDescriptionChange(i, e.target.value)}
+                    onBlur={() => handleDescriptionBlur(i)}
+                    placeholder={t("setup.galleryDescriptionPlaceholder")}
+                    style={{ width: "100%", boxSizing: "border-box", fontSize: "0.8rem", padding: "0.3rem 0.4rem", borderRadius: "0.25rem", border: "1px solid var(--setup-field-border)", background: "var(--setup-field-bg)", color: "var(--setup-title)" }}
+                  />
+                  <label
+                    style={{ textAlign: "center", cursor: isUploading ? "not-allowed" : "pointer", fontSize: "0.75rem", color: "var(--setup-accent)", textDecoration: "underline", opacity: isUploading ? 0.5 : 1 }}
+                  >
+                    {isUploading ? t("setup.galleryUploading", { total: 1 }) : t("setup.replaceImage")}
+                    <input
+                      type="file"
+                      accept="image/jpeg,image/png,image/webp"
+                      style={{ display: "none" }}
+                      onChange={(e) => handleUpload(e, i)}
+                      disabled={isUploading}
+                    />
+                  </label>
+                </div>
+              ) : (
+                <label
+                  style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "140px", border: "2px dashed var(--setup-border)", borderRadius: "0.35rem", cursor: isUploading ? "not-allowed" : "pointer", color: "var(--setup-muted)", fontSize: "0.8rem", gap: "0.3rem", opacity: isUploading ? 0.5 : 1 }}
+                >
+                  <span style={{ fontSize: "1.5rem" }}>＋</span>
+                  <span>{isUploading ? t("setup.galleryUploading", { total: 1 }) : t("setup.galleryUploadLabel")}</span>
+                  <input
+                    type="file"
+                    accept="image/jpeg,image/png,image/webp"
+                    style={{ display: "none" }}
+                    onChange={(e) => handleUpload(e, i)}
+                    disabled={isUploading}
+                  />
+                </label>
+              )}
             </div>
-          ))}
-        </div>
-      )}
+          );
+        })}
+      </div>
     </div>
   );
 });
