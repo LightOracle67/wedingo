@@ -15,6 +15,7 @@ import LegalModal from "./components/LegalModal";
 import ChangelogModal from "./components/ChangelogModal";
 import Fireflies from "./components/Fireflies";
 import { APP_VERSION } from "./lib/constants";
+import { clearSession } from "./lib/sessionVars";
 import LandingPage from "./pages/LandingPage";
 import { SUPERADMIN_ROUTE, SUPERADMIN_DASHBOARD } from "./lib/superadmin";
 
@@ -102,7 +103,18 @@ function AppShell() {
         <CookieConsent />
       </main>
 
-      <footer className="app-footer">
+      {isEditingRoute ? (
+        <nav className="admin-bar">
+          <div className="admin-bar__inner">
+            <span className="admin-bar__title">{t("admin.barTitle")}</span>
+            <div className="admin-bar__links">
+              <a className="admin-bar__link" href={`/${inviteToken}`} target="_blank" rel="noreferrer">{t("admin.viewInvitation")}</a>
+              <button className="admin-bar__link" type="button" onClick={() => { clearSession(); window.location.href = `/${inviteToken}`; }}>{t("admin.logout")}</button>
+            </div>
+          </div>
+        </nav>
+      ) : (
+        <footer className="app-footer">
           <div className="app-footer__left">
             <LanguageSwitcher />
             <button type="button" className="a11y-trigger" onClick={() => setShowA11y(true)} aria-label={t("common.accessibility")}>♿</button>
@@ -117,6 +129,7 @@ function AppShell() {
             <button type="button" onClick={() => setShowChangelog(true)} className="app-footer__link" style={{ opacity: 0.4 }}>v{APP_VERSION}</button>
           </div>
         </footer>
+      )}
 
       <Fireflies />
       <AccessibilityPanel open={showA11y} onClose={() => setShowA11y(false)} />

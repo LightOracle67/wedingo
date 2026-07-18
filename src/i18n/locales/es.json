@@ -340,7 +340,10 @@
     "pdfTableAttendance": "Asistencia",
     "pdfTableCompanions": "Acomps",
     "pdfTableDiet": "Dieta",
-    "sectionsLabel": "Secciones"
+    "sectionsLabel": "Secciones",
+    "barTitle": "Wedingo · Admin",
+    "viewInvitation": "Ver invitación",
+    "logout": "Cerrar sesión"
   },
   "panel": {
     "confirmed": "Confirmados",
