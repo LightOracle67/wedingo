@@ -315,7 +315,8 @@
     "galleryDescriptionPlaceholder": "Descripción de la imagen...",
     "replaceImage": "Cambiar foto",
     "noValidFiles": "Ningún archivo válido. Máximo 20 MB, JPG/PNG.",
-    "hiddenSectionBadge": "oculta"
+    "hiddenSectionBadge": "oculta",
+    "galleryDescriptionSaveFailed": "Error al guardar la descripción"
   },
   "admin": {
     "tabs": {
