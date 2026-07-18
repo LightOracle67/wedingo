@@ -1241,6 +1241,7 @@ body::after {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   transition:
     background-color 520ms ease,
     background-image 520ms ease;
@@ -1266,7 +1267,10 @@ body::after {
   max-height: calc(100dvh - var(--navbar-height, 0px) - clamp(5rem, 10vw, 8rem));
   padding: clamp(0.8rem, 2.5vw, 1.5rem);
   box-sizing: border-box;
-  overflow: visible;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
   border: 1px solid color-mix(in srgb, var(--invite-shell-border) 72%, transparent);
   background: color-mix(in srgb, var(--invite-shell-bg) 74%, transparent);
   box-shadow:
