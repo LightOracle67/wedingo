@@ -26,6 +26,15 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ images, onChange, 
   let parsed;
   try { parsed = JSON.parse(images || "[]"); } catch { parsed = []; }
 
+  const persistOrder = useCallback(async (arr) => {
+    const items = arr.map((item, i) => ({ id: item.id, position: i })).filter(item => item.id);
+    if (!items.length) return;
+    try {
+      const { updateGalleryOrder } = await import("../lib/image-store");
+      await updateGalleryOrder(inviteToken, items);
+    } catch {}
+  }, [inviteToken]);
+
   const handleUpload = useCallback(async (e) => {
     const files = Array.from(e.target.files || []);
     const input = e.target;
@@ -79,15 +88,6 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ images, onChange, 
       } catch {}
     }
   }, [parsed, onChange, inviteToken, persistOrder]);
-
-  const persistOrder = useCallback(async (arr) => {
-    const items = arr.map((item, i) => ({ id: item.id, position: i })).filter(item => item.id);
-    if (!items.length) return;
-    try {
-      const { updateGalleryOrder } = await import("../lib/image-store");
-      await updateGalleryOrder(inviteToken, items);
-    } catch {}
-  }, [inviteToken]);
 
   const handleMoveUp = useCallback((index) => {
     if (index <= 0) return;
