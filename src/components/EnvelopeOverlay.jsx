@@ -12,7 +12,8 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secon
   const message = useMemo(() => randomMessage(i18n.language), [i18n.language]);
 
   const handleClick = useCallback(() => {
-    if (open) return;
+    if (exiting) return;
+    if (!open) { setOpen(true); return; }
     setOpen(true);
     const t1 = setTimeout(() => setFlashPhase(1), 550);
     const t2 = setTimeout(() => { setFlashPhase(2); setGoldenPhase(1); }, 1050);
@@ -22,7 +23,7 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secon
       setTimeout(() => onOpen(), 800);
     }, 1400);
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
-  }, [onOpen, open]);
+  }, [onOpen, open, exiting]);
 
   return (
     <div className={`envelope-overlay ${exiting ? "envelope-overlay--exit" : ""}`} onClick={handleClick}>
@@ -55,6 +56,8 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secon
       </div>
       {!open ? (
         <p className="envelope__hint">{t("envelope.tapHint")}</p>
+      ) : !exiting ? (
+        <p className="envelope__hint">{t("envelope.tapContinue")}</p>
       ) : null}
     </div>
   );

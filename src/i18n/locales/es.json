@@ -829,7 +829,8 @@
   "envelope": {
     "addressLine1": "Para nuestros queridos",
     "and": "y",
-    "tapHint": "Toca para abrir"
+    "tapHint": "Toca para abrir",
+    "tapContinue": "Toca para continuar"
   },
   "calendar": {
     "defaultTitle": "Nuestra boda",
