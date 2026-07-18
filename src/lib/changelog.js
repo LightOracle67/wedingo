@@ -1,5 +1,23 @@
 export const CHANGELOG = [
   {
+    version: "2.8.0",
+    date: "2026-07-18",
+    changes: [
+      "HeroSection unificada: usa story-card como el resto de secciones, eliminado invite-shell",
+      "Animaciones de entrada uniformes en todas las secciones (story-card-enter + hero-fade-up escalonado)",
+      "Hover glow en todos los story-card (box-shadow + scale), no solo en hero",
+      "Eliminado cifrado de descripciones de galería — se guardan en texto plano en el campo description",
+      "Galería: contenedor de imagen con aspect-ratio fijo 16:10, sin saltos de layout",
+      "Galería: blur→unblur 1.8s al cargar imagen, oculta el resize brusco",
+      "Galería: auto-avance a 5s (antes 3s)",
+      "Galería: animación de caption con fade+slide al cambiar de imagen",
+      "Corregido Firestore rules: diff().affectedKeys() en updates, resource.data para inviteToken",
+      "Corregido stale closure en descripciones con useRef",
+      "story-title y story-copy unificados con -webkit-text-stroke y text-shadow del hero",
+      "backdrop-filter unificado a blur(2px) en todos los contenedores",
+    ],
+  },
+  {
     version: "2.7.0",
     date: "2026-07-18",
     changes: [
