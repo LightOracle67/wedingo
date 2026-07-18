@@ -2144,14 +2144,13 @@ h6 {
 }
 
 .story-card {
-  transition: border-color 260ms ease, background-color 260ms ease, box-shadow 260ms ease, transform 300ms ease;
+  transition: border-color 260ms ease, background-color 260ms ease, box-shadow 260ms ease;
 }
 
 .story-section--is-active .story-card:hover {
-  transform: scale(1.005);
   box-shadow:
     0 28px 72px color-mix(in srgb, var(--invite-shell-shadow) 96%, transparent),
-    0 0 48px color-mix(in srgb, var(--invite-shell-glow) 80%, transparent);
+    0 0 60px color-mix(in srgb, var(--invite-shell-glow) 90%, transparent);
 }
 
 .setup-collapsible__summary {
