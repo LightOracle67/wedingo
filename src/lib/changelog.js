@@ -1,5 +1,41 @@
 export const CHANGELOG = [
   {
+    version: "2.6.0",
+    date: "2026-07-18",
+    changes: [
+      "La galería ahora muestra 10 slots fijos en una cuadrícula, cada uno con su propio botón de subir y campo de descripción",
+      "Las imágenes se guardan directamente en la colección galleryData de Firestore con su posición (0–9)",
+      "Eliminado el campo galleryImages del documento de invitación y de todo el flujo de guardado",
+      "GallerySection carga siempre desde Firestore, sin depender de datos hidratados",
+      "Añadida clave setup.replaceImage a los locales (fallback a es)",
+    ],
+  },
+  {
+    version: "2.5.2",
+    date: "2026-07-18",
+    changes: [
+      "Corregido ReferenceError en GalleryArrayEditor: persistOrder se usaba antes de su declaración const (TDZ)",
+    ],
+  },
+  {
+    version: "2.5.1",
+    date: "2026-07-18",
+    changes: [
+      "El formulario RSVP ahora tiene scroll interior controlado con overflow-y: auto y max-height dinámico",
+      "Corregido el desbordamiento del formulario fuera de la tarjeta en pantallas pequeñas",
+    ],
+  },
+  {
+    version: "2.5.0",
+    date: "2026-07-18",
+    changes: [
+      "Nueva colección galleryData para almacenar imágenes de galería con posición individual y metadatos",
+      "Nuevo GalleryArrayEditor conectado a galleryData con subida, borrado y ordenación",
+      "Bloqueada la subcolección antigua gallery en las reglas de Firestore",
+      "Simplificado SetupForm al eliminar la lógica de subcolección antigua",
+    ],
+  },
+  {
     version: "2.4.19",
     date: "2026-07-17",
     changes: [
