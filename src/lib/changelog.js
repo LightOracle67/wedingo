@@ -1,5 +1,20 @@
 export const CHANGELOG = [
   {
+    version: "2.7.0",
+    date: "2026-07-18",
+    changes: [
+      "Envelope rediseñado: terciopelo rojo con bordados dorados, blur de fondo que deja ver la invitación",
+      "Envelope: dos clics — el primero abre la solapa, el segundo activa la animación de salida",
+      "Envelope: flash blanco a mitad de la apertura, texto dorado con brillo que flota al cielo al salir",
+      "Galería: lightbox a pantalla completa al hacer clic en la imagen, con navegación por teclado y botones",
+      "Galería: transición más suave entre imágenes (550ms, cross-fade con escala, cubic-bezier)",
+      "Descripciones de galería cifradas en descriptionEncrypted con fallback al campo legacy",
+      "Corregido: handleDescriptionBlur lee el valor del evento, no del closure (evita stale data)",
+      "Mapas: botones de Google/Apple Maps siempre visibles aunque no haya coordenadas (búsqueda por nombre)",
+      "story-card y story-section con overflow hidden y scroll interior cuando el contenido desborda",
+    ],
+  },
+  {
     version: "2.6.0",
     date: "2026-07-18",
     changes: [
