@@ -44,6 +44,7 @@ export async function updateGalleryDescription(inviteToken, imageId, description
   const encrypted = safe ? await encrypt(safe, inviteToken) : "";
   await updateDoc(doc(GALLERY_DATA_COL, imageId), {
     descriptionEncrypted: encrypted,
+    description: safe,
   });
 }
 

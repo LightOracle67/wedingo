@@ -71,8 +71,10 @@ service cloud.firestore {
         && hasActiveSession(request.resource.data.inviteToken);
       allow update: if hasActiveSession(request.resource.data.inviteToken)
         && (
-          (request.resource.data.keys().hasOnly(['descriptionEncrypted'])
-            && request.resource.data.descriptionEncrypted is string)
+          (request.resource.data.keys().hasOnly(['descriptionEncrypted', 'description'])
+            && request.resource.data.descriptionEncrypted is string
+            && request.resource.data.description is string
+            && request.resource.data.description.size() <= 200)
           ||
           (request.resource.data.keys().hasOnly(['position'])
             && request.resource.data.position is number
