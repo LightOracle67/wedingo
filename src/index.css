@@ -4987,13 +4987,14 @@ html.a11y-font-scale select {
 }
 
 .gallery-main-img--loading {
-  filter: blur(20px);
-  animation: gallery-unblur 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  filter: blur(50px);
+  animation: gallery-unblur 2.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 @keyframes gallery-unblur {
-  0%   { filter: blur(20px); }
-  40%  { filter: blur(6px); }
+  0%   { filter: blur(50px); }
+  30%  { filter: blur(18px); }
+  60%  { filter: blur(6px); }
   100% { filter: blur(0); }
 }
 
