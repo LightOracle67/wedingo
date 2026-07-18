@@ -1,5 +1,6 @@
 import { createContext, useCallback, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import "../styles/toast.css";
 
 /** Contexto de React para el sistema de notificaciones toast. */
 // eslint-disable-next-line react-refresh/only-export-components

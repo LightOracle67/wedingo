@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useApp } from "../contexts/AppContext";
 import { useToast } from "../hooks/useToast";
 import SetupForm from "../components/SetupForm";
+import "../styles/admin.css";
 
 export default function SetupPage() {
   const { t } = useTranslation();

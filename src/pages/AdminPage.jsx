@@ -25,6 +25,7 @@ import { useToast } from "../hooks/useToast";
 import { formatDate } from "../lib/section-utils";
 import { escHtml } from "../lib/utils";
 import SetupForm from "../components/SetupForm";
+import "../styles/admin.css";
 
 // ─── Tabs de AdminPage (carga diferida) ────────────────────────────
 const PanelTab = lazy(() => import("./admin/PanelTab"));

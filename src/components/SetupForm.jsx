@@ -22,6 +22,7 @@ import CollapsibleSection from "./CollapsibleSection";
 import SectionOrderEditor from "./SectionOrderEditor";
 import ThemePicker from "./ThemePicker";
 import GalleryArrayEditor from "./GalleryArrayEditor";
+import "../styles/admin.css";
 
 /**
  * Componente del formulario de configuración.

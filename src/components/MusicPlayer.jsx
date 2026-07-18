@@ -1,6 +1,7 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useEscapeKey } from "../hooks/useFocusTrap";
+import "../styles/music.css";
 
 function songName(url) {
   if (!url) return "";

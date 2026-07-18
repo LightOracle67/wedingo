@@ -1,6 +1,7 @@
 import { memo, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { clearAllStorage } from "../lib/storage";
+import "../styles/modals.css";
 
 const STORAGE_KEY = "wedin_cookie_consent";
 const PREF_STORAGE_KEY = "wedin_cookie_prefs";

@@ -1,0 +1,183 @@
+.story-section--is-active .wedding-decoration__image,
+.story-section--is-active .invite-rings {
+  animation: subtle-float 5.4s ease-in-out infinite;
+}
+@keyframes subtle-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -4px;
+  }
+}
+.wedding-decoration {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(110px, 24vw, 280px);
+  max-width: 280px;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  transition:
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 500ms ease;
+}
+  .wedding-decoration {
+    width: clamp(150px, 36vw, 200px);
+    max-width: 200px;
+    opacity: 0.99;
+  }
+  .wedding-decoration--left {
+    left: -0.35rem;
+    top: 18%;
+    transform: var(--wedding-decoration-left-mobile-transform, translateY(0) scale(-1, -1));
+  }
+  .wedding-decoration--right {
+    right: -0.35rem;
+    bottom: -0.35rem;
+    transform: var(--wedding-decoration-right-mobile-transform, none);
+  }
+.wedding-decoration--left {
+  animation: subtle-float 6s ease-in-out infinite;
+}
+.wedding-decoration--right {
+  animation: subtle-float 6s ease-in-out infinite reverse;
+}
+  .wedding-decoration {
+    width: clamp(220px, 24vw, 360px);
+    max-width: 360px;
+  }
+.wedding-decoration__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  opacity: var(--wedding-decoration-image-opacity, 0.95);
+}
+.wedding-decoration--left {
+  top: 0;
+  left: -0.35rem;
+  transform: var(--wedding-decoration-left-transform, scale(-1, -1) scale(1.02));
+}
+.wedding-decoration--right {
+  transform: var(--wedding-decoration-right-transform, none);
+}
+.wedding-decoration--left .wedding-decoration__image {
+  filter: var(--wedding-decoration-left-filter, none);
+  opacity: var(--wedding-decoration-left-opacity, 0.95);
+}
+.wedding-decoration--right .wedding-decoration__image {
+  filter: var(--wedding-decoration-right-filter, none);
+  opacity: var(--wedding-decoration-right-opacity, 0.95);
+}
+@keyframes branch-in-left {
+  from {
+    opacity: 0;
+    transform: translate3d(-20px, 12px, 0) rotate(178deg);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scaleX(-1);
+    filter: blur(0);
+  }
+}
+@keyframes branch-in-right {
+  from {
+    opacity: 0;
+    transform: translate3d(20px, -12px, 0);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+}
+  .wedding-decoration {
+    width: 120px;
+    max-width: 120px;
+  }
+  .wedding-decoration {
+    display: none !important;
+  }
+.wedding-decoration {
+  z-index: 0;
+}
+.wedding-decoration::after,
+.wedding-decoration::before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  animation: ornament-drift 10s ease-in-out infinite alternate;
+}
+.wedding-decoration--left::after {
+  width: 80px; height: 80px;
+  top: 20%; left: -30px;
+  background: radial-gradient(circle at 35% 35%, var(--flower-accent) 0%, var(--flower-accent-dim) 50%, transparent 70%);
+  box-shadow:
+    0 0 0 12px var(--flower-accent-dim),
+    0 0 0 24px color-mix(in srgb, var(--flower-accent) 10%, transparent),
+    -30px 40px 0 -8px var(--flower-accent),
+    40px -20px 0 -4px var(--flower-accent-dim);
+  opacity: 0.5;
+}
+.wedding-decoration--left::before {
+  width: 50px; height: 50px;
+  top: 60%; left: -10px;
+  background: radial-gradient(circle at 40% 40%, var(--flower-accent) 0%, transparent 60%);
+  box-shadow:
+    0 0 0 8px var(--flower-accent-dim),
+    25px -30px 0 -6px var(--flower-accent),
+    -20px 20px 0 -2px var(--flower-accent-dim);
+  opacity: 0.35;
+  animation-delay: -3s;
+  animation-duration: 12s;
+}
+.wedding-decoration--right::after {
+  width: 100px; height: 100px;
+  top: 15%; right: -35px;
+  background: radial-gradient(circle at 40% 30%, var(--flower-accent) 0%, var(--flower-accent-dim) 45%, transparent 65%);
+  box-shadow:
+    0 0 0 16px var(--flower-accent-dim),
+    0 0 0 32px color-mix(in srgb, var(--flower-accent) 8%, transparent),
+    35px -30px 0 -10px var(--flower-accent),
+    -25px 50px 0 -6px var(--flower-accent-dim),
+    20px -60px 0 -2px var(--flower-accent);
+  opacity: 0.45;
+}
+.wedding-decoration--right::before {
+  width: 40px; height: 40px;
+  top: 55%; right: -5px;
+  background: radial-gradient(circle at 35% 35%, var(--flower-accent) 0%, transparent 55%);
+  box-shadow:
+    0 0 0 6px var(--flower-accent-dim),
+    -30px 25px 0 -4px var(--flower-accent);
+  opacity: 0.3;
+  animation-delay: -5s;
+  animation-duration: 8s;
+}
+@keyframes ornament-drift {
+  0%   { transform: translateY(0) scale(1) rotate(0deg); }
+  33%  { transform: translateY(-8px) scale(1.05) rotate(8deg); }
+  66%  { transform: translateY(4px) scale(0.97) rotate(-4deg); }
+  100% { transform: translateY(-3px) scale(1.02) rotate(3deg); }
+}
+.wedding-decoration__image {
+  opacity: var(--wedding-decoration-opacity, 0.7);
+  filter: var(--wedding-decoration-filter, none);
+}
+.wedding-decoration__image {
+  opacity: var(--wedding-decoration-opacity, 0.7);
+  filter: var(--wedding-decoration-filter, none);
+}

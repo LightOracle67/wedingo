@@ -1,6 +1,7 @@
 import { memo, useMemo, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { randomMessage } from "../lib/invite-messages";
+import "../styles/envelope.css";
 
 const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secondName }) {
   const { t, i18n } = useTranslation();

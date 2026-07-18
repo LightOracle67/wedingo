@@ -2,6 +2,7 @@ import { memo, useEffect, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useFocusTrap } from "../hooks/useFocusTrap";
 import { CHANGELOG } from "../lib/changelog";
+import "../styles/modals.css";
 
 const ChangelogModal = memo(function ChangelogModal({ onClose }) {
   const { t } = useTranslation();
