@@ -1176,29 +1176,6 @@ body::before {
   }
 }
 
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image:
-    radial-gradient(
-      circle at 10% 15%,
-      var(--spark-1) 0 3px,
-      transparent 3px
-    ),
-    radial-gradient(
-      circle at 90% 85%,
-      var(--spark-2) 0 3px,
-      transparent 3px
-    );
-  background-size:
-    var(--spark-size-1),
-    var(--spark-size-2);
-  opacity: var(--spark-opacity);
-  pointer-events: none;
-  z-index: 0;
-}
-
 @media (max-width: 480px) {
   :root {
     --page-blur-min: 1.5px;
