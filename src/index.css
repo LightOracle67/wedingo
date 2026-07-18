@@ -5039,6 +5039,8 @@ html.a11y-font-scale select {
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
+  position: relative;
+  min-height: 200px;
 }
 
 /** Imagen principal: se ajusta al contenedor sin recortar. */
@@ -5053,26 +5055,32 @@ html.a11y-font-scale select {
 }
 
 .gallery-fade {
-  transition: opacity 350ms ease;
+  transition: opacity 500ms ease, transform 500ms ease;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
 }
 
-/** Imagen saliente: se desvanece a transparente. */
+/** Imagen saliente: se desvanece con un leve zoom hacia fuera. */
 .gallery-fade--out {
   opacity: 0;
+  transform: scale(1.03);
   z-index: 1;
 }
 
-/** Imagen entrante: aparece desde transparente con ligero zoom. */
+/** Imagen entrante: aparece con un sutil zoom desde dentro. */
 .gallery-fade--in {
-  animation: gallery-fade-in 350ms ease both;
+  animation: gallery-fade-in 550ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes gallery-fade-in {
-  from {
+  0% {
     opacity: 0;
-    transform: scale(1.04);
+    transform: scale(0.97);
   }
-  to {
+  30% {
+    opacity: 0.4;
+  }
+  100% {
     opacity: 1;
     transform: scale(1);
   }
