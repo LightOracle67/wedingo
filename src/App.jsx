@@ -15,7 +15,6 @@ import LegalModal from "./components/LegalModal";
 import ChangelogModal from "./components/ChangelogModal";
 import Fireflies from "./components/Fireflies";
 import { APP_VERSION } from "./lib/constants";
-import { clearSession } from "./lib/sessionVars";
 import LandingPage from "./pages/LandingPage";
 import { SUPERADMIN_ROUTE, SUPERADMIN_DASHBOARD } from "./lib/superadmin";
 
@@ -103,17 +102,7 @@ function AppShell() {
         <CookieConsent />
       </main>
 
-      {isEditingRoute ? (
-        <nav className="admin-bar">
-          <div className="admin-bar__inner">
-            <span className="admin-bar__title">{t("admin.barTitle")}</span>
-            <div className="admin-bar__links">
-              <a className="admin-bar__link" href={`/${inviteToken}`} target="_blank" rel="noreferrer">{t("admin.viewInvitation")}</a>
-              <button className="admin-bar__link" type="button" onClick={() => { clearSession(); window.location.href = `/${inviteToken}`; }}>{t("admin.logout")}</button>
-            </div>
-          </div>
-        </nav>
-      ) : (
+      {!isEditingRoute && (
         <footer className="app-footer">
           <div className="app-footer__left">
             <LanguageSwitcher />
