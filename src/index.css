@@ -909,6 +909,7 @@ p, h1, h2, h3, h4, h5, h6, span, a, li, label, td, th, button, input, textarea {
 }
 
 :root[data-wedding-theme="rainbow"] .story-card,
+:root[data-wedding-theme="rainbow"] .story-card,
 :root[data-wedding-theme="rainbow"] .invite-shell {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -916,6 +917,7 @@ p, h1, h2, h3, h4, h5, h6, span, a, li, label, td, th, button, input, textarea {
     linear-gradient(to top right, #ff000099 0%, #ff880099 15%, #ffdd0099 30%, #00cc4499 50%, #0088ff99 70%, #8800ff99 85%);
 }
 
+:root[data-wedding-theme="trans"] .story-card,
 :root[data-wedding-theme="trans"] .story-card,
 :root[data-wedding-theme="trans"] .invite-shell {
   backdrop-filter: blur(8px);
@@ -925,6 +927,7 @@ p, h1, h2, h3, h4, h5, h6, span, a, li, label, td, th, button, input, textarea {
 }
 
 :root[data-wedding-theme="nonbinary"] .story-card,
+:root[data-wedding-theme="nonbinary"] .story-card,
 :root[data-wedding-theme="nonbinary"] .invite-shell {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -932,6 +935,7 @@ p, h1, h2, h3, h4, h5, h6, span, a, li, label, td, th, button, input, textarea {
     linear-gradient(to top right, #f0e06099 0%, #ffffff99 30%, #b088c899 60%, #1a1a1a99 100%);
 }
 
+:root[data-wedding-theme="lesbian"] .story-card,
 :root[data-wedding-theme="lesbian"] .story-card,
 :root[data-wedding-theme="lesbian"] .invite-shell {
   backdrop-filter: blur(8px);
@@ -941,6 +945,7 @@ p, h1, h2, h3, h4, h5, h6, span, a, li, label, td, th, button, input, textarea {
 }
 
 :root[data-wedding-theme="bi"] .story-card,
+:root[data-wedding-theme="bi"] .story-card,
 :root[data-wedding-theme="bi"] .invite-shell {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -948,6 +953,7 @@ p, h1, h2, h3, h4, h5, h6, span, a, li, label, td, th, button, input, textarea {
     linear-gradient(to top right, #d8609099 0%, #d8609099 30%, #8844aa99 50%, #4488cc99 70%, #4488cc99 100%);
 }
 
+:root[data-wedding-theme="pan"] .story-card,
 :root[data-wedding-theme="pan"] .story-card,
 :root[data-wedding-theme="pan"] .invite-shell {
   backdrop-filter: blur(8px);
@@ -957,6 +963,7 @@ p, h1, h2, h3, h4, h5, h6, span, a, li, label, td, th, button, input, textarea {
 }
 
 :root[data-wedding-theme="ace"] .story-card,
+:root[data-wedding-theme="ace"] .story-card,
 :root[data-wedding-theme="ace"] .invite-shell {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -964,6 +971,7 @@ p, h1, h2, h3, h4, h5, h6, span, a, li, label, td, th, button, input, textarea {
     linear-gradient(to top right, #1a1a1a99 0%, #44444499 25%, #88888899 50%, #dddddd99 70%, #b088c899 100%);
 }
 
+:root[data-wedding-theme="golden"] .story-card,
 :root[data-wedding-theme="golden"] .story-card,
 :root[data-wedding-theme="golden"] .invite-shell {
   backdrop-filter: blur(8px);
@@ -973,6 +981,7 @@ p, h1, h2, h3, h4, h5, h6, span, a, li, label, td, th, button, input, textarea {
 }
 
 :root[data-wedding-theme="forest"] .story-card,
+:root[data-wedding-theme="forest"] .story-card,
 :root[data-wedding-theme="forest"] .invite-shell {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -980,6 +989,7 @@ p, h1, h2, h3, h4, h5, h6, span, a, li, label, td, th, button, input, textarea {
     linear-gradient(to top right, #1a3d2ecc 0%, #2d5a44aa 35%, #70b89099 70%, #97c87a80 100%);
 }
 
+:root[data-wedding-theme="rose"] .story-card,
 :root[data-wedding-theme="rose"] .story-card,
 :root[data-wedding-theme="rose"] .invite-shell {
   backdrop-filter: blur(8px);
@@ -989,6 +999,7 @@ p, h1, h2, h3, h4, h5, h6, span, a, li, label, td, th, button, input, textarea {
 }
 
 :root[data-wedding-theme="linen-soft"] .story-card,
+:root[data-wedding-theme="linen-soft"] .story-card,
 :root[data-wedding-theme="linen-soft"] .invite-shell {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -996,6 +1007,7 @@ p, h1, h2, h3, h4, h5, h6, span, a, li, label, td, th, button, input, textarea {
     linear-gradient(to top right, #5c4430cc 0%, #8a6b48aa 35%, #c8ad7a99 70%, #e0c89880 100%);
 }
 
+:root[data-wedding-theme="blush-pearl"] .story-card,
 :root[data-wedding-theme="blush-pearl"] .story-card,
 :root[data-wedding-theme="blush-pearl"] .invite-shell {
   backdrop-filter: blur(8px);
@@ -1005,6 +1017,7 @@ p, h1, h2, h3, h4, h5, h6, span, a, li, label, td, th, button, input, textarea {
 }
 
 :root[data-wedding-theme="lavender-mist"] .story-card,
+:root[data-wedding-theme="lavender-mist"] .story-card,
 :root[data-wedding-theme="lavender-mist"] .invite-shell {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -1012,6 +1025,7 @@ p, h1, h2, h3, h4, h5, h6, span, a, li, label, td, th, button, input, textarea {
     linear-gradient(to top right, #2e1848cc 0%, #482868aa 35%, #9078b099 70%, #b8a0d880 100%);
 }
 
+:root[data-wedding-theme="champagne-bubble"] .story-card,
 :root[data-wedding-theme="champagne-bubble"] .story-card,
 :root[data-wedding-theme="champagne-bubble"] .invite-shell {
   backdrop-filter: blur(8px);
@@ -1021,6 +1035,7 @@ p, h1, h2, h3, h4, h5, h6, span, a, li, label, td, th, button, input, textarea {
 }
 
 :root[data-wedding-theme="amber-night"] .story-card,
+:root[data-wedding-theme="amber-night"] .story-card,
 :root[data-wedding-theme="amber-night"] .invite-shell {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -1028,6 +1043,7 @@ p, h1, h2, h3, h4, h5, h6, span, a, li, label, td, th, button, input, textarea {
     linear-gradient(to top right, #1e140ecc 0%, #3a2818aa 35%, #8a683099 70%, #ddb24b80 100%);
 }
 
+:root[data-wedding-theme="onyx-gold"] .story-card,
 :root[data-wedding-theme="onyx-gold"] .story-card,
 :root[data-wedding-theme="onyx-gold"] .invite-shell {
   backdrop-filter: blur(8px);
@@ -1037,6 +1053,7 @@ p, h1, h2, h3, h4, h5, h6, span, a, li, label, td, th, button, input, textarea {
 }
 
 :root[data-wedding-theme="midnight-royal"] .story-card,
+:root[data-wedding-theme="midnight-royal"] .story-card,
 :root[data-wedding-theme="midnight-royal"] .invite-shell {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -1044,6 +1061,7 @@ p, h1, h2, h3, h4, h5, h6, span, a, li, label, td, th, button, input, textarea {
     linear-gradient(to top right, #0a102acc 0%, #182048aa 35%, #3850a099 70%, #e0b84b80 100%);
 }
 
+:root[data-wedding-theme="burgundy-velvet"] .story-card,
 :root[data-wedding-theme="burgundy-velvet"] .story-card,
 :root[data-wedding-theme="burgundy-velvet"] .invite-shell {
   backdrop-filter: blur(8px);
@@ -1053,6 +1071,7 @@ p, h1, h2, h3, h4, h5, h6, span, a, li, label, td, th, button, input, textarea {
 }
 
 :root[data-wedding-theme="sapphire-night"] .story-card,
+:root[data-wedding-theme="sapphire-night"] .story-card,
 :root[data-wedding-theme="sapphire-night"] .invite-shell {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -1061,6 +1080,7 @@ p, h1, h2, h3, h4, h5, h6, span, a, li, label, td, th, button, input, textarea {
 }
 
 :root[data-wedding-theme="emerald-grove"] .story-card,
+:root[data-wedding-theme="emerald-grove"] .story-card,
 :root[data-wedding-theme="emerald-grove"] .invite-shell {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -1068,6 +1088,7 @@ p, h1, h2, h3, h4, h5, h6, span, a, li, label, td, th, button, input, textarea {
     linear-gradient(to top right, #041c10cc 0%, #083820aa 35%, #28705099 70%, #70b89080 100%);
 }
 
+:root[data-wedding-theme="plum-twilight"] .story-card,
 :root[data-wedding-theme="plum-twilight"] .story-card,
 :root[data-wedding-theme="plum-twilight"] .invite-shell {
   backdrop-filter: blur(8px);
@@ -1275,9 +1296,10 @@ body::after {
   background: color-mix(in srgb, var(--invite-shell-bg) 74%, transparent);
   box-shadow:
     0 22px 60px color-mix(in srgb, var(--invite-shell-shadow) 92%, transparent),
-    0 0 30px color-mix(in srgb, var(--invite-shell-glow) 70%, transparent);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
+    0 0 0 1px color-mix(in srgb, var(--invite-shell-border) 70%, transparent),
+    0 0 34px color-mix(in srgb, var(--invite-shell-glow) 85%, transparent);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 }
 
 .story-card .story-title {
@@ -1490,9 +1512,11 @@ body::after {
   font-family: var(--font-heading);
   font-size: clamp(1.8rem, 4vw, 3rem);
   line-height: 1.12;
+  letter-spacing: 0.02em;
+  -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.5);
   text-shadow:
-    0 0 14px color-mix(in srgb, var(--invite-text-shadow) 72%, transparent),
-    0 2px 4px rgba(0, 0, 0, 0.5);
+    0 2px 10px rgba(0, 0, 0, 0.9),
+    0 0 30px rgba(0, 0, 0, 0.4);
 }
 
 .story-subheading {
@@ -1511,9 +1535,10 @@ body::after {
   color: color-mix(in srgb, var(--invite-copy-color) 75%, #000);
   font-size: clamp(1.05rem, 2.4vw, 1.3rem);
   line-height: 1.65;
+  -webkit-text-stroke: 0.3px rgba(0, 0, 0, 0.35);
   text-shadow:
-    0 0 12px color-mix(in srgb, var(--invite-text-shadow) 64%, transparent),
-    0 2px 3px rgba(0, 0, 0, 0.42);
+    0 0 20px color-mix(in srgb, var(--invite-text-shadow) 80%, transparent),
+    0 2px 6px rgba(0, 0, 0, 0.6);
 }
 
 .story-divider {
@@ -2139,12 +2164,12 @@ h6 {
   opacity: 0.85;
 }
 
-.invite-shell {
+.story-card {
   transition: border-color 260ms ease, background-color 260ms ease, box-shadow 260ms ease, transform 300ms ease;
 }
 
-.story-card {
-  transition: border-color 260ms ease, background-color 260ms ease, box-shadow 260ms ease;
+.story-card--hero {
+  max-width: min(90%, 32rem);
 }
 
 .story-section--is-active .story-card:hover {
@@ -2813,52 +2838,6 @@ a:focus-visible {
 
 .setup-error {
   color: #ffd2d2;
-}
-
-.invite-shell {
-  position: relative;
-  background: var(--invite-shell-bg);
-  border: 1px solid var(--invite-shell-border);
-  box-shadow:
-    0 22px 60px var(--invite-shell-shadow),
-    0 0 0 1px color-mix(in srgb, var(--invite-shell-border) 70%, transparent),
-    0 0 34px var(--invite-shell-glow);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-  transition:
-    border-color 260ms ease,
-    background-color 260ms ease,
-    box-shadow 260ms ease,
-    transform 300ms ease;
-}
-
-.invite-shell::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background:
-    radial-gradient(circle at 18% 20%, color-mix(in srgb, var(--invite-shell-glow) 85%, transparent) 0%, transparent 46%),
-    linear-gradient(165deg, color-mix(in srgb, var(--invite-shell-bg) 65%, transparent), transparent 62%);
-  opacity: 0.86;
-  pointer-events: none;
-}
-
-.invite-title {
-  color: var(--invite-title-color);
-  letter-spacing: 0.02em;
-  -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.5);
-  text-shadow:
-    0 2px 10px rgba(0, 0, 0, 0.9),
-    0 0 30px rgba(0, 0, 0, 0.4);
-}
-
-.invite-copy {
-  color: color-mix(in srgb, var(--invite-copy-color) 75%, #000);
-  -webkit-text-stroke: 0.3px rgba(0, 0, 0, 0.35);
-  text-shadow:
-    0 0 20px color-mix(in srgb, var(--invite-text-shadow) 80%, transparent),
-    0 2px 6px rgba(0, 0, 0, 0.6);
 }
 
 .invite-rings {
