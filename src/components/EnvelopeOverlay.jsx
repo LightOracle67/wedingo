@@ -1,10 +1,13 @@
-import { memo, useState, useCallback } from "react";
+import { memo, useMemo, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
+import { randomMessage } from "../lib/invite-messages";
 
-const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen }) {
-  const { t } = useTranslation();
+const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secondName }) {
+  const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
   const [exiting, setExiting] = useState(false);
+
+  const message = useMemo(() => randomMessage(i18n.language), [i18n.language]);
 
   const handleClick = useCallback(() => {
     if (open) return;
@@ -25,7 +28,9 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen }) {
           <div className="envelope__panel envelope__panel--front">
             <div className="envelope__address">
               <span className="envelope__address-line">{t("envelope.addressLine1")}</span>
-              <span className="envelope__address-line envelope__address-line--bold">{t("envelope.addressLine2")}</span>
+              <span className="envelope__address-line envelope__address-line--bold">
+                {firstName} {t("envelope.and")} {secondName}
+              </span>
             </div>
             <div className="envelope__stamp">
               <div className="envelope__stamp-inner">♥</div>
@@ -33,11 +38,8 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen }) {
           </div>
           <div className="envelope__panel envelope__panel--back">
             <div className="envelope__letter">
-              <div className="envelope__letter-line envelope__letter-line--short" />
-              <div className="envelope__letter-line" />
-              <div className="envelope__letter-line" />
-              <div className="envelope__letter-line envelope__letter-line--short" />
-              <div className="envelope__letter-line envelope__letter-line--end" />
+              <p className="envelope__letter-names">{firstName} <span className="envelope__letter-ampersand">&</span> {secondName}</p>
+              <p className="envelope__letter-message">{message}</p>
             </div>
           </div>
         </div>

@@ -820,7 +820,7 @@
   },
   "envelope": {
     "addressLine1": "To our dearest",
-    "addressLine2": "You & Your Family",
+    "and": "&",
     "tapHint": "Tap to open"
   },
   "calendar": {

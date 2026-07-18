@@ -827,7 +827,7 @@
   },
   "envelope": {
     "addressLine1": "Para nuestros queridos",
-    "addressLine2": "Tú y tu familia",
+    "and": "y",
     "tapHint": "Toca para abrir"
   },
   "calendar": {

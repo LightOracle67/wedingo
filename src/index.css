@@ -5242,25 +5242,50 @@ html.a11y-font-scale select {
   font-size: 1rem; color: #8a6050; z-index: 1;
 }
 .envelope__letter {
-  width: 80%; padding: 0.8rem;
+  width: 88%;
+  padding: 1rem 0.9rem;
   background: linear-gradient(160deg, #faf4ec 0%, #f5ece0 100%);
   border-radius: 3px;
   box-shadow: 0 -1px 6px rgba(0,0,0,0.08);
-  display: flex; flex-direction: column; gap: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
-.envelope__letter-line {
-  height: 4px; border-radius: 2px;
-  background: linear-gradient(90deg, #d8c8b8 0%, #e0d0c0 40%, #d8c8b8 100%);
-  opacity: 0; transform: scaleX(0); transform-origin: left center;
-  animation: letter-line-in 0.5s ease forwards;
+
+.envelope-wrapper--open .envelope__letter {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s;
 }
-.envelope__letter-line--short { width: 55%; }
-.envelope__letter-line--end { width: 35%; }
-.envelope-wrapper--open .envelope__letter-line:nth-child(1) { animation-delay: 0.1s; }
-.envelope-wrapper--open .envelope__letter-line:nth-child(2) { animation-delay: 0.2s; }
-.envelope-wrapper--open .envelope__letter-line:nth-child(3) { animation-delay: 0.3s; }
-.envelope-wrapper--open .envelope__letter-line:nth-child(4) { animation-delay: 0.4s; }
-.envelope-wrapper--open .envelope__letter-line:nth-child(5) { animation-delay: 0.5s; }
+
+.envelope__letter-names {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #4a3020;
+  text-align: center;
+  margin: 0;
+  letter-spacing: 0.04em;
+}
+
+.envelope__letter-ampersand {
+  font-style: italic;
+  color: #b8946a;
+  font-size: 1.3rem;
+}
+
+.envelope__letter-message {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: #6a5040;
+  text-align: center;
+  margin: 0;
+  font-style: italic;
+}
 
 .envelope__hint {
   color: rgba(255,255,255,0.4); font-size: 0.85rem; margin-top: 2.5rem;
@@ -5270,10 +5295,6 @@ html.a11y-font-scale select {
 @keyframes envelope-hint-pulse {
   0%, 100% { opacity: 0.35; transform: translateY(0); }
   50%      { opacity: 0.7; transform: translateY(-4px); }
-}
-@keyframes letter-line-in {
-  from { opacity: 0; transform: scaleX(0); }
-  to   { opacity: 1; transform: scaleX(1); }
 }
 
 :root[data-wedding-theme="golden"] {
