@@ -92,7 +92,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
         const curIdx = typeof prev === "number" ? prev : 0;
         return curIdx;
       });
-    }, 3000);
+    }, 5000);
     return () => {
       if (autoTimerRef.current) clearInterval(autoTimerRef.current);
     };
@@ -223,15 +223,9 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
 
         {/* ── Imagen principal con contenedor de fade ── */}
         <div className="mt-3" style={{ position: "relative", userSelect: "none" }}>
-          {!mainLoaded[clamped] ? (
-            <div className="gallery-main-skeleton">
-              <div className="page-loading" />
-            </div>
-          ) : null}
-
           <div
             className="gallery-main-container"
-            style={{ display: mainLoaded[clamped] ? "flex" : "none" }}
+            style={{ display: "flex" }}
             tabIndex={0}
             role="group"
             aria-label={t("gallery.carouselLabel")}
@@ -255,7 +249,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
                 alt={currentImage?.description || t("gallery.imageAlt")}
                 onLoad={() => setMainLoaded((p) => ({ ...p, [clamped]: true }))}
                 onClick={() => openLightbox(clamped)}
-                className={`gallery-main-img${fading ? " gallery-fade gallery-fade--in" : ""}`}
+                className={`gallery-main-img${!mainLoaded[clamped] ? " gallery-main-img--loading" : ""}${fading ? " gallery-fade gallery-fade--in" : ""}`}
                 style={{ position: fading ? "absolute" : "relative", cursor: "pointer" }}
               />
             </div>

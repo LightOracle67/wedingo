@@ -4986,6 +4986,17 @@ html.a11y-font-scale select {
   border-radius: 0.5rem;
 }
 
+.gallery-main-img--loading {
+  filter: blur(20px);
+  animation: gallery-unblur 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes gallery-unblur {
+  0%   { filter: blur(20px); }
+  40%  { filter: blur(6px); }
+  100% { filter: blur(0); }
+}
+
 .gallery-fade {
   transition: opacity 500ms ease, transform 500ms ease;
   will-change: opacity, transform;
