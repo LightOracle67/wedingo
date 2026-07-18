@@ -15,8 +15,6 @@ export function useAutoSave(hasStoredConfig, inviteToken, formData, config, onSa
     autoSavingRef.current = true;
     if (isSavingRef) isSavingRef.current = true;
     const payload = normalizeConfig(data);
-    // galleryImages se gestiona via subcolección, excluir para no exceder 1MB/doc
-    delete payload.galleryImages;
     try {
       const bgOrig = payload.backgroundImage?.startsWith("data:") ? payload.backgroundImage : null;
       const cpOrig = payload.couplePhoto?.startsWith("data:") ? payload.couplePhoto : null;

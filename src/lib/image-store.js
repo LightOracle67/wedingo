@@ -78,6 +78,7 @@ export async function loadGallery(inviteToken) {
           result.push({
             id: d.id,
             url,
+            position: d.data().position,
             description: d.data().description || "",
           });
         } catch {}

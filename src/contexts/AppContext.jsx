@@ -24,7 +24,7 @@ import { db, invitationDocRef, rsvpByInviteRef } from "../lib/firebase";
 import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES, defaultConfig, STORY_SECTION_ORDER, THEME_VALUES } from "../lib/constants";
 import { normalizeConfig } from "../lib/normalize-config";
 import { decodeInviteConfig } from "../lib/invite-config-codec";
-import { uploadImage, loadDecryptedField, deleteGallery, loadGallery } from "../lib/image-store";
+import { uploadImage, loadDecryptedField, deleteGallery } from "../lib/image-store";
 import { saveSession, clearSession, firestoreSessionExpiry } from "../lib/sessionVars";
 import { safeSetItem, safeGetItem, safeRemoveItem } from "../lib/storage";
 import { encrypt, decrypt } from "../lib/crypto-utils";
@@ -282,18 +282,8 @@ export function AppProvider({ children }) {
         if (parsed.backgroundImage) parsed.backgroundImage = await loadDecryptedField(inviteToken, parsed.backgroundImage);
         if (parsed.couplePhoto) parsed.couplePhoto = await loadDecryptedField(inviteToken, parsed.couplePhoto);
         const hydrated = { ...defaultConfig, ...parsed };
-        // galleryImages viene de la subcolección, no del doc principal
-        delete hydrated.galleryImages;
         setConfig(hydrated);
         setFormData(hydrated);
-        // Carga las imágenes de la galería desde Firestore (máx 10).
-        // Se hidrata en todas las rutas para que esté disponible tanto en
-        // el editor como en la invitación pública.
-        loadGallery(inviteToken).then((urls) => {
-          const str = JSON.stringify(urls.slice(0, 10));
-          setFormData((prev) => ({ ...prev, galleryImages: str }));
-          setConfig((prev) => ({ ...prev, galleryImages: str }));
-        }).catch(() => {});
         // Guarda en caché local
         safeSetItem(`wedin_invite_cache_${inviteToken}`, JSON.stringify({ data: hydrated, cachedAt: Date.now() }));
         setVisitCount(typeof snapshot.data()._visits === "number" ? snapshot.data()._visits : 0);
@@ -335,16 +325,9 @@ export function AppProvider({ children }) {
       if (parsed.backgroundImage) parsed.backgroundImage = await loadDecryptedField(inviteToken, parsed.backgroundImage);
       if (parsed.couplePhoto) parsed.couplePhoto = await loadDecryptedField(inviteToken, parsed.couplePhoto);
       const hydrated = { ...defaultConfig, ...parsed };
-      delete hydrated.galleryImages;
       setConfig(hydrated);
       setFormData(hydrated);
       setHasStoredConfig(true);
-      // Recarga también la galería al restaurar
-      loadGallery(inviteToken).then((urls) => {
-        const str = JSON.stringify(urls.slice(0, 10));
-        setFormData((prev) => ({ ...prev, galleryImages: str }));
-        setConfig((prev) => ({ ...prev, galleryImages: str }));
-      }).catch(() => {});
     } catch {}
   }, [inviteToken]);
 
@@ -557,14 +540,6 @@ export function AppProvider({ children }) {
       return;
     }
 
-    // ── Validación de galería (JSON) ──
-    if (sanitized.galleryImages) {
-      try { JSON.parse(sanitized.galleryImages); } catch {
-        setSaveError(t("errors.galleryFormatInvalid"));
-        return;
-      }
-    }
-
     // ── Validación de cantidad de secciones ──
     if (sanitized.sectionOrder) {
       const expected = STORY_SECTION_ORDER.length;
@@ -618,9 +593,6 @@ export function AppProvider({ children }) {
 
     isSavingRef.current = true;
     try {
-      const savedGallery = payload.galleryImages;
-      // galleryImages se gestiona via subcolección, excluir para no exceder 1MB/doc
-      delete payload.galleryImages;
       // Encripta campos sensibles antes de guardar
       const bgOrig = payload.backgroundImage?.startsWith("data:") ? payload.backgroundImage : null;
       const cpOrig = payload.couplePhoto?.startsWith("data:") ? payload.couplePhoto : null;
@@ -635,7 +607,6 @@ export function AppProvider({ children }) {
       if (payload.bankInfo) payload.bankInfo = await decrypt(payload.bankInfo, inviteToken);
       if (bgOrig) payload.backgroundImage = bgOrig;
       if (cpOrig) payload.couplePhoto = cpOrig;
-      payload.galleryImages = savedGallery;
       setConfig(payload);
       setFormData(payload);
       setHasStoredConfig(true);

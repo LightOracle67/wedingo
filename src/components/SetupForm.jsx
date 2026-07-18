@@ -622,7 +622,7 @@ export default function SetupForm({ prefix = "" }) {
         title={t("setup.gallerySectionTitle")}
         hint={t("setup.gallerySectionHint")}
       >
-        <GalleryArrayEditor images={formData.galleryImages} onChange={(val) => updateFormField("galleryImages", val)} inviteToken={inviteToken} t={t} />
+        <GalleryArrayEditor inviteToken={inviteToken} t={t} />
       </CollapsibleSection>
       ) : null}
 

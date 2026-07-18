@@ -332,7 +332,6 @@ export default function PublicInvitation() {
     },
     gallery: {
       inviteToken,
-      galleryImages: config.galleryImages,
     },
     rsvp: {
       rsvpForm,
@@ -361,7 +360,6 @@ export default function PublicInvitation() {
     config.transportInfo, config.godparent1, config.godparent2, inviteToken,
     config.couplePhoto, config.bankInfo, config.menuEnabled,
     config.menuCarne, config.menuPescado, config.menuVegano, config.menuPostre, config.menuTexto,
-    config.galleryImages,
     countdown, formattedDate, formattedTime,
     hasLocationData, locationDescription, calendarLink,
     locationMapContainerRef, locationMapLoading, locationMapError, locationMapTarget,
