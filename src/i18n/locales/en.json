@@ -310,7 +310,8 @@
     "galleryUploadFailed": "Could not upload the photos.",
     "noValidFiles": "No valid files. Max 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "galleryDescriptionSaveFailed": "Error saving description"
+    "galleryDescriptionSaveFailed": "Error saving description",
+    "galleryDescriptionSaved": "Description saved"
   },
   "admin": {
     "tabs": {

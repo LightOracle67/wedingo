@@ -99,14 +99,18 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }) 
 
   const handleDescriptionBlur = useCallback(async (slotIndex, currentValue) => {
     const item = slotsRef.current[slotIndex];
-    if (!item?.id) return;
+    if (!item?.id) {
+      addToast("error", "No se encontró el ID de la imagen");
+      return;
+    }
     const safe = String(currentValue ?? "").slice(0, 200).trim();
     try {
       const { updateGalleryDescription } = await import("../lib/image-store");
       await updateGalleryDescription(inviteToken, item.id, safe);
+      addToast("success", t("setup.galleryDescriptionSaved"));
     } catch (err) {
-      console.warn("updateGalleryDescription failed", err);
-      addToast("error", t("setup.galleryDescriptionSaveFailed"));
+      console.warn("updateGalleryDescription failed:", err);
+      addToast("error", `${t("setup.galleryDescriptionSaveFailed")}: ${err.code || err.message}`);
     }
   }, [inviteToken, addToast, t]);
 
