@@ -5232,13 +5232,10 @@ html.a11y-font-scale select {
   pointer-events: none;
   background: #fff;
   opacity: 0;
-  transition: opacity 400ms ease;
+  transition: opacity 500ms ease;
 }
-.envelope-flash--in {
+.envelope-flash--visible {
   opacity: 1;
-}
-.envelope-flash--out {
-  opacity: 0;
 }
 
 /* ── Envelope golden text ── */
@@ -5251,12 +5248,13 @@ html.a11y-font-scale select {
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(1.4rem, 5vw, 2.4rem);
   line-height: 1.6;
-  color: #f0d68a;
+  color: #f5e6a3;
   text-align: center;
   font-style: italic;
   text-shadow:
-    0 0 12px rgba(212, 175, 55, 0.5),
-    0 0 30px rgba(212, 175, 55, 0.2);
+    0 0 8px rgba(212, 175, 55, 0.6),
+    0 0 20px rgba(212, 175, 55, 0.4),
+    0 0 50px rgba(212, 175, 55, 0.2);
   pointer-events: none;
   transition: opacity 600ms ease, transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
 }

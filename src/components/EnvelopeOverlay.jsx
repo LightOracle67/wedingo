@@ -6,8 +6,8 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secon
   const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
   const [exiting, setExiting] = useState(false);
-  const [flashPhase, setFlashPhase] = useState(0);
-  const [goldenPhase, setGoldenPhase] = useState(0);
+  const [showWhite, setShowWhite] = useState(false);
+  const [showText, setShowText] = useState(false);
 
   const message = useMemo(() => randomMessage(i18n.language), [i18n.language]);
 
@@ -15,20 +15,20 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secon
     if (exiting) return;
     if (!open) {
       setOpen(true);
-      setTimeout(() => setFlashPhase(1), 400);
-      setTimeout(() => { setFlashPhase(2); setGoldenPhase(1); }, 900);
+      setTimeout(() => setShowWhite(true), 400);
+      setTimeout(() => setShowText(true), 900);
       return;
     }
-    setGoldenPhase(2);
+    setShowText(false);
     setExiting(true);
     setTimeout(() => onOpen(), 800);
   }, [onOpen, open, exiting]);
 
   return (
     <div className={`envelope-overlay ${exiting ? "envelope-overlay--exit" : ""}`} onClick={handleClick}>
-      <div className={`envelope-flash ${flashPhase === 1 ? "envelope-flash--in" : flashPhase === 2 ? "envelope-flash--out" : ""}`} />
-      {goldenPhase > 0 && (
-        <p className={`envelope-golden ${goldenPhase === 1 ? "envelope-golden--in" : "envelope-golden--out"}`}>{message}</p>
+      <div className={`envelope-flash ${showWhite ? "envelope-flash--visible" : ""}`} />
+      {showText && (
+        <p className={`envelope-golden ${!exiting ? "envelope-golden--in" : "envelope-golden--out"}`}>{message}</p>
       )}
       <div className={`envelope-wrapper ${open ? "envelope-wrapper--open" : ""}`}>
         <div className="envelope">
