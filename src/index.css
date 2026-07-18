@@ -5326,20 +5326,6 @@ html.a11y-font-scale select {
   border-bottom: 1px solid rgba(212, 175, 55, 0.3); padding-bottom: 3px;
   text-shadow: 0 0 8px rgba(212, 175, 55, 0.2);
 }
-.envelope__address-message {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 0.7rem;
-  line-height: 1.5;
-  color: #d4af37;
-  text-align: center;
-  font-style: italic;
-  max-height: 80px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  opacity: 0.85;
-}
 .envelope__stamp {
   position: absolute; top: 14px; right: 14px; z-index: 1;
   width: 44px; height: 52px;
