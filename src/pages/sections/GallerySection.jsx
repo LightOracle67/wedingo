@@ -85,7 +85,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
           fadeTimerRef.current = setTimeout(() => {
             setFading(false);
             setPrevIdx(null);
-          }, 350);
+          }, 550);
           return (i + 1) % images.length;
         });
         // Devolvemos el valor actual para que setPrevIdx lo capture
@@ -143,7 +143,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
     fadeTimerRef.current = setTimeout(() => {
       setFading(false);
       setPrevIdx(null);
-    }, 350);
+    }, 550);
   }, [fading, idx, images.length]);
 
   const next = useCallback(() => {
@@ -155,7 +155,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
     fadeTimerRef.current = setTimeout(() => {
       setFading(false);
       setPrevIdx(null);
-    }, 350);
+    }, 550);
   }, [fading, idx, images.length]);
 
   const goTo = useCallback((i) => {
@@ -167,7 +167,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
     fadeTimerRef.current = setTimeout(() => {
       setFading(false);
       setPrevIdx(null);
-    }, 350);
+    }, 550);
   }, [fading, idx, images.length]);
 
   // ═══════════════════════════════════════════════════════
