@@ -4,6 +4,7 @@
   z-index: -1;
   pointer-events: none;
   overflow: hidden;
+  transform: translateZ(0);
 }
 
 .firefly {
@@ -11,10 +12,14 @@
   width: 3px;
   height: 3px;
   border-radius: 50%;
-  background: var(--flower-accent);
+  background: #d8b24a;
+  background: var(--flower-accent, #d8b24a);
   box-shadow:
-    0 0 4px 1px var(--flower-accent),
-    0 0 12px 3px var(--flower-accent-dim);
+    0 0 4px 1px #d8b24a,
+    0 0 12px 3px rgba(216, 178, 74, 0.3);
+  box-shadow:
+    0 0 4px 1px var(--flower-accent, #d8b24a),
+    0 0 12px 3px var(--flower-accent-dim, rgba(216, 178, 74, 0.3));
   will-change: transform;
   animation: firefly-move 30s ease-in-out infinite alternate;
 }
