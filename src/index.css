@@ -5156,17 +5156,17 @@ html.a11y-font-scale select {
 .envelope-overlay {
   position: fixed; inset: 0; z-index: 9999;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  background: rgba(30, 8, 8, 0.55);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: rgba(180, 50, 50, 0.15);
+  backdrop-filter: blur(14px) brightness(1.15);
+  -webkit-backdrop-filter: blur(14px) brightness(1.15);
   cursor: pointer;
   transition: opacity 0.8s ease, transform 0.8s ease, backdrop-filter 0.8s ease, background 0.8s ease;
 }
 .envelope-overlay--exit {
   opacity: 0; transform: scale(1.08);
-  backdrop-filter: blur(0);
-  -webkit-backdrop-filter: blur(0);
-  background: rgba(30, 8, 8, 0.2);
+  backdrop-filter: blur(0) brightness(1);
+  -webkit-backdrop-filter: blur(0) brightness(1);
+  background: transparent;
   pointer-events: none;
 }
 .envelope-wrapper {
