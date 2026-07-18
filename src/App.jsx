@@ -15,6 +15,7 @@ import LegalModal from "./components/LegalModal";
 import ChangelogModal from "./components/ChangelogModal";
 import Fireflies from "./components/Fireflies";
 import { APP_VERSION } from "./lib/constants";
+import "./styles/admin.css";
 import LandingPage from "./pages/LandingPage";
 import { SUPERADMIN_ROUTE, SUPERADMIN_DASHBOARD } from "./lib/superadmin";
 
