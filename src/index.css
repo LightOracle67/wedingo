@@ -1098,7 +1098,7 @@ body {
   overflow: hidden;
   isolation: isolate;
   background-color: #1f1b14;
-  background-image: var(--wedding-background-image), url("./assets/background.webp");
+  background-image: var(--wedding-background-image);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1138,8 +1138,7 @@ body::before {
   inset: -18px;
   background-image:
     linear-gradient(var(--page-wash), var(--page-wash)),
-    var(--wedding-background-image),
-    url("./assets/background.webp");
+    var(--wedding-background-image);
   background-position:
     center,
     center,
