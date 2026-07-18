@@ -42,7 +42,13 @@ export const resolveLocationTarget = async ({ place, latitudeValue, longitudeVal
 export const buildGoogleMapsUrl = (location) =>
   `https://www.google.com/maps/search/?api=1&query=${location.latitude},${location.longitude}`;
 
+export const buildGoogleMapsSearchUrl = (place) =>
+  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place)}`;
+
 export const buildAppleMapsUrl = (location, placeLabel) => {
   const label = encodeURIComponent(placeLabel || location.label || "Boda");
   return `https://maps.apple.com/?ll=${location.latitude},${location.longitude}&q=${label}`;
 };
+
+export const buildAppleMapsSearchUrl = (place) =>
+  `https://maps.apple.com/?q=${encodeURIComponent(place)}`;

@@ -1,6 +1,6 @@
-import { memo } from "react";
+import { memo, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { buildGoogleMapsUrl, buildAppleMapsUrl } from "../../lib/utils";
+import { buildGoogleMapsUrl, buildGoogleMapsSearchUrl, buildAppleMapsUrl, buildAppleMapsSearchUrl } from "../../lib/utils";
 import WeddingMap from "../../components/WeddingMap";
 
 const DetailsSection = memo(function DetailsSection({
@@ -11,6 +11,21 @@ const DetailsSection = memo(function DetailsSection({
   configWeddingPlace, transportInfo,
 }) {
   const { t } = useTranslation();
+  const mapsUrl = useMemo(() => {
+    if (locationMapTarget) {
+      return {
+        google: buildGoogleMapsUrl(locationMapTarget),
+        apple: buildAppleMapsUrl(locationMapTarget, configWeddingPlace),
+      };
+    }
+    if (configWeddingPlace) {
+      return {
+        google: buildGoogleMapsSearchUrl(configWeddingPlace),
+        apple: buildAppleMapsSearchUrl(configWeddingPlace),
+      };
+    }
+    return null;
+  }, [locationMapTarget, configWeddingPlace]);
   return (
     <section
       data-story-section="details"
@@ -56,11 +71,11 @@ const DetailsSection = memo(function DetailsSection({
         {hasLocationData ? (
           <WeddingMap weddingPlace={configWeddingPlace} weddingLatitude={locationMapTarget?.latitude} weddingLongitude={locationMapTarget?.longitude} t={t} />
         ) : null}
-        {locationMapTarget ? (
+        {mapsUrl ? (
           <div className="story-map__actions" style={{ marginTop: "0.5rem" }}>
             <a
               className="setup-button setup-button--ghost setup-button--compact"
-              href={buildGoogleMapsUrl(locationMapTarget)}
+              href={mapsUrl.google}
               target="_blank"
               rel="noreferrer"
             >
@@ -68,7 +83,7 @@ const DetailsSection = memo(function DetailsSection({
             </a>
             <a
               className="setup-button setup-button--ghost setup-button--compact"
-              href={buildAppleMapsUrl(locationMapTarget, configWeddingPlace)}
+              href={mapsUrl.apple}
               target="_blank"
               rel="noreferrer"
             >
