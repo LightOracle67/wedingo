@@ -1,4 +1,4 @@
-import { memo, useMemo, useState, useCallback } from "react";
+import { memo, useMemo, useState, useCallback, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { randomMessage } from "../lib/invite-messages";
 
@@ -6,20 +6,25 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secon
   const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
   const [exiting, setExiting] = useState(false);
+  const [flashPhase, setFlashPhase] = useState(0);
 
   const message = useMemo(() => randomMessage(i18n.language), [i18n.language]);
 
   const handleClick = useCallback(() => {
     if (open) return;
     setOpen(true);
-    setTimeout(() => {
+    const t1 = setTimeout(() => setFlashPhase(1), 550);
+    const t2 = setTimeout(() => setFlashPhase(2), 1050);
+    const t3 = setTimeout(() => {
       setExiting(true);
       setTimeout(() => onOpen(), 800);
     }, 1400);
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
   }, [onOpen, open]);
 
   return (
     <div className={`envelope-overlay ${exiting ? "envelope-overlay--exit" : ""}`} onClick={handleClick}>
+      <div className={`envelope-flash ${flashPhase === 1 ? "envelope-flash--in" : flashPhase === 2 ? "envelope-flash--out" : ""}`} />
       <div className={`envelope-wrapper ${open ? "envelope-wrapper--open" : ""}`}>
         <div className="envelope">
           <div className="envelope__flap">
