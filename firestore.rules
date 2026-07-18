@@ -62,8 +62,7 @@ service cloud.firestore {
 
     match /galleryData/{docId} {
       allow read: if true;
-      allow create: if request.resource.data.keys().hasAll(['inviteToken', 'data', 'position', 'createdAt'])
-        && (request.resource.data.keys().hasAny(['description', 'descriptionEncrypted']))
+      allow create: if request.resource.data.keys().hasAll(['inviteToken', 'data', 'description', 'position', 'createdAt'])
         && request.resource.data.data is string
         && request.resource.data.position is number
         && request.resource.data.position >= 0
@@ -71,8 +70,7 @@ service cloud.firestore {
         && hasActiveSession(request.resource.data.inviteToken);
       allow update: if hasActiveSession(request.resource.data.inviteToken)
         && (
-          (request.resource.data.keys().hasOnly(['descriptionEncrypted', 'description'])
-            && request.resource.data.descriptionEncrypted is string
+          (request.resource.data.keys().hasOnly(['description'])
             && request.resource.data.description is string
             && request.resource.data.description.size() <= 200)
           ||
