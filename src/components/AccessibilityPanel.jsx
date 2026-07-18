@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useFocusTrap, useEscapeKey } from "../hooks/useFocusTrap";
 import "../styles/a11y.css";
+import "../styles/modals.css";
 
 const STORAGE_KEY = "wedin_a11y";
 

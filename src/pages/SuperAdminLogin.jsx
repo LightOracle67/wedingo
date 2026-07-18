@@ -3,6 +3,7 @@ import { Navigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useSuperAdmin } from "../contexts/SuperAdminContext";
 import { useToast } from "../hooks/useToast";
+import "../styles/admin.css";
 import { SUPERADMIN_DASHBOARD } from "../lib/superadmin";
 
 export default function SuperAdminLogin() {

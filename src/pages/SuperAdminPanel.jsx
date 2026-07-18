@@ -3,6 +3,7 @@ import { Navigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useSuperAdmin } from "../contexts/SuperAdminContext";
 import { SUPERADMIN_ROUTE } from "../lib/superadmin";
+import "../styles/admin.css";
 
 // ─── Tabs de SuperAdmin (carga diferida) ───────────────────────────
 const DashboardTab = lazy(() => import("./superadmin/DashboardTab"));
