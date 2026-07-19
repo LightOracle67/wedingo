@@ -311,7 +311,17 @@
     "noValidFiles": "No valid files. Max 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
     "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved"
+    "galleryDescriptionSaved": "Description saved",
+    "currentMusic": "Selected music",
+    "removeMusic": "Remove music",
+    "noArtwork": "No artwork",
+    "soundcloudSearchPlaceholder": "Search for wedding songs on SoundCloud...",
+    "soundcloudNoKey": "SoundCloud API key not configured. Ask the developer to set VITE_SOUNDCLOUD_CLIENT_ID.",
+    "soundcloudError": "Could not search SoundCloud. Try again later.",
+    "previewing": "Playing...",
+    "preview": "Preview",
+    "select": "Select",
+    "selected": "Selected"
   },
   "admin": {
     "tabs": {
@@ -713,7 +723,9 @@
   "music": {
     "noMusic": "No music",
     "loadError": "Error loading",
-    "label": "Music"
+    "label": "Music",
+    "soundCloudNote": "SoundCloud track — open to play",
+    "openInSoundCloud": "Open in SoundCloud"
   },
   "print": {
     "preparing": "Preparing print…",
@@ -765,6 +777,12 @@
     "hour_other": "{{count}} hours",
     "minute_one": "{{count}} minute",
     "minute_other": "{{count}} minutes"
+  },
+  "chart": {
+    "noData": "No data",
+    "total": "total",
+    "barChart": "Attendance bar chart",
+    "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   },
   "changelog": {
     "title": "Changelog",

@@ -371,9 +371,11 @@
   display: grid;
   gap: 0.35rem;
 }
+@media (max-width: 640px) {
   .setup-name-grid {
     grid-template-columns: 1fr;
   }
+}
 .setup-label--tight {
   margin: 0;
 }
@@ -440,12 +442,14 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.6rem;
 }
+@media (max-width: 640px) {
   .setup-background-grid {
     grid-template-columns: 1fr;
   }
   .setup-background-panel__header {
     flex-direction: column;
   }
+}
 .setup-background-card {
   display: grid;
   gap: 0.45rem;
@@ -832,6 +836,7 @@ select.setup-input {
   background: color-mix(in srgb, #f07a7a 30%, transparent);
   color: #ffb0b0;
 }
+@media (max-width: 768px) {
   .admin-table th:nth-child(4),
   .admin-table td:nth-child(4) {
     display: none;
@@ -882,7 +887,9 @@ select.setup-input {
     overflow-wrap: break-word;
     word-break: break-word;
   }
-.setup-layout {
+}
+@media (max-width: 640px) {
+  .setup-layout {
     padding: 0.6rem;
   }
   .setup-card {
@@ -909,9 +916,13 @@ select.setup-input {
   .setup-token-card {
     padding: 0.75rem;
   }
+}
+@media (min-width: 641px) and (max-width: 768px) {
   .setup-background-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+@media (max-width: 640px) {
   .story-map__actions .setup-button {
     width: 100%;
     text-align: center;
@@ -924,6 +935,8 @@ select.setup-input {
     width: 100%;
     text-align: center;
   }
+}
+@media (min-width: 769px) {
   .setup-card {
     width: min(100%, 720px);
     padding: clamp(1.5rem, 3vw, 2.2rem);
@@ -931,12 +944,15 @@ select.setup-input {
   .setup-card--wide {
     width: min(100%, 900px);
   }
+}
+@media (min-width: 1025px) {
   .setup-card {
     width: min(100%, 820px);
   }
   .setup-card--wide {
     width: min(100%, 960px);
   }
+}
   .setup-card {
     width: min(100%, 900px);
   }
@@ -1056,9 +1072,11 @@ select.setup-input {
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 0.55rem;
 }
+@media (max-width: 640px) {
   .theme-picker__grid {
     grid-template-columns: 1fr;
   }
+}
 .theme-picker__card {
   display: flex;
   align-items: center;
@@ -1259,6 +1277,26 @@ select.setup-input {
   color: var(--setup-muted);
   min-width: 1.2rem;
   text-align: center;
+}
+.gallery-array-editor__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.75rem;
+}
+@media (max-width: 1024px) {
+  .gallery-array-editor__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .gallery-array-editor__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 400px) {
+  .gallery-array-editor__grid {
+    grid-template-columns: 1fr;
+  }
 }
 .cookie-consent-actions .setup-button {
   flex: 1;

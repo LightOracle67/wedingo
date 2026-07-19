@@ -2,6 +2,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
+import path from "path";
 
 function buildTimestamp() {
   const ts = Date.now();
@@ -19,6 +20,11 @@ function buildTimestamp() {
 export default defineConfig({
   plugins: [react(), tailwindcss(), buildTimestamp()],
   base: "/",
+  resolve: {
+    alias: {
+      "@": "/src",
+    },
+  },
   build: {
     chunkSizeWarningLimit: 600,
     rollupOptions: {
@@ -37,5 +43,6 @@ export default defineConfig({
         url: "https://localhost",
       },
     },
+    setupFiles: ["./vitest.setup.js"],
   },
 });

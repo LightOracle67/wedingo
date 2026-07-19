@@ -102,9 +102,11 @@ html.a11y-high-contrast .app-footer {
   gap: 1rem 1.5rem;
   margin-top: 0.25rem;
 }
+@media (max-width: 480px) {
   .lang-popup__grid {
     grid-template-columns: 1fr;
   }
+}
 .lang-popup__group-title {
   margin: 0 0 0.4rem;
   font-size: 0.7rem;

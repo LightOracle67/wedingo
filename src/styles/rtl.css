@@ -1,0 +1,46 @@
+[dir="rtl"] .modal-close {
+  right: auto;
+  left: 1rem;
+}
+
+[dir="rtl"] .gallery-nav--prev {
+  left: auto;
+  right: 0.5rem;
+}
+
+[dir="rtl"] .gallery-nav--next {
+  right: auto;
+  left: 0.5rem;
+}
+
+[dir="rtl"] .music-player__card {
+  right: auto;
+  left: 1rem;
+}
+
+[dir="rtl"] .music-player__fab {
+  right: auto;
+  left: 1rem;
+}
+
+[dir="rtl"] .skip-link {
+  left: auto;
+  right: 1rem;
+}
+
+[dir="rtl"] .lang-popup__card {
+  right: auto;
+  left: 0;
+}
+
+[dir="rtl"] .app-footer__left {
+  order: 2;
+}
+
+[dir="rtl"] .app-footer__right {
+  order: 1;
+}
+
+[dir="rtl"] .envelope-overlay {
+  direction: rtl;
+}

@@ -317,7 +317,16 @@
     "noValidFiles": "Ningún archivo válido. Máximo 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
     "galleryDescriptionSaveFailed": "Error al guardar la descripción",
-    "galleryDescriptionSaved": "Descripción guardada"
+    "galleryDescriptionSaved": "Descripción guardada",
+    "currentMusic": "Música seleccionada",
+    "removeMusic": "Eliminar música",
+    "noArtwork": "Sin imagen",
+    "soundcloudSearchPlaceholder": "Busca canciones de boda en SoundCloud...",
+    "soundcloudNoKey": "Clave de API de SoundCloud no configurada. Pide al desarrollador que configure VITE_SOUNDCLOUD_CLIENT_ID.",
+    "soundcloudError": "No se pudo buscar en SoundCloud. Intenta de nuevo más tarde.",
+    "previewing": "Reproduciendo...",
+    "select": "Seleccionar",
+    "selected": "Seleccionado"
   },
   "admin": {
     "tabs": {
@@ -720,7 +729,9 @@
   "music": {
     "noMusic": "Sin música",
     "loadError": "Error al cargar",
-    "label": "Música"
+    "label": "Música",
+    "soundCloudNote": "Tema de SoundCloud — ábrelo para reproducir",
+    "openInSoundCloud": "Abrir en SoundCloud"
   },
   "print": {
     "preparing": "Preparando impresión...",

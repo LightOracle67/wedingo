@@ -17,9 +17,8 @@ service cloud.firestore {
         && get(/databases/$(database)/documents/invitations/$(tokenId)).data.sessionExpiresAt > request.time;
     }
 
-    function isAdminOf(tokenId) {
-      return request.auth != null
-        && hasActiveSession(tokenId);
+    function isAuthenticatedAdmin(tokenId) {
+      return hasActiveSession(tokenId);
     }
 
     function isSafeText(value) {
@@ -49,10 +48,14 @@ service cloud.firestore {
           || !exists(/databases/$(database)/documents/invitations/$(tokenId)));
       allow update: if isValidInvitationWrite(request.resource.data)
         && (request.auth != null || hasActiveSession(tokenId));
-      allow update: if request.auth == null
+      /* Creación/renovación de sesión: cualquiera puede iniciar sesión,
+         pero sessionExpiresAt está limitado a 48h desde request.time
+         para evitar sesiones permanentes (fix CR-1). */
+      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['activeSession', 'sessionExpiresAt'])
         && request.resource.data.activeSession is timestamp
         && request.resource.data.sessionExpiresAt is timestamp
-        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['activeSession', 'sessionExpiresAt']);
+        && request.resource.data.sessionExpiresAt <= request.time + duration.value(48, 'h')
+        && request.resource.data.sessionExpiresAt >= request.time + duration.value(1, 'h');
       allow delete: if isSuperAdmin();
 
       match /gallery/{imageId} {
@@ -67,8 +70,8 @@ service cloud.firestore {
         && request.resource.data.position is number
         && request.resource.data.position >= 0
         && request.resource.data.position < 10
-        && hasActiveSession(request.resource.data.inviteToken);
-      allow update: if sessionExists(resource.data.inviteToken)
+        && isAuthenticatedAdmin(request.resource.data.inviteToken);
+      allow update: if isAuthenticatedAdmin(resource.data.inviteToken)
         && (
           (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['description'])
             && request.resource.data.description is string
@@ -79,7 +82,7 @@ service cloud.firestore {
             && request.resource.data.position >= 0
             && request.resource.data.position < 10)
         );
-      allow delete: if isSuperAdmin() || sessionExists(resource.data.inviteToken);
+      allow delete: if isSuperAdmin() || isAuthenticatedAdmin(resource.data.inviteToken);
     }
 
     match /setupTokens/{tokenId} {
@@ -112,6 +115,14 @@ service cloud.firestore {
         && request.resource.data.inviteToken is string
         && hasActiveSession(request.resource.data.inviteToken)
         && request.resource.data.privacyConsent == true
+        && (
+          !request.resource.data.keys().hasAny(['healthConsent'])
+          || request.resource.data.healthConsent == true
+        )
+        && (
+          request.resource.data.dietaryInfo == ""
+          || request.resource.data.healthConsent == true
+        )
         && (request.resource.data.keys().hasOnly(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent', 'privacyConsentAt', 'birthDate', 'parentalConsent', 'menuSelection', 'healthConsent', 'companions', 'menuHeadcounts', 'guestNames'])
           || request.resource.data.keys().hasOnly(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent', 'privacyConsentAt', 'birthDate', 'parentalConsent', 'menuSelection', 'companions', 'menuHeadcounts', 'guestNames']));
 
@@ -131,9 +142,7 @@ service cloud.firestore {
           && hasActiveSession(resource.data.inviteToken));
     }
 
-    /* Denegar acceso a colecciones obsoletas. */
     match /couples/{document=**} { allow read, write: if false; }
     match /dataconnect/{document=**} { allow read, write: if false; }
   }
 }
-

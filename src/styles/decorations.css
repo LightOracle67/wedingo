@@ -31,6 +31,7 @@
     transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
     opacity 500ms ease;
 }
+@media (max-width: 768px) {
   .wedding-decoration {
     width: clamp(150px, 36vw, 200px);
     max-width: 200px;
@@ -46,16 +47,19 @@
     bottom: -0.35rem;
     transform: var(--wedding-decoration-right-mobile-transform, none);
   }
+}
 .wedding-decoration--left {
   animation: subtle-float 6s ease-in-out infinite;
 }
 .wedding-decoration--right {
   animation: subtle-float 6s ease-in-out infinite reverse;
 }
+@media (min-width: 769px) {
   .wedding-decoration {
     width: clamp(220px, 24vw, 360px);
     max-width: 360px;
   }
+}
 .wedding-decoration__image {
   display: block;
   width: 100%;
@@ -103,13 +107,17 @@
     filter: blur(0);
   }
 }
+@media (max-width: 480px) {
   .wedding-decoration {
     width: 120px;
     max-width: 120px;
   }
+}
+@media (max-width: 360px) {
   .wedding-decoration {
     display: none !important;
   }
+}
 .wedding-decoration {
   z-index: 0;
 }

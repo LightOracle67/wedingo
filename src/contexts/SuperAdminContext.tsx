@@ -1,0 +1,115 @@
+import { createContext, useContext, useCallback, useEffect, useMemo, useState, useRef } from "react";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import {
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
+import { auth } from "../lib/firebase";
+import { saveSession, getSession, renewSession, clearSession } from "../lib/sessionVars";
+
+const SUPERADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAILS?.split(",")[0]?.trim() || "adriancl2001@gmail.com";
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const SuperAdminContext = createContext<any>(null);
+
+export function SuperAdminProvider({ children }: any) {
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+  const [user, setUser] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
+  const renewRef = useRef<any>(null);
+  /** Flag para evitar que onAuthStateChanged cierre sesión durante el login. */
+  const loggingInRef = useRef(false);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      const local = getSession();
+      if (firebaseUser && firebaseUser.email === SUPERADMIN_EMAIL && local?.type === "superadmin") {
+        setUser(firebaseUser);
+      } else if (firebaseUser && firebaseUser.email === SUPERADMIN_EMAIL && loggingInRef.current) {
+        // Login en curso: no forzar cierre, esperar a que login() guarde la sesión
+        setUser(firebaseUser);
+      } else {
+        if (firebaseUser && firebaseUser.email === SUPERADMIN_EMAIL) {
+          signOut(auth).catch(() => {});
+        }
+        setUser(null);
+      }
+      setIsLoading(false);
+    });
+    return unsubscribe;
+  }, []);
+
+  useEffect(() => {
+    if (user) {
+      renewSession();
+      renewRef.current = setInterval(() => renewSession(), 60_000);
+    } else {
+      if (renewRef.current) clearInterval(renewRef.current);
+    }
+    return () => { if (renewRef.current) clearInterval(renewRef.current); };
+  }, [user]);
+
+  const login = useCallback(async (email: any, password: any) => {
+    setError("");
+    loggingInRef.current = true;
+    try {
+      const result = await signInWithEmailAndPassword(auth, email, password);
+      if (result.user.email !== SUPERADMIN_EMAIL) {
+        await signOut(auth);
+        setError(t("auth.superadminNoPermissions"));
+        loggingInRef.current = false;
+        return false;
+      }
+      saveSession("superadmin", result.user.email, { uid: result.user.uid });
+      setUser(result.user);
+      loggingInRef.current = false;
+      return true;
+    } catch (err: any) {
+      loggingInRef.current = false;
+      if (err.code === "auth/user-not-found" || err.code === "auth/wrong-password" || err.code === "auth/invalid-credential") {
+        setError(t("auth.superadminWrongCredentials"));
+      } else if (err.code === "auth/too-many-requests") {
+        setError(t("auth.superadminTooManyAttempts"));
+      } else if (err.code === "auth/invalid-email") {
+        setError(t("auth.superadminInvalidEmail"));
+      } else {
+        setError(t("auth.superadminLoginError"));
+      }
+      return false;
+    }
+  }, [t]);
+
+  const logout = useCallback(async () => {
+    clearSession();
+    await signOut(auth);
+    setUser(null);
+    try {
+      const keys = Object.keys(localStorage).filter((k) => k.startsWith("wedin_invite_cache_"));
+      keys.forEach((k: any) => localStorage.removeItem(k));
+    } catch {}
+    navigate("/");
+  }, [navigate]);
+
+  const value = useMemo(() => ({
+    isSuperAdmin: user !== null,
+    user,
+    email: SUPERADMIN_EMAIL,
+    isLoading,
+    error,
+    login,
+    logout,
+  }), [user, isLoading, error, login, logout]);
+
+  return <SuperAdminContext.Provider value={value}>{children}</SuperAdminContext.Provider>;
+}
+
+// eslint-disable-next-line react/only-export-components
+export function useSuperAdmin() {
+  const context = useContext(SuperAdminContext);
+  if (!context) throw new Error("useSuperAdmin debe usarse dentro de SuperAdminProvider");
+  return context;
+}
