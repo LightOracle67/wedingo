@@ -45,6 +45,11 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secon
         <div className="envelope">
           <div className="envelope__flap">
             <div className="envelope__flap-inner" />
+            <div className="envelope__seal">
+              <div className="envelope__seal-wax">
+                <div className="envelope__seal-heart" />
+              </div>
+            </div>
           </div>
           <div className="envelope__panel envelope__panel--front">
             <div className="envelope__address">
