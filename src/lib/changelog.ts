@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.12.5",
+    date: "2026-07-19",
+    changes: [
+      "Eliminado botón 'Como invitado' del panel /admin",
+    ],
+  },
+  {
     version: "2.12.4",
     date: "2026-07-19",
     changes: [
