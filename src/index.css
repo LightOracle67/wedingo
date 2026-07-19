@@ -2690,13 +2690,18 @@ body::before {
   position: fixed;
   inset: 0;
   z-index: -1;
-  opacity: 0.25;
   pointer-events: none;
-  background: var(--theme-glow, transparent);
-  background-size: cover;
-  background-position: center;
+  background:
+    var(--theme-glow, transparent),
+    linear-gradient(0deg, transparent 40%, color-mix(in srgb, var(--flower-accent, #d8b24a) 6%, transparent) 70%, transparent 90%),
+    linear-gradient(180deg, transparent 40%, color-mix(in srgb, var(--flower-accent, #d8b24a) 6%, transparent) 70%, transparent 90%),
+    radial-gradient(ellipse at 50% 20%, color-mix(in srgb, var(--flower-accent, #d8b24a) 10%, transparent) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, color-mix(in srgb, var(--flower-accent, #d8b24a) 10%, transparent) 0%, transparent 50%);
+  background-size: cover, 100% 200%, 100% 200%, 80% 100%, 80% 100%;
+  background-position: center, 0 -20%, 0 120%, center, center;
   background-repeat: no-repeat;
-  animation: theme-glow-pulse 14s ease-in-out infinite alternate;
+  opacity: 0.3;
+  animation: theme-glow-pulse 10s ease-in-out infinite;
 }
 
 body::after {
@@ -2704,23 +2709,25 @@ body::after {
   position: fixed;
   inset: 0;
   z-index: -1;
-  opacity: 0.12;
   pointer-events: none;
-  background: radial-gradient(circle at 50% 50%, transparent 30%, rgba(0,0,0,0.15) 100%);
-  animation: theme-glow-depth 18s ease-in-out infinite alternate;
+  background:
+    radial-gradient(circle at 50% 50%, transparent 25%, rgba(0,0,0,0.2) 100%),
+    repeating-linear-gradient(0deg, transparent 0%, transparent 45%, rgba(255,255,255,0.015) 48%, transparent 51%, transparent 100%);
+  background-size: 100% 100%, 100% 300%;
+  animation: theme-glow-depth 20s linear infinite;
 }
 
 @keyframes theme-glow-pulse {
-  0%   { opacity: 0.2; transform: scale(1) translate(0, 0); }
-  33%  { opacity: 0.35; transform: scale(1.06) translate(0.5%, -0.5%); }
-  66%  { opacity: 0.25; transform: scale(0.97) translate(-0.5%, 0.5%); }
-  100% { opacity: 0.3; transform: scale(1.03) translate(0.3%, -0.3%); }
+  0%   { background-position: center, 0 -20%, 0 120%, center, center; opacity: 0.25; }
+  25%  { background-position: center, 0 -10%, 0 110%, center, center; opacity: 0.35; }
+  50%  { background-position: center, 0 -30%, 0 130%, center, center; opacity: 0.28; }
+  75%  { background-position: center, 0 -5%, 0 105%, center, center; opacity: 0.38; }
+  100% { background-position: center, 0 -20%, 0 120%, center, center; opacity: 0.25; }
 }
 
 @keyframes theme-glow-depth {
-  0%   { opacity: 0.08; }
-  50%  { opacity: 0.15; }
-  100% { opacity: 0.1; }
+  0%   { background-position: 0 0, 0 0; }
+  100% { background-position: 0 0, 0 100%; }
 }
 
 /* Decoraciones ornamentales CSS por tema */

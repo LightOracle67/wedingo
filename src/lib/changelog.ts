@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.12.7",
+    date: "2026-07-19",
+    changes: [
+      "Fondo animado con luces moviéndose desde arriba/abajo hacia la profundidad",
+    ],
+  },
+  {
     version: "2.12.6",
     date: "2026-07-19",
     changes: [
