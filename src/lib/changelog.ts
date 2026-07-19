@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.11.4",
+    date: "2026-07-19",
+    changes: [
+      "Fondo animado de página con más profundidad radial y animación más brillante",
+      "Segunda capa de profundidad (body::after) con vignette sutil y movimiento propio",
+    ],
+  },
+  {
     version: "2.11.3",
     date: "2026-07-19",
     changes: [

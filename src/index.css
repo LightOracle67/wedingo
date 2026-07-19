@@ -2690,19 +2690,37 @@ body::before {
   position: fixed;
   inset: 0;
   z-index: -1;
-  opacity: 0.15;
+  opacity: 0.25;
   pointer-events: none;
   background: var(--theme-glow, transparent);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  animation: theme-glow-pulse 12s ease-in-out infinite alternate;
+  animation: theme-glow-pulse 14s ease-in-out infinite alternate;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.12;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, transparent 30%, rgba(0,0,0,0.15) 100%);
+  animation: theme-glow-depth 18s ease-in-out infinite alternate;
 }
 
 @keyframes theme-glow-pulse {
-  0%   { opacity: 0.1; transform: scale(1); }
-  50%  { opacity: 0.18; transform: scale(1.03); }
-  100% { opacity: 0.12; transform: scale(0.98); }
+  0%   { opacity: 0.2; transform: scale(1) translate(0, 0); }
+  33%  { opacity: 0.35; transform: scale(1.06) translate(0.5%, -0.5%); }
+  66%  { opacity: 0.25; transform: scale(0.97) translate(-0.5%, 0.5%); }
+  100% { opacity: 0.3; transform: scale(1.03) translate(0.3%, -0.3%); }
+}
+
+@keyframes theme-glow-depth {
+  0%   { opacity: 0.08; }
+  50%  { opacity: 0.15; }
+  100% { opacity: 0.1; }
 }
 
 /* Decoraciones ornamentales CSS por tema */
