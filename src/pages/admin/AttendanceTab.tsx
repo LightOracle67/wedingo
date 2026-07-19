@@ -13,10 +13,11 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
 } = config;
   const { rsvpEntries, handleClearRsvpEntries, formatDate } = props;
   const { t } = useTranslation();
-  const dietary = useMemo(() => getDietarySummary(rsvpEntries), [rsvpEntries]);
-
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(25);
+
+  const entries = rsvpEntries || [];
+  const dietary = useMemo(() => getDietarySummary(entries), [entries]);
 
   const totalPages = Math.max(1, Math.ceil(filteredEntries.length / pageSize));
   const safePage = Math.min(page, totalPages - 1);
@@ -25,14 +26,14 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
   useEffect(() => { setPage(0); }, [searchQuery, attendanceFilter]);
 
   const stats = useMemo(() => {
-    const yes = rsvpEntries.filter((e: any) => e.attendance === "yes").length;
-    const no = rsvpEntries.filter((e: any) => e.attendance === "no").length;
-    const totalCompanions = rsvpEntries
+    const yes = entries.filter((e: any) => e.attendance === "yes").length;
+    const no = entries.filter((e: any) => e.attendance === "no").length;
+    const totalCompanions = entries
       .filter((e: any) => e.attendance === "yes")
       .reduce((s: any, e: any) => s + (Number(e.companions) || 0), 0);
-    const withDietary = rsvpEntries.filter((e: any) => e.attendance === "yes" && e.dietaryInfo?.trim()).length;
+    const withDietary = entries.filter((e: any) => e.attendance === "yes" && e.dietaryInfo?.trim()).length;
     return { yes, no, totalCompanions, withDietary };
-  }, [rsvpEntries]);
+  }, [entries]);
 
   return (
     <>
