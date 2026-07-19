@@ -132,9 +132,6 @@ const PanelTab = memo(function PanelTab(props: any) {
         <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleViewAttendance}>
           {t("panel.viewAttendance")}
         </button>
-        <a className="setup-button setup-button--ghost setup-button--compact" href={inviteUrl} target="_blank" rel="noreferrer">
-          {t("panel.preview")}
-        </a>
         <a className="setup-button setup-button--ghost setup-button--compact" href={`${inviteUrl}?invitar`} target="_blank" rel="noreferrer">
           {t("panel.asGuest")}
         </a>

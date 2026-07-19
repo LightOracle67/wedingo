@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.12.4",
+    date: "2026-07-19",
+    changes: [
+      "Eliminado botón 'Vista previa' del panel /admin",
+    ],
+  },
+  {
     version: "2.12.3",
     date: "2026-07-19",
     changes: [
