@@ -27,6 +27,9 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secon
 
   return (
     <div className={`envelope-overlay ${exiting ? "envelope-overlay--exit" : ""}`} onClick={handleClick} tabIndex={0} role="button" aria-label={t("envelope.tapContinue")} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); handleClick(); } }}>
+      <span className="envelope-light" data-light="1" />
+      <span className="envelope-light" data-light="2" />
+      <span className="envelope-light" data-light="3" />
       <div className={`envelope-flash ${showWhite ? "envelope-flash--visible" : ""}`} />
       {showText && (
         <p className={`envelope-golden ${!exiting ? "envelope-golden--in" : "envelope-golden--out"}`}>

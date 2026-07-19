@@ -1,5 +1,18 @@
 export const CHANGELOG = [
   {
+    version: "2.10.0",
+    date: "2026-07-19",
+    changes: [
+      "Envelope rediseñado a sobre de invitación realista: papel crema con textura, bordes dorados, solapa triangular con pliegue",
+      "Envelope más grande: 400px de ancho (antes 300px) con aspect-ratio 1.43:1",
+      "Sombra oscura notable (box-shadow 0 18px 60px rgba(0,0,0,0.5)) para dar profundidad realista",
+      "Carta interior con línea de pliegue y aspecto de cartulina gruesa",
+      "Brillo/shimmer eliminado, sustituido por 3 luces redondas que orbitan suavemente",
+      "Blur de fondo subido a 50px para ocultar completamente el contenido tras el sobre",
+      "Todos los estilos de envelope migrados de index.css a envelope.css",
+    ],
+  },
+  {
     version: "2.9.0",
     date: "2026-07-19",
     changes: [

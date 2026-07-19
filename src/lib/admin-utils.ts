@@ -16,6 +16,7 @@ export function calcRSVPSummary(entries: any[] | null | undefined) {
 }
 
 export function getDietarySummary(entries: any[] | null | undefined) {
+  if (!entries) return [];
   const confirmed = entries.filter((e) => e.attendance === "yes" && e.dietaryInfo?.trim());
   if (!confirmed.length) return [];
   const counts = {};
