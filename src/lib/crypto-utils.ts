@@ -1,7 +1,7 @@
 const ALGORITHM = { name: "AES-GCM", length: 256 };
 const SALT_LEN = 16;
 const IV_LEN = 12;
-const ITER_LEN = 2;
+const ITER_LEN = 3;
 const HEADER_LEN = SALT_LEN + IV_LEN + ITER_LEN;
 const ITERATIONS_NEW = 600000;
 
@@ -37,6 +37,7 @@ export async function encrypt(text, token) {
     const iterBytes = new Uint8Array(ITER_LEN);
     iterBytes[0] = ITERATIONS_NEW & 0xff;
     iterBytes[1] = (ITERATIONS_NEW >> 8) & 0xff;
+    iterBytes[2] = (ITERATIONS_NEW >> 16) & 0xff;
     const combined = new Uint8Array(HEADER_LEN + encrypted.byteLength);
     combined.set(salt, 0);
     combined.set(iv, SALT_LEN);
@@ -56,7 +57,7 @@ export async function decrypt(ciphertext, token) {
       const salt = raw.slice(0, SALT_LEN);
       const iv = raw.slice(SALT_LEN, SALT_LEN + IV_LEN);
       const iterBytes = raw.slice(SALT_LEN + IV_LEN, HEADER_LEN);
-      const iterations = iterBytes[0] | (iterBytes[1] << 8);
+      const iterations = iterBytes[0] | (iterBytes[1] << 8) | (iterBytes[2] << 16);
       const data = raw.slice(HEADER_LEN);
       const key = await getKey(token, salt, iterations);
       const decrypted = await crypto.subtle.decrypt({ ...ALGORITHM, iv }, key, data);
