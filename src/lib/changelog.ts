@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.11.3",
+    date: "2026-07-19",
+    changes: [
+      "Sombra en la parte superior de la solapa (drop-shadow sobre clip-path triangular)",
+    ],
+  },
+  {
     version: "2.11.2",
     date: "2026-07-19",
     changes: [
