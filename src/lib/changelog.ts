@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.11.2",
+    date: "2026-07-19",
+    changes: [
+      "Sello de cera subido ligeramente hacia arriba en la solapa",
+    ],
+  },
+  {
     version: "2.11.1",
     date: "2026-07-19",
     changes: [
