@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.12.3",
+    date: "2026-07-19",
+    changes: [
+      "Fix: AttendanceTab crash completo — rsvpEntries.length directo sin guard",
+    ],
+  },
+  {
     version: "2.12.2",
     date: "2026-07-19",
     changes: [

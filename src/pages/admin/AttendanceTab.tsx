@@ -137,7 +137,7 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
         </p>
       )}
 
-      {rsvpEntries.length > 0 && (
+      {entries.length > 0 && (
         <div className="setup-actions">
           <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={exportPdf}>
             {t("attendance.exportPdf")}
