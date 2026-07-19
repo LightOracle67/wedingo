@@ -1,5 +1,17 @@
 export const CHANGELOG = [
   {
+    version: "2.11.0",
+    date: "2026-07-19",
+    changes: [
+      "Sello de cera realista en la solapa del envelope: rojo con corazón repujado",
+      "Fuentes del envelope aumentadas (nombres, dirección, mensaje interior)",
+      "Bugfix: variable message restaurada en EnvelopeOverlay (ReferenceError en producción)",
+      "Bugfix: CSP font-src añadido data: para fuentes base64 inlineadas por Vite",
+      "Bugfix: crypto-utils ITER_LEN 2→3 bytes (600K iteraciones truncadas a 16 bits)",
+      "Tests: +113 tests en 9 módulos, 21 test files, 255 tests pasando",
+    ],
+  },
+  {
     version: "2.10.0",
     date: "2026-07-19",
     changes: [
