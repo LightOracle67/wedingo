@@ -322,6 +322,8 @@
   align-items: center;
   gap: 4px;
   z-index: 2;
+  margin-top: auto;
+  padding-bottom: 1.5rem;
 }
 .envelope__address-line {
   font-family: "Great Vibes", cursive, serif;
