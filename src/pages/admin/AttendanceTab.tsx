@@ -17,11 +17,12 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
   const [pageSize, setPageSize] = useState(25);
 
   const entries = rsvpEntries || [];
+  const filterEntries = filteredEntries || [];
   const dietary = useMemo(() => getDietarySummary(entries), [entries]);
 
-  const totalPages = Math.max(1, Math.ceil(filteredEntries.length / pageSize));
+  const totalPages = Math.max(1, Math.ceil(filterEntries.length / pageSize));
   const safePage = Math.min(page, totalPages - 1);
-  const paginated = filteredEntries.slice(safePage * pageSize, (safePage + 1) * pageSize);
+  const paginated = filterEntries.slice(safePage * pageSize, (safePage + 1) * pageSize);
 
   useEffect(() => { setPage(0); }, [searchQuery, attendanceFilter]);
 
@@ -76,7 +77,7 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
         </div>
       )}
 
-      {filteredEntries.length > 0 ? (
+      {filterEntries.length > 0 ? (
         <div className="admin-table-wrapper">
           <table className="admin-table">
             <thead>
@@ -114,7 +115,7 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
                 {PAGE_SIZES.map((s: any) => <option key={s} value={s}>{s}</option>)}
               </select>
               <span className="setup-help" style={{ fontSize: "0.75rem" }}>
-                &middot; {t("attendance.total", { count: filteredEntries.length })}
+                &middot; {t("attendance.total", { count: filterEntries.length })}
               </span>
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}>

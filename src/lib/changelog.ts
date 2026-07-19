@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.12.2",
+    date: "2026-07-19",
+    changes: [
+      "Fix: AttendanceTab crash cuando filteredEntries es undefined (.length en null)",
+    ],
+  },
+  {
     version: "2.12.1",
     date: "2026-07-19",
     changes: [
