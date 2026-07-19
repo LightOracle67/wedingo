@@ -3,14 +3,11 @@ import { useTranslation } from "react-i18next";
 import { useEscapeKey } from "../hooks/useFocusTrap";
 import "../styles/music.css";
 
-function songName(url: any) {
-  if (!url) return "";
+function songName(musicUrl: any) {
+  if (!musicUrl) return "";
+  if (musicUrl.startsWith("data:")) return "Audio subido";
   try {
-    const u = new URL(url);
-    if (u.hostname.includes("soundcloud.com")) {
-      const parts = u.pathname.split("/").filter(Boolean);
-      return parts[parts.length - 1]?.replace(/[-_]+/g, " ") || "";
-    }
+    const u = new URL(musicUrl);
     const path = u.pathname;
     const last = path.split("/").filter(Boolean).pop() || "";
     const name = decodeURIComponent(last).replace(/\.[^.]+$/, "");
@@ -20,22 +17,14 @@ function songName(url: any) {
   }
 }
 
-function isSoundCloud(url: any) {
-  if (!url) return false;
-  try { return new URL(url).hostname.includes("soundcloud.com"); }
-  catch { return false; }
-}
-
 function formatTime(sec: any) {
   if (!isFinite(sec) || sec < 0) return "0:00";
   const m = Math.floor(sec / 60);
   const s = Math.floor(sec % 60);
   return `${m}:${String(s).padStart(2, "0")}`;
 }
- 
-const MusicPlayer = memo(
-  /** @param {{ musicUrl: string }} props */
-  function MusicPlayer({ musicUrl }: any) {
+
+const MusicPlayer = memo(function MusicPlayer({ musicUrl }: any) {
   const { t } = useTranslation();
   const [playing, setPlaying] = useState(false);
   const [error, setError] = useState(false);
@@ -108,20 +97,9 @@ const MusicPlayer = memo(
 
   useEscapeKey(handleToggle, open);
 
-  const isSc = isSoundCloud(musicUrl);
-
   return (
     <div className="music-player">
-      {musicUrl && !isSc ? <audio ref={audioRef} src={musicUrl} loop preload="auto" /> : null}
-      {musicUrl && isSc ? (
-        <iframe
-          title={name}
-          width="0"
-          height="0"
-          style={{ position: "absolute", opacity: 0, pointerEvents: "none" }}
-          src={`https://w.soundcloud.com/player/?url=${encodeURIComponent(musicUrl)}&auto_play=false&show_artwork=false&show_comments=false&show_user=false&show_playcount=false&color=%23d8b24a&hide_related=true&visual=false&liking=false&sharing=false&buying=false&download=false`}
-        />
-      ) : null}
+      {musicUrl ? <audio ref={audioRef} src={musicUrl} loop preload="auto" /> : null}
 
       <div className={`music-player__card${open ? " music-player__card--open" : ""}${visible ? " music-player__card--visible" : ""}`}>
         {open ? (
@@ -137,34 +115,20 @@ const MusicPlayer = memo(
             </div>
             <span className="music-player__track">{name}</span>
             {error ? <span className="music-player__status">{t("music.loadError")}</span> : null}
-            {isSc ? (
-              <div className="music-player__scrubber" style={{ flexDirection: "column", gap: "0.35rem" }}>
-                <p className="setup-help" style={{ textAlign: "center", margin: 0, fontSize: "0.75rem" }}>
-                  {t("music.soundCloudNote")}
-                </p>
-                <a href={musicUrl} target="_blank" rel="noopener noreferrer" className="setup-button setup-button--compact"
-                  style={{ fontSize: "0.75rem", padding: "0.35rem 0.75rem", textAlign: "center", display: "inline-block" }}>
-                  {t("music.openInSoundCloud")}
-                </a>
-              </div>
-            ) : (
-              <>
-                <div className="music-player__scrubber">
-                  <span className="music-player__time">{formatTime(currentTime)}</span>
-                  <input type="range" min="0" max={duration || 1} step="0.1" value={currentTime} onChange={handleSeek} className="music-player__seek" disabled={!hasMusic} />
-                  <span className="music-player__time">{formatTime(duration)}</span>
-                </div>
-                <div className="music-player__actions">
-                  <button type="button" className="music-player__play" onClick={toggleMusic} disabled={loading || !hasMusic}>
-                    {loading ? <span className="music-player__spinner" /> : playing ? <span>⏸</span> : <span>▶</span>}
-                  </button>
-                </div>
-                <div className="music-player__volume-row">
-                  <span className="music-player__vol-icon">{volume === 0 ? "🔇" : volume < 0.5 ? "🔉" : "🔊"}</span>
-                  <input type="range" min="0" max="1" step="0.05" value={volume} onChange={handleVolume} className="music-player__volume" disabled={!hasMusic} />
-                </div>
-              </>
-            )}
+            <div className="music-player__scrubber">
+              <span className="music-player__time">{formatTime(currentTime)}</span>
+              <input type="range" min="0" max={duration || 1} step="0.1" value={currentTime} onChange={handleSeek} className="music-player__seek" disabled={!hasMusic} />
+              <span className="music-player__time">{formatTime(duration)}</span>
+            </div>
+            <div className="music-player__actions">
+              <button type="button" className="music-player__play" onClick={toggleMusic} disabled={loading || !hasMusic}>
+                {loading ? <span className="music-player__spinner" /> : playing ? <span>⏸</span> : <span>▶</span>}
+              </button>
+            </div>
+            <div className="music-player__volume-row">
+              <span className="music-player__vol-icon">{volume === 0 ? "🔇" : volume < 0.5 ? "🔉" : "🔊"}</span>
+              <input type="range" min="0" max="1" step="0.05" value={volume} onChange={handleVolume} className="music-player__volume" disabled={!hasMusic} />
+            </div>
           </>
         ) : null}
       </div>

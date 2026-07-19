@@ -85,7 +85,7 @@ function AppShell() {
         </nav>
       ) : null}
 
-      {inviteToken && location.pathname === `/${inviteToken}` ? <MusicPlayer musicUrl={config.musicUrl} /> : null}
+      {inviteToken && location.pathname === `/${inviteToken}` ? <MusicPlayer musicUrl={config.musicFile || config.musicUrl} /> : null}
 
       <main id="main-content" tabIndex={-1} style={{ paddingTop: topBarPadding || publicNavPadding }}>
         <Suspense fallback={<div className="page-loading" />}>

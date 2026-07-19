@@ -5,7 +5,7 @@ import { useToast } from "../../hooks/useToast";
 import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES } from "../../lib/constants";
 import { uploadImage } from "../../lib/image-store";
 import ThemePicker from "../ThemePicker";
-import SoundCloudPicker from "../SoundCloudPicker";
+import AudioUploadPicker from "../AudioUploadPicker";
 
 export default function CoverSectionForm({ prefix = "" }) {
   const {
@@ -181,7 +181,7 @@ export default function CoverSectionForm({ prefix = "" }) {
         ) : null}
       </div>
 
-      <SoundCloudPicker value={formData.musicUrl} onChange={(val: any) => updateFormField("musicUrl", val)} t={t} />
+      <AudioUploadPicker value={formData.musicFile || formData.musicUrl} onChange={(val: any) => updateFormField("musicFile", val)} t={t} />
     </>
   );
 }

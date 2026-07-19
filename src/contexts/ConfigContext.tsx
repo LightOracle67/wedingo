@@ -168,6 +168,7 @@ export function ConfigProvider({ children }: any) {
         if (parsed.bankInfo) parsed.bankInfo = await decrypt(parsed.bankInfo, inviteToken);
         if (parsed.backgroundImage) parsed.backgroundImage = await loadDecryptedField(inviteToken, parsed.backgroundImage);
         if (parsed.couplePhoto) parsed.couplePhoto = await loadDecryptedField(inviteToken, parsed.couplePhoto);
+        if (parsed.musicFile) parsed.musicFile = await loadDecryptedField(inviteToken, parsed.musicFile);
         const hydrated = { ...defaultConfig, ...parsed };
         setConfig(hydrated);
         setFormData(hydrated);
@@ -205,6 +206,7 @@ export function ConfigProvider({ children }: any) {
       if (parsed.bankInfo) parsed.bankInfo = await decrypt(parsed.bankInfo, inviteToken);
       if (parsed.backgroundImage) parsed.backgroundImage = await loadDecryptedField(inviteToken, parsed.backgroundImage);
       if (parsed.couplePhoto) parsed.couplePhoto = await loadDecryptedField(inviteToken, parsed.couplePhoto);
+      if (parsed.musicFile) parsed.musicFile = await loadDecryptedField(inviteToken, parsed.musicFile);
       const hydrated = { ...defaultConfig, ...parsed };
       setConfig(hydrated);
       setFormData(hydrated);
@@ -344,9 +346,9 @@ export function ConfigProvider({ children }: any) {
       }
     }
 
-    if (sanitized.musicUrl && !/^https:\/\/.+\..+/.test(sanitized.musicUrl) && !sanitized.musicUrl.includes("soundcloud.com")) {
-      setSaveError(t("errors.musicUrlInvalid"));
-      return;
+    if (sanitized.musicUrl && sanitized.musicUrl.startsWith("data:")) {
+      sanitized.musicFile = sanitized.musicUrl;
+      sanitized.musicUrl = "";
     }
 
     if (sanitized.sectionOrder) {
@@ -400,14 +402,17 @@ export function ConfigProvider({ children }: any) {
     try {
       const bgOrig = payload.backgroundImage?.startsWith("data:") ? payload.backgroundImage : null;
       const cpOrig = payload.couplePhoto?.startsWith("data:") ? payload.couplePhoto : null;
+      const mfOrig = payload.musicFile?.startsWith("data:") ? payload.musicFile : null;
       if (payload.bankInfo) payload.bankInfo = await encrypt(payload.bankInfo, inviteToken);
       if (bgOrig) payload.backgroundImage = await encrypt(bgOrig, inviteToken);
       if (cpOrig) payload.couplePhoto = await encrypt(cpOrig, inviteToken);
+      if (mfOrig) payload.musicFile = await encrypt(mfOrig, inviteToken);
       payload.privacyPolicyVersion = PRIVACY_POLICY_VERSION;
       await setDoc(invitationDocRef(inviteToken), payload);
       if (payload.bankInfo) payload.bankInfo = await decrypt(payload.bankInfo, inviteToken);
       if (bgOrig) payload.backgroundImage = bgOrig;
       if (cpOrig) payload.couplePhoto = cpOrig;
+      if (mfOrig) payload.musicFile = mfOrig;
       setConfig(payload);
       setFormData(payload);
       setHasStoredConfig(true);

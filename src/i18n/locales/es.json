@@ -233,8 +233,12 @@
     "currentPhoto": "Foto actual",
     "remove": "Quitar",
     "musicLabel": "Música de fondo",
-    "musicPlaceholder": "https://example.com/cancion.mp3",
-    "musicHint": "Enlace a un archivo de audio MP3 para reproducir en la portada.",
+    "audioHint": "Sube un archivo de audio para reproducir en la portada (MP3, WAV, OGG, M4A — máx 5 MB).",
+    "audioUploadTitle": "Subir archivo de audio",
+    "audioUploadSubtitle": "MP3, WAV, OGG o M4A — máximo 5 MB",
+    "audioFormatError": "Formato de audio no soportado. Usa MP3, WAV, OGG o M4A.",
+    "audioSizeError": "El archivo de audio supera el límite de 5 MB.",
+    "audioReadError": "Error al leer el archivo de audio.",
     "placeLabel": "Lugar de la boda",
     "placePlaceholder": "Escribe el nombre del lugar para buscar...",
     "placeHint": "Escribe el lugar y selecciona uno de los resultados.",
@@ -319,14 +323,7 @@
     "galleryDescriptionSaveFailed": "Error al guardar la descripción",
     "galleryDescriptionSaved": "Descripción guardada",
     "currentMusic": "Música seleccionada",
-    "removeMusic": "Eliminar música",
-    "noArtwork": "Sin imagen",
-    "soundcloudSearchPlaceholder": "Busca canciones de boda en SoundCloud...",
-    "soundcloudNoKey": "Clave de API de SoundCloud no configurada. Pide al desarrollador que configure VITE_SOUNDCLOUD_CLIENT_ID.",
-    "soundcloudError": "No se pudo buscar en SoundCloud. Intenta de nuevo más tarde.",
-    "previewing": "Reproduciendo...",
-    "select": "Seleccionar",
-    "selected": "Seleccionado"
+    "removeMusic": "Eliminar música"
   },
   "admin": {
     "tabs": {
@@ -502,7 +499,6 @@
     "menuRequired": "Describe al menos un menú principal (carne, pescado o vegano).",
     "menuTextRequired": "Describe el menú de la celebración.",
     "ibanInvalid": "El formato del IBAN no es válido.",
-    "musicUrlInvalid": "El enlace de música debe ser una URL válida (https://...).",
     "galleryFormatInvalid": "El formato de las imágenes de galería no es válido.",
     "sectionOrderMismatch": "El orden de secciones tiene {{actual}} elementos, se esperaban {{expected}}.",
     "messageTooLong": "El mensaje de invitación no puede superar los 500 caracteres.",

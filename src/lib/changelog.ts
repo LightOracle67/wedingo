@@ -1,5 +1,17 @@
 export const CHANGELOG = [
   {
+    version: "2.12.0",
+    date: "2026-07-19",
+    changes: [
+      "ELIMINADO SoundCloud Picker — se reemplaza por subida de archivo de audio propio",
+      "Nuevo AudioUploadPicker: sube MP3/WAV/OGG/M4A (máx 5 MB) como música de fondo",
+      "MusicPlayer simplificado: solo reproducción nativa <audio>, sin iframe SoundCloud",
+      "musicFile: nuevo campo cifrado en Firestore para almacenar el audio subido",
+      "Traducciones actualizadas: eliminadas claves de SoundCloud, añadidas de audio",
+      "Eliminada variable de entorno VITE_SOUNDCLOUD_CLIENT_ID",
+    ],
+  },
+  {
     version: "2.11.4",
     date: "2026-07-19",
     changes: [
