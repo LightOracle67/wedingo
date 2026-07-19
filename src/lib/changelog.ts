@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.11.1",
+    date: "2026-07-19",
+    changes: [
+      "Nombres de los novios movidos al borde inferior del envelope",
+    ],
+  },
+  {
     version: "2.11.0",
     date: "2026-07-19",
     changes: [
