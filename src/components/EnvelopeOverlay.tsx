@@ -1,4 +1,4 @@
-import { memo, useMemo, useState, useCallback } from "react";
+import { memo, useEffect, useMemo, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { randomMessage } from "../lib/invite-messages";
 import "../styles/envelope.css";
@@ -10,7 +10,10 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secon
   const [showWhite, setShowWhite] = useState(false);
   const [showText, setShowText] = useState(false);
 
-  const message = useMemo(() => randomMessage(i18n.language), [i18n.language]);
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = ""; };
+  }, []);
 
   const handleClick = useCallback(() => {
     if (exiting) return;
