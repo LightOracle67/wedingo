@@ -9,7 +9,7 @@ import StatsCard from "./StatsCard";
 const PanelTab = memo(function PanelTab(props: any) {
   const {
   inviteToken, confirmedResponses, declinedResponses, totalGuests, rsvpEntries,
-  setActiveTab, setAttendanceFilter, formatDate, onRestore, visitCount,
+  formatDate, onRestore, visitCount,
 } = props;
   const { t } = useTranslation();
   const inviteUrl = `${window.location.origin}/${inviteToken}`;
@@ -18,19 +18,6 @@ const PanelTab = memo(function PanelTab(props: any) {
 
   const summary = useMemo(() => calcRSVPSummary(rsvpEntries), [rsvpEntries]);
   const dietary = useMemo(() => getDietarySummary(rsvpEntries).slice(0, 5), [rsvpEntries]);
-
-  const copyLink = useCallback(async () => {
-    try { await navigator.clipboard.writeText(inviteUrl); } catch {}
-  }, [inviteUrl]);
-
-  const handleEditInvitation = useCallback(() => {
-    setActiveTab("invitacion");
-  }, [setActiveTab]);
-
-  const handleViewAttendance = useCallback(() => {
-    setActiveTab("asistencia");
-    setAttendanceFilter("all");
-  }, [setActiveTab, setAttendanceFilter]);
 
   const handleBackup = useCallback(async () => {
     try {
@@ -118,23 +105,8 @@ const PanelTab = memo(function PanelTab(props: any) {
             style={{ color: "var(--setup-accent)", fontSize: "0.9rem", wordBreak: "break-all" }}>
             {inviteUrl}
           </a>
-          <button className="setup-button setup-button--ghost setup-button--compact" type="button"
-            onClick={copyLink} style={{ fontSize: "0.75rem", padding: "0.2rem 0.5rem", flexShrink: 0 }}>
-            {t("common.copy")}
-          </button>
         </div>
       </div>
-
-      <div className="admin-panel-actions" style={{ marginBottom: "0.75rem" }}>
-        <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleEditInvitation}>
-          {t("panel.editInvitation")}
-        </button>
-        <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleViewAttendance}>
-          {t("panel.viewAttendance")}
-        </button>
-      </div>
-
-      <hr style={{ margin: "1rem 0", border: "none", borderTop: "1px solid var(--setup-border)" }} />
 
       <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", alignItems: "center" }}>
         <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleBackup}>

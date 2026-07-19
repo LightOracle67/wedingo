@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.12.6",
+    date: "2026-07-19",
+    changes: [
+      "Panel /admin: solo botones de copia de seguridad y restauración",
+    ],
+  },
+  {
     version: "2.12.5",
     date: "2026-07-19",
     changes: [
