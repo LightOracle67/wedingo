@@ -15,6 +15,8 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secon
     return () => { document.body.style.overflow = ""; };
   }, []);
 
+  const message = useMemo(() => randomMessage(i18n.language), [i18n.language]);
+
   const handleClick = useCallback(() => {
     if (exiting) return;
     if (!open) {
