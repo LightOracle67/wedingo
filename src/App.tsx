@@ -83,7 +83,7 @@ function AppShell() {
         </nav>
       ) : null}
 
-      {inviteToken && location.pathname === `/${inviteToken}` ? <MusicPlayer musicUrl={config.musicFile || config.musicUrl} /> : null}
+      {inviteToken && location.pathname === `/${inviteToken}` && (config.musicFile || config.musicUrl) ? <MusicPlayer musicUrl={config.musicFile || config.musicUrl} /> : null}
 
       {!isEditingRoute && !isAdminTokenLoggedIn && (
         <footer className="app-footer">

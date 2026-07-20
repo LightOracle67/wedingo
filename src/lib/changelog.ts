@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.12.16",
+    date: "2026-07-19",
+    changes: [
+      "MusicPlayer oculto si no hay música subida (no aparece botón ♪ sin audio)",
+    ],
+  },
+  {
     version: "2.12.15",
     date: "2026-07-19",
     changes: [
