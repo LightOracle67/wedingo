@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.12.20",
+    date: "2026-07-20",
+    changes: [
+      "PrintPage reescrita: reutiliza los componentes reales de sección (HeroSection, DetailsSection, etc.)",
+      "Print: réplica exacta de la invitación digital en papel, sin navbar/footer/RSVP/audio",
+    ],
+  },
+  {
     version: "2.12.19",
     date: "2026-07-19",
     changes: [
