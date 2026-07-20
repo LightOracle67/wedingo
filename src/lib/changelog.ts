@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.13.1",
+    date: "2026-07-20",
+    changes: [
+      "Fix: PanelTab inviteToken venía de props en vez de props.config (mostraba 'undefined')",
+    ],
+  },
+  {
     version: "2.13.0",
     date: "2026-07-20",
     changes: [

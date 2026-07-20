@@ -7,10 +7,11 @@ import { DonutChart, Legend } from "../../components/AttendanceChart";
 import StatsCard from "./StatsCard";
 
 const PanelTab = memo(function PanelTab(props: any) {
+  const config = props.config;
   const {
   inviteToken, confirmedResponses, declinedResponses, totalGuests, rsvpEntries,
-  formatDate, onRestore, visitCount,
-} = props;
+} = config;
+  const { formatDate, onRestore, visitCount } = props;
   const { t } = useTranslation();
   const inviteUrl = `${window.location.origin}/${inviteToken}`;
   const restoreRef = useRef<any>(null);
