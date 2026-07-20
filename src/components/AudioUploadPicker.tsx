@@ -1,6 +1,4 @@
 import { memo, useCallback, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { compressAudio, estimateAudioSize } from "../lib/audio-utils";
 
 const ALLOWED_AUDIO_TYPES = [
   "audio/mpeg", "audio/mp3", "audio/wav", "audio/ogg",

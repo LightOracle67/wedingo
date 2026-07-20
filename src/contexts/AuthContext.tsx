@@ -44,12 +44,12 @@ export function AuthProvider({ children }: any) {
   useEffect(() => {
     if (isConfigLoading || hasStoredConfig || !inviteToken) return;
     (async () => { await auth.refreshSetupToken(); })();
-  }, [isConfigLoading, hasStoredConfig, inviteToken, auth.refreshSetupToken]);
+  }, [isConfigLoading, hasStoredConfig, inviteToken, auth]);
 
   // ── Clear auth messages on route change ──
   useEffect(() => {
     auth.setAuthMessage("");
-  }, [location.pathname, auth.setAuthMessage]);
+  }, [location.pathname, auth]);
 
   const authValue = useMemo(() => ({
     setupToken: auth.setupToken, setupTokenInput: auth.setupTokenInput,
