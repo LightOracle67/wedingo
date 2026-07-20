@@ -1,20 +1,29 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useApp } from "../contexts/AppContext";
-import { THEME_PREVIEW_COLORS } from "../lib/constants";
 import { parseSectionOrder, formatDate } from "../lib/section-utils";
-import { escHtml } from "../lib/utils";
 import { useTranslation } from "react-i18next";
+import HeroSection from "./sections/HeroSection";
+import DetailsSection from "./sections/DetailsSection";
+import InfoSection from "./sections/InfoSection";
+import StorySection from "./sections/StorySection";
+import GiftsSection from "./sections/GiftsSection";
+import AccommodationSection from "./sections/AccommodationSection";
 import "../styles/print.css";
 
-function scheduleLines(text: string) {
-  return text.split("\n").filter(Boolean).map((line) => {
-    const m = line.match(/^(\d{1,2}:\d{2})\s*(.*)/);
-    return m ? { time: m[1], label: m[2] } : { time: "", label: line };
-  });
-}
-
-function parseDressCode(text: string) {
-  return text.split(",").map((s) => s.trim()).filter(Boolean);
+function useCountdown(weddingDate: Date | null) {
+  return useMemo(() => {
+    if (!weddingDate) return null;
+    const now = new Date();
+    const diff = weddingDate.getTime() - now.getTime();
+    if (diff <= 0) return { expired: true, years: 0, months: 0, days: 0, hours: 0, minutes: 0 };
+    const totalSec = Math.floor(diff / 1000);
+    const years = Math.floor(totalSec / (86400 * 365));
+    const months = Math.floor(totalSec / (86400 * 30.44));
+    const days = Math.floor(totalSec / 86400);
+    const hours = Math.floor((totalSec % 86400) / 3600);
+    const minutes = Math.floor((totalSec % 3600) / 60);
+    return { expired: false, years, months, days, hours, minutes };
+  }, [weddingDate]);
 }
 
 export default function PrintPage() {
@@ -35,27 +44,66 @@ export default function PrintPage() {
     );
   }, [config.sectionOrder, hiddenSet]);
 
-  const theme = (THEME_PREVIEW_COLORS as any)[config.theme] || THEME_PREVIEW_COLORS.golden;
-  const accent = theme.accent;
-  const bg = theme.bg;
-
   const formattedDate = formatDate(config.weddingDay, config.weddingMonth, config.weddingYear);
-  const timeStr = config.weddingHour
+  const formattedTime = config.weddingHour
     ? `${String(config.weddingHour).padStart(2, "0")}:${String(config.weddingMinute || "0").padStart(2, "0")}`
     : "";
-  const place = config.weddingPlace || "";
-  const lat = config.weddingLatitude ? Number(config.weddingLatitude) : 0;
-  const lng = config.weddingLongitude ? Number(config.weddingLongitude) : 0;
-  const mapsUrl = lat && lng
-    ? `https://www.google.com/maps?q=${lat},${lng}`
-    : place
-      ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place)}`
-      : "";
-  const dressItems = config.weddingDressCode ? parseDressCode(config.weddingDressCode) : [];
-  const schedule = config.weddingSchedule ? scheduleLines(config.weddingSchedule) : [];
-  const kidsLabel = config.kidsPolicy && ["playArea", "supervised", "adultOnly"].includes(config.kidsPolicy)
-    ? t(`kidsPolicy.options.${config.kidsPolicy}`)
-    : config.kidsPolicy || "";
+
+  const weddingDate = useMemo(() => {
+    if (!config.weddingDay || !config.weddingMonth || !config.weddingYear) return null;
+    const monthMap: any = { enero: 0, febrero: 1, marzo: 2, abril: 3, mayo: 4, junio: 5, julio: 6, agosto: 7, septiembre: 8, octubre: 9, noviembre: 10, diciembre: 11 };
+    const m = monthMap[config.weddingMonth];
+    if (m === undefined) return null;
+    return new Date(Number(config.weddingYear), m, Number(config.weddingDay), Number(config.weddingHour || 0), Number(config.weddingMinute || 0));
+  }, [config.weddingDay, config.weddingMonth, config.weddingYear, config.weddingHour, config.weddingMinute]);
+
+  const countdown = useCountdown(weddingDate);
+
+  const lat = Number(config.weddingLatitude) || 0;
+  const lng = Number(config.weddingLongitude) || 0;
+  const hasLocationData = Boolean(lat && lng);
+  const locationMapTarget = hasLocationData ? { latitude: lat, longitude: lng, label: config.weddingPlace || "" } : null;
+  const calendarLink = weddingDate
+    ? `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(config.firstName + " & " + config.secondName)}&dates=${weddingDate.toISOString().replace(/[-:]/g, "").split(".")[0]}/${weddingDate.toISOString().replace(/[-:]/g, "").split(".")[0]}&details=${encodeURIComponent(config.inviteMessage || "")}&location=${encodeURIComponent(config.weddingPlace || "")}`
+    : "";
+  const locationDescription = config.weddingPlace || "";
+
+  const sectionProps = useMemo(() => ({
+    hero: {
+      firstName: config.firstName,
+      secondName: config.secondName,
+      inviteMessage: config.inviteMessage,
+      countdown,
+      couplePhoto: config.couplePhoto,
+      godparent1: config.godparent1,
+      godparent2: config.godparent2,
+    },
+    details: {
+      formattedDate,
+      formattedTime,
+      hasLocationData,
+      locationDescription,
+      calendarLink,
+      locationMapTarget,
+      configWeddingPlace: config.weddingPlace,
+      transportInfo: config.transportInfo,
+    },
+    info: {
+      weddingSchedule: config.weddingSchedule,
+      weddingDressCode: config.weddingDressCode,
+      kidsPolicy: config.kidsPolicy,
+    },
+    story: { storyText: config.storyText },
+    gifts: { giftsInfo: config.giftsInfo, bankInfo: config.bankInfo },
+    accommodation: { accommodationInfo: config.accommodationInfo },
+  }), [
+    config.firstName, config.secondName, config.inviteMessage, config.couplePhoto,
+    config.godparent1, config.godparent2, config.weddingPlace, config.transportInfo,
+    config.weddingSchedule, config.weddingDressCode, config.kidsPolicy, config.storyText,
+    config.giftsInfo, config.bankInfo, config.accommodationInfo,
+    countdown, formattedDate, formattedTime,
+    hasLocationData, calendarLink, locationDescription,
+  ]);
 
   useEffect(() => {
     if (isConfigLoading) return;
@@ -78,8 +126,6 @@ export default function PrintPage() {
     doPrint();
   }, [loaded]);
 
-  const handleCloseWindow = useCallback(() => { try { window.close(); } catch {} }, []);
-
   if (isConfigLoading || !loaded) {
     return (
       <div style={{ padding: "3rem", textAlign: "center", fontFamily: "Georgia, serif", color: "#888" }}>
@@ -89,194 +135,82 @@ export default function PrintPage() {
   }
 
   return (
-    <div className="print-root" style={{ "--print-accent": accent, "--print-bg": bg } as any}>
-      {sectionOrder.includes("hero") && (
-        <section className="print-page">
-          <div className="print-card">
-            <p className="print-eyebrow">{t("hero.eyebrow")}</p>
-            {config.couplePhoto ? (
-              <img src={config.couplePhoto} alt="" className="print-photo" />
-            ) : null}
-            <h1 className="print-couple-name">
-              {escHtml(config.firstName)}
-              <span className="print-couple-ampersand">&</span>
-              {escHtml(config.secondName)}
-            </h1>
-            {config.inviteMessage ? (
-              <p className="print-message">{escHtml(config.inviteMessage)}</p>
-            ) : null}
-            {config.godparent1 && config.godparent2 ? (
-              <p className="print-godparents">
-                {t("hero.withBlessing", { godparent1: config.godparent1, godparent2: config.godparent2 })}
-              </p>
-            ) : null}
-            <div className="print-divider" />
-            <p className="print-body">{formattedDate}</p>
-            {timeStr ? <p className="print-body print-body--small" style={{ marginTop: "0.25rem" }}>{timeStr}h</p> : null}
-            {place ? <p className="print-body" style={{ marginTop: "0.5rem" }}>{escHtml(place)}</p> : null}
-            {mapsUrl ? (
-              <a href={mapsUrl} className="print-map-link" target="_blank" rel="noreferrer">
-                {t("print.viewInGoogleMaps")}
-              </a>
-            ) : null}
-          </div>
-        </section>
-      )}
-
-      {sectionOrder.includes("details") && (
-        <section className="print-page">
-          <div className="print-card">
-            <p className="print-eyebrow">{t("print.dateAndPlace")}</p>
-            <h2 className="print-title">{formattedDate}</h2>
-
-            <div className="print-divider" />
-
-            <div className="print-detail-row">
-              <span className="print-detail-icon">📅</span>
-              <div>
-                <p className="print-detail-label">{t("print.celebrationDate")}</p>
-                <p className="print-detail-text">{formattedDate}</p>
-              </div>
-            </div>
-
-            {timeStr ? (
-              <div className="print-detail-row">
-                <span className="print-detail-icon">⏰</span>
-                <div>
-                  <p className="print-detail-label">{t("print.celebrationTime")}</p>
-                  <p className="print-detail-text">{timeStr}h</p>
-                </div>
-              </div>
-            ) : null}
-
-            {place ? (
-              <div className="print-detail-row">
-                <span className="print-detail-icon">📍</span>
-                <div>
-                  <p className="print-detail-label">{t("admin.place")}</p>
-                  <p className="print-detail-text">{escHtml(place)}</p>
-                  {mapsUrl ? (
-                    <a href={mapsUrl} className="print-map-link" target="_blank" rel="noreferrer">
-                      {t("print.viewInGoogleMaps")}
-                    </a>
-                  ) : null}
-                </div>
-              </div>
-            ) : null}
-
-            {config.transportInfo ? (
-              <div className="print-box">
-                <strong>{t("print.transport")}</strong>
-                <p>{escHtml(config.transportInfo)}</p>
-              </div>
-            ) : null}
-          </div>
-        </section>
-      )}
-
-      {sectionOrder.includes("info") && (
-        <section className="print-page">
-          <div className="print-card">
-            <p className="print-eyebrow">{t("print.scheduleTitle")}</p>
-            <h2 className="print-title">{t("print.aboutGuests")}</h2>
-
-            <div className="print-divider" />
-
-            {schedule.length > 0 ? (
-              <div style={{ marginTop: "0.5rem" }}>
-                {schedule.map((item, i) => (
-                  <div key={i} className="print-schedule-item">
-                    {item.time ? (
-                      <span className="print-schedule-time">{item.time}</span>
-                    ) : null}
-                    <span className="print-schedule-label">{item.label}</span>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <p className="print-body">{t("print.scheduleFallback")}</p>
-            )}
-
-            {dressItems.length > 0 && (
-              <>
-                <div className="print-divider" />
-                <p className="print-subtitle">{t("print.dressCode")}</p>
-                <div style={{ marginTop: "0.3rem" }}>
-                  {dressItems.map((d, i) => (
-                    <span key={i} className="print-tag">{escHtml(d)}</span>
-                  ))}
-                </div>
-              </>
-            )}
-
-            {kidsLabel ? (
-              <>
-                <div className="print-divider" />
-                <p className="print-subtitle">{t("print.aboutKids")}</p>
-                <p className="print-body print-body--small" style={{ marginTop: "0.3rem" }}>
-                  {escHtml(kidsLabel)}
-                </p>
-              </>
-            ) : null}
-          </div>
-        </section>
-      )}
-
-      {sectionOrder.includes("story") && config.storyText ? (
-        <section className="print-page">
-          <div className="print-card">
-            <p className="print-eyebrow">{t("print.ourStory")}</p>
-            <h2 className="print-title">{t("print.storyStarted")}</h2>
-            <div className="print-divider" />
-            <p className="print-story-text">{escHtml(config.storyText)}</p>
-          </div>
-        </section>
-      ) : null}
-
-      {sectionOrder.includes("gifts") && (
-        <section className="print-page">
-          <div className="print-card">
-            <p className="print-eyebrow">{t("print.gifts")}</p>
-            <h2 className="print-title">{t("print.bestGift")}</h2>
-            <div className="print-divider" />
-            <p className="print-body">{escHtml(config.giftsInfo || t("print.giftsFallback"))}</p>
-            {config.bankInfo ? (
-              <div className="print-box">
-                <strong>{t("print.bankDetails")}</strong>
-                <p className="print-bank-details">{escHtml(config.bankInfo)}</p>
-              </div>
-            ) : null}
-          </div>
-        </section>
-      )}
-
-      {sectionOrder.includes("accommodation") && (
-        <section className="print-page">
-          <div className="print-card">
-            <p className="print-eyebrow">{t("print.accommodation")}</p>
-            <h2 className="print-title">{t("print.whereToStay")}</h2>
-            <div className="print-divider" />
-            <p className="print-body">{escHtml(config.accommodationInfo || t("print.accommodationFallback"))}</p>
-          </div>
-        </section>
-      )}
-
-      <p className="print-footer-note">{t("print.footer")}</p>
-
+    <div className="print-root">
+      {sectionOrder.map((section: string) => {
+        switch (section) {
+          case "hero":
+            return (
+              <section key="hero" className="print-section story-section story-section--is-active" data-story-section="hero">
+                <HeroSection
+                  className=""
+                  style={{}}
+                  {...sectionProps.hero}
+                />
+              </section>
+            );
+          case "details":
+            return (
+              <section key="details" className="print-section story-section story-section--is-active" data-story-section="details">
+                <DetailsSection
+                  className=""
+                  style={{}}
+                  {...sectionProps.details}
+                />
+              </section>
+            );
+          case "info":
+            return (
+              <section key="info" className="print-section story-section story-section--is-active" data-story-section="info">
+                <InfoSection
+                  className=""
+                  style={{}}
+                  {...sectionProps.info}
+                />
+              </section>
+            );
+          case "story":
+            return (
+              <section key="story" className="print-section story-section story-section--is-active" data-story-section="story">
+                <StorySection
+                  className=""
+                  style={{}}
+                  {...sectionProps.story}
+                />
+              </section>
+            );
+          case "gifts":
+            return (
+              <section key="gifts" className="print-section story-section story-section--is-active" data-story-section="gifts">
+                <GiftsSection
+                  className=""
+                  style={{}}
+                  {...sectionProps.gifts}
+                />
+              </section>
+            );
+          case "accommodation":
+            return (
+              <section key="accommodation" className="print-section story-section story-section--is-active" data-story-section="accommodation">
+                <AccommodationSection
+                  className=""
+                  style={{}}
+                  {...sectionProps.accommodation}
+                />
+              </section>
+            );
+          default:
+            return null;
+        }
+      })}
       {showCloseHint ? (
-        <div style={{ textAlign: "center", padding: "0.5rem 1rem 1.5rem" }}>
+        <div style={{ textAlign: "center", padding: "1rem" }}>
           <button
             type="button"
-            onClick={handleCloseWindow}
+            onClick={() => { try { window.close(); } catch {} }}
             style={{
-              background: accent,
-              color: "#fff",
-              border: "none",
-              borderRadius: "0.5rem",
-              padding: "0.5rem 1.5rem",
-              fontFamily: "inherit",
-              fontSize: "0.9rem",
-              cursor: "pointer",
+              background: "var(--setup-accent, #d8b24a)", color: "#fff", border: "none",
+              borderRadius: "0.5rem", padding: "0.5rem 1.5rem", fontFamily: "inherit",
+              fontSize: "0.9rem", cursor: "pointer",
             }}
           >
             {t("print.closeWindow")}
