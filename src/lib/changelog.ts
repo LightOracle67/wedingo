@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.13.3",
+    date: "2026-07-20",
+    changes: [
+      "Fix: navbar restaurado a display flex (estaba block, rompía layout idioma/accesibilidad/legales)",
+    ],
+  },
+  {
     version: "2.13.2",
     date: "2026-07-20",
     changes: [
