@@ -1629,6 +1629,14 @@ body::before {
   a[aria-label="Compartir por WhatsApp"] {
     bottom: 1rem !important;
   }
+
+  .rsvp-choice-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .rsvp-form {
+    gap: 0.4rem;
+  }
 }
 
 @media (max-width: 640px) {

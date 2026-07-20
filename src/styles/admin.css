@@ -87,6 +87,11 @@
 .setup-input, .setup-textarea {
   transition: border-color 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
 }
+input.setup-input[type="date"] {
+  min-height: 2.4rem;
+  appearance: auto;
+  -webkit-appearance: auto;
+}
 .setup-input:focus-visible, .setup-textarea:focus-visible {
   border-color: var(--setup-accent);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--setup-accent) 20%, transparent);

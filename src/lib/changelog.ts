@@ -1,5 +1,20 @@
 export const CHANGELOG = [
   {
+    version: "2.13.5",
+    date: "2026-07-20",
+    changes: [
+      "Fix: RSVP form responsive (choice grid 1 col en móvil, gap reducido)",
+      "Fix: input type=date min-height para móviles",
+    ],
+  },
+  {
+    version: "2.13.4",
+    date: "2026-07-20",
+    changes: [
+      "Fix: input fecha nacimiento en móviles (min-height + appearance auto para type=date)",
+    ],
+  },
+  {
     version: "2.13.3",
     date: "2026-07-20",
     changes: [
