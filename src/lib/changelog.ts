@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.12.9",
+    date: "2026-07-19",
+    changes: [
+      "MusicPlayer z-index subido a 10002 (por encima de modales y lightbox)",
+    ],
+  },
+  {
     version: "2.12.8",
     date: "2026-07-19",
     changes: [
