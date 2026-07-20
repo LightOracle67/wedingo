@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.12.15",
+    date: "2026-07-19",
+    changes: [
+      "Admin-bar también cambiado a sticky top, .app-scene con top: var(--navbar-height)",
+    ],
+  },
+  {
     version: "2.12.14",
     date: "2026-07-19",
     changes: [

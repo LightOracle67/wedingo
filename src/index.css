@@ -33,7 +33,7 @@ html {
 
 /* Variables base del tema por defecto (dorado clasico). */
 :root {
-  --navbar-height: 2.2rem;
+  --navbar-height: 2.5rem;
   --font-heading: "Playfair Display", serif;
   --font-body: "Lora", serif;
   --wedding-background-image: none;
