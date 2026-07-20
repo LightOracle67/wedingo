@@ -1,25 +1,17 @@
 import { memo, useCallback, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { compressAudio, estimateAudioSize } from "../lib/audio-utils";
 
 const ALLOWED_AUDIO_TYPES = [
   "audio/mpeg", "audio/mp3", "audio/wav", "audio/ogg",
   "audio/m4a", "audio/aac", "audio/webm", "audio/x-m4a",
 ];
-const MAX_AUDIO_SIZE = 5 * 1024 * 1024;
+const MAX_AUDIO_SIZE = 20 * 1024 * 1024;
 
 function formatSize(bytes: number) {
   if (bytes < 1024) return `${bytes} B`;
   if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
-  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
-}
-
-function readFileAsDataUrl(file: File): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const r = new FileReader();
-    r.onload = () => resolve(r.result as string);
-    r.onerror = () => reject(new Error("FileReader error"));
-    r.readAsDataURL(file);
-  });
+  return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
 }
 
 const AudioUploadPicker = memo(function AudioUploadPicker({ value, onChange, t }: any) {

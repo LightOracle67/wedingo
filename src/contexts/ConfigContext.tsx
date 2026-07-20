@@ -168,7 +168,14 @@ export function ConfigProvider({ children }: any) {
         if (parsed.bankInfo) parsed.bankInfo = await decrypt(parsed.bankInfo, inviteToken);
         if (parsed.backgroundImage) parsed.backgroundImage = await loadDecryptedField(inviteToken, parsed.backgroundImage);
         if (parsed.couplePhoto) parsed.couplePhoto = await loadDecryptedField(inviteToken, parsed.couplePhoto);
-        if (parsed.musicFile) parsed.musicFile = await loadDecryptedField(inviteToken, parsed.musicFile);
+        if (parsed.musicFile) {
+          const cached = sessionStorage.getItem(`wedin_audio_${inviteToken}`);
+          if (cached) { parsed.musicFile = cached; }
+          else {
+            parsed.musicFile = await loadDecryptedField(inviteToken, parsed.musicFile);
+            if (parsed.musicFile) sessionStorage.setItem(`wedin_audio_${inviteToken}`, parsed.musicFile);
+          }
+        }
         const hydrated = { ...defaultConfig, ...parsed };
         setConfig(hydrated);
         setFormData(hydrated);

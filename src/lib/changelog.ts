@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.12.8",
+    date: "2026-07-19",
+    changes: [
+      "MusicPlayer rediseñado: botón lateral con corchea, play/pausa + volumen, sin seek bar",
+      "Ecualizador animado en el FAB cuando suena la música",
+    ],
+  },
+  {
     version: "2.12.7",
     date: "2026-07-19",
     changes: [
