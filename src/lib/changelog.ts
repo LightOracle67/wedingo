@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.13.6",
+    date: "2026-07-20",
+    changes: [
+      "PrintPage simplificada: solo muestra mensaje de invitación + fecha (sin enlace, ubicación ni countdown)",
+    ],
+  },
+  {
     version: "2.13.5",
     date: "2026-07-20",
     changes: [

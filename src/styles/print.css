@@ -2,38 +2,86 @@
 @media print {
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
   body { overflow: visible !important; }
-  .app-scene { height: auto !important; overflow: visible !important; }
-  .app-footer, .admin-bar, .music-player, .story-scroll-hint,
-  .wedding-decoration, .whatsapp-share-btn, .envelope-overlay,
-  .envelope-wrapper, .setup-layout, .lang-popup, .modal-overlay,
-  .toast-container { display: none !important; }
-  #main-content { padding-top: 0 !important; }
+  .app-footer, .admin-bar, .music-player, .envelope-overlay,
+  .envelope-wrapper, .story-scroll-hint, .wedding-decoration,
+  .lang-popup, .modal-overlay, .toast-container { display: none !important; }
 }
 .print-root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--page-bg, #2a2418);
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
 }
-.print-section {
-  position: relative !important;
-  opacity: 1 !important;
-  transform: none !important;
-  pointer-events: auto !important;
-  min-height: 100vh !important;
-  height: auto !important;
-  padding: 3rem 1.5rem !important;
-  page-break-after: always;
-  break-inside: avoid;
+.print-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  width: 100%;
+  box-sizing: border-box;
 }
-.print-section:last-child {
-  page-break-after: auto;
+.print-card {
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  background: color-mix(in srgb, var(--page-bg, #2a2418) 85%, #000);
+  border: 1.5px solid color-mix(in srgb, var(--flower-accent, #d8b24a) 25%, transparent);
+  border-radius: 1.5rem;
+  padding: 2.5rem 2rem;
+  position: relative;
 }
-@media print {
-  .print-section {
-    min-height: 297mm !important;
-    padding: 2rem 1.5rem !important;
-    page-break-after: always;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
+.print-card::before {
+  content: "";
+  position: absolute;
+  inset: 0.5rem;
+  border: 1px solid color-mix(in srgb, var(--flower-accent, #d8b24a) 15%, transparent);
+  border-radius: 1.2rem;
+  pointer-events: none;
+}
+.print-eyebrow {
+  font-family: Lora, Georgia, serif;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  color: var(--flower-accent, #d8b24a);
+  margin-bottom: 0.75rem;
+}
+.print-couple-name {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--invite-title-color, #f0e6d0);
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+}
+.print-couple-ampersand {
+  font-style: italic;
+  color: var(--flower-accent, #d8b24a);
+  display: inline-block;
+  margin: 0 0.15em;
+}
+.print-divider {
+  width: 2.5rem;
+  height: 1px;
+  background: var(--flower-accent, #d8b24a);
+  opacity: 0.35;
+  margin: 1rem auto;
+}
+.print-message {
+  font-family: Lora, Georgia, serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--invite-copy-color, #c8b898);
+  max-width: 320px;
+  margin: 0 auto;
+  white-space: pre-line;
+  font-style: italic;
+}
+.print-body {
+  font-family: Lora, Georgia, serif;
+  font-size: 0.85rem;
+  color: var(--invite-copy-color, #c8b898);
 }
