@@ -1,5 +1,17 @@
 export const CHANGELOG = [
   {
+    version: "2.13.0",
+    date: "2026-07-20",
+    changes: [
+      "OPTIMIZACIÓN: bundle 9.0MB → 6.1MB (-32%)",
+      "Fuentes subseteadas a Latin-only (7 imports en vez de 15, ahorro ~2MB)",
+      "Vendor chunk: React/i18n separados del bundle principal",
+      "Dependencias muertas eliminadas: i18next-icu, @sentry/vite-plugin",
+      "Imágenes comprimidas: eucalyptus 379→117KB, rings 265→100KB",
+      "CSS muerto eliminado: animaciones sin referencia, clases support/cookies sin uso",
+    ],
+  },
+  {
     version: "2.12.20",
     date: "2026-07-20",
     changes: [

@@ -3,22 +3,14 @@
 /* Security: CSP meta tag fallback (las cabeceras HTTP tienen prioridad). */
 /* La CSP completa está en firebase.json → headers. */
 
-/* Google Fonts auto-hospedadas via @fontsource (GDPR compliant). */
-@import "@fontsource/playfair-display/400.css";
-@import "@fontsource/playfair-display/400-italic.css";
-@import "@fontsource/playfair-display/500.css";
-@import "@fontsource/playfair-display/500-italic.css";
-@import "@fontsource/playfair-display/600.css";
-@import "@fontsource/playfair-display/600-italic.css";
-@import "@fontsource/playfair-display/700.css";
-@import "@fontsource/lora/400.css";
-@import "@fontsource/lora/400-italic.css";
-@import "@fontsource/lora/500.css";
-@import "@fontsource/lora/500-italic.css";
-@import "@fontsource/lora/600.css";
-@import "@fontsource/lora/600-italic.css";
-@import "@fontsource/lora/700.css";
-@import "@fontsource/great-vibes/400.css";
+/* Google Fonts auto-hospedadas via @fontsource (GDPR compliant, Latin-only). */
+@import "@fontsource/playfair-display/latin-400.css";
+@import "@fontsource/playfair-display/latin-400-italic.css";
+@import "@fontsource/playfair-display/latin-700.css";
+@import "@fontsource/lora/latin-400.css";
+@import "@fontsource/lora/latin-400-italic.css";
+@import "@fontsource/lora/latin-700.css";
+@import "@fontsource/great-vibes/latin-400.css";
 
 @font-face {
   font-family: "OpenDyslexic";
@@ -1690,47 +1682,6 @@ h6 {
 
 
 
-
-.animate-card-reveal {
-  animation: card-reveal 980ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.animate-item-up {
-  animation: item-up 720ms cubic-bezier(0.23, 1, 0.32, 1) both;
-}
-
-.animate-branch-in-left {
-  animation: branch-in-left 1200ms cubic-bezier(0.19, 1, 0.22, 1) both;
-}
-
-.animate-branch-in-right {
-  animation: branch-in-right 1200ms cubic-bezier(0.19, 1, 0.22, 1) both;
-}
-
-.delay-120 {
-  animation-delay: 120ms;
-}
-
-.delay-220 {
-  animation-delay: 220ms;
-}
-
-.delay-300 {
-  animation-delay: 300ms;
-}
-
-.delay-380 {
-  animation-delay: 380ms;
-}
-
-@keyframes body-fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 
 @keyframes card-reveal {
   from {
