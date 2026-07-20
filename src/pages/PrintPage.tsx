@@ -12,6 +12,10 @@ export default function PrintPage() {
   const [loaded, setLoaded] = useState(false);
 
   const formattedDate = formatDate(config.weddingDay, config.weddingMonth, config.weddingYear);
+  const timeStr = config.weddingHour
+    ? `${String(config.weddingHour).padStart(2, "0")}:${String(config.weddingMinute || "0").padStart(2, "0")}`
+    : "";
+  const place = config.weddingPlace || "";
 
   const message = useMemo(() => {
     const raw = randomMessage(i18n.language);
@@ -60,6 +64,8 @@ export default function PrintPage() {
           <p className="print-message">{message}</p>
           <div className="print-divider" />
           <p className="print-body">{formattedDate}</p>
+          {timeStr ? <p className="print-body" style={{ marginTop: "0.15rem" }}>{timeStr}h</p> : null}
+          {place ? <p className="print-body" style={{ marginTop: "0.15rem" }}>{place}</p> : null}
         </div>
       </div>
     </div>

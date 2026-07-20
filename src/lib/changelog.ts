@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.13.7",
+    date: "2026-07-20",
+    changes: [
+      "PrintPage: añadida ubicación y hora debajo de la fecha",
+    ],
+  },
+  {
     version: "2.13.6",
     date: "2026-07-20",
     changes: [
