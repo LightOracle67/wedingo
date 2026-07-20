@@ -2335,23 +2335,20 @@ a:focus-visible {
   left: 0;
   right: 0;
   z-index: 400;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: block;
   padding: 0.35rem 1rem;
   min-height: 2.2rem;
   background: rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-  gap: 0.5rem;
   font-size: 0.68rem;
+  text-align: center;
 }
 
 .app-footer__left,
 .app-footer__right {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .app-footer__link {

@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.12.10",
+    date: "2026-07-19",
+    changes: [
+      "Navbar (app-footer) cambiado a display: block con alineación centrada",
+    ],
+  },
+  {
     version: "2.12.9",
     date: "2026-07-19",
     changes: [
