@@ -36,8 +36,6 @@ function AppShell() {
   const [showChangelog, setShowChangelog] = useState(false);
 
   const isEditingRoute = location.pathname.endsWith("/setup") || (location.pathname.endsWith("/admin") && isAdminTokenLoggedIn);
-  const topBarPadding = isAdminTokenLoggedIn ? "2.5rem" : "0";
-  const publicNavPadding = !isEditingRoute ? "2.2rem" : "0";
 
 
   useEffect(() => {
@@ -87,24 +85,6 @@ function AppShell() {
 
       {inviteToken && location.pathname === `/${inviteToken}` ? <MusicPlayer musicUrl={config.musicFile || config.musicUrl} /> : null}
 
-      <main id="main-content" tabIndex={-1} style={{ paddingTop: topBarPadding || publicNavPadding }}>
-        <Suspense fallback={<div className="page-loading" />}>
-        <Routes>
-          <Route path="/" element={<ErrorBoundary><LandingPage /></ErrorBoundary>} />
-          <Route path="/:inviteToken" element={<ErrorBoundary><PublicInvitation /></ErrorBoundary>} />
-          <Route path="/:inviteToken/setup" element={<ErrorBoundary><SetupPage /></ErrorBoundary>} />
-          <Route path="/:inviteToken/admin" element={<ErrorBoundary><AdminPage /></ErrorBoundary>} />
-          <Route path={SUPERADMIN_ROUTE} element={<ErrorBoundary><SuperAdminLogin /></ErrorBoundary>} />
-          <Route path="/:inviteToken/print" element={<ErrorBoundary><PrintPage /></ErrorBoundary>} />
-          {SUPERADMIN_DASHBOARD && (
-            <Route path={SUPERADMIN_DASHBOARD} element={<ErrorBoundary><SuperAdminPanel /></ErrorBoundary>} />
-          )}
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-        </Suspense>
-        <CookieConsent />
-      </main>
-
       {!isEditingRoute && !isAdminTokenLoggedIn && (
         <footer className="app-footer">
           <div className="app-footer__left">
@@ -122,6 +102,24 @@ function AppShell() {
           </div>
         </footer>
       )}
+
+      <main id="main-content" tabIndex={-1}>
+        <Suspense fallback={<div className="page-loading" />}>
+        <Routes>
+          <Route path="/" element={<ErrorBoundary><LandingPage /></ErrorBoundary>} />
+          <Route path="/:inviteToken" element={<ErrorBoundary><PublicInvitation /></ErrorBoundary>} />
+          <Route path="/:inviteToken/setup" element={<ErrorBoundary><SetupPage /></ErrorBoundary>} />
+          <Route path="/:inviteToken/admin" element={<ErrorBoundary><AdminPage /></ErrorBoundary>} />
+          <Route path={SUPERADMIN_ROUTE} element={<ErrorBoundary><SuperAdminLogin /></ErrorBoundary>} />
+          <Route path="/:inviteToken/print" element={<ErrorBoundary><PrintPage /></ErrorBoundary>} />
+          {SUPERADMIN_DASHBOARD && (
+            <Route path={SUPERADMIN_DASHBOARD} element={<ErrorBoundary><SuperAdminPanel /></ErrorBoundary>} />
+          )}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+        </Suspense>
+        <CookieConsent />
+      </main>
 
       <Fireflies />
       <AccessibilityPanel open={showA11y} onClose={() => setShowA11y(false)} />

@@ -9,7 +9,6 @@
 .app-scene {
   position: fixed;
   inset: 0;
-  top: var(--navbar-height, 0px);
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   width: 100%;
