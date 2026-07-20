@@ -87,7 +87,7 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }: any) {
         </div>
       </div>
 
-      <button type="button" className={`music-player__fab${playing ? " music-player__fab--playing" : ""}`} onClick={handleToggle} aria-label={t("music.label")}>
+      <button type="button" className={`music-player__fab${playing ? " music-player__fab--playing" : ""}${open ? " music-player__fab--shifted" : ""}`} onClick={handleToggle} aria-label={t("music.label")}>
         <span key={iconKey} className={`music-player__fab-icon${open || playing ? " music-player__fab-icon--spin" : ""}`}>♪</span>
         {!hasMusic ? <span className="music-player__fab-dot" /> : null}
         <span className={`music-player__fab-equalizer${playing ? " music-player__fab-equalizer--visible" : ""}`}><span /><span /><span /></span>

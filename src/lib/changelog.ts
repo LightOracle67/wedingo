@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.12.12",
+    date: "2026-07-19",
+    changes: [
+      "FAB del MusicPlayer se desplaza a la izquierda al abrir el reproductor con animación smooth",
+      "Card aparece desde la misma posición del FAB con fade+scale",
+    ],
+  },
+  {
     version: "2.12.11",
     date: "2026-07-19",
     changes: [
