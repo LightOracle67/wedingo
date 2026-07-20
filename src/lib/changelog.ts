@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.13.2",
+    date: "2026-07-20",
+    changes: [
+      "Admin: contenedores ocupan toda la altura de pantalla (flex column + overflow-y)",
+    ],
+  },
+  {
     version: "2.13.1",
     date: "2026-07-20",
     changes: [
