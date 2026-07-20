@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.12.17",
+    date: "2026-07-19",
+    changes: [
+      "Revertido navbar a position: fixed con body padding-top y --navbar-height en :root",
+      "Corregido desbordamiento inferior de contenedores (setup-card, app-scene con offset correcto)",
+    ],
+  },
+  {
     version: "2.12.16",
     date: "2026-07-19",
     changes: [
