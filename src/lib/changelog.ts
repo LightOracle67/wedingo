@@ -1,5 +1,15 @@
 export const CHANGELOG = [
   {
+    version: "2.12.18",
+    date: "2026-07-19",
+    changes: [
+      "PrintPage reescrita desde cero: recrea la invitación con todo detalle para invitados",
+      "Print: secciones con fecha, hora, lugar, horario, código de vestimenta, niños, historia, regalos, alojamiento",
+      "Print: oculta navbar, footer, RSVP, botón de audio, decorations, lightbox y modales",
+      "PrintCSS: diseño renovado con bordes, iconos, tipografía temática y saltos de página",
+    ],
+  },
+  {
     version: "2.12.17",
     date: "2026-07-19",
     changes: [
