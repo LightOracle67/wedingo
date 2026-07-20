@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.12.11",
+    date: "2026-07-19",
+    changes: [
+      "MusicPlayer: animaciones elegantes en show/hide, play/stop, glow pulsante",
+      "FAB con bounce en apertura, equalizer con fade, glow en play, card con slide+fade",
+    ],
+  },
+  {
     version: "2.12.10",
     date: "2026-07-19",
     changes: [

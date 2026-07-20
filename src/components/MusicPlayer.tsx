@@ -24,6 +24,7 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }: any) {
   const [loading, setLoading] = useState(false);
   const [volume, setVolume] = useState(0.5);
   const [open, setOpen] = useState(false);
+  const [iconKey, setIconKey] = useState(0);
   const audioRef = useRef<any>(null);
   const name = useMemo(() => songName(musicUrl) || t("music.noMusic"), [musicUrl, t]);
   const hasMusic = Boolean(musicUrl);
@@ -56,12 +57,14 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }: any) {
     } else {
       setError(false);
       setLoading(true);
+      setIconKey((k) => k + 1);
       el.play().then(() => { setPlaying(true); setLoading(false); }).catch(() => { setLoading(false); setError(true); });
     }
   }, [playing, musicUrl]);
 
   const handleToggle = useCallback(() => {
     setOpen((p) => !p);
+    setIconKey((k) => k + 1);
   }, []);
 
   useEscapeKey(handleToggle, open);
@@ -74,7 +77,7 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }: any) {
         <span className="music-player__track">{name}</span>
         {error ? <span className="music-player__status">{t("music.loadError")}</span> : null}
         <div className="music-player__controls">
-          <button type="button" className="music-player__play" onClick={toggleMusic} disabled={loading || !hasMusic}>
+          <button type="button" className={`music-player__play${playing ? " music-player__play--active" : ""}`} onClick={toggleMusic} disabled={loading || !hasMusic}>
             {loading ? <span className="music-player__spinner" /> : playing ? <span>⏸</span> : <span>▶</span>}
           </button>
           <div className="music-player__volume-row">
@@ -84,10 +87,10 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }: any) {
         </div>
       </div>
 
-      <button type="button" className="music-player__fab" onClick={handleToggle} aria-label={t("music.label")}>
-        <span className="music-player__fab-icon">♪</span>
+      <button type="button" className={`music-player__fab${playing ? " music-player__fab--playing" : ""}`} onClick={handleToggle} aria-label={t("music.label")}>
+        <span key={iconKey} className={`music-player__fab-icon${open || playing ? " music-player__fab-icon--spin" : ""}`}>♪</span>
         {!hasMusic ? <span className="music-player__fab-dot" /> : null}
-        {playing ? <span className="music-player__fab-equalizer"><span /><span /><span /></span> : null}
+        <span className={`music-player__fab-equalizer${playing ? " music-player__fab-equalizer--visible" : ""}`}><span /><span /><span /></span>
       </button>
     </div>
   );
