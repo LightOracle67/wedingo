@@ -16,9 +16,8 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(25);
 
-  const entries = rsvpEntries || [];
   const filterEntries = filteredEntries || [];
-  const dietary = useMemo(() => getDietarySummary(entries), [entries]);
+  const dietary = useMemo(() => getDietarySummary(rsvpEntries), [rsvpEntries]);
 
   const totalPages = Math.max(1, Math.ceil(filterEntries.length / pageSize));
   const safePage = Math.min(page, totalPages - 1);
@@ -27,6 +26,7 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
   useEffect(() => { setPage(0); }, [searchQuery, attendanceFilter]);
 
   const stats = useMemo(() => {
+    const entries = rsvpEntries || [];
     const yes = entries.filter((e: any) => e.attendance === "yes").length;
     const no = entries.filter((e: any) => e.attendance === "no").length;
     const totalCompanions = entries
@@ -34,7 +34,7 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
       .reduce((s: any, e: any) => s + (Number(e.companions) || 0), 0);
     const withDietary = entries.filter((e: any) => e.attendance === "yes" && e.dietaryInfo?.trim()).length;
     return { yes, no, totalCompanions, withDietary };
-  }, [entries]);
+  }, [rsvpEntries]);
 
   return (
     <>
@@ -137,7 +137,7 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
         </p>
       )}
 
-      {entries.length > 0 && (
+      {(rsvpEntries || []).length > 0 && (
         <div className="setup-actions">
           <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={exportPdf}>
             {t("attendance.exportPdf")}

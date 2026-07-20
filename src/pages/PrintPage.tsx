@@ -4,7 +4,6 @@ import { THEME_PREVIEW_COLORS } from "../lib/constants";
 import { parseSectionOrder, formatDate } from "../lib/section-utils";
 import { escHtml } from "../lib/utils";
 import { useTranslation } from "react-i18next";
-import heroBackdropSrc from "../assets/rings.webp";
 import "../styles/print.css";
 
 function scheduleLines(text: string) {

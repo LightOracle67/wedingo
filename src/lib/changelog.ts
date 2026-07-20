@@ -1,5 +1,14 @@
 export const CHANGELOG = [
   {
+    version: "2.12.19",
+    date: "2026-07-19",
+    changes: [
+      "Fix: warnings de oxlint — imports sin uso eliminados (path, vi, useTranslation, heroBackdropSrc, compressAudio)",
+      "Fix: AttendanceTab depende de entries que cambiaba cada render",
+      "Fix: AuthContext missing dep 'auth' en useEffect",
+    ],
+  },
+  {
     version: "2.12.18",
     date: "2026-07-19",
     changes: [
