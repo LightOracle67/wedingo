@@ -1,5 +1,23 @@
 export const CHANGELOG = [
   {
+    version: "2.12.14",
+    date: "2026-07-19",
+    changes: [
+      "Navbar cambiado de position: fixed a position: sticky; top: 0",
+      "App-footer movido antes de <main> en el DOM para sticky top",
+      "Eliminado padding-top correctivo del body y top offset del .app-scene",
+    ],
+  },
+  {
+    version: "2.12.13",
+    date: "2026-07-19",
+    changes: [
+      "Definido --navbar-height: 2.2rem en :root, body con padding-top para no solaparse con navbar",
+      "MusicPlayer desplazado debajo del navbar (top: calc(var(--navbar-height) + 0.75rem))",
+      "Admin/setup ya usaban var(--navbar-height) pero sin definir — ahora funciona correctamente",
+    ],
+  },
+  {
     version: "2.12.12",
     date: "2026-07-19",
     changes: [

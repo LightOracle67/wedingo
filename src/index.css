@@ -33,6 +33,7 @@ html {
 
 /* Variables base del tema por defecto (dorado clasico). */
 :root {
+  --navbar-height: 2.2rem;
   --font-heading: "Playfair Display", serif;
   --font-body: "Lora", serif;
   --wedding-background-image: none;
@@ -2330,10 +2331,8 @@ a:focus-visible {
 /* App footer */
 
 .app-footer {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
   z-index: 400;
   display: block;
   padding: 0.35rem 1rem;
