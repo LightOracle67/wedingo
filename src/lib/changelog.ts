@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.14.2",
+    date: "2026-07-20",
+    changes: [
+      "Refactor: utility classes CSS para reducir inline styles en admin (admin-flex, admin-text-mono, etc.)",
+      "TokensTab: migrados inline styles a clases CSS",
+    ],
+  },
+  {
     version: "2.14.1",
     date: "2026-07-20",
     changes: [
