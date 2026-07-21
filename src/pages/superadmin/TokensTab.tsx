@@ -106,30 +106,22 @@ const TokensTab = memo(function TokensTab() {
       </div>
 
       {tokens.length === 0 ? (
-        <div className="setup-token-card" style={{ textAlign: "center" }}>
-          <p style={{ color: "var(--setup-muted)", margin: 0 }}>{t("superadmin.noTokens")}</p>
+        <div className="setup-token-card admin-center">
+          <p className="setup-help" style={{ margin: 0 }}>{t("superadmin.noTokens")}</p>
         </div>
       ) : (
-        <div style={{ display: "grid", gap: "0.4rem" }}>
+        <div className="admin-grid">
           {tokens.map((token: any) => (
             <div
               key={token.id}
-              className="setup-token-card"
-              style={{
-                padding: "0.6rem 0.85rem",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                flexWrap: "wrap",
-                gap: "0.5rem",
-                opacity: token.used ? 0.6 : 1,
-              }}
+              className={`setup-token-card admin-flex admin-flex--between admin-pad-sm ${token.used ? "admin-muted" : "admin-opaque"}`}
+              style={{ gap: "0.5rem" }}
             >
-    <div style={{ display: "flex", flexDirection: "column", height: "100%", minHeight: 0 }}>
-                <p style={{ margin: 0, color: "var(--setup-title)", fontFamily: "monospace", fontSize: "0.9rem" }}>
+              <div className="admin-token-card-content">
+                <p className="admin-text-mono" style={{ margin: 0, color: "var(--setup-title)" }}>
                   {token.id}
                 </p>
-                <p style={{ margin: "0.2rem 0 0", color: "var(--setup-muted)", fontSize: "0.8rem" }}>
+                <p className="admin-text-sm" style={{ margin: "0.2rem 0 0", color: "var(--setup-muted)" }}>
                   {token.used ? t("superadmin.statusUsed") : t("superadmin.statusAvailable")}
                   {token.createdAtDate ? ` · ${t("superadmin.createdLabel", { date: formatDate(token.createdAtDate.toISOString()) })}` : ""}
                   {token.usedAtDate ? ` · ${t("superadmin.usedLabel", { date: formatDate(token.usedAtDate.toISOString()) })}` : ""}
