@@ -1,5 +1,15 @@
 export const CHANGELOG = [
   {
+    version: "2.15.1",
+    date: "2026-07-20",
+    changes: [
+      "RTL: overrides para story-panel, setup-card, story-title",
+      "aria-invalid en input guestNames + role=alert en errores RSVP",
+      "console.warn eliminado de GalleryArrayEditor (toast basta)",
+      "async innecesario eliminado de DataTab",
+    ],
+  },
+  {
     version: "2.15.0",
     date: "2026-07-20",
     changes: [

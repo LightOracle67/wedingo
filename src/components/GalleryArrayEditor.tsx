@@ -110,7 +110,6 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
       await updateGalleryDescription(inviteToken, item.id, safe);
       addToast("success", t("setup.galleryDescriptionSaved"));
     } catch (err: any) {
-      console.warn("updateGalleryDescription failed:", err);
       addToast("error", `${t("setup.galleryDescriptionSaveFailed")}: ${err.code || err.message}`);
     }
   }, [inviteToken, addToast, t]);

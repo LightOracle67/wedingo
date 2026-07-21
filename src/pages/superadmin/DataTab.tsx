@@ -315,7 +315,7 @@ export default function DataTab() {
           <button
             type="button"
             className="setup-button setup-button--danger setup-button--compact"
-            onClick={async () => {
+            onClick={() => {
               setSelected(emptyIds);
             }}
             disabled={busy}
