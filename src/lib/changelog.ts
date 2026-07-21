@@ -1,5 +1,17 @@
 export const CHANGELOG = [
   {
+    version: "2.15.0",
+    date: "2026-07-20",
+    changes: [
+      "SEO: meta description, OG tags (title, description, url, type), theme-color",
+      "PWA: manifest.json creado (instalable, standalone, iconos 96/192/512)",
+      "Fonts: preload para Playfair Display y Lora en index.html",
+      "Eliminado @sentry/react (DSN placeholder, nunca funcionaba)",
+      "GallerySection + HeroSection: loading=lazy en todas las imágenes",
+      "Title actualizado a 'Wedingo — Invitaciones de boda'",
+    ],
+  },
+  {
     version: "2.14.3",
     date: "2026-07-20",
     changes: [

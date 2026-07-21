@@ -273,6 +273,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
                   src={images[prevClamped].url || images[prevClamped]}
                   alt=""
                   aria-hidden="true"
+                  loading="lazy"
                   className="gallery-fade gallery-fade--out gallery-main-img"
                 />
               )}
@@ -280,6 +281,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
               <img
                 src={currentImage?.url || currentImage}
                 alt={currentImage?.description || t("gallery.imageAlt")}
+                loading="lazy"
                 onLoad={() => setMainLoaded((p: any) => ({ ...p, [clamped]: true }))}
                 onClick={handleMainImageClick}
                 className={`gallery-main-img${!mainLoaded[clamped] ? " gallery-main-img--loading" : ""}${fading ? " gallery-fade gallery-fade--in" : ""}`}
@@ -327,6 +329,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
                 <img
                   src={src}
                   alt={img.description || t("gallery.thumbnailAlt")}
+                  loading="lazy"
                   onLoad={handleThumbLoad}
                   data-index={i}
                   style={{ width: "100%", height: "100%", objectFit: "cover", display: thumbLoaded[i] ? "block" : "none" }}
@@ -374,6 +377,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
             className="gallery-lightbox__img"
             src={images[lightboxIndex].url || images[lightboxIndex]}
             alt={images[lightboxIndex].description || t("gallery.imageAlt")}
+            loading="lazy"
             onClick={(e) => e.stopPropagation()}
           />
 

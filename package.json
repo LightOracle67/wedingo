@@ -1,7 +1,7 @@
 {
   "name": "wedingo",
   "private": true,
-  "version": "2.14.3",
+  "version": "2.15.0",
   "type": "module",
   "engines": {
     "node": ">=20.0.0"
@@ -36,7 +36,6 @@
     "react-router-dom": "^7.18.1"
   },
   "devDependencies": {
-    "@sentry/react": "^10.66.0",
     "@tailwindcss/vite": "^4.3.2",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
