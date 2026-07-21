@@ -279,9 +279,9 @@ export default function DataTab() {
   const isEmptyCount = emptyIds.size;
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100%", minHeight: 0 }}>
+    <div className="admin-flex--col" style={{ height: "100%", minHeight: 0 }}>
       {/* ── Acciones en lote ── */}
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem", marginBottom: "0.8rem", alignItems: "center", flexShrink: 0 }}>
+      <div className="data-tab-actions">
         <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={selectAll} disabled={busy}>
           {t("superadmin.data.selectAll")}
         </button>
@@ -289,7 +289,7 @@ export default function DataTab() {
           {t("superadmin.data.deselectAll")}
         </button>
 
-        <span style={{ flex: 1 }} />
+        <span style={{ flex: 1, minWidth: "0.5rem" }} />
 
         <button type="button" className="setup-button setup-button--compact" onClick={exportAll} disabled={busy}>
           {t("superadmin.data.exportAllBtn")} ({totalCount})
@@ -326,7 +326,7 @@ export default function DataTab() {
       </div>
 
       {/* ── Confirmación ── */}
-      <div style={{ marginBottom: "0.8rem", display: "flex", gap: "0.5rem", alignItems: "center" }}>
+      <div className="data-tab-confirm">
         <input
           type="text"
           className="setup-input"
@@ -334,7 +334,6 @@ export default function DataTab() {
           onChange={(e) => setConfirmText(e.target.value)}
           placeholder={t("superadmin.data.confirmPlaceholder", { word: CONFIRM_WORD })}
           disabled={busy}
-          style={{ maxWidth: "16rem", fontSize: "0.82rem" }}
         />
         <button
           type="button"
@@ -348,11 +347,11 @@ export default function DataTab() {
       </div>
 
       {/* ── Tabla de invitaciones ── */}
-      <div style={{ flex: 1, minHeight: 0, overflowY: "auto", border: "1px solid var(--setup-border)", borderRadius: "0.5rem" }}>
-        <table className="superadmin-table" style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.82rem" }}>
+      <div className="data-tab-table-wrap">
+        <table className="data-tab-table">
           <thead>
             <tr style={{ position: "sticky", top: 0, background: "var(--setup-card-bg)", zIndex: 1 }}>
-              <th style={thStyle}>
+              <th className="data-tab-th">
                 <input
                   type="checkbox"
                   checked={selectedCount === totalCount && totalCount > 0}
@@ -361,18 +360,18 @@ export default function DataTab() {
                   aria-label={t("superadmin.data.selectAll")}
                 />
               </th>
-              <th style={thStyle}>{t("superadmin.data.colToken")}</th>
-              <th style={thStyle}>{t("superadmin.data.colNames")}</th>
-              <th style={thStyle}>{t("superadmin.data.colDate")}</th>
-              <th style={thStyle}>{t("superadmin.data.colRsvps")}</th>
-              <th style={thStyle}>{t("superadmin.data.colSession")}</th>
-              <th style={thStyle}>{t("superadmin.data.colActions")}</th>
+              <th className="data-tab-th">{t("superadmin.data.colToken")}</th>
+              <th className="data-tab-th">{t("superadmin.data.colNames")}</th>
+              <th className="data-tab-th">{t("superadmin.data.colDate")}</th>
+              <th className="data-tab-th">{t("superadmin.data.colRsvps")}</th>
+              <th className="data-tab-th">{t("superadmin.data.colSession")}</th>
+              <th className="data-tab-th">{t("superadmin.data.colActions")}</th>
             </tr>
           </thead>
           <tbody>
             {invitations.map((inv) => (
               <tr key={inv.id} style={{ borderBottom: "1px solid var(--setup-border)", opacity: emptyIds.has(inv.id) ? 0.5 : 1 }}>
-                <td style={tdStyle}>
+                <td className="data-tab-td">
                   <input
                     type="checkbox"
                     checked={selected.has(inv.id)}
@@ -381,20 +380,20 @@ export default function DataTab() {
                     aria-label={`${t("superadmin.data.select")} ${inv.id}`}
                   />
                 </td>
-                <td style={tdStyle}>
-                  <code style={{ fontSize: "0.75rem", cursor: "pointer" }} onClick={() => navigator.clipboard?.writeText(inv.id)} title={t("superadmin.data.copyToken")}>
+                <td className="data-tab-td">
+                  <code className="admin-text-xs" style={{ cursor: "pointer" }} onClick={() => navigator.clipboard?.writeText(inv.id)} title={t("superadmin.data.copyToken")}>
                     {inv.id}
                   </code>
                 </td>
-                <td style={tdStyle}>
+                <td className="data-tab-td">
                   {inv.firstName ? `${inv.firstName} & ${inv.secondName}` : <span style={{ color: "var(--setup-muted)", fontStyle: "italic" }}>{t("superadmin.data.emptyInvitation")}</span>}
-                  {inv.adminUsername ? <span style={{ color: "var(--setup-muted)", fontSize: "0.7rem", display: "block" }}>@{inv.adminUsername}</span> : null}
+                  {inv.adminUsername ? <span className="admin-text-sm" style={{ color: "var(--setup-muted)", display: "block" }}>@{inv.adminUsername}</span> : null}
                 </td>
-                <td style={{ ...tdStyle, whiteSpace: "nowrap" }}>{inv.weddingDate || "—"}</td>
-                <td style={{ ...tdStyle, textAlign: "center" }}>{inv.rsvpCount}</td>
-                <td style={{ ...tdStyle, textAlign: "center" }}>{inv.hasSession ? "🟢" : "—"}</td>
-                <td style={tdStyle}>
-                  <div style={{ display: "flex", gap: "0.25rem" }}>
+                <td className="data-tab-td" style={{ whiteSpace: "nowrap" }}>{inv.weddingDate || "—"}</td>
+                <td className="data-tab-td" style={{ textAlign: "center" }}>{inv.rsvpCount}</td>
+                <td className="data-tab-td" style={{ textAlign: "center" }}>{inv.hasSession ? "🟢" : "—"}</td>
+                <td className="data-tab-td">
+                  <div className="admin-flex admin-gap-sm">
                     <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => exportOne(inv.id)} disabled={busy} style={{ fontSize: "0.7rem" }}>
                       {t("superadmin.data.export")}
                     </button>
@@ -421,8 +420,7 @@ export default function DataTab() {
 // HELPERS
 // ═══════════════════════════════════════════════════════
 
-const thStyle = { padding: "0.4rem 0.5rem", textAlign: "left" as const, fontWeight: 600, borderBottom: "2px solid var(--setup-border)", whiteSpace: "nowrap" as const };
-const tdStyle = { padding: "0.35rem 0.5rem", verticalAlign: "middle" };
+
 
 /**
  * Elimina en cascada una invitación y todos sus datos asociados:

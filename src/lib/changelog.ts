@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.14.3",
+    date: "2026-07-20",
+    changes: [
+      "Refactor: DataTab migrado de inline styles a clases CSS (data-tab-*, admin-*)",
+      "Eliminadas constantes thStyle/tdStyle no usadas",
+    ],
+  },
+  {
     version: "2.14.2",
     date: "2026-07-20",
     changes: [
