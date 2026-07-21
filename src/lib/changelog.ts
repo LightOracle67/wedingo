@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.16.0",
+    date: "2026-07-21",
+    changes: [
+      "Nuevo idioma: Panyabí (pa) — 113M hablantes nativos",
+      "Cobertura global: 85 idiomas, ~68.2% de la población mundial",
+    ],
+  },
+  {
     version: "2.15.7",
     date: "2026-07-21",
     changes: [
