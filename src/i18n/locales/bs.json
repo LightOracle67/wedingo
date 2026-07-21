@@ -401,11 +401,7 @@
     "galleryDescriptionSaveFailed": "Greška pri spremanju opisa",
     "galleryDescriptionSaved": "Opis je sačuvan",
     "currentMusic": "Odabrana muzika",
-    "removeMusic": "Uklonite muziku",
-    "previewing": "igra se...",
-    "preview": "Pregled",
-    "select": "Odaberite",
-    "selected": "Odabrano"
+    "removeMusic": "Uklonite muziku"
   },
   "admin": {
     "tabs": {

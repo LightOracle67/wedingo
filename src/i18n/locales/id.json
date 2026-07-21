@@ -1425,47 +1425,6 @@
           ]
         ]
       ]
-    ],
-    "previewing": [
-      "Bermain...",
-      "Playing...",
-      null,
-      null,
-      10
-    ],
-    "preview": [
-      "Pratinjau",
-      "Preview",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "8197e9010ff5cd59d89a62790d9829cf",
-            "en_id_2023q1.md"
-          ]
-        ]
-      ]
-    ],
-    "select": [
-      "Memilih",
-      "Select",
-      null,
-      null,
-      2
-    ],
-    "selected": [
-      "Terpilih",
-      "Selected",
-      null,
-      null,
-      2
     ]
   },
   "admin": {

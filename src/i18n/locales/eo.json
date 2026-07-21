@@ -344,11 +344,7 @@
     "galleryDescriptionSaveFailed": "Eraro dum konservado de priskribo",
     "galleryDescriptionSaved": "Priskribo konservita",
     "currentMusic": "Elektita muziko",
-    "removeMusic": "Forigi muzikon",
-    "previewing": "Ludante...",
-    "preview": "Antaŭrigardo",
-    "select": "Elektu",
-    "selected": "Elektita"
+    "removeMusic": "Forigi muzikon"
   },
   "admin": {
     "tabs": {

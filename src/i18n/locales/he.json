@@ -1375,60 +1375,6 @@
           ]
         ]
       ]
-    ],
-    "previewing": [
-      "משחק...",
-      "Playing...",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "c20f075da290ff4ebe2bae43bebf89e7",
-            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "preview": [
-      "תצוגה מקדימה",
-      "Preview",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "c20f075da290ff4ebe2bae43bebf89e7",
-            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "select": [
-      "לִבחוֹר",
-      "Select",
-      null,
-      null,
-      2
-    ],
-    "selected": [
-      "נִבחָר",
-      "Selected",
-      null,
-      null,
-      2
     ]
   },
   "admin": {

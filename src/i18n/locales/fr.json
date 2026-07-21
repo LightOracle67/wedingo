@@ -1164,47 +1164,6 @@
           ]
         ]
       ]
-    ],
-    "previewing": [
-      "Jouant...",
-      "Playing...",
-      null,
-      null,
-      10
-    ],
-    "preview": [
-      "Aperçu",
-      "Preview",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "de81a00dcd67a045aa256d103baac836",
-            "en_fr_2023q1.md"
-          ]
-        ]
-      ]
-    ],
-    "select": [
-      "Sélectionner",
-      "Select",
-      null,
-      null,
-      10
-    ],
-    "selected": [
-      "Choisi",
-      "Selected",
-      null,
-      null,
-      2
     ]
   },
   "admin": {

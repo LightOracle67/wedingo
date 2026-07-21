@@ -344,11 +344,7 @@
     "galleryDescriptionSaveFailed": "Təsviri yadda saxlama xətası",
     "galleryDescriptionSaved": "Təsvir yadda saxlanıldı",
     "currentMusic": "Seçilmiş musiqi",
-    "removeMusic": "Musiqini çıxarın",
-    "previewing": "Oynanır...",
-    "preview": "Önizləmə",
-    "select": "seçin",
-    "selected": "Seçildi"
+    "removeMusic": "Musiqini çıxarın"
   },
   "admin": {
     "tabs": {

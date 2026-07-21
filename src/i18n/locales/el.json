@@ -344,11 +344,7 @@
     "galleryDescriptionSaveFailed": "Σφάλμα αποθήκευσης περιγραφής",
     "galleryDescriptionSaved": "Η περιγραφή αποθηκεύτηκε",
     "currentMusic": "Επιλεγμένη μουσική",
-    "removeMusic": "Αφαιρέστε τη μουσική",
-    "previewing": "Παιχνίδι...",
-    "preview": "Πρεμιέρα",
-    "select": "Επιλέγω",
-    "selected": "Επιλεγμένο"
+    "removeMusic": "Αφαιρέστε τη μουσική"
   },
   "admin": {
     "tabs": {

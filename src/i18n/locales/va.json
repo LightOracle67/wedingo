@@ -703,34 +703,6 @@
       null,
       null,
       5
-    ],
-    "previewing": [
-      "Playing...",
-      "Playing...",
-      null,
-      null,
-      5
-    ],
-    "preview": [
-      "Preview",
-      "Preview",
-      null,
-      null,
-      5
-    ],
-    "select": [
-      "Select",
-      "Select",
-      null,
-      null,
-      5
-    ],
-    "selected": [
-      "Selected",
-      "Selected",
-      null,
-      null,
-      5
     ]
   },
   "admin": {

@@ -350,11 +350,7 @@
     "galleryDescriptionSaveFailed": "Fehler beim Speichern der Beschreibung",
     "galleryDescriptionSaved": "Beschreibung gespeichert",
     "currentMusic": "Ausgewählte Musik",
-    "removeMusic": "Musik entfernen",
-    "previewing": "Spielen...",
-    "preview": "Vorschau",
-    "select": "Wählen",
-    "selected": "Ausgewählt"
+    "removeMusic": "Musik entfernen"
   },
   "admin": {
     "tabs": {

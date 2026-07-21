@@ -344,11 +344,7 @@
     "galleryDescriptionSaveFailed": "Gwall wrth gadw'r disgrifiad",
     "galleryDescriptionSaved": "Disgrifiad wedi'i gadw",
     "currentMusic": "Cerddoriaeth dethol",
-    "removeMusic": "Dileu cerddoriaeth",
-    "previewing": "Yn chwarae...",
-    "preview": "Rhagolwg",
-    "select": "Dewiswch",
-    "selected": "Wedi'i ddewis"
+    "removeMusic": "Dileu cerddoriaeth"
   },
   "admin": {
     "tabs": {

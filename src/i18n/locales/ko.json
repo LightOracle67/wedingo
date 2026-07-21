@@ -1109,47 +1109,6 @@
           ]
         ]
       ]
-    ],
-    "previewing": [
-      "재생 중...",
-      "Playing...",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "52ffe190710d2e8a233f305ac4260f4e",
-            "en_ko_2023q1.md"
-          ]
-        ]
-      ]
-    ],
-    "preview": [
-      "시사",
-      "Preview",
-      null,
-      null,
-      2
-    ],
-    "select": [
-      "선택하다",
-      "Select",
-      null,
-      null,
-      10
-    ],
-    "selected": [
-      "선택된",
-      "Selected",
-      null,
-      null,
-      2
     ]
   },
   "admin": {

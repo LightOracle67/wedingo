@@ -325,11 +325,7 @@
     "galleryDescriptionSaveFailed": "መግለጫ ማስቀመጥ ላይ ስህተት",
     "galleryDescriptionSaved": "መግለጫ ተቀምጧል",
     "currentMusic": "የተመረጠ ሙዚቃ",
-    "removeMusic": "ሙዚቃን ያስወግዱ",
-    "previewing": "በመጫወት ላይ...",
-    "preview": "ቅድመ እይታ",
-    "select": "ይምረጡ",
-    "selected": "ተመርጧል"
+    "removeMusic": "ሙዚቃን ያስወግዱ"
   },
   "admin": {
     "tabs": {

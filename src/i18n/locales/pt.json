@@ -1115,60 +1115,6 @@
           ]
         ]
       ]
-    ],
-    "previewing": [
-      "Jogando...",
-      "Playing...",
-      null,
-      null,
-      10
-    ],
-    "preview": [
-      "Visualização",
-      "Preview",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "66379e56ded86dd057796dbeaebad517",
-            "en_pt_2023q1.md"
-          ]
-        ]
-      ]
-    ],
-    "select": [
-      "Selecione",
-      "Select",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "66379e56ded86dd057796dbeaebad517",
-            "en_pt_2023q1.md"
-          ]
-        ]
-      ]
-    ],
-    "selected": [
-      "Selecionado",
-      "Selected",
-      null,
-      null,
-      2
     ]
   },
   "admin": {

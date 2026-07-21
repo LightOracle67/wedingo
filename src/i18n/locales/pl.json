@@ -1165,34 +1165,6 @@
           ]
         ]
       ]
-    ],
-    "previewing": [
-      "Gra...",
-      "Playing...",
-      null,
-      null,
-      2
-    ],
-    "preview": [
-      "Zapowiedź",
-      "Preview",
-      null,
-      null,
-      2
-    ],
-    "select": [
-      "Wybierać",
-      "Select",
-      null,
-      null,
-      10
-    ],
-    "selected": [
-      "Wybrany",
-      "Selected",
-      null,
-      null,
-      2
     ]
   },
   "admin": {

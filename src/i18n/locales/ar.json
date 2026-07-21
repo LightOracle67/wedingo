@@ -325,11 +325,7 @@
     "galleryDescriptionSaveFailed": "حدث خطأ أثناء حفظ الوصف",
     "galleryDescriptionSaved": "تم حفظ الوصف",
     "currentMusic": "الموسيقى المختارة",
-    "removeMusic": "إزالة الموسيقى",
-    "previewing": "جارٍ اللعب...",
-    "preview": "معاينة",
-    "select": "يختار",
-    "selected": "مختارة"
+    "removeMusic": "إزالة الموسيقى"
   },
   "admin": {
     "tabs": {

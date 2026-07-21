@@ -1109,60 +1109,6 @@
           ]
         ]
       ]
-    ],
-    "previewing": [
-      "正在播放...",
-      "Playing...",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "6ffafab0da7e640be86ac09d0d5e539c",
-            "en_zh_2023q1.md"
-          ]
-        ]
-      ]
-    ],
-    "preview": [
-      "预览",
-      "Preview",
-      null,
-      null,
-      10
-    ],
-    "select": [
-      "选择",
-      "Select",
-      null,
-      null,
-      10
-    ],
-    "selected": [
-      "已选择",
-      "Selected",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "6ffafab0da7e640be86ac09d0d5e539c",
-            "en_zh_2023q1.md"
-          ]
-        ]
-      ]
     ]
   },
   "admin": {

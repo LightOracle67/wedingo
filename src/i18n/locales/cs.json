@@ -388,11 +388,7 @@
     "galleryDescriptionSaveFailed": "Při ukládání popisu došlo k chybě",
     "galleryDescriptionSaved": "Popis uložen",
     "currentMusic": "Vybraná hudba",
-    "removeMusic": "Odebrat hudbu",
-    "previewing": "Přehrává se...",
-    "preview": "Náhled",
-    "select": "Vybrat",
-    "selected": "Vybraný"
+    "removeMusic": "Odebrat hudbu"
   },
   "admin": {
     "tabs": {

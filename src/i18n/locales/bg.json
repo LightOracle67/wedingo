@@ -344,11 +344,7 @@
     "galleryDescriptionSaveFailed": "Грешка при запазване на описанието",
     "galleryDescriptionSaved": "Описанието е запазено",
     "currentMusic": "Подбрана музика",
-    "removeMusic": "Премахване на музика",
-    "previewing": "Играе се...",
-    "preview": "Преглед",
-    "select": "Изберете",
-    "selected": "Избрано"
+    "removeMusic": "Премахване на музика"
   },
   "admin": {
     "tabs": {

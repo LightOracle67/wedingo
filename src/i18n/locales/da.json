@@ -362,11 +362,7 @@
     "galleryDescriptionSaveFailed": "Fejl ved lagring af beskrivelse",
     "galleryDescriptionSaved": "Beskrivelse gemt",
     "currentMusic": "Udvalgt musik",
-    "removeMusic": "Fjern musik",
-    "previewing": "Spiller...",
-    "preview": "Forhåndsvisning",
-    "select": "Vælge",
-    "selected": "Valgt"
+    "removeMusic": "Fjern musik"
   },
   "admin": {
     "tabs": {

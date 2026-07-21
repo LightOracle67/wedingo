@@ -1323,34 +1323,6 @@
           ]
         ]
       ]
-    ],
-    "previewing": [
-      "खेलना...",
-      "Playing...",
-      null,
-      null,
-      10
-    ],
-    "preview": [
-      "पूर्व दर्शन",
-      "Preview",
-      null,
-      null,
-      10
-    ],
-    "select": [
-      "चुनना",
-      "Select",
-      null,
-      null,
-      10
-    ],
-    "selected": [
-      "चयनित",
-      "Selected",
-      null,
-      null,
-      10
     ]
   },
   "admin": {

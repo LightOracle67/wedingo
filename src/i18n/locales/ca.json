@@ -420,11 +420,7 @@
     "galleryDescriptionSaveFailed": "S'ha produït un error en desar la descripció",
     "galleryDescriptionSaved": "Descripció desada",
     "currentMusic": "Música seleccionada",
-    "removeMusic": "Elimina la música",
-    "previewing": "Jugant...",
-    "preview": "Vista prèvia",
-    "select": "Seleccioneu",
-    "selected": "Seleccionat"
+    "removeMusic": "Elimina la música"
   },
   "admin": {
     "tabs": {

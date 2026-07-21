@@ -1115,47 +1115,6 @@
           ]
         ]
       ]
-    ],
-    "previewing": [
-      "Giocando...",
-      "Playing...",
-      null,
-      null,
-      10
-    ],
-    "preview": [
-      "Anteprima",
-      "Preview",
-      null,
-      null,
-      2
-    ],
-    "select": [
-      "Selezionare",
-      "Select",
-      null,
-      null,
-      2
-    ],
-    "selected": [
-      "Selezionato",
-      "Selected",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "0aea2f5ef36731b02422e218d5add801",
-            "en_it_2023q1.md"
-          ]
-        ]
-      ]
     ]
   },
   "admin": {

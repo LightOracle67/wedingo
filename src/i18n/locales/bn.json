@@ -325,11 +325,7 @@
     "galleryDescriptionSaveFailed": "বিবরণ সংরক্ষণে ত্রুটি৷",
     "galleryDescriptionSaved": "বর্ণনা সংরক্ষিত",
     "currentMusic": "নির্বাচিত সঙ্গীত",
-    "removeMusic": "সঙ্গীত সরান",
-    "previewing": "বাজানো হচ্ছে...",
-    "preview": "পূর্বরূপ",
-    "select": "নির্বাচন করুন",
-    "selected": "নির্বাচিত"
+    "removeMusic": "সঙ্গীত সরান"
   },
   "admin": {
     "tabs": {

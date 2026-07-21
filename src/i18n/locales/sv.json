@@ -1146,47 +1146,6 @@
           ]
         ]
       ]
-    ],
-    "previewing": [
-      "Spelar...",
-      "Playing...",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "c20f075da290ff4ebe2bae43bebf89e7",
-            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "preview": [
-      "Förhandsvisning",
-      "Preview",
-      null,
-      null,
-      2
-    ],
-    "select": [
-      "Välja",
-      "Select",
-      null,
-      null,
-      2
-    ],
-    "selected": [
-      "Vald",
-      "Selected",
-      null,
-      null,
-      2
     ]
   },
   "admin": {
