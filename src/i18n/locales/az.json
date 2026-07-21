@@ -11,20 +11,20 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": "Görünən",
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": "Nəsə xəta baş verdi",
+      "message": "Yenidən cəhd etmək üçün səhifəni yenidən yükləyin.",
+      "reload": "Səhifəni yenidən yükləyin"
     },
     "toast": {
-      "close": "Close"
+      "close": "Bağlayın"
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": "Əsas məzmuna keçin",
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": "İdarə paneli",
+      "fallback": "İdarəetmə"
     }
   },
   "landing": {
@@ -55,8 +55,8 @@
     "todayIsWedding": "Bu gün toydur",
     "missing": "Qalıb",
     "todayIsTheDay": "Bu gün böyük gündür!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": "Qapaq",
+    "eyebrow": "Toyumuz"
   },
   "details": {
     "sectionLabel": "Tarix və məkan",
@@ -106,8 +106,8 @@
     "next": "Sonrakı",
     "thumbnailAria": "Foto {{number}}",
     "thumbnailAlt": "Qalereya fotosunun kiçik şəkli",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": "Şəkil qalereyası, naviqasiya üçün ox düymələrindən istifadə edin",
+    "lightboxLabel": "Böyüdülmüş şəkil"
   },
   "rsvp": {
     "sectionLabel": "İştirak təsdiqi",
@@ -138,49 +138,68 @@
     "ageUnder14Warning": "14 yaşdan kiçiksiniz. Valideynlərinizin və ya qəyyumlarınızın razılığı lazımdır.",
     "parentalConsent": "Valideynlərim və ya qəyyumlarım iştirakıma razıdır",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": "İştirakı təsdiqləmək üçün adınızı daxil edin.",
+      "menuRequired": "Menyu seçimini seçin.",
+      "privacyRequired": "Məxfilik Siyasətini qəbul etməlisiniz.",
+      "birthDateRequired": "Doğum tarixinizi daxil edin.",
+      "ageUnder14": "14 yaşdan kiçiksiniz. ",
+      "healthConsentRequired": "Sağlamlıq məlumatlarınızın emalına razılıq verməlisiniz.",
+      "menuHeadcountRequired": "Ən azı bir menyu seçimini göstərin.",
+      "guestNamesRequired": "Yoldaşlarınızın adlarını daxil edin.",
+      "guestNamesExceed": "Siz yoldaşlardan daha çox ad daxil edə bilməzsiniz.",
+      "headcountExceed": "Menyu seçimlərinin cəmi yoldaşların sayından çox ola bilməz."
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": "Təşəkkür edirəm, {{name}}. ",
+    "successNotAttending": "Təşəkkür edirəm, {{name}}. ",
+    "saveError": "Cavabınızı saxlaya bilmədik. ",
+    "withdrawConfirm": "Cavabınızı geri götürmək istədiyinizə əminsiniz?",
+    "withdrawSuccess": "Cavabınız geri götürüldü.",
+    "withdrawError": "Cavabınızı geri götürmək mümkün olmadı. ",
+    "clearConfirm": "Bütün iştirak cavabları silinsin? ",
+    "clearSuccess": "Davamiyyət qeydləri təmizləndi.",
+    "clearError": "Davamiyyət qeydlərini silmək mümkün olmadı.",
+    "companionsLabel": "Yoldaşlar",
+    "headcountLabel": "İnsanlar",
+    "headcountHint": "Hər seçim üçün neçə nəfər (cəmi {{total}})",
+    "guestNamesLabel": "Qonaq adları",
+    "guestNamesHint": "Hər bir yoldaşın adını və soyadını yazın (maksimum {{count}})",
+    "guestNamesPlaceholder": "Ad1 Soyad1, Ad2 Soyad2..."
   },
   "public": {
     "loadingInvitation": "Dəvətnamə yüklənir...",
     "notFoundTitle": "Dəvətnamə tapılmadı",
     "notFoundText": "Bu keçidlə dəvətnamə tapmadıq. Səhv olduğunu düşünürsünüzsə, ev sahibləri ilə əlaqə saxlayın.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Şəxsi toy dəvətnamənizi yaradın və paylaşın.",
     "emptyDescription": "Dəvətnamənizin məlumatlarını idarə edin, qonaqlarınızla unikal keçid paylaşın və onların iştirak təsdiqlərini alın.",
     "createLink": "Dəvətnamə yaradın",
     "privacyPolicy": "Məxfilik Siyasəti",
     "terms": "Şərtlər",
     "legalNotice": "Hüquqi Bildiriş",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": "Bu yeri tapmaq mümkün olmadı.",
+    "locationMapError": "Xəritəni yükləmək mümkün olmadı.",
+    "locationCoordinates": "Koordinatlar: {{lat}}, {{lng}}",
+    "mapPreviewAlt": "Göstərilən yerdə xəritəyə baxış.",
+    "locationSet": "Məkan konfiqurasiya edildi"
   },
   "setup": {
     "loadingTitle": "Dəvətnamə yüklənir",
@@ -308,28 +327,28 @@
     "galleryUploadFailed": "Fotolar yüklənə bilmədi.",
     "noValidFiles": "Etibarlı fayl yoxdur. Maksimum 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": "Qapaqda səsləndirmək üçün audio faylı yükləyin (MP3, WAV, OGG, M4A — maksimum 5 MB).",
+    "audioUploadTitle": "Audio faylı yükləyin",
+    "audioUploadSubtitle": "MP3, WAV, OGG və ya M4A — maksimum 5 MB",
+    "audioFormatError": "Audio formatı dəstəklənmir. ",
+    "audioEmptyError": "Audio fayl boşdur.",
+    "audioSizeError": "Audio fayl 5 MB limitini keçir.",
+    "audioReadError": "Audio faylı oxumaq xətası.",
+    "errorEmptyFile": "Fayl boşdur. ",
+    "galleryDescriptionPlaceholder": "Şəklin təsviri...",
+    "galleryMaxReached": "Qalereyada maksimum {{max}} şəkil.",
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": "{{total}} şəkil yüklənir...",
+    "photoUploading": "Foto yüklənir...",
+    "replaceImage": "Şəkli dəyişdirin",
+    "galleryDescriptionSaveFailed": "Təsviri yadda saxlama xətası",
+    "galleryDescriptionSaved": "Təsvir yadda saxlanıldı",
+    "currentMusic": "Seçilmiş musiqi",
+    "removeMusic": "Musiqini çıxarın",
+    "previewing": "Oynanır...",
+    "preview": "Önizləmə",
+    "select": "seçin",
+    "selected": "Seçildi"
   },
   "admin": {
     "tabs": {
@@ -353,9 +372,28 @@
     "pdfTableCompanions": "Müşayiətçi",
     "pdfTableDiet": "Pəhriz",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Admin",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": "Dəvətə baxın",
+    "logout": "Çıxın"
   },
   "panel": {
     "confirmed": "Təsdiqlənmiş",
@@ -384,7 +422,7 @@
     "confirms": "Təsdiqləyir",
     "declines": "Rədd edir",
     "pending": "Gözləyən",
-    "visits_one": "1 visit",
+    "visits_one": "1 ziyarət",
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +455,66 @@
     "generateMessage": "Başqa mesaj yarat",
     "copyMessage": "Mesajı kopyala",
     "shareVia": "Paylaş",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "Telegram",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Çap et",
     "printPdf": "Çap et / PDF saxla",
     "linkCopied": "Keçid kopyalandı.",
@@ -446,9 +541,28 @@
     "deleteButton": "Məlumatların silinməsini tələb et",
     "exportButton": "Məlumatlarımı ixrac et",
     "rightsHint": "E-poçt müştəriniz əvvəlcədən təyin olunmuş şablonla açılacaq. Həmçinin adriancl2001@gmail.com ünvanına da yaza bilərsiniz.",
-    "ccpaTitle": "CCPA / CPRA (California)",
+    "ccpaTitle": "CCPA / CPRA (Kaliforniya)",
     "ccpaText": "Wedingo şəxsi məlumatları satmır. Toplanmış məlumatlar yalnız dəvətnamənin idarə olunması üçün istifadə olunur. California sakinisinizsə, məlumatlarınızın silinməsini tələb etmək və hüquqlarınızı həyata keçirdiyinizə görə ayrı-seçkiliyə məruz qalmamaq hüququnuz var.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Toy dəvətnamələrinin idarə olunması üçün veb tətbiq.",
     "copyright": "© {{year}} Adrián Carrasco López. Bütün hüquqlar qorunur.",
     "deleteEmailSubject": "Məlumatların silinməsi tələbi - Wedingo",
@@ -518,13 +632,13 @@
     "deleteFailed": "Dəvətnamə silinə bilmədi. Yenidən cəhd edin.",
     "configLoadFailed": "Konfiqurasiya yüklənə bilmədi. Bağlantını yoxlayın və yenidən cəhd edin.",
     "invalidLink": "Dəvətnamə keçidi etibarsızdır.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": "Yerləşdirmə məlumatı 2000 simvoldan çox ola bilməz.",
+    "menuTextoTooLong": "Menyunun təsviri 2000 simvoldan çox ola bilməz.",
+    "uploadImageFailed": "Şəkli emal etmək mümkün olmadı. ",
+    "readImageFailed": "Şəkil faylını oxumaq mümkün olmadı.",
+    "encryptFailed": "Şəkil şifrələməsi alınmadı.",
+    "imageTooLarge": "Şəkil sıxışdırıldıqdan sonra belə çox böyükdür.",
+    "fileEmpty": "Fayl boşdur. "
   },
   "superadmin": {
     "tabs": {
@@ -535,7 +649,26 @@
       "compliance": "Uyğunluq",
       "data": "Datos"
     },
-    "superadmin": "Superadmin",
+    "superadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "controlPanel": "İdarəetmə paneli",
     "managePlatform": "Wedingo platformasını idarə edin",
     "dashboardLoading": "Statistika yüklənir...",
@@ -561,7 +694,26 @@
     "invitationsCount": "{{count}} dəvətnamə · {{size}} işğal olunub",
     "noResultsFilter": "Bu meyarla dəvətnamə tapılmadı.",
     "noInvitations": "Hələ dəvətnamə yoxdur.",
-    "tableToken": "Token",
+    "tableToken": [
+      "Token",
+      "Token",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "tableTheme": "Mövzu",
     "tableDate": "Toy tarixi",
     "tableActions": "Əməliyyatlar",
@@ -588,14 +740,71 @@
     "tokenCleanError": "Tokenlər təmizlənə bilmədi.",
     "tokenLoadError": "Tokenlər yüklənə bilmədi.",
     "accountEmail": "E-poçt: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Aktiv",
     "sessionInactive": "Qeyri-aktiv",
     "sessionLabel": "Lokal sessiya: {{status}}",
     "sessionType": "Növ: {{type}}",
-    "sessionTypeSuperadmin": "Superadmin",
+    "sessionTypeSuperadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionTypeSetup": "Quraşdırma",
-    "sessionTypeAdmin": "Admin",
+    "sessionTypeAdmin": [
+      "Admin",
+      "Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionExpires": "Bitmə tarixi: {{date}}",
     "logoutButton": "Çıxış",
     "firebaseAccount": "Superadmin hesabınızı idarə etmək üçün Firebase konsolunu istifadə edin:",
@@ -615,10 +824,29 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Token",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "32df64f7b2c6bf92105643e497202634",
+              "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": "Cavablar",
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +864,8 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": "E-poçt",
+    "passwordLabel": "parol"
   },
   "compliance": {
     "title": "Emal fəaliyyətlərinin reyestri (GDPR maddə 30)",
@@ -653,31 +881,31 @@
     "row1Basis": "Razılıq (GDPR maddə 6.1.a)",
     "row1Purpose": "Toy dəvətnaməsi yaratmaq və fərdiləşdirmək",
     "row1Retention": "Hesab aktiv olduğu müddətdə",
-    "row1Recipients": "Google Cloud (Firestore, hosting)",
+    "row1Recipients": "Google Bulud (Firestore, hosting)",
     "row2Activity": "İştirak təsdiqi (RSVP)",
     "row2Data": "Qonağın adı, iştirak (bəli/xeyr), menyu seçimi, allergiyalar, sağlamlıq məlumatları",
     "row2Basis": "Razılıq (GDPR maddə 6.1.a, 9.2.a)",
     "row2Purpose": "Qonaq siyahısını və menyunu idarə etmək",
     "row2Retention": "Tədbirdən 12 ay sonra",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": "Google Bulud (Firestore)",
     "row3Activity": "Şəkillərin yüklənməsi",
     "row3Data": "Toy fotoları (AES-256-GCM şifrələnmiş)",
     "row3Basis": "Razılıq (GDPR maddə 6.1.a)",
     "row3Purpose": "Dəvətnamədə foto qalereya",
     "row3Retention": "Tədbirdən 12 ay sonra",
-    "row3Recipients": "Google Cloud (Firestore subcollection)",
+    "row3Recipients": "Google Bulud (Firestore alt kolleksiyası)",
     "row4Activity": "Autentifikasiya və sessiyalar",
     "row4Data": "Sessiya tokeni, admin istifadəçi adı",
     "row4Basis": "Qanuni maraq (GDPR maddə 6.1.f)",
     "row4Purpose": "Admin panelinə girişi nəzarət etmək",
     "row4Retention": "Sessiya müddəti",
-    "row4Recipients": "Google Cloud (Firestore sessions)",
+    "row4Recipients": "Google Bulud (Firestore seansları)",
     "row5Activity": "Superadmin auditi",
     "row5Data": "Superadmin əməliyyatları, istifadə olunmuş tokenlər, silinmiş dəvətnamələr",
     "row5Basis": "Hüquqi öhdəlik (GDPR maddə 6.1.c)",
     "row5Purpose": "İnzibati fəaliyyətlərin reyestri",
     "row5Retention": "3 il",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": "Google Bulud (Firestore auditLog)",
     "internationalTitle": "Beynəlxalq transferlər",
     "internationalText": "Məlumatlar Google Cloud serverlərində eur3 regionunda (Frankfurt, Almaniya) saxlanılır. Google LLC (ABŞ) GDPR maddə 28-ə uyğun DPA çərçivəsində məlumat emalçısı kimi fəaliyyət göstərir. ABŞ-a transferlər aşağıdakılarla qorunur:",
     "scc": "Standart Müqavilə Maddələri (SCC) - İcra Qərarı 2021/914",
@@ -691,86 +919,124 @@
     "measureSuperadmin": "Superadmin Firebase Authentication + gizli marşrut ilə qorunur"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": "Əlçatanlıq",
+    "close": "Bağlayın",
+    "fontSize": "Mətn ölçüsü",
+    "fontNormal": [
+      "Normal",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontLarge": "Böyük",
+    "fontExtraLarge": "Əlavə böyük",
+    "lineSpacing": "Sətir aralığı",
+    "lineNormal": [
+      "Normal",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineWide": "Geniş",
+    "lineVeryWide": "Çox geniş",
+    "highContrast": "Yüksək kontrast",
+    "reducedMotion": "Hərəkəti azaldın",
+    "dyslexiaFont": "OpenDyslexic şrift",
+    "moreSpacing": "Daha çox hərf aralığı",
+    "underlineLinks": "Bütün bağlantıların altını çəkin",
+    "bigCursor": "Böyük kursor",
+    "desaturate": "Boz rəng",
+    "strongFocus": "Görünən diqqət göstəriciləri"
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": "Musiqi yoxdur",
+    "loadError": "Yükləmə xətası",
+    "label": "Musiqi",
+    "soundCloudNote": "SoundCloud treki — çalmaq üçün açıqdır",
+    "openInSoundCloud": "SoundCloud-da açın"
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": "Çap hazırlanır...",
+    "couplePhoto": "Cüt şəkil",
+    "godparentsText": "Xaç babalarının xeyir-duası ilə",
+    "dateAndPlace": "Tarix və yer",
+    "celebrationTime": "Mərasimin vaxtı:",
+    "viewInGoogleMaps": "Google Xəritədə məkana baxın",
+    "celebrationMessage": "Bu xüsusi anı sizinlə paylaşmağı səbirsizliklə gözləyirik.",
+    "transport": "Nəqliyyat",
+    "aboutGuests": "Qonaqlar haqqında",
+    "scheduleTitle": "Toy cədvəli",
+    "scheduleFallback": "Ətraflı təqvim tezliklə paylaşılacaq.",
+    "dressCode": "Geyim kodu",
+    "dressCodeFallback": "Daha sonra məlumat veriləcək.",
+    "aboutKids": "Uşaqlar haqqında",
+    "ourStory": "Bizim hekayə",
+    "storyStarted": "Hər şey necə başladı",
+    "storyFallback": "Hekayə tezliklə paylaşılacaq.",
+    "gifts": "Hədiyyələr",
+    "bestGift": "Sizin varlığınız ən gözəl hədiyyədir",
+    "giftsFallback": "Hədiyyə məlumatı tezliklə paylaşılacaq.",
+    "bankDetails": "Bank rekvizitləri",
+    "accommodation": "Yerləşdirmə",
+    "whereToStay": "Harada qalmaq",
+    "accommodationFallback": "Yerləşdirmə məlumatları tezliklə paylaşılacaq.",
+    "footer": "Wedingo · wedingo-6c26a.web.app ünvanında Məxfilik Siyasəti",
+    "closeWindow": "Pəncərəni bağlayın"
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": "Yuxarı hərəkət edin",
+    "moveDown": "Aşağı hərəkət edin",
+    "title": "Sifariş və görünürlük",
+    "help": "Yenidən sıralamaq üçün sürüşdürün, hərəkət etmək üçün düymələrdən istifadə edin və hər bir bölməni yandırın və ya söndürün."
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": "Dil seçin"
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": "1 yoldaş",
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": "İspaniya",
+    "westernEurope": "Qərbi Avropa",
+    "nordicEurope": "Şimali Avropa",
+    "centralEurope": "Mərkəzi Avropa",
+    "southernEurope": "Cənubi Avropa / Balkanlar",
+    "easternEurope": "Şərqi Avropa / Qafqaz",
+    "eastAsia": "Şərqi Asiya",
+    "southAsia": "Cənubi Asiya",
+    "southeastAsia": "Cənub-Şərqi Asiya",
+    "centralAsia": "Orta Asiya / Yaxın Şərq",
+    "africa": "Afrika",
+    "americas": "Amerika"
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +1053,131 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": "Dəyişikliklər jurnalı",
+    "close": "Bağlayın"
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": "Bu dəvət üçün artıq aktiv sessiya var. ",
+    "tokenInvalid": "Giriş kodu etibarlı deyil.",
+    "enterCode": "Giriş kodunu daxil edin.",
+    "codeVerified": "Kod uğurla təsdiqləndi.",
+    "codeVerifyError": "Kodu doğrulamaq mümkün olmadı. ",
+    "enterUserAndCode": "İstifadəçi adınızı və giriş kodunuzu daxil edin.",
+    "invalidCredentials": "Yanlış istifadəçi adı və ya kod.",
+    "codeUserMismatch": "Kod bu istifadəçiyə uyğun gəlmir.",
+    "loginSuccess": "Siz uğurla daxil oldunuz.",
+    "loginError": "Kodu doğrulamaq mümkün olmadı. ",
+    "confirmRequired": "Yeni kod yaratmaq üçün CONFIRM yazın.",
+    "usernameRequired": "Əvvəlcə istifadəçi adınızı daxil edin.",
+    "usernameInvalid": "İstifadəçi adı yalnız hərf və rəqəmlərdən ibarət ola bilər.",
+    "usernameTooLong": "İstifadəçi adı 50 simvoldan çox ola bilməz.",
+    "unauthorizedUser": "Bu istifadəçinin buraya daxil olmaq icazəsi yoxdur.",
+    "tokenGenerated": "Kod yaradıldı. ",
+    "tokenGenerateError": "Kodu yaratmaq mümkün olmadı. ",
+    "currentTokenRequired": "Yenisini yaratmaq üçün cari giriş kodunu daxil edin.",
+    "tokenRenewed": "Yeni kod yaradıldı. ",
+    "tokenRenewedAdmin": "Kod yeniləndi. ",
+    "superadminNoPermissions": "Bu hesabın idarəetmə icazələri yoxdur.",
+    "superadminWrongCredentials": "Yanlış etimadnamələr.",
+    "superadminTooManyAttempts": "Həddindən artıq cəhd. ",
+    "superadminInvalidEmail": "E-poçt formatı etibarlı deyil.",
+    "superadminLoginError": "Giriş zamanı xəta baş verdi. Bağlantınızı yoxlayın."
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": "Dəyişikliklər yadda saxlanıldı"
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": "yanvar",
+    "2": "fevral",
+    "3": "mart",
+    "4": "aprel",
+    "5": "may",
+    "6": "iyun",
+    "7": "iyul",
+    "8": "avqust",
+    "9": "sentyabr",
+    "10": "oktyabr",
+    "11": "noyabr",
+    "12": "dekabr"
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": "Yüngül mövzular",
+    "dark": "Qaranlıq mövzular",
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": "Qlüten",
+    "lactose": "Laktoza",
+    "nuts": "Ağac qoz-fındıqları",
+    "shellfish": "Qabıqlı balıqlar"
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
+    "addressLine1": "Ən əzizlərimizə",
+    "tapHint": "Açmaq üçün toxunun",
     "and": "&",
-    "tapContinue": "Tap to continue"
+    "tapContinue": "Davam etmək üçün toxunun"
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": "Toyumuz",
+    "eventTitle": "{{adlar}} toyu",
+    "placeUnknown": "Təsdiq ediləcək yer",
+    "invitationText": "Bu xüsusi anı sizinlə qeyd etməyi səbirsizliklə gözləyirik.",
+    "timeLabel": "Vaxt:",
+    "placeLabel": "Məkan:"
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": "Zərif və parlaq, qızılı vurğularla.",
+    "forest": "Yumşaq göyərti ilə təbii və ayıq.",
+    "rose": "Çəhrayı çalarları ilə isti və zərif.",
+    "linen-soft": "Yüngül və neytral, sakit və zamansız bir varlıq.",
+    "blush-pearl": "Yumşaq və romantik, mirvari çəhrayı tonları ilə.",
+    "lavender-mist": "Təzə və sakit, lavanda və bənövşəyi rənglərlə.",
+    "champagne-bubble": "Parlaq və şən, isti qızıl parıldamaqlarla.",
+    "amber-night": "Tünd və zərif, kəhrəba və qızılı vurğularla.",
+    "onyx-gold": "Tünd fonda sıx qızılı ilə dərin və mürəkkəb.",
+    "midnight-royal": "Güclü qızılı və təntənəli iştirakı ilə çox tünd mavi.",
+    "burgundy-velvet": "Qırmızı şərab və qızıl qığılcımlarla isti və əhatə edən.",
+    "sapphire-night": "Gümüş vurğu və sakit varlıq ilə tünd mavi.",
+    "emerald-grove": "Qızılı və zərif çalarları ilə tünd təbii yaşıl.",
+    "plum-twilight": "Çəhrayı və romantik parıldayan sıx bənövşəyi.",
+    "rainbow": "Göy qurşağı rəngləri ilə müxtəlif sevginin qeyd edilməsi.",
+    "trans": "Trans bayrağına hörmət olaraq mavi, çəhrayı və ağ.",
+    "nonbinary": "İkili olmayan bayraq üçün sarı, ağ, bənövşəyi və qara.",
+    "lesbian": "Lezbiyen bayrağının narıncı, ağ və çəhrayı.",
+    "bi": "İki bayrağın çəhrayı, bənövşəyi və mavi.",
+    "pan": "Pan bayrağının çəhrayı, sarı və mavi.",
+    "ace": "Aseksual bayrağın qara, boz, ağ və bənövşəyi."
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": "Oyun sahəsi ilə xoş gəlmisiniz",
+      "supervised": "Nəzarət altında xoş gəlmisiniz",
+      "adultOnly": "Yalnız böyüklər"
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": "Məlumat yoxdur",
+    "total": "cəmi",
+    "barChart": "Davamlılıq bar diaqramı",
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

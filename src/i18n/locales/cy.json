@@ -11,20 +11,20 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": "Gweladwy",
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": "Aeth rhywbeth o'i le",
+      "message": "Ail-lwythwch y dudalen i geisio eto.",
+      "reload": "Ail-lwytho tudalen"
     },
     "toast": {
-      "close": "Close"
+      "close": "Cau"
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": "Neidio i'r prif gynnwys",
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": "Bar gweinyddu",
+      "fallback": "Gweinyddiaeth"
     }
   },
   "landing": {
@@ -55,8 +55,8 @@
     "todayIsWedding": "Heddiw mae'r briodas",
     "missing": "Ar ôl",
     "todayIsTheDay": "Heddiw yw'r diwrnod mawr!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": "Gorchudd",
+    "eyebrow": "Ein Priodas"
   },
   "details": {
     "sectionLabel": "Dyddiad a lleoliad",
@@ -106,8 +106,8 @@
     "next": "Nesaf",
     "thumbnailAria": "Llun {{number}}",
     "thumbnailAlt": "Mân-lun o'r oriel",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": "Oriel ddelweddau, defnyddiwch y bysellau saeth i lywio",
+    "lightboxLabel": "Delwedd mwy"
   },
   "rsvp": {
     "sectionLabel": "Cadarnhad presenoldeb",
@@ -138,49 +138,68 @@
     "ageUnder14Warning": "Rydych o dan 14 oed. Mae angen cydsyniad eich rhieni neu warcheidwaid.",
     "parentalConsent": "Mae fy rhieni neu warcheidwaid yn cydsynio i'm cyfranogiad",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": "Rhowch eich enw i gadarnhau presenoldeb.",
+      "menuRequired": "Dewiswch opsiwn dewislen.",
+      "privacyRequired": "Rhaid i chi dderbyn y Polisi Preifatrwydd.",
+      "birthDateRequired": "Nodwch eich dyddiad geni.",
+      "ageUnder14": "Rydych chi dan 14 oed. ",
+      "healthConsentRequired": "Rhaid i chi gydsynio i brosesu eich data iechyd.",
+      "menuHeadcountRequired": "Nodwch o leiaf un opsiwn ar y ddewislen.",
+      "guestNamesRequired": "Rhowch enwau eich cymdeithion.",
+      "guestNamesExceed": "Ni allwch nodi mwy o enwau na chymdeithion.",
+      "headcountExceed": "Ni all swm yr opsiynau dewislen fod yn fwy na nifer y cymdeithion."
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": "Diolch, {{name}}. ",
+    "successNotAttending": "Diolch, {{name}}. ",
+    "saveError": "Ni allem arbed eich ymateb. ",
+    "withdrawConfirm": "A ydych yn siŵr eich bod am dynnu eich ymateb yn ôl?",
+    "withdrawSuccess": "Mae eich ymateb wedi'i dynnu'n ôl.",
+    "withdrawError": "Methu tynnu eich ymateb yn ôl. ",
+    "clearConfirm": "Dileu'r holl ymatebion presenoldeb? ",
+    "clearSuccess": "Cofnodion presenoldeb wedi'u clirio.",
+    "clearError": "Methu â chlirio cofnodion presenoldeb.",
+    "companionsLabel": "Cymdeithion",
+    "headcountLabel": "Pobl",
+    "headcountHint": "Faint o bobl ar gyfer pob opsiwn ({{cyfanswm}} cyfanswm)",
+    "guestNamesLabel": "Enwau gwesteion",
+    "guestNamesHint": "Ysgrifennwch enw cyntaf ac olaf pob cydymaith (uchafswm {{count}})",
+    "guestNamesPlaceholder": "Enw 1 Cyfenw1, Enw2 Cyfenw2..."
   },
   "public": {
     "loadingInvitation": "Yn llwytho gwahoddiad…",
     "notFoundTitle": "Gwahoddiad heb ei ganfod",
     "notFoundText": "Ni ddaethom o hyd i wahoddiad gyda'r ddolen hon. Os ydych chi'n meddwl ei fod yn gamgymeriad, cysylltwch â'r gwesteiwyr.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Crëwch a rhannwch eich gwahoddiad priodas personol.",
     "emptyDescription": "Rheolwch ddata eich gwahoddiad, rhannwch ddolen unigryw gyda'ch gwesteion a derbyniwch eu cadarnhadau presenoldeb.",
     "createLink": "Crëwch wahoddiad",
     "privacyPolicy": "Polisi Preifatrwydd",
     "terms": "Telerau",
     "legalNotice": "Hysbysiad Cyfreithiol",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": "Methu dod o hyd i'r lle hwn.",
+    "locationMapError": "Methu llwytho'r map.",
+    "locationCoordinates": "Cyfesurynnau: {{lat}}, {{lng}}",
+    "mapPreviewAlt": "Rhagolwg map yn y lleoliad a nodir.",
+    "locationSet": "Lleoliad wedi'i ffurfweddu"
   },
   "setup": {
     "loadingTitle": "Yn llwytho gwahoddiad",
@@ -308,28 +327,28 @@
     "galleryUploadFailed": "Ni ellid llwytho'r lluniau.",
     "noValidFiles": "Dim ffeil ddilys. Uchafswm 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": "Llwythwch ffeil sain i'w chwarae ar y clawr (MP3, WAV, OGG, M4A - uchafswm o 5 MB).",
+    "audioUploadTitle": "Llwythwch ffeil sain i fyny",
+    "audioUploadSubtitle": "MP3, WAV, OGG neu M4A - uchafswm o 5 MB",
+    "audioFormatError": "Ni chefnogir fformat sain. ",
+    "audioEmptyError": "Ffeil sain yn wag.",
+    "audioSizeError": "Ffeil sain yn fwy na'r terfyn o 5 MB.",
+    "audioReadError": "Gwall wrth ddarllen y ffeil sain.",
+    "errorEmptyFile": "Mae'r ffeil yn wag. ",
+    "galleryDescriptionPlaceholder": "Disgrifiad o'r ddelwedd...",
+    "galleryMaxReached": "Uchafswm {{max}} o ddelweddau yn yr oriel.",
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": "Wrthi'n uwchlwytho {{total}} llun(iau)...",
+    "photoUploading": "Wrthi'n uwchlwytho llun...",
+    "replaceImage": "Newid llun",
+    "galleryDescriptionSaveFailed": "Gwall wrth gadw'r disgrifiad",
+    "galleryDescriptionSaved": "Disgrifiad wedi'i gadw",
+    "currentMusic": "Cerddoriaeth dethol",
+    "removeMusic": "Dileu cerddoriaeth",
+    "previewing": "Yn chwarae...",
+    "preview": "Rhagolwg",
+    "select": "Dewiswch",
+    "selected": "Wedi'i ddewis"
   },
   "admin": {
     "tabs": {
@@ -353,9 +372,9 @@
     "pdfTableCompanions": "Cymdeithion",
     "pdfTableDiet": "Deiet",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": "Wedingo · Gweinyddol",
+    "viewInvitation": "Gweld gwahoddiad",
+    "logout": "Allgofnodi"
   },
   "panel": {
     "confirmed": "Wedi'u cadarnhau",
@@ -384,7 +403,7 @@
     "confirms": "Yn cadarnhau",
     "declines": "Yn gwrthod",
     "pending": "Yn aros",
-    "visits_one": "1 visit",
+    "visits_one": "1 ymweliad",
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +436,66 @@
     "generateMessage": "Cynhyrchu neges arall",
     "copyMessage": "Copïo neges",
     "shareVia": "Rhannu trwy",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "Telegram",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Argraffu",
     "printPdf": "Argraffu / Cadw PDF",
     "linkCopied": "Dolen wedi'i chopïo.",
@@ -446,9 +522,47 @@
     "deleteButton": "Gofyn am ddileu data",
     "exportButton": "Allforio fy nata",
     "rightsHint": "Bydd eich cleient e-bost yn agor gyda thempled wedi'i ddiffinio ymlaen llaw. Gallwch hefyd ysgrifennu at adriancl2001@gmail.com.",
-    "ccpaTitle": "CCPA / CPRA (California)",
+    "ccpaTitle": [
+      "CCPA / CPRA (California)",
+      "CCPA / CPRA (California)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "ccpaText": "Nid yw Wedingo yn gwerthu data personol. Defnyddir y data a gesglir yn unig ar gyfer rheoli'r gwahoddiad. Os ydych yn breswylydd California, mae gennych hawl i ofyn am ddileu eich data a pheidio â chael eich gwahaniaethu am arfer eich hawliau.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Cymhwysiad gwe ar gyfer rheoli gwahoddiadau priodas.",
     "copyright": "© {{year}} Adrián Carrasco López. Cedwir pob hawl.",
     "deleteEmailSubject": "Cais i ddileu data - Wedingo",
@@ -518,13 +632,13 @@
     "deleteFailed": "Ni ellid dileu'r gwahoddiad. Ceisiwch eto.",
     "configLoadFailed": "Ni ellid llwytho'r cyfluniad. Gwiriwch y cysylltiad a cheisiwch eto.",
     "invalidLink": "Nid yw dolen y gwahoddiad yn ddilys.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": "Ni all gwybodaeth llety fod yn fwy na 2000 nod.",
+    "menuTextoTooLong": "Ni all disgrifiad y ddewislen fod yn fwy na 2000 nod.",
+    "uploadImageFailed": "Methu prosesu'r ddelwedd. ",
+    "readImageFailed": "Methu darllen y ffeil delwedd.",
+    "encryptFailed": "Methodd amgryptio delwedd.",
+    "imageTooLarge": "Mae'r ddelwedd yn rhy fawr hyd yn oed ar ôl cywasgu.",
+    "fileEmpty": "Mae'r ffeil yn wag. "
   },
   "superadmin": {
     "tabs": {
@@ -588,7 +702,26 @@
     "tokenCleanError": "Ni ellid glanhau'r tocynnau.",
     "tokenLoadError": "Ni ellid llwytho'r tocynnau.",
     "accountEmail": "E-bost: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Gweithredol",
     "sessionInactive": "Anweithredol",
     "sessionLabel": "Sesiwn leol: {{status}}",
@@ -615,10 +748,29 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": "Tocyn",
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVPs",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2380de39af29128a9e128e1ab45d00ff",
+              "tea_CelticA_en2cygagd_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +788,8 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": "Ebost",
+    "passwordLabel": "Cyfrinair"
   },
   "compliance": {
     "title": "Cofrestr gweithgareddau prosesu (GDPR erth. 30)",
@@ -659,7 +811,7 @@
     "row2Basis": "Cydsyniad (GDPR erth. 6.1.a, 9.2.a)",
     "row2Purpose": "Rheoli rhestr westeion a bwydlen",
     "row2Retention": "12 mis ar ôl y digwyddiad",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": "Google Cloud (Stôr Tân)",
     "row3Activity": "Llwytho delweddau",
     "row3Data": "Lluniau priodas (wedd'u hamgryptio AES-256-GCM)",
     "row3Basis": "Cydsyniad (GDPR erth. 6.1.a)",
@@ -677,7 +829,26 @@
     "row5Basis": "Rhwymedigaeth gyfreithiol (GDPR erth. 6.1.c)",
     "row5Purpose": "Cofnod o weithgareddau gweinyddol",
     "row5Retention": "3 blynedd",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Trosglwyddiadau rhyngwladol",
     "internationalText": "Mae data'n cael ei storio ar weinyddion Google Cloud yn rhanbarth eur3 (Frankfurt, yr Almaen). Mae Google LLC (UDA) yn gweithredu fel prosesydd data o dan DPA yn unol â GDPR erth. 28. Mae trosglwyddiadau i UDA yn seiliedig ar:",
     "scc": "Cymalau Contractiol Safonol (SCC) - Penderfyniad Gweithredu 2021/914",
@@ -691,86 +862,105 @@
     "measureSuperadmin": "Uwch-weinyddwr wedi'i ddiogelu gan Firebase Authentication + llwybr cudd"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": "Hygyrchedd",
+    "close": "Cau",
+    "fontSize": "Maint testun",
+    "fontNormal": "Arferol",
+    "fontLarge": "Mawr",
+    "fontExtraLarge": "Mawr ychwanegol",
+    "lineSpacing": "Bylchau rhwng llinellau",
+    "lineNormal": "Arferol",
+    "lineWide": "Eang",
+    "lineVeryWide": "Eang iawn",
+    "highContrast": "Cyferbyniad uchel",
+    "reducedMotion": "Lleihau'r cynnig",
+    "dyslexiaFont": "FfontDyslecsig Agored",
+    "moreSpacing": "Mwy o fylchau rhwng llythyrau",
+    "underlineLinks": "Tanlinellwch bob dolen",
+    "bigCursor": "Cyrchwr mawr",
+    "desaturate": "Graddlwyd",
+    "strongFocus": "Dangosyddion ffocws gweladwy"
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": "Dim cerddoriaeth",
+    "loadError": "Gwall wrth lwytho",
+    "label": "Cerddoriaeth",
+    "soundCloudNote": "Trac SoundCloud - ar agor i'w chwarae",
+    "openInSoundCloud": "Agor yn SoundCloud"
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": "Wrthi'n paratoi print…",
+    "couplePhoto": "Llun cwpl",
+    "godparentsText": "Gyda bendith eu rhieni bedydd",
+    "dateAndPlace": "Dyddiad a lleoliad",
+    "celebrationTime": "Amser seremoni:",
+    "viewInGoogleMaps": "Gweld lleoliad yn Google Maps",
+    "celebrationMessage": "Edrychwn ymlaen at rannu'r foment arbennig hon gyda chi.",
+    "transport": "Cludiant",
+    "aboutGuests": "Am y gwesteion",
+    "scheduleTitle": "Amserlen briodas",
+    "scheduleFallback": "Bydd yr amserlen fanwl yn cael ei rhannu yn fuan.",
+    "dressCode": "Cod gwisg",
+    "dressCodeFallback": "Bydd yn cael ei gyfathrebu yn ddiweddarach.",
+    "aboutKids": "Am blant",
+    "ourStory": "Ein stori",
+    "storyStarted": "Sut y dechreuodd y cyfan",
+    "storyFallback": "Bydd yr hanes yn cael ei rannu yn fuan.",
+    "gifts": "Anrhegion",
+    "bestGift": "Eich presenoldeb yw'r anrheg orau",
+    "giftsFallback": "Bydd gwybodaeth rhoddion yn cael ei rannu yn fuan.",
+    "bankDetails": "Manylion banc",
+    "accommodation": "Llety",
+    "whereToStay": "Ble i aros",
+    "accommodationFallback": "Bydd gwybodaeth am lety yn cael ei rannu yn fuan.",
+    "footer": "Wedingo · Polisi Preifatrwydd yn wedingo-6c26a.web.app",
+    "closeWindow": "Caewch y ffenestr"
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": "Symud i fyny",
+    "moveDown": "Symud i lawr",
+    "title": "Trefn a gwelededd",
+    "help": "Llusgwch i aildrefnu, defnyddiwch y botymau i symud, a toglwch bob adran ymlaen neu i ffwrdd."
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": "Dewiswch iaith"
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": "1 cydymaith",
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": "Sbaen",
+    "westernEurope": "Gorllewin Ewrop",
+    "nordicEurope": "Ewrop Nordig",
+    "centralEurope": "Canolbarth Ewrop",
+    "southernEurope": "De Ewrop / Balcanau",
+    "easternEurope": "Dwyrain Ewrop / Cawcasws",
+    "eastAsia": "Dwyrain Asia",
+    "southAsia": "De Asia",
+    "southeastAsia": "De-ddwyrain Asia",
+    "centralAsia": "Canolbarth Asia / Dwyrain Canol",
+    "africa": "Affrica",
+    "americas": [
+      "Americas",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +977,131 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": "Newidlog",
+    "close": "Cau"
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": "Mae sesiwn weithredol ar gyfer y gwahoddiad hwn yn barod. ",
+    "tokenInvalid": "Nid yw'r cod mynediad yn ddilys.",
+    "enterCode": "Rhowch y cod mynediad.",
+    "codeVerified": "Cod wedi'i ddilysu'n llwyddiannus.",
+    "codeVerifyError": "Methu â gwirio'r cod. ",
+    "enterUserAndCode": "Rhowch eich enw defnyddiwr a'r cod mynediad.",
+    "invalidCredentials": "Enw defnyddiwr neu god anghywir.",
+    "codeUserMismatch": "Nid yw'r cod yn cyfateb i'r defnyddiwr hwn.",
+    "loginSuccess": "Rydych chi wedi mewngofnodi'n llwyddiannus.",
+    "loginError": "Methu â gwirio'r cod. ",
+    "confirmRequired": "Teipiwch CONFIRM i gynhyrchu cod newydd.",
+    "usernameRequired": "Rhowch eich enw defnyddiwr yn gyntaf.",
+    "usernameInvalid": "Dim ond llythrennau a rhifau y gall enw defnyddiwr eu cynnwys.",
+    "usernameTooLong": "Ni all enw defnyddiwr fod yn fwy na 50 nod.",
+    "unauthorizedUser": "Nid oes gan y defnyddiwr hwn ganiatâd i gael mynediad yma.",
+    "tokenGenerated": "Cod wedi'i gynhyrchu. ",
+    "tokenGenerateError": "Methu cynhyrchu'r cod. ",
+    "currentTokenRequired": "Rhowch y cod mynediad cyfredol i gynhyrchu un newydd.",
+    "tokenRenewed": "Cod newydd wedi'i gynhyrchu. ",
+    "tokenRenewedAdmin": "Cod wedi'i adnewyddu. ",
+    "superadminNoPermissions": "Nid oes gan y cyfrif hwn ganiatâd gweinyddol.",
+    "superadminWrongCredentials": "Manylion anghywir.",
+    "superadminTooManyAttempts": "Gormod o ymdrechion. ",
+    "superadminInvalidEmail": "Nid yw fformat yr e-bost yn ddilys.",
+    "superadminLoginError": "Gwall wrth fewngofnodi. Gwiriwch eich cysylltiad."
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": "Newidiadau wedi'u cadw"
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": "Ionawr",
+    "2": "Chwefror",
+    "3": "Mawrth",
+    "4": "Ebrill",
+    "5": "Mai",
+    "6": "Mehefin",
+    "7": "Gorffennaf",
+    "8": "Awst",
+    "9": "Medi",
+    "10": "Hydref",
+    "11": "Tachwedd",
+    "12": "Rhagfyr"
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": "Themâu ysgafn",
+    "dark": "Themâu tywyll",
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": "Glwten",
+    "lactose": "Lactos",
+    "nuts": "Cnau coed",
+    "shellfish": "Pysgod cregyn"
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
+    "addressLine1": "I'n hanwylaf",
+    "tapHint": "Tapiwch i agor",
     "and": "&",
-    "tapContinue": "Tap to continue"
+    "tapContinue": "Tapiwch i barhau"
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": "Ein priodas",
+    "eventTitle": "Priodas {{names}}",
+    "placeUnknown": "Lleoliad i'w gadarnhau",
+    "invitationText": "Edrychwn ymlaen at ddathlu'r foment arbennig hon gyda chi.",
+    "timeLabel": "Amser:",
+    "placeLabel": "Lleoliad:"
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": "Cain a llachar, gydag acenion euraidd.",
+    "forest": "Naturiol a sobr gyda gwyrdd meddal.",
+    "rose": "Cynnes a thyner, gyda lliwiau pinc.",
+    "linen-soft": "Ysgafn a niwtral, gyda phresenoldeb tawel a bythol.",
+    "blush-pearl": "Meddal a rhamantus, gydag arlliwiau pinc perlog.",
+    "lavender-mist": "Ffres a thawel, gyda lliwiau lafant a physgod.",
+    "champagne-bubble": "Yn llachar ac yn Nadoligaidd, gyda disgleirio euraidd cynnes.",
+    "amber-night": "Tywyll a chain, gydag uchafbwyntiau ambr ac aur.",
+    "onyx-gold": "Dwfn a soffistigedig, gydag aur dwys ar gefndir tywyll.",
+    "midnight-royal": "Glas tywyll iawn gydag aur dwys a phresenoldeb difrifol.",
+    "burgundy-velvet": "Cynnes ac amlen, gyda gwin coch a pefrio euraidd.",
+    "sapphire-night": "Glas dwfn gydag acenion arian a phresenoldeb tawel.",
+    "emerald-grove": "Gwyrdd naturiol dwfn gyda lliwiau euraidd a chain.",
+    "plum-twilight": "Porffor dwys gyda pefrio pinc a rhamantus.",
+    "rainbow": "Dathliad o gariad amrywiol gyda lliwiau enfys.",
+    "trans": "Glas, pinc a gwyn yn deyrnged i'r faner draws.",
+    "nonbinary": "Melyn, gwyn, porffor a du ar gyfer y faner anneuaidd.",
+    "lesbian": "Oren, gwyn a phinc y faner lesbiaidd.",
+    "bi": "Pinc, porffor a glas y faner ddeu.",
+    "pan": "Pinc, melyn a glas baner y badell.",
+    "ace": "Du, llwyd, gwyn a phorffor y faner anrhywiol."
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": "Croeso gyda man chwarae",
+      "supervised": "Croeso dan oruchwyliaeth",
+      "adultOnly": "Oedolion yn unig"
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": "Dim data",
+    "total": "cyfanswm",
+    "barChart": "Siart bar presenoldeb",
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

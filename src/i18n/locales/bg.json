@@ -11,20 +11,20 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": "Видими",
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": "Нещо се обърка",
+      "message": "Моля, презаредете страницата, за да опитате отново.",
+      "reload": "Презареди страницата"
     },
     "toast": {
-      "close": "Close"
+      "close": "затвори"
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": "Преминете към основното съдържание",
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": "Административна лента",
+      "fallback": "Администрация"
     }
   },
   "landing": {
@@ -55,8 +55,8 @@
     "todayIsWedding": "Днес е сватбата",
     "missing": "Остават",
     "todayIsTheDay": "Днес е големият ден!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": "Капак",
+    "eyebrow": "Нашата сватба"
   },
   "details": {
     "sectionLabel": "Дата и място",
@@ -106,8 +106,8 @@
     "next": "Следваща",
     "thumbnailAria": "Снимка {{number}}",
     "thumbnailAlt": "Миниатюра от галерията",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": "Галерия с изображения, използвайте клавишите със стрелки за навигация",
+    "lightboxLabel": "Увеличено изображение"
   },
   "rsvp": {
     "sectionLabel": "Потвърждение за присъствие",
@@ -138,49 +138,68 @@
     "ageUnder14Warning": "Ти си под 14 години. Необходимо е съгласието на твоите родители или настойници.",
     "parentalConsent": "Моите родители или настойници дават съгласие за участието ми",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": "Въведете вашето име, за да потвърдите присъствието.",
+      "menuRequired": "Изберете опция от менюто.",
+      "privacyRequired": "Трябва да приемете Политиката за поверителност.",
+      "birthDateRequired": "Въведете вашата дата на раждане.",
+      "ageUnder14": "Вие сте под 14 години. ",
+      "healthConsentRequired": "Трябва да се съгласите с обработката на вашите здравни данни.",
+      "menuHeadcountRequired": "Посочете поне една опция от менюто.",
+      "guestNamesRequired": "Въведете имената на вашите спътници.",
+      "guestNamesExceed": "Не можете да въведете повече имена от придружителите.",
+      "headcountExceed": "Сумата от опциите на менюто не може да надвишава броя на придружителите."
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": "Благодаря ти, {{name}}. ",
+    "successNotAttending": "Благодаря ти, {{name}}. ",
+    "saveError": "Не успяхме да запазим отговора ви. ",
+    "withdrawConfirm": "Сигурни ли сте, че искате да оттеглите отговора си?",
+    "withdrawSuccess": "Вашият отговор е оттеглен.",
+    "withdrawError": "Отговорът ви не можа да бъде оттеглен. ",
+    "clearConfirm": "Да се ​​изтрият ли всички отговори на присъствието? ",
+    "clearSuccess": "Записите за присъствие са изчистени.",
+    "clearError": "Записите за присъствие не можаха да бъдат изчистени.",
+    "companionsLabel": "Придружители",
+    "headcountLabel": "хора",
+    "headcountHint": "Колко хора за всяка опция (общо {{total}})",
+    "guestNamesLabel": "Имена на гостите",
+    "guestNamesHint": "Напишете първото и фамилното име на всеки спътник (макс. {{count}})",
+    "guestNamesPlaceholder": "Име1 Фамилия1, Име2 Фамилия2..."
   },
   "public": {
     "loadingInvitation": "Зареждане на поканата…",
     "notFoundTitle": "Поканата не е намерена",
     "notFoundText": "Не намерихме покана с този линк. Ако смяташ, че е грешка, свържи се с домакините.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2e8de74564aec87fb81cb0340a661858",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2022q2.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Създай и сподели своята персонализирана сватбена покана.",
     "emptyDescription": "Управлявай данните на поканата си, сподели уникален линк с гостите и получавай потвържденията им за присъствие.",
     "createLink": "Създай покана",
     "privacyPolicy": "Политика за поверителност",
     "terms": "Условия",
     "legalNotice": "Правна информация",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": "Не може да се намери това място.",
+    "locationMapError": "Картата не можа да се зареди.",
+    "locationCoordinates": "Координати: {{lat}}, {{lng}}",
+    "mapPreviewAlt": "Преглед на картата на посоченото място.",
+    "locationSet": "Местоположението е конфигурирано"
   },
   "setup": {
     "loadingTitle": "Зареждане на поканата",
@@ -308,28 +327,28 @@
     "galleryUploadFailed": "Снимките не можаха да бъдат качени.",
     "noValidFiles": "Няма валиден файл. Максимум 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": "Качете аудио файл за възпроизвеждане на корицата (MP3, WAV, OGG, M4A — максимум 5 MB).",
+    "audioUploadTitle": "Качване на аудио файл",
+    "audioUploadSubtitle": "MP3, WAV, OGG или M4A — максимум 5 MB",
+    "audioFormatError": "Аудио форматът не се поддържа. ",
+    "audioEmptyError": "Аудио файлът е празен.",
+    "audioSizeError": "Аудио файлът надвишава ограничението от 5 MB.",
+    "audioReadError": "Грешка при четене на аудио файл.",
+    "errorEmptyFile": "Файлът е празен. ",
+    "galleryDescriptionPlaceholder": "Описание на изображението...",
+    "galleryMaxReached": "Максимум {{max}} изображения в галерията.",
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": "Качват се {{total}} снимка(и)...",
+    "photoUploading": "Качване на снимка...",
+    "replaceImage": "Смяна на снимка",
+    "galleryDescriptionSaveFailed": "Грешка при запазване на описанието",
+    "galleryDescriptionSaved": "Описанието е запазено",
+    "currentMusic": "Подбрана музика",
+    "removeMusic": "Премахване на музика",
+    "previewing": "Играе се...",
+    "preview": "Преглед",
+    "select": "Изберете",
+    "selected": "Избрано"
   },
   "admin": {
     "tabs": {
@@ -353,9 +372,9 @@
     "pdfTableCompanions": "Придружители",
     "pdfTableDiet": "Хранене",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": "Wedingo · Админ",
+    "viewInvitation": "Вижте поканата",
+    "logout": "Излезте"
   },
   "panel": {
     "confirmed": "Потвърдени",
@@ -384,7 +403,7 @@
     "confirms": "Потвърждават",
     "declines": "Отказват",
     "pending": "Изчакващи",
-    "visits_one": "1 visit",
+    "visits_one": "1 посещение",
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +436,47 @@
     "generateMessage": "Генерирай друго съобщение",
     "copyMessage": "Копирай съобщение",
     "shareVia": "Сподели чрез",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2e8de74564aec87fb81cb0340a661858",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2022q2.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": "Телеграма",
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2e8de74564aec87fb81cb0340a661858",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2022q2.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Отпечатай",
     "printPdf": "Отпечатай / Запази PDF",
     "linkCopied": "Линкът е копиран.",
@@ -448,7 +505,26 @@
     "rightsHint": "Ще се отвори имейл клиентът ти с предварително зададен шаблон. Можеш също да пишеш на adriancl2001@gmail.com.",
     "ccpaTitle": "CCPA / CPRA (Калифорния)",
     "ccpaText": "Wedingo не продава лични данни. Събраните данни се използват изключително за управление на поканата. Ако си жител на Калифорния, имаш право да поискаш изтриване на данните си и да не бъдеш дискриминиран/а за упражняване на правата си.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2e8de74564aec87fb81cb0340a661858",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2022q2.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Уеб приложение за управление на сватбени покани.",
     "copyright": "© {{year}} Адриан Караско Лопес. Всички права запазени.",
     "deleteEmailSubject": "Заявка за изтриване на данни - Wedingo",
@@ -518,13 +594,13 @@
     "deleteFailed": "Поканата не можа да бъде изтрита. Опитай отново.",
     "configLoadFailed": "Конфигурацията не можа да бъде заредена. Провери връзката и опитай отново.",
     "invalidLink": "Линкът на поканата не е валиден.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": "Информацията за настаняване не може да надвишава 2000 знака.",
+    "menuTextoTooLong": "Описанието на менюто не може да надвишава 2000 знака.",
+    "uploadImageFailed": "Изображението не можа да се обработи. ",
+    "readImageFailed": "Файлът с изображение не можа да бъде прочетен.",
+    "encryptFailed": "Неуспешно шифроване на изображението.",
+    "imageTooLarge": "Изображението е твърде голямо дори след компресиране.",
+    "fileEmpty": "Файлът е празен. "
   },
   "superadmin": {
     "tabs": {
@@ -588,7 +664,26 @@
     "tokenCleanError": "Токените не можаха да бъдат почистени.",
     "tokenLoadError": "Токените не можаха да бъдат заредени.",
     "accountEmail": "Имейл: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2e8de74564aec87fb81cb0340a661858",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2022q2.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Активна",
     "sessionInactive": "Неактивна",
     "sessionLabel": "Локална сесия: {{status}}",
@@ -615,10 +710,29 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": "Токен",
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVPs",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2e8de74564aec87fb81cb0340a661858",
+              "tea_SouthSlavicA_en2bebsbghrsrsluk_2022q2.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +750,8 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": "Имейл",
+    "passwordLabel": "Парола"
   },
   "compliance": {
     "title": "Регистър на дейностите по обработване (чл. 30 GDPR)",
@@ -659,7 +773,26 @@
     "row2Basis": "Съгласие (чл. 6.1.a, 9.2.a GDPR)",
     "row2Purpose": "Управление на списък с гости и меню",
     "row2Retention": "12 месеца след събитието",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2e8de74564aec87fb81cb0340a661858",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2022q2.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Качване на изображения",
     "row3Data": "Сватбени снимки (криптирани AES-256-GCM)",
     "row3Basis": "Съгласие (чл. 6.1.a GDPR)",
@@ -671,13 +804,32 @@
     "row4Basis": "Легитимен интерес (чл. 6.1.f GDPR)",
     "row4Purpose": "Контрол на достъпа до админ панела",
     "row4Retention": "Продължителност на сесията",
-    "row4Recipients": "Google Cloud (Firestore sessions)",
+    "row4Recipients": "Google Cloud (сесии на Firestore)",
     "row5Activity": "Одит на супер админ",
     "row5Data": "Действия на супер админ, използвани токени, изтрити покани",
     "row5Basis": "Законово задължение (чл. 6.1.c GDPR)",
     "row5Purpose": "Регистър на административни дейности",
     "row5Retention": "3 години",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2e8de74564aec87fb81cb0340a661858",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2022q2.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Международни трансфери",
     "internationalText": "Данните се съхраняват на сървъри на Google Cloud в региона eur3 (Франкфурт, Германия). Google LLC (САЩ) действа като обработващ данни съгласно DPA в съответствие с чл. 28 GDPR. Трансферите към САЩ се основават на:",
     "scc": "Стандартни договорни клаузи (SCC) - Решение за изпълнение 2021/914",
@@ -691,86 +843,86 @@
     "measureSuperadmin": "Супер админ, защитен чрез Firebase Authentication + скрит път"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": "Достъпност",
+    "close": "затвори",
+    "fontSize": "Размер на текста",
+    "fontNormal": "нормално",
+    "fontLarge": "Голям",
+    "fontExtraLarge": "Изключително голям",
+    "lineSpacing": "Разстояние между редовете",
+    "lineNormal": "нормално",
+    "lineWide": "Широка",
+    "lineVeryWide": "Много широк",
+    "highContrast": "Висок контраст",
+    "reducedMotion": "Намалете движението",
+    "dyslexiaFont": "OpenDyslexic шрифт",
+    "moreSpacing": "Повече разстояние между буквите",
+    "underlineLinks": "Подчертайте всички връзки",
+    "bigCursor": "Голям курсор",
+    "desaturate": "Скала на сивото",
+    "strongFocus": "Видими индикатори за фокусиране"
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": "Без музика",
+    "loadError": "Грешка при зареждане",
+    "label": "Музика",
+    "soundCloudNote": "SoundCloud песен — отворена за възпроизвеждане",
+    "openInSoundCloud": "Отворете в SoundCloud"
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": "Подготвя се печат…",
+    "couplePhoto": "Двойка снимка",
+    "godparentsText": "С благословията на техните кумове",
+    "dateAndPlace": "Дата и място",
+    "celebrationTime": "Час на церемонията:",
+    "viewInGoogleMaps": "Вижте местоположението в Google Maps",
+    "celebrationMessage": "Очакваме с нетърпение да споделим този специален момент с вас.",
+    "transport": "транспорт",
+    "aboutGuests": "Относно гостите",
+    "scheduleTitle": "Сватбен график",
+    "scheduleFallback": "Подробният график ще бъде споделен скоро.",
+    "dressCode": "Дрескод",
+    "dressCodeFallback": "Ще бъде съобщено по-късно.",
+    "aboutKids": "Относно децата",
+    "ourStory": "Нашата история",
+    "storyStarted": "Как започна всичко",
+    "storyFallback": "Историята ще бъде споделена скоро.",
+    "gifts": "подаръци",
+    "bestGift": "Вашето присъствие е най-добрият подарък",
+    "giftsFallback": "Информацията за подаръците ще бъде споделена скоро.",
+    "bankDetails": "Банкови данни",
+    "accommodation": "Настаняване",
+    "whereToStay": "Къде да остана",
+    "accommodationFallback": "Информацията за настаняването ще бъде споделена скоро.",
+    "footer": "Wedingo · Правила за поверителност на wedingo-6c26a.web.app",
+    "closeWindow": "Затваряне на прозореца"
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": "Придвижете се нагоре",
+    "moveDown": "Придвижете се надолу",
+    "title": "Ред и видимост",
+    "help": "Плъзнете, за да пренаредите, използвайте бутоните, за да преместите, и включете или изключете всяка секция."
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": "Изберете език"
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": "1 спътник",
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": "Испания",
+    "westernEurope": "Западна Европа",
+    "nordicEurope": "Северна Европа",
+    "centralEurope": "Централна Европа",
+    "southernEurope": "Южна Европа / Балкани",
+    "easternEurope": "Източна Европа/Кавказ",
+    "eastAsia": "Източна Азия",
+    "southAsia": "Южна Азия",
+    "southeastAsia": "Югоизточна Азия",
+    "centralAsia": "Централна Азия / Близък изток",
+    "africa": "Африка",
+    "americas": "Америка"
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +939,131 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": "Дневник на промените",
+    "close": "затвори"
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": "Вече има активна сесия за тази покана. ",
+    "tokenInvalid": "Кодът за достъп не е валиден.",
+    "enterCode": "Въведете кода за достъп.",
+    "codeVerified": "Кодът е проверен успешно.",
+    "codeVerifyError": "Кодът не може да бъде потвърден. ",
+    "enterUserAndCode": "Въведете вашето потребителско име и кода за достъп.",
+    "invalidCredentials": "Неправилно потребителско име или код.",
+    "codeUserMismatch": "Кодът не съответства на този потребител.",
+    "loginSuccess": "Влязохте успешно.",
+    "loginError": "Кодът не може да бъде потвърден. ",
+    "confirmRequired": "Въведете CONFIRM, за да генерирате нов код.",
+    "usernameRequired": "Първо въведете вашето потребителско име.",
+    "usernameInvalid": "Потребителското име може да съдържа само букви и цифри.",
+    "usernameTooLong": "Потребителското име не може да надвишава 50 знака.",
+    "unauthorizedUser": "Този потребител няма разрешение за достъп тук.",
+    "tokenGenerated": "Генериран код. ",
+    "tokenGenerateError": "Не може да се генерира кодът. ",
+    "currentTokenRequired": "Въведете текущия код за достъп, за да генерирате нов.",
+    "tokenRenewed": "Генериран нов код. ",
+    "tokenRenewedAdmin": "Кодът е подновен. ",
+    "superadminNoPermissions": "Този акаунт няма административни разрешения.",
+    "superadminWrongCredentials": "Неправилни идентификационни данни.",
+    "superadminTooManyAttempts": "Твърде много опити. ",
+    "superadminInvalidEmail": "Имейл форматът не е валиден.",
+    "superadminLoginError": "Грешка при влизане. Проверете връзката си."
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": "Промените са запазени"
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": "януари",
+    "2": "февруари",
+    "3": "март",
+    "4": "април",
+    "5": "май",
+    "6": "юни",
+    "7": "юли",
+    "8": "август",
+    "9": "септември",
+    "10": "октомври",
+    "11": "ноември",
+    "12": "декември"
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": "Леки теми",
+    "dark": "Тъмни теми",
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2e8de74564aec87fb81cb0340a661858",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2022q2.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": "глутен",
+    "lactose": "лактоза",
+    "nuts": "ядки",
+    "shellfish": "Миди"
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": "На нашите най-скъпи",
+    "tapHint": "Докоснете за отваряне",
+    "and": "и",
+    "tapContinue": "Докоснете, за да продължите"
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": "Нашата сватба",
+    "eventTitle": "Сватба на {{names}}",
+    "placeUnknown": "Местоположението ще бъде потвърдено",
+    "invitationText": "Очакваме с нетърпение да отпразнуваме този специален момент с вас.",
+    "timeLabel": "Време:",
+    "placeLabel": "Място:"
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": "Елегантен и светъл, със златни акценти.",
+    "forest": "Естествен и трезвен с мека зеленина.",
+    "rose": "Топло и нежно, с розови нюанси.",
+    "linen-soft": "Лек и неутрален, със спокойно и вечно присъствие.",
+    "blush-pearl": "Меко и романтично, с перлено розови тонове.",
+    "lavender-mist": "Свеж и спокоен, с лавандулови и лилави нюанси.",
+    "champagne-bubble": "Светъл и празничен, с топли златни искри.",
+    "amber-night": "Тъмен и елегантен, с кехлибарени и златни отблясъци.",
+    "onyx-gold": "Дълбоко и изтънчено, с наситено злато на тъмен фон.",
+    "midnight-royal": "Много тъмно синьо с интензивно златно и тържествено присъствие.",
+    "burgundy-velvet": "Топло и обгръщащо, с червено вино и златни искри.",
+    "sapphire-night": "Наситено синьо със сребърни акценти и ведро присъствие.",
+    "emerald-grove": "Наситено естествено зелено със златисти и елегантни нюанси.",
+    "plum-twilight": "Наситено лилаво с розови и романтични искри.",
+    "rainbow": "Празник на разнообразна любов с цветове на дъгата.",
+    "trans": "Синьо, розово и бяло в знак на почит към транс знамето.",
+    "nonbinary": "Жълто, бяло, лилаво и черно за недвоичен флаг.",
+    "lesbian": "Оранжево, бяло и розово на лесбийското знаме.",
+    "bi": "Розово, лилаво и синьо на би флага.",
+    "pan": "Розово, жълто и синьо на флага.",
+    "ace": "Черно, сиво, бяло и лилаво на безполовия флаг."
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": "Добре дошли със зона за игра",
+      "supervised": "Добре дошли под наблюдение",
+      "adultOnly": "Само за възрастни"
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": "Няма данни",
+    "total": "общо",
+    "barChart": "Диаграма на посещаемостта",
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

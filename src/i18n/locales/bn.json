@@ -11,20 +11,20 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": "দৃশ্যমান",
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": "কিছু ভুল হয়েছে",
+      "message": "আবার চেষ্টা করতে পৃষ্ঠাটি পুনরায় লোড করুন.",
+      "reload": "পৃষ্ঠা পুনরায় লোড করুন"
     },
     "toast": {
-      "close": "Close"
+      "close": "বন্ধ"
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": "প্রধান বিষয়বস্তু এড়িয়ে যান",
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": "প্রশাসনিক বার",
+      "fallback": "প্রশাসন"
     }
   },
   "landing": {
@@ -55,8 +55,8 @@
     "todayIsWedding": "আজ বিয়ে",
     "missing": "বাকি",
     "todayIsTheDay": "আজই সেই মহান দিন!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": "আবরণ",
+    "eyebrow": "আমাদের বিবাহ"
   },
   "details": {
     "sectionLabel": "তারিখ ও স্থান",
@@ -106,8 +106,8 @@
     "next": "পরের",
     "thumbnailAria": "ছবি {{number}}",
     "thumbnailAlt": "গ্যালারির ছবির থাম্বনেইল",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": "চিত্র গ্যালারি, নেভিগেট করতে তীর কী ব্যবহার করুন",
+    "lightboxLabel": "বর্ধিত চিত্র"
   },
   "rsvp": {
     "sectionLabel": "উপস্থিতি নিশ্চিতকরণ",
@@ -138,49 +138,49 @@
     "ageUnder14Warning": "আপনার বয়স ১৪ বছরের কম। আপনার পিতামাতা বা অভিভাবকের সম্মতি প্রয়োজন।",
     "parentalConsent": "আমার পিতামাতা বা অভিভাবক আমার অংশগ্রহণে সম্মতি দিচ্ছেন",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": "উপস্থিতি নিশ্চিত করতে আপনার নাম লিখুন।",
+      "menuRequired": "একটি মেনু বিকল্প নির্বাচন করুন.",
+      "privacyRequired": "আপনাকে অবশ্যই গোপনীয়তা নীতি গ্রহণ করতে হবে।",
+      "birthDateRequired": "আপনার জন্ম তারিখ লিখুন।",
+      "ageUnder14": "আপনার বয়স 14 বছরের কম। ",
+      "healthConsentRequired": "আপনার স্বাস্থ্য তথ্য প্রক্রিয়াকরণের জন্য আপনাকে অবশ্যই সম্মতি দিতে হবে।",
+      "menuHeadcountRequired": "অন্তত একটি মেনু বিকল্প নির্দেশ করুন.",
+      "guestNamesRequired": "আপনার সঙ্গীদের নাম লিখুন।",
+      "guestNamesExceed": "আপনি সহচরদের চেয়ে বেশি নাম লিখতে পারবেন না।",
+      "headcountExceed": "মেনু বিকল্পের যোগফল সঙ্গীর সংখ্যা অতিক্রম করতে পারে না।"
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": "ধন্যবাদ, {{name}}। ",
+    "successNotAttending": "ধন্যবাদ, {{name}}। ",
+    "saveError": "আমরা আপনার প্রতিক্রিয়া সংরক্ষণ করতে পারিনি. ",
+    "withdrawConfirm": "আপনি কি আপনার প্রতিক্রিয়া প্রত্যাহার করার বিষয়ে নিশ্চিত?",
+    "withdrawSuccess": "আপনার প্রতিক্রিয়া প্রত্যাহার করা হয়েছে.",
+    "withdrawError": "আপনার প্রতিক্রিয়া প্রত্যাহার করা যায়নি. ",
+    "clearConfirm": "সমস্ত উপস্থিতি প্রতিক্রিয়া মুছবেন? ",
+    "clearSuccess": "উপস্থিতি রেকর্ড সাফ.",
+    "clearError": "উপস্থিতি রেকর্ড পরিষ্কার করা যায়নি.",
+    "companionsLabel": "সঙ্গী",
+    "headcountLabel": "মানুষ",
+    "headcountHint": "প্রতিটি বিকল্পের জন্য কতজন লোক ({{total}} মোট)",
+    "guestNamesLabel": "অতিথির নাম",
+    "guestNamesHint": "প্রতিটি সঙ্গীর প্রথম এবং শেষ নাম লিখুন (সর্বোচ্চ {{count}})",
+    "guestNamesPlaceholder": "নাম1 উপাধি1, নাম2 উপাধি2..."
   },
   "public": {
     "loadingInvitation": "আমন্ত্রণ লোড হচ্ছে…",
     "notFoundTitle": "আমন্ত্রণ পাওয়া যায়নি",
     "notFoundText": "এই লিঙ্কের সাথে কোনো আমন্ত্রণ পাওয়া যায়নি। যদি আপনি মনে করেন এটি একটি ত্রুটি, আয়োজকদের সাথে যোগাযোগ করুন।",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": "ওয়েডিংগো",
     "emptyText": "আপনার ব্যক্তিগতকৃত বিয়ের আমন্ত্রণ তৈরি করুন এবং শেয়ার করুন।",
     "emptyDescription": "আপনার আমন্ত্রণের তথ্য পরিচালনা করুন, অতিথিদের সাথে একটি অনন্য লিঙ্ক শেয়ার করুন এবং তাদের উপস্থিতি নিশ্চিতকরণ গ্রহণ করুন।",
     "createLink": "আমন্ত্রণ তৈরি করুন",
     "privacyPolicy": "গোপনীয়তা নীতি",
     "terms": "শর্তাবলী",
     "legalNotice": "আইনি নোটিশ",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": "এই জায়গাটি সনাক্ত করা যায়নি।",
+    "locationMapError": "মানচিত্র লোড করা যায়নি.",
+    "locationCoordinates": "স্থানাঙ্ক: {{lat}}, {{lng}}",
+    "mapPreviewAlt": "নির্দেশিত অবস্থানে মানচিত্রের পূর্বরূপ।",
+    "locationSet": "অবস্থান কনফিগার করা হয়েছে"
   },
   "setup": {
     "loadingTitle": "আমন্ত্রণ লোড হচ্ছে",
@@ -308,28 +308,28 @@
     "galleryUploadFailed": "ছবি আপলোড করা যায়নি।",
     "noValidFiles": "কোনো বৈধ ফাইল নেই। সর্বোচ্চ ২০ MB, JPG/PNG।",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": "কভারে চালানোর জন্য একটি অডিও ফাইল আপলোড করুন (MP3, WAV, OGG, M4A — সর্বোচ্চ 5 MB)।",
+    "audioUploadTitle": "অডিও ফাইল আপলোড করুন",
+    "audioUploadSubtitle": "MP3, WAV, OGG বা M4A — সর্বোচ্চ 5 MB",
+    "audioFormatError": "অডিও ফরম্যাট সমর্থিত নয়। ",
+    "audioEmptyError": "অডিও ফাইল খালি।",
+    "audioSizeError": "অডিও ফাইল 5 MB সীমা অতিক্রম করেছে৷",
+    "audioReadError": "অডিও ফাইল পড়ার ত্রুটি৷",
+    "errorEmptyFile": "ফাইলটি খালি। ",
+    "galleryDescriptionPlaceholder": "ছবির বর্ণনা...",
+    "galleryMaxReached": "গ্যালারিতে সর্বাধিক {{max}} ছবি।",
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": "{{total}}টি ছবি আপলোড করা হচ্ছে...",
+    "photoUploading": "ফটো আপলোড করা হচ্ছে...",
+    "replaceImage": "ছবি পরিবর্তন করুন",
+    "galleryDescriptionSaveFailed": "বিবরণ সংরক্ষণে ত্রুটি৷",
+    "galleryDescriptionSaved": "বর্ণনা সংরক্ষিত",
+    "currentMusic": "নির্বাচিত সঙ্গীত",
+    "removeMusic": "সঙ্গীত সরান",
+    "previewing": "বাজানো হচ্ছে...",
+    "preview": "পূর্বরূপ",
+    "select": "নির্বাচন করুন",
+    "selected": "নির্বাচিত"
   },
   "admin": {
     "tabs": {
@@ -353,9 +353,9 @@
     "pdfTableCompanions": "সঙ্গী",
     "pdfTableDiet": "খাদ্য",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": "Wedingo · অ্যাডমিন",
+    "viewInvitation": "আমন্ত্রণ দেখুন",
+    "logout": "লগ আউট করুন"
   },
   "panel": {
     "confirmed": "নিশ্চিত করেছেন",
@@ -384,7 +384,7 @@
     "confirms": "নিশ্চিত করেছেন",
     "declines": "প্রত্যাখ্যান করেছেন",
     "pending": "মুলতুবি",
-    "visits_one": "1 visit",
+    "visits_one": "1 ভিজিট",
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +417,9 @@
     "generateMessage": "অন্য বার্তা তৈরি করুন",
     "copyMessage": "বার্তা কপি করুন",
     "shareVia": "এর মাধ্যমে শেয়ার করুন",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": "হোয়াটসঅ্যাপ",
+    "telegram": "টেলিগ্রাম",
+    "sms": "এসএমএস",
     "print": "প্রিন্ট",
     "printPdf": "প্রিন্ট / PDF সংরক্ষণ",
     "linkCopied": "লিঙ্ক কপি করা হয়েছে।",
@@ -448,7 +448,7 @@
     "rightsHint": "পূর্বনির্ধারিত টেমপ্লেট সহ আপনার ইমেইল ক্লায়েন্ট খুলবে। আপনি adriancl2001@gmail.com এও লিখতে পারেন।",
     "ccpaTitle": "CCPA / CPRA (ক্যালিফোর্নিয়া)",
     "ccpaText": "Wedingo ব্যক্তিগত তথ্য বিক্রি করে না। সংগৃহীত তথ্য শুধুমাত্র আমন্ত্রণ পরিচালনার জন্য ব্যবহৃত হয়। আপনি যদি ক্যালিফোর্নিয়ার বাসিন্দা হন, তাহলে আপনার তথ্য মুছে ফেলার অনুরোধ করার এবং আপনার অধিকার প্রয়োগের জন্য বৈষম্যের শিকার না হওয়ার অধিকার রয়েছে।",
-    "appTitle": "Wedingo",
+    "appTitle": "ওয়েডিংগো",
     "appDescription": "বিয়ের আমন্ত্রণ পরিচালনার জন্য ওয়েব অ্যাপ্লিকেশন।",
     "copyright": "© {{year}} আদ্রিয়ান কারাসকো লোপেজ। সর্বস্বত্ব সংরক্ষিত।",
     "deleteEmailSubject": "তথ্য মুছে ফেলার অনুরোধ - Wedingo",
@@ -518,13 +518,13 @@
     "deleteFailed": "আমন্ত্রণ মুছে ফেলা যায়নি। আবার চেষ্টা করুন।",
     "configLoadFailed": "কনফিগারেশন লোড করা যায়নি। সংযোগ পরীক্ষা করে আবার চেষ্টা করুন।",
     "invalidLink": "আমন্ত্রণের লিঙ্ক বৈধ নয়।",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": "আবাসন তথ্য 2000 অক্ষরের বেশি হতে পারে না।",
+    "menuTextoTooLong": "মেনু বিবরণ 2000 অক্ষরের বেশি হতে পারে না।",
+    "uploadImageFailed": "ছবিটি প্রক্রিয়া করা যায়নি। ",
+    "readImageFailed": "ইমেজ ফাইল পড়া যায়নি.",
+    "encryptFailed": "ছবি এনক্রিপশন ব্যর্থ হয়েছে৷",
+    "imageTooLarge": "সংকোচনের পরেও ছবিটি খুব বড়।",
+    "fileEmpty": "ফাইলটি খালি। "
   },
   "superadmin": {
     "tabs": {
@@ -588,7 +588,26 @@
     "tokenCleanError": "টোকেন পরিষ্কার করা যায়নি।",
     "tokenLoadError": "টোকেন লোড করা যায়নি।",
     "accountEmail": "ইমেইল: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "সক্রিয়",
     "sessionInactive": "নিষ্ক্রিয়",
     "sessionLabel": "স্থানীয় সেশন: {{status}}",
@@ -615,10 +634,10 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": "টোকেন",
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": "আরএসভিপি",
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +655,8 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": "ইমেইল",
+    "passwordLabel": "পাসওয়ার্ড"
   },
   "compliance": {
     "title": "প্রক্রিয়াকরণ কার্যক্রমের রেজিস্টার (Art. 30 GDPR)",
@@ -659,7 +678,7 @@
     "row2Basis": "সম্মতি (Art. 6.1.a, 9.2.a GDPR)",
     "row2Purpose": "অতিথি তালিকা ও মেনু পরিচালনা",
     "row2Retention": "ইভেন্টের ১২ মাস পর",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": "গুগল ক্লাউড (ফায়ারস্টোর)",
     "row3Activity": "ছবি আপলোড",
     "row3Data": "বিয়ের ছবি (AES-256-GCM এনক্রিপ্টেড)",
     "row3Basis": "সম্মতি (Art. 6.1.a GDPR)",
@@ -677,7 +696,7 @@
     "row5Basis": "আইনি বাধ্যবাধকতা (Art. 6.1.c GDPR)",
     "row5Purpose": "প্রশাসনিক কার্যক্রমের রেকর্ড",
     "row5Retention": "৩ বছর",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": "গুগল ক্লাউড (ফায়ারস্টোর অডিটলগ)",
     "internationalTitle": "আন্তর্জাতিক স্থানান্তর",
     "internationalText": "তথ্য জার্মানির ফ্রাঙ্কফুর্টে eur3 অঞ্চলে Google Cloud সার্ভারে সংরক্ষিত হয়। Google LLC (USA) Art. 28 GDPR অনুযায়ী DPA-র অধীনে ডেটা প্রসেসর হিসেবে কাজ করে। USA-তে স্থানান্তরের ভিত্তি:",
     "scc": "স্ট্যান্ডার্ড কন্ট্রাকচুয়াল ক্লজ (SCC) - বাস্তবায়ন সিদ্ধান্ত 2021/914",
@@ -691,86 +710,86 @@
     "measureSuperadmin": "Firebase Authentication + গোপন রুট দ্বারা সুরক্ষিত সুপারঅ্যাডমিন"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": "অ্যাক্সেসযোগ্যতা",
+    "close": "বন্ধ",
+    "fontSize": "পাঠ্যের আকার",
+    "fontNormal": "স্বাভাবিক",
+    "fontLarge": "বড়",
+    "fontExtraLarge": "অতিরিক্ত বড়",
+    "lineSpacing": "লাইন ব্যবধান",
+    "lineNormal": "স্বাভাবিক",
+    "lineWide": "প্রশস্ত",
+    "lineVeryWide": "খুব চওড়া",
+    "highContrast": "উচ্চ বৈসাদৃশ্য",
+    "reducedMotion": "গতি কমানো",
+    "dyslexiaFont": "OpenDyslexic ফন্ট",
+    "moreSpacing": "আরও অক্ষর ব্যবধান",
+    "underlineLinks": "সমস্ত লিঙ্ক আন্ডারলাইন করুন",
+    "bigCursor": "বড় কার্সার",
+    "desaturate": "গ্রেস্কেল",
+    "strongFocus": "দৃশ্যমান ফোকাস সূচক"
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": "কোন সঙ্গীত নেই",
+    "loadError": "লোড করার সময় ত্রুটি৷",
+    "label": "সঙ্গীত",
+    "soundCloudNote": "সাউন্ডক্লাউড ট্র্যাক — খেলার জন্য উন্মুক্ত৷",
+    "openInSoundCloud": "সাউন্ডক্লাউডে খুলুন"
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": "প্রিন্ট প্রস্তুত করা হচ্ছে...",
+    "couplePhoto": "দম্পতির ছবি",
+    "godparentsText": "তাদের গড-পিতাদের আশীর্বাদে",
+    "dateAndPlace": "তারিখ এবং স্থান",
+    "celebrationTime": "অনুষ্ঠানের সময়:",
+    "viewInGoogleMaps": "গুগল ম্যাপে অবস্থান দেখুন",
+    "celebrationMessage": "আমরা আপনার সাথে এই বিশেষ মুহূর্ত ভাগ করার জন্য উন্মুখ.",
+    "transport": "পরিবহন",
+    "aboutGuests": "অতিথিদের সম্পর্কে",
+    "scheduleTitle": "বিয়ের সময়সূচী",
+    "scheduleFallback": "বিস্তারিত সময়সূচী শীঘ্রই শেয়ার করা হবে।",
+    "dressCode": "ড্রেস কোড",
+    "dressCodeFallback": "পরে যোগাযোগ করা হবে।",
+    "aboutKids": "শিশুদের সম্পর্কে",
+    "ourStory": "আমাদের গল্প",
+    "storyStarted": "কিভাবে এটা সব শুরু",
+    "storyFallback": "গল্পটি শীঘ্রই শেয়ার করা হবে।",
+    "gifts": "উপহার",
+    "bestGift": "আপনার উপস্থিতি শ্রেষ্ঠ উপহার",
+    "giftsFallback": "উপহার তথ্য শীঘ্রই শেয়ার করা হবে.",
+    "bankDetails": "ব্যাঙ্কের বিবরণ",
+    "accommodation": "বাসস্থান",
+    "whereToStay": "কোথায় থাকবেন",
+    "accommodationFallback": "বাসস্থান তথ্য শীঘ্রই শেয়ার করা হবে.",
+    "footer": "Wedingo · গোপনীয়তা নীতি wedingo-6c26a.web.app এ",
+    "closeWindow": "জানালা বন্ধ করুন"
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": "উপরে সরান",
+    "moveDown": "নিচে সরান",
+    "title": "অর্ডার এবং দৃশ্যমানতা",
+    "help": "পুনরায় সাজাতে টেনে আনুন, সরানোর জন্য বোতামগুলি ব্যবহার করুন এবং প্রতিটি বিভাগ চালু বা বন্ধ করুন।"
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": "ভাষা নির্বাচন করুন"
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": "1 সঙ্গী",
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": "স্পেন",
+    "westernEurope": "পশ্চিম ইউরোপ",
+    "nordicEurope": "নর্ডিক ইউরোপ",
+    "centralEurope": "মধ্য ইউরোপ",
+    "southernEurope": "দক্ষিণ ইউরোপ / বলকান",
+    "easternEurope": "পূর্ব ইউরোপ/ককেশাস",
+    "eastAsia": "পূর্ব এশিয়া",
+    "southAsia": "দক্ষিণ এশিয়া",
+    "southeastAsia": "দক্ষিণ-পূর্ব এশিয়া",
+    "centralAsia": "মধ্য এশিয়া/মধ্যপ্রাচ্য",
+    "africa": "আফ্রিকা",
+    "americas": "আমেরিকা"
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +806,131 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": "চেঞ্জলগ",
+    "close": "বন্ধ"
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": "এই আমন্ত্রণের জন্য ইতিমধ্যেই একটি সক্রিয় অধিবেশন আছে৷ ",
+    "tokenInvalid": "অ্যাক্সেস কোড বৈধ নয়.",
+    "enterCode": "অ্যাক্সেস কোড লিখুন।",
+    "codeVerified": "কোড সফলভাবে যাচাই করা হয়েছে।",
+    "codeVerifyError": "কোড যাচাই করা যায়নি. ",
+    "enterUserAndCode": "আপনার ব্যবহারকারীর নাম এবং অ্যাক্সেস কোড লিখুন.",
+    "invalidCredentials": "ভুল ব্যবহারকারীর নাম বা কোড.",
+    "codeUserMismatch": "কোডটি এই ব্যবহারকারীর সাথে মেলে না।",
+    "loginSuccess": "আপনি সফলভাবে লগ ইন করেছেন.",
+    "loginError": "কোড যাচাই করা যায়নি. ",
+    "confirmRequired": "একটি নতুন কোড তৈরি করতে CONFIRM টাইপ করুন।",
+    "usernameRequired": "প্রথমে আপনার ব্যবহারকারীর নাম লিখুন।",
+    "usernameInvalid": "ব্যবহারকারীর নামে শুধুমাত্র অক্ষর এবং সংখ্যা থাকতে পারে।",
+    "usernameTooLong": "ব্যবহারকারীর নাম 50 অক্ষরের বেশি হতে পারে না।",
+    "unauthorizedUser": "এই ব্যবহারকারীর এখানে অ্যাক্সেস করার অনুমতি নেই।",
+    "tokenGenerated": "কোড জেনারেট হয়েছে। ",
+    "tokenGenerateError": "কোড তৈরি করা যায়নি। ",
+    "currentTokenRequired": "একটি নতুন তৈরি করতে বর্তমান অ্যাক্সেস কোড লিখুন।",
+    "tokenRenewed": "নতুন কোড জেনারেট হয়েছে। ",
+    "tokenRenewedAdmin": "কোড পুনর্নবীকরণ করা হয়েছে. ",
+    "superadminNoPermissions": "এই অ্যাকাউন্টের প্রশাসনিক অনুমতি নেই।",
+    "superadminWrongCredentials": "ভুল শংসাপত্র.",
+    "superadminTooManyAttempts": "অনেক প্রচেষ্টা. ",
+    "superadminInvalidEmail": "ইমেল বিন্যাস বৈধ নয়.",
+    "superadminLoginError": "লগ ইন করতে ত্রুটি৷ আপনার সংযোগ পরীক্ষা করুন৷"
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": "পরিবর্তন সংরক্ষিত"
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": "জানুয়ারি",
+    "2": "ফেব্রুয়ারি",
+    "3": "মার্চ",
+    "4": "এপ্রিল",
+    "5": "মে",
+    "6": "জুন",
+    "7": "জুলাই",
+    "8": "আগস্ট",
+    "9": "সেপ্টেম্বর",
+    "10": "অক্টোবর",
+    "11": "নভেম্বর",
+    "12": "ডিসেম্বর"
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": "হালকা থিম",
+    "dark": "গাঢ় থিম",
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": "গ্লুটেন",
+    "lactose": "ল্যাকটোজ",
+    "nuts": "গাছের বাদাম",
+    "shellfish": "ঝিনুক"
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": "আমাদের প্রিয়তমের কাছে",
+    "tapHint": "খুলতে আলতো চাপুন",
+    "and": "এবং",
+    "tapContinue": "চালিয়ে যেতে আলতো চাপুন"
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": "আমাদের বিয়ে",
+    "eventTitle": "{{names}} এর বিয়ে",
+    "placeUnknown": "অবস্থান নিশ্চিত করা",
+    "invitationText": "আমরা আপনার সাথে এই বিশেষ মুহূর্তটি উদযাপন করার জন্য উন্মুখ।",
+    "timeLabel": "সময়:",
+    "placeLabel": "স্থান:"
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": "সুবর্ণ উচ্চারণ সহ মার্জিত এবং উজ্জ্বল।",
+    "forest": "নরম সবুজ শাক সহ প্রাকৃতিক এবং শান্ত।",
+    "rose": "উষ্ণ এবং সূক্ষ্ম, গোলাপী রং সঙ্গে.",
+    "linen-soft": "হালকা এবং নিরপেক্ষ, একটি নির্মল এবং নিরবধি উপস্থিতি সহ।",
+    "blush-pearl": "নরম এবং রোমান্টিক, মুক্তো গোলাপী টোন সহ।",
+    "lavender-mist": "টাটকা এবং নির্মল, ল্যাভেন্ডার এবং মাউভ রঙের সাথে।",
+    "champagne-bubble": "উজ্জ্বল এবং উত্সব, উষ্ণ সোনার ঝলক সহ।",
+    "amber-night": "গাঢ় এবং মার্জিত, অ্যাম্বার এবং সোনার হাইলাইট সহ।",
+    "onyx-gold": "গভীর এবং পরিশীলিত, গাঢ় পটভূমিতে তীব্র সোনার সাথে।",
+    "midnight-royal": "তীব্র স্বর্ণ এবং গম্ভীর উপস্থিতি সঙ্গে খুব গাঢ় নীল.",
+    "burgundy-velvet": "উষ্ণ এবং খাম, লাল ওয়াইন এবং সোনালী ঝলকানি সহ।",
+    "sapphire-night": "সিলভার উচ্চারণ এবং নির্মল উপস্থিতি সঙ্গে গভীর নীল.",
+    "emerald-grove": "সোনালি এবং মার্জিত রঙের সাথে গভীর প্রাকৃতিক সবুজ।",
+    "plum-twilight": "গোলাপী এবং রোমান্টিক sparkles সঙ্গে তীব্র বেগুনি.",
+    "rainbow": "রংধনু রঙের সাথে বৈচিত্র্যময় প্রেমের উদযাপন।",
+    "trans": "ট্রান্স পতাকার প্রতি শ্রদ্ধা জানাতে নীল, গোলাপী এবং সাদা।",
+    "nonbinary": "নন-বাইনারী পতাকার জন্য হলুদ, সাদা, বেগুনি এবং কালো।",
+    "lesbian": "লেসবিয়ান পতাকার কমলা, সাদা এবং গোলাপী।",
+    "bi": "দ্বি পতাকার গোলাপী, বেগুনি এবং নীল।",
+    "pan": "প্যান পতাকার গোলাপী, হলুদ এবং নীল।",
+    "ace": "অযৌন পতাকার কালো, ধূসর, সাদা এবং বেগুনি।"
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": "খেলার এলাকা দিয়ে স্বাগতম",
+      "supervised": "তত্ত্বাবধানে স্বাগতম",
+      "adultOnly": "শুধুমাত্র প্রাপ্তবয়স্কদের"
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": "কোন তথ্য নেই",
+    "total": "মোট",
+    "barChart": "অ্যাটেনডেন্স বার চার্ট",
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

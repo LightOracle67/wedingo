@@ -11,20 +11,172 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "قابل مشاهده است",
+      "Visible",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "مشکلی پیش آمد",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "لطفاً صفحه را دوباره بارگیری کنید تا دوباره امتحان کنید.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "بارگیری مجدد صفحه",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "بستن",
+        "Close",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "به محتوای اصلی بروید",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "نوار مدیریت",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "اداره",
+        "Administration",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "landing": {
@@ -55,8 +207,46 @@
     "todayIsWedding": "امروز روز عروسی است",
     "missing": "باقی مانده",
     "todayIsTheDay": "امروز روز بزرگ است!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": [
+      "پوشش",
+      "Cover",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eyebrow": [
+      "عروسی ما",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "تاریخ و مکان",
@@ -106,8 +296,46 @@
     "next": "بعدی",
     "thumbnailAria": "عکس {{number}}",
     "thumbnailAlt": "تصویر بندانگشتی گالری",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "گالری تصاویر، از کلیدهای جهت دار برای پیمایش استفاده کنید",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "تصویر بزرگ شده",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "تأیید حضور",
@@ -138,49 +366,638 @@
     "ageUnder14Warning": "شما کمتر از ۱۴ سال سن دارید. نیاز به رضایت والدین یا سرپرستان دارید.",
     "parentalConsent": "والدین یا سرپرستان من با شرکت من موافقت می‌کنند",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "برای تایید حضور نام خود را وارد کنید.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "یک گزینه منو را انتخاب کنید.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "شما باید سیاست حفظ حریم خصوصی را بپذیرید.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "تاریخ تولد خود را وارد کنید.",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "شما زیر 14 سال سن دارید. ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "شما باید با پردازش داده های سلامت خود موافقت کنید.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "حداقل یک گزینه منو را نشان دهید.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "نام همراهان خود را وارد کنید.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "شما نمی توانید نام های بیشتری از همراهان وارد کنید.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "مجموع گزینه های منو نمی تواند از تعداد همراهان بیشتر باشد.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "متشکرم، {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "متشکرم، {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "ما نتوانستیم پاسخ شما را ذخیره کنیم. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "آیا مطمئن هستید که می خواهید پاسخ خود را پس بگیرید؟",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "پاسخ شما پس گرفته شده است.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "نمی توان پاسخ شما را پس گرفت. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "همه پاسخ های حضور حذف شود؟ ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "سوابق حضور و غیاب پاک شد",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "سوابق حضور پاک نشد.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "همراهان",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "مردم",
+      "People",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountHint": [
+      "چند نفر برای هر گزینه ({{total}} در مجموع)",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "اسامی مهمانان",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "نام و نام خانوادگی هر همراه را بنویسید (حداکثر {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "نام 1 نام خانوادگی 1 نام 2 نام خانوادگی 2 ...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "در حال بارگذاری دعوتنامه...",
     "notFoundTitle": "دعوتنامه پیدا نشد",
     "notFoundText": "دعوتنامه‌ای با این لینک پیدا نکردیم. اگر فکر می‌کنید اشتباه است، با میزبان تماس بگیرید.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "ودینگو",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "دعوتنامه عروسی شخصی خود را بسازید و به اشتراک بگذارید.",
     "emptyDescription": "اطلاعات دعوتنامه خود را مدیریت کنید، لینک منحصر به فرد را با مهمانان به اشتراک بگذارید و تأیید حضور آنها را دریافت کنید.",
     "createLink": "ساخت دعوتنامه",
     "privacyPolicy": "سیاست حفظ حریم خصوصی",
     "terms": "شرایط",
     "legalNotice": "اطلاعیه قانونی",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "نمی توان این مکان را پیدا کرد.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "نقشه بارگیری نشد.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "مختصات: {{lat}}، {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "پیش نمایش نقشه در مکان مشخص شده",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "مکان پیکربندی شد",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "در حال بارگذاری دعوتنامه",
@@ -308,28 +1125,427 @@
     "galleryUploadFailed": "عکس‌ها آپلود نشدند.",
     "noValidFiles": "فایل معتبری نیست. حداکثر ۲۰ مگابایت، JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "یک فایل صوتی را برای پخش روی جلد آپلود کنید (MP3، WAV، OGG، M4A — حداکثر 5 مگابایت).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "آپلود فایل صوتی",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3، WAV، OGG یا M4A - حداکثر 5 مگابایت",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "فرمت صوتی پشتیبانی نمی شود. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "فایل صوتی خالی است",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "فایل صوتی بیش از حد مجاز 5 مگابایت است.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "خطا در خواندن فایل صوتی.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "فایل خالی است ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "توضیحات تصویر...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "حداکثر {{حداکثر}} تصویر در گالری.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "در حال آپلود {{total}} عکس...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "در حال آپلود عکس...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "تغییر عکس",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "خطا در ذخیره توضیحات",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "توضیحات ذخیره شد",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "موسیقی منتخب",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "موسیقی را حذف کنید",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "در حال پخش...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "پیش نمایش",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "انتخاب کنید",
+      "Select",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "selected": [
+      "انتخاب شده است",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1569,66 @@
     "pdfTableCompanions": "همراهان",
     "pdfTableDiet": "رژیم",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Admin",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "مشاهده دعوتنامه",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "از سیستم خارج شوید",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "تأیید شده",
@@ -384,7 +1657,26 @@
     "confirms": "تأیید می‌کنند",
     "declines": "رد می‌کنند",
     "pending": "در انتظار",
-    "visits_one": "1 visit",
+    "visits_one": [
+      "1 بازدید",
+      "1 visit",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +1709,66 @@
     "generateMessage": "ایجاد پیام دیگر",
     "copyMessage": "کپی پیام",
     "shareVia": "اشتراک‌گذاری از طریق",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "واتس اپ",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "تلگرام",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "اس ام اس",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "چاپ",
     "printPdf": "چاپ / ذخیره PDF",
     "linkCopied": "لینک کپی شد.",
@@ -448,7 +1797,26 @@
     "rightsHint": "کلاینت ایمیل شما با یک الگوی از پیش تعریف شده باز خواهد شد. همچنین می‌توانید به adriancl2001@gmail.com بنویسید.",
     "ccpaTitle": "CCPA / CPRA (کالیفرنیا)",
     "ccpaText": "Wedingo اطلاعات شخصی را نمی‌فروشد. اطلاعات جمع‌آوری شده منحصراً برای مدیریت دعوتنامه استفاده می‌شود. اگر ساکن کالیفرنیا هستید، حق درخواست حذف اطلاعات خود و عدم تبعیض برای استفاده از حقوق خود را دارید.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "ودینگو",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "برنامه تحت وب برای مدیریت دعوتنامه‌های عروسی.",
     "copyright": "© {{year}} Adrián Carrasco López. تمامی حقوق محفوظ است.",
     "deleteEmailSubject": "درخواست حذف اطلاعات - Wedingo",
@@ -518,13 +1886,146 @@
     "deleteFailed": "نتوانست دعوتنامه را حذف کند. دوباره تلاش کنید.",
     "configLoadFailed": "نتوانست تنظیمات را بارگذاری کند. اتصال را بررسی و دوباره تلاش کنید.",
     "invalidLink": "لینک دعوتنامه معتبر نیست.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "اطلاعات محل اقامت نمی تواند بیش از 2000 کاراکتر باشد.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "شرح منو نمی تواند بیش از 2000 کاراکتر باشد.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "تصویر پردازش نشد. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "نمی توان فایل تصویر را خواند.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "رمزگذاری تصویر ناموفق بود.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "تصویر حتی پس از فشرده سازی بیش از حد بزرگ است.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "فایل خالی است ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -588,7 +2089,26 @@
     "tokenCleanError": "نتوانست توکن‌ها را پاکسازی کند.",
     "tokenLoadError": "نتوانست توکن‌ها را بارگذاری کند.",
     "accountEmail": "ایمیل: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "فعال",
     "sessionInactive": "غیرفعال",
     "sessionLabel": "نشست محلی: {{status}}",
@@ -615,10 +2135,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "رمز",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVPs",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2194,46 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "ایمیل",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "رمز عبور",
+      "Password",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "compliance": {
     "title": "ثبت فعالیت‌های پردازش (GDPR ماده ۳۰)",
@@ -659,7 +2255,26 @@
     "row2Basis": "رضایت (GDPR ماده ۶.۱.a، ۹.۲.a)",
     "row2Purpose": "مدیریت لیست مهمانان و منو",
     "row2Retention": "۱۲ ماه پس از رویداد",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "آپلود تصاویر",
     "row3Data": "عکس‌های عروسی (رمزگذاری AES-256-GCM)",
     "row3Basis": "رضایت (GDPR ماده ۶.۱.a)",
@@ -677,7 +2292,26 @@
     "row5Basis": "الزام قانونی (GDPR ماده ۶.۱.c)",
     "row5Purpose": "ثبت فعالیت‌های اداری",
     "row5Retention": "۳ سال",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "انتقال بین‌المللی",
     "internationalText": "داده‌ها در سرورهای Google Cloud در منطقه eur3 (فرانکفورت، آلمان) ذخیره می‌شوند. Google LLC (ایالات متحده) به عنوان پردازشگر داده تحت DPA مطابق با GDPR ماده ۲۸ عمل می‌کند. انتقال به ایالات متحده تحت حمایت موارد زیر است:",
     "scc": "بندهای قراردادی استاندارد (SCC) - تصمیم اجرایی ۲۰۲۱/۹۱۴",
@@ -691,86 +2325,1359 @@
     "measureSuperadmin": "سوپر ادمین محافظت شده با Firebase Authentication + مسیر مخفی"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "دسترسی",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "بستن",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontSize": [
+      "اندازه متن",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "عادی",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontLarge": [
+      "بزرگ",
+      "Large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontExtraLarge": [
+      "فوق العاده بزرگ",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "فاصله خطوط",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "عادی",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineWide": [
+      "عریض",
+      "Wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineVeryWide": [
+      "خیلی پهن",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "کنتراست بالا",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "حرکت را کاهش دهید",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "فونت OpenDyslexic",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "فاصله حروف بیشتر",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "زیر تمام لینک ها خط بکشید",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "مکان نما بزرگ",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "مقیاس خاکستری",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "شاخص های تمرکز قابل مشاهده",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "موسیقی نیست",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "خطا در بارگیری",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "موسیقی",
+      "Music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "soundCloudNote": [
+      "آهنگ SoundCloud - برای پخش باز است",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "در SoundCloud باز کنید",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "در حال آماده سازی چاپ…",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "عکس دونفره",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "با دعای خیر پدر و مادرشان",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "تاریخ و محل برگزاری",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "زمان برگزاری مراسم:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "مشاهده مکان در نقشه های گوگل",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "ما مشتاقانه منتظر به اشتراک گذاشتن این لحظه خاص با شما هستیم.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "حمل و نقل",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutGuests": [
+      "درباره مهمانان",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "برنامه عروسی",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "برنامه دقیق به زودی به اشتراک گذاشته خواهد شد.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "کد لباس",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "متعاقبا اطلاع رسانی خواهد شد.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "درباره بچه ها",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "داستان ما",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "چگونه همه چیز شروع شد",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "داستان به زودی به اشتراک گذاشته خواهد شد.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "هدایا",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "حضور شما بهترین هدیه است",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "اطلاعات هدیه به زودی به اشتراک گذاشته خواهد شد.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "جزئیات بانک",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "اسکان",
+      "Accommodation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "whereToStay": [
+      "کجا بماند",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "اطلاعات اسکان به زودی به اشتراک گذاشته خواهد شد.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · سیاست حفظ حریم خصوصی در wedingo-6c26a.web.app",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "پنجره را ببند",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": [
+      "حرکت به بالا",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "به پایین حرکت کنید",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "title": [
+      "نظم و دید",
+      "Order & visibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "help": [
+      "برای مرتب کردن مجدد بکشید، از دکمه‌ها برای حرکت استفاده کنید و هر بخش را روشن یا خاموش کنید.",
+      "Drag to reorder, use the buttons to move, and toggle each section on or off.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "زبان را انتخاب کنید",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 همراه",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "اسپانیا",
+      "Spain",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "westernEurope": [
+      "اروپای غربی",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "اروپای شمالی",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "اروپای مرکزی",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "اروپای جنوبی / بالکان",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "اروپای شرقی / قفقاز",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "شرق آسیا",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "جنوب آسیا",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "آسیای جنوب شرقی",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "آسیای مرکزی / خاورمیانه",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "آفریقا",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "قاره آمریکا",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +3694,1689 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": [
+      "تغییرات",
+      "Changelog",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "بستن",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "در حال حاضر یک جلسه فعال برای این دعوت وجود دارد. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "کد دسترسی معتبر نیست.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "کد دسترسی را وارد کنید.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "کد با موفقیت تأیید شد.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "کد تأیید نشد. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "نام کاربری و کد دسترسی خود را وارد کنید.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "نام کاربری یا کد نادرست",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "کد با این کاربر مطابقت ندارد.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "شما با موفقیت وارد سیستم شدید.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "کد تأیید نشد. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "برای ایجاد کد جدید CONFIRM را تایپ کنید.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "ابتدا نام کاربری خود را وارد کنید.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "نام کاربری فقط می تواند شامل حروف و اعداد باشد.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "نام کاربری نمی تواند بیش از 50 کاراکتر باشد.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "این کاربر اجازه دسترسی به اینجا را ندارد.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "کد تولید شد. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "کد تولید نشد. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "کد دسترسی فعلی را برای ایجاد یک کد جدید وارد کنید.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "کد جدید تولید شد. ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "کد تمدید شد ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "این حساب مجوز مدیریت ندارد.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "اعتبارنامه نادرست",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "تلاش های بسیار زیاد ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "قالب ایمیل معتبر نیست.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "خطا در ورود به سیستم. اتصال خود را بررسی کنید.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": [
+      "تغییرات ذخیره شد",
+      "Changes saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": [
+      "ژانویه",
+      "January",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "2": [
+      "فوریه",
+      "February",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "3": [
+      "مارس",
+      "March",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "4": [
+      "آوریل",
+      "April",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "5": [
+      "می",
+      "May",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "6": [
+      "ژوئن",
+      "June",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "7": [
+      "جولای",
+      "July",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "8": [
+      "مرداد",
+      "August",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "9": [
+      "سپتامبر",
+      "September",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "10": [
+      "اکتبر",
+      "October",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "11": [
+      "نوامبر",
+      "November",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "12": [
+      "دسامبر",
+      "December",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": [
+      "تم های سبک",
+      "Light themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dark": [
+      "تم های تاریک",
+      "Dark themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": [
+      "گلوتن",
+      "Gluten",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lactose": [
+      "لاکتوز",
+      "Lactose",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nuts": [
+      "آجیل درختی",
+      "Tree nuts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "shellfish": [
+      "صدف",
+      "Shellfish",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
+    "addressLine1": [
+      "به عزیزترین ما",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "برای باز کردن ضربه بزنید",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "and": "&",
-    "tapContinue": "Tap to continue"
+    "tapContinue": [
+      "برای ادامه ضربه بزنید",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "عروسی ما",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "عروسی {{names}}",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "مکان تایید می شود",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "ما مشتاقانه منتظریم تا این لحظه خاص را با شما جشن بگیریم.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "زمان:",
+      "Time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeLabel": [
+      "محل برگزاری:",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "شیک و روشن، با لهجه های طلایی.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "طبیعی و هوشیار با سبزی ملایم.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "گرم و لطیف، با رنگ های صورتی.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "سبک و خنثی، با حضوری آرام و بی انتها.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "ملایم و رمانتیک، با تن های صورتی مرواریدی.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "تازه و آرام، با رنگ های اسطوخودوس و ارغوانی.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "روشن و جشن، با درخشش های طلایی گرم.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "تیره و ظریف، با هایلایت های کهربایی و طلایی.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "عمیق و پیچیده، با طلایی شدید در زمینه تیره.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "آبی بسیار تیره با طلایی شدید و حضور پررنگ.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "گرم و فراگیر، با شراب قرمز و درخشش های طلایی.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "آبی پررنگ با لهجه های نقره ای و حضور آرام.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "سبز طبیعی عمیق با رنگ های طلایی و ظریف.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "بنفش تند با درخشش های صورتی و رمانتیک.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "جشن عشق های متنوع با رنگ های رنگین کمان.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "آبی، صورتی و سفید در ادای احترام به پرچم ترنس.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "زرد، سفید، بنفش و سیاه برای پرچم غیر باینری.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "نارنجی، سفید و صورتی پرچم لزبین ها.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "صورتی، بنفش و آبی پرچم دو.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "صورتی، زرد و آبی پرچم تابه.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "سیاه، خاکستری، سفید و بنفش پرچم غیرجنسی.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "با منطقه بازی خوش آمدید",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "تحت نظارت خوش آمدید",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "فقط بزرگسالان",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "داده ای وجود ندارد",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "کل",
+      "total",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "barChart": [
+      "نمودار میله ای حضور و غیاب",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

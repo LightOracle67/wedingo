@@ -11,20 +11,20 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": "Ορατός",
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": "Κάτι πήγε στραβά",
+      "message": "Επαναλάβετε τη φόρτωση της σελίδας για να προσπαθήσετε ξανά.",
+      "reload": "Επαναφόρτωση σελίδας"
     },
     "toast": {
-      "close": "Close"
+      "close": "Κοντά"
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": "Μετάβαση στο κύριο περιεχόμενο",
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": "Μπάρα διαχείρισης",
+      "fallback": "Διαχείριση"
     }
   },
   "landing": {
@@ -56,7 +56,7 @@
     "missing": "Απομένουν",
     "todayIsTheDay": "Σήμερα είναι η μεγάλη μέρα!",
     "sectionLabel": "Εξώφυλλο",
-    "eyebrow": "Our Wedding"
+    "eyebrow": "Ο Γάμος μας"
   },
   "details": {
     "sectionLabel": "Ημερομηνία και τοποθεσία",
@@ -106,8 +106,8 @@
     "next": "Επόμενη",
     "thumbnailAria": "Φωτογραφία {{number}}",
     "thumbnailAlt": "Μικρογραφία φωτογραφίας συλλογής",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": "Συλλογή εικόνων, χρησιμοποιήστε τα πλήκτρα βέλους για πλοήγηση",
+    "lightboxLabel": "Μεγεθυσμένη εικόνα"
   },
   "rsvp": {
     "sectionLabel": "Επιβεβαίωση συμμετοχής",
@@ -138,49 +138,68 @@
     "ageUnder14Warning": "Είστε κάτω των 14 ετών. Χρειάζεστε τη συγκατάθεση των γονέων ή κηδεμόνων σας.",
     "parentalConsent": "Οι γονείς ή κηδεμόνες μου συναινούν στη συμμετοχή μου",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": "Εισαγάγετε το όνομά σας για να επιβεβαιώσετε τη συμμετοχή.",
+      "menuRequired": "Επιλέξτε μια επιλογή μενού.",
+      "privacyRequired": "Πρέπει να αποδεχτείτε την Πολιτική Απορρήτου.",
+      "birthDateRequired": "Εισαγάγετε την ημερομηνία γέννησής σας.",
+      "ageUnder14": "Είστε κάτω των 14 ετών. ",
+      "healthConsentRequired": "Πρέπει να συναινέσετε στην επεξεργασία των δεδομένων υγείας σας.",
+      "menuHeadcountRequired": "Υποδείξτε τουλάχιστον μία επιλογή μενού.",
+      "guestNamesRequired": "Εισαγάγετε τα ονόματα των συντρόφων σας.",
+      "guestNamesExceed": "Δεν μπορείτε να εισαγάγετε περισσότερα ονόματα από συνοδευτικά.",
+      "headcountExceed": "Το άθροισμα των επιλογών μενού δεν μπορεί να υπερβαίνει τον αριθμό των συνοδών."
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": "Σας ευχαριστώ, {{name}}. ",
+    "successNotAttending": "Σας ευχαριστώ, {{name}}. ",
+    "saveError": "Δεν μπορέσαμε να αποθηκεύσουμε την απάντησή σας. ",
+    "withdrawConfirm": "Είστε βέβαιοι ότι θέλετε να αποσύρετε την απάντησή σας;",
+    "withdrawSuccess": "Η απάντησή σας αποσύρθηκε.",
+    "withdrawError": "Δεν ήταν δυνατή η ανάκληση της απάντησής σας. ",
+    "clearConfirm": "Διαγραφή όλων των απαντήσεων συμμετοχής; ",
+    "clearSuccess": "Τα αρχεία συμμετοχής διαγράφηκαν.",
+    "clearError": "Δεν ήταν δυνατή η εκκαθάριση των αρχείων παρουσίας.",
+    "companionsLabel": "Σύντροφοι",
+    "headcountLabel": "Ανθρωποι",
+    "headcountHint": "Πόσα άτομα για κάθε επιλογή ({{total}} σύνολο)",
+    "guestNamesLabel": "Ονόματα καλεσμένων",
+    "guestNamesHint": "Γράψτε το όνομα και το επώνυμο κάθε συνοδού (μέγ. {{count}})",
+    "guestNamesPlaceholder": "Όνομα1 Επώνυμο1, Όνομα2 Επώνυμο2..."
   },
   "public": {
     "loadingInvitation": "Φόρτωση πρόσκλησης…",
     "notFoundTitle": "Η πρόσκληση δεν βρέθηκε",
     "notFoundText": "Δεν βρήκαμε πρόσκληση με αυτόν τον σύνδεσμο. Αν πιστεύετε ότι πρόκειται για λάθος, επικοινωνήστε με τους οικοδεσπότες.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Δημιουργήστε και μοιραστείτε την προσωπική σας γαμήλια πρόσκληση.",
     "emptyDescription": "Διαχειριστείτε τα στοιχεία της πρόσκλησής σας, μοιραστείτε έναν μοναδικό σύνδεσμο με τους καλεσμένους σας και λάβετε τις επιβεβαιώσεις συμμετοχής τους.",
     "createLink": "Δημιουργία πρόσκλησης",
     "privacyPolicy": "Πολιτική Απορρήτου",
     "terms": "Όροι",
     "legalNotice": "Νομική Σημείωση",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": "Δεν ήταν δυνατός ο εντοπισμός αυτού του μέρους.",
+    "locationMapError": "Δεν ήταν δυνατή η φόρτωση του χάρτη.",
+    "locationCoordinates": "Συντεταγμένες: {{lat}}, {{lng}}",
+    "mapPreviewAlt": "Προεπισκόπηση χάρτη στην υποδεικνυόμενη τοποθεσία.",
+    "locationSet": "Η τοποθεσία διαμορφώθηκε"
   },
   "setup": {
     "loadingTitle": "Φόρτωση πρόσκλησης",
@@ -308,28 +327,28 @@
     "galleryUploadFailed": "Δεν ήταν δυνατή η μεταφόρτωση των φωτογραφιών.",
     "noValidFiles": "Κανένα έγκυρο αρχείο. Μέγιστο 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": "Ανεβάστε ένα αρχείο ήχου για αναπαραγωγή στο εξώφυλλο (MP3, WAV, OGG, M4A — μέγιστο 5 MB).",
+    "audioUploadTitle": "Μεταφόρτωση αρχείου ήχου",
+    "audioUploadSubtitle": "MP3, WAV, OGG ή M4A — μέγιστο 5 MB",
+    "audioFormatError": "Η μορφή ήχου δεν υποστηρίζεται. ",
+    "audioEmptyError": "Το αρχείο ήχου είναι κενό.",
+    "audioSizeError": "Το αρχείο ήχου υπερβαίνει το όριο των 5 MB.",
+    "audioReadError": "Σφάλμα κατά την ανάγνωση του αρχείου ήχου.",
+    "errorEmptyFile": "Το αρχείο είναι κενό. ",
+    "galleryDescriptionPlaceholder": "Περιγραφή εικόνας...",
+    "galleryMaxReached": "Μέγιστη {{max}} εικόνες στη συλλογή.",
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": "Μεταφόρτωση {{total}} φωτογραφιών...",
+    "photoUploading": "Μεταφόρτωση φωτογραφίας...",
+    "replaceImage": "Αλλαγή φωτογραφίας",
+    "galleryDescriptionSaveFailed": "Σφάλμα αποθήκευσης περιγραφής",
+    "galleryDescriptionSaved": "Η περιγραφή αποθηκεύτηκε",
+    "currentMusic": "Επιλεγμένη μουσική",
+    "removeMusic": "Αφαιρέστε τη μουσική",
+    "previewing": "Παιχνίδι...",
+    "preview": "Πρεμιέρα",
+    "select": "Επιλέγω",
+    "selected": "Επιλεγμένο"
   },
   "admin": {
     "tabs": {
@@ -353,9 +372,9 @@
     "pdfTableCompanions": "Συνοδοί",
     "pdfTableDiet": "Διατροφή",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": "Wedingo · Διαχειρ",
+    "viewInvitation": "Δείτε την πρόσκληση",
+    "logout": "Αποσυνδεθείτε"
   },
   "panel": {
     "confirmed": "Επιβεβαιωμένοι",
@@ -417,9 +436,47 @@
     "generateMessage": "Δημιουργία άλλου μηνύματος",
     "copyMessage": "Αντιγραφή μηνύματος",
     "shareVia": "Κοινοποίηση μέσω",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": "Τηλεγράφημα",
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Εκτύπωση",
     "printPdf": "Εκτύπωση / Αποθήκευση PDF",
     "linkCopied": "Ο σύνδεσμος αντιγράφηκε.",
@@ -448,7 +505,26 @@
     "rightsHint": "Θα ανοίξει το πρόγραμμα email σας με ένα προκαθορισμένο πρότυπο. Μπορείτε επίσης να γράψετε στο adriancl2001@gmail.com.",
     "ccpaTitle": "CCPA / CPRA (Καλιφόρνια)",
     "ccpaText": "Το Wedingo δεν πουλά προσωπικά δεδομένα. Τα δεδομένα που συλλέγονται χρησιμοποιούνται αποκλειστικά για τη διαχείριση της πρόσκλησης. Αν είστε κάτοικος Καλιφόρνιας, έχετε το δικαίωμα να ζητήσετε τη διαγραφή των δεδομένων σας και να μην υφίσταστε διακρίσεις για την άσκηση των δικαιωμάτων σας.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Διαδικτυακή εφαρμογή για τη διαχείριση γαμήλιων προσκλήσεων.",
     "copyright": "© {{year}} Adrián Carrasco López. Με επιφύλαξη παντός δικαιώματος.",
     "deleteEmailSubject": "Αίτημα διαγραφής δεδομένων - Wedingo",
@@ -518,19 +594,19 @@
     "deleteFailed": "Δεν ήταν δυνατή η διαγραφή της πρόσκλησης. Δοκιμάστε ξανά.",
     "configLoadFailed": "Δεν ήταν δυνατή η φόρτωση της ρύθμισης. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.",
     "invalidLink": "Ο σύνδεσμος πρόσκλησης δεν είναι έγκυρος.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": "Οι πληροφορίες καταλύματος δεν μπορούν να υπερβαίνουν τους 2000 χαρακτήρες.",
+    "menuTextoTooLong": "Η περιγραφή του μενού δεν μπορεί να υπερβαίνει τους 2000 χαρακτήρες.",
+    "uploadImageFailed": "Δεν ήταν δυνατή η επεξεργασία της εικόνας. ",
+    "readImageFailed": "Δεν ήταν δυνατή η ανάγνωση του αρχείου εικόνας.",
+    "encryptFailed": "Η κρυπτογράφηση εικόνας απέτυχε.",
+    "imageTooLarge": "Η εικόνα είναι πολύ μεγάλη ακόμα και μετά τη συμπίεση.",
+    "fileEmpty": "Το αρχείο είναι κενό. "
   },
   "superadmin": {
     "tabs": {
       "dashboard": "Πίνακας",
       "invitations": "Προσκλήσεις",
-      "tokens": "Tokens",
+      "tokens": "Μαρτυρίες",
       "session": "Συνεδρία",
       "compliance": "Συμμόρφωση",
       "data": "Datos"
@@ -561,7 +637,7 @@
     "invitationsCount": "{{count}} προσκλήσεις · {{size}} κατειλημμένα",
     "noResultsFilter": "Δεν βρέθηκαν προσκλήσεις με αυτό το κριτήριο.",
     "noInvitations": "Δεν υπάρχουν προσκλήσεις ακόμα.",
-    "tableToken": "Token",
+    "tableToken": "Ενδειξη",
     "tableTheme": "Θέμα",
     "tableDate": "Ημερομηνία γάμου",
     "tableActions": "Ενέργειες",
@@ -587,8 +663,27 @@
     "tokenRevokeError": "Δεν ήταν δυνατή η ανάκληση του token.",
     "tokenCleanError": "Δεν ήταν δυνατή η εκκαθάριση των tokens.",
     "tokenLoadError": "Δεν ήταν δυνατή η φόρτωση των tokens.",
-    "accountEmail": "Email: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountEmail": "Διεύθυνση ηλεκτρονικού ταχυδρομείου: {{email}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Ενεργή",
     "sessionInactive": "Ανενεργή",
     "sessionLabel": "Τοπική συνεδρία: {{status}}",
@@ -615,10 +710,10 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": "Ενδειξη",
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": "RSVP",
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +731,8 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": "E-mail",
+    "passwordLabel": "Σύνθημα"
   },
   "compliance": {
     "title": "Αρχείο δραστηριοτήτων επεξεργασίας (GDPR άρθρο 30)",
@@ -659,7 +754,26 @@
     "row2Basis": "Συγκατάθεση (GDPR άρθρο 6 παρ. 1α, 9 παρ. 2α)",
     "row2Purpose": "Διαχείριση λίστας καλεσμένων και μενού",
     "row2Retention": "12 μήνες μετά την εκδήλωση",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Μεταφόρτωση εικόνων",
     "row3Data": "Γαμήλιες φωτογραφίες (κρυπτογραφημένες AES-256-GCM)",
     "row3Basis": "Συγκατάθεση (GDPR άρθρο 6 παρ. 1α)",
@@ -677,7 +791,26 @@
     "row5Basis": "Νομική υποχρέωση (GDPR άρθρο 6 παρ. 1γ)",
     "row5Purpose": "Καταγραφή διοικητικών δραστηριοτήτων",
     "row5Retention": "3 έτη",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Διεθνείς διαβιβάσεις",
     "internationalText": "Τα δεδομένα αποθηκεύονται σε διακομιστές Google Cloud στην περιοχή eur3 (Φρανκφούρτη, Γερμανία). Η Google LLC (ΗΠΑ) ενεργεί ως εκτελών την επεξεργασία βάσει DPA σύμφωνα με το άρθρο 28 GDPR. Οι διαβιβάσεις στις ΗΠΑ προστατεύονται από:",
     "scc": "Τυποποιημένες Συμβατικές Ρήτρες (SCC) - Εκτελεστική Απόφαση 2021/914",
@@ -691,86 +824,86 @@
     "measureSuperadmin": "Υπερδιαχειριστής προστατευμένος από Firebase Authentication + κρυφή διαδρομή"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": "Προσιτότητα",
+    "close": "Κοντά",
+    "fontSize": "Μέγεθος κειμένου",
+    "fontNormal": "Κανονικός",
+    "fontLarge": "Μεγάλο",
+    "fontExtraLarge": "Πολύ μεγάλο",
+    "lineSpacing": "Διάστιχο",
+    "lineNormal": "Κανονικός",
+    "lineWide": "Ευρύς",
+    "lineVeryWide": "Πολύ φαρδύ",
+    "highContrast": "Υψηλή αντίθεση",
+    "reducedMotion": "Μειώστε την κίνηση",
+    "dyslexiaFont": "Γραμματοσειρά OpenDyslexic",
+    "moreSpacing": "Περισσότερη απόσταση μεταξύ των γραμμάτων",
+    "underlineLinks": "Υπογραμμίστε όλους τους συνδέσμους",
+    "bigCursor": "Μεγάλος κέρσορας",
+    "desaturate": "Κλίμακα του γκρι",
+    "strongFocus": "Ορατές δείκτες εστίασης"
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": "Χωρίς μουσική",
+    "loadError": "Σφάλμα κατά τη φόρτωση",
+    "label": "Μουσική",
+    "soundCloudNote": "Κομμάτι SoundCloud — ανοιχτό για αναπαραγωγή",
+    "openInSoundCloud": "Ανοίξτε στο SoundCloud"
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": "Προετοιμασία εκτύπωσης…",
+    "couplePhoto": "Φωτογραφία ζευγαριού",
+    "godparentsText": "Με την ευλογία των νονών τους",
+    "dateAndPlace": "Ημερομηνία και τόπος διεξαγωγής",
+    "celebrationTime": "Ώρα Τελετής:",
+    "viewInGoogleMaps": "Προβολή τοποθεσίας στους Χάρτες Google",
+    "celebrationMessage": "Ανυπομονούμε να μοιραστούμε αυτήν την ξεχωριστή στιγμή μαζί σας.",
+    "transport": "Μεταφορά",
+    "aboutGuests": "Σχετικά με τους καλεσμένους",
+    "scheduleTitle": "Πρόγραμμα γάμου",
+    "scheduleFallback": "Το αναλυτικό πρόγραμμα θα κοινοποιηθεί σύντομα.",
+    "dressCode": "Ενδυματολογικός κώδικας",
+    "dressCodeFallback": "Θα ανακοινωθεί αργότερα.",
+    "aboutKids": "Σχετικά με τα παιδιά",
+    "ourStory": "Η ιστορία μας",
+    "storyStarted": "Πώς ξεκίνησαν όλα",
+    "storyFallback": "Η ιστορία θα κοινοποιηθεί σύντομα.",
+    "gifts": "Δώρα",
+    "bestGift": "Η παρουσία σας είναι το καλύτερο δώρο",
+    "giftsFallback": "Οι πληροφορίες δώρου θα κοινοποιηθούν σύντομα.",
+    "bankDetails": "Στοιχεία τράπεζας",
+    "accommodation": "Κατάλυμα",
+    "whereToStay": "Πού να μείνετε",
+    "accommodationFallback": "Οι πληροφορίες για τα καταλύματα θα κοινοποιηθούν σύντομα.",
+    "footer": "Wedingo · Πολιτική απορρήτου στο wedingo-6c26a.web.app",
+    "closeWindow": "Κλείσιμο παραθύρου"
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
+    "moveUp": "Μετακινηθείτε προς τα πάνω",
+    "moveDown": "Μετακίνηση προς τα κάτω",
     "title": "Σειρά & ορατότητα",
     "help": "Σύρετε για αναδιάταξη, χρησιμοποιήστε τα κουμπιά για μετακίνηση και ενεργοποιήστε/απενεργοποιήστε κάθε ενότητα."
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": "Επιλέξτε γλώσσα"
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": "1 σύντροφος",
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": "Ισπανία",
+    "westernEurope": "Εσπερία",
+    "nordicEurope": "σκανδιναβική Ευρώπη",
+    "centralEurope": "Κεντρικής Ευρώπης",
+    "southernEurope": "Νότια Ευρώπη / Βαλκάνια",
+    "easternEurope": "Ανατολική Ευρώπη / Καύκασος",
+    "eastAsia": "Ανατολική Ασία",
+    "southAsia": "Νότια Ασία",
+    "southeastAsia": "Νοτιοανατολική Ασία",
+    "centralAsia": "Κεντρική Ασία / Μέση Ανατολή",
+    "africa": "Αφρική",
+    "americas": "Αμερικής"
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -791,31 +924,31 @@
     "close": "Κλείσιμο"
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": "Υπάρχει ήδη μια ενεργή περίοδος σύνδεσης για αυτήν την πρόσκληση. ",
+    "tokenInvalid": "Ο κωδικός πρόσβασης δεν είναι έγκυρος.",
+    "enterCode": "Εισαγάγετε τον κωδικό πρόσβασης.",
+    "codeVerified": "Ο κωδικός επαληθεύτηκε με επιτυχία.",
+    "codeVerifyError": "Δεν ήταν δυνατή η επαλήθευση του κωδικού. ",
+    "enterUserAndCode": "Εισαγάγετε το όνομα χρήστη και τον κωδικό πρόσβασης.",
+    "invalidCredentials": "Λανθασμένο όνομα χρήστη ή κωδικός.",
+    "codeUserMismatch": "Ο κωδικός δεν ταιριάζει με αυτόν τον χρήστη.",
+    "loginSuccess": "Έχετε συνδεθεί με επιτυχία.",
+    "loginError": "Δεν ήταν δυνατή η επαλήθευση του κωδικού. ",
+    "confirmRequired": "Πληκτρολογήστε CONFIRM για να δημιουργήσετε έναν νέο κωδικό.",
+    "usernameRequired": "Εισαγάγετε πρώτα το όνομα χρήστη σας.",
+    "usernameInvalid": "Το όνομα χρήστη μπορεί να περιέχει μόνο γράμματα και αριθμούς.",
+    "usernameTooLong": "Το όνομα χρήστη δεν μπορεί να υπερβαίνει τους 50 χαρακτήρες.",
+    "unauthorizedUser": "Αυτός ο χρήστης δεν έχει άδεια πρόσβασης εδώ.",
+    "tokenGenerated": "Δημιουργήθηκε κώδικας. ",
+    "tokenGenerateError": "Δεν ήταν δυνατή η δημιουργία του κώδικα. ",
+    "currentTokenRequired": "Εισαγάγετε τον τρέχοντα κωδικό πρόσβασης για να δημιουργήσετε έναν νέο.",
+    "tokenRenewed": "Δημιουργήθηκε νέος κώδικας. ",
+    "tokenRenewedAdmin": "Ο κωδικός ανανεώθηκε. ",
+    "superadminNoPermissions": "Αυτός ο λογαριασμός δεν έχει δικαιώματα διαχείρισης.",
+    "superadminWrongCredentials": "Λανθασμένα διαπιστευτήρια.",
+    "superadminTooManyAttempts": "Πάρα πολλές προσπάθειες. ",
+    "superadminInvalidEmail": "Η μορφή email δεν είναι έγκυρη.",
+    "superadminLoginError": "Σφάλμα κατά τη σύνδεση. Ελέγξτε τη σύνδεσή σας."
   },
   "autosave": {
     "saved": "Οι αλλαγές αποθηκεύτηκαν"
@@ -846,53 +979,53 @@
     "shellfish": "Οστρακοειδή"
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
+    "addressLine1": "Στα αγαπημένα μας",
+    "tapHint": "Πατήστε για άνοιγμα",
     "and": "&",
-    "tapContinue": "Tap to continue"
+    "tapContinue": "Πατήστε για να συνεχίσετε"
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": "Ο γάμος μας",
+    "eventTitle": "γάμος του {{names}}",
+    "placeUnknown": "Η τοποθεσία θα επιβεβαιωθεί",
+    "invitationText": "Ανυπομονούμε να γιορτάσουμε μαζί σας αυτήν την ξεχωριστή στιγμή.",
+    "timeLabel": "Φορά:",
+    "placeLabel": "Τόπος συναντήσεως:"
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": "Κομψό και φωτεινό, με χρυσές πινελιές.",
+    "forest": "Φυσικό και νηφάλιο με απαλά πράσινα.",
+    "rose": "Ζεστό και ντελικάτο, με ροζ αποχρώσεις.",
+    "linen-soft": "Ελαφρύ και ουδέτερο, με γαλήνια και διαχρονική παρουσία.",
+    "blush-pearl": "Απαλό και ρομαντικό, με μαργαριταρένιες ροζ αποχρώσεις.",
+    "lavender-mist": "Φρέσκο ​​και γαλήνιο, με λεβάντες και μοβ αποχρώσεις.",
+    "champagne-bubble": "Λαμπερό και γιορτινό, με ζεστές χρυσές λάμψεις.",
+    "amber-night": "Σκούρο και κομψό, με πορτοκαλί και χρυσές ανταύγειες.",
+    "onyx-gold": "Βαθύ και εκλεπτυσμένο, με έντονο χρυσό σε σκούρο φόντο.",
+    "midnight-royal": "Πολύ σκούρο μπλε με έντονη χρυσή και επίσημη παρουσία.",
+    "burgundy-velvet": "Ζεστό και τυλιγμένο, με κόκκινο κρασί και χρυσαφένιες λάμψεις.",
+    "sapphire-night": "Βαθύ μπλε με ασημί τόνους και γαλήνια παρουσία.",
+    "emerald-grove": "Βαθύ φυσικό πράσινο με χρυσές και κομψές αποχρώσεις.",
+    "plum-twilight": "Έντονο μωβ με ροζ και ρομαντικές λάμψεις.",
+    "rainbow": "Γιορτή ποικίλης αγάπης με χρώματα ουράνιου τόξου.",
+    "trans": "Μπλε, ροζ και λευκό ως φόρο τιμής στη τρανς σημαία.",
+    "nonbinary": "Κίτρινο, λευκό, μοβ και μαύρο για τη μη δυαδική σημαία.",
+    "lesbian": "Πορτοκαλί, λευκό και ροζ της λεσβιακής σημαίας.",
+    "bi": "Ροζ, μωβ και μπλε της διπλής σημαίας.",
+    "pan": "Ροζ, κίτρινο και μπλε της σημαίας του τηγανιού.",
+    "ace": "Μαύρο, γκρι, λευκό και μωβ της σημαίας των ασέξουαλ."
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": "Καλωσόρισμα με χώρο παιχνιδιού",
+      "supervised": "Καλώς ορίσατε υπό επίβλεψη",
+      "adultOnly": "Μόνο για ενήλικες"
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": "Δεν υπάρχουν δεδομένα",
+    "total": "σύνολο",
+    "barChart": "Γράφημα ράβδων προσέλευσης",
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

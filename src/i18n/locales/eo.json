@@ -11,20 +11,20 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": "Videbla",
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": "Io misfunkciis",
+      "message": "Bonvolu reŝargi la paĝon por provi denove.",
+      "reload": "Reŝargi paĝon"
     },
     "toast": {
-      "close": "Close"
+      "close": "Fermu"
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": "Saltu al ĉefa enhavo",
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": "Administra trinkejo",
+      "fallback": "Administrado"
     }
   },
   "landing": {
@@ -55,8 +55,8 @@
     "todayIsWedding": "Hodiaŭ estas la geedziĝo",
     "missing": "Mankas",
     "todayIsTheDay": "Hodiaŭ estas la granda tago!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": "Kovrilo",
+    "eyebrow": "Nia Geedziĝo"
   },
   "details": {
     "sectionLabel": "Dato kaj loko",
@@ -106,8 +106,8 @@
     "next": "Sekva",
     "thumbnailAria": "Foto {{number}}",
     "thumbnailAlt": "Miniaturo de galeria foto",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": "Bildgalerio, uzu sagoklavojn por navigi",
+    "lightboxLabel": "Pligrandigita bildo"
   },
   "rsvp": {
     "sectionLabel": "Konfirmo de ĉeesto",
@@ -138,49 +138,68 @@
     "ageUnder14Warning": "Vi estas malpli ol 14-jara. Vi bezonas la konsenton de viaj gepatroj aŭ zorgantoj.",
     "parentalConsent": "Miaj gepatroj aŭ zorgantoj konsentas mian partoprenon",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": "Enigu vian nomon por konfirmi ĉeeston.",
+      "menuRequired": "Elektu menuopcion.",
+      "privacyRequired": "Vi devas akcepti la Privatecan Politikon.",
+      "birthDateRequired": "Enigu vian naskiĝdaton.",
+      "ageUnder14": "Vi havas malpli ol 14 jarojn. ",
+      "healthConsentRequired": "Vi devas konsenti pri la prilaborado de viaj sanaj datumoj.",
+      "menuHeadcountRequired": "Indiku almenaŭ unu menuopcion.",
+      "guestNamesRequired": "Enigu la nomojn de viaj kunuloj.",
+      "guestNamesExceed": "Vi ne povas enigi pli da nomoj ol kunuloj.",
+      "headcountExceed": "La sumo de menuaj opcioj ne povas superi la nombron da kunuloj."
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": "Dankon, {{nomo}}. ",
+    "successNotAttending": "Dankon, {{nomo}}. ",
+    "saveError": "Ni ne povis konservi vian respondon. ",
+    "withdrawConfirm": "Ĉu vi certas, ke vi volas retiri vian respondon?",
+    "withdrawSuccess": "Via respondo estis retirita.",
+    "withdrawError": "Ne eblis retiri vian respondon. ",
+    "clearConfirm": "Ĉu forigi ĉiujn partoprenrespondojn? ",
+    "clearSuccess": "Partoprenrekordoj malbaritaj.",
+    "clearError": "Ne eblis malbari ĉeest-rekordojn.",
+    "companionsLabel": "Kunuloj",
+    "headcountLabel": "Homoj",
+    "headcountHint": "Kiom da homoj por ĉiu opcio ({{totale}} entute)",
+    "guestNamesLabel": "Gastnomoj",
+    "guestNamesHint": "Skribu la unuan kaj familian nomon de ĉiu kunulo (maksimume {{kalkulo}})",
+    "guestNamesPlaceholder": "Nomo1 Familia nomo1, Nomo2 Familia nomo2..."
   },
   "public": {
     "loadingInvitation": "Ŝarĝante inviton…",
     "notFoundTitle": "Invito ne trovita",
     "notFoundText": "Ni ne trovis inviton kun ĉi tiu ligilo. Se vi pensas, ke estas eraro, kontaktu la gastigantojn.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Kreu kaj dividu vian personecigitan geedziĝan inviton.",
     "emptyDescription": "Administru la datumojn de via invito, dividu unikan ligilon kun viaj gastoj kaj ricevu iliajn ĉeestkonfirmojn.",
     "createLink": "Krei inviton",
     "privacyPolicy": "Privateca Politiko",
     "terms": "Kondiĉoj",
     "legalNotice": "Jura Avizo",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": "Ne eblis lokalizi ĉi tiun lokon.",
+    "locationMapError": "Ne eblis ŝargi la mapon.",
+    "locationCoordinates": "Koordinatoj: {{lat}}, {{lng}}",
+    "mapPreviewAlt": "Antaŭrigardo de mapo ĉe la indikita loko.",
+    "locationSet": "Loko agordita"
   },
   "setup": {
     "loadingTitle": "Ŝarĝante inviton",
@@ -308,28 +327,28 @@
     "galleryUploadFailed": "Ne eblis alŝuti la fotojn.",
     "noValidFiles": "Neniu valida dosiero. Maksimume 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": "Alŝutu sondosieron por ludi sur la kovrilo (MP3, WAV, OGG, M4A — maksimume 5 MB).",
+    "audioUploadTitle": "Alŝutu sondosieron",
+    "audioUploadSubtitle": "MP3, WAV, OGG aŭ M4A - maksimume 5 MB",
+    "audioFormatError": "Sonformato ne subtenata. ",
+    "audioEmptyError": "Sondosiero estas malplena.",
+    "audioSizeError": "Sondosiero superas la limon de 5 MB.",
+    "audioReadError": "Eraro legante sondosieron.",
+    "errorEmptyFile": "La dosiero estas malplena. ",
+    "galleryDescriptionPlaceholder": "Bilda priskribo...",
+    "galleryMaxReached": "Maksimumo {{maks}} bildoj en la galerio.",
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": "Alŝutante {{total}} foto(j)...",
+    "photoUploading": "Alŝutante foton...",
+    "replaceImage": "Ŝanĝi foton",
+    "galleryDescriptionSaveFailed": "Eraro dum konservado de priskribo",
+    "galleryDescriptionSaved": "Priskribo konservita",
+    "currentMusic": "Elektita muziko",
+    "removeMusic": "Forigi muzikon",
+    "previewing": "Ludante...",
+    "preview": "Antaŭrigardo",
+    "select": "Elektu",
+    "selected": "Elektita"
   },
   "admin": {
     "tabs": {
@@ -353,9 +372,28 @@
     "pdfTableCompanions": "Akompanantoj",
     "pdfTableDiet": "Dieto",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Admin",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": "Rigardu inviton",
+    "logout": "Elsaluti"
   },
   "panel": {
     "confirmed": "Konfirmitaj",
@@ -384,7 +422,7 @@
     "confirms": "Konfirmas",
     "declines": "Malakceptas",
     "pending": "Pritraktotaj",
-    "visits_one": "1 visit",
+    "visits_one": "1 vizito",
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +455,47 @@
     "generateMessage": "Generi alian mesaĝon",
     "copyMessage": "Kopii mesaĝon",
     "shareVia": "Dividi per",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": "Telegramo",
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Presi",
     "printPdf": "Presi / Konservi PDF",
     "linkCopied": "Ligilo kopiita.",
@@ -448,7 +524,26 @@
     "rightsHint": "Via retpoŝtprogramo malfermiĝos kun antaŭdifinita ŝablono. Vi ankaŭ povas skribi al adriancl2001@gmail.com.",
     "ccpaTitle": "CCPA / CPRA (Kalifornio)",
     "ccpaText": "Wedingo ne vendas personajn datumojn. La kolektitaj datumoj estas uzataj ekskluzive por la administrado de la invito. Se vi estas kalifornia loĝanto, vi rajtas peti la forigon de viaj datumoj kaj ne esti diskriminaciata pro ekzercado de viaj rajtoj.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "TTT-aplikaĵo por administrado de geedziĝaj invitoj.",
     "copyright": "© {{year}} Adrián Carrasco López. Ĉiuj rajtoj rezervitaj.",
     "deleteEmailSubject": "Peto pri forigo de datumoj - Wedingo",
@@ -518,13 +613,13 @@
     "deleteFailed": "Ne eblis forigi la inviton. Reprovi.",
     "configLoadFailed": "Ne eblis ŝargi la agordon. Kontrolu la konekton kaj reprovi.",
     "invalidLink": "La invita ligilo ne validas.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": "Loĝejoj ne povas superi 2000 signojn.",
+    "menuTextoTooLong": "Menua priskribo ne povas superi 2000 signojn.",
+    "uploadImageFailed": "Ne eblis prilabori la bildon. ",
+    "readImageFailed": "Ne eblis legi la bilddosieron.",
+    "encryptFailed": "Bilda ĉifrado malsukcesis.",
+    "imageTooLarge": "La bildo estas tro granda eĉ post kunpremado.",
+    "fileEmpty": "La dosiero estas malplena. "
   },
   "superadmin": {
     "tabs": {
@@ -588,7 +683,26 @@
     "tokenCleanError": "Ne eblis purigi la tokenojn.",
     "tokenLoadError": "Ne eblis ŝargi la tokenojn.",
     "accountEmail": "Retpoŝto: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Aktiva",
     "sessionInactive": "Neaktiva",
     "sessionLabel": "Loka sesio: {{status}}",
@@ -615,10 +729,29 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Token",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": "RSVP-oj",
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +769,8 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": "Retpoŝto",
+    "passwordLabel": "Pasvorto"
   },
   "compliance": {
     "title": "Registro de traktadaj aktivecoj (Art. 30 GDPR)",
@@ -659,7 +792,7 @@
     "row2Basis": "Konsento (Art. 6.1.a, 9.2.a GDPR)",
     "row2Purpose": "Administri gastoliston kaj menuon",
     "row2Retention": "12 monatoj post la evento",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": "Google Cloud (Fajrobutiko)",
     "row3Activity": "Alŝuto de bildoj",
     "row3Data": "Geedziĝaj fotoj (ĉifritaj AES-256-GCM)",
     "row3Basis": "Konsento (Art. 6.1.a GDPR)",
@@ -677,7 +810,26 @@
     "row5Basis": "Jura devigo (Art. 6.1.c GDPR)",
     "row5Purpose": "Registro de administraj aktivecoj",
     "row5Retention": "3 jaroj",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Internaciaj transdono",
     "internationalText": "Datumoj estas konservitaj en serviloj de Google Cloud en la regiono eur3 (Frankfurto, Germanio). Google LLC (Usono) agas kiel traktanto laŭ DPA konforme al Art. 28 GDPR. Transdono al Usono baziĝas sur:",
     "scc": "Tipaj Kontraktaj Klaŭzoj (SCC) - Plenum-Decido 2021/914",
@@ -691,86 +843,86 @@
     "measureSuperadmin": "Superadministranto protektita per Firebase Authentication + kaŝita vojo"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": "Alirebleco",
+    "close": "Fermu",
+    "fontSize": "Teksta grandeco",
+    "fontNormal": "Normala",
+    "fontLarge": "Granda",
+    "fontExtraLarge": "Ekstre granda",
+    "lineSpacing": "Linia interspaco",
+    "lineNormal": "Normala",
+    "lineWide": "Larĝa",
+    "lineVeryWide": "Tre larĝa",
+    "highContrast": "Alta kontrasto",
+    "reducedMotion": "Redukti moviĝon",
+    "dyslexiaFont": "OpenDyslexic tiparo",
+    "moreSpacing": "Pli da literinterspaco",
+    "underlineLinks": "Substreku ĉiujn ligilojn",
+    "bigCursor": "Granda kursoro",
+    "desaturate": "Grizskalo",
+    "strongFocus": "Videblaj fokusaj indikiloj"
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": "Neniu muziko",
+    "loadError": "Eraro dum ŝarĝo",
+    "label": "Muziko",
+    "soundCloudNote": "SoundCloud-trako — malfermita por ludi",
+    "openInSoundCloud": "Malfermu en SoundCloud"
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": "Preparante presaĵon...",
+    "couplePhoto": "Foto de paro",
+    "godparentsText": "Kun la beno de iliaj baptopatroj",
+    "dateAndPlace": "Dato kaj loko",
+    "celebrationTime": "Ceremonia tempo:",
+    "viewInGoogleMaps": "Vidu lokon en Google Maps",
+    "celebrationMessage": "Ni antaŭĝojas dividi ĉi tiun specialan momenton kun vi.",
+    "transport": "Transporto",
+    "aboutGuests": "Pri la gastoj",
+    "scheduleTitle": "Geedziĝa horaro",
+    "scheduleFallback": "La detala horaro estos konita baldaŭ.",
+    "dressCode": "Vestokodo",
+    "dressCodeFallback": "Estos komunikita poste.",
+    "aboutKids": "Pri infanoj",
+    "ourStory": "Nia rakonto",
+    "storyStarted": "Kiel ĉio komenciĝis",
+    "storyFallback": "La rakonto estos konita baldaŭ.",
+    "gifts": "Donacoj",
+    "bestGift": "Via ĉeesto estas la plej bona donaco",
+    "giftsFallback": "Donacaj informoj baldaŭ estos disdonitaj.",
+    "bankDetails": "Bankaj detaloj",
+    "accommodation": "Loĝejo",
+    "whereToStay": "Kie resti",
+    "accommodationFallback": "Loĝejaj informoj baldaŭ estos disdonitaj.",
+    "footer": "Wedingo · Privateca Politiko ĉe wedingo-6c26a.web.app",
+    "closeWindow": "Fermu fenestron"
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": "Movu supren",
+    "moveDown": "Movu malsupren",
+    "title": "Ordo kaj videbleco",
+    "help": "Trenu por reordigi, uzu la butonojn por movi, kaj ŝaltu aŭ malŝaltu ĉiun sekcion."
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": "Elektu lingvon"
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": "1 kunulo",
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": "Hispanio",
+    "westernEurope": "Okcidenta Eŭropo",
+    "nordicEurope": "Nordia Eŭropo",
+    "centralEurope": "Mezeŭropo",
+    "southernEurope": "Suda Eŭropo / Balkanio",
+    "easternEurope": "Orienta Eŭropo / Kaŭkazo",
+    "eastAsia": "Orienta Azio",
+    "southAsia": "Sudazio",
+    "southeastAsia": "Sudorienta Azio",
+    "centralAsia": "Centra Azio / Mezoriento",
+    "africa": "Afriko",
+    "americas": "Amerikoj"
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +939,131 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": "Ŝanĝprotokolo",
+    "close": "Fermu"
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": "Jam estas aktiva sesio por ĉi tiu invito. ",
+    "tokenInvalid": "La alirkodo ne validas.",
+    "enterCode": "Enigu la alirkodon.",
+    "codeVerified": "Kodo kontrolita sukcese.",
+    "codeVerifyError": "Ne eblis kontroli la kodon. ",
+    "enterUserAndCode": "Enigu vian uzantnomon kaj la alirkodon.",
+    "invalidCredentials": "Malĝusta uzantnomo aŭ kodo.",
+    "codeUserMismatch": "La kodo ne kongruas kun ĉi tiu uzanto.",
+    "loginSuccess": "Vi ensalutis sukcese.",
+    "loginError": "Ne eblis kontroli la kodon. ",
+    "confirmRequired": "Tajpu KONFIRM por generi novan kodon.",
+    "usernameRequired": "Enigu vian uzantnomon unue.",
+    "usernameInvalid": "Uzantnomo povas enhavi nur literojn kaj ciferojn.",
+    "usernameTooLong": "Uzantnomo ne povas superi 50 signojn.",
+    "unauthorizedUser": "Ĉi tiu uzanto ne havas permeson aliri ĉi tie.",
+    "tokenGenerated": "Kodo generita. ",
+    "tokenGenerateError": "Ne eblis generi la kodon. ",
+    "currentTokenRequired": "Enigu la nunan alirkodon por generi novan.",
+    "tokenRenewed": "Nova kodo generita. ",
+    "tokenRenewedAdmin": "Kodo renovigita. ",
+    "superadminNoPermissions": "Ĉi tiu konto ne havas administrajn permesojn.",
+    "superadminWrongCredentials": "Malĝustaj akreditaĵoj.",
+    "superadminTooManyAttempts": "Tro da provoj. ",
+    "superadminInvalidEmail": "La retpoŝta formato ne validas.",
+    "superadminLoginError": "Eraro ensaluti. Kontrolu vian konekton."
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": "Ŝanĝoj konservitaj"
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": "januaro",
+    "2": "februaro",
+    "3": "Marto",
+    "4": "Aprilo",
+    "5": "majo",
+    "6": "junio",
+    "7": "julio",
+    "8": "Aŭgusto",
+    "9": "septembro",
+    "10": "oktobro",
+    "11": "novembro",
+    "12": "decembro"
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": "Lumaj temoj",
+    "dark": "Malhelaj temoj",
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": "Gluteno",
+    "lactose": "Laktozo",
+    "nuts": "Arbaj nuksoj",
+    "shellfish": "Mariskoj"
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
+    "addressLine1": "Al nia plej kara",
+    "tapHint": "Frapu por malfermi",
     "and": "&",
-    "tapContinue": "Tap to continue"
+    "tapContinue": "Frapu por daŭrigi"
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": "Nia geedziĝo",
+    "eventTitle": "Geedziĝo de {{ nomoj }}",
+    "placeUnknown": "Loko konfirmenda",
+    "invitationText": "Ni antaŭĝojas festi ĉi tiun specialan momenton kun vi.",
+    "timeLabel": "Tempo:",
+    "placeLabel": "Loko:"
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": "Eleganta kaj hela, kun oraj akcentoj.",
+    "forest": "Natura kaj sobra kun molaj verduloj.",
+    "rose": "Varma kaj delikata, kun rozkoloraj nuancoj.",
+    "linen-soft": "Malpeza kaj neŭtrala, kun serena kaj sentempa ĉeesto.",
+    "blush-pearl": "Milda kaj romantika, kun perlaj rozkoloraj tonoj.",
+    "lavender-mist": "Freŝa kaj serena, kun lavendo kaj malva nuancoj.",
+    "champagne-bubble": "Brila kaj festa, kun varmaj oraj ekbriloj.",
+    "amber-night": "Malhela kaj eleganta, kun sukceno kaj oraj brilaĵoj.",
+    "onyx-gold": "Profunda kaj altnivela, kun intensa oro sur malhela fono.",
+    "midnight-royal": "Tre malhelblua kun intensa oro kaj solena ĉeesto.",
+    "burgundy-velvet": "Varma kaj envolvanta, kun ruĝa vino kaj oraj ekbriloj.",
+    "sapphire-night": "Profunde bluo kun arĝentaj akcentoj kaj serena ĉeesto.",
+    "emerald-grove": "Profunda natura verdo kun oraj kaj elegantaj nuancoj.",
+    "plum-twilight": "Intensa purpuro kun rozkoloraj kaj romantikaj ekbriloj.",
+    "rainbow": "Festo de diversa amo kun ĉielarkaj koloroj.",
+    "trans": "Blua, rozkolora kaj blanka omaĝe al la trans-flago.",
+    "nonbinary": "Flava, blanka, purpura kaj nigra por la ne-binara flago.",
+    "lesbian": "Oranĝa, blanka kaj rozkolora de la lesba flago.",
+    "bi": "Rozkolora, purpura kaj blua de la bi flago.",
+    "pan": "Rozkolora, flava kaj blua de la panflago.",
+    "ace": "Nigra, griza, blanka kaj purpura de la neseksa flago."
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": "Bonvenon kun ludejo",
+      "supervised": "Bonvenon sub superrigardo",
+      "adultOnly": "Nur plenkreskuloj"
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": "Neniuj datumoj",
+    "total": "entute",
+    "barChart": "Ĉeestanta stangodiagramo",
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

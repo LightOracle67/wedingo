@@ -11,20 +11,20 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": "Vidljivo",
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": "Nešto je pošlo po zlu",
+      "message": "Ponovo učitajte stranicu da pokušate ponovo.",
+      "reload": "Ponovo učitaj stranicu"
     },
     "toast": {
-      "close": "Close"
+      "close": "Zatvori"
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": "Preskoči na glavni sadržaj",
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": "Administrativna traka",
+      "fallback": "Administracija"
     }
   },
   "landing": {
@@ -55,8 +55,27 @@
     "todayIsWedding": "Danas je vjenčanje",
     "missing": "Nedostaje",
     "todayIsTheDay": "Danas je veliki dan!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": [
+      "Cover",
+      "Cover",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eyebrow": "Naše vjenčanje"
   },
   "details": {
     "sectionLabel": "Datum i mjesto",
@@ -75,7 +94,26 @@
     "sectionLabel": "O gostima",
     "scheduleTitle": "Raspored proslave",
     "schedulePending": "Detaljni raspored će uskoro biti podijeljen sa svim gostima.",
-    "dressCodeLabel": "Dress code",
+    "dressCodeLabel": [
+      "Dress code",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "dressCodeTitle": "Preporučena odjeća",
     "dressCodePending": "Dress code će biti saopšten kasnije.",
     "kidsLabel": "Djeca",
@@ -106,8 +144,8 @@
     "next": "Sljedeća",
     "thumbnailAria": "Fotografija {{number}}",
     "thumbnailAlt": "Sličica iz galerije",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": "Galerija slika, koristite tipke sa strelicama za navigaciju",
+    "lightboxLabel": "Uvećana slika"
   },
   "rsvp": {
     "sectionLabel": "Potvrda dolaska",
@@ -138,49 +176,68 @@
     "ageUnder14Warning": "Imaš manje od 14 godina. Potreban je pristanak roditelja ili staratelja.",
     "parentalConsent": "Moji roditelji ili staratelji pristaju na moje učešće",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": "Unesite svoje ime da potvrdite prisustvo.",
+      "menuRequired": "Odaberite opciju menija.",
+      "privacyRequired": "Morate prihvatiti Politiku privatnosti.",
+      "birthDateRequired": "Unesite datum rođenja.",
+      "ageUnder14": "Imate manje od 14 godina. ",
+      "healthConsentRequired": "Morate dati pristanak na obradu vaših zdravstvenih podataka.",
+      "menuHeadcountRequired": "Označite barem jednu opciju menija.",
+      "guestNamesRequired": "Unesite imena svojih pratilaca.",
+      "guestNamesExceed": "Ne možete unijeti više imena od pratilaca.",
+      "headcountExceed": "Zbir opcija menija ne može premašiti broj pratilaca."
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": "Hvala, {{name}}. ",
+    "successNotAttending": "Hvala, {{name}}. ",
+    "saveError": "Nismo mogli sačuvati vaš odgovor. ",
+    "withdrawConfirm": "Jeste li sigurni da želite povući svoj odgovor?",
+    "withdrawSuccess": "Vaš odgovor je povučen.",
+    "withdrawError": "Nije moguće povući vaš odgovor. ",
+    "clearConfirm": "Izbrisati sve odgovore o prisustvu? ",
+    "clearSuccess": "Evidencija o prisustvu je očišćena.",
+    "clearError": "Nije moguće obrisati evidenciju o prisustvu.",
+    "companionsLabel": "Saputnici",
+    "headcountLabel": "Ljudi",
+    "headcountHint": "Koliko ljudi za svaku opciju ({{total}} ukupno)",
+    "guestNamesLabel": "Imena gostiju",
+    "guestNamesHint": "Napišite ime i prezime svakog pratioca (maks. {{count}})",
+    "guestNamesPlaceholder": "Ime1 Prezime1, Ime2 Prezime2..."
   },
   "public": {
     "loadingInvitation": "Učitavanje pozivnice…",
     "notFoundTitle": "Pozivnica nije pronađena",
     "notFoundText": "Nismo pronašli pozivnicu s ovim linkom. Ako misliš da je greška, kontaktiraj domaćine.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Kreiraj i podijeli svoju personaliziranu pozivnicu za vjenčanje.",
     "emptyDescription": "Upravljaj podacima svoje pozivnice, podijeli jedinstveni link s gostima i primaj njihove potvrde dolaska.",
     "createLink": "Kreiraj pozivnicu",
     "privacyPolicy": "Politika privatnosti",
     "terms": "Uslovi",
     "legalNotice": "Pravno obavještenje",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": "Nije moguće locirati ovo mjesto.",
+    "locationMapError": "Nije moguće učitati mapu.",
+    "locationCoordinates": "Koordinate: {{lat}}, {{lng}}",
+    "mapPreviewAlt": "Pregled karte na naznačenoj lokaciji.",
+    "locationSet": "Lokacija konfigurirana"
   },
   "setup": {
     "loadingTitle": "Učitavanje pozivnice",
@@ -253,7 +310,26 @@
     "scheduleLabel": "Raspored vjenčanja",
     "schedulePlaceholder": "Primjer: 18:00 Doček gostiju\n18:30 Ceremonija\n19:30 Koktel\n21:00 Banket\n23:00 Ples",
     "scheduleHint": "Napiši raspored, jedan red po događaju.",
-    "dressCodeLabel": "Dress code",
+    "dressCodeLabel": [
+      "Dress code",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "dressCodeGala": "Svečano odijelo",
     "dressCodeCasual": "Neformalna odjeća",
     "dressCodeFormal": "Formalna odjeća",
@@ -308,28 +384,28 @@
     "galleryUploadFailed": "Fotografije nisu mogle biti učitane.",
     "noValidFiles": "Nema važećeg fajla. Maksimalno 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": "Otpremite audio fajl za reprodukciju na omotu (MP3, WAV, OGG, M4A — maksimalno 5 MB).",
+    "audioUploadTitle": "Otpremite audio fajl",
+    "audioUploadSubtitle": "MP3, WAV, OGG ili M4A — maksimalno 5 MB",
+    "audioFormatError": "Audio format nije podržan. ",
+    "audioEmptyError": "Audio fajl je prazan.",
+    "audioSizeError": "Audio datoteka premašuje ograničenje od 5 MB.",
+    "audioReadError": "Greška pri čitanju audio datoteke.",
+    "errorEmptyFile": "Fajl je prazan. ",
+    "galleryDescriptionPlaceholder": "Opis slike...",
+    "galleryMaxReached": "Maksimalno {{max}} slika u galeriji.",
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": "Otpremanje {{total}} fotografija(a)...",
+    "photoUploading": "Otpremanje fotografije...",
+    "replaceImage": "Promijeni fotografiju",
+    "galleryDescriptionSaveFailed": "Greška pri spremanju opisa",
+    "galleryDescriptionSaved": "Opis je sačuvan",
+    "currentMusic": "Odabrana muzika",
+    "removeMusic": "Uklonite muziku",
+    "previewing": "igra se...",
+    "preview": "Pregled",
+    "select": "Odaberite",
+    "selected": "Odabrano"
   },
   "admin": {
     "tabs": {
@@ -353,9 +429,28 @@
     "pdfTableCompanions": "Pratioci",
     "pdfTableDiet": "Dijeta",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Admin",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": "Pogledaj pozivnicu",
+    "logout": "Odjavite se"
   },
   "panel": {
     "confirmed": "Potvrđeni",
@@ -384,7 +479,7 @@
     "confirms": "Potvrđuju",
     "declines": "Odbijaju",
     "pending": "Na čekanju",
-    "visits_one": "1 visit",
+    "visits_one": "1 posjeta",
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +512,66 @@
     "generateMessage": "Generiši drugu poruku",
     "copyMessage": "Kopiraj poruku",
     "shareVia": "Podijeli putem",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "Telegram",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Štampaj",
     "printPdf": "Štampaj / Sačuvaj PDF",
     "linkCopied": "Link kopiran.",
@@ -448,7 +600,26 @@
     "rightsHint": "Otvoriće se tvoj email klijent sa unaprijed definisanim šablonom. Možeš takođe pisati na adriancl2001@gmail.com.",
     "ccpaTitle": "CCPA / CPRA (Kalifornija)",
     "ccpaText": "Wedingo ne prodaje lične podatke. Prikupljeni podaci se koriste isključivo za upravljanje pozivnicom. Ako si stanovnik Kalifornije, imaš pravo zatražiti brisanje svojih podataka i ne biti diskriminisan/a zbog ostvarivanja svojih prava.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Web aplikacija za upravljanje pozivnicama za vjenčanje.",
     "copyright": "© {{year}} Adrián Carrasco López. Sva prava zadržana.",
     "deleteEmailSubject": "Zahtjev za brisanje podataka - Wedingo",
@@ -518,13 +689,13 @@
     "deleteFailed": "Pozivnica nije mogla biti izbrisana. Pokušaj ponovo.",
     "configLoadFailed": "Konfiguracija nije mogla biti učitana. Provjeri vezu i pokušaj ponovo.",
     "invalidLink": "Link pozivnice nije važeći.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": "Podaci o smještaju ne mogu biti duži od 2000 znakova.",
+    "menuTextoTooLong": "Opis menija ne može biti duži od 2000 znakova.",
+    "uploadImageFailed": "Nije moguće obraditi sliku. ",
+    "readImageFailed": "Nije moguće pročitati datoteku slike.",
+    "encryptFailed": "Šifriranje slike nije uspjelo.",
+    "imageTooLarge": "Slika je prevelika čak i nakon kompresije.",
+    "fileEmpty": "Fajl je prazan. "
   },
   "superadmin": {
     "tabs": {
@@ -535,7 +706,26 @@
       "compliance": "Usklađenost",
       "data": "Datos"
     },
-    "superadmin": "Superadmin",
+    "superadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "controlPanel": "Kontrolni panel",
     "managePlatform": "Upravljaj platformom Wedingo",
     "dashboardLoading": "Učitavanje statistike...",
@@ -561,7 +751,26 @@
     "invitationsCount": "{{count}} pozivnica · {{size}} zauzeto",
     "noResultsFilter": "Nisu pronađene pozivnice sa tim kriterijem.",
     "noInvitations": "Još uvijek nema pozivnica.",
-    "tableToken": "Token",
+    "tableToken": [
+      "Token",
+      "Token",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "tableTheme": "Tema",
     "tableDate": "Datum vjenčanja",
     "tableActions": "Akcije",
@@ -587,15 +796,91 @@
     "tokenRevokeError": "Token nije mogao biti opozvan.",
     "tokenCleanError": "Tokeni nisu mogli biti očišćeni.",
     "tokenLoadError": "Tokeni nisu mogli biti učitani.",
-    "accountEmail": "Email: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountEmail": [
+      "Email: {{email}}",
+      "Email: {{email}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Aktivna",
     "sessionInactive": "Neaktivna",
     "sessionLabel": "Lokalna sesija: {{status}}",
     "sessionType": "Tip: {{type}}",
-    "sessionTypeSuperadmin": "Superadmin",
+    "sessionTypeSuperadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionTypeSetup": "Postavljanje",
-    "sessionTypeAdmin": "Admin",
+    "sessionTypeAdmin": [
+      "Admin",
+      "Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionExpires": "Ističe: {{date}}",
     "logoutButton": "Odjavi se",
     "firebaseAccount": "Za upravljanje svojim superadmin računom, koristi Firebase konzolu:",
@@ -615,10 +900,29 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Token",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ac6faa6f1887d7a3559f8fc4a759008a",
+              "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": "Odgovori",
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +940,27 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "Email",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": "Lozinka"
   },
   "compliance": {
     "title": "Registar aktivnosti obrade (GDPR čl. 30)",
@@ -653,13 +976,51 @@
     "row1Basis": "Pristanak (GDPR čl. 6.1.a)",
     "row1Purpose": "Kreiranje i personalizacija pozivnice za vjenčanje",
     "row1Retention": "Dok je račun aktivan",
-    "row1Recipients": "Google Cloud (Firestore, hosting)",
+    "row1Recipients": [
+      "Google Cloud (Firestore, hosting)",
+      "Google Cloud (Firestore, hosting)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row2Activity": "Potvrda dolaska (RSVP)",
     "row2Data": "Ime gosta, prisustvo (da/ne), izbor menija, alergije, zdravstveni podaci",
     "row2Basis": "Pristanak (GDPR čl. 6.1.a, 9.2.a)",
     "row2Purpose": "Upravljanje spiskom gostiju i menijem",
     "row2Retention": "12 mjeseci nakon događaja",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Učitavanje slika",
     "row3Data": "Fotografije vjenčanja (enkriptovane AES-256-GCM)",
     "row3Basis": "Pristanak (GDPR čl. 6.1.a)",
@@ -671,13 +1032,32 @@
     "row4Basis": "Legitimni interes (GDPR čl. 6.1.f)",
     "row4Purpose": "Kontrola pristupa admin panelu",
     "row4Retention": "Trajanje sesije",
-    "row4Recipients": "Google Cloud (Firestore sessions)",
+    "row4Recipients": "Google Cloud (Firestore sesije)",
     "row5Activity": "Revizija superadmina",
     "row5Data": "Akcije superadmina, iskorišteni tokeni, izbrisane pozivnice",
     "row5Basis": "Zakonska obaveza (GDPR čl. 6.1.c)",
     "row5Purpose": "Registrovanje administrativnih aktivnosti",
     "row5Retention": "3 godine",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Međunarodni prijenosi",
     "internationalText": "Podaci se čuvaju na serverima Google Cloud-a u regionu eur3 (Frankfurt, Njemačka). Google LLC (SAD) djeluje kao obrađivač podataka prema DPA u skladu sa GDPR čl. 28. Prijenosi u SAD zasnivaju se na:",
     "scc": "Standardne ugovorne klauzule (SCC) - Provedbena odluka 2021/914",
@@ -691,86 +1071,181 @@
     "measureSuperadmin": "Superadmin zaštićen Firebase Authentication + skrivena putanja"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": "Pristupačnost",
+    "close": "Zatvori",
+    "fontSize": "Veličina teksta",
+    "fontNormal": "Normalno",
+    "fontLarge": "Veliki",
+    "fontExtraLarge": "Ekstra veliki",
+    "lineSpacing": "Razmak između redova",
+    "lineNormal": "Normalno",
+    "lineWide": "Široko",
+    "lineVeryWide": "Vrlo široka",
+    "highContrast": "Visok kontrast",
+    "reducedMotion": "Smanjite kretanje",
+    "dyslexiaFont": [
+      "OpenDyslexic font",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": "Više razmaka između slova",
+    "underlineLinks": "Podvuci sve veze",
+    "bigCursor": "Veliki kursor",
+    "desaturate": [
+      "Grayscale",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": "Vidljivi indikatori fokusa"
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": "Nema muzike",
+    "loadError": "Greška pri učitavanju",
+    "label": "Muzika",
+    "soundCloudNote": "SoundCloud numera — otvorena za reprodukciju",
+    "openInSoundCloud": "Otvorite u SoundCloud-u"
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": "Priprema za štampu…",
+    "couplePhoto": "Fotografija za par",
+    "godparentsText": "Uz blagoslov njihovih kumova",
+    "dateAndPlace": "Datum i mjesto održavanja",
+    "celebrationTime": "Vrijeme ceremonije:",
+    "viewInGoogleMaps": "Pogledajte lokaciju u Google mapama",
+    "celebrationMessage": "Radujemo se što ćemo ovaj poseban trenutak podijeliti s vama.",
+    "transport": [
+      "Transport",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutGuests": "O gostima",
+    "scheduleTitle": "Raspored vjenčanja",
+    "scheduleFallback": "Detaljan raspored će uskoro biti objavljen.",
+    "dressCode": [
+      "Dress code",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": "Biće saopšteno kasnije.",
+    "aboutKids": "O djeci",
+    "ourStory": "Naša priča",
+    "storyStarted": "Kako je sve počelo",
+    "storyFallback": "Priča će biti podijeljena uskoro.",
+    "gifts": "Pokloni",
+    "bestGift": "Vaše prisustvo je najbolji poklon",
+    "giftsFallback": "Informacije o poklonu bit će podijeljene uskoro.",
+    "bankDetails": "Bankovni podaci",
+    "accommodation": "Smještaj",
+    "whereToStay": "Gdje odsjesti",
+    "accommodationFallback": "Informacije o smještaju bit će podijeljene uskoro.",
+    "footer": "Wedingo · Politika privatnosti na wedingo-6c26a.web.app",
+    "closeWindow": "Zatvori prozor"
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": "Kreni gore",
+    "moveDown": "Pomeri se dole",
+    "title": "Red i vidljivost",
+    "help": "Prevucite da biste promenili redosled, koristite dugmad za pomeranje i uključite ili isključite svaki odeljak."
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": "Odaberite jezik"
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": "1 pratilac",
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "Spain",
+      "Spain",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "westernEurope": "Zapadna Evropa",
+    "nordicEurope": "Nordijska Evropa",
+    "centralEurope": "Centralna Evropa",
+    "southernEurope": "Južna Evropa / Balkan",
+    "easternEurope": "Istočna Evropa / Kavkaz",
+    "eastAsia": "Istočna Azija",
+    "southAsia": "Južna Azija",
+    "southeastAsia": "Jugoistočna Azija",
+    "centralAsia": "Centralna Azija / Bliski istok",
+    "africa": "Afrika",
+    "americas": "Amerike"
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +1262,150 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": "Dnevnik promjena",
+    "close": "Zatvori"
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": "Već postoji aktivna sesija za ovu pozivnicu. ",
+    "tokenInvalid": "Pristupni kod nije važeći.",
+    "enterCode": "Unesite pristupni kod.",
+    "codeVerified": "Kôd je uspješno potvrđen.",
+    "codeVerifyError": "Nije moguće provjeriti kod. ",
+    "enterUserAndCode": "Unesite svoje korisničko ime i pristupni kod.",
+    "invalidCredentials": "Netačno korisničko ime ili kod.",
+    "codeUserMismatch": "Kôd ne odgovara ovom korisniku.",
+    "loginSuccess": "Uspješno ste se prijavili.",
+    "loginError": "Nije moguće provjeriti kod. ",
+    "confirmRequired": "Unesite POTVRDI da generirate novi kod.",
+    "usernameRequired": "Prvo unesite svoje korisničko ime.",
+    "usernameInvalid": "Korisničko ime može sadržavati samo slova i brojeve.",
+    "usernameTooLong": "Korisničko ime ne može biti duže od 50 znakova.",
+    "unauthorizedUser": "Ovaj korisnik nema dozvolu za pristup ovdje.",
+    "tokenGenerated": "Generiran kod. ",
+    "tokenGenerateError": "Nije moguće generirati kod. ",
+    "currentTokenRequired": "Unesite trenutni pristupni kod da generirate novi.",
+    "tokenRenewed": "Generiran novi kod. ",
+    "tokenRenewedAdmin": "Kod obnovljen. ",
+    "superadminNoPermissions": "Ovaj račun nema administrativne dozvole.",
+    "superadminWrongCredentials": "Netačne akreditive.",
+    "superadminTooManyAttempts": "Previše pokušaja. ",
+    "superadminInvalidEmail": "Format e-pošte nije važeći.",
+    "superadminLoginError": "Greška prilikom prijave. Provjerite svoju vezu."
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": "Promjene su sačuvane"
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": "januara",
+    "2": "februar",
+    "3": "mart",
+    "4": "april",
+    "5": "maja",
+    "6": "juna",
+    "7": "jula",
+    "8": "avgust",
+    "9": "septembra",
+    "10": "oktobar",
+    "11": "novembar",
+    "12": "decembar"
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": "Lagane teme",
+    "dark": "Mračne teme",
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": [
+      "Gluten",
+      "Gluten",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lactose": "Laktoza",
+    "nuts": "Orašasti plodovi",
+    "shellfish": "Školjke"
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
+    "addressLine1": "Za naše najdraže",
+    "tapHint": "Dodirnite da otvorite",
     "and": "&",
-    "tapContinue": "Tap to continue"
+    "tapContinue": "Dodirnite za nastavak"
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": "Naše venčanje",
+    "eventTitle": "Vjenčanje {{name}}",
+    "placeUnknown": "Lokacija za potvrdu",
+    "invitationText": "Radujemo se što ćemo s vama proslaviti ovaj poseban trenutak.",
+    "timeLabel": "vrijeme:",
+    "placeLabel": "Mjesto održavanja:"
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": "Elegantan i svetao, sa zlatnim akcentima.",
+    "forest": "Prirodan i trijezan sa mekim zelenilom.",
+    "rose": "Topao i delikatan, sa ružičastim nijansama.",
+    "linen-soft": "Lagano i neutralno, sa spokojnim i bezvremenskim prisustvom.",
+    "blush-pearl": "Meko i romantično, biserno ružičastih tonova.",
+    "lavender-mist": "Svježe i spokojno, s nijansama lavande i ljubičaste boje.",
+    "champagne-bubble": "Svetao i svečan, sa toplim zlatnim iskricama.",
+    "amber-night": "Tamno i elegantno, sa jantarnim i zlatnim naglascima.",
+    "onyx-gold": "Dubok i sofisticiran, sa intenzivnim zlatom na tamnoj pozadini.",
+    "midnight-royal": "Veoma tamno plava sa intenzivnim zlatnim i svečanim prisustvom.",
+    "burgundy-velvet": "Topao i obavijajući, sa crvenim vinom i zlatnim šljokicama.",
+    "sapphire-night": "Duboko plava sa srebrnim akcentima i spokojnim prisustvom.",
+    "emerald-grove": "Duboka prirodna zelena sa zlatnim i elegantnim nijansama.",
+    "plum-twilight": "Intenzivno ljubičasta sa ružičastim i romantičnim šljokicama.",
+    "rainbow": "Proslava raznolike ljubavi sa duginim bojama.",
+    "trans": "Plava, ružičasta i bijela u znak počasti trans zastavi.",
+    "nonbinary": "Žuta, bijela, ljubičasta i crna za nebinarnu zastavu.",
+    "lesbian": "Narandžasta, bijela i ružičasta lezbijska zastava.",
+    "bi": "Ružičasta, ljubičasta i plava bi zastave.",
+    "pan": "Ružičasta, žuta i plava zastavice.",
+    "ace": "Crna, siva, bijela i ljubičasta aseksualna zastava."
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": "Dobrodošli sa igralištem",
+      "supervised": "Dobrodošli pod nadzorom",
+      "adultOnly": "Samo za odrasle"
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": "Nema podataka",
+    "total": "ukupno",
+    "barChart": "Trakasti grafikon prisustva",
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

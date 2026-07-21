@@ -11,20 +11,20 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": "Sichtbar",
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": "Etwas ist schief gelaufen",
+      "message": "Bitte laden Sie die Seite neu, um es erneut zu versuchen.",
+      "reload": "Seite neu laden"
     },
     "toast": {
-      "close": "Close"
+      "close": "Schließen"
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": "Zum Hauptinhalt springen",
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": "Verwaltungsleiste",
+      "fallback": "Verwaltung"
     }
   },
   "landing": {
@@ -56,7 +56,7 @@
     "missing": "Noch",
     "todayIsTheDay": "Heute ist der große Tag!",
     "sectionLabel": "Titel",
-    "eyebrow": "Our Wedding"
+    "eyebrow": "Unsere Hochzeit"
   },
   "details": {
     "sectionLabel": "Datum und Ort",
@@ -106,8 +106,8 @@
     "next": "Weiter",
     "thumbnailAria": "Foto {{number}}",
     "thumbnailAlt": "Miniaturansicht eines Galeriefotos",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": "Bildergalerie, zum Navigieren verwenden Sie die Pfeiltasten",
+    "lightboxLabel": "Vergrößertes Bild"
   },
   "rsvp": {
     "sectionLabel": "Rückmeldung",
@@ -122,7 +122,7 @@
     "menuCarne": "Fleisch",
     "menuPescado": "Fisch",
     "menuVegano": "Vegan/Vegetarisch",
-    "postre": "Dessert",
+    "postre": "Nachtisch",
     "menuLabel": "Menü",
     "allergiesLegend": "Allergien und Unverträglichkeiten",
     "allergiesPlaceholder": "Weitere Allergie (bitte angeben)",
@@ -144,10 +144,10 @@
       "birthDateRequired": "Geben Sie Ihr Geburtsdatum ein.",
       "ageUnder14": "Sie sind unter 14 Jahren. Sie benötigen die Einwilligung Ihrer Eltern oder Erziehungsberechtigten.",
       "healthConsentRequired": "Sie müssen der Verarbeitung Ihrer Gesundheitsdaten zustimmen.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "menuHeadcountRequired": "Geben Sie mindestens eine Menüoption an.",
+      "guestNamesRequired": "Geben Sie die Namen Ihrer Begleiter ein.",
+      "guestNamesExceed": "Sie können nicht mehr Namen als Begleiter eingeben.",
+      "headcountExceed": "Die Summe der Menüoptionen darf die Anzahl der Begleiter nicht überschreiten."
     },
     "successAttending": "Danke, {{name}}. Ihre Teilnahme wurde registriert.",
     "successNotAttending": "Danke, {{name}}. Es tut uns leid, dass Sie nicht kommen können.",
@@ -158,29 +158,48 @@
     "clearConfirm": "Alle Teilnahmebestätigungen löschen? Diese Aktion kann nicht rückgängig gemacht werden.",
     "clearSuccess": "Teilnahmedatensätze gelöscht.",
     "clearError": "Teilnahmedatensätze konnten nicht gelöscht werden.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "companionsLabel": "Gefährten",
+    "headcountLabel": "Menschen",
+    "headcountHint": "Wie viele Personen für jede Option ({{total}} insgesamt)",
+    "guestNamesLabel": "Gastnamen",
+    "guestNamesHint": "Schreiben Sie den Vor- und Nachnamen jedes Begleiters (max. {{count}})",
+    "guestNamesPlaceholder": "Name1 Nachname1, Name2 Nachname2..."
   },
   "public": {
     "loadingInvitation": "Einladung wird geladen…",
     "notFoundTitle": "Einladung nicht gefunden",
     "notFoundText": "Wir haben keine Einladung mit diesem Link gefunden. Wenn du glaubst, dass ein Fehler vorliegt, kontaktiere bitte die Gastgeber.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "84d48e73ebfa38d4d681515b81e0b72a",
+            "en_de_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Erstelle und teile deine persönliche Hochzeitseinladung.",
     "emptyDescription": "Verwalte die Daten deiner Einladung, teile einen exklusiven Link mit deinen Gästen und erhalte ihre Rückmeldungen.",
     "createLink": "Einladung erstellen",
     "privacyPolicy": "Datenschutzerklärung",
     "terms": "AGB",
     "legalNotice": "Impressum",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": "Dieser Ort konnte nicht gefunden werden.",
+    "locationMapError": "Die Karte konnte nicht geladen werden.",
+    "locationCoordinates": "Koordinaten: {{lat}}, {{lng}}",
+    "mapPreviewAlt": "Kartenvorschau am angegebenen Standort.",
+    "locationSet": "Standort konfiguriert"
   },
   "setup": {
     "loadingTitle": "Einladung wird geladen",
@@ -213,7 +232,13 @@
     "usernameHint": "Verwende Buchstaben und Zahlen. Du brauchst ihn, um dich nach Ablauf der Sitzung wieder anzumelden.",
     "firstNameLabel": "Erster Partner",
     "secondNameLabel": "Zweiter Partner",
-    "namePlaceholder": "Name",
+    "namePlaceholder": [
+      "Name",
+      "Name",
+      null,
+      null,
+      10
+    ],
     "godparent1Label": "Erster Pate/Patin",
     "godparent2Label": "Zweiter Pate/Patin",
     "godparentsHint": "Wenn du einen Namen eingibst, ist der andere ebenfalls erforderlich.",
@@ -279,7 +304,7 @@
     "menuPescadoPlaceholder": "Beschreibe das Fischmenü...",
     "menuVeganoLabel": "Veganes/vegetarisches Menü",
     "menuVeganoPlaceholder": "Beschreibe das vegane Menü...",
-    "postreLabel": "Dessert *",
+    "postreLabel": "Nachtisch *",
     "postrePlaceholder": "Beschreibe das Dessert",
     "menuRequiredText": "Pflicht: Dessert und mindestens ein Hauptmenü.",
     "menuTextoPlaceholder": "Beschreibe das Menü: Vorspeise, Hauptgericht, Dessert...",
@@ -308,37 +333,37 @@
     "galleryUploadFailed": "Die Fotos konnten nicht hochgeladen werden.",
     "noValidFiles": "Keine gültigen Dateien. Maximal 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": "Laden Sie eine Audiodatei hoch, um sie auf dem Cover abzuspielen (MP3, WAV, OGG, M4A – max. 5 MB).",
+    "audioUploadTitle": "Audiodatei hochladen",
+    "audioUploadSubtitle": "MP3, WAV, OGG oder M4A – maximal 5 MB",
+    "audioFormatError": "Audioformat wird nicht unterstützt. ",
+    "audioEmptyError": "Die Audiodatei ist leer.",
+    "audioSizeError": "Die Audiodatei überschreitet die 5-MB-Grenze.",
+    "audioReadError": "Fehler beim Lesen der Audiodatei.",
+    "errorEmptyFile": "Die Datei ist leer. ",
+    "galleryDescriptionPlaceholder": "Bildbeschreibung...",
+    "galleryMaxReached": "Maximal {{max}} Bilder in der Galerie.",
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": "{{total}} Foto(s) werden hochgeladen...",
+    "photoUploading": "Foto wird hochgeladen...",
+    "replaceImage": "Foto ändern",
+    "galleryDescriptionSaveFailed": "Fehler beim Speichern der Beschreibung",
+    "galleryDescriptionSaved": "Beschreibung gespeichert",
+    "currentMusic": "Ausgewählte Musik",
+    "removeMusic": "Musik entfernen",
+    "previewing": "Spielen...",
+    "preview": "Vorschau",
+    "select": "Wählen",
+    "selected": "Ausgewählt"
   },
   "admin": {
     "tabs": {
-      "panel": "Dashboard",
+      "panel": "Armaturenbrett",
       "invitation": "Einladung",
       "attendance": "Rückmeldungen",
       "share": "Teilen",
       "access": "Zugang",
-      "support": "Support"
+      "support": "Unterstützung"
     },
     "privateArea": "Privater Bereich",
     "manageInvitation": "Verwalte deine Hochzeitseinladung",
@@ -348,14 +373,39 @@
     "pdfConfirmed": "zugesagt",
     "pdfNotAttending": "abgesagt",
     "pdfResponses": "Antworten",
-    "pdfTableName": "Name",
+    "pdfTableName": [
+      "Name",
+      "Name",
+      null,
+      null,
+      10
+    ],
     "pdfTableAttendance": "Teilnahme",
     "pdfTableCompanions": "Begleitungen",
     "pdfTableDiet": "Ernährung",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Admin",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "84d48e73ebfa38d4d681515b81e0b72a",
+            "en_de_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": "Einladung ansehen",
+    "logout": "Abmelden"
   },
   "panel": {
     "confirmed": "Zugesagt",
@@ -395,7 +445,13 @@
     "notAttending": "Nicht dabei",
     "statsLine": "{{yes}} Zusagen · {{no}} Absagen · {{companions}} Begleitungen · {{diet}} mit besonderen Essenswünschen",
     "dietarySummary": "Ernährungswünsche ({{count}})",
-    "tableName": "Name",
+    "tableName": [
+      "Name",
+      "Name",
+      null,
+      null,
+      10
+    ],
     "tableAttendance": "Teilnahme",
     "tableCompanions": "Begleitungen",
     "tableDiet": "Essensinfo",
@@ -417,9 +473,47 @@
     "generateMessage": "Andere Nachricht generieren",
     "copyMessage": "Nachricht kopieren",
     "shareVia": "Teilen über",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "84d48e73ebfa38d4d681515b81e0b72a",
+            "en_de_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": "Telegramm",
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "84d48e73ebfa38d4d681515b81e0b72a",
+            "en_de_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Drucken",
     "printPdf": "Drucken / PDF speichern",
     "linkCopied": "Link kopiert.",
@@ -438,7 +532,7 @@
     "deleteInvitation": "Meine Einladung und alle meine Daten löschen"
   },
   "support": {
-    "title": "Support",
+    "title": "Unterstützung",
     "description": "Wenn du Probleme oder Fragen zur Einladung hast, kannst du den Entwickler kontaktieren:",
     "email": "E-Mail: adriancl2001@gmail.com",
     "rightsTitle": "Deine Rechte",
@@ -448,7 +542,26 @@
     "rightsHint": "Dein E-Mail-Client wird mit einer vorbereiteten Vorlage geöffnet. Du kannst auch direkt an adriancl2001@gmail.com schreiben.",
     "ccpaTitle": "CCPA / CPRA (Kalifornien)",
     "ccpaText": "Wedingo verkauft keine personenbezogenen Daten. Die erhobenen Daten werden ausschließlich für die Verwaltung der Einladung genutzt. Wenn du in Kalifornien wohnst, hast du das Recht, die Löschung deiner Daten zu beantragen und wirst nicht benachteiligt, wenn du deine Rechte ausübst.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "84d48e73ebfa38d4d681515b81e0b72a",
+            "en_de_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Webanwendung zur Verwaltung von Hochzeitseinladungen.",
     "copyright": "© {{year}} Adrián Carrasco López. Alle Rechte vorbehalten.",
     "deleteEmailSubject": "Antrag auf Datenlöschung - Wedingo",
@@ -518,24 +631,43 @@
     "deleteFailed": "Die Einladung konnte nicht gelöscht werden. Bitte versuche es erneut.",
     "configLoadFailed": "Die Einstellungen konnten nicht geladen werden. Bitte überprüfe deine Verbindung und versuche es erneut.",
     "invalidLink": "Der Einladungslink ist ungültig.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": "Unterkunftsinformationen dürfen nicht länger als 2000 Zeichen sein.",
+    "menuTextoTooLong": "Die Menübeschreibung darf 2000 Zeichen nicht überschreiten.",
+    "uploadImageFailed": "Das Bild konnte nicht verarbeitet werden. ",
+    "readImageFailed": "Die Bilddatei konnte nicht gelesen werden.",
+    "encryptFailed": "Die Bildverschlüsselung ist fehlgeschlagen.",
+    "imageTooLarge": "Das Bild ist auch nach der Komprimierung zu groß.",
+    "fileEmpty": "Die Datei ist leer. "
   },
   "superadmin": {
     "tabs": {
-      "dashboard": "Dashboard",
+      "dashboard": "Armaturenbrett",
       "invitations": "Einladungen",
-      "tokens": "Tokens",
+      "tokens": "Token",
       "session": "Sitzung",
-      "compliance": "Compliance",
+      "compliance": "Einhaltung",
       "data": "Datos"
     },
-    "superadmin": "Superadmin",
+    "superadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "84d48e73ebfa38d4d681515b81e0b72a",
+            "en_de_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "controlPanel": "Systemsteuerung",
     "managePlatform": "Verwalte die Wedingo-Plattform",
     "dashboardLoading": "Statistiken werden geladen...",
@@ -561,7 +693,26 @@
     "invitationsCount": "{{count}} Einladungen · {{size}} belegt",
     "noResultsFilter": "Mit diesem Kriterium wurden keine Einladungen gefunden.",
     "noInvitations": "Es gibt noch keine Einladungen.",
-    "tableToken": "Token",
+    "tableToken": [
+      "Token",
+      "Token",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "84d48e73ebfa38d4d681515b81e0b72a",
+            "en_de_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "tableTheme": "Design",
     "tableDate": "Hochzeitsdatum",
     "tableActions": "Aktionen",
@@ -588,12 +739,50 @@
     "tokenCleanError": "Die Tokens konnten nicht bereinigt werden.",
     "tokenLoadError": "Die Tokens konnten nicht geladen werden.",
     "accountEmail": "E-Mail: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "84d48e73ebfa38d4d681515b81e0b72a",
+            "en_de_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Aktiv",
     "sessionInactive": "Inaktiv",
     "sessionLabel": "Lokale Sitzung: {{status}}",
     "sessionType": "Typ: {{type}}",
-    "sessionTypeSuperadmin": "Superadmin",
+    "sessionTypeSuperadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "84d48e73ebfa38d4d681515b81e0b72a",
+            "en_de_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "sessionTypeSetup": "Einrichtung",
     "sessionTypeAdmin": "Administrator",
     "sessionExpires": "Läuft ab: {{date}}",
@@ -615,10 +804,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Token",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "84d48e73ebfa38d4d681515b81e0b72a",
+              "en_de_2023q1.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVPs",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "84d48e73ebfa38d4d681515b81e0b72a",
+              "en_de_2023q1.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +863,8 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": "E-Mail",
+    "passwordLabel": "Passwort"
   },
   "compliance": {
     "title": "Verzeichnis von Verarbeitungstätigkeiten (Art. 30 DSGVO)",
@@ -659,7 +886,26 @@
     "row2Basis": "Einwilligung (Art. 6.1.a, 9.2.a DSGVO)",
     "row2Purpose": "Verwaltung der Gästeliste und des Menüs",
     "row2Retention": "12 Monate nach der Veranstaltung",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "84d48e73ebfa38d4d681515b81e0b72a",
+            "en_de_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Bilder hochladen",
     "row3Data": "Hochzeitsfotos (AES-256-GCM-verschlüsselt)",
     "row3Basis": "Einwilligung (Art. 6.1.a DSGVO)",
@@ -677,7 +923,26 @@
     "row5Basis": "Rechtliche Verpflichtung (Art. 6.1.c DSGVO)",
     "row5Purpose": "Protokollierung administrativer Tätigkeiten",
     "row5Retention": "3 Jahre",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "84d48e73ebfa38d4d681515b81e0b72a",
+            "en_de_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Internationale Übermittlungen",
     "internationalText": "Die Daten werden auf Google-Cloud-Servern in der Region eur3 (Frankfurt, Deutschland) gespeichert. Google LLC (USA) fungiert als Auftragsverarbeiter im Rahmen einer DPA gemäß Art. 28 DSGVO. Übermittlungen in die USA stützen sich auf:",
     "scc": "Standardvertragsklauseln (SCC) - Durchführungsbeschluss 2021/914",
@@ -694,11 +959,23 @@
     "title": "Barrierefreiheit",
     "close": "Schließen",
     "fontSize": "Schriftgröße",
-    "fontNormal": "Normal",
+    "fontNormal": [
+      "Normal",
+      "Normal",
+      null,
+      null,
+      2
+    ],
     "fontLarge": "Groß",
     "fontExtraLarge": "Extra groß",
     "lineSpacing": "Zeilenabstand",
-    "lineNormal": "Normal",
+    "lineNormal": [
+      "Normal",
+      "Normal",
+      null,
+      null,
+      2
+    ],
     "lineWide": "Breit",
     "lineVeryWide": "Sehr breit",
     "highContrast": "Hoher Kontrast",
@@ -714,8 +991,8 @@
     "noMusic": "Keine Musik",
     "loadError": "Fehler beim Laden",
     "label": "Musik",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "soundCloudNote": "SoundCloud-Titel – zum Abspielen geöffnet",
+    "openInSoundCloud": "In SoundCloud öffnen"
   },
   "print": {
     "preparing": "Druck wird vorbereitet…",
@@ -725,7 +1002,13 @@
     "celebrationTime": "Uhrzeit der Feier: ",
     "viewInGoogleMaps": "Auf Google Maps ansehen",
     "celebrationMessage": "Wir freuen uns, diesen besonderen Moment mit Ihnen zu teilen.",
-    "transport": "Transport",
+    "transport": [
+      "Transport",
+      "Transport",
+      null,
+      null,
+      2
+    ],
     "aboutGuests": "Über die Gäste",
     "scheduleTitle": "Zeitplan der Feier",
     "scheduleFallback": "Der detaillierte Zeitplan wird bald mitgeteilt.",
@@ -755,22 +1038,22 @@
     "label": "Sprache auswählen"
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": "1 Begleiter",
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": "Spanien",
+    "westernEurope": "Westeuropa",
+    "nordicEurope": "Nordisches Europa",
+    "centralEurope": "Mitteleuropa",
+    "southernEurope": "Südeuropa / Balkan",
+    "easternEurope": "Osteuropa / Kaukasus",
+    "eastAsia": "Ostasien",
+    "southAsia": "Südasien",
+    "southeastAsia": "Südostasien",
+    "centralAsia": "Zentralasien / Naher Osten",
+    "africa": "Afrika",
+    "americas": "Amerika"
   },
   "countdown": {
     "year_one": "{{count}} Jahr",
@@ -824,75 +1107,124 @@
     "1": "Januar",
     "2": "Februar",
     "3": "März",
-    "4": "April",
+    "4": [
+      "April",
+      "April",
+      null,
+      null,
+      2
+    ],
     "5": "Mai",
     "6": "Juni",
     "7": "Juli",
-    "8": "August",
-    "9": "September",
+    "8": [
+      "August",
+      "August",
+      null,
+      null,
+      2
+    ],
+    "9": [
+      "September",
+      "September",
+      null,
+      null,
+      2
+    ],
     "10": "Oktober",
-    "11": "November",
+    "11": [
+      "November",
+      "November",
+      null,
+      null,
+      10
+    ],
     "12": "Dezember"
   },
   "themeGroups": {
     "light": "Helle Themen",
     "dark": "Dunkle Themen",
-    "lgbtiq": "LGTBIQ+"
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "84d48e73ebfa38d4d681515b81e0b72a",
+            "en_de_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
+    "gluten": [
+      "Gluten",
+      "Gluten",
+      null,
+      null,
+      2
+    ],
     "lactose": "Laktose",
     "nuts": "Baumnüsse",
     "shellfish": "Schalentiere"
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
+    "addressLine1": "An unsere Liebsten",
+    "tapHint": "Zum Öffnen tippen",
     "and": "&",
-    "tapContinue": "Tap to continue"
+    "tapContinue": "Tippen Sie, um fortzufahren"
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": "Unsere Hochzeit",
+    "eventTitle": "Hochzeit von {{names}}",
+    "placeUnknown": "Standort muss bestätigt werden",
+    "invitationText": "Wir freuen uns darauf, diesen besonderen Moment mit Ihnen zu feiern.",
+    "timeLabel": "Zeit:",
+    "placeLabel": "Veranstaltungsort:"
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": "Elegant und hell, mit goldenen Akzenten.",
+    "forest": "Natürlich und nüchtern mit sanften Grüntönen.",
+    "rose": "Warm und zart, mit rosa Farbtönen.",
+    "linen-soft": "Leicht und neutral, mit einer ruhigen und zeitlosen Präsenz.",
+    "blush-pearl": "Sanft und romantisch, mit perlmuttfarbenen Rosatönen.",
+    "lavender-mist": "Frisch und heiter, mit Lavendel- und Lilatönen.",
+    "champagne-bubble": "Hell und festlich, mit warmen goldenen Glitzern.",
+    "amber-night": "Dunkel und elegant, mit bernsteinfarbenen und goldenen Reflexen.",
+    "onyx-gold": "Tief und raffiniert, mit intensivem Gold auf dunklem Hintergrund.",
+    "midnight-royal": "Sehr dunkles Blau mit intensivem Gold und feierlicher Präsenz.",
+    "burgundy-velvet": "Warm und umhüllend, mit Rotwein und goldenem Glanz.",
+    "sapphire-night": "Tiefes Blau mit silbernen Akzenten und ruhiger Präsenz.",
+    "emerald-grove": "Tiefes natürliches Grün mit goldenen und eleganten Farbtönen.",
+    "plum-twilight": "Intensives Lila mit rosa und romantischen Glitzern.",
+    "rainbow": "Feier der vielfältigen Liebe mit Regenbogenfarben.",
+    "trans": "Blau, Rosa und Weiß als Hommage an die Transgender-Flagge.",
+    "nonbinary": "Gelb, Weiß, Lila und Schwarz für die nicht-binäre Flagge.",
+    "lesbian": "Orange, Weiß und Rosa der lesbischen Flagge.",
+    "bi": "Rosa, Lila und Blau der Bi-Flagge.",
+    "pan": "Rosa, Gelb und Blau der Pan-Flagge.",
+    "ace": "Schwarz, Grau, Weiß und Lila der asexuellen Flagge."
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": "Willkommen mit Spielbereich",
+      "supervised": "Willkommen unter Aufsicht",
+      "adultOnly": "Nur für Erwachsene"
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": "Keine Daten",
+    "total": "gesamt",
+    "barChart": "Anwesenheitsbalkendiagramm",
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

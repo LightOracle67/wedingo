@@ -11,20 +11,26 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": "Synlig",
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": "Noget gik galt",
+      "message": "Genindlæs siden for at prøve igen.",
+      "reload": "Genindlæs siden"
     },
     "toast": {
-      "close": "Close"
+      "close": "Tæt"
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": "Spring til hovedindhold",
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": "Administrationsbjælke",
+      "fallback": [
+        "Administration",
+        "Administration",
+        null,
+        null,
+        2
+      ]
     }
   },
   "landing": {
@@ -56,7 +62,7 @@
     "missing": "Mangler",
     "todayIsTheDay": "I dag er den store dag!",
     "sectionLabel": "Forside",
-    "eyebrow": "Our Wedding"
+    "eyebrow": "Vores bryllup"
   },
   "details": {
     "sectionLabel": "Dato og sted",
@@ -66,7 +72,7 @@
     "placePending": "Stedet for fejringen vises her.",
     "welcomeWithTime": "Vi glæder os til at dele dette særlige øjeblik med dig. Vi begynder kl. {{time}}. Længere nede finder du kortet.",
     "welcomeWithoutTime": "Vi glæder os til at dele dette særlige øjeblik med dig. Længere nede finder du kortet.",
-    "transport": "Transport",
+    "transport": "Transportere",
     "addToCalendar": "Tilføj til kalender",
     "viewGoogleMaps": "Se i Google Maps",
     "viewAppleMaps": "Se i Apple Maps"
@@ -106,8 +112,8 @@
     "next": "Næste",
     "thumbnailAria": "Foto {{number}}",
     "thumbnailAlt": "Galleri-miniature",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": "Billedgalleri, brug piletasterne til at navigere",
+    "lightboxLabel": "Forstørret billede"
   },
   "rsvp": {
     "sectionLabel": "Tilbagemelding",
@@ -122,8 +128,20 @@
     "menuCarne": "Kød",
     "menuPescado": "Fisk",
     "menuVegano": "Vegansk/Vegetarisk",
-    "postre": "Dessert",
-    "menuLabel": "Menu",
+    "postre": [
+      "Dessert",
+      "Dessert",
+      null,
+      null,
+      2
+    ],
+    "menuLabel": [
+      "Menu",
+      "Menu",
+      null,
+      null,
+      2
+    ],
     "allergiesLegend": "Allergier og intolerancer",
     "allergiesPlaceholder": "Anden allergi (angiv)",
     "allergiesHint": "Angiv kun fødevareallergier og -intolerancer. Indtast ikke uopfordrede helbredsoplysninger.",
@@ -138,49 +156,68 @@
     "ageUnder14Warning": "Du er under 14 år. Du har brug for dine forældres eller værgers samtykke.",
     "parentalConsent": "Mine forældre eller værger giver samtykke til min deltagelse",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": "Indtast dit navn for at bekræfte deltagelse.",
+      "menuRequired": "Vælg en menuindstilling.",
+      "privacyRequired": "Du skal acceptere privatlivspolitikken.",
+      "birthDateRequired": "Indtast din fødselsdato.",
+      "ageUnder14": "Du er under 14 år. ",
+      "healthConsentRequired": "Du skal give samtykke til behandlingen af ​​dine helbredsoplysninger.",
+      "menuHeadcountRequired": "Angiv mindst én menufunktion.",
+      "guestNamesRequired": "Indtast navnene på dine ledsagere.",
+      "guestNamesExceed": "Du kan ikke indtaste flere navne end ledsagere.",
+      "headcountExceed": "Summen af ​​menuindstillinger kan ikke overstige antallet af ledsagere."
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": "Tak, {{name}}. ",
+    "successNotAttending": "Tak, {{name}}. ",
+    "saveError": "Vi kunne ikke gemme dit svar. ",
+    "withdrawConfirm": "Er du sikker på, at du vil trække dit svar tilbage?",
+    "withdrawSuccess": "Dit svar er blevet trukket tilbage.",
+    "withdrawError": "Dit svar kunne ikke trækkes tilbage. ",
+    "clearConfirm": "Vil du slette alle fremmødebesvarelser? ",
+    "clearSuccess": "Tilstedeværelsesregistrering ryddet.",
+    "clearError": "Kunne ikke rydde fremmøderegistreringer.",
+    "companionsLabel": "Ledsagere",
+    "headcountLabel": "Mennesker",
+    "headcountHint": "Hvor mange personer for hver mulighed ({{total}} i alt)",
+    "guestNamesLabel": "Gæstenavne",
+    "guestNamesHint": "Skriv for- og efternavnet på hver ledsager (maks. {{count}})",
+    "guestNamesPlaceholder": "Navn1 Efternavn1, Navn2 Efternavn2..."
   },
   "public": {
     "loadingInvitation": "Indlæser invitation…",
     "notFoundTitle": "Invitation ikke fundet",
     "notFoundText": "Vi fandt ingen invitation med dette link. Hvis du mener, det er en fejl, så kontakt værterne.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Opret og del din personlige bryllupsinvitation.",
     "emptyDescription": "Administrér dine invitationsoplysninger, del et unikt link med dine gæster, og modtag deres tilbagemeldinger.",
     "createLink": "Opret invitation",
     "privacyPolicy": "Privatlivspolitik",
     "terms": "Vilkår",
     "legalNotice": "Juridisk meddelelse",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": "Kunne ikke finde dette sted.",
+    "locationMapError": "Kunne ikke indlæse kortet.",
+    "locationCoordinates": "Koordinater: {{lat}}, {{lng}}",
+    "mapPreviewAlt": "Forhåndsvisning af kort på det angivne sted.",
+    "locationSet": "Placering konfigureret"
   },
   "setup": {
     "loadingTitle": "Indlæser invitation",
@@ -263,7 +300,7 @@
     "accommodationLabel": "Overnatning",
     "accommodationPlaceholder": "F.eks. Anbefalet hotel: … Rabatkode: …",
     "accommodationHint": "Hoteller, rabatkoder og muligheder for gæsterne.",
-    "transportLabel": "Transport",
+    "transportLabel": "Transportere",
     "transportPlaceholder": "F.eks. Bus fra torvet kl. 17:00. Gratis parkering på stedet.",
     "transportHint": "Transportmuligheder, bustider, parkering osv.",
     "kidsLabel": "Om børn",
@@ -279,7 +316,7 @@
     "menuPescadoPlaceholder": "Beskriv fiskemenuen...",
     "menuVeganoLabel": "Vegansk/vegetarisk menu",
     "menuVeganoPlaceholder": "Beskriv den veganske menu...",
-    "postreLabel": "Dessert *",
+    "postreLabel": "Dessert*",
     "postrePlaceholder": "Beskriv desserten",
     "menuRequiredText": "Påkrævet: dessert og mindst én hovedmenu.",
     "menuTextoPlaceholder": "Beskriv menuen: forret, hovedret, dessert...",
@@ -308,37 +345,43 @@
     "galleryUploadFailed": "Kunne ikke uploade billederne.",
     "noValidFiles": "Ingen gyldige filer. Maks. 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": "Upload en lydfil til afspilning på coveret (MP3, WAV, OGG, M4A — maks. 5 MB).",
+    "audioUploadTitle": "Upload lydfil",
+    "audioUploadSubtitle": "MP3, WAV, OGG eller M4A — maks. 5 MB",
+    "audioFormatError": "Lydformat understøttes ikke. ",
+    "audioEmptyError": "Lydfilen er tom.",
+    "audioSizeError": "Lydfilen overskrider grænsen på 5 MB.",
+    "audioReadError": "Fejl ved læsning af lydfil.",
+    "errorEmptyFile": "Filen er tom. ",
+    "galleryDescriptionPlaceholder": "Billedbeskrivelse...",
+    "galleryMaxReached": "Maksimalt {{max}} billeder i galleriet.",
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": "Uploader {{total}} foto(s)...",
+    "photoUploading": "Uploader billede...",
+    "replaceImage": "Skift billede",
+    "galleryDescriptionSaveFailed": "Fejl ved lagring af beskrivelse",
+    "galleryDescriptionSaved": "Beskrivelse gemt",
+    "currentMusic": "Udvalgt musik",
+    "removeMusic": "Fjern musik",
+    "previewing": "Spiller...",
+    "preview": "Forhåndsvisning",
+    "select": "Vælge",
+    "selected": "Valgt"
   },
   "admin": {
     "tabs": {
       "panel": "Panel",
-      "invitation": "Invitation",
+      "invitation": [
+        "Invitation",
+        "Invitation",
+        null,
+        null,
+        2
+      ],
       "attendance": "Deltagelse",
       "share": "Del",
       "access": "Adgang",
-      "support": "Support"
+      "support": "Støtte"
     },
     "privateArea": "Privat område",
     "manageInvitation": "Administrér din bryllupsinvitation",
@@ -353,9 +396,28 @@
     "pdfTableCompanions": "Ledsagere",
     "pdfTableDiet": "Kost",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Admin",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": "Se invitationen",
+    "logout": "Log ud"
   },
   "panel": {
     "confirmed": "Bekræftede",
@@ -399,7 +461,13 @@
     "tableAttendance": "Deltagelse",
     "tableCompanions": "Ledsagere",
     "tableDiet": "Kostinfo",
-    "tableNote": "Note",
+    "tableNote": [
+      "Note",
+      "Note",
+      null,
+      null,
+      2
+    ],
     "tableDate": "Dato",
     "show": "Vis",
     "total": "{{count}} i alt",
@@ -417,9 +485,53 @@
     "generateMessage": "Generér ny besked",
     "copyMessage": "Kopiér besked",
     "shareVia": "Del via",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "Telegram",
+      "Telegram",
+      null,
+      null,
+      2
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Udskriv",
     "printPdf": "Udskriv / Gem PDF",
     "linkCopied": "Link kopieret.",
@@ -438,7 +550,7 @@
     "deleteInvitation": "Slet min invitation og alle mine data"
   },
   "support": {
-    "title": "Support",
+    "title": "Støtte",
     "description": "Hvis du har problemer eller spørgsmål til invitationen, kan du kontakte udvikleren:",
     "email": "Email: adriancl2001@gmail.com",
     "rightsTitle": "Dine rettigheder",
@@ -448,7 +560,26 @@
     "rightsHint": "Din e-mailklient åbnes med en foruddefineret skabelon. Du kan også skrive til adriancl2001@gmail.com.",
     "ccpaTitle": "CCPA / CPRA (Californien)",
     "ccpaText": "Wedingo sælger ikke personoplysninger. De indsamlede data bruges udelukkende til invitationsadministration. Hvis du er bosiddende i Californien, har du ret til at anmode om sletning af dine data og til ikke at blive diskrimineret for at udøve dine rettigheder.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Webapplikation til administration af bryllupsinvitationer.",
     "copyright": "© {{year}} Adrián Carrasco López. Alle rettigheder forbeholdes.",
     "deleteEmailSubject": "Anmodning om datasletning - Wedingo",
@@ -518,24 +649,49 @@
     "deleteFailed": "Kunne ikke slette invitationen. Prøv igen.",
     "configLoadFailed": "Kunne ikke indlæse konfigurationen. Tjek forbindelsen, og prøv igen.",
     "invalidLink": "Invitationslinket er ugyldigt.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": "Indkvarteringsoplysninger må ikke overstige 2000 tegn.",
+    "menuTextoTooLong": "Menubeskrivelsen må ikke overstige 2000 tegn.",
+    "uploadImageFailed": "Billedet kunne ikke behandles. ",
+    "readImageFailed": "Kunne ikke læse billedfilen.",
+    "encryptFailed": "Billedkryptering mislykkedes.",
+    "imageTooLarge": "Billedet er for stort selv efter komprimering.",
+    "fileEmpty": "Filen er tom. "
   },
   "superadmin": {
     "tabs": {
       "dashboard": "Panel",
       "invitations": "Invitationer",
-      "tokens": "Tokens",
-      "session": "Session",
-      "compliance": "Compliance",
+      "tokens": "Poletter",
+      "session": [
+        "Session",
+        "Session",
+        null,
+        null,
+        2
+      ],
+      "compliance": "Overholdelse",
       "data": "Datos"
     },
-    "superadmin": "Superadmin",
+    "superadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "controlPanel": "Kontrolpanel",
     "managePlatform": "Administrér Wedingo-platformen",
     "dashboardLoading": "Indlæser statistik...",
@@ -561,7 +717,26 @@
     "invitationsCount": "{{count}} invitationer · {{size}} pladser brugt",
     "noResultsFilter": "Ingen invitationer med dette kriterie.",
     "noInvitations": "Der er ingen invitationer endnu.",
-    "tableToken": "Token",
+    "tableToken": [
+      "Token",
+      "Token",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "tableTheme": "Tema",
     "tableDate": "Bryllupsdato",
     "tableActions": "Handlinger",
@@ -587,15 +762,91 @@
     "tokenRevokeError": "Kunne ikke tilbagekalde token.",
     "tokenCleanError": "Kunne ikke rydde tokens.",
     "tokenLoadError": "Kunne ikke indlæse tokens.",
-    "accountEmail": "Email: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountEmail": "E-mail: {{email}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Aktiv",
     "sessionInactive": "Inaktiv",
     "sessionLabel": "Lokal session: {{status}}",
-    "sessionType": "Type: {{type}}",
-    "sessionTypeSuperadmin": "Superadmin",
+    "sessionType": [
+      "Type: {{type}}",
+      "Type: {{type}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sessionTypeSuperadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionTypeSetup": "Opsætning",
-    "sessionTypeAdmin": "Admin",
+    "sessionTypeAdmin": [
+      "Admin",
+      "Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionExpires": "Udløber: {{date}}",
     "logoutButton": "Log ud",
     "firebaseAccount": "For at administrere din superadmin-konto skal du bruge Firebase-konsollen:",
@@ -615,10 +866,29 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Token",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": "Svar",
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +906,8 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": "E-mail",
+    "passwordLabel": "Adgangskode"
   },
   "compliance": {
     "title": "Fortegnelse over behandlingsaktiviteter (GDPR art. 30)",
@@ -653,13 +923,51 @@
     "row1Basis": "Samtykke (GDPR art. 6, stk. 1, litra a)",
     "row1Purpose": "Oprette og personliggøre bryllupsinvitation",
     "row1Retention": "Så længe kontoen er aktiv",
-    "row1Recipients": "Google Cloud (Firestore, hosting)",
+    "row1Recipients": [
+      "Google Cloud (Firestore, hosting)",
+      "Google Cloud (Firestore, hosting)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row2Activity": "Tilbagemelding (RSVP)",
     "row2Data": "Gæstens navn, deltagelse (ja/nej), menuvalg, allergier, helbredsdata",
     "row2Basis": "Samtykke (GDPR art. 6, stk. 1, litra a, art. 9, stk. 2, litra a)",
     "row2Purpose": "Administrere gæsteliste og menu",
     "row2Retention": "12 måneder efter begivenheden",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Billedupload",
     "row3Data": "Bryllupsbilleder (krypteret AES-256-GCM)",
     "row3Basis": "Samtykke (GDPR art. 6, stk. 1, litra a)",
@@ -677,7 +985,7 @@
     "row5Basis": "Retlig forpligtelse (GDPR art. 6, stk. 1, litra c)",
     "row5Purpose": "Registrering af administrative aktiviteter",
     "row5Retention": "3 år",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": "Google Cloud (Firestore revisionslog)",
     "internationalTitle": "Internationale overførsler",
     "internationalText": "Data opbevares på Google Cloud-servere i regionen eur3 (Frankfurt, Tyskland). Google LLC (USA) fungerer som databehandler i henhold til DPA i overensstemmelse med GDPR art. 28. Overførsler til USA er beskyttet af:",
     "scc": "EU-Kommissionens standardkontraktbestemmelser (SCC) - gennemførelsesafgørelse 2021/914",
@@ -691,86 +999,98 @@
     "measureSuperadmin": "Superadmin beskyttet af Firebase Authentication + skjult sti"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": "Tilgængelighed",
+    "close": "Tæt",
+    "fontSize": "Tekststørrelse",
+    "fontNormal": [
+      "Normal",
+      "Normal",
+      null,
+      null,
+      2
+    ],
+    "fontLarge": "Stor",
+    "fontExtraLarge": "Ekstra stor",
+    "lineSpacing": "Linjeafstand",
+    "lineNormal": [
+      "Normal",
+      "Normal",
+      null,
+      null,
+      2
+    ],
+    "lineWide": "Bred",
+    "lineVeryWide": "Meget bred",
+    "highContrast": "Høj kontrast",
+    "reducedMotion": "Reducer bevægelse",
+    "dyslexiaFont": "OpenDyslexic skrifttype",
+    "moreSpacing": "Mere bogstavafstand",
+    "underlineLinks": "Understreg alle links",
+    "bigCursor": "Stor markør",
+    "desaturate": "Gråtoner",
+    "strongFocus": "Synlige fokusindikatorer"
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": "Ingen musik",
+    "loadError": "Fejl ved indlæsning",
+    "label": "Musik",
+    "soundCloudNote": "SoundCloud-spor — åben for at afspille",
+    "openInSoundCloud": "Åbn i SoundCloud"
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": "Forbereder print...",
+    "couplePhoto": "Par foto",
+    "godparentsText": "Med deres fadderes velsignelse",
+    "dateAndPlace": "Dato og sted",
+    "celebrationTime": "Ceremoni tid:",
+    "viewInGoogleMaps": "Se placering i Google Maps",
+    "celebrationMessage": "Vi ser frem til at dele dette særlige øjeblik med dig.",
+    "transport": "Transportere",
+    "aboutGuests": "Om gæsterne",
+    "scheduleTitle": "Bryllupsplan",
+    "scheduleFallback": "Den detaljerede tidsplan vil blive delt snart.",
+    "dressCode": "Dresscode",
+    "dressCodeFallback": "Meddeles senere.",
+    "aboutKids": "Om børn",
+    "ourStory": "Vores historie",
+    "storyStarted": "Hvordan det hele begyndte",
+    "storyFallback": "Historien deles snart.",
+    "gifts": "Gaver",
+    "bestGift": "Dit nærvær er den bedste gave",
+    "giftsFallback": "Gaveoplysninger vil snart blive delt.",
+    "bankDetails": "Bankoplysninger",
+    "accommodation": "Indkvartering",
+    "whereToStay": "Hvor skal man bo",
+    "accommodationFallback": "Oplysninger om overnatning vil snart blive delt.",
+    "footer": "Wedingo · Privatlivspolitik på wedingo-6c26a.web.app",
+    "closeWindow": "Luk vinduet"
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
+    "moveUp": "Flyt op",
+    "moveDown": "Flyt ned",
     "title": "Rækkefølge & synlighed",
     "help": "Træk for at omarrangere, brug knapperne til at flytte, og slå hver sektion til eller fra."
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": "Vælg sprog"
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": "1 ledsager",
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": "Spanien",
+    "westernEurope": "Vesteuropa",
+    "nordicEurope": "Nordisk Europa",
+    "centralEurope": "Centraleuropa",
+    "southernEurope": "Sydeuropa / Balkan",
+    "easternEurope": "Østeuropa / Kaukasus",
+    "eastAsia": "Østasien",
+    "southAsia": "Sydasien",
+    "southeastAsia": "Sydøstasien",
+    "centralAsia": "Centralasien / Mellemøsten",
+    "africa": "Afrika",
+    "americas": "Amerika"
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -791,31 +1111,31 @@
     "close": "Luk"
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": "Der er allerede en aktiv session for denne invitation. ",
+    "tokenInvalid": "Adgangskoden er ikke gyldig.",
+    "enterCode": "Indtast adgangskoden.",
+    "codeVerified": "Koden er bekræftet.",
+    "codeVerifyError": "Kunne ikke bekræfte koden. ",
+    "enterUserAndCode": "Indtast dit brugernavn og adgangskoden.",
+    "invalidCredentials": "Forkert brugernavn eller kode.",
+    "codeUserMismatch": "Koden matcher ikke denne bruger.",
+    "loginSuccess": "Du har logget ind.",
+    "loginError": "Kunne ikke bekræfte koden. ",
+    "confirmRequired": "Skriv CONFIRM for at generere en ny kode.",
+    "usernameRequired": "Indtast dit brugernavn først.",
+    "usernameInvalid": "Brugernavn må kun indeholde bogstaver og tal.",
+    "usernameTooLong": "Brugernavnet må ikke overstige 50 tegn.",
+    "unauthorizedUser": "Denne bruger har ikke adgangstilladelse her.",
+    "tokenGenerated": "Kode genereret. ",
+    "tokenGenerateError": "Kunne ikke generere koden. ",
+    "currentTokenRequired": "Indtast den aktuelle adgangskode for at generere en ny.",
+    "tokenRenewed": "Ny kode genereret. ",
+    "tokenRenewedAdmin": "Kode fornyet. ",
+    "superadminNoPermissions": "Denne konto har ikke administrationstilladelser.",
+    "superadminWrongCredentials": "Forkerte legitimationsoplysninger.",
+    "superadminTooManyAttempts": "For mange forsøg. ",
+    "superadminInvalidEmail": "E-mail-formatet er ikke gyldigt.",
+    "superadminLoginError": "Fejl ved login. Tjek din forbindelse."
   },
   "autosave": {
     "saved": "Ændringer gemt"
@@ -824,75 +1144,119 @@
     "1": "Januar",
     "2": "Februar",
     "3": "Marts",
-    "4": "April",
+    "4": "april",
     "5": "Maj",
     "6": "Juni",
     "7": "Juli",
-    "8": "August",
-    "9": "September",
+    "8": "august",
+    "9": "september",
     "10": "Oktober",
-    "11": "November",
-    "12": "December"
+    "11": "november",
+    "12": "december"
   },
   "themeGroups": {
     "light": "Lyse temaer",
     "dark": "Mørke temaer",
-    "lgbtiq": "LGTBIQ+"
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
+    "gluten": [
+      "Gluten",
+      "Gluten",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "lactose": "Laktose",
     "nuts": "Trænødder",
     "shellfish": "Skaldyr"
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
+    "addressLine1": "Til vores kære",
+    "tapHint": "Tryk for at åbne",
     "and": "&",
-    "tapContinue": "Tap to continue"
+    "tapContinue": "Tryk for at fortsætte"
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": "Vores bryllup",
+    "eventTitle": "Bryllup af {{names}}",
+    "placeUnknown": "Beliggenhed skal bekræftes",
+    "invitationText": "Vi ser frem til at fejre dette særlige øjeblik med dig.",
+    "timeLabel": "Tid:",
+    "placeLabel": "Mødested:"
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": "Elegant og lyst, med gyldne accenter.",
+    "forest": "Naturlig og sober med bløde grøntsager.",
+    "rose": "Varm og delikat, med lyserøde nuancer.",
+    "linen-soft": "Let og neutral, med et fredfyldt og tidløst nærvær.",
+    "blush-pearl": "Blød og romantisk, med perlelyserøde toner.",
+    "lavender-mist": "Frisk og fredfyldt med lavendel og lilla nuancer.",
+    "champagne-bubble": "Lyst og festligt med varme gyldne gnistre.",
+    "amber-night": "Mørk og elegant, med rav og guld highlights.",
+    "onyx-gold": "Dyb og sofistikeret, med intens guld på mørk baggrund.",
+    "midnight-royal": "Meget mørkeblå med intens guld og højtideligt nærvær.",
+    "burgundy-velvet": "Varm og omsluttende, med rødvin og gyldne glimmer.",
+    "sapphire-night": "Dyb blå med sølv accenter og fredfyldt tilstedeværelse.",
+    "emerald-grove": "Dyb naturgrøn med gyldne og elegante nuancer.",
+    "plum-twilight": "Intens lilla med lyserøde og romantiske gnistre.",
+    "rainbow": "Fejring af mangfoldig kærlighed med regnbuefarver.",
+    "trans": "Blå, pink og hvid som hyldest til transflaget.",
+    "nonbinary": "Gul, hvid, lilla og sort for det ikke-binære flag.",
+    "lesbian": "Orange, hvid og pink af det lesbiske flag.",
+    "bi": "Pink, lilla og blå af bi-flaget.",
+    "pan": "Pink, gul og blå af panflaget.",
+    "ace": "Sort, grå, hvid og lilla af det aseksuelle flag."
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": "Velkommen med legeplads",
+      "supervised": "Velkommen under opsyn",
+      "adultOnly": "Kun voksne"
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": "Ingen data",
+    "total": [
+      "total",
+      "total",
+      null,
+      null,
+      2
+    ],
+    "barChart": "Tilstedeværelse søjlediagram",
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

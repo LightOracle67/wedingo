@@ -11,20 +11,20 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": "የሚታይ",
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": "የሆነ ችግር ተፈጥሯል።",
+      "message": "እንደገና ለመሞከር እባክዎ ገጹን እንደገና ይጫኑ።",
+      "reload": "ገጽ እንደገና ጫን"
     },
     "toast": {
-      "close": "Close"
+      "close": "ገጠመ"
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": "ወደ ዋናው ይዘት ዝለል",
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": "የአስተዳደር ባር",
+      "fallback": "አስተዳደር"
     }
   },
   "landing": {
@@ -55,8 +55,8 @@
     "todayIsWedding": "ዛሬ ሰርጉ ነው",
     "missing": "ቀረ",
     "todayIsTheDay": "ዛሬ ታላቁ ቀን ነው!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": "ሽፋን",
+    "eyebrow": "የእኛ ሰርግ"
   },
   "details": {
     "sectionLabel": "ቀን እና ቦታ",
@@ -106,8 +106,8 @@
     "next": "የሚቀጥለው",
     "thumbnailAria": "ፎቶ {{number}}",
     "thumbnailAlt": "የማዕከለ-ስዕላት ፎቶ ድንክ",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": "የምስል ማዕከለ-ስዕላት፣ ለማሰስ የቀስት ቁልፎችን ተጠቀም",
+    "lightboxLabel": "የሰፋ ምስል"
   },
   "rsvp": {
     "sectionLabel": "የተገኝነት ማረጋገጫ",
@@ -138,49 +138,49 @@
     "ageUnder14Warning": "ከ14 ዓመት በታች ነዎት። የወላጆችዎ ወይም የአሳዳጊዎችዎ ፈቃድ ያስፈልጋል።",
     "parentalConsent": "ወላጆቼ ወይም አሳዳጊዎቼ በእኔ ተሳትፎ ይስማማሉ",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": "መገኘቱን ለማረጋገጥ ስምዎን ያስገቡ።",
+      "menuRequired": "የምናሌ አማራጭ ይምረጡ።",
+      "privacyRequired": "የግላዊነት ፖሊሲን መቀበል አለብህ።",
+      "birthDateRequired": "የልደት ቀንዎን ያስገቡ።",
+      "ageUnder14": "ዕድሜዎ ከ14 ዓመት በታች ነው። ",
+      "healthConsentRequired": "የጤና መረጃዎን ለማስኬድ መስማማት አለቦት።",
+      "menuHeadcountRequired": "ቢያንስ አንድ ምናሌን ያመልክቱ።",
+      "guestNamesRequired": "የባልደረባዎችዎን ስም ያስገቡ።",
+      "guestNamesExceed": "ከባልደረባዎች በላይ ስሞችን ማስገባት አይችሉም።",
+      "headcountExceed": "የምናሌ አማራጮች ድምር ከተጓዳኞች ብዛት መብለጥ አይችልም።"
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": "አመሰግናለሁ፣ {{name}}። ",
+    "successNotAttending": "አመሰግናለሁ፣ {{name}}። ",
+    "saveError": "ምላሽህን ማስቀመጥ አልቻልንም። ",
+    "withdrawConfirm": "እርግጠኛ ነዎት ምላሽዎን ማንሳት ይፈልጋሉ?",
+    "withdrawSuccess": "ምላሽህ ተሰርዟል።",
+    "withdrawError": "ምላሽዎን ማንሳት አልተቻለም። ",
+    "clearConfirm": "ሁሉም የመገኘት ምላሾች ይሰረዙ? ",
+    "clearSuccess": "የመገኘት መዝገቦች ጸድተዋል።",
+    "clearError": "የመገኘት መዝገቦችን ማጽዳት አልተቻለም።",
+    "companionsLabel": "ሰሃቦች",
+    "headcountLabel": "ሰዎች",
+    "headcountHint": "ለእያንዳንዱ አማራጭ ስንት ሰዎች ({{total}} አጠቃላይ)",
+    "guestNamesLabel": "የእንግዳ ስሞች",
+    "guestNamesHint": "የእያንዳንዱን ጓደኛ የመጀመሪያ እና የመጨረሻ ስም ይፃፉ (ከፍተኛ {{count}})",
+    "guestNamesPlaceholder": "ስም1 የአያት ስም1፣ ስም2 የአያት ስም2..."
   },
   "public": {
     "loadingInvitation": "ግብዣ በመጫን ላይ...",
     "notFoundTitle": "ግብዣ አልተገኘም",
     "notFoundText": "በዚህ ማገናኛ ግብዣ አላገኘንም። ስህተት ነው ብለው ካመኑ አስተናጋጆቹን ያግኙ።",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": "ሰርግ",
     "emptyText": "የግል የሰርግ ግብዣዎን ይፍጠሩ እና ያጋሩ።",
     "emptyDescription": "የግብዣዎን ውሂብ ያስተዳድሩ፣ ልዩ ማገናኛን ለእንግዶችዎ ያጋሩ እና የተገኝነት ማረጋገጫቸውን ይቀበሉ።",
     "createLink": "ግብዣ ይፍጠሩ",
     "privacyPolicy": "የግላዊነት ፖሊሲ",
     "terms": "ውሎች",
     "legalNotice": "የህግ ማስታወቂያ",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": "ይህን ቦታ ማግኘት አልተቻለም።",
+    "locationMapError": "ካርታውን መጫን አልተቻለም።",
+    "locationCoordinates": "መጋጠሚያዎች፡ {{lat}}፣ {{lng}}",
+    "mapPreviewAlt": "በተጠቀሰው ቦታ ላይ የካርታ ቅድመ እይታ.",
+    "locationSet": "አካባቢ ተዋቅሯል።"
   },
   "setup": {
     "loadingTitle": "ግብዣ በመጫን ላይ",
@@ -308,28 +308,28 @@
     "galleryUploadFailed": "ፎቶዎቹን መጫን አልተቻለም።",
     "noValidFiles": "ምንም ትክክለኛ ፋይል የለም። ቢበዛ 20 ሜባ፣ JPG/PNG።",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": "በሽፋኑ ላይ ለማጫወት የድምጽ ፋይል ይስቀሉ (MP3፣ WAV፣ OGG፣ M4A — ቢበዛ 5 ሜባ)።",
+    "audioUploadTitle": "የድምጽ ፋይል ስቀል",
+    "audioUploadSubtitle": "MP3፣ WAV፣ OGG ወይም M4A — ቢበዛ 5 ሜባ",
+    "audioFormatError": "የድምጽ ቅርጸት አይደገፍም። ",
+    "audioEmptyError": "የድምጽ ፋይል ባዶ ነው።",
+    "audioSizeError": "የድምጽ ፋይል ከ5 ሜባ ገደቡ አልፏል።",
+    "audioReadError": "የድምጽ ፋይል በማንበብ ላይ ስህተት።",
+    "errorEmptyFile": "ፋይሉ ባዶ ነው። ",
+    "galleryDescriptionPlaceholder": "የምስል መግለጫ...",
+    "galleryMaxReached": "በጋለሪ ውስጥ ከፍተኛው {{max}} ምስሎች።",
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": "{{ጠቅላላ}} ፎቶ(ዎች) በመስቀል ላይ...",
+    "photoUploading": "ፎቶ በመስቀል ላይ...",
+    "replaceImage": "ፎቶ ቀይር",
+    "galleryDescriptionSaveFailed": "መግለጫ ማስቀመጥ ላይ ስህተት",
+    "galleryDescriptionSaved": "መግለጫ ተቀምጧል",
+    "currentMusic": "የተመረጠ ሙዚቃ",
+    "removeMusic": "ሙዚቃን ያስወግዱ",
+    "previewing": "በመጫወት ላይ...",
+    "preview": "ቅድመ እይታ",
+    "select": "ይምረጡ",
+    "selected": "ተመርጧል"
   },
   "admin": {
     "tabs": {
@@ -353,9 +353,9 @@
     "pdfTableCompanions": "አጃቢዎች",
     "pdfTableDiet": "አመጋገብ",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": "Wedingo · አስተዳዳሪ",
+    "viewInvitation": "ግብዣ ይመልከቱ",
+    "logout": "ውጣ"
   },
   "panel": {
     "confirmed": "የተረጋገጡ",
@@ -384,7 +384,7 @@
     "confirms": "ያረጋግጣሉ",
     "declines": "አይቀበሉም",
     "pending": "በመጠባበቅ ላይ",
-    "visits_one": "1 visit",
+    "visits_one": "1 ጉብኝት",
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +417,28 @@
     "generateMessage": "ሌላ መልእክት ፍጠር",
     "copyMessage": "መልእክት ቅዳ",
     "shareVia": "በኩል አጋራ",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": "ቴሌግራም",
+    "sms": "ኤስኤምኤስ",
     "print": "አትም",
     "printPdf": "አትም / PDF አስቀምጥ",
     "linkCopied": "ማገናኛ ተቀድቷል።",
@@ -448,7 +467,7 @@
     "rightsHint": "የኢሜል ደንበኛዎ በቅድመ-የተወሰነ አብነት ይከፈታል። እንዲሁም adriancl2001@gmail.com ላይ መጻፍ ይችላሉ።",
     "ccpaTitle": "CCPA / CPRA (ካሊፎርኒያ)",
     "ccpaText": "Wedingo የግል ውሂብ አይሸጥም። የተሰበሰበው ውሂብ ለግብዣ አስተዳደር ብቻ ነው የሚውለው። የካሊፎርኒያ ነዋሪ ከሆኑ ውሂብዎን መሰረዝ የመጠየቅ እና መብቶችዎን በመጠቀምዎ አለመድላት መብት አለዎት።",
-    "appTitle": "Wedingo",
+    "appTitle": "ሰርግ",
     "appDescription": "የሰርግ ግብዣዎችን ለማስተዳደር የድር መተግበሪያ።",
     "copyright": "© {{year}} Adrián Carrasco López. ሁሉም መብቶች የተጠበቁ ናቸው።",
     "deleteEmailSubject": "የውሂብ መሰረዝ ጥያቄ - Wedingo",
@@ -518,13 +537,13 @@
     "deleteFailed": "ግብዣውን መሰረዝ አልተቻለም። እንደገና ይሞክሩ።",
     "configLoadFailed": "ውቅሩን መጫን አልተቻለም። ግንኙነቱን ያረጋግጡ እና እንደገና ይሞክሩ።",
     "invalidLink": "የግብዣ ማገናኛው ትክክል አይደለም።",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": "የመኖርያ መረጃ ከ2000 ቁምፊዎች መብለጥ አይችልም።",
+    "menuTextoTooLong": "የምናሌ መግለጫ ከ2000 ቁምፊዎች መብለጥ አይችልም።",
+    "uploadImageFailed": "ምስሉን ማካሄድ አልተቻለም። ",
+    "readImageFailed": "የምስሉን ፋይል ማንበብ አልተቻለም።",
+    "encryptFailed": "የምስል ምስጠራ አልተሳካም።",
+    "imageTooLarge": "ምስሉ ከተጨመቀ በኋላም ቢሆን በጣም ትልቅ ነው.",
+    "fileEmpty": "ፋይሉ ባዶ ነው። "
   },
   "superadmin": {
     "tabs": {
@@ -588,7 +607,7 @@
     "tokenCleanError": "ቶከኖችን ማጽዳት አልተቻለም።",
     "tokenLoadError": "ቶከኖችን መጫን አልተቻለም።",
     "accountEmail": "ኢሜል: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": "UID፡ {{uid}}",
     "sessionActive": "ንቁ",
     "sessionInactive": "ንቁ ያልሆነ",
     "sessionLabel": "አካባቢያዊ ክፍለ ጊዜ: {{status}}",
@@ -615,10 +634,10 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": "ማስመሰያ",
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": "ምላሽ ሰጪዎች",
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +655,8 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": "ኢሜይል",
+    "passwordLabel": "የይለፍ ቃል"
   },
   "compliance": {
     "title": "የውሂብ አያያዝ እንቅስቃሴዎች መዝገብ (GDPR አንቀጽ 30)",
@@ -659,7 +678,7 @@
     "row2Basis": "ፈቃድ (GDPR አንቀጽ 6.1.a፣ 9.2.a)",
     "row2Purpose": "የእንግዶች ዝርዝር እና ምናሌን ማስተዳደር",
     "row2Retention": "ከክስተቱ በኋላ 12 ወራት",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": "ጎግል ክላውድ (ፋየርስቶር)",
     "row3Activity": "ምስሎችን መጫን",
     "row3Data": "የሰርግ ፎቶዎች (በAES-256-GCM የተመሰጠረ)",
     "row3Basis": "ፈቃድ (GDPR አንቀጽ 6.1.a)",
@@ -677,7 +696,7 @@
     "row5Basis": "የህግ ግዴታ (GDPR አንቀጽ 6.1.c)",
     "row5Purpose": "የአስተዳደር እንቅስቃሴዎች መዝገብ",
     "row5Retention": "3 ዓመታት",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": "ጎግል ክላውድ (Firestore auditLog)",
     "internationalTitle": "ዓለም አቀፍ ዝውውሮች",
     "internationalText": "ውሂብ በeur3 ክልል ውስጥ ባሉ የGoogle Cloud አገልጋዮች ላይ ይቀመጣል (ፍራንክፈርት፣ ጀርመን)። Google LLC (አሜሪካ) በGDPR አንቀጽ 28 መሰረት በDPA ስር እንደ ውሂብ አያያዥ ሆኖ ያገለግላል። ወደ አሜሪካ ዝውውሮች በሚከተሉት ይጠበቃሉ:",
     "scc": "መደበኛ የውል አንቀጾች (SCC) - የ2021/914 አፈጻጸም ውሳኔ",
@@ -691,86 +710,86 @@
     "measureSuperadmin": "በFirebase Authentication + በተደበቀ መንገድ የሚጠበቅ ሱፐርአድሚን"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": "ተደራሽነት",
+    "close": "ገጠመ",
+    "fontSize": "የጽሑፍ መጠን",
+    "fontNormal": "መደበኛ",
+    "fontLarge": "ትልቅ",
+    "fontExtraLarge": "በጣም ትልቅ",
+    "lineSpacing": "የመስመር ክፍተት",
+    "lineNormal": "መደበኛ",
+    "lineWide": "ሰፊ",
+    "lineVeryWide": "በጣም ሰፊ",
+    "highContrast": "ከፍተኛ ንፅፅር",
+    "reducedMotion": "እንቅስቃሴን ይቀንሱ",
+    "dyslexiaFont": "ክፍት ዲስሌክሲክ ቅርጸ-ቁምፊ",
+    "moreSpacing": "ተጨማሪ የደብዳቤ ክፍተት",
+    "underlineLinks": "ሁሉንም አገናኞች አስምር",
+    "bigCursor": "ትልቅ ጠቋሚ",
+    "desaturate": "ግራጫ ልኬት",
+    "strongFocus": "የሚታዩ የትኩረት አመልካቾች"
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": "ሙዚቃ የለም።",
+    "loadError": "በመጫን ላይ ስህተት",
+    "label": "ሙዚቃ",
+    "soundCloudNote": "SoundCloud ትራክ — ለመጫወት ክፍት ነው።",
+    "openInSoundCloud": "በ SoundCloud ውስጥ ክፈት"
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": "ህትመትን በማዘጋጀት ላይ…",
+    "couplePhoto": "ባለትዳሮች ፎቶ",
+    "godparentsText": "በአምላካቸው በረከት",
+    "dateAndPlace": "ቀን እና ቦታ",
+    "celebrationTime": "የክብረ በዓሉ ጊዜ፡-",
+    "viewInGoogleMaps": "በGoogle ካርታዎች ውስጥ አካባቢን ይመልከቱ",
+    "celebrationMessage": "ይህን ልዩ ጊዜ ከእርስዎ ጋር ልናካፍልዎ በጉጉት እንጠባበቃለን።",
+    "transport": "መጓጓዣ",
+    "aboutGuests": "ስለ እንግዶች",
+    "scheduleTitle": "የሰርግ መርሃ ግብር",
+    "scheduleFallback": "ዝርዝር መርሐ ግብሩ በቅርቡ ይጋራል።",
+    "dressCode": "የአለባበስ ኮድ",
+    "dressCodeFallback": "በኋላ ይነገራል።",
+    "aboutKids": "ስለ ልጆች",
+    "ourStory": "ታሪካችን",
+    "storyStarted": "ሁሉም እንዴት ተጀመረ",
+    "storyFallback": "ታሪኩ በቅርቡ ይጋራል።",
+    "gifts": "ስጦታዎች",
+    "bestGift": "የአንተ መኖር ምርጡ ስጦታ ነው።",
+    "giftsFallback": "የስጦታ መረጃ በቅርቡ ይጋራል።",
+    "bankDetails": "የባንክ ዝርዝሮች",
+    "accommodation": "ማረፊያ",
+    "whereToStay": "የት እንደሚቆዩ",
+    "accommodationFallback": "የመስተንግዶ መረጃ በቅርቡ ይጋራል።",
+    "footer": "Wedingo · የግላዊነት ፖሊሲ wedingo-6c26a.web.app ላይ",
+    "closeWindow": "መስኮት ዝጋ"
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": "ወደ ላይ ተንቀሳቀስ",
+    "moveDown": "ወደ ታች ውሰድ",
+    "title": "ትዕዛዝ እና ታይነት",
+    "help": "እንደገና ለመደርደር ይጎትቱ፣ ለማንቀሳቀስ አዝራሮቹን ይጠቀሙ እና እያንዳንዱን ክፍል ለማብራት ወይም ለማጥፋት።"
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": "ቋንቋ ይምረጡ"
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": "1 ተጓዳኝ",
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": "ስፔን",
+    "westernEurope": "ምዕራብ አውሮፓ",
+    "nordicEurope": "ኖርዲክ አውሮፓ",
+    "centralEurope": "መካከለኛው አውሮፓ",
+    "southernEurope": "ደቡብ አውሮፓ / ባልካን",
+    "easternEurope": "ምስራቃዊ አውሮፓ / ካውካሰስ",
+    "eastAsia": "ምስራቅ እስያ",
+    "southAsia": "ደቡብ እስያ",
+    "southeastAsia": "ደቡብ ምስራቅ እስያ",
+    "centralAsia": "መካከለኛው እስያ / መካከለኛው ምስራቅ",
+    "africa": "አፍሪካ",
+    "americas": "አሜሪካ"
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +806,131 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": "ለውጥ ሎግ",
+    "close": "ገጠመ"
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": "ለዚህ ግብዣ አስቀድሞ ንቁ ክፍለ ጊዜ አለ። ",
+    "tokenInvalid": "የመዳረሻ ኮድ ልክ ያልሆነ ነው።",
+    "enterCode": "የመዳረሻ ኮዱን ያስገቡ።",
+    "codeVerified": "ኮድ በተሳካ ሁኔታ ተረጋግጧል።",
+    "codeVerifyError": "ኮዱን ማረጋገጥ አልተቻለም። ",
+    "enterUserAndCode": "የተጠቃሚ ስምህን እና የመዳረሻ ኮዱን አስገባ።",
+    "invalidCredentials": "የተሳሳተ የተጠቃሚ ስም ወይም ኮድ።",
+    "codeUserMismatch": "ኮዱ ከዚህ ተጠቃሚ ጋር አይዛመድም።",
+    "loginSuccess": "በተሳካ ሁኔታ ገብተሃል።",
+    "loginError": "ኮዱን ማረጋገጥ አልተቻለም። ",
+    "confirmRequired": "አዲስ ኮድ ለማመንጨት CONFIRM ብለው ይተይቡ።",
+    "usernameRequired": "መጀመሪያ የተጠቃሚ ስምህን አስገባ።",
+    "usernameInvalid": "የተጠቃሚ ስም ፊደሎችን እና ቁጥሮችን ብቻ ሊይዝ ይችላል።",
+    "usernameTooLong": "የተጠቃሚ ስም ከ50 ቁምፊዎች መብለጥ አይችልም።",
+    "unauthorizedUser": "ይህ ተጠቃሚ እዚህ የመድረስ ፍቃድ የለውም።",
+    "tokenGenerated": "ኮድ ተፈጠረ። ",
+    "tokenGenerateError": "ኮዱን ማመንጨት አልተቻለም። ",
+    "currentTokenRequired": "አዲስ ለማመንጨት የአሁኑን የመዳረሻ ኮድ ያስገቡ።",
+    "tokenRenewed": "አዲስ ኮድ ተፈጠረ። ",
+    "tokenRenewedAdmin": "ኮድ ታድሷል። ",
+    "superadminNoPermissions": "ይህ መለያ የአስተዳደር ፈቃዶች የሉትም።",
+    "superadminWrongCredentials": "የተሳሳቱ ምስክርነቶች።",
+    "superadminTooManyAttempts": "በጣም ብዙ ሙከራዎች። ",
+    "superadminInvalidEmail": "የኢሜል ቅርጸቱ ልክ ያልሆነ ነው።",
+    "superadminLoginError": "የመግባት ስህተት። ግንኙነትዎን ያረጋግጡ።"
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": "ለውጦች ተቀምጠዋል"
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": "ጥር",
+    "2": "የካቲት",
+    "3": "መጋቢት",
+    "4": "ሚያዚያ",
+    "5": "ግንቦት",
+    "6": "ሰኔ",
+    "7": "ሀምሌ",
+    "8": "ነሐሴ",
+    "9": "መስከረም",
+    "10": "ጥቅምት",
+    "11": "ህዳር",
+    "12": "ታህሳስ"
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": "የብርሃን ገጽታዎች",
+    "dark": "ጨለማ ገጽታዎች",
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": "ግሉተን",
+    "lactose": "ላክቶስ",
+    "nuts": "የዛፍ ፍሬዎች",
+    "shellfish": "ሼልፊሽ"
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
+    "addressLine1": "ለወዳጆቻችን",
+    "tapHint": "ለመክፈት መታ ያድርጉ",
     "and": "&",
-    "tapContinue": "Tap to continue"
+    "tapContinue": "ለመቀጠል መታ ያድርጉ"
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": "ሰርጋችን",
+    "eventTitle": "የ{{ስሞች}} ሰርግ",
+    "placeUnknown": "የሚረጋገጥበት ቦታ",
+    "invitationText": "ይህን ልዩ ጊዜ ከእርስዎ ጋር ለማክበር በጉጉት እንጠባበቃለን።",
+    "timeLabel": "ጊዜ፡-",
+    "placeLabel": "ቦታ፡"
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": "የሚያምር እና ብሩህ ፣ ከወርቃማ ዘዬዎች ጋር።",
+    "forest": "ተፈጥሯዊ እና ለስላሳ አረንጓዴ አረንጓዴ.",
+    "rose": "ሞቅ ያለ እና ለስላሳ ፣ ከሮዝ ቀለሞች ጋር።",
+    "linen-soft": "ብርሃን እና ገለልተኛ፣ በመረጋጋት እና ጊዜ የማይሽረው መገኘት።",
+    "blush-pearl": "ለስላሳ እና ሮማንቲክ, ከዕንቁ ሮዝ ድምፆች ጋር.",
+    "lavender-mist": "ትኩስ እና ጸጥ ያለ፣ ከላቫንደር እና የተንቆጠቆጡ ቀለሞች ጋር።",
+    "champagne-bubble": "ብሩህ እና አስደሳች ፣ በሞቃት ወርቃማ ብልጭታዎች።",
+    "amber-night": "ጥቁር እና የሚያምር፣ ከአምበር እና ከወርቅ ድምቀቶች ጋር።",
+    "onyx-gold": "ጥልቅ እና የተራቀቀ፣ በጨለማ ዳራ ላይ ከጠንካራ ወርቅ ጋር።",
+    "midnight-royal": "በጣም ጥቁር ሰማያዊ ከጠንካራ ወርቃማ እና የተከበረ መገኘት ጋር.",
+    "burgundy-velvet": "ሞቅ ያለ እና የተሸፈነ, በቀይ ወይን እና በወርቃማ ብልጭታዎች.",
+    "sapphire-night": "ከብር ዘዬዎች እና የተረጋጋ መገኘት ጋር ጥልቅ ሰማያዊ።",
+    "emerald-grove": "ወርቃማ እና የሚያማምሩ ቀለሞች ያሉት ጥልቅ የተፈጥሮ አረንጓዴ።",
+    "plum-twilight": "ኃይለኛ ሐምራዊ ከሮዝ እና የፍቅር ብልጭታዎች ጋር።",
+    "rainbow": "ከቀስተ ደመና ቀለሞች ጋር የተለያየ ፍቅር ማክበር።",
+    "trans": "ለትራንስ ባንዲራ ክብር ሰማያዊ፣ ሮዝ እና ነጭ።",
+    "nonbinary": "ቢጫ፣ነጭ፣ሐምራዊ እና ጥቁር ለሁለትዮሽ ላልሆነ ባንዲራ።",
+    "lesbian": "የሌዝቢያን ባንዲራ ብርቱካንማ፣ ነጭ እና ሮዝ።",
+    "bi": "የቢ ባንዲራ ሮዝ፣ ሐምራዊ እና ሰማያዊ።",
+    "pan": "የፓን ባንዲራ ሮዝ፣ ቢጫ እና ሰማያዊ።",
+    "ace": "የአሴክሹዋል ባንዲራ ጥቁር፣ ግራጫ፣ ነጭ እና ወይን ጠጅ።"
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": "ከመጫወቻ ቦታ ጋር እንኳን በደህና መጡ",
+      "supervised": "እንኳን በደህና መጡ በክትትል ስር",
+      "adultOnly": "አዋቂዎች ብቻ"
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": "ምንም ውሂብ የለም",
+    "total": "ጠቅላላ",
+    "barChart": "የመገኘት አሞሌ ገበታ",
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

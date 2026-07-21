@@ -11,20 +11,159 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "Näkyy",
+      "Visible",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "Jotain meni pieleen",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "Lataa sivu uudelleen ja yritä uudelleen.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "Lataa sivu uudelleen",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "Lähellä",
+        "Close",
+        null,
+        null,
+        2
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "Siirry pääsisältöön",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "Hallintopalkki",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "Hallinto",
+        "Administration",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "landing": {
@@ -56,7 +195,26 @@
     "missing": "Jäljellä",
     "todayIsTheDay": "Tänään on suuri päivä!",
     "sectionLabel": "Kansi",
-    "eyebrow": "Our Wedding"
+    "eyebrow": [
+      "Meidän häät",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "Päivämäärä ja paikka",
@@ -106,8 +264,46 @@
     "next": "Seuraava",
     "thumbnailAria": "Kuva {{number}}",
     "thumbnailAlt": "Gallerian pikkukuva",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "Kuvagalleria, käytä nuolinäppäimiä navigoidaksesi",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "Suurennettu kuva",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "Osallistumisilmoitus",
@@ -123,7 +319,26 @@
     "menuPescado": "Kala",
     "menuVegano": "Vegaani/Kasvis",
     "postre": "Jälkiruoka",
-    "menuLabel": "Menu",
+    "menuLabel": [
+      "Valikko",
+      "Menu",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "allergiesLegend": "Allergiat ja intoleranssit",
     "allergiesPlaceholder": "Muu allergia (täsmennä)",
     "allergiesHint": "Ilmoita vain ruoka-allergiat ja -intoleranssit. Älä syötä tarpeettomia terveystietoja.",
@@ -138,49 +353,625 @@
     "ageUnder14Warning": "Olet alle 14-vuotias. Tarvitset vanhempiesi tai huoltajiesi suostumuksen.",
     "parentalConsent": "Vanhempani tai huoltajani suostuvat osallistumiseeni",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "Syötä nimesi vahvistaaksesi osallistumisesi.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "Valitse valikkovaihtoehto.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "Sinun on hyväksyttävä tietosuojakäytäntö.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "Anna syntymäaikasi.",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "Olet alle 14-vuotias. ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "Sinun tulee suostua terveystietojesi käsittelyyn.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "Ilmoita vähintään yksi valikkovaihtoehto.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "Kirjoita tovereidesi nimet.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "Et voi kirjoittaa enempää nimiä kuin kumppaneita.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "Valikkovaihtoehtojen summa ei voi ylittää kumppanien määrää.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "Kiitos, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "Kiitos, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "Emme voineet tallentaa vastaustasi. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "Haluatko varmasti peruuttaa vastauksesi?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "Vastauksesi on peruutettu.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "Vastaustasi ei voitu peruuttaa. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "Poistetaanko kaikki osallistujavastaukset? ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "Läsnäolokirjat tyhjennetty.",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "Osallistujatietoja ei voitu tyhjentää.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "Seuralaiset",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "Ihmiset",
+      "People",
+      null,
+      null,
+      2
+    ],
+    "headcountHint": [
+      "Kuinka monta henkilöä kullakin vaihtoehdolla (yhteensä {{total}})",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "Vieraiden nimet",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "Kirjoita kunkin kumppanin etu- ja sukunimi (enintään {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "Nimi1 Sukunimi1, Nimi2 Sukunimi2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "Ladataan kutsua…",
     "notFoundTitle": "Kutsua ei löytynyt",
     "notFoundText": "Emme löytäneet kutsua tällä linkillä. Jos uskot tämän olevan virhe, ota yhteyttä isäntiin.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Luo ja jaa oma henkilökohtainen hääkutsusi.",
     "emptyDescription": "Hallinnoi kutsusi tietoja, jaa ainutlaatuinen linkki vieraillesi ja vastaanota heidän osallistumisilmoituksensa.",
     "createLink": "Luo kutsu",
     "privacyPolicy": "Tietosuojaseloste",
     "terms": "Ehdot",
     "legalNotice": "Oikeudellinen huomautus",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "Tätä paikkaa ei voitu paikantaa.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "Karttaa ei voitu ladata.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "Koordinaatit: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "Kartan esikatselu ilmoitetussa paikassa.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "Sijainti määritetty",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "Ladataan kutsua",
@@ -308,28 +1099,427 @@
     "galleryUploadFailed": "Kuvia ei voitu ladata.",
     "noValidFiles": "Ei kelvollisia tiedostoja. Enintään 20 Mt, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "Lataa äänitiedosto toistettavaksi kannessa (MP3, WAV, OGG, M4A – enintään 5 Mt).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "Lataa äänitiedosto",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG tai M4A – enintään 5 Mt",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "Äänimuotoa ei tueta. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "Äänitiedosto on tyhjä.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "Äänitiedosto ylittää 5 Mt:n rajan.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "Virhe äänitiedoston lukemisessa.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "Tiedosto on tyhjä. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "Kuvan kuvaus...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "Enintään {{max}} kuvaa galleriassa.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "Lähetetään {{total}} valokuvaa...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "Ladataan valokuvaa...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "Vaihda valokuva",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "Virhe kuvauksen tallentamisessa",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "Kuvaus tallennettu",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "Valittua musiikkia",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "Poista musiikki",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "Toistetaan...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "Esikatselu",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "Valitse",
+      "Select",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "selected": [
+      "Valittu",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1543,66 @@
     "pdfTableCompanions": "Seuralaiset",
     "pdfTableDiet": "Ruokavalio",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Admin",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "Näytä kutsu",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "Kirjaudu ulos",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "Vahvistettu",
@@ -417,9 +1664,66 @@
     "generateMessage": "Luo uusi viesti",
     "copyMessage": "Kopioi viesti",
     "shareVia": "Jaa",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "Telegram",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Tulosta",
     "printPdf": "Tulosta / Tallenna PDF",
     "linkCopied": "Linkki kopioitu.",
@@ -448,7 +1752,26 @@
     "rightsHint": "Sähköpostisovelluksesi avautuu valmiilla mallilla. Voit myös kirjoittaa osoitteeseen adriancl2001@gmail.com.",
     "ccpaTitle": "CCPA / CPRA (Kalifornia)",
     "ccpaText": "Wedingo ei myy henkilötietoja. Kerättyjä tietoja käytetään yksinomaan kutsun hallintaan. Jos asut Kaliforniassa, sinulla on oikeus pyytää tietojesi poistamista ja olla tulematta syrjityksi oikeuksiesi käyttämisestä.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Verkkosovellus hääkutsujen hallintaan.",
     "copyright": "© {{year}} Adrián Carrasco López. Kaikki oikeudet pidätetään.",
     "deleteEmailSubject": "Tietojen poistopyyntö - Wedingo",
@@ -518,13 +1841,146 @@
     "deleteFailed": "Kutsua ei voitu poistaa. Yritä uudelleen.",
     "configLoadFailed": "Asetuksia ei voitu ladata. Tarkista yhteys ja yritä uudelleen.",
     "invalidLink": "Kutsulinkki ei ole kelvollinen.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "Majoitustiedot eivät saa ylittää 2000 merkkiä.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "Valikon kuvaus ei saa ylittää 2000 merkkiä.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "Kuvaa ei voitu käsitellä. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "Kuvatiedostoa ei voitu lukea.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "Kuvan salaus epäonnistui.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "Kuva on liian suuri pakkauksen jälkeenkin.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "Tiedosto on tyhjä. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -535,7 +1991,26 @@
       "compliance": "Vaatimustenmukaisuus",
       "data": "Datos"
     },
-    "superadmin": "Superadmin",
+    "superadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "controlPanel": "Hallintapaneeli",
     "managePlatform": "Hallinnoi Wedingo-alustaa",
     "dashboardLoading": "Ladataan tilastoja...",
@@ -561,7 +2036,26 @@
     "invitationsCount": "{{count}} kutsua · {{size}} käytetty",
     "noResultsFilter": "Ei kutsuja tällä kriteerillä.",
     "noInvitations": "Ei vielä kutsuja.",
-    "tableToken": "Token",
+    "tableToken": [
+      "Token",
+      "Token",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "tableTheme": "Teema",
     "tableDate": "Hääpäivä",
     "tableActions": "Toiminnot",
@@ -588,14 +2082,71 @@
     "tokenCleanError": "Tokeneita ei voitu puhdistaa.",
     "tokenLoadError": "Tokeneita ei voitu ladata.",
     "accountEmail": "Sähköposti: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Aktiivinen",
     "sessionInactive": "Ei aktiivinen",
     "sessionLabel": "Paikallinen istunto: {{status}}",
     "sessionType": "Tyyppi: {{type}}",
-    "sessionTypeSuperadmin": "Superadmin",
+    "sessionTypeSuperadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionTypeSetup": "Asennus",
-    "sessionTypeAdmin": "Admin",
+    "sessionTypeAdmin": [
+      "Admin",
+      "Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionExpires": "Vanhenee: {{date}}",
     "logoutButton": "Kirjaudu ulos",
     "firebaseAccount": "Hallinnoidaksesi superadmin-tiliäsi käytä Firebase-konsolia:",
@@ -615,10 +2166,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Token",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVP:t",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2225,33 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "Sähköposti",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "Salasana",
+      "Password",
+      null,
+      null,
+      2
+    ]
   },
   "compliance": {
     "title": "Seloste käsittelytoimista (GDPR 30 artikla)",
@@ -653,13 +2267,51 @@
     "row1Basis": "Suostumus (GDPR 6 artikla 1 kohta a)",
     "row1Purpose": "Hääkutsun luominen ja mukauttaminen",
     "row1Retention": "Niin kauan kuin tili on aktiivinen",
-    "row1Recipients": "Google Cloud (Firestore, hosting)",
+    "row1Recipients": [
+      "Google Cloud (Firestore, hosting)",
+      "Google Cloud (Firestore, hosting)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row2Activity": "Osallistumisilmoitus (RSVP)",
     "row2Data": "Vieraan nimi, osallistuminen (kyllä/ei), menun valinta, allergiat, terveystiedot",
     "row2Basis": "Suostumus (GDPR 6 artikla 1 kohta a, 9 artikla 2 kohta a)",
     "row2Purpose": "Vieraslistan ja menun hallinta",
     "row2Retention": "12 kuukautta tapahtuman jälkeen",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Kuvien lataus",
     "row3Data": "Hääkuvat (salattu AES-256-GCM)",
     "row3Basis": "Suostumus (GDPR 6 artikla 1 kohta a)",
@@ -677,7 +2329,26 @@
     "row5Basis": "Lakisääteinen velvoite (GDPR 6 artikla 1 kohta c)",
     "row5Purpose": "Hallinnollisten toimien rekisteröinti",
     "row5Retention": "3 vuotta",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Kansainväliset tiedonsiirrot",
     "internationalText": "Tiedot tallennetaan Google Cloud -palvelimilla eur3-alueella (Frankfurt, Saksa). Google LLC (USA) toimii tietojenkäsittelijänä DPA:n mukaisesti GDPR 28 artiklan mukaisesti. Siirrot USA:han perustuvat:",
     "scc": "Euroopan komission vakiolausekkeet (SCC) - täytäntöönpanopäätös 2021/914",
@@ -691,86 +2362,1269 @@
     "measureSuperadmin": "Superadmin suojattu Firebase Authentication + piilotettu polku"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "Esteettömyys",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Lähellä",
+      "Close",
+      null,
+      null,
+      2
+    ],
+    "fontSize": [
+      "Tekstin koko",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "Normaali",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontLarge": [
+      "Suuri",
+      "Large",
+      null,
+      null,
+      2
+    ],
+    "fontExtraLarge": [
+      "Erittäin suuri",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "Rivivälit",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "Normaali",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineWide": [
+      "Leveä",
+      "Wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineVeryWide": [
+      "Erittäin leveä",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "Korkea kontrasti",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "Vähennä liikettä",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "OpenDyslexic-fontti",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "Lisää kirjainväliä",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "Alleviivaa kaikki linkit",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "Iso kursori",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "Harmaasävy",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "Näkyvät tarkennusilmaisimet",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "Ei musiikkia",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "Virhe latauksessa",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "Musiikki",
+      "Music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "soundCloudNote": [
+      "SoundCloud-raita — avoin toistettavaksi",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "Avaa SoundCloudissa",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "Valmistellaan tulostusta…",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "Pari valokuva",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "Kummiensa siunauksella",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "Päivämäärä ja paikka",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "Seremonia aika:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Näytä sijainti Google Mapsissa",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "Odotamme innolla, että voimme jakaa tämän erityisen hetken kanssasi.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "Kuljetus",
+      "Transport",
+      null,
+      null,
+      2
+    ],
+    "aboutGuests": [
+      "Tietoja vieraista",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "Häiden aikataulu",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "Tarkempi aikataulu julkaistaan ​​pian.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "Pukukoodi",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "Tiedotetaan myöhemmin.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "Lapsista",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "Meidän tarinamme",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "Kuinka kaikki alkoi",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "Tarina jaetaan pian.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "Lahjat",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "Sinun läsnäolosi on paras lahja",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "Lahjatiedot jaetaan pian.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "Pankkitiedot",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "Majoitus",
+      "Accommodation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "whereToStay": [
+      "Missä yöpyä",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "Majoitustiedot jaetaan lähiaikoina.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · Tietosuojakäytäntö osoitteessa wedingo-6c26a.web.app",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "Sulje ikkuna",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
+    "moveUp": [
+      "Siirrä ylös",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "Siirry alas",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "title": "Järjestys ja näkyvyys",
     "help": "Vedä järjestääksesi uudelleen, käytä painikkeita siirtääksesi ja ota jokainen osio käyttöön tai pois käytöstä."
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "Valitse kieli",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 seuralainen",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "Espanja",
+      "Spain",
+      null,
+      null,
+      2
+    ],
+    "westernEurope": [
+      "Länsi-Eurooppaa",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "Pohjoismainen Eurooppa",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "Keski-Eurooppa",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "Etelä-Eurooppa / Balkan",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "Itä-Eurooppa / Kaukasus",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "Itä-Aasia",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "Etelä-Aasia",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "Kaakkois-Aasia",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "Keski-Aasia / Lähi-itä",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "Afrikka",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "Amerikka",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -791,31 +3645,506 @@
     "close": "Sulje"
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "Tälle kutsulle on jo aktiivinen istunto. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "Pääsykoodi ei kelpaa.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "Syötä pääsykoodi.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "Koodi vahvistettu onnistuneesti.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "Koodia ei voitu vahvistaa. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "Syötä käyttäjätunnuksesi ja pääsykoodi.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "Väärä käyttäjätunnus tai koodi.",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "Koodi ei vastaa tätä käyttäjää.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "Olet kirjautunut sisään onnistuneesti.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "Koodia ei voitu vahvistaa. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "Luo uusi koodi kirjoittamalla CONFIRM.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "Kirjoita ensin käyttäjätunnuksesi.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "Käyttäjätunnus voi sisältää vain kirjaimia ja numeroita.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "Käyttäjätunnus ei saa ylittää 50 merkkiä.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "Tällä käyttäjällä ei ole käyttöoikeutta tähän.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "Koodi luotu. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "Koodia ei voitu luoda. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "Anna nykyinen pääsykoodi luodaksesi uuden.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "Uusi koodi luotu. ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "Koodi uusittu. ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "Tällä tilillä ei ole järjestelmänvalvojan oikeuksia.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "Väärät tunnistetiedot.",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "Liikaa yrityksiä. ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "Sähköpostimuoto ei kelpaa.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "Virhe kirjautumisessa. Tarkista yhteys.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
     "saved": "Muutokset tallennettu"
@@ -837,7 +4166,26 @@
   "themeGroups": {
     "light": "Vaaleat teemat",
     "dark": "Tummat teemat",
-    "lgbtiq": "LGTBIQ+"
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
     "gluten": "Gluteeni",
@@ -846,53 +4194,724 @@
     "shellfish": "Äyriäiset"
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
+    "addressLine1": [
+      "Rakkaimmillemme",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "Avaa napauttamalla",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "and": "&",
-    "tapContinue": "Tap to continue"
+    "tapContinue": [
+      "Jatka napauttamalla",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "Meidän häät",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "{{names}}:n häät",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "Sijainti vahvistetaan",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "Odotamme innolla tätä erityistä hetkeä kanssasi.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "Aika:",
+      "Time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeLabel": [
+      "Paikka:",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "Tyylikäs ja kirkas, kultaisilla aksenteilla.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "Luonnollinen ja hillitty pehmeillä vihreillä.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "Lämmin ja herkkä, vaaleanpunaisia ​​sävyjä.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "Kevyt ja neutraali, rauhallinen ja ajaton läsnäolo.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "Pehmeä ja romanttinen, helmenpunaisen sävyin.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "Raikas ja rauhallinen, laventelin ja violetin sävyin.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "Valoisa ja juhlava, lämpimin kultaisin kipinöin.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "Tumma ja tyylikäs, meripihkan ja kullan kohokohtia.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "Syvä ja hienostunut, voimakasta kultaa tummalla taustalla.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "Erittäin tummansininen intensiivisellä kullalla ja juhlallisella läsnäololla.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "Lämmin ja peittävä, punaviinillä ja kultaisilla kipinöillä.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "Syvänsininen hopeisilla aksenteilla ja rauhallisella läsnäololla.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "Syvä luonnonvihreä kultaisilla ja tyylikkäillä sävyillä.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "Intensiivinen violetti vaaleanpunaisella ja romanttisella kimaltelemalla.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "Monipuolisen rakkauden juhla sateenkaaren väreillä.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "Sininen, pinkki ja valkoinen kunnianosoituksena trans-lipulle.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "Keltainen, valkoinen, violetti ja musta ei-binäärilipulle.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "Lesbon lipun oranssi, valkoinen ja vaaleanpunainen.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "Bi-lipun vaaleanpunainen, violetti ja sininen.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "Pannulipun vaaleanpunainen, keltainen ja sininen.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "Aseksuaalin lipun musta, harmaa, valkoinen ja violetti.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "Tervetuloa leikkipaikan kanssa",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "Tervetuloa valvonnassa",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "Vain aikuisille",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "Ei dataa",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "kokonais-",
+      "total",
+      null,
+      null,
+      2
+    ],
+    "barChart": [
+      "Läsnäolo pylväskaavio",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

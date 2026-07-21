@@ -11,20 +11,172 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "Ikusgai",
+      "Visible",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "Zerbait gaizki joan da",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "Mesedez, berriro kargatu orria berriro saiatzeko.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "Kargatu orria",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "Itxi",
+        "Close",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "Saltatu eduki nagusira",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "Administrazio taberna",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "Administrazioa",
+        "Administration",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "landing": {
@@ -55,8 +207,46 @@
     "todayIsWedding": "Gaur da ezkontza",
     "missing": "Falta dira",
     "todayIsTheDay": "Gaur da egun handia!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": [
+      "Estalkia",
+      "Cover",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eyebrow": [
+      "Gure Ezkontza",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "Data eta lekua",
@@ -106,8 +296,46 @@
     "next": "Hurrengoa",
     "thumbnailAria": "{{number}} argazkia",
     "thumbnailAlt": "Galeriako argazkiaren miniatura",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "Irudi galeria, erabili gezi-teklak nabigatzeko",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "Irudi handitua",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "Bertaratze baieztapena",
@@ -138,49 +366,638 @@
     "ageUnder14Warning": "14 urtetik beherakoa zara. Zure gurasoen edo tutoreen baimena behar duzu.",
     "parentalConsent": "Nire gurasoek edo tutoreek nire parte-hartzea baimendu dute",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "Sartu zure izena bertaratzea berresteko.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "Hautatu menuko aukera bat.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "Pribatutasun Politika onartu behar duzu.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "Sartu zure jaioteguna.",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "14 urte baino gutxiago dituzu. ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "Zure osasun-datuak tratatzeko baimena eman behar duzu.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "Adierazi menuko aukera bat gutxienez.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "Sartu zure lagunen izenak.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "Ezin duzu sartu lagunak baino izen gehiago.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "Menuen aukeren baturak ezin du lagunen kopurua gainditu.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "Eskerrik asko, {{izena}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "Eskerrik asko, {{izena}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "Ezin izan dugu zure erantzuna gorde. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "Ziur erantzuna kendu nahi duzula?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "Zure erantzuna kendu da.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "Ezin izan da zure erantzuna kendu. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "Asistentzia-erantzun guztiak ezabatu nahi dituzu? ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "Asistentzia-erregistroak garbitu dira.",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "Ezin izan dira asistentzia-erregistroak garbitu.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "Bidelagunak",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "Jendea",
+      "People",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountHint": [
+      "Zenbat pertsona aukera bakoitzeko ({{total}} guztira)",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "Gonbidatuen izenak",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "Idatzi lagun bakoitzaren izena eta abizena (gehienez {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "Izena1 Abizena1, Izena2 Abizena2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "Gonbidapena kargatzen…",
     "notFoundTitle": "Gonbidapena ez da aurkitu",
     "notFoundText": "Ez dugu gonbidapenik aurkitu esteka honekin. Akats bat dela uste baduzu, jarri harremanetan antolatzaileekin.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Sortu eta partekatu zure ezkontza gonbidapen pertsonalizatua.",
     "emptyDescription": "Kudeatu zure gonbidapenaren datuak, partekatu esteka bakarra gonbidatuekin eta jaso haien bertaratze baieztapenak.",
     "createLink": "Sortu gonbidapena",
     "privacyPolicy": "Pribatutasun Politika",
     "terms": "Baldintzak",
     "legalNotice": "Lege Oharra",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "Ezin izan da toki hau aurkitu.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "Ezin izan da mapa kargatu.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "Koordenatuak: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "Maparen aurrebista adierazitako tokian.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "Kokapena konfiguratuta",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "Gonbidapena kargatzen",
@@ -308,28 +1125,427 @@
     "galleryUploadFailed": "Ezin izan dira argazkiak igo.",
     "noValidFiles": "Fitxategi baliozkorik ez. Gehienez 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "Kargatu audio-fitxategi bat azalean erreproduzitzeko (MP3, WAV, OGG, M4A — gehienez 5 MB).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "Kargatu audio fitxategia",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG edo M4A - gehienez 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "Audio formatua ez da onartzen. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "Audio fitxategia hutsik dago.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "Audio-fitxategiak 5 MB-ko muga gainditzen du.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "Errore bat gertatu da audio-fitxategia irakurtzean.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "Fitxategia hutsik dago. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "Irudiaren deskribapena...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "Gehienez {{max}} irudi galerian.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "{{total}} argazki(k) kargatzen...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "Argazkia kargatzen...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "Aldatu argazkia",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "Errore bat gertatu da deskribapena gordetzean",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "Gorde da deskribapena",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "Aukeratutako musika",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "Kendu musika",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "Jolasten...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "Aurrebista",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "Hautatu",
+      "Select",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "selected": [
+      "Hautatuta",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1569,66 @@
     "pdfTableCompanions": "Akomp.",
     "pdfTableDiet": "Dieta",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Admin",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "Ikusi gonbidapena",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "Amaitu saioa",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "Baieztatuta",
@@ -384,7 +1657,26 @@
     "confirms": "Baieztatzen dute",
     "declines": "Ukatzen dute",
     "pending": "Zain",
-    "visits_one": "1 visit",
+    "visits_one": [
+      "1 bisita",
+      "1 visit",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +1709,66 @@
     "generateMessage": "Sortu beste mezu bat",
     "copyMessage": "Kopiatu mezua",
     "shareVia": "Partekatu bidez",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "Telegrama",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "SMSak",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Inprimatu",
     "printPdf": "Inprimatu / Gorde PDF",
     "linkCopied": "Esteka kopiatuta.",
@@ -448,7 +1797,26 @@
     "rightsHint": "Zure posta bezeroa irekiko da aurrez definitutako plantila batekin. adriancl2001@gmail.com-era ere idatz dezakezu.",
     "ccpaTitle": "CCPA / CPRA (Kalifornia)",
     "ccpaText": "Wedingok ez ditu datu pertsonalak saltzen. Bildutako datuak gonbidapenaren kudeaketarako soilik erabiltzen dira. Kalifornian bizilaguna bazara, zure datuak ezabatzeko eskatzeko eskubidea duzu eta ez zara diskriminatua izango zure eskubideak baliatzeagatik.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Ezkontza gonbidapenen kudeaketarako web aplikazioa.",
     "copyright": "© {{year}} Adrián Carrasco López. Eskubide guztiak erreserbatuta.",
     "deleteEmailSubject": "Datuen ezabaketa eskaera - Wedingo",
@@ -518,13 +1886,146 @@
     "deleteFailed": "Ezin izan da gonbidapena ezabatu. Saiatu berriro.",
     "configLoadFailed": "Ezin izan da konfigurazioa kargatu. Begiratu konexioa eta saiatu berriro.",
     "invalidLink": "Gonbidapenaren esteka ez da baliozkoa.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "Ostatuaren informazioa ezin da 2000 karaktere baino gehiago izan.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "Menuaren deskribapenak ezin ditu 2000 karaktere baino gehiago izan.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "Ezin izan da irudia prozesatu. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "Ezin izan da irudi fitxategia irakurri.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "Irudiak enkriptatzea huts egin du.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "Irudia handiegia da konprimitu ondoren ere.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "Fitxategia hutsik dago. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -535,7 +2036,26 @@
       "compliance": "Betetzea",
       "data": "Datos"
     },
-    "superadmin": "Superadmin",
+    "superadmin": [
+      "Superadministratzailea",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "controlPanel": "Kontrol panela",
     "managePlatform": "Kudeatu Wedingo plataforma",
     "dashboardLoading": "Estatistikak kargatzen...",
@@ -588,14 +2108,90 @@
     "tokenCleanError": "Ezin izan dira tokenak garbitu.",
     "tokenLoadError": "Ezin izan dira tokenak kargatu.",
     "accountEmail": "Emaila: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Aktiboa",
     "sessionInactive": "Inaktiboa",
     "sessionLabel": "Saio lokala: {{status}}",
     "sessionType": "Mota: {{type}}",
-    "sessionTypeSuperadmin": "Superadmin",
-    "sessionTypeSetup": "Setup",
-    "sessionTypeAdmin": "Admin",
+    "sessionTypeSuperadmin": [
+      "Superadministratzailea",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sessionTypeSetup": [
+      "Konfigurazioa",
+      "Setup",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sessionTypeAdmin": [
+      "Admin",
+      "Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionExpires": "Iraungitzen: {{date}}",
     "logoutButton": "Saioa itxi",
     "firebaseAccount": "Zure superadmin kontua kudeatzeko, erabili Firebase kontsola:",
@@ -615,10 +2211,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Tokena",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "Erantzunak",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2270,46 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "Posta elektronikoa",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "Pasahitza",
+      "Password",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "compliance": {
     "title": "Tratamendu jardueren erregistroa (GDPR 30. Art.)",
@@ -653,13 +2325,51 @@
     "row1Basis": "Baimena (GDPR 6.1.a Art.)",
     "row1Purpose": "Ezkontza gonbidapena sortu eta pertsonalizatzea",
     "row1Retention": "Kontua aktibo dagoen bitartean",
-    "row1Recipients": "Google Cloud (Firestore, hosting)",
+    "row1Recipients": [
+      "Google Cloud (Firestore, hostinga)",
+      "Google Cloud (Firestore, hosting)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row2Activity": "Bertaratze baieztapena (RSVP)",
     "row2Data": "Gonbidatuaren izena, bertaratzea (bai/ez), menu aukera, alergiak, osasun datuak",
     "row2Basis": "Baimena (GDPR 6.1.a, 9.2.a Art.)",
     "row2Purpose": "Gonbidatuen zerrenda eta menua kudeatzea",
     "row2Retention": "12 hilabete ekitaldiaren ondoren",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Irudien igoera",
     "row3Data": "Ezkontzako argazkiak (AES-256-GCM zifratuta)",
     "row3Basis": "Baimena (GDPR 6.1.a Art.)",
@@ -677,7 +2387,26 @@
     "row5Basis": "Lege betebeharra (GDPR 6.1.c Art.)",
     "row5Purpose": "Jarduera administratiboen erregistroa",
     "row5Retention": "3 urte",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Nazioarteko transferentziak",
     "internationalText": "Datuak Google Clouden zerbitzarietan gordetzen dira eur3 eskualdean (Frankfurt, Alemania). Google LLC (AEB) tratamendu arduradun gisa jarduten du DPA baten arabera, GDPR 28. Art.aren arabera. AEBetarako transferentziak honako hauek babesten dituzte:",
     "scc": "Kontratu Klausula Estandarrak (SCC) - 2021/914 Betearazte Erabakia",
@@ -691,86 +2420,1359 @@
     "measureSuperadmin": "Superadmin Firebase Authentication + ezkutuko bideaz babestua"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "Irisgarritasuna",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Itxi",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontSize": [
+      "Testuaren tamaina",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "Normala",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontLarge": [
+      "Handia",
+      "Large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontExtraLarge": [
+      "Oso handia",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "Lerro-tartea",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "Normala",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineWide": [
+      "Zabala",
+      "Wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineVeryWide": [
+      "Oso zabala",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "Kontraste handia",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "Mugimendua murriztu",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "OpenDyslexic letra-tipoa",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "Letren tarte gehiago",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "Azpimarratu esteka guztiak",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "Kurtsorea handia",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "Grisen eskala",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "Ikusgai dauden foku-adierazleak",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "Musikarik ez",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "Errore bat gertatu da kargatzean",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "Musika",
+      "Music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "soundCloudNote": [
+      "SoundCloud pista — irekita erreproduzitzeko",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "Ireki SoundCloud-en",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "Inprimaketa prestatzen…",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "Bikote argazkia",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "Euren aitabitxien bedeinkapenarekin",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "Data eta lekua",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "Ekitaldiaren ordua:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Ikusi kokapena Google Maps-en",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "Une berezi hau zuekin partekatzea espero dugu.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "Garraioa",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutGuests": [
+      "Gonbidatuei buruz",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "Ezkontza egitaraua",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "Ordutegi zehatza laster partekatuko da.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "Janzkera kodea",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "Geroago jakinaraziko da.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "Haurrei buruz",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "Gure istorioa",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "Nola hasi zen dena",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "Istorioa laster partekatuko da.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "Opariak",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "Zure presentzia da oparirik onena",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "Oparien informazioa laster partekatuko da.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "Bankuko datuak",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "Ostatua",
+      "Accommodation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "whereToStay": [
+      "Non lo egin",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "Laster partekatuko da ostatuaren informazioa.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · Pribatutasun-politika wedingo-6c26a.web.app helbidean",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "Itxi leihoa",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": [
+      "Gora",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "Mugitu behera",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "title": [
+      "Ordena eta ikusgarritasuna",
+      "Order & visibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "help": [
+      "Arrastatu berrantolatzeko, erabili botoiak mugitzeko eta aktibatu edo desaktibatu atal bakoitza.",
+      "Drag to reorder, use the buttons to move, and toggle each section on or off.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "Hautatu hizkuntza",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 lagun",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "Espainia",
+      "Spain",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "westernEurope": [
+      "Mendebaldeko Europa",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "Europa nordikoa",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "Erdialdeko Europa",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "Hego Europa / Balkanak",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "Ekialdeko Europa / Kaukaso",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "Ekialdeko Asia",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "Hego Asia",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "Asiako hego-ekialdea",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "Erdialdeko Asia / Ekialde Hurbila",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "Afrika",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "Amerikak",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +3789,1689 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": [
+      "Aldaketen erregistroa",
+      "Changelog",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Itxi",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "Dagoeneko gonbidapen honetarako saio aktibo bat dago. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "Sarbide-kodeak ez du balio.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "Sartu sarbide-kodea.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "Kodea behar bezala egiaztatu da.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "Ezin izan da kodea egiaztatu. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "Sartu zure erabiltzaile-izena eta sarbide-kodea.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "Erabiltzaile-izena edo kodea okerra.",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "Kodea ez dator bat erabiltzaile honekin.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "Arrakastaz hasi zara saioa.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "Ezin izan da kodea egiaztatu. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "Idatzi CONFIRM kode berri bat sortzeko.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "Sartu zure erabiltzaile-izena lehenik.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "Erabiltzaile izenak letrak eta zenbakiak soilik izan ditzake.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "Erabiltzaile izenak ezin du 50 karaktere baino gehiago izan.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "Erabiltzaile honek ez du hemen sartzeko baimenik.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "Sortutako kodea. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "Ezin izan da kodea sortu. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "Sartu uneko sarbide-kodea berri bat sortzeko.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "Kode berria sortu da. ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "Kodea berritua. ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "Kontu honek ez du administrazio baimenik.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "Kredentzial okerrak.",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "Saiakera gehiegi. ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "Posta elektronikoaren formatuak ez du balio.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "Errore bat gertatu da saioa hastean. Egiaztatu konexioa.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": [
+      "Aldaketak gorde dira",
+      "Changes saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": [
+      "Urtarrila",
+      "January",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "2": [
+      "Otsaila",
+      "February",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "3": [
+      "Martxoa",
+      "March",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "4": [
+      "Apirila",
+      "April",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "5": [
+      "Maiatza",
+      "May",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "6": [
+      "ekaina",
+      "June",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "7": [
+      "uztaila",
+      "July",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "8": [
+      "Abuztua",
+      "August",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "9": [
+      "Iraila",
+      "September",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "10": [
+      "Urria",
+      "October",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "11": [
+      "Azaroa",
+      "November",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "12": [
+      "abendua",
+      "December",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": [
+      "Gai argiak",
+      "Light themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dark": [
+      "Gai ilunak",
+      "Dark themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": [
+      "Glutea",
+      "Gluten",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lactose": [
+      "Laktosa",
+      "Lactose",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nuts": [
+      "Zuhaitz fruitu lehorrak",
+      "Tree nuts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "shellfish": [
+      "Itsaskiak",
+      "Shellfish",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
+    "addressLine1": [
+      "Gure maiteenari",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "Sakatu irekitzeko",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "and": "&",
-    "tapContinue": "Tap to continue"
+    "tapContinue": [
+      "Sakatu jarraitzeko",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "Gure ezkontza",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "{{izena}}ren ezkontza",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "Tokia baieztatzeko",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "Momentu berezi hau zuekin ospatzea espero dugu.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "Ordua:",
+      "Time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeLabel": [
+      "Lekua:",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "Dotorea eta distiratsua, urrezko azentuekin.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "Naturala eta soila, berde leunekin.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "Beroa eta delikatua, arrosa tonuekin.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "Argia eta neutroa, presentzia lasaia eta betikoa.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "Leuna eta erromantikoa, tonu arrosa perladunekin.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "Freskoa eta lasaia, izpilikua eta malba tonuekin.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "Distiratsua eta jaia, urrezko distira beroekin.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "Iluna eta dotorea, anbar eta urrezko distiratsuekin.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "Sakona eta sofistikatua, urre bizia atzealde ilunean.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "Oso urdin iluna urre biziarekin eta presentzia solemnearekin.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "Epela eta inguratzailea, ardo beltz eta urrezko distiraz.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "Urdin sakona zilarrezko azentuekin eta presentzia lasaiarekin.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "Berde natural sakona, urrezko tonu dotoreekin.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "More bizia distira arrosa eta erromantikoekin.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "Maitasunaren ospakizuna ortzadarraren koloreekin.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "Urdina, arrosa eta zuria trans banderaren omenez.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "Horia, zuria, morea eta beltza bandera ez-bitarrarentzat.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "Bandera lesbianaren laranja, zuria eta arrosa.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "Bi banderaren arrosa, morea eta urdina.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "Pan banderaren arrosa, horia eta urdina.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "Bandera asexualaren beltza, grisa, zuria eta morea.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "Ongi etorri jolas-eremuarekin",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "Ongi etorri zaintzapean",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "Helduak soilik",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "Ez dago daturik",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "guztira",
+      "total",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "barChart": [
+      "Asistentzia-barra-diagrama",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

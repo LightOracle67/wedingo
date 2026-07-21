@@ -11,20 +11,20 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": "Viditelné",
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": "Něco se pokazilo",
+      "message": "Znovu načtěte stránku a zkuste to znovu.",
+      "reload": "Znovu načíst stránku"
     },
     "toast": {
-      "close": "Close"
+      "close": "Blízko"
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": "Přejít na hlavní obsah",
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": "Administrační lišta",
+      "fallback": "Správa"
     }
   },
   "landing": {
@@ -56,7 +56,7 @@
     "missing": "Zbývá",
     "todayIsTheDay": "Dnes je ten velký den!",
     "sectionLabel": "Obálka",
-    "eyebrow": "Our Wedding"
+    "eyebrow": "Naše svatba"
   },
   "details": {
     "sectionLabel": "Datum a místo",
@@ -75,7 +75,26 @@
     "sectionLabel": "O hostech",
     "scheduleTitle": "Program oslavy",
     "schedulePending": "Podrobný program bude brzy sdílen se všemi hosty.",
-    "dressCodeLabel": "Dress code",
+    "dressCodeLabel": [
+      "Dress code",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "dressCodeTitle": "Doporučený oděv",
     "dressCodePending": "Dress code bude sdělen později.",
     "kidsLabel": "Děti",
@@ -106,8 +125,8 @@
     "next": "Další",
     "thumbnailAria": "Fotografie {{number}}",
     "thumbnailAlt": "Náhled fotografie z galerie",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": "Galerie obrázků, k procházení použijte klávesy se šipkami",
+    "lightboxLabel": "Zvětšený obrázek"
   },
   "rsvp": {
     "sectionLabel": "Potvrzení účasti",
@@ -123,7 +142,13 @@
     "menuPescado": "Ryba",
     "menuVegano": "Veganské/Vegetariánské",
     "postre": "Dezert",
-    "menuLabel": "Menu",
+    "menuLabel": [
+      "Menu",
+      "Menu",
+      null,
+      null,
+      2
+    ],
     "allergiesLegend": "Alergie a intolerance",
     "allergiesPlaceholder": "Jiná alergie (upřesněte)",
     "allergiesHint": "Uveďte pouze potravinové alergie a intolerance. Nezadávejte nevyžádané lékařské informace.",
@@ -138,49 +163,68 @@
     "ageUnder14Warning": "Je vám méně než 14 let. Potřebujete souhlas svých rodičů nebo zákonných zástupců.",
     "parentalConsent": "Moji rodiče nebo zákonní zástupci souhlasí s mou účastí",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": "Pro potvrzení účasti zadejte své jméno.",
+      "menuRequired": "Vyberte možnost nabídky.",
+      "privacyRequired": "Musíte přijmout Zásady ochrany osobních údajů.",
+      "birthDateRequired": "Zadejte své datum narození.",
+      "ageUnder14": "Jste mladší 14 let. ",
+      "healthConsentRequired": "Musíte souhlasit se zpracováním vašich zdravotních údajů.",
+      "menuHeadcountRequired": "Uveďte alespoň jednu možnost nabídky.",
+      "guestNamesRequired": "Zadejte jména svých společníků.",
+      "guestNamesExceed": "Nemůžete zadat více jmen než společníků.",
+      "headcountExceed": "Součet možností nabídky nesmí překročit počet doprovodů."
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": "Děkujeme, {{name}}. ",
+    "successNotAttending": "Děkujeme, {{name}}. ",
+    "saveError": "Vaši odpověď se nepodařilo uložit. ",
+    "withdrawConfirm": "Opravdu chcete svou odpověď stáhnout?",
+    "withdrawSuccess": "Vaše odpověď byla stažena.",
+    "withdrawError": "Vaši odpověď se nepodařilo stáhnout. ",
+    "clearConfirm": "Smazat všechny odpovědi docházky? ",
+    "clearSuccess": "Evidence docházky vymazána.",
+    "clearError": "Nepodařilo se vymazat záznamy o docházce.",
+    "companionsLabel": "Společníci",
+    "headcountLabel": "Lidé",
+    "headcountHint": "Kolik lidí pro každou možnost (celkem {{total}})",
+    "guestNamesLabel": "Jména hostů",
+    "guestNamesHint": "Napište jméno a příjmení každé doprovodné reklamy (max. {{count}})",
+    "guestNamesPlaceholder": "Jméno1 Příjmení1, Jméno2 Příjmení2..."
   },
   "public": {
     "loadingInvitation": "Načítání pozvánky…",
     "notFoundTitle": "Pozvánka nenalezena",
     "notFoundText": "Nenašli jsme pozvánku s tímto odkazem. Pokud si myslíte, že jde o chybu, kontaktujte hostitele.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Vytvořte a sdílejte své personalizované svatební oznámení.",
     "emptyDescription": "Spravujte data svého oznámení, sdílejte jedinečný odkaz s hosty a přijímejte jejich potvrzení účasti.",
     "createLink": "Vytvořit pozvánku",
     "privacyPolicy": "Zásady ochrany osobních údajů",
     "terms": "Podmínky",
     "legalNotice": "Právní informace",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": "Toto místo se nepodařilo najít.",
+    "locationMapError": "Mapu se nepodařilo načíst.",
+    "locationCoordinates": "Souřadnice: {{lat}}, {{lng}}",
+    "mapPreviewAlt": "Náhled mapy na uvedeném místě.",
+    "locationSet": "Umístění nakonfigurováno"
   },
   "setup": {
     "loadingTitle": "Načítání pozvánky",
@@ -253,7 +297,26 @@
     "scheduleLabel": "Program svatby",
     "schedulePlaceholder": "Příklad: 18:00 Přivítání hostů\n18:30 Obřad\n19:30 Koktejl\n21:00 Hostina\n23:00 Tanec",
     "scheduleHint": "Napište program, každý bod na nový řádek.",
-    "dressCodeLabel": "Dress code",
+    "dressCodeLabel": [
+      "Dress code",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "dressCodeGala": "Společenský oděv",
     "dressCodeCasual": "Neformální oděv",
     "dressCodeFormal": "Formální oděv",
@@ -308,28 +371,28 @@
     "galleryUploadFailed": "Fotografie se nepodařilo nahrát.",
     "noValidFiles": "Žádný platný soubor. Maximálně 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": "Nahrajte zvukový soubor, který chcete přehrát na obalu (MP3, WAV, OGG, M4A — max. 5 MB).",
+    "audioUploadTitle": "Nahrajte zvukový soubor",
+    "audioUploadSubtitle": "MP3, WAV, OGG nebo M4A — max. 5 MB",
+    "audioFormatError": "Formát zvuku není podporován. ",
+    "audioEmptyError": "Zvukový soubor je prázdný.",
+    "audioSizeError": "Zvukový soubor přesahuje limit 5 MB.",
+    "audioReadError": "Chyba při čtení zvukového souboru.",
+    "errorEmptyFile": "Soubor je prázdný. ",
+    "galleryDescriptionPlaceholder": "Popis obrázku...",
+    "galleryMaxReached": "Maximálně {{max}} obrázků v galerii.",
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": "Nahrávání {{total}} fotek...",
+    "photoUploading": "Nahrávání fotografie...",
+    "replaceImage": "Změnit fotku",
+    "galleryDescriptionSaveFailed": "Při ukládání popisu došlo k chybě",
+    "galleryDescriptionSaved": "Popis uložen",
+    "currentMusic": "Vybraná hudba",
+    "removeMusic": "Odebrat hudbu",
+    "previewing": "Přehrává se...",
+    "preview": "Náhled",
+    "select": "Vybrat",
+    "selected": "Vybraný"
   },
   "admin": {
     "tabs": {
@@ -353,9 +416,28 @@
     "pdfTableCompanions": "Doprovod",
     "pdfTableDiet": "Strava",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Admin",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": "Zobrazit pozvánku",
+    "logout": "Odhlaste se"
   },
   "panel": {
     "confirmed": "Potvrzení",
@@ -417,9 +499,53 @@
     "generateMessage": "Vygenerovat jinou zprávu",
     "copyMessage": "Kopírovat zprávu",
     "shareVia": "Sdílet přes",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "Telegram",
+      "Telegram",
+      null,
+      null,
+      2
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Tisk",
     "printPdf": "Tisk / Uložit PDF",
     "linkCopied": "Odkaz zkopírován.",
@@ -448,7 +574,26 @@
     "rightsHint": "Otevře se váš e-mailový klient s předdefinovanou šablonou. Můžete také napsat na adriancl2001@gmail.com.",
     "ccpaTitle": "CCPA / CPRA (Kalifornie)",
     "ccpaText": "Wedingo neprodává osobní údaje. Shromážděné údaje se používají výhradně pro správu pozvánky. Pokud jste obyvatelem Kalifornie, máte právo požádat o vymazání svých údajů a nebýt diskriminován za uplatňování svých práv.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Webová aplikace pro správu svatebních oznámení.",
     "copyright": "© {{year}} Adrián Carrasco López. Všechna práva vyhrazena.",
     "deleteEmailSubject": "Žádost o vymazání údajů - Wedingo",
@@ -518,13 +663,13 @@
     "deleteFailed": "Pozvánku se nepodařilo smazat. Zkuste to znovu.",
     "configLoadFailed": "Konfiguraci se nepodařilo načíst. Zkontrolujte připojení a zkuste to znovu.",
     "invalidLink": "Odkaz na pozvánku je neplatný.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": "Informace o ubytování nesmí přesáhnout 2000 znaků.",
+    "menuTextoTooLong": "Popis nabídky nesmí přesáhnout 2000 znaků.",
+    "uploadImageFailed": "Obrázek se nepodařilo zpracovat. ",
+    "readImageFailed": "Soubor obrázku nelze přečíst.",
+    "encryptFailed": "Šifrování obrázku se nezdařilo.",
+    "imageTooLarge": "Obrázek je příliš velký i po kompresi.",
+    "fileEmpty": "Soubor je prázdný. "
   },
   "superadmin": {
     "tabs": {
@@ -535,7 +680,26 @@
       "compliance": "Soulad",
       "data": "Datos"
     },
-    "superadmin": "Superadmin",
+    "superadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "controlPanel": "Ovládací panel",
     "managePlatform": "Spravujte platformu Wedingo",
     "dashboardLoading": "Načítání statistik...",
@@ -561,7 +725,7 @@
     "invitationsCount": "{{count}} pozvánek · {{size}} obsazených",
     "noResultsFilter": "S tímto kritériem nebyly nalezeny žádné pozvánky.",
     "noInvitations": "Zatím nejsou žádné pozvánky.",
-    "tableToken": "Token",
+    "tableToken": "Žeton",
     "tableTheme": "Téma",
     "tableDate": "Datum svatby",
     "tableActions": "Akce",
@@ -587,15 +751,72 @@
     "tokenRevokeError": "Token se nepodařilo odvolat.",
     "tokenCleanError": "Tokeny se nepodařilo vyčistit.",
     "tokenLoadError": "Tokeny se nepodařilo načíst.",
-    "accountEmail": "Email: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountEmail": "E-mail: {{email}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Aktivní",
     "sessionInactive": "Neaktivní",
     "sessionLabel": "Lokální relace: {{status}}",
     "sessionType": "Typ: {{type}}",
-    "sessionTypeSuperadmin": "Superadmin",
+    "sessionTypeSuperadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionTypeSetup": "Konfigurace",
-    "sessionTypeAdmin": "Admin",
+    "sessionTypeAdmin": [
+      "Admin",
+      "Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionExpires": "Vyprší: {{date}}",
     "logoutButton": "Odhlásit se",
     "firebaseAccount": "Pro správu superadmin účtu použijte Firebase konzoli:",
@@ -615,10 +836,10 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": "Žeton",
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": "RSVP",
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +857,8 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": "E-mail",
+    "passwordLabel": "Heslo"
   },
   "compliance": {
     "title": "Záznamy o činnostech zpracování (čl. 30 GDPR)",
@@ -653,31 +874,88 @@
     "row1Basis": "Souhlas (čl. 6.1.a GDPR)",
     "row1Purpose": "Vytvoření a přizpůsobení svatebního oznámení",
     "row1Retention": "Dokud je účet aktivní",
-    "row1Recipients": "Google Cloud (Firestore, hosting)",
+    "row1Recipients": [
+      "Google Cloud (Firestore, hosting)",
+      "Google Cloud (Firestore, hosting)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row2Activity": "Potvrzení účasti (RSVP)",
     "row2Data": "Jméno hosta, účast (ano/ne), výběr menu, alergie, zdravotní údaje",
     "row2Basis": "Souhlas (čl. 6.1.a, 9.2.a GDPR)",
     "row2Purpose": "Správa seznamu hostů a menu",
     "row2Retention": "12 měsíců po události",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Nahrávání obrázků",
     "row3Data": "Svatební fotografie (šifrované AES-256-GCM)",
     "row3Basis": "Souhlas (čl. 6.1.a GDPR)",
     "row3Purpose": "Fotogalerie v pozvánce",
     "row3Retention": "12 měsíců po události",
-    "row3Recipients": "Google Cloud (Firestore subcollection)",
+    "row3Recipients": "Google Cloud (podkolekce Firestore)",
     "row4Activity": "Autentizace a relace",
     "row4Data": "Token relace, admin uživatelské jméno",
     "row4Basis": "Oprávněný zájem (čl. 6.1.f GDPR)",
     "row4Purpose": "Kontrola přístupu k administračnímu panelu",
     "row4Retention": "Doba trvání relace",
-    "row4Recipients": "Google Cloud (Firestore sessions)",
+    "row4Recipients": "Google Cloud (relace Firestore)",
     "row5Activity": "Audit superadmina",
     "row5Data": "Akce superadmina, použité tokeny, smazané pozvánky",
     "row5Basis": "Zákonná povinnost (čl. 6.1.c GDPR)",
     "row5Purpose": "Záznam administrativních činností",
     "row5Retention": "3 roky",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Mezinárodní přenosy",
     "internationalText": "Údaje jsou uloženy na serverech Google Cloud v regionu eur3 (Frankfurt, Německo). Google LLC (USA) vystupuje jako zpracovatel na základě DPA v souladu s čl. 28 GDPR. Přenosy do USA jsou kryty:",
     "scc": "Standardní smluvní doložky (SCC) - Prováděcí rozhodnutí 2021/914",
@@ -691,86 +969,105 @@
     "measureSuperadmin": "Superadmin chráněn Firebase Authentication + skrytá cesta"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": "Přístupnost",
+    "close": "Blízko",
+    "fontSize": "Velikost textu",
+    "fontNormal": "Normální",
+    "fontLarge": "Velký",
+    "fontExtraLarge": "Extra velké",
+    "lineSpacing": "Řádkování",
+    "lineNormal": "Normální",
+    "lineWide": "Široký",
+    "lineVeryWide": "Velmi široký",
+    "highContrast": "Vysoký kontrast",
+    "reducedMotion": "Snižte pohyb",
+    "dyslexiaFont": "OpenDyslexic písmo",
+    "moreSpacing": "Více mezer mezi písmeny",
+    "underlineLinks": "Podtrhněte všechny odkazy",
+    "bigCursor": "Velký kurzor",
+    "desaturate": "Stupně šedi",
+    "strongFocus": "Viditelné indikátory zaostření"
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": "Žádná hudba",
+    "loadError": "Chyba při načítání",
+    "label": "Hudba",
+    "soundCloudNote": "Skladba SoundCloud – otevřít pro přehrání",
+    "openInSoundCloud": "Otevřete v SoundCloud"
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": "Příprava tisku…",
+    "couplePhoto": "Pár foto",
+    "godparentsText": "S požehnáním jejich kmotrů",
+    "dateAndPlace": "Datum a místo konání",
+    "celebrationTime": "Čas obřadu:",
+    "viewInGoogleMaps": "Zobrazit polohu v Mapách Google",
+    "celebrationMessage": "Těšíme se, že se s vámi o tento výjimečný okamžik podělíme.",
+    "transport": "Doprava",
+    "aboutGuests": "O hostech",
+    "scheduleTitle": "Svatební plán",
+    "scheduleFallback": "Podrobný harmonogram bude brzy sdílen.",
+    "dressCode": [
+      "Dress code",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": "Bude sděleno později.",
+    "aboutKids": "O dětech",
+    "ourStory": "Náš příběh",
+    "storyStarted": "Jak to všechno začalo",
+    "storyFallback": "Příběh bude brzy sdílen.",
+    "gifts": "Dárky",
+    "bestGift": "Vaše přítomnost je ten nejlepší dar",
+    "giftsFallback": "Informace o dárcích budou brzy sdíleny.",
+    "bankDetails": "Bankovní údaje",
+    "accommodation": "Ubytování",
+    "whereToStay": "Kde se ubytovat",
+    "accommodationFallback": "Informace o ubytování budou brzy sdíleny.",
+    "footer": "Wedingo · Zásady ochrany osobních údajů na wedingo-6c26a.web.app",
+    "closeWindow": "Zavřít okno"
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
+    "moveUp": "Posuňte se nahoru",
+    "moveDown": "Posuňte se dolů",
     "title": "Pořadí a viditelnost",
     "help": "Přetáhněte pro změnu pořadí, použijte tlačítka pro přesun a zapněte/vypněte každou sekci."
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": "Vyberte jazyk"
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": "1 společník",
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": "Španělsko",
+    "westernEurope": "západní Evropa",
+    "nordicEurope": "severská Evropa",
+    "centralEurope": "střední Evropa",
+    "southernEurope": "Jižní Evropa / Balkán",
+    "easternEurope": "Východní Evropa / Kavkaz",
+    "eastAsia": "východní Asie",
+    "southAsia": "Jižní Asie",
+    "southeastAsia": "Jihovýchodní Asie",
+    "centralAsia": "Střední Asie / Střední východ",
+    "africa": "Afrika",
+    "americas": "Ameriky"
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -791,31 +1088,31 @@
     "close": "Zavřít"
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": "Pro tuto pozvánku již existuje aktivní relace. ",
+    "tokenInvalid": "Přístupový kód není platný.",
+    "enterCode": "Zadejte přístupový kód.",
+    "codeVerified": "Kód byl úspěšně ověřen.",
+    "codeVerifyError": "Kód se nepodařilo ověřit. ",
+    "enterUserAndCode": "Zadejte své uživatelské jméno a přístupový kód.",
+    "invalidCredentials": "Nesprávné uživatelské jméno nebo kód.",
+    "codeUserMismatch": "Kód tomuto uživateli neodpovídá.",
+    "loginSuccess": "Úspěšně jste se přihlásili.",
+    "loginError": "Kód se nepodařilo ověřit. ",
+    "confirmRequired": "Pro vygenerování nového kódu zadejte CONFIRM.",
+    "usernameRequired": "Nejprve zadejte své uživatelské jméno.",
+    "usernameInvalid": "Uživatelské jméno může obsahovat pouze písmena a číslice.",
+    "usernameTooLong": "Uživatelské jméno nesmí přesáhnout 50 znaků.",
+    "unauthorizedUser": "Tento uživatel zde nemá oprávnění k přístupu.",
+    "tokenGenerated": "Kód vygenerován. ",
+    "tokenGenerateError": "Kód se nepodařilo vygenerovat. ",
+    "currentTokenRequired": "Zadejte aktuální přístupový kód pro vygenerování nového.",
+    "tokenRenewed": "Byl vygenerován nový kód. ",
+    "tokenRenewedAdmin": "Kód obnoven. ",
+    "superadminNoPermissions": "Tento účet nemá oprávnění správce.",
+    "superadminWrongCredentials": "Nesprávné přihlašovací údaje.",
+    "superadminTooManyAttempts": "Příliš mnoho pokusů. ",
+    "superadminInvalidEmail": "Formát e-mailu není platný.",
+    "superadminLoginError": "Chyba při přihlašování. Zkontrolujte připojení."
   },
   "autosave": {
     "saved": "Změny uloženy"
@@ -837,7 +1134,26 @@
   "themeGroups": {
     "light": "Světlá témata",
     "dark": "Tmavá témata",
-    "lgbtiq": "LGTBIQ+"
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
     "gluten": "Lepek",
@@ -846,53 +1162,53 @@
     "shellfish": "Korýši"
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
+    "addressLine1": "Našim nejdražším",
+    "tapHint": "Klepnutím otevřete",
     "and": "&",
-    "tapContinue": "Tap to continue"
+    "tapContinue": "Pokračujte klepnutím"
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": "Naše svatba",
+    "eventTitle": "Svatba {{names}}",
+    "placeUnknown": "Místo bude potvrzeno",
+    "invitationText": "Těšíme se, že s vámi tento výjimečný okamžik oslavíme.",
+    "timeLabel": "Čas:",
+    "placeLabel": "Místo:"
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": "Elegantní a světlé, se zlatými akcenty.",
+    "forest": "Přirozená a střízlivá s jemnou zelení.",
+    "rose": "Teplé a jemné, s růžovými odstíny.",
+    "linen-soft": "Lehký a neutrální, s klidnou a nadčasovou přítomností.",
+    "blush-pearl": "Jemné a romantické s perleťovými růžovými tóny.",
+    "lavender-mist": "Svěží a klidná, s levandulovými a fialovými odstíny.",
+    "champagne-bubble": "Světlé a slavnostní, s teplými zlatými jiskrami.",
+    "amber-night": "Tmavé a elegantní, s jantarovými a zlatými odlesky.",
+    "onyx-gold": "Hluboké a sofistikované, s intenzivním zlatem na tmavém pozadí.",
+    "midnight-royal": "Velmi tmavě modrá s intenzivní zlatou a slavnostní přítomností.",
+    "burgundy-velvet": "Teplé a obklopující, s červeným vínem a zlatými jiskrami.",
+    "sapphire-night": "Tmavě modrá se stříbrnými akcenty a klidnou přítomností.",
+    "emerald-grove": "Tmavě přírodní zelená se zlatými a elegantními odstíny.",
+    "plum-twilight": "Intenzivní fialová s růžovými a romantickými jiskrami.",
+    "rainbow": "Oslava rozmanité lásky s barvami duhy.",
+    "trans": "Modrá, růžová a bílá na poctu trans vlajce.",
+    "nonbinary": "Žlutá, bílá, fialová a černá pro nebinární vlajku.",
+    "lesbian": "Oranžová, bílá a růžová lesbické vlajky.",
+    "bi": "Růžová, fialová a modrá vlajky bi.",
+    "pan": "Růžová, žlutá a modrá z panové vlajky.",
+    "ace": "Černá, šedá, bílá a fialová asexuální vlajky."
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": "Vítejte s hřištěm",
+      "supervised": "Vítejte pod dohledem",
+      "adultOnly": "Pouze pro dospělé"
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": "Žádná data",
+    "total": "celkový",
+    "barChart": "Sloupcový graf návštěvnosti",
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

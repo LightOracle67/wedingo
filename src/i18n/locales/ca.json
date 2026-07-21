@@ -1,7 +1,26 @@
 {
   "common": {
     "loading": "Carregant...",
-    "error": "Error",
+    "error": [
+      "Error",
+      "Error",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "close": "Tancar",
     "retry": "Reintentar",
     "save": "Desar canvis",
@@ -11,20 +30,39 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "Visible",
+      "Visible",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": "Alguna cosa va fallar",
+      "message": "Torneu a carregar la pàgina per tornar-ho a provar.",
+      "reload": "Torna a carregar la pàgina"
     },
     "toast": {
-      "close": "Close"
+      "close": "Tancar"
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": "Saltar al contingut principal",
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": "Barra d'administració",
+      "fallback": "Administració"
     }
   },
   "landing": {
@@ -56,7 +94,7 @@
     "missing": "Falten",
     "todayIsTheDay": "Avui és el gran dia!",
     "sectionLabel": "Portada",
-    "eyebrow": "Our Wedding"
+    "eyebrow": "El nostre casament"
   },
   "details": {
     "sectionLabel": "Data i lloc",
@@ -66,7 +104,26 @@
     "placePending": "El lloc de la celebració apareixerà aquí.",
     "welcomeWithTime": "Us esperem per compartir aquest moment tan especial. Comencem a les {{time}}. Més avall trobareu el mapa d'ubicació.",
     "welcomeWithoutTime": "Us esperem per compartir aquest moment tan especial. Més avall trobareu el mapa d'ubicació.",
-    "transport": "Transport",
+    "transport": [
+      "Transport",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "addToCalendar": "Afegir al calendari",
     "viewGoogleMaps": "Veure a Google Maps",
     "viewAppleMaps": "Veure a Apple Maps"
@@ -106,8 +163,8 @@
     "next": "Següent",
     "thumbnailAria": "Foto {{number}}",
     "thumbnailAlt": "Miniatura de foto de la galeria",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": "Galeria d'imatges, utilitzeu les tecles de fletxa per navegar",
+    "lightboxLabel": "Imatge ampliada"
   },
   "rsvp": {
     "sectionLabel": "Confirmació d'assistència",
@@ -138,49 +195,68 @@
     "ageUnder14Warning": "Ets menor de 14 anys. Necessites el consentiment dels teus pares o tutors.",
     "parentalConsent": "Els meus pares o tutors consenten la meva participació",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": "Introduïu el vostre nom per confirmar l'assistència.",
+      "menuRequired": "Seleccioneu una opció de menú.",
+      "privacyRequired": "Heu d'acceptar la Política de Privacitat.",
+      "birthDateRequired": "Introduïu la vostra data de naixement.",
+      "ageUnder14": "Tens menys de 14 anys. ",
+      "healthConsentRequired": "Heu de consentir el tractament de les vostres dades de salut.",
+      "menuHeadcountRequired": "Indica almenys una opció de menú.",
+      "guestNamesRequired": "Introduïu els noms dels vostres companys.",
+      "guestNamesExceed": "No podeu introduir més noms que companys.",
+      "headcountExceed": "La suma d'opcions del menú no pot superar el nombre d'acompanyants."
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": "Gràcies, {{name}}. ",
+    "successNotAttending": "Gràcies, {{name}}. ",
+    "saveError": "No hem pogut desar la teva resposta. ",
+    "withdrawConfirm": "Esteu segur que voleu retirar la vostra resposta?",
+    "withdrawSuccess": "La teva resposta ha estat retirada.",
+    "withdrawError": "No s'ha pogut retirar la teva resposta. ",
+    "clearConfirm": "Vols suprimir totes les respostes d'assistència? ",
+    "clearSuccess": "Registres d'assistència esborrats.",
+    "clearError": "No s'han pogut esborrar els registres d'assistència.",
+    "companionsLabel": "Companys",
+    "headcountLabel": "Gent",
+    "headcountHint": "Quantes persones per a cada opció ({{total}} total)",
+    "guestNamesLabel": "Noms de convidats",
+    "guestNamesHint": "Escriu el nom i els cognoms de cada company ({{count}} màxim)",
+    "guestNamesPlaceholder": "Nom1 Cognoms1, Nom2 Cognoms2..."
   },
   "public": {
     "loadingInvitation": "Carregant invitació…",
     "notFoundTitle": "Invitació no trobada",
     "notFoundText": "No trobem una invitació amb aquest enllaç. Si creus que és un error, contacta amb els amfitrions.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Crea i comparteix la teva invitació de casament personalitzada.",
     "emptyDescription": "Gestiona les dades de la teva invitació, comparteix un enllaç únic amb els teus convidats i rep les seves confirmacions d'assistència.",
     "createLink": "Crear invitació",
     "privacyPolicy": "Política de Privacitat",
     "terms": "Termes",
     "legalNotice": "Avís Legal",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": "No s'ha pogut localitzar aquest lloc.",
+    "locationMapError": "No s'ha pogut carregar el mapa.",
+    "locationCoordinates": "Coordenades: {{lat}}, {{lng}}",
+    "mapPreviewAlt": "Vista prèvia del mapa a la ubicació indicada.",
+    "locationSet": "Ubicació configurada"
   },
   "setup": {
     "loadingTitle": "Carregant invitació",
@@ -263,7 +339,26 @@
     "accommodationLabel": "Allotjament",
     "accommodationPlaceholder": "Exemple: Hotel recomanat: … Codi descompte: …",
     "accommodationHint": "Hotels, codis de descompte i opcions per als convidats.",
-    "transportLabel": "Transport",
+    "transportLabel": [
+      "Transport",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "transportPlaceholder": "Exemple: Autobús des de la Plaça Major a les 17:00. Aparcament gratuït al recinte.",
     "transportHint": "Opcions de transport, horaris d'autobús, aparcament, etc.",
     "kidsLabel": "Sobre els nens",
@@ -308,28 +403,28 @@
     "galleryUploadFailed": "No s'han pogut pujar les fotos.",
     "noValidFiles": "Cap fitxer vàlid. Màxim 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": "Pengeu un fitxer d'àudio per reproduir-lo a la portada (MP3, WAV, OGG, M4A — màxim 5 MB).",
+    "audioUploadTitle": "Carregueu un fitxer d'àudio",
+    "audioUploadSubtitle": "MP3, WAV, OGG o M4A — màxim 5 MB",
+    "audioFormatError": "Format d'àudio no compatible. ",
+    "audioEmptyError": "El fitxer d'àudio està buit.",
+    "audioSizeError": "El fitxer d'àudio supera el límit de 5 MB.",
+    "audioReadError": "S'ha produït un error en llegir el fitxer d'àudio.",
+    "errorEmptyFile": "El fitxer està buit. ",
+    "galleryDescriptionPlaceholder": "Descripció de la imatge...",
+    "galleryMaxReached": "Màxim {{max}} imatges a la galeria.",
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": "S'estan penjant {{total}} fotos...",
+    "photoUploading": "S'està carregant la foto...",
+    "replaceImage": "Canvia foto",
+    "galleryDescriptionSaveFailed": "S'ha produït un error en desar la descripció",
+    "galleryDescriptionSaved": "Descripció desada",
+    "currentMusic": "Música seleccionada",
+    "removeMusic": "Elimina la música",
+    "previewing": "Jugant...",
+    "preview": "Vista prèvia",
+    "select": "Seleccioneu",
+    "selected": "Seleccionat"
   },
   "admin": {
     "tabs": {
@@ -353,9 +448,28 @@
     "pdfTableCompanions": "Acomp",
     "pdfTableDiet": "Dieta",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Admin",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": "Veure invitació",
+    "logout": "Tanca la sessió"
   },
   "panel": {
     "confirmed": "Confirmats",
@@ -405,7 +519,26 @@
     "total": "{{count}} en total",
     "page": "{{current}} / {{total}}",
     "attendingValue": "Sí",
-    "notAttendingValue": "No",
+    "notAttendingValue": [
+      "No",
+      "No",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "noResultsFilter": "No s'han trobat resultats amb aquest filtre.",
     "noResults": "Encara no hi ha respostes d'assistència.",
     "exportPdf": "Exportar PDF",
@@ -417,9 +550,47 @@
     "generateMessage": "Generar un altre missatge",
     "copyMessage": "Copiar missatge",
     "shareVia": "Compartir per",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": "Telegrama",
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Imprimir",
     "printPdf": "Imprimir / Desar PDF",
     "linkCopied": "Enllaç copiat.",
@@ -448,7 +619,26 @@
     "rightsHint": "S'obrirà el teu client de correu amb una plantilla predefinida. També pots escriure a adriancl2001@gmail.com.",
     "ccpaTitle": "CCPA / CPRA (Califòrnia)",
     "ccpaText": "Wedingo no ven dades personals. Les dades recollides s'usen exclusivament per a la gestió de la invitació. Si ets resident a Califòrnia, tens dret a sol·licitar l'eliminació de les teves dades i a no ser discriminat per exercir els teus drets.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Aplicació web per a la gestió d'invitacions de casament.",
     "copyright": "© {{year}} Adrián Carrasco López. Tots els drets reservats.",
     "deleteEmailSubject": "Sol·licitud d'eliminació de dades - Wedingo",
@@ -518,24 +708,24 @@
     "deleteFailed": "No s'ha pogut eliminar la invitació. Torna-ho a provar.",
     "configLoadFailed": "No s'ha pogut carregar la configuració. Revisa la connexió i torna-ho a provar.",
     "invalidLink": "L'enllaç d'invitació no és vàlid.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": "La informació de l'allotjament no pot superar els 2.000 caràcters.",
+    "menuTextoTooLong": "La descripció del menú no pot superar els 2.000 caràcters.",
+    "uploadImageFailed": "No s'ha pogut processar la imatge. ",
+    "readImageFailed": "No s'ha pogut llegir el fitxer d'imatge.",
+    "encryptFailed": "Ha fallat el xifratge de la imatge.",
+    "imageTooLarge": "La imatge és massa gran fins i tot després de la compressió.",
+    "fileEmpty": "El fitxer està buit. "
   },
   "superadmin": {
     "tabs": {
       "dashboard": "Panell",
       "invitations": "Invitacions",
-      "tokens": "Tokens",
+      "tokens": "Fitxes",
       "session": "Sessió",
       "compliance": "Compliment",
       "data": "Datos"
     },
-    "superadmin": "Superadmin",
+    "superadmin": "Superadministrador",
     "controlPanel": "Panell de control",
     "managePlatform": "Gestiona la plataforma Wedingo",
     "dashboardLoading": "Carregant estadístiques...",
@@ -561,7 +751,26 @@
     "invitationsCount": "{{count}} invitacions · {{size}} ocupats",
     "noResultsFilter": "No s'han trobat invitacions amb aquest criteri.",
     "noInvitations": "Encara no hi ha invitacions.",
-    "tableToken": "Token",
+    "tableToken": [
+      "Token",
+      "Token",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "tableTheme": "Tema",
     "tableDate": "Data casament",
     "tableActions": "Accions",
@@ -587,15 +796,53 @@
     "tokenRevokeError": "No s'ha pogut revocar el token.",
     "tokenCleanError": "No s'han pogut netejar els tokens.",
     "tokenLoadError": "No s'han pogut carregar els tokens.",
-    "accountEmail": "Email: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountEmail": "Correu electrònic: {{email}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Activa",
     "sessionInactive": "Inactiva",
     "sessionLabel": "Sessió local: {{status}}",
     "sessionType": "Tipus: {{type}}",
-    "sessionTypeSuperadmin": "Superadmin",
-    "sessionTypeSetup": "Setup",
-    "sessionTypeAdmin": "Admin",
+    "sessionTypeSuperadmin": "Superadministrador",
+    "sessionTypeSetup": "Configuració",
+    "sessionTypeAdmin": [
+      "Admin",
+      "Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionExpires": "Expira: {{date}}",
     "logoutButton": "Tancar sessió",
     "firebaseAccount": "Per gestionar el teu compte de superadmin, fes servir la consola de Firebase:",
@@ -615,10 +862,29 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Token",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": "RSVP",
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +902,8 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": "Correu electrònic",
+    "passwordLabel": "Contrasenya"
   },
   "compliance": {
     "title": "Registre d'activitats de tractament (Art. 30 GDPR)",
@@ -653,31 +919,69 @@
     "row1Basis": "Consentiment (Art. 6.1.a GDPR)",
     "row1Purpose": "Crear i personalitzar invitació de casament",
     "row1Retention": "Mentre el compte estigui actiu",
-    "row1Recipients": "Google Cloud (Firestore, hosting)",
+    "row1Recipients": "Google Cloud (Firestore, allotjament)",
     "row2Activity": "Confirmació d'assistència (RSVP)",
     "row2Data": "Nom del convidat, assistència (sí/no), selecció de menú, al·lèrgies, dades de salut",
     "row2Basis": "Consentiment (Art. 6.1.a, 9.2.a GDPR)",
     "row2Purpose": "Gestionar llista de convidats i menú",
     "row2Retention": "12 mesos després de l'esdeveniment",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Pujada d'imatges",
     "row3Data": "Fotos de casament (xifrades AES-256-GCM)",
     "row3Basis": "Consentiment (Art. 6.1.a GDPR)",
     "row3Purpose": "Galeria de fotos a la invitació",
     "row3Retention": "12 mesos després de l'esdeveniment",
-    "row3Recipients": "Google Cloud (Firestore subcollection)",
+    "row3Recipients": "Google Cloud (subcol·lecció Firestore)",
     "row4Activity": "Autenticació i sessions",
     "row4Data": "Token de sessió, nom d'usuari admin",
     "row4Basis": "Interès legítim (Art. 6.1.f GDPR)",
     "row4Purpose": "Controlar l'accés al panell d'administració",
     "row4Retention": "Durada de la sessió",
-    "row4Recipients": "Google Cloud (Firestore sessions)",
+    "row4Recipients": "Google Cloud (sessions de Firestore)",
     "row5Activity": "Auditoria de superadmin",
     "row5Data": "Accions de superadmin, tokens usats, invitacions eliminades",
     "row5Basis": "Obligació legal (Art. 6.1.c GDPR)",
     "row5Purpose": "Registre d'activitats administratives",
     "row5Retention": "3 anys",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Transferències internacionals",
     "internationalText": "Les dades s'emmagatzemen en servidors de Google Cloud a la regió eur3 (Frankfurt, Alemanya). Google LLC (EUA) actua com a encarregat del tractament sota DPA conforme a l'Art. 28 GDPR. Les transferències als EUA s'emparen en:",
     "scc": "Clàusules Contractuals Tipus (SCC) - Decisió d'Execució 2021/914",
@@ -691,86 +995,143 @@
     "measureSuperadmin": "Superadmin protegit per Firebase Authentication + ruta oculta"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": "Accessibilitat",
+    "close": "Tancar",
+    "fontSize": "Mida del text",
+    "fontNormal": [
+      "Normal",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontLarge": "Gran",
+    "fontExtraLarge": "Extra gran",
+    "lineSpacing": "Interlineat",
+    "lineNormal": [
+      "Normal",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineWide": "Ample",
+    "lineVeryWide": "Molt ample",
+    "highContrast": "Alt contrast",
+    "reducedMotion": "Reduir el moviment",
+    "dyslexiaFont": "Tipus de lletra OpenDyslexic",
+    "moreSpacing": "Més espai entre lletres",
+    "underlineLinks": "Subratlla tots els enllaços",
+    "bigCursor": "Cursor gran",
+    "desaturate": "Escala de grisos",
+    "strongFocus": "Indicadors d'enfocament visibles"
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": "Sense música",
+    "loadError": "Error en carregar",
+    "label": "Música",
+    "soundCloudNote": "Pista de SoundCloud: oberta per reproduir-la",
+    "openInSoundCloud": "Obre a SoundCloud"
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": "S'està preparant la impressió...",
+    "couplePhoto": "Foto de parella",
+    "godparentsText": "Amb la benedicció dels seus padrins",
+    "dateAndPlace": "Data i lloc",
+    "celebrationTime": "Hora de la cerimònia:",
+    "viewInGoogleMaps": "Veure la ubicació a Google Maps",
+    "celebrationMessage": "Esperem poder compartir aquest moment especial amb vosaltres.",
+    "transport": [
+      "Transport",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutGuests": "Sobre els convidats",
+    "scheduleTitle": "Horari del casament",
+    "scheduleFallback": "La programació detallada es compartirà aviat.",
+    "dressCode": "Codi de vestimenta",
+    "dressCodeFallback": "Es comunicarà més endavant.",
+    "aboutKids": "Sobre els nens",
+    "ourStory": "La nostra història",
+    "storyStarted": "Com va començar tot",
+    "storyFallback": "La història es compartirà aviat.",
+    "gifts": "Regals",
+    "bestGift": "La teva presència és el millor regal",
+    "giftsFallback": "La informació del regal es compartirà aviat.",
+    "bankDetails": "Dades bancàries",
+    "accommodation": "Allotjament",
+    "whereToStay": "On allotjar-se",
+    "accommodationFallback": "La informació de l'allotjament es compartirà aviat.",
+    "footer": "Wedingo · Política de privadesa a wedingo-6c26a.web.app",
+    "closeWindow": "Tanca la finestra"
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
+    "moveUp": "Mou cap amunt",
+    "moveDown": "Mou cap avall",
     "title": "Ordre i visibilitat",
     "help": "Arrossegueu per reordenar, utilitzeu els botons per moure i activeu o desactiveu cada secció."
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": "Seleccioneu l'idioma"
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": "1 acompanyant",
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": "Espanya",
+    "westernEurope": "Europa occidental",
+    "nordicEurope": "Europa nòrdica",
+    "centralEurope": "Europa central",
+    "southernEurope": "Sud d'Europa / Balcans",
+    "easternEurope": "Europa de l'Est / Caucas",
+    "eastAsia": "Àsia oriental",
+    "southAsia": "Àsia del Sud",
+    "southeastAsia": "Sud-est asiàtic",
+    "centralAsia": "Àsia Central/Orient Mitjà",
+    "africa": "Àfrica",
+    "americas": "Amèrica"
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -791,31 +1152,31 @@
     "close": "Tancar"
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": "Ja hi ha una sessió activa per a aquesta invitació. ",
+    "tokenInvalid": "El codi d'accés no és vàlid.",
+    "enterCode": "Introduïu el codi d'accés.",
+    "codeVerified": "Codi verificat correctament.",
+    "codeVerifyError": "No s'ha pogut verificar el codi. ",
+    "enterUserAndCode": "Introduïu el vostre nom d'usuari i el codi d'accés.",
+    "invalidCredentials": "Nom d'usuari o codi incorrectes.",
+    "codeUserMismatch": "El codi no coincideix amb aquest usuari.",
+    "loginSuccess": "Heu iniciat sessió correctament.",
+    "loginError": "No s'ha pogut verificar el codi. ",
+    "confirmRequired": "Escriviu CONFIRM per generar un codi nou.",
+    "usernameRequired": "Introduïu primer el vostre nom d'usuari.",
+    "usernameInvalid": "El nom d'usuari només pot contenir lletres i números.",
+    "usernameTooLong": "El nom d'usuari no pot superar els 50 caràcters.",
+    "unauthorizedUser": "Aquest usuari no té permís per accedir aquí.",
+    "tokenGenerated": "Codi generat. ",
+    "tokenGenerateError": "No s'ha pogut generar el codi. ",
+    "currentTokenRequired": "Introduïu el codi d'accés actual per generar-ne un de nou.",
+    "tokenRenewed": "Nou codi generat. ",
+    "tokenRenewedAdmin": "Codi renovat. ",
+    "superadminNoPermissions": "Aquest compte no té permisos d'administració.",
+    "superadminWrongCredentials": "Credencials incorrectes.",
+    "superadminTooManyAttempts": "Massa intents. ",
+    "superadminInvalidEmail": "El format del correu electrònic no és vàlid.",
+    "superadminLoginError": "S'ha produït un error en iniciar la sessió. Comprova la teva connexió."
   },
   "autosave": {
     "saved": "Canvis desats"
@@ -837,62 +1198,119 @@
   "themeGroups": {
     "light": "Temes clars",
     "dark": "Temes foscos",
-    "lgbtiq": "LGTBIQ+"
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
+    "gluten": [
+      "Gluten",
+      "Gluten",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "lactose": "Lactosa",
     "nuts": "Fruits secs",
     "shellfish": "Marisc"
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
+    "addressLine1": "Als nostres estimats",
+    "tapHint": "Toqueu per obrir",
     "and": "&",
-    "tapContinue": "Tap to continue"
+    "tapContinue": "Toca per continuar"
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": "El nostre casament",
+    "eventTitle": "Casament de {{noms}}",
+    "placeUnknown": "Localització per confirmar",
+    "invitationText": "Esperem celebrar amb vosaltres aquest moment tan especial.",
+    "timeLabel": "Hora:",
+    "placeLabel": "Lloc:"
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": "Elegant i brillant, amb tocs daurats.",
+    "forest": "Natural i sobri amb verds suaus.",
+    "rose": "Càlid i delicat, amb tonalitats rosades.",
+    "linen-soft": "Lleuger i neutre, amb una presència serena i atemporal.",
+    "blush-pearl": "Suau i romàntic, amb tons rosa perlat.",
+    "lavender-mist": "Fresc i serè, amb tonalitats lavanda i malva.",
+    "champagne-bubble": "Lluminós i festiu, amb espurnes daurades càlides.",
+    "amber-night": "Fosc i elegant, amb reflexos ambre i daurat.",
+    "onyx-gold": "Profund i sofisticat, amb or intens sobre fons fosc.",
+    "midnight-royal": "Blau molt fosc d'or intens i presència solemne.",
+    "burgundy-velvet": "Càlid i envoltant, amb vi negre i espurnes daurats.",
+    "sapphire-night": "Blau profund amb accents platejats i presència serena.",
+    "emerald-grove": "Verd natural intens amb tonalitats daurades i elegants.",
+    "plum-twilight": "Lila intens amb brillants rosats i romàntics.",
+    "rainbow": "Celebració de l'amor divers amb colors de l'arc de Sant Martí.",
+    "trans": "Blau, rosa i blanc en homenatge a la bandera trans.",
+    "nonbinary": "Groc, blanc, morat i negre per a la bandera no binària.",
+    "lesbian": "Taronja, blanc i rosa de la bandera lesbiana.",
+    "bi": "Rosa, morat i blau de la bandera bi.",
+    "pan": "Rosa, groc i blau de la bandera de la paella.",
+    "ace": "Negre, gris, blanc i morat de la bandera asexual."
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": "Benvinguda amb zona de jocs",
+      "supervised": "Benvingut sota supervisió",
+      "adultOnly": "Només adults"
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": "Sense dades",
+    "total": [
+      "total",
+      "total",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "barChart": "Gràfic de barres d'assistència",
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }
