@@ -23,6 +23,7 @@ const AudioUploadPicker = memo(function AudioUploadPicker({ value, onChange, t }
     const input = e.target;
     setError("");
     if (!file) return;
+    if (file.size === 0) { setError(t("setup.audioEmptyError")); if (input) input.value = ""; return; }
     if (!ALLOWED_AUDIO_TYPES.includes(file.type)) {
       setError(t("setup.audioFormatError"));
       if (input) input.value = "";

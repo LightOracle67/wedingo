@@ -47,6 +47,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
     const file = e.target.files?.[0];
     const input = e.target;
     if (!file) return;
+    if (file.size === 0) { addToast("error", t("setup.errorEmptyFile")); if (input) input.value = ""; return; }
     if (!ALLOWED_UPLOAD_TYPES.has(file.type)) { addToast("error", t("setup.errorFileFormat")); if (input) input.value = ""; return; }
     if (file.size > MAX_UPLOAD_SIZE_BYTES) { addToast("error", t("setup.errorFileSize")); if (input) input.value = ""; return; }
 

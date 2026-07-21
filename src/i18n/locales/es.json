@@ -237,6 +237,7 @@
     "audioUploadTitle": "Subir archivo de audio",
     "audioUploadSubtitle": "MP3, WAV, OGG o M4A — máximo 5 MB",
     "audioFormatError": "Formato de audio no soportado. Usa MP3, WAV, OGG o M4A.",
+    "audioEmptyError": "El archivo de audio está vacío.",
     "audioSizeError": "El archivo de audio supera el límite de 5 MB.",
     "audioReadError": "Error al leer el archivo de audio.",
     "placeLabel": "Lugar de la boda",
@@ -306,6 +307,7 @@
     "menuCelebrationLabel": "Menú de la celebración *",
     "themeGroupCount": "{{count}} temas",
     "privacyConsent": "He leído y acepto la <link>Política de Privacidad</link>",
+    "errorEmptyFile": "El archivo está vacío. Selecciona un archivo válido.",
     "errorFileFormat": "Formato no permitido. Usa JPG o PNG.",
     "errorFileSize": "La imagen supera 20 MB.",
     "photoUploaded": "Foto subida correctamente.",
@@ -471,6 +473,7 @@
     "legalText": "En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se informa:\n\nResponsable: Adrián Carrasco López\nEmail: adriancl2001@gmail.com\nFinalidad del sitio web: plataforma de invitaciones de boda personalizadas.\n\nEste sitio web utiliza Firebase (Google LLC) como infraestructura de hosting y almacenamiento, con servidores en la Unión Europea."
   },
   "errors": {
+    "fileEmpty": "El archivo está vacío. Selecciona un archivo válido.",
     "fileFormat": "Formato no permitido. Usa JPG o PNG.",
     "fileSize": "La imagen supera 20 MB. Usa una imagen más ligera.",
     "uploadingImage": "Subiendo imagen...",

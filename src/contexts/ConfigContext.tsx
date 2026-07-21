@@ -242,6 +242,7 @@ export function ConfigProvider({ children }: any) {
   const handleBackgroundUpload = useCallback(async (event: any) => {
     const file = event.target.files?.[0];
     if (!file) { event.target.value = ""; return; }
+    if (file.size === 0) { setSaveError(t("errors.fileEmpty")); event.target.value = ""; return; }
     if (!ALLOWED_UPLOAD_TYPES.has(file.type)) {
       setSaveError(t("errors.fileFormat"));
       event.target.value = "";
