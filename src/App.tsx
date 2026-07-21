@@ -11,8 +11,8 @@ import MusicPlayer from "./components/MusicPlayer";
 
 const RTL_LANGS = new Set(["ar", "he", "ur", "fa", "ps", "ku"]);
 const AccessibilityPanel = lazy(() => import("./components/AccessibilityPanel"));
-const LegalModal = lazy(() => import("./components/LegalModal"));
-const ChangelogModal = lazy(() => import("./components/ChangelogModal"));
+import LegalModal from "./components/LegalModal";
+import ChangelogModal from "./components/ChangelogModal";
 import Fireflies from "./components/Fireflies";
 import { APP_VERSION } from "./lib/constants";
 import "./styles/admin.css";
