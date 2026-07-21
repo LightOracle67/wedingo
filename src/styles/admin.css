@@ -1315,6 +1315,57 @@ select.setup-input {
   padding: 0.4rem 0.8rem;
 }
 
+/* ── DataTab ── */
+.data-tab-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.8rem;
+  align-items: center;
+  flex-shrink: 0;
+}
+.data-tab-confirm {
+  margin-bottom: 0.8rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.data-tab-confirm input {
+  max-width: 16rem;
+  font-size: 0.82rem;
+}
+.data-tab-table-wrap {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  border: 1px solid var(--setup-border);
+  border-radius: 0.5rem;
+}
+.data-tab-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+.data-tab-th {
+  padding: 0.5rem 0.6rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.78rem;
+  color: var(--setup-title);
+  border-bottom: 1px solid var(--setup-border);
+  white-space: nowrap;
+}
+.data-tab-td {
+  padding: 0.45rem 0.6rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--setup-border) 50%, transparent);
+  vertical-align: middle;
+}
+.data-tab-empty-row td {
+  padding: 2rem;
+  text-align: center;
+  color: var(--setup-muted);
+}
+
 /* ── Utility classes para reducir inline styles ── */
 .admin-flex {
   display: flex;
