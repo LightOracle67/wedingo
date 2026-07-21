@@ -1,4 +1,4 @@
-export const APP_VERSION = "2.14.0";
+export const APP_VERSION = "2.14.1";
 
 export const CACHE_TTL_MS = 120000;
 export const MAX_WEDDING_YEAR_OFFSET = 4;

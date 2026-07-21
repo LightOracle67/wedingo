@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.14.1",
+    date: "2026-07-20",
+    changes: [
+      "Fix: revert lazy LegalModal/ChangelogModal (importados estáticamente por UIContext/SupportTab)",
+    ],
+  },
+  {
     version: "2.14.0",
     date: "2026-07-20",
     changes: [
