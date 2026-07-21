@@ -1,5 +1,15 @@
 export const CHANGELOG = [
   {
+    version: "2.15.4",
+    date: "2026-07-20",
+    changes: [
+      "Fix: traducciones en inglés contenían texto en español (accesibilidad, mostrar, ocultar, sección, oculta, secciones, contraseña, tu@email.com)",
+      "Fix: traducciones en español contenían texto en inglés (rsvp.validation, success/error messages)",
+      "Add: sección chart añadida a es.json (4 keys: noData, total, barChart, donutSummary)",
+      "Add: 6 keys faltantes a en.json (galleryDescriptionPlaceholder, galleryMaxReached, etc.)",
+    ],
+  },
+  {
     version: "2.15.3",
     date: "2026-07-20",
     changes: [

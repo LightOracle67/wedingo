@@ -20,12 +20,12 @@
       "ariaLabel": "Administration bar",
       "fallback": "Administration"
     },
-    "accessibility": "Accesibilidad",
-    "show": "Mostrar",
-    "hide": "Ocultar",
-    "section": "sección",
+    "accessibility": "Accessibility",
+    "show": "Show",
+    "hide": "Hide",
+    "section": "Section",
     "visible": "Visible",
-    "hidden": "Oculta"
+    "hidden": "Hidden"
   },
   "landing": {
     "title": "Wedingo — Wedding invitations",
@@ -314,8 +314,14 @@
     "photoUploadFailed": "Could not upload the photo.",
     "galleryUploadSuccess": "{{count}} photo(s) uploaded successfully.",
     "galleryUploadFailed": "Could not upload the photos.",
+    "galleryDescriptionPlaceholder": "Image description...",
+    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
+    "galleryUploading": "Uploading {{total}} photo(s)...",
+    "photoUploading": "Uploading photo...",
+    "replaceImage": "Change photo",
     "noValidFiles": "No valid files. Max 20 MB, JPG/PNG.",
-    "hiddenSectionBadge": "oculta",
+    "hiddenSectionBadge": "hidden",
     "galleryDescriptionSaveFailed": "Error saving description",
     "galleryDescriptionSaved": "Description saved",
     "currentMusic": "Selected music",
@@ -346,7 +352,7 @@
     "pdfTableAttendance": "Attendance",
     "pdfTableCompanions": "Comp.",
     "pdfTableDiet": "Diet",
-    "sectionsLabel": "Secciones",
+    "sectionsLabel": "Sections",
     "barTitle": "Wedingo · Admin",
     "viewInvitation": "View invitation",
     "logout": "Log out"
@@ -595,8 +601,8 @@
     "logoutButton": "Log out",
     "firebaseAccount": "To manage your superadmin account, use the Firebase console:",
     "firebaseLink": "Go to Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Select all",
       "deselectAll": "Deselect all",
