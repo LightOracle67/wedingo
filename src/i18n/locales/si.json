@@ -55,7 +55,8 @@
     "todayIsWedding": "අද විවාහ දිනයයි",
     "missing": "ඉතිරි",
     "todayIsTheDay": "අද විශේෂ දිනයයි!",
-    "sectionLabel": "Cover"
+    "sectionLabel": "Cover",
+    "eyebrow": "Our Wedding"
   },
   "details": {
     "sectionLabel": "දිනය සහ ස්ථානය",
@@ -105,7 +106,8 @@
     "next": "ඊළඟ",
     "thumbnailAria": "ඡායාරූපය {{number}}",
     "thumbnailAlt": "ඡායාරූප එකතුවේ කුඩා පින්තූරය",
-    "carouselLabel": "Image gallery, use arrow keys to navigate"
+    "carouselLabel": "Image gallery, use arrow keys to navigate",
+    "lightboxLabel": "Enlarged image"
   },
   "rsvp": {
     "sectionLabel": "සහභාගීත්ව තහවුරු කිරීම",
@@ -231,8 +233,6 @@
     "currentPhoto": "වත්මන් ඡායාරූපය",
     "remove": "ඉවත් කරන්න",
     "musicLabel": "පසුබිම් සංගීතය",
-    "musicPlaceholder": "https://උදාහරණ.com/ගීතය.mp3",
-    "musicHint": "ආවරණයේ වාදනය වීමට MP3 ශ්‍රව්‍ය ගොනුවක සබැඳිය.",
     "placeLabel": "විවාහ ස්ථානය",
     "placePlaceholder": "සෙවීමට ස්ථානයේ නම ලියන්න...",
     "placeHint": "ස්ථානය ලියා ප්‍රතිඵලවලින් එකක් තෝරන්න.",
@@ -307,7 +307,29 @@
     "galleryUploadSuccess": "ඡායාරූප {{count}} ක් සාර්ථකව උඩුගත කරන ලදී.",
     "galleryUploadFailed": "ඡායාරූප උඩුගත කළ නොහැකි විය.",
     "noValidFiles": "වලංගු ගොනු නැත. උපරිම 20 MB, JPG/PNG.",
-    "hiddenSectionBadge": "oculta"
+    "hiddenSectionBadge": "oculta",
+    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+    "audioUploadTitle": "Upload audio file",
+    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
+    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
+    "audioEmptyError": "Audio file is empty.",
+    "audioSizeError": "Audio file exceeds the 5 MB limit.",
+    "audioReadError": "Error reading audio file.",
+    "errorEmptyFile": "The file is empty. Select a valid file.",
+    "galleryDescriptionPlaceholder": "Image description...",
+    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
+    "galleryUploading": "Uploading {{total}} photo(s)...",
+    "photoUploading": "Uploading photo...",
+    "replaceImage": "Change photo",
+    "galleryDescriptionSaveFailed": "Error saving description",
+    "galleryDescriptionSaved": "Description saved",
+    "currentMusic": "Selected music",
+    "removeMusic": "Remove music",
+    "previewing": "Playing...",
+    "preview": "Preview",
+    "select": "Select",
+    "selected": "Selected"
   },
   "admin": {
     "tabs": {
@@ -330,7 +352,10 @@
     "pdfTableAttendance": "සහභාගීත්වය",
     "pdfTableCompanions": "සහචරයින්",
     "pdfTableDiet": "ආහාර",
-    "sectionsLabel": "Secciones"
+    "sectionsLabel": "Secciones",
+    "barTitle": "Wedingo · Admin",
+    "viewInvitation": "View invitation",
+    "logout": "Log out"
   },
   "panel": {
     "confirmed": "තහවුරු කළ",
@@ -480,7 +505,6 @@
     "menuRequired": "අවම වශයෙන් එක් ප්‍රධාන මෙනුවක් (මස්, මාළු හෝ වීගන්) විස්තර කරන්න.",
     "menuTextRequired": "උත්සව මෙනුව විස්තර කරන්න.",
     "ibanInvalid": "IBAN ආකෘතිය වලංගු නැත.",
-    "musicUrlInvalid": "සංගීත සබැඳිය වලංගු URL එකක් විය යුතුය (https://...).",
     "galleryFormatInvalid": "ඡායාරූප එකතුවේ පින්තූර ආකෘතිය වලංගු නැත.",
     "sectionOrderMismatch": "කොටස් අනුපිළිවෙලෙහි මූලද්‍රව්‍ය {{actual}} ක් ඇත, බලාපොරොත්තු වූයේ {{expected}} කි.",
     "messageTooLong": "ආරාධනා පණිවිඩය අක්ෂර 500 නොඉක්මවිය යුතුය.",
@@ -499,7 +523,8 @@
     "uploadImageFailed": "Could not process the image. Try another one.",
     "readImageFailed": "Could not read the image file.",
     "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression."
+    "imageTooLarge": "The image is too large even after compression.",
+    "fileEmpty": "The file is empty. Select a valid file."
   },
   "superadmin": {
     "tabs": {
@@ -688,7 +713,9 @@
   "music": {
     "noMusic": "No music",
     "loadError": "Error loading",
-    "label": "Music"
+    "label": "Music",
+    "soundCloudNote": "SoundCloud track — open to play",
+    "openInSoundCloud": "Open in SoundCloud"
   },
   "print": {
     "preparing": "Preparing print…",
@@ -820,8 +847,9 @@
   },
   "envelope": {
     "addressLine1": "To our dearest",
-    "addressLine2": "You & Your Family",
-    "tapHint": "Tap to open"
+    "tapHint": "Tap to open",
+    "and": "&",
+    "tapContinue": "Tap to continue"
   },
   "calendar": {
     "defaultTitle": "Our wedding",
@@ -860,5 +888,11 @@
       "supervised": "Welcome under supervision",
       "adultOnly": "Adults only"
     }
+  },
+  "chart": {
+    "noData": "No data",
+    "total": "total",
+    "barChart": "Attendance bar chart",
+    "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

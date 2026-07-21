@@ -55,7 +55,8 @@
     "todayIsWedding": "Leo ni harusi",
     "missing": "Zimesalia",
     "todayIsTheDay": "Leo ni siku kuu!",
-    "sectionLabel": "Cover"
+    "sectionLabel": "Cover",
+    "eyebrow": "Our Wedding"
   },
   "details": {
     "sectionLabel": "Tarehe na mahali",
@@ -105,7 +106,8 @@
     "next": "Inayofuata",
     "thumbnailAria": "Picha {{number}}",
     "thumbnailAlt": "Kijipicha cha matunzio",
-    "carouselLabel": "Image gallery, use arrow keys to navigate"
+    "carouselLabel": "Image gallery, use arrow keys to navigate",
+    "lightboxLabel": "Enlarged image"
   },
   "rsvp": {
     "sectionLabel": "Uthibitisho wa kuhudhuria",
@@ -231,8 +233,6 @@
     "currentPhoto": "Picha ya sasa",
     "remove": "Ondoa",
     "musicLabel": "Muziki wa chinichini",
-    "musicPlaceholder": "https://example.com/wimbo.mp3",
-    "musicHint": "Kiungo cha faili ya MP3 kucheza kwenye jalada.",
     "placeLabel": "Mahali pa harusi",
     "placePlaceholder": "Andika jina la mahali kutafuta...",
     "placeHint": "Andika mahali na uchague mojawapo ya matokeo.",
@@ -307,7 +307,29 @@
     "galleryUploadSuccess": "Picha {{count}} zimepakiwa kwa mafanikio.",
     "galleryUploadFailed": "Haikuwezekana kupakia picha.",
     "noValidFiles": "Hakuna faili halali. Upeo wa MB 20, JPG/PNG.",
-    "hiddenSectionBadge": "oculta"
+    "hiddenSectionBadge": "oculta",
+    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+    "audioUploadTitle": "Upload audio file",
+    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
+    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
+    "audioEmptyError": "Audio file is empty.",
+    "audioSizeError": "Audio file exceeds the 5 MB limit.",
+    "audioReadError": "Error reading audio file.",
+    "errorEmptyFile": "The file is empty. Select a valid file.",
+    "galleryDescriptionPlaceholder": "Image description...",
+    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
+    "galleryUploading": "Uploading {{total}} photo(s)...",
+    "photoUploading": "Uploading photo...",
+    "replaceImage": "Change photo",
+    "galleryDescriptionSaveFailed": "Error saving description",
+    "galleryDescriptionSaved": "Description saved",
+    "currentMusic": "Selected music",
+    "removeMusic": "Remove music",
+    "previewing": "Playing...",
+    "preview": "Preview",
+    "select": "Select",
+    "selected": "Selected"
   },
   "admin": {
     "tabs": {
@@ -330,7 +352,10 @@
     "pdfTableAttendance": "Uhudhuriaji",
     "pdfTableCompanions": "Wenzi",
     "pdfTableDiet": "Mlo",
-    "sectionsLabel": "Secciones"
+    "sectionsLabel": "Secciones",
+    "barTitle": "Wedingo · Admin",
+    "viewInvitation": "View invitation",
+    "logout": "Log out"
   },
   "panel": {
     "confirmed": "Wamethibitisha",
@@ -480,7 +505,6 @@
     "menuRequired": "Eleza angalau menyu moja kuu (nyama, samaki au vegan).",
     "menuTextRequired": "Eleza menyu ya sherehe.",
     "ibanInvalid": "Muundo wa IBAN si halali.",
-    "musicUrlInvalid": "Kiungo cha muziki lazima kiwe URL halali (https://...).",
     "galleryFormatInvalid": "Muundo wa picha za matunzio si halali.",
     "sectionOrderMismatch": "Mpangilio wa sehemu una vipengele {{actual}}, vilitarajiwa {{expected}}.",
     "messageTooLong": "Ujumbe wa mwaliko hauwezi kuzidi herufi 500.",
@@ -499,7 +523,8 @@
     "uploadImageFailed": "Could not process the image. Try another one.",
     "readImageFailed": "Could not read the image file.",
     "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression."
+    "imageTooLarge": "The image is too large even after compression.",
+    "fileEmpty": "The file is empty. Select a valid file."
   },
   "superadmin": {
     "tabs": {
@@ -688,7 +713,9 @@
   "music": {
     "noMusic": "No music",
     "loadError": "Error loading",
-    "label": "Music"
+    "label": "Music",
+    "soundCloudNote": "SoundCloud track — open to play",
+    "openInSoundCloud": "Open in SoundCloud"
   },
   "print": {
     "preparing": "Preparing print…",
@@ -820,8 +847,9 @@
   },
   "envelope": {
     "addressLine1": "To our dearest",
-    "addressLine2": "You & Your Family",
-    "tapHint": "Tap to open"
+    "tapHint": "Tap to open",
+    "and": "&",
+    "tapContinue": "Tap to continue"
   },
   "calendar": {
     "defaultTitle": "Our wedding",
@@ -860,5 +888,11 @@
       "supervised": "Welcome under supervision",
       "adultOnly": "Adults only"
     }
+  },
+  "chart": {
+    "noData": "No data",
+    "total": "total",
+    "barChart": "Attendance bar chart",
+    "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

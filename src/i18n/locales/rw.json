@@ -55,7 +55,8 @@
     "todayIsWedding": "Uyu munsi ni ubukwe",
     "missing": "Hasigaye",
     "todayIsTheDay": "Uyu ni umunsi ukomeye!",
-    "sectionLabel": "Cover"
+    "sectionLabel": "Cover",
+    "eyebrow": "Our Wedding"
   },
   "details": {
     "sectionLabel": "Itariki n'ahantu",
@@ -105,7 +106,8 @@
     "next": "Ikurikira",
     "thumbnailAria": "Ifoto {{number}}",
     "thumbnailAlt": "Ishusho nto ya galeri",
-    "carouselLabel": "Image gallery, use arrow keys to navigate"
+    "carouselLabel": "Image gallery, use arrow keys to navigate",
+    "lightboxLabel": "Enlarged image"
   },
   "rsvp": {
     "sectionLabel": "Kwemeza ukuhaba",
@@ -231,8 +233,6 @@
     "currentPhoto": "Ifoto iriho",
     "remove": "Kuraho",
     "musicLabel": "Umuziki wa mbuganyuma",
-    "musicPlaceholder": "https://example.com/indirimbo.mp3",
-    "musicHint": "Umurongo wa dosiye ya audio MP3 yo kuvuga ku gifuniko.",
     "placeLabel": "Ahantu h'ubukwe",
     "placePlaceholder": "Andika izina ry'ahantu kugira ngo ushakishe...",
     "placeHint": "Andika ahantu hanyuma uhitemo kimwe mu bisubizo.",
@@ -307,7 +307,29 @@
     "galleryUploadSuccess": "Ifoto/amafoto {{count}} yashyizweho neza.",
     "galleryUploadFailed": "Ntibyashobotse gushyira amafoto.",
     "noValidFiles": "Nta dosiye yemewe. Ntarenga 20 MB, JPG/PNG.",
-    "hiddenSectionBadge": "oculta"
+    "hiddenSectionBadge": "oculta",
+    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+    "audioUploadTitle": "Upload audio file",
+    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
+    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
+    "audioEmptyError": "Audio file is empty.",
+    "audioSizeError": "Audio file exceeds the 5 MB limit.",
+    "audioReadError": "Error reading audio file.",
+    "errorEmptyFile": "The file is empty. Select a valid file.",
+    "galleryDescriptionPlaceholder": "Image description...",
+    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
+    "galleryUploading": "Uploading {{total}} photo(s)...",
+    "photoUploading": "Uploading photo...",
+    "replaceImage": "Change photo",
+    "galleryDescriptionSaveFailed": "Error saving description",
+    "galleryDescriptionSaved": "Description saved",
+    "currentMusic": "Selected music",
+    "removeMusic": "Remove music",
+    "previewing": "Playing...",
+    "preview": "Preview",
+    "select": "Select",
+    "selected": "Selected"
   },
   "admin": {
     "tabs": {
@@ -330,7 +352,10 @@
     "pdfTableAttendance": "Ukuhaba",
     "pdfTableCompanions": "Abaherekeza",
     "pdfTableDiet": "Indyo",
-    "sectionsLabel": "Secciones"
+    "sectionsLabel": "Secciones",
+    "barTitle": "Wedingo · Admin",
+    "viewInvitation": "View invitation",
+    "logout": "Log out"
   },
   "panel": {
     "confirmed": "Byemewe",
@@ -480,7 +505,6 @@
     "menuRequired": "Sobanura byibuze meni imwe nyamukuru (inyama, amafi cyangwa vegan).",
     "menuTextRequired": "Sobanura meni y'ibirori.",
     "ibanInvalid": "Imiterere ya IBAN ntiyemewe.",
-    "musicUrlInvalid": "Umurongo wa muzika ugomba kuba URL yemewe (https://...).",
     "galleryFormatInvalid": "Imiterere y'amashusho ya galeri ntiyemewe.",
     "sectionOrderMismatch": "Ikurikiranyabihe ry'ibice rifite ibintu {{actual}}, byari byitezwe {{expected}}.",
     "messageTooLong": "Ubutumwa bw'ubutumire ntibushobora kurenga inyuguti 500.",
@@ -499,7 +523,8 @@
     "uploadImageFailed": "Could not process the image. Try another one.",
     "readImageFailed": "Could not read the image file.",
     "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression."
+    "imageTooLarge": "The image is too large even after compression.",
+    "fileEmpty": "The file is empty. Select a valid file."
   },
   "superadmin": {
     "tabs": {
@@ -688,7 +713,9 @@
   "music": {
     "noMusic": "No music",
     "loadError": "Error loading",
-    "label": "Music"
+    "label": "Music",
+    "soundCloudNote": "SoundCloud track — open to play",
+    "openInSoundCloud": "Open in SoundCloud"
   },
   "print": {
     "preparing": "Preparing print…",
@@ -820,8 +847,9 @@
   },
   "envelope": {
     "addressLine1": "To our dearest",
-    "addressLine2": "You & Your Family",
-    "tapHint": "Tap to open"
+    "tapHint": "Tap to open",
+    "and": "&",
+    "tapContinue": "Tap to continue"
   },
   "calendar": {
     "defaultTitle": "Our wedding",
@@ -860,5 +888,11 @@
       "supervised": "Welcome under supervision",
       "adultOnly": "Adults only"
     }
+  },
+  "chart": {
+    "noData": "No data",
+    "total": "total",
+    "barChart": "Attendance bar chart",
+    "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

@@ -55,7 +55,8 @@
     "todayIsWedding": "आज शादी है",
     "missing": "शेष",
     "todayIsTheDay": "आज का दिन बड़ा खास है!",
-    "sectionLabel": "कवर"
+    "sectionLabel": "कवर",
+    "eyebrow": "Our Wedding"
   },
   "details": {
     "sectionLabel": "तारीख और स्थान",
@@ -105,7 +106,8 @@
     "next": "अगला",
     "thumbnailAria": "तस्वीर {{number}}",
     "thumbnailAlt": "गैलरी की थंबनेल तस्वीर",
-    "carouselLabel": "Image gallery, use arrow keys to navigate"
+    "carouselLabel": "Image gallery, use arrow keys to navigate",
+    "lightboxLabel": "Enlarged image"
   },
   "rsvp": {
     "sectionLabel": "उपस्थिति की पुष्टि",
@@ -231,8 +233,6 @@
     "currentPhoto": "वर्तमान तस्वीर",
     "remove": "हटाएँ",
     "musicLabel": "पृष्ठभूमि संगीत",
-    "musicPlaceholder": "https://example.com/गाना.mp3",
-    "musicHint": "कवर पर चलाने के लिए MP3 ऑडियो फ़ाइल का लिंक।",
     "placeLabel": "शादी का स्थान",
     "placePlaceholder": "खोजने के लिए स्थान का नाम लिखें...",
     "placeHint": "स्थान लिखें और परिणामों में से एक चुनें।",
@@ -307,7 +307,29 @@
     "galleryUploadSuccess": "{{count}} तस्वीरें सफलतापूर्वक अपलोड हुईं।",
     "galleryUploadFailed": "तस्वीरें अपलोड नहीं हो सकीं।",
     "noValidFiles": "कोई मान्य फ़ाइल नहीं। अधिकतम 20 MB, JPG/PNG।",
-    "hiddenSectionBadge": "oculta"
+    "hiddenSectionBadge": "oculta",
+    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+    "audioUploadTitle": "Upload audio file",
+    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
+    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
+    "audioEmptyError": "Audio file is empty.",
+    "audioSizeError": "Audio file exceeds the 5 MB limit.",
+    "audioReadError": "Error reading audio file.",
+    "errorEmptyFile": "The file is empty. Select a valid file.",
+    "galleryDescriptionPlaceholder": "Image description...",
+    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
+    "galleryUploading": "Uploading {{total}} photo(s)...",
+    "photoUploading": "Uploading photo...",
+    "replaceImage": "Change photo",
+    "galleryDescriptionSaveFailed": "Error saving description",
+    "galleryDescriptionSaved": "Description saved",
+    "currentMusic": "Selected music",
+    "removeMusic": "Remove music",
+    "previewing": "Playing...",
+    "preview": "Preview",
+    "select": "Select",
+    "selected": "Selected"
   },
   "admin": {
     "tabs": {
@@ -330,7 +352,10 @@
     "pdfTableAttendance": "उपस्थिति",
     "pdfTableCompanions": "साथी",
     "pdfTableDiet": "आहार",
-    "sectionsLabel": "Secciones"
+    "sectionsLabel": "Secciones",
+    "barTitle": "Wedingo · Admin",
+    "viewInvitation": "View invitation",
+    "logout": "Log out"
   },
   "panel": {
     "confirmed": "पुष्टि की",
@@ -480,7 +505,6 @@
     "menuRequired": "कम से कम एक मुख्य मेनू (मांस, मछली या शाकाहारी) का वर्णन करें।",
     "menuTextRequired": "समारोह के मेनू का वर्णन करें।",
     "ibanInvalid": "IBAN प्रारूप मान्य नहीं है।",
-    "musicUrlInvalid": "संगीत लिंक एक मान्य URL (https://...) होना चाहिए।",
     "galleryFormatInvalid": "गैलरी छवियों का प्रारूप मान्य नहीं है।",
     "sectionOrderMismatch": "अनुभाग क्रम में {{actual}} तत्व हैं, {{expected}} अपेक्षित थे।",
     "messageTooLong": "निमंत्रण संदेश 500 वर्णों से अधिक नहीं हो सकता।",
@@ -499,7 +523,8 @@
     "uploadImageFailed": "Could not process the image. Try another one.",
     "readImageFailed": "Could not read the image file.",
     "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression."
+    "imageTooLarge": "The image is too large even after compression.",
+    "fileEmpty": "The file is empty. Select a valid file."
   },
   "superadmin": {
     "tabs": {
@@ -688,7 +713,9 @@
   "music": {
     "noMusic": "No music",
     "loadError": "Error loading",
-    "label": "Music"
+    "label": "Music",
+    "soundCloudNote": "SoundCloud track — open to play",
+    "openInSoundCloud": "Open in SoundCloud"
   },
   "print": {
     "preparing": "Preparing print…",
@@ -820,8 +847,9 @@
   },
   "envelope": {
     "addressLine1": "To our dearest",
-    "addressLine2": "You & Your Family",
-    "tapHint": "Tap to open"
+    "tapHint": "Tap to open",
+    "and": "&",
+    "tapContinue": "Tap to continue"
   },
   "calendar": {
     "defaultTitle": "Our wedding",
@@ -860,5 +888,11 @@
       "supervised": "Welcome under supervision",
       "adultOnly": "Adults only"
     }
+  },
+  "chart": {
+    "noData": "No data",
+    "total": "total",
+    "barChart": "Attendance bar chart",
+    "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

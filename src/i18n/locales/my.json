@@ -55,7 +55,8 @@
     "todayIsWedding": "ယနေ့သည် မင်္ဂလာဆောင်နေ့",
     "missing": "ကျန်ရှိ",
     "todayIsTheDay": "ယနေ့သည် အထူးနေ့ဖြစ်သည်!",
-    "sectionLabel": "Cover"
+    "sectionLabel": "Cover",
+    "eyebrow": "Our Wedding"
   },
   "details": {
     "sectionLabel": "နေ့ရက်နှင့် နေရာ",
@@ -105,7 +106,8 @@
     "next": "နောက်",
     "thumbnailAria": "ဓာတ်ပုံ {{number}}",
     "thumbnailAlt": "ဓာတ်ပုံပြခန်း ဓာတ်ပုံအနုပစ္စည်း",
-    "carouselLabel": "Image gallery, use arrow keys to navigate"
+    "carouselLabel": "Image gallery, use arrow keys to navigate",
+    "lightboxLabel": "Enlarged image"
   },
   "rsvp": {
     "sectionLabel": "တက်ရောက်မည့် အတည်ပြုချက်",
@@ -231,8 +233,6 @@
     "currentPhoto": "လက်ရှိ ဓာတ်ပုံ",
     "remove": "ဖယ်ရှားမည်",
     "musicLabel": "နောက်ခံတေးဂီတ",
-    "musicPlaceholder": "https://example.com/song.mp3",
-    "musicHint": "မျက်နှာဖုံးတွင် ဖွင့်ရန် MP3 အသံဖိုင် လင့်ခ်။",
     "placeLabel": "မင်္ဂလာဆောင် နေရာ",
     "placePlaceholder": "ရှာဖွေရန် နေရာအမည်ရေးပါ...",
     "placeHint": "နေရာအမည်ရေး၍ ရလဒ်များမှ တစ်ခုရွေးပါ။",
@@ -307,7 +307,29 @@
     "galleryUploadSuccess": "{{count}} ဓာတ်ပုံ အောင်မြင်စွာ တင်ပြီး။",
     "galleryUploadFailed": "ဓာတ်ပုံများ မတင်နိုင်ပါ။",
     "noValidFiles": "တရားဝင်ဖိုင် မရှိပါ။ အများဆုံး 20 MB, JPG/PNG။",
-    "hiddenSectionBadge": "oculta"
+    "hiddenSectionBadge": "oculta",
+    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+    "audioUploadTitle": "Upload audio file",
+    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
+    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
+    "audioEmptyError": "Audio file is empty.",
+    "audioSizeError": "Audio file exceeds the 5 MB limit.",
+    "audioReadError": "Error reading audio file.",
+    "errorEmptyFile": "The file is empty. Select a valid file.",
+    "galleryDescriptionPlaceholder": "Image description...",
+    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
+    "galleryUploading": "Uploading {{total}} photo(s)...",
+    "photoUploading": "Uploading photo...",
+    "replaceImage": "Change photo",
+    "galleryDescriptionSaveFailed": "Error saving description",
+    "galleryDescriptionSaved": "Description saved",
+    "currentMusic": "Selected music",
+    "removeMusic": "Remove music",
+    "previewing": "Playing...",
+    "preview": "Preview",
+    "select": "Select",
+    "selected": "Selected"
   },
   "admin": {
     "tabs": {
@@ -330,7 +352,10 @@
     "pdfTableAttendance": "တက်ရောက်မှု",
     "pdfTableCompanions": "အဖော်များ",
     "pdfTableDiet": "အစားအသောက်",
-    "sectionsLabel": "Secciones"
+    "sectionsLabel": "Secciones",
+    "barTitle": "Wedingo · Admin",
+    "viewInvitation": "View invitation",
+    "logout": "Log out"
   },
   "panel": {
     "confirmed": "အတည်ပြုပြီး",
@@ -480,7 +505,6 @@
     "menuRequired": "အနည်းဆုံး ပင်မမီနူးတစ်ခု (အသား၊ ငါး သို့မဟုတ် ဗီဂန်) ဖော်ပြပါ။",
     "menuTextRequired": "အခမ်းအနား မီနူးကို ဖော်ပြပါ။",
     "ibanInvalid": "IBAN ဖော်မတ် မမှန်ကန်ပါ။",
-    "musicUrlInvalid": "တေးဂီတလင့်ခ်သည် တရားဝင် URL ဖြစ်ရမည် (https://...)။",
     "galleryFormatInvalid": "ဓာတ်ပုံပြခန်း ပုံများ၏ ဖော်မတ် မမှန်ကန်ပါ။",
     "sectionOrderMismatch": "အပိုင်းအစီအစဉ်တွင် {{actual}} ခုရှိသည်၊ {{expected}} မျှော်မှန်းထားသည်။",
     "messageTooLong": "ဖိတ်ကြားလွှာစာတိုသည် စာလုံးရေ 500 ထက် မကျော်နိုင်ပါ။",
@@ -499,7 +523,8 @@
     "uploadImageFailed": "Could not process the image. Try another one.",
     "readImageFailed": "Could not read the image file.",
     "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression."
+    "imageTooLarge": "The image is too large even after compression.",
+    "fileEmpty": "The file is empty. Select a valid file."
   },
   "superadmin": {
     "tabs": {
@@ -688,7 +713,9 @@
   "music": {
     "noMusic": "No music",
     "loadError": "Error loading",
-    "label": "Music"
+    "label": "Music",
+    "soundCloudNote": "SoundCloud track — open to play",
+    "openInSoundCloud": "Open in SoundCloud"
   },
   "print": {
     "preparing": "Preparing print…",
@@ -820,8 +847,9 @@
   },
   "envelope": {
     "addressLine1": "To our dearest",
-    "addressLine2": "You & Your Family",
-    "tapHint": "Tap to open"
+    "tapHint": "Tap to open",
+    "and": "&",
+    "tapContinue": "Tap to continue"
   },
   "calendar": {
     "defaultTitle": "Our wedding",
@@ -860,5 +888,11 @@
       "supervised": "Welcome under supervision",
       "adultOnly": "Adults only"
     }
+  },
+  "chart": {
+    "noData": "No data",
+    "total": "total",
+    "barChart": "Attendance bar chart",
+    "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

@@ -55,7 +55,8 @@
     "todayIsWedding": "Òní ni ìgbéyàwó",
     "missing": "Ó kù",
     "todayIsTheDay": "Òní ni ọjọ́ ńlá!",
-    "sectionLabel": "Cover"
+    "sectionLabel": "Cover",
+    "eyebrow": "Our Wedding"
   },
   "details": {
     "sectionLabel": "Ọjọ́ àti ibi",
@@ -105,7 +106,8 @@
     "next": "Tókàn",
     "thumbnailAria": "Fọ́tò {{number}}",
     "thumbnailAlt": "Àwòrán kékeré fọ́tò àkójọ",
-    "carouselLabel": "Image gallery, use arrow keys to navigate"
+    "carouselLabel": "Image gallery, use arrow keys to navigate",
+    "lightboxLabel": "Enlarged image"
   },
   "rsvp": {
     "sectionLabel": "Ìfidimúlẹ̀ wíwá",
@@ -231,8 +233,6 @@
     "currentPhoto": "Fọ́tò tí ó wà",
     "remove": "Yọ kúrò",
     "musicLabel": "Orin ìpìlẹ̀",
-    "musicPlaceholder": "https://example.com/orin.mp3",
-    "musicHint": "Ọ̀na àsopọ̀ sí fáìlì ohùn MP3 láti ṣìṣẹ́ lórí ojú ewé àkọ́kọ́.",
     "placeLabel": "Ibi ìgbéyàwó",
     "placePlaceholder": "Kọ orúkọ ibi láti wá...",
     "placeHint": "Kọ ibi náà kí o yan ọ̀kan lára àwọn àbájáde.",
@@ -307,7 +307,29 @@
     "galleryUploadSuccess": "A ti gbé {{count}} fọ́tò lọ láṣeyọrí.",
     "galleryUploadFailed": "A kò lè gbé àwọn fọ́tò.",
     "noValidFiles": "Kò sí fáìlì tó wúlò. Ó pọ̀jù 20 MB, JPG/PNG.",
-    "hiddenSectionBadge": "oculta"
+    "hiddenSectionBadge": "oculta",
+    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+    "audioUploadTitle": "Upload audio file",
+    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
+    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
+    "audioEmptyError": "Audio file is empty.",
+    "audioSizeError": "Audio file exceeds the 5 MB limit.",
+    "audioReadError": "Error reading audio file.",
+    "errorEmptyFile": "The file is empty. Select a valid file.",
+    "galleryDescriptionPlaceholder": "Image description...",
+    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
+    "galleryUploading": "Uploading {{total}} photo(s)...",
+    "photoUploading": "Uploading photo...",
+    "replaceImage": "Change photo",
+    "galleryDescriptionSaveFailed": "Error saving description",
+    "galleryDescriptionSaved": "Description saved",
+    "currentMusic": "Selected music",
+    "removeMusic": "Remove music",
+    "previewing": "Playing...",
+    "preview": "Preview",
+    "select": "Select",
+    "selected": "Selected"
   },
   "admin": {
     "tabs": {
@@ -330,7 +352,10 @@
     "pdfTableAttendance": "Wíwá",
     "pdfTableCompanions": "Alábàákẹ́gbẹ́",
     "pdfTableDiet": "Oúnjẹ",
-    "sectionsLabel": "Secciones"
+    "sectionsLabel": "Secciones",
+    "barTitle": "Wedingo · Admin",
+    "viewInvitation": "View invitation",
+    "logout": "Log out"
   },
   "panel": {
     "confirmed": "Àwọn tí a fídimúlẹ̀",
@@ -480,7 +505,6 @@
     "menuRequired": "Ṣàpèjúwe ó kéré tán àtòjọ oúnjẹ àkọ́kọ́ kan (ẹran, ẹja tàbí vegan).",
     "menuTextRequired": "Ṣàpèjúwe àtòjọ oúnjẹ ìgbéyàwó.",
     "ibanInvalid": "Ìrísí IBAN kò tọ̀nà.",
-    "musicUrlInvalid": "Ọ̀na àsopọ̀ orin gbọ́dọ̀ jẹ́ URL tó tọ̀nà (https://...).",
     "galleryFormatInvalid": "Ìrísí àwọn àwòrán àkójọ kò tọ̀nà.",
     "sectionOrderMismatch": "Ìtò àwọn apá ní àwọn nǹkan {{actual}}, a retí {{expected}}.",
     "messageTooLong": "Ìfiránṣẹ́ ìwé ìpè kò gbọ́dọ̀ kọjá àwọn àmì 500.",
@@ -499,7 +523,8 @@
     "uploadImageFailed": "Could not process the image. Try another one.",
     "readImageFailed": "Could not read the image file.",
     "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression."
+    "imageTooLarge": "The image is too large even after compression.",
+    "fileEmpty": "The file is empty. Select a valid file."
   },
   "superadmin": {
     "tabs": {
@@ -688,7 +713,9 @@
   "music": {
     "noMusic": "No music",
     "loadError": "Error loading",
-    "label": "Music"
+    "label": "Music",
+    "soundCloudNote": "SoundCloud track — open to play",
+    "openInSoundCloud": "Open in SoundCloud"
   },
   "print": {
     "preparing": "Preparing print…",
@@ -820,8 +847,9 @@
   },
   "envelope": {
     "addressLine1": "To our dearest",
-    "addressLine2": "You & Your Family",
-    "tapHint": "Tap to open"
+    "tapHint": "Tap to open",
+    "and": "&",
+    "tapContinue": "Tap to continue"
   },
   "calendar": {
     "defaultTitle": "Our wedding",
@@ -860,5 +888,11 @@
       "supervised": "Welcome under supervision",
       "adultOnly": "Adults only"
     }
+  },
+  "chart": {
+    "noData": "No data",
+    "total": "total",
+    "barChart": "Attendance bar chart",
+    "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

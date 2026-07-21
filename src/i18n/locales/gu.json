@@ -55,7 +55,8 @@
     "todayIsWedding": "આજે લગ્ન છે",
     "missing": "બાકી છે",
     "todayIsTheDay": "આજે મોટો દિવસ છે!",
-    "sectionLabel": "Cover"
+    "sectionLabel": "Cover",
+    "eyebrow": "Our Wedding"
   },
   "details": {
     "sectionLabel": "તારીખ અને સ્થળ",
@@ -105,7 +106,8 @@
     "next": "આગળનું",
     "thumbnailAria": "ફોટો {{number}}",
     "thumbnailAlt": "ગેલેરી ફોટાની થંબનેલ",
-    "carouselLabel": "Image gallery, use arrow keys to navigate"
+    "carouselLabel": "Image gallery, use arrow keys to navigate",
+    "lightboxLabel": "Enlarged image"
   },
   "rsvp": {
     "sectionLabel": "હાજરીની પુષ્ટિ",
@@ -231,8 +233,6 @@
     "currentPhoto": "વર્તમાન ફોટો",
     "remove": "દૂર કરો",
     "musicLabel": "બેકગ્રાઉન્ડ સંગીત",
-    "musicPlaceholder": "https://example.com/song.mp3",
-    "musicHint": "કવર પર વગાડવા માટે MP3 ઑડિયો ફાઇલની લિંક.",
     "placeLabel": "લગ્નનું સ્થળ",
     "placePlaceholder": "શોધવા માટે સ્થળનું નામ લખો...",
     "placeHint": "સ્થળ લખો અને પરિણામોમાંથી એક પસંદ કરો.",
@@ -307,7 +307,29 @@
     "galleryUploadSuccess": "{{count}} ફોટો(ઓ) સફળતાપૂર્વક અપલોડ થયા.",
     "galleryUploadFailed": "ફોટા અપલોડ થઈ શક્યા નહીં.",
     "noValidFiles": "કોઈ માન્ય ફાઇલ નથી. મહત્તમ 20 MB, JPG/PNG.",
-    "hiddenSectionBadge": "oculta"
+    "hiddenSectionBadge": "oculta",
+    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+    "audioUploadTitle": "Upload audio file",
+    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
+    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
+    "audioEmptyError": "Audio file is empty.",
+    "audioSizeError": "Audio file exceeds the 5 MB limit.",
+    "audioReadError": "Error reading audio file.",
+    "errorEmptyFile": "The file is empty. Select a valid file.",
+    "galleryDescriptionPlaceholder": "Image description...",
+    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
+    "galleryUploading": "Uploading {{total}} photo(s)...",
+    "photoUploading": "Uploading photo...",
+    "replaceImage": "Change photo",
+    "galleryDescriptionSaveFailed": "Error saving description",
+    "galleryDescriptionSaved": "Description saved",
+    "currentMusic": "Selected music",
+    "removeMusic": "Remove music",
+    "previewing": "Playing...",
+    "preview": "Preview",
+    "select": "Select",
+    "selected": "Selected"
   },
   "admin": {
     "tabs": {
@@ -330,7 +352,10 @@
     "pdfTableAttendance": "હાજરી",
     "pdfTableCompanions": "સાથીઓ",
     "pdfTableDiet": "આહાર",
-    "sectionsLabel": "Secciones"
+    "sectionsLabel": "Secciones",
+    "barTitle": "Wedingo · Admin",
+    "viewInvitation": "View invitation",
+    "logout": "Log out"
   },
   "panel": {
     "confirmed": "પુષ્ટિ થયેલ",
@@ -480,7 +505,6 @@
     "menuRequired": "ઓછામાં ઓછું એક મુખ્ય મેનૂ (માંસ, માછલી અથવા વેગન) વર્ણવો.",
     "menuTextRequired": "ઉજવણીના મેનૂનું વર્ણન કરો.",
     "ibanInvalid": "IBAN ફોર્મેટ માન્ય નથી.",
-    "musicUrlInvalid": "સંગીત લિંક માન્ય URL હોવી જોઈએ (https://...).",
     "galleryFormatInvalid": "ગેલેરીની છબીઓનું ફોર્મેટ માન્ય નથી.",
     "sectionOrderMismatch": "વિભાગ ક્રમમાં {{actual}} તત્વો છે, {{expected}} અપેક્ષિત હતા.",
     "messageTooLong": "આમંત્રણ સંદેશ 500 અક્ષરોથી વધુ ન હોઈ શકે.",
@@ -499,7 +523,8 @@
     "uploadImageFailed": "Could not process the image. Try another one.",
     "readImageFailed": "Could not read the image file.",
     "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression."
+    "imageTooLarge": "The image is too large even after compression.",
+    "fileEmpty": "The file is empty. Select a valid file."
   },
   "superadmin": {
     "tabs": {
@@ -688,7 +713,9 @@
   "music": {
     "noMusic": "No music",
     "loadError": "Error loading",
-    "label": "Music"
+    "label": "Music",
+    "soundCloudNote": "SoundCloud track — open to play",
+    "openInSoundCloud": "Open in SoundCloud"
   },
   "print": {
     "preparing": "Preparing print…",
@@ -820,8 +847,9 @@
   },
   "envelope": {
     "addressLine1": "To our dearest",
-    "addressLine2": "You & Your Family",
-    "tapHint": "Tap to open"
+    "tapHint": "Tap to open",
+    "and": "&",
+    "tapContinue": "Tap to continue"
   },
   "calendar": {
     "defaultTitle": "Our wedding",
@@ -860,5 +888,11 @@
       "supervised": "Welcome under supervision",
       "adultOnly": "Adults only"
     }
+  },
+  "chart": {
+    "noData": "No data",
+    "total": "total",
+    "barChart": "Attendance bar chart",
+    "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

@@ -55,7 +55,8 @@
     "todayIsWedding": "Днес е сватбата",
     "missing": "Остават",
     "todayIsTheDay": "Днес е големият ден!",
-    "sectionLabel": "Cover"
+    "sectionLabel": "Cover",
+    "eyebrow": "Our Wedding"
   },
   "details": {
     "sectionLabel": "Дата и място",
@@ -105,7 +106,8 @@
     "next": "Следваща",
     "thumbnailAria": "Снимка {{number}}",
     "thumbnailAlt": "Миниатюра от галерията",
-    "carouselLabel": "Image gallery, use arrow keys to navigate"
+    "carouselLabel": "Image gallery, use arrow keys to navigate",
+    "lightboxLabel": "Enlarged image"
   },
   "rsvp": {
     "sectionLabel": "Потвърждение за присъствие",
@@ -231,8 +233,6 @@
     "currentPhoto": "Текуща снимка",
     "remove": "Премахни",
     "musicLabel": "Фонова музика",
-    "musicPlaceholder": "https://example.com/pesen.mp3",
-    "musicHint": "Линк към MP3 аудио файл за възпроизвеждане на корицата.",
     "placeLabel": "Място на сватбата",
     "placePlaceholder": "Напиши името на мястото, за да търсиш...",
     "placeHint": "Напиши мястото и избери един от резултатите.",
@@ -307,7 +307,29 @@
     "galleryUploadSuccess": "{{count}} снимк(и) качени успешно.",
     "galleryUploadFailed": "Снимките не можаха да бъдат качени.",
     "noValidFiles": "Няма валиден файл. Максимум 20 MB, JPG/PNG.",
-    "hiddenSectionBadge": "oculta"
+    "hiddenSectionBadge": "oculta",
+    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+    "audioUploadTitle": "Upload audio file",
+    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
+    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
+    "audioEmptyError": "Audio file is empty.",
+    "audioSizeError": "Audio file exceeds the 5 MB limit.",
+    "audioReadError": "Error reading audio file.",
+    "errorEmptyFile": "The file is empty. Select a valid file.",
+    "galleryDescriptionPlaceholder": "Image description...",
+    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
+    "galleryUploading": "Uploading {{total}} photo(s)...",
+    "photoUploading": "Uploading photo...",
+    "replaceImage": "Change photo",
+    "galleryDescriptionSaveFailed": "Error saving description",
+    "galleryDescriptionSaved": "Description saved",
+    "currentMusic": "Selected music",
+    "removeMusic": "Remove music",
+    "previewing": "Playing...",
+    "preview": "Preview",
+    "select": "Select",
+    "selected": "Selected"
   },
   "admin": {
     "tabs": {
@@ -330,7 +352,10 @@
     "pdfTableAttendance": "Присъствие",
     "pdfTableCompanions": "Придружители",
     "pdfTableDiet": "Хранене",
-    "sectionsLabel": "Secciones"
+    "sectionsLabel": "Secciones",
+    "barTitle": "Wedingo · Admin",
+    "viewInvitation": "View invitation",
+    "logout": "Log out"
   },
   "panel": {
     "confirmed": "Потвърдени",
@@ -480,7 +505,6 @@
     "menuRequired": "Опиши поне едно основно меню (месо, риба или веган).",
     "menuTextRequired": "Опиши менюто на тържеството.",
     "ibanInvalid": "Форматът на IBAN не е валиден.",
-    "musicUrlInvalid": "Линкът за музика трябва да бъде валиден URL (https://...).",
     "galleryFormatInvalid": "Форматът на изображенията в галерията не е валиден.",
     "sectionOrderMismatch": "Редът на секциите има {{actual}} елемента, очакваха се {{expected}}.",
     "messageTooLong": "Съобщението на поканата не може да надвишава 500 знака.",
@@ -499,7 +523,8 @@
     "uploadImageFailed": "Could not process the image. Try another one.",
     "readImageFailed": "Could not read the image file.",
     "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression."
+    "imageTooLarge": "The image is too large even after compression.",
+    "fileEmpty": "The file is empty. Select a valid file."
   },
   "superadmin": {
     "tabs": {
@@ -688,7 +713,9 @@
   "music": {
     "noMusic": "No music",
     "loadError": "Error loading",
-    "label": "Music"
+    "label": "Music",
+    "soundCloudNote": "SoundCloud track — open to play",
+    "openInSoundCloud": "Open in SoundCloud"
   },
   "print": {
     "preparing": "Preparing print…",
@@ -820,8 +847,9 @@
   },
   "envelope": {
     "addressLine1": "To our dearest",
-    "addressLine2": "You & Your Family",
-    "tapHint": "Tap to open"
+    "tapHint": "Tap to open",
+    "and": "&",
+    "tapContinue": "Tap to continue"
   },
   "calendar": {
     "defaultTitle": "Our wedding",
@@ -860,5 +888,11 @@
       "supervised": "Welcome under supervision",
       "adultOnly": "Adults only"
     }
+  },
+  "chart": {
+    "noData": "No data",
+    "total": "total",
+    "barChart": "Attendance bar chart",
+    "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

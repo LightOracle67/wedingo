@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.15.5",
+    date: "2026-07-20",
+    changes: [
+      "Traducciones: propagadas 36 keys faltantes a los 80 idiomas (placeholders en inglés)",
+      "Keys deprecadas eliminadas de los 80 idiomas (musicPlaceholder, musicHint, musicUrlInvalid, addressLine2)",
+    ],
+  },
+  {
     version: "2.15.4",
     date: "2026-07-20",
     changes: [

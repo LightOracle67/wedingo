@@ -55,7 +55,8 @@
     "todayIsWedding": "Hoxe é a voda",
     "missing": "Faltan",
     "todayIsTheDay": "Hoxe é o gran día!",
-    "sectionLabel": "Cover"
+    "sectionLabel": "Cover",
+    "eyebrow": "Our Wedding"
   },
   "details": {
     "sectionLabel": "Data e lugar",
@@ -105,7 +106,8 @@
     "next": "Seguinte",
     "thumbnailAria": "Foto {{number}}",
     "thumbnailAlt": "Miniatura de foto da galería",
-    "carouselLabel": "Image gallery, use arrow keys to navigate"
+    "carouselLabel": "Image gallery, use arrow keys to navigate",
+    "lightboxLabel": "Enlarged image"
   },
   "rsvp": {
     "sectionLabel": "Confirmación de asistencia",
@@ -231,8 +233,6 @@
     "currentPhoto": "Foto actual",
     "remove": "Quitar",
     "musicLabel": "Música de fondo",
-    "musicPlaceholder": "https://example.com/cancion.mp3",
-    "musicHint": "Ligazón a un arquivo de audio MP3 para reproducir na portada.",
     "placeLabel": "Lugar da voda",
     "placePlaceholder": "Escribe o nome do lugar para buscar...",
     "placeHint": "Escribe o lugar e selecciona un dos resultados.",
@@ -307,7 +307,29 @@
     "galleryUploadSuccess": "{{count}} foto(s) subida(s) correctamente.",
     "galleryUploadFailed": "Non se puideron subir as fotos.",
     "noValidFiles": "Ningún arquivo válido. Máximo 20 MB, JPG/PNG.",
-    "hiddenSectionBadge": "oculta"
+    "hiddenSectionBadge": "oculta",
+    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+    "audioUploadTitle": "Upload audio file",
+    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
+    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
+    "audioEmptyError": "Audio file is empty.",
+    "audioSizeError": "Audio file exceeds the 5 MB limit.",
+    "audioReadError": "Error reading audio file.",
+    "errorEmptyFile": "The file is empty. Select a valid file.",
+    "galleryDescriptionPlaceholder": "Image description...",
+    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
+    "galleryUploading": "Uploading {{total}} photo(s)...",
+    "photoUploading": "Uploading photo...",
+    "replaceImage": "Change photo",
+    "galleryDescriptionSaveFailed": "Error saving description",
+    "galleryDescriptionSaved": "Description saved",
+    "currentMusic": "Selected music",
+    "removeMusic": "Remove music",
+    "previewing": "Playing...",
+    "preview": "Preview",
+    "select": "Select",
+    "selected": "Selected"
   },
   "admin": {
     "tabs": {
@@ -330,7 +352,10 @@
     "pdfTableAttendance": "Asistencia",
     "pdfTableCompanions": "Acomps",
     "pdfTableDiet": "Dieta",
-    "sectionsLabel": "Secciones"
+    "sectionsLabel": "Secciones",
+    "barTitle": "Wedingo · Admin",
+    "viewInvitation": "View invitation",
+    "logout": "Log out"
   },
   "panel": {
     "confirmed": "Confirmados",
@@ -480,7 +505,6 @@
     "menuRequired": "Describe polo menos un menú principal (carne, peixe ou vegano).",
     "menuTextRequired": "Describe o menú da celebración.",
     "ibanInvalid": "O formato do IBAN non é válido.",
-    "musicUrlInvalid": "A ligazón de música debe ser unha URL válida (https://...).",
     "galleryFormatInvalid": "O formato das imaxes da galería non é válido.",
     "sectionOrderMismatch": "A orde de seccións ten {{actual}} elementos, esperábanse {{expected}}.",
     "messageTooLong": "A mensaxe de invitación non pode superar os 500 caracteres.",
@@ -499,7 +523,8 @@
     "uploadImageFailed": "Could not process the image. Try another one.",
     "readImageFailed": "Could not read the image file.",
     "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression."
+    "imageTooLarge": "The image is too large even after compression.",
+    "fileEmpty": "The file is empty. Select a valid file."
   },
   "superadmin": {
     "tabs": {
@@ -688,7 +713,9 @@
   "music": {
     "noMusic": "No music",
     "loadError": "Error loading",
-    "label": "Music"
+    "label": "Music",
+    "soundCloudNote": "SoundCloud track — open to play",
+    "openInSoundCloud": "Open in SoundCloud"
   },
   "print": {
     "preparing": "Preparing print…",
@@ -820,8 +847,9 @@
   },
   "envelope": {
     "addressLine1": "To our dearest",
-    "addressLine2": "You & Your Family",
-    "tapHint": "Tap to open"
+    "tapHint": "Tap to open",
+    "and": "&",
+    "tapContinue": "Tap to continue"
   },
   "calendar": {
     "defaultTitle": "Our wedding",
@@ -860,5 +888,11 @@
       "supervised": "Welcome under supervision",
       "adultOnly": "Adults only"
     }
+  },
+  "chart": {
+    "noData": "No data",
+    "total": "total",
+    "barChart": "Attendance bar chart",
+    "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

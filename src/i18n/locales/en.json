@@ -506,7 +506,6 @@
     "menuRequired": "Describe at least one main menu (meat, fish or vegan).",
     "menuTextRequired": "Describe the wedding menu.",
     "ibanInvalid": "The IBAN format is not valid.",
-
     "galleryFormatInvalid": "The gallery image format is not valid.",
     "sectionOrderMismatch": "The section order has {{actual}} items, but {{expected}} were expected.",
     "messageTooLong": "The invitation message cannot exceed 500 characters.",
