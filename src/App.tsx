@@ -46,6 +46,14 @@ function AppShell() {
   }, [i18n.language]);
 
   useEffect(() => {
+    const path = location.pathname;
+    if (path === "/") document.title = "Wedingo — Invitaciones de boda";
+    else if (path.includes("/admin")) document.title = "Panel de control — Wedingo";
+    else if (path.includes("/setup")) document.title = "Configurar invitación — Wedingo";
+    else if (inviteToken) document.title = `${config.firstName || "Invitación"} & ${config.secondName || ""} — Wedingo`;
+  }, [location.pathname, inviteToken, config.firstName, config.secondName]);
+
+  useEffect(() => {
     const activeTheme = isEditingRoute ? "golden" : formData.theme || config.theme;
     document.documentElement.dataset.weddingTheme = activeTheme || "golden";
   }, [formData.theme, config.theme, isEditingRoute]);

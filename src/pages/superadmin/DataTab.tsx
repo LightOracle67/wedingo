@@ -265,9 +265,9 @@ export default function DataTab() {
 
   if (loading) {
     return (
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "12rem", height: "100%" }}>
+      <div className="data-tab-loading">
         <div className="page-loading" style={{ minHeight: "6rem" }} />
-        <p style={{ textAlign: "center", color: "var(--setup-muted)", fontSize: "0.85rem", marginTop: "0.5rem" }}>
+        <p>
           {t("common.loading")}
         </p>
       </div>
@@ -350,7 +350,7 @@ export default function DataTab() {
       <div className="data-tab-table-wrap">
         <table className="data-tab-table">
           <thead>
-            <tr style={{ position: "sticky", top: 0, background: "var(--setup-card-bg)", zIndex: 1 }}>
+            <tr className="data-tab-sticky-header">
               <th className="data-tab-th">
                 <input
                   type="checkbox"
@@ -370,7 +370,7 @@ export default function DataTab() {
           </thead>
           <tbody>
             {invitations.map((inv) => (
-              <tr key={inv.id} style={{ borderBottom: "1px solid var(--setup-border)", opacity: emptyIds.has(inv.id) ? 0.5 : 1 }}>
+              <tr key={inv.id} className="data-tab-tr" style={{ opacity: emptyIds.has(inv.id) ? 0.5 : 1 }}>
                 <td className="data-tab-td">
                   <input
                     type="checkbox"
@@ -381,23 +381,23 @@ export default function DataTab() {
                   />
                 </td>
                 <td className="data-tab-td">
-                  <code className="admin-text-xs" style={{ cursor: "pointer" }} onClick={() => navigator.clipboard?.writeText(inv.id)} title={t("superadmin.data.copyToken")}>
+                  <code className="data-tab-code-copy" onClick={() => navigator.clipboard?.writeText(inv.id)} title={t("superadmin.data.copyToken")}>
                     {inv.id}
                   </code>
                 </td>
                 <td className="data-tab-td">
-                  {inv.firstName ? `${inv.firstName} & ${inv.secondName}` : <span style={{ color: "var(--setup-muted)", fontStyle: "italic" }}>{t("superadmin.data.emptyInvitation")}</span>}
-                  {inv.adminUsername ? <span className="admin-text-sm" style={{ color: "var(--setup-muted)", display: "block" }}>@{inv.adminUsername}</span> : null}
+                  {inv.firstName ? `${inv.firstName} & ${inv.secondName}` : <span className="data-tab-empty-name">{t("superadmin.data.emptyInvitation")}</span>}
+                  {inv.adminUsername ? <span className="data-tab-admin-user">@{inv.adminUsername}</span> : null}
                 </td>
                 <td className="data-tab-td" style={{ whiteSpace: "nowrap" }}>{inv.weddingDate || "—"}</td>
                 <td className="data-tab-td" style={{ textAlign: "center" }}>{inv.rsvpCount}</td>
                 <td className="data-tab-td" style={{ textAlign: "center" }}>{inv.hasSession ? "🟢" : "—"}</td>
                 <td className="data-tab-td">
                   <div className="admin-flex admin-gap-sm">
-                    <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => exportOne(inv.id)} disabled={busy} style={{ fontSize: "0.7rem" }}>
-                      {t("superadmin.data.export")}
+                    <button type="button" className="setup-button setup-button--ghost setup-button--compact data-tab-btn-sm" onClick={() => exportOne(inv.id)} disabled={busy}>
+                      {t("superadmin.data.exportBtn")}
                     </button>
-                    <button type="button" className="setup-button setup-button--danger setup-button--compact" onClick={() => deleteOne(inv.id)} disabled={busy || confirmText !== CONFIRM_WORD} style={{ fontSize: "0.7rem" }}>
+                    <button type="button" className="setup-button setup-button--danger setup-button--compact data-tab-btn-danger" onClick={() => deleteOne(inv.id)} disabled={busy || confirmText !== CONFIRM_WORD}>
                       {t("superadmin.data.delete")}
                     </button>
                   </div>
@@ -407,7 +407,7 @@ export default function DataTab() {
           </tbody>
         </table>
         {!invitations.length && (
-          <p style={{ textAlign: "center", color: "var(--setup-muted)", padding: "1.5rem" }}>
+          <p className="data-tab-empty-msg">
             {t("superadmin.data.noInvitations")}
           </p>
         )}

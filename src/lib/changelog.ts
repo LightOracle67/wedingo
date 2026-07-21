@@ -1,5 +1,15 @@
 export const CHANGELOG = [
   {
+    version: "2.15.2",
+    date: "2026-07-20",
+    changes: [
+      "DataTab: inline styles restantes migrados a clases CSS",
+      "PublicInvitation: eliminadas dead props locationMapError/Loading/ContainerRef pasadas a DetailsSection",
+      "Title dinámico por ruta (panel admin, setup, invitación)",
+      "Lint: 2 unused vars eliminados, 6 warnings restantes (solo only-export-components)",
+    ],
+  },
+  {
     version: "2.15.1",
     date: "2026-07-20",
     changes: [

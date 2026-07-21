@@ -1366,6 +1366,58 @@ select.setup-input {
   color: var(--setup-muted);
 }
 
+/* ── DataTab extras ── */
+.data-tab-btn-sm {
+  font-size: 0.7rem;
+}
+.data-tab-btn-danger {
+  font-size: 0.7rem;
+}
+.data-tab-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 12rem;
+  height: 100%;
+}
+.data-tab-loading p {
+  text-align: center;
+  color: var(--setup-muted);
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+.data-tab-empty-msg {
+  text-align: center;
+  color: var(--setup-muted);
+  padding: 1.5rem;
+}
+.data-tab-empty-name {
+  color: var(--setup-muted);
+  font-style: italic;
+}
+.data-tab-admin-user {
+  color: var(--setup-muted);
+  font-size: 0.7rem;
+  display: block;
+}
+.data-tab-sticky-header {
+  position: sticky;
+  top: 0;
+  background: var(--setup-card-bg);
+  z-index: 1;
+}
+.data-tab-tr {
+  border-bottom: 1px solid var(--setup-border);
+}
+.data-tab-tr td {
+  vertical-align: middle;
+}
+.data-tab-code-copy {
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
 /* ── Utility classes para reducir inline styles ── */
 .admin-flex {
   display: flex;
