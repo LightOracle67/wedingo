@@ -11,20 +11,172 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "Viditeľné",
+      "Visible",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "Niečo sa pokazilo",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "383bdae9ffa69f7aa8a53d8e5de30a5f",
+              "tea_CzechSlovakA_en2cssk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "Obnovte stránku a skúste to znova.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "383bdae9ffa69f7aa8a53d8e5de30a5f",
+              "tea_CzechSlovakA_en2cssk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "Znovu načítať stránku",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "383bdae9ffa69f7aa8a53d8e5de30a5f",
+              "tea_CzechSlovakA_en2cssk_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "Zavrieť",
+        "Close",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "383bdae9ffa69f7aa8a53d8e5de30a5f",
+              "tea_CzechSlovakA_en2cssk_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "Preskočiť na hlavný obsah",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "Administračná lišta",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "383bdae9ffa69f7aa8a53d8e5de30a5f",
+              "tea_CzechSlovakA_en2cssk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "Administrácia",
+        "Administration",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "383bdae9ffa69f7aa8a53d8e5de30a5f",
+              "tea_CzechSlovakA_en2cssk_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "landing": {
@@ -56,7 +208,26 @@
     "missing": "Zostáva",
     "todayIsTheDay": "Dnes je ten veľký deň!",
     "sectionLabel": "Obálka",
-    "eyebrow": "Our Wedding"
+    "eyebrow": [
+      "Naša svadba",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "Dátum a miesto",
@@ -75,7 +246,26 @@
     "sectionLabel": "O hosťoch",
     "scheduleTitle": "Program oslavy",
     "schedulePending": "Podrobný program bude čoskoro zdieľaný so všetkými hosťami.",
-    "dressCodeLabel": "Dress code",
+    "dressCodeLabel": [
+      "Kód obliekania",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "dressCodeTitle": "Odporúčaný odev",
     "dressCodePending": "Dress code bude oznámený neskôr.",
     "kidsLabel": "Deti",
@@ -106,8 +296,46 @@
     "next": "Ďalšia",
     "thumbnailAria": "Fotografia {{number}}",
     "thumbnailAlt": "Miniatúra fotografie z galérie",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "Galéria obrázkov, na navigáciu použite klávesy so šípkami",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "Zväčšený obrázok",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "Potvrdenie účasti",
@@ -123,7 +351,26 @@
     "menuPescado": "Ryba",
     "menuVegano": "Vegánske/Vegetariánske",
     "postre": "Dezert",
-    "menuLabel": "Menu",
+    "menuLabel": [
+      "Menu",
+      "Menu",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "allergiesLegend": "Alergie a intolerancie",
     "allergiesPlaceholder": "Iná alergia (špecifikujte)",
     "allergiesHint": "Uveďte len potravinové alergie a intolerancie. Nezadávajte nevyžiadané lekárske informácie.",
@@ -138,49 +385,638 @@
     "ageUnder14Warning": "Máte menej ako 14 rokov. Potrebujete súhlas svojich rodičov alebo zákonných zástupcov.",
     "parentalConsent": "Moji rodičia alebo zákonní zástupcovia súhlasia s mojou účasťou",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "Pre potvrdenie účasti zadajte svoje meno.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "383bdae9ffa69f7aa8a53d8e5de30a5f",
+              "tea_CzechSlovakA_en2cssk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "Vyberte možnosť ponuky.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "383bdae9ffa69f7aa8a53d8e5de30a5f",
+              "tea_CzechSlovakA_en2cssk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "Musíte prijať Zásady ochrany osobných údajov.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "383bdae9ffa69f7aa8a53d8e5de30a5f",
+              "tea_CzechSlovakA_en2cssk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "Zadajte dátum narodenia.",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "383bdae9ffa69f7aa8a53d8e5de30a5f",
+              "tea_CzechSlovakA_en2cssk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "Máte menej ako 14 rokov. ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "383bdae9ffa69f7aa8a53d8e5de30a5f",
+              "tea_CzechSlovakA_en2cssk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "Musíte súhlasiť so spracovaním vašich zdravotných údajov.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "383bdae9ffa69f7aa8a53d8e5de30a5f",
+              "tea_CzechSlovakA_en2cssk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "Označte aspoň jednu možnosť ponuky.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "383bdae9ffa69f7aa8a53d8e5de30a5f",
+              "tea_CzechSlovakA_en2cssk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "Zadajte mená svojich spoločníkov.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "383bdae9ffa69f7aa8a53d8e5de30a5f",
+              "tea_CzechSlovakA_en2cssk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "Nemôžete zadať viac mien ako spoločníkov.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "383bdae9ffa69f7aa8a53d8e5de30a5f",
+              "tea_CzechSlovakA_en2cssk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "Súčet možností ponuky nemôže presiahnuť počet sprievodcov.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "383bdae9ffa69f7aa8a53d8e5de30a5f",
+              "tea_CzechSlovakA_en2cssk_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "Ďakujeme, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "Ďakujeme, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "Vašu odpoveď sa nepodarilo uložiť. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "Naozaj chcete stiahnuť svoju odpoveď?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "Vaša odpoveď bola stiahnutá.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "Vašu odpoveď sa nepodarilo stiahnuť. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "Chcete odstrániť všetky odpovede týkajúce sa účasti? ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "Evidencia dochádzky vymazaná.",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "Nepodarilo sa vymazať záznamy o dochádzke.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "Spoločníci",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "Ľudia",
+      "People",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountHint": [
+      "Koľko ľudí pre každú možnosť (celkom {{total}})",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "Mená hostí",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "Napíšte meno a priezvisko každej sprievodnej reklamy (max. {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "Meno1 Priezvisko1, Meno2 Priezvisko2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "Načítavanie oznámenia…",
     "notFoundTitle": "Oznámenie nenájdené",
     "notFoundText": "Nenašli sme oznámenie s týmto odkazom. Ak si myslíte, že ide o chybu, kontaktujte hostiteľov.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Vytvorte a zdieľajte svoje personalizované svadobné oznámenie.",
     "emptyDescription": "Spravujte údaje svojho oznámenia, zdieľajte jedinečný odkaz s hosťami a prijímajte ich potvrdenia účasti.",
     "createLink": "Vytvoriť oznámenie",
     "privacyPolicy": "Zásady ochrany osobných údajov",
     "terms": "Podmienky",
     "legalNotice": "Právne informácie",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "Toto miesto sa nepodarilo nájsť.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "Nepodarilo sa načítať mapu.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "Súradnice: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "Náhľad mapy na uvedenom mieste.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "Poloha je nakonfigurovaná",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "Načítavanie oznámenia",
@@ -253,7 +1089,26 @@
     "scheduleLabel": "Program svadby",
     "schedulePlaceholder": "Príklad: 18:00 Privítanie hostí\n18:30 Obrad\n19:30 Koktail\n21:00 Hostina\n23:00 Tanec",
     "scheduleHint": "Napíšte program, každý bod na nový riadok.",
-    "dressCodeLabel": "Dress code",
+    "dressCodeLabel": [
+      "Kód obliekania",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "dressCodeGala": "Spoločenský odev",
     "dressCodeCasual": "Neformálny odev",
     "dressCodeFormal": "Formálny odev",
@@ -308,28 +1163,427 @@
     "galleryUploadFailed": "Fotografie sa nepodarilo nahrať.",
     "noValidFiles": "Žiadny platný súbor. Maximálne 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "Nahrajte zvukový súbor na prehrávanie na obale (MP3, WAV, OGG, M4A — max 5 MB).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "Nahrajte zvukový súbor",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG alebo M4A — maximálne 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "Formát zvuku nie je podporovaný. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "Zvukový súbor je prázdny.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "Zvukový súbor presahuje limit 5 MB.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "Chyba pri čítaní zvukového súboru.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "Súbor je prázdny. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "Popis obrázku...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "Maximálny počet obrázkov v galérii je {{max}}.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "Nahráva sa {{total}} fotografií...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "Nahráva sa fotka...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "Zmeniť fotografiu",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "Chyba pri ukladaní popisu",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "Popis bol uložený",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "Vybraná hudba",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "Odstráňte hudbu",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "Prehráva sa...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "Ukážka",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "Vyberte",
+      "Select",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "selected": [
+      "Vybrané",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1607,66 @@
     "pdfTableCompanions": "Sprievod",
     "pdfTableDiet": "Strava",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Admin",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "Zobraziť pozvánku",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "Odhláste sa",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "Potvrdení",
@@ -417,9 +1728,66 @@
     "generateMessage": "Vygenerovať inú správu",
     "copyMessage": "Kopírovať správu",
     "shareVia": "Zdieľať cez",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "telegram",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Tlačiť",
     "printPdf": "Tlačiť / Uložiť PDF",
     "linkCopied": "Odkaz skopírovaný.",
@@ -448,7 +1816,26 @@
     "rightsHint": "Otvorí sa váš e-mailový klient s preddefinovanou šablónou. Môžete tiež napísať na adriancl2001@gmail.com.",
     "ccpaTitle": "CCPA / CPRA (Kalifornia)",
     "ccpaText": "Wedingo nepredáva osobné údaje. Zhromaždené údaje sa používajú výlučne na správu oznámenia. Ak ste obyvateľom Kalifornie, máte právo požiadať o vymazanie svojich údajov a nebyť diskriminovaný za uplatňovanie svojich práv.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Webová aplikácia na správu svadobných oznámení.",
     "copyright": "© {{year}} Adrián Carrasco López. Všetky práva vyhradené.",
     "deleteEmailSubject": "Žiadosť o vymazanie údajov - Wedingo",
@@ -518,13 +1905,146 @@
     "deleteFailed": "Oznámenie sa nepodarilo zmazať. Skúste to znova.",
     "configLoadFailed": "Konfiguráciu sa nepodarilo načítať. Skontrolujte pripojenie a skúste to znova.",
     "invalidLink": "Odkaz na oznámenie je neplatný.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "Informácie o ubytovaní nemôžu presiahnuť 2 000 znakov.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "Popis ponuky nemôže presiahnuť 2000 znakov.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "Obrázok sa nepodarilo spracovať. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "Nepodarilo sa prečítať súbor obrázka.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "Šifrovanie obrázka zlyhalo.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "Obrázok je príliš veľký aj po kompresii.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "Súbor je prázdny. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -535,7 +2055,26 @@
       "compliance": "Súlad",
       "data": "Datos"
     },
-    "superadmin": "Superadmin",
+    "superadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "controlPanel": "Ovládací panel",
     "managePlatform": "Spravujte platformu Wedingo",
     "dashboardLoading": "Načítavanie štatistík...",
@@ -561,7 +2100,26 @@
     "invitationsCount": "{{count}} oznámení · {{size}} obsadených",
     "noResultsFilter": "S týmto kritériom sa nenašli žiadne oznámenia.",
     "noInvitations": "Zatiaľ nie sú žiadne oznámenia.",
-    "tableToken": "Token",
+    "tableToken": [
+      "Token",
+      "Token",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "tableTheme": "Téma",
     "tableDate": "Dátum svadby",
     "tableActions": "Akcie",
@@ -587,15 +2145,91 @@
     "tokenRevokeError": "Token sa nepodarilo odvolať.",
     "tokenCleanError": "Tokeny sa nepodarilo vyčistiť.",
     "tokenLoadError": "Tokeny sa nepodarilo načítať.",
-    "accountEmail": "Email: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountEmail": [
+      "E-mail: {{email}}",
+      "Email: {{email}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Aktívna",
     "sessionInactive": "Neaktívna",
     "sessionLabel": "Lokálna relácia: {{status}}",
     "sessionType": "Typ: {{type}}",
-    "sessionTypeSuperadmin": "Superadmin",
+    "sessionTypeSuperadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionTypeSetup": "Konfigurácia",
-    "sessionTypeAdmin": "Admin",
+    "sessionTypeAdmin": [
+      "Admin",
+      "Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionExpires": "Vyprší: {{date}}",
     "logoutButton": "Odhlásiť sa",
     "firebaseAccount": "Na správu superadmin účtu použite Firebase konzolu:",
@@ -615,10 +2249,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Token",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "383bdae9ffa69f7aa8a53d8e5de30a5f",
+              "tea_CzechSlovakA_en2cssk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVP",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "383bdae9ffa69f7aa8a53d8e5de30a5f",
+              "tea_CzechSlovakA_en2cssk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2308,46 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "Email",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "heslo",
+      "Password",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "compliance": {
     "title": "Register spracovateľských činností (čl. 30 GDPR)",
@@ -653,31 +2363,126 @@
     "row1Basis": "Súhlas (čl. 6.1.a GDPR)",
     "row1Purpose": "Vytvorenie a prispôsobenie svadobného oznámenia",
     "row1Retention": "Pokiaľ je účet aktívny",
-    "row1Recipients": "Google Cloud (Firestore, hosting)",
+    "row1Recipients": [
+      "Google Cloud (Firestore, hosting)",
+      "Google Cloud (Firestore, hosting)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row2Activity": "Potvrdenie účasti (RSVP)",
     "row2Data": "Meno hosťa, účasť (áno/nie), výber menu, alergie, zdravotné údaje",
     "row2Basis": "Súhlas (čl. 6.1.a, 9.2.a GDPR)",
     "row2Purpose": "Správa zoznamu hostí a menu",
     "row2Retention": "12 mesiacov po udalosti",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Nahrávanie obrázkov",
     "row3Data": "Svadobné fotografie (šifrované AES-256-GCM)",
     "row3Basis": "Súhlas (čl. 6.1.a GDPR)",
     "row3Purpose": "Fotogaléria v oznámení",
     "row3Retention": "12 mesiacov po udalosti",
-    "row3Recipients": "Google Cloud (Firestore subcollection)",
+    "row3Recipients": [
+      "Google Cloud (podkolekcia Firestore)",
+      "Google Cloud (Firestore subcollection)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row4Activity": "Autentifikácia a relácie",
     "row4Data": "Token relácie, admin používateľské meno",
     "row4Basis": "Oprávnený záujem (čl. 6.1.f GDPR)",
     "row4Purpose": "Kontrola prístupu k administračnému panelu",
     "row4Retention": "Trvanie relácie",
-    "row4Recipients": "Google Cloud (Firestore sessions)",
+    "row4Recipients": [
+      "Google Cloud (relácie Firestore)",
+      "Google Cloud (Firestore sessions)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row5Activity": "Audit superadmina",
     "row5Data": "Akcie superadmina, použité tokeny, vymazané oznámenia",
     "row5Basis": "Zákonná povinnosť (čl. 6.1.c GDPR)",
     "row5Purpose": "Register administratívnych činností",
     "row5Retention": "3 roky",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Medzinárodné prenosy",
     "internationalText": "Údaje sú uložené na serveroch Google Cloud v regióne eur3 (Frankfurt, Nemecko). Google LLC (USA) vystupuje ako sprostredkovateľ na základe DPA v súlade s čl. 28 GDPR. Prenosy do USA sú kryté:",
     "scc": "Štandardné zmluvné doložky (SCC) - Vykonávacie rozhodnutie 2021/914",
@@ -691,86 +2496,1321 @@
     "measureSuperadmin": "Superadmin chránený Firebase Authentication + skrytá cesta"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "Prístupnosť",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Zavrieť",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontSize": [
+      "Veľkosť textu",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "Normálne",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontLarge": [
+      "Veľký",
+      "Large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontExtraLarge": [
+      "Extra veľké",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "Riadkovanie",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "Normálne",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineWide": [
+      "Široký",
+      "Wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineVeryWide": [
+      "Veľmi široký",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "Vysoký kontrast",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "Znížte pohyb",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "Písmo OpenDyslexic",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "Viac medzier medzi písmenami",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "Podčiarknite všetky odkazy",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "Veľký kurzor",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "Odtiene šedej",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "Viditeľné indikátory zaostrenia",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "Žiadna hudba",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "Chyba pri načítavaní",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "Hudba",
+      "Music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "soundCloudNote": [
+      "Skladba SoundCloud – otvorte na prehrávanie",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "Otvoriť v SoundCloud",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "Príprava tlače…",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "Párová fotka",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "S požehnaním svojich krstných rodičov",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "Dátum a miesto konania",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "Čas obradu:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Zobrazte polohu v Mapách Google",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "Tešíme sa, že sa s vami podelíme o tento výnimočný okamih.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "Doprava",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutGuests": [
+      "O hosťoch",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "Harmonogram svadby",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "Podrobný harmonogram bude čoskoro zdieľaný.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "Kód obliekania",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "Bude oznámené neskôr.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "O deťoch",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "Náš príbeh",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "Ako to všetko začalo",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "Príbeh bude čoskoro zdieľaný.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "Darčeky",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "Vaša prítomnosť je najlepším darom",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "Informácie o darčekoch budú čoskoro zdieľané.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "bankové údaje",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "Ubytovanie",
+      "Accommodation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "whereToStay": [
+      "Kde sa ubytovať",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "Informácie o ubytovaní budú čoskoro zdieľané.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · Zásady ochrany osobných údajov na wedingo-6c26a.web.app",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "Zavrieť okno",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
+    "moveUp": [
+      "Posunúť sa hore",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "Presuňte sa nadol",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "title": "Poradie a viditeľnosť",
     "help": "Potiahnutím zmeňte poradie, pomocou tlačidiel presúvajte a zapnite/vypnite každú sekciu."
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "Vyberte jazyk",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 spoločník",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "Španielsko",
+      "Spain",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "westernEurope": [
+      "západnej Európe",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "severskej Európe",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "strednej Európy",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "Južná Európa / Balkán",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "Východná Európa / Kaukaz",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "východnej Ázie",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "Južná Ázia",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "Juhovýchodná Ázia",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "Stredná Ázia / Stredný východ",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "Afriky",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "Ameriky",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -791,31 +3831,506 @@
     "close": "Zatvoriť"
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "Pre túto pozvánku už existuje aktívna relácia. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "Prístupový kód nie je platný.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "Zadajte prístupový kód.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "Kód bol úspešne overený.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "Kód sa nepodarilo overiť. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "Zadajte svoje používateľské meno a prístupový kód.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "Nesprávne používateľské meno alebo kód.",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "Kód sa nezhoduje s týmto používateľom.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "Úspešne ste sa prihlásili.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "Kód sa nepodarilo overiť. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "Ak chcete vygenerovať nový kód, zadajte príkaz CONFIRM.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "Najprv zadajte svoje používateľské meno.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "Používateľské meno môže obsahovať iba písmená a čísla.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "Používateľské meno nemôže presiahnuť 50 znakov.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "Tento používateľ tu nemá povolenie na prístup.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "Vygenerovaný kód. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "Kód sa nepodarilo vygenerovať. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "Ak chcete vygenerovať nový, zadajte aktuálny prístupový kód.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "Bol vygenerovaný nový kód. ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "Kód bol obnovený. ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "Tento účet nemá povolenia na správu.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "Nesprávne poverenia.",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "Príliš veľa pokusov. ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "Formát e-mailu nie je platný.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "Chyba pri prihlasovaní. Skontrolujte pripojenie.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
     "saved": "Zmeny uložené"
@@ -828,16 +4343,111 @@
     "5": "Máj",
     "6": "Jún",
     "7": "Júl",
-    "8": "August",
-    "9": "September",
+    "8": [
+      "augusta",
+      "August",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "9": [
+      "septembra",
+      "September",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "10": "Október",
-    "11": "November",
-    "12": "December"
+    "11": [
+      "novembra",
+      "November",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "12": [
+      "decembra",
+      "December",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeGroups": {
     "light": "Svetlé témy",
     "dark": "Tmavé témy",
-    "lgbtiq": "LGTBIQ+"
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
     "gluten": "Lepok",
@@ -846,53 +4456,756 @@
     "shellfish": "Kôrovce"
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "Našim najdrahším",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "Klepnutím otvorte",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "Pokračujte klepnutím",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "Naša svadba",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "Svadba {{names}}",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "Miesto bude potvrdené",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "Tešíme sa, že tento výnimočný okamih oslávime s vami.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "čas:",
+      "Time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeLabel": [
+      "Miesto konania:",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "Elegantné a svetlé, so zlatými akcentmi.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "Prirodzená a triezva s jemnou zeleňou.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "Teplé a jemné, s ružovými odtieňmi.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "Ľahké a neutrálne, s pokojnou a nadčasovou prítomnosťou.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "Jemné a romantické s perleťovými ružovými tónmi.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "Svieža a pokojná, s levanduľovými a fialovými odtieňmi.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "Svetlé a slávnostné, s teplými zlatými iskrami.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "Tmavé a elegantné, s jantárovými a zlatými odleskami.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "Hlboké a sofistikované, s intenzívnym zlatom na tmavom pozadí.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "Veľmi tmavo modrá s intenzívnou zlatou a slávnostnou prítomnosťou.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "Teplé a obklopujúce, s červeným vínom a zlatými iskrami.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "Sýto modrá so striebornými akcentmi a pokojnou prítomnosťou.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "Sýta prírodná zelená so zlatými a elegantnými odtieňmi.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "Intenzívna fialová s ružovými a romantickými trblietkami.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "Oslava rozmanitej lásky s farbami dúhy.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "Modrá, ružová a biela na počesť trans vlajky.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "Žltá, biela, fialová a čierna pre nebinárnu vlajku.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "Oranžová, biela a ružová lesbická vlajka.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "Ružová, fialová a modrá vlajky bi.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "Ružová, žltá a modrá vlajka panvice.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "Čierna, sivá, biela a fialová asexuálna vlajka.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "Vitajte s ihriskom",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "383bdae9ffa69f7aa8a53d8e5de30a5f",
+              "tea_CzechSlovakA_en2cssk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "Vitajte pod dohľadom",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "383bdae9ffa69f7aa8a53d8e5de30a5f",
+              "tea_CzechSlovakA_en2cssk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "Len pre dospelých",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "383bdae9ffa69f7aa8a53d8e5de30a5f",
+              "tea_CzechSlovakA_en2cssk_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "Žiadne údaje",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "celkom",
+      "total",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "barChart": [
+      "Stĺpcový graf návštevnosti",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

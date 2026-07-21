@@ -11,20 +11,133 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "hita maso",
+      "Visible",
+      null,
+      null,
+      6
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "Nisy zavatra tsy nety",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "Avereno azafady ny pejy hanandrana indray.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "Avereno ny pejy",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "AKAIKY",
+        "Close",
+        null,
+        null,
+        6
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "Mandehana any amin'ny votoaty fototra",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "Bara fitantanana",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "fitantanan-draharaha",
+        "Administration",
+        null,
+        null,
+        6
+      ]
     }
   },
   "landing": {
@@ -55,8 +168,33 @@
     "todayIsWedding": "Androany no mariazy",
     "missing": "Mbola",
     "todayIsTheDay": "Androany no andro lehibe!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": [
+      "MATOAN-DAHATSORATRA",
+      "Cover",
+      null,
+      null,
+      6
+    ],
+    "eyebrow": [
+      "Ny fampakaram-bady",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "Daty sy toerana",
@@ -106,8 +244,46 @@
     "next": "Manaraka",
     "thumbnailAria": "Sary {{number}}",
     "thumbnailAlt": "Sary kelin'ny galerie",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "Saripika sary, ampiasao ny zana-tsipìka hivezivezena",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "Sary lehibe",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "Fanamafisana ny fanatrehana",
@@ -138,49 +314,612 @@
     "ageUnder14Warning": "Latsaky ny 14 taona ianao. Mila ny faneken'ny ray aman-dreninao na mpitaiza anao.",
     "parentalConsent": "Manaiky ny fandraisako anjara ny ray aman-dreniko na mpitaiza ahy",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "Ampidiro ny anaranao hanamarina ny fanatrehana.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "Mifidiana safidy sakafo.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "Tsy maintsy manaiky ny Politika momba ny fiainana manokana ianao.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "Ampidiro ny daty nahaterahanao.",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "Latsaky ny 14 taona ianao. ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "Tsy maintsy manaiky ny fanodinana ny angona momba ny fahasalamanao ianao.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "Manondro safidy sakafo iray farafahakeliny.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "Ampidiro ny anaran'ny namanao.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "Tsy afaka mampiditra anarana mihoatra noho ny namany ianao.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "Tsy mihoatra ny isan'ny namana ny fitambaran'ny safidy sakafo.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "Misaotra anao, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "Misaotra anao, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "Tsy afaka nitahiry ny valinteninao izahay. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "Tena te hanaisotra ny valinteninao ve ianao?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "Nesorina ny valinteninao.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "Tsy afaka nanaisotra ny valinteninao. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "Fafao ny valintenin'ny mpanatrika rehetra? ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "Nofafana ny firaketana ny mpanatrika.",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "Tsy afaka nanadio ny firaketana fanatrehana.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "mpanaradia",
+      "Companions",
+      null,
+      null,
+      6
+    ],
+    "headcountLabel": [
+      "People",
+      "People",
+      null,
+      null,
+      6
+    ],
+    "headcountHint": [
+      "Firy ny olona isaky ny safidy ({{total}} total)",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "Anaran'ny vahiny",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "Soraty ny anarana voalohany sy farany amin'ny namana tsirairay (max {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "Anarana1 Anarana1, Anarana2 Anarana2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "Mampiditra fanasana…",
     "notFoundTitle": "Tsy hita ny fanasana",
     "notFoundText": "Tsy nahita fanasana miaraka amin'ity rohy ity izahay. Raha heverinao fa hadisoana izany, mifandraisa amin'ny mpampiantrano.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Mamorona sy zarao ny fanasan-dravinao manokana.",
     "emptyDescription": "Tantano ny angon-dresaky ny fanasanao, zarao amin'ny vahiny ny rohy tokana ary raiso ny fanamafisana ny fanatrehan'izy ireo.",
     "createLink": "Mamorona fanasana",
     "privacyPolicy": "Politika momba ny tsiambaratelo",
     "terms": "Fepetra",
     "legalNotice": "Filazana ara-dalana",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "Tsy hita ity toerana ity.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "Tsy afaka nampiditra ny sari-tany.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "Mandrindra: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "Sarintanin'ny sarintany eo amin'ny toerana voalaza.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "Toerana voarindra",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "Mampiditra fanasana",
@@ -308,28 +1047,401 @@
     "galleryUploadFailed": "Tsy azo nampidirina ireo sary.",
     "noValidFiles": "Tsy misy rakitra manan-kery. 20 MB ambony indrindra, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "Mampiakara fisie audio holalaovina eo amin'ny fonony (MP3, WAV, OGG, M4A — 5 MB ambony indrindra).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "Alefaso ny rakitra audio",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG na M4A — max 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "Tsy tohana ny endrika audio. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "Foana ny rakitra audio.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "Mihoatra ny fetra 5 MB ny rakitra audio.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "Hadisoana mamaky rakitra audio.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "Foana ny rakitra. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "Famariparitana sary...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "Sary {{max}} ambony indrindra ao amin'ny galera.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "Mampakatra sary {{total}}...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "Mampakatra sary...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "Hanova sary",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "Hadisoana tehirizina famaritana",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "Voatahiry ny famaritana",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "Mozika voafantina",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "Esory ny mozika",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "Milalao...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "TOPI-MASO",
+      "Preview",
+      null,
+      null,
+      6
+    ],
+    "select": [
+      "Select",
+      "Select",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "selected": [
+      "voafantina",
+      "Selected",
+      null,
+      null,
+      6
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1465,66 @@
     "pdfTableCompanions": "Mpiaraka",
     "pdfTableDiet": "Sakafo",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Admin",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "Jereo ny fanasana",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "Mivoaha",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "Voamarina",
@@ -384,7 +1553,26 @@
     "confirms": "Manamafy",
     "declines": "Mandà",
     "pending": "Mbola miandry",
-    "visits_one": "1 visit",
+    "visits_one": [
+      "1 fitsidihana",
+      "1 visit",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +1605,27 @@
     "generateMessage": "Hamorona hafatra hafa",
     "copyMessage": "Adika ny hafatra",
     "shareVia": "Hizara amin'ny",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      6
+    ],
+    "telegram": [
+      "telegrama",
+      "Telegram",
+      null,
+      null,
+      6
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      10
+    ],
     "print": "Hanonta",
     "printPdf": "Hanonta / Hitehiry PDF",
     "linkCopied": "Voapetaka ny rohy.",
@@ -446,9 +1652,47 @@
     "deleteButton": "Mangataka famafana angon-drakitra",
     "exportButton": "Hamoaka ny angon-drakitro",
     "rightsHint": "Hisokatra ny mailakanao miaraka amin'ny modely efa voaomana. Afaka manoratra amin'ny adriancl2001@gmail.com koa ianao.",
-    "ccpaTitle": "CCPA / CPRA (California)",
+    "ccpaTitle": [
+      "CCPA / CPRA (California)",
+      "CCPA / CPRA (California)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "ccpaText": "Tsy mivarotra angon-drakitra manokana i Wedingo. Ny angon-drakitra voaangona dia ampiasaina hitantanana ny fanasana ihany. Raha mponina any California ianao, manan-jo hangataka famafana ny angon-drakitrao ary tsy hanavakavahana noho ny fampiasanao ny zontsikao.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Fampiharana tranonkala hitantanana fanasan-dravina.",
     "copyright": "© {{year}} Adrián Carrasco López. Zo rehetra voatokana.",
     "deleteEmailSubject": "Fangatahana famafana angon-drakitra - Wedingo",
@@ -518,24 +1762,182 @@
     "deleteFailed": "Tsy azo nofafana ny fanasana. Andramo indray.",
     "configLoadFailed": "Tsy azo nampidirina ny fanamboarana. Zahao ny fifandraisana ary andramo indray.",
     "invalidLink": "Tsy manan-kery ny rohin'ny fanasana.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "Ny fampahafantarana momba ny trano dia tsy tokony hihoatra ny tarehintsoratra 2000.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "Ny famaritana ny sakafo dia tsy afaka mihoatra ny tarehintsoratra 2000.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "Tsy afaka nanodina ny sary. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "Tsy afaka namaky ny rakitra sary.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "Tsy nahomby ny fanafenana sary.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "Lehibe loatra ny sary na dia aorian'ny famoretana aza.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "Foana ny rakitra. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
       "dashboard": "Tabilao",
       "invitations": "Fanasana",
       "tokens": "Token",
-      "session": "Session",
+      "session": [
+        "FIVORIANA",
+        "Session",
+        null,
+        null,
+        6
+      ],
       "compliance": "Fanarahan-dalana",
       "data": "Datos"
     },
-    "superadmin": "Superadmin",
+    "superadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "controlPanel": "Tontonana fanaraha-maso",
     "managePlatform": "Tantano ny sehatra Wedingo",
     "dashboardLoading": "Mampiditra statistika...",
@@ -561,7 +1963,13 @@
     "invitationsCount": "Fanasana {{count}} · {{size}} voasambotra",
     "noResultsFilter": "Tsy nahitana fanasana tamin'io fepetra io.",
     "noInvitations": "Mbola tsy misy fanasana.",
-    "tableToken": "Token",
+    "tableToken": [
+      "famantarana",
+      "Token",
+      null,
+      null,
+      6
+    ],
     "tableTheme": "Lohahevitra",
     "tableDate": "Daty mariazy",
     "tableActions": "Hetsika",
@@ -588,14 +1996,71 @@
     "tokenCleanError": "Tsy azo nodiovina ny token.",
     "tokenLoadError": "Tsy azo nampidirina ny token.",
     "accountEmail": "Mailaka: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Mavitrika",
     "sessionInactive": "Tsy mavitrika",
     "sessionLabel": "Session eo an-toerana: {{status}}",
     "sessionType": "Karazana: {{type}}",
-    "sessionTypeSuperadmin": "Superadmin",
+    "sessionTypeSuperadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionTypeSetup": "Fanamafisana",
-    "sessionTypeAdmin": "Admin",
+    "sessionTypeAdmin": [
+      "Admin",
+      "Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionExpires": "Tapitra: {{date}}",
     "logoutButton": "Hiala",
     "firebaseAccount": "Mba hitantanana ny kaontinao superadmin, ampiasao ny console Firebase:",
@@ -615,10 +2080,35 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "famantarana",
+        "Token",
+        null,
+        null,
+        6
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVPs",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2126,33 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "mailaka",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "Password",
+      "Password",
+      null,
+      null,
+      6
+    ]
   },
   "compliance": {
     "title": "Rakitry ny hetsika fanodinana (And. 30 GDPR)",
@@ -659,7 +2174,26 @@
     "row2Basis": "Fanekena (And. 6.1.a, 9.2.a GDPR)",
     "row2Purpose": "Mitantana lisitry ny vahiny sy sakafo",
     "row2Retention": "12 volana aorian'ny hetsika",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Fampidirana sary",
     "row3Data": "Sarin'ny mariazy (voaaro AES-256-GCM)",
     "row3Basis": "Fanekena (And. 6.1.a GDPR)",
@@ -671,13 +2205,51 @@
     "row4Basis": "Tombontsoa ara-dalana (And. 6.1.f GDPR)",
     "row4Purpose": "Mifehy ny fidirana amin'ny tontonana admin",
     "row4Retention": "Faharetan'ny session",
-    "row4Recipients": "Google Cloud (Firestore sessions)",
+    "row4Recipients": [
+      "Google Cloud (Firestore sessions)",
+      "Google Cloud (Firestore sessions)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row5Activity": "Audit superadmin",
     "row5Data": "Hetsika superadmin, token nampiasaina, fanasana nofafana",
     "row5Basis": "Adidy ara-dalana (And. 6.1.c GDPR)",
     "row5Purpose": "Firaketana hetsika administratif",
     "row5Retention": "3 taona",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Famindrana iraisam-pirenena",
     "internationalText": "Voatahiry ao amin'ny mpizara Google Cloud ao amin'ny faritra eur3 (Frankfurt, Alemaina) ny angon-drakitra. Google LLC (Etazonia) dia miasa amin'ny maha-mpanodina angon-drakitra eo ambanin'ny DPA araka ny And. 28 GDPR. Ny famindrana mankany Etazonia dia arovana amin'ny alalan'ny:",
     "scc": "Fehezan-dalàna mahazatra (SCC) - Fanapahan-kevitra fanatanterahana 2021/914",
@@ -691,86 +2263,1203 @@
     "measureSuperadmin": "Superadmin voaaro amin'ny Firebase Authentication + lalana nafenina"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "Accessibility",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "AKAIKY",
+      "Close",
+      null,
+      null,
+      6
+    ],
+    "fontSize": [
+      "Haben'ny soratra",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "ara-dalàna",
+      "Normal",
+      null,
+      null,
+      6
+    ],
+    "fontLarge": [
+      "ankamaroan'ireo",
+      "Large",
+      null,
+      null,
+      6
+    ],
+    "fontExtraLarge": [
+      "Extra large",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "Ny elanelan'ny tsipika",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "ara-dalàna",
+      "Normal",
+      null,
+      null,
+      6
+    ],
+    "lineWide": [
+      "MANERAN-",
+      "Wide",
+      null,
+      null,
+      6
+    ],
+    "lineVeryWide": [
+      "Malalaka be",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "Fifanoherana avo",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "Ahena ny fihetsiketsehana",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "endritsoratra OpenDyslexic",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "Ny elanelan'ny litera bebe kokoa",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "Tsipiho ny rohy rehetra",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "Kursor lehibe",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "Grayscale",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "Tondro fifantohana hita maso",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "Tsy misy mozika",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "Error amin'ny fandefasana",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "MOZIKA",
+      "Music",
+      null,
+      null,
+      6
+    ],
+    "soundCloudNote": [
+      "SoundCloud track — misokatra hilalao",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "Sokafy amin'ny SoundCloud",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "Manomana fanontana…",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "Sarin'ny mpivady",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "Miaraka amin'ny tsodranon'ny ray aman-dreniny",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "Daty sy toerana",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "Fotoana lanonana:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Jereo ny toerana ao amin'ny Google Maps",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "Tsy andrinay ny hizara ity fotoana manokana ity aminareo.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "Transport",
+      "Transport",
+      null,
+      null,
+      6
+    ],
+    "aboutGuests": [
+      "Momba ny vahiny",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "Fandaharam-panambadiana",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "Hozaraina tsy ho ela ny fandaharam-potoana amin'ny antsipiriany.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "Kaody akanjo",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "Ampitaina any aoriana.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "Momba ny ankizy",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "Ny tantarantsika",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "Ahoana no nanombohan’izany rehetra izany",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "Hozaraina tsy ho ela ny tantara.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "fanomezam-pahasoavana",
+      "Gifts",
+      null,
+      null,
+      6
+    ],
+    "bestGift": [
+      "Ny fanatrehanao no fanomezana tsara indrindra",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "Hozaraina tsy ho ela ny fampahalalana momba ny fanomezana.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "Ny antsipirian'ny banky",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "zavatra ilaina",
+      "Accommodation",
+      null,
+      null,
+      6
+    ],
+    "whereToStay": [
+      "Aiza no hijanonana",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "Hozaraina tsy ho ela ny fampahafantarana momba ny trano.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · Politika manokana amin'ny wedingo-6c26a.web.app",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "Akatona ny varavarankely",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": [
+      "Miakatra",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "Mandrosoa midina",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "title": [
+      "Kaomandy & fahitana",
+      "Order & visibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "help": [
+      "Tariho mba handamina indray, ampiasao ny bokotra hamindra, ary ampifamadiho na mandehana ny fizarana tsirairay.",
+      "Drag to reorder, use the buttons to move, and toggle each section on or off.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "Mifidiana fiteny",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 namana",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "ESPAINA",
+      "Spain",
+      null,
+      null,
+      6
+    ],
+    "westernEurope": [
+      "Eoropa Andrefana",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "Nordic Europe",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "Eoropa Afovoany",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "Eoropa Atsimo / Balkana",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "Eoropa Atsinanana / Caucasus",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "Azia Atsinanana",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "Azia atsimo",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "Azia atsimo atsinanana",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "Azia Afovoany / Afovoany Atsinanana",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "afrika",
+      "Africa",
+      null,
+      null,
+      6
+    ],
+    "americas": [
+      "Amerika",
+      "Americas",
+      null,
+      null,
+      6
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +3476,1539 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": [
+      "Changelog",
+      "Changelog",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "AKAIKY",
+      "Close",
+      null,
+      null,
+      6
+    ]
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "Efa misy fivoriana mavitrika amin'ity fanasana ity. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "Tsy manan-kery ny kaody fidirana.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "Ampidiro ny kaody fidirana.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "Kaody voamarina soa aman-tsara.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "Tsy afaka nanamarina ny kaody. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "Ampidiro ny anaranao sy ny kaody fidirana.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "Anarana na kaody diso.",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "Tsy mifanaraka amin'ity mpampiasa ity ny kaody.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "Niditra soa aman-tsara ianao.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "Tsy afaka nanamarina ny kaody. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "Soraty ny CONFIRM mba hamoronana kaody vaovao.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "Ampidiro aloha ny anaranao.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "Ny anaran'ny mpampiasa dia tsy misy afa-tsy litera sy isa.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "Tsy mihoatra ny tarehintsoratra 50 ny anaran'ny mpampiasa.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "Tsy manana alalana hiditra eto ity mpampiasa ity.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "Kaody novokarina. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "Tsy afaka namorona ny kaody. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "Ampidiro ny kaody fidirana amin'izao fotoana izao mba hamoronana vaovao.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "Kaody vaovao novokarina. ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "Nohavaozina ny kaody. ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "Ity kaonty ity dia tsy manana alalana amin'ny fitantanana.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "Fanomezana tsy mety.",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "Andrana be loatra. ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "Tsy mety ny endrika mailaka.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "Hadisoana ny fidirana. Jereo ny fifandraisanao.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": [
+      "Voatahiry ny fiovana",
+      "Changes saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": [
+      "Janoary",
+      "January",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "2": [
+      "février",
+      "February",
+      null,
+      null,
+      6
+    ],
+    "3": [
+      "MARTSA",
+      "March",
+      null,
+      null,
+      6
+    ],
+    "4": [
+      "Aprily",
+      "April",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "5": [
+      "MEY",
+      "May",
+      null,
+      null,
+      6
+    ],
+    "6": [
+      "Jona",
+      "June",
+      null,
+      null,
+      6
+    ],
+    "7": [
+      "JOLAY",
+      "July",
+      null,
+      null,
+      6
+    ],
+    "8": [
+      "Aogositra",
+      "August",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "9": [
+      "septembre",
+      "September",
+      null,
+      null,
+      6
+    ],
+    "10": [
+      "OKTOBRA",
+      "October",
+      null,
+      null,
+      6
+    ],
+    "11": [
+      "Novambra",
+      "November",
+      null,
+      null,
+      6
+    ],
+    "12": [
+      "Desambra",
+      "December",
+      null,
+      null,
+      6
+    ]
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": [
+      "Lohahevitra maivana",
+      "Light themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dark": [
+      "Lohahevitra maizina",
+      "Dark themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": [
+      "Glotena",
+      "Gluten",
+      null,
+      null,
+      10
+    ],
+    "lactose": [
+      "Lactose",
+      "Lactose",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nuts": [
+      "Hazo voanjo",
+      "Tree nuts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "shellfish": [
+      "ny akorandriaka",
+      "Shellfish",
+      null,
+      null,
+      6
+    ]
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "Ho an'ny malalanay",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "Tsindrio hanokatra",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "Tsindrio raha hanohy",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "Ny fampakaram-bady",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "Fampakaram-bady an'i {{name}}",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "Toerana hohamafisina",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "Tsy andrinay ny hankalaza ity fotoana manokana ity miaraka aminareo.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "Fotoana:",
+      "Time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeLabel": [
+      "Toerana:",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "Kanto sy mamirapiratra, miaraka amin'ny lantom-bolamena.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "Voajanahary sy mahonon-tena miaraka amin'ny maitso malefaka.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "Mafana sy marefo, miaraka amin'ny loko mavokely.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "Maivana sy tsy miandany, miaraka amin'ny fanatrehana milamina sy tsy manam-potoana.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "Malemy sy romantika, miaraka amin'ny tonony mavokely voahangy.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "Vaovao sy milamina, miaraka amin'ny loko lavender sy mavo.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "Mamirapiratra sy mahafinaritra, miaraka amin'ny tselatra volamena mafana.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "Maizina sy kanto, miaraka amin'ny amber sy volamena.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "Lalina sy be pitsiny, miaraka amin'ny volamena mahery amin'ny afara maizina.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "Manga tena maizina miaraka amin'ny volamena mahery sy ny fanatrehana manetriketrika.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "Mafana sy mandrakotra, miaraka amin'ny divay mena sy tselatra volamena.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "Manga lalina miaraka amin'ny lantom-bolafotsy sy ny fisiana milamina.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "Maitso voajanahary lalina miaraka amin'ny loko volamena sy kanto.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "Volomparasy mahery vaika miaraka amin'ny mavokely sy romantika.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "Fankalazana ny fitiavana isan-karazany miaraka amin'ny loko avana.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "Manga, mavokely ary fotsy ho fanomezam-boninahitra ny sainam-pirenena.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "Mavo, fotsy, volomparasy ary mainty ho an'ny saina tsy binary.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "Orange, fotsy ary mavokely amin'ny sainam-bavy.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "Mavokely, volomparasy ary manga amin'ny sainam-pirenena bi.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "Mavokely, mavo ary manga amin'ny sainam-pasika.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "Mainty, volondavenona, fotsy ary volomparasy amin'ny saina asexual.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "Tongasoa miaraka amin'ny toerana filalaovana",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "Tongasoa eto ambany fanaraha-maso",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "Olon-dehibe ihany",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "Tsy misy angona",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "sokajy",
+      "total",
+      null,
+      null,
+      6
+    ],
+    "barChart": [
+      "Sarintanin'ny mpanatrika",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

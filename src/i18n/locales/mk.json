@@ -11,20 +11,172 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "Видливи",
+      "Visible",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "Нешто тргна наопаку",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "Ве молиме повторно вчитајте ја страницата за да се обидете повторно.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "Повторно вчитајте ја страницата",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "Затвори",
+        "Close",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "Прескокнете до главната содржина",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "Административна лента",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "Администрација",
+        "Administration",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "landing": {
@@ -55,8 +207,46 @@
     "todayIsWedding": "Денес е свадбата",
     "missing": "Недостасуваат",
     "todayIsTheDay": "Денес е големиот ден!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": [
+      "Покријте",
+      "Cover",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eyebrow": [
+      "Нашата свадба",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "Датум и место",
@@ -106,8 +296,46 @@
     "next": "Следна",
     "thumbnailAria": "Фотографија {{number}}",
     "thumbnailAlt": "Минијатура од галеријата",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "Галерија со слики, користете ги копчињата со стрелки за навигација",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "Зголемена слика",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "Потврда за присуство",
@@ -138,49 +366,638 @@
     "ageUnder14Warning": "Имаш помалку од 14 години. Потребна е согласност од родителите или старателите.",
     "parentalConsent": "Моите родители или старатели се согласуваат со моето учество",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "Внесете го вашето име за да го потврдите присуството.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "Изберете опција од менито.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "Мора да ја прифатите Политиката за приватност.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "Внесете го вашиот датум на раѓање.",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "Вие сте помлади од 14 години. ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "Мора да се согласите за обработка на вашите здравствени податоци.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "Наведете барем една опција од менито.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "Внесете ги имињата на вашите придружници.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "Не можете да внесете повеќе имиња од придружни.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "Збирот на опции од менито не може да го надмине бројот на придружници.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "Ви благодариме, {{име}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "Ви благодариме, {{име}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "Не можевме да го зачуваме вашиот одговор. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "Дали сте сигурни дека сакате да го повлечете вашиот одговор?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "Вашиот одговор е повлечен.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "Не може да се повлече вашиот одговор. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "Да се ​​избришат сите одговори за присуство? ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "Евиденцијата за присуство е исчистена.",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "Не можеше да се исчисти евиденцијата за присуство.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "Придружници",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "Луѓе",
+      "People",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountHint": [
+      "Колку луѓе за секоја опција ({{вкупно}} вкупно)",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "Имиња на гости",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "Напишете го името и презимето на секој придружник (макс {{број}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "Име1 Презиме1, Име2 Презиме2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "Се вчитува поканата…",
     "notFoundTitle": "Поканата не е пронајдена",
     "notFoundText": "Не пронајдовме покана со овој линк. Ако мислиш дека е грешка, контактирај со домаќините.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Вединго",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Креирај и сподели ја твојата персонализирана покана за свадба.",
     "emptyDescription": "Управувај со податоците на поканата, сподели уникатен линк со гостите и добивај ги нивните потврди за присуство.",
     "createLink": "Креирај покана",
     "privacyPolicy": "Политика за приватност",
     "terms": "Услови",
     "legalNotice": "Правна напомена",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "Не може да се лоцира ова место.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "Не може да се вчита картата.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "Координати: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "Преглед на картата на посочената локација.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "Локацијата е конфигурирана",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "Се вчитува поканата",
@@ -308,28 +1125,427 @@
     "galleryUploadFailed": "Фотографиите не можеа да се прикачат.",
     "noValidFiles": "Нема валиден фајл. Максимум 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "Поставете аудио датотека за репродукција на корицата (MP3, WAV, OGG, M4A — максимум 5 MB).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "Поставете аудио датотека",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG или M4A - максимум 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "Аудио форматот не е поддржан. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "Аудио датотеката е празна.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "Аудио датотеката го надминува ограничувањето од 5 MB.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "Грешка при читање аудио датотека.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "Датотеката е празна. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "Опис на сликата...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "Максимум {{max}} слики во галеријата.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "Се поставуваат {{вкупно}} фотографии...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "Се поставува фотографија...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "Променете ја фотографијата",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "Грешка при зачувување на описот",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "Описот е зачуван",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "Избрана музика",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "Отстранете ја музиката",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "Се игра...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "Преглед",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "Изберете",
+      "Select",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "selected": [
+      "Избрани",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1569,66 @@
     "pdfTableCompanions": "Придружници",
     "pdfTableDiet": "Исхрана",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Вединго · Админ",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "Погледнете ја поканата",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "Одјави се",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "Потврдени",
@@ -384,7 +1657,26 @@
     "confirms": "Потврдуваат",
     "declines": "Одбиваат",
     "pending": "На чекање",
-    "visits_one": "1 visit",
+    "visits_one": [
+      "1 посета",
+      "1 visit",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +1709,66 @@
     "generateMessage": "Генерирај друга порака",
     "copyMessage": "Копирај порака",
     "shareVia": "Сподели преку",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "Телеграма",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "СМС",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Печати",
     "printPdf": "Печати / Зачувај PDF",
     "linkCopied": "Линкот е копиран.",
@@ -448,7 +1797,26 @@
     "rightsHint": "Ќе се отвори твојот клиент за е-пошта со предефиниран шаблон. Можеш исто така да пишеш на adriancl2001@gmail.com.",
     "ccpaTitle": "CCPA / CPRA (Калифорнија)",
     "ccpaText": "Wedingo не продава лични податоци. Собраните податоци се користат исклучиво за управување со поканата. Ако си жител на Калифорнија, имаш право да побараш бришење на твоите податоци и да не бидеш дискриминиран/а за остварување на твоите права.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Вединго",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Веб-апликација за управување со покани за свадба.",
     "copyright": "© {{year}} Adrián Carrasco López. Сите права задржани.",
     "deleteEmailSubject": "Барање за бришење на податоци - Wedingo",
@@ -518,13 +1886,146 @@
     "deleteFailed": "Поканата не можеше да се избрише. Обиди се повторно.",
     "configLoadFailed": "Конфигурацијата не можеше да се вчита. Провери ја врската и обиди се повторно.",
     "invalidLink": "Линкот на поканата не е валиден.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "Информациите за сместувањето не можат да надминат 2000 знаци.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "Описот на менито не смее да надмине 2000 знаци.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "Сликата не може да се обработи. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "Не можев да ја прочитам датотеката со слика.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "Шифрирањето на сликата не успеа.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "Сликата е преголема дури и по компресија.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "Датотеката е празна. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -588,7 +2089,26 @@
     "tokenCleanError": "Токените не можеа да се исчистат.",
     "tokenLoadError": "Токените не можеа да се вчитаат.",
     "accountEmail": "Е-пошта: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Активна",
     "sessionInactive": "Неактивна",
     "sessionLabel": "Локална сесија: {{status}}",
@@ -615,10 +2135,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Токен",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVP",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2194,46 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "Е-пошта",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "Лозинка",
+      "Password",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "compliance": {
     "title": "Регистар на активности на обработка (GDPR чл. 30)",
@@ -659,7 +2255,26 @@
     "row2Basis": "Согласност (GDPR чл. 6.1.а, 9.2.а)",
     "row2Purpose": "Управување со список на гости и мени",
     "row2Retention": "12 месеци по настанот",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Прикачување на слики",
     "row3Data": "Свадбени фотографии (енкриптирани AES-256-GCM)",
     "row3Basis": "Согласност (GDPR чл. 6.1.а)",
@@ -671,13 +2286,51 @@
     "row4Basis": "Легитимен интерес (GDPR чл. 6.1.ф)",
     "row4Purpose": "Контрола на пристап до админ панелот",
     "row4Retention": "Времетраење на сесијата",
-    "row4Recipients": "Google Cloud (Firestore sessions)",
+    "row4Recipients": [
+      "Google Cloud (сесии на Firestore)",
+      "Google Cloud (Firestore sessions)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row5Activity": "Ревизија на супер админ",
     "row5Data": "Акции на супер админ, искористени токени, избришани покани",
     "row5Basis": "Законска обврска (GDPR чл. 6.1.в)",
     "row5Purpose": "Регистрирање на административни активности",
     "row5Retention": "3 години",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Опис на ревизија на Firestore)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Меѓународни преноси",
     "internationalText": "Податоците се чуваат на сервери на Google Cloud во регионот eur3 (Франкфурт, Германија). Google LLC (САД) делува како обработувач на податоци согласно DPA во согласност со GDPR чл. 28. Преносите во САД се засноваат на:",
     "scc": "Стандардни договорни клаузули (SCC) - Одлука за спроведување 2021/914",
@@ -691,86 +2344,1359 @@
     "measureSuperadmin": "Супер админ заштитен со Firebase Authentication + скриена патека"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "Пристапност",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Затвори",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontSize": [
+      "Големина на текстот",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "Нормално",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontLarge": [
+      "Големи",
+      "Large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontExtraLarge": [
+      "Екстра голем",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "Растојание на линии",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "Нормално",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineWide": [
+      "Широк",
+      "Wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineVeryWide": [
+      "Многу широк",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "Висок контраст",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "Намалете го движењето",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "OpenDyslexic фонт",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "Повеќе растојание меѓу буквите",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "Подвлечете ги сите врски",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "Голем курсор",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "Сиви тонови",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "Видливи индикатори за фокусирање",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "Нема музика",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "Грешка при вчитување",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "Музика",
+      "Music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "soundCloudNote": [
+      "SoundCloud песна — отворена за репродукција",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "Отворете во SoundCloud",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "Се подготвува печатење…",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "Фотографија за пар",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "Со благослов на нивните кумови",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "Датум и место на одржување",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "Време на церемонијата:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Погледнете ја локацијата во „Карти на Google“.",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "Со нетрпение очекуваме да го споделиме овој посебен момент со вас.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "Транспорт",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutGuests": [
+      "За гостите",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "Распоред на свадба",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "Деталниот распоред ќе биде споделен наскоро.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "Кодекс на облекување",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "Ќе биде соопштено подоцна.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "За децата",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "Нашата приказна",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "Како сето тоа започна",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "Приказната ќе биде споделена наскоро.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "Подароци",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "Вашето присуство е најдобриот подарок",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "Информациите за подароците ќе бидат споделени наскоро.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "Детали за банка",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "Сместување",
+      "Accommodation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "whereToStay": [
+      "Каде да останете",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "Информациите за сместувањето ќе бидат споделени наскоро.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · Политика за приватност на wedingo-6c26a.web.app",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "Затвори прозорец",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": [
+      "Движете се нагоре",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "Движете се надолу",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "title": [
+      "Ред и видливост",
+      "Order & visibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "help": [
+      "Повлечете за да го прередите, користете ги копчињата за преместување и вклучете или исклучете го секој дел.",
+      "Drag to reorder, use the buttons to move, and toggle each section on or off.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "Изберете јазик",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 придружник",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "Шпанија",
+      "Spain",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "westernEurope": [
+      "Западна Европа",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "Нордиска Европа",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "Централна Европа",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "Јужна Европа / Балкан",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "Источна Европа / Кавказ",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "Источна Азија",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "Јужна Азија",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "Југоисточна Азија",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "Централна Азија / Блискиот Исток",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "Африка",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "Америка",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +3713,1708 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": [
+      "Промена",
+      "Changelog",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Затвори",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "Веќе има активна сесија за оваа покана. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "Кодот за пристап не е валиден.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "Внесете го кодот за пристап.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "Кодот е успешно потврден.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "Не може да се потврди кодот. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "Внесете го вашето корисничко име и кодот за пристап.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "Неточно корисничко име или код.",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "Кодот не се совпаѓа со овој корисник.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "Успешно се најавивте.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "Не може да се потврди кодот. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "Напишете CONFIRM за да генерирате нов код.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "Прво внесете го вашето корисничко име.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "Корисничкото име може да содржи само букви и бројки.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "Корисничкото име не може да надмине 50 знаци.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "Овој корисник нема дозвола за пристап овде.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "Генериран код. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "Не може да се генерира кодот. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "Внесете го тековниот код за пристап за да генерирате нов.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "Генериран нов код. ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "Кодот е обновен. ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "Оваа сметка нема административни дозволи.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "Неточни ингеренции.",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "Премногу обиди. ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "Форматот на е-пошта не е валиден.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "Грешка при најавување. Проверете ја врската.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": [
+      "Промените се зачувани",
+      "Changes saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": [
+      "јануари",
+      "January",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "2": [
+      "февруари",
+      "February",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "3": [
+      "март",
+      "March",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "4": [
+      "април",
+      "April",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "5": [
+      "мај",
+      "May",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "6": [
+      "јуни",
+      "June",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "7": [
+      "јули",
+      "July",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "8": [
+      "август",
+      "August",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "9": [
+      "септември",
+      "September",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "10": [
+      "октомври",
+      "October",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "11": [
+      "ноември",
+      "November",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "12": [
+      "декември",
+      "December",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": [
+      "Лесни теми",
+      "Light themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dark": [
+      "Темни теми",
+      "Dark themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": [
+      "Глутен",
+      "Gluten",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lactose": [
+      "Лактоза",
+      "Lactose",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nuts": [
+      "Дрвени ореви",
+      "Tree nuts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "shellfish": [
+      "Школки",
+      "Shellfish",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "На нашите најмили",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "Допрете за да се отвори",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "Допрете за да продолжите",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "Нашата свадба",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "Свадба на {{име}}",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "Локацијата ќе се потврди",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "Со нетрпение очекуваме да го прославиме овој посебен момент со вас.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "Време:",
+      "Time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeLabel": [
+      "Место на одржување:",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "Елегантен и светол, со златни акценти.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "Природно и трезвено со меки зеленило.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "Топло и нежно, со розови нијанси.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "Лесни и неутрални, со спокојно и безвременско присуство.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "Меки и романтични, со бисерно розови тонови.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "Свежи и спокојни, со лаванда и вивови нијанси.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "Светли и празнични, со топли златни искри.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "Темно и елегантно, со килибарни и златни врвови.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "Длабоко и софистицирано, со интензивно злато на темна позадина.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "Многу темно сина со интензивно златно и свечено присуство.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "Топло и обвивна, со црвено вино и златни искри.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "Длабоко сино со сребрени акценти и спокојно присуство.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "Длабоко природно зелено со златни и елегантни нијанси.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "Интензивна виолетова со розови и романтични светки.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "Прослава на разновидна љубов со бои на виножито.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "Сина, розова и бела во почит на знамето на транс.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "Жолта, бела, виолетова и црна за небинарното знаме.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "Портокалова, бела и розова на лезбејското знаме.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "Розова, виолетова и сина боја на бито знаме.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "Розево, жолто и сино на знамето на тавата.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "Црна, сива, бела и виолетова од асексуалното знаме.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "Добредојдовте со простор за играње",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "Добредојдовте под надзор",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "Само за возрасни",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "Нема податоци",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "вкупно",
+      "total",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "barChart": [
+      "Табела на посетеност",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

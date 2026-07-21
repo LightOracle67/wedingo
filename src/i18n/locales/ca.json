@@ -1247,7 +1247,26 @@
   "envelope": {
     "addressLine1": "Als nostres estimats",
     "tapHint": "Toqueu per obrir",
-    "and": "&",
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "tapContinue": "Toca per continuar"
   },
   "calendar": {

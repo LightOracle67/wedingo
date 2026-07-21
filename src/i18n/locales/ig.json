@@ -11,20 +11,172 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "Na-ahụ anya",
+      "Visible",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "Ọ nwere ihe adịghị mma",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "Biko bugharịa ibe ahụ ka ịnwale ọzọ.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "Bugharịa ibe",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "Mechie",
+        "Close",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "Mafere na isi ọdịnaya",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "Ogwe nchịkwa",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "nchịkwa",
+        "Administration",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "landing": {
@@ -55,8 +207,46 @@
     "todayIsWedding": "Taa bụ agbamakwụkwọ",
     "missing": "Fọdụrụ",
     "todayIsTheDay": "Taa bụ nnukwu ụbọchị!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": [
+      "Mkpuchi",
+      "Cover",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eyebrow": [
+      "Agbamakwụkwọ anyị",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "Ụbọchị na ebe",
@@ -106,8 +296,46 @@
     "next": "Nke na-esote",
     "thumbnailAria": "Foto {{number}}",
     "thumbnailAlt": "Obere foto ụlọ ngosi",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "Ụlọ ihe onyonyo, jiri igodo akụ ka ịnyagharịa",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "Onyonyo buru ibu",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "Nkwenye ọbịbịa",
@@ -138,49 +366,638 @@
     "ageUnder14Warning": "Ị rubeghi afọ 14. Ị chọrọ nkwenye nke ndị mụrụ gị ma ọ bụ ndị nlekọta gị.",
     "parentalConsent": "Ndị mụrụ m ma ọ bụ ndị nlekọta m kwetere isonye m",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "Tinye aha gị iji gosi na ọ bịara.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "Họrọ nhọrọ menu.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "Ị ga-anabatarịrị amụma nzuzo.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "Tinye ụbọchị ọmụmụ gị.",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "Ị erubeghị afọ iri na anọ. ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "Ị ga-ekwenyerịrị na nhazi data ahụike gị.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "gosi opekata mpe otu nhọrọ menu.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "Tinye aha ndị enyi gị.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "Ị nweghị ike itinye aha karịa ndị enyi.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "Nchikota nhọrọ menu enweghị ike ịgafe ọnụọgụ ndị enyi.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "Daalụ, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "Daalụ, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "Anyị enweghị ike ichekwa nzaghachi gị. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "Ị ji n'aka na ịchọrọ iwepụ nzaghachi gị?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "Ewepụla nzaghachi gị.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "Enweghị ike iwepụ nzaghachi gị. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "Hichapụ nzaghachi ọbịbịa niile? ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "E kpochapụrụ ndekọ ọbịbịa.",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "Enweghị ike ihichapụ ndekọ ọbịbịa.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "Ndị enyi",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "Ndị mmadụ",
+      "People",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountHint": [
+      "Mmadụ ole maka nhọrọ ọ bụla ({{total}} mkpokọta)",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "Aha ndị ọbịa",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "Dee aha mbụ na ikpeazụ nke enyi ọ bụla (max {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "Aha1 Aha nna1, Aha2 Aha nna2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "Na-ebu akwụkwọ ịkpọ òkù...",
     "notFoundTitle": "Ahụghị akwụkwọ ịkpọ òkù",
     "notFoundText": "Anyị ahụghị akwụkwọ ịkpọ òkù na njikọ a. Ọ bụrụ na i chere na ọ bụ njehie, kpọtụrụ ndị ọbịa.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Mepụta ma kesaa akwụkwọ ịkpọ òkù agbamakwụkwọ nke gị.",
     "emptyDescription": "Jikwaa data akwụkwọ ịkpọ òkù gị, kesaa njikọ pụrụ iche na ndị ọbịa gị ma nata nkwenye ọbịbịa ha.",
     "createLink": "Mepụta akwụkwọ ịkpọ òkù",
     "privacyPolicy": "Iwu Nzuzo",
     "terms": "Usoro",
     "legalNotice": "Ọkwa Iwu",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "Enweghị ike ịchọta ebe a.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "Enweghị ike ibunye maapụ ahụ.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "Nhazi: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "Nhụchalụ maapụ na ebe egosiri.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "Ahaziri ebe",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "Na-ebu akwụkwọ ịkpọ òkù",
@@ -308,28 +1125,427 @@
     "galleryUploadFailed": "Enweghị ike ibulite foto.",
     "noValidFiles": "Enweghị faịlụ ziri ezi. Kacha 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "Bulite faịlụ ọdịyo ka ọ kpọọ na mkpuchi (MP3, WAV, OGG, M4A — max 5 MB).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "Bulite faịlụ ọdịyo",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG ma ọ bụ M4A — max 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "Akwadoghi usoro ọdịyo. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "Faịlụ ọdịyo efu.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "Faịlụ ọdịyo karịrị oke 5 MB.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "Enwere mperi ịgụ faịlụ ọdịyo.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "Faịlụ efu. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "Nkọwa onyonyo...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "Onyonyo kacha {{max}} dị na gallery.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "Na-ebugo {{ngụkọta}} foto(s)...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "Na-ebugo foto...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "Gbanwee foto",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "Ichekwa nkọwa",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "echekwara nkọwa",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "Egwu ahọpụtara",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "Wepu egwu",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "Na-egwu...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "Nhụchalụ",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "Họrọ",
+      "Select",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "selected": [
+      "ahọpụtara",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1569,66 @@
     "pdfTableCompanions": "Ndị so",
     "pdfTableDiet": "Nri",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Admin",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "Lelee akwụkwọ ịkpọ òkù",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "Wepụ",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "Ndị ekwenyere",
@@ -384,7 +1657,26 @@
     "confirms": "Na-ekwenye",
     "declines": "Na-ajụ",
     "pending": "Na-eche",
-    "visits_one": "1 visit",
+    "visits_one": [
+      "1 nleta",
+      "1 visit",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +1709,66 @@
     "generateMessage": "Mepụta ozi ọzọ",
     "copyMessage": "Detuo ozi",
     "shareVia": "Kesaa site na",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "Telegram",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Bipụta",
     "printPdf": "Bipụta / Chekwaa PDF",
     "linkCopied": "E detuola njikọ.",
@@ -446,9 +1795,47 @@
     "deleteButton": "Rịọ nhichapụ data",
     "exportButton": "Bupụ data m",
     "rightsHint": "A ga-emepe onye ahịa email gị na ndebiri eburula ụzọ kọwaa. Ị nwekwara ike idegara adriancl2001@gmail.com.",
-    "ccpaTitle": "CCPA / CPRA (California)",
+    "ccpaTitle": [
+      "CCPA / CPRA (California)",
+      "CCPA / CPRA (California)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "ccpaText": "Wedingo anaghị ere data onwe. A na-eji data anakọtara naanị maka njikwa akwụkwọ ịkpọ òkù. Ọ bụrụ na ị bụ onye bi na California, ị nwere ikike ịrịọ nhichapụ nke data gị na ịghara ịkpa ókè maka iji ikike gị.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Ngwa weebụ maka njikwa akwụkwọ ịkpọ òkù agbamakwụkwọ.",
     "copyright": "© {{year}} Adrián Carrasco López. Ikike niile echekwabara.",
     "deleteEmailSubject": "Arịrịọ nhichapụ data - Wedingo",
@@ -518,24 +1905,195 @@
     "deleteFailed": "Enweghị ike ihichapụ akwụkwọ ịkpọ òkù. Nwagharịa.",
     "configLoadFailed": "Enweghị ike iburu nhazi. Lelee njikọ ma nwagharịa.",
     "invalidLink": "Njikọ akwụkwọ ịkpọ òkù ezighi ezi.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "Ozi ebe obibi enweghị ike ịgafe mkpụrụedemede 2000.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "Nkọwa menu enweghị ike ịgafe mkpụrụedemede 2000.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "Enweghị ike ịhazi onyonyo a. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "Enweghị ike ịgụ faịlụ onyonyo a.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "Izo ya ezoro ezo.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "Ihe onyonyo a buru oke ibu ọbụlagodi mgbe mkpakọ gachara.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "Faịlụ efu. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
-      "dashboard": "Dashboard",
+      "dashboard": [
+        "Dashboard",
+        "Dashboard",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "invitations": "Akwụkwọ ịkpọ òkù",
       "tokens": "Token",
       "session": "Oge ọrụ",
       "compliance": "Nrubeisi",
       "data": "Datos"
     },
-    "superadmin": "Superadmin",
+    "superadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "controlPanel": "Panel njikwa",
     "managePlatform": "Jikwaa ikpo okwu Wedingo",
     "dashboardLoading": "Na-ebu ọnụ ọgụgụ...",
@@ -561,7 +2119,26 @@
     "invitationsCount": "{{count}} akwụkwọ ịkpọ òkù · {{size}} ejiri",
     "noResultsFilter": "Ahụghị akwụkwọ ịkpọ òkù na njirisi ahụ.",
     "noInvitations": "Enwebeghị akwụkwọ ịkpọ òkù.",
-    "tableToken": "Token",
+    "tableToken": [
+      "Token",
+      "Token",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "tableTheme": "Isiokwu",
     "tableDate": "Ụbọchị agbamakwụkwọ",
     "tableActions": "Omume",
@@ -587,15 +2164,91 @@
     "tokenRevokeError": "Enweghị ike ịkagbu token.",
     "tokenCleanError": "Enweghị ike ihicha token.",
     "tokenLoadError": "Enweghị ike iburu token.",
-    "accountEmail": "Email: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountEmail": [
+      "Email: {{email}}",
+      "Email: {{email}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Na-arụ ọrụ",
     "sessionInactive": "Anaghị arụ ọrụ",
     "sessionLabel": "Oge ọrụ mpaghara: {{status}}",
     "sessionType": "Ụdị: {{type}}",
-    "sessionTypeSuperadmin": "Superadmin",
+    "sessionTypeSuperadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionTypeSetup": "Nhazi",
-    "sessionTypeAdmin": "Admin",
+    "sessionTypeAdmin": [
+      "Admin",
+      "Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionExpires": "Na-agwụ: {{date}}",
     "logoutButton": "Pụọ",
     "firebaseAccount": "Iji jikwaa akaụntụ superadmin gị, jiri konsol Firebase:",
@@ -615,10 +2268,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Token",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVPs",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2327,46 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "Email",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "Okwuntughe",
+      "Password",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "compliance": {
     "title": "Ndebanye aha nke ọrụ nhazi (Art. 30 GDPR)",
@@ -659,13 +2388,51 @@
     "row2Basis": "Nkwenye (Art. 6.1.a, 9.2.a GDPR)",
     "row2Purpose": "Jikwaa ndepụta ndị ọbịa na nri",
     "row2Retention": "Ọnwa 12 mgbe mmemme gasịrị",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Mbulite onyonyo",
     "row3Data": "Foto agbamakwụkwọ (ezoro ezo AES-256-GCM)",
     "row3Basis": "Nkwenye (Art. 6.1.a GDPR)",
     "row3Purpose": "Ụlọ ngosi foto na akwụkwọ ịkpọ òkù",
     "row3Retention": "Ọnwa 12 mgbe mmemme gasịrị",
-    "row3Recipients": "Google Cloud (Firestore subcollection)",
+    "row3Recipients": [
+      "Google Cloud (obere mkpokọta Firestore)",
+      "Google Cloud (Firestore subcollection)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row4Activity": "Nyocha na oge ọrụ",
     "row4Data": "Token oge ọrụ, aha njirimara admin",
     "row4Basis": "Mmasị ziri ezi (Art. 6.1.f GDPR)",
@@ -677,7 +2444,26 @@
     "row5Basis": "Ọrụ iwu (Art. 6.1.c GDPR)",
     "row5Purpose": "Ndekọ nke ọrụ nchịkwa",
     "row5Retention": "Afọ 3",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Mbugharị mba ụwa",
     "internationalText": "A na-echekwa data na sava Google Cloud na mpaghara eur3 (Frankfurt, Germany). Google LLC (US) na-arụ ọrụ dị ka onye nhazi data n'okpuru DPA dịka Art. 28 GDPR. A na-echebe mbugharị na US site na:",
     "scc": "Standard Contractual Clauses (SCC) - Mkpebi Mmezu 2021/914",
@@ -691,86 +2477,1359 @@
     "measureSuperadmin": "Superadmin echekwara site na Firebase Authentication + ụzọ ezoro ezo"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "Nnweta",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Mechie",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontSize": [
+      "Ogo ederede",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "Nkịtị",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontLarge": [
+      "Nnukwu",
+      "Large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontExtraLarge": [
+      "Oke ibu",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "Ogologo ahịrị",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "Nkịtị",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineWide": [
+      "Obosara",
+      "Wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineVeryWide": [
+      "Nnukwu mbara",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "Nnukwu ọdịiche",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "Belata ngagharị",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "Ederede Dyslexic",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "Oghere mkpụrụedemede ọzọ",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "Kanye akara njikọ niile",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "Nnukwu cursor",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "Isi awọ",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "Ihe nledo anya na-ahụ anya",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "Enweghị egwu",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "Ịbunye mperi",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "Egwu",
+      "Music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "soundCloudNote": [
+      "SoundCloud egwu - mepere emepe",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "Mepee na SoundCloud",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "Na-akwado mbipụta…",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "Foto di na nwunye",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "Site na ngozi nke nne na nna ha",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "Ụbọchị na ebe mgbakọ",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "Oge emume:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Lelee ebe dị na Google Maps",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "Anyị na-atụ anya ịkọrọ gị oge a pụrụ iche.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "Ụgbọ njem",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutGuests": [
+      "Banyere ndị ọbịa",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "Usoro agbamakwụkwọ",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "A ga-ekekọrịta usoro nhazi zuru ezu n'oge adịghị anya.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "Uwe ejiji",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "A ga-agwa ya ma emechaa.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "Banyere ụmụaka",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "Akụkọ anyị",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "Otú o si malite",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "A ga-ekekọrịta akụkọ ahụ n'oge adịghị anya.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "Onyinye",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "Ọnụnọ gị bụ onyinye kacha mma",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "A ga-ekekọrịta ozi onyinye n'oge adịghị anya.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "Nkọwa ụlọ akụ",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "Ebe obibi",
+      "Accommodation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "whereToStay": [
+      "Ebe ị ga-anọ",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "A ga-ekekọrịta ozi ụlọ n'oge adịghị anya.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · Amụma nzuzo na wedingo-6c26a.web.app",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "Mechie windo",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": [
+      "Bulie elu",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "Budata ala",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "title": [
+      "ịtụ & visibiliti",
+      "Order & visibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "help": [
+      "Dọrọ ka ịhazigharịa, jiri bọtịnụ ka ibugharịa, wee gbanye ma ọ bụ gbanyụọ ngalaba ọ bụla.",
+      "Drag to reorder, use the buttons to move, and toggle each section on or off.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "Họrọ asụsụ",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 enyi",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "Spain",
+      "Spain",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "westernEurope": [
+      "Western Europe",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "Nordic Europe",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "Central Europe",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "Ndịda Europe / Balkan",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "Eastern Europe / Caucasus",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "East Asia",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "South Asia",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "Ndịda Ebe Ọwụwa Anyanwụ Eshia",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "Central Asia / Middle East",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "Africa",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "Amerika",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +3846,1708 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": [
+      "Changelog",
+      "Changelog",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Mechie",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "Enweelarị nnọkọ na-arụsi ọrụ ike maka òkù a. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "Koodu nnweta adịghị irè.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "Tinye koodu nnweta.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "Ekwenyere koodu nke ọma.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "Enweghị ike ịchọpụta koodu ahụ. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "Tinye aha njirimara gị na koodu nnweta.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "Aha njirimara ma ọ bụ koodu na-ezighi ezi.",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "Koodu ahụ adabaghị na onye ọrụ a.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "Ị banyela nke ọma.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "Enweghị ike ịchọpụta koodu ahụ. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "Pịnye CONFIRM ka iwepụta koodu ọhụrụ.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "Tinye aha njirimara gị nke mbụ.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "Aha njirimara nwere ike ịnwe naanị mkpụrụedemede na ọnụọgụ.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "Aha njirimara enweghị ike ịgafe mkpụrụedemede 50.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "Onye ọrụ a enweghị ikike ịbanye ebe a.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "Emepụtara koodu. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "Enweghị ike ịmepụta koodu. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "Tinye koodu nnweta ugbu a iji mepụta nke ọhụrụ.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "Emepụtara koodu ọhụrụ. ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "Koodu emegharịrị. ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "Akaụntụ a enweghị ikike nchịkwa.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "Asambodo ezighi ezi.",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "Ọtụtụ mbọ. ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "Ụdị email adịghị mma.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "Njehie ịbanye. Lelee njikọ gị.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": [
+      "echekwara mgbanwe",
+      "Changes saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": [
+      "Jenụwarị",
+      "January",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "2": [
+      "Febụwarị",
+      "February",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "3": [
+      "Maachị",
+      "March",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "4": [
+      "Eprel",
+      "April",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "5": [
+      "Mee",
+      "May",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "6": [
+      "June",
+      "June",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "7": [
+      "Julaị",
+      "July",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "8": [
+      "Ọgọst",
+      "August",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "9": [
+      "Septemba",
+      "September",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "10": [
+      "October",
+      "October",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "11": [
+      "Nọvemba",
+      "November",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "12": [
+      "Disemba",
+      "December",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": [
+      "Gburugburu ọkụ",
+      "Light themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dark": [
+      "Gburugburu gbara ọchịchịrị",
+      "Dark themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": [
+      "Gluten",
+      "Gluten",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lactose": [
+      "Lactose",
+      "Lactose",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nuts": [
+      "Osisi osisi",
+      "Tree nuts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "shellfish": [
+      "Shellfish",
+      "Shellfish",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "Ka anyị hụrụ n'anya",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "Pịa ka imepee",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "Pịa ka ịga n'ihu",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "Agbamakwụkwọ anyị",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "Agbamakwụkwọ nke {{names}}",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "Ebe aga-ekwenye",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "Anyị na-atụ anya iso gị mee mmemme pụrụ iche a.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "Oge:",
+      "Time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeLabel": [
+      "Ebe:",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "Mara mma ma na-egbuke egbuke, nwere ụda ọla edo.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "Eke na nro na elu dị nro.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "Na-ekpo ọkụ ma dị nro, na agba pink.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "Ìhè na nnọpụiche, yana ọnụnọ dị jụụ na enweghị oge.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "Dị nro na ihunanya, na ụda pink pearly.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "Ọ dị ọhụrụ ma dị jụụ, nwere lavender na acha mara mma.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "Na-egbuke egbuke ma na-eme ememe, na-egbuke egbuke ọla edo na-ekpo ọkụ.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "Ọchịchịrị ma maa mma, nwere amber na ọla edo.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "Dị omimi na ọkaibe, nwere ọla edo siri ike na ndabere gbara ọchịchịrị.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "Nnukwu acha anụnụ anụnụ nwere ọla edo siri ike na ọnụnọ dị nsọ.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "Na-ekpo ọkụ na mkpuchi, na mmanya na-acha ọbara ọbara na sparkles ọla edo.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "Acha anụnụ anụnụ nwere ụda ọla ọcha na ọnụnọ dị jụụ.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "Akwụkwọ ndụ akwụkwọ ndụ miri emi nke nwere ọla edo na ọmarịcha hues.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "Agba odo odo na-acha odo odo na pink na ihunanya sparkles.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "Ememme ịhụnanya dị iche iche nwere agba egwurugwu.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "Blue, pink na ọcha na ụtụ maka ọkọlọtọ trans.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "Yellow, ọcha, odo odo na oji maka ọkọlọtọ na-abụghị ọnụọgụ abụọ.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "Orange, ọcha na pink nke ọkọlọtọ nwanyị nwanyị.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "Pink, odo odo na acha anụnụ anụnụ nke ọkọlọtọ bi.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "Pink, odo na acha anụnụ anụnụ nke ọkọlọtọ pan.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "Black, isi awọ, ọcha na odo odo nke ọkọlọtọ asexual.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "Nnọọ na mpaghara egwuregwu",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "Nabata n'okpuru nlekọta",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "Naanị ndị okenye",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "Enweghị data",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "ngụkọta",
+      "total",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "barChart": [
+      "chaatị mmanya ọbịbịa",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

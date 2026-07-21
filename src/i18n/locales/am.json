@@ -886,7 +886,26 @@
   "envelope": {
     "addressLine1": "ለወዳጆቻችን",
     "tapHint": "ለመክፈት መታ ያድርጉ",
-    "and": "&",
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "tapContinue": "ለመቀጠል መታ ያድርጉ"
   },
   "calendar": {

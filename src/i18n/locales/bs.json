@@ -1361,7 +1361,26 @@
   "envelope": {
     "addressLine1": "Za naše najdraže",
     "tapHint": "Dodirnite da otvorite",
-    "and": "&",
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "tapContinue": "Dodirnite za nastavak"
   },
   "calendar": {

@@ -11,20 +11,172 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "Sýnilegt",
+      "Visible",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "Eitthvað fór úrskeiðis",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "Vinsamlegast endurhlaðið síðuna til að reyna aftur.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "Endurhlaða síðu",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "Loka",
+        "Close",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "Fara í aðalefni",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "Stjórnunarstika",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "Stjórnsýsla",
+        "Administration",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "landing": {
@@ -55,8 +207,46 @@
     "todayIsWedding": "Í dag er brúðkaupið",
     "missing": "Eftir",
     "todayIsTheDay": "Í dag er stóri dagurinn!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": [
+      "Kápa",
+      "Cover",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eyebrow": [
+      "Brúðkaupið okkar",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "Dagsetning og staðsetning",
@@ -106,8 +296,46 @@
     "next": "Næsta",
     "thumbnailAria": "Mynd {{number}}",
     "thumbnailAlt": "Smámynd úr myndasafni",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "Myndasafn, notaðu örvatakkana til að fletta",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "Stækkuð mynd",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "Staðfesting á mætingu",
@@ -138,49 +366,638 @@
     "ageUnder14Warning": "Þú ert yngri en 14 ára. Þú þarft samþykki foreldra eða forráðamanna.",
     "parentalConsent": "Foreldrar mínir eða forráðamenn samþykkja þátttöku mína",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "Sláðu inn nafnið þitt til að staðfesta mætingu.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "Veldu valmyndarvalkost.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "Þú verður að samþykkja persónuverndarstefnuna.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "Sláðu inn fæðingardag þinn.",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "Þú ert yngri en 14 ára. ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "Þú verður að samþykkja vinnslu heilsufarsupplýsinga þinna.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "Tilgreindu að minnsta kosti einn valmynd.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "Sláðu inn nöfn félaga þinna.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "Þú getur ekki slegið inn fleiri nöfn en félaga.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "Summa valmyndavalkosta má ekki fara yfir fjölda félaga.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "Þakka þér, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "Þakka þér, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "Við gátum ekki vistað svarið þitt. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "Ertu viss um að þú viljir draga svarið þitt til baka?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "Svar þitt hefur verið dregið til baka.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "Gat ekki dregið svar þitt til baka. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "Eyða öllum mætingarsvörum? ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "Mætingarskrá hreinsuð.",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "Ekki tókst að hreinsa mætingarskrár.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "Félagar",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "Fólk",
+      "People",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountHint": [
+      "Hversu margir fyrir hvern valmöguleika ({{total}} samtals)",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "Nöfn gesta",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "Skrifaðu fornafn og eftirnafn hvers félaga (hámark {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "Nafn1 Eftirnafn1, Nafn2 Eftirnafn2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "Hleður boðskorti…",
     "notFoundTitle": "Boðskort fannst ekki",
     "notFoundText": "Við fundum ekkert boðskort með þessum hlekk. Ef þú telur að um villu sé að ræða, hafðu samband við gestgjafana.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Búðu til og deildu þínu persónulega brúðkaupsboðskorti.",
     "emptyDescription": "Stjórnaðu upplýsingum boðskortsins, deildu einstökum hlekk með gestunum og fáðu staðfestingar á mætingu.",
     "createLink": "Búa til boðskort",
     "privacyPolicy": "Persónuverndarstefna",
     "terms": "Skilmálar",
     "legalNotice": "Lagaleg tilkynning",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "Gat ekki fundið þennan stað.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "Ekki tókst að hlaða kortinu.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "Hnit: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "Forskoðun korta á tilgreindum stað.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "Staðsetning stillt",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "Hleður boðskorti",
@@ -308,28 +1125,427 @@
     "galleryUploadFailed": "Ekki tókst að hlaða upp myndunum.",
     "noValidFiles": "Engar gildar skrár. Hámark 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "Hladdu upp hljóðskrá til að spila á forsíðunni (MP3, WAV, OGG, M4A — hámark 5 MB).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "Hladdu upp hljóðskrá",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG eða M4A — hámark 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "Hljóðsnið ekki stutt. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "Hljóðskrá er tóm.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "Hljóðskrá fer yfir 5 MB hámarkið.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "Villa við að lesa hljóðskrá.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "Skráin er tóm. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "Myndlýsing...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "Hámark {{max}} myndir í myndasafninu.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "Hleður inn {{total}} mynd(um)...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "Hleður inn mynd...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "Skiptu um mynd",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "Villa við að vista lýsingu",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "Lýsing vistuð",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "Valin tónlist",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "Fjarlægja tónlist",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "Spilar...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "Forskoðun",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "Veldu",
+      "Select",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "selected": [
+      "Valið",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1569,66 @@
     "pdfTableCompanions": "Fylgdarmenn",
     "pdfTableDiet": "Mataræði",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Admin",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "Skoða boð",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "Skráðu þig út",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "Staðfest",
@@ -384,7 +1657,26 @@
     "confirms": "Staðfesta",
     "declines": "Afþakka",
     "pending": "Í bið",
-    "visits_one": "1 visit",
+    "visits_one": [
+      "1 heimsókn",
+      "1 visit",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +1709,66 @@
     "generateMessage": "Búa til önnur skilaboð",
     "copyMessage": "Afrita skilaboð",
     "shareVia": "Deila með",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "Telegram",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Prenta",
     "printPdf": "Prenta / Vista PDF",
     "linkCopied": "Hlekkur afritaður.",
@@ -448,7 +1797,26 @@
     "rightsHint": "Tölvupóstforritið þitt mun opnast með fyrirfram skilgreindu sniðmáti. Þú getur líka skrifað á adriancl2001@gmail.com.",
     "ccpaTitle": "CCPA / CPRA (Kalifornía)",
     "ccpaText": "Wedingo selur ekki persónuupplýsingar. Gögnin sem safnað er eru eingöngu notuð til að stjórna boðskortinu. Ef þú ert íbúi í Kaliforníu hefurðu rétt á að biðja um eyðingu gagna þinna og að vera ekki mismunað fyrir að nýta réttindi þín.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Vefforrit til að stjórna brúðkaupsboðskortum.",
     "copyright": "© {{year}} Adrián Carrasco López. Öll réttindi áskilin.",
     "deleteEmailSubject": "Beiðni um eyðingu gagna - Wedingo",
@@ -518,13 +1886,146 @@
     "deleteFailed": "Ekki tókst að eyða boðskortinu. Reyndu aftur.",
     "configLoadFailed": "Ekki tókst að hlaða stillingunni. Athugaðu tenginguna og reyndu aftur.",
     "invalidLink": "Boðskortshlekkurinn er ekki gildur.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "Upplýsingar um gistingu mega ekki vera meira en 2000 stafir.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "Valmyndarlýsing má ekki vera lengri en 2000 stafir.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "Ekki tókst að vinna úr myndinni. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "Gat ekki lesið myndskrána.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "Dulkóðun mynd mistókst.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "Myndin er of stór, jafnvel eftir þjöppun.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "Skráin er tóm. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -588,7 +2089,26 @@
     "tokenCleanError": "Ekki tókst að hreinsa tákn.",
     "tokenLoadError": "Ekki tókst að hlaða táknum.",
     "accountEmail": "Netfang: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Virk",
     "sessionInactive": "Óvirk",
     "sessionLabel": "Staðbundin seta: {{status}}",
@@ -615,10 +2135,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Tákn",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "Svara",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2194,46 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "Tölvupóstur",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "Lykilorð",
+      "Password",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "compliance": {
     "title": "Skrá yfir vinnsluaðgerðir (GDPR gr. 30)",
@@ -659,7 +2255,26 @@
     "row2Basis": "Samþykki (GDPR gr. 6.1.a, 9.2.a)",
     "row2Purpose": "Stjórna gestalista og matseðli",
     "row2Retention": "12 mánuðir eftir viðburð",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Upphleðsla mynda",
     "row3Data": "Brúðkaupsmyndir (dulkóðaðar AES-256-GCM)",
     "row3Basis": "Samþykki (GDPR gr. 6.1.a)",
@@ -677,7 +2292,26 @@
     "row5Basis": "Lagaleg skylda (GDPR gr. 6.1.c)",
     "row5Purpose": "Skráning stjórnunaraðgerða",
     "row5Retention": "3 ár",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Alþjóðlegir gagnaflutningar",
     "internationalText": "Gögn eru geymd á Google Cloud netþjónum á eur3 svæðinu (Frankfurt, Þýskaland). Google LLC (Bandaríkin) starfar sem gagnavinnsluaðili samkvæmt DPA í samræmi við GDPR gr. 28. Flutningar til Bandaríkjanna byggja á:",
     "scc": "Stöðluðum samningsskilmálum (SCC) - Framkvæmdarákvörðun 2021/914",
@@ -691,86 +2325,1359 @@
     "measureSuperadmin": "Yfirstjórnandi varinn af Firebase Authentication + falin slóð"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "Aðgengi",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Loka",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontSize": [
+      "Textastærð",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "Eðlilegt",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontLarge": [
+      "Stórt",
+      "Large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontExtraLarge": [
+      "Extra stór",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "Línubil",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "Eðlilegt",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineWide": [
+      "Breiður",
+      "Wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineVeryWide": [
+      "Mjög breiður",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "Mikil birtuskil",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "Draga úr hreyfingu",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "OpenDyslexic leturgerð",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "Meira stafabil",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "Undirstrikaðu alla tengla",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "Stór bendill",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "Grátóna",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "Sýnileg fókusvísar",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "Engin tónlist",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "Villa við hleðslu",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "Tónlist",
+      "Music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "soundCloudNote": [
+      "SoundCloud lag — opið til að spila",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "Opnaðu í SoundCloud",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "Undirbýr prentun...",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "Hjónamynd",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "Með blessun guðforeldra þeirra",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "Dagsetning og staður",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "Athöfn tími:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Skoðaðu staðsetningu í Google kortum",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "Við hlökkum til að deila þessari sérstöku stund með þér.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "Flutningur",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutGuests": [
+      "Um gestina",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "Brúðkaupsdagskrá",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "Ítarlegri dagskrá verður birt fljótlega.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "Klæðaburður",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "Verður tilkynnt síðar.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "Um börn",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "Sagan okkar",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "Hvernig þetta byrjaði allt saman",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "Sagan verður deilt fljótlega.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "Gjafir",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "Nærvera þín er besta gjöfin",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "Gjafaupplýsingum verður deilt fljótlega.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "Bankaupplýsingar",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "Gisting",
+      "Accommodation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "whereToStay": [
+      "Hvar á að gista",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "Upplýsingar um gistingu verður deilt fljótlega.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · Persónuverndarstefna á wedingo-6c26a.web.app",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "Lokaðu glugganum",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": [
+      "Færðu þig upp",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "Færðu þig niður",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "title": [
+      "Röð og sýnileiki",
+      "Order & visibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "help": [
+      "Dragðu til að endurraða, notaðu hnappana til að færa og kveiktu eða slökktu á hverjum hluta.",
+      "Drag to reorder, use the buttons to move, and toggle each section on or off.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "Veldu tungumál",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 félagi",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "Spánn",
+      "Spain",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "westernEurope": [
+      "Vestur-Evrópu",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "Norræn Evrópa",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "Mið-Evrópu",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "Suður-Evrópa / Balkanskaga",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "Austur-Evrópa / Kákasus",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "Austur-Asía",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "Suður-Asía",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "Suðaustur-Asíu",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "Mið-Asía / Mið-Austurlönd",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "Afríku",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "Ameríku",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +3694,1708 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": [
+      "Breytingaskrá",
+      "Changelog",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Loka",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "Nú þegar er virkur fundur fyrir þetta boð. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "Aðgangskóði er ekki gildur.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "Sláðu inn aðgangskóðann.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "Kóði staðfestur.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "Ekki tókst að staðfesta kóðann. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "Sláðu inn notandanafnið þitt og aðgangskóðann.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "Rangt notendanafn eða kóði.",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "Kóðinn passar ekki við þennan notanda.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "Þú hefur skráð þig inn.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "Ekki tókst að staðfesta kóðann. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "Sláðu inn CONFIRM til að búa til nýjan kóða.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "Sláðu inn notandanafn þitt fyrst.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "Notendanafn getur aðeins innihaldið bókstafi og tölustafi.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "Notandanafn má ekki vera meira en 50 stafir.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "Þessi notandi hefur ekki aðgangsheimild hér.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "Kóði myndaður. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "Gat ekki búið til kóðann. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "Sláðu inn núverandi aðgangskóða til að búa til nýjan.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "Nýr kóði búinn til. ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "Kóði endurnýjaður. ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "Þessi reikningur hefur ekki stjórnunarheimildir.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "Röng skilríki.",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "Of margar tilraunir. ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "Tölvupóstsniðið er ekki gilt.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "Villa við innskráningu. Athugaðu tenginguna þína.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": [
+      "Breytingar vistaðar",
+      "Changes saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": [
+      "janúar",
+      "January",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "2": [
+      "febrúar",
+      "February",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "3": [
+      "mars",
+      "March",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "4": [
+      "apríl",
+      "April",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "5": [
+      "maí",
+      "May",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "6": [
+      "júní",
+      "June",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "7": [
+      "júlí",
+      "July",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "8": [
+      "ágúst",
+      "August",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "9": [
+      "september",
+      "September",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "10": [
+      "október",
+      "October",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "11": [
+      "nóvember",
+      "November",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "12": [
+      "desember",
+      "December",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": [
+      "Létt þemu",
+      "Light themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dark": [
+      "Dökk þemu",
+      "Dark themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": [
+      "Glúten",
+      "Gluten",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lactose": [
+      "Laktósa",
+      "Lactose",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nuts": [
+      "Trjáhnetur",
+      "Tree nuts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "shellfish": [
+      "Skelfiskur",
+      "Shellfish",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "Til okkar kærustu",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "Bankaðu til að opna",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "Pikkaðu á til að halda áfram",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "Brúðkaupið okkar",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "Brúðkaup {{names}}",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "Staðsetning á eftir að staðfesta",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "Við hlökkum til að fagna þessari sérstöku stund með þér.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "Tími:",
+      "Time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeLabel": [
+      "Staður:",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "Glæsilegur og bjartur, með gylltum áherslum.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "Náttúrulegt og edrú með mjúku grænu.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "Hlý og fíngerð, með bleikum blæ.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "Létt og hlutlaust, með kyrrláta og tímalausa nærveru.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "Mjúkt og rómantískt, með perlubleikum tónum.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "Ferskt og kyrrlátt, með lavender og mauve litbrigðum.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "Björt og hátíðleg, með heitum gylltum glitrum.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "Dökk og glæsileg, með gulbrúnum og gylltum hápunktum.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "Djúpt og fágað, með sterku gulli á dökkum bakgrunni.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "Mjög dökkblár með ákafa gulli og hátíðlega nærveru.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "Hlýtt og umvefjandi, með rauðvíni og gylltum glitrunum.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "Djúpblár með silfurlitum og kyrrlátri nærveru.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "Djúpt náttúrulegt grænt með gylltum og glæsilegum litbrigðum.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "Ákafur fjólublár með bleikum og rómantískum ljóma.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "Hátíð fjölbreyttrar ástar með regnbogalitum.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "Blár, bleikur og hvítur til heiðurs transfánanum.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "Gulur, hvítur, fjólublár og svartur fyrir fána sem ekki er tvíundir.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "Appelsínugult, hvítt og bleikt af lesbískum fána.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "Bleikur, fjólublár og blár af bi fánanum.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "Bleikur, gulur og blár af pönnufánanum.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "Svartur, grár, hvítur og fjólublár af kynlausa fánanum.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "Verið velkomin með leiksvæði",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "Velkomin undir eftirliti",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "Aðeins fullorðnir",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "Engin gögn",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "alls",
+      "total",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "barChart": [
+      "Súlurit aðsókn",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

@@ -11,20 +11,172 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "Ko'rinadigan",
+      "Visible",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "Nimadir xato ketdi",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "32df64f7b2c6bf92105643e497202634",
+              "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "Qayta urinish uchun sahifani qayta yuklang.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "32df64f7b2c6bf92105643e497202634",
+              "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "Sahifani qayta yuklash",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "32df64f7b2c6bf92105643e497202634",
+              "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "Yopish",
+        "Close",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "32df64f7b2c6bf92105643e497202634",
+              "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "Asosiy tarkibga o'tish",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "Boshqaruv paneli",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "32df64f7b2c6bf92105643e497202634",
+              "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "Ma'muriyat",
+        "Administration",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "32df64f7b2c6bf92105643e497202634",
+              "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "landing": {
@@ -55,8 +207,46 @@
     "todayIsWedding": "Bugun to'y",
     "missing": "Qoldi",
     "todayIsTheDay": "Bugun katta kun!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": [
+      "Qopqoq",
+      "Cover",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eyebrow": [
+      "Bizning To'y",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "Sana va joy",
@@ -66,7 +256,26 @@
     "placePending": "Bayram joyi bu yerda ko'rsatiladi.",
     "welcomeWithTime": "Ushbu maxsus lahzani birga baham ko'rish uchun sizni kutamiz. Biz soat {{time}} da boshlaymiz. Quyida joylashuv xaritasini topasiz.",
     "welcomeWithoutTime": "Ushbu maxsus lahzani birga baham ko'rish uchun sizni kutamiz. Quyida joylashuv xaritasini topasiz.",
-    "transport": "Transport",
+    "transport": [
+      "Transport",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "addToCalendar": "Taqvimga qo'shish",
     "viewGoogleMaps": "Google Mapsda ko'rish",
     "viewAppleMaps": "Apple Mapsda ko'rish"
@@ -106,8 +315,46 @@
     "next": "Keyingi",
     "thumbnailAria": "Fotosurat {{number}}",
     "thumbnailAlt": "Galereya fotosuratining eskizi",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "Rasmlar galereyasi, harakat qilish uchun oʻq tugmalaridan foydalaning",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "Kattalashtirilgan rasm",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "Ishtirokni tasdiqlash",
@@ -121,7 +368,26 @@
     "menuLegend": "Menyu tanlovi *",
     "menuCarne": "Go'sht",
     "menuPescado": "Baliq",
-    "menuVegano": "Vegan/Vegetarian",
+    "menuVegano": [
+      "Vegan/vegetarian",
+      "Vegan/Vegetarian",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "postre": "Desert",
     "menuLabel": "Menyu",
     "allergiesLegend": "Allergiyalar va toqat qila olmaslik",
@@ -138,49 +404,638 @@
     "ageUnder14Warning": "Siz 14 yoshga to'lmagansiz. Ota-onangiz yoki vasiyingizning roziligi kerak.",
     "parentalConsent": "Ota-onam yoki vasiyim mening ishtirokimga rozilik beradi",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "Ishtirok etishni tasdiqlash uchun ismingizni kiriting.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "32df64f7b2c6bf92105643e497202634",
+              "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "Menyu variantini tanlang.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "32df64f7b2c6bf92105643e497202634",
+              "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "Maxfiylik siyosatini qabul qilishingiz kerak.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "32df64f7b2c6bf92105643e497202634",
+              "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "Tug'ilgan kuningizni kiriting.",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "32df64f7b2c6bf92105643e497202634",
+              "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "Siz 14 yoshdan kichiksiz. ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "32df64f7b2c6bf92105643e497202634",
+              "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "Sog'lig'ingiz haqidagi ma'lumotlarni qayta ishlashga rozilik berishingiz kerak.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "32df64f7b2c6bf92105643e497202634",
+              "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "Kamida bitta menyu variantini ko'rsating.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "32df64f7b2c6bf92105643e497202634",
+              "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "Hamrohlaringizning ismlarini kiriting.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "32df64f7b2c6bf92105643e497202634",
+              "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "Siz hamrohlardan ortiq nom kirita olmaysiz.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "32df64f7b2c6bf92105643e497202634",
+              "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "Menyu parametrlarining yig'indisi hamrohlar sonidan oshmasligi kerak.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "32df64f7b2c6bf92105643e497202634",
+              "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "Rahmat, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "Rahmat, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "Javobingizni saqlay olmadik. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "Haqiqatan ham javobingizni qaytarib olmoqchimisiz?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "Sizning javobingiz qaytarib olindi.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "Javobingizni qaytarib boʻlmadi. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "Davomat haqidagi barcha javoblar oʻchirilsinmi? ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "Davomat qaydnomalari tozalandi.",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "Davomat qaydlarini oʻchirib boʻlmadi.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "Hamrohlar",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "Odamlar",
+      "People",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountHint": [
+      "Har bir variant uchun nechta odam (jami {{total}})",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "Mehmon nomlari",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "Har bir hamrohning ismi va familiyasini yozing (maksimal {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "Ism1 Familiya1, Ism2 Familiya2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "Taklifnoma yuklanmoqda...",
     "notFoundTitle": "Taklifnoma topilmadi",
     "notFoundText": "Bu havola bilan taklifnoma topmadik. Xato deb hisoblasangiz, mezbonlar bilan bog'laning.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Shaxsiy to'y taklifnomasini yarating va ulashing.",
     "emptyDescription": "Taklifnoma ma'lumotlaringizni boshqaring, mehmonlaringiz bilan noyob havola ulashing va ularning ishtirok tasdiqlarini oling.",
     "createLink": "Taklifnoma yaratish",
     "privacyPolicy": "Maxfiylik siyosati",
     "terms": "Shartlar",
     "legalNotice": "Yuridik bildirishnoma",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "Bu joy topilmadi.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "Xaritani yuklab bo‘lmadi.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "Koordinatalar: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "Belgilangan joyda xaritani oldindan ko'rish.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "Joylashuv sozlangan",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "Taklifnoma yuklanmoqda",
@@ -263,7 +1118,26 @@
     "accommodationLabel": "Turar joy",
     "accommodationPlaceholder": "Masalan: Tavsiya etilgan mehmonxona: ... Chegirma kodi: ...",
     "accommodationHint": "Mehmonlar uchun mehmonxonalar, chegirma kodlari va variantlar.",
-    "transportLabel": "Transport",
+    "transportLabel": [
+      "Transport",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "transportPlaceholder": "Masalan: Bosh maydondan soat 17:00 da avtobus. Hududda bepul to'xtash joyi.",
     "transportHint": "Transport variantlari, avtobus jadvali, to'xtash joyi va hokazo.",
     "kidsLabel": "Bolalar haqida",
@@ -308,28 +1182,427 @@
     "galleryUploadFailed": "Fotosuratlarni yuklash imkoni bo'lmadi.",
     "noValidFiles": "Hech qanday yaroqli fayl yo'q. Ko'pi bilan 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "Muqovada ijro etish uchun audio faylni yuklang (MP3, WAV, OGG, M4A — maksimal 5 MB).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "Audio faylni yuklash",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG yoki M4A — maksimal 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "Audio format qo'llab-quvvatlanmaydi. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "Audio fayl bo'sh.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "Audio fayl 5 MB chegaradan oshib ketdi.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "Audio faylni oʻqishda xatolik yuz berdi.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "Fayl boʻsh. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "Rasm tavsifi...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "Galereyadagi maksimal {{max}} ta rasm.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "{{total}} ta surat yuklanmoqda...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "Surat yuklanmoqda...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "Suratni o'zgartirish",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "Tavsifni saqlashda xatolik yuz berdi",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "Tavsif saqlandi",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "Tanlangan musiqa",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "Musiqani olib tashlang",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "Oʻynalmoqda...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "Ko‘rib chiqish",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "Tanlang",
+      "Select",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "selected": [
+      "Tanlangan",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1626,66 @@
     "pdfTableCompanions": "Hamrohlar",
     "pdfTableDiet": "Parhez",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Admin",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "Taklifnomani ko'rish",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "Chiqish",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "Tasdiqlangan",
@@ -384,7 +1714,26 @@
     "confirms": "Tasdiqlaydi",
     "declines": "Rad etadi",
     "pending": "Kutilmoqda",
-    "visits_one": "1 visit",
+    "visits_one": [
+      "1 tashrif",
+      "1 visit",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +1766,53 @@
     "generateMessage": "Boshqa xabar yaratish",
     "copyMessage": "Xabarni nusxalash",
     "shareVia": "Ulashish orqali",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "Telegram",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      10
+    ],
     "print": "Chop etish",
     "printPdf": "Chop etish / PDF saqlash",
     "linkCopied": "Havola nusxalandi.",
@@ -448,7 +1841,26 @@
     "rightsHint": "Oldindan belgilangan shablon bilan elektron pochta mijozingiz ochiladi. Shuningdek, adriancl2001@gmail.com manziliga yozishingiz mumkin.",
     "ccpaTitle": "CCPA / CPRA (Kaliforniya)",
     "ccpaText": "Wedingo shaxsiy ma'lumotlarni sotmaydi. To'plangan ma'lumotlar faqat taklifnomani boshqarish uchun ishlatiladi. Agar Kaliforniya rezidenti bo'lsangiz, ma'lumotlaringizni o'chirishni so'rash va huquqlaringizdan foydalanganingiz uchun kamsitilmaslik huquqiga egasiz.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "To'y taklifnomalarini boshqarish uchun veb-ilova.",
     "copyright": "© {{year}} Adrián Carrasco López. Barcha huquqlar himoyalangan.",
     "deleteEmailSubject": "Ma'lumotlarni o'chirish so'rovi - Wedingo",
@@ -518,13 +1930,146 @@
     "deleteFailed": "Taklifnomani o'chirish imkoni bo'lmadi. Qayta urinib ko'ring.",
     "configLoadFailed": "Sozlamani yuklash imkoni bo'lmadi. Ulanishni tekshirib, qayta urinib ko'ring.",
     "invalidLink": "Taklifnoma havolasi noto'g'ri.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "Turar joy haqida ma'lumot 2000 belgidan oshmasligi kerak.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "Menyu tavsifi 2000 belgidan oshmasligi kerak.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "Rasmga ishlov berilmadi. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "Rasm faylini oʻqib boʻlmadi.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "Rasmni shifrlash amalga oshmadi.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "Siqilgandan keyin ham tasvir juda katta.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "Fayl boʻsh. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -535,7 +2080,26 @@
       "compliance": "Muvofiqlik",
       "data": "Datos"
     },
-    "superadmin": "Superadmin",
+    "superadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "controlPanel": "Boshqaruv paneli",
     "managePlatform": "Wedingo platformasini boshqaring",
     "dashboardLoading": "Statistikalar yuklanmoqda...",
@@ -561,7 +2125,26 @@
     "invitationsCount": "{{count}} ta taklifnoma · {{size}} band",
     "noResultsFilter": "Bu mezon bilan taklifnoma topilmadi.",
     "noInvitations": "Hali taklifnomalar yo'q.",
-    "tableToken": "Token",
+    "tableToken": [
+      "Token",
+      "Token",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "tableTheme": "Mavzu",
     "tableDate": "To'y sanasi",
     "tableActions": "Amallar",
@@ -587,15 +2170,91 @@
     "tokenRevokeError": "Tokenni bekor qilish imkoni bo'lmadi.",
     "tokenCleanError": "Tokenlarni tozalash imkoni bo'lmadi.",
     "tokenLoadError": "Tokenlarni yuklash imkoni bo'lmadi.",
-    "accountEmail": "Email: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountEmail": [
+      "Email: {{email}}",
+      "Email: {{email}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Faol",
     "sessionInactive": "Faol emas",
     "sessionLabel": "Mahalliy sessiya: {{status}}",
     "sessionType": "Turi: {{type}}",
-    "sessionTypeSuperadmin": "Superadmin",
+    "sessionTypeSuperadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionTypeSetup": "Sozlash",
-    "sessionTypeAdmin": "Admin",
+    "sessionTypeAdmin": [
+      "Admin",
+      "Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionExpires": "Tugaydi: {{date}}",
     "logoutButton": "Chiqish",
     "firebaseAccount": "Superadmin hisobingizni boshqarish uchun Firebase konsolidan foydalaning:",
@@ -615,10 +2274,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Token",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "32df64f7b2c6bf92105643e497202634",
+              "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "Javoblar",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "32df64f7b2c6bf92105643e497202634",
+              "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2333,46 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "Elektron pochta",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "Parol",
+      "Password",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "compliance": {
     "title": "Qayta ishlash faoliyati reyestri (GDPR 30-modda)",
@@ -653,13 +2388,51 @@
     "row1Basis": "Rozilik (GDPR 6.1.a-modda)",
     "row1Purpose": "To'y taklifnomasini yaratish va moslashtirish",
     "row1Retention": "Hisob faol bo'lganda",
-    "row1Recipients": "Google Cloud (Firestore, hosting)",
+    "row1Recipients": [
+      "Google Cloud (Firestore, hosting)",
+      "Google Cloud (Firestore, hosting)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row2Activity": "Ishtirokni tasdiqlash (RSVP)",
     "row2Data": "Mehmonning ismi, ishtirok (ha/yo'q), menyu tanlovi, allergiyalar, sog'liq ma'lumotlari",
     "row2Basis": "Rozilik (GDPR 6.1.a, 9.2.a-modda)",
     "row2Purpose": "Mehmonlar ro'yxati va menyuni boshqarish",
     "row2Retention": "Tadbordan keyin 12 oy",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Rasmlarni yuklash",
     "row3Data": "To'y fotosuratlari (AES-256-GCM shifrlangan)",
     "row3Basis": "Rozilik (GDPR 6.1.a-modda)",
@@ -677,7 +2450,26 @@
     "row5Basis": "Yuridik majburiyat (GDPR 6.1.c-modda)",
     "row5Purpose": "Ma'muriy faoliyatlar qaydi",
     "row5Retention": "3 yil",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Xalqaro uzatmalar",
     "internationalText": "Ma'lumotlar eur3 mintaqasidagi Google Cloud serverlarida saqlanadi (Frankfurt, Germaniya). Google LLC (AQSh) GDPR 28-moddasiga muvofiq DPA bo'yicha ma'lumotlarni qayta ishlovchi sifatida ishlaydi. AQShga uzatmalar quyidagilar bilan himoyalangan:",
     "scc": "Standart Shartnoma Qoidalari (SCC) - 2021/914 Ijro Qarori",
@@ -691,86 +2483,1359 @@
     "measureSuperadmin": "Firebase Authentication + yashirin marshrut bilan himoyalangan superadmin"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "Foydalanish imkoniyati",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Yopish",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontSize": [
+      "Matn hajmi",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "Oddiy",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontLarge": [
+      "Katta",
+      "Large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontExtraLarge": [
+      "Juda katta",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "Satr oralig'i",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "Oddiy",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineWide": [
+      "Keng",
+      "Wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineVeryWide": [
+      "Juda keng",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "Yuqori kontrast",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "Harakatni kamaytiring",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "OpenDyslexic shrift",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "Ko'proq harf oralig'i",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "Barcha havolalarning tagiga chizing",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "Katta kursor",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "Kulrang rang",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "Ko'rinadigan fokus ko'rsatkichlari",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "Musiqa yo'q",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "Yuklashda xato",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "Musiqa",
+      "Music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "soundCloudNote": [
+      "SoundCloud treki — ijro etish uchun ochiq",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "SoundCloud-da oching",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "Chop etish tayyorlanmoqda…",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "Juftlik surati",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "Ota-bobolarining duosi bilan",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "Sana va joy",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "Marosim vaqti:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Google Xaritalarda joylashuvni ko'ring",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "Ushbu ajoyib daqiqani siz bilan baham ko'rishni orziqib kutamiz.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "Transport",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutGuests": [
+      "Mehmonlar haqida",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "To'y jadvali",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "Batafsil jadval tez orada baham ko'riladi.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "Kiyinish kodi",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "Keyinroq xabar qilinadi.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "Bolalar haqida",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "Bizning hikoyamiz",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "Hammasi qanday boshlandi",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "Hikoya tez orada baham ko'riladi.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "Sovg'alar",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "Sizning borligingiz eng yaxshi sovg'adir",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "Tez orada sovg'a ma'lumotlari baham ko'riladi.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "Bank tafsilotlari",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "Turar joy",
+      "Accommodation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "whereToStay": [
+      "Qaerda qolish kerak",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "Turar joy haqidagi maʼlumotlar tez orada eʼlon qilinadi.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · Maxfiylik siyosati wedingo-6c26a.web.app",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "Oynani yoping",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": [
+      "Yuqoriga siljiting",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "Pastga siljiting",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "title": [
+      "Buyurtma va ko'rinish",
+      "Order & visibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "help": [
+      "Qayta tartiblash uchun sudrang, harakatlanish uchun tugmalardan foydalaning va har bir bo‘limni yoqing yoki o‘chiring.",
+      "Drag to reorder, use the buttons to move, and toggle each section on or off.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "Tilni tanlang",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 hamroh",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "Ispaniya",
+      "Spain",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "westernEurope": [
+      "G'arbiy Yevropa",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "Shimoliy Yevropa",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "Markaziy Yevropa",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "Janubiy Yevropa / Bolqon",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "Sharqiy Yevropa / Kavkaz",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "Sharqiy Osiyo",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "Janubiy Osiyo",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "Janubi-Sharqiy Osiyo",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "Markaziy Osiyo / Yaqin Sharq",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "Afrika",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "Amerika",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +3852,1695 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": [
+      "O'zgarishlar jurnali",
+      "Changelog",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Yopish",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "Bu taklifnoma uchun allaqachon faol seans mavjud. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "Kirish kodi yaroqsiz.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "Kirish kodini kiriting.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "Kod muvaffaqiyatli tasdiqlandi.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "Kodni tekshirib bo‘lmadi. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "Foydalanuvchi nomingiz va kirish kodini kiriting.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "Noto'g'ri foydalanuvchi nomi yoki kod.",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "Kod bu foydalanuvchiga mos kelmaydi.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "Siz muvaffaqiyatli tizimga kirdingiz.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "Kodni tekshirib bo‘lmadi. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "Yangi kod yaratish uchun CONFIRM ni kiriting.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "Avval foydalanuvchi nomingizni kiriting.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "Foydalanuvchi nomi faqat harflar va raqamlardan iborat bo'lishi mumkin.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "Foydalanuvchi nomi 50 ta belgidan oshmasligi kerak.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "Bu foydalanuvchi bu yerga kirish huquqiga ega emas.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "Kod yaratildi. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "Kodni yaratib bo‘lmadi. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "Yangisini yaratish uchun joriy kirish kodini kiriting.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "Yangi kod yaratildi. ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "Kod yangilandi. ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "Bu hisob boshqaruv ruxsatiga ega emas.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "Noto'g'ri hisob ma'lumotlari.",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "Juda koʻp urinishlar. ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "Elektron pochta formati yaroqsiz.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "Tizimga kirishda xatolik yuz berdi. Ulanishingizni tekshiring.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": [
+      "Oʻzgarishlar saqlandi",
+      "Changes saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": [
+      "Yanvar",
+      "January",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "2": [
+      "Fevral",
+      "February",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "3": [
+      "mart",
+      "March",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "4": [
+      "aprel",
+      "April",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "5": [
+      "may",
+      "May",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "6": [
+      "iyun",
+      "June",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "7": [
+      "iyul",
+      "July",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "8": [
+      "Avgust",
+      "August",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "9": [
+      "sentyabr",
+      "September",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "10": [
+      "oktyabr",
+      "October",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "11": [
+      "noyabr",
+      "November",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "12": [
+      "dekabr",
+      "December",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": [
+      "Engil mavzular",
+      "Light themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dark": [
+      "Qorong'i mavzular",
+      "Dark themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": [
+      "Oqsil",
+      "Gluten",
+      null,
+      null,
+      10
+    ],
+    "lactose": [
+      "Laktoza",
+      "Lactose",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nuts": [
+      "Daraxt yong'oqlari",
+      "Tree nuts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "shellfish": [
+      "Qisqichbaqasimonlar",
+      "Shellfish",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "Eng azizlarimizga",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "Ochish uchun bosing",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "Davom etish uchun bosing",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "Bizning to'yimiz",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "{{names}}ning to'yi",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "Joylashuv tasdiqlanishi kerak",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "Biz siz bilan ushbu maxsus daqiqani nishonlashni orziqib kutamiz.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "Vaqt:",
+      "Time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeLabel": [
+      "Joy:",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "Nafis va yorqin, oltin aksanlar bilan.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "Yumshoq ko'katlar bilan tabiiy va hushyor.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "Issiq va nozik, pushti ranglar bilan.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "Yengil va neytral, tinch va abadiy mavjudlik bilan.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "Yumshoq va romantik, marvarid pushti ohanglari bilan.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "Yangi va sokin, lavanta va binafsha ranglar bilan.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "Yorqin va bayramona, issiq oltin uchqunlar bilan.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "To'q rangli va nafis, qahrabo va oltin ranglar bilan ajralib turadi.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "Chuqur va murakkab, quyuq fonda qizg'in oltin bilan.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "Kuchli oltin va tantanali ishtirok bilan juda quyuq ko'k.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "Qizil sharob va oltin uchqunlar bilan issiq va zarfli.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "Kumush aksan va sokin mavjudligi bilan quyuq ko'k.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "Oltin va oqlangan ranglar bilan chuqur tabiiy yashil.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "Pushti va romantik uchqunlar bilan qizg'in binafsha rang.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "Kamalak ranglari bilan turli xil sevgi bayrami.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "Ko'k, pushti va oq ranglar trans bayrog'iga bag'ishlangan.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "Ikkilik bo'lmagan bayroq uchun sariq, oq, binafsha va qora.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "Lezbiyen bayrog'ining to'q sariq, oq va pushti.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "Bi bayroqning pushti, binafsha va ko'k ranglari.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "Pan bayrog'ining pushti, sariq va ko'k ranglari.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "Aseksual bayroqning qora, kulrang, oq va binafsha ranglari.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "O'yin maydoni bilan xush kelibsiz",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "32df64f7b2c6bf92105643e497202634",
+              "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "Nazorat ostida xush kelibsiz",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "32df64f7b2c6bf92105643e497202634",
+              "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "Faqat kattalar",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "32df64f7b2c6bf92105643e497202634",
+              "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "Maʼlumot yoʻq",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "jami",
+      "total",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "barChart": [
+      "Davomat shtrix diagrammasi",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

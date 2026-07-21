@@ -11,20 +11,172 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "Visible",
+      "Visible",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "Algo saíu mal",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "Volve cargar a páxina para tentalo de novo.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "Recargar a páxina",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "Pechar",
+        "Close",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "Ir ao contido principal",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "Barra de administración",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "Administración",
+        "Administration",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "landing": {
@@ -55,8 +207,46 @@
     "todayIsWedding": "Hoxe é a voda",
     "missing": "Faltan",
     "todayIsTheDay": "Hoxe é o gran día!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": [
+      "Cuberta",
+      "Cover",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eyebrow": [
+      "A Nosa Voda",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "Data e lugar",
@@ -106,8 +296,46 @@
     "next": "Seguinte",
     "thumbnailAria": "Foto {{number}}",
     "thumbnailAlt": "Miniatura de foto da galería",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "Galería de imaxes, usa as frechas para navegar",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "Imaxe ampliada",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "Confirmación de asistencia",
@@ -138,49 +366,638 @@
     "ageUnder14Warning": "Es menor de 14 anos. Necesitas o consentimento dos teus pais ou titores.",
     "parentalConsent": "Os meus pais ou titores consenten a miña participación",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "Introduce o teu nome para confirmar a asistencia.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "Seleccione unha opción de menú.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "Debes aceptar a Política de Privacidade.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "Introduza a súa data de nacemento.",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "Tes menos de 14 anos. ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "Debes consentir o tratamento dos teus datos de saúde.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "Indica polo menos unha opción do menú.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "Introduce os nomes dos teus compañeiros.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "Non podes introducir máis nomes que compañeiros.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "A suma das opcións do menú non pode exceder o número de acompañantes.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "Grazas, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "Grazas, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "Non puidemos gardar a túa resposta. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "Estás seguro de que queres retirar a túa resposta?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "A túa resposta foi retirada.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "Non se puido retirar a túa resposta. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "Queres eliminar todas as respostas de asistencia? ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "Libráronse as actas de asistencia.",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "Non se puideron borrar os rexistros de asistencia.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "Compañeiros",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "Persoas",
+      "People",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountHint": [
+      "Cantas persoas para cada opción ({{total}} en total)",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "Nomes de convidados",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "Escribe o nome e apelidos de cada acompañante (máx. {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "Nome1 Apelidos1, Nome2 Apelidos2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "Cargando invitación…",
     "notFoundTitle": "Invitación non atopada",
     "notFoundText": "Non atopamos unha invitación con esta ligazón. Se cres que é un erro, contacta cos anfitrións.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Crea e comparte a túa invitación de voda personalizada.",
     "emptyDescription": "Xestiona os datos da túa invitación, comparte unha ligazón única cos teus invitados e recibe as súas confirmacións de asistencia.",
     "createLink": "Crear invitación",
     "privacyPolicy": "Política de Privacidade",
     "terms": "Termos",
     "legalNotice": "Aviso Legal",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "Non se puido localizar este lugar.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "Non se puido cargar o mapa.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "Coordenadas: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "Vista previa do mapa no lugar indicado.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "Localización configurada",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "Cargando invitación",
@@ -308,28 +1125,427 @@
     "galleryUploadFailed": "Non se puideron subir as fotos.",
     "noValidFiles": "Ningún arquivo válido. Máximo 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "Carga un ficheiro de audio para reproducilo na portada (MP3, WAV, OGG, M4A — 5 MB como máximo).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "Cargar ficheiro de audio",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG ou M4A — máximo 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "O formato de audio non é compatible. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "O ficheiro de audio está baleiro.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "O ficheiro de audio supera o límite de 5 MB.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "Produciuse un erro ao ler o ficheiro de audio.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "O ficheiro está baleiro. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "Descrición da imaxe...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "Máximo {{max}} imaxes na galería.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "Cargando {{total}} foto(s)...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "Cargando foto...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "Cambiar foto",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "Produciuse un erro ao gardar a descrición",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "Gardouse a descrición",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "Música seleccionada",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "Eliminar música",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "Xogando...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "Vista previa",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "Seleccione",
+      "Select",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "selected": [
+      "Seleccionado",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1569,66 @@
     "pdfTableCompanions": "Acomps",
     "pdfTableDiet": "Dieta",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Admin",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "Ver invitación",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "Pechar sesión",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "Confirmados",
@@ -384,7 +1657,26 @@
     "confirms": "Confirman",
     "declines": "Declinan",
     "pending": "Pendentes",
-    "visits_one": "1 visit",
+    "visits_one": [
+      "1 visita",
+      "1 visit",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +1709,66 @@
     "generateMessage": "Xerar outra mensaxe",
     "copyMessage": "Copiar mensaxe",
     "shareVia": "Compartir por",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "Telegrama",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Imprimir",
     "printPdf": "Imprimir / Gardar PDF",
     "linkCopied": "Ligazón copiada.",
@@ -446,9 +1795,47 @@
     "deleteButton": "Solicitar borrado de datos",
     "exportButton": "Exportar os meus datos",
     "rightsHint": "Abrirase o teu cliente de correo cunha plantilla predefinida. Tamén podes escribir a adriancl2001@gmail.com.",
-    "ccpaTitle": "CCPA / CPRA (California)",
+    "ccpaTitle": [
+      "CCPA / CPRA (California)",
+      "CCPA / CPRA (California)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "ccpaText": "Wedingo non vende datos persoais. Os datos recollidos úsanse exclusivamente para a xestión da invitación. Se es residente en California, tes dereito a solicitar a eliminación dos teus datos e a non ser discriminado por exercer os teus dereitos.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Aplicación web para a xestión de invitacións de voda.",
     "copyright": "© {{year}} Adrián Carrasco López. Todos os dereitos reservados.",
     "deleteEmailSubject": "Solicitude de eliminación de datos - Wedingo",
@@ -518,24 +1905,195 @@
     "deleteFailed": "Non se puido eliminar a invitación. Inténtao de novo.",
     "configLoadFailed": "Non se puido cargar a configuración. Revisa a conexión e inténtao de novo.",
     "invalidLink": "A ligazón de invitación non é válida.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "A información do aloxamento non pode superar os 2000 caracteres.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "A descrición do menú non pode superar os 2000 caracteres.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "Non se puido procesar a imaxe. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "Non se puido ler o ficheiro de imaxe.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "Fallou o cifrado da imaxe.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "A imaxe é demasiado grande mesmo despois da compresión.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "O ficheiro está baleiro. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
       "dashboard": "Panel",
       "invitations": "Invitacións",
-      "tokens": "Tokens",
+      "tokens": [
+        "Fichas",
+        "Tokens",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "session": "Sesión",
       "compliance": "Cumprimento",
       "data": "Datos"
     },
-    "superadmin": "Superadmin",
+    "superadmin": [
+      "Superadministrador",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "controlPanel": "Panel de control",
     "managePlatform": "Xestiona a plataforma Wedingo",
     "dashboardLoading": "Cargando estatísticas...",
@@ -561,7 +2119,26 @@
     "invitationsCount": "{{count}} invitacións · {{size}} ocupados",
     "noResultsFilter": "Non se atoparon invitacións con ese criterio.",
     "noInvitations": "Non hai invitacións aínda.",
-    "tableToken": "Token",
+    "tableToken": [
+      "Token",
+      "Token",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "tableTheme": "Tema",
     "tableDate": "Data voda",
     "tableActions": "Accións",
@@ -587,15 +2164,110 @@
     "tokenRevokeError": "Non se puido revogar o token.",
     "tokenCleanError": "Non se puideron limpar os tokens.",
     "tokenLoadError": "Non se puideron cargar os tokens.",
-    "accountEmail": "Email: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountEmail": [
+      "Correo electrónico: {{email}}",
+      "Email: {{email}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Activa",
     "sessionInactive": "Inactiva",
     "sessionLabel": "Sesión local: {{status}}",
     "sessionType": "Tipo: {{type}}",
-    "sessionTypeSuperadmin": "Superadmin",
-    "sessionTypeSetup": "Setup",
-    "sessionTypeAdmin": "Admin",
+    "sessionTypeSuperadmin": [
+      "Superadministrador",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sessionTypeSetup": [
+      "Configuración",
+      "Setup",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sessionTypeAdmin": [
+      "Admin",
+      "Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionExpires": "Expira: {{date}}",
     "logoutButton": "Pechar sesión",
     "firebaseAccount": "Para xestionar a túa conta de superadmin, usa a consola de Firebase:",
@@ -615,10 +2287,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Token",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVP",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2346,46 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "Correo electrónico",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "Contrasinal",
+      "Password",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "compliance": {
     "title": "Rexistro de actividades de tratamento (Art. 30 GDPR)",
@@ -653,31 +2401,126 @@
     "row1Basis": "Consentimento (Art. 6.1.a GDPR)",
     "row1Purpose": "Crear e personalizar invitación de voda",
     "row1Retention": "Mentres a conta estea activa",
-    "row1Recipients": "Google Cloud (Firestore, hosting)",
+    "row1Recipients": [
+      "Google Cloud (Firestore, hospedaxe)",
+      "Google Cloud (Firestore, hosting)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row2Activity": "Confirmación de asistencia (RSVP)",
     "row2Data": "Nome do invitado, asistencia (si/non), selección de menú, alerxias, datos de saúde",
     "row2Basis": "Consentimento (Art. 6.1.a, 9.2.a GDPR)",
     "row2Purpose": "Xestionar lista de invitados e menú",
     "row2Retention": "12 meses tras o evento",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Subida de imaxes",
     "row3Data": "Fotos de voda (cifradas AES-256-GCM)",
     "row3Basis": "Consentimento (Art. 6.1.a GDPR)",
     "row3Purpose": "Galería de fotos na invitación",
     "row3Retention": "12 meses tras o evento",
-    "row3Recipients": "Google Cloud (Firestore subcollection)",
+    "row3Recipients": [
+      "Google Cloud (subcolección Firestore)",
+      "Google Cloud (Firestore subcollection)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row4Activity": "Autenticación e sesións",
     "row4Data": "Token de sesión, nome de usuario admin",
     "row4Basis": "Interese lexítimo (Art. 6.1.f GDPR)",
     "row4Purpose": "Controlar acceso ao panel de administración",
     "row4Retention": "Duración da sesión",
-    "row4Recipients": "Google Cloud (Firestore sessions)",
+    "row4Recipients": [
+      "Google Cloud (sesións de Firestore)",
+      "Google Cloud (Firestore sessions)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row5Activity": "Auditoría de superadmin",
     "row5Data": "Accións de superadmin, tokens usados, invitacións eliminadas",
     "row5Basis": "Obrigación legal (Art. 6.1.c GDPR)",
     "row5Purpose": "Rexistro de actividades administrativas",
     "row5Retention": "3 anos",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Transferencias internacionais",
     "internationalText": "Os datos almacénanse en servidores de Google Cloud na rexión eur3 (Frankfurt, Alemaña). Google LLC (EE.UU.) actúa como encargado do tratamento baixo DPA conforme ao Art. 28 GDPR. As transferencias a EE.UU. ampáranse en:",
     "scc": "Cláusulas Contractuais Tipo (SCC) - Decisión de Execución 2021/914",
@@ -691,86 +2534,1359 @@
     "measureSuperadmin": "Superadmin protexido por Firebase Authentication + ruta oculta"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "Accesibilidade",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Pechar",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontSize": [
+      "Tamaño do texto",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "Normal",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontLarge": [
+      "Grande",
+      "Large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontExtraLarge": [
+      "Extra grande",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "Espazo entre liñas",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "Normal",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineWide": [
+      "Amplo",
+      "Wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineVeryWide": [
+      "Moi ancho",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "Alto contraste",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "Reducir o movemento",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "Tipo de letra OpenDyslexic",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "Máis espazo entre letras",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "Subliña todas as ligazóns",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "Cursor grande",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "Escala de grises",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "Indicadores de foco visibles",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "Sen música",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "Erro ao cargar",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "Música",
+      "Music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "soundCloudNote": [
+      "Pista de SoundCloud: aberta para reproducir",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "Abrir en SoundCloud",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "Preparando impresión...",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "Foto de parella",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "Coa bendición dos seus padriños",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "Data e lugar",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "Hora da cerimonia:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Ver localización en Google Maps",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "Agardamos compartir este momento especial contigo.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "Transporte",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutGuests": [
+      "Sobre os invitados",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "Horario de vodas",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "A programación detallada compartirase en breve.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "Código de vestimenta",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "Comunicarase posteriormente.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "Sobre os nenos",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "A nosa historia",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "Como comezou todo",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "A historia compartirase en breve.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "Agasallos",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "A túa presenza é o mellor agasallo",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "A información sobre agasallos compartirase en breve.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "Datos bancarios",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "Aloxamento",
+      "Accommodation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "whereToStay": [
+      "Onde quedar",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "A información do aloxamento compartirase en breve.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · Política de privacidade en wedingo-6c26a.web.app",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "Pechar xanela",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": [
+      "Mover arriba",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "Mover cara abaixo",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "title": [
+      "Orde e visibilidade",
+      "Order & visibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "help": [
+      "Arrastra para reordenar, usa os botóns para mover e activa ou desactiva cada sección.",
+      "Drag to reorder, use the buttons to move, and toggle each section on or off.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "Seleccione o idioma",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 acompañante",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "España",
+      "Spain",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "westernEurope": [
+      "Europa occidental",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "Europa nórdica",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "Europa central",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "Sur de Europa / Balcáns",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "Europa Oriental / Cáucaso",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "Asia oriental",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "sur de Asia",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "sueste asiático",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "Asia Central / Oriente Medio",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "África",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "Américas",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +3903,1708 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": [
+      "Rexistro de cambios",
+      "Changelog",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Pechar",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "Xa hai unha sesión activa para esta invitación. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "O código de acceso non é válido.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "Introduza o código de acceso.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "Código verificado correctamente.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "Non se puido verificar o código. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "Introduza o seu nome de usuario e o código de acceso.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "Nome de usuario ou código incorrectos.",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "O código non coincide con este usuario.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "Iniciaches sesión correctamente.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "Non se puido verificar o código. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "Escribe CONFIRM para xerar un novo código.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "Introduce primeiro o teu nome de usuario.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "O nome de usuario só pode conter letras e números.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "O nome de usuario non pode superar os 50 caracteres.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "Este usuario non ten permiso para acceder aquí.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "Código xerado. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "Non se puido xerar o código. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "Introduza o código de acceso actual para xerar un novo.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "Novo código xerado. ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "Código renovado. ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "Esta conta non ten permisos de administración.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "Credenciais incorrectas.",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "Demasiados intentos. ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "O formato de correo electrónico non é válido.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "Produciuse un erro ao iniciar sesión. Comproba a túa conexión.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": [
+      "Cambios gardados",
+      "Changes saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": [
+      "xaneiro",
+      "January",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "2": [
+      "febreiro",
+      "February",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "3": [
+      "marzo",
+      "March",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "4": [
+      "abril",
+      "April",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "5": [
+      "maio",
+      "May",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "6": [
+      "Xuño",
+      "June",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "7": [
+      "xullo",
+      "July",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "8": [
+      "agosto",
+      "August",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "9": [
+      "setembro",
+      "September",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "10": [
+      "Outubro",
+      "October",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "11": [
+      "novembro",
+      "November",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "12": [
+      "decembro",
+      "December",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": [
+      "Temas lixeiros",
+      "Light themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dark": [
+      "Temas escuros",
+      "Dark themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": [
+      "Glute",
+      "Gluten",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lactose": [
+      "Lactosa",
+      "Lactose",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nuts": [
+      "Noces de árbore",
+      "Tree nuts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "shellfish": [
+      "Mariscos",
+      "Shellfish",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "Ao noso máis querido",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "Toca para abrir",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "Toca para continuar",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "A nosa voda",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "Voda de {{nomes}}",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "Localización por confirmar",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "Agardamos poder celebrar este momento especial contigo.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "Tempo:",
+      "Time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeLabel": [
+      "Lugar:",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "Elegante e brillante, con acentos dourados.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "Natural e sobrio con verdes suaves.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "Cálido e delicado, con tons rosados.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "Lixeiro e neutro, cunha presenza serena e atemporal.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "Suave e romántico, con tons rosa nacarado.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "Fresco e sereno, con tons lavanda e malva.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "Brillante e festivo, con cálidos escintileos dourados.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "Escuro e elegante, con reflejos ámbar e dourado.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "Profundo e sofisticado, con ouro intenso sobre fondo escuro.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "Azul moi escuro con ouro intenso e presenza solemne.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "Cálido e envolvente, con viño tinto e brillos dourados.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "Azul profundo con acentos prateados e presenza serena.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "Verde natural intenso con tons dourados e elegantes.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "Roxo intenso con brillos rosados ​​e románticos.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "Celebración do amor diverso con cores do arco da vella.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "Azul, rosa e branco en homenaxe á bandeira trans.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "Amarelo, branco, morado e negro para a bandeira non binaria.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "Laranxa, branca e rosa da bandeira lesbiana.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "Rosa, violeta e azul da bandeira bi.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "Rosa, amarelo e azul da bandeira da pan.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "Negro, gris, branco e roxo da bandeira asexual.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "Benvido con zona de xogos",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "Benvido baixo supervisión",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "Só adultos",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "36ab1f45365dc899debd4d40bafba100",
+              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "Sen datos",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "total",
+      "total",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "barChart": [
+      "Gráfico de barras de asistencia",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

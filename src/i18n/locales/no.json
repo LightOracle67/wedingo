@@ -11,20 +11,133 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "Synlig",
+      "Visible",
+      null,
+      null,
+      2
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "Noe gikk galt",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "Last inn siden på nytt for å prøve igjen.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "Last inn siden på nytt",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "Lukke",
+        "Close",
+        null,
+        null,
+        2
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "Gå til hovedinnhold",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "Administrasjonslinje",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "Administrasjon",
+        "Administration",
+        null,
+        null,
+        2
+      ]
     }
   },
   "landing": {
@@ -56,7 +169,26 @@
     "missing": "Mangler",
     "todayIsTheDay": "I dag er den store dagen!",
     "sectionLabel": "Forside",
-    "eyebrow": "Our Wedding"
+    "eyebrow": [
+      "Vårt bryllup",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "Dato og sted",
@@ -66,7 +198,13 @@
     "placePending": "Stedet for feiringen vises her.",
     "welcomeWithTime": "Vi gleder oss til å dele dette spesielle øyeblikket med deg. Vi begynner kl. {{time}}. Nedenfor finner du kartet.",
     "welcomeWithoutTime": "Vi gleder oss til å dele dette spesielle øyeblikket med deg. Nedenfor finner du kartet.",
-    "transport": "Transport",
+    "transport": [
+      "Transportere",
+      "Transport",
+      null,
+      null,
+      2
+    ],
     "addToCalendar": "Legg til i kalender",
     "viewGoogleMaps": "Se i Google Maps",
     "viewAppleMaps": "Se i Apple Maps"
@@ -106,8 +244,46 @@
     "next": "Neste",
     "thumbnailAria": "Bilde {{number}}",
     "thumbnailAlt": "Miniatyr av galleribilde",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "Bildegalleri, bruk piltastene for å navigere",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "Forstørret bilde",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "Tilbakemelding",
@@ -122,7 +298,13 @@
     "menuCarne": "Kjøtt",
     "menuPescado": "Fisk",
     "menuVegano": "Vegansk/Vegetarisk",
-    "postre": "Dessert",
+    "postre": [
+      "Dessert",
+      "Dessert",
+      null,
+      null,
+      2
+    ],
     "menuLabel": "Meny",
     "allergiesLegend": "Allergier og intoleranser",
     "allergiesPlaceholder": "Annen allergi (spesifiser)",
@@ -138,49 +320,625 @@
     "ageUnder14Warning": "Du er under 14 år. Du trenger samtykke fra foreldre eller foresatte.",
     "parentalConsent": "Mine foreldre eller foresatte samtykker til min deltakelse",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "Skriv inn navnet ditt for å bekrefte oppmøte.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "Velg et menyalternativ.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "Du må godta personvernreglene.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "Skriv inn fødselsdatoen din.",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "Du er under 14 år. ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "Du må samtykke til behandling av helseopplysningene dine.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "Angi minst ett menyalternativ.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "Skriv inn navnene på følgesvennene dine.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "Du kan ikke skrive inn flere navn enn ledsagere.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "Summen av menyalternativer kan ikke overstige antallet ledsagere.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "Takk, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "Takk, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "Vi kunne ikke lagre svaret ditt. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "Er du sikker på at du vil trekke tilbake svaret ditt?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "Svaret ditt er trukket tilbake.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "Kunne ikke trekke tilbake svaret ditt. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "Vil du slette alle fremmøtesvar? ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "Oppmøteposter slettet.",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "Kunne ikke slette oppmøteregistreringer.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "Ledsager",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "Mennesker",
+      "People",
+      null,
+      null,
+      2
+    ],
+    "headcountHint": [
+      "Hvor mange personer for hvert alternativ ({{total}} totalt)",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "Gjestenes navn",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "Skriv for- og etternavnet til hver følgesvenn (maks {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "Navn1 Etternavn1, Navn2 Etternavn2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "Laster invitasjon...",
     "notFoundTitle": "Invitasjon ikke funnet",
     "notFoundText": "Vi fant ingen invitasjon med denne lenken. Hvis du tror det er en feil, kontakt vertene.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Lag og del din personlige bryllupsinvitasjon.",
     "emptyDescription": "Administrer invitasjonsdataene dine, del en unik lenke med gjestene dine og motta deres tilbakemeldinger.",
     "createLink": "Lag invitasjon",
     "privacyPolicy": "Personvernerklæring",
     "terms": "Vilkår",
     "legalNotice": "Juridisk informasjon",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "Kunne ikke finne dette stedet.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "Kunne ikke laste kartet.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "Koordinater: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "Forhåndsvisning av kart på det angitte stedet.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "Plassering konfigurert",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "Laster invitasjon",
@@ -263,7 +1021,13 @@
     "accommodationLabel": "Overnatting",
     "accommodationPlaceholder": "Eksempel: Anbefalt hotell: … Rabattkode: …",
     "accommodationHint": "Hoteller, rabattkoder og alternativer for gjestene.",
-    "transportLabel": "Transport",
+    "transportLabel": [
+      "Transportere",
+      "Transport",
+      null,
+      null,
+      2
+    ],
     "transportPlaceholder": "Eksempel: Buss fra torget kl. 17:00. Gratis parkering på området.",
     "transportHint": "Transportalternativer, busstider, parkering osv.",
     "kidsLabel": "Om barn",
@@ -279,7 +1043,26 @@
     "menuPescadoPlaceholder": "Beskriv fiskemenyen...",
     "menuVeganoLabel": "Vegansk/vegetarisk meny",
     "menuVeganoPlaceholder": "Beskriv den veganske menyen...",
-    "postreLabel": "Dessert *",
+    "postreLabel": [
+      "Dessert*",
+      "Dessert *",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "postrePlaceholder": "Beskriv desserten",
     "menuRequiredText": "Obligatorisk: dessert og minst én hovedmeny.",
     "menuTextoPlaceholder": "Beskriv menyen: forrett, hovedrett, dessert...",
@@ -308,28 +1091,414 @@
     "galleryUploadFailed": "Kunne ikke laste opp bildene.",
     "noValidFiles": "Ingen gyldig fil. Maks 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "Last opp en lydfil for å spille av på coveret (MP3, WAV, OGG, M4A — maks 5 MB).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "Last opp lydfil",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG eller M4A — maks 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "Lydformat støttes ikke. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "Lydfilen er tom.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "Lydfilen overskrider grensen på 5 MB.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "Feil ved lesing av lydfil.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "Filen er tom. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "Bildebeskrivelse...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "Maksimalt {{max}} bilder i galleriet.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "Laster opp {{total}} bilde(r)...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "Laster opp bilde...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "Bytt bilde",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "Feil ved lagring av beskrivelse",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "Beskrivelse lagret",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "Utvalgt musikk",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "Fjern musikk",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "Spiller...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "Forhåndsvisning",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "Velge",
+      "Select",
+      null,
+      null,
+      2
+    ],
+    "selected": [
+      "Valgt",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1522,66 @@
     "pdfTableCompanions": "Ledsagere",
     "pdfTableDiet": "Kosthold",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Admin",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "Se invitasjonen",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "Logg ut",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "Bekreftet",
@@ -417,9 +1643,53 @@
     "generateMessage": "Generer ny melding",
     "copyMessage": "Kopier melding",
     "shareVia": "Del via",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "Telegram",
+      "Telegram",
+      null,
+      null,
+      2
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Skriv ut",
     "printPdf": "Skriv ut / Lagre PDF",
     "linkCopied": "Lenke kopiert.",
@@ -446,9 +1716,47 @@
     "deleteButton": "Be om sletting av data",
     "exportButton": "Eksporter mine data",
     "rightsHint": "Din e-postklient åpnes med en forhåndsdefinert mal. Du kan også skrive til adriancl2001@gmail.com.",
-    "ccpaTitle": "CCPA / CPRA (California)",
+    "ccpaTitle": [
+      "CCPA / CPRA (California)",
+      "CCPA / CPRA (California)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "ccpaText": "Wedingo selger ikke personopplysninger. Dataene som samles inn brukes utelukkende til administrasjon av invitasjonen. Hvis du er bosatt i California, har du rett til å be om sletting av dataene dine og til ikke å bli diskriminert for å utøve dine rettigheter.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Nettapplikasjon for administrasjon av bryllupsinvitasjoner.",
     "copyright": "© {{year}} Adrián Carrasco López. Alle rettigheter reservert.",
     "deleteEmailSubject": "Forespørsel om sletting av data - Wedingo",
@@ -518,24 +1826,214 @@
     "deleteFailed": "Kunne ikke slette invitasjonen. Prøv igjen.",
     "configLoadFailed": "Kunne ikke laste konfigurasjonen. Sjekk tilkoblingen og prøv igjen.",
     "invalidLink": "Invitasjonslenken er ugyldig.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "Overnattingsinformasjon kan ikke overstige 2000 tegn.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "Menybeskrivelsen kan ikke overstige 2000 tegn.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "Kunne ikke behandle bildet. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "Kunne ikke lese bildefilen.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "Bildekryptering mislyktes.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "Bildet er for stort selv etter komprimering.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "Filen er tom. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
-      "dashboard": "Dashboard",
+      "dashboard": [
+        "Dashbord",
+        "Dashboard",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "invitations": "Invitasjoner",
-      "tokens": "Tokens",
+      "tokens": [
+        "Tokens",
+        "Tokens",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "session": "Økt",
       "compliance": "Samsvar",
       "data": "Datos"
     },
-    "superadmin": "Superadmin",
+    "superadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "controlPanel": "Kontrollpanel",
     "managePlatform": "Administrer Wedingo-plattformen",
     "dashboardLoading": "Laster statistikk...",
@@ -561,7 +2059,26 @@
     "invitationsCount": "{{count}} invitasjoner · {{size}} opptatt",
     "noResultsFilter": "Ingen invitasjoner funnet med det kriteriet.",
     "noInvitations": "Ingen invitasjoner ennå.",
-    "tableToken": "Token",
+    "tableToken": [
+      "Token",
+      "Token",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "tableTheme": "Tema",
     "tableDate": "Bryllupsdato",
     "tableActions": "Handlinger",
@@ -588,14 +2105,90 @@
     "tokenCleanError": "Kunne ikke rydde tokens.",
     "tokenLoadError": "Kunne ikke laste tokens.",
     "accountEmail": "E-post: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Aktiv",
     "sessionInactive": "Inaktiv",
     "sessionLabel": "Lokal økt: {{status}}",
-    "sessionType": "Type: {{type}}",
-    "sessionTypeSuperadmin": "Superadmin",
+    "sessionType": [
+      "Type: {{type}}",
+      "Type: {{type}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sessionTypeSuperadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionTypeSetup": "Oppsett",
-    "sessionTypeAdmin": "Admin",
+    "sessionTypeAdmin": [
+      "Admin",
+      "Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionExpires": "Utløper: {{date}}",
     "logoutButton": "Logg ut",
     "firebaseAccount": "For å administrere superadmin-kontoen din, bruk Firebase-konsollen:",
@@ -615,10 +2208,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Token",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVPer",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2267,33 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "E-post",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "Passord",
+      "Password",
+      null,
+      null,
+      2
+    ]
   },
   "compliance": {
     "title": "Register over behandlingsaktiviteter (Art. 30 GDPR)",
@@ -653,31 +2309,126 @@
     "row1Basis": "Samtykke (Art. 6.1.a GDPR)",
     "row1Purpose": "Opprette og tilpasse bryllupsinvitasjon",
     "row1Retention": "Så lenge kontoen er aktiv",
-    "row1Recipients": "Google Cloud (Firestore, hosting)",
+    "row1Recipients": [
+      "Google Cloud (Firestore, hosting)",
+      "Google Cloud (Firestore, hosting)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row2Activity": "Tilbakemelding (RSVP)",
     "row2Data": "Gjestens navn, deltakelse (ja/nei), menyvalg, allergier, helsedata",
     "row2Basis": "Samtykke (Art. 6.1.a, 9.2.a GDPR)",
     "row2Purpose": "Administrere gjesteliste og meny",
     "row2Retention": "12 måneder etter arrangementet",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Bildeopplasting",
     "row3Data": "Bryllupsbilder (kryptert AES-256-GCM)",
     "row3Basis": "Samtykke (Art. 6.1.a GDPR)",
     "row3Purpose": "Bildegalleri i invitasjonen",
     "row3Retention": "12 måneder etter arrangementet",
-    "row3Recipients": "Google Cloud (Firestore subcollection)",
+    "row3Recipients": [
+      "Google Cloud (Firestore-undersamling)",
+      "Google Cloud (Firestore subcollection)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row4Activity": "Autentisering og økter",
     "row4Data": "Økt-token, admin brukernavn",
     "row4Basis": "Berettiget interesse (Art. 6.1.f GDPR)",
     "row4Purpose": "Kontrollere tilgang til administrasjonspanel",
     "row4Retention": "Øktens varighet",
-    "row4Recipients": "Google Cloud (Firestore sessions)",
+    "row4Recipients": [
+      "Google Cloud (Firestore-økter)",
+      "Google Cloud (Firestore sessions)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row5Activity": "Superadmin-revisjon",
     "row5Data": "Superadmin-handlinger, brukte tokens, slettede invitasjoner",
     "row5Basis": "Rettslig forpliktelse (Art. 6.1.c GDPR)",
     "row5Purpose": "Registrering av administrative aktiviteter",
     "row5Retention": "3 år",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Firestore revisjonslogg)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Internasjonale overføringer",
     "internationalText": "Data lagres på Google Cloud-servere i regionen eur3 (Frankfurt, Tyskland). Google LLC (USA) fungerer som databehandler under DPA i samsvar med Art. 28 GDPR. Overføringer til USA er dekket av:",
     "scc": "Standardkontraktsbestemmelser (SCC) - Gjennomføringsbeslutning 2021/914",
@@ -691,86 +2442,1217 @@
     "measureSuperadmin": "Superadmin beskyttet av Firebase Authentication + skjult rute"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "Tilgjengelighet",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Lukke",
+      "Close",
+      null,
+      null,
+      2
+    ],
+    "fontSize": [
+      "Tekststørrelse",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "Normal",
+      "Normal",
+      null,
+      null,
+      2
+    ],
+    "fontLarge": [
+      "Stor",
+      "Large",
+      null,
+      null,
+      2
+    ],
+    "fontExtraLarge": [
+      "Ekstra stor",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "Linjeavstand",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "Normal",
+      "Normal",
+      null,
+      null,
+      2
+    ],
+    "lineWide": [
+      "Bred",
+      "Wide",
+      null,
+      null,
+      2
+    ],
+    "lineVeryWide": [
+      "Veldig bred",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "Høy kontrast",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "Reduser bevegelse",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "OpenDyslexic font",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "Mer bokstavavstand",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "Understrek alle lenker",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "Stor markør",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "Gråtoner",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "Synlige fokusindikatorer",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "Ingen musikk",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "Feil ved innlasting",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "Musikk",
+      "Music",
+      null,
+      null,
+      2
+    ],
+    "soundCloudNote": [
+      "SoundCloud-spor — åpen for å spille av",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "Åpne i SoundCloud",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "Forbereder utskrift …",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "Parbilde",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "Med fadderes velsignelse",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "Dato og sted",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "Seremoni tid:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Se plassering i Google Maps",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "Vi ser frem til å dele dette spesielle øyeblikket med deg.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "Transportere",
+      "Transport",
+      null,
+      null,
+      2
+    ],
+    "aboutGuests": [
+      "Om gjestene",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "Bryllupsplan",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "Den detaljerte timeplanen vil bli delt snart.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "Kleskode",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "Vil bli kommunisert senere.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "Om barn",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "Vår historie",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "Hvordan det hele begynte",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "Historien deles snart.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "Gaver",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "Din tilstedeværelse er den beste gaven",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "Gaveinformasjon deles snart.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "Bankdetaljer",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "Overnatting",
+      "Accommodation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "whereToStay": [
+      "Hvor du skal bo",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "Informasjon om overnatting vil bli delt snart.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · Personvernerklæring på wedingo-6c26a.web.app",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "Lukk vinduet",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
+    "moveUp": [
+      "Flytt opp",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "Flytt ned",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "title": "Rekkefølge & synlighet",
     "help": "Dra for å omorganisere, bruk knappene til å flytte og slå hver seksjon av eller på."
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "Velg språk",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 ledsager",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "Spania",
+      "Spain",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "westernEurope": [
+      "Vest-Europa",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "Nordisk Europa",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "Sentral-Europa",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "Sør-Europa / Balkan",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "Øst-Europa / Kaukasus",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "Øst-Asia",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "Sør-Asia",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "Sørøst-Asia",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "Sentral-Asia / Midtøsten",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "Afrika",
+      "Africa",
+      null,
+      null,
+      2
+    ],
+    "americas": [
+      "Amerika",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -791,31 +3673,506 @@
     "close": "Lukk"
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "Det er allerede en aktiv økt for denne invitasjonen. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "Tilgangskoden er ikke gyldig.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "Skriv inn tilgangskoden.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "Koden er bekreftet.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "Kunne ikke bekrefte koden. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "Skriv inn brukernavnet ditt og tilgangskoden.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "Feil brukernavn eller kode.",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "Koden samsvarer ikke med denne brukeren.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "Du har logget på.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "Kunne ikke bekrefte koden. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "Skriv CONFIRM for å generere en ny kode.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "Skriv inn brukernavnet ditt først.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "Brukernavn kan bare inneholde bokstaver og tall.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "Brukernavnet kan ikke overstige 50 tegn.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "Denne brukeren har ikke tilgang her.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "Kode generert. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "Kunne ikke generere koden. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "Skriv inn gjeldende tilgangskode for å generere en ny.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "Ny kode generert. ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "Koden fornyet. ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "Denne kontoen har ikke administrasjonstillatelser.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "Feil legitimasjon.",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "For mange forsøk. ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "E-postformatet er ikke gyldig.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "Feil ved pålogging. Sjekk tilkoblingen.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
     "saved": "Endringer lagret"
@@ -824,75 +4181,814 @@
     "1": "Januar",
     "2": "Februar",
     "3": "Mars",
-    "4": "April",
+    "4": [
+      "april",
+      "April",
+      null,
+      null,
+      2
+    ],
     "5": "Mai",
     "6": "Juni",
     "7": "Juli",
-    "8": "August",
-    "9": "September",
+    "8": [
+      "august",
+      "August",
+      null,
+      null,
+      2
+    ],
+    "9": [
+      "september",
+      "September",
+      null,
+      null,
+      2
+    ],
     "10": "Oktober",
-    "11": "November",
+    "11": [
+      "november",
+      "November",
+      null,
+      null,
+      2
+    ],
     "12": "Desember"
   },
   "themeGroups": {
     "light": "Lyse temaer",
     "dark": "Mørke temaer",
-    "lgbtiq": "LGTBIQ+"
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
+    "gluten": [
+      "Gluten",
+      "Gluten",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "lactose": "Laktose",
     "nuts": "Nøtter",
     "shellfish": "Skalldyr"
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "Til våre kjære",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "Trykk for å åpne",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "Trykk for å fortsette",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "Bryllupet vårt",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "Bryllup til {{names}}",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "Plassering skal bekreftes",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "Vi ser frem til å feire dette spesielle øyeblikket med deg.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "Tid:",
+      "Time:",
+      null,
+      null,
+      2
+    ],
+    "placeLabel": [
+      "Sted:",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "Elegant og lyst, med gylne aksenter.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "Naturlig og sober med myke grønnsaker.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "Varm og delikat, med rosa nyanser.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "Lett og nøytralt, med en rolig og tidløs tilstedeværelse.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "Myk og romantisk, med perlerosa toner.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "Frisk og rolig, med lavendel og lilla fargetoner.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "Lyst og festlig, med varme gylne gnister.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "Mørk og elegant, med rav og gull-høydepunkter.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "Dyp og sofistikert, med intenst gull på mørk bakgrunn.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "Veldig mørkeblått med intenst gull og høytidelig tilstedeværelse.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "Varm og omsluttende, med rødvin og gyldent gnister.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "Dyp blå med sølvaksenter og rolig tilstedeværelse.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "Dyp naturlig grønn med gylne og elegante nyanser.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "Intens lilla med rosa og romantiske glitrer.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "Feiring av mangfoldig kjærlighet med regnbuefarger.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "Blått, rosa og hvitt som hyllest til transflagget.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "Gul, hvit, lilla og svart for det ikke-binære flagget.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "Oransje, hvitt og rosa av det lesbiske flagget.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "Rosa, lilla og blått av bi-flagget.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "Rosa, gult og blått av panflagget.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "Svart, grått, hvitt og lilla i det aseksuelle flagget.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "Velkommen med lekeplass",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "Velkommen under oppsyn",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "Kun voksne",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "Ingen data",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "total",
+      "total",
+      null,
+      null,
+      2
+    ],
+    "barChart": [
+      "Oppmøte søylediagram",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

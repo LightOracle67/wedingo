@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.15.7",
+    date: "2026-07-21",
+    changes: [
+      "Traducciones completadas: 82/82 idiomas traducidos nativamente vía Google Translate",
+      "Keys deprecadas eliminadas de todos los idiomas",
+    ],
+  },
+  {
     version: "2.15.6",
     date: "2026-07-20",
     changes: [

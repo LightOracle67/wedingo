@@ -11,20 +11,172 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "தெரியும்",
+      "Visible",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "ஏதோ தவறாகிவிட்டது",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "மீண்டும் முயற்சிக்க பக்கத்தை மீண்டும் ஏற்றவும்.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "பக்கத்தை மீண்டும் ஏற்றவும்",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "மூடு",
+        "Close",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "முக்கிய உள்ளடக்கத்திற்கு செல்க",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "நிர்வாகப் பட்டி",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "நிர்வாகம்",
+        "Administration",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "landing": {
@@ -55,8 +207,46 @@
     "todayIsWedding": "இன்று திருமணம்",
     "missing": "மீதமுள்ளது",
     "todayIsTheDay": "இன்றுதான் பெரிய நாள்!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": [
+      "கவர்",
+      "Cover",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eyebrow": [
+      "எங்கள் திருமணம்",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "தேதி மற்றும் இடம்",
@@ -106,8 +296,46 @@
     "next": "அடுத்த",
     "thumbnailAria": "புகைப்படம் {{number}}",
     "thumbnailAlt": "காட்சியக புகைப்பட சிறுபடம்",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "படத்தொகுப்பு, வழிசெலுத்த அம்புக்குறி விசைகளைப் பயன்படுத்தவும்",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "பெரிதாக்கப்பட்ட படம்",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "வருகை உறுதிப்படுத்தல்",
@@ -138,49 +366,638 @@
     "ageUnder14Warning": "உங்களுக்கு 14 வயதுக்குக் குறைவு. உங்கள் பெற்றோர் அல்லது பாதுகாவலரின் ஒப்புதல் தேவை.",
     "parentalConsent": "எனது பெற்றோர் அல்லது பாதுகாவலர் எனது பங்கேற்பை ஒப்புக்கொள்கிறார்கள்",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "வருகையை உறுதிப்படுத்த உங்கள் பெயரை உள்ளிடவும்.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "மெனு விருப்பத்தைத் தேர்ந்தெடுக்கவும்.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "நீங்கள் தனியுரிமைக் கொள்கையை ஏற்க வேண்டும்.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "உங்கள் பிறந்த தேதியை உள்ளிடவும்.",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "நீங்கள் 14 வயதுக்கு உட்பட்டவர். ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "உங்கள் சுகாதாரத் தரவைச் செயலாக்குவதற்கு நீங்கள் சம்மதிக்க வேண்டும்.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "குறைந்தது ஒரு மெனு விருப்பத்தைக் குறிப்பிடவும்.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "உங்கள் தோழர்களின் பெயர்களை உள்ளிடவும்.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "கூட்டாளிகளை விட அதிகமான பெயர்களை நீங்கள் உள்ளிட முடியாது.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "மெனு விருப்பங்களின் கூட்டுத்தொகை கூட்டாளிகளின் எண்ணிக்கையை விட அதிகமாக இருக்கக்கூடாது.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "நன்றி, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "நன்றி, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "உங்கள் பதிலைச் சேமிக்க முடியவில்லை. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "உங்கள் பதிலைத் திரும்பப் பெற விரும்புகிறீர்களா?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "உங்கள் பதில் திரும்பப் பெறப்பட்டது.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "உங்கள் பதிலை திரும்பப் பெற முடியவில்லை. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "அனைத்து வருகைப் பதில்களையும் நீக்கவா? ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "வருகைப் பதிவுகள் அழிக்கப்பட்டன.",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "வருகைப் பதிவேடுகளை அழிக்க முடியவில்லை.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "தோழர்கள்",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "மக்கள்",
+      "People",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountHint": [
+      "ஒவ்வொரு விருப்பத்திற்கும் எத்தனை பேர் (மொத்தம் {{total}})",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "விருந்தினர் பெயர்கள்",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "ஒவ்வொரு துணையின் முதல் மற்றும் கடைசி பெயரை எழுதவும் (அதிகபட்சம் {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "பெயர்1 குடும்பப்பெயர்1, பெயர்2 குடும்பப்பெயர்2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "அழைப்பிதழை ஏற்றுகிறது...",
     "notFoundTitle": "அழைப்பிதழ் கிடைக்கவில்லை",
     "notFoundText": "இந்த இணைப்புடன் எந்த அழைப்பிதழும் கிடைக்கவில்லை. இது தவறு என நினைத்தால், புரவலர்களைத் தொடர்புகொள்ளவும்.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "வேடிங்கோ",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "உங்கள் தனிப்பட்ட திருமண அழைப்பிதழை உருவாக்கி பகிரவும்.",
     "emptyDescription": "உங்கள் அழைப்பிதழின் தரவை நிர்வகிக்கவும், விருந்தினர்களுடன் தனித்துவமான இணைப்பை பகிரவும், அவர்களின் வருகை உறுதிப்படுத்தலைப் பெறவும்.",
     "createLink": "அழைப்பிதழை உருவாக்கவும்",
     "privacyPolicy": "தனியுரிமைக் கொள்கை",
     "terms": "விதிமுறைகள்",
     "legalNotice": "சட்ட அறிவிப்பு",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "இந்த இடத்தைக் கண்டுபிடிக்க முடியவில்லை.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "வரைபடத்தை ஏற்ற முடியவில்லை.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "ஒருங்கிணைப்புகள்: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "சுட்டிக்காட்டப்பட்ட இடத்தில் வரைபட முன்னோட்டம்.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "இருப்பிடம் கட்டமைக்கப்பட்டது",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "அழைப்பிதழை ஏற்றுகிறது",
@@ -308,28 +1125,427 @@
     "galleryUploadFailed": "புகைப்படங்களைப் பதிவேற்ற முடியவில்லை.",
     "noValidFiles": "செல்லுபடியான கோப்பு இல்லை. அதிகபட்சம் 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "அட்டையில் இயக்க ஆடியோ கோப்பை பதிவேற்றவும் (MP3, WAV, OGG, M4A — அதிகபட்சம் 5 MB).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "ஆடியோ கோப்பை பதிவேற்றவும்",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG அல்லது M4A - அதிகபட்சம் 5 எம்பி",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "ஆடியோ வடிவம் ஆதரிக்கப்படவில்லை. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "ஆடியோ கோப்பு காலியாக உள்ளது.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "ஆடியோ கோப்பு 5 எம்பி வரம்பை மீறுகிறது.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "ஆடியோ கோப்பைப் படிப்பதில் பிழை.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "கோப்பு காலியாக உள்ளது. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "பட விளக்கம்...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "கேலரியில் அதிகபட்சம் {{max}} படங்கள்.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "{{total}} புகைப்படம்(களை) பதிவேற்றுகிறது...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "புகைப்படத்தைப் பதிவேற்றுகிறது...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "புகைப்படத்தை மாற்றவும்",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "விளக்கத்தைச் சேமிப்பதில் பிழை",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "விளக்கம் சேமிக்கப்பட்டது",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "தேர்ந்தெடுக்கப்பட்ட இசை",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "இசையை அகற்று",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "விளையாடுகிறது...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "முன்னோட்டம்",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "தேர்ந்தெடு",
+      "Select",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "selected": [
+      "தேர்ந்தெடுக்கப்பட்டது",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1569,66 @@
     "pdfTableCompanions": "துணையாளர்கள்",
     "pdfTableDiet": "உணவு",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · நிர்வாகம்",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "அழைப்பிதழைப் பார்க்கவும்",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "வெளியேறு",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "உறுதிப்படுத்தப்பட்டது",
@@ -384,7 +1657,26 @@
     "confirms": "உறுதிப்படுத்துகின்றனர்",
     "declines": "நிராகரிக்கின்றனர்",
     "pending": "நிலுவையில்",
-    "visits_one": "1 visit",
+    "visits_one": [
+      "1 வருகை",
+      "1 visit",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +1709,66 @@
     "generateMessage": "மற்றொரு செய்தியை உருவாக்கவும்",
     "copyMessage": "செய்தியை நகலெடு",
     "shareVia": "இதன் மூலம் பகிரவும்",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "வாட்ஸ்அப்",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "தந்தி",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "எஸ்எம்எஸ்",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "அச்சிடு",
     "printPdf": "அச்சிடு / PDF சேமி",
     "linkCopied": "இணைப்பு நகலெடுக்கப்பட்டது.",
@@ -448,7 +1797,26 @@
     "rightsHint": "உங்கள் மின்னஞ்சல் கிளையன்ட் முன் வரையறுக்கப்பட்ட டெம்ப்ளேட்டுடன் திறக்கப்படும். நீங்கள் adriancl2001@gmail.com க்கும் எழுதலாம்.",
     "ccpaTitle": "CCPA / CPRA (கலிபோர்னியா)",
     "ccpaText": "Wedingo தனிப்பட்ட தரவை விற்காது. சேகரிக்கப்பட்ட தரவு அழைப்பிதழ் நிர்வாகத்திற்கு மட்டுமே பயன்படுத்தப்படுகிறது. நீங்கள் கலிபோர்னியாவில் வசிப்பவராக இருந்தால், உங்கள் தரவை நீக்கக் கோருவதற்கும் உங்கள் உரிமைகளைப் பயன்படுத்துவதில் பாகுபாடு காட்டப்படாமல் இருப்பதற்கும் உங்களுக்கு உரிமை உள்ளது.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "வேடிங்கோ",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "திருமண அழைப்பிதழ்களை நிர்வகிப்பதற்கான வலை பயன்பாடு.",
     "copyright": "© {{year}} Adrián Carrasco López. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.",
     "deleteEmailSubject": "தரவு நீக்கல் கோரிக்கை - Wedingo",
@@ -518,13 +1886,146 @@
     "deleteFailed": "அழைப்பிதழை நீக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்.",
     "configLoadFailed": "கட்டமைப்பை ஏற்ற முடியவில்லை. இணைப்பைச் சரிபார்த்து மீண்டும் முயற்சிக்கவும்.",
     "invalidLink": "அழைப்பிதழ் இணைப்பு செல்லுபடியாகாது.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "தங்குமிடத் தகவல் 2000 எழுத்துகளுக்கு மேல் இருக்கக்கூடாது.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "மெனு விளக்கம் 2000 எழுத்துகளுக்கு மேல் இருக்கக்கூடாது.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "படத்தைச் செயல்படுத்த முடியவில்லை. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "படக் கோப்பைப் படிக்க முடியவில்லை.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "பட குறியாக்கம் தோல்வியடைந்தது.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "சுருக்கத்திற்குப் பிறகும் படம் பெரிதாக உள்ளது.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "கோப்பு காலியாக உள்ளது. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -588,7 +2089,26 @@
     "tokenCleanError": "டோக்கன்களை சுத்தம் செய்ய முடியவில்லை.",
     "tokenLoadError": "டோக்கன்களை ஏற்ற முடியவில்லை.",
     "accountEmail": "மின்னஞ்சல்: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "செயலில்",
     "sessionInactive": "செயலற்றது",
     "sessionLabel": "உள்ளூர் அமர்வு: {{status}}",
@@ -615,10 +2135,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "டோக்கன்",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVPகள்",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2194,46 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "மின்னஞ்சல்",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "கடவுச்சொல்",
+      "Password",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "compliance": {
     "title": "செயலாக்க நடவடிக்கைகளின் பதிவு (GDPR கலை. 30)",
@@ -659,7 +2255,26 @@
     "row2Basis": "ஒப்புதல் (GDPR கலை. 6.1.a, 9.2.a)",
     "row2Purpose": "விருந்தினர் பட்டியல் மற்றும் உணவுப் பட்டியலை நிர்வகித்தல்",
     "row2Retention": "நிகழ்வுக்குப் பிறகு 12 மாதங்கள்",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "கூகுள் கிளவுட் (ஃபயர்ஸ்டோர்)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "பட பதிவேற்றம்",
     "row3Data": "திருமண புகைப்படங்கள் (AES-256-GCM மறைகுறியாக்கப்பட்டவை)",
     "row3Basis": "ஒப்புதல் (GDPR கலை. 6.1.a)",
@@ -677,7 +2292,26 @@
     "row5Basis": "சட்டக் கடமை (GDPR கலை. 6.1.c)",
     "row5Purpose": "நிர்வாக நடவடிக்கைகளின் பதிவு",
     "row5Retention": "3 ஆண்டுகள்",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "கூகுள் கிளவுட் (ஃபயர்ஸ்டோர் தணிக்கைப் பதிவு)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "சர்வதேச பரிமாற்றங்கள்",
     "internationalText": "தரவு Google Cloud சேவையகங்களில் eur3 பகுதியில் (ஃபிராங்க்ஃபர்ட், ஜெர்மனி) சேமிக்கப்படுகிறது. Google LLC (USA) GDPR கலை. 28 இன் படி DPA இன் கீழ் தரவு செயலியாகச் செயல்படுகிறது. USA வுக்கான பரிமாற்றங்கள் பின்வருவனவற்றின் கீழ் பாதுகாக்கப்படுகின்றன:",
     "scc": "நிலையான ஒப்பந்த விதிகள் (SCC) - செயல்படுத்தும் முடிவு 2021/914",
@@ -691,86 +2325,1359 @@
     "measureSuperadmin": "Firebase Authentication + மறைக்கப்பட்ட பாதையால் பாதுகாக்கப்பட்ட சூப்பர் அட்மின்"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "அணுகல்",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "மூடு",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontSize": [
+      "உரை அளவு",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "இயல்பானது",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontLarge": [
+      "பெரியது",
+      "Large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontExtraLarge": [
+      "கூடுதல் பெரியது",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "வரி இடைவெளி",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "இயல்பானது",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineWide": [
+      "பரந்த",
+      "Wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineVeryWide": [
+      "மிகவும் அகலமானது",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "உயர் மாறுபாடு",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "இயக்கத்தைக் குறைக்கவும்",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "OpenDyslexic எழுத்துரு",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "அதிக எழுத்து இடைவெளி",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "அனைத்து இணைப்புகளையும் அடிக்கோடிட்டுக் காட்டவும்",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "பெரிய கர்சர்",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "கிரேஸ்கேல்",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "காணக்கூடிய கவனம் குறிகாட்டிகள்",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "இசை இல்லை",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "ஏற்றுவதில் பிழை",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "இசை",
+      "Music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "soundCloudNote": [
+      "சவுண்ட்க்ளூட் டிராக் — விளையாடுவதற்குத் திறந்திருக்கும்",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "SoundCloud இல் திறக்கவும்",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "அச்சு தயாராகிறது…",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "ஜோடி புகைப்படம்",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "அவர்களின் தாய் தந்தையரின் ஆசியுடன்",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "தேதி மற்றும் இடம்",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "விழா நேரம்:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Google வரைபடத்தில் இருப்பிடத்தைப் பார்க்கவும்",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "இந்த சிறப்பு தருணத்தை உங்களுடன் பகிர்ந்து கொள்ள ஆவலுடன் காத்திருக்கிறோம்.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "போக்குவரத்து",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutGuests": [
+      "விருந்தினர்களைப் பற்றி",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "திருமண அட்டவணை",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "விரிவான அட்டவணை விரைவில் பகிரப்படும்.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "ஆடை குறியீடு",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "பின்னர் தெரிவிக்கப்படும்.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "குழந்தைகள் பற்றி",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "எங்கள் கதை",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "இது எல்லாம் எப்படி தொடங்கியது",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "கதை விரைவில் பகிரப்படும்.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "பரிசுகள்",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "உங்கள் இருப்பே சிறந்த பரிசு",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "பரிசுத் தகவல் விரைவில் பகிரப்படும்.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "வங்கி விவரங்கள்",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "தங்குமிடம்",
+      "Accommodation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "whereToStay": [
+      "எங்கே தங்குவது",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "தங்குமிடம் பற்றிய தகவல்கள் விரைவில் பகிரப்படும்.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · wedingo-6c26a.web.app இல் தனியுரிமைக் கொள்கை",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "சாளரத்தை மூடு",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": [
+      "மேலே செல்லவும்",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "கீழே நகர்த்தவும்",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "title": [
+      "ஒழுங்கு & தெரிவுநிலை",
+      "Order & visibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "help": [
+      "மறுவரிசைப்படுத்த இழுக்கவும், நகர்த்த பொத்தான்களைப் பயன்படுத்தவும் மற்றும் ஒவ்வொரு பகுதியையும் ஆன் அல்லது ஆஃப் செய்யவும்.",
+      "Drag to reorder, use the buttons to move, and toggle each section on or off.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "மொழியைத் தேர்ந்தெடுக்கவும்",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 துணை",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "ஸ்பெயின்",
+      "Spain",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "westernEurope": [
+      "மேற்கு ஐரோப்பா",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "நோர்டிக் ஐரோப்பா",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "மத்திய ஐரோப்பா",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "தெற்கு ஐரோப்பா / பால்கன்",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "கிழக்கு ஐரோப்பா / காகசஸ்",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "கிழக்கு ஆசியா",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "தெற்காசியா",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "தென்கிழக்கு ஆசியா",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "மத்திய ஆசியா / மத்திய கிழக்கு",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "ஆப்பிரிக்கா",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "அமெரிக்கா",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +3694,1708 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": [
+      "சேஞ்ச்லாக்",
+      "Changelog",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "மூடு",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "இந்த அழைப்பிற்காக ஏற்கனவே செயலில் உள்ள அமர்வு உள்ளது. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "அணுகல் குறியீடு தவறானது.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "அணுகல் குறியீட்டை உள்ளிடவும்.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "குறியீடு வெற்றிகரமாகச் சரிபார்க்கப்பட்டது.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "குறியீட்டைச் சரிபார்க்க முடியவில்லை. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "உங்கள் பயனர்பெயர் மற்றும் அணுகல் குறியீட்டை உள்ளிடவும்.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "தவறான பயனர்பெயர் அல்லது குறியீடு.",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "குறியீடு இந்தப் பயனருடன் பொருந்தவில்லை.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "நீங்கள் வெற்றிகரமாக உள்நுழைந்துள்ளீர்கள்.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "குறியீட்டைச் சரிபார்க்க முடியவில்லை. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "புதிய குறியீட்டை உருவாக்க CONFIRM என உள்ளிடவும்.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "முதலில் உங்கள் பயனர்பெயரை உள்ளிடவும்.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "பயனர்பெயரில் எழுத்துக்கள் மற்றும் எண்கள் மட்டுமே இருக்க வேண்டும்.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "பயனர் பெயர் 50 எழுத்துகளுக்கு மேல் இருக்கக்கூடாது.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "இந்தப் பயனருக்கு இங்கு அணுக அனுமதி இல்லை.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "குறியீடு உருவாக்கப்பட்டது. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "குறியீட்டை உருவாக்க முடியவில்லை. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "புதிய ஒன்றை உருவாக்க தற்போதைய அணுகல் குறியீட்டை உள்ளிடவும்.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "புதிய குறியீடு உருவாக்கப்பட்டது. ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "குறியீடு புதுப்பிக்கப்பட்டது. ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "இந்தக் கணக்கிற்கு நிர்வாக அனுமதிகள் இல்லை.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "தவறான சான்றுகள்.",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "பல முயற்சிகள். ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "மின்னஞ்சல் வடிவம் தவறானது.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "உள்நுழைவதில் பிழை. உங்கள் இணைப்பைச் சரிபார்க்கவும்.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": [
+      "மாற்றங்கள் சேமிக்கப்பட்டன",
+      "Changes saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": [
+      "ஜனவரி",
+      "January",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "2": [
+      "பிப்ரவரி",
+      "February",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "3": [
+      "மார்ச்",
+      "March",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "4": [
+      "ஏப்ரல்",
+      "April",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "5": [
+      "மே",
+      "May",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "6": [
+      "ஜூன்",
+      "June",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "7": [
+      "ஜூலை",
+      "July",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "8": [
+      "ஆகஸ்ட்",
+      "August",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "9": [
+      "செப்டம்பர்",
+      "September",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "10": [
+      "அக்டோபர்",
+      "October",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "11": [
+      "நவம்பர்",
+      "November",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "12": [
+      "டிசம்பர்",
+      "December",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": [
+      "ஒளி தீம்கள்",
+      "Light themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dark": [
+      "இருண்ட தீம்கள்",
+      "Dark themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": [
+      "பசையம்",
+      "Gluten",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lactose": [
+      "லாக்டோஸ்",
+      "Lactose",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nuts": [
+      "மரக் கொட்டைகள்",
+      "Tree nuts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "shellfish": [
+      "மட்டி மீன்",
+      "Shellfish",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "எங்கள் அன்பிற்கு",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "திறக்க தட்டவும்",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "தொடர, தட்டவும்",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "எங்கள் திருமணம்",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "{{பெயர்கள்}} திருமணம்",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "உறுதி செய்யப்பட வேண்டிய இடம்",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "இந்த சிறப்பான தருணத்தை உங்களுடன் கொண்டாட ஆவலுடன் காத்திருக்கிறோம்.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "நேரம்:",
+      "Time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeLabel": [
+      "இடம்:",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "நேர்த்தியான மற்றும் பிரகாசமான, தங்க உச்சரிப்புகளுடன்.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "மென்மையான கீரைகள் கொண்ட இயற்கை மற்றும் நிதானமான.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "இளஞ்சிவப்பு நிறங்களுடன் சூடான மற்றும் மென்மையானது.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "ஒளி மற்றும் நடுநிலை, அமைதியான மற்றும் காலமற்ற இருப்புடன்.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "மென்மையான மற்றும் காதல், முத்து இளஞ்சிவப்பு டோன்களுடன்.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "புதிய மற்றும் அமைதியான, லாவெண்டர் மற்றும் மேவ் சாயல்களுடன்.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "பிரகாசமான மற்றும் பண்டிகை, சூடான தங்க பிரகாசங்களுடன்.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "இருண்ட மற்றும் நேர்த்தியான, அம்பர் மற்றும் தங்க சிறப்பம்சங்கள்.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "ஆழமான மற்றும் அதிநவீன, இருண்ட பின்னணியில் அடர்த்தியான தங்கம்.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "அடர்த்தியான தங்கம் மற்றும் புனிதமான இருப்புடன் மிகவும் அடர் நீலம்.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "சிவப்பு ஒயின் மற்றும் தங்க நிற பிரகாசங்களுடன் சூடான மற்றும் உறைந்திருக்கும்.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "வெள்ளி உச்சரிப்புகள் மற்றும் அமைதியான இருப்புடன் அடர் நீலம்.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "தங்கம் மற்றும் நேர்த்தியான சாயல்களுடன் கூடிய ஆழமான இயற்கை பச்சை.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "இளஞ்சிவப்பு மற்றும் காதல் பிரகாசங்களுடன் அடர் ஊதா.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "வானவில் வண்ணங்களுடன் பலதரப்பட்ட அன்பின் கொண்டாட்டம்.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "டிரான்ஸ் கொடிக்கு அஞ்சலி செலுத்தும் வகையில் நீலம், இளஞ்சிவப்பு மற்றும் வெள்ளை.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "பைனரி அல்லாத கொடிக்கு மஞ்சள், வெள்ளை, ஊதா மற்றும் கருப்பு.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "லெஸ்பியன் கொடியின் ஆரஞ்சு, வெள்ளை மற்றும் இளஞ்சிவப்பு.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "இரு கொடியின் இளஞ்சிவப்பு, ஊதா மற்றும் நீலம்.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "பான் கொடியின் இளஞ்சிவப்பு, மஞ்சள் மற்றும் நீலம்.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "பாலினக் கொடியின் கருப்பு, சாம்பல், வெள்ளை மற்றும் ஊதா.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "விளையாட்டுப் பகுதியுடன் வரவேற்கிறோம்",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "மேற்பார்வையில் வரவேற்கிறோம்",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "பெரியவர்கள் மட்டும்",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "தரவு இல்லை",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "மொத்தம்",
+      "total",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "barChart": [
+      "வருகைப் பட்டை விளக்கப்படம்",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

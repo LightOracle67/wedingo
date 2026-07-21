@@ -1057,7 +1057,26 @@
   "envelope": {
     "addressLine1": "I'n hanwylaf",
     "tapHint": "Tapiwch i agor",
-    "and": "&",
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "tapContinue": "Tapiwch i barhau"
   },
   "calendar": {

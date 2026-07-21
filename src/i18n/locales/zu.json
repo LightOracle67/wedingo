@@ -11,20 +11,159 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "Kubonakala",
+      "Visible",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "Kukhona into engahambanga kahle",
+        "Something went wrong",
+        null,
+        null,
+        10
+      ],
+      "message": [
+        "Sicela ulayishe kabusha ikhasi ukuze uzame futhi.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "Layisha kabusha ikhasi",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "Vala",
+        "Close",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "Yeqela kokuqukethwe okuyinhloko",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "Ibha yokuphatha",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "Ukuphatha",
+        "Administration",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "landing": {
@@ -55,8 +194,46 @@
     "todayIsWedding": "Namuhla umshado",
     "missing": "Kusele",
     "todayIsTheDay": "Namuhla usuku olukhulu!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": [
+      "Ikhava",
+      "Cover",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eyebrow": [
+      "Umshado Wethu",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "Usuku nendawo",
@@ -106,8 +283,46 @@
     "next": "Okulandelayo",
     "thumbnailAria": "Isithombe {{number}}",
     "thumbnailAlt": "Isithonjana segalari",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "Igalari yesithombe, sebenzisa okhiye bemicibisholo ukuze uzulazule",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "Isithombe esinwetshiwe",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "Ukuqinisekisa ukuba khona",
@@ -138,49 +353,638 @@
     "ageUnder14Warning": "Uneminyaka engaphansi kwe-14. Udinga imvume yabazali bakho noma yabanakekeli bakho.",
     "parentalConsent": "Abazali bami noma abanakekeli bami bayavuma ukubamba kwami iqhaza",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "Faka igama lakho ukuze uqinisekise ukuba khona.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "Khetha inketho yemenyu.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "Kufanele wamukele Inqubomgomo Yobumfihlo.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "Faka usuku lwakho lokuzalwa.",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "Uneminyaka engaphansi kweyi-14. ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "Kufanele uvume ukucutshungulwa kwedatha yakho yezempilo.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "Khomba okungenani inketho eyodwa yemenyu.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "Faka amagama wabangane bakho.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "Awukwazi ukufaka amagama amaningi kunabangane.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "Isamba sezinketho zemenyu azikwazi ukudlula inani labahambisanayo.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "Ngiyabonga, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "Ngiyabonga, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "Asikwazanga ukulondoloza impendulo yakho. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "Uqinisekile ukuthi ufuna ukuhoxisa impendulo yakho?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "Impendulo yakho ihoxisiwe.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "Ayikwazanga ukuhoxisa impendulo yakho. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "Susa zonke izimpendulo zababekhona? ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "Amarekhodi okuba khona asuliwe.",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "Ayikwazanga ukusula amarekhodi okuba khona.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "Abangane",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "Abantu",
+      "People",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountHint": [
+      "Bangaki abantu kunketho ngayinye ({{total}} inani)",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "Amagama ezivakashi",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "Bhala igama nesibongo somngane ngamunye (ubukhulu {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "Igama1 Isibongo1, Igama2 Isibongo2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "Iyalayisha isimemo...",
     "notFoundTitle": "Isimemo asitholakali",
     "notFoundText": "Asisitholanga isimemo ngalesi sixhumanisi. Uma ucabanga ukuthi kuyiphutha, thintana nababungazi.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Dala futhi wabelane ngesimemo sakho somshado esiqondene nawe.",
     "emptyDescription": "Phatha idatha yesimemo sakho, yabelana ngesixhumanisi esiyingqayizivele nezivakashi zakho futhi uthole iziqinisekiso zokuba khona kwazo.",
     "createLink": "Dala isimemo",
     "privacyPolicy": "Inqubomgomo Yobumfihlo",
     "terms": "Imigomo",
     "legalNotice": "Isaziso Sezomthetho",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "Ayikwazanga ukuthola le ndawo.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "Ayikwazanga ukulayisha imephu.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "Izixhumanisi: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "Ukubuka kuqala kwemephu endaweni ekhonjiwe.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "Indawo imisiwe",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "Iyalayisha isimemo",
@@ -308,28 +1112,427 @@
     "galleryUploadFailed": "Ukulayisha izithombe akuphumelelanga.",
     "noValidFiles": "Ayikho ifayela elifanele. Okuningi 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "Layisha ifayela lomsindo ozolidlala kukhava (MP3, WAV, OGG, M4A — max 5 MB).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "Layisha ifayela lomsindo",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "I-MP3, WAV, OGG noma i-M4A — ubuningi 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "Ifomethi yomsindo ayisekelwe. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "Ifayela lomsindo alinalutho.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "Ifayela lomsindo lidlula umkhawulo ongu-5 MB.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "Iphutha lokufunda ifayela lomsindo.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "Ifayela alinalutho. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "Incazelo yesithombe...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "Ubuningi bezithombe ezingu-{{max}} kugalari.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "Ilayisha izithombe ezingu-{{total}}..",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "Ilayisha isithombe...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "Shintsha isithombe",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "Iphutha ekulondolozeni incazelo",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "Incazelo ilondoloziwe",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "Umculo okhethiwe",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "Susa umculo",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "Iyadlala...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "Buka kuqala",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "Khetha",
+      "Select",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "selected": [
+      "Ikhethiwe",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1556,53 @@
     "pdfTableCompanions": "Abahambisana nabo",
     "pdfTableDiet": "Ukudla",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Admin",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "Buka isimemo",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "Phuma",
+      "Log out",
+      null,
+      null,
+      10
+    ]
   },
   "panel": {
     "confirmed": "Kuqinisekisiwe",
@@ -384,7 +1631,26 @@
     "confirms": "Kuyangqinisekisa",
     "declines": "Kuyenqaba",
     "pending": "Okusalindile",
-    "visits_one": "1 visit",
+    "visits_one": [
+      "1 ukuvakasha",
+      "1 visit",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +1683,66 @@
     "generateMessage": "Khiqiza omunye umyalezo",
     "copyMessage": "Kopisha umyalezo",
     "shareVia": "Yabelana nge",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "I-Telegram",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "I-SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Phrinta",
     "printPdf": "Phrinta / Gcina i-PDF",
     "linkCopied": "Isixhumanisi sikopishiwe.",
@@ -446,9 +1769,47 @@
     "deleteButton": "Cela ukususwa kwedatha",
     "exportButton": "Khipha idatha yami",
     "rightsHint": "Iklayenti lakho le-imeyili lizovulwa ngesifanekiso esichazwe kusengaphambili. Ungaphinde ubhalele ku-adriancl2001@gmail.com.",
-    "ccpaTitle": "CCPA / CPRA (California)",
+    "ccpaTitle": [
+      "I-CCPA / CPRA (California)",
+      "CCPA / CPRA (California)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "ccpaText": "I-Wedingo ayithengisi idatha yomuntu siqu. Idatha eqoqiwe isetshenziselwa ukuphathwa kwesimemo kuphela. Uma uyisakhamuzi sase-California, unelungelo lokucela ukususwa kwedatha yakho nokungabandlululwa ngokusebenzisa amalungelo akho.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Uhlelo lokusebenza lewebhu lokuphathwa kwezimemo zomshado.",
     "copyright": "© {{year}} Adrián Carrasco López. Wonke amalungelo agciniwe.",
     "deleteEmailSubject": "Isicelo sokususwa kwedatha - Wedingo",
@@ -518,13 +1879,146 @@
     "deleteFailed": "Ukususa isimemo akuphumelelanga. Zama futhi.",
     "configLoadFailed": "Ukulayisha ukumiswa akuphumelelanga. Hlola uxhumo bese uzama futhi.",
     "invalidLink": "Isixhumanisi sesimemo asivumelekile.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "Ulwazi lwendawo yokuhlala alukwazi ukweqa izinhlamvu ezingu-2000.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "Incazelo yemenyu ayikwazi ukweqa izinhlamvu ezingu-2000.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "Ayikwazanga ukucubungula isithombe. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "Ayikwazanga ukufunda ifayela lesithombe.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "Ukubethelwa kwesithombe kwehlulekile.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "Isithombe sikhulu kakhulu nangemuva kokucindezelwa.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "Ifayela alinalutho. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -615,10 +2109,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Uphawu",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "Ama-RSVP",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2168,46 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "I-imeyili",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "Iphasiwedi",
+      "Password",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "compliance": {
     "title": "Irejista yemisebenzi yokucubungula (Isigaba 30 GDPR)",
@@ -659,13 +2229,51 @@
     "row2Basis": "Imvume (Isigaba 6.1.a, 9.2.a GDPR)",
     "row2Purpose": "Ukuphatha uhlu lwezivakashi nemenyu",
     "row2Retention": "Izinyanga eziyi-12 ngemuva komcimbi",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "I-Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Ukulayishwa kwezithombe",
     "row3Data": "Izithombe zomshado (zibhalwe ngekhodi ye-AES-256-GCM)",
     "row3Basis": "Imvume (Isigaba 6.1.a GDPR)",
     "row3Purpose": "Igalari yezithombe esimenweni",
     "row3Retention": "Izinyanga eziyi-12 ngemuva komcimbi",
-    "row3Recipients": "Google Cloud (Firestore subcollection)",
+    "row3Recipients": [
+      "I-Google Cloud (iqoqo elincane le-Firestore)",
+      "Google Cloud (Firestore subcollection)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row4Activity": "Ukuqinisekiswa kanye nezikhathi zokusebenza",
     "row4Data": "Ithokheni yeseshini, igama lomsebenzisi lomphathi",
     "row4Basis": "Intshisekelo esemthethweni (Isigaba 6.1.f GDPR)",
@@ -677,7 +2285,26 @@
     "row5Basis": "Isibopho sezomthetho (Isigaba 6.1.c GDPR)",
     "row5Purpose": "Irekhodi lemisebenzi yokuphatha",
     "row5Retention": "Iminyaka emi-3",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "I-Google Cloud (I-Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Ukudluliselwa kwamazwe ngamazwe",
     "internationalText": "Idatha igcinwa kumaseva e-Google Cloud esifundeni se-eur3 (e-Frankfurt, e-Jalimani). I-Google LLC (US) isebenza njengomcubunguli wedatha ngaphansi kwe-DPA ngokuhambisana ne-Isigaba 28 GDPR. Ukudluliselwa e-US kuvikelwa:",
     "scc": "Izinhlinzeko Zezivumelwano Ezejwayelekile (SCC) - Isinqumo Sokuqalisa 2021/914",
@@ -691,86 +2318,1346 @@
     "measureSuperadmin": "Umphathi omkhulu uvikwe yi-Firebase Authentication + umzila ofihliwe"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "Ukufinyeleleka",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Vala",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontSize": [
+      "Usayizi wombhalo",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "Okuvamile",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontLarge": [
+      "Okukhulu",
+      "Large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontExtraLarge": [
+      "Okukhulu kakhulu",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "Isikhala somugqa",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "Okuvamile",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineWide": [
+      "Okubanzi",
+      "Wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineVeryWide": [
+      "Ibanzi kakhulu",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "Ukugqama okuphezulu",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "Yehlisa ukunyakaza",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "Ifonti ye-OpenDyslexic",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "Isikhala sezinhlamvu esengeziwe",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "Dwebela zonke izixhumanisi",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "Ikhesa enkulu",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "Isikali esimpunga",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "Izinkomba zokugxila ezibonakalayo",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "Awukho umculo",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "Iphutha ekulayisheni",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "Umculo",
+      "Music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "soundCloudNote": [
+      "Ithrekhi ye-SoundCloud — ivuliwe ukuze uyidlale",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "Vula ku-SoundCloud",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "Ilungiselela ukuphrinta...",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "Isithombe sombhangqwana",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "Ngesibusiso sabazali babo",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "Usuku nendawo",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "Isikhathi somcimbi:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Buka indawo ku-Google Amamephu",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "Sibheke ngabomvu ukwabelana nawe ngalesi sikhathi esikhethekile.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "Ezokuthutha",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutGuests": [
+      "Mayelana nezivakashi",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "Uhlelo lomshado",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "Ishejuli enemininingwane izokwabiwa maduze.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "Ikhodi yokugqoka",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "Kuzokwaziswa kamuva.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "Mayelana nezingane",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "Indaba yethu",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "Kwaqala kanjani konke",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "Indaba izokwabiwa maduze.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "Izipho",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "Ukuba khona kwakho kuyisipho esihle kakhulu",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "Ulwazi lwesipho luzokwabiwa maduze.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "Imininingwane yebhange",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "Indawo yokuhlala",
+      "Accommodation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "whereToStay": [
+      "Indawo yokuhlala",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "Ulwazi lwendawo yokuhlala luzokwabiwa maduze.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · Inqubomgomo Yemfihlo kokuthi wedingo-6c26a.web.app",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "Vala iwindi",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": [
+      "Hamba uyephezulu",
+      "Move up",
+      null,
+      null,
+      10
+    ],
+    "moveDown": [
+      "Hamba phansi",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "title": [
+      "Ukuhleleka nokubonakala",
+      "Order & visibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "help": [
+      "Hudula ukuze uhlele kabusha, sebenzisa izinkinobho ukuze uhambise, futhi uguqule isigaba ngasinye uvule noma uvale.",
+      "Drag to reorder, use the buttons to move, and toggle each section on or off.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "Khetha ulimi",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 umngane",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "Spain",
+      "Spain",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "westernEurope": [
+      "INtshonalanga Yurophu",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "IYurophu yaseNordic",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "IYurophu Ephakathi",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "I-Southern Europe / Balkan",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "EMpumalanga Yurophu / eCaucasus",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "EMpumalanga Asia",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "INingizimu Asia",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "INingizimu-mpumalanga ye-Asia",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "I-Asia Ephakathi / Middle East",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "Afrika",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "AmaMelika",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +3674,1708 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": [
+      "I-Changelog",
+      "Changelog",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Vala",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "Sekuvele kuneseshini esebenzayo yalesi simemo. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "Ikhodi yokufinyelela ayivumelekile.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "Faka ikhodi yokufinyelela.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "Ikhodi iqinisekiswe ngempumelelo.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "Ayikwazanga ukuqinisekisa ikhodi. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "Faka igama lakho lomsebenzisi kanye nekhodi yokufinyelela.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "Igama lomsebenzisi elingalungile noma ikhodi.",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "Ikhodi ayifani nalo msebenzisi.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "Ungene ngempumelelo.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "Ayikwazanga ukuqinisekisa ikhodi. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "Thayipha okuthi CONFIRM ukuze ukhiqize ikhodi entsha.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "Faka igama lakho lomsebenzisi kuqala.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "Igama lomsebenzisi lingaqukatha izinhlamvu nezinombolo kuphela.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "Igama lomsebenzisi alikwazi ukweqa izinhlamvu ezingu-50.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "Lo msebenzisi akanayo imvume yokufinyelela lapha.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "Ikhodi yenziwe. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "Ayikwazanga ukukhiqiza ikhodi. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "Faka ikhodi yokufinyelela yamanje ukuze ukhiqize entsha.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "Kwenziwe ikhodi entsha. ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "Ikhodi ivuselelwe. ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "Le akhawunti ayinazo izimvume zokuphatha.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "Ukuqinisekisa okungalungile.",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "Imizamo eminingi kakhulu. ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "Ifomethi ye-imeyili ayivumelekile.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "Iphutha lokungena ngemvume. Hlola ukuxhumeka kwakho.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": [
+      "Izinguquko zilondoloziwe",
+      "Changes saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": [
+      "January",
+      "January",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "2": [
+      "February",
+      "February",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "3": [
+      "Mashi",
+      "March",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "4": [
+      "April",
+      "April",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "5": [
+      "Meyi",
+      "May",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "6": [
+      "Juni",
+      "June",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "7": [
+      "July",
+      "July",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "8": [
+      "Agasti",
+      "August",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "9": [
+      "September",
+      "September",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "10": [
+      "Okthoba",
+      "October",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "11": [
+      "Novemba",
+      "November",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "12": [
+      "Disemba",
+      "December",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": [
+      "Amatimu alula",
+      "Light themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dark": [
+      "Izingqikithi ezimnyama",
+      "Dark themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lgbtiq": [
+      "I-LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": [
+      "I-Gluten",
+      "Gluten",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lactose": [
+      "I-Lactose",
+      "Lactose",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nuts": [
+      "Amantongomane esihlahla",
+      "Tree nuts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "shellfish": [
+      "Igobolondo",
+      "Shellfish",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "Kwesithandwa sethu",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "Thepha ukuze uvule",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "Thepha ukuze uqhubeke",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "Umshado wethu",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "Umshado ka-{{names}}",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "Indawo ezoqinisekiswa",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "Sibheke ngabomvu ukugubha lesi sikhathi esikhethekile nawe.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "Isikhathi:",
+      "Time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeLabel": [
+      "Indawo:",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "Inhle futhi igqamile, enamazwi asagolide.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "Okwemvelo futhi okusangulukile ngemifino ethambile.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "Ifudumele futhi ithambile, inama-pink hues.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "Ukukhanya nokungathathi hlangothi, ngobukhona obuzolile nobungapheli.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "Ithambile futhi yothando, enamathoni aphinki.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "Kusha futhi kunokuthula, okunemibala ye-lavender nama-mauve.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "Kuyakhanya futhi kunefestivu, nokucwebezela okusagolide okufudumele.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "Imnyama futhi inobuhle, enokugqama kwe-amber negolide.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "Kujulile futhi kuyinkimbinkimbi, enegolide eliqinile kungemuva elimnyama.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "Okuluhlaza okwesibhakabhaka okumnyama kakhulu negolide eliqinile kanye nokuba khona okuzothile.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "Kufudumele futhi kugubuzele, newayini elibomvu nokucwebezela kwegolide.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "Okuluhlaza okwesibhakabhaka okujulile okunamazwi asiliva kanye nokuba khona okuzolile.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "Okuluhlaza okujulile kwemvelo okunemibala esagolide nenhle.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "Okunsomi okuqinile okunombala opinki nokucwazimula kwezothando.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "Umgubho wothando oluhlukahlukene olunemibala yothingo.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "Okuluhlaza okwesibhakabhaka, okupinki nokumhlophe njengenhlonipho kufulegi le-trans.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "Okuphuzi, okumhlophe, okunsomi nokumnyama kwefulegi elingelona kanambambili.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "Owolintshi, omhlophe nopinki wefulegi labesifazane abathandana nabanye.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "Pink, purple and blue of the bi flag.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "Okuphinki, okuphuzi nokuluhlaza okwesibhakabhaka kwefulegi lepani.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "Okumnyama, okumpunga, okumhlophe nokunsomi kwefulegi le-asexual.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "Siyakwamukela ngendawo yokudlala",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "Siyakwamukela ngaphansi kokugadwa",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "Abantu abadala kuphela",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "Ayikho idatha",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "ingqikithi",
+      "total",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "barChart": [
+      "Ishadi lebha lababekhona",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

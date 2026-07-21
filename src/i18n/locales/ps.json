@@ -11,20 +11,172 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "د لیدلو وړ",
+      "Visible",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "یو څه غلط شو",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "bb93a879d26edf943ed8e0c574850bff",
+              "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "مهرباني وکړئ د بیا هڅه کولو لپاره پاڼه بیا پورته کړئ.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "bb93a879d26edf943ed8e0c574850bff",
+              "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "پاڼه بیا پورته کول",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "bb93a879d26edf943ed8e0c574850bff",
+              "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "تړل",
+        "Close",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "bb93a879d26edf943ed8e0c574850bff",
+              "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "اصلي منځپانګې ته لاړ شئ",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "د ادارې بار",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "bb93a879d26edf943ed8e0c574850bff",
+              "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "اداره",
+        "Administration",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "bb93a879d26edf943ed8e0c574850bff",
+              "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "landing": {
@@ -55,8 +207,46 @@
     "todayIsWedding": "نن واده دی",
     "missing": "پاتې",
     "todayIsTheDay": "نن لویه ورځ ده!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": [
+      "پوښ",
+      "Cover",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eyebrow": [
+      "زموږ واده",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "نیټه او ځای",
@@ -106,8 +296,46 @@
     "next": "بل",
     "thumbnailAria": "عکس {{number}}",
     "thumbnailAlt": "د انځورتون وړوکی عکس",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "د انځور ګالري، د نیویګیټ لپاره د تیر کیلي وکاروئ",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "لوی شوی انځور",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "د گډون تایید",
@@ -138,49 +366,638 @@
     "ageUnder14Warning": "تاسې له ۱۴ کلو څخه ځوان یاست. د والدینو یا سرپرستانو رضایت ته اړتیا لرئ.",
     "parentalConsent": "زما والدین یا سرپرستان زما گډون مني",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "د ګډون تصدیق کولو لپاره خپل نوم دننه کړئ.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "bb93a879d26edf943ed8e0c574850bff",
+              "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "د مینو اختیار غوره کړئ.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "bb93a879d26edf943ed8e0c574850bff",
+              "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "تاسو باید د محرمیت تګلاره ومنئ.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "bb93a879d26edf943ed8e0c574850bff",
+              "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "خپل د زیږون نیټه ولیکئ.",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "bb93a879d26edf943ed8e0c574850bff",
+              "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "تاسو د 14 کلونو څخه کم عمر لرئ. ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "bb93a879d26edf943ed8e0c574850bff",
+              "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "تاسو باید د خپل روغتیایی معلوماتو پروسس کولو ته رضایت ورکړئ.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "bb93a879d26edf943ed8e0c574850bff",
+              "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "لږترلږه یو مینو اختیار په ګوته کړئ.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "bb93a879d26edf943ed8e0c574850bff",
+              "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "د خپلو ملګرو نومونه ولیکئ.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "bb93a879d26edf943ed8e0c574850bff",
+              "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "تاسو نشئ کولی د ملګرو څخه ډیر نومونه داخل کړئ.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "bb93a879d26edf943ed8e0c574850bff",
+              "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "د مینو اختیارونو مجموعه نشي کولی د ملګرو شمیر څخه ډیر شي.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "bb93a879d26edf943ed8e0c574850bff",
+              "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "مننه، {{نوم}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "مننه، {{نوم}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "موږ نشو کولی ستاسو ځواب خوندي کړو. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "ایا تاسو واقعیا غواړئ خپل ځواب بیرته واخلئ؟",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "ستاسو ځواب بیرته واخیستل شو.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "ستاسو ځواب بیرته نشي اخیستلی. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "د حاضرۍ ټول ځوابونه حذف کړئ؟ ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "د حاضرۍ ریکارډونه پاک شول.",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "د حاضرۍ ریکارډونه پاک نشو.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "ملګرو",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "خلک",
+      "People",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountHint": [
+      "د هر انتخاب لپاره څو کسان ({{total}} ټول)",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "د میلمنو نومونه",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "د هر ملګري لومړی او وروستی نوم ولیکئ (زیاته اندازه {{شمار}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "نوم 1 تخلص 1 ، نوم 2 لقب 2 ...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "بلنه پورته کېږي…",
     "notFoundTitle": "بلنه ونه موندل شوه",
     "notFoundText": "موږ د دې لېنک سره بلنه ونه موندله. که فکر کوئ چې دا تېروتنه ده، له کوربه سره اړیکه ونیسئ.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "ویدینګو",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "خپله ځانګړې واده بلنه جوړه او شریکه کړئ.",
     "emptyDescription": "د خپلې بلنې معلومات اداره کړئ، له خپلو مېلمنو سره ځانګړی لېنک شریک کړئ او د هغوی د گډون تایید ترلاسه کړئ.",
     "createLink": "بلنه جوړه کړئ",
     "privacyPolicy": "د محرمیت تګلاره",
     "terms": "شرایط",
     "legalNotice": "قانوني خبرتیا",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "دا ځای نشي موندلی.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "نقشه نشي پورته کولی.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "همغږي: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "په ښودل شوي ځای کې د نقشې لید.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "ځای ترتیب شوی",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "بلنه پورته کېږي",
@@ -308,28 +1125,427 @@
     "galleryUploadFailed": "عکسونه اپلوډ نه شول.",
     "noValidFiles": "هیڅ باوري فایل نشته. اعظمي ۲۰ مېگابایټه، JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "په پوښ ​​کې د لوبې کولو لپاره آډیو فایل اپلوډ کړئ (MP3، WAV، OGG، M4A - اعظمي 5 MB).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "آډیو فایل پورته کړئ",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3، WAV، OGG یا M4A - اعظمي 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "د آډیو بڼه نه ملاتړ کیږي. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "د آډیو فایل خالي دی.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "د آډیو فایل د 5 MB حد څخه ډیر دی.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "د آډیو فایل لوستلو تېروتنه.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "دوتنه خالي ده. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "د انځور تفصیل...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "په ګالري کې تر ټولو زیات {{max}} انځورونه.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "{{ټول}} عکسونه پورته کول...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "عکس پورته کول...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "عکس بدل کړئ",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "د توضیحاتو خوندي کولو کې تېروتنه",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "تفصیل خوندي شو",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "غوره شوې میوزیک",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "میوزیک لرې کړئ",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "لوبه کوي...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "مخکتنه",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "وټاکئ",
+      "Select",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "selected": [
+      "ټاکل شوی",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1569,53 @@
     "pdfTableCompanions": "ملگرتیا",
     "pdfTableDiet": "خواړه",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "ویډینګو · اډمین",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "بلنه وګورئ",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "وتل",
+      "Log out",
+      null,
+      null,
+      10
+    ]
   },
   "panel": {
     "confirmed": "تایید شوي",
@@ -384,7 +1644,26 @@
     "confirms": "تاییدوي",
     "declines": "ردوي",
     "pending": "په تمه",
-    "visits_one": "1 visit",
+    "visits_one": [
+      "1 لیدنه",
+      "1 visit",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +1696,66 @@
     "generateMessage": "بل پیغام جوړ کړئ",
     "copyMessage": "پیغام کاپي کړئ",
     "shareVia": "له لارې شریک کړئ",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "ټیلیګرام",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "ایس ایم ایس",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "چاپ",
     "printPdf": "چاپ / PDF خوندي کړئ",
     "linkCopied": "لېنک کاپي شو.",
@@ -448,7 +1784,26 @@
     "rightsHint": "ستاسې برېښنالیک پروګرام به له یوې چمتو شوې کينډۍ سره خلاص شي. همدارنگه کولی شئ adriancl2001@gmail.com ته ولیکئ.",
     "ccpaTitle": "CCPA / CPRA (کالیفورنیا)",
     "ccpaText": "Wedingo شخصي معلومات نه پلوري. راټول شوي معلومات یوازې د بلنې ادارې لپاره کارول کېږي. که د کالیفورنیا اوسېدونکي یاست، حق لرئ د خپلو معلوماتو حذف غوښتنه وکړئ او د خپلو حقونو کارولو له امله تبعیض ونشئ.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "ویدینګو",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "د واده بلنو ادارې لپاره ویب اپلیکېشن.",
     "copyright": "© {{year}} Adrián Carrasco López. ټول حقوق خوندي دي.",
     "deleteEmailSubject": "د معلوماتو حذف غوښتنه - Wedingo",
@@ -518,13 +1873,146 @@
     "deleteFailed": "بلنه حذف نه شوه. بیا هڅه وکړئ.",
     "configLoadFailed": "ترتیب پورته نه شو. اړیکه وګورئ او بیا هڅه وکړئ.",
     "invalidLink": "د بلنې لېنک باوري نه دی.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "د استوګنې معلومات د 2000 حروفو څخه زیات نشي.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "د مینو توضیحات د 2000 حروف څخه ډیر نشي.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "عکس پروسس نشو کولی. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "د عکس فایل لوستل نشو کولی.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "د انځور پټول ناکام شول.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "عکس حتی د کمپریشن وروسته خورا لوی دی.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "دوتنه خالي ده. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -588,7 +2076,26 @@
     "tokenCleanError": "ټوکنونه پاک نه شول.",
     "tokenLoadError": "ټوکنونه پورته نه شول.",
     "accountEmail": "برېښنالیک: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "فعال",
     "sessionInactive": "غیر فعال",
     "sessionLabel": "سیمه‌ییزه غونډه: {{status}}",
@@ -615,10 +2122,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "ټوکن",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "bb93a879d26edf943ed8e0c574850bff",
+              "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVPs",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "bb93a879d26edf943ed8e0c574850bff",
+              "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2181,33 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "ایمیل",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "رمز",
+      "Password",
+      null,
+      null,
+      10
+    ]
   },
   "compliance": {
     "title": "د پروسس فعالیتونو ریکارډ (د GDPR ۳۰ ماده)",
@@ -659,7 +2229,26 @@
     "row2Basis": "رضایت (د GDPR ۶.۱.a، ۹.۲.a ماده)",
     "row2Purpose": "د مېلمنو لیست او خواړه اداره کول",
     "row2Retention": "د پیښې وروسته ۱۲ میاشتې",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "ګوګل کلاوډ (فائر سټور)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "د انځورونو اپلوډ",
     "row3Data": "د واده عکسونه (AES-256-GCM کوډ شوي)",
     "row3Basis": "رضایت (د GDPR ۶.۱.a ماده)",
@@ -677,7 +2266,26 @@
     "row5Basis": "قانوني مکلفیت (د GDPR ۶.۱.c ماده)",
     "row5Purpose": "د اداري فعالیتونو ثبت",
     "row5Retention": "۳ کاله",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "ګوګل کلاوډ (د فایرسټور پلټنې لاګ)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "نړیوال لېږدونه",
     "internationalText": "معلومات د Google Cloud په eur3 سیمه (فرانکفورت، جرمني) کې په سرورونو کې زیرمه کېږي. Google LLC (امریکا) د GDPR ۲۸ مادې سره سم د DPA لاندې د معلوماتو پروسس کوونکي په توگه کار کوي. امریکا ته لېږدونه په لاندې اساس خوندي کېږي:",
     "scc": "معیاري قراردادي مادې (SCC) - د ۲۰۲۱/۹۱۴ اجرایوي پرېکړه",
@@ -691,86 +2299,1346 @@
     "measureSuperadmin": "سوپر اډمین د Firebase تایید + پټې لارې لخوا خوندي شوی"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "لاسرسی",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "تړل",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontSize": [
+      "د متن اندازه",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "نورمال",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontLarge": [
+      "لوی",
+      "Large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontExtraLarge": [
+      "ډیر لوی",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "د کرښې واټن",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "نورمال",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineWide": [
+      "پراخه",
+      "Wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineVeryWide": [
+      "ډیر پراخ",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "لوړ برعکس",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "حرکت کم کړئ",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "OpenDyslexic فونټ",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "د لیکو ډیر واټن",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "ټول لینکونه لاندې کړئ",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "لوی کرسر",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "خړ پیړۍ",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "د لید تمرکز شاخصونه",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "موسيقي نشته",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "په بارولو کې تېروتنه",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "موسیقي",
+      "Music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "soundCloudNote": [
+      "SoundCloud ټریک - د لوبې کولو لپاره خلاص دی",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "په SoundCloud کې خلاص کړئ",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "د چاپ چمتو کول…",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "د جوړه عکس",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "د خپلو خدایانو په برکت سره",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "نیټه او ځای",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "د مراسمو وخت:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "په ګوګل نقشه کې موقعیت وګورئ",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "موږ تمه لرو چې دا ځانګړې شیبه له تاسو سره شریکه کړو.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "ټرانسپورټ",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutGuests": [
+      "د میلمنو په اړه",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "د واده مهال ویش",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "تفصیلي مهال ویش به ډیر ژر شریک شي.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "د جامو کوډ",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "وروسته به خبر شي.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "د ماشومانو په اړه",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "زموږ کیسه",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "دا ټول څنګه پیل شول",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "کیسه به ژر شریکه شي.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "ډالۍ",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "ستاسو شتون ترټولو غوره ډالۍ ده",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "د ډالۍ معلومات به ډیر ژر شریک شي.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "د بانک توضیحات",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "د استوګنې ځای",
+      "Accommodation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "whereToStay": [
+      "چیرته چې پاتې شي",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "د استوګنې معلومات به ډیر ژر شریک شي.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · د محرمیت پالیسي په wedingo-6c26a.web.app کې",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "کړکۍ بنده کړه",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": [
+      "پورته لاړ شه",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "لاندې حرکت وکړئ",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "title": [
+      "ترتیب او لید",
+      "Order & visibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "help": [
+      "د بیا تنظیم کولو لپاره کش کړئ، د حرکت کولو لپاره تڼۍ وکاروئ، او هره برخه فعال یا بند کړئ.",
+      "Drag to reorder, use the buttons to move, and toggle each section on or off.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "ژبه غوره کړئ",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 ملګری",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "هسپانیه",
+      "Spain",
+      null,
+      null,
+      10
+    ],
+    "westernEurope": [
+      "لویدیځ اروپا",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "نورډیک اروپا",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "مرکزي اروپا",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "جنوبي اروپا/بالکان",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "شرقي اروپا/ قفقاز",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "ختیځ آسیا",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "جنوبي اسیا",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "سویل ختیځ آسیا",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "منځنۍ اسیا/منځنی ختیځ",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "افریقا",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "امریکا",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +3655,1552 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": [
+      "بدلون",
+      "Changelog",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "تړل",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "د دې بلنې لپاره لا دمخه یوه فعاله ناسته شتون لري. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "د لاسرسي کوډ اعتبار نلري.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "د لاسرسي کوډ دننه کړئ.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "کوډ په بریالیتوب سره تایید شو.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "کوډ نشي تاییدولی. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "خپل کارن نوم او د لاسرسي کوډ دننه کړئ.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "غلط کارن نوم یا کوډ.",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "کوډ د دې کارونکي سره سمون نه خوري.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "تاسو په بریالیتوب سره ننوتلی یاست.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "کوډ نشي تاییدولی. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "د نوي کوډ جوړولو لپاره CONFIRM ټایپ کړئ.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "لومړی خپل کارن نوم دننه کړئ.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "کارن نوم یوازې لیکونه او شمیرې لري.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "کارن نوم نشي کولی له 50 حروف څخه ډیر وي.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "دا کارونکي دلته د لاسرسي اجازه نلري.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "کوډ جوړ شوی. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "کوډ نشي پیدا کولی. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "د نوي پیدا کولو لپاره اوسنی لاسرسي کوډ دننه کړئ.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "نوی کوډ جوړ شوی. ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "کوډ نوی شو. ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "دا حساب د ادارې اجازې نه لري.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "غلط اسناد.",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "ډیرې هڅې. ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "د بریښنالیک بڼه سمه نه ده.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "په ننوتلو کې تېروتنه. خپل پیوستون وګورئ.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": [
+      "بدلونونه خوندي شوي",
+      "Changes saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": [
+      "جنوري",
+      "January",
+      null,
+      null,
+      10
+    ],
+    "2": [
+      "فبروري",
+      "February",
+      null,
+      null,
+      10
+    ],
+    "3": [
+      "مارچ",
+      "March",
+      null,
+      null,
+      10
+    ],
+    "4": [
+      "اپریل",
+      "April",
+      null,
+      null,
+      10
+    ],
+    "5": [
+      "می",
+      "May",
+      null,
+      null,
+      10
+    ],
+    "6": [
+      "جون",
+      "June",
+      null,
+      null,
+      10
+    ],
+    "7": [
+      "جولای",
+      "July",
+      null,
+      null,
+      10
+    ],
+    "8": [
+      "اګست",
+      "August",
+      null,
+      null,
+      10
+    ],
+    "9": [
+      "سپتمبر",
+      "September",
+      null,
+      null,
+      10
+    ],
+    "10": [
+      "اکتوبر",
+      "October",
+      null,
+      null,
+      10
+    ],
+    "11": [
+      "نومبر",
+      "November",
+      null,
+      null,
+      10
+    ],
+    "12": [
+      "دسمبر",
+      "December",
+      null,
+      null,
+      10
+    ]
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": [
+      "روښانه موضوعات",
+      "Light themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dark": [
+      "تیاره موضوعات",
+      "Dark themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": [
+      "ګلوټین",
+      "Gluten",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lactose": [
+      "لکتوز",
+      "Lactose",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nuts": [
+      "د ونې مغز",
+      "Tree nuts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "shellfish": [
+      "شیلفش",
+      "Shellfish",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "زموږ ګرانو ته",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "د خلاصولو لپاره ټایپ کړئ",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "د دوام لپاره ټایپ کړئ",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "زموږ واده",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "د {{نومونو}} واده",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "د تایید لپاره ځای",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "موږ ستاسو سره د دې ځانګړې شیبې لمانځلو ته سترګې په لار یو.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "وخت:",
+      "Time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeLabel": [
+      "ځای:",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "ښکلی او روښانه، د طلایی تلفظونو سره.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "طبیعي او د نرمو شنه شنو سره.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "ګرم او نازک، د ګلابي رنګونو سره.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "روښانه او بې طرفه، د آرام او بې وخت شتون سره.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "نرم او رومانتيک، د موتی ګلابي ټونونو سره.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "تازه او آرامه، د لیوینډر او میوو رنګونو سره.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "روښانه او جشن، د تودو طلایی چمکونو سره.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "تیاره او ښکلی، د امبر او سرو زرو سره.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "ژور او پیچلي، په تیاره پس منظر کې د شدید سرو زرو سره.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "ډیر تیاره نیلي د شدید سرو زرو او جدي شتون سره.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "ګرم او لفافه، د سور شراب او طلایی چمک سره.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "ژور نیلي د سپینو زرو تورو او آرام شتون سره.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "ژور طبیعي شنه د سرو زرو او ښکلي رنګونو سره.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "شدید ارغواني د ګلابي او رومانتيک چمک سره.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "د رینبو رنګونو سره د متنوع مینې جشن.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "نیلي، ګلابي او سپین د ټرانس بیرغ ته په درناوی کې.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "ژیړ، سپین، ارغواني او تور د غیر بائنری بیرغ لپاره.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "د لیسبیان بیرغ نارنجي، سپین او ګلابي.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "د دوه بیرغ ګلابي، ارغواني او نیلي.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "د پین بیرغ ګلابي، ژیړ او نیلي.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "د غیر جنسی بیرغ تور، خړ، سپین او ارغواني.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "د لوبې ساحې سره ښه راغلاست",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "bb93a879d26edf943ed8e0c574850bff",
+              "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "تر څارنې لاندې ښه راغلاست",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "bb93a879d26edf943ed8e0c574850bff",
+              "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "یوازې لویان",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "bb93a879d26edf943ed8e0c574850bff",
+              "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "هیڅ معلومات نشته",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "مجموعه",
+      "total",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "barChart": [
+      "د حاضرۍ بار چارټ",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "bb93a879d26edf943ed8e0c574850bff",
+            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

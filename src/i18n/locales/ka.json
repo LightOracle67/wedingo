@@ -11,20 +11,172 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "ხილული",
+      "Visible",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "რაღაც შეფერხდა",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "გთხოვთ, გადატვირთოთ გვერდი ხელახლა საცდელად.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "გვერდის გადატვირთვა",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "დახურვა",
+        "Close",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "გადადით მთავარ შინაარსზე",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "ადმინისტრაციის ბარი",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "ადმინისტრაცია",
+        "Administration",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "landing": {
@@ -55,8 +207,46 @@
     "todayIsWedding": "დღეს ქორწილია",
     "missing": "დარჩენილია",
     "todayIsTheDay": "დღეს დიდი დღეა!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": [
+      "საფარი",
+      "Cover",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eyebrow": [
+      "ჩვენი ქორწილი",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "თარიღი და ადგილი",
@@ -106,8 +296,46 @@
     "next": "შემდეგი",
     "thumbnailAria": "ფოტო {{number}}",
     "thumbnailAlt": "გალერეის ფოტოს მინიატურა",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "სურათების გალერეა, გამოიყენეთ ისრიანი ღილაკები ნავიგაციისთვის",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "გადიდებული სურათი",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "დასწრების დადასტურება",
@@ -138,49 +366,638 @@
     "ageUnder14Warning": "თქვენ ხართ 14 წელზე უმცროსი. გჭირდებათ მშობლების ან მეურვეების თანხმობა.",
     "parentalConsent": "ჩემი მშობლები ან მეურვეები თანხმდებიან ჩემს მონაწილეობაზე",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "დასწრების დასადასტურებლად შეიყვანეთ თქვენი სახელი.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "აირჩიეთ მენიუს ვარიანტი.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "თქვენ უნდა დაეთანხმოთ კონფიდენციალურობის პოლიტიკას.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "შეიყვანეთ თქვენი დაბადების თარიღი.",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "თქვენ ხართ 14 წლამდე ასაკის. ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "თქვენ უნდა დაეთანხმოთ თქვენი ჯანმრთელობის მონაცემების დამუშავებას.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "მიუთითეთ მენიუს მინიმუმ ერთი ვარიანტი.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "შეიყვანეთ თქვენი თანამგზავრების სახელები.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "თქვენ არ შეგიძლიათ შეიყვანოთ მეტი სახელი, ვიდრე კომპანიონი.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "მენიუს ვარიანტების ჯამი არ უნდა აღემატებოდეს კომპანიონთა რაოდენობას.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "გმადლობთ, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "გმადლობთ, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "თქვენი პასუხის შენახვა ვერ მოხერხდა. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "დარწმუნებული ხართ, რომ გსურთ თქვენი პასუხის გაუქმება?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "თქვენი პასუხი ამოღებულია.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "თქვენი პასუხის გაუქმება ვერ მოხერხდა. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "წაშალოთ დასწრების ყველა პასუხი? ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "დასწრების ჩანაწერები გასუფთავებულია.",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "დასწრების ჩანაწერების გასუფთავება ვერ მოხერხდა.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "თანმხლები",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "ხალხი",
+      "People",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountHint": [
+      "რამდენი ადამიანი თითოეულ ვარიანტზე ({{სულ}} სულ)",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "სტუმრების სახელები",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "ჩაწერეთ თითოეული კომპანიონის სახელი და გვარი (მაქსიმუმ {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "სახელი1 გვარი1, სახელი2 გვარი2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "მოსაწვევი იტვირთება...",
     "notFoundTitle": "მოსაწვევი ვერ მოიძებნა",
     "notFoundText": "ამ ბმულით მოსაწვევი ვერ ვიპოვეთ. თუ ფიქრობთ, რომ ეს შეცდომაა, დაუკავშირდით მასპინძლებს.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "ვედინგო",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "შექმენით და გააზიარეთ თქვენი პერსონალური საქორწინო მოსაწვევი.",
     "emptyDescription": "მართეთ თქვენი მოსაწვევის მონაცემები, გაუზიარეთ უნიკალური ბმული თქვენს სტუმრებს და მიიღეთ მათი დასწრების დადასტურება.",
     "createLink": "მოსაწვევის შექმნა",
     "privacyPolicy": "კონფიდენციალურობის პოლიტიკა",
     "terms": "პირობები",
     "legalNotice": "იურიდიული შეტყობინება",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "ამ ადგილის დადგენა ვერ მოხერხდა.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "რუკის ჩატვირთვა ვერ მოხერხდა.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "კოორდინატები: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "რუკის გადახედვა მითითებულ ადგილას.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "მდებარეობა კონფიგურირებულია",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "მოსაწვევი იტვირთება",
@@ -308,28 +1125,427 @@
     "galleryUploadFailed": "ფოტოები ვერ აიტვირთა.",
     "noValidFiles": "ვალიდური ფაილი არ არის. მაქსიმუმ 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "ატვირთეთ აუდიო ფაილი ყდაზე დასაკრავად (MP3, WAV, OGG, M4A — მაქსიმუმ 5 მბ).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "ატვირთეთ აუდიო ფაილი",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG ან M4A - მაქსიმუმ 5 მბ",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "აუდიო ფორმატი არ არის მხარდაჭერილი. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "აუდიო ფაილი ცარიელია.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "აუდიო ფაილი აჭარბებს 5 მბ ლიმიტს.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "შეცდომა აუდიო ფაილის წაკითხვისას.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "ფაილი ცარიელია. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "სურათის აღწერა...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "მაქსიმუმ {{max}} სურათი გალერეაში.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "მიმდინარეობს {{სულ}} ფოტო(ების) ატვირთვა...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "მიმდინარეობს ფოტოს ატვირთვა...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "ფოტოს შეცვლა",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "შეცდომა აღწერილობის შენახვისას",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "აღწერა შენახულია",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "შერჩეული მუსიკა",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "წაშალე მუსიკა",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "უკრავს...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "გადახედვა",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "აირჩიეთ",
+      "Select",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "selected": [
+      "შერჩეული",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1569,66 @@
     "pdfTableCompanions": "თანმხლები",
     "pdfTableDiet": "დიეტა",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Admin",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "მოწვევის ნახვა",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "გასვლა",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "დადასტურებული",
@@ -384,7 +1657,26 @@
     "confirms": "ადასტურებს",
     "declines": "უარს ამბობს",
     "pending": "მოლოდინში",
-    "visits_one": "1 visit",
+    "visits_one": [
+      "1 ვიზიტი",
+      "1 visit",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +1709,66 @@
     "generateMessage": "სხვა შეტყობინების გენერირება",
     "copyMessage": "შეტყობინების კოპირება",
     "shareVia": "გაზიარება",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "ტელეგრამა",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "ბეჭდვა",
     "printPdf": "ბეჭდვა / PDF-ის შენახვა",
     "linkCopied": "ბმული დაკოპირებულია.",
@@ -446,9 +1795,47 @@
     "deleteButton": "მონაცემების წაშლის მოთხოვნა",
     "exportButton": "ჩემი მონაცემების ექსპორტი",
     "rightsHint": "თქვენი ელფოსტის კლიენტი გაიხსნება წინასწარ განსაზღვრული შაბლონით. ასევე შეგიძლიათ მისწეროთ adriancl2001@gmail.com-ზე.",
-    "ccpaTitle": "CCPA / CPRA (California)",
+    "ccpaTitle": [
+      "CCPA / CPRA (კალიფორნია)",
+      "CCPA / CPRA (California)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "ccpaText": "Wedingo არ ყიდის პერსონალურ მონაცემებს. შეგროვებული მონაცემები გამოიყენება მხოლოდ მოსაწვევის მართვისთვის. თუ თქვენ ხართ California-ს რეზიდენტი, გაქვთ უფლება მოითხოვოთ თქვენი მონაცემების წაშლა და არ იყოთ დისკრიმინირებული თქვენი უფლებების გამოყენებისთვის.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "ვედინგო",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "ვებ აპლიკაცია საქორწინო მოსაწვევების მართვისთვის.",
     "copyright": "© {{year}} Adrián Carrasco López. ყველა უფლება დაცულია.",
     "deleteEmailSubject": "მონაცემების წაშლის მოთხოვნა - Wedingo",
@@ -518,13 +1905,146 @@
     "deleteFailed": "მოსაწვევი ვერ წაიშალა. სცადეთ ხელახლა.",
     "configLoadFailed": "კონფიგურაცია ვერ ჩაიტვირთა. შეამოწმეთ კავშირი და სცადეთ ხელახლა.",
     "invalidLink": "მოსაწვევის ბმული არასწორია.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "საცხოვრებლის ინფორმაცია არ უნდა აღემატებოდეს 2000 სიმბოლოს.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "მენიუს აღწერა არ უნდა აღემატებოდეს 2000 სიმბოლოს.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "სურათის დამუშავება ვერ მოხერხდა. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "სურათის ფაილის წაკითხვა ვერ მოხერხდა.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "სურათის დაშიფვრა ვერ მოხერხდა.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "სურათი ძალიან დიდია შეკუმშვის შემდეგაც კი.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "ფაილი ცარიელია. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -588,7 +2108,26 @@
     "tokenCleanError": "ტოკენები ვერ გაიწმინდა.",
     "tokenLoadError": "ტოკენები ვერ ჩაიტვირთა.",
     "accountEmail": "ელფოსტა: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "აქტიური",
     "sessionInactive": "არააქტიური",
     "sessionLabel": "ლოკალური სესია: {{status}}",
@@ -615,10 +2154,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "ჟეტონი",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVP-ები",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2213,46 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "ელფოსტა",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "პაროლი",
+      "Password",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "compliance": {
     "title": "დამუშავების აქტივობების რეესტრი (GDPR მუხ. 30)",
@@ -653,31 +2268,126 @@
     "row1Basis": "თანხმობა (GDPR მუხ. 6.1.a)",
     "row1Purpose": "საქორწინო მოსაწვევის შექმნა და პერსონალიზაცია",
     "row1Retention": "სანამ ანგარიში აქტიურია",
-    "row1Recipients": "Google Cloud (Firestore, hosting)",
+    "row1Recipients": [
+      "Google Cloud (Firestore, ჰოსტინგი)",
+      "Google Cloud (Firestore, hosting)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row2Activity": "დასწრების დადასტურება (RSVP)",
     "row2Data": "სტუმრის სახელი, დასწრება (დიახ/არა), მენიუს არჩევანი, ალერგიები, ჯანმრთელობის მონაცემები",
     "row2Basis": "თანხმობა (GDPR მუხ. 6.1.a, 9.2.a)",
     "row2Purpose": "სტუმრების სიისა და მენიუს მართვა",
     "row2Retention": "ღონისძიებიდან 12 თვე",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "სურათების ატვირთვა",
     "row3Data": "საქორწინო ფოტოები (AES-256-GCM-ით დაშიფრული)",
     "row3Basis": "თანხმობა (GDPR მუხ. 6.1.a)",
     "row3Purpose": "ფოტო გალერეა მოსაწვევში",
     "row3Retention": "ღონისძიებიდან 12 თვე",
-    "row3Recipients": "Google Cloud (Firestore subcollection)",
+    "row3Recipients": [
+      "Google Cloud (Firestore ქვეკრებული)",
+      "Google Cloud (Firestore subcollection)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row4Activity": "ავთენტიფიკაცია და სესიები",
     "row4Data": "სესიის ტოკენი, ადმინის მომხმარებლის სახელი",
     "row4Basis": "ლეგიტიმური ინტერესი (GDPR მუხ. 6.1.f)",
     "row4Purpose": "ადმინის პანელზე წვდომის კონტროლი",
     "row4Retention": "სესიის ხანგრძლივობა",
-    "row4Recipients": "Google Cloud (Firestore sessions)",
+    "row4Recipients": [
+      "Google Cloud (Firestore სესიები)",
+      "Google Cloud (Firestore sessions)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row5Activity": "სუპერადმინის აუდიტი",
     "row5Data": "სუპერადმინის მოქმედებები, გამოყენებული ტოკენები, წაშლილი მოსაწვევები",
     "row5Basis": "იურიდიული ვალდებულება (GDPR მუხ. 6.1.c)",
     "row5Purpose": "ადმინისტრაციული აქტივობების რეესტრი",
     "row5Retention": "3 წელი",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "საერთაშორისო გადაცემები",
     "internationalText": "მონაცემები ინახება Google Cloud-ის სერვერებზე eur3 რეგიონში (ფრანკფურტი, გერმანია). Google LLC (აშშ) მოქმედებს როგორც მონაცემთა დამმუშავებელი DPA-ს ფარგლებში GDPR-ის 28-ე მუხლის შესაბამისად. აშშ-ში გადაცემები დაცულია:",
     "scc": "სტანდარტული სახელშეკრულებო პირობები (SCC) - განხორციელების გადაწყვეტილება 2021/914",
@@ -691,86 +2401,1359 @@
     "measureSuperadmin": "სუპერადმინი დაცულია Firebase Authentication-ით + ფარული მარშრუტით"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "ხელმისაწვდომობა",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "დახურვა",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontSize": [
+      "ტექსტის ზომა",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "ნორმალური",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontLarge": [
+      "დიდი",
+      "Large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontExtraLarge": [
+      "ზედმეტი დიდი",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "ხაზების დაშორება",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "ნორმალური",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineWide": [
+      "ფართო",
+      "Wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineVeryWide": [
+      "ძალიან ფართო",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "მაღალი კონტრასტი",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "მოძრაობის შემცირება",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "OpenDyslexic შრიფტი",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "მეტი ასოების ინტერვალი",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "ხაზი გაუსვით ყველა ბმულს",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "დიდი კურსორი",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "რუხი ფერის",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "ხილული ფოკუსის ინდიკატორები",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "მუსიკა არ არის",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "შეცდომა ჩატვირთვისას",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "მუსიკა",
+      "Music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "soundCloudNote": [
+      "SoundCloud ტრეკი — გახსნილია დასაკრავად",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "გახსენით SoundCloud-ში",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "ბეჭდვის მომზადება…",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "წყვილის ფოტო",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "მათი ნათლიების ლოცვა-კურთხევით",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "თარიღი და ადგილი",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "ცერემონიის დრო:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "იხილეთ მდებარეობა Google Maps-ში",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "ჩვენ მოუთმენლად ველით გაგიზიაროთ ეს განსაკუთრებული მომენტი.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "ტრანსპორტი",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutGuests": [
+      "სტუმრების შესახებ",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "ქორწილის განრიგი",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "დეტალური განრიგი მალე გავრცელდება.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "ჩაცმის კოდი",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "მოგვიანებით გახდება ცნობილი.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "ბავშვების შესახებ",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "ჩვენი ამბავი",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "როგორ დაიწყო ეს ყველაფერი",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "ამბავი მალე გაგიზიარებთ.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "საჩუქრები",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "შენი ყოფნა საუკეთესო საჩუქარია",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "საჩუქრის შესახებ ინფორმაცია მალე გავრცელდება.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "ბანკის დეტალები",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "განთავსება",
+      "Accommodation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "whereToStay": [
+      "სად დარჩენა",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "საცხოვრებლის შესახებ ინფორმაცია მალე გავრცელდება.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · კონფიდენციალურობის პოლიტიკა wedingo-6c26a.web.app",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "ფანჯრის დახურვა",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": [
+      "ზევით გადაადგილება",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "ქვევით გადაადგილება",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "title": [
+      "წესრიგი და ხილვადობა",
+      "Order & visibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "help": [
+      "გადაათრიეთ ხელახლა შეკვეთისთვის, გამოიყენეთ ღილაკები გადასაადგილებლად და ჩართეთ ან გამორთეთ თითოეული სექცია.",
+      "Drag to reorder, use the buttons to move, and toggle each section on or off.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "აირჩიეთ ენა",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 კომპანიონი",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "ესპანეთი",
+      "Spain",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "westernEurope": [
+      "დასავლეთ ევროპა",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "სკანდინავიური ევროპა",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "ცენტრალური ევროპა",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "სამხრეთ ევროპა / ბალკანეთი",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "აღმოსავლეთ ევროპა / კავკასია",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "აღმოსავლეთ აზია",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "სამხრეთ აზია",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "სამხრეთ-აღმოსავლეთ აზია",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "ცენტრალური აზია / ახლო აღმოსავლეთი",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "აფრიკა",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "ამერიკა",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +3770,1708 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": [
+      "ცვლილებების ჟურნალი",
+      "Changelog",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "დახურვა",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "ამ მოწვევისთვის უკვე არის აქტიური სესია. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "წვდომის კოდი არასწორია.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "შეიყვანეთ წვდომის კოდი.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "კოდი წარმატებით დადასტურდა.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "კოდის გადამოწმება ვერ მოხერხდა. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "შეიყვანეთ თქვენი მომხმარებლის სახელი და წვდომის კოდი.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "არასწორი მომხმარებლის სახელი ან კოდი.",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "კოდი არ ემთხვევა ამ მომხმარებელს.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "თქვენ წარმატებით შეხვედით სისტემაში.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "კოდის გადამოწმება ვერ მოხერხდა. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "აკრიფეთ CONFIRM ახალი კოდის შესაქმნელად.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "ჯერ შეიყვანეთ თქვენი მომხმარებლის სახელი.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "მომხმარებლის სახელი შეიძლება შეიცავდეს მხოლოდ ასოებსა და ციფრებს.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "მომხმარებლის სახელი არ უნდა აღემატებოდეს 50 სიმბოლოს.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "ამ მომხმარებელს არ აქვს აქ წვდომის უფლება.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "კოდი გენერირებული. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "კოდის გენერირება ვერ მოხერხდა. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "შეიყვანეთ მიმდინარე წვდომის კოდი ახლის შესაქმნელად.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "ახალი კოდი გენერირებულია. ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "კოდი განახლებულია. ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "ამ ანგარიშს არ აქვს ადმინისტრაციის ნებართვები.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "არასწორი რწმუნებათა სიგელები.",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "ძალიან ბევრი მცდელობა. ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "ელფოსტის ფორმატი არასწორია.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "შეცდომა სისტემაში შესვლისას. შეამოწმეთ კავშირი.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": [
+      "ცვლილებები შენახულია",
+      "Changes saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": [
+      "იანვარი",
+      "January",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "2": [
+      "თებერვალი",
+      "February",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "3": [
+      "მარტი",
+      "March",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "4": [
+      "აპრილი",
+      "April",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "5": [
+      "მაისი",
+      "May",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "6": [
+      "ივნისი",
+      "June",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "7": [
+      "ივლისი",
+      "July",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "8": [
+      "აგვისტო",
+      "August",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "9": [
+      "სექტემბერი",
+      "September",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "10": [
+      "ოქტომბერი",
+      "October",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "11": [
+      "ნოემბერი",
+      "November",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "12": [
+      "დეკემბერი",
+      "December",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": [
+      "მსუბუქი თემები",
+      "Light themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dark": [
+      "ბნელი თემები",
+      "Dark themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": [
+      "გლუტენი",
+      "Gluten",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lactose": [
+      "ლაქტოზა",
+      "Lactose",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nuts": [
+      "ხის თხილი",
+      "Tree nuts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "shellfish": [
+      "მოლუსკები",
+      "Shellfish",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "ჩვენს ძვირფასს",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "შეეხეთ გასახსნელად",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "შეეხეთ გასაგრძელებლად",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "ჩვენი ქორწილი",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "{{names}}-ის ქორწილი",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "მდებარეობა დასადასტურებელია",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "ჩვენ მოუთმენლად ველით თქვენთან ერთად აღვნიშნავთ ამ განსაკუთრებულ მომენტს.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "დრო:",
+      "Time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeLabel": [
+      "ჩატარების ადგილი:",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "ელეგანტური და ნათელი, ოქროსფერი აქცენტებით.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "ნატურალური და ფხიზელი რბილი მწვანილით.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "თბილი და ნაზი, ვარდისფერი ფერებით.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "მსუბუქი და ნეიტრალური, მშვიდი და დროული ყოფნით.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "ნაზი და რომანტიული, მარგალიტისფერი ვარდისფერი ტონებით.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "ახალი და მშვიდი, ლავანდისფერი და მეწამული ფერებით.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "ნათელი და სადღესასწაულო, თბილი ოქროსფერი ნაპერწკლებით.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "მუქი და ელეგანტური, ქარვისფერი და ოქროსფერი ხაზგასმით.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "ღრმა და დახვეწილი, ინტენსიური ოქროთი მუქ ფონზე.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "ძალიან მუქი ლურჯი ინტენსიური ოქროსფერი და საზეიმო ყოფნით.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "თბილი და მოცული, წითელი ღვინით და ოქროსფერი ნაპერწკლებით.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "ღრმა ლურჯი ვერცხლის აქცენტებით და მშვიდი ყოფნით.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "ღრმა ბუნებრივი მწვანე ოქროსფერი და ელეგანტური ფერებით.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "ინტენსიური იასამნისფერი ვარდისფერი და რომანტიული ნაპერწკლებით.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "მრავალფეროვანი სიყვარულის ზეიმი ცისარტყელას ფერებით.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "ლურჯი, ვარდისფერი და თეთრი ტრანს დროშის პატივისცემით.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "ყვითელი, თეთრი, მეწამული და შავი არაბინარული დროშისთვის.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "ლესბოსური დროშის ნარინჯისფერი, თეთრი და ვარდისფერი.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "ორი დროშის ვარდისფერი, იასამნისფერი და ლურჯი.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "ტაფის დროშის ვარდისფერი, ყვითელი და ლურჯი.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "ასექსუალური დროშის შავი, ნაცრისფერი, თეთრი და მეწამული.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "მოგესალმებით სათამაშო ზონით",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "მოგესალმებით მეთვალყურეობის ქვეშ",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "მხოლოდ მოზარდები",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "მონაცემები არ არის",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "სულ",
+      "total",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "barChart": [
+      "დასწრების ზოლიანი დიაგრამა",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

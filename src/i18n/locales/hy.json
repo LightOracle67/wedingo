@@ -11,20 +11,172 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "Տեսանելի",
+      "Visible",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "Սխալ առաջացավ",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "Խնդրում ենք վերաբեռնել էջը՝ նորից փորձելու համար:",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "Վերբեռնել էջը",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "Փակել",
+        "Close",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "Անցեք հիմնական բովանդակությանը",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "Վարչական բար",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "Վարչություն",
+        "Administration",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "landing": {
@@ -55,8 +207,46 @@
     "todayIsWedding": "Այսօր հարսանիքն է",
     "missing": "Մնացել է",
     "todayIsTheDay": "Այսօր մեծ օրն է!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": [
+      "Ծածկույթ",
+      "Cover",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eyebrow": [
+      "Մեր հարսանիքը",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "Ամսաթիվ և վայր",
@@ -106,8 +296,46 @@
     "next": "Հաջորդ",
     "thumbnailAria": "Լուսանկար {{number}}",
     "thumbnailAlt": "Պատկերասրահի լուսանկարի մանրապատկեր",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "Պատկերների պատկերասրահ, նավարկելու համար օգտագործեք սլաքների ստեղները",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "Ընդլայնված պատկեր",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "Մասնակցության հաստատում",
@@ -138,49 +366,638 @@
     "ageUnder14Warning": "Դուք 14 տարեկանից ցածր եք։ Անհրաժեշտ է ծնողների կամ խնամակալների համաձայնությունը։",
     "parentalConsent": "Իմ ծնողները կամ խնամակալները համաձայն են իմ մասնակցությանը",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "Մուտքագրեք ձեր անունը՝ մասնակցությունը հաստատելու համար:",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "Ընտրեք ցանկի տարբերակ:",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "Դուք պետք է ընդունեք Գաղտնիության քաղաքականությունը:",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "Մուտքագրեք ձեր ծննդյան ամսաթիվը:",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "Դուք 14 տարեկանից ցածր եք: ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "Դուք պետք է համաձայնեք ձեր առողջական տվյալների մշակմանը:",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "Նշեք մենյուի առնվազն մեկ տարբերակ:",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "Մուտքագրեք ձեր ուղեկիցների անունները:",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "Դուք չեք կարող մուտքագրել ավելի շատ անուններ, քան ուղեկիցներ:",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "Ցանկի ընտրանքների գումարը չի կարող գերազանցել ուղեկիցների թիվը:",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "Շնորհակալություն, {{name}}: ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "Շնորհակալություն, {{name}}: ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "Մենք չկարողացանք պահպանել ձեր պատասխանը: ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "Իսկապե՞ս ուզում եք հետ կանչել ձեր պատասխանը:",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "Ձեր պատասխանը հետ է կանչվել:",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "Չհաջողվեց հետ վերցնել ձեր պատասխանը: ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "Ջնջե՞լ բոլոր հաճախումների պատասխանները: ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "Հաճախումների գրանցումները մաքրվել են:",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "Չհաջողվեց մաքրել հաճախելիության գրառումները:",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "Ուղեկիցներ",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "Մարդիկ",
+      "People",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountHint": [
+      "Քանի՞ հոգի յուրաքանչյուր տարբերակի համար ({{ընդամենը}} ընդհանուր)",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "Հյուրերի անունները",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "Գրեք յուրաքանչյուր ուղեկիցի անունն ու ազգանունը (առավելագույնը {{հաշվում}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "Անուն1 Ազգանուն1, Անուն2 Ազգանուն2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "Հրավերը բեռնվում է...",
     "notFoundTitle": "Հրավերը չի գտնվել",
     "notFoundText": "Այս հղումով հրավեր չգտանք։ Եթե կարծում եք, որ սխալ է, կապվեք հյուրընկալողների հետ։",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Վեդինգո",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Ստեղծեք և կիսվեք ձեր անհատական հարսանեկան հրավերով։",
     "emptyDescription": "Կառավարեք ձեր հրավերի տվյալները, կիսվեք եզակի հղումով ձեր հյուրերի հետ և ստացեք նրանց մասնակցության հաստատումները։",
     "createLink": "Ստեղծել հրավեր",
     "privacyPolicy": "Գաղտնիության քաղաքականություն",
     "terms": "Պայմաններ",
     "legalNotice": "Իրավական ծանուցում",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "Չհաջողվեց գտնել այս վայրը:",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "Չհաջողվեց բեռնել քարտեզը:",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "Կոորդինատներ՝ {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "Քարտեզի նախադիտում նշված վայրում:",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "Տեղադրությունը կազմաձևված է",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "Հրավերը բեռնվում է",
@@ -308,28 +1125,427 @@
     "galleryUploadFailed": "Լուսանկարները չվերբեռնվեցին։",
     "noValidFiles": "Վավեր ֆայլ չկա։ Առավելագույնը 20 MB, JPG/PNG։",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "Վերբեռնեք աուդիո ֆայլ՝ շապիկի վրա նվագարկելու համար (MP3, WAV, OGG, M4A — առավելագույնը 5 ՄԲ):",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "Վերբեռնեք աուդիո ֆայլ",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG կամ M4A — առավելագույնը 5 ՄԲ",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "Աուդիո ձևաչափը չի աջակցվում: ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "Աուդիո ֆայլը դատարկ է:",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "Աուդիո ֆայլը գերազանցում է 5 ՄԲ սահմանաչափը:",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "Սխալ՝ աուդիո ֆայլը կարդալիս:",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "Ֆայլը դատարկ է: ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "Պատկերի նկարագրություն...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "Պատկերասրահում առավելագույնը {{max}} պատկեր:",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "Վերբեռնվում է {{ընդհանուր}} լուսանկար(ներ)...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "Լուսանկարի վերբեռնում...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "Փոխել լուսանկարը",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "Սխալ՝ նկարագրությունը պահելիս",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "Նկարագրությունը պահպանված է",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "Ընտրված երաժշտություն",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "Հեռացրեք երաժշտությունը",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "Խաղում է...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "Նախադիտում",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "Ընտրել",
+      "Select",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "selected": [
+      "Ընտրված է",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1569,66 @@
     "pdfTableCompanions": "Ուղեկցողներ",
     "pdfTableDiet": "Սննդակարգ",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Ադմին",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "Դիտել հրավերը",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "Դուրս գալ",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "Հաստատված",
@@ -384,7 +1657,26 @@
     "confirms": "Հաստատում է",
     "declines": "Մերժում է",
     "pending": "Սպասվող",
-    "visits_one": "1 visit",
+    "visits_one": [
+      "1 այցելություն",
+      "1 visit",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +1709,66 @@
     "generateMessage": "Ստեղծել այլ հաղորդագրություն",
     "copyMessage": "Պատճենել հաղորդագրությունը",
     "shareVia": "Կիսվել",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "Telegram",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Տպել",
     "printPdf": "Տպել / Պահպանել PDF",
     "linkCopied": "Հղումը պատճենված է։",
@@ -446,9 +1795,47 @@
     "deleteButton": "Պահանջել տվյալների ջնջում",
     "exportButton": "Արտահանել իմ տվյալները",
     "rightsHint": "Ձեր էլփոստի հաճախորդը կբացվի նախապես սահմանված ձևանմուշով։ Կարող եք նաև գրել adriancl2001@gmail.com հասցեին։",
-    "ccpaTitle": "CCPA / CPRA (California)",
+    "ccpaTitle": [
+      "CCPA / CPRA (Կալիֆորնիա)",
+      "CCPA / CPRA (California)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "ccpaText": "Wedingo-ն չի վաճառում անձնական տվյալներ։ Հավաքագրված տվյալներն օգտագործվում են բացառապես հրավերի կառավարման համար։ Եթե California-ի ռեզիդենտ եք, ունեք ձեր տվյալների ջնջում պահանջելու և ձեր իրավունքների իրականացման համար խտրականության չենթարկվելու իրավունք։",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Վեդինգո",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Վեբ հավելված հարսանեկան հրավերների կառավարման համար։",
     "copyright": "© {{year}} Adrián Carrasco López. Բոլոր իրավունքները պաշտպանված են։",
     "deleteEmailSubject": "Տվյալների ջնջման պահանջ - Wedingo",
@@ -518,13 +1905,146 @@
     "deleteFailed": "Հրավերը չջնջվեց։ Փորձեք կրկին։",
     "configLoadFailed": "Կարգավորումը չբեռնվեց։ Ստուգեք կապը և փորձեք կրկին։",
     "invalidLink": "Հրավերի հղումը սխալ է։",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "Բնակության մասին տեղեկատվությունը չի կարող գերազանցել 2000 նիշը:",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "Ցանկի նկարագրությունը չի կարող գերազանցել 2000 նիշը:",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "Չհաջողվեց մշակել պատկերը: ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "Չհաջողվեց կարդալ պատկերի ֆայլը:",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "Պատկերի գաղտնագրումը ձախողվեց:",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "Պատկերը չափազանց մեծ է նույնիսկ սեղմումից հետո:",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "Ֆայլը դատարկ է: ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -588,7 +2108,26 @@
     "tokenCleanError": "Թոքենները չմաքրվեցին։",
     "tokenLoadError": "Թոքենները չբեռնվեցին։",
     "accountEmail": "Էլփոստ՝ {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID՝ {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Ակտիվ",
     "sessionInactive": "Ոչ ակտիվ",
     "sessionLabel": "Լոկալ սեսիա՝ {{status}}",
@@ -615,10 +2154,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Նշան",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVP-ներ",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2213,46 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "Էլ",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "Գաղտնաբառ",
+      "Password",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "compliance": {
     "title": "Մշակման գործողությունների գրանցամատյան (GDPR հոդ. 30)",
@@ -653,31 +2268,126 @@
     "row1Basis": "Համաձայնություն (GDPR հոդ. 6.1.a)",
     "row1Purpose": "Հարսանեկան հրավերի ստեղծում և անհատականացում",
     "row1Retention": "Քանի դեռ հաշիվն ակտիվ է",
-    "row1Recipients": "Google Cloud (Firestore, hosting)",
+    "row1Recipients": [
+      "Google Cloud (Firestore, հոստինգ)",
+      "Google Cloud (Firestore, hosting)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row2Activity": "Մասնակցության հաստատում (RSVP)",
     "row2Data": "Հյուրի անուն, մասնակցություն (այո/ոչ), ճաշացանկի ընտրություն, ալերգիաներ, առողջական տվյալներ",
     "row2Basis": "Համաձայնություն (GDPR հոդ. 6.1.a, 9.2.a)",
     "row2Purpose": "Հյուրերի ցանկի և ճաշացանկի կառավարում",
     "row2Retention": "Միջոցառումից 12 ամիս հետո",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Պատկերների վերբեռնում",
     "row3Data": "Հարսանեկան լուսանկարներ (AES-256-GCM գաղտնագրված)",
     "row3Basis": "Համաձայնություն (GDPR հոդ. 6.1.a)",
     "row3Purpose": "Լուսանկարների պատկերասրահ հրավերում",
     "row3Retention": "Միջոցառումից 12 ամիս հետո",
-    "row3Recipients": "Google Cloud (Firestore subcollection)",
+    "row3Recipients": [
+      "Google Cloud (Firestore ենթահավաքածու)",
+      "Google Cloud (Firestore subcollection)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row4Activity": "Նույնականացում և սեսիաներ",
     "row4Data": "Սեսիայի թոքեն, ադմինի օգտանուն",
     "row4Basis": "Օրինական շահ (GDPR հոդ. 6.1.f)",
     "row4Purpose": "Ադմինի վահանակի մուտքի վերահսկում",
     "row4Retention": "Սեսիայի տևողություն",
-    "row4Recipients": "Google Cloud (Firestore sessions)",
+    "row4Recipients": [
+      "Google Cloud (Firestore նիստեր)",
+      "Google Cloud (Firestore sessions)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row5Activity": "Սուպերադմինի աուդիտ",
     "row5Data": "Սուպերադմինի գործողություններ, օգտագործված թոքեններ, ջնջված հրավերներ",
     "row5Basis": "Իրավական պարտավորություն (GDPR հոդ. 6.1.c)",
     "row5Purpose": "Վարչական գործողությունների գրանցում",
     "row5Retention": "3 տարի",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Միջազգային փոխանցումներ",
     "internationalText": "Տվյալները պահվում են Google Cloud-ի սերվերներում eur3 տարածաշրջանում (Ֆրանկֆուրտ, Գերմանիա)։ Google LLC (ԱՄՆ) հանդես է գալիս որպես տվյալների մշակող DPA-ի ներքո՝ համապատասխան GDPR-ի 28-րդ հոդվածին։ ԱՄՆ փոխանցումները պաշտպանված են՝",
     "scc": "Ստանդարտ պայմանագրային դրույթներ (SCC) - Իրականացման որոշում 2021/914",
@@ -691,86 +2401,1359 @@
     "measureSuperadmin": "Սուպերադմինը պաշտպանված է Firebase Authentication-ով + թաքնված երթուղով"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "Մատչելիություն",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Փակել",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontSize": [
+      "Տեքստի չափը",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "Նորմալ",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontLarge": [
+      "Մեծ",
+      "Large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontExtraLarge": [
+      "Լրացուցիչ մեծ",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "Տողերի տարածություն",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "Նորմալ",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineWide": [
+      "Լայն",
+      "Wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineVeryWide": [
+      "Շատ լայն",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "Բարձր հակադրություն",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "Կրճատել շարժումը",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "OpenDyslexic տառատեսակ",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "Ավելի շատ տառերի տարածություն",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "Ընդգծի՛ր բոլոր հղումները",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "Մեծ կուրսոր",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "Մոխրագույն գույն",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "Տեսանելի ուշադրության ցուցիչներ",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "Ոչ մի երաժշտություն",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "Սխալ բեռնելիս",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "Երաժշտություն",
+      "Music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "soundCloudNote": [
+      "SoundCloud-ի հետքեր — բաց է նվագարկելու համար",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "Բացեք SoundCloud-ում",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "Տպման պատրաստում…",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "Զույգի լուսանկար",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "Իրենց կնքահայրերի օրհնությամբ",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "Ամսաթիվը և վայրը",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "Արարողության ժամանակը.",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Դիտեք գտնվելու վայրը Google Քարտեզներում",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "Մենք անհամբեր սպասում ենք ձեզ հետ կիսելու այս յուրահատուկ պահը:",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "Տրանսպորտ",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutGuests": [
+      "Հյուրերի մասին",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "Հարսանեկան ժամանակացույց",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "Մանրամասն ժամանակացույցը շուտով կտարածվի։",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "Հագուստի կոդ",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "Ավելի ուշ կհաղորդվի։",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "Երեխաների մասին",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "Մեր պատմությունը",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "Ինչպես ամեն ինչ սկսվեց",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "Պատմությունը շուտով կկիսվի:",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "Նվերներ",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "Ձեր ներկայությունը լավագույն նվերն է",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "Նվերների մասին տեղեկատվությունը շուտով կփոխանցվի:",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "Բանկի մանրամասները",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "Տեղավորում",
+      "Accommodation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "whereToStay": [
+      "Որտեղ մնալ",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "Բնակության մասին տեղեկատվությունը շուտով կփոխանցվի:",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · Գաղտնիության քաղաքականություն wedingo-6c26a.web.app կայքում",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "Փակել պատուհանը",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": [
+      "Շարժվեք վերև",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "Տեղափոխեք ներքև",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "title": [
+      "Պատվեր և տեսանելիություն",
+      "Order & visibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "help": [
+      "Քաշեք՝ վերադասավորելու համար, օգտագործեք կոճակները տեղափոխելու համար և միացրեք կամ անջատեք յուրաքանչյուր բաժին:",
+      "Drag to reorder, use the buttons to move, and toggle each section on or off.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "Ընտրեք լեզուն",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 ուղեկից",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "Իսպանիա",
+      "Spain",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "westernEurope": [
+      "Արևմտյան Եվրոպա",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "Սկանդինավյան Եվրոպա",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "Կենտրոնական Եվրոպա",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "Հարավային Եվրոպա / Բալկաններ",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "Արևելյան Եվրոպա / Կովկաս",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "Արևելյան Ասիա",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "Հարավային Ասիա",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "Հարավարևելյան Ասիա",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "Կենտրոնական Ասիա / Մերձավոր Արևելք",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "Աֆրիկա",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "Ամերիկաներ",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +3770,1708 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": [
+      "Փոփոխություններ",
+      "Changelog",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Փակել",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "Այս հրավերի համար արդեն ակտիվ նիստ կա: ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "Մուտքի կոդը վավեր չէ:",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "Մուտքագրեք մուտքի կոդը:",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "Կոդը հաջողությամբ հաստատվեց:",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "Չհաջողվեց հաստատել կոդը: ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "Մուտքագրեք ձեր օգտանունը և մուտքի կոդը:",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "Սխալ օգտանուն կամ ծածկագիր:",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "Կոդը չի համապատասխանում այս օգտվողին:",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "Դուք հաջողությամբ մուտք եք գործել:",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "Չհաջողվեց հաստատել կոդը: ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "Մուտքագրեք CONFIRM՝ նոր կոդ ստեղծելու համար:",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "Նախ մուտքագրեք ձեր օգտվողի անունը:",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "Օգտվողի անունը կարող է պարունակել միայն տառեր և թվեր:",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "Օգտանունը չի կարող գերազանցել 50 նիշը:",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "Այս օգտվողն այստեղ մուտք գործելու թույլտվություն չունի:",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "Ստեղծվել է կոդը: ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "Չհաջողվեց ստեղծել կոդը: ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "Մուտքագրեք ընթացիկ մուտքի կոդը՝ նորը ստեղծելու համար:",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "Ստեղծվել է նոր կոդ: ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "Կոդը թարմացվել է։ ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "Այս հաշիվը չունի վարչարարության թույլտվություններ:",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "Սխալ հավատարմագրեր:",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "Չափազանց շատ փորձեր: ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "Էլփոստի ձևաչափը վավեր չէ:",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "Չհաջողվեց մուտք գործել: Ստուգեք ձեր կապը:",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": [
+      "Փոփոխությունները պահված են",
+      "Changes saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": [
+      "հունվար",
+      "January",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "2": [
+      "փետրվար",
+      "February",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "3": [
+      "մարտ",
+      "March",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "4": [
+      "ապրիլ",
+      "April",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "5": [
+      "մայիս",
+      "May",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "6": [
+      "հունիս",
+      "June",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "7": [
+      "հուլիս",
+      "July",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "8": [
+      "օգոստոս",
+      "August",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "9": [
+      "սեպտեմբեր",
+      "September",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "10": [
+      "հոկտեմբեր",
+      "October",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "11": [
+      "նոյեմբեր",
+      "November",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "12": [
+      "դեկտեմբեր",
+      "December",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": [
+      "Թեթև թեմաներ",
+      "Light themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dark": [
+      "Մութ թեմաներ",
+      "Dark themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": [
+      "Սնձան",
+      "Gluten",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lactose": [
+      "Լակտոզա",
+      "Lactose",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nuts": [
+      "Ծառի ընկույզներ",
+      "Tree nuts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "shellfish": [
+      "Խեցեմորթ",
+      "Shellfish",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "Մեր սիրելիներին",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "Հպեք՝ բացելու համար",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "Հպեք՝ շարունակելու համար",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "Մեր հարսանիքը",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "{{names}}-ի հարսանիքը",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "Տեղադրությունը պետք է հաստատվի",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "Մենք անհամբեր սպասում ենք այս յուրահատուկ պահը նշելու ձեզ հետ:",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "Ժամանակը:",
+      "Time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeLabel": [
+      "Անցկացման վայրը:",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "Նրբագեղ և պայծառ, ոսկեգույն շեշտադրումներով։",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "Բնական ու սթափ՝ փափուկ կանաչիով։",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "Ջերմ ու նուրբ, վարդագույն երանգներով։",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "Թեթև և չեզոք, հանգիստ և հավերժական ներկայությամբ:",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "Փափուկ և ռոմանտիկ, մարգարտյա վարդագույն երանգներով։",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "Թարմ և հանգիստ, նարդոսի և մանուշակագույն երանգներով:",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "Պայծառ ու տոնական՝ ջերմ ոսկեգույն փայլերով։",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "Մուգ և էլեգանտ, սաթ և ոսկեգույն ընդգծումներով:",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "Խորը և բարդ, ինտենսիվ ոսկով մուգ ֆոնի վրա:",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "Շատ մուգ կապույտ ինտենսիվ ոսկեգույն և հանդիսավոր ներկայությամբ:",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "Ջերմ ու պարուրող, կարմիր գինիով և ոսկեգույն փայլերով:",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "Մուգ կապույտ՝ արծաթագույն շեշտադրումներով և հանգիստ ներկայությամբ:",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "Խորը բնական կանաչ ոսկեգույն և էլեգանտ երանգներով:",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "Ինտենսիվ մանուշակագույն վարդագույն և ռոմանտիկ փայլերով:",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "Տարբեր սիրո տոն՝ ծիածանի գույներով։",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "Կապույտ, վարդագույն և սպիտակ՝ ի հարգանք տրանս դրոշի:",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "Դեղին, սպիտակ, մանուշակագույն և սև ոչ երկուական դրոշի համար:",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "Լեսբիական դրոշի նարնջագույն, սպիտակ և վարդագույն:",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "Երկու դրոշի վարդագույն, մանուշակագույն և կապույտ:",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "Թավայի դրոշի վարդագույն, դեղին և կապույտ:",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "Անսեքսուալ դրոշի սև, մոխրագույն, սպիտակ և մանուշակագույն:",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "Բարի գալուստ խաղահրապարակով",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "Բարի գալուստ հսկողության ներքո",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "Միայն մեծահասակների համար",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "982c75c78c6c8e6005ec3a4021a7f785",
+              "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "Տվյալներ չկան",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "ընդհանուր",
+      "total",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "barChart": [
+      "Հաճախումների գծապատկեր",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

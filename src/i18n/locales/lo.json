@@ -11,20 +11,172 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "ເຫັນໄດ້",
+      "Visible",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "ມີບາງຢ່າງຜິດພາດ",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "ກະລຸນາໂຫຼດໜ້ານີ້ຄືນໃໝ່ເພື່ອລອງອີກຄັ້ງ.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "ໂຫຼດໜ້າຄືນໃໝ່",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "ປິດ",
+        "Close",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "ຂ້າມໄປຫາເນື້ອຫາຕົ້ນຕໍ",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "ແຖບບໍລິຫານ",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "ບໍລິຫານ",
+        "Administration",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "landing": {
@@ -55,8 +207,46 @@
     "todayIsWedding": "ມື້ນີ້ແມ່ນມື້ແຕ່ງງານ",
     "missing": "ຍັງເຫຼືອ",
     "todayIsTheDay": "ມື້ນີ້ແມ່ນມື້ພິເສດ!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": [
+      "ກວມເອົາ",
+      "Cover",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eyebrow": [
+      "Wedding ຂອງພວກເຮົາ",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "ວັນທີ ແລະ ສະຖານທີ່",
@@ -106,8 +296,46 @@
     "next": "ຕໍ່ໄປ",
     "thumbnailAria": "ຮູບ {{number}}",
     "thumbnailAlt": "ຮູບຫຍໍ້ຂອງຮູບໃນຫ້ອງສະແດງ",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "ຄັງຮູບພາບ, ໃຊ້ປຸ່ມລູກສອນເພື່ອນໍາທາງ",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "ຮູບຂະຫຍາຍ",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "ການຢືນຢັນການເຂົ້າຮ່ວມ",
@@ -138,49 +366,638 @@
     "ageUnder14Warning": "ທ່ານມີອາຍຸຕໍ່າກວ່າ 14 ປີ. ທ່ານຕ້ອງການການຍິນຍອມຈາກພໍ່ແມ່ ຫຼື ຜູ້ປົກຄອງ.",
     "parentalConsent": "ພໍ່ແມ່ ຫຼື ຜູ້ປົກຄອງຂອງຂ້ອຍຍິນຍອມໃຫ້ຂ້ອຍເຂົ້າຮ່ວມ",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "ໃສ່ຊື່ຂອງທ່ານເພື່ອຢືນຢັນການເຂົ້າຮ່ວມ.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "ເລືອກຕົວເລືອກເມນູ.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "ທ່ານຕ້ອງຍອມຮັບນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "ໃສ່ວັນເດືອນປີເກີດຂອງທ່ານ.",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "ທ່ານມີອາຍຸຕ່ຳກວ່າ 14 ປີ. ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "ທ່ານຕ້ອງຍິນຍອມໃຫ້ການປະມວນຜົນຂໍ້ມູນສຸຂະພາບຂອງທ່ານ.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "ຊີ້ບອກຢ່າງໜ້ອຍໜຶ່ງຕົວເລືອກເມນູ.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "ໃສ່ຊື່ຂອງຄູ່ຮ່ວມຂອງເຈົ້າ.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "ທ່ານບໍ່ສາມາດໃສ່ຊື່ຫຼາຍກ່ວາຄູ່.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "ຜົນລວມຂອງຕົວເລືອກເມນູບໍ່ສາມາດເກີນຈໍານວນຄູ່.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "ຂອບໃຈ, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "ຂອບໃຈ, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "ພວກເຮົາບໍ່ສາມາດບັນທຶກຄຳຕອບຂອງທ່ານໄດ້. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການຖອນຄຳຕອບ?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "ຄຳຕອບຂອງເຈົ້າຖືກຖອນອອກແລ້ວ.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "ບໍ່ສາມາດຖອນຄຳຕອບຂອງທ່ານໄດ້. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "ລຶບຄຳຕອບການເຂົ້າຮ່ວມທັງໝົດບໍ? ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "ລຶບບັນທຶກການເຂົ້າຮ່ວມ.",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "ບໍ່ສາມາດລຶບບັນທຶກການເຂົ້າຮ່ວມໄດ້.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "ສະຫາຍ",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "ຄົນ",
+      "People",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountHint": [
+      "ມີຈັກຄົນສຳລັບແຕ່ລະທາງເລືອກ ({{total}} ທັງໝົດ)",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "ຊື່ແຂກ",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "ຂຽນຊື່ ແລະນາມສະກຸນຂອງແຕ່ລະຄູ່ (ສູງສຸດ {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "ຊື່1ນາມສະກຸນ1,ຊື່2ນາມສະກຸນ2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "ກຳລັງໂຫລດບັດເຊີນ...",
     "notFoundTitle": "ບໍ່ພົບບັດເຊີນ",
     "notFoundText": "ພວກເຮົາບໍ່ພົບບັດເຊີນທີ່ມີລິ້ງນີ້. ຖ້າທ່ານຄິດວ່າມັນເປັນຂໍ້ຜິດພາດ ຕິດຕໍ່ເຈົ້າພາບ.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "ເວດິງໂກ",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "ສ້າງ ແລະ ແບ່ງປັນບັດເຊີນງານແຕ່ງແບບສ່ວນຕົວຂອງທ່ານ.",
     "emptyDescription": "ຈັດການຂໍ້ມູນບັດເຊີນຂອງທ່ານ ແບ່ງປັນລິ້ງທີ່ເປັນເອກະລັກກັບແຂກຂອງທ່ານ ແລະ ຮັບການຢືນຢັນການເຂົ້າຮ່ວມ.",
     "createLink": "ສ້າງບັດເຊີນ",
     "privacyPolicy": "ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ",
     "terms": "ເງື່ອນໄຂ",
     "legalNotice": "ແຈ້ງການທາງກົດໝາຍ",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "ບໍ່ສາມາດຊອກຫາສະຖານທີ່ນີ້ໄດ້.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "ບໍ່ສາມາດໂຫຼດແຜນທີ່ໄດ້.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "ພິກັດ: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "ແຜນທີ່ສະແດງຕົວຢ່າງໃນສະຖານທີ່ທີ່ລະບຸ.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "ຕັ້ງຄ່າສະຖານທີ່",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "ກຳລັງໂຫລດບັດເຊີນ",
@@ -308,28 +1125,427 @@
     "galleryUploadFailed": "ບໍ່ສາມາດອັບໂຫລດຮູບ.",
     "noValidFiles": "ບໍ່ມີໄຟລ໌ທີ່ຖືກຕ້ອງ. ສູງສຸດ 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "ອັບໂຫຼດໄຟລ໌ສຽງເພື່ອຫຼິ້ນເທິງໜ້າປົກ (MP3, WAV, OGG, M4A — ສູງສຸດ 5 MB).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "ອັບໂຫຼດໄຟລ໌ສຽງ",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG ຫຼື M4A — ສູງສຸດ 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "ບໍ່ຮອງຮັບຮູບແບບສຽງ. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "ໄຟລ໌ສຽງຫວ່າງເປົ່າ.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "ໄຟລ໌ສຽງເກີນຂອບເຂດຈໍາກັດ 5 MB.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "ເກີດຄວາມຜິດພາດໃນການອ່ານໄຟລ໌ສຽງ.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "ໄຟລ໌ຫວ່າງເປົ່າ. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "ລາຍລະອຽດຮູບພາບ...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "ສູງສຸດ {{max}} ຮູບໃນຄັງ.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "ກຳລັງອັບໂຫລດ {{total}} ຮູບ...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "ກຳລັງອັບໂຫລດຮູບ...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "ປ່ຽນຮູບ",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "ເກີດຄວາມຜິດພາດໃນການບັນທຶກຄຳອະທິບາຍ",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "ບັນທຶກລາຍລະອຽດແລ້ວ",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "ດົນຕີທີ່ເລືອກ",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "ເອົາເພງອອກ",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "ກຳລັງຫຼິ້ນ...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "ເບິ່ງຕົວຢ່າງ",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "ເລືອກ",
+      "Select",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "selected": [
+      "ເລືອກແລ້ວ",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1569,66 @@
     "pdfTableCompanions": "ຜູ້ຕິດຕາມ",
     "pdfTableDiet": "ອາຫານ",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Admin",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "ເບິ່ງການເຊີນ",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "ອອກຈາກລະບົບ",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "ຢືນຢັນແລ້ວ",
@@ -384,7 +1657,26 @@
     "confirms": "ຢືນຢັນ",
     "declines": "ປະຕິເສດ",
     "pending": "ລໍຖ້າ",
-    "visits_one": "1 visit",
+    "visits_one": [
+      "1 ການຢ້ຽມຢາມ",
+      "1 visit",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +1709,66 @@
     "generateMessage": "ສ້າງຂໍ້ຄວາມອື່ນ",
     "copyMessage": "ສຳເນົາຂໍ້ຄວາມ",
     "shareVia": "ແບ່ງປັນຜ່ານ",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "ໂທລະເລກ",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "ພິມ",
     "printPdf": "ພິມ / ບັນທຶກ PDF",
     "linkCopied": "ສຳເນົາລິ້ງແລ້ວ.",
@@ -446,9 +1795,47 @@
     "deleteButton": "ຮ້ອງຂໍລຶບຂໍ້ມູນ",
     "exportButton": "ສົ່ງອອກຂໍ້ມູນຂອງຂ້ອຍ",
     "rightsHint": "ໂປຣແກຣມອີເມວຂອງທ່ານຈະເປີດພ້ອມແມ່ແບບທີ່ກຳນົດໄວ້ລ່ວງໜ້າ. ທ່ານສາມາດຂຽນຫາ adriancl2001@gmail.com ໄດ້ເຊັ່ນກັນ.",
-    "ccpaTitle": "CCPA / CPRA (California)",
+    "ccpaTitle": [
+      "CCPA / CPRA (ຄາລິຟໍເນຍ)",
+      "CCPA / CPRA (California)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "ccpaText": "Wedingo ບໍ່ຂາຍຂໍ້ມູນສ່ວນຕົວ. ຂໍ້ມູນທີ່ເກັບກຳຖືກໃຊ້ສະເພາະສຳລັບການຈັດການບັດເຊີນ. ຖ້າທ່ານເປັນຜູ້ຢູ່ອາໄສ California ທ່ານມີສິດຮ້ອງຂໍການລຶບຂໍ້ມູນ ແລະ ບໍ່ຖືກຈຳແນກຕໍ່ການໃຊ້ສິດຂອງທ່ານ.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "ເວດິງໂກ",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "ແອັບເວັບສຳລັບການຈັດການບັດເຊີນງານແຕ່ງ.",
     "copyright": "© {{year}} Adrián Carrasco López. ສະຫງວນລິຂະສິດທັງໝົດ.",
     "deleteEmailSubject": "ຄຳຮ້ອງຂໍລຶບຂໍ້ມູນ - Wedingo",
@@ -518,13 +1905,146 @@
     "deleteFailed": "ບໍ່ສາມາດລຶບບັດເຊີນ. ລອງໃໝ່ອີກຄັ້ງ.",
     "configLoadFailed": "ບໍ່ສາມາດໂຫລດການຕັ້ງຄ່າ. ກວດສອບການເຊື່ອມຕໍ່ ແລະ ລອງໃໝ່.",
     "invalidLink": "ລິ້ງບັດເຊີນບໍ່ຖືກຕ້ອງ.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "ຂໍ້​ມູນ​ທີ່​ພັກ​ບໍ່​ສາ​ມາດ​ເກີນ 2000 ຕົວ​ອັກ​ສອນ​.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "ລາຍລະອຽດເມນູບໍ່ສາມາດເກີນ 2000 ຕົວອັກສອນ.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "ບໍ່ສາມາດປະມວນຜົນຮູບພາບໄດ້. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "ບໍ່ສາມາດອ່ານໄຟລ໌ຮູບພາບໄດ້.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "ການເຂົ້າລະຫັດຮູບພາບລົ້ມເຫລວ.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "ຮູບພາບມີຂະຫນາດໃຫຍ່ເກີນໄປເຖິງແມ່ນວ່າຫຼັງຈາກການບີບອັດ.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "ໄຟລ໌ຫວ່າງເປົ່າ. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -588,7 +2108,26 @@
     "tokenCleanError": "ບໍ່ສາມາດທຳຄວາມສະອາດໂທເຄັນ.",
     "tokenLoadError": "ບໍ່ສາມາດໂຫລດໂທເຄັນ.",
     "accountEmail": "ອີເມວ: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "ເຄື່ອນໄຫວ",
     "sessionInactive": "ບໍ່ເຄື່ອນໄຫວ",
     "sessionLabel": "ເຊດຊັນທ້ອງຖິ່ນ: {{status}}",
@@ -615,10 +2154,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "ໂທເຄັນ",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVPs",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2213,46 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "ອີເມວ",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "ລະຫັດຜ່ານ",
+      "Password",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "compliance": {
     "title": "ບັນທຶກກິດຈະກຳການປະມວນຜົນ (GDPR ມາດຕາ 30)",
@@ -653,31 +2268,126 @@
     "row1Basis": "ການຍິນຍອມ (GDPR ມາດຕາ 6.1.a)",
     "row1Purpose": "ສ້າງ ແລະ ປັບແຕ່ງບັດເຊີນງານແຕ່ງ",
     "row1Retention": "ຕະຫຼອດເວລາທີ່ບັນຊີເຄື່ອນໄຫວ",
-    "row1Recipients": "Google Cloud (Firestore, hosting)",
+    "row1Recipients": [
+      "Google Cloud (Firestore, ໂຮດຕິ້ງ)",
+      "Google Cloud (Firestore, hosting)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row2Activity": "ການຢືນຢັນການເຂົ້າຮ່ວມ (RSVP)",
     "row2Data": "ຊື່ແຂກ ການເຂົ້າຮ່ວມ (ມາ/ບໍ່ມາ) ການເລືອກລາຍການອາຫານ ອາການແພ້ ຂໍ້ມູນສຸຂະພາບ",
     "row2Basis": "ການຍິນຍອມ (GDPR ມາດຕາ 6.1.a, 9.2.a)",
     "row2Purpose": "ຈັດການລາຍຊື່ແຂກ ແລະ ລາຍການອາຫານ",
     "row2Retention": "12 ເດືອນຫຼັງກິດຈະກຳ",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "ການອັບໂຫລດຮູບພາບ",
     "row3Data": "ຮູບງານແຕ່ງ (ເຂົ້າລະຫັດ AES-256-GCM)",
     "row3Basis": "ການຍິນຍອມ (GDPR ມາດຕາ 6.1.a)",
     "row3Purpose": "ຫ້ອງສະແດງຮູບໃນບັດເຊີນ",
     "row3Retention": "12 ເດືອນຫຼັງກິດຈະກຳ",
-    "row3Recipients": "Google Cloud (Firestore subcollection)",
+    "row3Recipients": [
+      "Google Cloud (ການເກັບຍ່ອຍ Firestore)",
+      "Google Cloud (Firestore subcollection)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row4Activity": "ການພິສູດຕົວຕົນ ແລະ ເຊດຊັນ",
     "row4Data": "ໂທເຄັນເຊດຊັນ ຊື່ຜູ້ໃຊ້ຜູ້ດູແລ",
     "row4Basis": "ຜົນປະໂຫຍດທີ່ຊອບທຳ (GDPR ມາດຕາ 6.1.f)",
     "row4Purpose": "ຄວບຄຸມການເຂົ້າເຖິງແຜງຄວບຄຸມ",
     "row4Retention": "ໄລຍະເວລາຂອງເຊດຊັນ",
-    "row4Recipients": "Google Cloud (Firestore sessions)",
+    "row4Recipients": [
+      "Google Cloud (ເຊດຊັນ Firestore)",
+      "Google Cloud (Firestore sessions)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row5Activity": "ການກວດສອບຜູ້ດູແລສູງສຸດ",
     "row5Data": "ການກະທຳຂອງຜູ້ດູແລສູງສຸດ ໂທເຄັນທີ່ໃຊ້ ບັດເຊີນທີ່ຖືກລຶບ",
     "row5Basis": "ພັນທະທາງກົດໝາຍ (GDPR ມາດຕາ 6.1.c)",
     "row5Purpose": "ບັນທຶກກິດຈະກຳບໍລິຫານ",
     "row5Retention": "3 ປີ",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "ການໂອນຍ້າຍລະຫວ່າງປະເທດ",
     "internationalText": "ຂໍ້ມູນຖືກເກັບຢູ່ເຊີບເວີ Google Cloud ໃນພາກພື້ນ eur3 (ແຟງເຟີດ ເຢຍລະມັນ). Google LLC (ສະຫະລັດ) ເຮັດໜ້າທີ່ເປັນຜູ້ປະມວນຜົນຂໍ້ມູນພາຍໃຕ້ DPA ຕາມ GDPR ມາດຕາ 28. ການໂອນຍ້າຍໄປສະຫະລັດຖືກຄຸ້ມຄອງໂດຍ:",
     "scc": "ຂໍ້ກຳນົດສັນຍາມາດຕະຖານ (SCC) - ຄຳຕັດສິນບັງຄັບໃຊ້ 2021/914",
@@ -691,86 +2401,1359 @@
     "measureSuperadmin": "ຜູ້ດູແລສູງສຸດຖືກປົກປ້ອງໂດຍ Firebase Authentication + ເສັ້ນທາງທີ່ເຊື່ອງ"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "ການເຂົ້າເຖິງ",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "ປິດ",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontSize": [
+      "ຂະໜາດຕົວໜັງສື",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "ປົກກະຕິ",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontLarge": [
+      "ຂະຫນາດໃຫຍ່",
+      "Large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontExtraLarge": [
+      "ຂະຫນາດໃຫຍ່ພິເສດ",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "ໄລຍະຫ່າງແຖວ",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "ປົກກະຕິ",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineWide": [
+      "ກວ້າງ",
+      "Wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineVeryWide": [
+      "ກວ້າງຫຼາຍ",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "ກົງກັນຂ້າມສູງ",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "ຫຼຸດຜ່ອນການເຄື່ອນໄຫວ",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "ຟອນ OpenDyslexic",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "ໄລຍະຫ່າງຕົວໜັງສືເພີ່ມເຕີມ",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "ຂີດກ້ອງລິ້ງທັງໝົດ",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "ຕົວກະພິບໃຫຍ່",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "ສີເທົາ",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "ຕົວຊີ້ວັດຈຸດສຸມທີ່ເຫັນໄດ້",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "ບໍ່ມີດົນຕີ",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "ການໂຫຼດຜິດພາດ",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "ດົນຕີ",
+      "Music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "soundCloudNote": [
+      "ເພງ SoundCloud — ເປີດໃຫ້ຫຼິ້ນ",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "ເປີດໃນ SoundCloud",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "ກຳລັງກະກຽມການພິມ...",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "ຮູບຄູ່",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "ດ້ວຍ​ພອນ​ຂອງ​ພໍ່​ແມ່​ຂອງ​ເຂົາ​ເຈົ້າ",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "ວັນທີ ແລະສະຖານທີ່",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "ເວລາພິທີ:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "ເບິ່ງສະຖານທີ່ໃນ Google Maps",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "ພວກເຮົາຫວັງວ່າຈະໄດ້ແບ່ງປັນຊ່ວງເວລາພິເສດນີ້ໃຫ້ກັບເຈົ້າ.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "ການຂົນສົ່ງ",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutGuests": [
+      "ກ່ຽວກັບແຂກ",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "ຕາຕະລາງການແຕ່ງງານ",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "ຕາຕະລາງລາຍລະອຽດຈະຖືກແບ່ງປັນໃນໄວໆນີ້.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "ລະຫັດ dress",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "ຈະ​ໄດ້​ຮັບ​ການ​ສື່​ສານ​ພາຍ​ຫຼັງ​.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "ກ່ຽວກັບເດັກນ້ອຍ",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "ເລື່ອງຂອງພວກເຮົາ",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "ມັນທັງຫມົດໄດ້ເລີ່ມຕົ້ນແນວໃດ",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "ເລື່ອງຈະຖືກແບ່ງປັນໃນໄວໆນີ້.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "ຂອງຂວັນ",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "ການປະກົດຕົວຂອງເຈົ້າແມ່ນຂອງຂວັນທີ່ດີທີ່ສຸດ",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "ຂໍ້ມູນຂອງຂວັນຈະຖືກແບ່ງປັນໃນໄວໆນີ້.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "ລາຍລະອຽດທະນາຄານ",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "ທີ່ພັກ",
+      "Accommodation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "whereToStay": [
+      "ຢູ່ໃສ",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "ຂໍ້ມູນທີ່ພັກຈະຖືກແບ່ງປັນໃນໄວໆນີ້.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວຢູ່ wedingo-6c26a.web.app",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "ປິດປ່ອງຢ້ຽມ",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": [
+      "ຍ້າຍຂຶ້ນ",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "ຍ້າຍລົງ",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "title": [
+      "ຄໍາສັ່ງ & ການເບິ່ງເຫັນ",
+      "Order & visibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "help": [
+      "ລາກເພື່ອຈັດຮຽງໃໝ່, ໃຊ້ປຸ່ມຕ່າງໆເພື່ອຍ້າຍ, ແລະສະຫຼັບແຕ່ລະພາກສ່ວນເປີດ ຫຼື ປິດ.",
+      "Drag to reorder, use the buttons to move, and toggle each section on or off.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "ເລືອກພາສາ",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 ສະຫາຍ",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "ສະເປນ",
+      "Spain",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "westernEurope": [
+      "ເອີຣົບຕາເວັນຕົກ",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "Nordic ເອີຣົບ",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "ເອີຣົບກາງ",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "ພາກໃຕ້ຂອງເອີຣົບ / Balkans",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "ເອີຣົບຕາເວັນອອກ / Caucasus",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "ອາຊີຕາເວັນອອກ",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "ອາຊີໃຕ້",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "ອາຊີຕາເວັນອອກສ່ຽງໃຕ້",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "ອາຊີກາງ/ຕາເວັນອອກກາງ",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "ອາຟຣິກາ",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "ອາເມລິກາ",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +3770,1708 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": [
+      "ບັນທຶກການປ່ຽນແປງ",
+      "Changelog",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "ປິດ",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "ມີເຊດຊັນທີ່ໃຊ້ຢູ່ແລ້ວສຳລັບການເຊີນນີ້. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "ລະຫັດການເຂົ້າເຖິງບໍ່ຖືກຕ້ອງ.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "ໃສ່ລະຫັດການເຂົ້າເຖິງ.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "ລະຫັດຢືນຢັນສຳເລັດແລ້ວ.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "ບໍ່ສາມາດກວດສອບລະຫັດໄດ້. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "ໃສ່ຊື່ຜູ້ໃຊ້ແລະລະຫັດການເຂົ້າເຖິງຂອງທ່ານ.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "ຊື່ຜູ້ໃຊ້ ຫຼືລະຫັດບໍ່ຖືກຕ້ອງ.",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "ລະຫັດບໍ່ກົງກັບຜູ້ໃຊ້ນີ້.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "ທ່ານໄດ້ເຂົ້າສູ່ລະບົບຢ່າງສໍາເລັດຜົນ.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "ບໍ່ສາມາດກວດສອບລະຫັດໄດ້. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "ພິມ CONFIRM ເພື່ອສ້າງລະຫັດໃຫມ່.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "ໃສ່ຊື່ຜູ້ໃຊ້ຂອງເຈົ້າກ່ອນ.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "ຊື່ຜູ້ໃຊ້ສາມາດມີຕົວອັກສອນ ແລະຕົວເລກເທົ່ານັ້ນ.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "ຊື່ຜູ້ໃຊ້ບໍ່ສາມາດເກີນ 50 ຕົວອັກສອນ.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "ຜູ້ໃຊ້ນີ້ບໍ່ມີສິດໃນການເຂົ້າເຖິງທີ່ນີ້.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "ສ້າງລະຫັດ. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "ບໍ່ສາມາດສ້າງລະຫັດໄດ້. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "ໃສ່ລະຫັດການເຂົ້າເຖິງປັດຈຸບັນເພື່ອສ້າງອັນໃໝ່.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "ສ້າງລະຫັດໃໝ່. ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "ລະຫັດຕໍ່ອາຍຸແລ້ວ. ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "ບັນຊີນີ້ບໍ່ມີການອະນຸຍາດບໍລິຫານ.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "ຂໍ້ມູນປະຈຳຕົວບໍ່ຖືກຕ້ອງ.",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "ພະຍາຍາມຫຼາຍເກີນໄປ. ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "ຮູບແບບອີເມວບໍ່ຖືກຕ້ອງ.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "ການເຂົ້າສູ່ລະບົບຜິດພາດ. ກວດເບິ່ງການເຊື່ອມຕໍ່ຂອງທ່ານ.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": [
+      "ບັນທຶກການປ່ຽນແປງແລ້ວ",
+      "Changes saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": [
+      "ມັງກອນ",
+      "January",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "2": [
+      "ເດືອນກຸມພາ",
+      "February",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "3": [
+      "ມີນາ",
+      "March",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "4": [
+      "ເດືອນເມສາ",
+      "April",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "5": [
+      "ພຶດສະພາ",
+      "May",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "6": [
+      "ເດືອນມິຖຸນາ",
+      "June",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "7": [
+      "ກໍລະກົດ",
+      "July",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "8": [
+      "ສິງຫາ",
+      "August",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "9": [
+      "ກັນຍາ",
+      "September",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "10": [
+      "ຕຸລາ",
+      "October",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "11": [
+      "ເດືອນພະຈິກ",
+      "November",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "12": [
+      "ເດືອນທັນວາ",
+      "December",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": [
+      "ສີສັນສົດໃສ",
+      "Light themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dark": [
+      "ຮູບແບບສີສັນມືດ",
+      "Dark themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": [
+      "ກລູເຕນ",
+      "Gluten",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lactose": [
+      "ນໍ້າຕານ",
+      "Lactose",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nuts": [
+      "ໝາກໄມ້",
+      "Tree nuts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "shellfish": [
+      "ຫອຍ",
+      "Shellfish",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "ເຖິງທີ່ຮັກຂອງພວກເຮົາ",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "ແຕະເພື່ອເປີດ",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "ແຕະເພື່ອສືບຕໍ່",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "ງານແຕ່ງງານຂອງພວກເຮົາ",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "ງານແຕ່ງດອງຂອງ {{names}}",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "ສະຖານທີ່ທີ່ຈະຢືນຢັນ",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "ພວກເຮົາຫວັງວ່າຈະໄດ້ສະເຫຼີມສະຫຼອງຊ່ວງເວລາພິເສດນີ້ກັບທ່ານ.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "ເວລາ:",
+      "Time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeLabel": [
+      "ສະຖານທີ່:",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "elegant ແລະສົດໃສ, ມີສໍານຽງທອງ.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "ທໍາມະຊາດແລະ sober ມີສີຂຽວອ່ອນ.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "ອົບອຸ່ນແລະລະອຽດອ່ອນ, ມີ hues ສີບົວ.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "ແສງສະຫວ່າງ ແລະເປັນກາງ, ມີຄວາມງຽບສະຫງົບ ແລະບໍ່ມີເວລາ.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "ອ່ອນນຸ້ມ ແລະໂຣແມນຕິກ, ມີສີບົວມຸກ.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "ສົດຊື່ນ ແລະ ງຽບສະຫງົບ, ມີສີ lavender ແລະ mauve.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "ສົດໃສແລະງານບຸນ, ມີ sparkles ທອງອົບອຸ່ນ.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "ຊ້ໍາແລະສະຫງ່າງາມ, ມີຈຸດເດັ່ນຂອງອໍາພັນແລະທອງ.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "ເລິກ ແລະ ຊັບຊ້ອນ, ມີສີທອງຢ່າງເຂັ້ມຂຸ້ນຢູ່ພື້ນຫຼັງມືດ.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "ສີ​ຟ້າ​ເຂັ້ມ​ຫຼາຍ​ທີ່​ມີ​ຄໍາ​ທີ່​ເຂັ້ມ​ແຂງ​ແລະ​ມີ​ຄວາມ​ເຂັ້ມ​ແຂງ​.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "ອົບອຸ່ນແລະ enveloping, ມີເຫຼົ້າແວງແດງແລະ sparkles ທອງ.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "ສີຟ້າເຂັ້ມທີ່ມີການເນັ້ນສຽງເງິນ ແລະມີຄວາມງຽບສະຫງົບ.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "ສີຂຽວທໍາມະຊາດເລິກທີ່ມີສີທອງແລະສະຫງ່າງາມ.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "ສີມ່ວງເຂັ້ມຂຸ້ນທີ່ມີສີບົວ ແລະໂຣແມນຕິກ.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "ການສະເຫຼີມສະຫຼອງຄວາມຮັກທີ່ຫຼາກຫຼາຍດ້ວຍສີຮຸ້ງ.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "ສີຟ້າ, ສີບົວ ແລະສີຂາວໃນນາມຂອງທຸງ trans.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "ສີເຫຼືອງ, ສີຂາວ, ສີມ່ວງແລະສີດໍາສໍາລັບທຸງທີ່ບໍ່ແມ່ນຄູ່.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "ສີສົ້ມ, ສີຂາວ ແລະສີບົວຂອງທຸງເພດຍິງ.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "ສີບົວ, ສີມ່ວງ ແລະສີຟ້າຂອງທຸງສອງ.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "ສີບົວ, ສີເຫຼືອງ ແລະສີຟ້າຂອງທຸງຊາດ.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "ສີດໍາ, ສີຂີ້ເຖົ່າ, ສີຂາວແລະສີມ່ວງຂອງທຸງ asexual.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "ຍິນດີຕ້ອນຮັບກັບພື້ນທີ່ຫຼິ້ນ",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "ຍິນດີຕ້ອນຮັບພາຍໃຕ້ການຊີ້ນໍາ",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "ຜູ້ໃຫຍ່ເທົ່ານັ້ນ",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "ບໍ່ມີຂໍ້ມູນ",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "ທັງໝົດ",
+      "total",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "barChart": [
+      "ຕາຕະລາງການເຂົ້າຮ່ວມ",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

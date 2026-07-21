@@ -11,20 +11,120 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "दृश्यमान",
+      "Visible",
+      null,
+      null,
+      10
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "कुछ गलत हो गया",
+        "Something went wrong",
+        null,
+        null,
+        10
+      ],
+      "message": [
+        "कृपया पुनः प्रयास करने के लिए पृष्ठ को पुनः लोड करें।",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "458941ec00fd20f22c6168237a5d2eaa",
+              "en_hi_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "पृष्ठ पुनः लोड करें",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "458941ec00fd20f22c6168237a5d2eaa",
+              "en_hi_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "बंद करना",
+        "Close",
+        null,
+        null,
+        10
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "मुख्य सामग्री पर जाएँ",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "प्रशासन बार",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "458941ec00fd20f22c6168237a5d2eaa",
+              "en_hi_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "प्रशासन",
+        "Administration",
+        null,
+        null,
+        10
+      ]
     }
   },
   "landing": {
@@ -56,7 +156,26 @@
     "missing": "शेष",
     "todayIsTheDay": "आज का दिन बड़ा खास है!",
     "sectionLabel": "कवर",
-    "eyebrow": "Our Wedding"
+    "eyebrow": [
+      "हमारी शादी",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "तारीख और स्थान",
@@ -106,8 +225,46 @@
     "next": "अगला",
     "thumbnailAria": "तस्वीर {{number}}",
     "thumbnailAlt": "गैलरी की थंबनेल तस्वीर",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "छवि गैलरी, नेविगेट करने के लिए तीर कुंजियों का उपयोग करें",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "बढ़ी हुई छवि",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "उपस्थिति की पुष्टि",
@@ -138,32 +295,468 @@
     "ageUnder14Warning": "आपकी आयु 14 वर्ष से कम है। आपको अपने माता-पिता या अभिभावकों की सहमति की आवश्यकता है।",
     "parentalConsent": "मेरे माता-पिता या अभिभावक मेरी भागीदारी के लिए सहमति देते हैं",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "उपस्थिति की पुष्टि के लिए अपना नाम दर्ज करें.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "458941ec00fd20f22c6168237a5d2eaa",
+              "en_hi_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "एक मेनू विकल्प चुनें.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "458941ec00fd20f22c6168237a5d2eaa",
+              "en_hi_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "आपको गोपनीयता नीति स्वीकार करनी होगी.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "458941ec00fd20f22c6168237a5d2eaa",
+              "en_hi_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "आपका जन्म तारीख प्रवेश करे।",
+        "Enter your date of birth.",
+        null,
+        null,
+        10
+      ],
+      "ageUnder14": [
+        "आपकी उम्र 14 वर्ष से कम है. ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "458941ec00fd20f22c6168237a5d2eaa",
+              "en_hi_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "आपको अपने स्वास्थ्य डेटा के प्रसंस्करण के लिए सहमति देनी होगी।",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "458941ec00fd20f22c6168237a5d2eaa",
+              "en_hi_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "कम से कम एक मेनू विकल्प बताएं.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "458941ec00fd20f22c6168237a5d2eaa",
+              "en_hi_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "अपने साथियों के नाम दर्ज करें.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "458941ec00fd20f22c6168237a5d2eaa",
+              "en_hi_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "आप साथियों से अधिक नाम दर्ज नहीं कर सकते.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "458941ec00fd20f22c6168237a5d2eaa",
+              "en_hi_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "मेनू विकल्पों का योग साथियों की संख्या से अधिक नहीं हो सकता।",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "458941ec00fd20f22c6168237a5d2eaa",
+              "en_hi_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "धन्यवाद, {{नाम}}। ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "धन्यवाद, {{नाम}}। ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "हम आपकी प्रतिक्रिया सहेज नहीं सके. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "क्या आप वाकई अपना जवाब वापस लेना चाहते हैं?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "आपकी प्रतिक्रिया वापस ले ली गई है.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "आपकी प्रतिक्रिया वापस नहीं ली जा सकी. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "सभी उपस्थिति प्रतिक्रियाएँ हटाएँ? ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "उपस्थिति रिकार्ड साफ कर दिया गया।",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "उपस्थिति रिकार्ड साफ नहीं हो सका।",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "साथी",
+      "Companions",
+      null,
+      null,
+      6
+    ],
+    "headcountLabel": [
+      "लोग",
+      "People",
+      null,
+      null,
+      10
+    ],
+    "headcountHint": [
+      "प्रत्येक विकल्प के लिए कितने लोग ({{कुल}} कुल)",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "अतिथियों के नाम",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "प्रत्येक साथी का पहला और अंतिम नाम लिखें (अधिकतम {{गिनती}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "नाम1 उपनाम1, नाम2 उपनाम2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "निमंत्रण लोड हो रहा है...",
@@ -176,11 +769,106 @@
     "privacyPolicy": "गोपनीयता नीति",
     "terms": "शर्तें",
     "legalNotice": "कानूनी सूचना",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "इस स्थान का पता नहीं लगाया जा सका.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "मानचित्र लोड नहीं हो सका.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "निर्देशांक: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "संकेतित स्थान पर मानचित्र पूर्वावलोकन।",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "स्थान कॉन्फ़िगर किया गया",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "निमंत्रण लोड हो रहा है",
@@ -308,28 +996,362 @@
     "galleryUploadFailed": "तस्वीरें अपलोड नहीं हो सकीं।",
     "noValidFiles": "कोई मान्य फ़ाइल नहीं। अधिकतम 20 MB, JPG/PNG।",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "कवर पर चलाने के लिए एक ऑडियो फ़ाइल अपलोड करें (MP3, WAV, OGG, M4A - अधिकतम 5 MB)।",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "ऑडियो फ़ाइल अपलोड करें",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG या M4A - अधिकतम 5 एमबी",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "ऑडियो प्रारूप समर्थित नहीं है. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "ऑडियो फ़ाइल खाली है.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "ऑडियो फ़ाइल 5 एमबी की सीमा से अधिक है.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "ऑडियो फ़ाइल पढ़ने में त्रुटि.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "फ़ाइल खाली है. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "छवि विवरण...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "गैलरी में अधिकतम {{max}} छवियाँ।",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "{{कुल}} फोटो अपलोड हो रहा है...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "फोटो अपलोड हो रहा है...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "छवि बदलो",
+      "Change photo",
+      null,
+      null,
+      10
+    ],
+    "galleryDescriptionSaveFailed": [
+      "विवरण सहेजने में त्रुटि",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "विवरण सहेजा गया",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "चयनित संगीत",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "संगीत हटाएँ",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "खेलना...",
+      "Playing...",
+      null,
+      null,
+      10
+    ],
+    "preview": [
+      "पूर्व दर्शन",
+      "Preview",
+      null,
+      null,
+      10
+    ],
+    "select": [
+      "चुनना",
+      "Select",
+      null,
+      null,
+      10
+    ],
+    "selected": [
+      "चयनित",
+      "Selected",
+      null,
+      null,
+      10
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1375,53 @@
     "pdfTableCompanions": "साथी",
     "pdfTableDiet": "आहार",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "वेडिंगो · एडमिन",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "आमंत्रण देखें",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "लॉग आउट",
+      "Log out",
+      null,
+      null,
+      10
+    ]
   },
   "panel": {
     "confirmed": "पुष्टि की",
@@ -417,9 +1483,53 @@
     "generateMessage": "दूसरा संदेश बनाएँ",
     "copyMessage": "संदेश कॉपी करें",
     "shareVia": "के माध्यम से साझा करें",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      6
+    ],
+    "telegram": [
+      "टेलीग्राम",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "एसएमएस",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "print": "प्रिंट करें",
     "printPdf": "प्रिंट / PDF सहेजें",
     "linkCopied": "लिंक कॉपी हो गया।",
@@ -518,13 +1628,146 @@
     "deleteFailed": "निमंत्रण हटाया नहीं जा सका। पुनः प्रयास करें।",
     "configLoadFailed": "सेटिंग लोड नहीं हो सकी। कनेक्शन जाँचें और पुनः प्रयास करें।",
     "invalidLink": "निमंत्रण लिंक मान्य नहीं है।",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "आवास की जानकारी 2000 अक्षरों से अधिक नहीं हो सकती।",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "मेनू विवरण 2000 वर्णों से अधिक नहीं हो सकता.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "छवि संसाधित नहीं की जा सकी. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "छवि फ़ाइल नहीं पढ़ सका.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "छवि एन्क्रिप्शन विफल रहा.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "संपीड़न के बाद भी छवि बहुत बड़ी है.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "फ़ाइल खाली है. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -588,7 +1831,26 @@
     "tokenCleanError": "टोकन साफ़ नहीं किए जा सके।",
     "tokenLoadError": "टोकन लोड नहीं हो सके।",
     "accountEmail": "ईमेल: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "यूआईडी: {{यूआईडी}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "सक्रिय",
     "sessionInactive": "निष्क्रिय",
     "sessionLabel": "स्थानीय सत्र: {{status}}",
@@ -615,10 +1877,35 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "टोकन",
+        "Token",
+        null,
+        null,
+        6
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "आरएसवीपी",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "458941ec00fd20f22c6168237a5d2eaa",
+              "en_hi_2023q1.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +1923,33 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "ईमेल",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "पासवर्ड",
+      "Password",
+      null,
+      null,
+      10
+    ]
   },
   "compliance": {
     "title": "प्रसंस्करण गतिविधियों का रिकॉर्ड (GDPR अनुच्छेद 30)",
@@ -653,13 +1965,51 @@
     "row1Basis": "सहमति (GDPR अनुच्छेद 6.1.a)",
     "row1Purpose": "विवाह निमंत्रण बनाना और वैयक्तिकृत करना",
     "row1Retention": "जब तक खाता सक्रिय है",
-    "row1Recipients": "Google Cloud (Firestore, hosting)",
+    "row1Recipients": [
+      "Google क्लाउड (फ़ायरस्टोर, होस्टिंग)",
+      "Google Cloud (Firestore, hosting)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "row2Activity": "उपस्थिति पुष्टि (RSVP)",
     "row2Data": "मेहमान का नाम, उपस्थिति (हाँ/नहीं), मेनू चयन, एलर्जी, स्वास्थ्य डेटा",
     "row2Basis": "सहमति (GDPR अनुच्छेद 6.1.a, 9.2.a)",
     "row2Purpose": "मेहमान सूची और मेनू प्रबंधन",
     "row2Retention": "कार्यक्रम के 12 महीने बाद",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "गूगल क्लाउड (फायरस्टोर)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "छवि अपलोड",
     "row3Data": "शादी की तस्वीरें (AES-256-GCM एन्क्रिप्टेड)",
     "row3Basis": "सहमति (GDPR अनुच्छेद 6.1.a)",
@@ -671,13 +2021,51 @@
     "row4Basis": "वैध हित (GDPR अनुच्छेद 6.1.f)",
     "row4Purpose": "प्रशासन पैनल तक पहुँच नियंत्रित करना",
     "row4Retention": "सत्र की अवधि",
-    "row4Recipients": "Google Cloud (Firestore sessions)",
+    "row4Recipients": [
+      "Google क्लाउड (फ़ायरस्टोर सत्र)",
+      "Google Cloud (Firestore sessions)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "row5Activity": "सुपरएडमिन ऑडिट",
     "row5Data": "सुपरएडमिन क्रियाएँ, उपयोग किए गए टोकन, हटाए गए निमंत्रण",
     "row5Basis": "कानूनी दायित्व (GDPR अनुच्छेद 6.1.c)",
     "row5Purpose": "प्रशासनिक गतिविधियों का रिकॉर्ड",
     "row5Retention": "3 वर्ष",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google क्लाउड (फ़ायरस्टोर ऑडिटलॉग)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "अंतरराष्ट्रीय स्थानांतरण",
     "internationalText": "डेटा Google Cloud सर्वर पर eur3 क्षेत्र (फ्रैंकफर्ट, जर्मनी) में संग्रहीत किया जाता है। Google LLC (USA) GDPR अनुच्छेद 28 के अनुसार DPA के तहत डेटा प्रोसेसर के रूप में कार्य करता है। USA में स्थानांतरण निम्न पर आधारित हैं:",
     "scc": "मानक संविदात्मक खंड (SCC) — कार्यान्वयन निर्णय 2021/914",
@@ -691,86 +2079,957 @@
     "measureSuperadmin": "Firebase Authentication + छिपे हुए मार्ग द्वारा संरक्षित सुपरएडमिन"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "सरल उपयोग",
+      "Accessibility",
+      null,
+      null,
+      6
+    ],
+    "close": [
+      "बंद करना",
+      "Close",
+      null,
+      null,
+      10
+    ],
+    "fontSize": [
+      "टेक्स्ट का साइज़",
+      "Text size",
+      null,
+      null,
+      10
+    ],
+    "fontNormal": [
+      "सामान्य",
+      "Normal",
+      null,
+      null,
+      10
+    ],
+    "fontLarge": [
+      "बड़ा",
+      "Large",
+      null,
+      null,
+      10
+    ],
+    "fontExtraLarge": [
+      "एक्स्ट्रा लार्ज",
+      "Extra large",
+      null,
+      null,
+      10
+    ],
+    "lineSpacing": [
+      "पंक्ति रिक्ति",
+      "Line spacing",
+      null,
+      null,
+      10
+    ],
+    "lineNormal": [
+      "सामान्य",
+      "Normal",
+      null,
+      null,
+      10
+    ],
+    "lineWide": [
+      "चौड़ा",
+      "Wide",
+      null,
+      null,
+      10
+    ],
+    "lineVeryWide": [
+      "बहुत विस्तृत",
+      "Very wide",
+      null,
+      null,
+      10
+    ],
+    "highContrast": [
+      "हाई कॉन्ट्रास्ट",
+      "High contrast",
+      null,
+      null,
+      10
+    ],
+    "reducedMotion": [
+      "मोशन घटाएं",
+      "Reduce motion",
+      null,
+      null,
+      10
+    ],
+    "dyslexiaFont": [
+      "ओपनडिस्लेक्सिक फ़ॉन्ट",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "अधिक अक्षर रिक्ति",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "सभी लिंक को रेखांकित करें",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "बड़ा कर्सर",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "स्केल",
+      "Grayscale",
+      null,
+      null,
+      6
+    ],
+    "strongFocus": [
+      "दृश्यमान फोकस संकेतक",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "कोई संगीत नहीं",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "लोड होने मे त्रुटि",
+      "Error loading",
+      null,
+      null,
+      10
+    ],
+    "label": [
+      "संगीत",
+      "Music",
+      null,
+      null,
+      10
+    ],
+    "soundCloudNote": [
+      "साउंडक्लाउड ट्रैक - चलाने के लिए खुला है",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "साउंडक्लाउड में खोलें",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "प्रिंट तैयार किया जा रहा है…",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "युगल फोटो",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "उनके गॉडपेरेंट्स के आशीर्वाद से",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "दिनांक एवं स्थान",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "समारोह का समय:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Google मानचित्र में स्थान देखें",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "हम इस खास पल को आपके साथ साझा करने के लिए उत्सुक हैं।",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "परिवहन",
+      "Transport",
+      null,
+      null,
+      10
+    ],
+    "aboutGuests": [
+      "मेहमानों के बारे में",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "शादी का शेड्यूल",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "विस्तृत कार्यक्रम जल्द ही साझा किया जाएगा।",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "ड्रेस कोड",
+      "Dress code",
+      null,
+      null,
+      10
+    ],
+    "dressCodeFallback": [
+      "बाद में सूचित किया जाएगा.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "बच्चों के बारे में",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "हमारी कहानी",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "यह सब कैसे शुरू हुआ",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "कहानी जल्द ही साझा की जाएगी.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "उपहार",
+      "Gifts",
+      null,
+      null,
+      6
+    ],
+    "bestGift": [
+      "आपकी उपस्थिति सर्वोत्तम उपहार है",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "उपहार की जानकारी जल्द ही साझा की जाएगी.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "बैंक विवरण",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "आवास",
+      "Accommodation",
+      null,
+      null,
+      10
+    ],
+    "whereToStay": [
+      "कहाँ रहा जाए",
+      "Where to stay",
+      null,
+      null,
+      10
+    ],
+    "accommodationFallback": [
+      "आवास की जानकारी जल्द ही साझा की जाएगी।",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · wedingo-6c26a.web.app पर गोपनीयता नीति",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "विंडो बंद",
+      "Close window",
+      null,
+      null,
+      10
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
+    "moveUp": [
+      "बढ़ाना",
+      "Move up",
+      null,
+      null,
+      10
+    ],
+    "moveDown": [
+      "नीचे की ओर",
+      "Move down",
+      null,
+      null,
+      10
+    ],
     "title": "क्रम और दृश्यता",
     "help": "पुनः क्रमबद्ध करने के लिए खींचें, स्थानांतरित करने के लिए बटन का उपयोग करें और प्रत्येक अनुभाग को चालू या बंद करें।"
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "भाषा चुने",
+      "Select language",
+      null,
+      null,
+      10
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 साथी",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "स्पेन",
+      "Spain",
+      null,
+      null,
+      6
+    ],
+    "westernEurope": [
+      "पश्चिमी यूरोप",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "नॉर्डिक यूरोप",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "मध्य यूरोप",
+      "Central Europe",
+      null,
+      null,
+      10
+    ],
+    "southernEurope": [
+      "दक्षिणी यूरोप/बाल्कन",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "पूर्वी यूरोप/काकेशस",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "पूर्व एशिया",
+      "East Asia",
+      null,
+      null,
+      10
+    ],
+    "southAsia": [
+      "दक्षिण एशिया",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "दक्षिणपूर्व एशिया",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "मध्य एशिया/मध्य पूर्व",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "अफ़्रीका",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "अमेरिका की",
+      "Americas",
+      null,
+      null,
+      10
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -791,31 +3050,493 @@
     "close": "बंद करें"
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "इस आमंत्रण के लिए पहले से ही एक सक्रिय सत्र मौजूद है. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "एक्सेस कोड मान्य नहीं है.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "एक्सेस कोड दर्ज करें.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "कोड सफलतापूर्वक सत्यापित किया गया.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "कोड सत्यापित नहीं किया जा सका. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "अपना उपयोगकर्ता नाम और एक्सेस कोड दर्ज करें।",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "ग़लत उपयोक्तानाम या कोड.",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "कोड इस उपयोगकर्ता से मेल नहीं खाता.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "आपने सफलतापूर्वक लॉग इन कर लिया है.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "कोड सत्यापित नहीं किया जा सका. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "नया कोड जनरेट करने के लिए CONFIRM टाइप करें।",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "पहले अपना उपयोगकर्ता नाम दर्ज करें.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "उपयोगकर्ता नाम में केवल अक्षर और संख्याएँ हो सकती हैं।",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "उपयोगकर्ता नाम 50 अक्षरों से अधिक नहीं हो सकता.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "इस उपयोगकर्ता को यहां पहुंचने की अनुमति नहीं है.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "कोड जनरेट हुआ. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "कोड जनरेट नहीं किया जा सका. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "नया एक्सेस कोड जनरेट करने के लिए वर्तमान एक्सेस कोड दर्ज करें।",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "नया कोड जनरेट हुआ. ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "कोड नवीनीकृत. ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "इस खाते के पास प्रशासन की अनुमति नहीं है.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "गलत परिचय।",
+      "Incorrect credentials.",
+      null,
+      null,
+      10
+    ],
+    "superadminTooManyAttempts": [
+      "बहुत अधिक प्रयास. ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "ईमेल प्रारूप मान्य नहीं है.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "लॉग इन करने में त्रुटि। अपना कनेक्शन जांचें।",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
     "saved": "परिवर्तन सहेजे गए"
@@ -837,7 +3558,26 @@
   "themeGroups": {
     "light": "हल्की थीम",
     "dark": "गहरी थीम",
-    "lgbtiq": "LGTBIQ+"
+    "lgbtiq": [
+      "एलजीटीबीआईक्यू+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
     "gluten": "ग्लूटेन",
@@ -846,53 +3586,691 @@
     "shellfish": "शंख"
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "हमारे सबसे प्रिय को",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "खोलने के लिए नल",
+      "Tap to open",
+      null,
+      null,
+      10
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "जारी रखने के लिए टैप करें",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "हमारी शादी",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "{{नामों}} की शादी",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "स्थान की पुष्टि की जानी है",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "हम आपके साथ इस खास पल का जश्न मनाने के लिए उत्सुक हैं।",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "समय:",
+      "Time:",
+      null,
+      null,
+      10
+    ],
+    "placeLabel": [
+      "कार्यक्रम का स्थान:",
+      "Venue:",
+      null,
+      null,
+      10
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "सुनहरे लहजे के साथ सुरुचिपूर्ण और उज्ज्वल।",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "मुलायम हरियाली के साथ प्राकृतिक और सौम्य।",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "गर्म और नाजुक, गुलाबी रंगत के साथ।",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "शांत और कालातीत उपस्थिति के साथ, हल्का और तटस्थ।",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "नरम और रोमांटिक, मोती जैसे गुलाबी टोन के साथ।",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "ताज़ा और शांत, लैवेंडर और मौवे रंगों के साथ।",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "उज्ज्वल और उत्सवपूर्ण, गर्म सुनहरी चमक के साथ।",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "एम्बर और सोने की हाइलाइट्स के साथ गहरा और सुरुचिपूर्ण।",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "गहरे और परिष्कृत, गहरे पृष्ठभूमि पर गहन सोने के साथ।",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "गहन सोने और गंभीर उपस्थिति के साथ बहुत गहरा नीला।",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "रेड वाइन और सुनहरी चमक के साथ गर्म और ढका हुआ।",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "चांदी के लहजे और शांत उपस्थिति के साथ गहरा नीला।",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "सुनहरे और सुंदर रंगों के साथ गहरा प्राकृतिक हरा।",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "गुलाबी और रोमांटिक चमक के साथ गहरा बैंगनी।",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "इंद्रधनुषी रंगों के साथ विविध प्रेम का उत्सव।",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "ट्रांस ध्वज को श्रद्धांजलि में नीला, गुलाबी और सफेद।",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "गैर-बाइनरी ध्वज के लिए पीला, सफेद, बैंगनी और काला।",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "समलैंगिक ध्वज का नारंगी, सफ़ेद और गुलाबी।",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "द्वि ध्वज का गुलाबी, बैंगनी और नीला।",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "पैन ध्वज का गुलाबी, पीला और नीला।",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "अलैंगिक ध्वज का काला, भूरा, सफेद और बैंगनी।",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "खेल क्षेत्र के साथ स्वागत है",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "458941ec00fd20f22c6168237a5d2eaa",
+              "en_hi_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "निगरानी में स्वागत है",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "458941ec00fd20f22c6168237a5d2eaa",
+              "en_hi_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "केवल वयस्क",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "458941ec00fd20f22c6168237a5d2eaa",
+              "en_hi_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "कोई डेटा नहीं",
+      "No data",
+      null,
+      null,
+      10
+    ],
+    "total": [
+      "कुल",
+      "total",
+      null,
+      null,
+      10
+    ],
+    "barChart": [
+      "उपस्थिति बार चार्ट",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "458941ec00fd20f22c6168237a5d2eaa",
+            "en_hi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

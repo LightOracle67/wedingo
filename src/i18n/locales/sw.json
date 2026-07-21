@@ -11,20 +11,172 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "Inaonekana",
+      "Visible",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "Hitilafu fulani imetokea",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "Tafadhali pakia upya ukurasa ili kujaribu tena.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "Pakia upya ukurasa",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "Funga",
+        "Close",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "Ruka hadi kwa yaliyomo kuu",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "Baa ya utawala",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "Utawala",
+        "Administration",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "landing": {
@@ -55,8 +207,46 @@
     "todayIsWedding": "Leo ni harusi",
     "missing": "Zimesalia",
     "todayIsTheDay": "Leo ni siku kuu!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": [
+      "Jalada",
+      "Cover",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eyebrow": [
+      "Harusi Yetu",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "Tarehe na mahali",
@@ -106,8 +296,46 @@
     "next": "Inayofuata",
     "thumbnailAria": "Picha {{number}}",
     "thumbnailAlt": "Kijipicha cha matunzio",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "Matunzio ya picha, tumia vitufe vya vishale kusogeza",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "Picha iliyopanuliwa",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "Uthibitisho wa kuhudhuria",
@@ -138,49 +366,638 @@
     "ageUnder14Warning": "Una umri wa chini ya miaka 14. Unahitaji idhini ya wazazi au walezi wako.",
     "parentalConsent": "Wazazi au walezi wangu wanakubali ushiriki wangu",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "Weka jina lako ili kuthibitisha kuhudhuria.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "Chagua chaguo la menyu.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "Lazima ukubali Sera ya Faragha.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "Weka tarehe yako ya kuzaliwa.",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "Una umri wa chini ya miaka 14. ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "Lazima ukubali uchakataji wa data yako ya afya.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "Onyesha angalau chaguo moja la menyu.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "Andika majina ya wenzako.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "Huwezi kuingiza majina zaidi ya masahaba.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "Jumla ya chaguzi za menyu haziwezi kuzidi idadi ya washirika.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "Asante, {{jina}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "Asante, {{jina}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "Hatukuweza kuhifadhi jibu lako. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "Je, una uhakika unataka kuondoa jibu lako?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "Jibu lako limeondolewa.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "Haikuweza kuondoa jibu lako. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "Je, ungependa kufuta majibu yote ya mahudhurio? ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "Rekodi za mahudhurio zimefutwa.",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "Haikuweza kufuta rekodi za mahudhurio.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "Maswahaba",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "Watu",
+      "People",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountHint": [
+      "Ni watu wangapi kwa kila chaguo ({{jumla}} jumla)",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "Majina ya wageni",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "Andika jina la kwanza na la mwisho la kila mwenza (max {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "Jina1 Surname1, Jina2 Surname2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "Inapakia mwaliko…",
     "notFoundTitle": "Mwaliko haukupatikana",
     "notFoundText": "Hatukupata mwaliko na kiungo hiki. Ikiwa unafikiri ni hitilafu, wasiliana na wenyeji.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Unda na ushiriki mwaliko wako wa harusi uliobinafsishwa.",
     "emptyDescription": "Dhibiti data ya mwaliko wako, shiriki kiungo cha kipekee na wageni wako na upokee uthibitisho wao wa kuhudhuria.",
     "createLink": "Unda mwaliko",
     "privacyPolicy": "Sera ya Faragha",
     "terms": "Masharti",
     "legalNotice": "Ilani ya Kisheria",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "Haikuweza kupata mahali hapa.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "Haikuweza kupakia ramani.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "Viratibu: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "Onyesho la kukagua ramani katika eneo lililoonyeshwa.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "Mahali pamesanidiwa",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "Inapakia mwaliko",
@@ -308,28 +1125,427 @@
     "galleryUploadFailed": "Haikuwezekana kupakia picha.",
     "noValidFiles": "Hakuna faili halali. Upeo wa MB 20, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "Pakia faili ya sauti ili kucheza kwenye jalada (MP3, WAV, OGG, M4A — usizidi MB 5).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "Pakia faili ya sauti",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG au M4A — usizidi MB 5",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "Umbizo la sauti halitumiki. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "Faili ya sauti ni tupu.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "Faili ya sauti imezidi kikomo cha MB 5.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "Hitilafu katika kusoma faili ya sauti.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "Faili ni tupu. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "Maelezo ya picha...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "Upeo wa picha {{max}} kwenye ghala.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "Inapakia picha {{total}}...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "Inapakia picha...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "Badilisha picha",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "Hitilafu katika kuhifadhi maelezo",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "Maelezo yamehifadhiwa",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "Muziki uliochaguliwa",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "Ondoa muziki",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "Inacheza...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "Hakiki",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "Chagua",
+      "Select",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "selected": [
+      "Imechaguliwa",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1569,66 @@
     "pdfTableCompanions": "Wenzi",
     "pdfTableDiet": "Mlo",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Admin",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "Tazama mwaliko",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "Toka nje",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "Wamethibitisha",
@@ -384,7 +1657,26 @@
     "confirms": "Wanathibitisha",
     "declines": "Wanakataa",
     "pending": "Wanasubiri",
-    "visits_one": "1 visit",
+    "visits_one": [
+      "1 ziara",
+      "1 visit",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +1709,66 @@
     "generateMessage": "Tengeneza ujumbe mwingine",
     "copyMessage": "Nakili ujumbe",
     "shareVia": "Shiriki kupitia",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "Telegramu",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Chapisha",
     "printPdf": "Chapisha / Hifadhi PDF",
     "linkCopied": "Kiungo kimenakiliwa.",
@@ -446,9 +1795,47 @@
     "deleteButton": "Omba kufutwa kwa data",
     "exportButton": "Hamisha data yangu",
     "rightsHint": "Kiteja chako cha barua pepe kitafunguliwa na kiolezo kilichotayarishwa. Unaweza pia kuandika kwa adriancl2001@gmail.com.",
-    "ccpaTitle": "CCPA / CPRA (California)",
+    "ccpaTitle": [
+      "CCPA / CPRA (California)",
+      "CCPA / CPRA (California)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "ccpaText": "Wedingo haiuzi data ya kibinafsi. Data inayokusanywa inatumika kwa ajili ya usimamizi wa mwaliko pekee. Ikiwa wewe ni mkazi wa California, una haki ya kuomba kufutwa kwa data yako na kutobaguliwa kwa kutekeleza haki zako.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Programu ya wavuti kwa usimamizi wa mialiko ya harusi.",
     "copyright": "© {{year}} Adrián Carrasco López. Haki zote zimehifadhiwa.",
     "deleteEmailSubject": "Ombi la kufuta data - Wedingo",
@@ -518,13 +1905,146 @@
     "deleteFailed": "Haikuwezekana kufuta mwaliko. Jaribu tena.",
     "configLoadFailed": "Haikuwezekana kupakia usanidi. Angalia muunganisho na ujaribu tena.",
     "invalidLink": "Kiungo cha mwaliko si halali.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "Maelezo ya malazi hayawezi kuzidi vibambo 2000.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "Maelezo ya menyu hayawezi kuzidi vibambo 2000.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "Haikuweza kuchakata picha. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "Haikuweza kusoma faili ya picha.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "Usimbaji fiche wa picha umeshindwa.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "Picha ni kubwa mno hata baada ya kubanwa.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "Faili ni tupu. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -588,7 +2108,26 @@
     "tokenCleanError": "Haikuwezekana kusafisha tokeni.",
     "tokenLoadError": "Haikuwezekana kupakia tokeni.",
     "accountEmail": "Barua pepe: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Inatumika",
     "sessionInactive": "Haitumiki",
     "sessionLabel": "Kikao cha ndani: {{status}}",
@@ -615,10 +2154,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Ishara",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVPs",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2213,46 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "Barua pepe",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "Nenosiri",
+      "Password",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "compliance": {
     "title": "Rejesta ya shughuli za uchakataji (Art. 30 GDPR)",
@@ -659,13 +2274,51 @@
     "row2Basis": "Idhini (Art. 6.1.a, 9.2.a GDPR)",
     "row2Purpose": "Kusimamia orodha ya wageni na menyu",
     "row2Retention": "Miezi 12 baada ya tukio",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firetore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Upakiaji wa picha",
     "row3Data": "Picha za harusi (zimesimbwa kwa AES-256-GCM)",
     "row3Basis": "Idhini (Art. 6.1.a GDPR)",
     "row3Purpose": "Matunzio ya picha katika mwaliko",
     "row3Retention": "Miezi 12 baada ya tukio",
-    "row3Recipients": "Google Cloud (Firestore subcollection)",
+    "row3Recipients": [
+      "Google Cloud (Mkusanyiko mdogo wa Firestore)",
+      "Google Cloud (Firestore subcollection)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row4Activity": "Uthibitishaji na vikao",
     "row4Data": "Tokeni ya kikao, jina la mtumiaji msimamizi",
     "row4Basis": "Maslahi halali (Art. 6.1.f GDPR)",
@@ -677,7 +2330,26 @@
     "row5Basis": "Wajibu wa kisheria (Art. 6.1.c GDPR)",
     "row5Purpose": "Rekodi ya shughuli za kiutawala",
     "row5Retention": "Miaka 3",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Kumbukumbu ya ukaguzi wa Firestore)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Uhamishaji wa kimataifa",
     "internationalText": "Data huhifadhiwa kwenye seva za Google Cloud katika eneo la eur3 (Frankfurt, Ujerumani). Google LLC (Marekani) hufanya kama mchakataji data chini ya DPA kwa mujibu wa Art. 28 GDPR. Uhamishaji hadi Marekani unafanywa kwa msingi wa:",
     "scc": "Vifungu vya Kawaida vya Kimkataba (SCC) - Uamuzi wa Utekelezaji 2021/914",
@@ -691,86 +2363,1359 @@
     "measureSuperadmin": "Msimamizi mkuu analindwa na Firebase Authentication + njia iliyofichwa"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "Ufikivu",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Funga",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontSize": [
+      "Ukubwa wa maandishi",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "Kawaida",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontLarge": [
+      "Kubwa",
+      "Large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontExtraLarge": [
+      "Kubwa zaidi",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "Nafasi za mstari",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "Kawaida",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineWide": [
+      "Kwa upana",
+      "Wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineVeryWide": [
+      "Pana sana",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "Tofauti ya juu",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "Punguza mwendo",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "Fonti ya OpenDyslexic",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "Nafasi zaidi za herufi",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "Piga mstari kwa viungo vyote",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "Mshale mkubwa",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "Kijivu",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "Viashiria vya kuzingatia vinavyoonekana",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "Hakuna muziki",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "Hitilafu katika upakiaji",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "Muziki",
+      "Music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "soundCloudNote": [
+      "Wimbo wa SoundCloud - fungua kucheza",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "Fungua katika SoundCloud",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "Inatayarisha chapa...",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "Picha ya wanandoa",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "Kwa baraka za godparents zao",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "Tarehe na mahali",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "Wakati wa sherehe:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Tazama eneo katika Ramani za Google",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "Tunatazamia kushiriki wakati huu maalum na wewe.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "Usafiri",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutGuests": [
+      "Kuhusu wageni",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "Ratiba ya harusi",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "Ratiba ya kina itashirikiwa hivi karibuni.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "Kanuni ya mavazi",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "Itawasilishwa baadaye.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "Kuhusu watoto",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "Hadithi yetu",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "Jinsi yote yalianza",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "Hadithi itashirikiwa hivi karibuni.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "Zawadi",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "Uwepo wako ni zawadi bora zaidi",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "Habari za zawadi zitashirikiwa hivi karibuni.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "Maelezo ya benki",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "Malazi",
+      "Accommodation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "whereToStay": [
+      "Mahali pa kukaa",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "Taarifa za malazi zitashirikiwa hivi karibuni.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · Sera ya Faragha katika wedingo-6c26a.web.app",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "Funga dirisha",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": [
+      "Sogeza juu",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "Sogeza chini",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "title": [
+      "Agizo na mwonekano",
+      "Order & visibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "help": [
+      "Buruta ili kupanga upya, tumia vitufe kusogeza, na uwashe au uzime kila sehemu.",
+      "Drag to reorder, use the buttons to move, and toggle each section on or off.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "Chagua lugha",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 mwenzi",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "Uhispania",
+      "Spain",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "westernEurope": [
+      "Ulaya Magharibi",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "Ulaya ya Kaskazini",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "Ulaya ya Kati",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "Kusini mwa Ulaya / Balkan",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "Ulaya Mashariki / Caucasus",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "Asia ya Mashariki",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "Asia ya Kusini",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "Asia ya Kusini-mashariki",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "Asia ya Kati / Mashariki ya Kati",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "Afrika",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "Amerika",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +3732,1708 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": [
+      "Changelog",
+      "Changelog",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Funga",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "Tayari kuna kipindi kinachoendelea cha mwaliko huu. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "Msimbo wa ufikiaji sio halali.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "Ingiza msimbo wa ufikiaji.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "Nambari ya kuthibitisha imethibitishwa.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "Haikuweza kuthibitisha msimbo. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "Ingiza jina lako la mtumiaji na msimbo wa ufikiaji.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "Jina la mtumiaji au msimbo si sahihi.",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "Msimbo haulingani na mtumiaji huyu.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "Umeingia kwa ufanisi.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "Haikuweza kuthibitisha msimbo. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "Andika CONFIRM ili utengeneze msimbo mpya.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "Ingiza jina lako la mtumiaji kwanza.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "Jina la mtumiaji linaweza kuwa na herufi na nambari pekee.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "Jina la mtumiaji haliwezi kuzidi vibambo 50.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "Mtumiaji huyu hana ruhusa ya kufikia hapa.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "Msimbo umetolewa. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "Haikuweza kuzalisha msimbo. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "Ingiza msimbo wa sasa wa kufikia ili kuzalisha mpya.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "Msimbo mpya umetolewa. ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "Msimbo umesasishwa. ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "Akaunti hii haina ruhusa za usimamizi.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "Vitambulisho visivyo sahihi.",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "Majaribio mengi sana. ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "Umbizo la barua pepe si sahihi.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "Hitilafu katika kuingia. Angalia muunganisho wako.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": [
+      "Mabadiliko yamehifadhiwa",
+      "Changes saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": [
+      "Januari",
+      "January",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "2": [
+      "Februari",
+      "February",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "3": [
+      "Machi",
+      "March",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "4": [
+      "Aprili",
+      "April",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "5": [
+      "Mei",
+      "May",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "6": [
+      "Juni",
+      "June",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "7": [
+      "Julai",
+      "July",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "8": [
+      "Agosti",
+      "August",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "9": [
+      "Septemba",
+      "September",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "10": [
+      "Oktoba",
+      "October",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "11": [
+      "Novemba",
+      "November",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "12": [
+      "Desemba",
+      "December",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": [
+      "Mandhari nyepesi",
+      "Light themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dark": [
+      "Mandhari ya giza",
+      "Dark themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": [
+      "Gluten",
+      "Gluten",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lactose": [
+      "Lactose",
+      "Lactose",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nuts": [
+      "Karanga za miti",
+      "Tree nuts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "shellfish": [
+      "Samaki samakigamba",
+      "Shellfish",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "Kwa mpendwa wetu",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "Gusa ili kufungua",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "Gusa ili kuendelea",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "Harusi yetu",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "Harusi ya {{names}}",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "Mahali pa kuthibitishwa",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "Tunatazamia kusherehekea wakati huu maalum na wewe.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "Saa:",
+      "Time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeLabel": [
+      "Mahali:",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "Kifahari na mkali, na lafudhi ya dhahabu.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "Asili na kiasi na wiki laini.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "Joto na maridadi, na hues pink.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "Mwanga na upande wowote, na uwepo wa utulivu na usio na wakati.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "Laini na ya kimapenzi, yenye tani za lulu za pink.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "Safi na utulivu, na rangi ya lavender na mauve.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "Inang'aa na ya sherehe, na kung'aa kwa dhahabu ya joto.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "Nyeusi na maridadi, yenye vivutio vya kaharabu na dhahabu.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "Ya kina na ya kisasa, yenye dhahabu kali kwenye mandharinyuma meusi.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "Bluu iliyokoza sana na dhahabu kali na uwepo wa dhati.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "Joto na kufunika, na divai nyekundu na sparkles dhahabu.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "Rangi ya bluu yenye lafudhi za fedha na uwepo wa utulivu.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "Kina kijani cha asili na hues za dhahabu na kifahari.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "Zambarau kali na kumeta kwa waridi na kimapenzi.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "Sherehe za upendo tofauti na rangi za upinde wa mvua.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "Bluu, nyekundu na nyeupe kwa heshima ya bendera ya trans.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "Njano, nyeupe, zambarau na nyeusi kwa bendera isiyo ya binary.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "Rangi ya chungwa, nyeupe na nyekundu ya bendera ya wasagaji.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "Pink, zambarau na bluu ya bendera bi.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "Pink, njano na bluu ya bendera ya sufuria.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "Nyeusi, kijivu, nyeupe na zambarau ya bendera isiyo na jinsia.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "Karibu na eneo la kucheza",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "Karibu chini ya usimamizi",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "Watu wazima pekee",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2c0ebdaae5e241fe4f4a7730879c5e0c",
+              "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "Hakuna data",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "jumla",
+      "total",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "barChart": [
+      "Chati ya bar ya mahudhurio",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2c0ebdaae5e241fe4f4a7730879c5e0c",
+            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

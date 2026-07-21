@@ -11,20 +11,133 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "보이는",
+      "Visible",
+      null,
+      null,
+      10
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "문제가 발생했습니다.",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "52ffe190710d2e8a233f305ac4260f4e",
+              "en_ko_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "다시 시도하려면 페이지를 새로고침하세요.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "52ffe190710d2e8a233f305ac4260f4e",
+              "en_ko_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "페이지 새로고침",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "52ffe190710d2e8a233f305ac4260f4e",
+              "en_ko_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "닫다",
+        "Close",
+        null,
+        null,
+        10
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "주요 콘텐츠로 건너뛰기",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "관리 표시줄",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "52ffe190710d2e8a233f305ac4260f4e",
+              "en_ko_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "관리",
+        "Administration",
+        null,
+        null,
+        10
+      ]
     }
   },
   "landing": {
@@ -56,7 +169,26 @@
     "missing": "남은 시간",
     "todayIsTheDay": "오늘이 바로 그 특별한 날입니다!",
     "sectionLabel": "표지",
-    "eyebrow": "Our Wedding"
+    "eyebrow": [
+      "우리의 결혼식",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "날짜 및 장소",
@@ -106,8 +238,46 @@
     "next": "다음",
     "thumbnailAria": "사진 {{number}}",
     "thumbnailAlt": "갤러리 썸네일 사진",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "이미지 갤러리, 탐색하려면 화살표 키를 사용하세요.",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "확대된 이미지",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "참석 여부 확인",
@@ -144,10 +314,86 @@
       "birthDateRequired": "생년월일을 입력하세요.",
       "ageUnder14": "14세 미만입니다. 부모 또는 보호자의 동의가 필요합니다.",
       "healthConsentRequired": "건강 데이터 처리에 동의해야 합니다.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "menuHeadcountRequired": [
+        "적어도 하나의 메뉴 옵션을 표시하십시오.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "52ffe190710d2e8a233f305ac4260f4e",
+              "en_ko_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "동반자의 이름을 입력하세요.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "52ffe190710d2e8a233f305ac4260f4e",
+              "en_ko_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "동반자보다 더 많은 이름을 입력할 수 없습니다.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "52ffe190710d2e8a233f305ac4260f4e",
+              "en_ko_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "메뉴 옵션의 합은 동반자 수를 초과할 수 없습니다.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "52ffe190710d2e8a233f305ac4260f4e",
+              "en_ko_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     },
     "successAttending": "감사합니다, {{name}}. 참석이 기록되었습니다.",
     "successNotAttending": "감사합니다, {{name}}. 참석하지 못하게 되어 유감입니다.",
@@ -158,29 +404,244 @@
     "clearConfirm": "모든 참석 응답을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.",
     "clearSuccess": "참석 기록이 지워졌습니다.",
     "clearError": "참석 기록을 지울 수 없습니다.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "companionsLabel": [
+      "동반자",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "사람들",
+      "People",
+      null,
+      null,
+      10
+    ],
+    "headcountHint": [
+      "각 옵션에 대한 인원 수(총 {{total}}명)",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "손님 이름",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "각 동반자의 성과 이름을 적습니다(최대 {{count}}).",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "이름1 성1, 이름2 성2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "초대장 불러오는 중…",
     "notFoundTitle": "초대장을 찾을 수 없습니다",
     "notFoundText": "이 링크로 초대장을 찾을 수 없습니다. 오류라고 생각되시면 주최자에게 문의해 주세요.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "웨딩고",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "나만의 맞춤 결혼식 초대장을 만들고 공유하세요.",
     "emptyDescription": "초대장 데이터를 관리하고, 하객들과 고유 링크를 공유하며, 참석 여부를 확인받으세요.",
     "createLink": "초대장 만들기",
     "privacyPolicy": "개인정보 처리방침",
     "terms": "이용약관",
     "legalNotice": "법적 고지",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "이 장소를 찾을 수 없습니다.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "지도를 로드할 수 없습니다.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "좌표: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "표시된 위치의 지도 미리보기",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "위치가 구성됨",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "초대장 로딩 중",
@@ -308,28 +769,388 @@
     "galleryUploadFailed": "사진을 업로드할 수 없습니다.",
     "noValidFiles": "유효한 파일이 없습니다. 최대 20MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "표지에서 재생할 오디오 파일을 업로드하세요(MP3, WAV, OGG, M4A - 최대 5MB).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "오디오 파일 업로드",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG 또는 M4A - 최대 5MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "오디오 형식은 지원되지 않습니다. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "오디오 파일이 비어 있습니다.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "오디오 파일이 5MB 제한을 초과했습니다.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "오디오 파일을 읽는 동안 오류가 발생했습니다.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "파일이 비어 있습니다. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "이미지 설명...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "갤러리에 최대 {{max}}개의 이미지가 있습니다.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "사진 {{total}}장 업로드 중...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "사진 업로드 중...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "사진 변경",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "설명을 저장하는 중에 오류가 발생했습니다.",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "설명이 저장되었습니다.",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "선택한 음악",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "음악 삭제",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "재생 중...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "시사",
+      "Preview",
+      null,
+      null,
+      2
+    ],
+    "select": [
+      "선택하다",
+      "Select",
+      null,
+      null,
+      10
+    ],
+    "selected": [
+      "선택된",
+      "Selected",
+      null,
+      null,
+      2
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1174,66 @@
     "pdfTableCompanions": "동반자",
     "pdfTableDiet": "식사",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "웨딩고 · 관리자",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "초대장 보기",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "로그아웃",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "참석",
@@ -417,9 +1295,53 @@
     "generateMessage": "다른 메시지 생성",
     "copyMessage": "메시지 복사",
     "shareVia": "공유 방법",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "왓츠앱",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "전보",
+      "Telegram",
+      null,
+      null,
+      2
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "print": "인쇄",
     "printPdf": "인쇄 / PDF 저장",
     "linkCopied": "링크가 복사되었습니다.",
@@ -448,9 +1370,47 @@
     "rightsHint": "이메일 클라이언트가 미리 정의된 템플릿과 함께 열립니다. adriancl2001@gmail.com으로 직접 메일을 보내셔도 됩니다.",
     "ccpaTitle": "CCPA / CPRA (캘리포니아)",
     "ccpaText": "Wedingo는 개인 데이터를 판매하지 않습니다. 수집된 데이터는 초대장 관리에만 사용됩니다. 캘리포니아 거주자의 경우, 데이터 삭제를 요청할 권리와 권리 행사로 인한 차별을 받지 않을 권리가 있습니다.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "웨딩고",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "결혼식 초대장 관리를 위한 웹 애플리케이션입니다.",
-    "copyright": "© {{year}} Adrián Carrasco López. All rights reserved.",
+    "copyright": [
+      "© {{연도}} Adrián Carrasco López. ",
+      "© {{year}} Adrián Carrasco López. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "deleteEmailSubject": "데이터 삭제 요청 - Wedingo",
     "exportEmailSubject": "데이터 내보내기 요청 - Wedingo",
     "deleteEmailBody": "안녕하세요,\n\n다음 초대장과 관련된 제 개인 데이터의 삭제를 요청합니다:\n\n하객 이름:\n초대장 토큰 (알고 계신 경우):\n\n삭제 권리 행사 (GDPR 제17조 / CCPA / LGPD / POPIA).\n\n감사합니다.",
@@ -518,13 +1478,146 @@
     "deleteFailed": "초대장을 삭제할 수 없습니다. 다시 시도하세요.",
     "configLoadFailed": "설정을 불러올 수 없습니다. 연결을 확인하고 다시 시도하세요.",
     "invalidLink": "초대장 링크가 유효하지 않습니다.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "숙박 정보는 2000자를 초과할 수 없습니다.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "메뉴 설명은 2000자를 초과할 수 없습니다.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "이미지를 처리할 수 없습니다. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "이미지 파일을 읽을 수 없습니다.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "이미지 암호화에 실패했습니다.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "압축 후에도 이미지가 너무 큽니다.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "파일이 비어 있습니다. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -588,7 +1681,26 @@
     "tokenCleanError": "토큰을 정리할 수 없습니다.",
     "tokenLoadError": "토큰을 불러올 수 없습니다.",
     "accountEmail": "이메일: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "활성",
     "sessionInactive": "비활성",
     "sessionLabel": "로컬 세션: {{status}}",
@@ -615,10 +1727,35 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "토큰",
+        "Token",
+        null,
+        null,
+        2
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "회신",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "52ffe190710d2e8a233f305ac4260f4e",
+              "en_ko_2023q1.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +1773,20 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "이메일",
+      "Email",
+      null,
+      null,
+      2
+    ],
+    "passwordLabel": [
+      "비밀번호",
+      "Password",
+      null,
+      null,
+      10
+    ]
   },
   "compliance": {
     "title": "처리 활동 기록 (GDPR 제30조)",
@@ -653,13 +1802,51 @@
     "row1Basis": "동의 (GDPR 제6조 1항 a)",
     "row1Purpose": "결혼식 초대장 생성 및 맞춤 설정",
     "row1Retention": "계정이 활성 상태인 동안",
-    "row1Recipients": "Google Cloud (Firestore, hosting)",
+    "row1Recipients": [
+      "Google Cloud(Firestore, 호스팅)",
+      "Google Cloud (Firestore, hosting)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "row2Activity": "참석 확인 (RSVP)",
     "row2Data": "하객 이름, 참석 여부 (예/아니요), 메뉴 선택, 알레르기, 건강 데이터",
     "row2Basis": "동의 (GDPR 제6조 1항 a, 제9조 2항 a)",
     "row2Purpose": "하객 목록 및 메뉴 관리",
     "row2Retention": "행사 후 12개월",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "구글 클라우드(파이어스토어)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "이미지 업로드",
     "row3Data": "결혼식 사진 (AES-256-GCM 암호화)",
     "row3Basis": "동의 (GDPR 제6조 1항 a)",
@@ -671,13 +1858,51 @@
     "row4Basis": "정당한 이익 (GDPR 제6조 1항 f)",
     "row4Purpose": "관리 패널 접근 제어",
     "row4Retention": "세션 기간",
-    "row4Recipients": "Google Cloud (Firestore sessions)",
+    "row4Recipients": [
+      "Google Cloud(Firestore 세션)",
+      "Google Cloud (Firestore sessions)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "row5Activity": "최고 관리자 감사",
     "row5Data": "최고 관리자 작업, 사용된 토큰, 삭제된 초대장",
     "row5Basis": "법적 의무 (GDPR 제6조 1항 c)",
     "row5Purpose": "관리 활동 기록",
     "row5Retention": "3년",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud(Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "국제 전송",
     "internationalText": "데이터는 Google Cloud의 eur3 리전(독일, 프랑크푸르트) 서버에 저장됩니다. Google LLC(미국)는 GDPR 제28조에 따른 DPA에 따라 데이터 처리자 역할을 합니다. 미국으로의 전송은 다음에 기반합니다:",
     "scc": "표준 계약 조항 (SCC) — 이행 결정 2021/914",
@@ -691,86 +1916,1204 @@
     "measureSuperadmin": "Firebase Authentication + 숨겨진 경로로 보호되는 최고 관리자"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "접근성",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "닫다",
+      "Close",
+      null,
+      null,
+      10
+    ],
+    "fontSize": [
+      "텍스트 크기",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "정상",
+      "Normal",
+      null,
+      null,
+      10
+    ],
+    "fontLarge": [
+      "크기가 큰",
+      "Large",
+      null,
+      null,
+      10
+    ],
+    "fontExtraLarge": [
+      "특대",
+      "Extra large",
+      null,
+      null,
+      2
+    ],
+    "lineSpacing": [
+      "줄 간격",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "정상",
+      "Normal",
+      null,
+      null,
+      10
+    ],
+    "lineWide": [
+      "넓은",
+      "Wide",
+      null,
+      null,
+      10
+    ],
+    "lineVeryWide": [
+      "매우 넓음",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "고대비",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "움직임 줄이기",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "OpenDyslexic 글꼴",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "더 많은 문자 간격",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "모든 링크에 밑줄을 긋습니다",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "큰 커서",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "그레이스케일",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "가시적 초점 표시기",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "음악 없음",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "로드 중 오류 발생",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "음악",
+      "Music",
+      null,
+      null,
+      10
+    ],
+    "soundCloudNote": [
+      "SoundCloud 트랙 — 재생 가능",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "사운드클라우드에서 열기",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "인쇄 준비 중…",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "커플사진",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "대부모님의 축복으로",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "날짜 및 장소",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "시상식 시간:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Google 지도에서 위치 보기",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "우리는 이 특별한 순간을 여러분과 공유하기를 기대하고 있습니다.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "수송",
+      "Transport",
+      null,
+      null,
+      2
+    ],
+    "aboutGuests": [
+      "손님 소개",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "결혼식 일정",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "자세한 일정은 곧 공유드리겠습니다.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "복장 규정",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "추후에 전달될 예정입니다.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "어린이에 대하여",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "우리의 이야기",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "모든 것이 어떻게 시작되었는지",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "그 이야기는 곧 공유될 예정입니다.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "선물",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "당신의 존재는 최고의 선물입니다",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "선물 정보는 곧 공유될 예정입니다.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "은행 세부정보",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "숙소",
+      "Accommodation",
+      null,
+      null,
+      10
+    ],
+    "whereToStay": [
+      "머무를 곳",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "숙소 정보는 곧 공유하겠습니다.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · wedingo-6c26a.web.app의 개인 정보 보호 정책",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "창 닫기",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
+    "moveUp": [
+      "위로 이동",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "아래로 이동",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "title": "순서 및 표시",
     "help": "드래그하여 재정렬하고, 버튼을 사용하여 이동하며, 각 섹션을 켜거나 끕니다."
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "언어 선택",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "동반자 1명",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "스페인",
+      "Spain",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "westernEurope": [
+      "서유럽",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "북유럽 유럽",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "중부 유럽",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "남부 유럽/발칸 반도",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "동유럽 / 코카서스",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "동아시아",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "남아시아",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "동남아시아",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "중앙아시아/중동",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "아프리카",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "아메리카",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}}년",
@@ -837,7 +3180,26 @@
   "themeGroups": {
     "light": "라이트 테마",
     "dark": "다크 테마",
-    "lgbtiq": "LGTBIQ+"
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
     "gluten": "글루텐",
@@ -846,53 +3208,730 @@
     "shellfish": "갑각류"
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "우리의 소중한 사람에게",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "열려면 탭하세요.",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "계속하려면 탭하세요.",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "우리의 결혼식",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "{{names}}의 결혼식",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "확인될 위치",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "우리는 당신과 함께 이 특별한 순간을 축하하기를 기대합니다.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "시간:",
+      "Time:",
+      null,
+      null,
+      10
+    ],
+    "placeLabel": [
+      "장소:",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "우아하고 밝으며 황금색 액센트가 있습니다.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "부드러운 녹색으로 자연스럽고 차분합니다.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "따뜻하고 섬세한 핑크 색상.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "가볍고 중립적이며, 고요하고 시대를 초월한 존재감을 선사합니다.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "부드럽고 로맨틱한 펄 핑크 톤.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "신선하고 고요하며 라벤더와 연보라색을 띠고 있습니다.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "따뜻하고 황금빛 반짝임으로 밝고 축제적입니다.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "호박색과 금색 하이라이트로 어둡고 우아합니다.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "어두운 바탕에 강렬한 골드가 깊고 정교하게 표현되어 있습니다.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "강렬한 골드와 엄숙한 존재감을 지닌 매우 진한 블루.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "따뜻하고 포근한 느낌, 레드 와인과 황금빛 반짝임.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "실버 액센트와 고요한 존재감을 지닌 딥 블루.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "황금빛과 우아한 색조를 지닌 깊고 자연스러운 녹색입니다.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "핑크빛과 로맨틱한 반짝임을 지닌 강렬한 퍼플.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "무지개색으로 다양한 사랑을 축하합니다.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "파란색, 분홍색, 흰색은 트랜스 깃발에 경의를 표하는 색상입니다.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "비바이너리 플래그의 경우 노란색, 흰색, 보라색 및 검정색입니다.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "레즈비언 깃발의 주황색, 흰색, 분홍색입니다.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "이중 깃발의 분홍색, 보라색, 파란색입니다.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "팬 플래그의 분홍색, 노란색, 파란색입니다.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "무성애 깃발은 검정, 회색, 흰색, 보라색입니다.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "놀이 공간에 오신 것을 환영합니다",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "52ffe190710d2e8a233f305ac4260f4e",
+              "en_ko_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "감독하에 오신 것을 환영합니다",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "52ffe190710d2e8a233f305ac4260f4e",
+              "en_ko_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "성인 전용",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "52ffe190710d2e8a233f305ac4260f4e",
+              "en_ko_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "데이터 없음",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "총",
+      "total",
+      null,
+      null,
+      10
+    ],
+    "barChart": [
+      "출석 막대 차트",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "52ffe190710d2e8a233f305ac4260f4e",
+            "en_ko_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

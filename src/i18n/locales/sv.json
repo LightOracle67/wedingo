@@ -11,20 +11,133 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "Synlig",
+      "Visible",
+      null,
+      null,
+      2
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "Något gick fel",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "Ladda om sidan för att försöka igen.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "Ladda om sidan",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "Nära",
+        "Close",
+        null,
+        null,
+        2
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "Hoppa till huvudinnehållet",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "Administrationsfältet",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "Administration",
+        "Administration",
+        null,
+        null,
+        2
+      ]
     }
   },
   "landing": {
@@ -56,7 +169,26 @@
     "missing": "Kvar",
     "todayIsTheDay": "Idag är den stora dagen!",
     "sectionLabel": "Omslag",
-    "eyebrow": "Our Wedding"
+    "eyebrow": [
+      "Vårt bröllop",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "Datum och plats",
@@ -66,7 +198,13 @@
     "placePending": "Platsen för firandet visas här.",
     "welcomeWithTime": "Vi ser fram emot att dela detta speciella ögonblick med dig. Vi börjar kl. {{time}}. Nedan hittar du kartan.",
     "welcomeWithoutTime": "Vi ser fram emot att dela detta speciella ögonblick med dig. Nedan hittar du kartan.",
-    "transport": "Transport",
+    "transport": [
+      "Transport",
+      "Transport",
+      null,
+      null,
+      2
+    ],
     "addToCalendar": "Lägg till i kalender",
     "viewGoogleMaps": "Visa i Google Maps",
     "viewAppleMaps": "Visa i Apple Maps"
@@ -106,8 +244,46 @@
     "next": "Nästa",
     "thumbnailAria": "Bild {{number}}",
     "thumbnailAlt": "Miniatyr av galleribild",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "Bildgalleri, använd piltangenterna för att navigera",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "Förstorad bild",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "OSA",
@@ -122,7 +298,13 @@
     "menuCarne": "Kött",
     "menuPescado": "Fisk",
     "menuVegano": "Veganskt/Vegetariskt",
-    "postre": "Dessert",
+    "postre": [
+      "Dessert",
+      "Dessert",
+      null,
+      null,
+      2
+    ],
     "menuLabel": "Meny",
     "allergiesLegend": "Allergier och intoleranser",
     "allergiesPlaceholder": "Annan allergi (specificera)",
@@ -144,10 +326,86 @@
       "birthDateRequired": "Ange ditt födelsedatum.",
       "ageUnder14": "Du är under 14 år. Du behöver dina föräldrars eller vårdnadshavares samtycke.",
       "healthConsentRequired": "Du måste samtycka till behandlingen av dina hälsodata.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "menuHeadcountRequired": [
+        "Ange minst ett menyalternativ.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "Ange namnen på dina följeslagare.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "Du kan inte ange fler namn än följeslagare.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "Summan av menyalternativ kan inte överstiga antalet följeslagare.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
     "successAttending": "Tack, {{name}}. Din närvaro har registrerats.",
     "successNotAttending": "Tack, {{name}}. Vi är ledsna att du inte kan komma.",
@@ -158,29 +416,244 @@
     "clearConfirm": "Ta bort alla närvarosvar? Denna åtgärd kan inte ångras.",
     "clearSuccess": "Närvaroregister rensat.",
     "clearError": "Kunde inte rensa närvaroregistret.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "companionsLabel": [
+      "Följeslagare",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "Personer",
+      "People",
+      null,
+      null,
+      2
+    ],
+    "headcountHint": [
+      "Hur många personer för varje alternativ ({{total}} totalt)",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "Gästnamn",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "Skriv för- och efternamnet på varje följeslagare (max {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "Namn1 Efternamn1, Namn2 Efternamn2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "Laddar inbjudan...",
     "notFoundTitle": "Inbjudan hittades inte",
     "notFoundText": "Vi hittade ingen inbjudan med denna länk. Om du tror att det är ett fel, kontakta värdarna.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Skapa och dela din personliga bröllopsinbjudan.",
     "emptyDescription": "Hantera din inbjudans data, dela en unik länk med dina gäster och ta emot deras svar.",
     "createLink": "Skapa inbjudan",
     "privacyPolicy": "Integritetspolicy",
     "terms": "Villkor",
     "legalNotice": "Juridisk information",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "Kunde inte hitta denna plats.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "Det gick inte att ladda kartan.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "Koordinater: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "Förhandsgranskning av kartan på den angivna platsen.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "Plats konfigurerad",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "Laddar inbjudan",
@@ -263,7 +736,13 @@
     "accommodationLabel": "Boende",
     "accommodationPlaceholder": "Exempel: Rekommenderat hotell: … Rabattkod: …",
     "accommodationHint": "Hotell, rabattkoder och alternativ för gäster.",
-    "transportLabel": "Transport",
+    "transportLabel": [
+      "Transport",
+      "Transport",
+      null,
+      null,
+      2
+    ],
     "transportPlaceholder": "Exempel: Buss från torget kl. 17:00. Gratis parkering på området.",
     "transportHint": "Transportalternativ, busstider, parkering etc.",
     "kidsLabel": "Om barn",
@@ -279,7 +758,26 @@
     "menuPescadoPlaceholder": "Beskriv fiskmenyn...",
     "menuVeganoLabel": "Vegansk/vegetarisk meny",
     "menuVeganoPlaceholder": "Beskriv den veganska menyn...",
-    "postreLabel": "Dessert *",
+    "postreLabel": [
+      "Dessert*",
+      "Dessert *",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "postrePlaceholder": "Beskriv desserten",
     "menuRequiredText": "Obligatoriskt: dessert och minst en huvudmeny.",
     "menuTextoPlaceholder": "Beskriv menyn: förrätt, huvudrätt, dessert...",
@@ -308,28 +806,388 @@
     "galleryUploadFailed": "Bilderna kunde inte laddas upp.",
     "noValidFiles": "Ingen giltig fil. Max 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "Ladda upp en ljudfil att spela på omslaget (MP3, WAV, OGG, M4A — max 5 MB).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "Ladda upp ljudfil",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG eller M4A — max 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "Ljudformat stöds inte. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "Ljudfilen är tom.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "Ljudfilen överskrider gränsen på 5 MB.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "Det gick inte att läsa ljudfilen.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "Filen är tom. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "Bildbeskrivning...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "Max {{max}} bilder i galleriet.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "Laddar upp {{total}} foto(n)...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "Laddar upp foto...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "Byt foto",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "Det gick inte att spara beskrivningen",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "Beskrivning sparad",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "Utvald musik",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "Ta bort musik",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "Spelar...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "Förhandsvisning",
+      "Preview",
+      null,
+      null,
+      2
+    ],
+    "select": [
+      "Välja",
+      "Select",
+      null,
+      null,
+      2
+    ],
+    "selected": [
+      "Vald",
+      "Selected",
+      null,
+      null,
+      2
+    ]
   },
   "admin": {
     "tabs": {
@@ -338,7 +1196,13 @@
       "attendance": "Närvaro",
       "share": "Dela",
       "access": "Åtkomst",
-      "support": "Support"
+      "support": [
+        "Stöd",
+        "Support",
+        null,
+        null,
+        2
+      ]
     },
     "privateArea": "Privat område",
     "manageInvitation": "Hantera din bröllopsinbjudan",
@@ -353,9 +1217,66 @@
     "pdfTableCompanions": "Sällskap",
     "pdfTableDiet": "Kost",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Admin",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "Visa inbjudan",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "Logga ut",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "Bekräftade",
@@ -417,9 +1338,53 @@
     "generateMessage": "Generera ett annat meddelande",
     "copyMessage": "Kopiera meddelande",
     "shareVia": "Dela via",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "Telegram",
+      "Telegram",
+      null,
+      null,
+      2
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Skriv ut",
     "printPdf": "Skriv ut / Spara PDF",
     "linkCopied": "Länk kopierad.",
@@ -438,7 +1403,13 @@
     "deleteInvitation": "Radera min inbjudan och alla mina data"
   },
   "support": {
-    "title": "Support",
+    "title": [
+      "Stöd",
+      "Support",
+      null,
+      null,
+      2
+    ],
     "description": "Om du har något problem eller fråga om inbjudan kan du kontakta utvecklaren:",
     "email": "E-post: adriancl2001@gmail.com",
     "rightsTitle": "Dina rättigheter",
@@ -448,7 +1419,26 @@
     "rightsHint": "Din e-postklient öppnas med en fördefinierad mall. Du kan också skriva till adriancl2001@gmail.com.",
     "ccpaTitle": "CCPA / CPRA (Kalifornien)",
     "ccpaText": "Wedingo säljer inte personuppgifter. Insamlade data används uteslutande för hantering av inbjudan. Om du är bosatt i Kalifornien har du rätt att begära radering av dina data och att inte diskrimineras för att du utövar dina rättigheter.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Webbapplikation för hantering av bröllopsinbjudningar.",
     "copyright": "© {{year}} Adrián Carrasco López. Alla rättigheter förbehållna.",
     "deleteEmailSubject": "Begäran om radering av data - Wedingo",
@@ -518,24 +1508,220 @@
     "deleteFailed": "Inbjudan kunde inte raderas. Försök igen.",
     "configLoadFailed": "Konfigurationen kunde inte laddas. Kontrollera anslutningen och försök igen.",
     "invalidLink": "Inbjudningslänken är ogiltig.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "Boendeinformation får inte överstiga 2000 tecken.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "Menybeskrivningen får inte överstiga 2000 tecken.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "Kunde inte bearbeta bilden. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "Kunde inte läsa bildfilen.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "Bildkryptering misslyckades.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "Bilden är för stor även efter komprimering.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "Filen är tom. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
-      "dashboard": "Dashboard",
+      "dashboard": [
+        "Instrumentbräda",
+        "Dashboard",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "invitations": "Inbjudningar",
-      "tokens": "Tokens",
-      "session": "Session",
+      "tokens": [
+        "Polletter",
+        "Tokens",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "session": [
+        "Session",
+        "Session",
+        null,
+        null,
+        2
+      ],
       "compliance": "Efterlevnad",
       "data": "Datos"
     },
-    "superadmin": "Superadmin",
+    "superadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "controlPanel": "Kontrollpanel",
     "managePlatform": "Hantera Wedingo-plattformen",
     "dashboardLoading": "Laddar statistik...",
@@ -561,7 +1747,13 @@
     "invitationsCount": "{{count}} inbjudningar · {{size}} upptagna",
     "noResultsFilter": "Inga inbjudningar hittades med det kriteriet.",
     "noInvitations": "Det finns inga inbjudningar ännu.",
-    "tableToken": "Token",
+    "tableToken": [
+      "Tecken",
+      "Token",
+      null,
+      null,
+      2
+    ],
     "tableTheme": "Tema",
     "tableDate": "Bröllopsdatum",
     "tableActions": "Åtgärder",
@@ -588,14 +1780,58 @@
     "tokenCleanError": "Tokens kunde inte rensas.",
     "tokenLoadError": "Tokens kunde inte laddas.",
     "accountEmail": "E-post: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Aktiv",
     "sessionInactive": "Inaktiv",
     "sessionLabel": "Lokal session: {{status}}",
     "sessionType": "Typ: {{type}}",
-    "sessionTypeSuperadmin": "Superadmin",
+    "sessionTypeSuperadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionTypeSetup": "Konfiguration",
-    "sessionTypeAdmin": "Admin",
+    "sessionTypeAdmin": [
+      "Administration",
+      "Admin",
+      null,
+      null,
+      2
+    ],
     "sessionExpires": "Upphör: {{date}}",
     "logoutButton": "Logga ut",
     "firebaseAccount": "För att hantera ditt superadmin-konto, använd Firebase-konsolen:",
@@ -615,10 +1851,35 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Tecken",
+        "Token",
+        null,
+        null,
+        2
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "OSA",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +1897,20 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "E-post",
+      "Email",
+      null,
+      null,
+      2
+    ],
+    "passwordLabel": [
+      "Lösenord",
+      "Password",
+      null,
+      null,
+      2
+    ]
   },
   "compliance": {
     "title": "Register över behandlingsaktiviteter (Art. 30 GDPR)",
@@ -653,31 +1926,126 @@
     "row1Basis": "Samtycke (Art. 6.1.a GDPR)",
     "row1Purpose": "Skapa och anpassa bröllopsinbjudan",
     "row1Retention": "Så länge kontot är aktivt",
-    "row1Recipients": "Google Cloud (Firestore, hosting)",
+    "row1Recipients": [
+      "Google Cloud (Firestore, värd)",
+      "Google Cloud (Firestore, hosting)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row2Activity": "Bekräftelse av närvaro (OSA)",
     "row2Data": "Gästens namn, närvaro (ja/nej), menyval, allergier, hälsodata",
     "row2Basis": "Samtycke (Art. 6.1.a, 9.2.a GDPR)",
     "row2Purpose": "Hantera gästlista och meny",
     "row2Retention": "12 månader efter evenemanget",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Bilduppladdning",
     "row3Data": "Bröllopsfoton (krypterade AES-256-GCM)",
     "row3Basis": "Samtycke (Art. 6.1.a GDPR)",
     "row3Purpose": "Fotogalleri i inbjudan",
     "row3Retention": "12 månader efter evenemanget",
-    "row3Recipients": "Google Cloud (Firestore subcollection)",
+    "row3Recipients": [
+      "Google Cloud (Firestore-undersamling)",
+      "Google Cloud (Firestore subcollection)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row4Activity": "Autentisering och sessioner",
     "row4Data": "Sessionstoken, admin användarnamn",
     "row4Basis": "Berättigat intresse (Art. 6.1.f GDPR)",
     "row4Purpose": "Kontrollera åtkomst till administrationspanelen",
     "row4Retention": "Sessionens varaktighet",
-    "row4Recipients": "Google Cloud (Firestore sessions)",
+    "row4Recipients": [
+      "Google Cloud (Firestore-sessioner)",
+      "Google Cloud (Firestore sessions)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row5Activity": "Superadmin-revision",
     "row5Data": "Superadmin-åtgärder, använda tokens, raderade inbjudningar",
     "row5Basis": "Rättslig förpliktelse (Art. 6.1.c GDPR)",
     "row5Purpose": "Registrering av administrativa aktiviteter",
     "row5Retention": "3 år",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Internationella överföringar",
     "internationalText": "Data lagras på Google Cloud-servrar i regionen eur3 (Frankfurt, Tyskland). Google LLC (USA) fungerar som personuppgiftsbiträde enligt DPA i enlighet med Art. 28 GDPR. Överföringar till USA täcks av:",
     "scc": "Standardavtalsklausuler (SCC) - Genomförandebeslut 2021/914",
@@ -691,86 +2059,1178 @@
     "measureSuperadmin": "Superadmin skyddad av Firebase Authentication + dold rutt"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "Tillgänglighet",
+      "Accessibility",
+      null,
+      null,
+      2
+    ],
+    "close": [
+      "Nära",
+      "Close",
+      null,
+      null,
+      2
+    ],
+    "fontSize": [
+      "Textstorlek",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "Normal",
+      "Normal",
+      null,
+      null,
+      2
+    ],
+    "fontLarge": [
+      "Stor",
+      "Large",
+      null,
+      null,
+      2
+    ],
+    "fontExtraLarge": [
+      "Extra large",
+      "Extra large",
+      null,
+      null,
+      2
+    ],
+    "lineSpacing": [
+      "Radavstånd",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "Normal",
+      "Normal",
+      null,
+      null,
+      2
+    ],
+    "lineWide": [
+      "Bred",
+      "Wide",
+      null,
+      null,
+      2
+    ],
+    "lineVeryWide": [
+      "Mycket bred",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "Hög kontrast",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "Minska rörelse",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "OpenDyslexic teckensnitt",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "Mer bokstavsavstånd",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "Stryk under alla länkar",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "Stor markör",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "Gråskala",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "Synliga fokusindikatorer",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "Ingen musik",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "Fel vid laddning",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "Musik",
+      "Music",
+      null,
+      null,
+      2
+    ],
+    "soundCloudNote": [
+      "SoundCloud-spår — öppen för uppspelning",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "Öppna i SoundCloud",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "Förbereder utskrift...",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "Parfoto",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "Med deras gudföräldrars välsignelse",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "Datum och plats",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "Tid för ceremoni:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Visa plats i Google Maps",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "Vi ser fram emot att dela detta speciella ögonblick med dig.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "Transport",
+      "Transport",
+      null,
+      null,
+      2
+    ],
+    "aboutGuests": [
+      "Om gästerna",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "Bröllopsschema",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "Det detaljerade schemat kommer att delas inom kort.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "Klädkod",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "Kommer att meddelas senare.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "Om barn",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "Vår historia",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "Hur allt började",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "Berättelsen kommer att delas snart.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "Gåvor",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "Din närvaro är den bästa gåvan",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "Presentinformation kommer att delas inom kort.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "Bankuppgifter",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "Logi",
+      "Accommodation",
+      null,
+      null,
+      2
+    ],
+    "whereToStay": [
+      "Var ska man bo",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "Boendeinformation kommer att delas inom kort.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · Sekretesspolicy på wedingo-6c26a.web.app",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "Stäng fönstret",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
+    "moveUp": [
+      "Flytta upp",
+      "Move up",
+      null,
+      null,
+      2
+    ],
+    "moveDown": [
+      "Flytta ner",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "title": "Ordning & synlighet",
     "help": "Dra för att omordna, använd knapparna för att flytta och slå på/av varje sektion."
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "Välj språk",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 följeslagare",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "Spanien",
+      "Spain",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "westernEurope": [
+      "Västeuropa",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "Nordiska Europa",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "Centraleuropa",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "Sydeuropa / Balkan",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "Östeuropa / Kaukasus",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "Östasien",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "Sydasien",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "Sydostasien",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "Centralasien / Mellanöstern",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "Afrika",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "Amerika",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} år",
@@ -824,15 +3284,91 @@
     "1": "Januari",
     "2": "Februari",
     "3": "Mars",
-    "4": "April",
+    "4": [
+      "april",
+      "April",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "5": "Maj",
     "6": "Juni",
     "7": "Juli",
     "8": "Augusti",
-    "9": "September",
+    "9": [
+      "september",
+      "September",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "10": "Oktober",
-    "11": "November",
-    "12": "December"
+    "11": [
+      "november",
+      "November",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "12": [
+      "december",
+      "December",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeGroups": {
     "light": "Ljusa teman",
@@ -840,59 +3376,729 @@
     "lgbtiq": "HBTQI+"
   },
   "dietary": {
-    "gluten": "Gluten",
+    "gluten": [
+      "Gluten",
+      "Gluten",
+      null,
+      null,
+      2
+    ],
     "lactose": "Laktos",
     "nuts": "Trädnötter",
     "shellfish": "Skaldjur"
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "Till våra allra käraste",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "Tryck för att öppna",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "Tryck för att fortsätta",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "Vårt bröllop",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "Bröllop av {{names}}",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "Plats ska bekräftas",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "Vi ser fram emot att fira detta speciella ögonblick med dig.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "Tid:",
+      "Time:",
+      null,
+      null,
+      2
+    ],
+    "placeLabel": [
+      "Mötesplats:",
+      "Venue:",
+      null,
+      null,
+      2
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "Elegant och ljus, med gyllene accenter.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "Naturlig och sober med mjuka gröna.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "Varm och delikat, med rosa nyanser.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "Lätt och neutral, med en fridfull och tidlös närvaro.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "Mjuk och romantisk, med pärlorosa toner.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "Fräscht och lugnt, med lavendel och lila nyanser.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "Ljust och festligt, med varma gyllene gnistrar.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "Mörkt och elegant, med bärnstensfärgade och guldiga höjdpunkter.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "Djup och sofistikerad, med intensivt guld på mörk bakgrund.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "Mycket mörkblått med intensivt guld och högtidlig närvaro.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "Varmt och omslutande, med rött vin och gyllene gnistrar.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "Djupblått med silverdetaljer och fridfull närvaro.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "Djupt naturligt grönt med gyllene och eleganta nyanser.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "Intensivt lila med rosa och romantiska gnistrar.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "Firande av mångsidig kärlek med regnbågens färger.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "Blått, rosa och vitt som hyllning till transflaggan.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "Gul, vit, lila och svart för den icke-binära flaggan.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "Orange, vitt och rosa i den lesbiska flaggan.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "Rosa, lila och blått av bi-flaggan.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "Rosa, gult och blått av panflaggan.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "Svart, grått, vitt och lila i den asexuella flaggan.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "Välkommen med lekplats",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "Välkommen under uppsikt",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "Endast vuxna",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "c20f075da290ff4ebe2bae43bebf89e7",
+              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "Inga data",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "total",
+      "total",
+      null,
+      null,
+      2
+    ],
+    "barChart": [
+      "Stapeldiagram för närvaro",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

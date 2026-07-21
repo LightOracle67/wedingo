@@ -11,20 +11,172 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "មើលឃើញ",
+      "Visible",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "មានអ្វីមួយខុសប្រក្រតី",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "សូមផ្ទុកទំព័រឡើងវិញ ដើម្បីព្យាយាមម្តងទៀត។",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "ផ្ទុកទំព័រឡើងវិញ",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "បិទ",
+        "Close",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "រំលងទៅមាតិកាសំខាន់",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "របាររដ្ឋបាល",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "រដ្ឋបាល",
+        "Administration",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "landing": {
@@ -55,8 +207,46 @@
     "todayIsWedding": "ថ្ងៃនេះជាថ្ងៃអាពាហ៍ពិពាហ៍",
     "missing": "នៅសល់",
     "todayIsTheDay": "ថ្ងៃនេះជាថ្ងៃពិសេស!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": [
+      "គម្រប",
+      "Cover",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eyebrow": [
+      "អាពាហ៍ពិពាហ៍របស់យើង។",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "កាលបរិច្ឆេទនិងទីកន្លែង",
@@ -106,8 +296,46 @@
     "next": "បន្ទាប់",
     "thumbnailAria": "រូបថត {{number}}",
     "thumbnailAlt": "រូបតូចនៃរូបថតវិចិត្រសាល",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "វិចិត្រសាលរូបភាព ប្រើគ្រាប់ចុចព្រួញដើម្បីរុករក",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "រូបភាពពង្រីក",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "ការបញ្ជាក់វត្តមាន",
@@ -138,49 +366,638 @@
     "ageUnder14Warning": "អ្នកមានអាយុក្រោម 14 ឆ្នាំ។ អ្នកត្រូវការការយល់ព្រមពីឪពុកម្តាយឬអាណាព្យាបាលរបស់អ្នក។",
     "parentalConsent": "ឪពុកម្តាយឬអាណាព្យាបាលរបស់ខ្ញុំយល់ព្រមចំពោះការចូលរួមរបស់ខ្ញុំ",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "បញ្ចូលឈ្មោះរបស់អ្នកដើម្បីបញ្ជាក់ការចូលរួម។",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "ជ្រើសរើសជម្រើសម៉ឺនុយ។",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "អ្នកត្រូវតែទទួលយកគោលការណ៍ឯកជនភាព។",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "បញ្ចូលថ្ងៃខែឆ្នាំកំណើតរបស់អ្នក។",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "អ្នកមានអាយុក្រោម 14 ឆ្នាំ។ ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "អ្នកត្រូវតែយល់ព្រមចំពោះដំណើរការទិន្នន័យសុខភាពរបស់អ្នក។",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "ចង្អុលបង្ហាញយ៉ាងហោចណាស់ជម្រើសម៉ឺនុយមួយ។",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "បញ្ចូលឈ្មោះដៃគូរបស់អ្នក។",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "អ្នកមិនអាចបញ្ចូលឈ្មោះច្រើនជាងដៃគូបានទេ។",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "ផលបូកនៃជម្រើសម៉ឺនុយមិនអាចលើសពីចំនួនដៃគូបានទេ។",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "សូមអរគុណ {{name}}។ ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "សូមអរគុណ {{name}}។ ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "យើងមិនអាចរក្សាទុកការឆ្លើយតបរបស់អ្នកបានទេ។ ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "តើអ្នកប្រាកដថាចង់ដកការឆ្លើយតបរបស់អ្នកទេ?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "ការឆ្លើយតបរបស់អ្នកត្រូវបានដកចេញ។",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "មិនអាចដកការឆ្លើយតបរបស់អ្នកបានទេ។ ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "លុប​ការ​ឆ្លើយ​តប​ការ​ចូល​រួម​ទាំង​អស់? ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "កំណត់ត្រាវត្តមានត្រូវបានសម្អាត។",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "មិន​អាច​ជម្រះ​កំណត់ត្រា​ការ​ចូល​រួម​បាន​ទេ។",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "ដៃគូ",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "មនុស្ស",
+      "People",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountHint": [
+      "តើមានមនុស្សប៉ុន្មាននាក់សម្រាប់ជម្រើសនីមួយៗ (សរុប {{total}})",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "ឈ្មោះភ្ញៀវ",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "សរសេរឈ្មោះ និងនាមត្រកូលរបស់ដៃគូនីមួយៗ (អតិបរមា {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "ឈ្មោះ ១ នាមត្រកូល ១ ឈ្មោះ ២ នាមត្រកូល ២...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "កំពុងផ្ទុកការអញ្ជើញ...",
     "notFoundTitle": "រកមិនឃើញការអញ្ជើញ",
     "notFoundText": "យើងរកមិនឃើញការអញ្ជើញដែលមានតំណនេះទេ។ បើអ្នកគិតថាវាជាកំហុស សូមទាក់ទងម្ចាស់ផ្ទះ។",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "វីឌីងដូ",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "បង្កើតនិងចែករំលែកការអញ្ជើញអាពាហ៍ពិពាហ៍ផ្ទាល់ខ្លួនរបស់អ្នក។",
     "emptyDescription": "គ្រប់គ្រងទិន្នន័យការអញ្ជើញរបស់អ្នក ចែករំលែកតំណតែមួយគត់ជាមួយភ្ញៀវរបស់អ្នក និងទទួលការបញ្ជាក់វត្តមាន។",
     "createLink": "បង្កើតការអញ្ជើញ",
     "privacyPolicy": "គោលការណ៍ឯកជនភាព",
     "terms": "លក្ខខណ្ឌ",
     "legalNotice": "ការជូនដំណឹងផ្នែកច្បាប់",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "មិនអាចកំណត់ទីតាំងនេះបានទេ។",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "មិនអាចផ្ទុកផែនទីបានទេ។",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "កូអរដោនេ៖ {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "ការមើលផែនទីជាមុននៅទីតាំងដែលបានចង្អុលបង្ហាញ។",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "ទីតាំងត្រូវបានកំណត់",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "កំពុងផ្ទុកការអញ្ជើញ",
@@ -308,28 +1125,427 @@
     "galleryUploadFailed": "មិនអាចផ្ទុកឡើងរូបថតបានទេ។",
     "noValidFiles": "គ្មានឯកសារត្រឹមត្រូវទេ។ អតិបរមា 20 MB, JPG/PNG។",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "បង្ហោះឯកសារអូឌីយ៉ូដើម្បីចាក់លើគម្រប (MP3, WAV, OGG, M4A — អតិបរមា 5 MB)។",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "ផ្ទុកឡើងឯកសារអូឌីយ៉ូ",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG ឬ M4A — អតិបរមា 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "ទម្រង់អូឌីយ៉ូមិនត្រូវបានគាំទ្រទេ។ ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "ឯកសារអូឌីយ៉ូគឺទទេ។",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "ឯកសារអូឌីយ៉ូលើសពីដែនកំណត់ 5 MB ។",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "កំហុសក្នុងការអានឯកសារអូឌីយ៉ូ។",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "ឯកសារគឺទទេ។ ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "ការពិពណ៌នារូបភាព...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "រូបភាព {{max}} អតិបរមានៅក្នុងវិចិត្រសាល។",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "កំពុងបង្ហោះរូបថត {{total}}...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "កំពុងបង្ហោះរូបថត...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "ផ្លាស់ប្តូររូបថត",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "កំហុសក្នុងការរក្សាទុកការពិពណ៌នា",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "បានរក្សាទុកការពិពណ៌នា",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "តន្ត្រីដែលបានជ្រើសរើស",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "ដកតន្ត្រីចេញ",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "កំពុងលេង...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "មើលជាមុន",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "ជ្រើសរើស",
+      "Select",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "selected": [
+      "បានជ្រើសរើស",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1569,66 @@
     "pdfTableCompanions": "អ្នករួមដំណើរ",
     "pdfTableDiet": "របបអាហារ",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Weddingo · អ្នកគ្រប់គ្រង",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "មើលការអញ្ជើញ",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "ចេញ",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "បានបញ្ជាក់",
@@ -384,7 +1657,26 @@
     "confirms": "បញ្ជាក់",
     "declines": "បដិសេធ",
     "pending": "កំពុងរង់ចាំ",
-    "visits_one": "1 visit",
+    "visits_one": [
+      "1 ទស្សនា",
+      "1 visit",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +1709,66 @@
     "generateMessage": "បង្កើតសារផ្សេងទៀត",
     "copyMessage": "ចម្លងសារ",
     "shareVia": "ចែករំលែកតាម",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "កម្មវិធី WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "តេឡេក្រាម",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "សារ SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "បោះពុម្ព",
     "printPdf": "បោះពុម្ព / រក្សាទុកជា PDF",
     "linkCopied": "បានចម្លងតំណ។",
@@ -446,9 +1795,47 @@
     "deleteButton": "ស្នើសុំលុបទិន្នន័យ",
     "exportButton": "នាំចេញទិន្នន័យរបស់ខ្ញុំ",
     "rightsHint": "កម្មវិធីអ៊ីមែលរបស់អ្នកនឹងបើកជាមួយគំរូដែលបានកំណត់ជាមុន។ អ្នកក៏អាចសរសេរទៅ adriancl2001@gmail.com បានដែរ។",
-    "ccpaTitle": "CCPA / CPRA (California)",
+    "ccpaTitle": [
+      "CCPA / CPRA (កាលីហ្វ័រញ៉ា)",
+      "CCPA / CPRA (California)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "ccpaText": "Wedingo មិនលក់ទិន្នន័យផ្ទាល់ខ្លួនទេ។ ទិន្នន័យដែលបានប្រមូលត្រូវបានប្រើសម្រាប់តែការគ្រប់គ្រងការអញ្ជើញប៉ុណ្ណោះ។ បើអ្នកជាអ្នករស់នៅ California អ្នកមានសិទ្ធិស្នើសុំការលុបទិន្នន័យរបស់អ្នក និងមិនត្រូវបានរើសអើងដោយសារការប្រើប្រាស់សិទ្ធិរបស់អ្នក។",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "វីឌីងដូ",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "កម្មវិធីគេហទំព័រសម្រាប់ការគ្រប់គ្រងការអញ្ជើញអាពាហ៍ពិពាហ៍។",
     "copyright": "© {{year}} Adrián Carrasco López។ រក្សាសិទ្ធិគ្រប់យ៉ាង។",
     "deleteEmailSubject": "សំណើលុបទិន្នន័យ - Wedingo",
@@ -518,13 +1905,146 @@
     "deleteFailed": "មិនអាចលុបការអញ្ជើញបានទេ។ ព្យាយាមម្តងទៀត។",
     "configLoadFailed": "មិនអាចផ្ទុកការកំណត់រចនាសម្ព័ន្ធបានទេ។ ពិនិត្យការតភ្ជាប់ហើយព្យាយាមម្តងទៀត។",
     "invalidLink": "តំណអញ្ជើញមិនត្រឹមត្រូវ។",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "ព័ត៌មានអំពីកន្លែងស្នាក់នៅមិនអាចលើសពី 2000 តួអក្សរទេ។",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "ការពិពណ៌នាម៉ឺនុយមិនអាចលើសពី 2000 តួអក្សរទេ។",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "មិនអាចដំណើរការរូបភាពបានទេ។ ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "មិនអាចអានឯកសាររូបភាពបានទេ។",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "ការអ៊ិនគ្រីបរូបភាពបានបរាជ័យ។",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "រូបភាពមានទំហំធំពេក សូម្បីតែបន្ទាប់ពីការបង្ហាប់ក៏ដោយ។",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "ឯកសារគឺទទេ។ ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -588,7 +2108,26 @@
     "tokenCleanError": "មិនអាចសម្អាតកូដបានទេ។",
     "tokenLoadError": "មិនអាចផ្ទុកកូដបានទេ។",
     "accountEmail": "អ៊ីមែល: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID៖ {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "សកម្ម",
     "sessionInactive": "អសកម្ម",
     "sessionLabel": "សម័យក្នុងស្រុក: {{status}}",
@@ -615,10 +2154,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "សញ្ញាសម្ងាត់",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVPs",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2213,46 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "អ៊ីមែល",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "ពាក្យសម្ងាត់",
+      "Password",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "compliance": {
     "title": "កំណត់ត្រាសកម្មភាពដំណើរការទិន្នន័យ (GDPR មាត្រា 30)",
@@ -653,31 +2268,126 @@
     "row1Basis": "ការយល់ព្រម (GDPR មាត្រា 6.1.a)",
     "row1Purpose": "បង្កើតនិងកំណត់ផ្ទាល់ខ្លួនការអញ្ជើញអាពាហ៍ពិពាហ៍",
     "row1Retention": "ដរាបណាគណនីសកម្ម",
-    "row1Recipients": "Google Cloud (Firestore, hosting)",
+    "row1Recipients": [
+      "Google Cloud (Firestore, បង្ហោះ)",
+      "Google Cloud (Firestore, hosting)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row2Activity": "ការបញ្ជាក់វត្តមាន (RSVP)",
     "row2Data": "ឈ្មោះភ្ញៀវ វត្តមាន (បាទ/ចាស) ការជ្រើសរើសមុខម្ហូប ប្រតិកម្ម ទិន្នន័យសុខភាព",
     "row2Basis": "ការយល់ព្រម (GDPR មាត្រា 6.1.a, 9.2.a)",
     "row2Purpose": "គ្រប់គ្រងបញ្ជីភ្ញៀវនិងមុខម្ហូប",
     "row2Retention": "12 ខែបន្ទាប់ពីព្រឹត្តិការណ៍",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "ការផ្ទុកឡើងរូបភាព",
     "row3Data": "រូបថតអាពាហ៍ពិពាហ៍ (បានអ៊ិនគ្រីប AES-256-GCM)",
     "row3Basis": "ការយល់ព្រម (GDPR មាត្រា 6.1.a)",
     "row3Purpose": "វិចិត្រសាលរូបថតក្នុងការអញ្ជើញ",
     "row3Retention": "12 ខែបន្ទាប់ពីព្រឹត្តិការណ៍",
-    "row3Recipients": "Google Cloud (Firestore subcollection)",
+    "row3Recipients": [
+      "Google Cloud (បណ្តុំរង Firestore)",
+      "Google Cloud (Firestore subcollection)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row4Activity": "ការផ្ទៀងផ្ទាត់និងសម័យ",
     "row4Data": "កូដសម័យ ឈ្មោះអ្នកប្រើប្រាស់អ្នកគ្រប់គ្រង",
     "row4Basis": "ផលប្រយោជន៍ស្របច្បាប់ (GDPR មាត្រា 6.1.f)",
     "row4Purpose": "គ្រប់គ្រងការចូលទៅកាន់ផ្ទាំងគ្រប់គ្រង",
     "row4Retention": "រយៈពេលនៃសម័យ",
-    "row4Recipients": "Google Cloud (Firestore sessions)",
+    "row4Recipients": [
+      "Google Cloud (វគ្គ Firestore)",
+      "Google Cloud (Firestore sessions)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row5Activity": "សវនកម្មអ្នកគ្រប់គ្រងកំពូល",
     "row5Data": "សកម្មភាពអ្នកគ្រប់គ្រងកំពូល កូដដែលបានប្រើ ការអញ្ជើញដែលបានលុប",
     "row5Basis": "កាតព្វកិច្ចផ្លូវច្បាប់ (GDPR មាត្រា 6.1.c)",
     "row5Purpose": "កំណត់ត្រាសកម្មភាពរដ្ឋបាល",
     "row5Retention": "3 ឆ្នាំ",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "ការផ្ទេរអន្តរជាតិ",
     "internationalText": "ទិន្នន័យត្រូវបានរក្សាទុកនៅលើម៉ាស៊ីនមេ Google Cloud ក្នុងតំបន់ eur3 (ហ្វ្រែងហ្វើត អាល្លឺម៉ង់)។ Google LLC (សហរដ្ឋអាមេរិក) ដើរតួជាអ្នកដំណើរការទិន្នន័យក្រោម DPA ស្របតាម GDPR មាត្រា 28។ ការផ្ទេរទៅសហរដ្ឋអាមេរិកត្រូវបានការពារដោយ:",
     "scc": "ប្រការកិច្ចសន្យាស្តង់ដារ (SCC) - សេចក្តីសម្រេចអនុវត្ត 2021/914",
@@ -691,86 +2401,1359 @@
     "measureSuperadmin": "អ្នកគ្រប់គ្រងកំពូលការពារដោយ Firebase Authentication + ផ្លូវលាក់"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "ភាពងាយស្រួល",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "បិទ",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontSize": [
+      "ទំហំអត្ថបទ",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "ធម្មតា។",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontLarge": [
+      "ធំ",
+      "Large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontExtraLarge": [
+      "ធំបន្ថែម",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "គម្លាតបន្ទាត់",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "ធម្មតា។",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineWide": [
+      "ធំទូលាយ",
+      "Wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineVeryWide": [
+      "ធំទូលាយណាស់។",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "កម្រិតពណ៌ខ្ពស់។",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "កាត់បន្ថយចលនា",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "ពុម្ពអក្សរ OpenDyslexic",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "គម្លាតអក្សរកាន់តែច្រើន",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "គូសបញ្ជាក់តំណទាំងអស់។",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "ទស្សន៍ទ្រនិចធំ",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "មាត្រដ្ឋានប្រផេះ",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "សូចនាករការផ្តោតអារម្មណ៍ដែលអាចមើលឃើញ",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "គ្មានតន្ត្រី",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "កំហុសក្នុងការផ្ទុក",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "តន្ត្រី",
+      "Music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "soundCloudNote": [
+      "បទ SoundCloud — បើក​ដើម្បី​លេង",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "បើកនៅក្នុង SoundCloud",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "កំពុងរៀបចំបោះពុម្ព...",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "រូបថតគូស្នេហ៍",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "ដោយ​ការ​ប្រសិទ្ធពរ​ពី​មាតា​បិតា​របស់​ពួក​គេ",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "កាលបរិច្ឆេទ និងទីកន្លែង",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "ពេលវេលានៃពិធី៖",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "មើលទីតាំងនៅក្នុង Google Maps",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "យើងទន្ទឹងរង់ចាំចែករំលែកឱកាសពិសេសនេះជាមួយអ្នក។",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "ការដឹកជញ្ជូន",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutGuests": [
+      "អំពីភ្ញៀវ",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "កាលវិភាគអាពាហ៍ពិពាហ៍",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "កាលវិភាគលម្អិតនឹងត្រូវបានចែករំលែកក្នុងពេលឆាប់ៗនេះ។",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "កូដសំលៀកបំពាក់",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "នឹងជម្រាបជូននៅពេលក្រោយ។",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "អំពីកុមារ",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "រឿងរបស់យើង។",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "របៀបដែលវាទាំងអស់បានចាប់ផ្តើម",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "រឿងនេះនឹងចែករំលែកក្នុងពេលឆាប់ៗនេះ។",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "អំណោយ",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "វត្តមានរបស់អ្នកគឺជាអំណោយដ៏ល្អបំផុត",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "ព័ត៌មានអំណោយនឹងត្រូវបានចែករំលែកក្នុងពេលឆាប់ៗនេះ។",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "ព័ត៌មានលម្អិតអំពីធនាគារ",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "កន្លែងស្នាក់នៅ",
+      "Accommodation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "whereToStay": [
+      "កន្លែងស្នាក់នៅ",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "ព័ត៌មានអំពីកន្លែងស្នាក់នៅនឹងត្រូវបានចែករំលែកក្នុងពេលឆាប់ៗនេះ។",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · គោលការណ៍ឯកជនភាពនៅ wedingo-6c26a.web.app",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "បិទបង្អួច",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": [
+      "ផ្លាស់ទីឡើងលើ",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "ផ្លាស់ទីចុះក្រោម",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "title": [
+      "ការបញ្ជាទិញ & ភាពមើលឃើញ",
+      "Order & visibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "help": [
+      "អូសដើម្បីតម្រៀបឡើងវិញ ប្រើប៊ូតុងដើម្បីផ្លាស់ទី និងបិទ/បើកផ្នែកនីមួយៗ។",
+      "Drag to reorder, use the buttons to move, and toggle each section on or off.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "ជ្រើសរើសភាសា",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 ដៃគូ",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "អេស្ប៉ាញ",
+      "Spain",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "westernEurope": [
+      "អឺរ៉ុបខាងលិច",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "អឺរ៉ុបខាងជើង",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "អឺរ៉ុបកណ្តាល",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "អឺរ៉ុបខាងត្បូង / បាល់កង់",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "អឺរ៉ុបខាងកើត / Caucasus",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "អាស៊ីបូព៌ា",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "អាស៊ីខាងត្បូង",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "អាស៊ីអាគ្នេយ៍",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "អាស៊ីកណ្តាល / មជ្ឈិមបូព៌ា",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "អាហ្រ្វិក",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "អាមេរិក",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +3770,1708 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": [
+      "កំណត់ហេតុផ្លាស់ប្តូរ",
+      "Changelog",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "បិទ",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "មានវគ្គសកម្មរួចហើយសម្រាប់ការអញ្ជើញនេះ។ ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "លេខកូដចូលប្រើមិនត្រឹមត្រូវទេ។",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "បញ្ចូលលេខកូដចូល។",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "លេខកូដត្រូវបានផ្ទៀងផ្ទាត់ដោយជោគជ័យ។",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "មិនអាចផ្ទៀងផ្ទាត់លេខកូដបានទេ។ ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "បញ្ចូលឈ្មោះអ្នកប្រើប្រាស់ និងលេខកូដចូលប្រើប្រាស់របស់អ្នក។",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "ឈ្មោះអ្នកប្រើ ឬលេខកូដមិនត្រឹមត្រូវ។",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "លេខកូដមិនត្រូវគ្នានឹងអ្នកប្រើប្រាស់នេះទេ។",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "អ្នកបានចូលដោយជោគជ័យ។",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "មិនអាចផ្ទៀងផ្ទាត់លេខកូដបានទេ។ ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "វាយ CONFIRM ដើម្បីបង្កើតលេខកូដថ្មី។",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "បញ្ចូលឈ្មោះអ្នកប្រើរបស់អ្នកជាមុនសិន។",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "ឈ្មោះអ្នកប្រើប្រាស់អាចមានតែអក្សរ និងលេខប៉ុណ្ណោះ។",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "ឈ្មោះអ្នកប្រើមិនអាចលើសពី 50 តួអក្សរបានទេ។",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "អ្នកប្រើប្រាស់នេះមិនមានសិទ្ធិចូលប្រើនៅទីនេះទេ។",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "បាន​បង្កើត​កូដ។ ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "មិនអាចបង្កើតកូដបានទេ។ ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "បញ្ចូលលេខកូដចូលប្រើបច្ចុប្បន្នដើម្បីបង្កើតថ្មីមួយ។",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "លេខកូដថ្មីត្រូវបានបង្កើត។ ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "លេខកូដត្រូវបានបន្ត។ ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "គណនីនេះមិនមានសិទ្ធិគ្រប់គ្រងទេ។",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "លិខិតសម្គាល់មិនត្រឹមត្រូវ។",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "ការព្យាយាមច្រើនពេក។ ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "ទម្រង់អ៊ីមែលមិនត្រឹមត្រូវទេ។",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "កំហុសក្នុងការចូល។ សូមពិនិត្យមើលការតភ្ជាប់របស់អ្នក។",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": [
+      "បានរក្សាទុកការផ្លាស់ប្តូរ",
+      "Changes saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": [
+      "មករា",
+      "January",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "2": [
+      "ខែកុម្ភៈ",
+      "February",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "3": [
+      "ខែមីនា",
+      "March",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "4": [
+      "មេសា",
+      "April",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "5": [
+      "ឧសភា",
+      "May",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "6": [
+      "ខែមិថុនា",
+      "June",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "7": [
+      "ខែកក្កដា",
+      "July",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "8": [
+      "សីហា",
+      "August",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "9": [
+      "ខែកញ្ញា",
+      "September",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "10": [
+      "តុលា",
+      "October",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "11": [
+      "ខែវិច្ឆិកា",
+      "November",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "12": [
+      "ខែធ្នូ",
+      "December",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": [
+      "ស្បែកស្រាល",
+      "Light themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dark": [
+      "ស្បែកងងឹត",
+      "Dark themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": [
+      "ជាតិស្អិត",
+      "Gluten",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lactose": [
+      "ឡាក់តូស",
+      "Lactose",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nuts": [
+      "គ្រាប់ដើមឈើ",
+      "Tree nuts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "shellfish": [
+      "ខ្យង",
+      "Shellfish",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "ទៅជាទីស្រឡាញ់របស់យើង។",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "ប៉ះដើម្បីបើក",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "ប៉ះដើម្បីបន្ត",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "អាពាហ៍ពិពាហ៍របស់យើង។",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "អាពាហ៍ពិពាហ៍របស់ {{names}}",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "ទីតាំងដែលត្រូវបញ្ជាក់",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "យើងទន្ទឹងរង់ចាំប្រារព្ធឱកាសពិសេសនេះជាមួយអ្នក។",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "ពេលវេលា៖",
+      "Time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeLabel": [
+      "ទីកន្លែង៖",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "ឆើតឆាយ និងភ្លឺ ជាមួយនឹងការសង្កត់សំឡេងពណ៌មាស។",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "ធម្មជាតិនិងស្ងប់ស្ងាត់ជាមួយបៃតងទន់។",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "កក់ក្តៅ និងឆ្ងាញ់ ជាមួយនឹងពណ៌លាំពណ៌ផ្កាឈូក។",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "ពន្លឺ និងអព្យាក្រឹត ជាមួយនឹងវត្តមានដ៏ស្ងប់ស្ងាត់ និងមិនចេះចប់។",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "ទន់ភ្លន់ និងរ៉ូមែនទិច ជាមួយនឹងសម្លេងពណ៌ផ្កាឈូកគុជខ្យង។",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "ស្រស់ និងស្ងប់ស្ងាត់ ជាមួយនឹងពណ៌ផ្កាឡាវេនឌឺ និងពណ៌ស្វាយ។",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "ភ្លឺ​និង​មាន​បុណ្យ​, ជាមួយ​នឹង​ផ្កា​ភ្លើង​ពណ៌​មាស​ក្តៅ​។",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "ងងឹត និងឆើតឆាយ ជាមួយនឹងការបន្លិចពណ៌លឿង និងពណ៌មាស។",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "ជ្រៅ និងស្មុគ្រស្មាញ ជាមួយនឹងពណ៌មាសខ្លាំងនៅលើផ្ទៃខាងក្រោយងងឹត។",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "ពណ៌ខៀវងងឹតខ្លាំង ជាមួយនឹងពណ៌មាសខ្លាំង និងវត្តមានដ៏ឧឡារិក។",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "កក់ក្តៅ និងរុំព័ទ្ធដោយស្រាក្រហម និងផ្កាភ្លើងពណ៌មាស។",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "ពណ៌ខៀវជ្រៅជាមួយនឹងការសង្កត់សំឡេងប្រាក់ និងវត្តមានដ៏ស្ងប់ស្ងាត់។",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "ពណ៌បៃតងធម្មជាតិជ្រៅ ជាមួយនឹងពណ៌មាស និងឆើតឆាយ។",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "ពណ៌ស្វាយខ្លាំងជាមួយនឹងផ្កាភ្លើងពណ៌ផ្កាឈូក និងមនោសញ្ចេតនា។",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "ការប្រារព្ធពិធីនៃសេចក្តីស្រឡាញ់ចម្រុះជាមួយនឹងពណ៌ឥន្ទធនូ។",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "ខៀវ ផ្កាឈូក និងស ក្នុងការគោរពទង់ជាតិ។",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "ពណ៌លឿង ស ពណ៌ស្វាយ និងខ្មៅ សម្រាប់ទង់ជាតិមិនមែនគោលពីរ។",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "ពណ៌ទឹកក្រូច ស និងពណ៌ផ្កាឈូកនៃទង់ជាតិស្ត្រីស្រឡាញ់ភេទដូចគ្នា។",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "ផ្កាឈូក ពណ៌ស្វាយ និងពណ៌ខៀវនៃទង់ជាតិប៊ី។",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "ផ្កាឈូក លឿង និងខៀវនៃទង់ជាតិ។",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "ពណ៌ខ្មៅ ប្រផេះ ស និងពណ៌ស្វាយនៃទង់ជាតិភេទ។",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "សូមស្វាគមន៍ជាមួយកន្លែងលេង",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "សូមស្វាគមន៍ក្រោមការត្រួតពិនិត្យ",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "មនុស្សពេញវ័យតែប៉ុណ្ណោះ",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "គ្មានទិន្នន័យ",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "សរុប",
+      "total",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "barChart": [
+      "តារាងតារាងវត្តមាន",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

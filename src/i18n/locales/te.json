@@ -11,20 +11,172 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "కనిపించే",
+      "Visible",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "ఏదో తప్పు జరిగింది",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "దయచేసి మళ్లీ ప్రయత్నించడానికి పేజీని రీలోడ్ చేయండి.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "పేజీని రీలోడ్ చేయండి",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "మూసివేయి",
+        "Close",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "ప్రధాన కంటెంట్‌కు దాటవేయండి",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "అడ్మినిస్ట్రేషన్ బార్",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "పరిపాలన",
+        "Administration",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "landing": {
@@ -55,8 +207,46 @@
     "todayIsWedding": "ఈరోజు వివాహం",
     "missing": "మిగిలి ఉంది",
     "todayIsTheDay": "ఈరోజే గొప్ప రోజు!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": [
+      "కవర్",
+      "Cover",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eyebrow": [
+      "మా పెళ్లి",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "తేదీ మరియు స్థలం",
@@ -106,8 +296,46 @@
     "next": "తదుపరి",
     "thumbnailAria": "ఫోటో {{number}}",
     "thumbnailAlt": "గ్యాలరీ ఫోటో థంబ్‌నెయిల్",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "చిత్ర గ్యాలరీ, నావిగేట్ చేయడానికి బాణం కీలను ఉపయోగించండి",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "విస్తరించిన చిత్రం",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "హాజరు నిర్ధారణ",
@@ -138,49 +366,638 @@
     "ageUnder14Warning": "మీకు 14 సంవత్సరాల కంటే తక్కువ వయస్సు. మీకు తల్లిదండ్రులు లేదా సంరక్షకుల అనుమతి అవసరం.",
     "parentalConsent": "నా తల్లిదండ్రులు లేదా సంరక్షకులు నా పాల్గొనడానికి అంగీకరిస్తున్నారు",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "హాజరును నిర్ధారించడానికి మీ పేరును నమోదు చేయండి.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "మెను ఎంపికను ఎంచుకోండి.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "మీరు తప్పనిసరిగా గోప్యతా విధానాన్ని అంగీకరించాలి.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "మీ పుట్టిన తేదీని నమోదు చేయండి.",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "మీ వయస్సు 14 ఏళ్లలోపు. ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "మీ ఆరోగ్య డేటా ప్రాసెసింగ్‌కు మీరు తప్పనిసరిగా సమ్మతించాలి.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "కనీసం ఒక మెను ఎంపికను సూచించండి.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "మీ సహచరుల పేర్లను నమోదు చేయండి.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "మీరు సహచరుల కంటే ఎక్కువ పేర్లను నమోదు చేయలేరు.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "మెను ఎంపికల మొత్తం సహచరుల సంఖ్యను మించకూడదు.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "ధన్యవాదాలు, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "ధన్యవాదాలు, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "మేము మీ ప్రతిస్పందనను సేవ్ చేయలేకపోయాము. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "మీరు మీ ప్రతిస్పందనను ఖచ్చితంగా ఉపసంహరించుకోవాలనుకుంటున్నారా?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "మీ ప్రతిస్పందన ఉపసంహరించబడింది.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "మీ ప్రతిస్పందనను ఉపసంహరించుకోలేకపోయింది. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "అన్ని హాజరు ప్రతిస్పందనలను తొలగించాలా? ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "హాజరు రికార్డులు క్లియర్ చేయబడ్డాయి.",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "హాజరు రికార్డులను క్లియర్ చేయడం సాధ్యపడలేదు.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "సహచరులు",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "ప్రజలు",
+      "People",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountHint": [
+      "ప్రతి ఎంపికకు ఎంత మంది వ్యక్తులు (మొత్తం {{మొత్తం}})",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "అతిథి పేర్లు",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "ప్రతి సహచరుడి మొదటి మరియు చివరి పేరును వ్రాయండి (గరిష్టంగా {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "పేరు1 ఇంటిపేరు1, పేరు2 ఇంటిపేరు2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "ఆహ్వానం లోడ్ అవుతోంది...",
     "notFoundTitle": "ఆహ్వానం కనుగొనబడలేదు",
     "notFoundText": "ఈ లింక్‌తో ఏ ఆహ్వానం కనుగొనబడలేదు. ఇది పొరపాటు అని మీరు భావిస్తే, హోస్ట్‌లను సంప్రదించండి.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "వెడింగో",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "మీ వ్యక్తిగత వివాహ ఆహ్వాన పత్రికను సృష్టించండి మరియు భాగస్వామ్యం చేయండి.",
     "emptyDescription": "మీ ఆహ్వానం డేటాను నిర్వహించండి, అతిథులతో ప్రత్యేక లింక్‌ను భాగస్వామ్యం చేయండి మరియు వారి హాజరు నిర్ధారణలను స్వీకరించండి.",
     "createLink": "ఆహ్వానాన్ని సృష్టించండి",
     "privacyPolicy": "గోప్యతా విధానం",
     "terms": "నిబంధనలు",
     "legalNotice": "చట్టపరమైన నోటీసు",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "ఈ స్థలాన్ని గుర్తించడం సాధ్యపడలేదు.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "మ్యాప్‌ను లోడ్ చేయడం సాధ్యపడలేదు.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "అక్షాంశాలు: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "సూచించిన ప్రదేశంలో మ్యాప్ ప్రివ్యూ.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "స్థానం కాన్ఫిగర్ చేయబడింది",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "ఆహ్వానం లోడ్ అవుతోంది",
@@ -308,28 +1125,427 @@
     "galleryUploadFailed": "ఫోటోలను అప్‌లోడ్ చేయలేకపోయాము.",
     "noValidFiles": "చెల్లుబాటు అయ్యే ఫైల్ లేదు. గరిష్టంగా 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "కవర్‌పై ప్లే చేయడానికి ఆడియో ఫైల్‌ను అప్‌లోడ్ చేయండి (MP3, WAV, OGG, M4A — గరిష్టంగా 5 MB).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "ఆడియో ఫైల్‌ను అప్‌లోడ్ చేయండి",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG లేదా M4A — గరిష్టంగా 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "ఆడియో ఆకృతికి మద్దతు లేదు. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "ఆడియో ఫైల్ ఖాళీగా ఉంది.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "ఆడియో ఫైల్ 5 MB పరిమితిని మించిపోయింది.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "ఆడియో ఫైల్‌ని చదవడంలో లోపం ఏర్పడింది.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "ఫైల్ ఖాళీగా ఉంది. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "చిత్ర వివరణ...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "గ్యాలరీలో గరిష్ట {{max}} చిత్రాలు.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "{{total}} ఫోటో(లు) అప్‌లోడ్ చేస్తోంది...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "ఫోటోను అప్‌లోడ్ చేస్తోంది...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "ఫోటో మార్చండి",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "వివరణను సేవ్ చేయడంలో లోపం",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "వివరణ సేవ్ చేయబడింది",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "ఎంచుకున్న సంగీతం",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "సంగీతాన్ని తీసివేయండి",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "ఆడుతోంది...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "ప్రివ్యూ",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "ఎంచుకోండి",
+      "Select",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "selected": [
+      "ఎంపిక చేయబడింది",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1569,66 @@
     "pdfTableCompanions": "తోడుగా వచ్చినవారు",
     "pdfTableDiet": "ఆహారం",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "వెడింగో · అడ్మిన్",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "ఆహ్వానాన్ని వీక్షించండి",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "లాగ్ అవుట్ చేయండి",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "నిర్ధారించబడింది",
@@ -384,7 +1657,26 @@
     "confirms": "నిర్ధారిస్తున్నారు",
     "declines": "తిరస్కరిస్తున్నారు",
     "pending": "పెండింగ్",
-    "visits_one": "1 visit",
+    "visits_one": [
+      "1 సందర్శన",
+      "1 visit",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +1709,66 @@
     "generateMessage": "మరొక సందేశాన్ని రూపొందించు",
     "copyMessage": "సందేశాన్ని కాపీ చేయి",
     "shareVia": "దీని ద్వారా భాగస్వామ్యం చేయండి",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "టెలిగ్రామ్",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "ముద్రించు",
     "printPdf": "ముద్రించు / PDF సేవ్ చేయి",
     "linkCopied": "లింక్ కాపీ చేయబడింది.",
@@ -448,7 +1797,26 @@
     "rightsHint": "మీ ఇమెయిల్ క్లయింట్ ముందే నిర్వచించిన టెంప్లేట్‌తో తెరవబడుతుంది. మీరు adriancl2001@gmail.com కు కూడా వ్రాయవచ్చు.",
     "ccpaTitle": "CCPA / CPRA (కాలిఫోర్నియా)",
     "ccpaText": "Wedingo వ్యక్తిగత డేటాను విక్రయించదు. సేకరించిన డేటా ఆహ్వాన నిర్వహణకు మాత్రమే ఉపయోగించబడుతుంది. మీరు కాలిఫోర్నియా నివాసి అయితే, మీ డేటాను తొలగించమని అభ్యర్థించే హక్కు మరియు మీ హక్కులను వినియోగించుకున్నందుకు వివక్షకు గురికాకుండా ఉండే హక్కు మీకు ఉంది.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "వెడింగో",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "వివాహ ఆహ్వానాల నిర్వహణ కోసం వెబ్ అప్లికేషన్.",
     "copyright": "© {{year}} Adrián Carrasco López. అన్ని హక్కులు రిజర్వ్ చేయబడ్డాయి.",
     "deleteEmailSubject": "డేటా తొలగింపు అభ్యర్థన - Wedingo",
@@ -518,13 +1886,146 @@
     "deleteFailed": "ఆహ్వానాన్ని తొలగించలేకపోయాము. మళ్ళీ ప్రయత్నించండి.",
     "configLoadFailed": "కాన్ఫిగరేషన్ లోడ్ చేయలేకపోయాము. కనెక్షన్‌ను తనిఖీ చేసి మళ్ళీ ప్రయత్నించండి.",
     "invalidLink": "ఆహ్వాన లింక్ చెల్లదు.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "వసతి సమాచారం 2000 అక్షరాలను మించకూడదు.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "మెను వివరణ 2000 అక్షరాలను మించకూడదు.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "చిత్రాన్ని ప్రాసెస్ చేయడం సాధ్యపడలేదు. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "ఇమేజ్ ఫైల్‌ని చదవడం సాధ్యపడలేదు.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "చిత్ర గుప్తీకరణ విఫలమైంది.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "కుదింపు తర్వాత కూడా చిత్రం చాలా పెద్దది.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "ఫైల్ ఖాళీగా ఉంది. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -588,7 +2089,26 @@
     "tokenCleanError": "టోకెన్‌లను శుభ్రం చేయలేకపోయాము.",
     "tokenLoadError": "టోకెన్‌లను లోడ్ చేయలేకపోయాము.",
     "accountEmail": "ఇమెయిల్: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "క్రియాశీలం",
     "sessionInactive": "నిష్క్రియం",
     "sessionLabel": "స్థానిక సెషన్: {{status}}",
@@ -615,10 +2135,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "టోకెన్",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVPలు",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2194,46 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "ఇమెయిల్",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "పాస్వర్డ్",
+      "Password",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "compliance": {
     "title": "ప్రాసెసింగ్ కార్యకలాపాల రికార్డు (GDPR ఆర్ట్. 30)",
@@ -659,7 +2255,26 @@
     "row2Basis": "సమ్మతి (GDPR ఆర్ట్. 6.1.a, 9.2.a)",
     "row2Purpose": "అతిథి జాబితా మరియు మెనూను నిర్వహించడం",
     "row2Retention": "ఈవెంట్ తర్వాత 12 నెలలు",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google క్లౌడ్ (ఫైర్‌స్టోర్)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "చిత్రాల అప్‌లోడ్",
     "row3Data": "వివాహ ఫోటోలు (AES-256-GCM ఎన్‌క్రిప్ట్ చేయబడినవి)",
     "row3Basis": "సమ్మతి (GDPR ఆర్ట్. 6.1.a)",
@@ -677,7 +2292,26 @@
     "row5Basis": "చట్టపరమైన బాధ్యత (GDPR ఆర్ట్. 6.1.c)",
     "row5Purpose": "పరిపాలనా కార్యకలాపాల రికార్డు",
     "row5Retention": "3 సంవత్సరాలు",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google క్లౌడ్ (ఫైర్‌స్టోర్ ఆడిట్‌లాగ్)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "అంతర్జాతీయ బదిలీలు",
     "internationalText": "డేటా Google Cloud సర్వర్‌లలో eur3 ప్రాంతంలో (ఫ్రాంక్‌ఫర్ట్, జర్మనీ) నిల్వ చేయబడుతుంది. Google LLC (USA) GDPR ఆర్ట్. 28 ప్రకారం DPA కింద డేటా ప్రాసెసర్‌గా పనిచేస్తుంది. USA కు బదిలీలు కింది వాటి కింద రక్షించబడతాయి:",
     "scc": "ప్రామాణిక ఒప్పంద నిబంధనలు (SCC) - అమలు నిర్ణయం 2021/914",
@@ -691,86 +2325,1359 @@
     "measureSuperadmin": "Firebase Authentication + దాచిన మార్గం ద్వారా రక్షించబడిన సూపర్ అడ్మిన్"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "యాక్సెసిబిలిటీ",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "మూసివేయి",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontSize": [
+      "వచన పరిమాణం",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "సాధారణ",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontLarge": [
+      "పెద్దది",
+      "Large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontExtraLarge": [
+      "అదనపు పెద్దది",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "లైన్ అంతరం",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "సాధారణ",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineWide": [
+      "వెడల్పు",
+      "Wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineVeryWide": [
+      "చాలా విశాలమైనది",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "అధిక కాంట్రాస్ట్",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "కదలికను తగ్గించండి",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "ఓపెన్ డైస్లెక్సిక్ ఫాంట్",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "మరింత అక్షర అంతరం",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "అన్ని లింక్‌లను అండర్‌లైన్ చేయండి",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "పెద్ద కర్సర్",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "గ్రేస్కేల్",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "కనిపించే దృష్టి సూచికలు",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "సంగీతం లేదు",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "లోడ్ చేయడంలో లోపం",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "సంగీతం",
+      "Music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "soundCloudNote": [
+      "SoundCloud ట్రాక్ — ప్లే చేయడానికి తెరవండి",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "SoundCloudలో తెరవండి",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "ప్రింట్‌ని సిద్ధం చేస్తోంది...",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "జంట ఫోటో",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "వారి గాడ్ పేరెంట్స్ ఆశీర్వాదంతో",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "తేదీ మరియు వేదిక",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "వేడుక సమయం:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Google మ్యాప్స్‌లో స్థానాన్ని వీక్షించండి",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "ఈ ప్రత్యేక క్షణాన్ని మీతో పంచుకోవడానికి మేము ఎదురుచూస్తున్నాము.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "రవాణా",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutGuests": [
+      "అతిథుల గురించి",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "వివాహ షెడ్యూల్",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "వివరణాత్మక షెడ్యూల్ త్వరలో భాగస్వామ్యం చేయబడుతుంది.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "దుస్తుల కోడ్",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "తరువాత తెలియజేయబడుతుంది.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "పిల్లల గురించి",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "మా కథ",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "ఇదంతా ఎలా మొదలైంది",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "కథ త్వరలో షేర్ చేయబడుతుంది.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "బహుమతులు",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "మీ ఉనికి ఉత్తమ బహుమతి",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "బహుమతి సమాచారం త్వరలో భాగస్వామ్యం చేయబడుతుంది.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "బ్యాంక్ వివరాలు",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "వసతి",
+      "Accommodation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "whereToStay": [
+      "ఎక్కడ ఉండాలో",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "వసతి సమాచారం త్వరలో పంచుకోబడుతుంది.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · wedingo-6c26a.web.appలో గోప్యతా విధానం",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "విండోను మూసివేయండి",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": [
+      "పైకి కదలండి",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "క్రిందికి తరలించు",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "title": [
+      "ఆర్డర్ & దృశ్యమానత",
+      "Order & visibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "help": [
+      "క్రమాన్ని మార్చడానికి లాగండి, తరలించడానికి బటన్‌లను ఉపయోగించండి మరియు ప్రతి విభాగాన్ని ఆన్ లేదా ఆఫ్ చేయండి.",
+      "Drag to reorder, use the buttons to move, and toggle each section on or off.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "భాషను ఎంచుకోండి",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 సహచరుడు",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "స్పెయిన్",
+      "Spain",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "westernEurope": [
+      "పశ్చిమ ఐరోపా",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "నార్డిక్ యూరోప్",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "మధ్య యూరోప్",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "దక్షిణ యూరోప్ / బాల్కన్స్",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "తూర్పు ఐరోపా / కాకసస్",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "తూర్పు ఆసియా",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "దక్షిణ ఆసియా",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "ఆగ్నేయాసియా",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "మధ్య ఆసియా / మధ్యప్రాచ్యం",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "ఆఫ్రికా",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "అమెరికాలు",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +3694,1708 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": [
+      "చేంజ్లాగ్",
+      "Changelog",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "మూసివేయి",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "ఈ ఆహ్వానం కోసం ఇప్పటికే సక్రియ సెషన్ ఉంది. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "యాక్సెస్ కోడ్ చెల్లదు.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "యాక్సెస్ కోడ్‌ను నమోదు చేయండి.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "కోడ్ విజయవంతంగా ధృవీకరించబడింది.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "కోడ్‌ని ధృవీకరించడం సాధ్యపడలేదు. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "మీ వినియోగదారు పేరు మరియు యాక్సెస్ కోడ్‌ను నమోదు చేయండి.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "తప్పు వినియోగదారు పేరు లేదా కోడ్.",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "కోడ్ ఈ వినియోగదారుకు సరిపోలడం లేదు.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "మీరు విజయవంతంగా లాగిన్ చేసారు.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "కోడ్‌ని ధృవీకరించడం సాధ్యపడలేదు. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "కొత్త కోడ్‌ని రూపొందించడానికి CONFIRM అని టైప్ చేయండి.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "ముందుగా మీ వినియోగదారు పేరును నమోదు చేయండి.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "వినియోగదారు పేరు అక్షరాలు మరియు సంఖ్యలను మాత్రమే కలిగి ఉంటుంది.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "వినియోగదారు పేరు 50 అక్షరాలను మించకూడదు.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "ఈ వినియోగదారుకు ఇక్కడ యాక్సెస్ చేయడానికి అనుమతి లేదు.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "కోడ్ రూపొందించబడింది. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "కోడ్‌ని రూపొందించడం సాధ్యపడలేదు. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "కొత్తదాన్ని రూపొందించడానికి ప్రస్తుత యాక్సెస్ కోడ్‌ను నమోదు చేయండి.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "కొత్త కోడ్ రూపొందించబడింది. ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "కోడ్ పునరుద్ధరించబడింది. ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "ఈ ఖాతాకు పరిపాలన అనుమతులు లేవు.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "తప్పు ఆధారాలు.",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "చాలా ప్రయత్నాలు. ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "ఇమెయిల్ ఫార్మాట్ చెల్లదు.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "లాగిన్ చేయడంలో లోపం. మీ కనెక్షన్‌ని తనిఖీ చేయండి.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": [
+      "మార్పులు సేవ్ చేయబడ్డాయి",
+      "Changes saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": [
+      "జనవరి",
+      "January",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "2": [
+      "ఫిబ్రవరి",
+      "February",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "3": [
+      "మార్చి",
+      "March",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "4": [
+      "ఏప్రిల్",
+      "April",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "5": [
+      "మే",
+      "May",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "6": [
+      "జూన్",
+      "June",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "7": [
+      "జూలై",
+      "July",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "8": [
+      "ఆగస్టు",
+      "August",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "9": [
+      "సెప్టెంబర్",
+      "September",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "10": [
+      "అక్టోబర్",
+      "October",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "11": [
+      "నవంబర్",
+      "November",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "12": [
+      "డిసెంబర్",
+      "December",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": [
+      "లైట్ థీమ్స్",
+      "Light themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dark": [
+      "చీకటి థీమ్‌లు",
+      "Dark themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": [
+      "గ్లూటెన్",
+      "Gluten",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lactose": [
+      "లాక్టోస్",
+      "Lactose",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nuts": [
+      "చెట్టు కాయలు",
+      "Tree nuts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "shellfish": [
+      "షెల్ఫిష్",
+      "Shellfish",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "మా ప్రియతమకు",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "తెరవడానికి నొక్కండి",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "కొనసాగించడానికి నొక్కండి",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "మా పెళ్లి",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "{{names}} వివాహం",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "స్థానాన్ని నిర్ధారించాలి",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "ఈ ప్రత్యేక క్షణాన్ని మీతో జరుపుకోవడానికి మేము ఎదురుచూస్తున్నాము.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "సమయం:",
+      "Time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeLabel": [
+      "వేదిక:",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "సొగసైన మరియు ప్రకాశవంతమైన, బంగారు స్వరాలు.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "మృదువైన ఆకుకూరలతో సహజంగా మరియు తెలివిగా ఉంటుంది.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "పింక్ రంగులతో వెచ్చగా మరియు సున్నితమైనది.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "కాంతి మరియు తటస్థ, నిర్మలమైన మరియు కలకాలం ఉనికిని కలిగి ఉంటుంది.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "మృదువైన మరియు శృంగారభరితమైన, ముత్యాల గులాబీ టోన్‌లతో.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "తాజా మరియు నిర్మలమైన, లావెండర్ మరియు మావ్ రంగులతో.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "ప్రకాశవంతమైన మరియు పండుగ, వెచ్చని బంగారు మెరుపులతో.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "ముదురు మరియు సొగసైన, అంబర్ మరియు గోల్డ్ హైలైట్‌లతో.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "ముదురు నేపథ్యంలో ఘాటైన బంగారంతో లోతైన మరియు అధునాతనమైనది.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "గంభీరమైన బంగారం మరియు గంభీరమైన ఉనికితో చాలా ముదురు నీలం.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "ఎరుపు వైన్ మరియు బంగారు మెరుపులతో వెచ్చగా మరియు కప్పబడి ఉంటుంది.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "వెండి స్వరాలు మరియు నిర్మలమైన ఉనికితో ముదురు నీలం.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "బంగారు మరియు సొగసైన రంగులతో లోతైన సహజ ఆకుపచ్చ.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "పింక్ మరియు రొమాంటిక్ మెరుపులతో గాఢమైన ఊదా రంగు.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "ఇంద్రధనస్సు రంగులతో విభిన్న ప్రేమ వేడుక.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "ట్రాన్స్ ఫ్లాగ్‌కు నివాళిగా నీలం, గులాబీ మరియు తెలుపు.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "నాన్-బైనరీ జెండా కోసం పసుపు, తెలుపు, ఊదా మరియు నలుపు.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "లెస్బియన్ జెండా యొక్క నారింజ, తెలుపు మరియు గులాబీ.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "ద్వి జెండా యొక్క గులాబీ, ఊదా మరియు నీలం.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "పాన్ జెండా యొక్క గులాబీ, పసుపు మరియు నీలం.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "అలైంగిక జెండా యొక్క నలుపు, బూడిద, తెలుపు మరియు ఊదా.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "ఆట స్థలంతో స్వాగతం",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "పర్యవేక్షణలో స్వాగతం",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "పెద్దలు మాత్రమే",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ee29150929b269c38979323546d85c49",
+              "tea_DravidianA_en2knmlsitate_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "డేటా లేదు",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "మొత్తం",
+      "total",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "barChart": [
+      "హాజరు పట్టీ చార్ట్",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ee29150929b269c38979323546d85c49",
+            "tea_DravidianA_en2knmlsitate_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

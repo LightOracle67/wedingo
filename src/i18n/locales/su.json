@@ -11,20 +11,172 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "Katingali",
+      "Visible",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "Aya nu lepat",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "Punten muatkeun deui halaman pikeun nyobian deui.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "Muat deui kaca",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "Tutup",
+        "Close",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "Luncat ka eusi utama",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "Bar administrasi",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "Administrasi",
+        "Administration",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "landing": {
@@ -55,8 +207,46 @@
     "todayIsWedding": "Dinten ieu kawinan",
     "missing": "Kirang",
     "todayIsTheDay": "Dinten ieu dinten ageung!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": [
+      "Panutup",
+      "Cover",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eyebrow": [
+      "Kawinan urang",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "Tanggal sareng tempat",
@@ -106,8 +296,46 @@
     "next": "Salajengna",
     "thumbnailAria": "Poto {{number}}",
     "thumbnailAlt": "Gambar leutik galéri",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "Galeri gambar, paké kenop panah pikeun nganapigasi",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "Gambar digedékeun",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "Konfirmasi kahadiran",
@@ -138,49 +366,638 @@
     "ageUnder14Warning": "Yuswa Anjeun kirang ti 14 taun. Peryogi idin ti kolot atanapi wali.",
     "parentalConsent": "Kolot atanapi wali abdi nyatujuan partisipasi abdi",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "Lebetkeun nami anjeun pikeun mastikeun hadir.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "Pilih hiji pilihan ménu.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "Anjeun kedah nampi Kabijakan Privasi.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "Lebetkeun tanggal lahir anjeun.",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "Anjeun di handapeun 14 taun umur. ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "Anjeun kedah idin pikeun ngolah data kaséhatan anjeun.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "Nunjukkeun sahenteuna hiji pilihan ménu.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "Lebetkeun nami pendamping anjeun.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "Anjeun teu bisa ngasupkeun ngaran leuwih ti pendamping.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "Jumlah pilihan menu teu bisa ngaleuwihan jumlah pendamping.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "Hatur nuhun, {{nami}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "Hatur nuhun, {{nami}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "Kami henteu tiasa nyimpen réspon anjeun. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "Naha anjeun yakin yén anjeun badé mundur réspon anjeun?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "Tanggapan anjeun parantos ditarik.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "Teu tiasa mundur tanggapan anjeun. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "Pupus sadaya réspon kahadiran? ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "Catetan kahadiran diberesihan.",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "Teu bisa mupus catetan kahadiran.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "Babaturan",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "Jalma",
+      "People",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountHint": [
+      "Sabaraha jalma pikeun tiap pilihan ({{total}} total)",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "Ngaran tamu",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "Tulis ngaran hareup jeung tukang unggal pendamping (maks {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "Ngaran1 Ngaran kulawarga1, Ngaran2 Ngaran kulawarga2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "Ngamuat ondangan…",
     "notFoundTitle": "Ondangan henteu kapendak",
     "notFoundText": "Sim kuring henteu mendakan ondangan sareng tumbu ieu. Upami Anjeun nganggap ieu lepat, hubungi anu gaduh hajat.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Jieun jeung bagikeun ondangan kawinan pribadi Anjeun.",
     "emptyDescription": "Atur data ondangan Anjeun, bagikeun tumbu unik ka tamu-tamu Anjeun, jeung tarima konfirmasi kahadiran maranéhna.",
     "createLink": "Jieun ondangan",
     "privacyPolicy": "Kawijakan Privasi",
     "terms": "Katangtuan",
     "legalNotice": "Bewara Hukum",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "Teu tiasa mendakan tempat ieu.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "Teu bisa ngamuat peta.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "Koordinat: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "Tilik peta di lokasi anu dituduhkeun.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "Lokasi dikonpigurasikeun",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "Ngamuat ondangan",
@@ -308,28 +1125,427 @@
     "galleryUploadFailed": "Henteu tiasa ngunggah poto-poto.",
     "noValidFiles": "Henteu aya file anu sah. Maksimum 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "Unggah file audio pikeun diputer dina panutup (MP3, WAV, OGG, M4A - maksimal 5 MB).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "Unggah file audio",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG atanapi M4A - maksimal 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "Format audio teu dirojong. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "Payil audio kosong.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "File audio ngaleuwihan wates 5 MB.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "Kasalahan maca file audio.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "Koropakna kosong. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "Katerangan gambar...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "Maksimum {{max}} gambar dina galeri.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "Ngunggah {{total}} poto...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "Ngunggah poto...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "Robah poto",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "Kasalahan nyimpen pedaran",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "Katerangan disimpen",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "Musik nu dipilih",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "Pupus musik",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "Maén...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "Sawangan",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "Pilih",
+      "Select",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "selected": [
+      "Dipilih",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -351,11 +1567,87 @@
     "pdfTableName": "Ngaran",
     "pdfTableAttendance": "Kahadiran",
     "pdfTableCompanions": "Babaturan",
-    "pdfTableDiet": "Diet",
+    "pdfTableDiet": [
+      "Diét",
+      "Diet",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Admin",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "Témbongkeun uleman",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "Kaluar",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "Dikonfirmasi",
@@ -384,7 +1676,26 @@
     "confirms": "Ngonfirmasi",
     "declines": "Nolak",
     "pending": "Ngantosan",
-    "visits_one": "1 visit",
+    "visits_one": [
+      "1 nganjang",
+      "1 visit",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +1728,53 @@
     "generateMessage": "Jieun pesen sanés",
     "copyMessage": "Salin pesen",
     "shareVia": "Bagikeun ngaliwatan",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "Telegram",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      10
+    ],
     "print": "Citak",
     "printPdf": "Citak / Simpen PDF",
     "linkCopied": "Tumbu disalin.",
@@ -446,9 +1801,47 @@
     "deleteButton": "Nyuhunkeun ngahapus data",
     "exportButton": "Ékspor data abdi",
     "rightsHint": "Klién surélék Anjeun bakal muka sareng citakan anu parantos disadiakeun. Anjeun ogé tiasa nyerat ka adriancl2001@gmail.com.",
-    "ccpaTitle": "CCPA / CPRA (California)",
+    "ccpaTitle": [
+      "CCPA / CPRA (California)",
+      "CCPA / CPRA (California)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "ccpaText": "Wedingo henteu ngajual data pribadi. Data anu dikumpulkeun dianggo sacara éksklusif pikeun ngatur ondangan. Upami Anjeun warga California, Anjeun gaduh hak nyuhunkeun ngahapus data Anjeun sareng henteu didiskriminasi kusabab ngalaksanakeun hak Anjeun.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Aplikasi wéb pikeun ngatur ondangan kawinan.",
     "copyright": "© {{year}} Adrián Carrasco López. Sadaya hak ditangtayungan.",
     "deleteEmailSubject": "Paménta ngahapus data - Wedingo",
@@ -518,13 +1911,146 @@
     "deleteFailed": "Henteu tiasa mupus ondangan. Cobian deui.",
     "configLoadFailed": "Henteu tiasa ngamuat konpigurasi. Pariksa sambungan sareng cobian deui.",
     "invalidLink": "Tumbu ondangan henteu sah.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "Inpormasi akomodasi teu tiasa langkung ti 2000 karakter.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "Katerangan menu teu tiasa langkung ti 2000 karakter.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "Teu bisa ngolah gambar. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "Teu bisa maca file gambar.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "Énkripsi gambar gagal.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "Gambarna ageung teuing sanajan saatos komprési.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "Koropakna kosong. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -535,7 +2061,26 @@
       "compliance": "Kapatuhan",
       "data": "Datos"
     },
-    "superadmin": "Superadmin",
+    "superadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "controlPanel": "Panel kontrol",
     "managePlatform": "Atur platform Wedingo",
     "dashboardLoading": "Ngamuat statistik...",
@@ -561,7 +2106,26 @@
     "invitationsCount": "{{count}} ondangan · {{size}} kacicingan",
     "noResultsFilter": "Henteu kapendak ondangan sareng kritéria éta.",
     "noInvitations": "Teu acan aya ondangan.",
-    "tableToken": "Token",
+    "tableToken": [
+      "Token",
+      "Token",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "tableTheme": "Téma",
     "tableDate": "Tanggal kawinan",
     "tableActions": "Aksi",
@@ -588,14 +2152,77 @@
     "tokenCleanError": "Henteu tiasa ngabersihan token.",
     "tokenLoadError": "Henteu tiasa ngamuat token.",
     "accountEmail": "Surélék: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Aktip",
     "sessionInactive": "Teu aktip",
     "sessionLabel": "Sési lokal: {{status}}",
     "sessionType": "Jinis: {{type}}",
-    "sessionTypeSuperadmin": "Superadmin",
-    "sessionTypeSetup": "Setup",
-    "sessionTypeAdmin": "Admin",
+    "sessionTypeSuperadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sessionTypeSetup": [
+      "Disetél",
+      "Setup",
+      null,
+      null,
+      10
+    ],
+    "sessionTypeAdmin": [
+      "Admin",
+      "Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionExpires": "Kadaluwarsa: {{date}}",
     "logoutButton": "Kaluar",
     "firebaseAccount": "Pikeun ngatur akun superadmin Anjeun, anggo konsol Firebase:",
@@ -615,10 +2242,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Token",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVPs",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2301,46 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "Surélék",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "Sandi",
+      "Password",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "compliance": {
     "title": "Catetan kagiatan pamrosésan (Pasal 30 GDPR)",
@@ -653,13 +2356,51 @@
     "row1Basis": "Idin (Pasal 6.1.a GDPR)",
     "row1Purpose": "Nyiptakeun sareng nyaluyukeun ondangan kawinan",
     "row1Retention": "Salami akun aktip",
-    "row1Recipients": "Google Cloud (Firestore, hosting)",
+    "row1Recipients": [
+      "Google Cloud (Firestore, hosting)",
+      "Google Cloud (Firestore, hosting)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row2Activity": "Konfirmasi kahadiran (RSVP)",
     "row2Data": "Ngaran tamu, kahadiran (enya/henteu), pilihan ménu, alérgi, data kaséhatan",
     "row2Basis": "Idin (Pasal 6.1.a, 9.2.a GDPR)",
     "row2Purpose": "Ngatur daptar tamu sareng ménu",
     "row2Retention": "12 bulan saatos acara",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Ngunggah gambar",
     "row3Data": "Poto kawinan (énkripsi AES-256-GCM)",
     "row3Basis": "Idin (Pasal 6.1.a GDPR)",
@@ -671,13 +2412,51 @@
     "row4Basis": "Kapentingan sah (Pasal 6.1.f GDPR)",
     "row4Purpose": "Ngontrol aksés ka panel administrasi",
     "row4Retention": "Durasi sési",
-    "row4Recipients": "Google Cloud (Firestore sessions)",
+    "row4Recipients": [
+      "Google Cloud (sesi Firestore)",
+      "Google Cloud (Firestore sessions)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row5Activity": "Audit superadmin",
     "row5Data": "Aksi superadmin, token anu dianggo, ondangan anu dipupus",
     "row5Basis": "Kawajiban hukum (Pasal 6.1.c GDPR)",
     "row5Purpose": "Catetan kagiatan administratif",
     "row5Retention": "3 taun",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Transfer internasional",
     "internationalText": "Data disimpen dina server Google Cloud di wilayah eur3 (Frankfurt, Jerman). Google LLC (AS) bertindak salaku pamrosés data dina kaayaan DPA numutkeun Pasal 28 GDPR. Transfer ka AS dijamin ku:",
     "scc": "Klausul Kontrak Standar (SCC) - Kaputusan Palaksanaan 2021/914",
@@ -691,86 +2470,1359 @@
     "measureSuperadmin": "Superadmin dijagaan ku Firebase Authentication + rute disumputkeun"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "Aksesibilitas",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Tutup",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontSize": [
+      "Ukuran téks",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "Biasa",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontLarge": [
+      "Gede",
+      "Large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontExtraLarge": [
+      "Ekstra badag",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "Spasi garis",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "Biasa",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineWide": [
+      "lebar",
+      "Wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineVeryWide": [
+      "Lega pisan",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "Kontras luhur",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "Ngurangan gerak",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "Font OpenDyslexic",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "Spasi hurup langkung seueur",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "Garis handap sadaya tautan",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "kursor badag",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "Grayscale",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "Indikator fokus katempo",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "Taya musik",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "Kasalahan dimuat",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "Musik",
+      "Music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "soundCloudNote": [
+      "SoundCloud lagu — kabuka pikeun diputer",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "Buka dina SoundCloud",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "Nyiapkeun citak…",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "Poto pasangan",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "Kalayan restu wali baptisna",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "Tanggal jeung tempat",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "waktos upacara:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Tingali lokasi dina Google Maps",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "Kami ngarepkeun ngabagi momen khusus ieu sareng anjeun.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "Angkutan",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutGuests": [
+      "Ngeunaan sémah",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "Jadwal kawinan",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "Jadwal lengkep bakal dibagikeun pas.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "Kode pakéan",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "Bakal ditepikeun engké.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "Ngeunaan barudak",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "carita urang",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "Kumaha eta sadayana dimimitian",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "carita bakal dibagikeun geura-giru.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "kado",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "Ayana anjeun mangrupikeun kado anu pangsaéna",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "Inpo kado bakal dibagikeun pas.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "Rincian bank",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "Panginepan",
+      "Accommodation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "whereToStay": [
+      "Dimana cicing",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "Inpormasi akomodasi bakal dibagikeun pas.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · Kabijakan Privasi di wedingo-6c26a.web.app",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "Tutup jandela",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": [
+      "Pindah ka luhur",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "Pindah ka handap",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "title": [
+      "Urutan & pisibilitas",
+      "Order & visibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "help": [
+      "Séred pikeun nyusun ulang, paké tombol pikeun mindahkeun, sareng hurungkeun atanapi pareumkeun unggal bagian.",
+      "Drag to reorder, use the buttons to move, and toggle each section on or off.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "Pilih basa",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 sobatna",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "Spanyol",
+      "Spain",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "westernEurope": [
+      "Éropa Kulon",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "Éropa Nordic",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "Éropa Tengah",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "Éropa Kidul / Balkan",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "Éropa Wétan / Kaukasus",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "Asia Wétan",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "Asia Kidul",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "Asia Tenggara",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "Asia Tengah / Wétan Tengah",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "Afrika",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "Amérika",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +3839,1695 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": [
+      "Changelog",
+      "Changelog",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Tutup",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "Geus aya sési aktip pikeun uleman ieu. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "Kodeu aksés henteu valid.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "Lebetkeun kodeu aksés.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "Kode diverifikasi suksés.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "Teu bisa pariksa kodeu. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "Asupkeun ngaran pamaké anjeun sarta kodeu aksés.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "ngaran pamaké atawa kode salah.",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "Kodeu henteu cocog sareng pangguna ieu.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "Anjeun parantos suksés lebet.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "Teu bisa pariksa kodeu. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "Ketik CONFIRM pikeun ngahasilkeun kode anyar.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "Lebetkeun nami pangguna heula.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "Ngaran pamaké ngan bisa ngandung hurup jeung angka.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "Ngaran pamaké teu bisa ngaleuwihan 50 karakter.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "Pamaké ieu teu gaduh idin pikeun ngaksés ka dieu.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "Kode dihasilkeun. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "Teu bisa ngahasilkeun kode. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "Lebetkeun kodeu aksés ayeuna pikeun ngahasilkeun anu énggal.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "Kode anyar dihasilkeun. ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "Kode renewed. ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "Akun ieu teu gaduh idin administrasi.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "Kapercayaan anu salah.",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "Loba teuing usaha. ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "Format email teu valid.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "Kasalahan nalika asup. Pariksa sambungan anjeun.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": [
+      "Parobahan disimpen",
+      "Changes saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": [
+      "Januari",
+      "January",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "2": [
+      "Pébruari",
+      "February",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "3": [
+      "Maret",
+      "March",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "4": [
+      "April",
+      "April",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "5": [
+      "Méi",
+      "May",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "6": [
+      "Juni",
+      "June",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "7": [
+      "Juli",
+      "July",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "8": [
+      "Agustusan",
+      "August",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "9": [
+      "Séptémber",
+      "September",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "10": [
+      "Oktober",
+      "October",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "11": [
+      "Nopémber",
+      "November",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "12": [
+      "Désémber",
+      "December",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": [
+      "Téma lampu",
+      "Light themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dark": [
+      "Téma poék",
+      "Dark themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": [
+      "Gluten",
+      "Gluten",
+      null,
+      null,
+      10
+    ],
+    "lactose": [
+      "Laktosa",
+      "Lactose",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nuts": [
+      "Tangkal kacang",
+      "Tree nuts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "shellfish": [
+      "Kerang",
+      "Shellfish",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "Ka urang dearest",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "Ketok pikeun muka",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "Ketok pikeun neruskeun",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "kawinan urang",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "Kawinan {{ngaran}}",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "Lokasi pikeun dikonfirmasi",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "Kami ngarepkeun ngagungkeun momen khusus ieu sareng anjeun.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "Waktos:",
+      "Time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeLabel": [
+      "tempat:",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "Elegan sareng caang, kalayan aksen emas.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "Alami tur sober kalawan greens lemes.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "Haneut sareng hipu, kalayan warna pink.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "Cahaya sareng nétral, kalayan ayana anu tenang sareng abadi.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "Lemes sareng romantis, kalayan nada pink mutiara.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "Seger sareng tenang, kalayan warna lavender sareng mauve.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "Caang jeung festive, kalawan sparkles emas haneut.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "Poék sareng elegan, kalayan sorotan amber sareng emas.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "Jero sareng canggih, kalayan emas sengit dina latar poék.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "Biru pisan poék kalayan emas sengit sareng ayana solemn.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "Haneut jeung enveloping, kalawan anggur beureum jeung sparkles emas.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "Biru jero kalayan aksen pérak sareng ayana anu tenang.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "Héjo alam jero kalayan warna emas sareng elegan.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "Ungu sengit kalayan sparkles pink sareng romantis.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "Perayaan cinta anu rupa-rupa kalayan warna katumbiri.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "Bulao, pink jeung bodas dina upeti ka bandéra trans.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "Konéng, bodas, wungu jeung hideung pikeun bandéra non-binér.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "Oranyeu, bodas sareng pink tina bandéra lesbian.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "Pink, wungu jeung biru tina bandéra bi.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "Pink, koneng sareng biru tina bandéra pan.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "Hideung, kulawu, bodas jeung wungu tina bandéra aséksual.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "Wilujeng sumping sareng tempat kaulinan",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "Wilujeng sumping dina pangawasan",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "Sawawa wungkul",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "7cd27a263735d6dc9e3c878eca97fe56",
+              "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "Taya data",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "total",
+      "total",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "barChart": [
+      "Bagan bar kahadiran",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "7cd27a263735d6dc9e3c878eca97fe56",
+            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

@@ -981,7 +981,26 @@
   "envelope": {
     "addressLine1": "Στα αγαπημένα μας",
     "tapHint": "Πατήστε για άνοιγμα",
-    "and": "&",
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "982c75c78c6c8e6005ec3a4021a7f785",
+            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "tapContinue": "Πατήστε για να συνεχίσετε"
   },
   "calendar": {

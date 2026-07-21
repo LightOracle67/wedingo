@@ -11,20 +11,159 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "Rikunalla",
+      "Visible",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "Imapas mana allintam pasarqa",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "Ama hina kaspa, p'anqata musuqmanta kargay, musuqmanta kallpachakunaykipaq.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "P'anqata wakmanta cargay",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "Wichqay",
+        "Close",
+        null,
+        null,
+        10
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "Contenido principal nisqaman saltay",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "Administración nisqa barra",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "Administración nisqa",
+        "Administration",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "landing": {
@@ -55,8 +194,33 @@
     "todayIsWedding": "Kunanmi casamientu",
     "missing": "Pisichkan",
     "todayIsTheDay": "¡Kunanmi hatun p'unchaw!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": [
+      "Qatay",
+      "Cover",
+      null,
+      null,
+      10
+    ],
+    "eyebrow": [
+      "Casarakuyniyku",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "P'unchaw hinaspa kuska",
@@ -106,8 +270,46 @@
     "next": "Qhipan",
     "thumbnailAria": "Phatu {{number}}",
     "thumbnailAlt": "Phatu wasi uchuy phatu",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "Imahinakuna waqaychanapi, flecha llavekunawan purinapaq",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "Hatunchasqa siq’i",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "Hamunapaq chiqañchay",
@@ -138,49 +340,625 @@
     "ageUnder14Warning": "14 watamanta aswan sullkan kanki. Tayta-mamaykipa utaq qhawapakuqniykipa awniynin munasqa.",
     "parentalConsent": "Tayta-mamay utaq qhawapakuqniy yaykunayta awnin",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "Sutiykita qillqay chaypi kasqaykita takyachinaykipaq.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "Huk menú akllanata akllay.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "Sapanchasqa Willayta chaskinayki tiyan.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "Nacesqayki punchawta qillqay.",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "Manaraq 14 watayoqmi kanki. ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "Consentinayki tiyan kay qhali kaymanta willayniyki ruwanapaq.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "Huk menú akllanatapas rikuchiy.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "Compañeroykikunapa sutinta qillqay.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "Compañerokunamantaqa manam aswan sutikunataqa qillqayta atiwaqchu.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "Menú akllanakuna huñusqa mana compañerokuna yupaymanta aswantachu kanman.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "Gracias, {{suti}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "Gracias, {{suti}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "Kutichisqaykitaqa manam waqaychayta atirqaykuchu. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "¿Segurochu kanki kutichisqaykita qichuyta munasqaykimanta?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "Kutichisqaykiqa qichusqañam.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "Mana kutichiyniykita qichuyta atirqanchu. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "¿Llapa asistencia kutichiykunata chinkachiy? ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "Asistencia registrokuna ch’uyanchasqa.",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "Mana atirqachu asistencia registrokunata chuyanchayta.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "Compañeros nisqakuna",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "Runakuna",
+      "People",
+      null,
+      null,
+      10
+    ],
+    "headcountHint": [
+      "Hayka runakuna sapa akllanapaq ({{tukuy}} llapan) .",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "Invitadokunapa sutin",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "Sapa masinpa ñawpaq sutinta, qhipa sutinta qillqay (max {{count}}) .",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "Suti1 Apellido1, Suti2 Apellido2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "Waqyarikuyta q'ipichkan…",
     "notFoundTitle": "Waqyarikuy mana tarisqa",
     "notFoundText": "Kay t'inkiwan waqyarikuyta mana tarirqaykuchu. Pantay kaptin, waqyariqkunawan tuparichiy.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Kikillayki casamientopaq waqyarikuyta ruray, t'aqaypas.",
     "emptyDescription": "Waqyarikuyniykipa willaykunata kamachiy, waqyarisqaykikunaman sapaq t'inkita t'aqay, hamunankumanta kutichiyninkutapas chaskiy.",
     "createLink": "Waqyarikuyta ruray",
     "privacyPolicy": "Sapanchay Kamachiy",
     "terms": "Ruwaykuna",
     "legalNotice": "Kamachiy Willay",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "Mana kay sitiota tariyta atirqanichu.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "Mana mapata cargayta atirqanchu.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "Kuskachasqakuna: {{lat}}, {{lng}}.",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "Mapa ñawpaq qhaway rikuchisqa kitipi.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "Maypi kasqan wakichisqa",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "Waqyarikuyta q'ipichkan",
@@ -308,28 +1086,401 @@
     "galleryUploadFailed": "Phatukunata churariyta mana atirqanichu.",
     "noValidFiles": "Mana ima kamachisqa willañiqipas. 20 MB kamalla, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "Huk uyarina archivota churay tapapi pukllanaykipaq (MP3, WAV, OGG, M4A — max 5 MB).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "Uyarinapaq willañiqita kargay",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG utaq M4A — aswan 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "Uyarinapaq formato mana yanapasqachu. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "Uyarinapaq willañiqiqa ch'usaqmi.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "Uyarinapaq willañiqiqa 5 MB nisqap limite nisqamanta aswan hatunmi.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "Uyarinapaq willañiqita ñawiriypi pantasqa.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "Willañiqiqa ch'usaqmi. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "Imahinamanta willakuy...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "Aswan {{max}} siq'ikuna galería kaqpi.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "{{total}} foto(s) nisqakunata churaspa...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "Fotota churaspa...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "Fotota tikray",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "Pantasqa waqaychay willakuy",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "Descripción waqaychasqa",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "Akllasqa takiy",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "Takikunata hurquy",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "Pukllay...",
+      "Playing...",
+      null,
+      null,
+      10
+    ],
+    "preview": [
+      "Ñawpaqta qhaway",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "Akllay",
+      "Select",
+      null,
+      null,
+      10
+    ],
+    "selected": [
+      "Akllasqa",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1504,66 @@
     "pdfTableCompanions": "Masi",
     "pdfTableDiet": "Mikuy",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Kamachiq",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "Invitacionta qhaway",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "Lloqsiy",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "Chiqañchasqa",
@@ -384,7 +1592,26 @@
     "confirms": "Chiqañchanku",
     "declines": "Manañanku",
     "pending": "Suyasqa",
-    "visits_one": "1 visit",
+    "visits_one": [
+      "1 watukuy",
+      "1 visit",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +1644,66 @@
     "generateMessage": "Huk willayta paqarichiy",
     "copyMessage": "Willayta iskaychay",
     "shareVia": "Kaywan t'aqay",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp nisqawan",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "Telegrama nisqa",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "SMS nisqawan",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Ch'ipachiy",
     "printPdf": "Ch'ipachiy / PDF waqaychay",
     "linkCopied": "T'inki iskaychasqa.",
@@ -446,9 +1730,47 @@
     "deleteButton": "Willay qulluyta mañay",
     "exportButton": "Willayniyta lluqsichiy",
     "rightsHint": "E-chaski qhawanaykiqa ñawpaq wakichisqa plantillawan kicharikunqa. Adriancl2001@gmail.commanpas qillqayta atinkim.",
-    "ccpaTitle": "CCPA / CPRA (California)",
+    "ccpaTitle": [
+      "CCPA / CPRA (California) nisqapi.",
+      "CCPA / CPRA (California)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "ccpaText": "Wedingoqa mana sapan willaykunata qatunchu. Huñusqa willaykunaqa waqyarikuy kamachiypaqllam llamk'achisqa. California tiyaq kanki chayqa, willayniykita qulluchiyta mañakuwaq, hayñiykikunata llamk'ichisqaykimantapas mana sarunchasqa kawaqchu.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Casamientopaq waqyarikuy kamachiypaq web llamk'ana.",
     "copyright": "© {{year}} Adrián Carrasco López. Llapan hayñikuna waqaychasqa.",
     "deleteEmailSubject": "Willay qulluy mañakuy - Wedingo",
@@ -518,13 +1840,146 @@
     "deleteFailed": "Waqyarikuyta qulluyta mana atirqanichu. Ama hina kaspa, huktawan ruray.",
     "configLoadFailed": "Allichayta q'ipiyta mana atirqanichu. T'inkisqa kayniykita qhawariy, huktawan yanapaykachiy.",
     "invalidLink": "Waqyarikuy t'inki mana kamachisqachu.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "Alojamiento info mana 2000 caracteresmanta aswantachu.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "Menú nisqamanta willakuyqa manam 2000 qillqamanta aswanchu kanman.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "Mana atirqanchu siq'ita ruwayta. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "Imahina willañiqita manam ñawiriyta atirqanchu.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "Siqi chifrayqa manam atirqanchu.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "Imahinaqa ancha hatunmi ñit'isqa kaptinpas.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "Willañiqiqa ch'usaqmi. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -588,7 +2043,26 @@
     "tokenCleanError": "Yupichaykunata ch'uyanchayta mana atirqanichu.",
     "tokenLoadError": "Yupichaykunata q'ipiyta mana atirqanichu.",
     "accountEmail": "E-chaski: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID: {{uid}} nisqa.",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Llamk'achkan",
     "sessionInactive": "Mana llamk'achkanchu",
     "sessionLabel": "Kikin llamk'ay: {{status}}",
@@ -615,10 +2089,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Token",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVPs nisqakuna",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2148,33 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "Correo electrónico nisqa",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "Kichana",
+      "Password",
+      null,
+      null,
+      10
+    ]
   },
   "compliance": {
     "title": "Tratamientu ruway qillqa (Art. 30 GDPR)",
@@ -659,13 +2196,51 @@
     "row2Basis": "Awniy (Art. 6.1.a, 9.2.a GDPR)",
     "row2Purpose": "Waqyarisqakuna qillqa hinaspa mikuy kamachiy",
     "row2Retention": "Ruway qhipaman 12 killa",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Nina waqaychaq) .",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Phatukuna churariy",
     "row3Data": "Casamientu phatukuna (AES-256-GCMwan waqaychasqa)",
     "row3Basis": "Awniy (Art. 6.1.a GDPR)",
     "row3Purpose": "Waqyarikuy ukhupi phatukuna qhawana",
     "row3Retention": "Ruway qhipaman 12 killa",
-    "row3Recipients": "Google Cloud (Firestore subcollection)",
+    "row3Recipients": [
+      "Google Cloud (Firestore huch'uy huñusqa) .",
+      "Google Cloud (Firestore subcollection)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "row4Activity": "Chiqañchay hinaspa llamk'aykuna",
     "row4Data": "Llamk'ay yupichay, kamachiq llamk'apakuq sutin",
     "row4Basis": "Kamachisqa muna (Art. 6.1.f GDPR)",
@@ -677,7 +2252,26 @@
     "row5Basis": "Kamachiy mañakuy (Art. 6.1.c GDPR)",
     "row5Purpose": "Kamachiy ruwaykuna qillqa",
     "row5Retention": "3 wata",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (AuditLog ninawan waqaychay) .",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Mamallaqtapura apachiykuna",
     "internationalText": "Willaykunaqa Google Cloud serverkunapi eur3 kuskapi waqaychasqa (Frankfurt, Alimanya). Google LLC (US) art. 28 GDPRman hina DPA urapi tratamientu mas'ud hina llamk'an. Hukllachasqa Amirika Suyukunaman apachiykuna kaypi tiqsichasqa:",
     "scc": "Tipo Kamachiy Clausekuna (SCC) - Iskaychay Rurachiy 2021/914",
@@ -691,86 +2285,1255 @@
     "measureSuperadmin": "Hanaq kamachiq Firebase Chiqañchaywan + pakasqa ñanwan waqaychasqa"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "Accesibilidad nisqa",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Wichqay",
+      "Close",
+      null,
+      null,
+      10
+    ],
+    "fontSize": [
+      "Qillqap sayaynin",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "Kaqlla",
+      "Normal",
+      null,
+      null,
+      10
+    ],
+    "fontLarge": [
+      "Hatun",
+      "Large",
+      null,
+      null,
+      10
+    ],
+    "fontExtraLarge": [
+      "Yapa hatun",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "Chirukuna chiqanchay",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "Kaqlla",
+      "Normal",
+      null,
+      null,
+      10
+    ],
+    "lineWide": [
+      "Kinray",
+      "Wide",
+      null,
+      null,
+      10
+    ],
+    "lineVeryWide": [
+      "Ancha ancho",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "Alto contraste nisqa",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "Kuyuyta pisiyachiy",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "OpenDisléxico nisqa qillqa",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "Aswan qillqakuna espaciamiento",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "Llapan t’inkikunata subray",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "Hatun kursor",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "Gris nisqa",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "Rikunalla enfoque rikuchiqkuna",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "Mana takikuna",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "Pantasqa carga",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "Taki",
+      "Music",
+      null,
+      null,
+      10
+    ],
+    "soundCloudNote": [
+      "SoundCloud pista — kichasqa pukllanapaq",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "SoundCloud nisqapi kichasqa",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "Imprimiyta wakichispa...",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "Warmi-qhari foto",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "Padrinonkupa saminchayninwan",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "P’unchay, maypi ruwakunqa",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "Ceremonia pacha:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Google Maps nisqapi maypi kasqanmanta qhaway",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "Suyayku kay especial momentota qankunawan rakinakunaykupaq.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "Transporte",
+      "Transport",
+      null,
+      null,
+      10
+    ],
+    "aboutGuests": [
+      "Invitadokunamanta",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "Casarakuy horario",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "Chay horario detallada nisqamantaqa pisi tiempollamantan willakunqa.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "P’achakuy kamachiy",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "Qhepamanmi willasqa kanqa.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "Wawakunamanta",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "Willakuyninchik",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "Imaynatataq tukuy imapas qallarirqa",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "Chay willakuyqa pisi tiempollamantam willakunqa.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "Regalokuna",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "Qanpa kasqaykiqa aswan allinmi",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "Regalokunamanta willakuykunataqa pisi tiempollamantam willakunqa.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "Bancomanta willakuykunata",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "Samana",
+      "Accommodation",
+      null,
+      null,
+      10
+    ],
+    "whereToStay": [
+      "Maypi qhipakunankupaq",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "Pisi tiempollamantan alojamientomanta willakuykunata willanqaku.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · Sapanchasqa willakuy wedingo-6c26a.web.app nisqapi",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "Ventanata wichqay",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": [
+      "Wichayman kuyuy",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "Urayman kuyuy",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "title": [
+      "Orden & rikuy atiy",
+      "Order & visibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "help": [
+      "Hukmanta ordenanaykipaq aysay, kuyunaykipaq botoneswan hinaspa sapa t’aqata llank’achiy otaq wañuchiy.",
+      "Drag to reorder, use the buttons to move, and toggle each section on or off.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "Simita akllay",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 compañero",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "Ispaña",
+      "Spain",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "westernEurope": [
+      "Europa Occidental nisqapi",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "Iwrupa Nórdico nisqa",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "Chawpi Iwrupa",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "Urin Iwrupa / Balkankuna",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "Chinchay Iwrupa / Kaukasus",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "Chinchay Awya Yala",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "Urin Awya Yala",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "Urin Awya Yalapi",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "Chawpi Awya Yala / Chawpi Chinchay",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "África suyupi",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "Américas nisqapi",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +3550,1513 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": [
+      "Cambio nisqa qillqa",
+      "Changelog",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Wichqay",
+      "Close",
+      null,
+      null,
+      10
+    ]
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "Kay invitacionpaqqa kanñam sesión activa. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "Yaykuna codigoqa manam allinchu.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "Yaykuna codigo nisqapi qillqay.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "Código allinta chiqapchasqa.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "Mana atirqanchu chiqapchayta chay codigo. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "Ruwaqpa sutinta chaymanta yaykuypaq código nisqa qillqay.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "Mana allin username icha codigo.",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "Codigoqa manam kay ruraqwan tupanchu.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "Allintam yaykurunki.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "Mana atirqanchu chiqapchayta chay codigo. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "Musuq codigota paqarichinaykipaq CONFIRM nisqa qillqay.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "Ñawpaqtaqa username nisqa sutiykita qillqay.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "Ruraqpa sutinqa qillqakunalla, yupaykunallam kanman.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "Ruraqpa sutinqa manam 50 qillqamanta aswanchu kanman.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "Kay llamk'achiqqa manam kayman yaykunapaq atiyniyuqchu.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "Código paqarichisqa. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "Mana atirqanchu codigota paqarichiyta. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "Kunan yaykuy codigota qillqay musuqta paqarichinanpaq.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "Musuq codigo paqarichisqa. ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "Código mosoqyachisqa. ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "Kay yupayqa manam kamachiy atiyniyuqchu.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "Mana allin credencialkuna.",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "Nishu achka kallpachakuykuna. ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "Correo electrónico nisqa formatoqa manan allinchu.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "Yaykuypi pantasqa.T'inkisqaykita qhaway.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": [
+      "Waqaychasqa tikrakuykuna",
+      "Changes saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": [
+      "Enero killa",
+      "January",
+      null,
+      null,
+      10
+    ],
+    "2": [
+      "Febrero killa",
+      "February",
+      null,
+      null,
+      10
+    ],
+    "3": [
+      "Marzo killa",
+      "March",
+      null,
+      null,
+      10
+    ],
+    "4": [
+      "Abril killa",
+      "April",
+      null,
+      null,
+      10
+    ],
+    "5": [
+      "Mayu killapi",
+      "May",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "6": [
+      "Junio ​​killa",
+      "June",
+      null,
+      null,
+      10
+    ],
+    "7": [
+      "Julio killa",
+      "July",
+      null,
+      null,
+      10
+    ],
+    "8": [
+      "Agosto killa",
+      "August",
+      null,
+      null,
+      10
+    ],
+    "9": [
+      "Setiembre killa",
+      "September",
+      null,
+      null,
+      10
+    ],
+    "10": [
+      "Octubre killa",
+      "October",
+      null,
+      null,
+      10
+    ],
+    "11": [
+      "Noviembre killa",
+      "November",
+      null,
+      null,
+      10
+    ],
+    "12": [
+      "Diciembre killa",
+      "December",
+      null,
+      null,
+      10
+    ]
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": [
+      "K’anchay temakuna",
+      "Light themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "dark": [
+      "Tutayaq temakuna",
+      "Dark themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "lgbtiq": [
+      "LGTBIQ+ nisqa",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": [
+      "Gluten nisqa",
+      "Gluten",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "lactose": [
+      "Lactosa nisqa",
+      "Lactose",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "nuts": [
+      "Sacha nueces",
+      "Tree nuts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "shellfish": [
+      "Conchas",
+      "Shellfish",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "Munasqanchikman",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "Kicharinaykipaq ñit’iy",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "& .",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "Hinalla ruwanaykipaq ñitiy",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "Casarakuyniyku",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "{{sutikuna}} nisqap kasarakuynin.",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "Maypi kasqanmanta takyachinapaq",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "Suyayku kay especial momentota qankunawan kuska raymichayta.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "Hayka pacha:",
+      "Time:",
+      null,
+      null,
+      10
+    ],
+    "placeLabel": [
+      "Sede:",
+      "Venue:",
+      null,
+      null,
+      10
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "Elegante y brillante, qurimanta acentoyuq.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "Natural y sobrio llamp’u verdekunawan.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "Q’uñi y delicado, rosa llimp’iyuq.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "K’anchay hinaspa neutral, huk serena hinaspa mana pachayuq presenciawan.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "Llampu hinaspa romantico, tono rosa perlayuq.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "Fresco y sereno, lavanda y malva nisqa llimp’iyuq.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "K’anchariq, raymiyuq, q’uñi quri llimp’iyuq.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "Tutayaq hinaspa sumaqllaña, ámbar hinaspa quri resaltasqa.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "Ukhu hinaspa sumaq yachaysapa, sinchi quriwan yana fondopi.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "Ancha yana azul sinchi quriyuq hinaspa solemne presenciayuq.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "Q’uñi, p’istuykusqa, puka vinowan, quri llimp’ikunawan ima.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "Ukhu azul qullqi acentoyuq hinaspa serena presenciayuq.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "Ukhu verde natural quri hinallataq elegante llimp’iyuq.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "Intenso morado rosa y chispas románticas nisqawan.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "Arco iris llimpikunawan imaymana kuyanakuy raymi.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "Azul, rosa y yuraq, trans banderaman yupaychaspa.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "Q’illu, yuraq, morado, yana mana iskayniyuq banderapaq.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "Naranja, yuraq hinaspa rosa de la bandera lesbiana.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "Rosa, morado y azul de la bi bandera.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "Rosa, q’illu, azul ima, pan banderamanta.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "Yana, q’illu, yuraq, morado ima mana warmiyuq banderamanta.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "Allin hamusqaykichik pukllana wasiwan",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "Allin hamusqaykichik supervisión nisqapi",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "Kuraq runakunalla",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "Mana datosniyuq",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "llapan",
+      "total",
+      null,
+      null,
+      10
+    ],
+    "barChart": [
+      "Asistencia barrakuna tabla",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

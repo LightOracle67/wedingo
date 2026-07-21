@@ -11,20 +11,159 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "Mul'ata",
+      "Visible",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "Waan tokkotu dogoggora ta'e",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "Mee fuula irra deebi'ii fe'ii irra deebi'ii yaalti.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "Fuula irra deebi'ii fe'i",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "Cufuu",
+        "Close",
+        null,
+        null,
+        10
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "Gara qabiyyee ijootti darbi",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "Bulchiinsa bar",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "Bulchiinsa",
+        "Administration",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "landing": {
@@ -55,8 +194,33 @@
     "todayIsWedding": "Har'a cidha",
     "missing": "Hanqina",
     "todayIsTheDay": "Har'a guyyaan guddaa!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": [
+      "Uwwisuu",
+      "Cover",
+      null,
+      null,
+      10
+    ],
+    "eyebrow": [
+      "Cidha Keenya",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "Guyyaa fi bakka",
@@ -106,8 +270,46 @@
     "next": "Kan itti aanu",
     "thumbnailAria": "Suuraa {{number}}",
     "thumbnailAlt": "Suuraa xixiqqaa gaalerii",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "Galmee fakkii, furtuuwwan xiyyaa fayyadamii qajeelchuuf",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "Fakkii guddate",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "Mirkaneessitii",
@@ -121,7 +323,26 @@
     "menuLegend": "Filannoo menuu *",
     "menuCarne": "Foon",
     "menuPescado": "Qurxummii",
-    "menuVegano": "Vegan/Vegetarian",
+    "menuVegano": [
+      "Veegaanii/Vegetarian",
+      "Vegan/Vegetarian",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "postre": "Mi'aawaa",
     "menuLabel": "Menuu",
     "allergiesLegend": "Adanyaa fi hin fudhachuu",
@@ -138,49 +359,625 @@
     "ageUnder14Warning": "Umriin kee waggaa 14 gadi. Eeyyama warra kee ykn guddiftuu kee barbaachisa.",
     "parentalConsent": "Warri koo ykn guddiftuun koo hirmaachuu koo ni eeyyamu",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "Argamuu mirkaneessuuf maqaa keessan galchaa.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "Filannoo menu filadhu.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "Imaammata Dhuunfaa fudhachuu qabda.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "Guyyaa dhaloota kee galchi.",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "Umriin kee waggaa 14 gadi dha. ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "Adeemsa daataa fayyaa keessaniif hayyama kennuu qabdu.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "Yoo xiqqaate filannoo menu tokko agarsiisi.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "Maqaa hiriyyoota kee galchi.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "Maqaa hiriyyaa caalaa galchuu hin dandeessu.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "Walitti qabaan filannoowwan menu baay'ina hiriyyoota caalu hin danda'u.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "Galatoomaa, {{maqaa}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "Galatoomaa, {{maqaa}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "Deebii keessan qusachuu hin dandeenye. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "Deebii kee ofirraa baasuu akka barbaaddu mirkaneeffatteettaa?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "Deebiin keessan ofirraa kaafameera.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "Deebii keessan ofirraa deebisuu hin dandeenye. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "Deebii argamaa hunda haquu? ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "Galmeen argamaa qulqullaa'e.",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "Galmee argamaa qulqulleessuu hin dandeenye.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "Sahaabaa",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "Namoota",
+      "People",
+      null,
+      null,
+      10
+    ],
+    "headcountHint": [
+      "Tokkoon tokkoon filannoof namoota meeqa ({{total}} waliigala) .",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "Maqaa keessummootaa",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "Maqaa jalqabaa fi dhumaa tokkoon tokkoon hiriyyaa barreessi (max {{count}}) .",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "Maqaa1 Maqaa Maatii1, Maqaa2 Maqaa Maatii2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "Affeerraa fe'aa…",
     "notFoundTitle": "Affeerraan hin argamne",
     "notFoundText": "Linkii kanaan affeerraa hin argamne. Dogoggora yoo ta'e, warra affeeran qunnami.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Affeerraa cidhaa mataa kee tolchiitii qooddachuu.",
     "emptyDescription": "Odeeffannoo affeerraa kee bulchi, geessitoota keetiif linkii addaa qooddi, deebii isaanii irraa argadhu.",
     "createLink": "Affeerraa tolchi",
     "privacyPolicy": "Imaammata Dhuunfaa",
     "terms": "Haal-duree",
     "legalNotice": "Beeksisa Seeraa",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "Bakka kana argachuu hin dandeenye.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "Kaartaa fe'uu hin dandeenye.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "Qindeessitoota: {{lat}}, {{lng}}.",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "Durargii kaartaa bakka agarsiifametti.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "Bakki qindaa'e",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "Affeerraa fe'aa",
@@ -308,28 +1105,401 @@
     "galleryUploadFailed": "Suuraa fe'uu hin dandeenye.",
     "noValidFiles": "Faayiliin fudhatamaa hin jiru. Hamma 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "Faayila sagalee olkaa'ii haguuggii irratti taphachiisi (MP3, WAV, OGG, M4A — max 5 MB).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "Faayila sagalee olkaa'i",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG ykn M4A — baay'inaan 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "Akkaataan sagalee hin deeggaramu. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "Faayilli sagalee duwwaa dha.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "Faayilli sagalee daangaa 5 MB caala.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "Dogoggora faayilii sagalee dubbisuu.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "Faayilli duwwaa dha. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "Ibsa suuraa...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "Fakkiiwwan guddaa {{max}} galmee keessaa.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "Suuraa(wwan) {{total}} olkaa'aa jira...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "Suuraa olkaa'aa jira...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "Suuraa jijjiiri",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "Ibsa qusannaa dogongoraa",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "Ibsi qusatameera",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "Muuziqaa filatame",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "Muuziqaa balleessi",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "Taphachuu...",
+      "Playing...",
+      null,
+      null,
+      10
+    ],
+    "preview": [
+      "Dursee ilaaluu",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "Filuu",
+      "Select",
+      null,
+      null,
+      10
+    ],
+    "selected": [
+      "Filatame",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1523,66 @@
     "pdfTableCompanions": "Gargaaraa",
     "pdfTableDiet": "Nyaata",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Admin",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "Waamicha ilaali",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "Ba'aa",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "Mirkanaa'e",
@@ -384,7 +1611,26 @@
     "confirms": "Mirkaneessu",
     "declines": "Ganu",
     "pending": "Eegaa",
-    "visits_one": "1 visit",
+    "visits_one": [
+      "1 daawwannaa",
+      "1 visit",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +1663,66 @@
     "generateMessage": "Ergaa biraa uumi",
     "copyMessage": "Ergaa garargalchi",
     "shareVia": "Karaadhaan qooddi",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "Telegiraamii",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "Ergaa gabaabaa",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Maxxansi",
     "printPdf": "Maxxansi / PDF olkaa'i",
     "linkCopied": "Linkiin garargalfame.",
@@ -448,7 +1751,26 @@
     "rightsHint": "Qaamolee email kee banama, qajojii duraan qophaa'een. Adreesa adriancl2001@gmail.com dabalattis barreessuu dandeessa.",
     "ccpaTitle": "CCPA / CPRA (Kaalifoorniyaa)",
     "ccpaText": "Wedingo odeeffannoo mataa hin gurguru. Odeeffannoon walitti qabame affeerraa bulchuuf qofa fayyada. Jiraattuu Kaalifoorniyaa yoo ta'u, odeeffannoo kee balleessuu gaafachuu fi mirga kee fayyadamuu irraa addaan hin baafamu.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "App weeb affeerraa cidhaa bulchuuf.",
     "copyright": "© {{year}} Adrián Carrasco López. Mirgoolee hundi eegamani.",
     "deleteEmailSubject": "Gaaffii balleessina odeeffannoo - Wedingo",
@@ -518,13 +1840,146 @@
     "deleteFailed": "Affeerraa balleessuu hin dandeenye. Irra deebi'ii yaali.",
     "configLoadFailed": "Qindaa'ina fe'uu hin dandeenye. Walitti hidhamiinsa ilaalii deebi'ii yaali.",
     "invalidLink": "Linkiin affeerraa hin fudhatama.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "Odeeffannoon bakka jireenyaa arfii 2000 caalu hin danda'u.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "Ibsi menu arfiilee 2000 caalu hin danda'u.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "Fakkii adeemsisuu hin dandeenye. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "Faayilii fakkii dubbisuu hin dandeenye.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "Icciitii suuraa hin milkoofne.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "Fakkiin erga dhiibamee boodas garmalee guddaadha.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "Faayilli duwwaa dha. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -587,8 +2042,46 @@
     "tokenRevokeError": "Tookenii dhiisuu hin dandeenye.",
     "tokenCleanError": "Tookenoota qulqulleessuu hin dandeenye.",
     "tokenLoadError": "Tookenoota fe'uu hin dandeenye.",
-    "accountEmail": "Email: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountEmail": [
+      "Imeelii: {{email}}",
+      "Email: {{email}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Dalagaa",
     "sessionInactive": "Dalagaa miti",
     "sessionLabel": "Se$$ii naannoo: {{status}}",
@@ -615,10 +2108,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Token",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVPs jedhaman",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2167,33 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "Imeelii",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "Jecha iccitii",
+      "Password",
+      null,
+      null,
+      10
+    ]
   },
   "compliance": {
     "title": "Galmee adeemsa wabii (Art. 30 GDPR)",
@@ -653,31 +2209,126 @@
     "row1Basis": "Eeyyama (Art. 6.1.a GDPR)",
     "row1Purpose": "Affeerraa cidhaa uumuu fi mataa tolchuu",
     "row1Retention": "Akkaawuntii dalagaa ta'etti",
-    "row1Recipients": "Google Cloud (Firestore, hosting)",
+    "row1Recipients": [
+      "Google Cloud (Ibidda, keessummeessuu) .",
+      "Google Cloud (Firestore, hosting)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "row2Activity": "Mirkaneessitii (RSVP)",
     "row2Data": "Maqaa geessittii, deebii (eeyyee/lakki), filannoo menuu, adanyaa, odeeffannoo fayyaa",
     "row2Basis": "Eeyyama (Art. 6.1.a, 9.2.a GDPR)",
     "row2Purpose": "Tarree geessitoota fi menuu bulchuu",
     "row2Retention": "Taatee booda ji'a 12",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Duumeessa Google (Ibidda) .",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Suuraa fe'uu",
     "row3Data": "Suuraa cidhaa (AES-256-GCM koodaadhaan eegamani)",
     "row3Basis": "Eeyyama (Art. 6.1.a GDPR)",
     "row3Purpose": "Gaalerii suuraa affeerraa keessatti",
     "row3Retention": "Taatee booda ji'a 12",
-    "row3Recipients": "Google Cloud (Firestore subcollection)",
+    "row3Recipients": [
+      "Google Cloud (Kuusaa xiqqaa Firestor) .",
+      "Google Cloud (Firestore subcollection)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "row4Activity": "Mirkaneessitii fi se$$ii",
     "row4Data": "Tookenii se$$ii, maqaa fayyadamaa bulchaa",
     "row4Basis": "Fedhii seeraa (Art. 6.1.f GDPR)",
     "row4Purpose": "Galtee paanili bulchiinsa to'achuu",
     "row4Retention": "Yeroo se$$ii",
-    "row4Recipients": "Google Cloud (Firestore sessions)",
+    "row4Recipients": [
+      "Google Cloud (Kutaa Ibidda) .",
+      "Google Cloud (Firestore sessions)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "row5Activity": "Odeeffannoo bulchaa guddaa",
     "row5Data": "Gochaalee bulchaa guddaa, tookenoota fayyadaman, affeerraa balleeffamani",
     "row5Basis": "Dirqama seeraa (Art. 6.1.c GDPR)",
     "row5Purpose": "Galmee gochaalee bulchiinsa",
     "row5Retention": "Waggaa 3",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Duumeessa Google (Galmee odiitii ibiddaa) .",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Geejjiba idil-addunyaa",
     "internationalText": "Odeeffannoon serveroota Google Cloud naannoo eur3 (Frankfurt, Jarman) keessatti olkaa'ama. Google LLC (US) akka wabiiftuutti DPA Art. 28 GDPR jalatti dalaga. Geejjibni US geessu kan bu'uureffame:",
     "scc": "Sakatta'a Dambii Qajeelfama (SCC) - Murtii Raawwii 2021/914",
@@ -691,86 +2342,1255 @@
     "measureSuperadmin": "Bulchaa guddaa Firebase Authentication + karaa dhokfamaan eegame"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "Dhaqqabummaa",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Cufuu",
+      "Close",
+      null,
+      null,
+      10
+    ],
+    "fontSize": [
+      "Hammangaa barruu",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "Baratamaa",
+      "Normal",
+      null,
+      null,
+      10
+    ],
+    "fontLarge": [
+      "Bal'aa",
+      "Large",
+      null,
+      null,
+      10
+    ],
+    "fontExtraLarge": [
+      "Dabalataan guddaa",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "Adda fageenya sararaa",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "Baratamaa",
+      "Normal",
+      null,
+      null,
+      10
+    ],
+    "lineWide": [
+      "Bal'aa",
+      "Wide",
+      null,
+      null,
+      10
+    ],
+    "lineVeryWide": [
+      "Baayyee bal'aa dha",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "Faallaa olaanaa",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "Sochii hir’isuu",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "Qubee OpenDyslexic jedhu",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "Addaan fageenya qubee dabalataa",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "Hidhamtoota hunda jala sarari",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "Qaree guddaa",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "Iskeelii halluu diimaa",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "Agarsiistota xiyyeeffannoo mul’atan",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "Muuziqaa hin qabu",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "Dogoggora fe'amuu",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "Muuziqaa",
+      "Music",
+      null,
+      null,
+      10
+    ],
+    "soundCloudNote": [
+      "SoundCloud track — taphachuuf banaa",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "SoundCloud keessatti banaa",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "Maxxansa qopheessuu...",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "Suuraa hiriyoonni gaa'elaa",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "Eebba warra waaqa isaaniitiin",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "Guyyaa fi bakka itti gaggeeffamu",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "Yeroo sirnichaa:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Bakka Google Maps keessatti argamu ilaali",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "Yeroo addaa kana isiniif qooduuf hawwii guddaan eegganna.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "Geejjiba",
+      "Transport",
+      null,
+      null,
+      10
+    ],
+    "aboutGuests": [
+      "Waa'ee keessummootaa",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "Sagantaa cidhaa",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "Sagantaan bal'aan yeroo dhiyootti isiniif qoodna.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "Uffata uffannaa",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "Booda ni beeksifama.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "Waa'ee ijoollee",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "Seenaa keenya",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "Akkamitti hunduu jalqabe",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "Seenaan isaa yeroo dhiyootti isiniif qoodna.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "Kennaawwan",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "Argamuun kee kennaa hunda caaludha",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "Odeeffannoon kennaa yeroo dhiyootti ni qoodama.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "Bal'ina baankii",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "Bakki qabachuu danda'uu",
+      "Accommodation",
+      null,
+      null,
+      10
+    ],
+    "whereToStay": [
+      "Bakka itti turtan",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "Odeeffannoon bakka jireenyaa yeroo dhiyootti ni qoodama.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · Imaammata Dhuunfaa wedingo-6c26a.web.app irratti",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "Foddaa cufi",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": [
+      "Ol socho'aa",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "Gad bu'aa",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "title": [
+      "Tartiiba & mul'achuu",
+      "Order & visibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "help": [
+      "Irra deebi'ii tartiibsuuf harkisi, qareewwan sochoosuuf fayyadami, fi kutaa tokkoon tokkoo ibsuu ykn dhaamsi.",
+      "Drag to reorder, use the buttons to move, and toggle each section on or off.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "Afaan filadhu",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 hiriyyaa",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "Ispeen",
+      "Spain",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "westernEurope": [
+      "Awurooppaa Dhihaa",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "Awurooppaa Noordii",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "Giddugaleessa Awurooppaa",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "Kibba Awurooppaa / Baalkaan",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "Awurooppaa Bahaa / Kaakaas",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "Baha Eeshiyaa",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "Kibba Eeshiyaa",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "Kibba Baha Eeshiyaa",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "Giddugaleessa Eeshiyaa / Baha Giddugaleessaa",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "Afrikaa",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "Ameerikaa",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +3607,1500 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": [
+      "Jijjiirama galmee",
+      "Changelog",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Cufuu",
+      "Close",
+      null,
+      null,
+      10
+    ]
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "Waamicha kanaaf duraanuu walgahiin sochii qabu jira. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "Koodiin qaqqabummaa sirrii miti.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "Koodii qaqqabummaa galchi.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "Koodiin milkaa'inaan mirkanaa'e.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "Koodii mirkaneessuu hin dandeenye. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "Maqaa fayyadamaa fi koodii qaqqabummaa kee galchi.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "Maqaa fayyadamaa ykn koodii sirrii hin taane.",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "Koodichi fayyadamaa kanaan wal hin simne.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "Milkaa'inaan seenteetta.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "Koodii mirkaneessuu hin dandeenye. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "Koodii haaraa uumuuf CONFIRM barreessi.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "Dursa maqaa fayyadamaa kee galchi.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "Maqaan fayyadamaa qubee fi lakkoofsa qofa qabaachuu danda'a.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "Maqaan fayyadamaa arfiilee 50 caalu hin danda'u.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "Fayyadamaan kun asitti akka seenu hayyama hin qabu.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "Koodii uumame. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "Koodii maddisiisuu hin dandeenye. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "Koodii qaqqabummaa ammaa galchi haaraa uumuuf.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "Koodiin haaraan uumame. ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "Koodiin haaromfame. ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "Akkaawuntii kun hayyama bulchiinsaa hin qabu.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "Mirkaneessitoota sirrii hin taane.",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "Yaalii baay'ee. ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "Akkaataan email sirrii miti.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "Dogoggora seenuu.Walqabsiisa kee ilaali.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": [
+      "Jijjiiramni qusatame",
+      "Changes saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": [
+      "fulbaana",
+      "January",
+      null,
+      null,
+      10
+    ],
+    "2": [
+      "Gurraandhala",
+      "February",
+      null,
+      null,
+      10
+    ],
+    "3": [
+      "Sadaasa",
+      "March",
+      null,
+      null,
+      10
+    ],
+    "4": [
+      "Ebla",
+      "April",
+      null,
+      null,
+      10
+    ],
+    "5": [
+      "Ta'uu mala",
+      "May",
+      null,
+      null,
+      10
+    ],
+    "6": [
+      "Waxabajjii",
+      "June",
+      null,
+      null,
+      10
+    ],
+    "7": [
+      "Bitootessa",
+      "July",
+      null,
+      null,
+      10
+    ],
+    "8": [
+      "Eebila",
+      "August",
+      null,
+      null,
+      10
+    ],
+    "9": [
+      "Caamsaa",
+      "September",
+      null,
+      null,
+      10
+    ],
+    "10": [
+      "Onkololeessa",
+      "October",
+      null,
+      null,
+      10
+    ],
+    "11": [
+      "Sadaasa",
+      "November",
+      null,
+      null,
+      10
+    ],
+    "12": [
+      "Muddee",
+      "December",
+      null,
+      null,
+      10
+    ]
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": [
+      "Mata dureewwan ifaa",
+      "Light themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "dark": [
+      "Mata dureewwan dukkanaa'oo",
+      "Dark themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "lgbtiq": [
+      "LGTBIQ+ jedhamuun beekama",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": [
+      "Giluteenii",
+      "Gluten",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "lactose": [
+      "Laaktoosii",
+      "Lactose",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "nuts": [
+      "Muka mukaa",
+      "Tree nuts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "shellfish": [
+      "Qurxummii qola",
+      "Shellfish",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "Jaalallee keenyaaf",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "Banuuf tuqi",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "& .",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "Itti fufuuf tuqi",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "Cidha keenya",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "Cidha kan {{maqaawwan}}",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "Bakki mirkanaa'uu qaba",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "Yeroo addaa kana isin waliin kabajuuf hawwii guddaan eegganna.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "Yeroo:",
+      "Time:",
+      null,
+      null,
+      10
+    ],
+    "placeLabel": [
+      "Galma:",
+      "Venue:",
+      null,
+      null,
+      10
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "Bareedaa fi ifaa, aksentaa warqee kan qabu.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "Uumamaa fi sober kan magariisa lallaafaa wajjin.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "Ho'aa fi micciiramaa, halluu diimaa kan qabu.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "Ifaa fi giddu galeessa, argama tasgabbaa’aa fi yeroo hin qabne kan qabu.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "Lallaafaa fi jaalalaa, sagalee bifa pilaastikii luqqisii qabu.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "Haaraa fi tasgabbaa'aa, lavender fi mauve hues wajjin.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "Ifa fi ayyaana, ibsaa warqee ho'aa qabu.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "Dukkanaa'aa fi bareedaa, amber fi warqee kan calaqqisiisan.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "Gad fagoo fi ulfaataa, warqee cimaa duubbee dukkanaa'aa irratti.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "Baayyee halluu diimaa dukkanaa'aa warqee cimaa fi argama kabajaa qabu.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "Ho'aa fi kan golgaa, wayinii diimaa fi warqee kan calaqqisu.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "Deep blue kan silver accents fi tasgabbaa'aa ta'e.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "Magariisa uumamaa gadi fagoo kan halluu warqee fi bareedaa qabu.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "Diimaa cimaa kan bifa pilaastikii fi ibsaa jaalalaa qabu.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "Kabaja jaalala adda addaa halluu bokkaatiin.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "Alaabaa tiraansiif kabaja kennuudhaaf halluu diimaa, roobaa fi adii.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "Alaabaa baayinarii hin taaneef keelloo, adii, diimaa fi gurraacha.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "Burtukaana, adii fi roobaa alaabaa saala walfakkaataa.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "Alaabaa bi bifa pilaastikii, diimaa fi halluu diimaa qabu.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "Alaabaa paan kan bifa pilaastikii, keelloo fi buluu.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "Gurraacha, halluu diimaa, adii fi diimaa alaabaa saala hin qabne.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "Bakka taphaatiin baga nagaan dhuftan",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "To'annoo jala dhuftan",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "Ga'eessota qofaaf",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e602cb0a14375b07effaac0d79fe4df8",
+              "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "Daataa hin qabu",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "ida'ama",
+      "total",
+      null,
+      null,
+      10
+    ],
+    "barChart": [
+      "Chaartii barruulee argamaa",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e602cb0a14375b07effaac0d79fe4df8",
+            "aqtv2_en_bandagedclamtombgiftsqkkll_fg2fm8mb2_ftflt_20220628-1854.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

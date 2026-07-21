@@ -11,20 +11,133 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "可见的",
+      "Visible",
+      null,
+      null,
+      10
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "出了点问题",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "6ffafab0da7e640be86ac09d0d5e539c",
+              "en_zh_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "请重新加载页面以重试。",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "6ffafab0da7e640be86ac09d0d5e539c",
+              "en_zh_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "重新加载页面",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "6ffafab0da7e640be86ac09d0d5e539c",
+              "en_zh_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "关闭",
+        "Close",
+        null,
+        null,
+        10
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "跳至主要内容",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "管理栏",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "6ffafab0da7e640be86ac09d0d5e539c",
+              "en_zh_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "行政",
+        "Administration",
+        null,
+        null,
+        10
+      ]
     }
   },
   "landing": {
@@ -56,7 +169,26 @@
     "missing": "距离",
     "todayIsTheDay": "今天就是大喜之日！",
     "sectionLabel": "封面",
-    "eyebrow": "Our Wedding"
+    "eyebrow": [
+      "我们的婚礼",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "日期与地点",
@@ -106,8 +238,46 @@
     "next": "下一张",
     "thumbnailAria": "照片 {{number}}",
     "thumbnailAlt": "相册缩略图",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "图片库，使用箭头键导航",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "放大图像",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "出席确认",
@@ -144,10 +314,86 @@
       "birthDateRequired": "输入您的出生日期。",
       "ageUnder14": "您未满14岁。需要父母或监护人的同意。",
       "healthConsentRequired": "您必须同意处理您的健康数据。",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "menuHeadcountRequired": [
+        "指出至少一个菜单选项。",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "6ffafab0da7e640be86ac09d0d5e539c",
+              "en_zh_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "输入你同伴的名字。",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "6ffafab0da7e640be86ac09d0d5e539c",
+              "en_zh_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "您输入的姓名不能多于同伴。",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "6ffafab0da7e640be86ac09d0d5e539c",
+              "en_zh_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "菜单选项的总和不能超过同伴的数量。",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "6ffafab0da7e640be86ac09d0d5e539c",
+              "en_zh_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     },
     "successAttending": "谢谢{{name}}。您的出席已记录。",
     "successNotAttending": "谢谢{{name}}。很抱歉您无法出席。",
@@ -158,29 +404,244 @@
     "clearConfirm": "删除所有出席回复？此操作无法撤消。",
     "clearSuccess": "出席记录已清除。",
     "clearError": "无法清除出席记录。",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "companionsLabel": [
+      "同伴",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "人们",
+      "People",
+      null,
+      null,
+      10
+    ],
+    "headcountHint": [
+      "每个选项有多少人（总共{{total}}）",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "宾客姓名",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "写下每个同伴的名字和姓氏（最多 {{count}}）",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "姓名 1 姓氏 1、姓名 2 姓氏 2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "加载请柬中…",
     "notFoundTitle": "未找到请柬",
     "notFoundText": "我们未找到与此链接关联的请柬。如果您认为这是一个错误，请联系主办方。",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "韦丁戈",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "创建并分享您的个性化婚礼请柬。",
     "emptyDescription": "管理您的请柬数据，与宾客分享专属链接，接收他们的出席确认。",
     "createLink": "创建请柬",
     "privacyPolicy": "隐私政策",
     "terms": "条款",
     "legalNotice": "法律声明",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "无法找到这个地方。",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "无法加载地图。",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "坐标：{{lat}}、{{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "在指定位置预览地图。",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "位置已配置",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "加载请柬中",
@@ -308,28 +769,401 @@
     "galleryUploadFailed": "照片上传失败。",
     "noValidFiles": "没有有效文件。最大20MB，JPG/PNG格式。",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "上传要在封面上播放的音频文件（MP3、WAV、OGG、M4A — 最大 5 MB）。",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "上传音频文件",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3、WAV、OGG 或 M4A — 最大 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "不支持音频格式。",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "音频文件为空。",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "音频文件超过 5 MB 限制。",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "读取音频文件时出错。",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "文件为空。",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "图片说明...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "图库中最多 {{max}} 张图片。",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "正在上传 {{total}} 张照片...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "正在上传照片...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "更改照片",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "保存说明时出错",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "描述已保存",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "精选音乐",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "删除音乐",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "正在播放...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "预览",
+      "Preview",
+      null,
+      null,
+      10
+    ],
+    "select": [
+      "选择",
+      "Select",
+      null,
+      null,
+      10
+    ],
+    "selected": [
+      "已选择",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1187,66 @@
     "pdfTableCompanions": "陪同",
     "pdfTableDiet": "饮食",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "韦丁戈·管理员",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "查看邀请",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "退出",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "已确认",
@@ -417,8 +1308,33 @@
     "generateMessage": "生成另一条消息",
     "copyMessage": "复制消息",
     "shareVia": "分享方式",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "电报",
+      "Telegram",
+      null,
+      null,
+      2
+    ],
     "sms": "短信",
     "print": "打印",
     "printPdf": "打印 / 保存PDF",
@@ -448,7 +1364,26 @@
     "rightsHint": "将打开您的邮件客户端并附带预设模板。您也可以直接发邮件至 adriancl2001@gmail.com。",
     "ccpaTitle": "CCPA / CPRA（加利福尼亚州）",
     "ccpaText": "Wedingo不出售个人数据。收集的数据仅用于管理请柬。如果您是加利福尼亚州居民，您有权请求删除您的数据，且不会因行使权利而受到歧视。",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "韦丁戈",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "婚礼请柬管理网页应用。",
     "copyright": "© {{year}} Adrián Carrasco López。保留所有权利。",
     "deleteEmailSubject": "数据删除请求 - Wedingo",
@@ -518,13 +1453,146 @@
     "deleteFailed": "无法删除请柬。请重试。",
     "configLoadFailed": "无法加载设置。请检查网络连接后重试。",
     "invalidLink": "请柬链接无效。",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "住宿信息不能超过2000个字符。",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "菜单说明不能超过 2000 个字符。",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "无法处理图像。",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "无法读取图像文件。",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "图片加密失败。",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "即使压缩后图像也太大。",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "文件为空。",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -615,10 +1683,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "代币",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "6ffafab0da7e640be86ac09d0d5e539c",
+              "en_zh_2023q1.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "回复",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "6ffafab0da7e640be86ac09d0d5e539c",
+              "en_zh_2023q1.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +1742,20 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "电子邮件",
+      "Email",
+      null,
+      null,
+      10
+    ],
+    "passwordLabel": [
+      "密码",
+      "Password",
+      null,
+      null,
+      10
+    ]
   },
   "compliance": {
     "title": "处理活动记录（GDPR第30条）",
@@ -691,86 +1809,1126 @@
     "measureSuperadmin": "超级管理员受Firebase Authentication + 隐藏路由保护"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "无障碍",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "关闭",
+      "Close",
+      null,
+      null,
+      10
+    ],
+    "fontSize": [
+      "文字大小",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "普通的",
+      "Normal",
+      null,
+      null,
+      10
+    ],
+    "fontLarge": [
+      "大的",
+      "Large",
+      null,
+      null,
+      10
+    ],
+    "fontExtraLarge": [
+      "特大号",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "行距",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "普通的",
+      "Normal",
+      null,
+      null,
+      10
+    ],
+    "lineWide": [
+      "宽的",
+      "Wide",
+      null,
+      null,
+      10
+    ],
+    "lineVeryWide": [
+      "很宽",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "高对比度",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "减少运动",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "Open诵读困难字体",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "更多字母间距",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "为所有链接添加下划线",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "大光标",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "灰度",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "可见的焦点指示器",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "没有音乐",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "加载错误",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "音乐",
+      "Music",
+      null,
+      null,
+      10
+    ],
+    "soundCloudNote": [
+      "SoundCloud 曲目 — 打开即可播放",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "在 SoundCloud 中打开",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "正在准备打印...",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "情侣照片",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "在他们教父母的祝福下",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "日期和地点",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "典礼时间：",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "在 Google 地图中查看位置",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "我们期待与您分享这个特殊的时刻。",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "运输",
+      "Transport",
+      null,
+      null,
+      10
+    ],
+    "aboutGuests": [
+      "关于嘉宾",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "婚礼日程",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "详细的时间表将很快分享。",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "着装要求",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "稍后会进行沟通。",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "关于儿童",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "我们的故事",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "一切是如何开始的",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "这个故事很快就会被分享。",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "礼物",
+      "Gifts",
+      null,
+      null,
+      10
+    ],
+    "bestGift": [
+      "你的存在就是最好的礼物",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "礼物信息将很快分享。",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "银行详细信息",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "住宿",
+      "Accommodation",
+      null,
+      null,
+      10
+    ],
+    "whereToStay": [
+      "住宿地点",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "住宿信息将很快分享。",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · 隐私政策，网址为 wedingo-6c26a.web.app",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "关闭窗口",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
+    "moveUp": [
+      "向上移动",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "下移",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "title": "顺序与可见性",
     "help": "拖拽重新排序，使用按钮移动，并打开或关闭每个部分。"
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "选择语言",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 名同伴",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "西班牙",
+      "Spain",
+      null,
+      null,
+      10
+    ],
+    "westernEurope": [
+      "西欧",
+      "Western Europe",
+      null,
+      null,
+      2
+    ],
+    "nordicEurope": [
+      "北欧",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "中欧",
+      "Central Europe",
+      null,
+      null,
+      2
+    ],
+    "southernEurope": [
+      "南欧/巴尔干地区",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "东欧/高加索地区",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "东亚",
+      "East Asia",
+      null,
+      null,
+      2
+    ],
+    "southAsia": [
+      "南亚",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "东南亚",
+      "Southeast Asia",
+      null,
+      null,
+      2
+    ],
+    "centralAsia": [
+      "中亚/中东",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "非洲",
+      "Africa",
+      null,
+      null,
+      2
+    ],
+    "americas": [
+      "美洲",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} 年",
@@ -846,53 +3004,730 @@
     "shellfish": "贝类"
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "致我们最亲爱的",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "点击打开",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "点击继续",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "我们的婚礼",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "{{name}} 的婚礼",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "地点待确认",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "我们期待与您一起庆祝这个特殊的时刻。",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "时间：",
+      "Time:",
+      null,
+      null,
+      10
+    ],
+    "placeLabel": [
+      "地点：",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "优雅而明亮，带有金色的点缀。",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "自然而清醒，带有柔和的绿色。",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "温暖而精致，带有粉红色调。",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "轻盈而中性，带着宁静和永恒的存在。",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "柔和浪漫，带有珍珠粉色色调。",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "清新宁静，带有薰衣草色和紫红色调。",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "明亮而喜庆，带有温暖的金色光芒。",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "深色而优雅，带有琥珀色和金色亮点。",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "深沉而精致，深色背景上带有浓郁的金色。",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "非常深的蓝色，带有强烈的金色和庄严的气息。",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "温暖而包容，带有红酒和金色的光芒。",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "深蓝色搭配银色点缀，给人一种宁静的感觉。",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "深天然的绿色，带有金色和优雅的色调。",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "浓郁的紫色带有粉色和浪漫的光芒。",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "用彩虹色庆祝多样的爱情。",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "蓝色、粉色和白色向跨性别旗帜致敬。",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "黄、白、紫、黑为非二元标志。",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "女同性恋旗帜的橙色、白色和粉色。",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "粉红、紫色、蓝色的碧旗。",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "泛旗的粉色、黄色和蓝色。",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "无性旗的黑色、灰色、白色和紫色。",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "欢迎来到游乐区",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "6ffafab0da7e640be86ac09d0d5e539c",
+              "en_zh_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "欢迎监督",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "6ffafab0da7e640be86ac09d0d5e539c",
+              "en_zh_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "仅限成人",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "6ffafab0da7e640be86ac09d0d5e539c",
+              "en_zh_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "无数据",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "全部的",
+      "total",
+      null,
+      null,
+      10
+    ],
+    "barChart": [
+      "出勤条形图",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "6ffafab0da7e640be86ac09d0d5e539c",
+            "en_zh_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

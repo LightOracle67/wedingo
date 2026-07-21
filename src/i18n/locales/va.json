@@ -1,7 +1,13 @@
 {
   "common": {
     "loading": "Carregant...",
-    "error": "Error",
+    "error": [
+      "Error",
+      "Error",
+      null,
+      null,
+      5
+    ],
     "close": "Tancar",
     "retry": "Reintentar",
     "save": "Guardar canvis",
@@ -11,20 +17,68 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "Visible",
+      "Visible",
+      null,
+      null,
+      5
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "Something went wrong",
+        "Something went wrong",
+        null,
+        null,
+        5
+      ],
+      "message": [
+        "Please reload the page to try again.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        5
+      ],
+      "reload": [
+        "Reload page",
+        "Reload page",
+        null,
+        null,
+        5
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "Close",
+        "Close",
+        null,
+        null,
+        5
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "Skip to main content",
+      "Skip to main content",
+      null,
+      null,
+      5
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "Administration bar",
+        "Administration bar",
+        null,
+        null,
+        5
+      ],
+      "fallback": [
+        "Administration",
+        "Administration",
+        null,
+        null,
+        5
+      ]
     }
   },
   "landing": {
@@ -55,8 +109,20 @@
     "todayIsWedding": "Hui és la boda",
     "missing": "Falten",
     "todayIsTheDay": "Hui és el gran dia!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": [
+      "Cover",
+      "Cover",
+      null,
+      null,
+      5
+    ],
+    "eyebrow": [
+      "Our Wedding",
+      "Our Wedding",
+      null,
+      null,
+      5
+    ]
   },
   "details": {
     "sectionLabel": "Data i lloc",
@@ -66,7 +132,13 @@
     "placePending": "El lloc de la celebració apareixerà ací.",
     "welcomeWithTime": "T'esperem per a compartir este moment tan especial. Comencem a les {{time}}. Més avall trobaràs el mapa d'ubicació.",
     "welcomeWithoutTime": "T'esperem per a compartir este moment tan especial. Més avall trobaràs el mapa d'ubicació.",
-    "transport": "Transport",
+    "transport": [
+      "Transport",
+      "Transport",
+      null,
+      null,
+      5
+    ],
     "addToCalendar": "Afegir al calendari",
     "viewGoogleMaps": "Veure en Google Maps",
     "viewAppleMaps": "Veure en Apple Maps"
@@ -106,8 +178,20 @@
     "next": "Següent",
     "thumbnailAria": "Foto {{number}}",
     "thumbnailAlt": "Miniatura de foto de la galeria",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "Image gallery, use arrow keys to navigate",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      5
+    ],
+    "lightboxLabel": [
+      "Enlarged image",
+      "Enlarged image",
+      null,
+      null,
+      5
+    ]
   },
   "rsvp": {
     "sectionLabel": "Confirmació d'assistència",
@@ -138,49 +222,235 @@
     "ageUnder14Warning": "Eres menor de 14 anys. Necessites el consentiment dels teus pares o tutors.",
     "parentalConsent": "Els meus pares o tutors consenten la meua participació",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "Enter your name to confirm attendance.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        5
+      ],
+      "menuRequired": [
+        "Select a menu option.",
+        "Select a menu option.",
+        null,
+        null,
+        5
+      ],
+      "privacyRequired": [
+        "You must accept the Privacy Policy.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        5
+      ],
+      "birthDateRequired": [
+        "Enter your date of birth.",
+        "Enter your date of birth.",
+        null,
+        null,
+        5
+      ],
+      "ageUnder14": [
+        "You are under 14 years of age. You need your parents' or guardians' consent.",
+        "You are under 14 years of age. You need your parents' or guardians' consent.",
+        null,
+        null,
+        5
+      ],
+      "healthConsentRequired": [
+        "You must consent to the processing of your health data.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        5
+      ],
+      "menuHeadcountRequired": [
+        "Indicate at least one menu option.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        5
+      ],
+      "guestNamesRequired": [
+        "Enter the names of your companions.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        5
+      ],
+      "guestNamesExceed": [
+        "You cannot enter more names than companions.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        5
+      ],
+      "headcountExceed": [
+        "The sum of menu options cannot exceed the number of companions.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        5
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "Thank you, {{name}}. Your attendance has been recorded.",
+      "Thank you, {{name}}. Your attendance has been recorded.",
+      null,
+      null,
+      5
+    ],
+    "successNotAttending": [
+      "Thank you, {{name}}. We are sorry you cannot attend.",
+      "Thank you, {{name}}. We are sorry you cannot attend.",
+      null,
+      null,
+      5
+    ],
+    "saveError": [
+      "We could not save your response. Please try again in a few minutes.",
+      "We could not save your response. Please try again in a few minutes.",
+      null,
+      null,
+      5
+    ],
+    "withdrawConfirm": [
+      "Are you sure you want to withdraw your response?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      5
+    ],
+    "withdrawSuccess": [
+      "Your response has been withdrawn.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      5
+    ],
+    "withdrawError": [
+      "Could not withdraw your response. Please try again.",
+      "Could not withdraw your response. Please try again.",
+      null,
+      null,
+      5
+    ],
+    "clearConfirm": [
+      "Delete all attendance responses? This action cannot be undone.",
+      "Delete all attendance responses? This action cannot be undone.",
+      null,
+      null,
+      5
+    ],
+    "clearSuccess": [
+      "Attendance records cleared.",
+      "Attendance records cleared.",
+      null,
+      null,
+      5
+    ],
+    "clearError": [
+      "Could not clear attendance records.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      5
+    ],
+    "companionsLabel": [
+      "Companions",
+      "Companions",
+      null,
+      null,
+      5
+    ],
+    "headcountLabel": [
+      "People",
+      "People",
+      null,
+      null,
+      5
+    ],
+    "headcountHint": [
+      "How many people for each option ({{total}} total)",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      5
+    ],
+    "guestNamesLabel": [
+      "Guest names",
+      "Guest names",
+      null,
+      null,
+      5
+    ],
+    "guestNamesHint": [
+      "Write the first and last name of each companion (max {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      5
+    ],
+    "guestNamesPlaceholder": [
+      "Name1 Surname1, Name2 Surname2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      5
+    ]
   },
   "public": {
     "loadingInvitation": "Carregant invitació…",
     "notFoundTitle": "Invitació no trobada",
     "notFoundText": "No trobem una invitació amb este enllaç. Si creus que és un error, contacta amb els amfitrions.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      5
+    ],
     "emptyText": "Crea i compartix la teua invitació de boda personalitzada.",
     "emptyDescription": "Gestiona les dades de la teua invitació, compartix un enllaç únic amb els teus convidats i rep les seues confirmacions d'assistència.",
     "createLink": "Crear invitació",
     "privacyPolicy": "Política de Privacitat",
     "terms": "Termes",
     "legalNotice": "Avís Legal",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "Could not locate this place.",
+      "Could not locate this place.",
+      null,
+      null,
+      5
+    ],
+    "locationMapError": [
+      "Could not load the map.",
+      "Could not load the map.",
+      null,
+      null,
+      5
+    ],
+    "locationCoordinates": [
+      "Coordinates: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      5
+    ],
+    "mapPreviewAlt": [
+      "Map preview at the indicated location.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      5
+    ],
+    "locationSet": [
+      "Location configured",
+      "Location configured",
+      null,
+      null,
+      5
+    ]
   },
   "setup": {
     "loadingTitle": "Carregant invitació",
@@ -263,7 +533,13 @@
     "accommodationLabel": "Allotjament",
     "accommodationPlaceholder": "Exemple: Hotel recomanat: … Codi descompte: …",
     "accommodationHint": "Hotels, codis de descompte i opcions per als convidats.",
-    "transportLabel": "Transport",
+    "transportLabel": [
+      "Transport",
+      "Transport",
+      null,
+      null,
+      5
+    ],
     "transportPlaceholder": "Exemple: Autobús des de la Plaça Major a les 17:00. Parking gratuït al recinte.",
     "transportHint": "Opcions de transport, horaris d'autobús, parking, etc.",
     "kidsLabel": "Sobre els xiquets",
@@ -308,28 +584,154 @@
     "galleryUploadFailed": "No es van poder pujar les fotos.",
     "noValidFiles": "Cap fitxer vàlid. Màxim 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      5
+    ],
+    "audioUploadTitle": [
+      "Upload audio file",
+      "Upload audio file",
+      null,
+      null,
+      5
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      5
+    ],
+    "audioFormatError": [
+      "Audio format not supported. Use MP3, WAV, OGG or M4A.",
+      "Audio format not supported. Use MP3, WAV, OGG or M4A.",
+      null,
+      null,
+      5
+    ],
+    "audioEmptyError": [
+      "Audio file is empty.",
+      "Audio file is empty.",
+      null,
+      null,
+      5
+    ],
+    "audioSizeError": [
+      "Audio file exceeds the 5 MB limit.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      5
+    ],
+    "audioReadError": [
+      "Error reading audio file.",
+      "Error reading audio file.",
+      null,
+      null,
+      5
+    ],
+    "errorEmptyFile": [
+      "The file is empty. Select a valid file.",
+      "The file is empty. Select a valid file.",
+      null,
+      null,
+      5
+    ],
+    "galleryDescriptionPlaceholder": [
+      "Image description...",
+      "Image description...",
+      null,
+      null,
+      5
+    ],
+    "galleryMaxReached": [
+      "Maximum {{max}} images in the gallery.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      5
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "Uploading {{total}} photo(s)...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      5
+    ],
+    "photoUploading": [
+      "Uploading photo...",
+      "Uploading photo...",
+      null,
+      null,
+      5
+    ],
+    "replaceImage": [
+      "Change photo",
+      "Change photo",
+      null,
+      null,
+      5
+    ],
+    "galleryDescriptionSaveFailed": [
+      "Error saving description",
+      "Error saving description",
+      null,
+      null,
+      5
+    ],
+    "galleryDescriptionSaved": [
+      "Description saved",
+      "Description saved",
+      null,
+      null,
+      5
+    ],
+    "currentMusic": [
+      "Selected music",
+      "Selected music",
+      null,
+      null,
+      5
+    ],
+    "removeMusic": [
+      "Remove music",
+      "Remove music",
+      null,
+      null,
+      5
+    ],
+    "previewing": [
+      "Playing...",
+      "Playing...",
+      null,
+      null,
+      5
+    ],
+    "preview": [
+      "Preview",
+      "Preview",
+      null,
+      null,
+      5
+    ],
+    "select": [
+      "Select",
+      "Select",
+      null,
+      null,
+      5
+    ],
+    "selected": [
+      "Selected",
+      "Selected",
+      null,
+      null,
+      5
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +755,27 @@
     "pdfTableCompanions": "Acomps",
     "pdfTableDiet": "Dieta",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Admin",
+      "Wedingo · Admin",
+      null,
+      null,
+      5
+    ],
+    "viewInvitation": [
+      "View invitation",
+      "View invitation",
+      null,
+      null,
+      5
+    ],
+    "logout": [
+      "Log out",
+      "Log out",
+      null,
+      null,
+      5
+    ]
   },
   "panel": {
     "confirmed": "Confirmats",
@@ -384,7 +804,13 @@
     "confirms": "Confirmen",
     "declines": "Declinen",
     "pending": "Pendents",
-    "visits_one": "1 visit",
+    "visits_one": [
+      "1 visit",
+      "1 visit",
+      null,
+      null,
+      5
+    ],
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -405,7 +831,13 @@
     "total": "{{count}} en total",
     "page": "{{current}} / {{total}}",
     "attendingValue": "Sí",
-    "notAttendingValue": "No",
+    "notAttendingValue": [
+      "No",
+      "No",
+      null,
+      null,
+      5
+    ],
     "noResultsFilter": "No es van trobar resultats amb eixe filtre.",
     "noResults": "Encara no hi ha respostes d'assistència.",
     "exportPdf": "Exportar PDF",
@@ -417,9 +849,27 @@
     "generateMessage": "Generar un altre missatge",
     "copyMessage": "Copiar missatge",
     "shareVia": "Compartir per",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      5
+    ],
+    "telegram": [
+      "Telegram",
+      "Telegram",
+      null,
+      null,
+      5
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      5
+    ],
     "print": "Imprimir",
     "printPdf": "Imprimir / Guardar PDF",
     "linkCopied": "Enllaç copiat.",
@@ -448,7 +898,13 @@
     "rightsHint": "S'obrirà el teu client de correu amb una plantilla predefinida. També pots escriure a adriancl2001@gmail.com.",
     "ccpaTitle": "CCPA / CPRA (Califòrnia)",
     "ccpaText": "Wedingo no ven dades personals. Les dades recollides s'usen exclusivament per a la gestió de la invitació. Si eres resident a Califòrnia, tens dret a sol·licitar l'eliminació de les teues dades i a no ser discriminat per exercir els teus drets.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      5
+    ],
     "appDescription": "Aplicació web per a la gestió d'invitacions de boda.",
     "copyright": "© {{year}} Adrián Carrasco López. Tots els drets reservats.",
     "deleteEmailSubject": "Sol·licitud d'eliminació de dades - Wedingo",
@@ -518,24 +974,78 @@
     "deleteFailed": "No es va poder eliminar la invitació. Torna-ho a intentar.",
     "configLoadFailed": "No es va poder carregar la configuració. Revisa la connexió i torna-ho a intentar.",
     "invalidLink": "L'enllaç d'invitació no és vàlid.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "Accommodation info cannot exceed 2000 characters.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      5
+    ],
+    "menuTextoTooLong": [
+      "Menu description cannot exceed 2000 characters.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      5
+    ],
+    "uploadImageFailed": [
+      "Could not process the image. Try another one.",
+      "Could not process the image. Try another one.",
+      null,
+      null,
+      5
+    ],
+    "readImageFailed": [
+      "Could not read the image file.",
+      "Could not read the image file.",
+      null,
+      null,
+      5
+    ],
+    "encryptFailed": [
+      "Image encryption failed.",
+      "Image encryption failed.",
+      null,
+      null,
+      5
+    ],
+    "imageTooLarge": [
+      "The image is too large even after compression.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      5
+    ],
+    "fileEmpty": [
+      "The file is empty. Select a valid file.",
+      "The file is empty. Select a valid file.",
+      null,
+      null,
+      5
+    ]
   },
   "superadmin": {
     "tabs": {
       "dashboard": "Panell",
       "invitations": "Invitacions",
-      "tokens": "Tokens",
+      "tokens": [
+        "Tokens",
+        "Tokens",
+        null,
+        null,
+        5
+      ],
       "session": "Sessió",
       "compliance": "Compliment",
       "data": "Datos"
     },
-    "superadmin": "Superadmin",
+    "superadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      5
+    ],
     "controlPanel": "Panell de control",
     "managePlatform": "Gestiona la plataforma Wedingo",
     "dashboardLoading": "Carregant estadístiques...",
@@ -561,7 +1071,13 @@
     "invitationsCount": "{{count}} invitacions · {{size}} ocupats",
     "noResultsFilter": "No es van trobar invitacions amb eixe criteri.",
     "noInvitations": "No hi ha invitacions encara.",
-    "tableToken": "Token",
+    "tableToken": [
+      "Token",
+      "Token",
+      null,
+      null,
+      5
+    ],
     "tableTheme": "Tema",
     "tableDate": "Data boda",
     "tableActions": "Accions",
@@ -587,15 +1103,45 @@
     "tokenRevokeError": "No es va poder revocar el token.",
     "tokenCleanError": "No es van poder netejar els tokens.",
     "tokenLoadError": "No es van poder carregar els tokens.",
-    "accountEmail": "Email: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountEmail": [
+      "Email: {{email}}",
+      "Email: {{email}}",
+      null,
+      null,
+      5
+    ],
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      5
+    ],
     "sessionActive": "Activa",
     "sessionInactive": "Inactiva",
     "sessionLabel": "Sessió local: {{status}}",
     "sessionType": "Tipus: {{type}}",
-    "sessionTypeSuperadmin": "Superadmin",
-    "sessionTypeSetup": "Setup",
-    "sessionTypeAdmin": "Admin",
+    "sessionTypeSuperadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      5
+    ],
+    "sessionTypeSetup": [
+      "Setup",
+      "Setup",
+      null,
+      null,
+      5
+    ],
+    "sessionTypeAdmin": [
+      "Admin",
+      "Admin",
+      null,
+      null,
+      5
+    ],
     "sessionExpires": "Expira: {{date}}",
     "logoutButton": "Tancar sessió",
     "firebaseAccount": "Per a gestionar el teu compte de superadmin, usa la consola de Firebase:",
@@ -615,10 +1161,22 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Token",
+        "Token",
+        null,
+        null,
+        5
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVPs",
+        "RSVPs",
+        null,
+        null,
+        5
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +1194,20 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "Email",
+      "Email",
+      null,
+      null,
+      5
+    ],
+    "passwordLabel": [
+      "Password",
+      "Password",
+      null,
+      null,
+      5
+    ]
   },
   "compliance": {
     "title": "Registre d'activitats de tractament (Art. 30 GDPR)",
@@ -653,31 +1223,61 @@
     "row1Basis": "Consentiment (Art. 6.1.a GDPR)",
     "row1Purpose": "Crear i personalitzar invitació de boda",
     "row1Retention": "Mentre el compte estiga actiu",
-    "row1Recipients": "Google Cloud (Firestore, hosting)",
+    "row1Recipients": [
+      "Google Cloud (Firestore, hosting)",
+      "Google Cloud (Firestore, hosting)",
+      null,
+      null,
+      5
+    ],
     "row2Activity": "Confirmació d'assistència (RSVP)",
     "row2Data": "Nom del convidat, assistència (sí/no), selecció de menú, al·lèrgies, dades de salut",
     "row2Basis": "Consentiment (Art. 6.1.a, 9.2.a GDPR)",
     "row2Purpose": "Gestionar llista de convidats i menú",
     "row2Retention": "12 mesos després de l'esdeveniment",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      5
+    ],
     "row3Activity": "Pujada d'imatges",
     "row3Data": "Fotos de boda (xifrades AES-256-GCM)",
     "row3Basis": "Consentiment (Art. 6.1.a GDPR)",
     "row3Purpose": "Galeria de fotos en la invitació",
     "row3Retention": "12 mesos després de l'esdeveniment",
-    "row3Recipients": "Google Cloud (Firestore subcollection)",
+    "row3Recipients": [
+      "Google Cloud (Firestore subcollection)",
+      "Google Cloud (Firestore subcollection)",
+      null,
+      null,
+      5
+    ],
     "row4Activity": "Autenticació i sessions",
     "row4Data": "Token de sessió, nom d'usuari admin",
     "row4Basis": "Interés legítim (Art. 6.1.f GDPR)",
     "row4Purpose": "Controlar accés al panell d'administració",
     "row4Retention": "Duració de la sessió",
-    "row4Recipients": "Google Cloud (Firestore sessions)",
+    "row4Recipients": [
+      "Google Cloud (Firestore sessions)",
+      "Google Cloud (Firestore sessions)",
+      null,
+      null,
+      5
+    ],
     "row5Activity": "Auditoria de superadmin",
     "row5Data": "Accions de superadmin, tokens usats, invitacions eliminades",
     "row5Basis": "Obligació legal (Art. 6.1.c GDPR)",
     "row5Purpose": "Registre d'activitats administratives",
     "row5Retention": "3 anys",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      5
+    ],
     "internationalTitle": "Transferències internacionals",
     "internationalText": "Les dades s'emmagatzemen en servidors de Google Cloud a la regió eur3 (Frankfurt, Alemanya). Google LLC (EUA) actua com a encarregat del tractament baix DPA conforme a l'Art. 28 GDPR. Les transferències als EUA s'emparen en:",
     "scc": "Clàusules Contractuals Tipus (SCC) - Decisió d'Execució 2021/914",
@@ -691,86 +1291,488 @@
     "measureSuperadmin": "Superadmin protegit per Firebase Authentication + ruta oculta"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "Accessibility",
+      "Accessibility",
+      null,
+      null,
+      5
+    ],
+    "close": [
+      "Close",
+      "Close",
+      null,
+      null,
+      5
+    ],
+    "fontSize": [
+      "Text size",
+      "Text size",
+      null,
+      null,
+      5
+    ],
+    "fontNormal": [
+      "Normal",
+      "Normal",
+      null,
+      null,
+      5
+    ],
+    "fontLarge": [
+      "Large",
+      "Large",
+      null,
+      null,
+      5
+    ],
+    "fontExtraLarge": [
+      "Extra large",
+      "Extra large",
+      null,
+      null,
+      5
+    ],
+    "lineSpacing": [
+      "Line spacing",
+      "Line spacing",
+      null,
+      null,
+      5
+    ],
+    "lineNormal": [
+      "Normal",
+      "Normal",
+      null,
+      null,
+      5
+    ],
+    "lineWide": [
+      "Wide",
+      "Wide",
+      null,
+      null,
+      5
+    ],
+    "lineVeryWide": [
+      "Very wide",
+      "Very wide",
+      null,
+      null,
+      5
+    ],
+    "highContrast": [
+      "High contrast",
+      "High contrast",
+      null,
+      null,
+      5
+    ],
+    "reducedMotion": [
+      "Reduce motion",
+      "Reduce motion",
+      null,
+      null,
+      5
+    ],
+    "dyslexiaFont": [
+      "OpenDyslexic font",
+      "OpenDyslexic font",
+      null,
+      null,
+      5
+    ],
+    "moreSpacing": [
+      "More letter spacing",
+      "More letter spacing",
+      null,
+      null,
+      5
+    ],
+    "underlineLinks": [
+      "Underline all links",
+      "Underline all links",
+      null,
+      null,
+      5
+    ],
+    "bigCursor": [
+      "Big cursor",
+      "Big cursor",
+      null,
+      null,
+      5
+    ],
+    "desaturate": [
+      "Grayscale",
+      "Grayscale",
+      null,
+      null,
+      5
+    ],
+    "strongFocus": [
+      "Visible focus indicators",
+      "Visible focus indicators",
+      null,
+      null,
+      5
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "No music",
+      "No music",
+      null,
+      null,
+      5
+    ],
+    "loadError": [
+      "Error loading",
+      "Error loading",
+      null,
+      null,
+      5
+    ],
+    "label": [
+      "Music",
+      "Music",
+      null,
+      null,
+      5
+    ],
+    "soundCloudNote": [
+      "SoundCloud track — open to play",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      5
+    ],
+    "openInSoundCloud": [
+      "Open in SoundCloud",
+      "Open in SoundCloud",
+      null,
+      null,
+      5
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "Preparing print…",
+      "Preparing print…",
+      null,
+      null,
+      5
+    ],
+    "couplePhoto": [
+      "Couple photo",
+      "Couple photo",
+      null,
+      null,
+      5
+    ],
+    "godparentsText": [
+      "With the blessing of their godparents",
+      "With the blessing of their godparents",
+      null,
+      null,
+      5
+    ],
+    "dateAndPlace": [
+      "Date and venue",
+      "Date and venue",
+      null,
+      null,
+      5
+    ],
+    "celebrationTime": [
+      "Ceremony time:",
+      "Ceremony time:",
+      null,
+      null,
+      5
+    ],
+    "viewInGoogleMaps": [
+      "View location in Google Maps",
+      "View location in Google Maps",
+      null,
+      null,
+      5
+    ],
+    "celebrationMessage": [
+      "We look forward to sharing this special moment with you.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      5
+    ],
+    "transport": [
+      "Transport",
+      "Transport",
+      null,
+      null,
+      5
+    ],
+    "aboutGuests": [
+      "About the guests",
+      "About the guests",
+      null,
+      null,
+      5
+    ],
+    "scheduleTitle": [
+      "Wedding schedule",
+      "Wedding schedule",
+      null,
+      null,
+      5
+    ],
+    "scheduleFallback": [
+      "The detailed schedule will be shared soon.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      5
+    ],
+    "dressCode": [
+      "Dress code",
+      "Dress code",
+      null,
+      null,
+      5
+    ],
+    "dressCodeFallback": [
+      "Will be communicated later.",
+      "Will be communicated later.",
+      null,
+      null,
+      5
+    ],
+    "aboutKids": [
+      "About children",
+      "About children",
+      null,
+      null,
+      5
+    ],
+    "ourStory": [
+      "Our story",
+      "Our story",
+      null,
+      null,
+      5
+    ],
+    "storyStarted": [
+      "How it all began",
+      "How it all began",
+      null,
+      null,
+      5
+    ],
+    "storyFallback": [
+      "The story will be shared soon.",
+      "The story will be shared soon.",
+      null,
+      null,
+      5
+    ],
+    "gifts": [
+      "Gifts",
+      "Gifts",
+      null,
+      null,
+      5
+    ],
+    "bestGift": [
+      "Your presence is the best gift",
+      "Your presence is the best gift",
+      null,
+      null,
+      5
+    ],
+    "giftsFallback": [
+      "Gift information will be shared soon.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      5
+    ],
+    "bankDetails": [
+      "Bank details",
+      "Bank details",
+      null,
+      null,
+      5
+    ],
+    "accommodation": [
+      "Accommodation",
+      "Accommodation",
+      null,
+      null,
+      5
+    ],
+    "whereToStay": [
+      "Where to stay",
+      "Where to stay",
+      null,
+      null,
+      5
+    ],
+    "accommodationFallback": [
+      "Accommodation information will be shared soon.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      5
+    ],
+    "footer": [
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      5
+    ],
+    "closeWindow": [
+      "Close window",
+      "Close window",
+      null,
+      null,
+      5
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": [
+      "Move up",
+      "Move up",
+      null,
+      null,
+      5
+    ],
+    "moveDown": [
+      "Move down",
+      "Move down",
+      null,
+      null,
+      5
+    ],
+    "title": [
+      "Order & visibility",
+      "Order & visibility",
+      null,
+      null,
+      5
+    ],
+    "help": [
+      "Drag to reorder, use the buttons to move, and toggle each section on or off.",
+      "Drag to reorder, use the buttons to move, and toggle each section on or off.",
+      null,
+      null,
+      5
+    ]
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "Select language",
+      "Select language",
+      null,
+      null,
+      5
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 companion",
+      "1 companion",
+      null,
+      null,
+      5
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "Spain",
+      "Spain",
+      null,
+      null,
+      5
+    ],
+    "westernEurope": [
+      "Western Europe",
+      "Western Europe",
+      null,
+      null,
+      5
+    ],
+    "nordicEurope": [
+      "Nordic Europe",
+      "Nordic Europe",
+      null,
+      null,
+      5
+    ],
+    "centralEurope": [
+      "Central Europe",
+      "Central Europe",
+      null,
+      null,
+      5
+    ],
+    "southernEurope": [
+      "Southern Europe / Balkans",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      5
+    ],
+    "easternEurope": [
+      "Eastern Europe / Caucasus",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      5
+    ],
+    "eastAsia": [
+      "East Asia",
+      "East Asia",
+      null,
+      null,
+      5
+    ],
+    "southAsia": [
+      "South Asia",
+      "South Asia",
+      null,
+      null,
+      5
+    ],
+    "southeastAsia": [
+      "Southeast Asia",
+      "Southeast Asia",
+      null,
+      null,
+      5
+    ],
+    "centralAsia": [
+      "Central Asia / Middle East",
+      "Central Asia / Middle East",
+      null,
+      null,
+      5
+    ],
+    "africa": [
+      "Africa",
+      "Africa",
+      null,
+      null,
+      5
+    ],
+    "americas": [
+      "Americas",
+      "Americas",
+      null,
+      null,
+      5
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +1789,616 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": [
+      "Changelog",
+      "Changelog",
+      null,
+      null,
+      5
+    ],
+    "close": [
+      "Close",
+      "Close",
+      null,
+      null,
+      5
+    ]
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
+      "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
+      null,
+      null,
+      5
+    ],
+    "tokenInvalid": [
+      "The access code is not valid.",
+      "The access code is not valid.",
+      null,
+      null,
+      5
+    ],
+    "enterCode": [
+      "Enter the access code.",
+      "Enter the access code.",
+      null,
+      null,
+      5
+    ],
+    "codeVerified": [
+      "Code verified successfully.",
+      "Code verified successfully.",
+      null,
+      null,
+      5
+    ],
+    "codeVerifyError": [
+      "Could not verify the code. Please try again.",
+      "Could not verify the code. Please try again.",
+      null,
+      null,
+      5
+    ],
+    "enterUserAndCode": [
+      "Enter your username and the access code.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      5
+    ],
+    "invalidCredentials": [
+      "Incorrect username or code.",
+      "Incorrect username or code.",
+      null,
+      null,
+      5
+    ],
+    "codeUserMismatch": [
+      "The code does not match this user.",
+      "The code does not match this user.",
+      null,
+      null,
+      5
+    ],
+    "loginSuccess": [
+      "You have logged in successfully.",
+      "You have logged in successfully.",
+      null,
+      null,
+      5
+    ],
+    "loginError": [
+      "Could not verify the code. Please try again.",
+      "Could not verify the code. Please try again.",
+      null,
+      null,
+      5
+    ],
+    "confirmRequired": [
+      "Type CONFIRM to generate a new code.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      5
+    ],
+    "usernameRequired": [
+      "Enter your username first.",
+      "Enter your username first.",
+      null,
+      null,
+      5
+    ],
+    "usernameInvalid": [
+      "Username can only contain letters and numbers.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      5
+    ],
+    "usernameTooLong": [
+      "Username cannot exceed 50 characters.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      5
+    ],
+    "unauthorizedUser": [
+      "This user does not have permission to access here.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      5
+    ],
+    "tokenGenerated": [
+      "Code generated. You can now log in.",
+      "Code generated. You can now log in.",
+      null,
+      null,
+      5
+    ],
+    "tokenGenerateError": [
+      "Could not generate the code. Please try again.",
+      "Could not generate the code. Please try again.",
+      null,
+      null,
+      5
+    ],
+    "currentTokenRequired": [
+      "Enter the current access code to generate a new one.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      5
+    ],
+    "tokenRenewed": [
+      "New code generated. Copy it from the field above before saving.",
+      "New code generated. Copy it from the field above before saving.",
+      null,
+      null,
+      5
+    ],
+    "tokenRenewedAdmin": [
+      "Code renewed. This does not change the app password.",
+      "Code renewed. This does not change the app password.",
+      null,
+      null,
+      5
+    ],
+    "superadminNoPermissions": [
+      "This account does not have administration permissions.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      5
+    ],
+    "superadminWrongCredentials": [
+      "Incorrect credentials.",
+      "Incorrect credentials.",
+      null,
+      null,
+      5
+    ],
+    "superadminTooManyAttempts": [
+      "Too many attempts. Wait a moment and try again.",
+      "Too many attempts. Wait a moment and try again.",
+      null,
+      null,
+      5
+    ],
+    "superadminInvalidEmail": [
+      "The email format is not valid.",
+      "The email format is not valid.",
+      null,
+      null,
+      5
+    ],
+    "superadminLoginError": [
+      "Error logging in. Check your connection.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      5
+    ]
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": [
+      "Changes saved",
+      "Changes saved",
+      null,
+      null,
+      5
+    ]
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": [
+      "January",
+      "January",
+      null,
+      null,
+      5
+    ],
+    "2": [
+      "February",
+      "February",
+      null,
+      null,
+      5
+    ],
+    "3": [
+      "March",
+      "March",
+      null,
+      null,
+      5
+    ],
+    "4": [
+      "April",
+      "April",
+      null,
+      null,
+      5
+    ],
+    "5": [
+      "May",
+      "May",
+      null,
+      null,
+      5
+    ],
+    "6": [
+      "June",
+      "June",
+      null,
+      null,
+      5
+    ],
+    "7": [
+      "July",
+      "July",
+      null,
+      null,
+      5
+    ],
+    "8": [
+      "August",
+      "August",
+      null,
+      null,
+      5
+    ],
+    "9": [
+      "September",
+      "September",
+      null,
+      null,
+      5
+    ],
+    "10": [
+      "October",
+      "October",
+      null,
+      null,
+      5
+    ],
+    "11": [
+      "November",
+      "November",
+      null,
+      null,
+      5
+    ],
+    "12": [
+      "December",
+      "December",
+      null,
+      null,
+      5
+    ]
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": [
+      "Light themes",
+      "Light themes",
+      null,
+      null,
+      5
+    ],
+    "dark": [
+      "Dark themes",
+      "Dark themes",
+      null,
+      null,
+      5
+    ],
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      5
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": [
+      "Gluten",
+      "Gluten",
+      null,
+      null,
+      5
+    ],
+    "lactose": [
+      "Lactose",
+      "Lactose",
+      null,
+      null,
+      5
+    ],
+    "nuts": [
+      "Tree nuts",
+      "Tree nuts",
+      null,
+      null,
+      5
+    ],
+    "shellfish": [
+      "Shellfish",
+      "Shellfish",
+      null,
+      null,
+      5
+    ]
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "To our dearest",
+      "To our dearest",
+      null,
+      null,
+      5
+    ],
+    "tapHint": [
+      "Tap to open",
+      "Tap to open",
+      null,
+      null,
+      5
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      5
+    ],
+    "tapContinue": [
+      "Tap to continue",
+      "Tap to continue",
+      null,
+      null,
+      5
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "Our wedding",
+      "Our wedding",
+      null,
+      null,
+      5
+    ],
+    "eventTitle": [
+      "Wedding of {{names}}",
+      "Wedding of {{names}}",
+      null,
+      null,
+      5
+    ],
+    "placeUnknown": [
+      "Location to be confirmed",
+      "Location to be confirmed",
+      null,
+      null,
+      5
+    ],
+    "invitationText": [
+      "We look forward to celebrating this special moment with you.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      5
+    ],
+    "timeLabel": [
+      "Time:",
+      "Time:",
+      null,
+      null,
+      5
+    ],
+    "placeLabel": [
+      "Venue:",
+      "Venue:",
+      null,
+      null,
+      5
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "Elegant and bright, with golden accents.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      5
+    ],
+    "forest": [
+      "Natural and sober with soft greens.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      5
+    ],
+    "rose": [
+      "Warm and delicate, with pink hues.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      5
+    ],
+    "linen-soft": [
+      "Light and neutral, with a serene and timeless presence.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      5
+    ],
+    "blush-pearl": [
+      "Soft and romantic, with pearly pink tones.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      5
+    ],
+    "lavender-mist": [
+      "Fresh and serene, with lavender and mauve hues.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      5
+    ],
+    "champagne-bubble": [
+      "Bright and festive, with warm golden sparkles.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      5
+    ],
+    "amber-night": [
+      "Dark and elegant, with amber and gold highlights.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      5
+    ],
+    "onyx-gold": [
+      "Deep and sophisticated, with intense gold on dark background.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      5
+    ],
+    "midnight-royal": [
+      "Very dark blue with intense gold and solemn presence.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      5
+    ],
+    "burgundy-velvet": [
+      "Warm and enveloping, with red wine and golden sparkles.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      5
+    ],
+    "sapphire-night": [
+      "Deep blue with silver accents and serene presence.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      5
+    ],
+    "emerald-grove": [
+      "Deep natural green with golden and elegant hues.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      5
+    ],
+    "plum-twilight": [
+      "Intense purple with pink and romantic sparkles.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      5
+    ],
+    "rainbow": [
+      "Celebration of diverse love with rainbow colors.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      5
+    ],
+    "trans": [
+      "Blue, pink and white in tribute to the trans flag.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      5
+    ],
+    "nonbinary": [
+      "Yellow, white, purple and black for the non-binary flag.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      5
+    ],
+    "lesbian": [
+      "Orange, white and pink of the lesbian flag.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      5
+    ],
+    "bi": [
+      "Pink, purple and blue of the bi flag.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      5
+    ],
+    "pan": [
+      "Pink, yellow and blue of the pan flag.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      5
+    ],
+    "ace": [
+      "Black, gray, white and purple of the asexual flag.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      5
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "Welcome with play area",
+        "Welcome with play area",
+        null,
+        null,
+        5
+      ],
+      "supervised": [
+        "Welcome under supervision",
+        "Welcome under supervision",
+        null,
+        null,
+        5
+      ],
+      "adultOnly": [
+        "Adults only",
+        "Adults only",
+        null,
+        null,
+        5
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "No data",
+      "No data",
+      null,
+      null,
+      5
+    ],
+    "total": [
+      "total",
+      "total",
+      null,
+      null,
+      5
+    ],
+    "barChart": [
+      "Attendance bar chart",
+      "Attendance bar chart",
+      null,
+      null,
+      5
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

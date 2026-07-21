@@ -11,20 +11,172 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "Biboneka",
+      "Visible",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "Ikintu kitagenze neza",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "5d4f78a16b17135bfb375c3854878ddb",
+              "newlanguages_enxx_v1_2019q4.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "Nyamuneka ongera usubiremo page kugirango ugerageze.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "5d4f78a16b17135bfb375c3854878ddb",
+              "newlanguages_enxx_v1_2019q4.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "Ongera usubiremo urupapuro",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "5d4f78a16b17135bfb375c3854878ddb",
+              "newlanguages_enxx_v1_2019q4.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "Funga",
+        "Close",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "5d4f78a16b17135bfb375c3854878ddb",
+              "newlanguages_enxx_v1_2019q4.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "Jya ku bintu nyamukuru",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "Akabari k'ubuyobozi",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "5d4f78a16b17135bfb375c3854878ddb",
+              "newlanguages_enxx_v1_2019q4.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "Ubuyobozi",
+        "Administration",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "5d4f78a16b17135bfb375c3854878ddb",
+              "newlanguages_enxx_v1_2019q4.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "landing": {
@@ -55,8 +207,46 @@
     "todayIsWedding": "Uyu munsi ni ubukwe",
     "missing": "Hasigaye",
     "todayIsTheDay": "Uyu ni umunsi ukomeye!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": [
+      "Igipfukisho",
+      "Cover",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "eyebrow": [
+      "Ubukwe bwacu",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "Itariki n'ahantu",
@@ -106,8 +296,46 @@
     "next": "Ikurikira",
     "thumbnailAria": "Ifoto {{number}}",
     "thumbnailAlt": "Ishusho nto ya galeri",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "Ishusho yerekana ishusho, koresha urufunguzo rwimyambi kugirango uyobore",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "Ishusho nini",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "Kwemeza ukuhaba",
@@ -138,49 +366,638 @@
     "ageUnder14Warning": "Ufite munsi y'imyaka 14. Ukeneye uburenganzira bw'ababyeyi bawe cyangwa abakureze.",
     "parentalConsent": "Ababyeyi banjye cyangwa abandera bemera uruhare rwanjye",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "Andika izina ryawe kugirango wemeze ko uzitabira.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "5d4f78a16b17135bfb375c3854878ddb",
+              "newlanguages_enxx_v1_2019q4.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "Hitamo menu.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "5d4f78a16b17135bfb375c3854878ddb",
+              "newlanguages_enxx_v1_2019q4.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "Ugomba kwemera Politiki Yibanga.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "5d4f78a16b17135bfb375c3854878ddb",
+              "newlanguages_enxx_v1_2019q4.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "Andika itariki yawe y'amavuko.",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "5d4f78a16b17135bfb375c3854878ddb",
+              "newlanguages_enxx_v1_2019q4.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "Ufite munsi yimyaka 14. ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "5d4f78a16b17135bfb375c3854878ddb",
+              "newlanguages_enxx_v1_2019q4.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "Ugomba kwemera gutunganya amakuru yubuzima bwawe.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "5d4f78a16b17135bfb375c3854878ddb",
+              "newlanguages_enxx_v1_2019q4.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "Erekana byibuze menu imwe.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "5d4f78a16b17135bfb375c3854878ddb",
+              "newlanguages_enxx_v1_2019q4.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "Andika amazina ya bagenzi bawe.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "5d4f78a16b17135bfb375c3854878ddb",
+              "newlanguages_enxx_v1_2019q4.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "Ntushobora kwinjiza amazina menshi kurenza abasangirangendo.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "5d4f78a16b17135bfb375c3854878ddb",
+              "newlanguages_enxx_v1_2019q4.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "Igiteranyo cyibikubiyemo ntibishobora kurenga umubare wabagenzi.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "5d4f78a16b17135bfb375c3854878ddb",
+              "newlanguages_enxx_v1_2019q4.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "Urakoze, {{izina}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "Urakoze, {{izina}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "Ntabwo twashoboye kubika igisubizo cyawe. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "Uzi neza ko ushaka gukuraho igisubizo cyawe?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "Igisubizo cyawe cyakuweho.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "Ntushobora gukuraho igisubizo cyawe. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "Siba ibisubizo byose byabitabiriye? ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "Inyandiko zabitabye zahanaguwe.",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "Ntushobora gukuraho inyandiko zabitabye.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "Basangirangendo",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "Abantu",
+      "People",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountHint": [
+      "Nabantu bangahe kuri buri cyiciro ({{rusange}} yose)",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "Amazina y'abashyitsi",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "Andika izina ryambere nizina rya buri mugenzi wawe (max {{kubara}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "Izina1 Izina1, Izina2 Izina2 ...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "Irimo gupakira ubutumire...",
     "notFoundTitle": "Ubutumire ntibubashije kuboneka",
     "notFoundText": "Ntago twabonye ubutumire kuri uyu murongo. Niba wibwira ko ari ikosa, vugana n'abakira.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Kora kandi usangize ubutumire bwawe bw'ubukwe bwihariye.",
     "emptyDescription": "Menyesha amakuru y'ubutumire bwawe, sangiza umurongo wihariye n'abashyitsi bawe kandi wakire ibyemezo by'ukuhaba kwabo.",
     "createLink": "Kora ubutumire",
     "privacyPolicy": "Politiki y'Ibanga",
     "terms": "Amategeko",
     "legalNotice": "Itangazo ry'Amategeko",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "Ntushobora kumenya aha hantu.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "Ntushobora gupakira ikarita.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "Umuhuzabikorwa: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "Ikarita yerekana ahabigenewe.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "Ikibanza cyashyizweho",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "Irimo gupakira ubutumire",
@@ -308,28 +1125,427 @@
     "galleryUploadFailed": "Ntibyashobotse gushyira amafoto.",
     "noValidFiles": "Nta dosiye yemewe. Ntarenga 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "Kuramo dosiye y'amajwi kugirango ukine ku gifuniko (MP3, WAV, OGG, M4A - max 5 MB).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "Kuramo dosiye y'amajwi",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG cyangwa M4A - max 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "Imiterere y'amajwi ntabwo ishyigikiwe. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "Idosiye y'amajwi irimo ubusa.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "Idosiye y'amajwi irenze 5 MB.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "Ikosa ryo gusoma dosiye.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "Idosiye irimo ubusa. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "Ibisobanuro by'ishusho ...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "Ntarengwa {{max}} amashusho mubitabo.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "Gukuramo {{byose}} ifoto (s) ...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "Gukuramo ifoto ...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "Hindura ifoto",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "Ikosa ryo kubika ibisobanuro",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "Ibisobanuro byakijijwe",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "Umuziki watoranijwe",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "Kuraho umuziki",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "Gukina ...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "Imbere",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "Hitamo",
+      "Select",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "selected": [
+      "Byahiswemo",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1569,66 @@
     "pdfTableCompanions": "Abaherekeza",
     "pdfTableDiet": "Indyo",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Umuyobozi",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "Reba ubutumire",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "Sohoka",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "Byemewe",
@@ -384,7 +1657,26 @@
     "confirms": "Baremeza",
     "declines": "Barega",
     "pending": "Birategereje",
-    "visits_one": "1 visit",
+    "visits_one": [
+      "Gusura 1",
+      "1 visit",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +1709,66 @@
     "generateMessage": "Kora ubundi butumwa",
     "copyMessage": "Koporora ubutumwa",
     "shareVia": "Sangiza ukoresheje",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "Telegaramu",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Capura",
     "printPdf": "Capura / Bika PDF",
     "linkCopied": "Umurongo wakoporowe.",
@@ -446,9 +1795,47 @@
     "deleteButton": "Saba gusibwa amakuru",
     "exportButton": "Kohereza amakuru yanjye",
     "rightsHint": "Umukiriya wawe wa imeyili azafunguka hamwe n'icyitegererezo cyateganyijwe. Urashobora no kwandikira adriancl2001@gmail.com.",
-    "ccpaTitle": "CCPA / CPRA (California)",
+    "ccpaTitle": [
+      "CCPA / CPRA (California)",
+      "CCPA / CPRA (California)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
     "ccpaText": "Wedingo ntabwo igurisha amakuru bwite. Amakuru yakusanyirijwe akoreshwa gusa mu micungire y'ubutumire. Niba uri umuturage wa California, ufite uburenganzira bwo gusaba gusibwa amakuru yawe no kutavangura kubera gukoresha uburenganzira bwawe.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Porogaramu y'urubuga rwo gucunga ubutumire bw'ubukwe.",
     "copyright": "© {{year}} Adrián Carrasco López. Uburenganzira bwose burubahirizwa.",
     "deleteEmailSubject": "Gusaba gusibwa amakuru - Wedingo",
@@ -518,13 +1905,146 @@
     "deleteFailed": "Ntibyashobotse gusiba ubutumire. Ongera ugerageze.",
     "configLoadFailed": "Ntibyashobotse gupakira igenamiterere. Reba umurongo w'ikoranabuhanga hanyuma wongere ugerageze.",
     "invalidLink": "Umurongo w'ubutumire ntiwemewe.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "Amakuru yo gucumbika ntashobora kurenga inyuguti 2000.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "Ibisobanuro bisobanura ntibishobora kurenga inyuguti 2000.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "Ntushobora gutunganya ishusho. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "Ntushobora gusoma dosiye yishusho.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "Guhisha amashusho byarananiranye.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "Ishusho nini cyane na nyuma yo kwikuramo.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "Idosiye irimo ubusa. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -535,7 +2055,26 @@
       "compliance": "Kubahiriza",
       "data": "Datos"
     },
-    "superadmin": "Superadmin",
+    "superadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
     "controlPanel": "Pani igenzura",
     "managePlatform": "Menyesha urubuga rwa Wedingo",
     "dashboardLoading": "Irimo gupakira ibarurishamibare...",
@@ -561,7 +2100,26 @@
     "invitationsCount": "{{count}} ubutumire · {{size}} byakoreshejwe",
     "noResultsFilter": "Nta butumire bwabonetse hamwe n'iryo shyungura.",
     "noInvitations": "Nta butumire buhari.",
-    "tableToken": "Token",
+    "tableToken": [
+      "Token",
+      "Token",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
     "tableTheme": "Insanganyamatsiko",
     "tableDate": "Itariki y'ubukwe",
     "tableActions": "Ibikorwa",
@@ -588,14 +2146,71 @@
     "tokenCleanError": "Ntibyashobotse gusukura token.",
     "tokenLoadError": "Ntibyashobotse gupakira token.",
     "accountEmail": "Imeyili: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Irakora",
     "sessionInactive": "Ntikora",
     "sessionLabel": "Isesiyo y'ahantu: {{status}}",
     "sessionType": "Ubwoko: {{type}}",
-    "sessionTypeSuperadmin": "Superadmin",
+    "sessionTypeSuperadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
     "sessionTypeSetup": "Igenamiterere",
-    "sessionTypeAdmin": "Admin",
+    "sessionTypeAdmin": [
+      "Umuyobozi",
+      "Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
     "sessionExpires": "Irarangira: {{date}}",
     "logoutButton": "Sohoka",
     "firebaseAccount": "Kugira ngo umenyeshe konti yawe ya superadmin, koresha konsoli ya Firebase:",
@@ -615,10 +2230,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Token",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "5d4f78a16b17135bfb375c3854878ddb",
+              "newlanguages_enxx_v1_2019q4.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVPs",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "5d4f78a16b17135bfb375c3854878ddb",
+              "newlanguages_enxx_v1_2019q4.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2289,46 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "Imeri",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "Ijambobanga",
+      "Password",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ]
   },
   "compliance": {
     "title": "Igitabo cy'ibikorwa byo gutunganya (Ingingo 30 GDPR)",
@@ -659,13 +2350,51 @@
     "row2Basis": "Uburenganzira (Ingingo 6.1.a, 9.2.a GDPR)",
     "row2Purpose": "Gucunga urutonde rw'abashyitsi na meni",
     "row2Retention": "Amezi 12 nyuma y'ibirori",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Igicu (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Gushyira amashusho",
     "row3Data": "Amafoto y'ubukwe (yabitswe mu ibanga na AES-256-GCM)",
     "row3Basis": "Uburenganzira (Ingingo 6.1.a GDPR)",
     "row3Purpose": "Galeri y'amafoto mu butumire",
     "row3Retention": "Amezi 12 nyuma y'ibirori",
-    "row3Recipients": "Google Cloud (Firestore subcollection)",
+    "row3Recipients": [
+      "Google Igicu (Subcollection ya Firestore)",
+      "Google Cloud (Firestore subcollection)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
     "row4Activity": "Kwemeza na sesiyo",
     "row4Data": "Token ya sesiyo, izina ry'ukoresha admin",
     "row4Basis": "Inyungu zemewe (Ingingo 6.1.f GDPR)",
@@ -677,7 +2406,26 @@
     "row5Basis": "Inshingano zemewe (Ingingo 6.1.c GDPR)",
     "row5Purpose": "Icyandiko cy'ibikorwa by'ubuyobozi",
     "row5Retention": "Imyaka 3",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Igicu (Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Kohereza mu mahanga",
     "internationalText": "Amakuru abikwa kuri seriveri za Google Cloud mu karere ka eur3 (Frankfurt, Ubudage). Google LLC (Amerika) ikora nk'utunganya amakuru munsi ya DPA hakurikijwe Ingingo 28 GDPR. Kohereza muri Amerika birinzwe na:",
     "scc": "Ingingo z'Amasezerano Asanzwe (SCC) - Icyemezo cyo Gushyira mu Bikorwa 2021/914",
@@ -691,86 +2439,1359 @@
     "measureSuperadmin": "Superadmin irinzwe na Firebase Authentication + inzira yihishe"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "Kuboneka",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Funga",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "fontSize": [
+      "Ingano yinyandiko",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "Bisanzwe",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "fontLarge": [
+      "Kinini",
+      "Large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "fontExtraLarge": [
+      "Kinini cyane",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "Umwanya",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "Bisanzwe",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "lineWide": [
+      "Mugari",
+      "Wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "lineVeryWide": [
+      "Mugari cyane",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "Itandukaniro ryinshi",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "Mugabanye icyerekezo",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "Gufungura imyandikire",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "Umwanya w'inyuguti",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "Shyira umurongo ku murongo wose",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "Indanga nini",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "Icyatsi",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "Ibipimo bigaragara",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "Nta muziki",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "Gukuramo amakosa",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "Umuziki",
+      "Music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "soundCloudNote": [
+      "Ijwi ryijwi - fungura gukina",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "Fungura muri SoundCloud",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "Gutegura icapiro…",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "Ifoto yabashakanye",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "Numugisha wababyeyi babo",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "Itariki n'aho bizabera",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "Igihe cy'imihango:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Reba ahantu muri Ikarita ya Google",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "Dutegereje kuzabagezaho uyu mwanya udasanzwe.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "Ubwikorezi",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutGuests": [
+      "Ibyerekeye abashyitsi",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "Gahunda y'ubukwe",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "Gahunda irambuye izasangirwa vuba.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "Imyambarire",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "Bizamenyeshwa nyuma.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "Ibyerekeye abana",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "Amateka yacu",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "Ukuntu byose byatangiye",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "Inkuru izasangirwa vuba.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "Impano",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "Kubaho kwawe nimpano nziza",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "Impano amakuru azasangirwa vuba.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "Ibisobanuro bya banki",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "Amacumbi",
+      "Accommodation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "whereToStay": [
+      "Aho kuguma",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "Amakuru yo gucumbika azasangirwa vuba.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · Politiki Yibanga kuri wedingo-6c26a.web.app",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "Funga idirishya",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": [
+      "Zamuka",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "Manuka hepfo",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "title": [
+      "Tegeka & kugaragara",
+      "Order & visibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "help": [
+      "Kurura kuri reorder, koresha buto kugirango wimuke, hanyuma uhindure buri gice kuri cyangwa kizimye.",
+      "Drag to reorder, use the buttons to move, and toggle each section on or off.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ]
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "Hitamo ururimi",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "Mugenzi 1",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "Espanye",
+      "Spain",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "westernEurope": [
+      "Uburayi bw'Uburengerazuba",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "Uburayi bw'Amajyaruguru",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "Uburayi bwo hagati",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "Uburayi bw'Amajyepfo / Balkans",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "Uburayi bw'Iburasirazuba / Caucase",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "Aziya y'Uburasirazuba",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "Aziya yepfo",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "Aziya y'Amajyepfo",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "Aziya yo hagati / Uburasirazuba bwo hagati",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "Afurika",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "Amerika",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +3808,1708 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": [
+      "Changelog",
+      "Changelog",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Funga",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ]
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "Hariho isomo rikora kuri ubu butumire. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "Kode yo kwinjira ntabwo yemewe.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "Injira kode yo kwinjira.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "Kode yagenzuwe neza.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "Ntushobora kugenzura kode. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "Injiza izina ukoresha hamwe na kode yo kwinjira.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "Izina ryukoresha cyangwa code.",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "Kode ntabwo ihuye nuyu mukoresha.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "Winjiye neza.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "Ntushobora kugenzura kode. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "Andika ICYEMEZO kugirango ubyare kode nshya.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "Banza wandike izina ukoresha.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "Izina ryukoresha rishobora kubamo gusa inyuguti nimibare.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "Izina ryukoresha ntirishobora kurenga inyuguti 50.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "Uyu ukoresha ntabwo afite uburenganzira bwo kugera hano.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "Kode yatanzwe. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "Ntushobora kubyara kode. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "Injira kode igezweho kugirango ubyare bundi bushya.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "Kode nshya yatanzwe. ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "Kode yavuguruwe. ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "Iyi konti ntabwo ifite uburenganzira bwo kuyobora.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "Ibyangombwa bitari byo.",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "Kugerageza cyane. ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "Imiterere ya imeri ntabwo yemewe.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "Ikosa ryinjira. Reba aho uhurira.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": [
+      "Impinduka zabitswe",
+      "Changes saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ]
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": [
+      "Mutarama",
+      "January",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "2": [
+      "Gashyantare",
+      "February",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "3": [
+      "Werurwe",
+      "March",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "4": [
+      "Mata",
+      "April",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "5": [
+      "Gicurasi",
+      "May",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "6": [
+      "Kamena",
+      "June",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "7": [
+      "Nyakanga",
+      "July",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "8": [
+      "Kanama",
+      "August",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "9": [
+      "Nzeri",
+      "September",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "10": [
+      "Ukwakira",
+      "October",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "11": [
+      "Ugushyingo",
+      "November",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "12": [
+      "Kigarama",
+      "December",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": [
+      "Umutwe",
+      "Light themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "dark": [
+      "Insanganyamatsiko zijimye",
+      "Dark themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "lgbtiq": [
+      "LGTBIQ +",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": [
+      "Gluten",
+      "Gluten",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "lactose": [
+      "Lactose",
+      "Lactose",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "nuts": [
+      "Imbuto",
+      "Tree nuts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "shellfish": [
+      "Igikonoshwa",
+      "Shellfish",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ]
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "Abakunzi bacu",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "Kanda kugirango ufungure",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "Kanda kugirango ukomeze",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "Ubukwe bwacu",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "Ubukwe bwa {{amazina}}",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "Ahantu hemezwa",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "Dutegereje kuzishimira uyu mwanya udasanzwe hamwe nawe.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "Igihe:",
+      "Time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "placeLabel": [
+      "Ikibanza:",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "Nibyiza kandi byiza, hamwe na zahabu.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "Kamere kandi ituje hamwe nicyatsi kibisi.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "Igishyushye kandi cyoroshye, gifite ibara ryijimye.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "Umucyo kandi utabogamye, hamwe numutuzo kandi uhoraho.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "Byoroheje kandi byurukundo, hamwe na pearl tone.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "Gishya kandi ituje, hamwe na lavender na mauve hues.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "Umucyo no kwizihiza, hamwe na zahabu nziza.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "Umwijima kandi mwiza, hamwe na amber na zahabu.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "Byimbitse kandi bihanitse, hamwe na zahabu nyinshi inyuma yijimye.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "Ubururu bwijimye cyane hamwe na zahabu nini kandi ihari.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "Gishyushye no guhisha, hamwe na vino itukura hamwe na zahabu.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "Ubururu bwimbitse hamwe na feza hamwe no gutuza.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "Icyatsi kibisi cyimbitse gifite zahabu kandi nziza.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "Umutuku wijimye ufite ibara ryijimye kandi ryurukundo.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "Kwizihiza urukundo rutandukanye n'amabara y'umukororombya.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "Ubururu, umutuku n'umweru mugushimira ibendera rya trans.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "Umuhondo, umweru, umutuku n'umukara kubendera ritari binini.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "Icunga, cyera n'iroza ry'ibendera rya lesbiyani.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "Umutuku, umutuku n'ubururu bya bi bendera.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "Umutuku, umuhondo n'ubururu by'ibendera.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "Umukara, imvi, umweru nubururu bwibendera ridasanzwe.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "Murakaza neza hamwe n'ahantu ho gukinira",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "5d4f78a16b17135bfb375c3854878ddb",
+              "newlanguages_enxx_v1_2019q4.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "Murakaza neza mukurikiranwa",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "5d4f78a16b17135bfb375c3854878ddb",
+              "newlanguages_enxx_v1_2019q4.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "Abakuze gusa",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "5d4f78a16b17135bfb375c3854878ddb",
+              "newlanguages_enxx_v1_2019q4.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "Nta makuru",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "yose hamwe",
+      "total",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
+    "barChart": [
+      "Imbonerahamwe yo kwitabira",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "5d4f78a16b17135bfb375c3854878ddb",
+            "newlanguages_enxx_v1_2019q4.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

@@ -11,20 +11,133 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "Zichtbaar",
+      "Visible",
+      null,
+      null,
+      2
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "Er is iets misgegaan",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "1a7d3f5fe35a1a68b44a611c22004024",
+              "en_nl_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "Laad de pagina opnieuw om het opnieuw te proberen.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "1a7d3f5fe35a1a68b44a611c22004024",
+              "en_nl_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "Pagina opnieuw laden",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "1a7d3f5fe35a1a68b44a611c22004024",
+              "en_nl_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "Dichtbij",
+        "Close",
+        null,
+        null,
+        10
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "Ga naar de hoofdinhoud",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "Administratiebalk",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "1a7d3f5fe35a1a68b44a611c22004024",
+              "en_nl_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "Administratie",
+        "Administration",
+        null,
+        null,
+        2
+      ]
     }
   },
   "landing": {
@@ -56,7 +169,26 @@
     "missing": "Nog",
     "todayIsTheDay": "Vandaag is de grote dag!",
     "sectionLabel": "Omslag",
-    "eyebrow": "Our Wedding"
+    "eyebrow": [
+      "Onze bruiloft",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "Datum en locatie",
@@ -106,8 +238,46 @@
     "next": "Volgende",
     "thumbnailAria": "Foto {{number}}",
     "thumbnailAlt": "Thumbnail van galerijfoto",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "Afbeeldingengalerij, gebruik de pijltjestoetsen om te navigeren",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "Vergrote afbeelding",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "Aanwezigheidsbevestiging",
@@ -122,8 +292,20 @@
     "menuCarne": "Vlees",
     "menuPescado": "Vis",
     "menuVegano": "Veganistisch/Vegetarisch",
-    "postre": "Dessert",
-    "menuLabel": "Menu",
+    "postre": [
+      "Nagerecht",
+      "Dessert",
+      null,
+      null,
+      10
+    ],
+    "menuLabel": [
+      "Menu",
+      "Menu",
+      null,
+      null,
+      2
+    ],
     "allergiesLegend": "Allergieën en intoleranties",
     "allergiesPlaceholder": "Andere allergie (specificeer)",
     "allergiesHint": "Vermeld alleen voedselallergieën en -intoleranties. Voer geen ongevraagde medische informatie in.",
@@ -144,10 +326,86 @@
       "birthDateRequired": "Voer je geboortedatum in.",
       "ageUnder14": "Je bent jonger dan 14 jaar. Je hebt toestemming van je ouders of voogden nodig.",
       "healthConsentRequired": "Je moet toestemming geven voor de verwerking van je gezondheidsgegevens.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "menuHeadcountRequired": [
+        "Geef minimaal één menuoptie aan.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "1a7d3f5fe35a1a68b44a611c22004024",
+              "en_nl_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "Voer de namen van uw metgezellen in.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "1a7d3f5fe35a1a68b44a611c22004024",
+              "en_nl_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "U kunt niet meer namen invoeren dan metgezellen.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "1a7d3f5fe35a1a68b44a611c22004024",
+              "en_nl_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "De som van de menu-opties kan het aantal begeleiders niet overschrijden.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "1a7d3f5fe35a1a68b44a611c22004024",
+              "en_nl_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     },
     "successAttending": "Bedankt, {{name}}. Je aanwezigheid is geregistreerd.",
     "successNotAttending": "Bedankt, {{name}}. Het spijt ons dat je niet aanwezig kunt zijn.",
@@ -158,29 +416,244 @@
     "clearConfirm": "Alle aanwezigheidsreacties verwijderen? Deze actie kan niet ongedaan worden gemaakt.",
     "clearSuccess": "Aanwezigheidsregistratie gewist.",
     "clearError": "Kon aanwezigheidsregistratie niet wissen.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "companionsLabel": [
+      "Metgezellen",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "Mensen",
+      "People",
+      null,
+      null,
+      10
+    ],
+    "headcountHint": [
+      "Hoeveel personen voor elke optie ({{total}} totaal)",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "Namen van gasten",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "Schrijf de voor- en achternaam van elke begeleider (max. {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "Naam1 Achternaam1, Naam2 Achternaam2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "Uitnodiging laden...",
     "notFoundTitle": "Uitnodiging niet gevonden",
     "notFoundText": "We hebben geen uitnodiging gevonden met deze link. Als je denkt dat dit een fout is, neem dan contact op met de organisatoren.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Bruilofto",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Maak en deel je gepersonaliseerde trouwuitnodiging.",
     "emptyDescription": "Beheer de gegevens van je uitnodiging, deel een unieke link met je gasten en ontvang hun aanwezigheidsbevestigingen.",
     "createLink": "Uitnodiging maken",
     "privacyPolicy": "Privacybeleid",
     "terms": "Voorwaarden",
     "legalNotice": "Juridische kennisgeving",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "Kon deze plaats niet vinden.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "Kan de kaart niet laden.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "Coördinaten: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "Kaartvoorbeeld op de aangegeven locatie.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "Locatie geconfigureerd",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "Uitnodiging laden",
@@ -279,7 +752,13 @@
     "menuPescadoPlaceholder": "Beschrijf het vismenu...",
     "menuVeganoLabel": "Veganistisch/vegetarisch menu",
     "menuVeganoPlaceholder": "Beschrijf het veganistische menu...",
-    "postreLabel": "Dessert *",
+    "postreLabel": [
+      "Nagerecht *",
+      "Dessert *",
+      null,
+      null,
+      10
+    ],
     "postrePlaceholder": "Beschrijf het dessert",
     "menuRequiredText": "Verplicht: dessert en minstens één hoofdmenu.",
     "menuTextoPlaceholder": "Beschrijf het menu: voorgerecht, hoofdgerecht, dessert...",
@@ -308,28 +787,414 @@
     "galleryUploadFailed": "Foto's konden niet worden geüpload.",
     "noValidFiles": "Geen geldig bestand. Maximaal 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "Upload een audiobestand om op de hoes af te spelen (MP3, WAV, OGG, M4A — max. 5 MB).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "Audiobestand uploaden",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG of M4A — maximaal 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "Audioformaat niet ondersteund. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "Audiobestand is leeg.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "Audiobestand overschrijdt de limiet van 5 MB.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "Fout bij het lezen van het audiobestand.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "Het bestand is leeg. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "Afbeelding beschrijving...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "Maximaal {{max}} afbeeldingen in de galerij.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "{{totaal}} foto('s) uploaden...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "Foto uploaden...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "Foto wijzigen",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "Fout bij opslaan van beschrijving",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "Beschrijving opgeslagen",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "Geselecteerde muziek",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "Muziek verwijderen",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "Spelen...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "Voorbeeld",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "Selecteer",
+      "Select",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "selected": [
+      "Gekozen",
+      "Selected",
+      null,
+      null,
+      2
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1218,66 @@
     "pdfTableCompanions": "Begeleiders",
     "pdfTableDiet": "Dieet",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Weddingo · Beheerder",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "Bekijk uitnodiging",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "Uitloggen",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "Bevestigd",
@@ -417,9 +1339,53 @@
     "generateMessage": "Ander bericht genereren",
     "copyMessage": "Bericht kopiëren",
     "shareVia": "Delen via",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsAppen",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "Telegram",
+      "Telegram",
+      null,
+      null,
+      2
+    ],
+    "sms": [
+      "Sms",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Afdrukken",
     "printPdf": "Afdrukken / PDF opslaan",
     "linkCopied": "Link gekopieerd.",
@@ -448,7 +1414,26 @@
     "rightsHint": "Je e-mailclient wordt geopend met een vooraf gedefinieerd sjabloon. Je kunt ook schrijven naar adriancl2001@gmail.com.",
     "ccpaTitle": "CCPA / CPRA (Californië)",
     "ccpaText": "Wedingo verkoopt geen persoonsgegevens. De verzamelde gegevens worden uitsluitend gebruikt voor het beheer van de uitnodiging. Als je in Californië woont, heb je het recht om verwijdering van je gegevens aan te vragen en niet te worden gediscrimineerd voor het uitoefenen van je rechten.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Bruilofto",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Webapplicatie voor het beheer van trouwuitnodigingen.",
     "copyright": "© {{year}} Adrián Carrasco López. Alle rechten voorbehouden.",
     "deleteEmailSubject": "Verzoek tot gegevensverwijdering - Wedingo",
@@ -518,24 +1503,201 @@
     "deleteFailed": "Uitnodiging kon niet worden verwijderd. Probeer opnieuw.",
     "configLoadFailed": "Configuratie kon niet worden geladen. Controleer de verbinding en probeer opnieuw.",
     "invalidLink": "De uitnodigingslink is ongeldig.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "Accommodatie-informatie mag niet langer zijn dan 2000 tekens.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "Menubeschrijving mag niet langer zijn dan 2000 tekens.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "Kan de afbeelding niet verwerken. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "Kon het afbeeldingsbestand niet lezen.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "Afbeeldingscodering mislukt.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "De afbeelding is te groot, zelfs na compressie.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "Het bestand is leeg. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
-      "dashboard": "Dashboard",
+      "dashboard": [
+        "Dashboard",
+        "Dashboard",
+        null,
+        null,
+        2
+      ],
       "invitations": "Uitnodigingen",
-      "tokens": "Tokens",
+      "tokens": [
+        "Tokens",
+        "Tokens",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "1a7d3f5fe35a1a68b44a611c22004024",
+              "en_nl_2023q1.md"
+            ]
+          ]
+        ]
+      ],
       "session": "Sessie",
       "compliance": "Naleving",
       "data": "Datos"
     },
-    "superadmin": "Superadmin",
+    "superadmin": [
+      "Superbeheerder",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "controlPanel": "Configuratiescherm",
     "managePlatform": "Beheer het Wedingo-platform",
     "dashboardLoading": "Statistieken laden...",
@@ -561,7 +1723,26 @@
     "invitationsCount": "{{count}} uitnodigingen · {{size}} bezet",
     "noResultsFilter": "Geen uitnodigingen gevonden met dat criterium.",
     "noInvitations": "Nog geen uitnodigingen.",
-    "tableToken": "Token",
+    "tableToken": [
+      "Token",
+      "Token",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "tableTheme": "Thema",
     "tableDate": "Trouwdatum",
     "tableActions": "Acties",
@@ -588,14 +1769,109 @@
     "tokenCleanError": "Tokens konden niet worden opgeschoond.",
     "tokenLoadError": "Tokens konden niet worden geladen.",
     "accountEmail": "E-mail: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Actief",
     "sessionInactive": "Inactief",
     "sessionLabel": "Lokale sessie: {{status}}",
-    "sessionType": "Type: {{type}}",
-    "sessionTypeSuperadmin": "Superadmin",
-    "sessionTypeSetup": "Setup",
-    "sessionTypeAdmin": "Admin",
+    "sessionType": [
+      "Type: {{type}}",
+      "Type: {{type}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "sessionTypeSuperadmin": [
+      "Superbeheerder",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "sessionTypeSetup": [
+      "Installatie",
+      "Setup",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "sessionTypeAdmin": [
+      "Beheerder",
+      "Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "sessionExpires": "Verloopt: {{date}}",
     "logoutButton": "Uitloggen",
     "firebaseAccount": "Gebruik de Firebase-console om je superadmin-account te beheren:",
@@ -615,10 +1891,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Token",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "1a7d3f5fe35a1a68b44a611c22004024",
+              "en_nl_2023q1.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVP's",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "1a7d3f5fe35a1a68b44a611c22004024",
+              "en_nl_2023q1.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +1950,33 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "E-mail",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "Wachtwoord",
+      "Password",
+      null,
+      null,
+      2
+    ]
   },
   "compliance": {
     "title": "Register van verwerkingsactiviteiten (Art. 30 GDPR)",
@@ -653,31 +1992,126 @@
     "row1Basis": "Toestemming (Art. 6.1.a GDPR)",
     "row1Purpose": "Gepersonaliseerde trouwuitnodiging maken",
     "row1Retention": "Zolang de account actief is",
-    "row1Recipients": "Google Cloud (Firestore, hosting)",
+    "row1Recipients": [
+      "Google Cloud (Firestore, hosting)",
+      "Google Cloud (Firestore, hosting)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "row2Activity": "Aanwezigheidsbevestiging (RSVP)",
     "row2Data": "Naam gast, aanwezigheid (ja/nee), menukeuze, allergieën, gezondheidsgegevens",
     "row2Basis": "Toestemming (Art. 6.1.a, 9.2.a GDPR)",
     "row2Purpose": "Gastenlijst en menu beheren",
     "row2Retention": "12 maanden na het evenement",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Beeldupload",
     "row3Data": "Trouwfoto's (versleuteld AES-256-GCM)",
     "row3Basis": "Toestemming (Art. 6.1.a GDPR)",
     "row3Purpose": "Fotogalerij in de uitnodiging",
     "row3Retention": "12 maanden na het evenement",
-    "row3Recipients": "Google Cloud (Firestore subcollection)",
+    "row3Recipients": [
+      "Google Cloud (Firestore-subcollectie)",
+      "Google Cloud (Firestore subcollection)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "row4Activity": "Authenticatie en sessies",
     "row4Data": "Sessietoken, admin gebruikersnaam",
     "row4Basis": "Gerechtvaardigd belang (Art. 6.1.f GDPR)",
     "row4Purpose": "Toegang tot beheerpaneel controleren",
     "row4Retention": "Sessieduur",
-    "row4Recipients": "Google Cloud (Firestore sessions)",
+    "row4Recipients": [
+      "Google Cloud (Firestore-sessies)",
+      "Google Cloud (Firestore sessions)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "row5Activity": "Superadmin-audit",
     "row5Data": "Superadmin-acties, gebruikte tokens, verwijderde uitnodigingen",
     "row5Basis": "Wettelijke verplichting (Art. 6.1.c GDPR)",
     "row5Purpose": "Registratie van administratieve activiteiten",
     "row5Retention": "3 jaar",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Internationale overdrachten",
     "internationalText": "Gegevens worden opgeslagen op Google Cloud-servers in de regio eur3 (Frankfurt, Duitsland). Google LLC (VS) treedt op als verwerker onder een DPA conform Art. 28 GDPR. Overdrachten naar de VS worden gedekt door:",
     "scc": "Standaardcontractbepalingen (SCC) - Uitvoeringsbesluit 2021/914",
@@ -714,8 +2148,46 @@
     "noMusic": "Geen muziek",
     "loadError": "Fout bij laden",
     "label": "Muziek",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "soundCloudNote": [
+      "SoundCloud-nummer - open om te spelen",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "Openen in SoundCloud",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
     "preparing": "Afdruk voorbereiden…",
@@ -755,22 +2227,243 @@
     "label": "Taal selecteren"
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 metgezel",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "Spanje",
+      "Spain",
+      null,
+      null,
+      2
+    ],
+    "westernEurope": [
+      "West-Europa",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "Noords Europa",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "Midden-Europa",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "Zuid-Europa/Balkan",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "Oost-Europa / Kaukasus",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "Oost-Azië",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "Zuid-Azië",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "Zuidoost-Azië",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "Centraal-Azië / Midden-Oosten",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "Afrika",
+      "Africa",
+      null,
+      null,
+      2
+    ],
+    "americas": [
+      "Amerika",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} jaar",
@@ -824,75 +2517,820 @@
     "1": "Januari",
     "2": "Februari",
     "3": "Maart",
-    "4": "April",
+    "4": [
+      "april",
+      "April",
+      null,
+      null,
+      2
+    ],
     "5": "Mei",
     "6": "Juni",
     "7": "Juli",
     "8": "Augustus",
-    "9": "September",
+    "9": [
+      "september",
+      "September",
+      null,
+      null,
+      2
+    ],
     "10": "Oktober",
-    "11": "November",
-    "12": "December"
+    "11": [
+      "November",
+      "November",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "12": [
+      "December",
+      "December",
+      null,
+      null,
+      10
+    ]
   },
   "themeGroups": {
     "light": "Lichte thema's",
     "dark": "Donkere thema's",
-    "lgbtiq": "LGTBIQ+"
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
+    "gluten": [
+      "Gluten",
+      "Gluten",
+      null,
+      null,
+      2
+    ],
+    "lactose": [
+      "Lactose",
+      "Lactose",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "nuts": "Boomnoten",
     "shellfish": "Schaaldieren"
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "Aan onze liefsten",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "Tik om te openen",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "Tik om door te gaan",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "Onze bruiloft",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "Bruiloft van {{names}}",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "Locatie nog te bevestigen",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "Wij kijken ernaar uit om dit bijzondere moment met u te vieren.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "Tijd:",
+      "Time:",
+      null,
+      null,
+      10
+    ],
+    "placeLabel": [
+      "Locatie:",
+      "Venue:",
+      null,
+      null,
+      10
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "Elegant en helder, met gouden accenten.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "Natuurlijk en sober met zachte groentinten.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "Warm en delicaat, met roze tinten.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "Licht en neutraal, met een serene en tijdloze aanwezigheid.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "Zacht en romantisch, met parelmoerroze tinten.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "Fris en sereen, met lavendel- en mauve tinten.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "Helder en feestelijk, met warme gouden glitters.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "Donker en elegant, met amberkleurige en gouden accenten.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "Diep en verfijnd, met intens goud op een donkere achtergrond.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "Zeer donkerblauw met intens goud en plechtige aanwezigheid.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "Warm en omhullend, met rode wijn en gouden glitters.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "Diepblauw met zilveren accenten en serene aanwezigheid.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "Diep natuurlijk groen met gouden en elegante tinten.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "Intens paars met roze en romantische glitters.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "Viering van diverse liefde met regenboogkleuren.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "Blauw, roze en wit als eerbetoon aan de transvlag.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "Geel, wit, paars en zwart voor de niet-binaire vlag.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "Oranje, wit en roze van de lesbische vlag.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "Roze, paars en blauw van de bi-vlag.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "Roze, geel en blauw van de panvlag.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "Zwart, grijs, wit en paars van de aseksuele vlag.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "Welkom met speelruimte",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "1a7d3f5fe35a1a68b44a611c22004024",
+              "en_nl_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "Welkom onder begeleiding",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "1a7d3f5fe35a1a68b44a611c22004024",
+              "en_nl_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "Alleen volwassenen",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "1a7d3f5fe35a1a68b44a611c22004024",
+              "en_nl_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "Geen gegevens",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "totaal",
+      "total",
+      null,
+      null,
+      2
+    ],
+    "barChart": [
+      "Staafdiagram aanwezigheid",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "1a7d3f5fe35a1a68b44a611c22004024",
+            "en_nl_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

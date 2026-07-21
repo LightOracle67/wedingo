@@ -11,20 +11,172 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "Redzams",
+      "Visible",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "Kaut kas nogāja greizi",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "Lūdzu, atkārtoti ielādējiet lapu, lai mēģinātu vēlreiz.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "Pārlādēt lapu",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "Aizvērt",
+        "Close",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "Pāriet uz galveno saturu",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "Administrācijas josla",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "Administrācija",
+        "Administration",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "landing": {
@@ -55,8 +207,46 @@
     "todayIsWedding": "Šodien ir kāzas",
     "missing": "Atlikuši",
     "todayIsTheDay": "Šodien ir lielā diena!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": [
+      "Vāks",
+      "Cover",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eyebrow": [
+      "Mūsu kāzas",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "Datums un vieta",
@@ -106,8 +296,46 @@
     "next": "Nākamā",
     "thumbnailAria": "Foto {{number}}",
     "thumbnailAlt": "Galerijas sīktēls",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "Attēlu galerija, izmantojiet bulttaustiņus, lai pārvietotos",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "Palielināts attēls",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "Dalības apstiprinājums",
@@ -138,49 +366,638 @@
     "ageUnder14Warning": "Jūs esat jaunāks par 14 gadiem. Jums nepieciešama vecāku vai aizbildņu piekrišana.",
     "parentalConsent": "Mani vecāki vai aizbildņi piekrīt manai dalībai",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "Ievadiet savu vārdu, lai apstiprinātu dalību.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "Izvēlieties izvēlnes opciju.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "Jums ir jāpiekrīt Privātuma politikai.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "Ievadiet savu dzimšanas datumu.",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "Jūs esat jaunāks par 14 gadiem. ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "Jums ir jāpiekrīt savu veselības datu apstrādei.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "Norādiet vismaz vienu izvēlnes opciju.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "Ievadiet savu pavadoņu vārdus.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "Jūs nevarat ievadīt vairāk vārdu nekā pavadoņu.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "Izvēlnes opciju summa nedrīkst pārsniegt pavadoņu skaitu.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "Paldies, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "Paldies, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "Mēs nevarējām saglabāt jūsu atbildi. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "Vai tiešām vēlaties atsaukt savu atbildi?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "Jūsu atbilde ir atsaukta.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "Nevarēja atsaukt jūsu atbildi. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "Vai dzēst visas apmeklējumu atbildes? ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "Apmeklējuma uzskaite notīrīta.",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "Nevarēja notīrīt apmeklējuma ierakstus.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "Pavadoņi",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "Cilvēki",
+      "People",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountHint": [
+      "Cik cilvēku katrai opcijai (kopā {{total}})",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "Viesu vārdi",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "Ierakstiet katra pavadoņa vārdu un uzvārdu (maks. {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "Vārds1 Uzvārds1, Vārds2 Uzvārds2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "Ielādē ielūgumu…",
     "notFoundTitle": "Ielūgums nav atrasts",
     "notFoundText": "Mēs neatradām ielūgumu ar šo saiti. Ja domājat, ka tā ir kļūda, sazinieties ar saimniekiem.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Izveidojiet un kopīgojiet savu personalizēto kāzu ielūgumu.",
     "emptyDescription": "Pārvaldiet ielūguma datus, kopīgojiet unikālu saiti ar viesiem un saņemiet viņu apstiprinājumus.",
     "createLink": "Izveidot ielūgumu",
     "privacyPolicy": "Privātuma politika",
     "terms": "Noteikumi",
     "legalNotice": "Juridiskais paziņojums",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "Nevarēja atrast šo vietu.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "Nevarēja ielādēt karti.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "Koordinātas: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "Kartes priekšskatījums norādītajā vietā.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "Atrašanās vieta ir konfigurēta",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "Ielādē ielūgumu",
@@ -308,28 +1125,427 @@
     "galleryUploadFailed": "Neizdevās augšupielādēt fotoattēlus.",
     "noValidFiles": "Nav derīgu failu. Maksimums 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "Augšupielādējiet audio failu atskaņošanai uz vāka (MP3, WAV, OGG, M4A — ne vairāk kā 5 MB).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "Augšupielādējiet audio failu",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG vai M4A — ne vairāk kā 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "Audio formāts netiek atbalstīts. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "Audio fails ir tukšs.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "Audio fails pārsniedz 5 MB ierobežojumu.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "Kļūda, lasot audio failu.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "Fails ir tukšs. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "Attēla apraksts...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "Galerijā ne vairāk kā {{max}} attēli.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "Notiek {{total}} fotoattēla(-u) augšupielāde...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "Notiek fotoattēla augšupielāde...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "Mainīt fotoattēlu",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "Saglabājot aprakstu, radās kļūda",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "Apraksts saglabāts",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "Atlasīta mūzika",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "Noņemiet mūziku",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "Spēlē...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "Priekšskatījums",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "Izvēlieties",
+      "Select",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "selected": [
+      "Atlasīts",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1569,66 @@
     "pdfTableCompanions": "Pavadoņi",
     "pdfTableDiet": "Diēta",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Admin",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "Skatīt ielūgumu",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "Atteikties",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "Apstiprināts",
@@ -384,7 +1657,26 @@
     "confirms": "Apstiprina",
     "declines": "Atsakās",
     "pending": "Gaida",
-    "visits_one": "1 visit",
+    "visits_one": [
+      "1 apmeklējums",
+      "1 visit",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +1709,66 @@
     "generateMessage": "Ģenerēt citu ziņojumu",
     "copyMessage": "Kopēt ziņojumu",
     "shareVia": "Kopīgot caur",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "Telegramma",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Drukāt",
     "printPdf": "Drukāt / Saglabāt PDF",
     "linkCopied": "Saite nokopēta.",
@@ -448,7 +1797,26 @@
     "rightsHint": "Tiks atvērts jūsu e-pasta klients ar iepriekš definētu veidni. Varat arī rakstīt uz adriancl2001@gmail.com.",
     "ccpaTitle": "CCPA / CPRA (Kalifornija)",
     "ccpaText": "Wedingo nepārdod personas datus. Savāktie dati tiek izmantoti tikai ielūguma pārvaldībai. Ja esat Kalifornijas iedzīvotājs, jums ir tiesības pieprasīt savu datu dzēšanu un netikt diskriminētam par savu tiesību izmantošanu.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Tīmekļa lietotne kāzu ielūgumu pārvaldībai.",
     "copyright": "© {{year}} Adrián Carrasco López. Visas tiesības aizsargātas.",
     "deleteEmailSubject": "Datu dzēšanas pieprasījums - Wedingo",
@@ -518,13 +1886,146 @@
     "deleteFailed": "Neizdevās dzēst ielūgumu. Mēģiniet vēlreiz.",
     "configLoadFailed": "Neizdevās ielādēt konfigurāciju. Pārbaudiet savienojumu un mēģiniet vēlreiz.",
     "invalidLink": "Ielūguma saite nav derīga.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "Informācija par izmitināšanu nedrīkst pārsniegt 2000 rakstzīmes.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "Izvēlnes apraksts nedrīkst pārsniegt 2000 rakstzīmes.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "Nevarēja apstrādāt attēlu. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "Nevarēja nolasīt attēla failu.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "Attēla šifrēšana neizdevās.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "Attēls ir pārāk liels pat pēc saspiešanas.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "Fails ir tukšs. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -535,7 +2036,26 @@
       "compliance": "Atbilstība",
       "data": "Datos"
     },
-    "superadmin": "Superadmin",
+    "superadmin": [
+      "Superadmins",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "controlPanel": "Vadības panelis",
     "managePlatform": "Pārvaldiet Wedingo platformu",
     "dashboardLoading": "Ielādē statistiku...",
@@ -588,14 +2108,71 @@
     "tokenCleanError": "Neizdevās notīrīt tokenus.",
     "tokenLoadError": "Neizdevās ielādēt tokenus.",
     "accountEmail": "E-pasts: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Aktīva",
     "sessionInactive": "Neaktīva",
     "sessionLabel": "Lokālā sesija: {{status}}",
     "sessionType": "Tips: {{type}}",
-    "sessionTypeSuperadmin": "Superadmin",
+    "sessionTypeSuperadmin": [
+      "Superadmins",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionTypeSetup": "Iestatīšana",
-    "sessionTypeAdmin": "Admin",
+    "sessionTypeAdmin": [
+      "Administrators",
+      "Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionExpires": "Beidzas: {{date}}",
     "logoutButton": "Izrakstīties",
     "firebaseAccount": "Lai pārvaldītu savu superadmin kontu, izmantojiet Firebase konsoli:",
@@ -615,10 +2192,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Token",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVP",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2251,46 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "E-pasts",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "Parole",
+      "Password",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "compliance": {
     "title": "Apstrādes darbību reģistrs (GDPR 30. pants)",
@@ -659,7 +2312,26 @@
     "row2Basis": "Piekrišana (GDPR 6. panta 1. punkta a), 9. panta 2. punkta a) apakšpunkts)",
     "row2Purpose": "Pārvaldīt viesu sarakstu un ēdienkarti",
     "row2Retention": "12 mēneši pēc pasākuma",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google mākonis (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Attēlu augšupielāde",
     "row3Data": "Kāzu fotoattēli (šifrēti AES-256-GCM)",
     "row3Basis": "Piekrišana (GDPR 6. panta 1. punkta a) apakšpunkts)",
@@ -677,7 +2349,26 @@
     "row5Basis": "Juridisks pienākums (GDPR 6. panta 1. punkta c) apakšpunkts)",
     "row5Purpose": "Administratīvo darbību reģistrēšana",
     "row5Retention": "3 gadi",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google mākonis (Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Starptautiskās datu pārsūtīšanas",
     "internationalText": "Dati tiek glabāti Google Cloud serveros eur3 reģionā (Frankfurte, Vācija). Google LLC (ASV) darbojas kā datu apstrādātājs saskaņā ar DPA atbilstoši GDPR 28. pantam. Pārsūtīšanas uz ASV balstās uz:",
     "scc": "Standarta līguma klauzulas (SCC) - Īstenošanas lēmums 2021/914",
@@ -691,86 +2382,1359 @@
     "measureSuperadmin": "Superadmin aizsargāts ar Firebase Authentication + slēpts ceļš"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "Pieejamība",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Aizvērt",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontSize": [
+      "Teksta lielums",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "Normāls",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontLarge": [
+      "Liels",
+      "Large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontExtraLarge": [
+      "Īpaši liels",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "Līniju atstarpes",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "Normāls",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineWide": [
+      "Plašs",
+      "Wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineVeryWide": [
+      "Ļoti plašs",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "Augsts kontrasts",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "Samazināt kustību",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "OpenDyslexic fonts",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "Vairāk burtu atstarpes",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "Pasvītrojiet visas saites",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "Liels kursors",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "Pelēktoņi",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "Redzamie fokusa indikatori",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "Nav mūzikas",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "Ielādējot, radās kļūda",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "Mūzika",
+      "Music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "soundCloudNote": [
+      "SoundCloud celiņš — atvērts atskaņošanai",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "Atveriet pakalpojumā SoundCloud",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "Notiek drukas sagatavošana…",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "Pāra foto",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "Ar savu krustvecāku svētību",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "Datums un norises vieta",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "Ceremonijas laiks:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Skatīt atrašanās vietu pakalpojumā Google Maps",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "Mēs ceram dalīties ar jums šajā īpašajā brīdī.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "Transports",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutGuests": [
+      "Par ciemiņiem",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "Kāzu grafiks",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "Detalizēts grafiks tiks kopīgots drīzumā.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "Dreskods",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "Tiks paziņots vēlāk.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "Par bērniem",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "Mūsu stāsts",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "Kā tas viss sākās",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "Stāsts tiks kopīgots drīzumā.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "Dāvanas",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "Jūsu klātbūtne ir labākā dāvana",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "Drīzumā tiks kopīgota informācija par dāvanām.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "Bankas rekvizīti",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "Izmitināšana",
+      "Accommodation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "whereToStay": [
+      "Kur palikt",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "Drīzumā tiks sniegta informācija par izmitināšanu.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · Privātuma politika vietnē wedingo-6c26a.web.app",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "Aizveriet logu",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": [
+      "Pārvietojieties uz augšu",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "Pārvietojieties uz leju",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "title": [
+      "Kārtība un redzamība",
+      "Order & visibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "help": [
+      "Velciet, lai pārkārtotu, izmantojiet pogas, lai pārvietotu, un ieslēdziet vai izslēdziet katru sadaļu.",
+      "Drag to reorder, use the buttons to move, and toggle each section on or off.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "Izvēlieties valodu",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 pavadonis",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "Spānija",
+      "Spain",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "westernEurope": [
+      "Rietumeiropa",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "Ziemeļeiropa",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "Centrāleiropa",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "Dienvideiropa / Balkāni",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "Austrumeiropa / Kaukāzs",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "Austrumāzija",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "Dienvidāzija",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "Dienvidaustrumāzija",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "Vidusāzija / Tuvie Austrumi",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "Āfrika",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "Amerika",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +3751,1708 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": [
+      "Izmaiņu žurnāls",
+      "Changelog",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Aizvērt",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "Šim ielūgumam jau ir aktīva sesija. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "Piekļuves kods nav derīgs.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "Ievadiet piekļuves kodu.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "Kods veiksmīgi pārbaudīts.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "Nevarēja pārbaudīt kodu. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "Ievadiet savu lietotājvārdu un piekļuves kodu.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "Nepareizs lietotājvārds vai kods.",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "Kods neatbilst šim lietotājam.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "Jūs esat veiksmīgi pieteicies.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "Nevarēja pārbaudīt kodu. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "Ierakstiet CONFIRM, lai ģenerētu jaunu kodu.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "Vispirms ievadiet savu lietotājvārdu.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "Lietotājvārds var saturēt tikai burtus un ciparus.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "Lietotājvārds nedrīkst pārsniegt 50 rakstzīmes.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "Šim lietotājam nav atļaujas šeit piekļūt.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "Kods ir ģenerēts. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "Nevarēja ģenerēt kodu. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "Ievadiet pašreizējo piekļuves kodu, lai izveidotu jaunu.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "Izveidots jauns kods. ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "Kods atjaunots. ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "Šim kontam nav administrācijas atļauju.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "Nepareizi akreditācijas dati.",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "Pārāk daudz mēģinājumu. ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "E-pasta formāts nav derīgs.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "Piesakoties, radās kļūda. Pārbaudiet savienojumu.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": [
+      "Izmaiņas saglabātas",
+      "Changes saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": [
+      "janvārī",
+      "January",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "2": [
+      "februāris",
+      "February",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "3": [
+      "marts",
+      "March",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "4": [
+      "aprīlis",
+      "April",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "5": [
+      "maijā",
+      "May",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "6": [
+      "jūnijā",
+      "June",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "7": [
+      "jūlijā",
+      "July",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "8": [
+      "augusts",
+      "August",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "9": [
+      "septembris",
+      "September",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "10": [
+      "oktobris",
+      "October",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "11": [
+      "novembris",
+      "November",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "12": [
+      "decembris",
+      "December",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": [
+      "Gaišas tēmas",
+      "Light themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dark": [
+      "Tumšas tēmas",
+      "Dark themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": [
+      "Glutēns",
+      "Gluten",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lactose": [
+      "Laktoze",
+      "Lactose",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nuts": [
+      "Koku rieksti",
+      "Tree nuts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "shellfish": [
+      "Gliemenes",
+      "Shellfish",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "Mūsu visdārgākajam",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "Pieskarieties, lai atvērtu",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "Pieskarieties, lai turpinātu",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "Mūsu kāzas",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "{{names}} kāzas",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "Vieta jāapstiprina",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "Mēs ar nepacietību gaidām šo īpašo brīdi kopā ar jums.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "Laiks:",
+      "Time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeLabel": [
+      "Norises vieta:",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "Eleganta un koša, ar zeltainiem akcentiem.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "Dabīgs un prātīgs ar mīkstiem zaļumiem.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "Silta un maiga, ar rozā nokrāsām.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "Viegls un neitrāls, ar mierīgu un mūžīgu klātbūtni.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "Mīksts un romantisks, ar pērļu rozā toņiem.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "Svaigs un mierīgs, ar lavandas un purpursarkanām nokrāsām.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "Gaišs un svinīgs, ar siltiem zelta mirdzumiem.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "Tumšs un elegants, ar dzintara un zelta akcentiem.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "Dziļi un izsmalcināti, ar intensīvu zeltu uz tumša fona.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "Ļoti tumši zils ar intensīvu zeltu un svinīgu klātbūtni.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "Silts un aptverošs, ar sarkanvīnu un zelta dzirksti.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "Dziļi zils ar sudraba akcentiem un mierīgu klātbūtni.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "Dziļi dabīgi zaļš ar zeltainām un elegantām nokrāsām.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "Intensīvi violets ar rozā un romantiskiem mirdzumiem.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "Daudzveidīgas mīlestības svinēšana ar varavīksnes krāsām.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "Zils, rozā un balts kā veltījums trans karogam.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "Dzeltens, balts, violets un melns nebinārajam karogam.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "Lesbiešu karoga oranžā, baltā un rozā.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "Rozā, violeta un zila no bi karoga.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "Pannas karoga rozā, dzeltenā un zilā krāsā.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "Melns, pelēks, balts un violets no bezdzimuma karoga.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "Laipni lūdzam ar rotaļu laukumu",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "Laipni lūdzam uzraudzībā",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "Tikai pieaugušajiem",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "e6160a94dbc5b21fe81a6e88928058a4",
+              "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "Nav datu",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "kopā",
+      "total",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "barChart": [
+      "Apmeklētības joslu diagramma",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "e6160a94dbc5b21fe81a6e88928058a4",
+            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

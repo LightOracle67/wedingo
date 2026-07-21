@@ -1180,7 +1180,26 @@
   "envelope": {
     "addressLine1": "An unsere Liebsten",
     "tapHint": "Zum Öffnen tippen",
-    "and": "&",
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "84d48e73ebfa38d4d681515b81e0b72a",
+            "en_de_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "tapContinue": "Tippen Sie, um fortzufahren"
   },
   "calendar": {

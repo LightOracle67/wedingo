@@ -11,20 +11,133 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "見える",
+      "Visible",
+      null,
+      null,
+      10
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "何か問題が発生しました",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "466914b2b9b759682681a550c00b67dd",
+              "en_ja_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "ページをリロードしてもう一度お試しください。",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "466914b2b9b759682681a550c00b67dd",
+              "en_ja_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "ページをリロードする",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "466914b2b9b759682681a550c00b67dd",
+              "en_ja_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "近い",
+        "Close",
+        null,
+        null,
+        10
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "メインコンテンツにスキップ",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "管理バー",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "466914b2b9b759682681a550c00b67dd",
+              "en_ja_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "管理",
+        "Administration",
+        null,
+        null,
+        10
+      ]
     }
   },
   "landing": {
@@ -56,7 +169,26 @@
     "missing": "残り",
     "todayIsTheDay": "今日が大切な日です！",
     "sectionLabel": "表紙",
-    "eyebrow": "Our Wedding"
+    "eyebrow": [
+      "私たちの結婚式",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "日付と場所",
@@ -106,8 +238,46 @@
     "next": "次へ",
     "thumbnailAria": "写真 {{number}}",
     "thumbnailAlt": "ギャラリーのサムネイル写真",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "画像ギャラリー。矢印キーを使用して移動します。",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "拡大画像",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "出欠確認",
@@ -144,10 +314,86 @@
       "birthDateRequired": "生年月日を入力してください。",
       "ageUnder14": "14歳未満です。保護者の同意が必要です。",
       "healthConsentRequired": "健康データの処理に同意する必要があります。",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "menuHeadcountRequired": [
+        "少なくとも 1 つのメニュー オプションを指定してください。",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "466914b2b9b759682681a550c00b67dd",
+              "en_ja_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "同行者の名前を入力します。",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "466914b2b9b759682681a550c00b67dd",
+              "en_ja_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "同伴者以上の名前を入力することはできません。",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "466914b2b9b759682681a550c00b67dd",
+              "en_ja_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "メニューオプションの合計が同伴者の数を超えることはできません。",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "466914b2b9b759682681a550c00b67dd",
+              "en_ja_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     },
     "successAttending": "ありがとうございます、{{name}}。出席が記録されました。",
     "successNotAttending": "ありがとうございます、{{name}}。ご出席いただけず残念です。",
@@ -158,29 +404,244 @@
     "clearConfirm": "すべての出席回答を削除しますか？この操作は元に戻せません。",
     "clearSuccess": "出席記録が消去されました。",
     "clearError": "出席記録を消去できませんでした。",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "companionsLabel": [
+      "仲間たち",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "人々",
+      "People",
+      null,
+      null,
+      10
+    ],
+    "headcountHint": [
+      "各オプションの人数 (合計 {{total}})",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "ゲスト名",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "各コンパニオンの姓名を書きます (最大 {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "名前1 姓1、名前2 姓2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "招待状を読み込み中…",
     "notFoundTitle": "招待状が見つかりません",
     "notFoundText": "このリンクの招待状は見つかりませんでした。誤りと思われる場合は、主催者にお問い合わせください。",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "ウェディンゴ",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "あなただけの結婚式招待状を作成して共有しましょう。",
     "emptyDescription": "招待状のデータを管理し、ゲストと固有のリンクを共有して、出欠確認を受け取ります。",
     "createLink": "招待状を作成",
     "privacyPolicy": "プライバシーポリシー",
     "terms": "利用規約",
     "legalNotice": "法的通知",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "この場所が見つかりませんでした。",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "マップを読み込めませんでした。",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "座標: {{lat}}、{{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "指定された場所の地図プレビュー。",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "設定された場所",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "招待状を読み込み中",
@@ -308,28 +769,427 @@
     "galleryUploadFailed": "写真をアップロードできませんでした。",
     "noValidFiles": "有効なファイルがありません。最大20MB、JPG/PNG。",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "表紙で再生するオーディオ ファイルをアップロードします (MP3、WAV、OGG、M4A — 最大 5 MB)。",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "音声ファイルをアップロードする",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3、WAV、OGG または M4A — 最大 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "オーディオ形式はサポートされていません。 ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "音声ファイルが空です。",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "音声ファイルが 5 MB の制限を超えています。",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "音声ファイルの読み取り中にエラーが発生しました。",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "ファイルは空です。",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "画像の説明...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "ギャラリー内の最大 {{max}} 個の画像。",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "{{total}} 枚の写真をアップロードしています...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "写真をアップロードしています...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "写真を変更する",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "説明の保存中にエラーが発生しました",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "説明が保存されました",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "選択された音楽",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "音楽を削除する",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "遊んでいます...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "プレビュー",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "選択",
+      "Select",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "selected": [
+      "選択済み",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1213,53 @@
     "pdfTableCompanions": "同伴者",
     "pdfTableDiet": "食事",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "ウェディンゴ · 管理者",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "招待状を見る",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "ログアウト",
+      "Log out",
+      null,
+      null,
+      2
+    ]
   },
   "panel": {
     "confirmed": "出席",
@@ -417,9 +1321,40 @@
     "generateMessage": "別のメッセージを生成",
     "copyMessage": "メッセージをコピー",
     "shareVia": "共有方法",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "ワッツアップ",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "電報",
+      "Telegram",
+      null,
+      null,
+      2
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      10
+    ],
     "print": "印刷",
     "printPdf": "印刷 / PDFを保存",
     "linkCopied": "リンクをコピーしました。",
@@ -448,9 +1383,47 @@
     "rightsHint": "メールクライアントがテンプレート付きで開きます。adriancl2001@gmail.com に直接メールすることもできます。",
     "ccpaTitle": "CCPA / CPRA（カリフォルニア州）",
     "ccpaText": "Wedingoは個人データを販売しません。収集されたデータは招待状の管理にのみ使用されます。カリフォルニア州にお住まいの場合、データの削除をリクエストする権利と、権利行使による差別を受けない権利があります。",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "ウェディンゴ",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "結婚式招待状管理のためのウェブアプリケーション。",
-    "copyright": "© {{year}} Adrián Carrasco López. All rights reserved.",
+    "copyright": [
+      "© {{年}} アドリアン・カラスコ・ロペス。",
+      "© {{year}} Adrián Carrasco López. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "deleteEmailSubject": "データ削除リクエスト - Wedingo",
     "exportEmailSubject": "データエクスポートリクエスト - Wedingo",
     "deleteEmailBody": "こんにちは、\n\n以下の招待状に関連する個人データの削除をリクエストします：\n\nゲスト名：\n招待状トークン（分かる場合）：\n\n消去権の行使（GDPR第17条 / CCPA / LGPD / POPIA）。\n\nありがとうございます。",
@@ -518,13 +1491,146 @@
     "deleteFailed": "招待状を削除できませんでした。もう一度お試しください。",
     "configLoadFailed": "設定を読み込めませんでした。接続を確認してもう一度お試しください。",
     "invalidLink": "招待状リンクが無効です。",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "宿泊施設情報は 2000 文字を超えることはできません。",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "メニューの説明は 2000 文字を超えることはできません。",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "画像を処理できませんでした。",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "画像ファイルを読み取れませんでした。",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "画像の暗号化に失敗しました。",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "圧縮しても画像が大きすぎます。",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "ファイルは空です。",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -615,10 +1721,35 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "トークン",
+        "Token",
+        null,
+        null,
+        2
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "出欠確認",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "466914b2b9b759682681a550c00b67dd",
+              "en_ja_2023q1.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +1767,33 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "電子メール",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "パスワード",
+      "Password",
+      null,
+      null,
+      2
+    ]
   },
   "compliance": {
     "title": "処理活動記録（GDPR第30条）",
@@ -691,86 +1847,1152 @@
     "measureSuperadmin": "Firebase Authentication + 隠しルートで保護されたスーパー管理者"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "アクセシビリティ",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "近い",
+      "Close",
+      null,
+      null,
+      10
+    ],
+    "fontSize": [
+      "文字サイズ",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "普通",
+      "Normal",
+      null,
+      null,
+      10
+    ],
+    "fontLarge": [
+      "大きい",
+      "Large",
+      null,
+      null,
+      10
+    ],
+    "fontExtraLarge": [
+      "特大",
+      "Extra large",
+      null,
+      null,
+      2
+    ],
+    "lineSpacing": [
+      "行間",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "普通",
+      "Normal",
+      null,
+      null,
+      10
+    ],
+    "lineWide": [
+      "広い",
+      "Wide",
+      null,
+      null,
+      10
+    ],
+    "lineVeryWide": [
+      "とても広い",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "ハイコントラスト",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "動きを減らす",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "OpenDyslexic フォント",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "文字間隔を増やす",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "すべてのリンクに下線を引く",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "大きなカーソル",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "グレースケール",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "目に見えるフォーカスインジケーター",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "音楽なし",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "読み込みエラー",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "音楽",
+      "Music",
+      null,
+      null,
+      10
+    ],
+    "soundCloudNote": [
+      "SoundCloud トラック — オープンして再生できます",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "SoundCloudで開く",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "印刷を準備しています…",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "カップル写真",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "彼らの名付け親の祝福を受けて",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "日付と会場",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "挙式時間：",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Google マップで場所を表示",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "この特別な瞬間を皆様と共有できることを楽しみにしています。",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "輸送",
+      "Transport",
+      null,
+      null,
+      10
+    ],
+    "aboutGuests": [
+      "ゲストについて",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "結婚式のスケジュール",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "詳細なスケジュールは近日中に共有されます。",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "ドレスコード",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "後程連絡させていただきます。",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "子供について",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "私たちの物語",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "すべてはどのように始まったか",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "この話はすぐに共有されます。",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "ギフト",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "あなたの存在が最高の贈り物です",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "プレゼント情報は近日公開予定です。",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "銀行詳細",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "宿泊施設",
+      "Accommodation",
+      null,
+      null,
+      10
+    ],
+    "whereToStay": [
+      "どこに泊まるか",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "宿泊施設情報は近日公開予定です。",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · プライバシー ポリシー (wedingo-6c26a.web.app)",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "ウィンドウを閉じる",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
+    "moveUp": [
+      "上に移動",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "下に移動",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "title": "順序と表示",
     "help": "ドラッグして並べ替え、ボタンで移動し、各セクションのオン/オフを切り替えます。"
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "言語を選択してください",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "同伴者1名",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "スペイン",
+      "Spain",
+      null,
+      null,
+      2
+    ],
+    "westernEurope": [
+      "西欧",
+      "Western Europe",
+      null,
+      null,
+      2
+    ],
+    "nordicEurope": [
+      "北欧ヨーロッパ",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "中央ヨーロッパ",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "南ヨーロッパ / バルカン半島",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "東ヨーロッパ / コーカサス",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "東アジア",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "南アジア",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "東南アジア",
+      "Southeast Asia",
+      null,
+      null,
+      2
+    ],
+    "centralAsia": [
+      "中央アジア・中東",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "アフリカ",
+      "Africa",
+      null,
+      null,
+      2
+    ],
+    "americas": [
+      "アメリカ大陸",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}}年",
@@ -837,7 +3059,26 @@
   "themeGroups": {
     "light": "ライトテーマ",
     "dark": "ダークテーマ",
-    "lgbtiq": "LGTBIQ+"
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
     "gluten": "グルテン",
@@ -846,53 +3087,717 @@
     "shellfish": "甲殻類"
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "私たちの大切な人へ",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "タップして開きます",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "タップして続行します",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "私たちの結婚式",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "{{名前}}の結婚式",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "場所を確認する",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "この特別な瞬間を皆様と一緒にお祝いできることを楽しみにしています。",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "時間：",
+      "Time:",
+      null,
+      null,
+      10
+    ],
+    "placeLabel": [
+      "会場：",
+      "Venue:",
+      null,
+      null,
+      10
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "エレガントで明るい、ゴールドのアクセント。",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "柔らかなグリーンがナチュラルで落ち着いた雰囲気。",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "暖かく繊細なピンクの色合い。",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "軽くてニュートラル、落ち着いたタイムレスな存在感。",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "柔らかくロマンチックなパールピンクの色合い。",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "ラベンダーと藤色の色合いの、新鮮で穏やかな香り。",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "温かみのある金色の輝きで、明るくお祭り気分を盛り上げます。",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "ダークでエレガント、琥珀と金のハイライト。",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "ダークな背景に強烈なゴールドが映える、深く洗練されたデザイン。",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "非常に濃いブルーに、強烈なゴールドと荘厳な存在感。",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "温かく包み込むような、赤ワインと黄金の輝き。",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "深みのあるブルーにシルバーのアクセントがあり、落ち着いた存在感を放ちます。",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "深みのあるナチュラルグリーンにゴールドの上品な色合い。",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "ピンクとロマンチックな輝きを伴う強烈なパープル。",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "多様な愛を虹色で祝う。",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "トランス旗に敬意を表したブルー、ピンク、ホワイト。",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "黄色、白、紫、黒は非バイナリ フラグです。",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "レズビアンの旗のオレンジ、白、ピンク。",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "ピンク、紫、青のバイフラッグ。",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "パンフラッグのピンク、黄色、青。",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "黒、グレー、白、紫の無性愛の旗。",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "プレイエリア付きでお出迎え",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "466914b2b9b759682681a550c00b67dd",
+              "en_ja_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "監督のもとにようこそ",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "466914b2b9b759682681a550c00b67dd",
+              "en_ja_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "大人のみ",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "466914b2b9b759682681a550c00b67dd",
+              "en_ja_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "データなし",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "合計",
+      "total",
+      null,
+      null,
+      10
+    ],
+    "barChart": [
+      "出席棒グラフ",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "466914b2b9b759682681a550c00b67dd",
+            "en_ja_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

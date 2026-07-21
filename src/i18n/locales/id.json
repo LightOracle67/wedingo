@@ -1,7 +1,13 @@
 {
   "common": {
     "loading": "Memuat...",
-    "error": "Error",
+    "error": [
+      "Kesalahan",
+      "Error",
+      null,
+      null,
+      2
+    ],
     "close": "Tutup",
     "retry": "Coba lagi",
     "save": "Simpan perubahan",
@@ -11,20 +17,133 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "Bisa dilihat",
+      "Visible",
+      null,
+      null,
+      10
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "Ada yang tidak beres",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8197e9010ff5cd59d89a62790d9829cf",
+              "en_id_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "Silakan muat ulang halaman untuk mencoba lagi.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8197e9010ff5cd59d89a62790d9829cf",
+              "en_id_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "Muat ulang halaman",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8197e9010ff5cd59d89a62790d9829cf",
+              "en_id_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "Menutup",
+        "Close",
+        null,
+        null,
+        10
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "Lompat ke konten utama",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "Bilah administrasi",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8197e9010ff5cd59d89a62790d9829cf",
+              "en_id_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "Administrasi",
+        "Administration",
+        null,
+        null,
+        2
+      ]
     }
   },
   "landing": {
@@ -56,7 +175,26 @@
     "missing": "Tersisa",
     "todayIsTheDay": "Hari ini adalah hari istimewa!",
     "sectionLabel": "Sampul",
-    "eyebrow": "Our Wedding"
+    "eyebrow": [
+      "Pernikahan kami",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "Tanggal dan tempat",
@@ -106,8 +244,46 @@
     "next": "Berikutnya",
     "thumbnailAria": "Foto {{number}}",
     "thumbnailAlt": "Thumbnail foto galeri",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "Galeri gambar, gunakan tombol panah untuk bernavigasi",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "Gambar diperbesar",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "Konfirmasi kehadiran",
@@ -121,9 +297,34 @@
     "menuLegend": "Pilihan menu *",
     "menuCarne": "Daging",
     "menuPescado": "Ikan",
-    "menuVegano": "Vegan/Vegetarian",
+    "menuVegano": [
+      "Vegan/Vegetarian",
+      "Vegan/Vegetarian",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "postre": "Hidangan penutup",
-    "menuLabel": "Menu",
+    "menuLabel": [
+      "Menu",
+      "Menu",
+      null,
+      null,
+      10
+    ],
     "allergiesLegend": "Alergi dan intoleransi",
     "allergiesPlaceholder": "Alergi lainnya (sebutkan)",
     "allergiesHint": "Hanya sebutkan alergi dan intoleransi makanan. Jangan masukkan informasi medis yang tidak diminta.",
@@ -138,49 +339,625 @@
     "ageUnder14Warning": "Anda berusia di bawah 14 tahun. Anda memerlukan persetujuan dari orang tua atau wali Anda.",
     "parentalConsent": "Orang tua atau wali saya menyetujui partisipasi saya",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "Masukkan nama Anda untuk mengonfirmasi kehadiran.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8197e9010ff5cd59d89a62790d9829cf",
+              "en_id_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "Pilih opsi menu.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8197e9010ff5cd59d89a62790d9829cf",
+              "en_id_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "Anda harus menerima Kebijakan Privasi.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8197e9010ff5cd59d89a62790d9829cf",
+              "en_id_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "Masukkan tanggal lahir Anda.",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8197e9010ff5cd59d89a62790d9829cf",
+              "en_id_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "Anda berusia di bawah 14 tahun. ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8197e9010ff5cd59d89a62790d9829cf",
+              "en_id_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "Anda harus menyetujui pemrosesan data kesehatan Anda.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8197e9010ff5cd59d89a62790d9829cf",
+              "en_id_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "Tunjukkan setidaknya satu pilihan menu.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8197e9010ff5cd59d89a62790d9829cf",
+              "en_id_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "Masukkan nama teman Anda.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8197e9010ff5cd59d89a62790d9829cf",
+              "en_id_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "Anda tidak dapat memasukkan lebih banyak nama daripada nama teman.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8197e9010ff5cd59d89a62790d9829cf",
+              "en_id_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "Jumlah pilihan menu tidak boleh melebihi jumlah pendamping.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8197e9010ff5cd59d89a62790d9829cf",
+              "en_id_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "Terima kasih, {{nama}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "Terima kasih, {{nama}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "Kami tidak dapat menyimpan tanggapan Anda. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "Apakah Anda yakin ingin menarik tanggapan Anda?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "Tanggapan Anda telah ditarik.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "Tidak dapat menarik tanggapan Anda. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "Hapus semua respons kehadiran? ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "Catatan kehadiran dihapus.",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "Tidak dapat menghapus catatan kehadiran.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "Sahabat",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "Rakyat",
+      "People",
+      null,
+      null,
+      10
+    ],
+    "headcountHint": [
+      "Berapa banyak orang untuk setiap opsi ({{total}} total)",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "Nama tamu",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "Tuliskan nama depan dan belakang masing-masing pendamping (maks {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "Nama1 Nama Belakang1, Nama2 Nama Belakang2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "Memuat undangan...",
     "notFoundTitle": "Undangan tidak ditemukan",
     "notFoundText": "Kami tidak menemukan undangan dengan tautan ini. Jika Anda rasa ini kesalahan, hubungi tuan rumah.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Buat dan bagikan undangan pernikahan pribadi Anda.",
     "emptyDescription": "Kelola data undangan Anda, bagikan tautan unik dengan tamu, dan terima konfirmasi kehadiran mereka.",
     "createLink": "Buat undangan",
     "privacyPolicy": "Kebijakan Privasi",
     "terms": "Ketentuan",
     "legalNotice": "Pemberitahuan Hukum",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "Tidak dapat menemukan tempat ini.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "Tidak dapat memuat peta.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "Koordinat: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "Pratinjau peta di lokasi yang ditunjukkan.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "Lokasi dikonfigurasi",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "Memuat undangan",
@@ -308,28 +1085,388 @@
     "galleryUploadFailed": "Tidak dapat mengunggah foto.",
     "noValidFiles": "Tidak ada file yang valid. Maksimal 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "Unggah file audio untuk diputar di sampul (MP3, WAV, OGG, M4A — maks 5 MB).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "Unggah berkas audio",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG atau M4A — maksimal 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "Format audio tidak didukung. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "File audio kosong.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "File audio melebihi batas 5 MB.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "Kesalahan membaca file audio.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "Filenya kosong. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "Deskripsi gambar...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "Maksimum {{max}} gambar di galeri.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "Mengunggah {{total}} foto...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "Mengunggah foto...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "Ganti foto",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "Terjadi error saat menyimpan deskripsi",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "Deskripsi disimpan",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "Musik yang dipilih",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "Hapus musik",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "Bermain...",
+      "Playing...",
+      null,
+      null,
+      10
+    ],
+    "preview": [
+      "Pratinjau",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "Memilih",
+      "Select",
+      null,
+      null,
+      2
+    ],
+    "selected": [
+      "Terpilih",
+      "Selected",
+      null,
+      null,
+      2
+    ]
   },
   "admin": {
     "tabs": {
@@ -351,11 +1488,74 @@
     "pdfTableName": "Nama",
     "pdfTableAttendance": "Kehadiran",
     "pdfTableCompanions": "Pendamping",
-    "pdfTableDiet": "Diet",
+    "pdfTableDiet": [
+      "Diet",
+      "Diet",
+      null,
+      null,
+      2
+    ],
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Admin",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "Lihat undangan",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "Keluar",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "Terkonfirmasi",
@@ -417,9 +1617,53 @@
     "generateMessage": "Buat pesan lain",
     "copyMessage": "Salin pesan",
     "shareVia": "Bagikan melalui",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "Ada apa",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "Telegram",
+      "Telegram",
+      null,
+      null,
+      2
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Cetak",
     "printPdf": "Cetak / Simpan PDF",
     "linkCopied": "Tautan tersalin.",
@@ -446,9 +1690,47 @@
     "deleteButton": "Minta penghapusan data",
     "exportButton": "Ekspor data saya",
     "rightsHint": "Klien email Anda akan terbuka dengan template yang sudah ditentukan. Anda juga dapat menulis ke adriancl2001@gmail.com.",
-    "ccpaTitle": "CCPA / CPRA (California)",
+    "ccpaTitle": [
+      "CCPA / CPRA (California)",
+      "CCPA / CPRA (California)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "ccpaText": "Wedingo tidak menjual data pribadi. Data yang dikumpulkan digunakan secara eksklusif untuk pengelolaan undangan. Jika Anda penduduk California, Anda berhak meminta penghapusan data Anda dan tidak didiskriminasi karena menggunakan hak Anda.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Aplikasi web untuk pengelolaan undangan pernikahan.",
     "copyright": "© {{year}} Adrián Carrasco López. Hak cipta dilindungi undang-undang.",
     "deleteEmailSubject": "Permintaan penghapusan data - Wedingo",
@@ -518,13 +1800,146 @@
     "deleteFailed": "Tidak dapat menghapus undangan. Coba lagi.",
     "configLoadFailed": "Tidak dapat memuat konfigurasi. Periksa koneksi dan coba lagi.",
     "invalidLink": "Tautan undangan tidak valid.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "Info akomodasi tidak boleh melebihi 2000 karakter.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "Deskripsi menu tidak boleh melebihi 2000 karakter.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "Tidak dapat memproses gambar. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "Tidak dapat membaca file gambar.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "Enkripsi gambar gagal.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "Gambar terlalu besar bahkan setelah dikompresi.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "Filenya kosong. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -535,7 +1950,26 @@
       "compliance": "Kepatuhan",
       "data": "Datos"
     },
-    "superadmin": "Superadmin",
+    "superadmin": [
+      "Admin super",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "controlPanel": "Panel kontrol",
     "managePlatform": "Kelola platform Wedingo",
     "dashboardLoading": "Memuat statistik...",
@@ -561,7 +1995,13 @@
     "invitationsCount": "{{count}} undangan · {{size}} terpakai",
     "noResultsFilter": "Tidak ada undangan dengan kriteria tersebut.",
     "noInvitations": "Belum ada undangan.",
-    "tableToken": "Token",
+    "tableToken": [
+      "Token",
+      "Token",
+      null,
+      null,
+      2
+    ],
     "tableTheme": "Tema",
     "tableDate": "Tanggal pernikahan",
     "tableActions": "Tindakan",
@@ -587,15 +2027,110 @@
     "tokenRevokeError": "Tidak dapat mencabut token.",
     "tokenCleanError": "Tidak dapat membersihkan token.",
     "tokenLoadError": "Tidak dapat memuat token.",
-    "accountEmail": "Email: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountEmail": [
+      "Surel: {{email}}",
+      "Email: {{email}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Aktif",
     "sessionInactive": "Tidak aktif",
     "sessionLabel": "Sesi lokal: {{status}}",
     "sessionType": "Tipe: {{type}}",
-    "sessionTypeSuperadmin": "Superadmin",
-    "sessionTypeSetup": "Setup",
-    "sessionTypeAdmin": "Admin",
+    "sessionTypeSuperadmin": [
+      "Admin super",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "sessionTypeSetup": [
+      "Pengaturan",
+      "Setup",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "sessionTypeAdmin": [
+      "Admin",
+      "Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "sessionExpires": "Kedaluwarsa: {{date}}",
     "logoutButton": "Keluar",
     "firebaseAccount": "Untuk mengelola akun superadmin Anda, gunakan konsol Firebase:",
@@ -615,10 +2150,35 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Token",
+        "Token",
+        null,
+        null,
+        2
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVP",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8197e9010ff5cd59d89a62790d9829cf",
+              "en_id_2023q1.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2196,20 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "E-mail",
+      "Email",
+      null,
+      null,
+      2
+    ],
+    "passwordLabel": [
+      "Kata sandi",
+      "Password",
+      null,
+      null,
+      2
+    ]
   },
   "compliance": {
     "title": "Catatan kegiatan pemrosesan (Pasal 30 GDPR)",
@@ -653,13 +2225,51 @@
     "row1Basis": "Persetujuan (Pasal 6.1.a GDPR)",
     "row1Purpose": "Membuat dan menyesuaikan undangan pernikahan",
     "row1Retention": "Selama akun aktif",
-    "row1Recipients": "Google Cloud (Firestore, hosting)",
+    "row1Recipients": [
+      "Google Cloud (Firestore, hosting)",
+      "Google Cloud (Firestore, hosting)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "row2Activity": "Konfirmasi kehadiran (RSVP)",
     "row2Data": "Nama tamu, kehadiran (ya/tidak), pilihan menu, alergi, data kesehatan",
     "row2Basis": "Persetujuan (Pasal 6.1.a, 9.2.a GDPR)",
     "row2Purpose": "Mengelola daftar tamu dan menu",
     "row2Retention": "12 bulan setelah acara",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Pemulihan Api)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Unggahan gambar",
     "row3Data": "Foto pernikahan (dienkripsi AES-256-GCM)",
     "row3Basis": "Persetujuan (Pasal 6.1.a GDPR)",
@@ -671,13 +2281,51 @@
     "row4Basis": "Kepentingan sah (Pasal 6.1.f GDPR)",
     "row4Purpose": "Mengontrol akses ke panel administrasi",
     "row4Retention": "Durasi sesi",
-    "row4Recipients": "Google Cloud (Firestore sessions)",
+    "row4Recipients": [
+      "Google Cloud (sesi Firestore)",
+      "Google Cloud (Firestore sessions)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "row5Activity": "Audit superadmin",
     "row5Data": "Tindakan superadmin, token digunakan, undangan dihapus",
     "row5Basis": "Kewajiban hukum (Pasal 6.1.c GDPR)",
     "row5Purpose": "Catatan kegiatan administratif",
     "row5Retention": "3 tahun",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Log audit Firestore)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Transfer internasional",
     "internationalText": "Data disimpan di server Google Cloud di wilayah eur3 (Frankfurt, Jerman). Google LLC (AS) bertindak sebagai pemroses data berdasarkan DPA sesuai dengan Pasal 28 GDPR. Transfer ke AS dilindungi oleh:",
     "scc": "Klausul Kontrak Standar (SCC) - Keputusan Pelaksanaan 2021/914",
@@ -691,86 +2339,1165 @@
     "measureSuperadmin": "Superadmin dilindungi oleh Firebase Authentication + rute tersembunyi"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "Aksesibilitas",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Menutup",
+      "Close",
+      null,
+      null,
+      10
+    ],
+    "fontSize": [
+      "Ukuran teks",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "Normal",
+      "Normal",
+      null,
+      null,
+      2
+    ],
+    "fontLarge": [
+      "Besar",
+      "Large",
+      null,
+      null,
+      10
+    ],
+    "fontExtraLarge": [
+      "Ekstra besar",
+      "Extra large",
+      null,
+      null,
+      2
+    ],
+    "lineSpacing": [
+      "Spasi baris",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "Normal",
+      "Normal",
+      null,
+      null,
+      2
+    ],
+    "lineWide": [
+      "Lebar",
+      "Wide",
+      null,
+      null,
+      10
+    ],
+    "lineVeryWide": [
+      "Sangat luas",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "Kontras tinggi",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "Kurangi gerakan",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "Font OpenDyslexic",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "Spasi huruf lebih banyak",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "Garis bawahi semua tautan",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "Kursor besar",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "Skala abu-abu",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "Indikator fokus terlihat",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "Tidak ada musik",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "Terjadi kesalahan saat memuat",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "Musik",
+      "Music",
+      null,
+      null,
+      2
+    ],
+    "soundCloudNote": [
+      "Lagu SoundCloud — terbuka untuk diputar",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "Buka di SoundCloud",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "Mempersiapkan pencetakan…",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "Foto pasangan",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "Dengan restu dari wali baptis mereka",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "Tanggal dan tempat",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "Waktu upacara:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Lihat lokasi di Google Maps",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "Kami menantikan untuk berbagi momen spesial ini dengan Anda.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "Mengangkut",
+      "Transport",
+      null,
+      null,
+      2
+    ],
+    "aboutGuests": [
+      "Tentang para tamu",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "Jadwal pernikahan",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "Jadwal detailnya akan segera dibagikan.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "Kode berpakaian",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "Nanti akan dikomunikasikan.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "Tentang anak-anak",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "Kisah kita",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "Bagaimana semuanya dimulai",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "Ceritanya akan segera dibagikan.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "Hadiah",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "Kehadiranmu adalah hadiah terbaik",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "Informasi hadiah akan segera dibagikan.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "Detail perbankan",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "Akomodasi",
+      "Accommodation",
+      null,
+      null,
+      2
+    ],
+    "whereToStay": [
+      "Tempat tinggal",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "Informasi akomodasi akan segera dibagikan.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · Kebijakan Privasi di wedingo-6c26a.web.app",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "Tutup jendela",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
+    "moveUp": [
+      "Naik",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "Pindah ke bawah",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "title": "Urutan & visibilitas",
     "help": "Seret untuk mengatur ulang, gunakan tombol untuk memindahkan, dan nyalakan/matikan setiap bagian."
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "Pilih bahasa",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 pendamping",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "Spanyol",
+      "Spain",
+      null,
+      null,
+      2
+    ],
+    "westernEurope": [
+      "Eropa Barat",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "Eropa Nordik",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "Eropa Tengah",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "Eropa Selatan / Balkan",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "Eropa Timur / Kaukasus",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "Asia Timur",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "Asia Selatan",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "Asia Tenggara",
+      "Southeast Asia",
+      null,
+      null,
+      2
+    ],
+    "centralAsia": [
+      "Asia Tengah/Timur Tengah",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "Afrika",
+      "Africa",
+      null,
+      null,
+      2
+    ],
+    "americas": [
+      "Amerika",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -791,31 +3518,506 @@
     "close": "Tutup"
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "Sudah ada sesi aktif untuk undangan ini. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "Kode akses tidak valid.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "Masukkan kode akses.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "Kode berhasil diverifikasi.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "Tidak dapat memverifikasi kode. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "Masukkan nama pengguna Anda dan kode akses.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "Nama pengguna atau kode salah.",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "Kode tidak cocok dengan pengguna ini.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "Anda telah berhasil login.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "Tidak dapat memverifikasi kode. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "Ketik CONFIRM untuk menghasilkan kode baru.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "Masukkan nama pengguna Anda terlebih dahulu.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "Nama pengguna hanya boleh berisi huruf dan angka.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "Nama pengguna tidak boleh melebihi 50 karakter.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "Pengguna ini tidak memiliki izin untuk mengakses di sini.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "Kode dihasilkan. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "Tidak dapat membuat kode. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "Masukkan kode akses saat ini untuk membuat kode akses baru.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "Kode baru dihasilkan. ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "Kode diperbarui. ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "Akun ini tidak memiliki izin administrasi.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "Kredensial salah.",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "Terlalu banyak upaya. ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "Format email tidak valid.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "Terjadi kesalahan saat masuk. Periksa koneksi Anda.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
     "saved": "Perubahan disimpan"
@@ -824,75 +4026,782 @@
     "1": "Januari",
     "2": "Februari",
     "3": "Maret",
-    "4": "April",
+    "4": [
+      "April",
+      "April",
+      null,
+      null,
+      2
+    ],
     "5": "Mei",
     "6": "Juni",
     "7": "Juli",
     "8": "Agustus",
-    "9": "September",
+    "9": [
+      "September",
+      "September",
+      null,
+      null,
+      2
+    ],
     "10": "Oktober",
-    "11": "November",
+    "11": [
+      "November",
+      "November",
+      null,
+      null,
+      2
+    ],
     "12": "Desember"
   },
   "themeGroups": {
     "light": "Tema terang",
     "dark": "Tema gelap",
-    "lgbtiq": "LGTBIQ+"
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
+    "gluten": [
+      "Perekat",
+      "Gluten",
+      null,
+      null,
+      2
+    ],
     "lactose": "Laktosa",
     "nuts": "Kacang pohon",
     "shellfish": "Kerang"
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "Untuk yang tersayang",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "Ketuk untuk membuka",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "Ketuk untuk melanjutkan",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "pernikahan kami",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "Pernikahan {{nama}}",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "Lokasi akan dikonfirmasi",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "Kami menantikan untuk merayakan momen spesial ini bersama Anda.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "Waktu:",
+      "Time:",
+      null,
+      null,
+      10
+    ],
+    "placeLabel": [
+      "Lokasi:",
+      "Venue:",
+      null,
+      null,
+      10
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "Elegan dan cerah, dengan aksen emas.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "Alami dan seadanya dengan sayuran lembut.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "Hangat dan lembut, dengan warna merah jambu.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "Ringan dan netral, dengan kehadiran yang tenang dan abadi.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "Lembut dan romantis, dengan warna pink mutiara.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "Segar dan tenang, dengan warna lavender dan ungu muda.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "Cerah dan meriah, dengan kilauan emas yang hangat.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "Gelap dan elegan, dengan highlight kuning dan emas.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "Dalam dan canggih, dengan warna emas pekat pada latar belakang gelap.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "Biru sangat tua dengan emas pekat dan kehadiran khidmat.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "Hangat dan menyelimuti, dengan anggur merah dan kilauan emas.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "Biru tua dengan aksen perak dan kehadiran yang tenang.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "Hijau alami dengan corak keemasan dan elegan.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "Ungu pekat dengan kilauan merah jambu dan romantis.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "Perayaan cinta yang beragam dengan warna pelangi.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "Biru, merah muda dan putih sebagai penghormatan kepada bendera trans.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "Kuning, putih, ungu dan hitam untuk bendera non-biner.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "Oranye, putih dan merah muda dari bendera lesbian.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "Merah muda, ungu dan biru dari bendera bi.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "Merah muda, kuning dan biru dari bendera pan.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "Hitam, abu-abu, putih dan ungu dari bendera aseksual.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "Selamat datang dengan area bermain",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8197e9010ff5cd59d89a62790d9829cf",
+              "en_id_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "Selamat datang di bawah pengawasan",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8197e9010ff5cd59d89a62790d9829cf",
+              "en_id_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "Hanya untuk orang dewasa",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8197e9010ff5cd59d89a62790d9829cf",
+              "en_id_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "Tidak ada data",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "total",
+      "total",
+      null,
+      null,
+      2
+    ],
+    "barChart": [
+      "Bagan batang kehadiran",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8197e9010ff5cd59d89a62790d9829cf",
+            "en_id_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

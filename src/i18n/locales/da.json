@@ -1206,7 +1206,26 @@
   "envelope": {
     "addressLine1": "Til vores kære",
     "tapHint": "Tryk for at åbne",
-    "and": "&",
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "c20f075da290ff4ebe2bae43bebf89e7",
+            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "tapContinue": "Tryk for at fortsætte"
   },
   "calendar": {

@@ -11,20 +11,172 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "Ganuwa",
+      "Visible",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "Wani abu ya faru",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "Da fatan za a sake shigar da shafin don sake gwadawa.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "Sake kunna shafi",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "Kusa",
+        "Close",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "Tsallake zuwa babban abun ciki",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "Bar mulki",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "Gudanarwa",
+        "Administration",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "landing": {
@@ -55,8 +207,46 @@
     "todayIsWedding": "Yau ne bikin aure",
     "missing": "Ya rage",
     "todayIsTheDay": "Yau ce babbar rana!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": [
+      "Rufewa",
+      "Cover",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eyebrow": [
+      "Auren mu",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "Kwanan wata da wuri",
@@ -106,8 +296,46 @@
     "next": "Na gaba",
     "thumbnailAria": "Hoto {{number}}",
     "thumbnailAlt": "Karamin hoton gallery",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "Gidan hoton hoto, yi amfani da maɓallin kibiya don kewayawa",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "Girman hoto",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "Tabbatar da halarta",
@@ -123,7 +351,26 @@
     "menuPescado": "Kifi",
     "menuVegano": "Vegan/Mai cin ganyayyaki",
     "postre": "Kayan zaki",
-    "menuLabel": "Menu",
+    "menuLabel": [
+      "Menu",
+      "Menu",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "allergiesLegend": "Allergies da rashin haƙuri",
     "allergiesPlaceholder": "Wani allergy (ƙayyade)",
     "allergiesHint": "Nuna allergies na abinci da rashin haƙuri kawai. Kar a shigar da bayanan likita da ba a nema ba.",
@@ -138,49 +385,638 @@
     "ageUnder14Warning": "Ba ka kai shekara 14 ba. Kana buƙatar izinin iyayenka ko masu kula da kai.",
     "parentalConsent": "Iyayena ko masu kula da ni sun yarda da halartata",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "Shigar da sunan ku don tabbatar da halarta.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "Zaɓi zaɓi na menu.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "Dole ne ku yarda da Manufar Keɓantawa.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "Shigar da ranar haihuwar ku.",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "Kana kasa da shekara 14. ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "Dole ne ku yarda da sarrafa bayanan lafiyar ku.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "Nuna aƙalla zaɓin menu ɗaya.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "Shigar da sunayen abokan aikinku.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "Ba za ku iya shigar da sunaye fiye da sahabbai ba.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "Jimlar zaɓuɓɓukan menu ba za su iya wuce adadin abokan hulɗa ba.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "Na gode, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "Na gode, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "Ba mu iya ajiye martanin ku ba. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "Kun tabbata kuna son janye martanin ku?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "An janye martanin ku.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "An kasa janye martanin ku. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "Share duk amsawar halarta? ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "An share bayanan halarta.",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "An kasa share bayanan halarta.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "Sahabbai",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "Mutane",
+      "People",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountHint": [
+      "Mutane nawa ne ga kowane zaɓi ({{total}} jimlar)",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "Sunayen baƙi",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "Rubuta sunan farko da na ƙarshe na kowane abokin tarayya (max {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "Sunan mahaifiya 1, Sunan mahaifiya 2 ...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "Ana loda gayyata...",
     "notFoundTitle": "Ba a sami gayyata ba",
     "notFoundText": "Ba mu sami gayyata da wannan mahaɗin ba. Idan kana tunanin kuskure ne, tuntuɓi masu masaukin.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Bikin aure",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Ƙirƙira ka raba gayyatar aurenka na musamman.",
     "emptyDescription": "Sarrafa bayanan gayyatarka, raba mahaɗi na musamman ga baƙi kuma karɓi tabbacin halartarsu.",
     "createLink": "Ƙirƙiri gayyata",
     "privacyPolicy": "Manufar Sirri",
     "terms": "Sharuɗɗa",
     "legalNotice": "Sanarwar Shari'a",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "An kasa gano wurin nan.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "An kasa loda taswirar.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "Gudanarwa: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "Duban taswira a wurin da aka nuna.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "An saita wurin",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "Ana loda gayyata",
@@ -308,28 +1144,427 @@
     "galleryUploadFailed": "An kasa loda hotunan.",
     "noValidFiles": "Babu fayil mai inganci. Matsakaicin 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "Loda fayil mai jiwuwa don kunna kan murfin (MP3, WAV, OGG, M4A — max 5 MB).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "Loda fayil mai jiwuwa",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG ko M4A - max 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "Ba a goyan bayan tsarin sauti. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "Fayil na jiwuwa fanko ne.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "Fayil mai jiwuwa ya wuce iyakar 5 MB.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "Kuskuren karanta fayil mai jiwuwa.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "Fayil babu kowa. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "Bayanin hoto...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "Matsakaicin hotuna {{max}} a cikin gallery.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "Ana loda hotuna({total}})...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "Ana loda hoto...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "Canja hoto",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "Kuskuren adana bayanin",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "An adana bayanin",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "Kiɗa da aka zaɓa",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "Cire kiɗan",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "Ana wasa...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "Dubawa",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "Zaɓi",
+      "Select",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "selected": [
+      "zaba",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1588,66 @@
     "pdfTableCompanions": "Tare",
     "pdfTableDiet": "Abinci",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Admin",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "Duba gayyata",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "Fita",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "An tabbatar",
@@ -384,7 +1676,26 @@
     "confirms": "Tabbatarwa",
     "declines": "Ƙin yarda",
     "pending": "Masu jiran amsa",
-    "visits_one": "1 visit",
+    "visits_one": [
+      "1 ziyara",
+      "1 visit",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +1728,66 @@
     "generateMessage": "Ƙirƙiri wani saƙo",
     "copyMessage": "Kwafa saƙo",
     "shareVia": "Raba ta",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "Telegram",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Buga",
     "printPdf": "Buga / Ajiye PDF",
     "linkCopied": "An kwafa mahaɗin.",
@@ -446,9 +1814,47 @@
     "deleteButton": "Neman share bayanai",
     "exportButton": "Fitar da bayanana",
     "rightsHint": "Za a buɗe abokin imel ɗinka da samfuri da aka riga aka ƙayyade. Hakanan za ka iya rubuta zuwa adriancl2001@gmail.com.",
-    "ccpaTitle": "CCPA / CPRA (California)",
+    "ccpaTitle": [
+      "CCPA / CPRA (California)",
+      "CCPA / CPRA (California)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "ccpaText": "Wedingo ba ya sayar da bayanan sirri. Ana amfani da bayanan da aka tattara don sarrafa gayyata kaɗai. Idan kai mazaunin California ne, kana da haƙƙin neman share bayananka da kuma rashin nuna bambanci saboda amfani da haƙƙoƙinka.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Bikin aure",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Aikace-aikacen yanar gizo don sarrafa gayyatar aure.",
     "copyright": "© {{year}} Adrián Carrasco López. Dukkan haƙƙoƙi an kiyaye.",
     "deleteEmailSubject": "Neman share bayanai - Wedingo",
@@ -518,24 +1924,214 @@
     "deleteFailed": "An kasa share gayyata. Sake gwadawa.",
     "configLoadFailed": "An kasa loda tsarin. Duba haɗin ka kuma sake gwadawa.",
     "invalidLink": "Mahaɗin gayyata ba daidai ba ne.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "Bayanin masauki ba zai iya wuce haruffa 2000 ba.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "Bayanin menu ba zai iya wuce haruffa 2000 ba.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "An kasa aiwatar da hoton. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "An kasa karanta fayil ɗin hoton.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "An gaza ɓoye ɓoye hoto.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "Hoton yayi girma da yawa ko da bayan matsawa.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "Fayil babu kowa. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
-      "dashboard": "Dashboard",
+      "dashboard": [
+        "Dashboard",
+        "Dashboard",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "invitations": "Gayyata",
-      "tokens": "Tokens",
+      "tokens": [
+        "Alamu",
+        "Tokens",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "session": "Zama",
       "compliance": "Biyayya",
       "data": "Datos"
     },
-    "superadmin": "Superadmin",
+    "superadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "controlPanel": "Panel ɗin sarrafawa",
     "managePlatform": "Sarrafa dandamalin Wedingo",
     "dashboardLoading": "Ana loda ƙididdiga...",
@@ -561,7 +2157,26 @@
     "invitationsCount": "{{count}} gayyata · {{size}} sun mamaye",
     "noResultsFilter": "Ba a sami gayyata da wannan ma'auni ba.",
     "noInvitations": "Har yanzu babu gayyata.",
-    "tableToken": "Token",
+    "tableToken": [
+      "Alama",
+      "Token",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "tableTheme": "Jigo",
     "tableDate": "Kwanan bikin aure",
     "tableActions": "Ayyuka",
@@ -588,14 +2203,71 @@
     "tokenCleanError": "An kasa tsabtace tokens.",
     "tokenLoadError": "An kasa loda tokens.",
     "accountEmail": "Imel: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Mai aiki",
     "sessionInactive": "Ba ya aiki",
     "sessionLabel": "Zama na gida: {{status}}",
     "sessionType": "Nau'in: {{type}}",
-    "sessionTypeSuperadmin": "Superadmin",
+    "sessionTypeSuperadmin": [
+      "Superadmin",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionTypeSetup": "Tsari",
-    "sessionTypeAdmin": "Admin",
+    "sessionTypeAdmin": [
+      "Admin",
+      "Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionExpires": "Zai ƙare: {{date}}",
     "logoutButton": "Fita",
     "firebaseAccount": "Don sarrafa asusun superadmin ɗinka, yi amfani da na'urar sarrafawa ta Firebase:",
@@ -615,10 +2287,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Alama",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVPs",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2346,46 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "Imel",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "Kalmar wucewa",
+      "Password",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "compliance": {
     "title": "Rajistar ayyukan sarrafawa (Art. 30 GDPR)",
@@ -653,31 +2401,126 @@
     "row1Basis": "Yarda (Art. 6.1.a GDPR)",
     "row1Purpose": "Ƙirƙira da keɓance gayyatar aure",
     "row1Retention": "Muddin asusun yana aiki",
-    "row1Recipients": "Google Cloud (Firestore, hosting)",
+    "row1Recipients": [
+      "Google Cloud (Firestore, hosting)",
+      "Google Cloud (Firestore, hosting)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row2Activity": "Tabbatar da halarta (RSVP)",
     "row2Data": "Sunan baƙo, halarta (e/a'a), zaɓin menu, allergies, bayanan lafiya",
     "row2Basis": "Yarda (Art. 6.1.a, 9.2.a GDPR)",
     "row2Purpose": "Sarrafa jerin baƙi da menu",
     "row2Retention": "Watanni 12 bayan taron",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Loda hotuna",
     "row3Data": "Hotunan bikin aure (ɓoyayye AES-256-GCM)",
     "row3Basis": "Yarda (Art. 6.1.a GDPR)",
     "row3Purpose": "Gallery na hotuna a cikin gayyata",
     "row3Retention": "Watanni 12 bayan taron",
-    "row3Recipients": "Google Cloud (Firestore subcollection)",
+    "row3Recipients": [
+      "Google Cloud (Tarin Wutar Lantarki)",
+      "Google Cloud (Firestore subcollection)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row4Activity": "Tabbatarwa da zamuka",
     "row4Data": "Token zama, sunan mai amfani admin",
     "row4Basis": "Bukatar halal (Art. 6.1.f GDPR)",
     "row4Purpose": "Sarrafa shiga panel ɗin gudanarwa",
     "row4Retention": "Tsawon zama",
-    "row4Recipients": "Google Cloud (Firestore sessions)",
+    "row4Recipients": [
+      "Google Cloud (zaman Firestore)",
+      "Google Cloud (Firestore sessions)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row5Activity": "Nazarin superadmin",
     "row5Data": "Ayyukan superadmin, tokens da aka yi amfani, gayyata da aka share",
     "row5Basis": "Wajibcin shari'a (Art. 6.1.c GDPR)",
     "row5Purpose": "Rubutun ayyukan gudanarwa",
     "row5Retention": "Shekaru 3",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Canja wurin ƙasa da ƙasa",
     "internationalText": "Ana ajiye bayanai a sabobin Google Cloud a yankin eur3 (Frankfurt, Jamus). Google LLC (Amurka) yana aiki azaman mai sarrafa bayanai ƙarƙashin DPA bisa ga Art. 28 GDPR. Canja wurin zuwa Amurka yana da kariya ta:",
     "scc": "Ƙa'idodin Kwangila na Standard (SCC) - Shawarar Zartarwa 2021/914",
@@ -691,86 +2534,1359 @@
     "measureSuperadmin": "Superadmin yana da kariya ta Firebase Authentication + ɓoyayyen hanya"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "Dama",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Kusa",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontSize": [
+      "Girman rubutu",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "Na al'ada",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontLarge": [
+      "Babba",
+      "Large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontExtraLarge": [
+      "Babban babba",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "Tazarar layi",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "Na al'ada",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineWide": [
+      "Fadi",
+      "Wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineVeryWide": [
+      "Fadi sosai",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "Babban bambanci",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "Rage motsi",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "BudeDyslexic font",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "Ƙarin tazarar haruffa",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "A ja layi layi akan duk hanyoyin haɗin gwiwa",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "Babban siginan kwamfuta",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "Girman launin toka",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "Manufofin mayar da hankali ga bayyane",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "Babu kiɗa",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "Kuskuren lodawa",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "Kiɗa",
+      "Music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "soundCloudNote": [
+      "Waƙar SoundCloud - buɗe don kunnawa",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "Bude a cikin SoundCloud",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "Ana shirin bugawa…",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "Hoton ma'aurata",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "Tare da albarkar iyayengijinsu",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "Kwanan wata da wuri",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "Lokacin bikin:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Duba wuri a cikin Google Maps",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "Muna fatan raba wannan lokacin na musamman tare da ku.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "Sufuri",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutGuests": [
+      "Game da baƙi",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "Jadawalin bikin aure",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "Za a raba cikakken jadawalin nan ba da jimawa ba.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "Lambar sutura",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "Za a sanar da shi daga baya.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "Game da yara",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "Labarin mu",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "Yadda aka fara",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "Nan ba da jimawa ba za a ba da labarin.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "Kyauta",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "Kasancewar ku ita ce mafi kyawun kyauta",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "Za a raba bayanin kyauta nan ba da jimawa ba.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "Bayanan banki",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "masauki",
+      "Accommodation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "whereToStay": [
+      "Inda zan tsaya",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "Za a raba bayanin masauki nan ba da jimawa ba.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · Manufar Sirri a wedingo-6c26a.web.app",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "Rufe taga",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": [
+      "Matsa sama",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "Matsa ƙasa",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "title": [
+      "Oda & ganuwa",
+      "Order & visibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "help": [
+      "Ja don sake tsarawa, yi amfani da maɓallan don motsawa, kuma kunna ko kashe kowane sashe.",
+      "Drag to reorder, use the buttons to move, and toggle each section on or off.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "Zaɓi harshe",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 sahabi",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "Spain",
+      "Spain",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "westernEurope": [
+      "Yammacin Turai",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "Arewacin Turai",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "Tsakiyar Turai",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "Kudancin Turai / Balkans",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "Gabashin Turai / Caucasus",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "Gabashin Asiya",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "Kudancin Asiya",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "Kudu maso gabashin Asiya",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "Asiya ta Tsakiya / Gabas ta Tsakiya",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "Afirka",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "Amurkawa",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +3903,1708 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": [
+      "Canji",
+      "Changelog",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Kusa",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "Akwai riga mai aiki don wannan gayyatar. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "Lambar shiga ba ta aiki.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "Shigar da lambar shiga.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "An tabbatar da lambar cikin nasara.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "An kasa tabbatar da lambar. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "Shigar da sunan mai amfani da lambar shiga.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "Sunan mai amfani ko lambar da ba daidai ba.",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "Lambar ba ta dace da wannan mai amfani ba.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "Kun shiga cikin nasara.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "An kasa tabbatar da lambar. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "Buga CONFIRM don samar da sabuwar lamba.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "Shigar da sunan mai amfani da farko.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "Sunan mai amfani zai iya ƙunsar haruffa da lambobi kawai.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "Sunan mai amfani ba zai iya wuce haruffa 50 ba.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "Wannan mai amfani bashi da izinin shiga nan.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "An ƙirƙira lambar. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "An kasa samar da lambar. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "Shigar da lambar shiga ta yanzu don samar da wata sabuwa.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "An samar da sabuwar lamba ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "An sabunta lambar. ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "Wannan asusun bashi da izinin gudanarwa.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "Bayanan shaidar da ba daidai ba.",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "Ƙoƙari da yawa. ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "Tsarin imel ɗin baya aiki.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "Kuskuren shiga. Duba haɗin yanar gizon ku.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": [
+      "An adana canje-canje",
+      "Changes saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": [
+      "Janairu",
+      "January",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "2": [
+      "Fabrairu",
+      "February",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "3": [
+      "Maris",
+      "March",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "4": [
+      "Afrilu",
+      "April",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "5": [
+      "Mayu",
+      "May",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "6": [
+      "Yuni",
+      "June",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "7": [
+      "Yuli",
+      "July",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "8": [
+      "Agusta",
+      "August",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "9": [
+      "Satumba",
+      "September",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "10": [
+      "Oktoba",
+      "October",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "11": [
+      "Nuwamba",
+      "November",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "12": [
+      "Disamba",
+      "December",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": [
+      "Hasken jigogi",
+      "Light themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dark": [
+      "Jigogi masu duhu",
+      "Dark themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": [
+      "Gluten",
+      "Gluten",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lactose": [
+      "Lactose",
+      "Lactose",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nuts": [
+      "Itace kwayoyi",
+      "Tree nuts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "shellfish": [
+      "Shellfish",
+      "Shellfish",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "Zuwa ga masoyin mu",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "Matsa don buɗewa",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "Matsa don ci gaba",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "Auren mu",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "Bikin aure na {{names}}",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "Wurin da za a tabbatar",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "Muna sa ran yin bikin wannan lokaci na musamman tare da ku.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "Lokaci:",
+      "Time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeLabel": [
+      "Wuri:",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "M da haske, tare da lafazin zinare.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "Na halitta da natsuwa tare da ganye mai laushi.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "Dumi da m, tare da ruwan hoda launuka.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "Haske da tsaka tsaki, tare da kwanciyar hankali da kasancewar maras lokaci.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "M da romantic, tare da lu'u-lu'u ruwan hoda sautunan.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "Sabo da kwanciyar hankali, tare da lavender da mauve launuka.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "Haskaka da biki, tare da ɗumi na zinariya kyalkyali.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "Dark da m, tare da amber da zinariya karin bayanai.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "Zurfafa da nagartaccen, tare da zinare mai tsanani akan bangon duhu.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "Bakin shuɗi mai duhu sosai tare da gwal mai tsananin gaske da kasancewarsa na musamman.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "Dumi da lulluɓe, tare da jan giya da walƙiya na zinariya.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "Zurfin shuɗi tare da lafazin azurfa da kasancewar nutsuwa.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "Zurfin halitta kore tare da zinariya da m hues.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "M purple mai ruwan hoda da romantic sparkles.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "Bikin soyayya iri-iri tare da launukan bakan gizo.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "Blue, ruwan hoda da fari a cikin girmamawa ga tuta ta trans.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "Yellow, fari, shunayya da baki don tuta mara binary.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "Lemu, fari da ruwan hoda na tutar madigo.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "Pink, purple da shuɗi na tutar bi.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "Pink, rawaya da shuɗi na tutar kwanon rufi.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "Black, launin toka, fari da shunayya na tutar asexual.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "Barka da zuwa filin wasa",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "Barka da kulawa",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "Manya kawai",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "cd0b36f34f203ad0265a2614fda8168d",
+              "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "Babu bayanai",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "duka",
+      "total",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "barChart": [
+      "ginshiƙi mashaya halayya",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "cd0b36f34f203ad0265a2614fda8168d",
+            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

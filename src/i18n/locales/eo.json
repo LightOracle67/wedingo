@@ -1019,7 +1019,26 @@
   "envelope": {
     "addressLine1": "Al nia plej kara",
     "tapHint": "Frapu por malfermi",
-    "and": "&",
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "36ab1f45365dc899debd4d40bafba100",
+            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "tapContinue": "Frapu por daŭrigi"
   },
   "calendar": {

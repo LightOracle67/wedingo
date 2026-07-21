@@ -11,20 +11,133 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "Visível",
+      "Visible",
+      null,
+      null,
+      2
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "Algo deu errado",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "66379e56ded86dd057796dbeaebad517",
+              "en_pt_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "Atualize a página para tentar novamente.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "66379e56ded86dd057796dbeaebad517",
+              "en_pt_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "Recarregar página",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "66379e56ded86dd057796dbeaebad517",
+              "en_pt_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "Fechar",
+        "Close",
+        null,
+        null,
+        10
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "Pular para o conteúdo principal",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "Barra de administração",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "66379e56ded86dd057796dbeaebad517",
+              "en_pt_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "Administração",
+        "Administration",
+        null,
+        null,
+        2
+      ]
     }
   },
   "landing": {
@@ -56,7 +169,26 @@
     "missing": "Faltam",
     "todayIsTheDay": "Hoje é o grande dia!",
     "sectionLabel": "Capa",
-    "eyebrow": "Our Wedding"
+    "eyebrow": [
+      "Nosso casamento",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "Data e local",
@@ -106,8 +238,46 @@
     "next": "Seguinte",
     "thumbnailAria": "Foto {{number}}",
     "thumbnailAlt": "Miniatura de foto da galeria",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "Galeria de imagens, use as setas para navegar",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "Imagem ampliada",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "Confirmação de presença",
@@ -123,7 +293,13 @@
     "menuPescado": "Peixe",
     "menuVegano": "Vegano/Vegetariano",
     "postre": "Sobremesa",
-    "menuLabel": "Menu",
+    "menuLabel": [
+      "Menu",
+      "Menu",
+      null,
+      null,
+      2
+    ],
     "allergiesLegend": "Alergias e intolerâncias",
     "allergiesPlaceholder": "Outra alergia (especificar)",
     "allergiesHint": "Indica apenas alergias e intolerâncias alimentares. Não introduzas informação médica não solicitada.",
@@ -144,10 +320,86 @@
       "birthDateRequired": "Introduza a sua data de nascimento.",
       "ageUnder14": "Tem menos de 14 anos. Precisa do consentimento dos seus pais ou tutores.",
       "healthConsentRequired": "Deve consentir o tratamento dos seus dados de saúde.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "menuHeadcountRequired": [
+        "Indique pelo menos uma opção de menu.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "66379e56ded86dd057796dbeaebad517",
+              "en_pt_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "Digite os nomes de seus companheiros.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "66379e56ded86dd057796dbeaebad517",
+              "en_pt_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "Você não pode inserir mais nomes além de acompanhantes.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "66379e56ded86dd057796dbeaebad517",
+              "en_pt_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "A soma das opções do cardápio não pode ultrapassar o número de acompanhantes.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "66379e56ded86dd057796dbeaebad517",
+              "en_pt_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     },
     "successAttending": "Obrigado, {{name}}. A sua presença foi registada.",
     "successNotAttending": "Obrigado, {{name}}. Lamentamos que não possa comparecer.",
@@ -158,29 +410,244 @@
     "clearConfirm": "Eliminar todas as respostas de presença? Esta ação não pode ser desfeita.",
     "clearSuccess": "Registo de presença limpo.",
     "clearError": "Não foi possível limpar o registo de presença.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "companionsLabel": [
+      "Companheiros",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "Pessoas",
+      "People",
+      null,
+      null,
+      10
+    ],
+    "headcountHint": [
+      "Quantas pessoas para cada opção ({{total}} no total)",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "Nomes de convidados",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "Escreva o nome e o sobrenome de cada acompanhante (máx. {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "Nome1 Sobrenome1, Nome2 Sobrenome2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "Carregando convite…",
     "notFoundTitle": "Convite não encontrado",
     "notFoundText": "Não encontramos um convite com este link. Se achas que é um erro, contacta os anfitriões.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Cria e partilha o teu convite de casamento personalizado.",
     "emptyDescription": "Gerencia os dados do teu convite, partilha um link único com os teus convidados e recebe as confirmações de presença.",
     "createLink": "Criar convite",
     "privacyPolicy": "Política de Privacidade",
     "terms": "Termos",
     "legalNotice": "Aviso Legal",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "Não foi possível localizar este local.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "Não foi possível carregar o mapa.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "Coordenadas: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "Visualização do mapa no local indicado.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "Local configurado",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "Carregando convite",
@@ -308,28 +775,401 @@
     "galleryUploadFailed": "Não foi possível carregar as fotos.",
     "noValidFiles": "Nenhum ficheiro válido. Máximo 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "Carregue um arquivo de áudio para reproduzir na capa (MP3, WAV, OGG, M4A — máximo 5 MB).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "Carregar arquivo de áudio",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG ou M4A — máximo 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "Formato de áudio não suportado. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "O arquivo de áudio está vazio.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "O arquivo de áudio excede o limite de 5 MB.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "Erro ao ler o arquivo de áudio.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "O arquivo está vazio. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "Descrição da imagem...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "Máximo de {{max}} imagens na galeria.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "Enviando {{total}} fotos...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "Carregando foto...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "Alterar foto",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "Erro ao salvar a descrição",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "Descrição salva",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "Música selecionada",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "Remover música",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "Jogando...",
+      "Playing...",
+      null,
+      null,
+      10
+    ],
+    "preview": [
+      "Visualização",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "Selecione",
+      "Select",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "selected": [
+      "Selecionado",
+      "Selected",
+      null,
+      null,
+      2
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1193,66 @@
     "pdfTableCompanions": "Acomp.",
     "pdfTableDiet": "Dieta",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Administrador",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "Ver convite",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "Sair",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "Confirmados",
@@ -417,9 +1314,40 @@
     "generateMessage": "Gerar outra mensagem",
     "copyMessage": "Copiar mensagem",
     "shareVia": "Partilhar por",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "Telegrama",
+      "Telegram",
+      null,
+      null,
+      2
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      10
+    ],
     "print": "Imprimir",
     "printPdf": "Imprimir / Guardar PDF",
     "linkCopied": "Link copiado.",
@@ -448,7 +1376,26 @@
     "rightsHint": "O teu cliente de email abrirá com um modelo pré-definido. Também podes escrever para adriancl2001@gmail.com.",
     "ccpaTitle": "CCPA / CPRA (Califórnia)",
     "ccpaText": "O Wedingo não vende dados pessoais. Os dados recolhidos são usados exclusivamente para a gestão do convite. Se és residente na Califórnia, tens direito a solicitar a eliminação dos teus dados e a não ser discriminado(a) por exerceres os teus direitos.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Aplicação web para gestão de convites de casamento.",
     "copyright": "© {{year}} Adrián Carrasco López. Todos os direitos reservados.",
     "deleteEmailSubject": "Pedido de eliminação de dados - Wedingo",
@@ -518,24 +1465,195 @@
     "deleteFailed": "Não foi possível eliminar o convite. Tenta novamente.",
     "configLoadFailed": "Não foi possível carregar a configuração. Verifica a ligação e tenta novamente.",
     "invalidLink": "O link do convite não é válido.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "As informações da acomodação não podem exceder 2.000 caracteres.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "A descrição do menu não pode exceder 2.000 caracteres.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "Não foi possível processar a imagem. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "Não foi possível ler o arquivo de imagem.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "A criptografia da imagem falhou.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "A imagem fica muito grande mesmo após a compactação.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "O arquivo está vazio. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
       "dashboard": "Painel",
       "invitations": "Convites",
-      "tokens": "Tokens",
+      "tokens": [
+        "Fichas",
+        "Tokens",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "66379e56ded86dd057796dbeaebad517",
+              "en_pt_2023q1.md"
+            ]
+          ]
+        ]
+      ],
       "session": "Sessão",
       "compliance": "Conformidade",
       "data": "Datos"
     },
-    "superadmin": "Superadmin",
+    "superadmin": [
+      "Superadministrador",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "controlPanel": "Painel de controlo",
     "managePlatform": "Gerencia a plataforma Wedingo",
     "dashboardLoading": "Carregando estatísticas...",
@@ -561,7 +1679,26 @@
     "invitationsCount": "{{count}} convite(s) · {{size}} ocupados",
     "noResultsFilter": "Não foram encontrados convites com esse critério.",
     "noInvitations": "Ainda não há convites.",
-    "tableToken": "Token",
+    "tableToken": [
+      "Símbolo",
+      "Token",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "tableTheme": "Tema",
     "tableDate": "Data casamento",
     "tableActions": "Ações",
@@ -587,15 +1724,97 @@
     "tokenRevokeError": "Não foi possível revogar o token.",
     "tokenCleanError": "Não foi possível limpar os tokens.",
     "tokenLoadError": "Não foi possível carregar os tokens.",
-    "accountEmail": "Email: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountEmail": [
+      "E-mail: {{e-mail}}",
+      "Email: {{email}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Ativa",
     "sessionInactive": "Inativa",
     "sessionLabel": "Sessão local: {{status}}",
     "sessionType": "Tipo: {{type}}",
-    "sessionTypeSuperadmin": "Superadmin",
-    "sessionTypeSetup": "Setup",
-    "sessionTypeAdmin": "Admin",
+    "sessionTypeSuperadmin": [
+      "Superadministrador",
+      "Superadmin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "sessionTypeSetup": [
+      "Configurar",
+      "Setup",
+      null,
+      null,
+      10
+    ],
+    "sessionTypeAdmin": [
+      "Administrador",
+      "Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "sessionExpires": "Expira: {{date}}",
     "logoutButton": "Encerrar sessão",
     "firebaseAccount": "Para gerir a tua conta de superadmin, usa a consola do Firebase:",
@@ -615,10 +1834,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Símbolo",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "66379e56ded86dd057796dbeaebad517",
+              "en_pt_2023q1.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "Confirmações de presença",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "66379e56ded86dd057796dbeaebad517",
+              "en_pt_2023q1.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +1893,20 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "E-mail",
+      "Email",
+      null,
+      null,
+      10
+    ],
+    "passwordLabel": [
+      "Senha",
+      "Password",
+      null,
+      null,
+      10
+    ]
   },
   "compliance": {
     "title": "Registo de atividades de tratamento (Art. 30 GDPR)",
@@ -653,31 +1922,126 @@
     "row1Basis": "Consentimento (Art. 6.1.a GDPR)",
     "row1Purpose": "Criar e personalizar convite de casamento",
     "row1Retention": "Enquanto a conta estiver ativa",
-    "row1Recipients": "Google Cloud (Firestore, hosting)",
+    "row1Recipients": [
+      "Google Cloud (Firestore, hospedagem)",
+      "Google Cloud (Firestore, hosting)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "row2Activity": "Confirmação de presença (RSVP)",
     "row2Data": "Nome do convidado, presença (sim/não), seleção de menu, alergias, dados de saúde",
     "row2Basis": "Consentimento (Art. 6.1.a, 9.2.a GDPR)",
     "row2Purpose": "Gerir lista de convidados e menu",
     "row2Retention": "12 meses após o evento",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Carregamento de imagens",
     "row3Data": "Fotos de casamento (cifradas AES-256-GCM)",
     "row3Basis": "Consentimento (Art. 6.1.a GDPR)",
     "row3Purpose": "Galeria de fotos no convite",
     "row3Retention": "12 meses após o evento",
-    "row3Recipients": "Google Cloud (Firestore subcollection)",
+    "row3Recipients": [
+      "Google Cloud (subcoleção Firestore)",
+      "Google Cloud (Firestore subcollection)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "row4Activity": "Autenticação e sessões",
     "row4Data": "Token de sessão, nome de utilizador admin",
     "row4Basis": "Interesse legítimo (Art. 6.1.f GDPR)",
     "row4Purpose": "Controlar acesso ao painel de administração",
     "row4Retention": "Duração da sessão",
-    "row4Recipients": "Google Cloud (Firestore sessions)",
+    "row4Recipients": [
+      "Google Cloud (sessões do Firestore)",
+      "Google Cloud (Firestore sessions)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "row5Activity": "Auditoria de superadmin",
     "row5Data": "Ações de superadmin, tokens usados, convites eliminados",
     "row5Basis": "Obrigação legal (Art. 6.1.c GDPR)",
     "row5Purpose": "Registo de atividades administrativas",
     "row5Retention": "3 anos",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (log de auditoria do Firestore)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Transferências internacionais",
     "internationalText": "Os dados são armazenados em servidores da Google Cloud na região eur3 (Frankfurt, Alemanha). A Google LLC (EUA) atua como subcontratante ao abrigo de DPA conforme o Art. 28 GDPR. As transferências para os EUA são amparadas por:",
     "scc": "Cláusulas Contratuais Tipo (SCC) - Decisão de Execução 2021/914",
@@ -694,11 +2058,23 @@
     "title": "Acessibilidade",
     "close": "Fechar",
     "fontSize": "Tamanho do texto",
-    "fontNormal": "Normal",
+    "fontNormal": [
+      "Normal",
+      "Normal",
+      null,
+      null,
+      10
+    ],
     "fontLarge": "Grande",
     "fontExtraLarge": "Extra grande",
     "lineSpacing": "Espaçamento entre linhas",
-    "lineNormal": "Normal",
+    "lineNormal": [
+      "Normal",
+      "Normal",
+      null,
+      null,
+      10
+    ],
     "lineWide": "Largo",
     "lineVeryWide": "Muito largo",
     "highContrast": "Alto contraste",
@@ -714,8 +2090,46 @@
     "noMusic": "Sem música",
     "loadError": "Erro ao carregar",
     "label": "Música",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "soundCloudNote": [
+      "Faixa do SoundCloud – aberta para tocar",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "Abrir no SoundCloud",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
     "preparing": "Preparando impressão…",
@@ -755,22 +2169,243 @@
     "label": "Selecionar idioma"
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 acompanhante",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "Espanha",
+      "Spain",
+      null,
+      null,
+      2
+    ],
+    "westernEurope": [
+      "Europa Ocidental",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "Europa Nórdica",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "Europa Central",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "Sul da Europa / Balcãs",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "Europa Oriental / Cáucaso",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "Leste Asiático",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "Sul da Ásia",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "Sudeste Asiático",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "Ásia Central/Oriente Médio",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "África",
+      "Africa",
+      null,
+      null,
+      2
+    ],
+    "americas": [
+      "Américas",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} ano",
@@ -837,62 +2472,751 @@
   "themeGroups": {
     "light": "Temas claros",
     "dark": "Temas escuros",
-    "lgbtiq": "LGTBIQ+"
+    "lgbtiq": [
+      "LGTBQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
     "gluten": "Glúten",
-    "lactose": "Lactose",
+    "lactose": [
+      "Lactose",
+      "Lactose",
+      null,
+      null,
+      2
+    ],
     "nuts": "Frutos secos",
     "shellfish": "Mariscos"
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "Para o nosso querido",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "Toque para abrir",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "Toque para continuar",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "Nosso casamento",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "Casamento de {{nomes}}",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "Local a confirmar",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "Estamos ansiosos para celebrar esse momento especial com você.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "Tempo:",
+      "Time:",
+      null,
+      null,
+      10
+    ],
+    "placeLabel": [
+      "Local:",
+      "Venue:",
+      null,
+      null,
+      10
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "Elegante e brilhante, com detalhes dourados.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "Natural e sóbrio com verdes suaves.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "Quente e delicado, com tons rosados.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "Leve e neutro, com uma presença serena e intemporal.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "Suave e romântico, com tons rosa perolados.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "Fresco e sereno, com tons de lavanda e malva.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "Brilhante e festivo, com brilhos dourados quentes.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "Escuro e elegante, com reflexos âmbar e dourado.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "Profundo e sofisticado, com ouro intenso sobre fundo escuro.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "Azul muito escuro com dourado intenso e presença solene.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "Quente e envolvente, com vinho tinto e brilhos dourados.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "Azul profundo com detalhes prateados e presença serena.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "Verde natural profundo com tons dourados e elegantes.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "Roxo intenso com brilhos rosa e românticos.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "Celebração de amores diversos com cores do arco-íris.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "Azul, rosa e branco em homenagem à bandeira trans.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "Amarelo, branco, roxo e preto para a bandeira não binária.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "Laranja, branco e rosa da bandeira lésbica.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "Rosa, roxo e azul da bandeira bi.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "Rosa, amarelo e azul da bandeira pan.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "Preto, cinza, branco e roxo da bandeira assexuada.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "Bem-vindo com área de lazer",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "66379e56ded86dd057796dbeaebad517",
+              "en_pt_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "Bem-vindo sob supervisão",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "66379e56ded86dd057796dbeaebad517",
+              "en_pt_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "Somente adultos",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "66379e56ded86dd057796dbeaebad517",
+              "en_pt_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "Sem dados",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "total",
+      "total",
+      null,
+      null,
+      2
+    ],
+    "barChart": [
+      "Gráfico de barras de presença",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "66379e56ded86dd057796dbeaebad517",
+            "en_pt_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

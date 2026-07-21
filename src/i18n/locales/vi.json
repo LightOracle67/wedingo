@@ -11,20 +11,133 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "Dễ thấy",
+      "Visible",
+      null,
+      null,
+      10
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "Đã xảy ra lỗi",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "824257d7a249c58caeea06a2e64a25bd",
+              "en_vi_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "Vui lòng tải lại trang để thử lại.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "824257d7a249c58caeea06a2e64a25bd",
+              "en_vi_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "Tải lại trang",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "824257d7a249c58caeea06a2e64a25bd",
+              "en_vi_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "Đóng",
+        "Close",
+        null,
+        null,
+        10
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "Chuyển đến nội dung chính",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "Thanh quản trị",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "824257d7a249c58caeea06a2e64a25bd",
+              "en_vi_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "Sự quản lý",
+        "Administration",
+        null,
+        null,
+        10
+      ]
     }
   },
   "landing": {
@@ -56,7 +169,26 @@
     "missing": "Còn",
     "todayIsTheDay": "Hôm nay là ngày trọng đại!",
     "sectionLabel": "Bìa",
-    "eyebrow": "Our Wedding"
+    "eyebrow": [
+      "Đám cưới của chúng tôi",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "Ngày và địa điểm",
@@ -106,8 +238,46 @@
     "next": "Tiếp",
     "thumbnailAria": "Ảnh {{number}}",
     "thumbnailAlt": "Ảnh thu nhỏ trong thư viện",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "Thư viện hình ảnh, sử dụng phím mũi tên để điều hướng",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "Hình ảnh phóng to",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "Xác nhận tham dự",
@@ -138,49 +308,625 @@
     "ageUnder14Warning": "Bạn dưới 14 tuổi. Bạn cần sự đồng ý của cha mẹ hoặc người giám hộ.",
     "parentalConsent": "Cha mẹ hoặc người giám hộ của tôi đồng ý cho tôi tham gia",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "Nhập tên của bạn để xác nhận tham dự.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "824257d7a249c58caeea06a2e64a25bd",
+              "en_vi_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "Chọn một tùy chọn menu.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "824257d7a249c58caeea06a2e64a25bd",
+              "en_vi_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "Bạn phải chấp nhận Chính sách quyền riêng tư.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "824257d7a249c58caeea06a2e64a25bd",
+              "en_vi_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "Nhập ngày sinh của bạn.",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "824257d7a249c58caeea06a2e64a25bd",
+              "en_vi_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "Bạn dưới 14 tuổi. ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "824257d7a249c58caeea06a2e64a25bd",
+              "en_vi_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "Bạn phải đồng ý với việc xử lý dữ liệu sức khỏe của bạn.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "824257d7a249c58caeea06a2e64a25bd",
+              "en_vi_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "Cho biết ít nhất một tùy chọn menu.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "824257d7a249c58caeea06a2e64a25bd",
+              "en_vi_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "Nhập tên của những người bạn đồng hành của bạn.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "824257d7a249c58caeea06a2e64a25bd",
+              "en_vi_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "Bạn không thể nhập nhiều tên hơn bạn đồng hành.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "824257d7a249c58caeea06a2e64a25bd",
+              "en_vi_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "Tổng số tùy chọn menu không thể vượt quá số lượng bạn đồng hành.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "824257d7a249c58caeea06a2e64a25bd",
+              "en_vi_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "Cảm ơn bạn, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "Cảm ơn bạn, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "Chúng tôi không thể lưu câu trả lời của bạn. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "Bạn có chắc chắn muốn rút lại phản hồi của mình không?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "Phản hồi của bạn đã được rút lại.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "Không thể rút lại phản hồi của bạn. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "Xóa tất cả câu trả lời về điểm danh? ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "Đã xóa hồ sơ tham dự.",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "Không thể xóa hồ sơ điểm danh.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "đồng hành",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "Mọi người",
+      "People",
+      null,
+      null,
+      10
+    ],
+    "headcountHint": [
+      "Có bao nhiêu người cho mỗi lựa chọn (tổng cộng {{total}})",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "Tên khách",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "Viết họ và tên của từng người đi cùng (tối đa {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "Tên1 Họ1, Tên2 Họ2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "Đang tải thiệp mời…",
     "notFoundTitle": "Không tìm thấy thiệp mời",
     "notFoundText": "Chúng tôi không tìm thấy thiệp mời với liên kết này. Nếu bạn nghĩ đây là lỗi, hãy liên hệ với chủ tiệc.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Tạo và chia sẻ thiệp cưới tùy chỉnh của bạn.",
     "emptyDescription": "Quản lý dữ liệu thiệp mời, chia sẻ liên kết độc quyền với khách mời và nhận xác nhận tham dự.",
     "createLink": "Tạo thiệp mời",
     "privacyPolicy": "Chính sách bảo mật",
     "terms": "Điều khoản",
     "legalNotice": "Thông báo pháp lý",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "Không thể xác định được địa điểm này.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "Không thể tải bản đồ.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "Tọa độ: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "Xem trước bản đồ tại vị trí được chỉ định.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "Đã định cấu hình vị trí",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "Đang tải thiệp mời",
@@ -308,28 +1054,414 @@
     "galleryUploadFailed": "Không thể tải ảnh lên.",
     "noValidFiles": "Không có tệp hợp lệ. Tối đa 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "Tải lên tệp âm thanh để phát trên bìa (MP3, WAV, OGG, M4A - tối đa 5 MB).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "Tải lên tập tin âm thanh",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG hoặc M4A - tối đa 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "Định dạng âm thanh không được hỗ trợ. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "Tệp âm thanh trống.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "Tệp âm thanh vượt quá giới hạn 5 MB.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "Lỗi đọc file âm thanh.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "Tập tin trống. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "Mô tả hình ảnh...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "Tối đa {{max}} hình ảnh trong thư viện.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "Đang tải lên {{total}} ảnh...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "Đang tải ảnh lên...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "Thay đổi ảnh",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "Lỗi lưu mô tả",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "Đã lưu mô tả",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "Nhạc đã chọn",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "Xóa nhạc",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "Đang chơi...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "Xem trước",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "Lựa chọn",
+      "Select",
+      null,
+      null,
+      10
+    ],
+    "selected": [
+      "Đã chọn",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1485,66 @@
     "pdfTableCompanions": "Đi cùng",
     "pdfTableDiet": "Ăn uống",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Quản trị viên",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "Xem lời mời",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "Đăng xuất",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "Đã xác nhận",
@@ -417,9 +1606,66 @@
     "generateMessage": "Tạo lời nhắn khác",
     "copyMessage": "Sao chép lời nhắn",
     "shareVia": "Chia sẻ qua",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "điện tín",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "tin nhắn SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "print": "In",
     "printPdf": "In / Lưu PDF",
     "linkCopied": "Đã sao chép liên kết.",
@@ -446,9 +1692,47 @@
     "deleteButton": "Yêu cầu xóa dữ liệu",
     "exportButton": "Xuất dữ liệu của tôi",
     "rightsHint": "Ứng dụng email của bạn sẽ mở ra với mẫu được định sẵn. Bạn cũng có thể viết thư đến adriancl2001@gmail.com.",
-    "ccpaTitle": "CCPA / CPRA (California)",
+    "ccpaTitle": [
+      "CCPA / CPRA (California)",
+      "CCPA / CPRA (California)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "ccpaText": "Wedingo không bán dữ liệu cá nhân. Dữ liệu thu thập chỉ được sử dụng để quản lý thiệp mời. Nếu bạn là cư dân California, bạn có quyền yêu cầu xóa dữ liệu của mình và không bị phân biệt đối xử khi thực hiện quyền của mình.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Ứng dụng web quản lý thiệp mời cưới.",
     "copyright": "© {{year}} Adrián Carrasco López. Đã đăng ký bản quyền.",
     "deleteEmailSubject": "Yêu cầu xóa dữ liệu - Wedingo",
@@ -518,13 +1802,146 @@
     "deleteFailed": "Không thể xóa thiệp mời. Thử lại.",
     "configLoadFailed": "Không thể tải cấu hình. Kiểm tra kết nối và thử lại.",
     "invalidLink": "Liên kết thiệp mời không hợp lệ.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "Thông tin chỗ ở không thể vượt quá 2000 ký tự.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "Mô tả menu không thể vượt quá 2000 ký tự.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "Không thể xử lý hình ảnh. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "Không thể đọc được tập tin hình ảnh.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "Mã hóa hình ảnh không thành công.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "Hình ảnh quá lớn ngay cả sau khi nén.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "Tập tin trống. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -587,8 +2004,46 @@
     "tokenRevokeError": "Không thể thu hồi mã.",
     "tokenCleanError": "Không thể dọn mã.",
     "tokenLoadError": "Không thể tải mã.",
-    "accountEmail": "Email: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountEmail": [
+      "Email: {{email}}",
+      "Email: {{email}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Hoạt động",
     "sessionInactive": "Không hoạt động",
     "sessionLabel": "Phiên cục bộ: {{status}}",
@@ -615,10 +2070,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Mã thông báo",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "824257d7a249c58caeea06a2e64a25bd",
+              "en_vi_2023q1.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "Trả lời",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "824257d7a249c58caeea06a2e64a25bd",
+              "en_vi_2023q1.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2129,20 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "E-mail",
+      "Email",
+      null,
+      null,
+      2
+    ],
+    "passwordLabel": [
+      "Mật khẩu",
+      "Password",
+      null,
+      null,
+      10
+    ]
   },
   "compliance": {
     "title": "Sổ đăng ký hoạt động xử lý (Điều 30 GDPR)",
@@ -653,31 +2158,126 @@
     "row1Basis": "Sự đồng ý (Điều 6.1.a GDPR)",
     "row1Purpose": "Tạo và tùy chỉnh thiệp cưới",
     "row1Retention": "Khi tài khoản còn hoạt động",
-    "row1Recipients": "Google Cloud (Firestore, hosting)",
+    "row1Recipients": [
+      "Google Cloud (Firestore, lưu trữ)",
+      "Google Cloud (Firestore, hosting)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "row2Activity": "Xác nhận tham dự (RSVP)",
     "row2Data": "Tên khách, tham dự (có/không), chọn thực đơn, dị ứng, dữ liệu sức khỏe",
     "row2Basis": "Sự đồng ý (Điều 6.1.a, 9.2.a GDPR)",
     "row2Purpose": "Quản lý danh sách khách và thực đơn",
     "row2Retention": "12 tháng sau sự kiện",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Đám mây của Google (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Tải ảnh lên",
     "row3Data": "Ảnh cưới (mã hóa AES-256-GCM)",
     "row3Basis": "Sự đồng ý (Điều 6.1.a GDPR)",
     "row3Purpose": "Thư viện ảnh trong thiệp mời",
     "row3Retention": "12 tháng sau sự kiện",
-    "row3Recipients": "Google Cloud (Firestore subcollection)",
+    "row3Recipients": [
+      "Google Cloud (Bộ sưu tập phụ của Firestore)",
+      "Google Cloud (Firestore subcollection)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "row4Activity": "Xác thực và phiên",
     "row4Data": "Mã phiên, tên người dùng quản trị",
     "row4Basis": "Lợi ích hợp pháp (Điều 6.1.f GDPR)",
     "row4Purpose": "Kiểm soát truy cập bảng điều khiển quản trị",
     "row4Retention": "Thời gian phiên",
-    "row4Recipients": "Google Cloud (Firestore sessions)",
+    "row4Recipients": [
+      "Google Cloud (phiên Firestore)",
+      "Google Cloud (Firestore sessions)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "row5Activity": "Kiểm toán quản trị viên",
     "row5Data": "Hành động quản trị viên, mã đã dùng, thiệp đã xóa",
     "row5Basis": "Nghĩa vụ pháp lý (Điều 6.1.c GDPR)",
     "row5Purpose": "Ghi chép hoạt động quản trị",
     "row5Retention": "3 năm",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Nhật ký kiểm tra Firestore)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Chuyển dữ liệu quốc tế",
     "internationalText": "Dữ liệu được lưu trữ trên máy chủ Google Cloud tại khu vực eur3 (Frankfurt, Đức). Google LLC (Hoa Kỳ) đóng vai trò là bên xử lý dữ liệu theo DPA phù hợp với Điều 28 GDPR. Việc chuyển dữ liệu sang Hoa Kỳ dựa trên:",
     "scc": "Điều khoản Hợp đồng Tiêu chuẩn (SCC) - Quyết định Thực thi 2021/914",
@@ -691,86 +2291,1191 @@
     "measureSuperadmin": "Quản trị viên được bảo vệ bởi Firebase Authentication + tuyến đường ẩn"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "Khả năng tiếp cận",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Đóng",
+      "Close",
+      null,
+      null,
+      10
+    ],
+    "fontSize": [
+      "Kích thước văn bản",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "Bình thường",
+      "Normal",
+      null,
+      null,
+      10
+    ],
+    "fontLarge": [
+      "Lớn",
+      "Large",
+      null,
+      null,
+      10
+    ],
+    "fontExtraLarge": [
+      "Cực lớn",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "Khoảng cách dòng",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "Bình thường",
+      "Normal",
+      null,
+      null,
+      10
+    ],
+    "lineWide": [
+      "Rộng",
+      "Wide",
+      null,
+      null,
+      10
+    ],
+    "lineVeryWide": [
+      "Rất rộng",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "Độ tương phản cao",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "Giảm chuyển động",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "Phông chữ OpenDyslexic",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "Thêm khoảng cách giữa các chữ cái",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "Gạch dưới tất cả các liên kết",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "Con trỏ lớn",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "Thang độ xám",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "Chỉ báo tiêu điểm có thể nhìn thấy",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "Không có âm nhạc",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "Lỗi tải",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "Âm nhạc",
+      "Music",
+      null,
+      null,
+      10
+    ],
+    "soundCloudNote": [
+      "Bản nhạc SoundCloud - mở để phát",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "Mở trong SoundCloud",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "Đang chuẩn bị in…",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "Ảnh cặp đôi",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "Với sự ban phước của cha mẹ đỡ đầu của họ",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "Ngày và địa điểm",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "Thời gian làm lễ:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Xem vị trí trên Google Maps",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "Chúng tôi mong được chia sẻ khoảnh khắc đặc biệt này với bạn.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "Chuyên chở",
+      "Transport",
+      null,
+      null,
+      10
+    ],
+    "aboutGuests": [
+      "Về khách mời",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "Lịch trình đám cưới",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "Lịch trình chi tiết sẽ sớm được chia sẻ.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "Quy định trang phục",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "Sẽ được thông báo sau.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "Về trẻ em",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "Câu chuyện của chúng tôi",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "Mọi chuyện đã bắt đầu như thế nào",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "Câu chuyện sẽ sớm được chia sẻ.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "Quà tặng",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "Sự hiện diện của bạn là món quà tuyệt vời nhất",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "Thông tin quà tặng sẽ được chia sẻ sớm.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "Chi tiết ngân hàng",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "Chỗ ở",
+      "Accommodation",
+      null,
+      null,
+      10
+    ],
+    "whereToStay": [
+      "Ở đâu",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "Thông tin chỗ ở sẽ được chia sẻ sớm.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · Chính sách quyền riêng tư tại wedingo-6c26a.web.app",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "Đóng cửa sổ",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
+    "moveUp": [
+      "Di chuyển lên",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "Di chuyển xuống",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "title": "Thứ tự & hiển thị",
     "help": "Kéo để sắp xếp lại, dùng nút để di chuyển và bật/tắt từng phần."
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "Chọn ngôn ngữ",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 người bạn đồng hành",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "Tây ban nha",
+      "Spain",
+      null,
+      null,
+      10
+    ],
+    "westernEurope": [
+      "Tây Âu",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "Bắc Âu Châu Âu",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "Trung Âu",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "Nam Âu / Balkan",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "Đông Âu / Kavkaz",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "Đông Á",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "Nam Á",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "Đông Nam Á",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "Trung Á / Trung Đông",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "Châu phi",
+      "Africa",
+      null,
+      null,
+      2
+    ],
+    "americas": [
+      "Châu Mỹ",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -791,31 +3496,506 @@
     "close": "Đóng"
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "Đã có một phiên hoạt động cho lời mời này. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "Mã truy cập không hợp lệ.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "Nhập mã truy cập.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "Mã đã được xác minh thành công.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "Không thể xác minh mã. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "Nhập tên người dùng và mã truy cập của bạn.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "Tên người dùng hoặc mã không chính xác.",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "Mã không khớp với người dùng này.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "Bạn đã đăng nhập thành công.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "Không thể xác minh mã. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "Nhập CONFIRM để tạo mã mới.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "Nhập tên người dùng của bạn đầu tiên.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "Tên người dùng chỉ có thể chứa chữ cái và số.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "Tên người dùng không thể vượt quá 50 ký tự.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "Người dùng này không có quyền truy cập vào đây.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "Mã được tạo. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "Không thể tạo mã. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "Nhập mã truy cập hiện tại để tạo mã mới.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "Mã mới được tạo. ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "Mã được đổi mới. ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "Tài khoản này không có quyền quản trị.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "Thông tin xác thực không chính xác.",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "Quá nhiều nỗ lực. ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "Định dạng email không hợp lệ.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "Lỗi đăng nhập. Hãy kiểm tra kết nối của bạn.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
     "saved": "Đã lưu thay đổi"
@@ -837,62 +4017,783 @@
   "themeGroups": {
     "light": "Chủ đề sáng",
     "dark": "Chủ đề tối",
-    "lgbtiq": "LGTBIQ+"
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
+    "gluten": [
+      "gluten",
+      "Gluten",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lactose": [
+      "Lactose",
+      "Lactose",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "nuts": "Các loại hạt",
     "shellfish": "Động vật có vỏ"
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "Gửi người thân yêu nhất của chúng tôi",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "Nhấn để mở",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "Nhấn để tiếp tục",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "Đám cưới của chúng tôi",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "Đám cưới của {{names}}",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "Vị trí cần được xác nhận",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "Chúng tôi mong được cùng bạn kỷ niệm khoảnh khắc đặc biệt này.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "Thời gian:",
+      "Time:",
+      null,
+      null,
+      10
+    ],
+    "placeLabel": [
+      "Địa điểm:",
+      "Venue:",
+      null,
+      null,
+      10
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "Thanh lịch và tươi sáng, với điểm nhấn màu vàng.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "Tự nhiên và tỉnh táo với rau xanh mềm mại.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "Ấm áp và tinh tế với tông màu hồng.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "Nhẹ nhàng và trung tính, với sự hiện diện thanh thản và vượt thời gian.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "Nhẹ nhàng và lãng mạn với tông màu hồng ngọc trai.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "Tươi mát và thanh bình, với màu hoa oải hương và màu hoa cà.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "Tươi sáng và lễ hội, với ánh vàng lấp lánh ấm áp.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "Màu tối và thanh lịch, với điểm nhấn màu hổ phách và vàng.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "Sâu sắc và tinh tế, với màu vàng đậm trên nền tối.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "Màu xanh rất đậm với màu vàng đậm và sự hiện diện trang trọng.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "Ấm áp và bao bọc, với rượu vang đỏ và ánh vàng lấp lánh.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "Màu xanh đậm với các điểm nhấn màu bạc và sự hiện diện thanh thản.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "Màu xanh đậm tự nhiên với tông màu vàng và trang nhã.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "Màu tím đậm với ánh hồng lấp lánh và lãng mạn.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "Kỷ niệm tình yêu đa dạng với màu sắc cầu vồng.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "Màu xanh, hồng và trắng để tưởng nhớ lá cờ chuyển giới.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "Màu vàng, trắng, tím và đen cho cờ không nhị phân.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "Màu cam, trắng và hồng của lá cờ đồng tính nữ.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "Màu hồng, tím và xanh của lá cờ bi.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "Màu hồng, vàng và xanh của cờ chảo.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "Màu đen, xám, trắng và tím của lá cờ vô tính.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "Chào mừng đến với khu vui chơi",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "824257d7a249c58caeea06a2e64a25bd",
+              "en_vi_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "Chào mừng dưới sự giám sát",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "824257d7a249c58caeea06a2e64a25bd",
+              "en_vi_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "Chỉ người lớn",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "824257d7a249c58caeea06a2e64a25bd",
+              "en_vi_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "Không có dữ liệu",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "tổng cộng",
+      "total",
+      null,
+      null,
+      10
+    ],
+    "barChart": [
+      "Biểu đồ thanh điểm danh",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "824257d7a249c58caeea06a2e64a25bd",
+            "en_vi_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

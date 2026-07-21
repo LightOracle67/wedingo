@@ -1164,7 +1164,26 @@
   "envelope": {
     "addressLine1": "Našim nejdražším",
     "tapHint": "Klepnutím otevřete",
-    "and": "&",
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "383bdae9ffa69f7aa8a53d8e5de30a5f",
+            "tea_CzechSlovakA_en2cssk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "tapContinue": "Pokračujte klepnutím"
   },
   "calendar": {

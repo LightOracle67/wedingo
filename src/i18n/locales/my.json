@@ -11,20 +11,172 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "မြင်သာသည်။",
+      "Visible",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "တစ်ခုခုမှားသွားသည်။",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "ထပ်စမ်းကြည့်ရန် စာမျက်နှာကို ပြန်လည်စတင်ပါ။",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "စာမျက်နှာကို ပြန်လည်စတင်ပါ။",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "ပိတ်လိုက်",
+        "Close",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "အဓိကအကြောင်းအရာသို့ ကျော်သွားပါ။",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "အုပ်ချုပ်ရေးဘား",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "အုပ်ချုပ်ရေး",
+        "Administration",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "landing": {
@@ -55,8 +207,46 @@
     "todayIsWedding": "ယနေ့သည် မင်္ဂလာဆောင်နေ့",
     "missing": "ကျန်ရှိ",
     "todayIsTheDay": "ယနေ့သည် အထူးနေ့ဖြစ်သည်!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": [
+      "ကာဗာ",
+      "Cover",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eyebrow": [
+      "ငါတို့မင်္ဂလာဆောင်",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "နေ့ရက်နှင့် နေရာ",
@@ -106,8 +296,46 @@
     "next": "နောက်",
     "thumbnailAria": "ဓာတ်ပုံ {{number}}",
     "thumbnailAlt": "ဓာတ်ပုံပြခန်း ဓာတ်ပုံအနုပစ္စည်း",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "ပုံပြခန်း၊ လမ်းညွှန်ရန် မြှားခလုတ်များကို အသုံးပြုပါ။",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "ချဲ့ထားသောပုံ",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "တက်ရောက်မည့် အတည်ပြုချက်",
@@ -138,49 +366,638 @@
     "ageUnder14Warning": "သင်သည် 14 နှစ်အောက် ဖြစ်သည်။ သင့်မိဘ သို့မဟုတ် အုပ်ထိန်းသူ၏ သဘောတူညီချက် လိုအပ်ပါသည်။",
     "parentalConsent": "ကျွန်ုပ်၏ မိဘ သို့မဟုတ် အုပ်ထိန်းသူများသည် ကျွန်ုပ်၏ ပါဝင်မှုကို သဘောတူပါသည်",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "တက်ရောက်မှုကို အတည်ပြုရန် သင့်အမည်ကို ထည့်သွင်းပါ။",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "မီနူးရွေးချယ်မှုကို ရွေးပါ။",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "သင်သည် ကိုယ်ရေးကိုယ်တာမူဝါဒကို လက်ခံရမည်။",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "သင်၏မွေးသက္ကရာဇ်ကိုထည့်ပါ။",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "သင်သည် အသက် 14 နှစ်အောက်ဖြစ်သည်။ ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "သင့်ကျန်းမာရေးဒေတာကို လုပ်ဆောင်ခြင်းအား သင်သဘောတူရပါမည်။",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "အနည်းဆုံး မီနူး ရွေးချယ်မှုတစ်ခုကို ညွှန်ပြပါ။",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "သင့်အဖော်များ၏ အမည်များကို ထည့်သွင်းပါ။",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "အဖော်များထက် နာမည်ပိုထည့်၍မရပါ။",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "မီနူးရွေးချယ်စရာများ၏ ပေါင်းစုသည် အဖော်အရေအတွက်ထက် မကျော်လွန်နိုင်ပါ။",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "ကျေးဇူးတင်ပါတယ်၊ {{name}}။ ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "ကျေးဇူးတင်ပါတယ်၊ {{name}}။ ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "သင့်တုံ့ပြန်မှုကို ကျွန်ုပ်တို့ မသိမ်းဆည်းနိုင်ခဲ့ပါ။ ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "သင့်တုံ့ပြန်မှုကို ရုပ်သိမ်းလိုသည်မှာ သေချာပါသလား။",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "သင့်တုံ့ပြန်မှုကို ရုပ်သိမ်းလိုက်ပါပြီ။",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "သင့်တုံ့ပြန်မှုကို မရုပ်သိမ်းနိုင်ခဲ့ပါ။ ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "တက်ရောက်သူ တုံ့ပြန်မှုများအားလုံးကို ဖျက်မလား။ ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "တက်ရောက်မှု မှတ်တမ်းများကို ရှင်းလင်းခဲ့သည်။",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "တက်ရောက်မှုမှတ်တမ်းများကို မရှင်းလင်းနိုင်ပါ။",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "ငရဲသား",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "လူတွေ",
+      "People",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountHint": [
+      "ရွေးချယ်မှုတစ်ခုစီအတွက် လူမည်မျှ ({{total}} စုစုပေါင်း)",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "ဧည့်သည်အမည်များ",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "အဖော်တစ်ခုစီ၏ ပထမနှင့် နောက်ဆုံးအမည်ကို ရေးပါ (အများဆုံး {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "အမည် 1 မျိုးရိုးအမည် 1၊ အမည် 2 မျိုးရိုးအမည် 2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "ဖိတ်ကြားလွှာ ဖွင့်နေသည်...",
     "notFoundTitle": "ဖိတ်ကြားလွှာ မတွေ့ရှိပါ",
     "notFoundText": "ဤလင့်ခ်ဖြင့် ဖိတ်ကြားလွှာ မတွေ့ရှိပါ။ အမှားဟု ထင်ပါက အိမ်ရှင်များကို ဆက်သွယ်ပါ။",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "သင့်ကိုယ်ပိုင် မင်္ဂလာဖိတ်ကြားလွှာကို ဖန်တီး၍ မျှဝေပါ။",
     "emptyDescription": "သင့်ဖိတ်ကြားလွှာ၏ အချက်အလက်များကို စီမံပါ၊ သင့်ဧည့်သည်များနှင့် သီးသန့်လင့်ခ်ကို မျှဝေပါ၊ တက်ရောက်မည့်သူများ၏ အတည်ပြုချက်ကို ရယူပါ။",
     "createLink": "ဖိတ်ကြားလွှာ ဖန်တီးမည်",
     "privacyPolicy": "ကိုယ်ရေးကာကွယ်မှုမူဝါဒ",
     "terms": "စည်းမျဉ်းများ",
     "legalNotice": "ဥပဒေဆိုင်ရာ အသိပေးချက်",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "ဤနေရာကို ရှာမတွေ့ပါ။",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "မြေပုံကို တင်၍မရပါ။",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "ညှိနှိုင်းချက်များ- {{lat}}၊ {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "ညွှန်ပြထားသောတည်နေရာတွင် မြေပုံအစမ်းကြည့်ရှုခြင်း။",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "တည်နေရာကို စီစဉ်သတ်မှတ်ထားသည်။",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "ဖိတ်ကြားလွှာ ဖွင့်နေသည်",
@@ -308,28 +1125,427 @@
     "galleryUploadFailed": "ဓာတ်ပုံများ မတင်နိုင်ပါ။",
     "noValidFiles": "တရားဝင်ဖိုင် မရှိပါ။ အများဆုံး 20 MB, JPG/PNG။",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "အဖုံးပေါ်တွင် ဖွင့်ရန် အသံဖိုင်ကို အပ်လုဒ်လုပ်ပါ (MP3၊ WAV၊ OGG၊ M4A — အများဆုံး 5 MB)။",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "အသံဖိုင်ကို အပ်လုဒ်လုပ်ပါ။",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3၊ WAV၊ OGG သို့မဟုတ် M4A — အများဆုံး 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "အသံဖော်မတ်ကို မပံ့ပိုးပါ။ ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "အသံဖိုင်သည် ဗလာဖြစ်နေသည်။",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "အသံဖိုင်သည် 5 MB ကန့်သတ်ချက်ထက် ကျော်လွန်နေပါသည်။",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "အသံဖိုင်ကို ဖတ်ရာတွင် အမှားအယွင်းရှိသည်။",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "ဖိုင်သည် ဗလာဖြစ်နေသည်။ ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "ပုံဖော်ပြချက်...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "ပြခန်းထဲတွင် အများဆုံး {{max}} ပုံများ။",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "ဓာတ်ပုံ {{total}} ပုံကို အပ်လုဒ်လုပ်နေသည်...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "ဓာတ်ပုံကို အပ်လုဒ်လုပ်နေသည်...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "ဓာတ်ပုံပြောင်းပါ။",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "ဖော်ပြချက်ကို သိမ်းဆည်းရာတွင် အမှားအယွင်းရှိသည်။",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "ဖော်ပြချက်ကို သိမ်းဆည်းထားသည်။",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "ရွေးထားသော သီချင်း",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "ဂီတကို ဖယ်ရှားပါ။",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "ကစားနေသည်...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "စမ်းကြည့်ပါ။",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "ရွေးပါ။",
+      "Select",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "selected": [
+      "ရွေးချယ်ခဲ့သည်။",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1569,66 @@
     "pdfTableCompanions": "အဖော်များ",
     "pdfTableDiet": "အစားအသောက်",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Admin",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "ဖိတ်ကြားချက်ကို ကြည့်ပါ။",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "ထွက်လိုက်ပါ။",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "အတည်ပြုပြီး",
@@ -384,7 +1657,26 @@
     "confirms": "အတည်ပြုသည်",
     "declines": "ငြင်းပယ်သည်",
     "pending": "ဆိုင်းငံ့ထားသည်",
-    "visits_one": "1 visit",
+    "visits_one": [
+      "ခရီးစဉ် ၁",
+      "1 visit",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +1709,53 @@
     "generateMessage": "အခြားစာတို ထုတ်လုပ်မည်",
     "copyMessage": "စာတို ကူးယူမည်",
     "shareVia": "မျှဝေရန်",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "ကြေးနန်းစာ",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "အက်စ်အမ်အက်စ်",
+      "SMS",
+      null,
+      null,
+      10
+    ],
     "print": "ပုံနှိပ်မည်",
     "printPdf": "ပုံနှိပ် / PDF သိမ်းမည်",
     "linkCopied": "လင့်ခ် ကူးယူပြီး။",
@@ -446,9 +1782,47 @@
     "deleteButton": "ဒေတာဖျက်ရန် တောင်းဆိုမည်",
     "exportButton": "ကျွန်ုပ်၏ ဒေတာ ထုတ်ယူမည်",
     "rightsHint": "သင့်အီးမေးလ်ကလိုင်းယင့်သည် ကြိုတင်သတ်မှတ်ထားသော ပုံစံဖြင့် ဖွင့်ပါမည်။ adriancl2001@gmail.com သို့လည်း ရေးနိုင်ပါသည်။",
-    "ccpaTitle": "CCPA / CPRA (California)",
+    "ccpaTitle": [
+      "CCPA / CPRA (ကယ်လီဖိုးနီးယား)",
+      "CCPA / CPRA (California)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "ccpaText": "Wedingo သည် ကိုယ်ရေးဒေတာကို မရောင်းပါ။ စုဆောင်းထားသော ဒေတာကို ဖိတ်ကြားလွှာ စီမံခန့်ခွဲရန်အတွက်သာ အသုံးပြုပါသည်။ California တွင်နေထိုင်သူဖြစ်ပါက သင့်ဒေတာဖျက်ရန် တောင်းဆိုပိုင်ခွင့်နှင့် သင့်အခွင့်အရေးများ ကျင့်သုံးမှုအတွက် ခွဲခြားဆက်ဆံခြင်းမခံရပိုင်ခွင့်ရှိသည်။",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "မင်္ဂလာဖိတ်ကြားလွှာများ စီမံခန့်ခွဲရန် ဝဘ်အက်ပလီကေးရှင်း။",
     "copyright": "© {{year}} Adrián Carrasco López။ မူပိုင်ခွင့်အားလုံး လက်ဝယ်ရှိသည်။",
     "deleteEmailSubject": "ဒေတာဖျက်ရန် တောင်းဆိုချက် - Wedingo",
@@ -518,13 +1892,146 @@
     "deleteFailed": "ဖိတ်ကြားလွှာ မဖျက်နိုင်ပါ။ ထပ်ကြိုးစားပါ။",
     "configLoadFailed": "ပြင်ဆင်မှု မဖွင့်နိုင်ပါ။ ချိတ်ဆက်မှုကို စစ်ဆေး၍ ထပ်ကြိုးစားပါ။",
     "invalidLink": "ဖိတ်ကြားလွှာလင့်ခ် မမှန်ကန်ပါ။",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "နေရာထိုင်ခင်းအချက်အလက်သည် စာလုံးရေ 2000 ထက်မပိုရပါ။",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "မီနူးဖော်ပြချက်သည် စာလုံးရေ 2000 ထက်မပိုနိုင်ပါ။",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "ပုံကို မလုပ်ဆောင်နိုင်ပါ။ ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "ပုံဖိုင်ကို ဖတ်၍မရပါ။",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "ပုံကုဒ်ဝှက်ခြင်း မအောင်မြင်ပါ။",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "ပုံသည် ချုံ့ပြီးသည့်တိုင် ကြီးလွန်းသည်။",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "ဖိုင်သည် ဗလာဖြစ်နေသည်။ ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -588,7 +2095,26 @@
     "tokenCleanError": "တိုကင်များ မရှင်းလင်းနိုင်ပါ။",
     "tokenLoadError": "တိုကင်များ ဖွင့်၍မရပါ။",
     "accountEmail": "အီးမေးလ်: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID- {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "အသက်ဝင်",
     "sessionInactive": "အသက်မဝင်",
     "sessionLabel": "စက်တွင်းဆက်ရှင်: {{status}}",
@@ -615,10 +2141,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "တိုကင်",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVP များ",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2200,46 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "အီးမေးလ်",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "စကားဝှက်",
+      "Password",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "compliance": {
     "title": "စီမံဆောင်ရွက်မှု လုပ်ဆောင်ချက်များ မှတ်တမ်း (GDPR အပိုဒ် 30)",
@@ -653,31 +2255,126 @@
     "row1Basis": "သဘောတူညီချက် (GDPR အပိုဒ် 6.1.a)",
     "row1Purpose": "မင်္ဂလာဖိတ်ကြားလွှာ ဖန်တီးရန်နှင့် စိတ်ကြိုက်ပြင်ဆင်ရန်",
     "row1Retention": "အကောင့် အသက်ဝင်နေသရွေ့",
-    "row1Recipients": "Google Cloud (Firestore, hosting)",
+    "row1Recipients": [
+      "Google Cloud (Firestore၊ hosting)",
+      "Google Cloud (Firestore, hosting)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row2Activity": "တက်ရောက်မှု အတည်ပြုခြင်း (RSVP)",
     "row2Data": "ဧည့်သည်အမည်၊ တက်ရောက်မှု (ဟုတ်/မဟုတ်)၊ မီနူးရွေးချယ်မှု၊ ဓာတ်မတည့်မှု၊ ကျန်းမာရေးဒေတာ",
     "row2Basis": "သဘောတူညီချက် (GDPR အပိုဒ် 6.1.a, 9.2.a)",
     "row2Purpose": "ဧည့်သည်စာရင်းနှင့် မီနူး စီမံရန်",
     "row2Retention": "ပွဲပြီး 12 လ",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "ပုံများ တင်ခြင်း",
     "row3Data": "မင်္ဂလာဆောင် ဓာတ်ပုံများ (AES-256-GCM ကုဒ်ဝှက်ထား)",
     "row3Basis": "သဘောတူညီချက် (GDPR အပိုဒ် 6.1.a)",
     "row3Purpose": "ဖိတ်ကြားလွှာရှိ ဓာတ်ပုံပြခန်း",
     "row3Retention": "ပွဲပြီး 12 လ",
-    "row3Recipients": "Google Cloud (Firestore subcollection)",
+    "row3Recipients": [
+      "Google Cloud (Firestore အစုခွဲ)",
+      "Google Cloud (Firestore subcollection)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row4Activity": "အထောက်အထားစိစစ်ခြင်းနှင့် ဆက်ရှင်များ",
     "row4Data": "ဆက်ရှင်တိုကင်၊ အက်ဒမင်အသုံးပြုသူအမည်",
     "row4Basis": "တရားဝင် အကျိုးစီးပွား (GDPR အပိုဒ် 6.1.f)",
     "row4Purpose": "အက်ဒမင် ထိန်းချုပ်ခုံသို့ ဝင်ရောက်ခွင့် ထိန်းချုပ်ရန်",
     "row4Retention": "ဆက်ရှင်ကာလ",
-    "row4Recipients": "Google Cloud (Firestore sessions)",
+    "row4Recipients": [
+      "Google Cloud (Firestore sessions)",
+      "Google Cloud (Firestore sessions)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row5Activity": "စူပါအက်ဒမင် စာရင်းစစ်",
     "row5Data": "စူပါအက်ဒမင် လုပ်ဆောင်ချက်များ၊ သုံးထားသော တိုကင်များ၊ ဖျက်ထားသော ဖိတ်ကြားလွှာများ",
     "row5Basis": "ဥပဒေဆိုင်ရာ တာဝန် (GDPR အပိုဒ် 6.1.c)",
     "row5Purpose": "စီမံခန့်ခွဲရေး လုပ်ဆောင်ချက်များ မှတ်တမ်းတင်ရန်",
     "row5Retention": "3 နှစ်",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Firestore စာရင်းစစ်မှတ်တမ်း)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "နိုင်ငံတကာ လွှဲပြောင်းမှုများ",
     "internationalText": "ဒေတာကို eur3 ဒေသ (Frankfurt, Germany) ရှိ Google Cloud ဆာဗာများတွင် သိမ်းဆည်းသည်။ Google LLC (USA) သည် GDPR အပိုဒ် 28 အရ DPA အောက်တွင် ဒေတာစီမံဆောင်ရွက်သူအဖြစ် ဆောင်ရွက်သည်။ USA သို့ လွှဲပြောင်းမှုများကို အောက်ပါတို့က ကာကွယ်ပေးသည်:",
     "scc": "Standard Contractual Clauses (SCC) - Implementation Decision 2021/914",
@@ -691,86 +2388,1359 @@
     "measureSuperadmin": "Firebase Authentication + ဝှက်ထားသောလမ်းကြောင်း ဖြင့် ကာကွယ်ထားသော စူပါအက်ဒမင်"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "သုံးစွဲနိုင်မှု",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "ပိတ်လိုက်",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontSize": [
+      "စာသားအရွယ်အစား",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "ပုံမှန်",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontLarge": [
+      "ကြီးမားသည်။",
+      "Large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontExtraLarge": [
+      "ပိုကြီးတယ်။",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "လိုင်းအကွာ",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "ပုံမှန်",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineWide": [
+      "ကျယ်တယ်။",
+      "Wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineVeryWide": [
+      "အလွန်ကျယ်သည်။",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "မြင့်မားသောဆန့်ကျင်ဘက်",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "လှုပ်ရှားမှုကို လျှော့ချပါ။",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "OpenDyslexic ဖောင့်",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "စာလုံးအကွာအဝေးပိုများသည်။",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "လင့်ခ်အားလုံးကို မျဉ်းသားပါ။",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "ကာဆာအကြီးကြီး",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "မီးခိုးရောင်စကေး",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "မြင်သာသောအာရုံညွှန်းကိန်းများ",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "သီချင်းမရှိ။",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "တင်ရာတွင် အမှားအယွင်းရှိသည်။",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "ဂီတ",
+      "Music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "soundCloudNote": [
+      "SoundCloud သီချင်း — ဖွင့်ရန်",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "SoundCloud တွင်ဖွင့်ပါ။",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "ပုံနှိပ်ခြင်းကို ပြင်ဆင်နေသည်...",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "စုံတွဲဓာတ်ပုံ",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "ဘိုးဘွားတွေရဲ့ ကောင်းချီးတွေနဲ့",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "နေ့ရက်နှင့်နေရာ",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "အခမ်းအနားအချိန်-",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "တည်နေရာကို Google Maps တွင်ကြည့်ပါ။",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "ဤအထူးအခိုက်အတန့်ကို သင်နှင့်မျှဝေရန် ကျွန်ုပ်တို့ မျှော်လင့်ပါသည်။",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "လမ်းပန်းဆက်သွယ်ရေး",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutGuests": [
+      "ဧည့်သည်များအကြောင်း",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "မင်္ဂလာပွဲအချိန်ဇယား",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "အသေးစိတ် အချိန်ဇယားကို မကြာမီ မျှဝေပေးပါမည်။",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "၀တ်စုံ",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "နောက်မှ ဆက်ပြောပါမယ်။",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "ကလေးတွေအကြောင်း",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "ငါတို့ဇာတ်လမ်း",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "အားလုံးဘယ်လိုစတင်ခဲ့တာလဲ။",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "ဇာတ်လမ်းကို မကြာမီ မျှဝေပါမည်။",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "လက်ဆောင်များ",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "သင့်ရောက်ရှိနေခြင်းသည် အကောင်းဆုံးလက်ဆောင်ဖြစ်သည်။",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "လက်ဆောင်အချက်အလက်များကို မကြာမီ မျှဝေပေးပါမည်။",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "ဘဏ်အသေးစိတ်",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "နေရာထိုင်ခင်း",
+      "Accommodation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "whereToStay": [
+      "ဘယ်မှာနေမလဲ။",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "နေရာထိုင်ခင်းဆိုင်ရာ အချက်အလက်များကို မကြာမီ မျှဝေပေးပါမည်။",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · wedingo-6c26a.web.app ရှိ ကိုယ်ရေးကိုယ်တာမူဝါဒ",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "ပြတင်းပေါက်ပိတ်ပါ။",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": [
+      "အပေါ်ကိုရွှေ့ပါ။",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "အောက်သို့ရွှေ့ပါ။",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "title": [
+      "မှာယူမှုနှင့် မြင်နိုင်စွမ်း",
+      "Order & visibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "help": [
+      "ပြန်စီရန် ဆွဲယူပါ၊ ရွှေ့ရန် ခလုတ်များကို အသုံးပြုကာ ကဏ္ဍတစ်ခုစီကို အဖွင့်အပိတ်လုပ်ရန်",
+      "Drag to reorder, use the buttons to move, and toggle each section on or off.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "ဘာသာစကားကို ရွေးပါ။",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "အဖော် ၁ ယောက်",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "စပိန်",
+      "Spain",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "westernEurope": [
+      "အနောက်ဥရောပ",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "နော်ဒစ်ဥရောပ",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "ဥရောပအလယ်ပိုင်း",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "ဥရောပတောင်ပိုင်း / ဘော်လကန်များ",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "အရှေ့ဥရောပ / ကော့ကေးဆပ်",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "အရှေ့အာရှ",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "တောင်အာရှ",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "အရှေ့တောင်အာရှ",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "အာရှအလယ်ပိုင်း / အရှေ့အလယ်ပိုင်း",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "အာဖရိက",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "အမေရိကတိုက်",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +3757,1695 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": [
+      "ပြောင်းလဲမှုမှတ်တမ်း",
+      "Changelog",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "ပိတ်လိုက်",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "ဤဖိတ်ကြားချက်အတွက် အသက်ဝင်သော စက်ရှင်တစ်ခု ရှိနှင့်ပြီးဖြစ်သည်။ ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "အသုံးပြုခွင့်ကုဒ် မမှန်ပါ။",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "ဝင်ခွင့်ကုဒ်ကို ထည့်ပါ။",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "ကုဒ်ကို အောင်မြင်စွာ အတည်ပြုပြီးပါပြီ။",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "ကုဒ်ကို အတည်မပြုနိုင်ပါ။ ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "သင့်အသုံးပြုသူအမည်နှင့် အသုံးပြုခွင့်ကုဒ်ကို ထည့်သွင်းပါ။",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "အသုံးပြုသူအမည် သို့မဟုတ် ကုဒ် မမှန်ကန်ပါ။",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "ကုဒ်သည် ဤအသုံးပြုသူနှင့် မကိုက်ညီပါ။",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "သင်အောင်မြင်စွာဝင်ရောက်ပြီးဖြစ်သည်။",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "ကုဒ်ကို အတည်မပြုနိုင်ပါ။ ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "ကုဒ်အသစ်တစ်ခုထုတ်လုပ်ရန် CONFIRM ဟုရိုက်ထည့်ပါ။",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "သင့်အသုံးပြုသူအမည်ကို ဦးစွာထည့်ပါ။",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "အသုံးပြုသူအမည်တွင် စာလုံးများနှင့် နံပါတ်များသာ ပါဝင်နိုင်သည်။",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "အသုံးပြုသူအမည်သည် အက္ခရာ 50 ထက်မပိုရပါ။",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "ဤအသုံးပြုသူသည် ဤနေရာတွင် ဝင်ရောက်ခွင့်မရှိပါ။",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "ကုဒ်ထုတ်ပေးသည်။ ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "ကုဒ်ကို ထုတ်လုပ်၍မရပါ။ ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "အသစ်တစ်ခုထုတ်လုပ်ရန် လက်ရှိဝင်ရောက်ခွင့်ကုဒ်ကို ထည့်ပါ။",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "ကုဒ်အသစ်ထုတ်ပေးသည်။ ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "ကုဒ်ကို သက်တမ်းတိုးထားသည်။ ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "ဤအကောင့်တွင် စီမံခန့်ခွဲခွင့်များ မရှိပါ။",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "အထောက်အထားများ မမှန်ကန်ပါ။",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "ကြိုးစားမှု အရမ်းများတယ်။ ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "အီးမေးလ်ဖော်မတ်သည် မမှန်ကန်ပါ။",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "အကောင့်ဝင်ရာတွင် အမှားအယွင်းရှိနေသည်။ သင်၏ချိတ်ဆက်မှုကို စစ်ဆေးပါ။",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": [
+      "အပြောင်းအလဲများကို သိမ်းဆည်းထားသည်။",
+      "Changes saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": [
+      "ဇန်နဝါရီလ",
+      "January",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "2": [
+      "ဖေဖော်ဝါရီ",
+      "February",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "3": [
+      "မတ်လ",
+      "March",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "4": [
+      "ဧပြီလ",
+      "April",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "5": [
+      "မေ",
+      "May",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "6": [
+      "ဇွန်လ",
+      "June",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "7": [
+      "ဇူလိုင်လ",
+      "July",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "8": [
+      "သြဂုတ်လ",
+      "August",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "9": [
+      "စက်တင်ဘာ",
+      "September",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "10": [
+      "အောက်တိုဘာလ",
+      "October",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "11": [
+      "နိုဝင်ဘာလ",
+      "November",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "12": [
+      "ဒီဇင်ဘာ",
+      "December",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": [
+      "အလင်းအပြင်အဆင်",
+      "Light themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dark": [
+      "အမိုက်စား အပြင်အဆင်များ",
+      "Dark themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": [
+      "ဂျုံမှုန့်စသည်မှကစီဓာတ်ထုတ်ခြင်းဖြင့်ရသောအသားဓာတ်တစ်မျိုး",
+      "Gluten",
+      null,
+      null,
+      10
+    ],
+    "lactose": [
+      "Lactose",
+      "Lactose",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nuts": [
+      "သစ်ပင် အခွံမာသီး",
+      "Tree nuts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "shellfish": [
+      "ခရု",
+      "Shellfish",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "ငါတို့အချစ်ဆုံးအတွက်",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "ဖွင့်ရန် တို့ပါ။",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "ဆက်လုပ်ရန် တို့ပါ။",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "ငါတို့မင်္ဂလာဆောင်",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "{{အမည်များ}} မင်္ဂလာဆောင်",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "တည်နေရာအတည်ပြုရမည်။",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "သင်နှင့်အတူ ဤအထူးအခိုက်အတန့်ကို ဂုဏ်ပြုရန် ကျွန်ုပ်တို့ မျှော်လင့်ပါသည်။",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "အချိန်-",
+      "Time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeLabel": [
+      "နေရာ-",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "ရွှေရောင်အသံထွက်များဖြင့် ကြော့ရှင်းပြီး တောက်ပသည်။",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "ပျော့ပျောင်းသော အစိမ်းရောင်များဖြင့် သဘာဝဆန်သည်။",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "ပန်းရောင်အရောင်များဖြင့် နွေးထွေးသိမ်မွေ့သည်။",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "ပေါ့ပါးပြီး ကြားနေ၊ ဣနြေ္ဒနှင့် အချိန်မကုန်နိုင်သော ရှိနေခြင်း။",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "နူးညံ့ပြီး ရင်ခုန်စရာ၊ ပုလဲရောင်ပန်းရောင်ရောင်စုံ။",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "လတ်ဗင်ဒါနှင့် လိမ္မော်ရောင်များဖြင့် လတ်ဆတ်ပြီး အေးချမ်းသည်။",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "နွေးထွေးသော ရွှေရောင်တောက်များဖြင့် တောက်ပပြီး ပွဲလမ်းသဘင်။",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "ပယင်းနှင့် ရွှေရောင် အသားပေးများဖြင့် အမှောင်နှင့် အံဝင်ခွင်ကျ။",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "နက်မှောင်သော နောက်ခံတွင် ရွှေရောင်ဖြင့် နက်နဲပြီး ဆန်းပြားသည်။",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "အလွန်နက်မှောင်သော အပြာရောင်သည် ပြင်းထန်သော ရွှေရောင်နှင့် ခမ်းနားထည်ဝါသော ရှိနေခြင်း။",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "ဝိုင်နီနှင့် ရွှေရောင်တောက်တောက်များဖြင့် နွေးထွေးပြီး ထုပ်ပိုးထားသည်။",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "ငွေရောင်လေယူလေသိမ်းနှင့် ဣနြေ္ဒရှိရှိ အပြာရောင်နက်ပြာ။",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "ရွှေရောင်နှင့် ကြော့ရှင်းသောအရောင်များဖြင့် နက်ရှိုင်းသော သဘာဝအစိမ်းရောင်။",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "ပန်းရောင်နှင့် အချစ်မီးတောက်များနှင့်အတူ ပြင်းထန်သော ခရမ်းရောင်။",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "သက်တံရောင်ဖြင့် ကွဲပြားသော ချစ်ခြင်းမေတ္တာကို ဂုဏ်ပြုခြင်း။",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "Trans အလံအား ဂုဏ်ပြုသောအားဖြင့် အပြာ၊ ပန်းရောင်နှင့် အဖြူရောင်။",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "ဒွိမဟုတ်သောအလံအတွက် အဝါ၊ အဖြူ၊ ခရမ်းရောင်နှင့် အနက်ရောင်။",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "လိင်တူချစ်သူအလံ၏ လိမ္မော်ရောင်၊ အဖြူရောင်နှင့် ပန်းရောင်။",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "အလံနှစ်ခု၏ ပန်းရောင်၊ ခရမ်းရောင်နှင့် အပြာရောင်။",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "ဒယ်အိုးအလံ၏ ​​ပန်းရောင်၊ အဝါနှင့် အပြာ။",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "လိင်ဆက်ဆံသောအလံ၏ အနက်၊ မီးခိုးရောင်၊ အဖြူနှင့် ခရမ်းရောင်။",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "ကစားကွင်းဖြင့် ကြိုဆိုပါတယ်။",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "ကြီးကြပ်မှုအောက်တွင် ကြိုဆိုပါသည်။",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "လူကြီးများသာ",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "d538ca893182b84557ea606851be094e",
+              "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "ဒေတာမရှိပါ။",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "စုစုပေါင်း",
+      "total",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "barChart": [
+      "တက်ရောက်သူဘားဇယား",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "d538ca893182b84557ea606851be094e",
+            "tea_IndoChinaA_en2mykmhmnlo_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

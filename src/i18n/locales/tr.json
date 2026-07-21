@@ -11,20 +11,133 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "Görünür",
+      "Visible",
+      null,
+      null,
+      10
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "Bir şeyler ters gitti",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "165285379024f0f80a779c26910288ac",
+              "en_tr_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "Tekrar denemek için lütfen sayfayı yeniden yükleyin.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "165285379024f0f80a779c26910288ac",
+              "en_tr_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "Sayfayı yeniden yükle",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "165285379024f0f80a779c26910288ac",
+              "en_tr_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "Kapalı",
+        "Close",
+        null,
+        null,
+        10
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "Ana içeriğe atla",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "Yönetim çubuğu",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "165285379024f0f80a779c26910288ac",
+              "en_tr_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "Yönetim",
+        "Administration",
+        null,
+        null,
+        10
+      ]
     }
   },
   "landing": {
@@ -56,7 +169,26 @@
     "missing": "Kaldı",
     "todayIsTheDay": "Bugün büyük gün!",
     "sectionLabel": "Kapak",
-    "eyebrow": "Our Wedding"
+    "eyebrow": [
+      "Düğünümüz",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "Tarih ve yer",
@@ -106,8 +238,46 @@
     "next": "Sonraki",
     "thumbnailAria": "Fotoğraf {{number}}",
     "thumbnailAlt": "Galeri fotoğrafı küçük resmi",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "Resim galerisi, gezinmek için ok tuşlarını kullanın",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "Büyütülmüş resim",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "Katılım onayı",
@@ -138,49 +308,625 @@
     "ageUnder14Warning": "14 yaşından küçüksünüz. Ebeveynlerinizin veya vasilerinizin onayına ihtiyacınız var.",
     "parentalConsent": "Ebeveynlerim veya vasilerim katılımıma onay veriyor",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "Katılımı onaylamak için adınızı girin.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "165285379024f0f80a779c26910288ac",
+              "en_tr_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "Bir menü seçeneği seçin.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "165285379024f0f80a779c26910288ac",
+              "en_tr_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "Gizlilik Politikasını kabul etmelisiniz.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "165285379024f0f80a779c26910288ac",
+              "en_tr_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "Doğum tarihinizi girin.",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "165285379024f0f80a779c26910288ac",
+              "en_tr_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "14 yaşın altındasınız. ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "165285379024f0f80a779c26910288ac",
+              "en_tr_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "Sağlık verilerinizin işlenmesine izin vermelisiniz.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "165285379024f0f80a779c26910288ac",
+              "en_tr_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "En az bir menü seçeneğini belirtin.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "165285379024f0f80a779c26910288ac",
+              "en_tr_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "Arkadaşlarınızın adlarını girin.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "165285379024f0f80a779c26910288ac",
+              "en_tr_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "Tamamlayıcılardan daha fazla ad giremezsiniz.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "165285379024f0f80a779c26910288ac",
+              "en_tr_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "Menü seçeneklerinin toplamı tamamlayıcı sayısını aşamaz.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "165285379024f0f80a779c26910288ac",
+              "en_tr_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "Teşekkür ederim {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "Teşekkür ederim {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "Yanıtınızı kaydedemedik. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "Yanıtınızı geri çekmek istediğinizden emin misiniz?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "Yanıtınız geri çekilmiştir.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "Yanıtınız geri çekilemedi. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "Tüm katılım yanıtları silinsin mi? ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "Katılım kayıtları temizlendi.",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "Katılım kayıtları temizlenemedi.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "Sahabeler",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "İnsanlar",
+      "People",
+      null,
+      null,
+      10
+    ],
+    "headcountHint": [
+      "Her seçenek için kaç kişi (toplam {{total}})",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "Konuk isimleri",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "Her arkadaşınızın adını ve soyadını yazın (max {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "Adı1 Soyadı1, Adı2 Soyadı2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "Davetiye yükleniyor…",
     "notFoundTitle": "Davetiye bulunamadı",
     "notFoundText": "Bu bağlantıyla bir davetiye bulamadık. Bir hata olduğunu düşünüyorsanız, ev sahipleriyle iletişime geçin.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Kişiselleştirilmiş düğün davetiyenizi oluşturun ve paylaşın.",
     "emptyDescription": "Davetiye bilgilerinizi yönetin, misafirlerinizle benzersiz bir bağlantı paylaşın ve katılım onaylarını alın.",
     "createLink": "Davetiye oluştur",
     "privacyPolicy": "Gizlilik Politikası",
     "terms": "Şartlar",
     "legalNotice": "Yasal Uyarı",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "Bu yer bulunamadı.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "Harita yüklenemedi.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "Koordinatlar: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "Belirtilen konumda harita önizlemesi.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "Konum yapılandırıldı",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "Davetiye yükleniyor",
@@ -308,28 +1054,414 @@
     "galleryUploadFailed": "Fotoğraflar yüklenemedi.",
     "noValidFiles": "Geçerli dosya yok. Maksimum 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "Kapakta oynatmak için bir ses dosyası yükleyin (MP3, WAV, OGG, M4A - maksimum 5 MB).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "Ses dosyasını yükle",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG veya M4A — maksimum 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "Ses formatı desteklenmiyor. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "Ses dosyası boş.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "Ses dosyası 5 MB sınırını aşıyor.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "Ses dosyası okunurken hata oluştu.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "Dosya boş. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "Resim açıklaması...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "Galeride maksimum {{max}} resim var.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "{{total}} fotoğraf yükleniyor...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "Fotoğraf yükleniyor...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "Fotoğrafı değiştir",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "Açıklama kaydedilirken hata oluştu",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "Açıklama kaydedildi",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "Seçilen müzik",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "Müziği kaldır",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "Oynanıyor...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "Önizleme",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "Seçme",
+      "Select",
+      null,
+      null,
+      10
+    ],
+    "selected": [
+      "Seçildi",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1485,66 @@
     "pdfTableCompanions": "Ref.",
     "pdfTableDiet": "Diyet",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Yönetici",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "Daveti görüntüle",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "Oturumu kapat",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "Onaylandı",
@@ -417,9 +1606,40 @@
     "generateMessage": "Başka bir mesaj oluştur",
     "copyMessage": "Mesajı kopyala",
     "shareVia": "Şununla paylaş",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "Telgraf",
+      "Telegram",
+      null,
+      null,
+      2
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      10
+    ],
     "print": "Yazdır",
     "printPdf": "Yazdır / PDF kaydet",
     "linkCopied": "Bağlantı kopyalandı.",
@@ -446,9 +1666,47 @@
     "deleteButton": "Veri silme talebi",
     "exportButton": "Verilerimi dışa aktar",
     "rightsHint": "E-posta istemciniz önceden tanımlanmış bir şablonla açılacak. Ayrıca adriancl2001@gmail.com adresine de yazabilirsiniz.",
-    "ccpaTitle": "CCPA / CPRA (California)",
+    "ccpaTitle": [
+      "CCPA / CPRA (Kaliforniya)",
+      "CCPA / CPRA (California)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "ccpaText": "Wedingo kişisel veri satmaz. Toplanan veriler yalnızca davetiye yönetimi için kullanılır. California'da ikamet ediyorsanız, verilerinizin silinmesini talep etme ve haklarınızı kullandığınız için ayrımcılığa uğramama hakkına sahipsiniz.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Wedingo",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Düğün davetiyesi yönetimi için web uygulaması.",
     "copyright": "© {{year}} Adrián Carrasco López. Tüm hakları saklıdır.",
     "deleteEmailSubject": "Veri silme talebi - Wedingo",
@@ -518,13 +1776,146 @@
     "deleteFailed": "Davetiye silinemedi. Tekrar deneyin.",
     "configLoadFailed": "Yapılandırma yüklenemedi. Bağlantıyı kontrol edin ve tekrar deneyin.",
     "invalidLink": "Davetiye bağlantısı geçerli değil.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "Konaklama bilgileri 2000 karakteri geçemez.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "Menü açıklaması 2000 karakteri aşamaz.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "Resim işlenemedi. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "Resim dosyası okunamadı.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "Görüntü şifreleme başarısız oldu.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "Görüntü sıkıştırıldıktan sonra bile çok büyük.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "Dosya boş. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -588,7 +1979,26 @@
     "tokenCleanError": "Anahtarlar temizlenemedi.",
     "tokenLoadError": "Anahtarlar yüklenemedi.",
     "accountEmail": "E-posta: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Aktif",
     "sessionInactive": "Pasif",
     "sessionLabel": "Yerel oturum: {{status}}",
@@ -615,10 +2025,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Jeton",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "165285379024f0f80a779c26910288ac",
+              "en_tr_2023q1.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "LCV'ler",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "165285379024f0f80a779c26910288ac",
+              "en_tr_2023q1.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2084,33 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "E-posta",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "Şifre",
+      "Password",
+      null,
+      null,
+      10
+    ]
   },
   "compliance": {
     "title": "İşleme faaliyetleri kaydı (GDPR Mad. 30)",
@@ -653,13 +2126,51 @@
     "row1Basis": "Rıza (GDPR Mad. 6.1.a)",
     "row1Purpose": "Düğün davetiyesi oluşturma ve kişiselleştirme",
     "row1Retention": "Hesap aktif olduğu sürece",
-    "row1Recipients": "Google Cloud (Firestore, hosting)",
+    "row1Recipients": [
+      "Google Cloud (Firestore, barındırma)",
+      "Google Cloud (Firestore, hosting)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "row2Activity": "Katılım onayı (RSVP)",
     "row2Data": "Misafir adı, katılım (evet/hayır), menü seçimi, alerjiler, sağlık verileri",
     "row2Basis": "Rıza (GDPR Mad. 6.1.a, 9.2.a)",
     "row2Purpose": "Misafir listesini ve menüyü yönetme",
     "row2Retention": "Etkinlikten sonra 12 ay",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Bulut (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Görsel yükleme",
     "row3Data": "Düğün fotoğrafları (AES-256-GCM ile şifrelenmiş)",
     "row3Basis": "Rıza (GDPR Mad. 6.1.a)",
@@ -691,86 +2202,1204 @@
     "measureSuperadmin": "Firebase Authentication + gizli rota ile korunan süper yönetici"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "Erişilebilirlik",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Kapalı",
+      "Close",
+      null,
+      null,
+      10
+    ],
+    "fontSize": [
+      "Metin boyutu",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "Normal",
+      "Normal",
+      null,
+      null,
+      2
+    ],
+    "fontLarge": [
+      "Büyük",
+      "Large",
+      null,
+      null,
+      10
+    ],
+    "fontExtraLarge": [
+      "Ekstra büyük",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "Satır aralığı",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "Normal",
+      "Normal",
+      null,
+      null,
+      2
+    ],
+    "lineWide": [
+      "Geniş",
+      "Wide",
+      null,
+      null,
+      10
+    ],
+    "lineVeryWide": [
+      "Çok geniş",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "Yüksek kontrast",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "Hareketi azalt",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "OpenDyslexic yazı tipi",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "Daha fazla harf aralığı",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "Tüm bağlantıların altını çizin",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "Büyük imleç",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "Gri tonlamalı",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "Görünür odak göstergeleri",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "Müzik yok",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "Yükleme hatası",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "Müzik",
+      "Music",
+      null,
+      null,
+      2
+    ],
+    "soundCloudNote": [
+      "SoundCloud parçası — çalmaya açık",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "SoundCloud'da aç",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "Baskı hazırlanıyor…",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "Çift fotoğrafı",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "Vaftiz babalarının hayır duasıyla",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "Tarih ve mekan",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "Tören zamanı:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Konumu Google Haritalar'da görüntüleyin",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "Bu özel anı sizlerle paylaşmak için sabırsızlanıyoruz.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "Taşıma",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutGuests": [
+      "Misafirler hakkında",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "Düğün programı",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "Detaylı program yakında paylaşılacaktır.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "Kıyafet kodu",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "Daha sonra iletilecektir.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "Çocuklar hakkında",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "Hikayemiz",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "Her şey nasıl başladı",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "Hikaye yakında paylaşılacaktır.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "Hediyeler",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "Varlığınız en güzel hediye",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "Hediye bilgileri yakında paylaşılacaktır.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "Banka ayrıntıları",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "Konaklama",
+      "Accommodation",
+      null,
+      null,
+      10
+    ],
+    "whereToStay": [
+      "Nerede kalınır",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "Konaklama bilgileri yakında paylaşılacaktır.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · wedingo-6c26a.web.app adresindeki Gizlilik Politikası",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "Pencereyi kapat",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
+    "moveUp": [
+      "Yukarı taşı",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "Aşağı taşı",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "title": "Sıralama ve görünürlük",
     "help": "Yeniden sıralamak için sürükleyin, taşımak için düğmeleri kullanın ve her bölümü açıp kapatın."
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "Dil seçin",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 arkadaş",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "İspanya",
+      "Spain",
+      null,
+      null,
+      2
+    ],
+    "westernEurope": [
+      "Batı Avrupa",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "İskandinav Avrupa",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "Orta Avrupa",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "Güney Avrupa / Balkanlar",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "Doğu Avrupa / Kafkasya",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "Doğu Asya",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "Güney Asya",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "Güneydoğu Asya",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "Orta Asya / Orta Doğu",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "Afrika",
+      "Africa",
+      null,
+      null,
+      2
+    ],
+    "americas": [
+      "Amerika",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -791,31 +3420,506 @@
     "close": "Kapat"
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "Bu davet için zaten etkin bir oturum var. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "Erişim kodu geçerli değil.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "Erişim kodunu girin.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "Kod başarıyla doğrulandı.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "Kod doğrulanamadı. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "Kullanıcı adınızı ve erişim kodunu girin.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "Yanlış kullanıcı adı veya kod.",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "Kod bu kullanıcıyla eşleşmiyor.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "Başarıyla giriş yaptınız.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "Kod doğrulanamadı. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "Yeni bir kod oluşturmak için CONFIRM yazın.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "Önce kullanıcı adınızı girin.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "Kullanıcı adı yalnızca harf ve rakamlardan oluşabilir.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "Kullanıcı adı 50 karakteri aşamaz.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "Bu kullanıcının buraya erişim izni yok.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "Kod oluşturuldu. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "Kod oluşturulamadı. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "Yeni bir erişim kodu oluşturmak için mevcut erişim kodunu girin.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "Yeni kod oluşturuldu. ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "Kod yenilendi. ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "Bu hesabın yönetim izinleri yok.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "Yanlış kimlik bilgileri.",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "Çok fazla deneme. ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "E-posta biçimi geçerli değil.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "Oturum açma hatası. Bağlantınızı kontrol edin.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
     "saved": "Değişiklikler kaydedildi"
@@ -837,62 +3941,764 @@
   "themeGroups": {
     "light": "Açık temalar",
     "dark": "Koyu temalar",
-    "lgbtiq": "LGTBIQ+"
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
+    "gluten": [
+      "Glüten",
+      "Gluten",
+      null,
+      null,
+      10
+    ],
     "lactose": "Laktoz",
     "nuts": "Sert kabuklu yemişler",
     "shellfish": "Kabuklu deniz ürünleri"
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "En sevdiklerimize",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "Açmak için dokunun",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "Devam etmek için dokunun",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "Bizim düğünümüz",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "{{names}}'nin düğünü",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "Onaylanacak konum",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "Bu özel anı sizlerle birlikte kutlamayı sabırsızlıkla bekliyoruz.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "Zaman:",
+      "Time:",
+      null,
+      null,
+      10
+    ],
+    "placeLabel": [
+      "Mekan:",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "Altın detaylarla zarif ve parlak.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "Yumuşak yeşilliklerle doğal ve ayık.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "Pembe tonlarıyla sıcak ve narin.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "Sakin ve zamansız bir varlığa sahip, hafif ve nötr.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "İnci pembesi tonlarıyla yumuşak ve romantik.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "Lavanta ve leylak rengi tonlarıyla taze ve sakin.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "Sıcak altın ışıltılarla parlak ve şenlikli.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "Kehribar ve altın vurgularıyla koyu ve zarif.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "Koyu arka planda yoğun altın rengiyle derin ve sofistike.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "Yoğun altın rengi ve ciddi duruşuyla çok koyu mavi.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "Kırmızı şarap ve altın ışıltılarla sıcak ve sarmalayıcı.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "Gümüş vurgulara ve dingin bir duruşa sahip koyu mavi.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "Altın ve zarif tonlara sahip derin doğal yeşil.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "Pembe ve romantik ışıltılarla yoğun mor.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "Gökkuşağı renkleriyle farklı sevginin kutlanması.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "Trans bayrağına saygı duruşu niteliğinde mavi, pembe ve beyaz.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "İkili olmayan bayrak için sarı, beyaz, mor ve siyah.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "Lezbiyen bayrağının turuncu, beyaz ve pembe.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "Bi bayrağın pembe, mor ve mavisi.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "Pan bayrağının pembe, sarı ve mavisi.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "Aseksüel bayrağın siyah, gri, beyaz ve mor renkleri.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "Oyun alanıyla hoş geldiniz",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "165285379024f0f80a779c26910288ac",
+              "en_tr_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "Gözetim altında hoş geldiniz",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "165285379024f0f80a779c26910288ac",
+              "en_tr_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "Yalnızca yetişkinler",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "165285379024f0f80a779c26910288ac",
+              "en_tr_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "Veri yok",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "toplam",
+      "total",
+      null,
+      null,
+      2
+    ],
+    "barChart": [
+      "Katılım çubuğu grafiği",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "165285379024f0f80a779c26910288ac",
+            "en_tr_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

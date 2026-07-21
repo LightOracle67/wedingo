@@ -11,20 +11,172 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "Видљиво",
+      "Visible",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "Нешто је пошло по злу",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ac6faa6f1887d7a3559f8fc4a759008a",
+              "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "Поново учитајте страницу да бисте покушали поново.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ac6faa6f1887d7a3559f8fc4a759008a",
+              "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "Поново учитај страницу",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ac6faa6f1887d7a3559f8fc4a759008a",
+              "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "Затвори",
+        "Close",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ac6faa6f1887d7a3559f8fc4a759008a",
+              "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "Пређи на главни садржај",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "Административна трака",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ac6faa6f1887d7a3559f8fc4a759008a",
+              "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "Администрација",
+        "Administration",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ac6faa6f1887d7a3559f8fc4a759008a",
+              "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "landing": {
@@ -55,8 +207,46 @@
     "todayIsWedding": "Данас је венчање",
     "missing": "Недостаје",
     "todayIsTheDay": "Данас је велики дан!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": [
+      "Цовер",
+      "Cover",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eyebrow": [
+      "Наше венчање",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "Датум и место",
@@ -106,8 +296,46 @@
     "next": "Следећа",
     "thumbnailAria": "Фотографија {{number}}",
     "thumbnailAlt": "Сличица из галерије",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "Галерија слика, користите тастере са стрелицама за навигацију",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "Увећана слика",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "Потврда доласка",
@@ -138,49 +366,638 @@
     "ageUnder14Warning": "Имаш мање од 14 година. Потребан је пристанак родитеља или старатеља.",
     "parentalConsent": "Моји родитељи или старатељи пристају на моје учешће",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "Унесите своје име да потврдите присуство.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ac6faa6f1887d7a3559f8fc4a759008a",
+              "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "Изаберите опцију менија.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ac6faa6f1887d7a3559f8fc4a759008a",
+              "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "Морате прихватити Политику приватности.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ac6faa6f1887d7a3559f8fc4a759008a",
+              "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "Унесите датум рођења.",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ac6faa6f1887d7a3559f8fc4a759008a",
+              "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "Имате мање од 14 година. ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ac6faa6f1887d7a3559f8fc4a759008a",
+              "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "Морате дати сагласност за обраду ваших здравствених података.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ac6faa6f1887d7a3559f8fc4a759008a",
+              "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "Означите најмање једну опцију менија.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ac6faa6f1887d7a3559f8fc4a759008a",
+              "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "Унесите имена својих пратилаца.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ac6faa6f1887d7a3559f8fc4a759008a",
+              "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "Не можете да унесете више имена од пратилаца.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ac6faa6f1887d7a3559f8fc4a759008a",
+              "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "Збир опција менија не може бити већи од броја пратилаца.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ac6faa6f1887d7a3559f8fc4a759008a",
+              "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "Хвала, {{наме}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "Хвала, {{наме}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "Нисмо могли да сачувамо ваш одговор. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "Да ли сте сигурни да желите да повучете свој одговор?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "Ваш одговор је повучен.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "Није могуће повући ваш одговор. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "Желите ли да избришете све одговоре о присуству? ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "Евиденција о присуству је очишћена.",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "Није могуће избрисати евиденцију о присуству.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "Сапутници",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "Људи",
+      "People",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountHint": [
+      "Колико људи за сваку опцију (укупно {{тотал}})",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "Имена гостију",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "Напишите име и презиме сваког пратиоца (максимално {{цоунт}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "Име1 Презиме1, Име2 Презиме2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "Учитавање позивнице…",
     "notFoundTitle": "Позивница није пронађена",
     "notFoundText": "Нисмо пронашли позивницу са овим линком. Ако мислиш да је грешка, контактирај домаћине.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Вединго",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Креирај и подели своју персонализовану позивницу за венчање.",
     "emptyDescription": "Управљај подацима своје позивнице, подели јединствени линк са гостима и примај њихове потврде доласка.",
     "createLink": "Креирај позивницу",
     "privacyPolicy": "Политика приватности",
     "terms": "Услови",
     "legalNotice": "Правно обавештење",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "Није могуће лоцирати ово место.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "Није могуће учитати мапу.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "Координате: {{лат}}, {{лнг}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "Преглед карте на назначеној локацији.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "Локација је конфигурисана",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "Учитавање позивнице",
@@ -308,28 +1125,427 @@
     "galleryUploadFailed": "Фотографије нису могле бити отпремљене.",
     "noValidFiles": "Нема важећег фајла. Максимално 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "Отпремите аудио датотеку за репродукцију на омоту (МП3, ВАВ, ОГГ, М4А — максимално 5 МБ).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "Отпремите аудио датотеку",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "МП3, ВАВ, ОГГ или М4А — максимално 5 МБ",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "Аудио формат није подржан. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "Аудио датотека је празна.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "Аудио датотека премашује ограничење од 5 МБ.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "Грешка при читању аудио датотеке.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "Датотека је празна. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "Опис слике...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "Максимално {{мак}} слика у галерији.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "Отпремање слика ({{тотал}})...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "Отпремање фотографије...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "Промените фотографију",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "Грешка при чувању описа",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "Опис је сачуван",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "Изабрана музика",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "Уклоните музику",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "игра се...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "Преглед",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "Изаберите",
+      "Select",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "selected": [
+      "Изабрано",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1569,66 @@
     "pdfTableCompanions": "Пратиоци",
     "pdfTableDiet": "Дијета",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Вединго · Админ",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "Погледај позивницу",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "Одјавите се",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "Потврђени",
@@ -384,7 +1657,26 @@
     "confirms": "Потврђују",
     "declines": "Одбијају",
     "pending": "На чекању",
-    "visits_one": "1 visit",
+    "visits_one": [
+      "1 посета",
+      "1 visit",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +1709,66 @@
     "generateMessage": "Генериши другу поруку",
     "copyMessage": "Копирај поруку",
     "shareVia": "Подели путем",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "ВхатсАпп",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "Телеграм",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "СМС",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Штампај",
     "printPdf": "Штампај / Сачувај PDF",
     "linkCopied": "Линк копиран.",
@@ -448,7 +1797,26 @@
     "rightsHint": "Отвориће се твој имејл клијент са унапред дефинисаним шаблоном. Можеш такође да пишеш на adriancl2001@gmail.com.",
     "ccpaTitle": "CCPA / CPRA (Калифорнија)",
     "ccpaText": "Wedingo не продаје личне податке. Прикупљени подаци се користе искључиво за управљање позивницом. Ако си становник Калифорније, имаш право да затражиш брисање својих података и да не будеш дискриминисан/а због остваривања својих права.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Вединго",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Веб апликација за управљање позивницама за венчање.",
     "copyright": "© {{year}} Adrián Carrasco López. Сва права задржана.",
     "deleteEmailSubject": "Захтев за брисање података - Wedingo",
@@ -518,13 +1886,146 @@
     "deleteFailed": "Позивница није могла бити избрисана. Покушај поново.",
     "configLoadFailed": "Конфигурација није могла бити учитана. Провери везу и покушај поново.",
     "invalidLink": "Линк позивнице није важећи.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "Подаци о смештају не могу бити дужи од 2000 знакова.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "Опис менија не може бити дужи од 2000 знакова.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "Није могуће обрадити слику. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "Није могуће прочитати датотеку слике.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "Шифровање слике није успело.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "Слика је превелика чак и након компресије.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "Датотека је празна. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -588,7 +2089,26 @@
     "tokenCleanError": "Токени нису могли бити очишћени.",
     "tokenLoadError": "Токени нису могли бити учитани.",
     "accountEmail": "Имејл: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "УИД: {{уид}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Активна",
     "sessionInactive": "Неактивна",
     "sessionLabel": "Локална сесија: {{status}}",
@@ -615,10 +2135,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Токен",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ac6faa6f1887d7a3559f8fc4a759008a",
+              "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "Одговори",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ac6faa6f1887d7a3559f8fc4a759008a",
+              "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2194,46 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "Емаил",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "Лозинка",
+      "Password",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "compliance": {
     "title": "Регистар активности обраде (GDPR чл. 30)",
@@ -659,7 +2255,26 @@
     "row2Basis": "Пристанак (GDPR чл. 6.1.а, 9.2.а)",
     "row2Purpose": "Управљање списком гостију и менијем",
     "row2Retention": "12 месеци након догађаја",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Гоогле Цлоуд (Фиресторе)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Отпремање слика",
     "row3Data": "Фотографије венчања (енкриптоване AES-256-GCM)",
     "row3Basis": "Пристанак (GDPR чл. 6.1.а)",
@@ -671,13 +2286,51 @@
     "row4Basis": "Легитимни интерес (GDPR чл. 6.1.ф)",
     "row4Purpose": "Контрола приступа админ панелу",
     "row4Retention": "Трајање сесије",
-    "row4Recipients": "Google Cloud (Firestore sessions)",
+    "row4Recipients": [
+      "Гоогле Цлоуд (Фиресторе сесије)",
+      "Google Cloud (Firestore sessions)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row5Activity": "Ревизија супер админа",
     "row5Data": "Акције супер админа, искоришћени токени, избрисане позивнице",
     "row5Basis": "Законска обавеза (GDPR чл. 6.1.ц)",
     "row5Purpose": "Регистровање административних активности",
     "row5Retention": "3 године",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Гоогле Цлоуд (Фиресторе аудитЛог)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Међународни преноси",
     "internationalText": "Подаци се чувају на серверима Google Cloud-а у региону eur3 (Франкфурт, Немачка). Google LLC (САД) делује као обрађивач података према DPA у складу са GDPR чл. 28. Преноси у САД заснивају се на:",
     "scc": "Стандардне уговорне клаузуле (SCC) - Спроведбена одлука 2021/914",
@@ -691,86 +2344,1359 @@
     "measureSuperadmin": "Супер админ заштићен Firebase Authentication + скривена путања"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "Приступачност",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Затвори",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontSize": [
+      "Величина текста",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "Нормално",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontLarge": [
+      "Велики",
+      "Large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontExtraLarge": [
+      "Екстра велики",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "Размак између редова",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "Нормално",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineWide": [
+      "Широко",
+      "Wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineVeryWide": [
+      "Веома широка",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "Висок контраст",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "Смањите кретање",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "ОпенДислекиц фонт",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "Више размака између слова",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "Подвуци све везе",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "Велики курсор",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "Граисцале",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "Видљиви индикатори фокуса",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "Нема музике",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "Грешка при учитавању",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "Музика",
+      "Music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "soundCloudNote": [
+      "СоундЦлоуд нумера — отворена за репродукцију",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "Отворите у СоундЦлоуд-у",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "Припрема се штампа…",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "Фотографија за пар",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "Са благословом својих кумова",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "Датум и место одржавања",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "Време церемоније:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Погледајте локацију у Гоогле мапама",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "Радујемо се што ћемо са вама поделити овај посебан тренутак.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "Транспорт",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutGuests": [
+      "О гостима",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "Распоред венчања",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "Детаљан распоред ће ускоро бити објављен.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "Дресс цоде",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "Биће саопштено касније.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "О деци",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "Наша прича",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "Како је све почело",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "Прича ће ускоро бити подељена.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "Поклони",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "Ваше присуство је најбољи поклон",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "Информације о поклону ће ускоро бити подељене.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "Банковни подаци",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "Смештај",
+      "Accommodation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "whereToStay": [
+      "Где да останем",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "Информације о смештају ће ускоро бити подељене.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Вединго · Политика приватности на вединго-6ц26а.веб.апп",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "Затвори прозор",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": [
+      "Помери се горе",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "Помери се доле",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "title": [
+      "Ред и видљивост",
+      "Order & visibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "help": [
+      "Превуците да бисте променили редослед, користите дугмад за померање и укључите или искључите сваки одељак.",
+      "Drag to reorder, use the buttons to move, and toggle each section on or off.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "Изаберите језик",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 пратилац",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "Спаин",
+      "Spain",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "westernEurope": [
+      "Западна Европа",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "Нордијска Европа",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "Централна Европа",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "Јужна Европа / Балкан",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "Источна Европа / Кавказ",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "Источна Азија",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "Јужна Азија",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "југоисточна Азија",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "Централна Азија / Блиски исток",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "Африка",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "Америке",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +3713,1708 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": [
+      "Цхангелог",
+      "Changelog",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Затвори",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "Већ постоји активна сесија за овај позив. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "Приступни код није важећи.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "Унесите приступни код.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "Код је успешно верификован.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "Верификација кода није успела. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "Унесите своје корисничко име и приступни код.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "Нетачно корисничко име или код.",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "Код се не подудара са овим корисником.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "Успешно сте се пријавили.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "Верификација кода није успела. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "Унесите ЦОНФИРМ да бисте генерисали нови код.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "Прво унесите своје корисничко име.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "Корисничко име може да садржи само слова и бројеве.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "Корисничко име не може бити дуже од 50 знакова.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "Овај корисник нема дозволу за приступ овде.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "Генерисан код. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "Генерисање кода није успело. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "Унесите тренутни приступни код да бисте генерисали нови.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "Нови код је генерисан. ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "Код обновљен. ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "Овај налог нема административне дозволе.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "Нетачне акредитиве.",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "Превише покушаја. ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "Формат е-поште није важећи.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "Грешка при пријављивању. Проверите своју везу.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": [
+      "Промене су сачуване",
+      "Changes saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": [
+      "јануара",
+      "January",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "2": [
+      "фебруара",
+      "February",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "3": [
+      "марта",
+      "March",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "4": [
+      "априла",
+      "April",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "5": [
+      "маја",
+      "May",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "6": [
+      "јуна",
+      "June",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "7": [
+      "јула",
+      "July",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "8": [
+      "августа",
+      "August",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "9": [
+      "септембра",
+      "September",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "10": [
+      "октобар",
+      "October",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "11": [
+      "новембра",
+      "November",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "12": [
+      "децембар",
+      "December",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": [
+      "Светле теме",
+      "Light themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dark": [
+      "Мрачне теме",
+      "Dark themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lgbtiq": [
+      "ЛГТБИК+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": [
+      "Глутен",
+      "Gluten",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lactose": [
+      "Лактоза",
+      "Lactose",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nuts": [
+      "Орашасти плодови",
+      "Tree nuts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "shellfish": [
+      "Шкољке",
+      "Shellfish",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "Нашим најмилијима",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "Додирните да отворите",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "Додирните за наставак",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "Наше венчање",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "Венчање {{наме}}",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "Локација за потврду",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "Радујемо се што ћемо прославити овај посебан тренутак са вама.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "време:",
+      "Time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeLabel": [
+      "Место одржавања:",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "Елегантан и светао, са златним акцентима.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "Природно и трезвено са меким зеленилом.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "Топла и нежна, са ружичастим нијансама.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "Лагано и неутрално, са спокојним и безвременским присуством.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "Меко и романтично, са бисерно ружичастим тоновима.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "Свеж и спокојан, са нијансама лаванде и љубичасте боје.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "Светао и свечан, са топлим златним искрицама.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "Тамно и елегантно, са ћилибарским и златним нагласцима.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "Дубок и софистициран, са интензивним златом на тамној позадини.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "Веома тамно плава са интензивним златним и свечаним присуством.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "Топао и обавијајући, са црвеним вином и златним шљокицама.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "Дубоко плава са сребрним акцентима и спокојним присуством.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "Дубока природна зелена са златним и елегантним нијансама.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "Интензивна љубичаста са ружичастим и романтичним шљокицама.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "Прослава разнолике љубави са дугиним бојама.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "Плава, розе и бела у знак почасти транс застави.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "Жута, бела, љубичаста и црна за небинарну заставу.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "Наранџаста, бела и ружичаста лезбејска застава.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "Ружичаста, љубичаста и плава би заставе.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "Ружичаста, жута и плава заставе.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "Црна, сива, бела и љубичаста асексуална застава.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "Добродошли са игралиштем",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ac6faa6f1887d7a3559f8fc4a759008a",
+              "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "Добродошли под надзором",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ac6faa6f1887d7a3559f8fc4a759008a",
+              "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "Само за одрасле",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "ac6faa6f1887d7a3559f8fc4a759008a",
+              "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "Нема података",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "укупно",
+      "total",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "barChart": [
+      "Тракасти графикон присуства",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "ac6faa6f1887d7a3559f8fc4a759008a",
+            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

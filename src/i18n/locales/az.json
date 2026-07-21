@@ -1133,7 +1133,26 @@
   "envelope": {
     "addressLine1": "Ən əzizlərimizə",
     "tapHint": "Açmaq üçün toxunun",
-    "and": "&",
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "32df64f7b2c6bf92105643e497202634",
+            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "tapContinue": "Davam etmək üçün toxunun"
   },
   "calendar": {

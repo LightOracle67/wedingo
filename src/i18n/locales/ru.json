@@ -11,20 +11,159 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "Видимый",
+      "Visible",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "Что-то пошло не так",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8e6adaf1f9ae06bcb9663531e5521abb",
+              "en_ru_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "Пожалуйста, перезагрузите страницу, чтобы повторить попытку.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8e6adaf1f9ae06bcb9663531e5521abb",
+              "en_ru_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "Обновить страницу",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8e6adaf1f9ae06bcb9663531e5521abb",
+              "en_ru_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "Закрывать",
+        "Close",
+        null,
+        null,
+        10
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "Перейти к основному содержанию",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "Административная панель",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8e6adaf1f9ae06bcb9663531e5521abb",
+              "en_ru_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "Администрация",
+        "Administration",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8e6adaf1f9ae06bcb9663531e5521abb",
+              "en_ru_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "landing": {
@@ -56,7 +195,26 @@
     "missing": "Осталось",
     "todayIsTheDay": "Сегодня великий день!",
     "sectionLabel": "Обложка",
-    "eyebrow": "Our Wedding"
+    "eyebrow": [
+      "Наша свадьба",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "Дата и место",
@@ -106,8 +264,46 @@
     "next": "Вперёд",
     "thumbnailAria": "Фото {{number}}",
     "thumbnailAlt": "Миниатюра фото из галереи",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "Галерея изображений, для навигации используйте клавиши со стрелками",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "Увеличенное изображение",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "Подтверждение присутствия",
@@ -144,10 +340,86 @@
       "birthDateRequired": "Введите дату рождения.",
       "ageUnder14": "Вам меньше 14 лет. Требуется согласие родителей или опекунов.",
       "healthConsentRequired": "Вы должны дать согласие на обработку медицинских данных.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "menuHeadcountRequired": [
+        "Укажите хотя бы один пункт меню.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8e6adaf1f9ae06bcb9663531e5521abb",
+              "en_ru_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "Введите имена ваших спутников.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8e6adaf1f9ae06bcb9663531e5521abb",
+              "en_ru_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "Вы не можете ввести больше имен, чем количество компаньонов.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8e6adaf1f9ae06bcb9663531e5521abb",
+              "en_ru_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "Сумма пунктов меню не может превышать количество спутников.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8e6adaf1f9ae06bcb9663531e5521abb",
+              "en_ru_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     },
     "successAttending": "Спасибо, {{name}}. Ваше присутствие записано.",
     "successNotAttending": "Спасибо, {{name}}. Жаль, что вы не сможете присутствовать.",
@@ -158,29 +430,244 @@
     "clearConfirm": "Удалить все ответы о присутствии? Это действие нельзя отменить.",
     "clearSuccess": "Записи о присутствии очищены.",
     "clearError": "Не удалось очистить записи о присутствии.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "companionsLabel": [
+      "Компаньоны",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "Люди",
+      "People",
+      null,
+      null,
+      10
+    ],
+    "headcountHint": [
+      "Сколько человек для каждого варианта (всего {{total}})",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "Имена гостей",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "Напишите имя и фамилию каждого компаньона (максимум {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "Имя1 Фамилия1, Имя2 Фамилия2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "Загрузка приглашения…",
     "notFoundTitle": "Приглашение не найдено",
     "notFoundText": "Мы не нашли приглашение по этой ссылке. Если вы считаете, что это ошибка, свяжитесь с организаторами.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Вединго",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Создайте и поделитесь своим персонализированным свадебным приглашением.",
     "emptyDescription": "Управляйте данными вашего приглашения, делитесь уникальной ссылкой с гостями и получайте подтверждения о посещении.",
     "createLink": "Создать приглашение",
     "privacyPolicy": "Политика конфиденциальности",
     "terms": "Условия",
     "legalNotice": "Юридическое уведомление",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "Не удалось найти это место.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "Не удалось загрузить карту.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "Координаты: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "Предварительный просмотр карты в указанном месте.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "Местоположение настроено",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "Загрузка приглашения",
@@ -308,28 +795,414 @@
     "galleryUploadFailed": "Не удалось загрузить фото.",
     "noValidFiles": "Нет допустимых файлов. Максимум 20 МБ, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "Загрузите аудиофайл для воспроизведения на обложке (MP3, WAV, OGG, M4A — максимум 5 МБ).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "Загрузить аудиофайл",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG или M4A — максимум 5 МБ",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "Аудиоформат не поддерживается. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "Аудиофайл пуст.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "Аудиофайл превышает лимит в 5 МБ.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "Ошибка чтения аудиофайла.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "Файл пуст. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "Описание изображения...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "Максимум изображений в галерее: {{max}}.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "Загрузка фотографий ({{total}})...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "Загрузка фотографии...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "Изменить фотографию",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "Ошибка сохранения описания",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "Описание сохранено.",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "Избранная музыка",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "Удалить музыку",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "Играю...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "Предварительный просмотр",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "Выбирать",
+      "Select",
+      null,
+      null,
+      10
+    ],
+    "selected": [
+      "Выбрано",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1226,66 @@
     "pdfTableCompanions": "Сопр.",
     "pdfTableDiet": "Питание",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Вединго · Администратор",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "Посмотреть приглашение",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "Выйти",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "Подтвердили",
@@ -417,8 +1347,33 @@
     "generateMessage": "Создать другое сообщение",
     "copyMessage": "Копировать сообщение",
     "shareVia": "Поделиться через",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "Телеграмма",
+      "Telegram",
+      null,
+      null,
+      2
+    ],
     "sms": "СМС",
     "print": "Печать",
     "printPdf": "Печать / Сохранить PDF",
@@ -448,7 +1403,26 @@
     "rightsHint": "Откроется ваш почтовый клиент с готовым шаблоном. Вы также можете написать на adriancl2001@gmail.com.",
     "ccpaTitle": "CCPA / CPRA (Калифорния)",
     "ccpaText": "Wedingo не продаёт персональные данные. Собранные данные используются исключительно для управления приглашением. Если вы проживаете в Калифорнии, вы имеете право запросить удаление ваших данных и не подвергаться дискриминации за осуществление ваших прав.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Вединго",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Веб-приложение для управления свадебными приглашениями.",
     "copyright": "© {{year}} Адриан Карраско Лопес. Все права защищены.",
     "deleteEmailSubject": "Запрос на удаление данных - Wedingo",
@@ -518,13 +1492,146 @@
     "deleteFailed": "Не удалось удалить приглашение. Попробуйте ещё раз.",
     "configLoadFailed": "Не удалось загрузить настройки. Проверьте соединение и попробуйте снова.",
     "invalidLink": "Ссылка приглашения недействительна.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "Информация о размещении не может превышать 2000 символов.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "Описание меню не может превышать 2000 символов.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "Не удалось обработать изображение. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "Не удалось прочитать файл изображения.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "Шифрование изображения не удалось.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "Изображение слишком велико даже после сжатия.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "Файл пуст. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -587,8 +1694,46 @@
     "tokenRevokeError": "Не удалось отозвать токен.",
     "tokenCleanError": "Не удалось очистить токены.",
     "tokenLoadError": "Не удалось загрузить токены.",
-    "accountEmail": "Email: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountEmail": [
+      "Электронная почта: {{email}}",
+      "Email: {{email}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Активна",
     "sessionInactive": "Неактивна",
     "sessionLabel": "Локальная сессия: {{status}}",
@@ -615,10 +1760,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Токен",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8e6adaf1f9ae06bcb9663531e5521abb",
+              "en_ru_2023q1.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "Ответы на приглашения",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8e6adaf1f9ae06bcb9663531e5521abb",
+              "en_ru_2023q1.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +1819,20 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "Электронная почта",
+      "Email",
+      null,
+      null,
+      10
+    ],
+    "passwordLabel": [
+      "Пароль",
+      "Password",
+      null,
+      null,
+      10
+    ]
   },
   "compliance": {
     "title": "Реестр деятельности по обработке данных (ст. 30 GDPR)",
@@ -659,7 +1854,26 @@
     "row2Basis": "Согласие (ст. 6.1.a, 9.2.a GDPR)",
     "row2Purpose": "Управление списком гостей и меню",
     "row2Retention": "12 месяцев после мероприятия",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Firestore)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Загрузка изображений",
     "row3Data": "Свадебные фото (зашифрованы AES-256-GCM)",
     "row3Basis": "Согласие (ст. 6.1.a GDPR)",
@@ -691,86 +1905,1204 @@
     "measureSuperadmin": "Супер-админ защищён Firebase Authentication + скрытый маршрут"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "Доступность",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Закрывать",
+      "Close",
+      null,
+      null,
+      10
+    ],
+    "fontSize": [
+      "Размер текста",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "Нормальный",
+      "Normal",
+      null,
+      null,
+      10
+    ],
+    "fontLarge": [
+      "Большой",
+      "Large",
+      null,
+      null,
+      10
+    ],
+    "fontExtraLarge": [
+      "Очень большой",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "Межстрочный интервал",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "Нормальный",
+      "Normal",
+      null,
+      null,
+      10
+    ],
+    "lineWide": [
+      "Широкий",
+      "Wide",
+      null,
+      null,
+      10
+    ],
+    "lineVeryWide": [
+      "Очень широкий",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "Высокая контрастность",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "Уменьшите движение",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "Шрифт OpenDyslexic",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "Больше интервала между буквами",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "Подчеркнуть все ссылки",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "Большой курсор",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "Оттенки серого",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "Видимые индикаторы фокусировки",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "Нет музыки",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "Ошибка загрузки",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "Музыка",
+      "Music",
+      null,
+      null,
+      10
+    ],
+    "soundCloudNote": [
+      "Трек SoundCloud — открыт для воспроизведения",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "Открыть в SoundCloud",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "Подготовка печати…",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "Фото пары",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "По благословению своих крестных родителей",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "Дата и место проведения",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "Время церемонии:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Посмотреть местоположение на Google Maps",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "Мы с нетерпением ждем возможности разделить этот особенный момент с вами.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "Транспорт",
+      "Transport",
+      null,
+      null,
+      2
+    ],
+    "aboutGuests": [
+      "О гостях",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "Расписание свадьбы",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "Подробное расписание будет опубликовано в ближайшее время.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "Дресс-код",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "Будет сообщено позже.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "О детях",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "Наша история",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "Как все началось",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "Эта история скоро будет опубликована.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "Подарки",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "Ваше присутствие - лучший подарок",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "Информация о подарках будет опубликована в ближайшее время.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "Банковские реквизиты",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "Размещение",
+      "Accommodation",
+      null,
+      null,
+      10
+    ],
+    "whereToStay": [
+      "Где остановиться",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "Информация о размещении будет предоставлена ​​в ближайшее время.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · Политика конфиденциальности на сайте wedingo-6c26a.web.app.",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "Закрыть окно",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
+    "moveUp": [
+      "Вверх",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "Двигаться вниз",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "title": "Порядок и видимость",
     "help": "Перетащите для изменения порядка, используйте кнопки для перемещения и включайте/отключайте каждую секцию."
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "Выберите язык",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 компаньон",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "Испания",
+      "Spain",
+      null,
+      null,
+      2
+    ],
+    "westernEurope": [
+      "Западная Европа",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "Северная Европа",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "Центральная Европа",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "Южная Европа / Балканы",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "Восточная Европа / Кавказ",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "Восточная Азия",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "Южная Азия",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "Юго-Восточная Азия",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "Центральная Азия/Ближний Восток",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "Африка",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "Америка",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} год",
@@ -846,53 +3178,717 @@
     "shellfish": "Морепродукты"
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "Для наших самых дорогих",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "Нажмите, чтобы открыть",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "Нажмите, чтобы продолжить",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "Наша свадьба",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "Свадьба {{names}}",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "Местоположение подлежит подтверждению",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "Мы с нетерпением ждем возможности отпраздновать этот особенный момент вместе с вами.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "Время:",
+      "Time:",
+      null,
+      null,
+      10
+    ],
+    "placeLabel": [
+      "Место проведения:",
+      "Venue:",
+      null,
+      null,
+      10
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "Элегантный и яркий, с золотыми акцентами.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "Естественный и сдержанный, с мягкой зеленью.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "Теплый и нежный, с розовыми оттенками.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "Легкий и нейтральный, с безмятежным и вневременным присутствием.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "Мягкий и романтичный, с жемчужно-розовыми тонами.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "Свежий и безмятежный, с лавандовыми и лиловыми оттенками.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "Яркий и праздничный, с теплыми золотистыми блестками.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "Темный и элегантный, с янтарными и золотыми бликами.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "Глубокий и утонченный, с насыщенным золотом на темном фоне.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "Очень темно-синий с насыщенным золотом и торжественным внешним видом.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "Теплый и обволакивающий, с нотами красного вина и золотистых искорок.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "Глубокий синий с серебряными акцентами и безмятежным присутствием.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "Глубокий натуральный зеленый цвет с золотистыми и элегантными оттенками.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "Интенсивный фиолетовый с розовыми и романтическими блестками.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "Праздник разнообразной любви в цветах радуги.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "Синий, розовый и белый — дань уважения транс-флагу.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "Желтый, белый, фиолетовый и черный для небинарного флага.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "Оранжевый, белый и розовый флаг лесбиянок.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "Розовый, фиолетовый и синий цвета бифлага.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "Розовый, желтый и синий цвета пан-флага.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "Черный, серый, белый и фиолетовый цвета бесполого флага.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "Добро пожаловать с игровой зоной",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8e6adaf1f9ae06bcb9663531e5521abb",
+              "en_ru_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "Добро пожаловать под присмотр",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8e6adaf1f9ae06bcb9663531e5521abb",
+              "en_ru_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "Только для взрослых",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "8e6adaf1f9ae06bcb9663531e5521abb",
+              "en_ru_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "Нет данных",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "общий",
+      "total",
+      null,
+      null,
+      10
+    ],
+    "barChart": [
+      "Гистограмма посещаемости",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "8e6adaf1f9ae06bcb9663531e5521abb",
+            "en_ru_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

@@ -11,20 +11,172 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "Infheicthe",
+      "Visible",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "Chuaigh rud éigin mícheart",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2380de39af29128a9e128e1ab45d00ff",
+              "tea_CelticA_en2cygagd_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "Athlódáil an leathanach le triail eile a bhaint as.",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2380de39af29128a9e128e1ab45d00ff",
+              "tea_CelticA_en2cygagd_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "Athlódáil leathanach",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2380de39af29128a9e128e1ab45d00ff",
+              "tea_CelticA_en2cygagd_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "Dún",
+        "Close",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2380de39af29128a9e128e1ab45d00ff",
+              "tea_CelticA_en2cygagd_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "Téigh ar aghaidh chuig an bpríomhábhar",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "Barra riaracháin",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2380de39af29128a9e128e1ab45d00ff",
+              "tea_CelticA_en2cygagd_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "Riarachán",
+        "Administration",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2380de39af29128a9e128e1ab45d00ff",
+              "tea_CelticA_en2cygagd_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "landing": {
@@ -55,8 +207,46 @@
     "todayIsWedding": "Inniu an bhainis",
     "missing": "In easnamh",
     "todayIsTheDay": "Inniu an lá mór!",
-    "sectionLabel": "Cover",
-    "eyebrow": "Our Wedding"
+    "sectionLabel": [
+      "Clúdach",
+      "Cover",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eyebrow": [
+      "Ár Bainise",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "Dáta agus áit",
@@ -106,8 +296,46 @@
     "next": "Ar aghaidh",
     "thumbnailAria": "Grianghraf {{number}}",
     "thumbnailAlt": "Mionsamhail gailearaí",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "Gailearaí íomhánna, bain úsáid as saigheadeochracha chun nascleanúint a dhéanamh",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "Íomhá méadaithe",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "Dearbhú freastail",
@@ -138,49 +366,638 @@
     "ageUnder14Warning": "Tá tú faoi bhun 14 bliana d'aois. Teastaíonn toiliú do thuismitheoirí nó do chaomhnóirí uait.",
     "parentalConsent": "Toilíonn mo thuismitheoirí nó mo chaomhnóirí le mo rannpháirtíocht",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "Cuir isteach d'ainm chun tinreamh a dhearbhú.",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2380de39af29128a9e128e1ab45d00ff",
+              "tea_CelticA_en2cygagd_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "Roghnaigh rogha roghchláir.",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2380de39af29128a9e128e1ab45d00ff",
+              "tea_CelticA_en2cygagd_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "Caithfidh tú glacadh leis an bPolasaí Príobháideachta.",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2380de39af29128a9e128e1ab45d00ff",
+              "tea_CelticA_en2cygagd_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "Cuir isteach do dháta breithe.",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2380de39af29128a9e128e1ab45d00ff",
+              "tea_CelticA_en2cygagd_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "Tá tú faoi bhun 14 bliana d’aois. ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2380de39af29128a9e128e1ab45d00ff",
+              "tea_CelticA_en2cygagd_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "Ní mór duit toiliú le próiseáil do shonraí sláinte.",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2380de39af29128a9e128e1ab45d00ff",
+              "tea_CelticA_en2cygagd_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "Cuir rogha roghchláir amháin ar a laghad in iúl.",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2380de39af29128a9e128e1ab45d00ff",
+              "tea_CelticA_en2cygagd_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "Cuir isteach ainmneacha do chompánaigh.",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2380de39af29128a9e128e1ab45d00ff",
+              "tea_CelticA_en2cygagd_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "Ní féidir leat níos mó ainmneacha ná compánaigh a chur isteach.",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2380de39af29128a9e128e1ab45d00ff",
+              "tea_CelticA_en2cygagd_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "Ní féidir le suim na roghanna roghchláir dul thar líon na gcompánach.",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2380de39af29128a9e128e1ab45d00ff",
+              "tea_CelticA_en2cygagd_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "Go raibh maith agat, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "Go raibh maith agat, {{name}}. ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "Níorbh fhéidir linn do fhreagra a shábháil. ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "An bhfuil tú cinnte gur mhaith leat do fhreagra a tharraingt siar?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "Tá do fhreagra tarraingthe siar.",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "Níorbh fhéidir do fhreagra a tharraingt siar. ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "An bhfuil fonn ort gach freagra tinrimh a scriosadh? ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "Taifid tinrimh glanta.",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "Níorbh fhéidir taifid tinrimh a ghlanadh.",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "Comhluadar",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "Daoine",
+      "People",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountHint": [
+      "Cé mhéad duine do gach rogha ({{iomlán}} san iomlán)",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "Ainmneacha aíonna",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "Scríobh céad ainm agus sloinne gach compánach ({{count}} ar a mhéad)",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "Ainm1 Sloinne1, Ainm2 Sloinne2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "Cuireadh á lódáil…",
     "notFoundTitle": "Cuireadh gan aimsiú",
     "notFoundText": "Níor aimsíomar cuireadh leis an nasc seo. Má cheapann tú gur earráid é seo, déan teagmháil leis na hóstach.",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "Éanga",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "Cruthaigh agus roinn do chuireadh bainise pearsantaithe.",
     "emptyDescription": "Bainistigh sonraí do chuireadh, roinn nasc uathúil le d'aíonna agus faigh a ndearbhuithe freastail.",
     "createLink": "Cruthaigh cuireadh",
     "privacyPolicy": "Polasaí Príobháideachais",
     "terms": "Téarmaí",
     "legalNotice": "Fógra Dlíthiúil",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "Níorbh fhéidir an áit seo a aimsiú.",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "Níorbh fhéidir an léarscáil a lódáil.",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "Comhordanáidí: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "Réamhamharc léarscáile ag an suíomh sonraithe.",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "Suíomh cumraithe",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "Cuireadh á lódáil",
@@ -308,28 +1125,427 @@
     "galleryUploadFailed": "Níorbh fhéidir na grianghraif a uaslódáil.",
     "noValidFiles": "Aon chomhad bailí. Uasmhéid 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "Uaslódáil comhad fuaime le himirt ar an gclúdach (MP3, WAV, OGG, M4A - 5 MB ar a mhéad).",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "Uaslódáil comhad fuaime",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG nó M4A - 5 MB ar a mhéad",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "Ní thacaítear le formáid fuaime. ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "Tá an comhad fuaime folamh.",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "Sáraíonn an comhad fuaime an teorainn 5 MB.",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "Earráid agus an comhad fuaime á léamh.",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "Tá an comhad folamh. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "Cur síos ar an íomhá...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "Uasmhéid {{ max}} íomhánna sa ghailearaí.",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "{{iomlán}} grianghraf(í) á n-uaslódáil…",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "Grianghraf á uaslódáil...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "Athraigh grianghraf",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "Earráid agus an cur síos á shábháil",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "Cur síos sábháilte",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "Ceol roghnaithe",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "Bain ceol",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "Ag imirt...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "Réamhamharc",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "Roghnaigh",
+      "Select",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "selected": [
+      "Roghnaithe",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1569,66 @@
     "pdfTableCompanions": "Compánaigh",
     "pdfTableDiet": "Aiste bia",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · Riarachán",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "Féach ar chuireadh",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "Logáil amach",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "Deimhnithe",
@@ -384,7 +1657,26 @@
     "confirms": "Deimhníonn",
     "declines": "Diúltaíonn",
     "pending": "Ar feitheamh",
-    "visits_one": "1 visit",
+    "visits_one": [
+      "1 cuairt",
+      "1 visit",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "visits_other": "{{count}} visits"
   },
   "attendance": {
@@ -417,9 +1709,66 @@
     "generateMessage": "Gin teachtaireacht eile",
     "copyMessage": "Cóipeáil teachtaireacht",
     "shareVia": "Roinn trí",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "WhatsApp",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "Teileagram",
+      "Telegram",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sms": [
+      "SMS",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "print": "Priontáil",
     "printPdf": "Priontáil / Sábháil PDF",
     "linkCopied": "Nasc cóipeáilte.",
@@ -446,9 +1795,47 @@
     "deleteButton": "Iarr ar scriosadh sonraí",
     "exportButton": "Easpórtáil mo shonraí",
     "rightsHint": "Osclófar do chliant ríomhphoist le teimpléad réamhshainithe. Is féidir leat scríobh chuig adriancl2001@gmail.com freisin.",
-    "ccpaTitle": "CCPA / CPRA (California)",
+    "ccpaTitle": [
+      "CCPA / CPRA (California)",
+      "CCPA / CPRA (California)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "ccpaText": "Ní dhíolann Wedingo sonraí pearsanta. Úsáidtear na sonraí a bhailítear go heisiach chun an cuireadh a bhainistiú. Más cónaitheoir i California thú, tá sé de cheart agat scriosadh do shonraí a iarraidh agus gan leithcheal a dhéanamh ort as do chearta a fheidhmiú.",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "Éanga",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "Feidhmchlár gréasáin chun cuirí bainise a bhainistiú.",
     "copyright": "© {{year}} Adrián Carrasco López. Gach ceart ar cosaint.",
     "deleteEmailSubject": "Iarratas ar scriosadh sonraí - Wedingo",
@@ -518,13 +1905,146 @@
     "deleteFailed": "Níorbh fhéidir an cuireadh a scriosadh. Bain triail eile as.",
     "configLoadFailed": "Níorbh fhéidir an chumraíocht a lódáil. Seiceáil an nasc agus bain triail eile as.",
     "invalidLink": "Níl nasc an chuiridh bailí.",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "Ní féidir le faisnéis chóiríochta dul thar 2000 carachtar.",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "Ní féidir le cur síos ar an roghchlár dul thar 2000 carachtar.",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "Níorbh fhéidir an íomhá a phróiseáil. ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "Níorbh fhéidir an comhad íomhá a léamh.",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "Theip ar chriptiú na híomhá.",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "Tá an íomhá ró-mhór fiú tar éis comhbhrú.",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "Tá an comhad folamh. ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -588,7 +2108,26 @@
     "tokenCleanError": "Níorbh fhéidir na cuain a ghlanadh.",
     "tokenLoadError": "Níorbh fhéidir na cuain a lódáil.",
     "accountEmail": "Ríomhphost: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "AitheantasÚsáideora: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "Gníomhach",
     "sessionInactive": "Neamhghníomhach",
     "sessionLabel": "Seisiún áitiúil: {{status}}",
@@ -615,10 +2154,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "Comhartha",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2380de39af29128a9e128e1ab45d00ff",
+              "tea_CelticA_en2cygagd_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "RSVPanna",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2380de39af29128a9e128e1ab45d00ff",
+              "tea_CelticA_en2cygagd_2021q3.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2213,46 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "Ríomhphost",
+      "Email",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "passwordLabel": [
+      "Pasfhocal",
+      "Password",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "compliance": {
     "title": "Clár gníomhaíochtaí próiseála (GDPR airt. 30)",
@@ -659,7 +2274,26 @@
     "row2Basis": "Toiliú (GDPR airt. 6.1.a, 9.2.a)",
     "row2Purpose": "Liosta aíonna agus biachlár a bhainistiú",
     "row2Retention": "12 mhí tar éis an imeachta",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (Siopa Dóiteáin)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "Uaslódáil íomhánna",
     "row3Data": "Grianghraif bainise (criptithe AES-256-GCM)",
     "row3Basis": "Toiliú (GDPR airt. 6.1.a)",
@@ -677,7 +2311,26 @@
     "row5Basis": "Oibleagáid dhlíthiúil (GDPR airt. 6.1.c)",
     "row5Purpose": "Clár gníomhaíochtaí riaracháin",
     "row5Retention": "3 bliana",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (Firestore auditLog)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "Aistrithe idirnáisiúnta",
     "internationalText": "Stóráiltear sonraí ar fhreastalaithe Google Cloud i réigiún eur3 (Frankfurt, an Ghearmáin). Feidhmíonn Google LLC (SAM) mar phróiseálaí sonraí faoi DPA de réir GDPR airt. 28. Tá aistrithe chuig SAM bunaithe ar:",
     "scc": "Clásail Chonarthacha Chaighdeánacha (SCC) - Cinneadh Cur Chun Feidhme 2021/914",
@@ -691,86 +2344,1359 @@
     "measureSuperadmin": "Sár-riarthóir cosanta ag Firebase Authentication + cosán i bhfolach"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "Inrochtaineacht",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Dún",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontSize": [
+      "Méid an téacs",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "Gnáth",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontLarge": [
+      "Mór",
+      "Large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "fontExtraLarge": [
+      "Breise mór",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "Spásáil líne",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "Gnáth",
+      "Normal",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineWide": [
+      "Leathan",
+      "Wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lineVeryWide": [
+      "An-leathan",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "Codarsnacht ard",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "Laghdaigh tairiscint",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "Cló OpenDyslexic",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "Níos mó spásáil litreacha",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "Cuir líne faoi gach nasc",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "Cúrsóir mór",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "Liathscála",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "Táscairí fócais infheicthe",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "Gan ceol",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "Earráid á lódáil",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "Ceol",
+      "Music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "soundCloudNote": [
+      "Rian SoundCloud - oscailte le himirt",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "Oscail i SoundCloud",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "Priontáil á ullmhú…",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "Grianghraf lánúin",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "Le beannacht a dtuismitheoirí Dé",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "Dáta agus ionad",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "Am searmanais:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "Féach ar shuíomh in Google Maps",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "Táimid ag tnúth leis an nóiméad speisialta seo a roinnt leat.",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "Iompar",
+      "Transport",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutGuests": [
+      "Maidir leis na haíonna",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "Sceideal bainise",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "Roinnfear an sceideal mionsonraithe go luath.",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "Cód gúna",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "Cuirfear in iúl níos déanaí.",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "Maidir le leanaí",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "Ár scéal",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "Conas a thosaigh sé ar fad",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "Roinnfear an scéal go luath.",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "Bronntanais",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "Is é do láithreacht an bronntanas is fearr",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "Roinnfear eolas bronntanais go luath.",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "Sonraí bainc",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "Cóiríocht",
+      "Accommodation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "whereToStay": [
+      "Cá háit le fanacht",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "Roinnfear eolas lóistín go luath.",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · Beartas Príobháideachta ag wedingo-6c26a.web.app",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "Dún an fhuinneog",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
-    "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "moveUp": [
+      "Bog suas",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "Bog síos",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "title": [
+      "Ordú & infheictheacht",
+      "Order & visibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "help": [
+      "Tarraing chun athordú a dhéanamh, bain úsáid as na cnaipí chun bogadh, agus scoránaigh gach cuid air nó as.",
+      "Drag to reorder, use the buttons to move, and toggle each section on or off.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "Roghnaigh teanga",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "1 chompánach",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "Spáinn",
+      "Spain",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "westernEurope": [
+      "Iarthar na hEorpa",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "Eoraip Nordach",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "Lár na hEorpa",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "Deisceart na hEorpa / na Balcáin",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "Oirthear na hEorpa / Cugais",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "Áise Thoir",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "Áise Theas",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "Oirdheisceart na hÁise",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "Áise Láir / Meán-Oirthear",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "Afraic",
+      "Africa",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "americas": [
+      "Mheiriceá",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -787,112 +3713,1708 @@
     "minute_other": "{{count}} minutes"
   },
   "changelog": {
-    "title": "Changelog",
-    "close": "Close"
+    "title": [
+      "Loga athrú",
+      "Changelog",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "Dún",
+      "Close",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "Tá seisiún gníomhach ann cheana don chuireadh seo. ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "Níl an cód rochtana bailí.",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "Cuir isteach an cód rochtana.",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "Cód fíoraithe go rathúil.",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "Níorbh fhéidir an cód a fhíorú. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "Cuir isteach d'ainm úsáideora agus an cód rochtana.",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "Ainm úsáideora nó cód mícheart.",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "Ní mheaitseálann an cód leis an úsáideoir seo.",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "Tá tú logáilte isteach go rathúil.",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "Níorbh fhéidir an cód a fhíorú. ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "Clóscríobh CONFIRM chun cód nua a ghiniúint.",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "Cuir isteach d'ainm úsáideora ar dtús.",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "Ní féidir ach litreacha agus uimhreacha a bheith san ainm úsáideora.",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "Ní féidir leis an ainm úsáideora dul thar 50 carachtar.",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "Níl cead ag an úsáideoir seo rochtain a fháil anseo.",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "Cód ginte. ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "Níorbh fhéidir an cód a ghiniúint. ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "Cuir isteach an cód rochtana reatha chun ceann nua a ghiniúint.",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "Cód nua ginte. ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "Cód athnuachan. ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "Níl ceadanna riaracháin ag an gcuntas seo.",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "Dintiúir mícheart.",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "An iomarca iarrachtaí. ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "Níl formáid an ríomhphoist bailí.",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "Earráid logáil isteach. Seiceáil do cheangal.",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
-    "saved": "Changes saved"
+    "saved": [
+      "Athruithe a shábháil",
+      "Changes saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "monthNames": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": [
+      "Eanáir",
+      "January",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "2": [
+      "Feabhra",
+      "February",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "3": [
+      "Márta",
+      "March",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "4": [
+      "Aibreán",
+      "April",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "5": [
+      "Bealtaine",
+      "May",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "6": [
+      "Meitheamh",
+      "June",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "7": [
+      "Iúil",
+      "July",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "8": [
+      "Lúnasa",
+      "August",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "9": [
+      "Meán Fómhair",
+      "September",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "10": [
+      "Deireadh Fómhair",
+      "October",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "11": [
+      "Samhain",
+      "November",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "12": [
+      "Nollaig",
+      "December",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "light": [
+      "Téamaí éadrom",
+      "Light themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "dark": [
+      "Téamaí dorcha",
+      "Dark themes",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
-    "gluten": "Gluten",
-    "lactose": "Lactose",
-    "nuts": "Tree nuts",
-    "shellfish": "Shellfish"
+    "gluten": [
+      "Glútan",
+      "Gluten",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lactose": [
+      "lachtós",
+      "Lactose",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nuts": [
+      "Cnónna crann",
+      "Tree nuts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "shellfish": [
+      "Sliogéisc",
+      "Shellfish",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "Dár daor",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "Tapáil chun oscailt",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "Tapáil chun leanúint ar aghaidh",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "Ár bainise",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "Bainise {{names}}",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "Suíomh le deimhniú",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "Táimid ag tnúth leis an nóiméad speisialta seo a cheiliúradh leat.",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "Am:",
+      "Time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "placeLabel": [
+      "Ionad:",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "Galánta agus geal, le variant órga.",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "Nádúrtha agus sober le Greens bog.",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "Te agus íogair, le dathanna bándearg.",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "Solas agus neodrach, le láithreacht suaimhneach gan am.",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "Bog agus rómánsúil, le toin bándearg pearly.",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "Úr agus serene, le dathanna lavender agus mauve.",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "Geal agus féile, le sparkles órga te.",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "Dorcha agus galánta, le buaicphointí ómra agus ór.",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "Deep agus sofaisticiúla, le hór dian ar chúlra dorcha.",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "Gorm an-dorcha le hór dian agus láithreacht sollúnta.",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "Te agus clúdaithe, le fíon dearg agus sparkles órga.",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "Gorm domhain le variant airgid agus láithreacht serene.",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "Glas domhain nádúrtha le dathanna órga agus galánta.",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "Corcra dian le sparkles bándearg agus rómánsúil.",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "Ceiliúradh grá éagsúil le dathanna an tuar ceatha.",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "Gorm, bándearg agus bán in ómós don bhratach thras.",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "Buí, bán, corcra agus dubh don bhratach neamhdhénártha.",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "Oráiste, bán agus bándearg den bhratach leispiach.",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "Bándearg, corcra agus gorm na bratach dé.",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "Bándearg, buí agus gorm den uilebhrat.",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "Dubh, liath, bán agus corcra na brataí éighnéasach.",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "Fáilte roimh áit súgartha",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2380de39af29128a9e128e1ab45d00ff",
+              "tea_CelticA_en2cygagd_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "Fáilte faoi mhaoirseacht",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2380de39af29128a9e128e1ab45d00ff",
+              "tea_CelticA_en2cygagd_2021q3.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "Daoine fásta amháin",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "2380de39af29128a9e128e1ab45d00ff",
+              "tea_CelticA_en2cygagd_2021q3.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "Gan sonraí",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "iomlán",
+      "total",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
+    "barChart": [
+      "Barrachairt tinrimh",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "2380de39af29128a9e128e1ab45d00ff",
+            "tea_CelticA_en2cygagd_2021q3.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }

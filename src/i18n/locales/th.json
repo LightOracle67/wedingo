@@ -11,20 +11,133 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": "Visible",
+    "visible": [
+      "มองเห็นได้",
+      "Visible",
+      null,
+      null,
+      10
+    ],
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": "Something went wrong",
-      "message": "Please reload the page to try again.",
-      "reload": "Reload page"
+      "title": [
+        "มีบางอย่างผิดพลาด",
+        "Something went wrong",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "56c9c2de545c070079660147339633bf",
+              "en_th_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "message": [
+        "โปรดโหลดหน้านี้ซ้ำเพื่อลองอีกครั้ง",
+        "Please reload the page to try again.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "56c9c2de545c070079660147339633bf",
+              "en_th_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "reload": [
+        "โหลดหน้าซ้ำ",
+        "Reload page",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "56c9c2de545c070079660147339633bf",
+              "en_th_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     },
     "toast": {
-      "close": "Close"
+      "close": [
+        "ปิด",
+        "Close",
+        null,
+        null,
+        10
+      ]
     },
-    "skipToContent": "Skip to main content",
+    "skipToContent": [
+      "ข้ามไปที่เนื้อหาหลัก",
+      "Skip to main content",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "adminBar": {
-      "ariaLabel": "Administration bar",
-      "fallback": "Administration"
+      "ariaLabel": [
+        "แถบการบริหาร",
+        "Administration bar",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "56c9c2de545c070079660147339633bf",
+              "en_th_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "fallback": [
+        "การบริหาร",
+        "Administration",
+        null,
+        null,
+        10
+      ]
     }
   },
   "landing": {
@@ -56,7 +169,26 @@
     "missing": "เหลืออีก",
     "todayIsTheDay": "วันนี้เป็นวันสำคัญ!",
     "sectionLabel": "ปก",
-    "eyebrow": "Our Wedding"
+    "eyebrow": [
+      "งานแต่งงานของเรา",
+      "Our Wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "details": {
     "sectionLabel": "วันที่และสถานที่",
@@ -106,8 +238,46 @@
     "next": "ถัดไป",
     "thumbnailAria": "รูปภาพ {{number}}",
     "thumbnailAlt": "รูปขนาดย่อของแกลเลอรี่",
-    "carouselLabel": "Image gallery, use arrow keys to navigate",
-    "lightboxLabel": "Enlarged image"
+    "carouselLabel": [
+      "แกลเลอรี่ภาพ ใช้ปุ่มลูกศรเพื่อนำทาง",
+      "Image gallery, use arrow keys to navigate",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lightboxLabel": [
+      "ภาพขยาย",
+      "Enlarged image",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "rsvp": {
     "sectionLabel": "ยืนยันการเข้าร่วม",
@@ -138,49 +308,625 @@
     "ageUnder14Warning": "คุณอายุต่ำกว่า 14 ปี คุณต้องได้รับความยินยอมจากผู้ปกครองหรือผู้ดูแล",
     "parentalConsent": "ผู้ปกครองหรือผู้ดูแลของฉันยินยอมให้ฉันเข้าร่วม",
     "validation": {
-      "nameRequired": "Enter your name to confirm attendance.",
-      "menuRequired": "Select a menu option.",
-      "privacyRequired": "You must accept the Privacy Policy.",
-      "birthDateRequired": "Enter your date of birth.",
-      "ageUnder14": "You are under 14 years of age. You need your parents' or guardians' consent.",
-      "healthConsentRequired": "You must consent to the processing of your health data.",
-      "menuHeadcountRequired": "Indicate at least one menu option.",
-      "guestNamesRequired": "Enter the names of your companions.",
-      "guestNamesExceed": "You cannot enter more names than companions.",
-      "headcountExceed": "The sum of menu options cannot exceed the number of companions."
+      "nameRequired": [
+        "กรอกชื่อของคุณเพื่อยืนยันการเข้าร่วม",
+        "Enter your name to confirm attendance.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "56c9c2de545c070079660147339633bf",
+              "en_th_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "menuRequired": [
+        "เลือกตัวเลือกเมนู",
+        "Select a menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "56c9c2de545c070079660147339633bf",
+              "en_th_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "privacyRequired": [
+        "คุณต้องยอมรับนโยบายความเป็นส่วนตัว",
+        "You must accept the Privacy Policy.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "56c9c2de545c070079660147339633bf",
+              "en_th_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "birthDateRequired": [
+        "กรอกวันเกิดของคุณ",
+        "Enter your date of birth.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "56c9c2de545c070079660147339633bf",
+              "en_th_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "ageUnder14": [
+        "คุณอายุต่ำกว่า 14 ปี ",
+        "You are under 14 years of age. ",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "56c9c2de545c070079660147339633bf",
+              "en_th_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "healthConsentRequired": [
+        "คุณต้องยินยอมให้ประมวลผลข้อมูลสุขภาพของคุณ",
+        "You must consent to the processing of your health data.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "56c9c2de545c070079660147339633bf",
+              "en_th_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "menuHeadcountRequired": [
+        "ระบุตัวเลือกเมนูอย่างน้อยหนึ่งรายการ",
+        "Indicate at least one menu option.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "56c9c2de545c070079660147339633bf",
+              "en_th_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesRequired": [
+        "ป้อนชื่อเพื่อนของคุณ",
+        "Enter the names of your companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "56c9c2de545c070079660147339633bf",
+              "en_th_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "guestNamesExceed": [
+        "คุณไม่สามารถป้อนชื่อมากกว่าเพื่อนได้",
+        "You cannot enter more names than companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "56c9c2de545c070079660147339633bf",
+              "en_th_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "headcountExceed": [
+        "ผลรวมของตัวเลือกเมนูต้องไม่เกินจำนวนเพื่อนร่วมทาง",
+        "The sum of menu options cannot exceed the number of companions.",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "56c9c2de545c070079660147339633bf",
+              "en_th_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     },
-    "successAttending": "Thank you, {{name}}. Your attendance has been recorded.",
-    "successNotAttending": "Thank you, {{name}}. We are sorry you cannot attend.",
-    "saveError": "We could not save your response. Please try again in a few minutes.",
-    "withdrawConfirm": "Are you sure you want to withdraw your response?",
-    "withdrawSuccess": "Your response has been withdrawn.",
-    "withdrawError": "Could not withdraw your response. Please try again.",
-    "clearConfirm": "Delete all attendance responses? This action cannot be undone.",
-    "clearSuccess": "Attendance records cleared.",
-    "clearError": "Could not clear attendance records.",
-    "companionsLabel": "Companions",
-    "headcountLabel": "People",
-    "headcountHint": "How many people for each option ({{total}} total)",
-    "guestNamesLabel": "Guest names",
-    "guestNamesHint": "Write the first and last name of each companion (max {{count}})",
-    "guestNamesPlaceholder": "Name1 Surname1, Name2 Surname2..."
+    "successAttending": [
+      "ขอบคุณ {{name}} ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "successNotAttending": [
+      "ขอบคุณ {{name}} ",
+      "Thank you, {{name}}. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "saveError": [
+      "เราไม่สามารถบันทึกคำตอบของคุณได้ ",
+      "We could not save your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawConfirm": [
+      "คุณแน่ใจหรือไม่ว่าต้องการถอนการตอบกลับของคุณ?",
+      "Are you sure you want to withdraw your response?",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawSuccess": [
+      "คำตอบของคุณถูกถอนออกแล้ว",
+      "Your response has been withdrawn.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "withdrawError": [
+      "ไม่สามารถถอนการตอบกลับของคุณได้ ",
+      "Could not withdraw your response. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "clearConfirm": [
+      "ลบการตอบกลับการเข้าร่วมทั้งหมดใช่ไหม ",
+      "Delete all attendance responses? ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "clearSuccess": [
+      "บันทึกการเข้าร่วมถูกล้าง",
+      "Attendance records cleared.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "clearError": [
+      "ไม่สามารถล้างบันทึกการเข้างานได้",
+      "Could not clear attendance records.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "companionsLabel": [
+      "สหาย",
+      "Companions",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "headcountLabel": [
+      "ประชากร",
+      "People",
+      null,
+      null,
+      10
+    ],
+    "headcountHint": [
+      "แต่ละตัวเลือกมีกี่คน (รวม {{total}} คน)",
+      "How many people for each option ({{total}} total)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesLabel": [
+      "ชื่อแขก",
+      "Guest names",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesHint": [
+      "เขียนชื่อและนามสกุลของคู่หูแต่ละคน (สูงสุด {{count}})",
+      "Write the first and last name of each companion (max {{count}})",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "guestNamesPlaceholder": [
+      "ชื่อ1 นามสกุล1, ชื่อ2 นามสกุล2...",
+      "Name1 Surname1, Name2 Surname2...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "public": {
     "loadingInvitation": "กำลังโหลดบัตรเชิญ…",
     "notFoundTitle": "ไม่พบบัตรเชิญ",
     "notFoundText": "เราไม่พบบัตรเชิญจากลิงก์นี้ หากคุณคิดว่าเป็นข้อผิดพลาด กรุณาติดต่อเจ้าภาพ",
-    "emptyTitle": "Wedingo",
+    "emptyTitle": [
+      "เวดิงโก",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "emptyText": "สร้างและแชร์บัตรเชิญงานแต่งงานแบบปรับแต่งของคุณ",
     "emptyDescription": "จัดการข้อมูลบัตรเชิญของคุณ แชร์ลิงก์ไม่ซ้ำกับแขก และรับคำตอบการเข้าร่วม",
     "createLink": "สร้างบัตรเชิญ",
     "privacyPolicy": "นโยบายความเป็นส่วนตัว",
     "terms": "ข้อกำหนด",
     "legalNotice": "ประกาศทางกฎหมาย",
-    "locationNotFound": "Could not locate this place.",
-    "locationMapError": "Could not load the map.",
-    "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
-    "locationSet": "Location configured"
+    "locationNotFound": [
+      "ไม่พบสถานที่นี้",
+      "Could not locate this place.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationMapError": [
+      "ไม่สามารถโหลดแผนที่ได้",
+      "Could not load the map.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationCoordinates": [
+      "พิกัด: {{lat}}, {{lng}}",
+      "Coordinates: {{lat}}, {{lng}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "mapPreviewAlt": [
+      "ดูตัวอย่างแผนที่ ณ ตำแหน่งที่ระบุ",
+      "Map preview at the indicated location.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "locationSet": [
+      "กำหนดค่าตำแหน่งแล้ว",
+      "Location configured",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "setup": {
     "loadingTitle": "กำลังโหลดบัตรเชิญ",
@@ -308,28 +1054,414 @@
     "galleryUploadFailed": "ไม่สามารถอัปโหลดรูปภาพได้",
     "noValidFiles": "ไม่มีไฟล์ที่ถูกต้อง สูงสุด 20 MB, JPG/PNG",
     "hiddenSectionBadge": "oculta",
-    "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-    "audioUploadTitle": "Upload audio file",
-    "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
-    "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
-    "audioEmptyError": "Audio file is empty.",
-    "audioSizeError": "Audio file exceeds the 5 MB limit.",
-    "audioReadError": "Error reading audio file.",
-    "errorEmptyFile": "The file is empty. Select a valid file.",
-    "galleryDescriptionPlaceholder": "Image description...",
-    "galleryMaxReached": "Maximum {{max}} images in the gallery.",
+    "audioHint": [
+      "อัปโหลดไฟล์เสียงเพื่อเล่นบนหน้าปก (MP3, WAV, OGG, M4A — สูงสุด 5 MB)",
+      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadTitle": [
+      "อัปโหลดไฟล์เสียง",
+      "Upload audio file",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioUploadSubtitle": [
+      "MP3, WAV, OGG หรือ M4A — สูงสุด 5 MB",
+      "MP3, WAV, OGG or M4A — max 5 MB",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioFormatError": [
+      "ไม่รองรับรูปแบบเสียง ",
+      "Audio format not supported. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioEmptyError": [
+      "ไฟล์เสียงว่างเปล่า",
+      "Audio file is empty.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioSizeError": [
+      "ไฟล์เสียงมีขนาดเกินขีดจำกัด 5 MB",
+      "Audio file exceeds the 5 MB limit.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "audioReadError": [
+      "เกิดข้อผิดพลาดในการอ่านไฟล์เสียง",
+      "Error reading audio file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "errorEmptyFile": [
+      "ไฟล์ว่างเปล่า ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionPlaceholder": [
+      "คำอธิบายรูปภาพ...",
+      "Image description...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryMaxReached": [
+      "สูงสุด {{max}} รูปภาพในแกลเลอรี",
+      "Maximum {{max}} images in the gallery.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": "Uploading {{total}} photo(s)...",
-    "photoUploading": "Uploading photo...",
-    "replaceImage": "Change photo",
-    "galleryDescriptionSaveFailed": "Error saving description",
-    "galleryDescriptionSaved": "Description saved",
-    "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "previewing": "Playing...",
-    "preview": "Preview",
-    "select": "Select",
-    "selected": "Selected"
+    "galleryUploading": [
+      "กำลังอัปโหลดรูปภาพ {{total}} รูป...",
+      "Uploading {{total}} photo(s)...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "photoUploading": [
+      "กำลังอัปโหลดรูปภาพ...",
+      "Uploading photo...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "replaceImage": [
+      "เปลี่ยนรูปภาพ",
+      "Change photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaveFailed": [
+      "เกิดข้อผิดพลาดในการบันทึกคำอธิบาย",
+      "Error saving description",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "galleryDescriptionSaved": [
+      "บันทึกคำอธิบายแล้ว",
+      "Description saved",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "currentMusic": [
+      "เพลงที่เลือก",
+      "Selected music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "removeMusic": [
+      "ลบเพลง",
+      "Remove music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "previewing": [
+      "กำลังเล่น...",
+      "Playing...",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "preview": [
+      "ดูตัวอย่าง",
+      "Preview",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "select": [
+      "เลือก",
+      "Select",
+      null,
+      null,
+      10
+    ],
+    "selected": [
+      "เลือกแล้ว",
+      "Selected",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "admin": {
     "tabs": {
@@ -353,9 +1485,66 @@
     "pdfTableCompanions": "ผู้ติดตาม",
     "pdfTableDiet": "อาหาร",
     "sectionsLabel": "Secciones",
-    "barTitle": "Wedingo · Admin",
-    "viewInvitation": "View invitation",
-    "logout": "Log out"
+    "barTitle": [
+      "Wedingo · ผู้ดูแลระบบ",
+      "Wedingo · Admin",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInvitation": [
+      "ดูคำเชิญ",
+      "View invitation",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "logout": [
+      "ออกจากระบบ",
+      "Log out",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "panel": {
     "confirmed": "ยืนยันแล้ว",
@@ -417,9 +1606,53 @@
     "generateMessage": "สร้างข้อความอื่น",
     "copyMessage": "คัดลอกข้อความ",
     "shareVia": "แชร์ผ่าน",
-    "whatsapp": "WhatsApp",
-    "telegram": "Telegram",
-    "sms": "SMS",
+    "whatsapp": [
+      "วอทส์แอพพ์",
+      "WhatsApp",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "telegram": [
+      "โทรเลข",
+      "Telegram",
+      null,
+      null,
+      2
+    ],
+    "sms": [
+      "เอสเอ็มเอส",
+      "SMS",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "print": "พิมพ์",
     "printPdf": "พิมพ์ / บันทึก PDF",
     "linkCopied": "คัดลอกลิงก์แล้ว",
@@ -448,7 +1681,26 @@
     "rightsHint": "โปรแกรมอีเมลของคุณจะเปิดขึ้นพร้อมเทมเพลตที่กำหนดไว้ล่วงหน้า คุณสามารถเขียนถึง adriancl2001@gmail.com ได้เช่นกัน",
     "ccpaTitle": "CCPA / CPRA (แคลิฟอร์เนีย)",
     "ccpaText": "Wedingo ไม่ขายข้อมูลส่วนบุคคล ข้อมูลที่รวบรวมใช้เพื่อจัดการบัตรเชิญเท่านั้น หากคุณเป็นผู้อยู่อาศัยในแคลิฟอร์เนีย คุณมีสิทธิ์ขอให้ลบข้อมูลของคุณและไม่ถูกเลือกปฏิบัติในการใช้สิทธิ์ของคุณ",
-    "appTitle": "Wedingo",
+    "appTitle": [
+      "เวดิงโก",
+      "Wedingo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "appDescription": "เว็บแอปพลิเคชันสำหรับจัดการบัตรเชิญงานแต่งงาน",
     "copyright": "© {{year}} Adrián Carrasco López สงวนลิขสิทธิ์",
     "deleteEmailSubject": "คำขอให้ลบข้อมูล - Wedingo",
@@ -518,13 +1770,146 @@
     "deleteFailed": "ไม่สามารถลบบัตรเชิญได้ กรุณาลองอีกครั้ง",
     "configLoadFailed": "ไม่สามารถโหลดการตั้งค่าได้ ตรวจสอบการเชื่อมต่อและลองอีกครั้ง",
     "invalidLink": "ลิงก์บัตรเชิญไม่ถูกต้อง",
-    "accommodationTooLong": "Accommodation info cannot exceed 2000 characters.",
-    "menuTextoTooLong": "Menu description cannot exceed 2000 characters.",
-    "uploadImageFailed": "Could not process the image. Try another one.",
-    "readImageFailed": "Could not read the image file.",
-    "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "fileEmpty": "The file is empty. Select a valid file."
+    "accommodationTooLong": [
+      "ข้อมูลที่พักต้องมีความยาวไม่เกิน 2,000 ตัวอักษร",
+      "Accommodation info cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "menuTextoTooLong": [
+      "คำอธิบายเมนูต้องมีความยาวไม่เกิน 2,000 ตัวอักษร",
+      "Menu description cannot exceed 2000 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "uploadImageFailed": [
+      "ไม่สามารถประมวลผลภาพได้ ",
+      "Could not process the image. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "readImageFailed": [
+      "ไม่สามารถอ่านไฟล์รูปภาพได้",
+      "Could not read the image file.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "encryptFailed": [
+      "การเข้ารหัสรูปภาพล้มเหลว",
+      "Image encryption failed.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "imageTooLarge": [
+      "รูปภาพมีขนาดใหญ่เกินไปแม้หลังจากการบีบอัดแล้ว",
+      "The image is too large even after compression.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "fileEmpty": [
+      "ไฟล์ว่างเปล่า ",
+      "The file is empty. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "superadmin": {
     "tabs": {
@@ -588,7 +1973,26 @@
     "tokenCleanError": "ไม่สามารถล้างโทเค็นได้",
     "tokenLoadError": "ไม่สามารถโหลดโทเค็นได้",
     "accountEmail": "อีเมล: {{email}}",
-    "accountUid": "UID: {{uid}}",
+    "accountUid": [
+      "UID: {{uid}}",
+      "UID: {{uid}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "sessionActive": "ใช้งานอยู่",
     "sessionInactive": "ไม่ใช้งาน",
     "sessionLabel": "เซสชันท้องถิ่น: {{status}}",
@@ -615,10 +2019,48 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": "Token",
+      "colToken": [
+        "โทเค็น",
+        "Token",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "56c9c2de545c070079660147339633bf",
+              "en_th_2023q1.md"
+            ]
+          ]
+        ]
+      ],
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": "RSVPs",
+      "colRsvps": [
+        "ตอบรับคำเชิญ",
+        "RSVPs",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "56c9c2de545c070079660147339633bf",
+              "en_th_2023q1.md"
+            ]
+          ]
+        ]
+      ],
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -636,8 +2078,20 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "emailLabel": [
+      "อีเมล",
+      "Email",
+      null,
+      null,
+      10
+    ],
+    "passwordLabel": [
+      "รหัสผ่าน",
+      "Password",
+      null,
+      null,
+      10
+    ]
   },
   "compliance": {
     "title": "ทะเบียนกิจกรรมการประมวลผล (Art. 30 GDPR)",
@@ -653,31 +2107,126 @@
     "row1Basis": "ความยินยอม (Art. 6.1.a GDPR)",
     "row1Purpose": "สร้างและปรับแต่งบัตรเชิญงานแต่งงาน",
     "row1Retention": "ตราบเท่าที่บัญชียังใช้งานอยู่",
-    "row1Recipients": "Google Cloud (Firestore, hosting)",
+    "row1Recipients": [
+      "Google Cloud (Firestore, โฮสติ้ง)",
+      "Google Cloud (Firestore, hosting)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "row2Activity": "การยืนยันการเข้าร่วม (RSVP)",
     "row2Data": "ชื่อแขก การเข้าร่วม (ใช่/ไม่) การเลือกเมนู การแพ้ ข้อมูลสุขภาพ",
     "row2Basis": "ความยินยอม (Art. 6.1.a, 9.2.a GDPR)",
     "row2Purpose": "จัดการรายชื่อแขกและเมนู",
     "row2Retention": "12 เดือนหลังงาน",
-    "row2Recipients": "Google Cloud (Firestore)",
+    "row2Recipients": [
+      "Google Cloud (ไฟร์สโตร์)",
+      "Google Cloud (Firestore)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "row3Activity": "การอัปโหลดรูปภาพ",
     "row3Data": "รูปภาพงานแต่งงาน (เข้ารหัส AES-256-GCM)",
     "row3Basis": "ความยินยอม (Art. 6.1.a GDPR)",
     "row3Purpose": "แกลเลอรี่รูปภาพในบัตรเชิญ",
     "row3Retention": "12 เดือนหลังงาน",
-    "row3Recipients": "Google Cloud (Firestore subcollection)",
+    "row3Recipients": [
+      "Google Cloud (คอลเลกชันย่อย Firestore)",
+      "Google Cloud (Firestore subcollection)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "row4Activity": "การรับรองความถูกต้องและเซสชัน",
     "row4Data": "โทเค็นเซสชัน ชื่อผู้ใช้ผู้ดูแลระบบ",
     "row4Basis": "ประโยชน์โดยชอบด้วยกฎหมาย (Art. 6.1.f GDPR)",
     "row4Purpose": "ควบคุมการเข้าถึงแผงควบคุมผู้ดูแลระบบ",
     "row4Retention": "ระยะเวลาเซสชัน",
-    "row4Recipients": "Google Cloud (Firestore sessions)",
+    "row4Recipients": [
+      "Google Cloud (เซสชัน Firestore)",
+      "Google Cloud (Firestore sessions)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "row5Activity": "การตรวจสอบผู้ดูแลระบบสูงสุด",
     "row5Data": "การดำเนินการของผู้ดูแลระบบสูงสุด โทเค็นที่ใช้ บัตรเชิญที่ถูกลบ",
     "row5Basis": "ภาระผูกพันทางกฎหมาย (Art. 6.1.c GDPR)",
     "row5Purpose": "บันทึกกิจกรรมการบริหาร",
     "row5Retention": "3 ปี",
-    "row5Recipients": "Google Cloud (Firestore auditLog)",
+    "row5Recipients": [
+      "Google Cloud (บันทึกการตรวจสอบ Firestore)",
+      "Google Cloud (Firestore auditLog)",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "internationalTitle": "การถ่ายโอนระหว่างประเทศ",
     "internationalText": "ข้อมูลถูกจัดเก็บในเซิร์ฟเวอร์ Google Cloud ในภูมิภาค eur3 (แฟรงค์เฟิร์ต เยอรมนี) Google LLC (สหรัฐอเมริกา) ทำหน้าที่เป็นผู้ประมวลผลข้อมูลภายใต้ DPA ตาม Art. 28 GDPR การถ่ายโอนไปยังสหรัฐอเมริกาอยู่ภายใต้:",
     "scc": "ข้อสัญญามาตรฐาน (SCC) - Implementing Decision 2021/914",
@@ -691,86 +2240,1191 @@
     "measureSuperadmin": "ผู้ดูแลระบบสูงสุดป้องกันด้วย Firebase Authentication + เส้นทางที่ซ่อน"
   },
   "a11y": {
-    "title": "Accessibility",
-    "close": "Close",
-    "fontSize": "Text size",
-    "fontNormal": "Normal",
-    "fontLarge": "Large",
-    "fontExtraLarge": "Extra large",
-    "lineSpacing": "Line spacing",
-    "lineNormal": "Normal",
-    "lineWide": "Wide",
-    "lineVeryWide": "Very wide",
-    "highContrast": "High contrast",
-    "reducedMotion": "Reduce motion",
-    "dyslexiaFont": "OpenDyslexic font",
-    "moreSpacing": "More letter spacing",
-    "underlineLinks": "Underline all links",
-    "bigCursor": "Big cursor",
-    "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "title": [
+      "การเข้าถึง",
+      "Accessibility",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "close": [
+      "ปิด",
+      "Close",
+      null,
+      null,
+      10
+    ],
+    "fontSize": [
+      "ขนาดข้อความ",
+      "Text size",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "fontNormal": [
+      "ปกติ",
+      "Normal",
+      null,
+      null,
+      10
+    ],
+    "fontLarge": [
+      "ใหญ่",
+      "Large",
+      null,
+      null,
+      10
+    ],
+    "fontExtraLarge": [
+      "ใหญ่พิเศษ",
+      "Extra large",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lineSpacing": [
+      "ระยะห่างระหว่างบรรทัด",
+      "Line spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lineNormal": [
+      "ปกติ",
+      "Normal",
+      null,
+      null,
+      10
+    ],
+    "lineWide": [
+      "กว้าง",
+      "Wide",
+      null,
+      null,
+      10
+    ],
+    "lineVeryWide": [
+      "กว้างมาก",
+      "Very wide",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "highContrast": [
+      "คอนทราสต์สูง",
+      "High contrast",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "reducedMotion": [
+      "ลดการเคลื่อนไหว",
+      "Reduce motion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dyslexiaFont": [
+      "แบบอักษร OpenDyslexic",
+      "OpenDyslexic font",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "moreSpacing": [
+      "ระยะห่างระหว่างตัวอักษรมากขึ้น",
+      "More letter spacing",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "underlineLinks": [
+      "ขีดเส้นใต้ลิงก์ทั้งหมด",
+      "Underline all links",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bigCursor": [
+      "เคอร์เซอร์ขนาดใหญ่",
+      "Big cursor",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "desaturate": [
+      "ระดับสีเทา",
+      "Grayscale",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "strongFocus": [
+      "สัญลักษณ์แสดงโฟกัสที่มองเห็นได้",
+      "Visible focus indicators",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "music": {
-    "noMusic": "No music",
-    "loadError": "Error loading",
-    "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "noMusic": [
+      "ไม่มีดนตรี",
+      "No music",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "loadError": [
+      "เกิดข้อผิดพลาดในการโหลด",
+      "Error loading",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "label": [
+      "ดนตรี",
+      "Music",
+      null,
+      null,
+      10
+    ],
+    "soundCloudNote": [
+      "แทร็ก SoundCloud — เปิดเพื่อเล่น",
+      "SoundCloud track — open to play",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "openInSoundCloud": [
+      "เปิดใน SoundCloud",
+      "Open in SoundCloud",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "print": {
-    "preparing": "Preparing print…",
-    "couplePhoto": "Couple photo",
-    "godparentsText": "With the blessing of their godparents",
-    "dateAndPlace": "Date and venue",
-    "celebrationTime": "Ceremony time: ",
-    "viewInGoogleMaps": "View location in Google Maps",
-    "celebrationMessage": "We look forward to sharing this special moment with you.",
-    "transport": "Transport",
-    "aboutGuests": "About the guests",
-    "scheduleTitle": "Wedding schedule",
-    "scheduleFallback": "The detailed schedule will be shared soon.",
-    "dressCode": "Dress code",
-    "dressCodeFallback": "Will be communicated later.",
-    "aboutKids": "About children",
-    "ourStory": "Our story",
-    "storyStarted": "How it all began",
-    "storyFallback": "The story will be shared soon.",
-    "gifts": "Gifts",
-    "bestGift": "Your presence is the best gift",
-    "giftsFallback": "Gift information will be shared soon.",
-    "bankDetails": "Bank details",
-    "accommodation": "Accommodation",
-    "whereToStay": "Where to stay",
-    "accommodationFallback": "Accommodation information will be shared soon.",
-    "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "preparing": [
+      "กำลังเตรียมพิมพ์...",
+      "Preparing print…",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "couplePhoto": [
+      "รูปคู่",
+      "Couple photo",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "godparentsText": [
+      "ด้วยคำอวยพรจากพ่อแม่อุปถัมภ์ของพวกเขา",
+      "With the blessing of their godparents",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dateAndPlace": [
+      "วันที่และสถานที่",
+      "Date and venue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationTime": [
+      "เวลาพิธี:",
+      "Ceremony time:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "viewInGoogleMaps": [
+      "ดูตำแหน่งใน Google Maps",
+      "View location in Google Maps",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "celebrationMessage": [
+      "เราหวังว่าจะได้แบ่งปันช่วงเวลาพิเศษนี้กับคุณ",
+      "We look forward to sharing this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "transport": [
+      "ขนส่ง",
+      "Transport",
+      null,
+      null,
+      10
+    ],
+    "aboutGuests": [
+      "เกี่ยวกับแขก",
+      "About the guests",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleTitle": [
+      "ตารางงานแต่งงาน",
+      "Wedding schedule",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "scheduleFallback": [
+      "กำหนดการโดยละเอียดจะถูกแชร์เร็วๆ นี้",
+      "The detailed schedule will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCode": [
+      "การแต่งกาย",
+      "Dress code",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "dressCodeFallback": [
+      "จะแจ้งให้ทราบภายหลัง",
+      "Will be communicated later.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "aboutKids": [
+      "เกี่ยวกับเด็ก",
+      "About children",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "ourStory": [
+      "เรื่องราวของเรา",
+      "Our story",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "storyStarted": [
+      "ทุกอย่างเริ่มต้นอย่างไร",
+      "How it all began",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "storyFallback": [
+      "เรื่องราวจะถูกแบ่งปันเร็ว ๆ นี้",
+      "The story will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "gifts": [
+      "ของขวัญ",
+      "Gifts",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bestGift": [
+      "การมีอยู่ของคุณคือของขวัญที่ดีที่สุด",
+      "Your presence is the best gift",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "giftsFallback": [
+      "ข้อมูลของขวัญจะถูกแชร์เร็วๆ นี้",
+      "Gift information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bankDetails": [
+      "รายละเอียดธนาคาร",
+      "Bank details",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodation": [
+      "ที่พัก",
+      "Accommodation",
+      null,
+      null,
+      10
+    ],
+    "whereToStay": [
+      "พักที่ไหน",
+      "Where to stay",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "accommodationFallback": [
+      "ข้อมูลที่พักจะถูกแชร์เร็วๆ นี้",
+      "Accommodation information will be shared soon.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "footer": [
+      "Wedingo · นโยบายความเป็นส่วนตัวที่ wedingo-6c26a.web.app",
+      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "closeWindow": [
+      "ปิดหน้าต่าง",
+      "Close window",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "sectionOrder": {
-    "moveUp": "Move up",
-    "moveDown": "Move down",
+    "moveUp": [
+      "เลื่อนขึ้น",
+      "Move up",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "moveDown": [
+      "เลื่อนลง",
+      "Move down",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "title": "ลำดับและการแสดงผล",
     "help": "ลากเพื่อเรียงลำดับใหม่ ใช้ปุ่มเพื่อย้าย และเปิดหรือปิดแต่ละส่วน"
   },
   "langSwitcher": {
-    "label": "Select language"
+    "label": [
+      "เลือกภาษา",
+      "Select language",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "csv": {
-    "companion_one": "1 companion",
+    "companion_one": [
+      "สหาย 1 คน",
+      "1 companion",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas"
+    "spain": [
+      "สเปน",
+      "Spain",
+      null,
+      null,
+      2
+    ],
+    "westernEurope": [
+      "ยุโรปตะวันตก",
+      "Western Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "nordicEurope": [
+      "ยุโรปนอร์ดิก",
+      "Nordic Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "centralEurope": [
+      "ยุโรปกลาง",
+      "Central Europe",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "southernEurope": [
+      "ยุโรปตอนใต้/บอลข่าน",
+      "Southern Europe / Balkans",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "easternEurope": [
+      "ยุโรปตะวันออก/คอเคซัส",
+      "Eastern Europe / Caucasus",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "eastAsia": [
+      "เอเชียตะวันออก",
+      "East Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "southAsia": [
+      "เอเชียใต้",
+      "South Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "southeastAsia": [
+      "เอเชียตะวันออกเฉียงใต้",
+      "Southeast Asia",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "centralAsia": [
+      "เอเชียกลาง/ตะวันออกกลาง",
+      "Central Asia / Middle East",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "africa": [
+      "แอฟริกา",
+      "Africa",
+      null,
+      null,
+      2
+    ],
+    "americas": [
+      "อเมริกา",
+      "Americas",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -791,31 +3445,506 @@
     "close": "ปิด"
   },
   "auth": {
-    "sessionExists": "There is already an active session for this invitation. Do you want to log in anyway? The previous session will be closed.",
-    "tokenInvalid": "The access code is not valid.",
-    "enterCode": "Enter the access code.",
-    "codeVerified": "Code verified successfully.",
-    "codeVerifyError": "Could not verify the code. Please try again.",
-    "enterUserAndCode": "Enter your username and the access code.",
-    "invalidCredentials": "Incorrect username or code.",
-    "codeUserMismatch": "The code does not match this user.",
-    "loginSuccess": "You have logged in successfully.",
-    "loginError": "Could not verify the code. Please try again.",
-    "confirmRequired": "Type CONFIRM to generate a new code.",
-    "usernameRequired": "Enter your username first.",
-    "usernameInvalid": "Username can only contain letters and numbers.",
-    "usernameTooLong": "Username cannot exceed 50 characters.",
-    "unauthorizedUser": "This user does not have permission to access here.",
-    "tokenGenerated": "Code generated. You can now log in.",
-    "tokenGenerateError": "Could not generate the code. Please try again.",
-    "currentTokenRequired": "Enter the current access code to generate a new one.",
-    "tokenRenewed": "New code generated. Copy it from the field above before saving.",
-    "tokenRenewedAdmin": "Code renewed. This does not change the app password.",
-    "superadminNoPermissions": "This account does not have administration permissions.",
-    "superadminWrongCredentials": "Incorrect credentials.",
-    "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
-    "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "sessionExists": [
+      "มีเซสชันที่ใช้งานอยู่สำหรับคำเชิญนี้แล้ว ",
+      "There is already an active session for this invitation. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenInvalid": [
+      "รหัสการเข้าถึงไม่ถูกต้อง",
+      "The access code is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "enterCode": [
+      "ป้อนรหัสการเข้าถึง",
+      "Enter the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerified": [
+      "ตรวจสอบรหัสสำเร็จแล้ว",
+      "Code verified successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "codeVerifyError": [
+      "ไม่สามารถตรวจสอบรหัสได้ ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "enterUserAndCode": [
+      "ป้อนชื่อผู้ใช้และรหัสการเข้าถึงของคุณ",
+      "Enter your username and the access code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "invalidCredentials": [
+      "ชื่อผู้ใช้หรือรหัสไม่ถูกต้อง",
+      "Incorrect username or code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "codeUserMismatch": [
+      "รหัสไม่ตรงกับผู้ใช้รายนี้",
+      "The code does not match this user.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "loginSuccess": [
+      "คุณเข้าสู่ระบบเรียบร้อยแล้ว",
+      "You have logged in successfully.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "loginError": [
+      "ไม่สามารถตรวจสอบรหัสได้ ",
+      "Could not verify the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "confirmRequired": [
+      "พิมพ์ CONFIRM เพื่อสร้างรหัสใหม่",
+      "Type CONFIRM to generate a new code.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameRequired": [
+      "กรอกชื่อผู้ใช้ของคุณก่อน",
+      "Enter your username first.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameInvalid": [
+      "ชื่อผู้ใช้มีได้เฉพาะตัวอักษรและตัวเลขเท่านั้น",
+      "Username can only contain letters and numbers.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "usernameTooLong": [
+      "ชื่อผู้ใช้ไม่สามารถยาวเกิน 50 ตัวอักษร",
+      "Username cannot exceed 50 characters.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "unauthorizedUser": [
+      "ผู้ใช้รายนี้ไม่ได้รับอนุญาตให้เข้าถึงที่นี่",
+      "This user does not have permission to access here.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerated": [
+      "สร้างรหัสแล้ว ",
+      "Code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenGenerateError": [
+      "ไม่สามารถสร้างรหัสได้ ",
+      "Could not generate the code. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "currentTokenRequired": [
+      "ป้อนรหัสการเข้าถึงปัจจุบันเพื่อสร้างรหัสใหม่",
+      "Enter the current access code to generate a new one.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewed": [
+      "สร้างรหัสใหม่แล้ว ",
+      "New code generated. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tokenRenewedAdmin": [
+      "ต่ออายุรหัสแล้ว ",
+      "Code renewed. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminNoPermissions": [
+      "บัญชีนี้ไม่มีสิทธิ์ในการดูแลระบบ",
+      "This account does not have administration permissions.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminWrongCredentials": [
+      "ข้อมูลรับรองไม่ถูกต้อง",
+      "Incorrect credentials.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminTooManyAttempts": [
+      "มีความพยายามมากเกินไป ",
+      "Too many attempts. ",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminInvalidEmail": [
+      "รูปแบบอีเมลไม่ถูกต้อง",
+      "The email format is not valid.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "superadminLoginError": [
+      "เกิดข้อผิดพลาดในการเข้าสู่ระบบ ตรวจสอบการเชื่อมต่อของคุณ",
+      "Error logging in. Check your connection.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "autosave": {
     "saved": "บันทึกการเปลี่ยนแปลงแล้ว"
@@ -837,7 +3966,26 @@
   "themeGroups": {
     "light": "ธีมสว่าง",
     "dark": "ธีมมืด",
-    "lgbtiq": "LGTBIQ+"
+    "lgbtiq": [
+      "LGTBIQ+",
+      "LGTBIQ+",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "dietary": {
     "gluten": "กลูเตน",
@@ -846,53 +3994,730 @@
     "shellfish": "สัตว์มีเปลือก"
   },
   "envelope": {
-    "addressLine1": "To our dearest",
-    "tapHint": "Tap to open",
-    "and": "&",
-    "tapContinue": "Tap to continue"
+    "addressLine1": [
+      "ถึงที่รักของเรา",
+      "To our dearest",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tapHint": [
+      "แตะเพื่อเปิด",
+      "Tap to open",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "and": [
+      "&",
+      "&",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "tapContinue": [
+      "แตะเพื่อดำเนินการต่อ",
+      "Tap to continue",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "calendar": {
-    "defaultTitle": "Our wedding",
-    "eventTitle": "Wedding of {{names}}",
-    "placeUnknown": "Location to be confirmed",
-    "invitationText": "We look forward to celebrating this special moment with you.",
-    "timeLabel": "Time:",
-    "placeLabel": "Venue:"
+    "defaultTitle": [
+      "งานแต่งงานของเรา",
+      "Our wedding",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "eventTitle": [
+      "งานแต่งงานของ {{names}}",
+      "Wedding of {{names}}",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "placeUnknown": [
+      "สถานที่ที่จะยืนยัน",
+      "Location to be confirmed",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "invitationText": [
+      "เราหวังว่าจะได้เฉลิมฉลองช่วงเวลาพิเศษนี้กับคุณ",
+      "We look forward to celebrating this special moment with you.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "timeLabel": [
+      "เวลา:",
+      "Time:",
+      null,
+      null,
+      10
+    ],
+    "placeLabel": [
+      "สถานที่:",
+      "Venue:",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "themeHints": {
-    "golden": "Elegant and bright, with golden accents.",
-    "forest": "Natural and sober with soft greens.",
-    "rose": "Warm and delicate, with pink hues.",
-    "linen-soft": "Light and neutral, with a serene and timeless presence.",
-    "blush-pearl": "Soft and romantic, with pearly pink tones.",
-    "lavender-mist": "Fresh and serene, with lavender and mauve hues.",
-    "champagne-bubble": "Bright and festive, with warm golden sparkles.",
-    "amber-night": "Dark and elegant, with amber and gold highlights.",
-    "onyx-gold": "Deep and sophisticated, with intense gold on dark background.",
-    "midnight-royal": "Very dark blue with intense gold and solemn presence.",
-    "burgundy-velvet": "Warm and enveloping, with red wine and golden sparkles.",
-    "sapphire-night": "Deep blue with silver accents and serene presence.",
-    "emerald-grove": "Deep natural green with golden and elegant hues.",
-    "plum-twilight": "Intense purple with pink and romantic sparkles.",
-    "rainbow": "Celebration of diverse love with rainbow colors.",
-    "trans": "Blue, pink and white in tribute to the trans flag.",
-    "nonbinary": "Yellow, white, purple and black for the non-binary flag.",
-    "lesbian": "Orange, white and pink of the lesbian flag.",
-    "bi": "Pink, purple and blue of the bi flag.",
-    "pan": "Pink, yellow and blue of the pan flag.",
-    "ace": "Black, gray, white and purple of the asexual flag."
+    "golden": [
+      "หรูหราและสดใสด้วยสำเนียงสีทอง",
+      "Elegant and bright, with golden accents.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "forest": [
+      "เป็นธรรมชาติและเงียบสงบด้วยสีเขียวอ่อน",
+      "Natural and sober with soft greens.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "rose": [
+      "อบอุ่นและละเอียดอ่อนด้วยเฉดสีชมพู",
+      "Warm and delicate, with pink hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "linen-soft": [
+      "บางเบาและเป็นกลาง พร้อมด้วยรูปลักษณ์อันเงียบสงบและเหนือกาลเวลา",
+      "Light and neutral, with a serene and timeless presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "blush-pearl": [
+      "นุ่มนวลและโรแมนติกด้วยโทนสีชมพูมุก",
+      "Soft and romantic, with pearly pink tones.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lavender-mist": [
+      "สดชื่นและเงียบสงบด้วยเฉดสีลาเวนเดอร์และสีม่วง",
+      "Fresh and serene, with lavender and mauve hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "champagne-bubble": [
+      "สดใสและรื่นเริงด้วยประกายสีทองอันอบอุ่น",
+      "Bright and festive, with warm golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "amber-night": [
+      "เข้มและหรูหราด้วยไฮไลท์สีอำพันและสีทอง",
+      "Dark and elegant, with amber and gold highlights.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "onyx-gold": [
+      "ล้ำลึกและซับซ้อนด้วยสีทองเข้มข้นบนพื้นหลังสีเข้ม",
+      "Deep and sophisticated, with intense gold on dark background.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "midnight-royal": [
+      "สีน้ำเงินเข้มมากด้วยทองคำที่เข้มข้นและการแสดงตนที่เคร่งขรึม",
+      "Very dark blue with intense gold and solemn presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "burgundy-velvet": [
+      "อบอุ่นและห่อหุ้มด้วยไวน์แดงและประกายสีทอง",
+      "Warm and enveloping, with red wine and golden sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "sapphire-night": [
+      "สีน้ำเงินเข้มพร้อมเน้นสีเงินและรูปลักษณ์อันเงียบสงบ",
+      "Deep blue with silver accents and serene presence.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "emerald-grove": [
+      "สีเขียวธรรมชาติเข้มพร้อมเฉดสีทองและสง่างาม",
+      "Deep natural green with golden and elegant hues.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "plum-twilight": [
+      "สีม่วงเข้มพร้อมประกายสีชมพูและโรแมนติก",
+      "Intense purple with pink and romantic sparkles.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "rainbow": [
+      "เฉลิมฉลองความรักที่หลากหลายด้วยสีรุ้ง",
+      "Celebration of diverse love with rainbow colors.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "trans": [
+      "สีฟ้า สีชมพู และสีขาว เพื่อเป็นเกียรติแก่ธงข้ามเพศ",
+      "Blue, pink and white in tribute to the trans flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "nonbinary": [
+      "สีเหลือง สีขาว สีม่วง และสีดำ สำหรับธงที่ไม่ใช่ไบนารี่",
+      "Yellow, white, purple and black for the non-binary flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "lesbian": [
+      "ธงเลสเบี้ยนสีส้ม สีขาว และสีชมพู",
+      "Orange, white and pink of the lesbian flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "bi": [
+      "ธงสองสีชมพู สีม่วง และสีน้ำเงิน",
+      "Pink, purple and blue of the bi flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "pan": [
+      "ธงกระทะ สีชมพู เหลือง และน้ำเงิน",
+      "Pink, yellow and blue of the pan flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "ace": [
+      "สีดำ สีเทา สีขาว และสีม่วงของธงไม่ฝักใจทางเพศ",
+      "Black, gray, white and purple of the asexual flag.",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ]
   },
   "kidsPolicy": {
     "options": {
-      "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "playArea": [
+        "ยินดีต้อนรับด้วยพื้นที่เล่น",
+        "Welcome with play area",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "56c9c2de545c070079660147339633bf",
+              "en_th_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "supervised": [
+        "ยินดีต้อนรับภายใต้การดูแล",
+        "Welcome under supervision",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "56c9c2de545c070079660147339633bf",
+              "en_th_2023q1.md"
+            ]
+          ]
+        ]
+      ],
+      "adultOnly": [
+        "ผู้ใหญ่เท่านั้น",
+        "Adults only",
+        null,
+        null,
+        3,
+        null,
+        null,
+        [
+          []
+        ],
+        [
+          [
+            [
+              "56c9c2de545c070079660147339633bf",
+              "en_th_2023q1.md"
+            ]
+          ]
+        ]
+      ]
     }
   },
   "chart": {
-    "noData": "No data",
-    "total": "total",
-    "barChart": "Attendance bar chart",
+    "noData": [
+      "ไม่มีข้อมูล",
+      "No data",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
+    "total": [
+      "ทั้งหมด",
+      "total",
+      null,
+      null,
+      10
+    ],
+    "barChart": [
+      "แผนภูมิแท่งการเข้าร่วม",
+      "Attendance bar chart",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
+      [
+        [
+          [
+            "56c9c2de545c070079660147339633bf",
+            "en_th_2023q1.md"
+          ]
+        ]
+      ]
+    ],
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   }
 }
