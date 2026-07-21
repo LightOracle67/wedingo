@@ -73,7 +73,11 @@
   line-height: 1;
   color: var(--setup-muted, #888);
   cursor: pointer;
-  padding: 0.25rem;
+  padding: 0.5rem;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  display: grid;
+  place-items: center;
 }
 .modal-title {
   margin: 0 0 1rem;

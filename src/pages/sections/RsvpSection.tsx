@@ -150,7 +150,7 @@ const RsvpSection = memo(function RsvpSection({
                 style={namesExceed ? { borderColor: "#ef4444" } : {}}
               />
               {namesExceed ? (
-                <p style={{ fontSize: "0.78rem", color: "#ef4444", marginTop: "0.15rem" }}>
+                <p role="alert" style={{ fontSize: "0.78rem", color: "#ef4444", marginTop: "0.15rem" }}>
                   {t("rsvp.guestNamesExceed", { max: companions })}
                 </p>
               ) : null}

@@ -17,6 +17,7 @@
   src: url("https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/otf/OpenDyslexic-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 html {
@@ -1126,40 +1127,7 @@ img {
   -webkit-touch-callout: default;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: -18px;
-  background-image:
-    linear-gradient(var(--page-wash), var(--page-wash)),
-    var(--wedding-background-image);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  filter: blur(var(--page-blur));
-  transform: scale(1.04);
-  transform-origin: center;
-  opacity: 0.9;
-  will-change: transform;
-  pointer-events: none;
-  z-index: 0;
-  animation: bg-shimmer 24s ease-in-out infinite alternate;
-}
 
-@keyframes bg-shimmer {
-  0% {
-    filter: blur(var(--page-blur));
-    transform: scale(1.04);
-  }
-  50% {
-    filter: blur(var(--page-blur));
-    transform: scale(1.045);
-  }
-  100% {
-    filter: blur(var(--page-blur));
-    transform: scale(1.04);
-  }
-}
 
 @media (max-width: 480px) {
   :root {
@@ -2337,86 +2305,7 @@ a:focus-visible {
 }
 
 
-.support-section {
-  grid-column: 1 / -1;
-}
 
-.support-section h3 {
-  margin: 0 0 0.5rem;
-  font-size: 1rem;
-  color: var(--setup-text);
-}
-
-.support-section p {
-  margin: 0 0 0.5rem;
-  font-size: 0.875rem;
-  line-height: 1.5;
-  color: var(--setup-text-secondary);
-}
-
-.support-list {
-  margin: 0 0 1rem;
-  padding: 0;
-  list-style: none;
-}
-
-.support-list li {
-  margin-bottom: 0.25rem;
-  font-size: 0.875rem;
-}
-
-.support-list a {
-  color: var(--setup-accent);
-  text-decoration: none;
-}
-
-.support-list a:hover {
-  text-decoration: underline;
-}
-
-.support-divider {
-  border: none;
-  border-top: 1px solid var(--setup-border);
-  margin: 1rem 0;
-}
-
-.support-copyright {
-  font-size: 0.75rem !important;
-  color: var(--setup-text-tertiary, #999) !important;
-}
-
-
-
-
-
-
-.cookie-settings-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  margin-bottom: 0.5rem;
-}
-
-.cookie-settings-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
-  color: var(--setup-subtitle);
-  cursor: pointer;
-}
-
-.cookie-settings-item input[type="checkbox"] {
-  width: 1rem;
-  height: 1rem;
-  accent-color: var(--setup-accent);
-  cursor: pointer;
-}
-
-.cookie-settings-item input[type="checkbox"]:disabled {
-  opacity: 0.7;
-  cursor: default;
-}
 
 
 

@@ -44,3 +44,7 @@
 [dir="rtl"] .envelope-overlay {
   direction: rtl;
 }
+[dir="rtl"] .toast-container {
+  right: auto;
+  left: 1.25rem;
+}

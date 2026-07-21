@@ -1,5 +1,18 @@
 export const CHANGELOG = [
   {
+    version: "2.14.0",
+    date: "2026-07-20",
+    changes: [
+      "CSS muerto eliminado: support-section, cookie-settings, body::before duplicado, bg-shimmer",
+      "font-display: swap añadido a OpenDyslexic",
+      "Touch targets: .modal-close y .toast__close a 44px mínimos (WCAG)",
+      "RTL: toast-container añadido a rtl.css",
+      "aria-label en botón eliminar de GalleryManager",
+      "role=alert en error de nombres de RSVP",
+      "Lazy loading: AccessibilityPanel, LegalModal, ChangelogModal",
+    ],
+  },
+  {
     version: "2.13.7",
     date: "2026-07-20",
     changes: [

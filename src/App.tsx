@@ -10,9 +10,9 @@ import LanguageSwitcher from "./components/LanguageSwitcher";
 import MusicPlayer from "./components/MusicPlayer";
 
 const RTL_LANGS = new Set(["ar", "he", "ur", "fa", "ps", "ku"]);
-import AccessibilityPanel from "./components/AccessibilityPanel";
-import LegalModal from "./components/LegalModal";
-import ChangelogModal from "./components/ChangelogModal";
+const AccessibilityPanel = lazy(() => import("./components/AccessibilityPanel"));
+const LegalModal = lazy(() => import("./components/LegalModal"));
+const ChangelogModal = lazy(() => import("./components/ChangelogModal"));
 import Fireflies from "./components/Fireflies";
 import { APP_VERSION } from "./lib/constants";
 import "./styles/admin.css";
