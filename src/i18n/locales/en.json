@@ -237,6 +237,7 @@
     "audioUploadTitle": "Upload audio file",
     "audioUploadSubtitle": "MP3, WAV, OGG or M4A — max 5 MB",
     "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
+    "audioEmptyError": "Audio file is empty.",
     "audioSizeError": "Audio file exceeds the 5 MB limit.",
     "audioReadError": "Error reading audio file.",
     "placeLabel": "Wedding venue",
@@ -306,6 +307,7 @@
     "menuCelebrationLabel": "Celebration menu *",
     "themeGroupCount": "{{count}} themes",
     "privacyConsent": "I have read and accept the Privacy Policy",
+    "errorEmptyFile": "The file is empty. Select a valid file.",
     "errorFileFormat": "Format not allowed. Use JPG or PNG.",
     "errorFileSize": "The image exceeds 20 MB.",
     "photoUploaded": "Photo uploaded successfully.",
@@ -469,6 +471,7 @@
     "legalText": "In compliance with applicable laws, the following information is provided:\n\nData controller: Adrián Carrasco López\nEmail: adriancl2001@gmail.com\nWebsite purpose: personalized wedding invitation platform.\n\nThis website uses Firebase (Google LLC) as hosting and storage infrastructure, with servers in the European Union."
   },
   "errors": {
+    "fileEmpty": "The file is empty. Select a valid file.",
     "fileFormat": "Format not allowed. Use JPG or PNG.",
     "fileSize": "The image exceeds 20 MB. Please use a lighter image.",
     "uploadingImage": "Uploading image...",

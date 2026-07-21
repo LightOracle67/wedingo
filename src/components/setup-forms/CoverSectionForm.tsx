@@ -24,6 +24,7 @@ export default function CoverSectionForm({ prefix = "" }) {
     const file = e.target.files?.[0];
     const input = e.target;
     if (!file) return;
+    if (file.size === 0) { addToast("error", t("setup.errorEmptyFile")); return; }
     if (!ALLOWED_UPLOAD_TYPES.has(file.type)) { addToast("error", t("setup.errorFileFormat")); return; }
     if (file.size > MAX_UPLOAD_SIZE_BYTES) { addToast("error", t("setup.errorFileSize")); return; }
     const upload = startUploadToast(t("setup.photoUploading"));

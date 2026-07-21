@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.15.3",
+    date: "2026-07-20",
+    changes: [
+      "Seguridad: validación de archivos vacíos (size===0) en todos los upload handlers",
+      "Nuevas claves de traducción: errorEmptyFile, fileEmpty, audioEmptyError (es/en)",
+    ],
+  },
+  {
     version: "2.15.2",
     date: "2026-07-20",
     changes: [
