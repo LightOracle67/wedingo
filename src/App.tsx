@@ -34,6 +34,7 @@ function AppShell() {
   const [showA11y, setShowA11y] = useState(false);
   const [legalSection, setLegalSection] = useState("");
   const [showChangelog, setShowChangelog] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
 
   const isEditingRoute = location.pathname.endsWith("/setup") || (location.pathname.endsWith("/admin") && isAdminTokenLoggedIn);
 
@@ -94,21 +95,40 @@ function AppShell() {
       {inviteToken && location.pathname === `/${inviteToken}` && (config.musicFile || config.musicUrl) ? <MusicPlayer musicUrl={config.musicFile || config.musicUrl} /> : null}
 
       {!isEditingRoute && !isAdminTokenLoggedIn && (
-        <footer className="app-footer">
-          <div className="app-footer__left">
-            <LanguageSwitcher />
-            <button type="button" className="a11y-trigger" onClick={() => setShowA11y(true)} aria-label={t("common.accessibility")}>♿</button>
+        <>
+          <button type="button" className="app-nav-toggle" onClick={() => setNavOpen(!navOpen)} aria-label={t("common.menu")}>
+            <span className={`app-nav-toggle__icon${navOpen ? " app-nav-toggle__icon--open" : ""}`}>
+              <span /><span /><span />
+            </span>
+          </button>
+
+          <div className={`app-nav-overlay${navOpen ? " app-nav-overlay--open" : ""}`}>
+            <div className="app-nav-overlay__content">
+              <LanguageSwitcher />
+              <button type="button" className="app-nav-overlay__link" onClick={() => { setShowA11y(true); setNavOpen(false); }} aria-label={t("common.accessibility")}>♿ {t("common.accessibility")}</button>
+              <button type="button" className="app-nav-overlay__link" onClick={() => { setLegalSection("privacy"); setNavOpen(false); }}>{t("public.privacyPolicy")}</button>
+              <button type="button" className="app-nav-overlay__link" onClick={() => { setLegalSection("terms"); setNavOpen(false); }}>{t("public.terms")}</button>
+              <button type="button" className="app-nav-overlay__link" onClick={() => { setLegalSection("legal"); setNavOpen(false); }}>{t("public.legalNotice")}</button>
+              <button type="button" className="app-nav-overlay__link app-nav-overlay__link--version" onClick={() => { setShowChangelog(true); setNavOpen(false); }}>v{APP_VERSION}</button>
+            </div>
           </div>
-          <div className="app-footer__right">
-            <button type="button" onClick={() => setLegalSection("privacy")} className="app-footer__link">{t("public.privacyPolicy")}</button>
-            <span className="app-footer__sep">·</span>
-            <button type="button" onClick={() => setLegalSection("terms")} className="app-footer__link">{t("public.terms")}</button>
-            <span className="app-footer__sep">·</span>
-            <button type="button" onClick={() => setLegalSection("legal")} className="app-footer__link">{t("public.legalNotice")}</button>
-            <span className="app-footer__sep">·</span>
-            <button type="button" onClick={() => setShowChangelog(true)} className="app-footer__link" style={{ opacity: 0.4 }}>v{APP_VERSION}</button>
-          </div>
-        </footer>
+
+          <footer className="app-footer">
+            <div className="app-footer__left">
+              <LanguageSwitcher />
+              <button type="button" className="a11y-trigger" onClick={() => setShowA11y(true)} aria-label={t("common.accessibility")}>♿</button>
+            </div>
+            <div className="app-footer__right">
+              <button type="button" onClick={() => setLegalSection("privacy")} className="app-footer__link">{t("public.privacyPolicy")}</button>
+              <span className="app-footer__sep">·</span>
+              <button type="button" onClick={() => setLegalSection("terms")} className="app-footer__link">{t("public.terms")}</button>
+              <span className="app-footer__sep">·</span>
+              <button type="button" onClick={() => setLegalSection("legal")} className="app-footer__link">{t("public.legalNotice")}</button>
+              <span className="app-footer__sep">·</span>
+              <button type="button" onClick={() => setShowChangelog(true)} className="app-footer__link" style={{ opacity: 0.4 }}>v{APP_VERSION}</button>
+            </div>
+          </footer>
+        </>
       )}
 
       <main id="main-content" tabIndex={-1}>

@@ -26,7 +26,8 @@
       "ariaLabel": "Административна лента",
       "fallback": "Администрация"
     },
-    "saving": "Saving…"
+    "saving": "Saving…",
+    "menu": "Menu"
   },
   "landing": {
     "title": "Wedingo — Сватбени покани",

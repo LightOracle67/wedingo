@@ -26,7 +26,8 @@
       "ariaLabel": "Verwaltungsleiste",
       "fallback": "Verwaltung"
     },
-    "saving": "Saving…"
+    "saving": "Saving…",
+    "menu": "Menu"
   },
   "landing": {
     "title": "Wedingo — Hochzeitseinladungen",

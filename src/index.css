@@ -2283,11 +2283,85 @@ a:focus-visible {
   font-size: inherit;
 }
 
+/* ── Mobile nav toggle ── */
+.app-nav-toggle {
+  display: none;
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 10003;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 50%;
+  width: 2.6rem;
+  height: 2.6rem;
+  cursor: pointer;
+  padding: 0;
+  place-items: center;
+}
+.app-nav-toggle__icon {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 18px;
+}
+.app-nav-toggle__icon span {
+  display: block;
+  height: 2px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 2px;
+  transition: transform 300ms ease, opacity 300ms ease;
+}
+.app-nav-toggle__icon--open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.app-nav-toggle__icon--open span:nth-child(2) { opacity: 0; }
+.app-nav-toggle__icon--open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
+/* ── Mobile nav overlay ── */
+.app-nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10002;
+  background: rgba(10,8,6,0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+.app-nav-overlay--open {
+  display: flex;
+  opacity: 1;
+  pointer-events: auto;
+}
+.app-nav-overlay__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+.app-nav-overlay__link {
+  all: unset;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.7);
+  transition: color 200ms ease;
+  text-align: center;
+}
+.app-nav-overlay__link:hover { color: rgba(255,255,255,0.95); }
+.app-nav-overlay__link--version { opacity: 0.4; font-size: 0.85rem; }
 
-
-
-
+@media (max-width: 640px) {
+  .app-nav-toggle { display: grid; }
+  .app-footer { display: none !important; }
+}
 
 
 
