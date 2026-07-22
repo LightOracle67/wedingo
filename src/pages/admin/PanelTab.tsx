@@ -46,6 +46,7 @@ const PanelTab = memo(function PanelTab(props: any) {
       const text = await file.text();
       const data = JSON.parse(text);
       if (!Array.isArray(data) || !data.length || !data[0].id) { setRestoreMsg(t("panel.restoreInvalid")); return; }
+      if (!window.confirm(t("panel.restoreConfirm", { count: data.length }))) { e.target.value = ""; return; }
       for (const item of data) {
         if (!item.id || typeof item.id !== "string") continue;
         const { id, bankInfo, ...rest } = item;
@@ -55,8 +56,8 @@ const PanelTab = memo(function PanelTab(props: any) {
       }
       if (onRestore) await onRestore();
       setRestoreMsg(t("panel.restoreSuccess", { count }));
-    } catch {
-      setRestoreMsg(t("panel.restoreFailed"));
+    } catch (err: any) {
+      setRestoreMsg(`${t("panel.restoreFailed")} ${err.code || err.message || ""}`);
     }
     e.target.value = "";
   }, [onRestore, t]);

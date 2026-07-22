@@ -8,6 +8,13 @@ export const CHANGELOG = [
     ],
   },
   {
+    version: "2.16.9",
+    date: "2026-07-22",
+    changes: [
+      "Fix: restore backup con confirmación + mensaje de error detallado (código Firestore)",
+    ],
+  },
+  {
     version: "2.16.8",
     date: "2026-07-22",
     changes: [
