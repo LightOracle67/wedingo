@@ -2,10 +2,9 @@ import { memo, useCallback, useEffect, useState } from "react";
 import { getDocs, collection, doc, writeBatch, query, where } from "firebase/firestore";
 import { ref, deleteObject, listAll } from "firebase/storage";
 import { db, storage, RSVP_COLLECTION_REF, INVITATIONS_COLLECTION_REF } from "../../lib/firebase";
-import { calcGlobalStats, tokenUsageOverTime, rsvpOverTime } from "../../lib/superadmin-utils";
+import { calcGlobalStats, formatBytes } from "../../lib/superadmin-utils";
 import { MONTH_VALUE_TO_NUMBER } from "../../lib/constants";
 import { logAudit } from "../../lib/audit";
-import { DonutChart, MiniBar, Legend } from "../../components/AttendanceChart";
 import StatsCard from "../admin/StatsCard";
 import { useTranslation } from "react-i18next";
 import { useToast } from "../../hooks/useToast";
@@ -15,25 +14,24 @@ const DashboardTab = memo(function DashboardTab() {
   const { addToast } = useToast();
   const [stats, setStats] = useState<any>(null);
   const [invitations, setInvitations] = useState<any[]>([]);
-  const [tokenTimeline, setTokenTimeline] = useState<any[]>([]);
-  const [rsvpTimeline, setRsvpTimeline] = useState<any[]>([]);
+  const [galleryCount, setGalleryCount] = useState(0);
   const [loading, setLoading] = useState(true);
   const [cleaning, setCleaning] = useState(false);
 
   const load = useCallback(async () => {
     try {
-      const [rsvpSnap, invSnap, tokSnap] = await Promise.all([
+      const [rsvpSnap, invSnap, tokSnap, galSnap] = await Promise.all([
         getDocs(RSVP_COLLECTION_REF),
         getDocs(INVITATIONS_COLLECTION_REF),
         getDocs(collection(db, "setupTokens")),
+        getDocs(collection(db, "galleryData")),
       ]);
       const rsvps = rsvpSnap.docs.map((d: any) => ({ id: d.id, ...d.data() }));
       const invs = invSnap.docs.map((d: any) => ({ id: d.id, ...d.data() }));
       const tokens = tokSnap.docs.map((d: any) => ({ id: d.id, ...d.data() }));
       setInvitations(invs);
+      setGalleryCount(galSnap.size);
       setStats(calcGlobalStats(invs, rsvps, tokens));
-      setTokenTimeline(tokenUsageOverTime(tokens));
-      setRsvpTimeline(rsvpOverTime(rsvps));
     } catch {
       addToast("error", t("errors.statsLoadFailed"));
     } finally { setLoading(false); }
@@ -82,64 +80,69 @@ const DashboardTab = memo(function DashboardTab() {
   if (loading) return <p className="setup-subtitle" style={{ textAlign: "center" }}>{t("superadmin.dashboardLoading")}</p>;
   if (!stats) return <p className="setup-error">{t("superadmin.dashboardError")}</p>;
 
+  const tokenUtilization = stats.tokensTotal > 0 ? Math.round((stats.tokensUsed / stats.tokensTotal) * 100) : 0;
+  const rsvpRate = stats.rsvpTotal > 0 ? Math.round((stats.rsvpYes / stats.rsvpTotal) * 100) : 0;
+
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100%", minHeight: 0 }}>
+    <div className="admin-flex--col" style={{ height: "100%", minHeight: 0 }}>
       {expired.length > 0 ? (
-        <div className="setup-token-card" style={{ marginBottom: "1rem", padding: "0.7rem 1rem", borderColor: "#e06060" }}>
-          <p style={{ margin: 0, color: "var(--setup-title)", fontSize: "0.9rem" }}>
-            {t("superadmin.expiredInvitations", { count: expired.length })}
-          </p>
-          <p className="setup-help" style={{ margin: "0.3rem 0" }}>
-            {t("superadmin.expiredText")}
-          </p>
-          <button className="setup-button" type="button" onClick={handleCleanup} disabled={cleaning} style={{ fontSize: "0.85rem" }}>
-            {cleaning ? t("superadmin.cleaningButton") : t("superadmin.cleanButton", { count: expired.length })}
-          </button>
+        <div className="setup-background-panel" style={{ marginBottom: "0.75rem", borderColor: "#e06060" }}>
+          <div className="setup-background-panel__header">
+            <div>
+              <p className="setup-label" style={{ color: "#e06060" }}>{t("superadmin.expiredInvitations", { count: expired.length })}</p>
+              <p className="setup-help">{t("superadmin.expiredText")}</p>
+            </div>
+            <button className="setup-button" type="button" onClick={handleCleanup} disabled={cleaning} style={{ fontSize: "0.8rem", flexShrink: 0 }}>
+              {cleaning ? t("superadmin.cleaningButton") : t("superadmin.cleanButton", { count: expired.length })}
+            </button>
+          </div>
         </div>
       ) : null}
 
       <div className="admin-stats-grid">
-        <StatsCard value={stats.rsvpTotal} label={t("superadmin.statsTotalResponses")} />
-        <StatsCard value={stats.rsvpYes} label={t("superadmin.statsConfirmations")} />
-        <StatsCard value={stats.rsvpNo} label={t("superadmin.statsDeclinations")} />
-        <StatsCard value={stats.totalGuests} label={t("superadmin.statsTotalGuests")} />
-        <StatsCard value={stats.tokensTotal} label={t("superadmin.statsTokensGenerated")} />
-        <StatsCard value={stats.tokensUsed} label={t("superadmin.statsTokensUsed")} />
-        <StatsCard value={stats.tokensAvailable} label={t("superadmin.statsTokensAvailable")} />
         <StatsCard value={stats.invitationCount} label={t("superadmin.statsInvitations")} />
+        <StatsCard value={stats.rsvpTotal} label={t("superadmin.statsTotalResponses")} />
+        <StatsCard value={`${rsvpRate}%`} label={t("superadmin.statsConfirmationRate")} />
+        <StatsCard value={stats.totalGuests} label={t("superadmin.statsTotalGuests")} />
+        <StatsCard value={galleryCount} label={t("superadmin.statsGalleryImages")} />
+        <StatsCard value={stats.tokensTotal} label={t("superadmin.statsTokensGenerated")} />
+        <StatsCard value={`${tokenUtilization}%`} label={t("superadmin.statsTokenUtilization")} />
+        <StatsCard value={formatBytes(stats.totalBytes)} label={t("superadmin.statsStorage")} />
       </div>
 
-      {stats.rsvpTotal > 0 && (
-        <div className="setup-token-card" style={{ marginTop: "1rem", padding: "1rem" }}>
-          <p className="setup-label" style={{ marginBottom: "0.5rem" }}>{t("superadmin.responseDistribution")}</p>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <DonutChart yes={stats.rsvpYes} no={stats.rsvpNo} pending={0} size={140} />
+      <div className="support-grid" style={{ marginTop: "0.75rem" }}>
+        <div className="setup-background-panel">
+          <p className="setup-label">{t("superadmin.responseSummary")}</p>
+          <div style={{ display: "flex", gap: "1rem", marginTop: "0.5rem", flexWrap: "wrap" }}>
+            <div>
+              <p style={{ fontSize: "0.75rem", color: "var(--setup-muted)", margin: 0 }}>{t("superadmin.statsConfirmations")}</p>
+              <p style={{ fontSize: "1.3rem", fontWeight: 700, color: "#22c55e", margin: "0.2rem 0" }}>{stats.rsvpYes}</p>
+            </div>
+            <div>
+              <p style={{ fontSize: "0.75rem", color: "var(--setup-muted)", margin: 0 }}>{t("superadmin.statsDeclinations")}</p>
+              <p style={{ fontSize: "1.3rem", fontWeight: 700, color: "#ef4444", margin: "0.2rem 0" }}>{stats.rsvpNo}</p>
+            </div>
+            <div>
+              <p style={{ fontSize: "0.75rem", color: "var(--setup-muted)", margin: 0 }}>{t("superadmin.statsTokensAvailable")}</p>
+              <p style={{ fontSize: "1.3rem", fontWeight: 700, color: "var(--setup-title)", margin: "0.2rem 0" }}>{stats.tokensAvailable}</p>
+            </div>
+            <div>
+              <p style={{ fontSize: "0.75rem", color: "var(--setup-muted)", margin: 0 }}>{t("superadmin.statsAutoTokens")}</p>
+              <p style={{ fontSize: "1.3rem", fontWeight: 700, color: "var(--setup-title)", margin: "0.2rem 0" }}>{stats.autoTokens}</p>
+            </div>
           </div>
-          <Legend items={[
-            { label: t("superadmin.statsConfirmations"), value: stats.rsvpYes, color: "var(--accent, #22c55e)" },
-            { label: t("superadmin.statsDeclinations"), value: stats.rsvpNo, color: "#ef4444" },
-          ]} />
         </div>
-      )}
 
-      {rsvpTimeline.length > 1 && (
-        <div className="setup-token-card" style={{ marginTop: "1rem", padding: "1rem" }}>
-          <p className="setup-label" style={{ marginBottom: "0.5rem" }}>{t("superadmin.responsesByDay")}</p>
-          <MiniBar items={rsvpTimeline.map((d: any) => ({ label: d.date.slice(5), value: d.total }))} height={100} color="var(--accent, #22c55e)" />
+        <div className="setup-background-panel">
+          <p className="setup-label">{t("superadmin.platformInfo")}</p>
+          <div style={{ marginTop: "0.3rem", fontSize: "0.8rem", color: "var(--setup-muted)", lineHeight: 1.8 }}>
+            <p style={{ margin: 0 }}>Firebase: {import.meta.env.VITE_FIREBASE_PROJECT_ID || "—"}</p>
+            <p style={{ margin: 0 }}>{t("superadmin.statsInvitations")}: {stats.invitationCount}</p>
+            <p style={{ margin: 0 }}>RSVPs: {stats.rsvpTotal}</p>
+            <p style={{ margin: 0 }}>{t("superadmin.statsTokensGenerated")}: {stats.tokensTotal}</p>
+            <p style={{ margin: 0 }}>Gallery: {galleryCount}</p>
+          </div>
         </div>
-      )}
-
-      {tokenTimeline.length > 1 && (
-        <div className="setup-token-card" style={{ marginTop: "1rem", padding: "1rem" }}>
-          <p className="setup-label" style={{ marginBottom: "0.5rem" }}>{t("superadmin.tokensByDay")}</p>
-          <MiniBar items={tokenTimeline.map((d: any) => ({ label: d.date.slice(5), value: d.count }))} height={100} color="#8b5cf6" />
-        </div>
-      )}
-
-      <div className="setup-token-card" style={{ marginTop: "1rem" }}>
-        <p style={{ margin: 0, color: "var(--setup-muted)", fontSize: "0.8rem" }}>
-          Firebase: {import.meta.env.VITE_FIREBASE_PROJECT_ID || "—"}
-        </p>
       </div>
     </div>
   );
