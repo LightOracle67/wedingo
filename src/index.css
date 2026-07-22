@@ -2585,7 +2585,7 @@ a:focus-visible {
 /* Background del body por tema */
 body {
   background-color: var(--page-bg, #1f1b14);
-  padding-top: var(--navbar-height);
+  /* padding-top: var(--navbar-height); */
 }
 
 body::before {

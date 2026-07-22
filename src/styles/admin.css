@@ -975,13 +975,15 @@ select.setup-input {
   }
 }
 .admin-bar {
-  position: fixed;
+  z-index: 600;
+  -webkit-backdrop-filter: blur(8px);
+  font-family: var(--font-body);
+  background: #14120eeb;
+  border-bottom: 1px solid #f7e3aa33;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 600;
-  background: rgba(20, 18, 14, 0.92);
-  backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(247, 227, 170, 0.2);
   font-family: var(--font-body);
