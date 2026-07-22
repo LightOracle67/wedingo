@@ -187,15 +187,13 @@ describe("encodeInviteConfig / decodeInviteConfig", () => {
     expect(decoded.theme).toBe("golden");
   });
 
-  it("excludes backgroundImage and adminUsername", () => {
+  it("excludes adminUsername", () => {
     const config = {
       firstName: "Test",
-      backgroundImage: "data:image/png;base64,...",
       adminUsername: "admin",
     };
     const encoded = encodeInviteConfig(config);
     const decoded = decodeInviteConfig(encoded);
-    expect(decoded.backgroundImage).toBeUndefined();
     expect(decoded.adminUsername).toBeUndefined();
   });
 

@@ -10,8 +10,6 @@ import MusicArrayEditor from "../MusicArrayEditor";
 export default function CoverSectionForm({ prefix = "" }) {
   const {
     formData, updateFormField,
-    handleBackgroundUpload, handleClearBackground,
-    handleSelectPreviewBackground, previewBackgrounds,
     inviteToken,
   } = useApp();
   const { t } = useTranslation();
@@ -114,101 +112,38 @@ export default function CoverSectionForm({ prefix = "" }) {
       <p className="setup-label">{t("setup.themeLabel")}</p>
       <ThemePicker value={formData.theme} onChange={handleThemeChange} t={t} />
 
-      <p className="setup-label">{t("setup.imagesLabel")}</p>
-      <p className="setup-help setup-help--tight" style={{ marginBottom: "0.5rem" }}>{t("setup.imagesHint")}</p>
-      <div className="upload-grid">
-        <div className="setup-background-panel">
-          <div className="setup-background-panel__header">
-            <div>
-              <p className="setup-label setup-label--tight">{t("setup.backgroundLabel")}</p>
-              <p className="setup-help setup-help--tight">
-                {t("setup.backgroundText")}
-              </p>
-            </div>
-            {formData.backgroundImage ? (
-              <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleClearBackground}>
-                {t("setup.removeBackground")}
-              </button>
-            ) : null}
+      <div className="setup-background-panel">
+        <div className="setup-background-panel__header">
+          <div>
+            <p className="setup-label setup-label--tight">{t("setup.couplePhotoLabel")}</p>
+            <p className="setup-help setup-help--tight">{t("setup.couplePhotoHint")}</p>
           </div>
-
-          {formData.backgroundImage ? (
-            <div className="setup-selected-background">
-              <img src={formData.backgroundImage} alt={t("setup.currentBackground")} className="setup-selected-background__image" />
-              <div>
-                <p className="setup-selected-background__title">{t("setup.currentBackground")}</p>
-                <p className="setup-help setup-help--tight">{formData.backgroundImageLabel || t("setup.selectedImage")}</p>
-              </div>
-            </div>
-          ) : (
-            <label className="setup-upload" htmlFor={id("backgroundUpload")}>
-              <span className="setup-upload__title">{t("setup.uploadTitle")}</span>
-              <span className="setup-upload__subtitle">{t("setup.uploadSubtitle")}</span>
-            </label>
-          )}
-          <input id={id("backgroundUpload")} className="setup-upload__input" type="file" accept={[...ALLOWED_UPLOAD_TYPES].join(",")} onChange={handleBackgroundUpload} />
-          {formData.backgroundImage ? (
-            <label className="setup-upload" htmlFor={id("backgroundUpload")} style={{ textAlign: "center", cursor: "pointer", fontSize: "0.8rem", color: "var(--setup-accent)", textDecoration: "underline" }}>
-              {t("setup.replaceImage")}
-              <input id={id("backgroundUpload")} className="setup-upload__input" type="file" accept={[...ALLOWED_UPLOAD_TYPES].join(",")} onChange={handleBackgroundUpload} />
-            </label>
+          {formData.couplePhoto ? (
+            <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleRemovePhoto}>{t("setup.remove")}</button>
           ) : null}
         </div>
 
-        <div className="setup-background-panel">
-          <div className="setup-background-panel__header">
+        {formData.couplePhoto ? (
+          <div className="setup-selected-background">
+            <img src={formData.couplePhoto} alt={t("setup.couplePhotoLabel")} className="setup-selected-background__image" style={{ borderRadius: "50%", aspectRatio: "1", width: "5rem" }} />
             <div>
-              <p className="setup-label setup-label--tight">{t("setup.couplePhotoLabel")}</p>
-              <p className="setup-help setup-help--tight">{t("setup.couplePhotoHint")}</p>
+              <p className="setup-selected-background__title">{t("setup.currentPhoto")}</p>
             </div>
-            {formData.couplePhoto ? (
-              <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleRemovePhoto}>{t("setup.remove")}</button>
-            ) : null}
           </div>
-
-          {formData.couplePhoto ? (
-            <div className="setup-selected-background">
-              <img src={formData.couplePhoto} alt={t("setup.couplePhotoLabel")} className="setup-selected-background__image" style={{ borderRadius: "50%", aspectRatio: "1", width: "5rem" }} />
-              <div>
-                <p className="setup-selected-background__title">{t("setup.currentPhoto")}</p>
-              </div>
-            </div>
-          ) : (
-            <label className="setup-upload" htmlFor={id("couplePhoto")}>
-              <span className="setup-upload__title">{t("setup.couplePhotoUpload")}</span>
-              <span className="setup-upload__subtitle">{t("setup.couplePhotoUploadHint")}</span>
-            </label>
-          )}
-          <input ref={photoRef} id={id("couplePhoto")} className="setup-upload__input" type="file" accept="image/jpeg,image/png,image/webp" onChange={handleCouplePhotoUpload} />
-          {formData.couplePhoto ? (
-            <label className="setup-upload" htmlFor={id("couplePhoto")} style={{ textAlign: "center", cursor: "pointer", fontSize: "0.8rem", color: "var(--setup-accent)", textDecoration: "underline" }}>
-              {t("setup.replaceImage")}
-              <input id={id("couplePhoto")} className="setup-upload__input" type="file" accept="image/jpeg,image/png,image/webp" onChange={handleCouplePhotoUpload} />
-            </label>
-          ) : null}
-        </div>
+        ) : (
+          <label className="setup-upload" htmlFor={id("couplePhoto")}>
+            <span className="setup-upload__title">{t("setup.couplePhotoUpload")}</span>
+            <span className="setup-upload__subtitle">{t("setup.couplePhotoUploadHint")}</span>
+          </label>
+        )}
+        <input ref={photoRef} id={id("couplePhoto")} className="setup-upload__input" type="file" accept="image/jpeg,image/png,image/webp" onChange={handleCouplePhotoUpload} />
+        {formData.couplePhoto ? (
+          <label className="setup-upload" htmlFor={id("couplePhoto")} style={{ textAlign: "center", cursor: "pointer", fontSize: "0.8rem", color: "var(--setup-accent)", textDecoration: "underline" }}>
+            {t("setup.replaceImage")}
+            <input id={id("couplePhoto")} className="setup-upload__input" type="file" accept="image/jpeg,image/png,image/webp" onChange={handleCouplePhotoUpload} />
+          </label>
+        ) : null}
       </div>
-
-      {previewBackgrounds.length ? (
-        <div style={{ marginTop: "0.75rem" }}>
-          <p className="setup-label setup-label--tight">{t("setup.presetsLabel")}</p>
-          <p className="setup-help setup-help--tight" style={{ marginBottom: "0.5rem" }}>{t("setup.presetsHint")}</p>
-          <div className="setup-background-grid">
-            {previewBackgrounds.filter((bg: any) => bg.id !== "default").map((bg: any) => (
-              <button
-                key={bg.id}
-                className="setup-background-card"
-                type="button"
-                onClick={() => handleSelectPreviewBackground(bg.src, `${formData.weddingPlace} · ${bg.label}`)}
-              >
-                <img src={bg.src} alt={bg.label} className="setup-background-card__image" />
-                <span className="setup-background-card__title">{bg.label}</span>
-                <span className="setup-background-card__description">{bg.description}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      ) : null}
 
       <MusicArrayEditor inviteToken={inviteToken} value={formData.musicFile || formData.musicUrl} onChange={(val: any) => updateFormField("musicFile", val)} t={t} />
     </>

@@ -126,7 +126,6 @@ export const defaultConfig = {
   weddingDressCode: "",
 
   theme: "golden",
-  backgroundImage: "",
   backgroundImageLabel: "",
   backgroundImageSource: "",
 

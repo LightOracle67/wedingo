@@ -82,7 +82,6 @@ describe("defaultConfig", () => {
     expect(defaultConfig.adminUsername).toBe("");
     expect(defaultConfig.firstName).toBe("");
     expect(defaultConfig.theme).toBe("golden");
-    expect(defaultConfig.backgroundImage).toBe("");
     expect(defaultConfig.sectionOrder).toBe(STORY_SECTION_ORDER.join(","));
     expect(defaultConfig.hiddenSections).toBe("");
   });

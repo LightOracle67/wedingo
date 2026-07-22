@@ -4,14 +4,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { getDoc, setDoc, increment, updateDoc, getDocs, writeBatch } from "firebase/firestore";
 import { db, invitationDocRef, rsvpByInviteRef } from "../lib/firebase";
 import {
-  ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES, defaultConfig, STORY_SECTION_ORDER,
+  defaultConfig, STORY_SECTION_ORDER,
   THEME_VALUES, MAX_YEARS_AHEAD, INVITE_CACHE_TTL_MS, TOKEN_ROUTE_REGEX,
   SPECIAL_SECTIONS, MAX_USERNAME_LENGTH, MAX_INVITE_MESSAGE_LENGTH,
   MAX_LONG_TEXT_LENGTH, PRIVACY_POLICY_VERSION,
 } from "../lib/constants";
 import { normalizeConfig } from "../lib/normalize-config";
 import { decodeInviteConfig } from "../lib/invite-config-codec";
-import { uploadImage, loadDecryptedField, deleteGallery } from "../lib/image-store";
+import { loadDecryptedField, deleteGallery } from "../lib/image-store";
 import { clearSession } from "../lib/sessionVars";
 import { safeSetItem, safeGetItem, safeRemoveItem } from "../lib/storage";
 import { encrypt, decrypt } from "../lib/crypto-utils";
@@ -49,15 +49,6 @@ export function ConfigProvider({ children }: any) {
 
   const updateFormField = useCallback((field: any, value: any) => {
     setFormData((current: any) => ({ ...current, [field]: value }));
-  }, []);
-
-  const applyBackgroundImage = useCallback((backgroundImage: any, backgroundImageLabel: any, backgroundImageSource: any) => {
-    setFormData((current: any) => ({
-      ...current,
-      backgroundImage,
-      backgroundImageLabel,
-      backgroundImageSource,
-    }));
   }, []);
 
   const { previewBackgrounds, isPreviewLoading } = useMapPreview(
@@ -166,7 +157,6 @@ export function ConfigProvider({ children }: any) {
         }
         const parsed = normalizeConfig(snapshot.data());
         if (parsed.bankInfo) parsed.bankInfo = await decrypt(parsed.bankInfo, inviteToken);
-        if (parsed.backgroundImage) parsed.backgroundImage = await loadDecryptedField(inviteToken, parsed.backgroundImage);
         if (parsed.couplePhoto) parsed.couplePhoto = await loadDecryptedField(inviteToken, parsed.couplePhoto);
         {
           const cached = sessionStorage.getItem(`wedin_audio_${inviteToken}`);
@@ -217,7 +207,6 @@ export function ConfigProvider({ children }: any) {
       }
       const parsed = normalizeConfig(snapshot.data());
       if (parsed.bankInfo) parsed.bankInfo = await decrypt(parsed.bankInfo, inviteToken);
-      if (parsed.backgroundImage) parsed.backgroundImage = await loadDecryptedField(inviteToken, parsed.backgroundImage);
       if (parsed.couplePhoto) parsed.couplePhoto = await loadDecryptedField(inviteToken, parsed.couplePhoto);
       if (parsed.musicFile) parsed.musicFile = await loadDecryptedField(inviteToken, parsed.musicFile);
       const hydrated = { ...defaultConfig, ...parsed };
@@ -226,51 +215,6 @@ export function ConfigProvider({ children }: any) {
       setHasStoredConfig(true);
     } catch {}
   }, [inviteToken]);
-
-  const handleClearBackground = useCallback(() => {
-    applyBackgroundImage("", "", "");
-    setFormData((prev: any) => ({ ...prev, backgroundImage: "" }));
-  }, [applyBackgroundImage]);
-
-  const handleSelectPreviewBackground = useCallback(async (imageDataUrl: any, label: any, source = "openfreemap") => {
-    try {
-      const response = await fetch(imageDataUrl);
-      const blob = await response.blob();
-      const file = new File([blob], "preview.jpg", { type: "image/jpeg" });
-      const { dataUrl } = await uploadImage(inviteToken, file);
-      setFormData((prev: any) => ({ ...prev, backgroundImage: dataUrl }));
-      applyBackgroundImage(dataUrl, label, source);
-    } catch {
-      applyBackgroundImage(imageDataUrl, label, source);
-    }
-  }, [inviteToken, applyBackgroundImage]);
-
-  const handleBackgroundUpload = useCallback(async (event: any) => {
-    const file = event.target.files?.[0];
-    if (!file) { event.target.value = ""; return; }
-    if (file.size === 0) { setSaveError(t("errors.fileEmpty")); event.target.value = ""; return; }
-    if (!ALLOWED_UPLOAD_TYPES.has(file.type)) {
-      setSaveError(t("errors.fileFormat"));
-      event.target.value = "";
-      return;
-    }
-    if (file.size > MAX_UPLOAD_SIZE_BYTES) {
-      setSaveError(t("errors.fileSize"));
-      event.target.value = "";
-      return;
-    }
-    setSaveError("");
-    setSaveMessage(t("errors.uploadingImage"));
-    try {
-      const { dataUrl } = await uploadImage(inviteToken, file);
-      setFormData((prev: any) => ({ ...prev, backgroundImage: dataUrl }));
-      applyBackgroundImage(dataUrl, file.name, "upload");
-      setSaveMessage("");
-    } catch {
-      setSaveError(t("errors.imageProcessingFailed"));
-    }
-    event.target.value = "";
-  }, [inviteToken, applyBackgroundImage, t, setSaveError, setSaveMessage]);
 
   const handleSaveSetupCore = useCallback(async (event: any) => {
     event.preventDefault();
@@ -414,17 +358,14 @@ export function ConfigProvider({ children }: any) {
 
     isSavingRef.current = true;
     try {
-      const bgOrig = payload.backgroundImage?.startsWith("data:") ? payload.backgroundImage : null;
       const cpOrig = payload.couplePhoto?.startsWith("data:") ? payload.couplePhoto : null;
       const mfOrig = payload.musicFile?.startsWith("data:") ? payload.musicFile : null;
       if (payload.bankInfo) payload.bankInfo = await encrypt(payload.bankInfo, inviteToken);
-      if (bgOrig) payload.backgroundImage = await encrypt(bgOrig, inviteToken);
       if (cpOrig) payload.couplePhoto = await encrypt(cpOrig, inviteToken);
       delete payload.musicFile;
       payload.privacyPolicyVersion = PRIVACY_POLICY_VERSION;
       await setDoc(invitationDocRef(inviteToken), payload, { merge: true });
       if (payload.bankInfo) payload.bankInfo = await decrypt(payload.bankInfo, inviteToken);
-      if (bgOrig) payload.backgroundImage = bgOrig;
       if (cpOrig) payload.couplePhoto = cpOrig;
       if (mfOrig) payload.musicFile = mfOrig;
       setConfig(payload);
@@ -464,7 +405,6 @@ export function ConfigProvider({ children }: any) {
     maxAllowedYear, previewBackgrounds, isPreviewLoading,
     formattedDate, formattedTime, calendarLink, visitCount,
     updateFormField, reloadConfig, handleSaveSetup: handleSaveSetupCore,
-    handleBackgroundUpload, handleClearBackground, handleSelectPreviewBackground,
     handleDayChange, handleHourChange, handleMinuteChange, handleMinuteBlur,
     handleYearChange, handleCoordinateChange, handleDeleteInvitation,
     setHasStoredConfig, registerOnFirstSave,
@@ -473,7 +413,6 @@ export function ConfigProvider({ children }: any) {
     maxAllowedYear, previewBackgrounds, isPreviewLoading,
     formattedDate, formattedTime, calendarLink, visitCount,
     updateFormField, reloadConfig, handleSaveSetupCore,
-    handleBackgroundUpload, handleClearBackground, handleSelectPreviewBackground,
     handleDayChange, handleHourChange, handleMinuteChange, handleMinuteBlur,
     handleYearChange, handleCoordinateChange, handleDeleteInvitation,
     setHasStoredConfig, registerOnFirstSave,
