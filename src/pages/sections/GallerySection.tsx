@@ -269,13 +269,12 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
             onKeyDown={handleContainerKeyDown}
           >
             <div className="gallery-main-image-wrap">
-              {fading && prevClamped !== null && mainLoaded[prevClamped] && (
+              {fading && prevClamped !== null && (
                 <img
                   src={images[prevClamped].url || images[prevClamped]}
                   alt=""
                   aria-hidden="true"
-                  loading="lazy"
-                  className="gallery-fade gallery-fade--out gallery-main-img"
+                  className="gallery-blur-out gallery-main-img"
                 />
               )}
 
@@ -285,11 +284,10 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
               <img
                 src={currentImage?.url || currentImage}
                 alt={currentImage?.description || t("gallery.imageAlt")}
-                loading="lazy"
                 onLoad={() => setMainLoaded((p: any) => ({ ...p, [clamped]: true }))}
                 onError={() => setMainLoaded((p: any) => ({ ...p, [clamped]: true }))}
                 onClick={handleMainImageClick}
-                className={`gallery-main-img${!mainLoaded[clamped] ? " gallery-main-img--loading" : ""}${fading ? " gallery-fade gallery-fade--in" : ""}`}
+                className={`gallery-main-img${!mainLoaded[clamped] ? " gallery-main-img--loading" : ""}${fading ? " gallery-blur-in" : ""}`}
                 style={{ position: fading ? "absolute" : "relative", cursor: "pointer" }}
               />
             </div>
