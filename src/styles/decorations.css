@@ -126,7 +126,3 @@
   opacity: var(--wedding-decoration-opacity, 0.7);
   filter: var(--wedding-decoration-filter, none);
 }
-.wedding-decoration__image {
-  opacity: var(--wedding-decoration-opacity, 0.7);
-  filter: var(--wedding-decoration-filter, none);
-}

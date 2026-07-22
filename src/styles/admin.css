@@ -58,7 +58,7 @@
 .setup-error {
   margin: 0.5rem 0 0;
   font-size: 0.85rem;
-  color: var(--accent, #c62828);
+  color: var(--setup-accent, #c62828);
 }
 .story-section--is-active .story-card .setup-button,
 .story-section--is-active .story-card .story-calendar-actions,
@@ -969,12 +969,14 @@ select.setup-input {
     width: min(100%, 960px);
   }
 }
+@media (min-width: 1280px) {
   .setup-card {
     width: min(100%, 900px);
   }
   .setup-card--wide {
     width: min(100%, 1040px);
   }
+}
 .admin-bar {
   position: fixed;
   top: 0;

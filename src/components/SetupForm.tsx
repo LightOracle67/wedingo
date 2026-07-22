@@ -151,7 +151,7 @@ export default function SetupForm({ prefix = "" }) {
       ) : null}
 
       {/* ── Botón de guardar ── */}
-      <div className="setup-actions" style={{ padding: "0.25rem 0" }}>
+      <div className="setup-actions">
         <button className="setup-button" type="submit">
           {t("common.save")}
         </button>

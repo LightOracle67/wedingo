@@ -1295,11 +1295,6 @@ img {
   z-index: 1;
 }
 
-
-.story-section--is-active {
-  z-index: 2;
-}
-
 /* ── Compact variants for details and rsvp sections ── */
 
 .story-section--details.story-section--is-active .story-card--details {

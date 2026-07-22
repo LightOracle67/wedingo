@@ -51,6 +51,7 @@ const TokensTab = memo(function TokensTab() {
   }, [loadTokens, t]);
 
   const handleRevoke = useCallback(async (tokenId: any) => {
+    if (!window.confirm(t("superadmin.revokeConfirm"))) return;
     setError("");
     setMessage("");
     try {
@@ -63,6 +64,7 @@ const TokensTab = memo(function TokensTab() {
   }, [loadTokens, t]);
 
   const handleCleanup = useCallback(async () => {
+    if (!window.confirm(t("superadmin.cleanupConfirm"))) return;
     setError("");
     setMessage("");
     try {

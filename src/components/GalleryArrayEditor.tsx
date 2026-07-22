@@ -78,6 +78,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
   const handleDelete = useCallback(async (slotIndex: any) => {
     const existing = slots[slotIndex];
     if (!existing?.id) return;
+    if (!window.confirm(t("setup.deleteImageConfirm"))) return;
     try {
       const { deleteGalleryImage } = await import("../lib/image-store");
       await deleteGalleryImage(inviteToken, existing.id);
