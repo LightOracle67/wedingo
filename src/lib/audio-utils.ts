@@ -43,8 +43,8 @@ export async function compressAudio(file: File): Promise<string> {
   const duration = audioBuffer.duration;
   const renderDuration = Math.min(duration, MAX_DURATION_SEC);
   const renderSamples = Math.ceil(renderDuration * TARGET_SAMPLE_RATE);
-  const offsetSamples = duration > MAX_DURATION_SEC
-    ? Math.floor((duration - MAX_DURATION_SEC) / 2 * audioBuffer.sampleRate)
+  const offsetSec = duration > MAX_DURATION_SEC
+    ? (duration - MAX_DURATION_SEC) / 2
     : 0;
 
   const offlineCtx = new OfflineAudioContext({
@@ -54,29 +54,9 @@ export async function compressAudio(file: File): Promise<string> {
   });
 
   const source = offlineCtx.createBufferSource();
-  const origBuffer = audioBuffer;
-  const offlineBuffer = offlineCtx.createBuffer(
-    1, renderSamples, TARGET_SAMPLE_RATE,
-  );
-  const outputData = offlineBuffer.getChannelData(0);
-
-  const numChannels = origBuffer.numberOfChannels;
-  const origDuration = Math.min(duration, MAX_DURATION_SEC);
-  const readLen = Math.min(
-    origDuration * origBuffer.sampleRate,
-    origBuffer.length - offsetSamples,
-  );
-  for (let j = 0; j < readLen; j++) {
-    let sample = 0;
-    for (let ch = 0; ch < numChannels; ch++) {
-      sample += origBuffer.getChannelData(ch)[j + offsetSamples] || 0;
-    }
-    outputData[j] = sample / numChannels;
-  }
-
-  source.buffer = offlineBuffer;
+  source.buffer = audioBuffer;
   source.connect(offlineCtx.destination);
-  source.start();
+  source.start(0, offsetSec, renderDuration);
 
   const rendered = await offlineCtx.startRendering();
   const pcmData = rendered.getChannelData(0);
