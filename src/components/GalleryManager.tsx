@@ -10,7 +10,9 @@ const GalleryManager = memo(function GalleryManager({ images, onChange, inviteTo
       try {
         const { deleteGalleryImage } = await import("../lib/image-store");
         await deleteGalleryImage(inviteToken, docId);
-      } catch {}
+      } catch (e) {
+        console.warn("GalleryManager delete failed:", e);
+      }
     }
   }, [images, onChange, inviteToken]);
 
@@ -25,7 +27,9 @@ const GalleryManager = memo(function GalleryManager({ images, onChange, inviteTo
     try {
       const { updateGalleryDescription } = await import("../lib/image-store");
       await updateGalleryDescription(inviteToken, docId, description);
-    } catch {}
+    } catch (e) {
+      console.warn("GalleryManager description update failed:", e);
+    }
   }, [inviteToken]);
 
   let parsed;

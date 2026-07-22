@@ -73,14 +73,15 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
    * Desencripta la información dietética de cada entrada.
    */
   useEffect(() => {
+    let cancelled = false;
     const hydrateRsvp = async () => {
       if (!inviteToken) return;
       try {
         const snapshot = await getDocs(rsvpByInviteRef(inviteToken));
+        if (cancelled) return;
         const entries = (await Promise.all(snapshot.docs
           .map(async (entryDoc) => {
             const data = entryDoc.data();
-            // Normaliza la fecha de envío (puede ser Timestamp, string o número)
             const submittedAt = typeof data.submittedAt?.toDate === "function"
               ? data.submittedAt.toDate().toISOString()
               : typeof data.submittedAt === "string"
@@ -99,14 +100,14 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
               submittedAt,
             };
           })))
-          // Ordena por fecha, más reciente primero
           .sort((a, b) => new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime());
-        setRsvpEntries(entries);
+        if (!cancelled) setRsvpEntries(entries);
       } catch {
-        setRsvpEntries([]);
+        if (!cancelled) setRsvpEntries([]);
       }
     };
     hydrateRsvp();
+    return () => { cancelled = true; };
   }, [inviteToken]);
 
   /**
