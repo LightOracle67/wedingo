@@ -55,6 +55,27 @@ html {
   --invite-shell-shadow: rgba(130, 97, 25, 0.32);
   --invite-shell-glow: rgba(255, 227, 140, 0.2);
   --invite-core-border: rgba(255, 238, 194, 0.58);
+  --invite-core-color: #c8a84e;
+  --invite-core-color: #97c87a;
+  --invite-core-color: #e8a0b0;
+  --invite-core-color: #d49a4a;
+  --invite-core-color: #c89a3a;
+  --invite-core-color: #c8b896;
+  --invite-core-color: #d8a8b8;
+  --invite-core-color: #b8a8d8;
+  --invite-core-color: #d8c878;
+  --invite-core-color: #c87868;
+  --invite-core-color: #7898d8;
+  --invite-core-color: #78c878;
+  --invite-core-color: #b888d8;
+  --invite-core-color: #8898c8;
+  --invite-core-color: #d8b84a;
+  --invite-core-color: #b8c8e8;
+  --invite-core-color: #d8c848;
+  --invite-core-color: #d88878;
+  --invite-core-color: #b878d8;
+  --invite-core-color: #d8a878;
+  --invite-core-color: #8888a8;
   --invite-core-glow: rgba(255, 212, 115, 0.22);
   --invite-title-color: #dcc8a8;
   --invite-copy-color: #e0d4bc;
@@ -1221,9 +1242,9 @@ img {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    color-mix(in srgb, var(--setup-accent) 8%, transparent) 10%,
-    color-mix(in srgb, var(--setup-accent) 30%, transparent) 50%,
-    color-mix(in srgb, var(--setup-accent) 8%, transparent) 90%,
+    color-mix(in srgb, var(--invite-core-color, #c8a84e) 8%, transparent) 10%,
+    color-mix(in srgb, var(--invite-core-color, #c8a84e) 30%, transparent) 50%,
+    color-mix(in srgb, var(--invite-core-color, #c8a84e) 8%, transparent) 90%,
     transparent 100%
   );
   pointer-events: none;
@@ -1352,7 +1373,7 @@ img {
   letter-spacing: 0.22em;
   text-transform: uppercase;
   font-size: 0.78rem;
-  color: var(--setup-accent);
+  color: var(--invite-core-color, #c8a84e);
   font-weight: 700;
 }
 
@@ -1395,7 +1416,7 @@ img {
   width: min(7rem, 35%);
   height: 1px;
   margin: 0.7rem auto 0;
-  background: color-mix(in srgb, var(--setup-accent) 20%, transparent);
+  background: color-mix(in srgb, var(--invite-core-color, #c8a84e) 20%, transparent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1405,7 +1426,7 @@ img {
   content: "";
   width: 0.35rem;
   height: 0.35rem;
-  border: 1px solid color-mix(in srgb, var(--setup-accent) 50%, transparent);
+  border: 1px solid color-mix(in srgb, var(--invite-core-color, #c8a84e) 50%, transparent);
   border-radius: 1px;
   transform: rotate(45deg);
   background: color-mix(in srgb, var(--invite-shell-bg) 70%, transparent);

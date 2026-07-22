@@ -294,7 +294,9 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
 
             {/* ── Descripción de la imagen actual ── */}
             {currentImage?.description && (
-              <p className="gallery-caption">{currentImage.description}</p>
+              <div className="gallery-caption-wrap">
+                <p className="gallery-caption">{currentImage.description}</p>
+              </div>
             )}
 
             {/* ── Controles de navegación ── */}

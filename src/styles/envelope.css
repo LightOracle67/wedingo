@@ -31,12 +31,12 @@
   font-family: "Great Vibes", cursive, serif;
   font-size: clamp(1.6rem, 6vw, 2.8rem);
   line-height: 1.4;
-  color: #c8a84e;
+  color: var(--invite-core-color, #c8a84e);
   text-align: center;
   text-shadow:
-    0 0 10px rgba(212, 175, 55, 0.7),
-    0 0 25px rgba(212, 175, 55, 0.5),
-    0 0 60px rgba(212, 175, 55, 0.3);
+    0 0 10px color-mix(in srgb, var(--invite-core-glow, rgba(255,212,115,0.22)) 318%, transparent),
+    0 0 25px color-mix(in srgb, var(--invite-core-glow, rgba(255,212,115,0.22)) 227%, transparent),
+    0 0 60px color-mix(in srgb, var(--invite-core-glow, rgba(255,212,115,0.22)) 136%, transparent);
   animation: golden-glow 3.5s ease-in-out infinite;
 }
 @keyframes golden-in {
@@ -52,27 +52,27 @@
 @keyframes golden-glow {
   0%, 100% {
     text-shadow:
-      0 0 10px rgba(212, 175, 55, 0.7),
-      0 0 25px rgba(212, 175, 55, 0.5),
-      0 0 60px rgba(212, 175, 55, 0.3);
+      0 0 10px color-mix(in srgb, var(--invite-core-glow, rgba(255,212,115,0.22)) 318%, transparent),
+      0 0 25px color-mix(in srgb, var(--invite-core-glow, rgba(255,212,115,0.22)) 227%, transparent),
+      0 0 60px color-mix(in srgb, var(--invite-core-glow, rgba(255,212,115,0.22)) 136%, transparent);
   }
   25% {
     text-shadow:
-      -4px -2px 12px rgba(212, 175, 55, 0.6),
-      -2px -1px 28px rgba(212, 175, 55, 0.4),
-      0 0 65px rgba(212, 175, 55, 0.2);
+      -4px -2px 12px color-mix(in srgb, var(--invite-core-glow, rgba(255,212,115,0.22)) 273%, transparent),
+      -2px -1px 28px color-mix(in srgb, var(--invite-core-glow, rgba(255,212,115,0.22)) 182%, transparent),
+      0 0 65px color-mix(in srgb, var(--invite-core-glow, rgba(255,212,115,0.22)) 91%, transparent);
   }
   50% {
     text-shadow:
-      3px -1px 14px rgba(212, 175, 55, 0.8),
-      5px 0 30px rgba(212, 175, 55, 0.5),
-      0 0 70px rgba(212, 175, 55, 0.3);
+      3px -1px 14px color-mix(in srgb, var(--invite-core-glow, rgba(255,212,115,0.22)) 364%, transparent),
+      5px 0 30px color-mix(in srgb, var(--invite-core-glow, rgba(255,212,115,0.22)) 227%, transparent),
+      0 0 70px color-mix(in srgb, var(--invite-core-glow, rgba(255,212,115,0.22)) 136%, transparent);
   }
   75% {
     text-shadow:
-      -2px 3px 12px rgba(212, 175, 55, 0.6),
-      -4px 2px 26px rgba(212, 175, 55, 0.4),
-      0 0 55px rgba(212, 175, 55, 0.2);
+      -2px 3px 12px color-mix(in srgb, var(--invite-core-glow, rgba(255,212,115,0.22)) 273%, transparent),
+      -4px 2px 26px color-mix(in srgb, var(--invite-core-glow, rgba(255,212,115,0.22)) 182%, transparent),
+      0 0 55px color-mix(in srgb, var(--invite-core-glow, rgba(255,212,115,0.22)) 91%, transparent);
   }
 }
 .envelope-overlay {
@@ -94,19 +94,19 @@
 .envelope-light[data-light="1"] {
   width: 150px; height: 150px;
   margin: -75px 0 0 -75px;
-  background: radial-gradient(circle, rgba(216,178,74,0.35) 0%, rgba(216,178,74,0.08) 40%, transparent 70%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--invite-core-color, #c8a84e) 35%, transparent) 0%, color-mix(in srgb, var(--invite-core-color, #c8a84e) 8%, transparent) 40%, transparent 70%);
   animation: envelope-orbit-1 16s linear infinite;
 }
 .envelope-light[data-light="2"] {
   width: 110px; height: 110px;
   margin: -55px 0 0 -55px;
-  background: radial-gradient(circle, rgba(240,208,128,0.25) 0%, rgba(240,208,128,0.06) 40%, transparent 70%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--invite-core-color, #c8a84e) 25%, transparent) 0%, color-mix(in srgb, var(--invite-core-color, #c8a84e) 6%, transparent) 40%, transparent 70%);
   animation: envelope-orbit-2 20s linear infinite;
 }
 .envelope-light[data-light="3"] {
   width: 90px; height: 90px;
   margin: -45px 0 0 -45px;
-  background: radial-gradient(circle, rgba(200,168,78,0.3) 0%, rgba(200,168,78,0.07) 40%, transparent 70%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--invite-core-color, #c8a84e) 30%, transparent) 0%, color-mix(in srgb, var(--invite-core-color, #c8a84e) 7%, transparent) 40%, transparent 70%);
   animation: envelope-orbit-3 13s linear infinite;
 }
 @keyframes envelope-orbit-1 {
@@ -184,7 +184,7 @@
 .envelope__panel--front::after {
   content: "";
   position: absolute; inset: 5px;
-  border: 1.5px solid #c8a84e;
+  border: 1.5px solid var(--invite-core-color, #c8a84e);
   border-radius: 4px;
   pointer-events: none;
 }
@@ -214,7 +214,7 @@
 .envelope__panel--back::before {
   content: "";
   position: absolute; inset: 5px;
-  border: 1.5px solid rgba(200,168,78,0.2);
+  border: 1.5px solid color-mix(in srgb, var(--invite-core-color, #c8a84e) 20%, transparent);
   border-radius: 4px;
   pointer-events: none;
 }
@@ -239,7 +239,7 @@
   content: "";
   position: absolute; inset: 0;
   clip-path: polygon(0 0, 100% 0, 50% 88%);
-  border: 2px solid #c8a84e;
+  border: 2px solid var(--invite-core-color, #c8a84e);
   border-bottom: none;
   pointer-events: none;
 }
@@ -337,14 +337,14 @@
   font-size: clamp(1.6rem, 5vw, 2.2rem);
   font-weight: 400;
   color: #3a2a1a;
-  border-bottom: 1px solid rgba(200,168,78,0.3);
+  border-bottom: 1px solid color-mix(in srgb, var(--invite-core-color, #c8a84e) 30%, transparent);
   padding-bottom: 3px;
 }
 .envelope__panel--front .envelope__address::before,
 .envelope__panel--front .envelope__address::after {
   content: "✦";
   font-size: 1rem;
-  color: #c8a84e;
+  color: var(--invite-core-color, #c8a84e);
   letter-spacing: 0.2em;
 }
 .envelope__stamp {
@@ -353,7 +353,7 @@
   z-index: 2;
   width: 42px; height: 50px;
   background: linear-gradient(135deg, #f5efe4 0%, #e8e0d4 100%);
-  border: 2px solid #c8a84e;
+  border: 2px solid var(--invite-core-color, #c8a84e);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -362,12 +362,12 @@
 .envelope__stamp::after {
   content: "";
   position: absolute; inset: 3px;
-  border: 1px dashed #c8a84e;
+  border: 1px dashed var(--invite-core-color, #c8a84e);
   border-radius: 1px;
 }
 .envelope__stamp-inner {
   font-size: 1rem;
-  color: #c8a84e;
+  color: var(--invite-core-color, #c8a84e);
   z-index: 1;
 }
 .envelope__letter {
@@ -410,7 +410,7 @@
 }
 .envelope__letter-ampersand {
   font-style: italic;
-  color: #c8a84e;
+  color: var(--invite-core-color, #c8a84e);
   font-size: 1.3em;
 }
 .envelope__letter-message {
@@ -423,7 +423,7 @@
   font-style: italic;
 }
 .envelope__hint {
-  color: rgba(212, 175, 55, 0.5);
+  color: color-mix(in srgb, var(--invite-core-glow, rgba(255,212,115,0.22)) 227%, transparent);
   font-size: 0.85rem;
   margin-top: 2rem;
   letter-spacing: 0.08em;
