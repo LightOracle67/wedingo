@@ -129,10 +129,8 @@ export const defaultConfig = {
   backgroundImage: "",
   backgroundImageLabel: "",
   backgroundImageSource: "",
-  backgroundImageStorage: "",
 
   couplePhoto: "",
-  couplePhotoStorage: "",
 
   sectionOrder: STORY_SECTION_ORDER.join(","),
   hiddenSections: "",

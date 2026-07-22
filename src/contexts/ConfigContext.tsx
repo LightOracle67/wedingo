@@ -229,7 +229,7 @@ export function ConfigProvider({ children }: any) {
 
   const handleClearBackground = useCallback(() => {
     applyBackgroundImage("", "", "");
-    setFormData((prev: any) => ({ ...prev, backgroundImage: "", backgroundImageStorage: "" }));
+    setFormData((prev: any) => ({ ...prev, backgroundImage: "" }));
   }, [applyBackgroundImage]);
 
   const handleSelectPreviewBackground = useCallback(async (imageDataUrl: any, label: any, source = "openfreemap") => {

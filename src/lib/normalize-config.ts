@@ -24,9 +24,7 @@ export const normalizeConfig = (value) => ({
   backgroundImage: s(value?.backgroundImage),
   backgroundImageLabel: s(value?.backgroundImageLabel),
   backgroundImageSource: s(value?.backgroundImageSource),
-  backgroundImageStorage: s(value?.backgroundImageStorage),
   couplePhoto: s(value?.couplePhoto),
-  couplePhotoStorage: s(value?.couplePhotoStorage),
   sectionOrder:
     typeof value?.sectionOrder === "string" ? value.sectionOrder.trim() : STORY_SECTION_ORDER.join(","),
   hiddenSections: s(value?.hiddenSections),

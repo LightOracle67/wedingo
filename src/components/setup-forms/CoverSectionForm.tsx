@@ -53,7 +53,6 @@ export default function CoverSectionForm({ prefix = "" }) {
 
   const handleRemovePhoto = useCallback(() => {
     updateFormField("couplePhoto", "");
-    updateFormField("couplePhotoStorage", "");
   }, [updateFormField]);
 
   return (

@@ -23,7 +23,7 @@ function fromBase64Url(str) {
 }
 
 export function encodeInviteConfig(config) {
-  const { backgroundImage: _bg, backgroundImageLabel: _bgl, backgroundImageSource: _bgs, backgroundImageStorage: _bgst, adminUsername: _au, ...rest } = config;
+  const { backgroundImage: _bg, backgroundImageLabel: _bgl, backgroundImageSource: _bgs, adminUsername: _au, ...rest } = config;
   const compact = {};
   for (const [key, val] of Object.entries(rest)) {
     const short = INVITE_KEY_REV[key];
