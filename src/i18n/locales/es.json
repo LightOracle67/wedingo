@@ -371,6 +371,8 @@
     "downloadBackup": "Descargar copia",
     "restoreBackup": "Restaurar copia",
     "restoreNotFound": "No se encontró la invitación.",
+    "restoreConfirm": "¿Restaurar {{count}} invitación(es)? Se sobrescribirán los datos actuales.",
+    "restoreTooLarge": "El archivo de copia supera el límite de 10 MB.",
     "restoreInvalid": "El archivo no tiene el formato esperado.",
     "restoreSuccess": "Restauradas {{count}} invitaciones correctamente.",
     "restoreFailed": "No se pudo restaurar la copia. Revisa el archivo.",

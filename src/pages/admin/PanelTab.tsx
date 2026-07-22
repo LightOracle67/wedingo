@@ -1,4 +1,4 @@
-import { memo, useCallback, useMemo, useRef, useState } from "react";
+import { memo, useCallback, useMemo, useRef } from "react";
 import { getDoc, updateDoc } from "firebase/firestore";
 import { useTranslation } from "react-i18next";
 import { invitationDocRef } from "../../lib/firebase";
@@ -15,7 +15,6 @@ const PanelTab = memo(function PanelTab(props: any) {
   const { t } = useTranslation();
   const inviteUrl = `${window.location.origin}/${inviteToken}`;
   const restoreRef = useRef<any>(null);
-  const [restoreMsg, setRestoreMsg] = useState("");
 
   const summary = useMemo(() => calcRSVPSummary(rsvpEntries), [rsvpEntries]);
   const dietary = useMemo(() => getDietarySummary(rsvpEntries).slice(0, 5), [rsvpEntries]);
@@ -23,7 +22,7 @@ const PanelTab = memo(function PanelTab(props: any) {
   const handleBackup = useCallback(async () => {
     try {
       const snap = await getDoc(invitationDocRef(inviteToken));
-      if (!snap.exists()) { setRestoreMsg(t("panel.restoreNotFound")); return; }
+      if (!snap.exists()) return;
       const { bankInfo: _bank, ...safeData } = snap.data();
       const data = [{ id: snap.id, ...safeData }];
       const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
@@ -34,33 +33,26 @@ const PanelTab = memo(function PanelTab(props: any) {
       a.click();
       URL.revokeObjectURL(url);
     } catch {}
-  }, [inviteToken, t]);
+  }, [inviteToken]);
 
   const handleRestore = useCallback(async (e: any) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    if (file.size > 10 * 1024 * 1024) { setRestoreMsg(t("panel.restoreTooLarge")); e.target.value = ""; return; }
-    setRestoreMsg("");
-    let count = 0;
+    if (file.size > 10 * 1024 * 1024) { e.target.value = ""; return; }
     try {
       const text = await file.text();
       const data = JSON.parse(text);
-      if (!Array.isArray(data) || !data.length || !data[0].id) { setRestoreMsg(t("panel.restoreInvalid")); return; }
-      if (!window.confirm(t("panel.restoreConfirm", { count: data.length }))) { e.target.value = ""; return; }
+      if (!Array.isArray(data) || !data.length || !data[0].id) { e.target.value = ""; return; }
       for (const item of data) {
         if (!item.id || typeof item.id !== "string") continue;
         const { id, bankInfo, ...rest } = item;
         if (bankInfo && bankInfo !== "[REDACTED]") rest.bankInfo = bankInfo;
         await updateDoc(invitationDocRef(id), rest);
-        count++;
       }
       if (onRestore) await onRestore();
-      setRestoreMsg(t("panel.restoreSuccess", { count }));
-    } catch (err: any) {
-      setRestoreMsg(`${t("panel.restoreFailed")} ${err.code || err.message || ""}`);
-    }
+    } catch {}
     e.target.value = "";
-  }, [onRestore, t]);
+  }, [onRestore]);
 
   return (
     <>
@@ -121,7 +113,6 @@ const PanelTab = memo(function PanelTab(props: any) {
         </button>
         <input ref={restoreRef} type="file" accept=".json" style={{ display: "none" }} onChange={handleRestore} />
       </div>
-      {restoreMsg ? <p className="setup-help" style={{ marginTop: "0.5rem" }}>{restoreMsg}</p> : null}
 
       {rsvpEntries && rsvpEntries.length > 0 ? (
         <div className="admin-recent-section" style={{ marginTop: "1rem" }}>
