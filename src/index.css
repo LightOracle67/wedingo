@@ -1168,8 +1168,7 @@ img {
   z-index: 1;
   border-radius: 1.6rem;
   width: 95% !important;
-  height: 95% !important;
-  max-height: calc(100dvh - var(--navbar-height, 0px) - clamp(5rem, 10vw, 8rem));
+  max-height: 95%;
   padding: clamp(0.8rem, 2.5vw, 1.5rem);
   box-sizing: border-box;
   overflow-y: auto;
