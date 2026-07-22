@@ -8,6 +8,21 @@ export const CHANGELOG = [
     ],
   },
   {
+    version: "2.21.0",
+    date: "2026-07-22",
+    changes: [
+      "AUDITORÍA DE ERRORES: 52 catch blocks silenciosos auditados, 15 corregidos con toast",
+      "ShareTab: clipboard error ahora muestra toast",
+      "PanelTab: backup/restore error ahora muestra toast",
+      "GalleryArrayEditor: load/delete error ahora muestra toast",
+      "MusicArrayEditor: load/delete error ahora muestra toast",
+      "DataTab: load error ahora muestra toast",
+      "DashboardTab: stats load error ahora muestra toast",
+      "useAutoSave: error ahora muestra mensaje + musicFile eliminado del payload",
+      "Nuevas traducciones de error en en.json y es.json (14 keys)",
+    ],
+  },
+  {
     version: "2.20.1",
     date: "2026-07-22",
     changes: [

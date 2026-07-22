@@ -8,9 +8,11 @@ import { logAudit } from "../../lib/audit";
 import { DonutChart, MiniBar, Legend } from "../../components/AttendanceChart";
 import StatsCard from "../admin/StatsCard";
 import { useTranslation } from "react-i18next";
+import { useToast } from "../../hooks/useToast";
 
 const DashboardTab = memo(function DashboardTab() {
   const { t } = useTranslation();
+  const { addToast } = useToast();
   const [stats, setStats] = useState<any>(null);
   const [invitations, setInvitations] = useState<any[]>([]);
   const [tokenTimeline, setTokenTimeline] = useState<any[]>([]);
@@ -32,8 +34,10 @@ const DashboardTab = memo(function DashboardTab() {
       setStats(calcGlobalStats(invs, rsvps, tokens));
       setTokenTimeline(tokenUsageOverTime(tokens));
       setRsvpTimeline(rsvpOverTime(rsvps));
-    } catch { /* ignore */ } finally { setLoading(false); }
-  }, []);
+    } catch {
+      addToast("error", t("errors.statsLoadFailed"));
+    } finally { setLoading(false); }
+  }, [addToast, t]);
 
   useEffect(() => { load(); }, [load]);
 

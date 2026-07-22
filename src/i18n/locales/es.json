@@ -532,7 +532,20 @@
     "uploadImageFailed": "No se pudo procesar la imagen. Prueba con otra.",
     "readImageFailed": "No se pudo leer el archivo de imagen.",
     "encryptFailed": "El cifrado de la imagen falló.",
-    "imageTooLarge": "La imagen es demasiado grande incluso comprimida."
+    "imageTooLarge": "La imagen es demasiado grande incluso comprimida.",
+    "clipboardCopyFailed": "No se pudo copiar al portapapeles.",
+    "backupFailed": "No se pudo descargar la copia de seguridad.",
+    "restoreFailed": "No se pudo restaurar la copia de seguridad.",
+    "galleryLoadFailed": "No se pudo cargar la galería.",
+    "galleryDeleteFailed": "No se pudo eliminar la imagen.",
+    "musicLoadFailed": "No se pudo cargar la música.",
+    "musicDeleteFailed": "No se pudo eliminar la música.",
+    "statsLoadFailed": "No se pudieron cargar las estadísticas.",
+    "dataLoadFailed": "No se pudieron cargar los datos.",
+    "rsvpLoadFailed": "No se pudieron cargar las respuestas.",
+    "configReloadFailed": "No se pudo recargar la configuración.",
+    "sessionUpdateFailed": "No se pudo actualizar la sesión.",
+    "autoSaveFailed": "No se pudo guardar automáticamente la configuración."
   },
   "superadmin": {
     "tabs": {

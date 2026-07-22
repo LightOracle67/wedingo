@@ -36,10 +36,12 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
         }
       }
       setSlots(newSlots);
-    } catch {} finally {
+    } catch {
+      addToast("error", t("errors.galleryLoadFailed"));
+    } finally {
       setLoading(false);
     }
-  }, [inviteToken]);
+  }, [inviteToken, addToast, t]);
 
   useEffect(() => { loadGallery(); }, [loadGallery]);
 
@@ -87,8 +89,10 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
         next[slotIndex] = null;
         return next;
       });
-    } catch {}
-  }, [inviteToken, slots, t]);
+    } catch {
+      addToast("error", t("errors.galleryDeleteFailed"));
+    }
+  }, [inviteToken, slots, t, addToast]);
 
   const handleDescriptionChange = useCallback((slotIndex: any, val: any) => {
     setSlots((prev: any) => {
