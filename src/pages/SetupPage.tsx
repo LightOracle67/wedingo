@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useApp } from "../contexts/AppContext";
 import { useToast } from "../hooks/useToast";
 import SetupForm from "../components/SetupForm";
+import MusicPlayer from "../components/MusicPlayer";
 import "../styles/admin.css";
 
 export default function SetupPage() {
@@ -96,6 +97,7 @@ export default function SetupPage() {
 
   return (
     <div className="setup-layout setup-layout--full">
+      {config.musicFile || config.musicUrl ? <MusicPlayer musicUrl={config.musicFile || config.musicUrl} /> : null}
       <section className="setup-card setup-card--full allow-select" aria-label={t("setup.configTitle")}>
         <header className="setup-header">
           <div>
