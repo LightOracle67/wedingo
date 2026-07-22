@@ -1617,7 +1617,6 @@
     "activeToken": "Kode aktif (hanya Anda yang melihatnya).",
     "confirmLabel": "Konfirmasi",
     "currentTokenDescription": "Untuk membuat kode baru, tulis kode akses saat ini.",
-    "currentTokenPlaceholder": "Tempel kode saat ini di sini",
     "generateToken": "Buat kode baru",
     "logout": "Keluar",
     "deleteDataDescription": "Jika Anda ingin menggunakan hak ARSO Anda, Anda dapat menghapus semua data Anda.",
@@ -2077,8 +2076,8 @@
     "logoutButton": "Keluar",
     "firebaseAccount": "Untuk mengelola akun superadmin Anda, gunakan konsol Firebase:",
     "firebaseLink": "Buka Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

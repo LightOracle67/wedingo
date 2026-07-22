@@ -1683,7 +1683,6 @@
     "activeToken": "Kòd aktif (sèl ou ka wè li).",
     "confirmLabel": "Konfime",
     "currentTokenDescription": "Pou jenere yon nouvo kòd, ekri kòd aksè aktyèl la.",
-    "currentTokenPlaceholder": "Kole kòd aktyèl la isit",
     "generateToken": "Jenere nouvo kòd",
     "logout": "Fèmen sesyon",
     "deleteDataDescription": "Si ou vle egzèse dwa ARSO ou, ou ka efase tout done ou yo.",
@@ -2080,8 +2079,8 @@
     "logoutButton": "Fèmen sesyon",
     "firebaseAccount": "Pou jere kont sipèadministratè ou, itilize konsol Firebase:",
     "firebaseLink": "Ale nan Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

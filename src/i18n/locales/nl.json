@@ -1313,7 +1313,6 @@
     "activeToken": "Actieve code (alleen jij ziet hem).",
     "confirmLabel": "Bevestigen",
     "currentTokenDescription": "Om een nieuwe code te genereren, voer de huidige toegangscode in.",
-    "currentTokenPlaceholder": "Plak hier de huidige code",
     "generateToken": "Nieuwe code genereren",
     "logout": "Uitloggen",
     "deleteDataDescription": "Als je je ARSO-rechten wilt uitoefenen, kun je al je gegevens verwijderen.",
@@ -1792,8 +1791,8 @@
     "logoutButton": "Uitloggen",
     "firebaseAccount": "Gebruik de Firebase-console om je superadmin-account te beheren:",
     "firebaseLink": "Ga naar Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

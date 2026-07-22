@@ -524,7 +524,6 @@
     "activeToken": "Aktiv kod (yalnız siz görürsünüz).",
     "confirmLabel": "Təsdiqlə",
     "currentTokenDescription": "Yeni kod yaratmaq üçün cari giriş kodunu yazın.",
-    "currentTokenPlaceholder": "Cari kodu buraya yapışdırın",
     "generateToken": "Yeni kod yarat",
     "logout": "Çıxış",
     "deleteDataDescription": "ARSO hüquqlarınızı həyata keçirmək istəyirsinizsə, bütün məlumatlarınızı silə bilərsiniz.",
@@ -807,8 +806,8 @@
     "logoutButton": "Çıxış",
     "firebaseAccount": "Superadmin hesabınızı idarə etmək üçün Firebase konsolunu istifadə edin:",
     "firebaseLink": "Firebase Auth-a keç",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

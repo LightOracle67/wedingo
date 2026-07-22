@@ -1702,7 +1702,6 @@
     "activeToken": "Lamba mai aiki (kai kaɗai ke ganinta).",
     "confirmLabel": "Tabbatarwa",
     "currentTokenDescription": "Don ƙirƙirar sabuwar lamba, rubuta lambar shiga ta yanzu.",
-    "currentTokenPlaceholder": "Manna lambar ta yanzu anan",
     "generateToken": "Ƙirƙiri sabuwar lamba",
     "logout": "Fita",
     "deleteDataDescription": "Idan kana son amfani da haƙƙoƙin ARSO, za ka iya share duk bayananka.",
@@ -2175,8 +2174,8 @@
     "logoutButton": "Fita",
     "firebaseAccount": "Don sarrafa asusun superadmin ɗinka, yi amfani da na'urar sarrafawa ta Firebase:",
     "firebaseLink": "Je zuwa Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

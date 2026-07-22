@@ -1683,7 +1683,6 @@
     "activeToken": "Kode aktiboa (zuk bakarrik ikusten duzu).",
     "confirmLabel": "Baieztatu",
     "currentTokenDescription": "Kode berri bat sortzeko, idatzi uneko sarbide kodea.",
-    "currentTokenPlaceholder": "Itsatsi hemen uneko kodea",
     "generateToken": "Sortu kode berria",
     "logout": "Saioa itxi",
     "deleteDataDescription": "Zure ARSO eskubideak baliatu nahi badituzu, zure datu guztiak ezaba ditzakezu.",
@@ -2099,8 +2098,8 @@
     "logoutButton": "Saioa itxi",
     "firebaseAccount": "Zure superadmin kontua kudeatzeko, erabili Firebase kontsola:",
     "firebaseLink": "Joan Firebase Auth-era",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

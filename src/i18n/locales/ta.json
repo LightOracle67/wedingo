@@ -1683,7 +1683,6 @@
     "activeToken": "செயலில் உள்ள குறியீடு (நீங்கள் மட்டுமே பார்க்கிறீர்கள்).",
     "confirmLabel": "உறுதிப்படுத்து",
     "currentTokenDescription": "புதிய குறியீட்டை உருவாக்க, தற்போதைய அணுகல் குறியீட்டை எழுதவும்.",
-    "currentTokenPlaceholder": "தற்போதைய குறியீட்டை இங்கே ஒட்டவும்",
     "generateToken": "புதிய குறியீட்டை உருவாக்கு",
     "logout": "வெளியேறு",
     "deleteDataDescription": "உங்கள் ARSO உரிமைகளைப் பயன்படுத்த விரும்பினால், உங்கள் எல்லா தரவையும் நீக்கலாம்.",
@@ -2023,8 +2022,8 @@
     "logoutButton": "வெளியேறு",
     "firebaseAccount": "உங்கள் சூப்பர் அட்மின் கணக்கை நிர்வகிக்க, Firebase கன்சோலைப் பயன்படுத்தவும்:",
     "firebaseLink": "Firebase Auth க்குச் செல்லவும்",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

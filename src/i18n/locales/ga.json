@@ -1683,7 +1683,6 @@
     "activeToken": "Cód gníomhach (tusa amháin a fheiceann é).",
     "confirmLabel": "Deimhnigh",
     "currentTokenDescription": "Chun cód nua a ghiniúint, scríobh an cód rochtana reatha.",
-    "currentTokenPlaceholder": "Greamaigh an cód reatha anseo",
     "generateToken": "Gin cód nua",
     "logout": "Logáil amach",
     "deleteDataDescription": "Más mian leat do chearta a fheidhmiú, is féidir leat do shonraí go léir a scriosadh.",
@@ -2042,8 +2041,8 @@
     "logoutButton": "Logáil amach",
     "firebaseAccount": "Chun do chuntas sár-riarthóra a bhainistiú, úsáid consól Firebase:",
     "firebaseLink": "Téigh chuig Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

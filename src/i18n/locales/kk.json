@@ -1657,7 +1657,6 @@
     "activeToken": "Белсенді код (оны тек сіз көресіз).",
     "confirmLabel": "Растау",
     "currentTokenDescription": "Жаңа код жасау үшін ағымдағы кіру кодын жазыңыз.",
-    "currentTokenPlaceholder": "Ағымдағы кодты осында қойыңыз",
     "generateToken": "Жаңа код жасау",
     "logout": "Шығу",
     "deleteDataDescription": "ARSO құқықтарыңызды пайдаланғыңыз келсе, барлық деректеріңізді жоя аласыз.",
@@ -2016,8 +2015,8 @@
     "logoutButton": "Шығу",
     "firebaseAccount": "Суперәкімші шотыңызды басқару үшін Firebase консолін пайдаланыңыз:",
     "firebaseLink": "Firebase Auth-қа өту",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

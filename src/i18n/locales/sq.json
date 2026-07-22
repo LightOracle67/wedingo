@@ -1683,7 +1683,6 @@
     "activeToken": "Kodi aktiv (vetëm ti e sheh).",
     "confirmLabel": "Konfirmo",
     "currentTokenDescription": "Për të gjeneruar një kod të ri, shkruaj kodin aktual të hyrjes.",
-    "currentTokenPlaceholder": "Ngjit këtu kodin aktual",
     "generateToken": "Gjenero kod të ri",
     "logout": "Dil",
     "deleteDataDescription": "Nëse dëshiron të ushtrosh të drejtat e tua, mund të fshish të gjitha të dhënat.",
@@ -2099,8 +2098,8 @@
     "logoutButton": "Dil",
     "firebaseAccount": "Për të menaxhuar llogarinë tënde superadmin, përdor konsolën Firebase:",
     "firebaseLink": "Shko te Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

@@ -1683,7 +1683,6 @@
     "activeToken": "აქტიური კოდი (მხოლოდ თქვენ ხედავთ).",
     "confirmLabel": "დადასტურება",
     "currentTokenDescription": "ახალი კოდის გენერირებისთვის ჩაწერეთ მიმდინარე წვდომის კოდი.",
-    "currentTokenPlaceholder": "ჩასვით მიმდინარე კოდი აქ",
     "generateToken": "ახალი კოდის გენერირება",
     "logout": "გამოსვლა",
     "deleteDataDescription": "თუ გსურთ თქვენი ARSO უფლებების გამოყენება, შეგიძლიათ წაშალოთ ყველა თქვენი მონაცემი.",
@@ -2042,8 +2041,8 @@
     "logoutButton": "გამოსვლა",
     "firebaseAccount": "თქვენი სუპერადმინის ანგარიშის სამართავად გამოიყენეთ Firebase-ის კონსოლი:",
     "firebaseLink": "Firebase Auth-ზე გადასვლა",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

@@ -1683,7 +1683,6 @@
     "activeToken": "સક્રિય કોડ (ફક્ત તમે જ જુઓ છો).",
     "confirmLabel": "પુષ્ટિ કરો",
     "currentTokenDescription": "નવો કોડ જનરેટ કરવા માટે, વર્તમાન ઍક્સેસ કોડ લખો.",
-    "currentTokenPlaceholder": "અહીં વર્તમાન કોડ પેસ્ટ કરો",
     "generateToken": "નવો કોડ જનરેટ કરો",
     "logout": "લૉગ આઉટ",
     "deleteDataDescription": "જો તમે તમારા ARSO અધિકારોનો ઉપયોગ કરવા માંગતા હો, તો તમે તમારા બધા ડેટા કાઢી શકો છો.",
@@ -2042,8 +2041,8 @@
     "logoutButton": "લૉગ આઉટ",
     "firebaseAccount": "તમારું સુપરએડમિન એકાઉન્ટ મેનેજ કરવા માટે, Firebase કન્સોલનો ઉપયોગ કરો:",
     "firebaseLink": "Firebase Auth પર જાઓ",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

@@ -1638,7 +1638,6 @@
     "activeToken": "Aktiivinen koodi (vain sinä näet sen).",
     "confirmLabel": "Vahvista",
     "currentTokenDescription": "Luo uusi koodi kirjoittamalla nykyinen pääsykoodi.",
-    "currentTokenPlaceholder": "Liitä nykyinen koodi tähän",
     "generateToken": "Luo uusi koodi",
     "logout": "Kirjaudu ulos",
     "deleteDataDescription": "Jos haluat käyttää ARSO-oikeuksiasi, voit poistaa kaikki tietosi.",
@@ -2054,8 +2053,8 @@
     "logoutButton": "Kirjaudu ulos",
     "firebaseAccount": "Hallinnoidaksesi superadmin-tiliäsi käytä Firebase-konsolia:",
     "firebaseLink": "Siirry Firebase Authiin",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

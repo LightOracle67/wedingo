@@ -1683,7 +1683,6 @@
     "activeToken": "کد فعال (فقط شما آن را می‌بینید).",
     "confirmLabel": "تأیید",
     "currentTokenDescription": "برای ایجاد کد جدید، کد دسترسی فعلی را بنویسید.",
-    "currentTokenPlaceholder": "کد فعلی را اینجا وارد کنید",
     "generateToken": "ایجاد کد جدید",
     "logout": "خروج",
     "deleteDataDescription": "اگر می‌خواهید حقوق ARSO خود را اعمال کنید، می‌توانید تمام اطلاعات خود را حذف کنید.",
@@ -2023,8 +2022,8 @@
     "logoutButton": "خروج",
     "firebaseAccount": "برای مدیریت حساب سوپر ادمین خود از کنسول Firebase استفاده کنید:",
     "firebaseLink": "رفتن به Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

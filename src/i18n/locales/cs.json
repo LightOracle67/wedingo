@@ -555,7 +555,6 @@
     "activeToken": "Aktivní kód (vidíte ho jen vy).",
     "confirmLabel": "Potvrdit",
     "currentTokenDescription": "Pro vygenerování nového kódu napište aktuální přístupový kód.",
-    "currentTokenPlaceholder": "Vložte sem aktuální kód",
     "generateToken": "Generovat nový kód",
     "logout": "Odhlásit se",
     "deleteDataDescription": "Pokud si přejete uplatnit svá práva ARSO, můžete smazat všechna svá data.",
@@ -819,8 +818,8 @@
     "logoutButton": "Odhlásit se",
     "firebaseAccount": "Pro správu superadmin účtu použijte Firebase konzoli:",
     "firebaseLink": "Přejít na Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

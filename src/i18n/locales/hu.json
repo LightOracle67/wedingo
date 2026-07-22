@@ -1580,7 +1580,6 @@
     "activeToken": "Aktív kód (csak te látod).",
     "confirmLabel": "Megerősítés",
     "currentTokenDescription": "Új kód generálásához írd be a jelenlegi belépési kódot.",
-    "currentTokenPlaceholder": "Illeszd be ide a jelenlegi kódot",
     "generateToken": "Új kód generálása",
     "logout": "Kijelentkezés",
     "deleteDataDescription": "Ha szeretnéd gyakorolni ARSO-jogaidat, törölheted az összes adatodat.",
@@ -2002,8 +2001,8 @@
     "logoutButton": "Kijelentkezés",
     "firebaseAccount": "Superadmin fiókod kezeléséhez használd a Firebase konzolt:",
     "firebaseLink": "Ugrás a Firebase Auth-ra",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

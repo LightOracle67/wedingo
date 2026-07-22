@@ -1683,7 +1683,6 @@
     "activeToken": "Aktyvus kodas (tik jūs jį matote).",
     "confirmLabel": "Patvirtinti",
     "currentTokenDescription": "Norėdami sugeneruoti naują kodą, įveskite dabartinį prieigos kodą.",
-    "currentTokenPlaceholder": "Įklijuokite dabartinį kodą čia",
     "generateToken": "Generuoti naują kodą",
     "logout": "Atsijungti",
     "deleteDataDescription": "Jei norite pasinaudoti savo ARSO teisėmis, galite ištrinti visus savo duomenis.",
@@ -2080,8 +2079,8 @@
     "logoutButton": "Atsijungti",
     "firebaseAccount": "Norėdami valdyti superadmin paskyrą, naudokite Firebase konsolę:",
     "firebaseLink": "Eiti į Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

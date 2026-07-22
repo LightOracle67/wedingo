@@ -1593,7 +1593,6 @@
     "activeToken": "Mã đang hoạt động (chỉ bạn mới thấy).",
     "confirmLabel": "Xác nhận",
     "currentTokenDescription": "Để tạo mã mới, hãy nhập mã truy cập hiện tại.",
-    "currentTokenPlaceholder": "Dán mã hiện tại vào đây",
     "generateToken": "Tạo mã mới",
     "logout": "Đăng xuất",
     "deleteDataDescription": "Nếu bạn muốn thực hiện quyền của mình, bạn có thể xóa tất cả dữ liệu.",
@@ -1971,8 +1970,8 @@
     "logoutButton": "Đăng xuất",
     "firebaseAccount": "Để quản lý tài khoản quản trị viên của bạn, sử dụng bảng điều khiển Firebase:",
     "firebaseLink": "Đi đến Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

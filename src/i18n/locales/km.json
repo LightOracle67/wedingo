@@ -1683,7 +1683,6 @@
     "activeToken": "កូដសកម្ម (មានតែអ្នកទេដែលឃើញ)។",
     "confirmLabel": "បញ្ជាក់",
     "currentTokenDescription": "ដើម្បីបង្កើតកូដថ្មី សរសេរកូដចូលបច្ចុប្បន្ន។",
-    "currentTokenPlaceholder": "បិទភ្ជាប់កូដបច្ចុប្បន្ននៅទីនេះ",
     "generateToken": "បង្កើតកូដថ្មី",
     "logout": "ចាកចេញ",
     "deleteDataDescription": "បើអ្នកចង់ប្រើសិទ្ធិ ARSO របស់អ្នក អ្នកអាចលុបទិន្នន័យទាំងអស់របស់អ្នក។",
@@ -2042,8 +2041,8 @@
     "logoutButton": "ចាកចេញ",
     "firebaseAccount": "ដើម្បីគ្រប់គ្រងគណនីអ្នកគ្រប់គ្រងកំពូល ប្រើកុងសូល Firebase:",
     "firebaseLink": "ទៅកាន់ Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

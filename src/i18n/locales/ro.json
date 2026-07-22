@@ -1598,7 +1598,6 @@
     "activeToken": "Cod activ (doar tu îl vezi).",
     "confirmLabel": "Confirmă",
     "currentTokenDescription": "Pentru a genera un cod nou, scrie codul de acces actual.",
-    "currentTokenPlaceholder": "Lipește aici codul actual",
     "generateToken": "Generează cod nou",
     "logout": "Deconectare",
     "deleteDataDescription": "Dacă dorești să îți exerciți drepturile ARSO, poți șterge toate datele tale.",
@@ -2045,8 +2044,8 @@
     "logoutButton": "Deconectare",
     "firebaseAccount": "Pentru a gestiona contul de superadmin, folosește consola Firebase:",
     "firebaseLink": "Mergi la Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

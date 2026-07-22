@@ -505,7 +505,6 @@
     "activeToken": "Cod gweithredol (dim ond chi sy'n ei weld).",
     "confirmLabel": "Cadarnhau",
     "currentTokenDescription": "I gynhyrchu cod newydd, ysgrifennwch y cod mynediad presennol.",
-    "currentTokenPlaceholder": "Gludwch y cod presennol yma",
     "generateToken": "Cynhyrchu cod newydd",
     "logout": "Allgofnodi",
     "deleteDataDescription": "Os ydych am arfer eich hawliau, gallwch ddileu eich holl ddata.",
@@ -731,8 +730,8 @@
     "logoutButton": "Allgofnodi",
     "firebaseAccount": "I reoli eich cyfrif uwch-weinyddwr, defnyddiwch gonsol Firebase:",
     "firebaseLink": "Mynd i Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

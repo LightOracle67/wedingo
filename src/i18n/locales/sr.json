@@ -1683,7 +1683,6 @@
     "activeToken": "Активни код (само ти га видиш).",
     "confirmLabel": "Потврди",
     "currentTokenDescription": "За генерисање новог кода, напиши тренутни приступни код.",
-    "currentTokenPlaceholder": "Налепи тренутни код овде",
     "generateToken": "Генериши нови код",
     "logout": "Одјави се",
     "deleteDataDescription": "Ако желиш да оствариш своја права, можеш да избришеш све своје податке.",
@@ -2023,8 +2022,8 @@
     "logoutButton": "Одјави се",
     "firebaseAccount": "За управљање својим супер админ налогом, користи Firebase конзолу:",
     "firebaseLink": "Иди на Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

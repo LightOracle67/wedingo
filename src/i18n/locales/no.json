@@ -1617,7 +1617,6 @@
     "activeToken": "Aktiv kode (bare du ser den).",
     "confirmLabel": "Bekreft",
     "currentTokenDescription": "For å generere en ny kode, skriv inn den nåværende tilgangskoden.",
-    "currentTokenPlaceholder": "Lim inn nåværende kode her",
     "generateToken": "Generer ny kode",
     "logout": "Logg ut",
     "deleteDataDescription": "Hvis du ønsker å utøve dine ARSO-rettigheter, kan du slette alle dataene dine.",
@@ -2109,8 +2108,8 @@
     "logoutButton": "Logg ut",
     "firebaseAccount": "For å administrere superadmin-kontoen din, bruk Firebase-konsollen:",
     "firebaseLink": "Gå til Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

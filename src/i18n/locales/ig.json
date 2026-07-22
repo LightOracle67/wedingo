@@ -1683,7 +1683,6 @@
     "activeToken": "Koodu na-arụ ọrụ (naanị gị na-ahụ ya).",
     "confirmLabel": "Kwenye",
     "currentTokenDescription": "Iji mepụta koodu ọhụrụ, dee koodu nbanye dị ugbu a.",
-    "currentTokenPlaceholder": "Tinye koodu dị ugbu a ebe a",
     "generateToken": "Mepụta koodu ọhụrụ",
     "logout": "Pụọ",
     "deleteDataDescription": "Ọ bụrụ na ị chọrọ iji ikike ARSO gị, ị nwere ike ihichapụ data gị niile.",
@@ -2156,8 +2155,8 @@
     "logoutButton": "Pụọ",
     "firebaseAccount": "Iji jikwaa akaụntụ superadmin gị, jiri konsol Firebase:",
     "firebaseLink": "Gaa na Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

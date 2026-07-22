@@ -1670,7 +1670,6 @@
     "activeToken": "အသက်ဝင်ကုဒ် (သင်သာ မြင်ရသည်)။",
     "confirmLabel": "အတည်ပြုမည်",
     "currentTokenDescription": "ကုဒ်အသစ်ထုတ်လုပ်ရန် လက်ရှိဝင်ရောက်ခွင့်ကုဒ်ကို ရေးပါ။",
-    "currentTokenPlaceholder": "လက်ရှိကုဒ်ကို ဤနေရာတွင် ကူးထည့်ပါ",
     "generateToken": "ကုဒ်အသစ် ထုတ်လုပ်မည်",
     "logout": "ထွက်မည်",
     "deleteDataDescription": "သင်၏ ARSO အခွင့်အရေးများကို ကျင့်သုံးလိုပါက သင့်ဒေတာအားလုံးကို ဖျက်နိုင်သည်။",
@@ -2029,8 +2028,8 @@
     "logoutButton": "ထွက်မည်",
     "firebaseAccount": "သင့်စူပါအက်ဒမင် အကောင့် စီမံရန် Firebase console ကို သုံးပါ:",
     "firebaseLink": "Firebase Auth သို့ သွားမည်",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

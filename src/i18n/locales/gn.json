@@ -1683,7 +1683,6 @@
     "activeToken": "Jekepyty oikóva (nde añónte rehecha).",
     "confirmLabel": "Moañete",
     "currentTokenDescription": "Emoheñói haguã peteĩ jekepyty pyahu, ehai jekepyty ag̃aguáva.",
-    "currentTokenPlaceholder": "Emboja ápe jekepyty ag̃aguáva",
     "generateToken": "Emoheñói jekepyty pyahu",
     "logout": "Esẽ",
     "deleteDataDescription": "Eipuruséramo nde derécho ARSO, ikatu emboguete opa nde marandu.",
@@ -2118,8 +2117,8 @@
     "logoutButton": "Esẽ",
     "firebaseAccount": "Eñangareko haguã nde cuenta superadmin rehe, eipuru Firebase Consola:",
     "firebaseLink": "Eho Firebase Auth-pe",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

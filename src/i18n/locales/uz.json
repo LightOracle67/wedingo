@@ -1727,7 +1727,6 @@
     "activeToken": "Faol kod (faqat siz ko'rasiz).",
     "confirmLabel": "Tasdiqlash",
     "currentTokenDescription": "Yangi kod yaratish uchun joriy kirish kodini yozing.",
-    "currentTokenPlaceholder": "Joriy kodni bu yerga qo'ying",
     "generateToken": "Yangi kod yaratish",
     "logout": "Chiqish",
     "deleteDataDescription": "ARSO huquqlaringizdan foydalanmoqchi bo'lsangiz, barcha ma'lumotlaringizni o'chirishingiz mumkin.",
@@ -2162,8 +2161,8 @@
     "logoutButton": "Chiqish",
     "firebaseAccount": "Superadmin hisobingizni boshqarish uchun Firebase konsolidan foydalaning:",
     "firebaseLink": "Firebase Auth ga o'tish",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

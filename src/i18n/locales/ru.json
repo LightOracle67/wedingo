@@ -1302,7 +1302,6 @@
     "activeToken": "Активный код (виден только вам).",
     "confirmLabel": "Подтвердить",
     "currentTokenDescription": "Чтобы создать новый код, введите текущий код доступа.",
-    "currentTokenPlaceholder": "Вставьте текущий код сюда",
     "generateToken": "Создать новый код",
     "logout": "Выйти",
     "deleteDataDescription": "Если вы хотите воспользоваться своими правами, вы можете удалить все свои данные.",
@@ -1661,8 +1660,8 @@
     "logoutButton": "Выйти",
     "firebaseAccount": "Для управления аккаунтом супер-админа используйте консоль Firebase:",
     "firebaseLink": "Перейти в Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

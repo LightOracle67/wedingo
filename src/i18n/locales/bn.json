@@ -429,7 +429,6 @@
     "activeToken": "সক্রিয় কোড (শুধুমাত্র আপনি দেখতে পাবেন)।",
     "confirmLabel": "নিশ্চিত করুন",
     "currentTokenDescription": "নতুন কোড তৈরি করতে, বর্তমান প্রবেশ কোড লিখুন।",
-    "currentTokenPlaceholder": "বর্তমান কোড এখানে পেস্ট করুন",
     "generateToken": "নতুন কোড তৈরি করুন",
     "logout": "লগআউট",
     "deleteDataDescription": "আপনি যদি আপনার অধিকার প্রয়োগ করতে চান, আপনি আপনার সমস্ত তথ্য মুছে ফেলতে পারেন।",
@@ -617,8 +616,8 @@
     "logoutButton": "লগআউট",
     "firebaseAccount": "আপনার সুপারঅ্যাডমিন অ্যাকাউন্ট পরিচালনা করতে Firebase কনসোল ব্যবহার করুন:",
     "firebaseLink": "Firebase Auth-এ যান",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

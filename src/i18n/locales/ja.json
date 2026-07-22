@@ -1269,7 +1269,6 @@
     "activeToken": "有効なコード（あなただけが見ることができます）。",
     "confirmLabel": "確認",
     "currentTokenDescription": "新しいコードを生成するには、現在のアクセスコードを入力してください。",
-    "currentTokenPlaceholder": "現在のコードをここに貼り付け",
     "generateToken": "新しいコードを生成",
     "logout": "ログアウト",
     "deleteDataDescription": "ARSOの権利を行使する場合、すべてのデータを削除できます。",
@@ -1609,8 +1608,8 @@
     "logoutButton": "ログアウト",
     "firebaseAccount": "スーパー管理者アカウントを管理するには、Firebaseコンソールを使用してください：",
     "firebaseLink": "Firebase Authへ",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

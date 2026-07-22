@@ -1631,7 +1631,6 @@
     "activeToken": "Aktivni kod (samo vi ga vidite).",
     "confirmLabel": "Potvrdi",
     "currentTokenDescription": "Za generiranje novog koda upišite trenutni pristupni kod.",
-    "currentTokenPlaceholder": "Ovdje zalijepite trenutni kod",
     "generateToken": "Generiraj novi kod",
     "logout": "Odjava",
     "deleteDataDescription": "Ako želite ostvariti svoja ARSO prava, možete izbrisati sve svoje podatke.",
@@ -2053,8 +2052,8 @@
     "logoutButton": "Odjava",
     "firebaseAccount": "Za upravljanje superadmin računom koristite Firebase konzolu:",
     "firebaseLink": "Idi na Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

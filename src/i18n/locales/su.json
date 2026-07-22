@@ -1689,7 +1689,6 @@
     "activeToken": "Kodeu aktip (ukur Anjeun anu ningali).",
     "confirmLabel": "Konfirmasi",
     "currentTokenDescription": "Pikeun ngahasilkeun kodeu anyar, tulis kodeu aksés ayeuna.",
-    "currentTokenPlaceholder": "Témpél kodeu ayeuna di dieu",
     "generateToken": "Hasilkeun kodeu anyar",
     "logout": "Kaluar",
     "deleteDataDescription": "Upami hoyong ngalaksanakeun hak ARSO, Anjeun tiasa mupus sadaya data Anjeun.",
@@ -2130,8 +2129,8 @@
     "logoutButton": "Kaluar",
     "firebaseAccount": "Pikeun ngatur akun superadmin Anjeun, anggo konsol Firebase:",
     "firebaseLink": "Angkat ka Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

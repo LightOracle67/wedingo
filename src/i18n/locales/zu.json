@@ -1657,7 +1657,6 @@
     "activeToken": "Ikhodi esebenzayo (nguwe wedwa oyibonayo).",
     "confirmLabel": "Qinisekisa",
     "currentTokenDescription": "Ukukhiqiza ikhodi entsha, bhala ikhodi yokungena yamanje.",
-    "currentTokenPlaceholder": "Namathisela ikhodi yamanje lapha",
     "generateToken": "Khiqiza ikhodi entsha",
     "logout": "Phuma",
     "deleteDataDescription": "Uma ufisa ukusebenzisa amalungelo akho e-ARSO, ungasusa yonke idatha yakho.",
@@ -1997,8 +1996,8 @@
     "logoutButton": "Phuma",
     "firebaseAccount": "Ukuphatha i-akhawunti yakho yomphathi omkhulu, sebenzisa ikhonsoli ye-Firebase:",
     "firebaseLink": "Yiya ku-Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",
