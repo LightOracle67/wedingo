@@ -753,6 +753,9 @@
     "noMusic": "No music",
     "loadError": "Error loading",
     "label": "Music",
+    "play": "Play",
+    "pause": "Pause",
+    "playing": "Playing...",
     "soundCloudNote": "SoundCloud track — open to play",
     "openInSoundCloud": "Open in SoundCloud"
   },

@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useToast } from "../hooks/useToast";
 
 const ALLOWED_AUDIO_TYPES = [
@@ -17,9 +17,11 @@ const MusicArrayEditor = memo(function MusicArrayEditor({ inviteToken, value, on
   const { addToast, startUploadToast } = useToast();
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
+  const [playing, setPlaying] = useState(false);
   const [audioId, setAudioId] = useState<string | null>(null);
   const [fileName, setFileName] = useState("");
   const [fileSize, setFileSize] = useState(0);
+  const audioRef = useRef<any>(null);
 
   useEffect(() => {
     if (!inviteToken) { setLoading(false); return; }
@@ -77,12 +79,21 @@ const MusicArrayEditor = memo(function MusicArrayEditor({ inviteToken, value, on
     if (input) input.value = "";
   }, [inviteToken, audioId, onChange, startUploadToast, addToast, t]);
 
+  const togglePlay = useCallback(() => {
+    const el = audioRef.current;
+    if (!el) return;
+    if (playing) { el.pause(); setPlaying(false); }
+    else { el.play().then(() => setPlaying(true)).catch(() => setPlaying(false)); }
+  }, [playing]);
+
   const handleDelete = useCallback(async () => {
     if (!audioId || !inviteToken) return;
     try {
       const { deleteAudio } = await import("../lib/music-store");
       await deleteAudio(inviteToken);
+      if (audioRef.current) { audioRef.current.pause(); audioRef.current.src = ""; }
       setAudioId(null);
+      setPlaying(false);
       setFileName("");
       setFileSize(0);
       onChange("");
@@ -131,9 +142,22 @@ const MusicArrayEditor = memo(function MusicArrayEditor({ inviteToken, value, on
               aria-label={t("common.delete")}
             >×</button>
           </div>
-          <audio controls style={{ width: "100%", borderRadius: "0.35rem" }}>
-            <source src={value} />
-          </audio>
+          <audio ref={audioRef} src={value} loop preload="auto" style={{ display: "none" }} />
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+            <button
+              type="button"
+              onClick={togglePlay}
+              style={{
+                width: "2.2rem", height: "2.2rem", borderRadius: "999px", border: "none",
+                background: "var(--setup-accent)", color: "#fff", fontSize: "1rem",
+                cursor: "pointer", display: "grid", placeItems: "center", flexShrink: 0,
+              }}
+              aria-label={playing ? t("music.pause") : t("music.play")}
+            >{playing ? "⏸" : "▶"}</button>
+            <span style={{ fontSize: "0.8rem", color: "var(--setup-muted)" }}>
+              {playing ? t("music.playing") : t("setup.currentMusic")}
+            </span>
+          </div>
           <label style={{
             textAlign: "center", cursor: uploading ? "not-allowed" : "pointer",
             fontSize: "0.8rem", color: "var(--setup-accent)", textDecoration: "underline",
