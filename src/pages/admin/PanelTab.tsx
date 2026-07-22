@@ -32,8 +32,10 @@ const PanelTab = memo(function PanelTab(props: any) {
       a.download = `wedingo-${inviteToken}-backup-${Date.now()}.json`;
       a.click();
       URL.revokeObjectURL(url);
-    } catch {}
-  }, [inviteToken]);
+    } catch {
+      addToast("error", t("errors.backupFailed"));
+    }
+  }, [inviteToken, t]);
 
   const handleRestore = useCallback(async (e: any) => {
     const file = e.target.files?.[0];
@@ -50,9 +52,11 @@ const PanelTab = memo(function PanelTab(props: any) {
         await updateDoc(invitationDocRef(id), rest);
       }
       if (onRestore) await onRestore();
-    } catch {}
+    } catch {
+      addToast("error", t("errors.restoreFailed"));
+    }
     e.target.value = "";
-  }, [onRestore]);
+  }, [onRestore, t]);
 
   return (
     <>

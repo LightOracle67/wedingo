@@ -73,11 +73,13 @@ export default function DataTab() {
         });
         list.sort((a, b) => (b.weddingDate || "").localeCompare(a.weddingDate || ""));
         setInvitations(list);
-      } catch { /* silencioso */ }
+      } catch {
+        if (!cancelled) addToast("error", t("errors.dataLoadFailed"));
+      }
       if (!cancelled) setLoading(false);
     })();
     return () => { cancelled = true; };
-  }, []);
+  }, [addToast, t]);
 
   /** IDs de invitaciones que no tienen datos (sin nombres configurados). */
   const emptyIds = useMemo(

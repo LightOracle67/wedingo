@@ -31,11 +31,13 @@ const MusicArrayEditor = memo(function MusicArrayEditor({ inviteToken, value, on
           setAudioId(result.id);
           onChange(result.url);
         }
-      } catch {} finally {
+      } catch {
+        addToast("error", t("errors.musicLoadFailed"));
+      } finally {
         setLoading(false);
       }
     })();
-  }, [inviteToken, onChange]);
+  }, [inviteToken, onChange, addToast, t]);
 
   const handleFile = useCallback(async (e: any) => {
     const file = e.target.files?.[0];
@@ -84,8 +86,10 @@ const MusicArrayEditor = memo(function MusicArrayEditor({ inviteToken, value, on
       setFileName("");
       setFileSize(0);
       onChange("");
-    } catch {}
-  }, [audioId, inviteToken, onChange]);
+    } catch {
+      addToast("error", t("errors.musicDeleteFailed"));
+    }
+  }, [audioId, inviteToken, onChange, addToast, t]);
 
   if (loading) {
     return <div className="page-loading" style={{ minHeight: "4rem" }} />;

@@ -32,7 +32,9 @@ const ShareTab = memo(function ShareTab({ inviteToken, addToast }: any) {
     try {
       await navigator.clipboard.writeText(inviteUrl);
       if (addToast) addToast("success", t("share.linkCopied"));
-    } catch {}
+    } catch {
+      if (addToast) addToast("error", t("errors.clipboardCopyFailed"));
+    }
   }, [inviteUrl, addToast, t]);
 
   const printPdf = useCallback(() => {
