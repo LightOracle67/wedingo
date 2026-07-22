@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.16.3",
+    date: "2026-07-21",
+    changes: [
+      "Fix: setup-form con align-items:stretch + hijos con width:100% para evitar solapamiento en tabs de admin",
+    ],
+  },
+  {
     version: "2.16.2",
     date: "2026-07-21",
     changes: [
