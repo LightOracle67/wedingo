@@ -168,11 +168,17 @@ export function ConfigProvider({ children }: any) {
         if (parsed.bankInfo) parsed.bankInfo = await decrypt(parsed.bankInfo, inviteToken);
         if (parsed.backgroundImage) parsed.backgroundImage = await loadDecryptedField(inviteToken, parsed.backgroundImage);
         if (parsed.couplePhoto) parsed.couplePhoto = await loadDecryptedField(inviteToken, parsed.couplePhoto);
-        if (parsed.musicFile) {
+        {
           const cached = sessionStorage.getItem(`wedin_audio_${inviteToken}`);
           if (cached) { parsed.musicFile = cached; }
           else {
-            parsed.musicFile = await loadDecryptedField(inviteToken, parsed.musicFile);
+            const { loadAudio } = await import("../lib/music-store");
+            const audio = await loadAudio(inviteToken);
+            if (audio?.url) {
+              parsed.musicFile = audio.url;
+            } else if (parsed.musicFile) {
+              parsed.musicFile = await loadDecryptedField(inviteToken, parsed.musicFile);
+            }
             if (parsed.musicFile) sessionStorage.setItem(`wedin_audio_${inviteToken}`, parsed.musicFile);
           }
         }
@@ -410,17 +416,15 @@ export function ConfigProvider({ children }: any) {
     try {
       const bgOrig = payload.backgroundImage?.startsWith("data:") ? payload.backgroundImage : null;
       const cpOrig = payload.couplePhoto?.startsWith("data:") ? payload.couplePhoto : null;
-      const mfOrig = payload.musicFile?.startsWith("data:") ? payload.musicFile : null;
       if (payload.bankInfo) payload.bankInfo = await encrypt(payload.bankInfo, inviteToken);
       if (bgOrig) payload.backgroundImage = await encrypt(bgOrig, inviteToken);
       if (cpOrig) payload.couplePhoto = await encrypt(cpOrig, inviteToken);
-      if (mfOrig) payload.musicFile = await encrypt(mfOrig, inviteToken);
+      delete payload.musicFile;
       payload.privacyPolicyVersion = PRIVACY_POLICY_VERSION;
       await setDoc(invitationDocRef(inviteToken), payload);
       if (payload.bankInfo) payload.bankInfo = await decrypt(payload.bankInfo, inviteToken);
       if (bgOrig) payload.backgroundImage = bgOrig;
       if (cpOrig) payload.couplePhoto = cpOrig;
-      if (mfOrig) payload.musicFile = mfOrig;
       setConfig(payload);
       setFormData(payload);
       setHasStoredConfig(true);

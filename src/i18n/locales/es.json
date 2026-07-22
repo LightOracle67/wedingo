@@ -327,7 +327,15 @@
     "galleryDescriptionSaveFailed": "Error al guardar la descripción",
     "galleryDescriptionSaved": "Descripción guardada",
     "currentMusic": "Música seleccionada",
-    "removeMusic": "Eliminar música"
+    "removeMusic": "Eliminar música",
+    "musicSectionTitle": "Música de fondo",
+    "musicSectionHint": "Archivo de audio que suena en la portada",
+    "musicUploadLabel": "Subir música",
+    "musicUploading": "Subiendo música...",
+    "musicUploadSuccess": "Música subida correctamente.",
+    "musicUploadFailed": "No se pudo subir la música.",
+    "replaceMusic": "Cambiar música",
+    "musicFile": "Archivo de audio"
   },
   "admin": {
     "tabs": {

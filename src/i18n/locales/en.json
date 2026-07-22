@@ -327,7 +327,15 @@
     "galleryDescriptionSaveFailed": "Error saving description",
     "galleryDescriptionSaved": "Description saved",
     "currentMusic": "Selected music",
-    "removeMusic": "Remove music"
+    "removeMusic": "Remove music",
+    "musicSectionTitle": "Background music",
+    "musicSectionHint": "Audio file that plays on the invite page",
+    "musicUploadLabel": "Upload music",
+    "musicUploading": "Uploading music...",
+    "musicUploadSuccess": "Music uploaded successfully.",
+    "musicUploadFailed": "Could not upload the music.",
+    "replaceMusic": "Change music",
+    "musicFile": "Audio file"
   },
   "admin": {
     "tabs": {

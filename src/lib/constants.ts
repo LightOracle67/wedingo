@@ -86,7 +86,7 @@ export const THEME_GROUPS = [
   { value: "lgtbiq+", label: "LGTBIQ+" },
 ];
 
-export const STORY_SECTION_ORDER = ["hero", "details", "info", "story", "gallery", "gifts", "accommodation", "rsvp"];
+export const STORY_SECTION_ORDER = ["hero", "details", "info", "story", "gallery", "music", "gifts", "accommodation", "rsvp"];
 
 export const SECTION_LABELS = {
   hero: "Portada",
@@ -96,6 +96,7 @@ export const SECTION_LABELS = {
   gifts: "Regalos",
   accommodation: "Alojamiento",
   gallery: "Galería",
+  music: "Música",
   rsvp: "Confirmación",
 };
 
