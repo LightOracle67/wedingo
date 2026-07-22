@@ -1,9 +1,8 @@
-import { addDoc, getDocs, collection, writeBatch, query, where } from "firebase/firestore";
+import { getDocs, collection, writeBatch, doc, query, where, orderBy } from "firebase/firestore";
 import { db } from "./firebase";
 import { encrypt, decrypt } from "./crypto-utils";
 
-const AUDIO_DATA_COL = collection(db, "audioData");
-const audioByToken = (token: string) => query(AUDIO_DATA_COL, where("inviteToken", "==", token));
+const CHUNK_SIZE = 500 * 1024;
 
 export async function uploadAudio(inviteToken: string, file: File, onProgress?: (pct: number) => void) {
   onProgress?.(10);
@@ -17,34 +16,42 @@ export async function uploadAudio(inviteToken: string, file: File, onProgress?: 
 }
 
 export async function addAudio(inviteToken: string, encrypted: string, dataUrl: string, onProgress?: (pct: number) => void) {
-  onProgress?.(85);
-  const docRef = await addDoc(AUDIO_DATA_COL, {
-    inviteToken,
-    data: encrypted,
-    createdAt: new Date().toISOString(),
-  });
+  const chunks: string[] = [];
+  for (let i = 0; i < encrypted.length; i += CHUNK_SIZE) {
+    chunks.push(encrypted.slice(i, i + CHUNK_SIZE));
+  }
+  const batch = writeBatch(db);
+  for (let i = 0; i < chunks.length; i++) {
+    const ref = doc(collection(db, "audioData"));
+    batch.set(ref, {
+      inviteToken,
+      chunkIndex: i,
+      data: chunks[i],
+      totalChunks: chunks.length,
+      createdAt: new Date().toISOString(),
+    });
+  }
+  await batch.commit();
   onProgress?.(95);
-  return { id: docRef.id, dataUrl };
+  return { id: `${inviteToken}_audio`, dataUrl, chunks: chunks.length };
 }
 
 export async function loadAudio(inviteToken: string) {
   try {
-    const snap = await getDocs(audioByToken(inviteToken));
+    const q = query(collection(db, "audioData"), where("inviteToken", "==", inviteToken), orderBy("chunkIndex", "asc"));
+    const snap = await getDocs(q);
     if (snap.empty) return null;
-    const docs = snap.docs
-      .map((d) => ({ id: d.id, ...d.data() }))
-      .sort((a: any, b: any) => (b.createdAt || "").localeCompare(a.createdAt || ""));
-    const latest = docs[0] as any;
-    if (latest.data) {
-      const url = await decrypt(latest.data, inviteToken);
-      if (url) return { id: latest.id, url };
-    }
+    const chunks = snap.docs.map((d) => d.data().data as string);
+    const concatenated = chunks.join("");
+    const url = await decrypt(concatenated, inviteToken);
+    if (url) return { id: `${inviteToken}_audio`, url };
     return null;
   } catch { return null; }
 }
 
 export async function deleteAudio(inviteToken: string) {
-  const snap = await getDocs(audioByToken(inviteToken));
+  const q = query(collection(db, "audioData"), where("inviteToken", "==", inviteToken));
+  const snap = await getDocs(q);
   if (snap.empty) return;
   const batch = writeBatch(db);
   snap.docs.forEach((d) => batch.delete(d.ref));
