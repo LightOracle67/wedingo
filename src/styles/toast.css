@@ -1,12 +1,3 @@
-.page-loading::after {
-  content: "";
-  width: 2.2rem;
-  height: 2.2rem;
-  border: 2px solid color-mix(in srgb, var(--setup-accent) 30%, transparent);
-  border-top-color: var(--setup-accent);
-  border-radius: 50%;
-  animation: spin 800ms linear infinite;
-}
 .toast-container {
   position: fixed;
   top: 1.25rem;
