@@ -125,13 +125,13 @@
   margin: 0.25rem 0 0;
 }
 .gallery-caption {
-  font-size: 0.85rem;
-  color: #fff;
-  font-style: italic;
+  font-family: "Great Vibes", cursive, serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  color: #c8a84e;
   max-width: 100%;
   overflow-wrap: break-word;
-  text-shadow: 0 0 6px rgba(255, 215, 0, 0.35), 0 0 14px rgba(255, 215, 0, 0.15);
-  letter-spacing: 0.02em;
+  text-shadow: 0 0 8px color-mix(in srgb, var(--invite-core-color, #c8a84e) 50%, transparent), 0 0 20px color-mix(in srgb, var(--invite-core-color, #c8a84e) 25%, transparent);
+  letter-spacing: 0.03em;
   text-align: center;
   padding: 0.35rem 0.75rem;
   flex-shrink: 0;
