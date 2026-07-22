@@ -1683,7 +1683,6 @@
     "activeToken": "క్రియాశీల కోడ్ (మీరు మాత్రమే చూస్తారు).",
     "confirmLabel": "నిర్ధారించు",
     "currentTokenDescription": "కొత్త కోడ్‌ను రూపొందించడానికి, ప్రస్తుత యాక్సెస్ కోడ్‌ను రాయండి.",
-    "currentTokenPlaceholder": "ప్రస్తుత కోడ్‌ను ఇక్కడ అతికించండి",
     "generateToken": "కొత్త కోడ్‌ను రూపొందించు",
     "logout": "లాగౌట్",
     "deleteDataDescription": "మీరు మీ ARSO హక్కులను వినియోగించుకోవాలనుకుంటే, మీరు మీ మొత్తం డేటాను తొలగించవచ్చు.",
@@ -2023,8 +2022,8 @@
     "logoutButton": "లాగౌట్",
     "firebaseAccount": "మీ సూపర్ అడ్మిన్ ఖాతాను నిర్వహించడానికి, Firebase కన్సోల్‌ను ఉపయోగించండి:",
     "firebaseLink": "Firebase Auth కి వెళ్ళండి",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

@@ -1721,7 +1721,6 @@
     "activeToken": "Aktiivne kood (ainult sina näed seda).",
     "confirmLabel": "Kinnita",
     "currentTokenDescription": "Uue koodi genereerimiseks kirjuta praegune juurdepääsukood.",
-    "currentTokenPlaceholder": "Kleebi praegune kood siia",
     "generateToken": "Genereeri uus kood",
     "logout": "Logi välja",
     "deleteDataDescription": "Kui soovid oma õigusi kasutada, saad kustutada kõik oma andmed.",
@@ -2156,8 +2155,8 @@
     "logoutButton": "Logi välja",
     "firebaseAccount": "Oma superadmin konto haldamiseks kasuta Firebase'i konsooli:",
     "firebaseLink": "Mine Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

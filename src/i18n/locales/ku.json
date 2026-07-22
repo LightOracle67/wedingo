@@ -1598,7 +1598,6 @@
     "activeToken": "Koda çalak (tenê tu dibînî).",
     "confirmLabel": "Piştrast bike",
     "currentTokenDescription": "Ji bo çêkirina kodek nû, koda gihîştina niha binivîse.",
-    "currentTokenPlaceholder": "Koda niha li vir bizeliqîne",
     "generateToken": "Kodek nû çêke",
     "logout": "Derkeve",
     "deleteDataDescription": "Eger bixwazî mafên ARSO bi kar bînî, dikarî hemû daneyên xwe jê bî.",
@@ -2014,8 +2013,8 @@
     "logoutButton": "Derkeve",
     "firebaseAccount": "Ji bo rêvebirina hesabê xwe yê superadmin, konsolê Firebase bi kar bîne:",
     "firebaseLink": "Here Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

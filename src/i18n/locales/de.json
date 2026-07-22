@@ -523,7 +523,6 @@
     "activeToken": "Aktiver Code (nur du siehst ihn).",
     "confirmLabel": "Bestätigen",
     "currentTokenDescription": "Um einen neuen Code zu generieren, gib den aktuellen Zugangscode ein.",
-    "currentTokenPlaceholder": "Aktuellen Code hier einfügen",
     "generateToken": "Neuen Code generieren",
     "logout": "Abmelden",
     "deleteDataDescription": "Wenn du deine Betroffenenrechte ausüben möchtest, kannst du all deine Daten löschen.",
@@ -787,8 +786,8 @@
     "logoutButton": "Abmelden",
     "firebaseAccount": "Um dein Superadmin-Konto zu verwalten, nutze die Firebase-Konsole:",
     "firebaseLink": "Zur Firebase Auth gehen",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

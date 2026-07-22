@@ -1683,7 +1683,6 @@
     "activeToken": "ລະຫັດທີ່ໃຊ້ຢູ່ (ມີພຽງທ່ານເຫັນ).",
     "confirmLabel": "ຢືນຢັນ",
     "currentTokenDescription": "ເພື່ອສ້າງລະຫັດໃໝ່ ຂຽນລະຫັດເຂົ້າໃຊ້ປັດຈຸບັນ.",
-    "currentTokenPlaceholder": "ວາງລະຫັດປັດຈຸບັນທີ່ນີ້",
     "generateToken": "ສ້າງລະຫັດໃໝ່",
     "logout": "ອອກຈາກລະບົບ",
     "deleteDataDescription": "ຖ້າທ່ານຕ້ອງການໃຊ້ສິດ ARSO ຂອງທ່ານ ທ່ານສາມາດລຶບຂໍ້ມູນທັງໝົດຂອງທ່ານ.",
@@ -2042,8 +2041,8 @@
     "logoutButton": "ອອກຈາກລະບົບ",
     "firebaseAccount": "ເພື່ອຈັດການບັນຊີຜູ້ດູແລສູງສຸດ ໃຊ້ Firebase console:",
     "firebaseLink": "ໄປທີ່ Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

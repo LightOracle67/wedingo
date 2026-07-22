@@ -1670,7 +1670,6 @@
     "activeToken": "فعال کوډ (یوازې تاسې یې وینئ).",
     "confirmLabel": "تایید",
     "currentTokenDescription": "د نوي کوډ جوړولو لپاره، اوسنی لاسرسي کوډ ولیکئ.",
-    "currentTokenPlaceholder": "اوسنی کوډ دلته پیسټ کړئ",
     "generateToken": "نوی کوډ جوړ کړئ",
     "logout": "وتل",
     "deleteDataDescription": "که غواړئ د ARSO حقونه وکاروئ، کولی شئ خپل ټول معلومات حذف کړئ.",
@@ -2010,8 +2009,8 @@
     "logoutButton": "وتل",
     "firebaseAccount": "د سوپر اډمین حساب ادارې لپاره، د Firebase کنسول وکاروئ:",
     "firebaseLink": "Firebase Auth ته لاړ شئ",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

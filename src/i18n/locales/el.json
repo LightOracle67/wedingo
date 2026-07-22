@@ -486,7 +486,6 @@
     "activeToken": "Ενεργός κωδικός (μόνο εσείς τον βλέπετε).",
     "confirmLabel": "Επιβεβαίωση",
     "currentTokenDescription": "Για να δημιουργήσετε νέο κωδικό, γράψτε τον τρέχοντα κωδικό πρόσβασης.",
-    "currentTokenPlaceholder": "Επικολλήστε εδώ τον τρέχοντα κωδικό",
     "generateToken": "Δημιουργία νέου κωδικού",
     "logout": "Αποσύνδεση",
     "deleteDataDescription": "Αν επιθυμείτε να ασκήσετε τα δικαιώματά σας ARSO, μπορείτε να διαγράψετε όλα τα δεδομένα σας.",
@@ -693,8 +692,8 @@
     "logoutButton": "Αποσύνδεση",
     "firebaseAccount": "Για να διαχειριστείτε τον λογαριασμό υπερδιαχειριστή σας, χρησιμοποιήστε την κονσόλα Firebase:",
     "firebaseLink": "Μετάβαση στο Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

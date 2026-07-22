@@ -448,7 +448,6 @@
     "activeToken": "ንቁ ኮድ (እርስዎ ብቻ ያዩታል)።",
     "confirmLabel": "አረጋግጥ",
     "currentTokenDescription": "አዲስ ኮድ ለመፍጠር የአሁኑን የመዳረሻ ኮድ ይጻፉ።",
-    "currentTokenPlaceholder": "የአሁኑን ኮድ እዚህ ይለጥፉ",
     "generateToken": "አዲስ ኮድ ፍጠር",
     "logout": "ውጣ",
     "deleteDataDescription": "የARSO መብቶችዎን ለመጠቀም ከፈለጉ ሁሉንም ውሂቦችዎን መሰረዝ ይችላሉ።",
@@ -617,8 +616,8 @@
     "logoutButton": "ውጣ",
     "firebaseAccount": "የሱፐርአድሚን መለያዎን ለማስተዳደር የFirebase ኮንሶል ይጠቀሙ:",
     "firebaseLink": "ወደ Firebase Auth ሂድ",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

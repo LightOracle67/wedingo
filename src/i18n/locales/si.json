@@ -1670,7 +1670,6 @@
     "activeToken": "ක්‍රියාකාරී කේතය (ඔබ පමණක් දකියි).",
     "confirmLabel": "තහවුරු කරන්න",
     "currentTokenDescription": "නව කේතයක් ජනනය කිරීමට, වත්මන් ප්‍රවේශ කේතය ලියන්න.",
-    "currentTokenPlaceholder": "වත්මන් කේතය මෙහි අලවන්න",
     "generateToken": "නව කේතයක් ජනනය කරන්න",
     "logout": "ඉවත් වන්න",
     "deleteDataDescription": "ඔබට ARSO අයිතිවාසිකම් ක්‍රියාත්මක කිරීමට අවශ්‍ය නම්, ඔබේ සියලු දත්ත මකා දැමිය හැක.",
@@ -2010,8 +2009,8 @@
     "logoutButton": "ඉවත් වන්න",
     "firebaseAccount": "ඔබේ සුපිරි පරිපාලක ගිණුම කළමනාකරණය කිරීමට, Firebase කොන්සෝලය භාවිතා කරන්න:",
     "firebaseLink": "Firebase Auth වෙත යන්න",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

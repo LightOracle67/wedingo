@@ -429,7 +429,6 @@
     "activeToken": "الرمز النشط (أنت فقط من تراه).",
     "confirmLabel": "تأكيد",
     "currentTokenDescription": "لإنشاء رمز جديد، اكتب رمز الوصول الحالي.",
-    "currentTokenPlaceholder": "ألصق الرمز الحالي هنا",
     "generateToken": "إنشاء رمز جديد",
     "logout": "تسجيل الخروج",
     "deleteDataDescription": "إذا كنت ترغب في ممارسة حقوق ARSO الخاصة بك، يمكنك حذف جميع بياناتك.",
@@ -598,8 +597,8 @@
     "logoutButton": "تسجيل الخروج",
     "firebaseAccount": "لإدارة حساب المشرف العام الخاص بك، استخدم وحدة تحكم Firebase:",
     "firebaseLink": "الذهاب إلى Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

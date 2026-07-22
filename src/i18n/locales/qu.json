@@ -1644,7 +1644,6 @@
     "activeToken": "Llamk'aq yupichay (qamllam rikunki).",
     "confirmLabel": "Chiqañchay",
     "currentTokenDescription": "Musuq yupichayta paqarichinapaq, kunan yaykuy yupichayta qillqay.",
-    "currentTokenPlaceholder": "Kunan yupichayta kaypi laq'ay",
     "generateToken": "Musuq yupichayta paqarichiy",
     "logout": "Llamk'aymanta lluqsiy",
     "deleteDataDescription": "ARSO hayñiykikunata llamk'ichiyta munanki chayqa, llapan willayniykita qulluyta atinki.",
@@ -2003,8 +2002,8 @@
     "logoutButton": "Llamk'aymanta lluqsiy",
     "firebaseAccount": "Hanaq kamachiq llamk'ayniykita kamachinapaq, Firebase Qhawanapampata llamk'achiy:",
     "firebaseLink": "Firebase Authman riy",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

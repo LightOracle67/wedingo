@@ -1580,7 +1580,6 @@
     "activeToken": "รหัสที่ใช้งานอยู่ (คุณเท่านั้นที่มองเห็น)",
     "confirmLabel": "ยืนยัน",
     "currentTokenDescription": "ในการสร้างรหัสใหม่ ให้กรอกรหัสเข้าใช้งานปัจจุบัน",
-    "currentTokenPlaceholder": "วางรหัสปัจจุบันที่นี่",
     "generateToken": "สร้างรหัสใหม่",
     "logout": "ออกจากระบบ",
     "deleteDataDescription": "หากคุณต้องการใช้สิทธิ์ ARSO คุณสามารถลบข้อมูลทั้งหมดของคุณ",
@@ -1920,8 +1919,8 @@
     "logoutButton": "ออกจากระบบ",
     "firebaseAccount": "ในการจัดการบัญชีผู้ดูแลระบบสูงสุดของคุณ ใช้คอนโซล Firebase:",
     "firebaseLink": "ไปยัง Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

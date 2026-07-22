@@ -1288,7 +1288,6 @@
     "activeToken": "Código ativo (só tu o vês).",
     "confirmLabel": "Confirmar",
     "currentTokenDescription": "Para gerar um novo código, escreve o código de acesso atual.",
-    "currentTokenPlaceholder": "Cola aqui o código atual",
     "generateToken": "Gerar novo código",
     "logout": "Encerrar sessão",
     "deleteDataDescription": "Se desejares exercer os teus direitos ARSO, podes eliminar todos os teus dados.",
@@ -1748,8 +1747,8 @@
     "logoutButton": "Encerrar sessão",
     "firebaseAccount": "Para gerir a tua conta de superadmin, usa a consola do Firebase:",
     "firebaseLink": "Ir para Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

@@ -1683,7 +1683,6 @@
     "activeToken": "Aktīvs kods (tikai jūs to redzat).",
     "confirmLabel": "Apstiprināt",
     "currentTokenDescription": "Lai ģenerētu jaunu kodu, ievadiet pašreizējo piekļuves kodu.",
-    "currentTokenPlaceholder": "Ielīmējiet pašreizējo kodu šeit",
     "generateToken": "Ģenerēt jaunu kodu",
     "logout": "Izrakstīties",
     "deleteDataDescription": "Ja vēlaties izmantot savas ARSO tiesības, varat dzēst visus savus datus.",
@@ -2080,8 +2079,8 @@
     "logoutButton": "Izrakstīties",
     "firebaseAccount": "Lai pārvaldītu savu superadmin kontu, izmantojiet Firebase konsoli:",
     "firebaseLink": "Doties uz Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

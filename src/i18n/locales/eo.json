@@ -505,7 +505,6 @@
     "activeToken": "Aktiva kodo (nur vi vidas ĝin).",
     "confirmLabel": "Konfirmi",
     "currentTokenDescription": "Por generi novan kodon, enigu la nunan alirkodon.",
-    "currentTokenPlaceholder": "Algluu ĉi tie la nunan kodon",
     "generateToken": "Generi novan kodon",
     "logout": "Elsaluti",
     "deleteDataDescription": "Se vi deziras ekzerci viajn ARSO-rajtojn, vi povas forigi ĉiujn viajn datumojn.",
@@ -712,8 +711,8 @@
     "logoutButton": "Elsaluti",
     "firebaseAccount": "Por administri vian superadministrantan konton, uzu la Firebase-konzolon:",
     "firebaseLink": "Iri al Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

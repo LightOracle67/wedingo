@@ -1566,7 +1566,6 @@
     "activeToken": "Kaody mavitrika (ianao irery no mahita azy).",
     "confirmLabel": "Hamafiso",
     "currentTokenDescription": "Mba hamoronana kaody vaovao, soraty ny kaody fidirana ankehitriny.",
-    "currentTokenPlaceholder": "Apetaho eto ny kaody ankehitriny",
     "generateToken": "Hamorona kaody vaovao",
     "logout": "Hiala",
     "deleteDataDescription": "Raha te hampiasa ny zontsika ARSO ianao, azonao fafana daholo ny angon-drakitrao.",
@@ -1994,8 +1993,8 @@
     "logoutButton": "Hiala",
     "firebaseAccount": "Mba hitantanana ny kaontinao superadmin, ampiasao ny console Firebase:",
     "firebaseLink": "Handeha any amin'ny Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

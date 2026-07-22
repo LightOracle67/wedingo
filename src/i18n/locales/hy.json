@@ -1683,7 +1683,6 @@
     "activeToken": "Ակտիվ կոդ (միայն դուք եք տեսնում)։",
     "confirmLabel": "Հաստատել",
     "currentTokenDescription": "Նոր կոդ ստեղծելու համար գրեք ընթացիկ մուտքի կոդը։",
-    "currentTokenPlaceholder": "Տեղադրեք ընթացիկ կոդը այստեղ",
     "generateToken": "Ստեղծել նոր կոդ",
     "logout": "Դուրս գալ",
     "deleteDataDescription": "Եթե ցանկանում եք իրականացնել ձեր ARSO իրավունքները, կարող եք ջնջել ձեր բոլոր տվյալները։",
@@ -2042,8 +2041,8 @@
     "logoutButton": "Դուրս գալ",
     "firebaseAccount": "Ձեր սուպերադմինի հաշիվը կառավարելու համար օգտագործեք Firebase-ի կոնսոլը՝",
     "firebaseLink": "Անցնել Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

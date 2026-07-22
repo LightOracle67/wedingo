@@ -1683,7 +1683,6 @@
     "activeToken": "Kode ikora (ni wowe uyibona wenyine).",
     "confirmLabel": "Emeza",
     "currentTokenDescription": "Kugira ngo ukore kode nshya, andika kode y'injira iriho.",
-    "currentTokenPlaceholder": "Shyiramo kode iriho hano",
     "generateToken": "Kora kode nshya",
     "logout": "Sohoka",
     "deleteDataDescription": "Niba wifuza gukoresha uburenganzira bwawe bwa ARSO, urashobora gusiba amakuru yawe yose.",
@@ -2118,8 +2117,8 @@
     "logoutButton": "Sohoka",
     "firebaseAccount": "Kugira ngo umenyeshe konti yawe ya superadmin, koresha konsoli ya Firebase:",
     "firebaseLink": "Jya kuri Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

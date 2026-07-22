@@ -1645,7 +1645,6 @@
     "activeToken": "Активний код (бачите тільки ви).",
     "confirmLabel": "Підтвердити",
     "currentTokenDescription": "Щоб створити новий код, введіть поточний код доступу.",
-    "currentTokenPlaceholder": "Вставте поточний код сюди",
     "generateToken": "Створити новий код",
     "logout": "Вийти",
     "deleteDataDescription": "Якщо ви хочете скористатися своїми правами, ви можете видалити всі свої дані.",
@@ -2004,8 +2003,8 @@
     "logoutButton": "Вийти",
     "firebaseAccount": "Для керування обліковим записом супер-адміна використовуйте консоль Firebase:",
     "firebaseLink": "Перейти до Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

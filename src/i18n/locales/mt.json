@@ -1702,7 +1702,6 @@
     "activeToken": "Kodiċi attiv (int biss tarah).",
     "confirmLabel": "Ikkonferma",
     "currentTokenDescription": "Biex tiġġenera kodiċi ġdid, ikteb il-kodiċi tal-aċċess attwali.",
-    "currentTokenPlaceholder": "Waħħal hawn il-kodiċi attwali",
     "generateToken": "Iġġenera kodiċi ġdid",
     "logout": "Oħroġ",
     "deleteDataDescription": "Jekk tixtieq teżerċita d-drittijiet ARSO tiegħek, tista' tħassar id-dejta kollha tiegħek.",
@@ -2194,8 +2193,8 @@
     "logoutButton": "Oħroġ",
     "firebaseAccount": "Biex timmaniġġja l-kont superadmin tiegħek, uża l-konsol ta' Firebase:",
     "firebaseLink": "Mur għal Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

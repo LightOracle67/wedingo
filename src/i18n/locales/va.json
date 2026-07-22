@@ -849,7 +849,6 @@
     "activeToken": "Codi actiu (només tu el veus).",
     "confirmLabel": "Confirmar",
     "currentTokenDescription": "Per a generar un codi nou, escriu el codi d'accés actual.",
-    "currentTokenPlaceholder": "Pega ací el codi actual",
     "generateToken": "Generar codi nou",
     "logout": "Tancar sessió",
     "deleteDataDescription": "Si desitges exercir els teus drets ARSO, pots eliminar totes les teues dades.",
@@ -1114,8 +1113,8 @@
     "logoutButton": "Tancar sessió",
     "firebaseAccount": "Per a gestionar el teu compte de superadmin, usa la consola de Firebase:",
     "firebaseLink": "Anar a Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

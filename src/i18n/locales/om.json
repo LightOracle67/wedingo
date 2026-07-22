@@ -1663,7 +1663,6 @@
     "activeToken": "Koodii dalagu (ati qofti argita).",
     "confirmLabel": "Mirkaneessi",
     "currentTokenDescription": "Koodii haaraa uumuuf, koodii galtee ammaa galchi.",
-    "currentTokenPlaceholder": "Koodii ammaa as maxxansi",
     "generateToken": "Koodii haaraa uumi",
     "logout": "Se$$ii cufi",
     "deleteDataDescription": "Mirga ARSO kee fayyadamuu yoo barbaadde, odeeffannoo kee hunda balleessuu dandeessa.",
@@ -2022,8 +2021,8 @@
     "logoutButton": "Se$$ii cufi",
     "firebaseAccount": "Akkaawuntii bulchaa guddaa kee bulchuuf, Firebase Console fayyadami:",
     "firebaseLink": "Gara Firebase Auth deemi",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

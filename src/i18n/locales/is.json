@@ -1683,7 +1683,6 @@
     "activeToken": "Virkur kóði (aðeins þú sérð hann).",
     "confirmLabel": "Staðfesta",
     "currentTokenDescription": "Til að búa til nýjan kóða, skrifaðu núverandi aðgangskóða.",
-    "currentTokenPlaceholder": "Límdu núverandi kóða hér",
     "generateToken": "Búa til nýjan kóða",
     "logout": "Útskrá",
     "deleteDataDescription": "Ef þú vilt nýta ARSO réttindi þín geturðu eytt öllum gögnunum þínum.",
@@ -2023,8 +2022,8 @@
     "logoutButton": "Útskrá",
     "firebaseAccount": "Til að stjórna yfirstjórnendareikningnum þínum, notaðu Firebase stjórnborðið:",
     "firebaseLink": "Fara í Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

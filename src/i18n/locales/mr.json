@@ -1683,7 +1683,6 @@
     "activeToken": "सक्रिय कोड (फक्त तुम्ही पाहता).",
     "confirmLabel": "पुष्टी करा",
     "currentTokenDescription": "नवीन कोड तयार करण्यासाठी, सध्याचा प्रवेश कोड लिहा.",
-    "currentTokenPlaceholder": "सध्याचा कोड येथे पेस्ट करा",
     "generateToken": "नवीन कोड तयार करा",
     "logout": "लॉग आउट",
     "deleteDataDescription": "जर तुम्हाला तुमचे ARSO अधिकार वापरायचे असतील तर तुम्ही तुमचा सर्व डेटा हटवू शकता.",
@@ -2023,8 +2022,8 @@
     "logoutButton": "लॉग आउट",
     "firebaseAccount": "तुमचे सुपर अॅडमिन खाते व्यवस्थापित करण्यासाठी, Firebase कन्सोल वापरा:",
     "firebaseLink": "Firebase Auth वर जा",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

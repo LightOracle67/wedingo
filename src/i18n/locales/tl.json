@@ -1911,7 +1911,6 @@
     "activeToken": "Aktibong code (ikaw lang ang nakakakita nito).",
     "confirmLabel": "Kumpirmahin",
     "currentTokenDescription": "Upang gumawa ng bagong code, isulat ang kasalukuyang access code.",
-    "currentTokenPlaceholder": "I-paste dito ang kasalukuyang code",
     "generateToken": "Bumuo ng bagong code",
     "logout": "Mag-log out",
     "deleteDataDescription": "Kung nais mong gamitin ang iyong mga karapatan sa ARSO, maaari mong tanggalin ang lahat ng iyong datos.",
@@ -2422,8 +2421,8 @@
     "logoutButton": "Mag-log out",
     "firebaseAccount": "Upang pamahalaan ang iyong superadmin account, gamitin ang Firebase console:",
     "firebaseLink": "Pumunta sa Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

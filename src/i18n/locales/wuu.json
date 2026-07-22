@@ -1586,7 +1586,6 @@
     "activeToken": "活动码（仅您可见）。",
     "confirmLabel": "确认",
     "currentTokenDescription": "要生成新码，请输入当前访问码。",
-    "currentTokenPlaceholder": "在此粘贴当前码",
     "generateToken": "生成新码",
     "logout": "退出登录",
     "deleteDataDescription": "如果您想行使ARSO权利，可以删除您的所有数据。",
@@ -1907,8 +1906,8 @@
     "logoutButton": "退出登录",
     "firebaseAccount": "要管理您的超级管理员账户，请使用Firebase控制台：",
     "firebaseLink": "前往Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

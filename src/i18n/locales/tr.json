@@ -1567,7 +1567,6 @@
     "activeToken": "Aktif kod (sadece siz görebilirsiniz).",
     "confirmLabel": "Onayla",
     "currentTokenDescription": "Yeni bir kod oluşturmak için mevcut erişim kodunu yazın.",
-    "currentTokenPlaceholder": "Mevcut kodu buraya yapıştırın",
     "generateToken": "Yeni kod oluştur",
     "logout": "Çıkış yap",
     "deleteDataDescription": "ARSO haklarınızı kullanmak isterseniz, tüm verilerinizi silebilirsiniz.",
@@ -1926,8 +1925,8 @@
     "logoutButton": "Çıkış yap",
     "firebaseAccount": "Süper yönetici hesabınızı yönetmek için Firebase konsolunu kullanın:",
     "firebaseLink": "Firebase Auth'a git",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

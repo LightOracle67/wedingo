@@ -1496,7 +1496,6 @@
     "activeToken": "सक्रिय कोड (केवल आप इसे देखते हैं)।",
     "confirmLabel": "पुष्टि करें",
     "currentTokenDescription": "नया कोड बनाने के लिए, वर्तमान एक्सेस कोड लिखें।",
-    "currentTokenPlaceholder": "यहाँ वर्तमान कोड पेस्ट करें",
     "generateToken": "नया कोड जनरेट करें",
     "logout": "लॉग आउट करें",
     "deleteDataDescription": "यदि आप अपने ARSO अधिकारों का प्रयोग करना चाहते हैं, तो आप अपना सारा डेटा हटा सकते हैं।",
@@ -1817,8 +1816,8 @@
     "logoutButton": "लॉग आउट करें",
     "firebaseAccount": "अपना सुपरएडमिन खाता प्रबंधित करने के लिए, Firebase कंसोल का उपयोग करें:",
     "firebaseLink": "Firebase Auth पर जाएँ",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

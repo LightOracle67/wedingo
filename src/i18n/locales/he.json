@@ -1561,7 +1561,6 @@
     "activeToken": "הקוד הפעיל (רק אתה רואה אותו).",
     "confirmLabel": "אשר",
     "currentTokenDescription": "כדי ליצור קוד חדש, הקלד את קוד הגישה הנוכחי.",
-    "currentTokenPlaceholder": "הדבק כאן את הקוד הנוכחי",
     "generateToken": "צור קוד חדש",
     "logout": "התנתק",
     "deleteDataDescription": "אם ברצונך לממש את זכויות ה־ARSO שלך, תוכל למחוק את כל הנתונים שלך.",
@@ -1863,8 +1862,8 @@
     "logoutButton": "התנתק",
     "firebaseAccount": "כדי לנהל את חשבון מנהל-העל שלך, השתמש במסוף Firebase:",
     "firebaseLink": "עבור ל־Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

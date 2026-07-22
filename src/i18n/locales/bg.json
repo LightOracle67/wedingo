@@ -486,7 +486,6 @@
     "activeToken": "Активен код (само ти го виждаш).",
     "confirmLabel": "Потвърди",
     "currentTokenDescription": "За да генерираш нов код, въведи текущия код за достъп.",
-    "currentTokenPlaceholder": "Постави текущия код тук",
     "generateToken": "Генерирай нов код",
     "logout": "Изход",
     "deleteDataDescription": "Ако искаш да упражниш правата си, можеш да изтриеш всичките си данни.",
@@ -693,8 +692,8 @@
     "logoutButton": "Изход",
     "firebaseAccount": "За да управляваш своя супер админ акаунт, използвай конзолата на Firebase:",
     "firebaseLink": "Към Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",
