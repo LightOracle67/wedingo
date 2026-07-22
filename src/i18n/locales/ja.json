@@ -170,17 +170,8 @@
     "todayIsWedding": "今日は結婚式です",
     "missing": "残り",
     "todayIsTheDay": "今日が大切な日です！",
-    "sectionLabel": "表紙",    "eyebrow": "私たちの結婚式"
-      ],
-      [
-        [
-          [
-            "466914b2b9b759682681a550c00b67dd",
-            "en_ja_2023q1.md"
-          ]
-        ]
-      ]
-    ]
+    "sectionLabel": "表紙",
+    "eyebrow": "私たちの結婚式"
   },
   "details": {
     "sectionLabel": "日付と場所",

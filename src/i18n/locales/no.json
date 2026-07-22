@@ -170,17 +170,8 @@
     "todayIsWedding": "I dag er bryllupet",
     "missing": "Mangler",
     "todayIsTheDay": "I dag er den store dagen!",
-    "sectionLabel": "Forside",    "eyebrow": "Vårt bryllup"
-      ],
-      [
-        [
-          [
-            "c20f075da290ff4ebe2bae43bebf89e7",
-            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
-          ]
-        ]
-      ]
-    ]
+    "sectionLabel": "Forside",
+    "eyebrow": "Vårt bryllup"
   },
   "details": {
     "sectionLabel": "Dato og sted",

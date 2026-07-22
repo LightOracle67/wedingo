@@ -170,17 +170,8 @@
     "todayIsWedding": "Hoje é o casamento",
     "missing": "Faltam",
     "todayIsTheDay": "Hoje é o grande dia!",
-    "sectionLabel": "Capa",    "eyebrow": "Nosso casamento"
-      ],
-      [
-        [
-          [
-            "66379e56ded86dd057796dbeaebad517",
-            "en_pt_2023q1.md"
-          ]
-        ]
-      ]
-    ]
+    "sectionLabel": "Capa",
+    "eyebrow": "Nosso casamento"
   },
   "details": {
     "sectionLabel": "Data e local",

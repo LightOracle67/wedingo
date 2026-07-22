@@ -170,17 +170,8 @@
     "todayIsWedding": "Oggi è il matrimonio",
     "missing": "Mancano",
     "todayIsTheDay": "Oggi è il grande giorno!",
-    "sectionLabel": "Copertina",    "eyebrow": "Il nostro matrimonio"
-      ],
-      [
-        [
-          [
-            "0aea2f5ef36731b02422e218d5add801",
-            "en_it_2023q1.md"
-          ]
-        ]
-      ]
-    ]
+    "sectionLabel": "Copertina",
+    "eyebrow": "Il nostro matrimonio"
   },
   "details": {
     "sectionLabel": "Data e luogo",

@@ -196,17 +196,8 @@
     "todayIsWedding": "Tänään on häät",
     "missing": "Jäljellä",
     "todayIsTheDay": "Tänään on suuri päivä!",
-    "sectionLabel": "Kansi",    "eyebrow": "Meidän häät"
-      ],
-      [
-        [
-          [
-            "e6160a94dbc5b21fe81a6e88928058a4",
-            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
-          ]
-        ]
-      ]
-    ]
+    "sectionLabel": "Kansi",
+    "eyebrow": "Meidän häät"
   },
   "details": {
     "sectionLabel": "Päivämäärä ja paikka",

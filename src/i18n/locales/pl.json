@@ -170,17 +170,8 @@
     "todayIsWedding": "Dziś jest ślub",
     "missing": "Pozostało",
     "todayIsTheDay": "Dziś jest ten wielki dzień!",
-    "sectionLabel": "Okładka",    "eyebrow": "Nasz ślub"
-      ],
-      [
-        [
-          [
-            "8811da97add94393bb55fcf4cb942bda",
-            "en_pl_2023q1.md"
-          ]
-        ]
-      ]
-    ]
+    "sectionLabel": "Okładka",
+    "eyebrow": "Nasz ślub"
   },
   "details": {
     "sectionLabel": "Data i miejsce",

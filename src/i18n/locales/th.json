@@ -170,17 +170,8 @@
     "todayIsWedding": "วันนี้เป็นวันแต่งงาน",
     "missing": "เหลืออีก",
     "todayIsTheDay": "วันนี้เป็นวันสำคัญ!",
-    "sectionLabel": "ปก",    "eyebrow": "งานแต่งงานของเรา"
-      ],
-      [
-        [
-          [
-            "56c9c2de545c070079660147339633bf",
-            "en_th_2023q1.md"
-          ]
-        ]
-      ]
-    ]
+    "sectionLabel": "ปก",
+    "eyebrow": "งานแต่งงานของเรา"
   },
   "details": {
     "sectionLabel": "วันที่และสถานที่",

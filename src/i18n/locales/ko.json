@@ -170,17 +170,8 @@
     "todayIsWedding": "오늘은 결혼식 날입니다",
     "missing": "남은 시간",
     "todayIsTheDay": "오늘이 바로 그 특별한 날입니다!",
-    "sectionLabel": "표지",    "eyebrow": "우리의 결혼식"
-      ],
-      [
-        [
-          [
-            "52ffe190710d2e8a233f305ac4260f4e",
-            "en_ko_2023q1.md"
-          ]
-        ]
-      ]
-    ]
+    "sectionLabel": "표지",
+    "eyebrow": "우리의 결혼식"
   },
   "details": {
     "sectionLabel": "날짜 및 장소",
