@@ -8,6 +8,13 @@ export const CHANGELOG = [
     ],
   },
   {
+    version: "2.16.6",
+    date: "2026-07-22",
+    changes: [
+      "Fix: .story-card width 95%!important height 95%!important (eliminado min(90%,36rem))",
+    ],
+  },
+  {
     version: "2.16.5",
     date: "2026-07-22",
     changes: [

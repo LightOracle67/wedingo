@@ -1167,7 +1167,8 @@ img {
   position: relative;
   z-index: 1;
   border-radius: 1.6rem;
-  width: min(90%, 36rem);
+  width: 95% !important;
+  height: 95% !important;
   max-height: calc(100dvh - var(--navbar-height, 0px) - clamp(5rem, 10vw, 8rem));
   padding: clamp(0.8rem, 2.5vw, 1.5rem);
   box-sizing: border-box;
