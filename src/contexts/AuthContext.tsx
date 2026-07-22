@@ -48,10 +48,11 @@ export function AuthProvider({ children }: any) {
   }, [registerOnFirstSave]);
 
   // ── Token regeneration effect ──
+  const refreshToken = auth.refreshSetupToken;
   useEffect(() => {
     if (!inviteToken) return;
-    (async () => { await auth.refreshSetupToken(); })();
-  }, [inviteToken, auth]);
+    (async () => { await refreshToken(); })();
+  }, [inviteToken, refreshToken]);
 
   // ── Clear auth messages on route change ──
   useEffect(() => {

@@ -67,7 +67,7 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }: any) {
       setError(false);
       setLoading(true);
       setIconKey((k) => k + 1);
-      el.play().then(() => { setPlaying(true); setLoading(false); }).catch(() => { setLoading(false); setError(true); });
+      el.play().then(() => { setPlaying(true); setLoading(false); }).catch(() => { setLoading(false); setError(true); setPlaying(false); });
     }
   }, [playing, musicUrl]);
 

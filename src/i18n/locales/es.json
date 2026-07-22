@@ -542,6 +542,7 @@
     "readImageFailed": "No se pudo leer el archivo de imagen.",
     "encryptFailed": "El cifrado de la imagen falló.",
     "imageTooLarge": "La imagen es demasiado grande incluso comprimida.",
+    "autoSaveFailed": "No se pudo guardar automáticamente la configuración.",
     "backupFailed": "No se pudo descargar la copia de seguridad.",
     "clipboardCopyFailed": "No se pudo copiar al portapapeles.",
     "statsLoadFailed": "No se pudieron cargar las estadísticas.",

@@ -1524,3 +1524,27 @@ select.setup-input {
     grid-template-columns: 1fr;
   }
 }
+
+.setup-button--danger {
+  border-color: #e06060 !important;
+  color: #e06060 !important;
+}
+.setup-button--danger:hover {
+  background: rgba(224, 96, 96, 0.1) !important;
+}
+.setup-button--primary {
+  border-color: var(--setup-accent) !important;
+  color: var(--setup-title) !important;
+  background: color-mix(in srgb, var(--setup-accent) 15%, transparent) !important;
+}
+.setup-button--primary:hover {
+  background: color-mix(in srgb, var(--setup-accent) 25%, transparent) !important;
+}
+
+@keyframes card-reveal {
+  from { opacity: 0; transform: translateY(10px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.animate-card-reveal {
+  animation: card-reveal 400ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
