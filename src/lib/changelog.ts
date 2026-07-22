@@ -1,9 +1,16 @@
 export const CHANGELOG = [
   {
+    version: "2.16.4",
+    date: "2026-07-21",
+    changes: [
+      "Fix: setup-form hijos con width:100% sin stretch (altura=contenido, ancho=100%)",
+    ],
+  },
+  {
     version: "2.16.3",
     date: "2026-07-21",
     changes: [
-      "Fix: setup-form con align-items:stretch + hijos con width:100% para evitar solapamiento en tabs de admin",
+      "Revert: stretch eliminado de setup-form (altura debe ser contenido, no forzada)",
     ],
   },
   {
