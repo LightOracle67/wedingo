@@ -1,5 +1,5 @@
 import { memo, useCallback, useMemo, useRef, useState } from "react";
-import { getDoc, setDoc } from "firebase/firestore";
+import { getDoc, updateDoc } from "firebase/firestore";
 import { useTranslation } from "react-i18next";
 import { invitationDocRef } from "../../lib/firebase";
 import { calcRSVPSummary, getDietarySummary } from "../../lib/admin-utils";
@@ -51,16 +51,7 @@ const PanelTab = memo(function PanelTab(props: any) {
         if (!item.id || typeof item.id !== "string") continue;
         const { id, bankInfo, ...rest } = item;
         if (bankInfo && bankInfo !== "[REDACTED]") rest.bankInfo = bankInfo;
-        // Preservar sesión activa para no perder acceso tras restore
-        try {
-          const snap = await getDoc(invitationDocRef(id));
-          if (snap.exists()) {
-            const cur = snap.data();
-            if (cur.activeSession) rest.activeSession = cur.activeSession;
-            if (cur.sessionExpiresAt) rest.sessionExpiresAt = cur.sessionExpiresAt;
-          }
-        } catch {}
-        await setDoc(invitationDocRef(id), rest);
+        await updateDoc(invitationDocRef(id), rest);
         count++;
       }
       if (onRestore) await onRestore();

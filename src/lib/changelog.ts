@@ -8,6 +8,13 @@ export const CHANGELOG = [
     ],
   },
   {
+    version: "2.17.2",
+    date: "2026-07-22",
+    changes: [
+      "Fix: restore usa updateDoc en vez de setDoc (preserva session sin rules conflict)",
+    ],
+  },
+  {
     version: "2.17.1",
     date: "2026-07-22",
     changes: [
