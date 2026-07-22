@@ -1,7 +1,7 @@
 .lang-overlay {
   position: fixed;
   inset: 0;
-  z-index: 10001;
+  z-index: 10004;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,7 +45,7 @@ html.a11y-high-contrast .app-footer {
 .lang-popup {
   position: fixed;
   inset: 0;
-  z-index: 10001;
+  z-index: 10004;
   display: flex;
   align-items: center;
   justify-content: center;
