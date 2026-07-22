@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useApp } from "../../contexts/AppContext";
-import { MONTH_OPTIONS } from "../../lib/constants";
+import { MONTH_OPTIONS, MONTH_VALUE_TO_NUMBER } from "../../lib/constants";
 
 export default function DateSectionForm({ prefix = "" }) {
   const {
@@ -115,7 +115,7 @@ export default function DateSectionForm({ prefix = "" }) {
           >
             <option value="" disabled>{t("setup.monthPlaceholder")}</option>
             {MONTH_OPTIONS.map((mo) => (
-              <option key={mo.value} value={mo.value}>{t("monthNames." + mo.value)}</option>
+              <option key={mo.value} value={mo.value}>{t("monthNames." + ((MONTH_VALUE_TO_NUMBER as any)[mo.value] || ""))}</option>
             ))}
           </select>
         </div>
