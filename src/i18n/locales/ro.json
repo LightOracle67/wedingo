@@ -170,17 +170,7 @@
     "todayIsWedding": "Astăzi este nunta",
     "missing": "Mai sunt",
     "todayIsTheDay": "Astăzi este ziua cea mare!",
-    "sectionLabel": "Copertă",
-    "eyebrow": [
-      "Nunta noastră",
-      "Our Wedding",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
+    "sectionLabel": "Copertă",    "eyebrow": "Nunta noastră"
       ],
       [
         [

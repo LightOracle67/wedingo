@@ -196,17 +196,7 @@
     "todayIsWedding": "Tänään on häät",
     "missing": "Jäljellä",
     "todayIsTheDay": "Tänään on suuri päivä!",
-    "sectionLabel": "Kansi",
-    "eyebrow": [
-      "Meidän häät",
-      "Our Wedding",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
+    "sectionLabel": "Kansi",    "eyebrow": "Meidän häät"
       ],
       [
         [

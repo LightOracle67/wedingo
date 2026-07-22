@@ -170,17 +170,7 @@
     "todayIsWedding": "Oggi è il matrimonio",
     "missing": "Mancano",
     "todayIsTheDay": "Oggi è il grande giorno!",
-    "sectionLabel": "Copertina",
-    "eyebrow": [
-      "Il nostro matrimonio",
-      "Our Wedding",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
+    "sectionLabel": "Copertina",    "eyebrow": "Il nostro matrimonio"
       ],
       [
         [

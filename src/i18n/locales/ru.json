@@ -196,17 +196,7 @@
     "todayIsWedding": "Сегодня свадьба",
     "missing": "Осталось",
     "todayIsTheDay": "Сегодня великий день!",
-    "sectionLabel": "Обложка",
-    "eyebrow": [
-      "Наша свадьба",
-      "Our Wedding",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
+    "sectionLabel": "Обложка",    "eyebrow": "Наша свадьба"
       ],
       [
         [

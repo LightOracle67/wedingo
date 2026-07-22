@@ -170,17 +170,7 @@
     "todayIsWedding": "I dag er bryllupet",
     "missing": "Mangler",
     "todayIsTheDay": "I dag er den store dagen!",
-    "sectionLabel": "Forside",
-    "eyebrow": [
-      "Vårt bryllup",
-      "Our Wedding",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
+    "sectionLabel": "Forside",    "eyebrow": "Vårt bryllup"
       ],
       [
         [
