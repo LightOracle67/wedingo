@@ -19,7 +19,7 @@ function AppMerger({ children }: any) {
     event.preventDefault();
     ui.setSaveError("");
     ui.setSaveMessage("");
-    if (!config.hasStoredConfig && !auth.isTokenVerified && !auth.setupToken) {
+    if (!config.hasStoredConfig && !auth.isTokenVerified) {
       ui.setSaveError(t("errors.verifyTokenFirst"));
       return;
     }
