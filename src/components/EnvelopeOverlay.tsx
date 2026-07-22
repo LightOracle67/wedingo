@@ -25,7 +25,6 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secon
       setTimeout(() => setShowText(true), 900);
       return;
     }
-    setShowText(false);
     setExiting(true);
     setTimeout(() => {
       document.body.style.overflow = "";
