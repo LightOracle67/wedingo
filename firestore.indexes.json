@@ -1,11 +1,4 @@
 {
-  "indexes": [
-    {
-      "collectionGroup": "invitations",
-      "fieldPath": "_activeSetupToken",
-      "queryScope": "COLLECTION",
-      "order": "ASCENDING"
-    }
-  ],
+  "indexes": [],
   "fieldOverrides": []
 }
