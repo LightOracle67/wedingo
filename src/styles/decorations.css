@@ -12,52 +12,28 @@
   }
 }
 .wedding-decoration {
-  position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  aspect-ratio: 1;
   width: clamp(110px, 24vw, 280px);
   max-width: 280px;
-  aspect-ratio: 1 / 1;
-  padding: 0;
-  margin: 0;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  background: none;
   border: 0;
   border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  transition:
-    transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 500ms ease;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  right: 0;
 }
 @media (max-width: 768px) {
   .wedding-decoration {
     width: clamp(150px, 36vw, 200px);
     max-width: 200px;
-    opacity: 0.99;
-  }
-  .wedding-decoration--left {
-    left: -0.35rem;
-    top: 18%;
-    transform: var(--wedding-decoration-left-mobile-transform, translateY(0) scale(-1, -1));
-  }
-  .wedding-decoration--right {
-    right: -0.35rem;
-    bottom: -0.35rem;
-    transform: var(--wedding-decoration-right-mobile-transform, none);
-  }
-}
-.wedding-decoration--left {
-  animation: subtle-float 6s ease-in-out infinite;
-}
-.wedding-decoration--right {
-  animation: subtle-float 6s ease-in-out infinite reverse;
-}
-@media (min-width: 769px) {
-  .wedding-decoration {
-    width: clamp(220px, 24vw, 360px);
-    max-width: 360px;
   }
 }
 .wedding-decoration__image {
