@@ -4,14 +4,9 @@
   border-radius: 0.9rem;
   justify-content: center;
   align-items: center;
-  width: 95%;
-  min-width: 95%;
-  height: 95%;
-  min-height: 95%;
-  padding: 0.75rem;
-  display: block;
-  position: relative;
+  width: 80%;
   margin: 0 auto;
+  padding: 0.75rem;
 }
 .gallery-main-image-wrap {
   position: relative;
