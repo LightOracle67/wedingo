@@ -39,7 +39,7 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
             {inviteMessage}
           </p>
           {godparent1 && godparent2 ? (
-            <p className="story-copy mt-2" style={{ fontSize: "clamp(0.85rem, 2.2vw, 1.05rem)", opacity: 0.85, fontStyle: "italic", letterSpacing: "0.04em", color: "var(--invite-copy-color, #c8b898)", textShadow: "0 0 8px rgba(200,184,152,0.15), 0 0 20px rgba(200,184,152,0.05)", animation: "godparent-glow 3s ease-in-out infinite" }}>
+            <p className="story-copy mt-2" style={{ fontSize: "clamp(0.85rem, 2.2vw, 1.05rem)", opacity: 0.85, fontStyle: "italic", letterSpacing: "0.04em", color: "var(--invite-copy-color, #c8b898)", textShadow: "0 0 8px color-mix(in srgb, var(--flower-accent, #d8b24a) 20%, transparent), 0 0 20px color-mix(in srgb, var(--flower-accent, #d8b24a) 8%, transparent)", animation: "godparent-glow 3s ease-in-out infinite" }}>
               {t("hero.withBlessing", { godparent1, godparent2 })}
             </p>
           ) : null}
