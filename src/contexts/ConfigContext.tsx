@@ -159,17 +159,13 @@ export function ConfigProvider({ children }: any) {
         if (parsed.bankInfo) parsed.bankInfo = await decrypt(parsed.bankInfo, inviteToken);
         if (parsed.couplePhoto) parsed.couplePhoto = await loadDecryptedField(inviteToken, parsed.couplePhoto);
         {
-          const cached = sessionStorage.getItem(`wedin_audio_${inviteToken}`);
-          if (cached) { parsed.musicFile = cached; }
-          else {
-            const { loadAudio } = await import("../lib/music-store");
-            const audio = await loadAudio(inviteToken);
-            if (audio?.url) {
-              parsed.musicFile = audio.url;
-            } else if (parsed.musicFile) {
-              parsed.musicFile = await loadDecryptedField(inviteToken, parsed.musicFile);
-            }
-            if (parsed.musicFile) sessionStorage.setItem(`wedin_audio_${inviteToken}`, parsed.musicFile);
+          const { loadAudio } = await import("../lib/music-store");
+          const audio = await loadAudio(inviteToken);
+          if (audio?.url) {
+            parsed.musicFile = audio.url;
+            sessionStorage.setItem(`wedin_audio_${inviteToken}`, audio.url);
+          } else {
+            sessionStorage.removeItem(`wedin_audio_${inviteToken}`);
           }
         }
         const hydrated = { ...defaultConfig, ...parsed };
@@ -208,7 +204,16 @@ export function ConfigProvider({ children }: any) {
       const parsed = normalizeConfig(snapshot.data());
       if (parsed.bankInfo) parsed.bankInfo = await decrypt(parsed.bankInfo, inviteToken);
       if (parsed.couplePhoto) parsed.couplePhoto = await loadDecryptedField(inviteToken, parsed.couplePhoto);
-      if (parsed.musicFile) parsed.musicFile = await loadDecryptedField(inviteToken, parsed.musicFile);
+      {
+        const { loadAudio } = await import("../lib/music-store");
+        const audio = await loadAudio(inviteToken);
+        if (audio?.url) {
+          parsed.musicFile = audio.url;
+          sessionStorage.setItem(`wedin_audio_${inviteToken}`, audio.url);
+        } else {
+          sessionStorage.removeItem(`wedin_audio_${inviteToken}`);
+        }
+      }
       const hydrated = { ...defaultConfig, ...parsed };
       setConfig(hydrated);
       setFormData(hydrated);
