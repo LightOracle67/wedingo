@@ -189,11 +189,13 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
   }, [openLightbox, clamped]);
 
   const handleThumbClick = useCallback((e: any) => {
-    goTo(parseInt(e.currentTarget.dataset.index, 10));
+    const idx = e.currentTarget?.dataset?.index;
+    if (idx != null) goTo(parseInt(idx, 10));
   }, [goTo]);
 
   const handleThumbLoad = useCallback((e: any) => {
-    setThumbLoaded((p: any) => ({ ...p, [parseInt(e.currentTarget.dataset.index, 10)]: true }));
+    const idx = e.currentTarget?.dataset?.index;
+    if (idx != null) setThumbLoaded((p: any) => ({ ...p, [parseInt(idx, 10)]: true }));
   }, []);
 
   const handleContainerKeyDown = useCallback((e: any) => {
