@@ -51,6 +51,15 @@ const PanelTab = memo(function PanelTab(props: any) {
         if (!item.id || typeof item.id !== "string") continue;
         const { id, bankInfo, ...rest } = item;
         if (bankInfo && bankInfo !== "[REDACTED]") rest.bankInfo = bankInfo;
+        // Preservar sesión activa para no perder acceso tras restore
+        try {
+          const snap = await getDoc(invitationDocRef(id));
+          if (snap.exists()) {
+            const cur = snap.data();
+            if (cur.activeSession) rest.activeSession = cur.activeSession;
+            if (cur.sessionExpiresAt) rest.sessionExpiresAt = cur.sessionExpiresAt;
+          }
+        } catch {}
         await setDoc(invitationDocRef(id), rest);
         count++;
       }

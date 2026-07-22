@@ -8,6 +8,14 @@ export const CHANGELOG = [
     ],
   },
   {
+    version: "2.17.0",
+    date: "2026-07-22",
+    changes: [
+      "Fix: Firestore rules — nueva regla update para restore de backup (sin validación de campos, solo sesión activa)",
+      "Fix: restore preserva activeSession/sessionExpiresAt para no perder acceso",
+    ],
+  },
+  {
     version: "2.16.9",
     date: "2026-07-22",
     changes: [

@@ -48,6 +48,8 @@ service cloud.firestore {
           || !exists(/databases/$(database)/documents/invitations/$(tokenId)));
       allow update: if isValidInvitationWrite(request.resource.data)
         && (request.auth != null || hasActiveSession(tokenId));
+      /* Restauración de copia de seguridad por admin autenticado (sin validación de campos). */
+      allow update: if hasActiveSession(tokenId);
       /* Creación/renovación de sesión: cualquiera puede iniciar sesión,
          pero sessionExpiresAt está limitado a 48h desde request.time
          para evitar sesiones permanentes (fix CR-1). */
