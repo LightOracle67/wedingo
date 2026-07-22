@@ -8,8 +8,11 @@
 .setup-layout,
 .app-scene {
   position: fixed;
-  inset: 0;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
   /* top: var(--navbar-height,0px); */
+  top: 0px;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   width: 100%;

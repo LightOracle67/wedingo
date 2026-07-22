@@ -1614,8 +1614,11 @@ img {
 
 @media (max-width: 640px) {
   .app-scene {
-    inset: 0;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
     /* top: var(--navbar-height,0px); */
+    top: 0px;
   }
 }
 
