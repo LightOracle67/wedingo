@@ -170,17 +170,7 @@
     "todayIsWedding": "วันนี้เป็นวันแต่งงาน",
     "missing": "เหลืออีก",
     "todayIsTheDay": "วันนี้เป็นวันสำคัญ!",
-    "sectionLabel": "ปก",
-    "eyebrow": [
-      "งานแต่งงานของเรา",
-      "Our Wedding",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
+    "sectionLabel": "ปก",    "eyebrow": "งานแต่งงานของเรา"
       ],
       [
         [

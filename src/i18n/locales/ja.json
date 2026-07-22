@@ -170,17 +170,7 @@
     "todayIsWedding": "今日は結婚式です",
     "missing": "残り",
     "todayIsTheDay": "今日が大切な日です！",
-    "sectionLabel": "表紙",
-    "eyebrow": [
-      "私たちの結婚式",
-      "Our Wedding",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
+    "sectionLabel": "表紙",    "eyebrow": "私たちの結婚式"
       ],
       [
         [

@@ -170,17 +170,7 @@
     "todayIsWedding": "오늘은 결혼식 날입니다",
     "missing": "남은 시간",
     "todayIsTheDay": "오늘이 바로 그 특별한 날입니다!",
-    "sectionLabel": "표지",
-    "eyebrow": [
-      "우리의 결혼식",
-      "Our Wedding",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
+    "sectionLabel": "표지",    "eyebrow": "우리의 결혼식"
       ],
       [
         [

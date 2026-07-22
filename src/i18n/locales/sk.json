@@ -209,17 +209,7 @@
     "todayIsWedding": "Dnes je svadba",
     "missing": "Zostáva",
     "todayIsTheDay": "Dnes je ten veľký deň!",
-    "sectionLabel": "Obálka",
-    "eyebrow": [
-      "Naša svadba",
-      "Our Wedding",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
+    "sectionLabel": "Obálka",    "eyebrow": "Naša svadba"
       ],
       [
         [

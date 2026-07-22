@@ -170,17 +170,7 @@
     "todayIsWedding": "今天是婚礼日",
     "missing": "距离",
     "todayIsTheDay": "今天就是大喜之日！",
-    "sectionLabel": "封面",
-    "eyebrow": [
-      "我们的婚礼",
-      "Our Wedding",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
+    "sectionLabel": "封面",    "eyebrow": "我们的婚礼"
       ],
       [
         [

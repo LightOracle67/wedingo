@@ -170,17 +170,7 @@
     "todayIsWedding": "C'est le jour du mariage",
     "missing": "Plus que",
     "todayIsTheDay": "C'est le grand jour !",
-    "sectionLabel": "Couverture",
-    "eyebrow": [
-      "Notre mariage",
-      "Our Wedding",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
+    "sectionLabel": "Couverture",    "eyebrow": "Notre mariage"
       ],
       [
         [

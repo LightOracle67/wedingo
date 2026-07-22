@@ -157,17 +157,7 @@
     "todayIsWedding": "आज शादी है",
     "missing": "शेष",
     "todayIsTheDay": "आज का दिन बड़ा खास है!",
-    "sectionLabel": "कवर",
-    "eyebrow": [
-      "हमारी शादी",
-      "Our Wedding",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
+    "sectionLabel": "कवर",    "eyebrow": "हमारी शादी"
       ],
       [
         [

@@ -170,17 +170,7 @@
     "todayIsWedding": "Bugün düğün",
     "missing": "Kaldı",
     "todayIsTheDay": "Bugün büyük gün!",
-    "sectionLabel": "Kapak",
-    "eyebrow": [
-      "Düğünümüz",
-      "Our Wedding",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
+    "sectionLabel": "Kapak",    "eyebrow": "Düğünümüz"
       ],
       [
         [

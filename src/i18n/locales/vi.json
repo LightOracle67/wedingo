@@ -170,17 +170,7 @@
     "todayIsWedding": "Hôm nay là đám cưới",
     "missing": "Còn",
     "todayIsTheDay": "Hôm nay là ngày trọng đại!",
-    "sectionLabel": "Bìa",
-    "eyebrow": [
-      "Đám cưới của chúng tôi",
-      "Our Wedding",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
+    "sectionLabel": "Bìa",    "eyebrow": "Đám cưới của chúng tôi"
       ],
       [
         [

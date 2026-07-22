@@ -209,17 +209,7 @@
     "todayIsWedding": "Hari ini hari perkahwinan",
     "missing": "Tinggal",
     "todayIsTheDay": "Hari ini hari yang dinanti!",
-    "sectionLabel": "Kulit",
-    "eyebrow": [
-      "Perkahwinan Kami",
-      "Our Wedding",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
+    "sectionLabel": "Kulit",    "eyebrow": "Perkahwinan Kami"
       ],
       [
         [

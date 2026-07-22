@@ -170,17 +170,7 @@
     "todayIsWedding": "Ma van az esküvő",
     "missing": "Hátravan",
     "todayIsTheDay": "Ma van a nagy nap!",
-    "sectionLabel": "Borító",
-    "eyebrow": [
-      "A mi esküvőnk",
-      "Our Wedding",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
+    "sectionLabel": "Borító",    "eyebrow": "A mi esküvőnk"
       ],
       [
         [

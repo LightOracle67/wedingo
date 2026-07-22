@@ -176,17 +176,7 @@
     "todayIsWedding": "Hari ini adalah pernikahan",
     "missing": "Tersisa",
     "todayIsTheDay": "Hari ini adalah hari istimewa!",
-    "sectionLabel": "Sampul",
-    "eyebrow": [
-      "Pernikahan kami",
-      "Our Wedding",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
+    "sectionLabel": "Sampul",    "eyebrow": "Pernikahan kami"
       ],
       [
         [

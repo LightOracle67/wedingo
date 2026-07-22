@@ -170,17 +170,7 @@
     "todayIsWedding": "Vandaag is de bruiloft",
     "missing": "Nog",
     "todayIsTheDay": "Vandaag is de grote dag!",
-    "sectionLabel": "Omslag",
-    "eyebrow": [
-      "Onze bruiloft",
-      "Our Wedding",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
+    "sectionLabel": "Omslag",    "eyebrow": "Onze bruiloft"
       ],
       [
         [
