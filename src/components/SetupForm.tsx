@@ -25,7 +25,6 @@ import GuestsSectionForm from "./setup-forms/GuestsSectionForm";
 import StorySectionForm from "./setup-forms/StorySectionForm";
 import GiftsSectionForm from "./setup-forms/GiftsSectionForm";
 import GallerySectionForm from "./setup-forms/GallerySectionForm";
-import MusicSectionForm from "./setup-forms/MusicSectionForm";
 import "../styles/admin.css";
 
 /**
@@ -139,16 +138,6 @@ export default function SetupForm({ prefix = "" }) {
         hint={t("setup.gallerySectionHint")}
       >
         <GallerySectionForm />
-      </CollapsibleSection>
-      ) : null}
-
-      {/* ── Sección de música de fondo ── */}
-      {!hiddenSet.has("music") ? (
-      <CollapsibleSection
-        title={t("setup.musicSectionTitle")}
-        hint={t("setup.musicSectionHint")}
-      >
-        <MusicSectionForm />
       </CollapsibleSection>
       ) : null}
 
