@@ -17,7 +17,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { doc, getDoc, runTransaction, serverTimestamp, setDoc, updateDoc } from "firebase/firestore";
+import { getDoc, runTransaction, serverTimestamp, setDoc, updateDoc } from "firebase/firestore";
 import { db, invitationDocRef } from "../lib/firebase";
 import { defaultConfig } from "../lib/constants";
 import { generateSetupToken, normalizeTokenValue } from "../lib/token-utils";
@@ -44,7 +44,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
   const [isTokenVerified, setIsTokenVerified] = useState(false);
   const [tokenLoginUsername, setTokenLoginUsername] = useState("");
   const [adminLoginUsername, setAdminLoginUsername] = useState("");
-  const [generatedToken, setGeneratedToken] = useState("");
+
   const [authMessage, setAuthMessage] = useState("");
   const [authMessageType, setAuthMessageType] = useState("error");
   const [confirmTokenInput, setConfirmTokenInput] = useState("");
@@ -74,7 +74,6 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
         sessionTypeRef.current = session.type;
         setSetupToken("");
         setSetupTokenInput("");
-        setGeneratedToken("");
         setIsTokenVerified(true);
       } else {
         clearSession();
@@ -132,51 +131,28 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
    * @param {string} [oldToken] - Token anterior a reemplazar (opcional).
    * @returns {Promise<string>} El token activo.
    */
-  const refreshSetupToken = useCallback(async (oldToken?: any) => {
+  const refreshSetupToken = useCallback(async () => {
     const storageKey = `wedin_setup_token_${inviteToken || ""}`;
 
-    // ── Paso 1: oldToken → fuerza regeneración ──
-    if (oldToken) {
-      try { await setDoc(doc(db, "setupTokens", normalizeTokenValue(oldToken)), { used: true }); } catch {
-        if (setAdminMessage && setAdminMessageType) {
-          setAdminMessageType("error");
-          setAdminMessage(t("auth.tokenUpdateFailed"));
-        }
-      }
-    }
-
-    // ── Paso 2: sessionStorage ──
-    if (!oldToken && inviteToken) {
-      try {
-        const saved = safeGetItem(storageKey, sessionStorage);
-        if (saved) {
-          const snap = await getDoc(doc(db, "setupTokens", saved));
-          if (snap.exists() && snap.data().used !== true) {
-            setSetupToken(saved);
-            setSetupTokenInput(saved);
-            return saved;
-          }
-        }
-      } catch {
-        if (setAdminMessage && setAdminMessageType) {
-          setAdminMessageType("error");
-          setAdminMessage(t("auth.tokenRestoreFailed"));
-        }
+    // ── Intenta restaurar desde sessionStorage ──
+    if (inviteToken) {
+      const saved = safeGetItem(storageKey, sessionStorage);
+      if (saved) {
+        setSetupToken(saved);
+        setSetupTokenInput(saved);
+        return saved;
       }
 
-      // ── Paso 3: _activeSetupToken en la invitación ──
+      // ── _activeSetupToken en la invitación ──
       try {
         const inviteSnap = await getDoc(invitationDocRef(inviteToken));
         if (inviteSnap.exists()) {
           const activeToken = inviteSnap.data()._activeSetupToken;
           if (activeToken) {
-            const snap = await getDoc(doc(db, "setupTokens", activeToken));
-            if (snap.exists() && snap.data().used !== true) {
-              setSetupToken(activeToken);
-              setSetupTokenInput(activeToken);
-              safeSetItem(storageKey, activeToken, sessionStorage);
-              return activeToken;
-            }
+            setSetupToken(activeToken);
+            setSetupTokenInput(activeToken);
+            safeSetItem(storageKey, activeToken, sessionStorage);
+            return activeToken;
           }
         }
       } catch {
@@ -187,23 +163,20 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
       }
     }
 
-    // ── Paso 4: generar nuevo token y asociarlo a la invitación ──
+    // ── Generar nuevo token y guardarlo en la invitación ──
     const nextToken = generateSetupToken();
     const normalizedToken = normalizeTokenValue(nextToken);
     setSetupToken(normalizedToken);
     setSetupTokenInput(normalizedToken);
-    if (inviteToken) safeSetItem(storageKey, normalizedToken, sessionStorage);
-    try {
-      const payload = { used: false, autoGen: true, createdAt: serverTimestamp() };
-      if (inviteToken) payload.inviteToken = inviteToken;
-      await setDoc(doc(db, "setupTokens", normalizedToken), payload);
-      if (inviteToken) {
+    if (inviteToken) {
+      safeSetItem(storageKey, normalizedToken, sessionStorage);
+      try {
         await setDoc(invitationDocRef(inviteToken), { _activeSetupToken: normalizedToken }, { merge: true });
-      }
-    } catch {
-      if (setAdminMessage && setAdminMessageType) {
-        setAdminMessageType("error");
-        setAdminMessage(t("auth.tokenCreateFailed"));
+      } catch {
+        if (setAdminMessage && setAdminMessageType) {
+          setAdminMessageType("error");
+          setAdminMessage(t("auth.tokenCreateFailed"));
+        }
       }
     }
     return nextToken;
@@ -213,8 +186,9 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
    * Intenta activar la sesión usando un token de setup.
    * Retorna el username del token (si existe) o lanza error.
    */
-  const activateSessionWithToken = useCallback(async (enteredToken, validateToken) => {
-    const inviteSnapActive = await getDoc(invitationDocRef(inviteToken));
+  const activateSessionWithToken = useCallback(async (enteredToken, _validateToken) => {
+    const inviteRef = invitationDocRef(inviteToken);
+    const inviteSnapActive = await getDoc(inviteRef);
     if (inviteSnapActive.exists() && inviteSnapActive.data().activeSession) {
       setIsTokenVerifying(false);
       if (!window.confirm(t("auth.sessionExists"))) {
@@ -223,24 +197,20 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
       setIsTokenVerifying(true);
     }
 
-    const tokenDocRef = doc(db, "setupTokens", enteredToken);
-    const inviteRef = invitationDocRef(inviteToken);
-    let tokenUsername = "";
+    if (inviteSnapActive.exists() && inviteSnapActive.data()._activeSetupToken !== enteredToken) {
+      throw new Error("Token no válido");
+    }
 
     await runTransaction(db, async (transaction) => {
-      const tokenDoc = await transaction.get(tokenDocRef);
-      if (!tokenDoc.exists) throw new Error("Token no válido");
-      tokenUsername = (tokenDoc.data().username || "").trim().toLowerCase();
-      if (validateToken) validateToken(tokenDoc, tokenUsername);
-
       const inviteSnap = await transaction.get(inviteRef);
       if (!inviteSnap.exists()) {
         transaction.set(inviteRef, { ...defaultConfig, activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry() });
       } else {
+        if (inviteSnap.data()._activeSetupToken !== enteredToken) throw new Error("Token no válido");
         transaction.update(inviteRef, { activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry() });
       }
     });
-    return tokenUsername;
+    return "";
   }, [inviteToken, t]);
 
   /**
@@ -315,7 +285,6 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
       sessionTypeRef.current = "admin";
       setSetupToken("");
       setSetupTokenInput("");
-      setGeneratedToken("");
       setIsTokenVerified(true);
       setHasStoredConfig(true);
       saveSession("admin", username);
@@ -337,53 +306,6 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
    * Genera un nuevo token de acceso vinculado a un usuario administrador.
    * Requiere escribir "CONFIRMAR" y que el usuario esté registrado.
    */
-  const handleGenerateToken = useCallback(async () => {
-    setAuthMessageType("error");
-    setAuthMessage("");
-
-    if (confirmTokenInput !== "CONFIRMAR") {
-      setAuthMessage(t("auth.confirmRequired"));
-      return;
-    }
-
-    const username = adminLoginUsername.trim().toLowerCase();
-    if (!username) {
-      setAuthMessage(t("auth.usernameRequired"));
-      return;
-    }
-    if (!/^[a-zA-Z0-9]+$/.test(username)) {
-      setAuthMessage(t("auth.usernameInvalid"));
-      return;
-    }
-    if (username.length > 50) {
-      setAuthMessage(t("auth.usernameTooLong"));
-      return;
-    }
-
-    const configuredUsername = (config.adminUsername || "").trim().toLowerCase();
-    if (configuredUsername && username !== configuredUsername) {
-      setAuthMessage(t("auth.unauthorizedUser"));
-      return;
-    }
-
-    const nextToken = generateSetupToken();
-    const normalizedToken = normalizeTokenValue(nextToken);
-    try {
-      await setDoc(doc(db, "setupTokens", normalizedToken), {
-        username,
-        used: false,
-        createdAt: serverTimestamp(),
-      });
-      setGeneratedToken(nextToken);
-      setSetupTokenInput(normalizedToken);
-      setAuthMessageType("success");
-      setAuthMessage(t("auth.tokenGenerated"));
-      setConfirmTokenInput("");
-    } catch {
-      setAuthMessage(t("auth.tokenGenerateError"));
-    }
-  }, [adminLoginUsername, config, confirmTokenInput, t]);
-
   /**
    * Cierra la sesión actual.
    * Limpia el estado local, la sesión en Firestore y la caché.
@@ -396,7 +318,6 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
     sessionTypeRef.current = "";
     setSetupToken("");
     setSetupTokenInput("");
-    setGeneratedToken("");
     setAuthMessage("");
     clearSession();
     if (token) {
@@ -450,14 +371,13 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
     isTokenVerifying, isTokenVerified, setIsTokenVerified,
     tokenLoginUsername, setTokenLoginUsername,
     adminLoginUsername, setAdminLoginUsername,
-    generatedToken, setGeneratedToken,
     authMessage, setAuthMessage,
     authMessageType, setAuthMessageType,
     confirmTokenInput, setConfirmTokenInput,
     isAdminTokenLoggedIn,
     refreshSetupToken,
     handleTokenLogin, handleAdminTokenLogin,
-    handleGenerateToken, handleAdminLogout,
+    handleAdminLogout,
     handleResetSetupToken, handleResetTokenFromAdmin,
   };
 }

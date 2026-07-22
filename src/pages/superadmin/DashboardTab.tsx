@@ -20,18 +20,16 @@ const DashboardTab = memo(function DashboardTab() {
 
   const load = useCallback(async () => {
     try {
-      const [rsvpSnap, invSnap, tokSnap, galSnap] = await Promise.all([
+      const [rsvpSnap, invSnap, galSnap] = await Promise.all([
         getDocs(RSVP_COLLECTION_REF),
         getDocs(INVITATIONS_COLLECTION_REF),
-        getDocs(collection(db, "setupTokens")),
         getDocs(collection(db, "galleryData")),
       ]);
       const rsvps = rsvpSnap.docs.map((d: any) => ({ id: d.id, ...d.data() }));
       const invs = invSnap.docs.map((d: any) => ({ id: d.id, ...d.data() }));
-      const tokens = tokSnap.docs.map((d: any) => ({ id: d.id, ...d.data() }));
       setInvitations(invs);
       setGalleryCount(galSnap.size);
-      setStats(calcGlobalStats(invs, rsvps, tokens));
+      setStats(calcGlobalStats(invs, rsvps));
     } catch {
       addToast("error", t("errors.statsLoadFailed"));
     } finally { setLoading(false); }
@@ -59,9 +57,6 @@ const DashboardTab = memo(function DashboardTab() {
         const rsvpQ = query(RSVP_COLLECTION_REF, where("inviteToken", "==", inv.id));
         const rsvpSnap = await getDocs(rsvpQ);
         rsvpSnap.docs.forEach((d: any) => batch.delete(d.ref));
-        const tokQ = query(collection(db, "setupTokens"), where("inviteToken", "==", inv.id));
-        const tokSnap = await getDocs(tokQ);
-        tokSnap.docs.forEach((d: any) => batch.delete(d.ref));
         batch.delete(doc(INVITATIONS_COLLECTION_REF, inv.id));
         await batch.commit();
         try {
@@ -80,7 +75,6 @@ const DashboardTab = memo(function DashboardTab() {
   if (loading) return <p className="setup-subtitle" style={{ textAlign: "center" }}>{t("superadmin.dashboardLoading")}</p>;
   if (!stats) return <p className="setup-error">{t("superadmin.dashboardError")}</p>;
 
-  const tokenUtilization = stats.tokensTotal > 0 ? Math.round((stats.tokensUsed / stats.tokensTotal) * 100) : 0;
   const rsvpRate = stats.rsvpTotal > 0 ? Math.round((stats.rsvpYes / stats.rsvpTotal) * 100) : 0;
 
   return (
@@ -105,8 +99,6 @@ const DashboardTab = memo(function DashboardTab() {
         <StatsCard value={`${rsvpRate}%`} label={t("superadmin.statsConfirmationRate")} />
         <StatsCard value={stats.totalGuests} label={t("superadmin.statsTotalGuests")} />
         <StatsCard value={galleryCount} label={t("superadmin.statsGalleryImages")} />
-        <StatsCard value={stats.tokensTotal} label={t("superadmin.statsTokensGenerated")} />
-        <StatsCard value={`${tokenUtilization}%`} label={t("superadmin.statsTokenUtilization")} />
         <StatsCard value={formatBytes(stats.totalBytes)} label={t("superadmin.statsStorage")} />
       </div>
 
@@ -122,14 +114,6 @@ const DashboardTab = memo(function DashboardTab() {
               <p style={{ fontSize: "0.75rem", color: "var(--setup-muted)", margin: 0 }}>{t("superadmin.statsDeclinations")}</p>
               <p style={{ fontSize: "1.3rem", fontWeight: 700, color: "#ef4444", margin: "0.2rem 0" }}>{stats.rsvpNo}</p>
             </div>
-            <div>
-              <p style={{ fontSize: "0.75rem", color: "var(--setup-muted)", margin: 0 }}>{t("superadmin.statsTokensAvailable")}</p>
-              <p style={{ fontSize: "1.3rem", fontWeight: 700, color: "var(--setup-title)", margin: "0.2rem 0" }}>{stats.tokensAvailable}</p>
-            </div>
-            <div>
-              <p style={{ fontSize: "0.75rem", color: "var(--setup-muted)", margin: 0 }}>{t("superadmin.statsAutoTokens")}</p>
-              <p style={{ fontSize: "1.3rem", fontWeight: 700, color: "var(--setup-title)", margin: "0.2rem 0" }}>{stats.autoTokens}</p>
-            </div>
           </div>
         </div>
 
@@ -139,7 +123,6 @@ const DashboardTab = memo(function DashboardTab() {
             <p style={{ margin: 0 }}>Firebase: {import.meta.env.VITE_FIREBASE_PROJECT_ID || "—"}</p>
             <p style={{ margin: 0 }}>{t("superadmin.statsInvitations")}: {stats.invitationCount}</p>
             <p style={{ margin: 0 }}>RSVPs: {stats.rsvpTotal}</p>
-            <p style={{ margin: 0 }}>{t("superadmin.statsTokensGenerated")}: {stats.tokensTotal}</p>
             <p style={{ margin: 0 }}>Gallery: {galleryCount}</p>
           </div>
         </div>

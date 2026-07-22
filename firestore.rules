@@ -95,24 +95,6 @@ service cloud.firestore {
       allow delete: if isSuperAdmin() || isAuthenticatedAdmin(resource.data.inviteToken);
     }
 
-    match /setupTokens/{tokenId} {
-      allow get: if true;
-      allow list: if isSuperAdmin();
-      allow create: if isSuperAdmin()
-        || (!exists(/databases/$(database)/documents/setupTokens/$(tokenId))
-          && (
-            (request.resource.data.keys().hasOnly(['used', 'createdAt', 'username'])
-              && request.resource.data.used == false)
-            ||
-            (request.resource.data.keys().hasOnly(['used', 'createdAt', 'autoGen', 'inviteToken'])
-              && request.resource.data.used == false
-              && request.resource.data.autoGen == true
-              && hasActiveSession(request.resource.data.inviteToken))
-          ));
-      allow update: if isSuperAdmin();
-      allow delete: if isSuperAdmin();
-    }
-
     match /rsvpResponses/{responseId} {
       allow create: if request.resource.data.keys().hasAll(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent'])
         && request.resource.data.guestName is string

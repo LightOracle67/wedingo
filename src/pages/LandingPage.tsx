@@ -1,9 +1,9 @@
 import { useApp } from "../contexts/AppContext";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getDoc, doc, serverTimestamp, runTransaction } from "firebase/firestore";
+import { getDoc, getDocs, query, where, serverTimestamp, runTransaction } from "firebase/firestore";
 import { useTranslation } from "react-i18next";
-import { db, invitationDocRef } from "../lib/firebase";
+import { db, invitationDocRef, INVITATIONS_COLLECTION_REF } from "../lib/firebase";
 import { normalizeTokenValue } from "../lib/token-utils";
 import { generateInviteToken } from "../lib/utils";
 import { normalizeConfig } from "../lib/normalize-config";
@@ -55,26 +55,15 @@ export default function LandingPage() {
     }
 
     try {
-      const snap = await getDoc(doc(db, "setupTokens", normalized));
-      if (!snap.exists()) {
+      const invQuery = query(INVITATIONS_COLLECTION_REF, where("_activeSetupToken", "==", normalized));
+      const invSnap = await getDocs(invQuery);
+      if (invSnap.empty) {
         setError(t("landing.errorTokenNotFound"));
         setIsLoading(false);
         return;
       }
-
-      const tokenUsername = (snap.data().username || "").trim().toLowerCase();
-      if (tokenUsername && tokenUsername !== username.trim().toLowerCase()) {
-        setError(t("landing.errorUsernameMismatch"));
-        setIsLoading(false);
-        return;
-      }
-
-      const target = snap.data().inviteToken;
-      if (!target) {
-        setError(t("landing.errorNoInvite"));
-        setIsLoading(false);
-        return;
-      }
+      const matchedInv = invSnap.docs[0];
+      const target = matchedInv.id;
 
       const inviteSnap = await getDoc(invitationDocRef(target));
       if (inviteSnap.exists()) {
@@ -95,9 +84,6 @@ export default function LandingPage() {
 
       try {
         await runTransaction(db, async (transaction) => {
-          const tokenDocRef = doc(db, "setupTokens", normalized);
-          const tokenDoc = await transaction.get(tokenDocRef);
-          if (!tokenDoc.exists) throw new Error();
           const inviteRef = invitationDocRef(target);
           const inviteSnapInTx = await transaction.get(inviteRef);
           if (!inviteSnapInTx.exists()) {
