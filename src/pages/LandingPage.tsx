@@ -161,13 +161,14 @@ export default function LandingPage() {
             <button className="modal-close" ref={closeButtonRef} onClick={() => setShowModal(false)} aria-label={t("common.close")}>
               &times;
             </button>
-            <form onSubmit={handleLogin}>
+            <form action="#" onSubmit={handleLogin}>
               <p className="modal-title">{t("landing.modalTitle")}</p>
               <label className="setup-label" htmlFor="loginUsernameInput">
                 {t("landing.usernameLabel")}
               </label>
               <input
                 id="loginUsernameInput"
+                name="username"
                 className="setup-input"
                 type="text"
                 value={usernameInput}
@@ -182,6 +183,7 @@ export default function LandingPage() {
               </label>
               <input
                 id="loginTokenInput"
+                name="password"
                 className="setup-input"
                 type="password"
                 value={tokenInput}
