@@ -165,8 +165,8 @@ const RsvpSection = memo(function RsvpSection({
                 {t("rsvp.headcountHint", { total: totalGuests })}
               </p>
               {menuOptions.map((opt) => (
-                <div key={opt.key} style={{ marginBottom: "0.4rem", padding: "0.5rem", borderRadius: "0.6rem", background: "color-mix(in srgb, var(--setup-field-bg) 70%, transparent)", border: "1px solid color-mix(in srgb, var(--setup-accent) 15%, transparent)" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
+                <div key={opt.key} className="rsvp-menu-option">
+                  <div className="flex-row flex-wrap">
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <p className="story-eyebrow" style={{ fontSize: "0.72rem", marginBottom: "0.1rem" }}>{opt.label}</p>
                       <p className="story-note whitespace-pre-line" style={{ fontSize: "0.8rem", margin: 0 }}>{opt.desc}</p>

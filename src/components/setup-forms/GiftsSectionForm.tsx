@@ -19,6 +19,7 @@ export default function GiftsSectionForm({ prefix = "" }) {
         onChange={(e) => updateFormField("giftsInfo", e.target.value.slice(0, 2000))}
         placeholder={t("setup.giftsInfoPlaceholder")}
         rows={4}
+        maxLength={2000}
       />
       <p className="setup-help">{t("setup.giftsInfoHint")}</p>
 
