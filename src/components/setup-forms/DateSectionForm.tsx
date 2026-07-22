@@ -19,35 +19,40 @@ export default function DateSectionForm({ prefix = "" }) {
     updateFormField("weddingLatitude", "");
     updateFormField("weddingLongitude", "");
     if (val.length >= 3) {
+      const searchEl = document.getElementById("weddingPlaceResults");
+      if (searchEl) searchEl.textContent = t("setup.searching");
       import("../../lib/geo-utils").then(({ searchLocations }) => {
         searchLocations(val).then(results => {
           const el = document.getElementById("weddingPlaceResults");
-          if (el) {
-            el.textContent = "";
-            results.forEach(r => {
-              const btn = document.createElement("button");
-              btn.type = "button";
-              btn.style.cssText = "display:block;width:100%;text-align:left;padding:0.5rem 0.6rem;border:none;border-bottom:1px solid color-mix(in srgb,var(--setup-border) 50%,transparent);background:transparent;color:var(--setup-title);cursor:pointer;font-size:0.85rem;font-family:inherit";
-              btn.dataset.lat = r.latitude;
-              btn.dataset.lon = r.longitude;
-              btn.dataset.label = r.label;
-              btn.textContent = r.label;
-              btn.onclick = () => {
-                updateFormField("weddingPlace", r.label.slice(0, 120));
-                updateFormField("weddingLatitude", r.latitude);
-                updateFormField("weddingLongitude", r.longitude);
-                el.textContent = "";
-              };
-              el.appendChild(btn);
-            });
+          if (!el) return;
+          el.textContent = "";
+          if (!results.length) {
+            el.textContent = t("setup.noResults");
+            return;
           }
+          results.forEach(r => {
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "setup-search-result";
+            btn.dataset.lat = r.latitude;
+            btn.dataset.lon = r.longitude;
+            btn.dataset.label = r.label;
+            btn.textContent = r.label;
+            btn.onclick = () => {
+              updateFormField("weddingPlace", r.label.slice(0, 120));
+              updateFormField("weddingLatitude", r.latitude);
+              updateFormField("weddingLongitude", r.longitude);
+              el.textContent = "";
+            };
+            el.appendChild(btn);
+          });
         });
       });
     } else {
       const el = document.getElementById("weddingPlaceResults");
       if (el) el.textContent = "";
     }
-  }, [updateFormField]);
+  }, [updateFormField, t]);
 
   return (
     <>
@@ -168,6 +173,7 @@ export default function DateSectionForm({ prefix = "" }) {
         onChange={(e) => updateFormField("weddingSchedule", e.target.value.slice(0, 2000))}
         placeholder={t("setup.schedulePlaceholder")}
         rows={4}
+        maxLength={2000}
       />
       <p className="setup-help">{t("setup.scheduleHint")}</p>
 
@@ -198,6 +204,7 @@ export default function DateSectionForm({ prefix = "" }) {
         onChange={(e) => updateFormField("accommodationInfo", e.target.value.slice(0, 2000))}
         placeholder={t("setup.accommodationPlaceholder")}
         rows={4}
+        maxLength={2000}
       />
       <p className="setup-help">{t("setup.accommodationHint")}</p>
 
@@ -211,6 +218,7 @@ export default function DateSectionForm({ prefix = "" }) {
         onChange={(e) => updateFormField("transportInfo", e.target.value.slice(0, 2000))}
         placeholder={t("setup.transportPlaceholder")}
         rows={4}
+        maxLength={2000}
       />
       <p className="setup-help">{t("setup.transportHint")}</p>
     </>

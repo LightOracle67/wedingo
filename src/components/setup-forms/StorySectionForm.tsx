@@ -19,8 +19,9 @@ export default function StorySectionForm({ prefix = "" }) {
         onChange={(e) => updateFormField("storyText", e.target.value.slice(0, 2000))}
         placeholder={t("setup.storyPlaceholder")}
         rows={4}
+        maxLength={2000}
       />
-      <p className="setup-help">{t("setup.storyHint")}</p>
+      <p className="setup-help">{t("setup.storyHint")} <span className="text-muted text-xs">({(formData.storyText || "").length}/2000)</span></p>
     </>
   );
 }
