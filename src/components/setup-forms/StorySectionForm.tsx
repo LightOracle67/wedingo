@@ -16,12 +16,12 @@ export default function StorySectionForm({ prefix = "" }) {
         id={id("storyText")}
         className="setup-textarea"
         value={formData.storyText}
-        onChange={(e) => updateFormField("storyText", e.target.value.slice(0, 2000))}
+        onChange={(e) => updateFormField("storyText", e.target.value.slice(0, 500))}
         placeholder={t("setup.storyPlaceholder")}
         rows={4}
-        maxLength={2000}
+        maxLength={500}
       />
-      <p className="setup-help">{t("setup.storyHint")} <span className="text-muted text-xs">({(formData.storyText || "").length}/2000)</span></p>
+      <p className="setup-help">{t("setup.storyHint")} <span className="text-muted text-xs">({(formData.storyText || "").length}/500)</span></p>
     </>
   );
 }
