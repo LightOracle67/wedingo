@@ -92,19 +92,19 @@
 .gallery-caption-wrap {
   margin-top: 0.5rem;
   padding: 0.5rem 0.75rem;
-  background: color-mix(in srgb, var(--invite-shell-bg, #fff) 70%, transparent);
-  border: 1px solid color-mix(in srgb, var(--invite-core-color, #c8a84e) 40%, transparent);
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid color-mix(in srgb, var(--invite-core-color, #c8a84e) 45%, transparent);
   border-radius: 0.6rem;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 0 12px color-mix(in srgb, var(--invite-core-glow, rgba(255,212,115,0.22)) 60%, transparent);
   animation: gallery-caption-in 450ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 .gallery-caption {
   font-family: "Great Vibes", cursive, serif;
   font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-  color: color-mix(in srgb, var(--invite-core-color, #c8a84e) 70%, #fff);
-  text-shadow: 0 0 8px color-mix(in srgb, var(--invite-core-glow, rgba(255,212,115,0.22)) 80%, transparent);
+  color: color-mix(in srgb, var(--invite-core-color, #c8a84e) 85%, #222);
+  text-shadow: 0 0 10px color-mix(in srgb, var(--invite-core-glow, rgba(255,212,115,0.22)) 90%, transparent);
   text-align: center;
   margin: 0;
   line-height: 1.3;
