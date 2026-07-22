@@ -8,6 +8,15 @@ export const CHANGELOG = [
     ],
   },
   {
+    version: "2.16.8",
+    date: "2026-07-22",
+    changes: [
+      "Fix: SetupForm revertido handleSubmit (rompía guardado), vuelta a handleSaveSetup directo",
+      "Fix: añadida clave restoreTooLarge a traducciones",
+      "Fix: restore backup validación y manejo de bankInfo",
+    ],
+  },
+  {
     version: "2.16.7",
     date: "2026-07-22",
     changes: [

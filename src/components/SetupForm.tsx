@@ -12,7 +12,7 @@
  * @module SetupForm
  */
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 import { useTranslation, Trans } from "react-i18next";
 import { useApp } from "../contexts/AppContext";
 import { useToast } from "../hooks/useToast";
@@ -40,22 +40,16 @@ export default function SetupForm({ prefix = "" }) {
     formData, updateFormField, handleSaveSetup,
     saveMessage, saveError, isTokenVerified, hasStoredConfig, setLegalModal,
   } = useApp();
-  const [saving, setSaving] = useState(false);
-
   const { addToast } = useToast();
   const { t } = useTranslation();
-  const handleSubmit = useCallback(async (e: any) => {
-    setSaving(true);
-    await handleSaveSetup(e);
-  }, [handleSaveSetup]);
 
   // ── Muestra mensajes de éxito/error como toasts ─────────
   useEffect(() => {
-    if (saveMessage) { addToast("success", saveMessage); setSaving(false); }
+    if (saveMessage) addToast("success", saveMessage);
   }, [saveMessage, addToast]);
 
   useEffect(() => {
-    if (saveError) { addToast("error", saveError); setSaving(false); }
+    if (saveError) addToast("error", saveError);
   }, [saveError, addToast]);
 
   /**
@@ -68,7 +62,7 @@ export default function SetupForm({ prefix = "" }) {
   }, [formData.hiddenSections]);
 
   return (
-    <form className="setup-form setup-form--nested" onSubmit={handleSubmit}>
+    <form className="setup-form setup-form--nested" onSubmit={handleSaveSetup}>
       {/* ── Editor de orden de secciones ── */}
       <SectionOrderEditor
         value={formData.sectionOrder}
@@ -157,8 +151,8 @@ export default function SetupForm({ prefix = "" }) {
 
       {/* ── Botón de guardar ── */}
       <div className="setup-actions">
-        <button className="setup-button" type="submit" disabled={saving}>
-          {saving ? t("common.saving") : t("common.save")}
+        <button className="setup-button" type="submit">
+          {t("common.save")}
         </button>
       </div>
     </form>

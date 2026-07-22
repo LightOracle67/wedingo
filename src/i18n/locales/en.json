@@ -373,6 +373,7 @@
     "downloadBackup": "Download backup",
     "restoreBackup": "Restore backup",
     "restoreNotFound": "Invitation not found.",
+    "restoreTooLarge": "The backup file exceeds the 10 MB limit.",
     "restoreInvalid": "The file does not have the expected format.",
     "restoreSuccess": "Restored {{count}} invitation(s) successfully.",
     "restoreFailed": "Could not restore the backup. Please check the file.",
