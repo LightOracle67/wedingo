@@ -90,13 +90,21 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
    */
   useEffect(() => {
     if (isTokenVerified) {
-      renewSession();
-      renewRef.current = setInterval(() => renewSession(), 60_000);
+      const doRenew = async () => {
+        renewSession();
+        try {
+          await updateDoc(invitationDocRef(inviteToken), {
+            sessionExpiresAt: firestoreSessionExpiry(),
+          });
+        } catch {}
+      };
+      doRenew();
+      renewRef.current = setInterval(() => doRenew(), 60_000);
     } else {
       if (renewRef.current) clearInterval(renewRef.current);
     }
     return () => { if (renewRef.current) clearInterval(renewRef.current); };
-  }, [isTokenVerified]);
+  }, [isTokenVerified, inviteToken]);
 
   /**
    * Persiste la sesión en sessionStorage cuando cambia el estado de autenticación.

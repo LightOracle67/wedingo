@@ -8,6 +8,14 @@ export const CHANGELOG = [
     ],
   },
   {
+    version: "2.17.1",
+    date: "2026-07-22",
+    changes: [
+      "Fix CRÍTICO: sesión Firestore nunca se renovaba (solo sessionStorage). Todo write fallaba tras 24h con 'permiso denegado'",
+      "Ahora sessionExpiresAt en Firestore se actualiza cada minuto junto con la sesión local",
+    ],
+  },
+  {
     version: "2.17.0",
     date: "2026-07-22",
     changes: [
