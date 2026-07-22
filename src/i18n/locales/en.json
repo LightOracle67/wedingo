@@ -902,9 +902,9 @@
     "ace": "Ace"
   },
   "themeGroups": {
-    "light": "Light themes",
-    "dark": "Dark themes",
-    "lgbtiq": "LGTBIQ+"
+    "claros": "Light themes",
+    "oscuros": "Dark themes",
+    "lgtbiq+": "LGTBIQ+"
   },
   "dietary": {
     "gluten": "Gluten",

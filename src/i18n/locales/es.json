@@ -903,9 +903,9 @@
     "ace": "Ase"
   },
   "themeGroups": {
-    "light": "Temas claros",
-    "dark": "Temas oscuros",
-    "lgbtiq": "LGTBIQ+"
+    "claros": "Temas claros",
+    "oscuros": "Temas oscuros",
+    "lgtbiq+": "LGTBIQ+"
   },
   "dietary": {
     "gluten": "Gluten",
