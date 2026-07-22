@@ -8,17 +8,24 @@ export const CHANGELOG = [
     ],
   },
   {
+    version: "2.20.1",
+    date: "2026-07-22",
+    changes: [
+      "MusicArrayEditor movido a CoverSectionForm (no es sección independiente, está en Portada)",
+      "Eliminado MusicSectionForm (wrapper innecesario)",
+      "Revertido STORY_SECTION_ORDER + SECTION_LABELS (music no es sección de invitación)",
+      "Restablecidos tests a 8 secciones",
+    ],
+  },
+  {
     version: "2.20.0",
     date: "2026-07-22",
     changes: [
       "NUEVO: Música ahora en colección separada audioData (ya no en el doc de invitación, soluciona límite 1MB Firestore)",
       "NUEVO: MusicArrayEditor — UI tipo galería (slot único, dashed border, + / reproductor / cambiar / eliminar)",
-      "NUEVO: MusicSectionForm + sección colapsable en SetupForm",
       "AudioUploadPicker.tsx eliminado (reemplazado por MusicArrayEditor)",
       "ConfigContext: música se carga desde audioData (fallback a legacy musicFile del doc)",
       "firestore.rules: añadida regla para colección audioData",
-      "STORY_SECTION_ORDER: añadida sección 'music'",
-      "Tests actualizados (default order 8→9 secciones)",
       "LINT: imports no usados limpiados",
     ],
   },
