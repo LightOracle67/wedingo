@@ -1615,7 +1615,7 @@ img {
 @media (max-width: 640px) {
   .app-scene {
     inset: 0;
-    top: var(--navbar-height, 0px);
+    /* top: var(--navbar-height,0px); */
   }
 }
 
