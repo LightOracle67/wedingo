@@ -14,7 +14,7 @@ export default function SetupPage() {
   const {
     hasStoredConfig, isConfigLoading, configLoadError,
     authMessage, authMessageType,
-    saveMessage, config,
+    saveMessage, config, setupToken,
   } = useApp();
 
   const { addToast } = useToast();
@@ -26,29 +26,48 @@ export default function SetupPage() {
   }, [authMessage, authMessageType, addToast]);
 
   const [showSuccess, setShowSuccess] = useState(false);
+  const [showTokenModal, setShowTokenModal] = useState(false);
+  const [tokenCopied, setTokenCopied] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const hasRedirectedRef = useRef(false);
 
   useEffect(() => {
-    if (saveMessage && hasStoredConfig && !hasRedirectedRef.current) {
+    if (showSuccess && !hasRedirectedRef.current) {
       hasRedirectedRef.current = true;
       const timer = setTimeout(() => {
         navigate(`/${inviteToken}/admin`, { replace: true });
-      }, 1000);
+      }, 3000);
       return () => clearTimeout(timer);
     }
-  }, [saveMessage, hasStoredConfig, navigate, inviteToken]);
+  }, [showSuccess, navigate, inviteToken]);
 
   useEffect(() => {
     if (saveMessage && hasStoredConfig) {
       setIsTransitioning(true);
-      const timer = setTimeout(() => {
-        setShowSuccess(true);
-        setIsTransitioning(false);
-      }, 500);
-      return () => clearTimeout(timer);
+      setShowTokenModal(true);
+      setIsTransitioning(false);
     }
   }, [saveMessage, hasStoredConfig]);
+
+  const handleTokenModalClose = () => {
+    setShowTokenModal(false);
+    setShowSuccess(true);
+    try {
+      const username = config.adminUsername;
+      if (username && setupToken) {
+        const cred = new PasswordCredential({ id: username, password: setupToken, name: username });
+        navigator.credentials.store(cred);
+      }
+    } catch {}
+  };
+
+  const handleCopyToken = () => {
+    if (setupToken) {
+      navigator.clipboard.writeText(setupToken);
+      setTokenCopied(true);
+      setTimeout(() => setTokenCopied(false), 2000);
+    }
+  };
 
   if (isConfigLoading) {
     return (
@@ -114,6 +133,32 @@ export default function SetupPage() {
             <SetupForm prefix="setup" />
           </div>
         </div>
+
+        {showTokenModal ? (
+          <div className="modal-overlay" onClick={() => {}} role="dialog" aria-modal="true" aria-label={t("setup.tokenModalTitle")}>
+            <div className="modal-card" onClick={(e) => e.stopPropagation()}>
+              <p className="modal-title">{t("setup.tokenModalTitle")}</p>
+              <p className="setup-help">{t("setup.tokenModalText")}</p>
+              <div style={{ display: "flex", gap: "0.5rem", alignItems: "center", marginTop: "1rem" }}>
+                <input
+                  className="setup-input"
+                  value={setupToken || ""}
+                  readOnly
+                  style={{ flex: 1, fontFamily: "monospace", fontSize: "0.85rem", textAlign: "center" }}
+                  onFocus={(e) => e.target.select()}
+                />
+                <button className="setup-button setup-button--compact" type="button" onClick={handleCopyToken} style={{ flexShrink: 0 }}>
+                  {tokenCopied ? t("common.copied") : t("common.copy")}
+                </button>
+              </div>
+              <div className="setup-actions" style={{ marginTop: "1rem" }}>
+                <button className="setup-button" type="button" onClick={handleTokenModalClose}>
+                  {t("setup.tokenModalContinue")}
+                </button>
+              </div>
+            </div>
+          </div>
+        ) : null}
 
         {showSuccess ? (
           <div className="setup-success-card animate-card-reveal">
