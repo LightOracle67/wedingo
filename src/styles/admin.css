@@ -184,7 +184,7 @@ input.setup-input[type="date"] {
 }
 .setup-layout--full.setup-layout {
   min-height: 100%;
-  display: inline-flex;
+  height: 100%;
 }
 .setup-layout--full .setup-card--full {
   width: 100% !important;

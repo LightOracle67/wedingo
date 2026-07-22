@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.16.3",
+    date: "2026-07-21",
+    changes: [
+      "Fix: setup-layout--full eliminado display:inline-flex (impedía altura 100%)",
+      "Fix: contenedores principales ahora ajustan altura al 100% disponible con márgenes adecuados",
+    ],
+  },
+  {
     version: "2.16.4",
     date: "2026-07-21",
     changes: [
