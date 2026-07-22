@@ -25,7 +25,8 @@
     "adminBar": {
       "ariaLabel": "شريط الإدارة",
       "fallback": "إدارة"
-    }
+    },
+    "saving": "Saving…"
   },
   "landing": {
     "title": "ويدنغو — دعوات الزفاف",

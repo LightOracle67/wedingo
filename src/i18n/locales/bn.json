@@ -25,7 +25,8 @@
     "adminBar": {
       "ariaLabel": "প্রশাসনিক বার",
       "fallback": "প্রশাসন"
-    }
+    },
+    "saving": "Saving…"
   },
   "landing": {
     "title": "Wedingo — বিয়ের আমন্ত্রণপত্র",

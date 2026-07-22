@@ -25,7 +25,8 @@
     "adminBar": {
       "ariaLabel": "Administrační lišta",
       "fallback": "Správa"
-    }
+    },
+    "saving": "Saving…"
   },
   "landing": {
     "title": "Wedingo — Svatební oznámení",

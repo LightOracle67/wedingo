@@ -25,7 +25,8 @@
     "adminBar": {
       "ariaLabel": "Bar gweinyddu",
       "fallback": "Gweinyddiaeth"
-    }
+    },
+    "saving": "Saving…"
   },
   "landing": {
     "title": "Wedingo — Gwahoddiadau priodas",

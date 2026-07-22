@@ -25,7 +25,8 @@
     "adminBar": {
       "ariaLabel": "Administra trinkejo",
       "fallback": "Administrado"
-    }
+    },
+    "saving": "Saving…"
   },
   "landing": {
     "title": "Wedingo — Geedziĝaj Invitoj",

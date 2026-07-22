@@ -25,7 +25,8 @@
     "adminBar": {
       "ariaLabel": "İdarə paneli",
       "fallback": "İdarəetmə"
-    }
+    },
+    "saving": "Saving…"
   },
   "landing": {
     "title": "Wedingo — Toy dəvətnamələri",

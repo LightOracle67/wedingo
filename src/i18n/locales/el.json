@@ -25,7 +25,8 @@
     "adminBar": {
       "ariaLabel": "Μπάρα διαχείρισης",
       "fallback": "Διαχείριση"
-    }
+    },
+    "saving": "Saving…"
   },
   "landing": {
     "title": "Wedingo — Γαμήλιες προσκλήσεις",

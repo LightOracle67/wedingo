@@ -5,6 +5,7 @@
     "close": "Cerrar",
     "retry": "Reintentar",
     "save": "Guardar cambios",
+    "saving": "Guardando…",
     "copy": "Copiar",
     "back": "Volver",
     "errorBoundary": {

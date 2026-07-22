@@ -8,7 +8,7 @@ export const CHANGELOG = [
     ],
   },
   {
-    version: "2.16.4",
+    version: "2.16.5",
     date: "2026-07-22",
     changes: [
       "Fix: unificadas .story-calendar-actions .setup-button y .story-map__actions .setup-button, padding 2%",

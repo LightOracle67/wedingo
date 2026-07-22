@@ -25,7 +25,8 @@
     "adminBar": {
       "ariaLabel": "የአስተዳደር ባር",
       "fallback": "አስተዳደር"
-    }
+    },
+    "saving": "Saving…"
   },
   "landing": {
     "title": "Wedingo — የሰርግ ግብዣዎች",

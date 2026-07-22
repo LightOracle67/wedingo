@@ -44,6 +44,10 @@ export default function SetupForm({ prefix = "" }) {
 
   const { addToast } = useToast();
   const { t } = useTranslation();
+  const handleSubmit = useCallback(async (e: any) => {
+    setSaving(true);
+    await handleSaveSetup(e);
+  }, [handleSaveSetup]);
 
   // ── Muestra mensajes de éxito/error como toasts ─────────
   useEffect(() => {
@@ -64,7 +68,7 @@ export default function SetupForm({ prefix = "" }) {
   }, [formData.hiddenSections]);
 
   return (
-    <form className="setup-form setup-form--nested" onSubmit={handleSaveSetup}>
+    <form className="setup-form setup-form--nested" onSubmit={handleSubmit}>
       {/* ── Editor de orden de secciones ── */}
       <SectionOrderEditor
         value={formData.sectionOrder}
@@ -153,8 +157,8 @@ export default function SetupForm({ prefix = "" }) {
 
       {/* ── Botón de guardar ── */}
       <div className="setup-actions">
-        <button className="setup-button" type="submit" disabled={saving} onClick={() => setSaving(true)}>
-          {saving ? <span className="page-loading" style={{ width: "1.2rem", height: "1.2rem", display: "inline-block", verticalAlign: "middle", minHeight: 0 }} /> : t("common.save")}
+        <button className="setup-button" type="submit" disabled={saving}>
+          {saving ? t("common.saving") : t("common.save")}
         </button>
       </div>
     </form>
