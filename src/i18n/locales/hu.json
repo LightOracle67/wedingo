@@ -170,17 +170,8 @@
     "todayIsWedding": "Ma van az esküvő",
     "missing": "Hátravan",
     "todayIsTheDay": "Ma van a nagy nap!",
-    "sectionLabel": "Borító",    "eyebrow": "A mi esküvőnk"
-      ],
-      [
-        [
-          [
-            "e6160a94dbc5b21fe81a6e88928058a4",
-            "tea_BalticAndUralicA_en2etfihulvlt_2021q3.md"
-          ]
-        ]
-      ]
-    ]
+    "sectionLabel": "Borító",
+    "eyebrow": "A mi esküvőnk"
   },
   "details": {
     "sectionLabel": "Dátum és helyszín",

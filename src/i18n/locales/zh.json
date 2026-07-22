@@ -170,17 +170,8 @@
     "todayIsWedding": "今天是婚礼日",
     "missing": "距离",
     "todayIsTheDay": "今天就是大喜之日！",
-    "sectionLabel": "封面",    "eyebrow": "我们的婚礼"
-      ],
-      [
-        [
-          [
-            "6ffafab0da7e640be86ac09d0d5e539c",
-            "en_zh_2023q1.md"
-          ]
-        ]
-      ]
-    ]
+    "sectionLabel": "封面",
+    "eyebrow": "我们的婚礼"
   },
   "details": {
     "sectionLabel": "日期与地点",

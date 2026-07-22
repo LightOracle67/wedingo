@@ -170,17 +170,8 @@
     "todayIsWedding": "Hôm nay là đám cưới",
     "missing": "Còn",
     "todayIsTheDay": "Hôm nay là ngày trọng đại!",
-    "sectionLabel": "Bìa",    "eyebrow": "Đám cưới của chúng tôi"
-      ],
-      [
-        [
-          [
-            "824257d7a249c58caeea06a2e64a25bd",
-            "en_vi_2023q1.md"
-          ]
-        ]
-      ]
-    ]
+    "sectionLabel": "Bìa",
+    "eyebrow": "Đám cưới của chúng tôi"
   },
   "details": {
     "sectionLabel": "Ngày và địa điểm",

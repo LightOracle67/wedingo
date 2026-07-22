@@ -170,17 +170,8 @@
     "todayIsWedding": "Bugün düğün",
     "missing": "Kaldı",
     "todayIsTheDay": "Bugün büyük gün!",
-    "sectionLabel": "Kapak",    "eyebrow": "Düğünümüz"
-      ],
-      [
-        [
-          [
-            "165285379024f0f80a779c26910288ac",
-            "en_tr_2023q1.md"
-          ]
-        ]
-      ]
-    ]
+    "sectionLabel": "Kapak",
+    "eyebrow": "Düğünümüz"
   },
   "details": {
     "sectionLabel": "Tarih ve yer",

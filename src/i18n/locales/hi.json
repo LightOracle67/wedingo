@@ -157,17 +157,8 @@
     "todayIsWedding": "आज शादी है",
     "missing": "शेष",
     "todayIsTheDay": "आज का दिन बड़ा खास है!",
-    "sectionLabel": "कवर",    "eyebrow": "हमारी शादी"
-      ],
-      [
-        [
-          [
-            "458941ec00fd20f22c6168237a5d2eaa",
-            "en_hi_2023q1.md"
-          ]
-        ]
-      ]
-    ]
+    "sectionLabel": "कवर",
+    "eyebrow": "हमारी शादी"
   },
   "details": {
     "sectionLabel": "तारीख और स्थान",

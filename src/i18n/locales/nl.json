@@ -170,17 +170,8 @@
     "todayIsWedding": "Vandaag is de bruiloft",
     "missing": "Nog",
     "todayIsTheDay": "Vandaag is de grote dag!",
-    "sectionLabel": "Omslag",    "eyebrow": "Onze bruiloft"
-      ],
-      [
-        [
-          [
-            "1a7d3f5fe35a1a68b44a611c22004024",
-            "en_nl_2023q1.md"
-          ]
-        ]
-      ]
-    ]
+    "sectionLabel": "Omslag",
+    "eyebrow": "Onze bruiloft"
   },
   "details": {
     "sectionLabel": "Datum en locatie",

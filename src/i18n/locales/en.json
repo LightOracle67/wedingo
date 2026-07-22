@@ -327,15 +327,7 @@
     "galleryDescriptionSaveFailed": "Error saving description",
     "galleryDescriptionSaved": "Description saved",
     "currentMusic": "Selected music",
-    "removeMusic": "Remove music",
-    "musicSectionTitle": "Background music",
-    "musicSectionHint": "Audio file that plays on the invite page",
-    "musicUploadLabel": "Upload music",
-    "musicUploading": "Uploading music...",
-    "musicUploadSuccess": "Music uploaded successfully.",
-    "musicUploadFailed": "Could not upload the music.",
-    "replaceMusic": "Change music",
-    "musicFile": "Audio file"
+    "removeMusic": "Remove music"
   },
   "admin": {
     "tabs": {
@@ -381,8 +373,6 @@
     "downloadBackup": "Download backup",
     "restoreBackup": "Restore backup",
     "restoreNotFound": "Invitation not found.",
-    "restoreConfirm": "Restore {{count}} invitation(s)? This will overwrite current data.",
-    "restoreTooLarge": "The backup file exceeds the 10 MB limit.",
     "restoreInvalid": "The file does not have the expected format.",
     "restoreSuccess": "Restored {{count}} invitation(s) successfully.",
     "restoreFailed": "Could not restore the backup. Please check the file.",
@@ -532,20 +522,7 @@
     "uploadImageFailed": "Could not process the image. Try another one.",
     "readImageFailed": "Could not read the image file.",
     "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression.",
-    "clipboardCopyFailed": "Could not copy to clipboard.",
-    "backupFailed": "Could not download the backup.",
-    "restoreFailed": "Could not restore the backup.",
-    "galleryLoadFailed": "Could not load the gallery.",
-    "galleryDeleteFailed": "Could not delete the image.",
-    "musicLoadFailed": "Could not load the music.",
-    "musicDeleteFailed": "Could not delete the music.",
-    "statsLoadFailed": "Could not load the statistics.",
-    "dataLoadFailed": "Could not load the data.",
-    "rsvpLoadFailed": "Could not load the responses.",
-    "configReloadFailed": "Could not reload the configuration.",
-    "sessionUpdateFailed": "Could not update the session.",
-    "autoSaveFailed": "Could not auto-save the configuration."
+    "imageTooLarge": "The image is too large even after compression."
   },
   "superadmin": {
     "tabs": {
@@ -753,9 +730,6 @@
     "noMusic": "No music",
     "loadError": "Error loading",
     "label": "Music",
-    "play": "Play",
-    "pause": "Pause",
-    "playing": "Playing...",
     "soundCloudNote": "SoundCloud track — open to play",
     "openInSoundCloud": "Open in SoundCloud"
   },

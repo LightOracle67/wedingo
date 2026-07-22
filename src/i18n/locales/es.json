@@ -327,15 +327,7 @@
     "galleryDescriptionSaveFailed": "Error al guardar la descripción",
     "galleryDescriptionSaved": "Descripción guardada",
     "currentMusic": "Música seleccionada",
-    "removeMusic": "Eliminar música",
-    "musicSectionTitle": "Música de fondo",
-    "musicSectionHint": "Archivo de audio que suena en la portada",
-    "musicUploadLabel": "Subir música",
-    "musicUploading": "Subiendo música...",
-    "musicUploadSuccess": "Música subida correctamente.",
-    "musicUploadFailed": "No se pudo subir la música.",
-    "replaceMusic": "Cambiar música",
-    "musicFile": "Archivo de audio"
+    "removeMusic": "Eliminar música"
   },
   "admin": {
     "tabs": {
@@ -379,8 +371,6 @@
     "downloadBackup": "Descargar copia",
     "restoreBackup": "Restaurar copia",
     "restoreNotFound": "No se encontró la invitación.",
-    "restoreConfirm": "¿Restaurar {{count}} invitación(es)? Se sobrescribirán los datos actuales.",
-    "restoreTooLarge": "El archivo de copia supera el límite de 10 MB.",
     "restoreInvalid": "El archivo no tiene el formato esperado.",
     "restoreSuccess": "Restauradas {{count}} invitaciones correctamente.",
     "restoreFailed": "No se pudo restaurar la copia. Revisa el archivo.",
@@ -532,20 +522,7 @@
     "uploadImageFailed": "No se pudo procesar la imagen. Prueba con otra.",
     "readImageFailed": "No se pudo leer el archivo de imagen.",
     "encryptFailed": "El cifrado de la imagen falló.",
-    "imageTooLarge": "La imagen es demasiado grande incluso comprimida.",
-    "clipboardCopyFailed": "No se pudo copiar al portapapeles.",
-    "backupFailed": "No se pudo descargar la copia de seguridad.",
-    "restoreFailed": "No se pudo restaurar la copia de seguridad.",
-    "galleryLoadFailed": "No se pudo cargar la galería.",
-    "galleryDeleteFailed": "No se pudo eliminar la imagen.",
-    "musicLoadFailed": "No se pudo cargar la música.",
-    "musicDeleteFailed": "No se pudo eliminar la música.",
-    "statsLoadFailed": "No se pudieron cargar las estadísticas.",
-    "dataLoadFailed": "No se pudieron cargar los datos.",
-    "rsvpLoadFailed": "No se pudieron cargar las respuestas.",
-    "configReloadFailed": "No se pudo recargar la configuración.",
-    "sessionUpdateFailed": "No se pudo actualizar la sesión.",
-    "autoSaveFailed": "No se pudo guardar automáticamente la configuración."
+    "imageTooLarge": "La imagen es demasiado grande incluso comprimida."
   },
   "superadmin": {
     "tabs": {
@@ -754,9 +731,6 @@
     "noMusic": "Sin música",
     "loadError": "Error al cargar",
     "label": "Música",
-    "play": "Reproducir",
-    "pause": "Pausar",
-    "playing": "Reproduciendo...",
     "soundCloudNote": "Tema de SoundCloud — ábrelo para reproducir",
     "openInSoundCloud": "Abrir en SoundCloud"
   },

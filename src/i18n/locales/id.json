@@ -176,17 +176,8 @@
     "todayIsWedding": "Hari ini adalah pernikahan",
     "missing": "Tersisa",
     "todayIsTheDay": "Hari ini adalah hari istimewa!",
-    "sectionLabel": "Sampul",    "eyebrow": "Pernikahan kami"
-      ],
-      [
-        [
-          [
-            "8197e9010ff5cd59d89a62790d9829cf",
-            "en_id_2023q1.md"
-          ]
-        ]
-      ]
-    ]
+    "sectionLabel": "Sampul",
+    "eyebrow": "Pernikahan kami"
   },
   "details": {
     "sectionLabel": "Tanggal dan tempat",

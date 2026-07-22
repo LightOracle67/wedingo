@@ -209,17 +209,8 @@
     "todayIsWedding": "Dnes je svadba",
     "missing": "Zostáva",
     "todayIsTheDay": "Dnes je ten veľký deň!",
-    "sectionLabel": "Obálka",    "eyebrow": "Naša svadba"
-      ],
-      [
-        [
-          [
-            "383bdae9ffa69f7aa8a53d8e5de30a5f",
-            "tea_CzechSlovakA_en2cssk_2021q3.md"
-          ]
-        ]
-      ]
-    ]
+    "sectionLabel": "Obálka",
+    "eyebrow": "Naša svadba"
   },
   "details": {
     "sectionLabel": "Dátum a miesto",
