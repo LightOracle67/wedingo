@@ -230,12 +230,11 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
 
     setIsTokenVerifying(true);
     try {
-      const tokenUsername = await activateSessionWithToken(enteredToken);
-      if (tokenUsername === null) return; // Usuario canceló
+      await activateSessionWithToken(enteredToken);
 
-      const displayName = tokenUsername || inviteToken;
+      const displayName = config.adminUsername || adminLoginUsername || inviteToken;
       setTokenLoginUsername(displayName);
-      sessionTypeRef.current = tokenUsername ? "admin" : "setup";
+      sessionTypeRef.current = config.adminUsername ? "admin" : "setup";
       setSetupToken("");
       setSetupTokenInput("");
       setIsTokenVerified(true);
@@ -248,7 +247,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
     } finally {
       setIsTokenVerifying(false);
     }
-  }, [activateSessionWithToken, setupTokenInput, inviteToken, setHasStoredConfig, t]);
+  }, [activateSessionWithToken, setupTokenInput, inviteToken, setHasStoredConfig, config, adminLoginUsername, t]);
 
   /**
    * Inicia sesión como administrador (requiere usuario + token).
