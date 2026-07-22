@@ -198,7 +198,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
       if (inviteToken) payload.inviteToken = inviteToken;
       await setDoc(doc(db, "setupTokens", normalizedToken), payload);
       if (inviteToken) {
-        await updateDoc(invitationDocRef(inviteToken), { _activeSetupToken: normalizedToken });
+        await setDoc(invitationDocRef(inviteToken), { _activeSetupToken: normalizedToken }, { merge: true });
       }
     } catch {
       if (setAdminMessage && setAdminMessageType) {
