@@ -574,8 +574,8 @@ select.setup-input {
   padding: 0.25rem 0.2rem;
 }
 .setup-form--nested > .setup-actions {
-  margin: 0 -0.85rem -0.85rem;
-  padding: 2rem 0.85rem 0.85rem;
+  margin: 0 auto;
+  padding: 1rem;
 }
 .setup-date-grid {
   display: grid;
