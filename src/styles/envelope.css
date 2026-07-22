@@ -439,7 +439,7 @@
 }
 .envelope-wrapper--open .envelope__letter {
   opacity: 0;
-  transition-delay: 0.5s;
+  transition-delay: 1s;
 }
 @keyframes envelope-hint-pulse {
   0%, 100% { opacity: 0.35; transform: translateY(0); }
