@@ -8,6 +8,14 @@ export const CHANGELOG = [
     ],
   },
   {
+    version: "2.22.0",
+    date: "2026-07-22",
+    changes: [
+      "MusicArrayEditor: reemplazados controles nativos de audio (bug Safari AirPlay) por botón play/pause",
+      "Nuevas claves de traducción: music.play, music.pause, music.playing",
+    ],
+  },
+  {
     version: "2.21.0",
     date: "2026-07-22",
     changes: [

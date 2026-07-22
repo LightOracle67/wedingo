@@ -754,6 +754,9 @@
     "noMusic": "Sin música",
     "loadError": "Error al cargar",
     "label": "Música",
+    "play": "Reproducir",
+    "pause": "Pausar",
+    "playing": "Reproduciendo...",
     "soundCloudNote": "Tema de SoundCloud — ábrelo para reproducir",
     "openInSoundCloud": "Abrir en SoundCloud"
   },
