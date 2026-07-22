@@ -61,38 +61,24 @@ service cloud.firestore {
       allow delete: if isSuperAdmin();
 
       match /gallery/{imageId} {
-        allow read, write: if false;
+        allow read: if true;
+        allow create: if request.resource.data.data is string
+          && request.resource.data.keys().hasAny(['data'])
+          && isAuthenticatedAdmin(tokenId);
+        allow update: if isAuthenticatedAdmin(tokenId)
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['description'])
+          && request.resource.data.description is string
+          && request.resource.data.description.size() <= 200;
+        allow delete: if isSuperAdmin() || isAuthenticatedAdmin(tokenId);
       }
-    }
 
-    match /galleryData/{docId} {
-      allow read: if true;
-      allow create: if request.resource.data.keys().hasAll(['inviteToken', 'data', 'description', 'position', 'createdAt'])
-        && request.resource.data.data is string
-        && request.resource.data.position is number
-        && request.resource.data.position >= 0
-        && request.resource.data.position < 10
-        && isAuthenticatedAdmin(request.resource.data.inviteToken);
-      allow update: if isAuthenticatedAdmin(resource.data.inviteToken)
-        && (
-          (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['description'])
-            && request.resource.data.description is string
-            && request.resource.data.description.size() <= 200)
-          ||
-          (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['position'])
-            && request.resource.data.position is number
-            && request.resource.data.position >= 0
-            && request.resource.data.position < 10)
-        );
-      allow delete: if isSuperAdmin() || isAuthenticatedAdmin(resource.data.inviteToken);
-    }
-
-    match /audioData/{docId} {
-      allow read: if true;
-      allow create: if request.resource.data.keys().hasAll(['inviteToken', 'data', 'createdAt'])
-        && request.resource.data.data is string
-        && isAuthenticatedAdmin(request.resource.data.inviteToken);
-      allow delete: if isSuperAdmin() || isAuthenticatedAdmin(resource.data.inviteToken);
+      match /audio/{docId} {
+        allow read: if true;
+        allow create: if request.resource.data.data is string
+          && request.resource.data.keys().hasAny(['data'])
+          && isAuthenticatedAdmin(tokenId);
+        allow delete: if isSuperAdmin() || isAuthenticatedAdmin(tokenId);
+      }
     }
 
     match /rsvpResponses/{responseId} {

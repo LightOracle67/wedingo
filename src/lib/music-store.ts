@@ -1,8 +1,12 @@
-import { getDocs, collection, writeBatch, doc, query, where, orderBy } from "firebase/firestore";
+import { getDocs, collection, writeBatch, doc, query, orderBy } from "firebase/firestore";
 import { db } from "./firebase";
 import { encrypt, decrypt } from "./crypto-utils";
 
 const CHUNK_SIZE = 500 * 1024;
+
+function audioCol(token: string) {
+  return collection(db, "invitations", token, "audio");
+}
 
 export async function uploadAudio(inviteToken: string, file: File, onProgress?: (pct: number) => void) {
   onProgress?.(10);
@@ -22,9 +26,8 @@ export async function addAudio(inviteToken: string, encrypted: string, dataUrl: 
   }
   const batch = writeBatch(db);
   for (let i = 0; i < chunks.length; i++) {
-    const ref = doc(collection(db, "audioData"));
+    const ref = doc(audioCol(inviteToken));
     batch.set(ref, {
-      inviteToken,
       chunkIndex: i,
       data: chunks[i],
       totalChunks: chunks.length,
@@ -38,7 +41,7 @@ export async function addAudio(inviteToken: string, encrypted: string, dataUrl: 
 
 export async function loadAudio(inviteToken: string) {
   try {
-    const q = query(collection(db, "audioData"), where("inviteToken", "==", inviteToken), orderBy("chunkIndex", "asc"));
+    const q = query(audioCol(inviteToken), orderBy("chunkIndex", "asc"));
     const snap = await getDocs(q);
     if (snap.empty) return null;
     const chunks = snap.docs.map((d) => d.data().data as string);
@@ -50,8 +53,7 @@ export async function loadAudio(inviteToken: string) {
 }
 
 export async function deleteAudio(inviteToken: string) {
-  const q = query(collection(db, "audioData"), where("inviteToken", "==", inviteToken));
-  const snap = await getDocs(q);
+  const snap = await getDocs(audioCol(inviteToken));
   if (snap.empty) return;
   const batch = writeBatch(db);
   snap.docs.forEach((d) => batch.delete(d.ref));

@@ -1,13 +1,4 @@
 {
-  "indexes": [
-    {
-      "collectionGroup": "audioData",
-      "queryScope": "COLLECTION",
-      "fields": [
-        { "fieldPath": "inviteToken", "order": "ASCENDING" },
-        { "fieldPath": "chunkIndex", "order": "ASCENDING" }
-      ]
-    }
-  ],
+  "indexes": [],
   "fieldOverrides": []
 }

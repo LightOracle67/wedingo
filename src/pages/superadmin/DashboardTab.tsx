@@ -1,5 +1,5 @@
 import { memo, useCallback, useEffect, useState } from "react";
-import { getDocs, collection, doc, writeBatch, query, where } from "firebase/firestore";
+import { getDocs, doc, writeBatch, query, where } from "firebase/firestore";
 import { ref, deleteObject, listAll } from "firebase/storage";
 import { db, storage, RSVP_COLLECTION_REF, INVITATIONS_COLLECTION_REF } from "../../lib/firebase";
 import { calcGlobalStats, formatBytes } from "../../lib/superadmin-utils";
@@ -14,21 +14,19 @@ const DashboardTab = memo(function DashboardTab() {
   const { addToast } = useToast();
   const [stats, setStats] = useState<any>(null);
   const [invitations, setInvitations] = useState<any[]>([]);
-  const [galleryCount, setGalleryCount] = useState(0);
+
   const [loading, setLoading] = useState(true);
   const [cleaning, setCleaning] = useState(false);
 
   const load = useCallback(async () => {
     try {
-      const [rsvpSnap, invSnap, galSnap] = await Promise.all([
+      const [rsvpSnap, invSnap] = await Promise.all([
         getDocs(RSVP_COLLECTION_REF),
         getDocs(INVITATIONS_COLLECTION_REF),
-        getDocs(collection(db, "galleryData")),
       ]);
       const rsvps = rsvpSnap.docs.map((d: any) => ({ id: d.id, ...d.data() }));
       const invs = invSnap.docs.map((d: any) => ({ id: d.id, ...d.data() }));
       setInvitations(invs);
-      setGalleryCount(galSnap.size);
       setStats(calcGlobalStats(invs, rsvps));
     } catch {
       addToast("error", t("errors.statsLoadFailed"));
@@ -98,7 +96,6 @@ const DashboardTab = memo(function DashboardTab() {
         <StatsCard value={stats.rsvpTotal} label={t("superadmin.statsTotalResponses")} />
         <StatsCard value={`${rsvpRate}%`} label={t("superadmin.statsConfirmationRate")} />
         <StatsCard value={stats.totalGuests} label={t("superadmin.statsTotalGuests")} />
-        <StatsCard value={galleryCount} label={t("superadmin.statsGalleryImages")} />
         <StatsCard value={formatBytes(stats.totalBytes)} label={t("superadmin.statsStorage")} />
       </div>
 
@@ -123,7 +120,6 @@ const DashboardTab = memo(function DashboardTab() {
             <p style={{ margin: 0 }}>Firebase: {import.meta.env.VITE_FIREBASE_PROJECT_ID || "—"}</p>
             <p style={{ margin: 0 }}>{t("superadmin.statsInvitations")}: {stats.invitationCount}</p>
             <p style={{ margin: 0 }}>RSVPs: {stats.rsvpTotal}</p>
-            <p style={{ margin: 0 }}>Gallery: {galleryCount}</p>
           </div>
         </div>
       </div>

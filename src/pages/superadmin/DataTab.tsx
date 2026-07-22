@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { getDocs, doc, collection, writeBatch, getDoc, query, where } from "firebase/firestore";
+import { getDocs, doc, collection, writeBatch, getDoc } from "firebase/firestore";
 import { db, INVITATIONS_COLLECTION_REF, RSVP_COLLECTION_REF, rsvpByInviteRef } from "../../lib/firebase";
 import { useToast } from "../../hooks/useToast";
 import { downloadJson } from "../../lib/file-utils";
@@ -116,9 +116,9 @@ export default function DataTab() {
         invitation: { id: token, ...(invDoc.exists() ? invDoc.data() : {}) },
         rsvps: rsvpSnap.docs.map((d: any) => ({ id: d.id, ...d.data() })),
       };
-      // Carga la galería desde galleryData
+      // Carga la galería desde la subcolección
       try {
-        const gallerySnap = await getDocs(query(collection(db, "galleryData"), where("inviteToken", "==", token)));
+        const gallerySnap = await getDocs(collection(db, "invitations", token, "gallery"));
         data.gallery = gallerySnap.docs.map((d: any) => ({ id: d.id, ...d.data() }));
       } catch { data.gallery = []; }
       downloadJson(`${token}_export.json`, data);
@@ -432,6 +432,10 @@ async function cascadeDelete(token: any) {
   // Gallery images
   const gallerySnap = await getDocs(collection(db, "invitations", token, "gallery"));
   for (const d of gallerySnap.docs) refsToDelete.push(d.ref);
+
+  // Audio chunks
+  const audioSnap = await getDocs(collection(db, "invitations", token, "audio"));
+  for (const d of audioSnap.docs) refsToDelete.push(d.ref);
 
   // Invitation doc (siempre al final)
   refsToDelete.push(doc(db, "invitations", token));
