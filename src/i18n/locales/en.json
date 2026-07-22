@@ -8,6 +8,8 @@
     "save": "Save changes",
     "saving": "Saving…",
     "copy": "Copy",
+    "copied": "Copied!",
+    "delete": "Delete",
     "back": "Back",
     "errorBoundary": {
       "title": "Something went wrong",
@@ -335,7 +337,16 @@
     "galleryDescriptionSaveFailed": "Error saving description",
     "galleryDescriptionSaved": "Description saved",
     "currentMusic": "Selected music",
-    "removeMusic": "Remove music"
+    "removeMusic": "Remove music",
+    "musicUploadLabel": "Upload music",
+    "musicUploading": "Uploading music...",
+    "musicUploadSuccess": "Music uploaded successfully.",
+    "musicUploadFailed": "Could not upload the music.",
+    "replaceMusic": "Change music",
+    "musicFile": "Audio file",
+    "searching": "Searching...",
+    "noResults": "No results found.",
+    "deleteImageConfirm": "Delete this image?"
   },
   "admin": {
     "tabs": {
@@ -530,7 +541,16 @@
     "uploadImageFailed": "Could not process the image. Try another one.",
     "readImageFailed": "Could not read the image file.",
     "encryptFailed": "Image encryption failed.",
-    "imageTooLarge": "The image is too large even after compression."
+    "imageTooLarge": "The image is too large even after compression.",
+    "backupFailed": "Could not download the backup.",
+    "clipboardCopyFailed": "Could not copy to clipboard.",
+    "statsLoadFailed": "Could not load the statistics.",
+    "dataLoadFailed": "Could not load the data.",
+    "musicLoadFailed": "Could not load the music.",
+    "musicDeleteFailed": "Could not delete the music.",
+    "galleryLoadFailed": "Could not load the gallery.",
+    "galleryDeleteFailed": "Could not delete the image.",
+    "imageIdNotFound": "The image ID was not found."
   },
   "superadmin": {
     "tabs": {
@@ -639,11 +659,14 @@
       "deletedAll": "{{count}} invitations deleted from the system.",
       "partialDelete": "Only {{deleted}} of {{total}} were deleted. Check permissions.",
       "deleteFailed": "Error deleting. Check the console.",
-      "deleteAllConfirm": "Are you SURE? This will delete ALL invitations, RSVPs, gallery and tokens from the system. This action CANNOT be undone."
+      "deleteAllConfirm": "Are you SURE? This will delete ALL invitations, RSVPs, gallery and tokens from the system. This action CANNOT be undone.",
+      "exportBtn": "Export"
     },
     "login": "Login",
     "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "passwordLabel": "Password",
+    "revokeConfirm": "Revoke this token?",
+    "cleanupConfirm": "Delete all expired tokens?"
   },
   "compliance": {
     "title": "Record of processing activities (Art. 30 GDPR)",
@@ -739,7 +762,10 @@
     "loadError": "Error loading",
     "label": "Music",
     "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud"
+    "openInSoundCloud": "Open in SoundCloud",
+    "play": "Play",
+    "pause": "Pause",
+    "playing": "Playing..."
   },
   "print": {
     "preparing": "Preparing print…",
@@ -852,6 +878,29 @@
     "11": "November",
     "12": "December"
   },
+  "themeNames": {
+    "golden": "Classic Gold",
+    "forest": "Fresh Eucalyptus",
+    "rose": "Rose",
+    "linen-soft": "Linen Soft",
+    "blush-pearl": "Blush Pearl",
+    "lavender-mist": "Lavender Mist",
+    "champagne-bubble": "Champagne Bubble",
+    "amber-night": "Amber Night",
+    "onyx-gold": "Onyx Gold",
+    "midnight-royal": "Midnight Royal",
+    "burgundy-velvet": "Burgundy Velvet",
+    "sapphire-night": "Sapphire Night",
+    "emerald-grove": "Emerald Grove",
+    "plum-twilight": "Plum Twilight",
+    "rainbow": "Rainbow",
+    "trans": "Trans",
+    "nonbinary": "Non-binary",
+    "lesbian": "Lesbian",
+    "bi": "Bi",
+    "pan": "Pan",
+    "ace": "Ace"
+  },
   "themeGroups": {
     "light": "Light themes",
     "dark": "Dark themes",
@@ -906,5 +955,10 @@
       "supervised": "Welcome under supervision",
       "adultOnly": "Adults only"
     }
+  },
+  "app": {
+    "titleLanding": "Wedingo — Wedding Invitations",
+    "titleAdmin": "Control Panel — Wedingo",
+    "titleSetup": "Configure invitation — Wedingo"
   }
 }

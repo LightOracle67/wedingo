@@ -3,9 +3,9 @@ import { useTranslation } from "react-i18next";
 import { useEscapeKey } from "../hooks/useFocusTrap";
 import "../styles/music.css";
 
-function songName(musicUrl: any) {
+function songName(musicUrl: any, t: any) {
   if (!musicUrl) return "";
-  if (musicUrl.startsWith("data:")) return "Audio subido";
+  if (musicUrl.startsWith("data:")) return t("setup.currentMusic");
   try {
     const u = new URL(musicUrl);
     const path = u.pathname;
@@ -26,7 +26,7 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }: any) {
   const [open, setOpen] = useState(false);
   const [iconKey, setIconKey] = useState(0);
   const audioRef = useRef<any>(null);
-  const name = useMemo(() => songName(musicUrl) || t("music.noMusic"), [musicUrl, t]);
+  const name = useMemo(() => songName(musicUrl, t) || t("music.noMusic"), [musicUrl, t]);
   const hasMusic = Boolean(musicUrl);
 
   useEffect(() => {

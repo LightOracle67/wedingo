@@ -48,11 +48,11 @@ function AppShell() {
 
   useEffect(() => {
     const path = location.pathname;
-    if (path === "/") document.title = "Wedingo — Invitaciones de boda";
-    else if (path.includes("/admin")) document.title = "Panel de control — Wedingo";
-    else if (path.includes("/setup")) document.title = "Configurar invitación — Wedingo";
+    if (path === "/") document.title = t("app.titleLanding");
+    else if (path.includes("/admin")) document.title = t("app.titleAdmin");
+    else if (path.includes("/setup")) document.title = t("app.titleSetup");
     else if (inviteToken) document.title = `${config.firstName || "Invitación"} & ${config.secondName || ""} — Wedingo`;
-  }, [location.pathname, inviteToken, config.firstName, config.secondName]);
+  }, [location.pathname, inviteToken, config.firstName, config.secondName, t]);
 
   useEffect(() => {
     const activeTheme = isEditingRoute ? "golden" : formData.theme || config.theme;

@@ -107,7 +107,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
   const handleDescriptionBlur = useCallback(async (slotIndex: any, currentValue: any) => {
     const item = slotsRef.current[slotIndex];
     if (!item?.id) {
-      addToast("error", "No se encontró el ID de la imagen");
+      addToast("error", t("errors.imageIdNotFound"));
       return;
     }
     const safe = String(currentValue ?? "").slice(0, 200).trim();

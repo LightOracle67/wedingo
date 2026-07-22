@@ -4,7 +4,7 @@ import CollapsibleSection from "./CollapsibleSection";
 
 const ThemePicker = memo(function ThemePicker({ value, onChange, t }: any) {
   return THEME_GROUPS.map((group) => (
-    <CollapsibleSection key={group.value} title={group.label} hint={t("setup.themeGroupCount", { count: THEME_OPTIONS.filter((th) => th.group === group.value).length })}>
+    <CollapsibleSection key={group.value} title={t("themeGroups." + group.value)} hint={t("setup.themeGroupCount", { count: THEME_OPTIONS.filter((th) => th.group === group.value).length })}>
       <div className="theme-picker__grid">
         {THEME_OPTIONS.filter((th) => th.group === group.value).map((theme) => {
           const colors = (THEME_PREVIEW_COLORS as any)[theme.value];
@@ -23,7 +23,7 @@ const ThemePicker = memo(function ThemePicker({ value, onChange, t }: any) {
                 <span className="theme-picker__dot" style={{ background: colors.accent }} />
               </span>
               <span className="theme-picker__info">
-                <span className="theme-picker__name">{theme.label}</span>
+                <span className="theme-picker__name">{t("themeNames." + theme.value)}</span>
                 <span className="theme-picker__hint">{t("themeHints." + theme.value)}</span>
               </span>
             </button>

@@ -27,7 +27,9 @@
     "hide": "Ocultar",
     "section": "sección",
     "visible": "Visible",
-    "hidden": "Oculta"
+    "hidden": "Oculta",
+    "delete": "Eliminar",
+    "copied": "¡Copiado!"
   },
   "landing": {
     "title": "Wedingo — Invitaciones de boda",
@@ -335,7 +337,16 @@
     "galleryDescriptionSaveFailed": "Error al guardar la descripción",
     "galleryDescriptionSaved": "Descripción guardada",
     "currentMusic": "Música seleccionada",
-    "removeMusic": "Eliminar música"
+    "removeMusic": "Eliminar música",
+    "musicUploadLabel": "Subir música",
+    "musicUploading": "Subiendo música...",
+    "musicUploadSuccess": "Música subida correctamente.",
+    "musicUploadFailed": "No se pudo subir la música.",
+    "replaceMusic": "Cambiar música",
+    "musicFile": "Archivo de audio",
+    "searching": "Buscando...",
+    "noResults": "Sin resultados.",
+    "deleteImageConfirm": "¿Eliminar esta imagen?"
   },
   "admin": {
     "tabs": {
@@ -530,7 +541,16 @@
     "uploadImageFailed": "No se pudo procesar la imagen. Prueba con otra.",
     "readImageFailed": "No se pudo leer el archivo de imagen.",
     "encryptFailed": "El cifrado de la imagen falló.",
-    "imageTooLarge": "La imagen es demasiado grande incluso comprimida."
+    "imageTooLarge": "La imagen es demasiado grande incluso comprimida.",
+    "backupFailed": "No se pudo descargar la copia de seguridad.",
+    "clipboardCopyFailed": "No se pudo copiar al portapapeles.",
+    "statsLoadFailed": "No se pudieron cargar las estadísticas.",
+    "dataLoadFailed": "No se pudieron cargar los datos.",
+    "musicLoadFailed": "No se pudo cargar la música.",
+    "musicDeleteFailed": "No se pudo eliminar la música.",
+    "galleryLoadFailed": "No se pudo cargar la galería.",
+    "galleryDeleteFailed": "No se pudo eliminar la imagen.",
+    "imageIdNotFound": "No se encontró el ID de la imagen."
   },
   "superadmin": {
     "tabs": {
@@ -640,11 +660,14 @@
       "deletedAll": "{{count}} invitaciones eliminadas del sistema.",
       "partialDelete": "Solo se eliminaron {{deleted}} de {{total}}. Revisa los permisos.",
       "deleteFailed": "Error al eliminar. Verifica la consola.",
-      "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
+      "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer.",
+      "exportBtn": "Exportar"
     },
     "login": "Entrar",
     "emailLabel": "Email",
-    "passwordLabel": "Password"
+    "passwordLabel": "Password",
+    "revokeConfirm": "¿Revocar este token?",
+    "cleanupConfirm": "¿Eliminar todos los tokens expirados?"
   },
   "compliance": {
     "title": "Registro de actividades de tratamiento (Art. 30 GDPR)",
@@ -740,7 +763,10 @@
     "loadError": "Error al cargar",
     "label": "Música",
     "soundCloudNote": "Tema de SoundCloud — ábrelo para reproducir",
-    "openInSoundCloud": "Abrir en SoundCloud"
+    "openInSoundCloud": "Abrir en SoundCloud",
+    "play": "Reproducir",
+    "pause": "Pausar",
+    "playing": "Reproduciendo..."
   },
   "print": {
     "preparing": "Preparando impresión...",
@@ -853,6 +879,29 @@
     "11": "Noviembre",
     "12": "Diciembre"
   },
+  "themeNames": {
+    "golden": "Dorado clásico",
+    "forest": "Eucalipto fresco",
+    "rose": "Rosa",
+    "linen-soft": "Lino suave",
+    "blush-pearl": "Perla sonrosada",
+    "lavender-mist": "Bruma de lavanda",
+    "champagne-bubble": "Burbuja de champán",
+    "amber-night": "Noche ámbar",
+    "onyx-gold": "Ónix dorado",
+    "midnight-royal": "Medianoche real",
+    "burgundy-velvet": "Terciopelo burdeos",
+    "sapphire-night": "Noche zafiro",
+    "emerald-grove": "Bosque esmeralda",
+    "plum-twilight": "Atardecer ciruela",
+    "rainbow": "Arcoíris",
+    "trans": "Trans",
+    "nonbinary": "No binario",
+    "lesbian": "Lésbico",
+    "bi": "Bi",
+    "pan": "Pan",
+    "ace": "Ase"
+  },
   "themeGroups": {
     "light": "Temas claros",
     "dark": "Temas oscuros",
@@ -907,5 +956,10 @@
       "supervised": "Bienvenidos bajo supervisión",
       "adultOnly": "Solo para adultos"
     }
+  },
+  "app": {
+    "titleLanding": "Wedingo — Invitaciones de boda",
+    "titleAdmin": "Panel de control — Wedingo",
+    "titleSetup": "Configurar invitación — Wedingo"
   }
 }

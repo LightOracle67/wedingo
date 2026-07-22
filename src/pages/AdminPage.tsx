@@ -155,7 +155,7 @@ export default function AdminPage() {
     <p style="color:#666;font-size:13px">${new Date().toLocaleDateString(i18n.language,{day:"numeric",month:"long",year:"numeric",hour:"2-digit",minute:"2-digit"})}</p>
     <div class="stats"><div class="stat">${tc} ${t("admin.pdfConfirmed")}</div><div class="stat">${td} ${t("admin.pdfNotAttending")}</div><div class="stat">${rsvpEntries.length} ${t("admin.pdfResponses")}</div></div>
     <table><thead><tr><th>${t("admin.pdfTableName")}</th><th>${t("admin.pdfTableAttendance")}</th><th>${t("admin.pdfTableCompanions")}</th><th>${t("admin.pdfTableDiet")}</th></tr></thead><tbody>${rows}</tbody></table>
-    <p style="margin-top:12px;color:#888;font-size:11px">Wedingo</p>
+    <p style="margin-top:12px;color:#888;font-size:11px">${t("support.appTitle")}</p>
     </body></html>`;
     const blob = new Blob([html], { type: "text/html;charset=utf-8" });
     const url = URL.createObjectURL(blob);
