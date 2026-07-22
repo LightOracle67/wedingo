@@ -73,7 +73,7 @@ describe("normalizeConfig", () => {
 
   it("returns default sectionOrder when not provided", () => {
     const result = normalizeConfig({});
-    expect(result.sectionOrder).toBe("hero,details,info,story,gallery,gifts,accommodation,rsvp");
+    expect(result.sectionOrder).toBe("hero,details,info,story,gallery,music,gifts,accommodation,rsvp");
   });
 
   it("normalizes menuEnabled to string boolean", () => {

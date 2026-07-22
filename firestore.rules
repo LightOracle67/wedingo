@@ -87,6 +87,14 @@ service cloud.firestore {
       allow delete: if isSuperAdmin() || isAuthenticatedAdmin(resource.data.inviteToken);
     }
 
+    match /audioData/{docId} {
+      allow read: if true;
+      allow create: if request.resource.data.keys().hasAll(['inviteToken', 'data', 'createdAt'])
+        && request.resource.data.data is string
+        && isAuthenticatedAdmin(request.resource.data.inviteToken);
+      allow delete: if isSuperAdmin() || isAuthenticatedAdmin(resource.data.inviteToken);
+    }
+
     match /setupTokens/{tokenId} {
       allow get: if true;
       allow list: if isSuperAdmin();
