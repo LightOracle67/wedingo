@@ -96,7 +96,12 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
           await updateDoc(invitationDocRef(inviteToken), {
             sessionExpiresAt: firestoreSessionExpiry(),
           });
-        } catch {}
+        } catch {
+          if (setAdminMessage && setAdminMessageType) {
+            setAdminMessageType("error");
+            setAdminMessage(t("auth.sessionUpdateFailed"));
+          }
+        }
       };
       doRenew();
       renewRef.current = setInterval(() => doRenew(), 60_000);
@@ -104,7 +109,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
       if (renewRef.current) clearInterval(renewRef.current);
     }
     return () => { if (renewRef.current) clearInterval(renewRef.current); };
-  }, [isTokenVerified, inviteToken]);
+  }, [isTokenVerified, inviteToken, setAdminMessage, setAdminMessageType, t]);
 
   /**
    * Persiste la sesión en sessionStorage cuando cambia el estado de autenticación.
@@ -132,7 +137,12 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
 
     // ── Paso 1: oldToken → fuerza regeneración ──
     if (oldToken) {
-      try { await setDoc(doc(db, "setupTokens", normalizeTokenValue(oldToken)), { used: true }); } catch {}
+      try { await setDoc(doc(db, "setupTokens", normalizeTokenValue(oldToken)), { used: true }); } catch {
+        if (setAdminMessage && setAdminMessageType) {
+          setAdminMessageType("error");
+          setAdminMessage(t("auth.tokenUpdateFailed"));
+        }
+      }
     }
 
     // ── Paso 2: sessionStorage ──
@@ -147,7 +157,12 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
             return saved;
           }
         }
-      } catch {}
+      } catch {
+        if (setAdminMessage && setAdminMessageType) {
+          setAdminMessageType("error");
+          setAdminMessage(t("auth.tokenRestoreFailed"));
+        }
+      }
 
       // ── Paso 3: _activeSetupToken en la invitación ──
       try {
@@ -164,7 +179,12 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
             }
           }
         }
-      } catch {}
+      } catch {
+        if (setAdminMessage && setAdminMessageType) {
+          setAdminMessageType("error");
+          setAdminMessage(t("auth.tokenLookupFailed"));
+        }
+      }
     }
 
     // ── Paso 4: generar nuevo token y asociarlo a la invitación ──
@@ -180,9 +200,14 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
       if (inviteToken) {
         await updateDoc(invitationDocRef(inviteToken), { _activeSetupToken: normalizedToken });
       }
-    } catch {}
+    } catch {
+      if (setAdminMessage && setAdminMessageType) {
+        setAdminMessageType("error");
+        setAdminMessage(t("auth.tokenCreateFailed"));
+      }
+    }
     return nextToken;
-  }, [inviteToken]);
+  }, [inviteToken, setAdminMessage, setAdminMessageType, t]);
 
   /**
    * Intenta activar la sesión usando un token de setup.
@@ -378,10 +403,15 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
       try {
         safeRemoveItem(`wedin_invite_cache_${token}`);
         await updateDoc(invitationDocRef(token), { activeSession: null, sessionExpiresAt: null });
-      } catch {}
+      } catch {
+        if (setAdminMessage && setAdminMessageType) {
+          setAdminMessageType("error");
+          setAdminMessage(t("auth.logoutFailed"));
+        }
+      }
     }
     navigate("/");
-  }, [inviteToken, navigate]);
+  }, [inviteToken, navigate, setAdminMessage, setAdminMessageType, t]);
 
   /**
    * Regenera el token de setup desde la página de configuración.

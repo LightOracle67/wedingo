@@ -5,12 +5,14 @@ import { invitationDocRef } from "../lib/firebase";
 import { firestoreSessionExpiry, saveSession } from "../lib/sessionVars";
 import { useSetupAuth } from "../hooks/useSetupAuth";
 import { useConfig } from "./ConfigContext";
+import { useTranslation } from "react-i18next";
 import { useAppUI } from "./UIContext";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const AuthContext = createContext<any>(null);
 
 export function AuthProvider({ children }: any) {
+  const { t } = useTranslation();
   const { setAdminMessage, setAdminMessageType } = useAppUI();
   const { inviteToken, config, setHasStoredConfig, isConfigLoading, hasStoredConfig, registerOnFirstSave } = useConfig();
   const location = useLocation();
@@ -29,7 +31,12 @@ export function AuthProvider({ children }: any) {
           activeSession: serverTimestamp(),
           sessionExpiresAt: firestoreSessionExpiry(),
         });
-      } catch {}
+      } catch {
+        if (setAdminMessage && setAdminMessageType) {
+          setAdminMessageType("error");
+          setAdminMessage(t("errors.sessionUpdateFailed"));
+        }
+      }
     })();
     auth.setIsTokenVerified(true);
     auth.setTokenLoginUsername(config.adminUsername || inviteToken);
