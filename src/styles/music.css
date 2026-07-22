@@ -39,13 +39,13 @@
   transform: scale(0.92);
 }
 .music-player__fab--shifted {
-  transform: translateX(-11.5rem);
+  transform: translateX(-13.5rem);
 }
 .music-player__fab--shifted:hover {
-  transform: translateX(-11.5rem) scale(1.08);
+  transform: translateX(-13.5rem) scale(1.08);
 }
 .music-player__fab--shifted:active {
-  transform: translateX(-11.5rem) scale(0.92);
+  transform: translateX(-13.5rem) scale(0.92);
 }
 .music-player__fab--playing {
   animation: music-fab-pulse 2s ease-in-out infinite;
@@ -53,11 +53,11 @@
 .music-player__fab--playing.music-player__fab--shifted {
   animation: music-fab-pulse-shifted 2s ease-in-out infinite;
 }
-@keyframes music-fab-pulse {
+@keyframes music-fab-pulse-shifted {
   0%, 100% { box-shadow: 0 22px 60px var(--invite-shell-shadow), 0 0 30px var(--invite-shell-glow); }
   50% { box-shadow: 0 22px 60px var(--invite-shell-shadow), 0 0 50px color-mix(in srgb, var(--invite-shell-glow) 90%, transparent), 0 0 80px color-mix(in srgb, var(--invite-shell-glow) 40%, transparent); }
 }
-@keyframes music-fab-pulse-shifted {
+@keyframes music-fab-pulse {
   0%, 100% { box-shadow: 0 22px 60px var(--invite-shell-shadow), 0 0 30px var(--invite-shell-glow); }
   50% { box-shadow: 0 22px 60px var(--invite-shell-shadow), 0 0 50px color-mix(in srgb, var(--invite-shell-glow) 90%, transparent), 0 0 80px color-mix(in srgb, var(--invite-shell-glow) 40%, transparent); }
 }
@@ -129,7 +129,7 @@
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  width: 180px;
+  width: 220px;
   background: color-mix(in srgb, var(--invite-shell-bg) 92%, transparent);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -155,7 +155,7 @@
   font-weight: 600;
   color: var(--invite-title-color, #dcc8a8);
   font-family: var(--font-body), system-ui, sans-serif;
-  max-width: 160px;
+  max-width: 200px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
