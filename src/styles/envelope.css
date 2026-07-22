@@ -383,8 +383,7 @@
   flex-direction: column;
   gap: 0.4rem;
   opacity: 1;
-  transform: translateY(30px);
-  transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 1.2s ease;
   position: relative;
 }
 .envelope__letter::before {
@@ -441,7 +440,6 @@
 }
 .envelope-wrapper--open .envelope__letter {
   opacity: 0;
-  transform: translateY(-150px);
   transition-delay: 0.5s;
 }
 @keyframes envelope-hint-pulse {
