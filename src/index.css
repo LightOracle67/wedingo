@@ -1742,7 +1742,12 @@ h6 {
 
 
 @keyframes spin {
+  from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+@keyframes godparent-glow {
+  0%, 100% { text-shadow: 0 0 8px rgba(200,184,152,0.15), 0 0 20px rgba(200,184,152,0.05); }
+  50% { text-shadow: 0 0 12px rgba(200,184,152,0.35), 0 0 30px rgba(200,184,152,0.15), 0 0 60px rgba(200,184,152,0.05); }
 }
 
 @media (prefers-reduced-motion: reduce) {
