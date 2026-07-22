@@ -116,6 +116,10 @@ export default function LandingPage() {
       saveSession("admin", username);
       setTokenLoginUsername(username);
       setIsTokenVerified(true);
+      try {
+        const cred = new PasswordCredential({ id: username, password: normalized, name: username });
+        navigator.credentials.store(cred);
+      } catch {}
       navigate(`/${target}`);
     } catch {
       setError(t("landing.errorVerifyFailed"));

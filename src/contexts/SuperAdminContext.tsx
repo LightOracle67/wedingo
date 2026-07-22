@@ -67,6 +67,10 @@ export function SuperAdminProvider({ children }: any) {
       saveSession("superadmin", result.user.email, { uid: result.user.uid });
       setUser(result.user);
       loggingInRef.current = false;
+      try {
+        const cred = new PasswordCredential({ id: email, password, name: email });
+        navigator.credentials.store(cred);
+      } catch {}
       return true;
     } catch (err: any) {
       loggingInRef.current = false;
