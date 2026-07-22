@@ -263,13 +263,12 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
         <div className="mt-3" style={{ position: "relative", userSelect: "none" }}>
           <div
             className="gallery-main-container"
-            style={{ display: "flex" }}
             tabIndex={0}
             role="group"
             aria-label={t("gallery.carouselLabel")}
             onKeyDown={handleContainerKeyDown}
           >
-            <div className="gallery-main-image-wrap" style={{ position: "relative" }}>
+            <div className="gallery-main-image-wrap">
               {fading && prevClamped !== null && mainLoaded[prevClamped] && (
                 <img
                   src={images[prevClamped].url || images[prevClamped]}
