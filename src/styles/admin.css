@@ -183,8 +183,8 @@ input.setup-input[type="date"] {
   border-right: none;
 }
 .setup-layout--full.setup-layout {
+  height: 80%;
   min-height: 100%;
-  height: 100%;
 }
 .setup-layout--full .setup-card--full {
   width: 100% !important;
