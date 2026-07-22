@@ -1,5 +1,4 @@
 const TARGET_SAMPLE_RATE = 22050;
-const MAX_DURATION_SEC = 60;
 
 function encodeWav(samples: Float32Array, sampleRate: number): ArrayBuffer {
   const numSamples = samples.length;
@@ -40,12 +39,9 @@ export async function compressAudio(file: File): Promise<string> {
     await audioCtx.close();
   }
 
-  const duration = audioBuffer.duration;
-  const renderDuration = Math.min(duration, MAX_DURATION_SEC);
+  const renderDuration = audioBuffer.duration;
   const renderSamples = Math.ceil(renderDuration * TARGET_SAMPLE_RATE);
-  const offsetSec = duration > MAX_DURATION_SEC
-    ? (duration - MAX_DURATION_SEC) / 2
-    : 0;
+  const offsetSec = 0;
 
   const offlineCtx = new OfflineAudioContext({
     numberOfChannels: 1,
@@ -73,8 +69,7 @@ export async function compressAudio(file: File): Promise<string> {
 }
 
 export function estimateAudioSize(durationSec: number): number {
-  const capped = Math.min(durationSec, MAX_DURATION_SEC);
-  const rawBytes = TARGET_SAMPLE_RATE * 2 * capped + 44;
+  const rawBytes = TARGET_SAMPLE_RATE * 2 * durationSec + 44;
   const dataUrlLen = Math.round(rawBytes * 4 / 3) + 22;
   const encryptedLen = dataUrlLen + 35;
   return Math.round(encryptedLen * 4 / 3);
