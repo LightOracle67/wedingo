@@ -334,6 +334,7 @@
     "replaceImage": "Change photo",
     "noValidFiles": "No valid files. Max 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "hidden",
+    "duplicateFileWarning": "This file has already been uploaded.",
     "galleryDescriptionSaveFailed": "Error saving description",
     "galleryDescriptionSaved": "Description saved",
     "currentMusic": "Selected music",

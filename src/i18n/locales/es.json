@@ -334,6 +334,7 @@
     "replaceImage": "Cambiar foto",
     "noValidFiles": "Ningún archivo válido. Máximo 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
+    "duplicateFileWarning": "Este archivo ya ha sido subido.",
     "galleryDescriptionSaveFailed": "Error al guardar la descripción",
     "galleryDescriptionSaved": "Descripción guardada",
     "currentMusic": "Música seleccionada",
