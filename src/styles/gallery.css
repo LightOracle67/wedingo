@@ -14,17 +14,16 @@
   margin: 0 auto;
 }
 .gallery-main-image-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
   width: 100%;
-  height: 100%;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
   border-radius: 0.7rem;
   background: rgba(0, 0, 0, 0.04);
 }
 .gallery-main-img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: contain;

@@ -288,7 +288,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
                 onError={() => setMainLoaded((p: any) => ({ ...p, [clamped]: true }))}
                 onClick={handleMainImageClick}
                 className={`gallery-main-img${!mainLoaded[clamped] ? " gallery-main-img--loading" : ""}${fading ? " gallery-blur-in" : ""}`}
-                style={{ position: fading ? "absolute" : "relative", cursor: "pointer" }}
+                style={{ cursor: "pointer" }}
               />
             </div>
 
