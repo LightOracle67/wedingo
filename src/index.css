@@ -1088,9 +1088,7 @@ p, h1, h2, h3, h4, h5, h6, span, a, li, label, td, th, button, input, textarea {
 body {
   font-family: var(--font-body);
   margin: 0;
-  height: 100dvh;
-  height: 100svh;
-  overflow: hidden;
+  min-height: 100dvh;
   isolation: isolate;
   background-color: #1f1b14;
   background-image: var(--wedding-background-image);
@@ -1163,14 +1161,12 @@ img {
   scroll-snap-align: start;
   flex-shrink: 0;
   width: 100%;
-  height: 100dvh;
-  height: 100svh;
-  min-height: 100vh;
+  min-height: 100dvh;
   isolation: isolate;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow-y: auto;
   transition:
     background-color 520ms ease,
     background-image 520ms ease;
@@ -1610,6 +1606,7 @@ img {
 @media (max-width: 640px) {
   .app-scene {
     inset: 0;
+    top: var(--navbar-height, 0px);
   }
 }
 
@@ -2267,7 +2264,8 @@ a:focus-visible {
   align-items: center;
   justify-content: space-between;
   padding: 0.35rem 1rem;
-  min-height: 2.2rem;
+  height: var(--navbar-height);
+  box-sizing: border-box;
   background: rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
