@@ -334,10 +334,10 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
                 <img
                   src={src}
                   alt={img.description || t("gallery.thumbnailAlt")}
-                  loading="lazy"
                   onLoad={handleThumbLoad}
+                  onError={handleThumbLoad}
                   data-index={i}
-                  style={{ width: "100%", height: "100%", objectFit: "cover", display: thumbLoaded[i] ? "block" : "none" }}
+                  style={{ width: "100%", height: "100%", objectFit: "cover", opacity: thumbLoaded[i] ? 1 : 0 }}
                 />
               </button>
             );
