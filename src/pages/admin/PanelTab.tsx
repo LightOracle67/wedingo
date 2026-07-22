@@ -24,8 +24,8 @@ const PanelTab = memo(function PanelTab(props: any) {
     try {
       const snap = await getDoc(invitationDocRef(inviteToken));
       if (!snap.exists()) { setRestoreMsg(t("panel.restoreNotFound")); return; }
-      const rawData = snap.data();
-      const data = [{ id: snap.id, ...rawData, bankInfo: rawData.bankInfo ? "[REDACTED]" : "" }];
+      const { bankInfo: _bank, ...safeData } = snap.data();
+      const data = [{ id: snap.id, ...safeData }];
       const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
@@ -39,15 +39,17 @@ const PanelTab = memo(function PanelTab(props: any) {
   const handleRestore = useCallback(async (e: any) => {
     const file = e.target.files?.[0];
     if (!file) return;
+    if (file.size > 10 * 1024 * 1024) { setRestoreMsg(t("panel.restoreTooLarge")); e.target.value = ""; return; }
     setRestoreMsg("");
     let count = 0;
     try {
       const text = await file.text();
       const data = JSON.parse(text);
-      if (!Array.isArray(data)) { setRestoreMsg(t("panel.restoreInvalid")); return; }
+      if (!Array.isArray(data) || !data.length || !data[0].id) { setRestoreMsg(t("panel.restoreInvalid")); return; }
       for (const item of data) {
-        if (!item.id) continue;
-        const { id, ...rest } = item;
+        if (!item.id || typeof item.id !== "string") continue;
+        const { id, bankInfo, ...rest } = item;
+        if (bankInfo && bankInfo !== "[REDACTED]") rest.bankInfo = bankInfo;
         await setDoc(invitationDocRef(id), rest);
         count++;
       }
