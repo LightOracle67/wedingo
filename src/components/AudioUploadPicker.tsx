@@ -1,4 +1,5 @@
 import { memo, useCallback, useRef, useState } from "react";
+import { compressAudio } from "../lib/audio-utils";
 
 const ALLOWED_AUDIO_TYPES = [
   "audio/mpeg", "audio/mp3", "audio/wav", "audio/ogg",
@@ -35,17 +36,12 @@ const AudioUploadPicker = memo(function AudioUploadPicker({ value, onChange, t }
       return;
     }
     try {
-      const dataUrl = await new Promise<string>((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result as string);
-        reader.onerror = () => reject(new Error("FileReader error"));
-        reader.readAsDataURL(file);
-      });
+      const dataUrl = await compressAudio(file);
       setFileName(file.name);
       setFileSize(file.size);
       onChange(dataUrl);
-    } catch {
-      setError(t("setup.audioReadError"));
+    } catch (err: any) {
+      setError(err?.message || t("setup.audioReadError"));
     }
     if (input) input.value = "";
   }, [onChange, t]);

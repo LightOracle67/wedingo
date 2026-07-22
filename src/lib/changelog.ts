@@ -8,6 +8,16 @@ export const CHANGELOG = [
     ],
   },
   {
+    version: "2.19.0",
+    date: "2026-07-22",
+    changes: [
+      "ALTO: AudioUploadPicker — ahora usa compressAudio (11kHz mono, máx 30s) en vez de FileReader raw (no cabía en Firestore 1MB)",
+      "PanelTab: eliminado window.confirm y restoreMsg debug",
+      "es.json: añadidas claves restoreConfirm y restoreTooLarge faltantes",
+      "LINT: imports no usados y dependencias innecesarias limpiadas",
+    ],
+  },
+  {
     version: "2.18.0",
     date: "2026-07-22",
     changes: [
