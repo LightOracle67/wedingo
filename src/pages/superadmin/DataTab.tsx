@@ -36,23 +36,17 @@ export default function DataTab() {
     let cancelled = false;
     (async () => {
       try {
-        const [invSnap, rsvpSnap, tokenSnap] = await Promise.all([
+        const [invSnap, rsvpSnap] = await Promise.all([
           getDocs(INVITATIONS_COLLECTION_REF),
           getDocs(RSVP_COLLECTION_REF),
-          getDocs(collection(db, "setupTokens")),
         ]);
         if (cancelled) return;
 
         // Construye contadores por inviteToken
         const rsvpCounts: Record<string, number> = {};
-        const tokenCounts: Record<string, number> = {};
         for (const d of rsvpSnap.docs) {
           const tk = d.data().inviteToken;
           if (tk) rsvpCounts[tk] = (rsvpCounts[tk] || 0) + 1;
-        }
-        for (const d of tokenSnap.docs) {
-          const tk = d.data().inviteToken;
-          if (tk) tokenCounts[tk] = (tokenCounts[tk] || 0) + 1;
         }
 
         const list = invSnap.docs.map((d: any) => {
@@ -64,7 +58,6 @@ export default function DataTab() {
             secondName: data.secondName || "",
             adminUsername: data.adminUsername || "",
             rsvpCount: rsvpCounts[token] || 0,
-            tokenCount: tokenCounts[token] || 0,
             weddingDate: data.weddingDay && data.weddingMonth && data.weddingYear
               ? `${data.weddingDay}/${data.weddingMonth}/${data.weddingYear}`
               : "",
@@ -166,16 +159,14 @@ export default function DataTab() {
   const exportAll = useCallback(async () => {
     setBusy(true);
     try {
-      const [invSnap, rsvpSnap, tokenSnap] = await Promise.all([
+      const [invSnap, rsvpSnap] = await Promise.all([
         getDocs(INVITATIONS_COLLECTION_REF),
         getDocs(RSVP_COLLECTION_REF),
-        getDocs(collection(db, "setupTokens")),
       ]);
       const data = {
         exportedAt: new Date().toISOString(),
         invitations: invSnap.docs.map((d: any) => ({ id: d.id, ...d.data() })),
         rsvps: rsvpSnap.docs.map((d: any) => ({ id: d.id, ...d.data() })),
-        tokens: tokenSnap.docs.map((d: any) => ({ id: d.id, ...d.data() })),
       };
       downloadJson("wedingo_full_export.json", data);
       addToast("success", t("superadmin.data.exportedAll", { count: invSnap.size }));
@@ -441,12 +432,6 @@ async function cascadeDelete(token: any) {
   // Gallery images
   const gallerySnap = await getDocs(collection(db, "invitations", token, "gallery"));
   for (const d of gallerySnap.docs) refsToDelete.push(d.ref);
-
-  // Setup tokens (busca por inviteToken)
-  const tokenSnap = await getDocs(collection(db, "setupTokens"));
-  for (const d of tokenSnap.docs) {
-    if (d.data().inviteToken === token) refsToDelete.push(d.ref);
-  }
 
   // Invitation doc (siempre al final)
   refsToDelete.push(doc(db, "invitations", token));
