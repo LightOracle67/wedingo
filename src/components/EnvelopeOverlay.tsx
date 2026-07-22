@@ -27,7 +27,12 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secon
     }
     setShowText(false);
     setExiting(true);
-    setTimeout(() => onOpen(), 3500);
+    setTimeout(() => {
+      document.body.style.overflow = "";
+      const main = document.getElementById("main-content");
+      if (main) main.focus({ preventScroll: true });
+      onOpen();
+    }, 3500);
   }, [onOpen, open, exiting]);
 
   return (

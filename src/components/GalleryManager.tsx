@@ -43,7 +43,7 @@ const GalleryManager = memo(function GalleryManager({ images, onChange, inviteTo
             <div style={{ display: "flex", gap: "0.5rem", alignItems: "flex-start" }}>
               <div style={{ position: "relative", flexShrink: 0 }}>
                 <img src={src} alt={desc || t("setup.galleryUploadLabel")} style={{ width: "5rem", height: "5rem", objectFit: "cover", borderRadius: "0.4rem" }} />
-                <button type="button" aria-label={t("setup.deleteImage")} onClick={() => handleDelete(i, item)} style={{ position: "absolute", top: "-4px", right: "-4px", width: "1.2rem", height: "1.2rem", borderRadius: "999px", border: "none", background: "rgba(0,0,0,0.65)", color: "#fff", fontSize: "0.7rem", cursor: "pointer", display: "grid", placeItems: "center", lineHeight: 1 }}>×</button>
+                <button type="button" aria-label={t("setup.deleteImage")} onClick={() => handleDelete(i, item)} style={{ position: "absolute", top: "-6px", right: "-6px", width: "2.2rem", height: "2.2rem", borderRadius: "999px", border: "none", background: "rgba(0,0,0,0.65)", color: "#fff", fontSize: "0.9rem", cursor: "pointer", display: "grid", placeItems: "center", lineHeight: 1 }}>×</button>
               </div>
               <span style={{ fontSize: "0.8rem", color: "var(--setup-muted)", fontWeight: 600, marginTop: "0.2rem" }}>#{i + 1}</span>
             </div>

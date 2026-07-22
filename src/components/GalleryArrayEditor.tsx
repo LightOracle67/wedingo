@@ -88,7 +88,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
         return next;
       });
     } catch {}
-  }, [inviteToken, slots]);
+  }, [inviteToken, slots, t]);
 
   const handleDescriptionChange = useCallback((slotIndex: any, val: any) => {
     setSlots((prev: any) => {
