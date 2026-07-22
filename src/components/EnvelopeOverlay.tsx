@@ -21,8 +21,8 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secon
     if (exiting) return;
     if (!open) {
       setOpen(true);
-      setTimeout(() => setShowWhite(true), 400);
-      setTimeout(() => setShowText(true), 900);
+      setTimeout(() => setShowWhite(true), 600);
+      setTimeout(() => setShowText(true), 1400);
       return;
     }
     setExiting(true);
