@@ -18,7 +18,7 @@ export async function uploadImage(inviteToken: any, file: any, onProgress?: any)
   if (!encrypted) throw new Error(i18n.t("errors.encryptFailed"));
   onProgress?.(70);
   const size = Math.round((encrypted.length * 3) / 4);
-  if (size > 800 * 1024) throw new Error(i18n.t("errors.imageTooLarge"));
+  if (size > 400 * 1024) throw new Error(i18n.t("errors.imageTooLarge"));
   onProgress?.(80);
   return { encrypted, dataUrl };
 }

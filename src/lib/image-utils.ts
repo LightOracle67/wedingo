@@ -1,7 +1,7 @@
 import i18n from "../i18n";
 
 const MAX_IMAGE_DIMENSION = 1600;
-const TARGET_BYTES = 500 * 1024;
+const TARGET_BYTES = 300 * 1024;
 
 export const compressImage = (file) =>
   new Promise((resolve, reject) => {

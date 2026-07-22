@@ -22,7 +22,7 @@ export function useAutoSave(hasStoredConfig, inviteToken, formData, config, onSa
       if (bgOrig) payload.backgroundImage = await encrypt(bgOrig, inviteToken);
       if (cpOrig) payload.couplePhoto = await encrypt(cpOrig, inviteToken);
       delete payload.musicFile;
-      await setDoc(invitationDocRef(inviteToken), payload);
+      await setDoc(invitationDocRef(inviteToken), payload, { merge: true });
       if (bgOrig) payload.backgroundImage = bgOrig;
       if (cpOrig) payload.couplePhoto = cpOrig;
       return payload;
