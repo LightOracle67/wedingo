@@ -71,7 +71,7 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }: any) {
 
   return (
     <div className="music-player">
-      {musicUrl ? <audio ref={audioRef} src={musicUrl} loop preload="auto" /> : null}
+      {musicUrl ? <audio ref={audioRef} src={musicUrl} loop autoPlay preload="auto" /> : null}
 
       <div className={`music-player__card${open ? " music-player__card--open" : ""}`}>
         <span className="music-player__track">{name}</span>
