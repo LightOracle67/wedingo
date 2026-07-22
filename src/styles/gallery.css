@@ -7,18 +7,19 @@
   place-items: center;
 }
 .gallery-main-container {
-  width: 95vw;
-  max-width: 95vw;
-  height: 95vh;
-  max-height: 95vh;
-  border-radius: 0.9rem;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(160deg, rgba(255,255,255,0.95) 0%, rgba(255,248,220,0.85) 40%, rgba(255,215,0,0.18) 100%);
-  padding: 0.75rem;
   box-sizing: border-box;
+  background: linear-gradient(160deg, rgba(255,255,255,0.95) 0%, rgba(255,248,220,0.85) 40%, rgba(255,215,0,0.18) 100%);
+  border-radius: 0.9rem;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  min-width: 95%;
+  height: 95%;
+  min-height: 95%;
+  padding: 0.75rem;
+  display: block;
+  position: relative;
+  margin: 0 auto;
 }
 .gallery-main-image-wrap {
   display: flex;
