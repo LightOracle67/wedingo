@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { getDocs, doc, collection, writeBatch, getDoc } from "firebase/firestore";
+import { getDocs, doc, collection, writeBatch, getDoc, query, where } from "firebase/firestore";
 import { db, INVITATIONS_COLLECTION_REF, RSVP_COLLECTION_REF, rsvpByInviteRef } from "../../lib/firebase";
 import { useToast } from "../../hooks/useToast";
 import { downloadJson } from "../../lib/file-utils";
@@ -121,9 +121,9 @@ export default function DataTab() {
         invitation: { id: token, ...(invDoc.exists() ? invDoc.data() : {}) },
         rsvps: rsvpSnap.docs.map((d: any) => ({ id: d.id, ...d.data() })),
       };
-      // Carga la galería si existe
+      // Carga la galería desde galleryData
       try {
-        const gallerySnap = await getDocs(collection(db, "invitations", token, "gallery"));
+        const gallerySnap = await getDocs(query(collection(db, "galleryData"), where("inviteToken", "==", token)));
         data.gallery = gallerySnap.docs.map((d: any) => ({ id: d.id, ...d.data() }));
       } catch { data.gallery = []; }
       downloadJson(`${token}_export.json`, data);

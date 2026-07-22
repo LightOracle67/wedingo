@@ -8,6 +8,20 @@ export const CHANGELOG = [
     ],
   },
   {
+    version: "2.18.0",
+    date: "2026-07-22",
+    changes: [
+      "CRÍTICO: AdminPage.tsx — importada useLocation (ReferenceError en uso de location.search)",
+      "CRÍTICO: AudioUploadPicker.tsx — reemplazada función inexistente readFileAsDataUrl por FileReader inline",
+      "CRÍTICO: chart-utils.tsx eliminado (código muerto, duplicado de AttendanceChart.tsx)",
+      "CRÍTICO: cascadeDelete duplicado eliminado de firebase.ts (solo estaba en DataTab.tsx)",
+      "ALTO: PrintPage.tsx — formatDate corregido (recibía day/month/year separados, ahora construye Date correcto)",
+      "ALTO: DataTab.tsx — acceso a galería corregido (usaba subcolección antigua, ahora galleryData)",
+      "ALTO: image-utils.ts — memory leak corregido (URL.createObjectURL ahora se revoca en onload/onerror)",
+      "LINT: Imports no usados eliminados (getDocs, writeBatch de firebase.ts)",
+    ],
+  },
+  {
     version: "2.17.2",
     date: "2026-07-22",
     changes: [

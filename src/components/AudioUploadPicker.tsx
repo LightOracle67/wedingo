@@ -35,7 +35,12 @@ const AudioUploadPicker = memo(function AudioUploadPicker({ value, onChange, t }
       return;
     }
     try {
-      const dataUrl = await readFileAsDataUrl(file);
+      const dataUrl = await new Promise<string>((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result as string);
+        reader.onerror = () => reject(new Error("FileReader error"));
+        reader.readAsDataURL(file);
+      });
       setFileName(file.name);
       setFileSize(file.size);
       onChange(dataUrl);

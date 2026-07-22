@@ -18,7 +18,7 @@
  */
 
 import { lazy, useCallback, useEffect, useMemo, useState } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate, useParams, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useApp } from "../contexts/AppContext";
 import { useToast } from "../hooks/useToast";
@@ -82,6 +82,7 @@ export default function AdminPage() {
   } = useApp();
 
   const { addToast } = useToast();
+  const location = useLocation();
 
   // ─── Muestra mensajes de auth como toasts ──────────────
   useEffect(() => {
@@ -106,7 +107,7 @@ export default function AdminPage() {
     else params.set("tab", tab);
     const qs = params.toString();
     window.history.replaceState(null, "", qs ? `${window.location.pathname}?${qs}` : window.location.pathname);
-  }, []);
+  }, [location.search]);
 
   /**
    * Filtra las entradas RSVP según el filtro de asistencia y la búsqueda.

@@ -2,7 +2,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useApp } from "../contexts/AppContext";
 import { useTranslation } from "react-i18next";
 import { randomMessage } from "../lib/invite-messages";
-import { formatDate } from "../lib/section-utils";
 import "../styles/print.css";
 
 export default function PrintPage() {
@@ -11,7 +10,11 @@ export default function PrintPage() {
   const printed = useRef(false);
   const [loaded, setLoaded] = useState(false);
 
-  const formattedDate = formatDate(config.weddingDay, config.weddingMonth, config.weddingYear);
+  const monthMap: any = { enero: 0, febrero: 1, marzo: 2, abril: 3, mayo: 4, junio: 5, julio: 6, agosto: 7, septiembre: 8, octubre: 9, noviembre: 10, diciembre: 11 };
+  const weddingDateObj = config.weddingDay && config.weddingMonth && config.weddingYear
+    ? new Date(Number(config.weddingYear), monthMap[config.weddingMonth] || 0, Number(config.weddingDay))
+    : null;
+  const formattedDate = weddingDateObj ? weddingDateObj.toLocaleDateString(navigator.language || "es", { dateStyle: "long" }) : "";
   const timeStr = config.weddingHour
     ? `${String(config.weddingHour).padStart(2, "0")}:${String(config.weddingMinute || "0").padStart(2, "0")}`
     : "";

@@ -34,6 +34,7 @@ export const compressImage = (file) =>
         const dataUrl = canvas.toDataURL("image/jpeg", quality);
         const estimatedBytes = Math.round((dataUrl.length * 3) / 4);
         if (estimatedBytes <= TARGET_BYTES || quality <= 0.2) {
+          URL.revokeObjectURL(img.src);
           resolve(dataUrl);
         } else {
           quality -= 0.1;
@@ -42,6 +43,6 @@ export const compressImage = (file) =>
       };
       tryQuality();
     };
-    img.onerror = () => reject(new Error(i18n.t("errors.readImageFailed")));
+    img.onerror = () => { URL.revokeObjectURL(img.src); reject(new Error(i18n.t("errors.readImageFailed"))); };
     img.src = URL.createObjectURL(file);
   });

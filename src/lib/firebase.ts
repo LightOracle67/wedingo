@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { collection, doc, initializeFirestore, getDocs, writeBatch, query, where } from "firebase/firestore";
+import { collection, doc, initializeFirestore, query, where } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 
@@ -27,19 +27,4 @@ export const INVITATIONS_COLLECTION_REF = collection(db, "invitations");
 export const RSVP_COLLECTION_REF = collection(db, "rsvpResponses");
 export const rsvpByInviteRef = (token) => query(RSVP_COLLECTION_REF, where("inviteToken", "==", token));
 
-/**
- * Elimina en cascada una invitación y todos sus datos asociados.
- */
-export async function cascadeDelete(token) {
-  const batch = writeBatch(db);
-  const rsvpSnap = await getDocs(rsvpByInviteRef(token));
-  for (const d of rsvpSnap.docs) batch.delete(d.ref);
-  const gallerySnap = await getDocs(collection(db, "invitations", token, "gallery"));
-  for (const d of gallerySnap.docs) batch.delete(d.ref);
-  const tokenSnap = await getDocs(collection(db, "setupTokens"));
-  for (const d of tokenSnap.docs) {
-    if (d.data().inviteToken === token) batch.delete(d.ref);
-  }
-  batch.delete(doc(db, "invitations", token));
-  await batch.commit();
-}
+
