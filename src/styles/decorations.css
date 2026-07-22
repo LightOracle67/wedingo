@@ -43,7 +43,7 @@
   object-fit: contain;
   opacity: var(--wedding-decoration-opacity, var(--wedding-decoration-image-opacity, 0.95));
   filter: var(--wedding-decoration-filter, none);
-  animation: wind-sway 4s ease-in-out infinite;
+  animation: wind-sway 7s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
   transform-origin: bottom center;
 }
 .wedding-decoration--left {
@@ -56,9 +56,12 @@
 }
 @keyframes wind-sway {
   0%, 100% { transform: rotate(0deg) scale(1); }
-  25% { transform: rotate(1.5deg) scale(1.03); }
-  50% { transform: rotate(-1deg) scale(0.97); }
-  75% { transform: rotate(0.8deg) scale(1.01); }
+  10% { transform: rotate(0.6deg) scale(1.008); }
+  25% { transform: rotate(-0.4deg) scale(0.996); }
+  40% { transform: rotate(0.8deg) scale(1.012); }
+  55% { transform: rotate(-0.5deg) scale(0.994); }
+  70% { transform: rotate(0.3deg) scale(1.005); }
+  85% { transform: rotate(-0.2deg) scale(0.998); }
 }
 .wedding-decoration--left .wedding-decoration__image {
   filter: var(--wedding-decoration-left-filter, none);
