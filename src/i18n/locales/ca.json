@@ -64,7 +64,8 @@
       "ariaLabel": "Barra d'administració",
       "fallback": "Administració"
     },
-    "saving": "Saving…"
+    "saving": "Saving…",
+    "menu": "Menu"
   },
   "landing": {
     "title": "Wedingo — Invitacions de casament",

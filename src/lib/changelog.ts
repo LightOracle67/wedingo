@@ -8,6 +8,14 @@ export const CHANGELOG = [
     ],
   },
   {
+    version: "2.16.7",
+    date: "2026-07-22",
+    changes: [
+      "Mobile: navbar reemplazado por botón hamburguesa + menú overlay a pantalla completa",
+      "Desktop: navbar sin cambios, hamburguesa oculta",
+    ],
+  },
+  {
     version: "2.16.6",
     date: "2026-07-22",
     changes: [

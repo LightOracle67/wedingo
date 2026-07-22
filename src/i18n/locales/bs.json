@@ -26,7 +26,8 @@
       "ariaLabel": "Administrativna traka",
       "fallback": "Administracija"
     },
-    "saving": "Saving…"
+    "saving": "Saving…",
+    "menu": "Menu"
   },
   "landing": {
     "title": "Wedingo — Pozivnice za vjenčanje",
