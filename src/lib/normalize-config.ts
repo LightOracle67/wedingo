@@ -21,7 +21,6 @@ export const normalizeConfig = (value) => ({
     typeof value?.theme === "string" && THEME_VALUES.has(value.theme.trim())
       ? value.theme.trim()
       : "golden",
-  backgroundImage: s(value?.backgroundImage),
   backgroundImageLabel: s(value?.backgroundImageLabel),
   backgroundImageSource: s(value?.backgroundImageSource),
   couplePhoto: s(value?.couplePhoto),

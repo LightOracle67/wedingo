@@ -60,18 +60,8 @@ function AppShell() {
   }, [formData.theme, config.theme, isEditingRoute]);
 
   useEffect(() => {
-    const bg = isEditingRoute ? null : config.backgroundImage;
-    let encoded = "none";
-    if (bg && (bg.startsWith("data:image/") || bg.startsWith("https://firebasestorage.googleapis.com") || bg.startsWith("https://storage.googleapis.com"))) {
-      if (bg.startsWith("data:image/")) {
-        const base64 = bg.split(",")[1] || "";
-        if (base64.length > 100 && /^[A-Za-z0-9+/=]+$/.test(base64)) encoded = `url('${bg}')`;
-      } else {
-        encoded = `url('${bg}')`;
-      }
-    }
-    document.documentElement.style.setProperty("--wedding-background-image", encoded);
-  }, [config.backgroundImage, isEditingRoute]);
+    document.documentElement.style.setProperty("--wedding-background-image", "none");
+  }, []);
 
   return (
     <>
