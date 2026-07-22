@@ -64,6 +64,13 @@ export default function LandingPage() {
       }
       const matchedInv = invSnap.docs[0];
       const target = matchedInv.id;
+      const matchedData = matchedInv.data();
+
+      if (matchedData.adminUsername && matchedData.adminUsername.toLowerCase() !== username.toLowerCase()) {
+        setError(t("landing.errorUsernameMismatch"));
+        setIsLoading(false);
+        return;
+      }
 
       const inviteSnap = await getDoc(invitationDocRef(target));
       if (inviteSnap.exists()) {
