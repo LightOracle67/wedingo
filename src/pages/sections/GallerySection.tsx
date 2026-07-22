@@ -267,7 +267,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
             aria-label={t("gallery.carouselLabel")}
             onKeyDown={handleContainerKeyDown}
           >
-            <div className="gallery-main-image-wrap">
+            <div className="gallery-main-image-wrap" style={{ position: "relative" }}>
               {fading && prevClamped !== null && mainLoaded[prevClamped] && (
                 <img
                   src={images[prevClamped].url || images[prevClamped]}
@@ -278,11 +278,15 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
                 />
               )}
 
+              {!mainLoaded[clamped] ? (
+                <div className="page-loading" style={{ position: "absolute", inset: 0, zIndex: 1 }} />
+              ) : null}
               <img
                 src={currentImage?.url || currentImage}
                 alt={currentImage?.description || t("gallery.imageAlt")}
                 loading="lazy"
                 onLoad={() => setMainLoaded((p: any) => ({ ...p, [clamped]: true }))}
+                onError={() => setMainLoaded((p: any) => ({ ...p, [clamped]: true }))}
                 onClick={handleMainImageClick}
                 className={`gallery-main-img${!mainLoaded[clamped] ? " gallery-main-img--loading" : ""}${fading ? " gallery-fade gallery-fade--in" : ""}`}
                 style={{ position: fading ? "absolute" : "relative", cursor: "pointer" }}

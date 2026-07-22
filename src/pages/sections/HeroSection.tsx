@@ -16,9 +16,11 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
         <div className="relative z-20">
           <div className="story-eyebrow">{t("hero.eyebrow")}</div>
           {couplePhoto ? (
-            <div className="mx-auto mb-4 w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-2" style={{ borderColor: "color-mix(in srgb, var(--invite-shell-border) 80%, transparent)", background: "color-mix(in srgb, var(--setup-field-bg) 50%, transparent)" }}>
-              {!photoLoaded ? <div className="page-loading" style={{ width: "100%", height: "100%", minHeight: 0 }} /> : null}
-              <img src={couplePhoto} alt={t("hero.couplePhotoAlt")} loading="lazy" onLoad={() => setPhotoLoaded(true)} className="w-full h-full object-cover" style={{ display: photoLoaded ? "block" : "none" }} />
+            <div className="mx-auto mb-4 w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-2" style={{ position: "relative", borderColor: "color-mix(in srgb, var(--invite-shell-border) 80%, transparent)", background: "color-mix(in srgb, var(--setup-field-bg) 50%, transparent)" }}>
+              <div className="w-full h-full" style={{ opacity: photoLoaded ? 1 : 0, transition: "opacity 0.3s ease" }}>
+                <img src={couplePhoto} alt={t("hero.couplePhotoAlt")} onLoad={() => setPhotoLoaded(true)} onError={() => setPhotoLoaded(true)} className="w-full h-full object-cover" />
+              </div>
+              {!photoLoaded ? <div className="page-loading" style={{ position: "absolute", inset: 0 }} /> : null}
             </div>
           ) : null}
           <div className="relative mx-auto w-fit">
