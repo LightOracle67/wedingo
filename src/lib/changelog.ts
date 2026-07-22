@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.16.2",
+    date: "2026-07-21",
+    changes: [
+      "Fix: admin panels overflow inferior — setup-card--wide usaba calc(100dvh - navbar) sin restar padding del contenedor padre; cambiado a height: 100%",
+    ],
+  },
+  {
     version: "2.16.1",
     date: "2026-07-21",
     changes: [
