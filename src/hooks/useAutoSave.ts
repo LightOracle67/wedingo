@@ -41,11 +41,23 @@ export function useAutoSave(hasStoredConfig, inviteToken, formData, config, onSa
       if (result && onSaveMessage) {
         onSaveMessage(t("autosave.saved"));
       }
-    }, 3000);
+    }, 1500);
     return () => {
-      if (autoSaveTimerRef.current) clearTimeout(autoSaveTimerRef.current);
+      if (autoSaveTimerRef.current) {
+        clearTimeout(autoSaveTimerRef.current);
+        autoSaveTimerRef.current = null;
+      }
     };
   }, [formData, hasStoredConfig, inviteToken, doSave, config, onSaveMessage, t]);
+
+  useEffect(() => {
+    return () => {
+      if (autoSaveTimerRef.current) {
+        clearTimeout(autoSaveTimerRef.current);
+        autoSaveTimerRef.current = null;
+      }
+    };
+  }, []);
 
   return { autoSaveTimerRef, doSave };
 }
