@@ -14,7 +14,7 @@ const AuthContext = createContext<any>(null);
 export function AuthProvider({ children }: any) {
   const { t } = useTranslation();
   const { setAdminMessage, setAdminMessageType } = useAppUI();
-  const { inviteToken, config, setHasStoredConfig, isConfigLoading, hasStoredConfig, registerOnFirstSave } = useConfig();
+  const { inviteToken, config, setHasStoredConfig, registerOnFirstSave } = useConfig();
   const location = useLocation();
 
   const auth = useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessageType, setHasStoredConfig);
@@ -46,12 +46,6 @@ export function AuthProvider({ children }: any) {
   useEffect(() => {
     registerOnFirstSave(() => onFirstSaveRef.current());
   }, [registerOnFirstSave]);
-
-  // ── Token regeneration effect (moved from AppProvider) ──
-  useEffect(() => {
-    if (isConfigLoading || hasStoredConfig || !inviteToken) return;
-    (async () => { await auth.refreshSetupToken(); })();
-  }, [isConfigLoading, hasStoredConfig, inviteToken, auth]);
 
   // ── Clear auth messages on route change ──
   useEffect(() => {
