@@ -34,11 +34,17 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }: any) {
     if (!el || !musicUrl) return;
     const onError = () => { setLoading(false); setError(true); setPlaying(false); };
     const onEnded = () => setPlaying(false);
+    const onPlay = () => { setPlaying(true); setError(false); setLoading(false); };
+    const onPause = () => { setPlaying(false); };
     el.addEventListener("error", onError);
     el.addEventListener("ended", onEnded);
+    el.addEventListener("play", onPlay);
+    el.addEventListener("pause", onPause);
     return () => {
       el.removeEventListener("error", onError);
       el.removeEventListener("ended", onEnded);
+      el.removeEventListener("play", onPlay);
+      el.removeEventListener("pause", onPause);
     };
   }, [musicUrl]);
 
