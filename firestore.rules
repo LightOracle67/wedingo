@@ -62,18 +62,12 @@ service cloud.firestore {
 
       match /gallery/{imageId} {
         allow read: if true;
-        allow create: if isAuthenticatedAdmin(tokenId);
-        allow update: if isAuthenticatedAdmin(tokenId)
-          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['description'])
-          && request.resource.data.description is string
-          && request.resource.data.description.size() <= 200;
-        allow delete: if isSuperAdmin() || isAuthenticatedAdmin(tokenId);
+        allow create, update, delete: if true;
       }
 
       match /audio/{docId} {
         allow read: if true;
-        allow create: if isAuthenticatedAdmin(tokenId);
-        allow delete: if isSuperAdmin() || isAuthenticatedAdmin(tokenId);
+        allow create, delete: if true;
       }
     }
 
