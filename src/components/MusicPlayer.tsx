@@ -36,15 +36,18 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }: any) {
     const onEnded = () => setPlaying(false);
     const onPlay = () => { setPlaying(true); setError(false); setLoading(false); };
     const onPause = () => { setPlaying(false); };
+    const onPlayAudio = () => { el.play().then(() => setPlaying(true)).catch(() => {}); };
     el.addEventListener("error", onError);
     el.addEventListener("ended", onEnded);
     el.addEventListener("play", onPlay);
     el.addEventListener("pause", onPause);
+    window.addEventListener("wedin:play-audio", onPlayAudio);
     return () => {
       el.removeEventListener("error", onError);
       el.removeEventListener("ended", onEnded);
       el.removeEventListener("play", onPlay);
       el.removeEventListener("pause", onPause);
+      window.removeEventListener("wedin:play-audio", onPlayAudio);
     };
   }, [musicUrl]);
 
