@@ -26,6 +26,7 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secon
       return;
     }
     setExiting(true);
+    try { window.dispatchEvent(new CustomEvent("wedin:play-audio")); } catch {}
     setTimeout(() => {
       document.body.style.overflow = "";
       const main = document.getElementById("main-content");
