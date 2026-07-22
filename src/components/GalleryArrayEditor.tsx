@@ -32,7 +32,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
       const newSlots: any[] = Array.from({ length: SLOT_COUNT }, () => null);
       for (const img of images) {
         if (img.position !== undefined && img.position < SLOT_COUNT) {
-          newSlots[img.position] = { id: img.id, url: img.url, description: img.description || "" };
+          newSlots[img.position] = { id: img.id, url: img.url, description: img.description || "", originalName: img.originalName || "", originalSize: img.originalSize || 0 };
         }
       }
       setSlots(newSlots);
@@ -53,6 +53,9 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
     if (!ALLOWED_UPLOAD_TYPES.has(file.type)) { addToast("error", t("setup.errorFileFormat")); if (input) input.value = ""; return; }
     if (file.size > MAX_UPLOAD_SIZE_BYTES) { addToast("error", t("setup.errorFileSize")); if (input) input.value = ""; return; }
 
+    const duplicate = slots.some((s: any) => s && s.originalName === file.name && s.originalSize === file.size);
+    if (duplicate) { addToast("warning", t("setup.duplicateFileWarning")); if (input) input.value = ""; return; }
+
     setUploadingSlots((prev: any) => new Set(prev).add(slotIndex));
     const upload = startUploadToast(t("setup.galleryUploading", { total: 1 }));
     try {
@@ -62,10 +65,10 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
       if (existing?.id) {
         await deleteGalleryImage(inviteToken, existing.id);
       }
-      const saved = await addGalleryImage(inviteToken, encrypted, dataUrl, slotIndex, (p: any) => upload.update(85 + Math.round(p * 0.1)));
+      const saved = await addGalleryImage(inviteToken, encrypted, dataUrl, slotIndex, (p: any) => upload.update(85 + Math.round(p * 0.1)), file.name, file.size);
       setSlots((prev: any) => {
         const next = [...prev];
-        next[slotIndex] = { id: saved.id, url: saved.dataUrl, description: "" };
+        next[slotIndex] = { id: saved.id, url: saved.dataUrl, description: "", originalName: file.name, originalSize: file.size };
         return next;
       });
       upload.complete(t("setup.galleryUploadSuccess", { count: 1 }));

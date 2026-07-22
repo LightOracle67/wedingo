@@ -21,13 +21,15 @@ export async function uploadImage(inviteToken: any, file: any, onProgress?: any)
   return { encrypted, dataUrl };
 }
 
-export async function addGalleryImage(inviteToken, encrypted, dataUrl, position, onProgress) {
+export async function addGalleryImage(inviteToken, encrypted, dataUrl, position, onProgress, originalName?, originalSize?) {
   onProgress?.(85);
   const docRef = await addDoc(galCol(inviteToken), {
     data: encrypted,
     description: "",
     position: position ?? 0,
     createdAt: new Date().toISOString(),
+    originalName: originalName || "",
+    originalSize: originalSize || 0,
   });
   onProgress?.(95);
   return { id: docRef.id, dataUrl };
@@ -66,6 +68,8 @@ export async function loadGallery(inviteToken) {
             url,
             position: d.data().position,
             description: d.data().description || "",
+            originalName: d.data().originalName || "",
+            originalSize: d.data().originalSize || 0,
           });
         } catch {}
       }
