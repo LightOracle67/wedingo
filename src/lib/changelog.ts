@@ -1,5 +1,15 @@
 export const CHANGELOG = [
   {
+    version: "2.16.1",
+    date: "2026-07-21",
+    changes: [
+      "Fix: story-section altura cambiada de 100dvh a min-height:100dvh + overflow-y:auto (contenido no se cortaba abajo)",
+      "Fix: body sin height fija (evita clipping de 2.5rem por padding-top)",
+      "Fix: mobile app-scene mantiene top:var(--navbar-height)",
+      "Fix: app-footer con height explícita = var(--navbar-height) y box-sizing:border-box",
+    ],
+  },
+  {
     version: "2.16.0",
     date: "2026-07-21",
     changes: [
