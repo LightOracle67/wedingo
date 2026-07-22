@@ -8,6 +8,15 @@ export const CHANGELOG = [
     ],
   },
   {
+    version: "2.23.0",
+    date: "2026-07-22",
+    changes: [
+      "CRÍTICO: ConfigContext.save — musicFile se perdía tras guardar (delete payload.musicFile sin restaurar). Ahora se preserva mfOrig en config/formData.",
+      "MusicArrayEditor: reemplazados controles nativos de audio (bug Safari AirPlay) por botón play/pause",
+      "Nuevas claves de traducción: music.play, music.pause, music.playing",
+    ],
+  },
+  {
     version: "2.22.0",
     date: "2026-07-22",
     changes: [
