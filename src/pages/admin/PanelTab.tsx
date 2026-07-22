@@ -1,6 +1,7 @@
 import { memo, useCallback, useMemo, useRef } from "react";
 import { getDoc, updateDoc } from "firebase/firestore";
 import { useTranslation } from "react-i18next";
+import { useToast } from "../../hooks/useToast";
 import { invitationDocRef } from "../../lib/firebase";
 import { calcRSVPSummary, getDietarySummary } from "../../lib/admin-utils";
 import { DonutChart, Legend } from "../../components/AttendanceChart";
@@ -13,6 +14,7 @@ const PanelTab = memo(function PanelTab(props: any) {
 } = config;
   const { formatDate, onRestore, visitCount } = props;
   const { t } = useTranslation();
+  const { addToast } = useToast();
   const inviteUrl = `${window.location.origin}/${inviteToken}`;
   const restoreRef = useRef<any>(null);
 
@@ -35,7 +37,7 @@ const PanelTab = memo(function PanelTab(props: any) {
     } catch {
       addToast("error", t("errors.backupFailed"));
     }
-  }, [inviteToken, t]);
+  }, [inviteToken, t, addToast]);
 
   const handleRestore = useCallback(async (e: any) => {
     const file = e.target.files?.[0];
@@ -56,7 +58,7 @@ const PanelTab = memo(function PanelTab(props: any) {
       addToast("error", t("errors.restoreFailed"));
     }
     e.target.value = "";
-  }, [onRestore, t]);
+  }, [onRestore, t, addToast]);
 
   return (
     <>

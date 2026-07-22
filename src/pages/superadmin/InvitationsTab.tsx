@@ -75,7 +75,7 @@ const InvitationsTab = memo(function InvitationsTab() {
           onClick={handleExportAll}
           disabled={!invitations.length}
         >
-          {t("superadmin.exportAllBtn")}
+          {t("superadmin.data.exportAllBtn")}
         </button>
       </div>
 

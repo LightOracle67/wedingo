@@ -115,7 +115,7 @@ export default function DateSectionForm({ prefix = "" }) {
           >
             <option value="" disabled>{t("setup.monthPlaceholder")}</option>
             {MONTH_OPTIONS.map((mo) => (
-              <option key={mo.value} value={mo.value}>{mo.label}</option>
+              <option key={mo.value} value={mo.value}>{t("monthNames." + mo.value)}</option>
             ))}
           </select>
         </div>
