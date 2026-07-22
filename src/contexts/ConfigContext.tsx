@@ -422,7 +422,7 @@ export function ConfigProvider({ children }: any) {
       if (cpOrig) payload.couplePhoto = await encrypt(cpOrig, inviteToken);
       delete payload.musicFile;
       payload.privacyPolicyVersion = PRIVACY_POLICY_VERSION;
-      await setDoc(invitationDocRef(inviteToken), payload);
+      await setDoc(invitationDocRef(inviteToken), payload, { merge: true });
       if (payload.bankInfo) payload.bankInfo = await decrypt(payload.bankInfo, inviteToken);
       if (bgOrig) payload.backgroundImage = bgOrig;
       if (cpOrig) payload.couplePhoto = cpOrig;

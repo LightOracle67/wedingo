@@ -47,6 +47,12 @@ export function AuthProvider({ children }: any) {
     registerOnFirstSave(() => onFirstSaveRef.current());
   }, [registerOnFirstSave]);
 
+  // ── Token regeneration effect ──
+  useEffect(() => {
+    if (!inviteToken) return;
+    (async () => { await auth.refreshSetupToken(); })();
+  }, [inviteToken, auth]);
+
   // ── Clear auth messages on route change ──
   useEffect(() => {
     auth.setAuthMessage("");
