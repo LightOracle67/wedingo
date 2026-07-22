@@ -31,9 +31,9 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
                 className="invite-rings block h-auto w-[clamp(11rem,44vw,18rem)] object-contain object-center sm:w-[clamp(13rem,34vw,20rem)]"
               />
             </div>
-            <h1 className="story-title relative z-10">
-              {firstName} & {secondName}
-            </h1>
+              <h1 className="story-title relative z-10">
+                {firstName || ""} & {secondName || ""}
+              </h1>
           </div>
           <p className="story-copy mt-3 sm:mt-4">
             {inviteMessage}

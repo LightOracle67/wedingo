@@ -93,9 +93,20 @@ export default function AdminPage() {
   }, [adminMessage, adminMessageType, addToast]);
 
   // ─── Estados locales de UI ─────────────────────────────
-  const [activeTab, setActiveTab] = useState("panel");
+  const tabFromUrl = new URLSearchParams(location.search).get("tab") || "panel";
+  const [activeTab, setActiveTab] = useState(tabFromUrl);
   const [searchQuery, setSearchQuery] = useState("");
   const [attendanceFilter, setAttendanceFilter] = useState("all");
+
+  // Sync tab changes to URL
+  const handleSetTab = useCallback((tab: any) => {
+    setActiveTab(tab);
+    const params = new URLSearchParams(location.search);
+    if (tab === "panel") params.delete("tab");
+    else params.set("tab", tab);
+    const qs = params.toString();
+    window.history.replaceState(null, "", qs ? `${window.location.pathname}?${qs}` : window.location.pathname);
+  }, []);
 
   /**
    * Filtra las entradas RSVP según el filtro de asistencia y la búsqueda.
@@ -262,7 +273,7 @@ export default function AdminPage() {
               aria-selected={activeTab === tab.key}
               aria-controls={"tabpanel-" + tab.key}
               className={`admin-tab ${activeTab === tab.key ? "admin-tab--active" : ""}`}
-              onClick={() => setActiveTab(tab.key)}
+              onClick={() => handleSetTab(tab.key)}
             >
               {t(`admin.tabs.${(TAB_KEY_MAP as any)[tab.key]}`)}
             </button>

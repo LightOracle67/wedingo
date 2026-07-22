@@ -12,7 +12,7 @@
  * @module SetupForm
  */
 
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation, Trans } from "react-i18next";
 import { useApp } from "../contexts/AppContext";
 import { useToast } from "../hooks/useToast";
@@ -40,17 +40,18 @@ export default function SetupForm({ prefix = "" }) {
     formData, updateFormField, handleSaveSetup,
     saveMessage, saveError, isTokenVerified, hasStoredConfig, setLegalModal,
   } = useApp();
+  const [saving, setSaving] = useState(false);
 
   const { addToast } = useToast();
   const { t } = useTranslation();
 
   // ── Muestra mensajes de éxito/error como toasts ─────────
   useEffect(() => {
-    if (saveMessage) addToast("success", saveMessage);
+    if (saveMessage) { addToast("success", saveMessage); setSaving(false); }
   }, [saveMessage, addToast]);
 
   useEffect(() => {
-    if (saveError) addToast("error", saveError);
+    if (saveError) { addToast("error", saveError); setSaving(false); }
   }, [saveError, addToast]);
 
   /**
@@ -152,8 +153,8 @@ export default function SetupForm({ prefix = "" }) {
 
       {/* ── Botón de guardar ── */}
       <div className="setup-actions">
-        <button className="setup-button" type="submit">
-          {t("common.save")}
+        <button className="setup-button" type="submit" disabled={saving} onClick={() => setSaving(true)}>
+          {saving ? <span className="page-loading" style={{ width: "1.2rem", height: "1.2rem", display: "inline-block", verticalAlign: "middle", minHeight: 0 }} /> : t("common.save")}
         </button>
       </div>
     </form>
