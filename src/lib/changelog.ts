@@ -8,6 +8,14 @@ export const CHANGELOG = [
     ],
   },
   {
+    version: "2.24.0",
+    date: "2026-07-22",
+    changes: [
+      "CRÍTICO: audio-utils MAX_DURATION_SEC 30→20s (doble base64 superaba 1MB Firestore, upload fallaba silenciosamente)",
+      "MusicPlayer en SetupPage (preview de invitación)",
+    ],
+  },
+  {
     version: "2.23.0",
     date: "2026-07-22",
     changes: [

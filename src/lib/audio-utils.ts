@@ -1,5 +1,5 @@
 const TARGET_SAMPLE_RATE = 11025;
-const MAX_DURATION_SEC = 30;
+const MAX_DURATION_SEC = 20;
 
 function encodeWav(samples: Float32Array, sampleRate: number): ArrayBuffer {
   const numSamples = samples.length;
