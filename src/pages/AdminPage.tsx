@@ -105,8 +105,8 @@ export default function AdminPage() {
     if (tab === "panel") params.delete("tab");
     else params.set("tab", tab);
     const qs = params.toString();
-    window.history.replaceState(null, "", qs ? `${window.location.pathname}?${qs}` : window.location.pathname);
-  }, [location.search]);
+    window.history.replaceState(null, "", qs ? `${location.pathname}?${qs}` : location.pathname);
+  }, [location.search, location.pathname]);
 
   /**
    * Filtra las entradas RSVP según el filtro de asistencia y la búsqueda.

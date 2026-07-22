@@ -542,6 +542,7 @@
     "readImageFailed": "Could not read the image file.",
     "encryptFailed": "Image encryption failed.",
     "imageTooLarge": "The image is too large even after compression.",
+    "autoSaveFailed": "Could not auto-save the configuration.",
     "backupFailed": "Could not download the backup.",
     "clipboardCopyFailed": "Could not copy to clipboard.",
     "statsLoadFailed": "Could not load the statistics.",
