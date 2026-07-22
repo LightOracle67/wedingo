@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 
-const AccessTab = memo(function AccessTab({ setupToken, handleResetTokenFromAdmin, handleAdminLogout, confirmTokenInput, setConfirmTokenInput, handleDeleteInvitation }: any) {
+const AccessTab = memo(function AccessTab({ setupToken, handleResetTokenFromAdmin, handleAdminLogout, handleDeleteInvitation }: any) {
   const { t } = useTranslation();
   return (
     <>
@@ -18,22 +18,6 @@ const AccessTab = memo(function AccessTab({ setupToken, handleResetTokenFromAdmi
           placeholder={t("access.newTokenPlaceholder")}
         />
         {setupToken ? <p className="setup-token-display">{t("access.activeToken")}</p> : null}
-
-        <label className="setup-label" htmlFor="accessConfirmReset">
-          {t("access.confirmLabel")}
-        </label>
-        <p className="setup-help setup-help--tight">
-          {t("access.currentTokenDescription")}
-        </p>
-        <input
-          id="accessConfirmReset"
-          className="setup-input"
-          value={confirmTokenInput}
-          onChange={(e) => setConfirmTokenInput(e.target.value)}
-          placeholder={t("access.currentTokenPlaceholder")}
-          autoComplete="off"
-          spellCheck="false"
-        />
 
         <div className="setup-actions">
           <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleResetTokenFromAdmin}>

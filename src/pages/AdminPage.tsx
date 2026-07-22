@@ -76,7 +76,6 @@ export default function AdminPage() {
     adminMessage, adminMessageType,
     handleAdminLogout, handleResetTokenFromAdmin,
     handleClearRsvpEntries, handleDeleteInvitation,
-    confirmTokenInput, setConfirmTokenInput,
     formattedDate,
     reloadConfig,
   } = useApp();
@@ -304,14 +303,12 @@ export default function AdminPage() {
 
           {/* Pestaña: Gestión de acceso */}
           {activeTab === "acceso" && (
-            <AccessTab
-              setupToken={setupToken}
-              handleResetTokenFromAdmin={handleResetTokenFromAdmin}
-              handleAdminLogout={handleAdminLogout}
-              confirmTokenInput={confirmTokenInput}
-              setConfirmTokenInput={setConfirmTokenInput}
-              handleDeleteInvitation={handleDeleteInvitation}
-            />
+             <AccessTab
+               setupToken={setupToken}
+               handleResetTokenFromAdmin={handleResetTokenFromAdmin}
+               handleAdminLogout={handleAdminLogout}
+               handleDeleteInvitation={handleDeleteInvitation}
+             />
           )}
 
           {/* Pestaña: Soporte */}

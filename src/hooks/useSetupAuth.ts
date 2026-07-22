@@ -437,20 +437,12 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
    * Similar a handleResetSetupToken pero con mensajes dirigidos al admin.
    */
   const handleResetTokenFromAdmin = useCallback(async () => {
-    const storageKey = `wedin_setup_token_${inviteToken || ""}`;
-    const storedToken = safeGetItem(storageKey, sessionStorage) || "";
-    const currentToken = setupToken || storedToken;
-    if (!currentToken || confirmTokenInput !== currentToken) {
-      setAdminMessageType("error");
-      setAdminMessage(t("auth.currentTokenRequired"));
-      return;
-    }
     setAdminMessage("");
-    await refreshSetupToken(currentToken);
+    await refreshSetupToken(setupToken || safeGetItem(`wedin_setup_token_${inviteToken || ""}`, sessionStorage) || "");
     setAdminMessageType("success");
     setAdminMessage(t("auth.tokenRenewedAdmin"));
     setConfirmTokenInput("");
-  }, [refreshSetupToken, setupToken, confirmTokenInput, setAdminMessage, setAdminMessageType, inviteToken, t]);
+  }, [refreshSetupToken, setupToken, setAdminMessage, setAdminMessageType, inviteToken, t]);
 
   return {
     setupToken, setSetupToken,
