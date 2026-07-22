@@ -162,7 +162,6 @@
   transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
   box-shadow: 0 18px 60px rgba(0,0,0,0.5);
   border-radius: 6px;
-  overflow: hidden;
 }
 .envelope__panel {
   position: absolute; inset: 0;
