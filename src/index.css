@@ -1746,8 +1746,8 @@ h6 {
   to { transform: rotate(360deg); }
 }
 @keyframes godparent-glow {
-  0%, 100% { text-shadow: 0 0 8px color-mix(in srgb, var(--flower-accent, #d8b24a) 20%, transparent), 0 0 20px color-mix(in srgb, var(--flower-accent, #d8b24a) 8%, transparent); }
-  50% { text-shadow: 0 0 14px color-mix(in srgb, var(--flower-accent, #d8b24a) 45%, transparent), 0 0 35px color-mix(in srgb, var(--flower-accent, #d8b24a) 20%, transparent), 0 0 70px color-mix(in srgb, var(--flower-accent, #d8b24a) 8%, transparent); }
+  0%, 100% { text-shadow: 0 0 12px color-mix(in srgb, var(--flower-accent, #d8b24a) 30%, transparent), 0 0 30px color-mix(in srgb, var(--flower-accent, #d8b24a) 12%, transparent), 0 0 60px color-mix(in srgb, var(--flower-accent, #d8b24a) 5%, transparent); }
+  50% { text-shadow: 0 0 18px color-mix(in srgb, var(--flower-accent, #d8b24a) 60%, transparent), 0 0 45px color-mix(in srgb, var(--flower-accent, #d8b24a) 30%, transparent), 0 0 90px color-mix(in srgb, var(--flower-accent, #d8b24a) 12%, transparent), 0 0 140px color-mix(in srgb, var(--flower-accent, #d8b24a) 5%, transparent); }
 }
 
 @media (prefers-reduced-motion: reduce) {

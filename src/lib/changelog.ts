@@ -9,6 +9,13 @@ export const CHANGELOG = [
   },
   {
     version: "2.16.4",
+    date: "2026-07-22",
+    changes: [
+      "Fix: unificadas .story-calendar-actions .setup-button y .story-map__actions .setup-button, padding 2%",
+    ],
+  },
+  {
+    version: "2.16.3",
     date: "2026-07-21",
     changes: [
       "Fix: setup-form hijos con width:100% sin stretch (altura=contenido, ancho=100%)",

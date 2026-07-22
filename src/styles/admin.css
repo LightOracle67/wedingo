@@ -43,13 +43,10 @@
   font-size: 0.85rem;
   margin-bottom: 0.15rem;
 }
-.story-calendar-actions .setup-button {
-  text-decoration: none;
-  padding: 0;
-}
+.story-calendar-actions .setup-button,
 .story-map__actions .setup-button {
+  padding: 2%;
   text-decoration: none;
-  padding: 0;
 }
 .rsvp-form .setup-label {
   display: block;
