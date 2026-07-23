@@ -417,6 +417,7 @@
     "tableName": "Nombre",
     "tableAttendance": "Asistencia",
     "tableCompanions": "Acompañantes",
+    "tableAttendees": "Asistentes",
     "tableMenu": "Menú",
     "tableDiet": "Info alimentaria",
     "tableNote": "Nota",

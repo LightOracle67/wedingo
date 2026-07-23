@@ -4,13 +4,36 @@ import { getDietarySummary } from "../../lib/admin-utils";
 
 const PAGE_SIZES = [10, 25, 50, 100];
 
+function parseDietaryItems(dietaryInfo: string): string[] {
+  if (!dietaryInfo) return [];
+  return dietaryInfo.split(" | ").map((s) => s.trim()).filter((s) => s && !s.startsWith("Menú:"));
+}
+
+function formatMenuLines(mhc: Record<string, number>): string[] {
+  const lines: string[] = [];
+  if (mhc.carne) lines.push(`Carne: ${mhc.carne}`);
+  if (mhc.pescado) lines.push(`Pescado: ${mhc.pescado}`);
+  if (mhc.vegano) lines.push(`Vegano: ${mhc.vegano}`);
+  return lines.length ? lines : ["—"];
+}
+
+function getDietaryLines(dietaryInfo: string, companions: number): { item: string; count: number }[] {
+  const items = parseDietaryItems(dietaryInfo);
+  if (!items.length) return [];
+  const counts: Record<string, number> = {};
+  for (const item of items) {
+    counts[item] = (counts[item] || 0) + (companions || 1);
+  }
+  return Object.entries(counts).map(([item, count]) => ({ item, count }));
+}
+
 const AttendanceTab = memo(function AttendanceTab(props: any) {
   const config = props.config;
   const {
-  searchQuery, setSearchQuery,
-  attendanceFilter, setAttendanceFilter,
-  filteredEntries, exportPdf,
-} = config;
+    searchQuery, setSearchQuery,
+    attendanceFilter, setAttendanceFilter,
+    filteredEntries, exportPdf,
+  } = config;
   const { rsvpEntries, handleClearRsvpEntries, formatDate } = config;
   const { t } = useTranslation();
   const [page, setPage] = useState(0);
@@ -59,55 +82,83 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
         </span>
       </div>
 
-      {dietary.length > 0 && (
-        <div className="setup-token-card" style={{ marginBottom: "0.75rem", padding: "0.5rem 0.75rem" }}>
-          <details>
-            <summary style={{ cursor: "pointer", fontSize: "0.8rem", fontWeight: 600, color: "var(--setup-title)" }}>
-              {t("attendance.dietarySummary", { count: dietary.length })}
-            </summary>
-            <div style={{ marginTop: "0.4rem", display: "flex", flexDirection: "column", gap: "0.2rem" }}>
-              {dietary.map((d: any) => (
-                <div key={d.item} style={{ display: "flex", justifyContent: "space-between", fontSize: "0.8rem" }}>
-                  <span style={{ textTransform: "capitalize" }}>{d.item}</span>
-                  <span style={{ fontWeight: 600 }}>{d.count}</span>
-                </div>
-              ))}
-            </div>
-          </details>
-        </div>
-      )}
-
       <div aria-live="polite" aria-atomic="true">
       {filterEntries.length > 0 ? (
-        <div className="admin-table-wrapper">
-          <table className="admin-table">
+        <div className="admin-table-wrapper" style={{ overflowX: "auto" }}>
+          <table className="admin-table" style={{ fontSize: "0.8rem", minWidth: "700px" }}>
             <thead>
               <tr>
-                <th>{t("attendance.tableName")}</th>
-                <th>{t("attendance.tableAttendance")}</th>
-                <th>{t("attendance.tableCompanions")}</th>
-                <th>{t("attendance.tableMenu")}</th>
-                <th>{t("attendance.tableDiet")}</th>
-                <th>{t("attendance.tableNote")}</th>
-                <th>{t("attendance.tableDate")}</th>
+                <th style={{ minWidth: "100px" }}>{t("attendance.tableName")}</th>
+                <th style={{ minWidth: "70px" }}>{t("attendance.tableAttendance")}</th>
+                <th style={{ minWidth: "140px" }}>{t("attendance.tableAttendees")}</th>
+                <th style={{ minWidth: "120px" }}>{t("attendance.tableMenu")}</th>
+                <th style={{ minWidth: "140px" }}>{t("attendance.tableDiet")}</th>
+                <th style={{ minWidth: "120px" }}>{t("attendance.tableDate")}</th>
               </tr>
             </thead>
             <tbody>
-              {paginated.map((entry: any) => (
-                <tr key={entry.id}>
-                  <td className="admin-table__name">{entry.guestName}</td>
-                  <td>
-                    <span className={`admin-badge admin-badge--${entry.attendance}`}>
-                      {entry.attendance === "yes" ? t("attendance.attendingValue") : t("attendance.notAttendingValue")}
-                    </span>
-                  </td>
-                  <td>{entry.attendance === "yes" ? entry.companions : "—"}</td>
-                  <td className="admin-table__menu">{entry.attendance === "yes" && entry.menuHeadcounts ? formatMenuHeadcounts(entry.menuHeadcounts) : "—"}</td>
-                  <td className="admin-table__note">{entry.dietaryInfo || "—"}</td>
-                  <td className="admin-table__note">{entry.note || "—"}</td>
-                  <td className="admin-table__date">{formatDate(entry.submittedAt)}</td>
-                </tr>
-              ))}
+              {paginated.map((entry: any) => {
+                const attending = entry.attendance === "yes";
+                const names = entry.guestNames
+                  ? entry.guestNames.split(",").map((n: string) => n.trim()).filter(Boolean)
+                  : [];
+                const menuLines = formatMenuLines(entry.menuHeadcounts || {});
+                const dietLines = attending ? getDietaryLines(entry.dietaryInfo || "", entry.companions || 1) : [];
+                const crossed = !attending ? { textDecoration: "line-through", opacity: 0.4 } : {};
+
+                return (
+                  <tr key={entry.id}>
+                    <td className="admin-table__name" style={{ fontWeight: 600 }}>{entry.guestName}</td>
+                    <td>
+                      <span className={`admin-badge admin-badge--${entry.attendance}`}>
+                        {attending ? t("attendance.attendingValue") : t("attendance.notAttendingValue")}
+                      </span>
+                    </td>
+                    <td>
+                      {attending ? (
+                        <div style={{ display: "flex", flexDirection: "column", gap: "0.15rem" }}>
+                          {names.length > 0 ? names.map((n: string, i: number) => (
+                            <span key={i} style={{ fontSize: "0.78rem" }}>{n}</span>
+                          )) : <span style={{ fontSize: "0.78rem", color: "var(--setup-muted)" }}>—</span>}
+                        </div>
+                      ) : (
+                        <span style={{ fontSize: "0.78rem", color: "var(--setup-muted)" }}>{t("attendance.notAttendingValue")}</span>
+                      )}
+                    </td>
+                    <td>
+                      <div style={crossed}>
+                        {attending ? (
+                          <div style={{ display: "flex", flexDirection: "column", gap: "0.15rem" }}>
+                            {menuLines.map((line, i) => (
+                              <span key={i} style={{ fontSize: "0.78rem" }}>{line}</span>
+                            ))}
+                          </div>
+                        ) : (
+                          <span style={{ fontSize: "0.78rem" }}>—</span>
+                        )}
+                      </div>
+                    </td>
+                    <td>
+                      <div style={crossed}>
+                        {attending && dietLines.length > 0 ? (
+                          <div style={{ display: "flex", flexDirection: "column", gap: "0.15rem" }}>
+                            {dietLines.map((d, i) => (
+                              <span key={i} style={{ fontSize: "0.78rem", textTransform: "capitalize" }}>
+                                {d.item}: {d.count}
+                              </span>
+                            ))}
+                          </div>
+                        ) : (
+                          <span style={{ fontSize: "0.78rem" }}>—</span>
+                        )}
+                      </div>
+                    </td>
+                    <td className="admin-table__date" style={{ whiteSpace: "nowrap", fontSize: "0.78rem" }}>
+                      {formatDate(entry.submittedAt)}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", justifyContent: "space-between", marginTop: "0.5rem", flexWrap: "wrap" }}>
@@ -154,13 +205,5 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
     </>
   );
 });
-
-function formatMenuHeadcounts(mhc: Record<string, number>) {
-  const parts: string[] = [];
-  if (mhc.carne) parts.push(`Carne: ${mhc.carne}`);
-  if (mhc.pescado) parts.push(`Pescado: ${mhc.pescado}`);
-  if (mhc.vegano) parts.push(`Vegano: ${mhc.vegano}`);
-  return parts.length ? parts.join(" · ") : null;
-}
 
 export default AttendanceTab;

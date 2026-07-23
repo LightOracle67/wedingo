@@ -417,6 +417,7 @@
     "tableName": "Name",
     "tableAttendance": "Attendance",
     "tableCompanions": "Companions",
+    "tableAttendees": "Attendees",
     "tableMenu": "Menu",
     "tableDiet": "Diet info",
     "tableNote": "Note",
