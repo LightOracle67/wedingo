@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { updateDoc, serverTimestamp } from "firebase/firestore";
 import { invitationDocRef } from "../lib/firebase";
-import { firestoreSessionExpiry, saveSession } from "../lib/sessionVars";
+import { getSession, firestoreSessionExpiry, saveSession } from "../lib/sessionVars";
 import { useSetupAuth } from "../hooks/useSetupAuth";
 import { useConfig } from "./ConfigContext";
 import { useTranslation } from "react-i18next";
@@ -39,7 +39,8 @@ export function AuthProvider({ children }: any) {
       }
     })();
     auth.setIsTokenVerified(true);
-    const displayName = auth.tokenLoginUsername || config.adminUsername || inviteToken;
+    const savedSession = getSession();
+    const displayName = (savedSession?.identifier) || config.adminUsername || inviteToken;
     auth.setTokenLoginUsername(displayName);
     saveSession("admin", displayName);
   };
