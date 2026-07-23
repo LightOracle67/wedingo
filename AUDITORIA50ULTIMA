@@ -581,5 +581,518 @@ BAJAS (resto): Mejoras progresivas sin impacto crítico.
 ✅ Decoraciones animadas (wind-sway)
 
 ═══════════════════════════════════════════════════════════════════════════
-FIN DE AUDITORÍA
+9. SEO / METADATOS (4 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[SEO1] META TAGS BÁSICOS
+       Estado: ✅ Implementado
+       Hallazgo: 
+       - description, viewport, charset, theme-color en index.html
+       - OG tags (title, description, image, url, type) en PublicInvitation
+       - Twitter cards: no implementado
+       Riesgo: BAJO
+
+[SEO2] DATOS ESTRUCTURADOS (Schema.org)
+       Estado: ❌ No implementado
+       Hallazgo: No hay JSON-LD para Event (WeddingEvent).
+       Los motores de búsqueda no pueden identificar la página como
+       un evento nupcial.
+       Riesgo: BAJO — No crítico para una app de invitaciones privadas.
+       Mejora: Añadir schema.org/Event con WeddingEvent.
+
+[SEO3] ROBOTS.TXT / SITEMAP
+       Estado: ❌ No implementado
+       Hallazgo: No hay robots.txt ni sitemap.xml.
+       Las páginas de invitación son privadas (token-based), por lo que
+       no deberían indexarse. Pero la landing page sí debería.
+       Riesgo: BAJO — Las invitaciones no deben indexarse.
+       Mejora: Añadir robots.txt que permita / pero bloquee /:inviteToken.
+
+[SEO4] CANONICAL URL / REDIRECTS
+       Estado: ❌ No implementado
+       Hallazgo: No hay URLs canónicas. Firebase Hosting con SPA
+       rewrite puede causar contenido duplicado.
+       Riesgo: BAJO
+
+═══════════════════════════════════════════════════════════════════════════
+10. PWA / SERVICE WORKER (4 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[PWA1] MANIFEST.JSON
+       Estado: ✅ Implementado
+       Hallazgo: manifest.json en public/ con name, short_name,
+       description, start_url, display:standalone, icons 96/192/512.
+       Riesgo: MUY BAJO
+
+[PWA2] SERVICE WORKER
+       Estado: ❌ No implementado
+       Hallazgo: No hay service worker. La app no funciona offline,
+       no se puede instalar como PWA completamente funcional.
+       Riesgo: BAJO — La app requiere conexión a Firestore.
+       Mejora: Implementar service worker básico con caché de assets.
+
+[PWA3] ESTRATEGIA DE CACHÉ
+       Estado: ❌ No implementado
+       Hallazgo: Sin service worker, no hay estrategia de caché
+       (Cache First, Network First, Stale While Revalidate, etc.)
+       Los assets se cargan desde la red siempre.
+       Mejora: Cache First para assets estáticos, Network First para API.
+
+[PWA4] OFFLINE FALLBACK
+       Estado: ❌ No implementado
+       Hallazgo: Sin conexión, la app muestra pantalla en blanco
+       o error de carga. No hay página offline personalizada.
+       Mejora: Añadir offline.html como fallback en service worker.
+
+═══════════════════════════════════════════════════════════════════════════
+11. COMPATIBILIDAD NAVEGADORES (4 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[BR1] POLYFILLS
+       Estado: ✅ Vite incluye polyfills modernos
+       Hallazgo: Vite genera bundles para navegadores modernos
+       (esmodules). No hay polyfills para IE11 (obsoleto).
+       Riesgo: MUY BAJO
+
+[BR2] VENDOR PREFIXES
+       Estado: ⚠️ Incompleto
+       Hallazgo: 
+       - backdrop-filter con -webkit- prefix en gallery y music (bien)
+       - user-select con -webkit- -moz- -ms- (bien)
+       - Pero: animation, transform, filter sin prefixes en algunos
+         lugares (la mayoría de navegadores modernos no los necesitan)
+       Riesgo: MUY BAJO
+
+[BR3] FIREBASE EXPERIMENTAL FORCE LONG POLLING
+       Estado: ⚠️ Configurado
+       Hallazgo: experimentalForceLongPolling: true está activado.
+       Esto fuerza HTTP long-polling en vez de WebSockets. Es útil
+       para entornos con restricciones de red (corporativos, China).
+       Pero: puede causar errores 400 en "channel" como vimos.
+       Riesgo: BAJO — Trade-off necesario para compatibilidad.
+
+[BR4] TESTEO EN NAVEGADORES
+       Estado: ❌ No verificado
+       Hallazgo: No se ha verificado el comportamiento en:
+       - Safari (iOS/desktop) — sabido que tiene issues con autoplay
+       - Firefox — no verificado
+       - Brave / Edge — no verificado
+       - Chrome — asumido como principal
+       Mejora: Testear en Safari, Firefox, Edge al menos.
+
+═══════════════════════════════════════════════════════════════════════════
+12. DEVOPS / CI-CD (4 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[CI1] PROCESO DE DEPLOY
+       Estado: ✅ Manual pero documentado
+       Hallazgo: deploy script en package.json:
+       npm run lint && npm run build && firebase deploy
+       No hay CI/CD automatizado (GitHub Actions, etc.)
+       Riesgo: BAJO — Proyecto unipersonal.
+
+[CI2] ENTORNOS (DEV / STAGING / PROD)
+       Estado: ❌ No implementado
+       Hallazgo: Solo existe un entorno de producción.
+       No hay staging para probar cambios antes de desplegar.
+       Mejora: Crear proyecto Firebase de staging.
+
+[CI3] VARIABLES DE ENTORNO
+       Estado: ⚠️ Un solo .env
+       Hallazgo: Solo existe .env (producción). No hay .env.development
+       o .env.staging. Las claves de Firebase están en el repo (expuestas).
+       Riesgo: MEDIO — Las API keys de Firebase están en el repositorio.
+       Mejora: Mover a secrets de GitHub Actions o variables de entorno
+       del sistema. Añadir .env.example al repo.
+
+[CI4] TESTING AUTOMATIZADO EN CI
+       Estado: ❌ No implementado
+       Hallazgo: Los tests solo se ejecutan localmente.
+       No hay lint + test + build automático en cada push.
+       Mejora: Añadir GitHub Actions workflow.
+
+═══════════════════════════════════════════════════════════════════════════
+13. MONITORIZACIÓN / ANALYTICS (4 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[MON1] ERROR TRACKING
+       Estado: ❌ No implementado
+       Hallazgo: VITE_SENTRY_DSN está vacío. No hay captura de
+       errores en producción. Los errores pasan desapercibidos.
+       Riesgo: ALTO — Errores silenciosos en producción.
+       Mejora: Configurar Sentry (gratuito para proyectos pequeños).
+
+[MON2] ANALYTICS DE USO
+       Estado: ❌ No implementado
+       Hallazgo: No hay analytics. No se sabe cuántos usuarios
+       visitan las invitaciones, cuántos confirman, etc.
+       (Aparte de _visits en Firestore).
+       Mejora: Añadir Firebase Analytics o similar.
+
+[MON3] PERFORMANCE MONITORING
+       Estado: ❌ No implementado
+       Hallazgo: No hay monitoreo de rendimiento (carga de página,
+       tiempo hasta interactivo, etc.)
+       Mejora: Firebase Performance Monitoring.
+
+[MON4] AUDITORÍA DE SEGURIDAD CONTINUA
+       Estado: ❌ No implementado
+       Hallazgo: No hay escaneo automático de vulnerabilidades
+       en dependencias (npm audit no se ejecuta en CI).
+       Riesgo: BAJO — npm audit tiene 6 warnings de dependabot.
+
+═══════════════════════════════════════════════════════════════════════════
+14. DOCUMENTACIÓN (4 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[DOC1] README.MD
+       Estado: ✅ Actualizado (v2.25.0)
+       Hallazgo: README reescrito con características, stack,
+       instalación, estructura, scripts.
+       Riesgo: MUY BAJO
+
+[DOC2] COMENTARIOS EN CÓDIGO
+       Estado: ⚠️ Parcial
+       Hallazgo:
+       - useSetupAuth.ts: JSDoc completo al inicio (bien)
+       - useRsvp.ts: JSDoc completo (bien)
+       - ConfigContext.tsx: sin JSDoc
+       - GalleryArrayEditor.tsx: sin JSDoc
+       - La mayoría de componentes: sin documentación de props
+       Mejora: Añadir JSDoc en componentes clave.
+
+[DOC3] CHANGELOG
+       Estado: ✅ Actualizado
+       Hallazgo: CHANGELOG.ts con histórico completo de versiones.
+       Riesgo: MUY BAJO
+
+[DOC4] API / ARQUITECTURA
+       Estado: ❌ No documentada
+       Hallazgo: No hay documento de arquitectura (diagrama de
+       componentes, flujo de datos, modelo de Firestore).
+       El AUDITORIA50ULTIMA sirve como documentación parcial.
+       Mejora: Crear ARCHITECTURE.md con diagramas.
+
+═══════════════════════════════════════════════════════════════════════════
+15. EXPERIENCIA DE ONBOARDING (3 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[ON1] PRIMERA VEZ (FIRST-RUN)
+       Estado: ⚠️ Básico
+       Hallazgo: 
+       - LandingPage tiene botón "Crear invitación" claro (bien)
+       - El flujo de setup es guiado paso a paso (bien)
+       - Pero: no hay tooltips o ayudas contextuales
+       - No hay tour guiado para el admin panel
+       Mejora: Añadir tooltips en el primer uso del admin.
+
+[ON2] MENSAJES DE ERROR AMIGABLES
+       Estado: ✅ Traducidos
+       Hallazgo: Los errores de validación y operaciones están
+       traducidos y son específicos.
+       Riesgo: MUY BAJO
+
+[ON3] RECUPERACIÓN DE ERRORES
+       Estado: ❌ No implementado
+       Hallazgo: Si una operación falla, no hay sugerencias de
+       cómo resolverlo (ej. "Revisa tu conexión", "Intenta de nuevo",
+       "Si el problema persiste, contacta a soporte").
+       Mejora: Añadir acciones de recuperación en mensajes de error.
+
+═══════════════════════════════════════════════════════════════════════════
+16. MIGRACIÓN DE DATOS (3 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[MIG1] BACKWARD COMPATIBILITY
+       Estado: ⚠️ Parcial
+       Hallazgo: 
+       - normalizeConfig maneja valores undefined/null (bien)
+       - loadDecryptedField intenta decrypt y falla graceful (bien)
+       - setupTokens → _activeSetupToken: migración manual (DB reseteada)
+       - galleryData → subcollections: DB reseteada
+       Riesgo: BAJO — DB reseteada, no hay datos legacy.
+
+[MIG2] CAMBIOS DE SCHEMA
+       Estado: ❌ No gestionado
+       Hallazgo: No hay sistema de migraciones (ej. version de schema
+       en Firestore). Los cambios de estructura se aplican manualmente.
+       Riesgo: BAJO — Proyecto pequeño, DB reseteable.
+
+[MIG3] BACKUP AUTOMÁTICO
+       Estado: ❌ No implementado
+       Hallazgo: El backup es manual (admin → Download backup).
+       No hay backups programados de Firestore.
+       Mejora: Activar backups automáticos en Firebase Console.
+
+═══════════════════════════════════════════════════════════════════════════
+17. RED / CONECTIVIDAD (3 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[NET1] INDICADOR DE CONECTIVIDAD
+       Estado: ❌ No implementado
+       Hallazgo: No hay banner/indicador cuando el usuario pierde
+       conexión. Las operaciones fallan con error genérico.
+       Mejora: Añadir OnlineStatusProvider + banner.
+
+[NET2] RETRY INTELIGENTE
+       Estado: ❌ No implementado
+       Hallazgo: Las operaciones fallidas no reintentan
+       automáticamente. El usuario debe hacer clic de nuevo.
+       Mejora: Retry con backoff exponencial para operaciones
+       de escritura Firestore.
+
+[NET3] OPTIMISTIC UPDATES
+       Estado: ❌ No implementado
+       Hallazgo: Las operaciones (save, delete) esperan a la
+       confirmación del servidor antes de actualizar la UI.
+       Mejora: Actualizar UI inmediatamente y revertir en error.
+
+═══════════════════════════════════════════════════════════════════════════
+18. ESCALABILIDAD (3 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[ESC1] LÍMITES DE FIRESTORE
+       Estado: ⚠️ Considerado
+       Hallazgo: 
+       - 1MB por documento: gestionado con chunks de 500KB (bien)
+       - 500 writes por batch: gestionado con chunks (bien)
+       - 1 write/s por documento: no relevante (pocos usuarios)
+       - 10MB por documento (nuevo límite 2024): no relevante
+       Riesgo: BAJO
+
+[ESC2] LECTURAS EN EL SUPERADMIN
+       Estado: ⚠️ Puede escalar mal
+       Hallazgo: DashboardTab lee TODAS las colecciones completas.
+       Con 1000 invitaciones, serían miles de lecturas.
+       Mejora: Usar agregaciones (count) en Firestore.
+
+[ESC3] CONCURRENCIA
+       Estado: ❌ No considerada
+       Hallazgo: No se han considerado escenarios de concurrencia.
+       Dos usuarios editando la misma invitación pueden pisarse.
+       Mejora: Implementar optimistic concurrency control con
+       version de documento.
+
+═══════════════════════════════════════════════════════════════════════════
+19. FORMATOS INTERNACIONALES (3 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[INT1] FORMATO DE NÚMEROS
+       Estado: ⚠️ No localizado
+       Hallazgo: Los números (contadores, tamaños) se muestran
+       sin formato local (1234567 vs 1.234.567 o 1,234,567).
+       Mejora: Usar toLocaleString() o Intl.NumberFormat.
+
+[INT2] FORMATO DE FECHAS COMPLETO
+       Estado: ⚠️ Parcial
+       Hallazgo: formatDate() usa toLocaleString con dateStyle (bien).
+       Pero las fechas en el countdown no están localizadas.
+       Mejora: Localizar "X years, Y months, Z weeks..." con i18next.
+
+[INT3] HUSOS HORARIOS
+       Estado: ❌ No considerado
+       Hallazgo: La hora de la boda se almacena como string (HH:MM)
+       sin información de huso horario. Los invitados en diferentes
+       zonas verán la hora incorrecta.
+       Riesgo: BAJO — Las bodas son eventos locales.
+       Mejora: Añadir campo timezone (opcional).
+
+═══════════════════════════════════════════════════════════════════════════
+20. SEGURIDAD EN FORMULARIOS (3 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[FS1] RATE LIMITING
+       Estado: ❌ No implementado
+       Hallazgo: No hay límite de intentos de login o envío de RSVPs.
+       Un atacante podría hacer fuerza bruta o spam.
+       Riesgo: MEDIO — Firestore rules limitan escritura (requiere
+       sesión activa), pero no hay rate limiting en login.
+       Mejora: Añadir rate limiting del lado del cliente (debounce)
+       y considerar seguridad en reglas (too-many-requests).
+
+[FS2] SANITIZACIÓN DE ENTRADA
+       Estado: ✅ isSafeText() en reglas
+       Hallazgo: isSafeText en Firestore rules bloquea caracteres
+       peligrosos (<>"'\` y javascript:). También sanitización
+       en el frontend (replace de caracteres no permitidos).
+       Riesgo: BAJO
+
+[FS3] PROTECCIÓN CONTRA SPAM EN RSVP
+       Estado: ❌ No implementado
+       Hallazgo: Cualquier usuario con el token puede enviar RSVPs
+       ilimitados. No hay CAPTCHA ni verificación adicional.
+       Riesgo: BAJO — El token es privado por invitación.
+       Mejora: Añadir límite de 1 RSVP por nombre (ya existe
+       validación de duplicado por guestName + inviteToken).
+
+═══════════════════════════════════════════════════════════════════════════
+21. GESTIÓN DE SESIONES (3 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[SES1] SESIONES CONCURRENTES
+       Estado: ❌ No gestionado
+       Hallazgo: Si dos usuarios abren la misma invitación en
+       diferentes navegadores, ambos tienen sesión activa.
+       La segunda sesión sobrescribe activeSession.
+       Riesgo: BAJO — Previsto por diseño (la sesión se renueva).
+
+[SES2] CIERRE DE SESIÓN EN TODOS LOS DISPOSITIVOS
+       Estado: ❌ No implementado
+       Hallazgo: El logout solo limpia la sesión local y Firestore.
+       No invalida otras sesiones activas del mismo usuario.
+       Riesgo: BAJO — Cada dispositivo tiene su propia sesión.
+
+[SES3] RECORDAR SESIÓN (REMEMBER ME)
+       Estado: ✅ sessionStorage + Firestore
+       Hallazgo: La sesión se guarda en sessionStorage (persiste
+       mientras el tab está abierto) y se renueva en Firestore
+       cada 60s. Al cerrar el navegador, la sesión expira en 24h.
+       Riesgo: BAJO
+
+═══════════════════════════════════════════════════════════════════════════
+22. ASSETS / FUENTES (3 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[ASS1] ESTRATEGIA DE CARGADE FUENTES
+       Estado: ⚠️ Básica
+       Hallazgo: Las fuentes se importan via @fontsource en JS
+       (import "..." en App.tsx). Se cargan como parte del bundle
+       inicial. No hay font-display: swap configurado.
+       Riesgo: BAJO — FUOC (Flash of Unstyled Content) posible.
+       Mejora: Añadir font-display: swap y preload para fuentes
+       críticas (Playfair Display, Lora).
+
+[ASS2] IMÁGENES ESTÁTICAS
+       Estado: ✅ Optimizadas
+       Hallazgo: rings.webp (44KB), eucalyptus.webp (formato moderno).
+       Las imágenes de assets son pequeñas y en WebP.
+       Riesgo: MUY BAJO
+
+[ASS3] SVG vs PNG
+       Estado: ⚠️ Mixto
+       Hallazgo: Las decoraciones usan WebP. Los iconos son
+       caracteres Unicode (♪, ⏸, ▶, ×, ✓, ✕, ♥, ✦).
+       No se usan SVGs inline (podrían escalar mejor).
+       Mejora: Considerar SVGs para iconos.
+
+═══════════════════════════════════════════════════════════════════════════
+23. ESTADO GLOBAL (3 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[ST1] CONSISTENCIA CONFIG VS FORMDATA
+       Estado: ⚠️ Dual
+       Hallazgo: Existen dos fuentes de verdad: config (datos
+       guardados) y formData (datos en edición). Esto puede
+       llevar a inconsistencias si no se sincronizan.
+       Mejora: Unificar en una sola fuente o asegurar sincronización
+       post-save (ya se hace: setConfig(payload); setFormData(payload)).
+
+[ST2] DATOS OBSOLETOS EN CACHÉ
+       Estado: ⚠️ TTL de 2 minutos
+       Hallazgo: El caché de localStorage tiene TTL de 2 minutos.
+       Si otro dispositivo modifica la invitación, el primer
+       dispositivo usará datos obsoletos hasta 2 minutos.
+       Riesgo: BAJO — Escenario poco probable (una sola persona
+       edita la invitación).
+
+[ST3] OPTIMISTIC UPDATES
+       Estado: ❌ No implementado
+       Hallazgo: Las operaciones de escritura esperan confirmación
+       del servidor antes de actualizar UI. Podría sentirse lento
+       en conexiones lentas.
+       Mejora: Implementar optimistic updates para operaciones
+       frecuentes (save, delete images).
+
+═══════════════════════════════════════════════════════════════════════════
+24. WEB VITALS (3 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[WV1] LCP (LARGEST CONTENTFUL PAINT)
+       Estado: ❌ No medido
+       Hallazgo: No se ha medido LCP. Los candidatos a LCP son:
+       - Hero rings image (rings.webp, 44KB)
+       - Couple photo (data URL, hasta 400KB)
+       - Gallery images (data URLs, hasta 400KB cada una)
+       Mejora: Medir LCP con Lighthouse y optimizar el candidato.
+
+[WV2] FID (FIRST INPUT DELAY) / INP
+       Estado: ❌ No medido
+       Hallazgo: No hay mediciones de interactividad.
+       El bundle de Firebase (574KB) puede retrasar la interacción.
+       Mejora: Medir con Lighthouse y considerar code splitting
+       más agresivo para Firebase.
+
+[WV3] CLS (CUMULATIVE LAYOUT SHIFT)
+       Estado: ⚠️ Trabajado
+       Hallazgo: 
+       - Gallery: aspect-ratio fijo + position absolute (previene CLS) ✅
+       - Couple photo: opacity transition (previene CLS) ✅
+       - Envelope: position fixed (no afecta layout) ✅
+       - Fonts: pueden causar CLS si no tienen font-display: swap
+       Mejora: font-display: swap para todas las fuentes.
+
+═══════════════════════════════════════════════════════════════════════════
+25. DEPENDENCIAS / LICENCIAS (3 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[DEP1] VULNERABILIDADES
+       Estado: ⚠️ 6 warnings (dependabot)
+       Hallazgo: 1 alta, 5 moderadas. Todas en devDependencies
+       (firebase-tools, @hono/node-server, etc.) sin impacto runtime.
+       Riesgo: BAJO
+
+[DEP2] VERSIONES OBSOLETAS
+       Estado: ⚠️ Algunas
+       Hallazgo: 
+       - @testing-library/jest-dom: v6.9.1 (última: v6.x)
+       - @testing-library/react: v16.3.2 (correcta para React 19)
+       - firebase-tools: v15.24.0 (correcta)
+       - Todas las dependencias principales están actualizadas.
+       Riesgo: MUY BAJO
+
+[DEP3] LICENCIAS
+       Estado: ❌ No auditado
+       Hallazgo: No se ha verificado la compatibilidad de licencias
+       de las dependencias (MIT, Apache, BSD, etc.)
+       Mejora: Ejecutar npx license-checker para auditoría de
+       licencias.
+
+═══════════════════════════════════════════════════════════════════════════
+RESUMEN GLOBAL
+═══════════════════════════════════════════════════════════════════════════
+
+CRÍTICAS: 0   🟢 Sin issues críticos
+ALTAS:     8   🟡 CSP, Offline, Sentry, Política privacidad, Contraste,
+                Rate limiting, Error tracking, LCP no medido
+MEDIAS:   12   🟠 Validación rules, Responsive, Empty states, ARIA, RTL,
+                Firestore queries, CI/CD, Timeout, JSDoc, Onboarding,
+                Concurrencia, Husos horarios
+BAJAS:    ~35  🔵 Mejoras progresivas
+TOTAL:    ~55  puntos en 25 categorías
+
+═══ FUNCIONALIDADES VERIFICADAS ═══
+
+✅ Landing + Login + Creación invitación
+✅ Setup wizard (8 secciones colapsables)
+✅ Página pública (8 secciones + envelope + música + galería + RSVP)
+✅ Envelope 3D con sello cera y animación
+✅ MusicPlayer FAB con autoplay + loop + ecualizador
+✅ Galería con carrusel, lightbox, miniaturas, descripciones
+✅ RSVP familiar con validación completa + consents GDPR
+✅ Admin (stats, RSVPs, backup/restore, share, access, support)
+✅ Superadmin (dashboard, invitations, tokens, data, settings, compliance)
+✅ i18n (100 idiomas, RTL parcial, monthNames, themeNames)
+✅ Accesibilidad (panel, reduced motion, focus, ARIA parcial)
+✅ Seguridad (cifrado AES-256, Firestore rules, CSP, HSTS)
+✅ Auto-guardado 1.5s
+✅ Duplicados en galería
+✅ user-select: none
+✅ Decoraciones animadas (wind-sway)
+✅ Colores sincronizados con tema (--invite-core-color)
+✅ Print (versión imprimible)
+✅ PWA manifest.json
+✅ Backup/Restore (JSON + merge)
+
+═══════════════════════════════════════════════════════════════════════════
+FIN DE AUDITORÍA — 25 categorías, ~80 puntos
 ═══════════════════════════════════════════════════════════════════════════
