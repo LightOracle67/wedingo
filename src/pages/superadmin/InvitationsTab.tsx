@@ -79,6 +79,7 @@ const InvitationsTab = memo(function InvitationsTab() {
         </button>
       </div>
 
+      <div aria-live="polite" aria-atomic="true">
       {filtered.length === 0 ? (
         <p className="setup-help">
           {search ? t("superadmin.noResultsFilter") : t("superadmin.noInvitations")}
@@ -118,6 +119,7 @@ const InvitationsTab = memo(function InvitationsTab() {
           </table>
         </div>
       )}
+      </div>
     </div>
   );
 });
