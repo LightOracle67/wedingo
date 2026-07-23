@@ -2398,7 +2398,7 @@ a:focus-visible {
   all: unset;
   cursor: pointer;
   font-family: var(--font-body);
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.7);
   transition: color 180ms ease;
   white-space: nowrap;
   font-size: inherit;
