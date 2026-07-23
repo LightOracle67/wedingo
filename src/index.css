@@ -68,11 +68,13 @@ html {
   /* Z-index scale */
   --z-toast: 9997;
   --z-envelope: 9999;
-  --z-lightbox: 10005;
   --z-music: 10001;
+  --z-modal: 10001;
+  --z-legal-links: 10002;
   --z-nav-overlay: 10002;
   --z-nav-toggle: 10003;
   --z-lang-popup: 10004;
+  --z-lightbox: 10005;
   --z-skip-link: 100000;
   --font-heading: "Playfair Display", serif;
   --font-body: "Lora", serif;

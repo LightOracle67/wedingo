@@ -2,6 +2,11 @@ import { describe, it, expect } from "vitest";
 import { idbSet, idbGet, idbDelete, idbClear } from "../idb-utils";
 
 describe("idb-utils", () => {
+  it("exports idbSet as a function", () => expect(typeof idbSet).toBe("function"));
+  it("exports idbGet as a function", () => expect(typeof idbGet).toBe("function"));
+  it("exports idbDelete as a function", () => expect(typeof idbDelete).toBe("function"));
+  it("exports idbClear as a function", () => expect(typeof idbClear).toBe("function"));
+
   it("stores and retrieves a value", async () => {
     await idbSet("test", { data: 123 });
     const result = await idbGet("test");

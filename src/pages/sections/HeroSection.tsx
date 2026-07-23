@@ -3,7 +3,19 @@ import { useTranslation } from "react-i18next";
 import heroBackdropSrc from "../../assets/rings.webp";
 import LoadingOverlay from "../../components/LoadingOverlay";
 
-const HeroSection = memo(function HeroSection({ style, className, firstName, secondName, inviteMessage, countdown, couplePhoto, godparent1, godparent2 }: any) {
+interface HeroSectionProps {
+  style?: React.CSSProperties;
+  className?: string;
+  firstName?: string;
+  secondName?: string;
+  inviteMessage?: string;
+  countdown?: { years: number; months: number; days: number; hours: number; minutes: number; expired: boolean } | null;
+  couplePhoto?: string;
+  godparent1?: string;
+  godparent2?: string;
+}
+
+const HeroSection = memo(function HeroSection({ style, className, firstName, secondName, inviteMessage, countdown, couplePhoto, godparent1, godparent2 }: HeroSectionProps) {
   useEffect(() => {
     const link = document.createElement("link");
     link.rel = "preload";

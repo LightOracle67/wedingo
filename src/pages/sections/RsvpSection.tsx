@@ -2,15 +2,25 @@ import { memo, useCallback, useMemo } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { useApp } from "../../contexts/AppContext";
 
+interface RsvpFormState {
+  guestName: string;
+  attendance: string;
+  birthDate: string;
+  attendees: { name: string; menu: string; allergies: string[] }[];
+  parentalConsent: boolean;
+  privacyConsent: boolean;
+  healthConsent: boolean;
+}
+
 interface RsvpSectionProps {
   style?: React.CSSProperties;
   className?: string;
-  rsvpForm: any;
+  rsvpForm: RsvpFormState;
   rsvpMessage?: string;
   isRsvpSubmitting?: boolean;
   hasSubmitted?: boolean;
-  alreadySubmittedEntry?: any;
-  updateRsvpField: (field: string, value: any) => void;
+  alreadySubmittedEntry?: unknown;
+  updateRsvpField: (field: string, value: string | boolean | { name: string; menu: string; allergies: string[] }[]) => void;
   handleRsvpSubmit: (e: React.FormEvent) => void;
   handleDeleteRsvp: () => void;
   menuEnabled?: boolean;
