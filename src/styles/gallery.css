@@ -2,7 +2,7 @@
   box-sizing: border-box;
   background: color-mix(in srgb, var(--invite-shell-bg, rgba(255,255,255,0.45)) 90%, transparent);
   border: 1px solid var(--invite-shell-border);
-  border-radius: 1rem;
+  border-radius: var(--radius-xl);
   width: 80%;
   margin: 0 auto;
   padding: 1rem;
@@ -15,7 +15,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 10;
-  border-radius: 0.7rem;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   background: color-mix(in srgb, var(--invite-core-glow, rgba(255,212,115,0.22)) 15%, transparent);
 }
@@ -90,7 +90,7 @@
 .gallery-thumb {
   width: 2.8rem;
   height: 2.8rem;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-md);
   overflow: hidden;
   cursor: pointer;
   padding: 0;
@@ -206,7 +206,7 @@
   max-width: 90vw;
   max-height: 80vh;
   object-fit: contain;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-md);
   box-shadow: 0 12px 48px rgba(0,0,0,0.6);
   cursor: default;
   will-change: opacity;

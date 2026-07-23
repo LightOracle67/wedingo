@@ -138,7 +138,7 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--invite-core-border);
-  border-radius: 1rem;
+  border-radius: var(--radius-xl);
   padding: 0.7rem 0.8rem;
   box-shadow: 0 22px 60px color-mix(in srgb, var(--invite-shell-shadow) 92%, transparent), 0 0 30px color-mix(in srgb, var(--invite-shell-glow) 70%, transparent);
   transform-origin: top right;

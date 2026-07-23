@@ -60,10 +60,21 @@ html {
   --space-2xl: 2rem;
 
   /* Border radius scale */
+  --radius-xs: 0.25rem;
   --radius-sm: 0.35rem;
   --radius-md: 0.5rem;
   --radius-lg: 0.7rem;
   --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+
+  /* Color palette */
+  --color-gold: #c9a962;
+  --color-gold-light: #f7e3aa;
+  --color-dark-bg: #14120e;
+  --color-dark-card: #1e1b15;
+  --color-dark-border: #2a261e;
+  --color-error: #e74c3c;
+  --color-success: #2ecc71;
 
   /* Z-index scale */
   --z-admin-bar: 600;
@@ -2184,7 +2195,7 @@ a:focus-visible {
   color: var(--setup-accent-text);
   font-size: 0.9rem;
   font-weight: 600;
-  border-radius: 0 0 0.5rem 0.5rem;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
   text-decoration: none;
   transition: top 180ms ease;
 }

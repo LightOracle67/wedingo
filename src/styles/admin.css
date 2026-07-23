@@ -108,7 +108,7 @@ input.setup-input[type="date"] {
 }
 .setup-collapsible__summary {
   transition: color 200ms ease, background-color 200ms ease;
-  border-radius: 0.7rem;
+  border-radius: var(--radius-lg);
 }
 .setup-collapsible__summary:hover {
   background: color-mix(in srgb, var(--setup-field-bg) 60%, transparent);
@@ -125,7 +125,7 @@ input.setup-input[type="date"] {
 }
 .admin-tab {
   transition: color 200ms ease, border-color 200ms ease, background-color 200ms ease;
-  border-radius: 0.5rem 0.5rem 0 0;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
 }
 .admin-tab:hover:not(.admin-tab--active) {
   background: color-mix(in srgb, var(--setup-accent) 8%, transparent);
@@ -242,7 +242,7 @@ input.setup-input[type="date"] {
   gap: 0.65rem;
 }
 .setup-collapsible {
-  border-radius: 1rem;
+  border-radius: var(--radius-xl);
   border: 1px solid color-mix(in srgb, var(--setup-border) 72%, transparent);
   background: color-mix(in srgb, var(--setup-field-bg) 62%, transparent);
   overflow: clip;
@@ -320,7 +320,7 @@ input.setup-input[type="date"] {
   color: var(--setup-muted);
   background: color-mix(in srgb, var(--setup-border) 40%, transparent);
   padding: 0.1rem 0.45rem;
-  border-radius: 0.35rem;
+  border-radius: var(--radius-sm);
 }
 .setup-collapsible__vis-toggle {
   font-size: 0.78rem;
@@ -328,7 +328,7 @@ input.setup-input[type="date"] {
   color: var(--setup-accent);
   cursor: pointer;
   padding: 0.2rem 0.5rem;
-  border-radius: 0.35rem;
+  border-radius: var(--radius-sm);
   border: 1px solid var(--setup-accent);
   background: transparent;
   transition: background 200ms, color 200ms;
@@ -351,7 +351,7 @@ input.setup-input[type="date"] {
   display: grid;
   gap: 0.45rem;
   padding: 0.95rem 1rem;
-  border-radius: 1rem;
+  border-radius: var(--radius-xl);
   border: 1px solid color-mix(in srgb, var(--setup-accent) 42%, transparent);
   background: color-mix(in srgb, var(--setup-field-bg) 78%, transparent);
 }
@@ -401,7 +401,7 @@ input.setup-input[type="date"] {
   gap: 0.75rem;
   padding: 0.95rem;
   border: 1px solid color-mix(in srgb, var(--setup-border) 72%, transparent);
-  border-radius: 1rem;
+  border-radius: var(--radius-xl);
   background: color-mix(in srgb, var(--setup-field-bg) 76%, transparent);
 }
 .setup-background-panel__header {
@@ -469,7 +469,7 @@ input.setup-input[type="date"] {
   gap: 0.45rem;
   padding: 0.6rem;
   border: 1px solid color-mix(in srgb, var(--setup-title) 16%, transparent);
-  border-radius: 1rem;
+  border-radius: var(--radius-xl);
   background: color-mix(in srgb, var(--setup-field-bg) 84%, transparent);
   color: var(--setup-title);
   text-align: left;
@@ -502,7 +502,7 @@ input.setup-input[type="date"] {
   margin-top: 0.75rem;
   padding: 0.75rem;
   border: 1px solid color-mix(in srgb, var(--setup-border) 72%, transparent);
-  border-radius: 1rem;
+  border-radius: var(--radius-xl);
   background: color-mix(in srgb, var(--setup-field-bg) 76%, transparent);
 }
 .setup-location-preview__image {
@@ -530,7 +530,7 @@ input.setup-input[type="date"] {
   border: 1px solid var(--setup-field-border);
   background: var(--setup-field-bg);
   color: #fdf8ec;
-  border-radius: 0.7rem;
+  border-radius: var(--radius-lg);
   padding: 0.72rem 0.85rem;
   font-family: var(--font-body);
   font-size: 1rem;
@@ -744,7 +744,7 @@ select.setup-input {
   display: grid;
   gap: 0.2rem;
   padding: clamp(0.65rem, 2vw, 0.85rem);
-  border-radius: 1rem;
+  border-radius: var(--radius-xl);
   background: color-mix(in srgb, var(--setup-field-bg) 72%, transparent);
   border: 1px solid color-mix(in srgb, var(--setup-border) 60%, transparent);
   text-align: center;
@@ -989,14 +989,14 @@ select.setup-input {
   z-index: var(--z-admin-bar, 600);
   -webkit-backdrop-filter: blur(8px);
   font-family: var(--font-body);
-  background: #14120eeb;
-  border-bottom: 1px solid #f7e3aa33;
+  background: color-mix(in srgb, var(--color-dark-bg) 92%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-gold-light) 20%, transparent);
   position: sticky;
   top: 0;
   left: 0;
   right: 0;
   -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(247, 227, 170, 0.2);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-gold-light) 20%, transparent);
   font-family: var(--font-body);
 }
 .admin-bar__inner {
@@ -1055,7 +1055,7 @@ select.setup-input {
   all: unset;
   font-size: 0.85rem;
   padding: 0.3rem 0.55rem;
-  border-radius: 0.35rem;
+  border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.08);
   color: #fff6dc;
   width: 8rem;
@@ -1070,7 +1070,7 @@ select.setup-input {
   font-size: 0.82rem;
   font-weight: 600;
   padding: 0.32rem 0.6rem;
-  border-radius: 0.35rem;
+  border-radius: var(--radius-sm);
   background: var(--setup-accent);
   color: #1e1e1e;
   cursor: pointer;
@@ -1131,7 +1131,7 @@ select.setup-input {
   flex-shrink: 0;
   width: 2.2rem;
   height: 2.2rem;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-md);
   display: grid;
   place-items: center;
   overflow: hidden;
@@ -1195,7 +1195,7 @@ select.setup-input {
   align-items: center;
   gap: 0.55rem;
   padding: 0.5rem 0.65rem;
-  border-radius: 0.7rem;
+  border-radius: var(--radius-lg);
   border: 1px solid color-mix(in srgb, var(--setup-border) 60%, transparent);
   background: color-mix(in srgb, var(--setup-field-bg) 68%, transparent);
   transition: opacity 150ms, transform 150ms, border-color 150ms;
@@ -1231,7 +1231,7 @@ select.setup-input {
   color: var(--setup-muted);
   margin-left: 0.35rem;
   padding: 0.05rem 0.3rem;
-  border-radius: 0.25rem;
+  border-radius: var(--radius-xs);
   background: color-mix(in srgb, var(--setup-muted) 20%, transparent);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -1243,7 +1243,7 @@ select.setup-input {
   font-size: 0.65rem;
   line-height: 1;
   padding: 0.25rem 0.35rem;
-  border-radius: 0.35rem;
+  border-radius: var(--radius-sm);
   cursor: pointer;
   transition: color 150ms, border-color 150ms, background 150ms;
   font-family: inherit;
@@ -1290,7 +1290,7 @@ select.setup-input {
   font-size: 0.75rem;
   line-height: 1;
   padding: 0.2rem 0.4rem;
-  border-radius: 0.35rem;
+  border-radius: var(--radius-sm);
   cursor: pointer;
   transition: color 150ms, border-color 150ms;
   font-family: inherit;
@@ -1361,7 +1361,7 @@ select.setup-input {
   min-height: 0;
   overflow-y: auto;
   border: 1px solid var(--setup-border);
-  border-radius: 0.5rem;
+  border-radius: var(--radius-md);
 }
 .data-tab-table {
   width: 100%;

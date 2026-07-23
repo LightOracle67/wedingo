@@ -15,7 +15,7 @@
   all: unset;
   cursor: pointer;
   padding: 0.35rem 0.7rem;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-md);
   font-size: 0.8rem;
   font-family: var(--font-body);
   color: var(--setup-muted);
@@ -49,7 +49,7 @@
 .a11y-toggle__track {
   width: 2.4rem;
   height: 1.3rem;
-  border-radius: 1rem;
+  border-radius: var(--radius-xl);
   background: color-mix(in srgb, var(--setup-field-bg) 80%, transparent);
   border: 1px solid color-mix(in srgb, var(--setup-border) 30%, transparent);
   position: relative;

@@ -48,7 +48,7 @@
   position: relative;
   background: linear-gradient(150deg, var(--setup-grad-start), var(--setup-grad-end));
   border: 1px solid var(--setup-border);
-  border-radius: 1rem;
+  border-radius: var(--radius-xl);
   padding: 2rem 1.5rem 1.5rem;
   width: 100%;
   max-width: 380px;
@@ -98,7 +98,7 @@
 .cookie-consent-card {
   background: var(--setup-grad-start);
   border: 1px solid var(--setup-border);
-  border-radius: 1rem;
+  border-radius: var(--radius-xl);
   padding: 1.2rem;
   max-width: 420px;
   width: 100%;

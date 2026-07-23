@@ -23,7 +23,7 @@ html.a11y-high-contrast .app-footer {
   align-items: center;
   gap: 0.3rem;
   padding: 0.35rem 0.65rem;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-md);
   font-size: 0.78rem;
   font-weight: 600;
   font-family: var(--font-body);
@@ -58,7 +58,7 @@ html.a11y-high-contrast .app-footer {
 .lang-popup__card {
   background: linear-gradient(150deg, rgba(32,26,18,0.98), rgba(20,14,8,0.96));
   border: 1px solid var(--setup-border);
-  border-radius: 1rem;
+  border-radius: var(--radius-xl);
   padding: 1.2rem;
   max-width: min(94vw, 700px);
   max-height: calc(100dvh - 4rem);
@@ -129,7 +129,7 @@ html.a11y-high-contrast .app-footer {
   align-items: center;
   gap: 0.5rem;
   padding: 0.45rem 0.6rem;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-md);
   cursor: pointer;
   font-family: var(--font-body);
   color: var(--setup-subtitle);
