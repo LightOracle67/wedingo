@@ -53,6 +53,8 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
   const renewRef = useRef(null);
   /** Tipo de sesión actual: "setup" o "admin". */
   const sessionTypeRef = useRef("");
+  /** Previene doble clic en reseteo de token. */
+  const resettingRef = useRef(false);
 
   /** Derivado: el usuario está autenticado si el token fue verificado. */
   const isAdminTokenLoggedIn = useMemo(() => isTokenVerified, [isTokenVerified]);
@@ -338,18 +340,24 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
    * Requiere confirmar el token actual.
    */
   const handleResetSetupToken = useCallback(async () => {
-    const storageKey = `wedin_setup_token_${inviteToken || ""}`;
-    const storedToken = safeGetItem(storageKey, sessionStorage) || "";
-    const currentToken = setupToken || storedToken;
-    if (!currentToken || confirmTokenInput !== currentToken) {
-      setAuthMessage(t("auth.currentTokenRequired"));
-      return;
+    if (resettingRef.current) return;
+    resettingRef.current = true;
+    try {
+      const storageKey = `wedin_setup_token_${inviteToken || ""}`;
+      const storedToken = safeGetItem(storageKey, sessionStorage) || "";
+      const currentToken = setupToken || storedToken;
+      if (!currentToken || confirmTokenInput !== currentToken) {
+        setAuthMessage(t("auth.currentTokenRequired"));
+        return;
+      }
+      setAuthMessage("");
+      await refreshSetupToken(currentToken);
+      setAuthMessageType("success");
+      setAuthMessage(t("auth.tokenRenewed"));
+      setConfirmTokenInput("");
+    } finally {
+      resettingRef.current = false;
     }
-    setAuthMessage("");
-    await refreshSetupToken(currentToken);
-    setAuthMessageType("success");
-    setAuthMessage(t("auth.tokenRenewed"));
-    setConfirmTokenInput("");
   }, [refreshSetupToken, setupToken, confirmTokenInput, inviteToken, t]);
 
   /**
@@ -357,11 +365,17 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
    * Similar a handleResetSetupToken pero con mensajes dirigidos al admin.
    */
   const handleResetTokenFromAdmin = useCallback(async () => {
-    setAdminMessage("");
-    await refreshSetupToken(setupToken || safeGetItem(`wedin_setup_token_${inviteToken || ""}`, sessionStorage) || "");
-    setAdminMessageType("success");
-    setAdminMessage(t("auth.tokenRenewedAdmin"));
-    setConfirmTokenInput("");
+    if (resettingRef.current) return;
+    resettingRef.current = true;
+    try {
+      setAdminMessage("");
+      await refreshSetupToken(setupToken || safeGetItem(`wedin_setup_token_${inviteToken || ""}`, sessionStorage) || "");
+      setAdminMessageType("success");
+      setAdminMessage(t("auth.tokenRenewedAdmin"));
+      setConfirmTokenInput("");
+    } finally {
+      resettingRef.current = false;
+    }
   }, [refreshSetupToken, setupToken, setAdminMessage, setAdminMessageType, inviteToken, t]);
 
   return {

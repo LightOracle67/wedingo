@@ -10,6 +10,10 @@ export default function PrintPage() {
   const printed = useRef(false);
   const [loaded, setLoaded] = useState(false);
 
+  useEffect(() => {
+    document.title = `${config.firstName} & ${config.secondName} — Wedingo`;
+  }, [config.firstName, config.secondName]);
+
   const monthMap: any = { enero: 0, febrero: 1, marzo: 2, abril: 3, mayo: 4, junio: 5, julio: 6, agosto: 7, septiembre: 8, octubre: 9, noviembre: 10, diciembre: 11 };
   const weddingDateObj = config.weddingDay && config.weddingMonth && config.weddingYear
     ? new Date(Number(config.weddingYear), monthMap[config.weddingMonth] || 0, Number(config.weddingDay))

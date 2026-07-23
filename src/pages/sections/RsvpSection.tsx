@@ -75,7 +75,7 @@ const RsvpSection = memo(function RsvpSection({
   }, [updateRsvpField]);
 
   const handleDietaryOtherChange = useCallback((e: any) => {
-    updateRsvpField("dietaryOther", e.target.value.slice(0, 120));
+    updateRsvpField("dietaryOther", e.target.value.slice(0, 200));
   }, [updateRsvpField]);
 
   const handleHeadcountChange = useCallback((e: any) => {
@@ -112,7 +112,7 @@ const RsvpSection = memo(function RsvpSection({
 
         <form className="rsvp-form" onSubmit={handleRsvpSubmit} noValidate>
           <label className="setup-label" htmlFor="rsvpName">{t("rsvp.nameLabel")} *</label>
-          <input id="rsvpName" className="setup-input" value={rsvpForm.guestName} onChange={handleNameChange} placeholder={t("rsvp.namePlaceholder")} autoComplete="off" required disabled={isAlreadySubmitted} />
+          <input id="rsvpName" className="setup-input" value={rsvpForm.guestName} onChange={handleNameChange} placeholder={t("rsvp.namePlaceholder")} autoComplete="off" required disabled={isAlreadySubmitted} maxLength={120} />
 
           <div className="setup-date-grid rsvp-choice-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))" }}>
             <div>
@@ -148,6 +148,7 @@ const RsvpSection = memo(function RsvpSection({
                 required
                 disabled={isAlreadySubmitted}
                 aria-invalid={namesExceed ? "true" : undefined}
+                maxLength={500}
                 style={namesExceed ? { borderColor: "#ef4444" } : {}}
               />
               {namesExceed ? (
@@ -206,7 +207,7 @@ const RsvpSection = memo(function RsvpSection({
                   </label>
                 ))}
               </div>
-              <input className="setup-input" style={{ marginTop: "0.4rem" }} value={rsvpForm.dietaryOther} onChange={handleDietaryOtherChange} placeholder={t("rsvp.allergiesPlaceholder")} autoComplete="off" disabled={isAlreadySubmitted} />
+              <input className="setup-input" style={{ marginTop: "0.4rem" }} value={rsvpForm.dietaryOther} onChange={handleDietaryOtherChange} placeholder={t("rsvp.allergiesPlaceholder")} autoComplete="off" disabled={isAlreadySubmitted} maxLength={200} />
             </fieldset>
           ) : rsvpForm.attendance === "yes" && menuTexto?.trim() ? (
             <div style={{ marginBottom: "0.5rem", marginTop: "0.5rem", padding: "0.6rem", borderRadius: "0.6rem", background: "color-mix(in srgb, var(--setup-field-bg) 60%, transparent)" }}>
@@ -229,7 +230,7 @@ const RsvpSection = memo(function RsvpSection({
                   </label>
                 ))}
               </div>
-              <input className="setup-input" style={{ marginTop: "0.4rem" }} value={rsvpForm.dietaryOther} onChange={handleDietaryOtherChange} placeholder={t("rsvp.allergiesPlaceholder")} autoComplete="off" disabled={isAlreadySubmitted} />
+              <input className="setup-input" style={{ marginTop: "0.4rem" }} value={rsvpForm.dietaryOther} onChange={handleDietaryOtherChange} placeholder={t("rsvp.allergiesPlaceholder")} autoComplete="off" disabled={isAlreadySubmitted} maxLength={200} />
             </fieldset>
           ) : null}
 

@@ -6,6 +6,10 @@
   .envelope-wrapper, .story-scroll-hint, .wedding-decoration,
   .lang-popup, .modal-overlay, .toast-container,
   .gallery-section, .gallery-main-container, .gallery-lightbox { display: none !important; }
+  .rsvp-section,
+  .rsvp-form {
+    display: none !important;
+  }
 }
 .print-root {
   display: flex;

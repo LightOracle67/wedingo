@@ -65,6 +65,7 @@ export default function CoverSectionForm({ prefix = "" }) {
               className="setup-input"
               value={formData.firstName}
               onChange={handleFirstNameChange}
+              onBlur={() => updateFormField("firstName", formData.firstName.trim())}
               placeholder={t("setup.namePlaceholder")}
               autoComplete="off"
               required
@@ -78,6 +79,7 @@ export default function CoverSectionForm({ prefix = "" }) {
               className="setup-input"
               value={formData.secondName}
               onChange={handleSecondNameChange}
+              onBlur={() => updateFormField("secondName", formData.secondName.trim())}
               placeholder={t("setup.namePlaceholder")}
               autoComplete="off"
               required

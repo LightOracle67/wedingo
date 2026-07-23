@@ -62,7 +62,8 @@ const DetailsSection = memo(function DetailsSection({
               className="setup-button setup-button--ghost setup-button--compact"
               href={calendarLink}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
+              referrerpolicy="no-referrer"
             >
               {t("details.addToCalendar")}
             </a>
@@ -77,7 +78,8 @@ const DetailsSection = memo(function DetailsSection({
               className="setup-button setup-button--ghost setup-button--compact"
               href={mapsUrl.google}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
+              referrerpolicy="no-referrer"
             >
               {t("details.viewGoogleMaps")}
             </a>
@@ -85,7 +87,8 @@ const DetailsSection = memo(function DetailsSection({
               className="setup-button setup-button--ghost setup-button--compact"
               href={mapsUrl.apple}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
+              referrerpolicy="no-referrer"
             >
               {t("details.viewAppleMaps")}
             </a>

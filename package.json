@@ -16,6 +16,7 @@
     "lint:ci": "oxlint --deny-warnings",
     "preview": "vite preview",
     "translations:check": "node scripts/check-translations.js",
+    "audit": "npm audit",
     "firebase:login": "firebase login",
     "firebase:use": "firebase use --add",
     "deploy:hosting": "npm run build && firebase deploy --only hosting",

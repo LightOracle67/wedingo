@@ -189,9 +189,10 @@ const LanguageSwitcher = memo(function LanguageSwitcher() {
         type="button"
         className="lang-trigger"
         onClick={() => setOpen(true)}
-        aria-label={t("langSwitcher.label")}
+        aria-label={t("lang.triggerLabel")}
+        title={t("lang.triggerLabel")}
         aria-expanded={open}
-        aria-haspopup="true"
+        aria-haspopup="dialog"
       >
         🌐 {currentLabel}
       </button>

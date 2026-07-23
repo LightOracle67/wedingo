@@ -33,6 +33,7 @@ export default function GiftsSectionForm({ prefix = "" }) {
         onChange={(e) => updateFormField("bankInfo", e.target.value.slice(0, 100))}
         placeholder={t("setup.bankInfoPlaceholder")}
         autoComplete="off"
+        maxLength={100}
       />
       <p className="setup-help">{t("setup.bankInfoHint")}</p>
     </>

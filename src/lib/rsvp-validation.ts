@@ -22,7 +22,7 @@ export function validateRsvpForm(
   t: (key: string) => string,
   menuEnabled: boolean,
   hasStructuredMenu: boolean,
-  totalGuests: number,
+  _totalGuests: number,
 ): ValidationError[] {
   const errors: ValidationError[] = [];
 

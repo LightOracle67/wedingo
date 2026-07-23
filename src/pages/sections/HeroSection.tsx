@@ -1,9 +1,17 @@
-import { memo, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import heroBackdropSrc from "../../assets/rings.webp";
 import LoadingOverlay from "../../components/LoadingOverlay";
 
 const HeroSection = memo(function HeroSection({ style, className, firstName, secondName, inviteMessage, countdown, couplePhoto, godparent1, godparent2 }: any) {
+  useEffect(() => {
+    const link = document.createElement("link");
+    link.rel = "preload";
+    link.as = "image";
+    link.href = heroBackdropSrc;
+    document.head.appendChild(link);
+    return () => { link.remove(); };
+  }, []);
   const { t } = useTranslation();
   const [photoLoaded, setPhotoLoaded] = useState(false);
 
