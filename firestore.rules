@@ -96,7 +96,7 @@ service cloud.firestore {
           request.resource.data.dietaryInfo == ""
           || request.resource.data.healthConsent == true
         )
-        && (request.resource.data.keys().hasOnly(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent', 'privacyConsentAt', 'birthDate', 'parentalConsent', 'menuSelection', 'mealChoice', 'healthConsent', 'companions', 'menuHeadcounts', 'guestNames'])
+        && (request.resource.data.keys().hasOnly(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent', 'privacyConsentAt', 'birthDate', 'parentalConsent', 'menuSelection', 'mealChoice', 'healthConsent', 'healthConsentAt', 'companions', 'menuHeadcounts', 'guestNames'])
           || request.resource.data.keys().hasOnly(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent', 'privacyConsentAt', 'birthDate', 'parentalConsent', 'menuSelection', 'mealChoice', 'companions', 'menuHeadcounts', 'guestNames']));
 
       allow read: if isSuperAdmin()
@@ -108,7 +108,7 @@ service cloud.firestore {
         && request.resource.data.inviteToken is string
         && hasActiveSession(resource.data.inviteToken)
         && request.resource.data.privacyConsent == true
-        && request.resource.data.keys().hasOnly(['attendance', 'dietaryInfo', 'privacyConsent', 'privacyConsentAt', 'healthConsent', 'birthDate', 'parentalConsent', 'menuSelection', 'mealChoice', 'guestName', 'submittedAt', 'inviteToken', 'companions', 'menuHeadcounts', 'guestNames']);
+        && request.resource.data.keys().hasOnly(['attendance', 'dietaryInfo', 'privacyConsent', 'privacyConsentAt', 'healthConsent', 'healthConsentAt', 'birthDate', 'parentalConsent', 'menuSelection', 'mealChoice', 'guestName', 'submittedAt', 'inviteToken', 'companions', 'menuHeadcounts', 'guestNames']);
 
       allow delete: if isSuperAdmin()
         || (resource.data.inviteToken is string
