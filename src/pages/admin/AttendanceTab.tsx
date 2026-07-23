@@ -97,11 +97,17 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
             <tbody>
               {paginated.map((entry: any) => {
                 const attending = entry.attendance === "yes";
-                const names = entry.guestNames
-                  ? entry.guestNames.split(",").map((n: string) => n.trim()).filter(Boolean)
-                  : [];
-                const menuLines = formatMenuLines(entry.menuHeadcounts || {});
-                const dietLines = attending ? getDietaryLines(entry.dietaryInfo || "", entry.companions || 1) : [];
+                const attendeesList = entry.attendees?.length
+                  ? entry.attendees
+                  : (entry.guestNames
+                      ? entry.guestNames.split(",").map((n: string) => n.trim()).filter(Boolean).map((n: string) => ({ name: n }))
+                      : []);
+                const menuLines = entry.attendees?.length
+                  ? entry.attendees.map((a: any) => a.menu ? `${a.name}: ${a.menu}` : null).filter(Boolean)
+                  : formatMenuLines(entry.menuHeadcounts || {});
+                const dietLines = entry.attendees?.length
+                  ? entry.attendees.filter((a: any) => a.allergies?.length).map((a: any) => `${a.name}: ${a.allergies.join(", ")}`)
+                  : (attending ? getDietaryLines(entry.dietaryInfo || "", entry.companions || 1).map((d) => `${d.item}: ${d.count}`) : []);
                 const crossed = !attending ? { textDecoration: "line-through", opacity: 0.4 } : {};
 
                 return (
@@ -115,8 +121,8 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
                     <td>
                       {attending ? (
                         <div style={{ display: "flex", flexDirection: "column", gap: "0.15rem" }}>
-                          {names.length > 0 ? names.map((n: string, i: number) => (
-                            <span key={i} style={{ fontSize: "0.78rem" }}>{n}</span>
+                          {attendeesList.length > 0 ? attendeesList.map((a: any, i: number) => (
+                            <span key={i} style={{ fontSize: "0.78rem" }}>{a.name}</span>
                           )) : <span style={{ fontSize: "0.78rem", color: "var(--setup-muted)" }}>—</span>}
                         </div>
                       ) : (
@@ -127,9 +133,9 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
                       <div style={crossed}>
                         {attending ? (
                           <div style={{ display: "flex", flexDirection: "column", gap: "0.15rem" }}>
-                            {menuLines.map((line, i) => (
+                            {menuLines.length > 0 ? menuLines.map((line: any, i: number) => (
                               <span key={i} style={{ fontSize: "0.78rem" }}>{line}</span>
-                            ))}
+                            )) : <span style={{ fontSize: "0.78rem" }}>—</span>}
                           </div>
                         ) : (
                           <span style={{ fontSize: "0.78rem" }}>—</span>
@@ -140,10 +146,8 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
                       <div style={crossed}>
                         {attending && dietLines.length > 0 ? (
                           <div style={{ display: "flex", flexDirection: "column", gap: "0.15rem" }}>
-                            {dietLines.map((d, i) => (
-                              <span key={i} style={{ fontSize: "0.78rem", textTransform: "capitalize" }}>
-                                {d.item}: {d.count}
-                              </span>
+                            {dietLines.map((line: any, i: number) => (
+                              <span key={i} style={{ fontSize: "0.78rem" }}>{line}</span>
                             ))}
                           </div>
                         ) : (
