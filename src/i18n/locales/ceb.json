@@ -7573,26 +7573,6 @@
         ]
       ]
     ],
-    "currentTokenPlaceholder": [
-      "Idikit ang kasamtangan nga code dinhi",
-      "Paste the current code here",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "7cd27a263735d6dc9e3c878eca97fe56",
-            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
-          ]
-        ]
-      ]
-    ],
     "generateToken": [
       "Paghimo og bag-ong code",
       "Generate new code",

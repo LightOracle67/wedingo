@@ -7573,26 +7573,6 @@
         ]
       ]
     ],
-    "currentTokenPlaceholder": [
-      "Plak die huidige kode hier",
-      "Paste the current code here",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "c20f075da290ff4ebe2bae43bebf89e7",
-            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
-          ]
-        ]
-      ]
-    ],
     "generateToken": [
       "Genereer nuwe kode",
       "Generate new code",

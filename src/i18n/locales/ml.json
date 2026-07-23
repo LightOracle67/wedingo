@@ -7443,26 +7443,6 @@
         ]
       ]
     ],
-    "currentTokenPlaceholder": [
-      "നിലവിലെ കോഡ് ഇവിടെ ഒട്ടിക്കുക",
-      "Paste the current code here",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "ee29150929b269c38979323546d85c49",
-            "tea_DravidianA_en2knmlsitate_2021q3.md"
-          ]
-        ]
-      ]
-    ],
     "generateToken": [
       "പുതിയ കോഡ് സൃഷ്ടിക്കുക",
       "Generate new code",

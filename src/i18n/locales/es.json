@@ -51,6 +51,7 @@
     "errorNoInvite": "El código no está asociado a ninguna invitación.",
     "errorTransactionFailed": "No se pudo completar el acceso. Inténtalo de nuevo.",
     "errorVerifyFailed": "No se pudo verificar el código. Inténtalo de nuevo.",
+    "errorTooManyAttempts": "Demasiados intentos. Espera {{seconds}} segundos.",
     "sessionExists": "Ya hay una sesión activa para esta invitación. ¿Quieres iniciar sesión de todos modos? La sesión anterior se cerrará."
   },
   "hero": {
@@ -635,8 +636,8 @@
     "logoutButton": "Cerrar sesión",
     "firebaseAccount": "Para gestionar tu cuenta de superadmin, usa la consola de Firebase:",
     "firebaseLink": "Ir a Firebase Auth",
-    "emailPlaceholder": "tu@email.com",
-    "passwordPlaceholder": "Contraseña",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Password",
     "data": {
       "selectAll": "Seleccionar todo",
       "deselectAll": "Deseleccionar todo",

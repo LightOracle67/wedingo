@@ -6546,26 +6546,6 @@
         ]
       ]
     ],
-    "currentTokenPlaceholder": [
-      "将当前代码粘贴到此处",
-      "Paste the current code here",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "6ffafab0da7e640be86ac09d0d5e539c",
-            "en_zh_2023q1.md"
-          ]
-        ]
-      ]
-    ],
     "generateToken": [
       "生成新代码",
       "Generate new code",

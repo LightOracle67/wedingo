@@ -51,6 +51,7 @@
     "errorNoInvite": "The code is not associated with any invitation.",
     "errorTransactionFailed": "Could not complete sign in. Please try again.",
     "errorVerifyFailed": "Could not verify the code. Please try again.",
+    "errorTooManyAttempts": "Too many attempts. Please wait {{seconds}} seconds.",
     "sessionExists": "There is already an active session for this invitation. Do you want to sign in anyway? The previous session will be closed."
   },
   "hero": {

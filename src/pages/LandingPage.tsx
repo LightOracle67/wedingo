@@ -28,6 +28,8 @@ export default function LandingPage() {
   const modalRef = useFocusTrap(showModal);
   useEscapeKey(() => setShowModal(false), showModal);
   const closeButtonRef = useRef<any>(null);
+  const loginAttemptsRef = useRef(0);
+  const loginBlockedUntilRef = useRef(0);
 
   const handleCreate = () => {
     const token = generateInviteToken();
@@ -37,10 +39,20 @@ export default function LandingPage() {
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
+    if (Date.now() < loginBlockedUntilRef.current) {
+      const waitSec = Math.ceil((loginBlockedUntilRef.current - Date.now()) / 1000);
+      setError(t("landing.errorTooManyAttempts", { seconds: waitSec }));
+      return;
+    }
     const username = (usernameInput || "").trim();
     const raw = (tokenInput || "").trim();
     if (!username || !raw) {
       setError(t("landing.errorEmpty"));
+      loginAttemptsRef.current++;
+      if (loginAttemptsRef.current >= 3) {
+        loginBlockedUntilRef.current = Date.now() + 30000;
+        loginAttemptsRef.current = 0;
+      }
       return;
     }
 
@@ -50,6 +62,11 @@ export default function LandingPage() {
     const normalized = normalizeTokenValue(raw);
     if (normalized.length < 20) {
       setError(t("landing.errorInvalidToken"));
+      loginAttemptsRef.current++;
+      if (loginAttemptsRef.current >= 3) {
+        loginBlockedUntilRef.current = Date.now() + 30000;
+        loginAttemptsRef.current = 0;
+      }
       setIsLoading(false);
       return;
     }
@@ -59,6 +76,11 @@ export default function LandingPage() {
       const invSnap = await getDocs(invQuery);
       if (invSnap.empty) {
         setError(t("landing.errorTokenNotFound"));
+        loginAttemptsRef.current++;
+        if (loginAttemptsRef.current >= 3) {
+          loginBlockedUntilRef.current = Date.now() + 30000;
+          loginAttemptsRef.current = 0;
+        }
         setIsLoading(false);
         return;
       }
@@ -68,6 +90,11 @@ export default function LandingPage() {
 
       if (matchedData.adminUsername && matchedData.adminUsername.toLowerCase() !== username.toLowerCase()) {
         setError(t("landing.errorUsernameMismatch"));
+        loginAttemptsRef.current++;
+        if (loginAttemptsRef.current >= 3) {
+          loginBlockedUntilRef.current = Date.now() + 30000;
+          loginAttemptsRef.current = 0;
+        }
         setIsLoading(false);
         return;
       }
@@ -101,6 +128,11 @@ export default function LandingPage() {
         });
       } catch {
         setError(t("landing.errorTransactionFailed"));
+        loginAttemptsRef.current++;
+        if (loginAttemptsRef.current >= 3) {
+          loginBlockedUntilRef.current = Date.now() + 30000;
+          loginAttemptsRef.current = 0;
+        }
         setIsLoading(false);
         return;
       }
@@ -116,6 +148,11 @@ export default function LandingPage() {
       navigate(`/${target}`);
     } catch {
       setError(t("landing.errorVerifyFailed"));
+      loginAttemptsRef.current++;
+      if (loginAttemptsRef.current >= 3) {
+        loginBlockedUntilRef.current = Date.now() + 30000;
+        loginAttemptsRef.current = 0;
+      }
     }
 
     setIsLoading(false);

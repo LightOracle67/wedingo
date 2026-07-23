@@ -7573,26 +7573,6 @@
         ]
       ]
     ],
-    "currentTokenPlaceholder": [
-      "Устаўце сюды бягучы код",
-      "Paste the current code here",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "2e8de74564aec87fb81cb0340a661858",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2022q2.md"
-          ]
-        ]
-      ]
-    ],
     "generateToken": [
       "Стварыце новы код",
       "Generate new code",

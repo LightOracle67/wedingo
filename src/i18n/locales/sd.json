@@ -7417,26 +7417,6 @@
         ]
       ]
     ],
-    "currentTokenPlaceholder": [
-      "موجوده ڪوڊ پيسٽ ڪريو هتي",
-      "Paste the current code here",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "bb93a879d26edf943ed8e0c574850bff",
-            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
-          ]
-        ]
-      ]
-    ],
     "generateToken": [
       "نئون ڪوڊ ٺاهيو",
       "Generate new code",
