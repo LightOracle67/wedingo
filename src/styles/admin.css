@@ -1521,13 +1521,15 @@ select.setup-input {
 }
 
 @media (max-width: 480px) {
-  .setup-layout { padding: 0.25rem; }
-  .setup-card { width: 98% !important; padding: 0.5rem; }
-  .setup-card--full { height: auto !important; min-height: 60vh; }
+  .setup-layout { padding: 0.25rem; display: block !important; }
+  .setup-layout--full.setup-layout { min-height: auto; }
+  .setup-card { width: 98% !important; padding: 0.5rem; height: auto !important; max-height: none !important; }
+  .setup-card--full { height: auto !important; min-height: auto !important; }
+  .admin-flex--col { height: auto !important; min-height: auto !important; }
   .admin-tabs { overflow-x: auto; flex-wrap: nowrap; gap: 0.2rem; }
   .admin-tab { font-size: 0.78rem; padding: 0.4rem 0.6rem; white-space: nowrap; }
   .admin-stats-grid { grid-template-columns: 1fr 1fr; gap: 0.4rem; }
-  .data-tab-table-wrap { overflow-x: auto; }
+  .data-tab-table-wrap { overflow: visible !important; flex: none; }
   .data-tab-actions { flex-direction: column; align-items: stretch; }
   .setup-form { padding: 0; }
   .setup-collapsible__summary-btn { font-size: 0.85rem; }
