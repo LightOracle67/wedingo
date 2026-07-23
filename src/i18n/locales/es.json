@@ -552,7 +552,16 @@
     "musicDeleteFailed": "No se pudo eliminar la música.",
     "galleryLoadFailed": "No se pudo cargar la galería.",
     "galleryDeleteFailed": "No se pudo eliminar la imagen.",
-    "imageIdNotFound": "No se encontró el ID de la imagen."
+    "imageIdNotFound": "No se encontró el ID de la imagen.",
+    "permissionDenied": "No tienes permiso para realizar esta acción.",
+    "serviceUnavailable": "El servicio no está disponible temporalmente. Inténtalo de nuevo.",
+    "notFound": "No se encontraron los datos solicitados.",
+    "timeout": "La operación agotó el tiempo de espera. Revisa tu conexión.",
+    "quotaExceeded": "Se ha alcanzado el límite de solicitudes. Inténtalo más tarde.",
+    "alreadyExists": "Estos datos ya existen.",
+    "failedPrecondition": "No se pudo completar la operación.",
+    "aborted": "La operación fue abortada.",
+    "unauthenticated": "Se requiere autenticación."
   },
   "superadmin": {
     "tabs": {
@@ -566,6 +575,7 @@
     "superadmin": "Superadmin",
     "controlPanel": "Panel de control",
     "managePlatform": "Gestiona la plataforma Wedingo",
+    "dashboardEmpty": "No hay datos disponibles aún. Crea una invitación para ver estadísticas.",
     "dashboardLoading": "Cargando estadísticas...",
     "dashboardError": "Error al cargar estadísticas.",
     "expiredInvitations": "{{count}} invitación(es) con más de 12 meses desde la boda",

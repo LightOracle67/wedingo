@@ -9,7 +9,7 @@ import CookieConsent from "./components/CookieConsent";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 import MusicPlayer from "./components/MusicPlayer";
 
-const RTL_LANGS = new Set(["ar", "he", "ur", "fa", "ps", "ku"]);
+const RTL_LANGS = new Set(["ar", "he", "fa", "ps", "ur", "sd", "ku", "ckb", "dv", "ha"]);
 const AccessibilityPanel = lazy(() => import("./components/AccessibilityPanel"));
 import LegalModal from "./components/LegalModal";
 import ChangelogModal from "./components/ChangelogModal";
@@ -93,6 +93,16 @@ function AppShell() {
 
   return (
     <>
+      <a href="#main-content" className="skip-link" style={{
+        position: "absolute", top: "-100px", left: "8px", zIndex: 100000,
+        background: "var(--setup-accent)", color: "var(--setup-accent-text)",
+        padding: "0.5rem 1rem", borderRadius: "0 0 0.5rem 0.5rem",
+        fontWeight: 600, fontSize: "0.85rem", textDecoration: "none",
+        transition: "top 0.2s",
+      }} onFocus={(e) => e.target.style.top = "0"} onBlur={(e) => e.target.style.top = "-100px"}>
+        {t("common.skipToContent")}
+      </a>
+
       {!isOnline ? (
         <div style={{
           position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 99999,
@@ -102,10 +112,6 @@ function AppShell() {
           Sin conexión — los cambios podrían no guardarse
         </div>
       ) : null}
-
-      <a href="#main-content" className="skip-link" tabIndex={0}>
-        {t("common.skipToContent")}
-      </a>
 
       {isAdminTokenLoggedIn && inviteToken && !location.pathname.endsWith("/setup") && !location.pathname.endsWith("/print") ? (
         <nav className="admin-bar" aria-label={t("common.adminBar.ariaLabel")}>

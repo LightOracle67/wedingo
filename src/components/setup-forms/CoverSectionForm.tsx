@@ -67,6 +67,7 @@ export default function CoverSectionForm({ prefix = "" }) {
               onChange={handleFirstNameChange}
               placeholder={t("setup.namePlaceholder")}
               autoComplete="off"
+              required
             />
           </div>
           <div className="setup-name-col">
@@ -78,6 +79,7 @@ export default function CoverSectionForm({ prefix = "" }) {
               onChange={handleSecondNameChange}
               placeholder={t("setup.namePlaceholder")}
               autoComplete="off"
+              required
             />
           </div>
         </div>

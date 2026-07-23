@@ -71,7 +71,15 @@ const DashboardTab = memo(function DashboardTab() {
   }, [expired, load, t]);
 
   if (loading) return <p className="setup-subtitle" style={{ textAlign: "center" }}>{t("superadmin.dashboardLoading")}</p>;
-  if (!stats) return <p className="setup-error">{t("superadmin.dashboardError")}</p>;
+  if (!stats) {
+    return (
+      <div className="admin-flex--col" style={{ height: "100%", minHeight: 0, alignItems: "center", justifyContent: "center", padding: "2rem", textAlign: "center" }}>
+        <p style={{ color: "var(--setup-muted)", fontSize: "0.9rem", margin: 0 }}>
+          {t("superadmin.dashboardEmpty")}
+        </p>
+      </div>
+    );
+  }
 
   const rsvpRate = stats.rsvpTotal > 0 ? Math.round((stats.rsvpYes / stats.rsvpTotal) * 100) : 0;
 

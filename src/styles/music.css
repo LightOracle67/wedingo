@@ -182,8 +182,8 @@
 .music-player__play {
   all: unset;
   cursor: pointer;
-  width: 2rem;
-  height: 2rem;
+  width: 2.8rem;
+  height: 2.8rem;
   border-radius: 50%;
   background: color-mix(in srgb, var(--invite-title-color, #dcc8a8) 90%, transparent);
   display: grid;

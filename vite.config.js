@@ -45,5 +45,16 @@ export default defineConfig({
       },
     },
     setupFiles: ["./vitest.setup.js"],
+    coverage: {
+      provider: "v8",
+      reporter: ["text", "html", "lcov"],
+      include: ["src/**/*.{ts,tsx}"],
+      exclude: [
+        "src/**/*.test.{ts,tsx}",
+        "src/**/*.spec.{ts,tsx}",
+        "src/i18n/locales/**",
+        "src/**/__tests__/**",
+      ],
+    },
   },
 });

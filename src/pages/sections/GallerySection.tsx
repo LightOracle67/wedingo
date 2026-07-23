@@ -4,15 +4,11 @@ import { useReducedMotion } from "../../hooks/useReducedMotion";
 import "../../styles/gallery.css";
 
 /**
- * Galería de imágenes de la invitación con carrusel automático y efecto fade.
- * Carga las imágenes descifradas desde Firestore, muestra una imagen
- * principal con descripción, controles de navegación y miniaturas.
- *
- * El carrusel avanza automáticamente cada 1.5s y se pausa al
- * interactuar (hover, clic en navegación o miniatura).
- *
- * @param {{ style: object, className: string, inviteToken: string }} props
- * @returns {JSX.Element} Sección de galería.
+ * GallerySection — Sección de galería de imágenes en la invitación.
+ * 
+ * Muestra un carrusel de imágenes con navegación, miniaturas, lightbox
+ * y descripciones. Soporta auto-avance, transiciones con blur y
+ * precarga con spinner.
  */
 const GallerySection = memo(function GallerySection({ style, className, inviteToken }: any) {
   const { t } = useTranslation();
@@ -294,7 +290,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
 
             {/* ── Descripción de la imagen actual ── */}
             {currentImage?.description && (
-              <div className="gallery-caption-wrap">
+              <div className="gallery-caption-wrap" aria-live="polite">
                 <p className="gallery-caption">{currentImage.description}</p>
               </div>
             )}

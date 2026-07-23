@@ -1,3 +1,13 @@
+/**
+ * GalleryArrayEditor — Editor de galería de imágenes.
+ * 
+ * Proporciona 10 slots para subir imágenes con compresión y cifrado.
+ * Cada slot permite: subir, reemplazar, eliminar y añadir descripción.
+ * Las imágenes se almacenan en la subcolección invitations/{token}/gallery.
+ *
+ * @param {string} inviteToken - Token de la invitación
+ * @param {object} t - Función de traducción i18next
+ */
 import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES } from "../lib/constants";
 import { useToast } from "../hooks/useToast";

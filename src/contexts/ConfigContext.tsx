@@ -19,6 +19,7 @@ import { useCalendar } from "../hooks/useCalendar";
 import { useFieldHandlers } from "../hooks/useFieldHandlers";
 import { useMapPreview } from "../hooks/useMapPreview";
 import { useAutoSave } from "../hooks/useAutoSave";
+import { getFirestoreErrorMessage } from "../lib/error-utils";
 import { validateWeddingDate } from "../lib/date-utils";
 import { useAppUI } from "./UIContext";
 
@@ -76,7 +77,9 @@ export function ConfigProvider({ children }: any) {
     try {
       const ref = invitationDocRef(token);
       await updateDoc(ref, { _visits: increment(1) });
-    } catch {}
+    } catch (e) {
+      console.warn("trackVisit failed:", getFirestoreErrorMessage(e));
+    }
   }, []);
 
   useEffect(() => {
@@ -179,9 +182,9 @@ export function ConfigProvider({ children }: any) {
         if (TOKEN_ROUTE_REGEX.test(firstSegment) && !["setup", "admin"].includes(firstSegment) && safeGetItem("wedin_cookie_consent") === "accepted") {
           trackVisit(inviteToken);
         }
-      } catch {
+      } catch (e) {
         if (!hasStoredConfig) {
-          setConfigLoadError(t("errors.configLoadFailed"));
+          setConfigLoadError(getFirestoreErrorMessage(e, t));
         }
       } finally {
         setIsConfigLoading(false);
@@ -218,8 +221,10 @@ export function ConfigProvider({ children }: any) {
       setConfig(hydrated);
       setFormData(hydrated);
       setHasStoredConfig(true);
-    } catch {}
-  }, [inviteToken]);
+    } catch (e) {
+      setSaveError(getFirestoreErrorMessage(e, t));
+    }
+  }, [inviteToken, t, setSaveError]);
 
   const handleSaveSetupCore = useCallback(async (event: any) => {
     event.preventDefault();
@@ -380,8 +385,8 @@ export function ConfigProvider({ children }: any) {
       for (const cb of onFirstSaveCallbacksRef.current) cb();
 
       setSaveMessage(t("errors.configSaved"));
-    } catch {
-      setSaveError(t("errors.configSaveFailed"));
+    } catch (e) {
+      setSaveError(getFirestoreErrorMessage(e, t));
     } finally {
       isSavingRef.current = false;
     }
@@ -400,8 +405,8 @@ export function ConfigProvider({ children }: any) {
       safeRemoveItem(`wedin_invite_cache_${inviteToken}`);
       clearSession();
       navigate("/");
-    } catch {
-      setSaveError(t("errors.deleteFailed"));
+    } catch (e) {
+      setSaveError(getFirestoreErrorMessage(e, t));
     }
   }, [inviteToken, navigate, t, setSaveError]);
 
