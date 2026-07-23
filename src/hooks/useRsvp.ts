@@ -102,7 +102,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
                 attendance: data.attendance || "no",
                 dietaryInfo: decryptedDietaryInfo,
                 attendees,
-                companions: Number.isFinite(data.companions) ? data.companions : 0,
+                companions: attendees.length > 0 ? attendees.length : (Number.isFinite(data.companions) ? data.companions : 0),
                 mealChoice: data.mealChoice || "",
                 menuHeadcounts: data.menuHeadcounts || {},
                 guestNames: data.guestNames || "",
