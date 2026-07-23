@@ -26,7 +26,12 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
           <div className="story-eyebrow">{t("hero.eyebrow")}</div>
           {couplePhoto ? (
             <div className="mx-auto" style={{ position: "relative", height: "90%", aspectRatio: "4/3", overflow: "hidden", overflowY: "hidden" }}>
-              <div style={{ position: "absolute", inset: 0, opacity: photoLoaded ? 1 : 0, transition: "opacity 0.3s ease" }}>
+              <div style={{
+                position: "absolute", inset: 0, opacity: photoLoaded ? 1 : 0, transition: "opacity 0.3s ease",
+                maskImage: "radial-gradient(ellipse at center, black 65%, transparent 100%)",
+                WebkitMaskImage: "radial-gradient(ellipse at center, black 65%, transparent 100%)",
+                maskMode: "luminance", WebkitMaskMode: "luminance",
+              }}>
                 <img src={couplePhoto} alt={t("hero.couplePhotoAlt")} onLoad={() => setPhotoLoaded(true)} onError={() => setPhotoLoaded(true)} className="w-full h-full object-cover" />
               </div>
               <LoadingOverlay visible={!photoLoaded} />
