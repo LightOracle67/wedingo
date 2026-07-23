@@ -11,7 +11,7 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
   attendanceFilter, setAttendanceFilter,
   filteredEntries, exportPdf,
 } = config;
-  const { rsvpEntries, handleClearRsvpEntries, formatDate } = props;
+  const { rsvpEntries, handleClearRsvpEntries, formatDate } = config;
   const { t } = useTranslation();
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(25);
