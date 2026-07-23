@@ -109,3 +109,9 @@
 .wedding-decoration {
   z-index: 0;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .wedding-decoration__image {
+    animation: none;
+  }
+}

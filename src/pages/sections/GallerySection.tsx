@@ -214,7 +214,9 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
         <div className="story-card story-panel story-card--info w-full text-center" style={{ maxWidth: "min(100%, 56rem)" }} aria-live="polite" aria-busy="true">
           <p className="story-eyebrow">{t("gallery.sectionLabel")}</p>
           <h2 className="story-title">{t("gallery.title")}</h2>
-          <div className="page-loading" style={{ marginTop: "2rem" }} />
+          <div className="gallery-main-container" style={{ minHeight: "200px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <div className="page-loading" />
+          </div>
         </div>
       </section>
     );
@@ -335,7 +337,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
                   data-index={i}
                   loading="lazy"
                   className="gallery-thumb__img"
-                  style={{ opacity: thumbLoaded[i] ? 1 : 0 }}
+                  style={{ opacity: thumbLoaded[i] ? 1 : 0, transition: "opacity 0.3s ease" }}
                 />
               </button>
             );

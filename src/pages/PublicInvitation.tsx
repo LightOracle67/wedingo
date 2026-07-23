@@ -40,6 +40,7 @@ import StorySection from "./sections/StorySection";
 
 // ─── Componentes globales ─────────────────────────────────────────
 import EnvelopeOverlay from "../components/EnvelopeOverlay";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 // ─── Secciones secundarias (carga diferida) ────────────────────────
 const GiftsSection = lazy(() => import("./sections/GiftsSection"));
@@ -482,13 +483,14 @@ export default function PublicInvitation() {
             const Component = (SECTION_COMPONENTS as any)[sectionKey];
             if (!Component) return null;
             return (
-              <Component
-                key={sectionKey}
-                style={getStorySectionStyle(sectionKey)}
-                className={getStorySectionClassName(sectionKey)}
-                // Propaga las props específicas de cada sección
-                {...(sectionProps as any)[sectionKey]}
-              />
+              <ErrorBoundary key={sectionKey}>
+                <Component
+                  style={getStorySectionStyle(sectionKey)}
+                  className={getStorySectionClassName(sectionKey)}
+                  // Propaga las props específicas de cada sección
+                  {...(sectionProps as any)[sectionKey]}
+                />
+              </ErrorBoundary>
             );
           })}
         </Suspense>

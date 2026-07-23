@@ -184,7 +184,7 @@
     "locationNotFound": "No pudimos localizar este lugar.",
     "locationMapError": "No pudimos cargar el mapa.",
     "locationCoordinates": "Coordenadas: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Vista del mapa en la ubicación indicada.",
+    "mapPreviewAlt": "Vista previa del mapa de la ubicación de la boda",
     "locationSet": "Ubicación configurada"
   },
   "setup": {

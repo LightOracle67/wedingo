@@ -70,7 +70,7 @@ export default function DateSectionForm({ prefix = "" }) {
             if (el) el.textContent = "";
           }, 200)}
           placeholder={t("setup.placePlaceholder")}
-          autoComplete="off"
+          autoComplete="street-address"
         />
         <div id="weddingPlaceResults" style={{
           position: "absolute", top: "100%", left: 0, right: 0, zIndex: 10,
@@ -88,7 +88,7 @@ export default function DateSectionForm({ prefix = "" }) {
         return (
           <div className="setup-location-preview">
             <p className="setup-label setup-label--tight">{t("setup.mapPreview")}</p>
-            <img src={locationPreview.src} alt={t("setup.mapPreview")} className="setup-location-preview__image" />
+            <img src={locationPreview.src} alt={t("setup.mapPreviewAlt")} className="setup-location-preview__image" />
           </div>
         );
       })()}
@@ -102,6 +102,7 @@ export default function DateSectionForm({ prefix = "" }) {
             value={formData.weddingDay}
             onChange={(e) => handleDayChange(e.target.value)}
             placeholder={t("setup.dayPlaceholder")}
+            inputMode="numeric"
             autoComplete="off"
           />
         </div>
@@ -127,6 +128,7 @@ export default function DateSectionForm({ prefix = "" }) {
             value={formData.weddingYear}
             onChange={(e) => handleYearChange(e.target.value)}
             placeholder={t("setup.yearPlaceholder")}
+            inputMode="numeric"
             autoComplete="off"
           />
           <p className="setup-help">{t("setup.yearMaxHint", { year: maxAllowedYear })}</p>
