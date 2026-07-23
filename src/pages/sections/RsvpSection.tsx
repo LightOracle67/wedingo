@@ -51,7 +51,7 @@ const RsvpSection = memo(function RsvpSection({
   }, [updateRsvpField]);
 
   const handleCompanionsChange = useCallback((e: any) => {
-    updateRsvpField("companions", Math.max(0, parseInt(e.target.value, 10) || 0));
+    updateRsvpField("companions", Math.max(1, parseInt(e.target.value, 10) || 1));
   }, [updateRsvpField]);
 
   const handleGuestNamesChange = useCallback((e: any) => {
@@ -125,7 +125,7 @@ const RsvpSection = memo(function RsvpSection({
             {rsvpForm.attendance === "yes" ? (
               <div>
                 <label className="setup-label" htmlFor="rsvpCompanions">{t("rsvp.companionsLabel")} *</label>
-                <input id="rsvpCompanions" type="number" min="0" max="50" className="setup-input"
+                <input id="rsvpCompanions" type="number" min="1" max="50" className="setup-input"
                   value={rsvpForm.companions} onChange={handleCompanionsChange}
                   inputMode="numeric" required disabled={isAlreadySubmitted} />
               </div>

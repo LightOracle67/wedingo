@@ -209,19 +209,19 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
       return;
     }
 
-    const companions = Math.max(0, parseInt(rsvpForm.companions, 10) || 0);
+    const familySize = Math.max(1, parseInt(rsvpForm.companions, 10) || 1);
     if (rsvpForm.attendance === "yes" && !rsvpForm.birthDate) {
       setRsvpMessage(t("rsvp.validation.birthDateRequired"));
       return;
     }
 
-    if (rsvpForm.attendance === "yes" && companions > 0) {
+    if (rsvpForm.attendance === "yes" && familySize > 1) {
       const names = (rsvpForm.guestNames || "").split(",").filter(n => n.trim());
       if (names.length === 0) {
         setRsvpMessage(t("rsvp.validation.guestNamesRequired"));
         return;
       }
-      if (names.length > companions) {
+      if (names.length > familySize) {
         setRsvpMessage(t("rsvp.validation.guestNamesExceed"));
         return;
       }
@@ -234,7 +234,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
         setRsvpMessage(t("rsvp.validation.menuHeadcountRequired"));
         return;
       }
-      if (sum > companions) {
+      if (sum > familySize) {
         setRsvpMessage(t("rsvp.validation.headcountExceed"));
         return;
       }
@@ -275,11 +275,11 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
     try {
       // Encripta la información dietética antes de guardar
       const encryptedDietaryInfo = await encrypt(dietaryInfo, inviteToken);
-      const companions = Math.max(0, parseInt(rsvpForm.companions, 10) || 0);
+      const familySizeNum = Math.max(1, parseInt(rsvpForm.companions, 10) || 1);
       const payload = {
         guestName: single,
         attendance: rsvpForm.attendance,
-        companions,
+        companions: familySizeNum,
         guestNames: rsvpForm.guestNames || "",
         menuHeadcounts: rsvpForm.menuHeadcounts || {},
         dietaryInfo: encryptedDietaryInfo,
