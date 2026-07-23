@@ -8,7 +8,11 @@ import { AuthProvider } from "./AuthContext";
 import { useAuth } from "./useAuth";
 import { RsvpProvider } from "./RsvpContext";
 import { useRsvpContext } from "./useRsvpContext";
-import { AppContext } from "./useApp";
+import { AppContext, useApp } from "./useApp";
+
+// Re-export para compatibilidad con imports existentes
+// eslint-disable-next-line react(only-export-components)
+export { useApp };
 
 function AppMerger({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();

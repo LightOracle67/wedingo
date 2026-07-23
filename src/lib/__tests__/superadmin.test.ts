@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
-const originalEnv = import.meta.env;
+const _originalEnv = import.meta.env;
 
 describe("superadmin", () => {
   beforeEach(() => {
