@@ -126,9 +126,6 @@ export const defaultConfig = {
   weddingDressCode: "",
 
   theme: "golden",
-  backgroundImageLabel: "",
-  backgroundImageSource: "",
-
   couplePhoto: "",
 
   sectionOrder: STORY_SECTION_ORDER.join(","),

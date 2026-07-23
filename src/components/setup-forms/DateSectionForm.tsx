@@ -114,8 +114,8 @@ export default function DateSectionForm({ prefix = "" }) {
             onChange={(e) => updateFormField("weddingMonth", e.target.value)}
           >
             <option value="" disabled>{t("setup.monthPlaceholder")}</option>
-            {MONTH_OPTIONS.map((mo) => (
-              <option key={mo.value} value={mo.value}>{t("monthNames." + ((MONTH_VALUE_TO_NUMBER as any)[mo.value] || ""))}</option>
+            {MONTH_OPTIONS.map((month) => (
+              <option key={month.value} value={month.value}>{t("monthNames." + ((MONTH_VALUE_TO_NUMBER as any)[month.value] || ""))}</option>
             ))}
           </select>
         </div>

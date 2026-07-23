@@ -25,8 +25,8 @@ const DashboardTab = memo(function DashboardTab() {
         getDocs(INVITATIONS_COLLECTION_REF),
       ]);
       const rsvps = rsvpSnap.docs.map((d: any) => ({ id: d.id, ...d.data() }));
-      const invs = invSnap.docs.map((d: any) => ({ id: d.id, ...d.data() }));
-      setInvitations(invs);
+      const invitationDocs = invSnap.docs.map((d: any) => ({ id: d.id, ...d.data() }));
+      setInvitations(invitationDocs);
       setStats(calcGlobalStats(invs, rsvps));
     } catch {
       addToast("error", t("errors.statsLoadFailed"));
@@ -37,7 +37,7 @@ const DashboardTab = memo(function DashboardTab() {
 
   const twelveMonthsAgo = Date.now() - 365 * 24 * 60 * 60 * 1000;
 
-  const expired = invitations.filter((inv) => {
+  const expired = invitations.filter((invitation) => {
     if (!inv.weddingYear || !inv.weddingMonth) return false;
     const monthIndex = ((MONTH_VALUE_TO_NUMBER as any)[inv.weddingMonth] || 1) - 1;
     const day = Number(inv.weddingDay) || 1;
@@ -49,7 +49,7 @@ const DashboardTab = memo(function DashboardTab() {
     if (!window.confirm(t("superadmin.cleanConfirm", { count: expired.length }))) return;
     setCleaning(true);
     let count = 0;
-    for (const inv of expired) {
+    for (const invitation of expired) {
       try {
         const batch = writeBatch(db);
         const rsvpQ = query(RSVP_COLLECTION_REF, where("inviteToken", "==", inv.id));

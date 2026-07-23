@@ -3,6 +3,7 @@ const SALT_LEN = 16;
 const IV_LEN = 12;
 const ITER_LEN = 3;
 const HEADER_LEN = SALT_LEN + IV_LEN + ITER_LEN;
+// Format: salt(16B) || iv(12B) || iterations(3B) || AES-GCM ciphertext
 const ITERATIONS_NEW = 600000;
 
 async function getKey(secret, salt, iterations) {

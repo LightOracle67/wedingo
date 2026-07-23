@@ -780,8 +780,6 @@
     "noMusic": "No music",
     "loadError": "Error loading",
     "label": "Music",
-    "soundCloudNote": "SoundCloud track — open to play",
-    "openInSoundCloud": "Open in SoundCloud",
     "play": "Play",
     "pause": "Pause",
     "playing": "Playing..."

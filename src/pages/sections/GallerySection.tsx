@@ -333,6 +333,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
                   onLoad={handleThumbLoad}
                   onError={handleThumbLoad}
                   data-index={i}
+                  loading="lazy"
                   className="gallery-thumb__img"
                   style={{ opacity: thumbLoaded[i] ? 1 : 0 }}
                 />

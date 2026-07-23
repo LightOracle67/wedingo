@@ -1,4 +1,6 @@
 const TARGET_SAMPLE_RATE = 22050;
+// Compresses audio to 22kHz mono WAV, base64-encodes as data URL
+// Used for background music in invitations
 
 function encodeWav(samples: Float32Array, sampleRate: number): ArrayBuffer {
   const numSamples = samples.length;

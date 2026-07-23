@@ -103,15 +103,16 @@ function AppShell() {
         {t("common.skipToContent")}
       </a>
 
-      {!isOnline ? (
-        <div style={{
-          position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 99999,
-          background: "#e06060", color: "#fff", textAlign: "center",
-          padding: "0.5rem", fontSize: "0.85rem", fontWeight: 600
-        }}>
-          Sin conexión — los cambios podrían no guardarse
-        </div>
-      ) : null}
+      <div style={{
+        position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 99999,
+        background: "#e06060", color: "#fff", textAlign: "center",
+        padding: "0.5rem", fontSize: "0.85rem", fontWeight: 600,
+        transition: "transform 0.3s ease, opacity 0.3s ease",
+        transform: isOnline ? "translateY(100%)" : "translateY(0)",
+        opacity: isOnline ? 0 : 1,
+      }}>
+        Sin conexión — los cambios podrían no guardarse
+      </div>
 
       {isAdminTokenLoggedIn && inviteToken && !location.pathname.endsWith("/setup") && !location.pathname.endsWith("/print") ? (
         <nav className="admin-bar" aria-label={t("common.adminBar.ariaLabel")}>

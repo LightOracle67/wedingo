@@ -1,5 +1,5 @@
 .envelope-flash {
-  position: fixed; inset: 0; z-index: 9998;
+  position: fixed; inset: 0; z-index: calc(var(--z-envelope, 9999) - 1);
   pointer-events: none;
   background: #fff;
   opacity: 0;
@@ -9,7 +9,7 @@
   opacity: 1;
 }
 .envelope-golden {
-  position: fixed; inset: 0; z-index: 9998;
+  position: fixed; inset: 0; z-index: calc(var(--z-envelope, 9999) - 1);
   display: grid;
   place-items: center;
   margin: 0;
@@ -76,7 +76,7 @@
   }
 }
 .envelope-overlay {
-  position: fixed; inset: 0; z-index: 9999;
+  position: fixed; inset: 0; z-index: var(--z-envelope, 9999);
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   background: rgba(80, 20, 20, 0.5);
   backdrop-filter: blur(50px) brightness(1.2);
