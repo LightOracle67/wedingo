@@ -35,13 +35,24 @@ import "../styles/admin.css";
  * @returns {JSX.Element} Formulario con todas las secciones de configuración.
  */
 export default function SetupForm({ prefix = "" }) {
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+        const form = document.querySelector(".setup-form") as HTMLFormElement;
+        if (form) form.requestSubmit();
+      }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, []);
   // ─── Extrae estado y handlers del contexto global ───────
   const {
     formData, updateFormField, handleSaveSetup,
     saveMessage, saveError, isTokenVerified, hasStoredConfig, setLegalModal,
   } = useApp();
   const { addToast } = useToast();
-  const { t } = useTranslation();
 
   // ── Muestra mensajes de éxito/error como toasts ─────────
   useEffect(() => {

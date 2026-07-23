@@ -1,3 +1,15 @@
+/**
+ * MusicArrayEditor — Editor de música de fondo.
+ * 
+ * Permite subir un archivo de audio (MP3/WAV/OGG/M4A) que se comprime
+ * a 22kHz mono, se cifra y se almacena fragmentado en la subcolección
+ * invitations/{token}/audio. Incluye reproductor con play/pause.
+ *
+ * @param {string} inviteToken - Token de la invitación
+ * @param {string} value - URL del audio actual
+ * @param {function} onChange - Callback al cambiar el audio
+ * @param {object} t - Función de traducción i18next
+ */
 import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useToast } from "../hooks/useToast";
 import { withTimeout } from "../lib/async-utils";

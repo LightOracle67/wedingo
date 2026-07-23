@@ -4,6 +4,7 @@ import { setDoc } from "firebase/firestore";
 import { invitationDocRef } from "../lib/firebase";
 import { normalizeConfig } from "../lib/utils";
 import { encrypt } from "../lib/crypto-utils";
+import { getFirestoreErrorMessage } from "../lib/error-utils";
 
 export function useAutoSave(hasStoredConfig, inviteToken, formData, config, onSaveMessage, isSavingRef) {
   const { t } = useTranslation();
@@ -23,8 +24,8 @@ export function useAutoSave(hasStoredConfig, inviteToken, formData, config, onSa
       await setDoc(invitationDocRef(inviteToken), payload, { merge: true });
       if (cpOrig) payload.couplePhoto = cpOrig;
       return payload;
-    } catch {
-      if (onSaveMessage) onSaveMessage(t("errors.autoSaveFailed"));
+    } catch (e) {
+      if (onSaveMessage) onSaveMessage(getFirestoreErrorMessage(e, t));
       return null;
     } finally {
       autoSavingRef.current = false;
