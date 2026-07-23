@@ -2094,8 +2094,28 @@ a:focus-visible {
 
 }
 
-/* ── Responsive: Wedding decorations ── */
-@media (max-width: 380px) {
+/* ── Responsive: Ultra pequeño (400% zoom) ── */
+@media (max-width: 480px) {
+  html { font-size: 14px; }
+  .story-card { max-width: 100% !important; width: 98% !important; padding: 0.6rem; }
+  .story-card--hero { max-width: 100% !important; }
+  .story-title { font-size: clamp(1rem, 5vw, 1.4rem) !important; }
+  .story-copy { font-size: clamp(0.8rem, 3.5vw, 0.95rem) !important; }
+  .gallery-main-container { width: 96%; padding: 0.4rem; }
+  .gallery-thumb { width: 1.8rem; height: 1.8rem; }
+  .admin-tabs { overflow-x: auto; white-space: nowrap; }
+  .admin-table-wrapper { overflow-x: auto; }
+  .admin-table { font-size: 0.7rem !important; }
+  .setup-layout { padding: 0.4rem; }
+  .setup-card { padding: 0.6rem; }
+  .upload-grid { grid-template-columns: 1fr; }
+  .support-grid { grid-template-columns: 1fr; }
+  .music-player__card { width: 160px; }
+  .envelope-wrapper { transform: scale(0.85); transform-origin: center center; }
+}
+@media (max-width: 360px) {
+  html { font-size: 12px; }
+  .admin-stats-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (min-width: 1024px) {
