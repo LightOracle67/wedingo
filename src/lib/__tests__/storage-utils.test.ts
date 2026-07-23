@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { clearExpiredCache } from "../storage-utils";
+import { getStorageUsage, clearExpiredCache } from "../storage-utils";
 
 function createStorageMock() {
   const store: Record<string, string> = {};
@@ -14,17 +14,32 @@ function createStorageMock() {
   };
 }
 
-describe("clearExpiredCache", () => {
+function mockStorage() {
+  const mock = createStorageMock();
+  vi.stubGlobal("localStorage", mock);
+  return mock;
+}
+
+describe("storage-utils", () => {
   beforeEach(() => {
-    const mock = createStorageMock();
-    vi.stubGlobal("localStorage", mock);
+    mockStorage();
   });
 
   afterEach(() => {
     vi.unstubAllGlobals();
   });
 
-  it("clears expired cache entries", () => {
+  it("exports getStorageUsage as a function", () => {
+    expect(typeof getStorageUsage).toBe("function");
+  });
+
+  it("getStorageUsage returns zero usage with no data", () => {
+    const usage = getStorageUsage();
+    expect(usage.used).toBe(0);
+    expect(usage.percent).toBe(0);
+  });
+
+  it("clearExpiredCache clears expired cache entries", () => {
     localStorage.setItem("wedin_invite_cache_test1", JSON.stringify({ cachedAt: Date.now() - 600000 }));
     localStorage.setItem("wedin_invite_cache_test2", JSON.stringify({ cachedAt: Date.now() }));
     const cleared = clearExpiredCache();
@@ -33,7 +48,7 @@ describe("clearExpiredCache", () => {
     expect(localStorage.getItem("wedin_invite_cache_test2")).toBeTruthy();
   });
 
-  it("handles no cache entries", () => {
+  it("clearExpiredCache handles no cache entries", () => {
     const cleared = clearExpiredCache();
     expect(cleared).toBe(0);
   });
