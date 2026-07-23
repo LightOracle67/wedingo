@@ -1,9 +1,7 @@
-import { createContext, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import LegalModal from "../components/LegalModal";
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const UIContext = createContext<any>(null);
+import { UIContext } from "./useAppUI";
 
 export function UIProvider({ children }: { children: React.ReactNode }) {
   const [saveMessage, setSaveMessage] = useState("");
@@ -49,8 +47,4 @@ export function UIProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function useAppUI() {
-  const ctx = useContext(UIContext);
-  if (!ctx) throw new Error("useAppUI debe usarse dentro de AppProvider");
-  return ctx;
-}
+

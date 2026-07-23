@@ -1,7 +1,7 @@
-export { useApp } from "./AppContext";
-export { useConfig } from "./ConfigContext";
-export { useAuth } from "./AuthContext";
-export { useRsvpContext } from "./RsvpContext";
-export { useAppUI } from "./UIContext";
+export { useApp } from "./useApp";
+export { useConfig } from "./useConfig";
+export { useAuth } from "./useAuth";
+export { useRsvpContext } from "./useRsvpContext";
+export { useAppUI } from "./useAppUI";
 export { useToast } from "../hooks/useToast";
 export { useSuperAdmin } from "./SuperAdminContext";

@@ -1,12 +1,14 @@
-import { createContext, useContext, useCallback, useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { UIProvider, useAppUI } from "./UIContext";
-import { ConfigProvider, useConfig } from "./ConfigContext";
-import { AuthProvider, useAuth } from "./AuthContext";
-import { RsvpProvider, useRsvpContext } from "./RsvpContext";
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const AppContext = createContext<any>(null);
+import { UIProvider } from "./UIContext";
+import { useAppUI } from "./useAppUI";
+import { ConfigProvider } from "./ConfigContext";
+import { useConfig } from "./useConfig";
+import { AuthProvider } from "./AuthContext";
+import { useAuth } from "./useAuth";
+import { RsvpProvider } from "./RsvpContext";
+import { useRsvpContext } from "./useRsvpContext";
+import { AppContext } from "./useApp";
 
 function AppMerger({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();
@@ -69,8 +71,4 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function useApp() {
-  const context = useContext(AppContext);
-  if (!context) throw new Error("useApp debe usarse dentro de AppProvider");
-  return context;
-}
+
