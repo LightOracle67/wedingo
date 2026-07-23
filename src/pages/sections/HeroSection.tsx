@@ -25,7 +25,7 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
         <div className="relative z-20">
           <div className="story-eyebrow">{t("hero.eyebrow")}</div>
           {couplePhoto ? (
-            <div className="mx-auto" style={{ position: "relative", width: "min(90vw, 500px)", aspectRatio: "16 / 10", maxHeight: "60vh", borderRadius: "1rem", overflow: "hidden", border: "2px solid color-mix(in srgb, var(--invite-shell-border) 80%, transparent)" }}>
+            <div className="mx-auto" style={{ position: "relative", width: "min(92vw, 700px)", aspectRatio: "4 / 3", maxHeight: "75vh", borderRadius: "1.5rem", overflow: "hidden", border: "3px solid color-mix(in srgb, var(--invite-shell-border) 80%, transparent)" }}>
               <div style={{ position: "absolute", inset: 0, opacity: photoLoaded ? 1 : 0, transition: "opacity 0.3s ease" }}>
                 <img src={couplePhoto} alt={t("hero.couplePhotoAlt")} onLoad={() => setPhotoLoaded(true)} onError={() => setPhotoLoaded(true)} className="w-full h-full object-cover" />
               </div>
@@ -38,7 +38,7 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
               }}>
                 <h1 className="story-title" style={{
                   position: "relative", zIndex: 11, color: "#fff", textShadow: "0 2px 12px rgba(0,0,0,0.6)",
-                  fontSize: "clamp(1.4rem, 4vw, 2.2rem)", margin: 0,
+                  fontSize: "clamp(1.8rem, 5vw, 3rem)", margin: 0,
                 }}>
                   {firstName || ""} & {secondName || ""}
                 </h1>
