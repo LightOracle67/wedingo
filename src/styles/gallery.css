@@ -5,7 +5,7 @@
   border-radius: var(--radius-xl);
   width: 80%;
   margin: 0 auto;
-  padding: 1rem;
+  padding: var(--spacing-md);
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -226,7 +226,7 @@
   .gallery-main-container {
     width: 92%;
     padding: 0.6rem;
-    gap: 0.5rem;
+    gap: var(--spacing-sm);
   }
   .gallery-nav {
     width: 1.8rem;

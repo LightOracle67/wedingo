@@ -73,7 +73,7 @@
   line-height: 1;
   color: var(--setup-muted, #888);
   cursor: pointer;
-  padding: 0.5rem;
+  padding: var(--spacing-sm);
   min-width: 2.75rem;
   min-height: 2.75rem;
   display: grid;
@@ -93,7 +93,7 @@
   align-items: flex-end;
   justify-content: center;
   background: rgba(0, 0, 0, 0.5);
-  padding: 1rem;
+  padding: var(--spacing-md);
 }
 .cookie-consent-card {
   background: var(--setup-grad-start);
@@ -129,7 +129,7 @@
 .legal-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: var(--spacing-sm);
   margin-top: 0.75rem;
 }
 .legal-actions .setup-button {

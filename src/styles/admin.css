@@ -198,7 +198,7 @@ input.setup-input[type="date"] {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: var(--spacing-md);
   flex-wrap: wrap;
 }
 .setup-eyebrow {
@@ -270,7 +270,7 @@ input.setup-input[type="date"] {
 .setup-collapsible__summary-text {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--spacing-sm);
 }
 .setup-collapsible__summary:hover {
   color: var(--setup-accent);
@@ -576,7 +576,7 @@ select.setup-input {
 }
 .setup-form--nested > .setup-actions {
   margin: 0 auto;
-  padding: 1rem;
+  padding: var(--spacing-md);
 }
 .setup-date-grid {
   display: grid;
@@ -925,7 +925,7 @@ select.setup-input {
     font-size: clamp(1.3rem, 5vw, 1.65rem);
   }
   .setup-actions {
-    gap: 0.5rem;
+    gap: var(--spacing-sm);
   }
   .setup-actions .setup-button {
     flex: 1;
@@ -1003,7 +1003,7 @@ select.setup-input {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5rem;
+  gap: var(--spacing-sm);
   max-width: 1440px;
   margin: 0 auto;
   padding: 0.45rem 0.75rem;
@@ -1019,7 +1019,7 @@ select.setup-input {
 }
 .admin-bar__links {
   display: flex;
-  gap: 0.25rem;
+  gap: var(--spacing-xs);
 }
 .admin-bar__link {
   display: inline-block;
@@ -1085,7 +1085,7 @@ select.setup-input {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 1rem;
+  gap: var(--spacing-md);
 }
 .theme-picker__group {
   margin: 0 0 0.5rem;
@@ -1349,7 +1349,7 @@ select.setup-input {
 .data-tab-confirm {
   margin-bottom: 0.8rem;
   display: flex;
-  gap: 0.5rem;
+  gap: var(--spacing-sm);
   align-items: center;
 }
 .data-tab-confirm input {
@@ -1412,7 +1412,7 @@ select.setup-input {
 .data-tab-empty-msg {
   text-align: center;
   color: var(--setup-muted);
-  padding: 1.5rem;
+  padding: var(--spacing-lg);
 }
 .data-tab-empty-name {
   color: var(--setup-muted);
@@ -1460,7 +1460,7 @@ select.setup-input {
 /* ── Utility classes ── */
 .flex-center { display: flex; align-items: center; justify-content: center; }
 .flex-between { display: flex; align-items: center; justify-content: space-between; }
-.flex-row { display: flex; align-items: center; gap: 0.5rem; }
+.flex-row { display: flex; align-items: center; gap: var(--spacing-sm); }
 .flex-col { display: flex; flex-direction: column; }
 .gap-sm { gap: 0.4rem; }
 .gap-md { gap: 0.75rem; }
@@ -1472,7 +1472,7 @@ select.setup-input {
 .text-sm { font-size: 0.85rem; }
 .text-xs { font-size: 0.78rem; }
 .w-full { width: 100%; }
-.p-sm { padding: 0.5rem; }
+.p-sm { padding: var(--spacing-sm); }
 .p-md { padding: 0.75rem; }
 .pos-relative { position: relative; }
 .overflow-auto { overflow-y: auto; }
@@ -1534,9 +1534,9 @@ select.setup-input {
 }
 
 @media (max-width: 480px) {
-  .setup-layout { padding: 0.25rem; display: block !important; }
+  .setup-layout { padding: var(--spacing-xs); display: block !important; }
   .setup-layout--full.setup-layout { min-height: auto; }
-  .setup-card { width: 98% !important; padding: 0.5rem; height: auto !important; max-height: none !important; }
+  .setup-card { width: 98% !important; padding: var(--spacing-sm); height: auto !important; max-height: none !important; }
   .setup-card--full { height: auto !important; min-height: auto !important; }
   .admin-flex--col { height: auto !important; min-height: auto !important; }
   .admin-tabs { overflow-x: auto; flex-wrap: nowrap; gap: 0.2rem; }
