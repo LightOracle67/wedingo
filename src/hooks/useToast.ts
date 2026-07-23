@@ -1,5 +1,6 @@
-import { useContext } from "react";
-import { ToastContext } from "../contexts/ToastContext";
+import { createContext, useContext } from "react";
+
+export const ToastContext = createContext<any>(null);
 
 /**
  * Hook para acceder al sistema de toasts desde cualquier componente.

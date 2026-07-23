@@ -1,23 +1,11 @@
-import { createContext, useCallback, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { ToastContext } from "../hooks/useToast";
 import "../styles/toast.css";
-
-/** Contexto de React para el sistema de notificaciones toast. */
-// eslint-disable-next-line react-refresh/only-export-components
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const ToastContext = createContext<any>(null);
 
 /** Contador global para IDs únicos de toast. */
 let toastId = 0;
 
-/**
- * Componente interno del proveedor de toasts.
- * Gestiona la cola de notificaciones, el cierre automático
- * y la animación de salida (fade-out).
- *
- * @param {{ children: React.ReactNode, containerId?: string, t: Function }} props
- * @returns {JSX.Element} Provider con el portal de toasts.
- */
 interface Toast {
   id: number;
   type: string;
@@ -36,24 +24,12 @@ function ToastProviderInner({ children, containerId = "toast-root", t }: { child
   const [toasts, setToasts] = useState<Toast[]>([]);
   const timersRef = useRef<Record<number, ReturnType<typeof setTimeout>>>({});
 
-  /**
-   * Elimina un toast de la cola y limpia su timer.
-   *
-   * @param {number} id - ID del toast a eliminar.
-   */
   const remove = useCallback((id: number) => {
     clearTimeout(timersRef.current[id]);
     delete timersRef.current[id];
     setToasts((prev) => prev.filter((toast) => toast.id !== id));
   }, []);
 
-  /**
-   * Programa el cierre automático de un toast tras `delay` ms.
-   * Inicia la animación de salida (exiting) y luego lo elimina.
-   *
-   * @param {number} id - ID del toast.
-   * @param {number} delay - Milisegundos antes de iniciar el cierre.
-   */
   const scheduleDismiss = useCallback((id: number, delay: number) => {
     timersRef.current[id] = setTimeout(() => {
       setToasts((prev) =>
@@ -63,14 +39,6 @@ function ToastProviderInner({ children, containerId = "toast-root", t }: { child
     }, delay);
   }, [remove]);
 
-  /**
-   * Añade un toast simple (success, error, warning).
-   *
-   * @param {string} type - Tipo de toast: "success", "error" o "warning".
-   * @param {string} message - Texto del toast.
-   * @param {number} [duration=5000] - Duración en ms antes del cierre automático.
-   * @returns {number} ID del toast creado.
-   */
   const addToast = useCallback((type: string, message: string, duration = 5000) => {
     const id = ++toastId;
     setToasts((prev) => [...prev, { id, type, message, exiting: false }]);
@@ -78,23 +46,10 @@ function ToastProviderInner({ children, containerId = "toast-root", t }: { child
     return id;
   }, [scheduleDismiss]);
 
-  /**
-   * Inicia un toast con barra de progreso para operaciones largas
-   * (subida de archivos, procesamiento, etc.).
-   *
-   * Devuelve un objeto con tres métodos:
-   * - `update(percent)` → actualiza la barra de progreso (0–100).
-   * - `complete(message)` → marca la operación como exitosa y cierra el toast.
-   * - `error(message)` → marca el error y cierra el toast tras 6s.
-   *
-   * @param {string} message - Texto inicial del toast.
-   * @returns {{ update: Function, complete: Function, error: Function }}
-   */
   const startUploadToast = useCallback((message: string): UploadToastControls => {
     const id = ++toastId;
     setToasts((prev) => [...prev, { id, type: "progress", message, progress: 0, exiting: false }]);
 
-    /** Actualiza el porcentaje de la barra de progreso (0–100). */
     const update = (percent: number) => {
       setToasts((prev) =>
         prev.map((t) => (t.id === id ? { ...t, progress: Math.min(100, Math.max(0, Math.round(percent))) } : t))
@@ -118,7 +73,6 @@ function ToastProviderInner({ children, containerId = "toast-root", t }: { child
     return { update, complete, error };
   }, [scheduleDismiss]);
 
-  /** Valor expuesto por el contexto. */
   const value = { addToast, startUploadToast };
 
   return (
@@ -155,9 +109,7 @@ function ToastProviderInner({ children, containerId = "toast-root", t }: { child
   );
 }
 
-// eslint-disable-next-line react/only-export-components
 export function ToastProvider(props: { children: React.ReactNode; containerId?: string }) {
   const { t } = useTranslation();
   return <ToastProviderInner {...props} t={t} />;
 }
-

@@ -1,15 +1,13 @@
-import { createContext, useContext, useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { updateDoc, serverTimestamp } from "firebase/firestore";
 import { invitationDocRef } from "../lib/firebase";
 import { getSession, firestoreSessionExpiry, saveSession } from "../lib/sessionVars";
 import { useSetupAuth } from "../hooks/useSetupAuth";
-import { useConfig } from "./ConfigContext";
 import { useTranslation } from "react-i18next";
-import { useAppUI } from "./UIContext";
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const AuthContext = createContext<any>(null);
+import { useConfig } from "./useConfig";
+import { useAppUI } from "./useAppUI";
+import { AuthContext } from "./useAuth";
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();
@@ -86,8 +84,4 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function useAuth() {
-  const ctx = useContext(AuthContext);
-  if (!ctx) throw new Error("useAuth debe usarse dentro de AppProvider");
-  return ctx;
-}
+

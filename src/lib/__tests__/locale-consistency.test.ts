@@ -7,20 +7,9 @@ const LOCALES_DIR = path.resolve(__dirname, "../../i18n/locales");
 describe("Locale consistency", () => {
   const files = fs.readdirSync(LOCALES_DIR).filter((f) => f.endsWith(".json"));
 
-  const refPath = path.join(LOCALES_DIR, "en.json");
-  const refLocale = JSON.parse(fs.readFileSync(refPath, "utf-8"));
-
   it("has at least 50 locale files", () => {
     expect(files.length).toBeGreaterThanOrEqual(50);
   });
-
-  function flattenKeys(obj: Record<string, unknown>, prefix = ""): string[] {
-    return Object.entries(obj).flatMap(([k, v]) =>
-      v && typeof v === "object" && !Array.isArray(v)
-        ? flattenKeys(v as Record<string, unknown>, `${prefix}${k}.`)
-        : [`${prefix}${k}`]
-    );
-  }
 
   it("all locale files share a common set of top-level keys", () => {
     const allKeys = files.map((f) => new Set(Object.keys(JSON.parse(fs.readFileSync(path.join(LOCALES_DIR, f), "utf-8")))));

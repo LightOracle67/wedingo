@@ -1,4 +1,4 @@
-import { memo, useCallback, useMemo } from "react";
+import { memo, useCallback, useMemo, useRef } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { useApp } from "../../contexts/AppContext";
 import type { Attendee } from "../../types";
@@ -46,6 +46,9 @@ const RsvpSection = memo(function RsvpSection({
   const isDisabled = isRsvpSubmitting || hasSubmitted || isAlreadySubmitted;
   const attendees: { name: string; menu: string; allergies: string[] }[] = rsvpForm.attendees || [];
 
+  const attendeesRef = useRef(attendees);
+  attendeesRef.current = attendees;
+
   const age = useMemo(() => computeAge(rsvpForm.birthDate), [rsvpForm.birthDate, computeAge]);
   const isUnder14 = age !== null && age < 14;
   const hasDietaryData = attendees.some((a: { name: string; menu: string; allergies: string[] }) => a.allergies?.length > 0);
@@ -88,18 +91,21 @@ const RsvpSection = memo(function RsvpSection({
   }, [setLegalModal]);
 
   const addAttendee = useCallback(() => {
-    updateRsvpField("attendees", [...attendees, { name: "", menu: "", allergies: [] }]);
-  }, [attendees, updateRsvpField]);
+    const current = attendeesRef.current;
+    updateRsvpField("attendees", [...current, { name: "", menu: "", allergies: [] }]);
+  }, [updateRsvpField]);
 
   const removeAttendee = useCallback((idx: number) => {
-    const next = attendees.filter((_, i: number) => i !== idx);
+    const current = attendeesRef.current;
+    const next = current.filter((_, i: number) => i !== idx);
     updateRsvpField("attendees", next);
-  }, [attendees, updateRsvpField]);
+  }, [updateRsvpField]);
 
   const updateAttendee = useCallback((idx: number, field: string, value: string | boolean | string[]) => {
-    const next = attendees.map((a, i: number) => i === idx ? { ...a, [field]: value } : a);
+    const current = attendeesRef.current;
+    const next = current.map((a, i: number) => i === idx ? { ...a, [field]: value } : a);
     updateRsvpField("attendees", next);
-  }, [attendees, updateRsvpField]);
+  }, [updateRsvpField]);
 
   return (
     <section data-story-section="rsvp" className={`${className} flex items-center justify-center px-3 py-4 sm:px-6 sm:py-8 lg:px-8 lg:py-10`} style={style}>
