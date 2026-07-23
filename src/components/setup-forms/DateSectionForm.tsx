@@ -179,6 +179,7 @@ export default function DateSectionForm({ prefix = "" }) {
         placeholder={t("setup.schedulePlaceholder")}
         rows={4}
         maxLength={2000}
+        autoComplete="off"
       />
       <p className="setup-help">{t("setup.scheduleHint")}</p>
 
@@ -210,6 +211,7 @@ export default function DateSectionForm({ prefix = "" }) {
         placeholder={t("setup.accommodationPlaceholder")}
         rows={4}
         maxLength={2000}
+        autoComplete="off"
       />
       <p className="setup-help">{t("setup.accommodationHint")}</p>
 
@@ -224,6 +226,7 @@ export default function DateSectionForm({ prefix = "" }) {
         placeholder={t("setup.transportPlaceholder")}
         rows={4}
         maxLength={2000}
+        autoComplete="off"
       />
       <p className="setup-help">{t("setup.transportHint")}</p>
     </>

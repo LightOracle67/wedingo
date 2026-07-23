@@ -37,7 +37,7 @@ const DashboardTab = memo(function DashboardTab() {
 
   const twelveMonthsAgo = Date.now() - 365 * 24 * 60 * 60 * 1000;
 
-  const expired = invitations.filter((invitation) => {
+  const expired = invitations.filter((inv) => {
     if (!inv.weddingYear || !inv.weddingMonth) return false;
     const monthIndex = ((MONTH_VALUE_TO_NUMBER as any)[inv.weddingMonth] || 1) - 1;
     const day = Number(inv.weddingDay) || 1;

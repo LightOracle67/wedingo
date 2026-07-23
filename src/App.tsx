@@ -49,6 +49,12 @@ function AppShell() {
     };
   }, []);
 
+  useEffect(() => {
+    if ("serviceWorker" in navigator && import.meta.env.PROD) {
+      navigator.serviceWorker.register("/sw.js").catch(() => {});
+    }
+  }, []);
+
   const isEditingRoute = location.pathname.endsWith("/setup") || (location.pathname.endsWith("/admin") && isAdminTokenLoggedIn);
 
 
@@ -90,6 +96,10 @@ function AppShell() {
       window.removeEventListener("unhandledrejection", rejectionHandler);
     };
   }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <>

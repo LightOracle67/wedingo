@@ -977,5 +977,8 @@
     "titleLanding": "Wedingo — Wedding Invitations",
     "titleAdmin": "Control Panel — Wedingo",
     "titleSetup": "Configure invitation — Wedingo"
+  },
+  "lang": {
+    "triggerLabel": "Change language"
   }
 }

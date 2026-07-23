@@ -25,7 +25,7 @@ const ShareTab = memo(function ShareTab({ inviteToken, addToast }: any) {
   }, [generateMessage]);
 
   const shareVia = useCallback((url: any) => {
-    window.open(url, "_blank", "noreferrer");
+    window.open(url, "_blank", "noopener,noreferrer");
   }, []);
 
   const copyLink = useCallback(async () => {

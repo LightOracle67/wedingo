@@ -20,8 +20,9 @@ export default function AccessSectionForm({ prefix = "" }) {
         placeholder={t("setup.usernamePlaceholder")}
         autoComplete="username"
         name="username"
+        aria-describedby="usernameHelp"
       />
-      <p className="setup-help">
+      <p className="setup-help" id="usernameHelp">
         {t("setup.usernameHint")}
       </p>
     </>

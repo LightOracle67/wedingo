@@ -101,6 +101,7 @@ export default function AdminPage() {
   // Sync tab changes to URL
   const handleSetTab = useCallback((tab: any) => {
     setActiveTab(tab);
+    window.scrollTo({ top: 0, behavior: "smooth" });
     const params = new URLSearchParams(location.search);
     if (tab === "panel") params.delete("tab");
     else params.set("tab", tab);

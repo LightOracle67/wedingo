@@ -51,7 +51,7 @@ export function AuthProvider({ children }: any) {
   const refreshToken = auth.refreshSetupToken;
   useEffect(() => {
     if (!inviteToken) return;
-    (async () => { await refreshToken(); })();
+    (async () => { try { await refreshToken(); } catch {} })();
   }, [inviteToken, refreshToken]);
 
   // ── Clear auth messages on route change ──

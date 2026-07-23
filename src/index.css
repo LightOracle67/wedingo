@@ -39,6 +39,7 @@
 }
 
 html {
+  scroll-behavior: smooth;
   font-size: clamp(13px, 0.8125rem + 0.2vw, 15px);
   -moz-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;

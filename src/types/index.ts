@@ -94,3 +94,11 @@ export interface ThemeColors {
   bg: string;
   accent: string;
 }
+
+export type AsyncFunction<T> = () => Promise<T>;
+
+export interface RetryOptions {
+  maxRetries?: number;
+  delay?: number;
+  backoff?: boolean;
+}
