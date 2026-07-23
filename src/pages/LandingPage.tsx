@@ -9,6 +9,7 @@ import { generateInviteToken } from "../lib/utils";
 import { normalizeConfig } from "../lib/normalize-config";
 import { defaultConfig } from "../lib/constants";
 import { safeSetItem } from "../lib/storage";
+import { clearExpiredCache } from "../lib/storage-utils";
 import { saveSession, firestoreSessionExpiry } from "../lib/sessionVars";
 import { useFocusTrap, useEscapeKey } from "../hooks/useFocusTrap";
 import "../styles/landing.css";
@@ -138,6 +139,7 @@ export default function LandingPage() {
       }
 
       safeSetItem("wedin_invite_token", target, sessionStorage);
+      clearExpiredCache();
       saveSession("admin", username);
       setTokenLoginUsername(username);
       setIsTokenVerified(true);

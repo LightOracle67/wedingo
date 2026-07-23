@@ -184,7 +184,7 @@
     "locationNotFound": "Could not locate this place.",
     "locationMapError": "Could not load the map.",
     "locationCoordinates": "Coordinates: {{lat}}, {{lng}}",
-    "mapPreviewAlt": "Map preview at the indicated location.",
+    "mapPreviewAlt": "Map preview of the wedding venue location",
     "locationSet": "Location configured"
   },
   "setup": {

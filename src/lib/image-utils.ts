@@ -35,6 +35,9 @@ export const compressImage = (file) =>
         const estimatedBytes = Math.round((dataUrl.length * 3) / 4);
         if (estimatedBytes <= TARGET_BYTES || quality <= 0.2) {
           URL.revokeObjectURL(img.src);
+          if (import.meta.env.DEV) {
+            console.log(`Image compressed: ${file.name} → quality ${quality}, estimated ${estimatedBytes} bytes`);
+          }
           resolve(dataUrl);
         } else {
           quality -= 0.1;

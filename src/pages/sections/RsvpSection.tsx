@@ -127,7 +127,7 @@ const RsvpSection = memo(function RsvpSection({
                 <label className="setup-label" htmlFor="rsvpCompanions">{t("rsvp.companionsLabel")} *</label>
                 <input id="rsvpCompanions" type="number" min="0" max="50" className="setup-input"
                   value={rsvpForm.companions} onChange={handleCompanionsChange}
-                  required disabled={isAlreadySubmitted} />
+                  inputMode="numeric" required disabled={isAlreadySubmitted} />
               </div>
             ) : null}
           </div>

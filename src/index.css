@@ -1,5 +1,23 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Playfair Display";
+  font-display: swap;
+  src: local("Playfair Display");
+}
+
+@font-face {
+  font-family: "Lora";
+  font-display: swap;
+  src: local("Lora");
+}
+
+@font-face {
+  font-family: "Great Vibes";
+  font-display: swap;
+  src: local("Great Vibes");
+}
+
 /* Security: CSP meta tag fallback (las cabeceras HTTP tienen prioridad). */
 /* La CSP completa está en firebase.json → headers. */
 
@@ -2693,5 +2711,17 @@ body::after {
 
 /* Ajustes de opacidad del eucalipto existente */
 /* Ajustes de opacidad del eucalipto existente */
+
+/* Focus visible global */
+:focus-visible {
+  outline: 2px solid var(--setup-accent, #d8b24a);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Remove focus outline for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
 
 
