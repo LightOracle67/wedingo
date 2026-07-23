@@ -35,7 +35,9 @@ const CookieConsent = memo(function CookieConsent() {
 
   const handleReject = () => {
     rejectCookies();
-    clearAllStorage();
+    try {
+      Object.keys(localStorage).filter(k => k.startsWith("wedin_invite_cache_") || k.startsWith("wedin_audio_")).forEach(k => localStorage.removeItem(k));
+    } catch {}
     setVisible(false);
   };
 
