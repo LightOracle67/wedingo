@@ -26,7 +26,7 @@ function formatSize(bytes: number) {
   return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
 }
 
-const MusicArrayEditor = memo(function MusicArrayEditor({ inviteToken, value, onChange, t }: any) {
+const MusicArrayEditor = memo(function MusicArrayEditor({ inviteToken, value, onChange, t }: { inviteToken: string; value: string; onChange: (val: string) => void; t: (key: string) => string }) {
   const { addToast, startUploadToast } = useToast();
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
@@ -34,7 +34,7 @@ const MusicArrayEditor = memo(function MusicArrayEditor({ inviteToken, value, on
   const [audioId, setAudioId] = useState<string | null>(null);
   const [fileName, setFileName] = useState("");
   const [fileSize, setFileSize] = useState(0);
-  const audioRef = useRef<any>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     if (!inviteToken) { setLoading(false); return; }
@@ -54,7 +54,7 @@ const MusicArrayEditor = memo(function MusicArrayEditor({ inviteToken, value, on
     })();
   }, [inviteToken, onChange, addToast, t]);
 
-  const handleFile = useCallback(async (e: any) => {
+  const handleFile = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     const input = e.target;
     if (!file) return;

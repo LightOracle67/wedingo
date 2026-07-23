@@ -5,7 +5,7 @@ import LegalModal from "../components/LegalModal";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const UIContext = createContext<any>(null);
 
-export function UIProvider({ children }: any) {
+export function UIProvider({ children }: { children: React.ReactNode }) {
   const [saveMessage, setSaveMessage] = useState("");
   const [saveError, setSaveError] = useState("");
   const [adminMessage, setAdminMessage] = useState("");
@@ -13,8 +13,8 @@ export function UIProvider({ children }: any) {
   const [legalModal, setLegalModal] = useState("");
   const [locationMapError, setLocationMapError] = useState("");
   const [locationMapLoading, setLocationMapLoading] = useState(false);
-  const [locationMapTarget, setLocationMapTarget] = useState<any>(null);
-  const locationMapContainerRef = useRef<any>(null);
+  const [locationMapTarget, setLocationMapTarget] = useState<{ latitude: number; longitude: number; label: string } | null>(null);
+  const locationMapContainerRef = useRef<HTMLDivElement | null>(null);
   const location = useLocation();
 
   useEffect(() => {

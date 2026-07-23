@@ -37,7 +37,7 @@ export default function SuperAdminLogin() {
     return <Navigate to={SUPERADMIN_DASHBOARD} replace />;
   }
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (submitting) return;
     setSubmitting(true);

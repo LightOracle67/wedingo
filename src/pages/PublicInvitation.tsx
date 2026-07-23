@@ -119,9 +119,9 @@ export default function PublicInvitation() {
    */
   const visibleOrder = useMemo(
     () => {
-      let filtered = showRsvp ? sectionOrder : sectionOrder.filter((s: any) => s !== "rsvp");
+      let filtered = showRsvp ? sectionOrder : sectionOrder.filter((s: string) => s !== "rsvp");
       if (!isInviteMode) {
-        filtered = filtered.filter((s: any) => !hiddenSet.has(s));
+        filtered = filtered.filter((s: string) => !hiddenSet.has(s));
       }
       return filtered;
     },
@@ -144,7 +144,7 @@ export default function PublicInvitation() {
   } = useStoryNavigation(visibleOrder);
 
   // ─── Cuenta regresiva ──────────────────────────────────
-  const [countdown, setCountdown] = useState<any>(null);
+  const [countdown, setCountdown] = useState<{ years?: number; months?: number; days: number; hours: number; minutes: number; expired: boolean } | null>(null);
 
   /**
    * Construye el objeto Date de la boda a partir de los campos de configuración.
@@ -208,7 +208,11 @@ export default function PublicInvitation() {
     }
 
     let isCancelled = false;
-    let mapInstance: any = null;
+    let mapInstance: {
+      remove: () => void;
+      whenReady: (fn: () => void) => void;
+      invalidateSize: () => void;
+    } | null = null;
     setLocationMapError("");
     setLocationMapLoading(true);
     setLocationMapTarget(null);
@@ -258,7 +262,7 @@ export default function PublicInvitation() {
         }).addTo(mapInstance);
 
         mapInstance.whenReady(() => {
-          mapInstance.invalidateSize();
+          mapInstance!.invalidateSize();
           if (!isCancelled) setLocationMapLoading(false);
         });
       } catch {
@@ -274,7 +278,7 @@ export default function PublicInvitation() {
       isCancelled = true;
       window.clearTimeout(timeoutId);
       setLocationMapTarget(null);
-      if (mapInstance) mapInstance.remove();
+      if (mapInstance) { mapInstance.remove(); mapInstance = null; }
     };
   }, [config.weddingPlace, config.weddingLatitude, config.weddingLongitude,
       locationMapContainerRef, setLocationMapError, setLocationMapLoading, setLocationMapTarget, t]);

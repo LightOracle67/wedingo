@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-export function DonutChart({ yes, no, pending, size = 120, strokeWidth = 20 }: any) {
+export function DonutChart({ yes, no, pending, size = 120, strokeWidth = 20 }: { yes: number; no: number; pending: number; size?: number; strokeWidth?: number }) {
   const { t } = useTranslation();
   const total = yes + no + pending;
   if (total === 0) {
@@ -52,14 +52,14 @@ export function DonutChart({ yes, no, pending, size = 120, strokeWidth = 20 }: a
   );
 }
 
-export function MiniBar({ items, height = 80, color = "var(--accent)" }: any) {
+export function MiniBar({ items, height = 80, color = "var(--accent)" }: { items: Array<{ value: number; label?: string }>; height?: number; color?: string }) {
   const { t } = useTranslation();
   if (!items?.length) return null;
-  const max = Math.max(...items.map((i: any) => i.value || 0), 1);
+  const max = Math.max(...items.map((i: { value: number }) => i.value || 0), 1);
   const barW = Math.max(4, Math.min(20, 200 / items.length));
   return (
     <svg width="100%" height={height} style={{ display: "block" }} preserveAspectRatio="xMinYMin meet" aria-label={t("chart.barChart")}>
-      {items.map((item: any, i: any) => {
+      {items.map((item: { value: number; label?: string }, i: number) => {
         const h = ((item.value || 0) / max) * (height - 8);
         return (
           <g key={i}>
@@ -77,10 +77,10 @@ export function MiniBar({ items, height = 80, color = "var(--accent)" }: any) {
   );
 }
 
-export function Legend({ items }: any) {
+export function Legend({ items }: { items: Array<{ label: string; value: number; color: string }> }) {
   return (
     <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center", marginTop: "0.5rem" }}>
-      {items.map((item: any) => (
+      {items.map((item: { label: string; value: number; color: string }) => (
         <div key={item.label} style={{ display: "flex", alignItems: "center", gap: "0.3rem", fontSize: "0.75rem", color: "var(--setup-muted)" }}>
           <span style={{ width: 10, height: 10, borderRadius: "50%", background: item.color, flexShrink: 0 }} />
           {item.label}: <strong style={{ color: "var(--setup-title)" }}>{item.value}</strong>

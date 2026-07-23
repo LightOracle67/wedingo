@@ -1,14 +1,24 @@
-import { useCallback, useRef, useState } from "react";
+import React, { useCallback, useRef, useState, type TransitionEvent } from "react";
 import { useTranslation } from "react-i18next";
+
+interface CollapsibleSectionProps {
+  title: string;
+  hint?: string;
+  defaultOpen?: boolean;
+  children?: React.ReactNode;
+  sectionKey?: string;
+  isHidden?: boolean;
+  onToggleVisibility?: (key: string) => void;
+}
 
 export default function CollapsibleSection({
   title, hint, defaultOpen = false, children,
   sectionKey, isHidden, onToggleVisibility,
-}: any) {
+}: CollapsibleSectionProps) {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(defaultOpen);
   const [maxHeight, setMaxHeight] = useState(defaultOpen ? undefined : 0);
-  const contentRef = useRef<any>(null);
+  const contentRef = useRef<HTMLDivElement | null>(null);
   const hasMeasured = useRef(defaultOpen);
 
   const toggle = () => {
@@ -32,13 +42,13 @@ export default function CollapsibleSection({
     }
   };
 
-  const handleTransitionEnd = (e: any) => {
+  const handleTransitionEnd = (e: TransitionEvent<HTMLElement>) => {
     if (e.propertyName === "max-height" && isOpen) {
       setMaxHeight(undefined);
     }
   };
 
-  const handleVisibilityClick = useCallback((e: any) => {
+  const handleVisibilityClick = useCallback((e: React.MouseEvent | React.KeyboardEvent) => {
     e.stopPropagation();
     if (sectionKey && onToggleVisibility) {
       onToggleVisibility(sectionKey);

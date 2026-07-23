@@ -2,34 +2,39 @@ import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { parseSectionOrder as parseOrder, parseHidden } from "../lib/section-utils";
 
-export default function SectionOrderEditor({ value, onChange, hiddenValue, onHiddenChange }: any) {
+export default function SectionOrderEditor({ value, onChange, hiddenValue, onHiddenChange }: {
+  value: string;
+  onChange: (key: string, val: string) => void;
+  hiddenValue: string;
+  onHiddenChange: (key: string, val: string) => void;
+}) {
   const { t } = useTranslation();
   const [items, setItems] = useState(() => parseOrder(value));
   const [hidden, setHidden] = useState(() => parseHidden(hiddenValue));
 
   useEffect(() => { setItems(parseOrder(value)); }, [value]);
   useEffect(() => { setHidden(parseHidden(hiddenValue)); }, [hiddenValue]);
-  const [dragIndex, setDragIndex] = useState<any>(null);
-  const [overIndex, setOverIndex] = useState<any>(null);
+  const [dragIndex, setDragIndex] = useState<number | null>(null);
+  const [overIndex, setOverIndex] = useState<number | null>(null);
 
-  const sync = useCallback((next: any) => {
+  const sync = useCallback((next: string[]) => {
     setItems(next);
     onChange("sectionOrder", next.join(","));
   }, [onChange]);
 
-  const syncHidden = useCallback((next: any) => {
+  const syncHidden = useCallback((next: Set<string>) => {
     setHidden(next);
     onHiddenChange("hiddenSections", [...next].join(","));
   }, [onHiddenChange]);
 
-  const toggleVisibility = useCallback((key: any) => {
+  const toggleVisibility = useCallback((key: string) => {
     const next = new Set(hidden);
     if (next.has(key)) next.delete(key);
     else next.add(key);
     syncHidden(next);
   }, [hidden, syncHidden]);
 
-  const handleDragStart = useCallback((e: any, index: any) => {
+  const handleDragStart = useCallback((e: React.DragEvent, index: number) => {
     const isHero = items[index] === "hero";
     if (isHero) return;
     setDragIndex(index);
@@ -38,17 +43,17 @@ export default function SectionOrderEditor({ value, onChange, hiddenValue, onHid
     e.dataTransfer.setData("text/plain", String(index));
   }, [items]);
 
-  const handleDragEnter = useCallback((e: any, index: any) => {
+  const handleDragEnter = useCallback((e: React.DragEvent, index: number) => {
     e.preventDefault();
     if (index !== overIndex) setOverIndex(index);
   }, [overIndex]);
 
-  const handleDragOver = useCallback((e: any) => {
+  const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     e.dataTransfer.dropEffect = "move";
   }, []);
 
-  const handleDrop = useCallback((e: any) => {
+  const handleDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     const from = dragIndex;
     const to = overIndex;
@@ -67,21 +72,21 @@ export default function SectionOrderEditor({ value, onChange, hiddenValue, onHid
     setOverIndex(null);
   }, []);
 
-  const moveUp = useCallback((index: any) => {
+  const moveUp = useCallback((index: number) => {
     if (index <= 1) return;
     const next = [...items];
     [next[index - 1], next[index]] = [next[index], next[index - 1]];
     sync(next);
   }, [items, sync]);
 
-  const moveDown = useCallback((index: any) => {
+  const moveDown = useCallback((index: number) => {
     if (index >= items.length - 1) return;
     const next = [...items];
     [next[index], next[index + 1]] = [next[index + 1], next[index]];
     sync(next);
   }, [items, sync]);
 
-  const getDropIndicator = (index: any) => {
+  const getDropIndicator = (index: number) => {
     if (index === 0) return null;
     if (dragIndex === null || overIndex === null) return null;
     if (dragIndex === overIndex) return null;
@@ -93,7 +98,7 @@ export default function SectionOrderEditor({ value, onChange, hiddenValue, onHid
       <p className="setup-label setup-label--tight">{t("sectionOrder.title")}</p>
       <p className="setup-help setup-help--tight">{t("sectionOrder.help")}</p>
       <div className="section-order-list">
-        {items.filter((s: any) => s !== "godparents").map((sectionKey: any, index: any) => {
+        {items.filter((s: string) => s !== "godparents").map((sectionKey: string, index: number) => {
           const isHero = sectionKey === "hero";
           const isDragging = dragIndex === index;
           const isHidden = hidden.has(sectionKey);

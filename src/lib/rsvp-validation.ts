@@ -44,7 +44,7 @@ export function validateRsvpForm(
 
     if (hasStructuredMenu) {
       const hcs = form.menuHeadcounts || {};
-      const sum = Object.values(hcs).reduce((a: any, b: any) => a + (b || 0), 0);
+      const sum = Object.values(hcs).reduce((a: number, b: number) => a + (b || 0), 0);
       if (sum === 0) {
         errors.push({ field: "menuHeadcounts", message: t("rsvp.validation.menuRequired") });
       }

@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 const KNOWN_KIDS = new Set(["playArea", "supervised", "adultOnly"]);
 
-const InfoSection = memo(function InfoSection({ style, className, weddingSchedule, weddingDressCode, kidsPolicy }: any) {
+const InfoSection = memo(function InfoSection({ style, className, weddingSchedule, weddingDressCode, kidsPolicy }: { style?: React.CSSProperties; className?: string; weddingSchedule?: string; weddingDressCode?: string; kidsPolicy?: string }) {
   const { t } = useTranslation();
   const kidsLabel = kidsPolicy && KNOWN_KIDS.has(kidsPolicy) ? t("kidsPolicy.options." + kidsPolicy) : kidsPolicy;
   return (
@@ -18,7 +18,7 @@ const InfoSection = memo(function InfoSection({ style, className, weddingSchedul
           <h2 className="story-title">{t("info.scheduleTitle")}</h2>
           {(weddingSchedule || "").trim() ? (
             <div className="mt-4 space-y-1 text-left">
-              {weddingSchedule.split("\n").filter(Boolean).map((line: any, i: any) => {
+              {(weddingSchedule || "").split("\n").filter(Boolean).map((line: string, i: number) => {
                 const timeMatch = line.match(/^(\d{1,2}:\d{2})\s*(.*)/);
                 return (
                   <div key={i} className="flex gap-3 items-baseline">

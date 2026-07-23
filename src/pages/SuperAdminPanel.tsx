@@ -75,7 +75,7 @@ export default function SuperAdminPanel() {
               className={`admin-tab ${activeTab === tab.key ? "admin-tab--active" : ""}`}
               onClick={() => setActiveTab(tab.key)}
             >
-              {t(`superadmin.tabs.${(TAB_KEY_MAP as any)[tab.key]}`)}
+              {t(`superadmin.tabs.${TAB_KEY_MAP[tab.key as keyof typeof TAB_KEY_MAP]}`)}
             </button>
           ))}
         </nav>

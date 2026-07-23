@@ -2,13 +2,13 @@ import { Component } from "react";
 import { useTranslation } from "react-i18next";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-class ErrorBoundaryInner extends Component<any, any> {
-  constructor(props: any) {
+class ErrorBoundaryInner extends Component<{ t: (key: string) => string; children: React.ReactNode }, { error: Error | null }> {
+  constructor(props: { t: (key: string) => string; children: React.ReactNode }) {
     super(props);
     this.state = { error: null };
   }
 
-  static getDerivedStateFromError(error: any) {
+  static getDerivedStateFromError(error: Error) {
     return { error };
   }
 
@@ -33,7 +33,7 @@ class ErrorBoundaryInner extends Component<any, any> {
   }
 }
 
-export default function ErrorBoundary({ children }: any) {
+export default function ErrorBoundary({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();
   return <ErrorBoundaryInner t={t}>{children}</ErrorBoundaryInner>;
 }

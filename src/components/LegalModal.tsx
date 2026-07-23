@@ -4,13 +4,13 @@ import { useFocusTrap } from "../hooks/useFocusTrap";
 
 import "../styles/modals.css";
 
-const LegalModal = memo(function LegalModal({ section, onClose }: any) {
+const LegalModal = memo(function LegalModal({ section, onClose }: { section: string; onClose: () => void }) {
   const { t } = useTranslation();
   const [open, setOpen] = useState(section || "");
   const [closing, setClosing] = useState(false);
   const isOpen = Boolean(section || open);
   const modalRef = useFocusTrap(isOpen);
-  const closeRef = useRef<any>(null);
+  const closeRef = useRef<((e: KeyboardEvent) => void) | null>(null);
 
   const SECTIONS = [
     { id: "privacy", label: t("legal.sectionPrivacy"), content: t("legal.privacyPolicy") },
@@ -29,13 +29,13 @@ const LegalModal = memo(function LegalModal({ section, onClose }: any) {
 
   useEffect(() => {
     if (!isOpen) return;
-    const handleKey = (e: any) => { if (e.key === "Escape") handleClose(); };
+    const handleKey = (e: KeyboardEvent) => { if (e.key === "Escape") handleClose(); };
     window.addEventListener("keydown", handleKey);
     closeRef.current = handleKey;
     return () => window.removeEventListener("keydown", handleKey);
   }, [isOpen, handleClose]);
 
-  const toggle = (id: any) => setOpen((prev: any) => (prev === id ? "" : id));
+  const toggle = (id: string) => setOpen((prev: string) => (prev === id ? "" : id));
 
   return (
     <div className={`modal-overlay ${closing ? "modal-overlay--closing" : ""}`} onClick={handleClose} role="dialog" aria-modal="true" aria-label={t("legal.modalTitle")}>
@@ -44,7 +44,7 @@ const LegalModal = memo(function LegalModal({ section, onClose }: any) {
         <button className="modal-close" onClick={handleClose} aria-label={t("common.close")}>&times;</button>
         <p className="modal-title">{t("legal.modalTitle")}</p>
         <div style={{ overflowY: "auto", overflowX: "hidden", flex: 1, marginTop: "0.5rem", wordBreak: "break-word" }}>
-          {SECTIONS.map((s: any) => (
+          {SECTIONS.map((s: { id: string; label: string; content: string }) => (
             <div key={s.id}>
               <button type="button" onClick={() => toggle(s.id)}
                 aria-expanded={open === s.id ? "true" : "false"}

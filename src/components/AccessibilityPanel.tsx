@@ -6,7 +6,20 @@ import "../styles/modals.css";
 
 const STORAGE_KEY = "wedin_a11y";
 
-function loadPrefs() {
+interface A11yPrefs {
+  highContrast?: boolean;
+  reducedMotion?: boolean;
+  dyslexiaFont?: boolean;
+  moreSpacing?: boolean;
+  underlineLinks?: boolean;
+  bigCursor?: boolean;
+  desaturate?: boolean;
+  strongFocus?: boolean;
+  fontSize?: string;
+  lineSpacing?: string;
+}
+
+function loadPrefs(): A11yPrefs {
   try {
     return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}") || {};
   } catch {
@@ -14,11 +27,11 @@ function loadPrefs() {
   }
 }
 
-function savePrefs(prefs: any) {
+function savePrefs(prefs: A11yPrefs) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs));
 }
 
-function applyPrefs(prefs: any) {
+function applyPrefs(prefs: A11yPrefs) {
   const root = document.documentElement;
   root.classList.toggle("a11y-high-contrast", !!prefs.highContrast);
   root.classList.toggle("a11y-reduced-motion", !!prefs.reducedMotion);
@@ -44,7 +57,7 @@ function applyPrefs(prefs: any) {
   }
 }
 
-export default function AccessibilityPanel({ open, onClose }: any) {
+export default function AccessibilityPanel({ open, onClose }: { open: boolean; onClose: () => void }) {
   const { t } = useTranslation();
   const [prefs, setPrefs] = useState(loadPrefs);
   const modalRef = useFocusTrap(open);
@@ -54,24 +67,24 @@ export default function AccessibilityPanel({ open, onClose }: any) {
     applyPrefs(prefs);
   }, [prefs]);
 
-  const toggle = (key: any) => {
-    setPrefs((prev: any) => {
+  const toggle = (key: keyof A11yPrefs) => {
+    setPrefs((prev: A11yPrefs) => {
       const next = { ...prev, [key]: !prev[key] };
       savePrefs(next);
       return next;
     });
   };
 
-  const setFontSize = (size: any) => {
-    setPrefs((prev: any) => {
+  const setFontSize = (size: string) => {
+    setPrefs((prev: A11yPrefs) => {
       const next = { ...prev, fontSize: size };
       savePrefs(next);
       return next;
     });
   };
 
-  const setLineSpacing = (value: any) => {
-    setPrefs((prev: any) => {
+  const setLineSpacing = (value: string) => {
+    setPrefs((prev: A11yPrefs) => {
       const next = { ...prev, lineSpacing: value };
       savePrefs(next);
       return next;

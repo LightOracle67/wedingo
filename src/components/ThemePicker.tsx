@@ -2,12 +2,12 @@ import { memo } from "react";
 import { THEME_GROUPS, THEME_OPTIONS, THEME_PREVIEW_COLORS } from "../lib/constants";
 import CollapsibleSection from "./CollapsibleSection";
 
-const ThemePicker = memo(function ThemePicker({ value, onChange, t }: any) {
+const ThemePicker = memo(function ThemePicker({ value, onChange, t }: { value: string; onChange: (val: string) => void; t: (key: string, options?: Record<string, unknown>) => string }) {
   return THEME_GROUPS.map((group) => (
     <CollapsibleSection key={group.value} title={t("themeGroups." + group.value)} hint={t("setup.themeGroupCount", { count: THEME_OPTIONS.filter((th) => th.group === group.value).length })}>
       <div className="theme-picker__grid">
         {THEME_OPTIONS.filter((th) => th.group === group.value).map((theme) => {
-          const colors = (THEME_PREVIEW_COLORS as any)[theme.value];
+          const colors = THEME_PREVIEW_COLORS[theme.value as keyof typeof THEME_PREVIEW_COLORS];
           return (
             <button
               key={theme.value}

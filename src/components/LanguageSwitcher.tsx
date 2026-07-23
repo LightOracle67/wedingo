@@ -169,14 +169,14 @@ const LanguageSwitcher = memo(function LanguageSwitcher() {
   const [closing, setClosing] = useState(false);
   const trapRef = useFocusTrap(open && !closing);
   const currentLang = i18n.language?.split("-")[0] || "es";
-  const currentLabel = GROUPS.flatMap(g => g.options).find((l: any) => l.code === currentLang)?.label || currentLang.toUpperCase();
+  const currentLabel = GROUPS.flatMap(g => g.options).find((l: { code: string; label: string }) => l.code === currentLang)?.label || currentLang.toUpperCase();
 
   const handleClose = useCallback(() => {
     setClosing(true);
     setTimeout(() => { setClosing(false); setOpen(false); }, 200);
   }, []);
 
-    const handleSelect = useCallback((code: any) => {
+    const handleSelect = useCallback((code: string) => {
     i18n.changeLanguage(code);
     handleClose();
   }, [i18n, handleClose]);

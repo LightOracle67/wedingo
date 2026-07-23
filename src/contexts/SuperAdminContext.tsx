@@ -5,6 +5,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
+  type User,
 } from "firebase/auth";
 import { auth } from "../lib/firebase";
 import { saveSession, getSession, renewSession, clearSession } from "../lib/sessionVars";
@@ -14,13 +15,13 @@ const SUPERADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAILS?.split(",")[0]?.trim(
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const SuperAdminContext = createContext<any>(null);
 
-export function SuperAdminProvider({ children }: any) {
+export function SuperAdminProvider({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
-  const renewRef = useRef<any>(null);
+  const renewRef = useRef<ReturnType<typeof setInterval> | null>(null);
   /** Flag para evitar que onAuthStateChanged cierre sesión durante el login. */
   const loggingInRef = useRef(false);
 
@@ -53,7 +54,7 @@ export function SuperAdminProvider({ children }: any) {
     return () => { if (renewRef.current) clearInterval(renewRef.current); };
   }, [user]);
 
-  const login = useCallback(async (email: any, password: any) => {
+  const login = useCallback(async (email: string, password: string) => {
     setError("");
     loggingInRef.current = true;
     try {
@@ -72,13 +73,14 @@ export function SuperAdminProvider({ children }: any) {
         navigator.credentials.store(cred);
       } catch {}
       return true;
-    } catch (err: any) {
+    } catch (err) {
       loggingInRef.current = false;
-      if (err.code === "auth/user-not-found" || err.code === "auth/wrong-password" || err.code === "auth/invalid-credential") {
+      const code = err && typeof err === "object" && "code" in err ? String((err as Record<string, unknown>).code) : "";
+      if (code === "auth/user-not-found" || code === "auth/wrong-password" || code === "auth/invalid-credential") {
         setError(t("auth.superadminWrongCredentials"));
-      } else if (err.code === "auth/too-many-requests") {
+      } else if (code === "auth/too-many-requests") {
         setError(t("auth.superadminTooManyAttempts"));
-      } else if (err.code === "auth/invalid-email") {
+      } else if (code === "auth/invalid-email") {
         setError(t("auth.superadminInvalidEmail"));
       } else {
         setError(t("auth.superadminLoginError"));
@@ -93,7 +95,7 @@ export function SuperAdminProvider({ children }: any) {
     setUser(null);
     try {
       const keys = Object.keys(localStorage).filter((k) => k.startsWith("wedin_invite_cache_"));
-      keys.forEach((k: any) => localStorage.removeItem(k));
+      keys.forEach((k: string) => localStorage.removeItem(k));
     } catch {}
     navigate("/");
   }, [navigate]);

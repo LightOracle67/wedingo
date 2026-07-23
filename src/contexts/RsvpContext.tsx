@@ -6,7 +6,7 @@ import { useAppUI } from "./UIContext";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const RsvpContext = createContext<any>(null);
 
-export function RsvpProvider({ children }: any) {
+export function RsvpProvider({ children }: { children: React.ReactNode }) {
   const { setAdminMessage, setAdminMessageType } = useAppUI();
   const { inviteToken, config } = useConfig();
 

@@ -3,7 +3,7 @@ import { generateSetupToken, normalizeTokenValue } from "./token-utils";
 export interface TokenPayload {
   used: boolean;
   autoGen: boolean;
-  createdAt: any;
+  createdAt: string;
   inviteToken?: string;
 }
 

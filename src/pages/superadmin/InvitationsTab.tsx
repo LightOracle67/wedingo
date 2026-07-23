@@ -6,17 +6,17 @@ import { useTranslation } from "react-i18next";
 
 const InvitationsTab = memo(function InvitationsTab() {
   const { t } = useTranslation();
-  const [invitations, setInvitations] = useState<any[]>([]);
+  const [invitations, setInvitations] = useState<Array<{ id: string; theme?: string; weddingDay?: string; weddingMonth?: string; weddingYear?: string }>>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [search, setSearch] = useState("");
-  const [deleting, setDeleting] = useState<any>(null);
+  const [deleting, setDeleting] = useState<string | null>(null);
 
   const load = useCallback(async () => {
     setLoading(true);
     try {
       const snap = await getDocs(INVITATIONS_COLLECTION_REF);
-      const list = snap.docs.map((d: any) => ({ id: d.id, ...d.data() }));
+      const list = snap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() }));
       setInvitations(list);
       setError("");
     } catch { setError(t("superadmin.invitationLoadError")); }
@@ -25,7 +25,7 @@ const InvitationsTab = memo(function InvitationsTab() {
 
   useEffect(() => { load(); }, [load]);
 
-  const handleDelete = useCallback(async (id: any) => {
+  const handleDelete = useCallback(async (id: string) => {
     if (!window.confirm(t("superadmin.deleteConfirmInvitation", { id }))) return;
     setDeleting(id);
     try {
@@ -38,7 +38,7 @@ const InvitationsTab = memo(function InvitationsTab() {
   const handleExportAll = useCallback(async () => {
     try {
       const snap = await getDocs(INVITATIONS_COLLECTION_REF);
-      const data = snap.docs.map((d: any) => ({ id: d.id, ...d.data() }));
+      const data = snap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() }));
       const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
@@ -96,7 +96,7 @@ const InvitationsTab = memo(function InvitationsTab() {
               </tr>
             </thead>
             <tbody>
-              {filtered.map((inv: any) => (
+              {filtered.map((inv: { id: string; theme?: string; weddingDay?: string; weddingMonth?: string; weddingYear?: string }) => (
                 <tr key={inv.id}>
                   <td style={{ fontSize: "0.7rem", fontFamily: "monospace" }}>
                     {inv.id}

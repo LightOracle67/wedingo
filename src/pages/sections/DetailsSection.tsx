@@ -9,7 +9,18 @@ const DetailsSection = memo(function DetailsSection({
   calendarLink,
   locationMapTarget,
   configWeddingPlace, transportInfo,
-}: any) {
+}: {
+  style?: React.CSSProperties;
+  className?: string;
+  formattedDate?: string;
+  formattedTime?: string;
+  hasLocationData: boolean;
+  locationDescription?: string;
+  calendarLink?: string;
+  locationMapTarget?: { latitude: number; longitude: number } | null;
+  configWeddingPlace?: string;
+  transportInfo?: string;
+}) {
   const { t } = useTranslation();
   const mapsUrl = useMemo(() => {
     if (locationMapTarget) {
@@ -63,14 +74,14 @@ const DetailsSection = memo(function DetailsSection({
               href={calendarLink}
               target="_blank"
               rel="noopener noreferrer"
-              referrerpolicy="no-referrer"
+              referrerPolicy="no-referrer"
             >
               {t("details.addToCalendar")}
             </a>
           </div>
         ) : null}
         {hasLocationData ? (
-          <WeddingMap weddingPlace={configWeddingPlace} weddingLatitude={locationMapTarget?.latitude} weddingLongitude={locationMapTarget?.longitude} t={t} />
+          <WeddingMap weddingPlace={configWeddingPlace} weddingLatitude={String(locationMapTarget?.latitude ?? "")} weddingLongitude={String(locationMapTarget?.longitude ?? "")} t={t} />
         ) : null}
         {mapsUrl ? (
           <div className="story-map__actions" style={{ marginTop: "0.5rem" }}>
@@ -79,7 +90,7 @@ const DetailsSection = memo(function DetailsSection({
               href={mapsUrl.google}
               target="_blank"
               rel="noopener noreferrer"
-              referrerpolicy="no-referrer"
+              referrerPolicy="no-referrer"
             >
               {t("details.viewGoogleMaps")}
             </a>
@@ -88,7 +99,7 @@ const DetailsSection = memo(function DetailsSection({
               href={mapsUrl.apple}
               target="_blank"
               rel="noopener noreferrer"
-              referrerpolicy="no-referrer"
+              referrerPolicy="no-referrer"
             >
               {t("details.viewAppleMaps")}
             </a>

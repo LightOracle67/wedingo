@@ -1,6 +1,6 @@
 import { STORY_SECTION_ORDER } from "./constants";
 
-export function parseSectionOrder(raw) {
+export function parseSectionOrder(raw: string | undefined) {
   const order = (raw || STORY_SECTION_ORDER.join(",")).split(",").filter(Boolean);
   const valid = new Set(STORY_SECTION_ORDER);
   const parsed = order.filter((s) => valid.has(s));
@@ -11,7 +11,7 @@ export function parseSectionOrder(raw) {
   return parsed;
 }
 
-export function parseHidden(raw) {
+export function parseHidden(raw: string | null | undefined) {
   return new Set((raw || "").split(",").map((s) => s.trim()).filter(Boolean));
 }
 

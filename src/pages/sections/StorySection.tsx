@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 
-const StorySection = memo(function StorySection({ style, className, storyText }: any) {
+const StorySection = memo(function StorySection({ style, className, storyText }: { style?: React.CSSProperties; className?: string; storyText?: string }) {
   const { t } = useTranslation();
   return (
     <section

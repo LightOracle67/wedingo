@@ -49,9 +49,9 @@ const CookieConsent = memo(function CookieConsent() {
     setVisible(false);
   };
 
-  const togglePreference = (key: any) => {
+  const togglePreference = (key: keyof typeof preferences) => {
     if (key === "necessary") return;
-    setPreferences((prev: any) => ({ ...prev, [key]: !prev[key] }));
+    setPreferences((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
   const focusTrapRef = useFocusTrap(visible);

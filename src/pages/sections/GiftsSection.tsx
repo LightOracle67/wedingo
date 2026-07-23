@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 
-const GiftsSection = memo(function GiftsSection({ style, className, giftsInfo, bankInfo }: any) {
+const GiftsSection = memo(function GiftsSection({ style, className, giftsInfo, bankInfo }: { style?: React.CSSProperties; className?: string; giftsInfo?: string; bankInfo?: string }) {
   const { t } = useTranslation();
   return (
     <section

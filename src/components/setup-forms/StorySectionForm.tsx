@@ -5,7 +5,7 @@ export default function StorySectionForm({ prefix = "" }) {
   const { formData, updateFormField } = useApp();
   const { t } = useTranslation();
 
-  const id = (name: any) => `${prefix}${name}`;
+  const id = (name: string) => `${prefix}${name}`;
 
   return (
     <>

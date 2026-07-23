@@ -5,7 +5,7 @@ export const SUPERADMIN_DASHBOARD = BASE ? `${BASE}/dashboard` : "";
 
 export const SUPERADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAILS?.split(",")[0]?.trim() || "";
 
-export function formatDate(iso: any, ..._args: any[]) {
+export function formatDate(iso: string, ..._args: string[]) {
   try {
     return new Date(iso).toLocaleString(navigator.language || "es", { dateStyle: "medium", timeStyle: "short" });
   } catch {

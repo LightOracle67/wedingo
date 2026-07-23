@@ -6,9 +6,9 @@
  * @param {string[]} visibleOrder - Array ordenado de claves de sección visibles.
  * @returns {object} API compatible con PublicInvitation.
  */
-export function useStoryNavigation(visibleOrder) {
-  const getSectionStyle = (_sectionKey?: any) => ({});
-  const getSectionClassName = (sectionKey) =>
+export function useStoryNavigation(visibleOrder: string[]) {
+  const getSectionStyle = (_sectionKey?: string) => ({});
+  const getSectionClassName = (sectionKey: string) =>
     ["story-section", `story-section--${sectionKey}`].filter(Boolean).join(" ");
 
   return {

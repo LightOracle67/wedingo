@@ -1,8 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { getValidCoordinates, resolveLocationTarget } from "../lib/geo-utils";
 
-export default function WeddingMap({ weddingPlace, weddingLatitude, weddingLongitude, t }: any) {
-  const containerRef = useRef<any>(null);
+export default function WeddingMap({ weddingPlace, weddingLatitude, weddingLongitude, t }: {
+  weddingPlace?: string;
+  weddingLatitude?: string;
+  weddingLongitude?: string;
+  t: (key: string) => string;
+}) {
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -17,13 +22,17 @@ export default function WeddingMap({ weddingPlace, weddingLatitude, weddingLongi
     }
 
     let isCancelled = false;
-    let mapInstance: any = null;
+    let mapInstance: {
+      remove: () => void;
+      whenReady: (fn: () => void) => void;
+      invalidateSize: () => void;
+    } | null = null;
     setError("");
     setLoading(true);
 
     const timeoutId = window.setTimeout(async () => {
       try {
-        await import("leaflet/dist/leaflet.css");
+        await     import("leaflet/dist/leaflet.css");
         const L = (await import("leaflet")).default;
         const geocodedLocation = await resolveLocationTarget({
           place,
@@ -61,7 +70,7 @@ export default function WeddingMap({ weddingPlace, weddingLatitude, weddingLongi
         }).addTo(mapInstance);
 
         mapInstance.whenReady(() => {
-          mapInstance.invalidateSize();
+          mapInstance!.invalidateSize();
           if (!isCancelled) setLoading(false);
         });
       } catch {
@@ -75,7 +84,7 @@ export default function WeddingMap({ weddingPlace, weddingLatitude, weddingLongi
     return () => {
       isCancelled = true;
       window.clearTimeout(timeoutId);
-      if (mapInstance) mapInstance.remove();
+      if (mapInstance) { mapInstance.remove(); mapInstance = null; }
     };
   }, [weddingPlace, weddingLatitude, weddingLongitude, t]);
 

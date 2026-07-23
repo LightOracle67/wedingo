@@ -6,6 +6,7 @@ const AccessTab = lazy(() => import("../pages/admin/AccessTab"));
 const ShareTab = lazy(() => import("../pages/admin/ShareTab"));
 const SupportTab = lazy(() => import("../pages/admin/SupportTab"));
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const AdminTabContent = memo(function AdminTabContent({ activeTab, ...props }: any) {
   switch (activeTab) {
     case "panel": return <PanelTab {...props} />;

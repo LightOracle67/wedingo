@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 
 const TokensTab = memo(function TokensTab() {
   const { t } = useTranslation();
-  const [tokens, setTokens] = useState<any[]>([]);
+  const [tokens, setTokens] = useState<Array<{ id: string; activeToken: string }>>([]);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
@@ -14,7 +14,7 @@ const TokensTab = memo(function TokensTab() {
     try {
       const q = query(collection(db, "invitations"), where("_activeSetupToken", "!=", ""));
       const snap = await getDocs(q);
-      const list = snap.docs.map((d: any) => ({
+      const list = snap.docs.map((d: { id: string; data: () => { _activeSetupToken?: string } }) => ({
         id: d.id,
         activeToken: d.data()._activeSetupToken || "",
       }));
@@ -28,7 +28,7 @@ const TokensTab = memo(function TokensTab() {
 
   useEffect(() => { loadTokens(); }, [loadTokens]);
 
-  const handleRevoke = useCallback(async (invId: any) => {
+  const handleRevoke = useCallback(async (invId: string) => {
     if (!window.confirm(t("superadmin.revokeConfirm"))) return;
     setError("");
     setMessage("");
@@ -53,7 +53,7 @@ const TokensTab = memo(function TokensTab() {
         return;
       }
       const batch = writeBatch(db);
-      snap.docs.forEach((d: any) => batch.update(d.ref, { _activeSetupToken: "" }));
+      snap.docs.forEach((d) => batch.update(d.ref, { _activeSetupToken: "" }));
       await batch.commit();
       setMessage(t("superadmin.tokensCleaned", { count: snap.size }));
       await loadTokens();
@@ -86,7 +86,7 @@ const TokensTab = memo(function TokensTab() {
         </div>
       ) : (
         <div className="admin-grid">
-          {tokens.map((token: any) => (
+          {tokens.map((token: { id: string; activeToken: string }) => (
             <div
               key={token.id}
               className="setup-token-card admin-flex admin-flex--between admin-pad-sm"

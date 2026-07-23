@@ -8,7 +8,7 @@ function galCol(token: string) {
   return collection(db, "invitations", token, "gallery");
 }
 
-export async function uploadImage(inviteToken: any, file: any, onProgress?: any) {
+export async function uploadImage(inviteToken: string, file: File, onProgress?: (percent: number) => void) {
   onProgress?.(10);
   const dataUrl = await compressImage(file);
   onProgress?.(40);

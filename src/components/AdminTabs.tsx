@@ -9,7 +9,7 @@ const TABS = [
   { key: "soporte", labelKey: "admin.tabs.support" },
 ];
 
-const AdminTabs = memo(function AdminTabs({ activeTab, onTabChange, t }: any) {
+const AdminTabs = memo(function AdminTabs({ activeTab, onTabChange, t }: { activeTab: string; onTabChange: (tab: string) => void; t: (key: string) => string }) {
   return (
     <nav className="admin-tabs" aria-label={t("admin.tabs.ariaLabel")} role="tablist">
       {TABS.map((tab) => (

@@ -1,4 +1,4 @@
-export function calcRSVPSummary(entries: any[] | null | undefined) {
+export function calcRSVPSummary(entries: { attendance: string; companions?: number }[] | null | undefined) {
   if (!entries) return { confirmed: 0, declined: 0, pending: 0, totalGuests: 0, confirmedGuests: 0, allEntries: 0 };
   const confirmed = entries.filter((e) => e.attendance === "yes");
   const declined = entries.filter((e) => e.attendance === "no");
@@ -15,11 +15,11 @@ export function calcRSVPSummary(entries: any[] | null | undefined) {
   };
 }
 
-export function getDietarySummary(entries: any[] | null | undefined) {
+export function getDietarySummary(entries: { attendance: string; dietaryInfo?: string }[] | null | undefined) {
   if (!entries) return [];
-  const confirmed = entries.filter((e) => e.attendance === "yes" && e.dietaryInfo?.trim());
+  const confirmed = entries.filter((e): e is { attendance: "yes"; dietaryInfo: string } & typeof e => e.attendance === "yes" && !!e.dietaryInfo?.trim());
   if (!confirmed.length) return [];
-  const counts = {};
+  const counts: Record<string, number> = {};
   for (const e of confirmed) {
     const items = e.dietaryInfo.split(" | ").map((s) => s.trim().toLowerCase()).filter((s) => s && !s.startsWith("menú:"));
     for (const item of items) {

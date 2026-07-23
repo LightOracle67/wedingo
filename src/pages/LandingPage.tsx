@@ -28,7 +28,7 @@ export default function LandingPage() {
 
   const modalRef = useFocusTrap(showModal);
   useEscapeKey(() => setShowModal(false), showModal);
-  const closeButtonRef = useRef<any>(null);
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
   const loginAttemptsRef = useRef(0);
   const loginBlockedUntilRef = useRef(0);
 
@@ -38,7 +38,7 @@ export default function LandingPage() {
     navigate(`/${token}/setup`);
   };
 
-  const handleLogin = async (e: any) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (Date.now() < loginBlockedUntilRef.current) {
       const waitSec = Math.ceil((loginBlockedUntilRef.current - Date.now()) / 1000);

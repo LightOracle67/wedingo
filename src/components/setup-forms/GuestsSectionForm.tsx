@@ -7,27 +7,27 @@ export default function GuestsSectionForm({ prefix: _prefix = "" }) {
   const { formData, updateFormField } = useApp();
   const { t } = useTranslation();
 
-  const handleKidsPolicyChange = useCallback((e: any) => {
+  const handleKidsPolicyChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     updateFormField("kidsPolicy", formData.kidsPolicy === e.currentTarget.value ? "" : e.currentTarget.value);
   }, [updateFormField, formData.kidsPolicy]);
 
-  const handleMenuEnabledChange = useCallback((e: any) => {
+  const handleMenuEnabledChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     updateFormField("menuEnabled", e.target.checked ? "true" : "false");
   }, [updateFormField]);
 
-  const handleMenuToggle = useCallback((e: any) => {
+  const handleMenuToggle = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     updateFormField(e.currentTarget.dataset.menuKey, e.target.checked ? " " : "");
   }, [updateFormField]);
 
-  const handleMenuFieldChange = useCallback((e: any) => {
+  const handleMenuFieldChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
     updateFormField(e.currentTarget.dataset.menuKey, e.target.value);
   }, [updateFormField]);
 
-  const handleMenuPostreChange = useCallback((e: any) => {
+  const handleMenuPostreChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
     updateFormField("menuPostre", e.target.value.slice(0, 2000));
   }, [updateFormField]);
 
-  const handleMenuTextoChange = useCallback((e: any) => {
+  const handleMenuTextoChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
     updateFormField("menuTexto", e.target.value.slice(0, 2000));
   }, [updateFormField]);
 

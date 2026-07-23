@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 
-const AccommodationSection = memo(function AccommodationSection({ style, className, accommodationInfo }: any) {
+const AccommodationSection = memo(function AccommodationSection({ style, className, accommodationInfo }: { style?: React.CSSProperties; className?: string; accommodationInfo?: string }) {
   const { t } = useTranslation();
   return (
     <section

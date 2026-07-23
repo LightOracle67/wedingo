@@ -115,11 +115,11 @@ export default function AdminPage() {
    */
   const filteredEntries = useMemo(() => {
     let result = rsvpEntries;
-    if (attendanceFilter === "yes") result = result.filter((e: any) => e.attendance === "yes");
-    if (attendanceFilter === "no") result = result.filter((e: any) => e.attendance === "no");
+    if (attendanceFilter === "yes") result = result.filter((e: { attendance: string }) => e.attendance === "yes");
+    if (attendanceFilter === "no") result = result.filter((e: { attendance: string }) => e.attendance === "no");
     if (searchQuery.trim()) {
       const q = searchQuery.trim().toLowerCase();
-      result = result.filter((e: any) => e.guestName.toLowerCase().includes(q));
+      result = result.filter((e: { guestName: string }) => e.guestName.toLowerCase().includes(q));
     }
     return result;
   }, [rsvpEntries, attendanceFilter, searchQuery]);
@@ -143,11 +143,11 @@ export default function AdminPage() {
    */
   const exportPdf = useCallback(() => {
     // Construye las filas de la tabla con escape HTML para prevenir XSS
-    const rows = rsvpEntries.map((e: any) =>
-      `<tr><td>${escHtml(e.guestName)}</td><td>${e.attendance === "yes" ? t("panel.attends") : t("panel.notAttends")}</td><td>${e.attendance === "yes" ? e.companions : 0}</td><td>${escHtml(e.dietaryInfo)}</td></tr>`
+    const rows = rsvpEntries.map((e: { guestName: string; attendance: string; companions?: number; dietaryInfo?: string }) =>
+      `<tr><td>${escHtml(e.guestName)}</td><td>${e.attendance === "yes" ? t("panel.attends") : t("panel.notAttends")}</td><td>${e.attendance === "yes" ? e.companions : 0}</td><td>${escHtml(e.dietaryInfo || "")}</td></tr>`
     ).join("");
-    const tc = rsvpEntries.filter((e: any) => e.attendance === "yes").length;
-    const td = rsvpEntries.filter((e: any) => e.attendance === "no").length;
+    const tc = rsvpEntries.filter((e: { attendance: string }) => e.attendance === "yes").length;
+    const td = rsvpEntries.filter((e: { attendance: string }) => e.attendance === "no").length;
     // HTML completo con estilos para impresión
     const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${t("admin.pdfTitle", { name: escHtml(coupleName) })}</title><style>
       @page{margin:2cm}body{font-family:system-ui,sans-serif;font-size:12px;color:#222;padding:2rem}h1{font-size:18px;margin-bottom:4px}table{width:100%;border-collapse:collapse;margin-top:8px}th,td{border:1px solid #d4d0c8;padding:6px 8px}tr:nth-child(even){background:#faf8f5}.stats{display:flex;gap:1rem;margin:12px 0;font-size:13px}.stat{background:#f5f3ef;padding:8px 14px;border-radius:8px}@media print{body{padding:0}}
@@ -168,10 +168,10 @@ export default function AdminPage() {
   }, [rsvpEntries, coupleName, t, i18n.language]);
 
   // ─── Cálculo de estadísticas de asistencia ─────────────
-  const confirmedResponses = rsvpEntries.filter((e: any) => e.attendance === "yes").length;
-  const declinedResponses = rsvpEntries.filter((e: any) => e.attendance === "no").length;
+  const confirmedResponses = rsvpEntries.filter((e: { attendance: string }) => e.attendance === "yes").length;
+  const declinedResponses = rsvpEntries.filter((e: { attendance: string }) => e.attendance === "no").length;
   const totalGuests = rsvpEntries.reduce(
-    (s: any, r: any) => s + (Number(r.companions) || 1), 0,
+    (s: number, r: { companions?: number }) => s + (Number(r.companions) || 1), 0,
   );
 
   /** Props agrupadas para PanelTab (reduce prop drilling). */
@@ -296,7 +296,7 @@ export default function AdminPage() {
             {/* Pestaña: Compartir invitación */}
             {activeTab === "compartir" && (
               <ShareTab
-                inviteToken={inviteToken}
+                inviteToken={inviteToken || ""}
                 config={config}
                 formattedDate={formattedDate}
                 addToast={addToast}

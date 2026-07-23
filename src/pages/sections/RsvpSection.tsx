@@ -1,6 +1,8 @@
 import { memo, useCallback, useMemo } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { useApp } from "../../contexts/AppContext";
+import type { Attendee } from "../../types";
+import AttendeeCard from "../../components/AttendeeCard";
 
 interface RsvpFormState {
   guestName: string;
@@ -31,13 +33,6 @@ interface RsvpSectionProps {
   menuTexto?: string;
   computeAge: (birthDate: string) => number | null;
 }
-
-const DIETARY_OPTIONS = [
-  { value: "sin gluten", key: "dietary.gluten" },
-  { value: "sin lactosa", key: "dietary.lactose" },
-  { value: "alergia frutos secos", key: "dietary.nuts" },
-  { value: "alergia mariscos", key: "dietary.shellfish" },
-];
 
 const RsvpSection = memo(function RsvpSection({
   style, className,
@@ -101,18 +96,8 @@ const RsvpSection = memo(function RsvpSection({
     updateRsvpField("attendees", next);
   }, [attendees, updateRsvpField]);
 
-  const updateAttendee = useCallback((idx: number, field: string, value: string | string[]) => {
+  const updateAttendee = useCallback((idx: number, field: string, value: string | boolean | string[]) => {
     const next = attendees.map((a, i: number) => i === idx ? { ...a, [field]: value } : a);
-    updateRsvpField("attendees", next);
-  }, [attendees, updateRsvpField]);
-
-  const toggleAllergy = useCallback((idx: number, value: string) => {
-    const a = attendees[idx];
-    if (!a) return;
-    const exists = a.allergies?.includes(value);
-    const next = attendees.map((att, i: number) =>
-      i === idx ? { ...att, allergies: exists ? att.allergies.filter((v: string) => v !== value) : [...(att.allergies || []), value] } : att
-    );
     updateRsvpField("attendees", next);
   }, [attendees, updateRsvpField]);
 
@@ -153,40 +138,18 @@ const RsvpSection = memo(function RsvpSection({
             <div style={{ marginTop: "0.75rem" }}>
               <p className="setup-label">{t("rsvp.attendeesLabel")}</p>
               {attendees.map((att, i: number) => (
-                <div key={i} style={{
-                  border: "1px solid color-mix(in srgb, var(--setup-border) 50%, transparent)",
-                  borderRadius: "0.6rem", padding: "0.6rem", marginBottom: "0.5rem",
-                  background: "color-mix(in srgb, var(--setup-field-bg) 40%, transparent)",
-                  position: "relative",
-                }}>
-                  <button type="button" onClick={() => removeAttendee(i)} disabled={isAlreadySubmitted}
-                    style={{ position: "absolute", top: "0.3rem", right: "0.3rem", width: "1.4rem", height: "1.4rem", border: "none", borderRadius: "50%", background: "rgba(0,0,0,0.4)", color: "#fff", cursor: "pointer", fontSize: "0.8rem", display: "grid", placeItems: "center", lineHeight: 1 }}>
-                    ×
-                  </button>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "0.4rem" }}>
-                    <input className="setup-input" placeholder={t("rsvp.attendeeNamePlaceholder")} value={att.name || ""}
-                      onChange={(e) => updateAttendee(i, "name", e.target.value.slice(0, 80))} disabled={isAlreadySubmitted}
-                      style={{ fontSize: "0.85rem", padding: "0.35rem 0.5rem" }} />
-                    {hasStructuredMenu ? (
-                      <select className="setup-input" value={att.menu || ""} onChange={(e) => updateAttendee(i, "menu", e.target.value)}
-                        disabled={isAlreadySubmitted} style={{ fontSize: "0.85rem", padding: "0.35rem 0.5rem" }}>
-                        <option value="">{t("rsvp.menuPlaceholder")}</option>
-                        {menuOptions.map((opt) => (
-                          <option key={opt.key} value={opt.key}>{opt.label} — {opt.desc}</option>
-                        ))}
-                      </select>
-                    ) : null}
-                    <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))", gap: "0.2rem" }}>
-                      {DIETARY_OPTIONS.map((opt) => (
-                        <label key={opt.value} style={{ display: "flex", alignItems: "center", gap: "0.25rem", fontSize: "0.78rem", color: "var(--setup-title)", cursor: isAlreadySubmitted ? "default" : "pointer" }}>
-                          <input type="checkbox" checked={att.allergies?.includes(opt.value) || false} onChange={() => toggleAllergy(i, opt.value)} disabled={isAlreadySubmitted}
-                            style={{ accentColor: "var(--setup-accent)", width: "0.85rem", height: "0.85rem", flexShrink: 0 }} />
-                          {t(opt.key)}
-                        </label>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+                <AttendeeCard
+                  key={i}
+                  attendee={att as Attendee}
+                  index={i}
+                  total={attendees.length}
+                  menuEnabled={!!hasStructuredMenu}
+                  onUpdate={updateAttendee}
+                  onRemove={removeAttendee}
+                  menus={menuOptions.map((m) => m.key)}
+                  allergiesOptions={["sin gluten", "sin lactosa", "alergia frutos secos", "alergia mariscos"]}
+                  t={t}
+                />
               ))}
               {!isAlreadySubmitted && (
                 <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={addAttendee} style={{ fontSize: "0.85rem", marginTop: "0.25rem" }}>

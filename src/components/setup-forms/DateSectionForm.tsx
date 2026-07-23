@@ -13,7 +13,7 @@ export default function DateSectionForm({ prefix = "" }) {
 
   const id = (name: string) => `${prefix}${name}`;
 
-  const handlePlaceChange = useCallback((e: any) => {
+  const handlePlaceChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value.slice(0, 120);
     updateFormField("weddingPlace", val);
     updateFormField("weddingLatitude", "");
@@ -83,7 +83,7 @@ export default function DateSectionForm({ prefix = "" }) {
 
       {(() => {
         if (!previewBackgrounds.length) return null;
-        const locationPreview = previewBackgrounds.find((bg: any) => bg.id === "default");
+        const locationPreview = previewBackgrounds.find((bg: { id: string; src: string }) => bg.id === "default");
         if (!locationPreview) return null;
         return (
           <div className="setup-location-preview">

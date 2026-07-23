@@ -60,17 +60,18 @@ export default function DataTab() {
           if (tk) rsvpCounts[tk] = (rsvpCounts[tk] || 0) + 1;
         }
 
-        const list = invSnap.docs.map((d: any) => {
+        const list = invSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => {
           const data = d.data();
           const token = d.id;
           return {
             id: token,
-            firstName: data.firstName || "",
-            secondName: data.secondName || "",
-            adminUsername: data.adminUsername || "",
+            firstName: String(data.firstName || ""),
+            secondName: String(data.secondName || ""),
+            adminUsername: String(data.adminUsername || ""),
             rsvpCount: rsvpCounts[token] || 0,
+            tokenCount: 0,
             weddingDate: data.weddingDay && data.weddingMonth && data.weddingYear
-              ? `${data.weddingDay}/${data.weddingMonth}/${data.weddingYear}`
+              ? `${String(data.weddingDay)}/${String(data.weddingMonth)}/${String(data.weddingYear)}`
               : "",
             hasSession: !!data.activeSession,
           };
@@ -123,14 +124,14 @@ export default function DataTab() {
         getDoc(doc(db, "invitations", token)),
         getDocs(rsvpByInviteRef(token)),
       ]);
-      const data: any = {
+      const data: Record<string, unknown> = {
         invitation: { id: token, ...(invDoc.exists() ? invDoc.data() : {}) },
-        rsvps: rsvpSnap.docs.map((d: any) => ({ id: d.id, ...d.data() })),
+        rsvps: rsvpSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() })),
       };
       // Carga la galería desde la subcolección
       try {
         const gallerySnap = await getDocs(collection(db, "invitations", token, "gallery"));
-        data.gallery = gallerySnap.docs.map((d: any) => ({ id: d.id, ...d.data() }));
+        data.gallery = gallerySnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() }));
       } catch { data.gallery = []; }
       downloadJson(`${token}_export.json`, data);
       addToast("success", t("superadmin.data.exportedOne", { token }));
@@ -154,7 +155,7 @@ export default function DataTab() {
         ]);
         result.push({
           invitation: { id: token, ...(invDoc.exists() ? invDoc.data() : {}) },
-          rsvps: rsvpSnap.docs.map((d: any) => ({ id: d.id, ...d.data() })),
+          rsvps: rsvpSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() })),
         });
       }
       downloadJson("wedingo_export.json", result);
@@ -176,8 +177,8 @@ export default function DataTab() {
       ]);
       const data = {
         exportedAt: new Date().toISOString(),
-        invitations: invSnap.docs.map((d: any) => ({ id: d.id, ...d.data() })),
-        rsvps: rsvpSnap.docs.map((d: any) => ({ id: d.id, ...d.data() })),
+        invitations: invSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() })),
+        rsvps: rsvpSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() })),
       };
       downloadJson("wedingo_full_export.json", data);
       addToast("success", t("superadmin.data.exportedAll", { count: invSnap.size }));

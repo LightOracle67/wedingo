@@ -11,7 +11,7 @@ import { useAppUI } from "./UIContext";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const AuthContext = createContext<any>(null);
 
-export function AuthProvider({ children }: any) {
+export function AuthProvider({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();
   const { setAdminMessage, setAdminMessageType } = useAppUI();
   const { inviteToken, config, setHasStoredConfig, registerOnFirstSave } = useConfig();
@@ -20,7 +20,7 @@ export function AuthProvider({ children }: any) {
   const auth = useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessageType, setHasStoredConfig);
 
   // ── Auto-login after first save ──
-  const onFirstSaveRef = useRef<any>(null);
+  const onFirstSaveRef = useRef<() => void>(null!);
   onFirstSaveRef.current = () => {
     if (auth.isTokenVerified) return;
     auth.setSetupToken("");

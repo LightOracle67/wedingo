@@ -4,7 +4,7 @@ import { useEscapeKey } from "../hooks/useFocusTrap";
 import EqualizerBars from "./EqualizerBars";
 import "../styles/music.css";
 
-function songName(musicUrl: any, t: any) {
+function songName(musicUrl: string | undefined, t: (key: string) => string) {
   if (!musicUrl) return "";
   if (musicUrl.startsWith("data:")) return t("setup.currentMusic");
   try {
@@ -18,7 +18,7 @@ function songName(musicUrl: any, t: any) {
   }
 }
 
-const MusicPlayer = memo(function MusicPlayer({ musicUrl }: any) {
+const MusicPlayer = memo(function MusicPlayer({ musicUrl }: { musicUrl?: string }) {
   const { t } = useTranslation();
   const [playing, setPlaying] = useState(false);
   const [error, setError] = useState(false);
@@ -26,7 +26,7 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }: any) {
   const [volume, setVolume] = useState(0.5);
   const [open, setOpen] = useState(false);
   const [iconKey, setIconKey] = useState(0);
-  const audioRef = useRef<any>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const name = useMemo(() => songName(musicUrl, t) || t("music.noMusic"), [musicUrl, t]);
   const hasMusic = Boolean(musicUrl);
 
@@ -52,7 +52,7 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }: any) {
     };
   }, [musicUrl]);
 
-  const handleVolume = useCallback((e: any) => {
+  const handleVolume = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const v = Number(e.target.value);
     setVolume(v);
     if (audioRef.current) audioRef.current.volume = v;

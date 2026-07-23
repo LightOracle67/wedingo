@@ -4,7 +4,7 @@ import { useFocusTrap, useEscapeKey } from "../hooks/useFocusTrap";
 import { CHANGELOG } from "../lib/changelog";
 import "../styles/modals.css";
 
-const ChangelogModal = memo(function ChangelogModal({ onClose }: any) {
+const ChangelogModal = memo(function ChangelogModal({ onClose }: { onClose: () => void }) {
   const { t } = useTranslation();
   const [closing, setClosing] = useState(false);
   const modalRef = useFocusTrap(true);

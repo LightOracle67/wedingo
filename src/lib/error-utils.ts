@@ -1,7 +1,7 @@
 const SENTRY_DSN = import.meta.env.VITE_SENTRY_DSN || "";
 
 export function getFirestoreErrorMessage(error: unknown, t?: (key: string) => string): string {
-  const code = (error as any)?.code || "";
+  const code = error && typeof error === "object" && "code" in error ? String((error as Record<string, unknown>).code) : "";
   const messages: Record<string, string> = {
     "permission-denied": t ? t("errors.permissionDenied") : "Permission denied",
     "unavailable": t ? t("errors.serviceUnavailable") : "Service unavailable",

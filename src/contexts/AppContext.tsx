@@ -8,14 +8,14 @@ import { RsvpProvider, useRsvpContext } from "./RsvpContext";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const AppContext = createContext<any>(null);
 
-function AppMerger({ children }: any) {
+function AppMerger({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();
   const config = useConfig();
   const auth = useAuth();
   const rsvp = useRsvpContext();
   const ui = useAppUI();
 
-  const handleSaveSetup = useCallback(async (event: any) => {
+  const handleSaveSetup = useCallback(async (event: React.FormEvent) => {
     event.preventDefault();
     ui.setSaveError("");
     ui.setSaveMessage("");
@@ -23,7 +23,7 @@ function AppMerger({ children }: any) {
       ui.setSaveError(t("errors.verifyTokenFirst"));
       return;
     }
-    const rsvpCount = (rsvp.rsvpEntries || []).filter((e: any) => e.attendance === "yes").length;
+    const rsvpCount = (rsvp.rsvpEntries || []).filter((e: { attendance: string }) => e.attendance === "yes").length;
     if (rsvpCount > 0) {
       const hasMenuChanges =
         config.formData?.menuEnabled !== config.config?.menuEnabled ||
@@ -53,7 +53,7 @@ function AppMerger({ children }: any) {
   );
 }
 
-export function AppProvider({ children }: any) {
+export function AppProvider({ children }: { children: React.ReactNode }) {
   return (
     <UIProvider>
       <ConfigProvider>
