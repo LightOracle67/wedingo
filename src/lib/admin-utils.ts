@@ -4,12 +4,12 @@ export function calcRSVPSummary(entries: any[] | null | undefined) {
   const declined = entries.filter((e) => e.attendance === "no");
   const confirmedCount = confirmed.length;
   const declinedCount = declined.length;
-  const guestsWithCompanions = confirmed.reduce((sum, e) => sum + 1 + (Number(e.companions) || 0), 0);
+  const guestsWithCompanions = confirmed.reduce((sum, e) => sum + (Number(e.companions) || 1), 0);
   return {
     confirmed: confirmedCount,
     declined: declinedCount,
     pending: Math.max(0, entries.length - confirmedCount - declinedCount),
-    totalGuests: entries.reduce((sum, e) => sum + (e.attendance === "yes" ? 1 + (Number(e.companions) || 0) : 1), 0),
+    totalGuests: entries.reduce((sum, e) => sum + (e.attendance === "yes" ? (Number(e.companions) || 1) : 0), 0),
     confirmedGuests: guestsWithCompanions,
     allEntries: entries.length,
   };

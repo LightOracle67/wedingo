@@ -171,7 +171,7 @@ export default function AdminPage() {
   const confirmedResponses = rsvpEntries.filter((e: any) => e.attendance === "yes").length;
   const declinedResponses = rsvpEntries.filter((e: any) => e.attendance === "no").length;
   const totalGuests = rsvpEntries.reduce(
-    (s: any, r: any) => s + 1 + (Number(r.companions) || 0), 0,
+    (s: any, r: any) => s + (Number(r.companions) || 1), 0,
   );
 
   /** Props agrupadas para PanelTab (reduce prop drilling). */
