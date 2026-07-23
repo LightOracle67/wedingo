@@ -62,3 +62,35 @@ export interface InvitationConfig {
   _visits?: number;
   [key: string]: unknown;
 }
+
+export interface RsvpEntry {
+  id: string;
+  guestName: string;
+  attendance: "yes" | "no";
+  companions: number;
+  dietaryInfo: string;
+  mealChoice?: string;
+  note?: string;
+  submittedAt: string;
+}
+
+export interface SectionProps {
+  style?: React.CSSProperties;
+  className?: string;
+  [key: string]: unknown;
+}
+
+export interface EnvelopeProps {
+  onOpen: () => void;
+  firstName: string;
+  secondName: string;
+}
+
+export interface MusicPlayerProps {
+  musicUrl: string;
+}
+
+export interface ThemeColors {
+  bg: string;
+  accent: string;
+}

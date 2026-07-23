@@ -1143,7 +1143,8 @@ body {
   scroll-behavior: smooth;
   transition:
     color 280ms ease,
-    background-color 280ms ease;
+    background-color 280ms ease,
+    background-image 0.5s ease;
   
   font-size: clamp(1rem, 1.6vw, 1.1rem);
   line-height: 1.65;
@@ -1252,7 +1253,8 @@ img {
   box-shadow:
     0 22px 60px color-mix(in srgb, var(--invite-shell-shadow) 92%, transparent),
     0 0 0 1px color-mix(in srgb, var(--invite-shell-border) 70%, transparent),
-    0 0 34px color-mix(in srgb, var(--invite-shell-glow) 85%, transparent);
+    0 0 34px color-mix(in srgb, var(--invite-shell-glow) 85%, transparent),
+    inset 0 1px 0 rgba(255,255,255,0.06);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
 }

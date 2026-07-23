@@ -104,6 +104,7 @@ export default function DateSectionForm({ prefix = "" }) {
             placeholder={t("setup.dayPlaceholder")}
             inputMode="numeric"
             autoComplete="off"
+            min="1" max="31"
           />
         </div>
         <div>
@@ -146,6 +147,7 @@ export default function DateSectionForm({ prefix = "" }) {
             placeholder={t("setup.hourPlaceholder")}
             inputMode="numeric"
             autoComplete="off"
+            min="0" max="23"
           />
           <p className="setup-help">{t("setup.hourHint")}</p>
         </div>
@@ -160,6 +162,7 @@ export default function DateSectionForm({ prefix = "" }) {
             placeholder={t("setup.minutePlaceholder")}
             inputMode="numeric"
             autoComplete="off"
+            min="0" max="59"
           />
           <p className="setup-help">{t("setup.minuteHint")}</p>
         </div>

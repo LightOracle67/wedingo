@@ -31,7 +31,10 @@ export const compressImage = (file) =>
 
       let quality = 0.85;
       const tryQuality = () => {
-        const dataUrl = canvas.toDataURL("image/jpeg", quality);
+        let dataUrl = canvas.toDataURL("image/webp", quality);
+        if (!dataUrl.startsWith("data:image/webp")) {
+          dataUrl = canvas.toDataURL("image/jpeg", quality);
+        }
         const estimatedBytes = Math.round((dataUrl.length * 3) / 4);
         if (estimatedBytes <= TARGET_BYTES || quality <= 0.2) {
           URL.revokeObjectURL(img.src);

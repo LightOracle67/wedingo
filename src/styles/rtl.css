@@ -74,3 +74,18 @@
 /* Toast RTL */
 [dir="rtl"] .toast-container { left: 1rem; right: auto; }
 [dir="rtl"] .toast__close { right: auto; left: 0.5rem; }
+
+/* Envelope RTL */
+[dir="rtl"] .envelope__address { direction: rtl; }
+[dir="rtl"] .envelope__letter { direction: rtl; }
+[dir="rtl"] .envelope__letter-names { direction: rtl; }
+[dir="rtl"] .envelope__letter-message { direction: rtl; }
+[dir="rtl"] .envelope__hint { direction: rtl; }
+
+/* Language popup RTL */
+[dir="rtl"] .lang-popup__group-title { text-align: right; }
+[dir="rtl"] .lang-popup__btn { text-align: right; }
+
+/* Accessibility panel RTL */
+[dir="rtl"] .a11y-label { text-align: right; }
+[dir="rtl"] .a11y-section { text-align: right; }

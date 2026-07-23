@@ -113,7 +113,7 @@ function ToastProviderInner({ children, containerId = "toast-root", t }: any) {
   return (
     <ToastContext.Provider value={value}>
       {children}
-      <div id={containerId} className="toast-container">
+      <div id={containerId} className="toast-container" role="status" aria-live="polite">
         {toasts.map((toast) => (
           <div
             key={toast.id}

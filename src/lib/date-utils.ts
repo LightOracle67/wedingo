@@ -5,6 +5,15 @@ import { MONTH_OPTIONS, MONTH_VALUE_TO_NUMBER } from "./constants";
  * @param {string} birthDateStr - Fecha en formato YYYY-MM-DD.
  * @returns {number|null}
  */
+export function isDateInPast(year: string, month: string, day: string): boolean {
+  const monthIndex = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"].indexOf(month);
+  if (monthIndex === -1) return false;
+  const date = new Date(Number(year), monthIndex, Number(day));
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return date < today;
+}
+
 export function computeAge(birthDateStr) {
   if (!birthDateStr) return null;
   const birth = new Date(birthDateStr + "T00:00:00");

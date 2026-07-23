@@ -2,6 +2,7 @@ import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useReducedMotion } from "../../hooks/useReducedMotion";
 import "../../styles/gallery.css";
+import LoadingOverlay from "../../components/LoadingOverlay";
 
 /**
  * GallerySection — Sección de galería de imágenes en la invitación.
@@ -214,7 +215,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
         <div className="story-card story-panel story-card--info w-full text-center" style={{ maxWidth: "min(100%, 56rem)" }} aria-live="polite" aria-busy="true">
           <p className="story-eyebrow">{t("gallery.sectionLabel")}</p>
           <h2 className="story-title">{t("gallery.title")}</h2>
-          <div className="gallery-main-container" style={{ minHeight: "200px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div className="gallery-main-container" style={{ minHeight: "200px", display: "flex", alignItems: "center", justifyContent: "center", background: "color-mix(in srgb, var(--invite-shell-bg, rgba(255,255,255,0.45)) 90%, transparent)" }}>
             <div className="page-loading" />
           </div>
         </div>
@@ -276,9 +277,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
                 />
               )}
 
-              {!mainLoaded[clamped] ? (
-                <div className="page-loading" style={{ position: "absolute", inset: 0, zIndex: 1 }} />
-              ) : null}
+              <LoadingOverlay visible={!mainLoaded[clamped]} zIndex={1} />
               <img
                 src={currentImage?.url || currentImage}
                 alt={currentImage?.description || t("gallery.imageAlt")}
@@ -300,10 +299,10 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
             {/* ── Controles de navegación ── */}
             {images.length > 1 && (
               <>
-                <button type="button" onClick={prev} aria-label={t("gallery.prev")} className="gallery-nav gallery-nav--prev" disabled={fading}>
+                <button type="button" onClick={prev} aria-label={t("gallery.prev")} title={t("gallery.prev")} className="gallery-nav gallery-nav--prev" disabled={fading}>
                   ‹
                 </button>
-                <button type="button" onClick={next} aria-label={t("gallery.next")} className="gallery-nav gallery-nav--next" disabled={fading}>
+                <button type="button" onClick={next} aria-label={t("gallery.next")} title={t("gallery.next")} className="gallery-nav gallery-nav--next" disabled={fading}>
                   ›
                 </button>
               </>

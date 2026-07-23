@@ -1,6 +1,7 @@
 import { memo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import heroBackdropSrc from "../../assets/rings.webp";
+import LoadingOverlay from "../../components/LoadingOverlay";
 
 const HeroSection = memo(function HeroSection({ style, className, firstName, secondName, inviteMessage, countdown, couplePhoto, godparent1, godparent2 }: any) {
   const { t } = useTranslation();
@@ -20,7 +21,7 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
               <div className="w-full h-full" style={{ opacity: photoLoaded ? 1 : 0, transition: "opacity 0.3s ease" }}>
                 <img src={couplePhoto} alt={t("hero.couplePhotoAlt")} onLoad={() => setPhotoLoaded(true)} onError={() => setPhotoLoaded(true)} className="w-full h-full object-cover" />
               </div>
-              {!photoLoaded ? <div className="page-loading" style={{ position: "absolute", inset: 0 }} /> : null}
+              <LoadingOverlay visible={!photoLoaded} />
             </div>
           ) : null}
           <div className="relative mx-auto w-fit">

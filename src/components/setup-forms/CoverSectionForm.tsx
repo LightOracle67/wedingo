@@ -68,6 +68,7 @@ export default function CoverSectionForm({ prefix = "" }) {
               placeholder={t("setup.namePlaceholder")}
               autoComplete="off"
               required
+              aria-required="true"
             />
           </div>
           <div className="setup-name-col">
@@ -80,6 +81,7 @@ export default function CoverSectionForm({ prefix = "" }) {
               placeholder={t("setup.namePlaceholder")}
               autoComplete="off"
               required
+              aria-required="true"
             />
           </div>
         </div>

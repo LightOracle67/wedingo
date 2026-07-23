@@ -81,8 +81,8 @@ const TokensTab = memo(function TokensTab() {
       </div>
 
       {tokens.length === 0 ? (
-        <div className="setup-token-card admin-center">
-          <p className="setup-help" style={{ margin: 0 }}>{t("superadmin.noTokens")}</p>
+        <div className="setup-token-card" style={{ padding: "2rem", textAlign: "center" }}>
+          <p className="setup-help" style={{ margin: 0, fontSize: "0.9rem" }}>{t("superadmin.noTokens")}</p>
         </div>
       ) : (
         <div className="admin-grid">
