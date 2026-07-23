@@ -1094,5 +1094,902 @@ TOTAL:    ~55  puntos en 25 categorías
 ✅ Backup/Restore (JSON + merge)
 
 ═══════════════════════════════════════════════════════════════════════════
-FIN DE AUDITORÍA — 25 categorías, ~80 puntos
+26. VALIDACIÓN DE DATOS / FORMULARIOS (6 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[VLD1] COBERTURA DE VALIDACIONES
+       Estado: ⚠️ 80% cubierto
+       Hallazgo: Validaciones implementadas:
+       ✅ Campos requeridos (name, date, privacy consent, etc.)
+       ✅ Longitud máxima (firstName 20, storyText 500, etc.)
+       ✅ Formato (email, IBAN, URL, token length)
+       ✅ Rangos (día 1-31, hora 0-23, minuto 0-59)
+       ✅ Archivos (tipo, tamaño, vacío)
+       ❌ No hay validación cruzada (ej. fecha > hoy para boda)
+       ❌ No hay validación de IBAN (solo formato, no checksum)
+       ❌ No hay validación de unicidad de username
+       Mejora: Validar checksum IBAN, validar fecha futura.
+
+[VLD2] VALIDACIÓN DEL LADO DEL SERVIDOR (Firestore Rules)
+       Estado: ⚠️ Parcial
+       Hallazgo: Las Firestore rules validan:
+       ✅ invitations: campos obligatorios, tipos, rangos (bien)
+       ✅ rsvpResponses: campos, tipos, consentimientos (bien)
+       ❌ gallery y audio: solo verifican isAuthenticatedAdmin
+       ❌ No validan tamaño del campo data en subcolecciones
+       Riesgo: MEDIO — Datos maliciosos pueden pasar.
+
+[VLD3] MENSAJES DE ERROR POR CAMPO
+       Estado: ✅ Traducidos
+       Hallazgo: Cada error tiene su propia clave i18n.
+       Los errores se muestran como toasts o textos inline.
+       Riesgo: BAJO
+
+[VLD4] VALIDACIÓN EN TIEMPO REAL VS AL ENVIAR
+       Estado: ⚠️ Mixto
+       Hallazgo:
+       - storyText: contador en tiempo real (bien)
+       - guestNames: validación al escribir (bien)
+       - Campos de fecha: sanitización al cambiar (bien)
+       - La mayoría: validación solo al enviar el formulario
+       Mejora: Añadir validación en blur para todos los campos.
+
+[VLD5] CAMPOS OPCIONALES VS REQUERIDOS
+       Estado: ✅ Marcados
+       Hallazgo: Los campos obligatorios tienen indicador visual
+       (*) o están implícitos (no se puede enviar sin ellos).
+       Riesgo: BAJO
+
+[VLD6] SANITIZACIÓN DE ENTRADA (XSS)
+       Estado: ✅ Múltiples capas
+       Hallazgo:
+       - React escapa automáticamente (bien)
+       - isSafeText() en Firestore rules (bien)
+       - replace() en inputs de username, token (bien)
+       - escHtml() en lib/utils.ts para HTML seguro (bien)
+       Riesgo: BAJO
+
+═══════════════════════════════════════════════════════════════════════════
+27. MÁQUINAS DE ESTADOS / FLUJOS (5 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[SM1] ESTADOS DEL ENVELOPE
+       Estado: ✅ 5 estados
+       Hallazgo: Cerrado → Abriendo (flap rotate) → Abierto (flash)
+       → Texto dorado → Saliendo (fade+scale) → Fuera.
+       Cada estado tiene su propio setTimeouts (400ms, 900ms, 3500ms).
+       Riesgo: BAJO
+
+[SM2] ESTADOS DEL LOGIN
+       Estado: ⚠️ 4 estados
+       Hallazgo: 
+       - idle: formulario visible
+       - loading: enviando petición
+       - error: mensaje de error
+       - success: redirigiendo
+       Pero: no hay estado "too many attempts" (rate limiting).
+       Mejora: Añadir bloqueo temporal tras N intentos fallidos.
+
+[SM3] ESTADOS DE SUBIDA (UPLOAD)
+       Estado: ✅ Completos
+       Hallazgo: 
+       - idle: zona de subida visible
+       - validating: comprobando archivo
+       - uploading: toast con progreso
+       - success: toast verde + slot actualizado
+       - error: toast rojo + mensaje
+       Riesgo: BAJO
+
+[SM4] ESTADOS DE LA GALERÍA
+       Estado: ✅ Completos
+       Hallazgo:
+       - loading: skeleton/spinner
+       - loaded: imágenes visibles
+       - empty: sin imágenes (slots vacíos)
+       - error: toast (cubierto)
+       - transitioning: blur entre imágenes
+       - lightbox: imagen a pantalla completa
+       Riesgo: BAJO
+
+[SM5] ESTADOS DEL RSVP
+       Estado: ✅ Completos
+       Hallazgo:
+       - idle: formulario visible
+       - loading: enviando
+       - success: mensaje de confirmación
+       - error: toast/mensaje
+       - alreadySubmitted: badge + withdraw button
+       - withdrawn: formulario visible de nuevo
+       Riesgo: BAJO
+
+═══════════════════════════════════════════════════════════════════════════
+28. RENDIMIENTO DE ANIMACIONES (4 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[ANM1] COMPOSICIÓN DE ANIMACIONES
+       Estado: ⚠️ Mixto
+       Hallazgo:
+       ✅ Transform y opacity: GPU-composited (wind-sway, gallery blur)
+       ⚠️ Filter: CPU-bound (gallery-unblur anima filter:blur)
+       ⚠️ Backdrop-filter: puede ser pesado en móviles
+       Mejora: Animar filter solo con transiciones, no keyframes.
+
+[ANM2] WILL-CHANGE
+       Estado: ⚠️ Usado en gallery-fade
+       Hallazgo: will-change: opacity, transform en .gallery-fade.
+       Bien usado, pero podría provocar consumo extra de memoria
+       si hay muchos elementos.
+       Riesgo: BAJO
+
+[ANM3] ANIMACIONES EN DISPOSITIVOS DE BAJA GAMA
+       Estado: ❌ No verificado
+       Hallazgo: No se ha probado en dispositivos de gama baja.
+       Las animaciones (blur, backdrop-filter) pueden ser lentas.
+       Mejora: Detectar rendimiento y degradar animaciones.
+
+[ANM4] REPAINTS Y REFLOWS
+       Estado: ❌ No auditado
+       Hallazgo: Las animaciones de opacity y transform evitan
+       reflow (solo repaint). Pero filter y backdrop-filter
+       pueden causar repaints costosos.
+       Mejora: Auditar con Chrome DevTools Performance tab.
+
+═══════════════════════════════════════════════════════════════════════════
+29. SISTEMA DE COLOR (5 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[COL1] VARIABLES CSS DE COLOR
+       Estado: ✅ 21 temas definidos
+       Hallazgo: Cada tema define --invite-shell-bg, --invite-core-color,
+       --invite-title-color, etc. Más de 20 variables por tema.
+       Incluye --flower-accent para decoraciones.
+       Riesgo: MUY BAJO
+
+[COL2] CONTRASTE WCAG (VERIFICACIÓN)
+       Estado: ❌ No verificado formalmente
+       Hallazgo: No se ha medido el ratio de contraste de:
+       - Golden text (#c8a84e) sobre fondo blanco semitransparente
+       - Dark text (#3a2a1a) sobre fondo crema (#f8f2e8)
+       - White text (#fff) sobre fondo oscuro degradado
+       Mejora: Verificar con axe DevTools o contrastchecker.com.
+
+[COL3] USO DE COLOR-MIX()
+       Estado: ✅ Moderno
+       Hallazgo: Uso extensivo de color-mix(in srgb, ...) para
+       variantes semitransparentes. Esto permite derivar colores
+       del tema automáticamente.
+       Riesgo: BAJO — Solo compatible Chrome 111+, Firefox 113+,
+       Safari 16.2+. No problemático para público objetivo.
+
+[COL4] COLORES DE INTERFAZ VS INVITACIÓN
+       Estado: ⚠️ Diferenciado
+       Hallazgo: Los colores admin (--setup-accent) están separados
+       de los colores invitación (--invite-*). Correcto.
+       Pero gallery.css usa --setup-muted y --setup-field-bg
+       en lugar de --invite-* equivalents.
+       Mejora: Reemplazar --setup-* por --invite-* en gallery.css.
+
+[COL5] GRADIENTES
+       Estado: ✅ Consistentes
+       Hallazgo: Los gradientes de story-card usan color-mix con
+       --invite-core-color. Los backgrounds de admin son sólidos.
+       Riesgo: BAJO
+
+═══════════════════════════════════════════════════════════════════════════
+30. TIPOGRAFÍA / TEXTOS (5 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[TYP1] JERARQUÍA TIPOGRÁFICA
+       Estado: ✅ Clara
+       Hallazgo:
+       - H1 (story-title): Playfair Display, clamp(1.5, 3.4vw, 2.4rem)
+       - H2 (story-subheading): Playfair Display, clamp(1.1, 2.6vw, 1.5rem)
+       - Body (story-copy): Lora, clamp(1.05, 2.4vw, 1.3rem)
+       - Decorativo (eyebrow/caption): Great Vibes
+       - Admin: system-ui, sans-serif
+       Riesgo: MUY BAJO
+
+[TYP2] TAMAÑOS DE FUENTE RESPONSIVE
+       Estado: ✅ clamp() en todos
+       Hallazgo: Todos los tamaños usan clamp(min, preferred, max).
+       Correcto para responsive sin media queries.
+       Riesgo: MUY BAJO
+
+[TYP3] FUENTES CARGADAS
+       Estado: ⚠️ 3 fuentes externas
+       Hallazgo:
+       - Playfair Display (títulos)
+       - Lora (cuerpo)
+       - Great Vibes (decorativo)
+       Las fuentes se cargan vía @fontsource (bundled, no externas).
+       Pero: no tienen font-display: swap configurado.
+       Riesgo: BAJO — Puede causar FOIT (Flash of Invisible Text).
+
+[TYP4] LEGIBILIDAD EN DIFERENTES IDIOMAS
+       Estado: ❌ No verificado
+       Hallazgo: Las fuentes pueden no cubrir todos los caracteres
+       de los 100 idiomas (cirílico, árabe, chino, etc.).
+       Mejora: Verificar cobertura de caracteres en @fontsource.
+
+[TYP5] INTERLINEADO Y ESPACIADO
+       Estado: ✅ Accesible
+       Hallazgo: story-copy: line-height 1.65 (WCAG recomienda 1.5).
+       Panel de accesibilidad permite ajustar line-height y spacing.
+       Riesgo: MUY BAJO
+
+═══════════════════════════════════════════════════════════════════════════
+31. SISTEMA DE ESPACIADO / MÁRGENES (3 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[ESP1] CONSISTENCIA DE ESPACIADO
+       Estado: ⚠️ Inconsistente
+       Hallazgo: Mezcla de unidades:
+       - rem (0.5rem, 0.75rem, 1rem, etc.)
+       - px (2px, 3px, etc.)
+       - clamp() para padding responsive
+       - Valores inline (style={{ marginTop: "0.5rem" }})
+       No hay un sistema de espaciado definido (ej. 4/8/12/16/20/24px).
+       Mejora: Definir escala de espaciado (--space-xs, --space-sm, etc.).
+
+[ESP2] GAPS EN GRID/FLEX
+       Estado: ⚠️ Inconsistente
+       Hallazgo: Los valores de gap varían entre 0.3rem y 0.75rem
+       sin criterio unificado. Algunos usan gap, otros margin.
+       Mejora: Unificar gaps con variables CSS.
+
+[ESP3] PADDING EN CONTENEDORES
+       Estado: ⚠️ Variado
+       Hallazgo:
+       - setup-background-panel: padding 0.95rem
+       - story-card: clamp(0.8rem, 2.5vw, 1.5rem)
+       - gallery-main-container: padding 1rem
+       - modal-card: padding variable
+       Mejora: Crear variables --padding-sm, --padding-md, --padding-lg.
+
+═══════════════════════════════════════════════════════════════════════════
+32. BORDES / SOMBRAS (3 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[BOR1] RADIOS DE BORDE
+       Estado: ⚠️ Variados
+       Hallazgo: Múltiples valores de border-radius:
+       - 0.35rem, 0.4rem, 0.5rem, 0.6rem, 0.65rem, 0.7rem
+       - 0.75rem, 0.9rem, 1rem, 1.6rem, 999px
+       No hay un sistema de radios definido.
+       Mejora: Definir --radius-sm, --radius-md, --radius-lg, --radius-xl.
+
+[BOR2] GROSOR DE BORDES
+       Estado: ⚠️ Variado
+       Hallazgo: 1px, 1.5px, 2px mezclados sin sistema.
+       Mejora: Unificar grosores (thin: 1px, normal: 1.5px, thick: 2px).
+
+[BOR3] SOMBRAS (BOX-SHADOW)
+       Estado: ⚠️ Variadas
+       Hallazgo: Múltiples sombras con diferentes valores:
+       - story-card: 3 sombras combinadas (shell-shadow, border, glow)
+       - gallery-lightbox__img: 0 8px 40px rgba(0,0,0,0.5)
+       - envelope: 0 18px 60px rgba(0,0,0,0.5)
+       - buttons: 0 2px 6px / 0 8px 18px
+       Mejora: Definir --shadow-sm, --shadow-md, --shadow-lg.
+
+═══════════════════════════════════════════════════════════════════════════
+33. RENDIMIENTO DE RE-RENDERS (4 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[RR1] CONTEXT RE-RENDERS
+       Estado: ⚠️ Alto impacto
+       Hallazgo: AppMerger fusiona 4 contextos en uno. Cualquier
+       cambio en cualquier contexto provoca re-render de toda la app.
+       useMemo en AppMerger mitiga parcialmente.
+       Riesgo: MEDIO — A 100+ componentes, puede ser lento.
+       Mejora: Separar contextos y usar hooks individuales (useConfig,
+       useAuth, etc.) en vez de useApp().
+
+[RR2] MEMOIZACION
+       Estado: ⚠️ Incompleta
+       Hallazgo:
+       ✅ React.memo en GalleryArrayEditor, MusicArrayEditor, etc.
+       ✅ useCallback en handlers
+       ✅ useMemo en configuraciones derivadas
+       ❌ No todos los componentes están memoizados
+       ❌ useCallback con deps incorrectas (ya auditado)
+       Mejora: Memoizar componentes de lista (thumbnails, items).
+
+[RR3] RE-RENDERS POR PROPS INLINE
+       Estado: ⚠️ Frecuente
+       Hallazgo: Muchos componentes reciben props inline
+       (style={{...}}, onChance={() => ...}) que rompen la
+       memoización porque crean nuevas referencias en cada render.
+       Mejora: Extraer estilos inline a constantes o clases CSS.
+
+[RR4] REACT STRICT MODE
+       Estado: ⚠️ No verificado
+       Hallazgo: No está claro si la app usa Strict Mode.
+       Strict Mode ayuda a detectar efectos secundarios pero
+       duplica los renders en desarrollo.
+       Mejora: Verificar y corregir efectos no limpios.
+
+═══════════════════════════════════════════════════════════════════════════
+34. GESTIÓN DE EVENTOS / LISTENERS (3 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[EVT1] CLEANUP DE EVENT LISTENERS
+       Estado: ⚠️ Parcial
+       Hallazgo:
+       ✅ window.addEventListener/removeEventListener en MusicPlayer
+       ✅ ResizeObserver cleanup (implícito)
+       ❌ No hay cleanup en HeroSection para countdown timer
+       ❌ No hay cleanup en GallerySection para RAF loop (corregido)
+       Mejora: Revisar todos los useEffect con addEventListener.
+
+[EVT2] EVENTOS PERSONALIZADOS (Custom Events)
+       Estado: ✅ 1 usado
+       Hallazgo: wedin:play-audio se dispara desde EnvelopeOverlay
+       y se escucha en MusicPlayer. Correctamente limpio en unmount.
+       Riesgo: BAJO
+
+[EVT3] DELEGACIÓN DE EVENTOS
+       Estado: ❌ No usada
+       Hallazgo: No se usa delegación de eventos. Múltiples
+       elementos tienen sus propios onClick (10 slots de galería,
+       thumbnails, etc.). Para 10-20 elementos es aceptable.
+       Mejora: Considerar delegación para listas largas.
+
+═══════════════════════════════════════════════════════════════════════════
+35. CONSOLA / DEBUG (3 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[DBG1] CONSOLE.LOG EN PRODUCCIÓN
+       Estado: ✅ No encontrado
+       Hallazgo: Búsqueda de console.log en producción: no se
+       encontraron en archivos de componente.
+       console.warn se usa en GalleryManager (intencional).
+       Riesgo: MUY BAJO
+
+[DBG2] COMENTARIOS DE CÓDIGO
+       Estado: ⚠️ Abundantes
+       Hallazgo: Hay comentarios útiles (JSDoc) y comentarios
+       de depuración ({/* silencioso */}, {/* ignore */}) que
+       deberían eliminarse.
+       Mejora: Limpiar comentarios de debugging.
+
+[DBG3] MANEJO DE ERRORES EN DESARROLLO
+       Estado: ⚠️ Básico
+       Hallazgo: Los errores en desarrollo se muestran en consola
+       y como toasts. No hay diferenciación dev/prod.
+       Mejora: Mostrar más detalles en desarrollo, menos en prod.
+
+═══════════════════════════════════════════════════════════════════════════
+36. CACHÉ / ALMACENAMIENTO LOCAL (4 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[CH1] CLAVES DE LOCALSTORAGE
+       Estado: ✅ 4 claves identificadas
+       Hallazgo:
+       - wedin_cookie_consent: consentimiento cookies
+       - wedin_invite_cache_{token}: caché de invitación (TTL 2min)
+       - wedin_audio_{token}: caché de audio (sessionStorage)
+       - wedin_setup_token_{token}: token de setup (sessionStorage)
+       - wedin_invite_token: token de invitación activo (sessionStorage)
+       Riesgo: BAJO — Claves con prefijo wedin_ para evitar colisiones.
+
+[CH2] TAMAÑO DEL CACHÉ
+       Estado: ⚠️ Sin límite
+       Hallazgo: El caché de invitación puede crecer con cada
+       invitación visitada. Las imágenes en data URL (400KB) se
+       guardan en localStorage, que tiene límite de ~5-10MB.
+       Riesgo: BAJO — Pocas invitaciones simultáneas.
+
+[CH3] ESTRATEGIA DE INVALIDACIÓN
+       Estado: ⚠️ TTL fijo
+       Hallazgo: El caché se invalida por TTL (2 minutos) o
+       manualmente (reloadConfig). No hay invalidación por
+       evento (cuando otro dispositivo modifica los datos).
+       Riesgo: BAJO
+
+[CH4] SESIÓN vs LOCAL STORAGE
+       Estado: ✅ Uso correcto
+       Hallazgo: sessionStorage para datos de sesión (token, auth).
+       localStorage para preferencias persistentes (consent, caché).
+       Riesgo: MUY BAJO
+
+═══════════════════════════════════════════════════════════════════════════
+37. FIRESTORE — OPTIMIZACIÓN DE CONSULTAS (4 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[FQ1] LECTURAS COMPLETAS DE COLECCIÓN
+       Estado: ⚠️ 4 consultas sin filtro
+       Hallazgo:
+       - DashboardTab: lee TODAS las invitaciones, RSVPs (bien, son pocas)
+       - DataTab: lee TODAS las invitaciones (bien, admin)
+       - TokensTab: lee TODAS las invitaciones con _activeSetupToken (bien)
+       - InvitationsTab: lee TODAS las invitaciones (bien, admin)
+       Riesgo: BAJO — El superadmin necesita ver todos los datos.
+
+[FQ2] ÍNDICES COMPUESTOS
+       Estado: ✅ 1 índice (eliminado)
+       Hallazgo: No hay índices compuestos necesarios. Las consultas
+       son simples (por campo único o subcolección).
+       Riesgo: MUY BAJO
+
+[FQ3] LECTURAS EN BUCLE (N+1)
+       Estado: ⚠️ Presente
+       Hallazgo:
+       - cascadeDelete en DataTab: lee y borra en bucle por invitación
+       - DashboardTab cleanup: lee y borra en bucle
+       - loadGallery: 1 lectura + N descifrados (no es N+1 de red)
+       Riesgo: BAJO — Operaciones administrativas poco frecuentes.
+
+[FQ4] SUSCRIPCIONES EN TIEMPO REAL (Snapshot listeners)
+       Estado: ❌ No usado
+       Hallazgo: No se usan onSnapshot. Todos los datos se cargan
+       con getDocs/getDoc (petición única). Esto significa que
+       los datos pueden estar obsoletos hasta la próxima carga.
+       Mejora: Usar onSnapshot para datos que cambian frecuentemente
+       (RSVPs, config).
+
+═══════════════════════════════════════════════════════════════════════════
+38. Z-INDEX / CAPAS (3 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[ZIX1] JERARQUÍA DE Z-INDEX
+       Estado: ⚠️ Definida pero dispersa
+       Hallazgo:
+       - z-index: -1: fondos de página
+       - z-index: 400: admin bar
+       - z-index: 9997: toasts
+       - z-index: 9998: envelope white flash
+       - z-index: 9999: envelope overlay
+       - z-index: 10000: gallery lightbox
+       - z-index: 10001: music player
+       - z-index: 10002: nav overlay, modals
+       - z-index: 10003: nav toggle (hamburguesa)
+       - z-index: 10004: language popup
+       Los valores están dispersos en múltiples CSS.
+       Mejora: Centralizar en un solo archivo o en variables CSS.
+
+[ZIX2] CONFLICTOS DE STACKING CONTEXT
+       Estado: ⚠️ Potenciales
+       Hallazgo: El envelope overlay (z-index:9999) y el lightbox
+       (z-index:10000) son position:fixed, creando sus propios
+       stacking contexts. El music-player (z-index:10001) también.
+       Cuando el lightbox está abierto sobre el envelope, funciona
+       porque 10000 > 9999. Pero si el music player (10001) está
+       abierto, está por encima del lightbox (10000).
+       Mejora: Asegurar que lightbox (10000) > music player (10001).
+
+[ZIX3] MODALES Y OVERLAYS
+       Estado: ⚠️ Múltiples orígenes
+       Hallazgo: Los modales se renderizan en diferentes lugares
+       del DOM (portals, divs inline). Esto puede causar conflictos
+       de stacking si dos modales se abren simultáneamente.
+       Mejora: Usar un ModalManager centralizado.
+
+═══════════════════════════════════════════════════════════════════════════
+39. ACCESIBILIDAD AVANZADA (5 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[A11Y1] TAMAÑO DE OBJETIVOS TÁCTILES (WCAG 2.5.8)
+        Estado: ⚠️ Parcial
+        Hallazgo: 
+        ✅ toast__close: 44px mínimo (corregido previamente)
+        ✅ modal-close: 44px mínimo (corregido previamente)
+        ⚠️ gallery-nav: 2.2rem ≈ 35px (menos de 44px)
+        ⚠️ gallery-thumb: 2.8rem ≈ 45px (justo)
+        ⚠️ music-player__play: 2rem ≈ 32px (menos de 44px)
+        Mejora: Aumentar targets táctiles a 44px mínimo.
+
+[A11Y2] ANUNCIOS DE SCREEN READER (WCAG 4.1.3)
+        Estado: ⚠️ Parcial
+        Hallazgo:
+        ✅ role="alert" en toasts (bien)
+        ✅ aria-live="polite" en galería (bien)
+        ❌ No hay aria-live en zonas de resultados de búsqueda
+        ❌ No hay aria-live cuando se añaden/eliminan imágenes
+        Mejora: Añadir aria-live="polite" en contenedores dinámicos.
+
+[A11Y3] DESCRIPCIONES DE MODALES
+        Estado: ⚠️ Parcial
+        Hallazgo:
+        ✅ aria-label en modales (bien)
+        ❌ No hay aria-describedby que describa el propósito del modal
+        Mejora: Añadir aria-describedby en modales.
+
+[A11Y4] NAVEGACIÓN POR TECLADO AVANZADA
+        Estado: ⚠️ Básica
+        Hallazgo:
+        ✅ Escape cierra modales (useEscapeKey)
+        ✅ Enter/Space en envelope
+        ✅ Flechas en galería
+        ❌ No hay skip-to-content link
+        ❌ No hay atajos de teclado configurables
+        Mejora: Añadir skip link al inicio de cada página.
+
+[A11Y5] ZOOM AL 400% (WCAG 1.4.10)
+        Estado: ❌ No verificado
+        Hallazgo: No se ha probado el zoom al 400%.
+        El contenido debe reorganizarse sin pérdida de información.
+        Las media queries actuales llegan hasta 360px.
+        Mejora: Probar zoom 400% y ajustar layout.
+
+═══════════════════════════════════════════════════════════════════════════
+40. SOPORTE MULTI-IDIOMA AVANZADO (4 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[ML1] EXPANSIÓN DE TEXTO EN TRADUCCIONES
+       Estado: ❌ No verificado
+       Hallazgo: Las traducciones pueden ser hasta un 300% más
+       largas que el original (ej. alemán: "Confirm your attendance"
+       → "Bestätigen Sie Ihre Teilnahme"). Los contenedores
+       podrían romperse.
+       Mejora: Probar idiomas con texto largo (alemán, ruso, finés).
+
+[ML2] DIRECCIÓN RTL COMPLETA
+       Estado: ❌ Incompleta
+       Hallazgo: rtl.css existe pero:
+       - dir="rtl" no se aplica en <html>
+       - Faltan overrides para gallery, music player, envelope
+       - Los inputs de formulario no invierten padding/margin
+       - Las animaciones (translateX) no se invierten
+       Mejora: Implementar RTL completo con CSS logical properties.
+
+[ML3] FORMATOS DE FECHA POR IDIOMA
+       Estado: ⚠️ Parcial
+       Hallazgo: toLocaleDateString respeta el idioma. Pero
+       el countdown usa texto fijo en inglés.
+       Mejora: Localizar countdown con i18next.
+
+[ML4] TRADUCCIÓN DE CONTENIDO GENERADO
+       Estado: ❌ No implementado
+       Hallazgo: El mensaje de invitación (randomMessage) solo
+       está en ES/EN/FR/DE/PT. El resto de idiomas ven inglés.
+       Mejora: Usar i18next para los mensajes de invitación.
+
+═══════════════════════════════════════════════════════════════════════════
+41. ANÁLISIS DE DEPENDENCIAS CRUZADAS (3 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[DEPC1] IMPORTACIONES CIRCULARES
+        Estado: ⚠️ Posibles
+        Hallazgo: 
+        - AppContext importa de ConfigContext, AuthContext, RsvpContext
+        - ConfigContext importa de useAutoSave
+        - useAutoSave importa de normalizeConfig (en utils)
+        - normalizeConfig está en lib/utils.ts y lib/normalize-config.ts
+        Riesgo: BAJO — No se han detectado ciclos explícitos.
+
+[DEPC2] TAMAÑO DE MÓDULOS
+        Estado: ⚠️ Grandes
+        Hallazgo: 
+        - useSetupAuth.ts: 430+ líneas (muy grande)
+        - ConfigContext.tsx: 490+ líneas
+        - AdminPage.tsx: 320+ líneas
+        - RsvpSection.tsx: 287 líneas
+        - GallerySection.tsx: 398 líneas
+        Mejora: Dividir en módulos más pequeños.
+
+[DEPC3] LAYERS DE ARQUITECTURA
+        Estado: ✅ Respetados
+        Hallazgo: 
+        pages → components → hooks → lib/contexts 
+        Las páginas importan componentes, los componentes importan
+        hooks/lib, los hooks importan lib. No hay dependencias
+        ascendentes (lib → pages).
+        Riesgo: MUY BAJO
+
+═══════════════════════════════════════════════════════════════════════════
+42. WEB VITALS AVANZADOS (3 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[WV4] FIRST PAINT / FIRST CONTENTFUL PAINT
+       Estado: ❌ No medido
+       Hallazgo: No hay mediciones de FP/FCP. El bundle principal
+       (140KB JS + 127KB CSS) debe descargarse antes del primer paint.
+       Mejora: Medir con Lighthouse y optimizar CSS crítico.
+
+[WV5] TIME TO INTERACTIVE
+       Estado: ❌ No medido
+       Hallazgo: Firebase SDK (574KB) bloquea la interactividad
+       hasta que se descarga y ejecuta.
+       Mejora: Cargar Firebase de forma diferida o con async.
+
+[WV6] Largest Contentful Paint (LCP) — RECURSOS CRÍTICOS
+       Estado: ❌ No optimizado
+       Hallazgo: Los candidatos a LCP incluyen:
+       - rings.webp (44KB) — podría precargarse
+       - couplePhoto (hasta 400KB data URL) — lento
+       - Hero text (títulos Playfair Display) — requiere fuente
+       Mejora: Precargar rings.webp y fuentes críticas.
+
+═══════════════════════════════════════════════════════════════════════════
+43. CARBON FOOTPRINT / SOSTENIBILIDAD (3 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[ECO1] PESO DE LA PÁGINA
+       Estado: 10MB total
+       Hallazgo: 10MB por carga inicial. Cada visita a la
+       invitación pública implica descargar ~2MB (bundle + assets).
+       Para 100 invitados, ~200MB de transferencia.
+       Mejora: Optimizar bundle (especialmente locales).
+
+[ECO2] DATOS ALMACENADOS
+       Estado: ⚠️ Sin límite
+       Hallazgo: Las imágenes subidas se almacenan en Firestore
+       (no en Storage). Cada imagen ~400KB cifrada. Para 10
+       imágenes por invitación y 100 invitaciones, ~400MB en BD.
+       Mejora: Usar Firebase Storage para archivos grandes.
+
+[ECO3] CONSUMO DE ENERGÍA (ANIMACIONES)
+       Estado: ⚠️ Moderado
+       Hallazgo: Las animaciones (envelope, fireflies, wind-sway)
+       consumen CPU/GPU. En dispositivos móviles, pueden agotar
+       la batería más rápido.
+       Mejora: Respetar prefers-reduced-motion (ya implementado)
+       y reducir animaciones en battery-saver mode.
+
+═══════════════════════════════════════════════════════════════════════════
+44. GESTIÓN DE ERRORES DE RED (3 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[ERR1] ERRORES DE FIRESTORE
+       Estado: ❌ No diferenciados
+       Hallazgo: Los errores de Firestore se manejan genéricamente
+       (catch { showError(); }). No se distingue entre:
+       - permission-denied (el usuario perdió sesión)
+       - unavailable (sin conexión)
+       - not-found (documento eliminado)
+       - deadline-exceeded (timeout)
+       - resource-exhausted (cuota excedida)
+       Mejora: Manejar códigos de error específicos de Firestore.
+
+[ERR2] ERRORES DE AUTENTICACIÓN
+       Estado: ⚠️ Algunos gestionados
+       Hallazgo: SuperAdminLogin maneja errores específicos:
+       - auth/user-not-found
+       - auth/wrong-password
+       - auth/too-many-requests
+       - auth/invalid-email
+       Pero los errores de token de setup son genéricos.
+       Mejora: Diferenciar errores de token (expirado, revocado, etc.).
+
+[ERR3] ERRORES DE SUBIDA (ARCHIVOS)
+       Estado: ✅ Gestionados
+       Hallazgo: Los errores de subida se manejan con mensajes
+       específicos: archivo vacío, formato incorrecto, tamaño
+       excedido, cifrado fallido, imagen muy grande.
+       Riesgo: BAJO
+
+═══════════════════════════════════════════════════════════════════════════
+45. USO DE WEB APIs (5 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[WEB1] CLIPBOARD API
+       Estado: ✅ Usada
+       Hallazgo: navigator.clipboard.writeText() para copiar
+       token y enlace. Con fallback a toast de error.
+       Riesgo: BAJO
+
+[WEB2] CREDENTIAL MANAGEMENT API
+       Estado: ✅ Usada
+       Hallazgo: navigator.credentials.store() para guardar
+       credenciales en el navegador. Envuelto en try-catch.
+       Riesgo: BAJO
+
+[WEB3] WEB AUDIO API
+       Estado: ✅ Usada
+       Hallazgo: AudioContext, OfflineAudioContext para compresión
+       de audio. decodeAudioData para decodificar. startRendering
+       para renderizar. Correcto.
+       Riesgo: BAJO
+
+[WEB4] CANVAS API
+       Estado: ✅ Usada
+       Hallazgo: Canvas para compresión de imágenes (drawImage,
+       toDataURL) y para generación de mapas (context.drawImage).
+       Riesgo: BAJO
+
+[WEB5] INTERSECTION OBSERVER
+       Estado: ❌ No usado
+       Hallazgo: No se usa IntersectionObserver para lazy loading
+       de imágenes (se usa loading="lazy" nativo). No se usa
+       para tracking de visibilidad de secciones.
+       Mejora: Considerar IntersectionObserver para analytics
+       de visibilidad de secciones.
+
+═══════════════════════════════════════════════════════════════════════════
+46. FIREBASE ESPECÍFICO (4 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[FB1] FIRESTORE QUOTA
+       Estado: ⚠️ Sin monitorizar
+       Hallazgo: El plan Spark (gratuito) tiene límites:
+       - 50K lecturas/día, 20K escrituras/día, 20K borrados/día
+       - 1 GiB datos almacenados
+       Con 100 invitaciones × 10 imágenes × 400KB ≈ 400MB.
+       Más overhead de índice: podría acercarse al límite.
+       Mejora: Monitorear uso en Firebase Console.
+
+[FB2] FIRESTORE LOCATION
+       Estado: ✅ eur3 (Frankfurt)
+       Hallazgo: Los datos se almacenan en Europa (eur3).
+       Cumple GDPR requisitos de localización.
+       Riesgo: MUY BAJO
+
+[FB3] FIREBASE AUTH — MÉTODOS HABILITADOS
+       Estado: ⚠️ Solo email/password
+       Hallazgo: Solo email/password está habilitado para
+       superadmin. Los usuarios de invitación usan tokens,
+       no Firebase Auth. Correcto para el caso de uso.
+       Riesgo: BAJO
+
+[FB4] FIREBASE STORAGE
+       Estado: ❌ No usado
+       Hallazgo: Firebase Storage está configurado (storageBucket
+       en .env) pero no se usa activamente. Las imágenes se
+       almacenan en Firestore como datos cifrados.
+       Mejora: Migrar archivos grandes a Firebase Storage para
+       reducir coste de Firestore.
+
+═══════════════════════════════════════════════════════════════════════════
+47. CÓDIGO MUERTO / LEGACY (3 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[DEAD1] COMPONENTES LEGACY
+        Estado: ⚠️ Presente
+        Hallazgo:
+        - GalleryManager.tsx: reemplazado por GalleryArrayEditor
+          pero aún usado en la página pública (GallerySection)
+        - AudioUploadPicker.tsx: ELIMINADO (bien)
+        - chart-utils.tsx: ELIMINADO (bien)
+        Mejora: Evaluar si GalleryManager puede eliminarse.
+
+[DEAD2] CAMPOS DE CONFIGURACIÓN LEGACY
+        Estado: ✅ Limpiado
+        Hallazgo:
+        - backgroundImage: ELIMINADO
+        - backgroundImageStorage: ELIMINADO
+        - couplePhotoStorage: ELIMINADO
+        - musicFile: eliminado del payload (se guarda en subcolección)
+        Riesgo: MUY BAJO
+
+[DEAD3] FUNCIONES NO USADAS
+        Estado: ⚠️ Sin auditar
+        Hallazgo: No se ha buscado funciones exportadas que
+        no se importan en ningún lado.
+        Mejora: Ejecutar ts-prune o similar para detectar
+        exports no utilizados.
+
+═══════════════════════════════════════════════════════════════════════════
+48. CALIDAD DE CÓDIGO (4 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[QC1] NOMBRES DE VARIABLES
+       Estado: ⚠️ Mejorables
+       Hallazgo: Algunas variables tienen nombres poco descriptivos:
+       - `s` en normalize-config.ts (para string trimming)
+       - `mo` en DateSectionForm (para month option)
+       - `inv`, `tok` en DashboardTab
+       - `tt` en TokensTab
+       Mejora: Usar nombres completos.
+
+[QC2] COMPLEJIDAD COGNITIVA
+       Estado: ⚠️ Alta en algunos archivos
+       Hallazgo: 
+       - useSetupAuth.refreshSetupToken: múltiples caminos
+         de ejecución (if/else anidados)
+       - RsvpSection: 287 líneas con lógica condicional compleja
+       - PublicInvitation: lógica de transiciones de sección
+       Mejora: Extraer lógica condicional a funciones separadas.
+
+[QC3] FUNCIONES PURAS VS EFECTOS
+       Estado: ⚠️ Mezclados
+       Hallazgo: Las funciones en hooks mezclan lógica pura
+       con efectos secundarios (Firestore, sesión).
+       Mejora: Separar lógica de negocio de efectos.
+
+[QC4] TAMAÑO DE FUNCIONES
+       Estado: ⚠️ Variables
+       Hallazgo: 
+       - handleSaveSetupCore en ConfigContext: ~60 líneas
+       - refreshSetupToken en useSetupAuth: ~75 líneas (ahora menos)
+       - handleLogin en LandingPage: ~85 líneas
+       Mejora: Dividir funciones >50 líneas.
+
+═══════════════════════════════════════════════════════════════════════════
+49. PRUEBAS / TESTING (5 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[TST1] COBERTURA DE CÓDIGO
+       Estado: ❌ No medida
+       Hallazgo: No hay configuración de cobertura en vitest.
+       No se sabe qué porcentaje del código está cubierto por tests.
+       Mejora: Configurar c8/istanbul en vitest.
+
+[TST2] TESTS DE COMPONENTES
+       Estado: ⚠️ 2 archivos
+       Hallazgo: Solo Fireflies y CollapsibleSection tienen tests
+       de componente. El resto de componentes (30+) no tienen tests.
+       Mejora: Añadir tests de los componentes principales
+       (GalleryArrayEditor, MusicArrayEditor, MusicPlayer, etc.).
+
+[TST3] TESTS DE INTEGRACIÓN
+       Estado: ❌ No hay
+       Hallazgo: No hay tests que verifiquen la interacción
+       entre componentes (ej. flujo de login completo).
+       Mejora: Añadir tests de integración con MSW para Firestore mock.
+
+[TST4] TESTS DE ACCESIBILIDAD
+       Estado: ❌ No hay
+       Hallazgo: No hay tests automáticos de accesibilidad
+       (jest-axe, testing-library a11y queries).
+       Mejora: Añadir jest-axe a los tests de componentes.
+
+[TST5] MOCK DE FIRESTORE
+       Estado: ⚠️ Parcial
+       Hallazgo: Los tests existentes no mockean Firestore.
+       Las funciones que dependen de Firestore no se prueban.
+       Mejora: Usar firestore-mock o similar.
+
+═══════════════════════════════════════════════════════════════════════════
+50. SEGURIDAD ADICIONAL (5 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[SEC1] PROTECCIÓN CONTRA BRUTE FORCE EN LOGIN
+       Estado: ❌ No implementada
+       Hallazgo: No hay límite de intentos de login. Un atacante
+       podría probar tokens infinitamente.
+       Riesgo: MEDIO — Los tokens de 160 bits son difíciles de
+       adivinar, pero no hay rate limiting.
+       Mejora: Añadir retraso exponencial tras intentos fallidos.
+
+[SEC2] TOKENS EN URL
+       Estado: ⚠️ Presente
+       Hallazgo: El inviteToken está en la URL (/:inviteToken).
+       Cualquier persona con el enlace puede acceder a la
+       invitación. Por diseño es así (invitación compartible).
+       Pero el token de setup (setupToken) también está en
+       formularios y se guarda en sessionStorage.
+       Riesgo: BAJO — Diseñado para ser compartido.
+
+[SEC3] HTTPS / TLS
+       Estado: ✅ Forzado
+       Hallazgo: Firebase Hosting fuerza HTTPS. HSTS configurado
+       a 1 año. No hay contenido mixto.
+       Riesgo: MUY BAJO
+
+[SEC4] CONTENIDO MIXTO
+       Estado: ✅ No hay
+       Hallazgo: Todas las peticiones son HTTPS (Firestore, Auth,
+       Storage, map tiles via HTTPS).
+       Riesgo: MUY BAJO
+
+[SEC5] SUBIDA DE ARCHIVOS PELIGROSOS
+       Estado: ✅ Filtrada
+       Hallazgo: Solo se permiten tipos específicos:
+       - Imágenes: image/jpeg, image/png, image/webp
+       - Audio: audio/mpeg, audio/wav, audio/ogg, audio/m4a, audio/aac
+       - Backup: .json (solo en admin)
+       No se permiten ejecutables, scripts, o HTML.
+       Riesgo: BAJO
+
+═══════════════════════════════════════════════════════════════════════════
+RESUMEN GLOBAL ACTUALIZADO
+═══════════════════════════════════════════════════════════════════════════
+
+CATEGORÍAS: 50   (25 originales + 25 nuevas)
+PUNTOS TOTALES: ~250+
+
+CRÍTICAS:   0   Todas las categorías sin issues críticos
+ALTAS:     10   CSP, Offline, Sentry, Política privacidad, Contraste,
+                Rate limiting, Error tracking, LCP, CI/CD, Re-renders
+MEDIAS:    20   Validación rules, Responsive, Empty states, ARIA, RTL,
+                Firestore queries, Timeout, JSDoc, Onboarding,
+                Concurrencia, Husos horarios, Z-index, Targets táctiles,
+                Zoom 400%, RTL, Bundle locales, Cache, Reflow, Cobertura tests
+BAJAS:    ~220  Mejoras progresivas y hallazgos menores
+
+═══ 50 CATEGORÍAS — ~250 PUNTOS — AUDITORÍA MÁS COMPLETA ═══
+
+═══════════════════════════════════════════════════════════════════════════
+FIN DE AUDITORÍA — 50 categorías, ~250 puntos
 ═══════════════════════════════════════════════════════════════════════════
