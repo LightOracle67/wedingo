@@ -332,6 +332,9 @@ input.setup-input[type="date"] {
   border: 1px solid var(--setup-accent);
   background: transparent;
   transition: background 200ms, color 200ms;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
   margin-left: auto;
 }
@@ -1196,6 +1199,9 @@ select.setup-input {
   border: 1px solid color-mix(in srgb, var(--setup-border) 60%, transparent);
   background: color-mix(in srgb, var(--setup-field-bg) 68%, transparent);
   transition: opacity 150ms, transform 150ms, border-color 150ms;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 .section-order-item--dragging {

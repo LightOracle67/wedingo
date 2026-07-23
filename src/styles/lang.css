@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
   background: transparent;
+  -webkit-backdrop-filter: none;
   backdrop-filter: none;
   animation: overlay-in 200ms ease;
 }
@@ -13,6 +14,7 @@ html.a11y-high-contrast .lang-popup__card,
 html.a11y-high-contrast .app-footer {
   border: 2px solid #fff !important;
   box-shadow: none !important;
+  -webkit-backdrop-filter: none !important;
   backdrop-filter: none !important;
 }
 .lang-trigger {

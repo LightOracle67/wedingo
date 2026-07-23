@@ -245,6 +245,7 @@ html.a11y-high-contrast .lang-popup__card,
 html.a11y-high-contrast .app-footer {
   border: 2px solid #fff !important;
   box-shadow: none !important;
+  -webkit-backdrop-filter: none !important;
   backdrop-filter: none !important;
 }
 html.a11y-underline-links button:not(.a11y-btn):not(.music-player__play):not(.a11y-trigger) {
