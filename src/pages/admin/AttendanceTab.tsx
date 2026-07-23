@@ -1,6 +1,7 @@
 import { memo, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { getDietarySummary } from "../../lib/admin-utils";
+import Pagination from "../../components/Pagination";
 
 interface RsvpEntry {
   id: string;
@@ -175,25 +176,15 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
               })}
             </tbody>
           </table>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", justifyContent: "space-between", marginTop: "0.5rem", flexWrap: "wrap" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}>
-              <span className="setup-help" style={{ fontSize: "0.75rem" }}>{t("attendance.show")}</span>
-              <select value={pageSize} onChange={(e) => { setPageSize(Number(e.target.value)); setPage(0); }}
-                style={{ fontSize: "0.75rem", padding: "0.15rem 0.3rem", borderRadius: "4px", border: "1px solid var(--setup-border)", background: "var(--setup-bg)", color: "var(--setup-text)" }}>
-                {PAGE_SIZES.map((s: number) => <option key={s} value={s}>{s}</option>)}
-              </select>
-              <span className="setup-help" style={{ fontSize: "0.75rem" }}>
-                &middot; {t("attendance.total", { count: filterEntries.length })}
-              </span>
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}>
-              <button className="setup-button setup-button--ghost setup-button--compact" type="button"
-                disabled={safePage === 0} onClick={() => setPage(safePage - 1)}>←</button>
-              <span className="setup-help" style={{ fontSize: "0.75rem" }}>{t("attendance.page", { current: safePage + 1, total: totalPages })}</span>
-              <button className="setup-button setup-button--ghost setup-button--compact" type="button"
-                disabled={safePage >= totalPages - 1} onClick={() => setPage(safePage + 1)}>→</button>
-            </div>
-          </div>
+          <Pagination
+            page={safePage}
+            totalPages={totalPages}
+            pageSize={pageSize}
+            total={filterEntries.length}
+            pageSizes={PAGE_SIZES}
+            onPageChange={setPage}
+            onPageSizeChange={setPageSize}
+          />
         </div>
       ) : (
         <p className="setup-help">

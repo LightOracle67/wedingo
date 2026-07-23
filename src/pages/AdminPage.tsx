@@ -24,12 +24,12 @@ import { useApp } from "../contexts/AppContext";
 import { useToast } from "../hooks/useToast";
 import { formatDate } from "../lib/section-utils";
 import { escHtml } from "../lib/utils";
-import SetupForm from "../components/SetupForm";
 import "../styles/admin.css";
 
 // ─── Tabs de AdminPage (carga diferida) ────────────────────────────
 const PanelTab = lazy(() => import("./admin/PanelTab"));
 const AttendanceTab = lazy(() => import("./admin/AttendanceTab"));
+const InvitationTab = lazy(() => import("./admin/InvitationTab"));
 const AccessTab = lazy(() => import("./admin/AccessTab"));
 const ShareTab = lazy(() => import("./admin/ShareTab"));
 const SupportTab = lazy(() => import("./admin/SupportTab"));
@@ -56,7 +56,7 @@ const TABS = [
   { key: "compartir" },
   { key: "acceso" },
   { key: "soporte" },
-];
+] as const;
 
 /**
  * Página principal de administración de la boda.
@@ -99,7 +99,7 @@ export default function AdminPage() {
   const [attendanceFilter, setAttendanceFilter] = useState("all");
 
   // Sync tab changes to URL
-  const handleSetTab = useCallback((tab: any) => {
+  const handleSetTab = useCallback((tab: string) => {
     setActiveTab(tab);
     window.scrollTo({ top: 0, behavior: "smooth" });
     const params = new URLSearchParams(location.search);
@@ -125,12 +125,12 @@ export default function AdminPage() {
   }, [rsvpEntries, attendanceFilter, searchQuery]);
 
   /** Callback memoizado para cambiar de pestaña. */
-  const setActiveTabAndFilter = useCallback((tab: any) => {
+  const setActiveTabAndFilter = useCallback((tab: string) => {
     setActiveTab(tab);
   }, []);
 
   /** Callback memoizado para cambiar el filtro de asistencia. */
-  const setAttendanceFilterValue = useCallback((filter: any) => {
+  const setAttendanceFilterValue = useCallback((filter: string) => {
     setAttendanceFilter(filter);
   }, []);
 
@@ -276,7 +276,7 @@ export default function AdminPage() {
               className={`admin-tab ${activeTab === tab.key ? "admin-tab--active" : ""}`}
               onClick={() => handleSetTab(tab.key)}
             >
-              {t(`admin.tabs.${(TAB_KEY_MAP as any)[tab.key]}`)}
+              {t(`admin.tabs.${TAB_KEY_MAP[tab.key]}`)}
             </button>
           ))}
         </nav>
@@ -288,7 +288,7 @@ export default function AdminPage() {
             {activeTab === "panel" && <PanelTab config={panelConfig} />}
 
             {/* Pestaña: Editar invitación */}
-            {activeTab === "invitacion" && <SetupForm prefix="admin" />}
+            {activeTab === "invitacion" && <InvitationTab />}
 
             {/* Pestaña: Lista de asistencia */}
             {activeTab === "asistencia" && <AttendanceTab config={attendanceConfig} />}

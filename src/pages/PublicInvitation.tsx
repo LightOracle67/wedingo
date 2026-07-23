@@ -502,8 +502,8 @@ export default function PublicInvitation() {
       ) : (
         /* ── Invitación completa: renderiza cada sección en orden ── */
         <Suspense fallback={null}>
-          {visibleOrder.map((sectionKey: any) => {
-            const Component = (SECTION_COMPONENTS as any)[sectionKey];
+          {visibleOrder.map((sectionKey: string) => {
+            const Component = (SECTION_COMPONENTS as Record<string, React.ComponentType<any>>)[sectionKey];
             if (!Component) return null;
             return (
               <ErrorBoundary key={sectionKey}>
@@ -511,7 +511,7 @@ export default function PublicInvitation() {
                   style={getStorySectionStyle(sectionKey)}
                   className={getStorySectionClassName(sectionKey)}
                   // Propaga las props específicas de cada sección
-                  {...(sectionProps as any)[sectionKey]}
+                  {...(sectionProps as Record<string, any>)[sectionKey]}
                 />
               </ErrorBoundary>
             );

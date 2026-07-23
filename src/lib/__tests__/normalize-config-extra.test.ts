@@ -36,4 +36,14 @@ describe("normalizeConfig extra", () => {
     const result = normalizeConfig({ theme: ["golden"] as any });
     expect(result.theme).toBe("golden");
   });
+
+  it("preserves boolean-like strings", () => {
+    const result = normalizeConfig({ menuEnabled: "true" });
+    expect(result.menuEnabled).toBe("true");
+  });
+
+  it("handles empty object", () => {
+    const result = normalizeConfig({});
+    expect(result.theme).toBe("golden");
+  });
 });
