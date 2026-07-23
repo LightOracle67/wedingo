@@ -39,8 +39,9 @@ export function AuthProvider({ children }: any) {
       }
     })();
     auth.setIsTokenVerified(true);
-    auth.setTokenLoginUsername(config.adminUsername || inviteToken);
-    saveSession("admin", config.adminUsername || inviteToken);
+    const displayName = auth.tokenLoginUsername || config.adminUsername || inviteToken;
+    auth.setTokenLoginUsername(displayName);
+    saveSession("admin", displayName);
   };
 
   useEffect(() => {
