@@ -6,3 +6,19 @@ export function withTimeout<T>(promise: Promise<T>, ms: number, message?: string
     ),
   ]);
 }
+
+export async function retry<T>(
+  fn: () => Promise<T>,
+  maxRetries = 3,
+  delay = 1000,
+): Promise<T> {
+  for (let attempt = 0; attempt < maxRetries; attempt++) {
+    try {
+      return await fn();
+    } catch (error) {
+      if (attempt === maxRetries - 1) throw error;
+      await new Promise((resolve) => setTimeout(resolve, delay * Math.pow(2, attempt)));
+    }
+  }
+  throw new Error("Max retries reached");
+}

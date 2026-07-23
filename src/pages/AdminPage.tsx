@@ -17,7 +17,7 @@
  * @module AdminPage
  */
 
-import { lazy, useCallback, useEffect, useMemo, useState } from "react";
+import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import { Navigate, useParams, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useApp } from "../contexts/AppContext";
@@ -281,39 +281,41 @@ export default function AdminPage() {
         </nav>
 
         {/* ── Contenido de la pestaña activa ── */}
-        <div className="setup-form" role="tabpanel" id={"tabpanel-" + activeTab} aria-labelledby={"tab-" + activeTab}>
-          {/* Pestaña: Panel de control */}
-          {activeTab === "panel" && <PanelTab config={panelConfig} />}
+        <Suspense fallback={<div className="page-loading" style={{ minHeight: "10rem", margin: "1rem" }} />}>
+          <div className="setup-form" role="tabpanel" id={"tabpanel-" + activeTab} aria-labelledby={"tab-" + activeTab}>
+            {/* Pestaña: Panel de control */}
+            {activeTab === "panel" && <PanelTab config={panelConfig} />}
 
-          {/* Pestaña: Editar invitación */}
-          {activeTab === "invitacion" && <SetupForm prefix="admin" />}
+            {/* Pestaña: Editar invitación */}
+            {activeTab === "invitacion" && <SetupForm prefix="admin" />}
 
-          {/* Pestaña: Lista de asistencia */}
-          {activeTab === "asistencia" && <AttendanceTab config={attendanceConfig} />}
+            {/* Pestaña: Lista de asistencia */}
+            {activeTab === "asistencia" && <AttendanceTab config={attendanceConfig} />}
 
-          {/* Pestaña: Compartir invitación */}
-          {activeTab === "compartir" && (
-            <ShareTab
-              inviteToken={inviteToken}
-              config={config}
-              formattedDate={formattedDate}
-              addToast={addToast}
-            />
-          )}
+            {/* Pestaña: Compartir invitación */}
+            {activeTab === "compartir" && (
+              <ShareTab
+                inviteToken={inviteToken}
+                config={config}
+                formattedDate={formattedDate}
+                addToast={addToast}
+              />
+            )}
 
-          {/* Pestaña: Gestión de acceso */}
-          {activeTab === "acceso" && (
-             <AccessTab
-               setupToken={setupToken}
-               handleResetTokenFromAdmin={handleResetTokenFromAdmin}
-               handleAdminLogout={handleAdminLogout}
-               handleDeleteInvitation={handleDeleteInvitation}
-             />
-          )}
+            {/* Pestaña: Gestión de acceso */}
+            {activeTab === "acceso" && (
+               <AccessTab
+                 setupToken={setupToken}
+                 handleResetTokenFromAdmin={handleResetTokenFromAdmin}
+                 handleAdminLogout={handleAdminLogout}
+                 handleDeleteInvitation={handleDeleteInvitation}
+               />
+            )}
 
-          {/* Pestaña: Soporte */}
-          {activeTab === "soporte" && <SupportTab />}
-        </div>
+            {/* Pestaña: Soporte */}
+            {activeTab === "soporte" && <SupportTab />}
+          </div>
+        </Suspense>
       </section>
     </div>
   );

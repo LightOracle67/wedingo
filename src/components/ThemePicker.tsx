@@ -15,6 +15,7 @@ const ThemePicker = memo(function ThemePicker({ value, onChange, t }: any) {
               className={`theme-picker__card ${value === theme.value ? "theme-picker__card--active" : ""}`}
               onClick={() => onChange(theme.value)}
               aria-pressed={value === theme.value}
+              aria-label={t("themeNames." + theme.value)}
             >
               <span
                 className="theme-picker__swatch"

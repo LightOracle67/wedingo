@@ -4,7 +4,8 @@
   body { overflow: visible !important; }
   .app-footer, .admin-bar, .music-player, .envelope-overlay,
   .envelope-wrapper, .story-scroll-hint, .wedding-decoration,
-  .lang-popup, .modal-overlay, .toast-container { display: none !important; }
+  .lang-popup, .modal-overlay, .toast-container,
+  .gallery-section, .gallery-main-container, .gallery-lightbox { display: none !important; }
 }
 .print-root {
   display: flex;
