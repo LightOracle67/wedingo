@@ -9,11 +9,11 @@ function parseDietaryItems(dietaryInfo: string): string[] {
   return dietaryInfo.split(" | ").map((s) => s.trim()).filter((s) => s && !s.startsWith("Menú:"));
 }
 
-function formatMenuLines(mhc: Record<string, number>): string[] {
+function formatMenuLines(mhc: Record<string, number>, t: (key: string) => string): string[] {
   const lines: string[] = [];
-  if (mhc.carne) lines.push(`Carne: ${mhc.carne}`);
-  if (mhc.pescado) lines.push(`Pescado: ${mhc.pescado}`);
-  if (mhc.vegano) lines.push(`Vegano: ${mhc.vegano}`);
+  if (mhc.carne) lines.push(`${t("attendance.menuMeat")}: ${mhc.carne}`);
+  if (mhc.pescado) lines.push(`${t("attendance.menuFish")}: ${mhc.pescado}`);
+  if (mhc.vegano) lines.push(`${t("attendance.menuVegan")}: ${mhc.vegano}`);
   return lines.length ? lines : ["—"];
 }
 
@@ -103,8 +103,8 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
                       ? entry.guestNames.split(",").map((n: string) => n.trim()).filter(Boolean).map((n: string) => ({ name: n }))
                       : []);
                 const menuLines = entry.attendees?.length
-                  ? entry.attendees.map((a: any) => a.menu ? `${a.name}: ${a.menu}` : null).filter(Boolean)
-                  : formatMenuLines(entry.menuHeadcounts || {});
+                  ? entry.attendees.map((a: any) => a.menu ? `${a.name}: ${t("rsvp.menu" + a.menu.charAt(0).toUpperCase() + a.menu.slice(1))}` : null).filter(Boolean)
+                  : formatMenuLines(entry.menuHeadcounts || {}, t);
                 const dietLines = entry.attendees?.length
                   ? entry.attendees.filter((a: any) => a.allergies?.length).map((a: any) => `${a.name}: ${a.allergies.join(", ")}`)
                   : (attending ? getDietaryLines(entry.dietaryInfo || "", entry.companions || 1).map((d) => `${d.item}: ${d.count}`) : []);

@@ -86,10 +86,10 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
                       return `${t('countdown.week', { count: w })} · ${t('countdown.day', { count: countdown.days % 7 })}`;
                     }
                     if (countdown.days > 0) {
-                      return `${t('countdown.day', { count: countdown.days })} · ${countdown.hours}h`;
+                      return `${t('countdown.day', { count: countdown.days })} · ${t('countdown.hours', { count: countdown.hours })}`;
                     }
                     if (countdown.hours > 0) {
-                      return `${t('countdown.hour', { count: countdown.hours })} · ${countdown.minutes} min`;
+                      return `${t('countdown.hour', { count: countdown.hours })} · ${t('countdown.minutes', { count: countdown.minutes })}`;
                     }
                     return t('countdown.minute', { count: countdown.minutes });
                   })()}

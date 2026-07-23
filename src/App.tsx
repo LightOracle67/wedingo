@@ -70,7 +70,7 @@ function AppShell() {
     if (path === "/") document.title = t("app.titleLanding");
     else if (path.includes("/admin")) document.title = t("app.titleAdmin");
     else if (path.includes("/setup")) document.title = t("app.titleSetup");
-    else if (inviteToken) document.title = `${config.firstName || "Invitación"} & ${config.secondName || ""} — Wedingo`;
+    else if (inviteToken) document.title = `${config.firstName || t("app.titleInvitation")} & ${config.secondName || ""} — Wedingo`;
   }, [location.pathname, inviteToken, config.firstName, config.secondName, t]);
 
   useEffect(() => {
@@ -113,16 +113,18 @@ function AppShell() {
         {t("common.skipToContent")}
       </a>
 
-      <div style={{
-        position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 99999,
-        background: "#e06060", color: "#fff", textAlign: "center",
-        padding: "0.5rem", fontSize: "0.85rem", fontWeight: 600,
-        transition: "transform 0.3s ease, opacity 0.3s ease",
-        transform: isOnline ? "translateY(100%)" : "translateY(0)",
-        opacity: isOnline ? 0 : 1,
-      }}>
-        Sin conexión — los cambios podrían no guardarse
-      </div>
+      {!isOnline ? (
+        <div style={{
+          position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 99999,
+          background: "#e06060", color: "#fff", textAlign: "center",
+          padding: "0.5rem", fontSize: "0.85rem", fontWeight: 600,
+          transition: "transform 0.3s ease, opacity 0.3s ease",
+          transform: "translateY(0)",
+          opacity: 1,
+        }}>
+          {t("common.offline")}
+        </div>
+      ) : null}
 
       {isAdminTokenLoggedIn && inviteToken && !location.pathname.endsWith("/setup") && !location.pathname.endsWith("/print") ? (
         <nav className="admin-bar" aria-label={t("common.adminBar.ariaLabel")}>
@@ -154,7 +156,7 @@ function AppShell() {
               <button type="button" className="app-nav-overlay__link" onClick={() => { setLegalSection("privacy"); setNavOpen(false); }}>{t("public.privacyPolicy")}</button>
               <button type="button" className="app-nav-overlay__link" onClick={() => { setLegalSection("terms"); setNavOpen(false); }}>{t("public.terms")}</button>
               <button type="button" className="app-nav-overlay__link" onClick={() => { setLegalSection("legal"); setNavOpen(false); }}>{t("public.legalNotice")}</button>
-              <button type="button" className="app-nav-overlay__link app-nav-overlay__link--version" onClick={() => { setShowChangelog(true); setNavOpen(false); }}>v{APP_VERSION}</button>
+              <button type="button" className="app-nav-overlay__link app-nav-overlay__link--version" onClick={() => { setShowChangelog(true); setNavOpen(false); }}>{t("common.version", { version: APP_VERSION })}</button>
             </div>
           </div>
 
@@ -170,7 +172,7 @@ function AppShell() {
               <span className="app-footer__sep">·</span>
               <button type="button" onClick={() => setLegalSection("legal")} className="app-footer__link">{t("public.legalNotice")}</button>
               <span className="app-footer__sep">·</span>
-              <button type="button" onClick={() => setShowChangelog(true)} className="app-footer__link" style={{ opacity: 0.4 }}>v{APP_VERSION}</button>
+              <button type="button" onClick={() => setShowChangelog(true)} className="app-footer__link" style={{ opacity: 0.4 }}>{t("common.version", { version: APP_VERSION })}</button>
             </div>
           </footer>
         </>

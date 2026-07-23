@@ -17,6 +17,7 @@
     "toast": {
       "close": "Cerrar"
     },
+    "offline": "Sin conexión — los cambios podrían no guardarse",
     "skipToContent": "Saltar al contenido principal",
     "adminBar": {
       "ariaLabel": "Barra de administración",
@@ -29,7 +30,8 @@
     "visible": "Visible",
     "hidden": "Oculta",
     "delete": "Eliminar",
-    "copied": "¡Copiado!"
+    "copied": "¡Copiado!",
+    "version": "v{{version}}"
   },
   "landing": {
     "title": "Wedingo — Invitaciones de boda",
@@ -434,6 +436,9 @@
     "notAttendingValue": "No",
     "noResultsFilter": "No se encontraron resultados con ese filtro.",
     "noResults": "Todavía no hay respuestas de asistencia.",
+    "menuMeat": "Carne",
+    "menuFish": "Pescado",
+    "menuVegan": "Vegano",
     "exportPdf": "Exportar PDF",
     "clearAttendance": "Vaciar asistencia"
   },
@@ -693,7 +698,9 @@
     "emailLabel": "Email",
     "passwordLabel": "Password",
     "revokeConfirm": "¿Revocar este token?",
-    "cleanupConfirm": "¿Eliminar todos los tokens expirados?"
+    "cleanupConfirm": "¿Eliminar todos los tokens expirados?",
+    "firebaseLabel": "Firebase",
+    "rsvpsLabel": "RSVPs"
   },
   "compliance": {
     "title": "Registro de actividades de tratamiento (Art. 30 GDPR)",
@@ -818,7 +825,8 @@
     "whereToStay": "Dónde alojarse",
     "accommodationFallback": "La información sobre alojamiento se compartirá próximamente.",
     "footer": "Wedingo · Política de privacidad en wedingo-6c26a.web.app",
-    "closeWindow": "Cerrar ventana"
+    "closeWindow": "Cerrar ventana",
+    "timeSuffix": "h"
   },
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
@@ -841,7 +849,9 @@
     "hour_one": "{{count}} hora",
     "hour_other": "{{count}} horas",
     "minute_one": "{{count}} minuto",
-    "minute_other": "{{count}} minutos"
+    "minute_other": "{{count}} minutos",
+    "hours": "{{count}}h",
+    "minutes": "{{count}}min"
   },
   "chart": {
     "noData": "Sin datos",
@@ -984,7 +994,8 @@
   "app": {
     "titleLanding": "Wedingo — Invitaciones de boda",
     "titleAdmin": "Panel de control — Wedingo",
-    "titleSetup": "Configurar invitación — Wedingo"
+    "titleSetup": "Configurar invitación — Wedingo",
+    "titleInvitation": "Invitación"
   },
   "lang": {
     "triggerLabel": "Cambiar idioma"

@@ -26,7 +26,7 @@ const ChangelogModal = memo(function ChangelogModal({ onClose }: any) {
           {CHANGELOG.map((entry) => (
             <div key={entry.version} style={{ marginBottom: "1rem", paddingBottom: "1rem", borderBottom: "1px solid var(--setup-border)" }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "0.3rem" }}>
-                <span style={{ fontWeight: 700, fontSize: "0.95rem", color: "var(--setup-title)" }}>v{entry.version}</span>
+                <span style={{ fontWeight: 700, fontSize: "0.95rem", color: "var(--setup-title)" }}>{t("common.version", { version: entry.version })}</span>
                 <span style={{ fontSize: "0.75rem", color: "var(--setup-muted)" }}>{entry.date}</span>
               </div>
               <ul style={{ margin: 0, paddingLeft: "1.2rem", fontSize: "0.85rem", color: "var(--setup-subtitle)", lineHeight: 1.6 }}>

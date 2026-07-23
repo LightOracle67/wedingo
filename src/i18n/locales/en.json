@@ -19,6 +19,7 @@
     "toast": {
       "close": "Close"
     },
+    "offline": "No connection — changes may not be saved",
     "skipToContent": "Skip to main content",
     "adminBar": {
       "ariaLabel": "Administration bar",
@@ -29,7 +30,8 @@
     "hide": "Hide",
     "section": "Section",
     "visible": "Visible",
-    "hidden": "Hidden"
+    "hidden": "Hidden",
+    "version": "v{{version}}"
   },
   "landing": {
     "title": "Wedingo — Wedding invitations",
@@ -434,6 +436,9 @@
     "notAttendingValue": "No",
     "noResultsFilter": "No results found with this filter.",
     "noResults": "No attendance responses yet.",
+    "menuMeat": "Meat",
+    "menuFish": "Fish",
+    "menuVegan": "Vegan",
     "exportPdf": "Export PDF",
     "clearAttendance": "Clear attendance"
   },
@@ -692,7 +697,9 @@
     "emailLabel": "Email",
     "passwordLabel": "Password",
     "revokeConfirm": "Revoke this token?",
-    "cleanupConfirm": "Delete all expired tokens?"
+    "cleanupConfirm": "Delete all expired tokens?",
+    "firebaseLabel": "Firebase",
+    "rsvpsLabel": "RSVPs"
   },
   "compliance": {
     "title": "Record of processing activities (Art. 30 GDPR)",
@@ -817,7 +824,8 @@
     "whereToStay": "Where to stay",
     "accommodationFallback": "Accommodation information will be shared soon.",
     "footer": "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-    "closeWindow": "Close window"
+    "closeWindow": "Close window",
+    "timeSuffix": ""
   },
   "sectionOrder": {
     "moveUp": "Move up",
@@ -840,7 +848,9 @@
     "hour_one": "{{count}} hour",
     "hour_other": "{{count}} hours",
     "minute_one": "{{count}} minute",
-    "minute_other": "{{count}} minutes"
+    "minute_other": "{{count}} minutes",
+    "hours": "{{count}}h",
+    "minutes": "{{count}}min"
   },
   "chart": {
     "noData": "No data",
@@ -983,7 +993,8 @@
   "app": {
     "titleLanding": "Wedingo — Wedding Invitations",
     "titleAdmin": "Control Panel — Wedingo",
-    "titleSetup": "Configure invitation — Wedingo"
+    "titleSetup": "Configure invitation — Wedingo",
+    "titleInvitation": "Invitation"
   },
   "lang": {
     "triggerLabel": "Change language"

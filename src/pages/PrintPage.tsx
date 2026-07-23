@@ -71,7 +71,7 @@ export default function PrintPage() {
           <p className="print-message">{message}</p>
           <div className="print-divider" />
           <p className="print-body">{formattedDate}</p>
-          {timeStr ? <p className="print-body" style={{ marginTop: "0.15rem" }}>{timeStr}h</p> : null}
+          {timeStr ? <p className="print-body" style={{ marginTop: "0.15rem" }}>{timeStr}{t("print.timeSuffix")}</p> : null}
           {place ? <p className="print-body" style={{ marginTop: "0.15rem" }}>{place}</p> : null}
         </div>
       </div>

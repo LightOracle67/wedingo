@@ -10,8 +10,12 @@ export function useCalendar(config) {
     const month = config.weddingMonth.trim();
     const year = config.weddingYear.trim();
     if (!day || !month || !year) return "";
-    const monthLabel = month.charAt(0).toUpperCase() + month.slice(1);
-    return `${day} de ${monthLabel} de ${year}`;
+    const monthIndex = MONTH_VALUE_TO_NUMBER[month];
+    if (!monthIndex) return `${day} de ${month.charAt(0).toUpperCase() + month.slice(1)} de ${year}`;
+    const weddingDate = new Date(Number(year), monthIndex - 1, Number(day));
+    return weddingDate.toLocaleDateString(navigator.language || "es", {
+      year: "numeric", month: "long", day: "numeric"
+    });
   }, [config.weddingDay, config.weddingMonth, config.weddingYear]);
 
   const formattedTime = useMemo(() => {

@@ -3,10 +3,10 @@ import { Trans, useTranslation } from "react-i18next";
 import { useApp } from "../../contexts/AppContext";
 
 const DIETARY_OPTIONS = [
-  { value: "sin gluten", label: "Gluten" },
-  { value: "sin lactosa", label: "Lactosa" },
-  { value: "alergia frutos secos", label: "F. Secos" },
-  { value: "alergia mariscos", label: "Mariscos" },
+  { value: "sin gluten", key: "dietary.gluten" },
+  { value: "sin lactosa", key: "dietary.lactose" },
+  { value: "alergia frutos secos", key: "dietary.nuts" },
+  { value: "alergia mariscos", key: "dietary.shellfish" },
 ];
 
 const MENU_KEYS = ["carne", "pescado", "vegano"] as const;
@@ -153,7 +153,7 @@ const RsvpSection = memo(function RsvpSection({
                         <label key={opt.value} style={{ display: "flex", alignItems: "center", gap: "0.25rem", fontSize: "0.78rem", color: "var(--setup-title)", cursor: isAlreadySubmitted ? "default" : "pointer" }}>
                           <input type="checkbox" checked={att.allergies?.includes(opt.value) || false} onChange={() => toggleAllergy(i, opt.value)} disabled={isAlreadySubmitted}
                             style={{ accentColor: "var(--setup-accent)", width: "0.85rem", height: "0.85rem", flexShrink: 0 }} />
-                          {opt.label}
+                          {t(opt.key)}
                         </label>
                       ))}
                     </div>

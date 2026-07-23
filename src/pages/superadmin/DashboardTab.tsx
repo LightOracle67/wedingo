@@ -125,9 +125,9 @@ const DashboardTab = memo(function DashboardTab() {
         <div className="setup-background-panel">
           <p className="setup-label">{t("superadmin.platformInfo")}</p>
           <div style={{ marginTop: "0.3rem", fontSize: "0.8rem", color: "var(--setup-muted)", lineHeight: 1.8 }}>
-            <p style={{ margin: 0 }}>Firebase: {import.meta.env.VITE_FIREBASE_PROJECT_ID || "—"}</p>
+            <p style={{ margin: 0 }}>{t("superadmin.firebaseLabel")}: {import.meta.env.VITE_FIREBASE_PROJECT_ID || "—"}</p>
             <p style={{ margin: 0 }}>{t("superadmin.statsInvitations")}: {stats.invitationCount}</p>
-            <p style={{ margin: 0 }}>RSVPs: {stats.rsvpTotal}</p>
+            <p style={{ margin: 0 }}>{t("superadmin.rsvpsLabel")}: {stats.rsvpTotal}</p>
           </div>
         </div>
       </div>

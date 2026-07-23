@@ -54,7 +54,7 @@ const SupportTab = memo(function SupportTab() {
             {t("support.copyright", { year: new Date().getFullYear() })}
           </p>
           <button type="button" onClick={() => setShowChangelog(true)} style={{ fontSize: "0.7rem", color: "var(--setup-accent)", marginTop: "0.2rem", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", padding: 0, textDecoration: "underline" }}>
-            v{APP_VERSION}
+            {t("common.version", { version: APP_VERSION })}
           </button>
           {showChangelog ? <ChangelogModal onClose={() => setShowChangelog(false)} /> : null}
         </div>
