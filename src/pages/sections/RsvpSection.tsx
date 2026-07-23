@@ -2,6 +2,26 @@ import { memo, useCallback, useMemo } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { useApp } from "../../contexts/AppContext";
 
+interface RsvpSectionProps {
+  style?: React.CSSProperties;
+  className?: string;
+  rsvpForm: any;
+  rsvpMessage?: string;
+  isRsvpSubmitting?: boolean;
+  hasSubmitted?: boolean;
+  alreadySubmittedEntry?: any;
+  updateRsvpField: (field: string, value: any) => void;
+  handleRsvpSubmit: (e: React.FormEvent) => void;
+  handleDeleteRsvp: () => void;
+  menuEnabled?: boolean;
+  menuCarne?: string;
+  menuPescado?: string;
+  menuVegano?: string;
+  menuPostre?: string;
+  menuTexto?: string;
+  computeAge: (birthDate: string) => number | null;
+}
+
 const DIETARY_OPTIONS = [
   { value: "sin gluten", key: "dietary.gluten" },
   { value: "sin lactosa", key: "dietary.lactose" },
@@ -13,17 +33,17 @@ const RsvpSection = memo(function RsvpSection({
   style, className,
   rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
   updateRsvpField, handleRsvpSubmit, handleDeleteRsvp, menuEnabled, menuCarne, menuPescado, menuVegano, menuPostre, menuTexto, computeAge,
-}: any) {
+}: RsvpSectionProps) {
   const { t } = useTranslation();
   const { setLegalModal } = useApp();
 
   const isAlreadySubmitted = !!alreadySubmittedEntry;
   const isDisabled = isRsvpSubmitting || hasSubmitted || isAlreadySubmitted;
-  const attendees: any[] = rsvpForm.attendees || [];
+  const attendees: { name: string; menu: string; allergies: string[] }[] = rsvpForm.attendees || [];
 
   const age = useMemo(() => computeAge(rsvpForm.birthDate), [rsvpForm.birthDate, computeAge]);
   const isUnder14 = age !== null && age < 14;
-  const hasDietaryData = attendees.some((a: any) => a.allergies?.length > 0);
+  const hasDietaryData = attendees.some((a: { name: string; menu: string; allergies: string[] }) => a.allergies?.length > 0);
   const showHealthConsent = rsvpForm.attendance === "yes" && hasDietaryData;
 
   const hasStructuredMenu = menuEnabled && (menuCarne || menuPescado || menuVegano);
@@ -34,27 +54,27 @@ const RsvpSection = memo(function RsvpSection({
     ...(menuVegano ? [{ key: "vegano" as const, label: t("rsvp.menuVegano"), desc: menuVegano }] : []),
   ];
 
-  const handleNameChange = useCallback((e: any) => {
+  const handleNameChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     updateRsvpField("guestName", e.target.value.slice(0, 120));
   }, [updateRsvpField]);
 
-  const handleAttendanceChange = useCallback((e: any) => {
+  const handleAttendanceChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     updateRsvpField("attendance", e.target.value);
   }, [updateRsvpField]);
 
-  const handleBirthDateChange = useCallback((e: any) => {
+  const handleBirthDateChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     updateRsvpField("birthDate", e.target.value);
   }, [updateRsvpField]);
 
-  const handleParentalConsentChange = useCallback((e: any) => {
+  const handleParentalConsentChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     updateRsvpField("parentalConsent", e.target.checked);
   }, [updateRsvpField]);
 
-  const handlePrivacyConsentChange = useCallback((e: any) => {
+  const handlePrivacyConsentChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     updateRsvpField("privacyConsent", e.target.checked);
   }, [updateRsvpField]);
 
-  const handleHealthConsentChange = useCallback((e: any) => {
+  const handleHealthConsentChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     updateRsvpField("healthConsent", e.target.checked);
   }, [updateRsvpField]);
 
@@ -67,12 +87,12 @@ const RsvpSection = memo(function RsvpSection({
   }, [attendees, updateRsvpField]);
 
   const removeAttendee = useCallback((idx: number) => {
-    const next = attendees.filter((_: any, i: number) => i !== idx);
+    const next = attendees.filter((_, i: number) => i !== idx);
     updateRsvpField("attendees", next);
   }, [attendees, updateRsvpField]);
 
-  const updateAttendee = useCallback((idx: number, field: string, value: any) => {
-    const next = attendees.map((a: any, i: number) => i === idx ? { ...a, [field]: value } : a);
+  const updateAttendee = useCallback((idx: number, field: string, value: string | string[]) => {
+    const next = attendees.map((a, i: number) => i === idx ? { ...a, [field]: value } : a);
     updateRsvpField("attendees", next);
   }, [attendees, updateRsvpField]);
 
@@ -80,7 +100,7 @@ const RsvpSection = memo(function RsvpSection({
     const a = attendees[idx];
     if (!a) return;
     const exists = a.allergies?.includes(value);
-    const next = attendees.map((att: any, i: number) =>
+    const next = attendees.map((att, i: number) =>
       i === idx ? { ...att, allergies: exists ? att.allergies.filter((v: string) => v !== value) : [...(att.allergies || []), value] } : att
     );
     updateRsvpField("attendees", next);
@@ -122,7 +142,7 @@ const RsvpSection = memo(function RsvpSection({
           {rsvpForm.attendance === "yes" && (
             <div style={{ marginTop: "0.75rem" }}>
               <p className="setup-label">{t("rsvp.attendeesLabel")}</p>
-              {attendees.map((att: any, i: number) => (
+              {attendees.map((att, i: number) => (
                 <div key={i} style={{
                   border: "1px solid color-mix(in srgb, var(--setup-border) 50%, transparent)",
                   borderRadius: "0.6rem", padding: "0.6rem", marginBottom: "0.5rem",

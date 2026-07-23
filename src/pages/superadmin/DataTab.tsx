@@ -5,6 +5,17 @@ import { db, INVITATIONS_COLLECTION_REF, RSVP_COLLECTION_REF, rsvpByInviteRef } 
 import { useToast } from "../../hooks/useToast";
 import { downloadJson } from "../../lib/file-utils";
 
+interface InvitationData {
+  id: string;
+  firstName: string;
+  secondName: string;
+  adminUsername: string;
+  rsvpCount: number;
+  tokenCount: number;
+  weddingDate: string;
+  hasSession: boolean;
+}
+
 /**
  * Pestaña de gestión de datos para el superadmin.
  * Permite exportar y eliminar datos de invitaciones de forma individual,
@@ -17,9 +28,9 @@ export default function DataTab() {
   const { addToast } = useToast();
 
   /** Lista completa de invitaciones con metadatos. */
-  const [invitations, setInvitations] = useState<any[]>([]);
+  const [invitations, setInvitations] = useState<InvitationData[]>([]);
   /** IDs de invitaciones seleccionadas para operaciones masivas. */
-  const [selected, setSelected] = useState<any>(new Set());
+  const [selected, setSelected] = useState<Set<string>>(new Set<string>());
   /** Texto de confirmación para eliminaciones destructivas. */
   const [confirmText, setConfirmText] = useState("");
   /** ¿Está cargando datos? */
@@ -76,14 +87,14 @@ export default function DataTab() {
 
   /** IDs de invitaciones que no tienen datos (sin nombres configurados). */
   const emptyIds = useMemo(
-    () => new Set(invitations.filter((i) => !i.firstName && !i.secondName && !i.rsvpCount).map((i: any) => i.id)),
+    () => new Set<string>(invitations.filter((i) => !i.firstName && !i.secondName && !i.rsvpCount).map((i: InvitationData) => i.id)),
     [invitations],
   );
 
   // ── Selección ─────────────────────────────────────────
 
-  const toggleSelect = useCallback((id: any) => {
-    setSelected((prev: any) => {
+  const toggleSelect = useCallback((id: string) => {
+    setSelected((prev: Set<string>) => {
       const next = new Set(prev);
       if (next.has(id)) next.delete(id); else next.add(id);
       return next;
@@ -91,11 +102,11 @@ export default function DataTab() {
   }, []);
 
   const selectAll = useCallback(() => {
-    setSelected(new Set(invitations.map((i: any) => i.id)));
+    setSelected(new Set<string>(invitations.map((i: InvitationData) => i.id)));
   }, [invitations]);
 
   const deselectAll = useCallback(() => {
-    setSelected(new Set());
+    setSelected(new Set<string>());
   }, []);
 
   // ── Export ────────────────────────────────────────────
@@ -105,7 +116,7 @@ export default function DataTab() {
    *
    * @param {string} token - Token/ID de la invitación.
    */
-  const exportOne = useCallback(async (token: any) => {
+  const exportOne = useCallback(async (token: string) => {
     setBusy(true);
     try {
       const [invDoc, rsvpSnap] = await Promise.all([
@@ -184,7 +195,7 @@ export default function DataTab() {
    *
    * @param {string} token - Token/ID de la invitación.
    */
-  const deleteOne = useCallback(async (token: any) => {
+  const deleteOne = useCallback(async (token: string) => {
     if (confirmText !== CONFIRM_WORD) {
       addToast("error", t("superadmin.data.confirmRequired", { word: CONFIRM_WORD }));
       return;
@@ -192,8 +203,8 @@ export default function DataTab() {
     setBusy(true);
     try {
       await cascadeDelete(token);
-      setInvitations((prev: any) => prev.filter((i: any) => i.id !== token));
-      setSelected((prev: any) => { const n = new Set(prev); n.delete(token); return n; });
+      setInvitations((prev: InvitationData[]) => prev.filter((i: InvitationData) => i.id !== token));
+      setSelected((prev: Set<string>) => { const n = new Set(prev); n.delete(token); return n; });
       setConfirmText("");
       addToast("success", t("superadmin.data.deletedOne", { token }));
     } catch {
@@ -244,7 +255,7 @@ export default function DataTab() {
         deleted++;
       }
       setInvitations([]);
-      setSelected(new Set());
+      setSelected(new Set<string>());
       setConfirmText("");
       addToast("success", t("superadmin.data.deletedAll", { count: deleted }));
     } catch {
@@ -420,7 +431,7 @@ export default function DataTab() {
  *
  * @param {string} token - Token/ID de la invitación.
  */
-async function cascadeDelete(token: any) {
+async function cascadeDelete(token: string) {
   const BATCH_SIZE = 500;
   const refsToDelete = [];
 
