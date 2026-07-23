@@ -40,7 +40,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
     guestName: "",
     attendance: "yes",
     attendees: [{ name: "", menu: "", allergies: [] }],
-    dietaryOther: "",
+
     privacyConsent: false,
     healthConsent: false,
     birthDate: "",
@@ -217,9 +217,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
       }
 
       if (rsvpForm.attendance === "yes") {
-        const hasHealthData =
-          rsvpForm.attendees.some((a) => a.allergies && a.allergies.length > 0) ||
-          rsvpForm.dietaryOther.trim();
+        const hasHealthData = rsvpForm.attendees.some((a) => a.allergies && a.allergies.length > 0);
         if (hasHealthData && !rsvpForm.healthConsent) {
           setRsvpMessage(t("rsvp.validation.healthConsentRequired"));
           return;
@@ -227,10 +225,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
       }
 
       const allAllergies = rsvpForm.attendees.flatMap((a) => a.allergies || []);
-      const other = rsvpForm.dietaryOther?.trim();
-      const dietaryParts = [...allAllergies];
-      if (other) dietaryParts.push(other);
-      const dietaryInfo = dietaryParts.filter(Boolean).join(" | ");
+      const dietaryInfo = allAllergies.filter(Boolean).join(" | ");
 
       setIsRsvpSubmitting(true);
       const now = new Date().toISOString();
@@ -294,13 +289,13 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
       await deleteDoc(doc(RSVP_COLLECTION_REF, alreadySubmittedEntry.id));
       setRsvpEntries((current) => current.filter((e) => e.id !== alreadySubmittedEntry.id));
       setRsvpMessage(t("rsvp.withdrawSuccess"));
-      setRsvpForm({
-        guestName: "", attendance: "yes", attendees: [{ name: "", menu: "", allergies: [] }], dietaryOther: "",
-        privacyConsent: false, healthConsent: false,
-        birthDate: "", parentalConsent: false,
-      });
-      setAlreadySubmittedEntry(null);
-      prefillRef.current = null;
+        setRsvpForm({
+          guestName: "", attendance: "yes", attendees: [{ name: "", menu: "", allergies: [] }],
+          privacyConsent: false, healthConsent: false,
+          birthDate: "", parentalConsent: false,
+        });
+        setAlreadySubmittedEntry(null);
+        prefillRef.current = null;
       setHasSubmitted(false);
     } catch {
       setRsvpMessage(t("rsvp.withdrawError"));

@@ -25,7 +25,7 @@ const RsvpSection = memo(function RsvpSection({
 
   const age = useMemo(() => computeAge(rsvpForm.birthDate), [rsvpForm.birthDate, computeAge]);
   const isUnder14 = age !== null && age < 14;
-  const hasDietaryData = attendees.some((a: any) => a.allergies?.length > 0) || rsvpForm.dietaryOther?.trim() !== "";
+  const hasDietaryData = attendees.some((a: any) => a.allergies?.length > 0);
   const showHealthConsent = rsvpForm.attendance === "yes" && hasDietaryData;
 
   const hasStructuredMenu = menuEnabled && (menuCarne || menuPescado || menuVegano);
@@ -58,10 +58,6 @@ const RsvpSection = memo(function RsvpSection({
 
   const handleHealthConsentChange = useCallback((e: any) => {
     updateRsvpField("healthConsent", e.target.checked);
-  }, [updateRsvpField]);
-
-  const handleDietaryOtherChange = useCallback((e: any) => {
-    updateRsvpField("dietaryOther", e.target.value.slice(0, 200));
   }, [updateRsvpField]);
 
   const handleLegalClick = useCallback(() => {
@@ -179,10 +175,7 @@ const RsvpSection = memo(function RsvpSection({
           )}
 
           {rsvpForm.attendance === "yes" && !menuEnabled ? (
-            <fieldset style={{ border: "none", padding: 0, margin: "0.5rem 0 0", minInlineSize: 0 }}>
-              <legend className="setup-label" style={{ marginBottom: "0.4rem" }}>{t("rsvp.allergiesLegend")}</legend>
-              <input className="setup-input" value={rsvpForm.dietaryOther} onChange={handleDietaryOtherChange} placeholder={t("rsvp.allergiesPlaceholder")} autoComplete="off" disabled={isAlreadySubmitted} maxLength={200} />
-            </fieldset>
+            <p className="setup-help" style={{ fontSize: "0.8rem", marginTop: "0.5rem" }}>{t("rsvp.allergiesHint")}</p>
           ) : null}
 
           {rsvpForm.attendance === "yes" && menuEnabled && !hasStructuredMenu && menuTexto?.trim() ? (
