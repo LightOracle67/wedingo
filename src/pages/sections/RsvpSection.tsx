@@ -9,8 +9,6 @@ const DIETARY_OPTIONS = [
   { value: "alergia mariscos", key: "dietary.shellfish" },
 ];
 
-const MENU_KEYS = ["carne", "pescado", "vegano"] as const;
-
 const RsvpSection = memo(function RsvpSection({
   style, className,
   rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,

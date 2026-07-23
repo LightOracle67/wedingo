@@ -176,12 +176,10 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}>
               <button className="setup-button setup-button--ghost setup-button--compact" type="button"
-                disabled={safePage === 0} onClick={() => setPage(safePage - 1)}
-                style={{ fontSize: "0.75rem", padding: "0.2rem 0.5rem" }}>←</button>
+                disabled={safePage === 0} onClick={() => setPage(safePage - 1)}>←</button>
               <span className="setup-help" style={{ fontSize: "0.75rem" }}>{t("attendance.page", { current: safePage + 1, total: totalPages })}</span>
               <button className="setup-button setup-button--ghost setup-button--compact" type="button"
-                disabled={safePage >= totalPages - 1} onClick={() => setPage(safePage + 1)}
-                style={{ fontSize: "0.75rem", padding: "0.2rem 0.5rem" }}>→</button>
+                disabled={safePage >= totalPages - 1} onClick={() => setPage(safePage + 1)}>→</button>
             </div>
           </div>
         </div>

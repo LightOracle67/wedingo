@@ -26,4 +26,14 @@ describe("normalizeConfig extra", () => {
     const result = normalizeConfig({ theme: "forest" });
     expect(result.theme).toBe("forest");
   });
+
+  it("handles numbers in string fields", () => {
+    const result = normalizeConfig({ firstName: 123 as any });
+    expect(result.firstName).toBe("123");
+  });
+
+  it("handles arrays gracefully", () => {
+    const result = normalizeConfig({ theme: ["golden"] as any });
+    expect(result.theme).toBe("golden");
+  });
 });
