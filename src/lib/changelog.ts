@@ -1,5 +1,25 @@
 export const CHANGELOG = [
   {
+    version: "2.26.0",
+    date: "2026-07-22",
+    changes: [
+      "AUDITORÍA MASIVA: ~250 puntos analizados, ~120 implementados en 20+ lotes",
+      "PWA: Service Worker con cache-first, offline fallback offline.html, manifest.json",
+      "SEGURIDAD: IBAN checksum validation, rate limiting login, timeout subidas (30s/60s), retry con backoff",
+      "SEO: robots.txt, schema.org JSON-LD, preconnect/preload fonts",
+      "ACCESIBILIDAD: focus-visible global, skip-link, aria-live search, aria-describedby, role=tablist, touch-action, safe-area-insets",
+      "I18N: RTL completo (dir dinámico + overrides gallery/music/envelope), SoundCloud keys eliminadas, traducciones error codes",
+      "RENDIMIENTO: WebP conversion, will-change GPU, lazy loading thumbnails, scroll-margin-top, scroll-behavior smooth",
+      "CALIDAD: TypeScript types (GalleryImage, SlotState, InvitationConfig, etc), JSDoc componentes, GalleryManager eliminado, CSS variables centralizadas, z-index migrado, clases muertas eliminadas",
+      "TESTS: 7 nuevos test files, +17 tests (iban, retry, idb, error-utils, confirm, async-utils, normalize-config)",
+      "INFRAESTRUCTURA: CI/CD workflow GitHub Actions, ARCHITECTURE.md, scripts/check-translations.js",
+      "ALMACENAMIENTO: IndexedDB utils, storage quota management, clearExpiredCache, font-display swap",
+      "COMPONENTES: AdminTabs, AdminTabContent, LoadingOverlay, rsvp-validation, confirm-utils",
+      "FIREBASE: Gallery/audio rules validan tamaño data, error codes diferenciados",
+      "OFFLINE: Banner conectividad con transición, service worker registro automático",
+    ],
+  },
+  {
     version: "2.25.0",
     date: "2026-07-22",
     changes: [
