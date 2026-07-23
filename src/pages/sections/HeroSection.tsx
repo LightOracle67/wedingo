@@ -25,7 +25,7 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
         <div className="relative z-20">
           <div className="story-eyebrow">{t("hero.eyebrow")}</div>
           {couplePhoto ? (
-            <div className="mx-auto" style={{ position: "relative", width: "min(92vw, 700px)", aspectRatio: "4 / 3", maxHeight: "75vh", borderRadius: "1.5rem", overflow: "hidden", border: "3px solid color-mix(in srgb, var(--invite-shell-border) 80%, transparent)" }}>
+            <div className="mx-auto" style={{ position: "relative", height: "90%", aspectRatio: "4/3", overflow: "hidden", overflowY: "hidden" }}>
               <div style={{ position: "absolute", inset: 0, opacity: photoLoaded ? 1 : 0, transition: "opacity 0.3s ease" }}>
                 <img src={couplePhoto} alt={t("hero.couplePhotoAlt")} onLoad={() => setPhotoLoaded(true)} onError={() => setPhotoLoaded(true)} className="w-full h-full object-cover" />
               </div>
