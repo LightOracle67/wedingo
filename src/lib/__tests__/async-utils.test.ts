@@ -16,4 +16,9 @@ describe("withTimeout", () => {
     const slow = new Promise((resolve) => setTimeout(resolve, 500));
     await expect(withTimeout(slow, 50, "Custom error")).rejects.toThrow("Custom error");
   });
+
+  it("resolves immediately for already resolved promises", async () => {
+    const result = await withTimeout(Promise.resolve("instant"), 10000);
+    expect(result).toBe("instant");
+  });
 });

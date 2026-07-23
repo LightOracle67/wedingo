@@ -15,10 +15,10 @@ export default function CoverSectionForm({ prefix = "" }) {
   const { t } = useTranslation();
   const { addToast, startUploadToast } = useToast();
 
-  const photoRef = useRef<any>(null);
-  const id = (name: any) => `${prefix}${name}`;
+  const photoRef = useRef<HTMLInputElement>(null);
+  const id = (name: string) => `${prefix}${name}`;
 
-  const handleCouplePhotoUpload = useCallback(async (e: any) => {
+  const handleCouplePhotoUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     const input = e.target;
     if (!file) return;
@@ -27,7 +27,7 @@ export default function CoverSectionForm({ prefix = "" }) {
     if (file.size > MAX_UPLOAD_SIZE_BYTES) { addToast("error", t("setup.errorFileSize")); return; }
     const upload = startUploadToast(t("setup.photoUploading"));
     try {
-      const { dataUrl } = await uploadImage(inviteToken, file, (p: any) => upload.update(p));
+      const { dataUrl } = await uploadImage(inviteToken, file, (p: number) => upload.update(p));
       upload.update(90);
       updateFormField("couplePhoto", dataUrl);
       upload.complete(t("setup.photoUploaded"));
@@ -37,15 +37,15 @@ export default function CoverSectionForm({ prefix = "" }) {
     if (input) input.value = "";
   }, [inviteToken, updateFormField, startUploadToast, addToast, t]);
 
-  const handleFirstNameChange = useCallback((e: any) => {
+  const handleFirstNameChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     updateFormField("firstName", e.target.value.slice(0, 20));
   }, [updateFormField]);
 
-  const handleSecondNameChange = useCallback((e: any) => {
+  const handleSecondNameChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     updateFormField("secondName", e.target.value.slice(0, 20));
   }, [updateFormField]);
 
-  const handleThemeChange = useCallback((val: any) => {
+  const handleThemeChange = useCallback((val: string) => {
     updateFormField("theme", val);
   }, [updateFormField]);
 
@@ -151,7 +151,7 @@ export default function CoverSectionForm({ prefix = "" }) {
         ) : null}
       </div>
 
-      <MusicArrayEditor inviteToken={inviteToken} value={formData.musicFile || formData.musicUrl} onChange={(val: any) => updateFormField("musicFile", val)} t={t} />
+      <MusicArrayEditor inviteToken={inviteToken} value={formData.musicFile || formData.musicUrl} onChange={(val: string) => updateFormField("musicFile", val)} t={t} />
     </>
   );
 }

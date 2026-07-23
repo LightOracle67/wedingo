@@ -87,9 +87,11 @@
   height: 10px;
   opacity: 0;
   transition: opacity 300ms ease;
+  will-change: transform;
 }
 .music-player__fab-equalizer--visible {
   opacity: 1;
+  will-change: transform;
 }
 .music-player__fab-equalizer span {
   display: block;

@@ -11,7 +11,7 @@ export default function DateSectionForm({ prefix = "" }) {
   } = useApp();
   const { t } = useTranslation();
 
-  const id = (name: any) => `${prefix}${name}`;
+  const id = (name: string) => `${prefix}${name}`;
 
   const handlePlaceChange = useCallback((e: any) => {
     const val = e.target.value.slice(0, 120);
@@ -117,7 +117,7 @@ export default function DateSectionForm({ prefix = "" }) {
           >
             <option value="" disabled>{t("setup.monthPlaceholder")}</option>
             {MONTH_OPTIONS.map((month) => (
-              <option key={month.value} value={month.value}>{t("monthNames." + ((MONTH_VALUE_TO_NUMBER as any)[month.value] || ""))}</option>
+              <option key={month.value} value={month.value}>{t("monthNames." + (MONTH_VALUE_TO_NUMBER[month.value] || ""))}</option>
             ))}
           </select>
         </div>
