@@ -86,6 +86,7 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
                 <th>{t("attendance.tableName")}</th>
                 <th>{t("attendance.tableAttendance")}</th>
                 <th>{t("attendance.tableCompanions")}</th>
+                <th>{t("attendance.tableMenu")}</th>
                 <th>{t("attendance.tableDiet")}</th>
                 <th>{t("attendance.tableNote")}</th>
                 <th>{t("attendance.tableDate")}</th>
@@ -101,6 +102,7 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
                     </span>
                   </td>
                   <td>{entry.attendance === "yes" ? entry.companions : "—"}</td>
+                  <td className="admin-table__menu">{entry.attendance === "yes" && entry.menuHeadcounts ? formatMenuHeadcounts(entry.menuHeadcounts) : "—"}</td>
                   <td className="admin-table__note">{entry.dietaryInfo || "—"}</td>
                   <td className="admin-table__note">{entry.note || "—"}</td>
                   <td className="admin-table__date">{formatDate(entry.submittedAt)}</td>
@@ -152,5 +154,13 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
     </>
   );
 });
+
+function formatMenuHeadcounts(mhc: Record<string, number>) {
+  const parts: string[] = [];
+  if (mhc.carne) parts.push(`Carne: ${mhc.carne}`);
+  if (mhc.pescado) parts.push(`Pescado: ${mhc.pescado}`);
+  if (mhc.vegano) parts.push(`Vegano: ${mhc.vegano}`);
+  return parts.length ? parts.join(" · ") : null;
+}
 
 export default AttendanceTab;

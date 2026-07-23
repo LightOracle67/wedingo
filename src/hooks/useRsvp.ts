@@ -96,6 +96,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
               companions: Number.isFinite(data.companions) ? data.companions : 0,
               dietaryInfo: typeof data.dietaryInfo === "string" ? await decrypt(data.dietaryInfo, inviteToken) : "",
               mealChoice: data.mealChoice || "",
+              menuHeadcounts: data.menuHeadcounts || {},
               note: data.note || "",
               submittedAt,
             };
