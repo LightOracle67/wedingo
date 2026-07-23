@@ -52,13 +52,13 @@ const DashboardTab = memo(function DashboardTab() {
     for (const invitation of expired) {
       try {
         const batch = writeBatch(db);
-        const rsvpQ = query(RSVP_COLLECTION_REF, where("inviteToken", "==", inv.id));
+        const rsvpQ = query(RSVP_COLLECTION_REF, where("inviteToken", "==", invitation.id));
         const rsvpSnap = await getDocs(rsvpQ);
         rsvpSnap.docs.forEach((d: any) => batch.delete(d.ref));
-        batch.delete(doc(INVITATIONS_COLLECTION_REF, inv.id));
+        batch.delete(doc(INVITATIONS_COLLECTION_REF, invitation.id));
         await batch.commit();
         try {
-          const prefix = `invitations/${inv.id}/`;
+          const prefix = `invitations/${invitation.id}/`;
           const list = await listAll(ref(storage, prefix));
           await Promise.allSettled(list.items.map((item) => deleteObject(item)));
         } catch {}

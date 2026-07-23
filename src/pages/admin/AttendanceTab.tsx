@@ -1,6 +1,5 @@
 import { memo, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { getDietarySummary } from "../../lib/admin-utils";
 import Pagination from "../../components/Pagination";
 
 interface RsvpEntry {
@@ -13,6 +12,18 @@ interface RsvpEntry {
   menuHeadcounts?: Record<string, number>;
   guestNames?: string;
   submittedAt: string;
+}
+
+interface AttendanceTabProps {
+  searchQuery: string;
+  setSearchQuery: (value: string) => void;
+  attendanceFilter: string;
+  setAttendanceFilter: (filter: string) => void;
+  filteredEntries: RsvpEntry[];
+  exportPdf: () => void;
+  rsvpEntries: RsvpEntry[];
+  handleClearRsvpEntries: () => void;
+  formatDate: (date: string) => string;
 }
 
 const PAGE_SIZES = [10, 25, 50, 100];
@@ -40,20 +51,18 @@ function getDietaryLines(dietaryInfo: string, companions: number): { item: strin
   return Object.entries(counts).map(([item, count]) => ({ item, count }));
 }
 
-const AttendanceTab = memo(function AttendanceTab(props: any) {
-  const config = props.config;
+const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
   const {
     searchQuery, setSearchQuery,
-    attendanceFilter, setAttendanceFilter,
+    attendanceFilter,
     filteredEntries, exportPdf,
-  } = config;
-  const { rsvpEntries, handleClearRsvpEntries, formatDate } = config;
+    rsvpEntries, handleClearRsvpEntries, formatDate,
+  } = props;
   const { t } = useTranslation();
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(25);
 
   const filterEntries = filteredEntries || [];
-  const dietary = useMemo(() => getDietarySummary(rsvpEntries), [rsvpEntries]);
 
   const totalPages = Math.max(1, Math.ceil(filterEntries.length / pageSize));
   const safePage = Math.min(page, totalPages - 1);

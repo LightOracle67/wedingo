@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { addDoc, serverTimestamp } from "firebase/firestore";
+import { addDoc } from "firebase/firestore";
 
 // Mock Firebase
 vi.mock("firebase/firestore", () => ({

@@ -5,6 +5,7 @@ import { RSVP_COLLECTION_REF, rsvpByInviteRef } from "../lib/firebase";
 import { encrypt, decrypt } from "../lib/crypto-utils";
 import { computeAge } from "../lib/date-utils";
 import { DIETARY_OPTIONS, parseDietaryInfo } from "../lib/rsvp-utils";
+import { useRsvpSubmit } from "./useRsvpSubmit";
 
 function legacyToAttendees(entry) {
   const parsed = parseDietaryInfo(entry.dietaryInfo || "", !!entry.mealChoice);
@@ -47,18 +48,9 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
     parentalConsent: false,
   });
   const [rsvpMessage, setRsvpMessage] = useState("");
-  const [isRsvpSubmitting, setIsRsvpSubmitting] = useState(false);
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [alreadySubmittedEntry, setAlreadySubmittedEntry] = useState(null);
-  const rsvpSubmitTimeoutRef = useRef(null);
   const prefillRef = useRef(null);
-
-  useEffect(() => {
-    const timeout = rsvpSubmitTimeoutRef.current;
-    return () => {
-      if (timeout) clearTimeout(timeout);
-    };
-  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -168,119 +160,89 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
     setRsvpForm((current) => ({ ...current, [field]: value }));
   }, []);
 
-  const handleRsvpSubmit = useCallback(
-    async (event) => {
-      event.preventDefault();
-      if (isRsvpSubmitting) return;
+  const validateRsvpData = useCallback((data) => {
+    if (!data.guestName?.trim()) return t("rsvp.validation.nameRequired");
+    if (data.attendance === "yes" && !data.birthDate) return t("rsvp.validation.birthDateRequired");
+    if (data.attendance === "yes") {
+      const invalidAttendee = data.attendees.find((a) => !a.name.trim());
+      if (invalidAttendee) return t("rsvp.validation.nameRequired");
+    }
+    if (data.attendance === "yes" && menuEnabled) {
+      const missingMenu = data.attendees.find((a) => !a.menu);
+      if (missingMenu) return t("rsvp.validation.menuHeadcountRequired");
+    }
+    if (!data.privacyConsent) return t("rsvp.validation.privacyRequired");
+    if (!data.birthDate) return t("rsvp.validation.birthDateRequired");
+    const age = computeAge(data.birthDate);
+    if (age !== null && age < 14 && !data.parentalConsent) return t("rsvp.validation.ageUnder14");
+    if (data.attendance === "yes") {
+      const hasHealthData = data.attendees.some((a) => a.allergies && a.allergies.length > 0);
+      if (hasHealthData && !data.healthConsent) return t("rsvp.validation.healthConsentRequired");
+    }
+    return null;
+  }, [t, menuEnabled]);
 
-      const single = rsvpForm.guestName.trim();
-      if (!single) {
-        setRsvpMessage(t("rsvp.validation.nameRequired"));
-        return;
-      }
+  const submitRsvpData = useCallback(async (data) => {
+    const allAllergies = data.attendees.flatMap((a) => a.allergies || []);
+    const dietaryInfo = allAllergies.filter(Boolean).join(" | ");
+    const encryptedDietaryInfo = await encrypt(dietaryInfo, inviteToken);
+    const age = computeAge(data.birthDate);
+    const single = data.guestName.trim();
+    const now = new Date().toISOString();
+    const payload = {
+      guestName: single,
+      attendance: data.attendance,
+      attendees: data.attendees.map((a) => ({
+        name: a.name,
+        menu: a.menu || "",
+        allergies: a.allergies || [],
+      })),
+      dietaryInfo: encryptedDietaryInfo,
+      inviteToken,
+      submittedAt: serverTimestamp(),
+      privacyConsent: true,
+      privacyConsentAt: serverTimestamp(),
+    };
+    if (data.birthDate) payload.birthDate = data.birthDate;
+    if (age !== null && age < 14) payload.parentalConsent = true;
+    if (data.healthConsent) {
+      payload.healthConsent = true;
+      payload.healthConsentAt = serverTimestamp();
+    }
+    const docRef = await addDoc(RSVP_COLLECTION_REF, payload);
+    setRsvpEntries((current) => [
+      { ...payload, id: docRef.id, submittedAt: now, dietaryInfo },
+      ...current,
+    ]);
+    setRsvpMessage(
+      data.attendance === "yes"
+        ? t("rsvp.successAttending", { name: single })
+        : t("rsvp.successNotAttending", { name: single }),
+    );
+    setRsvpForm({
+      guestName: "", attendance: "yes", attendees: [{ name: "", menu: "", allergies: [] }],
+      privacyConsent: false, healthConsent: false,
+      birthDate: "", parentalConsent: false,
+    });
+    setHasSubmitted(true);
+    setAlreadySubmittedEntry(null);
+    prefillRef.current = null;
+  }, [inviteToken, t]);
 
-      if (rsvpForm.attendance === "yes" && !rsvpForm.birthDate) {
-        setRsvpMessage(t("rsvp.validation.birthDateRequired"));
-        return;
-      }
+  const { submitting, submitError, handleSubmit: submitViaHook } = useRsvpSubmit({
+    token: inviteToken,
+    onSubmit: submitRsvpData,
+    validate: validateRsvpData,
+  });
 
-      if (rsvpForm.attendance === "yes") {
-        const invalidAttendee = rsvpForm.attendees.find((a) => !a.name.trim());
-        if (invalidAttendee) {
-          setRsvpMessage(t("rsvp.validation.nameRequired"));
-          return;
-        }
-      }
+  const isRsvpSubmitting = submitting;
+  const feedbackMessage = submitError || rsvpMessage;
 
-      if (rsvpForm.attendance === "yes" && menuEnabled) {
-        const missingMenu = rsvpForm.attendees.find((a) => !a.menu);
-        if (missingMenu) {
-          setRsvpMessage(t("rsvp.validation.menuHeadcountRequired"));
-          return;
-        }
-      }
-
-      if (!rsvpForm.privacyConsent) {
-        setRsvpMessage(t("rsvp.validation.privacyRequired"));
-        return;
-      }
-
-      if (!rsvpForm.birthDate) {
-        setRsvpMessage(t("rsvp.validation.birthDateRequired"));
-        return;
-      }
-
-      const age = computeAge(rsvpForm.birthDate);
-      if (age !== null && age < 14 && !rsvpForm.parentalConsent) {
-        setRsvpMessage(t("rsvp.validation.ageUnder14"));
-        return;
-      }
-
-      if (rsvpForm.attendance === "yes") {
-        const hasHealthData = rsvpForm.attendees.some((a) => a.allergies && a.allergies.length > 0);
-        if (hasHealthData && !rsvpForm.healthConsent) {
-          setRsvpMessage(t("rsvp.validation.healthConsentRequired"));
-          return;
-        }
-      }
-
-      const allAllergies = rsvpForm.attendees.flatMap((a) => a.allergies || []);
-      const dietaryInfo = allAllergies.filter(Boolean).join(" | ");
-
-      setIsRsvpSubmitting(true);
-      const now = new Date().toISOString();
-      try {
-        const encryptedDietaryInfo = await encrypt(dietaryInfo, inviteToken);
-        const payload = {
-          guestName: single,
-          attendance: rsvpForm.attendance,
-          attendees: rsvpForm.attendees.map((a) => ({
-            name: a.name,
-            menu: a.menu || "",
-            allergies: a.allergies || [],
-          })),
-          dietaryInfo: encryptedDietaryInfo,
-          inviteToken,
-          submittedAt: serverTimestamp(),
-          privacyConsent: true,
-          privacyConsentAt: serverTimestamp(),
-        };
-        if (rsvpForm.birthDate) {
-          payload.birthDate = rsvpForm.birthDate;
-        }
-        if (age !== null && age < 14) {
-          payload.parentalConsent = true;
-        }
-        if (rsvpForm.healthConsent) {
-          payload.healthConsent = true;
-          payload.healthConsentAt = serverTimestamp();
-        }
-        const docRef = await addDoc(RSVP_COLLECTION_REF, payload);
-        setRsvpEntries((current) => [
-          { ...payload, id: docRef.id, submittedAt: now, dietaryInfo },
-          ...current,
-        ]);
-        setRsvpMessage(
-          rsvpForm.attendance === "yes"
-            ? t("rsvp.successAttending", { name: single })
-            : t("rsvp.successNotAttending", { name: single }),
-        );
-        setRsvpForm({
-          guestName: "", attendance: "yes", attendees: [{ name: "", menu: "", allergies: [] }], dietaryOther: "",
-          privacyConsent: false, healthConsent: false,
-          birthDate: "", parentalConsent: false,
-        });
-        setHasSubmitted(true);
-        setAlreadySubmittedEntry(null);
-        prefillRef.current = null;
-      } catch {
-        setRsvpMessage(t("rsvp.saveError"));
-      } finally {
-        setIsRsvpSubmitting(false);
-      }
-    },
-    [isRsvpSubmitting, rsvpForm, inviteToken, menuEnabled, t],
-  );
+  const handleRsvpSubmit = useCallback((event) => {
+    event.preventDefault();
+    if (submitting) return;
+    submitViaHook(rsvpForm);
+  }, [submitting, submitViaHook, rsvpForm]);
 
   const handleDeleteRsvp = useCallback(async () => {
     if (!alreadySubmittedEntry?.id) return;
@@ -317,7 +279,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
   }, [inviteToken, setAdminMessage, setAdminMessageType, t]);
 
   return {
-    rsvpEntries, rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted,
+    rsvpEntries, rsvpForm, rsvpMessage: feedbackMessage, isRsvpSubmitting, hasSubmitted,
     alreadySubmittedEntry,
     updateRsvpField, handleRsvpSubmit, handleClearRsvpEntries, handleDeleteRsvp,
     handleDietaryToggle, DIETARY_OPTIONS,

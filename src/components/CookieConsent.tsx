@@ -1,6 +1,5 @@
 import { memo, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { clearAllStorage } from "../lib/storage";
 import { useFocusTrap } from "../hooks/useFocusTrap";
 import "../styles/modals.css";
 

@@ -7,7 +7,7 @@ export interface SessionData {
   expiresAt?: number;
 }
 
-export function createAdminSession(username: string, inviteToken: string): void {
+export function createAdminSession(username: string, _inviteToken: string): void {
   saveSession("admin", username);
 }
 

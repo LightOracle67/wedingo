@@ -7,7 +7,7 @@ export interface TokenPayload {
   inviteToken?: string;
 }
 
-export function createNewToken(inviteToken?: string): { raw: string; normalized: string } {
+export function createNewToken(_inviteToken?: string): { raw: string; normalized: string } {
   const raw = generateSetupToken();
   const normalized = normalizeTokenValue(raw);
   return { raw, normalized };
