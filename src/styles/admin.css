@@ -183,11 +183,10 @@ input.setup-input[type="date"] {
 }
 .setup-layout--full.setup-layout {
   min-height: 100%;
-  height: 100%;
 }
 .setup-layout--full .setup-card--full {
   flex-direction: column;
-  height: 85%;
+  min-height: 50vh;
   margin: 0px;
   display: flex;
   width: 95% !important;
@@ -1519,6 +1518,20 @@ select.setup-input {
   .upload-grid {
     grid-template-columns: 1fr;
   }
+}
+
+@media (max-width: 480px) {
+  .setup-layout { padding: 0.25rem; }
+  .setup-card { width: 98% !important; padding: 0.5rem; }
+  .setup-card--full { height: auto !important; min-height: 60vh; }
+  .admin-tabs { overflow-x: auto; flex-wrap: nowrap; gap: 0.2rem; }
+  .admin-tab { font-size: 0.78rem; padding: 0.4rem 0.6rem; white-space: nowrap; }
+  .admin-stats-grid { grid-template-columns: 1fr 1fr; gap: 0.4rem; }
+  .data-tab-table-wrap { overflow-x: auto; }
+  .data-tab-actions { flex-direction: column; align-items: stretch; }
+  .setup-form { padding: 0; }
+  .setup-collapsible__summary-btn { font-size: 0.85rem; }
+  .gallery-array-editor__grid { grid-template-columns: repeat(2, 1fr); gap: 0.4rem; }
 }
 
 .setup-button--danger {
