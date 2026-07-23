@@ -87,7 +87,6 @@ service cloud.firestore {
         && request.resource.data.dietaryInfo is string
         && request.resource.data.dietaryInfo.size() <= 4000
         && request.resource.data.inviteToken is string
-        && hasActiveSession(request.resource.data.inviteToken)
         && request.resource.data.privacyConsent == true
         && (
           !request.resource.data.keys().hasAny(['healthConsent'])
