@@ -7572,7 +7572,18 @@
           ]
         ]
       ]
-    ]],
+    ],
+    "currentTokenPlaceholder": [
+      "ସାମ୍ପ୍ରତିକ କୋଡ୍ ଏଠାରେ ଲେପନ କରନ୍ତୁ |",
+      "Paste the current code here",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
       [
         [
           [

@@ -1,404 +1,585 @@
-╔══════════════════════════════════════════════════════════════╗
-║           AUDITORÍA COMPLETA — WEDINGO v2.24+              ║
-║              50+ PUNTOS CLAVE ANALIZADOS                   ║
-╚══════════════════════════════════════════════════════════════╝
-
-Generado: 22 Julio 2026
-Commits: ~720 total
-Versión estimada: v2.24+ (sin tag oficial)
-
-═══════════════════════════════════════════════════════════════
-PARTE 1: ANÁLISIS DE FUNCIONALIDAD
-═══════════════════════════════════════════════════════════════
-
-1.1 ARQUITECTURA GENERAL
-─────────────────────────
-Frontend: React 19 + TypeScript 6 + Vite 8
-Backend: Firebase (Firestore, Auth, Hosting, Storage)
-CSS: Tailwind 4 + CSS personalizado
-i18n: i18next + react-i18next, 100 idiomas
-Testing: Vitest + Testing Library, 21 archivos, ~255 tests
-Linter: oxlint
-Mapas: Leaflet + OpenFreeMap / OpenStreetMap (Nominatim)
-
-Estructura: SPA con React Router, 7 rutas principales
-  /                     → LandingPage
-  /:inviteToken         → PublicInvitation (8 secciones)
-  /:inviteToken/setup   → SetupPage (formulario creación)
-  /:inviteToken/admin   → AdminPage (6 pestañas)
-  /:inviteToken/print   → PrintPage (versión imprimible)
-  /_/s53k               → SuperAdminLogin
-  /_/s53k/dashboard     → SuperAdminPanel (6 pestañas)
-
-1.2 PROVEEDORES / CONTEXTOS
-─────────────────────────────
-AppProvider
-  ├── UIProvider          → ui.saveMessage, ui.saveError, legalModal, map
-  ├── ConfigProvider      → config, formData, inviteToken, CRUD Firestore
-  │   ├── useCalendar     → formattedDate, formattedTime, Google Calendar URL
-  │   ├── useFieldHandlers→ Validación inputs día/hora/minuto/año
-  │   ├── useMapPreview   → Generación previsualización mapa OpenFreeMap
-  │   └── useAutoSave     → Auto-guardado 1.5s tras cambios
-  ├── AuthProvider        → setupToken, isTokenVerified, login/logout
-  │   └── useSetupAuth    → Token auth, sesión Firestore, refresh 60s
-  ├── RsvpProvider        → rsvpEntries, rsvpForm, submit/delete
-  │   └── useRsvp         → CRUD RSVPs, validación, pre-fill
-  └── AppMerger           → Fusiona todos los contextos en useApp()
-
-SuperAdminProvider        → Firebase Auth email+password, login/logout
-ToastProvider             → Sistema de notificaciones toast (success/error/warning/progress)
-
-1.3 RUTAS Y SUS COMPONENTES
-─────────────────────────────
-LANDING PAGE (LandingPage.tsx)
-  - Hero con título "Wedingo"
-  - Modal de login (username + setupToken)
-  - Botón "Crear invitación" → genera inviteToken
-  - Enlace al superadmin
-  - Footer con políticas y versión
-
-INVITACIÓN PÚBLICA (PublicInvitation.tsx)
-  8 secciones renderizadas en orden configurable:
-  1. HeroSection     → Nombres, foto circular, padrinos, countdown
-  2. DetailsSection  → Fecha, lugar, mapa Leaflet, enlaces mapas, transporte
-  3. InfoSection     → Horario, código vestimenta, política niños
-  4. StorySection    → Historia de los novios
-  5. GiftsSection    → Información regalos + IBAN
-  6. AccommodationSection → Alojamiento
-  7. GallerySection  → Carrusel imágenes, lightbox, miniaturas, descripciones
-  8. RsvpSection     → Confirmación asistencia (por familia)
-  
-  Componentes globales en invitación:
-  - EnvelopeOverlay → Sobre 3D con sello cera, animación apertura
-  - MusicPlayer     → FAB ♪ con play/pause/volumen, ecualizador
-  - Fireflies       → Partículas decorativas animadas
-  - CookieConsent   → Banner GDPR
-  - LanguageSwitcher→ Selector 82+ idiomas
-  - AccessibilityPanel → Ajustes accesibilidad
-  - WeddingMap      → Mapa Leaflet estático
-
-PÁGINA DE CONFIGURACIÓN (SetupPage.tsx)
-  - SetupForm con secciones colapsables:
-    * SectionOrderEditor → Orden y visibilidad de secciones
-    * AccessSectionForm  → Nombre de usuario admin
-    * CoverSectionForm   → Nombres, padrinos, mensaje, tema, foto novios, música
-    * DateSectionForm    → Fecha, lugar, horario, alojamiento, transporte
-    * GuestsSectionForm  → Menú estructurado, política niños
-    * StorySectionForm   → Historia (500 chars)
-    * GiftsSectionForm   → Regalos, IBAN
-    * GallerySectionForm → Editor galería (10 slots)
-  - Modal con setupToken tras primer guardado
-  - Auto-guardado a los 1.5s
-
-PANEL ADMIN (AdminPage.tsx)
-  6 pestañas:
-  1. PanelTab     → Stats, gráfico donut, dieta, backup/restore, últimas respuestas
-  2. AttendanceTab→ Lista RSVPs, búsqueda, filtro, paginación, export PDF
-  3. InvitationTab→ Editor completo (mismo SetupForm)
-  4. ShareTab     → Enlace, mensaje editable, compartir WhatsApp/Telegram/SMS
-  5. AccessTab    → Token gestión, logout, borrar invitación
-  6. SupportTab   → Contacto, derechos ARCO, CCPA, versión app
-
-SUPERADMIN (SuperAdminPanel.tsx)
-  6 pestañas:
-  1. DashboardTab   → Stats globales, limpieza invitaciones expiradas
-  2. InvitationsTab  → Lista invitaciones, búsqueda, borrar, exportar
-  3. TokensTab       → Tokens activos por invitación, revocar
-  4. DataTab         → Export/delete individual/seleccionado/todo
-  5. SettingsTab     → Info cuenta, sesión, enlace Firebase
-  6. ComplianceTab   → Tabla GDPR, transferencias, medidas seguridad
-
-PÁGINA DE IMPRESIÓN (PrintPage.tsx)
-  - Versión limpia para imprimir: nombres, fecha, lugar, mensaje
-  - Auto-imprime al cargar
-
-1.4 FLUJOS PRINCIPALES
-────────────────────────
-A. Creación de invitación:
-   LandingPage → Login (username + token) → /:token → /setup → 
-   Rellenar formulario → Guardar → Modal setupToken → /admin
-
-B. Edición de invitación:
-   LandingPage → Login → /:token/setup → Editar → Auto-guardado
-
-C. Confirmación asistencia (RSVP):
-   /:token → Sección RSVP → Rellenar datos familiares → 
-   Validar → Guardar en Firestore → Confirmación
-
-D. Subida de imágenes:
-   Setup → Sección Galería → Seleccionar archivo → 
-   Comprimir → Cifrar AES-256 → Subir a subcolección gallery
-
-E. Subida de música:
-   Setup → Sección Portada → Seleccionar archivo → 
-   Comprimir 22kHz mono → Cifrar → Fragmentar 500KB → 
-   Subir a subcolección audio
-
-F. Backup/Restore:
-   Admin → Panel → Download backup (JSON) → 
-   Restore (subir JSON) → updateDoc merge
-
-1.5 MODELO DE DATOS (FIRESTORE)
-─────────────────────────────────
-Colecciones top-level:
-  - invitations/{token}
-    Campos: firstName, secondName, weddingDay/Month/Year, theme, 
-             adminUsername, _activeSetupToken, activeSession, 
-             sessionExpiresAt, couplePhoto (cifrado), musicFile (vacío),
-             _visits, etc.
-    Subcolecciones:
-      - gallery/{imageId}
-        { data (cifrado), description, position, createdAt,
-          originalName, originalSize }
-      - audio/{chunkId}
-        { chunkIndex, data (cifrado), totalChunks, createdAt }
-
-  - rsvpResponses/{responseId}
-    { guestName, attendance, companions, guestNames,
-      dietaryInfo (cifrado), menuHeadcounts, inviteToken,
-      privacyConsent, birthDate, parentalConsent, healthConsent }
-
-  - auditLog/{logId}
-    { action, detail, createdAt, userAgent }
-
-  - sessions/ (sesiones activas)
-
-1.6 SEGURIDAD
-─────────────
-- Cifrado AES-256-GCM con PBKDF2 (600K iteraciones)
-- Tokens de acceso único por invitación
-- Reglas Firestore: solo escritura con sesión activa
-- Superadmin con Firebase Auth (email+password)
-- CSP estrictas en cabeceras HTTP
-- HSTS, X-Frame-Options, X-Content-Type-Options
-
-═══════════════════════════════════════════════════════════════
-PARTE 2: 50+ PUNTOS DE AUDITORÍA
-═══════════════════════════════════════════════════════════════
-
-═══ ARQUITECTURA Y CÓDIGO ═══
-
-[01] TypeScript: strict mode activo, pero muchos "any" sin tipar
-     → Prioridad: MEDIA. Hay uso extensivo de `any` en props y estados.
-     → Archivos críticos: GalleryArrayEditor, MusicArrayEditor,
-       useSetupAuth, AdminPage, PublicInvitation, ConfigContext.
-
-[02] Bundle: 10MB total, 574KB Firebase chunk, 178KB vendor chunk
-     → Prioridad: BAJA. Locales JS (100 archivos) pesan ~9MB.
-     → Posible mejora: lazy loading de locales no utilizados.
-
-[03] Tests: 255 tests, 21 archivos, 0 failures
-     → Prioridad: MUY BAJA. Buena cobertura para el tamaño del proyecto.
-
-[04] Lint: 6 warnings (solo only-export-components en contextos)
-     → Prioridad: MUY BAJA. Sin errores, aceptable.
-
-[05] Dependencias: 12 runtime, 14 devDependencies
-     → Prioridad: BAJA. Sin dependencias obsoletas críticas.
-     → 6 vulnerabilidades Dependabot (devDependencies, sin impacto runtime).
-
-[06] Hooks: useEffect sin cleanup en algunos casos
-     → Prioridad: MEDIA. useRsvp.ts tiene cancelled flag (corregido),
-       pero hay otros efectos sin cancelación.
-     → Revisar: GallerySection, HeroSection.
-
-[07] Contextos: AppMerger fusiona 4 contextos en useApp()
-     → Prioridad: BAJA. Funcional pero cualquier cambio en cualquier
-       contexto provoca re-render de toda la app.
-     → Posible mejora: separar contextos con hooks individuales.
-
-═══ INTERFAZ DE USUARIO ═══
-
-[08] Galería: CSS reescrito con variables de tema
-     → Prioridad: MUY BAJA. Aspecto elegante y uniforme.
-
-[09] Envelope: animaciones suaves con texto dorado
-     → Prioridad: MUY BAJA. Funcionando correctamente.
-
-[10] MusicPlayer: autoplay tras interacción con envelope
-     → Prioridad: BAJA. Funciona en desktop y mobile.
-
-[11] RSVP: cambiado a modelo familiar
-     → Prioridad: BAJA. Textos actualizados.
-
-[12] Admin: panel con 6 pestañas funcionales
-     → Prioridad: MUY BAJA.
-
-[13] Superadmin: 6 pestañas, stats globales
-     → Prioridad: BAJA. Stats de galería no disponibles
-       (subcolecciones, no colección global).
-
-[14] user-select: none en toda la página
-     → Prioridad: MUY BAJA. Implementado.
-
-[15] Gallery caption: fondo semi-transparente con glow del tema
-     → Prioridad: MUY BAJA.
-
-═══ I18N / TRADUCCIONES ═══
-
-[16] 100 idiomas implementados
-     → Prioridad: BAJA. Cobertura amplia.
-
-[17] hero.eyebrow: corregido array→string en 85 idiomas
-     → Prioridad: MUY BAJA. Corregido.
-
-[18] themeNames: añadidos 21 nombres de tema traducidos
-     → Prioridad: MUY BAJA. Implementado.
-
-[19] monthNames: 12 meses traducidos vía MONTH_VALUE_TO_NUMBER
-     → Prioridad: MUY BAJA. Implementado.
-
-[20] superadmin placeholders: corregidos 82 archivos (español→inglés)
-     → Prioridad: ALTA. CORREGIDO.
-
-[21] access.currentTokenPlaceholder: clave huérfana eliminada
-     → Prioridad: BAJA. Eliminada de 100 archivos.
-
-[22] Hardcoded strings: corregidos App.tsx titles, "Audio subido",
-    "No se encontró el ID de la imagen"
-    → Prioridad: ALTA. CORREGIDO.
-
-═══ FIRESTORE / DATOS ═══
-
-[23] setupTokens: colección eliminada, token en invitations._activeSetupToken
-     → Prioridad: ALTA. CORREGIDO.
-
-[24] galleryData: cambiado a subcolección invitations/{token}/gallery
-     → Prioridad: ALTA. CORREGIDO.
-
-[25] audioData: cambiado a subcolección invitations/{token}/audio
-     → Prioridad: ALTA. CORREGIDO.
-
-[26] Chunked audio: fragmentos de 500KB para audios largos
-     → Prioridad: ALTA. CORREGIDO.
-
-[27] backgroundImage: campo eliminado de la configuración
-     → Prioridad: ALTA. CORREGIDO.
-
-[28] *Storage fields: campos muertos eliminados
-     → Prioridad: BAJA. CORREGIDO.
-
-[29] Firestore rules: actualizadas sin setupTokens, con gallery/audio
-     → Prioridad: ALTA. CORREGIDO.
-
-[30] setDoc merge: manual save y auto-save usan { merge: true }
-     → Prioridad: CRÍTICA. CORREGIDO.
-
-═══ AUTENTICACIÓN ═══
-
-[31] Login: valida username contra adminUsername de la invitación
-     → Prioridad: ALTA. CORREGIDO.
-
-[32] admin bar: muestra username en vez de inviteToken
-     → Prioridad: ALTA. CORREGIDO.
-
-[33] navigator.credentials.store: guarda credenciales en login
-     → Prioridad: MEDIA. CORREGIDO.
-
-[34] Sesión Firestore: renovación cada 60s
-     → Prioridad: ALTA. CORREGIDO (pre-existente).
-
-═══ SUBIDAS / ARCHIVOS ═══
-
-[35] Imágenes: compresión 300KB target, 400KB cap cifrado
-     → Prioridad: ALTA. CORREGIDO.
-
-[36] Audio: 22050Hz mono, sin límite duración, chunked storage
-     → Prioridad: ALTA. CORREGIDO.
-
-[37] Duplicados: detección por nombre+tamaño en galería
-     → Prioridad: MEDIA. CORREGIDO.
-
-[38] Loading spinners: en galería (imagen principal + thumbnails)
-     → Prioridad: BAJA. CORREGIDO.
-
-═══ ERROR HANDLING ═══
-
-[39] Catch blocks: 52 auditados, 15 corregidos con toast
-     → Prioridad: ALTA. CORREGIDO.
-
-[40] Restantes: 37 intencionales (storage, crypto fallback, background)
-     → Prioridad: BAJA. Aceptable.
-
-[41] useAutoSave: error muestra mensaje
-     → Prioridad: MEDIA. CORREGIDO.
-
-[42] GalleryManager: catches mudos → console.warn
-     → Prioridad: BAJA. CORREGIDO.
-
-═══ CSS / DISEÑO ═══
-
-[43] --invite-core-color: definido en 21 temas
-     → Prioridad: ALTA. CORREGIDO.
-
-[44] Envelope: colores hardcodeados → variables de tema
-     → Prioridad: ALTA. CORREGIDO.
-
-[45] --setup-accent en invitación → --invite-core-color
-     → Prioridad: MEDIA. CORREGIDO (story-card, eyebrow, divider).
-
-[46] Gallery CSS: reescrito integrar con variables de tema
-     → Prioridad: ALTA. CORREGIDO.
-
-[47] Decorations: wind-sway animation en imagen
-     → Prioridad: BAJA. CORREGIDO.
-
-[48] Responsive: gallery container 80%, ≤768px 92%
-     → Prioridad: BAJA. CORREGIDO.
-
-═══ PENDIENTES / MEJORAS ═══
-
-[49] Tests: los 255 tests pasan, pero hay que mantenerlos
-     → Prioridad: BAJA. OK actual.
-
-[50] Bundle: optimizar locales JS (9MB de 10MB total)
-     → Prioridad: BAJA. Los locales se cargan bajo demanda vía i18next.
-
-[51] TypeScript: reducir uso de `any` en componentes clave
-     → Prioridad: BAJA. No causa errores runtime.
-
-[52] Seguridad: Firestore rules sin validación de datos en gallery/audio
-     → Prioridad: MEDIA. Crear permite cualquier string en data.
-     → Mejora: validar tamaño máximo del campo data.
-
-[53] Audio: estimateAudioSize no coincide con el tamaño real tras chunks
-     → Prioridad: BAJA. Solo informativo.
-
-[54] AuthContext: el efecto refreshSetupToken se ejecuta en cada mount
-     → Prioridad: BAJA. No causa problemas porque refreshSetupToken
-       está memoizado con useCallback.
-
-[55] Gallery: en carpetas con muchas imágenes, thumbnails pueden saturar
-     → Prioridad: BAJA. Solo 10 slots, aceptable.
-
-═══════════════════════════════════════════════════════════════
-PARTE 3: ESTADO ACTUAL
-═══════════════════════════════════════════════════════════════
-
-Tests: 255/255 passing (21 files)
-Lint: 6 warnings (solo only-export-components)
-Build: OK, 10MB total
-Despliegue: Firebase Hosting + Firestore + Auth
-
-Funcionalidades principales operativas:
-✅ Landing + Login
-✅ Creación de invitación (setup wizard)
-✅ Página pública con 8 secciones
-✅ Envelope con animación 3D
-✅ MusicPlayer con autoplay + loop
-✅ Galería con carrusel, lightbox, thumbnails
-✅ RSVP con validación completa
-✅ Admin panel (stats, RSVPs, backup/restore)
-✅ Superadmin (stats globales, data management)
-✅ i18n 100 idiomas
-✅ Audio comprimido y fragmentado
-✅ Imágenes cifradas AES-256
-✅ Auto-guardado
-✅ Detección de duplicados
+╔══════════════════════════════════════════════════════════════════════════╗
+║              AUDITORÍA PROFUNDA — WEDINGO v2.25                        ║
+║        55+ PUNTOS CLAVE: LEGAL, SEGURIDAD, UI/UX, A11Y, i18n...       ║
+╚══════════════════════════════════════════════════════════════════════════╝
+Fecha: 22 Julio 2026       Commits: ~735       Tests: 255/255
+
+═══════════════════════════════════════════════════════════════════════════
+1. SEGURIDAD (12 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[S1] CIFRADO AES-256-GCM
+     Estado: ✅ Implementado con PBKDF2 (600K iteraciones)
+     Hallazgo: El encrypt() devuelve string vacío si falla el cifrado.
+     Riesgo: BAJO — El dato no se almacena, el usuario ve error.
+     Mejora: Devolver null y tratar el error explícitamente en lugar de string vacío.
+
+[S2] FIRESTORE RULES — VALIDACIÓN DE DATOS
+     Estado: ⚠️ Parcial
+     Hallazgo: Las reglas para gallery/{imageId} y audio/{docId} no validan
+     el tamaño máximo del campo `data`. Un atacante podría subir strings 
+     enormes (~1MB) y agotar la cuota de Firestore.
+     Riesgo: MEDIO
+     Mejora: Añadir `request.resource.data.data.size() <= 1048576`
+     en las reglas de create.
+
+[S3] FIRESTORE RULES — RSVP UPDATE
+     Estado: ✅ Implementado con validación de campos
+     Hallazgo: La regla update permite cambiar attendance, dietaryInfo,
+     pero NO verifica que el inviteToken coincida con el del documento original.
+     Riesgo: BAJO — Ya está validado en create y read, y update requiere
+     hasActiveSession(inviteToken) que usa resource.data.inviteToken.
+     Conclusión: Correcto.
+
+[S4] CSP (CONTENT SECURITY POLICY)
+     Estado: ✅ Implementado en firebase.json
+     Hallazgo: CSP incluye 'unsafe-inline' para scripts, lo que reduce
+     la protección contra XSS. Tambien incluye firestore.googleapis.com,
+     googleapis.com, y otros orígenes.
+     Riesgo: MEDIO — 'unsafe-inline' permite cualquier script inline.
+     Mejora: Reemplazar con nonces o hashes si es posible.
+
+[S5] XSS — PROTECCIÓN EN SALIDA
+     Estado: ⚠️ Parcial
+     Hallazgo: React escapa automáticamente las variables en JSX, pero hay
+     usos de `dangerouslySetInnerHTML` en el código.
+     Buscar: 
+       - src/components/LegalModal.tsx (posible HTML en políticas)
+       - src/components/ChangelogModal.tsx
+       - Cualquier uso de dangerouslySetInnerHTML
+     Riesgo: ALTO si se introduce contenido no sanitizado.
+     Mejora: Verificar que todo contenido insertado via dangerouslySetInnerHTML
+     esté sanitizado o provenga de fuentes controladas (traducciones estáticas).
+
+[S6] AUTENTICACIÓN SUPERADMIN
+     Estado: ✅ Firebase Auth email+password
+     Hallazgo: El email de superadmin está hardcodeado en lib/superadmin.ts
+     como adriancl2001@gmail.com y en .env como VITE_ADMIN_EMAILS.
+     Riesgo: BAJO — Solo se permite acceso a ese email específico.
+     Mejora: Mover a variable de entorno únicamente.
+
+[S7] TOKENS DE ACCESO — ENTROPÍA
+     Estado: ✅ crypto.getRandomValues()
+     Hallazgo: generateSetupToken usa crypto.getRandomValues() con
+     alfabeto de 32 caracteres (mayúsculas + dígitos, excluyendo 0/O/1/I).
+     32 caracteres × 5 grupos = 160 bits de entropía aproximada.
+     Riesgo: MUY BAJO — Entropía suficiente.
+     
+[S8] SESIONES — EXPIRACIÓN
+     Estado: ✅ 24h TTL en Firestore, renovación cada 60s
+     Hallazgo: sessionExpiresAt se actualiza en cada llamada a la sesión.
+     Si el usuario cierra el navegador, la sesión expira en 24h.
+     Riesgo: BAJO — Ventana de 24h aceptable para una app de bodas.
+
+[S9] PROTECCIÓN CSRF
+     Estado: ⚠️ No implementada explícitamente
+     Hallazgo: La app es SPA con Firebase Auth. No hay formularios
+     entre dominios. Firebase Auth usa tokens de ID (JWT) que protegen
+     contra CSRF implícitamente.
+     Riesgo: MUY BAJO
+
+[S10] CABECERAS HTTP DE SEGURIDAD
+      Estado: ✅ Implementado en firebase.json
+      Hallazgo: HSTS (1 año), X-Frame-Options (DENY), 
+      X-Content-Type-Options (nosniff), Referrer-Policy (strict-origin),
+      Permissions-Policy restrictiva.
+      Riesgo: MUY BAJO — Correcto.
+
+[S11] ALMACENAMIENTO DE DATOS CIFRADOS
+      Estado: ✅ Datos sensibles cifrados (bankInfo, couplePhoto, dietaryInfo)
+      Hallazgo: backgroundImageLabel y backgroundImageSource se almacenan
+      en texto plano. No contienen datos sensibles.
+      Riesgo: MUY BAJO
+
+[S12] VALIDACIÓN DE ENTRADA EN FIRESTORE RULES
+      Estado: ✅ isSafeText() implementada
+      Hallazgo: La función isSafeText bloquea caracteres <>"'\` y patrones
+      javascript:. Se aplica en invitations write.
+      Riesgo: BAJO — Correcto.
+
+═══════════════════════════════════════════════════════════════════════════
+2. LEGAL / PRIVACIDAD (7 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[L1] CONSENTIMIENTO PRIVACIDAD (GDPR Art. 7)
+      Estado: ✅ Implementado
+      Hallazgo: El checkbox de privacidad debe marcarse antes de guardar.
+      Se almacena privacyConsent=true + privacyConsentAt timestamp.
+      Riesgo: MUY BAJO
+
+[L2] CONSENTIMIENTO DATOS DE SALUD (GDPR Art. 9)
+      Estado: ✅ Implementado
+      Hallazgo: Si el usuario introduce alergias, debe marcar healthConsent.
+      Se almacena healthConsent=true + healthConsentAt timestamp.
+      Riesgo: MUY BAJO
+
+[L3] CONSENTIMIENTO MENORES DE 14 (GDPR Art. 8)
+      Estado: ✅ Implementado
+      Hallazgo: Si birthDate indica <14 años, se requiere parentalConsent.
+      Riesgo: MUY BAJO
+
+[L4] POLÍTICA DE PRIVACIDAD
+      Estado: ⚠️ Parcial
+      Hallazgo: La política está hardcodeada como string enorme en
+      las traducciones (en.json línea 473, ~500 líneas de texto).
+      Esto es frágil: cualquier cambio requiere modificar 100 archivos.
+      Riesgo: BAJO — Funcional pero difícil de mantener.
+      Mejora: Cargar la política desde un archivo Markdown externo o
+      desde Firestore.
+
+[L5] TRANSFERENCIAS INTERNACIONALES (GDPR Art. 44-49)
+      Estado: ✅ Documentado en ComplianceTab
+      Hallazgo: Se mencionan SCCs y DPF. Los datos se almacenan en
+      región eur3 (Frankfurt).
+      Riesgo: MUY BAJO
+
+[L6] PLAZO DE CONSERVACIÓN (GDPR Art. 5.1.e)
+      Estado: ✅ Documentado
+      Hallazgo: 12 meses después del evento. Configuración del creador
+      mientras la cuenta esté activa.
+      Riesgo: MUY BAJO — No hay borrado automático implementado.
+
+[L7] DERECHOS ARCO / CCPA
+      Estado: ✅ Botones de email para delete/export
+      Hallazgo: Los botones abren mailto: con asunto y cuerpo predefinidos.
+      No hay borrado automático — requiere acción manual del superadmin.
+      Riesgo: BAJO
+
+═══════════════════════════════════════════════════════════════════════════
+3. UI/UX (12 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[U1] CONSISTENCIA VISUAL
+      Estado: ⚠️ Media
+      Hallazgo: 
+      - Los botones de acción usan estilos inline en muchos lugares
+      - Gallery nav buttons: theme color (bien)
+      - Admin panel: setup-button--danger usa !important
+      - Superadmin tabs: estilos inline mezclados con clases
+      Mejora: Unificar todos los botones bajo clases CSS reutilizables.
+
+[U2] RESPONSIVE — MOBILE FIRST
+      Estado: ⚠️ Parcial
+      Hallazgo:
+      - Gallery container: 80% en desktop, 92% en mobile (bien)
+      - Story cards: width 95% con max-height 95% (bien)
+      - Admin tabs: scroll horizontal en mobile (bien)
+      - Envelope: se adapta con min() y clamp() (bien)
+      - Pero: algunos contenedores usan valores fijos sin media queries
+      Mejora: Revisar todos los componentes con >640px de ancho.
+
+[U3] ANIMACIONES — RENDIMIENTO
+      Estado: ⚠️ Medio
+      Hallazgo:
+      - gallery-unblur: anima filter (blur), que es pesado para GPU
+      - wind-sway: anima transform (bien, compuesto)
+      - envelope: anima transform y opacity (bien)
+      - fireflies: 20 elementos animando transform (aceptable)
+      Mejora: Preferir siempre transform/opacity sobre filter para animaciones.
+
+[U4] ESTADOS DE CARGA (LOADING SKELETONS)
+      Estado: ⚠️ Parcial
+      Hallazgo:
+      - Gallery: spinner page-loading mientras carga (bien)
+      - Hero couple photo: spinner + opacity transition (bien)
+      - Gallery thumbnails: spinner + onLoad/onError (bien)
+      - Formularios: sin estado de carga en envío
+      - Admin tabs: no hay loading skeleton
+      Mejora: Añadir loading skeletons en admin/superadmin tabs.
+
+[U5] ESTADOS VACÍOS (EMPTY STATES)
+      Estado: ⚠️ Parcial
+      Hallazgo:
+      - Galería sin imágenes: muestra slots vacíos con dashed border (bien)
+      - Lista RSVPs vacía: muestra mensaje "No hay respuestas" (bien)
+      - TokensTab sin tokens: muestra "No hay tokens" (bien)
+      - Pero: DashboardTab sin stats: muestra error en vez de estado vacío
+      Mejora: Manejar estado vacío en DashboardTab.
+
+[U6] FEEDBACK DE ERRORES
+      Estado: ✅ Toast notifications implementadas
+      Hallazgo: Errores de subida, guardado, y red redirigen a toast.
+      Riesgo: BAJO — Funcional.
+
+[U7] FORMULARIOS — VALIDACIÓN EN TIEMPO REAL
+      Estado: ⚠️ Parcial
+      Hallazgo:
+      - storyText: contador de caracteres (500) (bien)
+      - couple names: limit 20 chars (bien)
+      - username: solo letras y números (bien)
+      - setup token: validateToken en login (bien)
+      - Pero: no hay validación visual inline (borde rojo, icono error)
+      Mejora: Añadir estilos de validación visual en campos inválidos.
+
+[U8] TIPOGRAFÍA — LEGIBILIDAD
+      Estado: ✅ Bueno
+      Hallazgo: Playfair Display para títulos, Lora para cuerpo,
+      Great Vibes para elementos decorativos. Tamaños con clamp().
+      Riesgo: MUY BAJO
+
+[U9] TEMA OSCURO / CLARO
+      Estado: ⚠️ No implementado
+      Hallazgo: La app siempre usa modo oscuro (fondos degradados oscuros).
+      No hay toggle claro/oscuro.
+      Mejora: Implementar theme switching (claro/oscuro) controlado por usuario.
+
+[U10] NAVEGACIÓN POR TECLADO
+      Estado: ⚠️ Parcial
+      Hallazgo:
+      - Envelope: soporta Enter/Space (bien)
+      - Gallery lightbox: navegación por teclado (bien)
+      - Modal: focus trap implementado (bien)
+      - Pero: SetupForm no tiene atajos de teclado para guardar
+      - Admin tabs: no se puede navegar con flechas
+      Mejora: Ctrl+Enter para guardar, flechas para tabs.
+
+[U11] BÚSQUEDA EN LISTAS
+      Estado: ✅ Implementado en AttendanceTab, InvitationsTab, DataTab
+      Hallazgo: Búsqueda por nombre/token con filtro.
+      Riesgo: MUY BAJO
+
+[U12] EXPORTACIÓN DE DATOS
+      Estado: ✅ JSON export en superadmin, PDF en admin
+      Hallazgo: Export individual, seleccionado, y total.
+      Riesgo: MUY BAJO
+
+═══════════════════════════════════════════════════════════════════════════
+4. ACCESIBILIDAD (WCAG) (7 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[A1] ATRIBUTOS ARIA
+      Estado: ⚠️ Parcial
+      Hallazgo:
+      - Modales: role="dialog", aria-modal="true", aria-label (bien)
+      - Gallery: aria-label en carrusel, botones (bien)
+      - Toast: role="alert" (bien)
+      - Pero: falta aria-live en zonas de actualización dinámica
+      - Falta: aria-describedby en modales
+      - Falta: aria-expanded en collapsibles
+      Mejora: Añadir aria-live="polite" en contenedores de resultados,
+      aria-expanded en SectionOrderEditor.
+
+[A2] CONTRASTE DE COLOR (WCAG 1.4.3)
+      Estado: ⚠️ No verificado formalmente
+      Hallazgo: Los temas usan colores dorados sobre fondos oscuros.
+      Relación de contraste no medida. Great Vibes dorado sobre blanco
+      semitransparente en gallery caption puede tener contraste insuficiente.
+      Mejora: Verificar contraste con herramientas (axe, Lighthouse).
+
+[A3] REDUCED MOTION (WCAG 2.3.3)
+      Estado: ✅ Implementado
+      Hallazgo: useReducedMotion hook + prefers-reduced-motion media query.
+      Gallery y fireflies respetan la preferencia.
+      Riesgo: MUY BAJO
+
+[A4] FOCUS VISIBLE (WCAG 2.4.7)
+      Estado: ⚠️ Parcial
+      Hallazgo: admin.css tiene outline: 2px solid var(--setup-accent)
+      para elementos focus dentro de .setup-card--wide.
+      Pero: no se ve outline en botones de galería, tabs, enlaces.
+      Mejora: Añadir focus-visible a todos los elementos interactivos.
+
+[A5] ALTERNATIVAS TEXTUALES (WCAG 1.1.1)
+      Estado: ⚠️ Parcial
+      Hallazgo:
+      - Gallery images: alt descriptivo con t() (bien)
+      - Couple photo: alt con t("hero.couplePhotoAlt") (bien)
+      - Decoraciones: alt="" con aria-hidden="true" (bien)
+      - Pero: hero rings img tiene alt="" (correcto, decorativa)
+      - Pero: no hay descripción textual para el mapa Leaflet
+      Mejora: Añadir texto alternativo para el mapa.
+
+[A6] ORDEN DE TABULACIÓN (WCAG 2.4.3)
+      Estado: ⚠️ No verificado
+      Hallazgo: El orden lógico de tabulación no se ha auditado.
+      Los modales tienen focus trap (bien). La galería tiene
+      navegación por teclado (bien).
+      Mejora: Auditar el orden de tabulación en todas las páginas.
+
+[A7] PANEL DE ACCESIBILIDAD
+      Estado: ✅ Implementado
+      Hallazgo: El panel permite ajustar:
+      - Tamaño de fuente
+      - Interlineado
+      - Alto contraste
+      - Movimiento reducido
+      - Fuente para dislexia
+      - Espaciado
+      - Subrayado de enlaces
+      - Cursor grande
+      - Desaturar colores
+      - Focus visible forzado
+      Riesgo: MUY BAJO — Excelente cobertura.
+
+═══════════════════════════════════════════════════════════════════════════
+5. I18N / TRADUCCIONES (7 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[I1] COBERTURA DE IDIOMAS
+      Estado: ✅ 100 idiomas
+      Hallazgo: Todos los archivos de traducción existen. Algunos
+      tienen menos claves que en.json (traducción incompleta).
+      Riesgo: BAJO — i18next usa key como fallback.
+
+[I2] SOPORTE RTL (RIGHT-TO-LEFT)
+      Estado: ⚠️ Parcial
+      Hallazgo: rtl.css existe con overrides para story-panel, 
+      setup-card, toast-container, lang-popup. Pero:
+      - No hay detección automática del idioma RTL
+      - El atributo dir="rtl" solo se aplica en rtl.css, no en HTML
+      - Faltan overrides para gallery, envelope, music player
+      Mejora: Establecer dir="rtl/auto" en <html> según el idioma.
+
+[I3] PLURALIZACIÓN
+      Estado: ⚠️ Incompleto
+      Hallazgo: 
+      - panel.visits usa pluralización con _one/_other en en.json
+      - Pero es.json solo tiene visits singular, no _one/_other
+      - galleryUploadSuccess usa {{count}} sin pluralización
+      - La mayoría de keys con count no tienen plural forms
+      Mejora: Completar pluralización en todos los idiomas.
+
+[I4] FECHAS LOCALIZADAS
+      Estado: ⚠️ Parcial
+      Hallazgo: 
+      - formatDate() usa toLocaleString con navigator.language (bien)
+      - monthNames traducidos con MONTH_VALUE_TO_NUMBER (bien)
+      - toLocaleDateString con dateStyle:"long" respeta locale (bien)
+      - Pero: countdown (HeroSection) usa unidades fijas sin localizar
+        ("years", "months", "weeks", etc.)
+      Mejora: Localizar las unidades del countdown.
+
+[I5] FORMATO DE MONEDA
+      Estado: ✅ No aplica (no hay precios/monedas)
+      
+[I6] TRADUCCIONES HUÉRFANAS (DEFINIDAS NO USADAS)
+      Estado: ⚠️ Algunas
+      Hallazgo: 
+      - access.currentTokenPlaceholder: ELIMINADA (auditoría)
+      - Comprobar si hay más keys definidas pero no usadas en código
+      Mejora: Script para detectar keys no referenciadas.
+
+[I7] FALLBACK DE IDIOMA
+      Estado: ✅ Configurado
+      Hallazgo: i18next usa "en" como fallback. Si una key falta
+      en el idioma actual, muestra la key en inglés.
+      Riesgo: MUY BAJO
+
+═══════════════════════════════════════════════════════════════════════════
+6. USABILIDAD / ERROR HANDLING (10 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[E1] CATCHES SILENCIOSOS RESTANTES
+      Estado: 37 silenciosos (intencionales)
+      Hallazgo: Los restantes son background operations:
+      - storage.ts (localStorage): aceptable
+      - crypto-utils.ts (fallback legacy): intencional
+      - audit.ts (audit log): intencional (no bloquear por auditoría)
+      - sessionVars.ts (session): intencional
+      - map-utils.ts (tiles): aceptable (fallo visual parcial)
+      - GalleryManager: console.warn añadido
+      Riesgo: BAJO — Aceptable para operaciones no críticas.
+
+[E2] TIMEOUT EN OPERACIONES ASYNC
+      Estado: ❌ No implementado
+      Hallazgo: Ninguna operación (Firestore, subida, cifrado) tiene
+      timeout. Si una petición se cuelga, el usuario ve un spinner
+      infinito.
+      Riesgo: MEDIO — Spinners infinitos si Firestore no responde.
+      Mejora: Añadir Promise.race con timeout de 30s en uploads.
+
+[E3] RETRY EN OPERACIONES FALLIDAS
+      Estado: ❌ No implementado
+      Hallazgo: Las operaciones fallidas (subida, save) muestran error
+      pero no ofrecen reintentar automáticamente.
+      Riesgo: BAJO — El usuario puede reintentar manualmente.
+
+[E4] VALIDACIÓN DE FORMULARIOS — MENSAJES ESPECÍFICOS
+      Estado: ✅ Traducidos y específicos
+      Hallazgo: Cada error de validación tiene su propio mensaje
+      traducido (nameRequired, menuRequired, privacyRequired, etc.).
+      Riesgo: MUY BAJO
+
+[E5] CONFIRMACIÓN ANTES DE ACCIONES DESTRUCTIVAS
+      Estado: ⚠️ Parcial
+      Hallazgo:
+      - Delete invitation: confirm() (bien)
+      - Delete image: confirm() (bien)
+      - Delete all RSVPs: confirm() (bien)
+      - Clear tokens: confirm() (bien)
+      - Withdraw RSVP: confirm() (bien)
+      - Pero: logout no tiene confirmación
+      - Borrar invitación desde /admin: confirm() (bien)
+      Mejora: Añadir confirmación antes de logout.
+
+[E6] DESHACER ACCIONES (UNDO)
+      Estado: ❌ No implementado
+      Hallazgo: Ninguna acción es deshacible (delete, withdraw, etc.)
+      Riesgo: BAJO — Las confirmaciones previenen errores.
+
+[E7] NAVEGACIÓN CON BOTÓN ATRÁS (HISTORY)
+      Estado: ⚠️ No verificado
+      Hallazgo: AdminPage modifica el history via replaceState para
+      sincronizar tabs con URL. El botón atrás del navegador podría
+      comportarse inesperadamente.
+      Mejora: Usar React Router <Navigate> o useSearchParams en vez
+      de manipular history directamente.
+
+[E8] ERROR BOUNDARY
+      Estado: ✅ Implementado
+      Hallazgo: ErrorBoundary componente class-based con reload button.
+      Riesgo: MUY BAJO
+
+[E9] DETECCIÓN DE OFFLINE
+      Estado: ❌ No implementado
+      Hallazgo: No hay detección de conectividad. Si el usuario pierde
+      conexión, las peticiones fallan con error genérico.
+      Mejora: Añadir indicador de conectividad (online/offline).
+
+[E10] LOGS DE ERROR EN PRODUCCIÓN
+      Estado: ❌ No implementado
+      Hallazgo: No hay sistema de logging remoto (Sentry, LogRocket, etc.)
+      La variable VITE_SENTRY_DSN está vacía en .env.
+      Riesgo: MEDIO — Los errores en producción pasan desapercibidos.
+      Mejora: Configurar Sentry o similar.
+
+═══════════════════════════════════════════════════════════════════════════
+7. RENDIMIENTO / BUNDLE (5 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[P1] TAMAÑO DEL BUNDLE
+      Estado: 10MB total
+      Hallazgo: 
+      - Firebase SDK: 574KB (code splitting ✅)
+      - Vendor (React): 178KB (code splitting ✅)
+      - Locales JS: ~9MB (100 archivos)
+      - Main app: 140KB
+      - CSS: 127KB
+      Mejora: Los locales se cargan bajo demanda (lazy) pero suman 9MB.
+      Considerar cargar solo el locale del usuario.
+
+[P2] IMÁGENES NO OPTIMIZADAS
+      Estado: ⚠️ Parcial
+      Hallazgo: 
+      - rings.webp: 44KB, formato moderno (bien)
+      - eucalyptus.webp: formato moderno (bien)
+      - Las imágenes subidas por usuarios se comprimen a 300KB (bien)
+      - Pero: no hay WebP conversion forzada
+      Mejora: Convertir a WebP automáticamente en compressImage.
+
+[P3] CARGA BAJO DEMANDA (LAZY LOADING)
+      Estado: ✅ Implementado
+      Hallazgo: 
+      - PublicInvitation: lazy (bien)
+      - SetupPage: lazy (bien)
+      - AdminPage: lazy (bien)
+      - SuperAdminPanel: lazy (bien)
+      - PrintPage: lazy (bien)
+      - GallerySection images: loading="lazy" (bien)
+      - AccessibilityPanel: lazy (bien)
+      Riesgo: MUY BAJO
+
+[P4] CACHÉ DE NAVEGADOR
+      Estado: ✅ Configurado
+      Hallazgo: firebase.json tiene headers de caché:
+      - /assets/** : 1 año (inmutable)
+      - / : no-cache (SPA)
+      Riesgo: MUY BAJO
+
+[P5] PETICIONES FIRESTORE
+      Estado: ⚠️ Optimizable
+      Hallazgo:
+      - ConfigContext: lee el doc de invitación completo en cada carga
+      - loadAudio: lee TODOS los chunks de una sola vez
+      - loadGallery: lee TODAS las imágenes de una sola vez
+      - Admin tabs: cada tab hace su propia query
+      Mejora: Cachear datos localmente con TTL más largo, o usar
+      Firestore snapshot listeners en lugar de getDocs repetidos.
+
+═══════════════════════════════════════════════════════════════════════════
+8. MANTENIBILIDAD / CÓDIGO (5 puntos)
+═══════════════════════════════════════════════════════════════════════════
+
+[M1] DEUDA TÉCNICA — ANY
+      Estado: ⚠️ Alta
+      Hallazgo: Uso extensivo de `any` en props y estados.
+      Archivos: GalleryArrayEditor, MusicArrayEditor, useSetupAuth,
+      AdminPage, PublicInvitation, ConfigContext, casi todos.
+      Mejora: Tipar progresivamente con interfaces.
+
+[M2] ESTILOS INLINE VS CSS
+      Estado: ⚠️ Mezclado
+      Hallazgo: Muchos componentes mezclan clases CSS con estilos inline.
+      Esto dificulta el mantenimiento y la personalización por temas.
+      Mejora: Migrar estilos inline a clases CSS.
+
+[M3] COMPLEJIDAD DE COMPONENTES
+      Estado: ⚠️ Alta
+      Hallazgo:
+      - RsvpSection.tsx: 287 líneas, mucha lógica en el componente
+      - AdminPage.tsx: 320 líneas con múltiples responsabilidades
+      - useSetupAuth.ts: 430+ líneas, demasiadas funciones
+      Mejora: Dividir componentes grandes en subcomponentes más pequeños.
+
+[M4] MAGIC NUMBERS
+      Estado: ⚠️ Frecuente
+      Hallazgo: Valores hardcodeados como 100000 (gate background),
+      20 * 1024 * 1024 (límite audio), 300 * 1024 (target bytes),
+      500 * 1024 (chunk size), 44+numSamples*2 (WAV header).
+      Mejora: Constantes con nombres descriptivos (ya están en constants.ts
+      o al inicio de cada archivo, aceptable).
+
+[M5] VERSIONADO SEMÁNTICO
+      Estado: ❌ No seguido
+      Hallazgo: APP_VERSION no se ha actualizado consistentemente.
+      Pasó de 2.16.8 a 2.25.0 sin seguir semver.
+      Mejora: Adoptar semver estricto: major.minor.patch.
+
+═══════════════════════════════════════════════════════════════════════════
+9. CONCLUSIONES Y ACCIONES RECOMENDADAS
+═══════════════════════════════════════════════════════════════════════════
+
+CRÍTICAS (0): ✓ Sin issues críticos activos
+
+ALTAS (6):
+  [S4] CSP unsafe-inline → Mejorar política
+  [E2] Falta timeout en operaciones async
+  [E10] Falta logging remoto (Sentry)
+  [L4] Política de privacidad hardcodeada en 100 archivos
+  [A2] Contraste de color no verificado formalmente
+  [E9] Falta detección de offline
+
+MEDIAS (8):
+  [S2] Validar tamaño data en gallery/audio rules
+  [U2] Responsive mobile-first incompleto
+  [U5] Empty states en DashboardTab
+  [U7] Validación visual inline en formularios
+  [U10] Atajos de teclado (Ctrl+Enter, flechas)
+  [A1] ARIA incompleto (aria-live, aria-expanded)
+  [I2] RTL incompleto (dir en HTML)
+  [P5] Peticiones Firestore optimizables
+
+BAJAS (resto): Mejoras progresivas sin impacto crítico.
+
+═══ FUNCIONALIDADES VERIFICADAS ═══
+
+✅ Landing + Login + Creación invitación
+✅ Setup wizard (8 secciones)
+✅ Página pública (8 secciones + envelope + música)
+✅ Galería (carrusel, lightbox, thumbs, descripciones)
+✅ RSVP (formulario familiar, validación, dietary)
+✅ Admin (stats, RSVPs, backup/restore, share, access, support)
+✅ Superadmin (dashboard, invitations, tokens, data, settings, compliance)
+✅ i18n (100 idiomas, RTL parcial)
+✅ Accesibilidad (panel, reduced motion, focus)
+✅ Seguridad (cifrado, Firestore rules, CSP)
+✅ Backup/Restore (JSON + updateDoc merge)
+✅ Print (versión imprimible)
+✅ Auto-guardado (1.5s)
+✅ Detección duplicados (galería)
 ✅ user-select: none
-✅ Decoraciones con viento animado
-✅ Colores sincronizados con tema seleccionado
+✅ Decoraciones animadas (wind-sway)
 
-═══════════════════════════════════════════════════════════════
+═══════════════════════════════════════════════════════════════════════════
 FIN DE AUDITORÍA
-═══════════════════════════════════════════════════════════════
+═══════════════════════════════════════════════════════════════════════════

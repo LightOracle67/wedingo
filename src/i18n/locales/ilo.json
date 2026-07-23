@@ -6857,7 +6857,18 @@
           ]
         ]
       ]
-    ]],
+    ],
+    "currentTokenPlaceholder": [
+      "I-paste ti agdama a code ditoy",
+      "Paste the current code here",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
       [
         [
           [
