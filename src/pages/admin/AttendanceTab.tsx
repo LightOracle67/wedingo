@@ -63,8 +63,15 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
     <>
       <div className="admin-filters">
         <label className="sr-only" htmlFor="adminSearchName">{t("attendance.searchLabel")}</label>
-          <input id="adminSearchName" className="setup-input" value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)} placeholder={t("attendance.searchPlaceholder")} autoComplete="off" />
+          <select className="setup-input" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
+            style={{ maxWidth: "250px", fontSize: "0.85rem" }}>
+            <option value="">{t("attendance.all")}</option>
+            {(rsvpEntries || [])
+              .filter((e: any, i: number, arr: any[]) => arr.findIndex((x: any) => x.guestName === e.guestName) === i)
+              .map((e: any) => (
+                <option key={e.id} value={e.guestName}>{e.guestName}</option>
+              ))}
+          </select>
       </div>
 
       <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginBottom: "0.75rem" }}>
@@ -176,7 +183,7 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
         </div>
       ) : (
         <p className="setup-help">
-          {searchQuery || attendanceFilter !== "all"
+          {searchQuery
             ? t("attendance.noResultsFilter")
             : t("attendance.noResults")}
         </p>
