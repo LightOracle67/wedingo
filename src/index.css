@@ -66,6 +66,7 @@ html {
   --radius-xl: 1rem;
 
   /* Z-index scale */
+  --z-admin-bar: 600;
   --z-toast: 9997;
   --z-envelope: 9999;
   --z-music: 10001;

@@ -986,7 +986,7 @@ select.setup-input {
   }
 }
 .admin-bar {
-  z-index: 600;
+  z-index: var(--z-admin-bar, 600);
   -webkit-backdrop-filter: blur(8px);
   font-family: var(--font-body);
   background: #14120eeb;

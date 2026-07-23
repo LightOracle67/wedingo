@@ -1,7 +1,7 @@
-import { createContext, useContext, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { createContext, useContext, useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
-import { getDoc, setDoc, increment, updateDoc, getDocs, writeBatch } from "firebase/firestore";
+import { getDoc, setDoc, increment, updateDoc, getDocs, writeBatch, type DocumentData, type QueryDocumentSnapshot } from "firebase/firestore";
 import { db, invitationDocRef, rsvpByInviteRef } from "../lib/firebase";
 import {
   defaultConfig, STORY_SECTION_ORDER,
@@ -22,11 +22,46 @@ import { useAutoSave } from "../hooks/useAutoSave";
 import { getFirestoreErrorMessage } from "../lib/error-utils";
 import { validateWeddingDate } from "../lib/date-utils";
 import { useAppUI } from "./UIContext";
+import type { InvitationConfig } from "../types";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const ConfigContext = createContext<any>(null);
+interface PreviewBackground {
+  id: string;
+  src: string;
+  label: string;
+  description: string;
+}
 
-export function ConfigProvider({ children }: any) {
+interface ConfigContextValue {
+  config: InvitationConfig;
+  formData: InvitationConfig;
+  hasStoredConfig: boolean;
+  isConfigLoading: boolean;
+  configLoadError: string;
+  inviteToken: string;
+  maxAllowedYear: number;
+  previewBackgrounds: PreviewBackground[];
+  isPreviewLoading: boolean;
+  formattedDate: string;
+  formattedTime: string;
+  calendarLink: string | null;
+  visitCount: number;
+  updateFormField: (field: string, value: string) => void;
+  reloadConfig: () => Promise<void>;
+  handleSaveSetup: (event: React.FormEvent) => Promise<void>;
+  handleDayChange: (value: string) => void;
+  handleHourChange: (value: string) => void;
+  handleMinuteChange: (value: string) => void;
+  handleMinuteBlur: () => void;
+  handleYearChange: (value: string) => void;
+  handleCoordinateChange: (field: string, value: string) => void;
+  handleDeleteInvitation: () => Promise<void>;
+  setHasStoredConfig: (v: boolean) => void;
+  registerOnFirstSave: (cb: () => void) => void;
+}
+
+const ConfigContext = createContext<ConfigContextValue | null>(null);
+
+export function ConfigProvider({ children }: { children: ReactNode }) {
   const { t } = useTranslation();
   const { setSaveMessage, setSaveError } = useAppUI();
   const location = useLocation();
@@ -34,8 +69,8 @@ export function ConfigProvider({ children }: any) {
 
   const maxAllowedYear = new Date().getFullYear() + MAX_YEARS_AHEAD;
 
-  const [config, setConfig] = useState<any>(defaultConfig);
-  const [formData, setFormData] = useState<any>(defaultConfig);
+  const [config, setConfig] = useState<InvitationConfig>(defaultConfig as InvitationConfig);
+  const [formData, setFormData] = useState<InvitationConfig>(defaultConfig as InvitationConfig);
   const [hasStoredConfig, setHasStoredConfig] = useState(false);
   const [isConfigLoading, setIsConfigLoading] = useState(true);
   const [configLoadError, setConfigLoadError] = useState("");
@@ -48,8 +83,8 @@ export function ConfigProvider({ children }: any) {
 
   const { formattedDate, formattedTime, calendarLink } = useCalendar(config);
 
-  const updateFormField = useCallback((field: any, value: any) => {
-    setFormData((current: any) => ({ ...current, [field]: value }));
+  const updateFormField = useCallback((field: string, value: string) => {
+    setFormData((current) => ({ ...current, [field]: value }));
   }, []);
 
   const { previewBackgrounds, isPreviewLoading } = useMapPreview(
@@ -65,13 +100,13 @@ export function ConfigProvider({ children }: any) {
 
   const { autoSaveTimerRef } = useAutoSave(hasStoredConfig, inviteToken, formData, config, setSaveMessage, isSavingRef);
 
-  const onFirstSaveCallbacksRef = useRef<any[]>([]);
+  const onFirstSaveCallbacksRef = useRef<(() => void)[]>([]);
 
-  const registerOnFirstSave = useCallback((cb: any) => {
-    (onFirstSaveCallbacksRef.current as any[]).push(cb);
+  const registerOnFirstSave = useCallback((cb: () => void) => {
+    onFirstSaveCallbacksRef.current.push(cb);
   }, []);
 
-  const trackVisit = useCallback(async (token: any) => {
+  const trackVisit = useCallback(async (token: string) => {
     if (!token || trackedRef.current) return;
     trackedRef.current = true;
     try {
@@ -226,7 +261,7 @@ export function ConfigProvider({ children }: any) {
     }
   }, [inviteToken, t, setSaveError]);
 
-  const handleSaveSetupCore = useCallback(async (event: any) => {
+  const handleSaveSetupCore = useCallback(async (event: React.FormEvent) => {
     event.preventDefault();
     if (autoSaveTimerRef.current) clearTimeout(autoSaveTimerRef.current);
     if (isSavingRef.current) {
@@ -237,7 +272,7 @@ export function ConfigProvider({ children }: any) {
     setSaveMessage("");
 
     const sanitized = normalizeConfig(formData);
-    const hiddenArray = (sanitized.hiddenSections || "").split(",").filter(Boolean).filter((s: any) => !SPECIAL_SECTIONS.includes(s));
+    const hiddenArray = (sanitized.hiddenSections || "").split(",").filter(Boolean).filter((s: string) => !SPECIAL_SECTIONS.includes(s));
     const hiddenSet = new Set(hiddenArray);
 
     if (!hasStoredConfig) {
@@ -275,9 +310,9 @@ export function ConfigProvider({ children }: any) {
       return;
     }
 
-    const orderArray = (sanitized.sectionOrder || "").split(",").filter(Boolean).filter((s: any) => !SPECIAL_SECTIONS.includes(s));
+    const orderArray = (sanitized.sectionOrder || "").split(",").filter(Boolean).filter((s: string) => !SPECIAL_SECTIONS.includes(s));
     const validSectionKeys = new Set(STORY_SECTION_ORDER);
-    if (orderArray.length < 1 || !orderArray.every((s: any) => validSectionKeys.has(s))) {
+    if (orderArray.length < 1 || !orderArray.every((s: string) => validSectionKeys.has(s))) {
       setSaveError(t("errors.sectionOrderInvalid"));
       return;
     }
@@ -357,7 +392,7 @@ export function ConfigProvider({ children }: any) {
       return;
     }
 
-    const payload = { ...defaultConfig, ...sanitized };
+    const payload = { ...defaultConfig, ...sanitized } as InvitationConfig;
     if (hiddenSet.has("details") && hasStoredConfig) {
       payload.weddingDay = config.weddingDay;
       payload.weddingMonth = config.weddingMonth;
@@ -372,7 +407,7 @@ export function ConfigProvider({ children }: any) {
       const mfOrig = payload.musicFile?.startsWith("data:") ? payload.musicFile : null;
       if (payload.bankInfo) payload.bankInfo = await encrypt(payload.bankInfo, inviteToken);
       if (cpOrig) payload.couplePhoto = await encrypt(cpOrig, inviteToken);
-      delete payload.musicFile;
+      delete (payload as { musicFile?: string }).musicFile;
       payload.privacyPolicyVersion = PRIVACY_POLICY_VERSION;
       await setDoc(invitationDocRef(inviteToken), payload, { merge: true });
       if (payload.bankInfo) payload.bankInfo = await decrypt(payload.bankInfo, inviteToken);
@@ -398,7 +433,7 @@ export function ConfigProvider({ children }: any) {
     try {
       const snap = await getDocs(rsvpByInviteRef(inviteToken));
       const batch = writeBatch(db);
-      snap.docs.forEach((d: any) => batch.delete(d.ref));
+      snap.docs.forEach((d: QueryDocumentSnapshot<DocumentData>) => batch.delete(d.ref));
       await deleteGallery(inviteToken);
       batch.delete(invitationDocRef(inviteToken));
       await batch.commit();

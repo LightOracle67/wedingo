@@ -1,5 +1,5 @@
 import { memo, useCallback, useEffect, useState } from "react";
-import { getDocs, doc, writeBatch, query, where } from "firebase/firestore";
+import { getDocs, doc, writeBatch, query, where, type DocumentData, type QueryDocumentSnapshot } from "firebase/firestore";
 import { ref, deleteObject, listAll } from "firebase/storage";
 import { db, storage, RSVP_COLLECTION_REF, INVITATIONS_COLLECTION_REF } from "../../lib/firebase";
 import { calcGlobalStats, formatBytes } from "../../lib/superadmin-utils";
@@ -9,11 +9,33 @@ import StatsCard from "../admin/StatsCard";
 import { useTranslation } from "react-i18next";
 import { useToast } from "../../hooks/useToast";
 
+interface GlobalStats {
+  rsvpTotal: number;
+  rsvpYes: number;
+  rsvpNo: number;
+  totalGuests: number;
+  invitationCount: number;
+  totalBytes: number;
+  tokensTotal: number;
+  tokensUsed: number;
+  tokensAvailable: number;
+  autoTokens: number;
+  manualTokens: number;
+}
+
+interface InvitationDoc {
+  id: string;
+  weddingYear?: string;
+  weddingMonth?: string;
+  weddingDay?: string;
+  [key: string]: unknown;
+}
+
 const DashboardTab = memo(function DashboardTab() {
   const { t } = useTranslation();
   const { addToast } = useToast();
-  const [stats, setStats] = useState<any>(null);
-  const [invitations, setInvitations] = useState<any[]>([]);
+  const [stats, setStats] = useState<GlobalStats | null>(null);
+  const [invitations, setInvitations] = useState<InvitationDoc[]>([]);
 
   const [loading, setLoading] = useState(true);
   const [cleaning, setCleaning] = useState(false);
@@ -24,10 +46,10 @@ const DashboardTab = memo(function DashboardTab() {
         getDocs(RSVP_COLLECTION_REF),
         getDocs(INVITATIONS_COLLECTION_REF),
       ]);
-      const rsvps = rsvpSnap.docs.map((d: any) => ({ id: d.id, ...d.data() }));
-      const invitationDocs = invSnap.docs.map((d: any) => ({ id: d.id, ...d.data() }));
-      setInvitations(invitationDocs);
-      setStats(calcGlobalStats(invs, rsvps));
+      const rsvps = rsvpSnap.docs.map((d: QueryDocumentSnapshot<DocumentData>) => ({ id: d.id, ...d.data() }));
+      const invitationDocs = invSnap.docs.map((d: QueryDocumentSnapshot<DocumentData>) => ({ id: d.id, ...d.data() }));
+      setInvitations(invitationDocs as InvitationDoc[]);
+      setStats(calcGlobalStats(invitationDocs, rsvps, []));
     } catch {
       addToast("error", t("errors.statsLoadFailed"));
     } finally { setLoading(false); }
@@ -39,7 +61,7 @@ const DashboardTab = memo(function DashboardTab() {
 
   const expired = invitations.filter((inv) => {
     if (!inv.weddingYear || !inv.weddingMonth) return false;
-    const monthIndex = ((MONTH_VALUE_TO_NUMBER as any)[inv.weddingMonth] || 1) - 1;
+    const monthIndex = (MONTH_VALUE_TO_NUMBER[inv.weddingMonth] || 1) - 1;
     const day = Number(inv.weddingDay) || 1;
     const d = new Date(Number(inv.weddingYear), monthIndex, day);
     return d.getTime() > 0 && d.getTime() < twelveMonthsAgo;
@@ -54,7 +76,7 @@ const DashboardTab = memo(function DashboardTab() {
         const batch = writeBatch(db);
         const rsvpQ = query(RSVP_COLLECTION_REF, where("inviteToken", "==", invitation.id));
         const rsvpSnap = await getDocs(rsvpQ);
-        rsvpSnap.docs.forEach((d: any) => batch.delete(d.ref));
+        rsvpSnap.docs.forEach((d: QueryDocumentSnapshot<DocumentData>) => batch.delete(d.ref));
         batch.delete(doc(INVITATIONS_COLLECTION_REF, invitation.id));
         await batch.commit();
         try {
