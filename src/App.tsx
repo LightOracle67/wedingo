@@ -38,7 +38,7 @@ function AppShell() {
       const raw = sessionStorage.getItem("wedin_session");
       if (raw) {
         const data = JSON.parse(raw);
-        if (data.identifier && data.expiresAt && Date.now() < data.expiresAt) {
+        if (data.identifier && data.identifier.length > 10 && data.expiresAt && Date.now() < data.expiresAt) {
           setUsername(data.identifier);
         }
       }
