@@ -25,27 +25,35 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
         <div className="relative z-20">
           <div className="story-eyebrow">{t("hero.eyebrow")}</div>
           {couplePhoto ? (
-            <div className="mx-auto mb-4 w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-2" style={{ position: "relative", borderColor: "color-mix(in srgb, var(--invite-shell-border) 80%, transparent)", background: "color-mix(in srgb, var(--setup-field-bg) 50%, transparent)" }}>
-              <div className="w-full h-full" style={{ opacity: photoLoaded ? 1 : 0, transition: "opacity 0.3s ease" }}>
+            <div className="mx-auto" style={{ position: "relative", width: "min(90vw, 500px)", aspectRatio: "16 / 10", maxHeight: "60vh", borderRadius: "1rem", overflow: "hidden", border: "2px solid color-mix(in srgb, var(--invite-shell-border) 80%, transparent)" }}>
+              <div style={{ position: "absolute", inset: 0, opacity: photoLoaded ? 1 : 0, transition: "opacity 0.3s ease" }}>
                 <img src={couplePhoto} alt={t("hero.couplePhotoAlt")} onLoad={() => setPhotoLoaded(true)} onError={() => setPhotoLoaded(true)} className="w-full h-full object-cover" />
               </div>
               <LoadingOverlay visible={!photoLoaded} />
+              <div style={{
+                position: "absolute", inset: 0, zIndex: 10,
+                display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+                background: "linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.3) 100%)",
+                padding: "1rem",
+              }}>
+                <h1 className="story-title" style={{
+                  position: "relative", zIndex: 11, color: "#fff", textShadow: "0 2px 12px rgba(0,0,0,0.6)",
+                  fontSize: "clamp(1.4rem, 4vw, 2.2rem)", margin: 0,
+                }}>
+                  {firstName || ""} & {secondName || ""}
+                </h1>
+              </div>
             </div>
-          ) : null}
-          <div className="relative mx-auto w-fit">
-            <div className="hero-rings pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-[42%]">
-              <img
-                src={heroBackdropSrc}
-                alt=""
-                aria-hidden="true"
-                loading="lazy"
-                className="invite-rings block h-auto w-[clamp(11rem,44vw,18rem)] object-contain object-center sm:w-[clamp(13rem,34vw,20rem)]"
-              />
-            </div>
+          ) : (
+            <div className="relative mx-auto w-fit">
+              <div className="hero-rings pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-[42%]">
+                <img src={heroBackdropSrc} alt="" aria-hidden="true" loading="lazy" className="invite-rings block h-auto w-[clamp(11rem,44vw,18rem)] object-contain object-center sm:w-[clamp(13rem,34vw,20rem)]" />
+              </div>
               <h1 className="story-title relative z-10">
                 {firstName || ""} & {secondName || ""}
               </h1>
-          </div>
+            </div>
+          )}
           <p className="story-copy mt-3 sm:mt-4">
             {inviteMessage}
           </p>
