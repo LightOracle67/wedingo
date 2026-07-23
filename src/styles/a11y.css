@@ -35,7 +35,7 @@
 .a11y-toggle {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--spacing-sm);
   cursor: pointer;
   font-size: 0.82rem;
   color: var(--setup-subtitle);

@@ -73,8 +73,20 @@ html {
   --color-dark-bg: #14120e;
   --color-dark-card: #1e1b15;
   --color-dark-border: #2a261e;
+  --color-bg-card: #1e1b15;
+  --color-border-default: #2a261e;
   --color-error: #e74c3c;
   --color-success: #2ecc71;
+
+  /* Shadow scale */
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-elevated: 0 4px 12px rgba(0,0,0,0.4);
+
+  /* Spacing scale (alias) */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
 
   /* Z-index scale */
   --z-admin-bar: 600;
