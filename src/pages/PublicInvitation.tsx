@@ -46,7 +46,7 @@ import ErrorBoundary from "../components/ErrorBoundary";
 const GiftsSection = lazy(() => import("./sections/GiftsSection"));
 const AccommodationSection = lazy(() => import("./sections/AccommodationSection"));
 const GallerySection = lazy(() => import("./sections/GallerySection"));
-import RsvpSection from "./sections/RsvpSection";
+const RsvpSection = lazy(() => import("./sections/RsvpSection"));
 import "../styles/decorations.css";
 import "../styles/admin.css";
 import "../styles/landing.css";
