@@ -279,6 +279,29 @@ export default function PublicInvitation() {
   }, [config.weddingPlace, config.weddingLatitude, config.weddingLongitude,
       locationMapContainerRef, setLocationMapError, setLocationMapLoading, setLocationMapTarget, t]);
 
+  // ─── Schema.org JSON-LD ─────────────────────────────
+  useEffect(() => {
+    if (!config.firstName || !config.weddingYear) return;
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": `Wedding of ${config.firstName} & ${config.secondName}`,
+      "description": config.inviteMessage || `Wedding invitation`,
+      "startDate": `${config.weddingYear}-${config.weddingMonth}-${config.weddingDay}T${config.weddingHour}:${config.weddingMinute}:00`,
+      "location": {
+        "@type": "Place",
+        "name": config.weddingPlace || undefined,
+      },
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+    };
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.textContent = JSON.stringify(schema);
+    document.head.appendChild(script);
+    return () => { script.remove(); };
+  }, [config.firstName, config.secondName, config.inviteMessage, config.weddingYear, config.weddingMonth, config.weddingDay, config.weddingHour, config.weddingMinute, config.weddingPlace]);
+
   // ─── Datos de ubicación derivados ──────────────────────
   const configuredCoordinates = getValidCoordinates(config.weddingLatitude, config.weddingLongitude);
   const hasLocationData = Boolean(config.weddingPlace || configuredCoordinates);
