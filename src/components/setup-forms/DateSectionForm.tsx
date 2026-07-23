@@ -183,52 +183,7 @@ export default function DateSectionForm({ prefix = "" }) {
       />
       <p className="setup-help">{t("setup.scheduleHint")}</p>
 
-      <label className="setup-label">{t("setup.dressCodeLabel")}</label>
-      <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))" }}>
-        {[
-          { value: "Traje de gala", key: "setup.dressCodeGala" },
-          { value: "Etiqueta informal", key: "setup.dressCodeCasual" },
-          { value: "Vestimenta formal", key: "setup.dressCodeFormal" },
-          { value: "Cóctel elegante", key: "setup.dressCodeCocktail" },
-          { value: "Ropa cómoda", key: "setup.dressCodeComfortable" },
-        ].map(({ value, key }) => (
-          <label key={value} className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem", color: "var(--setup-title)" }}>
-            <input type="checkbox" checked={formData.weddingDressCode === value} onChange={() => updateFormField("weddingDressCode", formData.weddingDressCode === value ? "" : value)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
-            {t(key)}
-          </label>
-        ))}
-      </div>
-      <p className="setup-help">{t("setup.dressCodeHint")}</p>
 
-      <label className="setup-label" htmlFor={id("accommodationInfo")}>
-        {t("setup.accommodationLabel")}
-      </label>
-      <textarea
-        id={id("accommodationInfo")}
-        className="setup-textarea"
-        value={formData.accommodationInfo}
-        onChange={(e) => updateFormField("accommodationInfo", e.target.value.slice(0, 2000))}
-        placeholder={t("setup.accommodationPlaceholder")}
-        rows={4}
-        maxLength={2000}
-        autoComplete="off"
-      />
-      <p className="setup-help">{t("setup.accommodationHint")}</p>
-
-      <label className="setup-label" htmlFor={id("transportInfo")}>
-        {t("setup.transportLabel")}
-      </label>
-      <textarea
-        id={id("transportInfo")}
-        className="setup-textarea"
-        value={formData.transportInfo}
-        onChange={(e) => updateFormField("transportInfo", e.target.value.slice(0, 2000))}
-        placeholder={t("setup.transportPlaceholder")}
-        rows={4}
-        maxLength={2000}
-        autoComplete="off"
-      />
-      <p className="setup-help">{t("setup.transportHint")}</p>
     </>
   );
 }

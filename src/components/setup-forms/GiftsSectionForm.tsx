@@ -36,6 +36,37 @@ export default function GiftsSectionForm({ prefix = "" }) {
         maxLength={100}
       />
       <p className="setup-help">{t("setup.bankInfoHint")}</p>
+
+      <div className="story-divider" style={{ margin: "0.75rem 0" }} />
+      <label className="setup-label" htmlFor={id("accommodationInfo")}>
+        {t("setup.accommodationLabel")}
+      </label>
+      <textarea
+        id={id("accommodationInfo")}
+        className="setup-textarea"
+        value={formData.accommodationInfo}
+        onChange={(e) => updateFormField("accommodationInfo", e.target.value.slice(0, 2000))}
+        placeholder={t("setup.accommodationPlaceholder")}
+        rows={4}
+        maxLength={2000}
+        autoComplete="off"
+      />
+      <p className="setup-help">{t("setup.accommodationHint")}</p>
+
+      <label className="setup-label" htmlFor={id("transportInfo")}>
+        {t("setup.transportLabel")}
+      </label>
+      <textarea
+        id={id("transportInfo")}
+        className="setup-textarea"
+        value={formData.transportInfo}
+        onChange={(e) => updateFormField("transportInfo", e.target.value.slice(0, 2000))}
+        placeholder={t("setup.transportPlaceholder")}
+        rows={4}
+        maxLength={2000}
+        autoComplete="off"
+      />
+      <p className="setup-help">{t("setup.transportHint")}</p>
     </>
   );
 }

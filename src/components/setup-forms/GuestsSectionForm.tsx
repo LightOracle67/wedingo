@@ -49,6 +49,22 @@ export default function GuestsSectionForm({ prefix: _prefix = "" }) {
       <p className="setup-help">{t("setup.kidsHint")}</p>
 
       <div className="story-divider" style={{ margin: "0.75rem 0" }} />
+      <label className="setup-label">{t("setup.dressCodeLabel")}</label>
+      <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))" }}>
+        {[
+          { value: "Traje de gala", key: "setup.dressCodeGala" },
+          { value: "Etiqueta informal", key: "setup.dressCodeCasual" },
+          { value: "Vestimenta formal", key: "setup.dressCodeFormal" },
+          { value: "Cóctel elegante", key: "setup.dressCodeCocktail" },
+          { value: "Ropa cómoda", key: "setup.dressCodeComfortable" },
+        ].map(({ value, key }) => (
+          <label key={value} className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem", color: "var(--setup-title)" }}>
+            <input type="checkbox" checked={formData.weddingDressCode === value} onChange={() => updateFormField("weddingDressCode", formData.weddingDressCode === value ? "" : value)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+            {t(key)}
+          </label>
+        ))}
+      </div>
+      <p className="setup-help">{t("setup.dressCodeHint")}</p>
       <label className="setup-label" style={{ marginBottom: "0.3rem", display: "block" }}>{t("setup.menuCelebrationLabel")}</label>
 
       <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.9rem", cursor: "pointer", marginBottom: "0.5rem" }}>
