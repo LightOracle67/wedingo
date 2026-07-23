@@ -77,6 +77,7 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
         </div>
       )}
 
+      <div aria-live="polite" aria-atomic="true">
       {filterEntries.length > 0 ? (
         <div className="admin-table-wrapper">
           <table className="admin-table">
@@ -136,6 +137,7 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
             : t("attendance.noResults")}
         </p>
       )}
+      </div>
 
       {(rsvpEntries || []).length > 0 && (
         <div className="setup-actions">
