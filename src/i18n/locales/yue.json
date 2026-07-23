@@ -6545,7 +6545,18 @@
           ]
         ]
       ]
-    ]],
+    ],
+    "currentTokenPlaceholder": [
+      "将当前代码粘贴到此处",
+      "Paste the current code here",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
       [
         [
           [

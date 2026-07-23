@@ -7572,7 +7572,18 @@
           ]
         ]
       ]
-    ]],
+    ],
+    "currentTokenPlaceholder": [
+      "Устаўце сюды бягучы код",
+      "Paste the current code here",
+      null,
+      null,
+      3,
+      null,
+      null,
+      [
+        []
+      ],
       [
         [
           [
