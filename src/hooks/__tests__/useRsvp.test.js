@@ -26,7 +26,7 @@ describe("useRsvp", () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
     expect(result.current.rsvpForm.guestName).toBe("");
     expect(result.current.rsvpForm.attendance).toBe("yes");
-    expect(result.current.rsvpForm.dietarySelection).toEqual([]);
+    expect(result.current.rsvpForm.attendees).toEqual([{ name: "", menu: "", allergies: [] }]);
     expect(result.current.rsvpEntries).toEqual([]);
     expect(result.current.hasSubmitted).toBe(false);
   });
@@ -37,20 +37,12 @@ describe("useRsvp", () => {
     expect(result.current.rsvpForm.guestName).toBe("Adrián");
   });
 
-  it("resets companions when attendance is no", () => {
+  it("resets attendees when attendance is no", () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType));
-    act(() => result.current.updateRsvpField("companions", "3"));
-    expect(result.current.rsvpForm.companions).toBe("3");
+    act(() => result.current.updateRsvpField("attendees", [{ name: "Juan", menu: "", allergies: [] }]));
+    expect(result.current.rsvpForm.attendees).toHaveLength(1);
     act(() => result.current.updateRsvpField("attendance", "no"));
     expect(result.current.rsvpForm.attendance).toBe("no");
-    expect(result.current.rsvpForm.companions).toBe(0);
-  });
-
-  it("toggles dietary selection", () => {
-    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType));
-    act(() => result.current.handleDietaryToggle("vegetariano"));
-    expect(result.current.rsvpForm.dietarySelection).toContain("vegetariano");
-    act(() => result.current.handleDietaryToggle("vegetariano"));
-    expect(result.current.rsvpForm.dietarySelection).not.toContain("vegetariano");
+    expect(result.current.rsvpForm.attendees).toEqual([]);
   });
 });

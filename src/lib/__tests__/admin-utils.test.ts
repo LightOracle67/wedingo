@@ -22,14 +22,14 @@ describe("calcRSVPSummary", () => {
 
   it("counts confirmed entries", () => {
     const entries = [
-      { attendance: "yes", companions: "2" },
-      { attendance: "yes", companions: "0" },
+      { attendance: "yes", companions: 2 },
+      { attendance: "yes", companions: 1 },
     ];
     const result = calcRSVPSummary(entries);
     expect(result.confirmed).toBe(2);
     expect(result.declined).toBe(0);
-    expect(result.confirmedGuests).toBe(4);
-    expect(result.totalGuests).toBe(4);
+    expect(result.confirmedGuests).toBe(3);
+    expect(result.totalGuests).toBe(3);
     expect(result.allEntries).toBe(2);
   });
 
@@ -58,13 +58,13 @@ describe("calcRSVPSummary", () => {
 
   it("handles companion parsing", () => {
     const entries = [
-      { attendance: "yes", companions: "3" },
+      { attendance: "yes", companions: 3 },
       { attendance: "yes", companions: null },
       { attendance: "yes" },
     ];
     const result = calcRSVPSummary(entries);
-    expect(result.confirmedGuests).toBe(6);
-    expect(result.totalGuests).toBe(6);
+    expect(result.confirmedGuests).toBe(5);
+    expect(result.totalGuests).toBe(5);
   });
 
   it("handles non-numeric companions", () => {
