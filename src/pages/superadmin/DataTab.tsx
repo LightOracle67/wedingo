@@ -333,9 +333,8 @@ export default function DataTab() {
           className="setup-button setup-button--danger"
           onClick={deleteAll}
           disabled={busy || confirmText !== CONFIRM_WORD}
-          style={{ fontSize: "0.8rem" }}
         >
-          {t("superadmin.data.deleteAllBtn")}
+          {busy ? t("common.loading") : t("superadmin.data.deleteAllBtn")}
         </button>
       </div>
 

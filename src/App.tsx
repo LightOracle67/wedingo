@@ -103,6 +103,15 @@ function AppShell() {
 
   return (
     <>
+      {import.meta.env.DEV ? (
+        <div style={{
+          position: "fixed", top: 0, left: 0, zIndex: 100000,
+          background: "#ff9800", color: "#000", fontSize: "0.7rem",
+          padding: "0.1rem 0.4rem", borderRadius: "0 0 0.25rem 0",
+          fontWeight: 700, letterSpacing: "0.05em",
+        }}>DEV</div>
+      ) : null}
+
       <a href="#main-content" className="skip-link" style={{
         position: "absolute", top: "-100px", left: "8px", zIndex: 100000,
         background: "var(--setup-accent)", color: "var(--setup-accent-text)",

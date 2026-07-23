@@ -1,6 +1,11 @@
 import { STORY_SECTION_ORDER, THEME_VALUES } from "./constants";
 
-const s = (v) => (typeof v === "string" ? v.trim() : "");
+const s = (v) => {
+  if (typeof v === "string") return v.trim();
+  if (typeof v === "number") return String(v);
+  if (Array.isArray(v)) return String(v[0] ?? "");
+  return "";
+};
 
 export const normalizeConfig = (value) => ({
   adminUsername: s(value?.adminUsername).toLowerCase(),

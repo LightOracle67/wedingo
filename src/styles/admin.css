@@ -730,6 +730,13 @@ select.setup-input {
   gap: 0.65rem;
   margin-top: 1rem;
 }
+.admin-stats-grid > * {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.admin-stats-grid > *:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
 .admin-stats-card {
   display: grid;
   gap: 0.2rem;

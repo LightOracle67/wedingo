@@ -49,4 +49,26 @@ describe("buildGoogleCalendarUrl", () => {
     const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "Europe/Madrid";
     expect(url).toContain(encodeURIComponent(tz));
   });
+
+  it("generates a URL with all params", () => {
+    const startDate = new Date("2026-12-25T18:30:00");
+    const endDate = new Date("2026-12-25T23:00:00");
+    const url = buildGoogleCalendarUrl({
+      title: "Test Event", description: "", place: "Test Place",
+      startDate, endDate,
+    });
+    expect(url).toContain("https://calendar.google.com");
+    expect(url).toContain("Test+Event");
+    expect(url).toContain("Test+Place");
+  });
+
+  it("handles missing time gracefully", () => {
+    const startDate = new Date("2026-12-25");
+    const endDate = new Date("2026-12-25");
+    const url = buildGoogleCalendarUrl({
+      title: "Event", description: "", place: "Place",
+      startDate, endDate,
+    });
+    expect(url).toContain("calendar.google.com");
+  });
 });

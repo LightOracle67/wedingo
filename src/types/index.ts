@@ -102,3 +102,28 @@ export interface RetryOptions {
   delay?: number;
   backoff?: boolean;
 }
+
+export interface Attendee {
+  name: string;
+  menu: "carne" | "pescado" | "vegano" | "";
+  allergies: string[];
+}
+
+export interface MenuOption {
+  key: "carne" | "pescado" | "vegano";
+  label: string;
+  desc: string;
+}
+
+export interface FilterState {
+  searchQuery: string;
+  attendanceFilter: "all" | "yes" | "no";
+  page: number;
+  pageSize: number;
+}
+
+export interface CalendarData {
+  formattedDate: string;
+  formattedTime: string;
+  calendarLink: string;
+}

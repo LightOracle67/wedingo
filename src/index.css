@@ -44,6 +44,7 @@ html {
   -moz-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  transition: background-color 0.3s ease;
 }
 
 /* Variables base del tema por defecto (dorado clasico). */
