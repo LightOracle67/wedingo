@@ -34,10 +34,15 @@ function AppShell() {
   const [username, setUsername] = useState("");
   
   useEffect(() => {
-    import("./lib/sessionVars").then(({ getSession }) => {
-      const session = getSession();
-      if (session?.identifier) setUsername(session.identifier);
-    });
+    try {
+      const raw = sessionStorage.getItem("wedin_session");
+      if (raw) {
+        const data = JSON.parse(raw);
+        if (data.identifier && data.expiresAt && Date.now() < data.expiresAt) {
+          setUsername(data.identifier);
+        }
+      }
+    } catch {}
   }, []);
   const location = useLocation();
   const [showA11y, setShowA11y] = useState(false);
