@@ -63,17 +63,8 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
     <>
       <div className="admin-filters">
         <label className="sr-only" htmlFor="adminSearchName">{t("attendance.searchLabel")}</label>
-        <input id="adminSearchName" className="setup-input" value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)} placeholder={t("attendance.searchPlaceholder")} autoComplete="off" />
-        <div className="admin-filter-buttons">
-          {["all", "yes", "no"].map((f: any) => (
-            <button key={f}
-              className={`setup-button setup-button--compact ${attendanceFilter === f ? "" : "setup-button--ghost"}`}
-              type="button" onClick={() => setAttendanceFilter(f)}>
-              {f === "all" ? t("attendance.all") : f === "yes" ? t("attendance.confirmed") : t("attendance.notAttending")}
-            </button>
-          ))}
-        </div>
+          <input id="adminSearchName" className="setup-input" value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)} placeholder={t("attendance.searchPlaceholder")} autoComplete="off" />
       </div>
 
       <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginBottom: "0.75rem" }}>

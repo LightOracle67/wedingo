@@ -168,7 +168,11 @@
     "headcountHint": "How many people for each option ({{total}} total)",
     "guestNamesLabel": "Full names",
     "guestNamesHint": "Name of each family member attending (max {{count}})",
-    "guestNamesPlaceholder": "John, Anna, little Tom..."
+    "guestNamesPlaceholder": "John, Anna, little Tom...",
+    "attendeesLabel": "Family members",
+    "addAttendee": "Add member",
+    "attendeeNamePlaceholder": "Full name",
+    "menuPlaceholder": "Select menu..."
   },
   "public": {
     "loadingInvitation": "Loading invitation…",
