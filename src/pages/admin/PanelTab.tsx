@@ -1,4 +1,4 @@
-import { memo, useCallback, useMemo, useRef } from "react";
+import { memo, useCallback, useMemo, useRef, type ChangeEvent } from "react";
 import { getDoc, updateDoc } from "firebase/firestore";
 import { useTranslation } from "react-i18next";
 import { useToast } from "../../hooks/useToast";
@@ -7,8 +7,23 @@ import { calcRSVPSummary, getDietarySummary } from "../../lib/admin-utils";
 import { DonutChart, Legend } from "../../components/AttendanceChart";
 import StatsCard from "./StatsCard";
 
-const PanelTab = memo(function PanelTab(props: any) {
-  const config = props.config;
+interface PanelTabConfig {
+  inviteToken: string;
+  confirmedResponses: number;
+  declinedResponses: number;
+  totalGuests: number;
+  rsvpEntries: Array<{ id: string; guestName: string; attendance: string; companions: number; submittedAt: unknown }>;
+  formatDate: (date: unknown) => string;
+  onRestore?: () => Promise<void>;
+  visitCount: number;
+}
+
+interface DietaryItem {
+  item: string;
+  count: number;
+}
+
+const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) {
   const {
   inviteToken, confirmedResponses, declinedResponses, totalGuests, rsvpEntries,
   formatDate, onRestore, visitCount,
@@ -16,7 +31,7 @@ const PanelTab = memo(function PanelTab(props: any) {
   const { t } = useTranslation();
   const { addToast } = useToast();
   const inviteUrl = `${window.location.origin}/${inviteToken}`;
-  const restoreRef = useRef<any>(null);
+  const restoreRef = useRef<HTMLInputElement>(null);
 
   const summary = useMemo(() => calcRSVPSummary(rsvpEntries), [rsvpEntries]);
   const dietary = useMemo(() => getDietarySummary(rsvpEntries).slice(0, 5), [rsvpEntries]);
@@ -39,7 +54,7 @@ const PanelTab = memo(function PanelTab(props: any) {
     }
   }, [inviteToken, t, addToast]);
 
-  const handleRestore = useCallback(async (e: any) => {
+  const handleRestore = useCallback(async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
     if (file.size > 10 * 1024 * 1024) { e.target.value = ""; return; }
@@ -89,7 +104,7 @@ const PanelTab = memo(function PanelTab(props: any) {
           <p className="setup-label" style={{ marginBottom: "0.3rem", fontSize: "0.8rem" }}>
             {t("panel.dietaryPreferences")}
           </p>
-          {dietary.map((d: any) => (
+          {dietary.map((d: DietaryItem) => (
             <div key={d.item} style={{ display: "flex", justifyContent: "space-between", fontSize: "0.8rem", padding: "0.15rem 0", borderBottom: "1px solid var(--setup-border)" }}>
               <span style={{ textTransform: "capitalize" }}>{d.item}</span>
               <span style={{ fontWeight: 600 }}>{d.count}</span>
@@ -123,7 +138,7 @@ const PanelTab = memo(function PanelTab(props: any) {
       {rsvpEntries && rsvpEntries.length > 0 ? (
         <div className="admin-recent-section" style={{ marginTop: "1rem" }}>
           <p className="setup-label setup-label--tight">{t("panel.latestResponses")}</p>
-          {(rsvpEntries || []).slice(0, 5).map((entry: any) => (
+          {(rsvpEntries || []).slice(0, 5).map((entry: { id: string; guestName: string; attendance: string; companions: number; submittedAt: unknown }) => (
             <div key={entry.id} className="admin-recent-row">
               <span className="admin-recent-row__name">{entry.guestName}</span>
               <span className={`admin-recent-row__status admin-recent-row__status--${entry.attendance}`}>

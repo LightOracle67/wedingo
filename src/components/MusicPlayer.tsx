@@ -1,6 +1,7 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useEscapeKey } from "../hooks/useFocusTrap";
+import EqualizerBars from "./EqualizerBars";
 import "../styles/music.css";
 
 function songName(musicUrl: any, t: any) {
@@ -99,7 +100,7 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }: any) {
       <button type="button" className={`music-player__fab${playing ? " music-player__fab--playing" : ""}${open ? " music-player__fab--shifted" : ""}`} onClick={handleToggle} aria-label={t("music.label")}>
         <span key={iconKey} className={`music-player__fab-icon${open || playing ? " music-player__fab-icon--spin" : ""}`}>♪</span>
         {!hasMusic ? <span className="music-player__fab-dot" /> : null}
-        <span className={`music-player__fab-equalizer${playing ? " music-player__fab-equalizer--visible" : ""}`}><span /><span /><span /></span>
+        <EqualizerBars isPlaying={playing} />
       </button>
     </div>
   );

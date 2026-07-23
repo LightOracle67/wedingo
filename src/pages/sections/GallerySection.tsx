@@ -218,7 +218,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
 
   if (loading) {
     return (
-      <section data-story-section="gallery" className={`${className} flex items-center justify-center px-3 py-6 sm:px-6 sm:py-10 lg:px-8 lg:py-12`} style={style}>
+      <section data-story-section="gallery" className={`${className} flex items-center justify-center px-3 py-6 sm:px-6 sm:py-10 lg:px-8 lg:py-12`} style={style} role="region" aria-label={t("gallery.title")}>
         <div className="story-card story-panel story-card--info w-full text-center" style={{ maxWidth: "min(100%, 56rem)" }} aria-live="polite" aria-busy="true">
           <p className="story-eyebrow">{t("gallery.sectionLabel")}</p>
           <h2 className="story-title">{t("gallery.title")}</h2>
@@ -232,7 +232,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
 
   if (!images.length) {
     return (
-      <section data-story-section="gallery" className={`${className} flex items-center justify-center px-3 py-6 sm:px-6 sm:py-10 lg:px-8 lg:py-12`} style={style}>
+      <section data-story-section="gallery" className={`${className} flex items-center justify-center px-3 py-6 sm:px-6 sm:py-10 lg:px-8 lg:py-12`} style={style} role="region" aria-label={t("gallery.title")}>
         <div className="story-card story-panel story-card--info w-full text-center" style={{ maxWidth: "min(100%, 56rem)" }}>
           <p className="story-eyebrow">{t("gallery.sectionLabel")}</p>
           <h2 className="story-title">{t("gallery.title")}</h2>
@@ -247,7 +247,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
   // ═══════════════════════════════════════════════════════
 
   return (
-    <section data-story-section="gallery" className={`${className} flex items-center justify-center px-3 py-6 sm:px-6 sm:py-10 lg:px-8 lg:py-12`} style={style}>
+    <section data-story-section="gallery" className={`${className} flex items-center justify-center px-3 py-6 sm:px-6 sm:py-10 lg:px-8 lg:py-12`} style={style} role="region" aria-label={t("gallery.title")}>
       <div
         className="story-card story-panel story-card--info w-full text-center"
         onMouseEnter={pause}

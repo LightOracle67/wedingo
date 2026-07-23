@@ -99,6 +99,7 @@
   background: var(--invite-title-color, #dcc8a8);
   border-radius: 2px;
   animation: music-eq 0.8s ease-in-out infinite alternate;
+  will-change: transform;
 }
 .music-player__fab-equalizer span:nth-child(1) { height: 6px; animation-delay: 0s; }
 .music-player__fab-equalizer span:nth-child(2) { height: 10px; animation-delay: 0.15s; }
@@ -253,4 +254,11 @@ html.a11y-high-contrast .app-footer {
 html.a11y-underline-links button:not(.a11y-btn):not(.music-player__play):not(.a11y-trigger) {
   text-decoration: underline !important;
   text-underline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .music-player__equalizer-bar--active {
+    animation: none !important;
+    opacity: 0.5 !important;
+  }
 }
