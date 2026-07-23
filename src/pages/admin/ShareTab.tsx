@@ -1,14 +1,19 @@
 import { memo, useCallback, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation, TFunction } from "react-i18next";
 import { randomMessage } from "../../lib/invite-messages";
 
-const APPS = (t: any) => [
-  { key: "whatsapp", label: t("share.whatsapp"), url: (text: any) => `https://wa.me/?text=${encodeURIComponent(text)}` },
-  { key: "telegram", label: t("share.telegram"), url: (text: any) => `https://t.me/share/url?url=${encodeURIComponent(text.split("\n").pop())}&text=${encodeURIComponent(text)}` },
-  { key: "sms", label: t("share.sms"), url: (text: any) => `sms:?body=${encodeURIComponent(text)}` },
+interface ShareTabProps {
+  inviteToken: string;
+  addToast?: (type: string, message: string, duration?: number) => number;
+}
+
+const APPS = (t: TFunction) => [
+  { key: "whatsapp", label: t("share.whatsapp"), url: (text: string) => `https://wa.me/?text=${encodeURIComponent(text)}` },
+  { key: "telegram", label: t("share.telegram"), url: (text: string) => `https://t.me/share/url?url=${encodeURIComponent(text.split("\n").pop())}&text=${encodeURIComponent(text)}` },
+  { key: "sms", label: t("share.sms"), url: (text: string) => `sms:?body=${encodeURIComponent(text)}` },
 ];
 
-const ShareTab = memo(function ShareTab({ inviteToken, addToast }: any) {
+const ShareTab = memo(function ShareTab({ inviteToken, addToast }: ShareTabProps) {
   const { t, i18n } = useTranslation();
   const baseUrl = `${window.location.origin}/${inviteToken}`;
   const inviteUrl = `${baseUrl}?invitar`;
@@ -24,7 +29,7 @@ const ShareTab = memo(function ShareTab({ inviteToken, addToast }: any) {
     setMessage(generateMessage());
   }, [generateMessage]);
 
-  const shareVia = useCallback((url: any) => {
+  const shareVia = useCallback((url: string) => {
     window.open(url, "_blank", "noopener,noreferrer");
   }, []);
 
