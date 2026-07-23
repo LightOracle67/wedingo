@@ -40,9 +40,12 @@ export function AuthProvider({ children }: any) {
     })();
     auth.setIsTokenVerified(true);
     const savedSession = getSession();
-    const displayName = (savedSession?.identifier) || config.adminUsername || inviteToken;
-    auth.setTokenLoginUsername(displayName);
-    saveSession("admin", displayName);
+    const storedName = savedSession?.identifier || "";
+    const displayName = storedName.length > 10 ? storedName : (config.adminUsername || "");
+    if (displayName) {
+      auth.setTokenLoginUsername(displayName);
+      saveSession("admin", displayName);
+    }
   };
 
   useEffect(() => {
