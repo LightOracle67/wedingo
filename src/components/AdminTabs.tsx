@@ -11,7 +11,7 @@ const TABS = [
 
 const AdminTabs = memo(function AdminTabs({ activeTab, onTabChange, t }: any) {
   return (
-    <nav className="admin-tabs" aria-label={t("admin.tabs.ariaLabel")}>
+    <nav className="admin-tabs" aria-label={t("admin.tabs.ariaLabel")} role="tablist">
       {TABS.map((tab) => (
         <button
           key={tab.key}
