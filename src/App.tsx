@@ -31,6 +31,14 @@ const PrintPage = lazy(() => import("./pages/PrintPage"));
 function AppShell() {
   const { t, i18n } = useTranslation();
   const { config, formData, isAdminTokenLoggedIn, tokenLoginUsername, inviteToken } = useApp();
+  const [username, setUsername] = useState("");
+  
+  useEffect(() => {
+    import("./lib/sessionVars").then(({ getSession }) => {
+      const session = getSession();
+      if (session?.identifier) setUsername(session.identifier);
+    });
+  }, []);
   const location = useLocation();
   const [showA11y, setShowA11y] = useState(false);
   const [legalSection, setLegalSection] = useState("");
@@ -138,7 +146,7 @@ function AppShell() {
       {isAdminTokenLoggedIn && inviteToken && !location.pathname.endsWith("/setup") && !location.pathname.endsWith("/print") ? (
         <nav className="admin-bar" aria-label={t("common.adminBar.ariaLabel")}>
           <div className="admin-bar__inner">
-            <span className="admin-bar__title">{tokenLoginUsername || config.adminUsername || t("common.adminBar.fallback")}</span>
+            <span className="admin-bar__title">{username || tokenLoginUsername || config.adminUsername || t("common.adminBar.fallback")}</span>
             <div className="admin-bar__links">
               <Link className={`admin-bar__link ${location.pathname === `/${inviteToken}` ? "admin-bar__link--active" : ""}`} to={`/${inviteToken}`}>{t("admin.tabs.invitation")}</Link>
               <Link className={`admin-bar__link ${location.pathname === `/${inviteToken}/admin` ? "admin-bar__link--active" : ""}`} to={`/${inviteToken}/admin`}>{t("admin.tabs.panel")}</Link>
