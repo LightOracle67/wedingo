@@ -306,6 +306,7 @@
     "postreLabel": "Postre *",
     "postrePlaceholder": "Describe el postre",
     "menuRequiredText": "Obligatorio: postre y al menos un menú principal.",
+    "menuChangeConfirm": "Hay {{count}} familias confirmadas. Cambiar el menú no actualizará sus opciones existentes. ¿Continuar?",
     "menuTextoPlaceholder": "Describe el menú: entrante, plato principal, postre...",
     "menuTextoHint": "Describe el menú que has preparado. Los invitados lo verán al confirmar.",
     "storyLabel": "Nuestra historia",

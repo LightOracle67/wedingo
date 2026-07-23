@@ -23,8 +23,20 @@ function AppMerger({ children }: any) {
       ui.setSaveError(t("errors.verifyTokenFirst"));
       return;
     }
+    const rsvpCount = (rsvp.rsvpEntries || []).filter((e: any) => e.attendance === "yes").length;
+    if (rsvpCount > 0) {
+      const hasMenuChanges =
+        config.formData?.menuEnabled !== config.config?.menuEnabled ||
+        config.formData?.menuCarne !== config.config?.menuCarne ||
+        config.formData?.menuPescado !== config.config?.menuPescado ||
+        config.formData?.menuVegano !== config.config?.menuVegano ||
+        config.formData?.menuTexto !== config.config?.menuTexto;
+      if (hasMenuChanges && !window.confirm(t("settings.menuChangeConfirm", { count: rsvpCount }))) {
+        return;
+      }
+    }
     await config.handleSaveSetup(event);
-  }, [config, auth, ui, t]);
+  }, [config, auth, rsvp, ui, t]);
 
   const value = useMemo(() => ({
     ...config,

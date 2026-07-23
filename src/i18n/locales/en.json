@@ -306,6 +306,7 @@
     "postreLabel": "Dessert *",
     "postrePlaceholder": "Describe the dessert",
     "menuRequiredText": "Required: dessert and at least one main menu.",
+    "menuChangeConfirm": "There are {{count}} confirmed families. Changing the menu will not update their existing choices. Continue?",
     "menuTextoPlaceholder": "Describe the menu: starter, main course, dessert...",
     "menuTextoHint": "Describe the menu you have prepared. Guests will see it when confirming.",
     "storyLabel": "Our story",
