@@ -2,6 +2,18 @@ import { memo, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { getDietarySummary } from "../../lib/admin-utils";
 
+interface RsvpEntry {
+  id: string;
+  guestName: string;
+  attendance: "yes" | "no";
+  companions: number;
+  dietaryInfo: string;
+  attendees?: { name: string; menu: string; allergies: string[] }[];
+  menuHeadcounts?: Record<string, number>;
+  guestNames?: string;
+  submittedAt: string;
+}
+
 const PAGE_SIZES = [10, 25, 50, 100];
 
 function parseDietaryItems(dietaryInfo: string): string[] {
@@ -50,12 +62,12 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
 
   const stats = useMemo(() => {
     const entries = rsvpEntries || [];
-    const yes = entries.filter((e: any) => e.attendance === "yes").length;
-    const no = entries.filter((e: any) => e.attendance === "no").length;
+    const yes = entries.filter((e: RsvpEntry) => e.attendance === "yes").length;
+    const no = entries.filter((e: RsvpEntry) => e.attendance === "no").length;
     const totalCompanions = entries
-      .filter((e: any) => e.attendance === "yes")
-      .reduce((s: any, e: any) => s + (Number(e.companions) || 0), 0);
-    const withDietary = entries.filter((e: any) => e.attendance === "yes" && e.dietaryInfo?.trim()).length;
+      .filter((e: RsvpEntry) => e.attendance === "yes")
+      .reduce((s: number, e: RsvpEntry) => s + (Number(e.companions) || 0), 0);
+    const withDietary = entries.filter((e: RsvpEntry) => e.attendance === "yes" && e.dietaryInfo?.trim()).length;
     return { yes, no, totalCompanions, withDietary };
   }, [rsvpEntries]);
 
@@ -67,8 +79,8 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
             style={{ maxWidth: "250px", fontSize: "0.85rem" }}>
             <option value="">{t("attendance.all")}</option>
             {(rsvpEntries || [])
-              .filter((e: any, i: number, arr: any[]) => arr.findIndex((x: any) => x.guestName === e.guestName) === i)
-              .map((e: any) => (
+              .filter((e: RsvpEntry, i: number, arr: RsvpEntry[]) => arr.findIndex((x: RsvpEntry) => x.guestName === e.guestName) === i)
+              .map((e: RsvpEntry) => (
                 <option key={e.id} value={e.guestName}>{e.guestName}</option>
               ))}
           </select>
@@ -95,7 +107,7 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
               </tr>
             </thead>
             <tbody>
-              {paginated.map((entry: any) => {
+              {paginated.map((entry: RsvpEntry) => {
                 const attending = entry.attendance === "yes";
                 const attendeesList = entry.attendees?.length
                   ? entry.attendees
@@ -103,10 +115,10 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
                       ? entry.guestNames.split(",").map((n: string) => n.trim()).filter(Boolean).map((n: string) => ({ name: n }))
                       : []);
                 const menuLines = entry.attendees?.length
-                  ? entry.attendees.map((a: any) => a.menu ? `${a.name}: ${t("rsvp.menu" + a.menu.charAt(0).toUpperCase() + a.menu.slice(1))}` : null).filter(Boolean)
+                  ? entry.attendees.map((a: { name: string; menu: string; allergies: string[] }) => a.menu ? `${a.name}: ${t("rsvp.menu" + a.menu.charAt(0).toUpperCase() + a.menu.slice(1))}` : null).filter(Boolean)
                   : formatMenuLines(entry.menuHeadcounts || {}, t);
                 const dietLines = entry.attendees?.length
-                  ? entry.attendees.filter((a: any) => a.allergies?.length).map((a: any) => `${a.name}: ${a.allergies.join(", ")}`)
+                  ? entry.attendees.filter((a: { name: string; menu: string; allergies: string[] }) => a.allergies?.length).map((a: { name: string; menu: string; allergies: string[] }) => `${a.name}: ${a.allergies.join(", ")}`)
                   : (attending ? getDietaryLines(entry.dietaryInfo || "", entry.companions || 1).map((d) => `${d.item}: ${d.count}`) : []);
                 const crossed = !attending ? { textDecoration: "line-through", opacity: 0.4 } : {};
 
@@ -121,7 +133,7 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
                     <td>
                       {attending ? (
                         <div style={{ display: "flex", flexDirection: "column", gap: "0.15rem" }}>
-                          {attendeesList.length > 0 ? attendeesList.map((a: any, i: number) => (
+                          {attendeesList.length > 0 ? attendeesList.map((a: { name: string }, i: number) => (
                             <span key={i} style={{ fontSize: "0.78rem" }}>{a.name}</span>
                           )) : <span style={{ fontSize: "0.78rem", color: "var(--setup-muted)" }}>—</span>}
                         </div>
@@ -133,7 +145,7 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
                       <div style={crossed}>
                         {attending ? (
                           <div style={{ display: "flex", flexDirection: "column", gap: "0.15rem" }}>
-                            {menuLines.length > 0 ? menuLines.map((line: any, i: number) => (
+                            {menuLines.length > 0 ? menuLines.map((line: string, i: number) => (
                               <span key={i} style={{ fontSize: "0.78rem" }}>{line}</span>
                             )) : <span style={{ fontSize: "0.78rem" }}>—</span>}
                           </div>
@@ -146,7 +158,7 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
                       <div style={crossed}>
                         {attending && dietLines.length > 0 ? (
                           <div style={{ display: "flex", flexDirection: "column", gap: "0.15rem" }}>
-                            {dietLines.map((line: any, i: number) => (
+                            {dietLines.map((line: string, i: number) => (
                               <span key={i} style={{ fontSize: "0.78rem" }}>{line}</span>
                             ))}
                           </div>
@@ -168,7 +180,7 @@ const AttendanceTab = memo(function AttendanceTab(props: any) {
               <span className="setup-help" style={{ fontSize: "0.75rem" }}>{t("attendance.show")}</span>
               <select value={pageSize} onChange={(e) => { setPageSize(Number(e.target.value)); setPage(0); }}
                 style={{ fontSize: "0.75rem", padding: "0.15rem 0.3rem", borderRadius: "4px", border: "1px solid var(--setup-border)", background: "var(--setup-bg)", color: "var(--setup-text)" }}>
-                {PAGE_SIZES.map((s: any) => <option key={s} value={s}>{s}</option>)}
+                {PAGE_SIZES.map((s: number) => <option key={s} value={s}>{s}</option>)}
               </select>
               <span className="setup-help" style={{ fontSize: "0.75rem" }}>
                 &middot; {t("attendance.total", { count: filterEntries.length })}

@@ -12,11 +12,11 @@ import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES } from "../lib/constants";
 import { useToast } from "../hooks/useToast";
 import { withTimeout } from "../lib/async-utils";
+import { SlotState } from "../types";
 
 const SLOT_COUNT = 10;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const galleryItemStyle: any = {
+const galleryItemStyle: React.CSSProperties = {
   border: "1px solid var(--setup-border)",
   borderRadius: "0.5rem",
   padding: "0.5rem",
@@ -26,12 +26,17 @@ const galleryItemStyle: any = {
   gap: "0.35rem",
 };
 
-const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: any) {
+interface GalleryArrayEditorProps {
+  inviteToken?: string;
+  t?: (key: string) => string;
+}
+
+const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: GalleryArrayEditorProps) {
   const { addToast, startUploadToast } = useToast();
-  const [slots, setSlots] = useState<any>(Array.from({ length: SLOT_COUNT }, () => null));
+  const [slots, setSlots] = useState<(SlotState | null)[]>(Array.from({ length: SLOT_COUNT }, () => null));
   const [loading, setLoading] = useState(true);
-  const [uploadingSlots, setUploadingSlots] = useState<any>(new Set());
-  const slotsRef = useRef<any>(slots);
+  const [uploadingSlots, setUploadingSlots] = useState<Set<number>>(new Set<number>());
+  const slotsRef = useRef<(SlotState | null)[]>(slots);
   slotsRef.current = slots;
 
   const loadGallery = useCallback(async () => {
@@ -40,7 +45,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
     try {
       const { loadGallery: loadFn } = await import("../lib/image-store");
       const images = await loadFn(inviteToken);
-      const newSlots: any[] = Array.from({ length: SLOT_COUNT }, () => null);
+      const newSlots: (SlotState | null)[] = Array.from({ length: SLOT_COUNT }, () => null);
       for (const img of images) {
         if (img.position !== undefined && img.position < SLOT_COUNT) {
           newSlots[img.position] = { id: img.id, url: img.url, description: img.description || "", originalName: img.originalName || "", originalSize: img.originalSize || 0 };
@@ -56,7 +61,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
 
   useEffect(() => { loadGallery(); }, [loadGallery]);
 
-  const handleUpload = useCallback(async (e: any, slotIndex: any) => {
+  const handleUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>, slotIndex: number) => {
     const file = e.target.files?.[0];
     const input = e.target;
     if (!file) return;
@@ -64,20 +69,20 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
     if (!ALLOWED_UPLOAD_TYPES.has(file.type)) { addToast("error", t("setup.errorFileFormat")); if (input) input.value = ""; return; }
     if (file.size > MAX_UPLOAD_SIZE_BYTES) { addToast("error", t("setup.errorFileSize")); if (input) input.value = ""; return; }
 
-    const duplicate = slots.some((s: any) => s && s.originalName === file.name && s.originalSize === file.size);
+    const duplicate = slots.some((s: SlotState | null) => s && s.originalName === file.name && s.originalSize === file.size);
     if (duplicate) { addToast("warning", t("setup.duplicateFileWarning")); if (input) input.value = ""; return; }
 
-    setUploadingSlots((prev: any) => new Set(prev).add(slotIndex));
+    setUploadingSlots((prev: Set<number>) => new Set(prev).add(slotIndex));
     const upload = startUploadToast(t("setup.galleryUploading", { total: 1 }));
     try {
       const { uploadImage, addGalleryImage, deleteGalleryImage } = await import("../lib/image-store");
-      const { encrypted, dataUrl } = await withTimeout(uploadImage(inviteToken, file, (p: any) => upload.update(p)), 30000, "Image upload timed out");
+      const { encrypted, dataUrl } = await withTimeout(uploadImage(inviteToken, file, (p: number) => upload.update(p)), 30000, "Image upload timed out");
       const existing = slots[slotIndex];
       if (existing?.id) {
         await deleteGalleryImage(inviteToken, existing.id);
       }
-      const saved = await addGalleryImage(inviteToken, encrypted, dataUrl, slotIndex, (p: any) => upload.update(85 + Math.round(p * 0.1)), file.name, file.size);
-      setSlots((prev: any) => {
+      const saved = await addGalleryImage(inviteToken, encrypted, dataUrl, slotIndex, (p: number) => upload.update(85 + Math.round(p * 0.1)), file.name, file.size);
+      setSlots((prev: (SlotState | null)[]) => {
         const next = [...prev];
         next[slotIndex] = { id: saved.id, url: saved.dataUrl, description: "", originalName: file.name, originalSize: file.size };
         return next;
@@ -86,19 +91,19 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
     } catch {
       upload.error(t("setup.galleryUploadFailed"));
     } finally {
-      setUploadingSlots((prev: any) => { const n = new Set(prev); n.delete(slotIndex); return n; });
+      setUploadingSlots((prev: Set<number>) => { const n = new Set(prev); n.delete(slotIndex); return n; });
     }
     if (input) input.value = "";
   }, [inviteToken, slots, startUploadToast, addToast, t]);
 
-  const handleDelete = useCallback(async (slotIndex: any) => {
+  const handleDelete = useCallback(async (slotIndex: number) => {
     const existing = slots[slotIndex];
     if (!existing?.id) return;
     if (!window.confirm(t("setup.deleteImageConfirm"))) return;
     try {
       const { deleteGalleryImage } = await import("../lib/image-store");
       await deleteGalleryImage(inviteToken, existing.id);
-      setSlots((prev: any) => {
+      setSlots((prev: (SlotState | null)[]) => {
         const next = [...prev];
         next[slotIndex] = null;
         return next;
@@ -108,8 +113,8 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
     }
   }, [inviteToken, slots, t, addToast]);
 
-  const handleDescriptionChange = useCallback((slotIndex: any, val: any) => {
-    setSlots((prev: any) => {
+  const handleDescriptionChange = useCallback((slotIndex: number, val: string) => {
+    setSlots((prev: (SlotState | null)[]) => {
       const next = [...prev];
       if (next[slotIndex]) {
         next[slotIndex] = { ...next[slotIndex], description: val };
@@ -118,7 +123,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
     });
   }, []);
 
-  const handleDescriptionBlur = useCallback(async (slotIndex: any, currentValue: any) => {
+  const handleDescriptionBlur = useCallback(async (slotIndex: number, currentValue: string) => {
     const item = slotsRef.current[slotIndex];
     if (!item?.id) {
       addToast("error", t("errors.imageIdNotFound"));
@@ -129,7 +134,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
       const { updateGalleryDescription } = await import("../lib/image-store");
       await updateGalleryDescription(inviteToken, item.id, safe);
       addToast("success", t("setup.galleryDescriptionSaved"));
-    } catch (err: any) {
+    } catch (err: unknown) {
       addToast("error", `${t("setup.galleryDescriptionSaveFailed")}: ${err.code || err.message}`);
     }
   }, [inviteToken, addToast, t]);

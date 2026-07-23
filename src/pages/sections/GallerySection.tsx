@@ -4,6 +4,13 @@ import { useReducedMotion } from "../../hooks/useReducedMotion";
 import "../../styles/gallery.css";
 import LoadingOverlay from "../../components/LoadingOverlay";
 
+interface GallerySectionProps {
+  style?: React.CSSProperties;
+  className?: string;
+  inviteToken?: string;
+  [key: string]: unknown;
+}
+
 /**
  * GallerySection — Sección de galería de imágenes en la invitación.
  * 
@@ -11,7 +18,7 @@ import LoadingOverlay from "../../components/LoadingOverlay";
  * y descripciones. Soporta auto-avance, transiciones con blur y
  * precarga con spinner.
  */
-const GallerySection = memo(function GallerySection({ style, className, inviteToken }: any) {
+const GallerySection = memo(function GallerySection({ style, className, inviteToken }: GallerySectionProps) {
   const { t } = useTranslation();
 
   const reducedMotion = useReducedMotion();
@@ -22,7 +29,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
   const [loading, setLoading] = useState(true);
 
   /** Índice de la imagen abierta en lightbox, o null si cerrado. */
-  const [lightboxIndex, setLightboxIndex] = useState<any>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   // ── Carga de imágenes desde Firestore ──
 
@@ -42,20 +49,20 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
   /** Índice de la imagen activa. */
   const [idx, setIdx] = useState(0);
   /** Índice anterior (para animación de salida). */
-  const [prevIdx, setPrevIdx] = useState<any>(null);
+  const [prevIdx, setPrevIdx] = useState<number | null>(null);
   /** ¿Está en curso una animación de fade? */
   const [fading, setFading] = useState(false);
   /** ¿Está pausado el carrusel automático? */
   const [paused, setPaused] = useState(false);
   /** Controla qué imágenes han terminado de cargar (principal). */
-  const [mainLoaded, setMainLoaded] = useState<any>({});
+  const [mainLoaded, setMainLoaded] = useState<Record<number, boolean>>({});
   /** Controla qué miniaturas han terminado de cargar. */
-  const [thumbLoaded, setThumbLoaded] = useState<any>({});
+  const [thumbLoaded, setThumbLoaded] = useState<Record<number, boolean>>({});
 
   /** Timer del fade. */
-  const fadeTimerRef = useRef<any>(null);
+  const fadeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lastAdvanceRef = useRef(Date.now());
-  const rafRef = useRef<any>(null);
+  const rafRef = useRef<number | null>(null);
 
   /** Índice actual limitado al rango válido. */
   const clamped = Math.max(0, Math.min(idx, images.length - 1));
@@ -76,9 +83,9 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
 
   const handleNextImage = useCallback(() => {
     if (images.length <= 1) return;
-    setPrevIdx((prev: any) => {
+    setPrevIdx((prev: number | null) => {
       setFading(true);
-      setIdx((i: any) => {
+      setIdx((i: number) => {
         fadeTimerRef.current = setTimeout(() => {
           setFading(false);
           setPrevIdx(null);
@@ -113,7 +120,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
 
   // ── Lightbox ───────────────────────────────────────
 
-  const openLightbox = useCallback((i: any) => {
+  const openLightbox = useCallback((i: number) => {
     setPaused(true);
     setLightboxIndex(i);
   }, []);
@@ -123,16 +130,16 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
   }, []);
 
   const lightboxPrev = useCallback(() => {
-    setLightboxIndex((i: any) => (i - 1 + images.length) % images.length);
+    setLightboxIndex((i: number | null) => (i !== null ? (i - 1 + images.length) % images.length : images.length - 1));
   }, [images.length]);
 
   const lightboxNext = useCallback(() => {
-    setLightboxIndex((i: any) => (i + 1) % images.length);
+    setLightboxIndex((i: number | null) => (i !== null ? (i + 1) % images.length : 0));
   }, [images.length]);
 
   useEffect(() => {
     if (lightboxIndex === null) return;
-    const handler = (e: any) => {
+    const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeLightbox();
       if (e.key === "ArrowLeft") lightboxPrev();
       if (e.key === "ArrowRight") lightboxNext();
@@ -167,7 +174,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
     }, 550);
   }, [fading, idx, images.length]);
 
-  const goTo = useCallback((i: any) => {
+  const goTo = useCallback((i: number) => {
     if (fading || i === idx || images.length <= 1) return;
     setPaused(true);
     setPrevIdx(idx);
@@ -185,22 +192,22 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
     openLightbox(clamped);
   }, [openLightbox, clamped]);
 
-  const handleThumbClick = useCallback((e: any) => {
+  const handleThumbClick = useCallback((e: React.MouseEvent) => {
     const idx = e.currentTarget?.dataset?.index;
     if (idx != null) goTo(parseInt(idx, 10));
   }, [goTo]);
 
-  const handleThumbLoad = useCallback((e: any) => {
+  const handleThumbLoad = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
     const idx = e.currentTarget?.dataset?.index;
-    if (idx != null) setThumbLoaded((p: any) => ({ ...p, [parseInt(idx, 10)]: true }));
+    if (idx != null) setThumbLoaded((p: Record<number, boolean>) => ({ ...p, [parseInt(idx, 10)]: true }));
   }, []);
 
-  const handleContainerKeyDown = useCallback((e: any) => {
+  const handleContainerKeyDown = useCallback((e: React.KeyboardEvent) => {
     if (e.key === "ArrowLeft") { e.preventDefault(); prev(); }
     else if (e.key === "ArrowRight") { e.preventDefault(); next(); }
   }, [prev, next]);
 
-  const handleOuterKeyDown = useCallback((e: any) => {
+  const handleOuterKeyDown = useCallback((e: React.KeyboardEvent) => {
     if (e.key === "ArrowLeft") prev();
     else if (e.key === "ArrowRight") next();
   }, [prev, next]);
@@ -281,8 +288,8 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
               <img
                 src={currentImage?.url || currentImage}
                 alt={currentImage?.description || t("gallery.imageAlt")}
-                onLoad={() => setMainLoaded((p: any) => ({ ...p, [clamped]: true }))}
-                onError={() => setMainLoaded((p: any) => ({ ...p, [clamped]: true }))}
+                onLoad={() => setMainLoaded((p: Record<number, boolean>) => ({ ...p, [clamped]: true }))}
+                onError={() => setMainLoaded((p: Record<number, boolean>) => ({ ...p, [clamped]: true }))}
                 onClick={handleMainImageClick}
                 className={`gallery-main-img${!mainLoaded[clamped] ? " gallery-main-img--loading" : ""}${fading ? " gallery-blur-in" : ""}`}
                 style={{ cursor: "pointer" }}
