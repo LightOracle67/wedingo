@@ -11,8 +11,8 @@ const PanelTab = memo(function PanelTab(props: any) {
   const config = props.config;
   const {
   inviteToken, confirmedResponses, declinedResponses, totalGuests, rsvpEntries,
+  formatDate, onRestore, visitCount,
 } = config;
-  const { formatDate, onRestore, visitCount } = props;
   const { t } = useTranslation();
   const { addToast } = useToast();
   const inviteUrl = `${window.location.origin}/${inviteToken}`;
