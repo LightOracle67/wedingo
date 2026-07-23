@@ -15,6 +15,7 @@ import LegalModal from "./components/LegalModal";
 import ChangelogModal from "./components/ChangelogModal";
 import Fireflies from "./components/Fireflies";
 import { APP_VERSION } from "./lib/constants";
+import { logError } from "./lib/error-utils";
 import "./styles/admin.css";
 import "./styles/rtl.css";
 import LandingPage from "./pages/LandingPage";
@@ -35,6 +36,18 @@ function AppShell() {
   const [legalSection, setLegalSection] = useState("");
   const [showChangelog, setShowChangelog] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+  useEffect(() => {
+    const onOnline = () => setIsOnline(true);
+    const onOffline = () => setIsOnline(false);
+    window.addEventListener("online", onOnline);
+    window.addEventListener("offline", onOffline);
+    return () => {
+      window.removeEventListener("online", onOnline);
+      window.removeEventListener("offline", onOffline);
+    };
+  }, []);
 
   const isEditingRoute = location.pathname.endsWith("/setup") || (location.pathname.endsWith("/admin") && isAdminTokenLoggedIn);
 
@@ -63,8 +76,33 @@ function AppShell() {
     document.documentElement.style.setProperty("--wedding-background-image", "none");
   }, []);
 
+  useEffect(() => {
+    const handler = (event: ErrorEvent) => {
+      logError(event.error || event.message, "global");
+    };
+    const rejectionHandler = (event: PromiseRejectionEvent) => {
+      logError(event.reason, "unhandledRejection");
+    };
+    window.addEventListener("error", handler);
+    window.addEventListener("unhandledrejection", rejectionHandler);
+    return () => {
+      window.removeEventListener("error", handler);
+      window.removeEventListener("unhandledrejection", rejectionHandler);
+    };
+  }, []);
+
   return (
     <>
+      {!isOnline ? (
+        <div style={{
+          position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 99999,
+          background: "#e06060", color: "#fff", textAlign: "center",
+          padding: "0.5rem", fontSize: "0.85rem", fontWeight: 600
+        }}>
+          Sin conexión — los cambios podrían no guardarse
+        </div>
+      ) : null}
+
       <a href="#main-content" className="skip-link" tabIndex={0}>
         {t("common.skipToContent")}
       </a>

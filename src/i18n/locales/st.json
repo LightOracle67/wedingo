@@ -7443,26 +7443,6 @@
         ]
       ]
     ],
-    "currentTokenPlaceholder": [
-      "Beha khoutu ea hajoale mona",
-      "Paste the current code here",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "2c0ebdaae5e241fe4f4a7730879c5e0c",
-            "tea_BantuA_en2nystsnswxhzu_2021q3.md"
-          ]
-        ]
-      ]
-    ],
     "generateToken": [
       "Hlahisa khoutu e ncha",
       "Generate new code",

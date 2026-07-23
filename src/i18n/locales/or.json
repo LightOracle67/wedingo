@@ -7573,26 +7573,6 @@
         ]
       ]
     ],
-    "currentTokenPlaceholder": [
-      "ସାମ୍ପ୍ରତିକ କୋଡ୍ ଏଠାରେ ଲେପନ କରନ୍ତୁ |",
-      "Paste the current code here",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "5d4f78a16b17135bfb375c3854878ddb",
-            "newlanguages_enxx_v1_2019q4.md"
-          ]
-        ]
-      ]
-    ],
     "generateToken": [
       "ନୂତନ କୋଡ୍ ସୃଷ୍ଟି କରନ୍ତୁ |",
       "Generate new code",

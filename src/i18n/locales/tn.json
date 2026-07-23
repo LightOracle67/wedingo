@@ -6858,26 +6858,6 @@
         ]
       ]
     ],
-    "currentTokenPlaceholder": [
-      "Kgomaretsa khoutu ya ga jaana fano",
-      "Paste the current code here",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "f360f62f1957599adbb383a243c6d52a",
-            "ntl_noulm_enxx_2024q2.md"
-          ]
-        ]
-      ]
-    ],
     "generateToken": [
       "Tlhama khoutu e ntšhwa",
       "Generate new code",

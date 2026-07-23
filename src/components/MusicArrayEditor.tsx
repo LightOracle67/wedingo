@@ -1,5 +1,6 @@
 import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useToast } from "../hooks/useToast";
+import { withTimeout } from "../lib/async-utils";
 
 const ALLOWED_AUDIO_TYPES = [
   "audio/mpeg", "audio/mp3", "audio/wav", "audio/ogg",
@@ -61,7 +62,7 @@ const MusicArrayEditor = memo(function MusicArrayEditor({ inviteToken, value, on
     const upload = startUploadToast(t("setup.musicUploading"));
     try {
       const { uploadAudio, addAudio, deleteAudio } = await import("../lib/music-store");
-      const { encrypted, dataUrl } = await uploadAudio(inviteToken, file, (p) => upload.update(p));
+      const { encrypted, dataUrl } = await withTimeout(uploadAudio(inviteToken, file, (p) => upload.update(p)), 60000, "Audio upload timed out");
       if (audioId) {
         await deleteAudio(inviteToken);
       }

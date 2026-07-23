@@ -129,7 +129,7 @@
 .gallery-caption {
   font-family: "Great Vibes", cursive, serif;
   font-size: clamp(1rem, 2.2vw, 1.3rem);
-  color: var(--invite-core-color, #c8a84e);
+  color: color-mix(in srgb, var(--invite-core-color, #c8a84e) 85%, #222);
   text-shadow: 0 0 12px color-mix(in srgb, var(--invite-core-glow, rgba(255,212,115,0.22)) 70%, transparent);
   text-align: center;
   margin: 0;

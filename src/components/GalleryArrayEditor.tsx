@@ -1,6 +1,7 @@
 import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES } from "../lib/constants";
 import { useToast } from "../hooks/useToast";
+import { withTimeout } from "../lib/async-utils";
 
 const SLOT_COUNT = 10;
 
@@ -60,7 +61,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
     const upload = startUploadToast(t("setup.galleryUploading", { total: 1 }));
     try {
       const { uploadImage, addGalleryImage, deleteGalleryImage } = await import("../lib/image-store");
-      const { encrypted, dataUrl } = await uploadImage(inviteToken, file, (p: any) => upload.update(p));
+      const { encrypted, dataUrl } = await withTimeout(uploadImage(inviteToken, file, (p: any) => upload.update(p)), 30000, "Image upload timed out");
       const existing = slots[slotIndex];
       if (existing?.id) {
         await deleteGalleryImage(inviteToken, existing.id);

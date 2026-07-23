@@ -7482,26 +7482,6 @@
         ]
       ]
     ],
-    "currentTokenPlaceholder": [
-      "ਮੌਜੂਦਾ ਕੋਡ ਨੂੰ ਇੱਥੇ ਪੇਸਟ ਕਰੋ",
-      "Paste the current code here",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "bb93a879d26edf943ed8e0c574850bff",
-            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
-          ]
-        ]
-      ]
-    ],
     "generateToken": [
       "ਨਵਾਂ ਕੋਡ ਬਣਾਓ",
       "Generate new code",
