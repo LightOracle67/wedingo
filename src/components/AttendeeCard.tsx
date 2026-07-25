@@ -43,9 +43,9 @@ const AttendeeCard = memo(function AttendeeCard({
   );
 
   return (
-    <div className="rsvp-attendee-card" role="group" aria-label={`${t("rsvp.attendeesLabel")} ${index + 1}`}>
+    <div className="rsvp-attendee-card" role="group" aria-label={`${t(total === 1 ? "rsvp.attendeeLabel" : "rsvp.attendeesLabel")} ${index + 1}`}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.5rem" }}>
-        <h4 style={{ margin: 0 }}>{t("rsvp.attendeesLabel")} {index + 1}</h4>
+        <h4 style={{ margin: 0 }}>{t(total === 1 ? "rsvp.attendeeLabel" : "rsvp.attendeesLabel")} {index + 1}</h4>
         {total > 1 && (
           <button type="button" className="setup-button setup-button--danger setup-button--compact"
             onClick={() => onRemove(index)} aria-label={t("rsvp.removeAttendee", { defaultValue: "Remove" })}>

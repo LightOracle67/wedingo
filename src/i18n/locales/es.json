@@ -171,6 +171,7 @@
     "guestNamesLabel": "Nombres completos",
     "guestNamesHint": "Nombre de cada miembro de la familia que asiste (máx {{count}})",
     "guestNamesPlaceholder": "Juan, Ana, el pequeño Tomás...",
+    "attendeeLabel": "Miembro de la familia",
     "attendeesLabel": "Miembros de la familia",
     "addAttendee": "Añadir miembro",
     "notAttendingCountLabel": "Número de personas que no asistirán",
