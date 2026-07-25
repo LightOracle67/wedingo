@@ -37,20 +37,24 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
         <div className="relative z-20">
           <div className="story-eyebrow">{t("hero.eyebrow")}</div>
           {couplePhoto ? (
-            <div className="mx-auto" style={{ position: "relative", height: "90%", aspectRatio: "4/3", overflow: "hidden", overflowY: "hidden" }}>
+            <div className="mx-auto" style={{ position: "relative", width: "min(70vw, 400px)", aspectRatio: "1/1" }}>
               <div style={{
-                position: "absolute", inset: 0, opacity: photoLoaded ? 1 : 0, transition: "opacity 0.3s ease",
-                WebkitMaskImage: "radial-gradient(ellipse at center, black 75%, transparent 100%)",
-                maskImage: "radial-gradient(ellipse at center, black 75%, transparent 100%)",
+                position: "absolute", inset: 0, opacity: photoLoaded ? 1 : 0, transition: "opacity 0.5s ease",
+                borderRadius: "50%", overflow: "hidden",
+                WebkitMaskImage: "radial-gradient(circle at center, black 60%, transparent 100%)",
+                maskImage: "radial-gradient(circle at center, black 60%, transparent 100%)",
               }}>
                 <img src={couplePhoto} alt={t("hero.couplePhotoAlt")} onLoad={() => setPhotoLoaded(true)} onError={() => setPhotoLoaded(true)} className="w-full h-full object-cover" />
               </div>
               <LoadingOverlay visible={!photoLoaded} />
               <div style={{
                 position: "absolute", inset: 0, zIndex: 10,
-                display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-                background: "linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.3) 100%)",
-                padding: "1rem",
+                display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-end",
+                padding: "1rem 1rem 2rem",
+                background: "linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%)",
+                borderRadius: "50%", overflow: "hidden",
+                WebkitMaskImage: "radial-gradient(circle at center, black 60%, transparent 100%)",
+                maskImage: "radial-gradient(circle at center, black 60%, transparent 100%)",
               }}>
                 <h1 className="story-title" style={{
                   position: "relative", zIndex: 11, color: "#fff", textShadow: "0 2px 12px rgba(0,0,0,0.6)",
