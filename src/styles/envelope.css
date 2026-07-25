@@ -330,14 +330,14 @@
 }
 .envelope__address-line {
   font-family: "Great Vibes", cursive, serif;
-  color: #5a4a3a;
+  color: var(--color-brown);
   font-size: 1.2rem;
   letter-spacing: 0.02em;
 }
 .envelope__address-line--bold {
   font-size: clamp(1.6rem, 5vw, 2.2rem);
   font-weight: 400;
-  color: #3a2a1a;
+  color: var(--color-dark-brown);
   border-bottom: 1px solid color-mix(in srgb, var(--invite-core-color, #c8a84e) 30%, transparent);
   padding-bottom: 3px;
 }
@@ -404,7 +404,7 @@
   font-family: "Great Vibes", cursive, serif;
   font-size: clamp(1.6rem, 5vw, 2rem);
   font-weight: 400;
-  color: #3a2a1a;
+  color: var(--color-dark-brown);
   text-align: center;
   margin: 0 0 0.2rem 0;
   letter-spacing: 0.04em;
@@ -418,7 +418,7 @@
   font-family: "Great Vibes", cursive, serif;
   font-size: clamp(1rem, 3vw, 1.3rem);
   line-height: 1.5;
-  color: #5a4a3a;
+  color: var(--color-brown);
   text-align: center;
   margin: 0;
   font-style: italic;

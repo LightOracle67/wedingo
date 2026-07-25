@@ -50,7 +50,7 @@
 }
 .toast--success .toast__icon {
   background: rgba(163, 240, 122, 0.18);
-  color: #a3f07a;
+  color: var(--color-green);
 }
 .toast--error .toast__icon {
   background: rgba(255, 100, 100, 0.18);
@@ -62,7 +62,7 @@
 }
 .toast__text {
   flex: 1;
-  color: #fff6dc;
+  color: var(--setup-title);
   font-size: 0.88rem;
   line-height: 1.45;
 }

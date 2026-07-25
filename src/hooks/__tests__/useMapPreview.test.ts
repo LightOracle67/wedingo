@@ -1,0 +1,89 @@
+import { describe, it, expect, vi, beforeEach } from "vitest";
+import { renderHook, waitFor } from "@testing-library/react";
+
+vi.mock("react-i18next", () => ({
+  useTranslation: () => ({ t: (key: string) => key }),
+  initReactI18next: { type: "3rdParty", init: () => {} },
+}));
+
+const mockGetValidCoordinates = vi.fn();
+const mockResolveLocationTarget = vi.fn();
+const mockBuildOpenFreeMapPreviewUrl = vi.fn();
+
+vi.mock("../../lib/geo-utils", () => ({
+  getValidCoordinates: (...args: unknown[]) => mockGetValidCoordinates(...args),
+  resolveLocationTarget: (...args: unknown[]) => mockResolveLocationTarget(...args),
+}));
+
+vi.mock("../../lib/map-utils", () => ({
+  buildOpenFreeMapPreviewUrl: (...args: unknown[]) => mockBuildOpenFreeMapPreviewUrl(...args),
+}));
+
+import { useMapPreview } from "../useMapPreview";
+
+describe("useMapPreview", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it("returns empty previews and not loading for empty location", () => {
+    const { result } = renderHook(() => useMapPreview("", "", ""));
+    expect(result.current.previewBackgrounds).toEqual([]);
+    expect(result.current.isPreviewLoading).toBe(false);
+  });
+
+  it("returns empty previews for whitespace-only place", () => {
+    const { result } = renderHook(() => useMapPreview("   ", "", ""));
+    expect(result.current.previewBackgrounds).toEqual([]);
+    expect(result.current.isPreviewLoading).toBe(false);
+  });
+
+  it("returns expected interface properties", () => {
+    const { result } = renderHook(() => useMapPreview("Place", "1", "2"));
+    expect(result.current).toHaveProperty("previewBackgrounds");
+    expect(result.current).toHaveProperty("isPreviewLoading");
+    expect(result.current).toHaveProperty("setPreviewBackgrounds");
+    expect(result.current).toHaveProperty("setIsPreviewLoading");
+  });
+
+  it("generates previews for valid coordinates", async () => {
+    mockGetValidCoordinates.mockReturnValue({ latitude: 40.4168, longitude: -3.7038 });
+    mockResolveLocationTarget.mockResolvedValue({ latitude: 40.4168, longitude: -3.7038, label: "Test" });
+    mockBuildOpenFreeMapPreviewUrl.mockResolvedValue("data:image/png;base64,test");
+
+    const { result } = renderHook(() => useMapPreview("Place", "40.4168", "-3.7038"));
+
+    await waitFor(() => {
+      expect(result.current.previewBackgrounds.length).toBeGreaterThan(0);
+    });
+
+    expect(result.current.previewBackgrounds[0]).toMatchObject({
+      id: "default",
+      src: "data:image/png;base64,test",
+    });
+    expect(result.current.isPreviewLoading).toBe(false);
+  });
+
+  it("handles resolveLocationTarget returning null", async () => {
+    mockGetValidCoordinates.mockReturnValue({ latitude: 40.4168, longitude: -3.7038 });
+    mockResolveLocationTarget.mockResolvedValue(null);
+
+    const { result } = renderHook(() => useMapPreview("Place", "40.4168", "-3.7038"));
+
+    await waitFor(() => {
+      expect(result.current.previewBackgrounds).toEqual([]);
+    });
+  });
+
+  it("handles buildOpenFreeMapPreviewUrl returning empty", async () => {
+    mockGetValidCoordinates.mockReturnValue({ latitude: 40.4168, longitude: -3.7038 });
+    mockResolveLocationTarget.mockResolvedValue({ latitude: 40.4168, longitude: -3.7038, label: "Test" });
+    mockBuildOpenFreeMapPreviewUrl.mockResolvedValue("");
+
+    const { result } = renderHook(() => useMapPreview("Place", "40.4168", "-3.7038"));
+
+    await waitFor(() => {
+      expect(result.current.previewBackgrounds).toEqual([]);
+    });
+  });
+});
