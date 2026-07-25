@@ -174,7 +174,13 @@
     "attendeesLabel": "Miembros de la familia",
     "addAttendee": "Añadir miembro",
     "attendeeNamePlaceholder": "Nombre completo",
-    "menuPlaceholder": "Seleccionar menú..."
+    "menuPlaceholder": "Seleccionar menú...",
+    "allergies": {
+      "sin gluten": "Sin gluten",
+      "sin lactosa": "Sin lactosa",
+      "alergia a frutos secos": "Alergia a frutos secos",
+      "alergia a mariscos": "Alergia a mariscos"
+    }
   },
   "public": {
     "loadingInvitation": "Cargando invitación…",
