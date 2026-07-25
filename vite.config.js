@@ -56,6 +56,12 @@ export default defineConfig({
         "src/i18n/locales/**",
         "src/**/__tests__/**",
       ],
+      thresholds: {
+        statements: 30,
+        branches: 20,
+        functions: 25,
+        lines: 30,
+      },
     },
   },
 });
