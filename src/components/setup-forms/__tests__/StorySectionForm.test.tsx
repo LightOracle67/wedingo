@@ -5,7 +5,7 @@ vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
 }));
 
-vi.mock("../../../contexts/AppContext", () => ({
+vi.mock("../../../contexts", () => ({
   useApp: () => ({
     config: { theme: "golden", menuEnabled: "true" },
     formData: {},

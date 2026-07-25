@@ -13,7 +13,7 @@ vi.mock("../../hooks/useToast", () => ({
   useToast: () => ({ addToast: vi.fn() }),
 }));
 
-vi.mock("../../contexts/AppContext", () => ({
+vi.mock("../../contexts", () => ({
   useApp: () => ({
     config: { theme: "golden" },
     formData: {},

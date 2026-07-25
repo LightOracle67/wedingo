@@ -1,7 +1,8 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import { Routes, Route, Navigate, Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { AppProvider, useApp } from "./contexts/AppContext";
+import { AppProvider } from "./contexts/AppContext";
+import { useApp } from "./contexts";
 import { SuperAdminProvider } from "./contexts/SuperAdminContext";
 import { ToastProvider } from "./contexts/ToastContext";
 import ErrorBoundary from "./components/ErrorBoundary";

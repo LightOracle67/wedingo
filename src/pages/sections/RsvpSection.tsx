@@ -1,6 +1,6 @@
 import { memo, useCallback, useMemo, useRef } from "react";
 import { Trans, useTranslation } from "react-i18next";
-import { useApp } from "../../contexts/AppContext";
+import { useApp } from "../../contexts";
 import type { Attendee } from "../../types";
 import AttendeeCard from "../../components/AttendeeCard";
 

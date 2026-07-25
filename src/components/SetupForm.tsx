@@ -14,7 +14,7 @@
 
 import { useEffect, useMemo } from "react";
 import { useTranslation, Trans } from "react-i18next";
-import { useApp } from "../contexts/AppContext";
+import { useApp } from "../contexts";
 import { useToast } from "../hooks/useToast";
 import CollapsibleSection from "./CollapsibleSection";
 import SectionOrderEditor from "./SectionOrderEditor";

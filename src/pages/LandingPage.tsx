@@ -1,4 +1,4 @@
-import { useApp } from "../contexts/AppContext";
+import { useApp } from "../contexts";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getDoc, getDocs, query, where, serverTimestamp, runTransaction } from "firebase/firestore";

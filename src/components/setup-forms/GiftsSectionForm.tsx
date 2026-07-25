@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { useApp } from "../../contexts/AppContext";
+import { useApp } from "../../contexts";
 
 export default function GiftsSectionForm({ prefix = "" }) {
   const { formData, updateFormField } = useApp();

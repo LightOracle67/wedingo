@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useApp } from "../contexts/AppContext";
+import { useApp } from "../contexts";
 import { useTranslation } from "react-i18next";
 import { randomMessage } from "../lib/invite-messages";
 import "../styles/print.css";
