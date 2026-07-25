@@ -55,7 +55,7 @@ const AttendeeCard = memo(function AttendeeCard({
       </div>
 
       <div className="setup-field" style={{ marginBottom: "0.4rem" }}>
-        <label className="setup-label" htmlFor={`attendee-name-${index}`}>{t("rsvp.nameLabel")}</label>
+        <label className="setup-label" htmlFor={`attendee-name-${index}`}>{t("rsvp.attendeeNameLabel")}</label>
         <input id={`attendee-name-${index}`} className="setup-input" type="text"
           value={attendee.name ?? ""} onChange={handleNameChange}
           placeholder={t("rsvp.attendeeNamePlaceholder")} required />

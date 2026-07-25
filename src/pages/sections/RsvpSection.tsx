@@ -12,6 +12,7 @@ interface RsvpFormState {
   parentalConsent: boolean;
   privacyConsent: boolean;
   healthConsent: boolean;
+  notAttendingCount: number;
 }
 
 interface RsvpSectionProps {
@@ -22,7 +23,7 @@ interface RsvpSectionProps {
   isRsvpSubmitting?: boolean;
   hasSubmitted?: boolean;
   alreadySubmittedEntry?: unknown;
-  updateRsvpField: (field: string, value: string | boolean | { name: string; menu: string; allergies: string[] }[]) => void;
+  updateRsvpField: (field: string, value: string | boolean | number | { name: string; menu: string; allergies: string[] }[]) => void;
   handleRsvpSubmit: (e: React.FormEvent) => void;
   handleDeleteRsvp: () => void;
   menuEnabled?: boolean;
@@ -139,6 +140,16 @@ const RsvpSection = memo(function RsvpSection({
               </select>
             </div>
           </div>
+
+          {rsvpForm.attendance === "no" && (
+            <div className="setup-field" style={{ marginTop: "0.75rem" }}>
+              <label className="setup-label" htmlFor="rsvpNotAttendingCount">{t("rsvp.notAttendingCountLabel")} *</label>
+              <input id="rsvpNotAttendingCount" className="setup-input" type="number" min={1} max={99}
+                value={rsvpForm.notAttendingCount || 1}
+                onChange={(e) => updateRsvpField("notAttendingCount", Number(e.target.value) || 1)}
+                required disabled={isAlreadySubmitted} />
+            </div>
+          )}
 
           {rsvpForm.attendance === "yes" && (
             <div style={{ marginTop: "0.75rem" }}>
