@@ -152,7 +152,7 @@ const RsvpSection = memo(function RsvpSection({
                   menuEnabled={!!hasStructuredMenu}
                   onUpdate={updateAttendee}
                   onRemove={removeAttendee}
-                  menus={menuOptions.map((m) => m.key)}
+                  menus={menuOptions.map((m) => ({ key: m.key, label: m.label }))}
                   allergiesOptions={["sin gluten", "sin lactosa", "alergia frutos secos", "alergia mariscos"]}
                   t={t}
                 />
