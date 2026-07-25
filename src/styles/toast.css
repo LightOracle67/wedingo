@@ -89,7 +89,7 @@
 }
 .toast--progress .toast__icon {
   background: rgba(110, 160, 255, 0.18);
-  color: #6ea0ff;
+  color: var(--color-info);
 }
 .toast__body {
   flex: 1;
@@ -107,8 +107,8 @@
 }
 .toast__progress-bar {
   height: 100%;
-  border-radius: 1rem;
-  background: linear-gradient(90deg, #6ea0ff, #a78bfa);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(90deg, var(--color-info), #a78bfa);
   transition: width 0.3s ease;
   min-width: 0;
 }

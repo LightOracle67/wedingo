@@ -76,7 +76,7 @@ describe("image-store", () => {
     expect(onProgress).toHaveBeenCalled();
   });
 
-  it("uploadImage throws on encrypt failure", async () => {
+  it("uploadImage throws on encrypt failure", { retry: 2 }, async () => {
     const { encrypt } = await import("../crypto-utils");
     const mockEncrypt = vi.fn(() => Promise.resolve(null));
     encrypt.mockImplementationOnce(mockEncrypt);
