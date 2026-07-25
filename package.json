@@ -17,6 +17,7 @@
     "preview": "vite preview",
     "translations:check": "node scripts/check-translations.js",
     "audit": "npm audit",
+    "analyze": "vite-bundle-visualizer",
     "firebase:login": "firebase login",
     "firebase:use": "firebase use --add",
     "deploy:hosting": "npm run build && firebase deploy --only hosting",
@@ -59,6 +60,7 @@
     "tailwindcss": "^4.3.2",
     "typescript": "^6.0.3",
     "vite": "^8.1.0",
+    "vite-bundle-visualizer": "^1.2.1",
     "vitest": "^4.1.9"
   }
 }
