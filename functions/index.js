@@ -18,11 +18,12 @@ export const cleanupExpiredData = onSchedule("0 0 1 * *", async () => {
 
   for (const doc of snapshot.docs) {
     const data = doc.data();
-    const weddingDate = data.weddingYear && data.weddingMonth && data.weddingDay
-      ? new Date(Number(data.weddingYear), 0, 1)
-      : null;
+    const day = Number(data.weddingDay);
+    const month = data.weddingMonth ? new Date(`${data.weddingMonth} 1, 2000`).getMonth() : -1;
+    const year = Number(data.weddingYear);
+    if (!day || month < 0 || !year) continue;
 
-    if (!weddingDate) continue;
+    const weddingDate = new Date(year, month, day);
     const eventTime = weddingDate.getTime();
     if (eventTime > 0 && now - eventTime > twelveMonthsAgo) {
       const inviteToken = doc.id;
@@ -31,9 +32,11 @@ export const cleanupExpiredData = onSchedule("0 0 1 * *", async () => {
         .where("inviteToken", "==", inviteToken).get();
       rsvpSnap.docs.forEach((d) => batch.delete(d.ref));
 
-      const tokSnap = await db.collection("setupTokens")
-        .where("inviteToken", "==", inviteToken).get();
-      tokSnap.docs.forEach((d) => batch.delete(d.ref));
+      const subcollections = await doc.ref.listCollections();
+      for (const subcol of subcollections) {
+        const snap = await subcol.get();
+        snap.docs.forEach((d) => batch.delete(d.ref));
+      }
 
       batch.delete(doc.ref);
 
