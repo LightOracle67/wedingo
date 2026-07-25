@@ -4,6 +4,7 @@ import type { Attendee } from "../types";
 interface MenuOption {
   key: string;
   label: string;
+  desc: string;
 }
 
 interface AttendeeCardProps {
@@ -69,6 +70,16 @@ const AttendeeCard = memo(function AttendeeCard({
             <option value="">{t("rsvp.menuPlaceholder", { defaultValue: "Select menu..." })}</option>
             {menus.map((m) => <option key={m.key} value={m.key}>{m.label}</option>)}
           </select>
+          {attendee.menu ? (
+            <div style={{
+              marginTop: "0.35rem", padding: "0.4rem 0.6rem", borderRadius: "0.5rem",
+              background: "color-mix(in srgb, var(--setup-accent) 8%, transparent)",
+              border: "1px solid color-mix(in srgb, var(--setup-accent) 15%, transparent)",
+              fontSize: "0.8rem", lineHeight: 1.4, color: "var(--setup-title, #fdf8ec)",
+            }}>
+              {menus.find((m) => m.key === attendee.menu)?.desc}
+            </div>
+          ) : null}
         </div>
       )}
 
