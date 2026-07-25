@@ -17,8 +17,17 @@ function buildTimestamp() {
   };
 }
 
+const sentryPlugin = process.env.SENTRY_AUTH_TOKEN
+  ? sentryVitePlugin({
+      authToken: process.env.SENTRY_AUTH_TOKEN,
+      org: process.env.SENTRY_ORG,
+      project: process.env.SENTRY_PROJECT,
+      telemetry: false,
+    })
+  : null;
+
 export default defineConfig({
-  plugins: [react(), tailwindcss(), buildTimestamp()],
+  plugins: [react(), tailwindcss(), buildTimestamp(), sentryPlugin].filter(Boolean),
   base: "/",
   resolve: {
     alias: {

@@ -18,6 +18,7 @@
     "preview": "vite preview",
     "translations:check": "node scripts/check-translations.js",
     "audit": "npm audit",
+    "audit:prod": "npm audit --production",
     "analyze": "vite-bundle-visualizer",
     "bundle:check": "node scripts/check-bundle-size.js",
     "firebase:login": "firebase login",
