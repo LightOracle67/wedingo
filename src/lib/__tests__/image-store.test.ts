@@ -82,7 +82,7 @@ describe("image-store", () => {
       mockEncrypt,
     );
     await expect(uploadImage("token", new File([], "test.jpg"))).rejects.toThrow(
-      "errors.encryptFailed",
+      "Image encryption failed.",
     );
   });
 

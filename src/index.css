@@ -77,6 +77,10 @@ html {
   --color-border-default: #2a261e;
   --color-error: #e74c3c;
   --color-success: #2ecc71;
+  --color-green: #a3f07a;
+  --color-red: #e06060;
+  --color-brown: #5a4a3a;
+  --color-dark-brown: #3a2a1a;
 
   /* Shadow scale */
   --shadow-card: 0 1px 3px rgba(0,0,0,0.3);

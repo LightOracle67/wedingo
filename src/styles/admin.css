@@ -675,7 +675,7 @@ select.setup-input {
 .setup-success-card__icon {
   font-size: 2.2rem;
   line-height: 1;
-  color: #a3f07a;
+  color: var(--color-green);
 }
 .setup-success-card__title {
   margin: 0;
@@ -855,7 +855,7 @@ select.setup-input {
   font-weight: 600;
 }
 .admin-badge--yes {
-  background: color-mix(in srgb, #a3f07a 30%, transparent);
+  background: color-mix(in srgb, var(--color-green) 30%, transparent);
   color: #b8ffa0;
 }
 .admin-badge--no {
@@ -1035,7 +1035,7 @@ select.setup-input {
 .admin-bar__link:hover,
 .admin-bar__link:focus-visible {
   background: rgba(247, 227, 170, 0.12);
-  color: #fff6dc;
+  color: var(--setup-title);
   outline: 2px solid var(--setup-accent);
   outline-offset: 2px;
 }
@@ -1059,7 +1059,7 @@ select.setup-input {
   padding: 0.3rem 0.55rem;
   border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.08);
-  color: #fff6dc;
+  color: var(--setup-title);
   width: 8rem;
   font-family: monospace;
   letter-spacing: 0.04em;
@@ -1256,7 +1256,7 @@ select.setup-input {
   border-color: color-mix(in srgb, var(--setup-accent) 50%, transparent);
 }
 .section-order-item__toggle--on {
-  color: #a3f07a;
+  color: var(--color-green);
   border-color: rgba(163, 240, 122, 0.3);
   background: rgba(163, 240, 122, 0.1);
 }
@@ -1552,8 +1552,8 @@ select.setup-input {
 }
 
 .setup-button--danger {
-  border-color: #e06060 !important;
-  color: #e06060 !important;
+  border-color: var(--color-red) !important;
+  color: var(--color-red) !important;
 }
 .setup-button--danger:hover {
   background: rgba(224, 96, 96, 0.1) !important;

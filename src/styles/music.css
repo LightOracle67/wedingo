@@ -168,7 +168,7 @@
 }
 .music-player__status {
   font-size: 0.65rem;
-  color: #e06060;
+  color: var(--color-red);
   text-align: center;
   animation: music-status-shake 400ms ease;
 }
