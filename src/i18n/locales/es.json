@@ -173,6 +173,8 @@
     "guestNamesPlaceholder": "Juan, Ana, el pequeño Tomás...",
     "attendeesLabel": "Miembros de la familia",
     "addAttendee": "Añadir miembro",
+    "notAttendingCountLabel": "Número de personas que no asistirán",
+    "attendeeNameLabel": "Nombre completo del miembro",
     "attendeeNamePlaceholder": "Nombre completo",
     "menuPlaceholder": "Seleccionar menú...",
     "allergies": {

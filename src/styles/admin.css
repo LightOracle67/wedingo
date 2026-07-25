@@ -1551,6 +1551,20 @@ select.setup-input {
   .gallery-array-editor__grid { grid-template-columns: repeat(2, 1fr); gap: 0.4rem; }
 }
 
+.rsvp-attendee-card {
+  background: color-mix(in srgb, var(--setup-card-bg, #1e1b15) 60%, transparent);
+  border: 1px solid color-mix(in srgb, var(--setup-border, #2a261e) 50%, transparent);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+}
+.rsvp-attendee-card:last-child {
+  margin-bottom: 0;
+}
+.rsvp-attendee-card .setup-field {
+  margin-bottom: 0.5rem;
+}
+
 .setup-button--danger {
   border-color: var(--color-red) !important;
   color: var(--color-red) !important;
