@@ -77,10 +77,9 @@ describe("image-store", () => {
   });
 
   it("uploadImage throws on encrypt failure", async () => {
+    const { encrypt } = await import("../crypto-utils");
     const mockEncrypt = vi.fn(() => Promise.resolve(null));
-    vi.mocked((await import("../crypto-utils")).encrypt).mockImplementationOnce(
-      mockEncrypt,
-    );
+    encrypt.mockImplementationOnce(mockEncrypt);
     await expect(uploadImage("token", new File([], "test.jpg"))).rejects.toThrow(
       "errors.encryptFailed",
     );
