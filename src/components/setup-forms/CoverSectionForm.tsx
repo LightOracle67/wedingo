@@ -1,6 +1,6 @@
 import { useCallback, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { useApp } from "../../contexts/AppContext";
+import { useApp } from "../../contexts";
 import { useToast } from "../../hooks/useToast";
 import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES } from "../../lib/constants";
 import { uploadImage } from "../../lib/image-store";

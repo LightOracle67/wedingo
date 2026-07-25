@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useApp } from "../../contexts/AppContext";
+import { useApp } from "../../contexts";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function GuestsSectionForm({ prefix: _prefix = "" }) {

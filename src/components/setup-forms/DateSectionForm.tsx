@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useApp } from "../../contexts/AppContext";
+import { useApp } from "../../contexts";
 import { MONTH_OPTIONS, MONTH_VALUE_TO_NUMBER } from "../../lib/constants";
 
 export default function DateSectionForm({ prefix = "" }) {

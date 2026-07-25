@@ -20,7 +20,7 @@ vi.mock("../../../lib/image-store", () => ({
   uploadImage: vi.fn(),
 }));
 
-vi.mock("../../../contexts/AppContext", () => ({
+vi.mock("../../../contexts", () => ({
   useApp: () => ({
     config: { theme: "golden", menuEnabled: "true" },
     formData: {},

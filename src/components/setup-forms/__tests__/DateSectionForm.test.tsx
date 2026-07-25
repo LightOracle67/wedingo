@@ -13,7 +13,7 @@ vi.mock("../../../lib/constants", () => ({
   MONTH_VALUE_TO_NUMBER: { enero: 1, febrero: 2 },
 }));
 
-vi.mock("../../../contexts/AppContext", () => ({
+vi.mock("../../../contexts", () => ({
   useApp: () => ({
     config: { theme: "golden", menuEnabled: "true" },
     formData: {},

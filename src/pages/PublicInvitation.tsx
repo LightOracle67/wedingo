@@ -20,7 +20,7 @@ import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import { useApp } from "../contexts/AppContext";
+import { useApp } from "../contexts";
 import { useStoryNavigation } from "../hooks/useStoryNavigation";
 import {
   getValidCoordinates,
