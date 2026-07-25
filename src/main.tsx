@@ -5,6 +5,9 @@ import App from "./App";
 import "./index.css";
 import "./i18n";
 import "./lib/sentry";
+import { reportWebVitals } from "./lib/vitals";
+
+reportWebVitals();
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
