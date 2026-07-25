@@ -1,7 +1,7 @@
 .envelope-flash {
   position: fixed; inset: 0; z-index: calc(var(--z-envelope, 9999) - 1);
   pointer-events: none;
-  background: #fff;
+  background: var(--color-white);
   opacity: 0;
   transition: opacity 2s ease;
 }
@@ -170,7 +170,7 @@
 .envelope__panel--front {
   z-index: 2;
   background:
-    linear-gradient(165deg, #f8f4ec 0%, #f0e8dc 40%, #f5efe4 100%);
+    linear-gradient(165deg, #f8f4ec 0%, var(--env-paper-mid) 40%, var(--env-paper-light) 100%);
   box-shadow:
     0 8px 32px rgba(0,0,0,0.3),
     0 2px 8px rgba(0,0,0,0.12),
@@ -204,7 +204,7 @@
 }
 .envelope__panel--back {
   z-index: 1;
-  background: linear-gradient(160deg, #e8e0d4 0%, #f0e8dc 100%);
+  background: linear-gradient(160deg, var(--env-paper-dark) 0%, var(--env-paper-mid) 100%);
   box-shadow: inset 0 1px 3px rgba(0,0,0,0.08);
   display: flex;
   align-items: center;
@@ -231,7 +231,7 @@
 }
 .envelope__flap-inner {
   width: 100%; height: 100%;
-  background: linear-gradient(160deg, #faf6ef 0%, #f5efe4 30%, #f0e8dc 100%);
+  background: linear-gradient(160deg, #faf6ef 0%, var(--env-paper-light) 30%, var(--env-paper-mid) 100%);
   clip-path: polygon(0 0, 100% 0, 50% 88%);
   box-shadow:
     inset 0 2px 0 rgba(255,255,255,0.7);
@@ -353,7 +353,7 @@
   top: 12px; right: 12px;
   z-index: 2;
   width: 42px; height: 50px;
-  background: linear-gradient(135deg, #f5efe4 0%, #e8e0d4 100%);
+  background: linear-gradient(135deg, var(--env-paper-light) 0%, var(--env-paper-dark) 100%);
   border: 2px solid var(--invite-core-color, #c8a84e);
   display: flex;
   align-items: center;

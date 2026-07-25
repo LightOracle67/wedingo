@@ -342,7 +342,7 @@ input.setup-input[type="date"] {
 }
 .setup-collapsible__vis-toggle:hover {
   background: var(--setup-accent);
-  color: #fff;
+  color: var(--color-white);
 }
 .setup-collapsible__vis-toggle--off {
   opacity: 0.55;

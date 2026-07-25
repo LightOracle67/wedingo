@@ -81,6 +81,13 @@ html {
   --color-red: #e06060;
   --color-brown: #5a4a3a;
   --color-dark-brown: #3a2a1a;
+  --color-white: #fff;
+  --color-info: #6ea0ff;
+
+  /* Envelope paper colors */
+  --env-paper-light: #f5efe4;
+  --env-paper-mid: #f0e8dc;
+  --env-paper-dark: #e8e0d4;
 
   /* Shadow scale */
   --shadow-card: 0 1px 3px rgba(0,0,0,0.3);

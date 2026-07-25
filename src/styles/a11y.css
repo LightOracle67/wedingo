@@ -105,7 +105,7 @@ html.a11y-high-contrast .music-player__card,
 html.a11y-high-contrast .music-player__fab,
 html.a11y-high-contrast .lang-popup__card,
 html.a11y-high-contrast .app-footer {
-  border: 2px solid #fff !important;
+  border: 2px solid var(--color-white) !important;
   box-shadow: none !important;
   backdrop-filter: none !important;
 }
@@ -120,7 +120,7 @@ html.a11y-high-contrast label,
 html.a11y-high-contrast legend,
 html.a11y-high-contrast a,
 html.a11y-high-contrast button {
-  -webkit-text-stroke: 0.5px #fff;
+  -webkit-text-stroke: 0.5px var(--color-white);
   paint-order: stroke fill;
   text-shadow: none !important;
 }
@@ -132,7 +132,7 @@ html.a11y-high-contrast .app-footer__link {
 html.a11y-high-contrast input,
 html.a11y-high-contrast textarea,
 html.a11y-high-contrast select {
-  border: 2px solid #fff !important;
+  border: 2px solid var(--color-white) !important;
 }
 html.a11y-reduced-motion *,
 html.a11y-reduced-motion *::before,
