@@ -6,24 +6,56 @@ import { encrypt, decrypt } from "../lib/crypto-utils";
 import { computeAge } from "../lib/date-utils";
 import { DIETARY_OPTIONS, parseDietaryInfo } from "../lib/rsvp-utils";
 import { useRsvpSubmit } from "./useRsvpSubmit";
+import type { Attendee } from "../types";
 
-function legacyToAttendees(entry) {
+interface LegacyEntry {
+  guestName: string;
+  mealChoice: string;
+  guestNames: string;
+  dietaryInfo: string;
+}
+
+interface RsvpFormData {
+  guestName: string;
+  attendance: string;
+  attendees: Attendee[];
+  privacyConsent: boolean;
+  healthConsent: boolean;
+  birthDate: string;
+  parentalConsent: boolean;
+}
+
+interface RsvpEntryData {
+  id: string;
+  guestName: string;
+  attendance: string;
+  dietaryInfo: string;
+  attendees: Attendee[];
+  companions: number;
+  mealChoice: string;
+  menuHeadcounts: Record<string, number>;
+  guestNames: string;
+  note: string;
+  submittedAt: string;
+}
+
+function legacyToAttendees(entry: LegacyEntry) {
   const parsed = parseDietaryInfo(entry.dietaryInfo || "", !!entry.mealChoice);
   const allergies = [...parsed.dietarySelection];
   if (parsed.dietaryOther && !allergies.includes(parsed.dietaryOther)) {
     allergies.push(parsed.dietaryOther);
   }
 
-  const attendees = [];
-  const names = (entry.guestNames || "").split(",").map((n) => n.trim()).filter(Boolean);
+  const attendees: Attendee[] = [];
+  const names = (entry.guestNames || "").split(",").map((n: string) => n.trim()).filter(Boolean);
 
   attendees.push({
     name: entry.guestName || "",
-    menu: entry.mealChoice || "",
+    menu: (entry.mealChoice || "") as Attendee["menu"],
     allergies: [...allergies],
   });
 
-  names.forEach((name) => {
+  names.forEach((name: string) => {
     attendees.push({
       name,
       menu: "",
@@ -34,10 +66,15 @@ function legacyToAttendees(entry) {
   return attendees;
 }
 
-export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuEnabled) {
+export function useRsvp(
+  inviteToken: string,
+  setAdminMessage: (msg: string) => void,
+  setAdminMessageType: (type: string) => void,
+  menuEnabled: boolean,
+) {
   const { t } = useTranslation();
-  const [rsvpEntries, setRsvpEntries] = useState([]);
-  const [rsvpForm, setRsvpForm] = useState({
+  const [rsvpEntries, setRsvpEntries] = useState<RsvpEntryData[]>([]);
+  const [rsvpForm, setRsvpForm] = useState<RsvpFormData>({
     guestName: "",
     attendance: "yes",
     attendees: [{ name: "", menu: "", allergies: [] }],
@@ -49,8 +86,8 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
   });
   const [rsvpMessage, setRsvpMessage] = useState("");
   const [hasSubmitted, setHasSubmitted] = useState(false);
-  const [alreadySubmittedEntry, setAlreadySubmittedEntry] = useState(null);
-  const prefillRef = useRef(null);
+  const [alreadySubmittedEntry, setAlreadySubmittedEntry] = useState<RsvpEntryData | null>(null);
+  const prefillRef = useRef<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -145,7 +182,8 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
 
   const handleDietaryToggle = useCallback(() => {}, []);
 
-  const updateRsvpField = useCallback((field, value) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const updateRsvpField = useCallback((field: string, value: any) => {
     if (field === "attendance") {
       setRsvpForm((current) => ({
         ...current,
@@ -160,15 +198,15 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
     setRsvpForm((current) => ({ ...current, [field]: value }));
   }, []);
 
-  const validateRsvpData = useCallback((data) => {
+  const validateRsvpData = useCallback((data: RsvpFormData) => {
     if (!data.guestName?.trim()) return t("rsvp.validation.nameRequired");
     if (data.attendance === "yes" && !data.birthDate) return t("rsvp.validation.birthDateRequired");
     if (data.attendance === "yes") {
-      const invalidAttendee = data.attendees.find((a) => !a.name.trim());
+      const invalidAttendee = data.attendees.find((a: Attendee) => !a.name.trim());
       if (invalidAttendee) return t("rsvp.validation.nameRequired");
     }
     if (data.attendance === "yes" && menuEnabled) {
-      const missingMenu = data.attendees.find((a) => !a.menu);
+      const missingMenu = data.attendees.find((a: Attendee) => !a.menu);
       if (missingMenu) return t("rsvp.validation.menuHeadcountRequired");
     }
     if (!data.privacyConsent) return t("rsvp.validation.privacyRequired");
@@ -176,23 +214,23 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
     const age = computeAge(data.birthDate);
     if (age !== null && age < 14 && !data.parentalConsent) return t("rsvp.validation.ageUnder14");
     if (data.attendance === "yes") {
-      const hasHealthData = data.attendees.some((a) => a.allergies && a.allergies.length > 0);
+      const hasHealthData = data.attendees.some((a: Attendee) => a.allergies && a.allergies.length > 0);
       if (hasHealthData && !data.healthConsent) return t("rsvp.validation.healthConsentRequired");
     }
     return null;
   }, [t, menuEnabled]);
 
-  const submitRsvpData = useCallback(async (data) => {
-    const allAllergies = data.attendees.flatMap((a) => a.allergies || []);
+  const submitRsvpData = useCallback(async (data: RsvpFormData) => {
+    const allAllergies = data.attendees.flatMap((a: Attendee) => a.allergies || []);
     const dietaryInfo = allAllergies.filter(Boolean).join(" | ");
     const encryptedDietaryInfo = await encrypt(dietaryInfo, inviteToken);
     const age = computeAge(data.birthDate);
     const single = data.guestName.trim();
     const now = new Date().toISOString();
-    const payload = {
+    const payload: Record<string, unknown> = {
       guestName: single,
       attendance: data.attendance,
-      attendees: data.attendees.map((a) => ({
+      attendees: data.attendees.map((a: Attendee) => ({
         name: a.name,
         menu: a.menu || "",
         allergies: a.allergies || [],
@@ -211,7 +249,7 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
     }
     const docRef = await addDoc(RSVP_COLLECTION_REF, payload);
     setRsvpEntries((current) => [
-      { ...payload, id: docRef.id, submittedAt: now, dietaryInfo },
+      { ...(payload as unknown as RsvpEntryData), id: docRef.id, submittedAt: now, dietaryInfo },
       ...current,
     ]);
     setRsvpMessage(
@@ -231,17 +269,17 @@ export function useRsvp(inviteToken, setAdminMessage, setAdminMessageType, menuE
 
   const { submitting, submitError, handleSubmit: submitViaHook } = useRsvpSubmit({
     token: inviteToken,
-    onSubmit: submitRsvpData,
-    validate: validateRsvpData,
+    onSubmit: submitRsvpData as unknown as (data: Record<string, unknown>) => Promise<void>,
+    validate: validateRsvpData as unknown as (data: Record<string, unknown>) => string | null,
   });
 
   const isRsvpSubmitting = submitting;
   const feedbackMessage = submitError || rsvpMessage;
 
-  const handleRsvpSubmit = useCallback((event) => {
+  const handleRsvpSubmit = useCallback((event: React.FormEvent) => {
     event.preventDefault();
     if (submitting) return;
-    submitViaHook(rsvpForm);
+    submitViaHook(rsvpForm as unknown as Record<string, unknown>);
   }, [submitting, submitViaHook, rsvpForm]);
 
   const handleDeleteRsvp = useCallback(async () => {

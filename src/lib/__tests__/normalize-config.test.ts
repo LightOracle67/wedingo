@@ -84,7 +84,7 @@ describe("normalizeConfig", () => {
   });
 
   it("handles null/undefined input", () => {
-    const result = normalizeConfig(null);
+    const result = normalizeConfig(null as unknown as Record<string, unknown>);
     expect(result.firstName).toBe("");
     expect(result.theme).toBe("golden");
     expect(result.adminUsername).toBe("");

@@ -1,7 +1,11 @@
 import { useCallback } from "react";
 
-export function useFieldHandlers(updateFormField, maxAllowedYear, weddingMinute) {
-  const handleDayChange = useCallback((value) => {
+export function useFieldHandlers(
+  updateFormField: (field: string, value: string) => void,
+  maxAllowedYear: number,
+  weddingMinute: string,
+) {
+  const handleDayChange = useCallback((value: string) => {
     const digits = value.replace(/[^0-9]/g, "").slice(0, 2);
     if (!digits) {
       updateFormField("weddingDay", "");
@@ -12,7 +16,7 @@ export function useFieldHandlers(updateFormField, maxAllowedYear, weddingMinute)
     updateFormField("weddingDay", String(clamped));
   }, [updateFormField]);
 
-  const handleHourChange = useCallback((value) => {
+  const handleHourChange = useCallback((value: string) => {
     const digits = value.replace(/[^0-9]/g, "").slice(0, 2);
     if (!digits) {
       updateFormField("weddingHour", "");
@@ -23,7 +27,7 @@ export function useFieldHandlers(updateFormField, maxAllowedYear, weddingMinute)
     updateFormField("weddingHour", String(clamped));
   }, [updateFormField]);
 
-  const handleMinuteChange = useCallback((value) => {
+  const handleMinuteChange = useCallback((value: string) => {
     const digits = value.replace(/[^0-9]/g, "").slice(0, 2);
     if (!digits) {
       updateFormField("weddingMinute", "");
@@ -49,7 +53,7 @@ export function useFieldHandlers(updateFormField, maxAllowedYear, weddingMinute)
     updateFormField("weddingMinute", String(clamped).padStart(2, "0"));
   }, [updateFormField, weddingMinute]);
 
-  const handleYearChange = useCallback((value) => {
+  const handleYearChange = useCallback((value: string) => {
     const digits = value.replace(/[^0-9]/g, "").slice(0, 4);
     if (!digits) {
       updateFormField("weddingYear", "");
@@ -63,7 +67,7 @@ export function useFieldHandlers(updateFormField, maxAllowedYear, weddingMinute)
     updateFormField("weddingYear", digits);
   }, [updateFormField, maxAllowedYear]);
 
-  const handleCoordinateChange = useCallback((field, value) => {
+  const handleCoordinateChange = useCallback((field: string, value: string) => {
     const normalized = value.replace(/,/g, ".").replace(/[^0-9.-]/g, "");
     updateFormField(field, normalized.slice(0, 18));
   }, [updateFormField]);

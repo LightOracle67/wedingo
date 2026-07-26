@@ -3,11 +3,11 @@ import i18n from "../i18n";
 const MAX_IMAGE_DIMENSION = 1600;
 const TARGET_BYTES = 300 * 1024;
 
-export const compressImage = (file) =>
-  new Promise((resolve, reject) => {
+export const compressImage = (file: File) =>
+  new Promise<string>((resolve, reject) => {
     if (file.size <= TARGET_BYTES && file.type === "image/jpeg") {
       const reader = new FileReader();
-      reader.onload = () => resolve(reader.result);
+      reader.onload = () => resolve(reader.result as string);
       reader.onerror = reject;
       reader.readAsDataURL(file);
       return;

@@ -14,7 +14,7 @@ interface RsvpEntry {
   submittedAt: string;
 }
 
-interface AttendanceTabProps {
+export interface AttendanceTabProps {
   searchQuery: string;
   setSearchQuery: (value: string) => void;
   attendanceFilter: string;
@@ -125,7 +125,7 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                       ? entry.guestNames.split(",").map((n: string) => n.trim()).filter(Boolean).map((n: string) => ({ name: n }))
                       : []);
                 const menuLines = entry.attendees?.length
-                  ? entry.attendees.map((a: { name: string; menu: string; allergies: string[] }) => a.menu ? `${a.name}: ${t("rsvp.menu" + a.menu.charAt(0).toUpperCase() + a.menu.slice(1))}` : null).filter(Boolean)
+                  ? entry.attendees.map((a: { name: string; menu: string; allergies: string[] }) => a.menu ? `${a.name}: ${t("rsvp.menu" + a.menu.charAt(0).toUpperCase() + a.menu.slice(1))}` : null).filter((x): x is string => x !== null)
                   : formatMenuLines(entry.menuHeadcounts || {}, t);
                 const dietLines = entry.attendees?.length
                   ? entry.attendees.filter((a: { name: string; menu: string; allergies: string[] }) => a.allergies?.length).map((a: { name: string; menu: string; allergies: string[] }) => `${a.name}: ${a.allergies.join(", ")}`)

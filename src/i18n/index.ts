@@ -5,7 +5,7 @@ import resourcesToBackend from "i18next-resources-to-backend";
 
 i18n
   .use(LanguageDetector)
-  .use(resourcesToBackend((language) => import(`./locales/${language}.json`)))
+  .use(resourcesToBackend((language: string) => import(`./locales/${language}.json`)))
   .use(initReactI18next)
   .init({
     fallbackLng: "es",

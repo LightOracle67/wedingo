@@ -3,8 +3,8 @@ import i18n from "../i18n";
 import { getValidCoordinates, resolveLocationTarget } from "../lib/geo-utils";
 import { buildOpenFreeMapPreviewUrl } from "../lib/map-utils";
 
-export function useMapPreview(weddingPlace, weddingLatitude, weddingLongitude) {
-  const [previewBackgrounds, setPreviewBackgrounds] = useState([]);
+export function useMapPreview(weddingPlace: string, weddingLatitude: string, weddingLongitude: string) {
+  const [previewBackgrounds, setPreviewBackgrounds] = useState<Array<{ id: string; src: string; label: string; description: string }>>([]);
   const [isPreviewLoading, setIsPreviewLoading] = useState(false);
   const previewRequestRef = useRef(0);
 
@@ -32,11 +32,7 @@ export function useMapPreview(weddingPlace, weddingLatitude, weddingLongitude) {
           if (previewRequestRef.current === requestId) setPreviewBackgrounds([]);
           return;
         }
-        const src = await buildOpenFreeMapPreviewUrl(resolvedLocation, {
-          id: "default",
-          label: i18n.t("public.mapPreviewAlt"),
-          description: i18n.t("public.mapPreviewAlt"),
-        });
+        const src = await buildOpenFreeMapPreviewUrl(resolvedLocation);
         if (previewRequestRef.current !== requestId) return;
         setPreviewBackgrounds(src ? [{ id: "default", src, label: i18n.t("public.mapPreviewAlt"), description: i18n.t("public.mapPreviewAlt") }] : []);
       } finally {

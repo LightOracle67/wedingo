@@ -9,7 +9,7 @@ interface RuleTest {
   expectAllow: boolean;
 }
 
-function evaluateRules(collection: string, operation: string, resource: unknown | null, request: Record<string, unknown>): boolean {
+function evaluateRules(collection: string, operation: string, _resource: unknown | null, request: Record<string, unknown>): boolean {
   const isGallery = /^invitations\/[^/]+\/gallery\/[^/]+$/.test(collection);
   const isAudio = /^invitations\/[^/]+\/audio\/[^/]+$/.test(collection);
   const isInvitation = collection === "invitations" || /^invitations\/[^/]+$/.test(collection);

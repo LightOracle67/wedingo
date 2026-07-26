@@ -17,12 +17,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { getDoc, runTransaction, serverTimestamp, setDoc, updateDoc } from "firebase/firestore";
+import { getDoc, runTransaction, serverTimestamp, setDoc, updateDoc, type DocumentData } from "firebase/firestore";
 import { db, invitationDocRef } from "../lib/firebase";
 import { defaultConfig } from "../lib/constants";
 import { generateSetupToken, normalizeTokenValue } from "../lib/token-utils";
 import { saveSession, getSession, renewSession, clearSession, firestoreSessionExpiry } from "../lib/sessionVars";
 import { safeSetItem, safeGetItem, safeRemoveItem } from "../lib/storage";
+import type { InvitationConfig } from "../types";
 
 /**
  * Hook de autenticación del panel de configuración.
@@ -34,7 +35,13 @@ import { safeSetItem, safeGetItem, safeRemoveItem } from "../lib/storage";
  * @param {function} setHasStoredConfig - Setter para indicar si hay config guardada.
  * @returns {object} Estado y handlers de autenticación.
  */
-export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessageType, setHasStoredConfig) {
+export function useSetupAuth(
+  inviteToken: string,
+  config: InvitationConfig,
+  setAdminMessage: (msg: string) => void,
+  setAdminMessageType: (type: string) => void,
+  setHasStoredConfig: (v: boolean) => void,
+) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   // ─── Estados de autenticación ──────────────────────────
@@ -50,7 +57,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
   const [confirmTokenInput, setConfirmTokenInput] = useState("");
 
   /** Intervalo de renovación de sesión. */
-  const renewRef = useRef(null);
+  const renewRef = useRef<ReturnType<typeof setInterval> | null>(null);
   /** Tipo de sesión actual: "setup" o "admin". */
   const sessionTypeRef = useRef("");
   /** Previene doble clic en reseteo de token. */
@@ -133,7 +140,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
    * @param {string} [oldToken] - Token anterior a reemplazar (opcional).
    * @returns {Promise<string>} El token activo.
    */
-  const refreshSetupToken = useCallback(async () => {
+  const refreshSetupToken = useCallback(async (_oldToken?: string) => {
     const storageKey = `wedin_setup_token_${inviteToken || ""}`;
 
     // ── Intenta restaurar desde sessionStorage ──
@@ -188,7 +195,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
    * Intenta activar la sesión usando un token de setup.
    * Retorna el username del token (si existe) o lanza error.
    */
-  const activateSessionWithToken = useCallback(async (enteredToken, _validateToken) => {
+  const activateSessionWithToken = useCallback(async (enteredToken: string, _validateToken?: (tokenDoc: DocumentData, tu: string) => void) => {
     const inviteRef = invitationDocRef(inviteToken);
     const inviteSnapActive = await getDoc(inviteRef);
     if (inviteSnapActive.exists() && inviteSnapActive.data().activeSession) {
@@ -275,7 +282,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
 
     setIsTokenVerifying(true);
     try {
-      const tokenUsername = await activateSessionWithToken(enteredToken, (tokenDoc, tu) => {
+      const tokenUsername = await activateSessionWithToken(enteredToken, (_tokenDoc, tu) => {
         if (tu && tu !== username) {
           throw new Error("codeUserMismatch");
         }
@@ -292,7 +299,7 @@ export function useSetupAuth(inviteToken, config, setAdminMessage, setAdminMessa
       setAuthMessageType("success");
       setAuthMessage(t("auth.loginSuccess"));
     } catch (err) {
-      const key = err?.message;
+      const key = (err as Error)?.message;
       if (key === "codeUserMismatch") {
         setAuthMessage(t("auth.codeUserMismatch"));
       } else {

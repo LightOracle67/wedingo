@@ -17,6 +17,6 @@ export function useStoryNavigation(visibleOrder: string[]) {
     isTransitioning: false,
     getSectionStyle,
     getSectionClassName,
-    startTransition: () => {},
+    startTransition: (_index?: number) => {},
   };
 }

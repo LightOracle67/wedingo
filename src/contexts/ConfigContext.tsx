@@ -10,6 +10,7 @@ import {
   MAX_LONG_TEXT_LENGTH, PRIVACY_POLICY_VERSION,
 } from "../lib/constants";
 import { normalizeConfig } from "../lib/normalize-config";
+import type { InvitationConfig } from "../types";
 import { decodeInviteConfig } from "../lib/invite-config-codec";
 import { loadDecryptedField, deleteGallery } from "../lib/image-store";
 import { clearSession } from "../lib/sessionVars";
@@ -47,7 +48,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
   const { formattedDate, formattedTime, calendarLink } = useCalendar(config);
 
   const updateFormField = useCallback((field: string, value: string) => {
-    setFormData((current) => ({ ...current, [field]: value }));
+    setFormData((current: InvitationConfig) => ({ ...current, [field]: value }));
   }, []);
 
   const { previewBackgrounds, isPreviewLoading } = useMapPreview(

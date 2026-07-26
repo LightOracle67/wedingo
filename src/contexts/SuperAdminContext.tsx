@@ -65,10 +65,11 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
         loggingInRef.current = false;
         return false;
       }
-      saveSession("superadmin", result.user.email, { uid: result.user.uid });
+      saveSession("superadmin", result.user.email ?? "", { uid: result.user.uid });
       setUser(result.user);
       loggingInRef.current = false;
       try {
+        // @ts-expect-error PasswordCredential is not in TS DOM types
         const cred = new PasswordCredential({ id: email, password, name: email });
         navigator.credentials.store(cred);
       } catch {}

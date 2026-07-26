@@ -193,7 +193,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
   }, [openLightbox, clamped]);
 
   const handleThumbClick = useCallback((e: React.MouseEvent) => {
-    const idx = e.currentTarget?.dataset?.index;
+    const idx = (e.currentTarget as HTMLElement)?.dataset?.index;
     if (idx != null) goTo(parseInt(idx, 10));
   }, [goTo]);
 

@@ -18,26 +18,25 @@ import { safeSetItem, safeGetItem, safeRemoveItem, clearAllStorage, hasStorageCo
  * @returns {object} Mock compatible con la API de Storage.
  */
 function createStorageMock() {
-  const store = {};
+  const store: Record<string, string> = {};
 
-  const mock = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const mock: Record<string, any> = {
     get length() {
       return Object.keys(store).length;
     },
-    key(index) {
+    key(index: number) {
       const keys = Object.keys(store);
       return keys[index] ?? null;
     },
-    getItem(key) {
+    getItem(key: string) {
       return Object.hasOwn(store, key) ? store[key] : null;
     },
-    setItem(key, value) {
+    setItem(key: string, value: string) {
       store[key] = String(value);
-      // Refleja la clave como propiedad enumerable en el mock
-      // para que Object.keys() pueda encontrarla.
       mock[key] = value;
     },
-    removeItem(key) {
+    removeItem(key: string) {
       delete store[key];
       delete mock[key];
     },
@@ -47,8 +46,8 @@ function createStorageMock() {
 }
 
 describe("storage", () => {
-  let localMock;
-  let sessionMock;
+  let localMock: ReturnType<typeof createStorageMock>;
+  let sessionMock: ReturnType<typeof createStorageMock>;
 
   beforeEach(() => {
     localMock = createStorageMock();

@@ -167,7 +167,7 @@ const LanguageSwitcher = memo(function LanguageSwitcher() {
   const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
-  const trapRef = useFocusTrap(open && !closing);
+  const trapRef = useFocusTrap<HTMLDivElement>(open && !closing);
   const currentLang = i18n.language?.split("-")[0] || "es";
   const currentLabel = GROUPS.flatMap(g => g.options).find((l: { code: string; label: string }) => l.code === currentLang)?.label || currentLang.toUpperCase();
 

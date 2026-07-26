@@ -11,7 +11,7 @@ export function firestoreSessionExpiry() {
   return new Date(Date.now() + FIRESTORE_SESSION_TTL_MS);
 }
 
-export function saveSession(type, identifier, extra = {}) {
+export function saveSession(type: string, identifier: string, extra: Record<string, unknown> = {}) {
   try {
     const data = {
       type,

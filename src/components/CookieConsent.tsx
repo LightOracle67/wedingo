@@ -54,7 +54,7 @@ const CookieConsent = memo(function CookieConsent() {
     setPreferences((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
-  const focusTrapRef = useFocusTrap(visible);
+  const focusTrapRef = useFocusTrap<HTMLDivElement>(visible);
 
   if (!visible) return null;
 

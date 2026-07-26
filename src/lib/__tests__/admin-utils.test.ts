@@ -46,10 +46,10 @@ describe("calcRSVPSummary", () => {
   });
 
   it("counts pending entries (no attendance set)", () => {
-    const entries = [
+    const entries: Parameters<typeof calcRSVPSummary>[0] = [
       { attendance: "yes" },
       { attendance: "no" },
-      {},
+      {} as { attendance: string; companions?: number },
       { attendance: "maybe" },
     ];
     const result = calcRSVPSummary(entries);
@@ -57,9 +57,9 @@ describe("calcRSVPSummary", () => {
   });
 
   it("handles companion parsing", () => {
-    const entries = [
+    const entries: Parameters<typeof calcRSVPSummary>[0] = [
       { attendance: "yes", companions: 3 },
-      { attendance: "yes", companions: null },
+      { attendance: "yes", companions: null as unknown as number },
       { attendance: "yes" },
     ];
     const result = calcRSVPSummary(entries);
@@ -68,8 +68,8 @@ describe("calcRSVPSummary", () => {
   });
 
   it("handles non-numeric companions", () => {
-    const entries = [
-      { attendance: "yes", companions: "abc" },
+    const entries: Parameters<typeof calcRSVPSummary>[0] = [
+      { attendance: "yes", companions: "abc" as unknown as number },
     ];
     const result = calcRSVPSummary(entries);
     expect(result.confirmedGuests).toBe(1);

@@ -8,7 +8,7 @@ export function hasStorageConsent() {
   }
 }
 
-export function safeSetItem(key, value, storage = localStorage) {
+export function safeSetItem(key: string, value: string, storage: Storage = localStorage) {
   if (storage === localStorage && !hasStorageConsent()) return false;
   try {
     storage.setItem(key, value);
@@ -18,7 +18,7 @@ export function safeSetItem(key, value, storage = localStorage) {
   }
 }
 
-export function safeGetItem(key, storage = localStorage) {
+export function safeGetItem(key: string, storage: Storage = localStorage) {
   if (storage === localStorage && !hasStorageConsent()) return null;
   try {
     return storage.getItem(key);
@@ -27,7 +27,7 @@ export function safeGetItem(key, storage = localStorage) {
   }
 }
 
-export function safeRemoveItem(key, storage = localStorage) {
+export function safeRemoveItem(key: string, storage: Storage = localStorage) {
   try {
     storage.removeItem(key);
   } catch {}

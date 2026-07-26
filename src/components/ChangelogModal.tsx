@@ -7,7 +7,7 @@ import "../styles/modals.css";
 const ChangelogModal = memo(function ChangelogModal({ onClose }: { onClose: () => void }) {
   const { t } = useTranslation();
   const [closing, setClosing] = useState(false);
-  const modalRef = useFocusTrap(true);
+  const modalRef = useFocusTrap<HTMLDivElement>(true);
 
   const handleClose = useCallback(() => {
     setClosing(true);

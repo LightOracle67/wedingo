@@ -21,7 +21,7 @@ export async function uploadImage(inviteToken: string, file: File, onProgress?: 
   return { encrypted, dataUrl };
 }
 
-export async function addGalleryImage(inviteToken, encrypted, dataUrl, position, onProgress, originalName?, originalSize?) {
+export async function addGalleryImage(inviteToken: string, encrypted: string, dataUrl: string, position: number, onProgress: (p: number) => void, originalName?: string, originalSize?: number) {
   onProgress?.(85);
   const docRef = await addDoc(galCol(inviteToken), {
     data: encrypted,
@@ -35,12 +35,12 @@ export async function addGalleryImage(inviteToken, encrypted, dataUrl, position,
   return { id: docRef.id, dataUrl };
 }
 
-export async function updateGalleryDescription(inviteToken, imageId, description) {
+export async function updateGalleryDescription(inviteToken: string, imageId: string, description: string) {
   const safe = String(description || "").slice(0, 200).trim();
   await updateDoc(doc(galCol(inviteToken), imageId), { description: safe });
 }
 
-export async function updateGalleryOrder(inviteToken, items) {
+export async function updateGalleryOrder(inviteToken: string, items: { id: string; position: number }[]) {
   if (!items.length) return;
   const batch = writeBatch(db);
   for (const { id, position } of items) {
@@ -49,12 +49,12 @@ export async function updateGalleryOrder(inviteToken, items) {
   await batch.commit();
 }
 
-export async function loadDecryptedField(inviteToken, encrypted) {
+export async function loadDecryptedField(inviteToken: string, encrypted: string) {
   if (!encrypted) return "";
   try { return await decrypt(encrypted, inviteToken); } catch { return ""; }
 }
 
-export async function loadGallery(inviteToken) {
+export async function loadGallery(inviteToken: string) {
   try {
     const snap = await getDocs(galCol(inviteToken));
     const result = [];
@@ -79,7 +79,7 @@ export async function loadGallery(inviteToken) {
   } catch { return []; }
 }
 
-export async function deleteGallery(inviteToken) {
+export async function deleteGallery(inviteToken: string) {
   const snap = await getDocs(galCol(inviteToken));
   if (snap.empty) return;
   const batch = writeBatch(db);
@@ -87,6 +87,6 @@ export async function deleteGallery(inviteToken) {
   await batch.commit();
 }
 
-export async function deleteGalleryImage(inviteToken, imageId) {
+export async function deleteGalleryImage(inviteToken: string, imageId: string) {
   await deleteDoc(doc(galCol(inviteToken), imageId));
 }

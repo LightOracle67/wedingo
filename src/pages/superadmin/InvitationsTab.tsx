@@ -49,7 +49,7 @@ const InvitationsTab = memo(function InvitationsTab() {
     } catch { setError(t("superadmin.exportError")); }
   }, [t]);
 
-  const filtered = searchInvitations(invitations, search);
+  const filtered = searchInvitations(invitations, search) as Array<{ id: string; theme?: string; weddingDay?: string; weddingMonth?: string; weddingYear?: string }>;
   const totalBytes = invitations.reduce((acc, d) => {
     try { return acc + new Blob([JSON.stringify(d)]).size; } catch { return acc; }
   }, 0);

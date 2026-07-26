@@ -6,7 +6,7 @@ const HEADER_LEN = SALT_LEN + IV_LEN + ITER_LEN;
 // Format: salt(16B) || iv(12B) || iterations(3B) || AES-GCM ciphertext
 const ITERATIONS_NEW = 600000;
 
-async function getKey(secret, salt, iterations) {
+async function getKey(secret: string, salt: BufferSource, iterations: number) {
   const enc = new TextEncoder();
   const keyMaterial = await crypto.subtle.importKey(
     "raw", enc.encode(secret.padEnd(32, "x").slice(0, 32)),
@@ -18,7 +18,7 @@ async function getKey(secret, salt, iterations) {
   );
 }
 
-function uint8ToBase64(bytes) {
+function uint8ToBase64(bytes: Uint8Array) {
   const chunkSize = 8192;
   const chunks = [];
   for (let i = 0; i < bytes.length; i += chunkSize) {
@@ -30,7 +30,7 @@ function uint8ToBase64(bytes) {
   return btoa(chunks.join(""));
 }
 
-export async function encrypt(text, token) {
+export async function encrypt(text: string, token: string) {
   if (!text) return text;
   if (!token) throw new Error("encrypt: token required");
   try {
@@ -54,7 +54,7 @@ export async function encrypt(text, token) {
   }
 }
 
-export async function decrypt(ciphertext, token) {
+export async function decrypt(ciphertext: string, token: string) {
   if (!ciphertext || !token || ciphertext.length < 24) return ciphertext;
   try {
     const raw = Uint8Array.from(atob(ciphertext), c => c.charCodeAt(0));

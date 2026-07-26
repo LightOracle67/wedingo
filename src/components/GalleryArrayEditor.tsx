@@ -28,7 +28,7 @@ const galleryItemStyle: React.CSSProperties = {
 
 interface GalleryArrayEditorProps {
   inviteToken?: string;
-  t?: (key: string) => string;
+  t: (key: string, options?: Record<string, unknown>) => string;
 }
 
 const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: GalleryArrayEditorProps) {

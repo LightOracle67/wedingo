@@ -2,17 +2,17 @@ import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { saveSession, getSession, renewSession, clearSession } from "../sessionVars";
 
 const STORAGE_KEY = "wedin_session";
-let storage = {};
+const storage: Record<string, string> = {};
 
 beforeEach(() => {
-  storage = {};
+  Object.keys(storage).forEach((k) => delete storage[k]);
   const mock = {
-    getItem: vi.fn((key) => (key in storage ? storage[key] : null)),
-    setItem: vi.fn((key, value) => { storage[key] = value; }),
-    removeItem: vi.fn((key) => { delete storage[key]; }),
-    clear: vi.fn(() => { storage = {}; }),
+    getItem: vi.fn((key: string) => (key in storage ? storage[key] : null)),
+    setItem: vi.fn((key: string, value: string) => { storage[key] = value; }),
+    removeItem: vi.fn((key: string) => { delete storage[key]; }),
+    clear: vi.fn(() => { Object.keys(storage).forEach((k) => delete storage[k]); }),
     get length() { return Object.keys(storage).length; },
-    key: vi.fn((i) => Object.keys(storage)[i] ?? null),
+    key: vi.fn((i: number) => Object.keys(storage)[i] ?? null),
   };
   vi.stubGlobal("sessionStorage", mock);
 });
@@ -56,7 +56,7 @@ describe("sessionVars", () => {
   });
 
   it("handles sessionStorage write errors gracefully", () => {
-    sessionStorage.setItem.mockImplementationOnce(() => { throw new Error("QuotaExceededError"); });
+    (sessionStorage.setItem as ReturnType<typeof vi.fn>).mockImplementationOnce(() => { throw new Error("QuotaExceededError"); });
     expect(() => saveSession("setup", "user")).not.toThrow();
     expect(getSession()).toBeNull();
   });

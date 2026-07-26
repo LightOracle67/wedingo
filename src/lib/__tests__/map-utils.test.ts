@@ -65,7 +65,7 @@ describe("buildOpenFreeMapPreviewUrl", () => {
 
     expect(fetchSpy).toHaveBeenCalled();
     const calledUrls = fetchSpy.mock.calls.map((c) => c[0]);
-    calledUrls.forEach((url: string) => {
+    calledUrls.forEach((url) => {
       expect(url).toMatch(/^https:\/\/tile\.openstreetmap\.org\/15\/\d+\/\d+\.png$/);
     });
   });

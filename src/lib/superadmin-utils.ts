@@ -36,21 +36,21 @@ export function calcGlobalStats(invitations: AnyRecord[], rsvps: AnyRecord[], to
   };
 }
 
-export function searchInvitations(invitations, query) {
+export function searchInvitations(invitations: Record<string, unknown>[], query: string) {
   if (!query?.trim()) return invitations;
   const q = query.trim().toLowerCase();
-  return invitations.filter((inv) => {
-    const name = `${inv.firstName || ""} ${inv.secondName || ""}`.toLowerCase();
-    const user = (inv.adminUsername || "").toLowerCase();
-    const token = (inv.id || "").toLowerCase();
+  return invitations.filter((inv: Record<string, unknown>) => {
+    const name = `${String(inv.firstName ?? "")} ${String(inv.secondName ?? "")}`.toLowerCase();
+    const user = String(inv.adminUsername ?? "").toLowerCase();
+    const token = String(inv.id ?? "").toLowerCase();
     return name.includes(q) || user.includes(q) || token.includes(q);
   });
 }
 
-export function tokenUsageOverTime(tokens) {
-  const byDate = {};
+export function tokenUsageOverTime(tokens: Record<string, unknown>[]) {
+  const byDate: Record<string, number> = {};
   for (const t of tokens) {
-    const ts = t.createdAt?.toDate?.() || (t.createdAt?.seconds ? new Date(t.createdAt.seconds * 1000) : null);
+    const ts = (t.createdAt as { toDate?: () => Date; seconds?: number })?.toDate?.() || ((t.createdAt as { seconds?: number })?.seconds ? new Date((t.createdAt as { seconds: number }).seconds * 1000) : null);
     if (!ts) continue;
     const key = ts.toISOString().slice(0, 10);
     byDate[key] = (byDate[key] || 0) + 1;
@@ -59,7 +59,7 @@ export function tokenUsageOverTime(tokens) {
 }
 
 export function rsvpOverTime(rsvps: AnyRecord[]) {
-  const byDate = {};
+  const byDate: Record<string, { total: number; yes: number; no: number }> = {};
   for (const r of rsvps) {
     const ts = r.submittedAt?.toDate?.() || (r.submittedAt?.seconds ? new Date(r.submittedAt.seconds * 1000) : null);
     if (!ts) continue;

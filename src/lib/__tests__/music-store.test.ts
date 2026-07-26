@@ -51,8 +51,8 @@ describe("music-store", () => {
   });
 
   it("uploadAudio throws on encrypt failure", async () => {
-    const mockEncrypt = vi.fn(() => Promise.resolve(null));
-    vi.mocked((await import("../crypto-utils")).encrypt).mockImplementationOnce(
+    const mockEncrypt: () => Promise<string | null> = vi.fn(() => Promise.resolve(null));
+    (vi.mocked((await import("../crypto-utils")).encrypt) as unknown as { mockImplementationOnce: (fn: () => Promise<string | null>) => void }).mockImplementationOnce(
       mockEncrypt,
     );
     await expect(

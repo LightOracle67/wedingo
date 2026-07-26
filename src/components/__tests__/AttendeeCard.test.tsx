@@ -1,20 +1,21 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
 import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 import AttendeeCard from "../AttendeeCard";
+import type { Attendee } from "../../types";
 
 afterEach(cleanup);
 
 describe("AttendeeCard", () => {
   const defaultProps = {
-    attendee: { name: "", menu: "", allergies: [] },
+    attendee: { name: "", menu: "" as Attendee["menu"], allergies: [] as string[] },
     index: 0,
     total: 1,
     menuEnabled: true,
     onUpdate: vi.fn(),
     onRemove: vi.fn(),
-    menus: [],
+    menus: [] as Array<{ key: string; label: string; desc: string }>,
     allergiesOptions: ["sin gluten"],
-    t: (key: string) => key,
+    t: (key: string, _opts?: Record<string, unknown>) => key,
   };
 
   it("renders attendee name input", () => {

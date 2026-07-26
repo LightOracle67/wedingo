@@ -1,7 +1,14 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 
-const AccessTab = memo(function AccessTab({ setupToken, handleResetTokenFromAdmin, handleAdminLogout, handleDeleteInvitation }: { setupToken?: string; handleResetTokenFromAdmin: () => void; handleAdminLogout: () => void; handleDeleteInvitation: () => void }) {
+export interface AccessTabProps {
+  setupToken?: string;
+  handleResetTokenFromAdmin: () => void;
+  handleAdminLogout: () => void;
+  handleDeleteInvitation: () => void;
+}
+
+const AccessTab = memo(function AccessTab({ setupToken, handleResetTokenFromAdmin, handleAdminLogout, handleDeleteInvitation }: AccessTabProps) {
   const { t } = useTranslation();
   return (
     <>
