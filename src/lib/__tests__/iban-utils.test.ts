@@ -45,4 +45,32 @@ describe("isValidIBAN", () => {
   it("rejects IBAN with invalid special characters", () => {
     expect(isValidIBAN("ES66 2100 0418 4012 3456 789@")).toBe(false);
   });
+
+  it("validates a French IBAN", () => {
+    expect(isValidIBAN("FR1420041010050500013M02606")).toBe(true);
+  });
+
+  it("validates an Italian IBAN", () => {
+    expect(isValidIBAN("IT60X0542811101000000123456")).toBe(true);
+  });
+
+  it("validates a Dutch IBAN", () => {
+    expect(isValidIBAN("NL91ABNA0417164300")).toBe(true);
+  });
+
+  it("rejects IBAN with valid format but invalid checksum", () => {
+    expect(isValidIBAN("ES6621000418401234567890")).toBe(false);
+  });
+
+  it("accepts lowercase characters (normalized to uppercase)", () => {
+    expect(isValidIBAN("es6621000418401234567891")).toBe(true);
+  });
+
+  it("rejects IBAN with less than 15 characters after cleaning", () => {
+    expect(isValidIBAN("ES12 3456")).toBe(false);
+  });
+
+  it("rejects IBAN with invalid country code format", () => {
+    expect(isValidIBAN("12345678901234567890")).toBe(false);
+  });
 });

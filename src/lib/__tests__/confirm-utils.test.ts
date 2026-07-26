@@ -34,4 +34,10 @@ describe("confirm-utils", () => {
     vi.spyOn(window, "confirm").mockReturnValue(false);
     await expect(confirmAction("Cancel?")).resolves.toBe(false);
   });
+
+  it("confirmAction delegates to showConfirm with the message", async () => {
+    vi.spyOn(window, "confirm").mockReturnValue(true);
+    await expect(confirmAction("Delegate test")).resolves.toBe(true);
+    expect(window.confirm).toHaveBeenCalledWith("Delegate test");
+  });
 });

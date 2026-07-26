@@ -94,4 +94,30 @@ describe("normalizeConfig", () => {
     const result = normalizeConfig({ firstName: "  " });
     expect(result.firstName).toBe("");
   });
+
+  it("converts number values to strings via s()", () => {
+    const result = normalizeConfig({ weddingDay: 15, weddingYear: 2026 } as Record<string, unknown>);
+    expect(result.weddingDay).toBe("15");
+    expect(result.weddingYear).toBe("2026");
+  });
+
+  it("converts array values to strings via s()", () => {
+    const result = normalizeConfig({ firstName: ["Juan", "Carlos"] } as unknown as Record<string, unknown>);
+    expect(result.firstName).toBe("Juan");
+  });
+
+  it("handles empty array via s()", () => {
+    const result = normalizeConfig({ firstName: [] } as unknown as Record<string, unknown>);
+    expect(result.firstName).toBe("");
+  });
+
+  it("returns empty string for boolean values via s()", () => {
+    const result = normalizeConfig({ menuEnabled: true } as unknown as Record<string, unknown>);
+    expect(result.menuEnabled).toBe("false");
+  });
+
+  it("handles sectionOrder as trimmed string", () => {
+    const result = normalizeConfig({ sectionOrder: "  gifts,story,hero  " });
+    expect(result.sectionOrder).toBe("gifts,story,hero");
+  });
 });
