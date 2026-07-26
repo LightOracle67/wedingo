@@ -158,4 +158,39 @@ describe("image-store", () => {
       deleteGalleryImage("token", "img-id"),
     ).resolves.toBeUndefined();
   });
+
+  it("loadGallery returns mapped results for non-empty snapshot", async () => {
+    vi.mocked(firestore.getDocs).mockResolvedValueOnce({
+      empty: false,
+      docs: [
+        {
+          id: "img2",
+          data: () => ({
+            data: "encrypted-data-string",
+            position: 2,
+            description: "Photo 2",
+          }),
+        },
+        {
+          id: "img1",
+          data: () => ({
+            data: "encrypted-data-string",
+            position: 1,
+            description: "Photo 1",
+          }),
+        },
+      ],
+    } as never);
+    const result = await loadGallery("token");
+    expect(result).toHaveLength(2);
+    expect(result[0].id).toBe("img1");
+  });
+
+  it("deleteGallery deletes docs when snapshot is not empty", async () => {
+    vi.mocked(firestore.getDocs).mockResolvedValueOnce({
+      empty: false,
+      docs: [{ ref: "doc-ref-1" }, { ref: "doc-ref-2" }],
+    } as never);
+    await expect(deleteGallery("token")).resolves.toBeUndefined();
+  });
 });

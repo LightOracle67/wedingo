@@ -194,9 +194,20 @@ describe("storage", () => {
     it("safeGetItem no lanza error si localStorage falla", () => {
       localMock.setItem("wedin_cookie_consent", "accepted");
       const origGetItem = localMock.getItem;
-      localMock.getItem = vi.fn(() => { throw new Error("SecurityError"); });
+      localMock.getItem = vi.fn((key: string) => {
+        if (key === "wedin_cookie_consent") return "accepted";
+        throw new Error("SecurityError");
+      });
       const result = safeGetItem("wedin_test");
       localMock.getItem = origGetItem;
+      expect(result).toBeNull();
+    });
+
+    it("safeGetItem catches when sessionStorage.getItem throws", () => {
+      const origGetItem = sessionMock.getItem;
+      sessionMock.getItem = vi.fn(() => { throw new Error("fail"); });
+      const result = safeGetItem("test", sessionStorage);
+      sessionMock.getItem = origGetItem;
       expect(result).toBeNull();
     });
 

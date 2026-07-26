@@ -15,4 +15,13 @@ describe("crypto-utils", () => {
   it("throws when token is missing", async () => {
     await expect(encrypt("test", "")).rejects.toThrow("encrypt: token required");
   });
+
+  it("decrypt returns empty string for wrong token", async () => {
+    const text = "Hello World this is a longer text for testing";
+    const correctToken = "test-token-123";
+    const wrongToken = "wrong-token-456";
+    const encrypted = await encrypt(text, correctToken);
+    const result = await decrypt(encrypted, wrongToken);
+    expect(result).toBe("");
+  });
 });

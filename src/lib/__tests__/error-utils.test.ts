@@ -75,4 +75,25 @@ describe("logError", () => {
     logError(new Error("e"));
     expect(consoleSpy).toHaveBeenCalledWith("[App]", "e", expect.any(String));
   });
+
+  it("sends error to Sentry when SENTRY_DSN is set", async () => {
+    vi.resetModules();
+    vi.stubEnv("VITE_SENTRY_DSN", "https://sentry.example.com/123");
+    const fetchSpy = vi.spyOn(globalThis, "fetch").mockImplementation(() => Promise.resolve(new Response()));
+    const { logError: sentryLogError } = await import("../error-utils");
+    sentryLogError(new Error("sentry error"), "SentryCtx");
+    expect(fetchSpy).toHaveBeenCalled();
+    fetchSpy.mockRestore();
+    vi.unstubAllEnvs();
+  });
+
+  it("handles Sentry fetch failure gracefully", async () => {
+    vi.resetModules();
+    vi.stubEnv("VITE_SENTRY_DSN", "https://sentry.example.com/123");
+    const fetchSpy = vi.spyOn(globalThis, "fetch").mockImplementation(() => Promise.reject(new Error("Network fail")));
+    const { logError: sentryLogError } = await import("../error-utils");
+    expect(() => sentryLogError(new Error("err"))).not.toThrow();
+    fetchSpy.mockRestore();
+    vi.unstubAllEnvs();
+  });
 });
