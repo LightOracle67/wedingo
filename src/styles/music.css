@@ -115,7 +115,7 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #ff453a;
+  background: var(--color-red);
   border: 1.5px solid var(--setup-grad-start, #1f1a10);
   animation: music-dot-blink 1.5s ease-in-out infinite;
 }
