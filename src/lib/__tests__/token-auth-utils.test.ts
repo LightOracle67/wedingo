@@ -16,4 +16,19 @@ describe("token-auth-utils", () => {
   it("isTokenValid returns false for short tokens", () => {
     expect(isTokenValid("short")).toBe(false);
   });
+
+  it("createNewToken returns unique values on consecutive calls", () => {
+    const a = createNewToken();
+    const b = createNewToken();
+    expect(a.raw).not.toBe(b.raw);
+    expect(a.normalized).not.toBe(b.normalized);
+  });
+
+  it("isTokenValid returns false for empty string", () => {
+    expect(isTokenValid("")).toBe(false);
+  });
+
+  it("isTokenValid returns false for whitespace-only string", () => {
+    expect(isTokenValid("   ")).toBe(false);
+  });
 });

@@ -71,4 +71,29 @@ describe("buildGoogleCalendarUrl", () => {
     });
     expect(url).toContain("calendar.google.com");
   });
+
+  it("encodes special characters in title and description", () => {
+    const startDate = new Date("2026-06-15T18:00:00");
+    const endDate = new Date("2026-06-15T23:00:00");
+    const url = buildGoogleCalendarUrl({
+      title: "Test & Special <Chars>",
+      description: "Desc with üñíçødé",
+      place: "",
+      startDate, endDate,
+    });
+    expect(url).toContain("Test+%26+Special+%3CChars%3E");
+    expect(url).toContain("Desc+with+%C3%BC%C3%B1%C3%AD%C3%A7%C3%B8d%C3%A9");
+  });
+
+  it("works with minimal empty fields", () => {
+    const startDate = new Date("2026-06-15T18:00:00");
+    const endDate = new Date("2026-06-15T23:00:00");
+    const url = buildGoogleCalendarUrl({
+      title: "",
+      description: "",
+      place: "",
+      startDate, endDate,
+    });
+    expect(url).toContain("https://calendar.google.com/calendar/render?");
+  });
 });

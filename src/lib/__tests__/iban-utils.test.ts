@@ -25,4 +25,24 @@ describe("isValidIBAN", () => {
   it("rejects invalid format", () => {
     expect(isValidIBAN("not an iban")).toBe(false);
   });
+
+  it("validates a UK IBAN", () => {
+    expect(isValidIBAN("GB29NWBK60161331926819")).toBe(true);
+  });
+
+  it("rejects empty string", () => {
+    expect(isValidIBAN("")).toBe(false);
+  });
+
+  it("rejects whitespace-only string", () => {
+    expect(isValidIBAN("   ")).toBe(false);
+  });
+
+  it("rejects IBAN longer than 34 characters", () => {
+    expect(isValidIBAN("ES66210004184012345678911234567890123456789")).toBe(false);
+  });
+
+  it("rejects IBAN with invalid special characters", () => {
+    expect(isValidIBAN("ES66 2100 0418 4012 3456 789@")).toBe(false);
+  });
 });
