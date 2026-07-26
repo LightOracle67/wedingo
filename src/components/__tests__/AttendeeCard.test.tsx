@@ -13,8 +13,8 @@ describe("AttendeeCard", () => {
     menuEnabled: true,
     onUpdate: vi.fn(),
     onRemove: vi.fn(),
-    menus: [] as Array<{ key: string; label: string; desc: string }>,
-    allergiesOptions: ["sin gluten"],
+    menus: [{ key: "carne", label: "Carne", desc: "Filete con guarnición" }],
+    allergiesOptions: ["sin gluten", "frutos secos"],
     t: (key: string, _opts?: Record<string, unknown>) => key,
   };
 
@@ -28,5 +28,72 @@ describe("AttendeeCard", () => {
     render(<AttendeeCard {...defaultProps} onUpdate={onUpdate} />);
     fireEvent.change(screen.getByPlaceholderText("rsvp.attendeeNamePlaceholder"), { target: { value: "John" } });
     expect(onUpdate).toHaveBeenCalled();
+  });
+
+  it("shows menu description when a menu is selected", () => {
+    const attendee = { name: "John", menu: "carne" as Attendee["menu"], allergies: [] };
+    render(<AttendeeCard {...defaultProps} attendee={attendee} />);
+    expect(screen.getByText("Filete con guarnición")).toBeDefined();
+  });
+
+  it("does not show menu description when no menu is selected", () => {
+    render(<AttendeeCard {...defaultProps} />);
+    expect(screen.queryByText("Filete con guarnición")).toBeNull();
+  });
+
+  it("shows remove button when total > 1", () => {
+    render(<AttendeeCard {...defaultProps} total={2} index={0} />);
+    const removeBtn = screen.getByLabelText("rsvp.removeAttendee");
+    expect(removeBtn).toBeDefined();
+  });
+
+  it("hides remove button when total is 1", () => {
+    render(<AttendeeCard {...defaultProps} total={1} />);
+    expect(screen.queryByLabelText("rsvp.removeAttendee")).toBeNull();
+  });
+
+  it("calls onRemove when remove button is clicked", () => {
+    const onRemove = vi.fn();
+    render(<AttendeeCard {...defaultProps} total={2} index={0} onRemove={onRemove} />);
+    fireEvent.click(screen.getByLabelText("rsvp.removeAttendee"));
+    expect(onRemove).toHaveBeenCalledWith(0);
+  });
+
+  it("renders allergies checkboxes", () => {
+    render(<AttendeeCard {...defaultProps} />);
+    expect(screen.getByLabelText(/sin gluten/)).toBeDefined();
+    expect(screen.getByLabelText(/frutos secos/)).toBeDefined();
+  });
+
+  it("toggles allergy on click", () => {
+    const onUpdate = vi.fn();
+    render(<AttendeeCard {...defaultProps} onUpdate={onUpdate} />);
+    fireEvent.click(screen.getByLabelText(/sin gluten/));
+    expect(onUpdate).toHaveBeenCalledWith(0, "allergies", ["sin gluten"]);
+  });
+
+  it("removes allergy on second click", () => {
+    const onUpdate = vi.fn();
+    const attendee = { name: "John", menu: "" as Attendee["menu"], allergies: ["sin gluten"] };
+    render(<AttendeeCard {...defaultProps} attendee={attendee} onUpdate={onUpdate} />);
+    fireEvent.click(screen.getByLabelText(/sin gluten/));
+    expect(onUpdate).toHaveBeenCalledWith(0, "allergies", []);
+  });
+
+  it("does not render menu section when menuEnabled is false", () => {
+    render(<AttendeeCard {...defaultProps} menuEnabled={false} />);
+    expect(screen.queryByLabelText("rsvp.menuLabel")).toBeNull();
+  });
+
+  it("renders menu select when menuEnabled is true", () => {
+    render(<AttendeeCard {...defaultProps} />);
+    expect(screen.getByLabelText("rsvp.menuLabel")).toBeDefined();
+  });
+
+  it("calls onUpdate when menu selection changes", () => {
+    const onUpdate = vi.fn();
+    render(<AttendeeCard {...defaultProps} onUpdate={onUpdate} />);
+    fireEvent.change(screen.getByLabelText("rsvp.menuLabel"), { target: { value: "carne" } });
+    expect(onUpdate).toHaveBeenCalledWith(0, "menu", "carne");
   });
 });
