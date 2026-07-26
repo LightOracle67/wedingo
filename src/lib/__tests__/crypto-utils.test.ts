@@ -12,8 +12,7 @@ describe("crypto-utils", () => {
     expect(decrypted).toBe(text);
   });
 
-  it("returns original text when token is missing", async () => {
-    const result = await encrypt("test", "");
-    expect(result).toBe("test");
+  it("throws when token is missing", async () => {
+    await expect(encrypt("test", "")).rejects.toThrow("encrypt: token required");
   });
 });
