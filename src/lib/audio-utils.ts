@@ -37,6 +37,9 @@ export async function compressAudio(file: File): Promise<string> {
   let audioBuffer: AudioBuffer;
   try {
     audioBuffer = await audioCtx.decodeAudioData(arrayBuffer);
+  } catch {
+    audioCtx.close();
+    throw new Error("audio.decodeFailed");
   } finally {
     await audioCtx.close();
   }
@@ -64,7 +67,10 @@ export async function compressAudio(file: File): Promise<string> {
   const chunkSize = 8192;
   const chunks: string[] = [];
   for (let i = 0; i < bytes.length; i += chunkSize) {
-    chunks.push(String.fromCharCode(...bytes.subarray(i, i + chunkSize)));
+    const chunk = bytes.subarray(i, i + chunkSize);
+    let s = "";
+    for (let j = 0; j < chunk.length; j++) s += String.fromCharCode(chunk[j]);
+    chunks.push(s);
   }
   const binary = chunks.join("");
   return `data:audio/wav;base64,${btoa(binary)}`;

@@ -62,6 +62,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
   useEffect(() => { loadGallery(); }, [loadGallery]);
 
   const handleUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>, slotIndex: number) => {
+    if (!inviteToken || !t) { if (t) addToast("error", t("errors.generic")); return; }
     const file = e.target.files?.[0];
     const input = e.target;
     if (!file) return;
@@ -97,6 +98,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
   }, [inviteToken, slots, startUploadToast, addToast, t]);
 
   const handleDelete = useCallback(async (slotIndex: number) => {
+    if (!inviteToken || !t) return;
     const existing = slots[slotIndex];
     if (!existing?.id) return;
     if (!window.confirm(t("setup.deleteImageConfirm"))) return;
@@ -124,6 +126,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
   }, []);
 
   const handleDescriptionBlur = useCallback(async (slotIndex: number, currentValue: string) => {
+    if (!inviteToken) return;
     const item = slotsRef.current[slotIndex];
     if (!item?.id) {
       addToast("error", t("errors.imageIdNotFound"));
@@ -135,7 +138,8 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
       await updateGalleryDescription(inviteToken, item.id, safe);
       addToast("success", t("setup.galleryDescriptionSaved"));
     } catch (err: unknown) {
-      addToast("error", `${t("setup.galleryDescriptionSaveFailed")}: ${err.code || err.message}`);
+      const msg = err instanceof Error ? err.message : String(err);
+      addToast("error", `${t("setup.galleryDescriptionSaveFailed")}: ${msg}`);
     }
   }, [inviteToken, addToast, t]);
 
