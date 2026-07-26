@@ -1,9 +1,9 @@
 const TILE_URL = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
 
-function lonToTileX(lon, zoom) { return Math.floor((lon + 180) / 360 * Math.pow(2, zoom)); }
-function latToTileY(lat, zoom) { return Math.floor((1 - Math.log(Math.tan(lat * Math.PI / 180) + 1 / Math.cos(lat * Math.PI / 180)) / Math.PI) / 2 * Math.pow(2, zoom)); }
+function lonToTileX(lon: number, zoom: number) { return Math.floor((lon + 180) / 360 * Math.pow(2, zoom)); }
+function latToTileY(lat: number, zoom: number) { return Math.floor((1 - Math.log(Math.tan(lat * Math.PI / 180) + 1 / Math.cos(lat * Math.PI / 180)) / Math.PI) / 2 * Math.pow(2, zoom)); }
 
-export const buildOpenFreeMapPreviewUrl = async (location) => {
+export const buildOpenFreeMapPreviewUrl = async (location: { latitude: number; longitude: number } | null | undefined) => {
   if (!location) return "";
   try {
     const zoom = 15;
@@ -15,13 +15,14 @@ export const buildOpenFreeMapPreviewUrl = async (location) => {
     canvas.width = size;
     canvas.height = size;
     const ctx = canvas.getContext("2d");
+    if (!ctx) return "";
 
     const tileSize = 256;
     const tilesPerSide = Math.ceil(size / tileSize);
 
     for (let dx = 0; dx < tilesPerSide; dx++) {
       for (let dy = 0; dy < tilesPerSide; dy++) {
-        const url = TILE_URL.replace("{z}", zoom).replace("{x}", tx + dx).replace("{y}", ty + dy);
+        const url = TILE_URL.replace("{z}", String(zoom)).replace("{x}", String(tx + dx)).replace("{y}", String(ty + dy));
         try {
           const resp = await fetch(url, { mode: "cors" });
           const blob = await resp.blob();

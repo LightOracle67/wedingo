@@ -76,7 +76,6 @@ export default function AdminPage() {
     adminMessage, adminMessageType,
     handleAdminLogout, handleResetTokenFromAdmin,
     handleClearRsvpEntries, handleDeleteInvitation,
-    formattedDate,
     reloadConfig,
   } = useApp();
 
@@ -176,7 +175,7 @@ export default function AdminPage() {
 
   /** Props agrupadas para PanelTab (reduce prop drilling). */
   const panelConfig = useMemo(() => ({
-    inviteToken,
+    inviteToken: inviteToken!,
     confirmedResponses,
     declinedResponses,
     totalGuests,
@@ -184,7 +183,7 @@ export default function AdminPage() {
     setActiveTab: setActiveTabAndFilter,
     setAttendanceFilter: setAttendanceFilterValue,
     exportPdf,
-    formatDate,
+    formatDate: formatDate as (date: unknown) => string,
     onRestore: reloadConfig,
     visitCount: config._visits || 0,
   }), [inviteToken, confirmedResponses, declinedResponses, totalGuests, rsvpEntries, setActiveTabAndFilter, setAttendanceFilterValue, exportPdf, reloadConfig, config._visits]);
@@ -291,14 +290,12 @@ export default function AdminPage() {
             {activeTab === "invitacion" && <InvitationTab />}
 
             {/* Pestaña: Lista de asistencia */}
-            {activeTab === "asistencia" && <AttendanceTab config={attendanceConfig} />}
+            {activeTab === "asistencia" && <AttendanceTab {...attendanceConfig} />}
 
             {/* Pestaña: Compartir invitación */}
             {activeTab === "compartir" && (
               <ShareTab
                 inviteToken={inviteToken || ""}
-                config={config}
-                formattedDate={formattedDate}
                 addToast={addToast}
               />
             )}

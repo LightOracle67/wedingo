@@ -7,7 +7,7 @@ import { calcRSVPSummary, getDietarySummary } from "../../lib/admin-utils";
 import { DonutChart, Legend } from "../../components/AttendanceChart";
 import StatsCard from "./StatsCard";
 
-interface PanelTabConfig {
+export interface PanelTabConfig {
   inviteToken: string;
   confirmedResponses: number;
   declinedResponses: number;

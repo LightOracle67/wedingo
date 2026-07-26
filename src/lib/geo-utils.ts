@@ -1,4 +1,4 @@
-export const geocodeLocation = async (place) => {
+export const geocodeLocation = async (place: string) => {
   if (!place) return null;
   const response = await fetch(
     `https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&q=${encodeURIComponent(place)}`,
@@ -14,7 +14,7 @@ export const geocodeLocation = async (place) => {
   return { latitude, longitude, label: firstResult.display_name || place };
 };
 
-export const parseCoordinate = (value) => {
+export const parseCoordinate = (value: string | number | null | undefined) => {
   if (typeof value !== "string") return null;
   const normalizedValue = value.trim().replace(/,/g, ".");
   if (!normalizedValue) return null;
@@ -23,7 +23,7 @@ export const parseCoordinate = (value) => {
   return parsedValue;
 };
 
-export const searchLocations = async (query) => {
+export const searchLocations = async (query: string) => {
   if (!query || query.length < 3) return [];
   const response = await fetch(
     `https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&q=${encodeURIComponent(query)}`,
@@ -41,7 +41,7 @@ export const searchLocations = async (query) => {
     }));
 };
 
-export const getValidCoordinates = (latitudeValue, longitudeValue) => {
+export const getValidCoordinates = (latitudeValue: string | null, longitudeValue: string | null) => {
   const latitude = parseCoordinate(latitudeValue);
   const longitude = parseCoordinate(longitudeValue);
   if (latitude === null || longitude === null) return null;
@@ -49,7 +49,7 @@ export const getValidCoordinates = (latitudeValue, longitudeValue) => {
   return { latitude, longitude };
 };
 
-export const resolveLocationTarget = async ({ place, latitudeValue, longitudeValue }) => {
+export const resolveLocationTarget = async ({ place, latitudeValue, longitudeValue }: { place: string; latitudeValue: string; longitudeValue: string }) => {
   const exactCoordinates = getValidCoordinates(latitudeValue, longitudeValue);
   if (exactCoordinates) {
     return { ...exactCoordinates, label: place || "Ubicación configurada" };
@@ -57,16 +57,16 @@ export const resolveLocationTarget = async ({ place, latitudeValue, longitudeVal
   return geocodeLocation(place);
 };
 
-export const buildGoogleMapsUrl = (location) =>
+export const buildGoogleMapsUrl = (location: { latitude: number; longitude: number }) =>
   `https://www.google.com/maps/search/?api=1&query=${location.latitude},${location.longitude}`;
 
-export const buildGoogleMapsSearchUrl = (place) =>
+export const buildGoogleMapsSearchUrl = (place: string) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place)}`;
 
-export const buildAppleMapsUrl = (location, placeLabel) => {
+export const buildAppleMapsUrl = (location: { latitude: number; longitude: number; label?: string }, placeLabel?: string) => {
   const label = encodeURIComponent(placeLabel || location.label || "Boda");
   return `https://maps.apple.com/?ll=${location.latitude},${location.longitude}&q=${label}`;
 };
 
-export const buildAppleMapsSearchUrl = (place) =>
+export const buildAppleMapsSearchUrl = (place: string) =>
   `https://maps.apple.com/?q=${encodeURIComponent(place)}`;

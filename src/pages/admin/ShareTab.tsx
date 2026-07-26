@@ -1,15 +1,16 @@
 import { memo, useCallback, useState } from "react";
-import { useTranslation, TFunction } from "react-i18next";
+import { useTranslation } from "react-i18next";
+import type { TFunction } from "i18next";
 import { randomMessage } from "../../lib/invite-messages";
 
-interface ShareTabProps {
+export interface ShareTabProps {
   inviteToken: string;
   addToast?: (type: string, message: string, duration?: number) => number;
 }
 
 const APPS = (t: TFunction) => [
   { key: "whatsapp", label: t("share.whatsapp"), url: (text: string) => `https://wa.me/?text=${encodeURIComponent(text)}` },
-  { key: "telegram", label: t("share.telegram"), url: (text: string) => `https://t.me/share/url?url=${encodeURIComponent(text.split("\n").pop())}&text=${encodeURIComponent(text)}` },
+  { key: "telegram", label: t("share.telegram"), url: (text: string) => `https://t.me/share/url?url=${encodeURIComponent(text.split("\n").pop() ?? "")}&text=${encodeURIComponent(text)}` },
   { key: "sms", label: t("share.sms"), url: (text: string) => `sms:?body=${encodeURIComponent(text)}` },
 ];
 

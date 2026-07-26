@@ -60,7 +60,7 @@ function applyPrefs(prefs: A11yPrefs) {
 export default function AccessibilityPanel({ open, onClose }: { open: boolean; onClose: () => void }) {
   const { t } = useTranslation();
   const [prefs, setPrefs] = useState(loadPrefs);
-  const modalRef = useFocusTrap(open);
+  const modalRef = useFocusTrap<HTMLDivElement>(open);
   useEscapeKey(onClose, open);
 
   useEffect(() => {

@@ -20,11 +20,11 @@ export const storage = getStorage(app);
 // App Check deshabilitado temporalmente porque los tokens de ReCaptcha Enterprise
 // exceden el límite de URI (414) al combinarse con los parámetros de sesión de Firebase Hosting.
 
-export function invitationDocRef(token) {
+export function invitationDocRef(token: string) {
   return doc(db, "invitations", token);
 }
 export const INVITATIONS_COLLECTION_REF = collection(db, "invitations");
 export const RSVP_COLLECTION_REF = collection(db, "rsvpResponses");
-export const rsvpByInviteRef = (token) => query(RSVP_COLLECTION_REF, where("inviteToken", "==", token));
+export const rsvpByInviteRef = (token: string) => query(RSVP_COLLECTION_REF, where("inviteToken", "==", token));
 
 

@@ -14,7 +14,7 @@ export function isDateInPast(year: string, month: string, day: string): boolean 
   return date < today;
 }
 
-export function computeAge(birthDateStr) {
+export function computeAge(birthDateStr: string) {
   if (!birthDateStr) return null;
   const birth = new Date(birthDateStr + "T00:00:00");
   const today = new Date();
@@ -34,7 +34,7 @@ export function computeAge(birthDateStr) {
  * @param {boolean} hasStoredConfig - Si ya hay configuración guardada.
  * @returns {string|null} Mensaje de error o null si es válido.
  */
-export function validateWeddingDate(config, maxAllowedYear, hiddenSet, hasStoredConfig) {
+export function validateWeddingDate(config: Record<string, string>, maxAllowedYear: number, hiddenSet: Set<string>, hasStoredConfig: boolean) {
   if (!hiddenSet.has("details") || !hasStoredConfig) {
     if (!config.weddingDay || !config.weddingMonth || !config.weddingYear || !config.weddingHour || !config.weddingMinute) {
       return "errors.dateIncomplete";
@@ -77,7 +77,7 @@ export function validateWeddingDate(config, maxAllowedYear, hiddenSet, hasStored
  * @param {object} config - Configuración con weddingDay, weddingMonth, weddingYear, weddingHour, weddingMinute.
  * @returns {Date|null}
  */
-export function parseWeddingDate(config) {
+export function parseWeddingDate(config: Record<string, string>) {
   if (!config.weddingDay || !config.weddingMonth || !config.weddingYear) return null;
   const monthNum = MONTH_VALUE_TO_NUMBER[config.weddingMonth];
   if (!monthNum) return null;

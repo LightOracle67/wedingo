@@ -3,7 +3,16 @@ import { useTranslation } from "react-i18next";
 import { MONTH_VALUE_TO_NUMBER } from "../lib/constants";
 import { buildGoogleCalendarUrl } from "../lib/calendar-utils";
 
-export function useCalendar(config) {
+export function useCalendar(config: {
+  weddingDay: string;
+  weddingMonth: string;
+  weddingYear: string;
+  weddingHour: string;
+  weddingMinute: string;
+  firstName: string;
+  secondName: string;
+  weddingPlace: string;
+}) {
   const { t } = useTranslation();
   const formattedDate = useMemo(() => {
     const day = config.weddingDay.trim();

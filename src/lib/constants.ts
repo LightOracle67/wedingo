@@ -56,7 +56,7 @@ export const THEME_OPTIONS = [
 
 export const THEME_VALUES = new Set(THEME_OPTIONS.map((t) => t.value));
 
-export const THEME_PREVIEW_COLORS = {
+export const THEME_PREVIEW_COLORS: Record<string, { accent: string; bg: string }> = {
   golden: { accent: "#d8b24a", bg: "#2a2418" },
   forest: { accent: "#97c87a", bg: "#1a3d2e" },
   rose: { accent: "#efb0c7", bg: "#4e1a2c" },
@@ -88,7 +88,7 @@ export const THEME_GROUPS = [
 
 export const STORY_SECTION_ORDER = ["hero", "details", "info", "story", "gallery", "gifts", "accommodation", "rsvp"];
 
-export const SECTION_LABELS = {
+export const SECTION_LABELS: Record<string, string> = {
   hero: "Portada",
   details: "Lugar, Fecha y Hora",
   info: "Sobre los invitados",

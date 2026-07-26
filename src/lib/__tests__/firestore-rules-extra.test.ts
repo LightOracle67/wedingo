@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 
 function isValidRequest(collection: string, operation: string, request: Record<string, unknown>): boolean {
   const isInvitation = !collection.includes("/");
-  const _isSubcollection = collection.includes("/");
+  void collection.includes("/");
   const hasAuth = !!request.auth;
 
   if (isInvitation && operation === "get") return true;

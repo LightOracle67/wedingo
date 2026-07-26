@@ -134,7 +134,7 @@ export const PT_MESSAGES = [
 ];
 
 export function randomMessage(lang = "es") {
-  const map = { es: WEDDING_MESSAGES, en: EN_MESSAGES, fr: FR_MESSAGES, de: DE_MESSAGES, pt: PT_MESSAGES };
+  const map: Record<string, string[]> = { es: WEDDING_MESSAGES, en: EN_MESSAGES, fr: FR_MESSAGES, de: DE_MESSAGES, pt: PT_MESSAGES };
   const messages = map[lang] || WEDDING_MESSAGES;
   const index = Math.floor(Math.random() * messages.length);
   return messages[index];

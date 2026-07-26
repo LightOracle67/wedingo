@@ -5,13 +5,21 @@ import { invitationDocRef } from "../lib/firebase";
 import { normalizeConfig } from "../lib/utils";
 import { encrypt } from "../lib/crypto-utils";
 import { getFirestoreErrorMessage } from "../lib/error-utils";
+import type { InvitationConfig } from "../types";
 
-export function useAutoSave(hasStoredConfig, inviteToken, formData, config, onSaveMessage, isSavingRef) {
+export function useAutoSave(
+  hasStoredConfig: boolean,
+  inviteToken: string,
+  formData: InvitationConfig,
+  config: InvitationConfig,
+  onSaveMessage: ((msg: string) => void) | null,
+  isSavingRef: { current: boolean } | null,
+) {
   const { t } = useTranslation();
-  const autoSaveTimerRef = useRef(null);
+  const autoSaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const autoSavingRef = useRef(false);
 
-  const doSave = useCallback(async (data) => {
+  const doSave = useCallback(async (data: InvitationConfig) => {
     if (isSavingRef?.current || autoSavingRef.current) return null;
     autoSavingRef.current = true;
     if (isSavingRef) isSavingRef.current = true;
@@ -20,7 +28,7 @@ export function useAutoSave(hasStoredConfig, inviteToken, formData, config, onSa
       const cpOrig = payload.couplePhoto?.startsWith("data:") ? payload.couplePhoto : null;
       if (payload.bankInfo) payload.bankInfo = await encrypt(payload.bankInfo, inviteToken);
       if (cpOrig) payload.couplePhoto = await encrypt(cpOrig, inviteToken);
-      delete payload.musicFile;
+      delete (payload as Record<string, unknown>).musicFile;
       await setDoc(invitationDocRef(inviteToken), payload, { merge: true });
       if (cpOrig) payload.couplePhoto = cpOrig;
       return payload;

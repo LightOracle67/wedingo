@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { renderHook } from "@testing-library/react";
+import type { InvitationConfig } from "../../types";
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
@@ -42,7 +43,7 @@ describe("useAutoSave", () => {
 
   it("returns autoSaveTimerRef and doSave", () => {
     const { result } = renderHook(() =>
-      useAutoSave(true, "test-token", {}, {}, vi.fn(), { current: false }),
+      useAutoSave(true, "test-token", {} as InvitationConfig, {} as InvitationConfig, vi.fn(), { current: false }),
     );
     expect(result.current).toHaveProperty("autoSaveTimerRef");
     expect(result.current).toHaveProperty("doSave");

@@ -9,7 +9,7 @@ describe("file-utils", () => {
     const removeChild = vi.fn();
     const click = vi.fn();
 
-    Object.defineProperty(global, "URL", { value: { createObjectURL, revokeObjectURL } });
+    Object.defineProperty(globalThis, "URL", { value: { createObjectURL, revokeObjectURL } });
 
     document.body.appendChild = appendChild;
     document.body.removeChild = removeChild;

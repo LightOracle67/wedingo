@@ -14,7 +14,7 @@ export default function WeddingMap({ weddingPlace, weddingLatitude, weddingLongi
   useEffect(() => {
     const place = (weddingPlace || "").trim();
     const container = containerRef.current;
-    const hasExactCoordinates = Boolean(getValidCoordinates(weddingLatitude, weddingLongitude));
+    const hasExactCoordinates = Boolean(getValidCoordinates(weddingLatitude ?? "", weddingLongitude ?? ""));
     if ((!place && !hasExactCoordinates) || !container) {
       setLoading(false);
       setError("");
@@ -36,8 +36,8 @@ export default function WeddingMap({ weddingPlace, weddingLatitude, weddingLongi
         const L = (await import("leaflet")).default;
         const geocodedLocation = await resolveLocationTarget({
           place,
-          latitudeValue: weddingLatitude,
-          longitudeValue: weddingLongitude,
+          latitudeValue: weddingLatitude ?? "",
+          longitudeValue: weddingLongitude ?? "",
         });
         if (isCancelled || !container.isConnected) return;
 

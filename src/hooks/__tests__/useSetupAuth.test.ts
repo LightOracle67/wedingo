@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { renderHook } from "@testing-library/react";
+import type { InvitationConfig } from "../../types";
 
 const mockT = vi.fn((key) => key);
 
@@ -60,7 +61,7 @@ describe("useSetupAuth", () => {
     const setAdminMessageType = vi.fn();
     const setHasStoredConfig = vi.fn();
     const { result } = renderHook(() =>
-      useSetupAuth("test-token", {}, setAdminMessage, setAdminMessageType, setHasStoredConfig),
+      useSetupAuth("test-token", {} as InvitationConfig, setAdminMessage, setAdminMessageType, setHasStoredConfig),
     );
     expect(result.current).toHaveProperty("setupToken");
     expect(result.current).toHaveProperty("isTokenVerified");

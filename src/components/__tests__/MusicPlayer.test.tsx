@@ -12,7 +12,7 @@ afterEach(cleanup);
 
 describe("MusicPlayer", () => {
   it("renders the FAB button when no music URL is provided", () => {
-    render(<MusicPlayer musicUrl={null} />);
+    render(<MusicPlayer musicUrl={null as unknown as string} />);
     const btn = screen.getByRole("button", { name: /music\.label/i });
     expect(btn).toBeDefined();
   });

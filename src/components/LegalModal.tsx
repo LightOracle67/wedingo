@@ -9,7 +9,7 @@ const LegalModal = memo(function LegalModal({ section, onClose }: { section: str
   const [open, setOpen] = useState(section || "");
   const [closing, setClosing] = useState(false);
   const isOpen = Boolean(section || open);
-  const modalRef = useFocusTrap(isOpen);
+  const modalRef = useFocusTrap<HTMLDivElement>(isOpen);
   const closeRef = useRef<((e: KeyboardEvent) => void) | null>(null);
 
   const SECTIONS = [

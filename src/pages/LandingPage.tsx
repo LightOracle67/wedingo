@@ -144,6 +144,7 @@ export default function LandingPage() {
       setTokenLoginUsername(username);
       setIsTokenVerified(true);
       try {
+        // @ts-expect-error PasswordCredential is not in TS DOM types
         const cred = new PasswordCredential({ id: username, password: normalized, name: username });
         navigator.credentials.store(cred);
       } catch {}
@@ -193,7 +194,7 @@ export default function LandingPage() {
       </section>
       {showModal && (
         <div className="modal-overlay" onClick={() => setShowModal(false)} role="dialog" aria-modal="true" aria-label={t("landing.modalTitle")}>
-          <div className="modal-card" ref={modalRef} onClick={(e) => e.stopPropagation()}>
+          <div className="modal-card" ref={modalRef as React.RefObject<HTMLDivElement>} onClick={(e) => e.stopPropagation()}>
             <button className="modal-close" ref={closeButtonRef} onClick={() => setShowModal(false)} aria-label={t("common.close")}>
               &times;
             </button>

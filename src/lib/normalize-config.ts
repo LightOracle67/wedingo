@@ -1,13 +1,13 @@
 import { STORY_SECTION_ORDER, THEME_VALUES } from "./constants";
 
-const s = (v) => {
+const s = (v: unknown) => {
   if (typeof v === "string") return v.trim();
   if (typeof v === "number") return String(v);
   if (Array.isArray(v)) return String(v[0] ?? "");
   return "";
 };
 
-export const normalizeConfig = (value) => ({
+export const normalizeConfig = (value: Record<string, unknown> | undefined) => ({
   adminUsername: s(value?.adminUsername).toLowerCase(),
   firstName: s(value?.firstName),
   secondName: s(value?.secondName),

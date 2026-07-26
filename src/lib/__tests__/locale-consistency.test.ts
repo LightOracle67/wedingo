@@ -1,22 +1,21 @@
 import { describe, it, expect } from "vitest";
-import fs from "fs";
-import path from "path";
 
-const LOCALES_DIR = path.resolve(__dirname, "../../i18n/locales");
+type GlobModules = Record<string, Record<string, string>>;
+
+const localeModules: GlobModules = import.meta.glob("../../i18n/locales/*.json", { eager: true }) as GlobModules;
 
 describe("Locale consistency", () => {
-  const files = fs.readdirSync(LOCALES_DIR).filter((f) => f.endsWith(".json"));
+  const entries = Object.entries(localeModules);
 
   it("has at least 50 locale files", () => {
-    expect(files.length).toBeGreaterThanOrEqual(50);
+    expect(entries.length).toBeGreaterThanOrEqual(50);
   });
 
   it("all locale files share a common set of top-level keys", () => {
-    const allKeys = files.map((f) => new Set(Object.keys(JSON.parse(fs.readFileSync(path.join(LOCALES_DIR, f), "utf-8")))));
-    const common = [...allKeys.reduce((a, b) => new Set([...a].filter((k) => b.has(k))))].sort();
-    files.forEach((file) => {
-      const locale = JSON.parse(fs.readFileSync(path.join(LOCALES_DIR, file), "utf-8"));
-      const topLevel = Object.keys(locale).sort();
+    const allKeys = entries.map(([, mod]) => new Set(Object.keys(mod)));
+    const common = [...allKeys.reduce((a: Set<string>, b: Set<string>) => new Set([...a].filter((k) => b.has(k))))].sort();
+    entries.forEach(([, mod]) => {
+      const topLevel = Object.keys(mod).sort();
       common.forEach((key) => {
         expect(topLevel).toContain(key);
       });

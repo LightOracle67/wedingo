@@ -28,7 +28,7 @@ describe("useRsvp", () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
     expect(result.current.rsvpForm.guestName).toBe("");
     expect(result.current.rsvpForm.attendance).toBe("yes");
-    expect(result.current.rsvpForm.attendees).toEqual([{ name: "", menu: "", allergies: [] }]);
+    expect(result.current.rsvpForm.attendees).toEqual([{ name: "", menu: "", allergies: [] as string[] }]);
     expect(result.current.rsvpForm.privacyConsent).toBe(false);
     expect(result.current.rsvpEntries).toEqual([]);
     expect(result.current.hasSubmitted).toBe(false);
@@ -42,7 +42,7 @@ describe("useRsvp", () => {
 
   it("resets attendees when attendance is set to no", () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
-    act(() => result.current.updateRsvpField("attendees", [{ name: "Juan", menu: "", allergies: [] }]));
+    act(() => result.current.updateRsvpField("attendees", [{ name: "Juan", menu: "", allergies: [] as string[] }]));
     expect(result.current.rsvpForm.attendees).toHaveLength(1);
     act(() => result.current.updateRsvpField("attendance", "no"));
     expect(result.current.rsvpForm.attendance).toBe("no");
@@ -53,7 +53,7 @@ describe("useRsvp", () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
     act(() => {
       const current = result.current.rsvpForm.attendees;
-      result.current.updateRsvpField("attendees", [...current, { name: "María", menu: "", allergies: [] }]);
+      result.current.updateRsvpField("attendees", [...current, { name: "María", menu: "", allergies: [] as string[] }]);
     });
     expect(result.current.rsvpForm.attendees.length).toBe(2);
     expect(result.current.rsvpForm.attendees[1].name).toBe("María");
@@ -63,8 +63,8 @@ describe("useRsvp", () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
     act(() => {
       result.current.updateRsvpField("attendees", [
-        { name: "Juan", menu: "", allergies: [] },
-        { name: "María", menu: "", allergies: [] },
+        { name: "Juan", menu: "", allergies: [] as string[] },
+        { name: "María", menu: "", allergies: [] as string[] },
       ]);
     });
     expect(result.current.rsvpForm.attendees.length).toBe(2);

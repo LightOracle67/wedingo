@@ -3,7 +3,7 @@ import { normalizeConfig } from "../normalize-config";
 
 describe("normalizeConfig extra", () => {
   it("handles null input", () => {
-    const result = normalizeConfig(null);
+    const result = normalizeConfig(null as unknown as Record<string, unknown>);
     expect(result.theme).toBe("golden");
   });
 

@@ -60,7 +60,7 @@ describe("RSVP Integration", () => {
   it("adds a new attendee", () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
     act(() => {
-      const attendees = [...result.current.rsvpForm.attendees, { name: "", menu: "", allergies: [] }];
+      const attendees = [...result.current.rsvpForm.attendees, { name: "", menu: "", allergies: [] as string[] }];
       result.current.updateRsvpField("attendees", attendees);
     });
     expect(result.current.rsvpForm.attendees).toHaveLength(2);
@@ -69,7 +69,7 @@ describe("RSVP Integration", () => {
   it("removes an attendee", () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
     act(() => {
-      const attendees = [...result.current.rsvpForm.attendees, { name: "Ana", menu: "", allergies: [] }];
+      const attendees = [...result.current.rsvpForm.attendees, { name: "Ana", menu: "", allergies: [] as string[] }];
       result.current.updateRsvpField("attendees", attendees);
     });
     expect(result.current.rsvpForm.attendees).toHaveLength(2);
@@ -85,13 +85,13 @@ describe("RSVP Integration", () => {
     
     act(() => { result.current.updateRsvpField("guestName", "García"); });
     act(() => {
-      const attendees = [{ name: "Juan", menu: "", allergies: [] }];
+      const attendees = [{ name: "Juan", menu: "", allergies: [] as string[] }];
       result.current.updateRsvpField("attendees", attendees);
     });
     act(() => { result.current.updateRsvpField("privacyConsent", true); });
     act(() => { result.current.updateRsvpField("birthDate", "1990-01-01"); });
 
-    const event = { preventDefault: vi.fn() };
+    const event = { preventDefault: vi.fn() } as unknown as React.FormEvent;
     await act(async () => {
       await result.current.handleRsvpSubmit(event);
     });
@@ -102,7 +102,7 @@ describe("RSVP Integration", () => {
 
   it("shows error when guestName is empty", async () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
-    const event = { preventDefault: vi.fn() };
+    const event = { preventDefault: vi.fn() } as unknown as React.FormEvent;
     
     await act(async () => {
       await result.current.handleRsvpSubmit(event);
