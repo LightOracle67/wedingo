@@ -182,8 +182,7 @@ export function useRsvp(
 
   const handleDietaryToggle = useCallback(() => {}, []);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const updateRsvpField = useCallback((field: string, value: any) => {
+  const updateRsvpField = useCallback((field: string, value: unknown) => {
     if (field === "attendance") {
       setRsvpForm((current) => ({
         ...current,
