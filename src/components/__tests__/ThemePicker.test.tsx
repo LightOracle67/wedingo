@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
@@ -19,5 +19,12 @@ describe("ThemePicker", () => {
   it("renders theme options", () => {
     render(<ThemePicker {...defaultProps} />);
     expect(screen.getByText("themeNames.golden")).toBeDefined();
+  });
+
+  it("calls onChange with theme value on click", () => {
+    const onChange = vi.fn();
+    render(<ThemePicker {...defaultProps} onChange={onChange} />);
+    fireEvent.click(screen.getByLabelText("themeNames.golden"));
+    expect(onChange).toHaveBeenCalledWith("golden");
   });
 });
