@@ -42,6 +42,13 @@ import {
   deleteGalleryImage,
 } from "../image-store";
 
+import * as cryptoUtils from "../crypto-utils";
+
+const mockEncrypt = vi.mocked(cryptoUtils.encrypt);
+const mockDecrypt = vi.mocked(cryptoUtils.decrypt);
+
+import * as firestore from "firebase/firestore";
+
 describe("image-store", () => {
   it("exports uploadImage", () => {
     expect(typeof uploadImage).toBe("function");
@@ -76,10 +83,8 @@ describe("image-store", () => {
     expect(onProgress).toHaveBeenCalled();
   });
 
-  it("uploadImage throws on encrypt failure", { retry: 3 }, async () => {
-    const { encrypt } = await import("../crypto-utils");
-    const mockEncrypt = vi.fn(() => Promise.resolve(null));
-    encrypt.mockImplementationOnce(mockEncrypt);
+  it("uploadImage throws on encrypt failure", async () => {
+    mockEncrypt.mockRejectedValueOnce(new Error("errors.encryptFailed"));
     await expect(uploadImage("token", new File([], "test.jpg"))).rejects.toThrow(
       "errors.encryptFailed",
     );
@@ -128,9 +133,7 @@ describe("image-store", () => {
   });
 
   it("loadDecryptedField returns empty string on decrypt failure", async () => {
-    vi.mocked((await import("../crypto-utils")).decrypt).mockRejectedValueOnce(
-      new Error("Decrypt failed"),
-    );
+    mockDecrypt.mockRejectedValueOnce(new Error("Decrypt failed"));
     const result = await loadDecryptedField("token", "bad-data");
     expect(result).toBe("");
   });
@@ -141,9 +144,7 @@ describe("image-store", () => {
   });
 
   it("loadGallery returns empty array on error", async () => {
-    vi.mocked((await import("firebase/firestore")).getDocs).mockRejectedValueOnce(
-      new Error("Network error"),
-    );
+    vi.mocked(firestore.getDocs).mockRejectedValueOnce(new Error("Network error"));
     const result = await loadGallery("token");
     expect(result).toEqual([]);
   });
