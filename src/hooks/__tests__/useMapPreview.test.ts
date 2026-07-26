@@ -86,4 +86,47 @@ describe("useMapPreview", () => {
       expect(result.current.previewBackgrounds).toEqual([]);
     });
   });
+
+  it("handles stale request after resolveLocationTarget returns null", async () => {
+    vi.useFakeTimers();
+    mockGetValidCoordinates.mockReturnValue({ latitude: 40.4168, longitude: -3.7038 });
+    let resolve: (v: unknown) => void;
+    const promise = new Promise((r) => { resolve = r; });
+    mockResolveLocationTarget.mockReturnValue(promise);
+
+    const { result, rerender } = renderHook(
+      (props: { place: string; lat: string; lng: string }) => useMapPreview(props.place, props.lat, props.lng),
+      { initialProps: { place: "Madrid", lat: "40.4168", lng: "-3.7038" } }
+    );
+
+    rerender({ place: "Barcelona", lat: "41.3874", lng: "2.1686" });
+    vi.advanceTimersByTime(350);
+    resolve!(null);
+    await vi.waitFor(() => {
+      expect(result.current.previewBackgrounds).toEqual([]);
+    });
+    vi.useRealTimers();
+  });
+
+  it("handles stale request after buildOpenFreeMapPreviewUrl returns", async () => {
+    vi.useFakeTimers();
+    mockGetValidCoordinates.mockReturnValue({ latitude: 40.4168, longitude: -3.7038 });
+    let resolve: (v: unknown) => void;
+    const promise = new Promise((r) => { resolve = r; });
+    mockResolveLocationTarget.mockResolvedValue({ latitude: 40.4168, longitude: -3.7038, label: "Test" });
+    mockBuildOpenFreeMapPreviewUrl.mockReturnValue(promise);
+
+    const { result, rerender } = renderHook(
+      (props: { place: string; lat: string; lng: string }) => useMapPreview(props.place, props.lat, props.lng),
+      { initialProps: { place: "Madrid", lat: "40.4168", lng: "-3.7038" } }
+    );
+
+    rerender({ place: "Barcelona", lat: "41.3874", lng: "2.1686" });
+    vi.advanceTimersByTime(350);
+    resolve!("data:image/png;base64,test");
+    await vi.waitFor(() => {
+      expect(result.current.previewBackgrounds).toEqual([]);
+    });
+    vi.useRealTimers();
+  });
 });
