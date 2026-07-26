@@ -2,7 +2,6 @@ import { describe, it, expect, vi } from "vitest";
 import { render } from "@testing-library/react";
 import axe from "axe-core";
 
-// Ensure axe runs after DOM is ready
 function runAxe(html: HTMLElement): Promise<axe.AxeResults> {
   return new Promise((resolve) => {
     axe.run(html, {
@@ -14,9 +13,14 @@ function runAxe(html: HTMLElement): Promise<axe.AxeResults> {
   });
 }
 
-// Mock i18n
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key, i18n: { language: "en" } }),
+}));
+
+vi.mock("../../lib/firebase", () => ({ db: {} }));
+
+vi.mock("../../hooks/useToast", () => ({
+  useToast: () => ({ addToast: vi.fn(), startUploadToast: vi.fn() }),
 }));
 
 describe("a11y-axe", () => {
@@ -52,5 +56,37 @@ describe("a11y-axe", () => {
       (v) => v.id === "button-name"
     );
     expect(buttonNameViolations).toHaveLength(0);
+  });
+
+  it("ErrorBoundary wrapper has no a11y violations", async () => {
+    const ErrorBoundary = (await import("../../components/ErrorBoundary")).default;
+    const { container } = render(
+      <ErrorBoundary>
+        <h2>Child content</h2>
+        <p>Some text here</p>
+      </ErrorBoundary>
+    );
+    const results = await runAxe(container);
+    expect(results.violations).toHaveLength(0);
+  });
+
+  it("LoadingOverlay has no a11y violations", async () => {
+    const LoadingOverlay = (await import("../../components/LoadingOverlay")).default;
+    const { container } = render(<LoadingOverlay visible />);
+    const results = await runAxe(container);
+    expect(results.violations).toHaveLength(0);
+  });
+
+  it("ErrorMessage role alert has no violations", async () => {
+    const { ErrorMessage } = await import("../../components/ErrorMessage");
+    vi.mock("../../lib/error-utils", () => ({
+      getFirestoreErrorMessage: () => "Something went wrong",
+    }));
+    const { container } = render(<ErrorMessage error={new Error("test")} />);
+    const results = await runAxe(container);
+    const alertViolations = results.violations.filter(
+      (v) => v.id === "aria-allowed-role"
+    );
+    expect(alertViolations).toHaveLength(0);
   });
 });

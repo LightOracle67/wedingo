@@ -35,7 +35,7 @@ export default defineConfig({
     },
   },
   build: {
-    sourcemap: true,
+    sourcemap: "hidden",
     chunkSizeWarningLimit: 600,
     rollupOptions: {
       output: {
