@@ -54,7 +54,7 @@
 }
 .toast--error .toast__icon {
   background: rgba(255, 100, 100, 0.18);
-  color: #ff8888;
+  color: var(--color-red);
 }
 .toast--warning .toast__icon {
   background: rgba(255, 200, 80, 0.18);
