@@ -23,7 +23,7 @@ export function getDietarySummary(entries: { attendance: string; dietaryInfo?: s
   for (const e of confirmed) {
     const items = e.dietaryInfo.split(" | ").map((s) => s.trim().toLowerCase()).filter((s) => s && !s.startsWith("menú:"));
     for (const item of items) {
-      if (item) counts[item] = (counts[item] || 0) + 1;
+      counts[item] = (counts[item] || 0) + 1;
     }
   }
   return Object.entries(counts)

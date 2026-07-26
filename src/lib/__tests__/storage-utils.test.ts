@@ -1,34 +1,20 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+import { describe, it, expect } from "vitest";
 import { getStorageUsage, clearExpiredCache } from "../storage-utils";
 
-function createStorageMock() {
-  const store: Record<string, string> = {};
+const store: Record<string, string> = {};
+const mock = {
+  get length() { return Object.keys(store).length; },
+  key(index: number) { return Object.keys(store)[index] ?? null; },
+  getItem(key: string) { return Object.hasOwn(store, key) ? store[key] : null; },
+  setItem(key: string, value: string) { store[key] = String(value); },
+  removeItem(key: string) { delete store[key]; },
+  clear() { Object.keys(store).forEach((k) => delete store[k]); },
+};
 
-  return {
-    get length() { return Object.keys(store).length; },
-    key(index: number) { return Object.keys(store)[index] ?? null; },
-    getItem(key: string) { return Object.hasOwn(store, key) ? store[key] : null; },
-    setItem(key: string, value: string) { store[key] = String(value); },
-    removeItem(key: string) { delete store[key]; },
-    clear() { Object.keys(store).forEach((k) => delete store[k]); },
-  };
-}
-
-function mockStorage() {
-  const mock = createStorageMock();
-  vi.stubGlobal("localStorage", mock);
-  return mock;
-}
+Object.defineProperty(globalThis, "localStorage", { value: mock, writable: true, configurable: true });
+Object.defineProperty(globalThis, "sessionStorage", { value: { clear() {} }, writable: true, configurable: true });
 
 describe("storage-utils", () => {
-  beforeEach(() => {
-    mockStorage();
-  });
-
-  afterEach(() => {
-    vi.unstubAllGlobals();
-  });
-
   it("exports getStorageUsage as a function", () => {
     expect(typeof getStorageUsage).toBe("function");
   });
@@ -51,5 +37,12 @@ describe("storage-utils", () => {
   it("clearExpiredCache handles no cache entries", () => {
     const cleared = clearExpiredCache();
     expect(cleared).toBe(0);
+  });
+
+  it("clearExpiredCache handles unparseable cache entries", () => {
+    localStorage.setItem("wedin_invite_cache_bad", "not-json");
+    const cleared = clearExpiredCache();
+    expect(cleared).toBe(1);
+    expect(localStorage.getItem("wedin_invite_cache_bad")).toBeNull();
   });
 });

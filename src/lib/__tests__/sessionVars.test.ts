@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
-import { saveSession, getSession, renewSession, clearSession } from "../sessionVars";
+import { saveSession, getSession, renewSession, clearSession, firestoreSessionExpiry } from "../sessionVars";
 
 const STORAGE_KEY = "wedin_session";
 const storage: Record<string, string> = {};
@@ -76,5 +76,16 @@ describe("sessionVars", () => {
     });
     expect(getSession()).toBeNull();
     expect(storage[STORAGE_KEY]).toBeUndefined();
+  });
+
+  it("firestoreSessionExpiry returns a future date", () => {
+    const expiry = firestoreSessionExpiry();
+    expect(expiry).toBeInstanceOf(Date);
+    expect(expiry.getTime()).toBeGreaterThan(Date.now());
+  });
+
+  it("renewSession does nothing when no session exists", () => {
+    expect(() => renewSession()).not.toThrow();
+    expect(getSession()).toBeNull();
   });
 });
