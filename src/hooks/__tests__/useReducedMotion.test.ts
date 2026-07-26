@@ -47,4 +47,23 @@ describe("useReducedMotion", () => {
     renderHook(() => useReducedMotion());
     expect(addEventListener).toHaveBeenCalledWith("change", expect.any(Function));
   });
+
+  it("returns the correct query string", () => {
+    renderHook(() => useReducedMotion());
+    expect(window.matchMedia).toHaveBeenCalledWith("(prefers-reduced-motion: reduce)");
+  });
+
+  it("unsubscribes on unmount", () => {
+    const removeEventListener = vi.fn();
+    window.matchMedia = vi.fn().mockReturnValue({
+      matches: false,
+      media: "",
+      onchange: null,
+      addEventListener: vi.fn(),
+      removeEventListener,
+    });
+    const { unmount } = renderHook(() => useReducedMotion());
+    unmount();
+    expect(removeEventListener).toHaveBeenCalledWith("change", expect.any(Function));
+  });
 });
