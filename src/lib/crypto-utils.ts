@@ -22,13 +22,17 @@ function uint8ToBase64(bytes) {
   const chunkSize = 8192;
   const chunks = [];
   for (let i = 0; i < bytes.length; i += chunkSize) {
-    chunks.push(String.fromCharCode(...bytes.subarray(i, i + chunkSize)));
+    const chunk = bytes.subarray(i, i + chunkSize);
+    let s = "";
+    for (let j = 0; j < chunk.length; j++) s += String.fromCharCode(chunk[j]);
+    chunks.push(s);
   }
   return btoa(chunks.join(""));
 }
 
 export async function encrypt(text, token) {
-  if (!text || !token) return text;
+  if (!text) return text;
+  if (!token) throw new Error("encrypt: token required");
   try {
     const salt = crypto.getRandomValues(new Uint8Array(SALT_LEN));
     const key = await getKey(token, salt, ITERATIONS_NEW);
