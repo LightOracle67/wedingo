@@ -150,4 +150,85 @@ describe("validateRsvpForm", () => {
     const errors = validateRsvpForm(form, t, false, true, 0);
     expect(errors).toContainEqual({ field: "menuHeadcounts", message: "rsvp.validation.menuRequired" });
   });
+
+  it("handles companions=0 with attendance yes (no guestNames error)", () => {
+    const form = {
+      ...validForm,
+      attendance: "yes",
+      companions: 0,
+      guestNames: "",
+    };
+    expect(validateRsvpForm(form, t, false, false, 0)).toEqual([]);
+  });
+
+  it("handles undefined companions with attendance yes", () => {
+    const form = {
+      ...validForm,
+      attendance: "yes",
+      companions: undefined as unknown as number,
+      guestNames: "",
+    };
+    expect(validateRsvpForm(form, t, false, false, 0)).toEqual([]);
+  });
+
+  it("enters dietary block when attendance yes with menu enabled and no dietary info", () => {
+    const form = {
+      ...validForm,
+      attendance: "yes",
+      companions: 0,
+      menuEnabled: true,
+      dietarySelection: [],
+      dietaryOther: "",
+    };
+    const errors = validateRsvpForm(form, t, true, false, 0);
+    expect(errors).toEqual([]);
+  });
+
+  it("skips dietary block when attendance no despite menu enabled", () => {
+    const form = {
+      ...validForm,
+      attendance: "no",
+      companions: 0,
+      dietarySelection: [],
+      dietaryOther: "",
+    };
+    const errors = validateRsvpForm(form, t, true, false, 0);
+    expect(errors).toEqual([]);
+  });
+
+  it("skips dietary block when menu is disabled", () => {
+    const form = {
+      ...validForm,
+      attendance: "yes",
+      companions: 0,
+      dietarySelection: [],
+      dietaryOther: "",
+    };
+    const errors = validateRsvpForm(form, t, false, false, 0);
+    expect(errors).toEqual([]);
+  });
+
+  it("skips dietary block when dietarySelection is non-empty", () => {
+    const form = {
+      ...validForm,
+      attendance: "yes",
+      companions: 0,
+      dietarySelection: ["vegetarian"],
+      dietaryOther: "",
+    };
+    const errors = validateRsvpForm(form, t, true, false, 0);
+    expect(errors).toEqual([]);
+  });
+
+  it("skips dietary block when dietaryOther is filled", () => {
+    const form = {
+      ...validForm,
+      attendance: "yes",
+      companions: 0,
+      dietarySelection: [],
+      dietaryOther: "gluten free",
+    };
+    const errors = validateRsvpForm(form, t, true, false, 0);
+    expect(errors).toEqual([]);
+  });
 });

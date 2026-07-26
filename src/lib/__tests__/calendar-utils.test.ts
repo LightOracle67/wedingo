@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { buildGoogleCalendarUrl } from "../calendar-utils";
 
 describe("buildGoogleCalendarUrl", () => {
@@ -95,5 +95,34 @@ describe("buildGoogleCalendarUrl", () => {
       startDate, endDate,
     });
     expect(url).toContain("https://calendar.google.com/calendar/render?");
+  });
+
+  it("falls back to Europe/Madrid when Intl timezone is unavailable", () => {
+    const originalDateTimeFormat = Intl.DateTimeFormat;
+    Intl.DateTimeFormat = vi.fn().mockReturnValue({
+      resolvedOptions: () => ({ timeZone: "" }),
+    }) as unknown as typeof Intl.DateTimeFormat;
+
+    const startDate = new Date("2026-06-15T18:00:00");
+    const endDate = new Date("2026-06-15T23:00:00");
+    const url = buildGoogleCalendarUrl({
+      title: "Test", description: "", place: "",
+      startDate, endDate,
+    });
+
+    expect(url).toContain(encodeURIComponent("Europe/Madrid"));
+
+    Intl.DateTimeFormat = originalDateTimeFormat;
+  });
+
+  it("generates correct date format with midnight time", () => {
+    const startDate = new Date("2026-06-15T00:00:00");
+    const endDate = new Date("2026-06-16T00:00:00");
+    const url = buildGoogleCalendarUrl({
+      title: "All day", description: "", place: "",
+      startDate, endDate,
+    });
+    expect(url).toContain("20260615T000000");
+    expect(url).toContain("20260616T000000");
   });
 });
