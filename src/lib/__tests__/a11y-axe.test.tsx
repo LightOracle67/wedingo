@@ -23,6 +23,10 @@ vi.mock("../../hooks/useToast", () => ({
   useToast: () => ({ addToast: vi.fn(), startUploadToast: vi.fn() }),
 }));
 
+vi.mock("../../lib/error-utils", () => ({
+  getFirestoreErrorMessage: () => "Something went wrong",
+}));
+
 describe("a11y-axe", () => {
   it("axe-core is loaded", () => {
     expect(typeof axe.run).toBe("function");
@@ -79,9 +83,6 @@ describe("a11y-axe", () => {
 
   it("ErrorMessage role alert has no violations", async () => {
     const { ErrorMessage } = await import("../../components/ErrorMessage");
-    vi.mock("../../lib/error-utils", () => ({
-      getFirestoreErrorMessage: () => "Something went wrong",
-    }));
     const { container } = render(<ErrorMessage error={new Error("test")} />);
     const results = await runAxe(container);
     const alertViolations = results.violations.filter(
