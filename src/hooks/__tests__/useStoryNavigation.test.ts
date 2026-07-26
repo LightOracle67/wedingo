@@ -25,10 +25,18 @@ describe("useStoryNavigation", () => {
     expect(result.current.activeSection).toBe("hero");
   });
 
+  it("handles a single section", () => {
+    const { result } = renderHook(() => useStoryNavigation(["rsvp"]));
+    expect(result.current.activeSection).toBe("rsvp");
+    expect(result.current.getSectionClassName("rsvp")).toContain("story-section--rsvp");
+  });
+
   it("is not transitioning initially", () => {
     const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
     expect(result.current.isTransitioning).toBe(false);
     expect(result.current.transition.toIndex).toBeNull();
+    expect(result.current.transition.fromIndex).toBe(0);
+    expect(result.current.transition.direction).toBe(1);
   });
 
   it("getSectionStyle returns empty object for any key", () => {
@@ -36,6 +44,7 @@ describe("useStoryNavigation", () => {
     expect(result.current.getSectionStyle("hero")).toEqual({});
     expect(result.current.getSectionStyle("details")).toEqual({});
     expect(result.current.getSectionStyle("unknown")).toEqual({});
+    expect(result.current.getSectionStyle()).toEqual({});
   });
 
   it("getSectionClassName returns story-section and story-section--{key}", () => {
@@ -45,10 +54,23 @@ describe("useStoryNavigation", () => {
     expect(cls).toContain("story-section--hero");
   });
 
+  it("getSectionClassName handles empty key gracefully", () => {
+    const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
+    const cls = result.current.getSectionClassName("");
+    expect(cls).toContain("story-section");
+    expect(cls).toContain("story-section--");
+  });
+
   it("startTransition is a no-op", () => {
     const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
     result.current.startTransition(1);
     expect(result.current.isTransitioning).toBe(false);
     expect(result.current.activeSection).toBe("hero");
+  });
+
+  it("startTransition ignores undefined index", () => {
+    const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
+    result.current.startTransition();
+    expect(result.current.isTransitioning).toBe(false);
   });
 });

@@ -61,6 +61,17 @@ describe("useRsvpSubmit", () => {
     expect(result.current.submitError).toBe("Network error");
   });
 
+  it("handles non-Error rejection with default message", async () => {
+    const failingSubmit = vi.fn(() => Promise.reject("string error"));
+    const { result } = renderHook(() =>
+      useRsvpSubmit({ token: "test", onSubmit: failingSubmit }),
+    );
+    await act(async () => {
+      await result.current.handleSubmit({});
+    });
+    expect(result.current.submitError).toBe("Error submitting RSVP");
+  });
+
   it("resets error via resetError", () => {
     const { result } = renderHook(() =>
       useRsvpSubmit({ token: "test", onSubmit: mockOnSubmit }),
@@ -81,5 +92,37 @@ describe("useRsvpSubmit", () => {
       ok = await result.current.handleSubmit({});
     });
     expect(ok).toBe(false);
+  });
+
+  it("returns true on successful submit", async () => {
+    const { result } = renderHook(() =>
+      useRsvpSubmit({ token: "test", onSubmit: mockOnSubmit }),
+    );
+    let ok: boolean | undefined;
+    await act(async () => {
+      ok = await result.current.handleSubmit({});
+    });
+    expect(ok).toBe(true);
+  });
+
+  it("sets submitting to false after completion", async () => {
+    const { result } = renderHook(() =>
+      useRsvpSubmit({ token: "test", onSubmit: mockOnSubmit }),
+    );
+    await act(async () => {
+      await result.current.handleSubmit({});
+    });
+    expect(result.current.submitting).toBe(false);
+  });
+
+  it("sets submitting to false after error", async () => {
+    const failingSubmit = vi.fn(() => Promise.reject(new Error("Error")));
+    const { result } = renderHook(() =>
+      useRsvpSubmit({ token: "test", onSubmit: failingSubmit }),
+    );
+    await act(async () => {
+      await result.current.handleSubmit({});
+    });
+    expect(result.current.submitting).toBe(false);
   });
 });
