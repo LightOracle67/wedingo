@@ -1,17 +1,24 @@
-import { describe, it, expect, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { describe, it, expect, vi, beforeEach } from "vitest";
+import { render, screen, fireEvent } from "@testing-library/react";
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
 }));
 
+const mockUpdateFormField = vi.fn();
+
+const mockAddToast = vi.fn();
+const mockUploadUpdate = vi.fn();
+const mockUploadComplete = vi.fn();
+const mockUploadError = vi.fn();
+
 vi.mock("../../../hooks/useToast", () => ({
   useToast: () => ({
-    addToast: vi.fn(),
+    addToast: mockAddToast,
     startUploadToast: () => ({
-      update: vi.fn(),
-      complete: vi.fn(),
-      error: vi.fn(),
+      update: mockUploadUpdate,
+      complete: mockUploadComplete,
+      error: mockUploadError,
     }),
   }),
 }));
@@ -23,8 +30,8 @@ vi.mock("../../../lib/image-store", () => ({
 vi.mock("../../../contexts", () => ({
   useApp: () => ({
     config: { theme: "golden", menuEnabled: "true" },
-    formData: {},
-    updateFormField: vi.fn(),
+    formData: { firstName: "John" },
+    updateFormField: mockUpdateFormField,
     inviteToken: "test-token",
   }),
 }));
@@ -42,6 +49,10 @@ vi.mock("../../MusicArrayEditor", () => ({
 import CoverSectionForm from "../CoverSectionForm";
 
 describe("CoverSectionForm", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
   it("renders without crashing", () => {
     render(<CoverSectionForm />);
     expect(screen.getByText("setup.namesLegend")).toBeDefined();
@@ -57,6 +68,11 @@ describe("CoverSectionForm", () => {
     render(<CoverSectionForm />);
     expect(screen.getByText("setup.godparent1Label")).toBeDefined();
     expect(screen.getByText("setup.godparent2Label")).toBeDefined();
+  });
+
+  it("renders godparents help text", () => {
+    render(<CoverSectionForm />);
+    expect(screen.getByText("setup.godparentsHint")).toBeDefined();
   });
 
   it("renders invite message textarea", () => {
@@ -78,6 +94,30 @@ describe("CoverSectionForm", () => {
   it("renders photo upload section", () => {
     render(<CoverSectionForm />);
     expect(screen.getByText("setup.couplePhotoLabel")).toBeDefined();
+  });
+
+  it("renders photo hint text", () => {
+    render(<CoverSectionForm />);
+    expect(screen.getByText("setup.couplePhotoHint")).toBeDefined();
+  });
+
+  it("renders upload hint text", () => {
+    render(<CoverSectionForm />);
+    expect(screen.getByText("setup.couplePhotoUploadHint")).toBeDefined();
+  });
+
+  it("updates firstName on change", () => {
+    render(<CoverSectionForm />);
+    const input = screen.getByLabelText("setup.firstNameLabel") as HTMLInputElement;
+    fireEvent.change(input, { target: { value: "Jane" } });
+    expect(mockUpdateFormField).toHaveBeenCalledWith("firstName", "Jane");
+  });
+
+  it("trims firstName on blur", () => {
+    render(<CoverSectionForm />);
+    const input = screen.getByLabelText("setup.firstNameLabel");
+    fireEvent.blur(input);
+    expect(mockUpdateFormField).toHaveBeenCalledWith("firstName", "John");
   });
 
   it("renders with prefix", () => {
