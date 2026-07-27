@@ -1,7 +1,12 @@
 import { Suspense } from "react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
+
+const mockSuperadminModule = vi.hoisted(() => ({
+  SUPERADMIN_ROUTE: "/superadmin",
+  SUPERADMIN_DASHBOARD: "",
+}));
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key, i18n: { language: "en" } }),
@@ -63,14 +68,35 @@ vi.mock("../pages/LandingPage", () => ({
   default: () => <div data-testid="landing-page" />,
 }));
 
+vi.mock("../pages/PublicInvitation", () => ({
+  default: () => <div data-testid="public-invitation" />,
+}));
+
+vi.mock("../pages/SetupPage", () => ({
+  default: () => <div data-testid="setup-page" />,
+}));
+
+vi.mock("../pages/AdminPage", () => ({
+  default: () => <div data-testid="admin-page" />,
+}));
+
+vi.mock("../pages/SuperAdminLogin", () => ({
+  default: () => <div data-testid="superadmin-login" />,
+}));
+
+vi.mock("../pages/SuperAdminPanel", () => ({
+  default: () => <div data-testid="superadmin-panel" />,
+}));
+
+vi.mock("../pages/PrintPage", () => ({
+  default: () => <div data-testid="print-page" />,
+}));
+
 vi.mock("../lib/error-utils", () => ({
   logError: vi.fn(),
 }));
 
-vi.mock("../lib/superadmin", () => ({
-  SUPERADMIN_ROUTE: "/superadmin",
-  SUPERADMIN_DASHBOARD: "",
-}));
+vi.mock("../lib/superadmin", () => mockSuperadminModule);
 
 import App from "../App";
 
@@ -185,6 +211,195 @@ describe("App", () => {
       </MemoryRouter>
     );
     expect(screen.queryByText("admin.tabs.invitation")).toBeNull();
+  });
+
+  it("renders setup route", async () => {
+    mockUseApp.mockReturnValue({ ...baseUseApp, inviteToken: "abc123" });
+
+    render(
+      <MemoryRouter initialEntries={["/abc123/setup"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    expect(await screen.findByTestId("setup-page")).toBeDefined();
+  });
+
+  it("renders admin route", async () => {
+    mockUseApp.mockReturnValue({ ...baseUseApp, inviteToken: "abc123" });
+
+    render(
+      <MemoryRouter initialEntries={["/abc123/admin"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    expect(await screen.findByTestId("admin-page")).toBeDefined();
+  });
+
+  it("renders superadmin login route", async () => {
+    mockUseApp.mockReturnValue({ ...baseUseApp });
+
+    render(
+      <MemoryRouter initialEntries={["/superadmin"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    expect(await screen.findByTestId("superadmin-login")).toBeDefined();
+  });
+
+  it("renders superadmin panel route when dashboard is configured", async () => {
+    (mockSuperadminModule as { SUPERADMIN_ROUTE: string }).SUPERADMIN_DASHBOARD = "/superadmin/dashboard";
+    mockUseApp.mockReturnValue({ ...baseUseApp });
+
+    render(
+      <MemoryRouter initialEntries={["/superadmin/dashboard"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    expect(await screen.findByTestId("superadmin-panel")).toBeDefined();
+
+    (mockSuperadminModule as { SUPERADMIN_DASHBOARD: string }).SUPERADMIN_DASHBOARD = "";
+  });
+
+  it("renders print route", async () => {
+    mockUseApp.mockReturnValue({ ...baseUseApp, inviteToken: "abc123" });
+
+    render(
+      <MemoryRouter initialEntries={["/abc123/print"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    expect(await screen.findByTestId("print-page")).toBeDefined();
+  });
+
+  it("renders public invitation at token route", async () => {
+    mockUseApp.mockReturnValue({ ...baseUseApp, inviteToken: "abc123" });
+
+    render(
+      <MemoryRouter initialEntries={["/abc123"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    expect(await screen.findByTestId("public-invitation")).toBeDefined();
+  });
+
+  it("renders music player with musicUrl fallback", () => {
+    mockUseApp.mockReturnValue({
+      ...baseUseApp,
+      inviteToken: "abc123",
+      config: { ...baseUseApp.config, musicFile: "", musicUrl: "https://example.com/song.mp3" },
+    });
+
+    render(
+      <MemoryRouter initialEntries={["/abc123"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    expect(screen.getByTestId("music-player")).toBeDefined();
+  });
+
+  it("renders admin bar when admin token logged in on invitation page", () => {
+    mockUseApp.mockReturnValue({
+      ...baseUseApp,
+      isAdminTokenLoggedIn: true,
+      inviteToken: "abc123",
+      tokenLoginUsername: "AdminUser",
+    });
+
+    render(
+      <MemoryRouter initialEntries={["/abc123"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    expect(screen.getByText("admin.tabs.invitation")).toBeDefined();
+    expect(screen.getByText("admin.tabs.panel")).toBeDefined();
+  });
+
+  it("renders nav toggle when not editing and not admin", () => {
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    const toggle = document.querySelector(".app-nav-toggle");
+    expect(toggle).toBeDefined();
+  });
+
+  it("shows overlay when nav toggle is clicked", () => {
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    fireEvent.click(document.querySelector(".app-nav-toggle")!);
+    expect(document.querySelector(".app-nav-overlay--open")).toBeDefined();
+  });
+
+  it("opens accessibility panel from overlay", () => {
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    fireEvent.click(document.querySelector(".app-nav-toggle")!);
+    const buttons = document.querySelectorAll(".app-nav-overlay__link");
+    const a11yButton = Array.from(buttons).find((b) => b.textContent?.includes("common.accessibility"));
+    expect(a11yButton).toBeDefined();
+    fireEvent.click(a11yButton!);
+    expect(screen.getByTestId("a11y-panel")).toBeDefined();
+  });
+
+  it("opens legal modal from overlay privacy button", () => {
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    fireEvent.click(document.querySelector(".app-nav-toggle")!);
+    const buttons = document.querySelectorAll(".app-nav-overlay__link");
+    const privacyButton = Array.from(buttons).find((b) => b.textContent === "public.privacyPolicy");
+    expect(privacyButton).toBeDefined();
+    fireEvent.click(privacyButton!);
+    expect(screen.getByTestId("legal-modal")).toBeDefined();
+  });
+
+  it("opens changelog from overlay version button", () => {
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    fireEvent.click(document.querySelector(".app-nav-toggle")!);
+    const buttons = document.querySelectorAll(".app-nav-overlay__link");
+    const versionButton = Array.from(buttons).find((b) => b.textContent?.includes("common.version"));
+    expect(versionButton).toBeDefined();
+    fireEvent.click(versionButton!);
+    expect(screen.getByTestId("changelog-modal")).toBeDefined();
   });
 
   it("renders footer when not editing route", () => {
