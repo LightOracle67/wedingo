@@ -425,4 +425,186 @@ describe("App", () => {
     );
     expect(await screen.findByTestId("landing-page")).toBeDefined();
   });
+
+  it("opens legal modal for terms from overlay", () => {
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    fireEvent.click(document.querySelector(".app-nav-toggle")!);
+    const buttons = document.querySelectorAll(".app-nav-overlay__link");
+    const termsButton = Array.from(buttons).find((b) => b.textContent === "public.terms");
+    expect(termsButton).toBeDefined();
+    fireEvent.click(termsButton!);
+    expect(screen.getByTestId("legal-modal")).toBeDefined();
+  });
+
+  it("opens legal modal for legal notice from overlay", () => {
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    fireEvent.click(document.querySelector(".app-nav-toggle")!);
+    const buttons = document.querySelectorAll(".app-nav-overlay__link");
+    const legalButton = Array.from(buttons).find((b) => b.textContent === "public.legalNotice");
+    expect(legalButton).toBeDefined();
+    fireEvent.click(legalButton!);
+    expect(screen.getByTestId("legal-modal")).toBeDefined();
+  });
+
+  it("opens legal modal from footer privacy button", () => {
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    const footerButtons = document.querySelectorAll(".app-footer__link");
+    const privacyBtn = Array.from(footerButtons).find((b) => b.textContent === "public.privacyPolicy");
+    expect(privacyBtn).toBeDefined();
+    fireEvent.click(privacyBtn!);
+    expect(screen.getByTestId("legal-modal")).toBeDefined();
+  });
+
+  it("opens legal modal from footer terms button", () => {
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    const footerButtons = document.querySelectorAll(".app-footer__link");
+    const termsBtn = Array.from(footerButtons).find((b) => b.textContent === "public.terms");
+    expect(termsBtn).toBeDefined();
+    fireEvent.click(termsBtn!);
+    expect(screen.getByTestId("legal-modal")).toBeDefined();
+  });
+
+  it("opens legal modal from footer legal button", () => {
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    const footerButtons = document.querySelectorAll(".app-footer__link");
+    const legalBtn = Array.from(footerButtons).find((b) => b.textContent === "public.legalNotice");
+    expect(legalBtn).toBeDefined();
+    fireEvent.click(legalBtn!);
+    expect(screen.getByTestId("legal-modal")).toBeDefined();
+  });
+
+  it("opens changelog from footer version button", () => {
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    const footerButtons = document.querySelectorAll(".app-footer__link");
+    const versionBtn = Array.from(footerButtons).find((b) => b.textContent?.includes("common.version"));
+    expect(versionBtn).toBeDefined();
+    fireEvent.click(versionBtn!);
+    expect(screen.getByTestId("changelog-modal")).toBeDefined();
+  });
+
+  it("renders a11y trigger in admin mode", () => {
+    mockUseApp.mockReturnValue({
+      ...baseUseApp,
+      isAdminTokenLoggedIn: true,
+      inviteToken: "abc123",
+    });
+    render(
+      <MemoryRouter initialEntries={["/abc123"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    const adminA11y = document.querySelector(".a11y-trigger--admin");
+    expect(adminA11y).toBeDefined();
+  });
+
+  it("navigating overlay closes nav", () => {
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    fireEvent.click(document.querySelector(".app-nav-toggle")!);
+    expect(document.querySelector(".app-nav-overlay--open")).toBeDefined();
+    const buttons = document.querySelectorAll(".app-nav-overlay__link");
+    const privacyButton = Array.from(buttons).find((b) => b.textContent === "public.privacyPolicy")!;
+    fireEvent.click(privacyButton);
+    expect(document.querySelector(".app-nav-overlay--open")).toBeNull();
+  });
+
+  it("sets document title for admin route", () => {
+    mockUseApp.mockReturnValue({ ...baseUseApp, inviteToken: "abc123" });
+    render(
+      <MemoryRouter initialEntries={["/abc123/admin"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    expect(document.title).toBe("app.titleAdmin");
+  });
+
+  it("sets document title for setup route", () => {
+    mockUseApp.mockReturnValue({ ...baseUseApp, inviteToken: "abc123" });
+    render(
+      <MemoryRouter initialEntries={["/abc123/setup"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    expect(document.title).toBe("app.titleSetup");
+  });
+
+  it("sets document theme based on formData", () => {
+    mockUseApp.mockReturnValue({
+      ...baseUseApp,
+      formData: { theme: "rose" },
+      inviteToken: "abc123",
+    });
+    render(
+      <MemoryRouter initialEntries={["/abc123"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    expect(document.documentElement.dataset.weddingTheme).toBe("rose");
+  });
+
+  it("sets document theme to golden on editing route", () => {
+    mockUseApp.mockReturnValue({
+      ...baseUseApp,
+      isAdminTokenLoggedIn: true,
+      inviteToken: "abc123",
+      formData: { theme: "rose" },
+    });
+    render(
+      <MemoryRouter initialEntries={["/abc123/admin"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    expect(document.documentElement.dataset.weddingTheme).toBe("golden");
+  });
 });

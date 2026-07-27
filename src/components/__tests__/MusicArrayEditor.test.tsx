@@ -421,4 +421,47 @@ describe("MusicArrayEditor", () => {
     });
   });
 
+  it("handles playback error gracefully", async () => {
+    HTMLMediaElement.prototype.play = vi.fn().mockRejectedValue(new Error("playback blocked"));
+
+    render(
+      <MusicArrayEditor
+        inviteToken="test-token"
+        value="https://example.com/song.mp3"
+        onChange={vi.fn()}
+        t={t}
+      />
+    );
+    await screen.findByText("setup.currentMusic");
+
+    const playBtn = screen.getByRole("button", { name: "music.play" });
+    fireEvent.click(playBtn);
+
+    await waitFor(() => {
+      expect(screen.getByRole("button", { name: "music.play" })).toBeInTheDocument();
+    });
+  });
+
+  it("skips delete when audioId is null", async () => {
+    mockDeleteAudio.mockClear();
+    mockLoadAudio.mockResolvedValue({ url: "https://example.com/song.mp3" });
+
+    const onChange = vi.fn();
+    render(
+      <MusicArrayEditor
+        inviteToken="test-token"
+        value="https://example.com/song.mp3"
+        onChange={onChange}
+        t={t}
+      />
+    );
+    await screen.findByText("setup.currentMusic");
+
+    const deleteBtn = screen.getByRole("button", { name: "common.delete" });
+    fireEvent.click(deleteBtn);
+
+    await waitFor(() => {
+      expect(mockDeleteAudio).not.toHaveBeenCalled();
+    });
+  });
 });

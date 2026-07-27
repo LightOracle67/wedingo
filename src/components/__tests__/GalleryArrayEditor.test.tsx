@@ -322,4 +322,19 @@ describe("GalleryArrayEditor", () => {
       expect(mockAddToast).toHaveBeenCalledWith("error", "errors.galleryDeleteFailed");
     });
   });
+
+  it("skips delete when slot has no id", async () => {
+    mockDeleteGalleryImage.mockClear();
+    mockLoadGallery.mockResolvedValue([
+      { url: "data:image/png,test", description: "no-id", originalName: "test.png", originalSize: 1000, position: 0 },
+    ]);
+    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    await screen.findByDisplayValue("no-id");
+    const deleteBtn = document.querySelector<HTMLButtonElement>('button[aria-label="common.delete"]')!;
+    vi.spyOn(globalThis, "confirm").mockReturnValue(true);
+    fireEvent.click(deleteBtn);
+    await vi.waitFor(() => {
+      expect(mockDeleteGalleryImage).not.toHaveBeenCalled();
+    });
+  });
 });
