@@ -226,6 +226,85 @@ describe("GalleryArrayEditor", () => {
     expect(mockAddGalleryImage).toHaveBeenCalled();
   });
 
+  it("handles load gallery error", async () => {
+    mockLoadGallery.mockRejectedValue(new Error("Load failed"));
+
+    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    await waitFor(() => {
+      expect(mockAddToast).toHaveBeenCalledWith("error", "errors.galleryLoadFailed");
+    });
+  });
+
+  it("shows error on description blur when item has no id", async () => {
+    mockLoadGallery.mockResolvedValue([
+      { url: "data:image/png,test", description: "no-id", originalName: "test.png", originalSize: 1000, position: 0 },
+    ]);
+
+    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    await screen.findByDisplayValue("no-id");
+
+    const input = screen.getByDisplayValue("no-id");
+    fireEvent.blur(input);
+
+    await waitFor(() => {
+      expect(mockAddToast).toHaveBeenCalledWith("error", "errors.imageIdNotFound");
+    });
+  });
+
+  it("rejects invalid file type", async () => {
+    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    await screen.findByText("#1");
+
+    const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
+    const badFile = new File(["text"], "file.txt", { type: "text/plain" });
+    fireEvent.change(fileInput, { target: { files: [badFile] } });
+
+    await waitFor(() => {
+      expect(mockAddToast).toHaveBeenCalledWith("error", "setup.errorFileFormat");
+    });
+  });
+
+  it("detects duplicate file upload", async () => {
+    mockLoadGallery.mockResolvedValue([
+      { id: "img-1", url: "data:image/png,test", description: "desc", originalName: "test.png", originalSize: 1000, position: 0 },
+    ]);
+
+    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    await screen.findByText("#1");
+
+    const fileInputs = document.querySelectorAll<HTMLInputElement>('input[type="file"]');
+    const file = new File(["fake-image"], "test.png", { type: "image/jpeg" });
+    Object.defineProperty(file, "size", { value: 1000 });
+    fireEvent.change(fileInputs[0], { target: { files: [file] } });
+
+    await waitFor(() => {
+      expect(mockAddToast).toHaveBeenCalledWith("warning", "setup.duplicateFileWarning");
+    });
+  });
+
+  it("stays in loading state when no inviteToken", () => {
+    render(<GalleryArrayEditor t={t} />);
+    expect(document.querySelector(".page-loading")).toBeInTheDocument();
+  });
+
+  it("handles description save failure with non-Error", async () => {
+    mockLoadGallery.mockResolvedValue([
+      { id: "img-1", url: "data:image/png,test", description: "hello", originalName: "test.png", originalSize: 1000, position: 0 },
+    ]);
+    mockUpdateGalleryDescription.mockRejectedValue("String error");
+
+    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    await screen.findByDisplayValue("hello");
+
+    const input = screen.getByDisplayValue("hello");
+    fireEvent.change(input, { target: { value: "new desc" } });
+    fireEvent.blur(input);
+
+    await waitFor(() => {
+      expect(mockAddToast).toHaveBeenCalledWith("error", "setup.galleryDescriptionSaveFailed: String error");
+    });
+  });
+
   it("handles delete error", async () => {
     mockLoadGallery.mockResolvedValue([
       { id: "img-1", url: "data:image/png,test", description: "desc", originalName: "test.png", originalSize: 1000, position: 0 },

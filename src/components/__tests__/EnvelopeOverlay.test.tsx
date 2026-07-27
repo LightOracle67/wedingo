@@ -88,4 +88,49 @@ describe("EnvelopeOverlay", () => {
     expect(screen.queryByText("envelope.tapContinue")).toBeNull();
     vi.useRealTimers();
   });
+
+  it("adds exit class and calls onOpen after delay", () => {
+    vi.useFakeTimers();
+    const onOpen = vi.fn();
+    render(<EnvelopeOverlay {...defaultProps} onOpen={onOpen} />);
+    const btn = screen.getByRole("button");
+    fireEvent.click(btn);
+    fireEvent.click(btn);
+    expect(document.querySelector(".envelope-overlay--exit")).toBeDefined();
+    vi.advanceTimersByTime(3500);
+    expect(onOpen).toHaveBeenCalled();
+    vi.useRealTimers();
+  });
+
+  it("focuses main-content element after exit", () => {
+    vi.useFakeTimers();
+    const onOpen = vi.fn();
+    const mainEl = document.createElement("div");
+    mainEl.id = "main-content";
+    mainEl.tabIndex = -1;
+    document.body.appendChild(mainEl);
+    const focusSpy = vi.spyOn(mainEl, "focus");
+
+    render(<EnvelopeOverlay {...defaultProps} onOpen={onOpen} />);
+    const btn = screen.getByRole("button");
+    fireEvent.click(btn);
+    fireEvent.click(btn);
+    vi.advanceTimersByTime(3500);
+    expect(focusSpy).toHaveBeenCalled();
+
+    document.body.removeChild(mainEl);
+    vi.useRealTimers();
+  });
+
+  it("shows golden text with exit animation during exiting state", () => {
+    vi.useFakeTimers();
+    render(<EnvelopeOverlay {...defaultProps} />);
+    const btn = screen.getByRole("button");
+    fireEvent.click(btn);
+    vi.advanceTimersByTime(1400);
+    expect(document.querySelector(".envelope-golden--in")).toBeDefined();
+    fireEvent.click(btn);
+    expect(document.querySelector(".envelope-golden--out")).toBeDefined();
+    vi.useRealTimers();
+  });
 });

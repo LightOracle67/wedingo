@@ -37,4 +37,14 @@ describe("LegalModal", () => {
     fireEvent.click(button);
     expect(screen.getByText("legal.privacyPolicy")).toBeDefined();
   });
+
+  it("closes on Escape key press", () => {
+    vi.useFakeTimers();
+    const onClose = vi.fn();
+    render(<LegalModal section="privacy" onClose={onClose} />);
+    fireEvent.keyDown(window, { key: "Escape" });
+    vi.advanceTimersByTime(200);
+    expect(onClose).toHaveBeenCalled();
+    vi.useRealTimers();
+  });
 });
