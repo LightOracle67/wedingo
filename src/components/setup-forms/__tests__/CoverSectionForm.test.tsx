@@ -306,4 +306,45 @@ describe("CoverSectionForm", () => {
     fireEvent.change(fileInput, { target: { files: [] } });
     expect(mockUploadImage).not.toHaveBeenCalled();
   });
+
+  it("updates godparent1 on change slices to 40 chars inline", () => {
+    render(<CoverSectionForm />);
+    const input = screen.getByLabelText("setup.godparent1Label");
+    fireEvent.change(input, { target: { value: "Gparent" } });
+    expect(mockUpdateFormField).toHaveBeenCalledWith("godparent1", "Gparent");
+  });
+
+  it("updates godparent2 on change slices to 40 chars inline", () => {
+    render(<CoverSectionForm />);
+    const input = screen.getByLabelText("setup.godparent2Label");
+    fireEvent.change(input, { target: { value: "Gparent2" } });
+    expect(mockUpdateFormField).toHaveBeenCalledWith("godparent2", "Gparent2");
+  });
+
+  it("handles theme change via callback", () => {
+    render(<CoverSectionForm />);
+    fireEvent.click(screen.getByTestId("theme-picker"));
+    expect(mockUpdateFormField).toHaveBeenCalledWith("theme", "forest");
+  });
+
+  it("handles music editor audio change", () => {
+    render(<CoverSectionForm />);
+    fireEvent.click(screen.getByTestId("music-editor"));
+    expect(mockUpdateFormField).toHaveBeenCalledWith("musicFile", "test-music");
+  });
+
+  it("uploads photo via replace image input as well", async () => {
+    mockFormData.couplePhoto = "https://example.com/photo.jpg";
+    mockUploadImage.mockResolvedValue({ dataUrl: "https://example.com/replaced.jpg" });
+    render(<CoverSectionForm />);
+    const fileInputs = document.querySelectorAll('input[type="file"]');
+    expect(fileInputs.length).toBe(2);
+    const replaceInput = fileInputs[1];
+    const file = new File(["test"], "new.jpg", { type: "image/jpeg" });
+    fireEvent.change(replaceInput, { target: { files: [file] } });
+    await vi.waitFor(() => {
+      expect(mockUploadComplete).toHaveBeenCalledWith("setup.photoUploaded");
+    });
+    expect(mockUpdateFormField).toHaveBeenCalledWith("couplePhoto", "https://example.com/replaced.jpg");
+  });
 });
