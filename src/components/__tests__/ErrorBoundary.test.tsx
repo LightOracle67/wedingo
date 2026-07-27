@@ -52,4 +52,16 @@ describe("ErrorBoundary", () => {
     fireEvent.click(screen.getByText("common.errorBoundary.reload"));
     expect(reloadSpy).toHaveBeenCalled();
   });
+
+  it("shows generic message when not in dev mode", async () => {
+    vi.stubEnv("DEV", false);
+    vi.resetModules();
+    vi.doMock("react-i18next", () => ({
+      useTranslation: () => ({ t: (key: string) => key }),
+    }));
+    const { default: ProdErrorBoundary } = await import("../ErrorBoundary");
+    render(<ProdErrorBoundary><Bomb shouldThrow={true} /></ProdErrorBoundary>);
+    expect(screen.getByText("common.errorBoundary.message")).toBeDefined();
+    vi.unstubAllEnvs();
+  });
 });
