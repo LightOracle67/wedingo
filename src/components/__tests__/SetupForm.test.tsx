@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, within } from "@testing-library/react";
 
 const mockHandleSaveSetup = vi.fn();
 const mockUpdateFormField = vi.fn();
@@ -128,5 +128,26 @@ describe("SetupForm", () => {
     expect(screen.queryByText("setup.giftsSectionTitle")).toBeNull();
     expect(screen.getByText("setup.storySectionTitle")).toBeDefined();
     expect(screen.getByText("setup.gallerySectionTitle")).toBeDefined();
+  });
+
+  it("submits form on Ctrl+Enter keyboard shortcut", () => {
+    const requestSubmit = vi.fn();
+    HTMLFormElement.prototype.requestSubmit = requestSubmit;
+    render(<SetupForm />);
+    fireEvent.keyDown(window, { key: "Enter", ctrlKey: true });
+    expect(requestSubmit).toHaveBeenCalled();
+  });
+
+  it("calls updateFormField on privacy consent toggle", () => {
+    render(<SetupForm />);
+    const privacyLabel = screen.getByText("setup.privacyConsent").closest("label")!;
+    const checkbox = within(privacyLabel).getByRole("checkbox");
+    fireEvent.click(checkbox);
+    expect(mockUpdateFormField).toHaveBeenCalledWith("_privacyConsent", "true");
+  });
+
+  it("renders section order editor", () => {
+    render(<SetupForm />);
+    expect(screen.getByText("sectionOrder.title")).toBeDefined();
   });
 });

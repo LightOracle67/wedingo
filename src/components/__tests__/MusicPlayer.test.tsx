@@ -148,4 +148,30 @@ describe("MusicPlayer", () => {
     fireEvent.click(fab);
     expect(screen.getByText("music.noMusic")).toBeDefined();
   });
+
+  it("handles invalid music URL gracefully", () => {
+    render(<MusicPlayer musicUrl="not-a-valid-url" />);
+    const fab = screen.getByRole("button", { name: /music\.label/i });
+    fireEvent.click(fab);
+    expect(screen.getByText("music.noMusic")).toBeDefined();
+  });
+
+  it("pauses audio when play button clicked while playing", async () => {
+    mockAudioPlay.mockResolvedValue(undefined);
+    render(<MusicPlayer musicUrl="https://example.com/song.mp3" />);
+    const fab = screen.getByRole("button", { name: /music\.label/i });
+    fireEvent.click(fab);
+    const playBtn = screen.getByText("▶");
+    fireEvent.click(playBtn);
+    await vi.waitFor(() => expect(screen.getByText("⏸")).toBeDefined());
+    fireEvent.click(playBtn);
+    expect(HTMLMediaElement.prototype.pause).toHaveBeenCalled();
+  });
+
+  it("shows loop attribute on audio element", () => {
+    render(<MusicPlayer musicUrl="https://example.com/song.mp3" />);
+    const audio = document.querySelector("audio");
+    expect(audio).toBeDefined();
+    expect(audio?.hasAttribute("loop")).toBe(true);
+  });
 });
