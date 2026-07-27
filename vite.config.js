@@ -35,8 +35,8 @@ export default defineConfig({
     },
   },
   build: {
-    sourcemap: "hidden",
-    chunkSizeWarningLimit: 600,
+    sourcemap: process.env.SENTRY_AUTH_TOKEN ? "hidden" : false,
+    chunkSizeWarningLimit: 650,
     rollupOptions: {
       output: {
         manualChunks(id) {
@@ -44,6 +44,7 @@ export default defineConfig({
           if (id.includes("/node_modules/leaflet/")) return "leaflet";
           if (id.includes("node_modules/.pnpm/react") || id.includes("node_modules/react")) return "vendor-react";
           if (id.includes("/node_modules/i18next/") || id.includes("/node_modules/react-i18next/")) return "i18n";
+          if (id.includes("/node_modules/@sentry/")) return "vendor-sentry";
           if (id.includes("node_modules")) return "vendor-other";
         },
       },
