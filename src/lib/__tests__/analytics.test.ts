@@ -29,6 +29,7 @@ describe("analytics", () => {
     mockIsSupported.mockResolvedValue(true);
     vi.resetModules();
     vi.stubEnv("PROD", "true");
+    vi.stubEnv("VITE_FIREBASE_MEASUREMENT_ID", "G-XXXXXXXX");
 
     const { trackEvent: trackEventProd } = await import("../analytics");
     await vi.waitFor(() => expect(mockGetAnalytics).toHaveBeenCalled());

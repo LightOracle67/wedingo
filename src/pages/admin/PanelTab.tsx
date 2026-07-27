@@ -49,8 +49,9 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
       a.download = `wedingo-${inviteToken}-backup-${Date.now()}.json`;
       a.click();
       URL.revokeObjectURL(url);
-    } catch {
-      addToast("error", t("errors.backupFailed"));
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      addToast("error", `${t("errors.backupFailed")}: ${msg}`);
     }
   }, [inviteToken, t, addToast]);
 
@@ -69,8 +70,9 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
         await updateDoc(invitationDocRef(id), rest);
       }
       if (onRestore) await onRestore();
-    } catch {
-      addToast("error", t("errors.restoreFailed"));
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      addToast("error", `${t("errors.restoreFailed")}: ${msg}`);
     }
     e.target.value = "";
   }, [onRestore, t, addToast]);

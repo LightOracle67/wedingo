@@ -48,6 +48,8 @@ service cloud.firestore {
           || !exists(/databases/$(database)/documents/invitations/$(tokenId)));
       allow update: if isValidInvitationWrite(request.resource.data)
         && (request.auth != null || hasActiveSession(tokenId));
+      /* Incremento de contador de visitas: cualquiera puede incrementar _visits. */
+      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['_visits']);
       /* Restauración de copia de seguridad por admin autenticado (sin validación de campos). */
       allow update: if hasActiveSession(tokenId);
       /* Creación/renovación de sesión: cualquiera puede iniciar sesión,
@@ -96,8 +98,8 @@ service cloud.firestore {
           request.resource.data.dietaryInfo == ""
           || request.resource.data.healthConsent == true
         )
-        && (request.resource.data.keys().hasOnly(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent', 'privacyConsentAt', 'birthDate', 'parentalConsent', 'menuSelection', 'mealChoice', 'healthConsent', 'healthConsentAt', 'companions', 'menuHeadcounts', 'guestNames', 'attendees'])
-          || request.resource.data.keys().hasOnly(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent', 'privacyConsentAt', 'birthDate', 'parentalConsent', 'menuSelection', 'mealChoice', 'companions', 'menuHeadcounts', 'guestNames', 'attendees']));
+        && (request.resource.data.keys().hasOnly(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent', 'privacyConsentAt', 'birthDate', 'parentalConsent', 'menuSelection', 'mealChoice', 'healthConsent', 'healthConsentAt', 'companions', 'menuHeadcounts', 'guestNames', 'attendees', 'notAttendingCount'])
+          || request.resource.data.keys().hasOnly(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent', 'privacyConsentAt', 'birthDate', 'parentalConsent', 'menuSelection', 'mealChoice', 'companions', 'menuHeadcounts', 'guestNames', 'attendees', 'notAttendingCount']));
 
       allow read: if isSuperAdmin()
         || (resource.data.inviteToken is string
@@ -108,7 +110,7 @@ service cloud.firestore {
         && request.resource.data.inviteToken is string
         && hasActiveSession(resource.data.inviteToken)
         && request.resource.data.privacyConsent == true
-        && request.resource.data.keys().hasOnly(['attendance', 'dietaryInfo', 'privacyConsent', 'privacyConsentAt', 'healthConsent', 'healthConsentAt', 'birthDate', 'parentalConsent', 'menuSelection', 'mealChoice', 'guestName', 'submittedAt', 'inviteToken', 'companions', 'menuHeadcounts', 'guestNames', 'attendees']);
+        && request.resource.data.keys().hasOnly(['attendance', 'dietaryInfo', 'privacyConsent', 'privacyConsentAt', 'healthConsent', 'healthConsentAt', 'birthDate', 'parentalConsent', 'menuSelection', 'mealChoice', 'guestName', 'submittedAt', 'inviteToken', 'companions', 'menuHeadcounts', 'guestNames', 'attendees', 'notAttendingCount']);
 
       allow delete: if isSuperAdmin()
         || (resource.data.inviteToken is string
