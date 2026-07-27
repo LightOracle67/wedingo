@@ -37,32 +37,34 @@ const mockSetIsTokenVerified = vi.fn();
 const mockSetTokenLoginUsername = vi.fn();
 const mockRefreshSetupToken = vi.fn();
 
+const mockUseSetupAuth = vi.fn(() => ({
+  setupToken: "",
+  setupTokenInput: "",
+  isTokenVerifying: false,
+  isTokenVerified: false,
+  tokenLoginUsername: "",
+  adminLoginUsername: "",
+  isAdminTokenLoggedIn: false,
+  confirmTokenInput: "",
+  authMessage: "",
+  authMessageType: "success",
+  refreshSetupToken: mockRefreshSetupToken,
+  handleTokenLogin: vi.fn(),
+  handleAdminTokenLogin: vi.fn(),
+  handleAdminLogout: vi.fn(),
+  handleResetSetupToken: vi.fn(),
+  handleResetTokenFromAdmin: vi.fn(),
+  setSetupTokenInput: mockSetSetupTokenInput,
+  setIsTokenVerified: mockSetIsTokenVerified,
+  setTokenLoginUsername: mockSetTokenLoginUsername,
+  setAdminLoginUsername: vi.fn(),
+  setConfirmTokenInput: vi.fn(),
+  setSetupToken: mockSetSetupToken,
+  setAuthMessage: vi.fn(),
+}));
+
 vi.mock("../../hooks/useSetupAuth", () => ({
-  useSetupAuth: () => ({
-    setupToken: "",
-    setupTokenInput: "",
-    isTokenVerifying: false,
-    isTokenVerified: false,
-    tokenLoginUsername: "",
-    adminLoginUsername: "",
-    isAdminTokenLoggedIn: false,
-    confirmTokenInput: "",
-    authMessage: "",
-    authMessageType: "success",
-    refreshSetupToken: mockRefreshSetupToken,
-    handleTokenLogin: vi.fn(),
-    handleAdminTokenLogin: vi.fn(),
-    handleAdminLogout: vi.fn(),
-    handleResetSetupToken: vi.fn(),
-    handleResetTokenFromAdmin: vi.fn(),
-    setSetupTokenInput: mockSetSetupTokenInput,
-    setIsTokenVerified: mockSetIsTokenVerified,
-    setTokenLoginUsername: mockSetTokenLoginUsername,
-    setAdminLoginUsername: vi.fn(),
-    setConfirmTokenInput: vi.fn(),
-    setSetupToken: mockSetSetupToken,
-    setAuthMessage: vi.fn(),
-  }),
+  useSetupAuth: () => mockUseSetupAuth(),
 }));
 
 vi.mock("firebase/firestore", () => ({
@@ -134,5 +136,45 @@ describe("AuthProvider", () => {
     await onFirstSave();
     expect(mockSetAdminMessageType).toHaveBeenCalledWith("error");
     expect(mockSetAdminMessage).toHaveBeenCalledWith("errors.sessionUpdateFailed");
+  });
+
+  it("skips session renewal when already verified", async () => {
+    mockUseSetupAuth.mockReturnValueOnce({
+      setupToken: "",
+      setupTokenInput: "",
+      isTokenVerifying: false,
+      isTokenVerified: true,
+      tokenLoginUsername: "",
+      adminLoginUsername: "",
+      isAdminTokenLoggedIn: false,
+      confirmTokenInput: "",
+      authMessage: "",
+      authMessageType: "success",
+      refreshSetupToken: mockRefreshSetupToken,
+      handleTokenLogin: vi.fn(),
+      handleAdminTokenLogin: vi.fn(),
+      handleAdminLogout: vi.fn(),
+      handleResetSetupToken: vi.fn(),
+      handleResetTokenFromAdmin: vi.fn(),
+      setSetupTokenInput: mockSetSetupTokenInput,
+      setIsTokenVerified: mockSetIsTokenVerified,
+      setTokenLoginUsername: mockSetTokenLoginUsername,
+      setAdminLoginUsername: vi.fn(),
+      setConfirmTokenInput: vi.fn(),
+      setSetupToken: mockSetSetupToken,
+      setAuthMessage: vi.fn(),
+    });
+    render(<AuthProvider><div>child</div></AuthProvider>);
+    const onFirstSave = mockRegisterOnFirstSave.mock.calls[0][0];
+    await onFirstSave();
+    expect(mockSetSetupToken).not.toHaveBeenCalled();
+  });
+
+  it("saves session with displayName on first save", async () => {
+    mockGetSession.mockReturnValue({ identifier: "admin-user-name", expiresAt: Date.now() + 999999 });
+    render(<AuthProvider><div>child</div></AuthProvider>);
+    const onFirstSave = mockRegisterOnFirstSave.mock.calls[0][0];
+    await onFirstSave();
+    expect(mockSetTokenLoginUsername).toHaveBeenCalledWith("admin-user-name");
   });
 });

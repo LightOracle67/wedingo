@@ -144,6 +144,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
               setFormData(parsed.data);
               setHasStoredConfig(true);
               setIsConfigLoading(false);
+              loadedTokenRef.current = inviteToken;
               return;
             }
           } catch {}
