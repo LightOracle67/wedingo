@@ -24,8 +24,42 @@ describe("CollapsibleSection", () => {
     const button = screen.getByRole("button", { name: "Toggle Test" });
     expect(screen.getByText("Content")).toBeInTheDocument();
     fireEvent.click(button);
-    // After clicking, content should still exist in DOM (animated hide)
     expect(screen.getByText("Content")).toBeInTheDocument();
+  });
+
+  it("starts closed by default and opens on toggle", () => {
+    render(
+      <CollapsibleSection title="Closed by default">
+        <p>Hidden content</p>
+      </CollapsibleSection>
+    );
+
+    const button = screen.getByRole("button", { name: "Closed by default" });
+    expect(button).toHaveAttribute("aria-expanded", "false");
+
+    fireEvent.click(button);
+    expect(button).toHaveAttribute("aria-expanded", "true");
+  });
+
+  it("starts open when defaultOpen is true", () => {
+    render(
+      <CollapsibleSection title="Open by default" defaultOpen={true}>
+        <p>Visible content</p>
+      </CollapsibleSection>
+    );
+
+    const button = screen.getByRole("button", { name: "Open by default" });
+    expect(button).toHaveAttribute("aria-expanded", "true");
+  });
+
+  it("renders hidden badge when isHidden is true", () => {
+    render(
+      <CollapsibleSection title="Hidden section" isHidden={true} sectionKey="test" onToggleVisibility={vi.fn()}>
+        <p>Content</p>
+      </CollapsibleSection>
+    );
+
+    expect(screen.getByText("common.hidden")).toBeInTheDocument();
   });
 
   it("calls onToggleVisibility when visibility toggle is clicked", () => {
@@ -41,5 +75,44 @@ describe("CollapsibleSection", () => {
     const switchEl = screen.getByRole("switch");
     fireEvent.click(switchEl);
     expect(onToggle).toHaveBeenCalledWith("details");
+  });
+
+  it("shows visibility toggle label based on hidden state", () => {
+    const { rerender } = render(
+      <CollapsibleSection
+        title="Test"
+        sectionKey="test"
+        isHidden={false}
+        onToggleVisibility={vi.fn()}
+      />
+    );
+    expect(screen.getByText("common.visible")).toBeInTheDocument();
+
+    rerender(
+      <CollapsibleSection
+        title="Test"
+        sectionKey="test"
+        isHidden={true}
+        onToggleVisibility={vi.fn()}
+      />
+    );
+    expect(screen.getByText("common.show")).toBeInTheDocument();
+  });
+
+  it("sets max-height to none after transition end when open", () => {
+    render(
+      <CollapsibleSection title="Transition Test" defaultOpen={true}>
+        <p>Content</p>
+      </CollapsibleSection>
+    );
+
+    const wrap = document.querySelector(".setup-collapsible__wrap")!;
+    expect(wrap).toHaveStyle("max-height: none");
+
+    const button = screen.getByRole("button", { name: "Transition Test" });
+    fireEvent.click(button);
+
+    fireEvent.transitionEnd(wrap, { propertyName: "max-height" });
+    expect(wrap).toHaveStyle("max-height: 0px");
   });
 });

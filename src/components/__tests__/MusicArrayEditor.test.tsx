@@ -1,10 +1,12 @@
 import "@testing-library/jest-dom/vitest";
-import { describe, it, expect, vi, afterEach } from "vitest";
-import { render, screen, cleanup } from "@testing-library/react";
+import { describe, it, expect, vi, afterEach, beforeEach } from "vitest";
+import { render, screen, cleanup, fireEvent, waitFor } from "@testing-library/react";
+
+const mockAddToast = vi.fn();
 
 vi.mock("../../hooks/useToast", () => ({
   useToast: () => ({
-    addToast: vi.fn(),
+    addToast: mockAddToast,
     startUploadToast: vi.fn(() => ({
       update: vi.fn(),
       complete: vi.fn(),
@@ -13,11 +15,16 @@ vi.mock("../../hooks/useToast", () => ({
   }),
 }));
 
+const mockLoadAudio = vi.fn(() => Promise.resolve(null));
+const mockUploadAudio = vi.fn();
+const mockAddAudio = vi.fn();
+const mockDeleteAudio = vi.fn();
+
 vi.mock("../../lib/music-store", () => ({
-  loadAudio: vi.fn(() => Promise.resolve(null)),
-  uploadAudio: vi.fn(),
-  addAudio: vi.fn(),
-  deleteAudio: vi.fn(),
+  loadAudio: (...args: unknown[]) => mockLoadAudio(...args),
+  uploadAudio: (...args: unknown[]) => mockUploadAudio(...args),
+  addAudio: (...args: unknown[]) => mockAddAudio(...args),
+  deleteAudio: (...args: unknown[]) => mockDeleteAudio(...args),
 }));
 
 vi.mock("react-i18next", () => ({
@@ -26,7 +33,17 @@ vi.mock("react-i18next", () => ({
 
 import MusicArrayEditor from "../MusicArrayEditor";
 
-afterEach(cleanup);
+afterEach(() => {
+  cleanup();
+  vi.restoreAllMocks();
+});
+
+beforeEach(() => {
+  mockLoadAudio.mockResolvedValue(null);
+  mockUploadAudio.mockResolvedValue({ encrypted: "enc", dataUrl: "data:audio/mp3,test" });
+  mockAddAudio.mockResolvedValue({ id: "audio-1", dataUrl: "data:audio/mp3,test" });
+  mockDeleteAudio.mockResolvedValue(undefined);
+});
 
 describe("MusicArrayEditor", () => {
   const t = (key: string) => key;
@@ -70,8 +87,7 @@ describe("MusicArrayEditor", () => {
   it("calls onChange when loadAudio returns a URL", async () => {
     const onChange = vi.fn();
 
-    const musicStore = await import("../../lib/music-store");
-    vi.mocked(musicStore.loadAudio).mockResolvedValue({
+    mockLoadAudio.mockResolvedValue({
       id: "audio-1",
       url: "https://example.com/loaded.mp3",
     });
@@ -95,5 +111,97 @@ describe("MusicArrayEditor", () => {
     );
     const label = await screen.findByText("setup.musicUploadLabel");
     expect(label).toBeInTheDocument();
+  });
+
+  it("handles audio file selection via hidden input", async () => {
+    const onChange = vi.fn();
+    render(
+      <MusicArrayEditor inviteToken="test-token" value="" onChange={onChange} t={t} />
+    );
+    await screen.findByText("setup.musicUploadLabel");
+
+    const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
+    expect(fileInput).toBeInTheDocument();
+
+    const file = new File(["fake-audio"], "song.mp3", { type: "audio/mpeg" });
+    fireEvent.change(fileInput, { target: { files: [file] } });
+
+    await waitFor(() => {
+      expect(mockUploadAudio).toHaveBeenCalled();
+    });
+    expect(mockAddAudio).toHaveBeenCalled();
+    expect(onChange).toHaveBeenCalledWith("data:audio/mp3,test");
+  });
+
+  it("rejects empty audio file", async () => {
+    render(
+      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} t={t} />
+    );
+    await screen.findByText("setup.musicUploadLabel");
+
+    const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
+    const emptyFile = new File([], "empty.mp3", { type: "audio/mpeg" });
+    Object.defineProperty(emptyFile, "size", { value: 0 });
+    fireEvent.change(fileInput, { target: { files: [emptyFile] } });
+
+    await waitFor(() => {
+      expect(mockAddToast).toHaveBeenCalledWith("error", "setup.errorEmptyFile");
+    });
+  });
+
+  it("rejects invalid audio format", async () => {
+    render(
+      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} t={t} />
+    );
+    await screen.findByText("setup.musicUploadLabel");
+
+    const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
+    const badFile = new File(["fake"], "file.txt", { type: "text/plain" });
+    fireEvent.change(fileInput, { target: { files: [badFile] } });
+
+    await waitFor(() => {
+      expect(mockAddToast).toHaveBeenCalledWith("error", "setup.audioFormatError");
+    });
+  });
+
+  it("deletes audio file", async () => {
+    mockLoadAudio.mockResolvedValue({
+      id: "audio-1",
+      url: "https://example.com/song.mp3",
+    });
+
+    const onChange = vi.fn();
+    render(
+      <MusicArrayEditor
+        inviteToken="test-token"
+        value="https://example.com/song.mp3"
+        onChange={onChange}
+        t={t}
+      />
+    );
+    await screen.findByText("setup.currentMusic");
+
+    const deleteBtn = screen.getByRole("button", { name: "common.delete" });
+    fireEvent.click(deleteBtn);
+
+    await waitFor(() => {
+      expect(mockDeleteAudio).toHaveBeenCalledWith("test-token");
+    });
+    expect(onChange).toHaveBeenCalledWith("");
+  });
+
+  it("toggles play/pause", async () => {
+    render(
+      <MusicArrayEditor
+        inviteToken="test-token"
+        value="https://example.com/song.mp3"
+        onChange={vi.fn()}
+        t={t}
+      />
+    );
+    await screen.findByText("setup.currentMusic");
+
+    const playBtn = screen.getByRole("button", { name: "music.play" });
+    expect(playBtn).toBeInTheDocument();
   });
 });
