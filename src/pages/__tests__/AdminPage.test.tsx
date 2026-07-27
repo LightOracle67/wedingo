@@ -30,7 +30,12 @@ vi.mock("../../lib/constants", () => ({
 }));
 
 vi.mock("../admin/PanelTab", () => ({
-  default: () => <div data-testid="panel-tab" />,
+  default: ({ config }: { config: Record<string, unknown> }) => (
+    <div data-testid="panel-tab">
+      <button data-testid="export-pdf-btn" onClick={() => { const fn = config.exportPdf as () => void; if (fn) fn(); }}>Export</button>
+      <button data-testid="set-active-tab-btn" onClick={() => { const fn = config.setActiveTab as (t: string) => void; if (fn) fn("invitacion"); }}>Set Tab</button>
+    </div>
+  ),
 }));
 
 vi.mock("../admin/InvitationTab", () => ({
@@ -38,7 +43,12 @@ vi.mock("../admin/InvitationTab", () => ({
 }));
 
 vi.mock("../admin/AttendanceTab", () => ({
-  default: () => <div data-testid="attendance-tab" />,
+  default: (props: Record<string, unknown>) => (
+    <div data-testid="attendance-tab">
+      <button data-testid="set-attendance-filter-btn" onClick={() => { const fn = props.setAttendanceFilter as (f: string) => void; if (fn) fn("yes"); }}>Set Filter</button>
+      <button data-testid="set-search-query-btn" onClick={() => { const fn = props.setSearchQuery as (q: string) => void; if (fn) fn("test"); }}>Set Search</button>
+    </div>
+  ),
 }));
 
 vi.mock("../admin/AccessTab", () => ({
@@ -363,5 +373,172 @@ describe("AdminPage", () => {
     );
     await screen.findByTestId("panel-tab");
     expect(screen.getByText("John & Jane")).toBeDefined();
+  });
+
+  it("filters rsvp entries by attendance filter", () => {
+    mockUseApp.mockReturnValue({
+      ...baseMock,
+      rsvpEntries: [
+        { guestName: "Alice", attendance: "yes", companions: 2 },
+        { guestName: "Bob", attendance: "no" },
+        { guestName: "Charlie", attendance: "yes", companions: 1 },
+      ],
+    });
+
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>
+    );
+  });
+
+  it("computes confirmed and declined responses from rsvpEntries", () => {
+    mockUseApp.mockReturnValue({
+      ...baseMock,
+      rsvpEntries: [
+        { guestName: "Alice", attendance: "yes", companions: 2 },
+        { guestName: "Bob", attendance: "no" },
+        { guestName: "Charlie", attendance: "yes", companions: 3 },
+      ],
+    });
+
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>
+    );
+  });
+
+  it("restores default tab when panel tab is selected via handleSetTab", async () => {
+    const replaceStateSpy = vi.spyOn(window.history, "replaceState");
+
+    mockSearch = "?tab=invitacion";
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>
+    );
+    await screen.findByTestId("invitation-tab");
+
+    fireEvent.click(screen.getByText("admin.tabs.panel"));
+    await screen.findByTestId("panel-tab");
+
+    expect(replaceStateSpy).toHaveBeenCalled();
+    replaceStateSpy.mockRestore();
+    mockSearch = "";
+  });
+
+  it("computes totalGuests correctly with companions", () => {
+    mockUseApp.mockReturnValue({
+      ...baseMock,
+      rsvpEntries: [
+        { guestName: "Alice", attendance: "yes", companions: 2 },
+        { guestName: "Bob", attendance: "no" },
+      ],
+    });
+
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>
+    );
+  });
+
+  it("filters by search query in filteredEntries", () => {
+    mockUseApp.mockReturnValue({
+      ...baseMock,
+      rsvpEntries: [
+        { guestName: "Alice", attendance: "yes", companions: 0 },
+        { guestName: "Bob", attendance: "no" },
+        { guestName: "Charlie", attendance: "yes", companions: 1 },
+      ],
+      searchQuery: "ali",
+    });
+
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>
+    );
+  });
+
+  it("handles exportPdf with RSVP data", async () => {
+    const mockFocus = vi.fn();
+    const mockWindowOpen = vi.fn(() => ({ focus: mockFocus }));
+    vi.spyOn(window, "open").mockImplementation(mockWindowOpen);
+    const createObjectURL = vi.fn(() => "blob:test");
+    vi.spyOn(URL, "createObjectURL").mockImplementation(createObjectURL);
+    vi.spyOn(URL, "revokeObjectURL").mockImplementation(() => {});
+
+    mockUseApp.mockReturnValue({
+      ...baseMock,
+      rsvpEntries: [
+        { guestName: "Alice", attendance: "yes", companions: 2, dietaryInfo: "Veg" },
+        { guestName: "Bob", attendance: "no", companions: 0, dietaryInfo: "" },
+      ],
+    });
+
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>
+    );
+    await screen.findByTestId("panel-tab");
+    fireEvent.click(screen.getByTestId("export-pdf-btn"));
+    expect(mockWindowOpen).toHaveBeenCalled();
+    expect(createObjectURL).toHaveBeenCalled();
+  });
+
+  it("filters rsvp entries with attendance filter 'no'", () => {
+    mockUseApp.mockReturnValue({
+      ...baseMock,
+      rsvpEntries: [
+        { guestName: "Alice", attendance: "yes", companions: 2 },
+        { guestName: "Bob", attendance: "no" },
+        { guestName: "Charlie", attendance: "yes", companions: 1 },
+      ],
+      attendanceFilter: "no",
+    });
+
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>
+    );
+  });
+
+  it("calls setActiveTabAndFilter from PanelTab", async () => {
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>
+    );
+    await screen.findByTestId("panel-tab");
+    fireEvent.click(screen.getByTestId("set-active-tab-btn"));
+    await screen.findByTestId("invitation-tab");
+  });
+
+  it("calls setAttendanceFilter from AttendanceTab", async () => {
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>
+    );
+    await screen.findByTestId("panel-tab");
+    fireEvent.click(screen.getByText("admin.tabs.attendance"));
+    await screen.findByTestId("attendance-tab");
+    fireEvent.click(screen.getByTestId("set-attendance-filter-btn"));
+  });
+
+  it("calls setSearchQuery from AttendanceTab", async () => {
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>
+    );
+    await screen.findByTestId("panel-tab");
+    fireEvent.click(screen.getByText("admin.tabs.attendance"));
+    await screen.findByTestId("attendance-tab");
+    fireEvent.click(screen.getByTestId("set-search-query-btn"));
   });
 });

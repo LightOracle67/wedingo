@@ -1,5 +1,5 @@
-import { describe, it, expect, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { describe, it, expect, vi, beforeEach } from "vitest";
+import { render, screen, fireEvent } from "@testing-library/react";
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key, i18n: { language: "en" } }),
@@ -74,5 +74,76 @@ describe("ShareTab", () => {
     render(<ShareTab inviteToken="abc" addToast={vi.fn()} />);
     const link = screen.getByRole("link", { name: /abc\?invitar/ });
     expect(link).toBeDefined();
+  });
+
+  it("calls copyLink when copy button is clicked", async () => {
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    Object.assign(navigator, { clipboard: { writeText } });
+    const addToast = vi.fn();
+    render(<ShareTab {...baseProps} addToast={addToast} />);
+    const copyBtn = screen.getByText("common.copy");
+    fireEvent.click(copyBtn);
+    await vi.waitFor(() => {
+      expect(writeText).toHaveBeenCalledWith(expect.stringContaining("test-token"));
+    });
+  });
+
+  it("shows error toast when clipboard copy fails", async () => {
+    const writeText = vi.fn().mockRejectedValue(new Error("Clipboard error"));
+    Object.assign(navigator, { clipboard: { writeText } });
+    const addToast = vi.fn();
+    render(<ShareTab {...baseProps} addToast={addToast} />);
+    const copyBtn = screen.getByText("common.copy");
+    fireEvent.click(copyBtn);
+    await vi.waitFor(() => {
+      expect(addToast).toHaveBeenCalledWith("error", "errors.clipboardCopyFailed");
+    });
+  });
+
+  it("updates message when textarea changes", () => {
+    render(<ShareTab {...baseProps} />);
+    const textarea = screen.getByDisplayValue(/Test invite message/) as HTMLTextAreaElement;
+    fireEvent.change(textarea, { target: { value: "New message" } });
+    expect(textarea.value).toBe("New message");
+  });
+
+  it("generates a new message on button click", () => {
+    render(<ShareTab {...baseProps} />);
+    const generateBtn = screen.getByText("share.generateMessage");
+    fireEvent.click(generateBtn);
+  });
+
+  it("copies message text on copy message button click", async () => {
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    Object.assign(navigator, { clipboard: { writeText } });
+    const addToast = vi.fn();
+    render(<ShareTab {...baseProps} addToast={addToast} />);
+    const copyMsgBtn = screen.getByText("share.copyMessage");
+    fireEvent.click(copyMsgBtn);
+    await vi.waitFor(() => {
+      expect(writeText).toHaveBeenCalled();
+    });
+  });
+
+  it("opens share URLs when app buttons are clicked", () => {
+    const windowOpenSpy = vi.spyOn(window, "open").mockImplementation(() => null);
+    render(<ShareTab {...baseProps} />);
+    const whatsappBtn = screen.getByText("share.whatsapp");
+    fireEvent.click(whatsappBtn);
+    expect(windowOpenSpy).toHaveBeenCalledWith(
+      expect.stringContaining("wa.me"),
+      "_blank",
+      "noopener,noreferrer"
+    );
+    windowOpenSpy.mockRestore();
+  });
+
+  it("opens print page when print button is clicked", () => {
+    const windowOpenSpy = vi.spyOn(window, "open").mockImplementation(() => null);
+    render(<ShareTab {...baseProps} />);
+    const printBtn = screen.getByText("share.printPdf");
+    fireEvent.click(printBtn);
+    expect(windowOpenSpy).toHaveBeenCalled();
+    windowOpenSpy.mockRestore();
   });
 });

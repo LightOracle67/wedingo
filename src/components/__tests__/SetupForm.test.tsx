@@ -8,10 +8,17 @@ const mockSetLegalModal = vi.fn();
 
 const mockUseApp = vi.fn();
 
+import React from "react";
+
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
   initReactI18next: { type: "3rdParty", init: () => {} },
-  Trans: ({ i18nKey }: { i18nKey: string }) => i18nKey,
+  Trans: ({ i18nKey, components }: { i18nKey: string; components?: Record<string, React.ReactElement> }) => {
+    if (i18nKey === "setup.privacyConsent" && components?.link) {
+      return React.createElement(React.Fragment, null, i18nKey, components.link);
+    }
+    return i18nKey;
+  },
 }));
 
 vi.mock("../../lib/image-store", () => ({}));
@@ -149,5 +156,14 @@ describe("SetupForm", () => {
   it("renders section order editor", () => {
     render(<SetupForm />);
     expect(screen.getByText("sectionOrder.title")).toBeDefined();
+  });
+
+  it("calls setLegalModal when clicking privacy link", () => {
+    mockUseApp.mockReturnValue({ ...baseUseApp, hasStoredConfig: false });
+    render(<SetupForm />);
+    const privacyLabel = screen.getByText("setup.privacyConsent").closest("label")!;
+    const linkBtn = within(privacyLabel).getByRole("button");
+    fireEvent.click(linkBtn);
+    expect(mockSetLegalModal).toHaveBeenCalledWith("privacy");
   });
 });

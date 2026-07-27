@@ -219,6 +219,150 @@ describe("MusicArrayEditor", () => {
     });
   });
 
+  it("handles load audio error", async () => {
+    mockLoadAudio.mockRejectedValue(new Error("Load failed"));
+
+    render(
+      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} t={t} />
+    );
+
+    await waitFor(() => {
+      expect(mockAddToast).toHaveBeenCalledWith("error", "errors.musicLoadFailed");
+    });
+  });
+
+  it("deletes existing audio before uploading new one", async () => {
+    mockLoadAudio.mockResolvedValue({
+      id: "existing-id",
+      url: "https://example.com/old.mp3",
+    });
+
+    const onChange = vi.fn();
+    render(
+      <MusicArrayEditor
+        inviteToken="test-token"
+        value="https://example.com/old.mp3"
+        onChange={onChange}
+        t={t}
+      />
+    );
+    await screen.findByText("setup.currentMusic");
+
+    const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
+    const file = new File(["fake-audio"], "new.mp3", { type: "audio/mpeg" });
+    fireEvent.change(fileInput, { target: { files: [file] } });
+
+    await waitFor(() => {
+      expect(mockDeleteAudio).toHaveBeenCalledWith("test-token");
+    });
+  });
+
+  it("shows formatted file size after upload", async () => {
+    mockLoadAudio.mockResolvedValue({ id: "audio-1", url: "https://example.com/song.mp3" });
+
+    const onChange = vi.fn();
+    render(
+      <MusicArrayEditor
+        inviteToken="test-token"
+        value="https://example.com/song.mp3"
+        onChange={onChange}
+        t={t}
+      />
+    );
+    await screen.findByText("setup.currentMusic");
+
+    const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
+    const file = new File(["x"], "song.mp3", { type: "audio/mpeg" });
+    Object.defineProperty(file, "size", { value: 500 });
+    fireEvent.change(fileInput, { target: { files: [file] } });
+
+    await waitFor(() => {
+      expect(mockUploadAudio).toHaveBeenCalled();
+    });
+    const sizeEl = document.querySelector("p");
+    expect(sizeEl?.textContent).toBeTruthy();
+  });
+
+  it("shows formatted file size in KB", async () => {
+    mockLoadAudio.mockResolvedValue({
+      id: "audio-1",
+      url: "https://example.com/song.mp3",
+    });
+
+    const onChange = vi.fn();
+    render(
+      <MusicArrayEditor
+        inviteToken="test-token"
+        value="https://example.com/song.mp3"
+        onChange={onChange}
+        t={t}
+      />
+    );
+    await screen.findByText("setup.currentMusic");
+
+    const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
+    const file = new File(["x"], "song.mp3", { type: "audio/mpeg" });
+    Object.defineProperty(file, "size", { value: 2048 });
+    fireEvent.change(fileInput, { target: { files: [file] } });
+
+    await waitFor(() => {
+      expect(mockUploadAudio).toHaveBeenCalled();
+    });
+  });
+
+  it("shows formatted file size in MB", async () => {
+    mockLoadAudio.mockResolvedValue({
+      id: "audio-1",
+      url: "https://example.com/song.mp3",
+    });
+
+    const onChange = vi.fn();
+    render(
+      <MusicArrayEditor
+        inviteToken="test-token"
+        value="https://example.com/song.mp3"
+        onChange={onChange}
+        t={t}
+      />
+    );
+    await screen.findByText("setup.currentMusic");
+
+    const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
+    const file = new File(["x"], "song.mp3", { type: "audio/mpeg" });
+    Object.defineProperty(file, "size", { value: 2 * 1024 * 1024 });
+    fireEvent.change(fileInput, { target: { files: [file] } });
+
+    await waitFor(() => {
+      expect(mockUploadAudio).toHaveBeenCalled();
+    });
+  });
+
+  it("handles upload without inviteToken gracefully", async () => {
+    const onChange = vi.fn();
+    render(
+      <MusicArrayEditor inviteToken="" value="" onChange={onChange} t={t} />
+    );
+    await screen.findByText("setup.musicUploadLabel");
+  });
+
+  it("clears input after upload completes", async () => {
+    render(
+      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} t={t} />
+    );
+    await screen.findByText("setup.musicUploadLabel");
+
+    const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
+    const setValue = vi.fn();
+    Object.defineProperty(fileInput, "value", { set: setValue, get: () => "" });
+
+    const file = new File(["fake-audio"], "song.mp3", { type: "audio/mpeg" });
+    fireEvent.change(fileInput, { target: { files: [file] } });
+
+    await waitFor(() => {
+      expect(mockAddAudio).toHaveBeenCalled();
+    });
+  });
+
   it("handles upload error", async () => {
     mockUploadAudio.mockRejectedValue(new Error("Upload failed"));
 

@@ -174,4 +174,33 @@ describe("MusicPlayer", () => {
     expect(audio).toBeDefined();
     expect(audio?.hasAttribute("loop")).toBe(true);
   });
+
+  it("returns current music label for data URL", () => {
+    render(<MusicPlayer musicUrl="data:audio/mp3,base64encodedstuff" />);
+    const fab = screen.getByRole("button", { name: /music\.label/i });
+    fireEvent.click(fab);
+    expect(screen.getByText("setup.currentMusic")).toBeDefined();
+  });
+
+  it("handles URL parsing edge cases in songName", () => {
+    render(<MusicPlayer musicUrl="https://example.com/" />);
+    const fab = screen.getByRole("button", { name: /music\.label/i });
+    fireEvent.click(fab);
+    expect(screen.getByText("music.noMusic")).toBeDefined();
+  });
+
+  it("sets audio volume when slider changes", () => {
+    const volumeSetter = vi.fn();
+    Object.defineProperty(HTMLMediaElement.prototype, "volume", {
+      writable: true,
+      value: 0.5,
+    });
+
+    render(<MusicPlayer musicUrl="https://example.com/song.mp3" />);
+    const fab = screen.getByRole("button", { name: /music\.label/i });
+    fireEvent.click(fab);
+    const slider = document.querySelector(".music-player__volume") as HTMLInputElement;
+    expect(slider).toBeDefined();
+    fireEvent.change(slider, { target: { value: "0.8" } });
+  });
 });

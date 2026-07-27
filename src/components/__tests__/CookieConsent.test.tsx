@@ -86,4 +86,29 @@ describe("CookieConsent", () => {
     fireEvent.click(analyticsCheckbox);
     expect(analyticsCheckbox.checked).toBe(true);
   });
+
+  it("navigates back from settings to main view", () => {
+    render(<CookieConsent />);
+    fireEvent.click(screen.getByRole("button", { name: "cookie.configure" }));
+    expect(screen.getByText("cookie.settingsTitle")).toBeDefined();
+    fireEvent.click(screen.getByRole("button", { name: "common.back" }));
+    expect(screen.queryByText("cookie.settingsTitle")).toBeNull();
+    expect(screen.getByText("cookie.text")).toBeDefined();
+  });
+
+  it("does not toggle necessary preference", () => {
+    render(<CookieConsent />);
+    fireEvent.click(screen.getByRole("button", { name: "cookie.configure" }));
+    const necessaryCheckbox = screen.getByText("cookie.necessary").previousElementSibling as HTMLInputElement;
+    expect(necessaryCheckbox).toBeDisabled();
+    expect(necessaryCheckbox.checked).toBe(true);
+  });
+
+  it("removes analytics cache when saving preferences with analytics off", () => {
+    mockLocalStorage.setItem("wedin_invite_cache", "some-data");
+    render(<CookieConsent />);
+    fireEvent.click(screen.getByRole("button", { name: "cookie.configure" }));
+    fireEvent.click(screen.getByRole("button", { name: "cookie.savePreferences" }));
+    expect(mockLocalStorage.removeItem).toHaveBeenCalledWith("wedin_invite_cache");
+  });
 });

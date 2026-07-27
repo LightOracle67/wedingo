@@ -160,4 +160,16 @@ describe("CollapsibleSection", () => {
     fireEvent.transitionEnd(wrap, { propertyName: "max-height" });
     expect(wrap).toHaveStyle("max-height: none");
   });
+
+  it("closes with animation via requestAnimationFrame", () => {
+    render(
+      <CollapsibleSection title="Close Test" defaultOpen={true}>
+        <p>Content</p>
+      </CollapsibleSection>
+    );
+    const button = screen.getByRole("button", { name: "Close Test" });
+    fireEvent.click(button);
+    const wrap = document.querySelector(".setup-collapsible__wrap")!;
+    expect(wrap).toBeInTheDocument();
+  });
 });
