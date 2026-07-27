@@ -1,29 +1,149 @@
-import { describe, it, expect, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { describe, it, expect, vi, beforeEach } from "vitest";
+import { render, screen, fireEvent } from "@testing-library/react";
+
+const mockGetDocs = vi.fn();
+const mockDoc = vi.fn();
+const mockUpdateDoc = vi.fn();
+const mockWriteBatch = vi.fn();
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
 }));
 
 vi.mock("firebase/firestore", () => ({
-  getDocs: vi.fn(() => Promise.resolve({ docs: [], empty: true })),
-  doc: vi.fn(() => "doc-ref"),
-  updateDoc: vi.fn(() => Promise.resolve()),
+  getDocs: (...args: unknown[]) => mockGetDocs(...args),
+  doc: (...args: unknown[]) => mockDoc(...args),
+  updateDoc: (...args: unknown[]) => mockUpdateDoc(...args),
   collection: vi.fn(() => "collection-ref"),
   query: vi.fn(() => "query-ref"),
   where: vi.fn(() => "where-ref"),
-  writeBatch: vi.fn(() => ({ update: vi.fn(), commit: vi.fn() })),
+  writeBatch: (...args: unknown[]) => mockWriteBatch(...args),
 }));
 
 vi.mock("../../../lib/firebase", () => ({
   db: "db-mock",
 }));
 
+const mockConfirm = vi.fn();
+window.confirm = mockConfirm;
+
 import TokensTab from "../TokensTab";
 
 describe("TokensTab", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mockConfirm.mockReturnValue(true);
+    mockWriteBatch.mockReturnValue({ update: vi.fn(), commit: vi.fn().mockResolvedValue(undefined) });
+  });
+
   it("renders loading state initially", () => {
+    mockGetDocs.mockImplementation(() => new Promise(() => {}));
     render(<TokensTab />);
-    expect(screen.getByText("superadmin.tokensLoading")).toBeDefined();
+    expect(screen.getByText("superadmin.tokensLoading")).toBeInTheDocument();
+  });
+
+  it("renders tokens after loading", async () => {
+    mockGetDocs.mockImplementation(() =>
+      Promise.resolve({
+        docs: [
+          { id: "inv1", data: () => ({ _activeSetupToken: "token1" }) },
+          { id: "inv2", data: () => ({ _activeSetupToken: "token2" }) },
+        ],
+      }),
+    );
+    render(<TokensTab />);
+    await vi.waitFor(() => expect(screen.getByText("inv1")).toBeInTheDocument());
+    expect(screen.getByText("inv2")).toBeInTheDocument();
+    expect(screen.getAllByText("superadmin.statusAvailable").length).toBe(2);
+  });
+
+  it("shows no tokens message when list is empty", async () => {
+    mockGetDocs.mockImplementation(() => Promise.resolve({ docs: [], empty: true }));
+    render(<TokensTab />);
+    await vi.waitFor(() => expect(screen.getByText("superadmin.noTokens")).toBeInTheDocument());
+  });
+
+  it("shows tokens stats", async () => {
+    mockGetDocs.mockImplementation(() =>
+      Promise.resolve({
+        docs: [{ id: "inv1", data: () => ({ _activeSetupToken: "token1" }) }],
+      }),
+    );
+    render(<TokensTab />);
+    await vi.waitFor(() => expect(screen.getByText(/superadmin\.tokensStats/)).toBeInTheDocument());
+  });
+
+  it("displays error on load failure", async () => {
+    mockGetDocs.mockRejectedValue(new Error("fail"));
+    render(<TokensTab />);
+    await vi.waitFor(() => expect(screen.getByText("superadmin.tokenLoadError")).toBeInTheDocument());
+  });
+
+  it("calls handleRevoke on revoke button click", async () => {
+    mockGetDocs.mockImplementation(() =>
+      Promise.resolve({
+        docs: [{ id: "inv1", data: () => ({ _activeSetupToken: "token1" }) }],
+      }),
+    );
+    mockDoc.mockReturnValue("doc-ref");
+    mockUpdateDoc.mockResolvedValue(undefined);
+    render(<TokensTab />);
+    await vi.waitFor(() => expect(screen.getByText("superadmin.revokeButton")).toBeInTheDocument());
+    fireEvent.click(screen.getByText("superadmin.revokeButton"));
+    expect(mockConfirm).toHaveBeenCalled();
+    await vi.waitFor(() => expect(mockUpdateDoc).toHaveBeenCalledWith("doc-ref", { _activeSetupToken: "" }));
+    await vi.waitFor(() => expect(screen.getByText("superadmin.tokenRevoked")).toBeInTheDocument());
+  });
+
+  it("does not revoke if confirm is cancelled", async () => {
+    mockConfirm.mockReturnValue(false);
+    mockGetDocs.mockImplementation(() =>
+      Promise.resolve({
+        docs: [{ id: "inv1", data: () => ({ _activeSetupToken: "token1" }) }],
+      }),
+    );
+    render(<TokensTab />);
+    await vi.waitFor(() => expect(screen.getByText("superadmin.revokeButton")).toBeInTheDocument());
+    fireEvent.click(screen.getByText("superadmin.revokeButton"));
+    expect(mockUpdateDoc).not.toHaveBeenCalled();
+  });
+
+  it("calls handleCleanup on cleanup button click", async () => {
+    mockGetDocs.mockImplementation(() =>
+      Promise.resolve({
+        docs: [{ id: "inv1", data: () => ({ _activeSetupToken: "token1" }) }],
+        size: 1,
+        empty: false,
+      }),
+    );
+    render(<TokensTab />);
+    await vi.waitFor(() => expect(screen.getByText("superadmin.cleanUnused")).toBeInTheDocument());
+    fireEvent.click(screen.getByText("superadmin.cleanUnused"));
+    expect(mockConfirm).toHaveBeenCalled();
+    await vi.waitFor(() => expect(screen.getByText("superadmin.tokensCleaned")).toBeInTheDocument());
+  });
+
+  it("shows no tokens to clean when empty", async () => {
+    mockGetDocs.mockImplementation(() =>
+      Promise.resolve({ docs: [], size: 0, empty: true }),
+    );
+    render(<TokensTab />);
+    await vi.waitFor(() => expect(screen.getByText("superadmin.cleanUnused")).toBeInTheDocument());
+    fireEvent.click(screen.getByText("superadmin.cleanUnused"));
+    await vi.waitFor(() => expect(screen.getByText("superadmin.noTokensToClean")).toBeInTheDocument());
+  });
+
+  it("displays error on revoke failure", async () => {
+    mockGetDocs.mockImplementation(() =>
+      Promise.resolve({
+        docs: [{ id: "inv1", data: () => ({ _activeSetupToken: "token1" }) }],
+      }),
+    );
+    mockDoc.mockReturnValue("doc-ref");
+    mockUpdateDoc.mockRejectedValue(new Error("fail"));
+    render(<TokensTab />);
+    await vi.waitFor(() => expect(screen.getByText("superadmin.revokeButton")).toBeInTheDocument());
+    fireEvent.click(screen.getByText("superadmin.revokeButton"));
+    await vi.waitFor(() => expect(screen.getByText("superadmin.tokenRevokeError")).toBeInTheDocument());
   });
 });
