@@ -115,4 +115,49 @@ describe("CollapsibleSection", () => {
     fireEvent.transitionEnd(wrap, { propertyName: "max-height" });
     expect(wrap).toHaveStyle("max-height: 0px");
   });
+
+  it("triggers onToggleVisibility via keyboard Enter", () => {
+    const onToggle = vi.fn();
+    render(
+      <CollapsibleSection
+        title="Test"
+        sectionKey="details"
+        isHidden={false}
+        onToggleVisibility={onToggle}
+      />
+    );
+    const switchEl = screen.getByRole("switch");
+    fireEvent.keyDown(switchEl, { key: "Enter" });
+    expect(onToggle).toHaveBeenCalledWith("details");
+  });
+
+  it("triggers onToggleVisibility via keyboard Space", () => {
+    const onToggle = vi.fn();
+    render(
+      <CollapsibleSection
+        title="Test"
+        sectionKey="details"
+        isHidden={false}
+        onToggleVisibility={onToggle}
+      />
+    );
+    const switchEl = screen.getByRole("switch");
+    fireEvent.keyDown(switchEl, { key: " " });
+    expect(onToggle).toHaveBeenCalledWith("details");
+  });
+
+  it("sets max-height to undefined on transition end when opening", () => {
+    render(
+      <CollapsibleSection title="Open Test" defaultOpen={false}>
+        <p>Content</p>
+      </CollapsibleSection>
+    );
+
+    const wrap = document.querySelector(".setup-collapsible__wrap")!;
+    const button = screen.getByRole("button", { name: "Open Test" });
+    fireEvent.click(button);
+
+    fireEvent.transitionEnd(wrap, { propertyName: "max-height" });
+    expect(wrap).toHaveStyle("max-height: none");
+  });
 });

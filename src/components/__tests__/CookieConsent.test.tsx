@@ -56,8 +56,34 @@ describe("CookieConsent", () => {
   });
 
   it("does not render when consent already given", () => {
-    mockLocalStorage.getItem.mockReturnValue("accepted");
+    mockLocalStorage.getItem.mockImplementationOnce(() => "accepted");
     const { container } = render(<CookieConsent />);
     expect(container.innerHTML).toBe("");
+  });
+
+  it("shows settings view when configure is clicked", () => {
+    render(<CookieConsent />);
+    fireEvent.click(screen.getByRole("button", { name: "cookie.configure" }));
+    expect(screen.getByText("cookie.settingsTitle")).toBeDefined();
+  });
+
+  it("saves preferences with analytics enabled", () => {
+    render(<CookieConsent />);
+    fireEvent.click(screen.getByRole("button", { name: "cookie.configure" }));
+    fireEvent.click(screen.getByRole("button", { name: "cookie.savePreferences" }));
+    expect(mockLocalStorage.setItem).toHaveBeenCalledWith("wedin_cookie_consent", "accepted");
+    expect(mockLocalStorage.setItem).toHaveBeenCalledWith(
+      "wedin_cookie_prefs",
+      JSON.stringify({ necessary: true, analytics: false })
+    );
+  });
+
+  it("toggles analytics preference", () => {
+    render(<CookieConsent />);
+    fireEvent.click(screen.getByRole("button", { name: "cookie.configure" }));
+    const analyticsCheckbox = screen.getByText("cookie.analytics").previousElementSibling as HTMLInputElement;
+    expect(analyticsCheckbox.checked).toBe(false);
+    fireEvent.click(analyticsCheckbox);
+    expect(analyticsCheckbox.checked).toBe(true);
   });
 });

@@ -5,7 +5,7 @@ vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
 }));
 
-import { DonutChart } from "../AttendanceChart";
+import { DonutChart, MiniBar, Legend } from "../AttendanceChart";
 
 afterEach(cleanup);
 
@@ -18,5 +18,33 @@ describe("DonutChart", () => {
   it("renders empty state when all values are zero", () => {
     render(<DonutChart yes={0} no={0} pending={0} />);
     expect(screen.getByLabelText("chart.noData")).toBeDefined();
+  });
+});
+
+describe("MiniBar", () => {
+  it("renders nothing when items is empty", () => {
+    const { container } = render(<MiniBar items={[]} />);
+    expect(container.innerHTML).toBe("");
+  });
+
+  it("renders bars for items with values", () => {
+    const items = [{ value: 10, label: "A" }, { value: 5, label: "B" }, { value: 0, label: "C" }];
+    const { container } = render(<MiniBar items={items} />);
+    const rects = container.querySelectorAll("rect");
+    expect(rects.length).toBe(3);
+  });
+});
+
+describe("Legend", () => {
+  it("renders items with labels and values", () => {
+    const items = [
+      { label: "Yes", value: 10, color: "green" },
+      { label: "No", value: 5, color: "red" },
+    ];
+    const { container } = render(<Legend items={items} />);
+    expect(container.textContent).toContain("Yes");
+    expect(container.textContent).toContain("No");
+    expect(container.textContent).toContain("10");
+    expect(container.textContent).toContain("5");
   });
 });

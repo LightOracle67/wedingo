@@ -1,19 +1,41 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
+
+const mockLogEvent = vi.hoisted(() => vi.fn());
+const mockGetAnalytics = vi.hoisted(() => vi.fn(() => ({})));
+const mockIsSupported = vi.hoisted(() => vi.fn(() => Promise.resolve(false)));
 
 vi.mock("firebase/analytics", () => ({
-  getAnalytics: vi.fn(() => ({})),
-  logEvent: vi.fn(),
-  isSupported: vi.fn(() => Promise.resolve(false)),
+  getAnalytics: mockGetAnalytics,
+  logEvent: mockLogEvent,
+  isSupported: mockIsSupported,
 }));
 
 import { trackEvent } from "../analytics";
 
 describe("analytics", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
   it("exports trackEvent as a function", () => {
     expect(typeof trackEvent).toBe("function");
   });
 
   it("trackEvent does not throw when analytics unsupported", () => {
     expect(() => trackEvent("test", {})).not.toThrow();
+  });
+
+  it("calls logEvent when analytics is supported and in prod", async () => {
+    mockIsSupported.mockResolvedValue(true);
+    vi.resetModules();
+    vi.stubEnv("PROD", "true");
+
+    const { trackEvent: trackEventProd } = await import("../analytics");
+    await vi.waitFor(() => expect(mockGetAnalytics).toHaveBeenCalled());
+
+    trackEventProd("test_event", { key: "value" });
+    expect(mockLogEvent).toHaveBeenCalledWith(expect.any(Object), "test_event", { key: "value" });
+
+    vi.unstubAllEnvs();
   });
 });

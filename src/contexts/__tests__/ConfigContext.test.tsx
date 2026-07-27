@@ -1,9 +1,11 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 
+const mockGetDoc = vi.hoisted(() => vi.fn(() => Promise.resolve({ exists: () => false })));
+
 vi.mock("react-i18next", () => ({ useTranslation: () => ({ t: (key: string) => key }) }));
 vi.mock("react-router-dom", () => ({ useLocation: () => ({ pathname: "/test", search: "", hash: "" }), useNavigate: () => vi.fn() }));
-vi.mock("firebase/firestore", () => ({ getDoc: vi.fn(() => Promise.resolve({ exists: () => false })), setDoc: vi.fn(), updateDoc: vi.fn(), doc: vi.fn(() => ({ id: "test" })), collection: vi.fn(() => ({ id: "test" })), getDocs: vi.fn(() => Promise.resolve({ docs: [], empty: true })), writeBatch: vi.fn(() => ({ delete: vi.fn(), commit: vi.fn() })), increment: vi.fn(() => 1), query: vi.fn(), where: vi.fn() }));
+vi.mock("firebase/firestore", () => ({ getDoc: mockGetDoc, setDoc: vi.fn(), updateDoc: vi.fn(), doc: vi.fn(() => ({ id: "test" })), collection: vi.fn(() => ({ id: "test" })), getDocs: vi.fn(() => Promise.resolve({ docs: [], empty: true })), writeBatch: vi.fn(() => ({ delete: vi.fn(), commit: vi.fn() })), increment: vi.fn(() => 1), query: vi.fn(), where: vi.fn(), serverTimestamp: vi.fn(() => new Date()) }));
 vi.mock("../useAppUI", () => ({ useAppUI: () => ({ setSaveMessage: vi.fn(), setSaveError: vi.fn() }) }));
 vi.mock("../../hooks/useCalendar", () => ({ useCalendar: () => ({ formattedDate: "", formattedTime: "", calendarLink: null }) }));
 vi.mock("../../hooks/useFieldHandlers", () => ({ useFieldHandlers: () => ({ handleDayChange: vi.fn(), handleHourChange: vi.fn(), handleMinuteChange: vi.fn(), handleMinuteBlur: vi.fn(), handleYearChange: vi.fn(), handleCoordinateChange: vi.fn() }) }));
@@ -39,5 +41,15 @@ describe("ConfigProvider", () => {
   it("renders children", () => {
     render(<ConfigProvider><div>child</div></ConfigProvider>);
     expect(screen.getByText("child")).toBeInTheDocument();
+  });
+
+  it("provides default config values", () => {
+    render(
+      <ConfigProvider>
+        <TestConsumer />
+      </ConfigProvider>
+    );
+    expect(screen.getByTestId("hasConfig").textContent).toBe("false");
+    expect(screen.getByTestId("isLoading").textContent).toBe("true");
   });
 });

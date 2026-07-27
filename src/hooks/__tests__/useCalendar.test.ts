@@ -139,4 +139,21 @@ describe("useCalendar", () => {
     );
     expect(result.current.formattedTime).toBe("05:07");
   });
+
+  it("falls back to es locale when navigator.language is missing", () => {
+    const origLang = navigator.language;
+    Object.defineProperty(navigator, "language", { value: "", configurable: true });
+    const { result } = renderHook(() => useCalendar(sampleConfig));
+    expect(result.current.formattedDate).toBeTruthy();
+    Object.defineProperty(navigator, "language", { value: origLang, configurable: true });
+  });
+
+  it("includes place in description when weddingPlace is set", () => {
+    renderHook(() => useCalendar(sampleConfig));
+    expect(mockBuildGoogleCalendarUrl).toHaveBeenCalledWith(
+      expect.objectContaining({
+        description: expect.stringContaining("calendar.placeLabel"),
+      }),
+    );
+  });
 });

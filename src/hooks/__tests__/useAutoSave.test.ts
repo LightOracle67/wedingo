@@ -288,5 +288,22 @@ describe("useAutoSave", () => {
       expect(clearTimeoutSpy).toHaveBeenCalled();
       clearTimeoutSpy.mockRestore();
     });
+
+    it("clears timer from second effect when first effect returns early", () => {
+      const clearTimeoutSpy = vi.spyOn(global, "clearTimeout");
+      const differentData = { ...sampleConfig, firstName: "Changed" };
+      const { rerender, unmount } = renderHook(
+        ({ hasStoredConfig, formData }) =>
+          useAutoSave(hasStoredConfig, "test-token", formData, sampleConfig, vi.fn(), { current: false }),
+        { initialProps: { hasStoredConfig: true, formData: differentData } },
+      );
+
+      rerender({ hasStoredConfig: false, formData: differentData });
+
+      unmount();
+
+      expect(clearTimeoutSpy).toHaveBeenCalled();
+      clearTimeoutSpy.mockRestore();
+    });
   });
 });

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
-import { render, screen, cleanup } from "@testing-library/react";
+import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key, i18n: { language: "en" } }),
@@ -32,5 +32,21 @@ describe("ChangelogModal", () => {
   it("renders as dialog", () => {
     render(<ChangelogModal onClose={vi.fn()} />);
     expect(screen.getByRole("dialog")).toBeDefined();
+  });
+
+  it("adds closing class and calls onClose after delay", () => {
+    vi.useFakeTimers();
+    const onClose = vi.fn();
+    render(<ChangelogModal onClose={onClose} />);
+
+    const closeBtn = screen.getByLabelText("changelog.close");
+    fireEvent.click(closeBtn);
+
+    const overlay = screen.getByRole("dialog");
+    expect(overlay.className).toContain("modal-overlay--closing");
+
+    vi.advanceTimersByTime(200);
+    expect(onClose).toHaveBeenCalledTimes(1);
+    vi.useRealTimers();
   });
 });
