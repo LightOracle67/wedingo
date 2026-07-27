@@ -50,4 +50,42 @@ describe("EnvelopeOverlay", () => {
     expect(dispatchSpy).toHaveBeenCalledWith(expect.any(CustomEvent));
     dispatchSpy.mockRestore();
   });
+
+  it("prevents duplicate clicks while exiting", () => {
+    vi.useFakeTimers();
+    const onOpen = vi.fn();
+    render(<EnvelopeOverlay {...defaultProps} onOpen={onOpen} />);
+    const btn = screen.getByRole("button");
+    fireEvent.click(btn);
+    fireEvent.click(btn);
+    fireEvent.click(btn);
+    vi.advanceTimersByTime(3500);
+    expect(onOpen).toHaveBeenCalledTimes(1);
+    vi.useRealTimers();
+  });
+
+  it("shows golden message with correct animation class", () => {
+    vi.useFakeTimers();
+    render(<EnvelopeOverlay {...defaultProps} />);
+    const btn = screen.getByRole("button");
+    fireEvent.click(btn);
+    vi.advanceTimersByTime(1400);
+    expect(document.querySelector(".envelope-golden--in")).toBeDefined();
+    fireEvent.click(btn);
+    expect(document.querySelector(".envelope-golden--out")).toBeDefined();
+    vi.useRealTimers();
+  });
+
+  it("shows correct hint text at each state", () => {
+    vi.useFakeTimers();
+    render(<EnvelopeOverlay {...defaultProps} />);
+    const btn = screen.getByRole("button");
+    expect(screen.getByText("envelope.tapHint")).toBeDefined();
+    fireEvent.click(btn);
+    expect(screen.queryByText("envelope.tapHint")).toBeNull();
+    expect(screen.getByText("envelope.tapContinue")).toBeDefined();
+    fireEvent.click(btn);
+    expect(screen.queryByText("envelope.tapContinue")).toBeNull();
+    vi.useRealTimers();
+  });
 });

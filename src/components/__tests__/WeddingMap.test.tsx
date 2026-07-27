@@ -118,4 +118,17 @@ describe("WeddingMap", () => {
       expect(document.querySelector(".page-loading")).toBeNull();
     });
   });
+
+  it("shows error state when map creation throws", async () => {
+    const { resolveLocationTarget } = await import("../../lib/geo-utils");
+    (resolveLocationTarget as ReturnType<typeof vi.fn>).mockRejectedValue(new Error("geocode error"));
+    render(<WeddingMap
+      weddingLatitude="41.3874"
+      weddingLongitude="2.1686"
+      t={(key: string) => key}
+    />);
+    await waitFor(() => {
+      expect(screen.getByText("public.locationMapError")).toBeDefined();
+    });
+  });
 });

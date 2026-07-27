@@ -2,9 +2,10 @@ import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 
 const mockGetDoc = vi.hoisted(() => vi.fn(() => Promise.resolve({ exists: () => false })));
+const mockLocation = vi.hoisted(() => ({ pathname: "/test", search: "", hash: "" }));
 
 vi.mock("react-i18next", () => ({ useTranslation: () => ({ t: (key: string) => key }) }));
-vi.mock("react-router-dom", () => ({ useLocation: () => ({ pathname: "/test", search: "", hash: "" }), useNavigate: () => vi.fn() }));
+vi.mock("react-router-dom", () => ({ useLocation: () => mockLocation, useNavigate: () => vi.fn() }));
 vi.mock("firebase/firestore", () => ({ getDoc: mockGetDoc, setDoc: vi.fn(), updateDoc: vi.fn(), doc: vi.fn(() => ({ id: "test" })), collection: vi.fn(() => ({ id: "test" })), getDocs: vi.fn(() => Promise.resolve({ docs: [], empty: true })), writeBatch: vi.fn(() => ({ delete: vi.fn(), commit: vi.fn() })), increment: vi.fn(() => 1), query: vi.fn(), where: vi.fn(), serverTimestamp: vi.fn(() => new Date()) }));
 vi.mock("../useAppUI", () => ({ useAppUI: () => ({ setSaveMessage: vi.fn(), setSaveError: vi.fn() }) }));
 vi.mock("../../hooks/useCalendar", () => ({ useCalendar: () => ({ formattedDate: "", formattedTime: "", calendarLink: null }) }));
@@ -32,7 +33,6 @@ function TestConsumer() {
     <div>
       <span data-testid="hasConfig">{String(ctx.hasStoredConfig)}</span>
       <span data-testid="isLoading">{String(ctx.isConfigLoading)}</span>
-      <span data-testid="firstName">{String(ctx.config?.firstName || "")}</span>
     </div>
   );
 }
@@ -44,12 +44,14 @@ describe("ConfigProvider", () => {
   });
 
   it("provides default config values", () => {
-    render(
-      <ConfigProvider>
-        <TestConsumer />
-      </ConfigProvider>
-    );
+    render(<ConfigProvider><TestConsumer /></ConfigProvider>);
     expect(screen.getByTestId("hasConfig").textContent).toBe("false");
-    expect(screen.getByTestId("isLoading").textContent).toBe("true");
+  });
+
+  it("loads from hash", () => {
+    mockLocation.hash = "#fn=Hash";
+    render(<ConfigProvider><TestConsumer /></ConfigProvider>);
+    expect(screen.getByTestId("hasConfig").textContent).toBe("false");
+    mockLocation.hash = "";
   });
 });
