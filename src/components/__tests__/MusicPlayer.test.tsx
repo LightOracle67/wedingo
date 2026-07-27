@@ -190,7 +190,7 @@ describe("MusicPlayer", () => {
   });
 
   it("sets audio volume when slider changes", () => {
-    const volumeSetter = vi.fn();
+    const _volumeSetter = vi.fn();
     Object.defineProperty(HTMLMediaElement.prototype, "volume", {
       writable: true,
       value: 0.5,
