@@ -144,7 +144,6 @@ export default function LandingPage() {
       setTokenLoginUsername(username);
       setIsTokenVerified(true);
       try {
-        // @ts-expect-error PasswordCredential is not in TS DOM types
         const cred = new PasswordCredential({ id: username, password: normalized, name: username });
         navigator.credentials.store(cred);
       } catch {}

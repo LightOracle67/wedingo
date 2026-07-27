@@ -186,7 +186,8 @@ export default function AdminPage() {
     formatDate: formatDate as (date: unknown) => string,
     onRestore: reloadConfig,
     visitCount: config._visits || 0,
-  }), [inviteToken, confirmedResponses, declinedResponses, totalGuests, rsvpEntries, setActiveTabAndFilter, setAttendanceFilterValue, exportPdf, reloadConfig, config._visits]);
+    exportData: config,
+  }), [inviteToken, confirmedResponses, declinedResponses, totalGuests, rsvpEntries, setActiveTabAndFilter, setAttendanceFilterValue, exportPdf, reloadConfig, config]);
 
   /** Props agrupadas para AttendanceTab. */
   const attendanceConfig = useMemo(() => ({

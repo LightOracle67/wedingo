@@ -409,6 +409,7 @@
     "asGuest": "As a guest",
     "downloadBackup": "Download backup",
     "restoreBackup": "Restore backup",
+    "restoreSuccess": "Backup restored successfully. Reloading…",
     "restoreNotFound": "Invitation not found.",
     "restoreInvalid": "The file does not have the expected format.",
     "restoreSuccess": "Restored {{count}} invitation(s) successfully.",
@@ -582,7 +583,8 @@
     "alreadyExists": "This data already exists.",
     "failedPrecondition": "The operation could not be completed.",
     "aborted": "The operation was aborted.",
-    "unauthenticated": "Authentication is required."
+    "unauthenticated": "Authentication is required.",
+    "errorDetail": "{{error}}"
   },
   "superadmin": {
     "tabs": {
