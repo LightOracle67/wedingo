@@ -191,6 +191,9 @@ describe("MusicArrayEditor", () => {
   });
 
   it("toggles play/pause", async () => {
+    HTMLMediaElement.prototype.play = vi.fn().mockResolvedValue(undefined);
+    HTMLMediaElement.prototype.pause = vi.fn();
+
     render(
       <MusicArrayEditor
         inviteToken="test-token"
@@ -203,5 +206,75 @@ describe("MusicArrayEditor", () => {
 
     const playBtn = screen.getByRole("button", { name: "music.play" });
     expect(playBtn).toBeInTheDocument();
+
+    fireEvent.click(playBtn);
+    await waitFor(() => {
+      expect(screen.getByRole("button", { name: "music.pause" })).toBeInTheDocument();
+    });
+
+    const pauseBtn = screen.getByRole("button", { name: "music.pause" });
+    fireEvent.click(pauseBtn);
+    await waitFor(() => {
+      expect(screen.getByRole("button", { name: "music.play" })).toBeInTheDocument();
+    });
   });
+
+  it("handles upload error", async () => {
+    mockUploadAudio.mockRejectedValue(new Error("Upload failed"));
+
+    render(
+      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} t={t} />
+    );
+    await screen.findByText("setup.musicUploadLabel");
+
+    const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
+    const file = new File(["fake-audio"], "song.mp3", { type: "audio/mpeg" });
+    fireEvent.change(fileInput, { target: { files: [file] } });
+
+    await waitFor(() => {
+      expect(mockAddToast).toHaveBeenCalled();
+    });
+  });
+
+  it("handles delete error", async () => {
+    mockLoadAudio.mockResolvedValue({
+      id: "audio-1",
+      url: "https://example.com/song.mp3",
+    });
+    mockDeleteAudio.mockRejectedValue(new Error("Delete failed"));
+
+    render(
+      <MusicArrayEditor
+        inviteToken="test-token"
+        value="https://example.com/song.mp3"
+        onChange={vi.fn()}
+        t={t}
+      />
+    );
+    await screen.findByText("setup.currentMusic");
+
+    const deleteBtn = screen.getByRole("button", { name: "common.delete" });
+    fireEvent.click(deleteBtn);
+
+    await waitFor(() => {
+      expect(mockAddToast).toHaveBeenCalledWith("error", "errors.musicDeleteFailed");
+    });
+  });
+
+  it("rejects oversized audio file", async () => {
+    render(
+      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} t={t} />
+    );
+    await screen.findByText("setup.musicUploadLabel");
+
+    const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
+    const oversizedFile = new File(["x"], "big.mp3", { type: "audio/mpeg" });
+    Object.defineProperty(oversizedFile, "size", { value: 21 * 1024 * 1024 });
+    fireEvent.change(fileInput, { target: { files: [oversizedFile] } });
+
+    await waitFor(() => {
+      expect(mockAddToast).toHaveBeenCalledWith("error", "setup.audioSizeError");
+    });
+  });
+
 });
