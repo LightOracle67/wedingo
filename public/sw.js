@@ -1,4 +1,3 @@
-const CACHE_NAME = "wedingo-v2";
 const STATIC_CACHE = "wedingo-static-v2";
 const FONT_CACHE = "wedingo-fonts-v2";
 

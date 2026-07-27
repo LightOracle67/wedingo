@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { render, screen, act } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 
 vi.mock("react-router-dom", () => ({
   useLocation: () => ({ pathname: "/test" }),
@@ -18,7 +18,7 @@ describe("UIProvider", () => {
   it("renders LegalModal when legalModal is set", () => {
     function Consumer() {
       const ctx = useContext(UIContext);
-      useEffect(() => { ctx.setLegalModal("privacy"); }, []);
+      useEffect(() => { ctx.setLegalModal("privacy"); }, [ctx]);
       return null;
     }
     render(

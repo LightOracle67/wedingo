@@ -1,5 +1,5 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { renderHook, act, waitFor } from "@testing-library/react";
+import { describe, it, expect, vi, afterEach } from "vitest";
+import { renderHook, act } from "@testing-library/react";
 import type { InvitationConfig } from "../../types";
 
 const mockT = vi.hoisted(() => vi.fn((key: string) => key));
