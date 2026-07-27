@@ -39,4 +39,26 @@ describe("GuestsSectionForm", () => {
     expect(screen.getByText("setup.menuCelebrationLabel")).toBeDefined();
     expect(screen.getByText("setup.menuEnabledLabel")).toBeDefined();
   });
+
+  it("renders accommodation field", () => {
+    render(<GuestsSectionForm />);
+    expect(screen.getByText("setup.accommodationLabel")).toBeDefined();
+    expect(screen.getByPlaceholderText("setup.accommodationPlaceholder")).toBeDefined();
+  });
+
+  it("renders accommodation hint", () => {
+    render(<GuestsSectionForm />);
+    expect(screen.getByText("setup.accommodationHint")).toBeDefined();
+  });
+
+  it("renders transport field", () => {
+    render(<GuestsSectionForm />);
+    expect(screen.getByText("setup.transportLabel")).toBeDefined();
+    expect(screen.getByPlaceholderText("setup.transportPlaceholder")).toBeDefined();
+  });
+
+  it("renders transport hint", () => {
+    render(<GuestsSectionForm />);
+    expect(screen.getByText("setup.transportHint")).toBeDefined();
+  });
 });
