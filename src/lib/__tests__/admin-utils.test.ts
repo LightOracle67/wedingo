@@ -133,4 +133,15 @@ describe("getDietarySummary", () => {
     expect(result.find((r) => r.item === "vegano")).toBeUndefined();
     expect(result.find((r) => r.item === "sin lactosa")).toBeDefined();
   });
+
+  it("filters out empty segments in dietary info", () => {
+    const entries = [
+      { attendance: "yes", dietaryInfo: "sin gluten |  | alergia" },
+    ];
+    const result = getDietarySummary(entries);
+    expect(result).toEqual([
+      { item: "sin gluten", count: 1 },
+      { item: "alergia", count: 1 },
+    ]);
+  });
 });

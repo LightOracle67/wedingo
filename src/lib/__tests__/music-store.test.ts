@@ -106,6 +106,17 @@ describe("music-store", () => {
     expect(result?.id).toBe("token_audio");
   });
 
+  it("loadAudio returns null when decryption returns falsy", async () => {
+    const { decrypt } = await import("../crypto-utils");
+    vi.mocked(decrypt as unknown as ReturnType<typeof vi.fn>).mockResolvedValueOnce("");
+    vi.mocked((await import("firebase/firestore")).getDocs).mockResolvedValueOnce({
+      empty: false,
+      docs: [{ data: () => ({ data: "chunk-data" }) }],
+    } as never);
+    const result = await loadAudio("token");
+    expect(result).toBeNull();
+  });
+
   it("deleteAudio deletes docs when audio exists", async () => {
     vi.mocked((await import("firebase/firestore")).getDocs).mockResolvedValueOnce({
       empty: false,

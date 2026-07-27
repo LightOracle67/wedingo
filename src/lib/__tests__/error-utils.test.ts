@@ -96,4 +96,26 @@ describe("logError", () => {
     fetchSpy.mockRestore();
     vi.unstubAllEnvs();
   });
+
+  it("handles synchronous fetch throw in Sentry path", async () => {
+    vi.resetModules();
+    vi.stubEnv("VITE_SENTRY_DSN", "https://sentry.example.com/123");
+    const fetchSpy = vi.spyOn(globalThis, "fetch").mockImplementation(() => { throw new Error("Sync fetch fail"); });
+    const { logError: sentryLogError } = await import("../error-utils");
+    expect(() => sentryLogError(new Error("err"))).not.toThrow();
+    fetchSpy.mockRestore();
+    vi.unstubAllEnvs();
+  });
+
+  it("skips Sentry when SENTRY_DSN is empty", async () => {
+    vi.resetModules();
+    vi.stubEnv("VITE_SENTRY_DSN", "");
+    const fetchSpy = vi.spyOn(globalThis, "fetch");
+    const { logError: sentryLogError } = await import("../error-utils");
+    sentryLogError(new Error("err"));
+    expect(fetchSpy).not.toHaveBeenCalled();
+    fetchSpy.mockRestore();
+    vi.unstubAllEnvs();
+  });
+
 });

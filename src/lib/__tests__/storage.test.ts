@@ -78,6 +78,11 @@ describe("storage", () => {
       localMock.setItem("wedin_cookie_consent", "rejected");
       expect(hasStorageConsent()).toBe(false);
     });
+
+    it("devuelve false si localStorage falla", () => {
+      localMock.getItem = vi.fn(() => { throw new Error("StorageError"); });
+      expect(hasStorageConsent()).toBe(false);
+    });
   });
 
   // ═══════════════════════════════════════════════════════
@@ -174,6 +179,14 @@ describe("storage", () => {
 
     it("no lanza error si no hay claves wedin_", () => {
       expect(() => clearAllStorage()).not.toThrow();
+    });
+
+    it("no lanza error si removeItem falla", () => {
+      localMock.setItem("wedin_test", "value");
+      const orig = localMock.removeItem;
+      localMock.removeItem = vi.fn(() => { throw new Error("fail"); });
+      expect(() => clearAllStorage()).not.toThrow();
+      localMock.removeItem = orig;
     });
   });
 

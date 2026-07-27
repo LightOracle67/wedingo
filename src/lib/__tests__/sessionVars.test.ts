@@ -88,4 +88,17 @@ describe("sessionVars", () => {
     expect(() => renewSession()).not.toThrow();
     expect(getSession()).toBeNull();
   });
+
+  it("renewSession handles corrupted data gracefully", () => {
+    storage[STORAGE_KEY] = "not-json";
+    expect(() => renewSession()).not.toThrow();
+  });
+
+  it("renewSession handles storage errors gracefully", () => {
+    saveSession("setup", "user");
+    const orig = sessionStorage.getItem;
+    sessionStorage.getItem = vi.fn(() => { throw new Error("fail"); });
+    expect(() => renewSession()).not.toThrow();
+    sessionStorage.getItem = orig;
+  });
 });
