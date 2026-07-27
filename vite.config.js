@@ -57,7 +57,7 @@ export default defineConfig({
         url: "https://localhost",
       },
     },
-    setupFiles: ["./vitest.setup.js"],
+    setupFiles: ["./vitest.setup.ts"],
     coverage: {
       provider: "v8",
       reporter: ["text", "html", "lcov"],

@@ -10,12 +10,15 @@ vi.mock("../../../hooks/useToast", () => ({
 }));
 
 vi.mock("firebase/firestore", () => ({
-  getDoc: vi.fn(),
-  updateDoc: vi.fn(),
+  setDoc: vi.fn(() => Promise.resolve()),
 }));
 
 vi.mock("../../../lib/firebase", () => ({
   invitationDocRef: vi.fn(() => ({ id: "test-ref" })),
+}));
+
+vi.mock("../../../lib/crypto-utils", () => ({
+  encrypt: vi.fn((s: string) => Promise.resolve(s)),
 }));
 
 import PanelTab from "../PanelTab";
@@ -29,6 +32,7 @@ const baseConfig = {
   formatDate: (d: unknown) => String(d),
   onRestore: vi.fn(),
   visitCount: 15,
+  exportData: { firstName: "Test", secondName: "User", theme: "golden" },
 };
 
 describe("PanelTab", () => {

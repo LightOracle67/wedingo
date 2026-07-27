@@ -58,7 +58,6 @@ export default function SetupPage() {
     try {
       const username = config.adminUsername;
       if (username && setupToken) {
-        // @ts-expect-error PasswordCredential is not in TS DOM types
         const cred = new PasswordCredential({ id: username, password: setupToken, name: username });
         navigator.credentials.store(cred);
       }

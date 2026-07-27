@@ -69,7 +69,6 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
       setUser(result.user);
       loggingInRef.current = false;
       try {
-        // @ts-expect-error PasswordCredential is not in TS DOM types
         const cred = new PasswordCredential({ id: email, password, name: email });
         navigator.credentials.store(cred);
       } catch {}

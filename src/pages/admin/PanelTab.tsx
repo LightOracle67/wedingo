@@ -1,11 +1,13 @@
 import { memo, useCallback, useMemo, useRef, type ChangeEvent } from "react";
-import { getDoc, updateDoc } from "firebase/firestore";
+import { setDoc } from "firebase/firestore";
 import { useTranslation } from "react-i18next";
 import { useToast } from "../../hooks/useToast";
 import { invitationDocRef } from "../../lib/firebase";
+import { encrypt } from "../../lib/crypto-utils";
 import { calcRSVPSummary, getDietarySummary } from "../../lib/admin-utils";
 import { DonutChart, Legend } from "../../components/AttendanceChart";
 import StatsCard from "./StatsCard";
+import type { InvitationConfig } from "../../types";
 
 export interface PanelTabConfig {
   inviteToken: string;
@@ -16,6 +18,7 @@ export interface PanelTabConfig {
   formatDate: (date: unknown) => string;
   onRestore?: () => Promise<void>;
   visitCount: number;
+  exportData?: InvitationConfig;
 }
 
 interface DietaryItem {
@@ -26,7 +29,7 @@ interface DietaryItem {
 const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) {
   const {
   inviteToken, confirmedResponses, declinedResponses, totalGuests, rsvpEntries,
-  formatDate, onRestore, visitCount,
+  formatDate, onRestore, visitCount, exportData,
 } = config;
   const { t } = useTranslation();
   const { addToast } = useToast();
@@ -38,22 +41,26 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
 
   const handleBackup = useCallback(async () => {
     try {
-      const snap = await getDoc(invitationDocRef(inviteToken));
-      if (!snap.exists()) return;
-      const { bankInfo: _bank, ...safeData } = snap.data();
-      const data = [{ id: snap.id, ...safeData }];
-      const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+      if (!exportData) throw new Error("No data to export");
+
+      const { bankInfo, ...safeData } = exportData;
+      const payload = {
+        ...safeData,
+        bankInfo: bankInfo || "",
+      };
+
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `wedingo-${inviteToken}-backup-${Date.now()}.json`;
+      a.download = `wedingo-backup-${Date.now()}.json`;
       a.click();
       URL.revokeObjectURL(url);
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
-      addToast("error", `${t("errors.backupFailed")}: ${msg}`);
+      addToast("error", `${t("errors.backupFailed")} ${t("errors.errorDetail", { error: msg })}`);
     }
-  }, [inviteToken, t, addToast]);
+  }, [exportData, t, addToast]);
 
   const handleRestore = useCallback(async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -62,20 +69,25 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
     try {
       const text = await file.text();
       const data = JSON.parse(text);
-      if (!Array.isArray(data) || !data.length || !data[0].id) { e.target.value = ""; return; }
-      for (const item of data) {
-        if (!item.id || typeof item.id !== "string") continue;
-        const { id, bankInfo, ...rest } = item;
-        if (bankInfo && bankInfo !== "[REDACTED]") rest.bankInfo = bankInfo;
-        await updateDoc(invitationDocRef(id), rest);
-      }
+      if (!data || typeof data !== "object") throw new Error("Invalid backup file");
+
+      const { bankInfo, ...rest } = data;
+      const toSave = {
+        ...rest,
+        bankInfo: bankInfo && bankInfo !== "[REDACTED]"
+          ? await encrypt(bankInfo, inviteToken)
+          : "",
+      };
+
+      await setDoc(invitationDocRef(inviteToken), toSave, { merge: true });
       if (onRestore) await onRestore();
+      addToast("success", t("panel.restoreSuccess"));
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
-      addToast("error", `${t("errors.restoreFailed")}: ${msg}`);
+      addToast("error", `${t("errors.restoreFailed")} ${t("errors.errorDetail", { error: msg })}`);
     }
     e.target.value = "";
-  }, [onRestore, t, addToast]);
+  }, [inviteToken, onRestore, t, addToast]);
 
   return (
     <>
