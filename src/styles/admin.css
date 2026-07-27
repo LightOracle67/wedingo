@@ -1565,20 +1565,20 @@ select.setup-input {
   margin-bottom: 0.5rem;
 }
 
-.setup-button--danger {
-  border-color: var(--color-red) !important;
-  color: var(--color-red) !important;
+.setup-button.setup-button--danger {
+  border-color: var(--color-red);
+  color: var(--color-red);
 }
-.setup-button--danger:hover {
-  background: rgba(224, 96, 96, 0.1) !important;
+.setup-button.setup-button--danger:hover {
+  background: rgba(224, 96, 96, 0.1);
 }
-.setup-button--primary {
-  border-color: var(--setup-accent) !important;
-  color: var(--setup-title) !important;
-  background: color-mix(in srgb, var(--setup-accent) 15%, transparent) !important;
+.setup-button.setup-button--primary {
+  border-color: var(--setup-accent);
+  color: var(--setup-title);
+  background: color-mix(in srgb, var(--setup-accent) 15%, transparent);
 }
-.setup-button--primary:hover {
-  background: color-mix(in srgb, var(--setup-accent) 25%, transparent) !important;
+.setup-button.setup-button--primary:hover {
+  background: color-mix(in srgb, var(--setup-accent) 25%, transparent);
 }
 
 @keyframes card-reveal {
