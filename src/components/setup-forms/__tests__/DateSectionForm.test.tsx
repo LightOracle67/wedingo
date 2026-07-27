@@ -17,6 +17,7 @@ vi.mock("../../../lib/constants", () => ({
     { value: "enero", label: "Enero" },
     { value: "febrero", label: "Febrero" },
     { value: "marzo", label: "Marzo" },
+    { value: "undefmonth", label: "Undefined" },
   ],
   MONTH_VALUE_TO_NUMBER: { enero: 1, febrero: 2, marzo: 3 },
 }));
@@ -107,7 +108,7 @@ describe("DateSectionForm", () => {
     const select = screen.getByLabelText("setup.monthLabel");
     expect(select).toBeDefined();
     const options = screen.getAllByRole("option");
-    expect(options.length).toBe(4);
+    expect(options.length).toBe(5);
   });
 
   it("calls handleDayChange on day input change", () => {
@@ -266,5 +267,66 @@ describe("DateSectionForm", () => {
   it("renders with prefix", () => {
     render(<DateSectionForm prefix="admin" />);
     expect(screen.getByText("setup.placeLabel")).toBeDefined();
+  });
+
+  it("does not crash when weddingPlaceResults element is missing on 3+ char input", () => {
+    render(<DateSectionForm />);
+    const el = document.getElementById("weddingPlaceResults");
+    el?.remove();
+    const input = screen.getByPlaceholderText("setup.placePlaceholder");
+    expect(() => fireEvent.change(input, { target: { value: "New York" } })).not.toThrow();
+  });
+
+  it("clears results element on short value change when element exists", () => {
+    render(<DateSectionForm />);
+    const input = screen.getByPlaceholderText("setup.placePlaceholder");
+    fireEvent.change(input, { target: { value: "NY" } });
+    const el = document.getElementById("weddingPlaceResults");
+    expect(el?.textContent).toBe("");
+  });
+
+  it("renders schedule textarea and updates on change", () => {
+    render(<DateSectionForm />);
+    const textarea = screen.getByPlaceholderText("setup.schedulePlaceholder");
+    fireEvent.change(textarea, { target: { value: "Ceremony at 4pm" } });
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingSchedule", "Ceremony at 4pm");
+  });
+
+  it("resets coordinates on place change", () => {
+    render(<DateSectionForm />);
+    const input = screen.getByPlaceholderText("setup.placePlaceholder");
+    fireEvent.change(input, { target: { value: "Madrid" } });
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingLatitude", "");
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingLongitude", "");
+  });
+
+  it("handles onBlur when weddingPlaceResults element is missing", () => {
+    vi.useFakeTimers();
+    render(<DateSectionForm />);
+    const el = document.getElementById("weddingPlaceResults");
+    el?.remove();
+    const input = screen.getByPlaceholderText("setup.placePlaceholder");
+    fireEvent.blur(input);
+    expect(() => vi.advanceTimersByTime(200)).not.toThrow();
+    vi.useRealTimers();
+  });
+
+  it("handles onBlur timeout cleanup when element exists", () => {
+    vi.useFakeTimers();
+    render(<DateSectionForm />);
+    const input = screen.getByPlaceholderText("setup.placePlaceholder");
+    fireEvent.blur(input);
+    vi.advanceTimersByTime(200);
+    const el = document.getElementById("weddingPlaceResults");
+    expect(el?.textContent).toBe("");
+    vi.useRealTimers();
+  });
+
+  it("does not crash when short value change and results element is missing", () => {
+    render(<DateSectionForm />);
+    const el = document.getElementById("weddingPlaceResults");
+    el?.remove();
+    const input = screen.getByPlaceholderText("setup.placePlaceholder");
+    expect(() => fireEvent.change(input, { target: { value: "AB" } })).not.toThrow();
   });
 });

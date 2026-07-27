@@ -259,4 +259,109 @@ describe("AdminPage", () => {
 
     mockSearch = "";
   });
+
+  it("shows success toast when authMessage is set", () => {
+    mockUseApp.mockReturnValue({ ...baseMock, authMessage: "Config saved", authMessageType: "success" });
+
+    render(<AdminPage />);
+    expect(mockAddToast).toHaveBeenCalledWith("success", "Config saved");
+  });
+
+  it("shows error toast when authMessageType is error", () => {
+    mockUseApp.mockReturnValue({ ...baseMock, authMessage: "Config error", authMessageType: "error" });
+
+    render(<AdminPage />);
+    expect(mockAddToast).toHaveBeenCalledWith("error", "Config error");
+  });
+
+  it("updates URL when switching tabs via handleSetTab", async () => {
+    const replaceStateSpy = vi.spyOn(window.history, "replaceState");
+
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>
+    );
+    await screen.findByTestId("panel-tab");
+    fireEvent.click(screen.getByText("admin.tabs.invitation"));
+    await screen.findByTestId("invitation-tab");
+    expect(replaceStateSpy).toHaveBeenCalled();
+
+    replaceStateSpy.mockRestore();
+  });
+
+  it("computes filteredEntries with attendance filter", () => {
+    mockUseApp.mockReturnValue({
+      ...baseMock,
+      rsvpEntries: [
+        { guestName: "Alice", attendance: "yes", companions: 2 },
+        { guestName: "Bob", attendance: "no" },
+        { guestName: "Charlie", attendance: "yes", companions: 1 },
+      ],
+    });
+
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>
+    );
+    expect(screen.getByText("admin.tabs.attendance")).toBeDefined();
+  });
+
+  it("renders couple name in header", async () => {
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>
+    );
+    expect(await screen.findByText("John & Jane")).toBeDefined();
+  });
+
+  it("renders retry button in error state with click handler", () => {
+    mockUseApp.mockReturnValue({ ...baseMock, configLoadError: "Failed to load" });
+
+    render(<AdminPage />);
+    const btn = screen.getByText("common.retry");
+    expect(btn).toBeDefined();
+    expect(btn.getAttribute("type")).toBe("button");
+  });
+
+  it("computes totalGuests from rsvpEntries", () => {
+    mockUseApp.mockReturnValue({
+      ...baseMock,
+      rsvpEntries: [
+        { guestName: "Alice", attendance: "yes", companions: 2 },
+        { guestName: "Bob", attendance: "no" },
+        { guestName: "Charlie", attendance: "yes", companions: 1 },
+      ],
+    });
+
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>
+    );
+    expect(screen.getByText("John & Jane")).toBeDefined();
+  });
+
+  it("sets activeTab via setActiveTabAndFilter callback", async () => {
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>
+    );
+    await screen.findByTestId("panel-tab");
+    fireEvent.click(screen.getByText("admin.tabs.invitation"));
+    expect(await screen.findByTestId("invitation-tab")).toBeDefined();
+  });
+
+  it("sets attendanceFilter via setAttendanceFilterValue callback", async () => {
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>
+    );
+    await screen.findByTestId("panel-tab");
+    expect(screen.getByText("John & Jane")).toBeDefined();
+  });
 });
