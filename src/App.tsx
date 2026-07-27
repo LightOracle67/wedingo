@@ -201,6 +201,10 @@ function AppShell() {
         </>
       )}
 
+      {isAdminTokenLoggedIn && (
+        <button type="button" className="a11y-trigger a11y-trigger--admin" onClick={() => setShowA11y(true)} aria-label={t("common.accessibility")}>♿</button>
+      )}
+
       <main id="main-content" tabIndex={-1}>
         <Suspense fallback={<div className="page-loading" />}>
         <Routes>
