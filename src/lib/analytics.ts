@@ -3,9 +3,11 @@ import { app } from "./firebase";
 
 let analytics: ReturnType<typeof getAnalytics> | null = null;
 
+const MEASUREMENT_ID = import.meta.env.VITE_FIREBASE_MEASUREMENT_ID;
+
 isSupported().then((supported) => {
-  if (supported && import.meta.env.PROD) {
-    analytics = getAnalytics(app);
+  if (supported && MEASUREMENT_ID && import.meta.env.PROD) {
+    analytics = getAnalytics(app, { config: { measurementId: MEASUREMENT_ID } });
   }
 });
 
