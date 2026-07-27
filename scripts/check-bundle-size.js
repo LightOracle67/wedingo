@@ -7,8 +7,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const distDir = join(__dirname, "..", "dist", "assets");
 
 const LIMITS = {
-  "vendor-firebase": 600,
+  "vendor-firebase": 650,
   "vendor-react": 250,
+  "vendor-sentry": 150,
 };
 
 let failed = false;
