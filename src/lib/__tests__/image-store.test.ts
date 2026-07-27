@@ -83,10 +83,25 @@ describe("image-store", () => {
     expect(onProgress).toHaveBeenCalled();
   });
 
+  it("uploadImage throws when encrypt returns null", async () => {
+    mockEncrypt.mockResolvedValueOnce(null as unknown as string);
+    await expect(uploadImage("token", new File([], "test.jpg"))).rejects.toThrow(
+      "errors.encryptFailed",
+    );
+  });
+
   it("uploadImage throws on encrypt failure", async () => {
     mockEncrypt.mockRejectedValueOnce(new Error("errors.encryptFailed"));
     await expect(uploadImage("token", new File([], "test.jpg"))).rejects.toThrow(
       "errors.encryptFailed",
+    );
+  });
+
+  it("uploadImage throws when image exceeds size limit", async () => {
+    const largeData = "x".repeat(600000);
+    mockEncrypt.mockResolvedValueOnce(Promise.resolve(largeData));
+    await expect(uploadImage("token", new File([], "test.jpg"))).rejects.toThrow(
+      "errors.imageTooLarge",
     );
   });
 
@@ -103,9 +118,38 @@ describe("image-store", () => {
     expect(result).toHaveProperty("dataUrl");
   });
 
+  it("addGalleryImage passes optional originalName and originalSize", async () => {
+    const onProgress = vi.fn();
+    const result = await addGalleryImage(
+      "token",
+      "encrypted-data",
+      "data:image/jpeg;base64,...",
+      0,
+      onProgress,
+      "photo.jpg",
+      12345,
+    );
+    expect(result).toHaveProperty("id", "new-doc");
+  });
+
+  it("addGalleryImage handles null position", async () => {
+    const onProgress = vi.fn();
+    const result = await addGalleryImage(
+      "token", "encrypted-data", "data:image/jpeg;base64,...",
+      null as unknown as number, onProgress,
+    );
+    expect(result).toHaveProperty("id");
+  });
+
   it("updateGalleryDescription resolves", async () => {
     await expect(
       updateGalleryDescription("token", "img-id", "A beautiful photo"),
+    ).resolves.toBeUndefined();
+  });
+
+  it("updateGalleryDescription handles falsy description", async () => {
+    await expect(
+      updateGalleryDescription("token", "img-id", ""),
     ).resolves.toBeUndefined();
   });
 
@@ -184,6 +228,78 @@ describe("image-store", () => {
     const result = await loadGallery("token");
     expect(result).toHaveLength(2);
     expect(result[0].id).toBe("img1");
+  });
+
+  it("loadGallery skips docs with no data field", async () => {
+    vi.mocked(firestore.getDocs).mockResolvedValueOnce({
+      empty: false,
+      docs: [
+        {
+          id: "img1",
+          data: () => ({ position: 1 }),
+        },
+        {
+          id: "img2",
+          data: () => ({ data: "encrypted-data", position: 2 }),
+        },
+      ],
+    } as never);
+    const result = await loadGallery("token");
+    expect(result).toHaveLength(1);
+    expect(result[0].id).toBe("img2");
+  });
+
+  it("loadGallery handles decrypt failure for individual docs", async () => {
+    mockDecrypt.mockRejectedValueOnce(new Error("decrypt fail"));
+    vi.mocked(firestore.getDocs).mockResolvedValueOnce({
+      empty: false,
+      docs: [
+        {
+          id: "img1",
+          data: () => ({ data: "bad-data", position: 1 }),
+        },
+      ],
+    } as never);
+    const result = await loadGallery("token");
+    expect(result).toHaveLength(0);
+  });
+
+  it("loadGallery handles docs without position field", async () => {
+    vi.mocked(firestore.getDocs).mockResolvedValueOnce({
+      empty: false,
+      docs: [
+        { id: "img1", data: () => ({ data: "enc1" }) },
+        { id: "img2", data: () => ({ data: "enc2", position: 2 }) },
+        { id: "img3", data: () => ({ data: "enc3" }) },
+      ],
+    } as never);
+    const result = await loadGallery("token");
+    expect(result).toHaveLength(3);
+    expect(result[0].id).toBe("img2");
+    expect(result[1].id).toBe("img1");
+    expect(result[2].id).toBe("img3");
+  });
+
+  it("loadGallery includes originalName and originalSize from docs", async () => {
+    vi.mocked(firestore.getDocs).mockResolvedValueOnce({
+      empty: false,
+      docs: [
+        {
+          id: "img1",
+          data: () => ({
+            data: "encrypted-data",
+            position: 1,
+            description: "desc",
+            originalName: "photo.jpg",
+            originalSize: 50000,
+          }),
+        },
+      ],
+    } as never);
+    const result = await loadGallery("token");
+    expect(result).toHaveLength(1);
+    expect(result[0].originalName).toBe("photo.jpg");
+    expect(result[0].originalSize).toBe(50000);
   });
 
   it("deleteGallery deletes docs when snapshot is not empty", async () => {

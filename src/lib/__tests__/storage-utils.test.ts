@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { getStorageUsage, clearExpiredCache } from "../storage-utils";
 
 const store: Record<string, string> = {};
@@ -15,6 +15,9 @@ Object.defineProperty(globalThis, "localStorage", { value: mock, writable: true,
 Object.defineProperty(globalThis, "sessionStorage", { value: { clear() {} }, writable: true, configurable: true });
 
 describe("storage-utils", () => {
+  beforeEach(() => {
+    Object.keys(store).forEach((k) => delete store[k]);
+  });
   it("exports getStorageUsage as a function", () => {
     expect(typeof getStorageUsage).toBe("function");
   });
@@ -44,5 +47,51 @@ describe("storage-utils", () => {
     const cleared = clearExpiredCache();
     expect(cleared).toBe(1);
     expect(localStorage.getItem("wedin_invite_cache_bad")).toBeNull();
+  });
+
+  it("getStorageUsage calculates usage from wedin_ keys", () => {
+    localStorage.setItem("wedin_key1", "hello");
+    localStorage.setItem("wedin_key2", "world");
+    const usage = getStorageUsage();
+    expect(usage.used).toBeGreaterThan(0);
+    expect(usage.total).toBe(5 * 1024 * 1024);
+  });
+
+  it("getStorageUsage ignores non-wedin_ keys", () => {
+    localStorage.setItem("other_key", "data");
+    const usage = getStorageUsage();
+    expect(usage.used).toBe(0);
+    expect(usage.percent).toBe(0);
+  });
+
+  it("getStorageUsage handles localStorage errors", () => {
+    const origKey = localStorage.key;
+    localStorage.key = vi.fn(() => { throw new Error("fail"); });
+    const usage = getStorageUsage();
+    localStorage.key = origKey;
+    expect(usage.used).toBe(0);
+    expect(usage.percent).toBe(0);
+  });
+
+  it("clearExpiredCache handles localStorage errors", () => {
+    localStorage.setItem("wedin_invite_cache_test", JSON.stringify({ cachedAt: 0 }));
+    const origKey = localStorage.key;
+    localStorage.key = vi.fn(() => { throw new Error("fail"); });
+    const result = clearExpiredCache();
+    localStorage.key = origKey;
+    expect(result).toBe(0);
+  });
+
+  it("getStorageUsage handles empty value for wedin_ key", () => {
+    localStorage.setItem("wedin_empty", "");
+    const usage = getStorageUsage();
+    expect(usage.used).toBe(0);
+    expect(usage.percent).toBe(0);
+  });
+
+  it("clearExpiredCache handles empty value for cache key", () => {
+    localStorage.setItem("wedin_invite_cache_empty", "");
+    const result = clearExpiredCache();
+    expect(result).toBe(0);
   });
 });

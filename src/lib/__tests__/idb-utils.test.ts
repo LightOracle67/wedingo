@@ -124,4 +124,45 @@ describe("idb-utils", () => {
     makeTxErrorIDB();
     await expect(idbClear()).rejects.toThrow("tx error");
   });
+
+  it("handles openDB onerror path", async () => {
+    vi.stubGlobal("indexedDB", {
+      open: vi.fn(() => {
+        const req = {
+          result: null,
+          error: new Error("open failed"),
+        };
+        setTimeout(() => (req.onerror as () => void)?.(), 1);
+        return req;
+      }),
+    });
+    await expect(idbGet("key")).resolves.toBeNull();
+    vi.unstubAllGlobals();
+  });
+
+  it("handles openDB onupgradeneeded when store exists", async () => {
+    const tx = {
+      objectStore: vi.fn(() => ({
+        put: vi.fn(() => setTimeout(() => (tx.oncomplete as () => void)?.(), 1)),
+        get: vi.fn(),
+        delete: vi.fn(),
+        clear: vi.fn(),
+      })),
+    };
+    const createObjectStore = vi.fn();
+    const db = { createObjectStore, transaction: vi.fn(() => tx) };
+    vi.stubGlobal("indexedDB", {
+      open: vi.fn(() => {
+        const req = { result: db };
+        setTimeout(() => {
+          (req.onupgradeneeded as () => void)?.();
+          (req.onsuccess as () => void)?.();
+        }, 1);
+        return req;
+      }),
+    });
+    await expect(idbSet("k", "v")).resolves.toBeUndefined();
+    expect(createObjectStore).toHaveBeenCalledWith("cache");
+    vi.unstubAllGlobals();
+  });
 });
