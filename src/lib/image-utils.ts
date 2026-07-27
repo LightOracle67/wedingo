@@ -27,6 +27,8 @@ export const compressImage = (file: File) =>
       canvas.height = height;
       const ctx = canvas.getContext("2d");
       if (!ctx) { reject(new Error(i18n.t("errors.uploadImageFailed"))); return; }
+      ctx.fillStyle = "#FFFFFF";
+      ctx.fillRect(0, 0, width, height);
       ctx.drawImage(img, 0, 0, width, height);
 
       let quality = 0.85;
