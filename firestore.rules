@@ -67,7 +67,7 @@ service cloud.firestore {
         allow create: if request.resource.data.data is string
           && request.resource.data.data.size() <= 1048576
           && isAuthenticatedAdmin(tokenId);
-        allow update, delete: if true;
+        allow update, delete: if isAuthenticatedAdmin(tokenId);
       }
 
       match /audio/{docId} {
@@ -75,7 +75,7 @@ service cloud.firestore {
         allow create: if request.resource.data.data is string
           && request.resource.data.data.size() <= 524288
           && isAuthenticatedAdmin(tokenId);
-        allow delete: if true;
+        allow delete: if isAuthenticatedAdmin(tokenId);
       }
     }
 
