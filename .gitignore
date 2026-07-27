@@ -39,3 +39,4 @@ jsconfig.json
 1
 coverage
 junit.xml
+coverage_err.txt
