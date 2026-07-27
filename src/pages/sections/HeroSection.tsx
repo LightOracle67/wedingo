@@ -38,6 +38,7 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
           <div className="story-eyebrow">{t("hero.eyebrow")}</div>
           {couplePhoto ? (
             <div className="mx-auto" style={{ position: "relative", width: "min(70vw, 400px)", aspectRatio: "1/1" }}>
+              {photoLoaded && <div className="hero-couple-photo-ring" />}
               <div style={{
                 position: "absolute", inset: 0, opacity: photoLoaded ? 1 : 0, transition: "opacity 0.5s ease",
                 borderRadius: "50%", overflow: "hidden",

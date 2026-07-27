@@ -102,6 +102,7 @@ export function useSetupAuth(
         renewSession();
         try {
           await updateDoc(invitationDocRef(inviteToken), {
+            activeSession: serverTimestamp(),
             sessionExpiresAt: firestoreSessionExpiry(),
           });
         } catch {

@@ -1,5 +1,33 @@
 export const CHANGELOG = [
   {
+    version: "2.27.0",
+    date: "2026-07-27",
+    changes: [
+      "CALIDAD: 316 typecheck errors → 0, strict flags extra (noUncheckedIndexedAccess, noImplicitOverride, exactOptionalPropertyTypes)",
+      "CALIDAD: Lint 17→0 warnings, any en source ~80→0, !important CSS 48→41",
+      "CALIDAD: PasswordCredential typings, vitest.setup.ts, skipLibCheck=false",
+      "TESTS: 36→127 test files, 291→1214 tests, cobertura 34.96%→75.36%",
+      "TESTS: axe-core a11y, Firestore rules simulation, 7 setup-forms, 13 componentes, 7 hooks, pages integration",
+      "ARQUITECTURA: Hooks separados de context providers (Fast Refresh), barrel exports (contexts, lib), Cloud Functions → TypeScript",
+      "COMPONENTES: AttendeeCard, EqualizerBars, Pagination, ErrorMessage, InvitationTab, useRsvpSubmit hook extraídos",
+      "I18N: RSVP traducciones corregidas (attendeeLabel singular/plural, allergies i18n, menu descripción), errores tipográficos",
+      "RSVP: Rediseñado — label miembro, contador no asistentes, menú con descripción, singular/plural attendee",
+      "UI: Foto novios redonda con fusión radial, nombres escalados (80% ancho, 5cqi, wrap móvil), overflow admin corregido",
+      "SEGURIDAD: CSP corregido (style-src unsafe-inline, data→data:), Firestore rules gallery/audio delete con auth",
+      "SEGURIDAD: errorDetail i18n en backup/restore, notAttendingCount en rules, _visits permitido",
+      "RENDIMIENTO: Sourcemaps condicionales (solo con SENTRY_AUTH_TOKEN), Sentry lazy load (import dinámico)",
+      "RENDIMIENTO: Service Worker v2 (asset/font caching), vendor chunk splitting (sentry separado, vendor-other 295→31KB)",
+      "RENDIMIENTO: Fuentes via Google Fonts CDN (en vez de bundle local), preconnect Firebase/Google",
+      "BUGFIX: Gallery/Music upload — crypto token guard, audio decode error, spread operator seguro",
+      "BUGFIX: RSVP i18n keys (attendee→attendeesLabel, name→nameLabel, menu→menuLabel, allergies→allergiesLegend)",
+      "BUGFIX: image-store test flaky (dynamic import→mockRef), restore error message con detalle",
+      "CI/CD: typecheck, JUnit reporter, bundle size check, coverage thresholds, dependabot, deploy automático",
+      "MONITORING: Sentry (prod 0.1 traces, dev 0), Firebase Analytics (measurementId check), web-vitals",
+      "DOCS: ARCHITECTURE.md actualizado, SECURITY.md, .nvmrc",
+      "DEPS: TypeScript 7, jsdom 30, jest-dom 7, oxlint 1.76",
+    ],
+  },
+  {
     version: "2.26.0",
     date: "2026-07-22",
     changes: [
