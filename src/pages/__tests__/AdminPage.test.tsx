@@ -7,9 +7,10 @@ vi.mock("react-i18next", () => ({
   initReactI18next: { type: "3rdParty", init: () => {} },
 }));
 
+let mockSearch = "";
 vi.mock("react-router-dom", () => ({
   useParams: () => ({ inviteToken: "test-token" }),
-  useLocation: () => ({ pathname: "/test-token/admin", search: "" }),
+  useLocation: () => ({ pathname: "/test-token/admin", search: mockSearch }),
   Navigate: ({ to }: { to: string }) => <div>Redirect to {to}</div>,
 }));
 
@@ -189,5 +190,73 @@ describe("AdminPage", () => {
 
     render(<AdminPage />);
     expect(mockAddToast).toHaveBeenCalledWith("error", "Something failed");
+  });
+
+  it("switches to invitation tab", async () => {
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>
+    );
+    await screen.findByTestId("panel-tab");
+    fireEvent.click(screen.getByText("admin.tabs.invitation"));
+    expect(await screen.findByTestId("invitation-tab")).toBeDefined();
+  });
+
+  it("switches to attendance tab", async () => {
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>
+    );
+    await screen.findByTestId("panel-tab");
+    fireEvent.click(screen.getByText("admin.tabs.attendance"));
+    expect(await screen.findByTestId("attendance-tab")).toBeDefined();
+  });
+
+  it("switches to share tab", async () => {
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>
+    );
+    await screen.findByTestId("panel-tab");
+    fireEvent.click(screen.getByText("admin.tabs.share"));
+    expect(await screen.findByTestId("share-tab")).toBeDefined();
+  });
+
+  it("switches to access tab", async () => {
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>
+    );
+    await screen.findByTestId("panel-tab");
+    fireEvent.click(screen.getByText("admin.tabs.access"));
+    expect(await screen.findByTestId("access-tab")).toBeDefined();
+  });
+
+  it("switches to support tab", async () => {
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>
+    );
+    await screen.findByTestId("panel-tab");
+    fireEvent.click(screen.getByText("admin.tabs.support"));
+    expect(await screen.findByTestId("support-tab")).toBeDefined();
+  });
+
+  it("renders invitation tab via URL param", async () => {
+    mockSearch = "?tab=invitacion";
+
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>
+    );
+    expect(await screen.findByTestId("invitation-tab")).toBeDefined();
+
+    mockSearch = "";
   });
 });
