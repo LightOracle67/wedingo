@@ -21,6 +21,13 @@ vi.mock("../../../lib/constants", () => ({
   MONTH_VALUE_TO_NUMBER: { enero: 1, febrero: 2, marzo: 3 },
 }));
 
+const mockSearchLocations = vi.hoisted(() => vi.fn());
+vi.mock("../../../lib/geo-utils", () => ({
+  searchLocations: mockSearchLocations,
+}));
+
+const mockPreviewBackgrounds = vi.hoisted(() => [] as { id: string; src: string }[]);
+
 vi.mock("../../../contexts", () => ({
   useApp: () => ({
     config: { theme: "golden", menuEnabled: "true" },
@@ -32,7 +39,7 @@ vi.mock("../../../contexts", () => ({
     handleMinuteChange: mockHandleMinuteChange,
     handleMinuteBlur: mockHandleMinuteBlur,
     maxAllowedYear: 2099,
-    previewBackgrounds: [],
+    previewBackgrounds: mockPreviewBackgrounds,
   }),
 }));
 
@@ -41,6 +48,8 @@ import DateSectionForm from "../DateSectionForm";
 describe("DateSectionForm", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    mockPreviewBackgrounds.length = 0;
+    mockSearchLocations.mockResolvedValue([]);
   });
 
   it("renders without crashing", () => {
@@ -122,6 +131,20 @@ describe("DateSectionForm", () => {
     expect(mockHandleYearChange).toHaveBeenCalledWith("2025");
   });
 
+  it("calls handleHourChange on hour input change", () => {
+    render(<DateSectionForm />);
+    const input = screen.getByLabelText("setup.hourLabel");
+    fireEvent.change(input, { target: { value: "14" } });
+    expect(mockHandleHourChange).toHaveBeenCalledWith("14");
+  });
+
+  it("calls handleMinuteChange on minute input change", () => {
+    render(<DateSectionForm />);
+    const input = screen.getByLabelText("setup.minuteLabel");
+    fireEvent.change(input, { target: { value: "30" } });
+    expect(mockHandleMinuteChange).toHaveBeenCalledWith("30");
+  });
+
   it("calls handleMinuteBlur on minute blur", () => {
     render(<DateSectionForm />);
     const input = screen.getByLabelText("setup.minuteLabel");
@@ -136,9 +159,108 @@ describe("DateSectionForm", () => {
     expect(mockUpdateFormField).toHaveBeenCalledWith("weddingSchedule", "Ceremony at 5pm");
   });
 
+  it("limits schedule to 2000 characters", () => {
+    render(<DateSectionForm />);
+    const textarea = screen.getByPlaceholderText("setup.schedulePlaceholder");
+    const longText = "a".repeat(3000);
+    fireEvent.change(textarea, { target: { value: longText } });
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingSchedule", "a".repeat(2000));
+  });
+
   it("does not render location preview when no backgrounds", () => {
     render(<DateSectionForm />);
     expect(screen.queryByText("setup.mapPreview")).toBeNull();
+  });
+
+  it("renders location preview when backgrounds include default", () => {
+    mockPreviewBackgrounds.push({ id: "default", src: "https://example.com/map.png" });
+    render(<DateSectionForm />);
+    expect(screen.getByText("setup.mapPreview")).toBeDefined();
+    const img = screen.getByAltText("setup.mapPreviewAlt");
+    expect(img).toBeDefined();
+    expect(img.getAttribute("src")).toBe("https://example.com/map.png");
+  });
+
+  it("does not render location preview when backgrounds have no default entry", () => {
+    mockPreviewBackgrounds.push({ id: "other", src: "https://example.com/other.png" });
+    render(<DateSectionForm />);
+    expect(screen.queryByText("setup.mapPreview")).toBeNull();
+  });
+
+  it("calls handlePlaceChange and updates fields with short value", () => {
+    render(<DateSectionForm />);
+    const input = screen.getByPlaceholderText("setup.placePlaceholder");
+    fireEvent.change(input, { target: { value: "NY" } });
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingPlace", "NY");
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingLatitude", "");
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingLongitude", "");
+  });
+
+  it("clears weddingPlaceResults on place input blur after timeout", () => {
+    vi.useFakeTimers();
+    render(<DateSectionForm />);
+    const input = screen.getByPlaceholderText("setup.placePlaceholder");
+    fireEvent.change(input, { target: { value: "New York" } });
+    const resultsEl = document.getElementById("weddingPlaceResults");
+    expect(resultsEl?.textContent).toBe("setup.searching");
+    fireEvent.blur(input);
+    vi.advanceTimersByTime(200);
+    expect(resultsEl?.textContent).toBe("");
+    vi.useRealTimers();
+  });
+
+  it("limits place value to 120 characters", () => {
+    render(<DateSectionForm />);
+    const input = screen.getByPlaceholderText("setup.placePlaceholder");
+    const longText = "a".repeat(150);
+    fireEvent.change(input, { target: { value: longText } });
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingPlace", "a".repeat(120));
+  });
+
+  it("shows searching placeholder when place has 3+ chars", () => {
+    render(<DateSectionForm />);
+    const input = screen.getByPlaceholderText("setup.placePlaceholder");
+    fireEvent.change(input, { target: { value: "New York" } });
+    const resultsEl = document.getElementById("weddingPlaceResults");
+    expect(resultsEl?.textContent).toBe("setup.searching");
+  });
+
+  it("renders location search results", async () => {
+    mockSearchLocations.mockResolvedValue([
+      { latitude: "40.7128", longitude: "-74.0060", label: "New York, USA" },
+    ]);
+    render(<DateSectionForm />);
+    const input = screen.getByPlaceholderText("setup.placePlaceholder");
+    fireEvent.change(input, { target: { value: "New York" } });
+    await vi.waitFor(() => {
+      expect(screen.getByText("New York, USA")).toBeDefined();
+    });
+  });
+
+  it("clicks search result and updates fields", async () => {
+    mockSearchLocations.mockResolvedValue([
+      { latitude: "40.7128", longitude: "-74.0060", label: "New York, USA" },
+    ]);
+    render(<DateSectionForm />);
+    const input = screen.getByPlaceholderText("setup.placePlaceholder");
+    fireEvent.change(input, { target: { value: "New York" } });
+    await vi.waitFor(() => {
+      expect(screen.getByText("New York, USA")).toBeDefined();
+    });
+    fireEvent.click(screen.getByText("New York, USA"));
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingPlace", "New York, USA");
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingLatitude", "40.7128");
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingLongitude", "-74.0060");
+  });
+
+  it("shows no results message when search returns empty", async () => {
+    mockSearchLocations.mockResolvedValue([]);
+    render(<DateSectionForm />);
+    const input = screen.getByPlaceholderText("setup.placePlaceholder");
+    fireEvent.change(input, { target: { value: "Nowhere" } });
+    await vi.waitFor(() => {
+      expect(screen.getByText("setup.noResults")).toBeDefined();
+    });
   });
 
   it("renders with prefix", () => {

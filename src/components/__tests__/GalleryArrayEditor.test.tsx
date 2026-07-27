@@ -169,4 +169,78 @@ describe("GalleryArrayEditor", () => {
       expect(mockUpdateGalleryDescription).toHaveBeenCalledWith("test-token", "img-1", "new description");
     });
   });
+
+  it("handles upload error", async () => {
+    mockUploadImage.mockRejectedValue(new Error("Upload failed"));
+
+    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    await screen.findByText("#1");
+
+    const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
+    const file = new File(["fake-image"], "test.jpg", { type: "image/jpeg" });
+    fireEvent.change(fileInput, { target: { files: [file] } });
+
+    await waitFor(() => {
+      expect(mockUploadToastError).toHaveBeenCalledWith("setup.galleryUploadFailed");
+    });
+  });
+
+  it("handles description save failure", async () => {
+    mockLoadGallery.mockResolvedValue([
+      { id: "img-1", url: "data:image/png,test", description: "hello", originalName: "test.png", originalSize: 1000, position: 0 },
+    ]);
+    const testError = new Error("Network error");
+    mockUpdateGalleryDescription.mockRejectedValue(testError);
+
+    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    await screen.findByDisplayValue("hello");
+
+    const input = screen.getByDisplayValue("hello");
+    fireEvent.change(input, { target: { value: "new desc" } });
+    fireEvent.blur(input);
+
+    await waitFor(() => {
+      expect(mockAddToast).toHaveBeenCalledWith("error", "setup.galleryDescriptionSaveFailed: Network error");
+    });
+  });
+
+  it("replaces existing image via filled slot upload", async () => {
+    mockLoadGallery.mockResolvedValue([
+      { id: "img-1", url: "data:image/png,existing", description: "desc", originalName: "old.png", originalSize: 500, position: 0 },
+    ]);
+
+    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    await screen.findByDisplayValue("desc");
+
+    const replaceLabel = screen.getByText("setup.replaceImage");
+    expect(replaceLabel).toBeInTheDocument();
+
+    const filledInput = replaceLabel.parentElement!.querySelector<HTMLInputElement>('input[type="file"]')!;
+    const file = new File(["new-image"], "new.jpg", { type: "image/jpeg" });
+    fireEvent.change(filledInput, { target: { files: [file] } });
+
+    await waitFor(() => {
+      expect(mockUploadImage).toHaveBeenCalled();
+    });
+    expect(mockDeleteGalleryImage).toHaveBeenCalledWith("test-token", "img-1");
+    expect(mockAddGalleryImage).toHaveBeenCalled();
+  });
+
+  it("handles delete error", async () => {
+    mockLoadGallery.mockResolvedValue([
+      { id: "img-1", url: "data:image/png,test", description: "desc", originalName: "test.png", originalSize: 1000, position: 0 },
+    ]);
+    mockDeleteGalleryImage.mockRejectedValue(new Error("Delete failed"));
+
+    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    await screen.findByText("#1");
+
+    const deleteBtn = document.querySelector<HTMLButtonElement>('button[aria-label="common.delete"]')!;
+    vi.spyOn(globalThis, "confirm").mockReturnValue(true);
+    fireEvent.click(deleteBtn);
+
+    await waitFor(() => {
+      expect(mockAddToast).toHaveBeenCalledWith("error", "errors.galleryDeleteFailed");
+    });
+  });
 });
