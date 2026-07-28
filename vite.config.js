@@ -51,6 +51,10 @@ export default defineConfig({
     },
   },
   test: {
+    testTimeout: 30000,
+    fileParallelism: true,
+    maxConcurrency: 4,
+
     environment: "jsdom",
     environmentOptions: {
       jsdom: {
@@ -69,10 +73,10 @@ export default defineConfig({
         "src/**/__tests__/**",
       ],
       thresholds: {
-        statements: 79,
-        branches: 68,
-        functions: 79,
-        lines: 81,
+        statements: 85,
+        branches: 78,
+        functions: 88,
+        lines: 86,
       },
     },
   },
