@@ -21,6 +21,7 @@
     "audit:prod": "npm audit --production",
     "analyze": "vite-bundle-visualizer",
     "bundle:check": "node scripts/check-bundle-size.js",
+    "e2e": "playwright test --config e2e/playwright.config.ts",
     "firebase:login": "firebase login",
     "firebase:use": "firebase use --add",
     "deploy:hosting": "npm run build && firebase deploy --only hosting",
@@ -50,6 +51,7 @@
     "web-vitals": "^6.0.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.62.0",
     "@sentry/vite-plugin": "^5.4.0",
     "@tailwindcss/vite": "^4.3.2",
     "@testing-library/jest-dom": "^7.0.0",
