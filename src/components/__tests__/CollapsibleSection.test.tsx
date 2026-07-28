@@ -172,4 +172,14 @@ describe("CollapsibleSection", () => {
     const wrap = document.querySelector(".setup-collapsible__wrap")!;
     expect(wrap).toBeInTheDocument();
   });
+
+  it("renders with hidden badge and visibility toggle", () => {
+    const onToggle = vi.fn();
+    render(
+      <CollapsibleSection title="Hidden" sectionKey="test" isHidden={true} onToggleVisibility={onToggle}>
+        <p>Content</p>
+      </CollapsibleSection>
+    );
+    expect(screen.getByText("common.hidden")).toBeInTheDocument();
+  });
 });

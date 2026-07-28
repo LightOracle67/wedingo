@@ -24,4 +24,14 @@ describe("crypto-utils", () => {
     const result = await decrypt(encrypted, wrongToken);
     expect(result).toBe("");
   });
+
+  it("encrypt returns empty string for empty input", async () => {
+    const result = await encrypt("", "token");
+    expect(result).toBe("");
+  });
+
+  it("decrypt returns same string for invalid ciphertext", async () => {
+    const result = await decrypt("short", "token");
+    expect(result).toBe("short");
+  });
 });

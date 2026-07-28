@@ -99,4 +99,21 @@ describe("SuperAdminLogin", () => {
 
     expect(submitBtn).toBeDisabled();
   });
+
+  it("prevents double submission", async () => {
+    const mockLogin = vi.fn().mockImplementation(() => new Promise(() => {}));
+    mockUseSuperAdmin.mockReturnValue({ ...baseMock, login: mockLogin });
+
+    render(<SuperAdminLogin />);
+    const emailInput = screen.getByLabelText("superadmin.emailLabel");
+    const passwordInput = screen.getByLabelText("superadmin.passwordLabel");
+    const submitBtn = screen.getByRole("button");
+
+    fireEvent.change(emailInput, { target: { value: "admin@test.com" } });
+    fireEvent.change(passwordInput, { target: { value: "secret" } });
+    fireEvent.click(submitBtn);
+    fireEvent.click(submitBtn);
+
+    expect(mockLogin).toHaveBeenCalledTimes(1);
+  });
 });

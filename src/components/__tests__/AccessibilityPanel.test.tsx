@@ -177,4 +177,11 @@ describe("AccessibilityPanel", () => {
     fireEvent.click(normalBtn);
     expect(document.documentElement.classList.contains("a11y-line-spacing")).toBe(false);
   });
+
+  it("handles localStorage error gracefully", () => {
+    const origGetItem = localStorageMock.getItem;
+    localStorageMock.getItem = vi.fn(() => { throw new Error("storage error"); });
+    expect(() => render(<AccessibilityPanel open={true} onClose={vi.fn()} />)).not.toThrow();
+    localStorageMock.getItem = origGetItem;
+  });
 });
