@@ -231,7 +231,7 @@ describe("MusicPlayer", () => {
   });
 
   it("handles handleVolume when audioRef is null", () => {
-    const audio = document.createElement("audio");
+    const _audio = document.createElement("audio");
     const volumeSetter = vi.fn();
     Object.defineProperty(HTMLMediaElement.prototype, "volume", {
       set: volumeSetter,

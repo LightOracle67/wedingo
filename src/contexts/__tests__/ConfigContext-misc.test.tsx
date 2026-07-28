@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { useEffect } from "react";
+
 import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 
 const mockGetDoc = vi.hoisted(() => vi.fn(() => Promise.resolve({ exists: () => false })));
@@ -15,7 +15,7 @@ const mockLoadDecryptedField = vi.hoisted(() => vi.fn(() => Promise.resolve(""))
 const mockSetSaveError = vi.hoisted(() => vi.fn());
 const mockSetSaveMessage = vi.hoisted(() => vi.fn());
 const mockSetDoc = vi.hoisted(() => vi.fn());
-const mockTrackVisit = vi.fn();
+const _mockTrackVisit = vi.fn();
 
 vi.mock("react-i18next", () => ({ useTranslation: () => ({ t: (key: string) => key }) }));
 vi.mock("react-router-dom", () => ({ useLocation: () => mockLocation, useNavigate: () => vi.fn() }));
@@ -40,19 +40,6 @@ vi.mock("../../lib/error-utils", () => ({ getFirestoreErrorMessage: vi.fn(() => 
 import { ConfigProvider } from "../ConfigContext";
 import { useConfig } from "../useConfig";
 
-function TestConsumer() {
-  const ctx = useConfig();
-  return (
-    <div>
-      <span data-testid="hasConfig">{String(ctx.hasStoredConfig)}</span>
-      <span data-testid="isLoading">{String(ctx.isConfigLoading)}</span>
-      <span data-testid="configError">{ctx.configLoadError}</span>
-      <span data-testid="inviteToken">{ctx.inviteToken}</span>
-      <span data-testid="firstName">{ctx.config.firstName || ""}</span>
-      <span data-testid="secondName">{ctx.config.secondName || ""}</span>
-    </div>
-  );
-}
 
 function SaveSetupConsumer() {
   const ctx = useConfig();

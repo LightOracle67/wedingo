@@ -318,7 +318,7 @@ describe("SetupPage", () => {
   });
 
   it("handles token modal close without PasswordCredential", () => {
-    const navigatorOrig = globalThis.navigator;
+    const _navigatorOrig = globalThis.navigator;
     Object.defineProperty(globalThis, "navigator", {
       value: { credentials: { store: vi.fn() }, clipboard: { writeText: vi.fn() } },
       configurable: true,
