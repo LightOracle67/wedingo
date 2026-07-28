@@ -1290,7 +1290,7 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
   position: relative;
   z-index: 1;
   border-radius: 1.6rem;
-  width: 95% !important;
+  width: 90% !important;
   max-height: 95%;
   padding: clamp(0.8rem, 2.5vw, 1.5rem);
   box-sizing: border-box;
@@ -2121,12 +2121,12 @@ a:focus-visible {
 
 }
 
-/* ── Responsive: Ultra pequeño (400% zoom) ── */
-@media (max-width: 480px) {
+/* ── Responsive: Móvil y ultra pequeño ── */
+@media (max-width: 640px) {
   html { font-size: 14px; }
   body { overflow-x: auto; }
-  .story-card { max-width: 100% !important; width: 98% !important; padding: 0.6rem; }
-  .story-card--hero { max-width: 100% !important; }
+  .story-card { max-width: 80% !important; width: 80% !important; padding: 0.6rem; }
+  .story-card--hero { max-width: 80% !important; }
   .story-title { font-size: clamp(1rem, 5vw, 1.4rem) !important; }
   .story-copy { font-size: clamp(0.8rem, 3.5vw, 0.95rem) !important; }
   .story-section { padding: 0.5rem !important; }
