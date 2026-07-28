@@ -180,7 +180,7 @@ describe("SectionOrderEditor", () => {
     render(<SectionOrderEditor {...defaultProps} onChange={onChange} />);
 
     const items = document.querySelectorAll(".section-order-item");
-    const lastItemLabel = items[items.length - 1].querySelector(".section-order-item__label")?.textContent;
+    const _lastItemLabel = items[items.length - 1].querySelector(".section-order-item__label")?.textContent;
     const lastDownBtn = screen.getByRole("button", { name: `sectionOrder.moveDown accommodation.sectionLabel` });
     expect(lastDownBtn).toBeDisabled();
     fireEvent.click(lastDownBtn);

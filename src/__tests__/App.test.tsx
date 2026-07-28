@@ -729,8 +729,8 @@ describe("App", () => {
   });
 
   it("renders changelog modal directly when showChangelog is true", () => {
-    let capturedSetShowChangelog: (v: boolean) => void = () => {};
-    const origRender = render;
+    let _capturedSetShowChangelog: (v: boolean) => void = () => {};
+    const _origRender = render;
     render(
       <MemoryRouter initialEntries={["/"]}>
         <Suspense fallback={null}>

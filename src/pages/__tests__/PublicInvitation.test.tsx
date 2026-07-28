@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, afterEach, beforeAll } from "vitest";
-import { render, screen, act, fireEvent, waitFor } from "@testing-library/react";
+import { act } from "react";
+import { render, screen, fireEvent } from "@testing-library/react";
 
 const mockUseAppValue = vi.hoisted(() => ({
   config: {

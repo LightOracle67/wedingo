@@ -15,7 +15,7 @@ const mockLoadDecryptedField = vi.hoisted(() => vi.fn(() => Promise.resolve(""))
 const mockSetSaveError = vi.hoisted(() => vi.fn());
 const mockSetSaveMessage = vi.hoisted(() => vi.fn());
 const mockSetDoc = vi.hoisted(() => vi.fn());
-const mockTrackVisit = vi.fn();
+const _mockTrackVisit = vi.fn();
 
 vi.mock("react-i18next", () => ({ useTranslation: () => ({ t: (key: string) => key }) }));
 vi.mock("react-router-dom", () => ({ useLocation: () => mockLocation, useNavigate: () => vi.fn() }));
@@ -262,7 +262,7 @@ describe("ConfigProvider", () => {
       data: () => ({ firstName: "Del", _visits: 1 }),
     });
     const { clearSession } = await import("../../lib/sessionVars");
-    const { safeRemoveItem } = await import("../../lib/storage");
+    const { safeRemoveItem: _safeRemoveItem } = await import("../../lib/storage");
     const originalConfirm = window.confirm;
     window.confirm = vi.fn(() => true);
     function DeleteConsumer() {
@@ -324,7 +324,8 @@ describe("ConfigProvider", () => {
     const cb = vi.fn();
     function CBConsumer() {
       const ctx = useConfig();
-      useEffect(() => { ctx.registerOnFirstSave(cb); }, [ctx.registerOnFirstSave, cb]);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      useEffect(() => { ctx.registerOnFirstSave(cb); }, [ctx.registerOnFirstSave]);
       return (
         <div>
           <span data-testid="cb_hasConfig">{String(ctx.hasStoredConfig)}</span>
