@@ -18,6 +18,19 @@ describe("generateSetupToken", () => {
   });
 });
 
+describe("generateSetupToken with edge cases", () => {
+  it("returns token even when all bytes are invalid", () => {
+    const origGetRandomValues = crypto.getRandomValues;
+    crypto.getRandomValues = (arr: Uint8Array) => {
+      for (let i = 0; i < arr.length; i++) arr[i] = 255;
+      return arr;
+    };
+    const token = generateSetupToken();
+    expect(typeof token).toBe("string");
+    crypto.getRandomValues = origGetRandomValues;
+  });
+});
+
 describe("normalizeTokenValue", () => {
   it("removes dashes and uppercases", () => {
     expect(normalizeTokenValue("abcd-efgh-1234")).toBe("ABCDEFGH1234");

@@ -19,4 +19,8 @@ describe("i18n initialization", () => {
     expect(i18n.options.returnObjects).toBe(false);
     expect(i18n.options.returnNull).toBe(false);
   });
+
+  it("initializes with resourcesToBackend", () => {
+    expect(i18n.isInitialized).toBe(true);
+  });
 });

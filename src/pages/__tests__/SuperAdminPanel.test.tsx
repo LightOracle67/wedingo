@@ -145,4 +145,15 @@ describe("SuperAdminPanel", () => {
     fireEvent.click(screen.getByText("superadmin.tabs.compliance"));
     expect(await screen.findByTestId("compliance-tab")).toBeDefined();
   });
+
+  it("switches to tokens tab", async () => {
+    render(
+      <Suspense fallback={null}>
+        <SuperAdminPanel />
+      </Suspense>
+    );
+    await screen.findByTestId("dashboard-tab");
+    fireEvent.click(screen.getByText("superadmin.tabs.tokens"));
+    expect(await screen.findByTestId("tokens-tab")).toBeDefined();
+  });
 });

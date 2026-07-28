@@ -194,6 +194,20 @@ describe("AuthProvider", () => {
     expect(mockSaveSession).toHaveBeenCalledWith("admin", "AdminUser");
   });
 
+  it("skips saving session when displayName is empty", async () => {
+    mockGetSession.mockReturnValue({ identifier: "ab", expiresAt: Date.now() + 999999 });
+    mockUseConfig.mockReturnValue({
+      inviteToken: "test-token",
+      config: { adminUsername: "" },
+      setHasStoredConfig: vi.fn(),
+      registerOnFirstSave: mockRegisterOnFirstSave,
+    });
+    render(<AuthProvider><div>child</div></AuthProvider>);
+    const onFirstSave = mockRegisterOnFirstSave.mock.calls[0][0];
+    await onFirstSave();
+    expect(mockSetTokenLoginUsername).not.toHaveBeenCalled();
+  });
+
   it("handles null setAdminMessage gracefully", async () => {
     mockUseAppUI.mockReturnValueOnce({
       setAdminMessage: null,

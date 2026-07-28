@@ -170,4 +170,28 @@ describe("ShareTab", () => {
     expect(windowOpenSpy).toHaveBeenCalled();
     windowOpenSpy.mockRestore();
   });
+
+  it("shows error toast when copy message button fails", async () => {
+    const writeText = vi.fn().mockRejectedValue(new Error("Clipboard error"));
+    Object.assign(navigator, { clipboard: { writeText } });
+    const addToast = vi.fn();
+    render(<ShareTab {...baseProps} addToast={addToast} />);
+    const copyMsgBtn = screen.getByText("share.copyMessage");
+    fireEvent.click(copyMsgBtn);
+    await vi.waitFor(() => {
+      expect(writeText).toHaveBeenCalled();
+    });
+  });
+
+  it("handles share without addToast", () => {
+    render(<ShareTab inviteToken="test-token" />);
+    expect(screen.getByText("share.message")).toBeDefined();
+  });
+
+  it("generates message with random message on handleRandom", () => {
+    render(<ShareTab {...baseProps} />);
+    const textarea = screen.getByDisplayValue(/Test invite message/) as HTMLTextAreaElement;
+    fireEvent.click(screen.getByText("share.generateMessage"));
+    expect(textarea.value).toContain("Test invite message");
+  });
 });

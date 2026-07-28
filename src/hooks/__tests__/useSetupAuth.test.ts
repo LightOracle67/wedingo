@@ -257,6 +257,27 @@ describe("useSetupAuth", () => {
       expect(result.current.isTokenVerified).toBe(false);
       expect(result.current.authMessage).toBe("auth.codeVerifyError");
     });
+
+    it("handles codeUserMismatch error during admin login", async () => {
+      mockGetDoc.mockResolvedValue({
+        exists: () => true,
+        data: () => ({ _activeSetupToken: "admin-token" }),
+      });
+      window.confirm = vi.fn(() => true);
+
+      const config = { adminUsername: "admin" } as InvitationConfig;
+      const { result } = setup({ config });
+      act(() => result.current.setAdminLoginUsername("admin"));
+      act(() => result.current.setSetupTokenInput("admin-token"));
+
+      mockRunTransaction.mockRejectedValue(new Error("codeUserMismatch"));
+
+      await act(async () => {
+        await result.current.handleAdminTokenLogin();
+      });
+
+      expect(result.current.authMessage).toBe("auth.codeUserMismatch");
+    });
   });
 
   describe("handleAdminLogout", () => {

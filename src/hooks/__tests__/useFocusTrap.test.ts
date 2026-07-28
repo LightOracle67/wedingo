@@ -89,6 +89,18 @@ describe("useFocusTrap", () => {
     document.body.removeChild(container);
   });
 
+  it("ignores non-Tab key events", () => {
+    const { result, rerender } = renderHook((open: boolean) => useFocusTrap<HTMLDivElement>(open), { initialProps: false });
+    const { container, buttons } = createTrapElements();
+    result.current.current = container;
+    rerender(true);
+
+    act(() => { buttons[0].focus(); container.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true })); });
+    expect(document.activeElement).toBe(buttons[0]);
+
+    document.body.removeChild(container);
+  });
+
   it("handles Tab when container has no focusable elements", () => {
     const { result, rerender } = renderHook((open: boolean) => useFocusTrap<HTMLDivElement>(open), { initialProps: false });
     const container = document.createElement("div");

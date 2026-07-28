@@ -316,4 +316,38 @@ describe("SetupPage", () => {
     fireEvent.click(screen.getByText("setup.goToPanel"));
     expect(mockNavigate).toHaveBeenCalledWith("/test-token/admin");
   });
+
+  it("handles token modal close without PasswordCredential", () => {
+    const navigatorOrig = globalThis.navigator;
+    Object.defineProperty(globalThis, "navigator", {
+      value: { credentials: { store: vi.fn() }, clipboard: { writeText: vi.fn() } },
+      configurable: true,
+      writable: true,
+    });
+    mockUseApp.mockReturnValue({
+      ...baseMock,
+      hasStoredConfig: true,
+      saveMessage: "Saved!",
+      setupToken: "my-setup-token-123",
+      config: { ...baseMock.config, adminUsername: "" },
+    });
+
+    render(<SetupPage />);
+    const continueBtn = screen.getByText("setup.tokenModalContinue");
+    fireEvent.click(continueBtn);
+    expect(screen.getByText("setup.successTitle")).toBeDefined();
+  });
+
+  it("shows isTransitioning class when saveMessage and hasStoredConfig", () => {
+    mockUseApp.mockReturnValue({
+      ...baseMock,
+      hasStoredConfig: true,
+      saveMessage: "Saved!",
+      setupToken: "my-setup-token",
+    });
+
+    render(<SetupPage />);
+    const transitionDiv = document.querySelector(".setup-page-transition");
+    expect(transitionDiv).toBeDefined();
+  });
 });

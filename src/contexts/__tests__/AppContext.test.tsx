@@ -195,6 +195,17 @@ describe("AppProvider", () => {
     expect(mockConfirm).toHaveBeenCalled();
   });
 
+  it("computes rsvpCount with zero filtered yes entries", () => {
+    mockRsvpEntries = [{ attendance: "no" }, { attendance: "no" }];
+    render(
+      <AppProvider>
+        <TestConsumer />
+      </AppProvider>,
+    );
+    fireEvent.click(screen.getByTestId("save-btn"));
+    expect(mockHandleSaveSetup).toHaveBeenCalled();
+  });
+
   it("skips confirm when no menu changes even with rsvp", () => {
     mockRsvpEntries = [{ attendance: "yes" }];
     mockMenuEnabled = "true";

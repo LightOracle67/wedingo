@@ -124,6 +124,30 @@ describe("AttendanceTab", () => {
     expect(screen.getByText("attendance.noResultsFilter")).toBeDefined();
   });
 
+  it("calls setSearchQuery when select changes", () => {
+    const setSearchQuery = vi.fn();
+    const entries = [
+      { id: "1", guestName: "Alice", attendance: "yes", companions: 2, dietaryInfo: "", submittedAt: "2024-01-01" },
+      { id: "2", guestName: "Bob", attendance: "no", companions: 0, dietaryInfo: "", submittedAt: "2024-01-02" },
+    ];
+    render(
+      <AttendanceTab
+        searchQuery=""
+        setSearchQuery={setSearchQuery}
+        attendanceFilter="all"
+        setAttendanceFilter={vi.fn()}
+        filteredEntries={entries}
+        rsvpEntries={entries}
+        exportPdf={vi.fn()}
+        formatDate={(d: string) => String(d)}
+        handleClearRsvpEntries={vi.fn()}
+      />
+    );
+    const select = screen.getByDisplayValue("attendance.all");
+    fireEvent.change(select, { target: { value: "Alice" } });
+    expect(setSearchQuery).toHaveBeenCalledWith("Alice");
+  });
+
   it("renders entries with guestNames fallback and attendees list", () => {
     render(
       <AttendanceTab

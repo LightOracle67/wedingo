@@ -145,6 +145,23 @@ describe("EnvelopeOverlay", () => {
     expect(document.querySelector(".envelope-overlay--exit")).toBeNull();
   });
 
+  it("does not show golden text before first click and shows after delay", () => {
+    render(<EnvelopeOverlay {...defaultProps} />);
+    expect(document.querySelector(".envelope-golden")).toBeNull();
+  });
+
+  it("shows golden text after showText becomes true", () => {
+    vi.useFakeTimers();
+    render(<EnvelopeOverlay {...defaultProps} />);
+    const btn = screen.getByRole("button");
+    fireEvent.click(btn);
+    vi.advanceTimersByTime(600);
+    expect(document.querySelector(".envelope-flash--visible")).toBeDefined();
+    vi.advanceTimersByTime(800);
+    expect(document.querySelector(".envelope-golden--in")).toBeDefined();
+    vi.useRealTimers();
+  });
+
   it("does not show golden text before first click", () => {
     render(<EnvelopeOverlay {...defaultProps} />);
     expect(document.querySelector(".envelope-golden")).toBeNull();

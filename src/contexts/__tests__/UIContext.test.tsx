@@ -60,6 +60,21 @@ describe("UIProvider", () => {
     expect(screen.getByText("rerendered")).toBeDefined();
   });
 
+  it("renders LegalModal with correct section when legalModal is set", () => {
+    function Consumer() {
+      const ctx = useContext(UIContext);
+      useEffect(() => { ctx.setLegalModal("terms"); }, [ctx]);
+      return null;
+    }
+    render(
+      <UIProvider>
+        <Consumer />
+      </UIProvider>
+    );
+    expect(screen.getByRole("dialog")).toBeDefined();
+    expect(screen.getByText("legal.sectionTerms")).toBeDefined();
+  });
+
   it("provides locationMapContainerRef as a ref object", () => {
     function Consumer() {
       const ctx = useContext(UIContext);
