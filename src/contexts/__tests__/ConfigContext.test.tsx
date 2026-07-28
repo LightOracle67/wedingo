@@ -1,5 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
-import { render, screen, waitFor } from "@testing-library/react";
+import { useEffect } from "react";
+import { render, screen, waitFor, fireEvent } from "@testing-library/react";
+import { updateDoc } from "firebase/firestore";
 
 const mockGetDoc = vi.hoisted(() => vi.fn(() => Promise.resolve({ exists: () => false })));
 const mockLocation = vi.hoisted(() => ({ pathname: "/test", search: "", hash: "" }));
@@ -9,6 +11,8 @@ const mockDecodeInviteConfig = vi.hoisted(() => {
 });
 const mockSafeGetItem = vi.hoisted(() => vi.fn(() => null));
 const mockSafeSetItem = vi.hoisted(() => vi.fn());
+const mockLoadAudio = vi.hoisted(() => vi.fn(() => Promise.resolve({ url: "" })));
+const mockLoadDecryptedField = vi.hoisted(() => vi.fn(() => Promise.resolve("")));
 const mockTrackVisit = vi.fn();
 
 vi.mock("react-i18next", () => ({ useTranslation: () => ({ t: (key: string) => key }) }));
@@ -24,8 +28,8 @@ vi.mock("../../lib/normalize-config", () => ({ normalizeConfig: (v: unknown) => 
 vi.mock("../../lib/date-utils", () => ({ validateWeddingDate: vi.fn(() => null) }));
 vi.mock("../../lib/invite-config-codec", () => ({ decodeInviteConfig: mockDecodeInviteConfig }));
 vi.mock("../../lib/firebase", () => ({ db: {}, invitationDocRef: vi.fn(() => ({ id: "test" })), rsvpByInviteRef: vi.fn(() => ({})) }));
-vi.mock("../../lib/image-store", () => ({ loadDecryptedField: vi.fn(() => Promise.resolve("")), deleteGallery: vi.fn(() => Promise.resolve()) }));
-vi.mock("../../lib/music-store", () => ({ loadAudio: vi.fn(() => Promise.resolve({ url: "" })) }));
+vi.mock("../../lib/image-store", () => ({ loadDecryptedField: mockLoadDecryptedField, deleteGallery: vi.fn(() => Promise.resolve()) }));
+vi.mock("../../lib/music-store", () => ({ loadAudio: mockLoadAudio }));
 vi.mock("../../lib/sessionVars", () => ({ clearSession: vi.fn() }));
 vi.mock("../../lib/storage", () => ({ safeSetItem: mockSafeSetItem, safeGetItem: mockSafeGetItem, safeRemoveItem: vi.fn() }));
 vi.mock("../../lib/crypto-utils", () => ({ encrypt: vi.fn((s: string) => Promise.resolve(s)), decrypt: vi.fn((s: string) => Promise.resolve(s)) }));
@@ -33,6 +37,33 @@ vi.mock("../../lib/error-utils", () => ({ getFirestoreErrorMessage: vi.fn(() => 
 
 import { ConfigProvider } from "../ConfigContext";
 import { useConfig } from "../useConfig";
+
+function ReloadTestConsumer() {
+  const ctx = useConfig();
+  return (
+    <div>
+      <span data-testid="reloadHasConfig">{String(ctx.hasStoredConfig)}</span>
+      <span data-testid="reloadLoading">{String(ctx.isConfigLoading)}</span>
+      <span data-testid="reloadFirstName">{ctx.config.firstName || ""}</span>
+      <span data-testid="reloadSecondName">{ctx.config.secondName || ""}</span>
+      <span data-testid="reloadError">{ctx.configLoadError}</span>
+      <span data-testid="reloadInviteToken">{ctx.inviteToken}</span>
+      <button data-testid="reloadBtn" onClick={() => ctx.reloadConfig()}>Reload</button>
+    </div>
+  );
+}
+
+function UpdateFieldConsumer() {
+  const { updateFormField, formData } = useConfig();
+  return (
+    <div>
+      <span data-testid="ufFirstName">{formData.firstName || ""}</span>
+      <span data-testid="ufSecondName">{formData.secondName || ""}</span>
+      <button data-testid="updateNameBtn" onClick={() => updateFormField("firstName", "Updated")}>Update</button>
+      <button data-testid="updateSecondBtn" onClick={() => updateFormField("secondName", "Second")}>UpdateSecond</button>
+    </div>
+  );
+}
 
 function TestConsumer() {
   const ctx = useConfig();
@@ -211,6 +242,169 @@ describe("ConfigProvider", () => {
     expect(screen.getByTestId("isLoading").textContent).toBe("false");
     window.location.search = "";
     mockLocation.pathname = "/test";
+  });
+
+  it("loads from Firestore with bankInfo, couplePhoto and audio URL", async () => {
+    mockLocation.pathname = "/abcdefghij";
+    mockGetDoc.mockResolvedValueOnce({
+      exists: () => true,
+      data: () => ({ firstName: "Rich", bankInfo: "ES...", couplePhoto: "photo.jpg", _visits: 7 }),
+    });
+    mockLoadAudio.mockResolvedValueOnce({ url: "https://audio.example.com/song.mp3" });
+    mockLoadDecryptedField.mockResolvedValueOnce("https://example.com/photo.jpg");
+    render(<ConfigProvider><TestConsumer /></ConfigProvider>);
+    await waitFor(() => {
+      expect(screen.getByTestId("firstName").textContent).toBe("Rich");
+    });
+    expect(screen.getByTestId("hasConfig").textContent).toBe("true");
+    mockLocation.pathname = "/test";
+  });
+
+  it("tracks visit when cookie consent is accepted", async () => {
+    mockLocation.pathname = "/abcdefghij";
+    mockGetDoc.mockResolvedValueOnce({
+      exists: () => true,
+      data: () => ({ firstName: "Tracked", _visits: 0 }),
+    });
+    mockSafeGetItem.mockImplementation((key: string) => {
+      if (key === "wedin_cookie_consent") return "accepted";
+      return null;
+    });
+    render(<ConfigProvider><TestConsumer /></ConfigProvider>);
+    await waitFor(() => {
+      expect(screen.getByTestId("firstName").textContent).toBe("Tracked");
+    });
+    expect(screen.getByTestId("hasConfig").textContent).toBe("true");
+    mockLocation.pathname = "/test";
+    mockSafeGetItem.mockReset();
+    mockSafeGetItem.mockReturnValue(null);
+  });
+
+  it("reloads config from Firestore when doc exists", async () => {
+    mockLocation.pathname = "/abcdefghij";
+    mockGetDoc.mockResolvedValueOnce({
+      exists: () => true,
+      data: () => ({ firstName: "First", secondName: "Load", _visits: 3 }),
+    });
+    render(<ConfigProvider><ReloadTestConsumer /></ConfigProvider>);
+    await waitFor(() => {
+      expect(screen.getByTestId("reloadFirstName").textContent).toBe("First");
+    });
+    mockGetDoc.mockResolvedValueOnce({
+      exists: () => true,
+      data: () => ({ firstName: "Reloaded", secondName: "Again", _visits: 5 }),
+    });
+    fireEvent.click(screen.getByTestId("reloadBtn"));
+    await waitFor(() => {
+      expect(screen.getByTestId("reloadFirstName").textContent).toBe("Reloaded");
+    });
+    expect(screen.getByTestId("reloadSecondName").textContent).toBe("Again");
+    mockLocation.pathname = "/test";
+  });
+
+  it("reloads config when Firestore doc is deleted", async () => {
+    mockLocation.pathname = "/abcdefghij";
+    mockGetDoc.mockResolvedValueOnce({
+      exists: () => true,
+      data: () => ({ firstName: "Exists", _visits: 1 }),
+    });
+    render(<ConfigProvider><ReloadTestConsumer /></ConfigProvider>);
+    await waitFor(() => {
+      expect(screen.getByTestId("reloadHasConfig").textContent).toBe("true");
+    });
+    mockGetDoc.mockResolvedValueOnce({
+      exists: () => false,
+      data: () => ({}),
+    });
+    fireEvent.click(screen.getByTestId("reloadBtn"));
+    await waitFor(() => {
+      expect(screen.getByTestId("reloadHasConfig").textContent).toBe("false");
+    });
+    mockLocation.pathname = "/test";
+  });
+
+  it("reloads config with bankInfo, couplePhoto and audio URL", async () => {
+    mockLocation.pathname = "/abcdefghij";
+    mockGetDoc.mockResolvedValueOnce({
+      exists: () => true,
+      data: () => ({ firstName: "Init", _visits: 0 }),
+    });
+    render(<ConfigProvider><ReloadTestConsumer /></ConfigProvider>);
+    await waitFor(() => {
+      expect(screen.getByTestId("reloadFirstName").textContent).toBe("Init");
+    });
+    mockGetDoc.mockResolvedValueOnce({
+      exists: () => true,
+      data: () => ({ firstName: "RichReload", bankInfo: "ES...", couplePhoto: "pic.jpg", _visits: 2 }),
+    });
+    mockLoadAudio.mockResolvedValueOnce({ url: "https://audio.example.com/reload.mp3" });
+    mockLoadDecryptedField.mockResolvedValueOnce("https://example.com/reload.jpg");
+    fireEvent.click(screen.getByTestId("reloadBtn"));
+    await waitFor(() => {
+      expect(screen.getByTestId("reloadFirstName").textContent).toBe("RichReload");
+    });
+    expect(screen.getByTestId("reloadHasConfig").textContent).toBe("true");
+    mockLocation.pathname = "/test";
+  });
+
+  it("handles reload config error gracefully", async () => {
+    mockLocation.pathname = "/abcdefghij";
+    mockGetDoc.mockResolvedValueOnce({
+      exists: () => true,
+      data: () => ({ firstName: "Ok", _visits: 0 }),
+    });
+    render(<ConfigProvider><ReloadTestConsumer /></ConfigProvider>);
+    await waitFor(() => {
+      expect(screen.getByTestId("reloadFirstName").textContent).toBe("Ok");
+    });
+    mockGetDoc.mockRejectedValueOnce(new Error("reload error"));
+    fireEvent.click(screen.getByTestId("reloadBtn"));
+    await waitFor(() => {
+      expect(screen.getByTestId("reloadFirstName").textContent).toBe("Ok");
+    });
+    mockLocation.pathname = "/test";
+  });
+
+  it("updateFormField updates config field value", () => {
+    render(<ConfigProvider><UpdateFieldConsumer /></ConfigProvider>);
+    expect(screen.getByTestId("ufFirstName").textContent).toBe("");
+    fireEvent.click(screen.getByTestId("updateNameBtn"));
+    expect(screen.getByTestId("ufFirstName").textContent).toBe("Updated");
+    fireEvent.click(screen.getByTestId("updateSecondBtn"));
+    expect(screen.getByTestId("ufSecondName").textContent).toBe("Second");
+  });
+
+  it("handles trackVisit updateDoc error gracefully", async () => {
+    mockLocation.pathname = "/abcdefghij";
+    mockGetDoc.mockResolvedValueOnce({
+      exists: () => true,
+      data: () => ({ firstName: "TrackErr", _visits: 5 }),
+    });
+    const mockUpdateDoc = vi.mocked(updateDoc);
+    mockUpdateDoc.mockRejectedValueOnce(new Error("update failed"));
+    mockSafeGetItem.mockImplementation((key: string) => {
+      if (key === "wedin_cookie_consent") return "accepted";
+      return null;
+    });
+    render(<ConfigProvider><TestConsumer /></ConfigProvider>);
+    await waitFor(() => {
+      expect(screen.getByTestId("firstName").textContent).toBe("TrackErr");
+    });
+    expect(screen.getByTestId("hasConfig").textContent).toBe("true");
+    mockLocation.pathname = "/test";
+    mockSafeGetItem.mockReset();
+    mockSafeGetItem.mockReturnValue(null);
+  });
+
+  it("registerOnFirstSave callback is stored", () => {
+    const cb = vi.fn();
+    function RegisterConsumer() {
+      const { registerOnFirstSave, hasStoredConfig } = useConfig();
+      useEffect(() => { registerOnFirstSave(cb); }, [registerOnFirstSave, cb]);
+      return <span data-testid="regConfig">{String(hasStoredConfig)}</span>;
+    }
+    render(<ConfigProvider><RegisterConsumer /></ConfigProvider>);
+    expect(cb).not.toHaveBeenCalled();
   });
 
 });
