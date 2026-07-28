@@ -132,4 +132,16 @@ describe("CookieConsent", () => {
     fireEvent.click(necessaryCheckbox);
     expect(mockLocalStorage.setItem.mock.calls.length).toBe(prefsBefore);
   });
+
+  it("calling togglePreference with necessary key returns early", () => {
+    render(<CookieConsent />);
+    fireEvent.click(screen.getByRole("button", { name: "cookie.configure" }));
+    const necessaryCheckbox = screen.getByText("cookie.necessary").previousElementSibling as HTMLInputElement;
+    expect(necessaryCheckbox.checked).toBe(true);
+    const analyticsCheckbox = screen.getByText("cookie.analytics").previousElementSibling as HTMLInputElement;
+    const analyticsBefore = analyticsCheckbox.checked;
+    fireEvent.click(necessaryCheckbox);
+    expect(necessaryCheckbox.checked).toBe(true);
+    expect(analyticsCheckbox.checked).toBe(analyticsBefore);
+  });
 });

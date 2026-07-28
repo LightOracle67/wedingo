@@ -1314,4 +1314,64 @@ describe("ConfigProvider", () => {
     mockLocation.pathname = "/test";
   });
 
+  // Hash path: valid hash decodes config
+  it("decodes config from URL hash", async () => {
+    const origHash = window.location.hash;
+    const origMockHash = mockLocation.hash;
+    window.location.hash = "#testhash";
+    mockLocation.hash = "#testhash";
+    mockDecodeInviteConfig.mockReturnValueOnce({ firstName: "FromHash", secondName: "Decoded" });
+    render(<ConfigProvider><TestConsumer /></ConfigProvider>);
+    await waitFor(() => {
+      expect(screen.getByTestId("firstName").textContent).toBe("FromHash");
+    });
+    expect(screen.getByTestId("isLoading").textContent).toBe("false");
+    expect(screen.getByTestId("hasConfig").textContent).toBe("false");
+    window.location.hash = origHash;
+    mockLocation.hash = origMockHash;
+  });
+
+  // Hash path: invalid hash with invitar param shows error
+  it("shows invalid link error when hash decode fails with invitar", async () => {
+    const origHash = window.location.hash;
+    const origMockHash = mockLocation.hash;
+    const origSearch = window.location.search;
+    window.location.hash = "#invalid";
+    mockLocation.hash = "#invalid";
+    window.location.search = "?invitar=true";
+    mockDecodeInviteConfig.mockImplementationOnce(() => { throw new Error("decode failed"); });
+    render(<ConfigProvider><TestConsumer /></ConfigProvider>);
+    await waitFor(() => {
+      expect(screen.getByTestId("configError").textContent).toBe("errors.invalidLink");
+    });
+    window.location.hash = origHash;
+    mockLocation.hash = origMockHash;
+    window.location.search = origSearch;
+  });
+
+  // alreadySaving path in handleSaveSetup
+  it("handleSaveSetup returns early when already saving", async () => {
+    mockLocation.pathname = "/abcdefghij";
+    mockGetDoc.mockResolvedValueOnce({
+      exists: () => true,
+      data: () => ({ _visits: 0 }),
+    });
+    render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
+    await waitFor(() => expect(screen.getByTestId("ss_inviteToken").textContent).toBe("abcdefghij"));
+    fireEvent.click(screen.getByTestId("ss_stored"));
+    await waitFor(() => expect(screen.getByTestId("ss_hasConfig").textContent).toBe("true"));
+    fireEvent.click(screen.getByTestId("ss_first"));
+    fireEvent.click(screen.getByTestId("ss_second"));
+    fireEvent.click(screen.getByTestId("ss_theme"));
+    fireEvent.click(screen.getByTestId("ss_order"));
+    fireEvent.click(screen.getByTestId("ss_gp1"));
+    fireEvent.click(screen.getByTestId("ss_gp2"));
+    fireEvent.click(screen.getByTestId("ss_save"));
+    fireEvent.click(screen.getByTestId("ss_save"));
+    await waitFor(() => {
+      expect(mockSetSaveError).toHaveBeenCalledWith("errors.alreadySaving");
+    });
+    mockSetSaveError.mockClear();
+    mockLocation.pathname = "/test";
+  });
 });

@@ -1,5 +1,5 @@
-import { describe, it, expect, vi } from "vitest";
-import { render, screen, waitFor } from "@testing-library/react";
+import { describe, it, expect, vi, beforeEach } from "vitest";
+import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
@@ -60,6 +60,9 @@ vi.mock("../../../lib/superadmin-utils", () => ({
 import DashboardTab from "../DashboardTab";
 
 describe("DashboardTab", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
   it("shows loading state initially", () => {
     render(<DashboardTab />);
     expect(screen.getByText("superadmin.dashboardLoading")).toBeDefined();
@@ -147,5 +150,56 @@ describe("DashboardTab", () => {
     await waitFor(() => {
       expect(screen.queryByText("superadmin.expiredInvitations")).toBeNull();
     });
+  });
+
+  it("calls handleCleanup when clean button is clicked and confirmed", async () => {
+    const { getDocs, writeBatch } = await import("firebase/firestore");
+    const getDocsMock = vi.mocked(getDocs);
+    const now = new Date();
+    const threeYearsAgo = new Date(now.getFullYear() - 3, 0, 1);
+    const year = threeYearsAgo.getFullYear();
+    getDocsMock.mockResolvedValue({
+      docs: [
+        { id: "inv1", data: () => ({ weddingYear: String(year), weddingMonth: "enero", weddingDay: "1" }) },
+      ],
+    } as never);
+
+    window.confirm = vi.fn(() => true);
+    const mockBatch = { delete: vi.fn(), commit: vi.fn().mockResolvedValue(undefined) };
+    vi.mocked(writeBatch).mockReturnValue(mockBatch as never);
+
+    render(<DashboardTab />);
+
+    await waitFor(() => {
+      expect(screen.getByText("superadmin.cleanButton")).toBeDefined();
+    });
+    fireEvent.click(screen.getByText("superadmin.cleanButton"));
+    await waitFor(() => {
+      expect(mockBatch.commit).toHaveBeenCalled();
+    });
+  });
+
+  it("does not clean when confirm is cancelled", async () => {
+    const { getDocs, writeBatch } = await import("firebase/firestore");
+    const getDocsMock = vi.mocked(getDocs);
+    const now = new Date();
+    const threeYearsAgo = new Date(now.getFullYear() - 3, 0, 1);
+    const year = threeYearsAgo.getFullYear();
+    getDocsMock.mockResolvedValue({
+      docs: [
+        { id: "inv1", data: () => ({ weddingYear: String(year), weddingMonth: "enero", weddingDay: "1" }) },
+      ],
+    } as never);
+
+    const confirmSpy = vi.spyOn(window, "confirm").mockReturnValue(false);
+
+    render(<DashboardTab />);
+
+    await waitFor(() => {
+      expect(screen.getByText("superadmin.cleanButton")).toBeDefined();
+    });
+    fireEvent.click(screen.getByText("superadmin.cleanButton"));
+    expect(writeBatch).not.toHaveBeenCalled();
+    confirmSpy.mockRestore();
   });
 });

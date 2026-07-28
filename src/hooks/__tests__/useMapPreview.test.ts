@@ -129,4 +129,28 @@ describe("useMapPreview", () => {
     });
     vi.useRealTimers();
   });
+
+  it("ignores stale resolveLocationTarget result on rerender", async () => {
+    vi.useFakeTimers();
+    mockGetValidCoordinates.mockReturnValue({ latitude: 40.4168, longitude: -3.7038 });
+
+    let resolveFirst: (v: unknown) => void;
+    const firstPromise = new Promise((r) => { resolveFirst = r; });
+    mockResolveLocationTarget.mockReturnValueOnce(firstPromise);
+    mockResolveLocationTarget.mockResolvedValue({ latitude: 41.3874, longitude: 2.1686, label: "Barcelona" });
+    mockBuildOpenFreeMapPreviewUrl.mockResolvedValue("");
+
+    const { rerender, result } = renderHook(
+      (props: { place: string; lat: string; lng: string }) => useMapPreview(props.place, props.lat, props.lng),
+      { initialProps: { place: "Madrid", lat: "40.4168", lng: "-3.7038" } }
+    );
+
+    vi.advanceTimersByTime(350);
+    rerender({ place: "Barcelona", lat: "41.3874", lng: "2.1686" });
+    resolveFirst!(null);
+    await vi.waitFor(() => {
+      expect(result.current.isPreviewLoading).toBe(true);
+    });
+    vi.useRealTimers();
+  });
 });

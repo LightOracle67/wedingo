@@ -530,4 +530,84 @@ describe("MusicArrayEditor", () => {
       expect(mockAddToast).toHaveBeenCalledWith("error", "setup.audioSizeError");
     });
   });
+
+  it("handles togglePlay when audioRef is null", async () => {
+    const onChange = vi.fn();
+    const { rerender } = render(
+      <MusicArrayEditor
+        inviteToken="test-token"
+        value="https://example.com/song.mp3"
+        onChange={onChange}
+        t={t}
+      />
+    );
+    await screen.findByText("setup.currentMusic");
+    const deleteBtn = screen.getByRole("button", { name: "common.delete" });
+    fireEvent.click(deleteBtn);
+    await waitFor(() => {
+      expect(mockDeleteAudio).toHaveBeenCalledWith("test-token");
+    });
+    rerender(
+      <MusicArrayEditor
+        inviteToken="test-token"
+        value=""
+        onChange={onChange}
+        t={t}
+      />
+    );
+    await screen.findByText("setup.musicUploadLabel");
+  });
+
+  it("handles input null fallback after empty file error", async () => {
+    render(
+      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} t={t} />
+    );
+    await screen.findByText("setup.musicUploadLabel");
+    const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
+    const emptyFile = new File([], "empty.mp3", { type: "audio/mpeg" });
+    Object.defineProperty(emptyFile, "size", { value: 0 });
+    const inputParent = fileInput.parentElement!;
+    fileInput.remove();
+    const standaloneInput = document.createElement("input");
+    standaloneInput.type = "file";
+    const changeEvent = new Event("change", { bubbles: true });
+    Object.defineProperty(changeEvent, "target", { value: { files: [emptyFile] } });
+    standaloneInput.dispatchEvent(changeEvent);
+    await waitFor(() => {
+      expect(mockAddToast).toHaveBeenCalledWith("error", "setup.errorEmptyFile");
+    });
+  });
+
+  it("handles audioRef.current check in handleDelete", async () => {
+    HTMLMediaElement.prototype.play = vi.fn().mockResolvedValue(undefined);
+    HTMLMediaElement.prototype.pause = vi.fn();
+
+    mockLoadAudio.mockResolvedValue({
+      id: "audio-1",
+      url: "https://example.com/song.mp3",
+    });
+    const onChange = vi.fn();
+    render(
+      <MusicArrayEditor
+        inviteToken="test-token"
+        value="https://example.com/song.mp3"
+        onChange={onChange}
+        t={t}
+      />
+    );
+    await screen.findByText("setup.currentMusic");
+    const playBtn = screen.getByRole("button", { name: "music.play" });
+    fireEvent.click(playBtn);
+    await waitFor(() => {
+      expect(screen.getByRole("button", { name: "music.pause" })).toBeInTheDocument();
+    });
+    const audioEl = document.querySelector("audio");
+    expect(audioEl).not.toBeNull();
+    const deleteBtn = screen.getByRole("button", { name: "common.delete" });
+    fireEvent.click(deleteBtn);
+    await waitFor(() => {
+      expect(mockDeleteAudio).toHaveBeenCalledWith("test-token");
+    });
+    expect(onChange).toHaveBeenCalledWith("");
+  });
 });

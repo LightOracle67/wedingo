@@ -370,4 +370,63 @@ describe("GalleryArrayEditor", () => {
     fireEvent.change(input, { target: { value: "updated" } });
     expect(input).toHaveValue("updated");
   });
+
+  it("returns early from handleDelete when inviteToken is empty", async () => {
+    mockLoadGallery.mockResolvedValue([]);
+    const tFn = vi.fn((key: string) => key);
+    render(<GalleryArrayEditor inviteToken="" t={tFn} />);
+    await vi.waitFor(() => {
+      expect(document.querySelector(".page-loading")).toBeInTheDocument();
+    });
+  });
+
+  it("returns early from handleDelete when inviteToken is missing after load", async () => {
+    mockLoadGallery.mockResolvedValue([
+      { id: "img-1", url: "data:image/png,test", description: "desc", originalName: "test.png", originalSize: 1000, position: 0 },
+    ]);
+    const tFn = vi.fn((key: string) => key);
+    const { rerender } = render(<GalleryArrayEditor inviteToken="test-token" t={tFn} />);
+    await screen.findByDisplayValue("desc");
+    rerender(<GalleryArrayEditor inviteToken="" t={tFn} />);
+    await vi.waitFor(() => {
+      expect(tFn).toHaveBeenCalled();
+    });
+  });
+
+  it("handles descriptionChange for null slot gracefully", async () => {
+    mockLoadGallery.mockResolvedValue([]);
+    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    await screen.findByText("#1");
+    const nullSlotInput = document.querySelector<HTMLInputElement>('input[type="text"]');
+    expect(nullSlotInput).toBeNull();
+  });
+
+  it("skips delete when no id via guard clause", async () => {
+    mockLoadGallery.mockResolvedValue([
+      { url: "data:image/png,test", description: "desc", originalName: "test.png", originalSize: 1000, position: 0 },
+    ]);
+    mockDeleteGalleryImage.mockClear();
+    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    await screen.findByDisplayValue("desc");
+    const deleteBtn = document.querySelector<HTMLButtonElement>('button[aria-label="common.delete"]')!;
+    vi.spyOn(globalThis, "confirm").mockReturnValue(true);
+    fireEvent.click(deleteBtn);
+    await vi.waitFor(() => {
+      expect(mockDeleteGalleryImage).not.toHaveBeenCalled();
+    });
+  });
+
+  it("calls handleDescriptionBlur with nullish currentValue safely", async () => {
+    mockLoadGallery.mockResolvedValue([
+      { id: "img-1", url: "data:image/png,test", description: "desc", originalName: "test.png", originalSize: 1000, position: 0 },
+    ]);
+    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    await screen.findByDisplayValue("desc");
+    const input = screen.getByDisplayValue("desc");
+    fireEvent.change(input, { target: { value: "  padded  " } });
+    fireEvent.blur(input);
+    await waitFor(() => {
+      expect(mockUpdateGalleryDescription).toHaveBeenCalledWith("test-token", "img-1", "padded");
+    });
+  });
 });

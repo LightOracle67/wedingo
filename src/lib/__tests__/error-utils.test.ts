@@ -118,4 +118,14 @@ describe("logError", () => {
     vi.unstubAllEnvs();
   });
 
+  it("does not log to console.error when not in DEV mode", async () => {
+    vi.resetModules();
+    vi.stubEnv("DEV", "");
+    const consoleSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+    const { logError } = await import("../error-utils");
+    logError(new Error("should not appear"), "Test");
+    expect(consoleSpy).not.toHaveBeenCalled();
+    consoleSpy.mockRestore();
+    vi.unstubAllEnvs();
+  });
 });

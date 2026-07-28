@@ -473,6 +473,31 @@ describe("useRsvp", () => {
       expect(result.current.rsvpEntries[0].guestName).toBe("Alice");
     });
 
+    it("loads multiple entries and sorts by submittedAt descending", async () => {
+      const entry1 = createMockDoc("entry-1", {
+        guestName: "Old",
+        attendance: "yes",
+        attendees: [{ name: "Old", menu: "", allergies: [] }],
+        submittedAt: new Date("2024-01-01").toISOString(),
+      });
+      const entry2 = createMockDoc("entry-2", {
+        guestName: "New",
+        attendance: "yes",
+        attendees: [{ name: "New", menu: "", allergies: [] }],
+        submittedAt: new Date("2025-01-01").toISOString(),
+      });
+      mockGetDocs.mockResolvedValueOnce({
+        docs: [entry1, entry2],
+        forEach: vi.fn(),
+      });
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      await waitFor(() => {
+        expect(result.current.rsvpEntries).toHaveLength(2);
+      });
+      expect(result.current.rsvpEntries[0].guestName).toBe("New");
+      expect(result.current.rsvpEntries[1].guestName).toBe("Old");
+    });
+
     it("handles hydrate error gracefully", async () => {
       mockGetDocs.mockRejectedValueOnce(new Error("Hydrate error"));
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
@@ -506,6 +531,31 @@ describe("useRsvp", () => {
       });
       expect(result.current.rsvpEntries[0].attendees).toHaveLength(3);
     });
+
+    it("legacyToAttendees includes dietaryOther when not in selection", async () => {
+      mockParseDietaryInfo.mockReturnValueOnce({ mealChoice: "carne", dietarySelection: ["sin gluten"], dietaryOther: "alergia frutos secos" });
+      mockGetDocs.mockResolvedValueOnce({
+        docs: [{
+          id: "legacy-2",
+          data: () => ({
+            guestName: "Bob",
+            attendance: "yes",
+            mealChoice: "carne",
+            guestNames: "",
+            dietaryInfo: "encrypted-diet",
+            companions: 1,
+            submittedAt: { seconds: 2000000 },
+          }),
+        }],
+        forEach: vi.fn(),
+      });
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      await waitFor(() => {
+        expect(result.current.rsvpEntries).toHaveLength(1);
+      });
+      const attendee = result.current.rsvpEntries[0].attendees[0];
+      expect(attendee.allergies).toContain("alergia frutos secos");
+    });
   });
 
   describe("alreadySubmittedEntry matching", () => {
@@ -534,6 +584,34 @@ describe("useRsvp", () => {
         expect(result.current.alreadySubmittedEntry).not.toBeNull();
       });
       expect(result.current.alreadySubmittedEntry?.guestName).toBe("Alice");
+    });
+
+    it("re-matches alreadySubmittedEntry on subsequent same-name input", async () => {
+      mockGetDocs.mockResolvedValueOnce({
+        docs: [{
+          id: "entry-1",
+          data: () => ({
+            guestName: "Alice",
+            attendance: "yes",
+            attendees: [{ name: "Alice", menu: "carne", allergies: [] }],
+            submittedAt: new Date().toISOString(),
+            dietaryInfo: "",
+            companions: 1,
+          }),
+        }],
+        forEach: vi.fn(),
+      });
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      await act(async () => {
+        result.current.updateRsvpField("guestName", "Alice");
+      });
+      await waitFor(() => {
+        expect(result.current.alreadySubmittedEntry).not.toBeNull();
+      });
+      await act(async () => {
+        result.current.updateRsvpField("guestName", "Alice");
+      });
+      expect(result.current.alreadySubmittedEntry?.id).toBe("entry-1");
     });
 
     it("resets alreadySubmittedEntry when guestName does not match", async () => {

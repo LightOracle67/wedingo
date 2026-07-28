@@ -194,4 +194,33 @@ describe("SuperAdminProvider", () => {
     await vi.waitFor(() => expect(mockSignOut).toHaveBeenCalled());
     await vi.waitFor(() => expect(mockNavigate).toHaveBeenCalledWith("/"));
   });
+
+  it("signs out when Firebase user has no local session", async () => {
+    mockOnAuthStateChanged.mockImplementation((_auth: unknown, cb: (u: { email: string } | null) => void) => {
+      setTimeout(() => cb({ email: FALLBACK_ADMIN_EMAIL, uid: "uid-no-session" }), 0);
+      return () => {};
+    });
+    renderProvider();
+    await vi.waitFor(() => expect(screen.getByTestId("isLoading").textContent).toBe("false"));
+    expect(mockSignOut).toHaveBeenCalled();
+    expect(screen.getByTestId("isSuperAdmin").textContent).toBe("false");
+  });
+
+  it("sets user when auth state changes during login", async () => {
+    let authCallback: ((u: unknown) => void) | null = null;
+    mockOnAuthStateChanged.mockImplementation((_auth: unknown, cb: (u: unknown) => void) => {
+      authCallback = cb;
+      setTimeout(() => cb(null), 0);
+      return () => {};
+    });
+    mockSignInWithEmailAndPassword.mockImplementation(async () => {
+      if (authCallback) authCallback({ email: FALLBACK_ADMIN_EMAIL, uid: "uid-during-login" });
+      return { user: { email: FALLBACK_ADMIN_EMAIL, uid: "uid-during-login" } };
+    });
+    renderProvider();
+    await vi.waitFor(() => expect(screen.getByTestId("isLoading").textContent).toBe("false"));
+    fireEvent.click(screen.getByTestId("login-btn"));
+    await vi.waitFor(() => expect(mockSaveSession).toHaveBeenCalled());
+    expect(mockSignOut).not.toHaveBeenCalled();
+  });
 });

@@ -146,6 +146,35 @@ describe("CollapsibleSection", () => {
     expect(onToggle).toHaveBeenCalledWith("details");
   });
 
+  it("does not call onToggleVisibility on non-Enter/Space key", () => {
+    const onToggle = vi.fn();
+    render(
+      <CollapsibleSection
+        title="Test"
+        sectionKey="details"
+        isHidden={false}
+        onToggleVisibility={onToggle}
+      />
+    );
+    const switchEl = screen.getByRole("switch");
+    fireEvent.keyDown(switchEl, { key: "Tab" });
+    expect(onToggle).not.toHaveBeenCalled();
+  });
+
+  it("does not render visibility toggle when sectionKey is missing", () => {
+    render(
+      <CollapsibleSection title="Test" isHidden={false} onToggleVisibility={vi.fn()} />
+    );
+    expect(screen.queryByRole("switch")).toBeNull();
+  });
+
+  it("does not render visibility toggle when onToggleVisibility is missing", () => {
+    render(
+      <CollapsibleSection title="Test" sectionKey="test" isHidden={false} />
+    );
+    expect(screen.queryByRole("switch")).toBeNull();
+  });
+
   it("sets max-height to undefined on transition end when opening", () => {
     render(
       <CollapsibleSection title="Open Test" defaultOpen={false}>
@@ -181,6 +210,18 @@ describe("CollapsibleSection", () => {
       </CollapsibleSection>
     );
     expect(screen.getByText("common.hidden")).toBeInTheDocument();
+  });
+
+  it("ignores transition end for non-max-height property", () => {
+    render(
+      <CollapsibleSection title="Prop Test" defaultOpen={true}>
+        <p>Content</p>
+      </CollapsibleSection>
+    );
+    const wrap = document.querySelector(".setup-collapsible__wrap")!;
+    expect(wrap).toHaveStyle("max-height: none");
+    fireEvent.transitionEnd(wrap, { propertyName: "opacity" });
+    expect(wrap).toHaveStyle("max-height: none");
   });
 
   it("sets max-height to 0 after close animation via rAF", () => {

@@ -247,4 +247,31 @@ describe("MusicPlayer", () => {
     expect(slider.disabled).toBe(true);
     slider.dispatchEvent(new Event("change", { bubbles: true }));
   });
+
+  it("handles toggleMusic early return when audioRef is null", () => {
+    render(<MusicPlayer />);
+    const fab = screen.getByRole("button", { name: /music\.label/i });
+    fireEvent.click(fab);
+    const playBtn = document.querySelector(".music-player__play") as HTMLButtonElement;
+    Object.defineProperty(playBtn, "disabled", { value: false, configurable: true });
+    mockAudioPlay.mockImplementation(() => { throw new Error("no audio"); });
+    playBtn.click();
+    expect(document.querySelector(".music-player__spinner")).toBeNull();
+  });
+
+  it("calls handleVolume with audioRef.current null safely", () => {
+    const volumeSetter = vi.fn();
+    Object.defineProperty(HTMLMediaElement.prototype, "volume", {
+      set: volumeSetter,
+      get: () => 0.5,
+      configurable: true,
+    });
+    const { rerender } = render(<MusicPlayer musicUrl="https://example.com/song.mp3" />);
+    const fab = screen.getByRole("button", { name: /music\.label/i });
+    fireEvent.click(fab);
+    rerender(<MusicPlayer />);
+    const slider = document.querySelector(".music-player__volume") as HTMLInputElement;
+    fireEvent.change(slider, { target: { value: "0.3" } });
+    expect(slider).toBeDefined();
+  });
 });

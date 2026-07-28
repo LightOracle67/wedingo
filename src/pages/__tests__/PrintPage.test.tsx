@@ -98,5 +98,41 @@ describe("PrintPage", () => {
     expect(screen.getByText("hero.eyebrow")).toBeDefined();
   });
 
+  it("calls window.print after loading and fonts ready", async () => {
+    mockUseApp.mockReturnValue({
+      config: { firstName: "John", secondName: "Jane", theme: "golden" },
+      isConfigLoading: false,
+    });
 
+    render(<PrintPage />);
+    act(() => { vi.advanceTimersByTime(200); });
+    await act(async () => {
+      await Promise.resolve();
+    });
+    act(() => { vi.advanceTimersByTime(400); });
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(window.print).toHaveBeenCalled();
+  });
+
+  it("sets window.onafterprint to window.close", async () => {
+    mockUseApp.mockReturnValue({
+      config: { firstName: "John", secondName: "Jane", theme: "golden" },
+      isConfigLoading: false,
+    });
+
+    render(<PrintPage />);
+    act(() => { vi.advanceTimersByTime(200); });
+    await act(async () => {
+      await Promise.resolve();
+    });
+    act(() => { vi.advanceTimersByTime(400); });
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(typeof window.onafterprint).toBe("function");
+  });
 });

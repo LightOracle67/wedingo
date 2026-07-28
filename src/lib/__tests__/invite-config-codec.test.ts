@@ -106,4 +106,16 @@ describe("decodeInviteConfig", () => {
     const decoded = decodeInviteConfig(encoded);
     expect(decoded).toEqual({});
   });
+
+  it("fromBase64Url handles padding for 1-char value (needs ==)", () => {
+    const encoded = encodeInviteConfig({ firstName: "A" });
+    const decoded = decodeInviteConfig(encoded);
+    expect(decoded.firstName).toBe("A");
+  });
+
+  it("fromBase64Url handles padding for 2-char value (needs =)", () => {
+    const encoded = encodeInviteConfig({ firstName: "AB" });
+    const decoded = decodeInviteConfig(encoded);
+    expect(decoded.firstName).toBe("AB");
+  });
 });

@@ -3,8 +3,10 @@ import { render, screen, fireEvent, cleanup, act } from "@testing-library/react"
 
 const changeLanguage = vi.fn();
 
+const mockI18n = { language: "en", changeLanguage };
+
 vi.mock("react-i18next", () => ({
-  useTranslation: () => ({ t: (key: string) => key, i18n: { language: "en", changeLanguage } }),
+  useTranslation: () => ({ t: (key: string) => key, i18n: mockI18n }),
 }));
 
 afterEach(() => {
@@ -76,5 +78,45 @@ describe("LanguageSwitcher", () => {
   it("displays current language label on trigger button", () => {
     render(<LanguageSwitcher />);
     expect(screen.getByText(/EN/)).toBeDefined();
+  });
+
+  it("handles language with hyphen (e.g., en-US)", () => {
+    const prevLang = mockI18n.language;
+    mockI18n.language = "en-US";
+    render(<LanguageSwitcher />);
+    expect(screen.getByText(/EN/)).toBeDefined();
+    mockI18n.language = prevLang;
+  });
+
+  it("falls back to uppercase code when language not found in groups", () => {
+    const prevLang = mockI18n.language;
+    mockI18n.language = "xx";
+    render(<LanguageSwitcher />);
+    expect(screen.getByText(/XX/)).toBeDefined();
+    mockI18n.language = prevLang;
+  });
+
+  it("renders lang name from label with separator", () => {
+    render(<LanguageSwitcher />);
+    fireEvent.click(screen.getByTitle("lang.triggerLabel"));
+    const allBtns = document.querySelectorAll(".lang-popup__btn");
+    const nameEl0 = allBtns[0].querySelector(".lang-popup__name");
+    expect(nameEl0?.textContent).toBeTruthy();
+  });
+
+  it("falls back to es when i18n.language is undefined", () => {
+    const prevLang = mockI18n.language;
+    mockI18n.language = undefined;
+    render(<LanguageSwitcher />);
+    expect(screen.getByText(/ES/)).toBeDefined();
+    mockI18n.language = prevLang;
+  });
+
+  it("displays lang code as label when currentLang not in groups", () => {
+    const prevLang = mockI18n.language;
+    mockI18n.language = "zz";
+    render(<LanguageSwitcher />);
+    expect(screen.getByText(/ZZ/)).toBeDefined();
+    mockI18n.language = prevLang;
   });
 });

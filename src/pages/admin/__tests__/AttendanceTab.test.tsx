@@ -123,4 +123,153 @@ describe("AttendanceTab", () => {
     );
     expect(screen.getByText("attendance.noResultsFilter")).toBeDefined();
   });
+
+  it("renders entries with guestNames fallback and attendees list", () => {
+    render(
+      <AttendanceTab
+        searchQuery=""
+        setSearchQuery={vi.fn()}
+        attendanceFilter="all"
+        setAttendanceFilter={vi.fn()}
+        filteredEntries={[
+          {
+            id: "1",
+            guestName: "Charlie",
+            attendance: "yes",
+            companions: 2,
+            dietaryInfo: "gluten free | vegan",
+            submittedAt: "2024-01-03",
+            guestNames: "Charlie,David,Eve",
+          },
+          {
+            id: "2",
+            guestName: "Frank",
+            attendance: "yes",
+            companions: 1,
+            dietaryInfo: "",
+            submittedAt: "2024-01-04",
+            attendees: [
+              { name: "Frank", menu: "carne", allergies: ["sin gluten"] },
+            ],
+            menuHeadcounts: { carne: 1, pescado: 1 },
+          },
+        ]}
+        rsvpEntries={[
+          {
+            id: "1",
+            guestName: "Charlie",
+            attendance: "yes",
+            companions: 2,
+            dietaryInfo: "gluten free | vegan",
+            submittedAt: "2024-01-03",
+            guestNames: "Charlie,David,Eve",
+          },
+          {
+            id: "2",
+            guestName: "Frank",
+            attendance: "yes",
+            companions: 1,
+            dietaryInfo: "",
+            submittedAt: "2024-01-04",
+            attendees: [
+              { name: "Frank", menu: "carne", allergies: ["sin gluten"] },
+            ],
+            menuHeadcounts: { carne: 1, pescado: 1 },
+          },
+        ]}
+        exportPdf={vi.fn()}
+        formatDate={(d: string) => String(d)}
+        handleClearRsvpEntries={vi.fn()}
+      />
+    );
+    expect(screen.getAllByText("Charlie").length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText(/Frank/).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getByText("David")).toBeDefined();
+    expect(screen.getByText("Eve")).toBeDefined();
+  });
+
+  it("renders attendees with menu data", () => {
+    render(
+      <AttendanceTab
+        searchQuery=""
+        setSearchQuery={vi.fn()}
+        attendanceFilter="all"
+        setAttendanceFilter={vi.fn()}
+        filteredEntries={[
+          {
+            id: "1",
+            guestName: "Grace",
+            attendance: "yes",
+            companions: 0,
+            dietaryInfo: "",
+            submittedAt: "2024-01-05",
+            attendees: [
+              { name: "Grace", menu: "carne", allergies: [] },
+            ],
+          },
+        ]}
+        rsvpEntries={[
+          {
+            id: "1",
+            guestName: "Grace",
+            attendance: "yes",
+            companions: 0,
+            dietaryInfo: "",
+            submittedAt: "2024-01-05",
+            attendees: [
+              { name: "Grace", menu: "carne", allergies: [] },
+            ],
+          },
+        ]}
+        exportPdf={vi.fn()}
+        formatDate={(d: string) => String(d)}
+        handleClearRsvpEntries={vi.fn()}
+      />
+    );
+    expect(screen.getAllByText(/Grace/).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getByText((text: string) => text.includes("rsvp.menuCarne"))).toBeDefined();
+  });
+
+  it("renders attendees with allergies data", () => {
+    render(
+      <AttendanceTab
+        searchQuery=""
+        setSearchQuery={vi.fn()}
+        attendanceFilter="all"
+        setAttendanceFilter={vi.fn()}
+        filteredEntries={[
+          {
+            id: "1",
+            guestName: "Helen",
+            attendance: "yes",
+            companions: 1,
+            dietaryInfo: "",
+            submittedAt: "2024-01-06",
+            attendees: [
+              { name: "Helen", menu: "", allergies: ["sin gluten", "sin lactosa"] },
+            ],
+          },
+        ]}
+        rsvpEntries={[
+          {
+            id: "1",
+            guestName: "Helen",
+            attendance: "yes",
+            companions: 1,
+            dietaryInfo: "",
+            submittedAt: "2024-01-06",
+            attendees: [
+              { name: "Helen", menu: "", allergies: ["sin gluten", "sin lactosa"] },
+            ],
+          },
+        ]}
+        exportPdf={vi.fn()}
+        formatDate={(d: string) => String(d)}
+        handleClearRsvpEntries={vi.fn()}
+      />
+    );
+    expect(screen.getAllByText(/Helen/).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getByText(/sin gluten/)).toBeDefined();
+    expect(screen.getByText(/sin lactosa/)).toBeDefined();
+  });
 });

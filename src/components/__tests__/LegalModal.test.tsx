@@ -47,4 +47,36 @@ describe("LegalModal", () => {
     expect(onClose).toHaveBeenCalled();
     vi.useRealTimers();
   });
+
+  it("does not register Escape handler when not open", () => {
+    const onClose = vi.fn();
+    render(<LegalModal section="" onClose={onClose} />);
+    fireEvent.keyDown(window, { key: "Escape" });
+    expect(onClose).not.toHaveBeenCalled();
+  });
+
+  it("does not close on non-Escape key press when open", () => {
+    const onClose = vi.fn();
+    render(<LegalModal section="privacy" onClose={onClose} />);
+    fireEvent.keyDown(window, { key: "Enter" });
+    expect(onClose).not.toHaveBeenCalled();
+  });
+
+  it("toggles section content visibility on click", () => {
+    render(<LegalModal section="" onClose={vi.fn()} />);
+    const privacyBtn = screen.getByText("legal.sectionPrivacy");
+    fireEvent.click(privacyBtn);
+    const contentArea = screen.getByText("legal.privacyPolicy").closest('[style*="max-height"]') as HTMLElement;
+    expect(contentArea.style.maxHeight).toBe("800px");
+    fireEvent.click(privacyBtn);
+    expect(contentArea.style.maxHeight).toBe("0px");
+  });
+
+  it("updates open state when section prop changes", () => {
+    const { rerender } = render(<LegalModal section="" onClose={vi.fn()} />);
+    const contentArea = screen.getByText("legal.privacyPolicy").closest('[style*="max-height"]') as HTMLElement;
+    expect(contentArea.style.maxHeight).toBe("0px");
+    rerender(<LegalModal section="privacy" onClose={vi.fn()} />);
+    expect(contentArea.style.maxHeight).toBe("800px");
+  });
 });

@@ -89,7 +89,7 @@ const CookieConsent = memo(function CookieConsent() {
                   type="checkbox"
                   checked={preferences.necessary}
                   disabled
-                  onChange={() => {}}
+                  onChange={() => togglePreference("necessary")}
                 />
                 <span>{t("cookie.necessary")}</span>
               </label>

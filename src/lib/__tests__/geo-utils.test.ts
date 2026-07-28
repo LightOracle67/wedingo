@@ -92,6 +92,11 @@ describe("URL builders", () => {
     expect(url).toContain(encodeURIComponent("Madrid"));
   });
 
+  it("uses 'Boda' as fallback when no label is provided", () => {
+    const url = buildAppleMapsUrl({ latitude: 40.4168, longitude: -3.7038 });
+    expect(url).toContain(encodeURIComponent("Boda"));
+  });
+
   it("builds Apple Maps search URL", () => {
     const url = buildAppleMapsSearchUrl("Iglesia San José");
     expect(url).toContain("https://maps.apple.com/?q=");
@@ -109,6 +114,48 @@ describe("geocodeLocation", () => {
     vi.spyOn(globalThis, "fetch").mockRejectedValueOnce(new Error("Network error"));
     await expect(geocodeLocation("Madrid")).rejects.toThrow("Network error");
   });
+
+  it("returns null when response is not ok", async () => {
+    vi.spyOn(globalThis, "fetch").mockResolvedValueOnce({ ok: false } as Response);
+    const result = await geocodeLocation("Madrid");
+    expect(result).toBeNull();
+  });
+
+  it("returns null when no results found", async () => {
+    vi.spyOn(globalThis, "fetch").mockResolvedValueOnce({
+      ok: true,
+      json: () => Promise.resolve([]),
+    } as Response);
+    const result = await geocodeLocation("Nowhere");
+    expect(result).toBeNull();
+  });
+
+  it("returns null when coordinate parsing fails", async () => {
+    vi.spyOn(globalThis, "fetch").mockResolvedValueOnce({
+      ok: true,
+      json: () => Promise.resolve([{ lat: "not-a-number", lon: "not-a-number", display_name: "Invalid" }]),
+    } as Response);
+    const result = await geocodeLocation("Invalid");
+    expect(result).toBeNull();
+  });
+
+  it("returns null when response is not an array", async () => {
+    vi.spyOn(globalThis, "fetch").mockResolvedValueOnce({
+      ok: true,
+      json: () => Promise.resolve({ error: "not an array" }),
+    } as Response);
+    const result = await geocodeLocation("Error");
+    expect(result).toBeNull();
+  });
+
+  it("falls back to place label when display_name is missing", async () => {
+    vi.spyOn(globalThis, "fetch").mockResolvedValueOnce({
+      ok: true,
+      json: () => Promise.resolve([{ lat: "40.4168", lon: "-3.7038", display_name: null }]),
+    } as Response);
+    const result = await geocodeLocation("My Place");
+    expect(result).toEqual({ latitude: 40.4168, longitude: -3.7038, label: "My Place" });
+  });
 });
 
 describe("searchLocations", () => {
@@ -121,12 +168,41 @@ describe("searchLocations", () => {
     vi.spyOn(globalThis, "fetch").mockRejectedValueOnce(new Error("Network error"));
     await expect(searchLocations("Madrid")).rejects.toThrow("Network error");
   });
+
+  it("returns empty array when response is not ok", async () => {
+    vi.spyOn(globalThis, "fetch").mockResolvedValueOnce({ ok: false } as Response);
+    const result = await searchLocations("Madrid");
+    expect(result).toEqual([]);
+  });
+
+  it("returns empty array when results is not an array", async () => {
+    vi.spyOn(globalThis, "fetch").mockResolvedValueOnce({
+      ok: true,
+      json: () => Promise.resolve(null),
+    } as Response);
+    const result = await searchLocations("Madrid");
+    expect(result).toEqual([]);
+  });
 });
 
 describe("resolveLocationTarget", () => {
   it("uses exact coordinates when valid", async () => {
     const result = await resolveLocationTarget({ place: "Home", latitudeValue: "40.4168", longitudeValue: "-3.7038" });
     expect(result).toEqual({ latitude: 40.4168, longitude: -3.7038, label: "Home" });
+  });
+
+  it("uses default label when place is empty with valid coordinates", async () => {
+    const result = await resolveLocationTarget({ place: "", latitudeValue: "40.4168", longitudeValue: "-3.7038" });
+    expect(result).toEqual({ latitude: 40.4168, longitude: -3.7038, label: "Ubicación configurada" });
+  });
+
+  it("falls back to geocodeLocation when coordinates are invalid", async () => {
+    vi.spyOn(globalThis, "fetch").mockResolvedValueOnce({
+      ok: true,
+      json: () => Promise.resolve([{ lat: "41.3874", lon: "2.1686", display_name: "Barcelona" }]),
+    } as Response);
+    const result = await resolveLocationTarget({ place: "Barcelona", latitudeValue: "", longitudeValue: "" });
+    expect(result).toEqual({ latitude: 41.3874, longitude: 2.1686, label: "Barcelona" });
   });
 });
 
@@ -155,5 +231,16 @@ describe("searchLocations with results", () => {
     } as Response);
     const results = await searchLocations("Madrid");
     expect(results).toHaveLength(1);
+  });
+
+  it("falls back to query for label when display_name is missing", async () => {
+    vi.spyOn(globalThis, "fetch").mockResolvedValueOnce({
+      ok: true,
+      json: () => Promise.resolve([
+        { lat: "40.4168", lon: "-3.7038", display_name: null },
+      ]),
+    } as Response);
+    const results = await searchLocations("Madrid");
+    expect(results[0].label).toBe("Madrid");
   });
 });

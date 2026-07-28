@@ -14,4 +14,9 @@ describe("i18n initialization", () => {
   it("has interpolation configured", () => {
     expect(i18n.options.interpolation?.escapeValue).toBe(false);
   });
+
+  it("configures return options", () => {
+    expect(i18n.options.returnObjects).toBe(false);
+    expect(i18n.options.returnNull).toBe(false);
+  });
 });

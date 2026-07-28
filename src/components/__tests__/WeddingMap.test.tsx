@@ -188,4 +188,68 @@ describe("WeddingMap", () => {
       expect(mockL.map).toHaveBeenCalled();
     });
   });
+
+  it("handles container disconnect via isConnected", async () => {
+    let resolveGeo: (v: unknown) => void;
+    const geoPromise = new Promise((resolve) => { resolveGeo = resolve; });
+    const { resolveLocationTarget } = await import("../../lib/geo-utils");
+    (resolveLocationTarget as ReturnType<typeof vi.fn>).mockReturnValue(geoPromise);
+
+    const { container } = render(<WeddingMap
+      weddingLatitude="41.3874"
+      weddingLongitude="2.1686"
+      t={(key: string) => key}
+    />);
+
+    const mapEl = container.querySelector(".story-map")!;
+    mapEl.remove();
+
+    resolveGeo!({ latitude: 41.3874, longitude: 2.1686, label: "Barcelona" });
+    await vi.waitFor(() => {
+      expect(mockL.map).not.toHaveBeenCalled();
+    });
+  });
+
+  it("renders nothing when no place or coordinates provided", () => {
+    render(<WeddingMap t={(key: string) => key} />);
+    expect(document.querySelector(".page-loading")).toBeNull();
+    expect(screen.queryByText("public.locationNotFound")).toBeNull();
+  });
+
+  it("handles geocode returning null after cancellation", async () => {
+    let resolveGeo: (v: unknown) => void;
+    const geoPromise = new Promise((resolve) => { resolveGeo = resolve; });
+    const { resolveLocationTarget } = await import("../../lib/geo-utils");
+    (resolveLocationTarget as ReturnType<typeof vi.fn>).mockReturnValue(geoPromise);
+
+    const { unmount } = render(<WeddingMap
+      weddingLatitude="41.3874"
+      weddingLongitude="2.1686"
+      t={(key: string) => key}
+    />);
+    unmount();
+    resolveGeo!(null);
+    await vi.waitFor(() => {
+      expect(screen.queryByText("public.locationNotFound")).toBeNull();
+    });
+  });
+
+  it("handles catch error after cancellation", async () => {
+    let rejectGeo: (e: Error) => void;
+    const geoPromise = new Promise((_, reject) => { rejectGeo = reject; });
+    geoPromise.catch(() => {});
+    const { resolveLocationTarget } = await import("../../lib/geo-utils");
+    (resolveLocationTarget as ReturnType<typeof vi.fn>).mockReturnValue(geoPromise);
+
+    const { unmount } = render(<WeddingMap
+      weddingLatitude="41.3874"
+      weddingLongitude="2.1686"
+      t={(key: string) => key}
+    />);
+    unmount();
+    rejectGeo!(new Error("async error"));
+    await vi.waitFor(() => {
+      expect(screen.queryByText("public.locationMapError")).toBeNull();
+    });
+  });
 });

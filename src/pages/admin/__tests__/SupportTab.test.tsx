@@ -72,4 +72,26 @@ describe("SupportTab", () => {
     render(<SupportTab />);
     expect(screen.getByText("support.rightsHint")).toBeDefined();
   });
+
+  it("opens mailto when delete button is clicked", () => {
+    const windowOpenSpy = vi.spyOn(window, "open").mockImplementation(() => null);
+    render(<SupportTab />);
+    fireEvent.click(screen.getByText("support.deleteButton"));
+    expect(windowOpenSpy).toHaveBeenCalledWith(
+      expect.stringContaining("mailto:"),
+      "_blank",
+    );
+    windowOpenSpy.mockRestore();
+  });
+
+  it("opens mailto when export button is clicked", () => {
+    const windowOpenSpy = vi.spyOn(window, "open").mockImplementation(() => null);
+    render(<SupportTab />);
+    fireEvent.click(screen.getByText("support.exportButton"));
+    expect(windowOpenSpy).toHaveBeenCalledWith(
+      expect.stringContaining("mailto:"),
+      "_blank",
+    );
+    windowOpenSpy.mockRestore();
+  });
 });

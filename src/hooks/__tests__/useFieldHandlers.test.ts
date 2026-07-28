@@ -102,6 +102,13 @@ describe("handleMinuteBlur", () => {
     result.current.handleMinuteBlur();
     expect(fn).toHaveBeenCalledWith("weddingMinute", "");
   });
+
+  it("handles empty weddingMinute", () => {
+    const fn = vi.fn();
+    const { result } = renderHook(() => useFieldHandlers(fn, 2030, ""));
+    result.current.handleMinuteBlur();
+    expect(fn).toHaveBeenCalledWith("weddingMinute", "");
+  });
 });
 
 describe("handleYearChange", () => {

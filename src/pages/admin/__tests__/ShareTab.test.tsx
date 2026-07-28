@@ -138,6 +138,30 @@ describe("ShareTab", () => {
     windowOpenSpy.mockRestore();
   });
 
+  it("opens telegram URL when telegram button is clicked", () => {
+    const windowOpenSpy = vi.spyOn(window, "open").mockImplementation(() => null);
+    render(<ShareTab {...baseProps} />);
+    fireEvent.click(screen.getByText("share.telegram"));
+    expect(windowOpenSpy).toHaveBeenCalledWith(
+      expect.stringContaining("t.me"),
+      "_blank",
+      "noopener,noreferrer"
+    );
+    windowOpenSpy.mockRestore();
+  });
+
+  it("opens SMS URL when sms button is clicked", () => {
+    const windowOpenSpy = vi.spyOn(window, "open").mockImplementation(() => null);
+    render(<ShareTab {...baseProps} />);
+    fireEvent.click(screen.getByText("share.sms"));
+    expect(windowOpenSpy).toHaveBeenCalledWith(
+      expect.stringContaining("sms:"),
+      "_blank",
+      "noopener,noreferrer"
+    );
+    windowOpenSpy.mockRestore();
+  });
+
   it("opens print page when print button is clicked", () => {
     const windowOpenSpy = vi.spyOn(window, "open").mockImplementation(() => null);
     render(<ShareTab {...baseProps} />);
