@@ -134,6 +134,24 @@ describe("getDietarySummary", () => {
     expect(result.find((r) => r.item === "sin lactosa")).toBeDefined();
   });
 
+  it("handles entries with non-zero companions and attendance no", () => {
+    const entries = [
+      { attendance: "no", companions: 3 },
+    ];
+    const result = calcRSVPSummary(entries);
+    expect(result.totalGuests).toBe(0);
+    expect(result.confirmed).toBe(0);
+    expect(result.declined).toBe(1);
+  });
+
+  it("handles entries with null companions", () => {
+    const entries = [
+      { attendance: "yes", companions: null as unknown as number },
+    ];
+    const result = calcRSVPSummary(entries);
+    expect(result.confirmedGuests).toBe(1);
+  });
+
   it("filters out empty segments in dietary info", () => {
     const entries = [
       { attendance: "yes", dietaryInfo: "sin gluten |  | alergia" },

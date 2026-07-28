@@ -100,8 +100,11 @@ describe("LanguageSwitcher", () => {
     render(<LanguageSwitcher />);
     fireEvent.click(screen.getByTitle("lang.triggerLabel"));
     const allBtns = document.querySelectorAll(".lang-popup__btn");
-    const nameEl0 = allBtns[0].querySelector(".lang-popup__name");
-    expect(nameEl0?.textContent).toBeTruthy();
+    expect(allBtns.length).toBeGreaterThan(0);
+    allBtns.forEach((btn) => {
+      const nameEl = btn.querySelector(".lang-popup__name");
+      expect(nameEl?.textContent).toBeTruthy();
+    });
   });
 
   it("falls back to es when i18n.language is undefined", () => {

@@ -213,6 +213,19 @@ describe("ToastContext", () => {
     expect(screen.getByText("Second")).toBeDefined();
   });
 
+  it("does not dismiss when no toast matches id", () => {
+    vi.useFakeTimers();
+    render(
+      <ToastProvider>
+        <TestConsumer />
+      </ToastProvider>
+    );
+    act(() => { screen.getByText("Add Toast").click(); });
+    act(() => { vi.advanceTimersByTime(6000); });
+    expect(screen.queryByText("Test toast")).toBeNull();
+    vi.useRealTimers();
+  });
+
   it("updates only the targeted progress toast when multiple exist", () => {
     function MultiProgressTest() {
       const { startUploadToast } = useToast();

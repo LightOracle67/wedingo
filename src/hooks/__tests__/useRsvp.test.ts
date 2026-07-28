@@ -586,6 +586,31 @@ describe("useRsvp", () => {
       expect(result.current.alreadySubmittedEntry?.guestName).toBe("Alice");
     });
 
+    it("hits else branch in effect when prefillRef already matches", async () => {
+      mockGetDocs.mockResolvedValueOnce({
+        docs: [{
+          id: "entry-1",
+          data: () => ({
+            guestName: "Alice",
+            attendance: "yes",
+            attendees: [{ name: "Alice", menu: "carne", allergies: [] }],
+            submittedAt: new Date().toISOString(),
+            dietaryInfo: "",
+            companions: 1,
+          }),
+        }],
+        forEach: vi.fn(),
+      });
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      await act(async () => {
+        result.current.updateRsvpField("guestName", "Alice");
+      });
+      await waitFor(() => {
+        expect(result.current.alreadySubmittedEntry?.id).toBe("entry-1");
+      });
+      expect(result.current.rsvpForm.guestName).toBe("Alice");
+    });
+
     it("re-matches alreadySubmittedEntry on subsequent same-name input", async () => {
       mockGetDocs.mockResolvedValueOnce({
         docs: [{

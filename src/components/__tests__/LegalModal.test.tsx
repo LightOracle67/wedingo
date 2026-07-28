@@ -72,6 +72,29 @@ describe("LegalModal", () => {
     expect(contentArea.style.maxHeight).toBe("0px");
   });
 
+  it("renders content for all three sections", () => {
+    render(<LegalModal section="" onClose={vi.fn()} />);
+    expect(screen.getByText("legal.privacyPolicy")).toBeDefined();
+    expect(screen.getByText("legal.termsText")).toBeDefined();
+    expect(screen.getByText("legal.legalText")).toBeDefined();
+  });
+
+  it("closes section on toggle when already open", () => {
+    render(<LegalModal section="privacy" onClose={vi.fn()} />);
+    const button = screen.getByText("legal.sectionPrivacy");
+    fireEvent.click(button);
+    const contentArea = screen.getByText("legal.privacyPolicy").closest('[style*="max-height"]') as HTMLElement;
+    expect(contentArea.style.maxHeight).toBe("0px");
+  });
+
+  it("sets closeRef.current on mount and cleanup on unmount", () => {
+    const removeEventListenerSpy = vi.spyOn(window, "removeEventListener");
+    const { unmount } = render(<LegalModal section="privacy" onClose={vi.fn()} />);
+    unmount();
+    expect(removeEventListenerSpy).toHaveBeenCalled();
+    removeEventListenerSpy.mockRestore();
+  });
+
   it("updates open state when section prop changes", () => {
     const { rerender } = render(<LegalModal section="" onClose={vi.fn()} />);
     const contentArea = screen.getByText("legal.privacyPolicy").closest('[style*="max-height"]') as HTMLElement;

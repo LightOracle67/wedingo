@@ -289,6 +289,21 @@ describe("useAutoSave", () => {
       clearTimeoutSpy.mockRestore();
     });
 
+    it("clears timer ref in second cleanup effect", () => {
+      const clearTimeoutSpy = vi.spyOn(global, "clearTimeout");
+      const differentData = { ...sampleConfig, firstName: "Changed" };
+      const { result, unmount } = renderHook(() =>
+        useAutoSave(true, "test-token", differentData, sampleConfig, vi.fn(), { current: false }),
+      );
+
+      expect(result.current.autoSaveTimerRef.current).not.toBeNull();
+      unmount();
+
+      expect(clearTimeoutSpy).toHaveBeenCalled();
+      expect(result.current.autoSaveTimerRef.current).toBeNull();
+      clearTimeoutSpy.mockRestore();
+    });
+
     it("clears timer from second effect when first effect returns early", () => {
       const clearTimeoutSpy = vi.spyOn(global, "clearTimeout");
       const differentData = { ...sampleConfig, firstName: "Changed" };

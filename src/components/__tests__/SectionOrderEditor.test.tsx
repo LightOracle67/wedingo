@@ -187,6 +187,24 @@ describe("SectionOrderEditor", () => {
     expect(onChange).not.toHaveBeenCalled();
   });
 
+  it("moves item up from index > 1", () => {
+    const onChange = vi.fn();
+    render(<SectionOrderEditor {...defaultProps} onChange={onChange} />);
+
+    const storyUp = screen.getByRole("button", { name: "sectionOrder.moveUp story.sectionLabel" });
+    fireEvent.click(storyUp);
+    expect(onChange).toHaveBeenCalledWith("sectionOrder", "hero,details,story,info,gifts,gallery,rsvp,accommodation");
+  });
+
+  it("moves item down from non-last index", () => {
+    const onChange = vi.fn();
+    render(<SectionOrderEditor {...defaultProps} onChange={onChange} />);
+
+    const storyDown = screen.getByRole("button", { name: "sectionOrder.moveDown story.sectionLabel" });
+    fireEvent.click(storyDown);
+    expect(onChange).toHaveBeenCalledWith("sectionOrder", "hero,details,info,gifts,story,gallery,rsvp,accommodation");
+  });
+
   it("triggers moveUp early return when index <= 1 via dispatchEvent", () => {
     const onChange = vi.fn();
     render(<SectionOrderEditor {...defaultProps} onChange={onChange} />);

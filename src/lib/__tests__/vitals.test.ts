@@ -25,4 +25,11 @@ describe("reportWebVitals", () => {
     expect(typeof reportWebVitals).toBe("function");
     expect(() => reportWebVitals()).not.toThrow();
   });
+
+  it("returns early in non-PROD mode", async () => {
+    vi.stubEnv("PROD", false);
+    const { reportWebVitals } = await import("../vitals");
+    expect(() => reportWebVitals()).not.toThrow();
+    vi.unstubAllEnvs();
+  });
 });

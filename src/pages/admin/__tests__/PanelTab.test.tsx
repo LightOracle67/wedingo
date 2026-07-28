@@ -155,4 +155,69 @@ describe("PanelTab", () => {
     fireEvent.click(screen.getByText("panel.downloadBackup"));
     expect(mockAddToast).toHaveBeenCalledWith("error", expect.any(String));
   });
+
+  it("triggers file input when restore button is clicked", () => {
+    render(<PanelTab config={baseConfig} />);
+    const fileInput = document.querySelector('input[type="file"]')!;
+    const clickSpy = vi.spyOn(fileInput, "click");
+    fireEvent.click(screen.getByText("panel.restoreBackup"));
+    expect(clickSpy).toHaveBeenCalled();
+  });
+
+  it("handles successful restore with bankInfo redacted", async () => {
+    const { setDoc } = await import("firebase/firestore");
+    render(<PanelTab config={baseConfig} />);
+    const fileInput = document.querySelector('input[type="file"]')!;
+    const validData = JSON.stringify({ bankInfo: "[REDACTED]", firstName: "Test" });
+    const file = new File([validData], "backup.json", { type: "application/json" });
+    fireEvent.change(fileInput, { target: { files: [file] } });
+    await vi.waitFor(() => {
+      expect(setDoc).toHaveBeenCalled();
+    });
+  });
+
+  it("handles successful restore with non-redacted bankInfo", async () => {
+    const { setDoc } = await import("firebase/firestore");
+    render(<PanelTab config={baseConfig} />);
+    const fileInput = document.querySelector('input[type="file"]')!;
+    const validData = JSON.stringify({ bankInfo: "ES1234567890", firstName: "Test" });
+    const file = new File([validData], "backup.json", { type: "application/json" });
+    fireEvent.change(fileInput, { target: { files: [file] } });
+    await vi.waitFor(() => {
+      expect(setDoc).toHaveBeenCalled();
+    });
+  });
+
+  it("calls onRestore callback after successful restore", async () => {
+    const onRestore = vi.fn();
+    render(<PanelTab config={{ ...baseConfig, onRestore }} />);
+    const fileInput = document.querySelector('input[type="file"]')!;
+    const validData = JSON.stringify({ bankInfo: "", firstName: "Test" });
+    const file = new File([validData], "backup.json", { type: "application/json" });
+    fireEvent.change(fileInput, { target: { files: [file] } });
+    await vi.waitFor(() => {
+      expect(onRestore).toHaveBeenCalled();
+    });
+  });
+
+  it("shows success toast after successful restore", async () => {
+    render(<PanelTab config={baseConfig} />);
+    const fileInput = document.querySelector('input[type="file"]')!;
+    const validData = JSON.stringify({ firstName: "Test" });
+    const file = new File([validData], "backup.json", { type: "application/json" });
+    fireEvent.change(fileInput, { target: { files: [file] } });
+    await vi.waitFor(() => {
+      expect(mockAddToast).toHaveBeenCalledWith("success", "panel.restoreSuccess");
+    });
+  });
+
+  it("handles invalid JSON restore gracefully", async () => {
+    render(<PanelTab config={baseConfig} />);
+    const fileInput = document.querySelector('input[type="file"]')!;
+    const invalidFile = new File(["not valid json content"], "backup.json", { type: "application/json" });
+    fireEvent.change(fileInput, { target: { files: [invalidFile] } });
+    await vi.waitFor(() => {
+      expect(mockAddToast).toHaveBeenCalledWith("error", expect.stringContaining("errors.restoreFailed"));
+    });
+  });
 });

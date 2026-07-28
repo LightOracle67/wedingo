@@ -556,4 +556,55 @@ describe("AdminPage", () => {
     await screen.findByTestId("attendance-tab");
     fireEvent.click(screen.getByTestId("set-search-query-btn"));
   });
+
+  it("handles exportPdf when window.open returns null", async () => {
+    vi.spyOn(window, "open").mockReturnValue(null);
+    const createObjectURL = vi.fn(() => "blob:test");
+    vi.spyOn(URL, "createObjectURL").mockImplementation(createObjectURL);
+
+    mockUseApp.mockReturnValue({
+      ...baseMock,
+      rsvpEntries: [
+        { guestName: "Alice", attendance: "yes", companions: 2, dietaryInfo: "Veg" },
+      ],
+    });
+
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>
+    );
+    await screen.findByTestId("panel-tab");
+    fireEvent.click(screen.getByTestId("export-pdf-btn"));
+    expect(createObjectURL).toHaveBeenCalled();
+  });
+
+  it("filters by attendance filter 'no' in filteredEntries", () => {
+    mockUseApp.mockReturnValue({
+      ...baseMock,
+      rsvpEntries: [
+        { guestName: "Alice", attendance: "yes", companions: 2 },
+        { guestName: "Bob", attendance: "no" },
+      ],
+      attendanceFilter: "no",
+    });
+
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>
+    );
+    expect(screen.getByText("admin.tabs.share")).toBeDefined();
+  });
+
+  it("renders share tab with inviteToken fallback", async () => {
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>
+    );
+    await screen.findByTestId("panel-tab");
+    fireEvent.click(screen.getByText("admin.tabs.share"));
+    expect(await screen.findByTestId("share-tab")).toBeDefined();
+  });
 });

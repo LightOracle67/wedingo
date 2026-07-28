@@ -206,6 +206,30 @@ describe("SuperAdminProvider", () => {
     expect(screen.getByTestId("isSuperAdmin").textContent).toBe("false");
   });
 
+  it("handles non-object error in login", async () => {
+    mockSignInWithEmailAndPassword.mockRejectedValue("string error");
+    renderProvider();
+    await vi.waitFor(() => expect(screen.getByTestId("isLoading").textContent).toBe("false"));
+    fireEvent.click(screen.getByTestId("login-btn"));
+    await vi.waitFor(() => expect(screen.getByTestId("error").textContent).toBe("auth.superadminLoginError"));
+  });
+
+  it("handles error without code property in login", async () => {
+    mockSignInWithEmailAndPassword.mockRejectedValue({ noCode: true });
+    renderProvider();
+    await vi.waitFor(() => expect(screen.getByTestId("isLoading").textContent).toBe("false"));
+    fireEvent.click(screen.getByTestId("login-btn"));
+    await vi.waitFor(() => expect(screen.getByTestId("error").textContent).toBe("auth.superadminLoginError"));
+  });
+
+  it("handles login error with missing code property", async () => {
+    mockSignInWithEmailAndPassword.mockRejectedValue({});
+    renderProvider();
+    await vi.waitFor(() => expect(screen.getByTestId("isLoading").textContent).toBe("false"));
+    fireEvent.click(screen.getByTestId("login-btn"));
+    await vi.waitFor(() => expect(screen.getByTestId("error").textContent).toBe("auth.superadminLoginError"));
+  });
+
   it("sets user when auth state changes during login", async () => {
     let authCallback: ((u: unknown) => void) | null = null;
     mockOnAuthStateChanged.mockImplementation((_auth: unknown, cb: (u: unknown) => void) => {

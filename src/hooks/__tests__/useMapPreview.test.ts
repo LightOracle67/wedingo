@@ -75,6 +75,19 @@ describe("useMapPreview", () => {
     });
   });
 
+  it("sets preview background when buildOpenFreeMapPreviewUrl returns valid URL", async () => {
+    mockGetValidCoordinates.mockReturnValue({ latitude: 40.4168, longitude: -3.7038 });
+    mockResolveLocationTarget.mockResolvedValue({ latitude: 40.4168, longitude: -3.7038, label: "Test" });
+    mockBuildOpenFreeMapPreviewUrl.mockResolvedValue("data:image/png;base64,valid");
+
+    const { result } = renderHook(() => useMapPreview("Place", "40.4168", "-3.7038"));
+
+    await waitFor(() => {
+      expect(result.current.previewBackgrounds.length).toBeGreaterThan(0);
+    });
+    expect(result.current.previewBackgrounds[0].id).toBe("default");
+  });
+
   it("handles buildOpenFreeMapPreviewUrl returning empty", async () => {
     mockGetValidCoordinates.mockReturnValue({ latitude: 40.4168, longitude: -3.7038 });
     mockResolveLocationTarget.mockResolvedValue({ latitude: 40.4168, longitude: -3.7038, label: "Test" });
