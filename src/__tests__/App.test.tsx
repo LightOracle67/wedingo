@@ -728,6 +728,54 @@ describe("App", () => {
     expect(screen.getByText("DEV")).toBeDefined();
   });
 
+  it("renders changelog modal directly when showChangelog is true", () => {
+    let capturedSetShowChangelog: (v: boolean) => void = () => {};
+    const origRender = render;
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    fireEvent.click(document.querySelector(".app-nav-toggle")!);
+    const buttons = document.querySelectorAll(".app-nav-overlay__link");
+    const versionButton = Array.from(buttons).find((b) => b.textContent?.includes("common.version"));
+    fireEvent.click(versionButton!);
+    expect(screen.getByTestId("changelog-modal")).toBeDefined();
+  });
+
+  it("renders legal modal when legalSection is set via overlay", () => {
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    fireEvent.click(document.querySelector(".app-nav-toggle")!);
+    const buttons = document.querySelectorAll(".app-nav-overlay__link");
+    const privacyButton = Array.from(buttons).find((b) => b.textContent === "public.privacyPolicy");
+    fireEvent.click(privacyButton!);
+    expect(screen.getByTestId("legal-modal")).toBeDefined();
+    expect(screen.getByTestId("legal-modal").textContent).toBe("privacy");
+  });
+
+  it("renders accessibility panel when showA11y is true via overlay", () => {
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    fireEvent.click(document.querySelector(".app-nav-toggle")!);
+    const buttons = document.querySelectorAll(".app-nav-overlay__link");
+    const a11yButton = Array.from(buttons).find((b) => b.textContent?.includes("common.accessibility"));
+    fireEvent.click(a11yButton!);
+    expect(screen.getByTestId("a11y-panel")).toBeDefined();
+  });
+
   it("opens accessibility panel from footer a11y trigger", () => {
     render(
       <MemoryRouter initialEntries={["/"]}>
