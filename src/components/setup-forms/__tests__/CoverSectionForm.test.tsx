@@ -347,4 +347,28 @@ describe("CoverSectionForm", () => {
     });
     expect(mockUpdateFormField).toHaveBeenCalledWith("couplePhoto", "https://example.com/replaced.jpg");
   });
+
+  it("clears file input value after successful upload", async () => {
+    mockUploadImage.mockResolvedValue({ dataUrl: "https://example.com/uploaded.jpg" });
+    render(<CoverSectionForm />);
+    const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
+    const file = new File(["test"], "test.jpg", { type: "image/jpeg" });
+    fireEvent.change(fileInput, { target: { files: [file] } });
+    await vi.waitFor(() => {
+      expect(mockUploadComplete).toHaveBeenCalledWith("setup.photoUploaded");
+    });
+    expect(fileInput.value).toBe("");
+  });
+
+  it("clears file input value after failed upload", async () => {
+    mockUploadImage.mockRejectedValue(new Error("Upload failed"));
+    render(<CoverSectionForm />);
+    const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
+    const file = new File(["test"], "test.jpg", { type: "image/jpeg" });
+    fireEvent.change(fileInput, { target: { files: [file] } });
+    await vi.waitFor(() => {
+      expect(mockUploadError).toHaveBeenCalledWith("setup.photoUploadFailed");
+    });
+    expect(fileInput.value).toBe("");
+  });
 });

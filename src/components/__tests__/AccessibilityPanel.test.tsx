@@ -184,4 +184,9 @@ describe("AccessibilityPanel", () => {
     expect(() => render(<AccessibilityPanel open={true} onClose={vi.fn()} />)).not.toThrow();
     localStorageMock.getItem = origGetItem;
   });
+
+  it("handles corrupted JSON in localStorage", () => {
+    localStorageMock.getItem = vi.fn(() => "{invalid json}");
+    expect(() => render(<AccessibilityPanel open={true} onClose={vi.fn()} />)).not.toThrow();
+  });
 });

@@ -96,4 +96,29 @@ describe("AttendeeCard", () => {
     fireEvent.change(screen.getByLabelText("rsvp.menuLabel"), { target: { value: "carne" } });
     expect(onUpdate).toHaveBeenCalledWith(0, "menu", "carne");
   });
+
+  it("handles nullish allergies in handleAllergyToggle", () => {
+    const onUpdate = vi.fn();
+    render(<AttendeeCard {...defaultProps} attendee={{ name: "", menu: "" as Attendee["menu"] }} onUpdate={onUpdate} />);
+    fireEvent.click(screen.getByLabelText(/sin gluten/));
+    expect(onUpdate).toHaveBeenCalledWith(0, "allergies", ["sin gluten"]);
+  });
+
+  it("handles nullish name via ?? fallback", () => {
+    render(<AttendeeCard {...defaultProps} attendee={{ menu: "" as Attendee["menu"], allergies: [] }} />);
+    const input = screen.getByPlaceholderText("rsvp.attendeeNamePlaceholder") as HTMLInputElement;
+    expect(input.value).toBe("");
+  });
+
+  it("handles nullish menu via ?? fallback", () => {
+    render(<AttendeeCard {...defaultProps} menuEnabled={true} attendee={{ name: "John", allergies: [] }} />);
+    const select = screen.getByLabelText("rsvp.menuLabel") as HTMLSelectElement;
+    expect(select.value).toBe("");
+  });
+
+  it("handles nullish allergies in checkbox rendering", () => {
+    render(<AttendeeCard {...defaultProps} attendee={{ name: "John", menu: "" as Attendee["menu"] }} />);
+    const checkbox = screen.getByLabelText(/sin gluten/) as HTMLInputElement;
+    expect(checkbox.checked).toBe(false);
+  });
 });

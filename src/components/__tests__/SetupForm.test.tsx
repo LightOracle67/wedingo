@@ -166,4 +166,48 @@ describe("SetupForm", () => {
     fireEvent.click(linkBtn);
     expect(mockSetLegalModal).toHaveBeenCalledWith("privacy");
   });
+
+  it("does not submit form on Enter without ctrl/meta", () => {
+    const requestSubmit = vi.fn();
+    HTMLFormElement.prototype.requestSubmit = requestSubmit;
+    render(<SetupForm />);
+    fireEvent.keyDown(window, { key: "Enter" });
+    expect(requestSubmit).not.toHaveBeenCalled();
+  });
+
+  it("does not submit form on meta+Enter when no form exists", () => {
+    const requestSubmit = vi.fn();
+    HTMLFormElement.prototype.requestSubmit = requestSubmit;
+    const origQuery = document.querySelector.bind(document);
+    vi.spyOn(document, "querySelector").mockImplementation((sel: string) => {
+      if (sel === ".setup-form") return null;
+      return origQuery(sel);
+    });
+    render(<SetupForm />);
+    fireEvent.keyDown(window, { key: "Enter", ctrlKey: true });
+    expect(requestSubmit).not.toHaveBeenCalled();
+  });
+
+  it("hides story and gallery based on hiddenSections", () => {
+    mockUseApp.mockReturnValue({
+      ...baseUseApp,
+      formData: { hiddenSections: "story,gallery" },
+    });
+    render(<SetupForm />);
+    expect(screen.queryByText("setup.storySectionTitle")).toBeNull();
+    expect(screen.queryByText("setup.gallerySectionTitle")).toBeNull();
+  });
+
+  it("toggles privacy consent from checked to unchecked", () => {
+    mockUseApp.mockReturnValue({
+      ...baseUseApp,
+      formData: { _privacyConsent: "true" },
+    });
+    render(<SetupForm />);
+    const privacyLabel = screen.getByText("setup.privacyConsent").closest("label")!;
+    const checkbox = within(privacyLabel).getByRole("checkbox");
+    expect(checkbox).toBeChecked();
+    fireEvent.click(checkbox);
+    expect(mockUpdateFormField).toHaveBeenCalledWith("_privacyConsent", "false");
+  });
 });

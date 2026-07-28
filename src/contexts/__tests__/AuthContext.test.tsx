@@ -27,8 +27,9 @@ vi.mock("../useConfig", () => ({
   useConfig: () => mockUseConfig(),
 }));
 
+const mockUseAppUI = vi.fn(() => ({ setAdminMessage: mockSetAdminMessage, setAdminMessageType: mockSetAdminMessageType }));
 vi.mock("../useAppUI", () => ({
-  useAppUI: () => ({ setAdminMessage: mockSetAdminMessage, setAdminMessageType: mockSetAdminMessageType }),
+  useAppUI: (...args: unknown[]) => mockUseAppUI(...args),
 }));
 
 const mockSetSetupToken = vi.fn();
@@ -176,5 +177,32 @@ describe("AuthProvider", () => {
     const onFirstSave = mockRegisterOnFirstSave.mock.calls[0][0];
     await onFirstSave();
     expect(mockSetTokenLoginUsername).toHaveBeenCalledWith("admin-user-name");
+  });
+
+  it("uses adminUsername when session has short identifier", async () => {
+    mockGetSession.mockReturnValue({ identifier: "short", expiresAt: Date.now() + 999999 });
+    mockUseConfig.mockReturnValue({
+      inviteToken: "test-token",
+      config: { adminUsername: "AdminUser" },
+      setHasStoredConfig: vi.fn(),
+      registerOnFirstSave: mockRegisterOnFirstSave,
+    });
+    render(<AuthProvider><div>child</div></AuthProvider>);
+    const onFirstSave = mockRegisterOnFirstSave.mock.calls[0][0];
+    await onFirstSave();
+    expect(mockSetTokenLoginUsername).toHaveBeenCalledWith("AdminUser");
+    expect(mockSaveSession).toHaveBeenCalledWith("admin", "AdminUser");
+  });
+
+  it("handles null setAdminMessage gracefully", async () => {
+    mockUseAppUI.mockReturnValueOnce({
+      setAdminMessage: null,
+      setAdminMessageType: null,
+    });
+    mockUpdateDoc.mockRejectedValueOnce(new Error("update failed"));
+    render(<AuthProvider><div>child</div></AuthProvider>);
+    const onFirstSave = mockRegisterOnFirstSave.mock.calls[0][0];
+    await onFirstSave();
+    expect(mockSetIsTokenVerified).toHaveBeenCalledWith(true);
   });
 });

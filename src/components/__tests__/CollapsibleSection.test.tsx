@@ -182,4 +182,31 @@ describe("CollapsibleSection", () => {
     );
     expect(screen.getByText("common.hidden")).toBeInTheDocument();
   });
+
+  it("sets max-height to 0 after close animation via rAF", () => {
+    const originalRAF = window.requestAnimationFrame;
+    const calls: FrameRequestCallback[] = [];
+    window.requestAnimationFrame = vi.fn((cb: FrameRequestCallback) => {
+      calls.push(cb);
+      return calls.length - 1;
+    }) as unknown as typeof window.requestAnimationFrame;
+
+    render(
+      <CollapsibleSection title="Close Test" defaultOpen={true}>
+        <p>Content</p>
+      </CollapsibleSection>
+    );
+
+    const wrap = document.querySelector(".setup-collapsible__wrap")!;
+    expect(wrap).toHaveStyle("max-height: none");
+
+    const button = screen.getByRole("button", { name: "Close Test" });
+    fireEvent.click(button);
+
+    while (calls.length > 0) {
+      const cb = calls.shift()!;
+      cb(0);
+    }
+    window.requestAnimationFrame = originalRAF;
+  });
 });

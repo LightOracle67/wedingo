@@ -100,4 +100,86 @@ describe("SectionOrderEditor", () => {
 
     expect(onChange).toHaveBeenCalled();
   });
+
+  it("prevents drag on hero section", () => {
+    const onChange = vi.fn();
+    render(<SectionOrderEditor {...defaultProps} onChange={onChange} />);
+
+    const items = document.querySelectorAll(".section-order-item");
+    const heroEl = items[0];
+    expect(heroEl.getAttribute("draggable")).toBe("false");
+
+    const dataTransfer = {
+      effectAllowed: "",
+      dropEffect: "",
+      setData: vi.fn(),
+    } as unknown as DataTransfer;
+
+    fireEvent.dragStart(heroEl, { dataTransfer });
+    expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it("does nothing on drop when from equals to", () => {
+    const onChange = vi.fn();
+    render(<SectionOrderEditor {...defaultProps} onChange={onChange} />);
+
+    const items = document.querySelectorAll(".section-order-item");
+    const el = items[1];
+
+    const dataTransfer = {
+      effectAllowed: "",
+      dropEffect: "",
+      setData: vi.fn(),
+    } as unknown as DataTransfer;
+
+    fireEvent.dragStart(el, { dataTransfer });
+    fireEvent.dragEnter(el, { dataTransfer });
+    fireEvent.dragEnter(el, { dataTransfer });
+    fireEvent.dragOver(el, { dataTransfer });
+    fireEvent.drop(el, { dataTransfer });
+    fireEvent.dragEnd(el, { dataTransfer });
+
+    expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it("prevents drop at position 0 (hero)", () => {
+    const onChange = vi.fn();
+    render(<SectionOrderEditor {...defaultProps} onChange={onChange} />);
+
+    const items = document.querySelectorAll(".section-order-item");
+    const fromEl = items[2];
+    const toEl = items[0];
+
+    const dataTransfer = {
+      effectAllowed: "",
+      dropEffect: "",
+      setData: vi.fn(),
+    } as unknown as DataTransfer;
+
+    fireEvent.dragStart(fromEl, { dataTransfer });
+    fireEvent.dragEnter(toEl, { dataTransfer });
+    fireEvent.dragOver(toEl, { dataTransfer });
+    fireEvent.drop(toEl, { dataTransfer });
+    fireEvent.dragEnd(fromEl, { dataTransfer });
+
+    expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it("does not move up first non-hero item (index <= 1)", () => {
+    const onChange = vi.fn();
+    render(<SectionOrderEditor {...defaultProps} onChange={onChange} />);
+
+    const detailsUp = screen.getByRole("button", { name: "sectionOrder.moveUp details.sectionLabel" });
+    expect(detailsUp).toBeDisabled();
+  });
+
+  it("does not move down last item", () => {
+    const onChange = vi.fn();
+    render(<SectionOrderEditor {...defaultProps} onChange={onChange} />);
+
+    const items = document.querySelectorAll(".section-order-item");
+    const lastItemLabel = items[items.length - 1].querySelector(".section-order-item__label")?.textContent;
+    const lastDownBtn = screen.getByRole("button", { name: `sectionOrder.moveDown accommodation.sectionLabel` });
+    expect(lastDownBtn).toBeDisabled();
+  });
 });
