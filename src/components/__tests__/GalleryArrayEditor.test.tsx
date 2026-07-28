@@ -44,6 +44,7 @@ afterEach(() => {
 });
 
 beforeEach(() => {
+  vi.clearAllMocks();
   mockLoadGallery.mockResolvedValue([]);
   mockUploadImage.mockResolvedValue({ encrypted: "enc", dataUrl: "data:image/png,test" });
   mockAddGalleryImage.mockResolvedValue({ id: "new-id", dataUrl: "data:image/png,test" });
@@ -427,6 +428,29 @@ describe("GalleryArrayEditor", () => {
     fireEvent.blur(input);
     await waitFor(() => {
       expect(mockUpdateGalleryDescription).toHaveBeenCalledWith("test-token", "img-1", "padded");
+    });
+  });
+
+  it("skips upload when file input has no files", async () => {
+    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    await screen.findByText("#1");
+    const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
+    fireEvent.change(fileInput, { target: { files: [] } });
+    await vi.waitFor(() => {
+      expect(mockUploadImage).not.toHaveBeenCalled();
+    });
+  });
+
+  it("calls handleDescriptionBlur and skips save when inviteToken changes", async () => {
+    mockLoadGallery.mockResolvedValue([
+      { id: "img-1", url: "data:image/png,test", description: "desc", originalName: "test.png", originalSize: 1000, position: 0 },
+    ]);
+    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    await screen.findByDisplayValue("desc");
+    const input = screen.getByDisplayValue("desc");
+    fireEvent.blur(input);
+    await waitFor(() => {
+      expect(mockUpdateGalleryDescription).toHaveBeenCalledWith("test-token", "img-1", "desc");
     });
   });
 });
