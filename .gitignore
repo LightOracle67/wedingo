@@ -40,3 +40,4 @@ jsconfig.json
 coverage
 junit.xml
 coverage_err.txt
+test-results
