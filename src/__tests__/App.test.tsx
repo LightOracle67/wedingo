@@ -607,4 +607,156 @@ describe("App", () => {
     );
     expect(document.documentElement.dataset.weddingTheme).toBe("golden");
   });
+
+  it("restores username from sessionStorage", () => {
+    const sessionMock = (() => {
+      let store: Record<string, string> = {};
+      return {
+        getItem: vi.fn((k: string) => store[k] ?? null),
+        setItem: vi.fn((k: string, v: string) => { store[k] = v; }),
+        removeItem: vi.fn((k: string) => { delete store[k]; }),
+        clear: vi.fn(() => { store = {}; }),
+      };
+    })();
+    Object.defineProperty(window, "sessionStorage", {
+      value: sessionMock,
+      configurable: true,
+    });
+    sessionMock.setItem("wedin_session", JSON.stringify({ identifier: "restored-user", expiresAt: Date.now() + 99999 }));
+    mockUseApp.mockReturnValue({
+      ...baseUseApp,
+      isAdminTokenLoggedIn: true,
+      inviteToken: "abc123",
+      tokenLoginUsername: "",
+    });
+    render(
+      <MemoryRouter initialEntries={["/abc123"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    expect(screen.getByText("restored-user")).toBeDefined();
+    Object.defineProperty(window, "sessionStorage", { value: undefined, configurable: true });
+  });
+
+  it("opens accessibility panel from footer a11y trigger", () => {
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    const footerTrigger = document.querySelector(".app-footer .a11y-trigger");
+    expect(footerTrigger).toBeDefined();
+    fireEvent.click(footerTrigger!);
+    expect(screen.getByTestId("a11y-panel")).toBeDefined();
+  });
+
+  it("opens accessibility panel from admin a11y trigger", () => {
+    mockUseApp.mockReturnValue({
+      ...baseUseApp,
+      isAdminTokenLoggedIn: true,
+      inviteToken: "abc123",
+    });
+    render(
+      <MemoryRouter initialEntries={["/abc123"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    const adminTrigger = document.querySelector(".a11y-trigger--admin");
+    expect(adminTrigger).toBeDefined();
+    fireEvent.click(adminTrigger!);
+    expect(screen.getByTestId("a11y-panel")).toBeDefined();
+  });
+
+  it("handles window error event via logError", async () => {
+    const { logError } = await import("../lib/error-utils");
+    mockUseApp.mockReturnValue({ ...baseUseApp });
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    window.dispatchEvent(new ErrorEvent("error", { message: "test error", error: new Error("test") }));
+    expect(logError).toHaveBeenCalled();
+  });
+
+  it("handles unhandledrejection event via logError", async () => {
+    const { logError } = await import("../lib/error-utils");
+    mockUseApp.mockReturnValue({ ...baseUseApp });
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    const reason = new Error("rejected");
+    const promise = Promise.reject(reason);
+    promise.catch(() => {});
+    window.dispatchEvent(new PromiseRejectionEvent("unhandledrejection", { promise, reason }));
+    await vi.waitFor(() => {
+      expect(logError).toHaveBeenCalledWith(reason, "unhandledRejection");
+    });
+  });
+
+  it("focuses and blurs the skip link", () => {
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    const skipLink = document.querySelector(".skip-link") as HTMLAnchorElement;
+    expect(skipLink).toBeDefined();
+    fireEvent.focus(skipLink);
+    expect(skipLink.style.top).toBe("0px");
+    fireEvent.blur(skipLink);
+    expect(skipLink.style.top).toBe("-100px");
+  });
+
+  it("handles service worker registration in PROD", () => {
+    const origEnv = import.meta.env.PROD;
+    const registerMock = vi.fn().mockResolvedValue(undefined);
+    Object.defineProperty(navigator, "serviceWorker", {
+      value: { register: registerMock },
+      configurable: true,
+    });
+    import.meta.env.PROD = true;
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    expect(registerMock).toHaveBeenCalledWith("/sw.js");
+    import.meta.env.PROD = origEnv;
+  });
+
+  it("does not register service worker in DEV", () => {
+    const origEnv = import.meta.env.PROD;
+    const registerMock = vi.fn().mockResolvedValue(undefined);
+    Object.defineProperty(navigator, "serviceWorker", {
+      value: { register: registerMock },
+      configurable: true,
+    });
+    import.meta.env.PROD = false;
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    expect(registerMock).not.toHaveBeenCalled();
+    import.meta.env.PROD = origEnv;
+  });
 });

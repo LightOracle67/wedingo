@@ -203,4 +203,48 @@ describe("MusicPlayer", () => {
     expect(slider).toBeDefined();
     fireEvent.change(slider, { target: { value: "0.8" } });
   });
+
+  it("handles toggleMusic early return when no musicUrl", () => {
+    render(<MusicPlayer />);
+    const fab = screen.getByRole("button", { name: /music\.label/i });
+    fireEvent.click(fab);
+    const playBtn = document.querySelector(".music-player__play") as HTMLButtonElement;
+    expect(playBtn.disabled).toBe(true);
+    playBtn.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    expect(document.querySelector(".music-player__spinner")).toBeNull();
+  });
+
+  it("calls audioRef.current.volume when volume changes", () => {
+    const volumeSetter = vi.fn();
+    Object.defineProperty(HTMLMediaElement.prototype, "volume", {
+      set: volumeSetter,
+      get: () => 0.5,
+      configurable: true,
+    });
+
+    render(<MusicPlayer musicUrl="https://example.com/song.mp3" />);
+    const fab = screen.getByRole("button", { name: /music\.label/i });
+    fireEvent.click(fab);
+    const slider = document.querySelector(".music-player__volume") as HTMLInputElement;
+    fireEvent.change(slider, { target: { value: "0.3" } });
+    expect(volumeSetter).toHaveBeenCalledWith(0.3);
+  });
+
+  it("handles handleVolume when audioRef is null", () => {
+    const audio = document.createElement("audio");
+    const volumeSetter = vi.fn();
+    Object.defineProperty(HTMLMediaElement.prototype, "volume", {
+      set: volumeSetter,
+      get: () => 0.5,
+      configurable: true,
+    });
+
+    const { rerender } = render(<MusicPlayer musicUrl="https://example.com/song.mp3" />);
+    const fab = screen.getByRole("button", { name: /music\.label/i });
+    fireEvent.click(fab);
+    rerender(<MusicPlayer />);
+    const slider = document.querySelector(".music-player__volume") as HTMLInputElement;
+    expect(slider.disabled).toBe(true);
+    slider.dispatchEvent(new Event("change", { bubbles: true }));
+  });
 });

@@ -111,4 +111,25 @@ describe("CookieConsent", () => {
     fireEvent.click(screen.getByRole("button", { name: "cookie.savePreferences" }));
     expect(mockLocalStorage.removeItem).toHaveBeenCalledWith("wedin_invite_cache");
   });
+
+  it("does not remove cache when saving preferences with analytics enabled", () => {
+    render(<CookieConsent />);
+    fireEvent.click(screen.getByRole("button", { name: "cookie.configure" }));
+    const analyticsCheckbox = screen.getByText("cookie.analytics").previousElementSibling as HTMLInputElement;
+    fireEvent.click(analyticsCheckbox);
+    fireEvent.click(screen.getByRole("button", { name: "cookie.savePreferences" }));
+    expect(mockLocalStorage.setItem).toHaveBeenCalledWith(
+      "wedin_cookie_prefs",
+      JSON.stringify({ necessary: true, analytics: true })
+    );
+  });
+
+  it("does not toggle necessary preference via togglePreference", () => {
+    render(<CookieConsent />);
+    fireEvent.click(screen.getByRole("button", { name: "cookie.configure" }));
+    const prefsBefore = mockLocalStorage.setItem.mock.calls.length;
+    const necessaryCheckbox = screen.getByText("cookie.necessary").previousElementSibling as HTMLInputElement;
+    fireEvent.click(necessaryCheckbox);
+    expect(mockLocalStorage.setItem.mock.calls.length).toBe(prefsBefore);
+  });
 });

@@ -133,4 +133,24 @@ describe("EnvelopeOverlay", () => {
     expect(document.querySelector(".envelope-golden--out")).toBeDefined();
     vi.useRealTimers();
   });
+
+  it("does nothing on pressing non-Enter/Space key", () => {
+    render(<EnvelopeOverlay {...defaultProps} />);
+    const btn = screen.getByRole("button");
+    fireEvent.keyDown(btn, { key: "Tab" });
+    expect(document.querySelector(".envelope-overlay--exit")).toBeNull();
+  });
+
+  it("handles dispatchEvent throwing", () => {
+    vi.useFakeTimers();
+    vi.spyOn(window, "dispatchEvent").mockImplementation(() => { throw new Error("dispatch failed"); });
+    const onOpen = vi.fn();
+    render(<EnvelopeOverlay {...defaultProps} onOpen={onOpen} />);
+    const btn = screen.getByRole("button");
+    fireEvent.click(btn);
+    fireEvent.click(btn);
+    vi.advanceTimersByTime(3500);
+    expect(onOpen).toHaveBeenCalled();
+    vi.useRealTimers();
+  });
 });

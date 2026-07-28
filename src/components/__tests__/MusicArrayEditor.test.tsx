@@ -464,4 +464,70 @@ describe("MusicArrayEditor", () => {
       expect(mockDeleteAudio).not.toHaveBeenCalled();
     });
   });
+
+  it("handles delete with audioRef null", async () => {
+    mockLoadAudio.mockResolvedValue({
+      id: "audio-1",
+      url: "https://example.com/song.mp3",
+    });
+
+    const onChange = vi.fn();
+    render(
+      <MusicArrayEditor
+        inviteToken="test-token"
+        value="https://example.com/song.mp3"
+        onChange={onChange}
+        t={t}
+      />
+    );
+    await screen.findByText("setup.currentMusic");
+
+    HTMLMediaElement.prototype.play = vi.fn().mockResolvedValue(undefined);
+
+    const playBtn = screen.getByRole("button", { name: "music.play" });
+    fireEvent.click(playBtn);
+    await waitFor(() => {
+      expect(screen.getByRole("button", { name: "music.pause" })).toBeInTheDocument();
+    });
+
+    const deleteBtn = screen.getByRole("button", { name: "common.delete" });
+    fireEvent.click(deleteBtn);
+
+    await waitFor(() => {
+      expect(mockDeleteAudio).toHaveBeenCalledWith("test-token");
+    });
+    expect(onChange).toHaveBeenCalledWith("");
+  });
+
+  it("handles upload with empty inviteToken", async () => {
+    const onChange = vi.fn();
+    render(
+      <MusicArrayEditor inviteToken="" value="" onChange={onChange} t={t} />
+    );
+    await screen.findByText("setup.musicUploadLabel");
+
+    const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
+    const file = new File(["fake-audio"], "song.mp3", { type: "audio/mpeg" });
+    fireEvent.change(fileInput, { target: { files: [file] } });
+
+    await waitFor(() => {
+      expect(mockUploadAudio).toHaveBeenCalled();
+    });
+  });
+
+  it("clears input after oversized file error", async () => {
+    render(
+      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} t={t} />
+    );
+    await screen.findByText("setup.musicUploadLabel");
+
+    const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
+    const bigFile = new File(["x"], "big.mp3", { type: "audio/mpeg" });
+    Object.defineProperty(bigFile, "size", { value: 21 * 1024 * 1024 });
+    fireEvent.change(fileInput, { target: { files: [bigFile] } });
+
+    await waitFor(() => {
+      expect(mockAddToast).toHaveBeenCalledWith("error", "setup.audioSizeError");
+    });
+  });
 });

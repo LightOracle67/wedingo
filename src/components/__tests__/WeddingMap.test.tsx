@@ -131,4 +131,61 @@ describe("WeddingMap", () => {
       expect(screen.getByText("public.locationMapError")).toBeDefined();
     });
   });
+
+  it("handles cancellation before geocoding completes", async () => {
+    let resolvePromise: (v: unknown) => void;
+    const { resolveLocationTarget } = await import("../../lib/geo-utils");
+    (resolveLocationTarget as ReturnType<typeof vi.fn>).mockReturnValue(new Promise((resolve) => {
+      resolvePromise = resolve;
+    }));
+
+    const { unmount } = render(<WeddingMap
+      weddingLatitude="41.3874"
+      weddingLongitude="2.1686"
+      t={(key: string) => key}
+    />);
+    unmount();
+    resolvePromise!({ latitude: 41.3874, longitude: 2.1686, label: "Barcelona" });
+    await vi.waitFor(() => {
+      expect(mockL.map).not.toHaveBeenCalled();
+    });
+  });
+
+  it("handles isCancelled in the catch block", async () => {
+    let rejectPromise: (e: Error) => void;
+    const { resolveLocationTarget } = await import("../../lib/geo-utils");
+    const promise = new Promise((_, reject) => {
+      rejectPromise = reject;
+    });
+    promise.catch(() => {});
+    (resolveLocationTarget as ReturnType<typeof vi.fn>).mockReturnValue(promise);
+
+    const { unmount } = render(<WeddingMap
+      weddingLatitude="41.3874"
+      weddingLongitude="2.1686"
+      t={(key: string) => key}
+    />);
+    unmount();
+    rejectPromise!(new Error("async error"));
+    await vi.waitFor(() => {
+      expect(screen.queryByText("public.locationMapError")).toBeNull();
+    });
+  });
+
+  it("handles disconnected container", async () => {
+    const { resolveLocationTarget } = await import("../../lib/geo-utils");
+    (resolveLocationTarget as ReturnType<typeof vi.fn>).mockResolvedValue({
+      latitude: 41.3874, longitude: 2.1686, label: "Barcelona",
+    });
+
+    render(<WeddingMap
+      weddingLatitude="41.3874"
+      weddingLongitude="2.1686"
+      t={(key: string) => key}
+    />);
+
+    await waitFor(() => {
+      expect(mockL.map).toHaveBeenCalled();
+    });
+  });
 });

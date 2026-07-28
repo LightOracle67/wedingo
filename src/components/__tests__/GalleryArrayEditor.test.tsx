@@ -337,4 +337,37 @@ describe("GalleryArrayEditor", () => {
       expect(mockDeleteGalleryImage).not.toHaveBeenCalled();
     });
   });
+
+  it("does not crash on delete when inviteToken is unset", async () => {
+    mockLoadGallery.mockResolvedValue([
+      { id: "img-1", url: "data:image/png,test", description: "desc", originalName: "test.png", originalSize: 1000, position: 0 },
+    ]);
+    render(<GalleryArrayEditor inviteToken="" t={t} />);
+    expect(document.querySelector(".page-loading")).toBeInTheDocument();
+  });
+
+  it("trims description on save and handles null currentValue", async () => {
+    mockLoadGallery.mockResolvedValue([
+      { id: "img-1", url: "data:image/png,test", description: "long text", originalName: "test.png", originalSize: 1000, position: 0 },
+    ]);
+    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    await screen.findByDisplayValue("long text");
+    const input = screen.getByDisplayValue("long text");
+    fireEvent.change(input, { target: { value: "a".repeat(250) } });
+    fireEvent.blur(input);
+    await waitFor(() => {
+      expect(mockUpdateGalleryDescription).toHaveBeenCalledWith("test-token", "img-1", "a".repeat(200));
+    });
+  });
+
+  it("changes description on existing slot triggers handleDescriptionChange", async () => {
+    mockLoadGallery.mockResolvedValue([
+      { id: "img-1", url: "data:image/png,test", description: "", originalName: "test.png", originalSize: 1000, position: 0 },
+    ]);
+    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    await screen.findByPlaceholderText("setup.galleryDescriptionPlaceholder");
+    const input = screen.getByPlaceholderText("setup.galleryDescriptionPlaceholder");
+    fireEvent.change(input, { target: { value: "updated" } });
+    expect(input).toHaveValue("updated");
+  });
 });
