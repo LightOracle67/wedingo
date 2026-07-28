@@ -33,6 +33,13 @@ describe("MiniBar", () => {
     const rects = container.querySelectorAll("rect");
     expect(rects.length).toBe(3);
   });
+
+  it("truncates long labels", () => {
+    const items = [{ value: 10, label: "VeryLongLabel" }];
+    const { container } = render(<MiniBar items={items} />);
+    const text = container.querySelector("text");
+    expect(text?.textContent).toBe("VeryL…");
+  });
 });
 
 describe("Legend", () => {

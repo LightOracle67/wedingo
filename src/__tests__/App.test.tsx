@@ -640,6 +640,94 @@ describe("App", () => {
     Object.defineProperty(window, "sessionStorage", { value: undefined, configurable: true });
   });
 
+  it("handles corrupted sessionStorage JSON", () => {
+    const sessionMock = (() => {
+      let store: Record<string, string> = {};
+      return {
+        getItem: vi.fn((k: string) => store[k] ?? null),
+        setItem: vi.fn((k: string, v: string) => { store[k] = v; }),
+        removeItem: vi.fn((k: string) => { delete store[k]; }),
+        clear: vi.fn(() => { store = {}; }),
+      };
+    })();
+    Object.defineProperty(window, "sessionStorage", {
+      value: sessionMock,
+      configurable: true,
+    });
+    sessionMock.setItem("wedin_session", "{invalid json}");
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    expect(screen.getByTestId("landing-page")).toBeDefined();
+    Object.defineProperty(window, "sessionStorage", { value: undefined, configurable: true });
+  });
+
+  it("handles expired sessionStorage data", () => {
+    const sessionMock = (() => {
+      let store: Record<string, string> = {};
+      return {
+        getItem: vi.fn((k: string) => store[k] ?? null),
+        setItem: vi.fn((k: string, v: string) => { store[k] = v; }),
+        removeItem: vi.fn((k: string) => { delete store[k]; }),
+        clear: vi.fn(() => { store = {}; }),
+      };
+    })();
+    Object.defineProperty(window, "sessionStorage", {
+      value: sessionMock,
+      configurable: true,
+    });
+    sessionMock.setItem("wedin_session", JSON.stringify({ identifier: "user", expiresAt: Date.now() - 1000 }));
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    expect(screen.getByTestId("landing-page")).toBeDefined();
+    Object.defineProperty(window, "sessionStorage", { value: undefined, configurable: true });
+  });
+
+  it("handles null sessionStorage gracefully", () => {
+    const sessionMock = (() => {
+      let store: Record<string, string> = {};
+      return {
+        getItem: vi.fn(() => null),
+        setItem: vi.fn((k: string, v: string) => { store[k] = v; }),
+        removeItem: vi.fn((k: string) => { delete store[k]; }),
+        clear: vi.fn(() => { store = {}; }),
+      };
+    })();
+    Object.defineProperty(window, "sessionStorage", {
+      value: sessionMock,
+      configurable: true,
+    });
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    expect(screen.getByTestId("landing-page")).toBeDefined();
+    Object.defineProperty(window, "sessionStorage", { value: undefined, configurable: true });
+  });
+
+  it("renders DEV badge in dev mode", () => {
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    expect(screen.getByText("DEV")).toBeDefined();
+  });
+
   it("opens accessibility panel from footer a11y trigger", () => {
     render(
       <MemoryRouter initialEntries={["/"]}>
@@ -725,6 +813,25 @@ describe("App", () => {
   it("handles service worker registration in PROD", () => {
     const origEnv = import.meta.env.PROD;
     const registerMock = vi.fn().mockResolvedValue(undefined);
+    Object.defineProperty(navigator, "serviceWorker", {
+      value: { register: registerMock },
+      configurable: true,
+    });
+    import.meta.env.PROD = true;
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    expect(registerMock).toHaveBeenCalledWith("/sw.js");
+    import.meta.env.PROD = origEnv;
+  });
+
+  it("handles service worker registration failure", () => {
+    const origEnv = import.meta.env.PROD;
+    const registerMock = vi.fn().mockRejectedValue(new Error("register failed"));
     Object.defineProperty(navigator, "serviceWorker", {
       value: { register: registerMock },
       configurable: true,

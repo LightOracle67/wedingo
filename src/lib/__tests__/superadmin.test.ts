@@ -53,4 +53,15 @@ describe("superadmin", () => {
     const result = mod.formatDate("not-a-date");
     expect(result).toBe("Invalid Date");
   });
+
+  it("formatDate returns input when toLocaleString throws", async () => {
+    vi.stubEnv("VITE_SUPERADMIN_ROUTE", "");
+    vi.stubEnv("VITE_ADMIN_EMAILS", "");
+    vi.spyOn(Date.prototype, "toLocaleString").mockImplementation(() => { throw new Error("fail"); });
+
+    const mod = await import("../superadmin");
+    const result = mod.formatDate("2026-07-15T18:30:00");
+    expect(result).toBe("2026-07-15T18:30:00");
+    vi.restoreAllMocks();
+  });
 });

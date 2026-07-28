@@ -11,6 +11,11 @@ describe("generateSetupToken", () => {
     const token = generateSetupToken();
     expect(token).toContain("-");
   });
+
+  it("returns token with groups separated by dashes", () => {
+    const token = generateSetupToken();
+    expect(token).toMatch(/^[A-Z0-9]{1,4}(-[A-Z0-9]{1,4})*$/);
+  });
 });
 
 describe("normalizeTokenValue", () => {

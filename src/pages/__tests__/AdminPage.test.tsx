@@ -336,6 +336,21 @@ describe("AdminPage", () => {
     expect(btn.getAttribute("type")).toBe("button");
   });
 
+  it("calls window.location.reload when retry button is clicked", () => {
+    const reloadFn = vi.fn();
+    const origLocation = window.location;
+    delete (window as any).location;
+    (window as any).location = { reload: reloadFn };
+
+    mockUseApp.mockReturnValue({ ...baseMock, configLoadError: "Failed to load" });
+
+    render(<AdminPage />);
+    fireEvent.click(screen.getByText("common.retry"));
+    expect(reloadFn).toHaveBeenCalled();
+
+    (window as any).location = origLocation;
+  });
+
   it("computes totalGuests from rsvpEntries", () => {
     mockUseApp.mockReturnValue({
       ...baseMock,

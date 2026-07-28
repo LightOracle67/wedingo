@@ -146,4 +146,16 @@ describe("TokensTab", () => {
     fireEvent.click(screen.getByText("superadmin.revokeButton"));
     await vi.waitFor(() => expect(screen.getByText("superadmin.tokenRevokeError")).toBeInTheDocument());
   });
+
+  it("renders clean unused button and confirms dialog", async () => {
+    mockGetDocs.mockImplementation(() =>
+      Promise.resolve({
+        docs: [{ id: "inv1", data: () => ({ _activeSetupToken: "token1" }) }],
+      }),
+    );
+    render(<TokensTab />);
+    await vi.waitFor(() => expect(screen.getByText("superadmin.cleanUnused")).toBeInTheDocument());
+    fireEvent.click(screen.getByText("superadmin.cleanUnused"));
+    expect(mockConfirm).toHaveBeenCalled();
+  });
 });

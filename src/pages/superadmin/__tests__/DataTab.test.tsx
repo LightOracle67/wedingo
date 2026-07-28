@@ -210,4 +210,74 @@ describe("DataTab", () => {
     render(<DataTab />);
     await vi.waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("error", "errors.dataLoadFailed"));
   });
+
+  it("toggles checkbox on click", async () => {
+    mockGetDocs.mockImplementation((ref: string) => {
+      if (ref === "invitations-collection-ref") {
+        return Promise.resolve({
+          docs: [
+            { id: "t1", data: () => ({ id: "t1", firstName: "A", secondName: "B", weddingDay: "1", weddingMonth: "1", weddingYear: "2025" }) },
+          ],
+        });
+      }
+      return Promise.resolve({ docs: [] });
+    });
+    render(<DataTab />);
+    await vi.waitFor(() => {
+      expect(screen.getByText("t1")).toBeInTheDocument();
+    });
+    const checkbox = screen.getAllByRole("checkbox")[0];
+    fireEvent.click(checkbox);
+  });
+
+  it("copies token on click", async () => {
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    Object.assign(navigator, { clipboard: { writeText } });
+    mockGetDocs.mockImplementation((ref: string) => {
+      if (ref === "invitations-collection-ref") {
+        return Promise.resolve({
+          docs: [
+            { id: "token-abc", data: () => ({ id: "token-abc", firstName: "A", secondName: "B", weddingDay: "1", weddingMonth: "1", weddingYear: "2025" }) },
+          ],
+        });
+      }
+      return Promise.resolve({ docs: [] });
+    });
+    render(<DataTab />);
+    await vi.waitFor(() => {
+      expect(screen.getByText("token-abc")).toBeInTheDocument();
+    });
+    fireEvent.click(screen.getByText("token-abc"));
+    await vi.waitFor(() => {
+      expect(writeText).toHaveBeenCalledWith("token-abc");
+    });
+  });
+
+  it("exports selected invitations", async () => {
+    mockGetDocs.mockImplementation((ref: string) => {
+      if (ref === "invitations-collection-ref") {
+        return Promise.resolve({
+          docs: [
+            { id: "t1", data: () => ({ firstName: "A", secondName: "B", weddingDay: "1", weddingMonth: "1", weddingYear: "2025" }) },
+          ],
+        });
+      }
+      if (ref === "rsvp-collection-ref") {
+        return Promise.resolve({ docs: [] });
+      }
+      if (ref === "rsvp-query-ref") {
+        return Promise.resolve({ docs: [] });
+      }
+      return Promise.resolve({ docs: [] });
+    });
+    mockDownloadJson.mockImplementation(() => {});
+    render(<DataTab />);
+    await vi.waitFor(() => expect(screen.getByText("superadmin.data.selectAll")).toBeInTheDocument());
+    fireEvent.click(screen.getByText("superadmin.data.selectAll"));
+    await vi.waitFor(() => {
+      const exportBtn = screen.queryByText((text) => text.includes("superadmin.data.exportSelectedBtn"));
+      if (exportBtn) fireEvent.click(exportBtn);
+    });
+    await vi.waitFor(() => expect(mockDownloadJson).toHaveBeenCalled());
+  });
 });

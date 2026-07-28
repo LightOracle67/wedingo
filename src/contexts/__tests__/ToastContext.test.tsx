@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, afterEach } from "vitest";
+import { describe, it, expect, vi, afterEach, beforeEach } from "vitest";
 import { render, screen, cleanup, act } from "@testing-library/react";
 
 vi.mock("react-i18next", () => ({
@@ -192,5 +192,94 @@ describe("ToastContext", () => {
     act(() => { vi.advanceTimersByTime(5300); });
     expect(screen.queryByText("Test toast")).toBeNull();
     vi.useRealTimers();
+  });
+
+  it("renders multiple toasts", () => {
+    function MultiToastTest() {
+      const { addToast } = useToast();
+      return (
+        <button onClick={() => { addToast("success", "First"); addToast("success", "Second"); }}>
+          Add Two
+        </button>
+      );
+    }
+    render(
+      <ToastProvider>
+        <MultiToastTest />
+      </ToastProvider>
+    );
+    act(() => { screen.getByText("Add Two").click(); });
+    expect(screen.getByText("First")).toBeDefined();
+    expect(screen.getByText("Second")).toBeDefined();
+  });
+
+  it("updates only the targeted progress toast when multiple exist", () => {
+    function MultiProgressTest() {
+      const { startUploadToast } = useToast();
+      return (
+        <button onClick={() => {
+          const t1 = startUploadToast("Upload 1");
+          startUploadToast("Upload 2");
+          t1.update(75);
+        }}>
+          Multi Update
+        </button>
+      );
+    }
+    render(
+      <ToastProvider>
+        <MultiProgressTest />
+      </ToastProvider>
+    );
+    act(() => { screen.getByText("Multi Update").click(); });
+    const bars = document.querySelectorAll(".toast__progress-bar");
+    expect(bars.length).toBe(2);
+    expect((bars[0] as HTMLElement).style.width).toBe("75%");
+  });
+
+  it("completes only the targeted progress toast when multiple exist", () => {
+    function MultiCompleteTest() {
+      const { startUploadToast } = useToast();
+      return (
+        <button onClick={() => {
+          const t1 = startUploadToast("Upload 1");
+          startUploadToast("Upload 2");
+          t1.complete("Done");
+        }}>
+          Multi Complete
+        </button>
+      );
+    }
+    render(
+      <ToastProvider>
+        <MultiCompleteTest />
+      </ToastProvider>
+    );
+    act(() => { screen.getByText("Multi Complete").click(); });
+    expect(screen.getByText("Done")).toBeDefined();
+    expect(document.querySelectorAll(".toast").length).toBe(2);
+  });
+
+  it("errors only the targeted progress toast when multiple exist", () => {
+    function MultiErrorTest() {
+      const { startUploadToast } = useToast();
+      return (
+        <button onClick={() => {
+          const t1 = startUploadToast("Upload 1");
+          startUploadToast("Upload 2");
+          t1.error("Failed");
+        }}>
+          Multi Error
+        </button>
+      );
+    }
+    render(
+      <ToastProvider>
+        <MultiErrorTest />
+      </ToastProvider>
+    );
+    act(() => { screen.getByText("Multi Error").click(); });
+    expect(screen.getByText("Failed")).toBeDefined();
+    expect(document.querySelectorAll(".toast").length).toBe(2);
   });
 });

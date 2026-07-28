@@ -189,4 +189,16 @@ describe("AccessibilityPanel", () => {
     localStorageMock.getItem = vi.fn(() => "{invalid json}");
     expect(() => render(<AccessibilityPanel open={true} onClose={vi.fn()} />)).not.toThrow();
   });
+
+  it("handles JSON parse returning null", () => {
+    localStorageMock.getItem = vi.fn(() => "null");
+    render(<AccessibilityPanel open={true} onClose={vi.fn()} />);
+    expect(screen.getByText("a11y.title")).toBeDefined();
+  });
+
+  it("handles empty localStorage string", () => {
+    localStorageMock.getItem = vi.fn(() => "");
+    render(<AccessibilityPanel open={true} onClose={vi.fn()} />);
+    expect(screen.getByText("a11y.title")).toBeDefined();
+  });
 });

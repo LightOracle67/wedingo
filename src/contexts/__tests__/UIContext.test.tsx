@@ -1,8 +1,12 @@
 import { describe, it, expect, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 
 vi.mock("react-router-dom", () => ({
   useLocation: () => ({ pathname: "/test" }),
+}));
+
+vi.mock("react-i18next", () => ({
+  useTranslation: () => ({ t: (key: string) => key }),
 }));
 
 import { UIProvider } from "../UIContext";
@@ -27,6 +31,26 @@ describe("UIProvider", () => {
       </UIProvider>
     );
     expect(screen.getByRole("dialog")).toBeDefined();
+  });
+
+  it("closes LegalModal on close button click", async () => {
+    function Consumer() {
+      const ctx = useContext(UIContext);
+      useEffect(() => { ctx.setLegalModal("privacy"); }, [ctx]);
+      return null;
+    }
+    const { container } = render(
+      <UIProvider>
+        <Consumer />
+      </UIProvider>
+    );
+    expect(screen.getByRole("dialog")).toBeDefined();
+    const closeBtn = container.querySelector(".modal-close");
+    expect(closeBtn).toBeDefined();
+    fireEvent.click(closeBtn!);
+    await waitFor(() => {
+      expect(screen.queryByRole("dialog")).toBeNull();
+    });
   });
 
   it("clears messages when location changes", () => {

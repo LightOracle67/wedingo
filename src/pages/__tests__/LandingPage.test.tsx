@@ -299,4 +299,130 @@ describe("LandingPage", () => {
       expect(screen.getByText("landing.errorTooManyAttempts")).toBeDefined();
     });
   });
+
+  it("blocks login after 3 short-token attempts", async () => {
+    render(<LandingPage />);
+    fireEvent.click(screen.getByText("landing.haveInvitation"));
+    const form = screen.getByRole("dialog").querySelector("form")!;
+    for (let i = 0; i < 4; i++) {
+      fireEvent.change(screen.getByLabelText("landing.usernameLabel"), { target: { value: "user" } });
+      fireEvent.change(screen.getByLabelText("landing.tokenLabel"), { target: { value: "shrt" } });
+      fireEvent.submit(form);
+    }
+    await vi.waitFor(() => {
+      expect(screen.getByText("landing.errorTooManyAttempts")).toBeDefined();
+    });
+  });
+
+  it("handles session exists confirm and continues login", async () => {
+    const { getDocs, getDoc, runTransaction } = await import("firebase/firestore");
+    vi.mocked(getDocs).mockResolvedValue({
+      empty: false,
+      docs: [{ id: "target-invite", data: () => ({}) }],
+    } as any);
+    vi.mocked(getDoc).mockResolvedValue({
+      exists: () => true,
+      data: () => ({ activeSession: true }),
+    } as any);
+    vi.mocked(runTransaction).mockImplementation(async (_db: any, cb: any) => {
+      await cb({
+        get: vi.fn().mockResolvedValue({ exists: () => false }),
+        set: vi.fn(),
+        update: vi.fn(),
+      });
+    });
+    window.confirm = vi.fn(() => true);
+
+    render(<LandingPage />);
+    fireEvent.click(screen.getByText("landing.haveInvitation"));
+    fireEvent.change(screen.getByLabelText("landing.usernameLabel"), { target: { value: "user" } });
+    fireEvent.change(screen.getByLabelText("landing.tokenLabel"), { target: { value: "ABCDEFGHIJKLMNOPQRSTUVWXYZ" } });
+    const form = screen.getByRole("dialog").querySelector("form")!;
+    fireEvent.submit(form);
+    await vi.waitFor(() => {
+      expect(mockNavigate).toHaveBeenCalledWith("/target-invite");
+    });
+  });
+
+  it("cancels login when session exists and user declines", async () => {
+    const { getDocs, getDoc } = await import("firebase/firestore");
+    vi.mocked(getDocs).mockResolvedValue({
+      empty: false,
+      docs: [{ id: "target-invite", data: () => ({}) }],
+    } as any);
+    vi.mocked(getDoc).mockResolvedValue({
+      exists: () => true,
+      data: () => ({ activeSession: true }),
+    } as any);
+    window.confirm = vi.fn(() => false);
+
+    render(<LandingPage />);
+    fireEvent.click(screen.getByText("landing.haveInvitation"));
+    fireEvent.change(screen.getByLabelText("landing.usernameLabel"), { target: { value: "user" } });
+    fireEvent.change(screen.getByLabelText("landing.tokenLabel"), { target: { value: "ABCDEFGHIJKLMNOPQRSTUVWXYZ" } });
+    const form = screen.getByRole("dialog").querySelector("form")!;
+    fireEvent.submit(form);
+    await vi.waitFor(() => {
+      expect(screen.getByText("landing.modalTitle")).toBeDefined();
+    });
+    expect(mockNavigate).not.toHaveBeenCalled();
+  });
+
+  it("handles rate limiting on verify failure", async () => {
+    const { getDocs } = await import("firebase/firestore");
+    vi.mocked(getDocs).mockRejectedValue(new Error("network error"));
+
+    render(<LandingPage />);
+    fireEvent.click(screen.getByText("landing.haveInvitation"));
+    const form = screen.getByRole("dialog").querySelector("form")!;
+    for (let i = 0; i < 4; i++) {
+      fireEvent.change(screen.getByLabelText("landing.usernameLabel"), { target: { value: "user" } });
+      fireEvent.change(screen.getByLabelText("landing.tokenLabel"), { target: { value: "ABCDEFGHIJKLMNOPQRSTUVWXYZ" } });
+      fireEvent.submit(form);
+      await new Promise((r) => setTimeout(r, 10));
+    }
+    await vi.waitFor(() => {
+      expect(screen.getByText("landing.errorTooManyAttempts")).toBeDefined();
+    });
+  });
+
+  it("handles rate limiting on token not found", async () => {
+    const { getDocs } = await import("firebase/firestore");
+    const errMock = vi.mocked(getDocs);
+    errMock.mockResolvedValue({ empty: true, docs: [] } as any);
+
+    render(<LandingPage />);
+    fireEvent.click(screen.getByText("landing.haveInvitation"));
+    const form = screen.getByRole("dialog").querySelector("form")!;
+    for (let i = 0; i < 4; i++) {
+      fireEvent.change(screen.getByLabelText("landing.usernameLabel"), { target: { value: "user" } });
+      fireEvent.change(screen.getByLabelText("landing.tokenLabel"), { target: { value: "ABCDEFGHIJKLMNOPQRSTUVWXYZ" } });
+      fireEvent.submit(form);
+      await new Promise((r) => setTimeout(r, 10));
+    }
+    await vi.waitFor(() => {
+      expect(screen.getByText("landing.errorTooManyAttempts")).toBeDefined();
+    });
+  });
+
+  it("handles rate limiting on username mismatch", async () => {
+    const { getDocs } = await import("firebase/firestore");
+    vi.mocked(getDocs).mockResolvedValue({
+      empty: false,
+      docs: [{ id: "target-invite", data: () => ({ adminUsername: "jane" }) }],
+    } as any);
+
+    render(<LandingPage />);
+    fireEvent.click(screen.getByText("landing.haveInvitation"));
+    const form = screen.getByRole("dialog").querySelector("form")!;
+    for (let i = 0; i < 4; i++) {
+      fireEvent.change(screen.getByLabelText("landing.usernameLabel"), { target: { value: "john" } });
+      fireEvent.change(screen.getByLabelText("landing.tokenLabel"), { target: { value: "ABCDEFGHIJKLMNOPQRSTUVWXYZ" } });
+      fireEvent.submit(form);
+      await new Promise((r) => setTimeout(r, 10));
+    }
+    await vi.waitFor(() => {
+      expect(screen.getByText("landing.errorTooManyAttempts")).toBeDefined();
+    });
+  });
 });

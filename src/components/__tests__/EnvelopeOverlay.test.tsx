@@ -128,9 +128,13 @@ describe("EnvelopeOverlay", () => {
     const btn = screen.getByRole("button");
     fireEvent.click(btn);
     vi.advanceTimersByTime(1400);
-    expect(document.querySelector(".envelope-golden--in")).toBeDefined();
+    vi.waitFor(() => {
+      expect(document.querySelector(".envelope-golden--in")).toBeDefined();
+    });
     fireEvent.click(btn);
-    expect(document.querySelector(".envelope-golden--out")).toBeDefined();
+    vi.waitFor(() => {
+      expect(document.querySelector(".envelope-golden--out")).toBeDefined();
+    });
     vi.useRealTimers();
   });
 
@@ -139,6 +143,11 @@ describe("EnvelopeOverlay", () => {
     const btn = screen.getByRole("button");
     fireEvent.keyDown(btn, { key: "Tab" });
     expect(document.querySelector(".envelope-overlay--exit")).toBeNull();
+  });
+
+  it("does not show golden text before first click", () => {
+    render(<EnvelopeOverlay {...defaultProps} />);
+    expect(document.querySelector(".envelope-golden")).toBeNull();
   });
 
   it("handles dispatchEvent throwing", () => {

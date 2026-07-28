@@ -112,4 +112,37 @@ describe("SuperAdminPanel", () => {
     const firstTab = await screen.findByText("superadmin.tabs.dashboard");
     expect(firstTab.closest("button")?.getAttribute("aria-selected")).toBe("true");
   });
+
+  it("switches to data tab", async () => {
+    render(
+      <Suspense fallback={null}>
+        <SuperAdminPanel />
+      </Suspense>
+    );
+    await screen.findByTestId("dashboard-tab");
+    fireEvent.click(screen.getByText("superadmin.tabs.data"));
+    expect(await screen.findByTestId("data-tab")).toBeDefined();
+  });
+
+  it("switches to settings tab", async () => {
+    render(
+      <Suspense fallback={null}>
+        <SuperAdminPanel />
+      </Suspense>
+    );
+    await screen.findByTestId("dashboard-tab");
+    fireEvent.click(screen.getByText("superadmin.tabs.session"));
+    expect(await screen.findByTestId("settings-tab")).toBeDefined();
+  });
+
+  it("switches to compliance tab", async () => {
+    render(
+      <Suspense fallback={null}>
+        <SuperAdminPanel />
+      </Suspense>
+    );
+    await screen.findByTestId("dashboard-tab");
+    fireEvent.click(screen.getByText("superadmin.tabs.compliance"));
+    expect(await screen.findByTestId("compliance-tab")).toBeDefined();
+  });
 });

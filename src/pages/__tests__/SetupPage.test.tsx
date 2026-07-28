@@ -258,4 +258,62 @@ describe("SetupPage", () => {
     render(<SetupPage />);
     expect(refreshFn).toHaveBeenCalled();
   });
+
+  it("selects token input text on focus", () => {
+    const selectMock = vi.fn();
+    HTMLInputElement.prototype.select = selectMock;
+    mockUseApp.mockReturnValue({
+      ...baseMock,
+      hasStoredConfig: true,
+      saveMessage: "Saved!",
+      setupToken: "my-setup-token-123",
+    });
+
+    render(<SetupPage />);
+    const input = screen.getByDisplayValue("my-setup-token-123");
+    fireEvent.focus(input);
+    expect(selectMock).toHaveBeenCalled();
+  });
+
+  it("navigates to cover page when viewCover is clicked", () => {
+    Object.defineProperty(globalThis, "navigator", {
+      value: { credentials: { store: vi.fn() }, clipboard: { writeText: vi.fn() } },
+      configurable: true,
+      writable: true,
+    });
+    mockUseApp.mockReturnValue({
+      ...baseMock,
+      hasStoredConfig: true,
+      saveMessage: "Saved!",
+      setupToken: "my-setup-token-123",
+      config: { ...baseMock.config, adminUsername: "admin" },
+    });
+
+    render(<SetupPage />);
+    const continueBtn = screen.getByText("setup.tokenModalContinue");
+    fireEvent.click(continueBtn);
+    fireEvent.click(screen.getByText("setup.viewCover"));
+    expect(mockNavigate).toHaveBeenCalledWith("/test-token");
+  });
+
+  it("navigates to admin panel from success card", () => {
+    Object.defineProperty(globalThis, "navigator", {
+      value: { credentials: { store: vi.fn() }, clipboard: { writeText: vi.fn() } },
+      configurable: true,
+      writable: true,
+    });
+    mockUseApp.mockReturnValue({
+      ...baseMock,
+      hasStoredConfig: true,
+      saveMessage: "Saved!",
+      setupToken: "my-setup-token-123",
+      config: { ...baseMock.config, adminUsername: "admin" },
+    });
+
+    render(<SetupPage />);
+    const continueBtn = screen.getByText("setup.tokenModalContinue");
+    fireEvent.click(continueBtn);
+    fireEvent.click(screen.getByText("setup.goToPanel"));
+    expect(mockNavigate).toHaveBeenCalledWith("/test-token/admin");
+  });
 });

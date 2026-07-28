@@ -171,6 +171,8 @@ describe("SectionOrderEditor", () => {
 
     const detailsUp = screen.getByRole("button", { name: "sectionOrder.moveUp details.sectionLabel" });
     expect(detailsUp).toBeDisabled();
+    fireEvent.click(detailsUp);
+    expect(onChange).not.toHaveBeenCalled();
   });
 
   it("does not move down last item", () => {
@@ -181,5 +183,25 @@ describe("SectionOrderEditor", () => {
     const lastItemLabel = items[items.length - 1].querySelector(".section-order-item__label")?.textContent;
     const lastDownBtn = screen.getByRole("button", { name: `sectionOrder.moveDown accommodation.sectionLabel` });
     expect(lastDownBtn).toBeDisabled();
+    fireEvent.click(lastDownBtn);
+    expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it("triggers moveUp early return when index <= 1 via dispatchEvent", () => {
+    const onChange = vi.fn();
+    render(<SectionOrderEditor {...defaultProps} onChange={onChange} />);
+
+    const detailsUp = screen.getByRole("button", { name: "sectionOrder.moveUp details.sectionLabel" });
+    detailsUp.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it("triggers moveDown early return when index is last", () => {
+    const onChange = vi.fn();
+    render(<SectionOrderEditor {...defaultProps} onChange={onChange} />);
+
+    const lastDownBtn = screen.getByRole("button", { name: "sectionOrder.moveDown accommodation.sectionLabel" });
+    lastDownBtn.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    expect(onChange).not.toHaveBeenCalled();
   });
 });

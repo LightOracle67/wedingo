@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
-import { render, screen, act } from "@testing-library/react";
+import { render, screen, act, fireEvent } from "@testing-library/react";
 
 const mockUseAppValue = vi.hoisted(() => ({
   config: {
@@ -143,5 +143,35 @@ describe("PublicInvitation", () => {
     mockUseAppValue.locationMapTarget = { latitude: 40.4168, longitude: -3.7038, label: "Madrid" };
     expect(() => render(<PublicInvitation />)).not.toThrow();
     mockUseAppValue.locationMapTarget = null;
+  });
+
+  it("shows retry button in error state and handles click", () => {
+    const reloadMock = vi.fn();
+    const origLocation = window.location;
+    delete (window as any).location;
+    (window as any).location = { reload: reloadMock };
+    mockUseAppValue.configLoadError = "error.test";
+    render(<PublicInvitation />);
+    const retryBtn = screen.getByText("common.retry");
+    expect(retryBtn).toBeDefined();
+    fireEvent.click(retryBtn);
+    expect(reloadMock).toHaveBeenCalled();
+    mockUseAppValue.configLoadError = "";
+    (window as any).location = origLocation;
+  });
+
+  it("shows envelope overlay in non-admin mode", () => {
+    mockUseAppValue.isAdminTokenLoggedIn = false;
+    render(<PublicInvitation />);
+    expect(screen.getByLabelText("envelope.tapContinue")).toBeDefined();
+    mockUseAppValue.isAdminTokenLoggedIn = true;
+  });
+
+  it("opens envelope on click", () => {
+    mockUseAppValue.isAdminTokenLoggedIn = false;
+    render(<PublicInvitation />);
+    const envelopeBtn = screen.getByLabelText("envelope.tapContinue");
+    fireEvent.click(envelopeBtn);
+    mockUseAppValue.isAdminTokenLoggedIn = true;
   });
 });
