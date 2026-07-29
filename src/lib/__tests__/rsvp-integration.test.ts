@@ -27,6 +27,10 @@ vi.mock("../../lib/crypto-utils", () => ({
   decrypt: vi.fn((text) => Promise.resolve(text.replace("encrypted-", ""))),
 }));
 
+vi.mock("../../lib/date-utils", () => ({
+  computeAge: vi.fn(() => 25),
+}));
+
 import { useRsvp } from "../../hooks/useRsvp";
 import { renderHook, act } from "@testing-library/react";
 
@@ -38,56 +42,29 @@ describe("RSVP Integration", () => {
     vi.clearAllMocks();
   });
 
-  it("starts with empty form and one attendee slot", () => {
+  it("starts with default empty form", () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
     expect(result.current.rsvpForm.guestName).toBe("");
-    expect(result.current.rsvpForm.attendance).toBe("yes");
-    expect(result.current.rsvpForm.attendees).toHaveLength(1);
-    expect(result.current.rsvpForm.attendees[0].name).toBe("");
-    expect(result.current.rsvpForm.attendees[0].menu).toBe("");
+    expect(result.current.rsvpForm.attendance).toBe("alone");
+    expect(result.current.rsvpForm.companionCount).toBe(0);
+    expect(result.current.rsvpForm.companionNames).toEqual([]);
+    expect(result.current.rsvpForm.privacyConsent).toBe(false);
   });
 
-  it("updates attendee name", () => {
+  it("sets companion count and fills names", () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
-    act(() => {
-      const attendees = [...result.current.rsvpForm.attendees];
-      attendees[0].name = "Juan";
-      result.current.updateRsvpField("attendees", attendees);
-    });
-    expect(result.current.rsvpForm.attendees[0].name).toBe("Juan");
-  });
-
-  it("adds a new attendee", () => {
-    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
-    act(() => {
-      const attendees = [...result.current.rsvpForm.attendees, { name: "", menu: "", allergies: [] as string[] }];
-      result.current.updateRsvpField("attendees", attendees);
-    });
-    expect(result.current.rsvpForm.attendees).toHaveLength(2);
-  });
-
-  it("removes an attendee", () => {
-    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
-    act(() => {
-      const attendees = [...result.current.rsvpForm.attendees, { name: "Ana", menu: "", allergies: [] as string[] }];
-      result.current.updateRsvpField("attendees", attendees);
-    });
-    expect(result.current.rsvpForm.attendees).toHaveLength(2);
-    act(() => {
-      const remaining = result.current.rsvpForm.attendees.filter((_: any, i: number) => i !== 1);
-      result.current.updateRsvpField("attendees", remaining);
-    });
-    expect(result.current.rsvpForm.attendees).toHaveLength(1);
+    act(() => { result.current.updateRsvpField("companionCount", 2); });
+    expect(result.current.rsvpForm.companionCount).toBe(2);
+    expect(result.current.rsvpForm.companionNames).toHaveLength(2);
+    act(() => { result.current.updateRsvpField("companionNames[0]", "Alice"); });
+    act(() => { result.current.updateRsvpField("companionNames[1]", "Bob"); });
+    expect(result.current.rsvpForm.companionNames).toEqual(["Alice", "Bob"]);
   });
 
   it("submits RSVP successfully", async () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
     
     act(() => { result.current.updateRsvpField("guestName", "García"); });
-    act(() => {
-      const attendees = [{ name: "Juan", menu: "", allergies: [] as string[] }];
-      result.current.updateRsvpField("attendees", attendees);
-    });
     act(() => { result.current.updateRsvpField("privacyConsent", true); });
     act(() => { result.current.updateRsvpField("birthDate", "1990-01-01"); });
 
@@ -98,6 +75,29 @@ describe("RSVP Integration", () => {
 
     expect(event.preventDefault).toHaveBeenCalled();
     expect(addDoc).toHaveBeenCalled();
+  });
+
+  it("submits with companions", async () => {
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+    
+    act(() => { result.current.updateRsvpField("guestName", "García"); });
+    act(() => { result.current.updateRsvpField("attendance", "with"); });
+    act(() => { result.current.updateRsvpField("companionCount", 2); });
+    act(() => { result.current.updateRsvpField("companionNames[0]", "Alice"); });
+    act(() => { result.current.updateRsvpField("companionNames[1]", "Bob"); });
+    act(() => { result.current.updateRsvpField("privacyConsent", true); });
+    act(() => { result.current.updateRsvpField("birthDate", "1990-01-01"); });
+
+    const event = { preventDefault: vi.fn() } as unknown as React.FormEvent;
+    await act(async () => {
+      await result.current.handleRsvpSubmit(event);
+    });
+
+    expect(addDoc).toHaveBeenCalled();
+    const payload = (addDoc as any).mock.calls[0][1];
+    expect(payload.companionCount).toBe(2);
+    expect(payload.companionNames).toEqual(["Alice", "Bob"]);
+    expect(payload.attendance).toBe("yes");
   });
 
   it("shows error when guestName is empty", async () => {
@@ -111,17 +111,18 @@ describe("RSVP Integration", () => {
     expect(result.current.rsvpMessage).toBeTruthy();
   });
 
-  it("resets attendees when attendance changes to no", () => {
+  it("resets companionCount when attendance changes to no", () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
     act(() => { result.current.updateRsvpField("attendance", "no"); });
-    expect(result.current.rsvpForm.attendees).toEqual([]);
+    expect(result.current.rsvpForm.companionCount).toBe(0);
+    expect(result.current.rsvpForm.companionNames).toEqual([]);
   });
 
-  it("adds one attendee when changing back to yes", () => {
+  it("sets companionCount to 1 when changing to with", () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
     act(() => { result.current.updateRsvpField("attendance", "no"); });
-    expect(result.current.rsvpForm.attendees).toEqual([]);
-    act(() => { result.current.updateRsvpField("attendance", "yes"); });
-    expect(result.current.rsvpForm.attendees).toHaveLength(1);
+    expect(result.current.rsvpForm.companionCount).toBe(0);
+    act(() => { result.current.updateRsvpField("attendance", "with"); });
+    expect(result.current.rsvpForm.companionCount).toBe(1);
   });
 });

@@ -18,7 +18,10 @@ interface LegacyEntry {
 interface RsvpFormData {
   guestName: string;
   attendance: string;
-  attendees: Attendee[];
+  companionCount: number;
+  companionNames: string[];
+  menuSelection: string;
+  allergies: string[];
   privacyConsent: boolean;
   healthConsent: boolean;
   birthDate: string;
@@ -32,6 +35,8 @@ interface RsvpEntryData {
   dietaryInfo: string;
   attendees: Attendee[];
   companions: number;
+  companionCount: number;
+  companionNames: string[];
   mealChoice: string;
   menuHeadcounts: Record<string, number>;
   guestNames: string;
@@ -66,6 +71,21 @@ function legacyToAttendees(entry: LegacyEntry) {
   return attendees;
 }
 
+function RsvpFormDefault(): RsvpFormData {
+  return {
+    guestName: "",
+    attendance: "alone",
+    companionCount: 0,
+    companionNames: [],
+    menuSelection: "",
+    allergies: [],
+    privacyConsent: false,
+    healthConsent: false,
+    birthDate: "",
+    parentalConsent: false,
+  };
+}
+
 export function useRsvp(
   inviteToken: string,
   setAdminMessage: (msg: string) => void,
@@ -74,16 +94,7 @@ export function useRsvp(
 ) {
   const { t } = useTranslation();
   const [rsvpEntries, setRsvpEntries] = useState<RsvpEntryData[]>([]);
-  const [rsvpForm, setRsvpForm] = useState<RsvpFormData>({
-    guestName: "",
-    attendance: "yes",
-    attendees: [{ name: "", menu: "", allergies: [] }],
-
-    privacyConsent: false,
-    healthConsent: false,
-    birthDate: "",
-    parentalConsent: false,
-  });
+  const [rsvpForm, setRsvpForm] = useState<RsvpFormData>(RsvpFormDefault());
   const [rsvpMessage, setRsvpMessage] = useState("");
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [alreadySubmittedEntry, setAlreadySubmittedEntry] = useState<RsvpEntryData | null>(null);
@@ -132,6 +143,8 @@ export function useRsvp(
                 dietaryInfo: decryptedDietaryInfo,
                 attendees,
                 companions: attendees.length > 0 ? attendees.length : (Number.isFinite(data.companions) ? data.companions : 0),
+                companionCount: data.companionCount || 0,
+                companionNames: data.companionNames || [],
                 mealChoice: data.mealChoice || "",
                 menuHeadcounts: data.menuHeadcounts || {},
                 guestNames: data.guestNames || "",
@@ -166,10 +179,16 @@ export function useRsvp(
       if (match.id !== prefillRef.current) {
         prefillRef.current = match.id;
         setAlreadySubmittedEntry(match);
+        const companionCount = match.companionCount || Math.max(0, (match.attendees?.length || 1) - 1);
+        const companionNames = match.companionNames?.length
+          ? match.companionNames
+          : (match.attendees?.slice(1).map((a: Attendee) => a.name) || []);
         setRsvpForm((current) => ({
           ...current,
-          attendance: match.attendance,
-          attendees: match.attendees || [],
+          attendance: companionCount > 0 ? "with" : "alone",
+          companionCount,
+          companionNames: companionNames.length ? companionNames : [],
+          menuSelection: match.mealChoice || "",
         }));
       } else {
         setAlreadySubmittedEntry(match);
@@ -186,9 +205,28 @@ export function useRsvp(
     if (field === "attendance") {
       setRsvpForm((current) => ({
         ...current,
-        attendance: value,
-        attendees: value === "no" ? [] : (current.attendees?.length ? current.attendees : [{ name: "", menu: "", allergies: [] }]),
+        attendance: value as string,
+        companionCount: value === "no" ? 0 : (value === "alone" ? 0 : (current.companionCount || 1)),
+        companionNames: value === "no" ? [] : current.companionNames,
       }));
+      return;
+    }
+    if (field === "companionCount") {
+      const count = Math.max(0, Math.min(10, Number(value) || 0));
+      setRsvpForm((current) => {
+        const names = current.companionNames.slice(0, count);
+        while (names.length < count) names.push("");
+        return { ...current, companionCount: count, companionNames: names };
+      });
+      return;
+    }
+    if (field.startsWith("companionNames[")) {
+      const idx = parseInt(field.match(/\d+/)?.[0] || "0", 10);
+      setRsvpForm((current) => {
+        const names = [...current.companionNames];
+        names[idx] = String(value).slice(0, 120);
+        return { ...current, companionNames: names };
+      });
       return;
     }
     if (field === "guestName") {
@@ -199,47 +237,43 @@ export function useRsvp(
 
   const validateRsvpData = useCallback((data: RsvpFormData) => {
     if (!data.guestName?.trim()) return t("rsvp.validation.nameRequired");
-    if (data.attendance === "yes" && !data.birthDate) return t("rsvp.validation.birthDateRequired");
-    if (data.attendance === "yes") {
-      const invalidAttendee = data.attendees.find((a: Attendee) => !a.name.trim());
-      if (invalidAttendee) return t("rsvp.validation.nameRequired");
+    if (data.attendance !== "no" && !data.birthDate) return t("rsvp.validation.birthDateRequired");
+    if (data.attendance === "with" && data.companionCount > 0) {
+      const hasEmptyName = data.companionNames.slice(0, data.companionCount).some((n) => !n.trim());
+      if (hasEmptyName) return t("rsvp.validation.nameRequired");
     }
-    if (data.attendance === "yes" && menuEnabled) {
-      const missingMenu = data.attendees.find((a: Attendee) => !a.menu);
-      if (missingMenu) return t("rsvp.validation.menuHeadcountRequired");
-    }
+    if (data.attendance !== "no" && menuEnabled && !data.menuSelection) return t("rsvp.validation.menuHeadcountRequired");
     if (!data.privacyConsent) return t("rsvp.validation.privacyRequired");
     if (!data.birthDate) return t("rsvp.validation.birthDateRequired");
     const age = computeAge(data.birthDate);
     if (age !== null && age < 14 && !data.parentalConsent) return t("rsvp.validation.ageUnder14");
-    if (data.attendance === "yes") {
-      const hasHealthData = data.attendees.some((a: Attendee) => a.allergies && a.allergies.length > 0);
+    if (data.attendance !== "no") {
+      const hasHealthData = data.allergies && data.allergies.length > 0;
       if (hasHealthData && !data.healthConsent) return t("rsvp.validation.healthConsentRequired");
     }
     return null;
   }, [t, menuEnabled]);
 
   const submitRsvpData = useCallback(async (data: RsvpFormData) => {
-    const allAllergies = data.attendees.flatMap((a: Attendee) => a.allergies || []);
-    const dietaryInfo = allAllergies.filter(Boolean).join(" | ");
+    const allergies = data.allergies || [];
+    const dietaryInfo = allergies.filter(Boolean).join(" | ");
     const encryptedDietaryInfo = await encrypt(dietaryInfo, inviteToken);
     const age = computeAge(data.birthDate);
     const single = data.guestName.trim();
     const now = new Date().toISOString();
+    const isAttending = data.attendance !== "no";
     const payload: Record<string, unknown> = {
       guestName: single,
-      attendance: data.attendance,
-      attendees: data.attendees.map((a: Attendee) => ({
-        name: a.name,
-        menu: a.menu || "",
-        allergies: a.allergies || [],
-      })),
+      attendance: isAttending ? "yes" : "no",
+      companionCount: data.companionCount || 0,
+      companionNames: data.companionNames.slice(0, data.companionCount || 0),
       dietaryInfo: encryptedDietaryInfo,
       inviteToken,
       submittedAt: serverTimestamp(),
       privacyConsent: true,
       privacyConsentAt: serverTimestamp(),
     };
+    if (data.menuSelection) payload.mealChoice = data.menuSelection;
     if (data.birthDate) payload.birthDate = data.birthDate;
     if (age !== null && age < 14) payload.parentalConsent = true;
     if (data.healthConsent) {
@@ -248,19 +282,15 @@ export function useRsvp(
     }
     const docRef = await addDoc(RSVP_COLLECTION_REF, payload);
     setRsvpEntries((current) => [
-      { ...(payload as unknown as RsvpEntryData), id: docRef.id, submittedAt: now, dietaryInfo },
+      { ...(payload as unknown as RsvpEntryData), id: docRef.id, submittedAt: now, dietaryInfo, attendees: [], companions: 0, menuHeadcounts: {}, guestNames: "", note: "" },
       ...current,
     ]);
     setRsvpMessage(
-      data.attendance === "yes"
+      isAttending
         ? t("rsvp.successAttending", { name: single })
         : t("rsvp.successNotAttending", { name: single }),
     );
-    setRsvpForm({
-      guestName: "", attendance: "yes", attendees: [{ name: "", menu: "", allergies: [] }],
-      privacyConsent: false, healthConsent: false,
-      birthDate: "", parentalConsent: false,
-    });
+    setRsvpForm(RsvpFormDefault());
     setHasSubmitted(true);
     setAlreadySubmittedEntry(null);
     prefillRef.current = null;
@@ -288,11 +318,7 @@ export function useRsvp(
       await deleteDoc(doc(RSVP_COLLECTION_REF, alreadySubmittedEntry.id));
       setRsvpEntries((current) => current.filter((e) => e.id !== alreadySubmittedEntry.id));
       setRsvpMessage(t("rsvp.withdrawSuccess"));
-        setRsvpForm({
-          guestName: "", attendance: "yes", attendees: [{ name: "", menu: "", allergies: [] }],
-          privacyConsent: false, healthConsent: false,
-          birthDate: "", parentalConsent: false,
-        });
+        setRsvpForm(RsvpFormDefault());
         setAlreadySubmittedEntry(null);
         prefillRef.current = null;
       setHasSubmitted(false);

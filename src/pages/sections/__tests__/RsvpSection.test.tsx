@@ -10,23 +10,19 @@ vi.mock("../../../contexts", () => ({
   useApp: () => ({ setLegalModal: vi.fn() }),
 }));
 
-vi.mock("../../../components/AttendeeCard", () => ({
-  default: ({ index, attendee }: { index: number; attendee: { name: string } }) => (
-    <div data-testid={`attendee-${index}`}>{attendee.name || "Unnamed"}</div>
-  ),
-}));
-
 import RsvpSection from "../RsvpSection";
 
 const baseForm = {
   guestName: "",
-  attendance: "yes",
+  attendance: "alone",
   birthDate: "",
-  attendees: [],
+  companionCount: 0,
+  companionNames: [],
+  menuSelection: "",
+  allergies: [],
   parentalConsent: false,
   privacyConsent: false,
   healthConsent: false,
-  notAttendingCount: 1,
 };
 
 const baseProps = {
@@ -81,48 +77,37 @@ describe("RsvpSection", () => {
     expect(handleDeleteRsvp).toHaveBeenCalled();
   });
 
-  it("shows not attending attendance option", () => {
+  it("shows companion count input when attendance is with", () => {
     render(
       <RsvpSection
         {...baseProps}
-        rsvpForm={{ ...baseForm, attendance: "no" }}
+        rsvpForm={{ ...baseForm, attendance: "with" }}
       />,
     );
-    expect(screen.getByText((text: string) => text.includes("rsvp.notAttendingCountLabel"))).toBeDefined();
+    expect(screen.getByText((text: string) => text.includes("rsvp.companionCountLabel"))).toBeDefined();
   });
 
-  it("shows attendee section when attending", () => {
-    render(<RsvpSection {...baseProps} rsvpForm={{ ...baseForm, attendance: "yes" }} />);
-    expect(screen.getByText("rsvp.attendeesLabel")).toBeDefined();
-    expect(screen.getByText("+ rsvp.addAttendee")).toBeDefined();
-  });
-
-  it("adds an attendee", () => {
-    const updateRsvpField = vi.fn();
+  it("shows companion name inputs when companionCount > 0", () => {
     render(
       <RsvpSection
         {...baseProps}
-        rsvpForm={{ ...baseForm, attendance: "yes" }}
-        updateRsvpField={updateRsvpField}
+        rsvpForm={{ ...baseForm, attendance: "with", companionCount: 2, companionNames: ["", ""] }}
       />,
     );
-    fireEvent.click(screen.getByText("+ rsvp.addAttendee"));
-    expect(updateRsvpField).toHaveBeenCalledWith("attendees", [{ name: "", menu: "", allergies: [] }]);
+    expect(screen.getAllByText((text: string) => text === "rsvp.companionNameLabel")).toHaveLength(2);
   });
 
-  it("shows age warning when under 14", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
-        computeAge={() => 10}
-        rsvpForm={{ ...baseForm, birthDate: "2016-01-01" }}
-      />,
-    );
-    expect(screen.getByText("rsvp.ageUnder14Warning")).toBeDefined();
-    expect(screen.getByText("rsvp.parentalConsent")).toBeDefined();
+  it("does not show companion count when attendance is alone", () => {
+    render(<RsvpSection {...baseProps} rsvpForm={{ ...baseForm, attendance: "alone" }} />);
+    expect(screen.queryByText((text: string) => text.includes("rsvp.companionCountLabel"))).toBeNull();
   });
 
-  it("shows structured menu when enabled", () => {
+  it("does not show companion count when attendance is no", () => {
+    render(<RsvpSection {...baseProps} rsvpForm={{ ...baseForm, attendance: "no" }} />);
+    expect(screen.queryByText((text: string) => text.includes("rsvp.companionCountLabel"))).toBeNull();
+  });
+
+  it("shows structured menu when enabled and attending", () => {
     render(
       <RsvpSection
         {...baseProps}
@@ -150,14 +135,14 @@ describe("RsvpSection", () => {
     expect(screen.getByText("Custom menu info")).toBeDefined();
   });
 
-  it("shows health consent when dietary data exists", () => {
+  it("shows health consent when allergies exist", () => {
     render(
       <RsvpSection
         {...baseProps}
         rsvpForm={{
           ...baseForm,
-          attendance: "yes",
-          attendees: [{ name: "Test", menu: "", allergies: ["sin gluten"] }],
+          attendance: "alone",
+          allergies: ["sin gluten"],
         }}
       />,
     );
@@ -182,14 +167,46 @@ describe("RsvpSection", () => {
     expect(screen.getByText("Chocolate cake")).toBeDefined();
   });
 
-  it("shows allergies hint when not menuEnabled", () => {
+  it("shows allergies hint when not menuEnabled and attending", () => {
     render(
       <RsvpSection
         {...baseProps}
         menuEnabled={false}
-        rsvpForm={{ ...baseForm, attendance: "yes" }}
+        rsvpForm={{ ...baseForm, attendance: "alone" }}
       />,
     );
     expect(screen.getByText("rsvp.allergiesHint")).toBeDefined();
+  });
+
+  it("shows allergies checkboxes when attending", () => {
+    render(
+      <RsvpSection
+        {...baseProps}
+        rsvpForm={{ ...baseForm, attendance: "alone" }}
+      />,
+    );
+    expect(screen.getByText("rsvp.allergiesLegend")).toBeDefined();
+  });
+
+  it("hides allergies section when not attending", () => {
+    render(
+      <RsvpSection
+        {...baseProps}
+        rsvpForm={{ ...baseForm, attendance: "no" }}
+      />,
+    );
+    expect(screen.queryByText("rsvp.allergiesLegend")).toBeNull();
+  });
+
+  it("shows age warning when under 14", () => {
+    render(
+      <RsvpSection
+        {...baseProps}
+        computeAge={() => 10}
+        rsvpForm={{ ...baseForm, birthDate: "2016-01-01" }}
+      />,
+    );
+    expect(screen.getByText("rsvp.ageUnder14Warning")).toBeDefined();
+    expect(screen.getByText("rsvp.parentalConsent")).toBeDefined();
   });
 });
