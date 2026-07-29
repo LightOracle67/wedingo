@@ -1,24 +1,33 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { renderHook, act, waitFor } from "@testing-library/react";
 
-const mockAddDoc = vi.hoisted(() => vi.fn(() => Promise.resolve({ id: "test-doc-id" })));
+let mockDocIdCounter = 0;
 const mockDeleteDoc = vi.hoisted(() => vi.fn(() => Promise.resolve()));
 const mockGetDocs = vi.hoisted(() => vi.fn(() => Promise.resolve({ docs: [], forEach: vi.fn() })));
-const mockDoc = vi.hoisted(() => vi.fn(() => "doc-ref"));
+const mockDoc = vi.hoisted(() => vi.fn((_col?: unknown, id?: string) =>
+  id ? { id } : { id: `auto-doc-${++mockDocIdCounter}` },
+));
+const mockWriteBatch = vi.hoisted(() => vi.fn(() => ({
+  set: vi.fn(),
+  delete: vi.fn(),
+  commit: vi.fn(() => Promise.resolve()),
+})));
 const mockEncrypt = vi.hoisted(() => vi.fn((v: string) => Promise.resolve(v)));
 const mockDecrypt = vi.hoisted(() => vi.fn((v: string) => Promise.resolve(v)));
 const mockComputeAge = vi.hoisted(() => vi.fn(() => 25));
 const mockParseDietaryInfo = vi.hoisted(() => vi.fn(() => ({ mealChoice: "", dietarySelection: [], dietaryOther: "" })));
 
 vi.mock("firebase/firestore", () => ({
-  addDoc: mockAddDoc,
+  writeBatch: mockWriteBatch,
   deleteDoc: mockDeleteDoc,
   getDocs: mockGetDocs,
   doc: mockDoc,
   serverTimestamp: vi.fn(() => ({ seconds: 1234567890, nanoseconds: 0 })),
+  getDoc: vi.fn(),
 }));
 
 vi.mock("../../lib/firebase", () => ({
+  db: {},
   RSVP_COLLECTION_REF: "rsvpResponses",
   rsvpByInviteRef: vi.fn(() => "rsvpByInviteRef"),
 }));
@@ -65,10 +74,17 @@ describe("useRsvp", () => {
 
   beforeEach(() => {
     vi.resetAllMocks();
-    mockAddDoc.mockResolvedValue({ id: "test-doc-id" });
+    mockDocIdCounter = 0;
     mockDeleteDoc.mockResolvedValue(undefined);
     mockGetDocs.mockResolvedValue({ docs: [], forEach: vi.fn() });
-    mockDoc.mockReturnValue("doc-ref");
+    mockDoc.mockImplementation((_col?: unknown, id?: string) =>
+      id ? { id } : { id: `auto-doc-${++mockDocIdCounter}` },
+    );
+    mockWriteBatch.mockReturnValue({
+      set: vi.fn(),
+      delete: vi.fn(),
+      commit: vi.fn(() => Promise.resolve()),
+    });
     mockEncrypt.mockImplementation((v: string) => Promise.resolve(v));
     mockDecrypt.mockImplementation((v: string) => Promise.resolve(v));
     mockComputeAge.mockReturnValue(25);
@@ -231,11 +247,22 @@ describe("useRsvp", () => {
     });
 
     await waitFor(() => {
-      expect(mockAddDoc).toHaveBeenCalled();
+      expect(mockWriteBatch).toHaveBeenCalled();
     });
-    const payload = mockAddDoc.mock.calls[0][1];
+    const batch = mockWriteBatch.mock.results[0]?.value;
+    // Main guest doc data is first set call
+    const payload = batch.set.mock.calls[0][1];
+    expect(payload.rsvpType).toBe("main");
     expect(payload.companionMenus).toEqual(["carne", "pescado"]);
-    expect(payload.companionAllergies).toEqual([["sin gluten"], []]);
+    // Companion 0 allergies, companion 1 empty
+    const comp0Data = batch.set.mock.calls[1][1];
+    const comp1Data = batch.set.mock.calls[2][1];
+    expect(comp0Data.rsvpType).toBe("companion");
+    expect(comp0Data.guestName).toBe("Bob");
+    expect(comp0Data.dietaryInfo).toContain("sin gluten");
+    expect(comp1Data.rsvpType).toBe("companion");
+    expect(comp1Data.guestName).toBe("Charlie");
+    expect(comp1Data.dietaryInfo).toBe("");
   });
 
   it("updates menuSelection via updateRsvpField", () => {
@@ -291,8 +318,10 @@ describe("useRsvp", () => {
       });
 
       await waitFor(() => {
-        expect(mockAddDoc).toHaveBeenCalled();
+        expect(mockWriteBatch).toHaveBeenCalled();
       });
+      const batch = mockWriteBatch.mock.results[0]?.value;
+      expect(batch.commit).toHaveBeenCalled();
       expect(result.current.hasSubmitted).toBe(true);
       expect(result.current.rsvpForm.guestName).toBe("");
     });
@@ -312,12 +341,18 @@ describe("useRsvp", () => {
       });
 
       await waitFor(() => {
-        expect(mockAddDoc).toHaveBeenCalled();
+        expect(mockWriteBatch).toHaveBeenCalled();
       });
-      const payload = mockAddDoc.mock.calls[0][1];
-      expect(payload.attendance).toBe("yes");
-      expect(payload.companionCount).toBe(2);
-      expect(payload.companionNames).toEqual(["Bob", "Charlie"]);
+      const batch = mockWriteBatch.mock.results[0]?.value;
+      // First set call = main guest doc
+      expect(batch.set).toHaveBeenCalled();
+      const mainPayload = batch.set.mock.calls[0][1];
+      expect(mainPayload.attendance).toBe("yes");
+      expect(mainPayload.companionCount).toBe(2);
+      expect(mainPayload.companionNames).toEqual(["Bob", "Charlie"]);
+      expect(mainPayload.rsvpType).toBe("main");
+      // 1 main + 2 companions = 3 set calls
+      expect(batch.set).toHaveBeenCalledTimes(3);
     });
 
     it("submits with menuSelection when provided", async () => {
@@ -332,9 +367,11 @@ describe("useRsvp", () => {
       });
 
       await waitFor(() => {
-        expect(mockAddDoc).toHaveBeenCalled();
+        expect(mockWriteBatch).toHaveBeenCalled();
       });
-      const payload = mockAddDoc.mock.calls[0][1];
+      const batch = mockWriteBatch.mock.results[0]?.value;
+      const payload = batch.set.mock.calls[0][1];
+      expect(payload.rsvpType).toBe("main");
       expect(payload.mealChoice).toBe("carne");
     });
 
@@ -349,14 +386,20 @@ describe("useRsvp", () => {
       });
 
       expect(result.current.rsvpMessage).toMatch(/menuRequired/i);
-      expect(mockAddDoc).not.toHaveBeenCalled();
+      expect(mockWriteBatch).not.toHaveBeenCalled();
     });
 
     it("handles submission error gracefully", async () => {
-      mockAddDoc.mockRejectedValueOnce(new Error("Firestore error"));
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
       setupForm(result);
       act(() => result.current.updateRsvpField("healthConsent", true));
+
+      // Make batch.commit reject
+      mockWriteBatch.mockReturnValueOnce({
+        set: vi.fn(),
+        delete: vi.fn(),
+        commit: vi.fn(() => Promise.reject(new Error("Firestore error"))),
+      });
 
       await act(async () => {
         result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as any);
@@ -475,7 +518,10 @@ describe("useRsvp", () => {
         await result.current.handleDeleteRsvp();
       });
 
-      expect(mockDeleteDoc).toHaveBeenCalled();
+      expect(mockWriteBatch).toHaveBeenCalled();
+      const batch = mockWriteBatch.mock.results[0]?.value;
+      expect(batch.commit).toHaveBeenCalled();
+      expect(batch.delete).toHaveBeenCalled();
       expect(result.current.hasSubmitted).toBe(false);
     });
 
@@ -509,11 +555,15 @@ describe("useRsvp", () => {
         await result.current.handleDeleteRsvp();
       });
 
-      expect(mockDeleteDoc).not.toHaveBeenCalled();
+      expect(mockWriteBatch).not.toHaveBeenCalled();
     });
 
     it("handles delete error gracefully", async () => {
-      mockDeleteDoc.mockRejectedValueOnce(new Error("Delete error"));
+      mockWriteBatch.mockReturnValueOnce({
+        set: vi.fn(),
+        delete: vi.fn(),
+        commit: vi.fn(() => Promise.reject(new Error("Delete error"))),
+      });
       mockGetDocs.mockResolvedValueOnce({
         docs: [{
           id: "entry-1",

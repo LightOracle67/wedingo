@@ -1,13 +1,21 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { addDoc } from "firebase/firestore";
+import { writeBatch } from "firebase/firestore";
+
+let mockDocIdCounter = 0;
 
 // Mock Firebase
 vi.mock("firebase/firestore", () => ({
-  addDoc: vi.fn(() => Promise.resolve({ id: "rsvp-123" })),
+  writeBatch: vi.fn(() => ({
+    set: vi.fn(),
+    delete: vi.fn(),
+    commit: vi.fn(() => Promise.resolve()),
+  })),
   deleteDoc: vi.fn(() => Promise.resolve()),
   getDocs: vi.fn(() => Promise.resolve({ docs: [], empty: true, forEach: () => {} })),
   serverTimestamp: vi.fn(() => ({ seconds: 1234567890, nanoseconds: 0 })),
-  doc: vi.fn(() => "doc-ref"),
+  doc: vi.fn((_col?: unknown, id?: string) =>
+    id ? { id } : { id: `auto-doc-${++mockDocIdCounter}` },
+  ),
   collection: vi.fn(() => "collection-ref"),
   query: vi.fn(() => "query-ref"),
   where: vi.fn(() => "where-ref"),
@@ -74,7 +82,9 @@ describe("RSVP Integration", () => {
     });
 
     expect(event.preventDefault).toHaveBeenCalled();
-    expect(addDoc).toHaveBeenCalled();
+    expect(writeBatch).toHaveBeenCalled();
+    const batch = (writeBatch as any).mock.results[0]?.value;
+    expect(batch.commit).toHaveBeenCalled();
   });
 
   it("submits with companions", async () => {
@@ -93,11 +103,15 @@ describe("RSVP Integration", () => {
       await result.current.handleRsvpSubmit(event);
     });
 
-    expect(addDoc).toHaveBeenCalled();
-    const payload = (addDoc as any).mock.calls[0][1];
+    expect(writeBatch).toHaveBeenCalled();
+    const batch = (writeBatch as any).mock.results[0]?.value;
+    const payload = batch.set.mock.calls[0][1];
+    expect(payload.rsvpType).toBe("main");
     expect(payload.companionCount).toBe(2);
     expect(payload.companionNames).toEqual(["Alice", "Bob"]);
     expect(payload.attendance).toBe("yes");
+    // 1 main + 2 companions
+    expect(batch.set).toHaveBeenCalledTimes(3);
   });
 
   it("shows error when guestName is empty", async () => {
