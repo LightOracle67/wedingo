@@ -176,7 +176,7 @@ export default function CoverSectionForm({ prefix = "" }) {
             <span className="setup-upload__subtitle">{t("setup.uploadSealHint")}</span>
           </label>
         )}
-        <input className="setup-upload__input" id={id("customSeal")} type="file" accept="image/png,image/svg+xml" onChange={async (e) => {
+        <input className="setup-upload__input" id={id("customSeal")} type="file" accept="image/jpeg,image/png,image/svg+xml" onChange={async (e) => {
           const file = e.target.files?.[0]; if (!file) return;
           if (file.size > 1024 * 1024) { addToast("error", t("setup.errorFileSize")); return; }
           const { dataUrl } = await uploadImage(inviteToken, file, () => {});
