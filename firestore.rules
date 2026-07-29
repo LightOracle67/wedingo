@@ -52,18 +52,14 @@ service cloud.firestore {
       allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['_visits']);
       /* Restauración de copia de seguridad por admin autenticado (sin validación de campos). */
       allow update: if hasActiveSession(tokenId);
-      /* Creación/renovación de sesión: cualquiera puede iniciar sesión,
-         pero sessionExpiresAt está limitado a 48h desde request.time
-         para evitar sesiones permanentes (fix CR-1).
-         Si ya hay sesión activa, debe ser válida (no expirada) para renovar. */
+      /* Creación/renovación de sesión: cualquiera puede iniciar sesión
+         o renovar la existente. sessionExpiresAt está limitado a 1h-48h
+         desde request.time para evitar sesiones permanentes. */
       allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['activeSession', 'sessionExpiresAt'])
         && request.resource.data.activeSession is timestamp
         && request.resource.data.sessionExpiresAt is timestamp
         && request.resource.data.sessionExpiresAt <= request.time + duration.value(48, 'h')
-        && request.resource.data.sessionExpiresAt >= request.time + duration.value(1, 'h')
-        && (resource == null
-          || !(resource.data.activeSession is timestamp)
-          || hasActiveSession(tokenId));
+        && request.resource.data.sessionExpiresAt >= request.time + duration.value(1, 'h');
       allow delete: if isSuperAdmin();
 
       match /gallery/{imageId} {
