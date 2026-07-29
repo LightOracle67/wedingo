@@ -431,14 +431,12 @@ describe("useSetupAuth", () => {
       expect(mockSafeSetItem).toHaveBeenCalled();
     });
 
-    it("generates new token when no stored or Firestore token exists", async () => {
+    it("returns empty when no stored or Firestore token exists", async () => {
       mockSafeGetItem.mockReturnValue(null);
       mockGetDoc.mockResolvedValueOnce({
         exists: () => true,
         data: () => ({}),
       });
-      mockGenerateSetupToken.mockReturnValue("brand-new-token");
-      mockNormalizeTokenValue.mockImplementation((v: string) => v);
 
       const { result } = setup();
 
@@ -447,8 +445,7 @@ describe("useSetupAuth", () => {
         token = await result.current.refreshSetupToken();
       });
 
-      expect(token).toBe("brand-new-token");
-      expect(mockSetDoc).toHaveBeenCalled();
+      expect(token).toBe("");
     });
 
     it("handles Firestore error during token lookup gracefully", async () => {
@@ -465,26 +462,6 @@ describe("useSetupAuth", () => {
 
       expect(setAdminMessageType).toHaveBeenCalledWith("error");
       expect(setAdminMessage).toHaveBeenCalledWith("auth.tokenLookupFailed");
-    });
-
-    it("handles Firestore error during token save gracefully", async () => {
-      mockSafeGetItem.mockReturnValue(null);
-      mockGetDoc.mockResolvedValueOnce({
-        exists: () => true,
-        data: () => ({}),
-      });
-      mockSetDoc.mockRejectedValueOnce(new Error("Save error"));
-
-      const setAdminMessage = vi.fn();
-      const setAdminMessageType = vi.fn();
-      const { result } = setup({ setAdminMessage, setAdminMessageType });
-
-      await act(async () => {
-        await result.current.refreshSetupToken();
-      });
-
-      expect(setAdminMessageType).toHaveBeenCalledWith("error");
-      expect(setAdminMessage).toHaveBeenCalledWith("auth.tokenCreateFailed");
     });
   });
 

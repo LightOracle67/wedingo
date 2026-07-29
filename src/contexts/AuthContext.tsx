@@ -68,7 +68,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     tokenLoginUsername: auth.tokenLoginUsername, adminLoginUsername: auth.adminLoginUsername,
     isAdminTokenLoggedIn: auth.isAdminTokenLoggedIn, confirmTokenInput: auth.confirmTokenInput,
     authMessage: auth.authMessage, authMessageType: auth.authMessageType,
-    refreshSetupToken: auth.refreshSetupToken,
+    refreshSetupToken: auth.refreshSetupToken, generateNewToken: auth.generateNewToken,
     handleTokenLogin: auth.handleTokenLogin, handleAdminTokenLogin: auth.handleAdminTokenLogin,
     handleAdminLogout: auth.handleAdminLogout,
     handleResetSetupToken: auth.handleResetSetupToken, handleResetTokenFromAdmin: auth.handleResetTokenFromAdmin,

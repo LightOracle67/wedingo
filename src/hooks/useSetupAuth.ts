@@ -153,7 +153,7 @@ export function useSetupAuth(
         return saved;
       }
 
-      // ── _activeSetupToken en la invitación ──
+      // ── _activeSetupToken en la invitación (fuente de verdad) ──
       try {
         const inviteSnap = await getDoc(invitationDocRef(inviteToken));
         if (inviteSnap.exists()) {
@@ -173,7 +173,17 @@ export function useSetupAuth(
       }
     }
 
-    // ── Generar nuevo token y guardarlo en la invitación ──
+    // ── No hay token existente, devolvemos vacío ──
+    // El token se genera solo al primer guardado (SetupPage) o por acción explícita del usuario
+    return "";
+  }, [inviteToken, setAdminMessage, setAdminMessageType, t]);
+
+  /**
+   * Genera un token nuevo, lo persiste en Firestore y sessionStorage.
+   * Se llama solo al primer guardado o cuando el usuario solicita explícitamente un cambio.
+   */
+  const generateNewToken = useCallback(async () => {
+    const storageKey = `wedin_setup_token_${inviteToken || ""}`;
     const nextToken = generateSetupToken();
     const normalizedToken = normalizeTokenValue(nextToken);
     setSetupToken(normalizedToken);
@@ -189,7 +199,7 @@ export function useSetupAuth(
         }
       }
     }
-    return nextToken;
+    return normalizedToken;
   }, [inviteToken, setAdminMessage, setAdminMessageType, t]);
 
   /**
@@ -359,14 +369,14 @@ export function useSetupAuth(
         return;
       }
       setAuthMessage("");
-      await refreshSetupToken(currentToken);
+      await generateNewToken();
       setAuthMessageType("success");
       setAuthMessage(t("auth.tokenRenewed"));
       setConfirmTokenInput("");
     } finally {
       resettingRef.current = false;
     }
-  }, [refreshSetupToken, setupToken, confirmTokenInput, inviteToken, t]);
+  }, [generateNewToken, setupToken, confirmTokenInput, inviteToken, t]);
 
   /**
    * Regenera el token desde el panel de administración.
@@ -377,14 +387,14 @@ export function useSetupAuth(
     resettingRef.current = true;
     try {
       setAdminMessage("");
-      await refreshSetupToken(setupToken || safeGetItem(`wedin_setup_token_${inviteToken || ""}`, sessionStorage) || "");
+      await generateNewToken();
       setAdminMessageType("success");
       setAdminMessage(t("auth.tokenRenewedAdmin"));
       setConfirmTokenInput("");
     } finally {
       resettingRef.current = false;
     }
-  }, [refreshSetupToken, setupToken, setAdminMessage, setAdminMessageType, inviteToken, t]);
+  }, [generateNewToken, setAdminMessage, setAdminMessageType, t]);
 
   return {
     setupToken, setSetupToken,
@@ -396,7 +406,7 @@ export function useSetupAuth(
     authMessageType, setAuthMessageType,
     confirmTokenInput, setConfirmTokenInput,
     isAdminTokenLoggedIn,
-    refreshSetupToken,
+    refreshSetupToken, generateNewToken,
     handleTokenLogin, handleAdminTokenLogin,
     handleAdminLogout,
     handleResetSetupToken, handleResetTokenFromAdmin,
