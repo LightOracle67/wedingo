@@ -130,6 +130,7 @@
     "notAttending": "I can't attend",
     "companionCountLabel": "How many companions?",
     "companionNameLabel": "Companion {{number}} name",
+    "companionHeading": "Companion {{number}}",
     "menuLegend": "Menu choice *",
     "menuCarne": "Meat",
     "menuPescado": "Fish",

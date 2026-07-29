@@ -10,8 +10,12 @@ interface RsvpFormState {
   birthDate: string;
   companionCount: number;
   companionNames: string[];
+  companionMenus: string[];
+  companionAllergies: string[][];
+  companionAllergiesOther: string[];
   menuSelection: string;
   allergies: string[];
+  allergiesOther: string;
   parentalConsent: boolean;
   privacyConsent: boolean;
   healthConsent: boolean;
@@ -25,7 +29,7 @@ interface RsvpSectionProps {
   isRsvpSubmitting?: boolean;
   hasSubmitted?: boolean;
   alreadySubmittedEntry?: unknown;
-  updateRsvpField: (field: string, value: string | boolean | number | string[]) => void;
+  updateRsvpField: (field: string, value: string | boolean | number | string[] | string[][]) => void;
   handleRsvpSubmit: (e: React.FormEvent) => void;
   handleDeleteRsvp: () => void;
   menuEnabled?: boolean;
@@ -157,12 +161,71 @@ const RsvpSection = memo(function RsvpSection({
           {rsvpForm.attendance === "with" && rsvpForm.companionCount > 0 && (
             <div style={{ marginTop: "0.75rem" }}>
               {Array.from({ length: rsvpForm.companionCount }, (_, i) => (
-                <div key={i} className="setup-field" style={{ marginBottom: "0.4rem" }}>
-                  <label className="setup-label" htmlFor={`companion-name-${i}`}>{t("rsvp.companionNameLabel", { number: i + 1 })}</label>
+                <div key={i} className="rsvp-attendee-card">
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "0.5rem" }}>
+                    <h4 style={{ margin: 0 }}>{t("rsvp.companionHeading", { number: i + 1 })}</h4>
+                    {rsvpForm.companionCount > 1 && (
+                      <button type="button" className="setup-button setup-button--small" style={{ background: "#ef4444", color: "#fff", fontSize: "0.75rem", padding: "0.2rem 0.5rem" }}
+                        onClick={() => updateRsvpField("companionCount", rsvpForm.companionCount - 1)}>
+                        {t("common.remove", "Remove")}
+                      </button>
+                    )}
+                  </div>
+
+                  <label className="setup-label" htmlFor={`companion-name-${i}`}>{t("rsvp.nameLabel")} *</label>
                   <input id={`companion-name-${i}`} className="setup-input" type="text"
                     value={rsvpForm.companionNames[i] || ""}
                     onChange={handleCompanionNameChange(i)}
-                    placeholder={t("rsvp.attendeeNamePlaceholder")} required />
+                    placeholder={t("rsvp.attendeeNamePlaceholder")} required disabled={isAlreadySubmitted} maxLength={120} />
+
+                  {hasStructuredMenu && (
+                    <>
+                      <label className="setup-label" htmlFor={`companion-menu-${i}`} style={{ marginTop: "0.5rem" }}>{t("rsvp.menuLabel")}</label>
+                      <select id={`companion-menu-${i}`} className="setup-input"
+                        value={rsvpForm.companionMenus[i] || ""}
+                        onChange={(e) => updateRsvpField(`companionMenu[${i}]`, e.target.value)}
+                        disabled={isAlreadySubmitted}>
+                        <option value="">{t("rsvp.menuPlaceholder")}</option>
+                        {menuOptions.map((m) => <option key={m.key} value={m.key}>{m.label}</option>)}
+                      </select>
+                      {rsvpForm.companionMenus[i] ? (
+                        <div style={{
+                          marginTop: "0.35rem", padding: "0.4rem 0.6rem", borderRadius: "0.5rem",
+                          background: "color-mix(in srgb, var(--setup-accent) 8%, transparent)",
+                          border: "1px solid color-mix(in srgb, var(--setup-accent) 15%, transparent)",
+                          fontSize: "0.8rem", lineHeight: 1.4, color: "var(--setup-title, #fdf8ec)",
+                        }}>
+                          {menuOptions.find((m) => m.key === rsvpForm.companionMenus[i])?.desc}
+                        </div>
+                      ) : null}
+                    </>
+                  )}
+
+                  <fieldset style={{ border: "none", padding: 0, margin: "0.5rem 0 0 0" }}>
+                    <legend className="setup-label" style={{ fontSize: "0.85rem" }}>{t("rsvp.allergiesLegend")}</legend>
+                    <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+                      {ALLERGIES.map((a) => (
+                        <label key={a} style={{ display: "flex", alignItems: "center", gap: "0.25rem", fontSize: "0.85rem", cursor: isDisabled ? "default" : "pointer" }}>
+                          <input type="checkbox" checked={(rsvpForm.companionAllergies[i] || []).includes(a)}
+                            onChange={() => {
+                              const current = rsvpForm.companionAllergies[i] || [];
+                              const updated = current.includes(a) ? current.filter((x) => x !== a) : [...current, a];
+                              updateRsvpField(`companionAllergies[${i}]`, updated);
+                            }}
+                            disabled={isAlreadySubmitted} />
+                          {t(`allergies.${a}`, { defaultValue: a })}
+                        </label>
+                      ))}
+                    </div>
+                    <input className="setup-input" type="text" value={rsvpForm.companionAllergiesOther?.[i] || ""}
+                      onChange={(e) => {
+                        const current = [...(rsvpForm.companionAllergiesOther || [])];
+                        current[i] = e.target.value.slice(0, 200);
+                        updateRsvpField("companionAllergiesOther", current);
+                      }}
+                      placeholder={t("rsvp.allergiesPlaceholder")} disabled={isAlreadySubmitted}
+                      style={{ marginTop: "0.35rem", fontSize: "0.85rem" }} />
+                  </fieldset>
                 </div>
               ))}
             </div>
@@ -216,6 +279,10 @@ const RsvpSection = memo(function RsvpSection({
                   </label>
                 ))}
               </div>
+              <input className="setup-input" type="text" value={rsvpForm.allergiesOther || ""}
+                onChange={(e) => updateRsvpField("allergiesOther", e.target.value.slice(0, 200))}
+                placeholder={t("rsvp.allergiesPlaceholder")} disabled={isAlreadySubmitted}
+                style={{ marginTop: "0.35rem", fontSize: "0.85rem" }} />
             </fieldset>
           )}
 
