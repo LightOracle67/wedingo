@@ -137,7 +137,7 @@ const RsvpSection = memo(function RsvpSection({
             <div>
               <label className="setup-label" htmlFor="rsvpAttendance">{t("rsvp.attendanceOptions")} *</label>
               <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
-                <select id="rsvpAttendance" className="setup-input" value={rsvpForm.attendance} onChange={handleAttendanceChange} required disabled={isAlreadySubmitted} style={{ flex: 1 }}>
+                <select id="rsvpAttendance" className="setup-input" value={rsvpForm.attendance} onChange={handleAttendanceChange} required disabled={isAlreadySubmitted} style={{ width: "auto", minWidth: "180px" }}>
                   <option value="alone">{t("rsvp.attendingAlone")}</option>
                   <option value="with">{t("rsvp.attendingWithCompanions")}</option>
                   <option value="no">{t("rsvp.notAttending")}</option>
