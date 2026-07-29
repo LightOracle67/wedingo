@@ -20,8 +20,12 @@ interface RsvpFormData {
   attendance: string;
   companionCount: number;
   companionNames: string[];
+  companionMenus: string[];
+  companionAllergies: string[][];
+  companionAllergiesOther: string[];
   menuSelection: string;
   allergies: string[];
+  allergiesOther: string;
   privacyConsent: boolean;
   healthConsent: boolean;
   birthDate: string;
@@ -37,6 +41,10 @@ interface RsvpEntryData {
   companions: number;
   companionCount: number;
   companionNames: string[];
+  companionMenus: string[];
+  companionAllergies: string[][];
+  companionAllergiesOther: string[];
+  allergiesOther: string;
   mealChoice: string;
   menuHeadcounts: Record<string, number>;
   guestNames: string;
@@ -77,8 +85,12 @@ function RsvpFormDefault(): RsvpFormData {
     attendance: "alone",
     companionCount: 0,
     companionNames: [],
+    companionMenus: [],
+    companionAllergies: [],
+    companionAllergiesOther: [],
     menuSelection: "",
     allergies: [],
+    allergiesOther: "",
     privacyConsent: false,
     healthConsent: false,
     birthDate: "",
@@ -145,6 +157,10 @@ export function useRsvp(
                 companions: attendees.length > 0 ? attendees.length : (Number.isFinite(data.companions) ? data.companions : 0),
                 companionCount: data.companionCount || 0,
                 companionNames: data.companionNames || [],
+                companionMenus: data.companionMenus || [],
+                companionAllergies: data.companionAllergies || [],
+                companionAllergiesOther: data.companionAllergiesOther || [],
+                allergiesOther: data.allergiesOther || "",
                 mealChoice: data.mealChoice || "",
                 menuHeadcounts: data.menuHeadcounts || {},
                 guestNames: data.guestNames || "",
@@ -183,11 +199,19 @@ export function useRsvp(
         const companionNames = match.companionNames?.length
           ? match.companionNames
           : (match.attendees?.slice(1).map((a: Attendee) => a.name) || []);
+        const companionMenus = match.companionMenus?.length
+          ? match.companionMenus
+          : (match.attendees?.slice(1).map((a: Attendee) => a.menu || "") || []);
+        const companionAllergies = match.companionAllergies?.length
+          ? match.companionAllergies
+          : (match.attendees?.slice(1).map((a: Attendee) => [...(a.allergies || [])]) || []);
         setRsvpForm((current) => ({
           ...current,
           attendance: companionCount > 0 ? "with" : "alone",
           companionCount,
           companionNames: companionNames.length ? companionNames : [],
+          companionMenus: companionMenus.length ? companionMenus : [],
+          companionAllergies: companionAllergies.length ? companionAllergies : [],
           menuSelection: match.mealChoice || "",
         }));
       } else {
@@ -215,8 +239,16 @@ export function useRsvp(
       const count = Math.max(0, Math.min(10, Number(value) || 0));
       setRsvpForm((current) => {
         const names = current.companionNames.slice(0, count);
-        while (names.length < count) names.push("");
-        return { ...current, companionCount: count, companionNames: names };
+        const menus = current.companionMenus.slice(0, count);
+        const allergies = current.companionAllergies.slice(0, count);
+        const allergiesOther = (current.companionAllergiesOther || []).slice(0, count);
+        while (names.length < count) {
+          names.push("");
+          menus.push("");
+          allergies.push([]);
+          allergiesOther.push("");
+        }
+        return { ...current, companionCount: count, companionNames: names, companionMenus: menus, companionAllergies: allergies, companionAllergiesOther: allergiesOther };
       });
       return;
     }
@@ -226,6 +258,24 @@ export function useRsvp(
         const names = [...current.companionNames];
         names[idx] = String(value).slice(0, 120);
         return { ...current, companionNames: names };
+      });
+      return;
+    }
+    if (field.startsWith("companionMenu[")) {
+      const idx = parseInt(field.match(/\d+/)?.[0] || "0", 10);
+      setRsvpForm((current) => {
+        const menus = [...current.companionMenus];
+        menus[idx] = String(value);
+        return { ...current, companionMenus: menus };
+      });
+      return;
+    }
+    if (field.startsWith("companionAllergies[")) {
+      const idx = parseInt(field.match(/\d+/)?.[0] || "0", 10);
+      setRsvpForm((current) => {
+        const all = [...current.companionAllergies];
+        all[idx] = value as string[];
+        return { ...current, companionAllergies: all };
       });
       return;
     }
@@ -267,6 +317,10 @@ export function useRsvp(
       attendance: isAttending ? "yes" : "no",
       companionCount: data.companionCount || 0,
       companionNames: data.companionNames.slice(0, data.companionCount || 0),
+      companionMenus: data.companionMenus.slice(0, data.companionCount || 0),
+      companionAllergies: data.companionAllergies.slice(0, data.companionCount || 0).map((a) => [...a]),
+      companionAllergiesOther: (data.companionAllergiesOther || []).slice(0, data.companionCount || 0),
+      allergiesOther: data.allergiesOther || "",
       dietaryInfo: encryptedDietaryInfo,
       inviteToken,
       submittedAt: serverTimestamp(),
@@ -282,7 +336,7 @@ export function useRsvp(
     }
     const docRef = await addDoc(RSVP_COLLECTION_REF, payload);
     setRsvpEntries((current) => [
-      { ...(payload as unknown as RsvpEntryData), id: docRef.id, submittedAt: now, dietaryInfo, attendees: [], companions: 0, menuHeadcounts: {}, guestNames: "", note: "" },
+      { ...(payload as unknown as RsvpEntryData), id: docRef.id, submittedAt: now, dietaryInfo, attendees: [], companions: 0, menuHeadcounts: {}, guestNames: "", note: "", companionMenus: [], companionAllergies: [] },
       ...current,
     ]);
     setRsvpMessage(

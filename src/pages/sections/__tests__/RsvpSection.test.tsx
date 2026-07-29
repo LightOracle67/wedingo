@@ -18,6 +18,8 @@ const baseForm = {
   birthDate: "",
   companionCount: 0,
   companionNames: [],
+  companionMenus: [],
+  companionAllergies: [],
   menuSelection: "",
   allergies: [],
   parentalConsent: false,
@@ -87,14 +89,14 @@ describe("RsvpSection", () => {
     expect(screen.getByText((text: string) => text.includes("rsvp.companionCountLabel"))).toBeDefined();
   });
 
-  it("shows companion name inputs when companionCount > 0", () => {
+  it("shows companion cards when companionCount > 0", () => {
     render(
       <RsvpSection
         {...baseProps}
-        rsvpForm={{ ...baseForm, attendance: "with", companionCount: 2, companionNames: ["", ""] }}
+        rsvpForm={{ ...baseForm, attendance: "with", companionCount: 2, companionNames: ["", ""], companionMenus: ["", ""], companionAllergies: [[], []] }}
       />,
     );
-    expect(screen.getAllByText((text: string) => text === "rsvp.companionNameLabel")).toHaveLength(2);
+    expect(screen.getAllByText((text: string) => text === "rsvp.companionHeading")).toHaveLength(2);
   });
 
   it("does not show companion count when attendance is alone", () => {
@@ -152,6 +154,45 @@ describe("RsvpSection", () => {
   it("shows feedback message when rsvpMessage is set", () => {
     render(<RsvpSection {...baseProps} rsvpMessage="Thank you!" />);
     expect(screen.getByText("Thank you!")).toBeDefined();
+  });
+
+  it("shows companion cards with menu and allergies when companionCount > 0 and menu enabled", () => {
+    render(
+      <RsvpSection
+        {...baseProps}
+        menuEnabled={true}
+        menuCarne="Meat option"
+        menuPescado="Fish option"
+        menuVegano="Vegan option"
+        rsvpForm={{
+          ...baseForm,
+          attendance: "with",
+          companionCount: 2,
+          companionNames: ["", ""],
+          companionMenus: ["", ""],
+          companionAllergies: [[], []],
+        }}
+      />,
+    );
+    expect(screen.getAllByText((text: string) => text.includes("rsvp.companionHeading"))).toHaveLength(2);
+    expect(screen.getAllByText("rsvp.allergiesLegend").length).toBeGreaterThanOrEqual(2);
+  });
+
+  it("shows companion remove buttons when more than 1 companion", () => {
+    render(
+      <RsvpSection
+        {...baseProps}
+        rsvpForm={{
+          ...baseForm,
+          attendance: "with",
+          companionCount: 2,
+          companionNames: ["", ""],
+          companionMenus: ["", ""],
+          companionAllergies: [[], []],
+        }}
+      />,
+    );
+    expect(screen.getAllByText("common.remove")).toHaveLength(2);
   });
 
   it("shows postre when menuPostre is provided", () => {

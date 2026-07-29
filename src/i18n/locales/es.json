@@ -130,6 +130,7 @@
     "notAttending": "No podré asistir",
     "companionCountLabel": "¿Cuántos acompañantes?",
     "companionNameLabel": "Nombre del acompañante {{number}}",
+    "companionHeading": "Acompañante {{number}}",
     "menuLegend": "Elección del menú *",
     "menuCarne": "Carne",
     "menuPescado": "Pescado",

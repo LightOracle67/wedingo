@@ -82,6 +82,8 @@ describe("useRsvp", () => {
     expect(result.current.rsvpForm.attendance).toBe("alone");
     expect(result.current.rsvpForm.companionCount).toBe(0);
     expect(result.current.rsvpForm.companionNames).toEqual([]);
+    expect(result.current.rsvpForm.companionMenus).toEqual([]);
+    expect(result.current.rsvpForm.companionAllergies).toEqual([]);
     expect(result.current.rsvpForm.menuSelection).toBe("");
     expect(result.current.rsvpForm.allergies).toEqual([]);
     expect(result.current.rsvpForm.privacyConsent).toBe(false);
@@ -171,6 +173,69 @@ describe("useRsvp", () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
     act(() => result.current.updateRsvpField("allergies", ["sin gluten"]));
     expect(result.current.rsvpForm.allergies).toEqual(["sin gluten"]);
+  });
+
+  it("resizes companionMenus and companionAllergies when companionCount changes", () => {
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+    act(() => result.current.updateRsvpField("companionCount", 3));
+    expect(result.current.rsvpForm.companionMenus).toHaveLength(3);
+    expect(result.current.rsvpForm.companionAllergies).toHaveLength(3);
+    expect(result.current.rsvpForm.companionMenus).toEqual(["", "", ""]);
+    expect(result.current.rsvpForm.companionAllergies).toEqual([[], [], []]);
+  });
+
+  it("handles companionMenu[N] field updates", () => {
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+    act(() => result.current.updateRsvpField("companionCount", 2));
+    act(() => result.current.updateRsvpField("companionMenu[0]", "carne"));
+    act(() => result.current.updateRsvpField("companionMenu[1]", "pescado"));
+    expect(result.current.rsvpForm.companionMenus).toEqual(["carne", "pescado"]);
+  });
+
+  it("handles companionAllergies[N] field updates", () => {
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+    act(() => result.current.updateRsvpField("companionCount", 2));
+    act(() => result.current.updateRsvpField("companionAllergies[0]", ["sin gluten"]));
+    act(() => result.current.updateRsvpField("companionAllergies[1]", ["sin lactosa", "alergia a frutos secos"]));
+    expect(result.current.rsvpForm.companionAllergies[0]).toEqual(["sin gluten"]);
+    expect(result.current.rsvpForm.companionAllergies[1]).toEqual(["sin lactosa", "alergia a frutos secos"]);
+  });
+
+  it("trims companionMenus and companionAllergies when companionCount decreases", () => {
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+    act(() => result.current.updateRsvpField("companionCount", 3));
+    act(() => result.current.updateRsvpField("companionMenu[0]", "carne"));
+    act(() => result.current.updateRsvpField("companionMenu[1]", "pescado"));
+    act(() => result.current.updateRsvpField("companionMenu[2]", "vegano"));
+    act(() => result.current.updateRsvpField("companionAllergies[0]", ["sin gluten"]));
+    act(() => result.current.updateRsvpField("companionCount", 2));
+    expect(result.current.rsvpForm.companionMenus).toEqual(["carne", "pescado"]);
+    expect(result.current.rsvpForm.companionAllergies).toEqual([["sin gluten"], []]);
+  });
+
+  it("submits companionMenus and companionAllergies with payload", async () => {
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+    act(() => result.current.updateRsvpField("guestName", "Alice"));
+    act(() => result.current.updateRsvpField("attendance", "with"));
+    act(() => result.current.updateRsvpField("companionCount", 2));
+    act(() => result.current.updateRsvpField("companionNames[0]", "Bob"));
+    act(() => result.current.updateRsvpField("companionNames[1]", "Charlie"));
+    act(() => result.current.updateRsvpField("companionMenu[0]", "carne"));
+    act(() => result.current.updateRsvpField("companionMenu[1]", "pescado"));
+    act(() => result.current.updateRsvpField("companionAllergies[0]", ["sin gluten"]));
+    act(() => result.current.updateRsvpField("birthDate", "2000-01-01"));
+    act(() => result.current.updateRsvpField("privacyConsent", true));
+
+    await act(async () => {
+      result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as any);
+    });
+
+    await waitFor(() => {
+      expect(mockAddDoc).toHaveBeenCalled();
+    });
+    const payload = mockAddDoc.mock.calls[0][1];
+    expect(payload.companionMenus).toEqual(["carne", "pescado"]);
+    expect(payload.companionAllergies).toEqual([["sin gluten"], []]);
   });
 
   it("updates menuSelection via updateRsvpField", () => {
