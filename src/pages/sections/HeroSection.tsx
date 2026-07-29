@@ -1,6 +1,5 @@
-import { memo, useEffect, useState } from "react";
+import { memo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import heroBackdropSrc from "../../assets/rings.webp";
 import LoadingOverlay from "../../components/LoadingOverlay";
 
 interface HeroSectionProps {
@@ -16,14 +15,6 @@ interface HeroSectionProps {
 }
 
 const HeroSection = memo(function HeroSection({ style, className, firstName, secondName, inviteMessage, countdown, couplePhoto, godparent1, godparent2 }: HeroSectionProps) {
-  useEffect(() => {
-    const link = document.createElement("link");
-    link.rel = "preload";
-    link.as = "image";
-    link.href = heroBackdropSrc;
-    document.head.appendChild(link);
-    return () => { link.remove(); };
-  }, []);
   const { t } = useTranslation();
   const [photoLoaded, setPhotoLoaded] = useState(false);
 
@@ -69,10 +60,7 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
             </div>
           ) : (
             <div className="relative mx-auto w-fit">
-              <div className="hero-rings pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-[42%]">
-                <img src={heroBackdropSrc} alt="" aria-hidden="true" loading="lazy" className="invite-rings block h-auto w-[clamp(11rem,44vw,18rem)] object-contain object-center sm:w-[clamp(13rem,34vw,20rem)]" />
-              </div>
-              <h1 className="story-title relative z-10">
+              <h1 className="story-title">
                 {firstName || ""} & {secondName || ""}
               </h1>
             </div>
