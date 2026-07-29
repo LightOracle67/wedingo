@@ -1,18 +1,20 @@
-import { memo, useCallback, useMemo, useRef } from "react";
+import { memo, useCallback, useMemo } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { useApp } from "../../contexts";
-import type { Attendee } from "../../types";
-import AttendeeCard from "../../components/AttendeeCard";
+
+const ALLERGIES = ["sin gluten", "sin lactosa", "alergia a frutos secos", "alergia a mariscos"];
 
 interface RsvpFormState {
   guestName: string;
   attendance: string;
   birthDate: string;
-  attendees: { name: string; menu: string; allergies: string[] }[];
+  companionCount: number;
+  companionNames: string[];
+  menuSelection: string;
+  allergies: string[];
   parentalConsent: boolean;
   privacyConsent: boolean;
   healthConsent: boolean;
-  notAttendingCount: number;
 }
 
 interface RsvpSectionProps {
@@ -23,7 +25,7 @@ interface RsvpSectionProps {
   isRsvpSubmitting?: boolean;
   hasSubmitted?: boolean;
   alreadySubmittedEntry?: unknown;
-  updateRsvpField: (field: string, value: string | boolean | number | { name: string; menu: string; allergies: string[] }[]) => void;
+  updateRsvpField: (field: string, value: string | boolean | number | string[]) => void;
   handleRsvpSubmit: (e: React.FormEvent) => void;
   handleDeleteRsvp: () => void;
   menuEnabled?: boolean;
@@ -45,15 +47,12 @@ const RsvpSection = memo(function RsvpSection({
 
   const isAlreadySubmitted = !!alreadySubmittedEntry;
   const isDisabled = isRsvpSubmitting || hasSubmitted || isAlreadySubmitted;
-  const attendees: { name: string; menu: string; allergies: string[] }[] = rsvpForm.attendees || [];
-
-  const attendeesRef = useRef(attendees);
-  attendeesRef.current = attendees;
+  const isAttending = rsvpForm.attendance !== "no";
 
   const age = useMemo(() => computeAge(rsvpForm.birthDate), [rsvpForm.birthDate, computeAge]);
   const isUnder14 = age !== null && age < 14;
-  const hasDietaryData = attendees.some((a: { name: string; menu: string; allergies: string[] }) => a.allergies?.length > 0);
-  const showHealthConsent = rsvpForm.attendance === "yes" && hasDietaryData;
+  const hasDietaryData = (rsvpForm.allergies || []).length > 0;
+  const showHealthConsent = isAttending && hasDietaryData;
 
   const hasStructuredMenu = menuEnabled && (menuCarne || menuPescado || menuVegano);
 
@@ -70,6 +69,26 @@ const RsvpSection = memo(function RsvpSection({
   const handleAttendanceChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     updateRsvpField("attendance", e.target.value);
   }, [updateRsvpField]);
+
+  const handleCompanionCountChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    updateRsvpField("companionCount", Number(e.target.value) || 0);
+  }, [updateRsvpField]);
+
+  const handleCompanionNameChange = useCallback((idx: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
+    updateRsvpField(`companionNames[${idx}]`, e.target.value.slice(0, 120));
+  }, [updateRsvpField]);
+
+  const handleMenuChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
+    updateRsvpField("menuSelection", e.target.value);
+  }, [updateRsvpField]);
+
+  const handleAllergyToggle = useCallback((allergy: string) => {
+    const current = rsvpForm.allergies || [];
+    const updated = current.includes(allergy)
+      ? current.filter((a: string) => a !== allergy)
+      : [...current, allergy];
+    updateRsvpField("allergies", updated);
+  }, [rsvpForm.allergies, updateRsvpField]);
 
   const handleBirthDateChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     updateRsvpField("birthDate", e.target.value);
@@ -90,23 +109,6 @@ const RsvpSection = memo(function RsvpSection({
   const handleLegalClick = useCallback(() => {
     setLegalModal("privacy");
   }, [setLegalModal]);
-
-  const addAttendee = useCallback(() => {
-    const current = attendeesRef.current;
-    updateRsvpField("attendees", [...current, { name: "", menu: "", allergies: [] }]);
-  }, [updateRsvpField]);
-
-  const removeAttendee = useCallback((idx: number) => {
-    const current = attendeesRef.current;
-    const next = current.filter((_, i: number) => i !== idx);
-    updateRsvpField("attendees", next);
-  }, [updateRsvpField]);
-
-  const updateAttendee = useCallback((idx: number, field: string, value: string | boolean | string[]) => {
-    const current = attendeesRef.current;
-    const next = current.map((a, i: number) => i === idx ? { ...a, [field]: value } : a);
-    updateRsvpField("attendees", next);
-  }, [updateRsvpField]);
 
   return (
     <section data-story-section="rsvp" className={`${className} flex items-center justify-center px-3 py-4 sm:px-6 sm:py-8 lg:px-8 lg:py-10`} style={style}>
@@ -133,68 +135,95 @@ const RsvpSection = memo(function RsvpSection({
 
           <div className="setup-date-grid rsvp-choice-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))" }}>
             <div>
-              <label className="setup-label" htmlFor="rsvpAttendance">{t("rsvp.attendanceLabel")} *</label>
+              <label className="setup-label" htmlFor="rsvpAttendance">{t("rsvp.attendanceOptions")} *</label>
               <select id="rsvpAttendance" className="setup-input" value={rsvpForm.attendance} onChange={handleAttendanceChange} required disabled={isAlreadySubmitted}>
-                <option value="yes">{t("rsvp.attending")}</option>
+                <option value="alone">{t("rsvp.attendingAlone")}</option>
+                <option value="with">{t("rsvp.attendingWithCompanions")}</option>
                 <option value="no">{t("rsvp.notAttending")}</option>
               </select>
             </div>
           </div>
 
-          {rsvpForm.attendance === "no" && (
+          {rsvpForm.attendance === "with" && (
             <div className="setup-field" style={{ marginTop: "0.75rem" }}>
-              <label className="setup-label" htmlFor="rsvpNotAttendingCount">{t("rsvp.notAttendingCountLabel")} *</label>
-              <input id="rsvpNotAttendingCount" className="setup-input" type="number" min={1} max={99}
-                value={rsvpForm.notAttendingCount || 1}
-                onChange={(e) => updateRsvpField("notAttendingCount", Number(e.target.value) || 1)}
+              <label className="setup-label" htmlFor="rsvpCompanionCount">{t("rsvp.companionCountLabel")} *</label>
+              <input id="rsvpCompanionCount" className="setup-input" type="number" min={0} max={10}
+                value={rsvpForm.companionCount}
+                onChange={handleCompanionCountChange}
                 required disabled={isAlreadySubmitted} />
             </div>
           )}
 
-          {rsvpForm.attendance === "yes" && (
+          {rsvpForm.attendance === "with" && rsvpForm.companionCount > 0 && (
             <div style={{ marginTop: "0.75rem" }}>
-              <p className="setup-label">{t("rsvp.attendeesLabel")}</p>
-              {attendees.map((att, i: number) => (
-                <AttendeeCard
-                  key={i}
-                  attendee={att as Attendee}
-                  index={i}
-                  total={attendees.length}
-                  menuEnabled={!!hasStructuredMenu}
-                  onUpdate={updateAttendee}
-                  onRemove={removeAttendee}
-                  menus={menuOptions.map((m) => ({ key: m.key, label: m.label, desc: m.desc }))}
-                  allergiesOptions={["sin gluten", "sin lactosa", "alergia a frutos secos", "alergia a mariscos"]}
-                  t={t}
-                />
+              {Array.from({ length: rsvpForm.companionCount }, (_, i) => (
+                <div key={i} className="setup-field" style={{ marginBottom: "0.4rem" }}>
+                  <label className="setup-label" htmlFor={`companion-name-${i}`}>{t("rsvp.companionNameLabel", { number: i + 1 })}</label>
+                  <input id={`companion-name-${i}`} className="setup-input" type="text"
+                    value={rsvpForm.companionNames[i] || ""}
+                    onChange={handleCompanionNameChange(i)}
+                    placeholder={t("rsvp.attendeeNamePlaceholder")} required />
+                </div>
               ))}
-              {!isAlreadySubmitted && (
-                <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={addAttendee} style={{ fontSize: "0.85rem", marginTop: "0.25rem" }}>
-                  + {t("rsvp.addAttendee")}
-                </button>
-              )}
-              {menuPostre?.trim() && hasStructuredMenu ? (
-                <div style={{ marginTop: "0.5rem", padding: "0.5rem", borderRadius: "0.6rem", background: "color-mix(in srgb, var(--setup-field-bg) 60%, transparent)" }}>
-                  <p className="story-eyebrow" style={{ fontSize: "0.72rem", marginBottom: "0.15rem" }}>{t("rsvp.postre")}</p>
-                  <p className="story-note whitespace-pre-line" style={{ fontSize: "0.82rem" }}>{menuPostre}</p>
+            </div>
+          )}
+
+          {isAttending && hasStructuredMenu && (
+            <div className="setup-field" style={{ marginTop: "0.75rem" }}>
+              <label className="setup-label" htmlFor="rsvpMenu">{t("rsvp.menuLabel")} *</label>
+              <select id="rsvpMenu" className="setup-input"
+                value={rsvpForm.menuSelection} onChange={handleMenuChange} required disabled={isAlreadySubmitted}>
+                <option value="">{t("rsvp.menuPlaceholder")}</option>
+                {menuOptions.map((m) => <option key={m.key} value={m.key}>{m.label}</option>)}
+              </select>
+              {rsvpForm.menuSelection ? (
+                <div style={{
+                  marginTop: "0.35rem", padding: "0.4rem 0.6rem", borderRadius: "0.5rem",
+                  background: "color-mix(in srgb, var(--setup-accent) 8%, transparent)",
+                  border: "1px solid color-mix(in srgb, var(--setup-accent) 15%, transparent)",
+                  fontSize: "0.8rem", lineHeight: 1.4, color: "var(--setup-title, #fdf8ec)",
+                }}>
+                  {menuOptions.find((m) => m.key === rsvpForm.menuSelection)?.desc}
                 </div>
               ) : null}
             </div>
           )}
 
-          {rsvpForm.attendance === "yes" && !menuEnabled ? (
+          {isAttending && !menuEnabled ? (
             <p className="setup-help" style={{ fontSize: "0.8rem", marginTop: "0.5rem" }}>{t("rsvp.allergiesHint")}</p>
           ) : null}
 
-          {rsvpForm.attendance === "yes" && menuEnabled && !hasStructuredMenu && menuTexto?.trim() ? (
+          {isAttending && menuEnabled && !hasStructuredMenu && menuTexto?.trim() ? (
             <div style={{ marginBottom: "0.5rem", marginTop: "0.5rem", padding: "0.6rem", borderRadius: "0.6rem", background: "color-mix(in srgb, var(--setup-field-bg) 60%, transparent)" }}>
               <p className="story-eyebrow" style={{ fontSize: "0.72rem", marginBottom: "0.2rem" }}>{t("rsvp.menuLabel")}</p>
               <p className="story-note whitespace-pre-line" style={{ fontSize: "0.85rem" }}>{menuTexto}</p>
             </div>
           ) : null}
 
-          {rsvpForm.attendance === "yes" && menuEnabled ? (
+          {isAttending && menuEnabled ? (
             <p className="setup-help" style={{ fontSize: "0.8rem" }}>{t("rsvp.allergiesHint")}</p>
+          ) : null}
+
+          {isAttending && (
+            <fieldset style={{ border: "none", padding: 0, margin: "0.5rem 0 0 0" }}>
+              <legend className="setup-label" style={{ fontSize: "0.85rem" }}>{t("rsvp.allergiesLegend")}</legend>
+              <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+                {ALLERGIES.map((a) => (
+                  <label key={a} style={{ display: "flex", alignItems: "center", gap: "0.25rem", fontSize: "0.85rem", cursor: isDisabled ? "default" : "pointer" }}>
+                    <input type="checkbox" checked={(rsvpForm.allergies || []).includes(a)}
+                      onChange={() => handleAllergyToggle(a)} disabled={isAlreadySubmitted} />
+                    {t(`allergies.${a}`, { defaultValue: a })}
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+          )}
+
+          {menuPostre?.trim() && hasStructuredMenu ? (
+            <div style={{ marginTop: "0.5rem", padding: "0.5rem", borderRadius: "0.6rem", background: "color-mix(in srgb, var(--setup-field-bg) 60%, transparent)" }}>
+              <p className="story-eyebrow" style={{ fontSize: "0.72rem", marginBottom: "0.15rem" }}>{t("rsvp.postre")}</p>
+              <p className="story-note whitespace-pre-line" style={{ fontSize: "0.82rem" }}>{menuPostre}</p>
+            </div>
           ) : null}
 
           <label className="setup-label" htmlFor="rsvpBirthDate" style={{ marginTop: "0.5rem" }}>{t("rsvp.birthDateLabel")} *</label>
