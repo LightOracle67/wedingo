@@ -2818,4 +2818,37 @@ body::after {
   }
 }
 
+.invite-bg-image {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.invite-corner {
+  position: fixed;
+  z-index: 1;
+  width: 6rem;
+  height: 6rem;
+  opacity: 0.4;
+  object-fit: contain;
+  pointer-events: none;
+}
+.invite-corner--tl { top: 0.5rem; left: 0.5rem; }
+.invite-corner--tr { top: 0.5rem; right: 0.5rem; }
+.invite-corner--bl { bottom: 0.5rem; left: 0.5rem; }
+.invite-corner--br { bottom: 0.5rem; right: 0.5rem; }
+
+@media (max-width: 640px) {
+  .invite-corner { width: 3.5rem; height: 3.5rem; }
+  .invite-corner--tl { top: 0.25rem; left: 0.25rem; }
+  .invite-corner--tr { top: 0.25rem; right: 0.25rem; }
+  .invite-corner--bl { bottom: 0.25rem; left: 0.25rem; }
+  .invite-corner--br { bottom: 0.25rem; right: 0.25rem; }
+}
+
 

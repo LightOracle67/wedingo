@@ -466,6 +466,23 @@ export default function PublicInvitation() {
         <img src={eucalyptusSrc} alt="" aria-hidden="true" loading="lazy" className="wedding-decoration__image" />
       </div>
 
+      {config.backgroundImage ? (
+        <div className="invite-bg-image" style={{ backgroundImage: `url(${config.backgroundImage})` }} />
+      ) : null}
+
+      {config.cornerDecorationTL ? (
+        <img src={config.cornerDecorationTL} alt="" aria-hidden="true" className="invite-corner invite-corner--tl" />
+      ) : null}
+      {config.cornerDecorationTR ? (
+        <img src={config.cornerDecorationTR} alt="" aria-hidden="true" className="invite-corner invite-corner--tr" />
+      ) : null}
+      {config.cornerDecorationBL ? (
+        <img src={config.cornerDecorationBL} alt="" aria-hidden="true" className="invite-corner invite-corner--bl" />
+      ) : null}
+      {config.cornerDecorationBR ? (
+        <img src={config.cornerDecorationBR} alt="" aria-hidden="true" className="invite-corner invite-corner--br" />
+      ) : null}
+
       {/* ── Token no encontrado (invitación no configurada) ── */}
       {showMissingToken ? (
         <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
