@@ -456,7 +456,7 @@ export default function PublicInvitation() {
 
   return (
     <div className={`app-scene ${isStoryTransitioning ? "app-scene--transitioning" : ""}`}>
-      {showEnvelope ? <EnvelopeOverlay onOpen={() => setEnvelopeOpen(true)} firstName={config.firstName} secondName={config.secondName} /> : null}
+      {showEnvelope ? <EnvelopeOverlay onOpen={() => setEnvelopeOpen(true)} firstName={config.firstName} secondName={config.secondName} customSeal={config.customSeal} /> : null}
 
       {/* ── Decoraciones laterales (eucalipto) ── */}
       <div className="fixed top-0 z-0 pointer-events-none left-2 wedding-decoration--left wedding-decoration">

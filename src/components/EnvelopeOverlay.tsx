@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { randomMessage } from "../lib/invite-messages";
 import "../styles/envelope.css";
 
-const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secondName }: { onOpen: () => void; firstName: string; secondName: string }) {
+const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secondName, customSeal }: { onOpen: () => void; firstName: string; secondName: string; customSeal?: string }) {
   const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
   const [exiting, setExiting] = useState(false);
@@ -42,9 +42,10 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secon
       <span className="envelope-light" data-light="3" />
       <div className={`envelope-flash ${showWhite ? "envelope-flash--visible" : ""}`} />
       {showText && (
-        <p className={`envelope-golden ${!exiting ? "envelope-golden--in" : "envelope-golden--out"}`}>
+        <div className={`envelope-golden ${!exiting ? "envelope-golden--in" : "envelope-golden--out"}`}>
+          {customSeal ? <img src={customSeal} alt="" aria-hidden="true" className="envelope-golden__bg-seal" /> : null}
           <span className="envelope-golden__glow">{message}</span>
-        </p>
+        </div>
       )}
       <div className={`envelope-wrapper ${open ? "envelope-wrapper--open" : ""}`}>
         <div className="envelope">
@@ -52,7 +53,11 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secon
             <div className="envelope__flap-inner" />
             <div className="envelope__seal">
               <div className="envelope__seal-wax">
-                <div className="envelope__seal-heart" />
+                {customSeal ? (
+                  <img src={customSeal} alt="" aria-hidden="true" className="envelope__seal-custom-img" />
+                ) : (
+                  <div className="envelope__seal-heart" />
+                )}
               </div>
             </div>
           </div>

@@ -299,6 +299,25 @@
   width: 20px;
   height: 18px;
 }
+.envelope__seal-custom-img {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  z-index: 1;
+  filter: brightness(0.9) contrast(1.1);
+}
+.envelope-golden__bg-seal {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: min(60vw, 300px);
+  height: min(60vw, 300px);
+  object-fit: contain;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+}
 .envelope__seal-heart::before,
 .envelope__seal-heart::after {
   content: "";
