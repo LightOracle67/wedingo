@@ -1331,6 +1331,16 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
   font-size: clamp(1.1rem, 2.6vw, 1.5rem);
 }
 
+.story-title--couple {
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+.story-title__ampersand {
+  white-space: nowrap;
+}
+
 .story-card::before {
   content: "";
   position: absolute;

@@ -48,20 +48,19 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
                 WebkitMaskImage: "radial-gradient(circle at center, black 60%, transparent 100%)",
                 maskImage: "radial-gradient(circle at center, black 60%, transparent 100%)",
               }}>
-                <h1 className="story-title" style={{
+                <h1 className="story-title story-title--couple" style={{
                   position: "relative", zIndex: 11, color: "#fff", textShadow: "0 2px 12px rgba(0,0,0,0.6)",
                   fontSize: "clamp(1.2rem, 5cqi, 2.2rem)", margin: 0,
                   maxWidth: "80%", textAlign: "center", lineHeight: 1.2,
-                  wordBreak: "break-word", overflowWrap: "break-word", hyphens: "auto",
                 }}>
-                  {firstName || ""} & {secondName || ""}
+                  {firstName || ""}<span className="story-title__ampersand"> & </span>{secondName || ""}
                 </h1>
               </div>
             </div>
           ) : (
             <div className="relative mx-auto w-fit">
-              <h1 className="story-title">
-                {firstName || ""} & {secondName || ""}
+              <h1 className="story-title story-title--couple">
+                {firstName || ""}<span className="story-title__ampersand"> & </span>{secondName || ""}
               </h1>
             </div>
           )}
