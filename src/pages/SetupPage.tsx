@@ -14,7 +14,7 @@ export default function SetupPage() {
   const {
     hasStoredConfig, isConfigLoading, configLoadError,
     authMessage, authMessageType,
-    saveMessage, config, setupToken, refreshSetupToken,
+    saveMessage, config, setupToken, generateNewToken,
   } = useApp();
 
   const { addToast } = useToast();
@@ -47,10 +47,10 @@ export default function SetupPage() {
       setShowTokenModal(true);
       setIsTransitioning(false);
       if (!setupToken) {
-        (async () => { try { await refreshSetupToken(); } catch {} })();
+        (async () => { try { await generateNewToken(); } catch {} })();
       }
     }
-  }, [saveMessage, hasStoredConfig, setupToken, refreshSetupToken]);
+  }, [saveMessage, hasStoredConfig, setupToken, generateNewToken]);
 
   const handleTokenModalClose = () => {
     setShowTokenModal(false);

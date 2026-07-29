@@ -66,6 +66,7 @@ const baseMock = {
   authMessageType: undefined,
   saveMessage: undefined,
   refreshSetupToken: vi.fn(),
+  generateNewToken: vi.fn(),
 };
 
 beforeEach(() => {
@@ -245,18 +246,19 @@ describe("SetupPage", () => {
     expect(mockNavigate).toHaveBeenCalledWith("/test-token/admin", { replace: true });
   });
 
-  it("refreshes setup token when empty on save", () => {
-    const refreshFn = vi.fn().mockResolvedValue(undefined);
+  it("generates setup token when empty on save", () => {
+    const generateFn = vi.fn().mockResolvedValue(undefined);
     mockUseApp.mockReturnValue({
       ...baseMock,
       hasStoredConfig: true,
       saveMessage: "Saved!",
       setupToken: "",
-      refreshSetupToken: refreshFn,
+      generateNewToken: generateFn,
+      refreshSetupToken: vi.fn(),
     });
 
     render(<SetupPage />);
-    expect(refreshFn).toHaveBeenCalled();
+    expect(generateFn).toHaveBeenCalled();
   });
 
   it("selects token input text on focus", () => {
