@@ -121,21 +121,11 @@ export default function LandingPage() {
           if (!inviteSnapInTx.exists()) {
             transaction.set(inviteRef, { ...defaultConfig, activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry() });
           } else {
-            const data = inviteSnapInTx.data();
-            // TOCTOU: re-check inside transaction
-            if (data.activeSession) {
-              throw new Error("sessionExists");
-            }
             transaction.update(inviteRef, { activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry() });
           }
         });
-      } catch (err) {
-        if ((err as Error)?.message === "sessionExists") {
-          // Another user grabbed the session between confirm and transaction
-          setError(t("landing.errorSessionTaken"));
-        } else {
-          setError(t("landing.errorTransactionFailed"));
-        }
+      } catch {
+        setError(t("landing.errorTransactionFailed"));
         loginAttemptsRef.current++;
         if (loginAttemptsRef.current >= 3) {
           loginBlockedUntilRef.current = Date.now() + 30000;
