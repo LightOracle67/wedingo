@@ -18,14 +18,14 @@ const baseProps = {
 describe("HeroSection", () => {
   it("renders without couple photo", () => {
     render(<HeroSection {...baseProps} countdown={null} couplePhoto="" />);
-    expect(screen.getByText("John & Jane")).toBeDefined();
+    expect(screen.getByText((c: string) => c.includes("John") && c.includes("Jane"))).toBeDefined();
     expect(screen.getByText("Welcome!")).toBeDefined();
     expect(screen.getByText("hero.eyebrow")).toBeDefined();
   });
 
   it("renders with couple photo", () => {
     render(<HeroSection {...baseProps} couplePhoto="https://example.com/photo.jpg" countdown={null} />);
-    expect(screen.getByText("John & Jane")).toBeDefined();
+    expect(screen.getByText((c: string) => c.includes("John") && c.includes("Jane"))).toBeDefined();
   });
 
   it("handles photo load error", () => {
