@@ -280,7 +280,7 @@ const RsvpSection = memo(function RsvpSection({
             </fieldset>
           )}
 
-          {menuPostre?.trim() && hasStructuredMenu ? (
+          {isAttending && menuPostre?.trim() && hasStructuredMenu ? (
             <div style={{ marginTop: "0.5rem", padding: "0.5rem", borderRadius: "0.6rem", background: "color-mix(in srgb, var(--setup-field-bg) 60%, transparent)" }}>
               <p className="story-eyebrow" style={{ fontSize: "0.72rem", marginBottom: "0.15rem" }}>{t("rsvp.postre")}</p>
               <p className="story-note whitespace-pre-line" style={{ fontSize: "0.82rem" }}>{menuPostre}</p>
