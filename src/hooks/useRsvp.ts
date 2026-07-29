@@ -386,6 +386,11 @@ export function useRsvp(
         mainGuestName: single,
       };
       if (data.companionMenus[i]) companionData.mealChoice = data.companionMenus[i];
+      const hasCompDietary = compAllergies.length > 0 || (data.companionAllergiesOther[i] || "").trim();
+      if (hasCompDietary) {
+        companionData.healthConsent = true;
+        companionData.healthConsentAt = nowTimestamp;
+      }
       companionPayloads.push(companionData);
     }
 
@@ -398,7 +403,8 @@ export function useRsvp(
         batch.set(doc(RSVP_COLLECTION_REF, companionDocIds[i]), companionPayloads[i]);
       }
       await batch.commit();
-    } catch {
+    } catch (err) {
+      console.error("RSVP batch write failed:", err);
       throw new Error(t("rsvp.saveError"));
     }
 
