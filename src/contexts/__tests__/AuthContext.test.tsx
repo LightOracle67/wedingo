@@ -136,7 +136,7 @@ describe("AuthProvider", () => {
     const onFirstSave = mockRegisterOnFirstSave.mock.calls[0][0];
     await onFirstSave();
     expect(mockSetAdminMessageType).toHaveBeenCalledWith("error");
-    expect(mockSetAdminMessage).toHaveBeenCalledWith("errors.sessionUpdateFailed");
+    expect(mockSetAdminMessage).toHaveBeenCalledWith("auth.sessionUpdateFailed");
   });
 
   it("skips session renewal when already verified", async () => {
