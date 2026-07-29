@@ -78,7 +78,13 @@ export function useSetupAuth(
 
     // Verifica primero en Firestore que la sesión siga activa antes de restaurar
     getDoc(invitationDocRef(inviteToken)).then(snap => {
-      if (snap.exists() && snap.data().activeSession) {
+      const data = snap.data();
+      const sessionExpiresAt = data?.sessionExpiresAt?.toDate?.() ?? data?.sessionExpiresAt;
+      const isValid = snap.exists()
+        && data?.activeSession
+        && sessionExpiresAt
+        && new Date(sessionExpiresAt).getTime() > Date.now();
+      if (isValid) {
         setTokenLoginUsername(session.identifier);
         sessionTypeRef.current = session.type;
         setSetupToken("");
@@ -88,7 +94,7 @@ export function useSetupAuth(
         clearSession();
       }
     }).catch(() => {
-      clearSession();
+      // Solo limpiar si el documento no existe, no por error transitorio
     });
   }, [inviteToken]);
 
@@ -208,29 +214,45 @@ export function useSetupAuth(
    */
   const activateSessionWithToken = useCallback(async (enteredToken: string, _validateToken?: (tokenDoc: DocumentData, tu: string) => void) => {
     const inviteRef = invitationDocRef(inviteToken);
-    const inviteSnapActive = await getDoc(inviteRef);
-    if (inviteSnapActive.exists() && inviteSnapActive.data().activeSession) {
-      setIsTokenVerifying(false);
-      if (!window.confirm(t("auth.sessionExists"))) {
-        return null;
-      }
-      setIsTokenVerifying(true);
-    }
 
+    // Early check: validate token before entering transaction
+    const inviteSnapActive = await getDoc(inviteRef);
     if (inviteSnapActive.exists() && inviteSnapActive.data()._activeSetupToken !== enteredToken) {
       throw new Error("Token no válido");
     }
 
-    await runTransaction(db, async (transaction) => {
-      const inviteSnap = await transaction.get(inviteRef);
-      if (!inviteSnap.exists()) {
-        transaction.set(inviteRef, { ...defaultConfig, activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry() });
-      } else {
-        if (inviteSnap.data()._activeSetupToken !== enteredToken) throw new Error("Token no válido");
-        transaction.update(inviteRef, { activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry() });
+    let userConfirmed = false;
+
+    // eslint-disable-next-line no-constant-condition
+    while (true) {
+      try {
+        return await runTransaction(db, async (transaction) => {
+          const inviteSnap = await transaction.get(inviteRef);
+          if (!inviteSnap.exists()) {
+            transaction.set(inviteRef, { ...defaultConfig, activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry() });
+            return "";
+          }
+
+          const data = inviteSnap.data();
+          if (data.activeSession && !userConfirmed) {
+            throw new Error("sessionExists");
+          }
+          if (data._activeSetupToken !== enteredToken) throw new Error("Token no válido");
+          if (_validateToken) _validateToken(data, data.adminUsername);
+          transaction.update(inviteRef, { activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry() });
+          return "";
+        });
+      } catch (err) {
+        if ((err as Error)?.message === "sessionExists") {
+          setIsTokenVerifying(false);
+          userConfirmed = window.confirm(t("auth.sessionExists"));
+          setIsTokenVerifying(true);
+          if (!userConfirmed) return null;
+        } else {
+          throw err;
+        }
       }
-    });
-    return "";
+    }
   }, [inviteToken, t]);
 
   /**
@@ -250,7 +272,8 @@ export function useSetupAuth(
 
     setIsTokenVerifying(true);
     try {
-      await activateSessionWithToken(enteredToken);
+      const result = await activateSessionWithToken(enteredToken);
+      if (result === null) { setIsTokenVerifying(false); return; }
 
       const displayName = config.adminUsername || adminLoginUsername || inviteToken;
       setTokenLoginUsername(displayName);

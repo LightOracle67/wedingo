@@ -237,7 +237,7 @@ describe("LandingPage", () => {
     const txUpdate = vi.fn();
     vi.mocked(runTransaction).mockImplementation(async (_db: any, cb: any) => {
       await cb({
-        get: vi.fn().mockResolvedValue({ exists: () => true }),
+        get: vi.fn().mockResolvedValue({ exists: () => true, data: () => ({}) }),
         set: vi.fn(),
         update: txUpdate,
       });

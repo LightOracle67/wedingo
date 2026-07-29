@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import { updateDoc, serverTimestamp } from "firebase/firestore";
+import { serverTimestamp, updateDoc } from "firebase/firestore";
 import { invitationDocRef } from "../lib/firebase";
-import { getSession, firestoreSessionExpiry, saveSession } from "../lib/sessionVars";
+import { firestoreSessionExpiry, saveSession } from "../lib/sessionVars";
 import { useSetupAuth } from "../hooks/useSetupAuth";
 import { useTranslation } from "react-i18next";
 import { useConfig } from "./useConfig";
@@ -37,9 +37,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
     })();
     auth.setIsTokenVerified(true);
-    const savedSession = getSession();
-    const storedName = savedSession?.identifier || "";
-    const displayName = storedName.length > 10 ? storedName : (config.adminUsername || "");
+    const displayName = config.adminUsername || inviteToken;
     if (displayName) {
       auth.setTokenLoginUsername(displayName);
       saveSession("admin", displayName);

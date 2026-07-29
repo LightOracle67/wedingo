@@ -470,7 +470,7 @@ describe("useSetupAuth", () => {
       mockGetSession.mockReturnValue({ type: "setup", identifier: "restored-user" });
       mockGetDoc.mockResolvedValueOnce({
         exists: () => true,
-        data: () => ({ activeSession: true }),
+        data: () => ({ activeSession: true, sessionExpiresAt: new Date(Date.now() + 86400000) }),
       });
 
       const { result } = setup();
@@ -484,7 +484,7 @@ describe("useSetupAuth", () => {
       mockGetSession.mockReturnValue({ type: "setup", identifier: "inactive-user" });
       mockGetDoc.mockResolvedValueOnce({
         exists: () => true,
-        data: () => ({ activeSession: false }),
+        data: () => ({ activeSession: false, sessionExpiresAt: null }),
       });
 
       setup();
@@ -494,14 +494,15 @@ describe("useSetupAuth", () => {
       });
     });
 
-    it("clears session on Firestore error during restoration", async () => {
+    it("does not clear session on Firestore transient error during restoration", async () => {
       mockGetSession.mockReturnValue({ type: "admin", identifier: "admin-user" });
       mockGetDoc.mockRejectedValueOnce(new Error("Network error"));
 
       setup();
 
-      await waitFor(() => {
-        expect(mockClearSession).toHaveBeenCalled();
+      // Network errors no longer clear the session (transient error protection)
+      await vi.waitFor(() => {
+        expect(mockClearSession).not.toHaveBeenCalled();
       });
     });
 
