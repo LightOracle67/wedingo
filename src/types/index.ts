@@ -58,6 +58,11 @@ export interface InvitationConfig {
   menuPescado: string;
   menuVegano: string;
   menuPostre: string;
+  backgroundImage?: string;
+  cornerDecorationTL?: string;
+  cornerDecorationTR?: string;
+  cornerDecorationBL?: string;
+  cornerDecorationBR?: string;
   _activeSetupToken?: string;
   _visits?: number;
   [key: string]: unknown;

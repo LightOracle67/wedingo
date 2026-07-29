@@ -243,8 +243,11 @@
     "messageLabel": "Mensaje principal",
     "messagePlaceholder": "Escribe el mensaje de la invitación",
     "themeLabel": "Tema visual",
+    "backgroundHint": "La imagen aparecerá semi-transparente detrás de todas las secciones",
     "backgroundLabel": "Fondo de la portada",
     "backgroundText": "Sube una foto o elige un fondo para la portada.",
+    "backgroundUpload": "Subir fondo",
+    "backgroundUploadHint": "JPG, PNG o WebP",
     "removeBackground": "Quitar el fondo",
     "uploadTitle": "Subir foto",
     "uploadSubtitle": "Máximo 20 MB. Se comprimirá automáticamente.",
@@ -364,7 +367,14 @@
     "musicFile": "Archivo de audio",
     "searching": "Buscando...",
     "noResults": "Sin resultados.",
-    "deleteImageConfirm": "¿Eliminar esta imagen?"
+    "deleteImageConfirm": "¿Eliminar esta imagen?",
+    "cornerDecorationsLabel": "Decoraciones de esquinas",
+    "cornerDecorationsHint": "Pequeñas imágenes decorativas para las 4 esquinas (PNG con transparencia recomendado)",
+    "cornerTLLabel": "Superior izquierda",
+    "cornerTRLabel": "Superior derecha",
+    "cornerBLLabel": "Inferior izquierda",
+    "cornerBRLabel": "Inferior derecha",
+    "uploadCorner": "Subir"
   },
   "admin": {
     "tabs": {
