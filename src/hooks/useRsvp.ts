@@ -174,7 +174,11 @@ export function useRsvp(
         );
         if (!cancelled) setRsvpEntries(entries);
       } catch {
-        if (!cancelled) setRsvpEntries([]);
+        if (!cancelled) {
+          setRsvpEntries([]);
+          setAdminMessageType("error");
+          setAdminMessage(t("rsvp.saveError"));
+        }
       }
     };
     hydrateRsvp();
@@ -336,7 +340,12 @@ export function useRsvp(
       payload.healthConsent = true;
       payload.healthConsentAt = serverTimestamp();
     }
-    const docRef = await addDoc(RSVP_COLLECTION_REF, payload);
+    let docRef;
+    try {
+      docRef = await addDoc(RSVP_COLLECTION_REF, payload);
+    } catch {
+      throw new Error(t("rsvp.saveError"));
+    }
     setRsvpEntries((current) => [
       { ...(payload as unknown as RsvpEntryData), id: docRef.id, submittedAt: now, dietaryInfo },
       ...current,
