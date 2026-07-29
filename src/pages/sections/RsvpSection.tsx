@@ -74,10 +74,6 @@ const RsvpSection = memo(function RsvpSection({
     updateRsvpField("attendance", e.target.value);
   }, [updateRsvpField]);
 
-  const handleCompanionCountChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    updateRsvpField("companionCount", Number(e.target.value) || 0);
-  }, [updateRsvpField]);
-
   const handleCompanionNameChange = useCallback((idx: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
     updateRsvpField(`companionNames[${idx}]`, e.target.value.slice(0, 120));
   }, [updateRsvpField]);
@@ -149,27 +145,16 @@ const RsvpSection = memo(function RsvpSection({
           </div>
 
           {rsvpForm.attendance === "with" && (
-            <div className="setup-field" style={{ marginTop: "0.75rem" }}>
-              <label className="setup-label" htmlFor="rsvpCompanionCount">{t("rsvp.companionCountLabel")} *</label>
-              <input id="rsvpCompanionCount" className="setup-input" type="number" min={0} max={10}
-                value={rsvpForm.companionCount}
-                onChange={handleCompanionCountChange}
-                required disabled={isAlreadySubmitted} />
-            </div>
-          )}
-
-          {rsvpForm.attendance === "with" && rsvpForm.companionCount > 0 && (
             <div style={{ marginTop: "0.75rem" }}>
               {Array.from({ length: rsvpForm.companionCount }, (_, i) => (
                 <div key={i} className="rsvp-attendee-card">
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "0.5rem" }}>
                     <h4 style={{ margin: 0 }}>{t("rsvp.companionHeading", { number: i + 1 })}</h4>
-                    {rsvpForm.companionCount > 1 && (
-                      <button type="button" className="setup-button setup-button--small" style={{ background: "#ef4444", color: "#fff", fontSize: "0.75rem", padding: "0.2rem 0.5rem" }}
-                        onClick={() => updateRsvpField("companionCount", rsvpForm.companionCount - 1)}>
-                        {t("common.remove", "Remove")}
-                      </button>
-                    )}
+                    <button type="button" className="rsvp-remove-btn" aria-label={t("common.remove", "Remove")}
+                      onClick={() => updateRsvpField("companionCount", rsvpForm.companionCount - 1)}
+                      disabled={isAlreadySubmitted}>
+                      ✕
+                    </button>
                   </div>
 
                   <label className="setup-label" htmlFor={`companion-name-${i}`}>{t("rsvp.nameLabel")} *</label>
@@ -249,6 +234,11 @@ const RsvpSection = memo(function RsvpSection({
                   {menuOptions.find((m) => m.key === rsvpForm.menuSelection)?.desc}
                 </div>
               ) : null}
+              {!isAlreadySubmitted && (
+                <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => updateRsvpField("companionCount", (rsvpForm.companionCount || 0) + 1)} style={{ fontSize: "0.85rem", marginTop: "0.5rem" }}>
+                  + {t("rsvp.addCompanion")}
+                </button>
+              )}
             </div>
           )}
 
