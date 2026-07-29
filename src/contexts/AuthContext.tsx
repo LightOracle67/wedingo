@@ -32,7 +32,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       } catch {
         if (setAdminMessage && setAdminMessageType) {
           setAdminMessageType("error");
-          setAdminMessage(t("errors.sessionUpdateFailed"));
+          setAdminMessage(t("auth.sessionUpdateFailed"));
         }
       }
     })();
