@@ -59,6 +59,7 @@ export interface InvitationConfig {
   menuVegano: string;
   menuPostre: string;
   backgroundImage?: string;
+  customSeal?: string;
   cornerDecorationTL?: string;
   cornerDecorationTR?: string;
   cornerDecorationBL?: string;

@@ -156,6 +156,40 @@ export default function CoverSectionForm({ prefix = "" }) {
       <div className="setup-background-panel">
         <div className="setup-background-panel__header">
           <div>
+            <p className="setup-label setup-label--tight">{t("setup.customSealLabel")}</p>
+            <p className="setup-help setup-help--tight">{t("setup.customSealHint")}</p>
+          </div>
+          {formData.customSeal ? (
+            <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={() => updateFormField("customSeal", "")}>{t("setup.remove")}</button>
+          ) : null}
+        </div>
+        {formData.customSeal ? (
+          <div className="setup-selected-background">
+            <img src={formData.customSeal} alt="" className="setup-selected-background__image" style={{ width: "3rem", height: "3rem", objectFit: "contain" }} />
+            <div>
+              <p className="setup-selected-background__title">{t("setup.currentSeal")}</p>
+            </div>
+          </div>
+        ) : (
+          <label className="setup-upload" htmlFor={id("customSeal")}>
+            <span className="setup-upload__title">{t("setup.uploadSeal")}</span>
+            <span className="setup-upload__subtitle">{t("setup.uploadSealHint")}</span>
+          </label>
+        )}
+        <input className="setup-upload__input" id={id("customSeal")} type="file" accept="image/png,image/svg+xml" onChange={async (e) => {
+          const file = e.target.files?.[0]; if (!file) return;
+          if (file.size > 1024 * 1024) { addToast("error", t("setup.errorFileSize")); return; }
+          const { dataUrl } = await uploadImage(inviteToken, file, () => {});
+          updateFormField("customSeal", dataUrl);
+          e.target.value = "";
+        }} />
+      </div>
+
+      <div className="story-divider" style={{ margin: "0.75rem 0" }} />
+
+      <div className="setup-background-panel">
+        <div className="setup-background-panel__header">
+          <div>
             <p className="setup-label setup-label--tight">{t("setup.backgroundLabel")}</p>
             <p className="setup-help setup-help--tight">{t("setup.backgroundHint")}</p>
           </div>
