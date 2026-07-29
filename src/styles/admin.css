@@ -1551,6 +1551,31 @@ select.setup-input {
   .gallery-array-editor__grid { grid-template-columns: repeat(2, 1fr); gap: 0.4rem; }
 }
 
+.rsvp-remove-btn {
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--setup-accent) 40%, transparent);
+  background: color-mix(in srgb, var(--setup-accent) 12%, transparent);
+  color: var(--setup-accent);
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 200ms, border-color 200ms, transform 200ms;
+  line-height: 1;
+  padding: 0;
+}
+.rsvp-remove-btn:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--setup-accent) 22%, transparent);
+  border-color: color-mix(in srgb, var(--setup-accent) 60%, transparent);
+  transform: scale(1.1);
+}
+.rsvp-remove-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
 .rsvp-attendee-card {
   background: color-mix(in srgb, var(--setup-card-bg, #1e1b15) 60%, transparent);
   border: 1px solid color-mix(in srgb, var(--setup-border, #2a261e) 50%, transparent);

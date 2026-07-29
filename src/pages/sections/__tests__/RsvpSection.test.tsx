@@ -20,8 +20,10 @@ const baseForm = {
   companionNames: [],
   companionMenus: [],
   companionAllergies: [],
+  companionAllergiesOther: [],
   menuSelection: "",
   allergies: [],
+  allergiesOther: "",
   parentalConsent: false,
   privacyConsent: false,
   healthConsent: false,
@@ -79,21 +81,21 @@ describe("RsvpSection", () => {
     expect(handleDeleteRsvp).toHaveBeenCalled();
   });
 
-  it("shows companion count input when attendance is with", () => {
+  it("renders attendance select with with option", () => {
     render(
       <RsvpSection
         {...baseProps}
         rsvpForm={{ ...baseForm, attendance: "with" }}
       />,
     );
-    expect(screen.getByText((text: string) => text.includes("rsvp.companionCountLabel"))).toBeDefined();
+    expect(screen.getByText("rsvp.attendingWithCompanions")).toBeDefined();
   });
 
   it("shows companion cards when companionCount > 0", () => {
     render(
       <RsvpSection
         {...baseProps}
-        rsvpForm={{ ...baseForm, attendance: "with", companionCount: 2, companionNames: ["", ""], companionMenus: ["", ""], companionAllergies: [[], []] }}
+        rsvpForm={{ ...baseForm, attendance: "with", companionCount: 2, companionNames: ["", ""], companionMenus: ["", ""], companionAllergies: [[], []], companionAllergiesOther: ["", ""] }}
       />,
     );
     expect(screen.getAllByText((text: string) => text === "rsvp.companionHeading")).toHaveLength(2);
@@ -192,7 +194,7 @@ describe("RsvpSection", () => {
         }}
       />,
     );
-    expect(screen.getAllByText("common.remove")).toHaveLength(2);
+    expect(screen.getAllByText("✕")).toHaveLength(2);
   });
 
   it("shows postre when menuPostre is provided", () => {
