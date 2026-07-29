@@ -292,7 +292,7 @@ export function useRsvp(
       const hasEmptyName = data.companionNames.slice(0, data.companionCount).some((n) => !n.trim());
       if (hasEmptyName) return t("rsvp.validation.nameRequired");
     }
-    if (data.attendance !== "no" && menuEnabled && !data.menuSelection) return t("rsvp.validation.menuHeadcountRequired");
+    if (data.attendance !== "no" && menuEnabled && !data.menuSelection) return t("rsvp.validation.menuRequired");
     if (!data.privacyConsent) return t("rsvp.validation.privacyRequired");
     if (!data.birthDate) return t("rsvp.validation.birthDateRequired");
     const age = computeAge(data.birthDate);

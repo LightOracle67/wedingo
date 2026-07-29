@@ -338,7 +338,7 @@ describe("useRsvp", () => {
       expect(payload.mealChoice).toBe("carne");
     });
 
-    it("returns error for menuHeadcountRequired when menuEnabled but no menuSelection", async () => {
+    it("returns error for menuRequired when menuEnabled but no menuSelection", async () => {
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, true));
       act(() => result.current.updateRsvpField("guestName", "Alice"));
       act(() => result.current.updateRsvpField("birthDate", "2000-01-01"));
@@ -348,7 +348,7 @@ describe("useRsvp", () => {
         result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as any);
       });
 
-      expect(result.current.rsvpMessage).toMatch(/menuHeadcountRequired/i);
+      expect(result.current.rsvpMessage).toMatch(/menuRequired/i);
       expect(mockAddDoc).not.toHaveBeenCalled();
     });
 
