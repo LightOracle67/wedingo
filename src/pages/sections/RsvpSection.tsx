@@ -142,7 +142,7 @@ const RsvpSection = memo(function RsvpSection({
                   <option value="with">{t("rsvp.attendingWithCompanions")}</option>
                   <option value="no">{t("rsvp.notAttending")}</option>
                 </select>
-                {rsvpForm.attendance === "with" && !isAlreadySubmitted && (
+                {rsvpForm.attendance === "with" && !isAlreadySubmitted && (rsvpForm.companionCount || 0) < 10 && (
                   <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => updateRsvpField("companionCount", (rsvpForm.companionCount || 0) + 1)} style={{ whiteSpace: "nowrap", fontSize: "0.8rem" }}>
                     + {t("rsvp.addCompanion")}
                   </button>
@@ -177,7 +177,7 @@ const RsvpSection = memo(function RsvpSection({
                       <label className="setup-label" htmlFor={`companion-menu-${i}`} style={{ marginTop: "0.5rem" }}>{t("rsvp.menuLabel")}</label>
                       <select id={`companion-menu-${i}`} className="setup-input"
                         value={rsvpForm.companionMenus[i] || ""}
-                        onChange={(e) => updateRsvpField(`companionMenu[${i}]`, e.target.value)}
+                        onChange={(e) => updateRsvpField(`companionMenus[${i}]`, e.target.value)}
                         disabled={isAlreadySubmitted}>
                         <option value="">{t("rsvp.menuPlaceholder")}</option>
                         {menuOptions.map((m) => <option key={m.key} value={m.key}>{m.label}</option>)}

@@ -231,7 +231,10 @@ export function useRsvp(
         ...current,
         attendance: value as string,
         companionCount: value === "no" ? 0 : (value === "alone" ? 0 : (current.companionCount || 1)),
-        companionNames: value === "no" ? [] : current.companionNames,
+        companionNames: value === "no" || value === "alone" ? [] : current.companionNames,
+        companionMenus: value === "no" || value === "alone" ? [] : current.companionMenus,
+        companionAllergies: value === "no" || value === "alone" ? [] : current.companionAllergies,
+        companionAllergiesOther: value === "no" || value === "alone" ? [] : current.companionAllergiesOther,
       }));
       return;
     }
@@ -261,7 +264,7 @@ export function useRsvp(
       });
       return;
     }
-    if (field.startsWith("companionMenu[")) {
+    if (field.startsWith("companionMenus[")) {
       const idx = parseInt(field.match(/\d+/)?.[0] || "0", 10);
       setRsvpForm((current) => {
         const menus = [...current.companionMenus];
@@ -294,10 +297,9 @@ export function useRsvp(
     }
     if (data.attendance !== "no" && menuEnabled && !data.menuSelection) return t("rsvp.validation.menuRequired");
     if (!data.privacyConsent) return t("rsvp.validation.privacyRequired");
-    if (!data.birthDate) return t("rsvp.validation.birthDateRequired");
-    const age = computeAge(data.birthDate);
-    if (age !== null && age < 14 && !data.parentalConsent) return t("rsvp.validation.ageUnder14");
     if (data.attendance !== "no") {
+      const age = computeAge(data.birthDate);
+      if (age !== null && age < 14 && !data.parentalConsent) return t("rsvp.validation.ageUnder14");
       const hasHealthData = data.allergies && data.allergies.length > 0;
       if (hasHealthData && !data.healthConsent) return t("rsvp.validation.healthConsentRequired");
     }
@@ -336,7 +338,7 @@ export function useRsvp(
     }
     const docRef = await addDoc(RSVP_COLLECTION_REF, payload);
     setRsvpEntries((current) => [
-      { ...(payload as unknown as RsvpEntryData), id: docRef.id, submittedAt: now, dietaryInfo, attendees: [], companions: 0, menuHeadcounts: {}, guestNames: "", note: "", companionMenus: [], companionAllergies: [] },
+      { ...(payload as unknown as RsvpEntryData), id: docRef.id, submittedAt: now, dietaryInfo },
       ...current,
     ]);
     setRsvpMessage(

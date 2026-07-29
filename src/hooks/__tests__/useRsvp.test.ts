@@ -184,11 +184,11 @@ describe("useRsvp", () => {
     expect(result.current.rsvpForm.companionAllergies).toEqual([[], [], []]);
   });
 
-  it("handles companionMenu[N] field updates", () => {
+  it("handles companionMenuss[N] field updates", () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
     act(() => result.current.updateRsvpField("companionCount", 2));
-    act(() => result.current.updateRsvpField("companionMenu[0]", "carne"));
-    act(() => result.current.updateRsvpField("companionMenu[1]", "pescado"));
+    act(() => result.current.updateRsvpField("companionMenus[0]", "carne"));
+    act(() => result.current.updateRsvpField("companionMenus[1]", "pescado"));
     expect(result.current.rsvpForm.companionMenus).toEqual(["carne", "pescado"]);
   });
 
@@ -204,9 +204,9 @@ describe("useRsvp", () => {
   it("trims companionMenus and companionAllergies when companionCount decreases", () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
     act(() => result.current.updateRsvpField("companionCount", 3));
-    act(() => result.current.updateRsvpField("companionMenu[0]", "carne"));
-    act(() => result.current.updateRsvpField("companionMenu[1]", "pescado"));
-    act(() => result.current.updateRsvpField("companionMenu[2]", "vegano"));
+    act(() => result.current.updateRsvpField("companionMenus[0]", "carne"));
+    act(() => result.current.updateRsvpField("companionMenus[1]", "pescado"));
+    act(() => result.current.updateRsvpField("companionMenus[2]", "vegano"));
     act(() => result.current.updateRsvpField("companionAllergies[0]", ["sin gluten"]));
     act(() => result.current.updateRsvpField("companionCount", 2));
     expect(result.current.rsvpForm.companionMenus).toEqual(["carne", "pescado"]);
@@ -220,8 +220,8 @@ describe("useRsvp", () => {
     act(() => result.current.updateRsvpField("companionCount", 2));
     act(() => result.current.updateRsvpField("companionNames[0]", "Bob"));
     act(() => result.current.updateRsvpField("companionNames[1]", "Charlie"));
-    act(() => result.current.updateRsvpField("companionMenu[0]", "carne"));
-    act(() => result.current.updateRsvpField("companionMenu[1]", "pescado"));
+    act(() => result.current.updateRsvpField("companionMenus[0]", "carne"));
+    act(() => result.current.updateRsvpField("companionMenus[1]", "pescado"));
     act(() => result.current.updateRsvpField("companionAllergies[0]", ["sin gluten"]));
     act(() => result.current.updateRsvpField("birthDate", "2000-01-01"));
     act(() => result.current.updateRsvpField("privacyConsent", true));
