@@ -136,15 +136,22 @@ const RsvpSection = memo(function RsvpSection({
           <div className="setup-date-grid rsvp-choice-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))" }}>
             <div>
               <label className="setup-label" htmlFor="rsvpAttendance">{t("rsvp.attendanceOptions")} *</label>
-              <select id="rsvpAttendance" className="setup-input" value={rsvpForm.attendance} onChange={handleAttendanceChange} required disabled={isAlreadySubmitted}>
-                <option value="alone">{t("rsvp.attendingAlone")}</option>
-                <option value="with">{t("rsvp.attendingWithCompanions")}</option>
-                <option value="no">{t("rsvp.notAttending")}</option>
-              </select>
+              <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
+                <select id="rsvpAttendance" className="setup-input" value={rsvpForm.attendance} onChange={handleAttendanceChange} required disabled={isAlreadySubmitted} style={{ flex: 1 }}>
+                  <option value="alone">{t("rsvp.attendingAlone")}</option>
+                  <option value="with">{t("rsvp.attendingWithCompanions")}</option>
+                  <option value="no">{t("rsvp.notAttending")}</option>
+                </select>
+                {rsvpForm.attendance === "with" && !isAlreadySubmitted && (
+                  <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => updateRsvpField("companionCount", (rsvpForm.companionCount || 0) + 1)} style={{ whiteSpace: "nowrap", fontSize: "0.8rem" }}>
+                    + {t("rsvp.addCompanion")}
+                  </button>
+                )}
+              </div>
             </div>
           </div>
 
-          {rsvpForm.attendance === "with" && (
+          {rsvpForm.attendance === "with" && rsvpForm.companionCount > 0 && (
             <div style={{ marginTop: "0.75rem" }}>
               {Array.from({ length: rsvpForm.companionCount }, (_, i) => (
                 <div key={i} className="rsvp-attendee-card">
@@ -236,11 +243,6 @@ const RsvpSection = memo(function RsvpSection({
                   {menuOptions.find((m) => m.key === rsvpForm.menuSelection)?.desc}
                 </div>
               ) : null}
-              {!isAlreadySubmitted && (
-                <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => updateRsvpField("companionCount", (rsvpForm.companionCount || 0) + 1)} style={{ fontSize: "0.85rem", marginTop: "0.5rem" }}>
-                  + {t("rsvp.addCompanion")}
-                </button>
-              )}
             </div>
           )}
 
