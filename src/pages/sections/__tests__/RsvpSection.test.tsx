@@ -194,7 +194,7 @@ describe("RsvpSection", () => {
         }}
       />,
     );
-    expect(screen.getAllByText("✕")).toHaveLength(2);
+    expect(screen.getAllByText("✕")).toHaveLength(1);
   });
 
   it("shows postre when menuPostre is provided", () => {
