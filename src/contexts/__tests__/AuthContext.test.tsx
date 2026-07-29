@@ -176,7 +176,7 @@ describe("AuthProvider", () => {
     render(<AuthProvider><div>child</div></AuthProvider>);
     const onFirstSave = mockRegisterOnFirstSave.mock.calls[0][0];
     await onFirstSave();
-    expect(mockSetTokenLoginUsername).toHaveBeenCalledWith("admin-user-name");
+    expect(mockSetTokenLoginUsername).toHaveBeenCalledWith("admin");
   });
 
   it("uses adminUsername when session has short identifier", async () => {
@@ -194,7 +194,7 @@ describe("AuthProvider", () => {
     expect(mockSaveSession).toHaveBeenCalledWith("admin", "AdminUser");
   });
 
-  it("skips saving session when displayName is empty", async () => {
+  it("saves session with inviteToken when adminUsername is empty", async () => {
     mockGetSession.mockReturnValue({ identifier: "ab", expiresAt: Date.now() + 999999 });
     mockUseConfig.mockReturnValue({
       inviteToken: "test-token",
@@ -205,7 +205,8 @@ describe("AuthProvider", () => {
     render(<AuthProvider><div>child</div></AuthProvider>);
     const onFirstSave = mockRegisterOnFirstSave.mock.calls[0][0];
     await onFirstSave();
-    expect(mockSetTokenLoginUsername).not.toHaveBeenCalled();
+    expect(mockSetTokenLoginUsername).toHaveBeenCalledWith("test-token");
+    expect(mockSaveSession).toHaveBeenCalledWith("admin", "test-token");
   });
 
   it("handles null setAdminMessage gracefully", async () => {

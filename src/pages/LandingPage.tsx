@@ -1,7 +1,7 @@
 import { useApp } from "../contexts";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getDoc, getDocs, query, where, serverTimestamp, runTransaction } from "firebase/firestore";
+import { getDocs, query, where, serverTimestamp, runTransaction } from "firebase/firestore";
 import { useTranslation } from "react-i18next";
 import { db, invitationDocRef, INVITATIONS_COLLECTION_REF } from "../lib/firebase";
 import { normalizeTokenValue } from "../lib/token-utils";
@@ -100,16 +100,13 @@ export default function LandingPage() {
         return;
       }
 
-      const inviteSnap = await getDoc(invitationDocRef(target));
-      if (inviteSnap.exists()) {
-        try {
-          const parsed = normalizeConfig(inviteSnap.data());
-          const hydrated = { ...defaultConfig, ...parsed };
-          safeSetItem(`wedin_invite_cache_${target}`, JSON.stringify({ data: hydrated, cachedAt: Date.now() }));
-        } catch {}
-      }
+      try {
+        const parsed = normalizeConfig(matchedData);
+        const hydrated = { ...defaultConfig, ...parsed };
+        safeSetItem(`wedin_invite_cache_${target}`, JSON.stringify({ data: hydrated, cachedAt: Date.now() }));
+      } catch {}
 
-      if (inviteSnap.exists() && inviteSnap.data().activeSession) {
+      if (matchedData.activeSession) {
         setIsLoading(false);
         if (!window.confirm(t("landing.sessionExists"))) {
           return;
@@ -124,11 +121,21 @@ export default function LandingPage() {
           if (!inviteSnapInTx.exists()) {
             transaction.set(inviteRef, { ...defaultConfig, activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry() });
           } else {
+            const data = inviteSnapInTx.data();
+            // TOCTOU: re-check inside transaction
+            if (data.activeSession) {
+              throw new Error("sessionExists");
+            }
             transaction.update(inviteRef, { activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry() });
           }
         });
-      } catch {
-        setError(t("landing.errorTransactionFailed"));
+      } catch (err) {
+        if ((err as Error)?.message === "sessionExists") {
+          // Another user grabbed the session between confirm and transaction
+          setError(t("landing.errorSessionTaken"));
+        } else {
+          setError(t("landing.errorTransactionFailed"));
+        }
         loginAttemptsRef.current++;
         if (loginAttemptsRef.current >= 3) {
           loginBlockedUntilRef.current = Date.now() + 30000;

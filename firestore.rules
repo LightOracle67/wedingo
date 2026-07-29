@@ -54,12 +54,16 @@ service cloud.firestore {
       allow update: if hasActiveSession(tokenId);
       /* Creación/renovación de sesión: cualquiera puede iniciar sesión,
          pero sessionExpiresAt está limitado a 48h desde request.time
-         para evitar sesiones permanentes (fix CR-1). */
+         para evitar sesiones permanentes (fix CR-1).
+         Si ya hay sesión activa, debe ser válida (no expirada) para renovar. */
       allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['activeSession', 'sessionExpiresAt'])
         && request.resource.data.activeSession is timestamp
         && request.resource.data.sessionExpiresAt is timestamp
         && request.resource.data.sessionExpiresAt <= request.time + duration.value(48, 'h')
-        && request.resource.data.sessionExpiresAt >= request.time + duration.value(1, 'h');
+        && request.resource.data.sessionExpiresAt >= request.time + duration.value(1, 'h')
+        && (resource == null
+          || !(resource.data.activeSession is timestamp)
+          || hasActiveSession(tokenId));
       allow delete: if isSuperAdmin();
 
       match /gallery/{imageId} {

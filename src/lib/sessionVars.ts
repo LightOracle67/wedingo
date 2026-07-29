@@ -1,7 +1,7 @@
 import { safeSetItem, safeGetItem, safeRemoveItem } from "./storage";
 
 const STORAGE_KEY = "wedin_session";
-const SESSION_DURATION = 3 * 60 * 60 * 1000;
+const SESSION_DURATION = 24 * 60 * 60 * 1000;
 
 /** TTL para activeSession en Firestore (24h). */
 const FIRESTORE_SESSION_TTL_MS = 86400000;
@@ -52,5 +52,4 @@ export function renewSession() {
 
 export function clearSession() {
   safeRemoveItem(STORAGE_KEY, sessionStorage);
-  sessionStorage.removeItem(STORAGE_KEY);
 }
