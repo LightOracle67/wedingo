@@ -50,7 +50,7 @@ export default function SetupForm({ prefix = "" }) {
   // ─── Extrae estado y handlers del contexto global ───────
   const {
     formData, updateFormField, handleSaveSetup,
-    saveMessage, saveError, isTokenVerified, hasStoredConfig, setLegalModal,
+    saveMessage, saveError, isTokenVerified, isRestoringSession, hasStoredConfig, setLegalModal,
   } = useApp();
   const { addToast } = useToast();
 
@@ -83,7 +83,7 @@ export default function SetupForm({ prefix = "" }) {
       />
 
       {/* ── Sección de acceso (solo visible antes del primer guardado) ── */}
-      {!isTokenVerified ? (
+      {isRestoringSession ? null : !isTokenVerified ? (
       <CollapsibleSection
         title={t("setup.accessSectionTitle")}
         hint={t("setup.accessSectionHint")}

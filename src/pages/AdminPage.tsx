@@ -69,7 +69,7 @@ export default function AdminPage() {
   // ─── Estados del contexto global ───────────────────────
   const {
     hasStoredConfig, isConfigLoading, configLoadError,
-    isAdminTokenLoggedIn, config,
+    isAdminTokenLoggedIn, isRestoringSession, config,
     setupToken,
     authMessage, authMessageType,
     rsvpEntries,
@@ -244,6 +244,11 @@ export default function AdminPage() {
   // ─── Redirección si no hay configuración guardada ──────
   if (!hasStoredConfig) {
     return <Navigate to={`/${inviteToken}/setup`} replace />;
+  }
+
+  // ─── Esperar a que se restaure la sesión antes de decidir ──
+  if (isRestoringSession) {
+    return null; // o un spinner de carga
   }
 
   // ─── Redirección si no hay sesión de admin activa ──────
