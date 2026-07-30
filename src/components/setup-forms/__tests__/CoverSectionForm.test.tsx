@@ -27,8 +27,10 @@ vi.mock("../../../hooks/useToast", () => ({
 const mockUploadImage = vi.hoisted(() => vi.fn());
 vi.mock("../../../lib/image-store", () => ({
   uploadImage: mockUploadImage,
-  saveConfigImage: vi.fn((_token, _id, dataUrl) => Promise.resolve(`__cfgimg:${_id}`)),
+  saveConfigImage: vi.fn((_token, _id, _dataUrl) => Promise.resolve(`__cfgimg:${_id}`)),
   deleteConfigImage: vi.fn(() => Promise.resolve()),
+  getConfigImage: vi.fn(() => Promise.resolve(null)),
+  isConfigImageRef: vi.fn(() => false),
 }));
 
 const mockFormData = vi.hoisted(() => ({ firstName: "John" }));

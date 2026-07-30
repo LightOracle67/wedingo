@@ -5,6 +5,7 @@ import { useToast } from "../../hooks/useToast";
 import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES } from "../../lib/constants";
 import { uploadImage, saveConfigImage, deleteConfigImage } from "../../lib/image-store";
 import { compressImageTransparent } from "../../lib/image-utils";
+import { useConfigImage } from "../../hooks/useConfigImage";
 import ThemePicker from "../ThemePicker";
 import MusicArrayEditor from "../MusicArrayEditor";
 
@@ -15,6 +16,11 @@ export default function CoverSectionForm({ prefix = "" }) {
   } = useApp();
   const { t } = useTranslation();
   const { addToast, startUploadToast } = useToast();
+
+  const couplePhotoUrl = useConfigImage(inviteToken, formData.couplePhoto);
+  const customSealUrl = useConfigImage(inviteToken, formData.customSeal);
+  const backgroundImageUrl = useConfigImage(inviteToken, formData.backgroundImage);
+  const cornerDecorationUrl = useConfigImage(inviteToken, (formData as Record<string, unknown>).cornerDecoration as string);
 
   const photoRef = useRef<HTMLInputElement>(null);
   const id = (name: string) => `${prefix}${name}`;
@@ -138,7 +144,7 @@ export default function CoverSectionForm({ prefix = "" }) {
 
         {formData.couplePhoto ? (
           <div className="setup-selected-background">
-            <img src={formData.couplePhoto} alt={t("setup.couplePhotoLabel")} className="setup-selected-background__image" style={{ borderRadius: "50%", aspectRatio: "1", width: "5rem" }} />
+            <img src={couplePhotoUrl || formData.couplePhoto} alt={t("setup.couplePhotoLabel")} className="setup-selected-background__image" style={{ borderRadius: "50%", aspectRatio: "1", width: "5rem" }} />
             <div>
               <p className="setup-selected-background__title">{t("setup.currentPhoto")}</p>
             </div>
@@ -172,7 +178,7 @@ export default function CoverSectionForm({ prefix = "" }) {
         </div>
         {formData.customSeal ? (
           <div className="setup-selected-background">
-            <img src={formData.customSeal} alt="" className="setup-selected-background__image" style={{ width: "3rem", height: "3rem", objectFit: "contain" }} />
+            <img src={customSealUrl || formData.customSeal} alt="" className="setup-selected-background__image" style={{ width: "3rem", height: "3rem", objectFit: "contain" }} />
             <div>
               <p className="setup-selected-background__title">{t("setup.currentSeal")}</p>
             </div>
@@ -186,8 +192,10 @@ export default function CoverSectionForm({ prefix = "" }) {
         <input className="setup-upload__input" id={id("customSeal")} type="file" accept="image/jpeg,image/png,image/svg+xml" onChange={async (e) => {
           const file = e.target.files?.[0]; if (!file) return;
           if (file.size > 1024 * 1024) { addToast("error", t("setup.errorFileSize")); return; }
-          const ref = await uploadConfigImage("customSeal", file);
-          updateFormField("customSeal", ref);
+          try {
+            const ref = await uploadConfigImage("customSeal", file);
+            updateFormField("customSeal", ref);
+          } catch { addToast("error", t("setup.photoUploadFailed")); }
           e.target.value = "";
         }} />
       </div>
@@ -207,7 +215,7 @@ export default function CoverSectionForm({ prefix = "" }) {
 
         {formData.backgroundImage ? (
           <div className="setup-selected-background">
-            <img src={formData.backgroundImage} alt="" className="setup-selected-background__image" style={{ width: "100%", maxHeight: "100px", objectFit: "cover", borderRadius: "0.35rem" }} />
+            <img src={backgroundImageUrl || formData.backgroundImage} alt="" className="setup-selected-background__image" style={{ width: "100%", maxHeight: "100px", objectFit: "cover", borderRadius: "0.35rem" }} />
           </div>
         ) : (
           <label className="setup-upload" htmlFor={id("backgroundImage")}>
@@ -220,8 +228,10 @@ export default function CoverSectionForm({ prefix = "" }) {
           if (!file) return;
           if (!ALLOWED_UPLOAD_TYPES.has(file.type)) { addToast("error", t("setup.errorFileFormat")); return; }
           if (file.size > MAX_UPLOAD_SIZE_BYTES) { addToast("error", t("setup.errorFileSize")); return; }
-          const ref = await uploadConfigImage("backgroundImage", file);
-          updateFormField("backgroundImage", ref);
+          try {
+            const ref = await uploadConfigImage("backgroundImage", file);
+            updateFormField("backgroundImage", ref);
+          } catch { addToast("error", t("setup.photoUploadFailed")); }
           e.target.value = "";
         }} />
       </div>
@@ -239,7 +249,7 @@ export default function CoverSectionForm({ prefix = "" }) {
         </div>
         {(formData as Record<string, unknown>).cornerDecoration ? (
           <div>
-            <img src={(formData as Record<string, unknown>).cornerDecoration as string} alt="" style={{ width: "2.5rem", height: "2.5rem", objectFit: "contain" }} />
+            <img src={cornerDecorationUrl || (formData as Record<string, unknown>).cornerDecoration as string} alt="" style={{ width: "2.5rem", height: "2.5rem", objectFit: "contain" }} />
           </div>
         ) : (
           <label className="setup-upload" htmlFor={id("cornerDecoration")} style={{ padding: "0.3rem", minHeight: "2rem" }}>
@@ -250,9 +260,11 @@ export default function CoverSectionForm({ prefix = "" }) {
           const file = e.target.files?.[0];
           if (!file) return;
           if (file.size > 1024 * 1024) { addToast("error", t("setup.errorFileSize")); return; }
-          const dataUrl = await compressImageTransparent(file);
-          const ref = await saveConfigImage(inviteToken, "cornerDecoration", dataUrl);
-          updateFormField("cornerDecoration", ref);
+          try {
+            const dataUrl = await compressImageTransparent(file);
+            const ref = await saveConfigImage(inviteToken, "cornerDecoration", dataUrl);
+            updateFormField("cornerDecoration", ref);
+          } catch { addToast("error", t("setup.photoUploadFailed")); }
           e.target.value = "";
         }} />
       </div>
