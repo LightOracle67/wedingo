@@ -470,17 +470,13 @@ export default function PublicInvitation() {
         <div className="invite-bg-image" style={{ backgroundImage: `url(${config.backgroundImage})` }} />
       ) : null}
 
-      {config.cornerDecorationTL ? (
-        <img src={config.cornerDecorationTL} alt="" aria-hidden="true" className="invite-corner invite-corner--tl" />
-      ) : null}
-      {config.cornerDecorationTR ? (
-        <img src={config.cornerDecorationTR} alt="" aria-hidden="true" className="invite-corner invite-corner--tr" />
-      ) : null}
-      {config.cornerDecorationBL ? (
-        <img src={config.cornerDecorationBL} alt="" aria-hidden="true" className="invite-corner invite-corner--bl" />
-      ) : null}
-      {config.cornerDecorationBR ? (
-        <img src={config.cornerDecorationBR} alt="" aria-hidden="true" className="invite-corner invite-corner--br" />
+      {config.cornerDecoration ? (
+        <>
+          <img src={config.cornerDecoration} alt="" aria-hidden="true" className="invite-corner invite-corner--tl" />
+          <img src={config.cornerDecoration} alt="" aria-hidden="true" className="invite-corner invite-corner--tr" />
+          <img src={config.cornerDecoration} alt="" aria-hidden="true" className="invite-corner invite-corner--bl" />
+          <img src={config.cornerDecoration} alt="" aria-hidden="true" className="invite-corner invite-corner--br" />
+        </>
       ) : null}
 
       {/* ── Token no encontrado (invitación no configurada) ── */}

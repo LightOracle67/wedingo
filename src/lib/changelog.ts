@@ -1,5 +1,22 @@
 export const CHANGELOG = [
   {
+    version: "2.30.0",
+    date: "2026-07-30",
+    changes: [
+      "UI: Decoraciones de esquinas unificadas — antes se pedían 4 imágenes (TL/TR/BL/BR), ahora 1 sola imagen para las 4 esquinas",
+      "UX: CoverSectionForm simplificado — 1 upload en vez de 4, labels y hints actualizados",
+      "REFS: cornerDecorationTL/TR/BL/BR → cornerDecoration (único campo en types/config)",
+    ],
+  },
+  {
+    version: "2.29.1",
+    date: "2026-07-30",
+    changes: [
+      "SESIÓN: onFirstSave espera confirmación de Firestore (updateDoc) antes de setIsTokenVerified y saveSession. Evita sesión huérfana (activeSession null en Firestore, session en localStorage que se limpia al recargar)",
+      "SESIÓN: Logs de depuración en restauración de sesión para diagnosticar errores",
+    ],
+  },
+  {
     version: "2.29.0",
     date: "2026-07-30",
     changes: [

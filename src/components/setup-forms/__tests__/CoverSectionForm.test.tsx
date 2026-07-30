@@ -338,7 +338,7 @@ describe("CoverSectionForm", () => {
     mockUploadImage.mockResolvedValue({ dataUrl: "https://example.com/replaced.jpg" });
     render(<CoverSectionForm />);
     const fileInputs = document.querySelectorAll('input[type="file"]');
-    expect(fileInputs.length).toBe(8);
+    expect(fileInputs.length).toBe(5);
     const replaceInput = fileInputs[1];
     const file = new File(["test"], "new.jpg", { type: "image/jpeg" });
     fireEvent.change(replaceInput, { target: { files: [file] } });

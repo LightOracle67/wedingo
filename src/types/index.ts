@@ -60,10 +60,7 @@ export interface InvitationConfig {
   menuPostre: string;
   backgroundImage?: string;
   customSeal?: string;
-  cornerDecorationTL?: string;
-  cornerDecorationTR?: string;
-  cornerDecorationBL?: string;
-  cornerDecorationBR?: string;
+  cornerDecoration?: string;
   _activeSetupToken?: string;
   _visits?: number;
   [key: string]: unknown;

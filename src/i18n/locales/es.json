@@ -361,12 +361,9 @@
     "searching": "Buscando...",
     "noResults": "Sin resultados.",
     "deleteImageConfirm": "¿Eliminar esta imagen?",
-    "cornerDecorationsLabel": "Decoraciones de esquinas",
-    "cornerDecorationsHint": "Pequeñas imágenes decorativas para las 4 esquinas (PNG con transparencia recomendado)",
-    "cornerTLLabel": "Superior izquierda",
-    "cornerTRLabel": "Superior derecha",
-    "cornerBLLabel": "Inferior izquierda",
-    "cornerBRLabel": "Inferior derecha",
+    "cornerDecorationsLabel": "Decoración de esquinas",
+    "cornerDecorationsHint": "Una misma imagen decorativa para las 4 esquinas (PNG con transparencia recomendado)",
+    "cornerDecorationLabel": "Imagen decorativa",
     "uploadCorner": "Subir"
   },
   "admin": {
