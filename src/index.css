@@ -99,7 +99,7 @@ html {
   --z-nav-toggle: 10003;
   --z-lang-popup: 10004;
   --z-lightbox: 10005;
-  --z-skip-link: 100000;
+
   --font-heading: "Playfair Display", serif;
   --font-body: "Lora", serif;
   --wedding-background-image: none;
@@ -2205,26 +2205,6 @@ a:focus-visible {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   border: 0;
-}
-
-/* ── Skip to content ── */
-.skip-link {
-  position: fixed;
-  top: -100%;
-  left: 0.5rem;
-  z-index: 9999;
-  padding: 0.5rem 1rem;
-  background: var(--setup-accent);
-  color: var(--setup-accent-text);
-  font-size: 0.9rem;
-  font-weight: 600;
-  border-radius: 0 0 var(--radius-md) var(--radius-md);
-  text-decoration: none;
-  transition: top 180ms ease;
-}
-
-.skip-link:focus {
-  top: 0;
 }
 
 /* ── Admin bar ── */
