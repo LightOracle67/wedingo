@@ -239,6 +239,10 @@ describe("useRsvp", () => {
     act(() => result.current.updateRsvpField("companionMenus[0]", "carne"));
     act(() => result.current.updateRsvpField("companionMenus[1]", "pescado"));
     act(() => result.current.updateRsvpField("companionAllergies[0]", ["sin gluten"]));
+    act(() => result.current.updateRsvpField("companionAllergiesOther", ["", ""]));
+    act(() => result.current.updateRsvpField("companionHealthConsents", [true, false]));
+    act(() => result.current.updateRsvpField("companionBirthDates", ["2000-01-01", "2010-06-15"]));
+    act(() => result.current.updateRsvpField("companionParentalConsents", [false, true]));
     act(() => result.current.updateRsvpField("birthDate", "2000-01-01"));
     act(() => result.current.updateRsvpField("privacyConsent", true));
 
@@ -260,9 +264,14 @@ describe("useRsvp", () => {
     expect(comp0Data.rsvpType).toBe("companion");
     expect(comp0Data.guestName).toBe("Bob");
     expect(comp0Data.dietaryInfo).toContain("sin gluten");
+    expect(comp0Data.birthDate).toBe("2000-01-01");
+    expect(comp0Data.healthConsent).toBe(true);
     expect(comp1Data.rsvpType).toBe("companion");
     expect(comp1Data.guestName).toBe("Charlie");
     expect(comp1Data.dietaryInfo).toBe("");
+    expect(comp1Data.birthDate).toBe("2010-06-15");
+    // computeAge mock returns 25 (not under 14), so parentalConsent is not set
+    expect(comp1Data.parentalConsent).toBeUndefined();
   });
 
   it("updates menuSelection via updateRsvpField", () => {
@@ -333,6 +342,7 @@ describe("useRsvp", () => {
       act(() => result.current.updateRsvpField("companionCount", 2));
       act(() => result.current.updateRsvpField("companionNames[0]", "Bob"));
       act(() => result.current.updateRsvpField("companionNames[1]", "Charlie"));
+      act(() => result.current.updateRsvpField("companionBirthDates", ["2000-01-01", "2000-01-01"]));
       act(() => result.current.updateRsvpField("birthDate", "2000-01-01"));
       act(() => result.current.updateRsvpField("privacyConsent", true));
 

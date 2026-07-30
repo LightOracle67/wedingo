@@ -95,6 +95,7 @@ describe("RSVP Integration", () => {
     act(() => { result.current.updateRsvpField("companionCount", 2); });
     act(() => { result.current.updateRsvpField("companionNames[0]", "Alice"); });
     act(() => { result.current.updateRsvpField("companionNames[1]", "Bob"); });
+    act(() => { result.current.updateRsvpField("companionBirthDates", ["2000-01-01", "2000-01-01"]); });
     act(() => { result.current.updateRsvpField("privacyConsent", true); });
     act(() => { result.current.updateRsvpField("birthDate", "1990-01-01"); });
 

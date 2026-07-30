@@ -23,6 +23,9 @@ interface RsvpFormData {
   companionMenus: string[];
   companionAllergies: string[][];
   companionAllergiesOther: string[];
+  companionBirthDates: string[];
+  companionParentalConsents: boolean[];
+  companionHealthConsents: boolean[];
   menuSelection: string;
   allergies: string[];
   allergiesOther: string;
@@ -92,6 +95,9 @@ function RsvpFormDefault(): RsvpFormData {
     companionMenus: [],
     companionAllergies: [],
     companionAllergiesOther: [],
+    companionBirthDates: [],
+    companionParentalConsents: [],
+    companionHealthConsents: [],
     menuSelection: "",
     allergies: [],
     allergiesOther: "",
@@ -258,6 +264,9 @@ export function useRsvp(
         companionMenus: value === "no" || value === "alone" ? [] : current.companionMenus,
         companionAllergies: value === "no" || value === "alone" ? [] : current.companionAllergies,
         companionAllergiesOther: value === "no" || value === "alone" ? [] : current.companionAllergiesOther,
+        companionBirthDates: value === "no" || value === "alone" ? [] : current.companionBirthDates,
+        companionParentalConsents: value === "no" || value === "alone" ? [] : current.companionParentalConsents,
+        companionHealthConsents: value === "no" || value === "alone" ? [] : current.companionHealthConsents,
       }));
       return;
     }
@@ -268,13 +277,19 @@ export function useRsvp(
         const menus = current.companionMenus.slice(0, count);
         const allergies = current.companionAllergies.slice(0, count);
         const allergiesOther = (current.companionAllergiesOther || []).slice(0, count);
+        const birthDates = (current.companionBirthDates || []).slice(0, count);
+        const parentalConsents = (current.companionParentalConsents || []).slice(0, count);
+        const healthConsents = (current.companionHealthConsents || []).slice(0, count);
         while (names.length < count) {
           names.push("");
           menus.push("");
           allergies.push([]);
           allergiesOther.push("");
+          birthDates.push("");
+          parentalConsents.push(false);
+          healthConsents.push(false);
         }
-        return { ...current, companionCount: count, companionNames: names, companionMenus: menus, companionAllergies: allergies, companionAllergiesOther: allergiesOther };
+        return { ...current, companionCount: count, companionNames: names, companionMenus: menus, companionAllergies: allergies, companionAllergiesOther: allergiesOther, companionBirthDates: birthDates, companionParentalConsents: parentalConsents, companionHealthConsents: healthConsents };
       });
       return;
     }
@@ -315,8 +330,16 @@ export function useRsvp(
     if (!data.guestName?.trim()) return t("rsvp.validation.nameRequired");
     if (data.attendance !== "no" && !data.birthDate) return t("rsvp.validation.birthDateRequired");
     if (data.attendance === "with" && data.companionCount > 0) {
-      const hasEmptyName = data.companionNames.slice(0, data.companionCount).some((n) => !n.trim());
-      if (hasEmptyName) return t("rsvp.validation.nameRequired");
+      for (let i = 0; i < data.companionCount; i++) {
+        if (!data.companionNames[i]?.trim()) return t("rsvp.validation.nameRequired");
+        if (!data.companionBirthDates?.[i]) return t("rsvp.validation.birthDateRequired");
+        if (menuEnabled && !data.companionMenus?.[i]) return t("rsvp.validation.menuRequired");
+        const compAge = computeAge(data.companionBirthDates[i]);
+        if (compAge !== null && compAge < 14 && !data.companionParentalConsents?.[i]) return t("rsvp.validation.ageUnder14");
+        const hasCompAllergies = (data.companionAllergies?.[i] || []).length > 0
+          || (data.companionAllergiesOther?.[i] || "").trim().length > 0;
+        if (hasCompAllergies && !data.companionHealthConsents?.[i]) return t("rsvp.validation.healthConsentRequired");
+      }
     }
     if (data.attendance !== "no" && menuEnabled && !data.menuSelection) return t("rsvp.validation.menuRequired");
     if (!data.privacyConsent) return t("rsvp.validation.privacyRequired");
@@ -374,6 +397,8 @@ export function useRsvp(
       const compAllergies = data.companionAllergies[i] || [];
       const compDietaryInfo = compAllergies.filter(Boolean).join(" | ");
       const encCompDietary = await encrypt(compDietaryInfo, inviteToken);
+      const compBirthDate = data.companionBirthDates?.[i] || "";
+      const compAge = computeAge(compBirthDate);
       const companionData: Record<string, unknown> = {
         rsvpType: "companion",
         guestName: (data.companionNames[i] || "").slice(0, 120),
@@ -385,6 +410,8 @@ export function useRsvp(
         mainGuestDocId: mainGuestId,
         mainGuestName: single,
       };
+      if (compBirthDate) companionData.birthDate = compBirthDate;
+      if (compAge !== null && compAge < 14) companionData.parentalConsent = true;
       if (data.companionMenus[i]) companionData.mealChoice = data.companionMenus[i];
       const hasCompDietary = compAllergies.length > 0 || (data.companionAllergiesOther[i] || "").trim();
       if (hasCompDietary) {
