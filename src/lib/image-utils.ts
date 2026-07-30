@@ -49,7 +49,7 @@ function loadImage(file: File): Promise<HTMLImageElement> {
 
 /** Comprime una imagen preservando transparencia. Exporta a PNG (sin pérdida de alpha).
  *  Reduce dimensiones si supera maxDimension. */
-export const compressImageTransparent = async (file: File, maxDimension = 800): Promise<string> => {
+export const compressImageTransparent = async (file: File, maxDimension = 1600): Promise<string> => {
   const img = await loadImage(file);
   let { width, height } = img;
   if (width > maxDimension || height > maxDimension) {
