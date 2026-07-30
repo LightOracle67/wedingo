@@ -372,7 +372,7 @@ export function useRsvp(
       companionCount,
       companionNames: data.companionNames.slice(0, companionCount),
       companionMenus: data.companionMenus.slice(0, companionCount),
-      companionAllergies: data.companionAllergies.slice(0, companionCount).map((a) => [...a]),
+      companionAllergies: data.companionAllergies.slice(0, companionCount).map((a) => a.join(" | ")),
       companionAllergiesOther: (data.companionAllergiesOther || []).slice(0, companionCount),
       allergiesOther: data.allergiesOther || "",
       dietaryInfo: encryptedDietaryInfo,
