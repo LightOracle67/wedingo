@@ -47,8 +47,9 @@ function loadImage(file: File): Promise<HTMLImageElement> {
   });
 }
 
-/** Comprime una imagen preservando transparencia. Exporta a PNG (sin pérdida de alpha).
- *  Reduce dimensiones si supera maxDimension. */
+/** Comprime una imagen preservando transparencia.
+ *  Exporta a WebP (soporta alpha), con fallback a PNG.
+ *  Reduce calidad/dimensiones hasta encajar en TARGET_BYTES. */
 export const compressImageTransparent = async (file: File, maxDimension = 1600): Promise<string> => {
   const img = await loadImage(file);
   let { width, height } = img;
@@ -64,7 +65,24 @@ export const compressImageTransparent = async (file: File, maxDimension = 1600):
   if (!ctx) throw new Error(i18n.t("errors.uploadImageFailed"));
   ctx.drawImage(img, 0, 0, width, height);
   URL.revokeObjectURL(img.src);
-  return canvas.toDataURL("image/png");
+
+  let dataUrl = canvasToType(canvas, "webp", 0.8);
+  let estimatedBytes = Math.round((dataUrl.length * 3) / 4);
+
+  if (estimatedBytes > TARGET_BYTES) {
+    let quality = 0.7;
+    while (quality >= 0.1 && estimatedBytes > TARGET_BYTES) {
+      dataUrl = canvasToType(canvas, "webp", quality);
+      estimatedBytes = Math.round((dataUrl.length * 3) / 4);
+      quality -= 0.1;
+    }
+  }
+
+  if (estimatedBytes > TARGET_BYTES) {
+    dataUrl = shrinkToFit(canvas, TARGET_BYTES);
+  }
+
+  return dataUrl;
 };
 
 /** Comprime una imagen: elimina fondo blanco, preserva transparencia,
