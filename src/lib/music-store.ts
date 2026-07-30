@@ -2,7 +2,7 @@ import { getDocs, collection, writeBatch, doc, query, orderBy } from "firebase/f
 import { db } from "./firebase";
 import { encrypt, decrypt } from "./crypto-utils";
 
-const CHUNK_SIZE = 500 * 1024;
+const CHUNK_SIZE = 200 * 1024;
 
 function audioCol(token: string) {
   return collection(db, "invitations", token, "audio");
@@ -29,18 +29,22 @@ export async function addAudio(inviteToken: string, encrypted: string, dataUrl: 
   for (let i = 0; i < encrypted.length; i += CHUNK_SIZE) {
     chunks.push(encrypted.slice(i, i + CHUNK_SIZE));
   }
-  console.log("[app]", "[music-store]", "chunks created", { chunkCount: chunks.length });
-  const batch = writeBatch(db);
-  for (let i = 0; i < chunks.length; i++) {
-    const ref = doc(audioCol(inviteToken));
-    batch.set(ref, {
-      chunkIndex: i,
-      data: chunks[i],
-      totalChunks: chunks.length,
-      createdAt: new Date().toISOString(),
-    });
+  console.log("[app]", "[music-store]", "chunks created", { chunkCount: chunks.length, chunkSize: CHUNK_SIZE });
+  const BATCH_LIMIT = 400;
+  for (let batchIdx = 0; batchIdx < chunks.length; batchIdx += BATCH_LIMIT) {
+    const batch = writeBatch(db);
+    const end = Math.min(batchIdx + BATCH_LIMIT, chunks.length);
+    for (let i = batchIdx; i < end; i++) {
+      const ref = doc(audioCol(inviteToken));
+      batch.set(ref, {
+        chunkIndex: i,
+        data: chunks[i],
+        totalChunks: chunks.length,
+        createdAt: new Date().toISOString(),
+      });
+    }
+    await batch.commit();
   }
-  await batch.commit();
   onProgress?.(95);
   console.log("[app]", "[music-store]", "addAudio success", { chunkCount: chunks.length });
   return { id: `${inviteToken}_audio`, dataUrl, chunks: chunks.length };
