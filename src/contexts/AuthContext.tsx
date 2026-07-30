@@ -29,6 +29,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           activeSession: serverTimestamp(),
           sessionExpiresAt: firestoreSessionExpiry(),
         });
+        auth.setIsTokenVerified(true);
+        const displayName = config.adminUsername || inviteToken;
+        if (displayName) {
+          auth.setTokenLoginUsername(displayName);
+          saveSession("admin", displayName);
+        }
       } catch {
         if (setAdminMessage && setAdminMessageType) {
           setAdminMessageType("error");
@@ -36,12 +42,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
       }
     })();
-    auth.setIsTokenVerified(true);
-    const displayName = config.adminUsername || inviteToken;
-    if (displayName) {
-      auth.setTokenLoginUsername(displayName);
-      saveSession("admin", displayName);
-    }
   };
 
   useEffect(() => {
