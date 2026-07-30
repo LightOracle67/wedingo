@@ -141,7 +141,7 @@ const RsvpSection = memo(function RsvpSection({
 
         <form className="rsvp-form" onSubmit={handleRsvpSubmit} noValidate>
           <label className="setup-label" htmlFor="rsvpName">{t("rsvp.nameLabel")} *</label>
-          <input id="rsvpName" className="setup-input" value={rsvpForm.guestName} onChange={handleNameChange} placeholder={t("rsvp.namePlaceholder")} autoComplete="off" required disabled={isAlreadySubmitted} maxLength={120} />
+          <input id="rsvpName" className="setup-input" value={rsvpForm.guestName} onChange={handleNameChange} placeholder={t("rsvp.namePlaceholder")} autoComplete="off" required maxLength={120} />
 
           <div className="setup-date-grid rsvp-choice-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))" }}>
             <div>
