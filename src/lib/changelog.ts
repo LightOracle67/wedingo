@@ -1,6 +1,18 @@
 export const CHANGELOG = [
   {
-    version: "2.32.0",
+    version: "2.34.0",
+    date: "2026-07-30",
+    changes: [
+      "MAPA: Leaflet reemplazado por Google Maps Embed (iframe sin API key). Eliminada dependencia Leaflet.",
+      "MAPA: WeddingMap simplificado — iframe en vez de L.map + tileLayer + circleMarker",
+      "MAPA: PublicInvitation ya no importa Leaflet dinámicamente",
+      "GEO: buildGoogleMapsEmbedUrl y buildGoogleMapsEmbedSearchUrl añadidos",
+      "DEBUG: Logs [app] exhaustivos en 30 archivos (páginas, hooks, contextos, servicios)",
+      "FIX: PrintPage console.log accedía a isConfigLoading antes de inicializarse",
+    ],
+  },
+  {
+    version: "2.33.0",
     date: "2026-07-30",
     changes: [
       "ADMIN: AttendanceTab convertido en CRUD completo — checkboxes para selección individual, delete batch con confirmación",
