@@ -127,7 +127,9 @@ describe("AuthProvider", () => {
       activeSession: expect.any(Date),
       sessionExpiresAt: expect.any(Date),
     });
-    expect(mockSetIsTokenVerified).toHaveBeenCalledWith(true);
+    await vi.waitFor(() => {
+      expect(mockSetIsTokenVerified).toHaveBeenCalledWith(true);
+    });
   });
 
   it("handles session update error gracefully", async () => {
@@ -135,8 +137,10 @@ describe("AuthProvider", () => {
     render(<AuthProvider><div>child</div></AuthProvider>);
     const onFirstSave = mockRegisterOnFirstSave.mock.calls[0][0];
     await onFirstSave();
-    expect(mockSetAdminMessageType).toHaveBeenCalledWith("error");
-    expect(mockSetAdminMessage).toHaveBeenCalledWith("auth.sessionUpdateFailed");
+    await vi.waitFor(() => {
+      expect(mockSetAdminMessageType).toHaveBeenCalledWith("error");
+      expect(mockSetAdminMessage).toHaveBeenCalledWith("auth.sessionUpdateFailed");
+    });
   });
 
   it("skips session renewal when already verified", async () => {
@@ -176,7 +180,9 @@ describe("AuthProvider", () => {
     render(<AuthProvider><div>child</div></AuthProvider>);
     const onFirstSave = mockRegisterOnFirstSave.mock.calls[0][0];
     await onFirstSave();
-    expect(mockSetTokenLoginUsername).toHaveBeenCalledWith("admin");
+    await vi.waitFor(() => {
+      expect(mockSetTokenLoginUsername).toHaveBeenCalledWith("admin");
+    });
   });
 
   it("uses adminUsername when session has short identifier", async () => {
@@ -190,8 +196,10 @@ describe("AuthProvider", () => {
     render(<AuthProvider><div>child</div></AuthProvider>);
     const onFirstSave = mockRegisterOnFirstSave.mock.calls[0][0];
     await onFirstSave();
-    expect(mockSetTokenLoginUsername).toHaveBeenCalledWith("AdminUser");
-    expect(mockSaveSession).toHaveBeenCalledWith("admin", "AdminUser");
+    await vi.waitFor(() => {
+      expect(mockSetTokenLoginUsername).toHaveBeenCalledWith("AdminUser");
+      expect(mockSaveSession).toHaveBeenCalledWith("admin", "AdminUser");
+    });
   });
 
   it("saves session with inviteToken when adminUsername is empty", async () => {
@@ -205,8 +213,10 @@ describe("AuthProvider", () => {
     render(<AuthProvider><div>child</div></AuthProvider>);
     const onFirstSave = mockRegisterOnFirstSave.mock.calls[0][0];
     await onFirstSave();
-    expect(mockSetTokenLoginUsername).toHaveBeenCalledWith("test-token");
-    expect(mockSaveSession).toHaveBeenCalledWith("admin", "test-token");
+    await vi.waitFor(() => {
+      expect(mockSetTokenLoginUsername).toHaveBeenCalledWith("test-token");
+      expect(mockSaveSession).toHaveBeenCalledWith("admin", "test-token");
+    });
   });
 
   it("handles null setAdminMessage gracefully", async () => {
@@ -218,6 +228,10 @@ describe("AuthProvider", () => {
     render(<AuthProvider><div>child</div></AuthProvider>);
     const onFirstSave = mockRegisterOnFirstSave.mock.calls[0][0];
     await onFirstSave();
-    expect(mockSetIsTokenVerified).toHaveBeenCalledWith(true);
+    // updateDoc failed, so setIsTokenVerified should NOT be called
+    // (session is only set on client after Firestore write succeeds)
+    await vi.waitFor(() => {
+      expect(mockSetIsTokenVerified).not.toHaveBeenCalled();
+    });
   });
 });
