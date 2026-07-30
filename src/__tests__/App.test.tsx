@@ -842,7 +842,7 @@ describe("App", () => {
     });
   });
 
-  it("focuses and blurs the skip link", () => {
+  it("skip link was removed", () => {
     render(
       <MemoryRouter initialEntries={["/"]}>
         <Suspense fallback={null}>
@@ -850,12 +850,7 @@ describe("App", () => {
         </Suspense>
       </MemoryRouter>
     );
-    const skipLink = document.querySelector(".skip-link") as HTMLAnchorElement;
-    expect(skipLink).toBeDefined();
-    fireEvent.focus(skipLink);
-    expect(skipLink.style.top).toBe("0px");
-    fireEvent.blur(skipLink);
-    expect(skipLink.style.top).toBe("-100px");
+    expect(document.querySelector(".skip-link")).toBeNull();
   });
 
   it("handles service worker registration in PROD", () => {
