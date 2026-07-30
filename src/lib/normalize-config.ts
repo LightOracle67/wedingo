@@ -47,4 +47,7 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   menuPescado: s(value?.menuPescado),
   menuVegano: s(value?.menuVegano),
   menuPostre: s(value?.menuPostre),
+  backgroundImage: s(value?.backgroundImage),
+  customSeal: s(value?.customSeal),
+  cornerDecoration: s(value?.cornerDecoration),
 });
