@@ -1,5 +1,15 @@
 export const CHANGELOG = [
   {
+    version: "2.31.0",
+    date: "2026-07-30",
+    changes: [
+      "RSVP: Acompañantes ahora requieren los mismos datos obligatorios que el invitado principal — fecha de nacimiento, consentimiento parental (si <14), consentimiento salud (si alergias), menú (si activado)",
+      "RSVP: Nuevos campos en formulario de acompañantes: birthDate, parentalConsent, healthConsent",
+      "RSVP: Validación mejorada — cada acompañante se valida individualmente con las mismas reglas",
+      "REFS: companionBirthDates, companionParentalConsents, companionHealthConsents añadidos a RsvpFormData",
+    ],
+  },
+  {
     version: "2.30.0",
     date: "2026-07-30",
     changes: [

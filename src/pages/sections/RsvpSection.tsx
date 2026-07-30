@@ -220,6 +220,54 @@ const RsvpSection = memo(function RsvpSection({
                       placeholder={t("rsvp.allergiesPlaceholder")} disabled={isAlreadySubmitted}
                       style={{ marginTop: "0.35rem", fontSize: "0.85rem" }} />
                   </fieldset>
+
+                  <label className="setup-label" htmlFor={`companion-birth-${i}`} style={{ marginTop: "0.5rem" }}>{t("rsvp.birthDateLabel")} *</label>
+                  <input id={`companion-birth-${i}`} type="date" max={new Date().toISOString().split("T")[0]} className="setup-input"
+                    value={rsvpForm.companionBirthDates?.[i] || ""}
+                    onChange={(e) => {
+                      const current = [...(rsvpForm.companionBirthDates || [])];
+                      current[i] = e.target.value;
+                      updateRsvpField("companionBirthDates", current);
+                    }}
+                    style={{ colorScheme: "light" }} required disabled={isAlreadySubmitted} />
+
+                  {(() => {
+                    const compAge = computeAge(rsvpForm.companionBirthDates?.[i] || "");
+                    const isCompUnder14 = compAge !== null && compAge < 14;
+                    const hasCompAllergies = (rsvpForm.companionAllergies?.[i] || []).length > 0
+                      || (rsvpForm.companionAllergiesOther?.[i] || "").trim().length > 0;
+                    return (
+                      <>
+                        {isCompUnder14 ? (
+                          <>
+                            <p style={{ fontSize: "0.82rem", color: "#e88b2c", margin: "0.3rem 0" }}>{t("rsvp.ageUnder14Warning")}</p>
+                            <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.85rem", cursor: isAlreadySubmitted ? "default" : "pointer", marginBottom: "0.5rem" }}>
+                              <input type="checkbox" checked={rsvpForm.companionParentalConsents?.[i] || false}
+                                onChange={(e) => {
+                                  const current = [...(rsvpForm.companionParentalConsents || [])];
+                                  current[i] = e.target.checked;
+                                  updateRsvpField("companionParentalConsents", current);
+                                }}
+                                style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} required={isCompUnder14} disabled={isAlreadySubmitted} />
+                              <span>{t("rsvp.parentalConsent")}</span>
+                            </label>
+                          </>
+                        ) : null}
+                        {hasCompAllergies ? (
+                          <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.85rem", cursor: isAlreadySubmitted ? "default" : "pointer", marginBottom: "0.5rem" }}>
+                            <input type="checkbox" checked={rsvpForm.companionHealthConsents?.[i] || false}
+                              onChange={(e) => {
+                                const current = [...(rsvpForm.companionHealthConsents || [])];
+                                current[i] = e.target.checked;
+                                updateRsvpField("companionHealthConsents", current);
+                              }}
+                              style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} required={hasCompAllergies} disabled={isAlreadySubmitted} />
+                            <span>{t("rsvp.healthConsent")}</span>
+                          </label>
+                        ) : null}
+                      </>
+                    );
+                  })()}
                 </div>
               ))}
             </div>
