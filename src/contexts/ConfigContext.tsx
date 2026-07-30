@@ -12,7 +12,7 @@ import {
 import { normalizeConfig } from "../lib/normalize-config";
 import type { InvitationConfig } from "../types";
 import { decodeInviteConfig } from "../lib/invite-config-codec";
-import { loadDecryptedField, deleteGallery } from "../lib/image-store";
+import { deleteGallery } from "../lib/image-store";
 import { clearSession } from "../lib/sessionVars";
 import { safeSetItem, safeGetItem, safeRemoveItem } from "../lib/storage";
 import { encrypt, decrypt } from "../lib/crypto-utils";
@@ -160,7 +160,12 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         }
         const parsed = normalizeConfig(snapshot.data());
         if (parsed.bankInfo) parsed.bankInfo = await decrypt(parsed.bankInfo, inviteToken);
-        if (parsed.couplePhoto) parsed.couplePhoto = await loadDecryptedField(inviteToken, parsed.couplePhoto);
+        // Resolve config images from subcollection (ref → data URL)
+        const { resolveAllConfigImages } = await import("../lib/image-store");
+        const resolved = await resolveAllConfigImages(inviteToken, parsed);
+        for (const [key, url] of Object.entries(resolved)) {
+          if (url) (parsed as Record<string, unknown>)[key] = url;
+        }
         {
           const { loadAudio } = await import("../lib/music-store");
           const audio = await loadAudio(inviteToken);
@@ -206,7 +211,13 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       }
       const parsed = normalizeConfig(snapshot.data());
       if (parsed.bankInfo) parsed.bankInfo = await decrypt(parsed.bankInfo, inviteToken);
-      if (parsed.couplePhoto) parsed.couplePhoto = await loadDecryptedField(inviteToken, parsed.couplePhoto);
+      {
+        const { resolveAllConfigImages } = await import("../lib/image-store");
+        const resolved = await resolveAllConfigImages(inviteToken, parsed);
+        for (const [key, url] of Object.entries(resolved)) {
+          if (url) (parsed as Record<string, unknown>)[key] = url;
+        }
+      }
       {
         const { loadAudio } = await import("../lib/music-store");
         const audio = await loadAudio(inviteToken);
@@ -400,6 +411,8 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       const batch = writeBatch(db);
       snap.docs.forEach((d: QueryDocumentSnapshot<DocumentData>) => batch.delete(d.ref));
       await deleteGallery(inviteToken);
+      const { deleteAllConfigImages } = await import("../lib/image-store");
+      await deleteAllConfigImages(inviteToken);
       batch.delete(invitationDocRef(inviteToken));
       await batch.commit();
       safeRemoveItem(`wedin_invite_cache_${inviteToken}`);

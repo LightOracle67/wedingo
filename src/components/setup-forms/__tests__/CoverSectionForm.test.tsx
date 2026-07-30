@@ -27,6 +27,8 @@ vi.mock("../../../hooks/useToast", () => ({
 const mockUploadImage = vi.hoisted(() => vi.fn());
 vi.mock("../../../lib/image-store", () => ({
   uploadImage: mockUploadImage,
+  saveConfigImage: vi.fn((_token, _id, dataUrl) => Promise.resolve(`__cfgimg:${_id}`)),
+  deleteConfigImage: vi.fn(() => Promise.resolve()),
 }));
 
 const mockFormData = vi.hoisted(() => ({ firstName: "John" }));
@@ -281,7 +283,7 @@ describe("CoverSectionForm", () => {
       expect(mockUploadComplete).toHaveBeenCalledWith("setup.photoUploaded");
     });
     expect(mockUploadUpdate).toHaveBeenCalledWith(90);
-    expect(mockUpdateFormField).toHaveBeenCalledWith("couplePhoto", "https://example.com/uploaded.jpg");
+    expect(mockUpdateFormField).toHaveBeenCalledWith("couplePhoto", "__cfgimg:couplePhoto");
   });
 
   it("handles photo upload error", async () => {
@@ -346,7 +348,7 @@ describe("CoverSectionForm", () => {
     await vi.waitFor(() => {
       expect(mockUploadComplete).toHaveBeenCalledWith("setup.photoUploaded");
     });
-    expect(mockUpdateFormField).toHaveBeenCalledWith("couplePhoto", "https://example.com/replaced.jpg");
+    expect(mockUpdateFormField).toHaveBeenCalledWith("couplePhoto", "__cfgimg:couplePhoto");
   });
 
   it("clears file input value after successful upload", async () => {
