@@ -54,6 +54,9 @@ interface RsvpEntryData {
   guestNames: string;
   note: string;
   submittedAt: string;
+  birthDate?: string;
+  parentalConsent?: boolean;
+  healthConsent?: boolean;
   companionDocIds?: string[];
   mainGuestDocId?: string;
   mainGuestName?: string;
@@ -158,29 +161,32 @@ export function useRsvp(
               attendees = legacyToAttendees(legacyEntry);
             }
 
-            return {
-              id: entryDoc.id,
-              rsvpType: (data.rsvpType as "main" | "companion") || (data.mainGuestDocId ? "companion" : "main"),
-              guestName: data.guestName || "",
-              attendance: data.attendance || "no",
-              dietaryInfo: decryptedDietaryInfo,
-              attendees,
-              companions: attendees.length > 0 ? attendees.length : (Number.isFinite(data.companions) ? data.companions : 0),
-              companionCount: data.companionCount || 0,
-              companionNames: data.companionNames || [],
-              companionMenus: data.companionMenus || [],
-              companionAllergies: data.companionAllergies || [],
-              companionAllergiesOther: data.companionAllergiesOther || [],
-              allergiesOther: data.allergiesOther || "",
-              mealChoice: data.mealChoice || "",
-              menuHeadcounts: data.menuHeadcounts || {},
-              guestNames: data.guestNames || "",
-              note: data.note || "",
-              submittedAt,
-              companionDocIds: data.companionDocIds || [],
-              mainGuestDocId: data.mainGuestDocId || "",
-              mainGuestName: data.mainGuestName || "",
-            };
+              return {
+                id: entryDoc.id,
+                rsvpType: (data.rsvpType as "main" | "companion") || (data.mainGuestDocId ? "companion" : "main"),
+                guestName: data.guestName || "",
+                attendance: data.attendance || "no",
+                dietaryInfo: decryptedDietaryInfo,
+                attendees,
+                companions: attendees.length > 0 ? attendees.length : (Number.isFinite(data.companions) ? data.companions : 0),
+                companionCount: data.companionCount || 0,
+                companionNames: data.companionNames || [],
+                companionMenus: data.companionMenus || [],
+                companionAllergies: data.companionAllergies || [],
+                companionAllergiesOther: data.companionAllergiesOther || [],
+                allergiesOther: data.allergiesOther || "",
+                mealChoice: data.mealChoice || "",
+                menuHeadcounts: data.menuHeadcounts || {},
+                guestNames: data.guestNames || "",
+                note: data.note || "",
+                submittedAt,
+                birthDate: data.birthDate || "",
+                parentalConsent: data.parentalConsent || false,
+                healthConsent: data.healthConsent || false,
+                companionDocIds: data.companionDocIds || [],
+                mainGuestDocId: data.mainGuestDocId || "",
+                mainGuestName: data.mainGuestName || "",
+              };
           }),
         );
 
@@ -249,6 +255,13 @@ export function useRsvp(
         prefillRef.current = match.id;
         setAlreadySubmittedEntry(match);
         const companionCount = match.companionNames?.length || 0;
+        // Find linked companion entries to extract birth dates and consents
+        const linkedCompanions = rsvpEntries.filter((e) => e.mainGuestDocId === match.id);
+        const companionBirthDates = linkedCompanions.map((c) => c.birthDate || "");
+        const companionParentalConsents = linkedCompanions.map((c) => c.parentalConsent || false);
+        const companionHealthConsents = linkedCompanions.map((c) => c.healthConsent || false);
+        // Parse allergies from dietaryInfo
+        const parsed = parseDietaryInfo(match.dietaryInfo, !!match.mealChoice);
         setRsvpForm((current) => ({
           ...current,
           attendance: companionCount > 0 ? "with" : "alone",
@@ -256,7 +269,16 @@ export function useRsvp(
           companionNames: match.companionNames || [],
           companionMenus: match.companionMenus || [],
           companionAllergies: match.companionAllergies || [],
+          companionBirthDates,
+          companionParentalConsents,
+          companionHealthConsents,
           menuSelection: match.mealChoice || "",
+          birthDate: match.birthDate || "",
+          allergies: parsed.dietarySelection,
+          allergiesOther: parsed.dietaryOther || match.allergiesOther || "",
+          privacyConsent: true,
+          healthConsent: match.healthConsent || false,
+          parentalConsent: match.parentalConsent || false,
         }));
       } else {
         setAlreadySubmittedEntry(match);
