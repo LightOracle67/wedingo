@@ -459,10 +459,10 @@ export default function PublicInvitation() {
       {showEnvelope ? <EnvelopeOverlay onOpen={() => setEnvelopeOpen(true)} firstName={config.firstName} secondName={config.secondName} customSeal={config.customSeal} /> : null}
 
       {/* ── Decoraciones laterales (eucalipto) ── */}
-      <div className="fixed top-0 pointer-events-none left-2 wedding-decoration--left wedding-decoration" style={{ zIndex: 1 }}>
+      <div className="fixed top-0 pointer-events-none left-2 wedding-decoration--left wedding-decoration" style={{ zIndex: 0 }}>
         <img src={eucalyptusSrc} alt="" aria-hidden="true" loading="lazy" className="wedding-decoration__image" />
       </div>
-      <div className="fixed pointer-events-none right-2 bottom-2 wedding-decoration--right wedding-decoration" style={{ zIndex: 1 }}>
+      <div className="fixed pointer-events-none right-2 bottom-2 wedding-decoration--right wedding-decoration" style={{ zIndex: 0 }}>
         <img src={eucalyptusSrc} alt="" aria-hidden="true" loading="lazy" className="wedding-decoration__image" />
       </div>
 
