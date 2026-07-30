@@ -455,7 +455,8 @@ export default function PublicInvitation() {
   const showEnvelope = !isAdminTokenLoggedIn && !isConfigLoading && !configLoadError && !isEmpty && !showMissingToken && !envelopeOpen;
 
   return (
-    <div className={`app-scene ${isStoryTransitioning ? "app-scene--transitioning" : ""}`}>
+    <div className={`app-scene ${isStoryTransitioning ? "app-scene--transitioning" : ""}`}
+      style={{ "--story-card-user-bg": config.backgroundImage ? `url(${config.backgroundImage})` : undefined } as React.CSSProperties}>
       {showEnvelope ? <EnvelopeOverlay onOpen={() => setEnvelopeOpen(true)} firstName={config.firstName} secondName={config.secondName} customSeal={config.customSeal} /> : null}
 
       {/* ── Decoraciones laterales (eucalipto) ── */}
@@ -465,10 +466,6 @@ export default function PublicInvitation() {
       <div className="fixed pointer-events-none right-2 bottom-2 wedding-decoration--right wedding-decoration" style={{ zIndex: 0 }}>
         <img src={eucalyptusSrc} alt="" aria-hidden="true" loading="lazy" className="wedding-decoration__image" />
       </div>
-
-      {config.backgroundImage ? (
-        <div className="invite-bg-image" style={{ backgroundImage: `url(${config.backgroundImage})` }} />
-      ) : null}
 
       {config.cornerDecoration ? (
         <>
