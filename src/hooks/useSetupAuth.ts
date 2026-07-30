@@ -55,6 +55,7 @@ export function useSetupAuth(
   const [authMessage, setAuthMessage] = useState("");
   const [authMessageType, setAuthMessageType] = useState("error");
   const [confirmTokenInput, setConfirmTokenInput] = useState("");
+  const [isRestoringSession, setIsRestoringSession] = useState(false);
 
   /** Intervalo de renovación de sesión. */
   const renewRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -76,7 +77,8 @@ export function useSetupAuth(
     if (!session || (session.type !== "setup" && session.type !== "admin")) return;
     if (!inviteToken) return;
 
-    // Verifica primero en Firestore que la sesión siga activa antes de restaurar
+    setIsRestoringSession(true);
+
     getDoc(invitationDocRef(inviteToken)).then(snap => {
       const data = snap.data();
       const sessionExpiresAt = data?.sessionExpiresAt?.toDate?.() ?? data?.sessionExpiresAt;
@@ -93,8 +95,9 @@ export function useSetupAuth(
       } else {
         clearSession();
       }
+      setIsRestoringSession(false);
     }).catch(() => {
-      // Solo limpiar si el documento no existe, no por error transitorio
+      setIsRestoringSession(false);
     });
   }, [inviteToken]);
 
@@ -428,7 +431,7 @@ export function useSetupAuth(
     authMessage, setAuthMessage,
     authMessageType, setAuthMessageType,
     confirmTokenInput, setConfirmTokenInput,
-    isAdminTokenLoggedIn,
+    isAdminTokenLoggedIn, isRestoringSession,
     refreshSetupToken, generateNewToken,
     handleTokenLogin, handleAdminTokenLogin,
     handleAdminLogout,
