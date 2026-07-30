@@ -1,5 +1,5 @@
 import i18n from "../i18n";
-import { addDoc, getDocs, updateDoc, deleteDoc, collection, writeBatch, doc } from "firebase/firestore";
+import { addDoc, getDoc, getDocs, updateDoc, deleteDoc, collection, writeBatch, doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { db } from "./firebase";
 import { compressImage } from "./image-utils";
 import { encrypt, decrypt } from "./crypto-utils";
@@ -89,4 +89,87 @@ export async function deleteGallery(inviteToken: string) {
 
 export async function deleteGalleryImage(inviteToken: string, imageId: string) {
   await deleteDoc(doc(galCol(inviteToken), imageId));
+}
+
+// ─── Config images subcollection ─────────────────────────
+
+const CONFIG_IMG_PREFIX = "__cfgimg:";
+
+export function isConfigImageRef(value: string): boolean {
+  return typeof value === "string" && value.startsWith(CONFIG_IMG_PREFIX);
+}
+
+export function makeConfigImageRef(imageId: string): string {
+  return `${CONFIG_IMG_PREFIX}${imageId}`;
+}
+
+function cfgImgCol(token: string) {
+  return collection(db, "invitations", token, "configImages");
+}
+
+export async function saveConfigImage(
+  inviteToken: string, imageId: string, dataUrl: string,
+): Promise<string> {
+  const encrypted = await encrypt(dataUrl, inviteToken);
+  if (!encrypted) throw new Error(i18n.t("errors.encryptFailed"));
+  const ref = doc(cfgImgCol(inviteToken), imageId);
+  await setDoc(ref, {
+    data: encrypted,
+    createdAt: serverTimestamp(),
+  });
+  return makeConfigImageRef(imageId);
+}
+
+export async function getConfigImage(
+  inviteToken: string, imageId: string,
+): Promise<string | null> {
+  try {
+    const snap = await getDoc(doc(cfgImgCol(inviteToken), imageId));
+    if (!snap.exists()) return null;
+    const encrypted = snap.data().data;
+    if (typeof encrypted !== "string") return null;
+    return await decrypt(encrypted, inviteToken);
+  } catch {
+    return null;
+  }
+}
+
+export async function deleteConfigImage(inviteToken: string, imageId: string): Promise<void> {
+  try {
+    await deleteDoc(doc(cfgImgCol(inviteToken), imageId));
+  } catch {}
+}
+
+export async function resolveConfigImageField(
+  inviteToken: string | undefined, fieldValue: string | undefined,
+): Promise<string | undefined> {
+  if (!fieldValue || !inviteToken) return fieldValue;
+  if (!isConfigImageRef(fieldValue)) return fieldValue;
+  const imageId = fieldValue.slice(CONFIG_IMG_PREFIX.length);
+  return (await getConfigImage(inviteToken, imageId)) || undefined;
+}
+
+export const CONFIG_IMAGE_IDS = [
+  "couplePhoto", "backgroundImage", "customSeal", "cornerDecoration",
+] as const;
+
+export async function resolveAllConfigImages(
+  inviteToken: string, config: Record<string, unknown>,
+): Promise<Record<string, string | undefined>> {
+  const result: Record<string, string | undefined> = {};
+  for (const id of CONFIG_IMAGE_IDS) {
+    const val = config[id] as string | undefined;
+    if (val && isConfigImageRef(val)) {
+      result[id] = (await getConfigImage(inviteToken, id)) || undefined;
+    }
+  }
+  return result;
+}
+
+export async function deleteAllConfigImages(inviteToken: string): Promise<void> {
+  const snap = await getDocs(cfgImgCol(inviteToken));
+  if (snap.empty) return;
+  const batch = writeBatch(db);
+  snap.docs.forEach((d) => batch.delete(d.ref));
+  await batch.commit();
 }

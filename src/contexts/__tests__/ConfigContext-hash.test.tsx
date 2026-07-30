@@ -30,7 +30,13 @@ vi.mock("../../lib/normalize-config", () => ({ normalizeConfig: (v: unknown) => 
 vi.mock("../../lib/date-utils", () => ({ validateWeddingDate: vi.fn(() => null) }));
 vi.mock("../../lib/invite-config-codec", () => ({ decodeInviteConfig: mockDecodeInviteConfig }));
 vi.mock("../../lib/firebase", () => ({ db: {}, invitationDocRef: vi.fn(() => ({ id: "test" })), rsvpByInviteRef: vi.fn(() => ({})) }));
-vi.mock("../../lib/image-store", () => ({ loadDecryptedField: mockLoadDecryptedField, deleteGallery: vi.fn(() => Promise.resolve()) }));
+vi.mock("../../lib/image-store", () => ({
+  loadDecryptedField: mockLoadDecryptedField,
+  deleteGallery: vi.fn(() => Promise.resolve()),
+  resolveAllConfigImages: vi.fn(() => Promise.resolve({})),
+  deleteAllConfigImages: vi.fn(() => Promise.resolve()),
+  isConfigImageRef: vi.fn(() => false),
+}));
 vi.mock("../../lib/music-store", () => ({ loadAudio: mockLoadAudio }));
 vi.mock("../../lib/sessionVars", () => ({ clearSession: vi.fn() }));
 vi.mock("../../lib/storage", () => ({ safeSetItem: mockSafeSetItem, safeGetItem: mockSafeGetItem, safeRemoveItem: vi.fn() }));
