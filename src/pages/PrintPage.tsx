@@ -5,10 +5,9 @@ import { randomMessage } from "../lib/invite-messages";
 import "../styles/print.css";
 
 export default function PrintPage() {
-  console.log("[app]", "[PrintPage]", "mount", { isConfigLoading });
-
   const { t, i18n } = useTranslation();
   const { config, isConfigLoading } = useApp();
+  console.log("[app]", "[PrintPage]", "mount", { isConfigLoading });
   const printed = useRef(false);
   const [loaded, setLoaded] = useState(false);
 

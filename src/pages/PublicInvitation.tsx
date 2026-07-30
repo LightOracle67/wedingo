@@ -187,102 +187,32 @@ export default function PublicInvitation() {
   }, [weddingDate]);
 
   // ═══════════════════════════════════════════════════════
-  // MAPA INTERACTIVO (Leaflet)
+  // MAPA (Google Maps Embed)
   // ═══════════════════════════════════════════════════════
 
-  /**
-   * Inicializa el mapa de Leaflet cuando cambia la ubicación.
-   * Carga Leaflet dinámicamente (code splitting) para reducir el bundle inicial.
-   * Resuelve coordenadas mediante geocodificación si no hay coordenadas exactas.
-   */
   useEffect(() => {
-    console.log("[app]", "[PublicInvitation]", "map effect", { place: config.weddingPlace, hasCoords: !!getValidCoordinates(config.weddingLatitude, config.weddingLongitude) });
     const place = (config.weddingPlace || "").trim();
-    const container = locationMapContainerRef.current;
-    const hasExactCoordinates = Boolean(getValidCoordinates(config.weddingLatitude, config.weddingLongitude));
-    if ((!place && !hasExactCoordinates) || !container) {
-      console.log("[app]", "[PublicInvitation]", "map skipped, no location or container", { hasPlace: !!place, hasCoords: hasExactCoordinates, hasContainer: !!container });
-      setLocationMapError("");
-      setLocationMapLoading(false);
+    const hasExact = Boolean(getValidCoordinates(config.weddingLatitude, config.weddingLongitude));
+    if (!place && !hasExact) {
       setLocationMapTarget(null);
-      return undefined;
+      setLocationMapLoading(false);
+      setLocationMapError("");
+      return;
     }
-
-    let isCancelled = false;
-    let mapInstance: {
-      remove: () => void;
-      whenReady: (fn: () => void) => void;
-      invalidateSize: () => void;
-    } | null = null;
+    let cancelled = false;
     setLocationMapError("");
     setLocationMapLoading(true);
-    setLocationMapTarget(null);
-
-    const timeoutId = window.setTimeout(async () => {
-      try {
-        // Importación dinámica de Leaflet (solo cuando se necesita)
-        await import("leaflet/dist/leaflet.css");
-        const L = (await import("leaflet")).default;
-        const geocodedLocation = await resolveLocationTarget({
-          place,
-          latitudeValue: config.weddingLatitude,
-          longitudeValue: config.weddingLongitude,
-        });
-        if (isCancelled || !container.isConnected) return;
-
-        if (!geocodedLocation) {
-          setLocationMapError(t("public.locationNotFound"));
-          setLocationMapLoading(false);
-          return;
-        }
-
-        setLocationMapTarget(geocodedLocation);
-
-        // Inicializa el mapa con opciones de solo lectura
-        mapInstance = L.map(container, {
-          center: [geocodedLocation.latitude, geocodedLocation.longitude],
-          zoom: 15,
-          zoomControl: false,
-          attributionControl: true,
-          scrollWheelZoom: false,
-          dragging: false,
-        });
-
-        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-          attribution: "&copy; OpenStreetMap contributors",
-        }).addTo(mapInstance);
-
-        // Marcador circular en la ubicación
-        L.circleMarker([geocodedLocation.latitude, geocodedLocation.longitude], {
-          radius: 10,
-          color: "#d8b24a",
-          fillColor: "#d8b24a",
-          fillOpacity: 0.9,
-          weight: 3,
-          opacity: 0.8,
-        }).addTo(mapInstance);
-
-        mapInstance.whenReady(() => {
-          mapInstance!.invalidateSize();
-          if (!isCancelled) setLocationMapLoading(false);
-        });
-      } catch {
-        if (!isCancelled) {
-          setLocationMapError(t("public.locationMapError"));
-          setLocationMapLoading(false);
-        }
-      }
-    }, 0);
-
-    // ── Limpieza del mapa al desmontar o cambiar ubicación ──
-    return () => {
-      isCancelled = true;
-      window.clearTimeout(timeoutId);
-      setLocationMapTarget(null);
-      if (mapInstance) { mapInstance.remove(); mapInstance = null; }
-    };
+    resolveLocationTarget({ place, latitudeValue: config.weddingLatitude, longitudeValue: config.weddingLongitude })
+      .then((result) => {
+        if (cancelled) return;
+        setLocationMapTarget(result || null);
+        setLocationMapLoading(false);
+        if (!result) setLocationMapError(t("public.locationNotFound"));
+      })
+      .catch(() => { if (!cancelled) { setLocationMapError(t("public.locationMapError")); setLocationMapLoading(false); } });
+    return () => { cancelled = true; setLocationMapTarget(null); };
   }, [config.weddingPlace, config.weddingLatitude, config.weddingLongitude,
-      locationMapContainerRef, setLocationMapError, setLocationMapLoading, setLocationMapTarget, t]);
+    setLocationMapError, setLocationMapLoading, setLocationMapTarget, t]);
 
   // ─── Schema.org JSON-LD ─────────────────────────────
   useEffect(() => {

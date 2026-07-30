@@ -60,6 +60,12 @@ export const resolveLocationTarget = async ({ place, latitudeValue, longitudeVal
 export const buildGoogleMapsUrl = (location: { latitude: number; longitude: number }) =>
   `https://www.google.com/maps/search/?api=1&query=${location.latitude},${location.longitude}`;
 
+export const buildGoogleMapsEmbedUrl = (location: { latitude: number; longitude: number }, language = "es") =>
+  `https://maps.google.com/maps?q=${location.latitude},${location.longitude}&hl=${language}&z=14&output=embed`;
+
+export const buildGoogleMapsEmbedSearchUrl = (place: string, language = "es") =>
+  `https://maps.google.com/maps?q=${encodeURIComponent(place)}&hl=${language}&z=14&output=embed`;
+
 export const buildGoogleMapsSearchUrl = (place: string) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place)}`;
 

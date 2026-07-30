@@ -21,7 +21,13 @@ vi.mock("react-i18next", () => ({
   },
 }));
 
-vi.mock("../../lib/image-store", () => ({}));
+vi.mock("../../lib/image-store", () => ({
+  isConfigImageRef: vi.fn(() => false),
+  getConfigImage: vi.fn(() => Promise.resolve(null)),
+  resolveAllConfigImages: vi.fn(() => Promise.resolve({})),
+  saveConfigImage: vi.fn(() => Promise.resolve("")),
+  deleteConfigImage: vi.fn(() => Promise.resolve()),
+}));
 
 vi.mock("../../hooks/useToast", () => ({
   useToast: () => ({ addToast: mockAddToast }),
