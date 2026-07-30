@@ -11,6 +11,7 @@ import { useRsvpContext } from "./useRsvpContext";
 import { AppContext } from "./useApp";
 
 function AppMerger({ children }: { children: React.ReactNode }) {
+  console.log("[app]", "[AppMerger]", "mount", {});
   const { t } = useTranslation();
   const config = useConfig();
   const auth = useAuth();
@@ -18,10 +19,12 @@ function AppMerger({ children }: { children: React.ReactNode }) {
   const ui = useAppUI();
 
   const handleSaveSetup = useCallback(async (event: React.FormEvent) => {
+    console.log("[app]", "[AppMerger]", "handleSaveSetup start", { hasStoredConfig: config.hasStoredConfig, isVerified: auth.isTokenVerified, rsvpCount: rsvp.rsvpEntries?.length });
     event.preventDefault();
     ui.setSaveError("");
     ui.setSaveMessage("");
     if (!config.hasStoredConfig && !auth.isTokenVerified && !auth.setupToken) {
+      console.log("[app]", "[AppMerger]", "token not verified, blocked", {});
       ui.setSaveError(t("errors.verifyTokenFirst"));
       return;
     }
@@ -33,20 +36,25 @@ function AppMerger({ children }: { children: React.ReactNode }) {
         config.formData?.menuPescado !== config.config?.menuPescado ||
         config.formData?.menuVegano !== config.config?.menuVegano ||
         config.formData?.menuTexto !== config.config?.menuTexto;
+      console.log("[app]", "[AppMerger]", "menu change check", { rsvpCount, hasMenuChanges });
       if (hasMenuChanges && !window.confirm(t("settings.menuChangeConfirm", { count: rsvpCount }))) {
+        console.log("[app]", "[AppMerger]", "user cancelled menu change", {});
         return;
       }
     }
     await config.handleSaveSetup(event);
   }, [config, auth, rsvp, ui, t]);
 
-  const value = useMemo(() => ({
-    ...config,
-    ...auth,
-    ...rsvp,
-    ...ui,
-    handleSaveSetup,
-  }), [config, auth, rsvp, ui, handleSaveSetup]);
+  const value = useMemo(() => {
+    console.log("[app]", "[AppMerger]", "computing value", {});
+    return {
+      ...config,
+      ...auth,
+      ...rsvp,
+      ...ui,
+      handleSaveSetup,
+    };
+  }, [config, auth, rsvp, ui, handleSaveSetup]);
 
   return (
     <AppContext.Provider value={value}>

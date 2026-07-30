@@ -64,6 +64,7 @@ const TABS = [
  * @returns {JSX.Element} Panel de administración con pestañas.
  */
 export default function AdminPage() {
+  console.log("[app]", "[AdminPage]", "mount", {});
   const { t, i18n } = useTranslation();
   const { inviteToken } = useParams();
   // ─── Estados del contexto global ───────────────────────
@@ -84,11 +85,11 @@ export default function AdminPage() {
 
   // ─── Muestra mensajes de auth como toasts ──────────────
   useEffect(() => {
-    if (authMessage) addToast(authMessageType === "success" ? "success" : "error", authMessage);
+    if (authMessage) { console.log("[app]", "[AdminPage]", "authMessage", { authMessage, authMessageType }); addToast(authMessageType === "success" ? "success" : "error", authMessage); }
   }, [authMessage, authMessageType, addToast]);
 
   useEffect(() => {
-    if (adminMessage) addToast(adminMessageType === "error" ? "error" : "success", adminMessage);
+    if (adminMessage) { console.log("[app]", "[AdminPage]", "adminMessage", { adminMessage, adminMessageType }); addToast(adminMessageType === "error" ? "error" : "success", adminMessage); }
   }, [adminMessage, adminMessageType, addToast]);
 
   // ─── Estados locales de UI ─────────────────────────────
@@ -99,6 +100,7 @@ export default function AdminPage() {
 
   // Sync tab changes to URL
   const handleSetTab = useCallback((tab: string) => {
+    console.log("[app]", "[AdminPage]", "tab changed", { from: activeTab, to: tab });
     setActiveTab(tab);
     window.scrollTo({ top: 0, behavior: "smooth" });
     const params = new URLSearchParams(location.search);
@@ -106,7 +108,7 @@ export default function AdminPage() {
     else params.set("tab", tab);
     const qs = params.toString();
     window.history.replaceState(null, "", qs ? `${location.pathname}?${qs}` : location.pathname);
-  }, [location.search, location.pathname]);
+  }, [location.search, location.pathname, activeTab]);
 
   /**
    * Filtra las entradas RSVP según el filtro de asistencia y la búsqueda.
@@ -130,11 +132,13 @@ export default function AdminPage() {
 
   /** Callback memoizado para cambiar de pestaña. */
   const setActiveTabAndFilter = useCallback((tab: string) => {
+    console.log("[app]", "[AdminPage]", "setActiveTabAndFilter", { tab });
     setActiveTab(tab);
   }, []);
 
   /** Callback memoizado para cambiar el filtro de asistencia. */
   const setAttendanceFilterValue = useCallback((filter: string) => {
+    console.log("[app]", "[AdminPage]", "filter changed", { filter });
     setAttendanceFilter(filter);
   }, []);
 
@@ -146,7 +150,7 @@ export default function AdminPage() {
    * Crea un HTML con estilos de impresión y abre la ventana de impresión.
    */
   const exportPdf = useCallback(() => {
-    // Construye las filas de la tabla con escape HTML para prevenir XSS
+    console.log("[app]", "[AdminPage]", "exportPdf start", { entryCount: rsvpEntries.length });
     const rows = rsvpEntries.map((e: { guestName: string; attendance: string; companions?: number; dietaryInfo?: string }) =>
       `<tr><td>${escHtml(e.guestName)}</td><td>${e.attendance === "yes" ? t("panel.attends") : t("panel.notAttends")}</td><td>${e.attendance === "yes" ? e.companions : 0}</td><td>${escHtml(e.dietaryInfo || "")}</td></tr>`
     ).join("");

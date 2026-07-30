@@ -5,12 +5,15 @@ import { randomMessage } from "../lib/invite-messages";
 import "../styles/print.css";
 
 export default function PrintPage() {
+  console.log("[app]", "[PrintPage]", "mount", { isConfigLoading });
+
   const { t, i18n } = useTranslation();
   const { config, isConfigLoading } = useApp();
   const printed = useRef(false);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
+    console.log("[app]", "[PrintPage]", "set document title", { firstName: config.firstName, secondName: config.secondName });
     document.title = `${config.firstName} & ${config.secondName} — Wedingo`;
   }, [config.firstName, config.secondName]);
 
@@ -26,27 +29,46 @@ export default function PrintPage() {
 
   const message = useMemo(() => {
     const raw = randomMessage(i18n.language);
+    console.log("[app]", "[PrintPage]", "random message generated", { lang: i18n.language });
     return raw;
   }, [i18n.language]);
 
   useEffect(() => {
-    if (isConfigLoading) return;
-    const id = setTimeout(() => setLoaded(true), 200);
-    return () => clearTimeout(id);
+    if (isConfigLoading) {
+      console.log("[app]", "[PrintPage]", "config still loading, skip load");
+      return;
+    }
+    console.log("[app]", "[PrintPage]", "starting load timer");
+    const id = setTimeout(() => {
+      console.log("[app]", "[PrintPage]", "loaded");
+      setLoaded(true);
+    }, 200);
+    return () => {
+      console.log("[app]", "[PrintPage]", "load timer cleanup");
+      clearTimeout(id);
+    };
   }, [isConfigLoading]);
 
   useEffect(() => {
-    if (!loaded || printed.current) return;
+    if (!loaded || printed.current) {
+      console.log("[app]", "[PrintPage]", "print skipped", { loaded, alreadyPrinted: printed.current });
+      return;
+    }
     printed.current = true;
+    console.log("[app]", "[PrintPage]", "PDF generation start");
     const doPrint = async () => {
       await document.fonts.ready;
       await new Promise((r) => setTimeout(r, 400));
-      const cleanup = () => { try { window.close(); } catch {} };
+      const cleanup = () => {
+        console.log("[app]", "[PrintPage]", "after print cleanup, closing window");
+        try { window.close(); } catch (err) { console.error("[app]", "[PrintPage]", "window close error", err); }
+      };
       window.onafterprint = cleanup;
       window.onbeforeunload = null;
+      console.log("[app]", "[PrintPage]", "PDF generation success, triggering print");
       window.print();
     };
-    doPrint();
+    doPrint().catch((err) => console.error("[app]", "[PrintPage]", "PDF generation error", err));
   }, [loaded]);
 
   if (isConfigLoading || !loaded) {

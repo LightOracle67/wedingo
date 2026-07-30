@@ -49,6 +49,7 @@ const RsvpSection = memo(function RsvpSection({
   const { t } = useTranslation();
   const { setLegalModal } = useApp();
 
+  console.log("[app]", "[RsvpSection]", "render", { guestName: rsvpForm.guestName, attendance: rsvpForm.attendance, hasSubmitted, isRsvpSubmitting, isAlreadySubmitted: !!alreadySubmittedEntry, companionCount: rsvpForm.companionCount, menuEnabled });
   const isAlreadySubmitted = !!alreadySubmittedEntry;
   const isDisabled = isRsvpSubmitting || hasSubmitted || isAlreadySubmitted;
   const isAttending = rsvpForm.attendance !== "no";

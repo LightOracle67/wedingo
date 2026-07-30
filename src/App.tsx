@@ -30,20 +30,27 @@ const SuperAdminPanel = lazy(() => import("./pages/SuperAdminPanel"));
 const PrintPage = lazy(() => import("./pages/PrintPage"));
 
 function AppShell() {
+  console.log("[app]", "[AppShell]", "mount", {});
   const { t, i18n } = useTranslation();
   const { config, formData, isAdminTokenLoggedIn, tokenLoginUsername, inviteToken } = useApp();
   const [username, setUsername] = useState("");
   
   useEffect(() => {
+    console.log("[app]", "[AppShell]", "username restore from sessionStorage", {});
     try {
       const raw = sessionStorage.getItem("wedin_session");
       if (raw) {
         const data = JSON.parse(raw);
         if (data.identifier && data.identifier.length > 10 && data.expiresAt && Date.now() < data.expiresAt) {
+          console.log("[app]", "[AppShell]", "username restored", { identifier: data.identifier });
           setUsername(data.identifier);
+        } else {
+          console.log("[app]", "[AppShell]", "session invalid or expired", {});
         }
       }
-    } catch {}
+    } catch {
+      console.log("[app]", "[AppShell]", "session parse error", {});
+    }
   }, []);
   const location = useLocation();
   const [showA11y, setShowA11y] = useState(false);
@@ -53,19 +60,22 @@ function AppShell() {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
 
   useEffect(() => {
-    const onOnline = () => setIsOnline(true);
-    const onOffline = () => setIsOnline(false);
+    console.log("[app]", "[AppShell]", "online/offline listeners setup", { isOnline: navigator.onLine });
+    const onOnline = () => { console.log("[app]", "[AppShell]", "online event", {}); setIsOnline(true); };
+    const onOffline = () => { console.log("[app]", "[AppShell]", "offline event", {}); setIsOnline(false); };
     window.addEventListener("online", onOnline);
     window.addEventListener("offline", onOffline);
     return () => {
+      console.log("[app]", "[AppShell]", "online/offline cleanup", {});
       window.removeEventListener("online", onOnline);
       window.removeEventListener("offline", onOffline);
     };
   }, []);
 
   useEffect(() => {
+    console.log("[app]", "[AppShell]", "serviceWorker registration check", { prod: import.meta.env.PROD });
     if ("serviceWorker" in navigator && import.meta.env.PROD) {
-      navigator.serviceWorker.register("/sw.js").catch(() => {});
+      navigator.serviceWorker.register("/sw.js").catch(() => { console.log("[app]", "[AppShell]", "serviceWorker registration failed", {}); });
     }
   }, []);
 
@@ -74,6 +84,7 @@ function AppShell() {
 
   useEffect(() => {
     const lang = i18n.language?.split("-")[0] || "es";
+    console.log("[app]", "[AppShell]", "language/dir set", { lang, dir: RTL_LANGS.has(lang) ? "rtl" : "ltr" });
     document.documentElement.lang = lang;
     document.documentElement.dir = RTL_LANGS.has(lang) ? "rtl" : "ltr";
     document.documentElement.translate = true;
@@ -81,6 +92,7 @@ function AppShell() {
 
   useEffect(() => {
     const path = location.pathname;
+    console.log("[app]", "[AppShell]", "document title update", { path, inviteToken });
     if (path === "/") document.title = t("app.titleLanding");
     else if (path.includes("/admin")) document.title = t("app.titleAdmin");
     else if (path.includes("/setup")) document.title = t("app.titleSetup");
@@ -89,14 +101,17 @@ function AppShell() {
 
   useEffect(() => {
     const activeTheme = isEditingRoute ? "golden" : formData.theme || config.theme;
+    console.log("[app]", "[AppShell]", "theme set", { activeTheme, isEditingRoute });
     document.documentElement.dataset.weddingTheme = activeTheme || "golden";
   }, [formData.theme, config.theme, isEditingRoute]);
 
   useEffect(() => {
+    console.log("[app]", "[AppShell]", "background-image reset", {});
     document.documentElement.style.setProperty("--wedding-background-image", "none");
   }, []);
 
   useEffect(() => {
+    console.log("[app]", "[AppShell]", "global error handlers setup", {});
     const handler = (event: ErrorEvent) => {
       logError(event.error || event.message, "global");
     };
@@ -106,12 +121,14 @@ function AppShell() {
     window.addEventListener("error", handler);
     window.addEventListener("unhandledrejection", rejectionHandler);
     return () => {
+      console.log("[app]", "[AppShell]", "global error handlers cleanup", {});
       window.removeEventListener("error", handler);
       window.removeEventListener("unhandledrejection", rejectionHandler);
     };
   }, []);
 
   useEffect(() => {
+    console.log("[app]", "[AppShell]", "scroll to top on route change", { pathname: location.pathname });
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
@@ -139,6 +156,7 @@ function AppShell() {
         </div>
       ) : null}
 
+      {(() => { if (isAdminTokenLoggedIn && inviteToken && !location.pathname.endsWith("/setup") && !location.pathname.endsWith("/print")) console.log("[app]", "[AppShell]", "admin bar rendered", { username: username || tokenLoginUsername, inviteToken }); return null; })()}
       {isAdminTokenLoggedIn && inviteToken && !location.pathname.endsWith("/setup") && !location.pathname.endsWith("/print") ? (
         <nav className="admin-bar" aria-label={t("common.adminBar.ariaLabel")}>
           <div className="admin-bar__inner">
@@ -154,9 +172,10 @@ function AppShell() {
 
       {inviteToken && location.pathname === `/${inviteToken}` && (config.musicFile || config.musicUrl) ? <MusicPlayer musicUrl={config.musicFile || config.musicUrl} /> : null}
 
+      {(() => { if (!isEditingRoute && !isAdminTokenLoggedIn) console.log("[app]", "[AppShell]", "nav + footer rendered", { isEditingRoute, isAdminTokenLoggedIn }); return null; })()}
       {!isEditingRoute && !isAdminTokenLoggedIn && (
         <>
-          <button type="button" className="app-nav-toggle" onClick={() => setNavOpen(!navOpen)} aria-label={t("common.menu")}>
+          <button type="button" className="app-nav-toggle" onClick={() => { console.log("[app]", "[AppShell]", "nav toggle clicked", { navOpen: !navOpen }); setNavOpen(!navOpen); }} aria-label={t("common.menu")}>
             <span className={`app-nav-toggle__icon${navOpen ? " app-nav-toggle__icon--open" : ""}`}>
               <span /><span /><span />
             </span>

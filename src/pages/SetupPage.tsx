@@ -8,6 +8,7 @@ import MusicPlayer from "../components/MusicPlayer";
 import "../styles/admin.css";
 
 export default function SetupPage() {
+  console.log("[app]", "[SetupPage]", "mount", {});
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { inviteToken } = useParams();
@@ -21,6 +22,7 @@ export default function SetupPage() {
 
   useEffect(() => {
     if (authMessage) {
+      console.log("[app]", "[SetupPage]", "authMessage changed", { authMessage, authMessageType });
       addToast(authMessageType === "success" ? "success" : "error", authMessage);
     }
   }, [authMessage, authMessageType, addToast]);
@@ -32,9 +34,11 @@ export default function SetupPage() {
   const hasRedirectedRef = useRef(false);
 
   useEffect(() => {
+    console.log("[app]", "[SetupPage]", "showSuccess effect", { showSuccess, hasRedirected: hasRedirectedRef.current });
     if (showSuccess && !hasRedirectedRef.current) {
       hasRedirectedRef.current = true;
       const timer = setTimeout(() => {
+        console.log("[app]", "[SetupPage]", "redirecting to admin page", {});
         navigate(`/${inviteToken}/admin`, { replace: true });
       }, 3000);
       return () => clearTimeout(timer);
@@ -42,17 +46,20 @@ export default function SetupPage() {
   }, [showSuccess, navigate, inviteToken]);
 
   useEffect(() => {
+    console.log("[app]", "[SetupPage]", "saveMessage effect", { saveMessage, hasStoredConfig, hasSetupToken: !!setupToken });
     if (saveMessage && hasStoredConfig) {
       setIsTransitioning(true);
       setShowTokenModal(true);
       setIsTransitioning(false);
       if (!setupToken) {
-        (async () => { try { await generateNewToken(); } catch {} })();
+        console.log("[app]", "[SetupPage]", "generating new token", {});
+        (async () => { try { await generateNewToken(); console.log("[app]", "[SetupPage]", "new token generated", {}); } catch (err) { console.log("[app]", "[SetupPage]", "token generation error", { error: err }); } })();
       }
     }
   }, [saveMessage, hasStoredConfig, setupToken, generateNewToken]);
 
   const handleTokenModalClose = () => {
+    console.log("[app]", "[SetupPage]", "token modal closed, showing success", {});
     setShowTokenModal(false);
     setShowSuccess(true);
     try {
@@ -65,6 +72,7 @@ export default function SetupPage() {
   };
 
   const handleCopyToken = () => {
+    console.log("[app]", "[SetupPage]", "token copied to clipboard", {});
     if (setupToken) {
       navigator.clipboard.writeText(setupToken);
       setTokenCopied(true);
