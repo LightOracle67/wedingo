@@ -188,10 +188,12 @@ export function useRsvp(
         const mainEntries = allDocs.filter((d) => d.rsvpType === "main" || (!d.rsvpType && !d.mainGuestDocId));
         const companionEntries = allDocs.filter((d) => d.rsvpType === "companion" || d.mainGuestDocId);
 
-        // Attach companion data to main entries
+        // Attach companion data to main entries and create individual companion entries
+        const companionAsEntries: RsvpEntryData[] = [];
         for (const main of mainEntries) {
           const linkedCompanions = companionEntries.filter((c) => c.mainGuestDocId === main.id);
           if (linkedCompanions.length > 0) {
+            main.companions = linkedCompanions.length;
             main.companionCount = linkedCompanions.length;
             main.companionNames = linkedCompanions.map((c) => c.guestName);
             main.companionMenus = linkedCompanions.map((c) => c.mealChoice);
@@ -200,10 +202,23 @@ export function useRsvp(
               return [...parsed.dietarySelection, ...(parsed.dietaryOther ? [parsed.dietaryOther] : [])];
             });
             main.companionDocIds = linkedCompanions.map((c) => c.id);
+            // Create individual companion entries for the attendance list
+            for (const comp of linkedCompanions) {
+              companionAsEntries.push({
+                ...comp,
+                // Override with normalized data from the main entry's context
+                companions: 0,
+                companionCount: 0,
+                companionNames: [],
+                companionMenus: [],
+                companionAllergies: [],
+                attendees: [],
+              });
+            }
           }
         }
 
-        const entries = mainEntries.sort(
+        const entries = [...companionAsEntries, ...mainEntries].sort(
           (a, b) => new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime(),
         );
         if (!cancelled) setRsvpEntries(entries);
@@ -228,7 +243,7 @@ export function useRsvp(
       prefillRef.current = null;
       return;
     }
-    const match = rsvpEntries.find((e) => e.guestName.trim().toLowerCase() === name) || null;
+    const match = rsvpEntries.find((e) => e.rsvpType !== "companion" && e.guestName.trim().toLowerCase() === name) || null;
     if (match) {
       if (match.id !== prefillRef.current) {
         prefillRef.current = match.id;
