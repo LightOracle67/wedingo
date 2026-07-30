@@ -89,6 +89,7 @@ function setup(
 describe("useSetupAuth", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    mockGetSession.mockReturnValue(null);
     mockGetDoc.mockImplementation(() => Promise.resolve({ exists: () => false }));
     mockRunTransaction.mockImplementation(() => Promise.resolve());
     mockSetDoc.mockImplementation(() => Promise.resolve());
@@ -480,7 +481,22 @@ describe("useSetupAuth", () => {
       });
     });
 
-    it("clears session when Firestore session is inactive", async () => {
+    it("clears session when Firestore session repair fails", async () => {
+      mockGetSession.mockReturnValue({ type: "setup", identifier: "inactive-user" });
+      mockGetDoc.mockResolvedValueOnce({
+        exists: () => true,
+        data: () => ({ activeSession: false, sessionExpiresAt: null }),
+      });
+      mockUpdateDoc.mockRejectedValueOnce(new Error("repair failed"));
+
+      setup();
+
+      await waitFor(() => {
+        expect(mockClearSession).toHaveBeenCalled();
+      });
+    });
+
+    it("repairs session when Firestore session is inactive", async () => {
       mockGetSession.mockReturnValue({ type: "setup", identifier: "inactive-user" });
       mockGetDoc.mockResolvedValueOnce({
         exists: () => true,
@@ -490,7 +506,10 @@ describe("useSetupAuth", () => {
       setup();
 
       await waitFor(() => {
-        expect(mockClearSession).toHaveBeenCalled();
+        expect(mockUpdateDoc).toHaveBeenCalledWith("invite-ref", {
+          activeSession: expect.any(Object),
+          sessionExpiresAt: expect.any(Object),
+        });
       });
     });
 
