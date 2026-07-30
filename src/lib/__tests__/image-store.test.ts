@@ -98,7 +98,7 @@ describe("image-store", () => {
   });
 
   it("uploadImage throws when image exceeds size limit", async () => {
-    const largeData = "x".repeat(600000);
+    const largeData = "x".repeat(1300000);
     mockEncrypt.mockResolvedValueOnce(Promise.resolve(largeData));
     await expect(uploadImage("token", new File([], "test.jpg"))).rejects.toThrow(
       "errors.imageTooLarge",
