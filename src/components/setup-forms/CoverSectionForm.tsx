@@ -4,6 +4,7 @@ import { useApp } from "../../contexts";
 import { useToast } from "../../hooks/useToast";
 import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES } from "../../lib/constants";
 import { uploadImage } from "../../lib/image-store";
+import { readFileAsDataUrl } from "../../lib/image-utils";
 import ThemePicker from "../ThemePicker";
 import MusicArrayEditor from "../MusicArrayEditor";
 
@@ -243,7 +244,7 @@ export default function CoverSectionForm({ prefix = "" }) {
           const file = e.target.files?.[0];
           if (!file) return;
           if (file.size > 1024 * 1024) { addToast("error", t("setup.errorFileSize")); return; }
-          const { dataUrl } = await uploadImage(inviteToken, file, () => {});
+          const dataUrl = await readFileAsDataUrl(file);
           updateFormField("cornerDecoration", dataUrl);
           e.target.value = "";
         }} />
