@@ -1349,7 +1349,7 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
   background:
     var(--story-card-user-bg, none) center/cover no-repeat,
     radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--invite-shell-glow) 60%, transparent) 0%, transparent 70%);
-  opacity: 0.15;
+  opacity: 0.3;
   pointer-events: none;
 }
 
