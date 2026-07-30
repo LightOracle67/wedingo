@@ -249,7 +249,38 @@ export function useRsvp(
       prefillRef.current = null;
       return;
     }
-    const match = rsvpEntries.find((e) => e.rsvpType !== "companion" && e.guestName.trim().toLowerCase() === name) || null;
+    const match = rsvpEntries.find((e) => e.guestName.trim().toLowerCase() === name) || null;
+
+    if (match && match.rsvpType === "companion") {
+      // Companion matched — fill only companion fields (no companion-of-companion)
+      if (match.id !== prefillRef.current) {
+        prefillRef.current = match.id;
+        setAlreadySubmittedEntry(match);
+        const parsed = parseDietaryInfo(match.dietaryInfo, !!match.mealChoice);
+        setRsvpForm((current) => ({
+          ...current,
+          attendance: "alone",
+          companionCount: 0,
+          companionNames: [],
+          companionMenus: [],
+          companionAllergies: [],
+          companionBirthDates: [],
+          companionParentalConsents: [],
+          companionHealthConsents: [],
+          menuSelection: match.mealChoice || "",
+          birthDate: match.birthDate || "",
+          allergies: parsed.dietarySelection,
+          allergiesOther: parsed.dietaryOther || match.allergiesOther || "",
+          privacyConsent: true,
+          healthConsent: match.healthConsent || false,
+          parentalConsent: match.parentalConsent || false,
+        }));
+      } else {
+        setAlreadySubmittedEntry(match);
+      }
+      return;
+    }
+
     if (match) {
       if (match.id !== prefillRef.current) {
         prefillRef.current = match.id;
