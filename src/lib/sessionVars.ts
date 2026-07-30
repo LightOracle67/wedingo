@@ -1,10 +1,12 @@
-import { safeSetItem, safeGetItem, safeRemoveItem } from "./storage";
-
 const STORAGE_KEY = "wedin_session";
 const SESSION_DURATION = 24 * 60 * 60 * 1000;
 
 /** TTL para activeSession en Firestore (24h). */
 const FIRESTORE_SESSION_TTL_MS = 86400000;
+
+function ls() {
+  try { return localStorage; } catch { return null; }
+}
 
 /** Calcula la fecha de expiración para activeSession en Firestore. */
 export function firestoreSessionExpiry() {
@@ -20,13 +22,13 @@ export function saveSession(type: string, identifier: string, extra: Record<stri
       createdAt: Date.now(),
       expiresAt: Date.now() + SESSION_DURATION,
     };
-    safeSetItem(STORAGE_KEY, JSON.stringify(data), sessionStorage);
+    ls()?.setItem(STORAGE_KEY, JSON.stringify(data));
   } catch {}
 }
 
 export function getSession() {
   try {
-    const raw = safeGetItem(STORAGE_KEY, sessionStorage);
+    const raw = ls()?.getItem(STORAGE_KEY);
     if (!raw) return null;
     const data = JSON.parse(raw);
     if (data.expiresAt && Date.now() < data.expiresAt) {
@@ -42,14 +44,14 @@ export function getSession() {
 
 export function renewSession() {
   try {
-    const raw = safeGetItem(STORAGE_KEY, sessionStorage);
+    const raw = ls()?.getItem(STORAGE_KEY);
     if (!raw) return;
     const data = JSON.parse(raw);
     data.expiresAt = Date.now() + SESSION_DURATION;
-    safeSetItem(STORAGE_KEY, JSON.stringify(data), sessionStorage);
+    ls()?.setItem(STORAGE_KEY, JSON.stringify(data));
   } catch {}
 }
 
 export function clearSession() {
-  safeRemoveItem(STORAGE_KEY, sessionStorage);
+  try { ls()?.removeItem(STORAGE_KEY); } catch {}
 }
