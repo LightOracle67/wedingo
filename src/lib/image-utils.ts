@@ -14,7 +14,7 @@ export const readFileAsDataUrl = (file: File) =>
 function canvasToType(canvas: HTMLCanvasElement, type: string, quality: number): string {
   let dataUrl = canvas.toDataURL(`image/${type}`, quality);
   if (!dataUrl.startsWith(`data:image/${type}`)) {
-    dataUrl = canvas.toDataURL("image/jpeg", quality);
+    dataUrl = canvas.toDataURL("image/png");
   }
   return dataUrl;
 }
@@ -97,9 +97,6 @@ export const compressImage = async (file: File): Promise<string> => {
   const ctx = canvas.getContext("2d");
   if (!ctx) throw new Error(i18n.t("errors.uploadImageFailed"));
 
-  // Fondo blanco para que PNGs con transparencia no se vean negros al exportar
-  ctx.fillStyle = "#FFFFFF";
-  ctx.fillRect(0, 0, width, height);
   ctx.drawImage(img, 0, 0, width, height);
   URL.revokeObjectURL(img.src);
 
