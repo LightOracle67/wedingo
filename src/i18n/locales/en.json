@@ -450,7 +450,14 @@
     "menuFish": "Fish",
     "menuVegan": "Vegan",
     "exportPdf": "Export PDF",
-    "clearAttendance": "Clear attendance"
+    "clearAttendance": "Clear attendance",
+    "tableAccompanies": "Accompanies",
+    "selectAll": "Select all",
+    "selectEntry": "Select {{name}}",
+    "deleteSelected": "Delete selected ({{count}})",
+    "deleteSelectedConfirm": "Delete {{count}} selected response(s)? This action cannot be undone.",
+    "deleteSelectedSuccess": "{{count}} response(s) deleted.",
+    "deleteSelectedError": "Could not delete the selected responses. Try again."
   },
   "share": {
     "publishedAt": "Your invitation is published at:",

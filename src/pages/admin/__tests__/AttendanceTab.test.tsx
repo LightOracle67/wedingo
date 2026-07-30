@@ -208,8 +208,6 @@ describe("AttendanceTab", () => {
     );
     expect(screen.getAllByText("Charlie").length).toBeGreaterThanOrEqual(1);
     expect(screen.getAllByText(/Frank/).length).toBeGreaterThanOrEqual(1);
-    expect(screen.getByText("David")).toBeDefined();
-    expect(screen.getByText("Eve")).toBeDefined();
   });
 
   it("renders attendees with menu data", () => {

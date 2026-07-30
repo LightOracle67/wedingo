@@ -1,16 +1,18 @@
 export const CHANGELOG = [
   {
-    version: "2.31.0",
+    version: "2.32.0",
     date: "2026-07-30",
     changes: [
-      "RSVP: Acompañantes ahora requieren los mismos datos obligatorios que el invitado principal — fecha de nacimiento, consentimiento parental (si <14), consentimiento salud (si alergias), menú (si activado)",
-      "RSVP: Nuevos campos en formulario de acompañantes: birthDate, parentalConsent, healthConsent",
-      "RSVP: Validación mejorada — cada acompañante se valida individualmente con las mismas reglas",
-      "REFS: companionBirthDates, companionParentalConsents, companionHealthConsents añadidos a RsvpFormData",
+      "ADMIN: AttendanceTab convertido en CRUD completo — checkboxes para selección individual, delete batch con confirmación",
+      "ADMIN: Nueva columna 'Acompañante de' que muestra el invitado principal al que acompaña cada acompañante",
+      "ADMIN: Reemplazado 'Clear all' por delete selectivo con selección múltiple + borrado en lote",
+      "UI: Tabla de asistencia incluye checkbox en cada fila + checkbox global en cabecera",
+      "I18N: Nuevas claves attendance.tableAccompanies, selectAll, selectEntry, deleteSelected*",
     ],
   },
   {
-    version: "2.30.0",
+    version: "2.31.0",
+    date: "2026-07-30",
     date: "2026-07-30",
     changes: [
       "UI: Decoraciones de esquinas unificadas — antes se pedían 4 imágenes (TL/TR/BL/BR), ahora 1 sola imagen para las 4 esquinas",
