@@ -10,7 +10,7 @@
   .rsvp-form {
     display: none !important;
   }
-  .invite-bg-image, .invite-corner { display: none !important; }
+  .invite-corner { display: none !important; }
 }
 .print-root {
   display: flex;
