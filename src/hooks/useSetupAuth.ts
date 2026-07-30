@@ -86,7 +86,7 @@ export function useSetupAuth(
 
     setIsRestoringSession(true);
 
-    getDoc(invitationDocRef(inviteToken)).then(snap => {
+    getDoc(invitationDocRef(inviteToken)).then(async (snap) => {
       const data = snap.data();
       const sessionExpiresAt = data?.sessionExpiresAt?.toDate?.() ?? data?.sessionExpiresAt;
       const isValid = snap.exists()
@@ -101,6 +101,23 @@ export function useSetupAuth(
         setSetupTokenInput("");
         setIsTokenVerified(true);
         console.log("[session-restore] ✅ session restored for", session.identifier, "type:", session.type);
+      } else if (snap.exists()) {
+        console.log("[session-restore] ⚠️ Firestore session invalid, attempting repair...");
+        try {
+          await updateDoc(invitationDocRef(inviteToken), {
+            activeSession: serverTimestamp(),
+            sessionExpiresAt: firestoreSessionExpiry(),
+          });
+          setTokenLoginUsername(session.identifier);
+          sessionTypeRef.current = session.type;
+          setSetupToken("");
+          setSetupTokenInput("");
+          setIsTokenVerified(true);
+          console.log("[session-restore] ✅ session repaired for", session.identifier);
+        } catch (repairErr) {
+          console.log("[session-restore] ❌ repair failed:", repairErr);
+          clearSession();
+        }
       } else {
         clearSession();
         console.log("[session-restore] ❌ Firestore session invalid, cleared localStorage");
