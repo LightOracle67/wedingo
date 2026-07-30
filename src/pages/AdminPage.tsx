@@ -118,7 +118,12 @@ export default function AdminPage() {
     if (attendanceFilter === "no") result = result.filter((e: { attendance: string }) => e.attendance === "no");
     if (searchQuery.trim()) {
       const q = searchQuery.trim().toLowerCase();
-      result = result.filter((e: { guestName: string }) => e.guestName.toLowerCase().includes(q));
+      const nameMatched = result.filter((e: { guestName: string }) => e.guestName.toLowerCase().includes(q));
+      const matchedNames = new Set(nameMatched.map((e: { guestName: string }) => e.guestName.toLowerCase()));
+      result = result.filter((e: { guestName: string; mainGuestName?: string }) =>
+        matchedNames.has(e.guestName.toLowerCase())
+        || (e.mainGuestName && matchedNames.has(e.mainGuestName.toLowerCase()))
+      );
     }
     return result;
   }, [rsvpEntries, attendanceFilter, searchQuery]);
