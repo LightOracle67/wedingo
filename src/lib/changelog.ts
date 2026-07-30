@@ -1,5 +1,27 @@
 export const CHANGELOG = [
   {
+    version: "2.29.0",
+    date: "2026-07-30",
+    changes: [
+      "RSVP: Cada acompañante con su propio documento Firestore (writeBatch), desacoplado del invitado principal",
+      "RSVP: Fix Firestore rules — companionAllergiesOther, allergiesOther, companionDocIds, rsvpType, mainGuestDocId añadidos a hasOnly",
+      "RSVP: Fix healthConsent rules para companions (dietaryInfo no vacío requiere healthConsent)",
+      "RSVP: Mensajes i18n más user-friendly (nombre, menú, privacidad, fechanac, edad, salud)",
+      "RSVP: Postre oculto si el invitado no asiste",
+      "RSVP: saveError i18n usado correctamente (en vez de error Firestore crudo)",
+      "RSVP: Error de carga con feedback al usuario",
+      "SESIÓN: Migrada de sessionStorage a localStorage (persiste al cerrar navegador)",
+      "SESIÓN: Fix race condition — AdminPage redirigía antes de restaurar sesión (isRestoringSession)",
+      "SESIÓN: Fix Firestore rules bloqueaban sobrescribir sesión existente (eliminado hasActiveSession del rule de renovación)",
+      "SESIÓN: Fix LandingPage transaction rechazaba sesión incluso tras confirm del usuario",
+      "SESIÓN: handleTokenLogin ignora cancel de confirm correctamente",
+      "SESIÓN: TTL unificado a 24h (sessionStorage + Firestore)",
+      "SESIÓN: clearSession sin double-remove, sessionExpiresAt check en restauración",
+      "SESIÓN: Error transitorio de red no limpia la sesión",
+      "UI: Select asistencia con width auto, min-width 180px en vez de flex:1",
+    ],
+  },
+  {
     version: "2.27.0",
     date: "2026-07-27",
     changes: [
