@@ -43,7 +43,8 @@ export default function CoverSectionForm({ prefix = "" }) {
       upload.update(90);
       updateFormField("couplePhoto", ref);
       upload.complete(t("setup.photoUploaded"));
-    } catch {
+    } catch (err) {
+      console.log("[upload] handleCouplePhotoUpload error:", err);
       upload.error(t("setup.photoUploadFailed"));
     }
     if (input) input.value = "";
@@ -195,7 +196,7 @@ export default function CoverSectionForm({ prefix = "" }) {
           try {
             const ref = await uploadConfigImage("customSeal", file);
             updateFormField("customSeal", ref);
-          } catch { addToast("error", t("setup.photoUploadFailed")); }
+          } catch (err) { console.log("[upload] customSeal error:", err); addToast("error", t("setup.photoUploadFailed")); }
           e.target.value = "";
         }} />
       </div>
@@ -231,7 +232,7 @@ export default function CoverSectionForm({ prefix = "" }) {
           try {
             const ref = await uploadConfigImage("backgroundImage", file);
             updateFormField("backgroundImage", ref);
-          } catch { addToast("error", t("setup.photoUploadFailed")); }
+          } catch (err) { console.log("[upload] backgroundImage error:", err); addToast("error", t("setup.photoUploadFailed")); }
           e.target.value = "";
         }} />
       </div>
@@ -264,7 +265,7 @@ export default function CoverSectionForm({ prefix = "" }) {
             const dataUrl = await compressImageTransparent(file);
             const ref = await saveConfigImage(inviteToken, "cornerDecoration", dataUrl);
             updateFormField("cornerDecoration", ref);
-          } catch { addToast("error", t("setup.photoUploadFailed")); }
+          } catch (err) { console.log("[upload] cornerDecoration error:", err); addToast("error", t("setup.photoUploadFailed")); }
           e.target.value = "";
         }} />
       </div>

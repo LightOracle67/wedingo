@@ -9,13 +9,22 @@ function galCol(token: string) {
 }
 
 export async function uploadImage(inviteToken: string, file: File, onProgress?: (percent: number) => void) {
+  console.log("[upload] uploadImage start", file.name);
   onProgress?.(10);
   const dataUrl = await compressImage(file);
+  console.log("[upload] compress done, dataUrl length:", dataUrl.length);
   onProgress?.(40);
-  const encrypted = await encrypt(dataUrl, inviteToken);
+  try {
+    var encrypted = await encrypt(dataUrl, inviteToken);
+  } catch (e) {
+    console.log("[upload] encrypt failed:", e);
+    throw new Error(i18n.t("errors.encryptFailed"));
+  }
   if (!encrypted) throw new Error(i18n.t("errors.encryptFailed"));
+  console.log("[upload] encrypt done, encrypted length:", encrypted.length);
   onProgress?.(70);
   const size = Math.round((encrypted.length * 3) / 4);
+  console.log("[upload] encrypted size:", size, "limit: 900KB");
   if (size > 900 * 1024) throw new Error(i18n.t("errors.imageTooLarge"));
   onProgress?.(80);
   return { encrypted, dataUrl };
@@ -110,13 +119,24 @@ function cfgImgCol(token: string) {
 export async function saveConfigImage(
   inviteToken: string, imageId: string, dataUrl: string,
 ): Promise<string> {
-  const encrypted = await encrypt(dataUrl, inviteToken);
+  console.log("[upload] saveConfigImage start", imageId, "dataUrl length:", dataUrl.length);
+  let encrypted;
+  try {
+    encrypted = await encrypt(dataUrl, inviteToken);
+  } catch (e) {
+    console.log("[upload] saveConfigImage encrypt failed:", e);
+    throw new Error(i18n.t("errors.encryptFailed"));
+  }
   if (!encrypted) throw new Error(i18n.t("errors.encryptFailed"));
+  console.log("[upload] encrypt done, encrypted length:", encrypted.length);
   const ref = doc(cfgImgCol(inviteToken), imageId);
-  await setDoc(ref, {
-    data: encrypted,
-    createdAt: serverTimestamp(),
-  });
+  try {
+    await setDoc(ref, { data: encrypted, createdAt: serverTimestamp() });
+    console.log("[upload] setDoc OK");
+  } catch (e) {
+    console.log("[upload] setDoc FAILED:", e);
+    throw e;
+  }
   return makeConfigImageRef(imageId);
 }
 
