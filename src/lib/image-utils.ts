@@ -11,6 +11,32 @@ export const readFileAsDataUrl = (file: File) =>
     reader.readAsDataURL(file);
   });
 
+export const compressImageTransparent = (file: File, maxDimension = 800) =>
+  new Promise<string>((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => {
+      let { width, height } = img;
+      if (width > maxDimension || height > maxDimension) {
+        const ratio = Math.min(maxDimension / width, maxDimension / height);
+        width = Math.round(width * ratio);
+        height = Math.round(height * ratio);
+      }
+
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) { reject(new Error(i18n.t("errors.uploadImageFailed"))); return; }
+      ctx.drawImage(img, 0, 0, width, height);
+
+      const dataUrl = canvas.toDataURL("image/png");
+      URL.revokeObjectURL(img.src);
+      resolve(dataUrl);
+    };
+    img.onerror = () => { URL.revokeObjectURL(img.src); reject(new Error(i18n.t("errors.readImageFailed"))); };
+    img.src = URL.createObjectURL(file);
+  });
+
 export const compressImage = (file: File) =>
   new Promise<string>((resolve, reject) => {
     if (file.size <= TARGET_BYTES && file.type === "image/jpeg") {
