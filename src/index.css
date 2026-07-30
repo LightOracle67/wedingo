@@ -2735,7 +2735,6 @@ a:focus-visible {
 /* Background del body por tema */
 body {
   background:
-    var(--theme-glow, transparent),
     linear-gradient(0deg, transparent 40%, color-mix(in srgb, var(--flower-accent, #d8b24a) 20%, transparent) 70%, transparent 90%),
     linear-gradient(180deg, transparent 40%, color-mix(in srgb, var(--flower-accent, #d8b24a) 20%, transparent) 70%, transparent 90%),
     radial-gradient(ellipse at 50% 20%, color-mix(in srgb, var(--flower-accent, #d8b24a) 30%, transparent) 0%, transparent 50%),
