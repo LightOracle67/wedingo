@@ -140,6 +140,11 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           try {
             const parsed = JSON.parse(cached);
             if (parsed.data && parsed.cachedAt && Date.now() - parsed.cachedAt < INVITE_CACHE_TTL_MS) {
+              const { resolveAllConfigImages } = await import("../lib/image-store");
+              const resolved = await resolveAllConfigImages(inviteToken, parsed.data);
+              for (const [key, url] of Object.entries(resolved)) {
+                if (url) parsed.data[key] = url;
+              }
               setConfig(parsed.data);
               setFormData(parsed.data);
               setHasStoredConfig(true);
