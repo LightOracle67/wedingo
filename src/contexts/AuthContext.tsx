@@ -10,6 +10,7 @@ import { useAppUI } from "./useAppUI";
 import { AuthContext } from "./useAuth";
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
+  console.log("[app]", "[AuthProvider]", "mount", {});
   const { t } = useTranslation();
   const { setAdminMessage, setAdminMessageType } = useAppUI();
   const { inviteToken, config, setHasStoredConfig, registerOnFirstSave } = useConfig();
@@ -20,11 +21,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   // ── Auto-login after first save ──
   const onFirstSaveRef = useRef<() => void>(null!);
   onFirstSaveRef.current = () => {
-    if (auth.isTokenVerified) return;
+    console.log("[app]", "[AuthProvider]", "onFirstSave triggered", { isTokenVerified: auth.isTokenVerified });
+    if (auth.isTokenVerified) { console.log("[app]", "[AuthProvider]", "already verified, skip", {}); return; }
     auth.setSetupToken("");
     auth.setSetupTokenInput("");
     (async () => {
       try {
+        console.log("[app]", "[AuthProvider]", "updating session in Firestore", {});
         await updateDoc(invitationDocRef(inviteToken), {
           activeSession: serverTimestamp(),
           sessionExpiresAt: firestoreSessionExpiry(),
@@ -32,10 +35,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         auth.setIsTokenVerified(true);
         const displayName = config.adminUsername || inviteToken;
         if (displayName) {
+          console.log("[app]", "[AuthProvider]", "setting tokenLoginUsername and saving session", { displayName });
           auth.setTokenLoginUsername(displayName);
           saveSession("admin", displayName);
         }
-      } catch {
+        console.log("[app]", "[AuthProvider]", "onFirstSave success", {});
+      } catch (err) {
+        console.error("[app]", "[AuthProvider]", "onFirstSave error", { error: err });
         if (setAdminMessage && setAdminMessageType) {
           setAdminMessageType("error");
           setAdminMessage(t("auth.sessionUpdateFailed"));
@@ -45,18 +51,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   useEffect(() => {
+    console.log("[app]", "[AuthProvider]", "registerOnFirstSave callback", {});
     registerOnFirstSave(() => onFirstSaveRef.current());
   }, [registerOnFirstSave]);
 
   // ── Token regeneration effect ──
   const refreshToken = auth.refreshSetupToken;
   useEffect(() => {
+    console.log("[app]", "[AuthProvider]", "token regeneration effect", { inviteToken });
     if (!inviteToken) return;
-    (async () => { try { await refreshToken(); } catch {} })();
+    (async () => { try { await refreshToken(); console.log("[app]", "[AuthProvider]", "token refresh done", {}); } catch (err) { console.log("[app]", "[AuthProvider]", "token refresh error", { error: err }); } })();
   }, [inviteToken, refreshToken]);
 
   // ── Clear auth messages on route change ──
   useEffect(() => {
+    console.log("[app]", "[AuthProvider]", "clearing auth messages on route change", { pathname: location.pathname });
     auth.setAuthMessage("");
   }, [location.pathname, auth]);
 

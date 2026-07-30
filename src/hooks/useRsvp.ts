@@ -126,11 +126,14 @@ export function useRsvp(
   const prefillRef = useRef<string | null>(null);
 
   useEffect(() => {
+    console.log("[app]", "[useRsvp]", "hydrate effect", { inviteToken });
     let cancelled = false;
     const hydrateRsvp = async () => {
-      if (!inviteToken) return;
+      if (!inviteToken) { console.log("[app]", "[useRsvp]", "no inviteToken, skip", {}); return; }
+      console.log("[app]", "[useRsvp]", "hydrate start", {});
       try {
         const snapshot = await getDocs(rsvpByInviteRef(inviteToken));
+        console.log("[app]", "[useRsvp]", "raw docs count", { count: snapshot.docs.length });
         if (cancelled) return;
 
         const allDocs = await Promise.all(
@@ -227,8 +230,12 @@ export function useRsvp(
         const entries = [...companionAsEntries, ...mainEntries].sort(
           (a, b) => new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime(),
         );
-        if (!cancelled) setRsvpEntries(entries);
-      } catch {
+        if (!cancelled) {
+          console.log("[app]", "[useRsvp]", "hydrate success", { totalEntries: entries.length, mainCount: mainEntries.length, companionCount: companionAsEntries.length });
+          setRsvpEntries(entries);
+        }
+      } catch (err) {
+        console.error("[app]", "[useRsvp]", "hydrate error", { error: err });
         if (!cancelled) {
           setRsvpEntries([]);
           setAdminMessageType("error");
@@ -244,16 +251,18 @@ export function useRsvp(
 
   useEffect(() => {
     const name = rsvpForm.guestName.trim().toLowerCase();
+    console.log("[app]", "[useRsvp]", "prefill effect", { name, entryCount: rsvpEntries.length });
     if (!name) {
       setAlreadySubmittedEntry(null);
       prefillRef.current = null;
       return;
     }
     const match = rsvpEntries.find((e) => e.guestName.trim().toLowerCase() === name) || null;
+    console.log("[app]", "[useRsvp]", "prefill match result", { found: !!match, type: match?.rsvpType, matchId: match?.id, prefillId: prefillRef.current });
 
     if (match && match.rsvpType === "companion") {
-      // Companion matched — fill only companion fields (no companion-of-companion)
       if (match.id !== prefillRef.current) {
+        console.log("[app]", "[useRsvp]", "prefill companion match (new)", { id: match.id });
         prefillRef.current = match.id;
         setAlreadySubmittedEntry(match);
         const parsed = parseDietaryInfo(match.dietaryInfo, !!match.mealChoice);
@@ -276,6 +285,7 @@ export function useRsvp(
           parentalConsent: match.parentalConsent || false,
         }));
       } else {
+        console.log("[app]", "[useRsvp]", "prefill companion match (already set)", {});
         setAlreadySubmittedEntry(match);
       }
       return;
@@ -283,15 +293,14 @@ export function useRsvp(
 
     if (match) {
       if (match.id !== prefillRef.current) {
+        console.log("[app]", "[useRsvp]", "prefill main match (new)", { id: match.id, companionCount: match.companionNames?.length });
         prefillRef.current = match.id;
         setAlreadySubmittedEntry(match);
         const companionCount = match.companionNames?.length || 0;
-        // Find linked companion entries to extract birth dates and consents
         const linkedCompanions = rsvpEntries.filter((e) => e.mainGuestDocId === match.id);
         const companionBirthDates = linkedCompanions.map((c) => c.birthDate || "");
         const companionParentalConsents = linkedCompanions.map((c) => c.parentalConsent || false);
         const companionHealthConsents = linkedCompanions.map((c) => c.healthConsent || false);
-        // Parse allergies from dietaryInfo
         const parsed = parseDietaryInfo(match.dietaryInfo, !!match.mealChoice);
         setRsvpForm((current) => ({
           ...current,
@@ -312,9 +321,11 @@ export function useRsvp(
           parentalConsent: match.parentalConsent || false,
         }));
       } else {
+        console.log("[app]", "[useRsvp]", "prefill main match (already set)", {});
         setAlreadySubmittedEntry(match);
       }
     } else {
+      console.log("[app]", "[useRsvp]", "no prefill match, clearing", {});
       setAlreadySubmittedEntry(null);
       prefillRef.current = null;
     }
@@ -323,6 +334,7 @@ export function useRsvp(
   const handleDietaryToggle = useCallback(() => {}, []);
 
   const updateRsvpField = useCallback((field: string, value: unknown) => {
+    console.log("[app]", "[useRsvp]", "updateRsvpField", { field, value });
     if (field === "attendance") {
       setRsvpForm((current) => ({
         ...current,
@@ -395,32 +407,34 @@ export function useRsvp(
   }, []);
 
   const validateRsvpData = useCallback((data: RsvpFormData) => {
-    if (!data.guestName?.trim()) return t("rsvp.validation.nameRequired");
-    if (data.attendance !== "no" && !data.birthDate) return t("rsvp.validation.birthDateRequired");
+    if (!data.guestName?.trim()) { console.log("[app]", "[useRsvp]", "validation fail: name required", {}); return t("rsvp.validation.nameRequired"); }
+    if (data.attendance !== "no" && !data.birthDate) { console.log("[app]", "[useRsvp]", "validation fail: birthDate required", {}); return t("rsvp.validation.birthDateRequired"); }
     if (data.attendance === "with" && data.companionCount > 0) {
       for (let i = 0; i < data.companionCount; i++) {
-        if (!data.companionNames[i]?.trim()) return t("rsvp.validation.nameRequired");
-        if (!data.companionBirthDates?.[i]) return t("rsvp.validation.birthDateRequired");
-        if (menuEnabled && !data.companionMenus?.[i]) return t("rsvp.validation.menuRequired");
+        if (!data.companionNames[i]?.trim()) { console.log("[app]", "[useRsvp]", "validation fail: companion name", { i }); return t("rsvp.validation.nameRequired"); }
+        if (!data.companionBirthDates?.[i]) { console.log("[app]", "[useRsvp]", "validation fail: companion birthDate", { i }); return t("rsvp.validation.birthDateRequired"); }
+        if (menuEnabled && !data.companionMenus?.[i]) { console.log("[app]", "[useRsvp]", "validation fail: companion menu", { i }); return t("rsvp.validation.menuRequired"); }
         const compAge = computeAge(data.companionBirthDates[i]);
-        if (compAge !== null && compAge < 14 && !data.companionParentalConsents?.[i]) return t("rsvp.validation.ageUnder14");
+        if (compAge !== null && compAge < 14 && !data.companionParentalConsents?.[i]) { console.log("[app]", "[useRsvp]", "validation fail: companion parental consent", { i, age: compAge }); return t("rsvp.validation.ageUnder14"); }
         const hasCompAllergies = (data.companionAllergies?.[i] || []).length > 0
           || (data.companionAllergiesOther?.[i] || "").trim().length > 0;
-        if (hasCompAllergies && !data.companionHealthConsents?.[i]) return t("rsvp.validation.healthConsentRequired");
+        if (hasCompAllergies && !data.companionHealthConsents?.[i]) { console.log("[app]", "[useRsvp]", "validation fail: companion health consent", { i }); return t("rsvp.validation.healthConsentRequired"); }
       }
     }
-    if (data.attendance !== "no" && menuEnabled && !data.menuSelection) return t("rsvp.validation.menuRequired");
-    if (!data.privacyConsent) return t("rsvp.validation.privacyRequired");
+    if (data.attendance !== "no" && menuEnabled && !data.menuSelection) { console.log("[app]", "[useRsvp]", "validation fail: menu required", {}); return t("rsvp.validation.menuRequired"); }
+    if (!data.privacyConsent) { console.log("[app]", "[useRsvp]", "validation fail: privacy consent required", {}); return t("rsvp.validation.privacyRequired"); }
     if (data.attendance !== "no") {
       const age = computeAge(data.birthDate);
-      if (age !== null && age < 14 && !data.parentalConsent) return t("rsvp.validation.ageUnder14");
+      if (age !== null && age < 14 && !data.parentalConsent) { console.log("[app]", "[useRsvp]", "validation fail: parental consent", { age }); return t("rsvp.validation.ageUnder14"); }
       const hasHealthData = data.allergies && data.allergies.length > 0;
-      if (hasHealthData && !data.healthConsent) return t("rsvp.validation.healthConsentRequired");
+      if (hasHealthData && !data.healthConsent) { console.log("[app]", "[useRsvp]", "validation fail: health consent", {}); return t("rsvp.validation.healthConsentRequired"); }
     }
+    console.log("[app]", "[useRsvp]", "validation pass", {});
     return null;
   }, [t, menuEnabled]);
 
   const submitRsvpData = useCallback(async (data: RsvpFormData) => {
+    console.log("[app]", "[useRsvp]", "submitRsvpData start", { guestName: data.guestName, attendance: data.attendance, companionCount: data.companionCount });
     const allergies = data.allergies || [];
     const dietaryInfo = allergies.filter(Boolean).join(" | ");
     const encryptedDietaryInfo = await encrypt(dietaryInfo, inviteToken);
@@ -431,7 +445,6 @@ export function useRsvp(
     const companionCount = data.companionCount || 0;
     const nowTimestamp = serverTimestamp();
 
-    // Build main guest data
     const mainGuestId = doc(RSVP_COLLECTION_REF).id;
     const mainGuestData: Record<string, unknown> = {
       rsvpType: "main",
@@ -492,14 +505,16 @@ export function useRsvp(
     mainGuestData.companionDocIds = companionDocIds;
 
     try {
+      console.log("[app]", "[useRsvp]", "writing batch with", { mainGuestId, companionCount });
       const batch = writeBatch(db);
       batch.set(doc(RSVP_COLLECTION_REF, mainGuestId), mainGuestData);
       for (let i = 0; i < companionCount; i++) {
         batch.set(doc(RSVP_COLLECTION_REF, companionDocIds[i]), companionPayloads[i]);
       }
       await batch.commit();
+      console.log("[app]", "[useRsvp]", "batch commit success", {});
     } catch (err) {
-      console.error("RSVP batch write failed:", err);
+      console.error("[app]", "[useRsvp]", "RSVP batch write failed:", err);
       throw new Error(t("rsvp.saveError"));
     }
 
@@ -525,6 +540,7 @@ export function useRsvp(
       companionDocIds,
     };
 
+    console.log("[app]", "[useRsvp]", "submit success, updating state", { isAttending, name: single });
     setRsvpEntries((current) => [mainEntry, ...current]);
     setRsvpMessage(
       isAttending
@@ -548,13 +564,15 @@ export function useRsvp(
 
   const handleRsvpSubmit = useCallback((event: React.FormEvent) => {
     event.preventDefault();
+    console.log("[app]", "[useRsvp]", "handleRsvpSubmit", { submitting });
     if (submitting) return;
     submitViaHook(rsvpForm as unknown as Record<string, unknown>);
   }, [submitting, submitViaHook, rsvpForm]);
 
   const handleDeleteRsvp = useCallback(async () => {
+    console.log("[app]", "[useRsvp]", "handleDeleteRsvp start", { id: alreadySubmittedEntry?.id });
     if (!alreadySubmittedEntry?.id) return;
-    if (!window.confirm(t("rsvp.withdrawConfirm"))) return;
+    if (!window.confirm(t("rsvp.withdrawConfirm"))) { console.log("[app]", "[useRsvp]", "withdraw cancelled by user", {}); return; }
     try {
       const batch = writeBatch(db);
       batch.delete(doc(RSVP_COLLECTION_REF, alreadySubmittedEntry.id));
@@ -569,14 +587,17 @@ export function useRsvp(
       setAlreadySubmittedEntry(null);
       prefillRef.current = null;
       setHasSubmitted(false);
-    } catch {
+      console.log("[app]", "[useRsvp]", "withdraw success", {});
+    } catch (err) {
+      console.error("[app]", "[useRsvp]", "withdraw error", { error: err });
       setRsvpMessage(t("rsvp.withdrawError"));
     }
   }, [alreadySubmittedEntry, t]);
 
   const handleDeleteRsvpEntries = useCallback(async (ids: string[]) => {
+    console.log("[app]", "[useRsvp]", "handleDeleteRsvpEntries start", { count: ids.length });
     if (!ids.length) return;
-    if (!window.confirm(t("attendance.deleteSelectedConfirm", { count: ids.length }))) return;
+    if (!window.confirm(t("attendance.deleteSelectedConfirm", { count: ids.length }))) { console.log("[app]", "[useRsvp]", "delete selected cancelled", {}); return; }
     try {
       const batch = writeBatch(db);
       for (const id of ids) {
@@ -586,21 +607,27 @@ export function useRsvp(
       setRsvpEntries((current) => current.filter((e) => !ids.includes(e.id)));
       setAdminMessage(t("attendance.deleteSelectedSuccess", { count: ids.length }));
       setAdminMessageType("success");
-    } catch {
+      console.log("[app]", "[useRsvp]", "delete selected success", { count: ids.length });
+    } catch (err) {
+      console.error("[app]", "[useRsvp]", "delete selected error", { error: err });
       setAdminMessage(t("attendance.deleteSelectedError"));
       setAdminMessageType("error");
     }
   }, [inviteToken, setAdminMessage, setAdminMessageType, t]);
 
   const handleClearRsvpEntries = useCallback(async () => {
-    if (!window.confirm(t("rsvp.clearConfirm"))) return;
+    console.log("[app]", "[useRsvp]", "handleClearRsvpEntries start", {});
+    if (!window.confirm(t("rsvp.clearConfirm"))) { console.log("[app]", "[useRsvp]", "clear cancelled", {}); return; }
     try {
       const snapshot = await getDocs(rsvpByInviteRef(inviteToken));
+      console.log("[app]", "[useRsvp]", "clearing entries", { count: snapshot.docs.length });
       await Promise.all(snapshot.docs.map((entryDoc) => deleteDoc(entryDoc.ref)));
       setRsvpEntries([]);
       setAdminMessage(t("rsvp.clearSuccess"));
       setAdminMessageType("success");
-    } catch {
+      console.log("[app]", "[useRsvp]", "clear success", {});
+    } catch (err) {
+      console.error("[app]", "[useRsvp]", "clear error", { error: err });
       setAdminMessage(t("rsvp.clearError"));
       setAdminMessageType("error");
     }

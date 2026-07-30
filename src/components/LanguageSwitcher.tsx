@@ -164,6 +164,7 @@ const GROUPS = [
 ];
 
 const LanguageSwitcher = memo(function LanguageSwitcher() {
+  console.log("[app]", "[LanguageSwitcher]", "mount");
   const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
@@ -172,14 +173,16 @@ const LanguageSwitcher = memo(function LanguageSwitcher() {
   const currentLabel = GROUPS.flatMap(g => g.options).find((l: { code: string; label: string }) => l.code === currentLang)?.label || currentLang.toUpperCase();
 
   const handleClose = useCallback(() => {
+    console.log("[app]", "[LanguageSwitcher]", "close popup");
     setClosing(true);
-    setTimeout(() => { setClosing(false); setOpen(false); }, 200);
+    setTimeout(() => { console.log("[app]", "[LanguageSwitcher]", "popup fully closed"); setClosing(false); setOpen(false); }, 200);
   }, []);
 
-    const handleSelect = useCallback((code: string) => {
+  const handleSelect = useCallback((code: string) => {
+    console.log("[app]", "[LanguageSwitcher]", "language change event", { from: currentLang, to: code });
     i18n.changeLanguage(code);
     handleClose();
-  }, [i18n, handleClose]);
+  }, [i18n, handleClose, currentLang]);
 
   useEscapeKey(handleClose, open && !closing);
 
@@ -188,7 +191,7 @@ const LanguageSwitcher = memo(function LanguageSwitcher() {
       <button
         type="button"
         className="lang-trigger"
-        onClick={() => setOpen(true)}
+        onClick={() => { console.log("[app]", "[LanguageSwitcher]", "open popup"); setOpen(true); }}
         aria-label={t("lang.triggerLabel")}
         title={t("lang.triggerLabel")}
         aria-expanded={open}

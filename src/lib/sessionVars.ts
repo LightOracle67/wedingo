@@ -14,6 +14,7 @@ export function firestoreSessionExpiry() {
 }
 
 export function saveSession(type: string, identifier: string, extra: Record<string, unknown> = {}) {
+  console.log("[app]", "[sessionVars]", "saveSession", { type, identifier });
   try {
     const data = {
       type,
@@ -23,20 +24,23 @@ export function saveSession(type: string, identifier: string, extra: Record<stri
       expiresAt: Date.now() + SESSION_DURATION,
     };
     ls()?.setItem(STORAGE_KEY, JSON.stringify(data));
-  } catch {}
+  } catch (err) { console.error("[app]", "[sessionVars]", "saveSession error", { error: err }); }
 }
 
 export function getSession() {
   try {
     const raw = ls()?.getItem(STORAGE_KEY);
-    if (!raw) return null;
+    if (!raw) { console.log("[app]", "[sessionVars]", "getSession: no data", {}); return null; }
     const data = JSON.parse(raw);
     if (data.expiresAt && Date.now() < data.expiresAt) {
+      console.log("[app]", "[sessionVars]", "getSession: valid", { type: data.type, identifier: data.identifier });
       return data;
     }
+    console.log("[app]", "[sessionVars]", "getSession: expired, clearing", { expiresAt: data.expiresAt, now: Date.now() });
     clearSession();
     return null;
-  } catch {
+  } catch (err) {
+    console.error("[app]", "[sessionVars]", "getSession error, clearing", { error: err });
     clearSession();
     return null;
   }
@@ -45,13 +49,15 @@ export function getSession() {
 export function renewSession() {
   try {
     const raw = ls()?.getItem(STORAGE_KEY);
-    if (!raw) return;
+    if (!raw) { console.log("[app]", "[sessionVars]", "renewSession: no session", {}); return; }
     const data = JSON.parse(raw);
     data.expiresAt = Date.now() + SESSION_DURATION;
     ls()?.setItem(STORAGE_KEY, JSON.stringify(data));
-  } catch {}
+    console.log("[app]", "[sessionVars]", "renewSession success", {});
+  } catch (err) { console.error("[app]", "[sessionVars]", "renewSession error", { error: err }); }
 }
 
 export function clearSession() {
-  try { ls()?.removeItem(STORAGE_KEY); } catch {}
+  console.log("[app]", "[sessionVars]", "clearSession", {});
+  try { ls()?.removeItem(STORAGE_KEY); } catch (err) { console.error("[app]", "[sessionVars]", "clearSession error", { error: err }); }
 }

@@ -5,6 +5,7 @@ import { useAppUI } from "./useAppUI";
 import { RsvpContext } from "./useRsvpContext";
 
 export function RsvpProvider({ children }: { children: React.ReactNode }) {
+  console.log("[app]", "[RsvpProvider]", "mount", {});
   const { setAdminMessage, setAdminMessageType } = useAppUI();
   const { inviteToken, config } = useConfig();
 

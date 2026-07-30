@@ -32,6 +32,7 @@ interface GalleryArrayEditorProps {
 }
 
 const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: GalleryArrayEditorProps) {
+  console.log("[app]", "[GalleryArrayEditor]", "mount", { inviteToken });
   const { addToast, startUploadToast } = useToast();
   const [slots, setSlots] = useState<(SlotState | null)[]>(Array.from({ length: SLOT_COUNT }, () => null));
   const [loading, setLoading] = useState(true);
@@ -40,11 +41,13 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
   slotsRef.current = slots;
 
   const loadGallery = useCallback(async () => {
-    if (!inviteToken) return;
+    console.log("[app]", "[GalleryArrayEditor]", "loadGallery start", {});
+    if (!inviteToken) { console.log("[app]", "[GalleryArrayEditor]", "no inviteToken", {}); return; }
     setLoading(true);
     try {
       const { loadGallery: loadFn } = await import("../lib/image-store");
       const images = await loadFn(inviteToken);
+      console.log("[app]", "[GalleryArrayEditor]", "loadGallery images loaded", { count: images.length });
       const newSlots: (SlotState | null)[] = Array.from({ length: SLOT_COUNT }, () => null);
       for (const img of images) {
         if (img.position !== undefined && img.position < SLOT_COUNT) {
@@ -52,44 +55,53 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
         }
       }
       setSlots(newSlots);
-    } catch {
+      console.log("[app]", "[GalleryArrayEditor]", "loadGallery success", { filled: images.length });
+    } catch (err) {
+      console.error("[app]", "[GalleryArrayEditor]", "loadGallery error", { error: err });
       addToast("error", t("errors.galleryLoadFailed"));
     } finally {
       setLoading(false);
     }
   }, [inviteToken, addToast, t]);
 
-  useEffect(() => { loadGallery(); }, [loadGallery]);
+  useEffect(() => { console.log("[app]", "[GalleryArrayEditor]", "mount effect triggering loadGallery", {}); loadGallery(); }, [loadGallery]);
 
   const handleUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>, slotIndex: number) => {
+    console.log("[app]", "[GalleryArrayEditor]", "handleUpload start", { slotIndex });
     if (!inviteToken || !t) { if (t) addToast("error", t("errors.generic")); return; }
     const file = e.target.files?.[0];
     const input = e.target;
     if (!file) return;
-    if (file.size === 0) { addToast("error", t("setup.errorEmptyFile")); if (input) input.value = ""; return; }
-    if (!ALLOWED_UPLOAD_TYPES.has(file.type)) { addToast("error", t("setup.errorFileFormat")); if (input) input.value = ""; return; }
-    if (file.size > MAX_UPLOAD_SIZE_BYTES) { addToast("error", t("setup.errorFileSize")); if (input) input.value = ""; return; }
+    console.log("[app]", "[GalleryArrayEditor]", "file selected", { name: file.name, size: file.size, type: file.type, slotIndex });
+    if (file.size === 0) { console.log("[app]", "[GalleryArrayEditor]", "empty file", {}); addToast("error", t("setup.errorEmptyFile")); if (input) input.value = ""; return; }
+    if (!ALLOWED_UPLOAD_TYPES.has(file.type)) { console.log("[app]", "[GalleryArrayEditor]", "invalid type", { type: file.type }); addToast("error", t("setup.errorFileFormat")); if (input) input.value = ""; return; }
+    if (file.size > MAX_UPLOAD_SIZE_BYTES) { console.log("[app]", "[GalleryArrayEditor]", "file too large", { size: file.size }); addToast("error", t("setup.errorFileSize")); if (input) input.value = ""; return; }
 
     const duplicate = slots.some((s: SlotState | null) => s && s.originalName === file.name && s.originalSize === file.size);
-    if (duplicate) { addToast("warning", t("setup.duplicateFileWarning")); if (input) input.value = ""; return; }
+    if (duplicate) { console.log("[app]", "[GalleryArrayEditor]", "duplicate file", { name: file.name }); addToast("warning", t("setup.duplicateFileWarning")); if (input) input.value = ""; return; }
 
     setUploadingSlots((prev: Set<number>) => new Set(prev).add(slotIndex));
     const upload = startUploadToast(t("setup.galleryUploading", { total: 1 }));
     try {
       const { uploadImage, addGalleryImage, deleteGalleryImage } = await import("../lib/image-store");
       const { encrypted, dataUrl } = await withTimeout(uploadImage(inviteToken, file, (p: number) => upload.update(p)), 30000, "Image upload timed out");
+      console.log("[app]", "[GalleryArrayEditor]", "uploadImage success", { slotIndex });
       const existing = slots[slotIndex];
       if (existing?.id) {
+        console.log("[app]", "[GalleryArrayEditor]", "replacing existing image", { existingId: existing.id });
         await deleteGalleryImage(inviteToken, existing.id);
       }
       const saved = await addGalleryImage(inviteToken, encrypted, dataUrl, slotIndex, (p: number) => upload.update(85 + Math.round(p * 0.1)), file.name, file.size);
+      console.log("[app]", "[GalleryArrayEditor]", "gallery image saved", { id: saved.id, slotIndex });
       setSlots((prev: (SlotState | null)[]) => {
         const next = [...prev];
         next[slotIndex] = { id: saved.id, url: saved.dataUrl, description: "", originalName: file.name, originalSize: file.size };
         return next;
       });
       upload.complete(t("setup.galleryUploadSuccess", { count: 1 }));
-    } catch {
+      console.log("[app]", "[GalleryArrayEditor]", "upload success", { slotIndex });
+    } catch (err) {
+      console.error("[app]", "[GalleryArrayEditor]", "upload error", { slotIndex, error: err });
       upload.error(t("setup.galleryUploadFailed"));
     } finally {
       setUploadingSlots((prev: Set<number>) => { const n = new Set(prev); n.delete(slotIndex); return n; });
@@ -98,10 +110,11 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
   }, [inviteToken, slots, startUploadToast, addToast, t]);
 
   const handleDelete = useCallback(async (slotIndex: number) => {
+    console.log("[app]", "[GalleryArrayEditor]", "handleDelete start", { slotIndex });
     if (!inviteToken || !t) return;
     const existing = slots[slotIndex];
-    if (!existing?.id) return;
-    if (!window.confirm(t("setup.deleteImageConfirm"))) return;
+    if (!existing?.id) { console.log("[app]", "[GalleryArrayEditor]", "nothing to delete", { slotIndex }); return; }
+    if (!window.confirm(t("setup.deleteImageConfirm"))) { console.log("[app]", "[GalleryArrayEditor]", "delete cancelled", {}); return; }
     try {
       const { deleteGalleryImage } = await import("../lib/image-store");
       await deleteGalleryImage(inviteToken, existing.id);
@@ -110,7 +123,9 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
         next[slotIndex] = null;
         return next;
       });
-    } catch {
+      console.log("[app]", "[GalleryArrayEditor]", "delete success", { slotIndex, id: existing.id });
+    } catch (err) {
+      console.error("[app]", "[GalleryArrayEditor]", "delete error", { error: err });
       addToast("error", t("errors.galleryDeleteFailed"));
     }
   }, [inviteToken, slots, t, addToast]);
@@ -126,9 +141,11 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
   }, []);
 
   const handleDescriptionBlur = useCallback(async (slotIndex: number, currentValue: string) => {
+    console.log("[app]", "[GalleryArrayEditor]", "handleDescriptionBlur", { slotIndex, valueLength: currentValue.length });
     if (!inviteToken) return;
     const item = slotsRef.current[slotIndex];
     if (!item?.id) {
+      console.log("[app]", "[GalleryArrayEditor]", "no image id found for description", { slotIndex });
       addToast("error", t("errors.imageIdNotFound"));
       return;
     }
@@ -136,9 +153,11 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
     try {
       const { updateGalleryDescription } = await import("../lib/image-store");
       await updateGalleryDescription(inviteToken, item.id, safe);
+      console.log("[app]", "[GalleryArrayEditor]", "description saved", { slotIndex, id: item.id });
       addToast("success", t("setup.galleryDescriptionSaved"));
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : String(err);
+      console.error("[app]", "[GalleryArrayEditor]", "description save error", { error: msg });
       addToast("error", `${t("setup.galleryDescriptionSaveFailed")}: ${msg}`);
     }
   }, [inviteToken, addToast, t]);

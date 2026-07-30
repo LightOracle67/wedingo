@@ -42,6 +42,7 @@ export function useSetupAuth(
   setAdminMessageType: (type: string) => void,
   setHasStoredConfig: (v: boolean) => void,
 ) {
+  console.log("[app]", "[useSetupAuth]", "hook mount", { inviteToken });
   const { t } = useTranslation();
   const navigate = useNavigate();
   // ─── Estados de autenticación ──────────────────────────
@@ -73,17 +74,21 @@ export function useSetupAuth(
    * Verifica que la sesión siga activa en Firestore.
    */
   useEffect(() => {
+    console.log("[app]", "[useSetupAuth]", "session restoration effect", { inviteToken });
     const session = getSession();
     console.log("[session-restore] getSession:", session, "inviteToken:", inviteToken);
     if (!session || (session.type !== "setup" && session.type !== "admin")) {
+      console.log("[app]", "[useSetupAuth]", "no valid session in localStorage", { session });
       console.log("[session-restore] no valid session in localStorage");
       return;
     }
     if (!inviteToken) {
+      console.log("[app]", "[useSetupAuth]", "inviteToken empty, waiting...", {});
       console.log("[session-restore] inviteToken empty, waiting...");
       return;
     }
 
+    console.log("[app]", "[useSetupAuth]", "session restoration start", { sessionType: session.type, identifier: session.identifier });
     setIsRestoringSession(true);
 
     getDoc(invitationDocRef(inviteToken)).then(async (snap) => {
@@ -93,6 +98,7 @@ export function useSetupAuth(
         && data?.activeSession
         && sessionExpiresAt
         && new Date(sessionExpiresAt).getTime() > Date.now();
+      console.log("[app]", "[useSetupAuth]", "session check result", { isValid, exists: snap.exists(), hasActiveSession: !!data?.activeSession });
       console.log("[session-restore] Firestore doc:", { exists: snap.exists(), activeSession: data?.activeSession, sessionExpiresAt, isValid });
       if (isValid) {
         setTokenLoginUsername(session.identifier);
@@ -100,8 +106,10 @@ export function useSetupAuth(
         setSetupToken("");
         setSetupTokenInput("");
         setIsTokenVerified(true);
+        console.log("[app]", "[useSetupAuth]", "session restored successfully", { identifier: session.identifier, type: session.type });
         console.log("[session-restore] ✅ session restored for", session.identifier, "type:", session.type);
       } else if (snap.exists()) {
+        console.log("[app]", "[useSetupAuth]", "Firestore session invalid, attempting repair", {});
         console.log("[session-restore] ⚠️ Firestore session invalid, attempting repair...");
         try {
           await updateDoc(invitationDocRef(inviteToken), {
@@ -113,17 +121,22 @@ export function useSetupAuth(
           setSetupToken("");
           setSetupTokenInput("");
           setIsTokenVerified(true);
+          console.log("[app]", "[useSetupAuth]", "session repaired successfully", { identifier: session.identifier });
           console.log("[session-restore] ✅ session repaired for", session.identifier);
         } catch (repairErr) {
+          console.error("[app]", "[useSetupAuth]", "session repair failed", { error: repairErr });
           console.log("[session-restore] ❌ repair failed:", repairErr);
           clearSession();
         }
       } else {
         clearSession();
+        console.log("[app]", "[useSetupAuth]", "Firestore doc missing, cleared session", {});
         console.log("[session-restore] ❌ Firestore session invalid, cleared localStorage");
       }
+      console.log("[app]", "[useSetupAuth]", "session restoration end", {});
       setIsRestoringSession(false);
     }).catch((err) => {
+      console.error("[app]", "[useSetupAuth]", "session restoration Firestore error", { error: err });
       console.log("[session-restore] ❌ Firestore error:", err);
       setIsRestoringSession(false);
     });
@@ -134,15 +147,19 @@ export function useSetupAuth(
    * Esto actualiza el timestamp en sessionStorage para mantener la sesión viva.
    */
   useEffect(() => {
+    console.log("[app]", "[useSetupAuth]", "session renewal effect", { isTokenVerified });
     if (isTokenVerified) {
       const doRenew = async () => {
+        console.log("[app]", "[useSetupAuth]", "session renewal tick", {});
         renewSession();
         try {
           await updateDoc(invitationDocRef(inviteToken), {
             activeSession: serverTimestamp(),
             sessionExpiresAt: firestoreSessionExpiry(),
           });
-        } catch {
+          console.log("[app]", "[useSetupAuth]", "session renewal success", {});
+        } catch (err) {
+          console.error("[app]", "[useSetupAuth]", "session renewal error", { error: err });
           if (setAdminMessage && setAdminMessageType) {
             setAdminMessageType("error");
             setAdminMessage(t("auth.sessionUpdateFailed"));
@@ -151,17 +168,20 @@ export function useSetupAuth(
       };
       doRenew();
       renewRef.current = setInterval(() => doRenew(), 60_000);
+      console.log("[app]", "[useSetupAuth]", "session renewal interval started", {});
     } else {
-      if (renewRef.current) clearInterval(renewRef.current);
+      if (renewRef.current) { console.log("[app]", "[useSetupAuth]", "clearing renewal interval", {}); clearInterval(renewRef.current); }
     }
-    return () => { if (renewRef.current) clearInterval(renewRef.current); };
+    return () => { if (renewRef.current) { console.log("[app]", "[useSetupAuth]", "renewal cleanup", {}); clearInterval(renewRef.current); } };
   }, [isTokenVerified, inviteToken, setAdminMessage, setAdminMessageType, t]);
 
   /**
    * Persiste la sesión en sessionStorage cuando cambia el estado de autenticación.
    */
   useEffect(() => {
+    console.log("[app]", "[useSetupAuth]", "session persistence effect", { isTokenVerified, tokenLoginUsername, sessionType: sessionTypeRef.current });
     if (isTokenVerified && tokenLoginUsername && sessionTypeRef.current) {
+      console.log("[app]", "[useSetupAuth]", "saving session", { type: sessionTypeRef.current, username: tokenLoginUsername });
       saveSession(sessionTypeRef.current, tokenLoginUsername);
     }
   }, [isTokenVerified, tokenLoginUsername]);
@@ -179,30 +199,37 @@ export function useSetupAuth(
    * @returns {Promise<string>} El token activo.
    */
   const refreshSetupToken = useCallback(async (_oldToken?: string) => {
+    console.log("[app]", "[useSetupAuth]", "refreshSetupToken start", { inviteToken, hasOldToken: !!_oldToken });
     const storageKey = `wedin_setup_token_${inviteToken || ""}`;
 
-    // ── Intenta restaurar desde sessionStorage ──
     if (inviteToken) {
       const saved = safeGetItem(storageKey, sessionStorage);
       if (saved) {
+        console.log("[app]", "[useSetupAuth]", "token restored from sessionStorage", {});
         setSetupToken(saved);
         setSetupTokenInput(saved);
         return saved;
       }
+      console.log("[app]", "[useSetupAuth]", "no token in sessionStorage, checking Firestore", {});
 
-      // ── _activeSetupToken en la invitación (fuente de verdad) ──
       try {
         const inviteSnap = await getDoc(invitationDocRef(inviteToken));
         if (inviteSnap.exists()) {
           const activeToken = inviteSnap.data()._activeSetupToken;
           if (activeToken) {
+            console.log("[app]", "[useSetupAuth]", "token found in Firestore", {});
             setSetupToken(activeToken);
             setSetupTokenInput(activeToken);
             safeSetItem(storageKey, activeToken, sessionStorage);
             return activeToken;
+          } else {
+            console.log("[app]", "[useSetupAuth]", "no _activeSetupToken in Firestore", {});
           }
+        } else {
+          console.log("[app]", "[useSetupAuth]", "Firestore doc not found", {});
         }
-      } catch {
+      } catch (err) {
+        console.error("[app]", "[useSetupAuth]", "token lookup failed", { error: err });
         if (setAdminMessage && setAdminMessageType) {
           setAdminMessageType("error");
           setAdminMessage(t("auth.tokenLookupFailed"));
@@ -210,8 +237,7 @@ export function useSetupAuth(
       }
     }
 
-    // ── No hay token existente, devolvemos vacío ──
-    // El token se genera solo al primer guardado (SetupPage) o por acción explícita del usuario
+    console.log("[app]", "[useSetupAuth]", "no existing token found, returning empty", {});
     return "";
   }, [inviteToken, setAdminMessage, setAdminMessageType, t]);
 
@@ -220,22 +246,27 @@ export function useSetupAuth(
    * Se llama solo al primer guardado o cuando el usuario solicita explícitamente un cambio.
    */
   const generateNewToken = useCallback(async () => {
+    console.log("[app]", "[useSetupAuth]", "generateNewToken start", {});
     const storageKey = `wedin_setup_token_${inviteToken || ""}`;
     const nextToken = generateSetupToken();
     const normalizedToken = normalizeTokenValue(nextToken);
+    console.log("[app]", "[useSetupAuth]", "new token generated", { normalizedToken });
     setSetupToken(normalizedToken);
     setSetupTokenInput(normalizedToken);
     if (inviteToken) {
       safeSetItem(storageKey, normalizedToken, sessionStorage);
       try {
         await setDoc(invitationDocRef(inviteToken), { _activeSetupToken: normalizedToken }, { merge: true });
-      } catch {
+        console.log("[app]", "[useSetupAuth]", "token saved to Firestore", {});
+      } catch (err) {
+        console.error("[app]", "[useSetupAuth]", "token save to Firestore failed", { error: err });
         if (setAdminMessage && setAdminMessageType) {
           setAdminMessageType("error");
           setAdminMessage(t("auth.tokenCreateFailed"));
         }
       }
     }
+    console.log("[app]", "[useSetupAuth]", "generateNewToken done", {});
     return normalizedToken;
   }, [inviteToken, setAdminMessage, setAdminMessageType, t]);
 
@@ -292,19 +323,22 @@ export function useSetupAuth(
    * Si ya hay una sesión activa, pide confirmación para sobrescribir.
    */
   const handleTokenLogin = useCallback(async () => {
+    console.log("[app]", "[useSetupAuth]", "handleTokenLogin start", {});
     setAuthMessageType("error");
     setAuthMessage("");
 
     const enteredToken = normalizeTokenValue(setupTokenInput);
     if (!enteredToken) {
+      console.log("[app]", "[useSetupAuth]", "no token entered", {});
       setAuthMessage(t("auth.enterCode"));
       return;
     }
 
     setIsTokenVerifying(true);
+    console.log("[app]", "[useSetupAuth]", "verifying token", {});
     try {
       const result = await activateSessionWithToken(enteredToken);
-      if (result === null) { setIsTokenVerifying(false); return; }
+      if (result === null) { console.log("[app]", "[useSetupAuth]", "session exists, user cancelled", {}); setIsTokenVerifying(false); return; }
 
       const displayName = config.adminUsername || adminLoginUsername || inviteToken;
       setTokenLoginUsername(displayName);
@@ -316,10 +350,13 @@ export function useSetupAuth(
       saveSession(sessionTypeRef.current, displayName);
       setAuthMessageType("success");
       setAuthMessage(t("auth.codeVerified"));
-    } catch {
+      console.log("[app]", "[useSetupAuth]", "token login success", { displayName, sessionType: sessionTypeRef.current });
+    } catch (err) {
+      console.error("[app]", "[useSetupAuth]", "token login failed", { error: err });
       setAuthMessage(t("auth.codeVerifyError"));
     } finally {
       setIsTokenVerifying(false);
+      console.log("[app]", "[useSetupAuth]", "handleTokenLogin done", {});
     }
   }, [activateSessionWithToken, setupTokenInput, inviteToken, setHasStoredConfig, config, adminLoginUsername, t]);
 
@@ -328,23 +365,26 @@ export function useSetupAuth(
    * Verifica que el usuario coincida con el configurado y que el token sea válido.
    */
   const handleAdminTokenLogin = useCallback(async () => {
+    console.log("[app]", "[useSetupAuth]", "handleAdminTokenLogin start", {});
     setAuthMessageType("error");
     setAuthMessage("");
 
     const username = adminLoginUsername.trim().toLowerCase();
     const enteredToken = normalizeTokenValue(setupTokenInput);
     if (!username || !enteredToken) {
+      console.log("[app]", "[useSetupAuth]", "missing username or token", {});
       setAuthMessage(t("auth.enterUserAndCode"));
       return;
     }
 
-    // Verifica que el usuario coincida con el configurado en la invitación
     const configuredUsername = (config.adminUsername || "").trim().toLowerCase();
     if (configuredUsername && username !== configuredUsername) {
+      console.log("[app]", "[useSetupAuth]", "username mismatch", { entered: username, configured: configuredUsername });
       setAuthMessage(t("auth.invalidCredentials"));
       return;
     }
 
+    console.log("[app]", "[useSetupAuth]", "credentials valid, verifying token", { username });
     setIsTokenVerifying(true);
     try {
       const tokenUsername = await activateSessionWithToken(enteredToken, (_tokenDoc, tu) => {
@@ -352,7 +392,7 @@ export function useSetupAuth(
           throw new Error("codeUserMismatch");
         }
       });
-      if (tokenUsername === null) return;
+      if (tokenUsername === null) { console.log("[app]", "[useSetupAuth]", "session exists, user cancelled", {}); return; }
 
       setTokenLoginUsername(username);
       sessionTypeRef.current = "admin";
@@ -363,8 +403,10 @@ export function useSetupAuth(
       saveSession("admin", username);
       setAuthMessageType("success");
       setAuthMessage(t("auth.loginSuccess"));
+      console.log("[app]", "[useSetupAuth]", "admin login success", { username });
     } catch (err) {
       const key = (err as Error)?.message;
+      console.error("[app]", "[useSetupAuth]", "admin login failed", { key });
       if (key === "codeUserMismatch") {
         setAuthMessage(t("auth.codeUserMismatch"));
       } else {
@@ -372,6 +414,7 @@ export function useSetupAuth(
       }
     } finally {
       setIsTokenVerifying(false);
+      console.log("[app]", "[useSetupAuth]", "handleAdminTokenLogin done", {});
     }
   }, [activateSessionWithToken, adminLoginUsername, setupTokenInput, config, setHasStoredConfig, t]);
 
@@ -385,6 +428,7 @@ export function useSetupAuth(
    * Redirige a la página principal.
    */
   const handleAdminLogout = useCallback(async () => {
+    console.log("[app]", "[useSetupAuth]", "handleAdminLogout start", {});
     const token = inviteToken;
     setIsTokenVerified(false);
     setTokenLoginUsername("");
@@ -397,13 +441,16 @@ export function useSetupAuth(
       try {
         safeRemoveItem(`wedin_invite_cache_${token}`);
         await updateDoc(invitationDocRef(token), { activeSession: null, sessionExpiresAt: null });
-      } catch {
+        console.log("[app]", "[useSetupAuth]", "Firestore session cleared", {});
+      } catch (err) {
+        console.error("[app]", "[useSetupAuth]", "logout Firestore update failed", { error: err });
         if (setAdminMessage && setAdminMessageType) {
           setAdminMessageType("error");
           setAdminMessage(t("auth.logoutFailed"));
         }
       }
     }
+    console.log("[app]", "[useSetupAuth]", "navigating to /", {});
     navigate("/");
   }, [inviteToken, navigate, setAdminMessage, setAdminMessageType, t]);
 
@@ -412,21 +459,25 @@ export function useSetupAuth(
    * Requiere confirmar el token actual.
    */
   const handleResetSetupToken = useCallback(async () => {
-    if (resettingRef.current) return;
+    console.log("[app]", "[useSetupAuth]", "handleResetSetupToken start", {});
+    if (resettingRef.current) { console.log("[app]", "[useSetupAuth]", "already resetting, skip", {}); return; }
     resettingRef.current = true;
     try {
       const storageKey = `wedin_setup_token_${inviteToken || ""}`;
       const storedToken = safeGetItem(storageKey, sessionStorage) || "";
       const currentToken = setupToken || storedToken;
       if (!currentToken || confirmTokenInput !== currentToken) {
+        console.log("[app]", "[useSetupAuth]", "token mismatch or missing", { hasCurrent: !!currentToken, inputMatch: confirmTokenInput === currentToken });
         setAuthMessage(t("auth.currentTokenRequired"));
         return;
       }
       setAuthMessage("");
+      console.log("[app]", "[useSetupAuth]", "current token valid, generating new", {});
       await generateNewToken();
       setAuthMessageType("success");
       setAuthMessage(t("auth.tokenRenewed"));
       setConfirmTokenInput("");
+      console.log("[app]", "[useSetupAuth]", "setup token reset success", {});
     } finally {
       resettingRef.current = false;
     }
@@ -437,7 +488,8 @@ export function useSetupAuth(
    * Similar a handleResetSetupToken pero con mensajes dirigidos al admin.
    */
   const handleResetTokenFromAdmin = useCallback(async () => {
-    if (resettingRef.current) return;
+    console.log("[app]", "[useSetupAuth]", "handleResetTokenFromAdmin start", {});
+    if (resettingRef.current) { console.log("[app]", "[useSetupAuth]", "already resetting, skip", {}); return; }
     resettingRef.current = true;
     try {
       setAdminMessage("");
@@ -445,6 +497,7 @@ export function useSetupAuth(
       setAdminMessageType("success");
       setAdminMessage(t("auth.tokenRenewedAdmin"));
       setConfirmTokenInput("");
+      console.log("[app]", "[useSetupAuth]", "admin token reset success", {});
     } finally {
       resettingRef.current = false;
     }
