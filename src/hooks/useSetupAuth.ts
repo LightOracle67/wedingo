@@ -74,8 +74,15 @@ export function useSetupAuth(
    */
   useEffect(() => {
     const session = getSession();
-    if (!session || (session.type !== "setup" && session.type !== "admin")) return;
-    if (!inviteToken) return;
+    console.log("[session-restore] getSession:", session, "inviteToken:", inviteToken);
+    if (!session || (session.type !== "setup" && session.type !== "admin")) {
+      console.log("[session-restore] no valid session in localStorage");
+      return;
+    }
+    if (!inviteToken) {
+      console.log("[session-restore] inviteToken empty, waiting...");
+      return;
+    }
 
     setIsRestoringSession(true);
 
@@ -86,17 +93,21 @@ export function useSetupAuth(
         && data?.activeSession
         && sessionExpiresAt
         && new Date(sessionExpiresAt).getTime() > Date.now();
+      console.log("[session-restore] Firestore doc:", { exists: snap.exists(), activeSession: data?.activeSession, sessionExpiresAt, isValid });
       if (isValid) {
         setTokenLoginUsername(session.identifier);
         sessionTypeRef.current = session.type;
         setSetupToken("");
         setSetupTokenInput("");
         setIsTokenVerified(true);
+        console.log("[session-restore] ✅ session restored for", session.identifier, "type:", session.type);
       } else {
         clearSession();
+        console.log("[session-restore] ❌ Firestore session invalid, cleared localStorage");
       }
       setIsRestoringSession(false);
-    }).catch(() => {
+    }).catch((err) => {
+      console.log("[session-restore] ❌ Firestore error:", err);
       setIsRestoringSession(false);
     });
   }, [inviteToken]);
