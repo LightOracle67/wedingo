@@ -141,6 +141,7 @@
     "submitButton": "Confirm attendance",
     "submittingButton": "Sending...",
     "confirmedButton": "Attendance confirmed",
+    "companionInfo": "You are accompanying {{name}}",
     "alreadySubmitted": "You have already confirmed your attendance",
     "withdrawButton": "Withdraw my confirmation",
     "birthDateLabel": "Date of birth",
