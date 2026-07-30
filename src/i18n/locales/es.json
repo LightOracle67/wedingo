@@ -141,6 +141,7 @@
     "submitButton": "Confirmar asistencia",
     "submittingButton": "Enviando...",
     "confirmedButton": "Asistencia confirmada",
+    "companionInfo": "Acompañas a {{name}}",
     "alreadySubmitted": "Ya has confirmado tu asistencia",
     "withdrawButton": "Retirar mi confirmación",
     "birthDateLabel": "Fecha de nacimiento",

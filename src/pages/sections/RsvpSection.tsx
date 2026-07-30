@@ -117,7 +117,17 @@ const RsvpSection = memo(function RsvpSection({
         <h2 className="story-title text-center">{t("rsvp.title")}</h2>
         <p className="story-copy text-center">{t("rsvp.description")}</p>
 
-        {isAlreadySubmitted ? (
+        {isAlreadySubmitted && (alreadySubmittedEntry as Record<string, unknown>)?.rsvpType === "companion" ? (
+          <div className="rsvp-already-badge" style={{
+            textAlign: "center", padding: "0.5rem 1rem", marginBottom: "1rem",
+            borderRadius: "0.6rem", background: "color-mix(in srgb, var(--setup-accent) 15%, transparent)",
+            border: "1px solid color-mix(in srgb, var(--setup-accent) 30%, transparent)",
+          }}>
+            <p style={{ color: "var(--setup-accent)", fontWeight: 600, fontSize: "0.95rem", margin: 0 }}>
+              {t("rsvp.companionInfo", { name: (alreadySubmittedEntry as Record<string, unknown>)?.mainGuestName || "" })}
+            </p>
+          </div>
+        ) : isAlreadySubmitted ? (
           <div className="rsvp-already-badge" style={{
             textAlign: "center", padding: "0.5rem 1rem", marginBottom: "1rem",
             borderRadius: "0.6rem", background: "color-mix(in srgb, var(--setup-accent) 15%, transparent)",
