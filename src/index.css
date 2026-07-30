@@ -2745,7 +2745,7 @@ body {
   background-size: cover, 100% 200%, 100% 200%, 80% 100%, 80% 100%, auto;
   background-position: center, 0 -20%, 0 120%, center, center, 0 0;
   background-repeat: no-repeat;
-  animation: theme-glow-pulse 10s ease-in-out infinite;
+  /* animation: theme-glow-pulse 10s ease-in-out infinite; */
 }
 
 body::after {
