@@ -361,12 +361,9 @@
     "searching": "Searching...",
     "noResults": "No results found.",
     "deleteImageConfirm": "Delete this image?",
-    "cornerDecorationsLabel": "Corner decorations",
-    "cornerDecorationsHint": "Small decorative images for the 4 corners (PNG with transparency recommended)",
-    "cornerTLLabel": "Top-left",
-    "cornerTRLabel": "Top-right",
-    "cornerBLLabel": "Bottom-left",
-    "cornerBRLabel": "Bottom-right",
+    "cornerDecorationsLabel": "Corner decoration",
+    "cornerDecorationsHint": "A single decorative image displayed in all 4 corners (PNG with transparency recommended)",
+    "cornerDecorationLabel": "Decorative image",
     "uploadCorner": "Upload"
   },
   "admin": {

@@ -223,38 +223,30 @@ export default function CoverSectionForm({ prefix = "" }) {
 
       <p className="setup-label">{t("setup.cornerDecorationsLabel")}</p>
       <p className="setup-help">{t("setup.cornerDecorationsHint")}</p>
-      <div className="setup-name-grid" style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
-        {(["TL", "TR", "BL", "BR"] as const).map((corner) => {
-          const field = `cornerDecoration${corner}` as const;
-          const hasValue = !!(formData as Record<string, unknown>)[field];
-          return (
-            <div key={corner} className="setup-background-panel" style={{ marginBottom: "0.5rem" }}>
-              <div className="setup-background-panel__header">
-                <span className="setup-label setup-label--tight" style={{ fontSize: "0.8rem" }}>{t(`setup.corner${corner}Label`)}</span>
-                {hasValue ? (
-                  <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={() => updateFormField(field, "")} style={{ fontSize: "0.7rem" }}>{t("setup.remove")}</button>
-                ) : null}
-              </div>
-              {hasValue ? (
-                <div>
-                  <img src={(formData as Record<string, unknown>)[field] as string} alt="" style={{ width: "2.5rem", height: "2.5rem", objectFit: "contain" }} />
-                </div>
-              ) : (
-                <label className="setup-upload" htmlFor={id(field)} style={{ padding: "0.3rem", minHeight: "2rem" }}>
-                  <span className="setup-upload__title" style={{ fontSize: "0.75rem" }}>{t("setup.uploadCorner")}</span>
-                </label>
-              )}
-              <input className="setup-upload__input" id={id(field)} type="file" accept="image/png,image/svg+xml" onChange={async (e) => {
-                const file = e.target.files?.[0];
-                if (!file) return;
-                if (file.size > 1024 * 1024) { addToast("error", t("setup.errorFileSize")); return; }
-                const { dataUrl } = await uploadImage(inviteToken, file, () => {});
-                updateFormField(field, dataUrl);
-                e.target.value = "";
-              }} />
-            </div>
-          );
-        })}
+      <div className="setup-background-panel" style={{ marginBottom: "0.5rem" }}>
+        <div className="setup-background-panel__header">
+          <span className="setup-label setup-label--tight" style={{ fontSize: "0.8rem" }}>{t("setup.cornerDecorationLabel")}</span>
+          {(formData as Record<string, unknown>).cornerDecoration ? (
+            <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={() => updateFormField("cornerDecoration", "")} style={{ fontSize: "0.7rem" }}>{t("setup.remove")}</button>
+          ) : null}
+        </div>
+        {(formData as Record<string, unknown>).cornerDecoration ? (
+          <div>
+            <img src={(formData as Record<string, unknown>).cornerDecoration as string} alt="" style={{ width: "2.5rem", height: "2.5rem", objectFit: "contain" }} />
+          </div>
+        ) : (
+          <label className="setup-upload" htmlFor={id("cornerDecoration")} style={{ padding: "0.3rem", minHeight: "2rem" }}>
+            <span className="setup-upload__title" style={{ fontSize: "0.75rem" }}>{t("setup.uploadCorner")}</span>
+          </label>
+        )}
+        <input className="setup-upload__input" id={id("cornerDecoration")} type="file" accept="image/png,image/svg+xml" onChange={async (e) => {
+          const file = e.target.files?.[0];
+          if (!file) return;
+          if (file.size > 1024 * 1024) { addToast("error", t("setup.errorFileSize")); return; }
+          const { dataUrl } = await uploadImage(inviteToken, file, () => {});
+          updateFormField("cornerDecoration", dataUrl);
+          e.target.value = "";
+        }} />
       </div>
 
       <MusicArrayEditor inviteToken={inviteToken} value={formData.musicFile || formData.musicUrl} onChange={(val: string) => updateFormField("musicFile", val)} t={t} />
