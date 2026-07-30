@@ -562,7 +562,8 @@ export function useRsvp(
         batch.delete(doc(RSVP_COLLECTION_REF, cid));
       }
       await batch.commit();
-      setRsvpEntries((current) => current.filter((e) => e.id !== alreadySubmittedEntry.id));
+      const idsToRemove = new Set([alreadySubmittedEntry.id, ...(alreadySubmittedEntry.companionDocIds || [])]);
+      setRsvpEntries((current) => current.filter((e) => !idsToRemove.has(e.id)));
       setRsvpMessage(t("rsvp.withdrawSuccess"));
       setRsvpForm(RsvpFormDefault());
       setAlreadySubmittedEntry(null);
