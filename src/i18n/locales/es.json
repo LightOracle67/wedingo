@@ -450,7 +450,14 @@
     "menuFish": "Pescado",
     "menuVegan": "Vegano",
     "exportPdf": "Exportar PDF",
-    "clearAttendance": "Vaciar asistencia"
+    "clearAttendance": "Vaciar asistencia",
+    "tableAccompanies": "Acompaña a",
+    "selectAll": "Seleccionar todo",
+    "selectEntry": "Seleccionar {{name}}",
+    "deleteSelected": "Eliminar seleccionados ({{count}})",
+    "deleteSelectedConfirm": "¿Eliminar {{count}} respuesta(s) seleccionada(s)? No se puede deshacer.",
+    "deleteSelectedSuccess": "{{count}} respuesta(s) eliminada(s).",
+    "deleteSelectedError": "No se pudieron eliminar las respuestas seleccionadas. Inténtalo de nuevo."
   },
   "share": {
     "publishedAt": "Tu invitación está publicada en:",

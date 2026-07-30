@@ -16,7 +16,8 @@ export function RsvpProvider({ children }: { children: React.ReactNode }) {
     alreadySubmittedEntry: rsvp.alreadySubmittedEntry, DIETARY_OPTIONS: rsvp.DIETARY_OPTIONS,
     updateRsvpField: rsvp.updateRsvpField, handleRsvpSubmit: rsvp.handleRsvpSubmit,
     handleDietaryToggle: rsvp.handleDietaryToggle,
-    handleDeleteRsvp: rsvp.handleDeleteRsvp, computeAge: rsvp.computeAge,
+    handleDeleteRsvp: rsvp.handleDeleteRsvp, handleDeleteRsvpEntries: rsvp.handleDeleteRsvpEntries,
+    computeAge: rsvp.computeAge,
     handleClearRsvpEntries: rsvp.handleClearRsvpEntries,
   }), [rsvp]);
 

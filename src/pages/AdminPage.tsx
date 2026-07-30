@@ -75,7 +75,7 @@ export default function AdminPage() {
     rsvpEntries,
     adminMessage, adminMessageType,
     handleAdminLogout, handleResetTokenFromAdmin,
-    handleClearRsvpEntries, handleDeleteInvitation,
+    handleClearRsvpEntries, handleDeleteRsvpEntries, handleDeleteInvitation,
     reloadConfig,
   } = useApp();
 
@@ -199,8 +199,9 @@ export default function AdminPage() {
     exportPdf,
     rsvpEntries,
     handleClearRsvpEntries,
+    handleDeleteRsvpEntries,
     formatDate,
-  }), [searchQuery, setSearchQuery, attendanceFilter, setAttendanceFilterValue, filteredEntries, exportPdf, rsvpEntries, handleClearRsvpEntries]);
+  }), [searchQuery, setSearchQuery, attendanceFilter, setAttendanceFilterValue, filteredEntries, exportPdf, rsvpEntries, handleClearRsvpEntries, handleDeleteRsvpEntries]);
 
   // ─── Estados de carga ──────────────────────────────────
   if (isConfigLoading) {

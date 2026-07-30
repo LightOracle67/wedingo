@@ -520,6 +520,24 @@ export function useRsvp(
     }
   }, [alreadySubmittedEntry, t]);
 
+  const handleDeleteRsvpEntries = useCallback(async (ids: string[]) => {
+    if (!ids.length) return;
+    if (!window.confirm(t("attendance.deleteSelectedConfirm", { count: ids.length }))) return;
+    try {
+      const batch = writeBatch(db);
+      for (const id of ids) {
+        batch.delete(doc(RSVP_COLLECTION_REF, id));
+      }
+      await batch.commit();
+      setRsvpEntries((current) => current.filter((e) => !ids.includes(e.id)));
+      setAdminMessage(t("attendance.deleteSelectedSuccess", { count: ids.length }));
+      setAdminMessageType("success");
+    } catch {
+      setAdminMessage(t("attendance.deleteSelectedError"));
+      setAdminMessageType("error");
+    }
+  }, [inviteToken, setAdminMessage, setAdminMessageType, t]);
+
   const handleClearRsvpEntries = useCallback(async () => {
     if (!window.confirm(t("rsvp.clearConfirm"))) return;
     try {
@@ -537,7 +555,7 @@ export function useRsvp(
   return {
     rsvpEntries, rsvpForm, rsvpMessage: feedbackMessage, isRsvpSubmitting, hasSubmitted,
     alreadySubmittedEntry,
-    updateRsvpField, handleRsvpSubmit, handleClearRsvpEntries, handleDeleteRsvp,
+    updateRsvpField, handleRsvpSubmit, handleDeleteRsvpEntries, handleClearRsvpEntries, handleDeleteRsvp,
     handleDietaryToggle, DIETARY_OPTIONS,
     setRsvpMessage, setRsvpForm, computeAge,
   };
