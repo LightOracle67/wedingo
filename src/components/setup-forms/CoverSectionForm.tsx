@@ -165,14 +165,14 @@ export default function CoverSectionForm({ prefix = "" }) {
         )}
         <input ref={photoRef} id={id("couplePhoto")} className="setup-upload__input" type="file" accept="image/jpeg,image/png,image/webp" onChange={handleCouplePhotoUpload} />
         {formData.couplePhoto ? (
-          <label className="setup-upload" htmlFor={id("couplePhoto")} style={{ textAlign: "center", cursor: "pointer", fontSize: "0.8rem", color: "var(--setup-accent)", textDecoration: "underline" }}>
+          <label className="setup-upload" htmlFor={id("couplePhoto")}>
             {t("setup.replaceImage")}
             <input id={id("couplePhoto")} className="setup-upload__input" type="file" accept="image/jpeg,image/png,image/webp" onChange={handleCouplePhotoUpload} />
           </label>
         ) : null}
       </div>
 
-      <div className="story-divider" style={{ margin: "0.75rem 0" }} />
+      <div className="story-divider" />
 
       <div className="setup-background-panel">
         <div className="setup-background-panel__header">
@@ -211,7 +211,7 @@ export default function CoverSectionForm({ prefix = "" }) {
         }} />
       </div>
 
-      <div className="story-divider" style={{ margin: "0.75rem 0" }} />
+      <div className="story-divider" />
 
       <div className="setup-background-panel">
         <div className="setup-background-panel__header">

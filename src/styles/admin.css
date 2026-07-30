@@ -398,6 +398,20 @@ input.setup-input[type="date"] {
 .setup-help--tight {
   margin-top: 0.18rem;
 }
+.setup-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--setup-title, inherit);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.setup-checkbox-label input[type="checkbox"] {
+  accent-color: var(--setup-accent);
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
 .setup-background-panel {
   display: grid;
   gap: 0.75rem;
@@ -420,14 +434,20 @@ input.setup-input[type="date"] {
   padding: 0.9rem 1rem;
   cursor: pointer;
   background: color-mix(in srgb, var(--setup-title) 7%, transparent);
+  transition: background 0.2s, border-color 0.2s;
+}
+.setup-upload:hover {
+  background: color-mix(in srgb, var(--setup-title) 12%, transparent);
+  border-color: color-mix(in srgb, var(--setup-accent) 40%, transparent);
 }
 .setup-upload__title {
   color: var(--setup-title);
   font-weight: 700;
+  font-size: 0.88rem;
 }
 .setup-upload__subtitle {
   color: var(--setup-muted);
-  font-size: 0.88rem;
+  font-size: 0.82rem;
 }
 .setup-upload__input {
   display: none;
