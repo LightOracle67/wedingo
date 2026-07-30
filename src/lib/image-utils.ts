@@ -97,7 +97,9 @@ export const compressImage = async (file: File): Promise<string> => {
   const ctx = canvas.getContext("2d");
   if (!ctx) throw new Error(i18n.t("errors.uploadImageFailed"));
 
-  // Preservar transparencia — dibujar directamente sin fondo blanco
+  // Fondo blanco para que PNGs con transparencia no se vean negros al exportar
+  ctx.fillStyle = "#FFFFFF";
+  ctx.fillRect(0, 0, width, height);
   ctx.drawImage(img, 0, 0, width, height);
   URL.revokeObjectURL(img.src);
 

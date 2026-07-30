@@ -194,7 +194,8 @@ export default function CoverSectionForm({ prefix = "" }) {
           const file = e.target.files?.[0]; if (!file) return;
           if (file.size > 1024 * 1024) { addToast("error", t("setup.errorFileSize")); return; }
           try {
-            const ref = await uploadConfigImage("customSeal", file);
+            const dataUrl = await compressImageTransparent(file);
+            const ref = await saveConfigImage(inviteToken, "customSeal", dataUrl);
             updateFormField("customSeal", ref);
           } catch (err) { console.log("[upload] customSeal error:", err); addToast("error", t("setup.photoUploadFailed")); }
           e.target.value = "";
@@ -230,7 +231,8 @@ export default function CoverSectionForm({ prefix = "" }) {
           if (!ALLOWED_UPLOAD_TYPES.has(file.type)) { addToast("error", t("setup.errorFileFormat")); return; }
           if (file.size > MAX_UPLOAD_SIZE_BYTES) { addToast("error", t("setup.errorFileSize")); return; }
           try {
-            const ref = await uploadConfigImage("backgroundImage", file);
+            const dataUrl = await compressImageTransparent(file);
+            const ref = await saveConfigImage(inviteToken, "backgroundImage", dataUrl);
             updateFormField("backgroundImage", ref);
           } catch (err) { console.log("[upload] backgroundImage error:", err); addToast("error", t("setup.photoUploadFailed")); }
           e.target.value = "";
