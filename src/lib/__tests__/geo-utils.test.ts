@@ -2,8 +2,10 @@ import { describe, it, expect, vi } from "vitest";
 import {
   parseCoordinate, getValidCoordinates,
   buildGoogleMapsUrl, buildGoogleMapsSearchUrl,
+  buildGoogleMapsEmbedUrl, buildGoogleMapsEmbedSearchUrl,
   buildAppleMapsUrl, buildAppleMapsSearchUrl,
   geocodeLocation, searchLocations, resolveLocationTarget,
+  isValidGoogleMapsUrl, convertToEmbedUrl,
 } from "../geo-utils";
 
 describe("parseCoordinate", () => {
@@ -101,6 +103,80 @@ describe("URL builders", () => {
     const url = buildAppleMapsSearchUrl("Iglesia San José");
     expect(url).toContain("https://maps.apple.com/?q=");
     expect(url).toContain(encodeURIComponent("Iglesia San José"));
+  });
+});
+
+describe("isValidGoogleMapsUrl", () => {
+  it("accepts standard google.com/maps URLs", () => {
+    expect(isValidGoogleMapsUrl("https://www.google.com/maps/place/Madrid")).toBe(true);
+    expect(isValidGoogleMapsUrl("https://google.com/maps?q=40.41,-3.70")).toBe(true);
+  });
+
+  it("accepts maps.app.goo.gl short links", () => {
+    expect(isValidGoogleMapsUrl("https://maps.app.goo.gl/iiHSrkxG1WuVepLu6")).toBe(true);
+  });
+
+  it("rejects invalid URLs", () => {
+    expect(isValidGoogleMapsUrl("")).toBe(false);
+    expect(isValidGoogleMapsUrl("https://example.com/maps")).toBe(false);
+    expect(isValidGoogleMapsUrl("https://maps.app.goo.gl/")).toBe(false);
+    expect(isValidGoogleMapsUrl("not-a-url")).toBe(false);
+    expect(isValidGoogleMapsUrl("http://maps.google.com/maps")).toBe(false);
+  });
+});
+
+describe("convertToEmbedUrl", () => {
+  it("returns URL as-is when already embed", () => {
+    const url = "https://maps.google.com/maps?q=Madrid&hl=es&z=14&output=embed";
+    expect(convertToEmbedUrl(url)).toBe(url);
+  });
+
+  it("returns goo.gl short links as-is", () => {
+    const url = "https://maps.app.goo.gl/iiHSrkxG1WuVepLu6";
+    expect(convertToEmbedUrl(url)).toBe(url);
+  });
+
+  it("converts URL with q param", () => {
+    const result = convertToEmbedUrl("https://www.google.com/maps/search/?api=1&query=Madrid");
+    expect(result).toContain("output=embed");
+    expect(result).toContain("q=Madrid");
+  });
+
+  it("converts URL with ll param", () => {
+    const result = convertToEmbedUrl("https://www.google.com/maps?ll=40.4168,-3.7038");
+    expect(result).toContain("output=embed");
+    expect(result).toContain("40.4168");
+  });
+
+  it("converts place path URLs", () => {
+    const result = convertToEmbedUrl("https://www.google.com/maps/place/Madrid");
+    expect(result).toContain("output=embed");
+  });
+
+  it("returns URL as-is on parse failure", () => {
+    expect(convertToEmbedUrl("not-a-url")).toBe("not-a-url");
+  });
+});
+
+describe("Google Maps embed builders", () => {
+  const location = { latitude: 40.4168, longitude: -3.7038 };
+
+  it("builds embed URL with coordinates", () => {
+    const url = buildGoogleMapsEmbedUrl(location);
+    expect(url).toContain("https://maps.google.com/maps?q=40.4168,-3.7038");
+    expect(url).toContain("output=embed");
+  });
+
+  it("builds embed URL with custom language", () => {
+    const url = buildGoogleMapsEmbedUrl(location, "en");
+    expect(url).toContain("hl=en");
+  });
+
+  it("builds embed search URL", () => {
+    const url = buildGoogleMapsEmbedSearchUrl("Iglesia San José");
+    expect(url).toContain("https://maps.google.com/maps?q=");
+    expect(url).toContain(encodeURIComponent("Iglesia San José"));
+    expect(url).toContain("output=embed");
   });
 });
 
