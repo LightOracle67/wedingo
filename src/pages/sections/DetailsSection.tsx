@@ -32,6 +32,18 @@ const DetailsSection = memo(function DetailsSection({
       <div className="story-card story-panel story-card--details w-full text-center">
         <CornerDecorations src={cornerDecoration} />
         <p className="story-eyebrow">{t("details.sectionLabel")}</p>
+
+        {weddingMapUrl && isValidGoogleMapsUrl(weddingMapUrl) ? (
+          <>
+            <WeddingMap mapUrl={weddingMapUrl} t={t} />
+            <div className="story-map__actions" style={{ marginTop: "0.5rem" }}>
+              <a className="setup-button setup-button--ghost setup-button--compact" href={weddingMapUrl} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer">
+                {t("details.viewGoogleMaps")}
+              </a>
+            </div>
+          </>
+        ) : null}
+
         <h2 className="story-title">{formattedDate || t("details.datePending")}</h2>
         <p className="story-copy">{formattedTime ? t("details.timeLabel", { time: formattedTime }) : t("details.timePending")}</p>
         {hasLocationData ? (
@@ -66,16 +78,6 @@ const DetailsSection = memo(function DetailsSection({
               {t("details.addToCalendar")}
             </a>
           </div>
-        ) : null}
-        {weddingMapUrl && isValidGoogleMapsUrl(weddingMapUrl) ? (
-          <>
-            <WeddingMap mapUrl={weddingMapUrl} t={t} />
-            <div className="story-map__actions" style={{ marginTop: "0.5rem" }}>
-              <a className="setup-button setup-button--ghost setup-button--compact" href={weddingMapUrl} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer">
-                {t("details.viewGoogleMaps")}
-              </a>
-            </div>
-          </>
         ) : null}
       </div>
     </section>
