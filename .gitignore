@@ -32,7 +32,6 @@ AUDITORIA.md
 AUDITORIA.md.bak
 skills-lock.json
 .env.example
-.github/
 .agents/
 jsconfig.json
 1

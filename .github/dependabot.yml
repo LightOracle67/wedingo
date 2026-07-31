@@ -1,0 +1,18 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    ignore:
+      - dependency-name: "@types/*"
+      - dependency-name: "firebase"
+        versions: [">=12"]
+    groups:
+      sentry:
+        patterns:
+          - "@sentry/*"
+      fontsource:
+        patterns:
+          - "@fontsource/*"

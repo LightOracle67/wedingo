@@ -1,0 +1,174 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
+  VITE_FIREBASE_AUTH_DOMAIN: ${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}
+  VITE_FIREBASE_PROJECT_ID: ${{ secrets.VITE_FIREBASE_PROJECT_ID }}
+  VITE_FIREBASE_STORAGE_BUCKET: ${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}
+  VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}
+  VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
+  VITE_ADMIN_EMAILS: ${{ secrets.VITE_ADMIN_EMAILS }}
+  VITE_SUPERADMIN_ROUTE: ${{ secrets.VITE_SUPERADMIN_ROUTE }}
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npx vitest run --reporter=junit --outputFile=junit.xml
+      - run: npm run test:coverage
+      - run: npm run audit:prod
+      - run: npm run build
+      - run: node scripts/check-bundle-size.js
+
+      - uses: dorny/test-reporter@v1
+        if: success() || failure()
+        with:
+          name: Vitest Results
+          path: junit.xml
+          reporter: jest-junit
+
+      - name: Notify CI failure (commit status)
+        if: failure()
+        run: echo "::error::CI build-and-test failed. Check the logs."
+
+  # ── STAGING: preview channel por PR ──────────────────────
+  preview:
+    if: github.event_name == 'pull_request'
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+        env:
+          VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
+          VITE_FIREBASE_AUTH_DOMAIN: ${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}
+          VITE_FIREBASE_PROJECT_ID: ${{ secrets.VITE_FIREBASE_PROJECT_ID }}
+          VITE_FIREBASE_STORAGE_BUCKET: ${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}
+          VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}
+          VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
+          VITE_ADMIN_EMAILS: ${{ secrets.VITE_ADMIN_EMAILS }}
+          VITE_SUPERADMIN_ROUTE: ${{ secrets.VITE_SUPERADMIN_ROUTE }}
+      - name: Deploy preview channel
+        id: preview
+        run: |
+          npx firebase-tools hosting:channel:deploy "pr-${{ github.event.pull_request.number }}" --expires 7d --token "$FIREBASE_TOKEN" --non-interactive 2>&1 | tee /tmp/preview.log
+          PREVIEW_URL=$(grep -o 'https://[^ ]*web.app' /tmp/preview.log | head -1)
+          echo "url=$PREVIEW_URL" >> "$GITHUB_OUTPUT"
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      - name: Comment preview URL on PR
+        uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+            🚀 **Preview disponible:** ${{ steps.preview.outputs.url }}
+            *Este enlace expira en 7 días.*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  e2e:
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - run: npm ci
+      - run: npx playwright install chromium
+      - run: npm run e2e
+        env:
+          VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
+          VITE_FIREBASE_AUTH_DOMAIN: ${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}
+          VITE_FIREBASE_PROJECT_ID: ${{ secrets.VITE_FIREBASE_PROJECT_ID }}
+          VITE_FIREBASE_STORAGE_BUCKET: ${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}
+          VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}
+          VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
+          VITE_ADMIN_EMAILS: ${{ secrets.VITE_ADMIN_EMAILS }}
+          VITE_SUPERADMIN_ROUTE: ${{ secrets.VITE_SUPERADMIN_ROUTE }}
+
+  deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: [build-and-test, e2e]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+        env:
+          VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
+          VITE_FIREBASE_AUTH_DOMAIN: ${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}
+          VITE_FIREBASE_PROJECT_ID: ${{ secrets.VITE_FIREBASE_PROJECT_ID }}
+          VITE_FIREBASE_STORAGE_BUCKET: ${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}
+          VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}
+          VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
+          VITE_ADMIN_EMAILS: ${{ secrets.VITE_ADMIN_EMAILS }}
+          VITE_SUPERADMIN_ROUTE: ${{ secrets.VITE_SUPERADMIN_ROUTE }}
+      - name: Deploy to Firebase Hosting
+        run: npx firebase-tools deploy --only hosting --token "$FIREBASE_TOKEN" --non-interactive
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      # ── SENTRY: release + sourcemaps ──────────────────────
+      - name: Upload sourcemaps to Sentry
+        if: env.SENTRY_AUTH_TOKEN != ''
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          npx @sentry/cli releases new "wedingo@$VERSION" 2>/dev/null || true
+          npx @sentry/cli releases set-commits --auto "wedingo@$VERSION" 2>/dev/null || true
+          npx @sentry/cli sourcemaps upload -o solo-developer-p9 -p wedingo-6c26a dist/assets/ --release "wedingo@$VERSION" 2>/dev/null || true
+          npx @sentry/cli releases finalize "wedingo@$VERSION" 2>/dev/null || true
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: solo-developer-p9
+          SENTRY_PROJECT: wedingo-6c26a
+      - name: Notify CI failure (commit status)
+        if: failure()
+        run: echo "::error::Deploy failed. Check the logs."
+  # ── SENTRY: release + sourcemaps (job independiente) ─────
+  sentry-release:
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: deploy
+    runs-on: ubuntu-latest
+    env:
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - name: Upload sourcemaps to Sentry
+        if: env.SENTRY_AUTH_TOKEN != ''
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          npx @sentry/cli releases new "wedingo@$VERSION" 2>/dev/null || true
+          npx @sentry/cli releases set-commits --auto "wedingo@$VERSION" 2>/dev/null || true
+          npx @sentry/cli sourcemaps upload -o solo-developer-p9 -p wedingo-6c26a dist/assets/ --release "wedingo@$VERSION" 2>/dev/null || true
+          npx @sentry/cli releases finalize "wedingo@$VERSION" 2>/dev/null || true
