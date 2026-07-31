@@ -1496,6 +1496,8 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
   font-size: 0.78rem;
   color: var(--invite-core-color, #c8a84e);
   font-weight: 700;
+  position: relative;
+  z-index: 5;
 }
 
 .story-title {
