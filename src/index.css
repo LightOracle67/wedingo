@@ -1269,6 +1269,10 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
   align-items: center;
   justify-content: center;
   overflow-y: auto;
+  background-image: var(--story-section-user-bg, none);
+  background-size: auto;
+  background-repeat: repeat;
+  background-position: center;
   transition:
     background-color 520ms ease,
     background-image 520ms ease;
@@ -1347,7 +1351,7 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
   inset: 0;
   border-radius: inherit;
   background:
-    var(--story-card-user-bg, none) center/cover no-repeat,
+    var(--story-card-user-bg, none) center/auto repeat,
     radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--invite-shell-glow) 60%, transparent) 0%, transparent 70%);
   opacity: 0.55;
   pointer-events: none;
