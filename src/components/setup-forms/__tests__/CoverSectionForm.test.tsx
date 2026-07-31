@@ -33,7 +33,7 @@ vi.mock("../../../lib/image-store", () => ({
   isConfigImageRef: vi.fn(() => false),
 }));
 
-const mockFormData = vi.hoisted(() => ({ firstName: "John" }));
+const mockFormData = vi.hoisted(() => ({ firstName: "John" } as Record<string, string | undefined>));
 
 vi.mock("../../../contexts", () => ({
   useApp: () => ({
@@ -346,7 +346,7 @@ describe("CoverSectionForm", () => {
     expect(fileInputs.length).toBe(5);
     const replaceInput = fileInputs[1];
     const file = new File(["test"], "new.jpg", { type: "image/jpeg" });
-    fireEvent.change(replaceInput, { target: { files: [file] } });
+    fireEvent.change(replaceInput!, { target: { files: [file] } });
     await vi.waitFor(() => {
       expect(mockUploadComplete).toHaveBeenCalledWith("setup.photoUploaded");
     });

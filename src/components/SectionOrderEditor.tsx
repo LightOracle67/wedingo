@@ -62,7 +62,7 @@ export default function SectionOrderEditor({ value, onChange, hiddenValue, onHid
     if (from === null || to === null || from === to) return;
     if (to === 0) return;
     const next = [...items];
-    const [moved] = next.splice(from, 1);
+    const moved = next.splice(from, 1)[0]!;
     next.splice(to, 0, moved);
     sync(next);
   }, [dragIndex, overIndex, items, sync]);
@@ -75,14 +75,14 @@ export default function SectionOrderEditor({ value, onChange, hiddenValue, onHid
   const moveUp = useCallback((index: number) => {
     if (index <= 1) return;
     const next = [...items];
-    [next[index - 1], next[index]] = [next[index], next[index - 1]];
+    [next[index - 1], next[index]] = [next[index]!, next[index - 1]!];
     sync(next);
   }, [items, sync]);
 
   const moveDown = useCallback((index: number) => {
     if (index >= items.length - 1) return;
     const next = [...items];
-    [next[index], next[index + 1]] = [next[index + 1], next[index]];
+    [next[index], next[index + 1]] = [next[index + 1]!, next[index]!];
     sync(next);
   }, [items, sync]);
 

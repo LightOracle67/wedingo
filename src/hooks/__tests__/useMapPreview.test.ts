@@ -85,7 +85,7 @@ describe("useMapPreview", () => {
     await waitFor(() => {
       expect(result.current.previewBackgrounds.length).toBeGreaterThan(0);
     });
-    expect(result.current.previewBackgrounds[0].id).toBe("default");
+    expect(result.current.previewBackgrounds[0]!.id).toBe("default");
   });
 
   it("handles buildOpenFreeMapPreviewUrl returning empty", async () => {

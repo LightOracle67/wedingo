@@ -52,7 +52,7 @@ export default function CoverSectionForm({ prefix = "" }) {
       upload.error(t("setup.photoUploadFailed"));
     }
     if (input) input.value = "";
-  }, [inviteToken, updateFormField, startUploadToast, addToast, t, uploadConfigImage]);
+  }, [updateFormField, startUploadToast, addToast, t, uploadConfigImage]);
 
   const handleRemovePhoto = useCallback(() => {
     deleteConfigImage(inviteToken, "couplePhoto").catch(() => {});
@@ -137,7 +137,7 @@ export default function CoverSectionForm({ prefix = "" }) {
       />
 
       <p className="setup-label">{t("setup.themeLabel")}</p>
-      <ThemePicker value={formData.theme} onChange={handleThemeChange} t={t} />
+      <ThemePicker value={formData.theme} onChange={handleThemeChange} t={t as (key: string, options?: Record<string, unknown>) => string} />
 
       <div className="setup-background-panel">
         <div className="setup-background-panel__header">

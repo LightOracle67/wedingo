@@ -18,14 +18,14 @@ vi.mock("../../hooks/useToast", () => ({
   }),
 }));
 
-const mockLoadGallery = vi.fn(() => Promise.resolve([]));
+const mockLoadGallery = vi.fn(() => Promise.resolve([] as Partial<GalleryImage>[]));
 const mockUploadImage = vi.fn();
 const mockAddGalleryImage = vi.fn();
 const mockDeleteGalleryImage = vi.fn();
 const mockUpdateGalleryDescription = vi.fn();
 
 vi.mock("../../lib/image-store", () => ({
-  loadGallery: (...args: unknown[]) => mockLoadGallery(...args),
+  loadGallery: (...args: Parameters<typeof mockLoadGallery>) => mockLoadGallery(...args),
   uploadImage: (...args: unknown[]) => mockUploadImage(...args),
   addGalleryImage: (...args: unknown[]) => mockAddGalleryImage(...args),
   deleteGalleryImage: (...args: unknown[]) => mockDeleteGalleryImage(...args),
@@ -37,6 +37,7 @@ vi.mock("react-i18next", () => ({
 }));
 
 import GalleryArrayEditor from "../GalleryArrayEditor";
+import type { GalleryImage } from "../../types";
 
 afterEach(() => {
   cleanup();
@@ -95,7 +96,7 @@ describe("GalleryArrayEditor", () => {
     expect(fileInputs.length).toBeGreaterThanOrEqual(1);
 
     const file = new File(["fake-image"], "test.jpg", { type: "image/jpeg" });
-    fireEvent.change(fileInputs[0], { target: { files: [file] } });
+    fireEvent.change(fileInputs[0]!, { target: { files: [file] } });
 
     await waitFor(() => {
       expect(mockUploadImage).toHaveBeenCalled();
@@ -276,7 +277,7 @@ describe("GalleryArrayEditor", () => {
     const fileInputs = document.querySelectorAll<HTMLInputElement>('input[type="file"]');
     const file = new File(["fake-image"], "test.png", { type: "image/jpeg" });
     Object.defineProperty(file, "size", { value: 1000 });
-    fireEvent.change(fileInputs[0], { target: { files: [file] } });
+    fireEvent.change(fileInputs[0]!, { target: { files: [file] } });
 
     await waitFor(() => {
       expect(mockAddToast).toHaveBeenCalledWith("warning", "setup.duplicateFileWarning");

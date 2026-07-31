@@ -24,7 +24,7 @@ function uint8ToBase64(bytes: Uint8Array) {
   for (let i = 0; i < bytes.length; i += chunkSize) {
     const chunk = bytes.subarray(i, i + chunkSize);
     let s = "";
-    for (let j = 0; j < chunk.length; j++) s += String.fromCharCode(chunk[j]);
+    for (let j = 0; j < chunk.length; j++) s += String.fromCharCode(chunk[j]!);
     chunks.push(s);
   }
   return btoa(chunks.join(""));
@@ -62,7 +62,7 @@ export async function decrypt(ciphertext: string, token: string) {
       const salt = raw.slice(0, SALT_LEN);
       const iv = raw.slice(SALT_LEN, SALT_LEN + IV_LEN);
       const iterBytes = raw.slice(SALT_LEN + IV_LEN, HEADER_LEN);
-      const iterations = iterBytes[0] | (iterBytes[1] << 8) | (iterBytes[2] << 16);
+      const iterations = iterBytes[0]! | (iterBytes[1]! << 8) | (iterBytes[2]! << 16);
       const data = raw.slice(HEADER_LEN);
       const key = await getKey(token, salt, iterations);
       const decrypted = await crypto.subtle.decrypt({ ...ALGORITHM, iv }, key, data);

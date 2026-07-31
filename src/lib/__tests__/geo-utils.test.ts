@@ -217,8 +217,8 @@ describe("searchLocations with results", () => {
     } as Response);
     const results = await searchLocations("Madrid");
     expect(results).toHaveLength(2);
-    expect(results[0].latitude).toBe("40.4168");
-    expect(results[0].label).toBe("Madrid, Spain");
+    expect(results[0]!.latitude).toBe("40.4168");
+    expect(results[0]!.label).toBe("Madrid, Spain");
   });
 
   it("filters out results without coordinates", async () => {
@@ -241,6 +241,6 @@ describe("searchLocations with results", () => {
       ]),
     } as Response);
     const results = await searchLocations("Madrid");
-    expect(results[0].label).toBe("Madrid");
+    expect(results[0]!.label).toBe("Madrid");
   });
 });

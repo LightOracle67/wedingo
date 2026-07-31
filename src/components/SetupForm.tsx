@@ -95,7 +95,7 @@ export default function SetupForm({ prefix = "" }) {
       />
 
       {/* ── Sección de acceso (solo visible antes del primer guardado) ── */}
-      {console.log("[app]", "[SetupForm]", "render access section", { isRestoringSession, isTokenVerified })}
+      {void console.log("[app]", "[SetupForm]", "render access section", { isRestoringSession, isTokenVerified })}
       {isRestoringSession ? null : !isTokenVerified ? (
       <CollapsibleSection
         title={t("setup.accessSectionTitle")}
@@ -107,7 +107,7 @@ export default function SetupForm({ prefix = "" }) {
       ) : null}
 
       {/* ── Sección de portada: nombres, padrinos, mensaje, tema, fondo ── */}
-      {console.log("[app]", "[SetupForm]", "render cover section")}
+      {void console.log("[app]", "[SetupForm]", "render cover section")}
       <CollapsibleSection
         title={t("setup.coverSectionTitle")}
         hint={t("setup.coverSectionHint")}
@@ -117,7 +117,7 @@ export default function SetupForm({ prefix = "" }) {
       </CollapsibleSection>
 
       {/* ── Sección de fecha y lugar (si no está oculta) ── */}
-      {console.log("[app]", "[SetupForm]", "render date section", { hidden: hiddenSet.has("details") })}
+      {void console.log("[app]", "[SetupForm]", "render date section", { hidden: hiddenSet.has("details") })}
       {!hiddenSet.has("details") ? (
       <CollapsibleSection
         title={t("setup.dateSectionTitle")}
@@ -128,7 +128,7 @@ export default function SetupForm({ prefix = "" }) {
       ) : null}
 
       {/* ── Sección de invitados y menú (si no está oculta) ── */}
-      {console.log("[app]", "[SetupForm]", "render guests section", { hidden: hiddenSet.has("info") })}
+      {void console.log("[app]", "[SetupForm]", "render guests section", { hidden: hiddenSet.has("info") })}
       {!hiddenSet.has("info") ? (
       <CollapsibleSection
         title={t("setup.guestsSectionTitle")}
@@ -139,7 +139,7 @@ export default function SetupForm({ prefix = "" }) {
       ) : null}
 
       {/* ── Sección de historia de los novios (si no está oculta) ── */}
-      {console.log("[app]", "[SetupForm]", "render story section", { hidden: hiddenSet.has("story") })}
+      {void console.log("[app]", "[SetupForm]", "render story section", { hidden: hiddenSet.has("story") })}
       {!hiddenSet.has("story") ? (
       <CollapsibleSection
         title={t("setup.storySectionTitle")}
@@ -150,7 +150,7 @@ export default function SetupForm({ prefix = "" }) {
       ) : null}
 
       {/* ── Sección de regalos (si no está oculta) ── */}
-      {console.log("[app]", "[SetupForm]", "render gifts section", { hidden: hiddenSet.has("gifts") })}
+      {void console.log("[app]", "[SetupForm]", "render gifts section", { hidden: hiddenSet.has("gifts") })}
       {!hiddenSet.has("gifts") ? (
       <CollapsibleSection
         title={t("setup.giftsSectionTitle")}
@@ -161,7 +161,7 @@ export default function SetupForm({ prefix = "" }) {
       ) : null}
 
       {/* ── Sección de galería de fotos (si no está oculta) ── */}
-      {console.log("[app]", "[SetupForm]", "render gallery section", { hidden: hiddenSet.has("gallery") })}
+      {void console.log("[app]", "[SetupForm]", "render gallery section", { hidden: hiddenSet.has("gallery") })}
       {!hiddenSet.has("gallery") ? (
       <CollapsibleSection
         title={t("setup.gallerySectionTitle")}
@@ -180,7 +180,7 @@ export default function SetupForm({ prefix = "" }) {
       ) : null}
 
       {/* ── Botón de guardar ── */}
-      {console.log("[app]", "[SetupForm]", "save button rendered")}
+      {void console.log("[app]", "[SetupForm]", "save button rendered")}
       <div className="setup-actions">
         <button className="setup-button" type="submit" onClick={() => console.log("[app]", "[SetupForm]", "save click start")}>
           {t("common.save")}

@@ -99,7 +99,7 @@ describe("image-store", () => {
 
   it("uploadImage throws when image exceeds size limit", async () => {
     const largeData = "x".repeat(1300000);
-    mockEncrypt.mockResolvedValueOnce(Promise.resolve(largeData));
+    mockEncrypt.mockResolvedValueOnce(largeData);
     await expect(uploadImage("token", new File([], "test.jpg"))).rejects.toThrow(
       "errors.imageTooLarge",
     );
@@ -227,7 +227,7 @@ describe("image-store", () => {
     } as never);
     const result = await loadGallery("token");
     expect(result).toHaveLength(2);
-    expect(result[0].id).toBe("img1");
+    expect(result[0]!.id).toBe("img1");
   });
 
   it("loadGallery skips docs with no data field", async () => {
@@ -246,7 +246,7 @@ describe("image-store", () => {
     } as never);
     const result = await loadGallery("token");
     expect(result).toHaveLength(1);
-    expect(result[0].id).toBe("img2");
+    expect(result[0]!.id).toBe("img2");
   });
 
   it("loadGallery handles decrypt failure for individual docs", async () => {
@@ -275,9 +275,9 @@ describe("image-store", () => {
     } as never);
     const result = await loadGallery("token");
     expect(result).toHaveLength(3);
-    expect(result[0].id).toBe("img2");
-    expect(result[1].id).toBe("img1");
-    expect(result[2].id).toBe("img3");
+    expect(result[0]!.id).toBe("img2");
+    expect(result[1]!.id).toBe("img1");
+    expect(result[2]!.id).toBe("img3");
   });
 
   it("loadGallery includes originalName and originalSize from docs", async () => {
@@ -298,8 +298,8 @@ describe("image-store", () => {
     } as never);
     const result = await loadGallery("token");
     expect(result).toHaveLength(1);
-    expect(result[0].originalName).toBe("photo.jpg");
-    expect(result[0].originalSize).toBe(50000);
+    expect(result[0]!.originalName).toBe("photo.jpg");
+    expect(result[0]!.originalSize).toBe(50000);
   });
 
   it("deleteGallery deletes docs when snapshot is not empty", async () => {

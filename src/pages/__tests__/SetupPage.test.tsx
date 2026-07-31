@@ -22,7 +22,7 @@ vi.mock("../../contexts", () => ({
 
 const mockUseToast = vi.fn(() => ({ addToast: vi.fn() }));
 vi.mock("../../hooks/useToast", () => ({
-  useToast: (...args: unknown[]) => mockUseToast(...args),
+  useToast: (...args: Parameters<typeof mockUseToast>) => mockUseToast(...args),
 }));
 
 vi.mock("../../components/SetupForm", () => ({
@@ -320,7 +320,6 @@ describe("SetupPage", () => {
   });
 
   it("handles token modal close without PasswordCredential", () => {
-    const _navigatorOrig = globalThis.navigator;
     Object.defineProperty(globalThis, "navigator", {
       value: { credentials: { store: vi.fn() }, clipboard: { writeText: vi.fn() } },
       configurable: true,

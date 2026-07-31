@@ -54,7 +54,7 @@ describe("logAudit", () => {
 
     await logAudit("test.action", "");
 
-    const callArg = mockAddDoc.mock.calls[0][1];
+    const callArg = mockAddDoc.mock.calls[0]![1];
     expect(callArg.userAgent).toHaveLength(200);
     expect(callArg.userAgent).toBe("x".repeat(200));
   });

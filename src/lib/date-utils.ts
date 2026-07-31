@@ -70,8 +70,8 @@ export function validateWeddingDate(config: Record<string, string>, maxAllowedYe
     }
     const parsedYear = Number.parseInt(config.weddingYear, 10);
     const monthNum = MONTH_VALUE_TO_NUMBER[config.weddingMonth];
-    const enteredDate = new Date(parsedYear, monthNum - 1, parsedDay, parsedHour, parsedMinute);
-    if (enteredDate.getDate() !== parsedDay || enteredDate.getMonth() !== monthNum - 1 || enteredDate.getFullYear() !== parsedYear) {
+    const enteredDate = new Date(parsedYear, monthNum! - 1, parsedDay, parsedHour, parsedMinute);
+    if (enteredDate.getDate() !== parsedDay || enteredDate.getMonth() !== monthNum! - 1 || enteredDate.getFullYear() !== parsedYear) {
       console.log("[app]", "[date-utils]", "validateWeddingDate: date not valid", { parsedDay, parsedYear, monthNum, enteredDate: enteredDate.toISOString() });
       return "errors.dateNotValid";
     }

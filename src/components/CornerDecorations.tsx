@@ -1,4 +1,4 @@
-const CornerDecorations = ({ src }: { src?: string }) => {
+const CornerDecorations = ({ src }: { src?: string | undefined }) => {
   if (!src) return null;
   return (
     <>

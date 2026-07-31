@@ -109,7 +109,7 @@ describe("LanguageSwitcher", () => {
 
   it("falls back to es when i18n.language is undefined", () => {
     const prevLang = mockI18n.language;
-    mockI18n.language = undefined;
+    mockI18n.language = undefined as unknown as string;
     render(<LanguageSwitcher />);
     expect(screen.getByText(/ES/)).toBeDefined();
     mockI18n.language = prevLang;

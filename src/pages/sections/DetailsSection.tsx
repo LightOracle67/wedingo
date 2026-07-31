@@ -8,7 +8,7 @@ const DetailsSection = memo(function DetailsSection({
   style, className,
   formattedDate, formattedTime, hasLocationData, locationDescription,
   calendarLink,
-  weddingMapUrl, configWeddingPlace, transportInfo,
+  weddingMapUrl, transportInfo,
   cornerDecoration,
 }: {
   style?: React.CSSProperties;
@@ -19,7 +19,6 @@ const DetailsSection = memo(function DetailsSection({
   locationDescription?: string;
   calendarLink?: string;
   weddingMapUrl?: string;
-  configWeddingPlace?: string;
   transportInfo?: string;
   cornerDecoration?: string;
 }) {

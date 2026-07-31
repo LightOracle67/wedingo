@@ -28,7 +28,7 @@ describe("analytics", () => {
   it("calls logEvent when analytics is supported and in prod", async () => {
     mockIsSupported.mockResolvedValue(true);
     vi.resetModules();
-    vi.stubEnv("PROD", "true");
+    vi.stubEnv("PROD", true);
     vi.stubEnv("VITE_FIREBASE_MEASUREMENT_ID", "G-XXXXXXXX");
 
     const { trackEvent: trackEventProd } = await import("../analytics");

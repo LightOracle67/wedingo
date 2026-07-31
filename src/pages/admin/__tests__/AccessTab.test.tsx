@@ -67,7 +67,7 @@ describe("AccessTab", () => {
   });
 
   it("displays empty placeholder fallback for missing token", () => {
-    render(<AccessTab {...defaultProps} setupToken={undefined} />);
+    render(<AccessTab {...defaultProps} setupToken={""} />);
     const input = screen.getByDisplayValue("");
     expect(input).toBeDefined();
   });

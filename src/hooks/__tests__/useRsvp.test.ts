@@ -3,7 +3,7 @@ import { renderHook, act, waitFor } from "@testing-library/react";
 
 let mockDocIdCounter = 0;
 const mockDeleteDoc = vi.hoisted(() => vi.fn(() => Promise.resolve()));
-const mockGetDocs = vi.hoisted(() => vi.fn(() => Promise.resolve({ docs: [], forEach: vi.fn() })));
+const mockGetDocs = vi.hoisted(() => vi.fn(() => Promise.resolve({ docs: [] as Array<{ id: string; ref?: unknown; data: () => any }>, forEach: vi.fn() })));
 const mockDoc = vi.hoisted(() => vi.fn((_col?: unknown, id?: string) =>
   id ? { id } : { id: `auto-doc-${++mockDocIdCounter}` },
 ));
@@ -15,7 +15,7 @@ const mockWriteBatch = vi.hoisted(() => vi.fn(() => ({
 const mockEncrypt = vi.hoisted(() => vi.fn((v: string) => Promise.resolve(v)));
 const mockDecrypt = vi.hoisted(() => vi.fn((v: string) => Promise.resolve(v)));
 const mockComputeAge = vi.hoisted(() => vi.fn(() => 25));
-const mockParseDietaryInfo = vi.hoisted(() => vi.fn(() => ({ mealChoice: "", dietarySelection: [], dietaryOther: "" })));
+const mockParseDietaryInfo = vi.hoisted(() => vi.fn(() => ({ mealChoice: "", dietarySelection: [] as string[], dietaryOther: "" })));
 
 vi.mock("firebase/firestore", () => ({
   writeBatch: mockWriteBatch,
@@ -299,7 +299,7 @@ describe("useRsvp", () => {
     });
   });
 
-  function setupForm(result: ReturnType<typeof renderHook<ReturnType<typeof useRsvp>>>["result"]) {
+  function setupForm(result: { current: ReturnType<typeof useRsvp> }) {
     act(() => result.current.updateRsvpField("guestName", "Alice"));
     act(() => result.current.updateRsvpField("attendance", "alone"));
     act(() => result.current.updateRsvpField("birthDate", "2000-01-01"));
@@ -667,7 +667,7 @@ describe("useRsvp", () => {
       await waitFor(() => {
         expect(result.current.rsvpEntries).toHaveLength(1);
       });
-      expect(result.current.rsvpEntries[0].guestName).toBe("Alice");
+      expect(result.current.rsvpEntries[0]!.guestName).toBe("Alice");
     });
 
     it("loads multiple entries and sorts by submittedAt descending", async () => {
@@ -691,8 +691,8 @@ describe("useRsvp", () => {
       await waitFor(() => {
         expect(result.current.rsvpEntries).toHaveLength(2);
       });
-      expect(result.current.rsvpEntries[0].guestName).toBe("New");
-      expect(result.current.rsvpEntries[1].guestName).toBe("Old");
+      expect(result.current.rsvpEntries[0]!.guestName).toBe("New");
+      expect(result.current.rsvpEntries[1]!.guestName).toBe("Old");
     });
 
     it("handles hydrate error gracefully", async () => {
@@ -726,7 +726,7 @@ describe("useRsvp", () => {
       await waitFor(() => {
         expect(result.current.rsvpEntries).toHaveLength(1);
       });
-      expect(result.current.rsvpEntries[0].attendees).toHaveLength(3);
+      expect(result.current.rsvpEntries[0]!.attendees).toHaveLength(3);
     });
 
     it("legacyToAttendees includes dietaryOther when not in selection", async () => {
@@ -750,7 +750,7 @@ describe("useRsvp", () => {
       await waitFor(() => {
         expect(result.current.rsvpEntries).toHaveLength(1);
       });
-      const attendee = result.current.rsvpEntries[0].attendees[0];
+      const attendee = result.current.rsvpEntries[0]!.attendees[0]!;
       expect(attendee.allergies).toContain("alergia frutos secos");
     });
   });

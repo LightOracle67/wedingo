@@ -7,7 +7,7 @@ const ThemePicker = memo(function ThemePicker({ value, onChange, t }: { value: s
     <CollapsibleSection key={group.value} title={t("themeGroups." + group.value)} hint={t("setup.themeGroupCount", { count: THEME_OPTIONS.filter((th) => th.group === group.value).length })}>
       <div className="theme-picker__grid">
         {THEME_OPTIONS.filter((th) => th.group === group.value).map((theme) => {
-          const colors = THEME_PREVIEW_COLORS[theme.value as keyof typeof THEME_PREVIEW_COLORS];
+          const colors = THEME_PREVIEW_COLORS[theme.value as keyof typeof THEME_PREVIEW_COLORS]!;
           return (
             <button
               key={theme.value}

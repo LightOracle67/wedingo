@@ -4,17 +4,17 @@ import type { InvitationConfig } from "../../types";
 
 const mockT = vi.hoisted(() => vi.fn((key: string) => key));
 const mockNavigate = vi.hoisted(() => vi.fn());
-const mockGetDoc = vi.hoisted(() => vi.fn(() => Promise.resolve({ exists: () => false })));
-const mockRunTransaction = vi.hoisted(() => vi.fn(() => Promise.resolve()));
+const mockGetDoc = vi.hoisted(() => vi.fn((): Promise<{ exists: () => boolean; data?: () => Record<string, unknown> }> => Promise.resolve({ exists: () => false })));
+const mockRunTransaction = vi.hoisted(() => vi.fn(async (_db: unknown, cb: (t: unknown) => Promise<void>) => cb({} as never)));
 const mockSetDoc = vi.hoisted(() => vi.fn(() => Promise.resolve()));
 const mockUpdateDoc = vi.hoisted(() => vi.fn(() => Promise.resolve()));
-const mockGetSession = vi.hoisted(() => vi.fn(() => null));
+const mockGetSession = vi.hoisted(() => vi.fn(() => null as { type: string; identifier: string } | null));
 const mockSaveSession = vi.hoisted(() => vi.fn());
 const mockClearSession = vi.hoisted(() => vi.fn());
 const mockRenewSession = vi.hoisted(() => vi.fn(() => Promise.resolve()));
 const mockFirestoreSessionExpiry = vi.hoisted(() => vi.fn(() => new Date()));
 const mockSafeSetItem = vi.hoisted(() => vi.fn());
-const mockSafeGetItem = vi.hoisted(() => vi.fn(() => null));
+const mockSafeGetItem = vi.hoisted(() => vi.fn(() => null as string | null));
 const mockSafeRemoveItem = vi.hoisted(() => vi.fn());
 const mockGenerateSetupToken = vi.hoisted(() => vi.fn(() => "generated-token-123"));
 const mockNormalizeTokenValue = vi.hoisted(() => vi.fn((v: string) => v?.trim() ?? v));
@@ -70,14 +70,14 @@ function setup(
   overrides: Partial<{
     inviteToken: string;
     config: InvitationConfig;
-    setAdminMessage: ReturnType<typeof vi.fn>;
-    setAdminMessageType: ReturnType<typeof vi.fn>;
-    setHasStoredConfig: ReturnType<typeof vi.fn>;
+    setAdminMessage: (msg: string) => void;
+    setAdminMessageType: (type: string) => void;
+    setHasStoredConfig: (has: boolean) => void;
   }> = {},
 ) {
-  const setAdminMessage = overrides.setAdminMessage ?? vi.fn();
-  const setAdminMessageType = overrides.setAdminMessageType ?? vi.fn();
-  const setHasStoredConfig = overrides.setHasStoredConfig ?? vi.fn();
+  const setAdminMessage: (msg: string) => void = overrides.setAdminMessage ?? vi.fn();
+  const setAdminMessageType: (type: string) => void = overrides.setAdminMessageType ?? vi.fn();
+  const setHasStoredConfig: (has: boolean) => void = overrides.setHasStoredConfig ?? vi.fn();
   const inviteToken = overrides.inviteToken ?? "test-invite-token";
   const config = overrides.config ?? ({} as InvitationConfig);
   const { result } = renderHook(() =>

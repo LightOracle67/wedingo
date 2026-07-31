@@ -128,7 +128,7 @@ describe("idb-utils", () => {
   it("handles openDB onerror path", async () => {
     vi.stubGlobal("indexedDB", {
       open: vi.fn(() => {
-        const req = {
+        const req: Record<string, unknown> = {
           result: null,
           error: new Error("open failed"),
         };
@@ -141,7 +141,7 @@ describe("idb-utils", () => {
   });
 
   it("handles openDB onupgradeneeded when store exists", async () => {
-    const tx = {
+    const tx: Record<string, unknown> = {
       objectStore: vi.fn(() => ({
         put: vi.fn(() => setTimeout(() => (tx.oncomplete as () => void)?.(), 1)),
         get: vi.fn(),
@@ -153,7 +153,7 @@ describe("idb-utils", () => {
     const db = { createObjectStore, transaction: vi.fn(() => tx) };
     vi.stubGlobal("indexedDB", {
       open: vi.fn(() => {
-        const req = { result: db };
+        const req: Record<string, unknown> = { result: db };
         setTimeout(() => {
           (req.onupgradeneeded as () => void)?.();
           (req.onsuccess as () => void)?.();

@@ -12,7 +12,7 @@ class ErrorBoundaryInner extends Component<{ t: (key: string) => string; childre
     return { error };
   }
 
-  render() {
+  override render() {
     const { t } = this.props;
     if (this.state.error) {
       return (

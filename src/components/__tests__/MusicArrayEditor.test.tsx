@@ -16,13 +16,13 @@ vi.mock("../../hooks/useToast", () => ({
   }),
 }));
 
-const mockLoadAudio = vi.fn(() => Promise.resolve(null));
+const mockLoadAudio = vi.fn(() => Promise.resolve(null as ({ id?: string; url: string }) | null));
 const mockUploadAudio = vi.fn();
 const mockAddAudio = vi.fn();
 const mockDeleteAudio = vi.fn();
 
 vi.mock("../../lib/music-store", () => ({
-  loadAudio: (...args: unknown[]) => mockLoadAudio(...args),
+  loadAudio: (...args: Parameters<typeof mockLoadAudio>) => mockLoadAudio(...args),
   uploadAudio: (...args: unknown[]) => mockUploadAudio(...args),
   addAudio: (...args: unknown[]) => mockAddAudio(...args),
   deleteAudio: (...args: unknown[]) => mockDeleteAudio(...args),

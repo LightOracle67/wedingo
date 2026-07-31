@@ -24,8 +24,8 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secon
     if (!open) {
       console.log("[app]", "[EnvelopeOverlay]", "envelope open animation start", {});
       setOpen(true);
-      const t1 = setTimeout(() => { console.log("[app]", "[EnvelopeOverlay]", "show white flash", {}); setShowWhite(true); }, 600);
-      const t2 = setTimeout(() => { console.log("[app]", "[EnvelopeOverlay]", "show text", {}); setShowText(true); }, 1400);
+      setTimeout(() => { console.log("[app]", "[EnvelopeOverlay]", "show white flash", {}); setShowWhite(true); }, 600);
+      setTimeout(() => { console.log("[app]", "[EnvelopeOverlay]", "show text", {}); setShowText(true); }, 1400);
       return;
     }
     console.log("[app]", "[EnvelopeOverlay]", "envelope exit animation start", {});

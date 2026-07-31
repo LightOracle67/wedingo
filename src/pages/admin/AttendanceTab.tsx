@@ -102,10 +102,6 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
   };
 
   const handleBatchDelete = () => {
-    const companionIds = [...selectedIds].filter((id) => {
-      const entry = rsvpEntries.find((e) => e.id === id);
-      return entry?.rsvpType === "companion";
-    });
     const mainIds = [...selectedIds].filter((id) => {
       const entry = rsvpEntries.find((e) => e.id === id);
       return entry?.rsvpType !== "companion";

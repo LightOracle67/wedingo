@@ -21,10 +21,10 @@ describe("generateSetupToken", () => {
 describe("generateSetupToken with edge cases", () => {
   it("returns token even when all bytes are invalid", () => {
     const origGetRandomValues = crypto.getRandomValues;
-    crypto.getRandomValues = (arr: Uint8Array) => {
+    crypto.getRandomValues = ((arr: Uint8Array) => {
       for (let i = 0; i < arr.length; i++) arr[i] = 255;
       return arr;
-    };
+    }) as typeof crypto.getRandomValues;
     const token = generateSetupToken();
     expect(typeof token).toBe("string");
     crypto.getRandomValues = origGetRandomValues;

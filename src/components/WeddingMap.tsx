@@ -4,7 +4,7 @@ function canEmbed(url: string): boolean {
   return url.includes('output=embed') || /^https:\/\/(www\.)?google\.(com|[a-z]{2,3})\/maps\//.test(url);
 }
 
-export default function WeddingMap({ mapUrl, t }: {
+export default function WeddingMap({ mapUrl }: {
   mapUrl?: string;
   t: (key: string) => string;
 }) {

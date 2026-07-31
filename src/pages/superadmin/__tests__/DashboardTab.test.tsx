@@ -53,7 +53,7 @@ const mockCalcGlobalStats = vi.fn(() => ({
 }));
 
 vi.mock("../../../lib/superadmin-utils", () => ({
-  calcGlobalStats: (...args: unknown[]) => mockCalcGlobalStats(...args),
+  calcGlobalStats: (...args: Parameters<typeof mockCalcGlobalStats>) => mockCalcGlobalStats(...args),
   formatBytes: (bytes: number) => bytes >= 1024 * 1024 ? `${(bytes / (1024 * 1024)).toFixed(2)} MB` : `${(bytes / 1024).toFixed(1)} KB`,
 }));
 

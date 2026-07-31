@@ -11,7 +11,7 @@ const mockOnAuthStateChanged = vi.fn();
 const mockSignInWithEmailAndPassword = vi.fn();
 const mockSignOut = vi.fn();
 const mockSaveSession = vi.fn();
-const mockGetSession = vi.fn(() => null);
+const mockGetSession = vi.fn(() => null as { type: string; identifier: string } | null);
 const mockClearSession = vi.fn();
 const mockNavigate = vi.fn();
 const mockT = vi.fn((key: string) => key);
@@ -96,7 +96,7 @@ describe("SuperAdminProvider", () => {
 
   it("sets user when Firebase user matches superadmin email and session exists", async () => {
     mockGetSession.mockReturnValue({ type: "superadmin", identifier: FALLBACK_ADMIN_EMAIL });
-    mockOnAuthStateChanged.mockImplementation((_auth: unknown, cb: (u: { email: string } | null) => void) => {
+    mockOnAuthStateChanged.mockImplementation((_auth: unknown, cb: (u: { email: string; uid?: string } | null) => void) => {
       setTimeout(() => cb({ email: FALLBACK_ADMIN_EMAIL, uid: "uid-123" }), 0);
       return () => {};
     });
@@ -106,7 +106,7 @@ describe("SuperAdminProvider", () => {
   });
 
   it("does not set user when email does not match superadmin email", async () => {
-    mockOnAuthStateChanged.mockImplementation((_auth: unknown, cb: (u: { email: string } | null) => void) => {
+    mockOnAuthStateChanged.mockImplementation((_auth: unknown, cb: (u: { email: string; uid?: string } | null) => void) => {
       setTimeout(() => cb({ email: "other@admin.com", uid: "uid-456" }), 0);
       return () => {};
     });
@@ -196,7 +196,7 @@ describe("SuperAdminProvider", () => {
   });
 
   it("signs out when Firebase user has no local session", async () => {
-    mockOnAuthStateChanged.mockImplementation((_auth: unknown, cb: (u: { email: string } | null) => void) => {
+    mockOnAuthStateChanged.mockImplementation((_auth: unknown, cb: (u: { email: string; uid?: string } | null) => void) => {
       setTimeout(() => cb({ email: FALLBACK_ADMIN_EMAIL, uid: "uid-no-session" }), 0);
       return () => {};
     });

@@ -90,7 +90,7 @@ describe("GallerySection", () => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
     });
     const mainImages = screen.getAllByAltText("Photo 1");
-    fireEvent.click(mainImages[0]);
+    fireEvent.click(mainImages[0]!);
     expect(screen.getByLabelText("gallery.lightboxLabel")).toBeDefined();
     fireEvent.click(screen.getByLabelText("common.close"));
   });
@@ -103,11 +103,11 @@ describe("GallerySection", () => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
     });
     const mainImages = screen.getAllByAltText("Photo 1");
-    fireEvent.click(mainImages[0]);
+    fireEvent.click(mainImages[0]!);
     const lightboxNextBtns = screen.getAllByLabelText("gallery.next");
-    fireEvent.click(lightboxNextBtns[lightboxNextBtns.length - 1]);
+    fireEvent.click(lightboxNextBtns[lightboxNextBtns.length - 1]!);
     const lightboxPrevBtns = screen.getAllByLabelText("gallery.prev");
-    fireEvent.click(lightboxPrevBtns[lightboxPrevBtns.length - 1]);
+    fireEvent.click(lightboxPrevBtns[lightboxPrevBtns.length - 1]!);
   });
 
   it("shows image counter when multiple images", async () => {
@@ -158,7 +158,7 @@ describe("GallerySection", () => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
     });
     const mainImages = screen.getAllByAltText("Photo 1");
-    fireEvent.click(mainImages[0]);
+    fireEvent.click(mainImages[0]!);
     expect(screen.getByLabelText("gallery.lightboxLabel")).toBeDefined();
     fireEvent.keyDown(window, { key: "Escape" });
     expect(screen.queryByLabelText("gallery.lightboxLabel")).toBeNull();
@@ -171,7 +171,7 @@ describe("GallerySection", () => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
     });
     const mainImages = screen.getAllByAltText("Photo 1");
-    fireEvent.click(mainImages[0]);
+    fireEvent.click(mainImages[0]!);
     expect(screen.getByLabelText("gallery.lightboxLabel")).toBeDefined();
     fireEvent.keyDown(window, { key: "ArrowRight" });
     fireEvent.keyDown(window, { key: "ArrowLeft" });
@@ -205,8 +205,8 @@ describe("GallerySection", () => {
     });
     const thumbs = document.querySelectorAll<HTMLImageElement>(".gallery-thumb__img");
     expect(thumbs.length).toBeGreaterThan(0);
-    fireEvent.load(thumbs[0]);
-    fireEvent.error(thumbs[0]);
+    fireEvent.load(thumbs[0]!);
+    fireEvent.error(thumbs[0]!);
   });
 
   it("handles main image onLoad and onError", async () => {
@@ -217,8 +217,8 @@ describe("GallerySection", () => {
     });
     const mainImgs = document.querySelectorAll<HTMLImageElement>(".gallery-main-img");
     expect(mainImgs.length).toBeGreaterThan(0);
-    fireEvent.load(mainImgs[0]);
-    fireEvent.error(mainImgs[0]);
+    fireEvent.load(mainImgs[0]!);
+    fireEvent.error(mainImgs[0]!);
   });
 
   it("shows thumbnail loading spinner before load", async () => {
@@ -259,10 +259,10 @@ describe("GallerySection", () => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
     });
     const mainImages = screen.getAllByAltText("Photo 1");
-    fireEvent.click(mainImages[0]);
+    fireEvent.click(mainImages[0]!);
     const lightboxImgs = document.querySelectorAll<HTMLImageElement>(".gallery-lightbox__img");
     expect(lightboxImgs.length).toBeGreaterThan(0);
-    fireEvent.click(lightboxImgs[0]);
+    fireEvent.click(lightboxImgs[0]!);
   });
 
   it("shows lightbox caption when image has description", async () => {
@@ -272,10 +272,10 @@ describe("GallerySection", () => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
     });
     const mainImages = screen.getAllByAltText("Photo 1");
-    fireEvent.click(mainImages[0]);
+    fireEvent.click(mainImages[0]!);
     const captions = document.querySelectorAll(".gallery-lightbox__caption");
     expect(captions.length).toBeGreaterThan(0);
-    expect(captions[0].textContent).toBe("Photo 1");
+    expect(captions[0]!.textContent).toBe("Photo 1");
   });
 
   it("clicks thumbnail to navigate (goTo)", async () => {
@@ -286,7 +286,7 @@ describe("GallerySection", () => {
     });
     const thumbBtns = document.querySelectorAll<HTMLButtonElement>(".gallery-thumb");
     expect(thumbBtns.length).toBe(3);
-    fireEvent.click(thumbBtns[2]);
+    fireEvent.click(thumbBtns[2]!);
   });
 
   it("handles thumbnail onError triggers", async () => {
@@ -296,7 +296,7 @@ describe("GallerySection", () => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
     });
     const thumbs = document.querySelectorAll<HTMLImageElement>(".gallery-thumb__img");
-    fireEvent.error(thumbs[1]);
+    fireEvent.error(thumbs[1]!);
   });
 
   it("fires setTimeout callbacks in next after delay", async () => {
@@ -333,7 +333,7 @@ describe("GallerySection", () => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
     });
     const thumbBtns = document.querySelectorAll<HTMLButtonElement>(".gallery-thumb");
-    act(() => { fireEvent.click(thumbBtns[2]); });
+    act(() => { if (thumbBtns[2]) fireEvent.click(thumbBtns[2]!); });
     act(() => { vi.advanceTimersByTime(600); });
     vi.useRealTimers();
   });

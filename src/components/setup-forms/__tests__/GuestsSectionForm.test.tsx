@@ -6,7 +6,7 @@ vi.mock("react-i18next", () => ({
 }));
 
 const mockUpdateFormField = vi.fn();
-const mockFormData = vi.hoisted(() => ({}));
+const mockFormData = vi.hoisted(() => ({}) as Record<string, string | undefined>);
 
 vi.mock("../../../contexts", () => ({
   useApp: () => ({
@@ -77,7 +77,7 @@ describe("GuestsSectionForm", () => {
   it("calls updateFormField on kids policy checkbox click (select)", () => {
     render(<GuestsSectionForm />);
     const checkboxes = getAllCheckboxes();
-    fireEvent.click(checkboxes[0]);
+    fireEvent.click(checkboxes[0]!);
     expect(mockUpdateFormField).toHaveBeenCalledWith("kidsPolicy", "playArea");
   });
 
@@ -85,14 +85,14 @@ describe("GuestsSectionForm", () => {
     mockFormData.kidsPolicy = "playArea";
     render(<GuestsSectionForm />);
     const checkboxes = getAllCheckboxes();
-    fireEvent.click(checkboxes[0]);
+    fireEvent.click(checkboxes[0]!);
     expect(mockUpdateFormField).toHaveBeenCalledWith("kidsPolicy", "");
   });
 
   it("calls updateFormField on dress code selection", () => {
     render(<GuestsSectionForm />);
     const checkboxes = getAllCheckboxes();
-    fireEvent.click(checkboxes[3]);
+    fireEvent.click(checkboxes[3]!);
     expect(mockUpdateFormField).toHaveBeenCalledWith("weddingDressCode", "Traje de gala");
   });
 
@@ -100,14 +100,14 @@ describe("GuestsSectionForm", () => {
     mockFormData.weddingDressCode = "Traje de gala";
     render(<GuestsSectionForm />);
     const checkboxes = getAllCheckboxes();
-    fireEvent.click(checkboxes[3]);
+    fireEvent.click(checkboxes[3]!);
     expect(mockUpdateFormField).toHaveBeenCalledWith("weddingDressCode", "");
   });
 
   it("calls updateFormField on menu enabled toggle", () => {
     render(<GuestsSectionForm />);
     const checkboxes = getAllCheckboxes();
-    fireEvent.click(checkboxes[8]);
+    fireEvent.click(checkboxes[8]!);
     expect(mockUpdateFormField).toHaveBeenCalledWith("menuEnabled", "true");
   });
 
@@ -115,7 +115,7 @@ describe("GuestsSectionForm", () => {
     mockFormData.menuEnabled = "true";
     render(<GuestsSectionForm />);
     const checkboxes = getAllCheckboxes();
-    fireEvent.click(checkboxes[8]);
+    fireEvent.click(checkboxes[8]!);
     expect(mockUpdateFormField).toHaveBeenCalledWith("menuEnabled", "false");
   });
 
@@ -135,7 +135,7 @@ describe("GuestsSectionForm", () => {
     render(<GuestsSectionForm />);
     const menuCheckboxes = screen.getAllByRole("checkbox");
     const menuCarneCheckbox = menuCheckboxes[9];
-    fireEvent.click(menuCarneCheckbox);
+    fireEvent.click(menuCarneCheckbox!);
     expect(mockUpdateFormField).toHaveBeenCalledWith("menuCarne", " ");
   });
 
@@ -154,7 +154,7 @@ describe("GuestsSectionForm", () => {
     render(<GuestsSectionForm />);
     const menuCheckboxes = screen.getAllByRole("checkbox");
     const menuCarneCheckbox = menuCheckboxes[9];
-    fireEvent.click(menuCarneCheckbox);
+    fireEvent.click(menuCarneCheckbox!);
     expect(mockUpdateFormField).toHaveBeenCalledWith("menuCarne", "");
   });
 

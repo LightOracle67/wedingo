@@ -21,7 +21,7 @@ describe("AdminTabs", () => {
   it("calls onTabChange when clicked", () => {
     const onTabChange = vi.fn();
     render(<AdminTabs {...defaultProps} onTabChange={onTabChange} />);
-    fireEvent.click(screen.getAllByText("admin.tabs.invitation")[0]);
+    fireEvent.click(screen.getAllByText("admin.tabs.invitation")[0]!);
     expect(onTabChange).toHaveBeenCalledWith("invitacion");
   });
 });

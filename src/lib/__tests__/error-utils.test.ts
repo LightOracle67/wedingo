@@ -120,7 +120,7 @@ describe("logError", () => {
 
   it("does not log to console.error when not in DEV mode", async () => {
     vi.resetModules();
-    vi.stubEnv("DEV", "");
+    vi.stubEnv("DEV", false);
     const consoleSpy = vi.spyOn(console, "error").mockImplementation(() => {});
     const { logError } = await import("../error-utils");
     logError(new Error("should not appear"), "Test");

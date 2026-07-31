@@ -154,7 +154,7 @@ describe("AccessibilityPanel", () => {
     render(<AccessibilityPanel open={true} onClose={vi.fn()} />);
     const checkbox = findCheckbox("a11y.highContrast");
     fireEvent.click(checkbox);
-    const saved = JSON.parse(localStorageMock.setItem.mock.calls[0][1]);
+    const saved = JSON.parse(localStorageMock.setItem.mock.calls[0]![1]);
     expect(saved.highContrast).toBe(true);
   });
 

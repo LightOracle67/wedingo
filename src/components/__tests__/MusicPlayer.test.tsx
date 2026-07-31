@@ -1,15 +1,16 @@
 import "@testing-library/jest-dom/vitest";
 import { describe, it, expect, vi, afterEach, beforeEach } from "vitest";
+import type { Mock } from "vitest";
 import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
 }));
 
-let mockAudioPlay: ReturnType<typeof vi.fn>;
+let mockAudioPlay: Mock<() => Promise<void>>;
 
 beforeEach(() => {
-  mockAudioPlay = vi.fn();
+  mockAudioPlay = vi.fn(() => Promise.resolve());
   window.HTMLMediaElement.prototype.play = mockAudioPlay;
   window.HTMLMediaElement.prototype.pause = vi.fn();
   window.HTMLMediaElement.prototype.load = vi.fn();
@@ -190,7 +191,6 @@ describe("MusicPlayer", () => {
   });
 
   it("sets audio volume when slider changes", () => {
-    const _volumeSetter = vi.fn();
     Object.defineProperty(HTMLMediaElement.prototype, "volume", {
       writable: true,
       value: 0.5,
@@ -231,7 +231,6 @@ describe("MusicPlayer", () => {
   });
 
   it("handles handleVolume when audioRef is null", () => {
-    const _audio = document.createElement("audio");
     const volumeSetter = vi.fn();
     Object.defineProperty(HTMLMediaElement.prototype, "volume", {
       set: volumeSetter,

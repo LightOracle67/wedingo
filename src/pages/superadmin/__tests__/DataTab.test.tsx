@@ -227,7 +227,7 @@ describe("DataTab", () => {
       expect(screen.getByText("t1")).toBeInTheDocument();
     });
     const checkbox = screen.getAllByRole("checkbox")[0];
-    fireEvent.click(checkbox);
+    fireEvent.click(checkbox!);
   });
 
   it("copies token on click", async () => {

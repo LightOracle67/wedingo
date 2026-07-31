@@ -44,7 +44,7 @@ describe("useFocusTrap", () => {
     const { container, buttons } = createTrapElements();
     result.current.current = container;
     rerender(true);
-    expect(document.activeElement).toBe(buttons[0]);
+    expect(document.activeElement).toBe(buttons[0]!!);
     document.body.removeChild(container);
   });
 
@@ -71,8 +71,8 @@ describe("useFocusTrap", () => {
     result.current.current = container;
     rerender(true);
 
-    act(() => { buttons[1].focus(); container.dispatchEvent(new KeyboardEvent("keydown", { key: "Tab", bubbles: true })); });
-    expect(document.activeElement).toBe(buttons[0]);
+    act(() => { buttons[1]!.focus(); container.dispatchEvent(new KeyboardEvent("keydown", { key: "Tab", bubbles: true })); });
+    expect(document.activeElement).toBe(buttons[0]!);
 
     document.body.removeChild(container);
   });
@@ -83,8 +83,8 @@ describe("useFocusTrap", () => {
     result.current.current = container;
     rerender(true);
 
-    act(() => { buttons[0].focus(); container.dispatchEvent(new KeyboardEvent("keydown", { key: "Tab", shiftKey: true, bubbles: true })); });
-    expect(document.activeElement).toBe(buttons[1]);
+    act(() => { buttons[0]!.focus(); container.dispatchEvent(new KeyboardEvent("keydown", { key: "Tab", shiftKey: true, bubbles: true })); });
+    expect(document.activeElement).toBe(buttons[1]!);
 
     document.body.removeChild(container);
   });
@@ -95,8 +95,8 @@ describe("useFocusTrap", () => {
     result.current.current = container;
     rerender(true);
 
-    act(() => { buttons[0].focus(); container.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true })); });
-    expect(document.activeElement).toBe(buttons[0]);
+    act(() => { buttons[0]!.focus(); container.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true })); });
+    expect(document.activeElement).toBe(buttons[0]!);
 
     document.body.removeChild(container);
   });

@@ -24,25 +24,27 @@ vi.mock("../../../lib/crypto-utils", () => ({
 
 const mocks = vi.hoisted(() => ({
   calcRSVPSummary: vi.fn(() => ({ confirmed: 5, declined: 2, pending: 3 })),
-  getDietarySummary: vi.fn(() => []),
+  getDietarySummary: vi.fn(() => [] as { item: string; count: number }[]),
 }));
 vi.mock("../../../lib/admin-utils", () => ({
-  calcRSVPSummary: (...args: unknown[]) => mocks.calcRSVPSummary(...args),
-  getDietarySummary: (...args: unknown[]) => mocks.getDietarySummary(...args),
+  calcRSVPSummary: (...args: Parameters<typeof mocks.calcRSVPSummary>) => mocks.calcRSVPSummary(...args),
+  getDietarySummary: (...args: Parameters<typeof mocks.getDietarySummary>) => mocks.getDietarySummary(...args),
 }));
 
 import PanelTab from "../PanelTab";
 
-const baseConfig = {
+import type { PanelTabConfig } from "../PanelTab";
+
+const baseConfig: PanelTabConfig = {
   inviteToken: "test-token",
   confirmedResponses: 5,
   declinedResponses: 2,
   totalGuests: 10,
   rsvpEntries: [],
   formatDate: (d: unknown) => String(d),
-  onRestore: vi.fn(),
+  onRestore: vi.fn(() => Promise.resolve()),
   visitCount: 15,
-  exportData: { firstName: "Test", secondName: "User", theme: "golden" },
+  exportData: { firstName: "Test", secondName: "User", theme: "golden" } as Exclude<PanelTabConfig["exportData"], undefined>,
 };
 
 beforeEach(() => {
@@ -151,15 +153,16 @@ describe("PanelTab", () => {
   it("handles backup without exportData gracefully", () => {
     const createObjectURL = vi.fn(() => "blob:test");
     vi.spyOn(URL, "createObjectURL").mockImplementation(createObjectURL);
-    render(<PanelTab config={{ ...baseConfig, exportData: undefined }} />);
+    const config = { ...baseConfig };
+    delete config.exportData;
+    render(<PanelTab config={config} />);
     fireEvent.click(screen.getByText("panel.downloadBackup"));
     expect(mockAddToast).toHaveBeenCalledWith("error", expect.any(String));
   });
 
   it("triggers file input when restore button is clicked", () => {
     render(<PanelTab config={baseConfig} />);
-    const fileInput = document.querySelector('input[type="file"]')!;
-    const clickSpy = vi.spyOn(fileInput, "click");
+    const clickSpy = vi.spyOn(document.querySelector<HTMLInputElement>('input[type="file"]')!, "click");
     fireEvent.click(screen.getByText("panel.restoreBackup"));
     expect(clickSpy).toHaveBeenCalled();
   });
@@ -189,7 +192,7 @@ describe("PanelTab", () => {
   });
 
   it("calls onRestore callback after successful restore", async () => {
-    const onRestore = vi.fn();
+    const onRestore = vi.fn(() => Promise.resolve());
     render(<PanelTab config={{ ...baseConfig, onRestore }} />);
     const fileInput = document.querySelector('input[type="file"]')!;
     const validData = JSON.stringify({ bankInfo: "", firstName: "Test" });

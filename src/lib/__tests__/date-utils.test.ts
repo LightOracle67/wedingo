@@ -18,13 +18,13 @@ describe("date-utils", () => {
   it("isDateInPast returns false for today's date", () => {
     const today = new Date();
     const months = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
-    expect(isDateInPast(String(today.getFullYear()), months[today.getMonth()], String(today.getDate()))).toBe(false);
+    expect(isDateInPast(String(today.getFullYear()), months[today.getMonth()]!, String(today.getDate()))).toBe(false);
   });
 
   it("computeAge returns correct age for birthdate", () => {
     const birthDate = new Date();
     birthDate.setFullYear(birthDate.getFullYear() - 25);
-    expect(computeAge(birthDate.toISOString().split("T")[0])).toBe(25);
+    expect(computeAge(birthDate.toISOString().split("T")[0]!)).toBe(25);
   });
 
   it("computeAge returns null for empty string", () => {
@@ -34,14 +34,14 @@ describe("date-utils", () => {
   it("computeAge handles birthday today", () => {
     const today = new Date();
     const birthDate = new Date(today.getFullYear() - 30, today.getMonth(), today.getDate());
-    const iso = birthDate.toISOString().split("T")[0];
+    const iso = birthDate.toISOString().split("T")[0]!;
     expect(computeAge(iso)).toBe(30);
   });
 
   it("computeAge handles birthday later this year (not yet)", () => {
     const today = new Date();
     const birthDate = new Date(today.getFullYear() - 30, today.getMonth() + 1, today.getDate());
-    const iso = birthDate.toISOString().split("T")[0];
+    const iso = birthDate.toISOString().split("T")[0]!;
     expect(computeAge(iso)).toBe(29);
   });
 

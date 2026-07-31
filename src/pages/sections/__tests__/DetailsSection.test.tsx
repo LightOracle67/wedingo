@@ -59,9 +59,8 @@ describe("DetailsSection", () => {
         formattedTime=""
         hasLocationData={false}
         locationDescription=""
-        calendarLink={null}
+        calendarLink={""}
         weddingMapUrl=""
-        configWeddingPlace=""
         transportInfo=""
       />,
     );
@@ -80,9 +79,8 @@ describe("DetailsSection", () => {
         formattedTime="18:30"
         hasLocationData={true}
         locationDescription="Unknown location"
-        calendarLink={null}
+        calendarLink={""}
         weddingMapUrl=""
-        configWeddingPlace="Madrid"
         transportInfo=""
       />,
     );
@@ -98,9 +96,8 @@ describe("DetailsSection", () => {
         formattedTime="18:30"
         hasLocationData={false}
         locationDescription=""
-        calendarLink={null}
+        calendarLink={""}
         weddingMapUrl=""
-        configWeddingPlace=""
         transportInfo=""
       />,
     );

@@ -253,7 +253,7 @@ describe("App", () => {
   });
 
   it("renders superadmin panel route when dashboard is configured", async () => {
-    (mockSuperadminModule as { SUPERADMIN_ROUTE: string }).SUPERADMIN_DASHBOARD = "/superadmin/dashboard";
+    (mockSuperadminModule as { SUPERADMIN_ROUTE: string; SUPERADMIN_DASHBOARD?: string }).SUPERADMIN_DASHBOARD = "/superadmin/dashboard";
     mockUseApp.mockReturnValue({ ...baseUseApp });
 
     render(
@@ -729,8 +729,6 @@ describe("App", () => {
   });
 
   it("renders changelog modal directly when showChangelog is true", () => {
-    let _capturedSetShowChangelog: (v: boolean) => void = () => {};
-    const _origRender = render;
     render(
       <MemoryRouter initialEntries={["/"]}>
         <Suspense fallback={null}>

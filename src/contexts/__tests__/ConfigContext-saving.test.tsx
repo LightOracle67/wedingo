@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from "vitest";
 import { useEffect } from "react";
 import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 
-const mockGetDoc = vi.hoisted(() => vi.fn(() => Promise.resolve({ exists: () => false })));
+const mockGetDoc = vi.hoisted(() => vi.fn((): Promise<{ exists: () => boolean; data?: () => Record<string, unknown> }> => Promise.resolve({ exists: () => false })));
 const mockLocation = vi.hoisted(() => ({ pathname: "/test", search: "", hash: "" }));
 const mockDecodeInviteConfig = vi.hoisted(() => {
   const stable = {};
@@ -15,7 +15,6 @@ const mockLoadDecryptedField = vi.hoisted(() => vi.fn(() => Promise.resolve(""))
 const mockSetSaveError = vi.hoisted(() => vi.fn());
 const mockSetSaveMessage = vi.hoisted(() => vi.fn());
 const mockSetDoc = vi.hoisted(() => vi.fn());
-const _mockTrackVisit = vi.fn();
 
 vi.mock("react-i18next", () => ({ useTranslation: () => ({ t: (key: string) => key }) }));
 vi.mock("react-router-dom", () => ({ useLocation: () => mockLocation, useNavigate: () => vi.fn() }));
@@ -36,7 +35,7 @@ vi.mock("../../lib/image-store", () => ({
   resolveAllConfigImages: vi.fn(() => Promise.resolve({})),
   deleteAllConfigImages: vi.fn(() => Promise.resolve()),
   isConfigImageRef: vi.fn(() => false),
-  saveConfigImage: vi.fn((_t, id, v) => Promise.resolve("__cfgimg:" + id)),
+  saveConfigImage: vi.fn((_t, id, _v) => Promise.resolve("__cfgimg:" + id)),
 }));
 vi.mock("../../lib/music-store", () => ({ loadAudio: mockLoadAudio }));
 vi.mock("../../lib/sessionVars", () => ({ clearSession: vi.fn() }));

@@ -25,7 +25,7 @@ function encodeWav(samples: Float32Array, sampleRate: number): ArrayBuffer {
   view.setUint32(40, numSamples * 2, true);
 
   for (let i = 0; i < numSamples; i++) {
-    const s = Math.max(-1, Math.min(1, samples[i]));
+    const s = Math.max(-1, Math.min(1, samples[i]!));
     view.setInt16(44 + i * 2, s < 0 ? s * 0x8000 : s * 0x7fff, true);
   }
   return buffer;
@@ -69,7 +69,7 @@ export async function compressAudio(file: File): Promise<string> {
   for (let i = 0; i < bytes.length; i += chunkSize) {
     const chunk = bytes.subarray(i, i + chunkSize);
     let s = "";
-    for (let j = 0; j < chunk.length; j++) s += String.fromCharCode(chunk[j]);
+    for (let j = 0; j < chunk.length; j++) s += String.fromCharCode(chunk[j]!);
     chunks.push(s);
   }
   const binary = chunks.join("");

@@ -284,7 +284,7 @@ export default function PublicInvitation() {
     },
   }), [
     config.firstName, config.secondName, config.inviteMessage,
-    config.weddingPlace, config.weddingSchedule, config.weddingDressCode,
+    config.weddingSchedule, config.weddingDressCode,
     config.kidsPolicy, config.storyText, config.giftsInfo, config.accommodationInfo,
     config.transportInfo, config.godparent1, config.godparent2, inviteToken,
     config.couplePhoto, config.bankInfo, config.menuEnabled,
@@ -411,7 +411,7 @@ export default function PublicInvitation() {
       ) : (
         /* ── Invitación completa: renderiza cada sección en orden ── */
         <Suspense fallback={null}>
-          {console.log("[app]", "[PublicInvitation]", "rendering sections", { visibleOrder })}
+          {void console.log("[app]", "[PublicInvitation]", "rendering sections", { visibleOrder })}
           {visibleOrder.map((sectionKey: string) => {
             const Component = (SECTION_COMPONENTS as Record<string, React.ComponentType<any>>)[sectionKey];
             if (!Component) { console.log("[app]", "[PublicInvitation]", "section component not found", { sectionKey }); return null; }

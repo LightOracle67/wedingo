@@ -97,7 +97,7 @@ export default function LandingPage() {
         setIsLoading(false);
         return;
       }
-      const matchedInv = invSnap.docs[0];
+      const matchedInv = invSnap.docs[0]!;
       const target = matchedInv.id;
       const matchedData = matchedInv.data();
       console.log("[app]", "[LandingPage]", "invitation found", { target, hasAdminUsername: !!matchedData.adminUsername });

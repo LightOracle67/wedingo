@@ -480,7 +480,7 @@ describe("AdminPage", () => {
   it("handles exportPdf with RSVP data", async () => {
     const mockFocus = vi.fn();
     const mockWindowOpen = vi.fn(() => ({ focus: mockFocus }));
-    vi.spyOn(window, "open").mockImplementation(mockWindowOpen);
+    vi.spyOn(window, "open").mockImplementation(mockWindowOpen as unknown as typeof window.open);
     const createObjectURL = vi.fn(() => "blob:test");
     vi.spyOn(URL, "createObjectURL").mockImplementation(createObjectURL);
     vi.spyOn(URL, "revokeObjectURL").mockImplementation(() => {});

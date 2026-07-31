@@ -37,7 +37,7 @@ describe("EnvelopeOverlay", () => {
     fireEvent.click(btn);
     fireEvent.keyDown(btn, { key: "Enter" });
     expect(dispatchSpy).toHaveBeenCalledWith(expect.any(CustomEvent));
-    expect(dispatchSpy.mock.calls[0][0].type).toBe("wedin:play-audio");
+    expect(dispatchSpy.mock.calls[0]![0].type).toBe("wedin:play-audio");
     dispatchSpy.mockRestore();
   });
 

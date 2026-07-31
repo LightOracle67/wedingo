@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 
 const mockUpdateDoc = vi.fn(() => Promise.resolve());
-const mockGetSession = vi.fn(() => null);
+const mockGetSession = vi.fn(() => null as { identifier: string; expiresAt: number } | null);
 const mockSaveSession = vi.fn();
 const mockRegisterOnFirstSave = vi.fn();
 const mockSetAdminMessage = vi.fn();
@@ -29,7 +29,7 @@ vi.mock("../useConfig", () => ({
 
 const mockUseAppUI = vi.fn(() => ({ setAdminMessage: mockSetAdminMessage, setAdminMessageType: mockSetAdminMessageType }));
 vi.mock("../useAppUI", () => ({
-  useAppUI: (...args: unknown[]) => mockUseAppUI(...args),
+  useAppUI: (...args: Parameters<typeof mockUseAppUI>) => mockUseAppUI(...args),
 }));
 
 const mockSetSetupToken = vi.fn();
@@ -69,7 +69,7 @@ vi.mock("../../hooks/useSetupAuth", () => ({
 }));
 
 vi.mock("firebase/firestore", () => ({
-  updateDoc: (...args: unknown[]) => mockUpdateDoc(...args),
+  updateDoc: (...args: Parameters<typeof mockUpdateDoc>) => mockUpdateDoc(...args),
   serverTimestamp: vi.fn(() => new Date("2026-01-01")),
   doc: vi.fn(),
 }));
@@ -119,7 +119,7 @@ describe("AuthProvider", () => {
 
   it("triggers session renewal via onFirstSave callback", async () => {
     render(<AuthProvider><div>child</div></AuthProvider>);
-    const onFirstSave = mockRegisterOnFirstSave.mock.calls[0][0];
+    const onFirstSave = mockRegisterOnFirstSave.mock.calls[0]![0];
     await onFirstSave();
     expect(mockSetSetupToken).toHaveBeenCalledWith("");
     expect(mockSetSetupTokenInput).toHaveBeenCalledWith("");
@@ -135,7 +135,7 @@ describe("AuthProvider", () => {
   it("handles session update error gracefully", async () => {
     mockUpdateDoc.mockRejectedValueOnce(new Error("update failed"));
     render(<AuthProvider><div>child</div></AuthProvider>);
-    const onFirstSave = mockRegisterOnFirstSave.mock.calls[0][0];
+    const onFirstSave = mockRegisterOnFirstSave.mock.calls[0]![0];
     await onFirstSave();
     await vi.waitFor(() => {
       expect(mockSetAdminMessageType).toHaveBeenCalledWith("error");
@@ -170,7 +170,7 @@ describe("AuthProvider", () => {
       setAuthMessage: vi.fn(),
     });
     render(<AuthProvider><div>child</div></AuthProvider>);
-    const onFirstSave = mockRegisterOnFirstSave.mock.calls[0][0];
+    const onFirstSave = mockRegisterOnFirstSave.mock.calls[0]![0];
     await onFirstSave();
     expect(mockSetSetupToken).not.toHaveBeenCalled();
   });
@@ -178,7 +178,7 @@ describe("AuthProvider", () => {
   it("saves session with displayName on first save", async () => {
     mockGetSession.mockReturnValue({ identifier: "admin-user-name", expiresAt: Date.now() + 999999 });
     render(<AuthProvider><div>child</div></AuthProvider>);
-    const onFirstSave = mockRegisterOnFirstSave.mock.calls[0][0];
+    const onFirstSave = mockRegisterOnFirstSave.mock.calls[0]![0];
     await onFirstSave();
     await vi.waitFor(() => {
       expect(mockSetTokenLoginUsername).toHaveBeenCalledWith("admin");
@@ -194,7 +194,7 @@ describe("AuthProvider", () => {
       registerOnFirstSave: mockRegisterOnFirstSave,
     });
     render(<AuthProvider><div>child</div></AuthProvider>);
-    const onFirstSave = mockRegisterOnFirstSave.mock.calls[0][0];
+    const onFirstSave = mockRegisterOnFirstSave.mock.calls[0]![0];
     await onFirstSave();
     await vi.waitFor(() => {
       expect(mockSetTokenLoginUsername).toHaveBeenCalledWith("AdminUser");
@@ -211,7 +211,7 @@ describe("AuthProvider", () => {
       registerOnFirstSave: mockRegisterOnFirstSave,
     });
     render(<AuthProvider><div>child</div></AuthProvider>);
-    const onFirstSave = mockRegisterOnFirstSave.mock.calls[0][0];
+    const onFirstSave = mockRegisterOnFirstSave.mock.calls[0]![0];
     await onFirstSave();
     await vi.waitFor(() => {
       expect(mockSetTokenLoginUsername).toHaveBeenCalledWith("test-token");
@@ -223,10 +223,10 @@ describe("AuthProvider", () => {
     mockUseAppUI.mockReturnValueOnce({
       setAdminMessage: null,
       setAdminMessageType: null,
-    });
+    } as unknown as ReturnType<typeof mockUseAppUI>);
     mockUpdateDoc.mockRejectedValueOnce(new Error("update failed"));
     render(<AuthProvider><div>child</div></AuthProvider>);
-    const onFirstSave = mockRegisterOnFirstSave.mock.calls[0][0];
+    const onFirstSave = mockRegisterOnFirstSave.mock.calls[0]![0];
     await onFirstSave();
     // updateDoc failed, so setIsTokenVerified should NOT be called
     // (session is only set on client after Firestore write succeeds)

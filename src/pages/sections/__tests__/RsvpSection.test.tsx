@@ -37,7 +37,7 @@ const baseProps = {
   isRsvpSubmitting: false,
   hasSubmitted: false,
   alreadySubmittedEntry: null,
-  updateRsvpField: vi.fn(),
+  updateRsvpField: vi.fn((_field: string, _value: string | boolean | number | string[] | string[][] | boolean[]) => undefined),
   handleRsvpSubmit: vi.fn(),
   handleDeleteRsvp: vi.fn(),
   menuEnabled: false,
@@ -46,7 +46,7 @@ const baseProps = {
   menuVegano: "",
   menuPostre: "",
   menuTexto: "",
-  computeAge: vi.fn(),
+  computeAge: vi.fn((_d: string) => 0),
 };
 
 describe("RsvpSection", () => {

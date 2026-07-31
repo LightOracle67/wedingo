@@ -7,6 +7,6 @@ export default function GallerySectionForm() {
   const { t } = useTranslation();
 
   return (
-    <GalleryArrayEditor inviteToken={inviteToken} t={t} />
+    <GalleryArrayEditor inviteToken={inviteToken} t={t as (key: string, options?: Record<string, unknown>) => string} />
   );
 }

@@ -67,7 +67,7 @@ vi.mock("../useAuth", () => ({ useAuth: () => mockUseAuth() }));
 vi.mock("../useRsvpContext", () => ({ useRsvpContext: () => mockUseRsvp() }));
 
 function MockProvider({ children, value: _value }: { value?: unknown; children: unknown }) {
-  return createElement(Fragment, null, children);
+  return createElement(Fragment, null, children as React.ReactNode);
 }
 
 vi.mock("../UIContext", () => ({ UIProvider: MockProvider }));

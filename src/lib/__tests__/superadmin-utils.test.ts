@@ -74,8 +74,8 @@ describe("tokenUsageOverTime", () => {
     ];
     const result = tokenUsageOverTime(tokens);
     expect(result).toHaveLength(2);
-    expect(result[0].count).toBe(2);
-    expect(result[1].count).toBe(1);
+    expect(result[0]!.count).toBe(2);
+    expect(result[1]!.count).toBe(1);
   });
 
   it("skips tokens without valid createdAt", () => {
@@ -94,11 +94,11 @@ describe("rsvpOverTime", () => {
     ];
     const result = rsvpOverTime(rsvps);
     expect(result).toHaveLength(2);
-    expect(result[0].total).toBe(2);
-    expect(result[0].yes).toBe(1);
-    expect(result[0].no).toBe(1);
-    expect(result[1].total).toBe(1);
-    expect(result[1].yes).toBe(1);
+    expect(result[0]!.total).toBe(2);
+    expect(result[0]!.yes).toBe(1);
+    expect(result[0]!.no).toBe(1);
+    expect(result[1]!.total).toBe(1);
+    expect(result[1]!.yes).toBe(1);
   });
 
   it("returns empty for no submittedAt", () => {

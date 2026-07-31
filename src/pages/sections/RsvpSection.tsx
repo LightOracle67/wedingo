@@ -14,6 +14,9 @@ interface RsvpFormState {
   companionMenus: string[];
   companionAllergies: string[][];
   companionAllergiesOther: string[];
+  companionBirthDates?: string[];
+  companionParentalConsents?: boolean[];
+  companionHealthConsents?: boolean[];
   menuSelection: string;
   allergies: string[];
   allergiesOther: string;
@@ -30,7 +33,7 @@ interface RsvpSectionProps {
   isRsvpSubmitting?: boolean;
   hasSubmitted?: boolean;
   alreadySubmittedEntry?: unknown;
-  updateRsvpField: (field: string, value: string | boolean | number | string[] | string[][]) => void;
+  updateRsvpField: (field: string, value: string | boolean | number | string[] | string[][] | boolean[]) => void;
   handleRsvpSubmit: (e: React.FormEvent) => void;
   handleDeleteRsvp: () => void;
   menuEnabled?: boolean;

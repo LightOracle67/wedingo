@@ -172,7 +172,7 @@ describe("useAutoSave", () => {
     it("returns null when already saving via autoSavingRef", async () => {
       let resolveDeferred: (v: unknown) => void = () => {};
       const deferredPromise = new Promise((resolve) => { resolveDeferred = resolve; });
-      mockSetDoc.mockReturnValueOnce(deferredPromise);
+      mockSetDoc.mockReturnValueOnce(deferredPromise as Promise<void>);
 
       const { result } = renderHook(() =>
         useAutoSave(true, "test-token", sampleConfig, sampleConfig, vi.fn(), { current: false }),
@@ -277,7 +277,7 @@ describe("useAutoSave", () => {
 
   describe("cleanup", () => {
     it("clears timer on unmount", () => {
-      const clearTimeoutSpy = vi.spyOn(global, "clearTimeout");
+      const clearTimeoutSpy = vi.spyOn(globalThis, "clearTimeout");
       const differentData = { ...sampleConfig, firstName: "Changed" };
       const { unmount } = renderHook(() =>
         useAutoSave(true, "test-token", differentData, sampleConfig, vi.fn(), { current: false }),
@@ -290,7 +290,7 @@ describe("useAutoSave", () => {
     });
 
     it("clears timer ref in second cleanup effect", () => {
-      const clearTimeoutSpy = vi.spyOn(global, "clearTimeout");
+      const clearTimeoutSpy = vi.spyOn(globalThis, "clearTimeout");
       const differentData = { ...sampleConfig, firstName: "Changed" };
       const { result, unmount } = renderHook(() =>
         useAutoSave(true, "test-token", differentData, sampleConfig, vi.fn(), { current: false }),
@@ -305,7 +305,7 @@ describe("useAutoSave", () => {
     });
 
     it("clears timer from second effect when first effect returns early", () => {
-      const clearTimeoutSpy = vi.spyOn(global, "clearTimeout");
+      const clearTimeoutSpy = vi.spyOn(globalThis, "clearTimeout");
       const differentData = { ...sampleConfig, firstName: "Changed" };
       const { rerender, unmount } = renderHook(
         ({ hasStoredConfig, formData }) =>

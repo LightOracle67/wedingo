@@ -16,7 +16,7 @@ vi.mock("../../../contexts", () => ({
   useApp: () => mockUseApp(),
 }));
 
-const mockGalleryEditor = vi.fn(() => <div data-testid="gallery-editor">GalleryArrayEditor</div>);
+const mockGalleryEditor = vi.fn((_props: Record<string, unknown>) => <div data-testid="gallery-editor">GalleryArrayEditor</div>);
 
 vi.mock("../../GalleryArrayEditor", () => ({
   default: (props: Record<string, unknown>) => mockGalleryEditor(props),

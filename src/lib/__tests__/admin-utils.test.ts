@@ -117,12 +117,12 @@ describe("getDietarySummary", () => {
       { attendance: "yes", dietaryInfo: "a" },
     ];
     const result = getDietarySummary(entries);
-    expect(result[0].item).toBe("a");
-    expect(result[0].count).toBe(3);
-    expect(result[1].item).toBe("b");
-    expect(result[1].count).toBe(2);
-    expect(result[2].item).toBe("c");
-    expect(result[2].count).toBe(1);
+    expect(result[0]!.item).toBe("a");
+    expect(result[0]!.count).toBe(3);
+    expect(result[1]!.item).toBe("b");
+    expect(result[1]!.count).toBe(2);
+    expect(result[2]!.item).toBe("c");
+    expect(result[2]!.count).toBe(1);
   });
 
   it("strips 'Menú:' prefix from items", () => {

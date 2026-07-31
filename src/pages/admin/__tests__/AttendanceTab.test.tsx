@@ -6,32 +6,34 @@ vi.mock("react-i18next", () => ({
 }));
 
 import AttendanceTab from "../AttendanceTab";
+import type { RsvpEntry } from "../../../types";
 
 const baseConfig = {
-  searchQuery: "", setSearchQuery: vi.fn(),
-  attendanceFilter: "all", setAttendanceFilter: vi.fn(),
+  searchQuery: "", setSearchQuery: vi.fn((_v: string) => undefined),
+  attendanceFilter: "all", setAttendanceFilter: vi.fn((_f: string) => undefined),
   filteredEntries: [],
   rsvpEntries: [],
-  exportPdf: vi.fn(),
+  exportPdf: vi.fn(() => undefined),
   formatDate: (d: unknown) => String(d),
-  handleClearRsvpEntries: vi.fn(),
+  handleClearRsvpEntries: vi.fn(() => undefined),
+  handleDeleteRsvpEntries: vi.fn((_ids: string[]) => undefined),
 };
 
 describe("AttendanceTab", () => {
   it("renders stats line", () => {
-    render(<AttendanceTab config={baseConfig} />);
+    render(<AttendanceTab {...baseConfig} />);
     expect(screen.getByText("attendance.statsLine")).toBeDefined();
   });
   it("shows empty state when no entries", () => {
-    render(<AttendanceTab config={baseConfig} />);
+    render(<AttendanceTab {...baseConfig} />);
     expect(screen.getByText("attendance.noResults")).toBeDefined();
   });
   it("renders search label", () => {
-    render(<AttendanceTab config={baseConfig} />);
+    render(<AttendanceTab {...baseConfig} />);
     expect(screen.getByText("attendance.searchLabel")).toBeDefined();
   });
   it("renders select all option", () => {
-    render(<AttendanceTab config={baseConfig} />);
+    render(<AttendanceTab {...baseConfig} />);
     expect(screen.getByText("attendance.all")).toBeDefined();
   });
 
@@ -53,6 +55,7 @@ describe("AttendanceTab", () => {
         exportPdf={vi.fn()}
         formatDate={(d: string) => String(d)}
         handleClearRsvpEntries={vi.fn()}
+        handleDeleteRsvpEntries={vi.fn()}
       />
     );
     expect(screen.getAllByText("Alice").length).toBeGreaterThan(0);
@@ -78,6 +81,7 @@ describe("AttendanceTab", () => {
         exportPdf={exportPdf}
         formatDate={(d: string) => String(d)}
         handleClearRsvpEntries={vi.fn()}
+        handleDeleteRsvpEntries={vi.fn()}
       />
     );
     fireEvent.click(screen.getByText("attendance.exportPdf"));
@@ -101,6 +105,7 @@ describe("AttendanceTab", () => {
         exportPdf={vi.fn()}
         formatDate={(d: string) => String(d)}
         handleClearRsvpEntries={handleClearRsvpEntries}
+        handleDeleteRsvpEntries={vi.fn()}
       />
     );
     fireEvent.click(screen.getByText("attendance.clearAttendance"));
@@ -119,6 +124,7 @@ describe("AttendanceTab", () => {
         exportPdf={vi.fn()}
         formatDate={(d: string) => String(d)}
         handleClearRsvpEntries={vi.fn()}
+        handleDeleteRsvpEntries={vi.fn()}
       />
     );
     expect(screen.getByText("attendance.noResultsFilter")).toBeDefined();
@@ -126,7 +132,7 @@ describe("AttendanceTab", () => {
 
   it("calls setSearchQuery when select changes", () => {
     const setSearchQuery = vi.fn();
-    const entries = [
+    const entries: RsvpEntry[] = [
       { id: "1", guestName: "Alice", attendance: "yes", companions: 2, dietaryInfo: "", submittedAt: "2024-01-01" },
       { id: "2", guestName: "Bob", attendance: "no", companions: 0, dietaryInfo: "", submittedAt: "2024-01-02" },
     ];
@@ -141,6 +147,7 @@ describe("AttendanceTab", () => {
         exportPdf={vi.fn()}
         formatDate={(d: string) => String(d)}
         handleClearRsvpEntries={vi.fn()}
+        handleDeleteRsvpEntries={vi.fn()}
       />
     );
     const select = screen.getByDisplayValue("attendance.all");
@@ -204,6 +211,7 @@ describe("AttendanceTab", () => {
         exportPdf={vi.fn()}
         formatDate={(d: string) => String(d)}
         handleClearRsvpEntries={vi.fn()}
+        handleDeleteRsvpEntries={vi.fn()}
       />
     );
     expect(screen.getAllByText("Charlie").length).toBeGreaterThanOrEqual(1);
@@ -246,6 +254,7 @@ describe("AttendanceTab", () => {
         exportPdf={vi.fn()}
         formatDate={(d: string) => String(d)}
         handleClearRsvpEntries={vi.fn()}
+        handleDeleteRsvpEntries={vi.fn()}
       />
     );
     expect(screen.getAllByText(/Grace/).length).toBeGreaterThanOrEqual(1);
@@ -288,6 +297,7 @@ describe("AttendanceTab", () => {
         exportPdf={vi.fn()}
         formatDate={(d: string) => String(d)}
         handleClearRsvpEntries={vi.fn()}
+        handleDeleteRsvpEntries={vi.fn()}
       />
     );
     expect(screen.getAllByText(/Helen/).length).toBeGreaterThanOrEqual(1);

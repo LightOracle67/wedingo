@@ -33,7 +33,7 @@ export function generateInviteToken() {
   crypto.getRandomValues(bytes);
   let result = "";
   for (let i = 0; i < bytes.length && result.length < needed; i++) {
-    if (bytes[i] < maxValid) result += chars[bytes[i] % len];
+    if (bytes[i]! < maxValid) result += chars[bytes[i]! % len];
   }
   console.log("[app]", "[token-utils]", "generateInviteToken", { length: result.length });
   return result;

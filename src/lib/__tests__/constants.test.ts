@@ -56,7 +56,7 @@ describe("THEME_OPTIONS", () => {
 
   it("THEME_PREVIEW_COLORS covers all themes", () => {
     for (const t of THEME_OPTIONS) {
-      const colors = THEME_PREVIEW_COLORS[t.value];
+      const colors = THEME_PREVIEW_COLORS[t.value]!;
       expect(colors).toBeTruthy();
       expect(colors.accent).toBeTruthy();
       expect(colors.bg).toBeTruthy();

@@ -247,7 +247,7 @@ export function useRsvp(
     return () => {
       cancelled = true;
     };
-  }, [inviteToken]);
+  }, [inviteToken, t, setAdminMessage, setAdminMessageType]);
 
   useEffect(() => {
     const name = rsvpForm.guestName.trim().toLowerCase();
@@ -414,7 +414,7 @@ export function useRsvp(
         if (!data.companionNames[i]?.trim()) { console.log("[app]", "[useRsvp]", "validation fail: companion name", { i }); return t("rsvp.validation.nameRequired"); }
         if (!data.companionBirthDates?.[i]) { console.log("[app]", "[useRsvp]", "validation fail: companion birthDate", { i }); return t("rsvp.validation.birthDateRequired"); }
         if (menuEnabled && !data.companionMenus?.[i]) { console.log("[app]", "[useRsvp]", "validation fail: companion menu", { i }); return t("rsvp.validation.menuRequired"); }
-        const compAge = computeAge(data.companionBirthDates[i]);
+        const compAge = computeAge(data.companionBirthDates[i]!);
         if (compAge !== null && compAge < 14 && !data.companionParentalConsents?.[i]) { console.log("[app]", "[useRsvp]", "validation fail: companion parental consent", { i, age: compAge }); return t("rsvp.validation.ageUnder14"); }
         const hasCompAllergies = (data.companionAllergies?.[i] || []).length > 0
           || (data.companionAllergiesOther?.[i] || "").trim().length > 0;
@@ -613,7 +613,7 @@ export function useRsvp(
       setAdminMessage(t("attendance.deleteSelectedError"));
       setAdminMessageType("error");
     }
-  }, [inviteToken, setAdminMessage, setAdminMessageType, t]);
+  }, [setAdminMessage, setAdminMessageType, t]);
 
   const handleClearRsvpEntries = useCallback(async () => {
     console.log("[app]", "[useRsvp]", "handleClearRsvpEntries start", {});

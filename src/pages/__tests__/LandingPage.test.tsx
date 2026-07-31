@@ -36,7 +36,7 @@ vi.mock("../../lib/firebase", () => ({
 
 let mockNormalizeTokenValue = vi.fn((v: string) => v?.trim().toUpperCase().replace(/[^A-Z0-9]/g, "") || "");
 vi.mock("../../lib/token-utils", () => ({
-  normalizeTokenValue: (...args: unknown[]) => mockNormalizeTokenValue(...args),
+  normalizeTokenValue: (...args: Parameters<typeof mockNormalizeTokenValue>) => mockNormalizeTokenValue(...args),
   generateInviteToken: () => "mocked-invite-token",
   generateSetupToken: () => "mocked-setup-token",
 }));

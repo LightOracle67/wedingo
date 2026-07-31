@@ -11,7 +11,7 @@ export function isValidIBAN(iban: string): boolean {
 
   let remainder = 0;
   for (let i = 0; i < numeric.length; i++) {
-    remainder = (remainder * 10 + parseInt(numeric[i], 10)) % 97;
+    remainder = (remainder * 10 + parseInt(numeric[i]!, 10)) % 97;
   }
 
   return remainder === 1;

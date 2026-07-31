@@ -65,7 +65,7 @@ function ToastProviderInner({ children, containerId = "toast-root", t }: { child
 
     const error = (msg: string) => {
       setToasts((prev) =>
-        prev.map((t) => (t.id === id ? { ...t, type: "error", message: msg, progress: t.progress } : t))
+        prev.map((t) => (t.id === id ? { ...t, type: "error", message: msg } : t))
       );
       scheduleDismiss(id, 6000);
     };

@@ -83,8 +83,8 @@ describe("SectionOrderEditor", () => {
     const items = document.querySelectorAll(".section-order-item");
     expect(items.length).toBeGreaterThanOrEqual(2);
 
-    const fromEl = items[1];
-    const toEl = items[2];
+    const fromEl = items[1]!;
+    const toEl = items[2]!;
 
     const dataTransfer = {
       effectAllowed: "",
@@ -106,7 +106,7 @@ describe("SectionOrderEditor", () => {
     render(<SectionOrderEditor {...defaultProps} onChange={onChange} />);
 
     const items = document.querySelectorAll(".section-order-item");
-    const heroEl = items[0];
+    const heroEl = items[0]!;
     expect(heroEl.getAttribute("draggable")).toBe("false");
 
     const dataTransfer = {
@@ -124,7 +124,7 @@ describe("SectionOrderEditor", () => {
     render(<SectionOrderEditor {...defaultProps} onChange={onChange} />);
 
     const items = document.querySelectorAll(".section-order-item");
-    const el = items[1];
+    const el = items[1]!;
 
     const dataTransfer = {
       effectAllowed: "",
@@ -147,8 +147,8 @@ describe("SectionOrderEditor", () => {
     render(<SectionOrderEditor {...defaultProps} onChange={onChange} />);
 
     const items = document.querySelectorAll(".section-order-item");
-    const fromEl = items[2];
-    const toEl = items[0];
+    const fromEl = items[2]!;
+    const toEl = items[0]!;
 
     const dataTransfer = {
       effectAllowed: "",
@@ -179,8 +179,6 @@ describe("SectionOrderEditor", () => {
     const onChange = vi.fn();
     render(<SectionOrderEditor {...defaultProps} onChange={onChange} />);
 
-    const items = document.querySelectorAll(".section-order-item");
-    const _lastItemLabel = items[items.length - 1].querySelector(".section-order-item__label")?.textContent;
     const lastDownBtn = screen.getByRole("button", { name: `sectionOrder.moveDown accommodation.sectionLabel` });
     expect(lastDownBtn).toBeDisabled();
     fireEvent.click(lastDownBtn);

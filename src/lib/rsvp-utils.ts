@@ -15,7 +15,7 @@ export const DIETARY_OPTIONS = [
 export function parseDietaryInfo(dietaryInfo: string | null | undefined, menuEnabled: boolean) {
   const parts = (dietaryInfo || "").split(" | ").filter(Boolean);
   let mealChoice = "";
-  const dietarySelection = [];
+  const dietarySelection: string[] = [];
   let dietaryOther = "";
   let startIdx = 0;
   if (menuEnabled && parts[0] && parts[0].startsWith("Menú: ")) {
@@ -25,9 +25,9 @@ export function parseDietaryInfo(dietaryInfo: string | null | undefined, menuEna
   for (let i = startIdx; i < parts.length; i++) {
     const part = parts[i];
     if (DIETARY_OPTIONS.some((opt) => opt.value === part)) {
-      dietarySelection.push(part);
+      dietarySelection.push(part!);
     } else {
-      dietaryOther = part;
+      dietaryOther = part!;
     }
   }
   return { mealChoice, dietarySelection, dietaryOther };
