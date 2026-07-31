@@ -101,6 +101,10 @@ export default function GuestsSectionForm({ prefix = "" }) {
         <>
           <textarea className="setup-textarea" value={formData.menuTexto} onChange={handleMenuTextoChange} placeholder={t("setup.menuTextoPlaceholder")} rows={3} />
           <p className="setup-help">{t("setup.menuTextoHint")}</p>
+          <div style={{ marginTop: "0.5rem" }}>
+            <p className="setup-label" style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}>{t("setup.postreLabel")}</p>
+            <textarea className="setup-textarea" value={formData.menuPostre || ""} onChange={handleMenuPostreChange} placeholder={t("setup.postrePlaceholder")} rows={2} style={{ fontSize: "0.85rem" }} />
+          </div>
         </>
       )}
 

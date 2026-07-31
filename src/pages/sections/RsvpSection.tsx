@@ -319,6 +319,12 @@ const RsvpSection = memo(function RsvpSection({
             <div style={{ marginBottom: "0.5rem", marginTop: "0.5rem", padding: "0.6rem", borderRadius: "0.6rem", background: "color-mix(in srgb, var(--setup-field-bg) 60%, transparent)" }}>
               <p className="story-eyebrow" style={{ fontSize: "0.72rem", marginBottom: "0.2rem" }}>{t("rsvp.menuLabel")}</p>
               <p className="story-note whitespace-pre-line" style={{ fontSize: "0.85rem" }}>{menuTexto}</p>
+              {menuPostre?.trim() ? (
+                <>
+                  <p className="story-eyebrow" style={{ fontSize: "0.72rem", marginTop: "0.4rem", marginBottom: "0.15rem" }}>{t("rsvp.postre")}</p>
+                  <p className="story-note whitespace-pre-line" style={{ fontSize: "0.82rem" }}>{menuPostre}</p>
+                </>
+              ) : null}
             </div>
           ) : null}
 
