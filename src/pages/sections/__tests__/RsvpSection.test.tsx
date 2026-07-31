@@ -197,7 +197,21 @@ describe("RsvpSection", () => {
     expect(screen.getAllByText("✕")).toHaveLength(1);
   });
 
-  it("shows postre when menuPostre is provided", () => {
+  it("shows postre when menuPostre is provided and menu is selected", () => {
+    render(
+      <RsvpSection
+        {...baseProps}
+        menuPostre="Chocolate cake"
+        menuEnabled={true}
+        menuCarne="Meat"
+        rsvpForm={{ ...baseProps.rsvpForm, menuSelection: "carne" }}
+      />,
+    );
+    expect(screen.getByText("rsvp.postre")).toBeDefined();
+    expect(screen.getByText("Chocolate cake")).toBeDefined();
+  });
+
+  it("does not show postre before a menu is selected", () => {
     render(
       <RsvpSection
         {...baseProps}
@@ -206,8 +220,7 @@ describe("RsvpSection", () => {
         menuCarne="Meat"
       />,
     );
-    expect(screen.getByText("rsvp.postre")).toBeDefined();
-    expect(screen.getByText("Chocolate cake")).toBeDefined();
+    expect(screen.queryByText("rsvp.postre")).toBeNull();
   });
 
   it("shows allergies hint when not menuEnabled and attending", () => {
