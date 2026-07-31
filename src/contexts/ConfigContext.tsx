@@ -437,18 +437,28 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     isSavingRef.current = true;
     console.log("[app]", "[ConfigProvider]", "validation passed, saving...", {});
     try {
-      const cpOrig = payload.couplePhoto?.startsWith("data:") ? payload.couplePhoto : null;
-      const mfOrig = payload.musicFile?.startsWith("data:") ? payload.musicFile : null;
       if (payload.bankInfo) { console.log("[app]", "[ConfigProvider]", "encrypting bankInfo", {}); payload.bankInfo = await encrypt(payload.bankInfo, inviteToken); }
-      if (cpOrig) { console.log("[app]", "[ConfigProvider]", "encrypting couplePhoto", {}); payload.couplePhoto = await encrypt(cpOrig, inviteToken); }
+      // Migrate any data-URL image fields to configImages subcollection
+      const { saveConfigImage } = await import("../lib/image-store");
+      const originalImages: Record<string, string> = {};
+      for (const imageId of ["couplePhoto", "backgroundImage", "customSeal", "cornerDecoration"]) {
+        const val = payload[imageId];
+        if (typeof val === "string" && val.startsWith("data:")) {
+          console.log("[app]", "[ConfigProvider]", `migrating ${imageId} data URL to subcollection`, {});
+          originalImages[imageId] = val;
+          payload[imageId] = await saveConfigImage(inviteToken, imageId, val);
+        }
+      }
       delete (payload as { musicFile?: string }).musicFile;
       payload.privacyPolicyVersion = PRIVACY_POLICY_VERSION;
       console.log("[app]", "[ConfigProvider]", "setDoc start", {});
       await setDoc(invitationDocRef(inviteToken), payload, { merge: true });
       console.log("[app]", "[ConfigProvider]", "setDoc success", {});
       if (payload.bankInfo) payload.bankInfo = await decrypt(payload.bankInfo, inviteToken);
-      if (cpOrig) payload.couplePhoto = cpOrig;
-      if (mfOrig) payload.musicFile = mfOrig;
+      // Restore data URLs in memory for the current session
+      for (const [k, v] of Object.entries(originalImages)) {
+        payload[k] = v;
+      }
       setConfig(payload);
       setFormData(payload);
       setHasStoredConfig(true);
