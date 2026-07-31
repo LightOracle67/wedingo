@@ -38,7 +38,8 @@ npx gh release create vX.Y.Z --notes-file /tmp/wedingo-release-X.Y.Z.md --title 
 ## Monitorización
 
 ### Sentry (errores y rendimiento)
-- **Proyecto**: `wedingo` / org `wedingo`
+- **Org**: `solo-developer-p9`
+- **Proyecto**: `wedingo-6c26a`
 - **DSN**: definido en `VITE_SENTRY_DSN` (hay fallback hardcodeado en `src/lib/sentry.ts`)
 - **Entorno**: `production` / `development`
 - **Traces**: 10% en producción, 0% en desarrollo
@@ -87,6 +88,8 @@ Escenario actual: 20→50 usuarios en 2 minutos, umbrales p95 < 2s y < 5% errore
 | `VITE_SUPERADMIN_ROUTE` | Ruta del login superadmin |
 | `FIREBASE_TOKEN` | Deploy a Firebase Hosting |
 | `SENTRY_AUTH_TOKEN` | Upload de sourcemaps a Sentry (opcional) |
+| `SENTRY_ORG` | Slug de org Sentry: `solo-developer-p9` |
+| `SENTRY_PROJECT` | Slug de proyecto Sentry: `wedingo-6c26a` |
 
 ## Comandos útiles
 
