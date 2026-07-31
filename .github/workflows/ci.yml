@@ -112,7 +112,10 @@ jobs:
           curl -s -o /dev/null -w "%{http_code}\n" http://localhost:4173/index.html
           echo "--- preview.log ---"
           cat /tmp/preview.log
-          pkill -f "vite preview" || true
+          pkill -f "vite.js" || pkill -f "vite preview" || true
+          sleep 1
+          echo "--- port after kill ---"
+          (lsof -i :4173 || ss -tlnp 2>/dev/null | grep 4173 || echo "PORT FREE")
       - run: npm run e2e
         env:
           VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
