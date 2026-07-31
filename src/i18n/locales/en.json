@@ -193,8 +193,8 @@
   },
   "setup": {
     "mapUrlLabel": "Google Maps URL",
-    "mapUrlPlaceholder": "https://maps.google.com/maps?q=...",
-    "mapUrlHint": "Paste the Google Maps URL of the venue. The map will be displayed on the invitation.",
+    "mapUrlPlaceholder": "https://maps.app.goo.gl/...",
+    "mapUrlHint": "Paste the Google Maps URL of the venue (e.g. https://maps.app.goo.gl/... or https://maps.google.com/maps?q=...). The map will be displayed on the invitation.",
     "mapUrlInvalid": "Invalid Google Maps URL",
     "loadingTitle": "Loading invitation",
     "loadingText": "We are loading your saved data.",

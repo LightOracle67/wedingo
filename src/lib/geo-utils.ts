@@ -67,15 +67,17 @@ export const buildGoogleMapsEmbedSearchUrl = (place: string, language = "es") =>
   `https://maps.google.com/maps?q=${encodeURIComponent(place)}&hl=${language}&z=14&output=embed`;
 
 const GOOGLE_MAPS_URL_PATTERN = /^https:\/\/(www\.)?google\.(com|[a-z]{2,3})\/maps\/.+$/;
+const GOOGL_URL_PATTERN = /^https:\/\/maps\.app\.goo\.gl\/[a-zA-Z0-9_-]+$/;
 
 export function isValidGoogleMapsUrl(url: string): boolean {
-  return GOOGLE_MAPS_URL_PATTERN.test(url.trim());
+  const trimmed = url.trim();
+  return GOOGLE_MAPS_URL_PATTERN.test(trimmed) || GOOGL_URL_PATTERN.test(trimmed);
 }
 
 export function convertToEmbedUrl(mapUrl: string): string {
   const url = mapUrl.trim();
-  // Already an embed URL
-  if (url.includes('output=embed')) return url;
+  // Already an embed URL or a goo.gl short link (can't convert, skip embed)
+  if (url.includes('output=embed') || GOOGL_URL_PATTERN.test(url)) return url;
   // Convert a standard Google Maps URL to embed
   try {
     const parsed = new URL(url);

@@ -193,8 +193,8 @@
   },
   "setup": {
     "mapUrlLabel": "URL de Google Maps",
-    "mapUrlPlaceholder": "https://maps.google.com/maps?q=...",
-    "mapUrlHint": "Pega la URL de Google Maps del lugar. El mapa se mostrará en la invitación.",
+    "mapUrlPlaceholder": "https://maps.app.goo.gl/...",
+    "mapUrlHint": "Pega la URL de Google Maps del lugar (ej. https://maps.app.goo.gl/... o https://maps.google.com/maps?q=...). El mapa se mostrará en la invitación.",
     "mapUrlInvalid": "URL de Google Maps no válida",
     "loadingTitle": "Cargando invitación",
     "loadingText": "Estamos cargando los datos guardados.",
