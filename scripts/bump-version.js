@@ -1,23 +1,18 @@
-#!/usr/bin/env node
 /**
  * Version bump automático: package.json + constants.ts + changelog.ts + tag + release.
  *
  * Uso:
  *   node scripts/bump-version.js patch|minor|major|<version-explicita>
- *
- * Ejemplo:
- *   node scripts/bump-version.js minor   → 2.36.0 → 2.37.0
- *   node scripts/bump-version.js patch   → 2.36.0 → 2.36.1
- *   node scripts/bump-version.js 2.40.0  → fuerza versión 2.40.0
  */
-const fs = require("fs");
-const path = require("path");
-const { execSync } = require("child_process");
+import { readFileSync, writeFileSync } from "fs";
+import { fileURLToPath } from "url";
+import { dirname, resolve } from "path";
+import { execSync } from "child_process";
 
-const root = path.resolve(__dirname, "..");
-const pkgPath = path.join(root, "package.json");
-const constantsPath = path.join(root, "src/lib/constants.ts");
-const changelogPath = path.join(root, "src/lib/changelog.ts");
+const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const pkgPath = resolve(root, "package.json");
+const constantsPath = resolve(root, "src/lib/constants.ts");
+const changelogPath = resolve(root, "src/lib/changelog.ts");
 
 const arg = process.argv[2];
 if (!arg) {
@@ -25,7 +20,7 @@ if (!arg) {
   process.exit(1);
 }
 
-const pkg = JSON.parse(fs.readFileSync(pkgPath, "utf8"));
+const pkg = JSON.parse(readFileSync(pkgPath, "utf8"));
 const current = pkg.version;
 const [major, minor, patch] = current.split(".").map(Number);
 
@@ -45,15 +40,15 @@ if (/^\d+\.\d+\.\d+$/.test(arg)) {
 
 // 1. package.json
 pkg.version = next;
-fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + "\n");
+writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + "\n");
 
 // 2. constants.ts
-let constants = fs.readFileSync(constantsPath, "utf8");
+let constants = readFileSync(constantsPath, "utf8");
 constants = constants.replace(/APP_VERSION = "[^"]+"/, `APP_VERSION = "${next}"`);
-fs.writeFileSync(constantsPath, constants);
+writeFileSync(constantsPath, constants);
 
 // 3. changelog.ts — inserta nuevo entry al inicio del array
-const changelog = fs.readFileSync(changelogPath, "utf8");
+const changelog = readFileSync(changelogPath, "utf8");
 const today = new Date().toISOString().slice(0, 10);
 const newEntry = `  {
     version: "${next}",
@@ -64,7 +59,7 @@ const newEntry = `  {
   },
 `;
 const updated = changelog.replace(/export const CHANGELOG = \[/, `export const CHANGELOG = [\n${newEntry}`);
-fs.writeFileSync(changelogPath, updated);
+writeFileSync(changelogPath, updated);
 
 console.log(`✅ v${current} → v${next}`);
 console.log("   - package.json actualizado");

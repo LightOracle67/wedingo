@@ -1,5 +1,15 @@
 export const CHANGELOG = [
   {
+    version: "2.36.1",
+    date: "2026-07-31",
+    changes: [
+      "FEAT: piezas enterprise — bump automático, preview channels por PR, Sentry release+sourcemaps, load test k6, docs/OPS.md",
+      "FIX: bump-version.js convertido a ESM",
+      "FIX: slugs Sentry correctos (solo-developer-p9 / wedingo-6c26a)",
+    ],
+  },
+
+  {
     version: "2.35.0",
     date: "2026-07-31",
     changes: [
