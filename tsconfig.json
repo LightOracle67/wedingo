@@ -14,7 +14,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "skipLibCheck": false,
+    "skipLibCheck": true,
     "allowJs": true,
     "checkJs": false,
     "esModuleInterop": true,
