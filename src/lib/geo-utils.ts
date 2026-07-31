@@ -66,6 +66,29 @@ export const buildGoogleMapsEmbedUrl = (location: { latitude: number; longitude:
 export const buildGoogleMapsEmbedSearchUrl = (place: string, language = "es") =>
   `https://maps.google.com/maps?q=${encodeURIComponent(place)}&hl=${language}&z=14&output=embed`;
 
+const GOOGLE_MAPS_URL_PATTERN = /^https:\/\/(www\.)?google\.(com|[a-z]{2,3})\/maps\/.+$/;
+
+export function isValidGoogleMapsUrl(url: string): boolean {
+  return GOOGLE_MAPS_URL_PATTERN.test(url.trim());
+}
+
+export function convertToEmbedUrl(mapUrl: string): string {
+  const url = mapUrl.trim();
+  // Already an embed URL
+  if (url.includes('output=embed')) return url;
+  // Convert a standard Google Maps URL to embed
+  try {
+    const parsed = new URL(url);
+    const q = parsed.searchParams.get('q') || '';
+    const ll = parsed.searchParams.get('ll') || '';
+    const query = q || ll || parsed.pathname.replace(/^\/maps\/place\//, '').replace(/\/.+$/, '');
+    const encoded = encodeURIComponent(query.replace(/\+/g, ' '));
+    return `https://maps.google.com/maps?q=${encoded}&hl=es&z=14&output=embed`;
+  } catch {
+    return url;
+  }
+}
+
 export const buildGoogleMapsSearchUrl = (place: string) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place)}`;
 

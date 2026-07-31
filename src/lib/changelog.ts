@@ -438,6 +438,20 @@ export const CHANGELOG = [
     ],
   },
   {
+    version: "2.36.0",
+    date: "2026-07-31",
+    changes: [
+      "FEAT: Google Maps URL en vez de Leaflet/OSM — nuevo campo weddingMapUrl en config",
+      "FEAT: DateSectionForm reescrita — input de URL con validación + iframe preview",
+      "FEAT: WeddingMap simplificado — solo recibe mapUrl, sin geocodificación",
+      "FEAT: DetailsSection usa weddingMapUrl directamente, sin locationMapTarget",
+      "FEAT: isValidGoogleMapsUrl + convertToEmbedUrl en geo-utils",
+      "CLEANUP: eliminado useMapPreview hook y map-utils (OSM tile canvas)",
+      "CLEANUP: eliminado locationMapTarget/Error/Loading de UIContext",
+      "CLEANUP: eliminado OSM search (searchLocations, handlePlaceChange, geocodeLocation)",
+    ],
+  },
+  {
     version: "2.0.1",
     date: "2026-06-30",
     changes: [

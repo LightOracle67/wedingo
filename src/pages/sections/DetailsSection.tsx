@@ -1,14 +1,13 @@
-import { memo, useMemo } from "react";
+import { memo } from "react";
 import { useTranslation } from "react-i18next";
-import { buildGoogleMapsUrl, buildGoogleMapsSearchUrl, buildAppleMapsUrl, buildAppleMapsSearchUrl } from "../../lib/utils";
 import WeddingMap from "../../components/WeddingMap";
+import { isValidGoogleMapsUrl } from "../../lib/geo-utils";
 
 const DetailsSection = memo(function DetailsSection({
   style, className,
   formattedDate, formattedTime, hasLocationData, locationDescription,
   calendarLink,
-  locationMapTarget,
-  configWeddingPlace, transportInfo,
+  weddingMapUrl, configWeddingPlace, transportInfo,
 }: {
   style?: React.CSSProperties;
   className?: string;
@@ -17,26 +16,11 @@ const DetailsSection = memo(function DetailsSection({
   hasLocationData: boolean;
   locationDescription?: string;
   calendarLink?: string;
-  locationMapTarget?: { latitude: number; longitude: number } | null;
+  weddingMapUrl?: string;
   configWeddingPlace?: string;
   transportInfo?: string;
 }) {
   const { t } = useTranslation();
-  const mapsUrl = useMemo(() => {
-    if (locationMapTarget) {
-      return {
-        google: buildGoogleMapsUrl(locationMapTarget),
-        apple: buildAppleMapsUrl(locationMapTarget, configWeddingPlace),
-      };
-    }
-    if (configWeddingPlace) {
-      return {
-        google: buildGoogleMapsSearchUrl(configWeddingPlace),
-        apple: buildAppleMapsSearchUrl(configWeddingPlace),
-      };
-    }
-    return null;
-  }, [locationMapTarget, configWeddingPlace]);
   return (
     <section
       data-story-section="details"
@@ -80,30 +64,15 @@ const DetailsSection = memo(function DetailsSection({
             </a>
           </div>
         ) : null}
-        {hasLocationData ? (
-          <WeddingMap weddingPlace={configWeddingPlace} weddingLatitude={String(locationMapTarget?.latitude ?? "")} weddingLongitude={String(locationMapTarget?.longitude ?? "")} t={t} />
-        ) : null}
-        {mapsUrl ? (
-          <div className="story-map__actions" style={{ marginTop: "0.5rem" }}>
-            <a
-              className="setup-button setup-button--ghost setup-button--compact"
-              href={mapsUrl.google}
-              target="_blank"
-              rel="noopener noreferrer"
-              referrerPolicy="no-referrer"
-            >
-              {t("details.viewGoogleMaps")}
-            </a>
-            <a
-              className="setup-button setup-button--ghost setup-button--compact"
-              href={mapsUrl.apple}
-              target="_blank"
-              rel="noopener noreferrer"
-              referrerPolicy="no-referrer"
-            >
-              {t("details.viewAppleMaps")}
-            </a>
-          </div>
+        {weddingMapUrl && isValidGoogleMapsUrl(weddingMapUrl) ? (
+          <>
+            <WeddingMap mapUrl={weddingMapUrl} t={t} />
+            <div className="story-map__actions" style={{ marginTop: "0.5rem" }}>
+              <a className="setup-button setup-button--ghost setup-button--compact" href={weddingMapUrl} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer">
+                {t("details.viewGoogleMaps")}
+              </a>
+            </div>
+          </>
         ) : null}
       </div>
     </section>

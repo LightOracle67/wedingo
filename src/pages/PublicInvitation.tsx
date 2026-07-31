@@ -22,10 +22,7 @@ import { useTranslation } from "react-i18next";
 
 import { useApp } from "../contexts";
 import { useStoryNavigation } from "../hooks/useStoryNavigation";
-import {
-  getValidCoordinates,
-  resolveLocationTarget,
-} from "../lib/utils";
+
 import { MONTH_VALUE_TO_NUMBER } from "../lib/constants";
 import { parseSectionOrder } from "../lib/section-utils";
 
@@ -84,8 +81,7 @@ export default function PublicInvitation() {
   const {
     config, isConfigLoading, configLoadError, formattedDate, formattedTime, calendarLink,
     rsvpForm, rsvpEntries, rsvpMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
-    locationMapContainerRef, setLocationMapError,
-    setLocationMapLoading, locationMapTarget, setLocationMapTarget,
+
     handleRsvpSubmit, updateRsvpField, handleDeleteRsvp,
     isAdminTokenLoggedIn,
     handleDietaryToggle, DIETARY_OPTIONS, computeAge,
@@ -186,34 +182,6 @@ export default function PublicInvitation() {
     return () => clearInterval(id);
   }, [weddingDate]);
 
-  // ═══════════════════════════════════════════════════════
-  // MAPA (Google Maps Embed)
-  // ═══════════════════════════════════════════════════════
-
-  useEffect(() => {
-    const place = (config.weddingPlace || "").trim();
-    const hasExact = Boolean(getValidCoordinates(config.weddingLatitude, config.weddingLongitude));
-    if (!place && !hasExact) {
-      setLocationMapTarget(null);
-      setLocationMapLoading(false);
-      setLocationMapError("");
-      return;
-    }
-    let cancelled = false;
-    setLocationMapError("");
-    setLocationMapLoading(true);
-    resolveLocationTarget({ place, latitudeValue: config.weddingLatitude, longitudeValue: config.weddingLongitude })
-      .then((result) => {
-        if (cancelled) return;
-        setLocationMapTarget(result || null);
-        setLocationMapLoading(false);
-        if (!result) setLocationMapError(t("public.locationNotFound"));
-      })
-      .catch(() => { if (!cancelled) { setLocationMapError(t("public.locationMapError")); setLocationMapLoading(false); } });
-    return () => { cancelled = true; setLocationMapTarget(null); };
-  }, [config.weddingPlace, config.weddingLatitude, config.weddingLongitude,
-    setLocationMapError, setLocationMapLoading, setLocationMapTarget, t]);
-
   // ─── Schema.org JSON-LD ─────────────────────────────
   useEffect(() => {
     if (!config.firstName || !config.weddingYear) return;
@@ -238,13 +206,8 @@ export default function PublicInvitation() {
   }, [config.firstName, config.secondName, config.inviteMessage, config.weddingYear, config.weddingMonth, config.weddingDay, config.weddingHour, config.weddingMinute, config.weddingPlace]);
 
   // ─── Datos de ubicación derivados ──────────────────────
-  const configuredCoordinates = getValidCoordinates(config.weddingLatitude, config.weddingLongitude);
-  const hasLocationData = Boolean(config.weddingPlace || configuredCoordinates);
-  const locationDescription = config.weddingPlace
-    ? config.weddingPlace
-    : configuredCoordinates
-      ? t("public.locationCoordinates", { lat: configuredCoordinates.latitude, lng: configuredCoordinates.longitude })
-      : "";
+  const hasLocationData = Boolean(config.weddingPlace || config.weddingMapUrl);
+  const locationDescription = config.weddingPlace || "";
 
   // ═══════════════════════════════════════════════════════
   // PROPS PARA CADA SECCIÓN (MEMOIZADOS)
@@ -270,8 +233,7 @@ export default function PublicInvitation() {
       hasLocationData,
       locationDescription,
       calendarLink,
-      locationMapTarget,
-      configWeddingPlace: config.weddingPlace,
+      weddingMapUrl: config.weddingMapUrl,
       transportInfo: config.transportInfo,
     },
     info: {
@@ -320,8 +282,7 @@ export default function PublicInvitation() {
     config.couplePhoto, config.bankInfo, config.menuEnabled,
     config.menuCarne, config.menuPescado, config.menuVegano, config.menuPostre, config.menuTexto,
     countdown, formattedDate, formattedTime,
-    hasLocationData, locationDescription, calendarLink,
-    locationMapTarget,
+    hasLocationData, locationDescription, calendarLink, config.weddingMapUrl,
     rsvpForm, rsvpEntries, rsvpMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
     updateRsvpField, handleRsvpSubmit, handleDeleteRsvp, handleDietaryToggle, DIETARY_OPTIONS, computeAge,
   ]);

@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, afterEach, beforeAll } from "vitest";
+import { describe, it, expect, vi, afterEach } from "vitest";
 import { act } from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 
@@ -22,16 +22,12 @@ const mockUseAppValue = vi.hoisted(() => ({
   updateRsvpField: vi.fn(), handleRsvpSubmit: vi.fn(), handleDeleteRsvp: vi.fn(),
   handleDietaryToggle: vi.fn(), DIETARY_OPTIONS: [],
   computeAge: vi.fn(), isAdminTokenLoggedIn: true,
-  locationMapContainerRef: { current: null },
-  setLocationMapError: vi.fn(), setLocationMapLoading: vi.fn(),
-  locationMapTarget: null, setLocationMapTarget: vi.fn(),
+
 }));
 
 const mockUseParams = vi.hoisted(() => ({ inviteToken: "test" }));
 const mockUseLocation = vi.hoisted(() => ({ pathname: "/test", search: "", hash: "" }));
 
-const mockResolveLocationTarget = vi.hoisted(() => vi.fn());
-const mockGetValidCoordinates = vi.hoisted(() => vi.fn());
 const mockStoryNavigation = vi.hoisted(() => ({
   activeSection: "hero", isTransitioning: false,
   getSectionStyle: () => ({}),
@@ -61,8 +57,6 @@ vi.mock("../../hooks/useStoryNavigation", () => ({
 }));
 
 vi.mock("../../lib/utils", () => ({
-  getValidCoordinates: (...args: unknown[]) => mockGetValidCoordinates(...args),
-  resolveLocationTarget: (...args: unknown[]) => mockResolveLocationTarget(...args),
   buildGoogleMapsUrl: vi.fn(() => ""),
   buildGoogleMapsSearchUrl: vi.fn(() => ""),
   buildAppleMapsUrl: vi.fn(() => ""),
@@ -81,17 +75,9 @@ vi.mock("../sections/AccommodationSection", () => mockSection("accommodation"));
 vi.mock("../sections/GallerySection", () => mockSection("gallery"));
 vi.mock("../sections/RsvpSection", () => mockSection("rsvp"));
 
-vi.mock("leaflet", () => ({ default: { map: vi.fn(() => ({ remove: vi.fn(), whenReady: vi.fn((cb: () => void) => cb()), invalidateSize: vi.fn() })), tileLayer: vi.fn(() => ({ addTo: vi.fn() })), circleMarker: vi.fn(() => ({ addTo: vi.fn() })) } }));
-vi.mock("leaflet/dist/leaflet.css", () => ({}));
-
 import PublicInvitation from "../PublicInvitation";
 
 describe("PublicInvitation", () => {
-  beforeAll(() => {
-    mockGetValidCoordinates.mockReturnValue(null);
-    mockResolveLocationTarget.mockResolvedValue(null);
-  });
-
   afterEach(() => {
     const headScripts = document.head.querySelectorAll('script[type="application/ld+json"]');
     headScripts.forEach((s) => s.remove());
@@ -171,12 +157,6 @@ describe("PublicInvitation", () => {
     mockUseAppValue.config.kidsPolicy = "";
   });
 
-  it("renders with location map target", () => {
-    mockUseAppValue.locationMapTarget = { latitude: 40.4168, longitude: -3.7038, label: "Madrid" };
-    expect(() => render(<PublicInvitation />)).not.toThrow();
-    mockUseAppValue.locationMapTarget = null;
-  });
-
   it("shows retry button in error state and handles click", () => {
     const reloadMock = vi.fn();
     const origLocation = window.location;
@@ -210,38 +190,6 @@ describe("PublicInvitation", () => {
     expect(screen.queryByLabelText("envelope.tapContinue")).toBeNull();
     vi.useRealTimers();
     mockUseAppValue.isAdminTokenLoggedIn = true;
-  });
-
-  it("initializes map with weddingPlace and container ref", async () => {
-    const container = document.createElement("div");
-    document.body.appendChild(container);
-    mockUseAppValue.locationMapContainerRef.current = container;
-    mockGetValidCoordinates.mockReturnValue({ latitude: 40.4168, longitude: -3.7038 });
-    mockResolveLocationTarget.mockResolvedValue({ latitude: 40.4168, longitude: -3.7038, label: "Madrid" });
-    vi.useFakeTimers({ toFake: ["setTimeout", "clearTimeout"] });
-    render(<PublicInvitation />);
-    act(() => { vi.advanceTimersByTime(100); });
-    vi.useRealTimers();
-    document.body.removeChild(container);
-    mockUseAppValue.locationMapContainerRef.current = null;
-    mockGetValidCoordinates.mockReturnValue(null);
-    mockResolveLocationTarget.mockResolvedValue(null);
-  });
-
-  it("renders map with geocoded location", async () => {
-    const container = document.createElement("div");
-    document.body.appendChild(container);
-    mockUseAppValue.locationMapContainerRef.current = container;
-    mockGetValidCoordinates.mockReturnValue(null);
-    mockResolveLocationTarget.mockResolvedValue({ latitude: 40.4168, longitude: -3.7038, label: "Madrid" });
-    vi.useFakeTimers({ toFake: ["setTimeout", "clearTimeout"] });
-    render(<PublicInvitation />);
-    act(() => { vi.advanceTimersByTime(100); });
-    vi.useRealTimers();
-    document.body.removeChild(container);
-    mockUseAppValue.locationMapContainerRef.current = null;
-    mockGetValidCoordinates.mockReturnValue(null);
-    mockResolveLocationTarget.mockResolvedValue(null);
   });
 
   it("handles section order without rsvp in admin mode", () => {
@@ -282,16 +230,6 @@ describe("PublicInvitation", () => {
     render(<PublicInvitation />);
     mockUseAppValue.config.sectionOrder = "";
     mockUseAppValue.config.hiddenSections = "gifts,accommodation,gallery,rsvp";
-  });
-
-  it("cleans up map on unmount", () => {
-    const container = document.createElement("div");
-    document.body.appendChild(container);
-    mockUseAppValue.locationMapContainerRef.current = container;
-    const { unmount } = render(<PublicInvitation />);
-    unmount();
-    document.body.removeChild(container);
-    mockUseAppValue.locationMapContainerRef.current = null;
   });
 
   it("injects schema.org JSON-LD when names are present", () => {

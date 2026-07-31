@@ -37,6 +37,7 @@ export interface InvitationConfig {
   weddingPlace: string;
   weddingLatitude: string;
   weddingLongitude: string;
+  weddingMapUrl?: string;
   weddingSchedule: string;
   weddingDressCode: string;
   couplePhoto: string;

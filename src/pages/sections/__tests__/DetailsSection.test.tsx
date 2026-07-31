@@ -6,6 +6,10 @@ vi.mock("react-i18next", () => ({
   initReactI18next: { type: "3rdParty", init: vi.fn() },
 }));
 
+vi.mock("../../../lib/geo-utils", () => ({
+  isValidGoogleMapsUrl: (url: string) => url.startsWith("https://maps.google.com"),
+}));
+
 vi.mock("../../../lib/utils", () => ({
   buildGoogleMapsUrl: vi.fn(() => "https://maps.google.com"),
   buildAppleMapsUrl: vi.fn(() => "https://maps.apple.com"),
@@ -27,7 +31,7 @@ const baseProps = {
   hasLocationData: true,
   locationDescription: "Madrid",
   calendarLink: "https://calendar.example.com",
-  locationMapTarget: { latitude: 40.4168, longitude: -3.7038 },
+  weddingMapUrl: "https://maps.google.com/maps?q=40.4168,-3.7038",
   configWeddingPlace: "Madrid",
   transportInfo: "Bus available",
 };
@@ -44,7 +48,6 @@ describe("DetailsSection", () => {
     expect(screen.getByText("details.addToCalendar")).toBeDefined();
     expect(screen.getByTestId("wedding-map")).toBeDefined();
     expect(screen.getByText("details.viewGoogleMaps")).toBeDefined();
-    expect(screen.getByText("details.viewAppleMaps")).toBeDefined();
   });
 
   it("renders without location data", () => {
@@ -57,7 +60,7 @@ describe("DetailsSection", () => {
         hasLocationData={false}
         locationDescription=""
         calendarLink={null}
-        locationMapTarget={null}
+        weddingMapUrl=""
         configWeddingPlace=""
         transportInfo=""
       />,
@@ -78,7 +81,7 @@ describe("DetailsSection", () => {
         hasLocationData={true}
         locationDescription="Unknown location"
         calendarLink={null}
-        locationMapTarget={null}
+        weddingMapUrl=""
         configWeddingPlace="Madrid"
         transportInfo=""
       />,
@@ -96,14 +99,13 @@ describe("DetailsSection", () => {
         hasLocationData={false}
         locationDescription=""
         calendarLink={null}
-        locationMapTarget={null}
+        weddingMapUrl=""
         configWeddingPlace=""
         transportInfo=""
       />,
     );
     expect(screen.getByText("details.placePending")).toBeDefined();
     expect(screen.queryByText("details.viewGoogleMaps")).toBeNull();
-    expect(screen.queryByText("details.viewAppleMaps")).toBeNull();
     expect(screen.queryByTestId("wedding-map")).toBeNull();
   });
 });

@@ -22,17 +22,16 @@ vi.mock("../../../lib/constants", () => ({
   MONTH_VALUE_TO_NUMBER: { enero: 1, febrero: 2, marzo: 3 },
 }));
 
-const mockSearchLocations = vi.hoisted(() => vi.fn());
+const mockFormData = vi.hoisted(() => ({ weddingMapUrl: "" }));
 vi.mock("../../../lib/geo-utils", () => ({
-  searchLocations: mockSearchLocations,
+  isValidGoogleMapsUrl: (url: string) => url.startsWith("https://maps.google.com"),
+  convertToEmbedUrl: (url: string) => url.replace("maps.google.com", "maps.google.com/embed"),
 }));
-
-const mockPreviewBackgrounds = vi.hoisted(() => [] as { id: string; src: string }[]);
 
 vi.mock("../../../contexts", () => ({
   useApp: () => ({
     config: { theme: "golden", menuEnabled: "true" },
-    formData: {},
+    formData: mockFormData,
     updateFormField: mockUpdateFormField,
     handleDayChange: mockHandleDayChange,
     handleYearChange: mockHandleYearChange,
@@ -40,7 +39,6 @@ vi.mock("../../../contexts", () => ({
     handleMinuteChange: mockHandleMinuteChange,
     handleMinuteBlur: mockHandleMinuteBlur,
     maxAllowedYear: 2099,
-    previewBackgrounds: mockPreviewBackgrounds,
   }),
 }));
 
@@ -49,8 +47,7 @@ import DateSectionForm from "../DateSectionForm";
 describe("DateSectionForm", () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    mockPreviewBackgrounds.length = 0;
-    mockSearchLocations.mockResolvedValue([]);
+    mockFormData.weddingMapUrl = "";
   });
 
   it("renders without crashing", () => {
@@ -81,12 +78,6 @@ describe("DateSectionForm", () => {
     expect(screen.getByText("setup.minuteLabel")).toBeDefined();
   });
 
-  it("renders time help texts", () => {
-    render(<DateSectionForm />);
-    expect(screen.getByText("setup.hourHint")).toBeDefined();
-    expect(screen.getByText("setup.minuteHint")).toBeDefined();
-  });
-
   it("renders year max hint", () => {
     render(<DateSectionForm />);
     expect(screen.getByText("setup.yearMaxHint")).toBeDefined();
@@ -96,11 +87,6 @@ describe("DateSectionForm", () => {
     render(<DateSectionForm />);
     expect(screen.getByText("setup.scheduleLabel")).toBeDefined();
     expect(screen.getByPlaceholderText("setup.schedulePlaceholder")).toBeDefined();
-  });
-
-  it("renders schedule help text", () => {
-    render(<DateSectionForm />);
-    expect(screen.getByText("setup.scheduleHint")).toBeDefined();
   });
 
   it("renders month options", () => {
@@ -168,165 +154,29 @@ describe("DateSectionForm", () => {
     expect(mockUpdateFormField).toHaveBeenCalledWith("weddingSchedule", "a".repeat(2000));
   });
 
-  it("does not render location preview when no backgrounds", () => {
+  it("renders map URL input", () => {
     render(<DateSectionForm />);
-    expect(screen.queryByText("setup.mapPreview")).toBeNull();
+    expect(screen.getByText("setup.mapUrlLabel")).toBeDefined();
+    expect(screen.getByPlaceholderText("setup.mapUrlPlaceholder")).toBeDefined();
+    expect(screen.getByText("setup.mapUrlHint")).toBeDefined();
   });
 
-  it("renders location preview when backgrounds include default", () => {
-    mockPreviewBackgrounds.push({ id: "default", src: "https://example.com/map.png" });
+  it("renders iframe preview when valid URL entered", () => {
+    mockFormData.weddingMapUrl = "https://maps.google.com/maps?q=40.4168,-3.7038";
     render(<DateSectionForm />);
+    expect(document.querySelector("iframe")).toBeDefined();
     expect(screen.getByText("setup.mapPreview")).toBeDefined();
-    const img = screen.getByAltText("setup.mapPreviewAlt");
-    expect(img).toBeDefined();
-    expect(img.getAttribute("src")).toBe("https://example.com/map.png");
   });
 
-  it("does not render location preview when backgrounds have no default entry", () => {
-    mockPreviewBackgrounds.push({ id: "other", src: "https://example.com/other.png" });
+  it("shows invalid URL error", () => {
+    mockFormData.weddingMapUrl = "not-a-valid-url";
     render(<DateSectionForm />);
-    expect(screen.queryByText("setup.mapPreview")).toBeNull();
-  });
-
-  it("calls handlePlaceChange and updates fields with short value", () => {
-    render(<DateSectionForm />);
-    const input = screen.getByPlaceholderText("setup.placePlaceholder");
-    fireEvent.change(input, { target: { value: "NY" } });
-    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingPlace", "NY");
-    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingLatitude", "");
-    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingLongitude", "");
-  });
-
-  it("clears weddingPlaceResults on place input blur after timeout", () => {
-    vi.useFakeTimers();
-    render(<DateSectionForm />);
-    const input = screen.getByPlaceholderText("setup.placePlaceholder");
-    fireEvent.change(input, { target: { value: "New York" } });
-    const resultsEl = document.getElementById("weddingPlaceResults");
-    expect(resultsEl?.textContent).toBe("setup.searching");
-    fireEvent.blur(input);
-    vi.advanceTimersByTime(200);
-    expect(resultsEl?.textContent).toBe("");
-    vi.useRealTimers();
-  });
-
-  it("limits place value to 120 characters", () => {
-    render(<DateSectionForm />);
-    const input = screen.getByPlaceholderText("setup.placePlaceholder");
-    const longText = "a".repeat(150);
-    fireEvent.change(input, { target: { value: longText } });
-    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingPlace", "a".repeat(120));
-  });
-
-  it("shows searching placeholder when place has 3+ chars", () => {
-    render(<DateSectionForm />);
-    const input = screen.getByPlaceholderText("setup.placePlaceholder");
-    fireEvent.change(input, { target: { value: "New York" } });
-    const resultsEl = document.getElementById("weddingPlaceResults");
-    expect(resultsEl?.textContent).toBe("setup.searching");
-  });
-
-  it("renders location search results", async () => {
-    mockSearchLocations.mockResolvedValue([
-      { latitude: "40.7128", longitude: "-74.0060", label: "New York, USA" },
-    ]);
-    render(<DateSectionForm />);
-    const input = screen.getByPlaceholderText("setup.placePlaceholder");
-    fireEvent.change(input, { target: { value: "New York" } });
-    await vi.waitFor(() => {
-      expect(screen.getByText("New York, USA")).toBeDefined();
-    });
-  });
-
-  it("clicks search result and updates fields", async () => {
-    mockSearchLocations.mockResolvedValue([
-      { latitude: "40.7128", longitude: "-74.0060", label: "New York, USA" },
-    ]);
-    render(<DateSectionForm />);
-    const input = screen.getByPlaceholderText("setup.placePlaceholder");
-    fireEvent.change(input, { target: { value: "New York" } });
-    await vi.waitFor(() => {
-      expect(screen.getByText("New York, USA")).toBeDefined();
-    });
-    fireEvent.click(screen.getByText("New York, USA"));
-    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingPlace", "New York, USA");
-    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingLatitude", "40.7128");
-    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingLongitude", "-74.0060");
-  });
-
-  it("shows no results message when search returns empty", async () => {
-    mockSearchLocations.mockResolvedValue([]);
-    render(<DateSectionForm />);
-    const input = screen.getByPlaceholderText("setup.placePlaceholder");
-    fireEvent.change(input, { target: { value: "Nowhere" } });
-    await vi.waitFor(() => {
-      expect(screen.getByText("setup.noResults")).toBeDefined();
-    });
+    expect(screen.getByText("setup.mapUrlInvalid")).toBeDefined();
+    expect(document.querySelector("iframe")).toBeNull();
   });
 
   it("renders with prefix", () => {
     render(<DateSectionForm prefix="admin" />);
-    expect(screen.getByText("setup.placeLabel")).toBeDefined();
-  });
-
-  it("does not crash when weddingPlaceResults element is missing on 3+ char input", () => {
-    render(<DateSectionForm />);
-    const el = document.getElementById("weddingPlaceResults");
-    el?.remove();
-    const input = screen.getByPlaceholderText("setup.placePlaceholder");
-    expect(() => fireEvent.change(input, { target: { value: "New York" } })).not.toThrow();
-  });
-
-  it("clears results element on short value change when element exists", () => {
-    render(<DateSectionForm />);
-    const input = screen.getByPlaceholderText("setup.placePlaceholder");
-    fireEvent.change(input, { target: { value: "NY" } });
-    const el = document.getElementById("weddingPlaceResults");
-    expect(el?.textContent).toBe("");
-  });
-
-  it("renders schedule textarea and updates on change", () => {
-    render(<DateSectionForm />);
-    const textarea = screen.getByPlaceholderText("setup.schedulePlaceholder");
-    fireEvent.change(textarea, { target: { value: "Ceremony at 4pm" } });
-    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingSchedule", "Ceremony at 4pm");
-  });
-
-  it("resets coordinates on place change", () => {
-    render(<DateSectionForm />);
-    const input = screen.getByPlaceholderText("setup.placePlaceholder");
-    fireEvent.change(input, { target: { value: "Madrid" } });
-    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingLatitude", "");
-    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingLongitude", "");
-  });
-
-  it("handles onBlur when weddingPlaceResults element is missing", () => {
-    vi.useFakeTimers();
-    render(<DateSectionForm />);
-    const el = document.getElementById("weddingPlaceResults");
-    el?.remove();
-    const input = screen.getByPlaceholderText("setup.placePlaceholder");
-    fireEvent.blur(input);
-    expect(() => vi.advanceTimersByTime(200)).not.toThrow();
-    vi.useRealTimers();
-  });
-
-  it("handles onBlur timeout cleanup when element exists", () => {
-    vi.useFakeTimers();
-    render(<DateSectionForm />);
-    const input = screen.getByPlaceholderText("setup.placePlaceholder");
-    fireEvent.blur(input);
-    vi.advanceTimersByTime(200);
-    const el = document.getElementById("weddingPlaceResults");
-    expect(el?.textContent).toBe("");
-    vi.useRealTimers();
-  });
-
-  it("does not crash when short value change and results element is missing", () => {
-    render(<DateSectionForm />);
-    const el = document.getElementById("weddingPlaceResults");
-    el?.remove();
-    const input = screen.getByPlaceholderText("setup.placePlaceholder");
-    expect(() => fireEvent.change(input, { target: { value: "AB" } })).not.toThrow();
+    expect(screen.getByText("setup.mapUrlLabel")).toBeDefined();
   });
 });

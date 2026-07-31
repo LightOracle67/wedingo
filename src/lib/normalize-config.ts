@@ -50,4 +50,5 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   backgroundImage: s(value?.backgroundImage),
   customSeal: s(value?.customSeal),
   cornerDecoration: s(value?.cornerDecoration),
+  weddingMapUrl: s(value?.weddingMapUrl),
 });

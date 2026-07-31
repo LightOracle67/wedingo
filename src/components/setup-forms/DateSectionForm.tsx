@@ -1,97 +1,72 @@
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useApp } from "../../contexts";
 import { MONTH_OPTIONS, MONTH_VALUE_TO_NUMBER } from "../../lib/constants";
+import { isValidGoogleMapsUrl, convertToEmbedUrl } from "../../lib/geo-utils";
 
 export default function DateSectionForm({ prefix = "" }) {
-  const {
-    formData, updateFormField,
-    handleDayChange, handleYearChange, handleHourChange, handleMinuteChange, handleMinuteBlur,
-    maxAllowedYear, previewBackgrounds,
-  } = useApp();
+  const { formData, updateFormField, handleDayChange, handleYearChange, handleHourChange, handleMinuteChange, handleMinuteBlur, maxAllowedYear } = useApp();
   const { t } = useTranslation();
-
   const id = (name: string) => `${prefix}${name}`;
 
-  const handlePlaceChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const val = e.target.value.slice(0, 120);
-    updateFormField("weddingPlace", val);
-    updateFormField("weddingLatitude", "");
-    updateFormField("weddingLongitude", "");
-    if (val.length >= 3) {
-      const searchEl = document.getElementById("weddingPlaceResults");
-      if (searchEl) searchEl.textContent = t("setup.searching");
-      import("../../lib/geo-utils").then(({ searchLocations }) => {
-        searchLocations(val).then(results => {
-          const el = document.getElementById("weddingPlaceResults");
-          if (!el) return;
-          el.textContent = "";
-          if (!results.length) {
-            el.textContent = t("setup.noResults");
-            return;
-          }
-          results.forEach(r => {
-            const btn = document.createElement("button");
-            btn.type = "button";
-            btn.className = "setup-search-result";
-            btn.dataset.lat = r.latitude;
-            btn.dataset.lon = r.longitude;
-            btn.dataset.label = r.label;
-            btn.textContent = r.label;
-            btn.onclick = () => {
-              updateFormField("weddingPlace", r.label.slice(0, 120));
-              updateFormField("weddingLatitude", r.latitude);
-              updateFormField("weddingLongitude", r.longitude);
-              el.textContent = "";
-            };
-            el.appendChild(btn);
-          });
-        });
-      });
-    } else {
-      const el = document.getElementById("weddingPlaceResults");
-      if (el) el.textContent = "";
-    }
-  }, [updateFormField, t]);
+  const handleMapUrlChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    updateFormField("weddingMapUrl", e.target.value);
+  }, [updateFormField]);
+
+  const embedUrl = useMemo(() => {
+    if (!formData.weddingMapUrl?.trim()) return "";
+    const url = formData.weddingMapUrl.trim();
+    if (!isValidGoogleMapsUrl(url)) return "";
+    return convertToEmbedUrl(url);
+  }, [formData.weddingMapUrl]);
 
   return (
     <>
+      <label className="setup-label" htmlFor={id("weddingMapUrl")}>
+        {t("setup.mapUrlLabel")}
+        {formData.weddingMapUrl?.trim() && !isValidGoogleMapsUrl(formData.weddingMapUrl?.trim() || "") ? (
+          <span style={{ color: "#ef4444", fontSize: "0.8rem", marginLeft: "0.5rem" }}>{t("setup.mapUrlInvalid")}</span>
+        ) : null}
+      </label>
+      <input
+        id={id("weddingMapUrl")}
+        className="setup-input"
+        value={formData.weddingMapUrl || ""}
+        onChange={handleMapUrlChange}
+        placeholder={t("setup.mapUrlPlaceholder")}
+        autoComplete="off"
+      />
+      <p className="setup-help">{t("setup.mapUrlHint")}</p>
+
+      {embedUrl ? (
+        <div style={{ marginTop: "0.75rem" }}>
+          <p className="setup-label setup-label--tight">{t("setup.mapPreview")}</p>
+          <iframe
+            title="Google Maps preview"
+            src={embedUrl}
+            width="100%"
+            height="250"
+            style={{ border: 0, borderRadius: "var(--radius-xl)", marginTop: "0.35rem" }}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
+      ) : null}
+
+      <div className="story-divider" />
+
       <label className="setup-label" htmlFor={id("weddingPlace")}>
         {t("setup.placeLabel")}
       </label>
-      <div style={{ position: "relative" }}>
-        <input
-          id={id("weddingPlace")}
-          className="setup-input"
-          value={formData.weddingPlace}
-          onChange={handlePlaceChange}
-          onBlur={() => setTimeout(() => {
-            const el = document.getElementById("weddingPlaceResults");
-            if (el) el.textContent = "";
-          }, 200)}
-          placeholder={t("setup.placePlaceholder")}
-          autoComplete="street-address"
-        />
-        <div id="weddingPlaceResults" style={{
-          position: "absolute", top: "100%", left: 0, right: 0, zIndex: 10,
-          background: "color-mix(in srgb, var(--setup-grad-start) 96%, transparent)",
-          border: "1px solid var(--setup-border)", borderRadius: "0 0 0.7rem 0.7rem",
-          maxHeight: "200px", overflowY: "auto",
-        }} />
-      </div>
+      <input
+        id={id("weddingPlace")}
+        className="setup-input"
+        value={formData.weddingPlace}
+        onChange={(e) => updateFormField("weddingPlace", e.target.value.slice(0, 120))}
+        placeholder={t("setup.placePlaceholder")}
+        autoComplete="street-address"
+      />
       <p className="setup-help">{t("setup.placeHint")}</p>
-
-      {(() => {
-        if (!previewBackgrounds.length) return null;
-        const locationPreview = previewBackgrounds.find((bg: { id: string; src: string }) => bg.id === "default");
-        if (!locationPreview) return null;
-        return (
-          <div className="setup-location-preview">
-            <p className="setup-label setup-label--tight">{t("setup.mapPreview")}</p>
-            <img src={locationPreview.src} alt={t("setup.mapPreviewAlt")} className="setup-location-preview__image" />
-          </div>
-        );
-      })()}
 
       <div className="setup-date-grid">
         <div>
@@ -102,9 +77,7 @@ export default function DateSectionForm({ prefix = "" }) {
             value={formData.weddingDay}
             onChange={(e) => handleDayChange(e.target.value)}
             placeholder={t("setup.dayPlaceholder")}
-            inputMode="numeric"
-            autoComplete="off"
-            min="1" max="31"
+            inputMode="numeric" autoComplete="off" min="1" max="31"
           />
         </div>
         <div>
@@ -124,13 +97,9 @@ export default function DateSectionForm({ prefix = "" }) {
         <div>
           <label className="setup-label" htmlFor={id("weddingYear")}>{t("setup.yearLabel")}</label>
           <input
-            id={id("weddingYear")}
-            className="setup-input"
-            value={formData.weddingYear}
+            id={id("weddingYear")} className="setup-input" value={formData.weddingYear}
             onChange={(e) => handleYearChange(e.target.value)}
-            placeholder={t("setup.yearPlaceholder")}
-            inputMode="numeric"
-            autoComplete="off"
+            placeholder={t("setup.yearPlaceholder")} inputMode="numeric" autoComplete="off"
           />
           <p className="setup-help">{t("setup.yearMaxHint", { year: maxAllowedYear })}</p>
         </div>
@@ -140,50 +109,27 @@ export default function DateSectionForm({ prefix = "" }) {
         <div>
           <label className="setup-label" htmlFor={id("weddingHour")}>{t("setup.hourLabel")}</label>
           <input
-            id={id("weddingHour")}
-            className="setup-input"
-            value={formData.weddingHour}
+            id={id("weddingHour")} className="setup-input" value={formData.weddingHour}
             onChange={(e) => handleHourChange(e.target.value)}
-            placeholder={t("setup.hourPlaceholder")}
-            inputMode="numeric"
-            autoComplete="off"
-            min="0" max="23"
+            placeholder={t("setup.hourPlaceholder")} inputMode="numeric" autoComplete="off" min="0" max="23"
           />
-          <p className="setup-help">{t("setup.hourHint")}</p>
         </div>
         <div>
           <label className="setup-label" htmlFor={id("weddingMinute")}>{t("setup.minuteLabel")}</label>
           <input
-            id={id("weddingMinute")}
-            className="setup-input"
-            value={formData.weddingMinute}
-            onChange={(e) => handleMinuteChange(e.target.value)}
-            onBlur={handleMinuteBlur}
-            placeholder={t("setup.minutePlaceholder")}
-            inputMode="numeric"
-            autoComplete="off"
-            min="0" max="59"
+            id={id("weddingMinute")} className="setup-input" value={formData.weddingMinute}
+            onChange={(e) => handleMinuteChange(e.target.value)} onBlur={handleMinuteBlur}
+            placeholder={t("setup.minutePlaceholder")} inputMode="numeric" autoComplete="off" min="0" max="59"
           />
-          <p className="setup-help">{t("setup.minuteHint")}</p>
         </div>
       </div>
 
-      <label className="setup-label" htmlFor={id("weddingSchedule")}>
-        {t("setup.scheduleLabel")}
-      </label>
+      <label className="setup-label" htmlFor={id("weddingSchedule")}>{t("setup.scheduleLabel")}</label>
       <textarea
-        id={id("weddingSchedule")}
-        className="setup-textarea"
-        value={formData.weddingSchedule}
+        id={id("weddingSchedule")} className="setup-textarea" value={formData.weddingSchedule}
         onChange={(e) => updateFormField("weddingSchedule", e.target.value.slice(0, 2000))}
-        placeholder={t("setup.schedulePlaceholder")}
-        rows={4}
-        maxLength={2000}
-        autoComplete="off"
+        placeholder={t("setup.schedulePlaceholder")} rows={4} maxLength={2000} autoComplete="off"
       />
-      <p className="setup-help">{t("setup.scheduleHint")}</p>
-
-
     </>
   );
 }
