@@ -2800,9 +2800,9 @@ body::after {
   pointer-events: none;
 }
 .invite-corner--tl { top: 0.35rem; left: 0.35rem; }
-.invite-corner--tr { top: 0.35rem; right: 0.35rem; }
-.invite-corner--bl { bottom: 0.35rem; left: 0.35rem; }
-.invite-corner--br { bottom: 0.35rem; right: 0.35rem; }
+.invite-corner--tr { top: 0.35rem; right: 0.35rem; transform: scaleX(-1); }
+.invite-corner--bl { bottom: 0.35rem; left: 0.35rem; transform: scaleY(-1); }
+.invite-corner--br { bottom: 0.35rem; right: 0.35rem; transform: scale(-1, -1); }
 
 @media (max-width: 640px) {
   .invite-corner { width: 2.25rem; height: 2.25rem; }
