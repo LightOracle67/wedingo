@@ -9,6 +9,7 @@ export default defineConfig({
     headless: true,
   },
   webServer: {
+    cwd: "..",
     command: "npm run build && npx vite preview --port 4173",
     port: 4173,
     timeout: 120000,
