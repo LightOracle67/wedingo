@@ -99,7 +99,7 @@ jobs:
           node-version: 22
           cache: 'npm'
       - run: npm ci
-      - run: npx playwright install chromium
+      - run: npx playwright install --with-deps chromium
       - run: npm run e2e
         env:
           VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
