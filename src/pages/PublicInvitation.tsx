@@ -359,8 +359,7 @@ export default function PublicInvitation() {
 
   return (
     <div className={`app-scene ${isStoryTransitioning ? "app-scene--transitioning" : ""}`}
-      style={{ "--story-card-user-bg": config.backgroundImage ? `url(${config.backgroundImage})` : undefined,
-               "--story-section-user-bg": config.backgroundImage ? `url(${config.backgroundImage})` : undefined } as React.CSSProperties}>
+      style={{ "--story-card-user-bg": config.backgroundImage ? `url(${config.backgroundImage})` : undefined } as React.CSSProperties}>
       {showEnvelope ? <EnvelopeOverlay onOpen={() => { console.log("[app]", "[PublicInvitation]", "envelope opened", {}); setEnvelopeOpen(true); }} firstName={config.firstName} secondName={config.secondName} customSeal={config.customSeal} /> : null}
 
       {/* ── Decoraciones laterales (eucalipto) ── */}
