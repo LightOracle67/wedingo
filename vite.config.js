@@ -26,9 +26,16 @@ const sentryPlugin = process.env.SENTRY_AUTH_TOKEN
     })
   : null;
 
+import { readFileSync } from "fs";
+
+const pkg = JSON.parse(readFileSync(new URL("./package.json", import.meta.url), "utf8"));
+
 export default defineConfig({
   plugins: [react(), tailwindcss(), buildTimestamp(), sentryPlugin].filter(Boolean),
   base: "/",
+  define: {
+    "import.meta.env.VITE_APP_VERSION": JSON.stringify(pkg.version),
+  },
   resolve: {
     alias: {
       "@": "/src",
@@ -41,7 +48,6 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (id.includes("firebase")) return "vendor-firebase";
-          if (id.includes("/node_modules/leaflet/")) return "leaflet";
           if (id.includes("node_modules/.pnpm/react") || id.includes("node_modules/react")) return "vendor-react";
           if (id.includes("/node_modules/i18next/") || id.includes("/node_modules/react-i18next/")) return "i18n";
           if (id.includes("/node_modules/@sentry/")) return "vendor-sentry";

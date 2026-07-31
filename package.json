@@ -26,6 +26,8 @@
     "firebase:use": "firebase use --add",
     "deploy:hosting": "npm run build && firebase deploy --only hosting",
     "deploy": "npm run lint && npm run build && firebase deploy --only hosting,firestore:rules",
+    "bump": "node scripts/bump-version.js",
+    "loadtest": "k6 run scripts/load-test.js",
     "preready": "npm run lint && npm run build"
   },
   "lint-staged": {
