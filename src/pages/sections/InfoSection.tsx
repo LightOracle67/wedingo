@@ -1,9 +1,10 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
+import CornerDecorations from "../../components/CornerDecorations";
 
 const KNOWN_KIDS = new Set(["playArea", "supervised", "adultOnly"]);
 
-const InfoSection = memo(function InfoSection({ style, className, weddingSchedule, weddingDressCode, kidsPolicy }: { style?: React.CSSProperties; className?: string; weddingSchedule?: string; weddingDressCode?: string; kidsPolicy?: string }) {
+const InfoSection = memo(function InfoSection({ style, className, weddingSchedule, weddingDressCode, kidsPolicy, cornerDecoration }: { style?: React.CSSProperties; className?: string; weddingSchedule?: string; weddingDressCode?: string; kidsPolicy?: string; cornerDecoration?: string }) {
   const { t } = useTranslation();
   const kidsLabel = kidsPolicy && KNOWN_KIDS.has(kidsPolicy) ? t("kidsPolicy.options." + kidsPolicy) : kidsPolicy;
   return (
@@ -13,6 +14,7 @@ const InfoSection = memo(function InfoSection({ style, className, weddingSchedul
       style={style}
     >
       <div className="story-card story-panel story-card--info w-full text-center">
+        <CornerDecorations src={cornerDecoration} />
         <>
           <p className="story-eyebrow">{t("info.sectionLabel")}</p>
           <h2 className="story-title">{t("info.scheduleTitle")}</h2>

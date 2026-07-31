@@ -2791,21 +2791,21 @@ body::after {
 }
 
 .invite-corner {
-  position: fixed;
+  position: absolute;
   z-index: 1;
-  width: 6rem;
-  height: 6rem;
+  width: 3rem;
+  height: 3rem;
   opacity: 0.4;
   object-fit: contain;
   pointer-events: none;
 }
-.invite-corner--tl { top: 0.5rem; left: 0.5rem; }
-.invite-corner--tr { top: 0.5rem; right: 0.5rem; }
-.invite-corner--bl { bottom: 0.5rem; left: 0.5rem; }
-.invite-corner--br { bottom: 0.5rem; right: 0.5rem; }
+.invite-corner--tl { top: 0.35rem; left: 0.35rem; }
+.invite-corner--tr { top: 0.35rem; right: 0.35rem; }
+.invite-corner--bl { bottom: 0.35rem; left: 0.35rem; }
+.invite-corner--br { bottom: 0.35rem; right: 0.35rem; }
 
 @media (max-width: 640px) {
-  .invite-corner { width: 3.5rem; height: 3.5rem; }
+  .invite-corner { width: 2.25rem; height: 2.25rem; }
   .invite-corner--tl { top: 0.25rem; left: 0.25rem; }
   .invite-corner--tr { top: 0.25rem; right: 0.25rem; }
   .invite-corner--bl { bottom: 0.25rem; left: 0.25rem; }

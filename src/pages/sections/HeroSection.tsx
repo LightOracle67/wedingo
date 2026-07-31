@@ -1,6 +1,7 @@
 import { memo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import LoadingOverlay from "../../components/LoadingOverlay";
+import CornerDecorations from "../../components/CornerDecorations";
 
 interface HeroSectionProps {
   style?: React.CSSProperties;
@@ -12,9 +13,10 @@ interface HeroSectionProps {
   couplePhoto?: string;
   godparent1?: string;
   godparent2?: string;
+  cornerDecoration?: string;
 }
 
-const HeroSection = memo(function HeroSection({ style, className, firstName, secondName, inviteMessage, countdown, couplePhoto, godparent1, godparent2 }: HeroSectionProps) {
+const HeroSection = memo(function HeroSection({ style, className, firstName, secondName, inviteMessage, countdown, couplePhoto, godparent1, godparent2, cornerDecoration }: HeroSectionProps) {
   const { t } = useTranslation();
   const [photoLoaded, setPhotoLoaded] = useState(false);
 
@@ -25,6 +27,7 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
       style={style}
     >
       <div className="story-card story-panel story-card--hero w-full text-center">
+        <CornerDecorations src={cornerDecoration} />
         <div className="relative z-20">
           <div className="story-eyebrow">{t("hero.eyebrow")}</div>
           {couplePhoto ? (

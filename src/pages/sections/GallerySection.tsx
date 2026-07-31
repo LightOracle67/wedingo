@@ -3,11 +3,13 @@ import { useTranslation } from "react-i18next";
 import { useReducedMotion } from "../../hooks/useReducedMotion";
 import "../../styles/gallery.css";
 import LoadingOverlay from "../../components/LoadingOverlay";
+import CornerDecorations from "../../components/CornerDecorations";
 
 interface GallerySectionProps {
   style?: React.CSSProperties;
   className?: string;
   inviteToken?: string;
+  cornerDecoration?: string;
   [key: string]: unknown;
 }
 
@@ -18,7 +20,7 @@ interface GallerySectionProps {
  * y descripciones. Soporta auto-avance, transiciones con blur y
  * precarga con spinner.
  */
-const GallerySection = memo(function GallerySection({ style, className, inviteToken }: GallerySectionProps) {
+const GallerySection = memo(function GallerySection({ style, className, inviteToken, cornerDecoration }: GallerySectionProps) {
   const { t } = useTranslation();
 
   const reducedMotion = useReducedMotion();
@@ -220,6 +222,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
     return (
       <section data-story-section="gallery" className={`${className} flex items-center justify-center px-3 py-6 sm:px-6 sm:py-10 lg:px-8 lg:py-12`} style={style} role="region" aria-label={t("gallery.title")}>
         <div className="story-card story-panel story-card--info w-full text-center" style={{ maxWidth: "min(100%, 56rem)" }} aria-live="polite" aria-busy="true">
+          <CornerDecorations src={cornerDecoration} />
           <p className="story-eyebrow">{t("gallery.sectionLabel")}</p>
           <h2 className="story-title">{t("gallery.title")}</h2>
           <div className="gallery-main-container" style={{ minHeight: "200px", display: "flex", alignItems: "center", justifyContent: "center", background: "color-mix(in srgb, var(--invite-shell-bg, rgba(255,255,255,0.45)) 90%, transparent)" }}>
@@ -234,6 +237,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
     return (
       <section data-story-section="gallery" className={`${className} flex items-center justify-center px-3 py-6 sm:px-6 sm:py-10 lg:px-8 lg:py-12`} style={style} role="region" aria-label={t("gallery.title")}>
         <div className="story-card story-panel story-card--info w-full text-center" style={{ maxWidth: "min(100%, 56rem)" }}>
+          <CornerDecorations src={cornerDecoration} />
           <p className="story-eyebrow">{t("gallery.sectionLabel")}</p>
           <h2 className="story-title">{t("gallery.title")}</h2>
           <p className="story-copy mt-4" style={{ fontStyle: "italic" }}>{t("gallery.empty")}</p>
@@ -257,6 +261,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
         onKeyDown={handleOuterKeyDown}
         style={{ maxWidth: "min(100%, 56rem)", touchAction: "none" }}
       >
+        <CornerDecorations src={cornerDecoration} />
         <p className="story-eyebrow">{t("gallery.sectionLabel")}</p>
         <h2 className="story-title">{t("gallery.title")}</h2>
 

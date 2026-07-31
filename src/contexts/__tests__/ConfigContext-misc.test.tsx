@@ -36,6 +36,7 @@ vi.mock("../../lib/image-store", () => ({
   resolveAllConfigImages: vi.fn(() => Promise.resolve({})),
   deleteAllConfigImages: vi.fn(() => Promise.resolve()),
   isConfigImageRef: vi.fn(() => false),
+  saveConfigImage: vi.fn((_t, id, v) => Promise.resolve("__cfgimg:" + id)),
 }));
 vi.mock("../../lib/music-store", () => ({ loadAudio: mockLoadAudio }));
 vi.mock("../../lib/sessionVars", () => ({ clearSession: vi.fn() }));

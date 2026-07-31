@@ -1,7 +1,8 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
+import CornerDecorations from "../../components/CornerDecorations";
 
-const AccommodationSection = memo(function AccommodationSection({ style, className, accommodationInfo }: { style?: React.CSSProperties; className?: string; accommodationInfo?: string }) {
+const AccommodationSection = memo(function AccommodationSection({ style, className, accommodationInfo, cornerDecoration }: { style?: React.CSSProperties; className?: string; accommodationInfo?: string; cornerDecoration?: string }) {
   const { t } = useTranslation();
   return (
     <section
@@ -10,6 +11,7 @@ const AccommodationSection = memo(function AccommodationSection({ style, classNa
       style={style}
     >
       <div className="story-card story-panel story-card--info w-full text-center">
+        <CornerDecorations src={cornerDecoration} />
         <p className="story-eyebrow">{t("accommodation.sectionLabel")}</p>
         <h2 className="story-title">{t("accommodation.title")}</h2>
         {accommodationInfo ? (

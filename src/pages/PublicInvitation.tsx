@@ -226,6 +226,7 @@ export default function PublicInvitation() {
       couplePhoto: config.couplePhoto,
       godparent1: config.godparent1,
       godparent2: config.godparent2,
+      cornerDecoration: config.cornerDecoration,
     },
     details: {
       formattedDate,
@@ -235,24 +236,30 @@ export default function PublicInvitation() {
       calendarLink,
       weddingMapUrl: config.weddingMapUrl,
       transportInfo: config.transportInfo,
+      cornerDecoration: config.cornerDecoration,
     },
     info: {
       weddingSchedule: config.weddingSchedule,
       weddingDressCode: config.weddingDressCode,
       kidsPolicy: config.kidsPolicy,
+      cornerDecoration: config.cornerDecoration,
     },
     story: {
       storyText: config.storyText,
+      cornerDecoration: config.cornerDecoration,
     },
     gifts: {
       giftsInfo: config.giftsInfo,
       bankInfo: config.bankInfo,
+      cornerDecoration: config.cornerDecoration,
     },
     accommodation: {
       accommodationInfo: config.accommodationInfo,
+      cornerDecoration: config.cornerDecoration,
     },
     gallery: {
       inviteToken,
+      cornerDecoration: config.cornerDecoration,
     },
     rsvp: {
       rsvpForm,
@@ -273,6 +280,7 @@ export default function PublicInvitation() {
       menuVegano: config.menuVegano,
       menuPostre: config.menuPostre,
       menuTexto: config.menuTexto,
+      cornerDecoration: config.cornerDecoration,
     },
   }), [
     config.firstName, config.secondName, config.inviteMessage,
@@ -281,6 +289,7 @@ export default function PublicInvitation() {
     config.transportInfo, config.godparent1, config.godparent2, inviteToken,
     config.couplePhoto, config.bankInfo, config.menuEnabled,
     config.menuCarne, config.menuPescado, config.menuVegano, config.menuPostre, config.menuTexto,
+    config.cornerDecoration,
     countdown, formattedDate, formattedTime,
     hasLocationData, locationDescription, calendarLink, config.weddingMapUrl,
     rsvpForm, rsvpEntries, rsvpMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
@@ -360,15 +369,6 @@ export default function PublicInvitation() {
       <div className="fixed pointer-events-none right-2 bottom-2 wedding-decoration--right wedding-decoration" style={{ zIndex: 0 }}>
         <img src={eucalyptusSrc} alt="" aria-hidden="true" loading="lazy" className="wedding-decoration__image" />
       </div>
-
-      {config.cornerDecoration ? (
-        <>
-          <img src={config.cornerDecoration} alt="" aria-hidden="true" className="invite-corner invite-corner--tl" />
-          <img src={config.cornerDecoration} alt="" aria-hidden="true" className="invite-corner invite-corner--tr" />
-          <img src={config.cornerDecoration} alt="" aria-hidden="true" className="invite-corner invite-corner--bl" />
-          <img src={config.cornerDecoration} alt="" aria-hidden="true" className="invite-corner invite-corner--br" />
-        </>
-      ) : null}
 
       {/* ── Token no encontrado (invitación no configurada) ── */}
       {showMissingToken ? (

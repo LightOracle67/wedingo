@@ -1,6 +1,7 @@
 import { memo, useCallback, useMemo } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { useApp } from "../../contexts";
+import CornerDecorations from "../../components/CornerDecorations";
 
 const ALLERGIES = ["sin gluten", "sin lactosa", "alergia a frutos secos", "alergia a mariscos"];
 
@@ -39,12 +40,13 @@ interface RsvpSectionProps {
   menuPostre?: string;
   menuTexto?: string;
   computeAge: (birthDate: string) => number | null;
+  cornerDecoration?: string;
 }
 
 const RsvpSection = memo(function RsvpSection({
   style, className,
   rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
-  updateRsvpField, handleRsvpSubmit, handleDeleteRsvp, menuEnabled, menuCarne, menuPescado, menuVegano, menuPostre, menuTexto, computeAge,
+  updateRsvpField, handleRsvpSubmit, handleDeleteRsvp, menuEnabled, menuCarne, menuPescado, menuVegano, menuPostre, menuTexto, computeAge, cornerDecoration,
 }: RsvpSectionProps) {
   const { t } = useTranslation();
   const { setLegalModal } = useApp();
@@ -114,6 +116,7 @@ const RsvpSection = memo(function RsvpSection({
   return (
     <section data-story-section="rsvp" className={`${className} flex items-center justify-center px-3 py-4 sm:px-6 sm:py-8 lg:px-8 lg:py-10`} style={style}>
       <div className="story-card story-panel story-card--rsvp allow-select w-full max-w-[min(100%,42rem)]">
+        <CornerDecorations src={cornerDecoration} />
         <p className="story-eyebrow text-center">{t("rsvp.sectionLabel")}</p>
         <h2 className="story-title text-center">{t("rsvp.title")}</h2>
         <p className="story-copy text-center">{t("rsvp.description")}</p>

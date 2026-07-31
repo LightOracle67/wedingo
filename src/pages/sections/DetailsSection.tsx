@@ -2,12 +2,14 @@ import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import WeddingMap from "../../components/WeddingMap";
 import { isValidGoogleMapsUrl } from "../../lib/geo-utils";
+import CornerDecorations from "../../components/CornerDecorations";
 
 const DetailsSection = memo(function DetailsSection({
   style, className,
   formattedDate, formattedTime, hasLocationData, locationDescription,
   calendarLink,
   weddingMapUrl, configWeddingPlace, transportInfo,
+  cornerDecoration,
 }: {
   style?: React.CSSProperties;
   className?: string;
@@ -19,6 +21,7 @@ const DetailsSection = memo(function DetailsSection({
   weddingMapUrl?: string;
   configWeddingPlace?: string;
   transportInfo?: string;
+  cornerDecoration?: string;
 }) {
   const { t } = useTranslation();
   return (
@@ -28,6 +31,7 @@ const DetailsSection = memo(function DetailsSection({
       style={style}
     >
       <div className="story-card story-panel story-card--details w-full text-center">
+        <CornerDecorations src={cornerDecoration} />
         <p className="story-eyebrow">{t("details.sectionLabel")}</p>
         <h2 className="story-title">{formattedDate || t("details.datePending")}</h2>
         <p className="story-copy">{formattedTime ? t("details.timeLabel", { time: formattedTime }) : t("details.timePending")}</p>
