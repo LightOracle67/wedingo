@@ -179,7 +179,6 @@ html.a11y-desaturate img,
 html.a11y-desaturate video,
 html.a11y-desaturate canvas,
 html.a11y-desaturate [style*="background"],
-html.a11y-desaturate .story-card::before,
 html.a11y-desaturate .invite-shell::before {
   filter: grayscale(100%);
 }

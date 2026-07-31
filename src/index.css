@@ -1299,7 +1299,13 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
   overscroll-behavior: contain;
   scrollbar-width: thin;
   border: 1px solid color-mix(in srgb, var(--invite-shell-border) 72%, transparent);
-  background: color-mix(in srgb, var(--invite-shell-bg) 74%, transparent);
+  background:
+    linear-gradient(
+      color-mix(in srgb, var(--invite-shell-bg) 45%, transparent),
+      color-mix(in srgb, var(--invite-shell-bg) 45%, transparent)
+    ),
+    var(--story-card-user-bg, none) center/auto repeat local,
+    radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--invite-shell-glow) 60%, transparent) 0%, transparent 70%);
   box-shadow:
     0 22px 60px color-mix(in srgb, var(--invite-shell-shadow) 92%, transparent),
     0 0 0 1px color-mix(in srgb, var(--invite-shell-border) 70%, transparent),
@@ -1311,7 +1317,14 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
 
 @supports not (backdrop-filter: blur(1px)) {
   .story-card {
-    background: color-mix(in srgb, var(--invite-shell-bg, rgba(255,255,255,0.45)) 100%, transparent) !important;
+    background:
+      linear-gradient(
+        color-mix(in srgb, var(--invite-shell-bg, rgba(255,255,255,0.45)) 45%, transparent),
+        color-mix(in srgb, var(--invite-shell-bg, rgba(255,255,255,0.45)) 45%, transparent)
+      ),
+      var(--story-card-user-bg, none) center/auto repeat local,
+      radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--invite-shell-glow) 60%, transparent) 0%, transparent 70%),
+      color-mix(in srgb, var(--invite-shell-bg, rgba(255,255,255,0.45)) 100%, transparent) !important;
   }
 }
 
@@ -1339,18 +1352,6 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
 }
 .story-title__ampersand {
   white-space: nowrap;
-}
-
-.story-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background:
-    var(--story-card-user-bg, none) center/auto repeat,
-    radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--invite-shell-glow) 60%, transparent) 0%, transparent 70%);
-  opacity: 0.55;
-  pointer-events: none;
 }
 
 .story-card::after {
