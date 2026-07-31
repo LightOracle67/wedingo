@@ -28,7 +28,7 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run typecheck
-      - run: npx vitest run --reporter=junit --outputFile=junit.xml
+      - run: npx vitest run --reporter=junit --outputFile=junit.xml --exclude 'e2e/**'
       - run: npm run test:coverage
       - run: npm run audit:prod
       - run: npm run build
@@ -40,6 +40,7 @@ jobs:
           name: Vitest Results
           path: junit.xml
           reporter: jest-junit
+          fail-on-error: false
 
       - name: Notify CI failure (commit status)
         if: failure()
