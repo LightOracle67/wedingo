@@ -159,7 +159,7 @@ input.setup-input[type="date"] {
 .setup-card {
   position: relative;
   width: min(100%, 36rem);
-  max-height: calc(100dvh - var(--navbar-height, 0px) - clamp(1.5rem, 5vw, 3rem));
+  max-height: 90dvh;
   padding: clamp(0.6rem, 2vw, 1.2rem);
   box-sizing: border-box;
   overflow-y: auto;
@@ -232,7 +232,6 @@ input.setup-input[type="date"] {
   gap: 0.75rem;
   min-width: 0;
   flex: 1;
-  overflow-y: auto;
   align-content: start;
 }
 .setup-form > * {
