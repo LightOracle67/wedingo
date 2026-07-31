@@ -150,7 +150,6 @@ input.setup-input[type="date"] {
   padding: clamp(0.75rem, 2.5vw, 1.5rem);
   width: 100%;
   box-sizing: border-box;
-  overflow-y: auto;
   overscroll-behavior: contain;
 }
 .setup-layout--flush {
@@ -162,7 +161,6 @@ input.setup-input[type="date"] {
   max-height: 90dvh;
   padding: clamp(0.6rem, 2vw, 1.2rem);
   box-sizing: border-box;
-  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
   scrollbar-width: thin;
@@ -192,6 +190,7 @@ input.setup-input[type="date"] {
   margin: 0px;
   display: flex;
   width: 95% !important;
+  overflow-y: auto;
 }
 .setup-card--narrow {
   width: min(100%, 500px);
@@ -237,6 +236,9 @@ input.setup-input[type="date"] {
 .setup-form > * {
   width: 100%;
   box-sizing: border-box;
+}
+.setup-form > :last-child {
+  padding-bottom: 1rem;
 }
 .setup-form--nested {
   margin-top: 0;
