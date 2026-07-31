@@ -17,7 +17,7 @@
  */
 
 import { lazy, Suspense, useEffect, useMemo, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 
 import { useApp } from "../contexts";

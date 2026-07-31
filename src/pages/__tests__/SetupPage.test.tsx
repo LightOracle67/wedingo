@@ -8,7 +8,7 @@ vi.mock("react-i18next", () => ({
 }));
 
 const mockNavigate = vi.fn();
-vi.mock("react-router-dom", () => ({
+vi.mock("react-router", () => ({
   useParams: () => ({ inviteToken: "test-token" }),
   useLocation: () => ({ pathname: "/test-token/setup", search: "" }),
   useNavigate: () => mockNavigate,

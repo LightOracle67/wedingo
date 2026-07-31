@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 import LegalModal from "../components/LegalModal";
 import { UIContext } from "./useAppUI";
 

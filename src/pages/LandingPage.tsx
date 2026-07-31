@@ -1,6 +1,6 @@
 import { useApp } from "../contexts";
 import { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { getDocs, query, where, serverTimestamp, runTransaction } from "firebase/firestore";
 import { useTranslation } from "react-i18next";
 import { db, invitationDocRef, INVITATIONS_COLLECTION_REF } from "../lib/firebase";

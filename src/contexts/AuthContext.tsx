@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 import { serverTimestamp, updateDoc } from "firebase/firestore";
 import { invitationDocRef } from "../lib/firebase";
 import { firestoreSessionExpiry, saveSession } from "../lib/sessionVars";

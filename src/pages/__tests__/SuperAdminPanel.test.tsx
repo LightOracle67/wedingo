@@ -7,7 +7,7 @@ vi.mock("react-i18next", () => ({
   initReactI18next: { type: "3rdParty", init: () => {} },
 }));
 
-vi.mock("react-router-dom", () => ({
+vi.mock("react-router", () => ({
   Navigate: ({ to }: { to: string }) => <div>Redirect to {to}</div>,
 }));
 

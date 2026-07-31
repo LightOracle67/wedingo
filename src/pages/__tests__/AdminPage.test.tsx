@@ -8,7 +8,7 @@ vi.mock("react-i18next", () => ({
 }));
 
 let mockSearch = "";
-vi.mock("react-router-dom", () => ({
+vi.mock("react-router", () => ({
   useParams: () => ({ inviteToken: "test-token" }),
   useLocation: () => ({ pathname: "/test-token/admin", search: mockSearch }),
   Navigate: ({ to }: { to: string }) => <div>Redirect to {to}</div>,

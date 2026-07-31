@@ -19,7 +19,7 @@ vi.mock("react-i18next", () => ({
   Trans: ({ i18nKey }: { i18nKey: string }) => i18nKey,
 }));
 
-vi.mock("react-router-dom", () => ({
+vi.mock("react-router", () => ({
   useParams: () => ({ inviteToken: "test-token" }),
   useLocation: () => ({ pathname: "/test-token", search: "" }),
   useNavigate: () => vi.fn(),

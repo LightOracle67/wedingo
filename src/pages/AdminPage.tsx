@@ -18,7 +18,7 @@
  */
 
 import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from "react";
-import { Navigate, useParams, useLocation } from "react-router-dom";
+import { Navigate, useParams, useLocation } from "react-router";
 import { useTranslation } from "react-i18next";
 import { useApp } from "../contexts";
 import { useToast } from "../hooks/useToast";
