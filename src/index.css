@@ -1505,7 +1505,8 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
   font-size: clamp(1.8rem, 4vw, 3rem);
   line-height: 1.12;
   letter-spacing: 0.02em;
-  -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 5;
   text-shadow:
     0 2px 10px color-mix(in srgb, var(--invite-text-shadow) 90%, transparent),
     0 0 30px color-mix(in srgb, var(--invite-text-shadow) 60%, transparent);
@@ -1517,6 +1518,8 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
   font-family: var(--font-heading);
   font-size: clamp(1.3rem, 3vw, 1.8rem);
   line-height: 1.15;
+  position: relative;
+  z-index: 5;
   text-shadow:
     0 0 10px color-mix(in srgb, var(--invite-text-shadow) 68%, transparent),
     0 2px 4px color-mix(in srgb, var(--invite-text-shadow) 50%, transparent);
@@ -1527,7 +1530,8 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
   color: var(--invite-copy-color);
   font-size: clamp(1.05rem, 2.4vw, 1.3rem);
   line-height: 1.65;
-  -webkit-text-stroke: 0.3px rgba(0, 0, 0, 0.35);
+  position: relative;
+  z-index: 5;
   text-shadow:
     0 0 20px color-mix(in srgb, var(--invite-text-shadow) 80%, transparent),
     0 2px 6px color-mix(in srgb, var(--invite-text-shadow) 60%, transparent);
@@ -1558,6 +1562,8 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
   color: var(--setup-muted);
   font-size: clamp(0.95rem, 2vw, 1.05rem);
   line-height: 1.6;
+  position: relative;
+  z-index: 5;
 }
 
 .story-scroll-hint {
