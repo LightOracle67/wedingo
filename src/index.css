@@ -1535,7 +1535,7 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
   margin: 0;
   font-family: "Great Vibes", cursive;
   letter-spacing: 0.02em;
-  font-size: 0.78rem;
+  font-size: clamp(1.7rem, 3.8vw, 2.7rem);
   color: var(--invite-eyebrow-color, var(--invite-core-color, #c8a84e));
   font-weight: 400;
   position: relative;
@@ -2198,6 +2198,7 @@ a:focus-visible {
   .story-card { padding: 0.6rem; }
   .story-card-wrap { width: 80% !important; }
   .story-title { font-size: clamp(1rem, 5vw, 1.4rem) !important; }
+  .story-eyebrow { font-size: clamp(1.1rem, 5.4vw, 1.5rem) !important; }
   .story-copy { font-size: clamp(0.8rem, 3.5vw, 0.95rem) !important; }
   .story-section { padding: 0.5rem !important; }
   .gallery-main-container { width: 96%; padding: 0.4rem; }
