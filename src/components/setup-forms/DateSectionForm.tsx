@@ -2,41 +2,53 @@ import { useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useApp } from "../../contexts";
 import { MONTH_OPTIONS, MONTH_VALUE_TO_NUMBER } from "../../lib/constants";
-import { isValidGoogleMapsUrl, convertToEmbedUrl } from "../../lib/geo-utils";
+import { isValidGoogleMapsUrl, convertToEmbedUrl, extractPlaceNameFromUrl } from "../../lib/geo-utils";
 
 export default function DateSectionForm({ prefix = "" }) {
   const { formData, updateFormField, handleDayChange, handleYearChange, handleHourChange, handleMinuteChange, handleMinuteBlur, maxAllowedYear } = useApp();
   const { t } = useTranslation();
   const id = (name: string) => `${prefix}${name}`;
 
-  const handleMapUrlChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    updateFormField("weddingMapUrl", e.target.value);
+  const handleSiteUrlChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    updateFormField("weddingSiteURL", e.target.value);
   }, [updateFormField]);
 
+  const siteUrl = formData.weddingSiteURL?.trim() || "";
+  const isSiteUrlValid = siteUrl ? isValidGoogleMapsUrl(siteUrl) : false;
+
   const embedUrl = useMemo(() => {
-    if (!formData.weddingMapUrl?.trim()) return "";
-    const url = formData.weddingMapUrl.trim();
-    if (!isValidGoogleMapsUrl(url)) return "";
-    return convertToEmbedUrl(url);
-  }, [formData.weddingMapUrl]);
+    if (!isSiteUrlValid) return "";
+    return convertToEmbedUrl(siteUrl);
+  }, [siteUrl, isSiteUrlValid]);
+
+  const siteName = useMemo(() => {
+    if (!isSiteUrlValid) return "";
+    return extractPlaceNameFromUrl(siteUrl) || "";
+  }, [siteUrl, isSiteUrlValid]);
 
   return (
     <>
-      <label className="setup-label" htmlFor={id("weddingMapUrl")}>
+      <label className="setup-label" htmlFor={id("weddingSiteURL")}>
         {t("setup.mapUrlLabel")}
-        {formData.weddingMapUrl?.trim() && !isValidGoogleMapsUrl(formData.weddingMapUrl?.trim() || "") ? (
+        {siteUrl && !isSiteUrlValid ? (
           <span style={{ color: "#ef4444", fontSize: "0.8rem", marginLeft: "0.5rem" }}>{t("setup.mapUrlInvalid")}</span>
         ) : null}
       </label>
       <input
-        id={id("weddingMapUrl")}
+        id={id("weddingSiteURL")}
         className="setup-input"
-        value={formData.weddingMapUrl || ""}
-        onChange={handleMapUrlChange}
+        value={formData.weddingSiteURL || ""}
+        onChange={handleSiteUrlChange}
         placeholder={t("setup.mapUrlPlaceholder")}
         autoComplete="off"
       />
       <p className="setup-help">{t("setup.mapUrlHint")}</p>
+
+      {siteName ? (
+        <p className="setup-help" style={{ color: "var(--setup-accent)", fontWeight: 600 }}>
+          {t("setup.siteNameLabel")}: {siteName}
+        </p>
+      ) : null}
 
       {embedUrl ? (
         <div style={{ marginTop: "0.75rem" }}>
@@ -54,19 +66,6 @@ export default function DateSectionForm({ prefix = "" }) {
       ) : null}
 
       <div className="story-divider" />
-
-      <label className="setup-label" htmlFor={id("weddingPlace")}>
-        {t("setup.placeLabel")}
-      </label>
-      <input
-        id={id("weddingPlace")}
-        className="setup-input"
-        value={formData.weddingPlace}
-        onChange={(e) => updateFormField("weddingPlace", e.target.value.slice(0, 120))}
-        placeholder={t("setup.placePlaceholder")}
-        autoComplete="street-address"
-      />
-      <p className="setup-help">{t("setup.placeHint")}</p>
 
       <div className="setup-date-grid">
         <div>

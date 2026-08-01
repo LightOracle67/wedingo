@@ -10,6 +10,7 @@ import {
   MAX_LONG_TEXT_LENGTH, PRIVACY_POLICY_VERSION,
 } from "../lib/constants";
 import { normalizeConfig } from "../lib/normalize-config";
+import { isValidGoogleMapsUrl, extractPlaceNameFromUrl } from "../lib/geo-utils";
 import type { InvitationConfig } from "../types";
 import { decodeInviteConfig } from "../lib/invite-config-codec";
 import { deleteGallery } from "../lib/image-store";
@@ -18,7 +19,6 @@ import { safeSetItem, safeGetItem, safeRemoveItem } from "../lib/storage";
 import { encrypt, decrypt } from "../lib/crypto-utils";
 import { useCalendar } from "../hooks/useCalendar";
 import { useFieldHandlers } from "../hooks/useFieldHandlers";
-import { useMapPreview } from "../hooks/useMapPreview";
 import { useAutoSave } from "../hooks/useAutoSave";
 import { getFirestoreErrorMessage } from "../lib/error-utils";
 import { validateWeddingDate } from "../lib/date-utils";
@@ -53,15 +53,9 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     setFormData((current: InvitationConfig) => ({ ...current, [field]: value }));
   }, []);
 
-  const { previewBackgrounds, isPreviewLoading } = useMapPreview(
-    formData.weddingPlace,
-    formData.weddingLatitude,
-    formData.weddingLongitude,
-  );
-
   const {
     handleDayChange, handleHourChange, handleMinuteChange, handleMinuteBlur,
-    handleYearChange, handleCoordinateChange,
+    handleYearChange,
   } = useFieldHandlers(updateFormField, maxAllowedYear, formData.weddingMinute);
 
   const { autoSaveTimerRef } = useAutoSave(hasStoredConfig, inviteToken, formData, config, setSaveMessage, isSavingRef);
@@ -282,6 +276,14 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     setSaveMessage("");
 
     const sanitized = normalizeConfig(formData);
+
+    if (sanitized.weddingSiteURL && isValidGoogleMapsUrl(sanitized.weddingSiteURL)) {
+      const derivedPlace = extractPlaceNameFromUrl(sanitized.weddingSiteURL);
+      if (derivedPlace) {
+        console.log("[app]", "[ConfigProvider]", "venue name derived from site URL", { derivedPlace });
+        sanitized.weddingPlace = derivedPlace;
+      }
+    }
     const hiddenArray = (sanitized.hiddenSections || "").split(",").filter(Boolean).filter((s: string) => !SPECIAL_SECTIONS.includes(s));
     const hiddenSet = new Set(hiddenArray);
 
@@ -502,19 +504,19 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
 
   const configValue = useMemo(() => ({
     config, formData, hasStoredConfig, isConfigLoading, configLoadError, inviteToken,
-    maxAllowedYear, previewBackgrounds, isPreviewLoading,
+    maxAllowedYear,
     formattedDate, formattedTime, calendarLink, visitCount,
     updateFormField, reloadConfig, handleSaveSetup: handleSaveSetupCore,
     handleDayChange, handleHourChange, handleMinuteChange, handleMinuteBlur,
-    handleYearChange, handleCoordinateChange, handleDeleteInvitation,
+    handleYearChange, handleDeleteInvitation,
     setHasStoredConfig, registerOnFirstSave,
   }), [
     config, formData, hasStoredConfig, isConfigLoading, configLoadError, inviteToken,
-    maxAllowedYear, previewBackgrounds, isPreviewLoading,
+    maxAllowedYear,
     formattedDate, formattedTime, calendarLink, visitCount,
     updateFormField, reloadConfig, handleSaveSetupCore,
     handleDayChange, handleHourChange, handleMinuteChange, handleMinuteBlur,
-    handleYearChange, handleCoordinateChange, handleDeleteInvitation,
+    handleYearChange, handleDeleteInvitation,
     setHasStoredConfig, registerOnFirstSave,
   ]);
 

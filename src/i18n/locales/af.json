@@ -4213,66 +4213,6 @@
         ]
       ]
     ],
-    "placeLabel": [
-      "Trou venue",
-      "Wedding venue",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "c20f075da290ff4ebe2bae43bebf89e7",
-            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "placePlaceholder": [
-      "Tik die naam van die lokaal om te soek...",
-      "Type the venue name to search...",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "c20f075da290ff4ebe2bae43bebf89e7",
-            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "placeHint": [
-      "Tik die plek in en kies uit die resultate.",
-      "Type the venue and select from the results.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "c20f075da290ff4ebe2bae43bebf89e7",
-            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
-          ]
-        ]
-      ]
-    ],
     "mapPreview": [
       "Kaartvoorskou",
       "Map preview",

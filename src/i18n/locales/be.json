@@ -4213,66 +4213,6 @@
         ]
       ]
     ],
-    "placeLabel": [
-      "Месца правядзення вяселля",
-      "Wedding venue",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "2e8de74564aec87fb81cb0340a661858",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2022q2.md"
-          ]
-        ]
-      ]
-    ],
-    "placePlaceholder": [
-      "Увядзіце назву месца для пошуку...",
-      "Type the venue name to search...",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "2e8de74564aec87fb81cb0340a661858",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2022q2.md"
-          ]
-        ]
-      ]
-    ],
-    "placeHint": [
-      "Увядзіце месца і выберыце з вынікаў.",
-      "Type the venue and select from the results.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "2e8de74564aec87fb81cb0340a661858",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2022q2.md"
-          ]
-        ]
-      ]
-    ],
     "mapPreview": [
       "Папярэдні прагляд карты",
       "Map preview",

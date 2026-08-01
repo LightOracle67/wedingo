@@ -46,8 +46,8 @@ const sampleConfig: InvitationConfig = {
   weddingHour: "17",
   weddingMinute: "00",
   weddingPlace: "Church",
-  weddingLatitude: "",
-  weddingLongitude: "",
+  weddingSiteURL: "",
+  
   weddingSchedule: "",
   weddingDressCode: "",
   couplePhoto: "",

@@ -22,10 +22,11 @@ vi.mock("../../../lib/constants", () => ({
   MONTH_VALUE_TO_NUMBER: { enero: 1, febrero: 2, marzo: 3 },
 }));
 
-const mockFormData = vi.hoisted(() => ({ weddingMapUrl: "" }));
+const mockFormData = vi.hoisted(() => ({ weddingSiteURL: "" }));
 vi.mock("../../../lib/geo-utils", () => ({
   isValidGoogleMapsUrl: (url: string) => url.startsWith("https://maps.google.com"),
   convertToEmbedUrl: (url: string) => url.replace("maps.google.com", "maps.google.com/embed"),
+  extractPlaceNameFromUrl: (url: string) => (url.includes("place") ? "Iglesia San José" : ""),
 }));
 
 vi.mock("../../../contexts", () => ({
@@ -47,22 +48,12 @@ import DateSectionForm from "../DateSectionForm";
 describe("DateSectionForm", () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    mockFormData.weddingMapUrl = "";
+    mockFormData.weddingSiteURL = "";
   });
 
   it("renders without crashing", () => {
     render(<DateSectionForm />);
-    expect(screen.getByText("setup.placeLabel")).toBeDefined();
-  });
-
-  it("renders place input", () => {
-    render(<DateSectionForm />);
-    expect(screen.getByPlaceholderText("setup.placePlaceholder")).toBeDefined();
-  });
-
-  it("renders place help text", () => {
-    render(<DateSectionForm />);
-    expect(screen.getByText("setup.placeHint")).toBeDefined();
+    expect(screen.getByText("setup.mapUrlLabel")).toBeDefined();
   });
 
   it("renders date fields", () => {
@@ -154,22 +145,41 @@ describe("DateSectionForm", () => {
     expect(mockUpdateFormField).toHaveBeenCalledWith("weddingSchedule", "a".repeat(2000));
   });
 
-  it("renders map URL input", () => {
+  it("renders site URL input", () => {
     render(<DateSectionForm />);
     expect(screen.getByText("setup.mapUrlLabel")).toBeDefined();
     expect(screen.getByPlaceholderText("setup.mapUrlPlaceholder")).toBeDefined();
     expect(screen.getByText("setup.mapUrlHint")).toBeDefined();
   });
 
+  it("calls updateFormField with weddingSiteURL on input change", () => {
+    render(<DateSectionForm />);
+    const input = screen.getByLabelText("setup.mapUrlLabel");
+    fireEvent.change(input, { target: { value: "https://maps.google.com/maps/place/Madrid" } });
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingSiteURL", "https://maps.google.com/maps/place/Madrid");
+  });
+
+  it("does not render a venue name input", () => {
+    render(<DateSectionForm />);
+    expect(screen.queryByText("setup.placeLabel")).toBeNull();
+    expect(screen.queryByPlaceholderText("setup.placePlaceholder")).toBeNull();
+  });
+
   it("renders iframe preview when valid URL entered", () => {
-    mockFormData.weddingMapUrl = "https://maps.google.com/maps?q=40.4168,-3.7038";
+    mockFormData.weddingSiteURL = "https://maps.google.com/maps?q=40.4168,-3.7038";
     render(<DateSectionForm />);
     expect(document.querySelector("iframe")).toBeDefined();
     expect(screen.getByText("setup.mapPreview")).toBeDefined();
   });
 
+  it("shows recovered venue name when URL contains a place", () => {
+    mockFormData.weddingSiteURL = "https://maps.google.com/maps/place/Iglesia";
+    render(<DateSectionForm />);
+    expect(screen.getByText(/Iglesia San José/)).toBeDefined();
+  });
+
   it("shows invalid URL error", () => {
-    mockFormData.weddingMapUrl = "not-a-valid-url";
+    mockFormData.weddingSiteURL = "not-a-valid-url";
     render(<DateSectionForm />);
     expect(screen.getByText("setup.mapUrlInvalid")).toBeDefined();
     expect(document.querySelector("iframe")).toBeNull();

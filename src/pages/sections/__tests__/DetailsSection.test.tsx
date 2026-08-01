@@ -31,7 +31,7 @@ const baseProps = {
   hasLocationData: true,
   locationDescription: "Madrid",
   calendarLink: "https://calendar.example.com",
-  weddingMapUrl: "https://maps.google.com/maps?q=40.4168,-3.7038",
+  weddingSiteURL: "https://maps.google.com/maps?q=40.4168,-3.7038",
   configWeddingPlace: "Madrid",
   transportInfo: "Bus available",
 };
@@ -60,7 +60,7 @@ describe("DetailsSection", () => {
         hasLocationData={false}
         locationDescription=""
         calendarLink={""}
-        weddingMapUrl=""
+        weddingSiteURL=""
         transportInfo=""
       />,
     );
@@ -80,7 +80,7 @@ describe("DetailsSection", () => {
         hasLocationData={true}
         locationDescription="Unknown location"
         calendarLink={""}
-        weddingMapUrl=""
+        weddingSiteURL=""
         transportInfo=""
       />,
     );
@@ -97,7 +97,7 @@ describe("DetailsSection", () => {
         hasLocationData={false}
         locationDescription=""
         calendarLink={""}
-        weddingMapUrl=""
+        weddingSiteURL=""
         transportInfo=""
       />,
     );

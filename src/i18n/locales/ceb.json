@@ -4213,66 +4213,6 @@
         ]
       ]
     ],
-    "placeLabel": [
-      "Lugar sa kasal",
-      "Wedding venue",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "7cd27a263735d6dc9e3c878eca97fe56",
-            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "placePlaceholder": [
-      "Isulat ang ngalan sa lugar aron pangitaon...",
-      "Type the venue name to search...",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "7cd27a263735d6dc9e3c878eca97fe56",
-            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "placeHint": [
-      "Isulat ang lugar ug pilia gikan sa mga resulta.",
-      "Type the venue and select from the results.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "7cd27a263735d6dc9e3c878eca97fe56",
-            "tea_ArchipelagoA_en2cebhawjvmgmsmismsufil_2021q3.md"
-          ]
-        ]
-      ]
-    ],
     "mapPreview": [
       "Paglantaw sa mapa",
       "Map preview",

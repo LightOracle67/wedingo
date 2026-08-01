@@ -67,13 +67,8 @@ export function useFieldHandlers(
     updateFormField("weddingYear", digits);
   }, [updateFormField, maxAllowedYear]);
 
-  const handleCoordinateChange = useCallback((field: string, value: string) => {
-    const normalized = value.replace(/,/g, ".").replace(/[^0-9.-]/g, "");
-    updateFormField(field, normalized.slice(0, 18));
-  }, [updateFormField]);
-
   return {
     handleDayChange, handleHourChange, handleMinuteChange, handleMinuteBlur,
-    handleYearChange, handleCoordinateChange,
+    handleYearChange,
   };
 }

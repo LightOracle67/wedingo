@@ -137,22 +137,3 @@ describe("handleYearChange", () => {
   });
 });
 
-describe("handleCoordinateChange", () => {
-  it("replaces commas with dots", () => {
-    const { updateFormField, result } = setup();
-    result.current.handleCoordinateChange("weddingLatitude", "40,5");
-    expect(updateFormField).toHaveBeenCalledWith("weddingLatitude", "40.5");
-  });
-
-  it("strips non-numeric chars except dot and minus", () => {
-    const { updateFormField, result } = setup();
-    result.current.handleCoordinateChange("weddingLongitude", "abc-3.7xyz");
-    expect(updateFormField).toHaveBeenCalledWith("weddingLongitude", "-3.7");
-  });
-
-  it("limits to 18 chars", () => {
-    const { updateFormField, result } = setup();
-    result.current.handleCoordinateChange("weddingLatitude", "12345678901234567890");
-    expect(updateFormField).toHaveBeenCalledWith("weddingLatitude", "123456789012345678");
-  });
-});

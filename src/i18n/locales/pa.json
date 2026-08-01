@@ -4122,66 +4122,6 @@
         ]
       ]
     ],
-    "placeLabel": [
-      "ਵਿਆਹ ਸਥਾਨ",
-      "Wedding venue",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "bb93a879d26edf943ed8e0c574850bff",
-            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "placePlaceholder": [
-      "ਖੋਜ ਕਰਨ ਲਈ ਸਥਾਨ ਦਾ ਨਾਮ ਟਾਈਪ ਕਰੋ...",
-      "Type the venue name to search...",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "bb93a879d26edf943ed8e0c574850bff",
-            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "placeHint": [
-      "ਸਥਾਨ ਟਾਈਪ ਕਰੋ ਅਤੇ ਨਤੀਜਿਆਂ ਵਿੱਚੋਂ ਚੁਣੋ।",
-      "Type the venue and select from the results.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "bb93a879d26edf943ed8e0c574850bff",
-            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
-          ]
-        ]
-      ]
-    ],
     "mapPreview": [
       "ਨਕਸ਼ੇ ਦੀ ਝਲਕ",
       "Map preview",

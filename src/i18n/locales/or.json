@@ -4213,66 +4213,6 @@
         ]
       ]
     ],
-    "placeLabel": [
-      "ବିବାହ ସ୍ଥାନ",
-      "Wedding venue",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "5d4f78a16b17135bfb375c3854878ddb",
-            "newlanguages_enxx_v1_2019q4.md"
-          ]
-        ]
-      ]
-    ],
-    "placePlaceholder": [
-      "ସନ୍ଧାନ କରିବାକୁ ସ୍ଥାନ ନାମ ଟାଇପ୍ କରନ୍ତୁ ...",
-      "Type the venue name to search...",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "5d4f78a16b17135bfb375c3854878ddb",
-            "newlanguages_enxx_v1_2019q4.md"
-          ]
-        ]
-      ]
-    ],
-    "placeHint": [
-      "ସ୍ଥାନ ଟାଇପ୍ କରନ୍ତୁ ଏବଂ ଫଳାଫଳରୁ ଚୟନ କରନ୍ତୁ |",
-      "Type the venue and select from the results.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "5d4f78a16b17135bfb375c3854878ddb",
-            "newlanguages_enxx_v1_2019q4.md"
-          ]
-        ]
-      ]
-    ],
     "mapPreview": [
       "ମାନଚିତ୍ର ପୂର୍ବାବଲୋକନ |",
       "Map preview",

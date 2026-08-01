@@ -9,8 +9,6 @@ interface ConfigContextValue {
   configLoadError: string;
   inviteToken: string;
   maxAllowedYear: number;
-  previewBackgrounds: { id: string; src: string; label: string; description: string }[];
-  isPreviewLoading: boolean;
   formattedDate: string;
   formattedTime: string;
   calendarLink: string | null;
@@ -23,7 +21,6 @@ interface ConfigContextValue {
   handleMinuteChange: (value: string) => void;
   handleMinuteBlur: () => void;
   handleYearChange: (value: string) => void;
-  handleCoordinateChange: (field: string, value: string) => void;
   handleDeleteInvitation: () => Promise<void>;
   setHasStoredConfig: (v: boolean) => void;
   registerOnFirstSave: (cb: () => void) => void;

@@ -3901,66 +3901,6 @@
         ]
       ]
     ],
-    "placeLabel": [
-      "Lefelo la lenyalo",
-      "Wedding venue",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "f360f62f1957599adbb383a243c6d52a",
-            "ntl_noulm_enxx_2024q2.md"
-          ]
-        ]
-      ]
-    ],
-    "placePlaceholder": [
-      "Thaepa leina la lefelo go batla...",
-      "Type the venue name to search...",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "f360f62f1957599adbb383a243c6d52a",
-            "ntl_noulm_enxx_2024q2.md"
-          ]
-        ]
-      ]
-    ],
-    "placeHint": [
-      "Thaepa lefelo mme o tlhophe mo dipholong.",
-      "Type the venue and select from the results.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "f360f62f1957599adbb383a243c6d52a",
-            "ntl_noulm_enxx_2024q2.md"
-          ]
-        ]
-      ]
-    ],
     "mapPreview": [
       "Tebopele ya mmapa",
       "Map preview",

@@ -206,7 +206,7 @@ export default function PublicInvitation() {
   }, [config.firstName, config.secondName, config.inviteMessage, config.weddingYear, config.weddingMonth, config.weddingDay, config.weddingHour, config.weddingMinute, config.weddingPlace]);
 
   // ─── Datos de ubicación derivados ──────────────────────
-  const hasLocationData = Boolean(config.weddingPlace || config.weddingMapUrl);
+  const hasLocationData = Boolean(config.weddingPlace || config.weddingSiteURL);
   const locationDescription = config.weddingPlace || "";
 
   // ═══════════════════════════════════════════════════════
@@ -234,7 +234,7 @@ export default function PublicInvitation() {
       hasLocationData,
       locationDescription,
       calendarLink,
-      weddingMapUrl: config.weddingMapUrl,
+      weddingSiteURL: config.weddingSiteURL,
       transportInfo: config.transportInfo,
       cornerDecoration: config.cornerDecoration,
     },
@@ -291,7 +291,7 @@ export default function PublicInvitation() {
     config.menuCarne, config.menuPescado, config.menuVegano, config.menuPostre, config.menuTexto,
     config.cornerDecoration,
     countdown, formattedDate, formattedTime,
-    hasLocationData, locationDescription, calendarLink, config.weddingMapUrl,
+    hasLocationData, locationDescription, calendarLink, config.weddingSiteURL,
     rsvpForm, rsvpEntries, rsvpMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
     updateRsvpField, handleRsvpSubmit, handleDeleteRsvp, handleDietaryToggle, DIETARY_OPTIONS, computeAge,
   ]);

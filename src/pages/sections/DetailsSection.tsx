@@ -8,7 +8,7 @@ const DetailsSection = memo(function DetailsSection({
   style, className,
   formattedDate, formattedTime, hasLocationData, locationDescription,
   calendarLink,
-  weddingMapUrl, transportInfo,
+  weddingSiteURL, transportInfo,
   cornerDecoration,
 }: {
   style?: React.CSSProperties;
@@ -18,7 +18,7 @@ const DetailsSection = memo(function DetailsSection({
   hasLocationData: boolean;
   locationDescription?: string;
   calendarLink?: string;
-  weddingMapUrl?: string;
+  weddingSiteURL?: string;
   transportInfo?: string;
   cornerDecoration?: string;
 }) {
@@ -34,11 +34,11 @@ const DetailsSection = memo(function DetailsSection({
         <div className="story-card story-panel story-card--details w-full text-center">
           <p className="story-eyebrow">{t("details.sectionLabel")}</p>
 
-        {weddingMapUrl && isValidGoogleMapsUrl(weddingMapUrl) ? (
+        {weddingSiteURL && isValidGoogleMapsUrl(weddingSiteURL) ? (
           <>
-            <WeddingMap mapUrl={weddingMapUrl} t={t} />
+            <WeddingMap mapUrl={weddingSiteURL} t={t} />
             <div className="story-map__actions" style={{ marginTop: "0.5rem" }}>
-              <a className="setup-button setup-button--ghost setup-button--compact" href={weddingMapUrl} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer">
+              <a className="setup-button setup-button--ghost setup-button--compact" href={weddingSiteURL} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer">
                 {t("details.viewGoogleMaps")}
               </a>
             </div>

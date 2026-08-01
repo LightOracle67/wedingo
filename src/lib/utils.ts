@@ -1,9 +1,8 @@
 export { normalizeConfig } from "./normalize-config";
-export { geocodeLocation, parseCoordinate, getValidCoordinates, resolveLocationTarget, buildGoogleMapsUrl, buildGoogleMapsSearchUrl, buildAppleMapsUrl, buildAppleMapsSearchUrl } from "./geo-utils";
+export { isValidGoogleMapsUrl, convertToEmbedUrl, extractPlaceNameFromUrl } from "./geo-utils";
 export { buildGoogleCalendarUrl } from "./calendar-utils";
 export { generateSetupToken, normalizeTokenValue, generateInviteToken } from "./token-utils";
 export { compressImage } from "./image-utils";
-export { buildOpenFreeMapPreviewUrl } from "./map-utils";
 export { encodeInviteConfig, decodeInviteConfig } from "./invite-config-codec";
 
 export function escHtml(s: unknown) {

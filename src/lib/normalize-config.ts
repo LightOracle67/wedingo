@@ -13,8 +13,6 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   secondName: s(value?.secondName),
   inviteMessage: s(value?.inviteMessage),
   weddingPlace: s(value?.weddingPlace),
-  weddingLatitude: s(value?.weddingLatitude),
-  weddingLongitude: s(value?.weddingLongitude),
   weddingDay: s(value?.weddingDay),
   weddingMonth: s(value?.weddingMonth),
   weddingYear: s(value?.weddingYear),
@@ -50,5 +48,5 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   backgroundImage: s(value?.backgroundImage),
   customSeal: s(value?.customSeal),
   cornerDecoration: s(value?.cornerDecoration),
-  weddingMapUrl: s(value?.weddingMapUrl),
+  weddingSiteURL: s(value?.weddingSiteURL ?? value?.weddingMapUrl),
 });

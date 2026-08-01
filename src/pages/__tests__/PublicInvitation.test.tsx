@@ -9,7 +9,7 @@ const mockUseAppValue = vi.hoisted(() => ({
     hiddenSections: "gifts,accommodation,gallery,rsvp", sectionOrder: "",
     weddingDay: "15", weddingMonth: "enero", weddingYear: "2025",
     weddingHour: "14", weddingMinute: "30", weddingPlace: "Madrid",
-    weddingLatitude: "40.4168", weddingLongitude: "-3.7038",
+    weddingSiteURL: "https://maps.google.com/maps/place/Madrid",
     weddingSchedule: "", weddingDressCode: "", kidsPolicy: "",
     storyText: "", giftsInfo: "", bankInfo: "", accommodationInfo: "", transportInfo: "",
     musicFile: "", musicUrl: "", menuEnabled: "", menuCarne: "", menuPescado: "",
@@ -210,12 +210,10 @@ describe("PublicInvitation", () => {
 
   it("handles empty weddingPlace for description fallback", () => {
     mockUseAppValue.config.weddingPlace = "";
-    mockUseAppValue.config.weddingLatitude = "";
-    mockUseAppValue.config.weddingLongitude = "";
+    mockUseAppValue.config.weddingSiteURL = "";
     render(<PublicInvitation />);
     mockUseAppValue.config.weddingPlace = "Madrid";
-    mockUseAppValue.config.weddingLatitude = "40.4168";
-    mockUseAppValue.config.weddingLongitude = "-3.7038";
+    mockUseAppValue.config.weddingSiteURL = "https://maps.google.com/maps/place/Madrid";
   });
 
   it("renders with isStoryTransitioning true", () => {
