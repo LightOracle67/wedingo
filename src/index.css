@@ -130,6 +130,7 @@ html {
   --invite-core-border: rgba(255, 238, 194, 0.58);
   --invite-core-color: #c8a84e;
   --invite-core-glow: rgba(255, 212, 115, 0.22);
+  --invite-eyebrow-color: #22305e;
   --invite-title-color: #dcc8a8;
   --invite-copy-color: #e0d4bc;
   --invite-text-shadow: rgba(30, 20, 10, 0.65);
@@ -1240,6 +1241,18 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
   }
 }
 
+/* Eyebrow claro en temas oscuros (el default es oscuro para temas claros). */
+:root[data-wedding-theme="amber-night"],
+:root[data-wedding-theme="onyx-gold"],
+:root[data-wedding-theme="midnight-royal"],
+:root[data-wedding-theme="burgundy-velvet"],
+:root[data-wedding-theme="sapphire-night"],
+:root[data-wedding-theme="emerald-grove"],
+:root[data-wedding-theme="plum-twilight"],
+:root[data-wedding-theme="ace"] {
+  --invite-eyebrow-color: #f2ead6;
+}
+
 
 @media (prefers-contrast: more) {
   .story-card-wrap {
@@ -1520,12 +1533,11 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
 
 .story-eyebrow {
   margin: 0;
-  font-family: var(--font-body);
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
+  font-family: "Great Vibes", cursive;
+  letter-spacing: 0.02em;
   font-size: 0.78rem;
-  color: var(--invite-core-color, #c8a84e);
-  font-weight: 700;
+  color: var(--invite-eyebrow-color, var(--invite-core-color, #c8a84e));
+  font-weight: 400;
   position: relative;
   z-index: 5;
 }
