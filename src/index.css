@@ -2215,7 +2215,7 @@ a:focus-visible {
   .music-player__card { width: 160px; }
   .music-player__fab { width: 2.2rem; height: 2.2rem; font-size: 1rem; }
   .envelope-wrapper { transform: scale(0.85); transform-origin: center center; }
-  .envelope { width: min(90vw, 350px); }
+  .envelope { width: min(92vw, 400px); }
   .page-loading { min-height: 100px; }
 }
 @media (max-width: 360px) {
