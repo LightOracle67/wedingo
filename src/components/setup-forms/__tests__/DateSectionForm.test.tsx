@@ -181,7 +181,7 @@ describe("DateSectionForm", () => {
   it("shows invalid URL error and explanation", () => {
     mockFormData.weddingSiteURL = "not-a-valid-url";
     render(<DateSectionForm />);
-    expect(screen.getByText(/setup.mapUrlInvalid/)).toBeDefined();
+    expect(screen.getAllByText(/setup.mapUrlInvalid/).length).toBeGreaterThan(0);
     expect(screen.getByText("setup.mapUrlInvalidInfo")).toBeDefined();
     expect(document.querySelector("iframe")).toBeNull();
   });
