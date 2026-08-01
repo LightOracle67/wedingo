@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.35.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.35.0)  
+**Versión actual:** [v2.37.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.37.0)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -12,10 +12,10 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 | Aspecto | Estado |
 |---|---|
-| Tests | 1590 tests, 139 test files |
+| Tests | 1534 tests, 137 test files |
 | Cobertura | ~87% statements |
 | Lint | 0 warnings (oxlint) |
-| TypeScript | 0 errors (`strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `skipLibCheck=false`) |
+| TypeScript | 0 errors (`strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `skipLibCheck=true` — solo .d.ts de terceros) |
 | `any` en source | 0 |
 | `!important` en CSS | 41 |
 | Idiomas | 100 |
@@ -46,8 +46,8 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 | Sección | Contenido |
 |---|---|
-| **Hero** | Foto de novios (circular, máscara radial 60-100%, borde dorado animado), countdown, padrinos, mensaje |
-| **Details** | Fecha, hora, lugar, mapa (Google Maps Embed sin API key), transporte, botón calendario |
+| **Hero** | Foto de novios (circular, máscara radial 60-100%, borde dorado animado), countdown calendárico (años/meses/días), padrinos, mensaje |
+| **Details** | Fecha+hora, botón calendario, ubicación, mapa (Google Maps Embed sin API key), transporte, mensaje de confirmación |
 | **Info** | Horario, código de vestimenta, política infantil |
 | **Story** | Historia de amor (texto libre) |
 | **Gallery** | Galería de fotos con lightbox, carrusel automático, descripciones |
@@ -66,6 +66,7 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 - Banner informativo "Acompañas a X" para acompañantes
 - Cache local sin sobrescritura de datos de acompañantes
 - Select de asistencia con `width: auto; min-width: 180px`
+- Postre mostrado tras elegir el menú (o junto al menú fijo), encima de alergias
 
 ### Panel de administración (6 pestañas)
 
@@ -165,13 +166,14 @@ Logout → clearSession() + updateDoc(null, null)
 
 ## Mapa
 
-**Google Maps Embed** (sin API key):
+**Google Maps Embed** (sin API key) a partir de la URL de lugar compartida:
 ```
-https://maps.google.com/maps?q=41.3874,2.1686&hl=es&z=14&output=embed
+https://www.google.com/maps/place/Nombre+del+venue/@lat,lng,17z
 ```
-- `<iframe>` nativo, sin dependencias externas
-- Geocodificación vía Nominatim (OpenStreetMap) como fallback
-- Reemplaza Leaflet (eliminado en v2.34.0)
+- Solo se aceptan URLs `google.com/maps/place/...` (enlaces cortos y búsquedas rechazadas en el setup, con validación visual)
+- El nombre del lugar se deriva de la URL (no hay campo manual)
+- Opciones por invitación: vista **Mapa / Satélite / Híbrido** y **mapa estático** (interacción bloqueada)
+- `<iframe>` nativo, sin dependencias externas; reemplaza Leaflet (eliminado en v2.34.0)
 
 ---
 
@@ -179,10 +181,10 @@ https://maps.google.com/maps?q=41.3874,2.1686&hl=es&z=14&output=embed
 
 - **Eucalipto:** imágenes laterales animadas (float + wind-sway)
 - **Esquinas:** imagen decorativa subible (PNG/SVG, una imagen para las 4 esquinas)
-- **Luces:** 24 fireflies animados con 6 colores, 4 trayectorias
-- **Sello:** imagen personalizada dentro de la cera roja y como fondo tras el texto dorado
+- **Luces:** 20 fireflies animados con 6 colores, 4 trayectorias
+- **Sello:** imagen personalizada que llena la cera circular (máscara + cover) y como fondo tras el texto dorado
 - **Envelope:** animación 3D (flap, sello cera, flash blanco, texto dorado, partículas orbitales)
-- **Fondo:** imagen semi-transparente en cada `.story-card` vía CSS `--story-card-user-bg`
+- **Fondo:** imagen semi-transparente en cada `.story-card` vía CSS `--story-card-user-bg`, ajustada a la card (cover) y estática frente al scroll
 
 ---
 
@@ -251,6 +253,9 @@ Hitos principales:
 | v2.33.0 | 2026-07-30 | Imágenes en subcolección (evita truncado 1MB) |
 | v2.34.0 | 2026-07-30 | Google Maps Embed reemplaza Leaflet, logs exhaustivos |
 | v2.35.0 | 2026-07-31 | normalizeConfig fix, audio chunks 200KB, changelog reescrito |
+| v2.36.0 | 2026-07-31 | CI/CD real (build-and-test, e2e, deploy, sentry-release), react-router v8 |
+| v2.36.1 | 2026-07-31 | Ajustes finales CI (e2e, audit, sourcemaps) |
+| v2.37.0 | 2026-08-01 | weddingSiteURL, opciones de mapa, fondo/esquinas estáticas, envelope y z-index rediseñados, cuenta atrás calendárica |
 
 ---
 

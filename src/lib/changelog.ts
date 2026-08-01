@@ -1,5 +1,31 @@
 export const CHANGELOG = [
   {
+    version: "2.37.0",
+    date: "2026-08-01",
+    changes: [
+      "FEAT: weddingSiteURL reemplaza lat/lng — nombre del lugar derivado de la URL (extractPlaceNameFromUrl), sin geocodificación",
+      "FEAT: solo URLs google.com/maps/place/... — enlaces cortos y búsquedas rechazadas con validación visual (badge ✓/✗, caja de feedback, instrucciones)",
+      "FEAT: opciones de mapa configurables — vista mapa/satélite/híbrido y mapa estático (bloqueo de interacción)",
+      "FEAT: custom background en contenedor propio (.story-card-wrap) — estático frente al scroll, por encima del tema, ajuste cover",
+      "FEAT: esquinas decorativas y patrón con la anchura exacta de la card y por encima del background del tema",
+      "FEAT: sección fecha y lugar reordenada — fecha+hora, calendario, ubicación, mapa, transporte, mensaje (con variantes según datos pendientes)",
+      "FEAT: RSVP — postre tras elegir menú (y en menú fijo), encima de alergias",
+      "FEAT: story-eyebrow con Great Vibes, colores por tema (azul medianoche claro / marfil oscuro) y mayor que el título; título -20%",
+      "FEAT: cuenta atrás calendárica (años/meses/días) con corte en el primer cero",
+      "FEAT: escala z-index reordenada — envelope arriba (fondo 10000, sobre 10001, textos 10002), navbar sobre secciones, textos +1 sobre su padre",
+      "FEAT: envelope — fondo difuminado (blur 160px + fallback opaco), sobre más grande, sello custom circular que llena la cera",
+      "FEAT: luciérnagas con más brillo (punto 4px, glow ampliado, brightness 1.1-1.5)",
+      "FEAT: cards con altura máxima calc(100dvh - navbar - clamp) y scroll interno en todas las secciones",
+      "FIX: compressImage saltaba la reducción de dimensiones en JPEGs pequeños (<300KB) — i/o Error en Safari",
+      "FIX: CSP — maps.google.com/www.google.com en frame-src (meta+header); iframe del mapa bloqueado en producción",
+      "FIX: setup layout/card sin altura fija ni scroll propio — crece con el contenido y el inicio es alcanzable",
+      "FIX: e2e CI — webServer con cwd de la raíz del repo (Playwright usaba e2e/ y vite preview servía 404)",
+      "FIX: html/body min-height 100dvh y secciones min-height 100dvh con overflow propio",
+      "STYLE: iframe del mapa con borde y glow acorde a la página",
+    ],
+  },
+
+  {
     version: "2.36.1",
     date: "2026-07-31",
     changes: [
