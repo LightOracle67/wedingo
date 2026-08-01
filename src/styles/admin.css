@@ -144,13 +144,12 @@ input.setup-input[type="date"] {
 }
 .setup-layout {
   position: relative;
-  height: calc(100dvh - var(--navbar-height, 0px));
+  min-height: calc(100dvh - var(--navbar-height, 0px));
   display: grid;
-  place-items: center center;
+  place-items: safe center;
   padding: clamp(0.75rem, 2.5vw, 1.5rem);
   width: 100%;
   box-sizing: border-box;
-  overscroll-behavior: contain;
 }
 .setup-layout--flush {
   padding: 0;
