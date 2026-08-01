@@ -1,4 +1,5 @@
 import { onSchedule, type ScheduleOptions } from "firebase-functions/v2/scheduler";
+import { onRequest } from "firebase-functions/v2/https";
 import { getFirestore, type Firestore } from "firebase-admin/firestore";
 import { getStorage, type Storage } from "firebase-admin/storage";
 import { initializeApp } from "firebase-admin/app";
@@ -61,5 +62,30 @@ export const cleanupExpiredData = onSchedule(
 
     if (batchSize > 0) await batch.commit();
     console.log(`Cleanup complete: ${processed} invitations removed`);
+  },
+);
+
+const GOOGL_SHORT_PATTERN = /^https:\/\/maps\.app\.goo\.gl\/[a-zA-Z0-9_-]+$/;
+const GOOGLE_MAPS_FINAL_PATTERN = /^https:\/\/(www\.)?google\.[a-z.]{2,}\/maps\//;
+
+export const resolveMapUrl = onRequest(
+  { cors: true, timeoutSeconds: 30 },
+  async (req, res) => {
+    const url = String(req.query.url || req.body?.url || "").trim();
+    if (!GOOGL_SHORT_PATTERN.test(url)) {
+      res.status(400).json({ error: "invalid url" });
+      return;
+    }
+    try {
+      const resp = await fetch(url, { redirect: "follow" });
+      const finalUrl = resp.url || url;
+      if (!GOOGLE_MAPS_FINAL_PATTERN.test(finalUrl)) {
+        res.status(422).json({ error: "not a google maps url", url: finalUrl });
+        return;
+      }
+      res.json({ url: finalUrl });
+    } catch {
+      res.status(502).json({ error: "resolve failed" });
+    }
   },
 );
