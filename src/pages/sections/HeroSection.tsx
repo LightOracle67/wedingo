@@ -26,7 +26,7 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
       className={`${className} relative flex items-center justify-center px-3 py-6 sm:px-6 sm:py-10 lg:px-8 lg:py-12`}
       style={style}
     >
-      <div className="story-card-wrap">
+      <div className="story-card-wrap story-card-wrap--hero">
         <CornerDecorations src={cornerDecoration} />
         <div className="story-card story-panel story-card--hero w-full text-center">
           <div className="relative z-20">

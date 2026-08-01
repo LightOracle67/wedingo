@@ -1883,7 +1883,7 @@ h6 {
   transition: border-color 260ms ease, background-color 260ms ease, box-shadow 260ms ease, transform 300ms ease;
 }
 
-.story-card--hero {
+.story-card-wrap--hero {
   max-width: min(90%, 32rem);
 }
 
@@ -2158,8 +2158,8 @@ a:focus-visible {
 @media (max-width: 640px) {
   html { font-size: 14px; }
   body { overflow-x: auto; }
-  .story-card { max-width: 80% !important; width: 80% !important; padding: 0.6rem; }
-  .story-card--hero { max-width: 80% !important; }
+  .story-card { padding: 0.6rem; }
+  .story-card-wrap { width: 80% !important; }
   .story-title { font-size: clamp(1rem, 5vw, 1.4rem) !important; }
   .story-copy { font-size: clamp(0.8rem, 3.5vw, 0.95rem) !important; }
   .story-section { padding: 0.5rem !important; }
