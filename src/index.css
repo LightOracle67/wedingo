@@ -1427,6 +1427,10 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
 .story-card--details {
   display: grid;
   gap: 0.9rem;
+  max-height: calc(100dvh - var(--navbar-height, 0px) - clamp(5rem, 10vw, 8rem));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
 }
 
 .story-card--rsvp {
