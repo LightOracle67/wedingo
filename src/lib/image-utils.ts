@@ -90,7 +90,13 @@ export const compressImageTransparent = async (file: File, maxDimension = 1600):
  *  Exporta a WebP (con alpha si existe), con fallback a JPEG. */
 export const compressImage = async (file: File): Promise<string> => {
   console.log("[upload] compressImage start", file.name, file.size, file.type);
-  if (file.size <= TARGET_BYTES && file.type === "image/jpeg") {
+  const img = await loadImage(file);
+  console.log("[upload] image loaded", img.width, "x", img.height);
+
+  // Fast path: JPEG ya pequeño y con dimensiones razonables
+  if (file.size <= TARGET_BYTES && file.type === "image/jpeg"
+      && img.width <= MAX_IMAGE_DIMENSION && img.height <= MAX_IMAGE_DIMENSION) {
+    URL.revokeObjectURL(img.src);
     console.log("[upload] skip compress (small JPEG)");
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -100,8 +106,6 @@ export const compressImage = async (file: File): Promise<string> => {
     });
   }
 
-  const img = await loadImage(file);
-  console.log("[upload] image loaded", img.width, "x", img.height);
   let { width, height } = img;
   if (width > MAX_IMAGE_DIMENSION || height > MAX_IMAGE_DIMENSION) {
     const ratio = Math.min(MAX_IMAGE_DIMENSION / width, MAX_IMAGE_DIMENSION / height);
