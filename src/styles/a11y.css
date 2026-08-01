@@ -111,6 +111,7 @@
   -webkit-backdrop-filter: blur(4px);
 }
 html.a11y-high-contrast .story-card,
+html.a11y-high-contrast .story-card-wrap,
 html.a11y-high-contrast .setup-card,
 html.a11y-high-contrast .invite-shell,
 html.a11y-high-contrast .modal-card,
