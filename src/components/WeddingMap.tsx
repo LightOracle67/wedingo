@@ -1,7 +1,7 @@
 import { isValidGoogleMapsUrl, convertToEmbedUrl } from "../lib/geo-utils";
 
 function canEmbed(url: string): boolean {
-  return url.includes('output=embed') || /^https:\/\/(www\.)?google\.(com|[a-z]{2,3})\/maps\//.test(url);
+  return url.includes('output=embed') || /^https:\/\/((www|maps)\.)?google\.(com|[a-z]{2,3})\/maps\//.test(url);
 }
 
 export default function WeddingMap({ mapUrl }: {

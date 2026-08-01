@@ -1,16 +1,14 @@
-const GOOGLE_MAPS_URL_PATTERN = /^https:\/\/(www\.)?google\.(com|[a-z]{2,3})\/maps(\/|\?|$).+/;
-const GOOGL_URL_PATTERN = /^https:\/\/maps\.app\.goo\.gl\/[a-zA-Z0-9_-]+$/;
+const GOOGLE_MAPS_PLACE_PATTERN = /^https:\/\/((www|maps)\.)?google\.(com|[a-z]{2,3})\/maps\/place\/.+$/;
 
 export function isValidGoogleMapsUrl(url: string): boolean {
-  const trimmed = url.trim();
-  return GOOGLE_MAPS_URL_PATTERN.test(trimmed) || GOOGL_URL_PATTERN.test(trimmed);
+  return GOOGLE_MAPS_PLACE_PATTERN.test(url.trim());
 }
 
 export function convertToEmbedUrl(mapUrl: string): string {
   const url = mapUrl.trim();
-  // Already an embed URL or a goo.gl short link (can't convert, skip embed)
-  if (url.includes('output=embed') || GOOGL_URL_PATTERN.test(url)) return url;
-  // Convert a standard Google Maps URL to embed
+  // Already an embed URL, return as-is
+  if (url.includes('output=embed')) return url;
+  // Convert a Google Maps place URL to embed
   try {
     const parsed = new URL(url);
     const q = parsed.searchParams.get('q') || parsed.searchParams.get('query') || '';
@@ -27,7 +25,7 @@ const COORDINATES_ONLY_PATTERN = /^[-+]?\d+(\.\d+)?,\s*[-+]?\d+(\.\d+)?$/;
 
 export function extractPlaceNameFromUrl(mapUrl: string): string | null {
   const url = mapUrl.trim();
-  if (!isValidGoogleMapsUrl(url) || GOOGL_URL_PATTERN.test(url)) return null;
+  if (!isValidGoogleMapsUrl(url)) return null;
   try {
     const parsed = new URL(url);
     const q = parsed.searchParams.get('q') || parsed.searchParams.get('query') || '';

@@ -4,21 +4,28 @@ import {
 } from "../geo-utils";
 
 describe("isValidGoogleMapsUrl", () => {
-  it("accepts standard google.com/maps URLs", () => {
+  it("accepts google.com/maps/place URLs", () => {
     expect(isValidGoogleMapsUrl("https://www.google.com/maps/place/Madrid")).toBe(true);
-    expect(isValidGoogleMapsUrl("https://google.com/maps?q=40.41,-3.70")).toBe(true);
+    expect(isValidGoogleMapsUrl("https://www.google.com/maps/place/Plaza+Mayor/@40.4153,-3.7074,17z")).toBe(true);
+    expect(isValidGoogleMapsUrl("https://maps.google.com/maps/place/Madrid")).toBe(true);
+    expect(isValidGoogleMapsUrl("https://www.google.es/maps/place/Plaza+Mayor/@40.41,-3.70,17z/data=!3m1!4b1")).toBe(true);
   });
 
-  it("accepts maps.app.goo.gl short links", () => {
-    expect(isValidGoogleMapsUrl("https://maps.app.goo.gl/iiHSrkxG1WuVepLu6")).toBe(true);
+  it("rejects query/coordinate URLs (not place links)", () => {
+    expect(isValidGoogleMapsUrl("https://www.google.com/maps?q=40.41,-3.70")).toBe(false);
+    expect(isValidGoogleMapsUrl("https://google.com/maps?ll=40.41,-3.70")).toBe(false);
+    expect(isValidGoogleMapsUrl("https://www.google.com/maps/search/?api=1&query=Madrid")).toBe(false);
+  });
+
+  it("rejects short links", () => {
+    expect(isValidGoogleMapsUrl("https://maps.app.goo.gl/iiHSrkxG1WuVepLu6")).toBe(false);
   });
 
   it("rejects invalid URLs", () => {
     expect(isValidGoogleMapsUrl("")).toBe(false);
     expect(isValidGoogleMapsUrl("https://example.com/maps")).toBe(false);
-    expect(isValidGoogleMapsUrl("https://maps.app.goo.gl/")).toBe(false);
+    expect(isValidGoogleMapsUrl("https://www.google.com/maps/place/")).toBe(false);
     expect(isValidGoogleMapsUrl("not-a-url")).toBe(false);
-    expect(isValidGoogleMapsUrl("http://maps.google.com/maps")).toBe(false);
   });
 });
 
@@ -28,9 +35,10 @@ describe("convertToEmbedUrl", () => {
     expect(convertToEmbedUrl(url)).toBe(url);
   });
 
-  it("returns goo.gl short links as-is", () => {
-    const url = "https://maps.app.goo.gl/iiHSrkxG1WuVepLu6";
-    expect(convertToEmbedUrl(url)).toBe(url);
+  it("converts place path URLs", () => {
+    const result = convertToEmbedUrl("https://www.google.com/maps/place/Plaza+Mayor/@40.4153,-3.7074,17z");
+    expect(result).toContain("output=embed");
+    expect(result).toContain("q=Plaza%20Mayor");
   });
 
   it("converts URL with q param", () => {
@@ -45,11 +53,6 @@ describe("convertToEmbedUrl", () => {
     expect(result).toContain("40.4168");
   });
 
-  it("converts place path URLs", () => {
-    const result = convertToEmbedUrl("https://www.google.com/maps/place/Madrid");
-    expect(result).toContain("output=embed");
-  });
-
   it("returns URL as-is on parse failure", () => {
     expect(convertToEmbedUrl("not-a-url")).toBe("not-a-url");
   });
@@ -61,21 +64,21 @@ describe("extractPlaceNameFromUrl", () => {
     expect(name).toBe("La Masía de López");
   });
 
-  it("recovers name from q param", () => {
-    const name = extractPlaceNameFromUrl("https://www.google.com/maps/search/?api=1&query=Iglesia%20San%20Jos%C3%A9");
-    expect(name).toBe("Iglesia San José");
+  it("recovers name from /maps/place/ path without coordinates", () => {
+    const name = extractPlaceNameFromUrl("https://www.google.com/maps/place/Hacienda+Los+Olivos");
+    expect(name).toBe("Hacienda Los Olivos");
   });
 
-  it("recovers name from q param with plus signs", () => {
-    const name = extractPlaceNameFromUrl("https://www.google.com/maps?q=Hacienda+Los+Olivos");
-    expect(name).toBe("Hacienda Los Olivos");
+  it("returns null for non-place URLs (q param)", () => {
+    expect(extractPlaceNameFromUrl("https://www.google.com/maps/search/?api=1&query=Iglesia%20San%20Jos%C3%A9")).toBeNull();
+    expect(extractPlaceNameFromUrl("https://www.google.com/maps?q=Hacienda+Los+Olivos")).toBeNull();
   });
 
   it("returns null when the query is only coordinates", () => {
     expect(extractPlaceNameFromUrl("https://www.google.com/maps?q=40.4168,-3.7038")).toBeNull();
   });
 
-  it("returns null for goo.gl short links", () => {
+  it("returns null for short links", () => {
     expect(extractPlaceNameFromUrl("https://maps.app.goo.gl/iiHSrkxG1WuVepLu6")).toBeNull();
   });
 
