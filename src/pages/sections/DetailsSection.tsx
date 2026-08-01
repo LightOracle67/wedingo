@@ -34,6 +34,11 @@ const DetailsSection = memo(function DetailsSection({
         <div className="story-card story-panel story-card--details w-full text-center">
           <p className="story-eyebrow">{t("details.sectionLabel")}</p>
 
+        <h2 className="story-title">{formattedDate || t("details.datePending")}</h2>
+        <p className="story-copy">{formattedTime ? t("details.timeLabel", { time: formattedTime }) : t("details.timePending")}</p>
+
+        <div className="story-divider" />
+
         {weddingSiteURL && isValidGoogleMapsUrl(weddingSiteURL) ? (
           <>
             <WeddingMap mapUrl={weddingSiteURL} t={t} />
@@ -45,14 +50,11 @@ const DetailsSection = memo(function DetailsSection({
           </>
         ) : null}
 
-        <h2 className="story-title">{formattedDate || t("details.datePending")}</h2>
-        <p className="story-copy">{formattedTime ? t("details.timeLabel", { time: formattedTime }) : t("details.timePending")}</p>
         {hasLocationData ? (
           <p className="story-copy">{locationDescription}</p>
         ) : (
           <p className="story-copy">{t("details.placePending")}</p>
         )}
-        <div className="story-divider" />
         <p className="story-note">
           {formattedTime
             ? t("details.welcomeWithTime", { time: formattedTime })
