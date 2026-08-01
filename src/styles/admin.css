@@ -158,12 +158,8 @@ input.setup-input[type="date"] {
 .setup-card {
   position: relative;
   width: min(100%, 36rem);
-  max-height: 90dvh;
   padding: clamp(0.6rem, 2vw, 1.2rem);
   box-sizing: border-box;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
-  scrollbar-width: thin;
   background: linear-gradient(150deg, var(--setup-grad-start), var(--setup-grad-end));
   border: 1px solid var(--setup-border);
   border-radius: 1.4rem;
@@ -190,7 +186,6 @@ input.setup-input[type="date"] {
   margin: 0px;
   display: flex;
   width: 95% !important;
-  overflow-y: auto;
 }
 .setup-card--narrow {
   width: min(100%, 500px);
