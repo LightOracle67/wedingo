@@ -63,7 +63,7 @@ describe("HeroSection", () => {
     expect(screen.getByText(/countdown\.year/)).toBeDefined();
   });
 
-  it("shows countdown with months > 0 and weeks", () => {
+  it("shows countdown with months and days", () => {
     render(
       <HeroSection
         {...baseProps}
@@ -72,10 +72,23 @@ describe("HeroSection", () => {
       />,
     );
     expect(screen.getByText(/countdown\.month/)).toBeDefined();
-    expect(screen.getByText(/countdown\.week/)).toBeDefined();
+    expect(screen.getByText(/countdown\.day/)).toBeDefined();
   });
 
-  it("shows countdown with days >= 7", () => {
+  it("truncates at the first zero unit", () => {
+    render(
+      <HeroSection
+        {...baseProps}
+        countdown={{ years: 1, months: 0, days: 340, hours: 5, minutes: 12, expired: false }}
+        couplePhoto=""
+      />,
+    );
+    expect(screen.getByText(/countdown\.year/)).toBeDefined();
+    expect(screen.queryByText(/countdown\.month/)).toBeNull();
+    expect(screen.queryByText(/countdown\.day/)).toBeNull();
+  });
+
+  it("shows countdown with days and hours", () => {
     render(
       <HeroSection
         {...baseProps}
@@ -83,7 +96,9 @@ describe("HeroSection", () => {
         couplePhoto=""
       />,
     );
-    expect(screen.getByText(/countdown\.week/)).toBeDefined();
+    expect(screen.getByText(/countdown\.day/)).toBeDefined();
+    expect(screen.getByText(/countdown\.hour/)).toBeDefined();
+    expect(screen.queryByText(/countdown\.minute/)).toBeNull();
   });
 
   it("shows countdown with days > 0 and hours", () => {
@@ -95,7 +110,8 @@ describe("HeroSection", () => {
       />,
     );
     expect(screen.getByText(/countdown\.day/)).toBeDefined();
-    expect(screen.getByText(/countdown\.hours/)).toBeDefined();
+    expect(screen.getByText(/countdown\.hour/)).toBeDefined();
+    expect(screen.getByText(/countdown\.minute/)).toBeDefined();
   });
 
   it("shows countdown with hours > 0", () => {

@@ -84,24 +84,20 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
               {!countdown.expired ? (
                 <p className="text-[clamp(1.4rem,4vw,2.2rem)] leading-tight font-serif tracking-wide text-boda-texto">
                   {(() => {
-                    if (countdown.years > 0) {
-                      return `${t('countdown.year', { count: countdown.years })} · ${t('countdown.month', { count: countdown.months })}`;
-                    }
-                    if (countdown.months > 0) {
-                      const weeks = Math.floor(countdown.days / 7);
-                      return `${t('countdown.month', { count: countdown.months })} · ${t('countdown.week', { count: weeks })}`;
-                    }
-                    if (countdown.days >= 7) {
-                      const w = Math.floor(countdown.days / 7);
-                      return `${t('countdown.week', { count: w })} · ${t('countdown.day', { count: countdown.days % 7 })}`;
-                    }
-                    if (countdown.days > 0) {
-                      return `${t('countdown.day', { count: countdown.days })} · ${t('countdown.hours', { count: countdown.hours })}`;
-                    }
-                    if (countdown.hours > 0) {
-                      return `${t('countdown.hour', { count: countdown.hours })} · ${t('countdown.minutes', { count: countdown.minutes })}`;
-                    }
-                    return t('countdown.minute', { count: countdown.minutes });
+                    const units: Array<[number, string]> = [
+                      [countdown.years ?? 0, 'year'],
+                      [countdown.months ?? 0, 'month'],
+                      [countdown.days ?? 0, 'day'],
+                      [countdown.hours ?? 0, 'hour'],
+                      [countdown.minutes ?? 0, 'minute'],
+                    ];
+                    let start = units.findIndex(([v]) => v > 0);
+                    if (start === -1) start = units.length - 1;
+                    let end = units.findIndex(([v], i) => i >= start && v === 0);
+                    if (end === -1) end = units.length;
+                    let shown = units.slice(start, end);
+                    if (shown.length === 0) shown = [units[units.length - 1]!];
+                    return shown.map(([v, key]) => t(`countdown.${key}`, { count: v })).join(" · ");
                   })()}
                 </p>
               ) : (
