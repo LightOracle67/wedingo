@@ -1335,7 +1335,7 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
   z-index: 1;
   border-radius: 1.6rem;
   width: 100% !important;
-  max-height: 95%;
+  max-height: calc(100dvh - var(--navbar-height, 0px) - clamp(5rem, 10vw, 8rem));
   padding: clamp(0.8rem, 2.5vw, 1.5rem);
   box-sizing: border-box;
   overflow-y: auto;
@@ -1427,20 +1427,12 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
 .story-card--details {
   display: grid;
   gap: 0.9rem;
-  max-height: calc(100dvh - var(--navbar-height, 0px) - clamp(5rem, 10vw, 8rem));
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  scrollbar-width: thin;
 }
 
 .story-card--rsvp {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  max-height: calc(100dvh - var(--navbar-height, 0px) - clamp(5rem, 10vw, 8rem));
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  scrollbar-width: thin;
 }
 
 .story-card--rsvp .rsvp-form {
