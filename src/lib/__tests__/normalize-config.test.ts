@@ -7,8 +7,9 @@ const FULL_CONFIG = {
   secondName: "  María  ",
   inviteMessage: "  Ven a la boda  ",
   weddingPlace: "  Iglesia San José  ",
-  weddingLatitude: "  40.4168  ",
-  weddingLongitude: "  -3.7038  ",
+  weddingSiteURL: "  https://www.google.com/maps/place/Iglesia+San+Jos%C3%A9/@40.4,-3.7,15z  ",
+  weddingMapView: "  satellite  ",
+  weddingMapStatic: "  true  ",
   weddingDay: "  15  ",
   weddingMonth: "  junio  ",
   weddingYear: "  2026  ",
@@ -49,6 +50,27 @@ describe("normalizeConfig", () => {
     expect(result.firstName).toBe("Juan");
     expect(result.secondName).toBe("María");
     expect(result.weddingPlace).toBe("Iglesia San José");
+    expect(result.weddingSiteURL).toBe("https://www.google.com/maps/place/Iglesia+San+Jos%C3%A9/@40.4,-3.7,15z");
+  });
+
+  it("normalizes weddingMapView to valid values", () => {
+    expect(normalizeConfig({ weddingMapView: "satellite" }).weddingMapView).toBe("satellite");
+    expect(normalizeConfig({ weddingMapView: "hybrid" }).weddingMapView).toBe("hybrid");
+    expect(normalizeConfig({ weddingMapView: "roadmap" }).weddingMapView).toBe("roadmap");
+    expect(normalizeConfig({ weddingMapView: "weird" }).weddingMapView).toBe("roadmap");
+    expect(normalizeConfig({}).weddingMapView).toBe("roadmap");
+  });
+
+  it("normalizes weddingMapStatic to string boolean", () => {
+    expect(normalizeConfig({ weddingMapStatic: "true" }).weddingMapStatic).toBe("true");
+    expect(normalizeConfig({ weddingMapStatic: "false" }).weddingMapStatic).toBe("false");
+    expect(normalizeConfig({ weddingMapStatic: "yes" }).weddingMapStatic).toBe("false");
+    expect(normalizeConfig({}).weddingMapStatic).toBe("false");
+  });
+
+  it("migrates legacy weddingMapUrl to weddingSiteURL", () => {
+    const result = normalizeConfig({ weddingMapUrl: "https://www.google.com/maps/place/Madrid" });
+    expect(result.weddingSiteURL).toBe("https://www.google.com/maps/place/Madrid");
   });
 
   it("lowercases adminUsername", () => {
