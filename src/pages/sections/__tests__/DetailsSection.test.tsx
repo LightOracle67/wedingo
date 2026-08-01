@@ -42,7 +42,7 @@ describe("DetailsSection", () => {
     expect(screen.getByText("details.sectionLabel")).toBeDefined();
     expect(screen.getByText("15 Jun 2025")).toBeDefined();
     expect(screen.getByText("details.timeLabel")).toBeDefined();
-    expect(screen.getByText("details.welcomeWithTime")).toBeDefined();
+    expect(screen.getByText("details.welcomeWithPlaceTime")).toBeDefined();
     expect(screen.getByText("Madrid")).toBeDefined();
     expect(screen.getByText("details.transport")).toBeDefined();
     expect(screen.getByText("details.addToCalendar")).toBeDefined();

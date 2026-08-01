@@ -23,6 +23,9 @@ const GiftsSection = memo(function GiftsSection({ style, className, giftsInfo, b
             </p>
           )}
           {bankInfo ? (
+            <div className="story-divider" />
+          ) : null}
+          {bankInfo ? (
             <div className="mt-4 p-3 rounded-xl" style={{ background: "color-mix(in srgb, var(--setup-field-bg) 80%, transparent)", border: "1px solid color-mix(in srgb, var(--setup-accent) 30%, transparent)" }}>
               <p className="story-eyebrow" style={{ fontSize: "0.72rem" }}>{t("gifts.bankInfo")}</p>
               <p className="story-note mt-1 whitespace-pre-line" style={{ fontFamily: "monospace", fontSize: "0.85rem" }}>{bankInfo}</p>

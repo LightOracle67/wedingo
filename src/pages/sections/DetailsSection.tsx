@@ -36,54 +36,64 @@ const DetailsSection = memo(function DetailsSection({
         <div className="story-card story-panel story-card--details w-full text-center">
           <p className="story-eyebrow">{t("details.sectionLabel")}</p>
 
-        <h2 className="story-title">{formattedDate || t("details.datePending")}</h2>
-        <p className="story-copy">{formattedTime ? t("details.timeLabel", { time: formattedTime }) : t("details.timePending")}</p>
+          <h2 className="story-title">{formattedDate || t("details.datePending")}</h2>
+          <p className="story-copy">{formattedTime ? t("details.timeLabel", { time: formattedTime }) : t("details.timePending")}</p>
 
-        <div className="story-divider" />
+          <div className="story-divider" />
 
-        {weddingSiteURL && isValidGoogleMapsUrl(weddingSiteURL) ? (
-          <>
-            <WeddingMap mapUrl={weddingSiteURL} t={t} mapView={mapView || "roadmap"} staticMap={staticMap === true} />
-            <div className="story-map__actions" style={{ marginTop: "0.5rem" }}>
-              <a className="setup-button setup-button--ghost setup-button--compact" href={weddingSiteURL} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer">
-                {t("details.viewGoogleMaps")}
+          {calendarLink ? (
+            <div className="story-calendar-actions">
+              <a
+                className="setup-button setup-button--ghost setup-button--compact"
+                href={calendarLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                referrerPolicy="no-referrer"
+              >
+                {t("details.addToCalendar")}
               </a>
             </div>
-          </>
-        ) : null}
+          ) : null}
 
-        {hasLocationData ? (
-          <p className="story-copy">{locationDescription}</p>
-        ) : (
-          <p className="story-copy">{t("details.placePending")}</p>
-        )}
-        <p className="story-note">
-          {formattedTime
-            ? t("details.welcomeWithTime", { time: formattedTime })
-            : t("details.welcomeWithoutTime")}
-          </p>
-        {transportInfo ? (
           <div className="story-divider" />
-        ) : null}
-        {transportInfo ? (
-          <div style={{ marginTop: "0.5rem" }}>
-            <p className="story-eyebrow" style={{ fontSize: "0.72rem" }}>{t("details.transport")}</p>
-            <p className="story-note whitespace-pre-line" style={{ marginTop: "0.2rem" }}>{transportInfo}</p>
-          </div>
-        ) : null}
-        {calendarLink ? (
-          <div className="story-calendar-actions">
-            <a
-              className="setup-button setup-button--ghost setup-button--compact"
-              href={calendarLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              referrerPolicy="no-referrer"
-            >
-              {t("details.addToCalendar")}
-            </a>
-          </div>
-        ) : null}
+
+          <p className="story-eyebrow" style={{ fontSize: "0.82rem" }}>{t("details.locationLabel")}</p>
+          {hasLocationData ? (
+            <p className="story-copy">{locationDescription}</p>
+          ) : (
+            <p className="story-copy">{t("details.placePending")}</p>
+          )}
+
+          {weddingSiteURL && isValidGoogleMapsUrl(weddingSiteURL) ? (
+            <>
+              <WeddingMap mapUrl={weddingSiteURL} t={t} mapView={mapView || "roadmap"} staticMap={staticMap === true} />
+              <div className="story-map__actions" style={{ marginTop: "0.5rem" }}>
+                <a className="setup-button setup-button--ghost setup-button--compact" href={weddingSiteURL} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer">
+                  {t("details.viewGoogleMaps")}
+                </a>
+              </div>
+            </>
+          ) : null}
+
+          {transportInfo ? (
+            <div className="story-divider" />
+          ) : null}
+          {transportInfo ? (
+            <div style={{ marginTop: "0.5rem" }}>
+              <p className="story-eyebrow" style={{ fontSize: "0.72rem" }}>{t("details.transport")}</p>
+              <p className="story-note whitespace-pre-line" style={{ marginTop: "0.2rem" }}>{transportInfo}</p>
+            </div>
+          ) : null}
+
+          <p className="story-note" style={{ marginTop: "0.4rem" }}>
+            {hasLocationData && locationDescription
+              ? formattedTime
+                ? t("details.welcomeWithPlaceTime", { place: locationDescription, time: formattedTime })
+                : t("details.welcomeWithPlace", { place: locationDescription })
+              : formattedTime
+                ? t("details.welcomeWithTime", { time: formattedTime })
+                : t("details.welcomeWithoutTime")}
+          </p>
         </div>
       </div>
     </section>

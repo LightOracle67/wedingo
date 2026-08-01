@@ -72,12 +72,15 @@
     "timeLabel": "Ceremony time: {{time}}",
     "timePending": "Time to be confirmed",
     "placePending": "The venue will appear here.",
-    "welcomeWithTime": "We look forward to sharing this special moment with you. We start at {{time}}. You'll find the location map below.",
-    "welcomeWithoutTime": "We look forward to sharing this special moment with you. You'll find the location map below.",
+    "welcomeWithTime": "We can't wait to celebrate with you. We'll start at {{time}}.",
+    "welcomeWithoutTime": "We can't wait to celebrate with you.",
     "transport": "Transport",
     "addToCalendar": "Add to calendar",
     "viewGoogleMaps": "Open in Google Maps",
-    "viewAppleMaps": "Open in Apple Maps"
+    "viewAppleMaps": "Open in Apple Maps",
+    "locationLabel": "Location",
+    "welcomeWithPlaceTime": "We can't wait to celebrate with you at {{place}}. We'll start at {{time}}.",
+    "welcomeWithPlace": "We can't wait to celebrate with you at {{place}}."
   },
   "info": {
     "sectionLabel": "About the guests",
