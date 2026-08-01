@@ -1283,12 +1283,11 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
   scroll-snap-align: start;
   flex-shrink: 0;
   width: 100%;
-  min-height: 100dvh;
+  height: 100%;
   isolation: isolate;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow-y: auto;
   transition:
     background-color 520ms ease,
     background-image 520ms ease;
