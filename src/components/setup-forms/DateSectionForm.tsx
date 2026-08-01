@@ -30,8 +30,10 @@ export default function DateSectionForm({ prefix = "" }) {
     <>
       <label className="setup-label" htmlFor={id("weddingSiteURL")}>
         {t("setup.mapUrlLabel")}
-        {siteUrl && !isSiteUrlValid ? (
-          <span style={{ color: "#ef4444", fontSize: "0.8rem", marginLeft: "0.5rem" }}>{t("setup.mapUrlInvalid")}</span>
+        {siteUrl && isSiteUrlValid ? (
+          <span style={{ color: "#22c55e", fontSize: "0.8rem", marginLeft: "0.5rem" }}>✓ {t("setup.mapUrlOk")}</span>
+        ) : siteUrl && !isSiteUrlValid ? (
+          <span style={{ color: "#ef4444", fontSize: "0.8rem", marginLeft: "0.5rem" }}>✗ {t("setup.mapUrlInvalid")}</span>
         ) : null}
       </label>
       <input
@@ -41,8 +43,29 @@ export default function DateSectionForm({ prefix = "" }) {
         onChange={handleSiteUrlChange}
         placeholder={t("setup.mapUrlPlaceholder")}
         autoComplete="off"
+        style={siteUrl && !isSiteUrlValid ? { borderColor: "#ef4444" } : siteUrl && isSiteUrlValid ? { borderColor: "#22c55e" } : undefined}
       />
-      <p className="setup-help">{t("setup.mapUrlHint")}</p>
+      <p className="setup-help">{t("setup.mapUrlHowTo")}</p>
+
+      {siteUrl && !isSiteUrlValid ? (
+        <div style={{
+          marginTop: "0.5rem", padding: "0.5rem 0.6rem", borderRadius: "0.6rem",
+          background: "color-mix(in srgb, #ef4444 10%, transparent)",
+          border: "1px solid color-mix(in srgb, #ef4444 35%, transparent)",
+          fontSize: "0.82rem", lineHeight: 1.4,
+        }}>
+          {t("setup.mapUrlInvalidInfo")}
+        </div>
+      ) : siteUrl && isSiteUrlValid ? (
+        <div style={{
+          marginTop: "0.5rem", padding: "0.5rem 0.6rem", borderRadius: "0.6rem",
+          background: "color-mix(in srgb, #22c55e 10%, transparent)",
+          border: "1px solid color-mix(in srgb, #22c55e 35%, transparent)",
+          fontSize: "0.82rem", lineHeight: 1.4,
+        }}>
+          ✓ {t("setup.mapUrlValidInfo")}
+        </div>
+      ) : null}
 
       {siteName ? (
         <p className="setup-help" style={{ color: "var(--setup-accent)", fontWeight: 600 }}>

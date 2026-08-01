@@ -149,7 +149,7 @@ describe("DateSectionForm", () => {
     render(<DateSectionForm />);
     expect(screen.getByText("setup.mapUrlLabel")).toBeDefined();
     expect(screen.getByPlaceholderText("setup.mapUrlPlaceholder")).toBeDefined();
-    expect(screen.getByText("setup.mapUrlHint")).toBeDefined();
+    expect(screen.getByText("setup.mapUrlHowTo")).toBeDefined();
   });
 
   it("calls updateFormField with weddingSiteURL on input change", () => {
@@ -178,10 +178,11 @@ describe("DateSectionForm", () => {
     expect(screen.getByText(/Iglesia San José/)).toBeDefined();
   });
 
-  it("shows invalid URL error", () => {
+  it("shows invalid URL error and explanation", () => {
     mockFormData.weddingSiteURL = "not-a-valid-url";
     render(<DateSectionForm />);
-    expect(screen.getByText("setup.mapUrlInvalid")).toBeDefined();
+    expect(screen.getByText(/setup.mapUrlInvalid/)).toBeDefined();
+    expect(screen.getByText("setup.mapUrlInvalidInfo")).toBeDefined();
     expect(document.querySelector("iframe")).toBeNull();
   });
 

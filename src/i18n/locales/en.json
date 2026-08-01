@@ -194,7 +194,6 @@
   "setup": {
     "mapUrlLabel": "Google Maps URL",
     "mapUrlPlaceholder": "https://www.google.com/maps/place/...",
-    "mapUrlHint": "Paste the Google Maps link of the venue (e.g. https://www.google.com/maps/place/...). Only place links are supported; short links are not.",
     "mapUrlInvalid": "Invalid Google Maps URL",
     "loadingTitle": "Loading invitation",
     "loadingText": "We are loading your saved data.",
@@ -367,7 +366,11 @@
     "cornerDecorationsLabel": "Corner decoration",
     "cornerDecorationsHint": "A single decorative image displayed in all 4 corners (PNG with transparency recommended)",
     "cornerDecorationLabel": "Decorative image",
-    "uploadCorner": "Upload"
+    "uploadCorner": "Upload",
+    "mapUrlHowTo": "How to get it: open Google Maps → find the venue → tap Share → Copy link. It must start with https://www.google.com/maps/place/...",
+    "mapUrlOk": "Valid",
+    "mapUrlValidInfo": "Valid link. The map will be shown on the invitation.",
+    "mapUrlInvalidInfo": "This link will NOT show the map on the invitation. Short links (maps.app.goo.gl/...) and plain searches are not supported: use the venue's Share link."
   },
   "admin": {
     "tabs": {

@@ -194,7 +194,6 @@
   "setup": {
     "mapUrlLabel": "URL de Google Maps",
     "mapUrlPlaceholder": "https://www.google.com/maps/place/...",
-    "mapUrlHint": "Pega el enlace de Google Maps del lugar (ej. https://www.google.com/maps/place/...). Solo se admiten enlaces de lugar, no enlaces cortos.",
     "mapUrlInvalid": "URL de Google Maps no válida",
     "loadingTitle": "Cargando invitación",
     "loadingText": "Estamos cargando los datos guardados.",
@@ -367,7 +366,11 @@
     "cornerDecorationsLabel": "Decoración de esquinas",
     "cornerDecorationsHint": "Una misma imagen decorativa para las 4 esquinas (PNG con transparencia recomendado)",
     "cornerDecorationLabel": "Imagen decorativa",
-    "uploadCorner": "Subir"
+    "uploadCorner": "Subir",
+    "mapUrlHowTo": "Cómo obtenerlo: abre Google Maps → busca el lugar → pulsa Compartir → Copiar enlace. Debe empezar por https://www.google.com/maps/place/...",
+    "mapUrlOk": "Válida",
+    "mapUrlValidInfo": "Enlace válido. El mapa se mostrará en la invitación.",
+    "mapUrlInvalidInfo": "Este enlace NO mostrará el mapa en la invitación. No se admiten enlaces cortos (maps.app.goo.gl/...) ni búsquedas sueltas: usa el enlace Compartir del lugar."
   },
   "admin": {
     "tabs": {
