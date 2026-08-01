@@ -78,16 +78,16 @@
 .envelope-overlay {
   position: fixed; inset: 0; z-index: var(--z-envelope, 9999);
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  background: rgba(60, 15, 15, 0.6);
-  backdrop-filter: blur(90px) brightness(1.15) saturate(0.85);
-  -webkit-backdrop-filter: blur(90px) brightness(1.15) saturate(0.85);
+  background: rgba(55, 12, 12, 0.75);
+  backdrop-filter: blur(160px) brightness(1.05) saturate(0.7);
+  -webkit-backdrop-filter: blur(160px) brightness(1.05) saturate(0.7);
   cursor: pointer;
   transition: opacity 2.5s ease, transform 2.5s ease, backdrop-filter 2.5s ease, background 2.5s ease;
 }
 /* Navegadores sin backdrop-filter: fondo mucho más opaco para el mismo efecto difuminado */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .envelope-overlay {
-    background: rgba(45, 10, 10, 0.92);
+    background: rgba(40, 8, 8, 0.97);
   }
 }
 .envelope-light {
