@@ -1369,7 +1369,7 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
 }
 
 .story-card .story-title {
-  font-size: clamp(1.5rem, 3.4vw, 2.4rem);
+  font-size: clamp(1.2rem, 2.72vw, 1.92rem);
 }
 
 .story-card .story-copy {
@@ -1471,7 +1471,7 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
 }
 
 .story-section--details.story-section--is-active .story-title {
-  font-size: clamp(1.3rem, 3.5vw, 2rem);
+  font-size: clamp(1.04rem, 2.8vw, 1.6rem);
 }
 
 .story-section--details.story-section--is-active .story-copy {
@@ -1512,7 +1512,7 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
 }
 
 .story-section--rsvp.story-section--is-active .story-title {
-  font-size: clamp(1.3rem, 3.5vw, 2rem);
+  font-size: clamp(1.04rem, 2.8vw, 1.6rem);
 }
 
 .story-section--rsvp.story-section--is-active .story-copy {
@@ -1784,7 +1784,7 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
 
 @media (max-width: 640px) {
   .story-title {
-    font-size: clamp(1.6rem, 7vw, 2.3rem);
+    font-size: clamp(1.28rem, 5.6vw, 1.84rem);
   }
 
   .story-scroll-hint {
@@ -2162,7 +2162,7 @@ a:focus-visible {
   }
 
   .story-title {
-    font-size: clamp(1.4rem, 7vw, 1.8rem);
+    font-size: clamp(1.12rem, 5.6vw, 1.44rem);
   }
 
   .story-copy {
@@ -2197,7 +2197,7 @@ a:focus-visible {
   body { overflow-x: auto; }
   .story-card { padding: 0.6rem; }
   .story-card-wrap { width: 80% !important; }
-  .story-title { font-size: clamp(1rem, 5vw, 1.4rem) !important; }
+  .story-title { font-size: clamp(0.8rem, 4vw, 1.12rem) !important; }
   .story-eyebrow { font-size: clamp(1.1rem, 5.4vw, 1.5rem) !important; }
   .story-copy { font-size: clamp(0.8rem, 3.5vw, 0.95rem) !important; }
   .story-section { padding: 0.5rem !important; }
@@ -2250,7 +2250,7 @@ a:focus-visible {
   }
 
   .story-title {
-    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-size: clamp(1.6rem, 2.8vw, 2.56rem);
   }
 }
 
