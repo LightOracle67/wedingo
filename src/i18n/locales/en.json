@@ -370,7 +370,13 @@
     "mapUrlHowTo": "How to get it: open Google Maps → find the venue → tap Share → Copy link. It must start with https://www.google.com/maps/place/...",
     "mapUrlOk": "Valid",
     "mapUrlValidInfo": "Valid link. The map will be shown on the invitation.",
-    "mapUrlInvalidInfo": "This link will NOT show the map on the invitation. Short links (maps.app.goo.gl/...) and plain searches are not supported: use the venue's Share link."
+    "mapUrlInvalidInfo": "This link will NOT show the map on the invitation. Short links (maps.app.goo.gl/...) and plain searches are not supported: use the venue's Share link.",
+    "mapViewLabel": "Map type",
+    "mapViewRoadmap": "Map",
+    "mapViewSatellite": "Satellite",
+    "mapViewHybrid": "Hybrid",
+    "mapStaticLabel": "Static map",
+    "mapStaticHint": "Blocks interaction: guests won't be able to move the map (they can open it with the button below)."
   },
   "admin": {
     "tabs": {

@@ -18,8 +18,8 @@ export default function DateSectionForm({ prefix = "" }) {
 
   const embedUrl = useMemo(() => {
     if (!isSiteUrlValid) return "";
-    return convertToEmbedUrl(siteUrl);
-  }, [siteUrl, isSiteUrlValid]);
+    return convertToEmbedUrl(siteUrl, formData.weddingMapView || "roadmap");
+  }, [siteUrl, isSiteUrlValid, formData.weddingMapView]);
 
   const siteName = useMemo(() => {
     if (!isSiteUrlValid) return "";
@@ -46,6 +46,34 @@ export default function DateSectionForm({ prefix = "" }) {
         style={siteUrl && !isSiteUrlValid ? { borderColor: "#ef4444" } : siteUrl && isSiteUrlValid ? { borderColor: "#22c55e" } : undefined}
       />
       <p className="setup-help">{t("setup.mapUrlHowTo")}</p>
+
+      <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))" }}>
+        <div>
+          <label className="setup-label" htmlFor={id("weddingMapView")}>{t("setup.mapViewLabel")}</label>
+          <select
+            id={id("weddingMapView")}
+            className="setup-input"
+            value={formData.weddingMapView || "roadmap"}
+            onChange={(e) => updateFormField("weddingMapView", e.target.value)}
+          >
+            <option value="roadmap">{t("setup.mapViewRoadmap")}</option>
+            <option value="satellite">{t("setup.mapViewSatellite")}</option>
+            <option value="hybrid">{t("setup.mapViewHybrid")}</option>
+          </select>
+        </div>
+        <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.9rem", cursor: "pointer", marginTop: "1.5rem" }}>
+          <input
+            type="checkbox"
+            checked={formData.weddingMapStatic === "true"}
+            onChange={(e) => updateFormField("weddingMapStatic", e.target.checked ? "true" : "false")}
+            style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }}
+          />
+          <span>{t("setup.mapStaticLabel")}</span>
+        </label>
+      </div>
+      {formData.weddingMapStatic === "true" ? (
+        <p className="setup-help">{t("setup.mapStaticHint")}</p>
+      ) : null}
 
       {siteUrl && !isSiteUrlValid ? (
         <div style={{
@@ -76,15 +104,20 @@ export default function DateSectionForm({ prefix = "" }) {
       {embedUrl ? (
         <div style={{ marginTop: "0.75rem" }}>
           <p className="setup-label setup-label--tight">{t("setup.mapPreview")}</p>
-          <iframe
-            title="Google Maps preview"
-            src={embedUrl}
-            width="100%"
-            height="250"
-            style={{ border: 0, borderRadius: "var(--radius-xl)", marginTop: "0.35rem" }}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+          <div style={{ position: "relative" }}>
+            <iframe
+              title="Google Maps preview"
+              src={embedUrl}
+              width="100%"
+              height="250"
+              style={{ border: 0, borderRadius: "var(--radius-xl)", marginTop: "0.35rem", touchAction: formData.weddingMapStatic === "true" ? "none" : undefined }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+            {formData.weddingMapStatic === "true" ? (
+              <div aria-hidden="true" style={{ position: "absolute", inset: 0 }} />
+            ) : null}
+          </div>
         </div>
       ) : null}
 

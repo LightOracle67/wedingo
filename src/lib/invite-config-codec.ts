@@ -1,6 +1,6 @@
 const INVITE_KEY_MAP = {
   fn: "firstName", sn: "secondName", im: "inviteMessage",
-  wp: "weddingPlace", su: "weddingSiteURL",
+  wp: "weddingPlace", su: "weddingSiteURL", mv: "weddingMapView", ms: "weddingMapStatic",
   dd: "weddingDay", mm: "weddingMonth", yy: "weddingYear",
   hh: "weddingHour", mi: "weddingMinute",
   sc: "weddingSchedule", dc: "weddingDressCode",

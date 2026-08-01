@@ -7,7 +7,8 @@ vi.mock("react-i18next", () => ({
 
 vi.mock("../../lib/geo-utils", () => ({
   isValidGoogleMapsUrl: (url: string) => url.startsWith("https://maps.google.com"),
-  convertToEmbedUrl: (url: string) => url.replace("maps.google.com", "maps.google.com/embed"),
+  convertToEmbedUrl: (url: string, view: string = "roadmap") =>
+    `${url.replace("maps.google.com", "maps.google.com/embed")}&t=${view === "satellite" ? "k" : view === "hybrid" ? "h" : "m"}&output=embed`,
 }));
 
 import WeddingMap from "../WeddingMap";
@@ -26,6 +27,22 @@ describe("WeddingMap", () => {
   it("renders iframe when valid url is provided", () => {
     const { container } = render(<WeddingMap mapUrl="https://maps.google.com/maps?q=41.3874,2.1686" t={(key: string) => key} />);
     expect(container.querySelector("iframe")).toBeDefined();
+  });
+
+  it("passes satellite view to the embed url", () => {
+    const { container } = render(<WeddingMap mapUrl="https://maps.google.com/maps?q=41.3874,2.1686" t={(key: string) => key} mapView="satellite" />);
+    expect(container.querySelector("iframe")?.getAttribute("src")).toContain("t=k");
+  });
+
+  it("renders blocking overlay when staticMap", () => {
+    const { container } = render(<WeddingMap mapUrl="https://maps.google.com/maps?q=41.3874,2.1686" t={(key: string) => key} staticMap />);
+    const overlay = container.querySelector(".story-map-wrapper > div[aria-hidden='true']");
+    expect(overlay).toBeDefined();
+  });
+
+  it("does not render blocking overlay when interactive", () => {
+    const { container } = render(<WeddingMap mapUrl="https://maps.google.com/maps?q=41.3874,2.1686" t={(key: string) => key} />);
+    expect(container.querySelector(".story-map-wrapper > div[aria-hidden='true']")).toBeNull();
   });
 
   it("renders nothing when no url", () => {

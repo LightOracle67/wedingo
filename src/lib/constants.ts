@@ -116,6 +116,8 @@ export const defaultConfig = {
   inviteMessage: "",
   weddingPlace: "",
   weddingSiteURL: "",
+  weddingMapView: "roadmap",
+  weddingMapStatic: "false",
   weddingDay: "",
   weddingMonth: "",
   weddingYear: "",

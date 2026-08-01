@@ -4,7 +4,9 @@ export function isValidGoogleMapsUrl(url: string): boolean {
   return GOOGLE_MAPS_PLACE_PATTERN.test(url.trim());
 }
 
-export function convertToEmbedUrl(mapUrl: string): string {
+const MAP_VIEW_TILES: Record<string, string> = { roadmap: "m", satellite: "k", hybrid: "h" };
+
+export function convertToEmbedUrl(mapUrl: string, view: string = "roadmap"): string {
   const url = mapUrl.trim();
   // Already an embed URL, return as-is
   if (url.includes('output=embed')) return url;
@@ -15,7 +17,8 @@ export function convertToEmbedUrl(mapUrl: string): string {
     const ll = parsed.searchParams.get('ll') || '';
     const query = q || ll || parsed.pathname.replace(/^\/maps\/place\//, '').replace(/\/.+$/, '');
     const encoded = encodeURIComponent(query.replace(/\+/g, ' '));
-    return `https://maps.google.com/maps?q=${encoded}&hl=es&z=14&output=embed`;
+    const tile = MAP_VIEW_TILES[view] || 'm';
+    return `https://maps.google.com/maps?q=${encoded}&hl=es&z=14&t=${tile}&output=embed`;
   } catch {
     return url;
   }

@@ -235,6 +235,8 @@ export default function PublicInvitation() {
       locationDescription,
       calendarLink,
       weddingSiteURL: config.weddingSiteURL,
+      mapView: config.weddingMapView,
+      staticMap: config.weddingMapStatic === "true",
       transportInfo: config.transportInfo,
       cornerDecoration: config.cornerDecoration,
     },
@@ -292,6 +294,7 @@ export default function PublicInvitation() {
     config.cornerDecoration,
     countdown, formattedDate, formattedTime,
     hasLocationData, locationDescription, calendarLink, config.weddingSiteURL,
+    config.weddingMapView, config.weddingMapStatic,
     rsvpForm, rsvpEntries, rsvpMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
     updateRsvpField, handleRsvpSubmit, handleDeleteRsvp, handleDietaryToggle, DIETARY_OPTIONS, computeAge,
   ]);

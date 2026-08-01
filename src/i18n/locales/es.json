@@ -370,7 +370,13 @@
     "mapUrlHowTo": "Cómo obtenerlo: abre Google Maps → busca el lugar → pulsa Compartir → Copiar enlace. Debe empezar por https://www.google.com/maps/place/...",
     "mapUrlOk": "Válida",
     "mapUrlValidInfo": "Enlace válido. El mapa se mostrará en la invitación.",
-    "mapUrlInvalidInfo": "Este enlace NO mostrará el mapa en la invitación. No se admiten enlaces cortos (maps.app.goo.gl/...) ni búsquedas sueltas: usa el enlace Compartir del lugar."
+    "mapUrlInvalidInfo": "Este enlace NO mostrará el mapa en la invitación. No se admiten enlaces cortos (maps.app.goo.gl/...) ni búsquedas sueltas: usa el enlace Compartir del lugar.",
+    "mapViewLabel": "Tipo de mapa",
+    "mapViewRoadmap": "Mapa",
+    "mapViewSatellite": "Satélite",
+    "mapViewHybrid": "Híbrido",
+    "mapStaticLabel": "Mapa estático",
+    "mapStaticHint": "Bloquea la interacción: los invitados no podrán mover el mapa (pueden abrirlo con el botón inferior)."
   },
   "admin": {
     "tabs": {

@@ -85,7 +85,7 @@ describe("DateSectionForm", () => {
     const select = screen.getByLabelText("setup.monthLabel");
     expect(select).toBeDefined();
     const options = screen.getAllByRole("option");
-    expect(options.length).toBe(5);
+    expect(options.length).toBe(8);
   });
 
   it("calls handleDayChange on day input change", () => {

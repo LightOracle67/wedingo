@@ -49,4 +49,6 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   customSeal: s(value?.customSeal),
   cornerDecoration: s(value?.cornerDecoration),
   weddingSiteURL: s(value?.weddingSiteURL ?? value?.weddingMapUrl),
+  weddingMapView: ["roadmap","satellite","hybrid"].includes(s(value?.weddingMapView)) ? s(value?.weddingMapView) : "roadmap",
+  weddingMapStatic: s(value?.weddingMapStatic) === "true" ? "true" : "false",
 });

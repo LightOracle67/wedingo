@@ -47,6 +47,8 @@ const sampleConfig: InvitationConfig = {
   weddingMinute: "00",
   weddingPlace: "Church",
   weddingSiteURL: "",
+  weddingMapView: "roadmap",
+  weddingMapStatic: "false",
   
   weddingSchedule: "",
   weddingDressCode: "",
