@@ -293,6 +293,7 @@
   border-radius: 50%;
   border: 1.5px solid rgba(0,0,0,0.08);
   pointer-events: none;
+  z-index: 2;
 }
 .envelope__seal-heart {
   position: relative;
@@ -300,10 +301,14 @@
   height: 18px;
 }
 .envelope__seal-custom-img {
-  position: relative;
-  width: 36px;
-  height: 36px;
-  object-fit: contain;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 8px);
+  height: calc(100% - 8px);
+  border-radius: 50%;
+  object-fit: cover;
   z-index: 1;
   filter: brightness(0.9) contrast(1.1);
 }
