@@ -118,9 +118,10 @@ const RsvpSection = memo(function RsvpSection({
 
   return (
     <section data-story-section="rsvp" className={`${className} flex items-center justify-center px-3 py-4 sm:px-6 sm:py-8 lg:px-8 lg:py-10`} style={style}>
-      <div className="story-card story-panel story-card--rsvp allow-select w-full max-w-[min(100%,42rem)]">
+      <div className="story-card-wrap" style={{ width: "min(90%, 42rem)" }}>
         <CornerDecorations src={cornerDecoration} />
-        <p className="story-eyebrow text-center">{t("rsvp.sectionLabel")}</p>
+        <div className="story-card story-panel story-card--rsvp allow-select w-full text-center">
+          <p className="story-eyebrow text-center">{t("rsvp.sectionLabel")}</p>
         <h2 className="story-title text-center">{t("rsvp.title")}</h2>
         <p className="story-copy text-center">{t("rsvp.description")}</p>
 
@@ -400,6 +401,7 @@ const RsvpSection = memo(function RsvpSection({
         </form>
 
         {rsvpMessage ? <p className="rsvp-feedback" aria-live="polite">{rsvpMessage}</p> : null}
+        </div>
       </div>
     </section>
   );

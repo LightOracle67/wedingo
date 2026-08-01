@@ -7,13 +7,17 @@ vi.mock("react-i18next", () => ({
 }));
 
 describe("CornerDecorations", () => {
-  it("renders nothing when src is empty", () => {
+  it("renders the backdrop and pattern even without corners", () => {
     const { container } = render(<CornerDecorations src="" />);
+    expect(container.querySelector(".story-card__backdrop")).not.toBeNull();
+    expect(container.querySelector(".story-card__pattern")).not.toBeNull();
     expect(container.querySelectorAll(".invite-corner")).toHaveLength(0);
   });
 
-  it("renders nothing when src is undefined", () => {
+  it("renders the backdrop and pattern when src is undefined", () => {
     const { container } = render(<CornerDecorations />);
+    expect(container.querySelector(".story-card__backdrop")).not.toBeNull();
+    expect(container.querySelector(".story-card__pattern")).not.toBeNull();
     expect(container.querySelectorAll(".invite-corner")).toHaveLength(0);
   });
 
@@ -28,5 +32,6 @@ describe("CornerDecorations", () => {
     expect(bl!.className).toContain("invite-corner--bl");
     expect(br!.className).toContain("invite-corner--br");
     expect(tl!.getAttribute("aria-hidden")).toBe("true");
+    expect(container.querySelector(".story-card__backdrop")!.getAttribute("aria-hidden")).toBe("true");
   });
 });

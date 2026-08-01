@@ -29,9 +29,10 @@ const DetailsSection = memo(function DetailsSection({
       className={`${className} flex items-center justify-center px-3 py-6 sm:px-6 sm:py-10 lg:px-8 lg:py-12`}
       style={style}
     >
-      <div className="story-card story-panel story-card--details w-full text-center">
+      <div className="story-card-wrap">
         <CornerDecorations src={cornerDecoration} />
-        <p className="story-eyebrow">{t("details.sectionLabel")}</p>
+        <div className="story-card story-panel story-card--details w-full text-center">
+          <p className="story-eyebrow">{t("details.sectionLabel")}</p>
 
         {weddingMapUrl && isValidGoogleMapsUrl(weddingMapUrl) ? (
           <>
@@ -79,6 +80,7 @@ const DetailsSection = memo(function DetailsSection({
             </a>
           </div>
         ) : null}
+        </div>
       </div>
     </section>
   );

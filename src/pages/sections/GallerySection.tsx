@@ -221,12 +221,14 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
   if (loading) {
     return (
       <section data-story-section="gallery" className={`${className} flex items-center justify-center px-3 py-6 sm:px-6 sm:py-10 lg:px-8 lg:py-12`} style={style} role="region" aria-label={t("gallery.title")}>
-        <div className="story-card story-panel story-card--info w-full text-center" style={{ maxWidth: "min(100%, 56rem)" }} aria-live="polite" aria-busy="true">
+        <div className="story-card-wrap" style={{ width: "min(90%, 56rem)" }}>
           <CornerDecorations src={cornerDecoration} />
-          <p className="story-eyebrow">{t("gallery.sectionLabel")}</p>
-          <h2 className="story-title">{t("gallery.title")}</h2>
-          <div className="gallery-main-container" style={{ minHeight: "200px", display: "flex", alignItems: "center", justifyContent: "center", background: "color-mix(in srgb, var(--invite-shell-bg, rgba(255,255,255,0.45)) 90%, transparent)" }}>
-            <div className="page-loading" />
+          <div className="story-card story-panel story-card--info w-full text-center" style={{ maxWidth: "min(100%, 56rem)" }} aria-live="polite" aria-busy="true">
+            <p className="story-eyebrow">{t("gallery.sectionLabel")}</p>
+            <h2 className="story-title">{t("gallery.title")}</h2>
+            <div className="gallery-main-container" style={{ minHeight: "200px", display: "flex", alignItems: "center", justifyContent: "center", background: "color-mix(in srgb, var(--invite-shell-bg, rgba(255,255,255,0.45)) 90%, transparent)" }}>
+              <div className="page-loading" />
+            </div>
           </div>
         </div>
       </section>
@@ -236,11 +238,13 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
   if (!images.length) {
     return (
       <section data-story-section="gallery" className={`${className} flex items-center justify-center px-3 py-6 sm:px-6 sm:py-10 lg:px-8 lg:py-12`} style={style} role="region" aria-label={t("gallery.title")}>
-        <div className="story-card story-panel story-card--info w-full text-center" style={{ maxWidth: "min(100%, 56rem)" }}>
+        <div className="story-card-wrap" style={{ width: "min(90%, 56rem)" }}>
           <CornerDecorations src={cornerDecoration} />
-          <p className="story-eyebrow">{t("gallery.sectionLabel")}</p>
-          <h2 className="story-title">{t("gallery.title")}</h2>
-          <p className="story-copy mt-4" style={{ fontStyle: "italic" }}>{t("gallery.empty")}</p>
+          <div className="story-card story-panel story-card--info w-full text-center" style={{ maxWidth: "min(100%, 56rem)" }}>
+            <p className="story-eyebrow">{t("gallery.sectionLabel")}</p>
+            <h2 className="story-title">{t("gallery.title")}</h2>
+            <p className="story-copy mt-4" style={{ fontStyle: "italic" }}>{t("gallery.empty")}</p>
+          </div>
         </div>
       </section>
     );
@@ -252,17 +256,18 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
 
   return (
     <section data-story-section="gallery" className={`${className} flex items-center justify-center px-3 py-6 sm:px-6 sm:py-10 lg:px-8 lg:py-12`} style={style} role="region" aria-label={t("gallery.title")}>
-      <div
-        className="story-card story-panel story-card--info w-full text-center"
-        onMouseEnter={pause}
-        onMouseLeave={resume}
-        onFocus={pause}
-        onBlur={resume}
-        onKeyDown={handleOuterKeyDown}
-        style={{ maxWidth: "min(100%, 56rem)", touchAction: "none" }}
-      >
+      <div className="story-card-wrap" style={{ width: "min(90%, 56rem)" }}>
         <CornerDecorations src={cornerDecoration} />
-        <p className="story-eyebrow">{t("gallery.sectionLabel")}</p>
+        <div
+          className="story-card story-panel story-card--info w-full text-center"
+          onMouseEnter={pause}
+          onMouseLeave={resume}
+          onFocus={pause}
+          onBlur={resume}
+          onKeyDown={handleOuterKeyDown}
+          style={{ maxWidth: "min(100%, 56rem)", touchAction: "none" }}
+        >
+          <p className="story-eyebrow">{t("gallery.sectionLabel")}</p>
         <h2 className="story-title">{t("gallery.title")}</h2>
 
         {/* ── Contador de imagen ── */}
@@ -353,6 +358,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
               </button>
             );
           })}
+        </div>
         </div>
       </div>
 
