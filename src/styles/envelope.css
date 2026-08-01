@@ -1,5 +1,5 @@
 .envelope-flash {
-  position: fixed; inset: 0; z-index: calc(var(--z-envelope, 9999) - 1);
+  position: fixed; inset: 0; z-index: var(--z-envelope-text, 10002);
   pointer-events: none;
   background: var(--color-white);
   opacity: 0;
@@ -9,7 +9,7 @@
   opacity: 1;
 }
 .envelope-golden {
-  position: fixed; inset: 0; z-index: calc(var(--z-envelope, 9999) - 1);
+  position: fixed; inset: 0; z-index: var(--z-envelope-text, 10002);
   display: grid;
   place-items: center;
   margin: 0;
@@ -76,7 +76,7 @@
   }
 }
 .envelope-overlay {
-  position: fixed; inset: 0; z-index: var(--z-envelope, 9999);
+  position: fixed; inset: 0; z-index: var(--z-envelope, 10000);
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   background: rgba(55, 12, 12, 0.75);
   backdrop-filter: blur(160px) brightness(1.05) saturate(0.7);
@@ -96,6 +96,7 @@
   border-radius: 50%;
   pointer-events: none;
   will-change: transform;
+  z-index: 0;
 }
 .envelope-light[data-light="1"] {
   width: 150px; height: 150px;
@@ -158,6 +159,8 @@
 
 /* ── Realistic envelope ── */
 .envelope-wrapper {
+  position: relative;
+  z-index: var(--z-envelope-content, 10001);
   perspective: 1000px;
 }
 .envelope {
@@ -454,6 +457,8 @@
   font-style: italic;
 }
 .envelope__hint {
+  position: relative;
+  z-index: var(--z-envelope-text, 10002);
   color: color-mix(in srgb, var(--invite-core-glow, rgba(255,212,115,0.22)) 227%, transparent);
   font-size: 0.85rem;
   margin-top: 2rem;
