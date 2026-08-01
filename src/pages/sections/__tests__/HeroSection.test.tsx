@@ -43,7 +43,7 @@ describe("HeroSection", () => {
     render(
       <HeroSection
         {...baseProps}
-        countdown={{ years: 0, months: 0, days: 0, hours: 0, minutes: 0, expired: true }}
+        countdown={{ years: 0, months: 0, days: 0, expired: true }}
         couplePhoto=""
       />,
     );
@@ -55,7 +55,7 @@ describe("HeroSection", () => {
     render(
       <HeroSection
         {...baseProps}
-        countdown={{ years: 2, months: 3, days: 0, hours: 0, minutes: 0, expired: false }}
+        countdown={{ years: 2, months: 3, days: 0, expired: false }}
         couplePhoto=""
       />,
     );
@@ -67,7 +67,7 @@ describe("HeroSection", () => {
     render(
       <HeroSection
         {...baseProps}
-        countdown={{ years: 0, months: 2, days: 15, hours: 0, minutes: 0, expired: false }}
+        countdown={{ years: 0, months: 2, days: 15, expired: false }}
         couplePhoto=""
       />,
     );
@@ -79,7 +79,7 @@ describe("HeroSection", () => {
     render(
       <HeroSection
         {...baseProps}
-        countdown={{ years: 1, months: 0, days: 340, hours: 5, minutes: 12, expired: false }}
+        countdown={{ years: 1, months: 0, days: 340, expired: false }}
         couplePhoto=""
       />,
     );
@@ -88,51 +88,27 @@ describe("HeroSection", () => {
     expect(screen.queryByText(/countdown\.day/)).toBeNull();
   });
 
-  it("shows countdown with days and hours", () => {
+  it("shows only days when months are zero", () => {
     render(
       <HeroSection
         {...baseProps}
-        countdown={{ years: 0, months: 0, days: 10, hours: 5, minutes: 0, expired: false }}
+        countdown={{ years: 0, months: 0, days: 10, expired: false }}
         couplePhoto=""
       />,
     );
     expect(screen.getByText(/countdown\.day/)).toBeDefined();
-    expect(screen.getByText(/countdown\.hour/)).toBeDefined();
-    expect(screen.queryByText(/countdown\.minute/)).toBeNull();
+    expect(screen.queryByText(/countdown\.month/)).toBeNull();
+    expect(screen.queryByText(/countdown\.year/)).toBeNull();
   });
 
-  it("shows countdown with days > 0 and hours", () => {
+  it("shows only days when everything else is zero", () => {
     render(
       <HeroSection
         {...baseProps}
-        countdown={{ years: 0, months: 0, days: 3, hours: 10, minutes: 30, expired: false }}
+        countdown={{ years: 0, months: 0, days: 3, expired: false }}
         couplePhoto=""
       />,
     );
     expect(screen.getByText(/countdown\.day/)).toBeDefined();
-    expect(screen.getByText(/countdown\.hour/)).toBeDefined();
-    expect(screen.getByText(/countdown\.minute/)).toBeDefined();
-  });
-
-  it("shows countdown with hours > 0", () => {
-    render(
-      <HeroSection
-        {...baseProps}
-        countdown={{ years: 0, months: 0, days: 0, hours: 5, minutes: 20, expired: false }}
-        couplePhoto=""
-      />,
-    );
-    expect(screen.getByText(/countdown\.hour/)).toBeDefined();
-  });
-
-  it("shows countdown with minutes only", () => {
-    render(
-      <HeroSection
-        {...baseProps}
-        countdown={{ years: 0, months: 0, days: 0, hours: 0, minutes: 45, expired: false }}
-        couplePhoto=""
-      />,
-    );
-    expect(screen.getByText(/countdown\.minute/)).toBeDefined();
   });
 });

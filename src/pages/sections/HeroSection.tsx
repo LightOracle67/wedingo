@@ -9,7 +9,7 @@ interface HeroSectionProps {
   firstName?: string;
   secondName?: string;
   inviteMessage?: string;
-  countdown?: { years: number; months: number; days: number; hours: number; minutes: number; expired: boolean } | null;
+  countdown?: { years: number; months: number; days: number; expired: boolean } | null;
   couplePhoto?: string;
   godparent1?: string;
   godparent2?: string;
@@ -88,8 +88,6 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
                       [countdown.years ?? 0, 'year'],
                       [countdown.months ?? 0, 'month'],
                       [countdown.days ?? 0, 'day'],
-                      [countdown.hours ?? 0, 'hour'],
-                      [countdown.minutes ?? 0, 'minute'],
                     ];
                     let start = units.findIndex(([v]) => v > 0);
                     if (start === -1) start = units.length - 1;

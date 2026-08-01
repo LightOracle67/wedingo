@@ -140,7 +140,7 @@ export default function PublicInvitation() {
   } = useStoryNavigation(visibleOrder);
 
   // ─── Cuenta regresiva ──────────────────────────────────
-  const [countdown, setCountdown] = useState<{ years?: number; months?: number; days: number; hours: number; minutes: number; expired: boolean } | null>(null);
+  const [countdown, setCountdown] = useState<{ years?: number; months?: number; days: number; expired: boolean } | null>(null);
 
   /**
    * Construye el objeto Date de la boda a partir de los campos de configuración.
@@ -158,24 +158,30 @@ export default function PublicInvitation() {
 
   /**
    * Actualiza la cuenta regresiva cada segundo.
-   * Calcula años, meses, días, horas y minutos restantes.
+   * Descompone la diferencia de forma calendárica: años completos, luego
+   * meses completos y finalmente los días restantes (cada unidad descuenta
+   * la anterior; no es el total en cada formato).
    */
   useEffect(() => {
     if (!weddingDate) return;
     const tick = () => {
-      const diff = weddingDate.getTime() - Date.now();
-      if (diff <= 0) {
-        setCountdown({ days: 0, hours: 0, minutes: 0, expired: true });
+      const now = new Date();
+      if (weddingDate.getTime() <= now.getTime()) {
+        setCountdown({ days: 0, expired: true });
         return;
       }
-      setCountdown({
-        years: Math.floor(diff / (1000 * 60 * 60 * 24 * 365)),
-        months: Math.floor((diff / (1000 * 60 * 60 * 24 * 30.44)) % 12),
-        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((diff / (1000 * 60)) % 60),
-        expired: false,
-      });
+      let years = weddingDate.getFullYear() - now.getFullYear();
+      let months = weddingDate.getMonth() - now.getMonth();
+      let days = weddingDate.getDate() - now.getDate();
+      if (days < 0) {
+        months -= 1;
+        days += new Date(weddingDate.getFullYear(), weddingDate.getMonth(), 0).getDate();
+      }
+      if (months < 0) {
+        years -= 1;
+        months += 12;
+      }
+      setCountdown({ years, months, days, expired: false });
     };
     tick();
     const id = setInterval(tick, 1000);
