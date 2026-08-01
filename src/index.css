@@ -1328,6 +1328,18 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
   pointer-events: none;
 }
 
+.story-map-wrapper {
+  position: relative;
+}
+
+.story-map-frame {
+  border: 1px solid color-mix(in srgb, var(--invite-shell-border, rgba(247, 227, 170, 0.38)) 72%, transparent);
+  border-radius: 12px;
+  box-shadow:
+    0 0 18px color-mix(in srgb, var(--invite-shell-glow, rgba(255, 227, 140, 0.2)) 40%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
 .story-card__pattern {
   position: absolute;
   inset: 0;

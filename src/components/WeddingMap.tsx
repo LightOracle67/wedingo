@@ -22,7 +22,8 @@ export default function WeddingMap({ mapUrl, mapView = "roadmap", staticMap = fa
             src={embedSrc}
             width="100%"
             height="250"
-            style={{ border: 0, borderRadius: "12px", touchAction: staticMap ? "none" : undefined }}
+            className="story-map-frame"
+            style={{ touchAction: staticMap ? "none" : undefined }}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           />

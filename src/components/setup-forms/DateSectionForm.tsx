@@ -110,7 +110,8 @@ export default function DateSectionForm({ prefix = "" }) {
               src={embedUrl}
               width="100%"
               height="250"
-              style={{ border: 0, borderRadius: "var(--radius-xl)", marginTop: "0.35rem", touchAction: formData.weddingMapStatic === "true" ? "none" : undefined }}
+              className="story-map-frame"
+              style={{ marginTop: "0.35rem", touchAction: formData.weddingMapStatic === "true" ? "none" : undefined }}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
