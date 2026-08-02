@@ -396,7 +396,7 @@
     "transportRemoveDeparture": "Eliminar salida",
     "transportMaxDepartures": "Máximo {{max}} salidas.",
     "setup": {
-      "transportTypeLabel": "Tipo"
+      "cornerDecorationUploadHint": "PNG o SVG, aparecerá en las 4 esquinas de la tarjeta"
     }
   },
   "admin": {

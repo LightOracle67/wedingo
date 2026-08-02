@@ -266,8 +266,9 @@ export default function CoverSectionForm({ prefix = "" }) {
             <img src={cornerDecorationUrl || (formData as Record<string, unknown>).cornerDecoration as string} alt="" style={{ width: "2.5rem", height: "2.5rem", objectFit: "contain" }} />
           </div>
         ) : (
-          <label className="setup-upload" htmlFor={id("cornerDecoration")} style={{ padding: "0.3rem", minHeight: "2rem" }}>
-            <span className="setup-upload__title" style={{ fontSize: "0.75rem" }}>{t("setup.uploadCorner")}</span>
+          <label className="setup-upload" htmlFor={id("cornerDecoration")}>
+            <span className="setup-upload__title">{t("setup.uploadCorner")}</span>
+            <span className="setup-upload__subtitle">{t("setup.cornerDecorationUploadHint")}</span>
           </label>
         )}
         <input className="setup-upload__input" id={id("cornerDecoration")} type="file" accept="image/png,image/svg+xml" onChange={async (e) => {

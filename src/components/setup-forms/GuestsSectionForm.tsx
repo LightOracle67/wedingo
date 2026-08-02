@@ -84,7 +84,7 @@ export default function GuestsSectionForm({ prefix = "" }) {
             return (
               <div key={key} style={{ marginBottom: "0.5rem" }}>
                 <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", cursor: "pointer", fontSize: "0.85rem", color: "var(--setup-title)" }}>
-                  <input type="checkbox" checked={!!val} onChange={handleMenuToggle} data-menu-key={key} style={{ accentColor: "var(--setup-accent)", width: "0.9rem", height: "0.9rem", flexShrink: 0 }} />
+                  <input type="checkbox" checked={!!val} onChange={handleMenuToggle} data-menu-key={key} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
                   {t(labelKey)}
                 </label>
                 {!!val && <textarea className="setup-textarea" value={val} onChange={handleMenuFieldChange} data-menu-key={key} placeholder={t(phKey)} rows={2} style={{ marginTop: "0.15rem", fontSize: "0.85rem" }} />}

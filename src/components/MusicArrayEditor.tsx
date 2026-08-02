@@ -187,16 +187,12 @@ const MusicArrayEditor = memo(function MusicArrayEditor({ inviteToken, value, on
               {playing ? t("music.playing") : t("setup.currentMusic")}
             </span>
           </div>
-          <label style={{
-            textAlign: "center", cursor: uploading ? "not-allowed" : "pointer",
-            fontSize: "0.8rem", color: "var(--setup-accent)", textDecoration: "underline",
-            opacity: uploading ? 0.5 : 1,
-          }}>
-            {uploading ? t("setup.musicUploading") : t("setup.replaceMusic")}
+          <label className="setup-upload" style={{ cursor: uploading ? "not-allowed" : "pointer", opacity: uploading ? 0.5 : 1, textAlign: "center" }}>
+            <span className="setup-upload__title">{uploading ? t("setup.musicUploading") : t("setup.replaceMusic")}</span>
             <input
               type="file"
               accept={ALLOWED_AUDIO_TYPES.join(",")}
-              style={{ display: "none" }}
+              className="setup-upload__input"
               onChange={handleFile}
               disabled={uploading}
             />
@@ -204,20 +200,16 @@ const MusicArrayEditor = memo(function MusicArrayEditor({ inviteToken, value, on
         </div>
       ) : (
         <label
-          style={{
-            display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-            minHeight: "120px", border: "2px dashed var(--setup-border)", borderRadius: "0.5rem",
-            cursor: uploading ? "not-allowed" : "pointer", color: "var(--setup-muted)",
-            fontSize: "0.85rem", gap: "0.35rem", opacity: uploading ? 0.5 : 1,
-          }}
+          className="setup-upload"
+          style={{ display: "grid", placeItems: "center", textAlign: "center", cursor: uploading ? "not-allowed" : "pointer", opacity: uploading ? 0.5 : 1 }}
         >
-          <span style={{ fontSize: "1.5rem" }}>＋</span>
-          <span>{uploading ? t("setup.musicUploading") : t("setup.musicUploadLabel")}</span>
-          <span style={{ fontSize: "0.75rem" }}>{t("setup.audioHint")}</span>
+          <span style={{ fontSize: "1.5rem", lineHeight: 1 }}>＋</span>
+          <span className="setup-upload__title">{uploading ? t("setup.musicUploading") : t("setup.musicUploadLabel")}</span>
+          <span className="setup-upload__subtitle">{t("setup.audioHint")}</span>
           <input
             type="file"
             accept={ALLOWED_AUDIO_TYPES.join(",")}
-            style={{ display: "none" }}
+            className="setup-upload__input"
             onChange={handleFile}
             disabled={uploading}
           />
