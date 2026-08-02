@@ -168,6 +168,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
 
   return (
     <div>
+      <p className="setup-help" style={{ marginBottom: "0.5rem" }}>{t("setup.galleryHint")}</p>
       <div className="gallery-array-editor__grid">
         {Array.from({ length: SLOT_COUNT }, (_, i) => {
           const item = slots[i];
