@@ -58,13 +58,14 @@ export default function TransportSectionForm({ prefix = "" }) {
         className="setup-input"
         value={formData.transportEnabled || "none"}
         onChange={handleEnabledChange}
+        aria-describedby={id("transportEnabledHint")}
       >
         <option value="none">{t("setup.transportOptionNone")}</option>
         <option value="bus">{t("setup.transportOptionBus")}</option>
         <option value="taxi">{t("setup.transportOptionTaxi")}</option>
         <option value="both">{t("setup.transportOptionBoth")}</option>
       </select>
-      <p className="setup-help">{t("setup.transportEnabledHint")}</p>
+      <p className="setup-help" id={id("transportEnabledHint")}>{t("setup.transportEnabledHint")}</p>
 
       {(formData.transportEnabled || "none") !== "none" ? (
         <>

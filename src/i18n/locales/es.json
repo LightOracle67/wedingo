@@ -399,7 +399,7 @@
     "transportRemoveDeparture": "Eliminar salida",
     "transportMaxDepartures": "Máximo {{max}} salidas.",
     "setup": {
-      "cornerDecorationUploadHint": "PNG o SVG, aparecerá en las 4 esquinas de la tarjeta"
+      "menuTextoLabel": "Menú"
     },
     "nameOnlyHint": "Solo el nombre, sin apellidos.",
     "messageHint": "Mensaje de bienvenida que aparecerá en la portada de la invitación.",

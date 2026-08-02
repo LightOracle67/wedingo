@@ -543,6 +543,22 @@ input.setup-input[type="date"] {
   color: var(--setup-title);
   line-height: 1.4;
 }
+.setup-input--error,
+.setup-textarea--error {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
+}
+.character-counter {
+  font-size: 0.72rem;
+  color: var(--setup-muted);
+  font-weight: 400;
+  margin-left: 0.4rem;
+}
+.setup-label--required::after {
+  content: " *";
+  color: var(--setup-accent);
+  font-weight: 700;
+}
 .setup-input,
 .setup-textarea {
   width: 100%;
@@ -591,6 +607,15 @@ select.setup-input {
   gap: 0.7rem;
   flex-wrap: wrap;
   margin-top: 0.35rem;
+}
+.setup-actions--sticky {
+  position: sticky;
+  bottom: 0;
+  z-index: var(--z-admin-bar, 4);
+  padding: 0.6rem 0.1rem;
+  background: linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--setup-grad-end) 92%, transparent) 30%, var(--setup-grad-end) 100%);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 .setup-form > .setup-actions {
   padding: 0.25rem 0.2rem;

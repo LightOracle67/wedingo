@@ -399,7 +399,7 @@
     "transportRemoveDeparture": "Remove departure",
     "transportMaxDepartures": "Maximum {{max}} departures.",
     "setup": {
-      "cornerDecorationUploadHint": "PNG or SVG, it will appear on the 4 corners of the card"
+      "menuTextoLabel": "Menu"
     },
     "nameOnlyHint": "First name only, without surnames.",
     "messageHint": "Welcome message that will appear on the invitation cover.",

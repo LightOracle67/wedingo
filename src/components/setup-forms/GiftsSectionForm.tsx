@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import CharacterCounter from "../../components/CharacterCounter";
 import { useApp } from "../../contexts";
 
 export default function GiftsSectionForm({ prefix = "" }) {
@@ -7,10 +8,18 @@ export default function GiftsSectionForm({ prefix = "" }) {
 
   const id = (name: string) => `${prefix}${name}`;
 
+  const bankInfo = formData.bankInfo || "";
+  const ibanLooksInvalid = (() => {
+    const upper = bankInfo.trim().toUpperCase();
+    if (!upper) return false;
+    if (!/^[A-Z]{2}\d/.test(upper)) return false;
+    return !/^[A-Z]{2}\d{2}[ ]?\d{4}[ ]?\d{4}[ ]?\d{4}[ ]?\d{4}[ ]?\d{0,4}$/.test(upper);
+  })();
+
   return (
     <>
       <label className="setup-label" htmlFor={id("giftsInfo")}>
-        {t("setup.giftsInfoLabel")}
+        {t("setup.giftsInfoLabel")} <CharacterCounter current={(formData.giftsInfo || "").length} max={2000} />
       </label>
       <textarea
         id={id("giftsInfo")}
@@ -20,22 +29,25 @@ export default function GiftsSectionForm({ prefix = "" }) {
         placeholder={t("setup.giftsInfoPlaceholder")}
         rows={4}
         maxLength={2000}
+        aria-describedby={id("giftsInfoHint")}
       />
-      <p className="setup-help">{t("setup.giftsInfoHint")}</p>
+      <p className="setup-help" id={id("giftsInfoHint")}>{t("setup.giftsInfoHint")}</p>
 
       <label className="setup-label" htmlFor={id("bankInfo")}>
-        {t("setup.bankInfoLabel")}
+        {t("setup.bankInfoLabel")} <CharacterCounter current={(formData.bankInfo || "").length} max={100} />
       </label>
       <input
         id={id("bankInfo")}
-        className="setup-input"
         value={formData.bankInfo}
         onChange={(e) => updateFormField("bankInfo", e.target.value.slice(0, 100))}
         placeholder={t("setup.bankInfoPlaceholder")}
         autoComplete="off"
         maxLength={100}
+        className={ibanLooksInvalid ? "setup-input setup-input--error" : "setup-input"}
+        aria-describedby={id("bankInfoHint")}
       />
-      <p className="setup-help">{t("setup.bankInfoHint")}</p>
+      {ibanLooksInvalid ? <p className="setup-help" style={{ color: "#ef4444" }}>{t("errors.ibanInvalid")}</p> : null}
+      <p className="setup-help" id={id("bankInfoHint")}>{t("setup.bankInfoHint")}</p>
     </>
   );
 }

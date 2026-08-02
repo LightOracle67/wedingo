@@ -1,4 +1,5 @@
 import { useCallback } from "react";
+import CharacterCounter from "../../components/CharacterCounter";
 import { useTranslation } from "react-i18next";
 import { useApp } from "../../contexts";
 
@@ -85,24 +86,27 @@ export default function GuestsSectionForm({ prefix = "" }) {
               <div key={key} style={{ marginBottom: "0.5rem" }}>
                 <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", cursor: "pointer", fontSize: "0.85rem", color: "var(--setup-title)" }}>
                   <input type="checkbox" checked={!!val} onChange={handleMenuToggle} data-menu-key={key} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
-                  {t(labelKey)}
+                  {t(labelKey)} <CharacterCounter current={val.length} max={2000} />
                 </label>
                 {!!val && <textarea className="setup-textarea" value={val} onChange={handleMenuFieldChange} data-menu-key={key} placeholder={t(phKey)} rows={2} style={{ marginTop: "0.15rem", fontSize: "0.85rem" }} />}
               </div>
             );
           })}
           <div style={{ marginBottom: "0.5rem" }}>
-            <p className="setup-label" style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}>{t("setup.postreLabel")}</p>
+            <p className="setup-label" style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}>{t("setup.postreLabel")} <CharacterCounter current={(formData.menuPostre || "").length} max={2000} /></p>
             <textarea className="setup-textarea" value={formData.menuPostre || ""} onChange={handleMenuPostreChange} placeholder={t("setup.postrePlaceholder")} rows={2} style={{ fontSize: "0.85rem" }} />
           </div>
           <p className="setup-help">{t("setup.menuRequiredText")}</p>
         </>
       ) : (
         <>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <p className="setup-label" style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}>{t("setup.menuTextoLabel")} <CharacterCounter current={(formData.menuTexto || "").length} max={2000} /></p>
+          </div>
           <textarea className="setup-textarea" value={formData.menuTexto} onChange={handleMenuTextoChange} placeholder={t("setup.menuTextoPlaceholder")} rows={3} />
           <p className="setup-help">{t("setup.menuTextoHint")}</p>
           <div style={{ marginTop: "0.5rem" }}>
-            <p className="setup-label" style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}>{t("setup.postreLabel")}</p>
+            <p className="setup-label" style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}>{t("setup.postreLabel")} <CharacterCounter current={(formData.menuPostre || "").length} max={2000} /></p>
             <textarea className="setup-textarea" value={formData.menuPostre || ""} onChange={handleMenuPostreChange} placeholder={t("setup.postrePlaceholder")} rows={2} style={{ fontSize: "0.85rem" }} />
           </div>
         </>
@@ -110,7 +114,7 @@ export default function GuestsSectionForm({ prefix = "" }) {
 
       <div className="story-divider" style={{ margin: "0.75rem 0" }} />
       <label className="setup-label" htmlFor={id("accommodationInfo")}>
-        {t("setup.accommodationLabel")}
+        {t("setup.accommodationLabel")} <CharacterCounter current={(formData.accommodationInfo || "").length} max={2000} />
       </label>
       <textarea
         id={id("accommodationInfo")}
@@ -121,8 +125,9 @@ export default function GuestsSectionForm({ prefix = "" }) {
         rows={4}
         maxLength={2000}
         autoComplete="off"
+        aria-describedby={id("accommodationHint")}
       />
-      <p className="setup-help">{t("setup.accommodationHint")}</p>
+      <p className="setup-help" id={id("accommodationHint")}>{t("setup.accommodationHint")}</p>
     </>
   );
 }

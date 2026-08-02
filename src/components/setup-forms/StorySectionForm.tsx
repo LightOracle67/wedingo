@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import CharacterCounter from "../../components/CharacterCounter";
 import { useApp } from "../../contexts";
 
 export default function StorySectionForm({ prefix = "" }) {
@@ -10,7 +11,7 @@ export default function StorySectionForm({ prefix = "" }) {
   return (
     <>
       <label className="setup-label" htmlFor={id("storyText")}>
-        {t("setup.storyLabel")}
+        {t("setup.storyLabel")} <CharacterCounter current={(formData.storyText || "").length} max={500} />
       </label>
       <textarea
         id={id("storyText")}
@@ -20,8 +21,9 @@ export default function StorySectionForm({ prefix = "" }) {
         placeholder={t("setup.storyPlaceholder")}
         rows={4}
         maxLength={500}
+        aria-describedby={id("storyHint")}
       />
-      <p className="setup-help">{t("setup.storyHint")} <span className="text-muted text-xs">({(formData.storyText || "").length}/500)</span></p>
+      <p className="setup-help" id={id("storyHint")}>{t("setup.storyHint")}</p>
     </>
   );
 }

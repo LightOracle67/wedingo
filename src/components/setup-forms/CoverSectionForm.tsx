@@ -1,4 +1,5 @@
 import { useCallback, useRef } from "react";
+import CharacterCounter from "../../components/CharacterCounter";
 import { useTranslation } from "react-i18next";
 import { useApp } from "../../contexts";
 import { useToast } from "../../hooks/useToast";
@@ -80,8 +81,8 @@ export default function CoverSectionForm({ prefix = "" }) {
         <legend className="setup-label">{t("setup.namesLegend")}</legend>
         <div className="setup-name-grid">
           <div className="setup-name-col">
-            <label className="setup-label" htmlFor={id("firstName")}>{t("setup.firstNameLabel")}</label>
-            <p className="setup-help" style={{ marginTop: "0.1rem", fontSize: "0.75rem" }}>{t("setup.nameOnlyHint")}</p>
+            <label className="setup-label setup-label--required" htmlFor={id("firstName")}>{t("setup.firstNameLabel")}</label>
+            <p className="setup-help" style={{ marginTop: "0.1rem", fontSize: "0.75rem" }} id={id("nameHint")}>{t("setup.nameOnlyHint")}</p>
             <input
               id={id("firstName")}
               className="setup-input"
@@ -92,11 +93,12 @@ export default function CoverSectionForm({ prefix = "" }) {
               autoComplete="off"
               required
               aria-required="true"
+              aria-describedby={id("nameHint")}
             />
           </div>
           <div className="setup-name-col">
-            <label className="setup-label" htmlFor={id("secondName")}>{t("setup.secondNameLabel")}</label>
-            <p className="setup-help" style={{ marginTop: "0.1rem", fontSize: "0.75rem" }}>{t("setup.nameOnlyHint")}</p>
+            <label className="setup-label setup-label--required" htmlFor={id("secondName")}>{t("setup.secondNameLabel")}</label>
+            <p className="setup-help" style={{ marginTop: "0.1rem", fontSize: "0.75rem" }} id={id("nameHint")}>{t("setup.nameOnlyHint")}</p>
             <input
               id={id("secondName")}
               className="setup-input"
@@ -107,6 +109,7 @@ export default function CoverSectionForm({ prefix = "" }) {
               autoComplete="off"
               required
               aria-required="true"
+              aria-describedby={id("nameHint")}
             />
           </div>
         </div>
@@ -117,20 +120,20 @@ export default function CoverSectionForm({ prefix = "" }) {
         <div className="setup-name-grid">
           <div className="setup-name-col">
             <label className="setup-label" htmlFor={id("godparent1")}>{t("setup.godparent1Label")}</label>
-            <p className="setup-help" style={{ marginTop: "0.1rem", fontSize: "0.75rem" }}>{t("setup.nameOnlyHint")}</p>
-            <input id={id("godparent1")} className="setup-input" value={formData.godparent1} onChange={(e) => updateFormField("godparent1", e.target.value.slice(0, 40))} placeholder={t("setup.namePlaceholder")} autoComplete="off" />
+            <p className="setup-help" style={{ marginTop: "0.1rem", fontSize: "0.75rem" }} id={id("nameHint")}>{t("setup.nameOnlyHint")}</p>
+            <input id={id("godparent1")} className="setup-input" value={formData.godparent1} onChange={(e) => updateFormField("godparent1", e.target.value.slice(0, 40))} placeholder={t("setup.namePlaceholder")} autoComplete="off" maxLength={40} aria-describedby={id("nameHint")} />
           </div>
           <div className="setup-name-col">
             <label className="setup-label" htmlFor={id("godparent2")}>{t("setup.godparent2Label")}</label>
-            <p className="setup-help" style={{ marginTop: "0.1rem", fontSize: "0.75rem" }}>{t("setup.nameOnlyHint")}</p>
-            <input id={id("godparent2")} className="setup-input" value={formData.godparent2} onChange={(e) => updateFormField("godparent2", e.target.value.slice(0, 40))} placeholder={t("setup.namePlaceholder")} autoComplete="off" />
+            <p className="setup-help" style={{ marginTop: "0.1rem", fontSize: "0.75rem" }} id={id("nameHint")}>{t("setup.nameOnlyHint")}</p>
+            <input id={id("godparent2")} className="setup-input" value={formData.godparent2} onChange={(e) => updateFormField("godparent2", e.target.value.slice(0, 40))} placeholder={t("setup.namePlaceholder")} autoComplete="off" maxLength={40} aria-describedby={id("nameHint")} />
           </div>
         </div>
         <p className="setup-help">{t("setup.godparentsHint")}</p>
       </fieldset>
 
       <label className="setup-label" htmlFor={id("inviteMessage")}>
-        {t("setup.messageLabel")}
+        {t("setup.messageLabel")} <CharacterCounter current={(formData.inviteMessage || "").length} max={500} />
       </label>
       <textarea
         id={id("inviteMessage")}
@@ -138,12 +141,13 @@ export default function CoverSectionForm({ prefix = "" }) {
         value={formData.inviteMessage}
         onChange={(e) => updateFormField("inviteMessage", e.target.value.slice(0, 500))}
         placeholder={t("setup.messagePlaceholder")}
+        aria-describedby={id("messageHint")}
       />
-      <p className="setup-help">{t("setup.messageHint")}</p>
+      <p className="setup-help" id={id("messageHint")}>{t("setup.messageHint")}</p>
 
       <p className="setup-label">{t("setup.themeLabel")}</p>
       <ThemePicker value={formData.theme} onChange={handleThemeChange} t={t as (key: string, options?: Record<string, unknown>) => string} />
-      <p className="setup-help">{t("setup.themeHint")}</p>
+      <p className="setup-help" id={id("themeHint")}>{t("setup.themeHint")}</p>
 
       <div className="setup-background-panel">
         <div className="setup-background-panel__header">

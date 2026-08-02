@@ -1,4 +1,5 @@
 import { useCallback, useMemo } from "react";
+import CharacterCounter from "../../components/CharacterCounter";
 import { useTranslation } from "react-i18next";
 import { useApp } from "../../contexts";
 import { MONTH_OPTIONS, MONTH_VALUE_TO_NUMBER } from "../../lib/constants";
@@ -26,6 +27,28 @@ export default function DateSectionForm({ prefix = "" }) {
     return extractPlaceNameFromUrl(siteUrl) || "";
   }, [siteUrl, isSiteUrlValid]);
 
+  const dayError = (() => {
+    const d = (formData.weddingDay || "").trim();
+    if (!d) return false;
+    return !/^(0?[1-9]|[12][0-9]|3[01])$/.test(d);
+  })();
+  const yearError = (() => {
+    const y = (formData.weddingYear || "").trim();
+    if (!y) return false;
+    const n = Number.parseInt(y, 10);
+    return !Number.isFinite(n) || y.length !== 4 || n < new Date().getFullYear() - 120 || n > maxAllowedYear;
+  })();
+  const hourError = (() => {
+    const h = (formData.weddingHour || "").trim();
+    if (!h) return false;
+    return !/^([01]?[0-9]|2[0-3])$/.test(h);
+  })();
+  const minuteError = (() => {
+    const m = (formData.weddingMinute || "").trim();
+    if (!m) return false;
+    return !/^[0-5]?[0-9]$/.test(m);
+  })();
+
   return (
     <>
       <label className="setup-label" htmlFor={id("weddingSiteURL")}>
@@ -43,9 +66,10 @@ export default function DateSectionForm({ prefix = "" }) {
         onChange={handleSiteUrlChange}
         placeholder={t("setup.mapUrlPlaceholder")}
         autoComplete="off"
+        aria-describedby={id("mapUrlHelp")}
         style={siteUrl && !isSiteUrlValid ? { borderColor: "#ef4444" } : siteUrl && isSiteUrlValid ? { borderColor: "#22c55e" } : undefined}
       />
-      <p className="setup-help">{t("setup.mapUrlHowTo")}</p>
+      <p className="setup-help" id={id("mapUrlHelp")}>{t("setup.mapUrlHowTo")}</p>
 
       <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))" }}>
         <div>
@@ -127,18 +151,18 @@ export default function DateSectionForm({ prefix = "" }) {
 
       <div className="setup-date-grid">
         <div>
-          <label className="setup-label" htmlFor={id("weddingDay")}>{t("setup.dayLabel")}</label>
+          <label className="setup-label setup-label--required" htmlFor={id("weddingDay")}>{t("setup.dayLabel")}</label>
           <input
             id={id("weddingDay")}
-            className="setup-input"
             value={formData.weddingDay}
             onChange={(e) => handleDayChange(e.target.value)}
             placeholder={t("setup.dayPlaceholder")}
-            inputMode="numeric" autoComplete="off" min="1" max="31"
+            inputMode="numeric" autoComplete="off" min="1" max="31" maxLength={2} pattern="[0-9]*" aria-describedby={id("dateHelp")}
+            className={dayError ? "setup-input setup-input--error" : "setup-input"}
           />
         </div>
         <div>
-          <label className="setup-label" htmlFor={id("weddingMonth")}>{t("setup.monthLabel")}</label>
+          <label className="setup-label setup-label--required" htmlFor={id("weddingMonth")}>{t("setup.monthLabel")}</label>
           <select
             id={id("weddingMonth")}
             className="setup-input"
@@ -152,46 +176,49 @@ export default function DateSectionForm({ prefix = "" }) {
           </select>
         </div>
         <div>
-          <label className="setup-label" htmlFor={id("weddingYear")}>{t("setup.yearLabel")}</label>
+          <label className="setup-label setup-label--required" htmlFor={id("weddingYear")}>{t("setup.yearLabel")}</label>
           <input
-            id={id("weddingYear")} className="setup-input" value={formData.weddingYear}
+            id={id("weddingYear")} value={formData.weddingYear}
             onChange={(e) => handleYearChange(e.target.value)}
-            placeholder={t("setup.yearPlaceholder")} inputMode="numeric" autoComplete="off"
+            placeholder={t("setup.yearPlaceholder")} inputMode="numeric" autoComplete="off" maxLength={4} pattern="[0-9]*" aria-describedby={id("dateHelp")}
+            className={yearError ? "setup-input setup-input--error" : "setup-input"}
           />
           <p className="setup-help">{t("setup.yearMaxHint", { year: maxAllowedYear })}</p>
         </div>
       </div>
 
-      <p className="setup-help">{t("setup.dateHint")}</p>
+      <p className="setup-help" id={id("dateHelp")}>{t("setup.dateHint")}</p>
 
       <div className="setup-date-grid">
         <div>
-          <label className="setup-label" htmlFor={id("weddingHour")}>{t("setup.hourLabel")}</label>
+          <label className="setup-label setup-label--required" htmlFor={id("weddingHour")}>{t("setup.hourLabel")}</label>
           <input
-            id={id("weddingHour")} className="setup-input" value={formData.weddingHour}
+            id={id("weddingHour")} value={formData.weddingHour}
             onChange={(e) => handleHourChange(e.target.value)}
-            placeholder={t("setup.hourPlaceholder")} inputMode="numeric" autoComplete="off" min="0" max="23"
+            placeholder={t("setup.hourPlaceholder")} inputMode="numeric" autoComplete="off" min="0" max="23" maxLength={2} pattern="[0-9]*" aria-describedby={id("timeHelp")}
+            className={hourError ? "setup-input setup-input--error" : "setup-input"}
           />
         </div>
         <div>
-          <label className="setup-label" htmlFor={id("weddingMinute")}>{t("setup.minuteLabel")}</label>
+          <label className="setup-label setup-label--required" htmlFor={id("weddingMinute")}>{t("setup.minuteLabel")}</label>
           <input
-            id={id("weddingMinute")} className="setup-input" value={formData.weddingMinute}
+            id={id("weddingMinute")} value={formData.weddingMinute}
             onChange={(e) => handleMinuteChange(e.target.value)} onBlur={handleMinuteBlur}
-            placeholder={t("setup.minutePlaceholder")} inputMode="numeric" autoComplete="off" min="0" max="59"
+            placeholder={t("setup.minutePlaceholder")} inputMode="numeric" autoComplete="off" min="0" max="59" maxLength={2} pattern="[0-9]*" aria-describedby={id("timeHelp")}
+            className={minuteError ? "setup-input setup-input--error" : "setup-input"}
           />
         </div>
       </div>
 
-      <p className="setup-help">{t("setup.timeHint")}</p>
+      <p className="setup-help" id={id("timeHelp")}>{t("setup.timeHint")}</p>
 
-      <label className="setup-label" htmlFor={id("weddingSchedule")}>{t("setup.scheduleLabel")}</label>
+      <label className="setup-label" htmlFor={id("weddingSchedule")}>{t("setup.scheduleLabel")} <CharacterCounter current={(formData.weddingSchedule || "").length} max={2000} /></label>
       <textarea
         id={id("weddingSchedule")} className="setup-textarea" value={formData.weddingSchedule}
         onChange={(e) => updateFormField("weddingSchedule", e.target.value.slice(0, 2000))}
-        placeholder={t("setup.schedulePlaceholder")} rows={4} maxLength={2000} autoComplete="off"
+        placeholder={t("setup.schedulePlaceholder")} rows={4} maxLength={2000} autoComplete="off" aria-describedby={id("scheduleHelp")}
       />
-      <p className="setup-help">{t("setup.scheduleHint")}</p>
+      <p className="setup-help" id={id("scheduleHelp")}>{t("setup.scheduleHint")}</p>
     </>
   );
 }

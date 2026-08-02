@@ -9,7 +9,7 @@ export default function AccessSectionForm({ prefix = "" }) {
 
   return (
     <>
-      <label className="setup-label" htmlFor={id("adminUsername")}>
+      <label className="setup-label setup-label--required" htmlFor={id("adminUsername")}>
         {t("setup.usernameLabel")}
       </label>
       <input
@@ -20,6 +20,7 @@ export default function AccessSectionForm({ prefix = "" }) {
         placeholder={t("setup.usernamePlaceholder")}
         autoComplete="username"
         name="username"
+        maxLength={50}
         aria-describedby="usernameHelp"
       />
       <p className="setup-help" id="usernameHelp">
