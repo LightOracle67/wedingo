@@ -4,6 +4,7 @@ import { useApp } from "../../contexts";
 import { isValidGoogleMapsUrl } from "../../lib/geo-utils";
 
 interface Departure {
+  type: "bus" | "taxi";
   time: string;
   url: string;
 }
@@ -32,16 +33,16 @@ export default function TransportSectionForm({ prefix = "" }) {
     updateFormField("transportDepartures", JSON.stringify(next.slice(0, MAX_DEPARTURES)));
   }, [updateFormField]);
 
-  const handleDepartureField = useCallback((index: number, field: "time" | "url") =>
-    (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleDepartureField = useCallback((index: number, field: "type" | "time" | "url") =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
       const next = [...departures];
-      next[index] = { ...(next[index] ?? { time: "", url: "" }), [field]: e.target.value };
+      next[index] = { ...(next[index] ?? { type: "bus", time: "", url: "" }), [field]: e.target.value };
       setDepartures(next);
     }, [departures, setDepartures]);
 
   const addDeparture = useCallback(() => {
     if (departures.length >= MAX_DEPARTURES) return;
-    setDepartures([...departures, { time: "", url: "" }]);
+    setDepartures([...departures, { type: "bus", time: "", url: "" }]);
   }, [departures, setDepartures]);
 
   const removeDeparture = useCallback((index: number) => {
@@ -72,7 +73,19 @@ export default function TransportSectionForm({ prefix = "" }) {
           <p className="setup-help">{t("setup.transportDeparturesHint")}</p>
 
           {departures.map((dep, i) => (
-            <div key={i} style={{ display: "flex", gap: "0.5rem", alignItems: "flex-start", marginTop: "0.5rem" }}>
+            <div key={i} style={{ display: "flex", gap: "0.5rem", alignItems: "flex-start", marginTop: "0.5rem", flexWrap: "wrap" }}>
+              <div style={{ flex: "0 0 120px" }}>
+                <label className="setup-label" htmlFor={id(`departureType${i}`)} style={{ fontSize: "0.75rem" }}>{t("setup.transportTypeLabel")}</label>
+                <select
+                  id={id(`departureType${i}`)}
+                  className="setup-input"
+                  value={dep.type}
+                  onChange={handleDepartureField(i, "type")}
+                >
+                  <option value="bus">{t("setup.transportOptionBus")}</option>
+                  <option value="taxi">{t("setup.transportOptionTaxi")}</option>
+                </select>
+              </div>
               <div style={{ flex: "0 0 90px" }}>
                 <label className="setup-label" htmlFor={id(`departureTime${i}`)} style={{ fontSize: "0.75rem" }}>{t("setup.transportTimeLabel")}</label>
                 <input

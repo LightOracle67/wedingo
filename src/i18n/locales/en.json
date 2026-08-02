@@ -394,7 +394,10 @@
     "transportUrlLabel": "Map link",
     "transportAddDeparture": "Add departure",
     "transportRemoveDeparture": "Remove departure",
-    "transportMaxDepartures": "Maximum {{max}} departures."
+    "transportMaxDepartures": "Maximum {{max}} departures.",
+    "setup": {
+      "transportTypeLabel": "Type"
+    }
   },
   "admin": {
     "tabs": {

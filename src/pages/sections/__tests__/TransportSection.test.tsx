@@ -25,13 +25,15 @@ describe("TransportSection", () => {
 
   it("shows the selected option and departures with maps", () => {
     const departures = JSON.stringify([
-      { time: "12:00", url: "https://www.google.com/maps/place/Plaza+Mayor/@40.41,-3.70,17z" },
-      { time: "14:30", url: "" },
+      { type: "bus", time: "12:00", url: "https://www.google.com/maps/place/Plaza+Mayor/@40.41,-3.70,17z" },
+      { type: "taxi", time: "14:30", url: "" },
     ]);
     render(<TransportSection {...baseProps} transportEnabled="both" transportDepartures={departures} />);
     expect(screen.getByText("transport.optionBoth")).toBeDefined();
-    expect(screen.getByText("12:00")).toBeDefined();
-    expect(screen.getByText("14:30")).toBeDefined();
+    expect(screen.getByText(/12:00/)).toBeDefined();
+    expect(screen.getByText(/14:30/)).toBeDefined();
+    expect(screen.getByText(/transport.optionBus/)).toBeDefined();
+    expect(screen.getByText(/transport.optionTaxi/)).toBeDefined();
     expect(screen.getAllByTestId("map-embed")).toHaveLength(1);
   });
 

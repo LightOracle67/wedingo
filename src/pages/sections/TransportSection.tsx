@@ -5,6 +5,7 @@ import { isValidGoogleMapsUrl, extractPlaceNameFromUrl } from "../../lib/geo-uti
 import CornerDecorations from "../../components/CornerDecorations";
 
 interface Departure {
+  type?: "bus" | "taxi";
   time: string;
   url: string;
 }
@@ -66,7 +67,9 @@ const TransportSection = memo(function TransportSection({
                     return (
                       <div key={i}>
                         {dep.time ? (
-                          <p className="story-eyebrow" style={{ fontSize: "0.82rem" }}>{dep.time}</p>
+                          <p className="story-eyebrow" style={{ fontSize: "0.82rem" }}>
+                            {dep.time} <span style={{ opacity: 0.85 }}>({t(dep.type === "taxi" ? "transport.optionTaxi" : "transport.optionBus")})</span>
+                          </p>
                         ) : null}
                         {placeName ? (
                           <p className="story-note" style={{ marginTop: "0.15rem" }}>{placeName}</p>

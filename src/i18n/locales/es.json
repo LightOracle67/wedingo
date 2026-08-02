@@ -394,7 +394,10 @@
     "transportUrlLabel": "Enlace del mapa",
     "transportAddDeparture": "Añadir salida",
     "transportRemoveDeparture": "Eliminar salida",
-    "transportMaxDepartures": "Máximo {{max}} salidas."
+    "transportMaxDepartures": "Máximo {{max}} salidas.",
+    "setup": {
+      "transportTypeLabel": "Tipo"
+    }
   },
   "admin": {
     "tabs": {

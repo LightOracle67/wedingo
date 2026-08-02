@@ -11,9 +11,10 @@ function normalizeTransportDepartures(value: unknown): string {
         if (!d || typeof d !== "object") return null;
         const time = typeof (d as Record<string, unknown>).time === "string" ? ((d as Record<string, unknown>).time as string).trim().slice(0, 5) : "";
         const url = typeof (d as Record<string, unknown>).url === "string" ? ((d as Record<string, unknown>).url as string).trim().slice(0, 1000) : "";
-        return { time, url };
+        const type = (d as Record<string, unknown>).type === "taxi" ? "taxi" : "bus";
+        return { type, time, url };
       })
-      .filter((d): d is { time: string; url: string } => d !== null);
+      .filter((d): d is { type: "bus" | "taxi"; time: string; url: string } => d !== null);
     return JSON.stringify(cleaned);
   } catch {
     return "";

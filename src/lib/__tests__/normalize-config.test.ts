@@ -155,11 +155,12 @@ describe("normalizeConfig", () => {
   });
 
   it("normalizes transportDepartures: caps at 4 and sanitizes entries", () => {
-    const five = Array.from({ length: 5 }, (_, i) => ({ time: `1${i}:00`, url: `https://www.google.com/maps/place/A${i}` }));
+    const five = Array.from({ length: 5 }, (_, i) => ({ type: i % 2 ? "taxi" : "bus", time: `1${i}:00`, url: `https://www.google.com/maps/place/A${i}` }));
     const result = normalizeConfig({ transportDepartures: JSON.stringify(five) });
     const parsed = JSON.parse(result.transportDepartures);
     expect(parsed).toHaveLength(4);
-    expect(parsed[0]).toEqual({ time: "10:00", url: "https://www.google.com/maps/place/A0" });
+    expect(parsed[0]).toEqual({ type: "bus", time: "10:00", url: "https://www.google.com/maps/place/A0" });
+    expect(parsed[1].type).toBe("taxi");
   });
 
   it("returns empty departures for invalid JSON", () => {
