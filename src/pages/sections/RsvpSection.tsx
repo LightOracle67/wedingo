@@ -150,6 +150,7 @@ const RsvpSection = memo(function RsvpSection({
         <form className="rsvp-form" onSubmit={handleRsvpSubmit} noValidate>
           <label className="setup-label" htmlFor="rsvpName">{t("rsvp.nameLabel")} *</label>
           <input id="rsvpName" className="setup-input" value={rsvpForm.guestName} onChange={handleNameChange} placeholder={t("rsvp.namePlaceholder")} autoComplete="off" required maxLength={120} />
+          <p className="setup-help" style={{ marginTop: "0.2rem" }}>{t("rsvp.nameHint")}</p>
 
           <div className="setup-date-grid rsvp-choice-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))" }}>
             <div>
@@ -361,6 +362,7 @@ const RsvpSection = memo(function RsvpSection({
 
           <label className="setup-label" htmlFor="rsvpBirthDate" style={{ marginTop: "0.5rem" }}>{t("rsvp.birthDateLabel")} *</label>
           <input id="rsvpBirthDate" type="date" max={new Date().toISOString().split("T")[0]} className="setup-input" value={rsvpForm.birthDate} onChange={handleBirthDateChange} style={{ colorScheme: "light" }} required disabled={isAlreadySubmitted} />
+          <p className="setup-help" style={{ marginTop: "0.2rem" }}>{t("rsvp.birthDateHint")}</p>
 
           {isUnder14 ? (
             <p style={{ fontSize: "0.82rem", color: "#e88b2c", margin: "0.3rem 0" }}>{t("rsvp.ageUnder14Warning")}</p>

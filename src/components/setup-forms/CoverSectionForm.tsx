@@ -139,9 +139,11 @@ export default function CoverSectionForm({ prefix = "" }) {
         onChange={(e) => updateFormField("inviteMessage", e.target.value.slice(0, 500))}
         placeholder={t("setup.messagePlaceholder")}
       />
+      <p className="setup-help">{t("setup.messageHint")}</p>
 
       <p className="setup-label">{t("setup.themeLabel")}</p>
       <ThemePicker value={formData.theme} onChange={handleThemeChange} t={t as (key: string, options?: Record<string, unknown>) => string} />
+      <p className="setup-help">{t("setup.themeHint")}</p>
 
       <div className="setup-background-panel">
         <div className="setup-background-panel__header">

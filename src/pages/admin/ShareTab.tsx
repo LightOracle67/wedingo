@@ -79,6 +79,7 @@ const ShareTab = memo(function ShareTab({ inviteToken, addToast }: ShareTabProps
           rows={6}
           style={{ width: "100%", resize: "vertical", fontFamily: "inherit", fontSize: "0.9rem", padding: "0.5rem", borderRadius: "6px", border: "1px solid var(--setup-border)", background: "var(--setup-bg)", color: "var(--setup-text)" }}
         />
+        <p className="setup-help" style={{ marginTop: "0.4rem" }}>{t("share.messageHint")}</p>
         <button className={btnGhostClass} type="button" onClick={handleRandom} style={{ marginTop: "0.5rem" }}>
           {t("share.generateMessage")}
         </button>

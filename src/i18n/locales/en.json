@@ -176,7 +176,9 @@
       "sin lactosa": "Lactose-free",
       "alergia a frutos secos": "Nut allergy",
       "alergia a mariscos": "Shellfish allergy"
-    }
+    },
+    "nameHint": "Enter your first name and your two surnames.",
+    "birthDateHint": "Only needed to know if you are under 14 years old."
   },
   "public": {
     "loadingInvitation": "Loading invitation…",
@@ -289,7 +291,7 @@
     "minuteHint": "From 00 to 59",
     "scheduleLabel": "Wedding schedule",
     "schedulePlaceholder": "e.g. 18:00 Guest reception\n18:30 Ceremony\n19:30 Cocktail\n21:00 Banquet\n23:00 Dancing",
-    "scheduleHint": "Write the schedule, one line per event.",
+    "scheduleHint": "Suggested schedule for the celebration (one event per line).",
     "dressCodeLabel": "Dress code",
     "dressCodeGala": "Black tie",
     "dressCodeCasual": "Casual attire",
@@ -399,7 +401,13 @@
     "setup": {
       "cornerDecorationUploadHint": "PNG or SVG, it will appear on the 4 corners of the card"
     },
-    "nameOnlyHint": "First name only, without surnames."
+    "nameOnlyHint": "First name only, without surnames.",
+    "messageHint": "Welcome message that will appear on the invitation cover.",
+    "themeHint": "Choose the visual style of the invitation. You can change it anytime.",
+    "dateHint": "Enter the wedding day. Select the month from the dropdown.",
+    "timeHint": "Set the time when the celebration begins.",
+    "mapViewHint": "Choose how the map will look in the invitation.",
+    "galleryHint": "Upload the photos and, if you want, add a description to each one."
   },
   "admin": {
     "tabs": {
@@ -505,7 +513,8 @@
     "print": "Print",
     "printPdf": "Print / Save PDF",
     "linkCopied": "Link copied.",
-    "messageCopied": "Message copied."
+    "messageCopied": "Message copied.",
+    "messageHint": "Customize the message that will be sent to the guests."
   },
   "access": {
     "description": "Use this section to generate a new code. The previous code will stop working.",

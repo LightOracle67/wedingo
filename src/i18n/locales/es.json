@@ -176,7 +176,9 @@
       "sin lactosa": "Sin lactosa",
       "alergia a frutos secos": "Alergia a frutos secos",
       "alergia a mariscos": "Alergia a mariscos"
-    }
+    },
+    "nameHint": "Escribe tu nombre y tus dos apellidos.",
+    "birthDateHint": "Necesaria solo para saber si eres menor de 14 años."
   },
   "public": {
     "loadingInvitation": "Cargando invitación…",
@@ -289,7 +291,7 @@
     "minuteHint": "De 00 a 59",
     "scheduleLabel": "Horario de la boda",
     "schedulePlaceholder": "Ejemplo: 18:00 Recepción de invitados\n18:30 Ceremonia\n19:30 Cóctel\n21:00 Banquete\n23:00 Baile",
-    "scheduleHint": "Escribe el horario, un salto de línea por cada evento.",
+    "scheduleHint": "Horario orientativo de la celebración (una línea por evento).",
     "dressCodeLabel": "Código de vestimenta",
     "dressCodeGala": "Traje de gala",
     "dressCodeCasual": "Etiqueta informal",
@@ -399,7 +401,13 @@
     "setup": {
       "cornerDecorationUploadHint": "PNG o SVG, aparecerá en las 4 esquinas de la tarjeta"
     },
-    "nameOnlyHint": "Solo el nombre, sin apellidos."
+    "nameOnlyHint": "Solo el nombre, sin apellidos.",
+    "messageHint": "Mensaje de bienvenida que aparecerá en la portada de la invitación.",
+    "themeHint": "Elige el estilo visual de la invitación. Puedes cambiarlo cuando quieras.",
+    "dateHint": "Introduce el día de la boda. El mes se selecciona en el desplegable.",
+    "timeHint": "Indica la hora a la que comenzará la celebración.",
+    "mapViewHint": "Elige cómo se verá el mapa en la invitación.",
+    "galleryHint": "Sube las fotos y, si quieres, añade una descripción a cada una."
   },
   "admin": {
     "tabs": {
@@ -505,7 +513,8 @@
     "print": "Imprimir",
     "printPdf": "Imprimir / Guardar PDF",
     "linkCopied": "Enlace copiado.",
-    "messageCopied": "Mensaje copiado."
+    "messageCopied": "Mensaje copiado.",
+    "messageHint": "Personaliza el mensaje que se enviará a los invitados."
   },
   "access": {
     "description": "Usa esta sección para generar un código nuevo. El código anterior dejará de servir.",

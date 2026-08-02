@@ -60,6 +60,7 @@ export default function DateSectionForm({ prefix = "" }) {
             <option value="satellite">{t("setup.mapViewSatellite")}</option>
             <option value="hybrid">{t("setup.mapViewHybrid")}</option>
           </select>
+          <p className="setup-help">{t("setup.mapViewHint")}</p>
         </div>
         <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.9rem", cursor: "pointer", marginTop: "1.5rem" }}>
           <input
@@ -161,6 +162,8 @@ export default function DateSectionForm({ prefix = "" }) {
         </div>
       </div>
 
+      <p className="setup-help">{t("setup.dateHint")}</p>
+
       <div className="setup-date-grid">
         <div>
           <label className="setup-label" htmlFor={id("weddingHour")}>{t("setup.hourLabel")}</label>
@@ -180,12 +183,15 @@ export default function DateSectionForm({ prefix = "" }) {
         </div>
       </div>
 
+      <p className="setup-help">{t("setup.timeHint")}</p>
+
       <label className="setup-label" htmlFor={id("weddingSchedule")}>{t("setup.scheduleLabel")}</label>
       <textarea
         id={id("weddingSchedule")} className="setup-textarea" value={formData.weddingSchedule}
         onChange={(e) => updateFormField("weddingSchedule", e.target.value.slice(0, 2000))}
         placeholder={t("setup.schedulePlaceholder")} rows={4} maxLength={2000} autoComplete="off"
       />
+      <p className="setup-help">{t("setup.scheduleHint")}</p>
     </>
   );
 }
