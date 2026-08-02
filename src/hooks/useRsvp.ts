@@ -5,6 +5,7 @@ import { db, RSVP_COLLECTION_REF, rsvpByInviteRef } from "../lib/firebase";
 import { encrypt, decrypt } from "../lib/crypto-utils";
 import { computeAge } from "../lib/date-utils";
 import { DIETARY_OPTIONS, parseDietaryInfo } from "../lib/rsvp-utils";
+import { isValidFullName, normalizeFullName } from "../lib/name-utils";
 import { useRsvpSubmit } from "./useRsvpSubmit";
 import type { Attendee } from "../types";
 
@@ -408,10 +409,12 @@ export function useRsvp(
 
   const validateRsvpData = useCallback((data: RsvpFormData) => {
     if (!data.guestName?.trim()) { console.log("[app]", "[useRsvp]", "validation fail: name required", {}); return t("rsvp.validation.nameRequired"); }
+    if (!isValidFullName(data.guestName)) { console.log("[app]", "[useRsvp]", "validation fail: full name required", {}); return t("rsvp.validation.nameFullRequired"); }
     if (data.attendance !== "no" && !data.birthDate) { console.log("[app]", "[useRsvp]", "validation fail: birthDate required", {}); return t("rsvp.validation.birthDateRequired"); }
     if (data.attendance === "with" && data.companionCount > 0) {
       for (let i = 0; i < data.companionCount; i++) {
         if (!data.companionNames[i]?.trim()) { console.log("[app]", "[useRsvp]", "validation fail: companion name", { i }); return t("rsvp.validation.nameRequired"); }
+        if (!isValidFullName(data.companionNames[i]!)) { console.log("[app]", "[useRsvp]", "validation fail: companion full name", { i }); return t("rsvp.validation.nameFullRequired"); }
         if (!data.companionBirthDates?.[i]) { console.log("[app]", "[useRsvp]", "validation fail: companion birthDate", { i }); return t("rsvp.validation.birthDateRequired"); }
         if (menuEnabled && !data.companionMenus?.[i]) { console.log("[app]", "[useRsvp]", "validation fail: companion menu", { i }); return t("rsvp.validation.menuRequired"); }
         const compAge = computeAge(data.companionBirthDates[i]!);
@@ -437,6 +440,8 @@ export function useRsvp(
     console.log("[app]", "[useRsvp]", "submitRsvpData start", { guestName: data.guestName, attendance: data.attendance, companionCount: data.companionCount });
     const allergies = data.allergies || [];
     const dietaryInfo = allergies.filter(Boolean).join(" | ");
+    data.guestName = normalizeFullName(data.guestName);
+    data.companionNames = (data.companionNames || []).map(normalizeFullName);
     const encryptedDietaryInfo = await encrypt(dietaryInfo, inviteToken);
     const age = computeAge(data.birthDate);
     const single = data.guestName.trim();

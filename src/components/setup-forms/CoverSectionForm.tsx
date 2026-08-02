@@ -81,6 +81,7 @@ export default function CoverSectionForm({ prefix = "" }) {
         <div className="setup-name-grid">
           <div className="setup-name-col">
             <label className="setup-label" htmlFor={id("firstName")}>{t("setup.firstNameLabel")}</label>
+            <p className="setup-help" style={{ marginTop: "0.1rem", fontSize: "0.75rem" }}>{t("setup.nameOnlyHint")}</p>
             <input
               id={id("firstName")}
               className="setup-input"
@@ -95,6 +96,7 @@ export default function CoverSectionForm({ prefix = "" }) {
           </div>
           <div className="setup-name-col">
             <label className="setup-label" htmlFor={id("secondName")}>{t("setup.secondNameLabel")}</label>
+            <p className="setup-help" style={{ marginTop: "0.1rem", fontSize: "0.75rem" }}>{t("setup.nameOnlyHint")}</p>
             <input
               id={id("secondName")}
               className="setup-input"
@@ -115,10 +117,12 @@ export default function CoverSectionForm({ prefix = "" }) {
         <div className="setup-name-grid">
           <div className="setup-name-col">
             <label className="setup-label" htmlFor={id("godparent1")}>{t("setup.godparent1Label")}</label>
+            <p className="setup-help" style={{ marginTop: "0.1rem", fontSize: "0.75rem" }}>{t("setup.nameOnlyHint")}</p>
             <input id={id("godparent1")} className="setup-input" value={formData.godparent1} onChange={(e) => updateFormField("godparent1", e.target.value.slice(0, 40))} placeholder={t("setup.namePlaceholder")} autoComplete="off" />
           </div>
           <div className="setup-name-col">
             <label className="setup-label" htmlFor={id("godparent2")}>{t("setup.godparent2Label")}</label>
+            <p className="setup-help" style={{ marginTop: "0.1rem", fontSize: "0.75rem" }}>{t("setup.nameOnlyHint")}</p>
             <input id={id("godparent2")} className="setup-input" value={formData.godparent2} onChange={(e) => updateFormField("godparent2", e.target.value.slice(0, 40))} placeholder={t("setup.namePlaceholder")} autoComplete="off" />
           </div>
         </div>

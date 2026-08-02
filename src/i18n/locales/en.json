@@ -156,7 +156,8 @@
       "privacyRequired": "Please accept the Privacy Policy to continue.",
       "birthDateRequired": "We need your date of birth to complete your response.",
       "ageUnder14": "Since you are under 14, we need your parents' or guardians' consent to confirm.",
-      "healthConsentRequired": "Please let us know if we can use your allergy info to adapt the menu."
+      "healthConsentRequired": "Please let us know if we can use your allergy info to adapt the menu.",
+      "nameFullRequired": "Enter your full name: first name and two surnames."
     },
     "successAttending": "Thank you, {{name}}! We are so happy you will be there.",
     "successNotAttending": "Thank you, {{name}}. We will miss you!",
@@ -397,7 +398,8 @@
     "transportMaxDepartures": "Maximum {{max}} departures.",
     "setup": {
       "cornerDecorationUploadHint": "PNG or SVG, it will appear on the 4 corners of the card"
-    }
+    },
+    "nameOnlyHint": "First name only, without surnames."
   },
   "admin": {
     "tabs": {

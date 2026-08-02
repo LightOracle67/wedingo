@@ -123,19 +123,19 @@ describe("useRsvp", () => {
   it("sets individual companion name via companionNames[N]", () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
     act(() => result.current.updateRsvpField("companionCount", 2));
-    act(() => result.current.updateRsvpField("companionNames[0]", "Alice"));
-    act(() => result.current.updateRsvpField("companionNames[1]", "Bob"));
-    expect(result.current.rsvpForm.companionNames).toEqual(["Alice", "Bob"]);
+    act(() => result.current.updateRsvpField("companionNames[0]", "Alice María Smith"));
+    act(() => result.current.updateRsvpField("companionNames[1]", "Bob Carlos Jones"));
+    expect(result.current.rsvpForm.companionNames).toEqual(["Alice María Smith", "Bob Carlos Jones"]);
   });
 
   it("trims companionNames when companionCount decreases", () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
     act(() => result.current.updateRsvpField("companionCount", 3));
-    act(() => result.current.updateRsvpField("companionNames[0]", "Alice"));
-    act(() => result.current.updateRsvpField("companionNames[1]", "Bob"));
-    act(() => result.current.updateRsvpField("companionNames[2]", "Charlie"));
+    act(() => result.current.updateRsvpField("companionNames[0]", "Alice María Smith"));
+    act(() => result.current.updateRsvpField("companionNames[1]", "Bob Carlos Jones"));
+    act(() => result.current.updateRsvpField("companionNames[2]", "Charlie Brown Smith"));
     act(() => result.current.updateRsvpField("companionCount", 2));
-    expect(result.current.rsvpForm.companionNames).toEqual(["Alice", "Bob"]);
+    expect(result.current.rsvpForm.companionNames).toEqual(["Alice María Smith", "Bob Carlos Jones"]);
   });
 
   it("clamps companionCount between 0 and 10", () => {
@@ -180,9 +180,9 @@ describe("useRsvp", () => {
 
   it("clears guestName prefill ref when guestName field is updated", () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
-    act(() => result.current.updateRsvpField("guestName", "Alice"));
-    act(() => result.current.updateRsvpField("guestName", "Bob"));
-    expect(result.current.rsvpForm.guestName).toBe("Bob");
+    act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
+    act(() => result.current.updateRsvpField("guestName", "Bob Carlos Jones"));
+    expect(result.current.rsvpForm.guestName).toBe("Bob Carlos Jones");
   });
 
   it("updates allergies via updateRsvpField", () => {
@@ -231,11 +231,11 @@ describe("useRsvp", () => {
 
   it("submits companionMenus and companionAllergies with payload", async () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
-    act(() => result.current.updateRsvpField("guestName", "Alice"));
+    act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
     act(() => result.current.updateRsvpField("attendance", "with"));
     act(() => result.current.updateRsvpField("companionCount", 2));
-    act(() => result.current.updateRsvpField("companionNames[0]", "Bob"));
-    act(() => result.current.updateRsvpField("companionNames[1]", "Charlie"));
+    act(() => result.current.updateRsvpField("companionNames[0]", "Bob Carlos Jones"));
+    act(() => result.current.updateRsvpField("companionNames[1]", "Charlie Brown Smith"));
     act(() => result.current.updateRsvpField("companionMenus[0]", "carne"));
     act(() => result.current.updateRsvpField("companionMenus[1]", "pescado"));
     act(() => result.current.updateRsvpField("companionAllergies[0]", ["sin gluten"]));
@@ -262,12 +262,12 @@ describe("useRsvp", () => {
     const comp0Data = batch.set.mock.calls[1][1];
     const comp1Data = batch.set.mock.calls[2][1];
     expect(comp0Data.rsvpType).toBe("companion");
-    expect(comp0Data.guestName).toBe("Bob");
+    expect(comp0Data.guestName).toBe("Bob Carlos Jones");
     expect(comp0Data.dietaryInfo).toContain("sin gluten");
     expect(comp0Data.birthDate).toBe("2000-01-01");
     expect(comp0Data.healthConsent).toBe(true);
     expect(comp1Data.rsvpType).toBe("companion");
-    expect(comp1Data.guestName).toBe("Charlie");
+    expect(comp1Data.guestName).toBe("Charlie Brown Smith");
     expect(comp1Data.dietaryInfo).toBe("");
     expect(comp1Data.birthDate).toBe("2010-06-15");
     // computeAge mock returns 25 (not under 14), so parentalConsent is not set
@@ -288,6 +288,33 @@ describe("useRsvp", () => {
       });
       expect(result.current.rsvpMessage).toMatch(/nameRequired/i);
     });
+
+    it("returns error when guestName is not a full name", async () => {
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      act(() => result.current.updateRsvpField("guestName", "Ana"));
+      act(() => result.current.updateRsvpField("attendance", "alone"));
+      act(() => result.current.updateRsvpField("birthDate", "2000-01-01"));
+      act(() => result.current.updateRsvpField("privacyConsent", true));
+      await act(async () => {
+        result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as any);
+      });
+      expect(result.current.rsvpMessage).toMatch(/nameFullRequired/i);
+    });
+
+    it("returns error when a companion name is not a full name", async () => {
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
+      act(() => result.current.updateRsvpField("attendance", "with"));
+      act(() => result.current.updateRsvpField("companionCount", 1));
+      act(() => result.current.updateRsvpField("companionNames[0]", "Carlos"));
+      act(() => result.current.updateRsvpField("companionBirthDates[0]", "2000-01-01"));
+      act(() => result.current.updateRsvpField("birthDate", "2000-01-01"));
+      act(() => result.current.updateRsvpField("privacyConsent", true));
+      await act(async () => {
+        result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as any);
+      });
+      expect(result.current.rsvpMessage).toMatch(/nameFullRequired/i);
+    });
   });
 
   describe("handleDietaryToggle", () => {
@@ -300,7 +327,7 @@ describe("useRsvp", () => {
   });
 
   function setupForm(result: { current: ReturnType<typeof useRsvp> }) {
-    act(() => result.current.updateRsvpField("guestName", "Alice"));
+    act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
     act(() => result.current.updateRsvpField("attendance", "alone"));
     act(() => result.current.updateRsvpField("birthDate", "2000-01-01"));
     act(() => result.current.updateRsvpField("privacyConsent", true));
@@ -337,11 +364,11 @@ describe("useRsvp", () => {
 
     it("submits with companion data when attending with companions", async () => {
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
-      act(() => result.current.updateRsvpField("guestName", "Alice"));
+      act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
       act(() => result.current.updateRsvpField("attendance", "with"));
       act(() => result.current.updateRsvpField("companionCount", 2));
-      act(() => result.current.updateRsvpField("companionNames[0]", "Bob"));
-      act(() => result.current.updateRsvpField("companionNames[1]", "Charlie"));
+      act(() => result.current.updateRsvpField("companionNames[0]", "Bob Carlos Jones"));
+      act(() => result.current.updateRsvpField("companionNames[1]", "Charlie Brown Smith"));
       act(() => result.current.updateRsvpField("companionBirthDates", ["2000-01-01", "2000-01-01"]));
       act(() => result.current.updateRsvpField("birthDate", "2000-01-01"));
       act(() => result.current.updateRsvpField("privacyConsent", true));
@@ -359,7 +386,7 @@ describe("useRsvp", () => {
       const mainPayload = batch.set.mock.calls[0][1];
       expect(mainPayload.attendance).toBe("yes");
       expect(mainPayload.companionCount).toBe(2);
-      expect(mainPayload.companionNames).toEqual(["Bob", "Charlie"]);
+      expect(mainPayload.companionNames).toEqual(["Bob Carlos Jones", "Charlie Brown Smith"]);
       expect(mainPayload.rsvpType).toBe("main");
       // 1 main + 2 companions = 3 set calls
       expect(batch.set).toHaveBeenCalledTimes(3);
@@ -367,7 +394,7 @@ describe("useRsvp", () => {
 
     it("submits with menuSelection when provided", async () => {
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, true));
-      act(() => result.current.updateRsvpField("guestName", "Alice"));
+      act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
       act(() => result.current.updateRsvpField("menuSelection", "carne"));
       act(() => result.current.updateRsvpField("birthDate", "2000-01-01"));
       act(() => result.current.updateRsvpField("privacyConsent", true));
@@ -387,7 +414,7 @@ describe("useRsvp", () => {
 
     it("returns error for menuRequired when menuEnabled but no menuSelection", async () => {
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, true));
-      act(() => result.current.updateRsvpField("guestName", "Alice"));
+      act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
       act(() => result.current.updateRsvpField("birthDate", "2000-01-01"));
       act(() => result.current.updateRsvpField("privacyConsent", true));
 
@@ -422,7 +449,7 @@ describe("useRsvp", () => {
 
     it("returns error for missing privacy consent", async () => {
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
-      act(() => result.current.updateRsvpField("guestName", "Alice"));
+      act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
       act(() => result.current.updateRsvpField("attendance", "alone"));
       act(() => result.current.updateRsvpField("birthDate", "2000-01-01"));
 
@@ -435,7 +462,7 @@ describe("useRsvp", () => {
 
     it("returns error for missing birthDate", async () => {
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
-      act(() => result.current.updateRsvpField("guestName", "Alice"));
+      act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
 
       await act(async () => {
         result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as any);
@@ -446,7 +473,7 @@ describe("useRsvp", () => {
 
     it("returns error for companion with empty name", async () => {
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
-      act(() => result.current.updateRsvpField("guestName", "Alice"));
+      act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
       act(() => result.current.updateRsvpField("attendance", "with"));
       act(() => result.current.updateRsvpField("companionCount", 1));
       act(() => result.current.updateRsvpField("birthDate", "2000-01-01"));
@@ -462,7 +489,7 @@ describe("useRsvp", () => {
     it("returns error for age under 14 without parentalConsent", async () => {
       mockComputeAge.mockReturnValue(12);
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
-      act(() => result.current.updateRsvpField("guestName", "Alice"));
+      act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
       act(() => result.current.updateRsvpField("attendance", "alone"));
       act(() => result.current.updateRsvpField("birthDate", "2012-01-01"));
       act(() => result.current.updateRsvpField("privacyConsent", true));
@@ -476,7 +503,7 @@ describe("useRsvp", () => {
 
     it("returns error for healthConsent when allergies present", async () => {
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
-      act(() => result.current.updateRsvpField("guestName", "Alice"));
+      act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
       act(() => result.current.updateRsvpField("attendance", "alone"));
       act(() => result.current.updateRsvpField("allergies", ["sin gluten"]));
       act(() => result.current.updateRsvpField("birthDate", "2000-01-01"));
@@ -504,9 +531,9 @@ describe("useRsvp", () => {
         docs: [{
           id: "entry-1",
           data: () => ({
-            guestName: "Alice",
+            guestName: "Alice María Smith",
             attendance: "yes",
-            attendees: [{ name: "Alice", menu: "", allergies: [] }],
+            attendees: [{ name: "Alice María Smith", menu: "", allergies: [] }],
             submittedAt: new Date().toISOString(),
             dietaryInfo: "",
             companions: 1,
@@ -517,7 +544,7 @@ describe("useRsvp", () => {
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
 
       await act(async () => {
-        result.current.updateRsvpField("guestName", "Alice");
+        result.current.updateRsvpField("guestName", "Alice María Smith");
       });
 
       await waitFor(() => {
@@ -541,9 +568,9 @@ describe("useRsvp", () => {
         docs: [{
           id: "entry-1",
           data: () => ({
-            guestName: "Bob",
+            guestName: "Bob Carlos Jones",
             attendance: "yes",
-            attendees: [{ name: "Bob", menu: "", allergies: [] }],
+            attendees: [{ name: "Bob Carlos Jones", menu: "", allergies: [] }],
             submittedAt: new Date().toISOString(),
             dietaryInfo: "",
             companions: 1,
@@ -554,7 +581,7 @@ describe("useRsvp", () => {
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
 
       await act(async () => {
-        result.current.updateRsvpField("guestName", "Bob");
+        result.current.updateRsvpField("guestName", "Bob Carlos Jones");
       });
 
       await waitFor(() => {
@@ -578,7 +605,7 @@ describe("useRsvp", () => {
         docs: [{
           id: "entry-1",
           data: () => ({
-            guestName: "Charlie",
+            guestName: "Charlie Brown Smith",
             attendance: "no",
             attendees: [],
             submittedAt: new Date().toISOString(),
@@ -591,7 +618,7 @@ describe("useRsvp", () => {
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
 
       await act(async () => {
-        result.current.updateRsvpField("guestName", "Charlie");
+        result.current.updateRsvpField("guestName", "Charlie Brown Smith");
       });
 
       await waitFor(() => {
@@ -654,9 +681,9 @@ describe("useRsvp", () => {
   describe("hydration", () => {
     it("loads rsvp entries on mount", async () => {
       const entry = createMockDoc("entry-1", {
-        guestName: "Alice",
+        guestName: "Alice María Smith",
         attendance: "yes",
-        attendees: [{ name: "Alice", menu: "carne", allergies: [] }],
+        attendees: [{ name: "Alice María Smith", menu: "carne", allergies: [] }],
       });
       mockGetDocs.mockResolvedValueOnce({
         docs: [entry],
@@ -667,7 +694,7 @@ describe("useRsvp", () => {
       await waitFor(() => {
         expect(result.current.rsvpEntries).toHaveLength(1);
       });
-      expect(result.current.rsvpEntries[0]!.guestName).toBe("Alice");
+      expect(result.current.rsvpEntries[0]!.guestName).toBe("Alice María Smith");
     });
 
     it("loads multiple entries and sorts by submittedAt descending", async () => {
@@ -710,7 +737,7 @@ describe("useRsvp", () => {
         docs: [{
           id: "legacy-1",
           data: () => ({
-            guestName: "Alice",
+            guestName: "Alice María Smith",
             attendance: "yes",
             mealChoice: "carne",
             guestNames: "Bob, Charlie",
@@ -735,7 +762,7 @@ describe("useRsvp", () => {
         docs: [{
           id: "legacy-2",
           data: () => ({
-            guestName: "Bob",
+            guestName: "Bob Carlos Jones",
             attendance: "yes",
             mealChoice: "carne",
             guestNames: "",
@@ -761,9 +788,9 @@ describe("useRsvp", () => {
         docs: [{
           id: "entry-1",
           data: () => ({
-            guestName: "Alice",
+            guestName: "Alice María Smith",
             attendance: "yes",
-            attendees: [{ name: "Alice", menu: "carne", allergies: [] }],
+            attendees: [{ name: "Alice María Smith", menu: "carne", allergies: [] }],
             submittedAt: new Date().toISOString(),
             dietaryInfo: "",
             companions: 1,
@@ -776,13 +803,13 @@ describe("useRsvp", () => {
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
 
       await act(async () => {
-        result.current.updateRsvpField("guestName", "Alice");
+        result.current.updateRsvpField("guestName", "Alice María Smith");
       });
 
       await waitFor(() => {
         expect(result.current.alreadySubmittedEntry).not.toBeNull();
       });
-      expect(result.current.alreadySubmittedEntry?.guestName).toBe("Alice");
+      expect(result.current.alreadySubmittedEntry?.guestName).toBe("Alice María Smith");
     });
 
     it("hits else branch in effect when prefillRef already matches", async () => {
@@ -790,9 +817,9 @@ describe("useRsvp", () => {
         docs: [{
           id: "entry-1",
           data: () => ({
-            guestName: "Alice",
+            guestName: "Alice María Smith",
             attendance: "yes",
-            attendees: [{ name: "Alice", menu: "carne", allergies: [] }],
+            attendees: [{ name: "Alice María Smith", menu: "carne", allergies: [] }],
             submittedAt: new Date().toISOString(),
             dietaryInfo: "",
             companions: 1,
@@ -804,12 +831,12 @@ describe("useRsvp", () => {
       });
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
       await act(async () => {
-        result.current.updateRsvpField("guestName", "Alice");
+        result.current.updateRsvpField("guestName", "Alice María Smith");
       });
       await waitFor(() => {
         expect(result.current.alreadySubmittedEntry?.id).toBe("entry-1");
       });
-      expect(result.current.rsvpForm.guestName).toBe("Alice");
+      expect(result.current.rsvpForm.guestName).toBe("Alice María Smith");
     });
 
     it("re-matches alreadySubmittedEntry on subsequent same-name input", async () => {
@@ -817,9 +844,9 @@ describe("useRsvp", () => {
         docs: [{
           id: "entry-1",
           data: () => ({
-            guestName: "Alice",
+            guestName: "Alice María Smith",
             attendance: "yes",
-            attendees: [{ name: "Alice", menu: "carne", allergies: [] }],
+            attendees: [{ name: "Alice María Smith", menu: "carne", allergies: [] }],
             submittedAt: new Date().toISOString(),
             dietaryInfo: "",
             companions: 1,
@@ -831,13 +858,13 @@ describe("useRsvp", () => {
       });
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
       await act(async () => {
-        result.current.updateRsvpField("guestName", "Alice");
+        result.current.updateRsvpField("guestName", "Alice María Smith");
       });
       await waitFor(() => {
         expect(result.current.alreadySubmittedEntry).not.toBeNull();
       });
       await act(async () => {
-        result.current.updateRsvpField("guestName", "Alice");
+        result.current.updateRsvpField("guestName", "Alice María Smith");
       });
       expect(result.current.alreadySubmittedEntry?.id).toBe("entry-1");
     });
@@ -847,7 +874,7 @@ describe("useRsvp", () => {
         docs: [{
           id: "entry-1",
           data: () => ({
-            guestName: "Alice",
+            guestName: "Alice María Smith",
             attendance: "yes",
             attendees: [],
             submittedAt: new Date().toISOString(),
@@ -862,7 +889,7 @@ describe("useRsvp", () => {
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
 
       await act(async () => {
-        result.current.updateRsvpField("guestName", "Bob");
+        result.current.updateRsvpField("guestName", "Bob Carlos Jones");
       });
 
       expect(result.current.alreadySubmittedEntry).toBeNull();

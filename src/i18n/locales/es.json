@@ -156,7 +156,8 @@
       "privacyRequired": "Acepta la Política de Privacidad para continuar.",
       "birthDateRequired": "Necesitamos tu fecha de nacimiento para completar tu respuesta.",
       "ageUnder14": "Al ser menor de 14 años, necesitamos el consentimiento de tus padres o tutores.",
-      "healthConsentRequired": "Dinos si podemos usar tu información de alergias para adaptar el menú."
+      "healthConsentRequired": "Dinos si podemos usar tu información de alergias para adaptar el menú.",
+      "nameFullRequired": "Introduce el nombre completo: nombre y dos apellidos."
     },
     "successAttending": "¡Gracias, {{name}}! Nos alegra mucho que vengas.",
     "successNotAttending": "Gracias, {{name}}. Te echaremos de menos.",
@@ -397,7 +398,8 @@
     "transportMaxDepartures": "Máximo {{max}} salidas.",
     "setup": {
       "cornerDecorationUploadHint": "PNG o SVG, aparecerá en las 4 esquinas de la tarjeta"
-    }
+    },
+    "nameOnlyHint": "Solo el nombre, sin apellidos."
   },
   "admin": {
     "tabs": {
