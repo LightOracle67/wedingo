@@ -188,7 +188,7 @@ input.setup-input[type="date"] {
   width: 97%;
   height: -webkit-fill-available;
   scroll-behavior: smooth;
-  overflow: hidden;
+  overflow: auto;
 }
 .setup-card--narrow {
   width: min(100%, 500px);
