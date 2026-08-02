@@ -123,21 +123,6 @@ export default function GuestsSectionForm({ prefix = "" }) {
         autoComplete="off"
       />
       <p className="setup-help">{t("setup.accommodationHint")}</p>
-
-      <label className="setup-label" htmlFor={id("transportInfo")}>
-        {t("setup.transportLabel")}
-      </label>
-      <textarea
-        id={id("transportInfo")}
-        className="setup-textarea"
-        value={formData.transportInfo}
-        onChange={(e) => updateFormField("transportInfo", e.target.value.slice(0, 2000))}
-        placeholder={t("setup.transportPlaceholder")}
-        rows={4}
-        maxLength={2000}
-        autoComplete="off"
-      />
-      <p className="setup-help">{t("setup.transportHint")}</p>
     </>
   );
 }

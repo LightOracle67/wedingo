@@ -411,10 +411,37 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       setSaveError(t("errors.giftsTooLong"));
       return;
     }
-    if (sanitized.transportInfo && sanitized.transportInfo.length > MAX_LONG_TEXT_LENGTH) {
-      console.log("[app]", "[ConfigProvider]", "validation failed: transportInfo too long", { length: sanitized.transportInfo.length });
-      setSaveError(t("errors.transportTooLong"));
-      return;
+    if (sanitized.transportDepartures) {
+      try {
+        const parsed = JSON.parse(sanitized.transportDepartures);
+        if (!Array.isArray(parsed) || parsed.length > 4) {
+          console.log("[app]", "[ConfigProvider]", "validation failed: transport departures invalid", { parsed });
+          setSaveError(t("errors.transportDeparturesInvalid"));
+          return;
+        }
+        for (const dep of parsed) {
+          if (!dep || typeof dep !== "object") {
+            setSaveError(t("errors.transportDeparturesInvalid"));
+            return;
+          }
+          const time = String((dep as Record<string, unknown>).time || "");
+          const url = String((dep as Record<string, unknown>).url || "");
+          if (time && !/^([01]\d|2[0-3]):[0-5]\d$/.test(time)) {
+            console.log("[app]", "[ConfigProvider]", "validation failed: departure time invalid", { time });
+            setSaveError(t("errors.transportTimeInvalid"));
+            return;
+          }
+          if (url && !isValidGoogleMapsUrl(url)) {
+            console.log("[app]", "[ConfigProvider]", "validation failed: departure url invalid", { url });
+            setSaveError(t("errors.transportUrlInvalid"));
+            return;
+          }
+        }
+      } catch {
+        console.log("[app]", "[ConfigProvider]", "validation failed: transport departures JSON invalid", {});
+        setSaveError(t("errors.transportDeparturesInvalid"));
+        return;
+      }
     }
     if (sanitized.accommodationInfo && sanitized.accommodationInfo.length > MAX_LONG_TEXT_LENGTH) {
       console.log("[app]", "[ConfigProvider]", "validation failed: accommodationInfo too long", { length: sanitized.accommodationInfo.length });

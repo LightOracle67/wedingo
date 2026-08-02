@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { parseSectionOrder, parseHidden, formatDate } from "../section-utils";
 
 describe("parseSectionOrder", () => {
-  const DEFAULT = ["hero", "details", "info", "story", "gallery", "gifts", "accommodation", "rsvp"];
+  const DEFAULT = ["hero", "details", "transport", "info", "story", "gallery", "gifts", "accommodation", "rsvp"];
 
   it("returns default order for undefined input", () => {
     expect(parseSectionOrder(undefined)).toEqual(DEFAULT);
@@ -15,13 +15,13 @@ describe("parseSectionOrder", () => {
   it("parses comma-separated string and appends missing sections", () => {
     const result = parseSectionOrder("hero,details,story");
     expect(result.slice(0, 3)).toEqual(["hero", "details", "story"]);
-    expect(result.length).toBe(8);
+    expect(result.length).toBe(9);
   });
 
   it("filters out invalid sections", () => {
     const result = parseSectionOrder("hero,invalid,details");
     expect(result.slice(0, 2)).toEqual(["hero", "details"]);
-    expect(result.length).toBe(8);
+    expect(result.length).toBe(9);
   });
 
   it("preserves custom order of specified sections", () => {

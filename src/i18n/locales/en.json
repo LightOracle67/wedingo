@@ -379,7 +379,22 @@
     "mapViewSatellite": "Satellite",
     "mapViewHybrid": "Hybrid",
     "mapStaticLabel": "Static map",
-    "mapStaticHint": "Blocks interaction: guests won't be able to move the map (they can open it with the button below)."
+    "mapStaticHint": "Blocks interaction: guests won't be able to move the map (they can open it with the button below).",
+    "transportSectionTitle": "Transport",
+    "transportSectionHint": "Transport options for guests: bus, taxi or both, with departures and map links.",
+    "transportEnabledLabel": "Transport option",
+    "transportOptionNone": "No transport option",
+    "transportOptionBus": "Bus",
+    "transportOptionTaxi": "Taxi",
+    "transportOptionBoth": "Bus and taxi",
+    "transportEnabledHint": "If no option is selected, the invitation will show a message asking guests to use their own car.",
+    "transportDeparturesLabel": "Departures",
+    "transportDeparturesHint": "Add up to 4 departures with their time and a Google Maps link (place URL) for the meeting point.",
+    "transportTimeLabel": "Time",
+    "transportUrlLabel": "Map link",
+    "transportAddDeparture": "Add departure",
+    "transportRemoveDeparture": "Remove departure",
+    "transportMaxDepartures": "Maximum {{max}} departures."
   },
   "admin": {
     "tabs": {
@@ -605,7 +620,10 @@
     "failedPrecondition": "The operation could not be completed.",
     "aborted": "The operation was aborted.",
     "unauthenticated": "Authentication is required.",
-    "errorDetail": "{{error}}"
+    "errorDetail": "{{error}}",
+    "transportDeparturesInvalid": "Transport departures are not valid.",
+    "transportTimeInvalid": "A departure time is not valid (HH:MM format).",
+    "transportUrlInvalid": "A departure map link is not valid."
   },
   "superadmin": {
     "tabs": {
@@ -1030,5 +1048,13 @@
   },
   "lang": {
     "triggerLabel": "Change language"
+  },
+  "transport": {
+    "sectionLabel": "Transport",
+    "title": "Getting there",
+    "optionBus": "We will have a bus for the guests.",
+    "optionTaxi": "Taxis will be available for the guests.",
+    "optionBoth": "We will have buses and taxis for the guests.",
+    "apology": "We apologize for the inconvenience: we don't have our own transport for this event, so please arrive with your own car."
   }
 }

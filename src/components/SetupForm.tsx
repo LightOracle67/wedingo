@@ -21,6 +21,7 @@ import SectionOrderEditor from "./SectionOrderEditor";
 import AccessSectionForm from "./setup-forms/AccessSectionForm";
 import CoverSectionForm from "./setup-forms/CoverSectionForm";
 import DateSectionForm from "./setup-forms/DateSectionForm";
+import TransportSectionForm from "./setup-forms/TransportSectionForm";
 import GuestsSectionForm from "./setup-forms/GuestsSectionForm";
 import StorySectionForm from "./setup-forms/StorySectionForm";
 import GiftsSectionForm from "./setup-forms/GiftsSectionForm";
@@ -124,6 +125,17 @@ export default function SetupForm({ prefix = "" }) {
         hint={t("setup.dateSectionHint")}
       >
         <DateSectionForm prefix={prefix} />
+      </CollapsibleSection>
+      ) : null}
+
+      {/* ── Sección de transporte (si no está oculta) ── */}
+      {void console.log("[app]", "[SetupForm]", "render transport section", { hidden: hiddenSet.has("transport") })}
+      {!hiddenSet.has("transport") ? (
+      <CollapsibleSection
+        title={t("setup.transportSectionTitle")}
+        hint={t("setup.transportSectionHint")}
+      >
+        <TransportSectionForm prefix={prefix} />
       </CollapsibleSection>
       ) : null}
 

@@ -1,5 +1,20 @@
 export const CHANGELOG = [
   {
+    version: "2.38.0",
+    date: "2026-08-01",
+    changes: [
+      "FEAT: nueva sección Transporte en la invitación y en la configuración",
+      "FEAT: opciones de transporte (autobús/taxi/ambos/ninguno) — si no se elige ninguna, mensaje pidiendo coche propio",
+      "FEAT: salidas con hora y URL de mapa (hasta 4, añadir/eliminar desde el setup)",
+      "FEAT: cada salida muestra su iframe de Google Maps en la invitación",
+      "FEAT: MapEmbed — componente de iframe de mapa generalizado (hereda vista/estático del invitación, ancho 80%)",
+      "FEAT: transporte sustituye al antiguo texto libre transportInfo (migración de sectionOrder añadiendo la sección)",
+      "VALIDACIÓN: transportEnabled whitelist, salidas JSON (máx 4), hora HH:MM, URLs de mapa válidas",
+      "FEAT: salidas y enlaces guardados en Firestore + codec hash (te/td)",
+    ],
+  },
+
+  {
     version: "2.37.0",
     date: "2026-08-01",
     changes: [

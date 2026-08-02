@@ -9,7 +9,7 @@ import SectionOrderEditor from "../SectionOrderEditor";
 
 describe("SectionOrderEditor", () => {
   const defaultProps = {
-    value: "hero,details,info,story,gifts,gallery,rsvp,accommodation",
+    value: "hero,details,transport,info,story,gifts,gallery,rsvp,accommodation",
     onChange: vi.fn(),
     hiddenValue: "",
     onHiddenChange: vi.fn(),
@@ -58,7 +58,7 @@ describe("SectionOrderEditor", () => {
 
     const infoUp = screen.getByRole("button", { name: "sectionOrder.moveUp info.sectionLabel" });
     fireEvent.click(infoUp);
-    expect(onChange).toHaveBeenCalledWith("sectionOrder", "hero,info,details,story,gifts,gallery,rsvp,accommodation");
+    expect(onChange).toHaveBeenCalledWith("sectionOrder", "hero,details,info,transport,story,gifts,gallery,rsvp,accommodation");
   });
 
   it("moves an item down with the down button", () => {
@@ -67,7 +67,7 @@ describe("SectionOrderEditor", () => {
 
     const infoDown = screen.getByRole("button", { name: "sectionOrder.moveDown info.sectionLabel" });
     fireEvent.click(infoDown);
-    expect(onChange).toHaveBeenCalledWith("sectionOrder", "hero,details,story,info,gifts,gallery,rsvp,accommodation");
+    expect(onChange).toHaveBeenCalledWith("sectionOrder", "hero,details,transport,story,info,gifts,gallery,rsvp,accommodation");
   });
 
   it("disables up button for hero section", () => {
@@ -191,7 +191,7 @@ describe("SectionOrderEditor", () => {
 
     const storyUp = screen.getByRole("button", { name: "sectionOrder.moveUp story.sectionLabel" });
     fireEvent.click(storyUp);
-    expect(onChange).toHaveBeenCalledWith("sectionOrder", "hero,details,story,info,gifts,gallery,rsvp,accommodation");
+    expect(onChange).toHaveBeenCalledWith("sectionOrder", "hero,details,transport,story,info,gifts,gallery,rsvp,accommodation");
   });
 
   it("moves item down from non-last index", () => {
@@ -200,7 +200,7 @@ describe("SectionOrderEditor", () => {
 
     const storyDown = screen.getByRole("button", { name: "sectionOrder.moveDown story.sectionLabel" });
     fireEvent.click(storyDown);
-    expect(onChange).toHaveBeenCalledWith("sectionOrder", "hero,details,info,gifts,story,gallery,rsvp,accommodation");
+    expect(onChange).toHaveBeenCalledWith("sectionOrder", "hero,details,transport,info,gifts,story,gallery,rsvp,accommodation");
   });
 
   it("triggers moveUp early return when index <= 1 via dispatchEvent", () => {

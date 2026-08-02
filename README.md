@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.37.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.37.0)  
+**Versión actual:** [v2.38.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.38.0)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -12,7 +12,7 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 | Aspecto | Estado |
 |---|---|
-| Tests | 1534 tests, 137 test files |
+| Tests | 1536 tests, 138 test files |
 | Cobertura | ~87% statements |
 | Lint | 0 warnings (oxlint) |
 | TypeScript | 0 errors (`strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `skipLibCheck=true` — solo .d.ts de terceros) |
@@ -47,13 +47,13 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 | Sección | Contenido |
 |---|---|
 | **Hero** | Foto de novios (circular, máscara radial 60-100%, borde dorado animado), countdown calendárico (años/meses/días), padrinos, mensaje |
-| **Details** | Fecha+hora, botón calendario, ubicación, mapa (Google Maps Embed sin API key), transporte, mensaje de confirmación |
+| **Details** | Fecha+hora, botón calendario, ubicación, mapa (Google Maps Embed sin API key), mensaje de confirmación |
 | **Info** | Horario, código de vestimenta, política infantil |
 | **Story** | Historia de amor (texto libre) |
 | **Gallery** | Galería de fotos con lightbox, carrusel automático, descripciones |
 | **Gifts** | Información de regalos + IBAN (cifrado) |
 | **Accommodation** | Información de alojamiento |
-| **RSVP** | Confirmación individual con acompañantes, menú, alergias, consents |
+| **Transport** | Opciones de transporte (autobús/taxi/ambos), salidas con hora y mapa, o mensaje de coche propio |
 
 ### RSVP
 
@@ -256,6 +256,7 @@ Hitos principales:
 | v2.36.0 | 2026-07-31 | CI/CD real (build-and-test, e2e, deploy, sentry-release), react-router v8 |
 | v2.36.1 | 2026-07-31 | Ajustes finales CI (e2e, audit, sourcemaps) |
 | v2.37.0 | 2026-08-01 | weddingSiteURL, opciones de mapa, fondo/esquinas estáticas, envelope y z-index rediseñados, cuenta atrás calendárica |
+| v2.38.0 | 2026-08-01 | Sección Transporte (opciones + salidas con mapa), MapEmbed generalizado |
 
 ---
 

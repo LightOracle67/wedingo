@@ -63,17 +63,6 @@ describe("GuestsSectionForm", () => {
     expect(screen.getByText("setup.accommodationHint")).toBeDefined();
   });
 
-  it("renders transport field", () => {
-    render(<GuestsSectionForm />);
-    expect(screen.getByText("setup.transportLabel")).toBeDefined();
-    expect(screen.getByPlaceholderText("setup.transportPlaceholder")).toBeDefined();
-  });
-
-  it("renders transport hint", () => {
-    render(<GuestsSectionForm />);
-    expect(screen.getByText("setup.transportHint")).toBeDefined();
-  });
-
   it("calls updateFormField on kids policy checkbox click (select)", () => {
     render(<GuestsSectionForm />);
     const checkboxes = getAllCheckboxes();
@@ -211,18 +200,4 @@ describe("GuestsSectionForm", () => {
     expect(mockUpdateFormField).toHaveBeenCalledWith("accommodationInfo", "a".repeat(2000));
   });
 
-  it("calls updateFormField on transport change", () => {
-    render(<GuestsSectionForm />);
-    const textarea = screen.getByPlaceholderText("setup.transportPlaceholder");
-    fireEvent.change(textarea, { target: { value: "Transport info" } });
-    expect(mockUpdateFormField).toHaveBeenCalledWith("transportInfo", "Transport info");
-  });
-
-  it("limits transport to 2000 characters", () => {
-    render(<GuestsSectionForm />);
-    const textarea = screen.getByPlaceholderText("setup.transportPlaceholder");
-    const longText = "a".repeat(3000);
-    fireEvent.change(textarea, { target: { value: longText } });
-    expect(mockUpdateFormField).toHaveBeenCalledWith("transportInfo", "a".repeat(2000));
-  });
 });

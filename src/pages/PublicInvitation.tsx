@@ -32,6 +32,7 @@ import eucalyptusSrc from "../assets/eucalyptus.webp";
 // ─── Componentes de sección (visibles al inicio, carga directa) ────
 import HeroSection from "./sections/HeroSection";
 import DetailsSection from "./sections/DetailsSection";
+import TransportSection from "./sections/TransportSection";
 import InfoSection from "./sections/InfoSection";
 import StorySection from "./sections/StorySection";
 
@@ -55,6 +56,7 @@ import "../styles/landing.css";
 const SECTION_COMPONENTS = {
   hero: HeroSection,
   details: DetailsSection,
+  transport: TransportSection,
   info: InfoSection,
   story: StorySection,
   gifts: GiftsSection,
@@ -243,7 +245,14 @@ export default function PublicInvitation() {
       weddingSiteURL: config.weddingSiteURL,
       mapView: config.weddingMapView,
       staticMap: config.weddingMapStatic === "true",
-      transportInfo: config.transportInfo,
+
+      cornerDecoration: config.cornerDecoration,
+    },
+    transport: {
+      transportEnabled: config.transportEnabled,
+      transportDepartures: config.transportDepartures,
+      mapView: config.weddingMapView,
+      staticMap: config.weddingMapStatic === "true",
       cornerDecoration: config.cornerDecoration,
     },
     info: {
@@ -294,13 +303,14 @@ export default function PublicInvitation() {
     config.firstName, config.secondName, config.inviteMessage,
     config.weddingSchedule, config.weddingDressCode,
     config.kidsPolicy, config.storyText, config.giftsInfo, config.accommodationInfo,
-    config.transportInfo, config.godparent1, config.godparent2, inviteToken,
+    config.godparent1, config.godparent2, inviteToken,
     config.couplePhoto, config.bankInfo, config.menuEnabled,
     config.menuCarne, config.menuPescado, config.menuVegano, config.menuPostre, config.menuTexto,
     config.cornerDecoration,
     countdown, formattedDate, formattedTime,
     hasLocationData, locationDescription, calendarLink, config.weddingSiteURL,
     config.weddingMapView, config.weddingMapStatic,
+    config.transportEnabled, config.transportDepartures,
     rsvpForm, rsvpEntries, rsvpMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
     updateRsvpField, handleRsvpSubmit, handleDeleteRsvp, handleDietaryToggle, DIETARY_OPTIONS, computeAge,
   ]);

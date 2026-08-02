@@ -30,7 +30,8 @@ const FULL_CONFIG = {
   giftsInfo: "  No gifts  ",
   bankInfo: "  ES00 1234  ",
   accommodationInfo: "  Hotel  ",
-  transportInfo: "  Bus  ",
+  transportEnabled: "  bus  ",
+  transportDepartures: '[{"time":"12:00","url":"https://www.google.com/maps/place/X"}]',
   godparent1: "  Ana  ",
   godparent2: "  Luis  ",
   musicUrl: "  https://spotify.com/...  ",
@@ -95,7 +96,7 @@ describe("normalizeConfig", () => {
 
   it("returns default sectionOrder when not provided", () => {
     const result = normalizeConfig({});
-    expect(result.sectionOrder).toBe("hero,details,info,story,gallery,gifts,accommodation,rsvp");
+    expect(result.sectionOrder).toBe("hero,details,transport,info,story,gallery,gifts,accommodation,rsvp");
   });
 
   it("normalizes menuEnabled to string boolean", () => {
@@ -138,8 +139,30 @@ describe("normalizeConfig", () => {
     expect(result.menuEnabled).toBe("false");
   });
 
-  it("handles sectionOrder as trimmed string", () => {
+  it("handles sectionOrder as trimmed string and appends missing sections", () => {
     const result = normalizeConfig({ sectionOrder: "  gifts,story,hero  " });
-    expect(result.sectionOrder).toBe("gifts,story,hero");
+    expect(result.sectionOrder.split(",").slice(0, 3)).toEqual(["gifts", "story", "hero"]);
+    expect(result.sectionOrder).toContain("details");
+    expect(result.sectionOrder).toContain("transport");
+  });
+
+  it("normalizes transportEnabled to valid values", () => {
+    expect(normalizeConfig({ transportEnabled: "bus" }).transportEnabled).toBe("bus");
+    expect(normalizeConfig({ transportEnabled: "taxi" }).transportEnabled).toBe("taxi");
+    expect(normalizeConfig({ transportEnabled: "both" }).transportEnabled).toBe("both");
+    expect(normalizeConfig({ transportEnabled: "weird" }).transportEnabled).toBe("none");
+    expect(normalizeConfig({}).transportEnabled).toBe("none");
+  });
+
+  it("normalizes transportDepartures: caps at 4 and sanitizes entries", () => {
+    const five = Array.from({ length: 5 }, (_, i) => ({ time: `1${i}:00`, url: `https://www.google.com/maps/place/A${i}` }));
+    const result = normalizeConfig({ transportDepartures: JSON.stringify(five) });
+    const parsed = JSON.parse(result.transportDepartures);
+    expect(parsed).toHaveLength(4);
+    expect(parsed[0]).toEqual({ time: "10:00", url: "https://www.google.com/maps/place/A0" });
+  });
+
+  it("returns empty departures for invalid JSON", () => {
+    expect(normalizeConfig({ transportDepartures: "not-json" }).transportDepartures).toBe("");
   });
 });

@@ -17,7 +17,7 @@ vi.mock("../../../lib/utils", () => ({
   buildAppleMapsSearchUrl: vi.fn(() => "https://maps.apple.com/search"),
 }));
 
-vi.mock("../../../components/WeddingMap", () => ({
+vi.mock("../../../components/MapEmbed", () => ({
   default: () => <div data-testid="wedding-map">Map</div>,
 }));
 
@@ -33,7 +33,6 @@ const baseProps = {
   calendarLink: "https://calendar.example.com",
   weddingSiteURL: "https://maps.google.com/maps?q=40.4168,-3.7038",
   configWeddingPlace: "Madrid",
-  transportInfo: "Bus available",
 };
 
 describe("DetailsSection", () => {
@@ -44,7 +43,6 @@ describe("DetailsSection", () => {
     expect(screen.getByText("details.timeLabel")).toBeDefined();
     expect(screen.getByText("details.welcomeWithPlaceTime")).toBeDefined();
     expect(screen.getByText("Madrid")).toBeDefined();
-    expect(screen.getByText("details.transport")).toBeDefined();
     expect(screen.getByText("details.addToCalendar")).toBeDefined();
     expect(screen.getByTestId("wedding-map")).toBeDefined();
     expect(screen.getByText("details.viewGoogleMaps")).toBeDefined();
@@ -61,8 +59,7 @@ describe("DetailsSection", () => {
         locationDescription=""
         calendarLink={""}
         weddingSiteURL=""
-        transportInfo=""
-      />,
+              />,
     );
     expect(screen.getByText("details.datePending")).toBeDefined();
     expect(screen.getByText("details.timePending")).toBeDefined();
@@ -81,8 +78,7 @@ describe("DetailsSection", () => {
         locationDescription="Unknown location"
         calendarLink={""}
         weddingSiteURL=""
-        transportInfo=""
-      />,
+              />,
     );
     expect(screen.getByText("Unknown location")).toBeDefined();
   });
@@ -98,8 +94,7 @@ describe("DetailsSection", () => {
         locationDescription=""
         calendarLink={""}
         weddingSiteURL=""
-        transportInfo=""
-      />,
+              />,
     );
     expect(screen.getByText("details.placePending")).toBeDefined();
     expect(screen.queryByText("details.viewGoogleMaps")).toBeNull();

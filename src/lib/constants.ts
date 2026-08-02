@@ -1,4 +1,4 @@
-export const APP_VERSION = "2.37.0";
+export const APP_VERSION = "2.38.0";
 
 export const CACHE_TTL_MS = 120000;
 export const MAX_WEDDING_YEAR_OFFSET = 4;
@@ -86,12 +86,13 @@ export const THEME_GROUPS = [
   { value: "lgtbiq+", label: "LGTBIQ+" },
 ];
 
-export const STORY_SECTION_ORDER = ["hero", "details", "info", "story", "gallery", "gifts", "accommodation", "rsvp"];
+export const STORY_SECTION_ORDER = ["hero", "details", "transport", "info", "story", "gallery", "gifts", "accommodation", "rsvp"];
 
 export const SECTION_LABELS: Record<string, string> = {
   hero: "Portada",
   details: "Lugar, Fecha y Hora",
   info: "Sobre los invitados",
+  transport: "Transporte",
   story: "Nuestra historia",
   gifts: "Regalos",
   accommodation: "Alojamiento",
@@ -105,7 +106,7 @@ export const PRIVACY_POLICY_VERSION = "2026-07-08";
 export const MAX_YEARS_AHEAD = 4;
 export const INVITE_CACHE_TTL_MS = 120000;
 export const TOKEN_ROUTE_REGEX = /^[a-zA-Z0-9]{8,12}$/;
-export const SPECIAL_SECTIONS = ["menu", "transport", "godparents"];
+export const SPECIAL_SECTIONS = ["menu", "godparents"];
 export const MAX_USERNAME_LENGTH = 50;
 export const MAX_LONG_TEXT_LENGTH = 2000;
 
@@ -135,7 +136,8 @@ export const defaultConfig = {
   giftsInfo: "",
   bankInfo: "",
   accommodationInfo: "",
-  transportInfo: "",
+  transportEnabled: "none",
+  transportDepartures: "",
   godparent1: "",
   godparent2: "",
   musicUrl: "",

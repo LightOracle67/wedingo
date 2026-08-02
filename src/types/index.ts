@@ -49,7 +49,8 @@ export interface InvitationConfig {
   giftsInfo: string;
   bankInfo: string;
   accommodationInfo: string;
-  transportInfo: string;
+  transportEnabled: string;
+  transportDepartures: string;
   godparent1: string;
   godparent2: string;
   kidsPolicy: string;

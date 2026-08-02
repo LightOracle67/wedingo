@@ -1,5 +1,25 @@
 import { STORY_SECTION_ORDER, THEME_VALUES } from "./constants";
 
+function normalizeTransportDepartures(value: unknown): string {
+  if (typeof value !== "string" || !value.trim()) return "";
+  try {
+    const parsed = JSON.parse(value);
+    if (!Array.isArray(parsed)) return "";
+    const cleaned = parsed
+      .slice(0, 4)
+      .map((d) => {
+        if (!d || typeof d !== "object") return null;
+        const time = typeof (d as Record<string, unknown>).time === "string" ? ((d as Record<string, unknown>).time as string).trim().slice(0, 5) : "";
+        const url = typeof (d as Record<string, unknown>).url === "string" ? ((d as Record<string, unknown>).url as string).trim().slice(0, 1000) : "";
+        return { time, url };
+      })
+      .filter((d): d is { time: string; url: string } => d !== null);
+    return JSON.stringify(cleaned);
+  } catch {
+    return "";
+  }
+}
+
 const s = (v: unknown) => {
   if (typeof v === "string") return v.trim();
   if (typeof v === "number") return String(v);
@@ -25,14 +45,22 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
       ? value.theme.trim()
       : "golden",
   couplePhoto: s(value?.couplePhoto),
-  sectionOrder:
-    typeof value?.sectionOrder === "string" ? value.sectionOrder.trim() : STORY_SECTION_ORDER.join(","),
+  sectionOrder: (() => {
+    const stored = typeof value?.sectionOrder === "string" ? value.sectionOrder.trim() : "";
+    const parts = stored ? stored.split(",").filter(Boolean) : [];
+    const seen = new Set(parts);
+    for (const sec of STORY_SECTION_ORDER) {
+      if (!seen.has(sec)) parts.push(sec);
+    }
+    return parts.join(",");
+  })(),
   hiddenSections: s(value?.hiddenSections),
   storyText: s(value?.storyText),
   giftsInfo: s(value?.giftsInfo),
   bankInfo: s(value?.bankInfo),
   accommodationInfo: s(value?.accommodationInfo),
-  transportInfo: s(value?.transportInfo),
+  transportEnabled: ["none", "bus", "taxi", "both"].includes(s(value?.transportEnabled)) ? s(value?.transportEnabled) : "none",
+  transportDepartures: normalizeTransportDepartures(value?.transportDepartures),
   godparent1: s(value?.godparent1),
   godparent2: s(value?.godparent2),
   musicUrl: s(value?.musicUrl),

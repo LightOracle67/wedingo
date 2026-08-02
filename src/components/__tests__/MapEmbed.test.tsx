@@ -11,42 +11,42 @@ vi.mock("../../lib/geo-utils", () => ({
     `${url.replace("maps.google.com", "maps.google.com/embed")}&t=${view === "satellite" ? "k" : view === "hybrid" ? "h" : "m"}&output=embed`,
 }));
 
-import WeddingMap from "../WeddingMap";
+import MapEmbed from "../MapEmbed";
 
 afterEach(() => {
   cleanup();
   vi.clearAllMocks();
 });
 
-describe("WeddingMap", () => {
+describe("MapEmbed", () => {
   it("renders without crashing", () => {
-    const { container } = render(<WeddingMap mapUrl="https://maps.google.com/maps?q=41.3874,2.1686" t={(key: string) => key} />);
+    const { container } = render(<MapEmbed mapUrl="https://maps.google.com/maps?q=41.3874,2.1686" />);
     expect(container.querySelector(".story-map-wrapper")).toBeDefined();
   });
 
   it("renders iframe when valid url is provided", () => {
-    const { container } = render(<WeddingMap mapUrl="https://maps.google.com/maps?q=41.3874,2.1686" t={(key: string) => key} />);
+    const { container } = render(<MapEmbed mapUrl="https://maps.google.com/maps?q=41.3874,2.1686" />);
     expect(container.querySelector("iframe")).toBeDefined();
   });
 
   it("passes satellite view to the embed url", () => {
-    const { container } = render(<WeddingMap mapUrl="https://maps.google.com/maps?q=41.3874,2.1686" t={(key: string) => key} mapView="satellite" />);
+    const { container } = render(<MapEmbed mapUrl="https://maps.google.com/maps?q=41.3874,2.1686" mapView="satellite" />);
     expect(container.querySelector("iframe")?.getAttribute("src")).toContain("t=k");
   });
 
   it("renders blocking overlay when staticMap", () => {
-    const { container } = render(<WeddingMap mapUrl="https://maps.google.com/maps?q=41.3874,2.1686" t={(key: string) => key} staticMap />);
+    const { container } = render(<MapEmbed mapUrl="https://maps.google.com/maps?q=41.3874,2.1686" staticMap />);
     const overlay = container.querySelector(".story-map-wrapper > div[aria-hidden='true']");
     expect(overlay).toBeDefined();
   });
 
   it("does not render blocking overlay when interactive", () => {
-    const { container } = render(<WeddingMap mapUrl="https://maps.google.com/maps?q=41.3874,2.1686" t={(key: string) => key} />);
+    const { container } = render(<MapEmbed mapUrl="https://maps.google.com/maps?q=41.3874,2.1686" />);
     expect(container.querySelector(".story-map-wrapper > div[aria-hidden='true']")).toBeNull();
   });
 
   it("renders nothing when no url", () => {
-    const { container } = render(<WeddingMap t={(key: string) => key} />);
+    const { container } = render(<MapEmbed />);
     expect(container.querySelector("iframe")).toBeNull();
     expect(container.querySelector(".story-map-wrapper")).toBeDefined();
   });

@@ -76,7 +76,7 @@ function SaveSetupConsumer() {
       <button data-testid="ss_wedSchedule" onClick={() => ctx.updateFormField("weddingSchedule", "x".repeat(2500))}>WS</button>
       <button data-testid="ss_storyText" onClick={() => ctx.updateFormField("storyText", "x".repeat(2500))}>ST</button>
       <button data-testid="ss_giftsInfo" onClick={() => ctx.updateFormField("giftsInfo", "x".repeat(2500))}>GI</button>
-      <button data-testid="ss_transportInfo" onClick={() => ctx.updateFormField("transportInfo", "x".repeat(2500))}>TI</button>
+      <button data-testid="ss_transportDepartures" onClick={() => ctx.updateFormField("transportDepartures", "not-json")}>TD</button>
       <button data-testid="ss_accommodationInfo" onClick={() => ctx.updateFormField("accommodationInfo", "x".repeat(2500))}>AI</button>
       <button data-testid="ss_menuTexto" onClick={() => ctx.updateFormField("menuTexto", "x".repeat(2500))}>MT</button>
       <span data-testid="ss_hasConfig">{String(ctx.hasStoredConfig)}</span>
@@ -337,7 +337,7 @@ describe("ConfigProvider", () => {
     mockLocation.pathname = "/test";
   });
 
-  it("handleSaveSetup validates transportInfo too long", async () => {
+  it("handleSaveSetup validates invalid transport departures", async () => {
     mockLocation.pathname = "/abcdefghij";
     mockGetDoc.mockResolvedValueOnce({
       exists: () => true,
@@ -353,10 +353,10 @@ describe("ConfigProvider", () => {
     fireEvent.click(screen.getByTestId("ss_order"));
     fireEvent.click(screen.getByTestId("ss_gp1"));
     fireEvent.click(screen.getByTestId("ss_gp2"));
-    fireEvent.click(screen.getByTestId("ss_transportInfo"));
+    fireEvent.click(screen.getByTestId("ss_transportDepartures"));
     fireEvent.click(screen.getByTestId("ss_save"));
     await waitFor(() => {
-      expect(mockSetSaveError).toHaveBeenCalledWith("errors.transportTooLong");
+      expect(mockSetSaveError).toHaveBeenCalledWith("errors.transportDeparturesInvalid");
     });
     mockSetSaveError.mockClear();
     mockLocation.pathname = "/test";

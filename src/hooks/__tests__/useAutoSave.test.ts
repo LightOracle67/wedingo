@@ -49,6 +49,8 @@ const sampleConfig: InvitationConfig = {
   weddingSiteURL: "",
   weddingMapView: "roadmap",
   weddingMapStatic: "false",
+  transportEnabled: "none",
+  transportDepartures: "",
   
   weddingSchedule: "",
   weddingDressCode: "",
