@@ -177,7 +177,8 @@ input.setup-input[type="date"] {
   border-right: none;
 }
 .setup-layout--full.setup-layout {
-  min-height: calc(100dvh - var(--navbar-height, 0px));
+  height: calc(100% - var(--navbar-height, 0px));
+  overflow-y: hidden;
 }
 .setup-layout--full .setup-card--full {
   flex-direction: column;
