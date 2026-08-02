@@ -129,6 +129,9 @@ export const defaultConfig = {
 
   theme: "golden",
   couplePhoto: "",
+  backgroundImage: "",
+  customSeal: "",
+  cornerDecoration: "",
 
   sectionOrder: STORY_SECTION_ORDER.join(","),
   hiddenSections: "",
