@@ -182,9 +182,12 @@ input.setup-input[type="date"] {
 .setup-layout--full .setup-card--full {
   flex-direction: column;
   min-height: 50vh;
-  margin: 0px;
-  display: flex;
-  width: 95% !important;
+  margin: 0;
+  display: block;
+  width: 95%;
+  height: 100dvh;
+  scroll-behavior: smooth;
+  overflow: auto;
 }
 .setup-card--narrow {
   width: min(100%, 500px);
