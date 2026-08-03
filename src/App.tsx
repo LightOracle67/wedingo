@@ -6,6 +6,7 @@ import { useApp } from "./contexts";
 import { SuperAdminProvider } from "./contexts/SuperAdminContext";
 import { ToastProvider } from "./contexts/ToastContext";
 import ErrorBoundary from "./components/ErrorBoundary";
+import AdminBarHeightSync from "./components/AdminBarHeightSync";
 import CookieConsent from "./components/CookieConsent";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 import MusicPlayer from "./components/MusicPlayer";
@@ -169,6 +170,7 @@ function AppShell() {
           </div>
         </nav>
       ) : null}
+      <AdminBarHeightSync show={Boolean(isAdminTokenLoggedIn && inviteToken && !location.pathname.endsWith("/setup") && !location.pathname.endsWith("/print"))} />
 
       {inviteToken && location.pathname === `/${inviteToken}` && (config.musicFile || config.musicUrl) ? <MusicPlayer musicUrl={config.musicFile || config.musicUrl} /> : null}
 

@@ -1614,8 +1614,19 @@ select.setup-input {
 
 @media (max-width: 480px) {
   .setup-layout { padding: var(--spacing-xs); display: block !important; }
-  .setup-layout--full.setup-layout { min-height: auto; }
+  .setup-layout--full.setup-layout {
+    min-height: 0;
+    display: flex !important;
+    padding-top: calc(var(--navbar-height, 0px) + 0.75rem) !important;
+  }
   .setup-card { width: 98% !important; padding: var(--spacing-sm); height: auto !important; max-height: none !important; }
+  .setup-card--title { flex-shrink: 0 !important; }
+  .setup-card--content {
+    flex: 1 1 0% !important;
+    min-height: 0 !important;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
   .setup-card--full { height: auto !important; min-height: auto !important; }
   .admin-flex--col { height: auto !important; min-height: auto !important; }
   .admin-tabs { overflow-x: auto; flex-wrap: nowrap; gap: 0.2rem; }
