@@ -18,6 +18,7 @@ interface RsvpFormState {
   companionParentalConsents?: boolean[];
   companionHealthConsents?: boolean[];
   companionTransportChoices?: string[];
+  companionTransportModes?: string[];
   menuSelection: string;
   allergies: string[];
   allergiesOther: string;
@@ -25,6 +26,7 @@ interface RsvpFormState {
   privacyConsent: boolean;
   healthConsent: boolean;
   transportChoice: string;
+  transportMode: string;
 }
 
 interface Departure {
@@ -101,13 +103,28 @@ const RsvpSection = memo(function RsvpSection({
     return dep.time ? `${dep.time} (${typeLabel})` : typeLabel;
   }, [t]);
 
-  const transportOptions = useMemo(() => {
-    if (!hasTransportChoices) return [];
-    return [
-      { value: "own", label: t("rsvp.transportOwnCar") },
-      ...departures.map((dep, i) => ({ value: String(i), label: departureLabel(dep) })),
-    ];
-  }, [hasTransportChoices, departures, t, departureLabel]);
+  const modeOptions = useMemo(() => {
+    const opts: { value: string; labelKey: string }[] = [{ value: "own", labelKey: "rsvp.transportOwnCarOption" }];
+    if (transportEnabled === "both" || transportEnabled === "bus") {
+      opts.push({ value: "bus", labelKey: "rsvp.transportBusOption" });
+    }
+    if (transportEnabled === "both" || transportEnabled === "taxi") {
+      opts.push({ value: "taxi", labelKey: "rsvp.transportTaxiOption" });
+    }
+    return opts;
+  }, [transportEnabled]);
+
+  const departuresOfType = useCallback((type: string) => {
+    return departures.filter((d) => (d.type || "bus") === type);
+  }, [departures]);
+
+  const handleTransportModeChange = useCallback((group: "main" | "companion", idx: number, mode: string) => {
+    const modeField = group === "main" ? "transportMode" : `companionTransportModes[${idx}]`;
+    const choiceField = group === "main" ? "transportChoice" : `companionTransportChoices[${idx}]`;
+    updateRsvpField(modeField, mode);
+    const first = departures.findIndex((d) => (d.type || "bus") === mode);
+    updateRsvpField(choiceField, first >= 0 ? String(first) : "");
+  }, [departures, updateRsvpField]);
 
   const handleNameChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     updateRsvpField("guestName", e.target.value.slice(0, 120));
@@ -209,12 +226,37 @@ const RsvpSection = memo(function RsvpSection({
 
           {isAttending && hasTransportChoices ? (
             <div className="setup-field" style={{ marginTop: "0.75rem" }}>
-              <label className="setup-label" htmlFor="rsvpTransport">{t("rsvp.transportLabel")}</label>
-              <select id="rsvpTransport" className="setup-input"
-                value={rsvpForm.transportChoice || "own"} onChange={(e) => updateRsvpField("transportChoice", e.target.value)}
-                disabled={isAlreadySubmitted}>
-                {transportOptions.map((opt) => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
-              </select>
+              <p className="setup-label" id="rsvpTransportLabel">{t("rsvp.transportLabel")}</p>
+              <div role="radiogroup" aria-labelledby="rsvpTransportLabel" style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+                {modeOptions.map((opt) => (
+                  <label key={opt.value} style={{ display: "flex", alignItems: "center", gap: "0.35rem", fontSize: "0.9rem", color: "var(--setup-title)", cursor: isAlreadySubmitted ? "default" : "pointer" }}>
+                    <input type="radio" name="rsvpTransportMode" value={opt.value}
+                      checked={(rsvpForm.transportMode || "own") === opt.value}
+                      onChange={() => handleTransportModeChange("main", 0, opt.value)}
+                      disabled={isAlreadySubmitted}
+                      style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+                    {t(opt.labelKey)}
+                  </label>
+                ))}
+              </div>
+              {(() => {
+                const mode = rsvpForm.transportMode || "own";
+                if (mode !== "bus" && mode !== "taxi") return null;
+                const typeDepartures = departuresOfType(mode);
+                return (
+                  <>
+                    <label className="setup-label" htmlFor="rsvpTransportDeparture" style={{ marginTop: "0.5rem", display: "block" }}>{t("rsvp.transportDepartureLabel")}</label>
+                    <select id="rsvpTransportDeparture" className="setup-input"
+                      value={rsvpForm.transportChoice || ""}
+                      onChange={(e) => updateRsvpField("transportChoice", e.target.value)}
+                      disabled={isAlreadySubmitted}>
+                      {typeDepartures.map((dep) => (
+                        <option key={departures.indexOf(dep)} value={String(departures.indexOf(dep))}>{departureLabel(dep)}</option>
+                      ))}
+                    </select>
+                  </>
+                );
+              })()}
               <p className="setup-help" style={{ marginTop: "0.2rem" }}>{t("rsvp.transportHint")}</p>
             </div>
           ) : null}
@@ -242,13 +284,37 @@ const RsvpSection = memo(function RsvpSection({
 
                   {hasTransportChoices ? (
                     <div style={{ marginTop: "0.5rem" }}>
-                      <label className="setup-label" htmlFor={`companion-transport-${i}`}>{t("rsvp.transportLabel")}</label>
-                      <select id={`companion-transport-${i}`} className="setup-input"
-                        value={rsvpForm.companionTransportChoices?.[i] || "own"}
-                        onChange={(e) => updateRsvpField(`companionTransportChoices[${i}]`, e.target.value)}
-                        disabled={isAlreadySubmitted}>
-                        {transportOptions.map((opt) => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
-                      </select>
+                      <p className="setup-label" id={`companion-transport-label-${i}`}>{t("rsvp.transportLabel")}</p>
+                      <div role="radiogroup" aria-labelledby={`companion-transport-label-${i}`} style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+                        {modeOptions.map((opt) => (
+                          <label key={opt.value} style={{ display: "flex", alignItems: "center", gap: "0.35rem", fontSize: "0.85rem", color: "var(--setup-title)", cursor: isAlreadySubmitted ? "default" : "pointer" }}>
+                            <input type="radio" name={`companionTransportMode${i}`} value={opt.value}
+                              checked={(rsvpForm.companionTransportModes?.[i] || "own") === opt.value}
+                              onChange={() => handleTransportModeChange("companion", i, opt.value)}
+                              disabled={isAlreadySubmitted}
+                              style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+                            {t(opt.labelKey)}
+                          </label>
+                        ))}
+                      </div>
+                      {(() => {
+                        const mode = rsvpForm.companionTransportModes?.[i] || "own";
+                        if (mode !== "bus" && mode !== "taxi") return null;
+                        const typeDepartures = departuresOfType(mode);
+                        return (
+                          <>
+                            <label className="setup-label" htmlFor={`companion-departure-${i}`} style={{ marginTop: "0.5rem", display: "block", fontSize: "0.85rem" }}>{t("rsvp.transportDepartureLabel")}</label>
+                            <select id={`companion-departure-${i}`} className="setup-input"
+                              value={rsvpForm.companionTransportChoices?.[i] || ""}
+                              onChange={(e) => updateRsvpField(`companionTransportChoices[${i}]`, e.target.value)}
+                              disabled={isAlreadySubmitted}>
+                              {typeDepartures.map((dep) => (
+                                <option key={departures.indexOf(dep)} value={String(departures.indexOf(dep))}>{departureLabel(dep)}</option>
+                              ))}
+                            </select>
+                          </>
+                        );
+                      })()}
                     </div>
                   ) : null}
 

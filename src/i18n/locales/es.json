@@ -180,8 +180,12 @@
     "nameHint": "Escribe tu nombre y tus dos apellidos.",
     "birthDateHint": "Necesaria solo para saber si eres menor de 14 años.",
     "transportLabel": "Transporte",
-    "transportHint": "Elige la salida desde la que cogerás el transporte, o tu coche propio.",
-    "transportOwnCar": "Coche propio"
+    "transportHint": "Elige cómo llegarás a la celebración.",
+    "transportOwnCar": "Coche propio",
+    "transportOwnCarOption": "Usaré mi coche propio",
+    "transportBusOption": "Usaré el Autobús",
+    "transportTaxiOption": "O usaré el Taxi",
+    "transportDepartureLabel": "Salida"
   },
   "public": {
     "loadingInvitation": "Cargando invitación…",

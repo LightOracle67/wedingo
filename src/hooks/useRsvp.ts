@@ -28,6 +28,7 @@ interface RsvpFormData {
   companionParentalConsents: boolean[];
   companionHealthConsents: boolean[];
   companionTransportChoices: string[];
+  companionTransportModes: string[];
   menuSelection: string;
   allergies: string[];
   allergiesOther: string;
@@ -36,6 +37,7 @@ interface RsvpFormData {
   birthDate: string;
   parentalConsent: boolean;
   transportChoice: string;
+  transportMode: string;
 }
 
 interface RsvpEntryData {
@@ -61,7 +63,9 @@ interface RsvpEntryData {
   parentalConsent?: boolean;
   healthConsent?: boolean;
   transportChoice?: string;
+  transportMode?: string;
   companionTransportChoices?: string[];
+  companionTransportModes?: string[];
   companionDocIds?: string[];
   mainGuestDocId?: string;
   mainGuestName?: string;
@@ -107,6 +111,7 @@ function RsvpFormDefault(): RsvpFormData {
     companionParentalConsents: [],
     companionHealthConsents: [],
     companionTransportChoices: [],
+    companionTransportModes: [],
     menuSelection: "",
     allergies: [],
     allergiesOther: "",
@@ -115,6 +120,7 @@ function RsvpFormDefault(): RsvpFormData {
     birthDate: "",
     parentalConsent: false,
     transportChoice: "own",
+    transportMode: "own",
   };
 }
 
@@ -194,7 +200,9 @@ export function useRsvp(
                 parentalConsent: data.parentalConsent || false,
                 healthConsent: data.healthConsent || false,
                 transportChoice: data.transportChoice || "",
+                transportMode: data.transportMode || "",
                 companionTransportChoices: data.companionTransportChoices || [],
+                companionTransportModes: data.companionTransportModes || [],
                 companionDocIds: data.companionDocIds || [],
                 mainGuestDocId: data.mainGuestDocId || "",
                 mainGuestName: data.mainGuestName || "",
@@ -216,6 +224,7 @@ export function useRsvp(
             main.companionNames = linkedCompanions.map((c) => c.guestName);
             main.companionMenus = linkedCompanions.map((c) => c.mealChoice);
             main.companionTransportChoices = linkedCompanions.map((c) => c.transportChoice || "");
+            main.companionTransportModes = linkedCompanions.map((c) => c.transportMode || "own");
             main.companionAllergies = linkedCompanions.map((c) => {
               const parsed = parseDietaryInfo(c.dietaryInfo, !!c.mealChoice);
               return [...parsed.dietarySelection, ...(parsed.dietaryOther ? [parsed.dietaryOther] : [])];
@@ -287,6 +296,7 @@ export function useRsvp(
           companionParentalConsents: [],
           companionHealthConsents: [],
           companionTransportChoices: [],
+          companionTransportModes: [],
           menuSelection: match.mealChoice || "",
           birthDate: match.birthDate || "",
           allergies: parsed.dietarySelection,
@@ -295,6 +305,7 @@ export function useRsvp(
           healthConsent: match.healthConsent || false,
           parentalConsent: match.parentalConsent || false,
           transportChoice: match.transportChoice || "own",
+          transportMode: match.transportMode || "own",
         }));
       } else {
         console.log("[app]", "[useRsvp]", "prefill companion match (already set)", {});
@@ -325,6 +336,7 @@ export function useRsvp(
           companionParentalConsents,
           companionHealthConsents,
           companionTransportChoices: match.companionTransportChoices || [],
+          companionTransportModes: match.companionTransportModes || [],
           menuSelection: match.mealChoice || "",
           birthDate: match.birthDate || "",
           allergies: parsed.dietarySelection,
@@ -333,6 +345,7 @@ export function useRsvp(
           healthConsent: match.healthConsent || false,
           parentalConsent: match.parentalConsent || false,
           transportChoice: match.transportChoice || "own",
+          transportMode: match.transportMode || "own",
         }));
       } else {
         console.log("[app]", "[useRsvp]", "prefill main match (already set)", {});
@@ -362,6 +375,7 @@ export function useRsvp(
         companionParentalConsents: value === "no" || value === "alone" ? [] : current.companionParentalConsents,
         companionHealthConsents: value === "no" || value === "alone" ? [] : current.companionHealthConsents,
         companionTransportChoices: value === "no" || value === "alone" ? [] : current.companionTransportChoices,
+        companionTransportModes: value === "no" || value === "alone" ? [] : current.companionTransportModes,
       }));
       return;
     }
@@ -376,6 +390,7 @@ export function useRsvp(
         const parentalConsents = (current.companionParentalConsents || []).slice(0, count);
         const healthConsents = (current.companionHealthConsents || []).slice(0, count);
         const transportChoices = (current.companionTransportChoices || []).slice(0, count);
+        const transportModes = (current.companionTransportModes || []).slice(0, count);
         while (names.length < count) {
           names.push("");
           menus.push("");
@@ -385,8 +400,9 @@ export function useRsvp(
           parentalConsents.push(false);
           healthConsents.push(false);
           transportChoices.push("own");
+          transportModes.push("own");
         }
-        return { ...current, companionCount: count, companionNames: names, companionMenus: menus, companionAllergies: allergies, companionAllergiesOther: allergiesOther, companionBirthDates: birthDates, companionParentalConsents: parentalConsents, companionHealthConsents: healthConsents, companionTransportChoices: transportChoices };
+        return { ...current, companionCount: count, companionNames: names, companionMenus: menus, companionAllergies: allergies, companionAllergiesOther: allergiesOther, companionBirthDates: birthDates, companionParentalConsents: parentalConsents, companionHealthConsents: healthConsents, companionTransportChoices: transportChoices, companionTransportModes: transportModes };
       });
       return;
     }
@@ -423,6 +439,15 @@ export function useRsvp(
         const choices = [...current.companionTransportChoices];
         choices[idx] = String(value);
         return { ...current, companionTransportChoices: choices };
+      });
+      return;
+    }
+    if (field.startsWith("companionTransportModes[")) {
+      const idx = parseInt(field.match(/\d+/)?.[0] || "0", 10);
+      setRsvpForm((current) => {
+        const modes = [...current.companionTransportModes];
+        modes[idx] = String(value);
+        return { ...current, companionTransportModes: modes };
       });
       return;
     }
@@ -502,7 +527,11 @@ export function useRsvp(
     if (isAttending && data.transportChoice) {
       mainGuestData.transportChoice = String(data.transportChoice).slice(0, 20);
     }
+    if (isAttending && data.transportMode) {
+      mainGuestData.transportMode = String(data.transportMode).slice(0, 10);
+    }
     mainGuestData.companionTransportChoices = (data.companionTransportChoices || []).slice(0, companionCount);
+    mainGuestData.companionTransportModes = (data.companionTransportModes || []).slice(0, companionCount);
 
     // Create companion docs with individual dietaryInfo
     const companionDocIds: string[] = [];
@@ -530,6 +559,9 @@ export function useRsvp(
       if (data.companionMenus[i]) companionData.mealChoice = data.companionMenus[i];
       if (data.companionTransportChoices?.[i]) {
         companionData.transportChoice = String(data.companionTransportChoices[i]).slice(0, 20);
+      }
+      if (data.companionTransportModes?.[i]) {
+        companionData.transportMode = String(data.companionTransportModes[i]).slice(0, 10);
       }
       const hasCompDietary = compAllergies.length > 0 || (data.companionAllergiesOther[i] || "").trim();
       if (hasCompDietary) {
@@ -575,7 +607,9 @@ export function useRsvp(
       note: "",
       submittedAt: now,
       transportChoice: (mainGuestData.transportChoice as string) || "",
+      transportMode: (mainGuestData.transportMode as string) || "",
       companionTransportChoices: (mainGuestData.companionTransportChoices as string[]) || [],
+      companionTransportModes: (mainGuestData.companionTransportModes as string[]) || [],
       companionDocIds,
     };
 
