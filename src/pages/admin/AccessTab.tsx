@@ -16,7 +16,6 @@ const AccessTab = memo(function AccessTab({ setupToken, handleResetTokenFromAdmi
         <p className="setup-help setup-help--tight">
           {t("access.description")}
         </p>
-        <label className="sr-only" htmlFor="setupTokenDisplay">{t("access.description")}</label>
         <input
           id="setupTokenDisplay"
           className="setup-input setup-token-input"
@@ -25,6 +24,7 @@ const AccessTab = memo(function AccessTab({ setupToken, handleResetTokenFromAdmi
           autoComplete="off"
           spellCheck="false"
           placeholder={t("access.newTokenPlaceholder")}
+          aria-label={t("access.newTokenPlaceholder")}
         />
         {setupToken ? <p className="setup-token-display">{t("access.activeToken")}</p> : null}
 
