@@ -96,6 +96,8 @@ describe("RSVP Integration", () => {
     act(() => { result.current.updateRsvpField("companionNames[0]", "Alice María Smith"); });
     act(() => { result.current.updateRsvpField("companionNames[1]", "Bob Carlos Jones"); });
     act(() => { result.current.updateRsvpField("companionBirthDates", ["2000-01-01", "2000-01-01"]); });
+    act(() => { result.current.updateRsvpField("companionAllergiesOther", ["", "alergia a mariscos"]); });
+    act(() => { result.current.updateRsvpField("companionHealthConsents", [false, true]); });
     act(() => { result.current.updateRsvpField("privacyConsent", true); });
     act(() => { result.current.updateRsvpField("birthDate", "1990-01-01"); });
     act(() => { result.current.updateRsvpField("transportChoice", "0"); });
@@ -121,9 +123,12 @@ describe("RSVP Integration", () => {
     expect(payload.transportMode).toBe("bus");
     expect(payload.companionTransportChoices).toEqual(["own", "1"]);
     expect(payload.companionTransportModes).toEqual(["own", "taxi"]);
+    expect(payload.companionAllergiesOther).toEqual(["", "alergia a mariscos"]);
     const compPayload = batch.set.mock.calls[1][1];
     expect(compPayload.transportChoice).toBe("own");
     expect(compPayload.transportMode).toBe("own");
+    const compPayload2 = batch.set.mock.calls[2][1];
+    expect(compPayload2.allergiesOther).toBe("alergia a mariscos");
     // 1 main + 2 companions
     expect(batch.set).toHaveBeenCalledTimes(3);
   });

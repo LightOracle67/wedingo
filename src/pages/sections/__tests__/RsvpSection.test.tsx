@@ -367,7 +367,7 @@ describe("RsvpSection", () => {
       />,
     );
     const select = document.getElementById("rsvpTransportDeparture") as HTMLSelectElement;
-    expect([...select.options].map((o) => o.textContent)).toEqual(["Plaza Mayor (transport.typeBus)"]);
+    expect([...select.options].map((o) => o.textContent)).toEqual(["Plaza Mayor (12:00)"]);
     expect(screen.getByText("rsvp.transportPickupTime")).toBeDefined();
   });
 

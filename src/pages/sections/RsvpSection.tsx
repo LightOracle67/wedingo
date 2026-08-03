@@ -102,7 +102,8 @@ const RsvpSection = memo(function RsvpSection({
   const departureLabel = useCallback((dep: Departure) => {
     const typeLabel = t(dep.type === "taxi" ? "transport.typeTaxi" : "transport.typeBus");
     const placeName = dep.url ? extractPlaceNameFromUrl(dep.url) : "";
-    if (placeName) return `${placeName} (${typeLabel})`;
+    if (placeName && dep.time) return `${placeName} (${dep.time})`;
+    if (placeName) return placeName;
     return dep.time ? `${dep.time} (${typeLabel})` : typeLabel;
   }, [t]);
 

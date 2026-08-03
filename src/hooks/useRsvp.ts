@@ -229,6 +229,7 @@ export function useRsvp(
               const parsed = parseDietaryInfo(c.dietaryInfo, !!c.mealChoice);
               return [...parsed.dietarySelection, ...(parsed.dietaryOther ? [parsed.dietaryOther] : [])];
             });
+            main.companionAllergiesOther = linkedCompanions.map((c) => c.allergiesOther || "");
             main.companionDocIds = linkedCompanions.map((c) => c.id);
             // Create individual companion entries for the attendance list
             for (const comp of linkedCompanions) {
@@ -332,6 +333,7 @@ export function useRsvp(
           companionNames: match.companionNames || [],
           companionMenus: match.companionMenus || [],
           companionAllergies: match.companionAllergies || [],
+          companionAllergiesOther: match.companionAllergiesOther || [],
           companionBirthDates,
           companionParentalConsents,
           companionHealthConsents,
@@ -557,6 +559,9 @@ export function useRsvp(
       if (compBirthDate) companionData.birthDate = compBirthDate;
       if (compAge !== null && compAge < 14) companionData.parentalConsent = true;
       if (data.companionMenus[i]) companionData.mealChoice = data.companionMenus[i];
+      if (data.companionAllergiesOther?.[i]) {
+        companionData.allergiesOther = String(data.companionAllergiesOther[i]).slice(0, 200);
+      }
       if (data.companionTransportChoices?.[i]) {
         companionData.transportChoice = String(data.companionTransportChoices[i]).slice(0, 20);
       }

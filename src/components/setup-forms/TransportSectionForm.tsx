@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useApp } from "../../contexts";
-import { isValidGoogleMapsUrl, extractPlaceNameFromUrl } from "../../lib/geo-utils";
+import { isValidGoogleMapsUrl } from "../../lib/geo-utils";
 
 interface Departure {
   type: "bus" | "taxi";
@@ -125,16 +125,7 @@ export default function TransportSectionForm({ prefix = "" }) {
                   onChange={handleDepartureField(i, "url")}
                   placeholder="https://www.google.com/maps/place/..."
                   autoComplete="off"
-                  aria-describedby={dep.url && isValidGoogleMapsUrl(dep.url) ? id(`departurePlace${i}`) : undefined}
                 />
-                {dep.url && isValidGoogleMapsUrl(dep.url) ? (() => {
-                  const placeName = extractPlaceNameFromUrl(dep.url);
-                  return placeName ? (
-                    <p className="setup-help" id={id(`departurePlace${i}`)} style={{ marginTop: "0.15rem", fontSize: "0.75rem", color: "var(--setup-accent)" }}>
-                      {t("setup.siteNameLabel")}: {placeName}
-                    </p>
-                  ) : null;
-                })() : null}
               </div>
               <button
                 type="button"
