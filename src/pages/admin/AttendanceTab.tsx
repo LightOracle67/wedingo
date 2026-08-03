@@ -19,7 +19,9 @@ interface RsvpEntry {
   parentalConsent?: boolean;
   healthConsent?: boolean;
   transportChoice?: string;
+  transportMode?: string;
   companionTransportChoices?: string[];
+  companionTransportModes?: string[];
   mainGuestDocId?: string;
 }
 
@@ -85,15 +87,14 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
     }
   }, [transportDepartures]);
 
-  const resolveTransportLabel = useCallback((choice: string) => {
-    if (!choice) return "—";
-    if (choice === "own") return t("attendance.transportOwnCar");
+  const resolveTransportLabel = useCallback((mode: string, choice: string) => {
+    if (!mode && !choice) return "—";
+    if (!mode || mode === "own") return t("attendance.transportOwnCar");
+    const typeLabel = t(mode === "taxi" ? "transport.optionTaxi" : "transport.optionBus");
     const idx = Number.parseInt(choice, 10);
-    const dep = departures[idx] as { type?: string; time?: string } | undefined;
-    if (dep && dep.time) {
-      return `${dep.time} (${t(dep.type === "taxi" ? "transport.optionTaxi" : "transport.optionBus")})`;
-    }
-    return t("attendance.transportOwnCar");
+    const dep = departures[idx] as { time?: string } | undefined;
+    if (dep && dep.time) return `${typeLabel} (${dep.time})`;
+    return typeLabel;
   }, [departures, t]);
 
   const filterEntries = filteredEntries || [];
@@ -203,7 +204,7 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                   ? entry.attendees.filter((a) => a.allergies?.length).map((a) => `${a.name}: ${a.allergies.join(", ")}`)
                   : (attending ? getDietaryLines(entry.dietaryInfo || "", entry.companions || 1).map((d) => `${d.item}: ${d.count}`) : []);
                 const crossed = !attending ? { textDecoration: "line-through", opacity: 0.4 } : {};
-                const transportLabel = resolveTransportLabel(entry.transportChoice || "");
+                const transportLabel = resolveTransportLabel(entry.transportMode || "", entry.transportChoice || "");
                 const consentBadges: string[] = [];
                 if (entry.parentalConsent) consentBadges.push(t("attendance.consentParental"));
                 if (entry.healthConsent) consentBadges.push(t("attendance.consentHealth"));

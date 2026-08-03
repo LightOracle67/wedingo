@@ -88,6 +88,57 @@ describe("AttendanceTab", () => {
     expect(exportPdf).toHaveBeenCalled();
   });
 
+  it("renders transport column merging mode and departure", () => {
+    const entry = {
+      id: "1", guestName: "Alice", attendance: "yes" as const, companions: 0,
+      dietaryInfo: "", submittedAt: "2024-01-01",
+      transportMode: "taxi", transportChoice: "1",
+    };
+    render(
+      <AttendanceTab
+        searchQuery=""
+        setSearchQuery={vi.fn()}
+        attendanceFilter="all"
+        setAttendanceFilter={vi.fn()}
+        filteredEntries={[entry]}
+        rsvpEntries={[entry]}
+        exportPdf={vi.fn()}
+        formatDate={(d: string) => String(d)}
+        handleClearRsvpEntries={vi.fn()}
+        handleDeleteRsvpEntries={vi.fn()}
+        transportDepartures={JSON.stringify([
+          { type: "bus", time: "12:00", url: "" },
+          { type: "taxi", time: "14:30", url: "" },
+        ])}
+      />
+    );
+    expect(screen.getByText("transport.optionTaxi (14:30)")).toBeDefined();
+  });
+
+  it("renders own car when transport mode is own", () => {
+    const entry = {
+      id: "1", guestName: "Alice", attendance: "yes" as const, companions: 0,
+      dietaryInfo: "", submittedAt: "2024-01-01",
+      transportMode: "own", transportChoice: "",
+    };
+    render(
+      <AttendanceTab
+        searchQuery=""
+        setSearchQuery={vi.fn()}
+        attendanceFilter="all"
+        setAttendanceFilter={vi.fn()}
+        filteredEntries={[entry]}
+        rsvpEntries={[entry]}
+        exportPdf={vi.fn()}
+        formatDate={(d: string) => String(d)}
+        handleClearRsvpEntries={vi.fn()}
+        handleDeleteRsvpEntries={vi.fn()}
+        transportDepartures={JSON.stringify([{ type: "bus", time: "12:00", url: "" }])}
+      />
+    );
+    expect(screen.getByText("attendance.transportOwnCar")).toBeDefined();
+  });
+
   it("calls handleClearRsvpEntries when clear button clicked", () => {
     const handleClearRsvpEntries = vi.fn();
     render(
