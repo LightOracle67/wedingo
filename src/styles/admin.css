@@ -177,8 +177,10 @@ input.setup-input[type="date"] {
   border-right: none;
 }
 .setup-layout--full.setup-layout {
-  height: calc(100% - var(--navbar-height, 0px));
-  overflow-y: hidden;
+  flex: 1 1 auto;
+  min-height: 0;
+  height: auto;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
