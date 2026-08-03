@@ -19,7 +19,14 @@ export default function TransportSectionForm({ prefix = "" }) {
   const departures: Departure[] = (() => {
     try {
       const parsed = JSON.parse(formData.transportDepartures || "");
-      return Array.isArray(parsed) ? parsed : [];
+      if (!Array.isArray(parsed)) return [];
+      return parsed
+        .slice(0, MAX_DEPARTURES)
+        .map((d: Record<string, unknown>) => ({
+          type: d.type === "taxi" ? "taxi" as const : "bus" as const,
+          time: typeof d.time === "string" ? d.time : "",
+          url: typeof d.url === "string" ? d.url : "",
+        }));
     } catch {
       return [];
     }
@@ -106,7 +113,7 @@ export default function TransportSectionForm({ prefix = "" }) {
                 </label>
                 <input
                   id={id(`departureUrl${i}`)}
-                  className="setup-input"
+                  className={dep.url && !isValidGoogleMapsUrl(dep.url) ? "setup-input setup-input--error" : "setup-input"}
                   value={dep.url}
                   onChange={handleDepartureField(i, "url")}
                   placeholder="https://www.google.com/maps/place/..."
