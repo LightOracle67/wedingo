@@ -176,6 +176,20 @@ input.setup-input[type="date"] {
   border-left: none;
   border-right: none;
 }
+main#main-content:has(> .setup-layout--full) {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+main#main-content:has(> .setup-layout--full) > .setup-layout--full.setup-layout {
+  padding-top: 1rem;
+  box-sizing: border-box;
+}
+body:has(.admin-bar) main#main-content:has(> .setup-layout--full) > .setup-layout--full.setup-layout {
+  padding-top: calc(var(--navbar-height, 0px) + 0.75rem);
+}
 .setup-layout--full.setup-layout {
   flex: 1 1 auto;
   min-height: 0;
