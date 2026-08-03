@@ -194,7 +194,7 @@ export default function SetupForm({ prefix = "" }) {
       {/* ── Botón de guardar ── */}
       {void console.log("[app]", "[SetupForm]", "save button rendered")}
       <div className="setup-actions setup-actions--sticky">
-        <button className="setup-button" type="submit" onClick={() => console.log("[app]", "[SetupForm]", "save click start")}>
+        <button className="setup-button" type="submit" style={{ background: 0, WebkitBackdropFilter: "unset" }} onClick={() => console.log("[app]", "[SetupForm]", "save click start")}>
           {t("common.save")}
         </button>
       </div>
