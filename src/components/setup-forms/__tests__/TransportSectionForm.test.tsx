@@ -103,4 +103,52 @@ describe("TransportSectionForm departures flow", () => {
     const select = screen.getByLabelText("setup.transportTypeLabel") as HTMLSelectElement;
     expect(select.value).toBe("bus");
   });
+
+  it("disables the type select and defaults it to bus when the option is bus", () => {
+    mockFormData.transportEnabled = "bus";
+    mockFormData.transportDepartures = JSON.stringify([
+      { type: "taxi", time: "12:00", url: "" },
+    ]);
+    renderForm();
+    const select = screen.getByLabelText("setup.transportTypeLabel") as HTMLSelectElement;
+    expect(select.disabled).toBe(true);
+    expect(select.value).toBe("bus");
+  });
+
+  it("disables the type select and defaults it to taxi when the option is taxi", () => {
+    mockFormData.transportEnabled = "taxi";
+    mockFormData.transportDepartures = JSON.stringify([
+      { type: "bus", time: "12:00", url: "" },
+    ]);
+    renderForm();
+    const select = screen.getByLabelText("setup.transportTypeLabel") as HTMLSelectElement;
+    expect(select.disabled).toBe(true);
+    expect(select.value).toBe("taxi");
+  });
+
+  it("normalizes all departure types when switching to a single option", () => {
+    mockFormData.transportDepartures = JSON.stringify([
+      { type: "bus", time: "12:00", url: "" },
+      { type: "taxi", time: "14:00", url: "" },
+    ]);
+    renderForm();
+    fireEvent.change(screen.getByLabelText("setup.transportEnabledLabel"), { target: { value: "taxi" } });
+    const stored = getStored();
+    expect(stored.every((d: { type: string }) => d.type === "taxi")).toBe(true);
+    const selects = screen.getAllByLabelText("setup.transportTypeLabel") as HTMLSelectElement[];
+    expect(selects).toHaveLength(2);
+    selects.forEach((s) => {
+      expect(s.disabled).toBe(true);
+      expect(s.value).toBe("taxi");
+    });
+  });
+
+  it("keeps the type selects enabled when the option is both", () => {
+    renderForm();
+    fireEvent.change(screen.getByLabelText("setup.transportEnabledLabel"), { target: { value: "both" } });
+    fireEvent.click(screen.getByRole("button", { name: /setup.transportAddDeparture/ }));
+    const select = screen.getByLabelText("setup.transportTypeLabel") as HTMLSelectElement;
+    expect(select.disabled).toBe(false);
+    expect(select.value).toBe("bus");
+  });
 });

@@ -32,13 +32,19 @@ export default function TransportSectionForm({ prefix = "" }) {
     }
   })();
 
-  const handleEnabledChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
-    updateFormField("transportEnabled", e.target.value);
-  }, [updateFormField]);
-
   const setDepartures = useCallback((next: Departure[]) => {
     updateFormField("transportDepartures", JSON.stringify(next.slice(0, MAX_DEPARTURES)));
   }, [updateFormField]);
+
+  const enabled = (formData.transportEnabled || "none") as "none" | "bus" | "taxi" | "both";
+
+  const handleEnabledChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
+    const next = e.target.value;
+    updateFormField("transportEnabled", next);
+    if (next === "bus" || next === "taxi") {
+      setDepartures(departures.map((d) => ({ ...d, type: next as "bus" | "taxi" })));
+    }
+  }, [departures, setDepartures, updateFormField]);
 
   const handleDepartureField = useCallback((index: number, field: "type" | "time" | "url") =>
     (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -49,8 +55,8 @@ export default function TransportSectionForm({ prefix = "" }) {
 
   const addDeparture = useCallback(() => {
     if (departures.length >= MAX_DEPARTURES) return;
-    setDepartures([...departures, { type: "bus", time: "", url: "" }]);
-  }, [departures, setDepartures]);
+    setDepartures([...departures, { type: enabled === "taxi" ? "taxi" : "bus", time: "", url: "" }]);
+  }, [departures, enabled, setDepartures]);
 
   const removeDeparture = useCallback((index: number) => {
     const next = departures.filter((_, i) => i !== index);
@@ -74,7 +80,7 @@ export default function TransportSectionForm({ prefix = "" }) {
       </select>
       <p className="setup-help" id={id("transportEnabledHint")}>{t("setup.transportEnabledHint")}</p>
 
-      {(formData.transportEnabled || "none") !== "none" ? (
+      {enabled !== "none" ? (
         <>
           <div className="story-divider" />
           <label className="setup-label">{t("setup.transportDeparturesLabel")}</label>
@@ -87,8 +93,9 @@ export default function TransportSectionForm({ prefix = "" }) {
                 <select
                   id={id(`departureType${i}`)}
                   className="setup-input"
-                  value={dep.type}
+                  value={enabled === "both" ? dep.type : enabled}
                   onChange={handleDepartureField(i, "type")}
+                  disabled={enabled !== "both"}
                 >
                   <option value="bus">{t("setup.transportOptionBus")}</option>
                   <option value="taxi">{t("setup.transportOptionTaxi")}</option>
