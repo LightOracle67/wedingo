@@ -210,7 +210,8 @@ export default function AdminPage() {
     handleClearRsvpEntries,
     handleDeleteRsvpEntries,
     formatDate,
-  }), [searchQuery, setSearchQuery, attendanceFilter, setAttendanceFilterValue, filteredEntries, exportPdf, rsvpEntries, handleClearRsvpEntries, handleDeleteRsvpEntries]);
+    transportDepartures: config.transportDepartures,
+  }), [searchQuery, setSearchQuery, attendanceFilter, setAttendanceFilterValue, filteredEntries, exportPdf, rsvpEntries, handleClearRsvpEntries, handleDeleteRsvpEntries, config.transportDepartures]);
 
   // ─── Estados de carga ──────────────────────────────────
   if (isConfigLoading) {

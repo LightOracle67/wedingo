@@ -98,6 +98,9 @@ describe("RSVP Integration", () => {
     act(() => { result.current.updateRsvpField("companionBirthDates", ["2000-01-01", "2000-01-01"]); });
     act(() => { result.current.updateRsvpField("privacyConsent", true); });
     act(() => { result.current.updateRsvpField("birthDate", "1990-01-01"); });
+    act(() => { result.current.updateRsvpField("transportChoice", "0"); });
+    act(() => { result.current.updateRsvpField("companionTransportChoices[0]", "own"); });
+    act(() => { result.current.updateRsvpField("companionTransportChoices[1]", "1"); });
 
     const event = { preventDefault: vi.fn() } as unknown as React.FormEvent;
     await act(async () => {
@@ -111,6 +114,10 @@ describe("RSVP Integration", () => {
     expect(payload.companionCount).toBe(2);
     expect(payload.companionNames).toEqual(["Alice María Smith", "Bob Carlos Jones"]);
     expect(payload.attendance).toBe("yes");
+    expect(payload.transportChoice).toBe("0");
+    expect(payload.companionTransportChoices).toEqual(["own", "1"]);
+    const compPayload = batch.set.mock.calls[1][1];
+    expect(compPayload.transportChoice).toBe("own");
     // 1 main + 2 companions
     expect(batch.set).toHaveBeenCalledTimes(3);
   });

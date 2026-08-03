@@ -17,12 +17,20 @@ interface RsvpFormState {
   companionBirthDates?: string[];
   companionParentalConsents?: boolean[];
   companionHealthConsents?: boolean[];
+  companionTransportChoices?: string[];
   menuSelection: string;
   allergies: string[];
   allergiesOther: string;
   parentalConsent: boolean;
   privacyConsent: boolean;
   healthConsent: boolean;
+  transportChoice: string;
+}
+
+interface Departure {
+  type?: "bus" | "taxi";
+  time: string;
+  url: string;
 }
 
 interface RsvpSectionProps {
@@ -42,6 +50,8 @@ interface RsvpSectionProps {
   menuVegano?: string;
   menuPostre?: string;
   menuTexto?: string;
+  transportEnabled?: string;
+  transportDepartures?: string;
   computeAge: (birthDate: string) => number | null;
   cornerDecoration?: string;
 }
@@ -49,7 +59,8 @@ interface RsvpSectionProps {
 const RsvpSection = memo(function RsvpSection({
   style, className,
   rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
-  updateRsvpField, handleRsvpSubmit, handleDeleteRsvp, menuEnabled, menuCarne, menuPescado, menuVegano, menuPostre, menuTexto, computeAge, cornerDecoration,
+  updateRsvpField, handleRsvpSubmit, handleDeleteRsvp, menuEnabled, menuCarne, menuPescado, menuVegano, menuPostre, menuTexto,
+  transportEnabled, transportDepartures, computeAge, cornerDecoration,
 }: RsvpSectionProps) {
   const { t } = useTranslation();
   const { setLegalModal } = useApp();
@@ -71,6 +82,32 @@ const RsvpSection = memo(function RsvpSection({
     ...(menuPescado ? [{ key: "pescado" as const, label: t("rsvp.menuPescado"), desc: menuPescado }] : []),
     ...(menuVegano ? [{ key: "vegano" as const, label: t("rsvp.menuVegano"), desc: menuVegano }] : []),
   ];
+
+  const departures: Departure[] = useMemo(() => {
+    if (!transportEnabled || transportEnabled === "none") return [];
+    try {
+      const parsed = JSON.parse(transportDepartures || "");
+      if (!Array.isArray(parsed)) return [];
+      return parsed.slice(0, 10);
+    } catch {
+      return [];
+    }
+  }, [transportEnabled, transportDepartures]);
+
+  const hasTransportChoices = departures.length > 0;
+
+  const departureLabel = useCallback((dep: Departure) => {
+    const typeLabel = t(dep.type === "taxi" ? "transport.optionTaxi" : "transport.optionBus");
+    return dep.time ? `${dep.time} (${typeLabel})` : typeLabel;
+  }, [t]);
+
+  const transportOptions = useMemo(() => {
+    if (!hasTransportChoices) return [];
+    return [
+      { value: "own", label: t("rsvp.transportOwnCar") },
+      ...departures.map((dep, i) => ({ value: String(i), label: departureLabel(dep) })),
+    ];
+  }, [hasTransportChoices, departures, t, departureLabel]);
 
   const handleNameChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     updateRsvpField("guestName", e.target.value.slice(0, 120));
@@ -170,6 +207,18 @@ const RsvpSection = memo(function RsvpSection({
             </div>
           </div>
 
+          {isAttending && hasTransportChoices ? (
+            <div className="setup-field" style={{ marginTop: "0.75rem" }}>
+              <label className="setup-label" htmlFor="rsvpTransport">{t("rsvp.transportLabel")}</label>
+              <select id="rsvpTransport" className="setup-input"
+                value={rsvpForm.transportChoice || "own"} onChange={(e) => updateRsvpField("transportChoice", e.target.value)}
+                disabled={isAlreadySubmitted}>
+                {transportOptions.map((opt) => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
+              </select>
+              <p className="setup-help" style={{ marginTop: "0.2rem" }}>{t("rsvp.transportHint")}</p>
+            </div>
+          ) : null}
+
           {rsvpForm.attendance === "with" && rsvpForm.companionCount > 0 && (
             <div style={{ marginTop: "0.75rem" }}>
               {Array.from({ length: rsvpForm.companionCount }, (_, i) => (
@@ -190,6 +239,18 @@ const RsvpSection = memo(function RsvpSection({
                     value={rsvpForm.companionNames[i] || ""}
                     onChange={handleCompanionNameChange(i)}
                     placeholder={t("rsvp.attendeeNamePlaceholder")} required disabled={isAlreadySubmitted} maxLength={120} />
+
+                  {hasTransportChoices ? (
+                    <div style={{ marginTop: "0.5rem" }}>
+                      <label className="setup-label" htmlFor={`companion-transport-${i}`}>{t("rsvp.transportLabel")}</label>
+                      <select id={`companion-transport-${i}`} className="setup-input"
+                        value={rsvpForm.companionTransportChoices?.[i] || "own"}
+                        onChange={(e) => updateRsvpField(`companionTransportChoices[${i}]`, e.target.value)}
+                        disabled={isAlreadySubmitted}>
+                        {transportOptions.map((opt) => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
+                      </select>
+                    </div>
+                  ) : null}
 
                   {hasStructuredMenu && (
                     <>

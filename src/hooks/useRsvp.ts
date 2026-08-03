@@ -27,6 +27,7 @@ interface RsvpFormData {
   companionBirthDates: string[];
   companionParentalConsents: boolean[];
   companionHealthConsents: boolean[];
+  companionTransportChoices: string[];
   menuSelection: string;
   allergies: string[];
   allergiesOther: string;
@@ -34,6 +35,7 @@ interface RsvpFormData {
   healthConsent: boolean;
   birthDate: string;
   parentalConsent: boolean;
+  transportChoice: string;
 }
 
 interface RsvpEntryData {
@@ -58,6 +60,8 @@ interface RsvpEntryData {
   birthDate?: string;
   parentalConsent?: boolean;
   healthConsent?: boolean;
+  transportChoice?: string;
+  companionTransportChoices?: string[];
   companionDocIds?: string[];
   mainGuestDocId?: string;
   mainGuestName?: string;
@@ -102,6 +106,7 @@ function RsvpFormDefault(): RsvpFormData {
     companionBirthDates: [],
     companionParentalConsents: [],
     companionHealthConsents: [],
+    companionTransportChoices: [],
     menuSelection: "",
     allergies: [],
     allergiesOther: "",
@@ -109,6 +114,7 @@ function RsvpFormDefault(): RsvpFormData {
     healthConsent: false,
     birthDate: "",
     parentalConsent: false,
+    transportChoice: "own",
   };
 }
 
@@ -187,6 +193,8 @@ export function useRsvp(
                 birthDate: data.birthDate || "",
                 parentalConsent: data.parentalConsent || false,
                 healthConsent: data.healthConsent || false,
+                transportChoice: data.transportChoice || "",
+                companionTransportChoices: data.companionTransportChoices || [],
                 companionDocIds: data.companionDocIds || [],
                 mainGuestDocId: data.mainGuestDocId || "",
                 mainGuestName: data.mainGuestName || "",
@@ -207,6 +215,7 @@ export function useRsvp(
             main.companionCount = linkedCompanions.length;
             main.companionNames = linkedCompanions.map((c) => c.guestName);
             main.companionMenus = linkedCompanions.map((c) => c.mealChoice);
+            main.companionTransportChoices = linkedCompanions.map((c) => c.transportChoice || "");
             main.companionAllergies = linkedCompanions.map((c) => {
               const parsed = parseDietaryInfo(c.dietaryInfo, !!c.mealChoice);
               return [...parsed.dietarySelection, ...(parsed.dietaryOther ? [parsed.dietaryOther] : [])];
@@ -277,6 +286,7 @@ export function useRsvp(
           companionBirthDates: [],
           companionParentalConsents: [],
           companionHealthConsents: [],
+          companionTransportChoices: [],
           menuSelection: match.mealChoice || "",
           birthDate: match.birthDate || "",
           allergies: parsed.dietarySelection,
@@ -284,6 +294,7 @@ export function useRsvp(
           privacyConsent: true,
           healthConsent: match.healthConsent || false,
           parentalConsent: match.parentalConsent || false,
+          transportChoice: match.transportChoice || "own",
         }));
       } else {
         console.log("[app]", "[useRsvp]", "prefill companion match (already set)", {});
@@ -313,6 +324,7 @@ export function useRsvp(
           companionBirthDates,
           companionParentalConsents,
           companionHealthConsents,
+          companionTransportChoices: match.companionTransportChoices || [],
           menuSelection: match.mealChoice || "",
           birthDate: match.birthDate || "",
           allergies: parsed.dietarySelection,
@@ -320,6 +332,7 @@ export function useRsvp(
           privacyConsent: true,
           healthConsent: match.healthConsent || false,
           parentalConsent: match.parentalConsent || false,
+          transportChoice: match.transportChoice || "own",
         }));
       } else {
         console.log("[app]", "[useRsvp]", "prefill main match (already set)", {});
@@ -348,6 +361,7 @@ export function useRsvp(
         companionBirthDates: value === "no" || value === "alone" ? [] : current.companionBirthDates,
         companionParentalConsents: value === "no" || value === "alone" ? [] : current.companionParentalConsents,
         companionHealthConsents: value === "no" || value === "alone" ? [] : current.companionHealthConsents,
+        companionTransportChoices: value === "no" || value === "alone" ? [] : current.companionTransportChoices,
       }));
       return;
     }
@@ -361,6 +375,7 @@ export function useRsvp(
         const birthDates = (current.companionBirthDates || []).slice(0, count);
         const parentalConsents = (current.companionParentalConsents || []).slice(0, count);
         const healthConsents = (current.companionHealthConsents || []).slice(0, count);
+        const transportChoices = (current.companionTransportChoices || []).slice(0, count);
         while (names.length < count) {
           names.push("");
           menus.push("");
@@ -369,8 +384,9 @@ export function useRsvp(
           birthDates.push("");
           parentalConsents.push(false);
           healthConsents.push(false);
+          transportChoices.push("own");
         }
-        return { ...current, companionCount: count, companionNames: names, companionMenus: menus, companionAllergies: allergies, companionAllergiesOther: allergiesOther, companionBirthDates: birthDates, companionParentalConsents: parentalConsents, companionHealthConsents: healthConsents };
+        return { ...current, companionCount: count, companionNames: names, companionMenus: menus, companionAllergies: allergies, companionAllergiesOther: allergiesOther, companionBirthDates: birthDates, companionParentalConsents: parentalConsents, companionHealthConsents: healthConsents, companionTransportChoices: transportChoices };
       });
       return;
     }
@@ -398,6 +414,15 @@ export function useRsvp(
         const all = [...current.companionAllergies];
         all[idx] = value as string[];
         return { ...current, companionAllergies: all };
+      });
+      return;
+    }
+    if (field.startsWith("companionTransportChoices[")) {
+      const idx = parseInt(field.match(/\d+/)?.[0] || "0", 10);
+      setRsvpForm((current) => {
+        const choices = [...current.companionTransportChoices];
+        choices[idx] = String(value);
+        return { ...current, companionTransportChoices: choices };
       });
       return;
     }
@@ -474,6 +499,10 @@ export function useRsvp(
       mainGuestData.healthConsent = true;
       mainGuestData.healthConsentAt = nowTimestamp;
     }
+    if (isAttending && data.transportChoice) {
+      mainGuestData.transportChoice = String(data.transportChoice).slice(0, 20);
+    }
+    mainGuestData.companionTransportChoices = (data.companionTransportChoices || []).slice(0, companionCount);
 
     // Create companion docs with individual dietaryInfo
     const companionDocIds: string[] = [];
@@ -499,6 +528,9 @@ export function useRsvp(
       if (compBirthDate) companionData.birthDate = compBirthDate;
       if (compAge !== null && compAge < 14) companionData.parentalConsent = true;
       if (data.companionMenus[i]) companionData.mealChoice = data.companionMenus[i];
+      if (data.companionTransportChoices?.[i]) {
+        companionData.transportChoice = String(data.companionTransportChoices[i]).slice(0, 20);
+      }
       const hasCompDietary = compAllergies.length > 0 || (data.companionAllergiesOther[i] || "").trim();
       if (hasCompDietary) {
         companionData.healthConsent = true;
@@ -542,6 +574,8 @@ export function useRsvp(
       guestNames: "",
       note: "",
       submittedAt: now,
+      transportChoice: (mainGuestData.transportChoice as string) || "",
+      companionTransportChoices: (mainGuestData.companionTransportChoices as string[]) || [],
       companionDocIds,
     };
 

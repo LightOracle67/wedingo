@@ -178,7 +178,10 @@
       "alergia a mariscos": "Alergia a mariscos"
     },
     "nameHint": "Escribe tu nombre y tus dos apellidos.",
-    "birthDateHint": "Necesaria solo para saber si eres menor de 14 años."
+    "birthDateHint": "Necesaria solo para saber si eres menor de 14 años.",
+    "transportLabel": "Transporte",
+    "transportHint": "Elige la salida desde la que cogerás el transporte, o tu coche propio.",
+    "transportOwnCar": "Coche propio"
   },
   "public": {
     "loadingInvitation": "Cargando invitación…",
@@ -489,6 +492,12 @@
     "tableDiet": "Info alimentaria",
     "tableNote": "Nota",
     "tableDate": "Fecha",
+    "tableTransport": "Transporte",
+    "tableBirth": "Nacimiento",
+    "tableConsents": "Consentimientos",
+    "transportOwnCar": "Coche propio",
+    "consentParental": "Tutores",
+    "consentHealth": "Salud",
     "show": "Mostrar",
     "total": "{{count}} en total",
     "page": "{{current}} / {{total}}",

@@ -1,4 +1,4 @@
-import { memo, useEffect, useMemo, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Pagination from "../../components/Pagination";
 
@@ -15,6 +15,12 @@ interface RsvpEntry {
   submittedAt: string;
   mainGuestName?: string;
   companionDocIds?: string[];
+  birthDate?: string;
+  parentalConsent?: boolean;
+  healthConsent?: boolean;
+  transportChoice?: string;
+  companionTransportChoices?: string[];
+  mainGuestDocId?: string;
 }
 
 export interface AttendanceTabProps {
@@ -28,6 +34,7 @@ export interface AttendanceTabProps {
   handleClearRsvpEntries: () => void;
   handleDeleteRsvpEntries: (ids: string[]) => void;
   formatDate: (date: string) => string;
+  transportDepartures?: string;
 }
 
 const PAGE_SIZES = [10, 25, 50, 100];
@@ -61,11 +68,33 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
     attendanceFilter,
     filteredEntries, exportPdf,
     rsvpEntries, handleClearRsvpEntries, handleDeleteRsvpEntries, formatDate,
+    transportDepartures,
   } = props;
   const { t } = useTranslation();
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(25);
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+
+  const departures = useMemo(() => {
+    try {
+      const parsed = JSON.parse(transportDepartures || "");
+      if (!Array.isArray(parsed)) return [];
+      return parsed.filter((d) => d && typeof d === "object");
+    } catch {
+      return [];
+    }
+  }, [transportDepartures]);
+
+  const resolveTransportLabel = useCallback((choice: string) => {
+    if (!choice) return "—";
+    if (choice === "own") return t("attendance.transportOwnCar");
+    const idx = Number.parseInt(choice, 10);
+    const dep = departures[idx] as { type?: string; time?: string } | undefined;
+    if (dep && dep.time) {
+      return `${dep.time} (${t(dep.type === "taxi" ? "transport.optionTaxi" : "transport.optionBus")})`;
+    }
+    return t("attendance.transportOwnCar");
+  }, [departures, t]);
 
   const filterEntries = filteredEntries || [];
 
@@ -157,6 +186,9 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                 <th style={{ minWidth: "70px" }}>{t("attendance.tableAttendance")}</th>
                 <th style={{ minWidth: "120px" }}>{t("attendance.tableMenu")}</th>
                 <th style={{ minWidth: "140px" }}>{t("attendance.tableDiet")}</th>
+                <th style={{ minWidth: "120px" }}>{t("attendance.tableTransport")}</th>
+                <th style={{ minWidth: "110px" }}>{t("attendance.tableBirth")}</th>
+                <th style={{ minWidth: "120px" }}>{t("attendance.tableConsents")}</th>
                 <th style={{ minWidth: "120px" }}>{t("attendance.tableDate")}</th>
               </tr>
             </thead>
@@ -171,6 +203,10 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                   ? entry.attendees.filter((a) => a.allergies?.length).map((a) => `${a.name}: ${a.allergies.join(", ")}`)
                   : (attending ? getDietaryLines(entry.dietaryInfo || "", entry.companions || 1).map((d) => `${d.item}: ${d.count}`) : []);
                 const crossed = !attending ? { textDecoration: "line-through", opacity: 0.4 } : {};
+                const transportLabel = resolveTransportLabel(entry.transportChoice || "");
+                const consentBadges: string[] = [];
+                if (entry.parentalConsent) consentBadges.push(t("attendance.consentParental"));
+                if (entry.healthConsent) consentBadges.push(t("attendance.consentHealth"));
 
                 return (
                   <tr key={entry.id}>
@@ -209,6 +245,29 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                           <div style={{ display: "flex", flexDirection: "column", gap: "0.15rem" }}>
                             {dietLines.map((line, i) => (
                               <span key={i} style={{ fontSize: "0.78rem" }}>{line}</span>
+                            ))}
+                          </div>
+                        ) : (
+                          <span style={{ fontSize: "0.78rem" }}>—</span>
+                        )}
+                      </div>
+                    </td>
+                    <td>
+                      <div style={crossed}>
+                        <span style={{ fontSize: "0.78rem" }}>{attending ? transportLabel : "—"}</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div style={crossed}>
+                        <span style={{ fontSize: "0.78rem" }}>{entry.birthDate ? formatDate(entry.birthDate) : "—"}</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div style={crossed}>
+                        {attending && consentBadges.length > 0 ? (
+                          <div style={{ display: "flex", flexDirection: "column", gap: "0.15rem" }}>
+                            {consentBadges.map((b, i) => (
+                              <span key={i} style={{ fontSize: "0.72rem", color: "var(--setup-accent)" }}>{b}</span>
                             ))}
                           </div>
                         ) : (

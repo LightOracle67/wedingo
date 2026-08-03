@@ -178,7 +178,10 @@
       "alergia a mariscos": "Shellfish allergy"
     },
     "nameHint": "Enter your first name and your two surnames.",
-    "birthDateHint": "Only needed to know if you are under 14 years old."
+    "birthDateHint": "Only needed to know if you are under 14 years old.",
+    "transportLabel": "Transport",
+    "transportHint": "Choose the departure you will take, or your own car.",
+    "transportOwnCar": "Own car"
   },
   "public": {
     "loadingInvitation": "Loading invitation…",
@@ -489,6 +492,12 @@
     "tableDiet": "Diet info",
     "tableNote": "Note",
     "tableDate": "Date",
+    "tableTransport": "Transport",
+    "tableBirth": "Birth date",
+    "tableConsents": "Consents",
+    "transportOwnCar": "Own car",
+    "consentParental": "Parental",
+    "consentHealth": "Health",
     "show": "Show",
     "total": "{{count}} total",
     "page": "{{current}} / {{total}}",

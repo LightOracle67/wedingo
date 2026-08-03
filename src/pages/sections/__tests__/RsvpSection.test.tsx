@@ -21,12 +21,14 @@ const baseForm = {
   companionMenus: [],
   companionAllergies: [],
   companionAllergiesOther: [],
+  companionTransportChoices: [],
   menuSelection: "",
   allergies: [],
   allergiesOther: "",
   parentalConsent: false,
   privacyConsent: false,
   healthConsent: false,
+  transportChoice: "own",
 };
 
 const baseProps = {
@@ -264,5 +266,67 @@ describe("RsvpSection", () => {
     );
     expect(screen.getByText("rsvp.ageUnder14Warning")).toBeDefined();
     expect(screen.getByText("rsvp.parentalConsent")).toBeDefined();
+  });
+
+  it("does not show transport select when no departures defined", () => {
+    render(
+      <RsvpSection
+        {...baseProps}
+        rsvpForm={{ ...baseForm, attendance: "alone" }}
+        transportEnabled="bus"
+        transportDepartures=""
+      />,
+    );
+    expect(screen.queryByLabelText("rsvp.transportLabel")).toBeNull();
+  });
+
+  it("shows transport select with departures and own car for the main guest", () => {
+    render(
+      <RsvpSection
+        {...baseProps}
+        rsvpForm={{ ...baseForm, attendance: "alone" }}
+        transportEnabled="both"
+        transportDepartures={JSON.stringify([
+          { type: "bus", time: "12:00", url: "https://www.google.com/maps/place/X" },
+          { type: "taxi", time: "14:30", url: "" },
+        ])}
+      />,
+    );
+    const select = screen.getByLabelText("rsvp.transportLabel") as HTMLSelectElement;
+    expect(select).toBeDefined();
+    const options = [...select.options].map((o) => ({ value: o.value, text: o.textContent }));
+    expect(options[0]).toEqual({ value: "own", text: "rsvp.transportOwnCar" });
+    expect(options[1]).toEqual({ value: "0", text: "12:00 (transport.optionBus)" });
+    expect(options[2]).toEqual({ value: "1", text: "14:30 (transport.optionTaxi)" });
+    expect(select.value).toBe("own");
+  });
+
+  it("updates main transport choice on change", () => {
+    const update = baseProps.updateRsvpField as ReturnType<typeof vi.fn>;
+    render(
+      <RsvpSection
+        {...baseProps}
+        rsvpForm={{ ...baseForm, attendance: "alone" }}
+        transportEnabled="bus"
+        transportDepartures={JSON.stringify([{ type: "bus", time: "12:00", url: "" }])}
+      />,
+    );
+    fireEvent.change(screen.getByLabelText("rsvp.transportLabel"), { target: { value: "0" } });
+    expect(update).toHaveBeenCalledWith("transportChoice", "0");
+  });
+
+  it("shows transport select inside each companion card", () => {
+    render(
+      <RsvpSection
+        {...baseProps}
+        rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1 }}
+        transportEnabled="bus"
+        transportDepartures={JSON.stringify([{ type: "bus", time: "12:00", url: "" }])}
+      />,
+    );
+    expect(screen.getAllByLabelText("rsvp.transportLabel")).toHaveLength(2);
+    const companionSelect = document.getElementById("companion-transport-0") as HTMLSelectElement;
+    expect(companionSelect).toBeDefined();
+    expect(companionSelect.value).toBe("own");
   });
 });

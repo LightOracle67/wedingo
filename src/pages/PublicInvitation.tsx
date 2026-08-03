@@ -298,6 +298,8 @@ export default function PublicInvitation() {
       menuVegano: config.menuVegano,
       menuPostre: config.menuPostre,
       menuTexto: config.menuTexto,
+      transportEnabled: config.transportEnabled,
+      transportDepartures: config.transportDepartures,
       cornerDecoration: config.cornerDecoration,
     },
   }), [
