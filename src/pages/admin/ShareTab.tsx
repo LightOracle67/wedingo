@@ -71,16 +71,17 @@ const ShareTab = memo(function ShareTab({ inviteToken, addToast }: ShareTabProps
         </div>
       </div>
 
-      <div className="setup-label" style={{ marginBottom: "0.5rem" }}>{t("share.message")}</div>
+      <label className="setup-label" htmlFor="shareMessage" style={{ marginBottom: "0.5rem", display: "block" }}>{t("share.message")}</label>
       <div className="setup-token-card" style={{ marginBottom: "1rem", padding: "0.7rem 1rem" }}>
         <textarea
+          id="shareMessage"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           rows={6}
+          aria-describedby="shareMessageHint"
           style={{ width: "100%", resize: "vertical", fontFamily: "inherit", fontSize: "0.9rem", padding: "0.5rem", borderRadius: "6px", border: "1px solid var(--setup-border)", background: "var(--setup-bg)", color: "var(--setup-text)" }}
         />
-        <p className="setup-help" style={{ marginTop: "0.4rem" }}>{t("share.messageHint")}</p>
-        <p className="setup-help" style={{ marginTop: "0.4rem" }}>{t("share.messageHint")}</p>
+        <p className="setup-help" id="shareMessageHint" style={{ marginTop: "0.4rem" }}>{t("share.messageHint")}</p>
         <button className={btnGhostClass} type="button" onClick={handleRandom} style={{ marginTop: "0.5rem" }}>
           {t("share.generateMessage")}
         </button>

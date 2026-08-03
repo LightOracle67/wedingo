@@ -124,7 +124,7 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
     <>
       <div className="admin-filters">
         <label className="sr-only" htmlFor="adminSearchName">{t("attendance.searchLabel")}</label>
-          <select className="setup-input" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
+          <select id="adminSearchName" className="setup-input" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
             style={{ maxWidth: "250px", fontSize: "0.85rem" }}>
             <option value="">{t("attendance.all")}</option>
             {(rsvpEntries || [])

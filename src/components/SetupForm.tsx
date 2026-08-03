@@ -185,8 +185,8 @@ export default function SetupForm({ prefix = "" }) {
 
       {/* ── Consentimiento de privacidad (solo primer guardado) ── */}
       {!hasStoredConfig ? (
-        <label className="setup-checkbox-label">
-          <input type="checkbox" checked={formData._privacyConsent === "true"} onChange={(e) => updateFormField("_privacyConsent", e.target.checked ? "true" : "false")} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+        <label className="setup-checkbox-label" htmlFor="privacyConsent">
+          <input id="privacyConsent" type="checkbox" checked={formData._privacyConsent === "true"} onChange={(e) => updateFormField("_privacyConsent", e.target.checked ? "true" : "false")} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
           <Trans i18nKey="setup.privacyConsent" components={{ link: <button type="button" onClick={() => setLegalModal("privacy")} style={{ color: "var(--setup-accent)", textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", fontSize: "inherit", padding: 0 }} /> }} />
         </label>
       ) : null}

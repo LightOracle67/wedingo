@@ -196,11 +196,13 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
                     >×</button>
                   </div>
                   <input
+                    id={`gallery-desc-${i}`}
                     type="text"
                     value={item.description}
                     onChange={(e) => handleDescriptionChange(i, e.target.value)}
                     onBlur={(e) => handleDescriptionBlur(i, e.target.value)}
                     placeholder={t("setup.galleryDescriptionPlaceholder")}
+                    aria-label={t("setup.galleryDescriptionPlaceholder")}
                     style={{ width: "100%", boxSizing: "border-box", fontSize: "0.8rem", padding: "0.3rem 0.4rem", borderRadius: "0.25rem", border: "1px solid var(--setup-field-border)", background: "var(--setup-field-bg)", color: "var(--setup-title)" }}
                   />
                   <label

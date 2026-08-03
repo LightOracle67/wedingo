@@ -79,25 +79,28 @@ export default function DateSectionForm({ prefix = "" }) {
             className="setup-input"
             value={formData.weddingMapView || "roadmap"}
             onChange={(e) => updateFormField("weddingMapView", e.target.value)}
+            aria-describedby={id("mapViewHint")}
           >
             <option value="roadmap">{t("setup.mapViewRoadmap")}</option>
             <option value="satellite">{t("setup.mapViewSatellite")}</option>
             <option value="hybrid">{t("setup.mapViewHybrid")}</option>
           </select>
-          <p className="setup-help">{t("setup.mapViewHint")}</p>
+          <p className="setup-help" id={id("mapViewHint")}>{t("setup.mapViewHint")}</p>
         </div>
         <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.9rem", cursor: "pointer", marginTop: "1.5rem" }}>
           <input
+            id={id("weddingMapStatic")}
             type="checkbox"
             checked={formData.weddingMapStatic === "true"}
             onChange={(e) => updateFormField("weddingMapStatic", e.target.checked ? "true" : "false")}
             style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }}
+            aria-describedby={id("mapStaticHint")}
           />
           <span>{t("setup.mapStaticLabel")}</span>
         </label>
       </div>
       {formData.weddingMapStatic === "true" ? (
-        <p className="setup-help">{t("setup.mapStaticHint")}</p>
+        <p className="setup-help" id={id("mapStaticHint")}>{t("setup.mapStaticHint")}</p>
       ) : null}
 
       {siteUrl && !isSiteUrlValid ? (
@@ -158,6 +161,7 @@ export default function DateSectionForm({ prefix = "" }) {
             onChange={(e) => handleDayChange(e.target.value)}
             placeholder={t("setup.dayPlaceholder")}
             inputMode="numeric" autoComplete="off" min="1" max="31" maxLength={2} pattern="[0-9]*" aria-describedby={id("dateHelp")}
+            aria-invalid={dayError || undefined}
             className={dayError ? "setup-input setup-input--error" : "setup-input"}
           />
         </div>
@@ -180,10 +184,11 @@ export default function DateSectionForm({ prefix = "" }) {
           <input
             id={id("weddingYear")} value={formData.weddingYear}
             onChange={(e) => handleYearChange(e.target.value)}
-            placeholder={t("setup.yearPlaceholder")} inputMode="numeric" autoComplete="off" maxLength={4} pattern="[0-9]*" aria-describedby={id("dateHelp")}
+            placeholder={t("setup.yearPlaceholder")} inputMode="numeric" autoComplete="off" maxLength={4} pattern="[0-9]*" aria-describedby={id("dateHelp") + " " + id("yearMaxHint")}
+            aria-invalid={yearError || undefined}
             className={yearError ? "setup-input setup-input--error" : "setup-input"}
           />
-          <p className="setup-help">{t("setup.yearMaxHint", { year: maxAllowedYear })}</p>
+          <p className="setup-help" id={id("yearMaxHint")}>{t("setup.yearMaxHint", { year: maxAllowedYear })}</p>
         </div>
       </div>
 
@@ -196,6 +201,7 @@ export default function DateSectionForm({ prefix = "" }) {
             id={id("weddingHour")} value={formData.weddingHour}
             onChange={(e) => handleHourChange(e.target.value)}
             placeholder={t("setup.hourPlaceholder")} inputMode="numeric" autoComplete="off" min="0" max="23" maxLength={2} pattern="[0-9]*" aria-describedby={id("timeHelp")}
+            aria-invalid={hourError || undefined}
             className={hourError ? "setup-input setup-input--error" : "setup-input"}
           />
         </div>
@@ -205,6 +211,7 @@ export default function DateSectionForm({ prefix = "" }) {
             id={id("weddingMinute")} value={formData.weddingMinute}
             onChange={(e) => handleMinuteChange(e.target.value)} onBlur={handleMinuteBlur}
             placeholder={t("setup.minutePlaceholder")} inputMode="numeric" autoComplete="off" min="0" max="59" maxLength={2} pattern="[0-9]*" aria-describedby={id("timeHelp")}
+            aria-invalid={minuteError || undefined}
             className={minuteError ? "setup-input setup-input--error" : "setup-input"}
           />
         </div>

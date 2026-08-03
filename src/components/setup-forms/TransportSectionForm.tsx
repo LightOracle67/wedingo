@@ -83,7 +83,7 @@ export default function TransportSectionForm({ prefix = "" }) {
       {enabled !== "none" ? (
         <>
           <div className="story-divider" />
-          <label className="setup-label">{t("setup.transportDeparturesLabel")}</label>
+          <p className="setup-label">{t("setup.transportDeparturesLabel")}</p>
           <p className="setup-help">{t("setup.transportDeparturesHint")}</p>
 
           {departures.map((dep, i) => (

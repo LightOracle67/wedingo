@@ -16,7 +16,9 @@ const AccessTab = memo(function AccessTab({ setupToken, handleResetTokenFromAdmi
         <p className="setup-help setup-help--tight">
           {t("access.description")}
         </p>
+        <label className="sr-only" htmlFor="setupTokenDisplay">{t("access.description")}</label>
         <input
+          id="setupTokenDisplay"
           className="setup-input setup-token-input"
           value={setupToken || ""}
           readOnly

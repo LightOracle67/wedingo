@@ -44,9 +44,10 @@ export default function GiftsSectionForm({ prefix = "" }) {
         autoComplete="off"
         maxLength={100}
         className={ibanLooksInvalid ? "setup-input setup-input--error" : "setup-input"}
-        aria-describedby={id("bankInfoHint")}
+        aria-invalid={ibanLooksInvalid || undefined}
+        aria-describedby={ibanLooksInvalid ? `${id("bankInfoHint")} ${id("ibanError")}` : id("bankInfoHint")}
       />
-      {ibanLooksInvalid ? <p className="setup-help" style={{ color: "#ef4444" }}>{t("errors.ibanInvalid")}</p> : null}
+      {ibanLooksInvalid ? <p className="setup-help" id={id("ibanError")} style={{ color: "#ef4444" }}>{t("errors.ibanInvalid")}</p> : null}
       <p className="setup-help" id={id("bankInfoHint")}>{t("setup.bankInfoHint")}</p>
     </>
   );

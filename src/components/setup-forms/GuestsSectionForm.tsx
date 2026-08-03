@@ -34,7 +34,7 @@ export default function GuestsSectionForm({ prefix = "" }) {
 
   return (
     <>
-      <label className="setup-label">{t("setup.kidsLabel")}</label>
+      <p className="setup-label">{t("setup.kidsLabel")}</p>
       <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))" }}>
         {[
           { value: "playArea", key: "kidsPolicy.options.playArea" },
@@ -42,15 +42,15 @@ export default function GuestsSectionForm({ prefix = "" }) {
           { value: "adultOnly", key: "kidsPolicy.options.adultOnly" },
         ].map(({ value, key }) => (
           <label key={value} className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem", color: "var(--setup-title)" }}>
-            <input type="checkbox" checked={formData.kidsPolicy === value} onChange={handleKidsPolicyChange} value={value} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+            <input id={id("kids-" + value)} type="checkbox" checked={formData.kidsPolicy === value} onChange={handleKidsPolicyChange} value={value} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
             {t(key)}
           </label>
         ))}
       </div>
-      <p className="setup-help">{t("setup.kidsHint")}</p>
+      <p className="setup-help" id={id("kidsHint")}>{t("setup.kidsHint")}</p>
 
       <div className="story-divider" style={{ margin: "0.75rem 0" }} />
-      <label className="setup-label">{t("setup.dressCodeLabel")}</label>
+      <p className="setup-label">{t("setup.dressCodeLabel")}</p>
       <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))" }}>
         {[
           { value: "Traje de gala", key: "setup.dressCodeGala" },
@@ -60,22 +60,22 @@ export default function GuestsSectionForm({ prefix = "" }) {
           { value: "Ropa cómoda", key: "setup.dressCodeComfortable" },
         ].map(({ value, key }) => (
           <label key={value} className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem", color: "var(--setup-title)" }}>
-            <input type="checkbox" checked={formData.weddingDressCode === value} onChange={() => updateFormField("weddingDressCode", formData.weddingDressCode === value ? "" : value)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+            <input id={id("dressCode-" + value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-"))} type="checkbox" checked={formData.weddingDressCode === value} onChange={() => updateFormField("weddingDressCode", formData.weddingDressCode === value ? "" : value)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
             {t(key)}
           </label>
         ))}
       </div>
-      <p className="setup-help">{t("setup.dressCodeHint")}</p>
-      <label className="setup-label" style={{ marginBottom: "0.3rem", display: "block" }}>{t("setup.menuCelebrationLabel")}</label>
+      <p className="setup-help" id={id("dressCodeHint")}>{t("setup.dressCodeHint")}</p>
+      <p className="setup-label" style={{ marginBottom: "0.3rem" }}>{t("setup.menuCelebrationLabel")}</p>
 
       <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.9rem", cursor: "pointer", marginBottom: "0.5rem" }}>
-        <input type="checkbox" checked={formData.menuEnabled === "true"} onChange={handleMenuEnabledChange} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+        <input id={id("menuEnabled")} type="checkbox" checked={formData.menuEnabled === "true"} onChange={handleMenuEnabledChange} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
         <span>{t("setup.menuEnabledLabel")}</span>
       </label>
 
       {formData.menuEnabled === "true" ? (
         <>
-          <p className="setup-help" style={{ marginBottom: "0.4rem" }}>{t("setup.menuHint")}</p>
+          <p className="setup-help" id={id("menuHint")} style={{ marginBottom: "0.4rem" }}>{t("setup.menuHint")}</p>
           {[
             { key: "menuCarne", labelKey: "setup.menuCarneLabel", phKey: "setup.menuCarnePlaceholder" },
             { key: "menuPescado", labelKey: "setup.menuPescadoLabel", phKey: "setup.menuPescadoPlaceholder" },
@@ -85,29 +85,29 @@ export default function GuestsSectionForm({ prefix = "" }) {
             return (
               <div key={key} style={{ marginBottom: "0.5rem" }}>
                 <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", cursor: "pointer", fontSize: "0.85rem", color: "var(--setup-title)" }}>
-                  <input type="checkbox" checked={!!val} onChange={handleMenuToggle} data-menu-key={key} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
-                  {t(labelKey)} <CharacterCounter current={val.length} max={2000} />
+                  <input id={id(key)} type="checkbox" checked={!!val} onChange={handleMenuToggle} data-menu-key={key} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+                  <span id={id(key + "Label")}>{t(labelKey)}</span> <CharacterCounter current={val.length} max={2000} />
                 </label>
-                {!!val && <textarea className="setup-textarea" value={val} onChange={handleMenuFieldChange} data-menu-key={key} placeholder={t(phKey)} rows={2} style={{ marginTop: "0.15rem", fontSize: "0.85rem" }} />}
+                {!!val && <textarea id={id(key + "Text")} className="setup-textarea" value={val} onChange={handleMenuFieldChange} data-menu-key={key} placeholder={t(phKey)} rows={2} aria-label={t(labelKey)} style={{ marginTop: "0.15rem", fontSize: "0.85rem" }} />}
               </div>
             );
           })}
           <div style={{ marginBottom: "0.5rem" }}>
-            <p className="setup-label" style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}>{t("setup.postreLabel")} <CharacterCounter current={(formData.menuPostre || "").length} max={2000} /></p>
-            <textarea className="setup-textarea" value={formData.menuPostre || ""} onChange={handleMenuPostreChange} placeholder={t("setup.postrePlaceholder")} rows={2} style={{ fontSize: "0.85rem" }} />
+            <p className="setup-label" id={id("postreLabel")} style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}>{t("setup.postreLabel")} <CharacterCounter current={(formData.menuPostre || "").length} max={2000} /></p>
+            <textarea id={id("menuPostre")} className="setup-textarea" value={formData.menuPostre || ""} onChange={handleMenuPostreChange} placeholder={t("setup.postrePlaceholder")} rows={2} aria-label={t("setup.postreLabel")} style={{ fontSize: "0.85rem" }} />
           </div>
           <p className="setup-help">{t("setup.menuRequiredText")}</p>
         </>
       ) : (
         <>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <p className="setup-label" style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}>{t("setup.menuTextoLabel")} <CharacterCounter current={(formData.menuTexto || "").length} max={2000} /></p>
+            <p className="setup-label" id={id("menuTextoLabel")} style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}>{t("setup.menuTextoLabel")} <CharacterCounter current={(formData.menuTexto || "").length} max={2000} /></p>
           </div>
-          <textarea className="setup-textarea" value={formData.menuTexto} onChange={handleMenuTextoChange} placeholder={t("setup.menuTextoPlaceholder")} rows={3} />
-          <p className="setup-help">{t("setup.menuTextoHint")}</p>
+          <textarea id={id("menuTexto")} className="setup-textarea" value={formData.menuTexto} onChange={handleMenuTextoChange} placeholder={t("setup.menuTextoPlaceholder")} rows={3} aria-label={t("setup.menuTextoLabel")} />
+          <p className="setup-help" id={id("menuTextoHint")}>{t("setup.menuTextoHint")}</p>
           <div style={{ marginTop: "0.5rem" }}>
             <p className="setup-label" style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}>{t("setup.postreLabel")} <CharacterCounter current={(formData.menuPostre || "").length} max={2000} /></p>
-            <textarea className="setup-textarea" value={formData.menuPostre || ""} onChange={handleMenuPostreChange} placeholder={t("setup.postrePlaceholder")} rows={2} style={{ fontSize: "0.85rem" }} />
+            <textarea id={id("menuPostre")} className="setup-textarea" value={formData.menuPostre || ""} onChange={handleMenuPostreChange} placeholder={t("setup.postrePlaceholder")} rows={2} aria-label={t("setup.postreLabel")} style={{ fontSize: "0.85rem" }} />
           </div>
         </>
       )}

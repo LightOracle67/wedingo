@@ -61,8 +61,8 @@ const InvitationsTab = memo(function InvitationsTab() {
       {error && <p className="setup-error">{error}</p>}
 
       <div className="admin-filters" style={{ marginBottom: "1rem" }}>
-        <input className="setup-input" value={search} onChange={(e) => setSearch(e.target.value)}
-          placeholder={t("superadmin.searchTokenPlaceholder")} autoComplete="off" />
+        <input id="superadminSearch" className="setup-input" value={search} onChange={(e) => setSearch(e.target.value)}
+          placeholder={t("superadmin.searchTokenPlaceholder")} autoComplete="off" aria-label={t("superadmin.searchTokenPlaceholder")} />
       </div>
 
       <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", marginBottom: "1rem" }}>
