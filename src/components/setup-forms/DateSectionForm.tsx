@@ -258,11 +258,6 @@ export default function DateSectionForm({ prefix = "" }) {
           />
           <p className="setup-help" id={id("yearMaxHint")}>{t("setup.yearMaxHint", { year: maxAllowedYear })}</p>
         </div>
-      </div>
-
-      <p className="setup-help" id={id("dateHelp")}>{t("setup.dateHint")}</p>
-
-      <div className="setup-date-grid">
         <div>
           <label className="setup-label setup-label--required" htmlFor={id("weddingTime")}>{t("setup.timeInputLabel")}</label>
           <input
@@ -280,6 +275,8 @@ export default function DateSectionForm({ prefix = "" }) {
           />
         </div>
       </div>
+
+      <p className="setup-help" id={id("dateHelp")}>{t("setup.dateHint")}</p>
 
       <p className="setup-help" id={id("timeHelp")}>{t("setup.timeHint")}</p>
 
