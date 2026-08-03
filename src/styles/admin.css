@@ -657,6 +657,15 @@ select.setup-input {
   margin: 0 auto;
   padding: var(--spacing-md);
 }
+.transport-departure-url {
+  flex: 1;
+}
+@media (max-width: 640px) {
+  .transport-departure-url {
+    flex-basis: 100%;
+  }
+}
+
 .setup-date-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));

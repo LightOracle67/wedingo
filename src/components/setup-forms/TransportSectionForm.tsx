@@ -111,7 +111,7 @@ export default function TransportSectionForm({ prefix = "" }) {
                   onChange={handleDepartureField(i, "time")}
                 />
               </div>
-              <div style={{ flex: 1 }}>
+              <div className="transport-departure-url">
                 <label className="setup-label" htmlFor={id(`departureUrl${i}`)} style={{ fontSize: "0.75rem" }}>
                   {t("setup.transportUrlLabel")}
                   {dep.url && !isValidGoogleMapsUrl(dep.url) ? (
