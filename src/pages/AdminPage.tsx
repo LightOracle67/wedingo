@@ -269,8 +269,8 @@ export default function AdminPage() {
 
   return (
     <div className="setup-layout setup-layout--full">
-      <section className="setup-card setup-card--wide setup-card--full allow-select" aria-label={t("admin.privateArea")} style={{ borderRadius: "1rem" }}>
-        {/* ── Cabecera del panel ── */}
+      {/* ── Contenedor de títulos y navegación ── */}
+      <section className="setup-card setup-card--title allow-select" aria-label={t("admin.privateArea")} style={{ borderRadius: "1rem" }}>
         <header className="setup-header">
           <div>
             <p className="setup-eyebrow">{t("admin.privateArea")}</p>
@@ -295,8 +295,10 @@ export default function AdminPage() {
             </button>
           ))}
         </nav>
+      </section>
 
-        {/* ── Contenido de la pestaña activa ── */}
+      {/* ── Contenedor de secciones (contenido de la pestaña activa) ── */}
+      <section className="setup-card setup-card--content allow-select" aria-label={t("admin.privateArea")} style={{ borderRadius: "1rem" }}>
         <Suspense fallback={<div className="page-loading" style={{ minHeight: "10rem", margin: "1rem" }} />}>
           <div className="setup-form" role="tabpanel" id={"tabpanel-" + activeTab} aria-labelledby={"tab-" + activeTab}>
             {/* Pestaña: Panel de control */}
