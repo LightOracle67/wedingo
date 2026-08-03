@@ -1,6 +1,7 @@
 import { memo, useCallback, useMemo } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { useApp } from "../../contexts";
+import { extractPlaceNameFromUrl } from "../../lib/geo-utils";
 import CornerDecorations from "../../components/CornerDecorations";
 
 const ALLERGIES = ["sin gluten", "sin lactosa", "alergia a frutos secos", "alergia a mariscos"];
@@ -99,7 +100,9 @@ const RsvpSection = memo(function RsvpSection({
   const hasTransportChoices = departures.length > 0;
 
   const departureLabel = useCallback((dep: Departure) => {
-    const typeLabel = t(dep.type === "taxi" ? "transport.optionTaxi" : "transport.optionBus");
+    const typeLabel = t(dep.type === "taxi" ? "transport.typeTaxi" : "transport.typeBus");
+    const placeName = dep.url ? extractPlaceNameFromUrl(dep.url) : "";
+    if (placeName) return `${placeName} (${typeLabel})`;
     return dep.time ? `${dep.time} (${typeLabel})` : typeLabel;
   }, [t]);
 
@@ -243,6 +246,8 @@ const RsvpSection = memo(function RsvpSection({
                 const mode = rsvpForm.transportMode || "own";
                 if (mode !== "bus" && mode !== "taxi") return null;
                 const typeDepartures = departuresOfType(mode);
+                const selectedIdx = Number.parseInt(rsvpForm.transportChoice || "", 10);
+                const selectedDep = Number.isFinite(selectedIdx) ? departures[selectedIdx] : undefined;
                 return (
                   <>
                     <label className="setup-label" htmlFor="rsvpTransportDeparture" style={{ marginTop: "0.5rem", display: "block" }}>{t("rsvp.transportDepartureLabel")}</label>
@@ -254,6 +259,9 @@ const RsvpSection = memo(function RsvpSection({
                         <option key={departures.indexOf(dep)} value={String(departures.indexOf(dep))}>{departureLabel(dep)}</option>
                       ))}
                     </select>
+                    {selectedDep?.time ? (
+                      <p className="setup-help" style={{ marginTop: "0.2rem" }}>{t("rsvp.transportPickupTime", { time: selectedDep.time })}</p>
+                    ) : null}
                   </>
                 );
               })()}
@@ -301,6 +309,8 @@ const RsvpSection = memo(function RsvpSection({
                         const mode = rsvpForm.companionTransportModes?.[i] || "own";
                         if (mode !== "bus" && mode !== "taxi") return null;
                         const typeDepartures = departuresOfType(mode);
+                        const selectedIdx = Number.parseInt(rsvpForm.companionTransportChoices?.[i] || "", 10);
+                        const selectedDep = Number.isFinite(selectedIdx) ? departures[selectedIdx] : undefined;
                         return (
                           <>
                             <label className="setup-label" htmlFor={`companion-departure-${i}`} style={{ marginTop: "0.5rem", display: "block", fontSize: "0.85rem" }}>{t("rsvp.transportDepartureLabel")}</label>
@@ -312,6 +322,9 @@ const RsvpSection = memo(function RsvpSection({
                                 <option key={departures.indexOf(dep)} value={String(departures.indexOf(dep))}>{departureLabel(dep)}</option>
                               ))}
                             </select>
+                            {selectedDep?.time ? (
+                              <p className="setup-help" style={{ marginTop: "0.15rem", fontSize: "0.8rem" }}>{t("rsvp.transportPickupTime", { time: selectedDep.time })}</p>
+                            ) : null}
                           </>
                         );
                       })()}

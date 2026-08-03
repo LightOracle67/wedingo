@@ -112,7 +112,7 @@ describe("AttendanceTab", () => {
         ])}
       />
     );
-    expect(screen.getByText("transport.optionTaxi (14:30)")).toBeDefined();
+    expect(screen.getByText("transport.typeTaxi (14:30)")).toBeDefined();
   });
 
   it("renders own car when transport mode is own", () => {

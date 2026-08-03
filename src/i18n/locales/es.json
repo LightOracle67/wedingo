@@ -185,7 +185,8 @@
     "transportOwnCarOption": "Usaré mi coche propio",
     "transportBusOption": "Usaré el Autobús",
     "transportTaxiOption": "O usaré el Taxi",
-    "transportDepartureLabel": "Salida"
+    "transportDepartureLabel": "Salida",
+    "transportPickupTime": "Te recogeremos a las {{time}}"
   },
   "public": {
     "loadingInvitation": "Cargando invitación…",
@@ -1094,6 +1095,8 @@
     "optionBus": "Contaremos con un autobús para los invitados.",
     "optionTaxi": "Habrá taxis disponibles para los invitados.",
     "optionBoth": "Contaremos con autobús y taxis para los invitados.",
+    "typeBus": "Autobús",
+    "typeTaxi": "Taxi",
     "apology": "Disculpa las molestias: no disponemos de transporte propio para este evento, por lo que te pedimos que llegues con tu coche particular."
   }
 }

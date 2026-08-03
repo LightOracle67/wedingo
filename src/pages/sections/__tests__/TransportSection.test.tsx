@@ -32,8 +32,8 @@ describe("TransportSection", () => {
     expect(screen.getByText("transport.optionBoth")).toBeDefined();
     expect(screen.getByText(/12:00/)).toBeDefined();
     expect(screen.getByText(/14:30/)).toBeDefined();
-    expect(screen.getByText(/transport.optionBus/)).toBeDefined();
-    expect(screen.getByText(/transport.optionTaxi/)).toBeDefined();
+    expect(screen.getByText(/transport.typeBus/)).toBeDefined();
+    expect(screen.getByText(/transport.typeTaxi/)).toBeDefined();
     expect(screen.getAllByTestId("map-embed")).toHaveLength(1);
   });
 

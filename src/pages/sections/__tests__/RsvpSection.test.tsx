@@ -348,10 +348,42 @@ describe("RsvpSection", () => {
     );
     const select = document.getElementById("rsvpTransportDeparture") as HTMLSelectElement;
     expect(select).toBeDefined();
-    expect([...select.options].map((o) => o.textContent)).toEqual(["14:30 (transport.optionTaxi)"]);
+    expect([...select.options].map((o) => o.textContent)).toEqual(["14:30 (transport.typeTaxi)"]);
+    expect(screen.getByText("rsvp.transportPickupTime")).toBeDefined();
     fireEvent.click(screen.getByLabelText("rsvp.transportBusOption"));
     expect(update).toHaveBeenCalledWith("transportMode", "bus");
     expect(update).toHaveBeenCalledWith("transportChoice", "0");
+  });
+
+  it("shows the departure place name in the options when the URL is valid", () => {
+    render(
+      <RsvpSection
+        {...baseProps}
+        rsvpForm={{ ...baseForm, attendance: "alone", transportMode: "bus", transportChoice: "0" }}
+        transportEnabled="bus"
+        transportDepartures={JSON.stringify([
+          { type: "bus", time: "12:00", url: "https://www.google.com/maps/place/Plaza+Mayor/@40.41,-3.70,17z" },
+        ])}
+      />,
+    );
+    const select = document.getElementById("rsvpTransportDeparture") as HTMLSelectElement;
+    expect([...select.options].map((o) => o.textContent)).toEqual(["Plaza Mayor (transport.typeBus)"]);
+    expect(screen.getByText("rsvp.transportPickupTime")).toBeDefined();
+  });
+
+  it("shows pickup time of the selected departure", () => {
+    render(
+      <RsvpSection
+        {...baseProps}
+        rsvpForm={{ ...baseForm, attendance: "alone", transportMode: "bus", transportChoice: "0" }}
+        transportEnabled="bus"
+        transportDepartures={JSON.stringify([
+          { type: "bus", time: "12:00", url: "" },
+          { type: "bus", time: "16:00", url: "" },
+        ])}
+      />,
+    );
+    expect(screen.getByText("rsvp.transportPickupTime")).toBeDefined();
   });
 
   it("shows transport radios inside each companion card", () => {

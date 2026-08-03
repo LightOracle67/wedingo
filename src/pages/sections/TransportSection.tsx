@@ -68,7 +68,7 @@ const TransportSection = memo(function TransportSection({
                       <div key={i}>
                         {dep.time ? (
                           <p className="story-eyebrow" style={{ fontSize: "0.82rem" }}>
-                            {dep.time} <span style={{ opacity: 0.85 }}>({t(dep.type === "taxi" ? "transport.optionTaxi" : "transport.optionBus")})</span>
+                            {dep.time} <span style={{ opacity: 0.85 }}>({t(dep.type === "taxi" ? "transport.typeTaxi" : "transport.typeBus")})</span>
                           </p>
                         ) : null}
                         {placeName ? (

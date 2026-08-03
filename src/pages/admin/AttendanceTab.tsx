@@ -90,7 +90,7 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
   const resolveTransportLabel = useCallback((mode: string, choice: string) => {
     if (!mode && !choice) return "—";
     if (!mode || mode === "own") return t("attendance.transportOwnCar");
-    const typeLabel = t(mode === "taxi" ? "transport.optionTaxi" : "transport.optionBus");
+    const typeLabel = t(mode === "taxi" ? "transport.typeTaxi" : "transport.typeBus");
     const idx = Number.parseInt(choice, 10);
     const dep = departures[idx] as { time?: string } | undefined;
     if (dep && dep.time) return `${typeLabel} (${dep.time})`;

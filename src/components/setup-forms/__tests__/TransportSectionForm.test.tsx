@@ -21,6 +21,7 @@ vi.mock("../../../contexts", () => ({
 
 vi.mock("../../../lib/geo-utils", () => ({
   isValidGoogleMapsUrl: (url: string) => url.startsWith("https://www.google.com/maps/place/"),
+  extractPlaceNameFromUrl: (url: string) => (url.includes("place/") ? url.split("/place/")[1]?.split("/")[0]?.replace(/\+/g, " ") || "" : ""),
 }));
 
 import TransportSectionForm from "../TransportSectionForm";
@@ -150,5 +151,15 @@ describe("TransportSectionForm departures flow", () => {
     const select = screen.getByLabelText("setup.transportTypeLabel") as HTMLSelectElement;
     expect(select.disabled).toBe(false);
     expect(select.value).toBe("bus");
+  });
+
+  it("shows the site name hint when a valid departure URL is entered", () => {
+    renderForm();
+    fireEvent.change(screen.getByLabelText("setup.transportEnabledLabel"), { target: { value: "both" } });
+    fireEvent.click(screen.getByRole("button", { name: /setup.transportAddDeparture/ }));
+    const urlInput = screen.getByLabelText("setup.transportUrlLabel");
+    fireEvent.change(urlInput, { target: { value: "https://www.google.com/maps/place/Plaza+Mayor/@40.41,-3.70,17z" } });
+    expect(screen.getByText(/setup.siteNameLabel/)).toBeDefined();
+    expect(screen.getByText(/Plaza Mayor/)).toBeDefined();
   });
 });
