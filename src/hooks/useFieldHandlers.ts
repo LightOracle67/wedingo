@@ -3,7 +3,6 @@ import { useCallback } from "react";
 export function useFieldHandlers(
   updateFormField: (field: string, value: string) => void,
   maxAllowedYear: number,
-  weddingMinute: string,
 ) {
   const handleDayChange = useCallback((value: string) => {
     const digits = value.replace(/[^0-9]/g, "").slice(0, 2);
@@ -16,42 +15,26 @@ export function useFieldHandlers(
     updateFormField("weddingDay", String(clamped));
   }, [updateFormField]);
 
-  const handleHourChange = useCallback((value: string) => {
-    const digits = value.replace(/[^0-9]/g, "").slice(0, 2);
-    if (!digits) {
+  const handleTimeChange = useCallback((value: string) => {
+    if (!value) {
       updateFormField("weddingHour", "");
-      return;
-    }
-    const numericHour = Number.parseInt(digits, 10);
-    const clamped = Math.min(23, Math.max(0, numericHour));
-    updateFormField("weddingHour", String(clamped));
-  }, [updateFormField]);
-
-  const handleMinuteChange = useCallback((value: string) => {
-    const digits = value.replace(/[^0-9]/g, "").slice(0, 2);
-    if (!digits) {
       updateFormField("weddingMinute", "");
       return;
     }
-    if (digits.length === 1) {
-      updateFormField("weddingMinute", digits);
-      return;
-    }
-    const numericMinute = Number.parseInt(digits, 10);
-    const clamped = Math.min(59, Math.max(0, numericMinute));
-    updateFormField("weddingMinute", String(clamped).padStart(2, "0"));
+    const [hourPart, minutePart] = value.split(":");
+    const hourDigits = (hourPart || "").replace(/[^0-9]/g, "").slice(0, 2);
+    const minuteDigits = (minutePart || "").replace(/[^0-9]/g, "").slice(0, 2);
+    const numericHour = hourDigits ? Number.parseInt(hourDigits, 10) : NaN;
+    const numericMinute = minuteDigits ? Number.parseInt(minuteDigits, 10) : NaN;
+    const hour = Number.isFinite(numericHour) ? Math.min(23, Math.max(0, numericHour)) : NaN;
+    const minute = Number.isFinite(numericMinute) ? Math.min(59, Math.max(0, numericMinute)) : NaN;
+    updateFormField("weddingHour", Number.isFinite(hour) ? String(hour).padStart(2, "0") : "");
+    updateFormField("weddingMinute", Number.isFinite(minute) ? String(minute).padStart(2, "0") : "");
   }, [updateFormField]);
 
-  const handleMinuteBlur = useCallback(() => {
-    const digits = (weddingMinute || "").replace(/[^0-9]/g, "").slice(0, 2);
-    if (!digits) {
-      updateFormField("weddingMinute", "");
-      return;
-    }
-    const numericMinute = Number.parseInt(digits, 10);
-    const clamped = Math.min(59, Math.max(0, numericMinute));
-    updateFormField("weddingMinute", String(clamped).padStart(2, "0"));
-  }, [updateFormField, weddingMinute]);
+  const handleTimeBlur = useCallback((value: string) => {
+    handleTimeChange(value);
+  }, [handleTimeChange]);
 
   const handleYearChange = useCallback((value: string) => {
     const digits = value.replace(/[^0-9]/g, "").slice(0, 4);
@@ -68,7 +51,7 @@ export function useFieldHandlers(
   }, [updateFormField, maxAllowedYear]);
 
   return {
-    handleDayChange, handleHourChange, handleMinuteChange, handleMinuteBlur,
+    handleDayChange, handleTimeChange, handleTimeBlur,
     handleYearChange,
   };
 }

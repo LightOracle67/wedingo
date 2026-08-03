@@ -1,12 +1,16 @@
 import { useCallback, useMemo } from "react";
-import CharacterCounter from "../../components/CharacterCounter";
 import { useTranslation } from "react-i18next";
 import { useApp } from "../../contexts";
-import { MONTH_OPTIONS, MONTH_VALUE_TO_NUMBER } from "../../lib/constants";
+import { MONTH_OPTIONS, MONTH_VALUE_TO_NUMBER, MAX_SCHEDULE_EVENTS, MAX_SCHEDULE_EVENT_TEXT } from "../../lib/constants";
 import { isValidGoogleMapsUrl, convertToEmbedUrl, extractPlaceNameFromUrl } from "../../lib/geo-utils";
 
+interface ScheduleEvent {
+  time: string;
+  text: string;
+}
+
 export default function DateSectionForm({ prefix = "" }) {
-  const { formData, updateFormField, handleDayChange, handleYearChange, handleHourChange, handleMinuteChange, handleMinuteBlur, maxAllowedYear } = useApp();
+  const { formData, updateFormField, handleDayChange, handleYearChange, handleTimeChange, handleTimeBlur, maxAllowedYear } = useApp();
   const { t } = useTranslation();
   const id = (name: string) => `${prefix}${name}`;
 
@@ -38,16 +42,73 @@ export default function DateSectionForm({ prefix = "" }) {
     const n = Number.parseInt(y, 10);
     return !Number.isFinite(n) || y.length !== 4 || n < new Date().getFullYear() - 120 || n > maxAllowedYear;
   })();
-  const hourError = (() => {
-    const h = (formData.weddingHour || "").trim();
-    if (!h) return false;
-    return !/^([01]?[0-9]|2[0-3])$/.test(h);
+
+  const hourNum = formData.weddingHour ? Number.parseInt(formData.weddingHour, 10) : NaN;
+  const minuteNum = formData.weddingMinute ? Number.parseInt(formData.weddingMinute, 10) : NaN;
+  const hourValid = Number.isFinite(hourNum) && hourNum >= 0 && hourNum <= 23;
+  const minuteValid = Number.isFinite(minuteNum) && minuteNum >= 0 && minuteNum <= 59;
+  const timeError = (() => {
+    if (!formData.weddingHour && !formData.weddingMinute) return false;
+    return !(hourValid && minuteValid);
   })();
-  const minuteError = (() => {
-    const m = (formData.weddingMinute || "").trim();
-    if (!m) return false;
-    return !/^[0-5]?[0-9]$/.test(m);
+  const timeValue = hourValid && minuteValid
+    ? `${String(hourNum).padStart(2, "0")}:${String(minuteNum).padStart(2, "0")}`
+    : "";
+
+  const hasStoredScheduleEvents = (formData.weddingScheduleEvents || "").trim().length > 0;
+
+  const scheduleEvents: ScheduleEvent[] = (() => {
+    try {
+      const parsed = JSON.parse(formData.weddingScheduleEvents || "");
+      if (!Array.isArray(parsed)) return [];
+      return parsed
+        .slice(0, MAX_SCHEDULE_EVENTS)
+        .map((e: Record<string, unknown>) => ({
+          time: typeof e.time === "string" ? e.time.slice(0, 5) : "",
+          text: typeof e.text === "string" ? e.text.slice(0, MAX_SCHEDULE_EVENT_TEXT) : "",
+        }));
+    } catch {
+      return [];
+    }
   })();
+
+  const legacyEvents: ScheduleEvent[] = useMemo(() => {
+    if (hasStoredScheduleEvents) return [];
+    return (formData.weddingSchedule || "")
+      .split("\n")
+      .filter(Boolean)
+      .map((line: string) => {
+        const match = line.match(/^(\d{1,2}:\d{2})\s*(.*)$/);
+        if (match) return { time: match[1]!.padStart(5, "0"), text: match[2]!.trim() };
+        return { time: "", text: line.trim() };
+      })
+      .slice(0, MAX_SCHEDULE_EVENTS);
+  }, [formData.weddingSchedule, hasStoredScheduleEvents]);
+
+  const setScheduleEvents = useCallback((next: ScheduleEvent[]) => {
+    updateFormField("weddingScheduleEvents", JSON.stringify(next.slice(0, MAX_SCHEDULE_EVENTS)));
+  }, [updateFormField]);
+
+  const addScheduleEvent = useCallback(() => {
+    const current = scheduleEvents.length > 0 ? scheduleEvents : legacyEvents;
+    if (current.length >= MAX_SCHEDULE_EVENTS) return;
+    setScheduleEvents([...current, { time: "", text: "" }]);
+  }, [scheduleEvents, legacyEvents, setScheduleEvents]);
+
+  const handleScheduleEventField = useCallback((index: number, field: "time" | "text") =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const current = scheduleEvents.length > 0 ? scheduleEvents : legacyEvents;
+      const next = [...current];
+      next[index] = { ...(next[index] ?? { time: "", text: "" }), [field]: e.target.value };
+      setScheduleEvents(next);
+    }, [scheduleEvents, legacyEvents, setScheduleEvents]);
+
+  const removeScheduleEvent = useCallback((index: number) => {
+    const current = scheduleEvents.length > 0 ? scheduleEvents : legacyEvents;
+    setScheduleEvents(current.filter((_, i) => i !== index));
+  }, [scheduleEvents, legacyEvents, setScheduleEvents]);
+
+  const visibleScheduleEvents = scheduleEvents.length > 0 ? scheduleEvents : legacyEvents;
 
   return (
     <>
@@ -162,6 +223,8 @@ export default function DateSectionForm({ prefix = "" }) {
             placeholder={t("setup.dayPlaceholder")}
             inputMode="numeric" autoComplete="off" min="1" max="31" maxLength={2} pattern="[0-9]*" aria-describedby={id("dateHelp")}
             aria-invalid={dayError || undefined}
+            required
+            aria-required="true"
             className={dayError ? "setup-input setup-input--error" : "setup-input"}
           />
         </div>
@@ -172,6 +235,9 @@ export default function DateSectionForm({ prefix = "" }) {
             className="setup-input"
             value={formData.weddingMonth}
             onChange={(e) => updateFormField("weddingMonth", e.target.value)}
+            aria-describedby={id("dateHelp")}
+            required
+            aria-required="true"
           >
             <option value="" disabled>{t("setup.monthPlaceholder")}</option>
             {MONTH_OPTIONS.map((month) => (
@@ -186,6 +252,8 @@ export default function DateSectionForm({ prefix = "" }) {
             onChange={(e) => handleYearChange(e.target.value)}
             placeholder={t("setup.yearPlaceholder")} inputMode="numeric" autoComplete="off" maxLength={4} pattern="[0-9]*" aria-describedby={id("dateHelp") + " " + id("yearMaxHint")}
             aria-invalid={yearError || undefined}
+            required
+            aria-required="true"
             className={yearError ? "setup-input setup-input--error" : "setup-input"}
           />
           <p className="setup-help" id={id("yearMaxHint")}>{t("setup.yearMaxHint", { year: maxAllowedYear })}</p>
@@ -196,36 +264,82 @@ export default function DateSectionForm({ prefix = "" }) {
 
       <div className="setup-date-grid">
         <div>
-          <label className="setup-label setup-label--required" htmlFor={id("weddingHour")}>{t("setup.hourLabel")}</label>
+          <label className="setup-label setup-label--required" htmlFor={id("weddingTime")}>{t("setup.timeInputLabel")}</label>
           <input
-            id={id("weddingHour")} value={formData.weddingHour}
-            onChange={(e) => handleHourChange(e.target.value)}
-            placeholder={t("setup.hourPlaceholder")} inputMode="numeric" autoComplete="off" min="0" max="23" maxLength={2} pattern="[0-9]*" aria-describedby={id("timeHelp")}
-            aria-invalid={hourError || undefined}
-            className={hourError ? "setup-input setup-input--error" : "setup-input"}
-          />
-        </div>
-        <div>
-          <label className="setup-label setup-label--required" htmlFor={id("weddingMinute")}>{t("setup.minuteLabel")}</label>
-          <input
-            id={id("weddingMinute")} value={formData.weddingMinute}
-            onChange={(e) => handleMinuteChange(e.target.value)} onBlur={handleMinuteBlur}
-            placeholder={t("setup.minutePlaceholder")} inputMode="numeric" autoComplete="off" min="0" max="59" maxLength={2} pattern="[0-9]*" aria-describedby={id("timeHelp")}
-            aria-invalid={minuteError || undefined}
-            className={minuteError ? "setup-input setup-input--error" : "setup-input"}
+            id={id("weddingTime")}
+            type="time"
+            value={timeValue}
+            onChange={(e) => handleTimeChange(e.target.value)}
+            onBlur={(e) => handleTimeBlur(e.target.value)}
+            autoComplete="off"
+            aria-describedby={id("timeHelp")}
+            aria-invalid={timeError || undefined}
+            required
+            aria-required="true"
+            className={timeError ? "setup-input setup-input--error" : "setup-input"}
           />
         </div>
       </div>
 
       <p className="setup-help" id={id("timeHelp")}>{t("setup.timeHint")}</p>
 
-      <label className="setup-label" htmlFor={id("weddingSchedule")}>{t("setup.scheduleLabel")} <CharacterCounter current={(formData.weddingSchedule || "").length} max={2000} /></label>
-      <textarea
-        id={id("weddingSchedule")} className="setup-textarea" value={formData.weddingSchedule}
-        onChange={(e) => updateFormField("weddingSchedule", e.target.value.slice(0, 2000))}
-        placeholder={t("setup.schedulePlaceholder")} rows={4} maxLength={2000} autoComplete="off" aria-describedby={id("scheduleHelp")}
-      />
-      <p className="setup-help" id={id("scheduleHelp")}>{t("setup.scheduleHint")}</p>
+      <p className="setup-label" id={id("scheduleEventsLabel")}>{t("setup.scheduleLabel")}</p>
+      <p className="setup-help" id={id("scheduleEventsHint")}>{t("setup.scheduleEventsHint")}</p>
+
+      <div role="group" aria-labelledby={id("scheduleEventsLabel")} aria-describedby={id("scheduleEventsHint")}>
+        {visibleScheduleEvents.map((ev, i) => (
+          <div key={i} style={{ display: "flex", gap: "0.5rem", alignItems: "flex-start", marginTop: "0.5rem", flexWrap: "wrap" }}>
+            <div style={{ flex: "0 0 110px" }}>
+              <label className="setup-label" htmlFor={id(`scheduleEventTime${i}`)} style={{ fontSize: "0.75rem" }}>{t("setup.scheduleEventTimeLabel")}</label>
+              <input
+                id={id(`scheduleEventTime${i}`)}
+                className="setup-input"
+                type="time"
+                value={ev.time}
+                onChange={handleScheduleEventField(i, "time")}
+              />
+            </div>
+            <div style={{ flex: 1 }}>
+              <label className="setup-label" htmlFor={id(`scheduleEventText${i}`)} style={{ fontSize: "0.75rem" }}>
+                {t("setup.scheduleEventTextLabel")}
+              </label>
+              <input
+                id={id(`scheduleEventText${i}`)}
+                className="setup-input"
+                type="text"
+                value={ev.text}
+                onChange={handleScheduleEventField(i, "text")}
+                placeholder={t("setup.scheduleEventTextPlaceholder")}
+                maxLength={MAX_SCHEDULE_EVENT_TEXT}
+                autoComplete="off"
+              />
+            </div>
+            <button
+              type="button"
+              className="setup-button setup-button--ghost setup-button--compact"
+              onClick={() => removeScheduleEvent(i)}
+              style={{ marginTop: "1.4rem", flexShrink: 0 }}
+              aria-label={t("setup.scheduleRemoveEvent")}
+            >
+              ✕
+            </button>
+          </div>
+        ))}
+      </div>
+
+      {visibleScheduleEvents.length < MAX_SCHEDULE_EVENTS ? (
+        <button
+          type="button"
+          className="setup-button setup-button--ghost setup-button--compact"
+          onClick={addScheduleEvent}
+          style={{ marginTop: "0.6rem" }}
+        >
+          + {t("setup.scheduleAddEvent")}
+        </button>
+      ) : null}
+      {visibleScheduleEvents.length >= MAX_SCHEDULE_EVENTS ? (
+        <p className="setup-help">{t("setup.scheduleMaxEvents", { max: MAX_SCHEDULE_EVENTS })}</p>
+      ) : null}
     </>
   );
 }

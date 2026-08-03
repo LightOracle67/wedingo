@@ -53,6 +53,7 @@ const sampleConfig: InvitationConfig = {
   transportDepartures: "",
   
   weddingSchedule: "",
+  weddingScheduleEvents: "",
   weddingDressCode: "",
   couplePhoto: "",
   musicFile: "",

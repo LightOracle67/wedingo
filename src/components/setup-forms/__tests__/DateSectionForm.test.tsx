@@ -4,9 +4,8 @@ import { render, screen, fireEvent } from "@testing-library/react";
 const mockUpdateFormField = vi.fn();
 const mockHandleDayChange = vi.fn();
 const mockHandleYearChange = vi.fn();
-const mockHandleHourChange = vi.fn();
-const mockHandleMinuteChange = vi.fn();
-const mockHandleMinuteBlur = vi.fn();
+const mockHandleTimeChange = vi.fn();
+const mockHandleTimeBlur = vi.fn();
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
@@ -20,9 +19,11 @@ vi.mock("../../../lib/constants", () => ({
     { value: "undefmonth", label: "Undefined" },
   ],
   MONTH_VALUE_TO_NUMBER: { enero: 1, febrero: 2, marzo: 3 },
+  MAX_SCHEDULE_EVENTS: 10,
+  MAX_SCHEDULE_EVENT_TEXT: 60,
 }));
 
-const mockFormData = vi.hoisted(() => ({ weddingSiteURL: "" }));
+const mockFormData = vi.hoisted(() => ({ weddingSiteURL: "", weddingHour: "", weddingMinute: "", weddingSchedule: "", weddingScheduleEvents: "" }));
 vi.mock("../../../lib/geo-utils", () => ({
   isValidGoogleMapsUrl: (url: string) => url.startsWith("https://maps.google.com"),
   convertToEmbedUrl: (url: string) => url.replace("maps.google.com", "maps.google.com/embed"),
@@ -36,9 +37,8 @@ vi.mock("../../../contexts", () => ({
     updateFormField: mockUpdateFormField,
     handleDayChange: mockHandleDayChange,
     handleYearChange: mockHandleYearChange,
-    handleHourChange: mockHandleHourChange,
-    handleMinuteChange: mockHandleMinuteChange,
-    handleMinuteBlur: mockHandleMinuteBlur,
+    handleTimeChange: mockHandleTimeChange,
+    handleTimeBlur: mockHandleTimeBlur,
     maxAllowedYear: 2099,
   }),
 }));
@@ -49,6 +49,10 @@ describe("DateSectionForm", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     mockFormData.weddingSiteURL = "";
+    mockFormData.weddingHour = "";
+    mockFormData.weddingMinute = "";
+    mockFormData.weddingSchedule = "";
+    mockFormData.weddingScheduleEvents = "";
   });
 
   it("renders without crashing", () => {
@@ -63,10 +67,10 @@ describe("DateSectionForm", () => {
     expect(screen.getByText("setup.yearLabel")).toBeDefined();
   });
 
-  it("renders time fields", () => {
+  it("renders a single time input", () => {
     render(<DateSectionForm />);
-    expect(screen.getByText("setup.hourLabel")).toBeDefined();
-    expect(screen.getByText("setup.minuteLabel")).toBeDefined();
+    expect(screen.getByText("setup.timeInputLabel")).toBeDefined();
+    expect(screen.getByLabelText("setup.timeInputLabel")).toBeDefined();
   });
 
   it("renders year max hint", () => {
@@ -74,10 +78,11 @@ describe("DateSectionForm", () => {
     expect(screen.getByText("setup.yearMaxHint")).toBeDefined();
   });
 
-  it("renders schedule textarea", () => {
+  it("renders schedule events editor", () => {
     render(<DateSectionForm />);
     expect(screen.getByText("setup.scheduleLabel")).toBeDefined();
-    expect(screen.getByPlaceholderText("setup.schedulePlaceholder")).toBeDefined();
+    expect(screen.getByText("setup.scheduleEventsHint")).toBeDefined();
+    expect(screen.getByRole("button", { name: /setup.scheduleAddEvent/ })).toBeDefined();
   });
 
   it("renders month options", () => {
@@ -109,40 +114,51 @@ describe("DateSectionForm", () => {
     expect(mockHandleYearChange).toHaveBeenCalledWith("2025");
   });
 
-  it("calls handleHourChange on hour input change", () => {
+  it("calls handleTimeChange on time input change", () => {
     render(<DateSectionForm />);
-    const input = screen.getByLabelText("setup.hourLabel");
-    fireEvent.change(input, { target: { value: "14" } });
-    expect(mockHandleHourChange).toHaveBeenCalledWith("14");
+    const input = screen.getByLabelText("setup.timeInputLabel");
+    fireEvent.change(input, { target: { value: "14:30" } });
+    expect(mockHandleTimeChange).toHaveBeenCalledWith("14:30");
   });
 
-  it("calls handleMinuteChange on minute input change", () => {
+  it("calls handleTimeBlur on time input blur", () => {
     render(<DateSectionForm />);
-    const input = screen.getByLabelText("setup.minuteLabel");
-    fireEvent.change(input, { target: { value: "30" } });
-    expect(mockHandleMinuteChange).toHaveBeenCalledWith("30");
-  });
-
-  it("calls handleMinuteBlur on minute blur", () => {
-    render(<DateSectionForm />);
-    const input = screen.getByLabelText("setup.minuteLabel");
+    const input = screen.getByLabelText("setup.timeInputLabel");
     fireEvent.blur(input);
-    expect(mockHandleMinuteBlur).toHaveBeenCalled();
+    expect(mockHandleTimeBlur).toHaveBeenCalled();
   });
 
-  it("calls updateFormField on schedule change", () => {
+  it("shows time input value from stored hour and minute", () => {
+    mockFormData.weddingHour = "15";
+    mockFormData.weddingMinute = "5";
     render(<DateSectionForm />);
-    const textarea = screen.getByPlaceholderText("setup.schedulePlaceholder");
-    fireEvent.change(textarea, { target: { value: "Ceremony at 5pm" } });
-    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingSchedule", "Ceremony at 5pm");
+    const input = screen.getByLabelText("setup.timeInputLabel") as HTMLInputElement;
+    expect(input.value).toBe("15:05");
   });
 
-  it("limits schedule to 2000 characters", () => {
+  it("adds a schedule event and stores it as JSON", () => {
     render(<DateSectionForm />);
-    const textarea = screen.getByPlaceholderText("setup.schedulePlaceholder");
-    const longText = "a".repeat(3000);
-    fireEvent.change(textarea, { target: { value: longText } });
-    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingSchedule", "a".repeat(2000));
+    fireEvent.click(screen.getByRole("button", { name: /setup.scheduleAddEvent/ }));
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingScheduleEvents", JSON.stringify([{ time: "", text: "" }]));
+  });
+
+  it("caps schedule events at 10", () => {
+    const many = Array.from({ length: 12 }, (_, i) => ({ time: `${String(i).padStart(2, "0")}:00`, text: `Evento ${i}` }));
+    mockFormData.weddingScheduleEvents = JSON.stringify(many);
+    render(<DateSectionForm />);
+    expect(screen.getAllByLabelText("setup.scheduleEventTimeLabel")).toHaveLength(10);
+    expect(screen.getByText("setup.scheduleMaxEvents")).toBeDefined();
+  });
+
+  it("seeds events from legacy schedule lines", () => {
+    mockFormData.weddingSchedule = "18:00 Recepción de invitados\nCeremonia a las 19";
+    mockFormData.weddingScheduleEvents = "";
+    render(<DateSectionForm />);
+    const times = screen.getAllByLabelText("setup.scheduleEventTimeLabel") as HTMLInputElement[];
+    const texts = screen.getAllByLabelText("setup.scheduleEventTextLabel") as HTMLInputElement[];
+    expect(times[0]!.value).toBe("18:00");
+    expect(texts[0]!.value).toBe("Recepción de invitados");
+    expect(texts[1]!.value).toBe("Ceremonia a las 19");
   });
 
   it("renders site URL input", () => {

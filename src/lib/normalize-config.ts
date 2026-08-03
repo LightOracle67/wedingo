@@ -1,4 +1,24 @@
-import { STORY_SECTION_ORDER, THEME_VALUES } from "./constants";
+import { STORY_SECTION_ORDER, THEME_VALUES, MAX_SCHEDULE_EVENTS, MAX_SCHEDULE_EVENT_TEXT } from "./constants";
+
+function normalizeScheduleEvents(value: unknown): string {
+  if (typeof value !== "string" || !value.trim()) return "";
+  try {
+    const parsed = JSON.parse(value);
+    if (!Array.isArray(parsed)) return "";
+    const cleaned = parsed
+      .slice(0, MAX_SCHEDULE_EVENTS)
+      .map((e) => {
+        if (!e || typeof e !== "object") return null;
+        const time = typeof (e as Record<string, unknown>).time === "string" ? ((e as Record<string, unknown>).time as string).trim().slice(0, 5) : "";
+        const text = typeof (e as Record<string, unknown>).text === "string" ? ((e as Record<string, unknown>).text as string).trim().slice(0, MAX_SCHEDULE_EVENT_TEXT) : "";
+        return { time, text };
+      })
+      .filter((e): e is { time: string; text: string } => e !== null);
+    return JSON.stringify(cleaned);
+  } catch {
+    return "";
+  }
+}
 
 function normalizeTransportDepartures(value: unknown): string {
   if (typeof value !== "string" || !value.trim()) return "";
@@ -40,6 +60,7 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   weddingHour: s(value?.weddingHour),
   weddingMinute: s(value?.weddingMinute),
   weddingSchedule: s(value?.weddingSchedule),
+  weddingScheduleEvents: normalizeScheduleEvents(value?.weddingScheduleEvents),
   weddingDressCode: s(value?.weddingDressCode),
   theme:
     typeof value?.theme === "string" && THEME_VALUES.has(value.theme.trim())

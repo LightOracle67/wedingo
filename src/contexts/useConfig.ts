@@ -17,9 +17,8 @@ interface ConfigContextValue {
   reloadConfig: () => Promise<void>;
   handleSaveSetup: (event: React.FormEvent) => Promise<void>;
   handleDayChange: (value: string) => void;
-  handleHourChange: (value: string) => void;
-  handleMinuteChange: (value: string) => void;
-  handleMinuteBlur: () => void;
+  handleTimeChange: (value: string) => void;
+  handleTimeBlur: (value: string) => void;
   handleYearChange: (value: string) => void;
   handleDeleteInvitation: () => Promise<void>;
   setHasStoredConfig: (v: boolean) => void;

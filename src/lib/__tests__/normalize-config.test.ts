@@ -166,4 +166,22 @@ describe("normalizeConfig", () => {
   it("returns empty departures for invalid JSON", () => {
     expect(normalizeConfig({ transportDepartures: "not-json" }).transportDepartures).toBe("");
   });
+
+  it("normalizes weddingScheduleEvents: caps at 10 and sanitizes entries", () => {
+    const twelve = Array.from({ length: 12 }, (_, i) => ({ time: `${String(i).padStart(2, "0")}:00`, text: `Evento ${i}` }));
+    const result = normalizeConfig({ weddingScheduleEvents: JSON.stringify(twelve) });
+    const parsed = JSON.parse(result.weddingScheduleEvents);
+    expect(parsed).toHaveLength(10);
+    expect(parsed[0]).toEqual({ time: "00:00", text: "Evento 0" });
+  });
+
+  it("truncates schedule event text to 60 characters", () => {
+    const result = normalizeConfig({ weddingScheduleEvents: JSON.stringify([{ time: "12:00", text: "x".repeat(80) }]) });
+    const parsed = JSON.parse(result.weddingScheduleEvents);
+    expect(parsed[0].text).toHaveLength(60);
+  });
+
+  it("returns empty schedule events for invalid JSON", () => {
+    expect(normalizeConfig({ weddingScheduleEvents: "not-json" }).weddingScheduleEvents).toBe("");
+  });
 });

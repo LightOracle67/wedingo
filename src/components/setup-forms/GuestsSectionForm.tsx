@@ -88,13 +88,13 @@ export default function GuestsSectionForm({ prefix = "" }) {
                   <input id={id(key)} type="checkbox" checked={!!val} onChange={handleMenuToggle} data-menu-key={key} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
                   <span id={id(key + "Label")}>{t(labelKey)}</span> <CharacterCounter current={val.length} max={2000} />
                 </label>
-                {!!val && <textarea id={id(key + "Text")} className="setup-textarea" value={val} onChange={handleMenuFieldChange} data-menu-key={key} placeholder={t(phKey)} rows={2} aria-label={t(labelKey)} style={{ marginTop: "0.15rem", fontSize: "0.85rem" }} />}
+                {!!val && <textarea id={id(key + "Text")} className="setup-textarea" value={val} onChange={handleMenuFieldChange} data-menu-key={key} placeholder={t(phKey)} rows={2} aria-label={t(labelKey)} aria-describedby={id("menuHint")} style={{ marginTop: "0.15rem", fontSize: "0.85rem" }} />}
               </div>
             );
           })}
           <div style={{ marginBottom: "0.5rem" }}>
             <p className="setup-label" id={id("postreLabel")} style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}>{t("setup.postreLabel")} <CharacterCounter current={(formData.menuPostre || "").length} max={2000} /></p>
-            <textarea id={id("menuPostre")} className="setup-textarea" value={formData.menuPostre || ""} onChange={handleMenuPostreChange} placeholder={t("setup.postrePlaceholder")} rows={2} aria-label={t("setup.postreLabel")} style={{ fontSize: "0.85rem" }} />
+            <textarea id={id("menuPostre")} className="setup-textarea" value={formData.menuPostre || ""} onChange={handleMenuPostreChange} placeholder={t("setup.postrePlaceholder")} rows={2} aria-label={t("setup.postreLabel")} aria-describedby={id("menuHint")} style={{ fontSize: "0.85rem" }} />
           </div>
           <p className="setup-help">{t("setup.menuRequiredText")}</p>
         </>
@@ -103,11 +103,11 @@ export default function GuestsSectionForm({ prefix = "" }) {
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <p className="setup-label" id={id("menuTextoLabel")} style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}>{t("setup.menuTextoLabel")} <CharacterCounter current={(formData.menuTexto || "").length} max={2000} /></p>
           </div>
-          <textarea id={id("menuTexto")} className="setup-textarea" value={formData.menuTexto} onChange={handleMenuTextoChange} placeholder={t("setup.menuTextoPlaceholder")} rows={3} aria-label={t("setup.menuTextoLabel")} />
+          <textarea id={id("menuTexto")} className="setup-textarea" value={formData.menuTexto} onChange={handleMenuTextoChange} placeholder={t("setup.menuTextoPlaceholder")} rows={3} aria-label={t("setup.menuTextoLabel")} aria-describedby={id("menuTextoHint")} />
           <p className="setup-help" id={id("menuTextoHint")}>{t("setup.menuTextoHint")}</p>
           <div style={{ marginTop: "0.5rem" }}>
             <p className="setup-label" style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}>{t("setup.postreLabel")} <CharacterCounter current={(formData.menuPostre || "").length} max={2000} /></p>
-            <textarea id={id("menuPostre")} className="setup-textarea" value={formData.menuPostre || ""} onChange={handleMenuPostreChange} placeholder={t("setup.postrePlaceholder")} rows={2} aria-label={t("setup.postreLabel")} style={{ fontSize: "0.85rem" }} />
+            <textarea id={id("menuPostre")} className="setup-textarea" value={formData.menuPostre || ""} onChange={handleMenuPostreChange} placeholder={t("setup.postrePlaceholder")} rows={2} aria-label={t("setup.postreLabel")} aria-describedby={id("menuHint")} style={{ fontSize: "0.85rem" }} />
           </div>
         </>
       )}

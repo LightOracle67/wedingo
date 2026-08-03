@@ -64,4 +64,52 @@ describe("InfoSection", () => {
     );
     expect(screen.getByText("Custom policy text")).toBeDefined();
   });
+
+  it("renders schedule events with time and text", () => {
+    render(
+      <InfoSection
+        className="test"
+        style={{}}
+        weddingSchedule={"18:00 Legacy line"}
+        weddingScheduleEvents={JSON.stringify([
+          { time: "18:00", text: "Ceremonia" },
+          { time: "", text: "Cóctel sin hora" },
+        ])}
+        weddingDressCode=""
+        kidsPolicy=""
+      />,
+    );
+    expect(screen.getByText("18:00")).toBeDefined();
+    expect(screen.getByText("Ceremonia")).toBeDefined();
+    expect(screen.getByText("Cóctel sin hora")).toBeDefined();
+  });
+
+  it("falls back to legacy schedule when no events", () => {
+    render(
+      <InfoSection
+        className="test"
+        style={{}}
+        weddingSchedule={"16:00 Ceremony"}
+        weddingScheduleEvents=""
+        weddingDressCode=""
+        kidsPolicy=""
+      />,
+    );
+    expect(screen.getByText("16:00")).toBeDefined();
+    expect(screen.getByText((text: string) => text.includes("Ceremony"))).toBeDefined();
+  });
+
+  it("ignores invalid schedule events JSON", () => {
+    render(
+      <InfoSection
+        className="test"
+        style={{}}
+        weddingSchedule={"16:00 Ceremony"}
+        weddingScheduleEvents="not-json"
+        weddingDressCode=""
+        kidsPolicy=""
+      />,
+    );
+    expect(screen.getByText("16:00")).toBeDefined();
+  });
 });

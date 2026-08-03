@@ -4,9 +4,34 @@ import CornerDecorations from "../../components/CornerDecorations";
 
 const KNOWN_KIDS = new Set(["playArea", "supervised", "adultOnly"]);
 
-const InfoSection = memo(function InfoSection({ style, className, weddingSchedule, weddingDressCode, kidsPolicy, cornerDecoration }: { style?: React.CSSProperties; className?: string; weddingSchedule?: string; weddingDressCode?: string; kidsPolicy?: string; cornerDecoration?: string }) {
+interface ScheduleEvent {
+  time: string;
+  text: string;
+}
+
+const InfoSection = memo(function InfoSection({ style, className, weddingSchedule, weddingScheduleEvents, weddingDressCode, kidsPolicy, cornerDecoration }: { style?: React.CSSProperties; className?: string; weddingSchedule?: string; weddingScheduleEvents?: string; weddingDressCode?: string; kidsPolicy?: string; cornerDecoration?: string }) {
   const { t } = useTranslation();
   const kidsLabel = kidsPolicy && KNOWN_KIDS.has(kidsPolicy) ? t("kidsPolicy.options." + kidsPolicy) : kidsPolicy;
+
+  const events: ScheduleEvent[] = (() => {
+    if (weddingScheduleEvents) {
+      try {
+        const parsed = JSON.parse(weddingScheduleEvents);
+        if (Array.isArray(parsed)) {
+          return parsed
+            .filter((e): e is ScheduleEvent => !!e && typeof e === "object" && typeof (e as ScheduleEvent).time === "string" && typeof (e as ScheduleEvent).text === "string")
+            .slice(0, 10);
+        }
+      } catch {
+        return [];
+      }
+    }
+    return [];
+  })();
+
+  const legacyLines = events.length === 0
+    ? (weddingSchedule || "").split("\n").filter(Boolean)
+    : [];
   return (
     <section
       data-story-section="info"
@@ -19,9 +44,20 @@ const InfoSection = memo(function InfoSection({ style, className, weddingSchedul
           <>
           <p className="story-eyebrow">{t("info.sectionLabel")}</p>
           <h2 className="story-title">{t("info.scheduleTitle")}</h2>
-          {(weddingSchedule || "").trim() ? (
+          {events.length > 0 ? (
             <div className="mt-4 space-y-1 text-left">
-              {(weddingSchedule || "").split("\n").filter(Boolean).map((line: string, i: number) => {
+              {events.map((ev, i) => (
+                <div key={i} className="flex gap-3 items-baseline">
+                  {ev.time ? (
+                    <span className="shrink-0 font-semibold text-boda-texto tabular-nums">{ev.time}</span>
+                  ) : null}
+                  <span className="text-boda-texto/80">{ev.text}</span>
+                </div>
+              ))}
+            </div>
+          ) : legacyLines.length > 0 ? (
+            <div className="mt-4 space-y-1 text-left">
+              {legacyLines.map((line: string, i: number) => {
                 const timeMatch = line.match(/^(\d{1,2}:\d{2})\s*(.*)/);
                 return (
                   <div key={i} className="flex gap-3 items-baseline">

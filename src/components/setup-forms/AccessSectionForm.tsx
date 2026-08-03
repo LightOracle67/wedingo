@@ -21,6 +21,8 @@ export default function AccessSectionForm({ prefix = "" }) {
         autoComplete="username"
         name="username"
         maxLength={50}
+        required
+        aria-required="true"
         aria-describedby="usernameHelp"
       />
       <p className="setup-help" id="usernameHelp">

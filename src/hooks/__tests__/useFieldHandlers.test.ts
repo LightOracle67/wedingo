@@ -5,7 +5,7 @@ import { useFieldHandlers } from "../useFieldHandlers";
 function setup() {
   const updateFormField = vi.fn();
   const maxAllowedYear = 2030;
-  const { result } = renderHook(() => useFieldHandlers(updateFormField, maxAllowedYear, "30"));
+  const { result } = renderHook(() => useFieldHandlers(updateFormField, maxAllowedYear));
   return { updateFormField, maxAllowedYear, result };
 }
 
@@ -33,81 +33,42 @@ describe("handleDayChange", () => {
   });
 });
 
-describe("handleHourChange", () => {
-  it("clamps to 0..23", () => {
+describe("handleTimeChange", () => {
+  it("stores a full HH:MM value split into hour and minute", () => {
     const { updateFormField, result } = setup();
-    result.current.handleHourChange("24");
-    expect(updateFormField).toHaveBeenCalledWith("weddingHour", "23");
-    result.current.handleHourChange("-1");
-    expect(updateFormField).toHaveBeenCalledWith("weddingHour", "1");
-    result.current.handleHourChange("18");
-    expect(updateFormField).toHaveBeenCalledWith("weddingHour", "18");
-  });
-
-  it("clears field on empty input", () => {
-    const { updateFormField, result } = setup();
-    result.current.handleHourChange("");
-    expect(updateFormField).toHaveBeenCalledWith("weddingHour", "");
-  });
-});
-
-describe("handleMinuteChange", () => {
-  it("clamps to 0..59", () => {
-    const { updateFormField, result } = setup();
-    result.current.handleMinuteChange("60");
-    expect(updateFormField).toHaveBeenCalledWith("weddingMinute", "59");
-    result.current.handleMinuteChange("30");
+    result.current.handleTimeChange("14:30");
+    expect(updateFormField).toHaveBeenCalledWith("weddingHour", "14");
     expect(updateFormField).toHaveBeenCalledWith("weddingMinute", "30");
   });
 
-  it("passes through single digit without padding", () => {
+  it("clamps hour to 0..23 and minute to 0..59", () => {
     const { updateFormField, result } = setup();
-    result.current.handleMinuteChange("5");
-    expect(updateFormField).toHaveBeenCalledWith("weddingMinute", "5");
+    result.current.handleTimeChange("24:70");
+    expect(updateFormField).toHaveBeenCalledWith("weddingHour", "23");
+    expect(updateFormField).toHaveBeenCalledWith("weddingMinute", "59");
   });
 
-  it("pads single digit with 0 when length is 2", () => {
+  it("pads single digits with 0", () => {
     const { updateFormField, result } = setup();
-    result.current.handleMinuteChange("05");
+    result.current.handleTimeChange("5:05");
+    expect(updateFormField).toHaveBeenCalledWith("weddingHour", "05");
     expect(updateFormField).toHaveBeenCalledWith("weddingMinute", "05");
-    result.current.handleMinuteChange("1");
-    expect(updateFormField).toHaveBeenCalledWith("weddingMinute", "1");
   });
 
-  it("clears field on empty input", () => {
+  it("clears both fields on empty input", () => {
     const { updateFormField, result } = setup();
-    result.current.handleMinuteChange("");
+    result.current.handleTimeChange("");
+    expect(updateFormField).toHaveBeenCalledWith("weddingHour", "");
     expect(updateFormField).toHaveBeenCalledWith("weddingMinute", "");
   });
 });
 
-describe("handleMinuteBlur", () => {
-  it("pads single digit minute with 0", () => {
-    const fn = vi.fn();
-    const { result } = renderHook(() => useFieldHandlers(fn, 2030, "5"));
-    result.current.handleMinuteBlur();
-    expect(fn).toHaveBeenCalledWith("weddingMinute", "05");
-  });
-
-  it("clamps to 59", () => {
-    const fn = vi.fn();
-    const { result } = renderHook(() => useFieldHandlers(fn, 2030, "70"));
-    result.current.handleMinuteBlur();
-    expect(fn).toHaveBeenCalledWith("weddingMinute", "59");
-  });
-
-  it("clears field for non-numeric", () => {
-    const fn = vi.fn();
-    const { result } = renderHook(() => useFieldHandlers(fn, 2030, "abc"));
-    result.current.handleMinuteBlur();
-    expect(fn).toHaveBeenCalledWith("weddingMinute", "");
-  });
-
-  it("handles empty weddingMinute", () => {
-    const fn = vi.fn();
-    const { result } = renderHook(() => useFieldHandlers(fn, 2030, ""));
-    result.current.handleMinuteBlur();
-    expect(fn).toHaveBeenCalledWith("weddingMinute", "");
+describe("handleTimeBlur", () => {
+  it("normalizes the same way as handleTimeChange", () => {
+    const { updateFormField, result } = setup();
+    result.current.handleTimeBlur("9:45");
+    expect(updateFormField).toHaveBeenCalledWith("weddingHour", "09");
+    expect(updateFormField).toHaveBeenCalledWith("weddingMinute", "45");
   });
 });
 

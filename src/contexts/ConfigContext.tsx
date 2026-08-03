@@ -7,7 +7,7 @@ import {
   defaultConfig, STORY_SECTION_ORDER,
   THEME_VALUES, MAX_YEARS_AHEAD, INVITE_CACHE_TTL_MS, TOKEN_ROUTE_REGEX,
   SPECIAL_SECTIONS, MAX_USERNAME_LENGTH, MAX_INVITE_MESSAGE_LENGTH,
-  MAX_LONG_TEXT_LENGTH, PRIVACY_POLICY_VERSION,
+  MAX_LONG_TEXT_LENGTH, MAX_SCHEDULE_EVENTS, MAX_SCHEDULE_EVENT_TEXT, PRIVACY_POLICY_VERSION,
 } from "../lib/constants";
 import { normalizeConfig } from "../lib/normalize-config";
 import { isValidGoogleMapsUrl, extractPlaceNameFromUrl } from "../lib/geo-utils";
@@ -54,9 +54,9 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const {
-    handleDayChange, handleHourChange, handleMinuteChange, handleMinuteBlur,
+    handleDayChange, handleTimeChange, handleTimeBlur,
     handleYearChange,
-  } = useFieldHandlers(updateFormField, maxAllowedYear, formData.weddingMinute);
+  } = useFieldHandlers(updateFormField, maxAllowedYear);
 
   const { autoSaveTimerRef } = useAutoSave(hasStoredConfig, inviteToken, formData, config, setSaveMessage, isSavingRef);
 
@@ -401,6 +401,38 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       setSaveError(t("errors.scheduleTooLong"));
       return;
     }
+    if (sanitized.weddingScheduleEvents) {
+      try {
+        const parsed = JSON.parse(sanitized.weddingScheduleEvents);
+        if (!Array.isArray(parsed) || parsed.length > MAX_SCHEDULE_EVENTS) {
+          console.log("[app]", "[ConfigProvider]", "validation failed: schedule events invalid", { parsed });
+          setSaveError(t("errors.scheduleEventsInvalid"));
+          return;
+        }
+        for (const ev of parsed) {
+          if (!ev || typeof ev !== "object") {
+            setSaveError(t("errors.scheduleEventsInvalid"));
+            return;
+          }
+          const time = String((ev as Record<string, unknown>).time || "");
+          const text = String((ev as Record<string, unknown>).text || "");
+          if (time && !/^([01]\d|2[0-3]):[0-5]\d$/.test(time)) {
+            console.log("[app]", "[ConfigProvider]", "validation failed: schedule event time invalid", { time });
+            setSaveError(t("errors.scheduleEventTimeInvalid"));
+            return;
+          }
+          if (text.length > MAX_SCHEDULE_EVENT_TEXT) {
+            console.log("[app]", "[ConfigProvider]", "validation failed: schedule event text too long", { length: text.length });
+            setSaveError(t("errors.scheduleEventTextTooLong"));
+            return;
+          }
+        }
+      } catch {
+        console.log("[app]", "[ConfigProvider]", "validation failed: schedule events JSON invalid", {});
+        setSaveError(t("errors.scheduleEventsInvalid"));
+        return;
+      }
+    }
     if (sanitized.storyText && sanitized.storyText.length > MAX_LONG_TEXT_LENGTH) {
       console.log("[app]", "[ConfigProvider]", "validation failed: story too long", { length: sanitized.storyText.length });
       setSaveError(t("errors.storyTooLong"));
@@ -534,7 +566,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     maxAllowedYear,
     formattedDate, formattedTime, calendarLink, visitCount,
     updateFormField, reloadConfig, handleSaveSetup: handleSaveSetupCore,
-    handleDayChange, handleHourChange, handleMinuteChange, handleMinuteBlur,
+    handleDayChange, handleTimeChange, handleTimeBlur,
     handleYearChange, handleDeleteInvitation,
     setHasStoredConfig, registerOnFirstSave,
   }), [
@@ -542,7 +574,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     maxAllowedYear,
     formattedDate, formattedTime, calendarLink, visitCount,
     updateFormField, reloadConfig, handleSaveSetupCore,
-    handleDayChange, handleHourChange, handleMinuteChange, handleMinuteBlur,
+    handleDayChange, handleTimeChange, handleTimeBlur,
     handleYearChange, handleDeleteInvitation,
     setHasStoredConfig, registerOnFirstSave,
   ]);
