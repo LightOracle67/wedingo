@@ -288,7 +288,7 @@ const RsvpSection = memo(function RsvpSection({
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "0.5rem" }}>
                     <h4 style={{ margin: 0 }}>{t("rsvp.companionHeading", { number: i + 1 })}</h4>
                     {i > 0 && (
-                      <button type="button" className="rsvp-remove-btn" aria-label={t("common.remove", "Remove")}
+                      <button type="button" className="rsvp-remove-btn" aria-label={t("common.remove")}
                         onClick={() => updateRsvpField("companionCount", rsvpForm.companionCount - 1)}
                         disabled={isAlreadySubmitted}>
                         ✕

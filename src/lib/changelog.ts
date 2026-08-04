@@ -28,6 +28,8 @@ export const CHANGELOG = [
       "FEAT: test unitario del módulo rsvp-payloads (6 casos) y e2e ampliado (invitación inexistente sin crash)",
       "FIX: script check-translations.js roto (require en repo ESM) — convertido a ESM y funcional",
       "OPS: umbrales de coverage ajustados al estado real (85/81/86/87) y CSP sin restos de Leaflet/OSM/goo.gl",
+      "FIX: common.remove inexistente — el aria-label del botón de eliminar acompañante mostraba 'Remove' en español",
+      "UX: rsvp.description reescrita — texto neutro que cubre menú, alergias y transporte (antes mencionaba 'menú especial' siempre)",
     ],
   },
 

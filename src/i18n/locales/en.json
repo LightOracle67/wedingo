@@ -29,7 +29,8 @@
     "section": "Section",
     "visible": "Visible",
     "hidden": "Hidden",
-    "version": "v{{version}}"
+    "version": "v{{version}}",
+    "remove": "Remove"
   },
   "landing": {
     "title": "Wedingo — Wedding invitations",
@@ -117,7 +118,7 @@
   "rsvp": {
     "sectionLabel": "RSVP",
     "title": "Confirm your attendance",
-    "description": "Let us know if you'll attend and any dietary needs.",
+    "description": "Let us know if you'll attend and your preferences (menu, allergies and transport).",
     "nameLabel": "Your name",
     "namePlaceholder": "e.g. John Smith",
     "attendanceOptions": "Your attendance",

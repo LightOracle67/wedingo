@@ -29,7 +29,8 @@
     "hidden": "Oculta",
     "delete": "Eliminar",
     "copied": "¡Copiado!",
-    "version": "v{{version}}"
+    "version": "v{{version}}",
+    "remove": "Eliminar"
   },
   "landing": {
     "title": "Wedingo — Invitaciones de boda",
@@ -117,7 +118,7 @@
   "rsvp": {
     "sectionLabel": "Confirmación de asistencia",
     "title": "Confirma tu asistencia",
-    "description": "Indícanos si vas a asistir y si necesitas menú especial.",
+    "description": "Indícanos si vas a asistir y tus preferencias (menú, alergias y transporte).",
     "nameLabel": "Tu nombre",
     "namePlaceholder": "p. ej. Juan Pérez",
     "attendanceOptions": "Tu asistencia",
