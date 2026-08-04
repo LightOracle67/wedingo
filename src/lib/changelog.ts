@@ -30,6 +30,8 @@ export const CHANGELOG = [
       "OPS: umbrales de coverage ajustados al estado real (85/81/86/87) y CSP sin restos de Leaflet/OSM/goo.gl",
       "FIX: common.remove inexistente — el aria-label del botón de eliminar acompañante mostraba 'Remove' en español",
       "UX: rsvp.description reescrita — texto neutro que cubre menú, alergias y transporte (antes mencionaba 'menú especial' siempre)",
+      "SEGURIDAD: reglas de Firestore — rsvpResponses no permitía los 8 campos nuevos de transporte (hasOnly) → el guardado del RSVP con transporte se rechazaba en producción (PERMISSION_DENIED). Añadidos a create/update con validación de tipos y longitudes, y reglas desplegadas (el deploy habitual solo sube hosting).",
+      "SEGURIDAD: verificado con emulador de Firestore (8/8) — RSVP main/companion con transporte permitidos, campos extra y horas inválidas rechazados, setup con weddingScheduleEvents/transportDepartures permitido",
     ],
   },
 
