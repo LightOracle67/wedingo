@@ -348,7 +348,7 @@ describe("RsvpSection", () => {
     );
     const select = document.getElementById("rsvpTransportDeparture") as HTMLSelectElement;
     expect(select).toBeDefined();
-    expect([...select.options].map((o) => o.textContent)).toEqual(["14:30 · rsvp.periodAfternoon"]);
+    expect([...select.options].map((o) => o.textContent)).toEqual(["14:30 (transport.typeTaxi)"]);
     expect(screen.getByText("rsvp.transportPickupTime")).toBeDefined();
     fireEvent.click(screen.getByLabelText("rsvp.transportBusOption"));
     expect(update).toHaveBeenCalledWith("transportMode", "bus");
@@ -367,7 +367,7 @@ describe("RsvpSection", () => {
       />,
     );
     const select = document.getElementById("rsvpTransportDeparture") as HTMLSelectElement;
-    expect([...select.options].map((o) => o.textContent)).toEqual(["Plaza Mayor (12:00 · rsvp.periodAfternoon)"]);
+    expect([...select.options].map((o) => o.textContent)).toEqual(["Plaza Mayor (12:00)"]);
     expect(screen.getByText("rsvp.transportPickupTime")).toBeDefined();
   });
 
@@ -405,7 +405,7 @@ describe("RsvpSection", () => {
     expect(update).toHaveBeenCalledWith("transportPlace", "Estación Norte");
   });
 
-  it("labels morning departures with the morning period", () => {
+  it("labels departures with the 24h time", () => {
     render(
       <RsvpSection
         {...baseProps}
@@ -419,8 +419,8 @@ describe("RsvpSection", () => {
     );
     const select = document.getElementById("rsvpTransportDeparture") as HTMLSelectElement;
     expect([...select.options].map((o) => o.textContent)).toEqual([
-      "08:30 · rsvp.periodMorning",
-      "22:00 · rsvp.periodEvening",
+      "08:30 (transport.typeBus)",
+      "22:00 (transport.typeBus)",
     ]);
     expect(screen.getByText("rsvp.transportPickupTime")).toBeDefined();
   });
