@@ -201,12 +201,12 @@ body:has(.admin-bar) main#main-content:has(> .setup-layout--full) > .setup-layou
   gap: 0.75rem;
 }
 .setup-card--title {
-  width: 80%;
+  width: 95%;
   flex-shrink: 0;
   margin: 0;
 }
 .setup-card--content {
-  width: 80%;
+  width: 95%;
   flex: 1;
   min-height: 0;
   margin: 0;
