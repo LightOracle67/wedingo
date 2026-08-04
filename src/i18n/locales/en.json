@@ -186,7 +186,6 @@
     "transportBusOption": "I'll take the bus",
     "transportTaxiOption": "Or I'll take a taxi",
     "transportDepartureLabel": "Departure",
-    "transportPickupTime": "You will be picked up at {{time}}"
   },
   "public": {
     "loadingInvitation": "Loading invitation…",

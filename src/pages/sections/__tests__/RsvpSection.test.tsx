@@ -349,7 +349,6 @@ describe("RsvpSection", () => {
     const select = document.getElementById("rsvpTransportDeparture") as HTMLSelectElement;
     expect(select).toBeDefined();
     expect([...select.options].map((o) => o.textContent)).toEqual(["14:30 (transport.typeTaxi)"]);
-    expect(screen.getByText("rsvp.transportPickupTime")).toBeDefined();
     fireEvent.click(screen.getByLabelText("rsvp.transportBusOption"));
     expect(update).toHaveBeenCalledWith("transportMode", "bus");
     expect(update).toHaveBeenCalledWith("transportChoice", "0");
@@ -368,22 +367,6 @@ describe("RsvpSection", () => {
     );
     const select = document.getElementById("rsvpTransportDeparture") as HTMLSelectElement;
     expect([...select.options].map((o) => o.textContent)).toEqual(["Plaza Mayor (12:00)"]);
-    expect(screen.getByText("rsvp.transportPickupTime")).toBeDefined();
-  });
-
-  it("shows pickup time of the selected departure", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
-        rsvpForm={{ ...baseForm, attendance: "alone", transportMode: "bus", transportChoice: "0" }}
-        transportEnabled="bus"
-        transportDepartures={JSON.stringify([
-          { type: "bus", time: "12:00", url: "" },
-          { type: "bus", time: "16:00", url: "" },
-        ])}
-      />,
-    );
-    expect(screen.getByText("rsvp.transportPickupTime")).toBeDefined();
   });
 
   it("stores time and place when changing the departure", () => {
@@ -422,7 +405,6 @@ describe("RsvpSection", () => {
       "08:30 (transport.typeBus)",
       "22:00 (transport.typeBus)",
     ]);
-    expect(screen.getByText("rsvp.transportPickupTime")).toBeDefined();
   });
 
   it("shows transport radios inside each companion card", () => {

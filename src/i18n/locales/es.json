@@ -186,7 +186,6 @@
     "transportBusOption": "Usaré el Autobús",
     "transportTaxiOption": "O usaré el Taxi",
     "transportDepartureLabel": "Salida",
-    "transportPickupTime": "Te recogeremos a las {{time}}"
   },
   "public": {
     "loadingInvitation": "Cargando invitación…",
