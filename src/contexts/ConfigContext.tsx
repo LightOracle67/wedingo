@@ -473,8 +473,13 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       }
     }
     if (sanitized.accommodationInfo && sanitized.accommodationInfo.length > MAX_LONG_TEXT_LENGTH) {
-
+      console.log("[app]", "[ConfigProvider]", "validation failed: accommodationInfo too long", { length: sanitized.accommodationInfo.length });
       setSaveError(t("errors.accommodationTooLong"));
+      return;
+    }
+    if (sanitized.accommodationURL && !isValidGoogleMapsUrl(sanitized.accommodationURL)) {
+      console.log("[app]", "[ConfigProvider]", "validation failed: accommodation url invalid", {});
+      setSaveError(t("errors.accommodationUrlInvalid"));
       return;
     }
     if (sanitized.menuTexto && sanitized.menuTexto.length > MAX_LONG_TEXT_LENGTH) {

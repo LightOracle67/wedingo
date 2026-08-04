@@ -142,6 +142,7 @@ export const defaultConfig = {
   giftsInfo: "",
   bankInfo: "",
   accommodationInfo: "",
+  accommodationURL: "",
   transportEnabled: "none",
   transportDepartures: "",
   godparent1: "",

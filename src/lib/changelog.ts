@@ -33,6 +33,7 @@ export const CHANGELOG = [
       "SEGURIDAD: reglas de Firestore — rsvpResponses no permitía los 8 campos nuevos de transporte (hasOnly) → el guardado del RSVP con transporte se rechazaba en producción (PERMISSION_DENIED). Añadidos a create/update con validación de tipos y longitudes, y reglas desplegadas (el deploy habitual solo sube hosting).",
       "SEGURIDAD: verificado con emulador de Firestore (8/8) — RSVP main/companion con transporte permitidos, campos extra y horas inválidas rechazados, setup con weddingScheduleEvents/transportDepartures permitido",
       "FIX: tabla de asistencia — la columna de dieta mostraba 'alergia: 1' (conteo sin sentido en registros nuevos) y la de menú '—' (menuHeadcounts no se guarda); ahora muestran los items y el plato elegido (mealChoice)",
+      "FEAT: alojamiento como enlace de Google Maps — nuevo campo accommodationURL en el setup (validación y hint del sitio) y la sección muestra el nombre, el mapa y 'Ver en Google Maps', con fallback al texto legacy",
     ],
   },
 

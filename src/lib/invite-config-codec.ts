@@ -6,7 +6,7 @@ const INVITE_KEY_MAP = {
   sc: "weddingSchedule", se: "weddingScheduleEvents", dc: "weddingDressCode",
   th: "theme", so: "sectionOrder", hs: "hiddenSections",
   st: "storyText", gi: "giftsInfo",
-  ai: "accommodationInfo", kp: "kidsPolicy",
+  ai: "accommodationInfo", am: "accommodationURL", kp: "kidsPolicy",
 };
 
 const INVITE_KEY_REV: Record<string, string> = Object.fromEntries(

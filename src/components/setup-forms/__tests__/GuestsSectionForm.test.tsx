@@ -52,15 +52,15 @@ describe("GuestsSectionForm", () => {
     expect(screen.getByText("setup.menuEnabledLabel")).toBeDefined();
   });
 
-  it("renders accommodation field", () => {
+  it("renders accommodation URL field", () => {
     render(<GuestsSectionForm />);
     expect(screen.getByText("setup.accommodationLabel")).toBeDefined();
-    expect(screen.getByPlaceholderText("setup.accommodationPlaceholder")).toBeDefined();
+    expect(screen.getByPlaceholderText("setup.accommodationUrlPlaceholder")).toBeDefined();
   });
 
-  it("renders accommodation hint", () => {
+  it("renders accommodation URL hint", () => {
     render(<GuestsSectionForm />);
-    expect(screen.getByText("setup.accommodationHint")).toBeDefined();
+    expect(screen.getByText("setup.accommodationUrlHint")).toBeDefined();
   });
 
   it("calls updateFormField on kids policy checkbox click (select)", () => {
@@ -185,19 +185,19 @@ describe("GuestsSectionForm", () => {
     expect(mockUpdateFormField).toHaveBeenCalledWith("menuTexto", "a".repeat(2000));
   });
 
-  it("calls updateFormField on accommodation change", () => {
+  it("calls updateFormField on accommodation URL change", () => {
     render(<GuestsSectionForm />);
-    const textarea = screen.getByPlaceholderText("setup.accommodationPlaceholder");
-    fireEvent.change(textarea, { target: { value: "Hotel info" } });
-    expect(mockUpdateFormField).toHaveBeenCalledWith("accommodationInfo", "Hotel info");
+    const input = screen.getByPlaceholderText("setup.accommodationUrlPlaceholder");
+    fireEvent.change(input, { target: { value: "https://www.google.com/maps/place/Hotel+Sol/@40.41,-3.70,17z" } });
+    expect(mockUpdateFormField).toHaveBeenCalledWith("accommodationURL", "https://www.google.com/maps/place/Hotel+Sol/@40.41,-3.70,17z");
   });
 
-  it("limits accommodation to 2000 characters", () => {
+  it("marks an invalid accommodation URL as error", () => {
+    mockFormData.accommodationURL = "https://maps.app.goo.gl/abc";
     render(<GuestsSectionForm />);
-    const textarea = screen.getByPlaceholderText("setup.accommodationPlaceholder");
-    const longText = "a".repeat(3000);
-    fireEvent.change(textarea, { target: { value: longText } });
-    expect(mockUpdateFormField).toHaveBeenCalledWith("accommodationInfo", "a".repeat(2000));
+    const input = screen.getByPlaceholderText("setup.accommodationUrlPlaceholder");
+    expect(input.className).toContain("setup-input--error");
+    expect(screen.getByText(/setup.mapUrlInvalid/)).toBeDefined();
   });
 
 });

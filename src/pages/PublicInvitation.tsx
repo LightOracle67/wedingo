@@ -273,6 +273,9 @@ export default function PublicInvitation() {
     },
     accommodation: {
       accommodationInfo: config.accommodationInfo,
+      accommodationURL: config.accommodationURL,
+      mapView: config.weddingMapView,
+      staticMap: config.weddingMapStatic === "true",
       cornerDecoration: config.cornerDecoration,
     },
     gallery: {
@@ -304,7 +307,7 @@ export default function PublicInvitation() {
   }), [
     config.firstName, config.secondName, config.inviteMessage,
     config.weddingSchedule, config.weddingScheduleEvents, config.weddingDressCode,
-    config.kidsPolicy, config.storyText, config.giftsInfo, config.accommodationInfo,
+    config.kidsPolicy, config.storyText, config.giftsInfo, config.accommodationInfo, config.accommodationURL,
     config.godparent1, config.godparent2, inviteToken,
     config.couplePhoto, config.bankInfo, config.menuEnabled,
     config.menuCarne, config.menuPescado, config.menuVegano, config.menuPostre, config.menuTexto,

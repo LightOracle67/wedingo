@@ -2,6 +2,7 @@ import { useCallback } from "react";
 import CharacterCounter from "../../components/CharacterCounter";
 import { useTranslation } from "react-i18next";
 import { useApp } from "../../contexts";
+import { isValidGoogleMapsUrl, extractPlaceNameFromUrl } from "../../lib/geo-utils";
 
 export default function GuestsSectionForm({ prefix = "" }) {
   const { formData, updateFormField } = useApp();
@@ -113,21 +114,32 @@ export default function GuestsSectionForm({ prefix = "" }) {
       )}
 
       <div className="story-divider" style={{ margin: "0.75rem 0" }} />
-      <label className="setup-label" htmlFor={id("accommodationInfo")}>
-        {t("setup.accommodationLabel")} <CharacterCounter current={(formData.accommodationInfo || "").length} max={2000} />
+      <label className="setup-label" htmlFor={id("accommodationURL")}>
+        {t("setup.accommodationLabel")}
+        {formData.accommodationURL && !isValidGoogleMapsUrl(formData.accommodationURL) ? (
+          <span style={{ color: "#ef4444", marginLeft: "0.4rem" }}>✗ {t("setup.mapUrlInvalid")}</span>
+        ) : formData.accommodationURL && isValidGoogleMapsUrl(formData.accommodationURL) ? (
+          <span style={{ color: "#22c55e", marginLeft: "0.4rem" }}>✓ {t("setup.mapUrlOk")}</span>
+        ) : null}
       </label>
-      <textarea
-        id={id("accommodationInfo")}
-        className="setup-textarea"
-        value={formData.accommodationInfo}
-        onChange={(e) => updateFormField("accommodationInfo", e.target.value.slice(0, 2000))}
-        placeholder={t("setup.accommodationPlaceholder")}
-        rows={4}
-        maxLength={2000}
+      <input
+        id={id("accommodationURL")}
+        className={formData.accommodationURL && !isValidGoogleMapsUrl(formData.accommodationURL) ? "setup-input setup-input--error" : "setup-input"}
+        value={formData.accommodationURL || ""}
+        onChange={(e) => updateFormField("accommodationURL", e.target.value)}
+        placeholder={t("setup.accommodationUrlPlaceholder")}
         autoComplete="off"
-        aria-describedby={id("accommodationHint")}
+        aria-describedby={id("accommodationUrlHelp")}
       />
-      <p className="setup-help" id={id("accommodationHint")}>{t("setup.accommodationHint")}</p>
+      <p className="setup-help" id={id("accommodationUrlHelp")}>{t("setup.accommodationUrlHint")}</p>
+      {formData.accommodationURL && isValidGoogleMapsUrl(formData.accommodationURL) ? (() => {
+        const placeName = extractPlaceNameFromUrl(formData.accommodationURL);
+        return placeName ? (
+          <p className="setup-help" id={id("accommodationPlace")} style={{ marginTop: "0.15rem", color: "var(--setup-accent)", fontWeight: 600 }}>
+            {t("setup.siteNameLabel")}: {placeName}
+          </p>
+        ) : null;
+      })() : null}
     </>
   );
 }

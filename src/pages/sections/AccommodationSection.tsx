@@ -1,9 +1,15 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import CornerDecorations from "../../components/CornerDecorations";
+import MapEmbed from "../../components/MapEmbed";
+import { isValidGoogleMapsUrl, extractPlaceNameFromUrl } from "../../lib/geo-utils";
 
-const AccommodationSection = memo(function AccommodationSection({ style, className, accommodationInfo, cornerDecoration }: { style?: React.CSSProperties; className?: string; accommodationInfo?: string; cornerDecoration?: string }) {
+const AccommodationSection = memo(function AccommodationSection({ style, className, accommodationInfo, accommodationURL, mapView, staticMap, cornerDecoration }: { style?: React.CSSProperties; className?: string; accommodationInfo?: string; accommodationURL?: string; mapView?: string; staticMap?: boolean; cornerDecoration?: string }) {
   const { t } = useTranslation();
+  const url = (accommodationURL || "").trim();
+  const urlValid = url ? isValidGoogleMapsUrl(url) : false;
+  const placeName = urlValid ? extractPlaceNameFromUrl(url) : "";
+
   return (
     <section
       data-story-section="accommodation"
@@ -15,7 +21,21 @@ const AccommodationSection = memo(function AccommodationSection({ style, classNa
         <div className="story-card story-panel story-card--info w-full text-center">
           <p className="story-eyebrow">{t("accommodation.sectionLabel")}</p>
           <h2 className="story-title">{t("accommodation.title")}</h2>
-          {accommodationInfo ? (
+          {urlValid ? (
+            <div className="mt-4">
+              {placeName ? (
+                <p className="story-copy" style={{ fontWeight: 600 }}>{placeName}</p>
+              ) : null}
+              <div style={{ width: "80%", margin: "0.75rem auto 0" }}>
+                <MapEmbed mapUrl={url} mapView={mapView || "roadmap"} staticMap={staticMap === true} height={220} />
+              </div>
+              <div className="story-map__actions" style={{ marginTop: "0.5rem" }}>
+                <a className="setup-button setup-button--ghost setup-button--compact" href={url} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer">
+                  {t("details.viewGoogleMaps")}
+                </a>
+              </div>
+            </div>
+          ) : accommodationInfo ? (
             <p className="story-copy mt-4 whitespace-pre-line">{accommodationInfo}</p>
           ) : (
             <p className="story-copy mt-4" style={{ fontStyle: "italic" }}>

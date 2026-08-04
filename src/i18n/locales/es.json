@@ -386,7 +386,9 @@
     "timeHint": "Indica la hora a la que comenzará la celebración.",
     "mapViewHint": "Elige cómo se verá el mapa en la invitación.",
     "galleryHint": "Sube las fotos y, si quieres, añade una descripción a cada una.",
-    "menuTextoLabel": "Menú"
+    "menuTextoLabel": "Menú",
+    "accommodationUrlPlaceholder": "https://www.google.com/maps/place/...",
+    "accommodationUrlHint": "Pega el enlace de Google Maps del alojamiento recomendado (mismo formato que el lugar de la boda)."
   },
   "admin": {
     "tabs": {
@@ -596,7 +598,8 @@
     "errorDetail": "{{error}}",
     "transportDeparturesInvalid": "Las salidas de transporte no son válidas.",
     "transportTimeInvalid": "La hora de una salida es obligatoria y debe ser válida (formato HH:MM).",
-    "transportUrlInvalid": "El enlace del mapa de una salida no es válido."
+    "transportUrlInvalid": "El enlace del mapa de una salida no es válido.",
+    "accommodationUrlInvalid": "El enlace de alojamiento no es válido (debe ser una URL de Google Maps de un lugar)."
   },
   "superadmin": {
     "tabs": {

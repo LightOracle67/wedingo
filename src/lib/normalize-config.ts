@@ -81,6 +81,7 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   giftsInfo: s(value?.giftsInfo),
   bankInfo: s(value?.bankInfo),
   accommodationInfo: s(value?.accommodationInfo),
+  accommodationURL: s(value?.accommodationURL),
   transportEnabled: ["none", "bus", "taxi", "both"].includes(s(value?.transportEnabled)) ? s(value?.transportEnabled) : "none",
   transportDepartures: normalizeTransportDepartures(value?.transportDepartures),
   godparent1: s(value?.godparent1),
