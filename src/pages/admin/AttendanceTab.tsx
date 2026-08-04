@@ -11,6 +11,7 @@ interface RsvpEntry {
   dietaryInfo: string;
   attendees?: { name: string; menu: string; allergies: string[] }[];
   menuHeadcounts?: Record<string, number>;
+  mealChoice?: string;
   guestNames?: string;
   submittedAt: string;
   mainGuestName?: string;
@@ -55,14 +56,13 @@ function formatMenuLines(mhc: Record<string, number>, t: (key: string) => string
   return lines.length ? lines : ["—"];
 }
 
-function getDietaryLines(dietaryInfo: string, companions: number): { item: string; count: number }[] {
-  const items = parseDietaryItems(dietaryInfo);
-  if (!items.length) return [];
-  const counts: Record<string, number> = {};
-  for (const item of items) {
-    counts[item] = (counts[item] || 0) + (companions || 1);
-  }
-  return Object.entries(counts).map(([item, count]) => ({ item, count }));
+function getDietaryItems(dietaryInfo: string): string[] {
+  return parseDietaryItems(dietaryInfo);
+}
+
+function formatMenuLabel(mealChoice: string, t: (key: string) => string): string | null {
+  if (!mealChoice) return null;
+  return t("rsvp.menu" + mealChoice.charAt(0).toUpperCase() + mealChoice.slice(1));
 }
 
 const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
@@ -210,10 +210,10 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                 const attending = entry.attendance === "yes";
                 const menuLines = entry.attendees?.length
                   ? entry.attendees.map((a) => a.menu ? `${a.name}: ${t("rsvp.menu" + a.menu.charAt(0).toUpperCase() + a.menu.slice(1))}` : null).filter((x): x is string => x !== null)
-                  : formatMenuLines(entry.menuHeadcounts || {}, t);
+                  : (formatMenuLabel(entry.mealChoice || "", t) ? [formatMenuLabel(entry.mealChoice || "", t)!] : formatMenuLines(entry.menuHeadcounts || {}, t));
                 const dietLines = entry.attendees?.length
                   ? entry.attendees.filter((a) => a.allergies?.length).map((a) => `${a.name}: ${a.allergies.join(", ")}`)
-                  : (attending ? getDietaryLines(entry.dietaryInfo || "", entry.companions || 1).map((d) => `${d.item}: ${d.count}`) : []);
+                  : (attending ? getDietaryItems(entry.dietaryInfo || "") : []);
                 const crossed = !attending ? { textDecoration: "line-through", opacity: 0.4 } : {};
                 const transportLabel = resolveTransportLabel(entry.transportMode || "", entry.transportChoice || "", entry.transportTime || "");
                 const consentBadges: string[] = [];

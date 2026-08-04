@@ -379,4 +379,49 @@ describe("AttendanceTab", () => {
     expect(screen.getByText(/sin gluten/)).toBeDefined();
     expect(screen.getByText(/sin lactosa/)).toBeDefined();
   });
+
+  it("shows diet items without counts for entries without attendees", () => {
+    const entry = {
+      id: "1", guestName: "Alice", attendance: "yes" as const, companions: 0,
+      dietaryInfo: "sin gluten", mealChoice: "carne", submittedAt: "2024-01-01",
+    };
+    render(
+      <AttendanceTab
+        searchQuery=""
+        setSearchQuery={vi.fn()}
+        attendanceFilter="all"
+        setAttendanceFilter={vi.fn()}
+        filteredEntries={[entry]}
+        rsvpEntries={[entry]}
+        exportPdf={vi.fn()}
+        formatDate={(d: string) => String(d)}
+        handleClearRsvpEntries={vi.fn()}
+        handleDeleteRsvpEntries={vi.fn()}
+      />
+    );
+    expect(screen.getByText("sin gluten")).toBeDefined();
+    expect(screen.queryByText("sin gluten: 1")).toBeNull();
+  });
+
+  it("shows the meal label from mealChoice for entries without attendees", () => {
+    const entry = {
+      id: "1", guestName: "Alice", attendance: "yes" as const, companions: 0,
+      dietaryInfo: "", mealChoice: "carne", submittedAt: "2024-01-01",
+    };
+    render(
+      <AttendanceTab
+        searchQuery=""
+        setSearchQuery={vi.fn()}
+        attendanceFilter="all"
+        setAttendanceFilter={vi.fn()}
+        filteredEntries={[entry]}
+        rsvpEntries={[entry]}
+        exportPdf={vi.fn()}
+        formatDate={(d: string) => String(d)}
+        handleClearRsvpEntries={vi.fn()}
+        handleDeleteRsvpEntries={vi.fn()}
+      />
+    );
+    expect(screen.getByText("rsvp.menuCarne")).toBeDefined();
+  });
 });
