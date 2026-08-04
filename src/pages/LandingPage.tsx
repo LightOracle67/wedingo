@@ -1,11 +1,13 @@
 import { useApp } from "../contexts";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router";
-import { getDocs, query, where, serverTimestamp, runTransaction } from "firebase/firestore";
+import { getDoc, serverTimestamp, runTransaction, deleteField, updateDoc } from "firebase/firestore";
 import { useTranslation } from "react-i18next";
-import { db, invitationDocRef, INVITATIONS_COLLECTION_REF } from "../lib/firebase";
-import { normalizeTokenValue } from "../lib/token-utils";
+import { STORAGE_KEYS } from "../lib/storage-keys";
+import { db, invitationDocRef } from "../lib/firebase";
+import { normalizeTokenValue, generateSetupToken } from "../lib/token-utils";
 import { generateInviteToken } from "../lib/utils";
+import { createSetupTokenRecord, findInviteBySetupToken, hashSetupToken } from "../lib/setup-token";
 import { normalizeConfig } from "../lib/normalize-config";
 import { defaultConfig } from "../lib/constants";
 import { safeSetItem } from "../lib/storage";
@@ -33,11 +35,25 @@ export default function LandingPage() {
   const loginAttemptsRef = useRef(0);
   const loginBlockedUntilRef = useRef(0);
 
-  const handleCreate = () => {
+  const handleCreate = async () => {
+    setError("");
 
     const token = generateInviteToken();
+    // Token de setup generado y registrado (hash) antes de que exista la
+    // invitación, de modo que la activación de sesión pueda verificarse.
+    const setupToken = normalizeTokenValue(generateSetupToken());
 
-    safeSetItem("wedin_invite_token", token, sessionStorage);
+    safeSetItem(STORAGE_KEYS.inviteToken, token, sessionStorage);
+    safeSetItem(STORAGE_KEYS.setupToken(token), setupToken, sessionStorage);
+
+    try {
+      await createSetupTokenRecord(token, setupToken);
+    } catch (err) {
+      console.error("[app]", "[LandingPage]", "create setup token failed", { error: err });
+      setError(t("landing.errorCreateFailed"));
+      return;
+    }
+
     navigate(`/${token}/setup`);
   };
 
@@ -83,9 +99,9 @@ export default function LandingPage() {
 
     try {
 
-      const invQuery = query(INVITATIONS_COLLECTION_REF, where("_activeSetupToken", "==", normalized));
-      const invSnap = await getDocs(invQuery);
-      if (invSnap.empty) {
+      // Localiza la invitación por el hash del token (sin enumerar la colección).
+      const target = await findInviteBySetupToken(normalized);
+      if (!target) {
 
         setError(t("landing.errorTokenNotFound"));
         loginAttemptsRef.current++;
@@ -97,11 +113,12 @@ export default function LandingPage() {
         setIsLoading(false);
         return;
       }
-      const matchedInv = invSnap.docs[0]!;
-      const target = matchedInv.id;
-      const matchedData = matchedInv.data();
 
-      if (matchedData.adminUsername && matchedData.adminUsername.toLowerCase() !== username.toLowerCase()) {
+      const inviteRef = invitationDocRef(target);
+      const inviteSnap = await getDoc(inviteRef);
+      const matchedData = inviteSnap.exists() ? inviteSnap.data() : null;
+
+      if (matchedData?.adminUsername && matchedData.adminUsername.toLowerCase() !== username.toLowerCase()) {
 
         setError(t("landing.errorUsernameMismatch"));
         loginAttemptsRef.current++;
@@ -114,13 +131,15 @@ export default function LandingPage() {
         return;
       }
 
-      try {
-        const parsed = normalizeConfig(matchedData);
-        const hydrated = { ...defaultConfig, ...parsed };
-        safeSetItem(`wedin_invite_cache_${target}`, JSON.stringify({ data: hydrated, cachedAt: Date.now() }));
-      } catch {}
+      if (matchedData) {
+        try {
+          const parsed = normalizeConfig(matchedData);
+          const hydrated = { ...defaultConfig, ...parsed };
+          safeSetItem(STORAGE_KEYS.inviteCache(target), JSON.stringify({ data: hydrated, cachedAt: Date.now() }));
+        } catch {}
+      }
 
-      if (matchedData.activeSession) {
+      if (matchedData?.activeSession) {
 
         setIsLoading(false);
         if (!window.confirm(t("landing.sessionExists"))) {
@@ -131,15 +150,25 @@ export default function LandingPage() {
         setIsLoading(true);
       }
 
+      // Prueba de conocimiento del token para activar la sesión.
+      const tokenHash = await hashSetupToken(normalized);
+      const isLegacy = !!matchedData && typeof matchedData._activeSetupToken === "string" && matchedData._activeSetupToken === normalized;
+
       try {
 
         await runTransaction(db, async (transaction) => {
-          const inviteRef = invitationDocRef(target);
-          const inviteSnapInTx = await transaction.get(inviteRef);
+          const inviteRefInTx = invitationDocRef(target);
+          const inviteSnapInTx = await transaction.get(inviteRefInTx);
           if (!inviteSnapInTx.exists()) {
-            transaction.set(inviteRef, { ...defaultConfig, activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry() });
+            transaction.set(inviteRefInTx, { ...defaultConfig, activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry(), setupTokenHash: tokenHash });
           } else {
-            transaction.update(inviteRef, { activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry() });
+            const sessionPayload: Record<string, unknown> = {
+              activeSession: serverTimestamp(),
+              sessionExpiresAt: firestoreSessionExpiry(),
+              setupTokenHash: tokenHash,
+            };
+            if (isLegacy) sessionPayload.legacyToken = normalized;
+            transaction.update(inviteRefInTx, sessionPayload);
           }
         });
 
@@ -156,7 +185,17 @@ export default function LandingPage() {
         return;
       }
 
-      safeSetItem("wedin_invite_token", target, sessionStorage);
+      // Migración automática de invitaciones legacy: registra el token en
+      // setupTokens y retira el campo legacy del documento público.
+      if (isLegacy) {
+        try {
+          await createSetupTokenRecord(target, normalized);
+          await updateDoc(inviteRef, { _activeSetupToken: deleteField(), legacyToken: deleteField() });
+        } catch { }
+      }
+
+      safeSetItem(STORAGE_KEYS.inviteToken, target, sessionStorage);
+      safeSetItem(STORAGE_KEYS.setupToken(target), normalized, sessionStorage);
       clearExpiredCache();
       saveSession("admin", username);
       setTokenLoginUsername(username);
@@ -250,7 +289,7 @@ export default function LandingPage() {
                 autoComplete="current-password"
                 spellCheck="false"
               />
-              {error && <p className="setup-error">{error}</p>}
+              {error && <p className="setup-error" role="alert">{error}</p>}
               <div className="setup-actions">
                 <button className="setup-button" type="submit" disabled={isLoading || usernameInput.trim().length < 1 || tokenInput.trim().length < 20}>
                   {isLoading ? t("landing.loginLoading") : t("landing.loginButton")}

@@ -1,5 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type AnyRecord = Record<string, any>;
+type AnyRecord = Record<string, unknown>;
 
 export function formatBytes(bytes: number) {
   if (bytes < 1024) return `${bytes} B`;
@@ -61,7 +60,8 @@ export function tokenUsageOverTime(tokens: Record<string, unknown>[]) {
 export function rsvpOverTime(rsvps: AnyRecord[]) {
   const byDate: Record<string, { total: number; yes: number; no: number }> = {};
   for (const r of rsvps) {
-    const ts = r.submittedAt?.toDate?.() || (r.submittedAt?.seconds ? new Date(r.submittedAt.seconds * 1000) : null);
+    const submittedAt = r.submittedAt as { toDate?: () => Date; seconds?: number } | undefined;
+    const ts = submittedAt?.toDate?.() || (submittedAt?.seconds ? new Date(submittedAt.seconds * 1000) : null);
     if (!ts) continue;
     const key = ts.toISOString().slice(0, 10);
     if (!byDate[key]) byDate[key] = { total: 0, yes: 0, no: 0 };

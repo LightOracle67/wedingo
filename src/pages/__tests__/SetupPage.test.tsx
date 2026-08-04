@@ -189,11 +189,12 @@ describe("SetupPage", () => {
 
   it("renders retry button in error state and triggers reload", () => {
     const reloadSpy = vi.fn();
-    Object.defineProperty(globalThis, "window", {
-      value: { location: { reload: reloadSpy } },
-      configurable: true,
-      writable: true,
-    });
+    // Sustituye solo location.reload preservando el resto de window
+    // (eventos, etc.) mediante un objeto con herencia del window real.
+    const realWindow = globalThis.window;
+    const fakeWindow = Object.create(realWindow);
+    Object.defineProperty(fakeWindow, "location", { value: { reload: reloadSpy }, configurable: true });
+    Object.defineProperty(globalThis, "window", { value: fakeWindow, configurable: true, writable: true });
     mockUseApp.mockReturnValue({ ...baseMock, configLoadError: "Error loading config" });
 
     render(<SetupPage />);

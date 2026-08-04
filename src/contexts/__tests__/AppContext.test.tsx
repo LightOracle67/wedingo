@@ -83,7 +83,7 @@ function TestConsumer() {
   const ctx = useContext(AppContext);
   return (
     <div>
-      <button data-testid="save-btn" onClick={(e) => ctx.handleSaveSetup(e)}>Save</button>
+      <button data-testid="save-btn" onClick={(e) => ctx?.handleSaveSetup(e)}>Save</button>
     </div>
   );
 }

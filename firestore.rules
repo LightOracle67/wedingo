@@ -18,7 +18,7 @@ service cloud.firestore {
     }
 
     function isAuthenticatedAdmin(tokenId) {
-      return hasActiveSession(tokenId);
+      return hasActiveSession(tokenId) || isSuperAdmin();
     }
 
     function isSafeText(value) {
@@ -27,6 +27,25 @@ service cloud.firestore {
         && !value.matches('(?i).*javascript:.*')
         && !value.matches('(?i).*\\bon\\w+\\s*=\\s*[\'\"].*')
         && value.size() <= 5000;
+    }
+
+    /* Hash SHA-256 hexadecimal (64 caracteres) de un token de setup. */
+    function isValidTokenHash(hash) {
+      return hash is string
+        && hash.size() == 64
+        && hash.matches('[0-9a-f]{64}');
+    }
+
+    /* Un token de setup es válido si existe un registro en setupTokens cuyo
+       documentId (el hash del token) apunta a esta invitación. */
+    function setupTokenValid(tokenId, hash) {
+      return isValidTokenHash(hash)
+        && exists(/databases/$(database)/documents/setupTokens/$(hash))
+        && get(/databases/$(database)/documents/setupTokens/$(hash)).data.inviteToken == tokenId;
+    }
+
+    function isValidLongText(value) {
+      return value is string && value.size() <= 2000;
     }
 
     function isValidInvitationWrite(data) {
@@ -38,28 +57,55 @@ service cloud.firestore {
         && data.weddingYear is string && data.weddingYear.matches('^[12][0-9]{3}$')
         && data.weddingHour is string && data.weddingHour.matches('^([01]?[0-9]|2[0-3])$')
         && data.weddingMinute is string && data.weddingMinute.matches('^[0-5]?[0-9]$')
-        && data.theme in ['golden', 'forest', 'rose', 'linen-soft', 'blush-pearl', 'lavender-mist', 'champagne-bubble', 'amber-night', 'onyx-gold', 'midnight-royal', 'burgundy-velvet', 'sapphire-night', 'emerald-grove', 'plum-twilight', 'rainbow', 'trans', 'nonbinary', 'lesbian', 'bi', 'pan', 'ace'];
+        && data.theme in ['golden', 'forest', 'rose', 'linen-soft', 'blush-pearl', 'lavender-mist', 'champagne-bubble', 'amber-night', 'onyx-gold', 'midnight-royal', 'burgundy-velvet', 'sapphire-night', 'emerald-grove', 'plum-twilight', 'rainbow', 'trans', 'nonbinary', 'lesbian', 'bi', 'pan', 'ace']
+        && (!data.keys().hasAny(['adminUsername']) || (data.adminUsername is string && data.adminUsername.size() <= 50 && data.adminUsername.matches('^[a-z0-9]*$')))
+        && (!data.keys().hasAny(['inviteMessage']) || (data.inviteMessage is string && data.inviteMessage.size() <= 500))
+        && (!data.keys().hasAny(['storyText']) || isValidLongText(data.storyText))
+        && (!data.keys().hasAny(['giftsInfo']) || isValidLongText(data.giftsInfo))
+        && (!data.keys().hasAny(['accommodationInfo']) || isValidLongText(data.accommodationInfo))
+        && (!data.keys().hasAny(['weddingSchedule']) || isValidLongText(data.weddingSchedule))
+        && (!data.keys().hasAny(['menuTexto']) || isValidLongText(data.menuTexto))
+        && (!data.keys().hasAny(['kidsPolicy']) || isValidLongText(data.kidsPolicy))
+        && (!data.keys().hasAny(['bankInfo']) || (data.bankInfo is string && data.bankInfo.size() <= 2000))
+        && (!data.keys().hasAny(['weddingSiteURL']) || (data.weddingSiteURL is string && data.weddingSiteURL.size() <= 1000 && !data.weddingSiteURL.matches('(?i).*javascript:.*')))
+        && (!data.keys().hasAny(['accommodationURL']) || (data.accommodationURL is string && data.accommodationURL.size() <= 1000 && !data.accommodationURL.matches('(?i).*javascript:.*')));
     }
 
     match /invitations/{tokenId} {
-      allow read: if true;
+      /* Lectura pública por documento (necesaria para la invitación),
+         pero se prohíbe listar/enumerar la colección completa. */
+      allow get: if true;
+      allow list: if false;
       allow create: if isValidInvitationWrite(request.resource.data)
         && (request.auth != null
           || !exists(/databases/$(database)/documents/invitations/$(tokenId)));
+      /* Actualización de configuración por admin autenticado (sesión o superadmin). */
       allow update: if isValidInvitationWrite(request.resource.data)
         && (request.auth != null || hasActiveSession(tokenId));
       /* Incremento de contador de visitas: cualquiera puede incrementar _visits. */
       allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['_visits']);
-      /* Restauración de copia de seguridad por admin autenticado (sin validación de campos). */
-      allow update: if hasActiveSession(tokenId);
-      /* Creación/renovación de sesión: cualquiera puede iniciar sesión
-         o renovar la existente. sessionExpiresAt está limitado a 1h-48h
-         desde request.time para evitar sesiones permanentes. */
-      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['activeSession', 'sessionExpiresAt'])
+      /* Creación/renovación de sesión: exige prueba de conocimiento del token de
+         setup (hash con registro en setupTokens) o el token legacy de invitaciones
+         aún no migradas. sessionExpiresAt limitado a 1h-48h. */
+      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['activeSession', 'sessionExpiresAt', 'setupTokenHash', 'legacyToken'])
         && request.resource.data.activeSession is timestamp
         && request.resource.data.sessionExpiresAt is timestamp
         && request.resource.data.sessionExpiresAt <= request.time + duration.value(48, 'h')
-        && request.resource.data.sessionExpiresAt >= request.time + duration.value(1, 'h');
+        && request.resource.data.sessionExpiresAt >= request.time + duration.value(1, 'h')
+        && (setupTokenValid(tokenId, request.resource.data.setupTokenHash)
+          || (resource.data._activeSetupToken is string
+            && resource.data._activeSetupToken.size() > 0
+            && request.resource.data.legacyToken == resource.data._activeSetupToken));
+      /* Cierre de sesión: solo puede anularse una sesión existente (sin escalada). */
+      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['activeSession', 'sessionExpiresAt'])
+        && resource.data.activeSession is timestamp
+        && request.resource.data.activeSession == null
+        && request.resource.data.sessionExpiresAt == null;
+      /* Migración legacy: un admin autenticado elimina el campo legacyToken. */
+      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['legacyToken'])
+        && resource.data.legacyToken is string
+        && request.resource.data.legacyToken == null
+        && hasActiveSession(tokenId);
       allow delete: if isSuperAdmin();
 
       match /gallery/{imageId} {
@@ -92,6 +138,41 @@ service cloud.firestore {
       }
     }
 
+    /* Registros de tokens de setup. El documentId es el hash SHA-256 del token
+       (secreto ~2^158), por lo que solo es recuperable si se conoce el token.
+       La creación solo es válida para invitaciones inexistentes (alta inicial)
+       o cuando el admin ya tiene sesión activa. */
+    match /setupTokens/{hashId} {
+      allow get: if isSuperAdmin()
+        || (resource.data.inviteToken is string
+          && hasActiveSession(resource.data.inviteToken));
+      allow create: if isValidTokenHash(hashId)
+        && request.resource.data.keys().hasOnly(['inviteToken', 'createdAt'])
+        && request.resource.data.inviteToken is string
+        && request.resource.data.inviteToken.size() <= 40
+        && (!exists(/databases/$(database)/documents/invitations/$(request.resource.data.inviteToken))
+          || hasActiveSession(request.resource.data.inviteToken));
+      allow update: if isSuperAdmin()
+        || (resource.data.inviteToken is string
+          && hasActiveSession(resource.data.inviteToken));
+      allow delete: if isSuperAdmin()
+        || (resource.data.inviteToken is string
+          && hasActiveSession(resource.data.inviteToken));
+    }
+
+    /* Contador de RSVP por invitación: limita el número total de respuestas
+       para mitigar spam/DoS de escritura (máx. 500 por invitación). */
+    match /rsvpCounters/{inviteToken} {
+      allow create: if request.resource.data.keys().hasOnly(['count'])
+        && request.resource.data.count is int
+        && request.resource.data.count >= 0
+        && request.resource.data.count <= 1;
+      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['count'])
+        && request.resource.data.count is int
+        && request.resource.data.count == resource.data.count + 1
+        && request.resource.data.count <= 500;
+    }
+
     match /rsvpResponses/{responseId} {
       allow create: if request.resource.data.keys().hasAll(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent'])
         && request.resource.data.guestName is string
@@ -101,6 +182,7 @@ service cloud.firestore {
         && request.resource.data.attendance in ['yes', 'no']
         && request.resource.data.dietaryInfo is string
         && request.resource.data.dietaryInfo.size() <= 4000
+        && isSafeText(request.resource.data.dietaryInfo)
         && request.resource.data.inviteToken is string
         && request.resource.data.privacyConsent == true
         && (
@@ -111,6 +193,8 @@ service cloud.firestore {
           request.resource.data.dietaryInfo == ""
           || request.resource.data.healthConsent == true
         )
+        && exists(/databases/$(database)/documents/rsvpCounters/$(request.resource.data.inviteToken))
+        && get(/databases/$(database)/documents/rsvpCounters/$(request.resource.data.inviteToken)).data.count < 500
         && (request.resource.data.keys().hasOnly(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent', 'privacyConsentAt', 'birthDate', 'parentalConsent', 'menuSelection', 'mealChoice', 'healthConsent', 'healthConsentAt', 'companions', 'menuHeadcounts', 'guestNames', 'attendees', 'notAttendingCount', 'companionCount', 'companionNames', 'companionMenus', 'companionAllergies', 'companionAllergiesOther', 'allergiesOther', 'rsvpType', 'mainGuestDocId', 'mainGuestName', 'companionDocIds', 'transportChoice', 'transportMode', 'transportTime', 'transportPlace', 'companionTransportChoices', 'companionTransportModes', 'companionTransportTimes', 'companionTransportPlaces'])
           || request.resource.data.keys().hasOnly(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent', 'privacyConsentAt', 'birthDate', 'parentalConsent', 'menuSelection', 'mealChoice', 'companions', 'menuHeadcounts', 'guestNames', 'attendees', 'notAttendingCount', 'companionCount', 'companionNames', 'companionMenus', 'companionAllergies', 'companionAllergiesOther', 'allergiesOther', 'rsvpType', 'mainGuestDocId', 'mainGuestName', 'companionDocIds', 'transportChoice', 'transportMode', 'transportTime', 'transportPlace', 'companionTransportChoices', 'companionTransportModes', 'companionTransportTimes', 'companionTransportPlaces']))
         && (!request.resource.data.keys().hasAny(['transportMode']) || request.resource.data.transportMode is string)
@@ -136,6 +220,12 @@ service cloud.firestore {
       allow delete: if isSuperAdmin()
         || (resource.data.inviteToken is string
           && hasActiveSession(resource.data.inviteToken));
+    }
+
+    /* Registro de auditoría del superadmin. */
+    match /auditLog/{docId} {
+      allow create: if true;
+      allow read: if isSuperAdmin();
     }
 
     match /couples/{document=**} { allow read, write: if false; }

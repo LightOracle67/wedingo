@@ -1,5 +1,22 @@
 export const CHANGELOG = [
   {
+    version: "2.40.0",
+    date: "2026-08-04",
+    changes: [
+      "SEGURIDAD: el token de setup ya no se guarda en el documento público de la invitación — nuevo módulo setup-token (hash SHA-256) y colección privada setupTokens con documentId = hash; la activación de sesión exige prueba de conocimiento del token",
+      "SEGURIDAD: eliminada la regla de sesión forjable y el 'restore backup' sin validación; la colección invitations ya no es enumerable (solo get); storage.rules requiere sesión activa no expirada; rate limit de RSVP (tope 500 por invitación vía rsvpCounters); reglas de auditLog",
+      "SEGURIDAD: validación server-side de campos de texto (longitudes y patrones) en isValidInvitationWrite; sesión en sessionStorage con TTL 60 min; App Check activable por env",
+      "SEGURIDAD/CI: sourcemaps de Sentry corregidos en el deploy, reglas (firestore/storage) desplegadas en CI, SECURITY.md y .env.example reintegrados a git",
+      "FEAT: creación inicial — el token de acceso se muestra en el formulario (input type=password con mostrar/ocultar) debajo del usuario, con hint y checkbox obligatorio que bloquea el guardado hasta confirmar que se ha guardado",
+      "PERF: las props de sección se separaron (config/countdown/rsvp) — el tick del countdown y las teclas del RSVP ya no re-renderizan toda la invitación; el countdown se pausa con pestaña oculta y prefers-reduced-motion",
+      "PERF: firebase/analytics movido a chunk lazy (JS inicial 435→315 KB gzip); fuentes de Google por <link> preload; Sentry diferido a idle; caché de RSVP en sessionStorage; fetchPriority en el LCP",
+      "ACCESIBILIDAD: focus trap en lightbox de galería y modal de token, skip-link, aria-labels en MusicPlayer, contraste del tema linen-soft, role=alert en login, scope=col en tablas",
+      "I18N: fix de claves de alérgenos (se mostraban en español en todos los idiomas), supportedLngs + load languageOnly, hl dinámico en Google Maps, RTL_LANGS corregido, JSON-LD neutro",
+      "CALIDAD: fix de mutación directa de estado en RSVP, conteo honesto en la limpieza del superadmin, email de superadmin unificado, check-translations ampliado a los 100 locales (estructura + cobertura) y en CI, check-bundle-size con total inicial real",
+      "VERIFICADO: flujo completo de /setup contra el emulador de Firestore (7/7) — setupTokens, primer guardado con todos los campos, sesión con hash correcto/incorrecto, contador RSVP y no enumeración",
+    ],
+  },
+  {
     version: "2.39.0",
     date: "2026-08-04",
     changes: [
@@ -91,6 +108,21 @@ export const CHANGELOG = [
       "FEAT: piezas enterprise — bump automático, preview channels por PR, Sentry release+sourcemaps, load test k6, docs/OPS.md",
       "FIX: bump-version.js convertido a ESM",
       "FIX: slugs Sentry correctos (solo-developer-p9 / wedingo-6c26a)",
+    ],
+  },
+
+  {
+    version: "2.36.0",
+    date: "2026-07-31",
+    changes: [
+      "FEAT: Google Maps URL en vez de Leaflet/OSM — nuevo campo weddingMapUrl en config",
+      "FEAT: DateSectionForm reescrita — input de URL con validación + iframe preview",
+      "FEAT: WeddingMap simplificado — solo recibe mapUrl, sin geocodificación",
+      "FEAT: DetailsSection usa weddingMapUrl directamente, sin locationMapTarget",
+      "FEAT: isValidGoogleMapsUrl + convertToEmbedUrl en geo-utils",
+      "CLEANUP: eliminado useMapPreview hook y map-utils (OSM tile canvas)",
+      "CLEANUP: eliminado locationMapTarget/Error/Loading de UIContext",
+      "CLEANUP: eliminado OSM search (searchLocations, handlePlaceChange, geocodeLocation)",
     ],
   },
 
@@ -529,20 +561,6 @@ export const CHANGELOG = [
       "FEAT: animaciones de salida en modales y popup idioma",
       "FIX: estructura namespaces i18n, dot notation final",
       "FIX: gatear localStorage/sessionStorage tras consentimiento",
-    ],
-  },
-  {
-    version: "2.36.0",
-    date: "2026-07-31",
-    changes: [
-      "FEAT: Google Maps URL en vez de Leaflet/OSM — nuevo campo weddingMapUrl en config",
-      "FEAT: DateSectionForm reescrita — input de URL con validación + iframe preview",
-      "FEAT: WeddingMap simplificado — solo recibe mapUrl, sin geocodificación",
-      "FEAT: DetailsSection usa weddingMapUrl directamente, sin locationMapTarget",
-      "FEAT: isValidGoogleMapsUrl + convertToEmbedUrl en geo-utils",
-      "CLEANUP: eliminado useMapPreview hook y map-utils (OSM tile canvas)",
-      "CLEANUP: eliminado locationMapTarget/Error/Loading de UIContext",
-      "CLEANUP: eliminado OSM search (searchLocations, handlePlaceChange, geocodeLocation)",
     ],
   },
   {

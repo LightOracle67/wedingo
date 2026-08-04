@@ -11,13 +11,14 @@ import CookieConsent from "./components/CookieConsent";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 import MusicPlayer from "./components/MusicPlayer";
 
-const RTL_LANGS = new Set(["ar", "he", "fa", "ps", "ur", "sd", "ku", "ckb", "dv", "ha"]);
+const RTL_LANGS = new Set(["ar", "he", "fa", "ps", "ur", "sd", "ku", "ckb", "dv"]);
 const AccessibilityPanel = lazy(() => import("./components/AccessibilityPanel"));
 import LegalModal from "./components/LegalModal";
 import ChangelogModal from "./components/ChangelogModal";
 import Fireflies from "./components/Fireflies";
 import { APP_VERSION } from "./lib/constants";
 import { logError } from "./lib/error-utils";
+import { getSession } from "./lib/sessionVars";
 import "./styles/admin.css";
 import "./styles/rtl.css";
 import LandingPage from "./pages/LandingPage";
@@ -37,20 +38,9 @@ function AppShell() {
   const [username, setUsername] = useState("");
   
   useEffect(() => {
-
-    try {
-      const raw = sessionStorage.getItem("wedin_session");
-      if (raw) {
-        const data = JSON.parse(raw);
-        if (data.identifier && data.identifier.length > 10 && data.expiresAt && Date.now() < data.expiresAt) {
-
-          setUsername(data.identifier);
-        } else {
-
-        }
-      }
-    } catch {
-
+    const session = getSession();
+    if (session?.identifier && session.identifier.length > 10) {
+      setUsername(session.identifier);
     }
   }, []);
   const location = useLocation();
@@ -135,6 +125,10 @@ function AppShell() {
 
   return (
     <>
+      {/* Enlace de salto directo al contenido principal (WCAG 2.4.1). */}
+      <a href="#main-content" className="skip-link">
+        {t("common.skipToContent")}
+      </a>
       {import.meta.env.DEV ? (
         <div style={{
           position: "fixed", top: 0, left: 0, zIndex: 100000,

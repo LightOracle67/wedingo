@@ -1,10 +1,11 @@
 import { memo, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useFocusTrap } from "../hooks/useFocusTrap";
+import { INVITE_CACHE_PREFIX, AUDIO_PREFIX, STORAGE_KEYS } from "../lib/storage-keys";
 import "../styles/modals.css";
 
-const STORAGE_KEY = "wedin_cookie_consent";
-const PREF_STORAGE_KEY = "wedin_cookie_prefs";
+const STORAGE_KEY = STORAGE_KEYS.cookieConsent;
+const PREF_STORAGE_KEY = STORAGE_KEYS.cookiePrefs;
 
 function acceptCookies() {
   localStorage.setItem(STORAGE_KEY, "accepted");
@@ -35,7 +36,7 @@ const CookieConsent = memo(function CookieConsent() {
   const handleReject = () => {
     rejectCookies();
     try {
-      Object.keys(localStorage).filter(k => k.startsWith("wedin_invite_cache_") || k.startsWith("wedin_audio_")).forEach(k => localStorage.removeItem(k));
+      Object.keys(localStorage).filter(k => k.startsWith(INVITE_CACHE_PREFIX) || k.startsWith(AUDIO_PREFIX)).forEach(k => localStorage.removeItem(k));
     } catch {}
     setVisible(false);
   };
@@ -44,7 +45,7 @@ const CookieConsent = memo(function CookieConsent() {
     localStorage.setItem(STORAGE_KEY, "accepted");
     localStorage.setItem(PREF_STORAGE_KEY, JSON.stringify(preferences));
     if (!preferences.analytics) {
-      localStorage.removeItem("wedin_invite_cache");
+      localStorage.removeItem(STORAGE_KEYS.inviteCacheLegacy);
     }
     setVisible(false);
   };

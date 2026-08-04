@@ -1,7 +1,18 @@
 import { createContext, useContext } from "react";
+import type { FormEvent } from "react";
+import type { ConfigContextValue } from "./useConfig";
+import type { AuthValue } from "./useAuth";
+import type { RsvpValue } from "./useRsvpContext";
+import type { UIValue } from "./useAppUI";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const AppContext = createContext<any>(null);
+export type AppValue = ConfigContextValue &
+  AuthValue &
+  RsvpValue &
+  UIValue & {
+    handleSaveSetup: (event: FormEvent) => Promise<void>;
+  };
+
+export const AppContext = createContext<AppValue | null>(null);
 
 export function useApp() {
   const context = useContext(AppContext);

@@ -8,6 +8,8 @@ const PRECACHE_URLS = [
   "/favicon16.png",
   "/favicon32.png",
   "/favicon96.png",
+  "/favicon192.png",
+  "/favicon512.png",
   "/manifest.json",
 ];
 

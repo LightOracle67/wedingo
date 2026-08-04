@@ -1,4 +1,6 @@
-const STORAGE_CONSENT_KEY = "wedin_cookie_consent";
+import { STORAGE_KEYS } from "./storage-keys";
+
+const STORAGE_CONSENT_KEY = STORAGE_KEYS.cookieConsent;
 
 export function hasStorageConsent() {
   try {

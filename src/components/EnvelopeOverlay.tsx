@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { randomMessage } from "../lib/invite-messages";
 import "../styles/envelope.css";
 
-const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secondName, customSeal }: { onOpen: () => void; firstName: string; secondName: string; customSeal?: string }) {
+const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secondName, customSeal }: { onOpen: () => void; firstName: string; secondName: string; customSeal?: string | undefined }) {
 
   const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);

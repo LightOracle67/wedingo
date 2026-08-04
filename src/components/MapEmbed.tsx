@@ -16,8 +16,8 @@ export default function MapEmbed({ mapUrl, mapView = "roadmap", staticMap = fals
   staticMap?: boolean;
   height?: number;
 }) {
-  const { t } = useTranslation();
-  const embedSrc = mapUrl && isValidGoogleMapsUrl(mapUrl) ? convertToEmbedUrl(mapUrl, mapView) : "";
+  const { t, i18n } = useTranslation();
+  const embedSrc = mapUrl && isValidGoogleMapsUrl(mapUrl) ? convertToEmbedUrl(mapUrl, mapView, i18n.language) : "";
   const showIframe = embedSrc && canEmbed(embedSrc);
 
   return (

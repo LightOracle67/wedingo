@@ -1,9 +1,11 @@
 import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useReducedMotion } from "../../hooks/useReducedMotion";
+import { useFocusTrap } from "../../hooks/useFocusTrap";
 import "../../styles/gallery.css";
 import LoadingOverlay from "../../components/LoadingOverlay";
 import CornerDecorations from "../../components/CornerDecorations";
+import type { GalleryImage } from "../../types";
 
 interface GallerySectionProps {
   style?: React.CSSProperties;
@@ -26,7 +28,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
   const reducedMotion = useReducedMotion();
 
   /** Lista de imágenes con metadatos: { id, url, description }. */
-  const [images, setImages] = useState<any[]>([]);
+  const [images, setImages] = useState<GalleryImage[]>([]);
   /** Indica si la galería está cargando. */
   const [loading, setLoading] = useState(true);
 
@@ -194,6 +196,17 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
     openLightbox(clamped);
   }, [openLightbox, clamped]);
 
+  /** Apertura del lightbox con teclado (Enter/Espacio) para WCAG 2.1.1. */
+  const handleMainImageKeyDown = useCallback((e: React.KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      openLightbox(clamped);
+    }
+  }, [openLightbox, clamped]);
+
+  // Focus trap del lightbox: mantiene el foco dentro y lo restaura al cerrar.
+  const lightboxRef = useFocusTrap<HTMLDivElement>(lightboxIndex !== null);
+
   const handleThumbClick = useCallback((e: React.MouseEvent) => {
     const idx = (e.currentTarget as HTMLElement)?.dataset?.index;
     if (idx != null) goTo(parseInt(idx, 10));
@@ -287,7 +300,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
             <div className="gallery-main-image-wrap">
               {fading && prevClamped !== null && (
                 <img
-                  src={images[prevClamped].url || images[prevClamped]}
+                  src={images[prevClamped]?.url || ""}
                   alt=""
                   aria-hidden="true"
                   className="gallery-blur-out gallery-main-img"
@@ -296,11 +309,15 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
 
               <LoadingOverlay visible={!mainLoaded[clamped]} zIndex={1} />
               <img
-                src={currentImage?.url || currentImage}
+                src={currentImage?.url}
                 alt={currentImage?.description || t("gallery.imageAlt")}
                 onLoad={() => setMainLoaded((p: Record<number, boolean>) => ({ ...p, [clamped]: true }))}
                 onError={() => setMainLoaded((p: Record<number, boolean>) => ({ ...p, [clamped]: true }))}
                 onClick={handleMainImageClick}
+                onKeyDown={handleMainImageKeyDown}
+                role="button"
+                tabIndex={0}
+                aria-label={t("gallery.openLightbox")}
                 className={`gallery-main-img${!mainLoaded[clamped] ? " gallery-main-img--loading" : ""}${fading ? " gallery-blur-in" : ""}`}
                 style={{ cursor: "pointer" }}
               />
@@ -330,7 +347,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
         {/* ── Miniaturas ── */}
         <div style={{ display: "flex", justifyContent: "center", gap: "0.4rem", marginTop: "0.6rem", flexWrap: "wrap" }}>
           {images.map((img, i) => {
-            const src = img.url || img;
+            const src = img.url || "";
             return (
               <button
                 key={img.id || i}
@@ -366,6 +383,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
       {lightboxIndex !== null && images[lightboxIndex] && (
         <div
           className="gallery-lightbox"
+          ref={lightboxRef}
           onClick={closeLightbox}
           role="dialog"
           aria-modal="true"
@@ -397,7 +415,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
 
           <img
             className="gallery-lightbox__img"
-            src={images[lightboxIndex].url || images[lightboxIndex]}
+            src={images[lightboxIndex].url}
             alt={images[lightboxIndex].description || t("gallery.imageAlt")}
             loading="lazy"
             onClick={(e) => e.stopPropagation()}

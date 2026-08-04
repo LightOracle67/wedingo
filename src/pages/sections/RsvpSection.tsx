@@ -5,7 +5,7 @@ import { extractPlaceNameFromUrl } from "../../lib/geo-utils";
 import { parseMenuDishes } from "../../lib/menu-utils";
 import CornerDecorations from "../../components/CornerDecorations";
 
-const ALLERGIES = ["sin gluten", "sin lactosa", "alergia a frutos secos", "alergia a mariscos"];
+const ALLERGIES = ["sin gluten", "sin lactosa", "alergia frutos secos", "alergia mariscos"];
 
 interface RsvpFormState {
   guestName: string;

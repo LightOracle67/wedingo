@@ -139,8 +139,8 @@ describe("RSVP Integration", () => {
     expect(compPayload2.transportTime).toBe("14:30");
     expect(compPayload2.transportPlace).toBe("Estación Norte");
     expect(compPayload2.allergiesOther).toBe("alergia a mariscos");
-    // 1 main + 2 companions
-    expect(batch.set).toHaveBeenCalledTimes(3);
+    // 1 main + 2 companions + 1 contador anti-spam
+    expect(batch.set).toHaveBeenCalledTimes(4);
   });
 
   it("shows error when guestName is empty", async () => {

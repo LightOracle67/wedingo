@@ -3,6 +3,9 @@ import { useLocation } from "react-router";
 import { serverTimestamp, updateDoc } from "firebase/firestore";
 import { invitationDocRef } from "../lib/firebase";
 import { firestoreSessionExpiry, saveSession } from "../lib/sessionVars";
+import { hashSetupToken } from "../lib/setup-token";
+import { safeGetItem } from "../lib/storage";
+import { STORAGE_KEYS } from "../lib/storage-keys";
 import { useSetupAuth } from "../hooks/useSetupAuth";
 import { useTranslation } from "react-i18next";
 import { useConfig } from "./useConfig";
@@ -27,10 +30,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     auth.setSetupTokenInput("");
     (async () => {
       try {
+        // El token de setup se obtiene de sessionStorage y se envía su hash
+        // para que las reglas verifiquen la prueba de conocimiento del token.
+        const storedToken = safeGetItem(STORAGE_KEYS.setupToken(inviteToken), sessionStorage) || "";
+        const tokenHash = storedToken ? await hashSetupToken(storedToken) : "";
 
         await updateDoc(invitationDocRef(inviteToken), {
           activeSession: serverTimestamp(),
           sessionExpiresAt: firestoreSessionExpiry(),
+          setupTokenHash: tokenHash,
         });
         auth.setIsTokenVerified(true);
         const displayName = config.adminUsername || inviteToken;

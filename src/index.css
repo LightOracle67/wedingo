@@ -1,5 +1,6 @@
 @import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,700;1,400&family=Great+Vibes&display=swap");
+/* Las fuentes de Google se cargan mediante <link> en index.html
+   (preload + stylesheet) para no bloquear el primer render. */
 
 @font-face {
   font-family: "Playfair Display";
@@ -347,13 +348,13 @@ html {
   --setup-grad-start: rgba(46, 36, 24, 0.9);
   --setup-grad-end: rgba(114, 92, 64, 0.76);
   --setup-border: rgba(223, 208, 181, 0.34);
-  --setup-accent: #c8ad7a;
+  --setup-accent: #b8945a;
   --setup-accent-text: #2e2417;
   --setup-field-bg: rgba(27, 21, 14, 0.32);
   --setup-field-border: rgba(229, 216, 194, 0.26);
   --setup-title: #fff9ee;
   --setup-subtitle: rgba(244, 237, 225, 0.84);
-  --setup-muted: rgba(228, 219, 205, 0.72);
+  --setup-muted: rgba(232, 224, 211, 0.85);
   --invite-shell-bg: rgba(255, 251, 244, 0.42);
   --invite-shell-border: rgba(215, 198, 171, 0.38);
   --invite-shell-shadow: rgba(58, 43, 25, 0.3);

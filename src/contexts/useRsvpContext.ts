@@ -1,7 +1,24 @@
 import { createContext, useContext } from "react";
+import type { useRsvp } from "../hooks/useRsvp";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const RsvpContext = createContext<any>(null);
+export type RsvpValue = Pick<
+  ReturnType<typeof useRsvp>,
+  | "rsvpEntries"
+  | "rsvpForm"
+  | "rsvpMessage"
+  | "isRsvpSubmitting"
+  | "hasSubmitted"
+  | "alreadySubmittedEntry"
+  | "DIETARY_OPTIONS"
+  | "updateRsvpField"
+  | "handleRsvpSubmit"
+  | "handleDeleteRsvp"
+  | "handleDeleteRsvpEntries"
+  | "computeAge"
+  | "handleClearRsvpEntries"
+>;
+
+export const RsvpContext = createContext<RsvpValue | null>(null);
 
 export function useRsvpContext() {
   const ctx = useContext(RsvpContext);

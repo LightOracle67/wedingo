@@ -12,6 +12,8 @@ const mockWriteBatch = vi.hoisted(() => vi.fn(() => ({
   delete: vi.fn(),
   commit: vi.fn(() => Promise.resolve()),
 })));
+const mockGetDoc = vi.hoisted(() => vi.fn(() => Promise.resolve({ exists: () => true, data: () => ({ count: 0 }) })));
+const mockSetDoc = vi.hoisted(() => vi.fn(() => Promise.resolve()));
 const mockEncrypt = vi.hoisted(() => vi.fn((v: string) => Promise.resolve(v)));
 const mockDecrypt = vi.hoisted(() => vi.fn((v: string) => Promise.resolve(v)));
 const mockComputeAge = vi.hoisted(() => vi.fn(() => 25));
@@ -23,7 +25,8 @@ vi.mock("firebase/firestore", () => ({
   getDocs: mockGetDocs,
   doc: mockDoc,
   serverTimestamp: vi.fn(() => ({ seconds: 1234567890, nanoseconds: 0 })),
-  getDoc: vi.fn(),
+  getDoc: mockGetDoc,
+  setDoc: mockSetDoc,
 }));
 
 vi.mock("../../lib/firebase", () => ({
@@ -44,6 +47,12 @@ vi.mock("../../lib/date-utils", () => ({
 vi.mock("../../lib/rsvp-utils", () => ({
   DIETARY_OPTIONS: [],
   parseDietaryInfo: mockParseDietaryInfo,
+}));
+
+// Mock de storage: sin caché real para mantener los tests deterministas.
+vi.mock("../../lib/storage", () => ({
+  safeGetItem: vi.fn(() => null),
+  safeSetItem: vi.fn(),
 }));
 
 import { useRsvp } from "../useRsvp";
@@ -379,8 +388,8 @@ describe("useRsvp", () => {
       expect(mainPayload.companionCount).toBe(2);
       expect(mainPayload.companionNames).toEqual(["Bob Carlos Jones", "Charlie Brown Smith"]);
       expect(mainPayload.rsvpType).toBe("main");
-      // 1 main + 2 companions = 3 set calls
-      expect(batch.set).toHaveBeenCalledTimes(3);
+      // 1 main + 2 companions + 1 counter increment = 4 set calls
+      expect(batch.set).toHaveBeenCalledTimes(4);
     });
 
     it("submits with menuSelection when provided", async () => {

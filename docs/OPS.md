@@ -28,12 +28,16 @@ Releases semánticas `MAJOR.MINOR.PATCH`.
 ### Crear una versión
 ```bash
 npm run bump minor     # o: patch / major / 2.40.0
-# Editar el entry "TODO" del changelog con los cambios reales
+# Editar el entry "TODO" del changelog con los cambios reales (obligatorio)
+npm run changelog:check   # falla si queda algún TODO sin completar
 git push && git push origin vX.Y.Z
 npx gh release create vX.Y.Z --notes-file /tmp/wedingo-release-X.Y.Z.md --title "vX.Y.Z"
 ```
 
 `npm run bump` actualiza: `package.json`, `constants.ts` (APP_VERSION), `changelog.ts`, crea commit + tag.
+
+> **Importante:** el CI ejecuta `changelog:check` en `main`. Si haces push con un entry
+> `TODO:` sin completar, el build fallará. Rellena el changelog antes de pushear.
 
 ## Monitorización
 

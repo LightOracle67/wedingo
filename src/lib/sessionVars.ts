@@ -1,11 +1,19 @@
-const STORAGE_KEY = "wedin_session";
-const SESSION_DURATION = 24 * 60 * 60 * 1000;
+import { STORAGE_KEYS } from "./storage-keys";
 
-/** TTL para activeSession en Firestore (24h). */
-const FIRESTORE_SESSION_TTL_MS = 86400000;
+const STORAGE_KEY = STORAGE_KEYS.session;
+/** Duración de la sesión local (sessionStorage): 60 minutos. */
+const SESSION_DURATION = 60 * 60 * 1000;
 
-function ls() {
-  try { return localStorage; } catch { return null; }
+/** TTL para activeSession en Firestore (60 minutos). */
+const FIRESTORE_SESSION_TTL_MS = 3600000;
+
+/**
+ * La sesión se guarda en sessionStorage (no localStorage) para que no
+ * persista entre reinicios del navegador ni sea accesible desde otras
+ * pestañas del origen, reduciendo la superficie de robo de sesión.
+ */
+function ss() {
+  try { return sessionStorage; } catch { return null; }
 }
 
 /** Calcula la fecha de expiración para activeSession en Firestore. */
@@ -23,13 +31,13 @@ export function saveSession(type: string, identifier: string, extra: Record<stri
       createdAt: Date.now(),
       expiresAt: Date.now() + SESSION_DURATION,
     };
-    ls()?.setItem(STORAGE_KEY, JSON.stringify(data));
+    ss()?.setItem(STORAGE_KEY, JSON.stringify(data));
   } catch (err) { console.error("[app]", "[sessionVars]", "saveSession error", { error: err }); }
 }
 
 export function getSession() {
   try {
-    const raw = ls()?.getItem(STORAGE_KEY);
+    const raw = ss()?.getItem(STORAGE_KEY);
     if (!raw) { ; return null; }
     const data = JSON.parse(raw);
     if (data.expiresAt && Date.now() < data.expiresAt) {
@@ -48,16 +56,16 @@ export function getSession() {
 
 export function renewSession() {
   try {
-    const raw = ls()?.getItem(STORAGE_KEY);
+    const raw = ss()?.getItem(STORAGE_KEY);
     if (!raw) { ; return; }
     const data = JSON.parse(raw);
     data.expiresAt = Date.now() + SESSION_DURATION;
-    ls()?.setItem(STORAGE_KEY, JSON.stringify(data));
+    ss()?.setItem(STORAGE_KEY, JSON.stringify(data));
 
   } catch (err) { console.error("[app]", "[sessionVars]", "renewSession error", { error: err }); }
 }
 
 export function clearSession() {
 
-  try { ls()?.removeItem(STORAGE_KEY); } catch (err) { console.error("[app]", "[sessionVars]", "clearSession error", { error: err }); }
+  try { ss()?.removeItem(STORAGE_KEY); } catch (err) { console.error("[app]", "[sessionVars]", "clearSession error", { error: err }); }
 }

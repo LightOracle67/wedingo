@@ -24,7 +24,8 @@ describe("superadmin", () => {
     const mod = await import("../superadmin");
     expect(mod.SUPERADMIN_ROUTE).toBe("");
     expect(mod.SUPERADMIN_DASHBOARD).toBe("");
-    expect(mod.SUPERADMIN_EMAIL).toBe("");
+    // Fallback del email de superadmin por defecto.
+    expect(mod.SUPERADMIN_EMAIL).toBe("adriancl2001@gmail.com");
   });
 
   it("extracts first admin email from comma-separated list", async () => {

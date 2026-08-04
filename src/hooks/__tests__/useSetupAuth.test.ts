@@ -4,10 +4,10 @@ import type { InvitationConfig } from "../../types";
 
 const mockT = vi.hoisted(() => vi.fn((key: string) => key));
 const mockNavigate = vi.hoisted(() => vi.fn());
-const mockGetDoc = vi.hoisted(() => vi.fn((): Promise<{ exists: () => boolean; data?: () => Record<string, unknown> }> => Promise.resolve({ exists: () => false })));
+const mockGetDoc = vi.hoisted(() => vi.fn((_ref?: unknown): Promise<{ exists: () => boolean; data?: () => Record<string, unknown> }> => Promise.resolve({ exists: () => false })));
 const mockRunTransaction = vi.hoisted(() => vi.fn(async (_db: unknown, cb: (t: unknown) => Promise<void>) => cb({} as never)));
 const mockSetDoc = vi.hoisted(() => vi.fn(() => Promise.resolve()));
-const mockUpdateDoc = vi.hoisted(() => vi.fn(() => Promise.resolve()));
+const mockUpdateDoc = vi.hoisted(() => vi.fn((_ref?: unknown, _payload?: unknown) => Promise.resolve()));
 const mockGetSession = vi.hoisted(() => vi.fn(() => null as { type: string; identifier: string } | null));
 const mockSaveSession = vi.hoisted(() => vi.fn());
 const mockClearSession = vi.hoisted(() => vi.fn());
@@ -18,6 +18,10 @@ const mockSafeGetItem = vi.hoisted(() => vi.fn(() => null as string | null));
 const mockSafeRemoveItem = vi.hoisted(() => vi.fn());
 const mockGenerateSetupToken = vi.hoisted(() => vi.fn(() => "generated-token-123"));
 const mockNormalizeTokenValue = vi.hoisted(() => vi.fn((v: string) => v?.trim() ?? v));
+const mockHashSetupToken = vi.hoisted(() => vi.fn(async (t: string) => `hash-${t}`));
+const mockCreateSetupTokenRecord = vi.hoisted(() => vi.fn(() => Promise.resolve("hash")));
+const mockDeleteSetupTokenRecord = vi.hoisted(() => vi.fn(() => Promise.resolve()));
+const mockTokenRecordExists = vi.hoisted(() => ({ value: true }));
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: mockT }),
@@ -33,6 +37,7 @@ vi.mock("firebase/firestore", () => ({
   serverTimestamp: vi.fn(() => ({ seconds: 1234567890, nanoseconds: 0 })),
   setDoc: mockSetDoc,
   updateDoc: mockUpdateDoc,
+  deleteField: vi.fn(() => Symbol("deleteField")),
 }));
 
 vi.mock("../../lib/firebase", () => ({
@@ -48,6 +53,14 @@ vi.mock("../../lib/constants", () => ({
 vi.mock("../../lib/token-utils", () => ({
   generateSetupToken: mockGenerateSetupToken,
   normalizeTokenValue: mockNormalizeTokenValue,
+}));
+
+vi.mock("../../lib/setup-token", () => ({
+  hashSetupToken: mockHashSetupToken,
+  setupTokenRef: vi.fn((h: string) => `token-ref-${h}`),
+  createSetupTokenRecord: mockCreateSetupTokenRecord,
+  deleteSetupTokenRecord: mockDeleteSetupTokenRecord,
+  findInviteBySetupToken: vi.fn(() => Promise.resolve(null)),
 }));
 
 vi.mock("../../lib/sessionVars", () => ({
@@ -90,12 +103,22 @@ describe("useSetupAuth", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     mockGetSession.mockReturnValue(null);
-    mockGetDoc.mockImplementation(() => Promise.resolve({ exists: () => false }));
-    mockRunTransaction.mockImplementation(() => Promise.resolve());
+    // Implementación por defecto: los documentos de setupTokens se comportan
+    // según mockTokenRecordExists y la invitación devuelve un token legacy.
+    mockGetDoc.mockImplementation(async (ref: unknown) => {
+      if (String(ref).startsWith("token-ref-")) {
+        return mockTokenRecordExists.value
+          ? { exists: () => true, data: () => ({ inviteToken: "test-invite-token" }) }
+          : { exists: () => false };
+      }
+      return { exists: () => true, data: () => ({ _activeSetupToken: "valid-token", adminUsername: "admin" }) };
+    });
+    mockRunTransaction.mockImplementation(async (_db: unknown, _cb: (t: unknown) => Promise<void>) => Promise.resolve());
     mockSetDoc.mockImplementation(() => Promise.resolve());
     mockUpdateDoc.mockImplementation(() => Promise.resolve());
     mockGenerateSetupToken.mockImplementation(() => "generated-token-123");
     mockNormalizeTokenValue.mockImplementation((v: string) => v?.trim() ?? v);
+    mockTokenRecordExists.value = true;
     window.confirm = vi.fn(() => true);
   });
 
@@ -128,9 +151,11 @@ describe("useSetupAuth", () => {
     });
 
     it("proceeds even when activateSessionWithToken returns null (session exists but user cancels)", async () => {
-      mockGetDoc.mockResolvedValueOnce({
-        exists: () => true,
-        data: () => ({ activeSession: true, _activeSetupToken: "valid-token" }),
+      mockGetDoc.mockImplementation(async (ref: unknown) => {
+        if (String(ref).startsWith("token-ref-")) {
+          return { exists: () => false };
+        }
+        return { exists: () => true, data: () => ({ activeSession: true, _activeSetupToken: "valid-token" }) };
       });
       window.confirm = vi.fn(() => false);
       const { result } = setup();
@@ -146,9 +171,11 @@ describe("useSetupAuth", () => {
     });
 
     it("logs in successfully with valid token", async () => {
-      mockGetDoc.mockResolvedValue({
-        exists: () => true,
-        data: () => ({ _activeSetupToken: "valid-token" }),
+      mockGetDoc.mockImplementation(async (ref: unknown) => {
+        if (String(ref).startsWith("token-ref-")) {
+          return { exists: () => true, data: () => ({ inviteToken: "test-invite-token" }) };
+        }
+        return { exists: () => true, data: () => ({ _activeSetupToken: "valid-token" }) };
       });
       mockRunTransaction.mockImplementation(async (_db: unknown, cb: (t: unknown) => Promise<void>) => {
         const transaction = {
@@ -174,9 +201,11 @@ describe("useSetupAuth", () => {
     });
 
     it("handles token mismatch error", async () => {
-      mockGetDoc.mockResolvedValue({
-        exists: () => true,
-        data: () => ({ _activeSetupToken: "other-token" }),
+      mockGetDoc.mockImplementation(async (ref: unknown) => {
+        if (String(ref).startsWith("token-ref-")) {
+          return { exists: () => false };
+        }
+        return { exists: () => true, data: () => ({ _activeSetupToken: "other-token" }) };
       });
       window.confirm = vi.fn(() => true);
 
@@ -415,7 +444,7 @@ describe("useSetupAuth", () => {
       expect(result.current.setupToken).toBe("session-stored-token");
     });
 
-    it("restores token from Firestore _activeSetupToken", async () => {
+    it("does not read the token from the public invitation document", async () => {
       mockSafeGetItem.mockReturnValue(null);
       mockGetDoc.mockResolvedValueOnce({
         exists: () => true,
@@ -428,16 +457,14 @@ describe("useSetupAuth", () => {
         token = await result.current.refreshSetupToken();
       });
 
-      expect(token).toBe("firestore-token");
-      expect(mockSafeSetItem).toHaveBeenCalled();
+      // El token ya no se recupera del documento público (seguridad);
+      // solo se usa sessionStorage.
+      expect(token).toBe("");
+      expect(mockGetDoc).not.toHaveBeenCalled();
     });
 
-    it("returns empty when no stored or Firestore token exists", async () => {
+    it("returns empty when no stored token exists", async () => {
       mockSafeGetItem.mockReturnValue(null);
-      mockGetDoc.mockResolvedValueOnce({
-        exists: () => true,
-        data: () => ({}),
-      });
 
       const { result } = setup();
 
@@ -447,22 +474,6 @@ describe("useSetupAuth", () => {
       });
 
       expect(token).toBe("");
-    });
-
-    it("handles Firestore error during token lookup gracefully", async () => {
-      mockSafeGetItem.mockReturnValue(null);
-      mockGetDoc.mockRejectedValueOnce(new Error("Lookup error"));
-
-      const setAdminMessage = vi.fn();
-      const setAdminMessageType = vi.fn();
-      const { result } = setup({ setAdminMessage, setAdminMessageType });
-
-      await act(async () => {
-        await result.current.refreshSetupToken();
-      });
-
-      expect(setAdminMessageType).toHaveBeenCalledWith("error");
-      expect(setAdminMessage).toHaveBeenCalledWith("auth.tokenLookupFailed");
     });
   });
 
@@ -509,6 +520,7 @@ describe("useSetupAuth", () => {
         expect(mockUpdateDoc).toHaveBeenCalledWith("invite-ref", {
           activeSession: expect.any(Object),
           sessionExpiresAt: expect.any(Object),
+          setupTokenHash: "",
         });
       });
     });
@@ -578,10 +590,17 @@ describe("useSetupAuth", () => {
     });
 
     it("handles renewal update error gracefully", async () => {
-      mockUpdateDoc.mockRejectedValueOnce(new Error("Renew error"));
-      mockGetDoc.mockResolvedValue({
-        exists: () => true,
-        data: () => ({ _activeSetupToken: "tok" }),
+      mockUpdateDoc.mockImplementation((_ref: unknown, payload?: unknown) => {
+        if (payload && typeof payload === "object" && "sessionExpiresAt" in payload) {
+          return Promise.reject(new Error("Renew error"));
+        }
+        return Promise.resolve();
+      });
+      mockGetDoc.mockImplementation(async (ref: unknown) => {
+        if (String(ref).startsWith("token-ref-")) {
+          return { exists: () => true, data: () => ({ inviteToken: "test-invite-token" }) };
+        }
+        return { exists: () => true, data: () => ({ _activeSetupToken: "tok" }) };
       });
       mockRunTransaction.mockImplementation(async (_db: unknown, cb: (t: unknown) => Promise<void>) => {
         const transaction = {

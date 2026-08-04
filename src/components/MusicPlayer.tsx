@@ -81,18 +81,18 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }: { musicUrl?: string 
 
   return (
     <div className="music-player">
-      {musicUrl ? <audio ref={audioRef} src={musicUrl} loop autoPlay preload="auto" /> : null}
+      {musicUrl ? <audio ref={audioRef} src={musicUrl} loop preload="none" /> : null}
 
       <div className={`music-player__card${open ? " music-player__card--open" : ""}`}>
         <span className="music-player__track">{name}</span>
         {error ? <span className="music-player__status">{t("music.loadError")}</span> : null}
         <div className="music-player__controls">
-          <button type="button" className={`music-player__play${playing ? " music-player__play--active" : ""}`} onClick={toggleMusic} disabled={loading || !hasMusic}>
+          <button type="button" className={`music-player__play${playing ? " music-player__play--active" : ""}`} onClick={toggleMusic} disabled={loading || !hasMusic} aria-label={playing ? t("music.pause") : t("music.play")}>
             {loading ? <span className="music-player__spinner" /> : playing ? <span>⏸</span> : <span>▶</span>}
           </button>
           <div className="music-player__volume-row">
-            <span className="music-player__vol-icon">{volume === 0 ? "🔇" : volume < 0.5 ? "🔉" : "🔊"}</span>
-            <input type="range" min="0" max="1" step="0.05" value={volume} onChange={handleVolume} className="music-player__volume" disabled={!hasMusic} />
+            <span className="music-player__vol-icon" aria-hidden="true">{volume === 0 ? "🔇" : volume < 0.5 ? "🔉" : "🔊"}</span>
+            <input type="range" min="0" max="1" step="0.05" value={volume} onChange={handleVolume} className="music-player__volume" disabled={!hasMusic} aria-label={t("music.volume")} />
           </div>
         </div>
       </div>

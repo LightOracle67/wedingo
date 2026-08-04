@@ -47,6 +47,8 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
+          // firebase/analytics se carga de forma diferida (fuera de la ruta crítica).
+          if (id.includes("firebase/analytics")) return "lazy-analytics";
           if (id.includes("firebase")) return "vendor-firebase";
           if (id.includes("node_modules/.pnpm/react") || id.includes("node_modules/react")) return "vendor-react";
           if (id.includes("/node_modules/i18next/") || id.includes("/node_modules/react-i18next/")) return "i18n";

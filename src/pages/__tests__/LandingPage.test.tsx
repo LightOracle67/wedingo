@@ -61,6 +61,15 @@ vi.mock("../../lib/storage-utils", () => ({
   clearExpiredCache: vi.fn(),
 }));
 
+const mockFindInviteBySetupToken = vi.fn((_token?: unknown) => Promise.resolve(null as string | null));
+const mockHashSetupToken = vi.fn((_token?: unknown) => Promise.resolve("mock-hash"));
+const mockCreateSetupTokenRecord = vi.fn((_token?: unknown, _setup?: unknown) => Promise.resolve("mock-hash"));
+vi.mock("../../lib/setup-token", () => ({
+  findInviteBySetupToken: (token: unknown) => mockFindInviteBySetupToken(token),
+  hashSetupToken: (token: unknown) => mockHashSetupToken(token),
+  createSetupTokenRecord: (token: unknown, setup: unknown) => mockCreateSetupTokenRecord(token, setup),
+}));
+
 vi.mock("../../lib/sessionVars", () => ({
   saveSession: vi.fn(),
   firestoreSessionExpiry: () => "mocked-expiry",
@@ -75,6 +84,9 @@ import LandingPage from "../LandingPage";
 
 beforeEach(() => {
   vi.clearAllMocks();
+  mockFindInviteBySetupToken.mockResolvedValue(null);
+  mockHashSetupToken.mockResolvedValue("mock-hash");
+  mockCreateSetupTokenRecord.mockResolvedValue("mock-hash");
   Object.defineProperty(globalThis, "crypto", {
     value: { getRandomValues: (arr: Uint8Array) => { for (let i = 0; i < arr.length; i++) arr[i] = i; } },
     configurable: true,
@@ -109,11 +121,13 @@ describe("LandingPage", () => {
     expect(screen.getByText("landing.haveInvitation")).toBeDefined();
   });
 
-  it("navigates to setup when create button is clicked", () => {
+  it("navigates to setup when create button is clicked", async () => {
     render(<LandingPage />);
     const createBtn = screen.getByText("landing.createInvitation");
     fireEvent.click(createBtn);
-    expect(mockNavigate).toHaveBeenCalledWith("/mocked-invite-token/setup");
+    await vi.waitFor(() => {
+      expect(mockNavigate).toHaveBeenCalledWith("/mocked-invite-token/setup");
+    });
   });
 
   it("opens login modal when have invitation is clicked", () => {
@@ -145,8 +159,7 @@ describe("LandingPage", () => {
   });
 
   it("shows error when token not found", async () => {
-    const { getDocs } = await import("firebase/firestore");
-    vi.mocked(getDocs).mockResolvedValue({ empty: true, docs: [] } as any);
+    mockFindInviteBySetupToken.mockResolvedValue(null);
 
     render(<LandingPage />);
     fireEvent.click(screen.getByText("landing.haveInvitation"));
@@ -160,10 +173,11 @@ describe("LandingPage", () => {
   });
 
   it("shows error when username mismatches", async () => {
-    const { getDocs } = await import("firebase/firestore");
-    vi.mocked(getDocs).mockResolvedValue({
-      empty: false,
-      docs: [{ id: "target-invite", data: () => ({ adminUsername: "jane" }) }],
+    mockFindInviteBySetupToken.mockResolvedValue("target-invite");
+    const { getDoc } = await import("firebase/firestore");
+    vi.mocked(getDoc).mockResolvedValue({
+      exists: () => true,
+      data: () => ({ adminUsername: "jane" }),
     } as any);
 
     render(<LandingPage />);
@@ -178,11 +192,8 @@ describe("LandingPage", () => {
   });
 
   it("navigates on successful login", async () => {
-    const { getDocs, getDoc, runTransaction } = await import("firebase/firestore");
-    vi.mocked(getDocs).mockResolvedValue({
-      empty: false,
-      docs: [{ id: "target-invite", data: () => ({ adminUsername: "john", activeSession: null }) }],
-    } as any);
+    mockFindInviteBySetupToken.mockResolvedValue("target-invite");
+    const { getDoc, runTransaction } = await import("firebase/firestore");
     vi.mocked(getDoc).mockResolvedValue({
       exists: () => false,
       data: () => ({}),
@@ -225,11 +236,8 @@ describe("LandingPage", () => {
   });
 
   it("handles transaction update path when invite exists", async () => {
-    const { getDocs, getDoc, runTransaction } = await import("firebase/firestore");
-    vi.mocked(getDocs).mockResolvedValue({
-      empty: false,
-      docs: [{ id: "target-invite", data: () => ({}) }],
-    } as any);
+    mockFindInviteBySetupToken.mockResolvedValue("target-invite");
+    const { getDoc, runTransaction } = await import("firebase/firestore");
     vi.mocked(getDoc).mockResolvedValue({
       exists: () => false,
       data: () => ({}),
@@ -255,10 +263,11 @@ describe("LandingPage", () => {
   });
 
   it("shows error on transaction failure", async () => {
-    const { getDocs, runTransaction } = await import("firebase/firestore");
-    vi.mocked(getDocs).mockResolvedValue({
-      empty: false,
-      docs: [{ id: "target-invite", data: () => ({}) }],
+    mockFindInviteBySetupToken.mockResolvedValue("target-invite");
+    const { getDoc, runTransaction } = await import("firebase/firestore");
+    vi.mocked(getDoc).mockResolvedValue({
+      exists: () => false,
+      data: () => ({}),
     } as any);
     vi.mocked(runTransaction).mockRejectedValue(new Error("tx failed"));
 
@@ -274,8 +283,7 @@ describe("LandingPage", () => {
   });
 
   it("shows error on verify failure (outer catch)", async () => {
-    const { getDocs } = await import("firebase/firestore");
-    vi.mocked(getDocs).mockRejectedValue(new Error("network error"));
+    mockFindInviteBySetupToken.mockRejectedValue(new Error("network error"));
 
     render(<LandingPage />);
     fireEvent.click(screen.getByText("landing.haveInvitation"));
@@ -315,11 +323,8 @@ describe("LandingPage", () => {
   });
 
   it("handles session exists confirm and continues login", async () => {
-    const { getDocs, getDoc, runTransaction } = await import("firebase/firestore");
-    vi.mocked(getDocs).mockResolvedValue({
-      empty: false,
-      docs: [{ id: "target-invite", data: () => ({}) }],
-    } as any);
+    mockFindInviteBySetupToken.mockResolvedValue("target-invite");
+    const { getDoc, runTransaction } = await import("firebase/firestore");
     vi.mocked(getDoc).mockResolvedValue({
       exists: () => true,
       data: () => ({ activeSession: true }),
@@ -345,11 +350,8 @@ describe("LandingPage", () => {
   });
 
   it("cancels login when session exists and user declines", async () => {
-    const { getDocs, getDoc } = await import("firebase/firestore");
-    vi.mocked(getDocs).mockResolvedValue({
-      empty: false,
-      docs: [{ id: "target-invite", data: () => ({}) }],
-    } as any);
+    mockFindInviteBySetupToken.mockResolvedValue("target-invite");
+    const { getDoc } = await import("firebase/firestore");
     vi.mocked(getDoc).mockResolvedValue({
       exists: () => true,
       data: () => ({ activeSession: true }),
@@ -369,8 +371,7 @@ describe("LandingPage", () => {
   });
 
   it("handles rate limiting on verify failure", async () => {
-    const { getDocs } = await import("firebase/firestore");
-    vi.mocked(getDocs).mockRejectedValue(new Error("network error"));
+    mockFindInviteBySetupToken.mockRejectedValue(new Error("network error"));
 
     render(<LandingPage />);
     fireEvent.click(screen.getByText("landing.haveInvitation"));
@@ -387,9 +388,7 @@ describe("LandingPage", () => {
   });
 
   it("handles rate limiting on token not found", async () => {
-    const { getDocs } = await import("firebase/firestore");
-    const errMock = vi.mocked(getDocs);
-    errMock.mockResolvedValue({ empty: true, docs: [] } as any);
+    mockFindInviteBySetupToken.mockResolvedValue(null);
 
     render(<LandingPage />);
     fireEvent.click(screen.getByText("landing.haveInvitation"));
@@ -406,10 +405,11 @@ describe("LandingPage", () => {
   });
 
   it("handles rate limiting on username mismatch", async () => {
-    const { getDocs } = await import("firebase/firestore");
-    vi.mocked(getDocs).mockResolvedValue({
-      empty: false,
-      docs: [{ id: "target-invite", data: () => ({ adminUsername: "jane" }) }],
+    mockFindInviteBySetupToken.mockResolvedValue("target-invite");
+    const { getDoc } = await import("firebase/firestore");
+    vi.mocked(getDoc).mockResolvedValue({
+      exists: () => true,
+      data: () => ({ adminUsername: "jane" }),
     } as any);
 
     render(<LandingPage />);

@@ -11,7 +11,7 @@ interface ScheduleEvent {
 
 export default function DateSectionForm({ prefix = "" }) {
   const { formData, updateFormField, handleDayChange, handleYearChange, handleTimeChange, handleTimeBlur, maxAllowedYear } = useApp();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const id = (name: string) => `${prefix}${name}`;
 
   const handleSiteUrlChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,8 +23,8 @@ export default function DateSectionForm({ prefix = "" }) {
 
   const embedUrl = useMemo(() => {
     if (!isSiteUrlValid) return "";
-    return convertToEmbedUrl(siteUrl, formData.weddingMapView || "roadmap");
-  }, [siteUrl, isSiteUrlValid, formData.weddingMapView]);
+    return convertToEmbedUrl(siteUrl, formData.weddingMapView || "roadmap", i18n.language);
+  }, [siteUrl, isSiteUrlValid, formData.weddingMapView, i18n.language]);
 
   const siteName = useMemo(() => {
     if (!isSiteUrlValid) return "";

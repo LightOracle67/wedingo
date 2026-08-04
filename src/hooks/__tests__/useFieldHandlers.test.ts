@@ -61,6 +61,20 @@ describe("handleTimeChange", () => {
     expect(updateFormField).toHaveBeenCalledWith("weddingHour", "");
     expect(updateFormField).toHaveBeenCalledWith("weddingMinute", "");
   });
+
+  it("keeps hour empty when the hour part is missing", () => {
+    const { updateFormField, result } = setup();
+    result.current.handleTimeChange(":30");
+    expect(updateFormField).toHaveBeenCalledWith("weddingHour", "");
+    expect(updateFormField).toHaveBeenCalledWith("weddingMinute", "30");
+  });
+
+  it("keeps minute empty when the minute part is missing", () => {
+    const { updateFormField, result } = setup();
+    result.current.handleTimeChange("14:");
+    expect(updateFormField).toHaveBeenCalledWith("weddingHour", "14");
+    expect(updateFormField).toHaveBeenCalledWith("weddingMinute", "");
+  });
 });
 
 describe("handleTimeBlur", () => {

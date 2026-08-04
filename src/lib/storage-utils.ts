@@ -1,25 +1,4 @@
-const STORAGE_PREFIX = "wedin_";
-
-export function getStorageUsage(): { used: number; total: number; percent: number } {
-  let used = 0;
-  const total = 5 * 1024 * 1024; // 5MB estimate for localStorage
-
-  try {
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      if (key?.startsWith(STORAGE_PREFIX)) {
-        const value = localStorage.getItem(key);
-        if (value) used += key.length + value.length;
-      }
-    }
-  } catch {}
-
-  return {
-    used,
-    total,
-    percent: Math.round((used / total) * 100),
-  };
-}
+import { INVITE_CACHE_PREFIX } from "./storage-keys";
 
 export function clearExpiredCache(): number {
   let cleared = 0;
@@ -28,7 +7,7 @@ export function clearExpiredCache(): number {
     const keysToRemove: string[] = [];
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
-      if (key?.startsWith(`${STORAGE_PREFIX}invite_cache_`)) {
+      if (key?.startsWith(INVITE_CACHE_PREFIX)) {
         const value = localStorage.getItem(key);
         if (value) {
           try {

@@ -25,8 +25,6 @@ dist-ssr
 *.sw?
 .firebase
 *.bak
-SECURITY.md
-.env.example
 .agents/
 coverage
 junit.xml

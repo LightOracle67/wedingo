@@ -1,7 +1,7 @@
 {
   "name": "wedingo",
   "private": true,
-  "version": "2.39.0",
+  "version": "2.40.0",
   "type": "module",
   "engines": {
     "node": ">=22.22.2"
@@ -22,13 +22,16 @@
     "analyze": "vite-bundle-visualizer",
     "bundle:check": "node scripts/check-bundle-size.js",
     "e2e": "playwright test --config e2e/playwright.config.ts",
+    "functions:typecheck": "tsc --noEmit -p functions/tsconfig.json",
+    "functions:test": "vitest run --config functions/vitest.config.ts",
     "firebase:login": "firebase login",
     "firebase:use": "firebase use --add",
     "deploy:hosting": "npm run build && firebase deploy --only hosting",
     "deploy": "npm run lint && npm run build && firebase deploy --only hosting,firestore:rules",
     "bump": "node scripts/bump-version.js",
     "loadtest": "k6 run scripts/load-test.js",
-    "preready": "npm run lint && npm run build"
+    "preready": "npm run lint && npm run build && npm run changelog:check",
+    "changelog:check": "node scripts/check-changelog.js"
   },
   "dependencies": {
     "@sentry/react": "^10.68.0",

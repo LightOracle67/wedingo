@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
 import type { InvitationConfig } from "../types";
 
-interface ConfigContextValue {
+export interface ConfigContextValue {
   config: InvitationConfig;
   formData: InvitationConfig;
   hasStoredConfig: boolean;

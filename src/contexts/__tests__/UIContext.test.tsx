@@ -22,7 +22,7 @@ describe("UIProvider", () => {
   it("renders LegalModal when legalModal is set", () => {
     function Consumer() {
       const ctx = useContext(UIContext);
-      useEffect(() => { ctx.setLegalModal("privacy"); }, [ctx]);
+      useEffect(() => { ctx?.setLegalModal("privacy"); }, [ctx]);
       return null;
     }
     render(
@@ -36,7 +36,7 @@ describe("UIProvider", () => {
   it("closes LegalModal on close button click", async () => {
     function Consumer() {
       const ctx = useContext(UIContext);
-      useEffect(() => { ctx.setLegalModal("privacy"); }, [ctx]);
+      useEffect(() => { ctx?.setLegalModal("privacy"); }, [ctx]);
       return null;
     }
     const { container } = render(
@@ -63,7 +63,7 @@ describe("UIProvider", () => {
   it("renders LegalModal with correct section when legalModal is set", () => {
     function Consumer() {
       const ctx = useContext(UIContext);
-      useEffect(() => { ctx.setLegalModal("terms"); }, [ctx]);
+      useEffect(() => { ctx?.setLegalModal("terms"); }, [ctx]);
       return null;
     }
     render(
@@ -78,7 +78,7 @@ describe("UIProvider", () => {
   it("provides locationMapContainerRef as a ref object", () => {
     function Consumer() {
       const ctx = useContext(UIContext);
-      return <div data-testid="ref-type">{typeof ctx.locationMapContainerRef}</div>;
+      return <div data-testid="ref-type">{typeof ctx?.locationMapContainerRef}</div>;
     }
     render(<UIProvider><Consumer /></UIProvider>);
     expect(screen.getByTestId("ref-type").textContent).toBe("object");

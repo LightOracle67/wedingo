@@ -22,6 +22,7 @@ import { useTranslation } from "react-i18next";
 
 import { useApp } from "../contexts";
 import { useStoryNavigation } from "../hooks/useStoryNavigation";
+import { useReducedMotion } from "../hooks/useReducedMotion";
 
 import { MONTH_VALUE_TO_NUMBER } from "../lib/constants";
 import { parseSectionOrder } from "../lib/section-utils";
@@ -78,6 +79,7 @@ export default function PublicInvitation() {
   const { inviteToken } = useParams();
   const searchParams = new URLSearchParams(location.search);
   const isInviteMode = searchParams.has("invitar");
+  const reducedMotion = useReducedMotion();
 
   // ─── Estado global del contexto ────────────────────────
   const {
@@ -159,17 +161,18 @@ export default function PublicInvitation() {
   }, [config]);
 
   /**
-   * Actualiza la cuenta regresiva cada segundo.
-   * Descompone la diferencia de forma calendárica: años completos, luego
-   * meses completos y finalmente los días restantes (cada unidad descuenta
-   * la anterior; no es el total en cada formato).
+   * Actualiza la cuenta regresiva cada segundo, descomponiendo la diferencia
+   * de forma calendárica. Se pausa al ocultar la pestaña, se detiene al
+   * expirar y no itera si el usuario prefiere menos movimiento.
    */
   useEffect(() => {
     if (!weddingDate) return;
+    let id: ReturnType<typeof setInterval> | null = null;
     const tick = () => {
       const now = new Date();
       if (weddingDate.getTime() <= now.getTime()) {
         setCountdown({ days: 0, expired: true });
+        if (id) clearInterval(id);
         return;
       }
       let years = weddingDate.getFullYear() - now.getFullYear();
@@ -186,18 +189,28 @@ export default function PublicInvitation() {
       setCountdown({ years, months, days, expired: false });
     };
     tick();
-    const id = setInterval(tick, 1000);
-    return () => clearInterval(id);
-  }, [weddingDate]);
+    if (reducedMotion) return;
+    id = setInterval(tick, 1000);
+    const onVisibility = () => {
+      if (document.hidden && id) { clearInterval(id); id = null; }
+      else if (!document.hidden && !id) { tick(); id = setInterval(tick, 1000); }
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => {
+      if (id) clearInterval(id);
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
+  }, [weddingDate, reducedMotion]);
 
   // ─── Schema.org JSON-LD ─────────────────────────────
   useEffect(() => {
     if (!config.firstName || !config.weddingYear) return;
+    const coupleName = `${config.firstName} & ${config.secondName || ""}`.trim();
     const schema = {
       "@context": "https://schema.org",
       "@type": "Event",
-      "name": `Wedding of ${config.firstName} & ${config.secondName}`,
-      "description": config.inviteMessage || `Wedding invitation`,
+      "name": coupleName,
+      "description": config.inviteMessage || coupleName,
       "startDate": `${config.weddingYear}-${config.weddingMonth}-${config.weddingDay}T${config.weddingHour}:${config.weddingMinute}:00`,
       "location": {
         "@type": "Place",
@@ -222,15 +235,14 @@ export default function PublicInvitation() {
   // ═══════════════════════════════════════════════════════
 
   /**
-   * Props pre-calculadas para cada componente de sección.
-   * Se memoiza para evitar re-renders innecesarios.
+   * Props derivadas SOLO de la configuración. Se memoizan de forma que no
+   * cambien con cada tick del countdown ni con cada tecla del formulario RSVP.
    */
-  const sectionProps = useMemo(() => ({
+  const configSectionProps = useMemo(() => ({
     hero: {
       firstName: config.firstName,
       secondName: config.secondName,
       inviteMessage: config.inviteMessage,
-      countdown,
       couplePhoto: config.couplePhoto,
       godparent1: config.godparent1,
       godparent2: config.godparent2,
@@ -245,7 +257,6 @@ export default function PublicInvitation() {
       weddingSiteURL: config.weddingSiteURL,
       mapView: config.weddingMapView,
       staticMap: config.weddingMapStatic === "true",
-
       cornerDecoration: config.cornerDecoration,
     },
     transport: {
@@ -283,17 +294,6 @@ export default function PublicInvitation() {
       cornerDecoration: config.cornerDecoration,
     },
     rsvp: {
-      rsvpForm,
-      rsvpEntries,
-      rsvpMessage,
-      isRsvpSubmitting,
-      hasSubmitted,
-      alreadySubmittedEntry,
-      updateRsvpField,
-      handleRsvpSubmit,
-      handleDeleteRsvp,
-      DIETARY_OPTIONS,
-      computeAge,
       menuEnabled: config.menuEnabled === "true",
       menuCarne: config.menuCarne,
       menuPescado: config.menuPescado,
@@ -317,10 +317,34 @@ export default function PublicInvitation() {
     config.menuCarne, config.menuPescado, config.menuVegano, config.menuPostre, config.menuTexto,
     config.menuCarneDishes, config.menuPescadoDishes, config.menuVeganoDishes, config.menuTextoDishes,
     config.cornerDecoration,
-    countdown, formattedDate, formattedTime,
+    formattedDate, formattedTime,
     hasLocationData, locationDescription, calendarLink, config.weddingSiteURL,
     config.weddingMapView, config.weddingMapStatic,
     config.transportEnabled, config.transportDepartures,
+  ]);
+
+  /**
+   * Props del countdown: solo afectan a HeroSection (cambian cada segundo).
+   */
+  const heroProps = useMemo(() => ({ countdown }), [countdown]);
+
+  /**
+   * Props del estado RSVP: solo afectan a RsvpSection. Cambian al editar el
+   * formulario RSVP, sin re-renderizar el resto de secciones.
+   */
+  const rsvpSectionProps = useMemo(() => ({
+    rsvpForm,
+    rsvpEntries,
+    rsvpMessage,
+    isRsvpSubmitting,
+    hasSubmitted,
+    alreadySubmittedEntry,
+    updateRsvpField,
+    handleRsvpSubmit,
+    handleDeleteRsvp,
+    DIETARY_OPTIONS,
+    computeAge,
+  }), [
     rsvpForm, rsvpEntries, rsvpMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
     updateRsvpField, handleRsvpSubmit, handleDeleteRsvp, DIETARY_OPTIONS, computeAge,
   ]);
@@ -439,14 +463,17 @@ export default function PublicInvitation() {
         <Suspense fallback={null}>
           
           {visibleOrder.map((sectionKey: string) => {
-            const Component = (SECTION_COMPONENTS as Record<string, React.ComponentType<any>>)[sectionKey];
+            const Component = (SECTION_COMPONENTS as unknown as Record<string, React.ComponentType<Record<string, unknown>>>)[sectionKey];
             if (!Component) { ; return null; }
+            const baseProps = (configSectionProps as Record<string, Record<string, unknown>>)[sectionKey] || {};
+            const extraProps = sectionKey === "hero" ? heroProps : sectionKey === "rsvp" ? rsvpSectionProps : {};
             return (
               <ErrorBoundary key={sectionKey}>
                 <Component
                   style={getStorySectionStyle(sectionKey)}
                   className={getStorySectionClassName(sectionKey)}
-                  {...(sectionProps as Record<string, any>)[sectionKey]}
+                  {...baseProps}
+                  {...extraProps}
                 />
               </ErrorBoundary>
             );

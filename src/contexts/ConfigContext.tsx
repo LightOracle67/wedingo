@@ -1,27 +1,26 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router";
-import { getDoc, setDoc, increment, updateDoc, getDocs, writeBatch, type DocumentData, type QueryDocumentSnapshot } from "firebase/firestore";
+import { getDoc, setDoc, doc, increment, updateDoc, getDocs, writeBatch, type DocumentData, type QueryDocumentSnapshot } from "firebase/firestore";
 import { db, invitationDocRef, rsvpByInviteRef } from "../lib/firebase";
 import {
-  defaultConfig, STORY_SECTION_ORDER,
-  THEME_VALUES, MAX_YEARS_AHEAD, INVITE_CACHE_TTL_MS, TOKEN_ROUTE_REGEX,
-  SPECIAL_SECTIONS, MAX_USERNAME_LENGTH, MAX_INVITE_MESSAGE_LENGTH,
-  MAX_LONG_TEXT_LENGTH, MAX_SCHEDULE_EVENTS, MAX_SCHEDULE_EVENT_TEXT, MAX_MENU_DISHES, MAX_MENU_DISH_TEXT, MENU_DISH_ORDERS, PRIVACY_POLICY_VERSION,
+  defaultConfig,
+  MAX_YEARS_AHEAD, INVITE_CACHE_TTL_MS, TOKEN_ROUTE_REGEX,
+  PRIVACY_POLICY_VERSION,
 } from "../lib/constants";
 import { normalizeConfig } from "../lib/normalize-config";
-import { isValidGoogleMapsUrl, extractPlaceNameFromUrl } from "../lib/geo-utils";
+import { validateConfigForSave } from "../lib/config-validation";
 import type { InvitationConfig } from "../types";
 import { decodeInviteConfig } from "../lib/invite-config-codec";
 import { deleteGallery } from "../lib/image-store";
 import { clearSession } from "../lib/sessionVars";
 import { safeSetItem, safeGetItem, safeRemoveItem } from "../lib/storage";
+import { STORAGE_KEYS } from "../lib/storage-keys";
 import { encrypt, decrypt } from "../lib/crypto-utils";
 import { useCalendar } from "../hooks/useCalendar";
 import { useFieldHandlers } from "../hooks/useFieldHandlers";
 import { useAutoSave } from "../hooks/useAutoSave";
 import { getFirestoreErrorMessage } from "../lib/error-utils";
-import { validateWeddingDate } from "../lib/date-utils";
 import { ConfigContext } from "./useConfig";
 import { useAppUI } from "./useAppUI";
 
@@ -140,7 +139,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           return;
         }
 
-        const cached = safeGetItem(`wedin_invite_cache_${inviteToken}`);
+        const cached = safeGetItem(STORAGE_KEYS.inviteCache(inviteToken));
         if (cached) {
           try {
             const parsed = JSON.parse(cached);
@@ -187,16 +186,16 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           const audio = await loadAudio(inviteToken);
           if (audio?.url) {
             parsed.musicFile = audio.url;
-            sessionStorage.setItem(`wedin_audio_${inviteToken}`, audio.url);
+            sessionStorage.setItem(STORAGE_KEYS.audio(inviteToken), audio.url);
           } else {
-            sessionStorage.removeItem(`wedin_audio_${inviteToken}`);
+            sessionStorage.removeItem(STORAGE_KEYS.audio(inviteToken));
           }
         }
         const hydrated = { ...defaultConfig, ...parsed };
 
         setConfig(hydrated);
         setFormData(hydrated);
-        safeSetItem(`wedin_invite_cache_${inviteToken}`, JSON.stringify({ data: hydrated, cachedAt: Date.now() }));
+        safeSetItem(STORAGE_KEYS.inviteCache(inviteToken), JSON.stringify({ data: hydrated, cachedAt: Date.now() }));
         setVisitCount(typeof snapshot.data()._visits === "number" ? snapshot.data()._visits : 0);
         setHasStoredConfig(true);
         loadedTokenRef.current = inviteToken;
@@ -221,7 +220,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
 
     if (!inviteToken) { ; return; }
     try {
-      safeRemoveItem(`wedin_invite_cache_${inviteToken}`);
+      safeRemoveItem(STORAGE_KEYS.inviteCache(inviteToken));
       const snapshot = await getDoc(invitationDocRef(inviteToken));
       if (!snapshot.exists()) {
 
@@ -244,9 +243,9 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         const audio = await loadAudio(inviteToken);
         if (audio?.url) {
           parsed.musicFile = audio.url;
-          sessionStorage.setItem(`wedin_audio_${inviteToken}`, audio.url);
+          sessionStorage.setItem(STORAGE_KEYS.audio(inviteToken), audio.url);
         } else {
-          sessionStorage.removeItem(`wedin_audio_${inviteToken}`);
+          sessionStorage.removeItem(STORAGE_KEYS.audio(inviteToken));
         }
       }
       const hydrated = { ...defaultConfig, ...parsed };
@@ -272,254 +271,10 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     setSaveError("");
     setSaveMessage("");
 
-    const sanitized = normalizeConfig(formData);
-
-    if (sanitized.weddingSiteURL && isValidGoogleMapsUrl(sanitized.weddingSiteURL)) {
-      const derivedPlace = extractPlaceNameFromUrl(sanitized.weddingSiteURL);
-      if (derivedPlace) {
-
-        sanitized.weddingPlace = derivedPlace;
-      }
-    }
-    const hiddenArray = (sanitized.hiddenSections || "").split(",").filter(Boolean).filter((s: string) => !SPECIAL_SECTIONS.includes(s));
-    const hiddenSet = new Set(hiddenArray);
-
-    if (!hasStoredConfig) {
-      if (formData._privacyConsent !== "true") {
-
-        setSaveError(t("errors.acceptPrivacyPolicy"));
-        return;
-      }
-      if (!sanitized.adminUsername) {
-
-        setSaveError(t("errors.usernameRequired"));
-        return;
-      }
-      if (!/^[a-zA-Z0-9]+$/.test(sanitized.adminUsername)) {
-
-        setSaveError(t("errors.usernameInvalid"));
-        return;
-      }
-      if (sanitized.adminUsername.length > MAX_USERNAME_LENGTH) {
-
-        setSaveError(t("errors.usernameTooLong"));
-        return;
-      }
-    }
-
-    if (!sanitized.firstName || !sanitized.secondName) {
-
-      setSaveError(t("errors.bothNamesRequired"));
+    const { sanitized, hiddenSet, errorKey, errorParams } = validateConfigForSave(formData, hasStoredConfig, maxAllowedYear);
+    if (errorKey) {
+      setSaveError(errorParams ? t(errorKey, errorParams) : t(errorKey));
       return;
-    }
-
-    const dateErrorKey = validateWeddingDate(sanitized, maxAllowedYear, hiddenSet, hasStoredConfig);
-    if (dateErrorKey) {
-
-      setSaveError(t(dateErrorKey, { year: maxAllowedYear }));
-      return;
-    }
-
-    if (!THEME_VALUES.has(sanitized.theme)) {
-
-      setSaveError(t("errors.themeInvalid"));
-      return;
-    }
-
-    const orderArray = (sanitized.sectionOrder || "").split(",").filter(Boolean).filter((s: string) => !SPECIAL_SECTIONS.includes(s));
-    const validSectionKeys = new Set(STORY_SECTION_ORDER);
-    if (orderArray.length < 1 || !orderArray.every((s: string) => validSectionKeys.has(s))) {
-
-      setSaveError(t("errors.sectionOrderInvalid"));
-      return;
-    }
-    if (!hiddenArray.every((s) => validSectionKeys.has(s))) {
-
-      setSaveError(t("errors.hiddenSectionsInvalid"));
-      return;
-    }
-    if (Boolean(sanitized.godparent1) !== Boolean(sanitized.godparent2)) {
-
-      setSaveError(t("errors.godparentsRequired"));
-      return;
-    }
-    if (orderArray[0] !== "hero") {
-
-      setSaveError(t("errors.coverFirst"));
-      return;
-    }
-
-    if (sanitized.menuEnabled === "true") {
-      if (!sanitized.menuPostre) {
-
-        setSaveError(t("errors.postreRequired"));
-        return;
-      }
-      if (!sanitized.menuCarne && !sanitized.menuPescado && !sanitized.menuVegano) {
-
-        setSaveError(t("errors.menuRequired"));
-        return;
-      }
-    }
-
-    if (sanitized.bankInfo) {
-      const upper = sanitized.bankInfo.toUpperCase();
-      const looksLikeIban = /^[A-Z]{2}\d/.test(upper);
-      if (looksLikeIban && !/^[A-Z]{2}\d{2}[ ]?\d{4}[ ]?\d{4}[ ]?\d{4}[ ]?\d{4}[ ]?\d{0,4}$/.test(upper)) {
-
-        setSaveError(t("errors.ibanInvalid"));
-        return;
-      }
-    }
-
-    if (sanitized.musicUrl && sanitized.musicUrl.startsWith("data:")) {
-
-      sanitized.musicFile = sanitized.musicUrl;
-      sanitized.musicUrl = "";
-    }
-
-    if (sanitized.sectionOrder) {
-      const expected = STORY_SECTION_ORDER.length;
-      const actual = orderArray.length;
-      if (actual !== expected) {
-
-        setSaveError(t("errors.sectionOrderMismatch", { actual, expected }));
-        return;
-      }
-    }
-
-    if (sanitized.inviteMessage && sanitized.inviteMessage.length > MAX_INVITE_MESSAGE_LENGTH) {
-
-      setSaveError(t("errors.messageTooLong"));
-      return;
-    }
-    if (sanitized.weddingSchedule && sanitized.weddingSchedule.length > MAX_LONG_TEXT_LENGTH) {
-
-      setSaveError(t("errors.scheduleTooLong"));
-      return;
-    }
-    if (sanitized.weddingScheduleEvents) {
-      try {
-        const parsed = JSON.parse(sanitized.weddingScheduleEvents);
-        if (!Array.isArray(parsed) || parsed.length > MAX_SCHEDULE_EVENTS) {
-
-          setSaveError(t("errors.scheduleEventsInvalid"));
-          return;
-        }
-        for (const ev of parsed) {
-          if (!ev || typeof ev !== "object") {
-            setSaveError(t("errors.scheduleEventsInvalid"));
-            return;
-          }
-          const time = String((ev as Record<string, unknown>).time || "");
-          const text = String((ev as Record<string, unknown>).text || "");
-          if (time && !/^([01]\d|2[0-3]):[0-5]\d$/.test(time)) {
-
-            setSaveError(t("errors.scheduleEventTimeInvalid"));
-            return;
-          }
-          if (text.length > MAX_SCHEDULE_EVENT_TEXT) {
-
-            setSaveError(t("errors.scheduleEventTextTooLong"));
-            return;
-          }
-        }
-      } catch {
-
-        setSaveError(t("errors.scheduleEventsInvalid"));
-        return;
-      }
-    }
-    if (sanitized.storyText && sanitized.storyText.length > MAX_LONG_TEXT_LENGTH) {
-
-      setSaveError(t("errors.storyTooLong"));
-      return;
-    }
-    if (sanitized.giftsInfo && sanitized.giftsInfo.length > MAX_LONG_TEXT_LENGTH) {
-
-      setSaveError(t("errors.giftsTooLong"));
-      return;
-    }
-    if (sanitized.transportDepartures) {
-      try {
-        const parsed = JSON.parse(sanitized.transportDepartures);
-        if (!Array.isArray(parsed) || parsed.length > 4) {
-
-          setSaveError(t("errors.transportDeparturesInvalid"));
-          return;
-        }
-        for (const dep of parsed) {
-          if (!dep || typeof dep !== "object") {
-            setSaveError(t("errors.transportDeparturesInvalid"));
-            return;
-          }
-          const time = String((dep as Record<string, unknown>).time || "");
-          const url = String((dep as Record<string, unknown>).url || "");
-          if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(time)) {
-
-            setSaveError(t("errors.transportTimeInvalid"));
-            return;
-          }
-          if (url && !isValidGoogleMapsUrl(url)) {
-
-            setSaveError(t("errors.transportUrlInvalid"));
-            return;
-          }
-        }
-      } catch {
-
-        setSaveError(t("errors.transportDeparturesInvalid"));
-        return;
-      }
-    }
-    if (sanitized.accommodationInfo && sanitized.accommodationInfo.length > MAX_LONG_TEXT_LENGTH) {
-      console.log("[app]", "[ConfigProvider]", "validation failed: accommodationInfo too long", { length: sanitized.accommodationInfo.length });
-      setSaveError(t("errors.accommodationTooLong"));
-      return;
-    }
-    if (sanitized.accommodationURL && !isValidGoogleMapsUrl(sanitized.accommodationURL)) {
-      console.log("[app]", "[ConfigProvider]", "validation failed: accommodation url invalid", {});
-      setSaveError(t("errors.accommodationUrlInvalid"));
-      return;
-    }
-    if (sanitized.menuTexto && sanitized.menuTexto.length > MAX_LONG_TEXT_LENGTH) {
-      console.log("[app]", "[ConfigProvider]", "validation failed: menuTexto too long", { length: sanitized.menuTexto.length });
-      setSaveError(t("errors.menuTextoTooLong"));
-      return;
-    }
-    for (const dishesField of ["menuTextoDishes", "menuCarneDishes", "menuPescadoDishes", "menuVeganoDishes"]) {
-      const raw = sanitized[dishesField as keyof typeof sanitized];
-      if (!raw) continue;
-      try {
-        const parsed = JSON.parse(String(raw));
-        if (!Array.isArray(parsed) || parsed.length > MAX_MENU_DISHES) {
-          console.log("[app]", "[ConfigProvider]", "validation failed: menu dishes invalid", { dishesField });
-          setSaveError(t("errors.menuDishesInvalid"));
-          return;
-        }
-        for (const dish of parsed) {
-          if (!dish || typeof dish !== "object") {
-            setSaveError(t("errors.menuDishesInvalid"));
-            return;
-          }
-          const order = String((dish as Record<string, unknown>).order || "");
-          const text = String((dish as Record<string, unknown>).text || "");
-          if (!MENU_DISH_ORDERS.includes(order)) {
-            console.log("[app]", "[ConfigProvider]", "validation failed: menu dish order invalid", { order });
-            setSaveError(t("errors.menuDishOrderInvalid"));
-            return;
-          }
-          if (text.length > MAX_MENU_DISH_TEXT) {
-            console.log("[app]", "[ConfigProvider]", "validation failed: menu dish text too long", { length: text.length });
-            setSaveError(t("errors.menuDishTextTooLong"));
-            return;
-          }
-        }
-      } catch {
-        console.log("[app]", "[ConfigProvider]", "validation failed: menu dishes JSON invalid", { dishesField });
-        setSaveError(t("errors.menuDishesInvalid"));
-        return;
-      }
     }
 
     const payload = { ...defaultConfig, ...sanitized } as InvitationConfig;
@@ -550,6 +305,15 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       payload.privacyPolicyVersion = PRIVACY_POLICY_VERSION;
 
       await setDoc(invitationDocRef(inviteToken), payload, { merge: true });
+
+      // Crea el contador de RSVP de la invitación (tope anti-spam) si no existe.
+      try {
+        const counterRef = doc(db, "rsvpCounters", inviteToken);
+        const counterSnap = await getDoc(counterRef);
+        if (!counterSnap.exists()) {
+          await setDoc(counterRef, { count: 0 });
+        }
+      } catch { }
 
       if (payload.bankInfo) payload.bankInfo = await decrypt(payload.bankInfo, inviteToken);
       // Restore data URLs in memory for the current session
@@ -585,7 +349,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       await deleteAllConfigImages(inviteToken);
       batch.delete(invitationDocRef(inviteToken));
       await batch.commit();
-      safeRemoveItem(`wedin_invite_cache_${inviteToken}`);
+      safeRemoveItem(STORAGE_KEYS.inviteCache(inviteToken));
       clearSession();
 
       navigate("/");

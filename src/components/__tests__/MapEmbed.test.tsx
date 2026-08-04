@@ -2,12 +2,12 @@ import { describe, it, expect, vi, afterEach } from "vitest";
 import { render, cleanup } from "@testing-library/react";
 
 vi.mock("react-i18next", () => ({
-  useTranslation: () => ({ t: (key: string) => key }),
+  useTranslation: () => ({ t: (key: string) => key, i18n: { language: "en" } }),
 }));
 
 vi.mock("../../lib/geo-utils", () => ({
   isValidGoogleMapsUrl: (url: string) => url.startsWith("https://maps.google.com"),
-  convertToEmbedUrl: (url: string, view: string = "roadmap") =>
+  convertToEmbedUrl: (url: string, view: string = "roadmap", _lang?: string) =>
     `${url.replace("maps.google.com", "maps.google.com/embed")}&t=${view === "satellite" ? "k" : view === "hybrid" ? "h" : "m"}&output=embed`,
 }));
 

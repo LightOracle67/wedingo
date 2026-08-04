@@ -1,7 +1,34 @@
 import { createContext, useContext } from "react";
+import type { useSetupAuth } from "../hooks/useSetupAuth";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const AuthContext = createContext<any>(null);
+export type AuthValue = Pick<
+  ReturnType<typeof useSetupAuth>,
+  | "setupToken"
+  | "setupTokenInput"
+  | "isTokenVerifying"
+  | "isTokenVerified"
+  | "tokenLoginUsername"
+  | "adminLoginUsername"
+  | "isAdminTokenLoggedIn"
+  | "isRestoringSession"
+  | "confirmTokenInput"
+  | "authMessage"
+  | "authMessageType"
+  | "refreshSetupToken"
+  | "generateNewToken"
+  | "handleTokenLogin"
+  | "handleAdminTokenLogin"
+  | "handleAdminLogout"
+  | "handleResetSetupToken"
+  | "handleResetTokenFromAdmin"
+  | "setSetupTokenInput"
+  | "setIsTokenVerified"
+  | "setTokenLoginUsername"
+  | "setAdminLoginUsername"
+  | "setConfirmTokenInput"
+>;
+
+export const AuthContext = createContext<AuthValue | null>(null);
 
 export function useAuth() {
   const ctx = useContext(AuthContext);

@@ -43,8 +43,12 @@
             "value": "nosniff"
           },
           {
-            "key": "X-XSS-Protection",
-            "value": "1; mode=block"
+            "key": "Cross-Origin-Opener-Policy",
+            "value": "same-origin"
+          },
+          {
+            "key": "Cross-Origin-Resource-Policy",
+            "value": "same-site"
           },
           {
             "key": "Referrer-Policy",
@@ -64,7 +68,7 @@
           },
           {
             "key": "Content-Security-Policy",
-            "value": "default-src 'self'; script-src 'self' https://*.gstatic.com https://*.googleapis.com https://apis.google.com https://*.firebaseapp.com https://*.sentry.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https://*.firebasestorage.app https://*.googleapis.com https://maps.gstatic.com https://maps.gstatic.com; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net; connect-src 'self' https://*.googleapis.com https://apis.google.com https://*.firebaseapp.com https://*.sentry.io; worker-src 'self' blob:; report-uri /_/csp; report-to default; form-action 'self'; frame-src 'self' https://*.firebaseapp.com https://*.googleapis.com https://maps.google.com https://www.google.com; frame-ancestors 'none'; media-src * blob:; object-src 'none'; base-uri 'self'; upgrade-insecure-requests;"
+            "value": "default-src 'self'; script-src 'self' https://*.gstatic.com https://*.googleapis.com https://apis.google.com https://*.firebaseapp.com https://*.sentry.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https://*.firebasestorage.app https://*.googleapis.com https://maps.gstatic.com; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net; connect-src 'self' https://*.googleapis.com https://apis.google.com https://firestore.googleapis.com https://www.google.com https://*.firebaseapp.com https://*.sentry.io; worker-src 'self' blob:; form-action 'self'; frame-src 'self' https://*.firebaseapp.com https://*.googleapis.com https://maps.google.com https://www.google.com https://maps.app.goo.gl; frame-ancestors 'none'; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; upgrade-insecure-requests"
           }
         ]
       },

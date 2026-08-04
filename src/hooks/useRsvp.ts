@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { writeBatch, deleteDoc, doc, getDocs, serverTimestamp } from "firebase/firestore";
+import { writeBatch, deleteDoc, doc, getDoc, setDoc, getDocs, serverTimestamp } from "firebase/firestore";
 import { db, RSVP_COLLECTION_REF, rsvpByInviteRef } from "../lib/firebase";
 import { encrypt, decrypt } from "../lib/crypto-utils";
 import { computeAge } from "../lib/date-utils";
@@ -8,6 +8,9 @@ import { DIETARY_OPTIONS, parseDietaryInfo } from "../lib/rsvp-utils";
 import { isValidFullName, normalizeFullName } from "../lib/name-utils";
 import { useRsvpSubmit } from "./useRsvpSubmit";
 import { buildMainGuestData, buildCompanionData } from "./rsvp-payloads";
+import { RSVP_CACHE_TTL_MS } from "../lib/constants";
+import { safeGetItem, safeSetItem } from "../lib/storage";
+import { STORAGE_KEYS } from "../lib/storage-keys";
 import type { Attendee } from "../types";
 
 interface LegacyEntry {
@@ -157,6 +160,20 @@ export function useRsvp(
     const hydrateRsvp = async () => {
       if (!inviteToken) { return; }
 
+      // Caché en sessionStorage: evita volver a leer/descifrar toda la
+      // colección RSVP en cada navegación del invitado.
+      const cacheKey = STORAGE_KEYS.rsvpCache(inviteToken);
+      try {
+        const cachedRaw = safeGetItem(cacheKey, sessionStorage);
+        if (cachedRaw) {
+          const parsed = JSON.parse(cachedRaw) as { entries: RsvpEntryData[]; cachedAt: number };
+          if (parsed.entries && parsed.cachedAt && Date.now() - parsed.cachedAt < RSVP_CACHE_TTL_MS) {
+            if (!cancelled) { setRsvpEntries(parsed.entries); }
+            return;
+          }
+        }
+      } catch { }
+
       try {
         const snapshot = await getDocs(rsvpByInviteRef(inviteToken));
 
@@ -272,6 +289,9 @@ export function useRsvp(
         if (!cancelled) {
 
           setRsvpEntries(entries);
+          try {
+            safeSetItem(cacheKey, JSON.stringify({ entries, cachedAt: Date.now() }), sessionStorage);
+          } catch { }
         }
       } catch (err) {
         console.error("[app]", "[useRsvp]", "hydrate error", { error: err });
@@ -538,21 +558,25 @@ export function useRsvp(
 
   const submitRsvpData = useCallback(async (data: RsvpFormData) => {
 
-    const allergies = data.allergies || [];
+    // Copia defensiva: nunca se muta directamente el estado de React.
+    const form = {
+      ...data,
+      guestName: normalizeFullName(data.guestName),
+      companionNames: (data.companionNames || []).map(normalizeFullName),
+    };
+    const allergies = form.allergies || [];
     const dietaryInfo = allergies.filter(Boolean).join(" | ");
-    data.guestName = normalizeFullName(data.guestName);
-    data.companionNames = (data.companionNames || []).map(normalizeFullName);
     const encryptedDietaryInfo = await encrypt(dietaryInfo, inviteToken);
-    const age = computeAge(data.birthDate);
-    const single = data.guestName.trim();
+    const age = computeAge(form.birthDate);
+    const single = form.guestName.trim();
     const now = new Date().toISOString();
-    const isAttending = data.attendance !== "no";
-    const companionCount = data.companionCount || 0;
+    const isAttending = form.attendance !== "no";
+    const companionCount = form.companionCount || 0;
     const nowTimestamp = serverTimestamp();
 
     const mainGuestId = doc(RSVP_COLLECTION_REF).id;
     const mainGuestData = buildMainGuestData({
-      data,
+      data: form,
       isAttending,
       companionCount,
       single,
@@ -567,13 +591,13 @@ export function useRsvp(
     const companionPayloads: Array<Record<string, unknown>> = [];
     for (let i = 0; i < companionCount; i++) {
       companionDocIds.push(doc(RSVP_COLLECTION_REF).id);
-      const compAllergies = data.companionAllergies[i] || [];
+      const compAllergies = form.companionAllergies[i] || [];
       const compDietaryInfo = compAllergies.filter(Boolean).join(" | ");
       const encCompDietary = await encrypt(compDietaryInfo, inviteToken);
-      const compBirthDate = data.companionBirthDates?.[i] || "";
+      const compBirthDate = form.companionBirthDates?.[i] || "";
       const compAge = computeAge(compBirthDate);
       const companionData = buildCompanionData({
-        data,
+        data: form,
         i,
         single,
         mainGuestId,
@@ -582,18 +606,36 @@ export function useRsvp(
         compAge,
         nowTimestamp,
         inviteToken,
-      });      companionPayloads.push(companionData);
+      });
+      companionPayloads.push(companionData);
     }
 
     mainGuestData.companionDocIds = companionDocIds;
 
     try {
 
+      // Contador por invitación: garantiza que el documento de contador exista
+      // (las reglas exigen que el contador esté creado y por debajo de 500) y
+      // lo incrementa en el mismo lote para mantener el tope anti-spam.
+      const counterRef = doc(db, "rsvpCounters", inviteToken);
+      let currentCount = 0;
+      try {
+        const counterSnap = await getDoc(counterRef);
+        if (counterSnap.exists()) {
+          currentCount = typeof counterSnap.data()?.count === "number" ? counterSnap.data()!.count : 0;
+        } else {
+          await setDoc(counterRef, { count: 0 });
+        }
+      } catch (counterErr) {
+        console.error("[app]", "[useRsvp]", "RSVP counter setup failed", { error: counterErr });
+      }
+
       const batch = writeBatch(db);
       batch.set(doc(RSVP_COLLECTION_REF, mainGuestId), mainGuestData);
       for (let i = 0; i < companionCount; i++) {
         batch.set(doc(RSVP_COLLECTION_REF, companionDocIds[i]), companionPayloads[i]);
       }
+      batch.set(counterRef, { count: currentCount + 1 });
       await batch.commit();
 
     } catch (err) {
@@ -641,6 +683,8 @@ export function useRsvp(
     setHasSubmitted(true);
     setAlreadySubmittedEntry(null);
     prefillRef.current = null;
+    // Invalida la caché para que la próxima visita refleje el nuevo estado.
+    try { sessionStorage.removeItem(STORAGE_KEYS.rsvpCache(inviteToken)); } catch { }
   }, [inviteToken, t]);
 
   const { submitting, submitError, handleSubmit: submitViaHook } = useRsvpSubmit({
@@ -677,12 +721,13 @@ export function useRsvp(
       setAlreadySubmittedEntry(null);
       prefillRef.current = null;
       setHasSubmitted(false);
+      try { sessionStorage.removeItem(STORAGE_KEYS.rsvpCache(inviteToken)); } catch { }
 
     } catch (err) {
       console.error("[app]", "[useRsvp]", "withdraw error", { error: err });
       setRsvpMessage(t("rsvp.withdrawError"));
     }
-  }, [alreadySubmittedEntry, t]);
+  }, [alreadySubmittedEntry, t, inviteToken]);
 
   const handleDeleteRsvpEntries = useCallback(async (ids: string[]) => {
 
@@ -715,6 +760,7 @@ export function useRsvp(
       setRsvpEntries([]);
       setAdminMessage(t("rsvp.clearSuccess"));
       setAdminMessageType("success");
+      try { sessionStorage.removeItem(STORAGE_KEYS.rsvpCache(inviteToken)); } catch { }
 
     } catch (err) {
       console.error("[app]", "[useRsvp]", "clear error", { error: err });

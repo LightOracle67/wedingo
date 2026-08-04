@@ -40,7 +40,7 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
                 WebkitMaskImage: "radial-gradient(circle at center, black 60%, transparent 100%)",
                 maskImage: "radial-gradient(circle at center, black 60%, transparent 100%)",
               }}>
-                <img src={couplePhoto} alt={t("hero.couplePhotoAlt")} onLoad={() => setPhotoLoaded(true)} onError={() => setPhotoLoaded(true)} className="w-full h-full object-cover" />
+                <img src={couplePhoto} alt={t("hero.couplePhotoAlt")} onLoad={() => setPhotoLoaded(true)} onError={() => setPhotoLoaded(true)} fetchPriority="high" className="w-full h-full object-cover" />
               </div>
               <LoadingOverlay visible={!photoLoaded} />
               <div style={{

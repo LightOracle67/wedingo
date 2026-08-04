@@ -156,15 +156,10 @@ input.setup-input[type="date"] {
 }
 .setup-card {
   position: relative;
-  width: min(100%, 36rem);
   padding: clamp(0.6rem, 2vw, 1.2rem);
   box-sizing: border-box;
   background: linear-gradient(150deg, var(--setup-grad-start), var(--setup-grad-end));
-  border: 1px solid var(--setup-border);
   border-radius: 1.4rem;
-  box-shadow:
-    0 25px 60px rgba(0, 0, 0, 0.38),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 }
@@ -1252,10 +1247,8 @@ select.setup-input {
 }
 .setup-card {
   border: 1px solid color-mix(in srgb, var(--setup-accent) 20%, transparent);
-  box-shadow:
-    0 25px 60px rgba(0, 0, 0, 0.38),
-    0 0 0 1px color-mix(in srgb, var(--setup-accent) 8%, transparent),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  box-shadow: 0 25px 60px #00000061, 0 0 0 1px color-mix(in srgb, var(--setup-accent) 8%, transparent), inset 0 1px 0 #ffffff2e;
+  width: 95%;
 }
 .setup-card::before {
   content: "";

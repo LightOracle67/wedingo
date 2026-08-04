@@ -608,7 +608,7 @@ describe("App", () => {
     expect(document.documentElement.dataset.weddingTheme).toBe("golden");
   });
 
-  it("restores username from sessionStorage", () => {
+  it("restores username from localStorage", () => {
     const sessionMock = (() => {
       let store: Record<string, string> = {};
       return {
@@ -640,7 +640,7 @@ describe("App", () => {
     Object.defineProperty(window, "sessionStorage", { value: undefined, configurable: true });
   });
 
-  it("handles corrupted sessionStorage JSON", () => {
+  it("handles corrupted localStorage JSON", () => {
     const sessionMock = (() => {
       let store: Record<string, string> = {};
       return {
@@ -666,7 +666,7 @@ describe("App", () => {
     Object.defineProperty(window, "sessionStorage", { value: undefined, configurable: true });
   });
 
-  it("handles expired sessionStorage data", () => {
+  it("handles expired localStorage data", () => {
     const sessionMock = (() => {
       let store: Record<string, string> = {};
       return {
@@ -692,7 +692,7 @@ describe("App", () => {
     Object.defineProperty(window, "sessionStorage", { value: undefined, configurable: true });
   });
 
-  it("handles null sessionStorage gracefully", () => {
+  it("handles null localStorage gracefully", () => {
     const sessionMock = (() => {
       let store: Record<string, string> = {};
       return {
@@ -840,7 +840,7 @@ describe("App", () => {
     });
   });
 
-  it("skip link was removed", () => {
+  it("renders a skip link to main content", () => {
     render(
       <MemoryRouter initialEntries={["/"]}>
         <Suspense fallback={null}>
@@ -848,7 +848,9 @@ describe("App", () => {
         </Suspense>
       </MemoryRouter>
     );
-    expect(document.querySelector(".skip-link")).toBeNull();
+    const skipLink = document.querySelector(".skip-link");
+    expect(skipLink).not.toBeNull();
+    expect(skipLink?.getAttribute("href")).toBe("#main-content");
   });
 
   it("handles service worker registration in PROD", () => {

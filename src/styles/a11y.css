@@ -1,6 +1,41 @@
 .a11y-section {
   margin-bottom: 0.8rem;
 }
+/* Enlace de salto al contenido: oculto visualmente hasta recibir el foco. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 100001;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  left: 0.5rem;
+  top: 0.5rem;
+  width: auto;
+  height: auto;
+  padding: 0.6rem 1rem;
+  background: var(--setup-accent);
+  color: #fff;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  text-decoration: none;
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+/* Indicador de foco para los botones del panel de accesibilidad. */
+.a11y-btn:focus-visible,
+.a11y-trigger:focus-visible {
+  outline: 2px solid var(--setup-accent);
+  outline-offset: 2px;
+}
+.a11y-toggle input:focus-visible + .a11y-toggle__track {
+  outline: 2px solid var(--setup-accent);
+  outline-offset: 2px;
+}
 .a11y-label {
   font-size: 0.82rem;
   color: var(--setup-subtitle);

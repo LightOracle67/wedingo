@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.39.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.39.0)  
+**Versión actual:** [v2.40.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.40.0)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -12,15 +12,15 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 | Aspecto | Estado |
 |---|---|
-| Tests | 1536 tests, 138 test files |
-| Cobertura | ~87% statements |
+| Tests | 1641 tests, 147 test files |
+| Cobertura | 85.7% statements / 81.3% branches / 86.5% functions / 87.8% lines |
 | Lint | 0 warnings (oxlint) |
 | TypeScript | 0 errors (`strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `skipLibCheck=true` — solo .d.ts de terceros) |
 | `any` en source | 0 |
 | `!important` en CSS | 41 |
 | Idiomas | 100 |
 | Temas | 21 (7 claros, 7 oscuros, 7 LGTBIQ+) |
-| Bundle (crítico) | ~972KB (index + vendor chunks) + Sentry lazy (~264KB) |
+| Bundle (crítico) | ~315KB gzip (JS inicial, analytics y Sentry en chunks lazy) |
 
 ---
 
@@ -258,6 +258,7 @@ Hitos principales:
 | v2.37.0 | 2026-08-01 | weddingSiteURL, opciones de mapa, fondo/esquinas estáticas, envelope y z-index rediseñados, cuenta atrás calendárica |
 | v2.38.0 | 2026-08-01 | Sección Transporte (opciones + salidas con mapa), MapEmbed generalizado |
 | v2.39.0 | 2026-08-04 | Hora única type=time, itinerario por eventos, RSVP con elección de transporte (salida+hora guardadas), tabla de asistencia ampliada, panel a 80% sin scroll de página, accesibilidad completa |
+| v2.40.0 | 2026-08-04 | Seguridad: token de setup fuera del documento público (hash + setupTokens), sesión con prueba de conocimiento, invitations no enumerable, rate limit RSVP, validación server-side; token visible en el setup con checkbox obligatorio; rendimiento (JS inicial 435→315KB, analytics/sentry lazy, countdown sin re-renders); accesibilidad (focus trap, skip-link); i18n corregido |
 
 ---
 

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useFocusTrap, useEscapeKey } from "../hooks/useFocusTrap";
+import { STORAGE_KEYS } from "../lib/storage-keys";
 import "../styles/a11y.css";
 import "../styles/modals.css";
 
-const STORAGE_KEY = "wedin_a11y";
+const STORAGE_KEY = STORAGE_KEYS.a11y;
 
 interface A11yPrefs {
   highContrast?: boolean;

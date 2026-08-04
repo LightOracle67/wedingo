@@ -1,10 +1,6 @@
-export const APP_VERSION = "2.39.0";
+export const APP_VERSION = "2.40.0";
 
-export const CACHE_TTL_MS = 120000;
-export const MAX_WEDDING_YEAR_OFFSET = 4;
-export const USERNAME_MAX_LENGTH = 50;
 export const MAX_INVITE_MESSAGE_LENGTH = 500;
-export const MAX_TEXTAREA_LENGTH = 2000;
 export const MAX_SCHEDULE_EVENTS = 10;
 export const MAX_SCHEDULE_EVENT_TEXT = 60;
 export const MAX_MENU_DISHES = 20;
@@ -110,6 +106,8 @@ export const PRIVACY_POLICY_VERSION = "2026-07-08";
 
 export const MAX_YEARS_AHEAD = 4;
 export const INVITE_CACHE_TTL_MS = 120000;
+/** TTL de la caché de respuestas RSVP en sessionStorage. */
+export const RSVP_CACHE_TTL_MS = 60000;
 export const TOKEN_ROUTE_REGEX = /^[a-zA-Z0-9]{8,12}$/;
 export const SPECIAL_SECTIONS = ["menu", "godparents"];
 export const MAX_USERNAME_LENGTH = 50;

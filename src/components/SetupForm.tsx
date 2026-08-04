@@ -12,7 +12,7 @@
  * @module SetupForm
  */
 
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation, Trans } from "react-i18next";
 import { useApp } from "../contexts";
 import { useToast } from "../hooks/useToast";
@@ -60,6 +60,9 @@ export default function SetupForm({ prefix = "" }) {
   } = useApp();
   const { addToast } = useToast();
 
+  /** Confirmación de haber guardado el token de acceso (solo primer guardado). */
+  const [tokenAcknowledged, setTokenAcknowledged] = useState(false);
+
   // ── Muestra mensajes de éxito/error como toasts ─────────
   useEffect(() => {
     if (saveMessage) {
@@ -76,6 +79,19 @@ export default function SetupForm({ prefix = "" }) {
   }, [saveError, addToast]);
 
   /**
+   * En el primer guardado el token de acceso es obligatorio confirmar:
+   * no se permite guardar hasta marcar el checkbox de confirmación.
+   */
+  const handleSubmit = (e: React.FormEvent) => {
+    if (!hasStoredConfig && !tokenAcknowledged) {
+      e.preventDefault();
+      addToast("error", t("setup.tokenAcknowledgeRequired"));
+      return;
+    }
+    handleSaveSetup(e);
+  };
+
+  /**
    * Conjunto de secciones ocultas derivado del formulario.
    * Se memoiza para evitar re-cálculos en cada render.
    */
@@ -85,7 +101,7 @@ export default function SetupForm({ prefix = "" }) {
   }, [formData.hiddenSections]);
 
   return (
-    <form className="setup-form setup-form--nested" onSubmit={(e) => { ; handleSaveSetup(e); }}>
+    <form className="setup-form setup-form--nested" onSubmit={handleSubmit}>
       {/* ── Editor de orden de secciones ── */}
       <SectionOrderEditor
         value={formData.sectionOrder}
@@ -102,7 +118,7 @@ export default function SetupForm({ prefix = "" }) {
         hint={t("setup.accessSectionHint")}
         defaultOpen
       >
-        <AccessSectionForm prefix={prefix} />
+        <AccessSectionForm prefix={prefix} tokenAcknowledged={tokenAcknowledged} onTokenAcknowledge={setTokenAcknowledged} />
       </CollapsibleSection>
       ) : null}
 
@@ -193,7 +209,7 @@ export default function SetupForm({ prefix = "" }) {
       {/* ── Botón de guardar ── */}
       
       <div className="setup-actions setup-actions--sticky" style={{ background: 0, WebkitBackdropFilter: "unset" }}>
-        <button className="setup-button" type="submit">
+        <button className="setup-button" type="submit" disabled={!hasStoredConfig && !tokenAcknowledged}>
           {t("common.save")}
         </button>
       </div>

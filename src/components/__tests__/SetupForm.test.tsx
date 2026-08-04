@@ -11,7 +11,7 @@ const mockUseApp = vi.fn();
 import React from "react";
 
 vi.mock("react-i18next", () => ({
-  useTranslation: () => ({ t: (key: string) => key }),
+  useTranslation: () => ({ t: (key: string) => key, i18n: { language: "en" } }),
   initReactI18next: { type: "3rdParty", init: () => {} },
   Trans: ({ i18nKey, components }: { i18nKey: string; components?: Record<string, React.ReactElement> }) => {
     if (i18nKey === "setup.privacyConsent" && components?.link) {
@@ -59,6 +59,7 @@ const baseUseApp = {
   saveError: "",
   isTokenVerified: false,
   hasStoredConfig: false,
+  setupToken: "test-token-123",
   setLegalModal: mockSetLegalModal,
 };
 
@@ -112,9 +113,36 @@ describe("SetupForm", () => {
 
   it("calls handleSaveSetup on form submit", () => {
     render(<SetupForm />);
+    // Marca la confirmación obligatoria del token antes de guardar.
+    fireEvent.click(screen.getByText("setup.tokenAcknowledge"));
     const form = document.querySelector(".setup-form") as HTMLFormElement;
     fireEvent.submit(form);
     expect(mockHandleSaveSetup).toHaveBeenCalled();
+  });
+
+  it("blocks save until the token acknowledgement is checked", () => {
+    render(<SetupForm />);
+    const form = document.querySelector(".setup-form") as HTMLFormElement;
+    fireEvent.submit(form);
+    expect(mockHandleSaveSetup).not.toHaveBeenCalled();
+    expect(mockAddToast).toHaveBeenCalledWith("error", "setup.tokenAcknowledgeRequired");
+  });
+
+  it("renders the access token input with hint on first creation", () => {
+    render(<SetupForm />);
+    expect(screen.getByText("setup.tokenFieldLabel")).toBeDefined();
+    expect(screen.getByText("setup.tokenFieldHint")).toBeDefined();
+    const tokenInput = screen.getByLabelText("setup.tokenFieldLabel") as HTMLInputElement;
+    expect(tokenInput).toBeDefined();
+    expect(tokenInput.disabled).toBe(true);
+    expect(tokenInput.value).toBe("test-token-123");
+  });
+
+  it("does not render the access token section when config already exists", () => {
+    mockUseApp.mockReturnValue({ ...baseUseApp, hasStoredConfig: true });
+    render(<SetupForm />);
+    expect(screen.queryByText("setup.tokenFieldLabel")).toBeNull();
+    expect(screen.queryByText("setup.tokenAcknowledge")).toBeNull();
   });
 
   it("triggers success toast when saveMessage is set", () => {

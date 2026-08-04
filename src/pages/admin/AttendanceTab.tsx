@@ -6,7 +6,7 @@ interface RsvpEntry {
   id: string;
   rsvpType?: "main" | "companion";
   guestName: string;
-  attendance: "yes" | "no";
+  attendance: string;
   companions: number;
   dietaryInfo: string;
   attendees?: { name: string; menu: string; allergies: string[] }[];
@@ -188,20 +188,20 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
           <table className="admin-table" style={{ fontSize: "0.8rem", minWidth: "800px" }}>
             <thead>
               <tr>
-                <th style={{ width: "2rem" }}>
+                <th scope="col" style={{ width: "2rem" }}>
                   <input type="checkbox" onChange={toggleAll}
                     checked={paginated.length > 0 && selectedIds.size === paginated.length}
                     aria-label={t("attendance.selectAll")} />
                 </th>
-                <th style={{ minWidth: "100px" }}>{t("attendance.tableName")}</th>
-                <th style={{ minWidth: "120px" }}>{t("attendance.tableAccompanies")}</th>
-                <th style={{ minWidth: "70px" }}>{t("attendance.tableAttendance")}</th>
-                <th style={{ minWidth: "120px" }}>{t("attendance.tableMenu")}</th>
-                <th style={{ minWidth: "140px" }}>{t("attendance.tableDiet")}</th>
-                <th style={{ minWidth: "120px" }}>{t("attendance.tableTransport")}</th>
-                <th style={{ minWidth: "110px" }}>{t("attendance.tableBirth")}</th>
-                <th style={{ minWidth: "120px" }}>{t("attendance.tableConsents")}</th>
-                <th style={{ minWidth: "120px" }}>{t("attendance.tableDate")}</th>
+                <th scope="col" style={{ minWidth: "100px" }}>{t("attendance.tableName")}</th>
+                <th scope="col" style={{ minWidth: "120px" }}>{t("attendance.tableAccompanies")}</th>
+                <th scope="col" style={{ minWidth: "70px" }}>{t("attendance.tableAttendance")}</th>
+                <th scope="col" style={{ minWidth: "120px" }}>{t("attendance.tableMenu")}</th>
+                <th scope="col" style={{ minWidth: "140px" }}>{t("attendance.tableDiet")}</th>
+                <th scope="col" style={{ minWidth: "120px" }}>{t("attendance.tableTransport")}</th>
+                <th scope="col" style={{ minWidth: "110px" }}>{t("attendance.tableBirth")}</th>
+                <th scope="col" style={{ minWidth: "120px" }}>{t("attendance.tableConsents")}</th>
+                <th scope="col" style={{ minWidth: "120px" }}>{t("attendance.tableDate")}</th>
               </tr>
             </thead>
             <tbody>

@@ -8,12 +8,21 @@ import {
   type User,
 } from "firebase/auth";
 import { auth } from "../lib/firebase";
+import { INVITE_CACHE_PREFIX } from "../lib/storage-keys";
 import { saveSession, getSession, renewSession, clearSession } from "../lib/sessionVars";
+import { SUPERADMIN_EMAIL } from "../lib/superadmin";
 
-const SUPERADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAILS?.split(",")[0]?.trim() || "adriancl2001@gmail.com";
+export interface SuperAdminValue {
+  isSuperAdmin: boolean;
+  user: User | null;
+  email: string;
+  isLoading: boolean;
+  error: string;
+  login: (email: string, password: string) => Promise<boolean>;
+  logout: () => Promise<void>;
+}
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const SuperAdminContext = createContext<any>(null);
+const SuperAdminContext = createContext<SuperAdminValue | null>(null);
 
 export function SuperAdminProvider({ children }: { children: React.ReactNode }) {
 
@@ -121,7 +130,7 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
     await signOut(auth);
     setUser(null);
     try {
-      const keys = Object.keys(localStorage).filter((k) => k.startsWith("wedin_invite_cache_"));
+      const keys = Object.keys(localStorage).filter((k) => k.startsWith(INVITE_CACHE_PREFIX));
 
       keys.forEach((k: string) => localStorage.removeItem(k));
     } catch {}

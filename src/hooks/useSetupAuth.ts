@@ -17,12 +17,14 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
-import { getDoc, runTransaction, serverTimestamp, setDoc, updateDoc, type DocumentData } from "firebase/firestore";
+import { getDoc, runTransaction, serverTimestamp, updateDoc, deleteField, type DocumentData } from "firebase/firestore";
 import { db, invitationDocRef } from "../lib/firebase";
 import { defaultConfig } from "../lib/constants";
 import { generateSetupToken, normalizeTokenValue } from "../lib/token-utils";
+import { createSetupTokenRecord, deleteSetupTokenRecord, hashSetupToken, setupTokenRef } from "../lib/setup-token";
 import { saveSession, getSession, renewSession, clearSession, firestoreSessionExpiry } from "../lib/sessionVars";
 import { safeSetItem, safeGetItem, safeRemoveItem } from "../lib/storage";
+import { STORAGE_KEYS } from "../lib/storage-keys";
 import type { InvitationConfig } from "../types";
 
 /**
@@ -111,10 +113,26 @@ export function useSetupAuth(
 
 
         try {
-          await updateDoc(invitationDocRef(inviteToken), {
+          // La reparación/renovación de sesión necesita la prueba de
+          // conocimiento del token (hash) para que las reglas la acepten.
+          const storageKey = STORAGE_KEYS.setupToken(inviteToken || "");
+          const storedToken = safeGetItem(storageKey, sessionStorage) || "";
+          const tokenHash = storedToken ? await hashSetupToken(storedToken) : "";
+          const legacyField = snap.data()?._activeSetupToken;
+          const isLegacy = typeof legacyField === "string" && legacyField.length > 0;
+          const repairPayload: Record<string, unknown> = {
             activeSession: serverTimestamp(),
             sessionExpiresAt: firestoreSessionExpiry(),
-          });
+            setupTokenHash: tokenHash,
+          };
+          if (isLegacy && storedToken) {
+            repairPayload.legacyToken = storedToken;
+            try {
+              await createSetupTokenRecord(inviteToken, storedToken);
+              await updateDoc(invitationDocRef(inviteToken), { _activeSetupToken: deleteField() });
+            } catch { }
+          }
+          await updateDoc(invitationDocRef(inviteToken), repairPayload);
           setTokenLoginUsername(session.identifier);
           sessionTypeRef.current = session.type;
           setSetupToken("");
@@ -143,7 +161,10 @@ export function useSetupAuth(
 
   /**
    * Renueva la sesión periódicamente cada 60 segundos mientras esté activa.
-   * Esto actualiza el timestamp en sessionStorage para mantener la sesión viva.
+   * Para que las reglas permitan la renovación se adjunta el hash del token
+   * de setup (prueba de conocimiento). Solo se envía `legacyToken` si la
+   * invitación todavía conserva el token legacy, y en ese caso se intenta
+   * migrar. Nunca se persiste el token en claro en el documento público.
    */
   useEffect(() => {
 
@@ -152,10 +173,27 @@ export function useSetupAuth(
 
         renewSession();
         try {
-          await updateDoc(invitationDocRef(inviteToken), {
+          const storageKey = STORAGE_KEYS.setupToken(inviteToken || "");
+          const storedToken = safeGetItem(storageKey, sessionStorage) || "";
+          const tokenHash = storedToken ? await hashSetupToken(storedToken) : "";
+          const inviteSnap = await getDoc(invitationDocRef(inviteToken));
+          const legacyField = inviteSnap.data()?._activeSetupToken;
+          const isLegacy = typeof legacyField === "string" && legacyField.length > 0;
+          const renewPayload: Record<string, unknown> = {
             activeSession: serverTimestamp(),
             sessionExpiresAt: firestoreSessionExpiry(),
-          });
+            setupTokenHash: tokenHash,
+          };
+          if (isLegacy && storedToken) {
+            renewPayload.legacyToken = storedToken;
+            try {
+              // Migración automática: registra el token en setupTokens y limpia
+              // el campo legacy del documento público.
+              await createSetupTokenRecord(inviteToken, storedToken);
+              await updateDoc(invitationDocRef(inviteToken), { _activeSetupToken: deleteField() });
+            } catch { }
+          }
+          await updateDoc(invitationDocRef(inviteToken), renewPayload);
 
         } catch (err) {
           console.error("[app]", "[useSetupAuth]", "session renewal error", { error: err });
@@ -186,20 +224,19 @@ export function useSetupAuth(
   }, [isTokenVerified, tokenLoginUsername]);
 
   /**
-   * Recupera o genera un token de acceso para el setup.
+   * Recupera el token de setup desde sessionStorage (única fuente fiable).
    *
-   * Orden de comprobación para evitar duplicados:
-   * 1. Si se pasa oldToken, fuerza la regeneración (lo borra y crea uno nuevo).
-   * 2. Busca en sessionStorage un token guardado para esta invitación.
-   * 3. Busca en el documento de la invitación el campo _activeSetupToken.
-   * 4. Si nada funciona, genera uno nuevo y lo persiste en la invitación.
+   * El token NO se lee del documento público de la invitación (seguridad):
+   * se persiste en sessionStorage por invitación y solo puede recuperarse
+   * desde Firestore (colección setupTokens) con sesión activa, por lo que
+   * aquí se devuelve lo que haya en sessionStorage o vacío.
    *
-   * @param {string} [oldToken] - Token anterior a reemplazar (opcional).
-   * @returns {Promise<string>} El token activo.
+   * @param {string} [_oldToken] - Sin uso funcional (API estable).
+   * @returns {Promise<string>} El token activo o cadena vacía.
    */
   const refreshSetupToken = useCallback(async (_oldToken?: string) => {
 
-    const storageKey = `wedin_setup_token_${inviteToken || ""}`;
+    const storageKey = STORAGE_KEYS.setupToken(inviteToken || "");
 
     if (inviteToken) {
       const saved = safeGetItem(storageKey, sessionStorage);
@@ -209,42 +246,25 @@ export function useSetupAuth(
         setSetupTokenInput(saved);
         return saved;
       }
-
-      try {
-        const inviteSnap = await getDoc(invitationDocRef(inviteToken));
-        if (inviteSnap.exists()) {
-          const activeToken = inviteSnap.data()._activeSetupToken;
-          if (activeToken) {
-
-            setSetupToken(activeToken);
-            setSetupTokenInput(activeToken);
-            safeSetItem(storageKey, activeToken, sessionStorage);
-            return activeToken;
-          } else {
-
-          }
-        } else {
-
-        }
-      } catch (err) {
-        console.error("[app]", "[useSetupAuth]", "token lookup failed", { error: err });
-        if (setAdminMessage && setAdminMessageType) {
-          setAdminMessageType("error");
-          setAdminMessage(t("auth.tokenLookupFailed"));
-        }
-      }
     }
 
     return "";
-  }, [inviteToken, setAdminMessage, setAdminMessageType, t]);
+  }, [inviteToken]);
 
   /**
-   * Genera un token nuevo, lo persiste en Firestore y sessionStorage.
-   * Se llama solo al primer guardado o cuando el usuario solicita explícitamente un cambio.
+   * Genera un token nuevo y lo registra en la colección setupTokens
+   * (documentId = hash SHA-256), no en el documento público.
+   *
+   * Si se pasa `oldToken`, elimina su registro (rotación segura).
+   * Además elimina el campo legacy `_activeSetupToken` del documento
+   * público como migración.
+   *
+   * @param {string} [oldToken] - Token anterior a rotar (opcional).
+   * @returns {Promise<string>} El token normalizado generado.
    */
-  const generateNewToken = useCallback(async () => {
+  const generateNewToken = useCallback(async (oldToken?: string) => {
 
-    const storageKey = `wedin_setup_token_${inviteToken || ""}`;
+    const storageKey = STORAGE_KEYS.setupToken(inviteToken || "");
     const nextToken = generateSetupToken();
     const normalizedToken = normalizeTokenValue(nextToken);
 
@@ -253,7 +273,12 @@ export function useSetupAuth(
     if (inviteToken) {
       safeSetItem(storageKey, normalizedToken, sessionStorage);
       try {
-        await setDoc(invitationDocRef(inviteToken), { _activeSetupToken: normalizedToken }, { merge: true });
+        await createSetupTokenRecord(inviteToken, normalizedToken);
+        if (oldToken) {
+          try { await deleteSetupTokenRecord(oldToken); } catch { }
+        }
+        // Migración: retira el token legacy del documento público.
+        try { await updateDoc(invitationDocRef(inviteToken), { _activeSetupToken: deleteField() }); } catch { }
 
       } catch (err) {
         console.error("[app]", "[useSetupAuth]", "token save to Firestore failed", { error: err });
@@ -269,14 +294,22 @@ export function useSetupAuth(
 
   /**
    * Intenta activar la sesión usando un token de setup.
+   * Verifica el token contra la colección setupTokens (hash) o contra el
+   * token legacy de invitaciones aún no migradas, y activa la sesión.
    * Retorna el username del token (si existe) o lanza error.
    */
   const activateSessionWithToken = useCallback(async (enteredToken: string, _validateToken?: (tokenDoc: DocumentData, tu: string) => void) => {
     const inviteRef = invitationDocRef(inviteToken);
+    const normalized = normalizeTokenValue(enteredToken);
+    const tokenHash = await hashSetupToken(normalized);
 
-    // Early check: validate token before entering transaction
+    // Verificación temprana: el token debe tener registro en setupTokens
+    // o coincidir con el token legacy (invitaciones antiguas sin migrar).
     const inviteSnapActive = await getDoc(inviteRef);
-    if (inviteSnapActive.exists() && inviteSnapActive.data()._activeSetupToken !== enteredToken) {
+    const legacyField = inviteSnapActive.data()?._activeSetupToken;
+    const isLegacy = typeof legacyField === "string" && legacyField.length > 0 && legacyField === normalized;
+    const tokenRecord = await getDoc(setupTokenRef(tokenHash));
+    if (!tokenRecord.exists() && !isLegacy) {
       throw new Error("Token no válido");
     }
 
@@ -285,10 +318,10 @@ export function useSetupAuth(
     // eslint-disable-next-line no-constant-condition
     while (true) {
       try {
-        return await runTransaction(db, async (transaction) => {
+        const outcome = await runTransaction(db, async (transaction) => {
           const inviteSnap = await transaction.get(inviteRef);
           if (!inviteSnap.exists()) {
-            transaction.set(inviteRef, { ...defaultConfig, activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry() });
+            transaction.set(inviteRef, { ...defaultConfig, activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry(), setupTokenHash: tokenHash });
             return "";
           }
 
@@ -296,11 +329,32 @@ export function useSetupAuth(
           if (data.activeSession && !userConfirmed) {
             throw new Error("sessionExists");
           }
-          if (data._activeSetupToken !== enteredToken) throw new Error("Token no válido");
+          if (data._activeSetupToken !== normalized && !tokenRecord.exists()) throw new Error("Token no válido");
           if (_validateToken) _validateToken(data, data.adminUsername);
-          transaction.update(inviteRef, { activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry() });
+          const sessionUpdate: Record<string, unknown> = {
+            activeSession: serverTimestamp(),
+            sessionExpiresAt: firestoreSessionExpiry(),
+            setupTokenHash: tokenHash,
+          };
+          // Invitaciones legacy: se envía el token para que las reglas lo
+          // acepten y, tras el login, se migre a setupTokens.
+          if (isLegacy) {
+            sessionUpdate.legacyToken = normalized;
+          }
+          transaction.update(inviteRef, sessionUpdate);
           return "";
         });
+
+        // Migración automática de invitaciones legacy tras autenticarse.
+        if (isLegacy) {
+          try {
+            await createSetupTokenRecord(inviteToken, normalized);
+            await updateDoc(inviteRef, { _activeSetupToken: deleteField(), legacyToken: deleteField() });
+          } catch (migrateErr) {
+            console.error("[app]", "[useSetupAuth]", "legacy token migration failed", { error: migrateErr });
+          }
+        }
+        return outcome;
       } catch (err) {
         if ((err as Error)?.message === "sessionExists") {
           setIsTokenVerifying(false);
@@ -344,6 +398,8 @@ export function useSetupAuth(
       setSetupTokenInput("");
       setIsTokenVerified(true);
       setHasStoredConfig(true);
+      // Persiste el token en sessionStorage para renovaciones y recuperación.
+      safeSetItem(STORAGE_KEYS.setupToken(inviteToken), enteredToken, sessionStorage);
       saveSession(sessionTypeRef.current, displayName);
       setAuthMessageType("success");
       setAuthMessage(t("auth.codeVerified"));
@@ -396,6 +452,8 @@ export function useSetupAuth(
       setSetupTokenInput("");
       setIsTokenVerified(true);
       setHasStoredConfig(true);
+      // Persiste el token en sessionStorage para renovaciones y recuperación.
+      safeSetItem(STORAGE_KEYS.setupToken(inviteToken), enteredToken, sessionStorage);
       saveSession("admin", username);
       setAuthMessageType("success");
       setAuthMessage(t("auth.loginSuccess"));
@@ -412,7 +470,7 @@ export function useSetupAuth(
       setIsTokenVerifying(false);
 
     }
-  }, [activateSessionWithToken, adminLoginUsername, setupTokenInput, config, setHasStoredConfig, t]);
+  }, [activateSessionWithToken, adminLoginUsername, setupTokenInput, config, setHasStoredConfig, inviteToken, t]);
 
   /**
    * Genera un nuevo token de acceso vinculado a un usuario administrador.
@@ -435,7 +493,7 @@ export function useSetupAuth(
     clearSession();
     if (token) {
       try {
-        safeRemoveItem(`wedin_invite_cache_${token}`);
+        safeRemoveItem(STORAGE_KEYS.inviteCache(token));
         await updateDoc(invitationDocRef(token), { activeSession: null, sessionExpiresAt: null });
 
       } catch (err) {
@@ -459,7 +517,7 @@ export function useSetupAuth(
     if (resettingRef.current) { ; return; }
     resettingRef.current = true;
     try {
-      const storageKey = `wedin_setup_token_${inviteToken || ""}`;
+      const storageKey = STORAGE_KEYS.setupToken(inviteToken || "");
       const storedToken = safeGetItem(storageKey, sessionStorage) || "";
       const currentToken = setupToken || storedToken;
       if (!currentToken || confirmTokenInput !== currentToken) {
@@ -469,7 +527,7 @@ export function useSetupAuth(
       }
       setAuthMessage("");
 
-      await generateNewToken();
+      await generateNewToken(currentToken);
       setAuthMessageType("success");
       setAuthMessage(t("auth.tokenRenewed"));
       setConfirmTokenInput("");
@@ -489,7 +547,9 @@ export function useSetupAuth(
     resettingRef.current = true;
     try {
       setAdminMessage("");
-      await generateNewToken();
+      const storageKey = STORAGE_KEYS.setupToken(inviteToken || "");
+      const oldToken = setupToken || safeGetItem(storageKey, sessionStorage) || "";
+      await generateNewToken(oldToken);
       setAdminMessageType("success");
       setAdminMessage(t("auth.tokenRenewedAdmin"));
       setConfirmTokenInput("");
@@ -497,7 +557,7 @@ export function useSetupAuth(
     } finally {
       resettingRef.current = false;
     }
-  }, [generateNewToken, setAdminMessage, setAdminMessageType, t]);
+  }, [generateNewToken, setAdminMessage, setAdminMessageType, t, inviteToken, setupToken]);
 
   return {
     setupToken, setSetupToken,

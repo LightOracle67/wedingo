@@ -5,6 +5,7 @@
     "close": "Cerrar",
     "retry": "Reintentar",
     "menu": "Menú",
+    "skipToContent": "Saltar al contenido principal",
     "save": "Guardar cambios",
     "copy": "Copiar",
     "back": "Volver",
@@ -51,6 +52,7 @@
     "errorUsernameMismatch": "El código no corresponde a este usuario.",
     "errorTransactionFailed": "No se pudo completar el acceso. Inténtalo de nuevo.",
     "errorVerifyFailed": "No se pudo verificar el código. Inténtalo de nuevo.",
+    "errorCreateFailed": "No se pudo crear la invitación. Inténtalo de nuevo.",
     "errorTooManyAttempts": "Demasiados intentos. Espera {{seconds}} segundos.",
     "sessionExists": "Ya hay una sesión activa para esta invitación. ¿Quieres iniciar sesión de todos modos? La sesión anterior se cerrará."
   },
@@ -110,6 +112,7 @@
     "title": "Nuestros momentos",
     "empty": "Pronto compartiremos nuestras fotos.",
     "imageAlt": "Foto de la galería",
+    "openLightbox": "Ampliar foto",
     "prev": "Anterior",
     "next": "Siguiente",
     "carouselLabel": "Galería de imágenes, usa las flechas del teclado para navegar",
@@ -173,8 +176,8 @@
     "allergies": {
       "sin gluten": "Sin gluten",
       "sin lactosa": "Sin lactosa",
-      "alergia a frutos secos": "Alergia a frutos secos",
-      "alergia a mariscos": "Alergia a mariscos"
+      "alergia frutos secos": "Alergia a frutos secos",
+      "alergia mariscos": "Alergia a mariscos"
     },
     "nameHint": "Escribe tu nombre y tus dos apellidos.",
     "birthDateHint": "Necesaria solo para saber si eres menor de 14 años.",
@@ -216,6 +219,12 @@
     "tokenModalTitle": "Guarda tu código de acceso",
     "tokenModalText": "Anota o copia este código. Lo necesitarás para acceder al panel de administración.",
     "tokenModalContinue": "Lo he guardado",
+    "tokenFieldLabel": "Código de acceso (token)",
+    "tokenFieldHint": "Guarda este código en un lugar seguro. Lo necesitarás para acceder al panel de administración desde otro dispositivo.",
+    "tokenAcknowledge": "He guardado mi código de acceso en un lugar seguro",
+    "tokenAcknowledgeRequired": "Marca la casilla para confirmar que has guardado tu código de acceso.",
+    "showToken": "Mostrar",
+    "hideToken": "Ocultar",
     "accessSectionTitle": "Acceso",
     "accessSectionHint": "Tu nombre de usuario",
     "coverSectionTitle": "Portada",
@@ -842,6 +851,9 @@
     "noMusic": "Sin música",
     "loadError": "Error al cargar",
     "label": "Música",
+    "play": "Reproducir música",
+    "pause": "Pausar música",
+    "volume": "Volumen de la música",
     "play": "Reproducir",
     "pause": "Pausar",
     "playing": "Reproduciendo..."

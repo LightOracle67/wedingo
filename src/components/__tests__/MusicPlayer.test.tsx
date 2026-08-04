@@ -42,13 +42,13 @@ describe("MusicPlayer", () => {
     expect(screen.getByText("song")).toBeDefined();
   });
 
-  it("renders audio element with loop and autoPlay when musicUrl is provided", () => {
+  it("renders audio element with loop and no autoPlay (sonido requiere interacción)", () => {
     render(<MusicPlayer musicUrl="https://example.com/song.mp3" />);
     const audio = document.querySelector("audio");
     expect(audio).toBeDefined();
     expect(audio?.getAttribute("loop")).toBe("");
-    expect(audio?.getAttribute("autoplay")).toBe("");
-    expect(audio?.getAttribute("preload")).toBe("auto");
+    expect(audio?.hasAttribute("autoplay")).toBe(false);
+    expect(audio?.getAttribute("preload")).toBe("none");
   });
 
   it("does not render audio element when no musicUrl", () => {

@@ -1,11 +1,23 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useApp } from "../../contexts";
 
-export default function AccessSectionForm({ prefix = "" }) {
-  const { formData, updateFormField } = useApp();
+interface AccessSectionFormProps {
+  prefix?: string;
+  /** Estado de confirmación del token (solo primera creación). */
+  tokenAcknowledged?: boolean;
+  /** Callback al marcar/desmarcar la confirmación del token. */
+  onTokenAcknowledge?: (checked: boolean) => void;
+}
+
+export default function AccessSectionForm({ prefix = "", tokenAcknowledged = false, onTokenAcknowledge }: AccessSectionFormProps) {
+  const { formData, updateFormField, setupToken, hasStoredConfig } = useApp();
   const { t } = useTranslation();
 
   const id = (name: string) => `${prefix}${name}`;
+
+  /** Muestra/oculta el token en el input de tipo password. */
+  const [showToken, setShowToken] = useState(false);
 
   return (
     <>
@@ -28,6 +40,55 @@ export default function AccessSectionForm({ prefix = "" }) {
       <p className="setup-help" id="usernameHelp">
         {t("setup.usernameHint")}
       </p>
+
+      {!hasStoredConfig ? (
+        <div
+          className="setup-token-section"
+          style={{ marginTop: "0.9rem", padding: "0.9rem 1rem", borderRadius: "var(--radius-md)", background: "color-mix(in srgb, var(--setup-field-bg) 55%, transparent)", border: "1px solid color-mix(in srgb, var(--setup-accent) 35%, transparent)" }}
+        >
+          <label className="setup-label" htmlFor={id("setupTokenReadonly")}>
+            {t("setup.tokenFieldLabel")}
+          </label>
+          <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
+            <input
+              id={id("setupTokenReadonly")}
+              className="setup-input"
+              type={showToken ? "text" : "password"}
+              value={setupToken || ""}
+              readOnly
+              disabled
+              style={{ flex: 1, fontFamily: "monospace", letterSpacing: "0.05em", userSelect: "all" }}
+              aria-describedby="setupTokenHint"
+              autoComplete="off"
+            />
+            <button
+              type="button"
+              className="setup-button setup-button--compact"
+              onClick={() => setShowToken((s) => !s)}
+              aria-label={showToken ? t("setup.hideToken") : t("setup.showToken")}
+              title={showToken ? t("setup.hideToken") : t("setup.showToken")}
+              style={{ flexShrink: 0 }}
+            >
+              {showToken ? t("setup.hideToken") : t("setup.showToken")}
+            </button>
+          </div>
+          <p className="setup-help" id="setupTokenHint">
+            {t("setup.tokenFieldHint")}
+          </p>
+          {onTokenAcknowledge ? (
+            <label className="setup-checkbox-label" htmlFor={id("setupTokenAcknowledged")}>
+              <input
+                id={id("setupTokenAcknowledged")}
+                type="checkbox"
+                checked={tokenAcknowledged}
+                onChange={(e) => onTokenAcknowledge(e.target.checked)}
+                style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }}
+              />
+              {t("setup.tokenAcknowledge")}
+            </label>
+          ) : null}
+        </div>
+      ) : null}
     </>
   );
 }

@@ -1,11 +1,11 @@
 # Wedingo — Architecture Overview
 
 ## Tech Stack
-- **Frontend:** React 19 + TypeScript 6 + Vite 8 (rolldown bundler)
+- **Frontend:** React 19 + TypeScript 7 + Vite 8 (rolldown bundler)
 - **Backend:** Firebase (Firestore, Auth, Hosting, Storage)
 - **CSS:** Tailwind 4 + CSS custom properties (40+ design tokens)
 - **i18n:** i18next + react-i18next (100 languages, lazy-loaded)
-- **Map:** Leaflet + OpenFreeMap
+- **Map:** Google Maps Embed (iframe, sin API key)
 - **Monitoring:** Sentry (errors + perf), Firebase Analytics, web-vitals
 - **Testing:** Vitest + Testing Library + axe-core (a11y)
 - **CI/CD:** GitHub Actions (lint → typecheck → test → coverage → audit → build → bundle check → deploy)
@@ -15,7 +15,7 @@
 src/
 ├── assets/           # Static images and fonts
 ├── components/       # Reusable React components
-│   └── setup-forms/  # Setup wizard form sections (7 forms)
+│   └── setup-forms/  # Setup wizard form sections (8 forms)
 ├── contexts/         # React context providers + separate hook files
 ├── content/          # External content (privacy policy)
 ├── hooks/            # Custom React hooks (11 hooks)
@@ -23,12 +23,12 @@ src/
 ├── lib/              # Utilities, services, store, crypto (30+ modules)
 ├── pages/            # Route pages
 │   ├── admin/        # Admin panel tabs (6 tabs)
-│   ├── sections/     # Public invitation sections (8 sections)
+│   ├── sections/     # Public invitation sections (9 sections)
 │   └── superadmin/   # Super admin panel tabs (6 tabs)
 ├── styles/           # CSS stylesheets (12 files)
 └── types/            # TypeScript type definitions
 functions/
-└── index.js          # Cloud Functions (cleanup cron)
+└── index.ts          # Cloud Functions (cleanup cron)
 ```
 
 ## Context Architecture
@@ -78,13 +78,18 @@ auditLog/{id}              # Super admin audit log
 ## Testing Strategy
 ```
 src/
-├── components/__tests__/     # 15 test files (all components covered)
-├── hooks/__tests__/          # 8 test files (all hooks covered)
-├── lib/__tests__/            # 39 test files (core logic covered)
-├── pages/__tests__/          # 4 test files (page integration)
-└── components/setup-forms/__tests__/  # 7 test files (all forms covered)
+├── components/__tests__/     # 23 test files (all components covered)
+├── components/setup-forms/__tests__/  # 8 test files (all forms covered)
+├── contexts/__tests__/       # 14 test files (providers + hooks covered)
+├── hooks/__tests__/          # 11 test files (all hooks covered)
+├── lib/__tests__/            # 52 test files (core logic covered)
+├── pages/__tests__/          # 7 test files (page integration)
+├── pages/sections/__tests__/ # 9 test files (public sections covered)
+├── pages/admin/__tests__/    # 7 test files (admin tabs covered)
+├── pages/superadmin/__tests__/ # 6 test files (superadmin tabs covered)
+└── __tests__/                # 2 test files (App shell)
 ```
-- **94 test files, 490 tests, 0 failures**
-- Coverage thresholds: statements 30%, branches 20%, functions 25%, lines 30%
+- **140 test files, 1578 tests, 0 failures**
+- Coverage thresholds: statements 85%, branches 81%, functions 86%, lines 87%
 - Accessibility: axe-core WCAG 2.1 AA checks in CI
-- Bundle size check: vendor-firebase <600KB, vendor-react <250KB gzip
+- Bundle size check: vendor-firebase <650KB, vendor-react <250KB, vendor-sentry <150KB gzip

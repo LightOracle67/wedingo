@@ -5,6 +5,7 @@
     "close": "Close",
     "retry": "Retry",
     "menu": "Menu",
+    "skipToContent": "Skip to main content",
     "save": "Save changes",
     "copy": "Copy",
     "copied": "Copied!",
@@ -51,6 +52,7 @@
     "errorUsernameMismatch": "The code does not match this user.",
     "errorTransactionFailed": "Could not complete sign in. Please try again.",
     "errorVerifyFailed": "Could not verify the code. Please try again.",
+    "errorCreateFailed": "Could not create the invitation. Please try again.",
     "errorTooManyAttempts": "Too many attempts. Please wait {{seconds}} seconds.",
     "sessionExists": "There is already an active session for this invitation. Do you want to sign in anyway? The previous session will be closed."
   },
@@ -110,6 +112,7 @@
     "title": "Our moments",
     "empty": "We'll share our photos soon.",
     "imageAlt": "Gallery photo",
+    "openLightbox": "Enlarge photo",
     "prev": "Previous",
     "next": "Next",
     "carouselLabel": "Image gallery, use arrow keys to navigate",
@@ -173,8 +176,8 @@
     "allergies": {
       "sin gluten": "Gluten-free",
       "sin lactosa": "Lactose-free",
-      "alergia a frutos secos": "Nut allergy",
-      "alergia a mariscos": "Shellfish allergy"
+      "alergia frutos secos": "Nut allergy",
+      "alergia mariscos": "Shellfish allergy"
     },
     "nameHint": "Enter your first name and your two surnames.",
     "birthDateHint": "Only needed to know if you are under 14 years old.",
@@ -216,6 +219,12 @@
     "tokenModalTitle": "Save your access code",
     "tokenModalText": "Write down or copy this code. You will need it to access the admin panel.",
     "tokenModalContinue": "I've saved it",
+    "tokenFieldLabel": "Access code (token)",
+    "tokenFieldHint": "Save this code in a safe place. You'll need it to access the admin panel from another device.",
+    "tokenAcknowledge": "I have saved my access code in a safe place",
+    "tokenAcknowledgeRequired": "Check the box to confirm you have saved your access code.",
+    "showToken": "Show",
+    "hideToken": "Hide",
     "accessSectionTitle": "Access",
     "accessSectionHint": "Your username",
     "coverSectionTitle": "Cover",
@@ -841,6 +850,9 @@
     "noMusic": "No music",
     "loadError": "Error loading",
     "label": "Music",
+    "play": "Play music",
+    "pause": "Pause music",
+    "volume": "Music volume",
     "play": "Play",
     "pause": "Pause",
     "playing": "Playing..."

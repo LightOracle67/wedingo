@@ -14,7 +14,8 @@ beforeEach(() => {
     get length() { return Object.keys(storage).length; },
     key: vi.fn((i: number) => Object.keys(storage)[i] ?? null),
   };
-  vi.stubGlobal("localStorage", mock);
+  // La sesión se guarda en sessionStorage (más seguro que localStorage).
+  vi.stubGlobal("sessionStorage", mock);
 });
 
 afterEach(() => {
@@ -56,7 +57,7 @@ describe("sessionVars", () => {
   });
 
   it("handles localStorage write errors gracefully", () => {
-    (localStorage.setItem as ReturnType<typeof vi.fn>).mockImplementationOnce(() => { throw new Error("QuotaExceededError"); });
+    (sessionStorage.setItem as ReturnType<typeof vi.fn>).mockImplementationOnce(() => { throw new Error("QuotaExceededError"); });
     expect(() => saveSession("setup", "user")).not.toThrow();
     expect(getSession()).toBeNull();
   });
@@ -96,9 +97,9 @@ describe("sessionVars", () => {
 
   it("renewSession handles storage errors gracefully", () => {
     saveSession("setup", "user");
-    const orig = localStorage.getItem;
-    localStorage.getItem = vi.fn(() => { throw new Error("fail"); });
+    const orig = sessionStorage.getItem;
+    sessionStorage.getItem = vi.fn(() => { throw new Error("fail"); });
     expect(() => renewSession()).not.toThrow();
-    localStorage.getItem = orig;
+    sessionStorage.getItem = orig;
   });
 });

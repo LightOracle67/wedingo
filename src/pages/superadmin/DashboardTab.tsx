@@ -70,7 +70,8 @@ const DashboardTab = memo(function DashboardTab() {
   const handleCleanup = useCallback(async () => {
     if (!window.confirm(t("superadmin.cleanConfirm", { count: expired.length }))) return;
     setCleaning(true);
-    let count = 0;
+    let deleted = 0;
+    let failed = 0;
     for (const invitation of expired) {
       try {
         const batch = writeBatch(db);
@@ -83,11 +84,15 @@ const DashboardTab = memo(function DashboardTab() {
           const prefix = `invitations/${invitation.id}/`;
           const list = await listAll(ref(storage, prefix));
           await Promise.allSettled(list.items.map((item) => deleteObject(item)));
-        } catch {}
-        count++;
-      } catch {}
+        } catch { }
+        deleted++;
+      } catch (err) {
+        failed++;
+        console.error("[app]", "[superadmin]", "cleanup delete failed", { id: invitation.id, error: err });
+      }
     }
-    await logAudit("cleanup_expired", `Eliminadas ${count} invitaciones expiradas`);
+    // Registro honesto del resultado en la auditoría (sin falsear el conteo).
+    await logAudit("cleanup_expired", `Eliminadas ${deleted} invitaciones expiradas${failed ? ` (${failed} fallos)` : ""}`);
     setCleaning(false);
     await load();
   }, [expired, load, t]);

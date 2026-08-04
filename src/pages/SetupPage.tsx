@@ -3,6 +3,9 @@ import { Navigate, useNavigate, useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 import { useApp } from "../contexts";
 import { useToast } from "../hooks/useToast";
+import { useFocusTrap, useEscapeKey } from "../hooks/useFocusTrap";
+import { safeGetItem } from "../lib/storage";
+import { STORAGE_KEYS } from "../lib/storage-keys";
 import SetupForm from "../components/SetupForm";
 import MusicPlayer from "../components/MusicPlayer";
 import "../styles/admin.css";
@@ -32,6 +35,20 @@ export default function SetupPage() {
   const [tokenCopied, setTokenCopied] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const hasRedirectedRef = useRef(false);
+  const copyTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Generación temprana del token de setup: se registra (hash) antes de que
+  // exista la invitación para que la activación de sesión sea verificable.
+  // Si ya hay un token en sessionStorage (p. ej. creado en la landing), no se
+  // regenera: lo recupera AuthContext vía refreshSetupToken.
+  useEffect(() => {
+    if (!hasStoredConfig && !setupToken && inviteToken) {
+      const stored = safeGetItem(STORAGE_KEYS.setupToken(inviteToken), sessionStorage);
+      if (!stored) {
+        (async () => { try { await generateNewToken(); } catch { } })();
+      }
+    }
+  }, [hasStoredConfig, setupToken, inviteToken, generateNewToken]);
 
   useEffect(() => {
 
@@ -58,6 +75,15 @@ export default function SetupPage() {
     }
   }, [saveMessage, hasStoredConfig, setupToken, generateNewToken]);
 
+  // Limpieza de timers al desmontar el componente.
+  useEffect(() => () => {
+    if (copyTimerRef.current) clearTimeout(copyTimerRef.current);
+  }, []);
+
+  // Focus trap y cierre con Escape para el modal del token (accesibilidad).
+  const tokenModalRef = useFocusTrap(showTokenModal);
+  useEscapeKey(() => setShowTokenModal(false), showTokenModal);
+
   const handleTokenModalClose = () => {
 
     setShowTokenModal(false);
@@ -76,7 +102,8 @@ export default function SetupPage() {
     if (setupToken) {
       navigator.clipboard.writeText(setupToken);
       setTokenCopied(true);
-      setTimeout(() => setTokenCopied(false), 2000);
+      if (copyTimerRef.current) clearTimeout(copyTimerRef.current);
+      copyTimerRef.current = setTimeout(() => setTokenCopied(false), 2000);
     }
   };
 
@@ -146,8 +173,8 @@ export default function SetupPage() {
         </div>
 
         {showTokenModal ? (
-          <div className="modal-overlay" onClick={() => {}} role="dialog" aria-modal="true" aria-label={t("setup.tokenModalTitle")}>
-            <div className="modal-card" onClick={(e) => e.stopPropagation()}>
+          <div className="modal-overlay" onClick={() => { setShowTokenModal(false); setShowSuccess(true); }} role="dialog" aria-modal="true" aria-label={t("setup.tokenModalTitle")}>
+            <div className="modal-card" ref={tokenModalRef as React.RefObject<HTMLDivElement>} onClick={(e) => e.stopPropagation()}>
               <p className="modal-title">{t("setup.tokenModalTitle")}</p>
               <p className="setup-help">{t("setup.tokenModalText")}</p>
               <div style={{ display: "flex", gap: "0.5rem", alignItems: "center", marginTop: "1rem" }}>

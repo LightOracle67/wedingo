@@ -78,6 +78,14 @@ vi.mock("../../lib/firebase", () => ({
   invitationDocRef: vi.fn(() => "invitations/test-token"),
 }));
 
+vi.mock("../../lib/setup-token", () => ({
+  hashSetupToken: vi.fn(() => Promise.resolve("mock-hash")),
+}));
+
+vi.mock("../../lib/storage", () => ({
+  safeGetItem: vi.fn(() => null as string | null),
+}));
+
 vi.mock("../../lib/sessionVars", () => ({
   getSession: () => mockGetSession(),
   firestoreSessionExpiry: vi.fn(() => new Date("2027-01-01")),
@@ -126,6 +134,7 @@ describe("AuthProvider", () => {
     expect(mockUpdateDoc).toHaveBeenCalledWith("invitations/test-token", {
       activeSession: expect.any(Date),
       sessionExpiresAt: expect.any(Date),
+      setupTokenHash: "",
     });
     await vi.waitFor(() => {
       expect(mockSetIsTokenVerified).toHaveBeenCalledWith(true);

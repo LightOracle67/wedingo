@@ -69,7 +69,7 @@ export default function GuestsSectionForm({ prefix = "" }) {
             <div key={dishes} style={{ marginBottom: "0.5rem" }}>
               <p className="setup-label" id={id(dishes + "Label")} style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}>{t(labelKey)}</p>
               <MenuDishEditor
-                value={formData[dishes] || ""}
+                value={(formData[dishes] as string) || ""}
                 onChange={(json) => updateFormField(dishes, json)}
                 idBase={id(dishes)}
               />
