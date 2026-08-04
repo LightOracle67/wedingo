@@ -223,7 +223,7 @@
     "dateSectionTitle": "Lugar, Fecha y Hora",
     "dateSectionHint": "Dónde, cuándo y a qué hora",
     "guestsSectionTitle": "Sobre los invitados",
-    "guestsSectionHint": "Niños, código de vestimenta, menú, alojamiento, transporte",
+    "guestsSectionHint": "Niños, código de vestimenta, menú y alojamiento",
     "storySectionTitle": "Nuestra historia",
     "storySectionHint": "Texto libre sobre la pareja",
     "giftsSectionTitle": "Regalos",
@@ -304,7 +304,7 @@
     "kidsLabel": "Sobre los niños",
     "kidsHint": "Selecciona la política sobre niños para la celebración.",
     "menuEnabledLabel": "Los invitados pueden elegir su menú",
-    "menuHint": "Describe cada menú. Si no se ofrece, déjalo vacío.",
+    "menuHint": "Añade los platos de cada menú con su orden. Si no se ofrece ese menú, déjalo vacío.",
     "menuCarneLabel": "Menú de carne",
     "menuCarnePlaceholder": "Describe el menú de carne...",
     "menuPescadoLabel": "Menú de pescado",
@@ -315,7 +315,7 @@
     "postrePlaceholder": "Describe el postre",
     "menuRequiredText": "Obligatorio: postre y al menos un menú principal.",
     "menuTextoPlaceholder": "Describe el menú: entrante, plato principal, postre...",
-    "menuTextoHint": "Describe el menú que has preparado. Los invitados lo verán al confirmar.",
+    "menuTextoHint": "Añade los platos del menú con su orden. Los invitados los verán al confirmar.",
     "storyLabel": "Nuestra historia",
     "storyPlaceholder": "Ejemplo: Nos conocimos en…",
     "storyHint": "Un texto libre sobre vuestra historia de amor.",
@@ -431,7 +431,8 @@
     "pdfTableCompanions": "Acomps",
     "pdfTableDiet": "Dieta",
     "sectionsLabel": "Secciones",
-    "logout": "Cerrar sesión"
+    "logout": "Cerrar sesión",
+    "editorAriaLabel": "Editor de la invitación"
   },
   "panel": {
     "confirmed": "Familias",
@@ -1035,5 +1036,8 @@
   },
   "settings": {
     "menuChangeConfirm": "Hay {{count}} confirmaciones con menú. ¿Seguro que quieres cambiar el menú?"
+  },
+  "map": {
+    "embedTitle": "Mapa de la ubicación"
   }
 }

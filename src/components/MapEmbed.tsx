@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { isValidGoogleMapsUrl, convertToEmbedUrl } from "../lib/geo-utils";
 
 function canEmbed(url: string): boolean {
@@ -15,6 +16,7 @@ export default function MapEmbed({ mapUrl, mapView = "roadmap", staticMap = fals
   staticMap?: boolean;
   height?: number;
 }) {
+  const { t } = useTranslation();
   const embedSrc = mapUrl && isValidGoogleMapsUrl(mapUrl) ? convertToEmbedUrl(mapUrl, mapView) : "";
   const showIframe = embedSrc && canEmbed(embedSrc);
 
@@ -23,7 +25,7 @@ export default function MapEmbed({ mapUrl, mapView = "roadmap", staticMap = fals
       {showIframe ? (
         <>
           <iframe
-            title="Mapa de la ubicación"
+            title={t("map.embedTitle")}
             src={embedSrc}
             width="100%"
             height={height}

@@ -223,7 +223,7 @@
     "dateSectionTitle": "Venue, Date & Time",
     "dateSectionHint": "Where, when and what time",
     "guestsSectionTitle": "About the guests",
-    "guestsSectionHint": "Children, dress code, menu, accommodation, transport",
+    "guestsSectionHint": "Children, dress code, menu and accommodation",
     "storySectionTitle": "Our story",
     "storySectionHint": "Free text about the couple",
     "giftsSectionTitle": "Gifts",
@@ -304,7 +304,7 @@
     "kidsLabel": "About children",
     "kidsHint": "Select the children policy for the celebration.",
     "menuEnabledLabel": "Guests can choose their menu",
-    "menuHint": "Describe each menu. If not offered, leave it blank.",
+    "menuHint": "Add the dishes of each menu with their course. If that menu is not offered, leave it empty.",
     "menuCarneLabel": "Meat menu",
     "menuCarnePlaceholder": "Describe the meat menu...",
     "menuPescadoLabel": "Fish menu",
@@ -315,7 +315,7 @@
     "postrePlaceholder": "Describe the dessert",
     "menuRequiredText": "Required: dessert and at least one main menu.",
     "menuTextoPlaceholder": "Describe the menu: starter, main course, dessert...",
-    "menuTextoHint": "Describe the menu you have prepared. Guests will see it when confirming.",
+    "menuTextoHint": "Add the menu dishes with their course. Guests will see them when confirming.",
     "storyLabel": "Our story",
     "storyPlaceholder": "e.g. We met at…",
     "storyHint": "Free text about your love story.",
@@ -431,7 +431,8 @@
     "pdfTableCompanions": "Comp.",
     "pdfTableDiet": "Diet",
     "sectionsLabel": "Sections",
-    "logout": "Log out"
+    "logout": "Log out",
+    "editorAriaLabel": "Invitation editor"
   },
   "panel": {
     "confirmed": "Families",
@@ -1034,5 +1035,8 @@
   },
   "settings": {
     "menuChangeConfirm": "There are {{count}} menu confirmations. Are you sure you want to change the menu?"
+  },
+  "map": {
+    "embedTitle": "Location map"
   }
 }

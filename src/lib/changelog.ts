@@ -38,6 +38,8 @@ export const CHANGELOG = [
       "VERIFICADO: flujo de guardado del menú por platos (form → normalize → validación → payload Firestore → recuperación) con tests de persistencia round-trip, guardado en ConfigContext y rechazo de órdenes inválidas",
       "FIX: menú fijo no se mostraba en el RSVP — el bloque solo se renderizaba con menuEnabled=true; ahora el menú fijo (menuEnabled=false) muestra los platos sin selector, y el variable muestra el selector con el menú de la opción debajo",
       "FIX i18n: 10 claves usadas sin texto añadidas (se mostraban crudas): hero.sectionLabel, admin.tabs.ariaLabel, errors.generic/restoreFailed, rsvp.validation.guestNamesExceed/Required y headcountExceed, settings.menuChangeConfirm, setup.cornerDecorationUploadHint y transportTypeLabel. Auditoría exhaustiva: 0 claves literales sin resolver y todos los valores dinámicos (temas, meses, idiomas, compliance, alergias, platos) verificados",
+      "FIX i18n: textos hardcodeados en atributos — MapEmbed (title español), DateSectionForm preview (title inglés) e InvitationTab (aria-label inglés) pasan a claves; invitación y setup sin textos crudos",
+      "FIX i18n: hints desactualizados — setup.menuHint y menuTextoHint ahora describen platos con orden, y guestsSectionHint ya no menciona transporte (sección propia)",
     ],
   },
 

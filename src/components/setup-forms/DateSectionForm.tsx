@@ -195,7 +195,7 @@ export default function DateSectionForm({ prefix = "" }) {
           <p className="setup-label setup-label--tight">{t("setup.mapPreview")}</p>
           <div style={{ position: "relative" }}>
             <iframe
-              title="Google Maps preview"
+              title={t("setup.mapPreview")}
               src={embedUrl}
               width="100%"
               height="250"
