@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { writeBatch, deleteDoc, doc, getDoc, setDoc, getDocs, serverTimestamp } from "firebase/firestore";
-import { db, RSVP_COLLECTION_REF, rsvpByInviteRef } from "../lib/firebase";
+import { db, rsvpByInviteRef, rsvpResponseRef } from "../lib/firebase";
 import { encrypt, decrypt } from "../lib/crypto-utils";
 import { computeAge } from "../lib/date-utils";
 import { DIETARY_OPTIONS, parseDietaryInfo } from "../lib/rsvp-utils";
@@ -574,7 +574,7 @@ export function useRsvp(
     const companionCount = form.companionCount || 0;
     const nowTimestamp = serverTimestamp();
 
-    const mainGuestId = doc(RSVP_COLLECTION_REF).id;
+    const mainGuestId = doc(rsvpByInviteRef(inviteToken)).id;
     const mainGuestData = buildMainGuestData({
       data: form,
       isAttending,
@@ -590,7 +590,7 @@ export function useRsvp(
     const companionDocIds: string[] = [];
     const companionPayloads: Array<Record<string, unknown>> = [];
     for (let i = 0; i < companionCount; i++) {
-      companionDocIds.push(doc(RSVP_COLLECTION_REF).id);
+      companionDocIds.push(doc(rsvpByInviteRef(inviteToken)).id);
       const compAllergies = form.companionAllergies[i] || [];
       const compDietaryInfo = compAllergies.filter(Boolean).join(" | ");
       const encCompDietary = await encrypt(compDietaryInfo, inviteToken);
@@ -614,10 +614,10 @@ export function useRsvp(
 
     try {
 
-      // Contador por invitación: garantiza que el documento de contador exista
-      // (las reglas exigen que el contador esté creado y por debajo de 500) y
-      // lo incrementa en el mismo lote para mantener el tope anti-spam.
-      const counterRef = doc(db, "rsvpCounters", inviteToken);
+      // Contador por invitación: el documento grupo rsvpResponses/{inviteToken}
+      // guarda el contador (las reglas exigen que exista y esté por debajo de
+      // 500) y se incrementa en el mismo lote para mantener el tope anti-spam.
+      const counterRef = doc(db, "rsvpResponses", inviteToken);
       let currentCount = 0;
       try {
         const counterSnap = await getDoc(counterRef);
@@ -631,9 +631,9 @@ export function useRsvp(
       }
 
       const batch = writeBatch(db);
-      batch.set(doc(RSVP_COLLECTION_REF, mainGuestId), mainGuestData);
+      batch.set(rsvpResponseRef(inviteToken, mainGuestId), mainGuestData);
       for (let i = 0; i < companionCount; i++) {
-        batch.set(doc(RSVP_COLLECTION_REF, companionDocIds[i]), companionPayloads[i]);
+        batch.set(rsvpResponseRef(inviteToken, companionDocIds[i]!), companionPayloads[i]);
       }
       batch.set(counterRef, { count: currentCount + 1 });
       await batch.commit();
@@ -709,9 +709,9 @@ export function useRsvp(
     if (!window.confirm(t("rsvp.withdrawConfirm"))) { return; }
     try {
       const batch = writeBatch(db);
-      batch.delete(doc(RSVP_COLLECTION_REF, alreadySubmittedEntry.id));
+      batch.delete(rsvpResponseRef(inviteToken, alreadySubmittedEntry.id));
       for (const cid of alreadySubmittedEntry.companionDocIds || []) {
-        batch.delete(doc(RSVP_COLLECTION_REF, cid));
+        batch.delete(rsvpResponseRef(inviteToken, cid));
       }
       await batch.commit();
       const idsToRemove = new Set([alreadySubmittedEntry.id, ...(alreadySubmittedEntry.companionDocIds || [])]);
@@ -736,7 +736,7 @@ export function useRsvp(
     try {
       const batch = writeBatch(db);
       for (const id of ids) {
-        batch.delete(doc(RSVP_COLLECTION_REF, id));
+        batch.delete(rsvpResponseRef(inviteToken, id));
       }
       await batch.commit();
       setRsvpEntries((current) => current.filter((e) => !ids.includes(e.id)));
@@ -748,7 +748,7 @@ export function useRsvp(
       setAdminMessage(t("attendance.deleteSelectedError"));
       setAdminMessageType("error");
     }
-  }, [setAdminMessage, setAdminMessageType, t]);
+  }, [setAdminMessage, setAdminMessageType, t, inviteToken]);
 
   const handleClearRsvpEntries = useCallback(async () => {
 

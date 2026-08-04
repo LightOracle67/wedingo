@@ -306,12 +306,12 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
 
       await setDoc(invitationDocRef(inviteToken), payload, { merge: true });
 
-      // Crea el contador de RSVP de la invitación (tope anti-spam) si no existe.
+      // Crea el documento grupo de RSVP de la invitación (tope anti-spam) si no existe.
       try {
-        const counterRef = doc(db, "rsvpCounters", inviteToken);
-        const counterSnap = await getDoc(counterRef);
-        if (!counterSnap.exists()) {
-          await setDoc(counterRef, { count: 0 });
+        const groupRef = doc(db, "rsvpResponses", inviteToken);
+        const groupSnap = await getDoc(groupRef);
+        if (!groupSnap.exists()) {
+          await setDoc(groupRef, { count: 0 });
         }
       } catch { }
 
@@ -347,6 +347,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       await deleteGallery(inviteToken);
       const { deleteAllConfigImages } = await import("../lib/image-store");
       await deleteAllConfigImages(inviteToken);
+      batch.delete(doc(db, "rsvpResponses", inviteToken));
       batch.delete(invitationDocRef(inviteToken));
       await batch.commit();
       safeRemoveItem(STORAGE_KEYS.inviteCache(inviteToken));

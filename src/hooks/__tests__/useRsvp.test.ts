@@ -33,6 +33,7 @@ vi.mock("../../lib/firebase", () => ({
   db: {},
   RSVP_COLLECTION_REF: "rsvpResponses",
   rsvpByInviteRef: vi.fn(() => "rsvpByInviteRef"),
+  rsvpResponseRef: vi.fn((_token: string, id: string) => ({ id, path: `rsvpResponses/${_token}/responses/${id}` })),
 }));
 
 vi.mock("../../lib/crypto-utils", () => ({

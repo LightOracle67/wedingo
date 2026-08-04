@@ -160,9 +160,11 @@ service cloud.firestore {
           && hasActiveSession(resource.data.inviteToken));
     }
 
-    /* Contador de RSVP por invitación: limita el número total de respuestas
-       para mitigar spam/DoS de escritura (máx. 500 por invitación). */
-    match /rsvpCounters/{inviteToken} {
+    /* Agrupación y contador por invitación: rsvpResponses/{inviteToken} guarda
+       el recuento de respuestas (tope 500 anti-spam) y es el "namespace" de la
+       subcolección de respuestas de esa invitación. */
+    match /rsvpResponses/{inviteToken} {
+      allow read: if isSuperAdmin();
       allow create: if request.resource.data.keys().hasOnly(['count'])
         && request.resource.data.count is int
         && request.resource.data.count >= 0
@@ -171,10 +173,14 @@ service cloud.firestore {
         && request.resource.data.count is int
         && request.resource.data.count == resource.data.count + 1
         && request.resource.data.count <= 500;
+      allow delete: if isSuperAdmin();
     }
 
-    match /rsvpResponses/{responseId} {
+    /* Respuestas RSVP en la subcolección de su invitación:
+       rsvpResponses/{inviteToken}/responses/{responseId} */
+    match /rsvpResponses/{inviteToken}/responses/{responseId} {
       allow create: if request.resource.data.keys().hasAll(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent'])
+        && request.resource.data.inviteToken == inviteToken
         && request.resource.data.guestName is string
         && request.resource.data.guestName.size() > 0
         && request.resource.data.guestName.size() <= 120
@@ -183,7 +189,6 @@ service cloud.firestore {
         && request.resource.data.dietaryInfo is string
         && request.resource.data.dietaryInfo.size() <= 4000
         && isSafeText(request.resource.data.dietaryInfo)
-        && request.resource.data.inviteToken is string
         && request.resource.data.privacyConsent == true
         && (
           !request.resource.data.keys().hasAny(['healthConsent'])
@@ -193,8 +198,8 @@ service cloud.firestore {
           request.resource.data.dietaryInfo == ""
           || request.resource.data.healthConsent == true
         )
-        && exists(/databases/$(database)/documents/rsvpCounters/$(request.resource.data.inviteToken))
-        && get(/databases/$(database)/documents/rsvpCounters/$(request.resource.data.inviteToken)).data.count < 500
+        && exists(/databases/$(database)/documents/rsvpResponses/$(inviteToken))
+        && get(/databases/$(database)/documents/rsvpResponses/$(inviteToken)).data.count < 500
         && (request.resource.data.keys().hasOnly(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent', 'privacyConsentAt', 'birthDate', 'parentalConsent', 'menuSelection', 'mealChoice', 'healthConsent', 'healthConsentAt', 'companions', 'menuHeadcounts', 'guestNames', 'attendees', 'notAttendingCount', 'companionCount', 'companionNames', 'companionMenus', 'companionAllergies', 'companionAllergiesOther', 'allergiesOther', 'rsvpType', 'mainGuestDocId', 'mainGuestName', 'companionDocIds', 'transportChoice', 'transportMode', 'transportTime', 'transportPlace', 'companionTransportChoices', 'companionTransportModes', 'companionTransportTimes', 'companionTransportPlaces'])
           || request.resource.data.keys().hasOnly(['guestName', 'attendance', 'dietaryInfo', 'submittedAt', 'inviteToken', 'privacyConsent', 'privacyConsentAt', 'birthDate', 'parentalConsent', 'menuSelection', 'mealChoice', 'companions', 'menuHeadcounts', 'guestNames', 'attendees', 'notAttendingCount', 'companionCount', 'companionNames', 'companionMenus', 'companionAllergies', 'companionAllergiesOther', 'allergiesOther', 'rsvpType', 'mainGuestDocId', 'mainGuestName', 'companionDocIds', 'transportChoice', 'transportMode', 'transportTime', 'transportPlace', 'companionTransportChoices', 'companionTransportModes', 'companionTransportTimes', 'companionTransportPlaces']))
         && (!request.resource.data.keys().hasAny(['transportMode']) || request.resource.data.transportMode is string)
@@ -207,19 +212,24 @@ service cloud.firestore {
         && (!request.resource.data.keys().hasAny(['companionTransportPlaces']) || request.resource.data.companionTransportPlaces is list);
 
       allow read: if isSuperAdmin()
-        || (resource.data.inviteToken is string
-          && hasActiveSession(resource.data.inviteToken));
+        || hasActiveSession(inviteToken);
 
       allow update: if request.resource.data.attendance in ['yes', 'no']
         && request.resource.data.dietaryInfo is string
-        && request.resource.data.inviteToken is string
-        && hasActiveSession(resource.data.inviteToken)
+        && request.resource.data.inviteToken == inviteToken
+        && hasActiveSession(inviteToken)
         && request.resource.data.privacyConsent == true
         && request.resource.data.keys().hasOnly(['attendance', 'dietaryInfo', 'privacyConsent', 'privacyConsentAt', 'healthConsent', 'healthConsentAt', 'birthDate', 'parentalConsent', 'menuSelection', 'mealChoice', 'guestName', 'submittedAt', 'inviteToken', 'companions', 'menuHeadcounts', 'guestNames', 'attendees', 'notAttendingCount', 'companionCount', 'companionNames', 'companionMenus', 'companionAllergies', 'companionAllergiesOther', 'allergiesOther', 'rsvpType', 'mainGuestDocId', 'mainGuestName', 'companionDocIds', 'transportChoice', 'transportMode', 'transportTime', 'transportPlace', 'companionTransportChoices', 'companionTransportModes', 'companionTransportTimes', 'companionTransportPlaces']);
 
       allow delete: if isSuperAdmin()
-        || (resource.data.inviteToken is string
-          && hasActiveSession(resource.data.inviteToken));
+        || hasActiveSession(inviteToken);
+    }
+
+    /* Lectura global de respuestas (collectionGroup "responses"): solo el
+       superadmin puede agregar/exportar datos de todas las invitaciones. */
+    match /{path=**}/responses/{responseId} {
+      allow read: if isSuperAdmin();
+      allow write: if false;
     }
 
     /* Registro de auditoría del superadmin. */

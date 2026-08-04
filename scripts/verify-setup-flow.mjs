@@ -26,6 +26,7 @@ import {
   getDocs,
   collection,
   serverTimestamp,
+  deleteField,
 } from "firebase/firestore";
 import { createHash } from "node:crypto";
 
@@ -102,9 +103,9 @@ await expectAllow("4. activar sesión con hash correcto", async () => {
   });
 });
 
-// 5. Contador de RSVP.
-await expectAllow("5. crear contador RSVP", async () => {
-  await setDoc(doc(db, "rsvpCounters", TOKEN), { count: 0 });
+// 5. Documento grupo de RSVP (contador anti-spam).
+await expectAllow("5. crear grupo rsvpResponses/{token} (contador)", async () => {
+  await setDoc(doc(db, "rsvpResponses", TOKEN), { count: 0 });
 });
 
 // 6. Listar/enumerar invitaciones → DENEGADO.
@@ -126,6 +127,71 @@ if (missing.length === 0) {
   check("7. invitación contiene todos los campos requeridos", true, `(${required.length} campos)`);
 } else {
   check("7. invitación contiene todos los campos requeridos", false, `faltan: ${missing.join(", ")}`);
+}
+
+// 8. El token de setup SÍ queda persistido en Firebase (colección setupTokens),
+//    aunque NO en el documento público de la invitación (por seguridad).
+const tokenSnap = await getDoc(doc(db, "setupTokens", HASH));
+if (tokenSnap.exists() && tokenSnap.data().inviteToken === TOKEN) {
+  check("8. token persistido en setupTokens (hash) apuntando a la invitación", true);
+} else {
+  check("8. token persistido en setupTokens (hash) apuntando a la invitación", false);
+}
+
+// 9. Una respuesta RSVP se guarda en la subcolección de su invitación:
+//    rsvpResponses/{inviteToken}/responses/{id}, con sesión activa.
+const RESP_ID = "resp-1";
+const responsePayload = {
+  guestName: "Maria Lopez",
+  attendance: "yes",
+  dietaryInfo: "",
+  submittedAt: new Date().toISOString(),
+  inviteToken: TOKEN,
+  privacyConsent: true,
+};
+await expectAllow("9. crear respuesta en rsvpResponses/{token}/responses", async () => {
+  await setDoc(doc(db, "rsvpResponses", TOKEN, "responses", RESP_ID), responsePayload);
+});
+const respSnap = await getDoc(doc(db, "rsvpResponses", TOKEN, "responses", RESP_ID));
+if (respSnap.exists() && respSnap.data().guestName === "Maria Lopez") {
+  check("10. respuesta legible desde su subcolección por invitación", true);
+} else {
+  check("10. respuesta legible desde su subcolección por invitación", false);
+}
+
+// ── Invitación LEGACY (creada antes del esquema de tokens hash) ──────────
+const LEGACY_TOKEN = "legacyInv99";
+const LEGACY_SETUP = "LEGACY-SETUP-TOKEN-0001";
+const legacyBase = { ...payload, firstName: "Old", secondName: "Couple", adminUsername: "oldadmin" };
+await expectAllow("11. invitación legacy sigue guardando (con _activeSetupToken)", async () => {
+  await setDoc(doc(db, "invitations", LEGACY_TOKEN), { ...legacyBase, _activeSetupToken: LEGACY_SETUP });
+});
+await expectDeny("12. activar sesión legacy con token INCORRECTO → denegado", async () => {
+  await updateDoc(doc(db, "invitations", LEGACY_TOKEN), {
+    activeSession: serverTimestamp(),
+    sessionExpiresAt: new Date(Date.now() + 2 * 3600 * 1000),
+    setupTokenHash: sha256("hash-de-algo"),
+    legacyToken: "TOKEN-INCORRECTO",
+  });
+});
+await expectAllow("13. activar sesión legacy con el token correcto (legacyToken)", async () => {
+  await updateDoc(doc(db, "invitations", LEGACY_TOKEN), {
+    activeSession: serverTimestamp(),
+    sessionExpiresAt: new Date(Date.now() + 2 * 3600 * 1000),
+    setupTokenHash: sha256("placeholder"),
+    legacyToken: LEGACY_SETUP,
+  });
+});
+// Migración automática: registrar el token en setupTokens y limpiar el campo público.
+await expectAllow("14. migración legacy: setupTokens + limpieza de _activeSetupToken", async () => {
+  await setDoc(doc(db, "setupTokens", sha256(LEGACY_SETUP)), { inviteToken: LEGACY_TOKEN, createdAt: new Date().toISOString() });
+  await updateDoc(doc(db, "invitations", LEGACY_TOKEN), { _activeSetupToken: deleteField(), legacyToken: deleteField() });
+});
+const legacyAfter = await getDoc(doc(db, "invitations", LEGACY_TOKEN));
+if (legacyAfter.exists() && typeof legacyAfter.data()._activeSetupToken === "undefined") {
+  check("15. _activeSetupToken eliminado del doc público tras migrar", true);
+} else {
+  check("15. _activeSetupToken eliminado del doc público tras migrar", false);
 }
 
 console.log(`\nResultado: ${pass} ok / ${fail} fail`);

@@ -90,7 +90,11 @@ export function validateConfigForSave(
     if (!sanitized.menuPostre) {
       return { sanitized, hiddenSet, errorKey: "errors.postreRequired" };
     }
-    if (!sanitized.menuCarne && !sanitized.menuPescado && !sanitized.menuVegano) {
+    // Al menos una opción de menú: texto legacy o edición por platos (*Dishes).
+    const hasMenuOption =
+      Boolean(sanitized.menuCarne) || Boolean(sanitized.menuPescado) || Boolean(sanitized.menuVegano)
+      || Boolean(sanitized.menuCarneDishes) || Boolean(sanitized.menuPescadoDishes) || Boolean(sanitized.menuVeganoDishes);
+    if (!hasMenuOption) {
       return { sanitized, hiddenSet, errorKey: "errors.menuRequired" };
     }
   }

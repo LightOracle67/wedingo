@@ -89,6 +89,23 @@ export default function GuestsSectionForm({ prefix = "" }) {
         </>
       )}
 
+      {/* Postre del menú: obligatorio cuando el menú está activado, opcional
+          como postre del menú fijo. La validación lo exige (errors.postreRequired)
+          y el RSVP lo muestra tras elegir el plato. */}
+      <label className="setup-label" htmlFor={id("menuPostre")} style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}>
+        {t("setup.menuPostreLabel")}
+      </label>
+      <input
+        id={id("menuPostre")}
+        className="setup-input"
+        value={formData.menuPostre || ""}
+        onChange={(e) => updateFormField("menuPostre", e.target.value.slice(0, 200))}
+        placeholder={t("setup.menuPostrePlaceholder")}
+        autoComplete="off"
+        aria-describedby={id("menuPostreHint")}
+      />
+      <p className="setup-help" id={id("menuPostreHint")}>{t("setup.menuPostreHint")}</p>
+
       <div className="story-divider" style={{ margin: "0.75rem 0" }} />
       <label className="setup-label" htmlFor={id("accommodationURL")}>
         {t("setup.accommodationLabel")}

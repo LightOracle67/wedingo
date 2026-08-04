@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { getDocs, doc, collection, writeBatch, getDoc } from "firebase/firestore";
-import { db, INVITATIONS_COLLECTION_REF, RSVP_COLLECTION_REF, rsvpByInviteRef } from "../../lib/firebase";
+import { db, INVITATIONS_COLLECTION_REF, RSVP_RESPONSES_GROUP, rsvpByInviteRef } from "../../lib/firebase";
 import { useToast } from "../../hooks/useToast";
 import { downloadJson } from "../../lib/file-utils";
 
@@ -49,7 +49,7 @@ export default function DataTab() {
       try {
         const [invSnap, rsvpSnap] = await Promise.all([
           getDocs(INVITATIONS_COLLECTION_REF),
-          getDocs(RSVP_COLLECTION_REF),
+          getDocs(RSVP_RESPONSES_GROUP),
         ]);
         if (cancelled) return;
 
@@ -173,7 +173,7 @@ export default function DataTab() {
     try {
       const [invSnap, rsvpSnap] = await Promise.all([
         getDocs(INVITATIONS_COLLECTION_REF),
-        getDocs(RSVP_COLLECTION_REF),
+        getDocs(RSVP_RESPONSES_GROUP),
       ]);
       const data = {
         exportedAt: new Date().toISOString(),

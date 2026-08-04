@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { collection, doc, initializeFirestore, query, where } from "firebase/firestore";
+import { collection, collectionGroup, doc, initializeFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 import { initializeAppCheck, ReCaptchaEnterpriseProvider } from "firebase/app-check";
@@ -39,8 +39,16 @@ export function invitationDocRef(token: string) {
   return doc(db, "invitations", token);
 }
 export const INVITATIONS_COLLECTION_REF = collection(db, "invitations");
+// Colección de grupos de RSVP: `rsvpResponses/{inviteToken}` es un documento
+// "namespace" por invitación que además guarda el contador anti-spam.
 export const RSVP_COLLECTION_REF = collection(db, "rsvpResponses");
-export const rsvpByInviteRef = (token: string) => query(RSVP_COLLECTION_REF, where("inviteToken", "==", token));
+// Todas las respuestas RSVP (collectionGroup "responses") para agregaciones
+// del superadmin. Las respuestas viven en la subcolección por invitación.
+export const RSVP_RESPONSES_GROUP = collectionGroup(db, "responses");
+// Subcolección de respuestas por invitación: rsvpResponses/{inviteToken}/responses.
+export const rsvpByInviteRef = (token: string) => collection(db, "rsvpResponses", token, "responses");
+// Referencia a una respuesta concreta dentro de la subcolección de su invitación.
+export const rsvpResponseRef = (token: string, id: string) => doc(db, "rsvpResponses", token, "responses", id);
 
 
 

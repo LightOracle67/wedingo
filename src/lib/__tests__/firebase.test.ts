@@ -6,6 +6,7 @@ vi.mock("firebase/app", () => ({
 
 vi.mock("firebase/firestore", () => ({
   collection: vi.fn(() => "col-ref"),
+  collectionGroup: vi.fn(() => "group-ref"),
   doc: vi.fn((_db: unknown, _col: unknown, _token: unknown) => "doc-ref"),
   initializeFirestore: vi.fn(() => ({})),
   query: vi.fn(() => "q-ref"),
@@ -24,7 +25,9 @@ import {
   invitationDocRef,
   INVITATIONS_COLLECTION_REF,
   RSVP_COLLECTION_REF,
+  RSVP_RESPONSES_GROUP,
   rsvpByInviteRef,
+  rsvpResponseRef,
 } from "../firebase";
 
 describe("firebase", () => {
@@ -41,8 +44,17 @@ describe("firebase", () => {
     expect(RSVP_COLLECTION_REF).toBe("col-ref");
   });
 
-  it("rsvpByInviteRef returns a query", () => {
+  it("RSVP_RESPONSES_GROUP uses a collectionGroup query", () => {
+    expect(RSVP_RESPONSES_GROUP).toBe("group-ref");
+  });
+
+  it("rsvpByInviteRef targets the invitation subcollection", () => {
     const q = rsvpByInviteRef("test-token");
-    expect(q).toBe("q-ref");
+    expect(q).toBe("col-ref");
+  });
+
+  it("rsvpResponseRef targets a response inside the invitation subcollection", () => {
+    const ref = rsvpResponseRef("test-token", "resp-1");
+    expect(ref).toBe("doc-ref");
   });
 });

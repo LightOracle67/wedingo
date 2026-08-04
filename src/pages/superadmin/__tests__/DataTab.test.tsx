@@ -27,6 +27,7 @@ vi.mock("../../../lib/firebase", () => ({
   db: "db-mock",
   INVITATIONS_COLLECTION_REF: "invitations-collection-ref",
   RSVP_COLLECTION_REF: "rsvp-collection-ref",
+  RSVP_RESPONSES_GROUP: "rsvp-responses-group",
   rsvpByInviteRef: vi.fn(() => "rsvp-query-ref"),
 }));
 

@@ -1,7 +1,7 @@
 import { memo, useCallback, useEffect, useState } from "react";
-import { getDocs, doc, writeBatch, query, where, type DocumentData, type QueryDocumentSnapshot } from "firebase/firestore";
+import { getDocs, doc, writeBatch, type DocumentData, type QueryDocumentSnapshot } from "firebase/firestore";
 import { ref, deleteObject, listAll } from "firebase/storage";
-import { db, storage, RSVP_COLLECTION_REF, INVITATIONS_COLLECTION_REF } from "../../lib/firebase";
+import { db, storage, RSVP_RESPONSES_GROUP, rsvpByInviteRef, INVITATIONS_COLLECTION_REF } from "../../lib/firebase";
 import { calcGlobalStats, formatBytes } from "../../lib/superadmin-utils";
 import { MONTH_VALUE_TO_NUMBER } from "../../lib/constants";
 import { logAudit } from "../../lib/audit";
@@ -43,7 +43,7 @@ const DashboardTab = memo(function DashboardTab() {
   const load = useCallback(async () => {
     try {
       const [rsvpSnap, invSnap] = await Promise.all([
-        getDocs(RSVP_COLLECTION_REF),
+        getDocs(RSVP_RESPONSES_GROUP),
         getDocs(INVITATIONS_COLLECTION_REF),
       ]);
       const rsvps = rsvpSnap.docs.map((d: QueryDocumentSnapshot<DocumentData>) => ({ id: d.id, ...d.data() }));
@@ -75,9 +75,10 @@ const DashboardTab = memo(function DashboardTab() {
     for (const invitation of expired) {
       try {
         const batch = writeBatch(db);
-        const rsvpQ = query(RSVP_COLLECTION_REF, where("inviteToken", "==", invitation.id));
-        const rsvpSnap = await getDocs(rsvpQ);
+        // Las respuestas viven en la subcolección rsvpResponses/{id}/responses.
+        const rsvpSnap = await getDocs(rsvpByInviteRef(invitation.id));
         rsvpSnap.docs.forEach((d: QueryDocumentSnapshot<DocumentData>) => batch.delete(d.ref));
+        batch.delete(doc(db, "rsvpResponses", invitation.id));
         batch.delete(doc(INVITATIONS_COLLECTION_REF, invitation.id));
         await batch.commit();
         try {

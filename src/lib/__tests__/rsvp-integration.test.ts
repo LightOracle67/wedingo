@@ -25,6 +25,7 @@ vi.mock("firebase/firestore", () => ({
 vi.mock("../../lib/firebase", () => ({
   RSVP_COLLECTION_REF: "rsvpResponses",
   rsvpByInviteRef: vi.fn(() => "rsvpByInviteRef"),
+  rsvpResponseRef: vi.fn((_token: string, id: string) => ({ id, path: `rsvpResponses/${_token}/responses/${id}` })),
   db: {},
   invitationDocRef: vi.fn(() => "invitation-ref"),
   INVITATIONS_COLLECTION_REF: "invitations",

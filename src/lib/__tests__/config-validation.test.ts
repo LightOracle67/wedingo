@@ -94,6 +94,19 @@ describe("validateConfigForSave", () => {
     expect(result.errorKey).toBe("errors.menuRequired");
   });
 
+  it("accepts a dish-based menu with dessert when menu is enabled", () => {
+    const result = validateConfigForSave(
+      validConfig({
+        menuEnabled: "true",
+        menuPostre: "Tarta de queso",
+        menuCarneDishes: JSON.stringify([{ order: "primero", text: "Solomillo" }]),
+      }),
+      true,
+      2030,
+    );
+    expect(result.errorKey).toBeNull();
+  });
+
   it("migrates a data-url music value into musicFile", () => {
     const result = validateConfigForSave(validConfig({ musicUrl: "data:audio/wav;base64,AAAA" }), true, 2030);
     expect(result.errorKey).toBeNull();

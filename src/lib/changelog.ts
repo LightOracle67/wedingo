@@ -1,5 +1,14 @@
 export const CHANGELOG = [
   {
+    version: "2.41.0",
+    date: "2026-08-04",
+    changes: [
+      "FIX: menú — faltaba el campo 'Postre' en el formulario del setup: la validación lo exigía (errors.postreRequired) y el RSVP lo mostraba, pero no había forma de rellenarlo → guardar con el menú activado fallaba. Añadido el campo y alineada la validación con los editores por platos (*Dishes)",
+      "ESQUEMA: las respuestas RSVP ahora se guardan por invitación — rsvpResponses/{inviteToken}/responses/{id} (subcolección) con el contador anti-spam en el documento grupo rsvpResponses/{inviteToken}; se eliminó la colección plana y rsvpCounters; el superadmin agrega vía collectionGroup('responses')",
+      "OPS: script scripts/migrate-rsvp-schema.mjs para migrar las RSVP antiguas (colección raíz) al nuevo esquema con firebase-admin",
+    ],
+  },
+  {
     version: "2.40.1",
     date: "2026-08-04",
     changes: [
