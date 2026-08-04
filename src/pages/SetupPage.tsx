@@ -3,7 +3,6 @@ import { Navigate, useNavigate, useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 import { useApp } from "../contexts";
 import { useToast } from "../hooks/useToast";
-import { useFocusTrap, useEscapeKey } from "../hooks/useFocusTrap";
 import { safeGetItem } from "../lib/storage";
 import { STORAGE_KEYS } from "../lib/storage-keys";
 import SetupForm from "../components/SetupForm";
@@ -31,11 +30,7 @@ export default function SetupPage() {
   }, [authMessage, authMessageType, addToast]);
 
   const [showSuccess, setShowSuccess] = useState(false);
-  const [showTokenModal, setShowTokenModal] = useState(false);
-  const [tokenCopied, setTokenCopied] = useState(false);
-  const [isTransitioning, setIsTransitioning] = useState(false);
   const hasRedirectedRef = useRef(false);
-  const copyTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Generación temprana del token de setup: se registra (hash) antes de que
   // exista la invitación para que la activación de sesión sea verificable.
@@ -50,6 +45,17 @@ export default function SetupPage() {
     }
   }, [hasStoredConfig, setupToken, inviteToken, generateNewToken]);
 
+  // Tras guardar la primera vez, muestra la tarjeta de éxito (el token ya se
+  // mostró en el formulario y se confirmó antes de guardar). El auto-login
+  // utiliza las credenciales (token) previas vía onFirstSave.
+  useEffect(() => {
+
+    if (saveMessage && hasStoredConfig) {
+      setShowSuccess(true);
+    }
+  }, [saveMessage, hasStoredConfig]);
+
+  // Redirige al panel automáticamente tras el éxito.
   useEffect(() => {
 
     if (showSuccess && !hasRedirectedRef.current) {
@@ -61,51 +67,6 @@ export default function SetupPage() {
       return () => clearTimeout(timer);
     }
   }, [showSuccess, navigate, inviteToken]);
-
-  useEffect(() => {
-
-    if (saveMessage && hasStoredConfig) {
-      setIsTransitioning(true);
-      setShowTokenModal(true);
-      setIsTransitioning(false);
-      if (!setupToken) {
-
-        (async () => { try { await generateNewToken(); } catch { } })();
-      }
-    }
-  }, [saveMessage, hasStoredConfig, setupToken, generateNewToken]);
-
-  // Limpieza de timers al desmontar el componente.
-  useEffect(() => () => {
-    if (copyTimerRef.current) clearTimeout(copyTimerRef.current);
-  }, []);
-
-  // Focus trap y cierre con Escape para el modal del token (accesibilidad).
-  const tokenModalRef = useFocusTrap(showTokenModal);
-  useEscapeKey(() => setShowTokenModal(false), showTokenModal);
-
-  const handleTokenModalClose = () => {
-
-    setShowTokenModal(false);
-    setShowSuccess(true);
-    try {
-      const username = config.adminUsername;
-      if (username && setupToken) {
-        const cred = new PasswordCredential({ id: username, password: setupToken, name: username });
-        navigator.credentials.store(cred);
-      }
-    } catch {}
-  };
-
-  const handleCopyToken = () => {
-
-    if (setupToken) {
-      navigator.clipboard.writeText(setupToken);
-      setTokenCopied(true);
-      if (copyTimerRef.current) clearTimeout(copyTimerRef.current);
-      copyTimerRef.current = setTimeout(() => setTokenCopied(false), 2000);
-    }
-  };
 
   if (isConfigLoading) {
     return (
@@ -166,37 +127,11 @@ export default function SetupPage() {
           </div>
         </header>
 
-        <div className={`setup-page-transition ${isTransitioning ? "setup-page-fade-out" : ""} ${showSuccess ? "setup-page-hidden" : ""}`}>
+        <div className={`setup-page-transition ${showSuccess ? "setup-page-hidden" : ""}`}>
           <div className="setup-form">
             <SetupForm prefix="setup" />
           </div>
         </div>
-
-        {showTokenModal ? (
-          <div className="modal-overlay" onClick={() => { setShowTokenModal(false); setShowSuccess(true); }} role="dialog" aria-modal="true" aria-label={t("setup.tokenModalTitle")}>
-            <div className="modal-card" ref={tokenModalRef as React.RefObject<HTMLDivElement>} onClick={(e) => e.stopPropagation()}>
-              <p className="modal-title">{t("setup.tokenModalTitle")}</p>
-              <p className="setup-help">{t("setup.tokenModalText")}</p>
-              <div style={{ display: "flex", gap: "0.5rem", alignItems: "center", marginTop: "1rem" }}>
-                <input
-                  className="setup-input"
-                  value={setupToken || ""}
-                  readOnly
-                  style={{ flex: 1, fontFamily: "monospace", fontSize: "0.85rem", textAlign: "center" }}
-                  onFocus={(e) => e.target.select()}
-                />
-                <button className="setup-button setup-button--compact" type="button" onClick={handleCopyToken} style={{ flexShrink: 0 }}>
-                  {tokenCopied ? t("common.copied") : t("common.copy")}
-                </button>
-              </div>
-              <div className="setup-actions" style={{ marginTop: "1rem" }}>
-                <button className="setup-button" type="button" onClick={handleTokenModalClose}>
-                  {t("setup.tokenModalContinue")}
-                </button>
-              </div>
-            </div>
-          </div>
-        ) : null}
 
         {showSuccess ? (
           <div className="setup-success-card animate-card-reveal">

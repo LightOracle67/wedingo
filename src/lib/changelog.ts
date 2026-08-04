@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.40.1",
+    date: "2026-08-04",
+    changes: [
+      "FIX: eliminado el modal del token del setup — el token mostrado en el formulario (input type=password) es ahora el único token y el mismo que se usa para el auto-login al guardar (onFirstSave ya no lo limpia ni lo regenera); tras guardar se muestra la tarjeta de éxito y se redirige al panel",
+    ],
+  },
+  {
     version: "2.40.0",
     date: "2026-08-04",
     changes: [

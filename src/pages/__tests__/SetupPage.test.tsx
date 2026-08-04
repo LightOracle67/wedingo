@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, act } from "@testing-library/react";
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key, i18n: { language: "en" } }),
@@ -111,7 +111,7 @@ describe("SetupPage", () => {
     expect(screen.getByTestId("setup-form")).toBeDefined();
   });
 
-  it("renders token modal when saveMessage and hasStoredConfig are set", () => {
+  it("shows the success card (no token modal) when saveMessage and hasStoredConfig are set", () => {
     mockUseApp.mockReturnValue({
       ...baseMock,
       hasStoredConfig: true,
@@ -120,29 +120,8 @@ describe("SetupPage", () => {
     });
 
     render(<SetupPage />);
-    expect(screen.getByText("setup.tokenModalTitle")).toBeDefined();
-    expect(screen.getByText("setup.tokenModalText")).toBeDefined();
-    expect(screen.getByDisplayValue("my-setup-token-123")).toBeDefined();
-  });
-
-  it("shows success card after closing token modal", () => {
-    Object.defineProperty(globalThis, "navigator", {
-      value: { credentials: { store: vi.fn() }, clipboard: { writeText: vi.fn() } },
-      configurable: true,
-      writable: true,
-    });
-    mockUseApp.mockReturnValue({
-      ...baseMock,
-      hasStoredConfig: true,
-      saveMessage: "Saved!",
-      setupToken: "my-setup-token-123",
-      config: { ...baseMock.config, adminUsername: "admin" },
-    });
-
-    render(<SetupPage />);
-    const continueBtn = screen.getByText("setup.tokenModalContinue");
-    fireEvent.click(continueBtn);
     expect(screen.getByText("setup.successTitle")).toBeDefined();
+    expect(screen.queryByText("setup.tokenModalTitle")).toBeNull();
     expect(screen.getByText("setup.goToPanel")).toBeDefined();
     expect(screen.getByText("setup.viewCover")).toBeDefined();
   });
@@ -165,26 +144,6 @@ describe("SetupPage", () => {
 
     render(<SetupPage />);
     expect(screen.getByTestId("music-player")).toBeDefined();
-  });
-
-  it("copies token and shows copied state", () => {
-    Object.defineProperty(globalThis, "navigator", {
-      value: { clipboard: { writeText: vi.fn() } },
-      configurable: true,
-      writable: true,
-    });
-    mockUseApp.mockReturnValue({
-      ...baseMock,
-      hasStoredConfig: true,
-      saveMessage: "Saved!",
-      setupToken: "my-setup-token-123",
-    });
-
-    render(<SetupPage />);
-    const copyBtn = screen.getByText("common.copy");
-    fireEvent.click(copyBtn);
-    expect(screen.getByText("common.copied")).toBeDefined();
-    expect(screen.queryByText("common.copy")).toBeNull();
   });
 
   it("renders retry button in error state and triggers reload", () => {
@@ -229,7 +188,7 @@ describe("SetupPage", () => {
     expect(addToast).toHaveBeenCalledWith("error", "Something went wrong");
   });
 
-  it("redirects after showSuccess timer", () => {
+  it("redirects to admin after showSuccess timer", () => {
     vi.useFakeTimers();
     mockUseApp.mockReturnValue({
       ...baseMock,
@@ -240,45 +199,33 @@ describe("SetupPage", () => {
     });
 
     render(<SetupPage />);
-    const continueBtn = screen.getByText("setup.tokenModalContinue");
-    fireEvent.click(continueBtn);
+    // Tras guardar se muestra la tarjeta de éxito (sin modal).
     expect(screen.getByText("setup.successTitle")).toBeDefined();
-    vi.advanceTimersByTime(3000);
+    expect(screen.queryByText("setup.tokenModalTitle")).toBeNull();
+    act(() => {
+      vi.advanceTimersByTime(3000);
+    });
     expect(mockNavigate).toHaveBeenCalledWith("/test-token/admin", { replace: true });
+    vi.useRealTimers();
   });
 
-  it("generates setup token when empty on save", () => {
+  it("does not regenerate the token when saving (usa las credenciales previas)", async () => {
     const generateFn = vi.fn().mockResolvedValue(undefined);
     mockUseApp.mockReturnValue({
       ...baseMock,
       hasStoredConfig: true,
       saveMessage: "Saved!",
-      setupToken: "",
+      setupToken: "my-setup-token",
       generateNewToken: generateFn,
       refreshSetupToken: vi.fn(),
     });
 
     render(<SetupPage />);
-    expect(generateFn).toHaveBeenCalled();
+    await screen.findByText("setup.successTitle");
+    expect(generateFn).not.toHaveBeenCalled();
   });
 
-  it("selects token input text on focus", () => {
-    const selectMock = vi.fn();
-    HTMLInputElement.prototype.select = selectMock;
-    mockUseApp.mockReturnValue({
-      ...baseMock,
-      hasStoredConfig: true,
-      saveMessage: "Saved!",
-      setupToken: "my-setup-token-123",
-    });
-
-    render(<SetupPage />);
-    const input = screen.getByDisplayValue("my-setup-token-123");
-    fireEvent.focus(input);
-    expect(selectMock).toHaveBeenCalled();
-  });
-
-  it("navigates to cover page when viewCover is clicked", () => {
+  it("navigates to cover page when viewCover is clicked", async () => {
     Object.defineProperty(globalThis, "navigator", {
       value: { credentials: { store: vi.fn() }, clipboard: { writeText: vi.fn() } },
       configurable: true,
@@ -293,13 +240,12 @@ describe("SetupPage", () => {
     });
 
     render(<SetupPage />);
-    const continueBtn = screen.getByText("setup.tokenModalContinue");
-    fireEvent.click(continueBtn);
+    await screen.findByText("setup.successTitle");
     fireEvent.click(screen.getByText("setup.viewCover"));
     expect(mockNavigate).toHaveBeenCalledWith("/test-token");
   });
 
-  it("navigates to admin panel from success card", () => {
+  it("navigates to admin panel from success card", async () => {
     Object.defineProperty(globalThis, "navigator", {
       value: { credentials: { store: vi.fn() }, clipboard: { writeText: vi.fn() } },
       configurable: true,
@@ -314,13 +260,12 @@ describe("SetupPage", () => {
     });
 
     render(<SetupPage />);
-    const continueBtn = screen.getByText("setup.tokenModalContinue");
-    fireEvent.click(continueBtn);
+    await screen.findByText("setup.successTitle");
     fireEvent.click(screen.getByText("setup.goToPanel"));
     expect(mockNavigate).toHaveBeenCalledWith("/test-token/admin");
   });
 
-  it("handles token modal close without PasswordCredential", () => {
+  it("shows the success card after save without requiring the token modal", async () => {
     Object.defineProperty(globalThis, "navigator", {
       value: { credentials: { store: vi.fn() }, clipboard: { writeText: vi.fn() } },
       configurable: true,
@@ -335,12 +280,12 @@ describe("SetupPage", () => {
     });
 
     render(<SetupPage />);
-    const continueBtn = screen.getByText("setup.tokenModalContinue");
-    fireEvent.click(continueBtn);
+    await screen.findByText("setup.successTitle");
+    expect(screen.queryByText("setup.tokenModalTitle")).toBeNull();
     expect(screen.getByText("setup.successTitle")).toBeDefined();
   });
 
-  it("shows isTransitioning class when saveMessage and hasStoredConfig", () => {
+  it("hides the form and shows the success card when saveMessage is set", async () => {
     mockUseApp.mockReturnValue({
       ...baseMock,
       hasStoredConfig: true,
@@ -349,7 +294,9 @@ describe("SetupPage", () => {
     });
 
     render(<SetupPage />);
+    await screen.findByText("setup.successTitle");
     const transitionDiv = document.querySelector(".setup-page-transition");
     expect(transitionDiv).toBeDefined();
+    expect(transitionDiv?.className).toContain("setup-page-hidden");
   });
 });

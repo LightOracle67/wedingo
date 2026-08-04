@@ -26,12 +26,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   onFirstSaveRef.current = () => {
 
     if (auth.isTokenVerified) { ; return; }
-    auth.setSetupToken("");
-    auth.setSetupTokenInput("");
     (async () => {
       try {
         // El token de setup se obtiene de sessionStorage y se envía su hash
         // para que las reglas verifiquen la prueba de conocimiento del token.
+        // Es el MISMO token mostrado en el formulario: no se regenera.
         const storedToken = safeGetItem(STORAGE_KEYS.setupToken(inviteToken), sessionStorage) || "";
         const tokenHash = storedToken ? await hashSetupToken(storedToken) : "";
 

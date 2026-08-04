@@ -129,8 +129,8 @@ describe("AuthProvider", () => {
     render(<AuthProvider><div>child</div></AuthProvider>);
     const onFirstSave = mockRegisterOnFirstSave.mock.calls[0]![0];
     await onFirstSave();
-    expect(mockSetSetupToken).toHaveBeenCalledWith("");
-    expect(mockSetSetupTokenInput).toHaveBeenCalledWith("");
+    // El token ya no se borra: el auto-login usa las credenciales previas.
+    expect(mockSetSetupToken).not.toHaveBeenCalledWith("");
     expect(mockUpdateDoc).toHaveBeenCalledWith("invitations/test-token", {
       activeSession: expect.any(Date),
       sessionExpiresAt: expect.any(Date),
