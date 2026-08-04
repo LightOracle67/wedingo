@@ -52,7 +52,6 @@ interface RsvpSectionProps {
   menuCarne?: string;
   menuPescado?: string;
   menuVegano?: string;
-  menuPostre?: string;
   menuTexto?: string;
   menuCarneDishes?: string;
   menuPescadoDishes?: string;
@@ -67,7 +66,7 @@ interface RsvpSectionProps {
 const RsvpSection = memo(function RsvpSection({
   style, className,
   rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
-  updateRsvpField, handleRsvpSubmit, handleDeleteRsvp, menuEnabled, menuCarne, menuPescado, menuVegano, menuPostre, menuTexto,
+  updateRsvpField, handleRsvpSubmit, handleDeleteRsvp, menuEnabled, menuCarne, menuPescado, menuVegano, menuTexto,
   menuCarneDishes, menuPescadoDishes, menuVeganoDishes, menuTextoDishes,
   transportEnabled, transportDepartures, computeAge, cornerDecoration,
 }: RsvpSectionProps) {
@@ -477,28 +476,15 @@ const RsvpSection = memo(function RsvpSection({
             <p className="setup-help" style={{ fontSize: "0.8rem", marginTop: "0.5rem" }}>{t("rsvp.allergiesHint")}</p>
           ) : null}
 
-          {isAttending && !hasStructuredMenu && (menuTextoDishes || menuTexto?.trim() || menuPostre?.trim()) ? (
+          {isAttending && !hasStructuredMenu && (menuTextoDishes || menuTexto?.trim()) ? (
             <div style={{ marginBottom: "0.5rem", marginTop: "0.5rem", padding: "0.6rem", borderRadius: "0.6rem", background: "color-mix(in srgb, var(--setup-field-bg) 60%, transparent)" }}>
               <p className="story-eyebrow" style={{ fontSize: "0.72rem", marginBottom: "0.2rem" }}>{t("rsvp.menuLabel")}</p>
               <p className="story-note whitespace-pre-line" style={{ fontSize: "0.85rem" }}>{formatDishes(menuTextoDishes || "", menuTexto || "")}</p>
-              {!menuTextoDishes && menuPostre?.trim() ? (
-                <>
-                  <p className="story-eyebrow" style={{ fontSize: "0.72rem", marginTop: "0.4rem", marginBottom: "0.15rem" }}>{t("rsvp.postre")}</p>
-                  <p className="story-note whitespace-pre-line" style={{ fontSize: "0.82rem" }}>{menuPostre}</p>
-                </>
-              ) : null}
             </div>
           ) : null}
 
           {isAttending && menuEnabled ? (
             <p className="setup-help" style={{ fontSize: "0.8rem" }}>{t("rsvp.allergiesHint")}</p>
-          ) : null}
-
-          {isAttending && menuPostre?.trim() && hasStructuredMenu && rsvpForm.menuSelection ? (
-            <div style={{ marginTop: "0.5rem", padding: "0.5rem", borderRadius: "0.6rem", background: "color-mix(in srgb, var(--setup-field-bg) 60%, transparent)" }}>
-              <p className="story-eyebrow" style={{ fontSize: "0.72rem", marginBottom: "0.15rem" }}>{t("rsvp.postre")}</p>
-              <p className="story-note whitespace-pre-line" style={{ fontSize: "0.82rem" }}>{menuPostre}</p>
-            </div>
           ) : null}
 
           {isAttending && (

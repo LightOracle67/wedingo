@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.41.3",
+    date: "2026-08-04",
+    changes: [
+      "UX: eliminado el campo 'Postre' del formulario — el postre ya forma parte de los platos de cada menú (order: 'postre' en los editores por platos); se retira la obligatoriedad (errors.postreRequired) y la muestra separada en el RSVP",
+    ],
+  },
+  {
     version: "2.41.2",
     date: "2026-08-04",
     changes: [

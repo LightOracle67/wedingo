@@ -86,7 +86,7 @@ function SaveSetupConsumer() {
 }
 
 describe("ConfigProvider", () => {
-  it("handleSaveSetup validates menu postre required", async () => {
+  it("handleSaveSetup requires at least one menu option when menu enabled", async () => {
     mockLocation.pathname = "/abcdefghij";
     mockGetDoc.mockResolvedValueOnce({
       exists: () => true,
@@ -103,10 +103,9 @@ describe("ConfigProvider", () => {
     fireEvent.click(screen.getByTestId("ss_gp1"));
     fireEvent.click(screen.getByTestId("ss_gp2"));
     fireEvent.click(screen.getByTestId("ss_menuEnabled"));
-    fireEvent.click(screen.getByTestId("ss_menuCarne"));
     fireEvent.click(screen.getByTestId("ss_save"));
     await waitFor(() => {
-      expect(mockSetSaveError).toHaveBeenCalledWith("errors.postreRequired");
+      expect(mockSetSaveError).toHaveBeenCalledWith("errors.menuRequired");
     });
     mockSetSaveError.mockClear();
     mockLocation.pathname = "/test";

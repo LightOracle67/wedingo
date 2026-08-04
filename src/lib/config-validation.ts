@@ -87,10 +87,8 @@ export function validateConfigForSave(
   }
 
   if (sanitized.menuEnabled === "true") {
-    if (!sanitized.menuPostre) {
-      return { sanitized, hiddenSet, errorKey: "errors.postreRequired" };
-    }
     // Al menos una opción de menú: texto legacy o edición por platos (*Dishes).
+    // El postre ya forma parte de los platos (order: "postre"), no es un campo aparte.
     const hasMenuOption =
       Boolean(sanitized.menuCarne) || Boolean(sanitized.menuPescado) || Boolean(sanitized.menuVegano)
       || Boolean(sanitized.menuCarneDishes) || Boolean(sanitized.menuPescadoDishes) || Boolean(sanitized.menuVeganoDishes);

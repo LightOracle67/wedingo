@@ -175,18 +175,4 @@ describe("GuestsSectionForm", () => {
     expect(input.className).toContain("setup-input--error");
     expect(screen.getByText(/setup.mapUrlInvalid/)).toBeDefined();
   });
-
-  it("renders the dessert (menuPostre) field", () => {
-    render(<GuestsSectionForm />);
-    expect(screen.getByText("setup.menuPostreLabel")).toBeDefined();
-    expect(screen.getByPlaceholderText("setup.menuPostrePlaceholder")).toBeDefined();
-    expect(screen.getByText("setup.menuPostreHint")).toBeDefined();
-  });
-
-  it("updates menuPostre on change", () => {
-    render(<GuestsSectionForm />);
-    const postreInput = screen.getByPlaceholderText("setup.menuPostrePlaceholder");
-    fireEvent.change(postreInput, { target: { value: "Tarta de queso" } });
-    expect(mockUpdateFormField).toHaveBeenCalledWith("menuPostre", "Tarta de queso");
-  });
 });

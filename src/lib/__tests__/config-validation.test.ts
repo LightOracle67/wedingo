@@ -84,21 +84,15 @@ describe("validateConfigForSave", () => {
     expect(result.errorKey).toBe("errors.godparentsRequired");
   });
 
-  it("requires a dessert when menu is enabled", () => {
-    const result = validateConfigForSave(validConfig({ menuEnabled: "true" }), true, 2030);
-    expect(result.errorKey).toBe("errors.postreRequired");
-  });
-
   it("requires at least one dish when menu is enabled", () => {
-    const result = validateConfigForSave(validConfig({ menuEnabled: "true", menuPostre: "Tarta" }), true, 2030);
+    const result = validateConfigForSave(validConfig({ menuEnabled: "true" }), true, 2030);
     expect(result.errorKey).toBe("errors.menuRequired");
   });
 
-  it("accepts a dish-based menu with dessert when menu is enabled", () => {
+  it("accepts a dish-based menu when menu is enabled", () => {
     const result = validateConfigForSave(
       validConfig({
         menuEnabled: "true",
-        menuPostre: "Tarta de queso",
         menuCarneDishes: JSON.stringify([{ order: "primero", text: "Solomillo" }]),
       }),
       true,
