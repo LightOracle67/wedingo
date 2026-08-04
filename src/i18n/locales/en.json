@@ -388,7 +388,19 @@
     "galleryHint": "Upload the photos and, if you want, add a description to each one.",
     "menuTextoLabel": "Menu",
     "accommodationUrlPlaceholder": "https://www.google.com/maps/place/...",
-    "accommodationUrlHint": "Paste the Google Maps link of the recommended accommodation (same format as the wedding venue)."
+    "accommodationUrlHint": "Paste the Google Maps link of the recommended accommodation (same format as the wedding venue).",
+    "menuOrderLabel": "Course",
+    "menuDishLabel": "Dish",
+    "menuDishPlaceholder": "e.g. Seasonal salad",
+    "menuAddDish": "Add dish",
+    "menuRemoveDish": "Remove dish",
+    "menuMaxDishes": "Up to {{max}} dishes",
+    "menuOrderEntrante": "Starter",
+    "menuOrderPrimero": "First",
+    "menuOrderSegundo": "Second",
+    "menuOrderTercero": "Third",
+    "menuOrderPostre": "Dessert",
+    "menuOrderOtro": "Other"
   },
   "admin": {
     "tabs": {
@@ -599,7 +611,10 @@
     "transportDeparturesInvalid": "Transport departures are not valid.",
     "transportTimeInvalid": "A departure time is required and must be valid (HH:MM format).",
     "transportUrlInvalid": "A departure map link is not valid.",
-    "accommodationUrlInvalid": "The accommodation link is not valid (must be a Google Maps place URL)."
+    "accommodationUrlInvalid": "The accommodation link is not valid (must be a Google Maps place URL).",
+    "menuDishesInvalid": "The menu dishes are not valid.",
+    "menuDishOrderInvalid": "A dish course is not valid.",
+    "menuDishTextTooLong": "A dish text cannot exceed 200 characters."
   },
   "superadmin": {
     "tabs": {

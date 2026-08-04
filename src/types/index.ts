@@ -62,6 +62,10 @@ export interface InvitationConfig {
   menuPescado: string;
   menuVegano: string;
   menuPostre: string;
+  menuTextoDishes: string;
+  menuCarneDishes: string;
+  menuPescadoDishes: string;
+  menuVeganoDishes: string;
   backgroundImage?: string;
   customSeal?: string;
   cornerDecoration?: string;

@@ -75,6 +75,10 @@ const sampleConfig: InvitationConfig = {
   menuPescado: "",
   menuVegano: "",
   menuPostre: "",
+  menuTextoDishes: "",
+  menuCarneDishes: "",
+  menuPescadoDishes: "",
+  menuVeganoDishes: "",
 };
 
 describe("useAutoSave", () => {

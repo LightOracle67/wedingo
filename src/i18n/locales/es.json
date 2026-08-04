@@ -388,7 +388,19 @@
     "galleryHint": "Sube las fotos y, si quieres, añade una descripción a cada una.",
     "menuTextoLabel": "Menú",
     "accommodationUrlPlaceholder": "https://www.google.com/maps/place/...",
-    "accommodationUrlHint": "Pega el enlace de Google Maps del alojamiento recomendado (mismo formato que el lugar de la boda)."
+    "accommodationUrlHint": "Pega el enlace de Google Maps del alojamiento recomendado (mismo formato que el lugar de la boda).",
+    "menuOrderLabel": "Orden",
+    "menuDishLabel": "Plato",
+    "menuDishPlaceholder": "Ejemplo: Ensalada de temporada",
+    "menuAddDish": "Añadir plato",
+    "menuRemoveDish": "Eliminar plato",
+    "menuMaxDishes": "Máximo {{max}} platos",
+    "menuOrderEntrante": "Entrante",
+    "menuOrderPrimero": "Primero",
+    "menuOrderSegundo": "Segundo",
+    "menuOrderTercero": "Tercero",
+    "menuOrderPostre": "Postre",
+    "menuOrderOtro": "Otro"
   },
   "admin": {
     "tabs": {
@@ -599,7 +611,10 @@
     "transportDeparturesInvalid": "Las salidas de transporte no son válidas.",
     "transportTimeInvalid": "La hora de una salida es obligatoria y debe ser válida (formato HH:MM).",
     "transportUrlInvalid": "El enlace del mapa de una salida no es válido.",
-    "accommodationUrlInvalid": "El enlace de alojamiento no es válido (debe ser una URL de Google Maps de un lugar)."
+    "accommodationUrlInvalid": "El enlace de alojamiento no es válido (debe ser una URL de Google Maps de un lugar).",
+    "menuDishesInvalid": "Los platos del menú no son válidos.",
+    "menuDishOrderInvalid": "El orden de un plato no es válido.",
+    "menuDishTextTooLong": "El texto de un plato no puede superar los 200 caracteres."
   },
   "superadmin": {
     "tabs": {

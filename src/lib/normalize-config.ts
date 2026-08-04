@@ -1,4 +1,24 @@
-import { STORY_SECTION_ORDER, THEME_VALUES, MAX_SCHEDULE_EVENTS, MAX_SCHEDULE_EVENT_TEXT } from "./constants";
+import { STORY_SECTION_ORDER, THEME_VALUES, MAX_SCHEDULE_EVENTS, MAX_SCHEDULE_EVENT_TEXT, MAX_MENU_DISHES, MAX_MENU_DISH_TEXT, MENU_DISH_ORDERS } from "./constants";
+
+function normalizeMenuDishes(value: unknown): string {
+  if (typeof value !== "string" || !value.trim()) return "";
+  try {
+    const parsed = JSON.parse(value);
+    if (!Array.isArray(parsed)) return "";
+    const cleaned = parsed
+      .slice(0, MAX_MENU_DISHES)
+      .map((d) => {
+        if (!d || typeof d !== "object") return null;
+        const order = MENU_DISH_ORDERS.includes(String((d as Record<string, unknown>).order)) ? String((d as Record<string, unknown>).order) : "otro";
+        const text = typeof (d as Record<string, unknown>).text === "string" ? ((d as Record<string, unknown>).text as string).trim().slice(0, MAX_MENU_DISH_TEXT) : "";
+        return { order, text };
+      })
+      .filter((d): d is { order: string; text: string } => d !== null);
+    return JSON.stringify(cleaned);
+  } catch {
+    return "";
+  }
+}
 
 function normalizeScheduleEvents(value: unknown): string {
   if (typeof value !== "string" || !value.trim()) return "";
@@ -96,6 +116,10 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   menuPescado: s(value?.menuPescado),
   menuVegano: s(value?.menuVegano),
   menuPostre: s(value?.menuPostre),
+  menuTextoDishes: normalizeMenuDishes(value?.menuTextoDishes),
+  menuCarneDishes: normalizeMenuDishes(value?.menuCarneDishes),
+  menuPescadoDishes: normalizeMenuDishes(value?.menuPescadoDishes),
+  menuVeganoDishes: normalizeMenuDishes(value?.menuVeganoDishes),
   backgroundImage: s(value?.backgroundImage),
   customSeal: s(value?.customSeal),
   cornerDecoration: s(value?.cornerDecoration),

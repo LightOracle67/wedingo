@@ -1,8 +1,8 @@
 import { useCallback } from "react";
-import CharacterCounter from "../../components/CharacterCounter";
 import { useTranslation } from "react-i18next";
 import { useApp } from "../../contexts";
 import { isValidGoogleMapsUrl, extractPlaceNameFromUrl } from "../../lib/geo-utils";
+import MenuDishEditor from "../MenuDishEditor";
 
 export default function GuestsSectionForm({ prefix = "" }) {
   const { formData, updateFormField } = useApp();
@@ -15,22 +15,6 @@ export default function GuestsSectionForm({ prefix = "" }) {
 
   const handleMenuEnabledChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     updateFormField("menuEnabled", e.target.checked ? "true" : "false");
-  }, [updateFormField]);
-
-  const handleMenuToggle = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    updateFormField(e.currentTarget.dataset.menuKey, e.target.checked ? " " : "");
-  }, [updateFormField]);
-
-  const handleMenuFieldChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    updateFormField(e.currentTarget.dataset.menuKey, e.target.value);
-  }, [updateFormField]);
-
-  const handleMenuPostreChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    updateFormField("menuPostre", e.target.value.slice(0, 2000));
-  }, [updateFormField]);
-
-  const handleMenuTextoChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    updateFormField("menuTexto", e.target.value.slice(0, 2000));
   }, [updateFormField]);
 
   return (
@@ -78,38 +62,30 @@ export default function GuestsSectionForm({ prefix = "" }) {
         <>
           <p className="setup-help" id={id("menuHint")} style={{ marginBottom: "0.4rem" }}>{t("setup.menuHint")}</p>
           {[
-            { key: "menuCarne", labelKey: "setup.menuCarneLabel", phKey: "setup.menuCarnePlaceholder" },
-            { key: "menuPescado", labelKey: "setup.menuPescadoLabel", phKey: "setup.menuPescadoPlaceholder" },
-            { key: "menuVegano", labelKey: "setup.menuVeganoLabel", phKey: "setup.menuVeganoPlaceholder" },
-          ].map(({ key, labelKey, phKey }) => {
-            const val = formData[key] || "";
-            return (
-              <div key={key} style={{ marginBottom: "0.5rem" }}>
-                <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", cursor: "pointer", fontSize: "0.85rem", color: "var(--setup-title)" }}>
-                  <input id={id(key)} type="checkbox" checked={!!val} onChange={handleMenuToggle} data-menu-key={key} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
-                  <span id={id(key + "Label")}>{t(labelKey)}</span> <CharacterCounter current={val.length} max={2000} />
-                </label>
-                {!!val && <textarea id={id(key + "Text")} className="setup-textarea" value={val} onChange={handleMenuFieldChange} data-menu-key={key} placeholder={t(phKey)} rows={2} aria-label={t(labelKey)} aria-describedby={id("menuHint")} style={{ marginTop: "0.15rem", fontSize: "0.85rem" }} />}
-              </div>
-            );
-          })}
-          <div style={{ marginBottom: "0.5rem" }}>
-            <p className="setup-label" id={id("postreLabel")} style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}>{t("setup.postreLabel")} <CharacterCounter current={(formData.menuPostre || "").length} max={2000} /></p>
-            <textarea id={id("menuPostre")} className="setup-textarea" value={formData.menuPostre || ""} onChange={handleMenuPostreChange} placeholder={t("setup.postrePlaceholder")} rows={2} aria-label={t("setup.postreLabel")} aria-describedby={id("menuHint")} style={{ fontSize: "0.85rem" }} />
-          </div>
+            { dishes: "menuCarneDishes", labelKey: "setup.menuCarneLabel" },
+            { dishes: "menuPescadoDishes", labelKey: "setup.menuPescadoLabel" },
+            { dishes: "menuVeganoDishes", labelKey: "setup.menuVeganoLabel" },
+          ].map(({ dishes, labelKey }) => (
+            <div key={dishes} style={{ marginBottom: "0.5rem" }}>
+              <p className="setup-label" id={id(dishes + "Label")} style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}>{t(labelKey)}</p>
+              <MenuDishEditor
+                value={formData[dishes] || ""}
+                onChange={(json) => updateFormField(dishes, json)}
+                idBase={id(dishes)}
+              />
+            </div>
+          ))}
           <p className="setup-help">{t("setup.menuRequiredText")}</p>
         </>
       ) : (
         <>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <p className="setup-label" id={id("menuTextoLabel")} style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}>{t("setup.menuTextoLabel")} <CharacterCounter current={(formData.menuTexto || "").length} max={2000} /></p>
-          </div>
-          <textarea id={id("menuTexto")} className="setup-textarea" value={formData.menuTexto} onChange={handleMenuTextoChange} placeholder={t("setup.menuTextoPlaceholder")} rows={3} aria-label={t("setup.menuTextoLabel")} aria-describedby={id("menuTextoHint")} />
+          <p className="setup-label" id={id("menuTextoLabel")} style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}>{t("setup.menuTextoLabel")}</p>
+          <MenuDishEditor
+            value={formData.menuTextoDishes || ""}
+            onChange={(json) => updateFormField("menuTextoDishes", json)}
+            idBase={id("menuTextoDishes")}
+          />
           <p className="setup-help" id={id("menuTextoHint")}>{t("setup.menuTextoHint")}</p>
-          <div style={{ marginTop: "0.5rem" }}>
-            <p className="setup-label" style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}>{t("setup.postreLabel")} <CharacterCounter current={(formData.menuPostre || "").length} max={2000} /></p>
-            <textarea id={id("menuPostre")} className="setup-textarea" value={formData.menuPostre || ""} onChange={handleMenuPostreChange} placeholder={t("setup.postrePlaceholder")} rows={2} aria-label={t("setup.postreLabel")} aria-describedby={id("menuHint")} style={{ fontSize: "0.85rem" }} />
-          </div>
         </>
       )}
 

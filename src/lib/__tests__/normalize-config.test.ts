@@ -184,4 +184,18 @@ describe("normalizeConfig", () => {
   it("returns empty schedule events for invalid JSON", () => {
     expect(normalizeConfig({ weddingScheduleEvents: "not-json" }).weddingScheduleEvents).toBe("");
   });
+
+  it("normalizes menu dishes: caps at 20, sanitizes order and truncates text", () => {
+    const many = Array.from({ length: 25 }, (_, i) => ({ order: i % 2 ? "primero" : "entrante", text: `Plato ${i}` }));
+    const result = normalizeConfig({ menuTextoDishes: JSON.stringify(many) });
+    const parsed = JSON.parse(result.menuTextoDishes);
+    expect(parsed).toHaveLength(20);
+    expect(parsed[0]).toEqual({ order: "entrante", text: "Plato 0" });
+  });
+
+  it("falls back to 'otro' for unknown dish orders and drops invalid JSON", () => {
+    const result = normalizeConfig({ menuCarneDishes: JSON.stringify([{ order: "desayuno", text: "Tostadas" }]) });
+    expect(JSON.parse(result.menuCarneDishes)).toEqual([{ order: "otro", text: "Tostadas" }]);
+    expect(normalizeConfig({ menuPescadoDishes: "not-json" }).menuPescadoDishes).toBe("");
+  });
 });

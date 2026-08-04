@@ -7,7 +7,7 @@ import {
   defaultConfig, STORY_SECTION_ORDER,
   THEME_VALUES, MAX_YEARS_AHEAD, INVITE_CACHE_TTL_MS, TOKEN_ROUTE_REGEX,
   SPECIAL_SECTIONS, MAX_USERNAME_LENGTH, MAX_INVITE_MESSAGE_LENGTH,
-  MAX_LONG_TEXT_LENGTH, MAX_SCHEDULE_EVENTS, MAX_SCHEDULE_EVENT_TEXT, PRIVACY_POLICY_VERSION,
+  MAX_LONG_TEXT_LENGTH, MAX_SCHEDULE_EVENTS, MAX_SCHEDULE_EVENT_TEXT, MAX_MENU_DISHES, MAX_MENU_DISH_TEXT, MENU_DISH_ORDERS, PRIVACY_POLICY_VERSION,
 } from "../lib/constants";
 import { normalizeConfig } from "../lib/normalize-config";
 import { isValidGoogleMapsUrl, extractPlaceNameFromUrl } from "../lib/geo-utils";
@@ -483,9 +483,43 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       return;
     }
     if (sanitized.menuTexto && sanitized.menuTexto.length > MAX_LONG_TEXT_LENGTH) {
-
+      console.log("[app]", "[ConfigProvider]", "validation failed: menuTexto too long", { length: sanitized.menuTexto.length });
       setSaveError(t("errors.menuTextoTooLong"));
       return;
+    }
+    for (const dishesField of ["menuTextoDishes", "menuCarneDishes", "menuPescadoDishes", "menuVeganoDishes"]) {
+      const raw = sanitized[dishesField as keyof typeof sanitized];
+      if (!raw) continue;
+      try {
+        const parsed = JSON.parse(String(raw));
+        if (!Array.isArray(parsed) || parsed.length > MAX_MENU_DISHES) {
+          console.log("[app]", "[ConfigProvider]", "validation failed: menu dishes invalid", { dishesField });
+          setSaveError(t("errors.menuDishesInvalid"));
+          return;
+        }
+        for (const dish of parsed) {
+          if (!dish || typeof dish !== "object") {
+            setSaveError(t("errors.menuDishesInvalid"));
+            return;
+          }
+          const order = String((dish as Record<string, unknown>).order || "");
+          const text = String((dish as Record<string, unknown>).text || "");
+          if (!MENU_DISH_ORDERS.includes(order)) {
+            console.log("[app]", "[ConfigProvider]", "validation failed: menu dish order invalid", { order });
+            setSaveError(t("errors.menuDishOrderInvalid"));
+            return;
+          }
+          if (text.length > MAX_MENU_DISH_TEXT) {
+            console.log("[app]", "[ConfigProvider]", "validation failed: menu dish text too long", { length: text.length });
+            setSaveError(t("errors.menuDishTextTooLong"));
+            return;
+          }
+        }
+      } catch {
+        console.log("[app]", "[ConfigProvider]", "validation failed: menu dishes JSON invalid", { dishesField });
+        setSaveError(t("errors.menuDishesInvalid"));
+        return;
+      }
     }
 
     const payload = { ...defaultConfig, ...sanitized } as InvitationConfig;

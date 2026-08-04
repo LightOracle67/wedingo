@@ -2,6 +2,7 @@ import { memo, useCallback, useMemo } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { useApp } from "../../contexts";
 import { extractPlaceNameFromUrl } from "../../lib/geo-utils";
+import { parseMenuDishes } from "../../lib/menu-utils";
 import CornerDecorations from "../../components/CornerDecorations";
 
 const ALLERGIES = ["sin gluten", "sin lactosa", "alergia a frutos secos", "alergia a mariscos"];
@@ -53,6 +54,10 @@ interface RsvpSectionProps {
   menuVegano?: string;
   menuPostre?: string;
   menuTexto?: string;
+  menuCarneDishes?: string;
+  menuPescadoDishes?: string;
+  menuVeganoDishes?: string;
+  menuTextoDishes?: string;
   transportEnabled?: string;
   transportDepartures?: string;
   computeAge: (birthDate: string) => number | null;
@@ -63,6 +68,7 @@ const RsvpSection = memo(function RsvpSection({
   style, className,
   rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
   updateRsvpField, handleRsvpSubmit, handleDeleteRsvp, menuEnabled, menuCarne, menuPescado, menuVegano, menuPostre, menuTexto,
+  menuCarneDishes, menuPescadoDishes, menuVeganoDishes, menuTextoDishes,
   transportEnabled, transportDepartures, computeAge, cornerDecoration,
 }: RsvpSectionProps) {
   const { t } = useTranslation();
@@ -77,12 +83,18 @@ const RsvpSection = memo(function RsvpSection({
   const hasDietaryData = (rsvpForm.allergies || []).length > 0;
   const showHealthConsent = isAttending && hasDietaryData;
 
-  const hasStructuredMenu = menuEnabled && (menuCarne || menuPescado || menuVegano);
+  const hasStructuredMenu = menuEnabled && (menuCarne || menuPescado || menuVegano || menuCarneDishes || menuPescadoDishes || menuVeganoDishes);
+
+  const formatDishes = useCallback((json: string, legacy: string) => {
+    const dishes = parseMenuDishes(json);
+    if (!dishes.length) return legacy;
+    return dishes.map((d) => `${t("setup.menuOrder" + d.order.charAt(0).toUpperCase() + d.order.slice(1))}: ${d.text}`).join("\n");
+  }, [t]);
 
   const menuOptions = [
-    ...(menuCarne ? [{ key: "carne" as const, label: t("rsvp.menuCarne"), desc: menuCarne }] : []),
-    ...(menuPescado ? [{ key: "pescado" as const, label: t("rsvp.menuPescado"), desc: menuPescado }] : []),
-    ...(menuVegano ? [{ key: "vegano" as const, label: t("rsvp.menuVegano"), desc: menuVegano }] : []),
+    ...(menuCarne || menuCarneDishes ? [{ key: "carne" as const, label: t("rsvp.menuCarne"), desc: formatDishes(menuCarneDishes || "", menuCarne || "") }] : []),
+    ...(menuPescado || menuPescadoDishes ? [{ key: "pescado" as const, label: t("rsvp.menuPescado"), desc: formatDishes(menuPescadoDishes || "", menuPescado || "") }] : []),
+    ...(menuVegano || menuVeganoDishes ? [{ key: "vegano" as const, label: t("rsvp.menuVegano"), desc: formatDishes(menuVeganoDishes || "", menuVegano || "") }] : []),
   ];
 
   const departures: Departure[] = useMemo(() => {
@@ -468,8 +480,8 @@ const RsvpSection = memo(function RsvpSection({
           {isAttending && menuEnabled && !hasStructuredMenu && menuTexto?.trim() ? (
             <div style={{ marginBottom: "0.5rem", marginTop: "0.5rem", padding: "0.6rem", borderRadius: "0.6rem", background: "color-mix(in srgb, var(--setup-field-bg) 60%, transparent)" }}>
               <p className="story-eyebrow" style={{ fontSize: "0.72rem", marginBottom: "0.2rem" }}>{t("rsvp.menuLabel")}</p>
-              <p className="story-note whitespace-pre-line" style={{ fontSize: "0.85rem" }}>{menuTexto}</p>
-              {menuPostre?.trim() ? (
+              <p className="story-note whitespace-pre-line" style={{ fontSize: "0.85rem" }}>{formatDishes(menuTextoDishes || "", menuTexto || "")}</p>
+              {!menuTextoDishes && menuPostre?.trim() ? (
                 <>
                   <p className="story-eyebrow" style={{ fontSize: "0.72rem", marginTop: "0.4rem", marginBottom: "0.15rem" }}>{t("rsvp.postre")}</p>
                   <p className="story-note whitespace-pre-line" style={{ fontSize: "0.82rem" }}>{menuPostre}</p>

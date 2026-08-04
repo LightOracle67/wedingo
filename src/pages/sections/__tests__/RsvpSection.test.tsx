@@ -143,6 +143,36 @@ describe("RsvpSection", () => {
     expect(screen.getByText("Custom menu info")).toBeDefined();
   });
 
+  it("shows formatted dishes for the fixed menu", () => {
+    render(
+      <RsvpSection
+        {...baseProps}
+        menuEnabled={true}
+        menuTexto="Legacy text"
+        menuTextoDishes={JSON.stringify([
+          { order: "entrante", text: "Ensalada" },
+          { order: "postre", text: "Tarta" },
+        ])}
+      />,
+    );
+    expect(screen.getByText(/setup.menuOrderEntrante: Ensalada/)).toBeDefined();
+    expect(screen.getByText(/setup.menuOrderPostre: Tarta/)).toBeDefined();
+    expect(screen.queryByText("Legacy text")).toBeNull();
+  });
+
+  it("shows the dish description when a selectable menu option is chosen", () => {
+    render(
+      <RsvpSection
+        {...baseProps}
+        rsvpForm={{ ...baseForm, attendance: "alone", menuSelection: "carne" }}
+        menuEnabled={true}
+        menuCarne="Legacy meat"
+        menuCarneDishes={JSON.stringify([{ order: "primero", text: "Solomillo" }])}
+      />,
+    );
+    expect(screen.getByText(/setup.menuOrderPrimero: Solomillo/)).toBeDefined();
+  });
+
   it("shows health consent when allergies exist", () => {
     render(
       <RsvpSection

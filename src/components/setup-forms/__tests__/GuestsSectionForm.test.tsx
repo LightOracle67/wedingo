@@ -108,81 +108,57 @@ describe("GuestsSectionForm", () => {
     expect(mockUpdateFormField).toHaveBeenCalledWith("menuEnabled", "false");
   });
 
-  it("renders menu items when menu is enabled", () => {
+  it("renders menu dish editors when menu is enabled", () => {
     mockFormData.menuEnabled = "true";
     render(<GuestsSectionForm />);
     expect(screen.getByText("setup.menuHint")).toBeDefined();
     expect(screen.getByText("setup.menuCarneLabel")).toBeDefined();
     expect(screen.getByText("setup.menuPescadoLabel")).toBeDefined();
     expect(screen.getByText("setup.menuVeganoLabel")).toBeDefined();
-    expect(screen.getByText("setup.postreLabel")).toBeDefined();
     expect(screen.getByText("setup.menuRequiredText")).toBeDefined();
+    expect(screen.getAllByRole("button", { name: /setup.menuAddDish/ }).length).toBeGreaterThanOrEqual(3);
   });
 
-  it("toggles menu item checkbox and shows textarea", () => {
+  it("adds a dish to the fixed menu editor", () => {
+    render(<GuestsSectionForm />);
+    fireEvent.click(screen.getByRole("button", { name: /setup.menuAddDish/ }));
+    expect(mockUpdateFormField).toHaveBeenCalledWith("menuTextoDishes", JSON.stringify([{ order: "entrante", text: "" }]));
+  });
+
+  it("edits the dish text in the fixed menu editor", () => {
+    mockFormData.menuTextoDishes = JSON.stringify([{ order: "primero", text: "" }]);
+    render(<GuestsSectionForm />);
+    const input = screen.getByPlaceholderText("setup.menuDishPlaceholder");
+    fireEvent.change(input, { target: { value: "Lubina al horno" } });
+    expect(mockUpdateFormField).toHaveBeenCalledWith("menuTextoDishes", JSON.stringify([{ order: "primero", text: "Lubina al horno" }]));
+  });
+
+  it("removes a dish from the fixed menu editor", () => {
+    mockFormData.menuTextoDishes = JSON.stringify([
+      { order: "entrante", text: "Ensalada" },
+      { order: "postre", text: "Tarta" },
+    ]);
+    render(<GuestsSectionForm />);
+    const removeButtons = screen.getAllByLabelText("setup.menuRemoveDish");
+    fireEvent.click(removeButtons[0]!);
+    expect(mockUpdateFormField).toHaveBeenCalledWith("menuTextoDishes", JSON.stringify([{ order: "postre", text: "Tarta" }]));
+  });
+
+  it("changes the dish order in the fixed menu editor", () => {
+    mockFormData.menuTextoDishes = JSON.stringify([{ order: "entrante", text: "Ensalada" }]);
+    render(<GuestsSectionForm />);
+    const select = screen.getByLabelText("setup.menuOrderLabel") as HTMLSelectElement;
+    fireEvent.change(select, { target: { value: "postre" } });
+    expect(mockUpdateFormField).toHaveBeenCalledWith("menuTextoDishes", JSON.stringify([{ order: "postre", text: "Ensalada" }]));
+  });
+
+  it("edits a dish of a selectable menu option", () => {
     mockFormData.menuEnabled = "true";
+    mockFormData.menuCarneDishes = JSON.stringify([{ order: "primero", text: "" }]);
     render(<GuestsSectionForm />);
-    const menuCheckboxes = screen.getAllByRole("checkbox");
-    const menuCarneCheckbox = menuCheckboxes[9];
-    fireEvent.click(menuCarneCheckbox!);
-    expect(mockUpdateFormField).toHaveBeenCalledWith("menuCarne", " ");
-  });
-
-  it("shows menu item textarea when already checked and changes value", () => {
-    mockFormData.menuEnabled = "true";
-    mockFormData.menuCarne = "Existing meat option";
-    render(<GuestsSectionForm />);
-    const textarea = screen.getByPlaceholderText("setup.menuCarnePlaceholder");
-    fireEvent.change(textarea, { target: { value: "New meat option" } });
-    expect(mockUpdateFormField).toHaveBeenCalledWith("menuCarne", "New meat option");
-  });
-
-  it("toggles menu item checkbox off when already checked", () => {
-    mockFormData.menuEnabled = "true";
-    mockFormData.menuCarne = "Existing meat option";
-    render(<GuestsSectionForm />);
-    const menuCheckboxes = screen.getAllByRole("checkbox");
-    const menuCarneCheckbox = menuCheckboxes[9];
-    fireEvent.click(menuCarneCheckbox!);
-    expect(mockUpdateFormField).toHaveBeenCalledWith("menuCarne", "");
-  });
-
-  it("calls updateFormField on postre textarea change", () => {
-    mockFormData.menuEnabled = "true";
-    render(<GuestsSectionForm />);
-    const textarea = screen.getByPlaceholderText("setup.postrePlaceholder");
-    fireEvent.change(textarea, { target: { value: "Dessert option" } });
-    expect(mockUpdateFormField).toHaveBeenCalledWith("menuPostre", "Dessert option");
-  });
-
-  it("limits postre to 2000 characters", () => {
-    mockFormData.menuEnabled = "true";
-    render(<GuestsSectionForm />);
-    const textarea = screen.getByPlaceholderText("setup.postrePlaceholder");
-    const longText = "a".repeat(3000);
-    fireEvent.change(textarea, { target: { value: longText } });
-    expect(mockUpdateFormField).toHaveBeenCalledWith("menuPostre", "a".repeat(2000));
-  });
-
-  it("renders free text menu mode when menu is disabled", () => {
-    render(<GuestsSectionForm />);
-    expect(screen.getByPlaceholderText("setup.menuTextoPlaceholder")).toBeDefined();
-    expect(screen.getByText("setup.menuTextoHint")).toBeDefined();
-  });
-
-  it("calls updateFormField on menuTexto change", () => {
-    render(<GuestsSectionForm />);
-    const textarea = screen.getByPlaceholderText("setup.menuTextoPlaceholder");
-    fireEvent.change(textarea, { target: { value: "Free text menu" } });
-    expect(mockUpdateFormField).toHaveBeenCalledWith("menuTexto", "Free text menu");
-  });
-
-  it("limits menuTexto to 2000 characters", () => {
-    render(<GuestsSectionForm />);
-    const textarea = screen.getByPlaceholderText("setup.menuTextoPlaceholder");
-    const longText = "a".repeat(3000);
-    fireEvent.change(textarea, { target: { value: longText } });
-    expect(mockUpdateFormField).toHaveBeenCalledWith("menuTexto", "a".repeat(2000));
+    const inputs = screen.getAllByPlaceholderText("setup.menuDishPlaceholder");
+    fireEvent.change(inputs[0]!, { target: { value: "Solomillo" } });
+    expect(mockUpdateFormField).toHaveBeenCalledWith("menuCarneDishes", JSON.stringify([{ order: "primero", text: "Solomillo" }]));
   });
 
   it("calls updateFormField on accommodation URL change", () => {

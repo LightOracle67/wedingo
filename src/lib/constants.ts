@@ -7,6 +7,9 @@ export const MAX_INVITE_MESSAGE_LENGTH = 500;
 export const MAX_TEXTAREA_LENGTH = 2000;
 export const MAX_SCHEDULE_EVENTS = 10;
 export const MAX_SCHEDULE_EVENT_TEXT = 60;
+export const MAX_MENU_DISHES = 20;
+export const MAX_MENU_DISH_TEXT = 200;
+export const MENU_DISH_ORDERS = ["entrante", "primero", "segundo", "tercero", "postre", "otro"];
 export const SESSION_RENEW_INTERVAL_MS = 60000;
 
 export const ALLOWED_UPLOAD_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
@@ -156,5 +159,9 @@ export const defaultConfig = {
   menuPescado: "",
   menuVegano: "",
   menuPostre: "",
+  menuTextoDishes: "",
+  menuCarneDishes: "",
+  menuPescadoDishes: "",
+  menuVeganoDishes: "",
   privacyPolicyVersion: "",
 };
