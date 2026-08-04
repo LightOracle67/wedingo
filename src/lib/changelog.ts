@@ -35,6 +35,7 @@ export const CHANGELOG = [
       "FIX: tabla de asistencia — la columna de dieta mostraba 'alergia: 1' (conteo sin sentido en registros nuevos) y la de menú '—' (menuHeadcounts no se guarda); ahora muestran los items y el plato elegido (mealChoice)",
       "FEAT: alojamiento como enlace de Google Maps — nuevo campo accommodationURL en el setup (validación y hint del sitio) y la sección muestra el nombre, el mapa y 'Ver en Google Maps', con fallback al texto legacy",
       "FEAT: menú por platos — nuevo editor (como salidas de transporte) con orden predefinido (Entrante/Primero/Segundo/Tercero/Postre/Otro) y añadir/eliminar platos, tanto para el menú fijo (menuTextoDishes) como para los seleccionables (menuCarneDishes/Pescado/Vegano); el RSVP muestra los platos formateados con fallback al texto legacy",
+      "VERIFICADO: flujo de guardado del menú por platos (form → normalize → validación → payload Firestore → recuperación) con tests de persistencia round-trip, guardado en ConfigContext y rechazo de órdenes inválidas",
     ],
   },
 

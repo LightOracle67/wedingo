@@ -24,7 +24,7 @@ vi.mock("../../hooks/useCalendar", () => ({ useCalendar: () => ({ formattedDate:
 vi.mock("../../hooks/useFieldHandlers", () => ({ useFieldHandlers: () => ({ handleDayChange: vi.fn(), handleTimeChange: vi.fn(), handleTimeBlur: vi.fn(), handleYearChange: vi.fn(), handleCoordinateChange: vi.fn() }) }));
 vi.mock("../../hooks/useMapPreview", () => ({ useMapPreview: () => ({ previewBackgrounds: [], isPreviewLoading: false }) }));
 vi.mock("../../hooks/useAutoSave", () => ({ useAutoSave: () => ({ autoSaveTimerRef: { current: null } }) }));
-vi.mock("../../lib/constants", () => ({ defaultConfig: {}, STORY_SECTION_ORDER: ["hero", "details", "info", "story", "gifts", "accommodation", "gallery", "rsvp"], THEME_VALUES: new Set(["golden", "silver", "rose"]), MAX_YEARS_AHEAD: 10, INVITE_CACHE_TTL_MS: 60000, TOKEN_ROUTE_REGEX: /^[a-zA-Z0-9]+$/, SPECIAL_SECTIONS: [], MAX_USERNAME_LENGTH: 50, MAX_INVITE_MESSAGE_LENGTH: 500, MAX_LONG_TEXT_LENGTH: 2000, MAX_SCHEDULE_EVENTS: 10, MAX_SCHEDULE_EVENT_TEXT: 60, PRIVACY_POLICY_VERSION: 1 }));
+vi.mock("../../lib/constants", () => ({ defaultConfig: {}, STORY_SECTION_ORDER: ["hero", "details", "info", "story", "gifts", "accommodation", "gallery", "rsvp"], THEME_VALUES: new Set(["golden", "silver", "rose"]), MAX_YEARS_AHEAD: 10, INVITE_CACHE_TTL_MS: 60000, TOKEN_ROUTE_REGEX: /^[a-zA-Z0-9]+$/, SPECIAL_SECTIONS: [], MAX_USERNAME_LENGTH: 50, MAX_INVITE_MESSAGE_LENGTH: 500, MAX_LONG_TEXT_LENGTH: 2000, MAX_SCHEDULE_EVENTS: 10, MAX_SCHEDULE_EVENT_TEXT: 60, MAX_MENU_DISHES: 20, MAX_MENU_DISH_TEXT: 200, MENU_DISH_ORDERS: ['entrante', 'primero', 'segundo', 'tercero', 'postre', 'otro'], PRIVACY_POLICY_VERSION: 1 }));
 vi.mock("../../lib/normalize-config", () => ({ normalizeConfig: (v: unknown) => v }));
 vi.mock("../../lib/date-utils", () => ({ validateWeddingDate: vi.fn(() => null) }));
 vi.mock("../../lib/invite-config-codec", () => ({ decodeInviteConfig: mockDecodeInviteConfig }));
@@ -92,6 +92,8 @@ function SaveSetupConsumer() {
       <button data-testid="ss_transportInfo" onClick={() => ctx.updateFormField("transportInfo", "x".repeat(2500))}>TI</button>
       <button data-testid="ss_accommodationInfo" onClick={() => ctx.updateFormField("accommodationInfo", "x".repeat(2500))}>AI</button>
       <button data-testid="ss_menuTexto" onClick={() => ctx.updateFormField("menuTexto", "x".repeat(2500))}>MT</button>
+      <button data-testid="ss_dishesOk" onClick={() => ctx.updateFormField("menuCarneDishes", JSON.stringify([{ order: "segundo", text: "Solomillo" }]))}>DO</button>
+      <button data-testid="ss_dishesBadOrder" onClick={() => ctx.updateFormField("menuCarneDishes", JSON.stringify([{ order: "desayuno", text: "Tostadas" }]))}>DB</button>
       <span data-testid="ss_hasConfig">{String(ctx.hasStoredConfig)}</span>
       <span data-testid="ss_inviteToken">{ctx.inviteToken}</span>
     </div>
@@ -318,6 +320,41 @@ describe("ConfigProvider", () => {
     fireEvent.click(screen.getByTestId("cfBtn"));
     expect(window.confirm).toHaveBeenCalled();
     window.confirm = originalConfirm;
+    mockLocation.pathname = "/test";
+  });
+
+  it("handleSaveSetup saves menu dishes and rejects bad orders", async () => {
+    mockLocation.pathname = "/abcdefghij";
+    mockGetDoc.mockResolvedValueOnce({
+      exists: () => true,
+      data: () => ({ _visits: 0 }),
+    });
+    mockSetDoc.mockClear();
+    render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
+    await waitFor(() => expect(screen.getByTestId("ss_inviteToken").textContent).toBe("abcdefghij"));
+    fireEvent.click(screen.getByTestId("ss_stored"));
+    await waitFor(() => expect(screen.getByTestId("ss_hasConfig").textContent).toBe("true"));
+    fireEvent.click(screen.getByTestId("ss_first"));
+    fireEvent.click(screen.getByTestId("ss_second"));
+    fireEvent.click(screen.getByTestId("ss_theme"));
+    fireEvent.click(screen.getByTestId("ss_order"));
+    fireEvent.click(screen.getByTestId("ss_gp1"));
+    fireEvent.click(screen.getByTestId("ss_gp2"));
+    fireEvent.click(screen.getByTestId("ss_dishesOk"));
+    fireEvent.click(screen.getByTestId("ss_save"));
+    await waitFor(() => {
+      expect(mockSetDoc).toHaveBeenCalled();
+    });
+    const payload = mockSetDoc.mock.calls[0]![1];
+    expect(payload.menuCarneDishes).toBe(JSON.stringify([{ order: "segundo", text: "Solomillo" }]));
+
+    // Orden inválido -> error de validación, no se guarda
+    mockSetSaveError.mockClear();
+    fireEvent.click(screen.getByTestId("ss_dishesBadOrder"));
+    fireEvent.click(screen.getByTestId("ss_save"));
+    await waitFor(() => {
+      expect(mockSetSaveError).toHaveBeenCalledWith("errors.menuDishOrderInvalid");
+    });
     mockLocation.pathname = "/test";
   });
 

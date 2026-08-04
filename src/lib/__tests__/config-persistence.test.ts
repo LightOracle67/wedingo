@@ -43,6 +43,17 @@ const FULL_CONFIG: Record<string, unknown> = {
   menuPescado: "Lubina",
   menuVegano: "",
   menuPostre: "Tarta",
+  menuTextoDishes: JSON.stringify([
+    { order: "entrante", text: "Ensalada" },
+    { order: "primero", text: "Lubina" },
+    { order: "postre", text: "Tarta" },
+  ]),
+  menuCarneDishes: JSON.stringify([
+    { order: "entrante", text: "Ensalada" },
+    { order: "segundo", text: "Solomillo" },
+  ]),
+  menuPescadoDishes: JSON.stringify([{ order: "segundo", text: "Lubina al horno" }]),
+  menuVeganoDishes: "",
   backgroundImage: "__cfgimg:backgroundImage",
   customSeal: "__cfgimg:customSeal",
   cornerDecoration: "__cfgimg:cornerDecoration",
@@ -106,6 +117,25 @@ describe("Persistencia de la configuración", () => {
     expect(parsedDepartures[1].type).toBe("taxi");
     expect(hydrated.sectionOrder.split(",")).toHaveLength(STORY_SECTION_ORDER.length);
     expect(hydrated.couplePhoto).toBe("__cfgimg:couplePhoto");
+    expect(hydrated.menuTextoDishes).toBe(JSON.stringify([
+      { order: "entrante", text: "Ensalada" },
+      { order: "primero", text: "Lubina" },
+      { order: "postre", text: "Tarta" },
+    ]));
+    const parsedDishes = JSON.parse(hydrated.menuCarneDishes);
+    expect(parsedDishes).toHaveLength(2);
+    expect(parsedDishes[1]).toEqual({ order: "segundo", text: "Solomillo" });
+    expect(hydrated.menuVeganoDishes).toBe("");
+  });
+
+  it("round-trip: los platos del menú sobreviven normalize y el payload", () => {
+    const normalized = normalizeConfig(FULL_CONFIG);
+    const payload = { ...defaultConfig, ...normalized };
+    expect(JSON.parse(payload.menuTextoDishes)).toHaveLength(3);
+    expect(JSON.parse(payload.menuCarneDishes)[1].order).toBe("segundo");
+    const again = normalizeConfig({ ...normalized });
+    expect(again.menuTextoDishes).toBe(normalized.menuTextoDishes);
+    expect(again.menuCarneDishes).toBe(normalized.menuCarneDishes);
   });
 
   it("migración: sectionOrder antiguo (sin transport) se completa al cargar", () => {
