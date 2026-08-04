@@ -139,13 +139,15 @@ service cloud.firestore {
     }
 
     /* Registros de tokens de setup. El documentId es el hash SHA-256 del token
-       (secreto ~2^158), por lo que solo es recuperable si se conoce el token.
-       La creación solo es válida para invitaciones inexistentes (alta inicial)
-       o cuando el admin ya tiene sesión activa. */
+       (secreto ~2^158), por lo que solo es recuperable con `get` si se conoce
+       el token (que permite calcular el documentId). La enumeración (`list`)
+       se prohíbe. El `get` debe permitirse SIN sesión activa: es justo lo que
+       necesita el flujo de login para localizar la invitación a partir del
+       token antes de activar la sesión. La creación solo es válida para
+       invitaciones inexistentes (alta inicial) o con sesión activa. */
     match /setupTokens/{hashId} {
-      allow get: if isSuperAdmin()
-        || (resource.data.inviteToken is string
-          && hasActiveSession(resource.data.inviteToken));
+      allow get: if true;
+      allow list: if false;
       allow create: if isValidTokenHash(hashId)
         && request.resource.data.keys().hasOnly(['inviteToken', 'createdAt'])
         && request.resource.data.inviteToken is string

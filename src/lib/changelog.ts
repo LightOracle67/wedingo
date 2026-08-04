@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.41.1",
+    date: "2026-08-04",
+    changes: [
+      "SEGURIDAD: fix de login — la regla de lectura de setupTokens exigía sesión activa, pero el flujo de login necesita leer setupTokens/{hash} ANTES de activar la sesión (para localizar la invitación por el token). Ahora `get` está permitido sin sesión (el documentId es el hash, ~2^158, no enumerable) y `list` denegado. Verificado en emulador (16/16)",
+    ],
+  },
+  {
     version: "2.41.0",
     date: "2026-08-04",
     changes: [

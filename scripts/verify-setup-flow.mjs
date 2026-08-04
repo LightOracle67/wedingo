@@ -63,6 +63,13 @@ await expectAllow("1. crear setupTokens (invitación aún no existe)", async () 
   await setDoc(doc(db, "setupTokens", HASH), { inviteToken: TOKEN, createdAt: new Date().toISOString() });
 });
 
+// 1b. El login DEBE poder leer setupTokens/{hash} SIN sesión activa para
+//     localizar la invitación a partir del token (antes de activar sesión).
+await expectAllow("1b. leer setupTokens/{hash} sin sesión (paso del login)", async () => {
+  const s = await getDoc(doc(db, "setupTokens", HASH));
+  if (!s.exists() || s.data().inviteToken !== TOKEN) throw new Error("registro incorrecto");
+});
+
 // 2. Primer guardado: payload completo (defaultConfig + normalizeConfig).
 const payload = {
   adminUsername: "pepe", firstName: "Ana", secondName: "Luis",
