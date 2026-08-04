@@ -109,6 +109,8 @@ export default function TransportSectionForm({ prefix = "" }) {
                   type="time"
                   value={dep.time}
                   onChange={handleDepartureField(i, "time")}
+                  required
+                  aria-required="true"
                 />
               </div>
               <div className="transport-departure-url">

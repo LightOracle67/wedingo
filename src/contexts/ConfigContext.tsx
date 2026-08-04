@@ -458,7 +458,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           }
           const time = String((dep as Record<string, unknown>).time || "");
           const url = String((dep as Record<string, unknown>).url || "");
-          if (time && !/^([01]\d|2[0-3]):[0-5]\d$/.test(time)) {
+          if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(time)) {
             console.log("[app]", "[ConfigProvider]", "validation failed: departure time invalid", { time });
             setSaveError(t("errors.transportTimeInvalid"));
             return;

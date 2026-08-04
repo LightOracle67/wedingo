@@ -99,13 +99,29 @@ const RsvpSection = memo(function RsvpSection({
 
   const hasTransportChoices = departures.length > 0;
 
+  const formatTimeWithPeriod = useCallback((time: string) => {
+    const hour = Number.parseInt(time.split(":")[0] || "", 10);
+    if (!Number.isFinite(hour)) return time;
+    if (hour >= 21 || hour < 6) return `${time} · ${t("rsvp.periodEvening")}`;
+    if (hour >= 12) return `${time} · ${t("rsvp.periodAfternoon")}`;
+    return `${time} · ${t("rsvp.periodMorning")}`;
+  }, [t]);
+
+  const formatTimeWithPeriodLong = useCallback((time: string) => {
+    const hour = Number.parseInt(time.split(":")[0] || "", 10);
+    if (!Number.isFinite(hour)) return time;
+    if (hour >= 21 || hour < 6) return `${time} ${t("rsvp.periodEveningLong")}`;
+    if (hour >= 12) return `${time} ${t("rsvp.periodAfternoonLong")}`;
+    return `${time} ${t("rsvp.periodMorningLong")}`;
+  }, [t]);
+
   const departureLabel = useCallback((dep: Departure) => {
     const typeLabel = t(dep.type === "taxi" ? "transport.typeTaxi" : "transport.typeBus");
     const placeName = dep.url ? extractPlaceNameFromUrl(dep.url) : "";
-    if (placeName && dep.time) return `${placeName} (${dep.time})`;
+    if (placeName && dep.time) return `${placeName} (${formatTimeWithPeriod(dep.time)})`;
     if (placeName) return placeName;
-    return dep.time ? `${dep.time} (${typeLabel})` : typeLabel;
-  }, [t]);
+    return dep.time ? formatTimeWithPeriod(dep.time) : typeLabel;
+  }, [t, formatTimeWithPeriod]);
 
   const modeOptions = useMemo(() => {
     const opts: { value: string; labelKey: string }[] = [{ value: "own", labelKey: "rsvp.transportOwnCarOption" }];
@@ -277,7 +293,7 @@ const RsvpSection = memo(function RsvpSection({
                       ))}
                     </select>
                     {selectedDep?.time ? (
-                      <p className="setup-help" style={{ marginTop: "0.2rem" }}>{t("rsvp.transportPickupTime", { time: selectedDep.time })}</p>
+                      <p className="setup-help" style={{ marginTop: "0.2rem" }}>{t("rsvp.transportPickupTime", { time: selectedDep.time, period: formatTimeWithPeriodLong(selectedDep.time) })}</p>
                     ) : null}
                   </>
                 );
@@ -340,7 +356,7 @@ const RsvpSection = memo(function RsvpSection({
                               ))}
                             </select>
                             {selectedDep?.time ? (
-                              <p className="setup-help" style={{ marginTop: "0.15rem", fontSize: "0.8rem" }}>{t("rsvp.transportPickupTime", { time: selectedDep.time })}</p>
+                              <p className="setup-help" style={{ marginTop: "0.15rem", fontSize: "0.8rem" }}>{t("rsvp.transportPickupTime", { time: selectedDep.time, period: formatTimeWithPeriodLong(selectedDep.time) })}</p>
                             ) : null}
                           </>
                         );

@@ -661,7 +661,7 @@
     "unauthenticated": "Se requiere autenticación.",
     "errorDetail": "{{error}}",
     "transportDeparturesInvalid": "Las salidas de transporte no son válidas.",
-    "transportTimeInvalid": "La hora de una salida no es válida (formato HH:MM).",
+    "transportTimeInvalid": "La hora de una salida es obligatoria y debe ser válida (formato HH:MM).",
     "transportUrlInvalid": "El enlace del mapa de una salida no es válido."
   },
   "superadmin": {

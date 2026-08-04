@@ -348,7 +348,7 @@ describe("RsvpSection", () => {
     );
     const select = document.getElementById("rsvpTransportDeparture") as HTMLSelectElement;
     expect(select).toBeDefined();
-    expect([...select.options].map((o) => o.textContent)).toEqual(["14:30 (transport.typeTaxi)"]);
+    expect([...select.options].map((o) => o.textContent)).toEqual(["14:30 · rsvp.periodAfternoon"]);
     expect(screen.getByText("rsvp.transportPickupTime")).toBeDefined();
     fireEvent.click(screen.getByLabelText("rsvp.transportBusOption"));
     expect(update).toHaveBeenCalledWith("transportMode", "bus");
@@ -367,7 +367,7 @@ describe("RsvpSection", () => {
       />,
     );
     const select = document.getElementById("rsvpTransportDeparture") as HTMLSelectElement;
-    expect([...select.options].map((o) => o.textContent)).toEqual(["Plaza Mayor (12:00)"]);
+    expect([...select.options].map((o) => o.textContent)).toEqual(["Plaza Mayor (12:00 · rsvp.periodAfternoon)"]);
     expect(screen.getByText("rsvp.transportPickupTime")).toBeDefined();
   });
 
@@ -403,6 +403,26 @@ describe("RsvpSection", () => {
     expect(update).toHaveBeenCalledWith("transportChoice", "1");
     expect(update).toHaveBeenCalledWith("transportTime", "16:00");
     expect(update).toHaveBeenCalledWith("transportPlace", "Estación Norte");
+  });
+
+  it("labels morning departures with the morning period", () => {
+    render(
+      <RsvpSection
+        {...baseProps}
+        rsvpForm={{ ...baseForm, attendance: "alone", transportMode: "bus", transportChoice: "0" }}
+        transportEnabled="bus"
+        transportDepartures={JSON.stringify([
+          { type: "bus", time: "08:30", url: "" },
+          { type: "bus", time: "22:00", url: "" },
+        ])}
+      />,
+    );
+    const select = document.getElementById("rsvpTransportDeparture") as HTMLSelectElement;
+    expect([...select.options].map((o) => o.textContent)).toEqual([
+      "08:30 · rsvp.periodMorning",
+      "22:00 · rsvp.periodEvening",
+    ]);
+    expect(screen.getByText("rsvp.transportPickupTime")).toBeDefined();
   });
 
   it("shows transport radios inside each companion card", () => {

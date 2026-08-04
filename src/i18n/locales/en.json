@@ -661,7 +661,7 @@
     "unauthenticated": "Authentication is required.",
     "errorDetail": "{{error}}",
     "transportDeparturesInvalid": "Transport departures are not valid.",
-    "transportTimeInvalid": "A departure time is not valid (HH:MM format).",
+    "transportTimeInvalid": "A departure time is required and must be valid (HH:MM format).",
     "transportUrlInvalid": "A departure map link is not valid."
   },
   "superadmin": {
