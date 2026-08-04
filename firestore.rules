@@ -86,12 +86,17 @@ service cloud.firestore {
       allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['_visits']);
       /* Creación/renovación de sesión: exige prueba de conocimiento del token de
          setup (hash con registro en setupTokens) o el token legacy de invitaciones
-         aún no migradas. sessionExpiresAt limitado a 1h-48h. */
+         aún no migradas. sessionExpiresAt limitado a 30min-48h.
+         IMPORTANTE: request.time es la hora del SERVIDOR. El cliente envía
+         sessionExpiresAt = (hora del cliente) + TTL, que por latencia/reloj es
+         siempre un poco anterior a request.time + TTL. Por eso el mínimo debe
+         quedar cómodamente por debajo del TTL real del cliente (60 min) para
+         no rechazar el login por unos milisegundos de diferencia. */
       allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['activeSession', 'sessionExpiresAt', 'setupTokenHash', 'legacyToken'])
         && request.resource.data.activeSession is timestamp
         && request.resource.data.sessionExpiresAt is timestamp
         && request.resource.data.sessionExpiresAt <= request.time + duration.value(48, 'h')
-        && request.resource.data.sessionExpiresAt >= request.time + duration.value(1, 'h')
+        && request.resource.data.sessionExpiresAt >= request.time + duration.value(30, 'm')
         && (setupTokenValid(tokenId, request.resource.data.setupTokenHash)
           || (resource.data._activeSetupToken is string
             && resource.data._activeSetupToken.size() > 0

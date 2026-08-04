@@ -1,4 +1,4 @@
-export const APP_VERSION = "2.41.1";
+export const APP_VERSION = "2.41.2";
 
 export const MAX_INVITE_MESSAGE_LENGTH = 500;
 export const MAX_SCHEDULE_EVENTS = 10;

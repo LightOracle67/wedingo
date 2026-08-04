@@ -96,7 +96,7 @@ await expectAllow("2. crear invitación (setDoc merge, primer guardado)", async 
 await expectDeny("3. activar sesión con hash incorrecto (sin sesión) → denegado", async () => {
   await updateDoc(doc(db, "invitations", TOKEN), {
     activeSession: serverTimestamp(),
-    sessionExpiresAt: new Date(Date.now() + 2 * 3600 * 1000),
+    sessionExpiresAt: new Date(Date.now() + 60 * 60 * 1000),
     setupTokenHash: sha256("TOKEN-INCORRECTO"),
   });
 });
@@ -105,7 +105,7 @@ await expectDeny("3. activar sesión con hash incorrecto (sin sesión) → deneg
 await expectAllow("4. activar sesión con hash correcto", async () => {
   await updateDoc(doc(db, "invitations", TOKEN), {
     activeSession: serverTimestamp(),
-    sessionExpiresAt: new Date(Date.now() + 2 * 3600 * 1000),
+    sessionExpiresAt: new Date(Date.now() + 60 * 60 * 1000),
     setupTokenHash: HASH,
   });
 });
@@ -176,7 +176,7 @@ await expectAllow("11. invitación legacy sigue guardando (con _activeSetupToken
 await expectDeny("12. activar sesión legacy con token INCORRECTO → denegado", async () => {
   await updateDoc(doc(db, "invitations", LEGACY_TOKEN), {
     activeSession: serverTimestamp(),
-    sessionExpiresAt: new Date(Date.now() + 2 * 3600 * 1000),
+    sessionExpiresAt: new Date(Date.now() + 60 * 60 * 1000),
     setupTokenHash: sha256("hash-de-algo"),
     legacyToken: "TOKEN-INCORRECTO",
   });
@@ -184,7 +184,7 @@ await expectDeny("12. activar sesión legacy con token INCORRECTO → denegado",
 await expectAllow("13. activar sesión legacy con el token correcto (legacyToken)", async () => {
   await updateDoc(doc(db, "invitations", LEGACY_TOKEN), {
     activeSession: serverTimestamp(),
-    sessionExpiresAt: new Date(Date.now() + 2 * 3600 * 1000),
+    sessionExpiresAt: new Date(Date.now() + 60 * 60 * 1000),
     setupTokenHash: sha256("placeholder"),
     legacyToken: LEGACY_SETUP,
   });

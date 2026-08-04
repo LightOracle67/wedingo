@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.41.2",
+    date: "2026-08-04",
+    changes: [
+      "SEGURIDAD: fix de login — la regla de activación exigía sessionExpiresAt >= request.time + 1h, pero el cliente envía (hora cliente) + 60min, que por latencia/reloj es siempre algo menor que request.time + 1h → el login se rechazaba en producción. El mínimo baja a 30min (margen cómodo sobre el TTL de 60min) y se corrige la unidad de minutos (duration.value 'm'). Verificado en emulador 16/16",
+    ],
+  },
+  {
     version: "2.41.1",
     date: "2026-08-04",
     changes: [
