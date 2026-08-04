@@ -24,7 +24,6 @@ vi.mock("../../hooks/useRsvp", () => ({
     DIETARY_OPTIONS: [],
     updateRsvpField: vi.fn(),
     handleRsvpSubmit: vi.fn(),
-    handleDietaryToggle: vi.fn(),
     handleDeleteRsvp: vi.fn(),
     computeAge: vi.fn(),
     handleClearRsvpEntries: vi.fn(),

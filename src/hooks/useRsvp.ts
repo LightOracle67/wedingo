@@ -386,8 +386,6 @@ export function useRsvp(
     }
   }, [rsvpForm.guestName, rsvpEntries]);
 
-  const handleDietaryToggle = useCallback(() => {}, []);
-
   const updateRsvpField = useCallback((field: string, value: unknown) => {
     console.log("[app]", "[useRsvp]", "updateRsvpField", { field, value });
     if (field === "attendance") {
@@ -783,7 +781,7 @@ export function useRsvp(
     rsvpEntries, rsvpForm, rsvpMessage: feedbackMessage, isRsvpSubmitting, hasSubmitted,
     alreadySubmittedEntry,
     updateRsvpField, handleRsvpSubmit, handleDeleteRsvpEntries, handleClearRsvpEntries, handleDeleteRsvp,
-    handleDietaryToggle, DIETARY_OPTIONS,
+    DIETARY_OPTIONS,
     setRsvpMessage, setRsvpForm, computeAge,
   };
 }

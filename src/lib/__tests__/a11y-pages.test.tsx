@@ -45,7 +45,6 @@ vi.mock("../../contexts", () => ({
     updateRsvpField: vi.fn(),
     handleRsvpSubmit: vi.fn(),
     handleDeleteRsvp: vi.fn(),
-    handleDietaryToggle: vi.fn(),
     DIETARY_OPTIONS: [],
     computeAge: vi.fn(),
     updateFormField: vi.fn(),
@@ -138,6 +137,57 @@ describe("a11y-page-audit", () => {
     const { container } = render(<ErrorMessage error={new Error("Test")} />);
     const results = await runAxe(container);
     expect(results.violations).toHaveLength(0);
+  });
+
+  it("RsvpSection with transport and menu has no serious violations", async () => {
+    vi.mock("../../lib/constants", () => BASE_MOCK_CTX.constants());
+    const RsvpSection = (await import("../../pages/sections/RsvpSection")).default;
+    const rsvpForm = {
+      guestName: "",
+      attendance: "with",
+      birthDate: "",
+      companionCount: 1,
+      companionNames: [""],
+      companionMenus: [""],
+      companionAllergies: [[]],
+      companionAllergiesOther: [""],
+      companionBirthDates: [""],
+      companionParentalConsents: [false],
+      companionHealthConsents: [false],
+      companionTransportChoices: ["0"],
+      companionTransportModes: ["bus"],
+      menuSelection: "",
+      allergies: [],
+      allergiesOther: "",
+      parentalConsent: false,
+      privacyConsent: false,
+      healthConsent: false,
+      transportChoice: "0",
+      transportMode: "bus",
+    };
+    const { container } = render(
+      <RsvpSection
+        style={{}}
+        className="test"
+        rsvpForm={rsvpForm}
+        updateRsvpField={vi.fn()}
+        handleRsvpSubmit={vi.fn()}
+        handleDeleteRsvp={vi.fn()}
+        menuEnabled
+        menuCarne="Solomillo"
+        menuPescado="Lubina"
+        menuVegano="Risotto"
+        transportEnabled="both"
+        transportDepartures={JSON.stringify([
+          { type: "bus", time: "12:00", url: "https://www.google.com/maps/place/Plaza+Mayor/@40.41,-3.70,17z" },
+          { type: "taxi", time: "14:30", url: "" },
+        ])}
+        computeAge={vi.fn(() => 30)}
+      />,
+    );
+    const results = await runAxe(container);
+    const serious = results.violations.filter((v) => v.impact === "critical" || v.impact === "serious");
+    expect(serious).toHaveLength(0);
   });
 
   it("AccessibilityPanel open state has no violations", async () => {

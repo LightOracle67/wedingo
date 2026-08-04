@@ -317,15 +317,6 @@ describe("useRsvp", () => {
     });
   });
 
-  describe("handleDietaryToggle", () => {
-    it("is a no-op function", () => {
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
-      const before = result.current.rsvpForm;
-      act(() => result.current.handleDietaryToggle());
-      expect(result.current.rsvpForm).toEqual(before);
-    });
-  });
-
   function setupForm(result: { current: ReturnType<typeof useRsvp> }) {
     act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
     act(() => result.current.updateRsvpField("attendance", "alone"));

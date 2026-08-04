@@ -20,7 +20,7 @@ const mockUseAppValue = vi.hoisted(() => ({
   rsvpForm: { attendees: [] }, rsvpEntries: [], rsvpMessage: "",
   isRsvpSubmitting: false, hasSubmitted: false, alreadySubmittedEntry: null,
   updateRsvpField: vi.fn(), handleRsvpSubmit: vi.fn(), handleDeleteRsvp: vi.fn(),
-  handleDietaryToggle: vi.fn(), DIETARY_OPTIONS: [],
+  DIETARY_OPTIONS: [],
   computeAge: vi.fn(), isAdminTokenLoggedIn: true,
 
 }));

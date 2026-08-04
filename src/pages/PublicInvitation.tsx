@@ -86,7 +86,7 @@ export default function PublicInvitation() {
 
     handleRsvpSubmit, updateRsvpField, handleDeleteRsvp,
     isAdminTokenLoggedIn,
-    handleDietaryToggle, DIETARY_OPTIONS, computeAge,
+    DIETARY_OPTIONS, computeAge,
   } = useApp();
 
   // ─── Secciones ocultas derivadas de la configuración ───
@@ -289,7 +289,6 @@ export default function PublicInvitation() {
       updateRsvpField,
       handleRsvpSubmit,
       handleDeleteRsvp,
-      handleDietaryToggle,
       DIETARY_OPTIONS,
       computeAge,
       menuEnabled: config.menuEnabled === "true",
@@ -315,7 +314,7 @@ export default function PublicInvitation() {
     config.weddingMapView, config.weddingMapStatic,
     config.transportEnabled, config.transportDepartures,
     rsvpForm, rsvpEntries, rsvpMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
-    updateRsvpField, handleRsvpSubmit, handleDeleteRsvp, handleDietaryToggle, DIETARY_OPTIONS, computeAge,
+    updateRsvpField, handleRsvpSubmit, handleDeleteRsvp, DIETARY_OPTIONS, computeAge,
   ]);
 
   // ─── Estados de UI condicionales ───────────────────────

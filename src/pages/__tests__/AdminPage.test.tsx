@@ -102,7 +102,6 @@ const baseMock = {
   updateRsvpField: vi.fn(),
   handleRsvpSubmit: vi.fn(),
   handleDeleteRsvp: vi.fn(),
-  handleDietaryToggle: vi.fn(),
   DIETARY_OPTIONS: [],
   computeAge: vi.fn(),
   setSaveError: vi.fn(),

@@ -99,6 +99,15 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
     return typeLabel;
   }, [departures, t]);
 
+  const formatBirthDate = useCallback((iso: string) => {
+    if (!iso) return "—";
+    try {
+      return new Date(iso.length <= 10 ? `${iso}T00:00:00` : iso).toLocaleDateString(navigator.language || "es");
+    } catch {
+      return iso;
+    }
+  }, []);
+
   const filterEntries = filteredEntries || [];
 
   const totalPages = Math.max(1, Math.ceil(filterEntries.length / pageSize));
@@ -262,7 +271,7 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                     </td>
                     <td>
                       <div style={crossed}>
-                        <span style={{ fontSize: "0.78rem" }}>{entry.birthDate ? formatDate(entry.birthDate) : "—"}</span>
+                        <span style={{ fontSize: "0.78rem" }}>{entry.birthDate ? formatBirthDate(entry.birthDate) : "—"}</span>
                       </div>
                     </td>
                     <td>
