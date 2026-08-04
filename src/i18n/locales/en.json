@@ -185,7 +185,7 @@
     "transportOwnCarOption": "I'll use my own car",
     "transportBusOption": "I'll take the bus",
     "transportTaxiOption": "Or I'll take a taxi",
-    "transportDepartureLabel": "Departure",
+    "transportDepartureLabel": "Departure"
   },
   "public": {
     "loadingInvitation": "Loading invitation…",
