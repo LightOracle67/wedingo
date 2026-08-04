@@ -477,7 +477,7 @@ const RsvpSection = memo(function RsvpSection({
             <p className="setup-help" style={{ fontSize: "0.8rem", marginTop: "0.5rem" }}>{t("rsvp.allergiesHint")}</p>
           ) : null}
 
-          {isAttending && menuEnabled && !hasStructuredMenu && menuTexto?.trim() ? (
+          {isAttending && !hasStructuredMenu && (menuTextoDishes || menuTexto?.trim() || menuPostre?.trim()) ? (
             <div style={{ marginBottom: "0.5rem", marginTop: "0.5rem", padding: "0.6rem", borderRadius: "0.6rem", background: "color-mix(in srgb, var(--setup-field-bg) 60%, transparent)" }}>
               <p className="story-eyebrow" style={{ fontSize: "0.72rem", marginBottom: "0.2rem" }}>{t("rsvp.menuLabel")}</p>
               <p className="story-note whitespace-pre-line" style={{ fontSize: "0.85rem" }}>{formatDishes(menuTextoDishes || "", menuTexto || "")}</p>

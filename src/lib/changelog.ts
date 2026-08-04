@@ -36,6 +36,7 @@ export const CHANGELOG = [
       "FEAT: alojamiento como enlace de Google Maps — nuevo campo accommodationURL en el setup (validación y hint del sitio) y la sección muestra el nombre, el mapa y 'Ver en Google Maps', con fallback al texto legacy",
       "FEAT: menú por platos — nuevo editor (como salidas de transporte) con orden predefinido (Entrante/Primero/Segundo/Tercero/Postre/Otro) y añadir/eliminar platos, tanto para el menú fijo (menuTextoDishes) como para los seleccionables (menuCarneDishes/Pescado/Vegano); el RSVP muestra los platos formateados con fallback al texto legacy",
       "VERIFICADO: flujo de guardado del menú por platos (form → normalize → validación → payload Firestore → recuperación) con tests de persistencia round-trip, guardado en ConfigContext y rechazo de órdenes inválidas",
+      "FIX: menú fijo no se mostraba en el RSVP — el bloque solo se renderizaba con menuEnabled=true; ahora el menú fijo (menuEnabled=false) muestra los platos sin selector, y el variable muestra el selector con el menú de la opción debajo",
     ],
   },
 

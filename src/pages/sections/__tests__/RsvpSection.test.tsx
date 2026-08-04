@@ -160,6 +160,40 @@ describe("RsvpSection", () => {
     expect(screen.queryByText("Legacy text")).toBeNull();
   });
 
+  it("shows the fixed menu without a selector when menu is disabled", () => {
+    render(
+      <RsvpSection
+        {...baseProps}
+        rsvpForm={{ ...baseForm, attendance: "alone" }}
+        menuEnabled={false}
+        menuTextoDishes={JSON.stringify([
+          { order: "entrante", text: "Ensalada" },
+          { order: "primero", text: "Lubina" },
+        ])}
+      />,
+    );
+    expect(screen.getByText("rsvp.menuLabel")).toBeDefined();
+    expect(screen.getByText(/setup.menuOrderEntrante: Ensalada/)).toBeDefined();
+    expect(screen.getByText(/setup.menuOrderPrimero: Lubina/)).toBeDefined();
+    expect(document.getElementById("rsvpMenu")).toBeNull();
+  });
+
+  it("shows the legacy fixed menu text when menu is disabled and no dishes", () => {
+    render(
+      <RsvpSection
+        {...baseProps}
+        rsvpForm={{ ...baseForm, attendance: "alone" }}
+        menuEnabled={false}
+        menuTexto="Menú tradicional"
+        menuPostre="Tarta de queso"
+      />,
+    );
+    expect(screen.getByText("Menú tradicional")).toBeDefined();
+    expect(screen.getByText("rsvp.postre")).toBeDefined();
+    expect(screen.getByText("Tarta de queso")).toBeDefined();
+    expect(document.getElementById("rsvpMenu")).toBeNull();
+  });
+
   it("shows the dish description when a selectable menu option is chosen", () => {
     render(
       <RsvpSection
