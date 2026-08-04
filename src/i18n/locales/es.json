@@ -60,7 +60,8 @@
     "todayIsWedding": "Hoy es la boda",
     "missing": "Faltan",
     "todayIsTheDay": "¡Hoy es el gran día!",
-    "eyebrow": "Nuestra boda"
+    "eyebrow": "Nuestra boda",
+    "sectionLabel": "Portada"
   },
   "details": {
     "sectionLabel": "Fecha y lugar",
@@ -152,7 +153,10 @@
       "birthDateRequired": "Necesitamos tu fecha de nacimiento para completar tu respuesta.",
       "ageUnder14": "Al ser menor de 14 años, necesitamos el consentimiento de tus padres o tutores.",
       "healthConsentRequired": "Dinos si podemos usar tu información de alergias para adaptar el menú.",
-      "nameFullRequired": "Introduce el nombre completo: nombre y dos apellidos."
+      "nameFullRequired": "Introduce el nombre completo: nombre y dos apellidos.",
+      "guestNamesExceed": "Hay más invitados de los permitidos.",
+      "guestNamesRequired": "Los nombres de los invitados son obligatorios.",
+      "headcountExceed": "El número de invitados supera el permitido."
     },
     "successAttending": "¡Gracias, {{name}}! Nos alegra mucho que vengas.",
     "successNotAttending": "Gracias, {{name}}. Te echaremos de menos.",
@@ -400,7 +404,9 @@
     "menuOrderSegundo": "Segundo",
     "menuOrderTercero": "Tercero",
     "menuOrderPostre": "Postre",
-    "menuOrderOtro": "Otro"
+    "menuOrderOtro": "Otro",
+    "cornerDecorationUploadHint": "PNG o SVG, máx 1MB",
+    "transportTypeLabel": "Tipo"
   },
   "admin": {
     "tabs": {
@@ -409,7 +415,8 @@
       "attendance": "Asistencia",
       "share": "Compartir",
       "access": "Acceso",
-      "support": "Soporte"
+      "support": "Soporte",
+      "ariaLabel": "Secciones"
     },
     "privateArea": "Área privada",
     "manageInvitation": "Gestiona tu invitación de boda",
@@ -614,7 +621,9 @@
     "accommodationUrlInvalid": "El enlace de alojamiento no es válido (debe ser una URL de Google Maps de un lugar).",
     "menuDishesInvalid": "Los platos del menú no son válidos.",
     "menuDishOrderInvalid": "El orden de un plato no es válido.",
-    "menuDishTextTooLong": "El texto de un plato no puede superar los 200 caracteres."
+    "menuDishTextTooLong": "El texto de un plato no puede superar los 200 caracteres.",
+    "generic": "Algo salió mal. Inténtalo de nuevo.",
+    "restoreFailed": "No se pudo restaurar la copia de seguridad."
   },
   "superadmin": {
     "tabs": {
@@ -1023,5 +1032,8 @@
     "typeBus": "Autobús",
     "typeTaxi": "Taxi",
     "apology": "Disculpa las molestias: no disponemos de transporte propio para este evento, por lo que te pedimos que llegues con tu coche particular."
+  },
+  "settings": {
+    "menuChangeConfirm": "Hay {{count}} confirmaciones con menú. ¿Seguro que quieres cambiar el menú?"
   }
 }
