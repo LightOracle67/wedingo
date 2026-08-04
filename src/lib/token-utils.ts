@@ -10,17 +10,17 @@ export const generateSetupToken = () => {
     return "";
   }).filter(Boolean).join("").slice(0, needed);
   const token = rawToken.match(/.{1,4}/g)?.join("-") ?? rawToken;
-  console.log("[app]", "[token-utils]", "generateSetupToken", { length: token.length, preview: token.slice(0, 10) + "..." });
+  ;
   return token;
 };
 
 export const normalizeTokenValue = (value: unknown) => {
   if (typeof value !== "string") {
-    console.log("[app]", "[token-utils]", "normalizeTokenValue: not a string", { type: typeof value });
+    ;
     return "";
   }
   const normalized = value.trim().toUpperCase().replace(/[^A-Z0-9]/g, "");
-  console.log("[app]", "[token-utils]", "normalizeTokenValue", { inputLength: value.length, outputLength: normalized.length });
+  ;
   return normalized;
 };
 
@@ -35,6 +35,6 @@ export function generateInviteToken() {
   for (let i = 0; i < bytes.length && result.length < needed; i++) {
     if (bytes[i]! < maxValid) result += chars[bytes[i]! % len];
   }
-  console.log("[app]", "[token-utils]", "generateInviteToken", { length: result.length });
+  ;
   return result;
 }

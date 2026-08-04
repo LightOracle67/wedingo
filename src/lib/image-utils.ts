@@ -89,15 +89,15 @@ export const compressImageTransparent = async (file: File, maxDimension = 1600):
  *  reduce calidad/dimensiones hasta encajar en TARGET_BYTES.
  *  Exporta a WebP (con alpha si existe), con fallback a JPEG. */
 export const compressImage = async (file: File): Promise<string> => {
-  console.log("[upload] compressImage start", file.name, file.size, file.type);
+  ;
   const img = await loadImage(file);
-  console.log("[upload] image loaded", img.width, "x", img.height);
+  ;
 
   // Fast path: JPEG ya pequeño y con dimensiones razonables
   if (file.size <= TARGET_BYTES && file.type === "image/jpeg"
       && img.width <= MAX_IMAGE_DIMENSION && img.height <= MAX_IMAGE_DIMENSION) {
     URL.revokeObjectURL(img.src);
-    console.log("[upload] skip compress (small JPEG)");
+    ;
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.onload = () => resolve(reader.result as string);
@@ -125,7 +125,7 @@ export const compressImage = async (file: File): Promise<string> => {
   // Probar WebP (soporta alpha, buena compresión)
   let dataUrl = canvasToType(canvas, "webp", 0.8);
   let estimatedBytes = Math.round((dataUrl.length * 3) / 4);
-  console.log("[upload] WebP q=0.8:", estimatedBytes, "bytes");
+  ;
 
   // Reducir calidad progresivamente
   if (estimatedBytes > TARGET_BYTES) {
@@ -133,19 +133,19 @@ export const compressImage = async (file: File): Promise<string> => {
     while (quality >= 0.1 && estimatedBytes > TARGET_BYTES) {
       dataUrl = canvasToType(canvas, "webp", quality);
       estimatedBytes = Math.round((dataUrl.length * 3) / 4);
-      console.log("[upload] WebP q=", quality, ":", estimatedBytes, "bytes");
+      ;
       quality -= 0.1;
     }
   }
 
   // Si sigue siendo muy grande, reducir dimensiones
   if (estimatedBytes > TARGET_BYTES) {
-    console.log("[upload] shrinking dimensions...");
+    ;
     dataUrl = shrinkToFit(canvas, TARGET_BYTES);
     estimatedBytes = Math.round((dataUrl.length * 3) / 4);
-    console.log("[upload] after shrink:", estimatedBytes, "bytes");
+    ;
   }
 
-  console.log("[upload] compressImage done, type:", dataUrl.substring(0, 30));
+  ;
   return dataUrl;
 };

@@ -14,7 +14,7 @@ export function firestoreSessionExpiry() {
 }
 
 export function saveSession(type: string, identifier: string, extra: Record<string, unknown> = {}) {
-  console.log("[app]", "[sessionVars]", "saveSession", { type, identifier });
+  ;
   try {
     const data = {
       type,
@@ -30,13 +30,13 @@ export function saveSession(type: string, identifier: string, extra: Record<stri
 export function getSession() {
   try {
     const raw = ls()?.getItem(STORAGE_KEY);
-    if (!raw) { console.log("[app]", "[sessionVars]", "getSession: no data", {}); return null; }
+    if (!raw) { ; return null; }
     const data = JSON.parse(raw);
     if (data.expiresAt && Date.now() < data.expiresAt) {
-      console.log("[app]", "[sessionVars]", "getSession: valid", { type: data.type, identifier: data.identifier });
+      ;
       return data;
     }
-    console.log("[app]", "[sessionVars]", "getSession: expired, clearing", { expiresAt: data.expiresAt, now: Date.now() });
+    ;
     clearSession();
     return null;
   } catch (err) {
@@ -49,15 +49,15 @@ export function getSession() {
 export function renewSession() {
   try {
     const raw = ls()?.getItem(STORAGE_KEY);
-    if (!raw) { console.log("[app]", "[sessionVars]", "renewSession: no session", {}); return; }
+    if (!raw) { ; return; }
     const data = JSON.parse(raw);
     data.expiresAt = Date.now() + SESSION_DURATION;
     ls()?.setItem(STORAGE_KEY, JSON.stringify(data));
-    console.log("[app]", "[sessionVars]", "renewSession success", {});
+    ;
   } catch (err) { console.error("[app]", "[sessionVars]", "renewSession error", { error: err }); }
 }
 
 export function clearSession() {
-  console.log("[app]", "[sessionVars]", "clearSession", {});
+  ;
   try { ls()?.removeItem(STORAGE_KEY); } catch (err) { console.error("[app]", "[sessionVars]", "clearSession error", { error: err }); }
 }

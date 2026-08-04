@@ -4,7 +4,6 @@ export function hasStorageConsent() {
   try {
     const value = localStorage.getItem(STORAGE_CONSENT_KEY);
     const result = value === "accepted";
-    if (!result) console.log("[app]", "[storage]", "consent check failed", { key: STORAGE_CONSENT_KEY, value });
     return result;
   } catch (err) {
     console.error("[app]", "[storage]", "consent check error", err);
@@ -14,7 +13,7 @@ export function hasStorageConsent() {
 
 export function safeSetItem(key: string, value: string, storage: Storage = localStorage) {
   if (storage === localStorage && !hasStorageConsent()) {
-    console.log("[app]", "[storage]", "safeSetItem blocked (no consent)", { key });
+    ;
     return false;
   }
   try {
@@ -28,7 +27,7 @@ export function safeSetItem(key: string, value: string, storage: Storage = local
 
 export function safeGetItem(key: string, storage: Storage = localStorage) {
   if (storage === localStorage && !hasStorageConsent()) {
-    console.log("[app]", "[storage]", "safeGetItem blocked (no consent)", { key });
+    ;
     return null;
   }
   try {
@@ -49,11 +48,11 @@ export function safeRemoveItem(key: string, storage: Storage = localStorage) {
 }
 
 export function clearAllStorage() {
-  console.log("[app]", "[storage]", "clearAllStorage start");
+  ;
   try {
     const localKeys = Object.keys(localStorage).filter(k => k.startsWith("wedin_"));
     const sessionKeys = Object.keys(sessionStorage).filter(k => k.startsWith("wedin_"));
-    console.log("[app]", "[storage]", "clearAllStorage keys", { local: localKeys, session: sessionKeys });
+    ;
     localKeys.forEach(k => localStorage.removeItem(k));
     sessionKeys.forEach(k => sessionStorage.removeItem(k));
   } catch (err) {

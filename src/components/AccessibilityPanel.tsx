@@ -32,7 +32,7 @@ function savePrefs(prefs: A11yPrefs) {
 }
 
 function applyPrefs(prefs: A11yPrefs) {
-  console.log("[app]", "[AccessibilityPanel]", "apply preferences", prefs);
+  ;
   const root = document.documentElement;
   root.classList.toggle("a11y-high-contrast", !!prefs.highContrast);
   root.classList.toggle("a11y-reduced-motion", !!prefs.reducedMotion);
@@ -59,46 +59,46 @@ function applyPrefs(prefs: A11yPrefs) {
 }
 
 export default function AccessibilityPanel({ open, onClose }: { open: boolean; onClose: () => void }) {
-  console.log("[app]", "[AccessibilityPanel]", "mount", { open });
+  ;
   const { t } = useTranslation();
   const [prefs, setPrefs] = useState(() => {
     const loaded = loadPrefs();
-    console.log("[app]", "[AccessibilityPanel]", "loaded preferences", loaded);
+    ;
     return loaded;
   });
   const modalRef = useFocusTrap<HTMLDivElement>(open);
   useEscapeKey(onClose, open);
 
   useEffect(() => {
-    console.log("[app]", "[AccessibilityPanel]", "preferences changed, applying", prefs);
+    ;
     applyPrefs(prefs);
   }, [prefs]);
 
   const toggle = (key: keyof A11yPrefs) => {
-    console.log("[app]", "[AccessibilityPanel]", "toggle", { key, currentValue: prefs[key] });
+    ;
     setPrefs((prev: A11yPrefs) => {
       const next = { ...prev, [key]: !prev[key] };
-      console.log("[app]", "[AccessibilityPanel]", "save preferences", next);
+      ;
       savePrefs(next);
       return next;
     });
   };
 
   const setFontSize = (size: string) => {
-    console.log("[app]", "[AccessibilityPanel]", "set font size", { size });
+    ;
     setPrefs((prev: A11yPrefs) => {
       const next = { ...prev, fontSize: size };
-      console.log("[app]", "[AccessibilityPanel]", "save preferences", next);
+      ;
       savePrefs(next);
       return next;
     });
   };
 
   const setLineSpacing = (value: string) => {
-    console.log("[app]", "[AccessibilityPanel]", "set line spacing", { value });
+    ;
     setPrefs((prev: A11yPrefs) => {
       const next = { ...prev, lineSpacing: value };
-      console.log("[app]", "[AccessibilityPanel]", "save preferences", next);
+      ;
       savePrefs(next);
       return next;
     });

@@ -25,17 +25,9 @@ dist-ssr
 *.sw?
 .firebase
 *.bak
-.firebase
 SECURITY.md
-SESION.md
-AUDITORIA.md
-AUDITORIA.md.bak
-skills-lock.json
 .env.example
 .agents/
-jsconfig.json
-1
 coverage
 junit.xml
-coverage_err.txt
 test-results

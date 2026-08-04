@@ -72,7 +72,7 @@ const SECTION_COMPONENTS = {
  * @returns {JSX.Element} Página de invitación.
  */
 export default function PublicInvitation() {
-  console.log("[app]", "[PublicInvitation]", "mount", { inviteToken: useParams().inviteToken });
+  ;
   const { t } = useTranslation();
   const location = useLocation();
   const { inviteToken } = useParams();
@@ -321,7 +321,7 @@ export default function PublicInvitation() {
   const [envelopeOpen, setEnvelopeOpen] = useState(false);
   const isEmpty = !config.firstName && !config.secondName && !isInviteMode;
   const hasHash = location.hash.length > 1;
-  console.log("[app]", "[PublicInvitation]", "initial state", { isEmpty, hasHash, isInviteMode, isConfigLoading, configLoadError, firstName: config.firstName });
+  ;
 
   // ═══════════════════════════════════════════════════════
   // RENDERIZADO CONDICIONAL
@@ -376,12 +376,12 @@ export default function PublicInvitation() {
   // RENDERIZADO PRINCIPAL
   // ═══════════════════════════════════════════════════════
   const showEnvelope = !isAdminTokenLoggedIn && !isConfigLoading && !configLoadError && !isEmpty && !showMissingToken && !envelopeOpen;
-  console.log("[app]", "[PublicInvitation]", "render decision", { showEnvelope, isEmpty, showMissingToken, envelopeOpen, isConfigLoading, configLoadError, hasCornerDecoration: !!config.cornerDecoration });
+  ;
 
   return (
     <div className={`app-scene ${isStoryTransitioning ? "app-scene--transitioning" : ""}`}
       style={{ "--story-card-user-bg": config.backgroundImage ? `url(${config.backgroundImage})` : undefined } as React.CSSProperties}>
-      {showEnvelope ? <EnvelopeOverlay onOpen={() => { console.log("[app]", "[PublicInvitation]", "envelope opened", {}); setEnvelopeOpen(true); }} firstName={config.firstName} secondName={config.secondName} customSeal={config.customSeal} /> : null}
+      {showEnvelope ? <EnvelopeOverlay onOpen={() => { ; setEnvelopeOpen(true); }} firstName={config.firstName} secondName={config.secondName} customSeal={config.customSeal} /> : null}
 
       {/* ── Decoraciones laterales (eucalipto) ── */}
       <div className="fixed top-0 pointer-events-none left-2 wedding-decoration--left wedding-decoration" style={{ zIndex: 0 }}>
@@ -431,10 +431,10 @@ export default function PublicInvitation() {
       ) : (
         /* ── Invitación completa: renderiza cada sección en orden ── */
         <Suspense fallback={null}>
-          {void console.log("[app]", "[PublicInvitation]", "rendering sections", { visibleOrder })}
+          
           {visibleOrder.map((sectionKey: string) => {
             const Component = (SECTION_COMPONENTS as Record<string, React.ComponentType<any>>)[sectionKey];
-            if (!Component) { console.log("[app]", "[PublicInvitation]", "section component not found", { sectionKey }); return null; }
+            if (!Component) { ; return null; }
             return (
               <ErrorBoundary key={sectionKey}>
                 <Component

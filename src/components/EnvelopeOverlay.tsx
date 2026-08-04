@@ -4,7 +4,7 @@ import { randomMessage } from "../lib/invite-messages";
 import "../styles/envelope.css";
 
 const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secondName, customSeal }: { onOpen: () => void; firstName: string; secondName: string; customSeal?: string }) {
-  console.log("[app]", "[EnvelopeOverlay]", "mount", { firstName, secondName, hasCustomSeal: !!customSeal });
+  ;
   const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
   const [exiting, setExiting] = useState(false);
@@ -12,27 +12,27 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secon
   const [showText, setShowText] = useState(false);
 
   useEffect(() => {
-    console.log("[app]", "[EnvelopeOverlay]", "body overflow hidden set", {});
+    ;
     document.body.style.overflow = "hidden";
-    return () => { console.log("[app]", "[EnvelopeOverlay]", "body overflow restored", {}); document.body.style.overflow = ""; };
+    return () => { ; document.body.style.overflow = ""; };
   }, []);
 
   const message = useMemo(() => randomMessage(i18n.language), [i18n.language]);
 
   const handleClick = useCallback(() => {
-    if (exiting) { console.log("[app]", "[EnvelopeOverlay]", "click ignored (exiting)", {}); return; }
+    if (exiting) { ; return; }
     if (!open) {
-      console.log("[app]", "[EnvelopeOverlay]", "envelope open animation start", {});
+      ;
       setOpen(true);
-      setTimeout(() => { console.log("[app]", "[EnvelopeOverlay]", "show white flash", {}); setShowWhite(true); }, 600);
-      setTimeout(() => { console.log("[app]", "[EnvelopeOverlay]", "show text", {}); setShowText(true); }, 1400);
+      setTimeout(() => { ; setShowWhite(true); }, 600);
+      setTimeout(() => { ; setShowText(true); }, 1400);
       return;
     }
-    console.log("[app]", "[EnvelopeOverlay]", "envelope exit animation start", {});
+    ;
     setExiting(true);
     try { window.dispatchEvent(new CustomEvent("wedin:play-audio")); } catch {}
     setTimeout(() => {
-      console.log("[app]", "[EnvelopeOverlay]", "envelope exit complete, calling onOpen", {});
+      ;
       document.body.style.overflow = "";
       const main = document.getElementById("main-content");
       if (main) main.focus({ preventScroll: true });

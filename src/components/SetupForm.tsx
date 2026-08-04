@@ -36,12 +36,12 @@ import "../styles/admin.css";
  * @returns {JSX.Element} Formulario con todas las secciones de configuración.
  */
 export default function SetupForm({ prefix = "" }) {
-  console.log("[app]", "[SetupForm]", "mount", { prefix });
+  ;
 
   const { t } = useTranslation();
 
   useEffect(() => {
-    console.log("[app]", "[SetupForm]", "keyboard handler mounted");
+    ;
     const handler = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
         const form = document.querySelector(".setup-form") as HTMLFormElement;
@@ -50,7 +50,7 @@ export default function SetupForm({ prefix = "" }) {
     };
     window.addEventListener("keydown", handler);
     return () => {
-      console.log("[app]", "[SetupForm]", "keyboard handler cleanup");
+      ;
       window.removeEventListener("keydown", handler);
     };
   }, []);
@@ -64,7 +64,7 @@ export default function SetupForm({ prefix = "" }) {
   // ── Muestra mensajes de éxito/error como toasts ─────────
   useEffect(() => {
     if (saveMessage) {
-      console.log("[app]", "[SetupForm]", "save success", { message: saveMessage });
+      ;
       addToast("success", saveMessage);
     }
   }, [saveMessage, addToast]);
@@ -86,7 +86,7 @@ export default function SetupForm({ prefix = "" }) {
   }, [formData.hiddenSections]);
 
   return (
-    <form className="setup-form setup-form--nested" onSubmit={(e) => { console.log("[app]", "[SetupForm]", "save submit"); handleSaveSetup(e); }}>
+    <form className="setup-form setup-form--nested" onSubmit={(e) => { ; handleSaveSetup(e); }}>
       {/* ── Editor de orden de secciones ── */}
       <SectionOrderEditor
         value={formData.sectionOrder}
@@ -96,7 +96,7 @@ export default function SetupForm({ prefix = "" }) {
       />
 
       {/* ── Sección de acceso (solo visible antes del primer guardado) ── */}
-      {void console.log("[app]", "[SetupForm]", "render access section", { isRestoringSession, isTokenVerified })}
+      
       {isRestoringSession ? null : !isTokenVerified ? (
       <CollapsibleSection
         title={t("setup.accessSectionTitle")}
@@ -108,7 +108,7 @@ export default function SetupForm({ prefix = "" }) {
       ) : null}
 
       {/* ── Sección de portada: nombres, padrinos, mensaje, tema, fondo ── */}
-      {void console.log("[app]", "[SetupForm]", "render cover section")}
+      
       <CollapsibleSection
         title={t("setup.coverSectionTitle")}
         hint={t("setup.coverSectionHint")}
@@ -118,7 +118,7 @@ export default function SetupForm({ prefix = "" }) {
       </CollapsibleSection>
 
       {/* ── Sección de fecha y lugar (si no está oculta) ── */}
-      {void console.log("[app]", "[SetupForm]", "render date section", { hidden: hiddenSet.has("details") })}
+      
       {!hiddenSet.has("details") ? (
       <CollapsibleSection
         title={t("setup.dateSectionTitle")}
@@ -129,7 +129,7 @@ export default function SetupForm({ prefix = "" }) {
       ) : null}
 
       {/* ── Sección de transporte (si no está oculta) ── */}
-      {void console.log("[app]", "[SetupForm]", "render transport section", { hidden: hiddenSet.has("transport") })}
+      
       {!hiddenSet.has("transport") ? (
       <CollapsibleSection
         title={t("setup.transportSectionTitle")}
@@ -140,7 +140,7 @@ export default function SetupForm({ prefix = "" }) {
       ) : null}
 
       {/* ── Sección de invitados y menú (si no está oculta) ── */}
-      {void console.log("[app]", "[SetupForm]", "render guests section", { hidden: hiddenSet.has("info") })}
+      
       {!hiddenSet.has("info") ? (
       <CollapsibleSection
         title={t("setup.guestsSectionTitle")}
@@ -151,7 +151,7 @@ export default function SetupForm({ prefix = "" }) {
       ) : null}
 
       {/* ── Sección de historia de los novios (si no está oculta) ── */}
-      {void console.log("[app]", "[SetupForm]", "render story section", { hidden: hiddenSet.has("story") })}
+      
       {!hiddenSet.has("story") ? (
       <CollapsibleSection
         title={t("setup.storySectionTitle")}
@@ -162,7 +162,7 @@ export default function SetupForm({ prefix = "" }) {
       ) : null}
 
       {/* ── Sección de regalos (si no está oculta) ── */}
-      {void console.log("[app]", "[SetupForm]", "render gifts section", { hidden: hiddenSet.has("gifts") })}
+      
       {!hiddenSet.has("gifts") ? (
       <CollapsibleSection
         title={t("setup.giftsSectionTitle")}
@@ -173,7 +173,7 @@ export default function SetupForm({ prefix = "" }) {
       ) : null}
 
       {/* ── Sección de galería de fotos (si no está oculta) ── */}
-      {void console.log("[app]", "[SetupForm]", "render gallery section", { hidden: hiddenSet.has("gallery") })}
+      
       {!hiddenSet.has("gallery") ? (
       <CollapsibleSection
         title={t("setup.gallerySectionTitle")}
@@ -192,9 +192,9 @@ export default function SetupForm({ prefix = "" }) {
       ) : null}
 
       {/* ── Botón de guardar ── */}
-      {void console.log("[app]", "[SetupForm]", "save button rendered")}
+      
       <div className="setup-actions setup-actions--sticky" style={{ background: 0, WebkitBackdropFilter: "unset" }}>
-        <button className="setup-button" type="submit" onClick={() => console.log("[app]", "[SetupForm]", "save click start")}>
+        <button className="setup-button" type="submit">
           {t("common.save")}
         </button>
       </div>

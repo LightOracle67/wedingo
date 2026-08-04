@@ -26,7 +26,7 @@ import { ConfigContext } from "./useConfig";
 import { useAppUI } from "./useAppUI";
 
 export function ConfigProvider({ children }: { children: ReactNode }) {
-  console.log("[app]", "[ConfigProvider]", "mount", {});
+  ;
   const { t } = useTranslation();
   const { setSaveMessage, setSaveError } = useAppUI();
   const location = useLocation();
@@ -49,7 +49,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
   const { formattedDate, formattedTime, calendarLink } = useCalendar(config);
 
   const updateFormField = useCallback((field: string, value: string) => {
-    console.log("[app]", "[ConfigProvider]", "updateFormField", { field, value });
+    ;
     setFormData((current: InvitationConfig) => ({ ...current, [field]: value }));
   }, []);
 
@@ -67,13 +67,13 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const trackVisit = useCallback(async (token: string) => {
-    if (!token || trackedRef.current) { console.log("[app]", "[ConfigProvider]", "trackVisit skipped", { token, alreadyTracked: trackedRef.current }); return; }
+    if (!token || trackedRef.current) { ; return; }
     trackedRef.current = true;
-    console.log("[app]", "[ConfigProvider]", "trackVisit start", { token });
+    ;
     try {
       const ref = invitationDocRef(token);
       await updateDoc(ref, { _visits: increment(1) });
-      console.log("[app]", "[ConfigProvider]", "trackVisit success", { token });
+      ;
     } catch (e) {
       console.warn("[app]", "[ConfigProvider]", "trackVisit failed:", getFirestoreErrorMessage(e));
     }
@@ -86,21 +86,21 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     const firstSegment = pathParts[0] || "";
     const isTokenRoute = TOKEN_ROUTE_REGEX.test(firstSegment) && !["setup", "admin", "superadmin-login", "superadmin"].includes(firstSegment);
     const isAdminRoute = pathParts[1] === "setup" || pathParts[1] === "admin";
-    console.log("[app]", "[ConfigProvider]", "path/hash changed", { hash, isInvite, firstSegment, isTokenRoute, isAdminRoute, inviteToken, hasStoredConfig });
+    ;
 
     if (hash && hash.length > 1) {
-      console.log("[app]", "[ConfigProvider]", "hash detected, trying decodeInviteConfig", { hashLength: hash.length });
+      ;
       try {
         const parsed = decodeInviteConfig(hash.slice(1));
         const hydrated = { ...defaultConfig, ...normalizeConfig(parsed) };
-        console.log("[app]", "[ConfigProvider]", "hash config decoded", { firstName: hydrated.firstName });
+        ;
         setConfig(hydrated);
         setFormData(hydrated);
         setHasStoredConfig(false);
         setIsConfigLoading(false);
         return;
       } catch {
-        console.log("[app]", "[ConfigProvider]", "hash decode failed", {});
+        ;
         if (isInvite) {
           setIsConfigLoading(false);
           setConfigLoadError(t("errors.invalidLink"));
@@ -110,34 +110,34 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     }
 
     if (isInvite && !isTokenRoute) {
-      console.log("[app]", "[ConfigProvider]", "invite mode but no token route, skip loading", {});
+      ;
       setIsConfigLoading(false);
       return;
     }
 
     if (isTokenRoute && inviteToken !== firstSegment) {
-      console.log("[app]", "[ConfigProvider]", "new token detected, updating inviteToken", { newToken: firstSegment, oldToken: inviteToken });
+      ;
       setInviteToken(firstSegment);
       setIsConfigLoading(true);
       return;
     }
 
     if (!isAdminRoute && !isTokenRoute) {
-      console.log("[app]", "[ConfigProvider]", "not a token/admin route, skip loading", { isAdminRoute, isTokenRoute });
+      ;
       setIsConfigLoading(false);
       return;
     }
 
-    console.log("[app]", "[ConfigProvider]", "starting hydrateConfig", {});
+    ;
     setIsConfigLoading(true);
 
     const hydrateConfig = async () => {
       setConfigLoadError("");
       try {
-        if (!inviteToken) { console.log("[app]", "[ConfigProvider]", "no inviteToken, done", {}); setIsConfigLoading(false); return; }
+        if (!inviteToken) { ; setIsConfigLoading(false); return; }
 
         if (inviteToken === loadedTokenRef.current && hasStoredConfig) {
-          console.log("[app]", "[ConfigProvider]", "config already loaded, skip", { loadedToken: loadedTokenRef.current });
+          ;
           setIsConfigLoading(false);
           return;
         }
@@ -147,7 +147,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           try {
             const parsed = JSON.parse(cached);
             if (parsed.data && parsed.cachedAt && Date.now() - parsed.cachedAt < INVITE_CACHE_TTL_MS) {
-              console.log("[app]", "[ConfigProvider]", "using cached config", { inviteToken, cacheAge: Date.now() - parsed.cachedAt });
+              ;
               const { resolveAllConfigImages } = await import("../lib/image-store");
               const resolved = await resolveAllConfigImages(inviteToken, parsed.data);
               for (const [key, url] of Object.entries(resolved)) {
@@ -160,17 +160,17 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
               loadedTokenRef.current = inviteToken;
               return;
             } else {
-              console.log("[app]", "[ConfigProvider]", "cache expired", { cacheAge: parsed.cachedAt ? Date.now() - parsed.cachedAt : "unknown", ttl: INVITE_CACHE_TTL_MS });
+              ;
             }
-          } catch { console.log("[app]", "[ConfigProvider]", "cache parse error", {}); }
+          } catch { ; }
         } else {
-          console.log("[app]", "[ConfigProvider]", "no cache found", {});
+          ;
         }
 
-        console.log("[app]", "[ConfigProvider]", "fetching from Firestore", { inviteToken });
+        ;
         const snapshot = await getDoc(invitationDocRef(inviteToken));
         if (!snapshot.exists()) {
-          console.log("[app]", "[ConfigProvider]", "Firestore doc does not exist", { inviteToken });
+          ;
           setHasStoredConfig(false);
           setConfig(defaultConfig);
           setFormData(defaultConfig);
@@ -178,14 +178,14 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           return;
         }
         const parsed = normalizeConfig(snapshot.data());
-        if (parsed.bankInfo) { console.log("[app]", "[ConfigProvider]", "decrypting bankInfo", {}); parsed.bankInfo = await decrypt(parsed.bankInfo, inviteToken); }
+        if (parsed.bankInfo) { ; parsed.bankInfo = await decrypt(parsed.bankInfo, inviteToken); }
         const { resolveAllConfigImages } = await import("../lib/image-store");
         const resolved = await resolveAllConfigImages(inviteToken, parsed);
         for (const [key, url] of Object.entries(resolved)) {
           if (url) (parsed as Record<string, unknown>)[key] = url;
         }
         {
-          console.log("[app]", "[ConfigProvider]", "loading audio", {});
+          ;
           const { loadAudio } = await import("../lib/music-store");
           const audio = await loadAudio(inviteToken);
           if (audio?.url) {
@@ -196,7 +196,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           }
         }
         const hydrated = { ...defaultConfig, ...parsed };
-        console.log("[app]", "[ConfigProvider]", "config loaded from Firestore", { firstName: hydrated.firstName, hasBankInfo: !!hydrated.bankInfo });
+        ;
         setConfig(hydrated);
         setFormData(hydrated);
         safeSetItem(`wedin_invite_cache_${inviteToken}`, JSON.stringify({ data: hydrated, cachedAt: Date.now() }));
@@ -213,7 +213,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           setConfigLoadError(getFirestoreErrorMessage(e, t));
         }
       } finally {
-        console.log("[app]", "[ConfigProvider]", "hydrateConfig done", {});
+        ;
         setIsConfigLoading(false);
       }
     };
@@ -221,13 +221,13 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
   }, [location.pathname, location.hash, inviteToken, hasStoredConfig, trackVisit, t]);
 
   const reloadConfig = useCallback(async () => {
-    console.log("[app]", "[ConfigProvider]", "reloadConfig start", { inviteToken });
-    if (!inviteToken) { console.log("[app]", "[ConfigProvider]", "reloadConfig skipped, no inviteToken", {}); return; }
+    ;
+    if (!inviteToken) { ; return; }
     try {
       safeRemoveItem(`wedin_invite_cache_${inviteToken}`);
       const snapshot = await getDoc(invitationDocRef(inviteToken));
       if (!snapshot.exists()) {
-        console.log("[app]", "[ConfigProvider]", "reloadConfig: doc not found", {});
+        ;
         setHasStoredConfig(false);
         setConfig(defaultConfig);
         setFormData(defaultConfig);
@@ -253,7 +253,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         }
       }
       const hydrated = { ...defaultConfig, ...parsed };
-      console.log("[app]", "[ConfigProvider]", "reloadConfig success", { firstName: hydrated.firstName });
+      ;
       setConfig(hydrated);
       setFormData(hydrated);
       setHasStoredConfig(true);
@@ -265,10 +265,10 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
 
   const handleSaveSetupCore = useCallback(async (event: React.FormEvent) => {
     event.preventDefault();
-    console.log("[app]", "[ConfigProvider]", "handleSaveSetupCore start", { hasStoredConfig });
-    if (autoSaveTimerRef.current) { console.log("[app]", "[ConfigProvider]", "clearing autosave timer", {}); clearTimeout(autoSaveTimerRef.current); }
+    ;
+    if (autoSaveTimerRef.current) { ; clearTimeout(autoSaveTimerRef.current); }
     if (isSavingRef.current) {
-      console.log("[app]", "[ConfigProvider]", "already saving, blocked", {});
+      ;
       setSaveError(t("errors.alreadySaving"));
       return;
     }
@@ -280,7 +280,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     if (sanitized.weddingSiteURL && isValidGoogleMapsUrl(sanitized.weddingSiteURL)) {
       const derivedPlace = extractPlaceNameFromUrl(sanitized.weddingSiteURL);
       if (derivedPlace) {
-        console.log("[app]", "[ConfigProvider]", "venue name derived from site URL", { derivedPlace });
+        ;
         sanitized.weddingPlace = derivedPlace;
       }
     }
@@ -289,42 +289,42 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
 
     if (!hasStoredConfig) {
       if (formData._privacyConsent !== "true") {
-        console.log("[app]", "[ConfigProvider]", "validation failed: privacyConsent required", {});
+        ;
         setSaveError(t("errors.acceptPrivacyPolicy"));
         return;
       }
       if (!sanitized.adminUsername) {
-        console.log("[app]", "[ConfigProvider]", "validation failed: username required", {});
+        ;
         setSaveError(t("errors.usernameRequired"));
         return;
       }
       if (!/^[a-zA-Z0-9]+$/.test(sanitized.adminUsername)) {
-        console.log("[app]", "[ConfigProvider]", "validation failed: username invalid chars", { username: sanitized.adminUsername });
+        ;
         setSaveError(t("errors.usernameInvalid"));
         return;
       }
       if (sanitized.adminUsername.length > MAX_USERNAME_LENGTH) {
-        console.log("[app]", "[ConfigProvider]", "validation failed: username too long", { length: sanitized.adminUsername.length });
+        ;
         setSaveError(t("errors.usernameTooLong"));
         return;
       }
     }
 
     if (!sanitized.firstName || !sanitized.secondName) {
-      console.log("[app]", "[ConfigProvider]", "validation failed: names required", { firstName: sanitized.firstName, secondName: sanitized.secondName });
+      ;
       setSaveError(t("errors.bothNamesRequired"));
       return;
     }
 
     const dateErrorKey = validateWeddingDate(sanitized, maxAllowedYear, hiddenSet, hasStoredConfig);
     if (dateErrorKey) {
-      console.log("[app]", "[ConfigProvider]", "validation failed: date", { dateErrorKey });
+      ;
       setSaveError(t(dateErrorKey, { year: maxAllowedYear }));
       return;
     }
 
     if (!THEME_VALUES.has(sanitized.theme)) {
-      console.log("[app]", "[ConfigProvider]", "validation failed: theme invalid", { theme: sanitized.theme });
+      ;
       setSaveError(t("errors.themeInvalid"));
       return;
     }
@@ -332,34 +332,34 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     const orderArray = (sanitized.sectionOrder || "").split(",").filter(Boolean).filter((s: string) => !SPECIAL_SECTIONS.includes(s));
     const validSectionKeys = new Set(STORY_SECTION_ORDER);
     if (orderArray.length < 1 || !orderArray.every((s: string) => validSectionKeys.has(s))) {
-      console.log("[app]", "[ConfigProvider]", "validation failed: sectionOrder invalid", { orderArray });
+      ;
       setSaveError(t("errors.sectionOrderInvalid"));
       return;
     }
     if (!hiddenArray.every((s) => validSectionKeys.has(s))) {
-      console.log("[app]", "[ConfigProvider]", "validation failed: hiddenSections invalid", { hiddenArray });
+      ;
       setSaveError(t("errors.hiddenSectionsInvalid"));
       return;
     }
     if (Boolean(sanitized.godparent1) !== Boolean(sanitized.godparent2)) {
-      console.log("[app]", "[ConfigProvider]", "validation failed: godparents both required", { godparent1: sanitized.godparent1, godparent2: sanitized.godparent2 });
+      ;
       setSaveError(t("errors.godparentsRequired"));
       return;
     }
     if (orderArray[0] !== "hero") {
-      console.log("[app]", "[ConfigProvider]", "validation failed: cover first required", { first: orderArray[0] });
+      ;
       setSaveError(t("errors.coverFirst"));
       return;
     }
 
     if (sanitized.menuEnabled === "true") {
       if (!sanitized.menuPostre) {
-        console.log("[app]", "[ConfigProvider]", "validation failed: postre required", {});
+        ;
         setSaveError(t("errors.postreRequired"));
         return;
       }
       if (!sanitized.menuCarne && !sanitized.menuPescado && !sanitized.menuVegano) {
-        console.log("[app]", "[ConfigProvider]", "validation failed: menu option required", {});
+        ;
         setSaveError(t("errors.menuRequired"));
         return;
       }
@@ -369,14 +369,14 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       const upper = sanitized.bankInfo.toUpperCase();
       const looksLikeIban = /^[A-Z]{2}\d/.test(upper);
       if (looksLikeIban && !/^[A-Z]{2}\d{2}[ ]?\d{4}[ ]?\d{4}[ ]?\d{4}[ ]?\d{4}[ ]?\d{0,4}$/.test(upper)) {
-        console.log("[app]", "[ConfigProvider]", "validation failed: IBAN invalid", { bankInfo: sanitized.bankInfo });
+        ;
         setSaveError(t("errors.ibanInvalid"));
         return;
       }
     }
 
     if (sanitized.musicUrl && sanitized.musicUrl.startsWith("data:")) {
-      console.log("[app]", "[ConfigProvider]", "moving musicUrl to musicFile (data URL)", {});
+      ;
       sanitized.musicFile = sanitized.musicUrl;
       sanitized.musicUrl = "";
     }
@@ -385,19 +385,19 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       const expected = STORY_SECTION_ORDER.length;
       const actual = orderArray.length;
       if (actual !== expected) {
-        console.log("[app]", "[ConfigProvider]", "validation failed: sectionOrder mismatch", { actual, expected });
+        ;
         setSaveError(t("errors.sectionOrderMismatch", { actual, expected }));
         return;
       }
     }
 
     if (sanitized.inviteMessage && sanitized.inviteMessage.length > MAX_INVITE_MESSAGE_LENGTH) {
-      console.log("[app]", "[ConfigProvider]", "validation failed: message too long", { length: sanitized.inviteMessage.length });
+      ;
       setSaveError(t("errors.messageTooLong"));
       return;
     }
     if (sanitized.weddingSchedule && sanitized.weddingSchedule.length > MAX_LONG_TEXT_LENGTH) {
-      console.log("[app]", "[ConfigProvider]", "validation failed: schedule too long", { length: sanitized.weddingSchedule.length });
+      ;
       setSaveError(t("errors.scheduleTooLong"));
       return;
     }
@@ -405,7 +405,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       try {
         const parsed = JSON.parse(sanitized.weddingScheduleEvents);
         if (!Array.isArray(parsed) || parsed.length > MAX_SCHEDULE_EVENTS) {
-          console.log("[app]", "[ConfigProvider]", "validation failed: schedule events invalid", { parsed });
+          ;
           setSaveError(t("errors.scheduleEventsInvalid"));
           return;
         }
@@ -417,29 +417,29 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           const time = String((ev as Record<string, unknown>).time || "");
           const text = String((ev as Record<string, unknown>).text || "");
           if (time && !/^([01]\d|2[0-3]):[0-5]\d$/.test(time)) {
-            console.log("[app]", "[ConfigProvider]", "validation failed: schedule event time invalid", { time });
+            ;
             setSaveError(t("errors.scheduleEventTimeInvalid"));
             return;
           }
           if (text.length > MAX_SCHEDULE_EVENT_TEXT) {
-            console.log("[app]", "[ConfigProvider]", "validation failed: schedule event text too long", { length: text.length });
+            ;
             setSaveError(t("errors.scheduleEventTextTooLong"));
             return;
           }
         }
       } catch {
-        console.log("[app]", "[ConfigProvider]", "validation failed: schedule events JSON invalid", {});
+        ;
         setSaveError(t("errors.scheduleEventsInvalid"));
         return;
       }
     }
     if (sanitized.storyText && sanitized.storyText.length > MAX_LONG_TEXT_LENGTH) {
-      console.log("[app]", "[ConfigProvider]", "validation failed: story too long", { length: sanitized.storyText.length });
+      ;
       setSaveError(t("errors.storyTooLong"));
       return;
     }
     if (sanitized.giftsInfo && sanitized.giftsInfo.length > MAX_LONG_TEXT_LENGTH) {
-      console.log("[app]", "[ConfigProvider]", "validation failed: giftsInfo too long", { length: sanitized.giftsInfo.length });
+      ;
       setSaveError(t("errors.giftsTooLong"));
       return;
     }
@@ -447,7 +447,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       try {
         const parsed = JSON.parse(sanitized.transportDepartures);
         if (!Array.isArray(parsed) || parsed.length > 4) {
-          console.log("[app]", "[ConfigProvider]", "validation failed: transport departures invalid", { parsed });
+          ;
           setSaveError(t("errors.transportDeparturesInvalid"));
           return;
         }
@@ -459,29 +459,29 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           const time = String((dep as Record<string, unknown>).time || "");
           const url = String((dep as Record<string, unknown>).url || "");
           if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(time)) {
-            console.log("[app]", "[ConfigProvider]", "validation failed: departure time invalid", { time });
+            ;
             setSaveError(t("errors.transportTimeInvalid"));
             return;
           }
           if (url && !isValidGoogleMapsUrl(url)) {
-            console.log("[app]", "[ConfigProvider]", "validation failed: departure url invalid", { url });
+            ;
             setSaveError(t("errors.transportUrlInvalid"));
             return;
           }
         }
       } catch {
-        console.log("[app]", "[ConfigProvider]", "validation failed: transport departures JSON invalid", {});
+        ;
         setSaveError(t("errors.transportDeparturesInvalid"));
         return;
       }
     }
     if (sanitized.accommodationInfo && sanitized.accommodationInfo.length > MAX_LONG_TEXT_LENGTH) {
-      console.log("[app]", "[ConfigProvider]", "validation failed: accommodationInfo too long", { length: sanitized.accommodationInfo.length });
+      ;
       setSaveError(t("errors.accommodationTooLong"));
       return;
     }
     if (sanitized.menuTexto && sanitized.menuTexto.length > MAX_LONG_TEXT_LENGTH) {
-      console.log("[app]", "[ConfigProvider]", "validation failed: menuTexto too long", { length: sanitized.menuTexto.length });
+      ;
       setSaveError(t("errors.menuTextoTooLong"));
       return;
     }
@@ -496,25 +496,25 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     }
 
     isSavingRef.current = true;
-    console.log("[app]", "[ConfigProvider]", "validation passed, saving...", {});
+    ;
     try {
-      if (payload.bankInfo) { console.log("[app]", "[ConfigProvider]", "encrypting bankInfo", {}); payload.bankInfo = await encrypt(payload.bankInfo, inviteToken); }
+      if (payload.bankInfo) { ; payload.bankInfo = await encrypt(payload.bankInfo, inviteToken); }
       // Migrate any data-URL image fields to configImages subcollection
       const { saveConfigImage } = await import("../lib/image-store");
       const originalImages: Record<string, string> = {};
       for (const imageId of ["couplePhoto", "backgroundImage", "customSeal", "cornerDecoration"]) {
         const val = payload[imageId];
         if (typeof val === "string" && val.startsWith("data:")) {
-          console.log("[app]", "[ConfigProvider]", `migrating ${imageId} data URL to subcollection`, {});
+          ;
           originalImages[imageId] = val;
           payload[imageId] = await saveConfigImage(inviteToken, imageId, val);
         }
       }
       delete (payload as { musicFile?: string }).musicFile;
       payload.privacyPolicyVersion = PRIVACY_POLICY_VERSION;
-      console.log("[app]", "[ConfigProvider]", "setDoc start", {});
+      ;
       await setDoc(invitationDocRef(inviteToken), payload, { merge: true });
-      console.log("[app]", "[ConfigProvider]", "setDoc success", {});
+      ;
       if (payload.bankInfo) payload.bankInfo = await decrypt(payload.bankInfo, inviteToken);
       // Restore data URLs in memory for the current session
       for (const [k, v] of Object.entries(originalImages)) {
@@ -523,25 +523,25 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       setConfig(payload);
       setFormData(payload);
       setHasStoredConfig(true);
-      console.log("[app]", "[ConfigProvider]", "calling onFirstSave callbacks", { count: onFirstSaveCallbacksRef.current.length });
+      ;
 
       for (const cb of onFirstSaveCallbacksRef.current) cb();
 
-      console.log("[app]", "[ConfigProvider]", "save success", {});
+      ;
       setSaveMessage(t("errors.configSaved"));
     } catch (e) {
       console.error("[app]", "[ConfigProvider]", "save error", { error: e });
       setSaveError(getFirestoreErrorMessage(e, t));
     } finally {
-      console.log("[app]", "[ConfigProvider]", "save complete", {});
+      ;
       isSavingRef.current = false;
     }
   }, [hasStoredConfig, formData, maxAllowedYear, inviteToken, config, autoSaveTimerRef, isSavingRef, t, setSaveError, setSaveMessage]);
 
   const handleDeleteInvitation = useCallback(async () => {
-    console.log("[app]", "[ConfigProvider]", "handleDeleteInvitation start", { inviteToken });
+    ;
     if (!inviteToken) return;
-    if (!window.confirm(t("errors.deleteConfirm"))) { console.log("[app]", "[ConfigProvider]", "delete cancelled by user", {}); return; }
+    if (!window.confirm(t("errors.deleteConfirm"))) { ; return; }
     try {
       const snap = await getDocs(rsvpByInviteRef(inviteToken));
       const batch = writeBatch(db);
@@ -553,7 +553,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       await batch.commit();
       safeRemoveItem(`wedin_invite_cache_${inviteToken}`);
       clearSession();
-      console.log("[app]", "[ConfigProvider]", "invitation deleted, navigating home", {});
+      ;
       navigate("/");
     } catch (e) {
       console.error("[app]", "[ConfigProvider]", "delete invitation error", { error: e });
