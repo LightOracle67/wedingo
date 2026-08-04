@@ -60,7 +60,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
 
     if (!inviteToken) return;
-    (async () => { try { await refreshToken(); } catch (err) { void err; } })();
+    (async () => { try { await refreshToken(); } catch { } })();
   }, [inviteToken, refreshToken]);
 
   // ── Clear auth messages on route change ──

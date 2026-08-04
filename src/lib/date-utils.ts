@@ -8,20 +8,20 @@ import { MONTH_OPTIONS, MONTH_VALUE_TO_NUMBER } from "./constants";
 export function isDateInPast(year: string, month: string, day: string): boolean {
   const monthIndex = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"].indexOf(month);
   if (monthIndex === -1) {
-    ;
+
     return false;
   }
   const date = new Date(Number(year), monthIndex, Number(day));
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   const result = date < today;
-  ;
+
   return result;
 }
 
 export function computeAge(birthDateStr: string) {
   if (!birthDateStr) {
-    ;
+
     return null;
   }
   const birth = new Date(birthDateStr + "T00:00:00");
@@ -31,7 +31,7 @@ export function computeAge(birthDateStr: string) {
   if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) {
     age--;
   }
-  ;
+
   return age;
 }
 
@@ -46,47 +46,47 @@ export function computeAge(birthDateStr: string) {
 export function validateWeddingDate(config: Record<string, string>, maxAllowedYear: number, hiddenSet: Set<string>, hasStoredConfig: boolean) {
   if (!hiddenSet.has("details") || !hasStoredConfig) {
     if (!config.weddingDay || !config.weddingMonth || !config.weddingYear || !config.weddingHour || !config.weddingMinute) {
-      ;
+
       return "errors.dateIncomplete";
     }
     const parsedDay = Number.parseInt(config.weddingDay, 10);
     if (Number.isNaN(parsedDay) || parsedDay < 1 || parsedDay > 31) {
-      ;
+
       return "errors.dayInvalid";
     }
     if (!MONTH_OPTIONS.some((m) => m.value === config.weddingMonth)) {
-      ;
+
       return "errors.monthInvalid";
     }
     const parsedHour = Number.parseInt(config.weddingHour, 10);
     if (Number.isNaN(parsedHour) || parsedHour < 0 || parsedHour > 23) {
-      ;
+
       return "errors.hourInvalid";
     }
     const parsedMinute = Number.parseInt(config.weddingMinute, 10);
     if (Number.isNaN(parsedMinute) || parsedMinute < 0 || parsedMinute > 59) {
-      ;
+
       return "errors.minuteInvalid";
     }
     const parsedYear = Number.parseInt(config.weddingYear, 10);
     const monthNum = MONTH_VALUE_TO_NUMBER[config.weddingMonth];
     const enteredDate = new Date(parsedYear, monthNum! - 1, parsedDay, parsedHour, parsedMinute);
     if (enteredDate.getDate() !== parsedDay || enteredDate.getMonth() !== monthNum! - 1 || enteredDate.getFullYear() !== parsedYear) {
-      ;
+
       return "errors.dateNotValid";
     }
     const today = new Date();
     today.setSeconds(0, 0);
     if (enteredDate < today) {
-      ;
+
       return "errors.dateBeforeToday";
     }
     if (Number.isNaN(parsedYear) || parsedYear > maxAllowedYear) {
-      ;
+
       return "errors.yearTooFar";
     }
   }
-  ;
+
   return null;
 }
 

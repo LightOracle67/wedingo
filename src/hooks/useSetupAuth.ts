@@ -42,7 +42,7 @@ export function useSetupAuth(
   setAdminMessageType: (type: string) => void,
   setHasStoredConfig: (v: boolean) => void,
 ) {
-  ;
+
   const { t } = useTranslation();
   const navigate = useNavigate();
   // ─── Estados de autenticación ──────────────────────────
@@ -74,21 +74,20 @@ export function useSetupAuth(
    * Verifica que la sesión siga activa en Firestore.
    */
   useEffect(() => {
-    ;
+
     const session = getSession();
-    ;
+
     if (!session || (session.type !== "setup" && session.type !== "admin")) {
-      ;
-      ;
+
+
       return;
     }
     if (!inviteToken) {
-      ;
-      ;
+
+
       return;
     }
 
-    ;
     setIsRestoringSession(true);
 
     getDoc(invitationDocRef(inviteToken)).then(async (snap) => {
@@ -98,19 +97,19 @@ export function useSetupAuth(
         && data?.activeSession
         && sessionExpiresAt
         && new Date(sessionExpiresAt).getTime() > Date.now();
-      ;
-      ;
+
+
       if (isValid) {
         setTokenLoginUsername(session.identifier);
         sessionTypeRef.current = session.type;
         setSetupToken("");
         setSetupTokenInput("");
         setIsTokenVerified(true);
-        ;
-        ;
+
+
       } else if (snap.exists()) {
-        ;
-        ;
+
+
         try {
           await updateDoc(invitationDocRef(inviteToken), {
             activeSession: serverTimestamp(),
@@ -121,23 +120,23 @@ export function useSetupAuth(
           setSetupToken("");
           setSetupTokenInput("");
           setIsTokenVerified(true);
-          ;
-          ;
+
+
         } catch (repairErr) {
           console.error("[app]", "[useSetupAuth]", "session repair failed", { error: repairErr });
-          ;
+
           clearSession();
         }
       } else {
         clearSession();
-        ;
-        ;
+
+
       }
-      ;
+
       setIsRestoringSession(false);
     }).catch((err) => {
       console.error("[app]", "[useSetupAuth]", "session restoration Firestore error", { error: err });
-      ;
+
       setIsRestoringSession(false);
     });
   }, [inviteToken]);
@@ -147,17 +146,17 @@ export function useSetupAuth(
    * Esto actualiza el timestamp en sessionStorage para mantener la sesión viva.
    */
   useEffect(() => {
-    ;
+
     if (isTokenVerified) {
       const doRenew = async () => {
-        ;
+
         renewSession();
         try {
           await updateDoc(invitationDocRef(inviteToken), {
             activeSession: serverTimestamp(),
             sessionExpiresAt: firestoreSessionExpiry(),
           });
-          ;
+
         } catch (err) {
           console.error("[app]", "[useSetupAuth]", "session renewal error", { error: err });
           if (setAdminMessage && setAdminMessageType) {
@@ -168,7 +167,7 @@ export function useSetupAuth(
       };
       doRenew();
       renewRef.current = setInterval(() => doRenew(), 60_000);
-      ;
+
     } else {
       if (renewRef.current) { ; clearInterval(renewRef.current); }
     }
@@ -179,9 +178,9 @@ export function useSetupAuth(
    * Persiste la sesión en sessionStorage cuando cambia el estado de autenticación.
    */
   useEffect(() => {
-    ;
+
     if (isTokenVerified && tokenLoginUsername && sessionTypeRef.current) {
-      ;
+
       saveSession(sessionTypeRef.current, tokenLoginUsername);
     }
   }, [isTokenVerified, tokenLoginUsername]);
@@ -199,34 +198,33 @@ export function useSetupAuth(
    * @returns {Promise<string>} El token activo.
    */
   const refreshSetupToken = useCallback(async (_oldToken?: string) => {
-    ;
+
     const storageKey = `wedin_setup_token_${inviteToken || ""}`;
 
     if (inviteToken) {
       const saved = safeGetItem(storageKey, sessionStorage);
       if (saved) {
-        ;
+
         setSetupToken(saved);
         setSetupTokenInput(saved);
         return saved;
       }
-      ;
 
       try {
         const inviteSnap = await getDoc(invitationDocRef(inviteToken));
         if (inviteSnap.exists()) {
           const activeToken = inviteSnap.data()._activeSetupToken;
           if (activeToken) {
-            ;
+
             setSetupToken(activeToken);
             setSetupTokenInput(activeToken);
             safeSetItem(storageKey, activeToken, sessionStorage);
             return activeToken;
           } else {
-            ;
+
           }
         } else {
-          ;
+
         }
       } catch (err) {
         console.error("[app]", "[useSetupAuth]", "token lookup failed", { error: err });
@@ -237,7 +235,6 @@ export function useSetupAuth(
       }
     }
 
-    ;
     return "";
   }, [inviteToken, setAdminMessage, setAdminMessageType, t]);
 
@@ -246,18 +243,18 @@ export function useSetupAuth(
    * Se llama solo al primer guardado o cuando el usuario solicita explícitamente un cambio.
    */
   const generateNewToken = useCallback(async () => {
-    ;
+
     const storageKey = `wedin_setup_token_${inviteToken || ""}`;
     const nextToken = generateSetupToken();
     const normalizedToken = normalizeTokenValue(nextToken);
-    ;
+
     setSetupToken(normalizedToken);
     setSetupTokenInput(normalizedToken);
     if (inviteToken) {
       safeSetItem(storageKey, normalizedToken, sessionStorage);
       try {
         await setDoc(invitationDocRef(inviteToken), { _activeSetupToken: normalizedToken }, { merge: true });
-        ;
+
       } catch (err) {
         console.error("[app]", "[useSetupAuth]", "token save to Firestore failed", { error: err });
         if (setAdminMessage && setAdminMessageType) {
@@ -266,7 +263,7 @@ export function useSetupAuth(
         }
       }
     }
-    ;
+
     return normalizedToken;
   }, [inviteToken, setAdminMessage, setAdminMessageType, t]);
 
@@ -323,19 +320,19 @@ export function useSetupAuth(
    * Si ya hay una sesión activa, pide confirmación para sobrescribir.
    */
   const handleTokenLogin = useCallback(async () => {
-    ;
+
     setAuthMessageType("error");
     setAuthMessage("");
 
     const enteredToken = normalizeTokenValue(setupTokenInput);
     if (!enteredToken) {
-      ;
+
       setAuthMessage(t("auth.enterCode"));
       return;
     }
 
     setIsTokenVerifying(true);
-    ;
+
     try {
       const result = await activateSessionWithToken(enteredToken);
       if (result === null) { ; setIsTokenVerifying(false); return; }
@@ -350,13 +347,13 @@ export function useSetupAuth(
       saveSession(sessionTypeRef.current, displayName);
       setAuthMessageType("success");
       setAuthMessage(t("auth.codeVerified"));
-      ;
+
     } catch (err) {
       console.error("[app]", "[useSetupAuth]", "token login failed", { error: err });
       setAuthMessage(t("auth.codeVerifyError"));
     } finally {
       setIsTokenVerifying(false);
-      ;
+
     }
   }, [activateSessionWithToken, setupTokenInput, inviteToken, setHasStoredConfig, config, adminLoginUsername, t]);
 
@@ -365,26 +362,25 @@ export function useSetupAuth(
    * Verifica que el usuario coincida con el configurado y que el token sea válido.
    */
   const handleAdminTokenLogin = useCallback(async () => {
-    ;
+
     setAuthMessageType("error");
     setAuthMessage("");
 
     const username = adminLoginUsername.trim().toLowerCase();
     const enteredToken = normalizeTokenValue(setupTokenInput);
     if (!username || !enteredToken) {
-      ;
+
       setAuthMessage(t("auth.enterUserAndCode"));
       return;
     }
 
     const configuredUsername = (config.adminUsername || "").trim().toLowerCase();
     if (configuredUsername && username !== configuredUsername) {
-      ;
+
       setAuthMessage(t("auth.invalidCredentials"));
       return;
     }
 
-    ;
     setIsTokenVerifying(true);
     try {
       const tokenUsername = await activateSessionWithToken(enteredToken, (_tokenDoc, tu) => {
@@ -403,7 +399,7 @@ export function useSetupAuth(
       saveSession("admin", username);
       setAuthMessageType("success");
       setAuthMessage(t("auth.loginSuccess"));
-      ;
+
     } catch (err) {
       const key = (err as Error)?.message;
       console.error("[app]", "[useSetupAuth]", "admin login failed", { key });
@@ -414,7 +410,7 @@ export function useSetupAuth(
       }
     } finally {
       setIsTokenVerifying(false);
-      ;
+
     }
   }, [activateSessionWithToken, adminLoginUsername, setupTokenInput, config, setHasStoredConfig, t]);
 
@@ -428,7 +424,7 @@ export function useSetupAuth(
    * Redirige a la página principal.
    */
   const handleAdminLogout = useCallback(async () => {
-    ;
+
     const token = inviteToken;
     setIsTokenVerified(false);
     setTokenLoginUsername("");
@@ -441,7 +437,7 @@ export function useSetupAuth(
       try {
         safeRemoveItem(`wedin_invite_cache_${token}`);
         await updateDoc(invitationDocRef(token), { activeSession: null, sessionExpiresAt: null });
-        ;
+
       } catch (err) {
         console.error("[app]", "[useSetupAuth]", "logout Firestore update failed", { error: err });
         if (setAdminMessage && setAdminMessageType) {
@@ -450,7 +446,7 @@ export function useSetupAuth(
         }
       }
     }
-    ;
+
     navigate("/");
   }, [inviteToken, navigate, setAdminMessage, setAdminMessageType, t]);
 
@@ -459,7 +455,7 @@ export function useSetupAuth(
    * Requiere confirmar el token actual.
    */
   const handleResetSetupToken = useCallback(async () => {
-    ;
+
     if (resettingRef.current) { ; return; }
     resettingRef.current = true;
     try {
@@ -467,17 +463,17 @@ export function useSetupAuth(
       const storedToken = safeGetItem(storageKey, sessionStorage) || "";
       const currentToken = setupToken || storedToken;
       if (!currentToken || confirmTokenInput !== currentToken) {
-        ;
+
         setAuthMessage(t("auth.currentTokenRequired"));
         return;
       }
       setAuthMessage("");
-      ;
+
       await generateNewToken();
       setAuthMessageType("success");
       setAuthMessage(t("auth.tokenRenewed"));
       setConfirmTokenInput("");
-      ;
+
     } finally {
       resettingRef.current = false;
     }
@@ -488,7 +484,7 @@ export function useSetupAuth(
    * Similar a handleResetSetupToken pero con mensajes dirigidos al admin.
    */
   const handleResetTokenFromAdmin = useCallback(async () => {
-    ;
+
     if (resettingRef.current) { ; return; }
     resettingRef.current = true;
     try {
@@ -497,7 +493,7 @@ export function useSetupAuth(
       setAdminMessageType("success");
       setAdminMessage(t("auth.tokenRenewedAdmin"));
       setConfirmTokenInput("");
-      ;
+
     } finally {
       resettingRef.current = false;
     }

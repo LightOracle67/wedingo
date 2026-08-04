@@ -4,7 +4,7 @@ import "./Fireflies.css";
 const COUNT = 20;
 
 const Fireflies = memo(function Fireflies() {
-  ;
+
   return (
     <div className="fireflies" aria-hidden="true">
       {Array.from({ length: COUNT }, (_, i) => {
@@ -14,7 +14,7 @@ const Fireflies = memo(function Fireflies() {
           animationDelay: `${-(i * 2.3 + 0.7) % 35}s`,
           animationDuration: `${30 + (i % 6) * 4}s`,
         };
-        ;
+
         return <span key={i} className="firefly" style={style} />;
       })}
     </div>

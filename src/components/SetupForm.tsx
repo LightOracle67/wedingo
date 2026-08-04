@@ -36,12 +36,11 @@ import "../styles/admin.css";
  * @returns {JSX.Element} Formulario con todas las secciones de configuración.
  */
 export default function SetupForm({ prefix = "" }) {
-  ;
 
   const { t } = useTranslation();
 
   useEffect(() => {
-    ;
+
     const handler = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
         const form = document.querySelector(".setup-form") as HTMLFormElement;
@@ -50,7 +49,7 @@ export default function SetupForm({ prefix = "" }) {
     };
     window.addEventListener("keydown", handler);
     return () => {
-      ;
+
       window.removeEventListener("keydown", handler);
     };
   }, []);
@@ -64,7 +63,7 @@ export default function SetupForm({ prefix = "" }) {
   // ── Muestra mensajes de éxito/error como toasts ─────────
   useEffect(() => {
     if (saveMessage) {
-      ;
+
       addToast("success", saveMessage);
     }
   }, [saveMessage, addToast]);

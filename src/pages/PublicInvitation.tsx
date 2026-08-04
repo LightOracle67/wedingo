@@ -72,7 +72,7 @@ const SECTION_COMPONENTS = {
  * @returns {JSX.Element} Página de invitación.
  */
 export default function PublicInvitation() {
-  ;
+
   const { t } = useTranslation();
   const location = useLocation();
   const { inviteToken } = useParams();
@@ -321,7 +321,6 @@ export default function PublicInvitation() {
   const [envelopeOpen, setEnvelopeOpen] = useState(false);
   const isEmpty = !config.firstName && !config.secondName && !isInviteMode;
   const hasHash = location.hash.length > 1;
-  ;
 
   // ═══════════════════════════════════════════════════════
   // RENDERIZADO CONDICIONAL
@@ -376,7 +375,6 @@ export default function PublicInvitation() {
   // RENDERIZADO PRINCIPAL
   // ═══════════════════════════════════════════════════════
   const showEnvelope = !isAdminTokenLoggedIn && !isConfigLoading && !configLoadError && !isEmpty && !showMissingToken && !envelopeOpen;
-  ;
 
   return (
     <div className={`app-scene ${isStoryTransitioning ? "app-scene--transitioning" : ""}`}

@@ -16,7 +16,7 @@ const SUPERADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAILS?.split(",")[0]?.trim(
 const SuperAdminContext = createContext<any>(null);
 
 export function SuperAdminProvider({ children }: { children: React.ReactNode }) {
-  ;
+
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [user, setUser] = useState<User | null>(null);
@@ -27,57 +27,57 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
   const loggingInRef = useRef(false);
 
   useEffect(() => {
-    ;
+
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       const local = getSession();
-      ;
+
       if (firebaseUser && firebaseUser.email === SUPERADMIN_EMAIL && local?.type === "superadmin") {
-        ;
+
         setUser(firebaseUser);
       } else if (firebaseUser && firebaseUser.email === SUPERADMIN_EMAIL && loggingInRef.current) {
         // Login en curso: no forzar cierre, esperar a que login() guarde la sesión
-        ;
+
         setUser(firebaseUser);
       } else {
         if (firebaseUser && firebaseUser.email === SUPERADMIN_EMAIL) {
-          ;
+
           signOut(auth).catch(() => {});
         }
-        ;
+
         setUser(null);
       }
       setIsLoading(false);
     });
     return () => {
-      ;
+
       unsubscribe();
     };
   }, []);
 
   useEffect(() => {
     if (user) {
-      ;
+
       renewSession();
       renewRef.current = setInterval(() => {
-        ;
+
         renewSession();
       }, 60_000);
     } else {
       if (renewRef.current) {
-        ;
+
         clearInterval(renewRef.current);
       }
     }
     return () => {
       if (renewRef.current) {
-        ;
+
         clearInterval(renewRef.current);
       }
     };
   }, [user]);
 
   const login = useCallback(async (email: string, password: string) => {
-    ;
+
     setError("");
     loggingInRef.current = true;
     try {
@@ -92,7 +92,7 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
       saveSession("superadmin", result.user.email ?? "", { uid: result.user.uid });
       setUser(result.user);
       loggingInRef.current = false;
-      ;
+
       try {
         const cred = new PasswordCredential({ id: email, password, name: email });
         navigator.credentials.store(cred);
@@ -116,16 +116,16 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
   }, [t]);
 
   const logout = useCallback(async () => {
-    ;
+
     clearSession();
     await signOut(auth);
     setUser(null);
     try {
       const keys = Object.keys(localStorage).filter((k) => k.startsWith("wedin_invite_cache_"));
-      ;
+
       keys.forEach((k: string) => localStorage.removeItem(k));
     } catch {}
-    ;
+
     navigate("/");
   }, [navigate]);
 

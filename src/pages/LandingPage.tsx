@@ -17,7 +17,7 @@ import "../styles/admin.css";
 import "../styles/modals.css";
 
 export default function LandingPage() {
-  ;
+
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { setIsTokenVerified, setTokenLoginUsername } = useApp();
@@ -34,32 +34,32 @@ export default function LandingPage() {
   const loginBlockedUntilRef = useRef(0);
 
   const handleCreate = () => {
-    ;
+
     const token = generateInviteToken();
-    ;
+
     safeSetItem("wedin_invite_token", token, sessionStorage);
     navigate(`/${token}/setup`);
   };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    ;
+
     if (Date.now() < loginBlockedUntilRef.current) {
       const waitSec = Math.ceil((loginBlockedUntilRef.current - Date.now()) / 1000);
-      ;
+
       setError(t("landing.errorTooManyAttempts", { seconds: waitSec }));
       return;
     }
     const username = (usernameInput || "").trim();
     const raw = (tokenInput || "").trim();
     if (!username || !raw) {
-      ;
+
       setError(t("landing.errorEmpty"));
       loginAttemptsRef.current++;
       if (loginAttemptsRef.current >= 3) {
         loginBlockedUntilRef.current = Date.now() + 30000;
         loginAttemptsRef.current = 0;
-        ;
+
       }
       return;
     }
@@ -69,30 +69,30 @@ export default function LandingPage() {
 
     const normalized = normalizeTokenValue(raw);
     if (normalized.length < 20) {
-      ;
+
       setError(t("landing.errorInvalidToken"));
       loginAttemptsRef.current++;
       if (loginAttemptsRef.current >= 3) {
         loginBlockedUntilRef.current = Date.now() + 30000;
         loginAttemptsRef.current = 0;
-        ;
+
       }
       setIsLoading(false);
       return;
     }
 
     try {
-      ;
+
       const invQuery = query(INVITATIONS_COLLECTION_REF, where("_activeSetupToken", "==", normalized));
       const invSnap = await getDocs(invQuery);
       if (invSnap.empty) {
-        ;
+
         setError(t("landing.errorTokenNotFound"));
         loginAttemptsRef.current++;
         if (loginAttemptsRef.current >= 3) {
           loginBlockedUntilRef.current = Date.now() + 30000;
           loginAttemptsRef.current = 0;
-          ;
+
         }
         setIsLoading(false);
         return;
@@ -100,16 +100,15 @@ export default function LandingPage() {
       const matchedInv = invSnap.docs[0]!;
       const target = matchedInv.id;
       const matchedData = matchedInv.data();
-      ;
 
       if (matchedData.adminUsername && matchedData.adminUsername.toLowerCase() !== username.toLowerCase()) {
-        ;
+
         setError(t("landing.errorUsernameMismatch"));
         loginAttemptsRef.current++;
         if (loginAttemptsRef.current >= 3) {
           loginBlockedUntilRef.current = Date.now() + 30000;
           loginAttemptsRef.current = 0;
-          ;
+
         }
         setIsLoading(false);
         return;
@@ -122,18 +121,18 @@ export default function LandingPage() {
       } catch {}
 
       if (matchedData.activeSession) {
-        ;
+
         setIsLoading(false);
         if (!window.confirm(t("landing.sessionExists"))) {
-          ;
+
           return;
         }
-        ;
+
         setIsLoading(true);
       }
 
       try {
-        ;
+
         await runTransaction(db, async (transaction) => {
           const inviteRef = invitationDocRef(target);
           const inviteSnapInTx = await transaction.get(inviteRef);
@@ -143,7 +142,7 @@ export default function LandingPage() {
             transaction.update(inviteRef, { activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry() });
           }
         });
-        ;
+
       } catch (err) {
         console.error("[app]", "[LandingPage]", "transaction failed", { error: err });
         setError(t("landing.errorTransactionFailed"));
@@ -151,7 +150,7 @@ export default function LandingPage() {
         if (loginAttemptsRef.current >= 3) {
           loginBlockedUntilRef.current = Date.now() + 30000;
           loginAttemptsRef.current = 0;
-          ;
+
         }
         setIsLoading(false);
         return;
@@ -162,7 +161,7 @@ export default function LandingPage() {
       saveSession("admin", username);
       setTokenLoginUsername(username);
       setIsTokenVerified(true);
-      ;
+
       try {
         const cred = new PasswordCredential({ id: username, password: normalized, name: username });
         navigator.credentials.store(cred);
@@ -175,7 +174,7 @@ export default function LandingPage() {
       if (loginAttemptsRef.current >= 3) {
         loginBlockedUntilRef.current = Date.now() + 30000;
         loginAttemptsRef.current = 0;
-        ;
+
       }
     }
 
@@ -183,7 +182,7 @@ export default function LandingPage() {
   };
 
   const openModal = () => {
-    ;
+
     setUsernameInput("");
     setTokenInput("");
     setError("");

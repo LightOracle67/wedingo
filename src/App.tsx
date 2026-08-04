@@ -31,26 +31,26 @@ const SuperAdminPanel = lazy(() => import("./pages/SuperAdminPanel"));
 const PrintPage = lazy(() => import("./pages/PrintPage"));
 
 function AppShell() {
-  ;
+
   const { t, i18n } = useTranslation();
   const { config, formData, isAdminTokenLoggedIn, tokenLoginUsername, inviteToken } = useApp();
   const [username, setUsername] = useState("");
   
   useEffect(() => {
-    ;
+
     try {
       const raw = sessionStorage.getItem("wedin_session");
       if (raw) {
         const data = JSON.parse(raw);
         if (data.identifier && data.identifier.length > 10 && data.expiresAt && Date.now() < data.expiresAt) {
-          ;
+
           setUsername(data.identifier);
         } else {
-          ;
+
         }
       }
     } catch {
-      ;
+
     }
   }, []);
   const location = useLocation();
@@ -61,20 +61,20 @@ function AppShell() {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
 
   useEffect(() => {
-    ;
+
     const onOnline = () => { ; setIsOnline(true); };
     const onOffline = () => { ; setIsOnline(false); };
     window.addEventListener("online", onOnline);
     window.addEventListener("offline", onOffline);
     return () => {
-      ;
+
       window.removeEventListener("online", onOnline);
       window.removeEventListener("offline", onOffline);
     };
   }, []);
 
   useEffect(() => {
-    ;
+
     if ("serviceWorker" in navigator && import.meta.env.PROD) {
       navigator.serviceWorker.register("/sw.js").catch(() => { ; });
     }
@@ -85,7 +85,7 @@ function AppShell() {
 
   useEffect(() => {
     const lang = i18n.language?.split("-")[0] || "es";
-    ;
+
     document.documentElement.lang = lang;
     document.documentElement.dir = RTL_LANGS.has(lang) ? "rtl" : "ltr";
     document.documentElement.translate = true;
@@ -93,7 +93,7 @@ function AppShell() {
 
   useEffect(() => {
     const path = location.pathname;
-    ;
+
     if (path === "/") document.title = t("app.titleLanding");
     else if (path.includes("/admin")) document.title = t("app.titleAdmin");
     else if (path.includes("/setup")) document.title = t("app.titleSetup");
@@ -102,17 +102,17 @@ function AppShell() {
 
   useEffect(() => {
     const activeTheme = isEditingRoute ? "golden" : formData.theme || config.theme;
-    ;
+
     document.documentElement.dataset.weddingTheme = activeTheme || "golden";
   }, [formData.theme, config.theme, isEditingRoute]);
 
   useEffect(() => {
-    ;
+
     document.documentElement.style.setProperty("--wedding-background-image", "none");
   }, []);
 
   useEffect(() => {
-    ;
+
     const handler = (event: ErrorEvent) => {
       logError(event.error || event.message, "global");
     };
@@ -122,14 +122,14 @@ function AppShell() {
     window.addEventListener("error", handler);
     window.addEventListener("unhandledrejection", rejectionHandler);
     return () => {
-      ;
+
       window.removeEventListener("error", handler);
       window.removeEventListener("unhandledrejection", rejectionHandler);
     };
   }, []);
 
   useEffect(() => {
-    ;
+
     window.scrollTo(0, 0);
   }, [location.pathname]);
 

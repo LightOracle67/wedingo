@@ -26,7 +26,7 @@ import { ConfigContext } from "./useConfig";
 import { useAppUI } from "./useAppUI";
 
 export function ConfigProvider({ children }: { children: ReactNode }) {
-  ;
+
   const { t } = useTranslation();
   const { setSaveMessage, setSaveError } = useAppUI();
   const location = useLocation();
@@ -49,7 +49,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
   const { formattedDate, formattedTime, calendarLink } = useCalendar(config);
 
   const updateFormField = useCallback((field: string, value: string) => {
-    ;
+
     setFormData((current: InvitationConfig) => ({ ...current, [field]: value }));
   }, []);
 
@@ -69,11 +69,11 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
   const trackVisit = useCallback(async (token: string) => {
     if (!token || trackedRef.current) { ; return; }
     trackedRef.current = true;
-    ;
+
     try {
       const ref = invitationDocRef(token);
       await updateDoc(ref, { _visits: increment(1) });
-      ;
+
     } catch (e) {
       console.warn("[app]", "[ConfigProvider]", "trackVisit failed:", getFirestoreErrorMessage(e));
     }
@@ -86,21 +86,20 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     const firstSegment = pathParts[0] || "";
     const isTokenRoute = TOKEN_ROUTE_REGEX.test(firstSegment) && !["setup", "admin", "superadmin-login", "superadmin"].includes(firstSegment);
     const isAdminRoute = pathParts[1] === "setup" || pathParts[1] === "admin";
-    ;
 
     if (hash && hash.length > 1) {
-      ;
+
       try {
         const parsed = decodeInviteConfig(hash.slice(1));
         const hydrated = { ...defaultConfig, ...normalizeConfig(parsed) };
-        ;
+
         setConfig(hydrated);
         setFormData(hydrated);
         setHasStoredConfig(false);
         setIsConfigLoading(false);
         return;
       } catch {
-        ;
+
         if (isInvite) {
           setIsConfigLoading(false);
           setConfigLoadError(t("errors.invalidLink"));
@@ -110,25 +109,24 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     }
 
     if (isInvite && !isTokenRoute) {
-      ;
+
       setIsConfigLoading(false);
       return;
     }
 
     if (isTokenRoute && inviteToken !== firstSegment) {
-      ;
+
       setInviteToken(firstSegment);
       setIsConfigLoading(true);
       return;
     }
 
     if (!isAdminRoute && !isTokenRoute) {
-      ;
+
       setIsConfigLoading(false);
       return;
     }
 
-    ;
     setIsConfigLoading(true);
 
     const hydrateConfig = async () => {
@@ -137,7 +135,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         if (!inviteToken) { ; setIsConfigLoading(false); return; }
 
         if (inviteToken === loadedTokenRef.current && hasStoredConfig) {
-          ;
+
           setIsConfigLoading(false);
           return;
         }
@@ -147,7 +145,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           try {
             const parsed = JSON.parse(cached);
             if (parsed.data && parsed.cachedAt && Date.now() - parsed.cachedAt < INVITE_CACHE_TTL_MS) {
-              ;
+
               const { resolveAllConfigImages } = await import("../lib/image-store");
               const resolved = await resolveAllConfigImages(inviteToken, parsed.data);
               for (const [key, url] of Object.entries(resolved)) {
@@ -160,17 +158,16 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
               loadedTokenRef.current = inviteToken;
               return;
             } else {
-              ;
+
             }
           } catch { ; }
         } else {
-          ;
+
         }
 
-        ;
         const snapshot = await getDoc(invitationDocRef(inviteToken));
         if (!snapshot.exists()) {
-          ;
+
           setHasStoredConfig(false);
           setConfig(defaultConfig);
           setFormData(defaultConfig);
@@ -185,7 +182,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           if (url) (parsed as Record<string, unknown>)[key] = url;
         }
         {
-          ;
+
           const { loadAudio } = await import("../lib/music-store");
           const audio = await loadAudio(inviteToken);
           if (audio?.url) {
@@ -196,7 +193,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           }
         }
         const hydrated = { ...defaultConfig, ...parsed };
-        ;
+
         setConfig(hydrated);
         setFormData(hydrated);
         safeSetItem(`wedin_invite_cache_${inviteToken}`, JSON.stringify({ data: hydrated, cachedAt: Date.now() }));
@@ -213,7 +210,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           setConfigLoadError(getFirestoreErrorMessage(e, t));
         }
       } finally {
-        ;
+
         setIsConfigLoading(false);
       }
     };
@@ -221,13 +218,13 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
   }, [location.pathname, location.hash, inviteToken, hasStoredConfig, trackVisit, t]);
 
   const reloadConfig = useCallback(async () => {
-    ;
+
     if (!inviteToken) { ; return; }
     try {
       safeRemoveItem(`wedin_invite_cache_${inviteToken}`);
       const snapshot = await getDoc(invitationDocRef(inviteToken));
       if (!snapshot.exists()) {
-        ;
+
         setHasStoredConfig(false);
         setConfig(defaultConfig);
         setFormData(defaultConfig);
@@ -253,7 +250,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         }
       }
       const hydrated = { ...defaultConfig, ...parsed };
-      ;
+
       setConfig(hydrated);
       setFormData(hydrated);
       setHasStoredConfig(true);
@@ -265,10 +262,10 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
 
   const handleSaveSetupCore = useCallback(async (event: React.FormEvent) => {
     event.preventDefault();
-    ;
+
     if (autoSaveTimerRef.current) { ; clearTimeout(autoSaveTimerRef.current); }
     if (isSavingRef.current) {
-      ;
+
       setSaveError(t("errors.alreadySaving"));
       return;
     }
@@ -280,7 +277,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     if (sanitized.weddingSiteURL && isValidGoogleMapsUrl(sanitized.weddingSiteURL)) {
       const derivedPlace = extractPlaceNameFromUrl(sanitized.weddingSiteURL);
       if (derivedPlace) {
-        ;
+
         sanitized.weddingPlace = derivedPlace;
       }
     }
@@ -289,42 +286,42 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
 
     if (!hasStoredConfig) {
       if (formData._privacyConsent !== "true") {
-        ;
+
         setSaveError(t("errors.acceptPrivacyPolicy"));
         return;
       }
       if (!sanitized.adminUsername) {
-        ;
+
         setSaveError(t("errors.usernameRequired"));
         return;
       }
       if (!/^[a-zA-Z0-9]+$/.test(sanitized.adminUsername)) {
-        ;
+
         setSaveError(t("errors.usernameInvalid"));
         return;
       }
       if (sanitized.adminUsername.length > MAX_USERNAME_LENGTH) {
-        ;
+
         setSaveError(t("errors.usernameTooLong"));
         return;
       }
     }
 
     if (!sanitized.firstName || !sanitized.secondName) {
-      ;
+
       setSaveError(t("errors.bothNamesRequired"));
       return;
     }
 
     const dateErrorKey = validateWeddingDate(sanitized, maxAllowedYear, hiddenSet, hasStoredConfig);
     if (dateErrorKey) {
-      ;
+
       setSaveError(t(dateErrorKey, { year: maxAllowedYear }));
       return;
     }
 
     if (!THEME_VALUES.has(sanitized.theme)) {
-      ;
+
       setSaveError(t("errors.themeInvalid"));
       return;
     }
@@ -332,34 +329,34 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     const orderArray = (sanitized.sectionOrder || "").split(",").filter(Boolean).filter((s: string) => !SPECIAL_SECTIONS.includes(s));
     const validSectionKeys = new Set(STORY_SECTION_ORDER);
     if (orderArray.length < 1 || !orderArray.every((s: string) => validSectionKeys.has(s))) {
-      ;
+
       setSaveError(t("errors.sectionOrderInvalid"));
       return;
     }
     if (!hiddenArray.every((s) => validSectionKeys.has(s))) {
-      ;
+
       setSaveError(t("errors.hiddenSectionsInvalid"));
       return;
     }
     if (Boolean(sanitized.godparent1) !== Boolean(sanitized.godparent2)) {
-      ;
+
       setSaveError(t("errors.godparentsRequired"));
       return;
     }
     if (orderArray[0] !== "hero") {
-      ;
+
       setSaveError(t("errors.coverFirst"));
       return;
     }
 
     if (sanitized.menuEnabled === "true") {
       if (!sanitized.menuPostre) {
-        ;
+
         setSaveError(t("errors.postreRequired"));
         return;
       }
       if (!sanitized.menuCarne && !sanitized.menuPescado && !sanitized.menuVegano) {
-        ;
+
         setSaveError(t("errors.menuRequired"));
         return;
       }
@@ -369,14 +366,14 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       const upper = sanitized.bankInfo.toUpperCase();
       const looksLikeIban = /^[A-Z]{2}\d/.test(upper);
       if (looksLikeIban && !/^[A-Z]{2}\d{2}[ ]?\d{4}[ ]?\d{4}[ ]?\d{4}[ ]?\d{4}[ ]?\d{0,4}$/.test(upper)) {
-        ;
+
         setSaveError(t("errors.ibanInvalid"));
         return;
       }
     }
 
     if (sanitized.musicUrl && sanitized.musicUrl.startsWith("data:")) {
-      ;
+
       sanitized.musicFile = sanitized.musicUrl;
       sanitized.musicUrl = "";
     }
@@ -385,19 +382,19 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       const expected = STORY_SECTION_ORDER.length;
       const actual = orderArray.length;
       if (actual !== expected) {
-        ;
+
         setSaveError(t("errors.sectionOrderMismatch", { actual, expected }));
         return;
       }
     }
 
     if (sanitized.inviteMessage && sanitized.inviteMessage.length > MAX_INVITE_MESSAGE_LENGTH) {
-      ;
+
       setSaveError(t("errors.messageTooLong"));
       return;
     }
     if (sanitized.weddingSchedule && sanitized.weddingSchedule.length > MAX_LONG_TEXT_LENGTH) {
-      ;
+
       setSaveError(t("errors.scheduleTooLong"));
       return;
     }
@@ -405,7 +402,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       try {
         const parsed = JSON.parse(sanitized.weddingScheduleEvents);
         if (!Array.isArray(parsed) || parsed.length > MAX_SCHEDULE_EVENTS) {
-          ;
+
           setSaveError(t("errors.scheduleEventsInvalid"));
           return;
         }
@@ -417,29 +414,29 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           const time = String((ev as Record<string, unknown>).time || "");
           const text = String((ev as Record<string, unknown>).text || "");
           if (time && !/^([01]\d|2[0-3]):[0-5]\d$/.test(time)) {
-            ;
+
             setSaveError(t("errors.scheduleEventTimeInvalid"));
             return;
           }
           if (text.length > MAX_SCHEDULE_EVENT_TEXT) {
-            ;
+
             setSaveError(t("errors.scheduleEventTextTooLong"));
             return;
           }
         }
       } catch {
-        ;
+
         setSaveError(t("errors.scheduleEventsInvalid"));
         return;
       }
     }
     if (sanitized.storyText && sanitized.storyText.length > MAX_LONG_TEXT_LENGTH) {
-      ;
+
       setSaveError(t("errors.storyTooLong"));
       return;
     }
     if (sanitized.giftsInfo && sanitized.giftsInfo.length > MAX_LONG_TEXT_LENGTH) {
-      ;
+
       setSaveError(t("errors.giftsTooLong"));
       return;
     }
@@ -447,7 +444,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       try {
         const parsed = JSON.parse(sanitized.transportDepartures);
         if (!Array.isArray(parsed) || parsed.length > 4) {
-          ;
+
           setSaveError(t("errors.transportDeparturesInvalid"));
           return;
         }
@@ -459,29 +456,29 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           const time = String((dep as Record<string, unknown>).time || "");
           const url = String((dep as Record<string, unknown>).url || "");
           if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(time)) {
-            ;
+
             setSaveError(t("errors.transportTimeInvalid"));
             return;
           }
           if (url && !isValidGoogleMapsUrl(url)) {
-            ;
+
             setSaveError(t("errors.transportUrlInvalid"));
             return;
           }
         }
       } catch {
-        ;
+
         setSaveError(t("errors.transportDeparturesInvalid"));
         return;
       }
     }
     if (sanitized.accommodationInfo && sanitized.accommodationInfo.length > MAX_LONG_TEXT_LENGTH) {
-      ;
+
       setSaveError(t("errors.accommodationTooLong"));
       return;
     }
     if (sanitized.menuTexto && sanitized.menuTexto.length > MAX_LONG_TEXT_LENGTH) {
-      ;
+
       setSaveError(t("errors.menuTextoTooLong"));
       return;
     }
@@ -496,7 +493,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     }
 
     isSavingRef.current = true;
-    ;
+
     try {
       if (payload.bankInfo) { ; payload.bankInfo = await encrypt(payload.bankInfo, inviteToken); }
       // Migrate any data-URL image fields to configImages subcollection
@@ -505,16 +502,16 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       for (const imageId of ["couplePhoto", "backgroundImage", "customSeal", "cornerDecoration"]) {
         const val = payload[imageId];
         if (typeof val === "string" && val.startsWith("data:")) {
-          ;
+
           originalImages[imageId] = val;
           payload[imageId] = await saveConfigImage(inviteToken, imageId, val);
         }
       }
       delete (payload as { musicFile?: string }).musicFile;
       payload.privacyPolicyVersion = PRIVACY_POLICY_VERSION;
-      ;
+
       await setDoc(invitationDocRef(inviteToken), payload, { merge: true });
-      ;
+
       if (payload.bankInfo) payload.bankInfo = await decrypt(payload.bankInfo, inviteToken);
       // Restore data URLs in memory for the current session
       for (const [k, v] of Object.entries(originalImages)) {
@@ -523,23 +520,21 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       setConfig(payload);
       setFormData(payload);
       setHasStoredConfig(true);
-      ;
 
       for (const cb of onFirstSaveCallbacksRef.current) cb();
 
-      ;
       setSaveMessage(t("errors.configSaved"));
     } catch (e) {
       console.error("[app]", "[ConfigProvider]", "save error", { error: e });
       setSaveError(getFirestoreErrorMessage(e, t));
     } finally {
-      ;
+
       isSavingRef.current = false;
     }
   }, [hasStoredConfig, formData, maxAllowedYear, inviteToken, config, autoSaveTimerRef, isSavingRef, t, setSaveError, setSaveMessage]);
 
   const handleDeleteInvitation = useCallback(async () => {
-    ;
+
     if (!inviteToken) return;
     if (!window.confirm(t("errors.deleteConfirm"))) { ; return; }
     try {
@@ -553,7 +548,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       await batch.commit();
       safeRemoveItem(`wedin_invite_cache_${inviteToken}`);
       clearSession();
-      ;
+
       navigate("/");
     } catch (e) {
       console.error("[app]", "[ConfigProvider]", "delete invitation error", { error: e });

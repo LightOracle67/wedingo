@@ -64,7 +64,7 @@ const TABS = [
  * @returns {JSX.Element} Panel de administración con pestañas.
  */
 export default function AdminPage() {
-  ;
+
   const { t, i18n } = useTranslation();
   const { inviteToken } = useParams();
   // ─── Estados del contexto global ───────────────────────
@@ -100,7 +100,7 @@ export default function AdminPage() {
 
   // Sync tab changes to URL
   const handleSetTab = useCallback((tab: string) => {
-    ;
+
     setActiveTab(tab);
     window.scrollTo({ top: 0, behavior: "smooth" });
     const params = new URLSearchParams(location.search);
@@ -108,7 +108,7 @@ export default function AdminPage() {
     else params.set("tab", tab);
     const qs = params.toString();
     window.history.replaceState(null, "", qs ? `${location.pathname}?${qs}` : location.pathname);
-  }, [location.search, location.pathname, activeTab]);
+  }, [location.search, location.pathname]);
 
   /**
    * Filtra las entradas RSVP según el filtro de asistencia y la búsqueda.
@@ -132,13 +132,13 @@ export default function AdminPage() {
 
   /** Callback memoizado para cambiar de pestaña. */
   const setActiveTabAndFilter = useCallback((tab: string) => {
-    ;
+
     setActiveTab(tab);
   }, []);
 
   /** Callback memoizado para cambiar el filtro de asistencia. */
   const setAttendanceFilterValue = useCallback((filter: string) => {
-    ;
+
     setAttendanceFilter(filter);
   }, []);
 
@@ -150,7 +150,7 @@ export default function AdminPage() {
    * Crea un HTML con estilos de impresión y abre la ventana de impresión.
    */
   const exportPdf = useCallback(() => {
-    ;
+
     const rows = rsvpEntries.map((e: { guestName: string; attendance: string; companions?: number; dietaryInfo?: string }) =>
       `<tr><td>${escHtml(e.guestName)}</td><td>${e.attendance === "yes" ? t("panel.attends") : t("panel.notAttends")}</td><td>${e.attendance === "yes" ? e.companions : 0}</td><td>${escHtml(e.dietaryInfo || "")}</td></tr>`
     ).join("");

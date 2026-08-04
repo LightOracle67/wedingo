@@ -14,26 +14,26 @@ interface UseRsvpSubmitReturn {
 }
 
 export function useRsvpSubmit({ token: _token, onSubmit, validate }: UseRsvpSubmitOptions): UseRsvpSubmitReturn {
-  ;
+
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
   const handleSubmit = useCallback(async (data: Record<string, unknown>) => {
-    ;
+
     if (validate) {
       const error = validate(data);
       if (error) {
-        ;
+
         setSubmitError(error);
         return false;
       }
-      ;
+
     }
     setSubmitting(true);
     setSubmitError(null);
     try {
       await onSubmit(data);
-      ;
+
       return true;
     } catch (err) {
       const message = err instanceof Error ? err.message : "Error submitting RSVP";

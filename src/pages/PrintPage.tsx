@@ -7,12 +7,12 @@ import "../styles/print.css";
 export default function PrintPage() {
   const { t, i18n } = useTranslation();
   const { config, isConfigLoading } = useApp();
-  ;
+
   const printed = useRef(false);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    ;
+
     document.title = `${config.firstName} & ${config.secondName} — Wedingo`;
   }, [config.firstName, config.secondName]);
 
@@ -28,43 +28,43 @@ export default function PrintPage() {
 
   const message = useMemo(() => {
     const raw = randomMessage(i18n.language);
-    ;
+
     return raw;
   }, [i18n.language]);
 
   useEffect(() => {
     if (isConfigLoading) {
-      ;
+
       return;
     }
-    ;
+
     const id = setTimeout(() => {
-      ;
+
       setLoaded(true);
     }, 200);
     return () => {
-      ;
+
       clearTimeout(id);
     };
   }, [isConfigLoading]);
 
   useEffect(() => {
     if (!loaded || printed.current) {
-      ;
+
       return;
     }
     printed.current = true;
-    ;
+
     const doPrint = async () => {
       await document.fonts.ready;
       await new Promise((r) => setTimeout(r, 400));
       const cleanup = () => {
-        ;
+
         try { window.close(); } catch (err) { console.error("[app]", "[PrintPage]", "window close error", err); }
       };
       window.onafterprint = cleanup;
       window.onbeforeunload = null;
-      ;
+
       window.print();
     };
     doPrint().catch((err) => console.error("[app]", "[PrintPage]", "PDF generation error", err));

@@ -89,15 +89,14 @@ export const compressImageTransparent = async (file: File, maxDimension = 1600):
  *  reduce calidad/dimensiones hasta encajar en TARGET_BYTES.
  *  Exporta a WebP (con alpha si existe), con fallback a JPEG. */
 export const compressImage = async (file: File): Promise<string> => {
-  ;
+
   const img = await loadImage(file);
-  ;
 
   // Fast path: JPEG ya pequeño y con dimensiones razonables
   if (file.size <= TARGET_BYTES && file.type === "image/jpeg"
       && img.width <= MAX_IMAGE_DIMENSION && img.height <= MAX_IMAGE_DIMENSION) {
     URL.revokeObjectURL(img.src);
-    ;
+
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.onload = () => resolve(reader.result as string);
@@ -125,7 +124,6 @@ export const compressImage = async (file: File): Promise<string> => {
   // Probar WebP (soporta alpha, buena compresión)
   let dataUrl = canvasToType(canvas, "webp", 0.8);
   let estimatedBytes = Math.round((dataUrl.length * 3) / 4);
-  ;
 
   // Reducir calidad progresivamente
   if (estimatedBytes > TARGET_BYTES) {
@@ -133,19 +131,18 @@ export const compressImage = async (file: File): Promise<string> => {
     while (quality >= 0.1 && estimatedBytes > TARGET_BYTES) {
       dataUrl = canvasToType(canvas, "webp", quality);
       estimatedBytes = Math.round((dataUrl.length * 3) / 4);
-      ;
+
       quality -= 0.1;
     }
   }
 
   // Si sigue siendo muy grande, reducir dimensiones
   if (estimatedBytes > TARGET_BYTES) {
-    ;
+
     dataUrl = shrinkToFit(canvas, TARGET_BYTES);
     estimatedBytes = Math.round((dataUrl.length * 3) / 4);
-    ;
+
   }
 
-  ;
   return dataUrl;
 };

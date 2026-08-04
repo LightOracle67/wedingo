@@ -164,7 +164,7 @@ const GROUPS = [
 ];
 
 const LanguageSwitcher = memo(function LanguageSwitcher() {
-  ;
+
   const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
@@ -173,16 +173,16 @@ const LanguageSwitcher = memo(function LanguageSwitcher() {
   const currentLabel = GROUPS.flatMap(g => g.options).find((l: { code: string; label: string }) => l.code === currentLang)?.label || currentLang.toUpperCase();
 
   const handleClose = useCallback(() => {
-    ;
+
     setClosing(true);
     setTimeout(() => { ; setClosing(false); setOpen(false); }, 200);
   }, []);
 
   const handleSelect = useCallback((code: string) => {
-    ;
+
     i18n.changeLanguage(code);
     handleClose();
-  }, [i18n, handleClose, currentLang]);
+  }, [i18n, handleClose]);
 
   useEscapeKey(handleClose, open && !closing);
 

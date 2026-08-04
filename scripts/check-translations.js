@@ -2,11 +2,14 @@
  * Script para detectar claves de traducción no usadas.
  * Ejecutar: node scripts/check-translations.js
  */
-const fs = require("fs");
-const path = require("path");
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const LOCALES_DIR = "src/i18n/locales";
-const SRC_DIR = "src";
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const ROOT = path.resolve(__dirname, "..");
+const LOCALES_DIR = path.join(ROOT, "src/i18n/locales");
+const SRC_DIR = path.join(ROOT, "src");
 
 // Carga el archivo de referencia (inglés)
 const enPath = path.join(LOCALES_DIR, "en.json");

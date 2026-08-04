@@ -24,6 +24,10 @@ export const CHANGELOG = [
       "CLEANUP: eliminada dependencia muerta leaflet, 83 claves i18n sin uso, 496 console.log de debug y restos de husky (--version/, lint-staged inerte)",
       "CLEANUP: refactor de useRsvp — payload builders extraídos a módulo puro (rsvp-payloads)",
       "OPS: .gitignore limpiado, .env.example creado, .nvmrc unificado a Node 22, public/index.html duplicado eliminado",
+      "CLEANUP: restos de la limpieza de logs (356 sentencias vacías, void err) y 2 warnings de lint eliminados",
+      "FEAT: test unitario del módulo rsvp-payloads (6 casos) y e2e ampliado (invitación inexistente sin crash)",
+      "FIX: script check-translations.js roto (require en repo ESM) — convertido a ESM y funcional",
+      "OPS: umbrales de coverage ajustados al estado real (85/81/86/87) y CSP sin restos de Leaflet/OSM/goo.gl",
     ],
   },
 

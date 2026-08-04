@@ -53,7 +53,7 @@ export default function SetupPage() {
       setIsTransitioning(false);
       if (!setupToken) {
 
-        (async () => { try { await generateNewToken(); } catch (err) { void err; } })();
+        (async () => { try { await generateNewToken(); } catch { } })();
       }
     }
   }, [saveMessage, hasStoredConfig, setupToken, generateNewToken]);

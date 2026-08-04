@@ -37,18 +37,18 @@ const MusicArrayEditor = memo(function MusicArrayEditor({ inviteToken, value, on
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    ;
+
     if (!inviteToken) { ; setLoading(false); return; }
     (async () => {
       try {
         const { loadAudio } = await import("../lib/music-store");
         const result = await loadAudio(inviteToken);
         if (result?.url) {
-          ;
+
           setAudioId(result.id);
           onChange(result.url);
         } else {
-          ;
+
         }
       } catch (err) {
         console.error("[app]", "[MusicArrayEditor]", "load error", { error: err });
@@ -63,16 +63,16 @@ const MusicArrayEditor = memo(function MusicArrayEditor({ inviteToken, value, on
     const file = e.target.files?.[0];
     const input = e.target;
     if (!file) return;
-    ;
+
     if (file.size === 0) { ; addToast("error", t("setup.errorEmptyFile")); if (input) input.value = ""; return; }
     if (!ALLOWED_AUDIO_TYPES.includes(file.type)) {
-      ;
+
       addToast("error", t("setup.audioFormatError"));
       if (input) input.value = "";
       return;
     }
     if (file.size > MAX_AUDIO_SIZE) {
-      ;
+
       addToast("error", t("setup.audioSizeError"));
       if (input) input.value = "";
       return;
@@ -83,19 +83,19 @@ const MusicArrayEditor = memo(function MusicArrayEditor({ inviteToken, value, on
     try {
       const { uploadAudio, addAudio, deleteAudio } = await import("../lib/music-store");
       const { encrypted, dataUrl } = await withTimeout(uploadAudio(inviteToken, file, (p) => upload.update(p)), 60000, "Audio upload timed out");
-      ;
+
       if (audioId) {
-        ;
+
         await deleteAudio(inviteToken);
       }
       const saved = await addAudio(inviteToken, encrypted, dataUrl, (p) => upload.update(85 + Math.round(p * 0.1)));
-      ;
+
       setAudioId(saved.id);
       setFileName(file.name);
       setFileSize(file.size);
       onChange(dataUrl);
       upload.complete(t("setup.musicUploadSuccess"));
-      ;
+
     } catch (err) {
       console.error("[app]", "[MusicArrayEditor]", "upload error", { error: err });
       upload.error(t("setup.musicUploadFailed"));
@@ -113,7 +113,7 @@ const MusicArrayEditor = memo(function MusicArrayEditor({ inviteToken, value, on
   }, [playing]);
 
   const handleDelete = useCallback(async () => {
-    ;
+
     if (!audioId || !inviteToken) return;
     try {
       const { deleteAudio } = await import("../lib/music-store");
@@ -124,7 +124,7 @@ const MusicArrayEditor = memo(function MusicArrayEditor({ inviteToken, value, on
       setFileName("");
       setFileSize(0);
       onChange("");
-      ;
+
     } catch (err) {
       console.error("[app]", "[MusicArrayEditor]", "delete error", { error: err });
       addToast("error", t("errors.musicDeleteFailed"));

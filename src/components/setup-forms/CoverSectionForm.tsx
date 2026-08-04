@@ -11,7 +11,7 @@ import ThemePicker from "../ThemePicker";
 import MusicArrayEditor from "../MusicArrayEditor";
 
 export default function CoverSectionForm({ prefix = "" }) {
-  ;
+
   const {
     formData, updateFormField,
     inviteToken,
@@ -36,18 +36,18 @@ export default function CoverSectionForm({ prefix = "" }) {
     const file = e.target.files?.[0];
     const input = e.target;
     if (!file) return;
-    ;
+
     if (file.size === 0) { ; addToast("error", t("setup.errorEmptyFile")); return; }
     if (!ALLOWED_UPLOAD_TYPES.has(file.type)) { ; addToast("error", t("setup.errorFileFormat")); return; }
     if (file.size > MAX_UPLOAD_SIZE_BYTES) { ; addToast("error", t("setup.errorFileSize")); return; }
     const upload = startUploadToast(t("setup.photoUploading"));
     try {
-      ;
+
       const ref = await uploadConfigImage("couplePhoto", file, (p: number) => upload.update(p));
       upload.update(90);
       updateFormField("couplePhoto", ref);
       upload.complete(t("setup.photoUploaded"));
-      ;
+
     } catch (err) {
       console.error("[app]", "[CoverSectionForm]", "couplePhoto upload error:", err);
       upload.error(t("setup.photoUploadFailed"));
@@ -61,17 +61,17 @@ export default function CoverSectionForm({ prefix = "" }) {
   }, [inviteToken, updateFormField]);
 
   const handleFirstNameChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    ;
+
     updateFormField("firstName", e.target.value.slice(0, 20));
   }, [updateFormField]);
 
   const handleSecondNameChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    ;
+
     updateFormField("secondName", e.target.value.slice(0, 20));
   }, [updateFormField]);
 
   const handleThemeChange = useCallback((val: string) => {
-    ;
+
     updateFormField("theme", val);
   }, [updateFormField]);
 
@@ -209,13 +209,13 @@ export default function CoverSectionForm({ prefix = "" }) {
         )}
         <input className="setup-upload__input" id={id("customSeal")} type="file" accept="image/jpeg,image/png,image/svg+xml" onChange={async (e) => {
           const file = e.target.files?.[0]; if (!file) return;
-          ;
+
           if (file.size > 1024 * 1024) { ; addToast("error", t("setup.errorFileSize")); return; }
           try {
             const dataUrl = await compressImageTransparent(file);
             const ref = await saveConfigImage(inviteToken, "customSeal", dataUrl);
             updateFormField("customSeal", ref);
-            ;
+
           } catch (err) { console.error("[app]", "[CoverSectionForm]", "customSeal error:", err); addToast("error", t("setup.photoUploadFailed")); }
           e.target.value = "";
         }} />
@@ -247,14 +247,14 @@ export default function CoverSectionForm({ prefix = "" }) {
         <input className="setup-upload__input" id={id("backgroundImage")} type="file" accept="image/jpeg,image/png,image/webp" onChange={async (e) => {
           const file = e.target.files?.[0];
           if (!file) return;
-          ;
+
           if (!ALLOWED_UPLOAD_TYPES.has(file.type)) { ; addToast("error", t("setup.errorFileFormat")); return; }
           if (file.size > MAX_UPLOAD_SIZE_BYTES) { ; addToast("error", t("setup.errorFileSize")); return; }
           try {
             const dataUrl = await compressImageTransparent(file);
             const ref = await saveConfigImage(inviteToken, "backgroundImage", dataUrl);
             updateFormField("backgroundImage", ref);
-            ;
+
           } catch (err) { console.error("[app]", "[CoverSectionForm]", "backgroundImage error:", err); addToast("error", t("setup.photoUploadFailed")); }
           e.target.value = "";
         }} />
@@ -284,13 +284,13 @@ export default function CoverSectionForm({ prefix = "" }) {
         <input className="setup-upload__input" id={id("cornerDecoration")} type="file" accept="image/png,image/svg+xml" onChange={async (e) => {
           const file = e.target.files?.[0];
           if (!file) return;
-          ;
+
           if (file.size > 1024 * 1024) { ; addToast("error", t("setup.errorFileSize")); return; }
           try {
             const dataUrl = await compressImageTransparent(file);
             const ref = await saveConfigImage(inviteToken, "cornerDecoration", dataUrl);
             updateFormField("cornerDecoration", ref);
-            ;
+
           } catch (err) { console.error("[app]", "[CoverSectionForm]", "cornerDecoration error:", err); addToast("error", t("setup.photoUploadFailed")); }
           e.target.value = "";
         }} />

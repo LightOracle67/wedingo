@@ -14,7 +14,7 @@ export function firestoreSessionExpiry() {
 }
 
 export function saveSession(type: string, identifier: string, extra: Record<string, unknown> = {}) {
-  ;
+
   try {
     const data = {
       type,
@@ -33,10 +33,10 @@ export function getSession() {
     if (!raw) { ; return null; }
     const data = JSON.parse(raw);
     if (data.expiresAt && Date.now() < data.expiresAt) {
-      ;
+
       return data;
     }
-    ;
+
     clearSession();
     return null;
   } catch (err) {
@@ -53,11 +53,11 @@ export function renewSession() {
     const data = JSON.parse(raw);
     data.expiresAt = Date.now() + SESSION_DURATION;
     ls()?.setItem(STORAGE_KEY, JSON.stringify(data));
-    ;
+
   } catch (err) { console.error("[app]", "[sessionVars]", "renewSession error", { error: err }); }
 }
 
 export function clearSession() {
-  ;
+
   try { ls()?.removeItem(STORAGE_KEY); } catch (err) { console.error("[app]", "[sessionVars]", "clearSession error", { error: err }); }
 }

@@ -32,7 +32,7 @@ function savePrefs(prefs: A11yPrefs) {
 }
 
 function applyPrefs(prefs: A11yPrefs) {
-  ;
+
   const root = document.documentElement;
   root.classList.toggle("a11y-high-contrast", !!prefs.highContrast);
   root.classList.toggle("a11y-reduced-motion", !!prefs.reducedMotion);
@@ -59,46 +59,46 @@ function applyPrefs(prefs: A11yPrefs) {
 }
 
 export default function AccessibilityPanel({ open, onClose }: { open: boolean; onClose: () => void }) {
-  ;
+
   const { t } = useTranslation();
   const [prefs, setPrefs] = useState(() => {
     const loaded = loadPrefs();
-    ;
+
     return loaded;
   });
   const modalRef = useFocusTrap<HTMLDivElement>(open);
   useEscapeKey(onClose, open);
 
   useEffect(() => {
-    ;
+
     applyPrefs(prefs);
   }, [prefs]);
 
   const toggle = (key: keyof A11yPrefs) => {
-    ;
+
     setPrefs((prev: A11yPrefs) => {
       const next = { ...prev, [key]: !prev[key] };
-      ;
+
       savePrefs(next);
       return next;
     });
   };
 
   const setFontSize = (size: string) => {
-    ;
+
     setPrefs((prev: A11yPrefs) => {
       const next = { ...prev, fontSize: size };
-      ;
+
       savePrefs(next);
       return next;
     });
   };
 
   const setLineSpacing = (value: string) => {
-    ;
+
     setPrefs((prev: A11yPrefs) => {
       const next = { ...prev, lineSpacing: value };
-      ;
+
       savePrefs(next);
       return next;
     });

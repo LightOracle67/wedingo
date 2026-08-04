@@ -4,7 +4,7 @@ import { randomMessage } from "../lib/invite-messages";
 import "../styles/envelope.css";
 
 const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secondName, customSeal }: { onOpen: () => void; firstName: string; secondName: string; customSeal?: string }) {
-  ;
+
   const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
   const [exiting, setExiting] = useState(false);
@@ -12,7 +12,7 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secon
   const [showText, setShowText] = useState(false);
 
   useEffect(() => {
-    ;
+
     document.body.style.overflow = "hidden";
     return () => { ; document.body.style.overflow = ""; };
   }, []);
@@ -22,17 +22,17 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secon
   const handleClick = useCallback(() => {
     if (exiting) { ; return; }
     if (!open) {
-      ;
+
       setOpen(true);
       setTimeout(() => { ; setShowWhite(true); }, 600);
       setTimeout(() => { ; setShowText(true); }, 1400);
       return;
     }
-    ;
+
     setExiting(true);
     try { window.dispatchEvent(new CustomEvent("wedin:play-audio")); } catch {}
     setTimeout(() => {
-      ;
+
       document.body.style.overflow = "";
       const main = document.getElementById("main-content");
       if (main) main.focus({ preventScroll: true });

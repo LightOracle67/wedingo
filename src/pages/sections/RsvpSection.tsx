@@ -68,7 +68,6 @@ const RsvpSection = memo(function RsvpSection({
   const { t } = useTranslation();
   const { setLegalModal } = useApp();
 
-  ;
   const isAlreadySubmitted = !!alreadySubmittedEntry;
   const isDisabled = isRsvpSubmitting || hasSubmitted || isAlreadySubmitted;
   const isAttending = rsvpForm.attendance !== "no";
