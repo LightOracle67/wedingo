@@ -29,6 +29,8 @@ interface RsvpFormData {
   companionHealthConsents: boolean[];
   companionTransportChoices: string[];
   companionTransportModes: string[];
+  companionTransportTimes: string[];
+  companionTransportPlaces: string[];
   menuSelection: string;
   allergies: string[];
   allergiesOther: string;
@@ -38,6 +40,8 @@ interface RsvpFormData {
   parentalConsent: boolean;
   transportChoice: string;
   transportMode: string;
+  transportTime: string;
+  transportPlace: string;
 }
 
 interface RsvpEntryData {
@@ -64,8 +68,12 @@ interface RsvpEntryData {
   healthConsent?: boolean;
   transportChoice?: string;
   transportMode?: string;
+  transportTime?: string;
+  transportPlace?: string;
   companionTransportChoices?: string[];
   companionTransportModes?: string[];
+  companionTransportTimes?: string[];
+  companionTransportPlaces?: string[];
   companionDocIds?: string[];
   mainGuestDocId?: string;
   mainGuestName?: string;
@@ -112,6 +120,8 @@ function RsvpFormDefault(): RsvpFormData {
     companionHealthConsents: [],
     companionTransportChoices: [],
     companionTransportModes: [],
+    companionTransportTimes: [],
+    companionTransportPlaces: [],
     menuSelection: "",
     allergies: [],
     allergiesOther: "",
@@ -121,6 +131,8 @@ function RsvpFormDefault(): RsvpFormData {
     parentalConsent: false,
     transportChoice: "own",
     transportMode: "own",
+    transportTime: "",
+    transportPlace: "",
   };
 }
 
@@ -201,8 +213,12 @@ export function useRsvp(
                 healthConsent: data.healthConsent || false,
                 transportChoice: data.transportChoice || "",
                 transportMode: data.transportMode || "",
+                transportTime: data.transportTime || "",
+                transportPlace: data.transportPlace || "",
                 companionTransportChoices: data.companionTransportChoices || [],
                 companionTransportModes: data.companionTransportModes || [],
+                companionTransportTimes: data.companionTransportTimes || [],
+                companionTransportPlaces: data.companionTransportPlaces || [],
                 companionDocIds: data.companionDocIds || [],
                 mainGuestDocId: data.mainGuestDocId || "",
                 mainGuestName: data.mainGuestName || "",
@@ -225,6 +241,8 @@ export function useRsvp(
             main.companionMenus = linkedCompanions.map((c) => c.mealChoice);
             main.companionTransportChoices = linkedCompanions.map((c) => c.transportChoice || "");
             main.companionTransportModes = linkedCompanions.map((c) => c.transportMode || "own");
+            main.companionTransportTimes = linkedCompanions.map((c) => c.transportTime || "");
+            main.companionTransportPlaces = linkedCompanions.map((c) => c.transportPlace || "");
             main.companionAllergies = linkedCompanions.map((c) => {
               const parsed = parseDietaryInfo(c.dietaryInfo, !!c.mealChoice);
               return [...parsed.dietarySelection, ...(parsed.dietaryOther ? [parsed.dietaryOther] : [])];
@@ -298,6 +316,8 @@ export function useRsvp(
           companionHealthConsents: [],
           companionTransportChoices: [],
           companionTransportModes: [],
+          companionTransportTimes: [],
+          companionTransportPlaces: [],
           menuSelection: match.mealChoice || "",
           birthDate: match.birthDate || "",
           allergies: parsed.dietarySelection,
@@ -307,6 +327,8 @@ export function useRsvp(
           parentalConsent: match.parentalConsent || false,
           transportChoice: match.transportChoice || "own",
           transportMode: match.transportMode || "own",
+          transportTime: match.transportTime || "",
+          transportPlace: match.transportPlace || "",
         }));
       } else {
         console.log("[app]", "[useRsvp]", "prefill companion match (already set)", {});
@@ -339,6 +361,8 @@ export function useRsvp(
           companionHealthConsents,
           companionTransportChoices: match.companionTransportChoices || [],
           companionTransportModes: match.companionTransportModes || [],
+          companionTransportTimes: match.companionTransportTimes || [],
+          companionTransportPlaces: match.companionTransportPlaces || [],
           menuSelection: match.mealChoice || "",
           birthDate: match.birthDate || "",
           allergies: parsed.dietarySelection,
@@ -348,6 +372,8 @@ export function useRsvp(
           parentalConsent: match.parentalConsent || false,
           transportChoice: match.transportChoice || "own",
           transportMode: match.transportMode || "own",
+          transportTime: match.transportTime || "",
+          transportPlace: match.transportPlace || "",
         }));
       } else {
         console.log("[app]", "[useRsvp]", "prefill main match (already set)", {});
@@ -378,6 +404,8 @@ export function useRsvp(
         companionHealthConsents: value === "no" || value === "alone" ? [] : current.companionHealthConsents,
         companionTransportChoices: value === "no" || value === "alone" ? [] : current.companionTransportChoices,
         companionTransportModes: value === "no" || value === "alone" ? [] : current.companionTransportModes,
+        companionTransportTimes: value === "no" || value === "alone" ? [] : current.companionTransportTimes,
+        companionTransportPlaces: value === "no" || value === "alone" ? [] : current.companionTransportPlaces,
       }));
       return;
     }
@@ -393,6 +421,8 @@ export function useRsvp(
         const healthConsents = (current.companionHealthConsents || []).slice(0, count);
         const transportChoices = (current.companionTransportChoices || []).slice(0, count);
         const transportModes = (current.companionTransportModes || []).slice(0, count);
+        const transportTimes = (current.companionTransportTimes || []).slice(0, count);
+        const transportPlaces = (current.companionTransportPlaces || []).slice(0, count);
         while (names.length < count) {
           names.push("");
           menus.push("");
@@ -403,8 +433,10 @@ export function useRsvp(
           healthConsents.push(false);
           transportChoices.push("own");
           transportModes.push("own");
+          transportTimes.push("");
+          transportPlaces.push("");
         }
-        return { ...current, companionCount: count, companionNames: names, companionMenus: menus, companionAllergies: allergies, companionAllergiesOther: allergiesOther, companionBirthDates: birthDates, companionParentalConsents: parentalConsents, companionHealthConsents: healthConsents, companionTransportChoices: transportChoices, companionTransportModes: transportModes };
+        return { ...current, companionCount: count, companionNames: names, companionMenus: menus, companionAllergies: allergies, companionAllergiesOther: allergiesOther, companionBirthDates: birthDates, companionParentalConsents: parentalConsents, companionHealthConsents: healthConsents, companionTransportChoices: transportChoices, companionTransportModes: transportModes, companionTransportTimes: transportTimes, companionTransportPlaces: transportPlaces };
       });
       return;
     }
@@ -450,6 +482,24 @@ export function useRsvp(
         const modes = [...current.companionTransportModes];
         modes[idx] = String(value);
         return { ...current, companionTransportModes: modes };
+      });
+      return;
+    }
+    if (field.startsWith("companionTransportTimes[")) {
+      const idx = parseInt(field.match(/\d+/)?.[0] || "0", 10);
+      setRsvpForm((current) => {
+        const times = [...current.companionTransportTimes];
+        times[idx] = String(value);
+        return { ...current, companionTransportTimes: times };
+      });
+      return;
+    }
+    if (field.startsWith("companionTransportPlaces[")) {
+      const idx = parseInt(field.match(/\d+/)?.[0] || "0", 10);
+      setRsvpForm((current) => {
+        const places = [...current.companionTransportPlaces];
+        places[idx] = String(value);
+        return { ...current, companionTransportPlaces: places };
       });
       return;
     }
@@ -532,8 +582,16 @@ export function useRsvp(
     if (isAttending && data.transportMode) {
       mainGuestData.transportMode = String(data.transportMode).slice(0, 10);
     }
+    if (isAttending && data.transportTime) {
+      mainGuestData.transportTime = String(data.transportTime).slice(0, 5);
+    }
+    if (isAttending && data.transportPlace) {
+      mainGuestData.transportPlace = String(data.transportPlace).slice(0, 120);
+    }
     mainGuestData.companionTransportChoices = (data.companionTransportChoices || []).slice(0, companionCount);
     mainGuestData.companionTransportModes = (data.companionTransportModes || []).slice(0, companionCount);
+    mainGuestData.companionTransportTimes = (data.companionTransportTimes || []).slice(0, companionCount);
+    mainGuestData.companionTransportPlaces = (data.companionTransportPlaces || []).slice(0, companionCount);
 
     // Create companion docs with individual dietaryInfo
     const companionDocIds: string[] = [];
@@ -567,6 +625,12 @@ export function useRsvp(
       }
       if (data.companionTransportModes?.[i]) {
         companionData.transportMode = String(data.companionTransportModes[i]).slice(0, 10);
+      }
+      if (data.companionTransportTimes?.[i]) {
+        companionData.transportTime = String(data.companionTransportTimes[i]).slice(0, 5);
+      }
+      if (data.companionTransportPlaces?.[i]) {
+        companionData.transportPlace = String(data.companionTransportPlaces[i]).slice(0, 120);
       }
       const hasCompDietary = compAllergies.length > 0 || (data.companionAllergiesOther[i] || "").trim();
       if (hasCompDietary) {
@@ -613,8 +677,12 @@ export function useRsvp(
       submittedAt: now,
       transportChoice: (mainGuestData.transportChoice as string) || "",
       transportMode: (mainGuestData.transportMode as string) || "",
+      transportTime: (mainGuestData.transportTime as string) || "",
+      transportPlace: (mainGuestData.transportPlace as string) || "",
       companionTransportChoices: (mainGuestData.companionTransportChoices as string[]) || [],
       companionTransportModes: (mainGuestData.companionTransportModes as string[]) || [],
+      companionTransportTimes: (mainGuestData.companionTransportTimes as string[]) || [],
+      companionTransportPlaces: (mainGuestData.companionTransportPlaces as string[]) || [],
       companionDocIds,
     };
 

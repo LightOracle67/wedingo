@@ -386,6 +386,25 @@ describe("RsvpSection", () => {
     expect(screen.getByText("rsvp.transportPickupTime")).toBeDefined();
   });
 
+  it("stores time and place when changing the departure", () => {
+    const update = baseProps.updateRsvpField as ReturnType<typeof vi.fn>;
+    render(
+      <RsvpSection
+        {...baseProps}
+        rsvpForm={{ ...baseForm, attendance: "alone", transportMode: "bus", transportChoice: "0" }}
+        transportEnabled="bus"
+        transportDepartures={JSON.stringify([
+          { type: "bus", time: "12:00", url: "" },
+          { type: "bus", time: "16:00", url: "https://www.google.com/maps/place/Estación+Norte/@40.4,-3.7,17z" },
+        ])}
+      />,
+    );
+    fireEvent.change(document.getElementById("rsvpTransportDeparture")!, { target: { value: "1" } });
+    expect(update).toHaveBeenCalledWith("transportChoice", "1");
+    expect(update).toHaveBeenCalledWith("transportTime", "16:00");
+    expect(update).toHaveBeenCalledWith("transportPlace", "Estación Norte");
+  });
+
   it("shows transport radios inside each companion card", () => {
     render(
       <RsvpSection

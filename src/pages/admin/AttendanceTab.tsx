@@ -20,6 +20,7 @@ interface RsvpEntry {
   healthConsent?: boolean;
   transportChoice?: string;
   transportMode?: string;
+  transportTime?: string;
   companionTransportChoices?: string[];
   companionTransportModes?: string[];
   mainGuestDocId?: string;
@@ -87,10 +88,11 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
     }
   }, [transportDepartures]);
 
-  const resolveTransportLabel = useCallback((mode: string, choice: string) => {
-    if (!mode && !choice) return "—";
+  const resolveTransportLabel = useCallback((mode: string, choice: string, storedTime: string) => {
+    if (!mode && !choice && !storedTime) return "—";
     if (!mode || mode === "own") return t("attendance.transportOwnCar");
     const typeLabel = t(mode === "taxi" ? "transport.typeTaxi" : "transport.typeBus");
+    if (storedTime) return `${typeLabel} (${storedTime})`;
     const idx = Number.parseInt(choice, 10);
     const dep = departures[idx] as { time?: string } | undefined;
     if (dep && dep.time) return `${typeLabel} (${dep.time})`;
@@ -204,7 +206,7 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                   ? entry.attendees.filter((a) => a.allergies?.length).map((a) => `${a.name}: ${a.allergies.join(", ")}`)
                   : (attending ? getDietaryLines(entry.dietaryInfo || "", entry.companions || 1).map((d) => `${d.item}: ${d.count}`) : []);
                 const crossed = !attending ? { textDecoration: "line-through", opacity: 0.4 } : {};
-                const transportLabel = resolveTransportLabel(entry.transportMode || "", entry.transportChoice || "");
+                const transportLabel = resolveTransportLabel(entry.transportMode || "", entry.transportChoice || "", entry.transportTime || "");
                 const consentBadges: string[] = [];
                 if (entry.parentalConsent) consentBadges.push(t("attendance.consentParental"));
                 if (entry.healthConsent) consentBadges.push(t("attendance.consentHealth"));

@@ -139,6 +139,30 @@ describe("AttendanceTab", () => {
     expect(screen.getByText("attendance.transportOwnCar")).toBeDefined();
   });
 
+  it("uses the stored transport time even if departures changed", () => {
+    const entry = {
+      id: "1", guestName: "Alice", attendance: "yes" as const, companions: 0,
+      dietaryInfo: "", submittedAt: "2024-01-01",
+      transportMode: "taxi", transportChoice: "5", transportTime: "09:15",
+    };
+    render(
+      <AttendanceTab
+        searchQuery=""
+        setSearchQuery={vi.fn()}
+        attendanceFilter="all"
+        setAttendanceFilter={vi.fn()}
+        filteredEntries={[entry]}
+        rsvpEntries={[entry]}
+        exportPdf={vi.fn()}
+        formatDate={(d: string) => String(d)}
+        handleClearRsvpEntries={vi.fn()}
+        handleDeleteRsvpEntries={vi.fn()}
+        transportDepartures={JSON.stringify([{ type: "bus", time: "12:00", url: "" }])}
+      />
+    );
+    expect(screen.getByText("transport.typeTaxi (09:15)")).toBeDefined();
+  });
+
   it("calls handleClearRsvpEntries when clear button clicked", () => {
     const handleClearRsvpEntries = vi.fn();
     render(

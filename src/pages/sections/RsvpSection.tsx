@@ -125,9 +125,25 @@ const RsvpSection = memo(function RsvpSection({
   const handleTransportModeChange = useCallback((group: "main" | "companion", idx: number, mode: string) => {
     const modeField = group === "main" ? "transportMode" : `companionTransportModes[${idx}]`;
     const choiceField = group === "main" ? "transportChoice" : `companionTransportChoices[${idx}]`;
+    const timeField = group === "main" ? "transportTime" : `companionTransportTimes[${idx}]`;
+    const placeField = group === "main" ? "transportPlace" : `companionTransportPlaces[${idx}]`;
     updateRsvpField(modeField, mode);
     const first = departures.findIndex((d) => (d.type || "bus") === mode);
+    const dep = first >= 0 ? departures[first] : undefined;
     updateRsvpField(choiceField, first >= 0 ? String(first) : "");
+    updateRsvpField(timeField, dep?.time || "");
+    updateRsvpField(placeField, dep?.url ? extractPlaceNameFromUrl(dep.url) || "" : "");
+  }, [departures, updateRsvpField]);
+
+  const handleDepartureChange = useCallback((group: "main" | "companion", idx: number, value: string) => {
+    const choiceField = group === "main" ? "transportChoice" : `companionTransportChoices[${idx}]`;
+    const timeField = group === "main" ? "transportTime" : `companionTransportTimes[${idx}]`;
+    const placeField = group === "main" ? "transportPlace" : `companionTransportPlaces[${idx}]`;
+    const depIdx = Number.parseInt(value, 10);
+    const dep = Number.isFinite(depIdx) ? departures[depIdx] : undefined;
+    updateRsvpField(choiceField, value);
+    updateRsvpField(timeField, dep?.time || "");
+    updateRsvpField(placeField, dep?.url ? extractPlaceNameFromUrl(dep.url) || "" : "");
   }, [departures, updateRsvpField]);
 
   const handleNameChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -254,7 +270,7 @@ const RsvpSection = memo(function RsvpSection({
                     <label className="setup-label" htmlFor="rsvpTransportDeparture" style={{ marginTop: "0.5rem", display: "block" }}>{t("rsvp.transportDepartureLabel")}</label>
                     <select id="rsvpTransportDeparture" className="setup-input"
                       value={rsvpForm.transportChoice || ""}
-                      onChange={(e) => updateRsvpField("transportChoice", e.target.value)}
+                      onChange={(e) => handleDepartureChange("main", 0, e.target.value)}
                       disabled={isAlreadySubmitted}>
                       {typeDepartures.map((dep) => (
                         <option key={departures.indexOf(dep)} value={String(departures.indexOf(dep))}>{departureLabel(dep)}</option>
@@ -317,7 +333,7 @@ const RsvpSection = memo(function RsvpSection({
                             <label className="setup-label" htmlFor={`companion-departure-${i}`} style={{ marginTop: "0.5rem", display: "block", fontSize: "0.85rem" }}>{t("rsvp.transportDepartureLabel")}</label>
                             <select id={`companion-departure-${i}`} className="setup-input"
                               value={rsvpForm.companionTransportChoices?.[i] || ""}
-                              onChange={(e) => updateRsvpField(`companionTransportChoices[${i}]`, e.target.value)}
+                              onChange={(e) => handleDepartureChange("companion", i, e.target.value)}
                               disabled={isAlreadySubmitted}>
                               {typeDepartures.map((dep) => (
                                 <option key={departures.indexOf(dep)} value={String(departures.indexOf(dep))}>{departureLabel(dep)}</option>
