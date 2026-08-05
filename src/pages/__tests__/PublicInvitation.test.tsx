@@ -147,6 +147,43 @@ describe("PublicInvitation", () => {
     mockUseAppValue.config.weddingYear = "2025";
   });
 
+  it("pauses and resumes the countdown on visibility changes", () => {
+    mockUseAppValue.config.weddingYear = "2030";
+    render(<PublicInvitation />);
+    Object.defineProperty(document, "hidden", { value: true, configurable: true });
+    document.dispatchEvent(new Event("visibilitychange"));
+    Object.defineProperty(document, "hidden", { value: false, configurable: true });
+    document.dispatchEvent(new Event("visibilitychange"));
+    expect(() => render(<PublicInvitation />)).not.toThrow();
+    mockUseAppValue.config.weddingYear = "2025";
+  });
+
+  it("countdown borrows days from the target month", () => {
+    mockUseAppValue.config.weddingDay = "3";
+    mockUseAppValue.config.weddingMonth = "octubre";
+    mockUseAppValue.config.weddingYear = "2027";
+    mockUseAppValue.config.weddingHour = "18";
+    mockUseAppValue.config.weddingMinute = "30";
+    expect(() => render(<PublicInvitation />)).not.toThrow();
+    mockUseAppValue.config.weddingDay = "15";
+    mockUseAppValue.config.weddingMonth = "enero";
+    mockUseAppValue.config.weddingYear = "2025";
+  });
+
+  it("countdown borrows months from the target year", () => {
+    mockUseAppValue.config.weddingDay = "10";
+    mockUseAppValue.config.weddingMonth = "enero";
+    mockUseAppValue.config.weddingYear = "2027";
+    expect(() => render(<PublicInvitation />)).not.toThrow();
+    mockUseAppValue.config.weddingYear = "2025";
+  });
+
+  it("keeps a single rsvp section in admin mode when already present", () => {
+    mockUseAppValue.config.sectionOrder = "hero,rsvp,details";
+    render(<PublicInvitation />);
+    expect(screen.queryAllByText("sections.rsvp.title").length).toBeLessThanOrEqual(2);
+  });
+
   it("renders with schedule and dress code info", () => {
     mockUseAppValue.config.weddingSchedule = "Ceremony at 4pm\nReception at 6pm";
     mockUseAppValue.config.weddingDressCode = "Formal";

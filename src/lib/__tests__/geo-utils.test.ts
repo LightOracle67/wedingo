@@ -56,6 +56,35 @@ describe("convertToEmbedUrl", () => {
   it("returns URL as-is on parse failure", () => {
     expect(convertToEmbedUrl("not-a-url")).toBe("not-a-url");
   });
+
+  it("converts a URL with a query param", () => {
+    const result = convertToEmbedUrl("https://www.google.com/maps?query=Madrid");
+    expect(result).toContain("output=embed");
+    expect(result).toContain("q=Madrid");
+  });
+
+  it("uses the provided language for the embed", () => {
+    const result = convertToEmbedUrl("https://www.google.com/maps/place/Madrid", "roadmap", "fr");
+    expect(result).toContain("hl=fr");
+  });
+
+  it("falls back to es when language is empty", () => {
+    const result = convertToEmbedUrl("https://www.google.com/maps/place/Madrid", "roadmap", "");
+    expect(result).toContain("hl=es");
+  });
+
+  it("uses the default tile for an unknown map view", () => {
+    const result = convertToEmbedUrl("https://www.google.com/maps/place/Madrid", "spaceship", "es");
+    expect(result).toContain("t=m");
+  });
+
+  it("recovers the name from a query parameter", () => {
+    expect(extractPlaceNameFromUrl("https://www.google.com/maps/place/Madrid?query=Gran%20Via")).toBe("Gran Via");
+  });
+
+  it("recovers the name from the maps/place path", () => {
+    expect(extractPlaceNameFromUrl("https://www.google.com/maps/place/Madrid/@40.4,-3.7,15z")).toBe("Madrid");
+  });
 });
 
 describe("extractPlaceNameFromUrl", () => {
@@ -72,6 +101,11 @@ describe("extractPlaceNameFromUrl", () => {
   it("returns null for non-place URLs (q param)", () => {
     expect(extractPlaceNameFromUrl("https://www.google.com/maps/search/?api=1&query=Iglesia%20San%20Jos%C3%A9")).toBeNull();
     expect(extractPlaceNameFromUrl("https://www.google.com/maps?q=Hacienda+Los+Olivos")).toBeNull();
+  });
+
+  it("recovers the name from the q parameter when it is not coordinates", () => {
+    const name = extractPlaceNameFromUrl("https://www.google.com/maps/place/Madrid?q=Hacienda+Los+Olivos");
+    expect(name).toBe("Hacienda Los Olivos");
   });
 
   it("returns null when the query is only coordinates", () => {

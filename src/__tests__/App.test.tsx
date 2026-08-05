@@ -640,6 +640,33 @@ describe("App", () => {
     Object.defineProperty(window, "sessionStorage", { value: undefined, configurable: true });
   });
 
+  it("does not set the admin username for a short session identifier", () => {
+    const sessionMock = (() => {
+      let store: Record<string, string> = {};
+      return {
+        getItem: vi.fn((k: string) => store[k] ?? null),
+        setItem: vi.fn((k: string, v: string) => { store[k] = v; }),
+        removeItem: vi.fn((k: string) => { delete store[k]; }),
+        clear: vi.fn(() => { store = {}; }),
+      };
+    })();
+    Object.defineProperty(window, "sessionStorage", {
+      value: sessionMock,
+      configurable: true,
+    });
+    sessionMock.setItem("wedin_session", JSON.stringify({ identifier: "ab", expiresAt: Date.now() + 99999 }));
+    mockUseApp.mockReturnValue(baseUseApp);
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    expect(screen.getByText("common.skipToContent")).toBeDefined();
+    Object.defineProperty(window, "sessionStorage", { value: undefined, configurable: true });
+  });
+
   it("handles corrupted localStorage JSON", () => {
     const sessionMock = (() => {
       let store: Record<string, string> = {};

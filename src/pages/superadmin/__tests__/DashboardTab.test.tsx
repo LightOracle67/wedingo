@@ -203,4 +203,39 @@ describe("DashboardTab", () => {
     expect(writeBatch).not.toHaveBeenCalled();
     confirmSpy.mockRestore();
   });
+
+  it("ignores invitations without a wedding year for expiry", async () => {
+    const { getDocs } = await import("firebase/firestore");
+    const getDocsMock = vi.mocked(getDocs);
+    getDocsMock.mockResolvedValue({
+      docs: [
+        { id: "inv1", data: () => ({ weddingYear: "", weddingMonth: "enero", weddingDay: "1" }) },
+      ],
+    } as never);
+    render(<DashboardTab />);
+    await waitFor(() => {
+      expect(screen.queryByText("superadmin.expiredInvitations")).toBeNull();
+    });
+  });
+
+  it("shows stats when there are no responses", async () => {
+    const calcGlobalStatsMock = vi.mocked(mockCalcGlobalStats);
+    calcGlobalStatsMock.mockReturnValueOnce({
+      rsvpTotal: 0,
+      rsvpYes: 0,
+      rsvpNo: 0,
+      totalGuests: 0,
+      invitationCount: 0,
+      totalBytes: 0,
+      tokensTotal: 0,
+      tokensUsed: 0,
+      tokensAvailable: 0,
+      autoTokens: 0,
+      manualTokens: 0,
+    });
+    render(<DashboardTab />);
+    await waitFor(() => {
+      expect(screen.getByText("superadmin.statsInvitations")).toBeDefined();
+    });
+  });
 });

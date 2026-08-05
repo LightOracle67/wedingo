@@ -29,6 +29,32 @@ describe("generateSetupToken with edge cases", () => {
     expect(typeof token).toBe("string");
     crypto.getRandomValues = origGetRandomValues;
   });
+
+  it("skips invalid bytes and accepts valid ones", () => {
+    const origGetRandomValues = crypto.getRandomValues;
+    crypto.getRandomValues = ((arr: Uint8Array) => {
+      for (let i = 0; i < arr.length; i++) arr[i] = i % 2 === 0 ? 10 : 255;
+      return arr;
+    }) as typeof crypto.getRandomValues;
+    const token = generateSetupToken();
+    expect(typeof token).toBe("string");
+    expect(token.length).toBeGreaterThan(0);
+    crypto.getRandomValues = origGetRandomValues;
+  });
+});
+
+describe("generateInviteToken with edge cases", () => {
+  it("skips invalid random bytes deterministically", () => {
+    const origGetRandomValues = crypto.getRandomValues;
+    crypto.getRandomValues = ((arr: Uint8Array) => {
+      for (let i = 0; i < arr.length; i++) arr[i] = i % 2 === 0 ? 10 : 255;
+      return arr;
+    }) as typeof crypto.getRandomValues;
+    const token = generateInviteToken();
+    expect(typeof token).toBe("string");
+    expect(token.length).toBeGreaterThan(0);
+    crypto.getRandomValues = origGetRandomValues;
+  });
 });
 
 describe("normalizeTokenValue", () => {

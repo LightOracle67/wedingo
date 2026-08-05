@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.40.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.40.0)  
+**Versión actual:** [v2.43.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.43.0)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -12,15 +12,15 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 | Aspecto | Estado |
 |---|---|
-| Tests | 1554 tests, 141 test files |
-| Cobertura | 85.7% statements / 81.3% branches / 86.5% functions / 87.8% lines |
+| Tests | 1732 tests, 143 test files |
+| Cobertura | 94.1% statements / 90.0% branches / 93.8% functions / 95.9% lines |
 | Lint | 0 warnings (oxlint) |
 | TypeScript | 0 errors (`strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `skipLibCheck=true` — solo .d.ts de terceros) |
 | `any` en source | 0 |
 | `!important` en CSS | 41 |
 | Idiomas | 100 |
 | Temas | 21 (7 claros, 7 oscuros, 7 LGTBIQ+) |
-| Bundle (crítico) | ~315KB gzip (JS inicial, analytics y Sentry en chunks lazy) |
+| Bundle (crítico) | ~317KB gzip (JS inicial, analytics y Sentry en chunks lazy) |
 
 ---
 
@@ -66,7 +66,8 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 - Banner informativo "Acompañas a X" para acompañantes
 - Cache local sin sobrescritura de datos de acompañantes
 - Select de asistencia con `width: auto; min-width: 180px`
-- Postre mostrado tras elegir el menú (o junto al menú fijo), encima de alergias
+- Menú por platos (menú fijo o seleccionable) con orden predefinido y descripción al elegir
+- Elección de transporte en dos pasos (medio + salida con sitio y hora 24h), guardada en Firestore
 
 ### Panel de administración (6 pestañas)
 
@@ -127,23 +128,24 @@ El documento de configuración solo contiene referencias (`__cfgimg:couplePhoto`
 
 ## Sesión y autenticación
 
-- **Token de acceso:** único por invitación (`_activeSetupToken`), generado al primer guardado
-- **Sesión en localStorage:** tipo, identificador, TTL 24h (persiste al cerrar navegador)
-- **Sesión en Firestore:** `activeSession: serverTimestamp()`, renovación cada 60s
-- **Reparación automática:** si `activeSession` falta en Firestore, se restaura al recargar
-- **Login:** username + setup token, transacción Firestore atómica, TOCTOU protegido
-- **Logout:** limpia localStorage + Firestore + caché
-- **Rate limiting:** 3 intentos → bloqueo 30s
+- **Token de acceso:** único por invitación, guardado como **hash SHA-256** en la colección privada `setupTokens` (documentId = hash, no enumerable); el documento público de la invitación no contiene el token
+- **Prueba de conocimiento:** activar una sesión exige conocer el token (el hash se compara contra `setupTokens/{hash}`); `get` está permitido sin sesión (el login lo necesita antes de activarla), `list` denegado
+- **Sesión en sessionStorage:** tipo, identificador, TTL 60 min (no persiste al cerrar el navegador)
+- **Sesión en Firestore:** `activeSession` + `sessionExpiresAt` (TTL 60 min, mínimo de 30 min para absorber latencia de reloj), renovación cada 60s
+- **Reparación automática:** si `activeSession` falta o expiró en Firestore, se repara/migra al recargar
+- **Login:** username + setup token, transacción Firestore atómica con `setupTokens/{hash}`, TOCTOU protegido
+- **Logout:** limpia sessionStorage + Firestore + caché
+- **Rate limiting:** 30s de bloqueo tras intentos fallidos en el login
 
 ### Flujo de sesión
 
 ```
-Login → runTransaction({ activeSession, sessionExpiresAt }) → saveSession(localStorage)
-Recarga → getSession(localStorage) → getDoc(Firestore)
-  ├─ activeSession válida → restaurar ✅
-  ├─ activeSession ausente → reparar (updateDoc) → restaurar ✅
-  └─ sesión expirada → clearSession()
-Renovación (60s) → updateDoc + renewSession(localStorage)
+Login → leer setupTokens/{hash(token)} → runTransaction({ activeSession, sessionExpiresAt, setupTokenHash }) → saveSession(sessionStorage)
+Recarga → getSession(sessionStorage) → getDoc(Firestore)
+  ├─ activeSession + sessionExpiresAt válidas → restaurar ✅
+  ├─ sesión inactiva/expirada → reparar (prueba de token + updateDoc) → restaurar ✅
+  └─ documento inexistente → clearSession()
+Renovación (60s) → updateDoc(sessionExpiresAt) + renewSession(sessionStorage)
 Logout → clearSession() + updateDoc(null, null)
 ```
 
@@ -155,10 +157,10 @@ Logout → clearSession() + updateDoc(null, null)
 |---|---|
 | Cifrado | AES-256-GCM + PBKDF2 (600K iteraciones) |
 | CSP | Headers HTTP + meta tag: self, Firebase, Google APIs, Sentry, Google Fonts |
-| Firestore | Reglas con validación de sesión activa, XSS protection (`isSafeText`), límites de tamaño |
-| Tokens | Únicos por invitación, renovación 60s, expiración 24h |
+| Firestore | Reglas con validación de sesión activa, XSS protection (`isSafeText`), límites de tamaño, invitations y setupTokens no enumerables |
+| Tokens | Hash SHA-256 en `setupTokens` (documentId = hash), prueba de conocimiento para activar la sesión, TTL 60 min |
 | Autenticación | SuperAdmin con Firebase Auth |
-| Almacenamiento | Consentimiento GDPR para localStorage |
+| Almacenamiento | Consentimiento GDPR para localStorage/sessionStorage |
 | Headers | HSTS, X-Frame-Options DENY, X-Content-Type-Options nosniff, Referrer-Policy strict |
 | Permissions-Policy | cámara/micrófono/geolocalización bloqueados |
 
@@ -259,6 +261,13 @@ Hitos principales:
 | v2.38.0 | 2026-08-01 | Sección Transporte (opciones + salidas con mapa), MapEmbed generalizado |
 | v2.39.0 | 2026-08-04 | Hora única type=time, itinerario por eventos, RSVP con elección de transporte (salida+hora guardadas), tabla de asistencia ampliada, panel a 80% sin scroll de página, accesibilidad completa |
 | v2.40.0 | 2026-08-04 | Seguridad: token de setup fuera del documento público (hash + setupTokens), sesión con prueba de conocimiento, invitations no enumerable, rate limit RSVP, validación server-side; token visible en el setup con checkbox obligatorio; rendimiento (JS inicial 435→315KB, analytics/sentry lazy, countdown sin re-renders); accesibilidad (focus trap, skip-link); i18n corregido |
+| v2.40.1 | 2026-08-04 | Eliminado el modal del token del setup: el token del formulario es el único y se usa para el auto-login al guardar |
+| v2.41.0 | 2026-08-04 | Campo Postre en el setup + esquema de RSVP por invitación (`rsvpResponses/{token}/responses`) con contador anti-spam en el documento grupo |
+| v2.41.1 | 2026-08-04 | Fix login: `setupTokens/{hash}` legible sin sesión (el login la necesita antes de activarla); list denegado |
+| v2.41.2 | 2026-08-04 | Fix login: mínimo de sesión a 30 min (margen sobre el TTL de 60 min) y unidad de minutos corregida |
+| v2.41.3 | 2026-08-04 | Eliminado el campo Postre del setup (el postre es un plato más de cada menú) |
+| v2.42.0 | 2026-08-04 | Auditoría y limpieza de código legacy: módulos muertos eliminados, campos legacy de configuración y sus fallbacks, tests de reglas al esquema RSVP por invitación |
+| v2.43.0 | 2026-08-05 | Cobertura al 90%+ en los 4 umbrales (94.1/90.0/93.8/95.9), ~180 tests nuevos, gate de cobertura a 90/90/90/90 y limpieza de ramas inalcanzables |
 
 ---
 

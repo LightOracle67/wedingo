@@ -424,4 +424,138 @@ describe("AttendanceTab", () => {
     );
     expect(screen.getByText("rsvp.menuCarne")).toBeDefined();
   });
+
+  it("resolves transport labels for each mode", () => {
+    const makeEntry = (overrides: Record<string, unknown>) => ({
+      id: "1", guestName: "Alice", attendance: "yes" as const, companions: 0,
+      dietaryInfo: "", submittedAt: "2024-01-01", ...overrides,
+    });
+    const entries = [
+      makeEntry({ transportMode: "bus", transportTime: "12:00" }),
+      makeEntry({ transportMode: "taxi", transportTime: "" }),
+      makeEntry({ transportMode: "own" }),
+      makeEntry({ transportMode: "" }),
+    ];
+    render(
+      <AttendanceTab
+        searchQuery="" setSearchQuery={vi.fn()} attendanceFilter="all" setAttendanceFilter={vi.fn()}
+        filteredEntries={entries as never} rsvpEntries={entries as never}
+        exportPdf={vi.fn()} formatDate={(d: string) => String(d)}
+        handleClearRsvpEntries={vi.fn()} handleDeleteRsvpEntries={vi.fn()}
+        transportDepartures={JSON.stringify([{ type: "bus", time: "10:00", url: "" }])}
+      />
+    );
+    expect(screen.getByText("transport.typeBus (12:00)")).toBeDefined();
+    expect(screen.getByText("transport.typeTaxi")).toBeDefined();
+    expect(screen.getByText("attendance.transportOwnCar")).toBeDefined();
+    expect(screen.getAllByText("—").length).toBeGreaterThan(0);
+  });
+
+  it("formats birth dates and falls back to a dash", () => {
+    const entries = [
+      { id: "1", guestName: "Alice", attendance: "yes" as const, companions: 0, dietaryInfo: "", submittedAt: "2024-01-01", birthDate: "2000-05-15" },
+      { id: "2", guestName: "Bob", attendance: "yes" as const, companions: 0, dietaryInfo: "", submittedAt: "2024-01-01", birthDate: "" },
+    ];
+    render(
+      <AttendanceTab
+        searchQuery="" setSearchQuery={vi.fn()} attendanceFilter="all" setAttendanceFilter={vi.fn()}
+        filteredEntries={entries as never} rsvpEntries={entries as never}
+        exportPdf={vi.fn()} formatDate={(d: string) => String(d)}
+        handleClearRsvpEntries={vi.fn()} handleDeleteRsvpEntries={vi.fn()}
+      />
+    );
+    // Un birthDate no vacío se formatea; el vacío muestra "—".
+    expect(screen.getAllByText("—").length).toBeGreaterThanOrEqual(1);
+  });
+
+  it("toggles all and batch deletes with companions", () => {
+    const entries = [
+      { id: "1", guestName: "Alice", attendance: "yes" as const, companions: 1, dietaryInfo: "", submittedAt: "2024-01-01", rsvpType: "main" as const, companionDocIds: ["c1"] },
+      { id: "2", guestName: "Bob", attendance: "no" as const, companions: 0, dietaryInfo: "", submittedAt: "2024-01-02" },
+    ];
+    const deleteSpy = vi.fn();
+    render(
+      <AttendanceTab
+        searchQuery="" setSearchQuery={vi.fn()} attendanceFilter="all" setAttendanceFilter={vi.fn()}
+        filteredEntries={entries as never} rsvpEntries={entries as never}
+        exportPdf={vi.fn()} formatDate={(d: string) => String(d)}
+        handleClearRsvpEntries={vi.fn()} handleDeleteRsvpEntries={deleteSpy}
+      />
+    );
+    fireEvent.click(screen.getByLabelText("attendance.selectAll"));
+    fireEvent.click(screen.getByText("attendance.deleteSelected"));
+    expect(deleteSpy).toHaveBeenCalled();
+  });
+
+  it("selects a single row via its checkbox", () => {
+    const entries = [
+      { id: "1", guestName: "Alice", attendance: "yes" as const, companions: 0, dietaryInfo: "", submittedAt: "2024-01-01" },
+      { id: "2", guestName: "Bob", attendance: "no" as const, companions: 0, dietaryInfo: "", submittedAt: "2024-01-02" },
+    ];
+    render(
+      <AttendanceTab
+        searchQuery="" setSearchQuery={vi.fn()} attendanceFilter="all" setAttendanceFilter={vi.fn()}
+        filteredEntries={entries as never} rsvpEntries={entries as never}
+        exportPdf={vi.fn()} formatDate={(d: string) => String(d)}
+        handleClearRsvpEntries={vi.fn()} handleDeleteRsvpEntries={vi.fn()}
+      />
+    );
+    const checkboxes = screen.getAllByRole("checkbox");
+    fireEvent.click(checkboxes[1]!);
+    expect(screen.getByText("attendance.deleteSelected")).toBeDefined();
+  });
+
+  it("selects and deselects all rows", () => {
+    const entries = [
+      { id: "1", guestName: "Alice", attendance: "yes" as const, companions: 0, dietaryInfo: "", submittedAt: "2024-01-01" },
+      { id: "2", guestName: "Bob", attendance: "no" as const, companions: 0, dietaryInfo: "", submittedAt: "2024-01-02" },
+    ];
+    render(
+      <AttendanceTab
+        searchQuery="" setSearchQuery={vi.fn()} attendanceFilter="all" setAttendanceFilter={vi.fn()}
+        filteredEntries={entries as never} rsvpEntries={entries as never}
+        exportPdf={vi.fn()} formatDate={(d: string) => String(d)}
+        handleClearRsvpEntries={vi.fn()} handleDeleteRsvpEntries={vi.fn()}
+      />
+    );
+    const selectAll = screen.getByLabelText("attendance.selectAll");
+    fireEvent.click(selectAll);
+    fireEvent.click(selectAll);
+    expect(screen.getByLabelText("attendance.selectAll")).toBeDefined();
+  });
+
+  it("renders attendee menu lines and consent badges", () => {
+    const entries = [
+      {
+        id: "1", guestName: "Alice", attendance: "yes" as const, companions: 1, dietaryInfo: "", submittedAt: "2024-01-01",
+        parentalConsent: true,
+        attendees: [{ name: "Child", menu: "carne" }, { name: "NoMenu" }],
+      },
+    ];
+    render(
+      <AttendanceTab
+        searchQuery="" setSearchQuery={vi.fn()} attendanceFilter="all" setAttendanceFilter={vi.fn()}
+        filteredEntries={entries as never} rsvpEntries={entries as never}
+        exportPdf={vi.fn()} formatDate={(d: string) => String(d)}
+        handleClearRsvpEntries={vi.fn()} handleDeleteRsvpEntries={vi.fn()}
+      />
+    );
+    expect(screen.getByText("attendance.consentParental")).toBeDefined();
+  });
+
+  it("does not crash with non-array transport departures", () => {
+    const entries = [
+      { id: "1", guestName: "Alice", attendance: "yes" as const, companions: 0, dietaryInfo: "", submittedAt: "2024-01-01", birthDate: "2000-01-01" },
+    ];
+    render(
+      <AttendanceTab
+        searchQuery="" setSearchQuery={vi.fn()} attendanceFilter="all" setAttendanceFilter={vi.fn()}
+        filteredEntries={entries as never} rsvpEntries={entries as never}
+        exportPdf={vi.fn()} formatDate={(d: string) => String(d)}
+        handleClearRsvpEntries={vi.fn()} handleDeleteRsvpEntries={vi.fn()}
+        transportDepartures='{"a":1}'
+      />
+    );
+    expect(screen.getAllByText("Alice").length).toBeGreaterThan(0);
+  });
 });

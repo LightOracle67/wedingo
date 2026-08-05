@@ -273,4 +273,26 @@ describe("MusicPlayer", () => {
     fireEvent.change(slider, { target: { value: "0.3" } });
     expect(slider).toBeDefined();
   });
+
+  it("stops playing when the audio ends", () => {
+    render(<MusicPlayer musicUrl="https://example.com/song.mp3" />);
+    fireEvent.click(screen.getByRole("button", { name: /music\.label/i }));
+    const audio = document.querySelector("audio") as HTMLAudioElement;
+    fireEvent.click(screen.getByRole("button", { name: /music\.play/i }));
+    fireEvent.ended(audio);
+    expect(screen.getByRole("button", { name: /music\.play/i })).toBeDefined();
+  });
+
+  it("handles the audio error event", () => {
+    render(<MusicPlayer musicUrl="https://example.com/song.mp3" />);
+    const audio = document.querySelector("audio") as HTMLAudioElement;
+    fireEvent.error(audio);
+    expect(screen.getByText("music.loadError")).toBeDefined();
+  });
+
+  it("plays when the wedin:play-audio window event fires", () => {
+    render(<MusicPlayer musicUrl="https://example.com/song.mp3" />);
+    window.dispatchEvent(new Event("wedin:play-audio"));
+    expect(mockAudioPlay).toHaveBeenCalled();
+  });
 });

@@ -36,7 +36,12 @@ describe("HeroSection", () => {
 
   it("shows godparents when provided", () => {
     render(<HeroSection {...baseProps} countdown={null} couplePhoto="" godparent1="Mom" godparent2="Dad" />);
-    expect(screen.getByText("hero.withBlessing")).toBeDefined();
+    expect(screen.getByText(/hero.withBlessing/)).toBeDefined();
+  });
+
+  it("renders without a first name or godparents", () => {
+    render(<HeroSection {...baseProps} firstName="" secondName="" godparent1="Mom" godparent2="" countdown={null} couplePhoto="" />);
+    expect(screen.getByText(/^&$/)).toBeDefined();
   });
 
   it("shows expired countdown", () => {

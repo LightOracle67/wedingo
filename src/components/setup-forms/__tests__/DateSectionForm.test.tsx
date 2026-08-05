@@ -23,7 +23,16 @@ vi.mock("../../../lib/constants", () => ({
   MAX_SCHEDULE_EVENT_TEXT: 60,
 }));
 
-const mockFormData = vi.hoisted(() => ({ weddingSiteURL: "", weddingHour: "", weddingMinute: "", weddingSchedule: "", weddingScheduleEvents: "" }));
+const mockFormData = vi.hoisted(() => ({
+  weddingSiteURL: "",
+  weddingHour: "",
+  weddingMinute: "",
+  weddingDay: "",
+  weddingYear: "",
+  weddingSchedule: "",
+  weddingScheduleEvents: "",
+  weddingMapStatic: "",
+}));
 vi.mock("../../../lib/geo-utils", () => ({
   isValidGoogleMapsUrl: (url: string) => url.startsWith("https://maps.google.com"),
   convertToEmbedUrl: (url: string) => url.replace("maps.google.com", "maps.google.com/embed"),
@@ -161,6 +170,74 @@ describe("DateSectionForm", () => {
     expect(texts[1]!.value).toBe("Ceremonia a las 19");
   });
 
+  it("edits a schedule event time field", () => {
+    mockFormData.weddingScheduleEvents = JSON.stringify([{ time: "18:00", text: "Ceremonia" }]);
+    render(<DateSectionForm />);
+    const input = document.getElementById("scheduleEventTime0") as HTMLInputElement;
+    fireEvent.change(input, { target: { value: "19:00" } });
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingScheduleEvents", JSON.stringify([{ time: "19:00", text: "Ceremonia" }]));
+  });
+
+  it("edits a schedule event text field", () => {
+    mockFormData.weddingScheduleEvents = JSON.stringify([{ time: "18:00", text: "Ceremonia" }]);
+    render(<DateSectionForm />);
+    const input = document.getElementById("scheduleEventText0") as HTMLInputElement;
+    fireEvent.change(input, { target: { value: "Cóctel" } });
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingScheduleEvents", JSON.stringify([{ time: "18:00", text: "Cóctel" }]));
+  });
+
+  it("removes a schedule event", () => {
+    mockFormData.weddingScheduleEvents = JSON.stringify([
+      { time: "18:00", text: "Ceremonia" },
+      { time: "20:00", text: "Cena" },
+    ]);
+    render(<DateSectionForm />);
+    fireEvent.click(screen.getAllByLabelText("setup.scheduleRemoveEvent")[0]!);
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingScheduleEvents", JSON.stringify([{ time: "20:00", text: "Cena" }]));
+  });
+
+  it("toggles the static map checkbox", () => {
+    render(<DateSectionForm />);
+    fireEvent.click(screen.getByLabelText("setup.mapStaticLabel"));
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingMapStatic", "true");
+  });
+
+  it("shows a year error for a year too far in the past", () => {
+    mockFormData.weddingYear = "1800";
+    render(<DateSectionForm />);
+    const yearInput = document.getElementById("weddingYear") as HTMLInputElement;
+    expect(yearInput).not.toBeNull();
+    expect(yearInput.getAttribute("aria-invalid")).toBe("true");
+  });
+
+  it("shows a year error for a year too far in the future", () => {
+    mockFormData.weddingYear = "2999";
+    render(<DateSectionForm />);
+    const yearInput = document.getElementById("weddingYear") as HTMLInputElement;
+    expect(yearInput.getAttribute("aria-invalid")).toBe("true");
+  });
+
+  it("handles non-array schedule events JSON", () => {
+    mockFormData.weddingScheduleEvents = '{"a":1}';
+    render(<DateSectionForm />);
+    expect(screen.queryAllByLabelText("setup.scheduleEventTimeLabel")).toHaveLength(0);
+  });
+
+  it("normalizes schedule events with non-string fields", () => {
+    mockFormData.weddingScheduleEvents = JSON.stringify([{ time: 5, text: 7 }]);
+    render(<DateSectionForm />);
+    const times = screen.getAllByLabelText("setup.scheduleEventTimeLabel") as HTMLInputElement[];
+    const texts = screen.getAllByLabelText("setup.scheduleEventTextLabel") as HTMLInputElement[];
+    expect(times[0]!.value).toBe("");
+    expect(texts[0]!.value).toBe("");
+  });
+
+  it("shows the static map hint when enabled", () => {
+    mockFormData.weddingMapStatic = "true";
+    render(<DateSectionForm />);
+    expect(screen.getByText("setup.mapStaticHint")).toBeDefined();
+  });
+
   it("renders site URL input", () => {
     render(<DateSectionForm />);
     expect(screen.getByText("setup.mapUrlLabel")).toBeDefined();
@@ -205,5 +282,25 @@ describe("DateSectionForm", () => {
   it("renders with prefix", () => {
     render(<DateSectionForm prefix="admin" />);
     expect(screen.getByText("setup.mapUrlLabel")).toBeDefined();
+  });
+
+  it("marks an invalid day as an error", () => {
+    mockFormData.weddingDay = "99";
+    render(<DateSectionForm />);
+    const dayInput = document.getElementById("weddingDay");
+    expect(dayInput?.className).toContain("setup-input--error");
+  });
+
+  it("marks an invalid year as an error", () => {
+    mockFormData.weddingYear = "99";
+    render(<DateSectionForm />);
+    const yearInput = document.getElementById("weddingYear");
+    expect(yearInput?.className).toContain("setup-input--error");
+  });
+
+  it("marks an invalid time as an error", () => {
+    mockFormData.weddingHour = "25";
+    render(<DateSectionForm />);
+    expect(document.querySelector(".setup-input--error")).toBeDefined();
   });
 });

@@ -282,6 +282,30 @@ describe("useAutoSave", () => {
         { merge: true },
       );
     });
+
+    it("saves successfully when isSavingRef is null", async () => {
+      const { result } = renderHook(() =>
+        useAutoSave(true, "test-token", sampleConfig, sampleConfig, vi.fn(), null),
+      );
+
+      await act(async () => {
+        const output = await result.current.doSave(sampleConfig);
+        expect(output).toBeTruthy();
+      });
+      expect(mockSetDoc).toHaveBeenCalled();
+    });
+
+    it("handles doSave error without onSaveMessage", async () => {
+      mockSetDoc.mockRejectedValueOnce(new Error("Firestore error"));
+      const { result } = renderHook(() =>
+        useAutoSave(true, "test-token", sampleConfig, sampleConfig, null, { current: false }),
+      );
+
+      await act(async () => {
+        const output = await result.current.doSave(sampleConfig);
+        expect(output).toBeNull();
+      });
+    });
   });
 
   describe("cleanup", () => {

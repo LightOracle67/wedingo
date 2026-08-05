@@ -8,17 +8,19 @@ const mockDecodeInviteConfig = vi.hoisted(() => {
   const stable = {};
   return vi.fn(() => stable);
 });
-const mockSafeGetItem = vi.hoisted(() => vi.fn(() => null));
+const mockSafeGetItem = vi.hoisted(() => vi.fn((_key?: unknown) => null as string | null));
 const mockSafeSetItem = vi.hoisted(() => vi.fn());
 const mockLoadAudio = vi.hoisted(() => vi.fn(() => Promise.resolve({ url: "" })));
 const mockLoadDecryptedField = vi.hoisted(() => vi.fn(() => Promise.resolve("")));
 const mockSetSaveError = vi.hoisted(() => vi.fn());
 const mockSetSaveMessage = vi.hoisted(() => vi.fn());
 const mockSetDoc = vi.hoisted(() => vi.fn());
+const mockUpdateDoc = vi.hoisted(() => vi.fn(() => Promise.resolve()));
+const mockResolveAllConfigImages = vi.hoisted(() => vi.fn(() => Promise.resolve({})));
 
 vi.mock("react-i18next", () => ({ useTranslation: () => ({ t: (key: string) => key }) }));
 vi.mock("react-router", () => ({ useLocation: () => mockLocation, useNavigate: () => vi.fn() }));
-vi.mock("firebase/firestore", () => ({ getDoc: mockGetDoc, setDoc: mockSetDoc, updateDoc: vi.fn(), doc: vi.fn(() => ({ id: "test" })), collection: vi.fn(() => ({ id: "test" })), getDocs: vi.fn(() => Promise.resolve({ docs: [], empty: true })), writeBatch: vi.fn(() => ({ delete: vi.fn(), commit: vi.fn() })), increment: vi.fn(() => 1), query: vi.fn(), where: vi.fn(), serverTimestamp: vi.fn(() => new Date()) }));
+vi.mock("firebase/firestore", () => ({ getDoc: mockGetDoc, setDoc: mockSetDoc, updateDoc: mockUpdateDoc, doc: vi.fn(() => ({ id: "test" })), collection: vi.fn(() => ({ id: "test" })), getDocs: vi.fn(() => Promise.resolve({ docs: [], empty: true })), writeBatch: vi.fn(() => ({ delete: vi.fn(), commit: vi.fn() })), increment: vi.fn(() => 1), query: vi.fn(), where: vi.fn(), serverTimestamp: vi.fn(() => new Date()) }));
 vi.mock("../useAppUI", () => ({ useAppUI: () => ({ setSaveMessage: mockSetSaveMessage, setSaveError: mockSetSaveError }) }));
 vi.mock("../../hooks/useCalendar", () => ({ useCalendar: () => ({ formattedDate: "", formattedTime: "", calendarLink: null }) }));
 vi.mock("../../hooks/useFieldHandlers", () => ({ useFieldHandlers: () => ({ handleDayChange: vi.fn(), handleTimeChange: vi.fn(), handleTimeBlur: vi.fn(), handleYearChange: vi.fn(), handleCoordinateChange: vi.fn() }) }));
@@ -32,7 +34,7 @@ vi.mock("../../lib/firebase", () => ({ db: {}, invitationDocRef: vi.fn(() => ({ 
 vi.mock("../../lib/image-store", () => ({
   loadDecryptedField: mockLoadDecryptedField,
   deleteGallery: vi.fn(() => Promise.resolve()),
-  resolveAllConfigImages: vi.fn(() => Promise.resolve({})),
+  resolveAllConfigImages: mockResolveAllConfigImages,
   deleteAllConfigImages: vi.fn(() => Promise.resolve()),
   isConfigImageRef: vi.fn(() => false),
   saveConfigImage: vi.fn((_t, id, _v) => Promise.resolve("__cfgimg:" + id)),
@@ -78,6 +80,8 @@ function SaveSetupConsumer() {
       <button data-testid="ss_giftsInfo" onClick={() => ctx.updateFormField("giftsInfo", "x".repeat(2500))}>GI</button>
       <button data-testid="ss_accommodationInfo" onClick={() => ctx.updateFormField("accommodationInfo", "x".repeat(2500))}>AI</button>
       <button data-testid="ss_menuTexto" onClick={() => ctx.updateFormField("menuTexto", "x".repeat(2500))}>MT</button>
+      <button data-testid="ss_delete" onClick={() => ctx.handleDeleteInvitation()}>Del</button>
+      <button data-testid="ss_reload" onClick={() => ctx.reloadConfig()}>Reload</button>
       <span data-testid="ss_hasConfig">{String(ctx.hasStoredConfig)}</span>
       <span data-testid="ss_inviteToken">{ctx.inviteToken}</span>
     </div>
@@ -212,6 +216,168 @@ describe("ConfigProvider", () => {
       expect(mockSetSaveError).toHaveBeenCalledWith("errors.usernameTooLong");
     });
     mockSetSaveError.mockClear();
+    mockLocation.pathname = "/test";
+  });
+
+  it("hydrates from a fresh cache without reading Firestore", async () => {
+    mockLocation.pathname = "/abcdefghij";
+    mockSafeGetItem.mockImplementation((key: unknown) => {
+      if (String(key).includes("invite_cache")) {
+        return JSON.stringify({ data: { firstName: "Cached", secondName: "Pair" }, cachedAt: Date.now() });
+      }
+      return null;
+    });
+    render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
+    await waitFor(() => expect(screen.getByTestId("ss_hasConfig").textContent).toBe("true"));
+    mockLocation.pathname = "/test";
+  });
+
+  it("falls back to Firestore when the cache is expired", async () => {
+    mockLocation.pathname = "/abcdefghij";
+    mockSafeGetItem.mockImplementation((key: unknown) => {
+      if (String(key).includes("invite_cache")) {
+        return JSON.stringify({ data: { firstName: "Old" }, cachedAt: Date.now() - 10 * 60000 });
+      }
+      return null;
+    });
+    mockGetDoc.mockResolvedValueOnce({
+      exists: () => true,
+      data: () => ({ firstName: "Fresh", secondName: "Pair" }),
+    });
+    render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
+    await waitFor(() => expect(mockGetDoc).toHaveBeenCalled());
+    mockLocation.pathname = "/test";
+  });
+
+  it("deletes the invitation after confirmation", async () => {
+    mockLocation.pathname = "/abcdefghij";
+    mockGetDoc.mockResolvedValue({
+      exists: () => true,
+      data: () => ({ firstName: "Fresh", secondName: "Pair" }),
+    });
+    window.confirm = vi.fn(() => true);
+    render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
+    await waitFor(() => expect(screen.getByTestId("ss_hasConfig").textContent).toBe("true"));
+    fireEvent.click(screen.getByTestId("ss_delete"));
+    mockLocation.pathname = "/test";
+  });
+
+  it("tracks a visit when cookies are accepted on a public route", async () => {
+    mockLocation.pathname = "/abcdefghij";
+    mockSafeGetItem.mockImplementation((key: unknown) => {
+      if (String(key) === "wedin_cookie_consent") return "accepted";
+      return null;
+    });
+    mockGetDoc.mockResolvedValueOnce({
+      exists: () => true,
+      data: () => ({ firstName: "A", secondName: "B", _visits: 3 }),
+    });
+    render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
+    await waitFor(() => {
+      expect(mockUpdateDoc).toHaveBeenCalledWith(expect.anything(), { _visits: 1 });
+    });
+    mockLocation.pathname = "/test";
+  });
+
+  it("hydrates cached images into the config", async () => {
+    mockLocation.pathname = "/abcdefghij";
+    mockSafeGetItem.mockImplementation((key: unknown) => {
+      if (String(key).includes("invite_cache")) {
+        return JSON.stringify({ data: { firstName: "Cached", secondName: "Pair" }, cachedAt: Date.now() });
+      }
+      return null;
+    });
+    mockResolveAllConfigImages.mockResolvedValueOnce({ couplePhoto: "data:image/png;base64,x" });
+    render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
+    await waitFor(() => expect(screen.getByTestId("ss_hasConfig").textContent).toBe("true"));
+    mockLocation.pathname = "/test";
+  });
+
+  it("reloads the config from Firestore", async () => {
+    mockLocation.pathname = "/abcdefghij";
+    mockGetDoc
+      .mockResolvedValueOnce({ exists: () => true, data: () => ({ firstName: "First", secondName: "Load", _visits: 1 }) })
+      .mockResolvedValueOnce({ exists: () => true, data: () => ({ firstName: "Second", secondName: "Load", _visits: 2 }) });
+    mockLoadAudio.mockResolvedValueOnce({ url: "https://audio" });
+    mockResolveAllConfigImages.mockResolvedValueOnce({ couplePhoto: "data:image/png;base64,y" });
+    render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
+    await waitFor(() => expect(screen.getByTestId("ss_hasConfig").textContent).toBe("true"));
+    const callsBefore = vi.mocked(mockGetDoc).mock.calls.length;
+    fireEvent.click(screen.getByTestId("ss_reload"));
+    await vi.waitFor(() => {
+      expect(vi.mocked(mockGetDoc).mock.calls.length).toBeGreaterThan(callsBefore);
+    });
+    mockLocation.pathname = "/test";
+  });
+
+  it("reload handles a missing document", async () => {
+    mockLocation.pathname = "/abcdefghij";
+    mockGetDoc
+      .mockResolvedValueOnce({ exists: () => true, data: () => ({ firstName: "First", secondName: "Load" }) })
+      .mockResolvedValueOnce({ exists: () => false });
+    render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
+    await waitFor(() => expect(screen.getByTestId("ss_hasConfig").textContent).toBe("true"));
+    fireEvent.click(screen.getByTestId("ss_reload"));
+    await vi.waitFor(() => {
+      expect(vi.mocked(mockGetDoc).mock.calls.length).toBeGreaterThan(1);
+    });
+    mockLocation.pathname = "/test";
+  });
+
+  it("saves a valid config successfully and reports success", async () => {
+    mockLocation.pathname = "/abcdefghij";
+    mockGetDoc.mockResolvedValue({
+      exists: () => true,
+      data: () => ({ _visits: 0 }),
+    });
+    render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
+    await waitFor(() => expect(screen.getByTestId("ss_inviteToken").textContent).toBe("abcdefghij"));
+    fireEvent.click(screen.getByTestId("ss_stored"));
+    await waitFor(() => expect(screen.getByTestId("ss_hasConfig").textContent).toBe("true"));
+    fireEvent.click(screen.getByTestId("ss_first"));
+    fireEvent.click(screen.getByTestId("ss_second"));
+    fireEvent.click(screen.getByTestId("ss_theme"));
+    fireEvent.click(screen.getByTestId("ss_order"));
+    fireEvent.click(screen.getByTestId("ss_gp1"));
+    fireEvent.click(screen.getByTestId("ss_gp2"));
+    fireEvent.click(screen.getByTestId("ss_save"));
+    await vi.waitFor(() => {
+      expect(mockSetSaveMessage).toHaveBeenCalledWith("errors.configSaved");
+    });
+    mockLocation.pathname = "/test";
+  });
+
+  it("removes the cached audio when the document has none", async () => {
+    mockLocation.pathname = "/abcdefghij";
+    mockGetDoc.mockResolvedValueOnce({ exists: () => true, data: () => ({ firstName: "A", secondName: "B", _visits: 0 }) });
+    mockLoadAudio.mockResolvedValueOnce({ url: "" } as never);
+    const removeSpy = vi.fn();
+    vi.spyOn(sessionStorage, "removeItem").mockImplementation(removeSpy);
+    render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
+    await waitFor(() => expect(screen.getByTestId("ss_hasConfig").textContent).toBe("true"));
+    mockLocation.pathname = "/test";
+  });
+
+  it("does not track visits on the setup route", async () => {
+    mockUpdateDoc.mockClear();
+    mockLocation.pathname = "/setup";
+    mockSafeGetItem.mockImplementation((key: unknown) => {
+      if (String(key) === "wedin_cookie_consent") return "accepted";
+      return null;
+    });
+    render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
+    await waitFor(() => expect(screen.getByTestId("ss_hasConfig").textContent).toBe("false"));
+    expect(mockUpdateDoc).not.toHaveBeenCalled();
+    mockLocation.pathname = "/test";
+  });
+
+  it("stops loading in invite mode on a non-token route", async () => {
+    mockUpdateDoc.mockClear();
+    mockLocation.pathname = "/superadmin";
+    window.location.search = "?invitar=1";
+    render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
+    await waitFor(() => expect(screen.getByTestId("ss_hasConfig").textContent).toBe("false"));
+    window.location.search = "";
     mockLocation.pathname = "/test";
   });
 });

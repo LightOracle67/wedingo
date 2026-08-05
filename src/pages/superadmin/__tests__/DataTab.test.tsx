@@ -281,4 +281,53 @@ describe("DataTab", () => {
     });
     await vi.waitFor(() => expect(mockDownloadJson).toHaveBeenCalled());
   });
+
+  it("deleteSelected is disabled without the confirm word", async () => {
+    mockGetDocs.mockImplementation((ref: string) => {
+      if (ref === "invitations-collection-ref") {
+        return Promise.resolve({ docs: [docData({ id: "t1", firstName: "A", secondName: "B", weddingDay: "1", weddingMonth: "1", weddingYear: "2025" })] });
+      }
+      return Promise.resolve({ docs: [] });
+    });
+    render(<DataTab />);
+    await vi.waitFor(() => expect(screen.getByText("superadmin.data.selectAll")).toBeInTheDocument());
+    fireEvent.click(screen.getByText("superadmin.data.selectAll"));
+    const btn = screen.getByText((text) => text.includes("superadmin.data.deleteSelectedBtn"));
+    expect((btn as HTMLButtonElement).disabled).toBe(true);
+  });
+
+  it("deleteAll is cancelled when the user declines", async () => {
+    mockGetDocs.mockImplementation((ref: string) => {
+      if (ref === "invitations-collection-ref") {
+        return Promise.resolve({ docs: [docData({ id: "t1", firstName: "A", secondName: "B", weddingDay: "1", weddingMonth: "1", weddingYear: "2025" })] });
+      }
+      return Promise.resolve({ docs: [] });
+    });
+    window.confirm = vi.fn(() => false);
+    render(<DataTab />);
+    await vi.waitFor(() => expect(screen.getByText("superadmin.data.deleteAllBtn")).toBeInTheDocument());
+    const input = screen.getByPlaceholderText("superadmin.data.confirmPlaceholder");
+    fireEvent.change(input, { target: { value: "ELIMINAR" } });
+    fireEvent.click(screen.getByText("superadmin.data.deleteAllBtn"));
+    expect(window.confirm).toHaveBeenCalled();
+    expect(mockAddToast).not.toHaveBeenCalledWith("success", expect.any(String));
+  });
+
+  it("computes rsvp counts from the responses group", async () => {
+    mockGetDocs.mockImplementation((ref: string) => {
+      if (ref === "invitations-collection-ref") {
+        return Promise.resolve({ docs: [docData({ id: "t1", firstName: "A", secondName: "B", weddingDay: "1", weddingMonth: "1", weddingYear: "2025" })] });
+      }
+      if (ref === "rsvp-responses-group") {
+        return Promise.resolve({ docs: [
+          { id: "r1", data: () => ({ inviteToken: "t1", attendance: "yes" }) },
+          { id: "r2", data: () => ({ inviteToken: "t1", attendance: "no" }) },
+        ] });
+      }
+      return Promise.resolve({ docs: [] });
+    });
+    render(<DataTab />);
+    await vi.waitFor(() => expect(screen.getByText("superadmin.data.exportBtn")).toBeInTheDocument());
+    expect(screen.getByText("2")).toBeDefined();
+  });
 });

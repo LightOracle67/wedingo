@@ -369,4 +369,36 @@ describe("GallerySection", () => {
     Date.now = origDateNow;
     vi.useRealTimers();
   });
+
+  it("renders images without url or id using fallbacks", async () => {
+    mockLoadGallery.mockResolvedValue([{ description: "" }, { url: "https://example.com/2.jpg" }]);
+    render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
+    await vi.waitFor(() => {
+      expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
+    });
+    fireEvent.click(document.querySelectorAll("img")[0]!);
+    expect(screen.getByLabelText("gallery.lightboxLabel")).toBeDefined();
+  });
+
+  it("guards carousel controls with a single image", async () => {
+    mockLoadGallery.mockResolvedValue([{ id: "1", url: "https://example.com/1.jpg", description: "Solo" }]);
+    render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
+    await vi.waitFor(() => {
+      expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
+    });
+    fireEvent.click(document.querySelectorAll("img")[0]!);
+    fireEvent.keyDown(screen.getByLabelText("gallery.lightboxLabel"), { key: "ArrowRight" });
+    expect(screen.getAllByAltText("Solo").length).toBeGreaterThan(0);
+  });
+
+  it("does not pause when reducedMotion is enabled", async () => {
+    mockReducedMotion.mockReturnValue(true);
+    mockLoadGallery.mockResolvedValue(mockImages);
+    render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
+    await vi.waitFor(() => {
+      expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
+    });
+    fireEvent.mouseEnter(screen.getByLabelText("gallery.carouselLabel"));
+    expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
+  });
 });

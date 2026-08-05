@@ -3,10 +3,13 @@ import { describe, it, expect, vi } from "vitest";
 vi.mock("firebase/firestore", () => ({
   addDoc: vi.fn(() => Promise.resolve({ id: "new-doc" })),
   getDocs: vi.fn(() => Promise.resolve({ empty: true, docs: [] })),
+  getDoc: vi.fn(() => Promise.resolve({ exists: () => false, data: () => undefined })),
   updateDoc: vi.fn(() => Promise.resolve()),
   deleteDoc: vi.fn(() => Promise.resolve()),
   collection: vi.fn(() => "coll-ref"),
   doc: vi.fn(() => ({ id: "doc-id" })),
+  setDoc: vi.fn(() => Promise.resolve()),
+  serverTimestamp: vi.fn(() => "ts"),
   writeBatch: vi.fn(() => ({
     update: vi.fn(),
     delete: vi.fn(),
@@ -40,6 +43,14 @@ import {
   loadGallery,
   deleteGallery,
   deleteGalleryImage,
+  isConfigImageRef,
+  makeConfigImageRef,
+  saveConfigImage,
+  getConfigImage,
+  deleteConfigImage,
+  resolveConfigImageField,
+  resolveAllConfigImages,
+  deleteAllConfigImages,
 } from "../image-store";
 
 import * as cryptoUtils from "../crypto-utils";
@@ -308,5 +319,93 @@ describe("image-store", () => {
       docs: [{ ref: "doc-ref-1" }, { ref: "doc-ref-2" }],
     } as never);
     await expect(deleteGallery("token")).resolves.toBeUndefined();
+  });
+
+  describe("config images", () => {
+    it("isConfigImageRef detects the ref prefix", () => {
+      expect(isConfigImageRef("__cfgimg:couplePhoto")).toBe(true);
+      expect(isConfigImageRef("data:image/png;base64,x")).toBe(false);
+    });
+
+    it("makeConfigImageRef builds a ref", () => {
+      expect(makeConfigImageRef("couplePhoto")).toBe("__cfgimg:couplePhoto");
+    });
+
+    it("saveConfigImage encrypts and stores, returning a ref", async () => {
+      const result = await saveConfigImage("token", "couplePhoto", "data:image/png;base64,x");
+      expect(result).toBe("__cfgimg:couplePhoto");
+    });
+
+    it("saveConfigImage throws when encrypt fails", async () => {
+      mockEncrypt.mockRejectedValueOnce(new Error("errors.encryptFailed"));
+      await expect(saveConfigImage("token", "couplePhoto", "data:x")).rejects.toThrow("errors.encryptFailed");
+    });
+
+    it("getConfigImage returns null when the doc does not exist", async () => {
+      vi.mocked(firestore.getDoc).mockResolvedValueOnce({ exists: () => false } as never);
+      await expect(getConfigImage("token", "couplePhoto")).resolves.toBeNull();
+    });
+
+    it("getConfigImage returns null when data is not a string", async () => {
+      vi.mocked(firestore.getDoc).mockResolvedValueOnce({
+        exists: () => true,
+        data: () => ({ data: 42 }),
+      } as never);
+      await expect(getConfigImage("token", "couplePhoto")).resolves.toBeNull();
+    });
+
+    it("getConfigImage decrypts and returns the value", async () => {
+      vi.mocked(firestore.getDoc).mockResolvedValueOnce({
+        exists: () => true,
+        data: () => ({ data: "enc" }),
+      } as never);
+      await expect(getConfigImage("token", "couplePhoto")).resolves.toBe("data:image/jpeg;base64,decoded");
+    });
+
+    it("getConfigImage returns null on error", async () => {
+      vi.mocked(firestore.getDoc).mockRejectedValueOnce(new Error("net"));
+      await expect(getConfigImage("token", "couplePhoto")).resolves.toBeNull();
+    });
+
+    it("deleteConfigImage resolves and swallows errors", async () => {
+      await expect(deleteConfigImage("token", "couplePhoto")).resolves.toBeUndefined();
+      vi.mocked(firestore.deleteDoc).mockRejectedValueOnce(new Error("net"));
+      await expect(deleteConfigImage("token", "couplePhoto")).resolves.toBeUndefined();
+    });
+
+    it("resolveConfigImageField returns the value untouched for non-refs", async () => {
+      await expect(resolveConfigImageField("token", "data:image/png;base64,x")).resolves.toBe("data:image/png;base64,x");
+      await expect(resolveConfigImageField(undefined, "x")).resolves.toBe("x");
+    });
+
+    it("resolveConfigImageField resolves a config image ref", async () => {
+      vi.mocked(firestore.getDoc).mockResolvedValueOnce({
+        exists: () => true,
+        data: () => ({ data: "enc" }),
+      } as never);
+      await expect(resolveConfigImageField("token", "__cfgimg:couplePhoto")).resolves.toBe("data:image/jpeg;base64,decoded");
+    });
+
+    it("resolveAllConfigImages only resolves refs", async () => {
+      vi.mocked(firestore.getDoc).mockResolvedValueOnce({
+        exists: () => true,
+        data: () => ({ data: "enc" }),
+      } as never);
+      const result = await resolveAllConfigImages("token", {
+        couplePhoto: "__cfgimg:couplePhoto",
+        backgroundImage: "data:image/png;base64,x",
+      });
+      expect(result.couplePhoto).toBe("data:image/jpeg;base64,decoded");
+      expect(result.backgroundImage).toBeUndefined();
+    });
+
+    it("deleteAllConfigImages resolves and no-ops when empty", async () => {
+      await expect(deleteAllConfigImages("token")).resolves.toBeUndefined();
+      vi.mocked(firestore.getDocs).mockResolvedValueOnce({
+        empty: false,
+        docs: [{ ref: "r1" }],
+      } as never);
+      await expect(deleteAllConfigImages("token")).resolves.toBeUndefined();
+    });
   });
 });

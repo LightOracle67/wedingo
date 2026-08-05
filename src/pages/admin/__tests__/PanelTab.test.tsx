@@ -179,6 +179,28 @@ describe("PanelTab", () => {
     });
   });
 
+  it("restores a backup file without bankInfo", async () => {
+    const { setDoc } = await import("firebase/firestore");
+    render(<PanelTab config={baseConfig} />);
+    const fileInput = document.querySelector('input[type="file"]')!;
+    const validData = JSON.stringify({ firstName: "Test" });
+    const file = new File([validData], "backup.json", { type: "application/json" });
+    fireEvent.change(fileInput, { target: { files: [file] } });
+    await vi.waitFor(() => {
+      expect(setDoc).toHaveBeenCalled();
+    });
+  });
+
+  it("shows a restore error for non-object data", async () => {
+    render(<PanelTab config={baseConfig} />);
+    const fileInput = document.querySelector('input[type="file"]')!;
+    const file = new File([JSON.stringify("just a string")], "backup.json", { type: "application/json" });
+    fireEvent.change(fileInput, { target: { files: [file] } });
+    await vi.waitFor(() => {
+      expect(mockAddToast).toHaveBeenCalledWith("error", expect.stringContaining("errors.restoreFailed"));
+    });
+  });
+
   it("handles successful restore with non-redacted bankInfo", async () => {
     const { setDoc } = await import("firebase/firestore");
     render(<PanelTab config={baseConfig} />);

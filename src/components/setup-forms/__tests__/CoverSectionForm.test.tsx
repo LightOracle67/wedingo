@@ -25,12 +25,18 @@ vi.mock("../../../hooks/useToast", () => ({
 }));
 
 const mockUploadImage = vi.hoisted(() => vi.fn());
+const mockSaveConfigImage = vi.hoisted(() => vi.fn((_token: string, _id: string, _dataUrl: string) => Promise.resolve(`__cfgimg:${_id}`)));
 vi.mock("../../../lib/image-store", () => ({
   uploadImage: mockUploadImage,
-  saveConfigImage: vi.fn((_token, _id, _dataUrl) => Promise.resolve(`__cfgimg:${_id}`)),
+  saveConfigImage: mockSaveConfigImage,
   deleteConfigImage: vi.fn(() => Promise.resolve()),
   getConfigImage: vi.fn(() => Promise.resolve(null)),
   isConfigImageRef: vi.fn(() => false),
+}));
+
+vi.mock("../../../lib/image-utils", () => ({
+  compressImageTransparent: vi.fn((file: File) => Promise.resolve(`data:image/png;base64,${file.name}`)),
+  compressImage: vi.fn(() => Promise.resolve("data:image/jpeg;base64,x")),
 }));
 
 const mockFormData = vi.hoisted(() => ({ firstName: "John" } as Record<string, string | undefined>));
@@ -375,5 +381,96 @@ describe("CoverSectionForm", () => {
       expect(mockUploadError).toHaveBeenCalledWith("setup.photoUploadFailed");
     });
     expect(fileInput.value).toBe("");
+  });
+
+  it("uploads a custom seal and stores the config ref", async () => {
+    render(<CoverSectionForm />);
+    const input = document.getElementById("customSeal") as HTMLInputElement;
+    const file = new File(["seal"], "seal.png", { type: "image/png" });
+    fireEvent.change(input, { target: { files: [file] } });
+    await vi.waitFor(() => {
+      expect(mockUpdateFormField).toHaveBeenCalledWith("customSeal", "__cfgimg:customSeal");
+    });
+  });
+
+  it("rejects an oversized custom seal", async () => {
+    render(<CoverSectionForm />);
+    const input = document.getElementById("customSeal") as HTMLInputElement;
+    const big = new File([new Uint8Array(2 * 1024 * 1024)], "big.png", { type: "image/png" });
+    fireEvent.change(input, { target: { files: [big] } });
+    await vi.waitFor(() => {
+      expect(mockAddToast).toHaveBeenCalledWith("error", "setup.errorFileSize");
+    });
+  });
+
+  it("uploads a background image and stores the config ref", async () => {
+    render(<CoverSectionForm />);
+    const input = document.getElementById("backgroundImage") as HTMLInputElement;
+    const file = new File(["bg"], "bg.webp", { type: "image/webp" });
+    fireEvent.change(input, { target: { files: [file] } });
+    await vi.waitFor(() => {
+      expect(mockUpdateFormField).toHaveBeenCalledWith("backgroundImage", "__cfgimg:backgroundImage");
+    });
+  });
+
+  it("rejects a background image with an invalid format", async () => {
+    render(<CoverSectionForm />);
+    const input = document.getElementById("backgroundImage") as HTMLInputElement;
+    const file = new File(["bad"], "bad.txt", { type: "text/plain" });
+    fireEvent.change(input, { target: { files: [file] } });
+    await vi.waitFor(() => {
+      expect(mockAddToast).toHaveBeenCalledWith("error", "setup.errorFileFormat");
+    });
+  });
+
+  it("uploads a corner decoration and stores the config ref", async () => {
+    render(<CoverSectionForm />);
+    const input = document.getElementById("cornerDecoration") as HTMLInputElement;
+    const file = new File(["corner"], "corner.svg", { type: "image/svg+xml" });
+    fireEvent.change(input, { target: { files: [file] } });
+    await vi.waitFor(() => {
+      expect(mockUpdateFormField).toHaveBeenCalledWith("cornerDecoration", "__cfgimg:cornerDecoration");
+    });
+  });
+
+  it("shows an error toast when the seal upload fails", async () => {
+    mockSaveConfigImage.mockRejectedValueOnce(new Error("fail"));
+    render(<CoverSectionForm />);
+    const input = document.getElementById("customSeal") as HTMLInputElement;
+    const file = new File(["seal"], "seal.png", { type: "image/png" });
+    fireEvent.change(input, { target: { files: [file] } });
+    await vi.waitFor(() => {
+      expect(mockAddToast).toHaveBeenCalledWith("error", "setup.photoUploadFailed");
+    });
+  });
+
+  it("shows an error toast when the corner decoration upload fails", async () => {
+    mockSaveConfigImage.mockRejectedValueOnce(new Error("fail"));
+    render(<CoverSectionForm />);
+    const input = document.getElementById("cornerDecoration") as HTMLInputElement;
+    const file = new File(["corner"], "corner.svg", { type: "image/svg+xml" });
+    fireEvent.change(input, { target: { files: [file] } });
+    await vi.waitFor(() => {
+      expect(mockAddToast).toHaveBeenCalledWith("error", "setup.photoUploadFailed");
+    });
+  });
+
+  it("renders the selected custom seal with a remove button", () => {
+    mockFormData.customSeal = "__cfgimg:customSeal";
+    render(<CoverSectionForm />);
+    expect(screen.getByText("setup.currentSeal")).toBeDefined();
+    expect(screen.getAllByText("setup.remove").length).toBeGreaterThan(0);
+  });
+
+  it("renders the selected background image", () => {
+    mockFormData.backgroundImage = "__cfgimg:backgroundImage";
+    render(<CoverSectionForm />);
+    expect(screen.getAllByText("setup.remove").length).toBeGreaterThan(0);
+  });
+
+  it("renders the selected corner decoration", () => {
+    mockFormData.cornerDecoration = "__cfgimg:cornerDecoration";
+    render(<CoverSectionForm />);
+    expect(screen.getAllByText("setup.remove").length).toBeGreaterThan(0);
   });
 });

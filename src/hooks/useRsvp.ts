@@ -388,14 +388,14 @@ export function useRsvp(
         const names = current.companionNames.slice(0, count);
         const menus = current.companionMenus.slice(0, count);
         const allergies = current.companionAllergies.slice(0, count);
-        const allergiesOther = (current.companionAllergiesOther || []).slice(0, count);
-        const birthDates = (current.companionBirthDates || []).slice(0, count);
-        const parentalConsents = (current.companionParentalConsents || []).slice(0, count);
-        const healthConsents = (current.companionHealthConsents || []).slice(0, count);
-        const transportChoices = (current.companionTransportChoices || []).slice(0, count);
-        const transportModes = (current.companionTransportModes || []).slice(0, count);
-        const transportTimes = (current.companionTransportTimes || []).slice(0, count);
-        const transportPlaces = (current.companionTransportPlaces || []).slice(0, count);
+        const allergiesOther = current.companionAllergiesOther.slice(0, count);
+        const birthDates = current.companionBirthDates.slice(0, count);
+        const parentalConsents = current.companionParentalConsents.slice(0, count);
+        const healthConsents = current.companionHealthConsents.slice(0, count);
+        const transportChoices = current.companionTransportChoices.slice(0, count);
+        const transportModes = current.companionTransportModes.slice(0, count);
+        const transportTimes = current.companionTransportTimes.slice(0, count);
+        const transportPlaces = current.companionTransportPlaces.slice(0, count);
         while (names.length < count) {
           names.push("");
           menus.push("");
@@ -620,10 +620,10 @@ export function useRsvp(
       transportMode: (mainGuestData.transportMode as string) || "",
       transportTime: (mainGuestData.transportTime as string) || "",
       transportPlace: (mainGuestData.transportPlace as string) || "",
-      companionTransportChoices: (mainGuestData.companionTransportChoices as string[]) || [],
-      companionTransportModes: (mainGuestData.companionTransportModes as string[]) || [],
-      companionTransportTimes: (mainGuestData.companionTransportTimes as string[]) || [],
-      companionTransportPlaces: (mainGuestData.companionTransportPlaces as string[]) || [],
+      companionTransportChoices: mainGuestData.companionTransportChoices as string[],
+      companionTransportModes: mainGuestData.companionTransportModes as string[],
+      companionTransportTimes: mainGuestData.companionTransportTimes as string[],
+      companionTransportPlaces: mainGuestData.companionTransportPlaces as string[],
       companionDocIds,
     };
 

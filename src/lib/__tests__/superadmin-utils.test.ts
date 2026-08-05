@@ -29,6 +29,10 @@ describe("searchInvitations", () => {
     expect(searchInvitations(invs, "abc")).toHaveLength(1);
   });
 
+  it("filters by adminUsername", () => {
+    expect(searchInvitations(invs, "JUAN")).toHaveLength(1);
+  });
+
   it("returns all for empty query", () => {
     expect(searchInvitations(invs, "")).toHaveLength(2);
   });

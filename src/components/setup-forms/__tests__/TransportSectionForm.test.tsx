@@ -162,4 +162,27 @@ describe("TransportSectionForm departures flow", () => {
     expect(screen.getByText(/setup.siteNameLabel/)).toBeDefined();
     expect(screen.getByText(/Plaza Mayor/)).toBeDefined();
   });
+
+  it("handles non-array departures JSON as empty", () => {
+    mockFormData.transportDepartures = '{"a":1}';
+    renderForm();
+    expect(screen.getByText("setup.transportDeparturesLabel")).toBeDefined();
+  });
+
+  it("normalizes taxi types and non-string times", () => {
+    mockFormData.transportDepartures = JSON.stringify([{ type: "taxi", time: 7 }, { time: "10:00" }]);
+    renderForm();
+    const times = screen.getAllByLabelText("setup.transportTimeLabel") as HTMLInputElement[];
+    expect(times[0]!.value).toBe("");
+    expect(times[1]!.value).toBe("10:00");
+  });
+
+  it("marks an invalid departure URL with an error", () => {
+    renderForm();
+    fireEvent.change(screen.getByLabelText("setup.transportEnabledLabel"), { target: { value: "both" } });
+    fireEvent.click(screen.getByRole("button", { name: /setup.transportAddDeparture/ }));
+    const urlInput = screen.getByLabelText("setup.transportUrlLabel");
+    fireEvent.change(urlInput, { target: { value: "https://evil.example.com/x" } });
+    expect(screen.getByText("setup.mapUrlInvalid")).toBeDefined();
+  });
 });

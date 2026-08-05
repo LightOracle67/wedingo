@@ -76,7 +76,7 @@ function SaveSetupConsumer() {
       <button data-testid="ss_wedSchedule" onClick={() => ctx.updateFormField("weddingSchedule", "x".repeat(2500))}>WS</button>
       <button data-testid="ss_storyText" onClick={() => ctx.updateFormField("storyText", "x".repeat(2500))}>ST</button>
       <button data-testid="ss_giftsInfo" onClick={() => ctx.updateFormField("giftsInfo", "x".repeat(2500))}>GI</button>
-      <button data-testid="ss_transportDepartures" onClick={() => ctx.updateFormField("transportDepartures", "not-json")}>TD</button>
+      <button data-testid="ss_transportDepartures" onClick={() => ctx.updateFormField("transportDepartures", JSON.stringify([{ type: "bus", time: "25:00", url: "" }]))}>TD</button>
       <span data-testid="ss_hasConfig">{String(ctx.hasStoredConfig)}</span>
       <span data-testid="ss_inviteToken">{ctx.inviteToken}</span>
     </div>
@@ -354,7 +354,7 @@ describe("ConfigProvider", () => {
     fireEvent.click(screen.getByTestId("ss_transportDepartures"));
     fireEvent.click(screen.getByTestId("ss_save"));
     await waitFor(() => {
-      expect(mockSetSaveError).toHaveBeenCalledWith("errors.transportDeparturesInvalid");
+      expect(mockSetSaveError).toHaveBeenCalledWith("errors.transportTimeInvalid");
     });
     mockSetSaveError.mockClear();
     mockLocation.pathname = "/test";

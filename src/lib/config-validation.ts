@@ -8,11 +8,6 @@ import {
   MAX_USERNAME_LENGTH,
   MAX_INVITE_MESSAGE_LENGTH,
   MAX_LONG_TEXT_LENGTH,
-  MAX_SCHEDULE_EVENTS,
-  MAX_SCHEDULE_EVENT_TEXT,
-  MAX_MENU_DISHES,
-  MAX_MENU_DISH_TEXT,
-  MENU_DISH_ORDERS,
 } from "./constants";
 
 export interface ConfigValidationResult {
@@ -119,26 +114,14 @@ export function validateConfigForSave(
     return { sanitized, hiddenSet, errorKey: "errors.scheduleTooLong" };
   }
   if (sanitized.weddingScheduleEvents) {
-    try {
-      const parsed = JSON.parse(sanitized.weddingScheduleEvents);
-      if (!Array.isArray(parsed) || parsed.length > MAX_SCHEDULE_EVENTS) {
-        return { sanitized, hiddenSet, errorKey: "errors.scheduleEventsInvalid" };
+    // normalizeConfig garantiza un array JSON válido y acotado; solo se
+    // valida aquí el formato de la hora de cada evento.
+    const parsed = JSON.parse(sanitized.weddingScheduleEvents) as Array<Record<string, unknown>>;
+    for (const ev of parsed) {
+      const time = String(ev.time || "");
+      if (time && !/^([01]\d|2[0-3]):[0-5]\d$/.test(time)) {
+        return { sanitized, hiddenSet, errorKey: "errors.scheduleEventTimeInvalid" };
       }
-      for (const ev of parsed) {
-        if (!ev || typeof ev !== "object") {
-          return { sanitized, hiddenSet, errorKey: "errors.scheduleEventsInvalid" };
-        }
-        const time = String((ev as Record<string, unknown>).time || "");
-        const text = String((ev as Record<string, unknown>).text || "");
-        if (time && !/^([01]\d|2[0-3]):[0-5]\d$/.test(time)) {
-          return { sanitized, hiddenSet, errorKey: "errors.scheduleEventTimeInvalid" };
-        }
-        if (text.length > MAX_SCHEDULE_EVENT_TEXT) {
-          return { sanitized, hiddenSet, errorKey: "errors.scheduleEventTextTooLong" };
-        }
-      }
-    } catch {
-      return { sanitized, hiddenSet, errorKey: "errors.scheduleEventsInvalid" };
     }
   }
   if (sanitized.storyText && sanitized.storyText.length > MAX_LONG_TEXT_LENGTH) {
@@ -148,55 +131,21 @@ export function validateConfigForSave(
     return { sanitized, hiddenSet, errorKey: "errors.giftsTooLong" };
   }
   if (sanitized.transportDepartures) {
-    try {
-      const parsed = JSON.parse(sanitized.transportDepartures);
-      if (!Array.isArray(parsed) || parsed.length > 4) {
-        return { sanitized, hiddenSet, errorKey: "errors.transportDeparturesInvalid" };
+    // normalizeConfig garantiza un array JSON válido; solo se valida hora y URL.
+    const parsed = JSON.parse(sanitized.transportDepartures) as Array<Record<string, unknown>>;
+    for (const dep of parsed) {
+      const time = String(dep.time || "");
+      const url = String(dep.url || "");
+      if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(time)) {
+        return { sanitized, hiddenSet, errorKey: "errors.transportTimeInvalid" };
       }
-      for (const dep of parsed) {
-        if (!dep || typeof dep !== "object") {
-          return { sanitized, hiddenSet, errorKey: "errors.transportDeparturesInvalid" };
-        }
-        const time = String((dep as Record<string, unknown>).time || "");
-        const url = String((dep as Record<string, unknown>).url || "");
-        if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(time)) {
-          return { sanitized, hiddenSet, errorKey: "errors.transportTimeInvalid" };
-        }
-        if (url && !isValidGoogleMapsUrl(url)) {
-          return { sanitized, hiddenSet, errorKey: "errors.transportUrlInvalid" };
-        }
+      if (url && !isValidGoogleMapsUrl(url)) {
+        return { sanitized, hiddenSet, errorKey: "errors.transportUrlInvalid" };
       }
-    } catch {
-      return { sanitized, hiddenSet, errorKey: "errors.transportDeparturesInvalid" };
     }
   }
   if (sanitized.accommodationURL && !isValidGoogleMapsUrl(sanitized.accommodationURL)) {
     return { sanitized, hiddenSet, errorKey: "errors.accommodationUrlInvalid" };
-  }
-  for (const dishesField of ["menuTextoDishes", "menuCarneDishes", "menuPescadoDishes", "menuVeganoDishes"]) {
-    const raw = sanitized[dishesField as keyof typeof sanitized];
-    if (!raw) continue;
-    try {
-      const parsed = JSON.parse(String(raw));
-      if (!Array.isArray(parsed) || parsed.length > MAX_MENU_DISHES) {
-        return { sanitized, hiddenSet, errorKey: "errors.menuDishesInvalid" };
-      }
-      for (const dish of parsed) {
-        if (!dish || typeof dish !== "object") {
-          return { sanitized, hiddenSet, errorKey: "errors.menuDishesInvalid" };
-        }
-        const order = String((dish as Record<string, unknown>).order || "");
-        const text = String((dish as Record<string, unknown>).text || "");
-        if (!MENU_DISH_ORDERS.includes(order)) {
-          return { sanitized, hiddenSet, errorKey: "errors.menuDishOrderInvalid" };
-        }
-        if (text.length > MAX_MENU_DISH_TEXT) {
-          return { sanitized, hiddenSet, errorKey: "errors.menuDishTextTooLong" };
-        }
-      }
-    } catch {
-      return { sanitized, hiddenSet, errorKey: "errors.menuDishesInvalid" };
-    }
   }
 
   return { sanitized, hiddenSet, errorKey: null };

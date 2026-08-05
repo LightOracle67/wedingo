@@ -198,4 +198,42 @@ describe("normalizeConfig", () => {
     expect(JSON.parse(result.menuCarneDishes)).toEqual([{ order: "otro", text: "Tostadas" }]);
     expect(normalizeConfig({ menuPescadoDishes: "not-json" }).menuPescadoDishes).toBe("");
   });
+
+  it("drops malformed menu dish entries and non-string time values", () => {
+    const result = normalizeConfig({
+      menuTextoDishes: JSON.stringify([null, 42, { order: "primero", text: 7 }, { order: "primero", text: "  Plato  " }]),
+    });
+    const parsed = JSON.parse(result.menuTextoDishes);
+    expect(parsed).toEqual([{ order: "primero", text: "" }, { order: "primero", text: "Plato" }]);
+  });
+
+  it("returns empty for non-array JSON in menu dishes", () => {
+    expect(normalizeConfig({ menuCarneDishes: '{"a":1}' }).menuCarneDishes).toBe("");
+    expect(normalizeConfig({ menuCarneDishes: 123 }).menuCarneDishes).toBe("");
+  });
+
+  it("returns empty for non-array JSON in schedule events", () => {
+    expect(normalizeConfig({ weddingScheduleEvents: '{"a":1}' }).weddingScheduleEvents).toBe("");
+    expect(normalizeConfig({ weddingScheduleEvents: 123 }).weddingScheduleEvents).toBe("");
+  });
+
+  it("drops malformed schedule entries and non-string fields", () => {
+    const result = normalizeConfig({
+      weddingScheduleEvents: JSON.stringify([null, 42, { time: 5, text: "  Hola  " }]),
+    });
+    expect(JSON.parse(result.weddingScheduleEvents)).toEqual([{ time: "", text: "Hola" }]);
+  });
+
+  it("returns empty for non-array JSON in transport departures", () => {
+    expect(normalizeConfig({ transportDepartures: '{"a":1}' }).transportDepartures).toBe("");
+    expect(normalizeConfig({ transportDepartures: 123 }).transportDepartures).toBe("");
+  });
+
+  it("drops malformed transport entries and defaults taxi type", () => {
+    const result = normalizeConfig({
+      transportDepartures: JSON.stringify([null, 42, { type: "taxi", time: 5, url: 7 }, { time: "10:00", url: "" }]),
+    });
+    const parsed = JSON.parse(result.transportDepartures);
+    expect(parsed).toEqual([{ type: "taxi", time: "", url: "" }, { type: "bus", time: "10:00", url: "" }]);
+  });
 });

@@ -347,13 +347,16 @@ describe("ConfigProvider", () => {
     const payload = mockSetDoc.mock.calls[0]![1];
     expect(payload.menuCarneDishes).toBe(JSON.stringify([{ order: "segundo", text: "Solomillo" }]));
 
-    // Orden inválido -> error de validación, no se guarda
-    mockSetSaveError.mockClear();
+    // Un orden inválido ya no bloquea el guardado: normalizeConfig lo
+    // corrige a "otro" en producción (aquí el mock es identidad, se guarda crudo).
+    mockSetDoc.mockClear();
     fireEvent.click(screen.getByTestId("ss_dishesBadOrder"));
     fireEvent.click(screen.getByTestId("ss_save"));
     await waitFor(() => {
-      expect(mockSetSaveError).toHaveBeenCalledWith("errors.menuDishOrderInvalid");
+      expect(mockSetDoc).toHaveBeenCalled();
     });
+    const payload2 = mockSetDoc.mock.calls[0]![1];
+    expect(JSON.parse(payload2.menuCarneDishes)[0].order).toBe("desayuno");
     mockLocation.pathname = "/test";
   });
 

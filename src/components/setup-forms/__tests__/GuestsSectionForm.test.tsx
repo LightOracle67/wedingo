@@ -175,4 +175,11 @@ describe("GuestsSectionForm", () => {
     expect(input.className).toContain("setup-input--error");
     expect(screen.getByText(/setup.mapUrlInvalid/)).toBeDefined();
   });
+
+  it("shows the accommodation site name for a valid place URL", () => {
+    mockFormData.accommodationURL = "https://www.google.com/maps/place/Hotel+Sol/@40.41,-3.70,17z";
+    render(<GuestsSectionForm />);
+    expect(screen.getByText(/setup.siteNameLabel/)).toBeDefined();
+    expect(screen.getByText((text: string) => text.includes("Hotel Sol"))).toBeDefined();
+  });
 });

@@ -1,5 +1,15 @@
 export const CHANGELOG = [
   {
+    version: "2.43.0",
+    date: "2026-08-05",
+    changes: [
+      "CALIDAD: cobertura de tests al 90%+ en los 4 umbrales (statements 94.1%, branches 90.0%, functions 93.8%, lines 95.9%) y gate de cobertura actualizado a 90/90/90/90",
+      "TESTS: ~180 tests nuevos (1554 → 1732) en hooks (useRsvp, useSetupAuth, useAutoSave, rsvp-payloads), contextos (ConfigContext: visitas, caché, reload, guardado), utils (normalize-config, config-validation, geo-utils, superadmin-utils, image-utils, token-utils, sentry) y componentes (RsvpSection, GallerySection, AttendanceTab, DateSectionForm, TransportSectionForm, CoverSectionForm, HeroSection, PublicInvitation, DashboardTab, PanelTab, App RTL)",
+      "CLEANUP: eliminados fallbacks defensivos inalcanzables en useRsvp (los tipos garantizan los arrays de acompañantes) y ramas muertas en config-validation",
+      "FIX TEST: token-utils con bytes aleatorios — test determinista que fuerza ambos caminos del generador (la única rama que hacía fluctuar el gate de cobertura)",
+    ],
+  },
+  {
     version: "2.42.0",
     date: "2026-08-04",
     changes: [

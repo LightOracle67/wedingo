@@ -516,6 +516,82 @@ describe("useRsvp", () => {
 
       expect(result.current.rsvpMessage).toMatch(/healthConsentRequired/i);
     });
+
+    it("returns error for missing companion birthDate", async () => {
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
+      act(() => result.current.updateRsvpField("attendance", "with"));
+      act(() => result.current.updateRsvpField("companionCount", 1));
+      act(() => result.current.updateRsvpField("companionNames[0]", "Carlos López García"));
+      act(() => result.current.updateRsvpField("birthDate", "2000-01-01"));
+      act(() => result.current.updateRsvpField("privacyConsent", true));
+      await act(async () => {
+        result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as any);
+      });
+      expect(result.current.rsvpMessage).toMatch(/birthDateRequired/i);
+    });
+
+    it("returns error for missing companion menu when menu is enabled", async () => {
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, true));
+      act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
+      act(() => result.current.updateRsvpField("attendance", "with"));
+      act(() => result.current.updateRsvpField("companionCount", 1));
+      act(() => result.current.updateRsvpField("companionNames[0]", "Carlos López García"));
+      act(() => result.current.updateRsvpField("companionBirthDates", ["2000-01-01"]));
+      act(() => result.current.updateRsvpField("birthDate", "2000-01-01"));
+      act(() => result.current.updateRsvpField("privacyConsent", true));
+      await act(async () => {
+        result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as any);
+      });
+      expect(result.current.rsvpMessage).toMatch(/menuRequired/i);
+    });
+
+    it("returns error for companion age under 14 without parental consent", async () => {
+      mockComputeAge.mockReturnValue(10);
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
+      act(() => result.current.updateRsvpField("attendance", "with"));
+      act(() => result.current.updateRsvpField("companionCount", 1));
+      act(() => result.current.updateRsvpField("companionNames[0]", "Carlos López García"));
+      act(() => result.current.updateRsvpField("companionBirthDates", ["2015-01-01"]));
+      act(() => result.current.updateRsvpField("companionParentalConsents", [false]));
+      act(() => result.current.updateRsvpField("birthDate", "2000-01-01"));
+      act(() => result.current.updateRsvpField("privacyConsent", true));
+      await act(async () => {
+        result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as any);
+      });
+      expect(result.current.rsvpMessage).toMatch(/ageUnder14/i);
+    });
+
+    it("returns error for companion health consent when the companion has allergies", async () => {
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
+      act(() => result.current.updateRsvpField("attendance", "with"));
+      act(() => result.current.updateRsvpField("companionCount", 1));
+      act(() => result.current.updateRsvpField("companionNames[0]", "Carlos López García"));
+      act(() => result.current.updateRsvpField("companionBirthDates", ["2000-01-01"]));
+      act(() => result.current.updateRsvpField("companionAllergies", [["sin gluten"]]));
+      act(() => result.current.updateRsvpField("birthDate", "2000-01-01"));
+      act(() => result.current.updateRsvpField("privacyConsent", true));
+      await act(async () => {
+        result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as any);
+      });
+      expect(result.current.rsvpMessage).toMatch(/healthConsentRequired/i);
+    });
+
+    it("submits successfully when not attending", async () => {
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
+      act(() => result.current.updateRsvpField("attendance", "no"));
+      act(() => result.current.updateRsvpField("privacyConsent", true));
+      await act(async () => {
+        result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as any);
+      });
+      await waitFor(() => {
+        expect(result.current.hasSubmitted).toBe(true);
+      });
+      expect(result.current.rsvpMessage).toMatch(/successNotAttending/i);
+    });
   });
 
   describe("handleDeleteRsvp", () => {
@@ -857,6 +933,195 @@ describe("useRsvp", () => {
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
       act(() => result.current.setRsvpMessage("Custom message"));
       expect(result.current.rsvpMessage).toBe("Custom message");
+    });
+  });
+
+  describe("hydration companion linking", () => {
+    it("links companion docs to the main entry", async () => {
+      mockParseDietaryInfo.mockReturnValueOnce({ mealChoice: "pescado", dietarySelection: ["sin gluten"], dietaryOther: "alergia frutos secos" });
+      mockGetDocs.mockResolvedValueOnce({
+        docs: [
+          {
+            id: "m1",
+            data: () => ({ rsvpType: "main", guestName: "Alice María Smith", attendance: "yes", mealChoice: "carne", submittedAt: { toDate: () => new Date("2024-01-01") } }),
+          },
+          {
+            id: "c1",
+            data: () => ({
+              rsvpType: "companion", mainGuestDocId: "m1", guestName: "Bob Carlos Jones", attendance: "yes",
+              mealChoice: "pescado", dietaryInfo: "enc", allergiesOther: "otra", submittedAt: "2024-01-02",
+              transportChoice: "0", transportMode: "bus", transportTime: "12:00", transportPlace: "Plaza",
+            }),
+          },
+        ],
+        forEach: vi.fn(),
+      });
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      await waitFor(() => {
+        expect(result.current.rsvpEntries.length).toBeGreaterThan(0);
+      });
+      const main = result.current.rsvpEntries.find((e) => e.id === "m1")!;
+      expect(main.companionDocIds).toEqual(["c1"]);
+      expect(main.companionNames).toEqual(["Bob Carlos Jones"]);
+      expect(main.companionTransportChoices).toEqual(["0"]);
+      expect(main.companionTransportModes).toEqual(["bus"]);
+      // El individual de acompañante también existe en la lista.
+      expect(result.current.rsvpEntries.some((e) => e.id === "c1")).toBe(true);
+    });
+
+    it("falls back to now when submittedAt is missing", async () => {
+      mockGetDocs.mockResolvedValueOnce({
+        docs: [{
+          id: "x1",
+          data: () => ({ guestName: "Alice María Smith", attendance: "yes", submittedAt: undefined }),
+        }],
+        forEach: vi.fn(),
+      });
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      await waitFor(() => {
+        expect(result.current.rsvpEntries).toHaveLength(1);
+      });
+      expect(result.current.rsvpEntries[0]!.submittedAt).toBeTruthy();
+    });
+
+    it("prefills a companion entry when its name is typed", async () => {
+      mockParseDietaryInfo.mockReturnValue({ mealChoice: "pescado", dietarySelection: ["sin gluten"], dietaryOther: "alergia frutos secos" });
+      mockGetDocs.mockResolvedValueOnce({
+        docs: [
+          { id: "m1", data: () => ({ rsvpType: "main", guestName: "Alice María Smith", attendance: "yes", submittedAt: "2024-01-01" }) },
+          {
+            id: "c1", data: () => ({
+              rsvpType: "companion", mainGuestDocId: "m1", guestName: "Bob Carlos Jones", attendance: "yes",
+              mealChoice: "pescado", allergiesOther: "otra", dietaryInfo: "enc", submittedAt: "2024-01-02",
+              birthDate: "2000-01-01", healthConsent: true, parentalConsent: true,
+              transportChoice: "0", transportMode: "bus", transportTime: "12:00", transportPlace: "Plaza",
+            }),
+          },
+        ],
+        forEach: vi.fn(),
+      });
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      await waitFor(() => {
+        expect(result.current.rsvpEntries.length).toBeGreaterThan(0);
+      });
+      act(() => result.current.updateRsvpField("guestName", "Bob Carlos Jones"));
+      await waitFor(() => {
+        expect(result.current.rsvpForm.menuSelection).toBe("pescado");
+      });
+      expect(result.current.rsvpForm.healthConsent).toBe(true);
+      expect(result.current.rsvpForm.parentalConsent).toBe(true);
+      expect(result.current.rsvpForm.allergiesOther).toBe("alergia frutos secos");
+    });
+
+    it("prefills companion lists from linked companions", async () => {
+      mockParseDietaryInfo.mockReturnValue({ mealChoice: "", dietarySelection: [], dietaryOther: "" });
+      mockGetDocs.mockResolvedValueOnce({
+        docs: [
+          { id: "m1", data: () => ({ rsvpType: "main", guestName: "Alice María Smith", attendance: "yes", companionNames: ["Bob Carlos Jones"], companionDocIds: ["c1"], submittedAt: "2024-01-01" }) },
+          {
+            id: "c1", data: () => ({
+              rsvpType: "companion", mainGuestDocId: "m1", guestName: "Bob Carlos Jones", attendance: "yes",
+              birthDate: "2000-01-01", parentalConsent: true, healthConsent: true, submittedAt: "2024-01-02",
+            }),
+          },
+        ],
+        forEach: vi.fn(),
+      });
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      await waitFor(() => {
+        expect(result.current.rsvpEntries.length).toBeGreaterThan(0);
+      });
+      act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
+      await waitFor(() => {
+        expect(result.current.rsvpForm.companionBirthDates).toEqual(["2000-01-01"]);
+      });
+      expect(result.current.rsvpForm.companionParentalConsents).toEqual([true]);
+      expect(result.current.rsvpForm.companionHealthConsents).toEqual([true]);
+    });
+
+    it("does nothing when deleting an empty list", async () => {
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      await act(async () => {
+        await result.current.handleDeleteRsvpEntries([]);
+      });
+      expect(mockWriteBatch).not.toHaveBeenCalled();
+    });
+
+    it("does nothing when the invite token is empty", async () => {
+      const { result } = renderHook(() => useRsvp("", setAdminMessage, setAdminMessageType, false));
+      await act(async () => {
+        await new Promise((r) => setTimeout(r, 10));
+      });
+      expect(mockGetDocs).not.toHaveBeenCalled();
+      expect(result.current.rsvpEntries).toHaveLength(0);
+    });
+
+    it("normalizes a Firestore timestamp with seconds to ISO", async () => {
+      mockGetDocs.mockResolvedValueOnce({
+        docs: [{ id: "x1", data: () => ({ guestName: "Alice María Smith", attendance: "yes", submittedAt: { seconds: 1234 } }) }],
+        forEach: vi.fn(),
+      });
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      await waitFor(() => {
+        expect(result.current.rsvpEntries).toHaveLength(1);
+      });
+      expect(result.current.rsvpEntries[0]!.submittedAt).toBe(new Date(1234 * 1000).toISOString());
+    });
+
+    it("classifies an entry without rsvpType as companion when it has a mainGuestDocId", async () => {
+      mockGetDocs.mockResolvedValueOnce({
+        docs: [
+          { id: "m1", data: () => ({ guestName: "Alice María Smith", attendance: "yes", submittedAt: "2024-01-01" }) },
+          { id: "c1", data: () => ({ guestName: "Bob Carlos Jones", mainGuestDocId: "m1", attendance: "yes", submittedAt: "2024-01-02" }) },
+        ],
+        forEach: vi.fn(),
+      });
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      await waitFor(() => {
+        expect(result.current.rsvpEntries.length).toBeGreaterThan(0);
+      });
+      const comp = result.current.rsvpEntries.find((e) => e.id === "c1");
+      expect(comp!.rsvpType).toBe("companion");
+    });
+
+    it("classifies an entry with rsvpType companion but no mainGuestDocId as companion", async () => {
+      mockGetDocs.mockResolvedValueOnce({
+        docs: [{ id: "c1", data: () => ({ rsvpType: "companion", guestName: "Solo Carlos", attendance: "yes", submittedAt: "2024-01-02" }) }],
+        forEach: vi.fn(),
+      });
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      await act(async () => {
+        await new Promise((r) => setTimeout(r, 10));
+      });
+      expect(Array.isArray(result.current.rsvpEntries)).toBe(true);
+      expect(mockGetDocs).toHaveBeenCalled();
+    });
+
+    it("hydrates minimal entries using fallbacks", async () => {
+      mockParseDietaryInfo.mockReturnValue({ mealChoice: "", dietarySelection: ["carne"], dietaryOther: "" });
+      mockGetDocs.mockResolvedValueOnce({
+        docs: [
+          { id: "m1", data: () => ({ guestName: "Alice María Smith", attendance: "yes", submittedAt: "2024-01-01" }) },
+          {
+            id: "c1", data: () => ({
+              rsvpType: "companion", mainGuestDocId: "m1", guestName: "Bob Carlos Jones", attendance: "yes",
+              dietaryInfo: "enc", submittedAt: "2024-01-02",
+            }),
+          },
+        ],
+        forEach: vi.fn(),
+      });
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      await waitFor(() => {
+        expect(result.current.rsvpEntries.length).toBeGreaterThan(0);
+      });
+      const main = result.current.rsvpEntries.find((e) => e.id === "m1");
+      expect(main!.companionNames).toEqual(["Bob Carlos Jones"]);
+      expect(main!.companionTransportChoices).toEqual([""]);
+      expect(main!.companionTransportModes).toEqual(["own"]);
+      expect(main!.companionTransportTimes).toEqual([""]);
+      expect(main!.companionTransportPlaces).toEqual([""]);
+      expect(main!.companionAllergiesOther).toEqual([""]);
     });
   });
 });

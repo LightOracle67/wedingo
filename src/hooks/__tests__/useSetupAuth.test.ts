@@ -170,6 +170,34 @@ describe("useSetupAuth", () => {
       expect(result.current.isTokenVerified).toBe(true);
     });
 
+    it("confirms overriding an existing session and logs in", async () => {
+      mockGetDoc.mockImplementation(async (ref: unknown) => {
+        if (String(ref).startsWith("token-ref-")) {
+          return { exists: () => false };
+        }
+        return { exists: () => true, data: () => ({ activeSession: true, _activeSetupToken: "valid-token" }) };
+      });
+      mockRunTransaction
+        .mockRejectedValueOnce(new Error("sessionExists"))
+        .mockImplementation(async (_db: unknown, cb: (t: unknown) => Promise<void>) => {
+          const transaction = {
+            get: vi.fn().mockResolvedValue({ exists: () => true, data: () => ({ _activeSetupToken: "valid-token" }) }),
+            update: vi.fn(),
+          };
+          await cb(transaction);
+          return Promise.resolve();
+        });
+      window.confirm = vi.fn(() => true);
+      const { result } = setup();
+      act(() => result.current.setSetupTokenInput("valid-token"));
+
+      await act(async () => {
+        await result.current.handleTokenLogin();
+      });
+
+      expect(result.current.isTokenVerified).toBe(true);
+    });
+
     it("logs in successfully with valid token", async () => {
       mockGetDoc.mockImplementation(async (ref: unknown) => {
         if (String(ref).startsWith("token-ref-")) {
@@ -229,7 +257,6 @@ describe("useSetupAuth", () => {
       });
       expect(result.current.authMessage).toBe("auth.enterUserAndCode");
     });
-
     it("sets error for username mismatch with configured admin", async () => {
       const config = { adminUsername: "realadmin" } as InvitationConfig;
       const { result } = setup({ config });
@@ -402,6 +429,20 @@ describe("useSetupAuth", () => {
   });
 
   describe("handleResetTokenFromAdmin", () => {
+    it("reports an error when persisting the token fails", async () => {
+      mockCreateSetupTokenRecord.mockRejectedValueOnce(new Error("denied"));
+      const setAdminMessage = vi.fn();
+      const setAdminMessageType = vi.fn();
+      const { result } = setup({ setAdminMessage, setAdminMessageType });
+
+      await act(async () => {
+        await result.current.handleResetTokenFromAdmin();
+      });
+
+      expect(setAdminMessageType).toHaveBeenCalledWith("error");
+      expect(setAdminMessage).toHaveBeenCalledWith("auth.tokenCreateFailed");
+    });
+
     it("generates new token and sets admin message", async () => {
       mockGenerateSetupToken.mockReturnValue("admin-new-token");
       mockNormalizeTokenValue.mockImplementation((v: string) => v);
@@ -431,6 +472,16 @@ describe("useSetupAuth", () => {
   });
 
   describe("refreshSetupToken", () => {
+    it("returns empty without an inviteToken", async () => {
+      const { result } = setup({ inviteToken: "" });
+      let token: string | undefined;
+      await act(async () => {
+        token = await result.current.refreshSetupToken();
+      });
+      expect(token).toBe("");
+      expect(mockSafeGetItem).not.toHaveBeenCalled();
+    });
+
     it("restores token from sessionStorage", async () => {
       mockSafeGetItem.mockReturnValue("session-stored-token");
       const { result } = setup();
@@ -534,6 +585,60 @@ describe("useSetupAuth", () => {
       // Network errors no longer clear the session (transient error protection)
       await vi.waitFor(() => {
         expect(mockClearSession).not.toHaveBeenCalled();
+      });
+    });
+
+    it("handles a missing Firestore document during restoration", async () => {
+      mockGetSession.mockReturnValue({ type: "setup", identifier: "ghost-user" });
+      mockGetDoc.mockResolvedValueOnce({ exists: () => false });
+
+      setup();
+
+      await waitFor(() => {
+        expect(mockGetDoc).toHaveBeenCalled();
+      });
+    });
+
+    it("repairs a legacy session and migrates the stored token", async () => {
+      mockGetSession.mockReturnValue({ type: "setup", identifier: "legacy-user" });
+      mockGetDoc.mockResolvedValueOnce({
+        exists: () => true,
+        data: () => ({ activeSession: false, sessionExpiresAt: null, _activeSetupToken: "legacy-token" }),
+      });
+      mockSafeGetItem.mockReturnValue("legacy-token");
+
+      setup();
+
+      await waitFor(() => {
+        expect(mockUpdateDoc).toHaveBeenCalledWith("invite-ref", expect.objectContaining({ legacyToken: "legacy-token" }));
+      });
+    });
+
+    it("repairs a session whose expiry is in the past", async () => {
+      mockGetSession.mockReturnValue({ type: "setup", identifier: "expired-user" });
+      mockGetDoc.mockResolvedValueOnce({
+        exists: () => true,
+        data: () => ({ activeSession: true, sessionExpiresAt: new Date(Date.now() - 1000) }),
+      });
+
+      setup();
+
+      await waitFor(() => {
+        expect(mockUpdateDoc).toHaveBeenCalled();
+      });
+    });
+
+    it("repairs a session without an expiry timestamp", async () => {
+      mockGetSession.mockReturnValue({ type: "setup", identifier: "noexp-user" });
+      mockGetDoc.mockResolvedValueOnce({
+        exists: () => true,
+        data: () => ({ activeSession: true }),
+      });
+
+      setup();
+
+      await waitFor(() => {
+        expect(mockUpdateDoc).toHaveBeenCalled();
       });
     });
 

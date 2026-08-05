@@ -111,6 +111,12 @@ describe("validateConfigForSave", () => {
     expect(result.errorKey).toBe("errors.accommodationUrlInvalid");
   });
 
+  it("derives weddingPlace from a valid maps URL", () => {
+    const result = validateConfigForSave(validConfig({ weddingSiteURL: "https://www.google.com/maps/place/Hacienda+Los+Olivos/@37.5,-4.7,17z" }), true, 2030);
+    expect(result.errorKey).toBeNull();
+    expect(result.sanitized.weddingPlace).toBe("Hacienda Los Olivos");
+  });
+
   it("normalizes a menu dish with an unknown order", () => {
     const result = validateConfigForSave(
       validConfig({ menuEnabled: "true", menuPostre: "Tarta", menuCarne: "Carne", menuCarneDishes: JSON.stringify([{ order: "nope", text: "Plato" }]) }),
@@ -131,5 +137,85 @@ describe("validateConfigForSave", () => {
     expect(result.errorKey).toBeNull();
     expect(result.hiddenSet.has("gallery")).toBe(true);
     expect(result.hiddenSet.has("rsvp")).toBe(true);
+  });
+
+  it("rejects hidden sections with an unknown key", () => {
+    const result = validateConfigForSave(validConfig({ hiddenSections: "hero,bogus" }), true, 2030);
+    expect(result.errorKey).toBe("errors.hiddenSectionsInvalid");
+  });
+
+  it("rejects a section order with the wrong length", () => {
+    const order = STORY_SECTION_ORDER.join(",") + ",details";
+    const result = validateConfigForSave(validConfig({ sectionOrder: order }), true, 2030);
+    expect(result.errorKey).toBe("errors.sectionOrderMismatch");
+  });
+
+  it("rejects an overlong invite message", () => {
+    const result = validateConfigForSave(validConfig({ inviteMessage: "x".repeat(501) }), true, 2030);
+    expect(result.errorKey).toBe("errors.messageTooLong");
+  });
+
+  it("rejects an overlong schedule", () => {
+    const result = validateConfigForSave(validConfig({ weddingSchedule: "x".repeat(2001) }), true, 2030);
+    expect(result.errorKey).toBe("errors.scheduleTooLong");
+  });
+
+  it("rejects an overlong story text", () => {
+    const result = validateConfigForSave(validConfig({ storyText: "x".repeat(2001) }), true, 2030);
+    expect(result.errorKey).toBe("errors.storyTooLong");
+  });
+
+  it("rejects an overlong gifts info", () => {
+    const result = validateConfigForSave(validConfig({ giftsInfo: "x".repeat(2001) }), true, 2030);
+    expect(result.errorKey).toBe("errors.giftsTooLong");
+  });
+
+  it("rejects an invalid IBAN in bankInfo", () => {
+    const result = validateConfigForSave(validConfig({ bankInfo: "ES00 1234 INVALID" }), true, 2030);
+    expect(result.errorKey).toBe("errors.ibanInvalid");
+  });
+
+  it("accepts bankInfo that does not look like an IBAN", () => {
+    const result = validateConfigForSave(validConfig({ bankInfo: "Transferencia al contado" }), true, 2030);
+    expect(result.errorKey).toBeNull();
+  });
+
+  it("rejects schedule events with an invalid time", () => {
+    const events = JSON.stringify([{ time: "99:00", text: "Boda" }]);
+    const result = validateConfigForSave(validConfig({ weddingScheduleEvents: events }), true, 2030);
+    expect(result.errorKey).toBe("errors.scheduleEventTimeInvalid");
+  });
+
+  it("rejects a transport departure with an invalid map URL", () => {
+    const dep = JSON.stringify([{ type: "bus", time: "12:00", url: "https://example.com" }]);
+    const result = validateConfigForSave(validConfig({ transportDepartures: dep }), true, 2030);
+    expect(result.errorKey).toBe("errors.transportUrlInvalid");
+  });
+
+  it("derives weddingPlace only when the URL contains a place name", () => {
+    const result = validateConfigForSave(
+      validConfig({ weddingSiteURL: "https://www.google.com/maps/place/@40.4,-3.7,15z", weddingPlace: "Existente" }),
+      true,
+      2030,
+    );
+    expect(result.errorKey).toBeNull();
+    expect(result.sanitized.weddingPlace).toBe("Existente");
+  });
+
+  it("skips the section order check when no order is provided", () => {
+    const result = validateConfigForSave(validConfig({ sectionOrder: "" }), true, 2030);
+    expect(result.errorKey).toBeNull();
+  });
+
+  it("accepts schedule events without a time", () => {
+    const events = JSON.stringify([{ time: "", text: "Ceremonia" }]);
+    const result = validateConfigForSave(validConfig({ weddingScheduleEvents: events }), true, 2030);
+    expect(result.errorKey).toBeNull();
+  });
+
+  it("accepts transport departures with valid time and URL", () => {
+    const dep = JSON.stringify([{ type: "bus", time: "12:00", url: "https://www.google.com/maps/place/Plaza+Mayor/@40.41,-3.70,17z" }]);
+    const result = validateConfigForSave(validConfig({ transportDepartures: dep }), true, 2030);
+    expect(result.errorKey).toBeNull();
   });
 });
