@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.45.1",
+    date: "2026-08-05",
+    changes: [
+      "I18N: texto de la hora de la celebración — ahora dice 'La ceremonia dará comienzo a las {{time}} h.' (es) / 'The ceremony will begin at {{time}} h.' (en)",
+    ],
+  },
+  {
     version: "2.45.0",
     date: "2026-08-05",
     changes: [

@@ -68,7 +68,7 @@
   "details": {
     "sectionLabel": "Fecha y lugar",
     "datePending": "Fecha por definir",
-    "timeLabel": "Hora de la celebración: {{time}}",
+    "timeLabel": "La ceremonia dará comienzo a las {{time}} h.",
     "timePending": "Horario por confirmar",
     "placePending": "El lugar de la celebración aparecerá aquí.",
     "transport": "Transporte",

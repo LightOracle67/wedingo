@@ -68,7 +68,7 @@
   "details": {
     "sectionLabel": "Date & venue",
     "datePending": "Date to be confirmed",
-    "timeLabel": "Ceremony time: {{time}}",
+    "timeLabel": "The ceremony will begin at {{time}} h.",
     "timePending": "Time to be confirmed",
     "placePending": "The venue will appear here.",
     "transport": "Transport",
