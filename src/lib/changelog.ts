@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.61.0",
+    date: "2026-08-05",
+    changes: [
+      "CALIDAD: cobertura ampliada — 1825 tests; branches 92.7%, statements 95.3%, lines 96.9%",
+      "TESTS: ramas nuevas en image-store (no reintenta errores no reintentables), PublicInvitation y más",
+    ],
+  },
+  {
     version: "2.60.0",
     date: "2026-08-05",
     changes: [

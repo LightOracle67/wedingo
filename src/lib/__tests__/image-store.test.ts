@@ -366,6 +366,15 @@ describe("image-store", () => {
       vi.useRealTimers();
     });
 
+    it("saveConfigImage does not retry a non-retryable error", async () => {
+      const permErr = new Error("denied") as Error & { code?: string };
+      permErr.code = "permission-denied";
+      vi.mocked(firestore.setDoc).mockClear();
+      vi.mocked(firestore.setDoc).mockRejectedValueOnce(permErr);
+      await expect(saveConfigImage("token", "couplePhoto", "data:image/png;base64,x")).rejects.toThrow("denied");
+      expect(firestore.setDoc).toHaveBeenCalledTimes(1);
+    });
+
     it("getConfigImage returns null when the doc does not exist", async () => {
       vi.mocked(firestore.getDoc).mockResolvedValueOnce({ exists: () => false } as never);
       await expect(getConfigImage("token", "couplePhoto")).resolves.toBeNull();
