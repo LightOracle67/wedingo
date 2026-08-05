@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.44.2",
+    date: "2026-08-05",
+    changes: [
+      "FIX: imágenes de la invitación — el auto-guardado (useAutoSave) volvía a guardar couplePhoto como blob cifrado inline (rompía el <img>: 'Failed to load resource') y backgroundImage/customSeal como data-URL inline, re-inflando el documento hasta el límite de 1MB. Ahora migra las imágenes data-URL a la subcolección configImages (refs __cfgimg:) igual que el guardado manual",
+      "OPS: re-migrada la invitación leunam (doc de 844KB → 2.7KB) con refs __cfgimg a las copias válidas cifradas en configImages",
+    ],
+  },
+  {
     version: "2.44.1",
     date: "2026-08-05",
     changes: [

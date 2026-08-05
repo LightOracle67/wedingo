@@ -28,6 +28,11 @@ vi.mock("../../lib/crypto-utils", () => ({
   encrypt: mockEncrypt,
 }));
 
+const mockSaveConfigImage = vi.hoisted(() => vi.fn((_t: string, id: string, _v: string) => Promise.resolve(`__cfgimg:${id}`)));
+vi.mock("../../lib/image-store", () => ({
+  saveConfigImage: mockSaveConfigImage,
+}));
+
 vi.mock("../../lib/error-utils", () => ({
   getFirestoreErrorMessage: mockGetFirestoreErrorMessage,
 }));
@@ -224,8 +229,15 @@ describe("useAutoSave", () => {
       expect(mockEncrypt).toHaveBeenCalledWith("ES1234567890", "test-token");
     });
 
-    it("encrypts couplePhoto when it is a data URI", async () => {
+    it("migrates a data-URI couplePhoto to the configImages subcollection", async () => {
       const dataWithPhoto = { ...sampleConfig, couplePhoto: "data:image/png;base64,abc" };
+      // El payload se restaura en memoria tras setDoc; capturamos una copia
+      // en el momento de la llamada para comprobar el __cfgimg: escrito.
+      let written: Record<string, unknown> = {};
+      mockSetDoc.mockImplementationOnce(((_ref: unknown, data: Record<string, unknown>) => {
+        written = { ...data };
+        return Promise.resolve();
+      }) as never);
       const { result } = renderHook(() =>
         useAutoSave(true, "test-token", dataWithPhoto, dataWithPhoto, vi.fn(), { current: false }),
       );
@@ -235,7 +247,8 @@ describe("useAutoSave", () => {
         expect(output?.couplePhoto).toBe("data:image/png;base64,abc");
       });
 
-      expect(mockEncrypt).toHaveBeenCalledWith("data:image/png;base64,abc", "test-token");
+      expect(mockSaveConfigImage).toHaveBeenCalledWith("test-token", "couplePhoto", "data:image/png;base64,abc");
+      expect(written.couplePhoto).toBe("__cfgimg:couplePhoto");
     });
 
     it("does not encrypt couplePhoto when it is a URL (not data URI)", async () => {
@@ -248,7 +261,7 @@ describe("useAutoSave", () => {
         await result.current.doSave(dataWithPhotoUrl);
       });
 
-      expect(mockEncrypt).not.toHaveBeenCalledWith("https://example.com/photo.jpg", "test-token");
+      expect(mockSaveConfigImage).not.toHaveBeenCalledWith("test-token", "couplePhoto", "https://example.com/photo.jpg");
     });
 
     it("handles doSave error and calls onSaveMessage", async () => {

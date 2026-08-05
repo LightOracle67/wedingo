@@ -25,12 +25,27 @@ export function useAutoSave(
     if (isSavingRef) isSavingRef.current = true;
     const payload = normalizeConfig(data);
     try {
-      const cpOrig = payload.couplePhoto?.startsWith("data:") ? payload.couplePhoto : null;
+      // Migra las imágenes data-URL a la subcolección configImages (refs
+      // __cfgimg:) como hace el guardado manual. Guardarlas inline infla el
+      // documento hasta el límite de 1MB y rompe couplePhoto (blob cifrado
+      // legacy que el <img> no puede renderizar).
+      const { saveConfigImage } = await import("../lib/image-store");
+      const originalImages: Record<string, string> = {};
+      const imagePayload = payload as Record<string, string | undefined>;
+      for (const imageId of ["couplePhoto", "backgroundImage", "customSeal", "cornerDecoration"] as const) {
+        const val = imagePayload[imageId];
+        if (typeof val === "string" && val.startsWith("data:")) {
+          originalImages[imageId] = val;
+          imagePayload[imageId] = await saveConfigImage(inviteToken, imageId, val);
+        }
+      }
       if (payload.bankInfo) payload.bankInfo = await encrypt(payload.bankInfo, inviteToken);
-      if (cpOrig) payload.couplePhoto = await encrypt(cpOrig, inviteToken);
       delete (payload as Record<string, unknown>).musicFile;
       await setDoc(invitationDocRef(inviteToken), payload, { merge: true });
-      if (cpOrig) payload.couplePhoto = cpOrig;
+      // Restaura las data-URL en memoria para que la sesión siga mostrando las imágenes.
+      for (const [k, v] of Object.entries(originalImages)) {
+        imagePayload[k] = v;
+      }
       return payload;
     } catch (e) {
       if (onSaveMessage) onSaveMessage(getFirestoreErrorMessage(e, t));

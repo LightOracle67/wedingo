@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.44.1](https://github.com/LightOracle67/wedingo/releases/tag/v2.44.1)  
+**Versión actual:** [v2.44.2](https://github.com/LightOracle67/wedingo/releases/tag/v2.44.2)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -272,6 +272,7 @@ Hitos principales:
 | v2.43.2 | 2026-08-05 | Mensaje de bienvenida de Detalles con hora ('La celebración dará comienzo a las XX:XX...') y eliminada la variante que repetía el lugar con la hora |
 | v2.44.0 | 2026-08-05 | Código de vestimenta con opción 'Otro' + mensaje personalizado (validación y reglas de Firestore actualizadas) |
 | v2.44.1 | 2026-08-05 | Sección hora/lugar: hora como story-note, eliminado el mensaje de bienvenida de Detalles y sus claves i18n sin uso |
+| v2.44.2 | 2026-08-05 | Fix imágenes: el auto-guardado migra a configImages (refs `__cfgimg`) en vez de guardar blobs inline; doc de invitación de 844KB → 2.7KB |
 
 ---
 
