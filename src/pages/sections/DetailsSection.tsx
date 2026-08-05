@@ -36,7 +36,7 @@ const DetailsSection = memo(function DetailsSection({
           <p className="story-eyebrow">{t("details.sectionLabel")}</p>
 
           <h2 className="story-title">{formattedDate || t("details.datePending")}</h2>
-          <p className="story-copy">{formattedTime ? t("details.timeLabel", { time: formattedTime }) : t("details.timePending")}</p>
+          <p className="story-note">{formattedTime ? t("details.timeLabel", { time: formattedTime }) : t("details.timePending")}</p>
 
           <div className="story-divider" />
 
@@ -73,14 +73,6 @@ const DetailsSection = memo(function DetailsSection({
               </div>
             </>
           ) : null}
-
-          <p className="story-note" style={{ marginTop: "0.4rem" }}>
-            {formattedTime
-              ? t("details.welcomeWithTime", { time: formattedTime })
-              : hasLocationData && locationDescription
-                ? t("details.welcomeWithPlace", { place: locationDescription })
-                : t("details.welcomeWithoutTime")}
-          </p>
         </div>
       </div>
     </section>

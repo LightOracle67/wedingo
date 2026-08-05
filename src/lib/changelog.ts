@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.44.1",
+    date: "2026-08-05",
+    changes: [
+      "UX: sección hora/lugar — la hora se muestra como story-note (antes story-copy) y se elimina el mensaje de bienvenida de la sección Detalles",
+      "I18N: eliminadas las claves sin uso welcomeWithTime, welcomeWithPlace y welcomeWithoutTime de es/en",
+    ],
+  },
+  {
     version: "2.44.0",
     date: "2026-08-05",
     changes: [

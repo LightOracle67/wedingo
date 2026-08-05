@@ -41,7 +41,6 @@ describe("DetailsSection", () => {
     expect(screen.getByText("details.sectionLabel")).toBeDefined();
     expect(screen.getByText("15 Jun 2025")).toBeDefined();
     expect(screen.getByText("details.timeLabel")).toBeDefined();
-    expect(screen.getByText("details.welcomeWithTime")).toBeDefined();
     expect(screen.getByText("Madrid")).toBeDefined();
     expect(screen.getByText("details.addToCalendar")).toBeDefined();
     expect(screen.getByTestId("wedding-map")).toBeDefined();
@@ -64,7 +63,6 @@ describe("DetailsSection", () => {
     expect(screen.getByText("details.datePending")).toBeDefined();
     expect(screen.getByText("details.timePending")).toBeDefined();
     expect(screen.getByText("details.placePending")).toBeDefined();
-    expect(screen.getByText("details.welcomeWithoutTime")).toBeDefined();
   });
 
   it("renders with only location description (no map target)", () => {
@@ -83,7 +81,7 @@ describe("DetailsSection", () => {
     expect(screen.getByText("Unknown location")).toBeDefined();
   });
 
-  it("shows the venue welcome when there is a location but no time", () => {
+  it("shows the time pending label when there is no time", () => {
     render(
       <DetailsSection
         style={{}}
@@ -96,7 +94,7 @@ describe("DetailsSection", () => {
         weddingSiteURL=""
               />,
     );
-    expect(screen.getByText("details.welcomeWithPlace")).toBeDefined();
+    expect(screen.getByText("details.timePending")).toBeDefined();
   });
 
   it("renders with no location data", () => {

@@ -71,13 +71,10 @@
     "timeLabel": "Ceremony time: {{time}}",
     "timePending": "Time to be confirmed",
     "placePending": "The venue will appear here.",
-    "welcomeWithTime": "The celebration will begin at {{time}}. We look forward to seeing you at the venue below.",
-    "welcomeWithoutTime": "We can't wait to celebrate with you. The venue and time will be announced soon.",
     "transport": "Transport",
     "addToCalendar": "Add to calendar",
     "viewGoogleMaps": "Open in Google Maps",
-    "locationLabel": "Location",
-    "welcomeWithPlace": "We can't wait to celebrate with you at {{place}}. The time will be announced soon."
+    "locationLabel": "Location"
   },
   "info": {
     "sectionLabel": "About the guests",
