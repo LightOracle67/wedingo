@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.46.2",
+    date: "2026-08-05",
+    changes: [
+      "FIX: subida de imágenes — se comprime aún más (máx 1920px, target 450KB crudos => cifrado ~600KB, con margen amplio bajo el límite de 1MB) para que el canal de Firestore no falle con payloads grandes",
+      "FIX: reintentos en las escrituras de imagen (saveConfigImage/addGalleryImage) ante errores transitorios de red (unavailable/deadline-exceeded) — un blip de conexión ya no pierde la subida",
+    ],
+  },
+  {
     version: "2.46.1",
     date: "2026-08-05",
     changes: [

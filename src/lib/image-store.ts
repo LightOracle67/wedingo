@@ -8,6 +8,32 @@ function galCol(token: string) {
   return collection(db, "invitations", token, "gallery");
 }
 
+/** Reintenta una escritura ante fallos transitorios de red de Firestore.
+ *  Los errores permanentes (invalid-argument, etc.) no se reintentan. */
+const WRITE_RETRY_DELAYS_MS = [400, 900];
+
+function isRetryableFirestoreError(err: unknown): boolean {
+  const code = (err as { code?: string })?.code || "";
+  return ["unavailable", "deadline-exceeded", "aborted", "resource-exhausted"].includes(code);
+}
+
+async function withWriteRetry<T>(fn: () => Promise<T>): Promise<T> {
+  let lastErr: unknown;
+  for (let attempt = 0; attempt <= WRITE_RETRY_DELAYS_MS.length; attempt++) {
+    try {
+      return await fn();
+    } catch (err) {
+      lastErr = err;
+      if (attempt < WRITE_RETRY_DELAYS_MS.length && isRetryableFirestoreError(err)) {
+        await new Promise((r) => setTimeout(r, WRITE_RETRY_DELAYS_MS[attempt]));
+      } else {
+        break;
+      }
+    }
+  }
+  throw lastErr;
+}
+
 export async function uploadImage(inviteToken: string, file: File, onProgress?: (percent: number) => void, maxDimension = HIGH_QUALITY_MAX_DIMENSION, targetBytes = HIGH_QUALITY_TARGET_BYTES) {
 
   onProgress?.(10);
@@ -34,14 +60,14 @@ export async function uploadImage(inviteToken: string, file: File, onProgress?: 
 export async function addGalleryImage(inviteToken: string, encrypted: string, dataUrl: string, position: number, onProgress: (p: number) => void, originalName?: string, originalSize?: number) {
 
   onProgress?.(85);
-  const docRef = await addDoc(galCol(inviteToken), {
+  const docRef = await withWriteRetry(() => addDoc(galCol(inviteToken), {
     data: encrypted,
     description: "",
     position: position ?? 0,
     createdAt: new Date().toISOString(),
     originalName: originalName || "",
     originalSize: originalSize || 0,
-  });
+  }));
   onProgress?.(95);
 
   return { id: docRef.id, dataUrl };
@@ -148,7 +174,7 @@ export async function saveConfigImage(
 
   const ref = doc(cfgImgCol(inviteToken), imageId);
   try {
-    await setDoc(ref, { data: encrypted, createdAt: serverTimestamp() });
+    await withWriteRetry(() => setDoc(ref, { data: encrypted, createdAt: serverTimestamp() }));
 
   } catch (e) {
     console.error("[app]", "[image-store]", "saveConfigImage setDoc FAILED:", e);

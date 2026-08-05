@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.46.1](https://github.com/LightOracle67/wedingo/releases/tag/v2.46.1)  
+**Versión actual:** [v2.46.2](https://github.com/LightOracle67/wedingo/releases/tag/v2.46.2)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -114,7 +114,7 @@ Para evitar el límite de 1MB por documento en Firestore, las imágenes se guard
 El documento de configuración solo contiene referencias (`__cfgimg:couplePhoto`), no data URLs.
 
 **Compresión de imágenes:**
-- `compressImage`: WebP con calidad progresiva + reducción de dimensiones (≤300KB target para usos ligeros; alta calidad 2400px/~700KB para foto de novios, fondo y galería)
+- `compressImage`: WebP con calidad progresiva + reducción de dimensiones (≤300KB target para usos ligeros; alta calidad 1920px/~450KB para foto de novios, fondo y galería)
 - `compressImageTransparent`: WebP con alpha, fallback a PNG (preserva transparencia)
 - Canvas sin fondo blanco (no JPEG, que no soporta alpha)
 - `saveConfigImage`: cifra AES-256-GCM + PBKDF2 (600K iteraciones) antes de guardar
@@ -277,6 +277,7 @@ Hitos principales:
 | v2.45.1 | 2026-08-05 | Texto de la hora de la celebración: "La ceremonia dará comienzo a las XX:XX h." (es/en) |
 | v2.46.0 | 2026-08-05 | Calidad de imagen mejorada: foto de novios, fondo y galería a 2400px / ~800KB (antes 1600px / 300KB) |
 | v2.46.1 | 2026-08-05 | Fix subida de imágenes: target ajustado a 700KB y guarda de 1MB para no superar el límite de Firestore |
+| v2.46.2 | 2026-08-05 | Subida de imágenes: compresión a 1920px/450KB + reintentos ante fallos transitorios de red |
 
 ---
 
