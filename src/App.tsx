@@ -165,7 +165,7 @@ function AppShell() {
       ) : null}
       <AdminBarHeightSync show={Boolean(isAdminTokenLoggedIn && inviteToken && !location.pathname.endsWith("/setup") && !location.pathname.endsWith("/print"))} />
 
-      {inviteToken && location.pathname === `/${inviteToken}` && (config.musicFile || config.musicUrl) ? <MusicPlayer musicUrl={config.musicFile || config.musicUrl} /> : null}
+      {inviteToken && location.pathname === `/${inviteToken}` && config.musicFile ? <MusicPlayer musicUrl={config.musicFile} /> : null}
 
       {!isEditingRoute && !isAdminTokenLoggedIn && (
         <>

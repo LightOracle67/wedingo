@@ -283,7 +283,6 @@ export default function PublicInvitation() {
       cornerDecoration: config.cornerDecoration,
     },
     accommodation: {
-      accommodationInfo: config.accommodationInfo,
       accommodationURL: config.accommodationURL,
       mapView: config.weddingMapView,
       staticMap: config.weddingMapStatic === "true",
@@ -295,10 +294,6 @@ export default function PublicInvitation() {
     },
     rsvp: {
       menuEnabled: config.menuEnabled === "true",
-      menuCarne: config.menuCarne,
-      menuPescado: config.menuPescado,
-      menuVegano: config.menuVegano,
-      menuTexto: config.menuTexto,
       menuCarneDishes: config.menuCarneDishes,
       menuPescadoDishes: config.menuPescadoDishes,
       menuVeganoDishes: config.menuVeganoDishes,
@@ -310,10 +305,9 @@ export default function PublicInvitation() {
   }), [
     config.firstName, config.secondName, config.inviteMessage,
     config.weddingSchedule, config.weddingScheduleEvents, config.weddingDressCode,
-    config.kidsPolicy, config.storyText, config.giftsInfo, config.accommodationInfo, config.accommodationURL,
+    config.kidsPolicy, config.storyText, config.giftsInfo, config.accommodationURL,
     config.godparent1, config.godparent2, inviteToken,
     config.couplePhoto, config.bankInfo, config.menuEnabled,
-    config.menuCarne, config.menuPescado, config.menuVegano, config.menuTexto,
     config.menuCarneDishes, config.menuPescadoDishes, config.menuVeganoDishes, config.menuTextoDishes,
     config.cornerDecoration,
     formattedDate, formattedTime,

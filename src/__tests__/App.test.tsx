@@ -294,11 +294,11 @@ describe("App", () => {
     expect(await screen.findByTestId("public-invitation")).toBeDefined();
   });
 
-  it("renders music player with musicUrl fallback", () => {
+  it("renders music player when musicFile is present", () => {
     mockUseApp.mockReturnValue({
       ...baseUseApp,
       inviteToken: "abc123",
-      config: { ...baseUseApp.config, musicFile: "", musicUrl: "https://example.com/song.mp3" },
+      config: { ...baseUseApp.config, musicFile: "https://example.com/song.mp3", musicUrl: "" },
     });
 
     render(

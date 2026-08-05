@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { formatBytes, searchInvitations, calcGlobalStats, tokenUsageOverTime, rsvpOverTime } from "../superadmin-utils";
+import { formatBytes, searchInvitations, calcGlobalStats } from "../superadmin-utils";
 
 describe("formatBytes", () => {
   it("formats bytes as B", () => {
@@ -62,48 +62,5 @@ describe("calcGlobalStats", () => {
     expect(stats.tokensAvailable).toBe(2);
     expect(stats.autoTokens).toBe(2);
     expect(stats.manualTokens).toBe(1);
-  });
-});
-
-describe("tokenUsageOverTime", () => {
-  it("groups tokens by date", () => {
-    const tokens = [
-      { createdAt: { seconds: 1700000000 } },
-      { createdAt: { seconds: 1700000000 } },
-      { createdAt: { seconds: 1700086400 } },
-    ];
-    const result = tokenUsageOverTime(tokens);
-    expect(result).toHaveLength(2);
-    expect(result[0]!.count).toBe(2);
-    expect(result[1]!.count).toBe(1);
-  });
-
-  it("skips tokens without valid createdAt", () => {
-    const tokens = [{ createdAt: null }, {}];
-    const result = tokenUsageOverTime(tokens);
-    expect(result).toHaveLength(0);
-  });
-});
-
-describe("rsvpOverTime", () => {
-  it("groups RSVPs by date", () => {
-    const rsvps = [
-      { submittedAt: { seconds: 1700000000 }, attendance: "yes" },
-      { submittedAt: { seconds: 1700000000 }, attendance: "no" },
-      { submittedAt: { seconds: 1700086400 }, attendance: "yes" },
-    ];
-    const result = rsvpOverTime(rsvps);
-    expect(result).toHaveLength(2);
-    expect(result[0]!.total).toBe(2);
-    expect(result[0]!.yes).toBe(1);
-    expect(result[0]!.no).toBe(1);
-    expect(result[1]!.total).toBe(1);
-    expect(result[1]!.yes).toBe(1);
-  });
-
-  it("returns empty for no submittedAt", () => {
-    const rsvps = [{ attendance: "yes" }];
-    const result = rsvpOverTime(rsvps);
-    expect(result).toHaveLength(0);
   });
 });

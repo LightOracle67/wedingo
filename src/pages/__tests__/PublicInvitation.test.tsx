@@ -11,7 +11,7 @@ const mockUseAppValue = vi.hoisted(() => ({
     weddingHour: "14", weddingMinute: "30", weddingPlace: "Madrid",
     weddingSiteURL: "https://maps.google.com/maps/place/Madrid",
     weddingSchedule: "", weddingDressCode: "", kidsPolicy: "",
-    storyText: "", giftsInfo: "", bankInfo: "", accommodationInfo: "", transportInfo: "",
+    storyText: "", giftsInfo: "", bankInfo: "",
     musicFile: "", musicUrl: "", menuEnabled: "", menuCarne: "", menuPescado: "",
     menuVegano: "", menuPostre: "", menuTexto: "",
   },

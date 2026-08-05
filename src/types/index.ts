@@ -43,13 +43,11 @@ export interface InvitationConfig {
   weddingDressCode: string;
   couplePhoto: string;
   musicFile: string;
-  musicUrl: string;
   sectionOrder: string;
   hiddenSections: string;
   storyText: string;
   giftsInfo: string;
   bankInfo: string;
-  accommodationInfo: string;
   accommodationURL: string;
   transportEnabled: string;
   transportDepartures: string;
@@ -57,11 +55,6 @@ export interface InvitationConfig {
   godparent2: string;
   kidsPolicy: string;
   menuEnabled: string;
-  menuTexto: string;
-  menuCarne: string;
-  menuPescado: string;
-  menuVegano: string;
-  menuPostre: string;
   menuTextoDishes: string;
   menuCarneDishes: string;
   menuPescadoDishes: string;

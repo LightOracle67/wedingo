@@ -39,9 +39,6 @@ export function invitationDocRef(token: string) {
   return doc(db, "invitations", token);
 }
 export const INVITATIONS_COLLECTION_REF = collection(db, "invitations");
-// Colección de grupos de RSVP: `rsvpResponses/{inviteToken}` es un documento
-// "namespace" por invitación que además guarda el contador anti-spam.
-export const RSVP_COLLECTION_REF = collection(db, "rsvpResponses");
 // Todas las respuestas RSVP (collectionGroup "responses") para agregaciones
 // del superadmin. Las respuestas viven en la subcolección por invitación.
 export const RSVP_RESPONSES_GROUP = collectionGroup(db, "responses");

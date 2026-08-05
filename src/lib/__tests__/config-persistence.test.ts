@@ -28,7 +28,6 @@ const FULL_CONFIG: Record<string, unknown> = {
   storyText: "Nuestra historia",
   giftsInfo: "Sobres en el lugar",
   bankInfo: "ES00 1234 5678",
-  accommodationInfo: "Hotel Rural",
   transportEnabled: "both",
   transportDepartures: JSON.stringify([
     { type: "bus", time: "12:00", url: "https://www.google.com/maps/place/Plaza+Mayor/@40.41,-3.70,17z" },
@@ -38,11 +37,6 @@ const FULL_CONFIG: Record<string, unknown> = {
   godparent2: "Jorge",
   kidsPolicy: "playArea",
   menuEnabled: "true",
-  menuTexto: "",
-  menuCarne: "Solomillo",
-  menuPescado: "Lubina",
-  menuVegano: "",
-  menuPostre: "Tarta",
   menuTextoDishes: JSON.stringify([
     { order: "entrante", text: "Ensalada" },
     { order: "primero", text: "Lubina" },
@@ -84,7 +78,10 @@ describe("Persistencia de la configuración", () => {
       ["cornerDecoration", "__cfgimg:cornerDecoration"],
       ["hiddenSections", "gifts"],
       ["menuEnabled", "true"],
-      ["menuCarne", "Solomillo"],
+      ["menuCarneDishes", JSON.stringify([
+        { order: "entrante", text: "Ensalada" },
+        { order: "segundo", text: "Solomillo" },
+      ])],
     ];
     for (const [key, expected] of checks) {
       expect(payload[key as keyof typeof payload], `payload.${key}`).toBe(expected);

@@ -115,7 +115,7 @@ export default function SetupPage() {
 
   return (
     <div className="setup-layout setup-layout--full">
-      {config.musicFile || config.musicUrl ? <MusicPlayer musicUrl={config.musicFile || config.musicUrl} /> : null}
+      {config.musicFile ? <MusicPlayer musicUrl={config.musicFile} /> : null}
       <section className="setup-card setup-card--full allow-select" aria-label={t("setup.configTitle")}>
         <header className="setup-header">
           <div>

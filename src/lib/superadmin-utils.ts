@@ -46,28 +46,3 @@ export function searchInvitations(invitations: Record<string, unknown>[], query:
   });
 }
 
-export function tokenUsageOverTime(tokens: Record<string, unknown>[]) {
-  const byDate: Record<string, number> = {};
-  for (const t of tokens) {
-    const ts = (t.createdAt as { toDate?: () => Date; seconds?: number })?.toDate?.() || ((t.createdAt as { seconds?: number })?.seconds ? new Date((t.createdAt as { seconds: number }).seconds * 1000) : null);
-    if (!ts) continue;
-    const key = ts.toISOString().slice(0, 10);
-    byDate[key] = (byDate[key] || 0) + 1;
-  }
-  return Object.entries(byDate).sort(([a], [b]) => a.localeCompare(b)).map(([date, count]) => ({ date, count }));
-}
-
-export function rsvpOverTime(rsvps: AnyRecord[]) {
-  const byDate: Record<string, { total: number; yes: number; no: number }> = {};
-  for (const r of rsvps) {
-    const submittedAt = r.submittedAt as { toDate?: () => Date; seconds?: number } | undefined;
-    const ts = submittedAt?.toDate?.() || (submittedAt?.seconds ? new Date(submittedAt.seconds * 1000) : null);
-    if (!ts) continue;
-    const key = ts.toISOString().slice(0, 10);
-    if (!byDate[key]) byDate[key] = { total: 0, yes: 0, no: 0 };
-    byDate[key].total++;
-    if (r.attendance === "yes") byDate[key].yes++;
-    else byDate[key].no++;
-  }
-  return Object.entries(byDate).sort(([a], [b]) => a.localeCompare(b)).map(([date, v]) => ({ date, ...v }));
-}

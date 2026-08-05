@@ -13,13 +13,6 @@ import { safeGetItem, safeSetItem } from "../lib/storage";
 import { STORAGE_KEYS } from "../lib/storage-keys";
 import type { Attendee } from "../types";
 
-interface LegacyEntry {
-  guestName: string;
-  mealChoice: string;
-  guestNames: string;
-  dietaryInfo: string;
-}
-
 interface RsvpFormData {
   guestName: string;
   attendance: string;
@@ -63,7 +56,6 @@ interface RsvpEntryData {
   companionAllergiesOther: string[];
   allergiesOther: string;
   mealChoice: string;
-  menuHeadcounts: Record<string, number>;
   guestNames: string;
   note: string;
   submittedAt: string;
@@ -81,33 +73,6 @@ interface RsvpEntryData {
   companionDocIds?: string[];
   mainGuestDocId?: string;
   mainGuestName?: string;
-}
-
-function legacyToAttendees(entry: LegacyEntry) {
-  const parsed = parseDietaryInfo(entry.dietaryInfo || "", !!entry.mealChoice);
-  const allergies = [...parsed.dietarySelection];
-  if (parsed.dietaryOther && !allergies.includes(parsed.dietaryOther)) {
-    allergies.push(parsed.dietaryOther);
-  }
-
-  const attendees: Attendee[] = [];
-  const names = (entry.guestNames || "").split(",").map((n: string) => n.trim()).filter(Boolean);
-
-  attendees.push({
-    name: entry.guestName || "",
-    menu: (entry.mealChoice || "") as Attendee["menu"],
-    allergies: [...allergies],
-  });
-
-  names.forEach((name: string) => {
-    attendees.push({
-      name,
-      menu: "",
-      allergies: [...allergies],
-    });
-  });
-
-  return attendees;
 }
 
 function RsvpFormDefault(): RsvpFormData {
@@ -196,16 +161,7 @@ export function useRsvp(
                 ? await decrypt(data.dietaryInfo, inviteToken)
                 : "";
 
-            let attendees = data.attendees || [];
-            if (!attendees.length && Number.isFinite(data.companions) && data.companions >= 0) {
-              const legacyEntry = {
-                guestName: data.guestName || "",
-                mealChoice: data.mealChoice || "",
-                guestNames: data.guestNames || "",
-                dietaryInfo: decryptedDietaryInfo,
-              };
-              attendees = legacyToAttendees(legacyEntry);
-            }
+            const attendees = data.attendees || [];
 
               return {
                 id: entryDoc.id,
@@ -222,7 +178,6 @@ export function useRsvp(
                 companionAllergiesOther: data.companionAllergiesOther || [],
                 allergiesOther: data.allergiesOther || "",
                 mealChoice: data.mealChoice || "",
-                menuHeadcounts: data.menuHeadcounts || {},
                 guestNames: data.guestNames || "",
                 note: data.note || "",
                 submittedAt,
@@ -658,7 +613,6 @@ export function useRsvp(
       companionAllergiesOther: mainGuestData.companionAllergiesOther as string[],
       allergiesOther: mainGuestData.allergiesOther as string,
       mealChoice: (mainGuestData.mealChoice as string) || "",
-      menuHeadcounts: {},
       guestNames: "",
       note: "",
       submittedAt: now,

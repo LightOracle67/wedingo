@@ -10,7 +10,6 @@ interface RsvpEntry {
   companions: number;
   dietaryInfo: string;
   attendees?: { name: string; menu: string; allergies: string[] }[];
-  menuHeadcounts?: Record<string, number>;
   mealChoice?: string;
   guestNames?: string;
   submittedAt: string;
@@ -46,14 +45,6 @@ const PAGE_SIZES = [10, 25, 50, 100];
 function parseDietaryItems(dietaryInfo: string): string[] {
   if (!dietaryInfo) return [];
   return dietaryInfo.split(" | ").map((s) => s.trim()).filter((s) => s && !s.startsWith("Menú:"));
-}
-
-function formatMenuLines(mhc: Record<string, number>, t: (key: string) => string): string[] {
-  const lines: string[] = [];
-  if (mhc.carne) lines.push(`${t("attendance.menuMeat")}: ${mhc.carne}`);
-  if (mhc.pescado) lines.push(`${t("attendance.menuFish")}: ${mhc.pescado}`);
-  if (mhc.vegano) lines.push(`${t("attendance.menuVegan")}: ${mhc.vegano}`);
-  return lines.length ? lines : ["—"];
 }
 
 function getDietaryItems(dietaryInfo: string): string[] {
@@ -210,7 +201,7 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                 const attending = entry.attendance === "yes";
                 const menuLines = entry.attendees?.length
                   ? entry.attendees.map((a) => a.menu ? `${a.name}: ${t("rsvp.menu" + a.menu.charAt(0).toUpperCase() + a.menu.slice(1))}` : null).filter((x): x is string => x !== null)
-                  : (formatMenuLabel(entry.mealChoice || "", t) ? [formatMenuLabel(entry.mealChoice || "", t)!] : formatMenuLines(entry.menuHeadcounts || {}, t));
+                  : (formatMenuLabel(entry.mealChoice || "", t) ? [formatMenuLabel(entry.mealChoice || "", t)!] : []);
                 const dietLines = entry.attendees?.length
                   ? entry.attendees.filter((a) => a.allergies?.length).map((a) => `${a.name}: ${a.allergies.join(", ")}`)
                   : (attending ? getDietaryItems(entry.dietaryInfo || "") : []);

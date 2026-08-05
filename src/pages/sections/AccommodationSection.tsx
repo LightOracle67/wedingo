@@ -4,7 +4,7 @@ import CornerDecorations from "../../components/CornerDecorations";
 import MapEmbed from "../../components/MapEmbed";
 import { isValidGoogleMapsUrl, extractPlaceNameFromUrl } from "../../lib/geo-utils";
 
-const AccommodationSection = memo(function AccommodationSection({ style, className, accommodationInfo, accommodationURL, mapView, staticMap, cornerDecoration }: { style?: React.CSSProperties; className?: string; accommodationInfo?: string; accommodationURL?: string; mapView?: string; staticMap?: boolean; cornerDecoration?: string }) {
+const AccommodationSection = memo(function AccommodationSection({ style, className, accommodationURL, mapView, staticMap, cornerDecoration }: { style?: React.CSSProperties; className?: string; accommodationURL?: string; mapView?: string; staticMap?: boolean; cornerDecoration?: string }) {
   const { t } = useTranslation();
   const url = (accommodationURL || "").trim();
   const urlValid = url ? isValidGoogleMapsUrl(url) : false;
@@ -35,8 +35,6 @@ const AccommodationSection = memo(function AccommodationSection({ style, classNa
                 </a>
               </div>
             </div>
-          ) : accommodationInfo ? (
-            <p className="story-copy mt-4 whitespace-pre-line">{accommodationInfo}</p>
           ) : (
             <p className="story-copy mt-4" style={{ fontStyle: "italic" }}>
               {t("accommodation.pending")}

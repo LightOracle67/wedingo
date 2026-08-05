@@ -732,58 +732,6 @@ describe("useRsvp", () => {
       });
     });
 
-    it("converts legacy entries using legacyToAttendees", async () => {
-      mockParseDietaryInfo.mockReturnValueOnce({ mealChoice: "carne", dietarySelection: [], dietaryOther: "" });
-      mockGetDocs.mockResolvedValueOnce({
-        docs: [{
-          id: "legacy-1",
-          data: () => ({
-            guestName: "Alice María Smith",
-            attendance: "yes",
-            mealChoice: "carne",
-            guestNames: "Bob, Charlie",
-            dietaryInfo: "encrypted-diet",
-            companions: 3,
-            submittedAt: { seconds: 1000000 },
-          }),
-        }],
-        forEach: vi.fn(),
-      });
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
-
-      await waitFor(() => {
-        expect(result.current.rsvpEntries).toHaveLength(1);
-      });
-      expect(result.current.rsvpEntries[0]!.attendees).toHaveLength(3);
-    });
-
-    it("legacyToAttendees includes dietaryOther when not in selection", async () => {
-      mockParseDietaryInfo.mockReturnValueOnce({ mealChoice: "carne", dietarySelection: ["sin gluten"], dietaryOther: "alergia frutos secos" });
-      mockGetDocs.mockResolvedValueOnce({
-        docs: [{
-          id: "legacy-2",
-          data: () => ({
-            guestName: "Bob Carlos Jones",
-            attendance: "yes",
-            mealChoice: "carne",
-            guestNames: "",
-            dietaryInfo: "encrypted-diet",
-            companions: 1,
-            submittedAt: { seconds: 2000000 },
-          }),
-        }],
-        forEach: vi.fn(),
-      });
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
-      await waitFor(() => {
-        expect(result.current.rsvpEntries).toHaveLength(1);
-      });
-      const attendee = result.current.rsvpEntries[0]!.attendees[0]!;
-      expect(attendee.allergies).toContain("alergia frutos secos");
-    });
-  });
-
-  describe("alreadySubmittedEntry matching", () => {
     it("prefills form when guestName matches an existing entry", async () => {
       mockGetDocs.mockResolvedValueOnce({
         docs: [{

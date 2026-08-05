@@ -257,7 +257,7 @@ describe("AttendanceTab", () => {
             attendees: [
               { name: "Frank", menu: "carne", allergies: ["sin gluten"] },
             ],
-            menuHeadcounts: { carne: 1, pescado: 1 },
+            mealChoice: "carne",
           },
         ]}
         rsvpEntries={[
@@ -280,7 +280,7 @@ describe("AttendanceTab", () => {
             attendees: [
               { name: "Frank", menu: "carne", allergies: ["sin gluten"] },
             ],
-            menuHeadcounts: { carne: 1, pescado: 1 },
+            mealChoice: "carne",
           },
         ]}
         exportPdf={vi.fn()}

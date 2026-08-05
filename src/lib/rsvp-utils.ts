@@ -32,15 +32,3 @@ export function parseDietaryInfo(dietaryInfo: string | null | undefined, menuEna
   }
   return { mealChoice, dietarySelection, dietaryOther };
 }
-
-/**
- * Formatea el menú y restricciones para mostrar.
- */
-export function formatDietary(dietaryInfo: string | null, menuEnabled: boolean) {
-  const parsed = parseDietaryInfo(dietaryInfo, menuEnabled);
-  const parts = [];
-  if (parsed.mealChoice) parts.push(parsed.mealChoice);
-  parts.push(...parsed.dietarySelection);
-  if (parsed.dietaryOther) parts.push(parsed.dietaryOther);
-  return parts.join(", ") || "—";
-}

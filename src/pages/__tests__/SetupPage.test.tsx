@@ -136,10 +136,10 @@ describe("SetupPage", () => {
     expect(screen.getByTestId("music-player")).toBeDefined();
   });
 
-  it("renders music player when musicUrl is present", () => {
+  it("renders music player when musicFile is present", () => {
     mockUseApp.mockReturnValue({
       ...baseMock,
-      config: { ...baseMock.config, musicFile: "", musicUrl: "https://example.com/song.mp3" },
+      config: { ...baseMock.config, musicFile: "https://example.com/song.mp3", musicUrl: "" },
     });
 
     render(<SetupPage />);

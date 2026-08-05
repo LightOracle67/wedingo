@@ -77,8 +77,6 @@ function SaveSetupConsumer() {
       <button data-testid="ss_storyText" onClick={() => ctx.updateFormField("storyText", "x".repeat(2500))}>ST</button>
       <button data-testid="ss_giftsInfo" onClick={() => ctx.updateFormField("giftsInfo", "x".repeat(2500))}>GI</button>
       <button data-testid="ss_transportDepartures" onClick={() => ctx.updateFormField("transportDepartures", "not-json")}>TD</button>
-      <button data-testid="ss_accommodationInfo" onClick={() => ctx.updateFormField("accommodationInfo", "x".repeat(2500))}>AI</button>
-      <button data-testid="ss_menuTexto" onClick={() => ctx.updateFormField("menuTexto", "x".repeat(2500))}>MT</button>
       <span data-testid="ss_hasConfig">{String(ctx.hasStoredConfig)}</span>
       <span data-testid="ss_inviteToken">{ctx.inviteToken}</span>
     </div>
@@ -357,56 +355,6 @@ describe("ConfigProvider", () => {
     fireEvent.click(screen.getByTestId("ss_save"));
     await waitFor(() => {
       expect(mockSetSaveError).toHaveBeenCalledWith("errors.transportDeparturesInvalid");
-    });
-    mockSetSaveError.mockClear();
-    mockLocation.pathname = "/test";
-  });
-
-  it("handleSaveSetup validates accommodationInfo too long", async () => {
-    mockLocation.pathname = "/abcdefghij";
-    mockGetDoc.mockResolvedValueOnce({
-      exists: () => true,
-      data: () => ({ _visits: 0 }),
-    });
-    render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
-    await waitFor(() => expect(screen.getByTestId("ss_inviteToken").textContent).toBe("abcdefghij"));
-    fireEvent.click(screen.getByTestId("ss_stored"));
-    await waitFor(() => expect(screen.getByTestId("ss_hasConfig").textContent).toBe("true"));
-    fireEvent.click(screen.getByTestId("ss_first"));
-    fireEvent.click(screen.getByTestId("ss_second"));
-    fireEvent.click(screen.getByTestId("ss_theme"));
-    fireEvent.click(screen.getByTestId("ss_order"));
-    fireEvent.click(screen.getByTestId("ss_gp1"));
-    fireEvent.click(screen.getByTestId("ss_gp2"));
-    fireEvent.click(screen.getByTestId("ss_accommodationInfo"));
-    fireEvent.click(screen.getByTestId("ss_save"));
-    await waitFor(() => {
-      expect(mockSetSaveError).toHaveBeenCalledWith("errors.accommodationTooLong");
-    });
-    mockSetSaveError.mockClear();
-    mockLocation.pathname = "/test";
-  });
-
-  it("handleSaveSetup validates menuTexto too long", async () => {
-    mockLocation.pathname = "/abcdefghij";
-    mockGetDoc.mockResolvedValueOnce({
-      exists: () => true,
-      data: () => ({ _visits: 0 }),
-    });
-    render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
-    await waitFor(() => expect(screen.getByTestId("ss_inviteToken").textContent).toBe("abcdefghij"));
-    fireEvent.click(screen.getByTestId("ss_stored"));
-    await waitFor(() => expect(screen.getByTestId("ss_hasConfig").textContent).toBe("true"));
-    fireEvent.click(screen.getByTestId("ss_first"));
-    fireEvent.click(screen.getByTestId("ss_second"));
-    fireEvent.click(screen.getByTestId("ss_theme"));
-    fireEvent.click(screen.getByTestId("ss_order"));
-    fireEvent.click(screen.getByTestId("ss_gp1"));
-    fireEvent.click(screen.getByTestId("ss_gp2"));
-    fireEvent.click(screen.getByTestId("ss_menuTexto"));
-    fireEvent.click(screen.getByTestId("ss_save"));
-    await waitFor(() => {
-      expect(mockSetSaveError).toHaveBeenCalledWith("errors.menuTextoTooLong");
     });
     mockSetSaveError.mockClear();
     mockLocation.pathname = "/test";

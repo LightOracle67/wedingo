@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { DIETARY_OPTIONS, parseDietaryInfo, formatDietary } from "../rsvp-utils";
+import { DIETARY_OPTIONS, parseDietaryInfo } from "../rsvp-utils";
 
 describe("DIETARY_OPTIONS", () => {
   it("has 4 options with value and label", () => {
@@ -47,24 +47,5 @@ describe("parseDietaryInfo", () => {
     const result = parseDietaryInfo("sin gluten", true);
     expect(result.mealChoice).toBe("");
     expect(result.dietarySelection).toEqual(["sin gluten"]);
-  });
-});
-
-describe("formatDietary", () => {
-  it("returns dash for empty input", () => {
-    expect(formatDietary("", true)).toBe("—");
-    expect(formatDietary(null, true)).toBe("—");
-  });
-
-  it("formats meal choice and restrictions", () => {
-    expect(formatDietary("Menú: Vegano | sin gluten", true)).toBe("Vegano, sin gluten");
-  });
-
-  it("includes other dietary info", () => {
-    expect(formatDietary("Menú: Carne | alergia al huevo", true)).toBe("Carne, alergia al huevo");
-  });
-
-  it("ignores menu prefix when menuDisabled", () => {
-    expect(formatDietary("Menú: Carne", false)).toBe("Menú: Carne");
   });
 });

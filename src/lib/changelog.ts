@@ -1,5 +1,14 @@
 export const CHANGELOG = [
   {
+    version: "2.42.0",
+    date: "2026-08-04",
+    changes: [
+      "CLEANUP: auditoría de código legacy — eliminados módulos muertos (session-utils, token-auth-utils, confirm-utils, idb-utils, rsvp-validation, ErrorMessage, barrels lib/index y contexts/index) y exports sin uso (SESSION_RENEW_INTERVAL_MS, SECTION_LABELS, formatDietary, tokenUsageOverTime, rsvpOverTime, parseWeddingDate, RSVP_COLLECTION_REF)",
+      "CLEANUP: eliminados los campos legacy de configuración (menuTexto, menuCarne, menuPescado, menuVegano, menuPostre, musicUrl, accommodationInfo, menuHeadcounts, transportInfo) y su código de fallback (formatDishes sin legacy, LegacyEntry/legacyToAttendees, fallbacks en RSVP/Accomodation/Attendance/música)",
+      "OPS: tests de reglas actualizados al esquema rsvpResponses/{token}/responses, documentación corregida (leaflet/OSM), umbrales de cobertura ajustados al nuevo estado, y script scripts/cleanup-legacy-fields.mjs (limpieza de campos legacy en la BBDD)",
+    ],
+  },
+  {
     version: "2.41.3",
     date: "2026-08-04",
     changes: [

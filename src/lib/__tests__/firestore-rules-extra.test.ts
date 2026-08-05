@@ -40,7 +40,7 @@ describe("Firestore rules simulation (extra)", () => {
   });
 
   it("allows RSVP create without auth", () => {
-    expect(isValidRequest("invitations/abc123/rsvpResponses", "create", { auth: null })).toBe(true);
+    expect(isValidRequest("rsvpResponses/abc123/responses", "create", { auth: null })).toBe(true);
   });
 
   it("validates gallery file size", () => {

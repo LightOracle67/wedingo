@@ -1,4 +1,4 @@
-export const APP_VERSION = "2.41.3";
+export const APP_VERSION = "2.42.0";
 
 export const MAX_INVITE_MESSAGE_LENGTH = 500;
 export const MAX_SCHEDULE_EVENTS = 10;
@@ -6,7 +6,6 @@ export const MAX_SCHEDULE_EVENT_TEXT = 60;
 export const MAX_MENU_DISHES = 20;
 export const MAX_MENU_DISH_TEXT = 200;
 export const MENU_DISH_ORDERS = ["entrante", "primero", "segundo", "tercero", "postre", "otro"];
-export const SESSION_RENEW_INTERVAL_MS = 60000;
 
 export const ALLOWED_UPLOAD_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
 export const MAX_UPLOAD_SIZE_BYTES = 20 * 1024 * 1024;
@@ -89,19 +88,6 @@ export const THEME_GROUPS = [
 
 export const STORY_SECTION_ORDER = ["hero", "details", "transport", "info", "story", "gallery", "gifts", "accommodation", "rsvp"];
 
-export const SECTION_LABELS: Record<string, string> = {
-  hero: "Portada",
-  details: "Lugar, Fecha y Hora",
-  info: "Sobre los invitados",
-  transport: "Transporte",
-  story: "Nuestra historia",
-  gifts: "Regalos",
-  accommodation: "Alojamiento",
-  gallery: "Galería",
-  rsvp: "Confirmación",
-};
-
-
 export const PRIVACY_POLICY_VERSION = "2026-07-08";
 
 export const MAX_YEARS_AHEAD = 4;
@@ -142,21 +128,14 @@ export const defaultConfig = {
   storyText: "",
   giftsInfo: "",
   bankInfo: "",
-  accommodationInfo: "",
   accommodationURL: "",
   transportEnabled: "none",
   transportDepartures: "",
   godparent1: "",
   godparent2: "",
-  musicUrl: "",
   musicFile: "",
   kidsPolicy: "",
   menuEnabled: "false",
-  menuTexto: "",
-  menuCarne: "",
-  menuPescado: "",
-  menuVegano: "",
-  menuPostre: "",
   menuTextoDishes: "",
   menuCarneDishes: "",
   menuPescadoDishes: "",

@@ -13,7 +13,7 @@ function evaluateRules(collection: string, operation: string, _resource: unknown
   const isGallery = /^invitations\/[^/]+\/gallery\/[^/]+$/.test(collection);
   const isAudio = /^invitations\/[^/]+\/audio\/[^/]+$/.test(collection);
   const isInvitation = collection === "invitations" || /^invitations\/[^/]+$/.test(collection);
-  const isRsvp = /^invitations\/[^/]+\/rsvpResponses(\/[^/]+)?$/.test(collection);
+  const isRsvp = /^rsvpResponses\/[^/]+\/responses(\/[^/]+)?$/.test(collection);
 
   if (isGallery && operation === "create") {
     const size = (request?.resourceSize as number) ?? 0;
@@ -88,7 +88,7 @@ describe("Firestore rules simulation", () => {
     },
     {
       name: "RSVP create allowed without auth (invitee)",
-      collection: "invitations/abc123/rsvpResponses",
+      collection: "rsvpResponses/abc123/responses",
       operation: "create",
       resource: null,
       request: { auth: null },

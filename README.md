@@ -12,7 +12,7 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 | Aspecto | Estado |
 |---|---|
-| Tests | 1641 tests, 147 test files |
+| Tests | 1554 tests, 141 test files |
 | Cobertura | 85.7% statements / 81.3% branches / 86.5% functions / 87.8% lines |
 | Lint | 0 warnings (oxlint) |
 | TypeScript | 0 errors (`strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `skipLibCheck=true` — solo .d.ts de terceros) |
@@ -154,7 +154,7 @@ Logout → clearSession() + updateDoc(null, null)
 | Medida | Implementación |
 |---|---|
 | Cifrado | AES-256-GCM + PBKDF2 (600K iteraciones) |
-| CSP | Headers HTTP + meta tag: self, Firebase, Google APIs, Sentry, OSM, Google Fonts |
+| CSP | Headers HTTP + meta tag: self, Firebase, Google APIs, Sentry, Google Fonts |
 | Firestore | Reglas con validación de sesión activa, XSS protection (`isSafeText`), límites de tamaño |
 | Tokens | Únicos por invitación, renovación 60s, expiración 24h |
 | Autenticación | SuperAdmin con Firebase Auth |

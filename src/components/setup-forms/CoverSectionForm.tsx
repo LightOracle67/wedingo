@@ -296,7 +296,7 @@ export default function CoverSectionForm({ prefix = "" }) {
         }} />
       </div>
 
-      <MusicArrayEditor inviteToken={inviteToken} value={formData.musicFile || formData.musicUrl} onChange={(val: string) => updateFormField("musicFile", val)} t={t} />
+      <MusicArrayEditor inviteToken={inviteToken} value={formData.musicFile} onChange={(val: string) => updateFormField("musicFile", val)} t={t} />
     </>
   );
 }

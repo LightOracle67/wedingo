@@ -24,7 +24,6 @@ vi.mock("firebase/storage", () => ({
 import {
   invitationDocRef,
   INVITATIONS_COLLECTION_REF,
-  RSVP_COLLECTION_REF,
   RSVP_RESPONSES_GROUP,
   rsvpByInviteRef,
   rsvpResponseRef,
@@ -38,10 +37,6 @@ describe("firebase", () => {
 
   it("INVITATIONS_COLLECTION_REF is defined", () => {
     expect(INVITATIONS_COLLECTION_REF).toBe("col-ref");
-  });
-
-  it("RSVP_COLLECTION_REF is defined", () => {
-    expect(RSVP_COLLECTION_REF).toBe("col-ref");
   });
 
   it("RSVP_RESPONSES_GROUP uses a collectionGroup query", () => {

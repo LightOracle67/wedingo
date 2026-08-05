@@ -87,11 +87,10 @@ export function validateConfigForSave(
   }
 
   if (sanitized.menuEnabled === "true") {
-    // Al menos una opción de menú: texto legacy o edición por platos (*Dishes).
-    // El postre ya forma parte de los platos (order: "postre"), no es un campo aparte.
+    // Al menos una opción de menú (edición por platos). El postre forma parte
+    // de los platos (order: "postre"), no es un campo aparte.
     const hasMenuOption =
-      Boolean(sanitized.menuCarne) || Boolean(sanitized.menuPescado) || Boolean(sanitized.menuVegano)
-      || Boolean(sanitized.menuCarneDishes) || Boolean(sanitized.menuPescadoDishes) || Boolean(sanitized.menuVeganoDishes);
+      Boolean(sanitized.menuCarneDishes) || Boolean(sanitized.menuPescadoDishes) || Boolean(sanitized.menuVeganoDishes);
     if (!hasMenuOption) {
       return { sanitized, hiddenSet, errorKey: "errors.menuRequired" };
     }
@@ -103,11 +102,6 @@ export function validateConfigForSave(
     if (looksLikeIban && !/^[A-Z]{2}\d{2}[ ]?\d{4}[ ]?\d{4}[ ]?\d{4}[ ]?\d{4}[ ]?\d{0,4}$/.test(upper)) {
       return { sanitized, hiddenSet, errorKey: "errors.ibanInvalid" };
     }
-  }
-
-  if (sanitized.musicUrl && sanitized.musicUrl.startsWith("data:")) {
-    sanitized.musicFile = sanitized.musicUrl;
-    sanitized.musicUrl = "";
   }
 
   if (sanitized.sectionOrder) {
@@ -176,14 +170,8 @@ export function validateConfigForSave(
       return { sanitized, hiddenSet, errorKey: "errors.transportDeparturesInvalid" };
     }
   }
-  if (sanitized.accommodationInfo && sanitized.accommodationInfo.length > MAX_LONG_TEXT_LENGTH) {
-    return { sanitized, hiddenSet, errorKey: "errors.accommodationTooLong" };
-  }
   if (sanitized.accommodationURL && !isValidGoogleMapsUrl(sanitized.accommodationURL)) {
     return { sanitized, hiddenSet, errorKey: "errors.accommodationUrlInvalid" };
-  }
-  if (sanitized.menuTexto && sanitized.menuTexto.length > MAX_LONG_TEXT_LENGTH) {
-    return { sanitized, hiddenSet, errorKey: "errors.menuTextoTooLong" };
   }
   for (const dishesField of ["menuTextoDishes", "menuCarneDishes", "menuPescadoDishes", "menuVeganoDishes"]) {
     const raw = sanitized[dishesField as keyof typeof sanitized];

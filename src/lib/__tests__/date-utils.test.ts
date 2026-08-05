@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { isDateInPast, computeAge, validateWeddingDate, parseWeddingDate } from "../date-utils";
+import { isDateInPast, computeAge, validateWeddingDate } from "../date-utils";
 
 describe("date-utils", () => {
   it("isDateInPast returns true for past dates", () => {
@@ -129,27 +129,5 @@ describe("date-utils", () => {
   it("validateWeddingDate skips validation when details hidden and hasStoredConfig", () => {
     const config = { weddingDay: "", weddingMonth: "", weddingYear: "", weddingHour: "", weddingMinute: "" };
     expect(validateWeddingDate(config, 2100, new Set(["details"]), true)).toBeNull();
-  });
-
-  it("parseWeddingDate returns null when required fields missing", () => {
-    expect(parseWeddingDate({})).toBeNull();
-  });
-
-  it("parseWeddingDate returns null for invalid month", () => {
-    expect(parseWeddingDate({ weddingDay: "15", weddingMonth: "fake", weddingYear: "2099" })).toBeNull();
-  });
-
-  it("parseWeddingDate returns Date for valid config", () => {
-    const result = parseWeddingDate({ weddingDay: "15", weddingMonth: "junio", weddingYear: "2099", weddingHour: "12", weddingMinute: "30" });
-    expect(result).toBeInstanceOf(Date);
-    expect(result?.getFullYear()).toBe(2099);
-    expect(result?.getMonth()).toBe(5); // junio = 5 (0-indexed)
-    expect(result?.getDate()).toBe(15);
-  });
-
-  it("parseWeddingDate defaults hour/minute to 0 when missing", () => {
-    const result = parseWeddingDate({ weddingDay: "1", weddingMonth: "enero", weddingYear: "2099" });
-    expect(result?.getHours()).toBe(0);
-    expect(result?.getMinutes()).toBe(0);
   });
 });

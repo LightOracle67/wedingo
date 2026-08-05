@@ -32,10 +32,10 @@ function AppMerger({ children }: { children: React.ReactNode }) {
     if (rsvpCount > 0) {
       const hasMenuChanges =
         config.formData?.menuEnabled !== config.config?.menuEnabled ||
-        config.formData?.menuCarne !== config.config?.menuCarne ||
-        config.formData?.menuPescado !== config.config?.menuPescado ||
-        config.formData?.menuVegano !== config.config?.menuVegano ||
-        config.formData?.menuTexto !== config.config?.menuTexto;
+        config.formData?.menuTextoDishes !== config.config?.menuTextoDishes ||
+        config.formData?.menuCarneDishes !== config.config?.menuCarneDishes ||
+        config.formData?.menuPescadoDishes !== config.config?.menuPescadoDishes ||
+        config.formData?.menuVeganoDishes !== config.config?.menuVeganoDishes;
 
       if (hasMenuChanges && !window.confirm(t("settings.menuChangeConfirm", { count: rsvpCount }))) {
 

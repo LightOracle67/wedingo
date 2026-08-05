@@ -71,7 +71,7 @@ auditLog/{id}              # Super admin audit log
 - All invitation pages are token-based (no public indexation)
 - 100 languages via i18next with dynamic import() code-splitting
 - CSS: 40+ custom properties for theming, spacing, shadows, border-radius
-- Bundle: 4 vendor chunks (firebase, react, leaflet, other) + code-split pages
+- Bundle: vendor chunks (firebase, react, sentry, i18n, other) + code-split pages y analytics lazy
 - Forms: auto-save at 1.5s debounce, encrypt sensitive fields
 - Security: CSP headers, HSTS, X-Frame-Options, no raw `any` types
 

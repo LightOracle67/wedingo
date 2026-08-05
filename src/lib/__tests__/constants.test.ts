@@ -6,7 +6,6 @@ import {
   THEME_VALUES,
   THEME_PREVIEW_COLORS,
   STORY_SECTION_ORDER,
-  SECTION_LABELS,
   defaultConfig,
 } from "../constants";
 
@@ -70,9 +69,9 @@ describe("STORY_SECTION_ORDER", () => {
     expect(STORY_SECTION_ORDER[STORY_SECTION_ORDER.length - 1]).toBe("rsvp");
   });
 
-  it("all sections have labels", () => {
-    for (const s of STORY_SECTION_ORDER) {
-      expect(SECTION_LABELS[s]).toBeTruthy();
+  it("contains all expected sections", () => {
+    for (const s of ["hero", "details", "transport", "info", "story", "gallery", "gifts", "accommodation", "rsvp"]) {
+      expect(STORY_SECTION_ORDER).toContain(s);
     }
   });
 });

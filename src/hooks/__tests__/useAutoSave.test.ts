@@ -65,7 +65,6 @@ const sampleConfig: InvitationConfig = {
   bankInfo: "",
   accommodationInfo: "",
   accommodationURL: "",
-  transportInfo: "",
   godparent1: "",
   godparent2: "",
   kidsPolicy: "",

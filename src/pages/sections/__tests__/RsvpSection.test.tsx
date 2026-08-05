@@ -45,10 +45,10 @@ const baseProps = {
   handleRsvpSubmit: vi.fn(),
   handleDeleteRsvp: vi.fn(),
   menuEnabled: false,
-  menuCarne: "",
-  menuPescado: "",
-  menuVegano: "",
-  menuTexto: "",
+  menuCarneDishes: "",
+  menuPescadoDishes: "",
+  menuVeganoDishes: "",
+  menuTextoDishes: "",
   computeAge: vi.fn((_d: string) => 0),
 };
 
@@ -119,27 +119,22 @@ describe("RsvpSection", () => {
       <RsvpSection
         {...baseProps}
         menuEnabled={true}
-        menuCarne="Meat option"
-        menuPescado="Fish option"
-        menuVegano="Vegan option"
+        menuCarneDishes={JSON.stringify([{ order: "primero", text: "Solomillo" }])}
       />,
     );
     expect(screen.getByText("rsvp.allergiesHint")).toBeDefined();
   });
 
-  it("shows menu texto when no structured menu", () => {
+  it("shows menu dishes when no structured menu", () => {
     render(
       <RsvpSection
         {...baseProps}
         menuEnabled={true}
-        menuCarne=""
-        menuPescado=""
-        menuVegano=""
-        menuTexto="Custom menu info"
+        menuTextoDishes={JSON.stringify([{ order: "entrante", text: "Ensalada" }])}
       />,
     );
     expect(screen.getByText("rsvp.menuLabel")).toBeDefined();
-    expect(screen.getByText("Custom menu info")).toBeDefined();
+    expect(screen.getByText(/setup.menuOrderEntrante: Ensalada/)).toBeDefined();
   });
 
   it("shows formatted dishes for the fixed menu", () => {
@@ -147,7 +142,6 @@ describe("RsvpSection", () => {
       <RsvpSection
         {...baseProps}
         menuEnabled={true}
-        menuTexto="Legacy text"
         menuTextoDishes={JSON.stringify([
           { order: "entrante", text: "Ensalada" },
           { order: "postre", text: "Tarta" },
@@ -156,7 +150,6 @@ describe("RsvpSection", () => {
     );
     expect(screen.getByText(/setup.menuOrderEntrante: Ensalada/)).toBeDefined();
     expect(screen.getByText(/setup.menuOrderPostre: Tarta/)).toBeDefined();
-    expect(screen.queryByText("Legacy text")).toBeNull();
   });
 
   it("shows the fixed menu without a selector when menu is disabled", () => {
@@ -177,16 +170,15 @@ describe("RsvpSection", () => {
     expect(document.getElementById("rsvpMenu")).toBeNull();
   });
 
-  it("shows the legacy fixed menu text when menu is disabled and no dishes", () => {
+  it("does not show the fixed menu when there are no dishes", () => {
     render(
       <RsvpSection
         {...baseProps}
         rsvpForm={{ ...baseForm, attendance: "alone" }}
         menuEnabled={false}
-        menuTexto="Menú tradicional"
       />,
     );
-    expect(screen.getByText("Menú tradicional")).toBeDefined();
+    expect(screen.queryByText("rsvp.menuLabel")).toBeNull();
     expect(document.getElementById("rsvpMenu")).toBeNull();
   });
 
@@ -196,7 +188,6 @@ describe("RsvpSection", () => {
         {...baseProps}
         rsvpForm={{ ...baseForm, attendance: "alone", menuSelection: "carne" }}
         menuEnabled={true}
-        menuCarne="Legacy meat"
         menuCarneDishes={JSON.stringify([{ order: "primero", text: "Solomillo" }])}
       />,
     );
@@ -227,9 +218,7 @@ describe("RsvpSection", () => {
       <RsvpSection
         {...baseProps}
         menuEnabled={true}
-        menuCarne="Meat option"
-        menuPescado="Fish option"
-        menuVegano="Vegan option"
+        menuCarneDishes={JSON.stringify([{ order: "primero", text: "Solomillo" }])}
         rsvpForm={{
           ...baseForm,
           attendance: "with",

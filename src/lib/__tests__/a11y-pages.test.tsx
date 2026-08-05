@@ -132,13 +132,6 @@ describe("a11y-page-audit", () => {
     expect(violations).toHaveLength(0);
   });
 
-  it("ErrorMessage renders with proper role", async () => {
-    const { ErrorMessage } = await import("../../components/ErrorMessage");
-    const { container } = render(<ErrorMessage error={new Error("Test")} />);
-    const results = await runAxe(container);
-    expect(results.violations).toHaveLength(0);
-  });
-
   it("RsvpSection with transport and menu has no serious violations", async () => {
     vi.mock("../../lib/constants", () => BASE_MOCK_CTX.constants());
     const RsvpSection = (await import("../../pages/sections/RsvpSection")).default;
@@ -174,9 +167,7 @@ describe("a11y-page-audit", () => {
         handleRsvpSubmit={vi.fn()}
         handleDeleteRsvp={vi.fn()}
         menuEnabled
-        menuCarne="Solomillo"
-        menuPescado="Lubina"
-        menuVegano="Risotto"
+        menuCarneDishes={JSON.stringify([{ order: "primero", text: "Solomillo" }])}
         transportEnabled="both"
         transportDepartures={JSON.stringify([
           { type: "bus", time: "12:00", url: "https://www.google.com/maps/place/Plaza+Mayor/@40.41,-3.70,17z" },

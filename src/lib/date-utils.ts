@@ -90,20 +90,3 @@ export function validateWeddingDate(config: Record<string, string>, maxAllowedYe
   return null;
 }
 
-/**
- * Convierte los campos de fecha de configuración a un objeto Date.
- * @param {object} config - Configuración con weddingDay, weddingMonth, weddingYear, weddingHour, weddingMinute.
- * @returns {Date|null}
- */
-export function parseWeddingDate(config: Record<string, string>) {
-  if (!config.weddingDay || !config.weddingMonth || !config.weddingYear) return null;
-  const monthNum = MONTH_VALUE_TO_NUMBER[config.weddingMonth];
-  if (!monthNum) return null;
-  return new Date(
-    Number.parseInt(config.weddingYear, 10),
-    monthNum - 1,
-    Number.parseInt(config.weddingDay, 10),
-    Number.parseInt(config.weddingHour || "0", 10),
-    Number.parseInt(config.weddingMinute || "0", 10),
-  );
-}

@@ -80,14 +80,4 @@ describe("a11y-axe", () => {
     const results = await runAxe(container);
     expect(results.violations).toHaveLength(0);
   });
-
-  it("ErrorMessage role alert has no violations", async () => {
-    const { ErrorMessage } = await import("../../components/ErrorMessage");
-    const { container } = render(<ErrorMessage error={new Error("test")} />);
-    const results = await runAxe(container);
-    const alertViolations = results.violations.filter(
-      (v) => v.id === "aria-allowed-role"
-    );
-    expect(alertViolations).toHaveLength(0);
-  });
 });

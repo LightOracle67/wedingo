@@ -101,13 +101,6 @@ describe("validateConfigForSave", () => {
     expect(result.errorKey).toBeNull();
   });
 
-  it("migrates a data-url music value into musicFile", () => {
-    const result = validateConfigForSave(validConfig({ musicUrl: "data:audio/wav;base64,AAAA" }), true, 2030);
-    expect(result.errorKey).toBeNull();
-    expect(result.sanitized.musicFile).toBe("data:audio/wav;base64,AAAA");
-    expect(result.sanitized.musicUrl).toBe("");
-  });
-
   it("rejects a past wedding date", () => {
     const result = validateConfigForSave(validConfig({ weddingYear: "2020" }), true, 2030);
     expect(result.errorKey).toBe("errors.dateBeforeToday");
