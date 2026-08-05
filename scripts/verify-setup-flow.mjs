@@ -77,7 +77,7 @@ const payload = {
   weddingMapView: "roadmap", weddingMapStatic: "false",
   weddingDay: "15", weddingMonth: "junio", weddingYear: "2026",
   weddingHour: "18", weddingMinute: "30",
-  weddingSchedule: "", weddingScheduleEvents: "", weddingDressCode: "",
+  weddingSchedule: "", weddingScheduleEvents: "", weddingDressCode: "", weddingDressCodeCustom: "",
   theme: "golden", couplePhoto: "", backgroundImage: "", customSeal: "", cornerDecoration: "",
   sectionOrder: "hero,details,transport,info,story,gallery,gifts,accommodation,rsvp",
   hiddenSections: "", storyText: "", giftsInfo: "", bankInfo: "",
@@ -109,6 +109,31 @@ await expectAllow("4. activar sesión con hash correcto", async () => {
     setupTokenHash: HASH,
   });
 });
+
+// 2b. Código de vestimenta "Otro" con mensaje personalizado → permitido.
+await expectAllow("2b. dress code 'Otro' con mensaje personalizado", async () => {
+  await updateDoc(doc(db, "invitations", TOKEN), {
+    weddingDressCode: "Otro",
+    weddingDressCodeCustom: "Vestimenta vintage",
+  });
+});
+
+// 2c. Mensaje personalizado del dress code excesivo (>500) → DENEGADO.
+await expectDeny("2c. dress code 'Otro' con mensaje >500 → denegado", async () => {
+  await updateDoc(doc(db, "invitations", TOKEN), {
+    weddingDressCode: "Otro",
+    weddingDressCodeCustom: "x".repeat(501),
+  });
+});
+
+// 2d. Se restaura el dress code predefinido y se descarta el texto custom.
+await expectAllow("2d. dress code predefinido (descarta custom)", async () => {
+  await updateDoc(doc(db, "invitations", TOKEN), {
+    weddingDressCode: "Vestimenta formal",
+    weddingDressCodeCustom: "",
+  });
+});
+
 
 // 5. Documento grupo de RSVP (contador anti-spam).
 await expectAllow("5. crear grupo rsvpResponses/{token} (contador)", async () => {

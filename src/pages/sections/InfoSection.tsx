@@ -9,7 +9,7 @@ interface ScheduleEvent {
   text: string;
 }
 
-const InfoSection = memo(function InfoSection({ style, className, weddingSchedule, weddingScheduleEvents, weddingDressCode, kidsPolicy, cornerDecoration }: { style?: React.CSSProperties; className?: string; weddingSchedule?: string; weddingScheduleEvents?: string; weddingDressCode?: string; kidsPolicy?: string; cornerDecoration?: string }) {
+const InfoSection = memo(function InfoSection({ style, className, weddingSchedule, weddingScheduleEvents, weddingDressCode, weddingDressCodeCustom, kidsPolicy, cornerDecoration }: { style?: React.CSSProperties; className?: string; weddingSchedule?: string; weddingScheduleEvents?: string; weddingDressCode?: string; weddingDressCodeCustom?: string; kidsPolicy?: string; cornerDecoration?: string }) {
   const { t } = useTranslation();
   const kidsLabel = kidsPolicy && KNOWN_KIDS.has(kidsPolicy) ? t("kidsPolicy.options." + kidsPolicy) : kidsPolicy;
 
@@ -84,7 +84,7 @@ const InfoSection = memo(function InfoSection({ style, className, weddingSchedul
           <p className="story-eyebrow">{t("info.dressCodeLabel")}</p>
           <h3 className="story-subheading">{t("info.dressCodeTitle")}</h3>
           {weddingDressCode ? (
-            <p className="story-copy">{weddingDressCode}</p>
+            <p className="story-copy">{weddingDressCode === "Otro" && weddingDressCodeCustom ? weddingDressCodeCustom : weddingDressCode}</p>
           ) : (
             <p className="story-copy" style={{ fontStyle: "italic" }}>
               {t("info.dressCodePending")}

@@ -1,5 +1,15 @@
 export const CHANGELOG = [
   {
+    version: "2.44.0",
+    date: "2026-08-05",
+    changes: [
+      "FEAT: código de vestimenta — nueva opción 'Otro' que abre un input de texto personalizado (máx 500 caracteres) cuando no sirven las opciones predefinidas",
+      "FEAT: campo weddingDressCodeCustom en el esquema (types, defaultConfig, normalize, codec dc->dx) — la invitación muestra el mensaje personalizado cuando el código es 'Otro', y la validación exige ese mensaje (errors.dressCodeCustomRequired/TooLong)",
+      "SEGURIDAD: reglas de Firestore — weddingDressCode y weddingDressCodeCustom validados (string, tamaño e isSafeText) en isValidInvitationWrite",
+      "VERIFICADO: emulador de Firestore 19/19 — 'Otro' con mensaje permitido, mensaje >500 denegado, dress code predefinido que descarta el custom",
+    ],
+  },
+  {
     version: "2.43.2",
     date: "2026-08-05",
     changes: [

@@ -2,6 +2,7 @@ import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useApp } from "../../contexts";
 import { isValidGoogleMapsUrl, extractPlaceNameFromUrl } from "../../lib/geo-utils";
+import { MAX_DRESS_CODE_CUSTOM_LENGTH } from "../../lib/constants";
 import MenuDishEditor from "../MenuDishEditor";
 
 export default function GuestsSectionForm({ prefix = "" }) {
@@ -16,6 +17,16 @@ export default function GuestsSectionForm({ prefix = "" }) {
   const handleMenuEnabledChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     updateFormField("menuEnabled", e.target.checked ? "true" : "false");
   }, [updateFormField]);
+
+  /**
+   * Cambia el código de vestimenta. La opción "Otro" abre un input de texto
+   * personalizado; al elegir una opción predefinida se descarta ese texto.
+   */
+  const handleDressCodeChange = useCallback((value: string) => {
+    const next = formData.weddingDressCode === value ? "" : value;
+    updateFormField("weddingDressCode", next);
+    if (next !== "Otro") updateFormField("weddingDressCodeCustom", "");
+  }, [formData.weddingDressCode, updateFormField]);
 
   return (
     <>
@@ -43,13 +54,23 @@ export default function GuestsSectionForm({ prefix = "" }) {
           { value: "Vestimenta formal", key: "setup.dressCodeFormal" },
           { value: "Cóctel elegante", key: "setup.dressCodeCocktail" },
           { value: "Ropa cómoda", key: "setup.dressCodeComfortable" },
+          { value: "Otro", key: "setup.dressCodeOther" },
         ].map(({ value, key }) => (
           <label key={value} className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem", color: "var(--setup-title)" }}>
-            <input id={id("dressCode-" + value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-"))} type="checkbox" checked={formData.weddingDressCode === value} onChange={() => updateFormField("weddingDressCode", formData.weddingDressCode === value ? "" : value)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+            <input id={id("dressCode-" + value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-"))} type="checkbox" checked={formData.weddingDressCode === value} onChange={() => handleDressCodeChange(value)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
             {t(key)}
           </label>
         ))}
       </div>
+      {formData.weddingDressCode === "Otro" ? (
+        <div className="setup-field" style={{ marginTop: "0.6rem" }}>
+          <label className="setup-label" htmlFor={id("dressCodeCustom")}>{t("setup.dressCodeCustomLabel")}</label>
+          <input id={id("dressCodeCustom")} type="text" className="setup-input" value={formData.weddingDressCodeCustom || ""}
+            onChange={(e) => updateFormField("weddingDressCodeCustom", e.target.value.slice(0, MAX_DRESS_CODE_CUSTOM_LENGTH))}
+            placeholder={t("setup.dressCodeCustomPlaceholder")} maxLength={MAX_DRESS_CODE_CUSTOM_LENGTH} autoComplete="off" />
+          <p className="setup-help" id={id("dressCodeCustomHint")}>{t("setup.dressCodeCustomHint")}</p>
+        </div>
+      ) : null}
       <p className="setup-help" id={id("dressCodeHint")}>{t("setup.dressCodeHint")}</p>
       <p className="setup-label" style={{ marginBottom: "0.3rem" }}>{t("setup.menuCelebrationLabel")}</p>
 

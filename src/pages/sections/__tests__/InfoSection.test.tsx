@@ -112,4 +112,32 @@ describe("InfoSection", () => {
     );
     expect(screen.getByText("16:00")).toBeDefined();
   });
+
+  it("shows the custom dress code message when the option is 'Otro'", () => {
+    render(
+      <InfoSection
+        className="test"
+        style={{}}
+        weddingSchedule=""
+        weddingDressCode="Otro"
+        weddingDressCodeCustom="Vestimenta vintage"
+        kidsPolicy=""
+      />,
+    );
+    expect(screen.getByText("Vestimenta vintage")).toBeDefined();
+  });
+
+  it("shows the predefined dress code as-is when not 'Otro'", () => {
+    render(
+      <InfoSection
+        className="test"
+        style={{}}
+        weddingSchedule=""
+        weddingDressCode="Vestimenta formal"
+        weddingDressCodeCustom=""
+        kidsPolicy=""
+      />,
+    );
+    expect(screen.getByText("Vestimenta formal")).toBeDefined();
+  });
 });

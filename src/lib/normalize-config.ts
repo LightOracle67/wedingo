@@ -82,6 +82,7 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   weddingSchedule: s(value?.weddingSchedule),
   weddingScheduleEvents: normalizeScheduleEvents(value?.weddingScheduleEvents),
   weddingDressCode: s(value?.weddingDressCode),
+  weddingDressCodeCustom: s(value?.weddingDressCodeCustom),
   theme:
     typeof value?.theme === "string" && THEME_VALUES.has(value.theme.trim())
       ? value.theme.trim()

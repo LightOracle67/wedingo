@@ -41,6 +41,7 @@ export interface InvitationConfig {
   weddingSchedule: string;
   weddingScheduleEvents: string;
   weddingDressCode: string;
+  weddingDressCodeCustom: string;
   couplePhoto: string;
   musicFile: string;
   sectionOrder: string;

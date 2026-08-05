@@ -218,4 +218,26 @@ describe("validateConfigForSave", () => {
     const result = validateConfigForSave(validConfig({ transportDepartures: dep }), true, 2030);
     expect(result.errorKey).toBeNull();
   });
+
+  it("requires a custom message when the dress code is 'Otro'", () => {
+    const result = validateConfigForSave(validConfig({ weddingDressCode: "Otro", weddingDressCodeCustom: "" }), true, 2030);
+    expect(result.errorKey).toBe("errors.dressCodeCustomRequired");
+  });
+
+  it("accepts the dress code 'Otro' with a custom message", () => {
+    const result = validateConfigForSave(validConfig({ weddingDressCode: "Otro", weddingDressCodeCustom: "Vestimenta vintage" }), true, 2030);
+    expect(result.errorKey).toBeNull();
+    expect(result.sanitized.weddingDressCodeCustom).toBe("Vestimenta vintage");
+  });
+
+  it("rejects an overlong custom dress code message", () => {
+    const result = validateConfigForSave(validConfig({ weddingDressCode: "Otro", weddingDressCodeCustom: "x".repeat(501) }), true, 2030);
+    expect(result.errorKey).toBe("errors.dressCodeCustomTooLong");
+  });
+
+  it("discards the custom message when a predefined dress code is chosen", () => {
+    const result = validateConfigForSave(validConfig({ weddingDressCode: "Vestimenta formal", weddingDressCodeCustom: "Vestimenta vintage" }), true, 2030);
+    expect(result.errorKey).toBeNull();
+    expect(result.sanitized.weddingDressCodeCustom).toBe("");
+  });
 });

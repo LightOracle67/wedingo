@@ -66,6 +66,8 @@ service cloud.firestore {
         && (!data.keys().hasAny(['weddingSchedule']) || isValidLongText(data.weddingSchedule))
         && (!data.keys().hasAny(['menuTexto']) || isValidLongText(data.menuTexto))
         && (!data.keys().hasAny(['kidsPolicy']) || isValidLongText(data.kidsPolicy))
+        && (!data.keys().hasAny(['weddingDressCode']) || (data.weddingDressCode is string && data.weddingDressCode.size() <= 100 && isSafeText(data.weddingDressCode)))
+        && (!data.keys().hasAny(['weddingDressCodeCustom']) || (data.weddingDressCodeCustom is string && data.weddingDressCodeCustom.size() <= 500 && isSafeText(data.weddingDressCodeCustom)))
         && (!data.keys().hasAny(['bankInfo']) || (data.bankInfo is string && data.bankInfo.size() <= 2000))
         && (!data.keys().hasAny(['weddingSiteURL']) || (data.weddingSiteURL is string && data.weddingSiteURL.size() <= 1000 && !data.weddingSiteURL.matches('(?i).*javascript:.*')))
         && (!data.keys().hasAny(['accommodationURL']) || (data.accommodationURL is string && data.accommodationURL.size() <= 1000 && !data.accommodationURL.matches('(?i).*javascript:.*')));

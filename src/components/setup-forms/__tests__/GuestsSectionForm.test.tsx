@@ -96,7 +96,7 @@ describe("GuestsSectionForm", () => {
   it("calls updateFormField on menu enabled toggle", () => {
     render(<GuestsSectionForm />);
     const checkboxes = getAllCheckboxes();
-    fireEvent.click(checkboxes[8]!);
+    fireEvent.click(checkboxes[9]!);
     expect(mockUpdateFormField).toHaveBeenCalledWith("menuEnabled", "true");
   });
 
@@ -104,8 +104,31 @@ describe("GuestsSectionForm", () => {
     mockFormData.menuEnabled = "true";
     render(<GuestsSectionForm />);
     const checkboxes = getAllCheckboxes();
-    fireEvent.click(checkboxes[8]!);
+    fireEvent.click(checkboxes[9]!);
     expect(mockUpdateFormField).toHaveBeenCalledWith("menuEnabled", "false");
+  });
+
+  it("selects the 'Otro' dress code option", () => {
+    render(<GuestsSectionForm />);
+    fireEvent.click(screen.getByLabelText("setup.dressCodeOther"));
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingDressCode", "Otro");
+  });
+
+  it("updates the custom dress code message", () => {
+    mockFormData.weddingDressCode = "Otro";
+    render(<GuestsSectionForm />);
+    const input = document.getElementById("dressCodeCustom") as HTMLInputElement;
+    fireEvent.change(input, { target: { value: "Vestimenta vintage" } });
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingDressCodeCustom", "Vestimenta vintage");
+  });
+
+  it("clears the custom message when a predefined option is chosen", () => {
+    mockFormData.weddingDressCode = "Otro";
+    mockFormData.weddingDressCodeCustom = "Vestimenta vintage";
+    render(<GuestsSectionForm />);
+    fireEvent.click(screen.getByLabelText("setup.dressCodeGala"));
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingDressCode", "Traje de gala");
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingDressCodeCustom", "");
   });
 
   it("renders menu dish editors when menu is enabled", () => {

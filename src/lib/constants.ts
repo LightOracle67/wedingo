@@ -1,6 +1,7 @@
-export const APP_VERSION = "2.43.2";
+export const APP_VERSION = "2.44.0";
 
 export const MAX_INVITE_MESSAGE_LENGTH = 500;
+export const MAX_DRESS_CODE_CUSTOM_LENGTH = 500;
 export const MAX_SCHEDULE_EVENTS = 10;
 export const MAX_SCHEDULE_EVENT_TEXT = 60;
 export const MAX_MENU_DISHES = 20;
@@ -116,6 +117,7 @@ export const defaultConfig = {
   weddingSchedule: "",
   weddingScheduleEvents: "",
   weddingDressCode: "",
+  weddingDressCodeCustom: "",
 
   theme: "golden",
   couplePhoto: "",

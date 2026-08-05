@@ -7,6 +7,7 @@ import {
   SPECIAL_SECTIONS,
   MAX_USERNAME_LENGTH,
   MAX_INVITE_MESSAGE_LENGTH,
+  MAX_DRESS_CODE_CUSTOM_LENGTH,
   MAX_LONG_TEXT_LENGTH,
 } from "./constants";
 
@@ -109,6 +110,19 @@ export function validateConfigForSave(
 
   if (sanitized.inviteMessage && sanitized.inviteMessage.length > MAX_INVITE_MESSAGE_LENGTH) {
     return { sanitized, hiddenSet, errorKey: "errors.messageTooLong" };
+  }
+  // Código de vestimenta: la opción "Otro" exige un mensaje personalizado
+  // no vacío y acotado a MAX_DRESS_CODE_CUSTOM_LENGTH.
+  if (sanitized.weddingDressCode === "Otro") {
+    if (!sanitized.weddingDressCodeCustom.trim()) {
+      return { sanitized, hiddenSet, errorKey: "errors.dressCodeCustomRequired" };
+    }
+    if (sanitized.weddingDressCodeCustom.length > MAX_DRESS_CODE_CUSTOM_LENGTH) {
+      return { sanitized, hiddenSet, errorKey: "errors.dressCodeCustomTooLong", errorParams: { max: MAX_DRESS_CODE_CUSTOM_LENGTH } };
+    }
+  } else if (sanitized.weddingDressCodeCustom) {
+    // Si se elige una opción predefinida, el texto personalizado se descarta.
+    sanitized.weddingDressCodeCustom = "";
   }
   if (sanitized.weddingSchedule && sanitized.weddingSchedule.length > MAX_LONG_TEXT_LENGTH) {
     return { sanitized, hiddenSet, errorKey: "errors.scheduleTooLong" };
