@@ -1,7 +1,12 @@
 import i18n from "../i18n";
 
-const MAX_IMAGE_DIMENSION = 1600;
-const TARGET_BYTES = 300 * 1024;
+const TARGET_BYTES_DEFAULT = 300 * 1024;
+// Calidad alta para las imágenes protagonistas (foto de novios y fondo):
+// mayor resolución y target, aprovechando el límite de 1MB de configImages.
+export const HIGH_QUALITY_MAX_DIMENSION = 2400;
+export const HIGH_QUALITY_TARGET_BYTES = 800 * 1024;
+export const MAX_IMAGE_DIMENSION = 1600;
+export const TARGET_BYTES = TARGET_BYTES_DEFAULT;
 
 export const readFileAsDataUrl = (file: File) =>
   new Promise<string>((resolve, reject) => {
@@ -49,8 +54,8 @@ function loadImage(file: File): Promise<HTMLImageElement> {
 
 /** Comprime una imagen preservando transparencia.
  *  Exporta a WebP (soporta alpha), con fallback a PNG.
- *  Reduce calidad/dimensiones hasta encajar en TARGET_BYTES. */
-export const compressImageTransparent = async (file: File, maxDimension = 1600): Promise<string> => {
+ *  Reduce calidad/dimensiones hasta encajar en el target (por defecto 300KB). */
+export const compressImageTransparent = async (file: File, maxDimension = MAX_IMAGE_DIMENSION, targetBytes = TARGET_BYTES): Promise<string> => {
   const img = await loadImage(file);
   let { width, height } = img;
   if (width > maxDimension || height > maxDimension) {
@@ -69,32 +74,32 @@ export const compressImageTransparent = async (file: File, maxDimension = 1600):
   let dataUrl = canvasToType(canvas, "webp", 0.8);
   let estimatedBytes = Math.round((dataUrl.length * 3) / 4);
 
-  if (estimatedBytes > TARGET_BYTES) {
+  if (estimatedBytes > targetBytes) {
     let quality = 0.7;
-    while (quality >= 0.1 && estimatedBytes > TARGET_BYTES) {
+    while (quality >= 0.1 && estimatedBytes > targetBytes) {
       dataUrl = canvasToType(canvas, "webp", quality);
       estimatedBytes = Math.round((dataUrl.length * 3) / 4);
       quality -= 0.1;
     }
   }
 
-  if (estimatedBytes > TARGET_BYTES) {
-    dataUrl = shrinkToFit(canvas, TARGET_BYTES);
+  if (estimatedBytes > targetBytes) {
+    dataUrl = shrinkToFit(canvas, targetBytes);
   }
 
   return dataUrl;
 };
 
 /** Comprime una imagen: elimina fondo blanco, preserva transparencia,
- *  reduce calidad/dimensiones hasta encajar en TARGET_BYTES.
+ *  reduce calidad/dimensiones hasta encajar en el target (por defecto 300KB).
  *  Exporta a WebP (con alpha si existe), con fallback a JPEG. */
-export const compressImage = async (file: File): Promise<string> => {
+export const compressImage = async (file: File, maxDimension = MAX_IMAGE_DIMENSION, targetBytes = TARGET_BYTES): Promise<string> => {
 
   const img = await loadImage(file);
 
   // Fast path: JPEG ya pequeño y con dimensiones razonables
-  if (file.size <= TARGET_BYTES && file.type === "image/jpeg"
-      && img.width <= MAX_IMAGE_DIMENSION && img.height <= MAX_IMAGE_DIMENSION) {
+  if (file.size <= targetBytes && file.type === "image/jpeg"
+      && img.width <= maxDimension && img.height <= maxDimension) {
     URL.revokeObjectURL(img.src);
 
     return new Promise((resolve, reject) => {
@@ -106,8 +111,8 @@ export const compressImage = async (file: File): Promise<string> => {
   }
 
   let { width, height } = img;
-  if (width > MAX_IMAGE_DIMENSION || height > MAX_IMAGE_DIMENSION) {
-    const ratio = Math.min(MAX_IMAGE_DIMENSION / width, MAX_IMAGE_DIMENSION / height);
+  if (width > maxDimension || height > maxDimension) {
+    const ratio = Math.min(maxDimension / width, maxDimension / height);
     width = Math.round(width * ratio);
     height = Math.round(height * ratio);
   }
@@ -126,9 +131,9 @@ export const compressImage = async (file: File): Promise<string> => {
   let estimatedBytes = Math.round((dataUrl.length * 3) / 4);
 
   // Reducir calidad progresivamente
-  if (estimatedBytes > TARGET_BYTES) {
+  if (estimatedBytes > targetBytes) {
     let quality = 0.7;
-    while (quality >= 0.1 && estimatedBytes > TARGET_BYTES) {
+    while (quality >= 0.1 && estimatedBytes > targetBytes) {
       dataUrl = canvasToType(canvas, "webp", quality);
       estimatedBytes = Math.round((dataUrl.length * 3) / 4);
 
@@ -137,9 +142,9 @@ export const compressImage = async (file: File): Promise<string> => {
   }
 
   // Si sigue siendo muy grande, reducir dimensiones
-  if (estimatedBytes > TARGET_BYTES) {
+  if (estimatedBytes > targetBytes) {
 
-    dataUrl = shrinkToFit(canvas, TARGET_BYTES);
+    dataUrl = shrinkToFit(canvas, targetBytes);
     estimatedBytes = Math.round((dataUrl.length * 3) / 4);
 
   }

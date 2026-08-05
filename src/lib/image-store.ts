@@ -1,17 +1,17 @@
 import i18n from "../i18n";
 import { addDoc, getDoc, getDocs, updateDoc, deleteDoc, collection, writeBatch, doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { db } from "./firebase";
-import { compressImage } from "./image-utils";
+import { compressImage, HIGH_QUALITY_MAX_DIMENSION, HIGH_QUALITY_TARGET_BYTES } from "./image-utils";
 import { encrypt, decrypt } from "./crypto-utils";
 
 function galCol(token: string) {
   return collection(db, "invitations", token, "gallery");
 }
 
-export async function uploadImage(inviteToken: string, file: File, onProgress?: (percent: number) => void) {
+export async function uploadImage(inviteToken: string, file: File, onProgress?: (percent: number) => void, maxDimension = HIGH_QUALITY_MAX_DIMENSION, targetBytes = HIGH_QUALITY_TARGET_BYTES) {
 
   onProgress?.(10);
-  const dataUrl = await compressImage(file);
+  const dataUrl = await compressImage(file, maxDimension, targetBytes);
 
   onProgress?.(40);
   try {

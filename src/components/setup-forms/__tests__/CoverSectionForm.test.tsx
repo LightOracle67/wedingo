@@ -37,6 +37,8 @@ vi.mock("../../../lib/image-store", () => ({
 vi.mock("../../../lib/image-utils", () => ({
   compressImageTransparent: vi.fn((file: File) => Promise.resolve(`data:image/png;base64,${file.name}`)),
   compressImage: vi.fn(() => Promise.resolve("data:image/jpeg;base64,x")),
+  HIGH_QUALITY_MAX_DIMENSION: 2400,
+  HIGH_QUALITY_TARGET_BYTES: 800 * 1024,
 }));
 
 const mockFormData = vi.hoisted(() => ({ firstName: "John" } as Record<string, string | undefined>));

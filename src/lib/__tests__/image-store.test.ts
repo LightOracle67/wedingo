@@ -25,8 +25,13 @@ vi.mock("../../i18n", () => ({
   default: { t: (key: string) => key },
 }));
 
+const mockCompressImage = vi.hoisted(() => vi.fn(() => Promise.resolve("data:image/jpeg;base64,...")));
 vi.mock("../image-utils", () => ({
-  compressImage: vi.fn(() => Promise.resolve("data:image/jpeg;base64,...")),
+  compressImage: mockCompressImage,
+  MAX_IMAGE_DIMENSION: 1600,
+  TARGET_BYTES: 300 * 1024,
+  HIGH_QUALITY_MAX_DIMENSION: 2400,
+  HIGH_QUALITY_TARGET_BYTES: 800 * 1024,
 }));
 
 vi.mock("../crypto-utils", () => ({
@@ -92,6 +97,8 @@ describe("image-store", () => {
     expect(result).toHaveProperty("encrypted");
     expect(result).toHaveProperty("dataUrl");
     expect(onProgress).toHaveBeenCalled();
+    // La galería comprime en alta calidad (2400px, 800KB target) para mejor nitidez.
+    expect(mockCompressImage).toHaveBeenCalledWith(expect.any(File), 2400, 800 * 1024);
   });
 
   it("uploadImage throws when encrypt returns null", async () => {

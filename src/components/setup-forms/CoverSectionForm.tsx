@@ -5,7 +5,7 @@ import { useApp } from "../../contexts";
 import { useToast } from "../../hooks/useToast";
 import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES } from "../../lib/constants";
 import { uploadImage, saveConfigImage, deleteConfigImage } from "../../lib/image-store";
-import { compressImageTransparent } from "../../lib/image-utils";
+import { compressImageTransparent, HIGH_QUALITY_MAX_DIMENSION, HIGH_QUALITY_TARGET_BYTES } from "../../lib/image-utils";
 import { useConfigImage } from "../../hooks/useConfigImage";
 import ThemePicker from "../ThemePicker";
 import MusicArrayEditor from "../MusicArrayEditor";
@@ -28,7 +28,8 @@ export default function CoverSectionForm({ prefix = "" }) {
   const id = (name: string) => `${prefix}${name}`;
 
   const uploadConfigImage = useCallback(async (imageId: string, file: File, onProgress?: (p: number) => void) => {
-    const { dataUrl } = await uploadImage(inviteToken, file, onProgress);
+    // couplePhoto es una imagen protagonista: se comprime en alta calidad.
+    const { dataUrl } = await uploadImage(inviteToken, file, onProgress, HIGH_QUALITY_MAX_DIMENSION, HIGH_QUALITY_TARGET_BYTES);
     return await saveConfigImage(inviteToken, imageId, dataUrl);
   }, [inviteToken]);
 
@@ -251,7 +252,7 @@ export default function CoverSectionForm({ prefix = "" }) {
           if (!ALLOWED_UPLOAD_TYPES.has(file.type)) { ; addToast("error", t("setup.errorFileFormat")); return; }
           if (file.size > MAX_UPLOAD_SIZE_BYTES) { ; addToast("error", t("setup.errorFileSize")); return; }
           try {
-            const dataUrl = await compressImageTransparent(file);
+            const dataUrl = await compressImageTransparent(file, HIGH_QUALITY_MAX_DIMENSION, HIGH_QUALITY_TARGET_BYTES);
             const ref = await saveConfigImage(inviteToken, "backgroundImage", dataUrl);
             updateFormField("backgroundImage", ref);
 

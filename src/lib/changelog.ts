@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.46.0",
+    date: "2026-08-05",
+    changes: [
+      "FEAT: calidad de imagen mejorada — la foto de novios, el fondo personalizado y la galería ahora se comprimen en alta calidad (máx 2400px y target ~800KB en vez de 1600px/300KB), aprovechando el límite de 1MB de las subcolecciones configImages/gallery",
+      "PERF: compressImage y compressImageTransparent aceptan maxDimension/targetBytes; uploadImage comprime en alta calidad por defecto (la galería se beneficia sin tocar el resto del flujo)",
+    ],
+  },
+  {
     version: "2.45.1",
     date: "2026-08-05",
     changes: [
