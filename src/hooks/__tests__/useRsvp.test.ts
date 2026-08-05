@@ -347,6 +347,17 @@ describe("useRsvp", () => {
       expect(preventDefault).toHaveBeenCalled();
     });
 
+    it("ignores a submit while already submitting", async () => {
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      setupForm(result);
+      const first = result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as any);
+      result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as any);
+      await act(async () => {
+        await first;
+      });
+      expect(result.current.hasSubmitted).toBe(true);
+    });
+
     it("submits valid RSVP data successfully", async () => {
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
       setupForm(result);

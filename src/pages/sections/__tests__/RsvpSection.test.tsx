@@ -780,4 +780,28 @@ describe("RsvpSection", () => {
     render(<RsvpSection {...baseProps} rsvpForm={minimal} />);
     expect(screen.queryByText("rsvp.attendingWithCompanions")).toBeDefined();
   });
+
+  it("renders the companion form with existing values", () => {
+    render(
+      <RsvpSection
+        {...baseProps}
+        menuEnabled
+        menuCarneDishes={JSON.stringify([{ order: "primero", text: "Solomillo" }])}
+        rsvpForm={{
+          ...baseForm,
+          attendance: "with",
+          companionCount: 1,
+          companionNames: ["Bob Carlos Jones"],
+          companionTransportModes: ["bus"],
+          companionTransportChoices: ["0"],
+          companionMenus: ["carne"],
+          companionAllergies: [["sin gluten"]],
+        }}
+        transportEnabled="bus"
+        transportDepartures={JSON.stringify([{ type: "bus", time: "12:00", url: "" }])}
+      />,
+    );
+    const busRadio = document.querySelector('input[name="companionTransportMode0"][value="bus"]') as HTMLInputElement;
+    expect(busRadio?.checked).toBe(true);
+  });
 });
