@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.57.0",
+    date: "2026-08-05",
+    changes: [
+      "CALIDAD: cobertura ampliada — 1818 tests; branches 92.6%, statements 95.1%, lines 96.7%",
+      "TESTS: ramas nuevas en useSetupAuth (renovación sin callbacks de mensaje), useRsvp (contador RSVP inexistente) y más",
+    ],
+  },
+  {
     version: "2.56.0",
     date: "2026-08-05",
     changes: [

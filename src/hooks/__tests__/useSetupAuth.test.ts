@@ -743,6 +743,43 @@ describe("useSetupAuth", () => {
       expect(setAdminMessageType).toHaveBeenCalledWith("error");
       expect(setAdminMessage).toHaveBeenCalledWith("auth.sessionUpdateFailed");
     });
+
+    it("does not throw on renewal failure without message callbacks", async () => {
+      mockUpdateDoc.mockImplementation((_ref: unknown, payload?: unknown) => {
+        if (payload && typeof payload === "object" && "sessionExpiresAt" in payload) {
+          return Promise.reject(new Error("Renew error"));
+        }
+        return Promise.resolve();
+      });
+      mockGetDoc.mockImplementation(async (ref: unknown) => {
+        if (String(ref).startsWith("token-ref-")) {
+          return { exists: () => true, data: () => ({ inviteToken: "test-invite-token" }) };
+        }
+        return { exists: () => true, data: () => ({ _activeSetupToken: "tok" }) };
+      });
+      mockRunTransaction.mockImplementation(async (_db: unknown, cb: (t: unknown) => Promise<void>) => {
+        const transaction = {
+          get: vi.fn().mockResolvedValue({ exists: () => true, data: () => ({ _activeSetupToken: "tok" }) }),
+          update: vi.fn(),
+        };
+        await cb(transaction);
+        return Promise.resolve();
+      });
+
+      const { result } = renderHook(() =>
+        useSetupAuth("test-invite-token", {} as InvitationConfig, null as unknown as (m: string) => void, null as unknown as (t: string) => void, vi.fn()),
+      );
+      act(() => result.current.setSetupTokenInput("tok"));
+
+      await act(async () => {
+        await result.current.handleTokenLogin();
+      });
+
+      act(() => {
+        vi.advanceTimersByTime(60000);
+      });
+      expect(mockRenewSession).toHaveBeenCalled();
+    });
   });
 
   describe("isAdminTokenLoggedIn", () => {
