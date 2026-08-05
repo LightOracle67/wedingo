@@ -281,7 +281,7 @@ export default function DateSectionForm({ prefix = "" }) {
       <p className="setup-help" id={id("timeHelp")}>{t("setup.timeHint")}</p>
 
       <p className="setup-label" id={id("scheduleEventsLabel")}>{t("setup.scheduleLabel")}</p>
-      <p className="setup-help" id={id("scheduleEventsHint")}>{t("setup.scheduleEventsHint")}</p>
+      <p className="setup-help" id={id("scheduleEventsHint")}>{t("setup.scheduleEventsHint", { max: MAX_SCHEDULE_EVENTS })}</p>
 
       <div role="group" aria-labelledby={id("scheduleEventsLabel")} aria-describedby={id("scheduleEventsHint")}>
         {visibleScheduleEvents.map((ev, i) => (

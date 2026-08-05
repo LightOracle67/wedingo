@@ -1,5 +1,14 @@
 export const CHANGELOG = [
   {
+    version: "2.43.1",
+    date: "2026-08-05",
+    changes: [
+      "FIX: recuperación de imágenes — reintentos acotados (300ms/600ms) en getConfigImage ante fallos transitorios de red, para que un blip de conexión no deje la imagen rota de forma permanente",
+      "OPS: script scripts/migrate-images-refs.mjs — convierte los campos de imagen inline (data URLs / cifrados legacy) a refs __cfgimg:{id} usando la copia cifrada de configImages; aplicado a la invitación leunam (doc de 527KB → 1.7KB) para que couplePhoto vuelva a cargar",
+      "FIX: hint del itinerario (setup.scheduleEventsHint) mostraba literal '{{max}}' — ahora se pasa la interpolación con MAX_SCHEDULE_EVENTS (10)",
+    ],
+  },
+  {
     version: "2.43.0",
     date: "2026-08-05",
     changes: [

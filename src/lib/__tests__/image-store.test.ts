@@ -363,8 +363,26 @@ describe("image-store", () => {
     });
 
     it("getConfigImage returns null on error", async () => {
+      vi.useFakeTimers();
       vi.mocked(firestore.getDoc).mockRejectedValueOnce(new Error("net"));
-      await expect(getConfigImage("token", "couplePhoto")).resolves.toBeNull();
+      const promise = getConfigImage("token", "couplePhoto");
+      await vi.advanceTimersByTimeAsync(1000);
+      await expect(promise).resolves.toBeNull();
+      vi.useRealTimers();
+    });
+
+    it("getConfigImage retries a transient failure and succeeds", async () => {
+      vi.useFakeTimers();
+      vi.mocked(firestore.getDoc)
+        .mockRejectedValueOnce(new Error("net"))
+        .mockResolvedValueOnce({
+          exists: () => true,
+          data: () => ({ data: "enc" }),
+        } as never);
+      const promise = getConfigImage("token", "couplePhoto");
+      await vi.advanceTimersByTimeAsync(1000);
+      await expect(promise).resolves.toBe("data:image/jpeg;base64,decoded");
+      vi.useRealTimers();
     });
 
     it("deleteConfigImage resolves and swallows errors", async () => {

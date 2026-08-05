@@ -154,22 +154,37 @@ export async function saveConfigImage(
   return makeConfigImageRef(imageId);
 }
 
+/**
+ * Reintenta una lectura de imagen ante fallos transitorios de red.
+ * Espera creciente (300ms, 600ms) — un blip de conexión no debe romper
+ * la imagen de forma permanente (el consumidor no vuelve a pedirla).
+ */
+const CONFIG_IMAGE_RETRY_DELAYS_MS = [300, 600];
+
 export async function getConfigImage(
   inviteToken: string, imageId: string,
 ): Promise<string | null> {
 
-  try {
-    const snap = await getDoc(doc(cfgImgCol(inviteToken), imageId));
-    if (!snap.exists()) { ; return null; }
-    const encrypted = snap.data().data;
-    if (typeof encrypted !== "string") { ; return null; }
-    const decrypted = await decrypt(encrypted, inviteToken);
-
-    return decrypted;
-  } catch (err) {
-    console.error("[app]", "[image-store]", "getConfigImage error", { imageId, error: err });
-    return null;
+  const attempts = CONFIG_IMAGE_RETRY_DELAYS_MS.length + 1;
+  let lastError: unknown;
+  for (let attempt = 0; attempt < attempts; attempt++) {
+    try {
+      const snap = await getDoc(doc(cfgImgCol(inviteToken), imageId));
+      if (!snap.exists()) { ; return null; }
+      const encrypted = snap.data().data;
+      if (typeof encrypted !== "string") { ; return null; }
+      return await decrypt(encrypted, inviteToken);
+    } catch (err) {
+      lastError = err;
+      // Reintento solo ante errores lanzados (red/deserialización); un
+      // documento inexistente o sin data ya devolvió null arriba.
+      if (attempt < attempts - 1) {
+        await new Promise((r) => setTimeout(r, CONFIG_IMAGE_RETRY_DELAYS_MS[attempt]));
+      }
+    }
   }
+  console.error("[app]", "[image-store]", "getConfigImage error", { imageId, error: lastError });
+  return null;
 }
 
 export async function deleteConfigImage(inviteToken: string, imageId: string): Promise<void> {
