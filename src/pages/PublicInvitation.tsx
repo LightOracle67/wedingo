@@ -26,6 +26,7 @@ import { useReducedMotion } from "../hooks/useReducedMotion";
 
 import { MONTH_VALUE_TO_NUMBER } from "../lib/constants";
 import { parseSectionOrder, sectionHasContent } from "../lib/section-utils";
+import { SITE_URL, applySocialMeta, clearSocialMeta } from "../lib/seo";
 
 // ─── Assets ──────────────────────────────────────────────
 import eucalyptusSrc from "../assets/eucalyptus.webp";
@@ -33,15 +34,15 @@ import eucalyptusSrc from "../assets/eucalyptus.webp";
 // ─── Componentes de sección (visibles al inicio, carga directa) ────
 import HeroSection from "./sections/HeroSection";
 import DetailsSection from "./sections/DetailsSection";
-import TransportSection from "./sections/TransportSection";
-import InfoSection from "./sections/InfoSection";
-import StorySection from "./sections/StorySection";
 
 // ─── Componentes globales ─────────────────────────────────────────
 import EnvelopeOverlay from "../components/EnvelopeOverlay";
 import ErrorBoundary from "../components/ErrorBoundary";
 
 // ─── Secciones secundarias (carga diferida) ────────────────────────
+const TransportSection = lazy(() => import("./sections/TransportSection"));
+const InfoSection = lazy(() => import("./sections/InfoSection"));
+const StorySection = lazy(() => import("./sections/StorySection"));
 const GiftsSection = lazy(() => import("./sections/GiftsSection"));
 const AccommodationSection = lazy(() => import("./sections/AccommodationSection"));
 const GallerySection = lazy(() => import("./sections/GallerySection"));
@@ -74,7 +75,7 @@ const SECTION_COMPONENTS = {
  */
 export default function PublicInvitation() {
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const location = useLocation();
   const { inviteToken } = useParams();
   const searchParams = new URLSearchParams(location.search);
@@ -228,6 +229,20 @@ export default function PublicInvitation() {
     document.head.appendChild(script);
     return () => { script.remove(); };
   }, [config.firstName, config.secondName, config.inviteMessage, config.weddingYear, config.weddingMonth, config.weddingDay, config.weddingHour, config.weddingMinute, config.weddingPlace]);
+
+  // ─── Metadatos sociales Open Graph / Twitter (SEO) ─────
+  useEffect(() => {
+    if (!config.firstName) return;
+    const coupleName = `${config.firstName} ${config.secondName || ""}`.trim();
+    applySocialMeta({
+      title: `${coupleName} — Wedingo`,
+      description: config.inviteMessage || `${config.firstName} & ${config.secondName || ""} te invitan a su boda.`.trim(),
+      url: `${SITE_URL}/${inviteToken}`,
+      image: config.couplePhoto,
+      locale: i18n?.language,
+    });
+    return () => clearSocialMeta();
+  }, [config.firstName, config.secondName, config.inviteMessage, config.couplePhoto, inviteToken, i18n]);
 
   // ─── Datos de ubicación derivados ──────────────────────
   const hasLocationData = Boolean(config.weddingPlace || config.weddingSiteURL);

@@ -13,6 +13,7 @@
 import type { FirebaseApp } from "firebase/app";
 import type { Analytics } from "firebase/analytics";
 import { app } from "./firebase";
+import { STORAGE_KEYS } from "./storage-keys";
 
 /** ID de medición de Google Analytics. */
 const MEASUREMENT_ID = import.meta.env.VITE_FIREBASE_MEASUREMENT_ID;
@@ -23,10 +24,45 @@ let analyticsPromise: Promise<Analytics | null> | null = null;
 let initStarted = false;
 
 /**
+ * Indica si el visitante ha aceptado la estadística de visitas.
+ * Se respeta el consentimiento de cookies (RGPD/LGPD/CCPA): sin el
+ * consentimiento "accepted" con analytics activado no se recogen datos.
+ */
+export function hasAnalyticsConsent(): boolean {
+  try {
+    const consent = localStorage.getItem(STORAGE_KEYS.cookieConsent);
+    if (consent !== "accepted") return false;
+    const prefs = localStorage.getItem(STORAGE_KEYS.cookiePrefs);
+    if (!prefs) return true;
+    try {
+      const parsed = JSON.parse(prefs) as { analytics?: boolean };
+      return parsed.analytics !== false;
+    } catch {
+      return true;
+    }
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Notifica que se ha concedido consentimiento de analítica para que
+ * Analytics pueda inicializarse en la siguiente llamada (la primera
+ * carga se produce antes de que el usuario decida).
+ */
+export function grantAnalyticsConsent() {
+  if (!hasAnalyticsConsent()) return;
+  initStarted = false;
+  analyticsPromise = null;
+}
+
+/**
  * Inicializa Analytics de forma diferida y memoizada.
  * Devuelve la instancia o null si no es soportado/no está en producción.
  */
 function getAnalyticsInstance(): Promise<Analytics | null> {
+  // Sin consentimiento explícito de analítica nunca se inicializa el SDK.
+  if (!hasAnalyticsConsent()) return Promise.resolve(null);
   if (!initStarted) {
     initStarted = true;
     analyticsPromise = (async () => {
@@ -49,11 +85,13 @@ function getAnalyticsInstance(): Promise<Analytics | null> {
 
 /**
  * Registra un evento de analytics de forma best-effort.
+ * Sin consentimiento previo el evento se descarta silenciosamente.
  *
  * @param eventName - Nombre del evento.
  * @param params - Parámetros adicionales del evento.
  */
 export function trackEvent(eventName: string, params?: Record<string, unknown>) {
+  if (!hasAnalyticsConsent()) return;
   getAnalyticsInstance()
     .then(async (analytics) => {
       if (!analytics) return;

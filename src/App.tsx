@@ -8,6 +8,7 @@ import { ToastProvider } from "./contexts/ToastContext";
 import ErrorBoundary from "./components/ErrorBoundary";
 import AdminBarHeightSync from "./components/AdminBarHeightSync";
 import CookieConsent from "./components/CookieConsent";
+import DataRequestModal from "./components/DataRequestModal";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 import MusicPlayer from "./components/MusicPlayer";
 
@@ -46,6 +47,7 @@ function AppShell() {
   const location = useLocation();
   const [showA11y, setShowA11y] = useState(false);
   const [legalSection, setLegalSection] = useState("");
+  const [showDataRequest, setShowDataRequest] = useState(false);
   const [showChangelog, setShowChangelog] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
@@ -182,6 +184,7 @@ function AppShell() {
               <button type="button" className="app-nav-overlay__link" onClick={() => { setLegalSection("privacy"); setNavOpen(false); }}>{t("public.privacyPolicy")}</button>
               <button type="button" className="app-nav-overlay__link" onClick={() => { setLegalSection("terms"); setNavOpen(false); }}>{t("public.terms")}</button>
               <button type="button" className="app-nav-overlay__link" onClick={() => { setLegalSection("legal"); setNavOpen(false); }}>{t("public.legalNotice")}</button>
+              <button type="button" className="app-nav-overlay__link" onClick={() => { setShowDataRequest(true); setNavOpen(false); }}>{t("public.dataRequest")}</button>
               <button type="button" className="app-nav-overlay__link app-nav-overlay__link--version" onClick={() => { setShowChangelog(true); setNavOpen(false); }}>{t("common.version", { version: APP_VERSION })}</button>
             </div>
           </div>
@@ -197,6 +200,8 @@ function AppShell() {
               <button type="button" onClick={() => setLegalSection("terms")} className="app-footer__link">{t("public.terms")}</button>
               <span className="app-footer__sep">·</span>
               <button type="button" onClick={() => setLegalSection("legal")} className="app-footer__link">{t("public.legalNotice")}</button>
+              <span className="app-footer__sep">·</span>
+              <button type="button" onClick={() => setShowDataRequest(true)} className="app-footer__link">{t("public.dataRequest")}</button>
               <span className="app-footer__sep">·</span>
               <button type="button" onClick={() => setShowChangelog(true)} className="app-footer__link" style={{ opacity: 0.4 }}>{t("common.version", { version: APP_VERSION })}</button>
             </div>
@@ -229,6 +234,7 @@ function AppShell() {
       <Fireflies />
       <AccessibilityPanel open={showA11y} onClose={() => setShowA11y(false)} />
       {legalSection ? <LegalModal section={legalSection} onClose={() => setLegalSection("")} /> : null}
+      {showDataRequest ? <DataRequestModal inviteToken={inviteToken} onClose={() => setShowDataRequest(false)} /> : null}
       {showChangelog ? <ChangelogModal onClose={() => setShowChangelog(false)} /> : null}
     </>
   );

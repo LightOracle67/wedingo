@@ -26,12 +26,47 @@ const sentryPlugin = process.env.SENTRY_AUTH_TOKEN
     })
   : null;
 
-import { readFileSync } from "fs";
+import { readFileSync, writeFileSync, readdirSync } from "fs";
+import { join } from "path";
+import { createHash } from "crypto";
 
 const pkg = JSON.parse(readFileSync(new URL("./package.json", import.meta.url), "utf8"));
 
+/**
+ * Genera el service worker final en dist/sw.js:
+ * inyecta la lista real de assets hasheados (precache) y una versión de
+ * caché derivada de esa lista para invalidar caches antiguos. El copy de
+ * public/ de Vite copia primero el sw.js original; este hook lo reescribe
+ * al final del build con los datos reales de la compilación.
+ */
+function pwaPrecache() {
+  return {
+    name: "wedingo-pwa-precache",
+    apply: "build",
+    closeBundle() {
+      const root = process.cwd();
+      const assetsDir = join(root, "dist", "assets");
+      let assets = [];
+      try {
+        assets = readdirSync(assetsDir)
+          .filter((file) => /\.(js|css|woff2?)$/.test(file))
+          .sort()
+          .map((file) => `/assets/${file}`);
+      } catch {
+        // Sin directorio de assets el SW se deja con la lista vacía.
+      }
+      const version = createHash("sha1").update(assets.join("|")).digest("hex").slice(0, 8);
+      const swSource = readFileSync(join(root, "public", "sw.js"), "utf8");
+      const finalSw = swSource
+        .split("__SW_VERSION__").join(version)
+        .split("__PRECACHE_ASSETS__").join(JSON.stringify(assets));
+      writeFileSync(join(root, "dist", "sw.js"), finalSw);
+    },
+  };
+}
+
 export default defineConfig({
-  plugins: [react(), tailwindcss(), buildTimestamp(), sentryPlugin].filter(Boolean),
+  plugins: [react(), tailwindcss(), buildTimestamp(), pwaPrecache(), sentryPlugin].filter(Boolean),
   base: "/",
   define: {
     "import.meta.env.VITE_APP_VERSION": JSON.stringify(pkg.version),

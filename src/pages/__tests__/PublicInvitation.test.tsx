@@ -75,6 +75,9 @@ function mockSection(name: string) {
   return { default: comp };
 }
 
+vi.mock("../sections/TransportSection", () => mockSection("transport"));
+vi.mock("../sections/InfoSection", () => mockSection("info"));
+vi.mock("../sections/StorySection", () => mockSection("story"));
 vi.mock("../sections/GiftsSection", () => mockSection("gifts"));
 vi.mock("../sections/AccommodationSection", () => mockSection("accommodation"));
 vi.mock("../sections/GallerySection", () => mockSection("gallery"));
@@ -278,6 +281,15 @@ describe("PublicInvitation", () => {
     render(<PublicInvitation />);
     const scripts = document.head.querySelectorAll('script[type="application/ld+json"]');
     expect(scripts.length).toBe(1);
+  });
+
+  it("applies Open Graph meta for the couple", () => {
+    mockUseAppValue.config.firstName = "Test";
+    mockUseAppValue.config.secondName = "User";
+    render(<PublicInvitation />);
+    expect(document.querySelector('meta[property="og:title"]')?.getAttribute("content")).toBe("Test User — Wedingo");
+    expect(document.querySelector('meta[property="og:url"]')?.getAttribute("content")).toBe("https://wedingo-6c26a.web.app/test");
+    document.head.querySelectorAll('[data-wedingo-seo]').forEach((el) => el.remove());
   });
 
   it("builds the schema couple name without a second name", () => {

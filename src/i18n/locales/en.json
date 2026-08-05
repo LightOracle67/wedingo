@@ -194,7 +194,8 @@
     "createLink": "Create invitation",
     "privacyPolicy": "Privacy Policy",
     "terms": "Terms",
-    "legalNotice": "Legal Notice"
+    "legalNotice": "Legal Notice",
+    "dataRequest": "My data & privacy"
   },
   "setup": {
     "mapUrlLabel": "Google Maps URL",
@@ -853,11 +854,9 @@
     "noMusic": "No music",
     "loadError": "Error loading",
     "label": "Music",
-    "play": "Play music",
-    "pause": "Pause music",
-    "volume": "Music volume",
     "play": "Play",
     "pause": "Pause",
+    "volume": "Music volume",
     "playing": "Playing..."
   },
   "print": {
@@ -1053,5 +1052,16 @@
   },
   "map": {
     "embedTitle": "Location map"
+  },
+  "dataRequest": {
+    "title": "My data & privacy",
+    "intro": "Wedingo respects your privacy rights. You can export the data stored about you in this browser, or delete it and withdraw your storage and analytics consent.",
+    "exportLabel": "Export my data",
+    "exportDone": "Data exported successfully.",
+    "exportFail": "Could not export data.",
+    "eraseLabel": "Delete my data",
+    "eraseConfirm": "Data stored in this browser (session, invitation cache and cookie consent) will be deleted. Continue?",
+    "eraseDone": "{{count}} items were removed from this browser.",
+    "serverNote": "Your RSVP can be withdrawn from the invitation form. To request the deletion of any other data, write to adriancl2001@gmail.com with your name and the invitation."
   }
 }

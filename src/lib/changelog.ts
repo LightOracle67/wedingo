@@ -1,5 +1,16 @@
 export const CHANGELOG = [
   {
+    version: "2.62.0",
+    date: "2026-08-06",
+    changes: [
+      "RENDIMIENTO: carga diferida de las secciones Transporte, Información e Historia de la invitación",
+      "PWA: service worker generado en el build con precache de todos los assets (app offline-ready) y caché de fuentes de Google",
+      "SEO: meta tags Open Graph / Twitter dinámicas por invitación (título, descripción, URL canónica e imagen)",
+      "LEGALIDAD: autoservicio de datos del invitado (exportar y eliminar datos locales, retirar consentimiento) y analytics solo tras consentimiento explícito",
+      "ACCESIBILIDAD: carrusel de galería con aria-roledescription y contador anunciado; contraste corregido en 4 temas (linen-soft, blush-pearl, lavender-mist, champagne-bubble)",
+    ],
+  },
+  {
     version: "2.61.0",
     date: "2026-08-05",
     changes: [

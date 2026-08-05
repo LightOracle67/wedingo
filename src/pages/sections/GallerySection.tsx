@@ -273,9 +273,9 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
           <p className="story-eyebrow">{t("gallery.sectionLabel")}</p>
         <h2 className="story-title">{t("gallery.title")}</h2>
 
-        {/* ── Contador de imagen ── */}
+        {/* ── Contador de imagen (anunciado a lectores de pantalla) ── */}
         {images.length > 1 && (
-          <p className="gallery-counter">{clamped + 1} / {images.length}</p>
+          <p className="gallery-counter" aria-live="polite" aria-atomic="true">{clamped + 1} / {images.length}</p>
         )}
 
         {/* ── Imagen principal con contenedor de fade ── */}
@@ -284,6 +284,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
             className="gallery-main-container"
             tabIndex={0}
             role="group"
+            aria-roledescription="carousel"
             aria-label={t("gallery.carouselLabel")}
             onKeyDown={handleContainerKeyDown}
           >

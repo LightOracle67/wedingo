@@ -136,3 +136,30 @@
   font-size: 0.8rem;
   padding: 0.4rem 0.8rem;
 }
+
+/* ── Modal de autoservicio de datos (RGPD) ── */
+.data-request-text {
+  color: var(--setup-subtitle);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.data-request-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+.data-request-actions .setup-button {
+  font-size: 0.85rem;
+  padding: 0.5rem 0.9rem;
+}
+.data-request-erase {
+  border-color: rgba(224, 96, 96, 0.7) !important;
+  color: #e8b0b0 !important;
+}
+.data-request-note {
+  margin-top: 1rem;
+  color: var(--setup-muted);
+  font-size: 0.8rem;
+  line-height: 1.55;
+}

@@ -201,7 +201,8 @@
     "locationMapError": "Δεν ήταν δυνατή η φόρτωση του χάρτη.",
     "locationCoordinates": "Συντεταγμένες: {{lat}}, {{lng}}",
     "mapPreviewAlt": "Προεπισκόπηση χάρτη στην υποδεικνυόμενη τοποθεσία.",
-    "locationSet": "Η τοποθεσία διαμορφώθηκε"
+    "locationSet": "Η τοποθεσία διαμορφώθηκε",
+    "dataRequest": "Mis datos y privacidad"
   },
   "setup": {
     "loadingTitle": "Φόρτωση πρόσκλησης",
@@ -1040,5 +1041,16 @@
     "total": "σύνολο",
     "barChart": "Γράφημα ράβδων προσέλευσης",
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
+  },
+  "dataRequest": {
+    "title": "Mis datos y privacidad",
+    "intro": "Wedingo respeta tus derechos de privacidad. Puedes exportar los datos que se guardan sobre ti en este navegador, o eliminarlos y retirar tu consentimiento de almacenamiento y estadísticas.",
+    "exportLabel": "Exportar mis datos",
+    "exportDone": "Datos exportados correctamente.",
+    "exportFail": "No se pudo exportar los datos.",
+    "eraseLabel": "Eliminar mis datos",
+    "eraseConfirm": "Se eliminarán los datos guardados en este navegador (sesión, caché de la invitación y consentimiento de cookies). ¿Continuar?",
+    "eraseDone": "Se eliminaron {{count}} elementos de este navegador.",
+    "serverNote": "Tu confirmación de asistencia (RSVP) se puede retirar desde el formulario de la invitación. Para solicitar la eliminación de cualquier otro dato, escribe a adriancl2001@gmail.com indicando tu nombre y la invitación."
   }
 }
