@@ -280,6 +280,25 @@ describe("PublicInvitation", () => {
     expect(scripts.length).toBe(1);
   });
 
+  it("builds the schema couple name without a second name", () => {
+    mockUseAppValue.config.firstName = "Test";
+    mockUseAppValue.config.secondName = "";
+    mockUseAppValue.config.weddingYear = "2025";
+    render(<PublicInvitation />);
+    const scripts = document.head.querySelectorAll('script[type="application/ld+json"]');
+    expect(scripts.length).toBe(1);
+    mockUseAppValue.config.secondName = "User";
+  });
+
+  it("skips the schema when the first name is missing", () => {
+    mockUseAppValue.config.firstName = "";
+    mockUseAppValue.config.secondName = "User";
+    mockUseAppValue.config.weddingYear = "2025";
+    render(<PublicInvitation />);
+    expect(document.querySelectorAll('script[type="application/ld+json"]').length).toBe(0);
+    mockUseAppValue.config.firstName = "Test";
+  });
+
   it("skips schema JSON-LD when the wedding year is missing", () => {
     mockUseAppValue.config.firstName = "Test";
     mockUseAppValue.config.weddingYear = "";
