@@ -521,6 +521,16 @@ describe("AdminPage", () => {
     );
   });
 
+  it("returns null while restoring the session", () => {
+    mockUseApp.mockReturnValue({ ...baseMock, isRestoringSession: true });
+    const { container } = render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>
+    );
+    expect(container.firstChild).toBeNull();
+  });
+
   it("calls setActiveTabAndFilter from PanelTab", async () => {
     render(
       <Suspense fallback={null}>

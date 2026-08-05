@@ -248,3 +248,15 @@ describe("SuperAdminProvider", () => {
     expect(mockSignOut).not.toHaveBeenCalled();
   });
 });
+
+describe("useSuperAdmin", () => {
+  it("throws when used outside the provider", () => {
+    const err = () => {
+      const original = console.error;
+      console.error = vi.fn();
+      render(<TestConsumer />);
+      console.error = original;
+    };
+    expect(err).toThrow("useSuperAdmin debe usarse dentro de SuperAdminProvider");
+  });
+});

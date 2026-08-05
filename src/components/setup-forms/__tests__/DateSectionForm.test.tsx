@@ -224,6 +224,16 @@ describe("DateSectionForm", () => {
     expect(screen.getByText("setup.mapStaticHint")).toBeDefined();
   });
 
+  it("renders the static map overlay over the iframe", () => {
+    mockFormData.weddingMapStatic = "true";
+    mockFormData.weddingSiteURL = "https://maps.google.com/maps?q=40.4168,-3.7038";
+    render(<DateSectionForm />);
+    const frame = document.querySelector("iframe") as HTMLIFrameElement;
+    expect(frame).toBeDefined();
+    expect(frame.style.touchAction).toBe("none");
+    expect(document.querySelector("[aria-hidden='true']")).toBeDefined();
+  });
+
   it("updates the detailsMapMode dropdown", () => {
     render(<DateSectionForm />);
     fireEvent.change(screen.getByLabelText("setup.mapModeLabel"), { target: { value: "name" } });

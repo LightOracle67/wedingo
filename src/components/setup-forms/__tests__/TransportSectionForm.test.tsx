@@ -192,4 +192,10 @@ describe("TransportSectionForm departures flow", () => {
     fireEvent.change(screen.getByLabelText("setup.mapModeLabel"), { target: { value: "hidden" } });
     expect(mockUpdateFormField).toHaveBeenCalledWith("transportMapMode", "hidden");
   });
+
+  it("does not show the site hint for a valid URL without a place", () => {
+    mockFormData.transportDepartures = JSON.stringify([{ type: "bus", time: "12:00", url: "https://maps.google.com/maps?q=40.41,-3.70" }]);
+    renderForm();
+    expect(screen.queryByText(/setup.siteNameLabel/)).toBeNull();
+  });
 });

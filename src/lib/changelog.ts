@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.55.0",
+    date: "2026-08-05",
+    changes: [
+      "CALIDAD: cobertura ampliada — 1816 tests; statements 95.1% → 95.1%, branches 92.5% → 92.6%, lines 96.7% → 96.7%",
+      "TESTS: ramas nuevas en SuperAdminContext (useSuperAdmin fuera del provider), AdminPage (restauración de sesión), DateSectionForm (overlay de mapa estático), TransportSectionForm (URL sin lugar), useAutoSave, geo-utils, useSetupAuth y más",
+    ],
+  },
+  {
     version: "2.54.0",
     date: "2026-08-05",
     changes: [
