@@ -1,7 +1,7 @@
 import i18n from "../i18n";
 import { addDoc, getDoc, getDocs, updateDoc, deleteDoc, collection, writeBatch, doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { db } from "./firebase";
-import { compressImage, HIGH_QUALITY_MAX_DIMENSION, HIGH_QUALITY_TARGET_BYTES } from "./image-utils";
+import { compressImage, HIGH_QUALITY_MAX_DIMENSION, HIGH_QUALITY_TARGET_BYTES, MAX_ENCRYPTED_BYTES } from "./image-utils";
 import { encrypt, decrypt } from "./crypto-utils";
 
 function galCol(token: string) {
@@ -23,9 +23,9 @@ export async function uploadImage(inviteToken: string, file: File, onProgress?: 
   if (!encrypted) throw new Error(i18n.t("errors.encryptFailed"));
 
   onProgress?.(70);
-  const size = Math.round((encrypted.length * 3) / 4);
-
-  if (size > 900 * 1024) { console.error("[app]", "[image-store]", "uploadImage too large", { size }); throw new Error(i18n.t("errors.imageTooLarge")); }
+  // El campo `data` guarda el base64 cifrado y Firestore limita a 1MB por valor;
+  // se comprueba la longitud del base64 directamente para no tocar ese límite.
+  if (encrypted.length > MAX_ENCRYPTED_BYTES) { console.error("[app]", "[image-store]", "uploadImage too large", { size: encrypted.length }); throw new Error(i18n.t("errors.imageTooLarge")); }
   onProgress?.(80);
 
   return { encrypted, dataUrl };
@@ -142,6 +142,9 @@ export async function saveConfigImage(
     throw new Error(i18n.t("errors.encryptFailed"));
   }
   if (!encrypted) throw new Error(i18n.t("errors.encryptFailed"));
+  // El campo `data` guarda el base64 cifrado y Firestore limita a 1MB por valor;
+  // se valida aquí con un error amigable antes de que Firestore lo rechace.
+  if (encrypted.length > MAX_ENCRYPTED_BYTES) { console.error("[app]", "[image-store]", "saveConfigImage too large", { imageId, size: encrypted.length }); throw new Error(i18n.t("errors.imageTooLarge")); }
 
   const ref = doc(cfgImgCol(inviteToken), imageId);
   try {

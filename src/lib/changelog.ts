@@ -1,9 +1,16 @@
 export const CHANGELOG = [
   {
+    version: "2.46.1",
+    date: "2026-08-05",
+    changes: [
+      "FIX: subida de imágenes rota por el límite de 1MB de Firestore — el target de alta calidad se media en bytes crudos (length*3/4) pero el campo `data` guarda el base64 CIFRADO (~1.33x), que superaba 1MB y Firestore rechazaba (invalid-argument). El target baja a 700KB crudos (data URL ≤ ~933KB, cifrado ≤ ~933KB) y se añade una guarda de seguridad (MAX_ENCRYPTED_BYTES=1MB) en uploadImage y saveConfigImage para lanzar un error amigable en vez del fallo de Firestore",
+    ],
+  },
+  {
     version: "2.46.0",
     date: "2026-08-05",
     changes: [
-      "FEAT: calidad de imagen mejorada — la foto de novios, el fondo personalizado y la galería ahora se comprimen en alta calidad (máx 2400px y target ~800KB en vez de 1600px/300KB), aprovechando el límite de 1MB de las subcolecciones configImages/gallery",
+      "FEAT: calidad de imagen mejorada — la foto de novios, el fondo personalizado y la galería ahora se comprimen en alta calidad (máx 2400px y target ~700KB en vez de 1600px/300KB), aprovechando el límite de 1MB de las subcolecciones configImages/gallery",
       "PERF: compressImage y compressImageTransparent aceptan maxDimension/targetBytes; uploadImage comprime en alta calidad por defecto (la galería se beneficia sin tocar el resto del flujo)",
     ],
   },

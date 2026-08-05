@@ -1,10 +1,14 @@
 import i18n from "../i18n";
 
 const TARGET_BYTES_DEFAULT = 300 * 1024;
-// Calidad alta para las imágenes protagonistas (foto de novios y fondo):
-// mayor resolución y target, aprovechando el límite de 1MB de configImages.
+// Calidad alta para las imágenes protagonistas (foto de novios, fondo y galería).
+// El target se mide en bytes CRUDOS del data URL (length*3/4); el campo que se
+// guarda en Firestore es el base64 CIFRADO (~1.33x), con límite de 1MB. 700KB
+// crudos => data URL ≤ ~933KB => cifrado ~933KB, siempre por debajo del límite.
 export const HIGH_QUALITY_MAX_DIMENSION = 2400;
-export const HIGH_QUALITY_TARGET_BYTES = 800 * 1024;
+export const HIGH_QUALITY_TARGET_BYTES = 700 * 1024;
+// Cota de seguridad: el base64 cifrado no debe acercarse al límite de 1MB.
+export const MAX_ENCRYPTED_BYTES = 1000 * 1024;
 export const MAX_IMAGE_DIMENSION = 1600;
 export const TARGET_BYTES = TARGET_BYTES_DEFAULT;
 

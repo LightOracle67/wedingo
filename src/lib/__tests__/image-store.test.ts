@@ -31,7 +31,8 @@ vi.mock("../image-utils", () => ({
   MAX_IMAGE_DIMENSION: 1600,
   TARGET_BYTES: 300 * 1024,
   HIGH_QUALITY_MAX_DIMENSION: 2400,
-  HIGH_QUALITY_TARGET_BYTES: 800 * 1024,
+  HIGH_QUALITY_TARGET_BYTES: 700 * 1024,
+  MAX_ENCRYPTED_BYTES: 1000 * 1024,
 }));
 
 vi.mock("../crypto-utils", () => ({
@@ -97,8 +98,8 @@ describe("image-store", () => {
     expect(result).toHaveProperty("encrypted");
     expect(result).toHaveProperty("dataUrl");
     expect(onProgress).toHaveBeenCalled();
-    // La galería comprime en alta calidad (2400px, 800KB target) para mejor nitidez.
-    expect(mockCompressImage).toHaveBeenCalledWith(expect.any(File), 2400, 800 * 1024);
+    // La galería comprime en alta calidad (2400px, 700KB crudos) para mejor nitidez.
+    expect(mockCompressImage).toHaveBeenCalledWith(expect.any(File), 2400, 700 * 1024);
   });
 
   it("uploadImage throws when encrypt returns null", async () => {
@@ -346,6 +347,12 @@ describe("image-store", () => {
     it("saveConfigImage throws when encrypt fails", async () => {
       mockEncrypt.mockRejectedValueOnce(new Error("errors.encryptFailed"));
       await expect(saveConfigImage("token", "couplePhoto", "data:x")).rejects.toThrow("errors.encryptFailed");
+    });
+
+    it("saveConfigImage throws when the encrypted data exceeds the 1MB limit", async () => {
+      // El base64 cifrado no debe superar el límite de Firestore (~1MB).
+      mockEncrypt.mockResolvedValueOnce("x".repeat(1100 * 1024));
+      await expect(saveConfigImage("token", "couplePhoto", "data:image/png;base64,x")).rejects.toThrow("errors.imageTooLarge");
     });
 
     it("getConfigImage returns null when the doc does not exist", async () => {
