@@ -138,6 +138,18 @@ describe("SetupForm", () => {
     expect(tokenInput.value).toBe("test-token-123");
   });
 
+  it("hides the access section while restoring the session", () => {
+    mockUseApp.mockReturnValue({ ...baseUseApp, isRestoringSession: true });
+    render(<SetupForm />);
+    expect(screen.queryByText("setup.accessSectionTitle")).toBeNull();
+  });
+
+  it("hides the transport section when it is hidden in the config", () => {
+    mockUseApp.mockReturnValue({ ...baseUseApp, formData: { hiddenSections: "transport" } });
+    render(<SetupForm />);
+    expect(screen.queryByText("setup.transportSectionTitle")).toBeNull();
+  });
+
   it("does not render the access token section when config already exists", () => {
     mockUseApp.mockReturnValue({ ...baseUseApp, hasStoredConfig: true });
     render(<SetupForm />);

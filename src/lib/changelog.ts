@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.51.0",
+    date: "2026-08-05",
+    changes: [
+      "CALIDAD: cobertura ampliada — 1801 tests; branches 91.8% → 92.2%, functions 93.9% → 94.1%, statements 94.6% → 94.7%",
+      "TESTS: ramas nuevas en SetupForm (restauración de sesión, transporte oculto), analytics (prod sin id, no soportado), EnvelopeOverlay (sello custom), DashboardTab (stats nulos), superadmin-utils (campos ausentes), AccessSectionForm (token y toggle), LandingPage (migración legacy), MusicPlayer (FAB sin url), PrintPage (mes desconocido, sin fecha), TransportSection (salida sin hora), ConfigContext (error de borrado), MenuDishEditor, config-validation y más",
+    ],
+  },
+  {
     version: "2.50.0",
     date: "2026-08-05",
     changes: [

@@ -64,4 +64,13 @@ describe("TransportSection", () => {
     expect(screen.queryByText("Plaza Mayor")).toBeNull();
     expect(screen.queryByTestId("map-embed")).toBeNull();
   });
+
+  it("renders a departure without a time", () => {
+    const departures = JSON.stringify([
+      { type: "bus", time: "", url: "https://www.google.com/maps/place/Plaza+Mayor/@40.41,-3.70,17z" },
+    ]);
+    render(<TransportSection {...baseProps} transportEnabled="bus" transportDepartures={departures} />);
+    expect(screen.getByText("Plaza Mayor")).toBeDefined();
+    expect(screen.getByTestId("map-embed")).toBeDefined();
+  });
 });

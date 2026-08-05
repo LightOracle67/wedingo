@@ -87,6 +87,38 @@ describe("PrintPage", () => {
     expect(screen.getByText("Bob", { exact: false })).toBeDefined();
   });
 
+  it("renders with an unknown wedding month using the January fallback", () => {
+    mockUseApp.mockReturnValue({
+      config: {
+        firstName: "Alice",
+        secondName: "Bob",
+        theme: "golden",
+        weddingDay: "15",
+        weddingMonth: "mes-invalido",
+        weddingYear: "2025",
+        weddingHour: "",
+        weddingMinute: "",
+        weddingPlace: "Iglesia",
+      },
+      isConfigLoading: false,
+    });
+
+    render(<PrintPage />);
+    act(() => { vi.advanceTimersByTime(200); });
+    expect(screen.getByText("Alice", { exact: false })).toBeDefined();
+  });
+
+  it("renders without a wedding date", () => {
+    mockUseApp.mockReturnValue({
+      config: { firstName: "Alice", secondName: "Bob", theme: "golden" },
+      isConfigLoading: false,
+    });
+
+    render(<PrintPage />);
+    act(() => { vi.advanceTimersByTime(200); });
+    expect(screen.getByText("Alice", { exact: false })).toBeDefined();
+  });
+
   it("renders hero eyebrow text", () => {
     mockUseApp.mockReturnValue({
       config: { firstName: "John", secondName: "Jane", theme: "golden" },

@@ -18,6 +18,12 @@ describe("EnvelopeOverlay", () => {
     expect(names.length).toBeGreaterThan(0);
   });
 
+  it("renders the custom seal image when provided", () => {
+    render(<EnvelopeOverlay {...defaultProps} customSeal="https://example.com/seal.png" />);
+    expect(document.querySelector(".envelope__seal-custom-img")).toBeDefined();
+    expect(document.querySelector(".envelope-golden__bg-seal")).toBeDefined();
+  });
+
   it("calls onOpen on second click", () => {
     vi.useFakeTimers();
     const onOpen = vi.fn();

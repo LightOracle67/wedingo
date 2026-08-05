@@ -56,6 +56,13 @@ describe("MusicPlayer", () => {
     expect(document.querySelector("audio")).toBeNull();
   });
 
+  it("does not toggle when no music url is provided", () => {
+    render(<MusicPlayer />);
+    const buttons = screen.getAllByRole("button");
+    fireEvent.click(buttons[0]!);
+    expect(document.querySelector("audio")).toBeNull();
+  });
+
   it("toggles play/pause when play button is clicked", async () => {
     mockAudioPlay.mockResolvedValue(undefined);
     render(<MusicPlayer musicUrl="https://example.com/song.mp3" />);

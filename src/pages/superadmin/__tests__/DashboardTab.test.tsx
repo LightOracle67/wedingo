@@ -238,4 +238,11 @@ describe("DashboardTab", () => {
       expect(screen.getByText("superadmin.statsInvitations")).toBeDefined();
     });
   });
+
+  it("shows loading until stats are computed", async () => {
+    const calcGlobalStatsMock = vi.mocked(mockCalcGlobalStats);
+    calcGlobalStatsMock.mockReturnValueOnce(null as never);
+    render(<DashboardTab />);
+    expect(screen.getByText("superadmin.dashboardLoading")).toBeDefined();
+  });
 });

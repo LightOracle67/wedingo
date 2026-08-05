@@ -38,4 +38,29 @@ describe("analytics", () => {
 
     vi.unstubAllEnvs();
   });
+
+  it("does not initialize analytics in prod without a measurement id", async () => {
+    vi.resetModules();
+    vi.stubEnv("PROD", true);
+    vi.stubEnv("VITE_FIREBASE_MEASUREMENT_ID", "");
+
+    const { trackEvent: trackEventNoId } = await import("../analytics");
+    trackEventNoId("test_event", {});
+    await vi.waitFor(() => expect(mockLogEvent).not.toHaveBeenCalled());
+
+    vi.unstubAllEnvs();
+  });
+
+  it("does not initialize analytics when unsupported even in prod", async () => {
+    mockIsSupported.mockResolvedValue(false);
+    vi.resetModules();
+    vi.stubEnv("PROD", true);
+    vi.stubEnv("VITE_FIREBASE_MEASUREMENT_ID", "G-XXXXXXXX");
+
+    const { trackEvent: trackEventUnsupported } = await import("../analytics");
+    trackEventUnsupported("test_event", {});
+    await vi.waitFor(() => expect(mockLogEvent).not.toHaveBeenCalled());
+
+    vi.unstubAllEnvs();
+  });
 });

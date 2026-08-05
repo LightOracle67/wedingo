@@ -26,6 +26,7 @@ vi.mock("firebase/firestore", () => ({
   where: vi.fn(),
   serverTimestamp: vi.fn(() => "mocked-ts"),
   runTransaction: vi.fn(),
+  updateDoc: vi.fn(),
 }));
 
 vi.mock("../../lib/firebase", () => ({
@@ -214,6 +215,31 @@ describe("LandingPage", () => {
     fireEvent.submit(form);
     await vi.waitFor(() => {
       expect(mockNavigate).toHaveBeenCalledWith("/target-invite");
+    });
+  });
+
+  it("migrates a legacy token on login", async () => {
+    mockFindInviteBySetupToken.mockResolvedValue("target-invite");
+    const { getDoc, runTransaction } = await import("firebase/firestore");
+    vi.mocked(getDoc).mockResolvedValue({
+      exists: () => true,
+      data: () => ({ _activeSetupToken: "ABCDEFGHIJKLMNOPQRSTUVWXYZ", adminUsername: "john" }),
+    } as any);
+    vi.mocked(runTransaction).mockImplementation(async (_db: any, cb: any) => {
+      await cb({
+        get: vi.fn().mockResolvedValue({ exists: () => true, data: () => ({ _activeSetupToken: "ABCDEFGHIJKLMNOPQRSTUVWXYZ", adminUsername: "john" }) }),
+        update: vi.fn(),
+      });
+    });
+
+    render(<LandingPage />);
+    fireEvent.click(screen.getByText("landing.haveInvitation"));
+    fireEvent.change(screen.getByLabelText("landing.usernameLabel"), { target: { value: "john" } });
+    fireEvent.change(screen.getByLabelText("landing.tokenLabel"), { target: { value: "ABCDEFGHIJKLMNOPQRSTUVWXYZ" } });
+    const form = screen.getByRole("dialog").querySelector("form")!;
+    fireEvent.submit(form);
+    await vi.waitFor(() => {
+      expect(mockCreateSetupTokenRecord).toHaveBeenCalled();
     });
   });
 

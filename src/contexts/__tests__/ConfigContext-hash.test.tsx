@@ -19,6 +19,7 @@ const mockUpdateDoc = vi.hoisted(() => vi.fn(() => Promise.resolve()));
 const mockResolveAllConfigImages = vi.hoisted(() => vi.fn(() => Promise.resolve({})));
 const mockDecrypt = vi.hoisted(() => vi.fn((v: string) => Promise.resolve(v)));
 const mockSaveConfigImage = vi.hoisted(() => vi.fn((_t: string, id: string, _v: string) => Promise.resolve("__cfgimg:" + id)));
+const mockDeleteGallery = vi.hoisted(() => vi.fn(() => Promise.resolve()));
 
 vi.mock("react-i18next", () => ({ useTranslation: () => ({ t: (key: string) => key }) }));
 vi.mock("react-router", () => ({ useLocation: () => mockLocation, useNavigate: () => vi.fn() }));
@@ -35,7 +36,7 @@ vi.mock("../../lib/invite-config-codec", () => ({ decodeInviteConfig: mockDecode
 vi.mock("../../lib/firebase", () => ({ db: {}, invitationDocRef: vi.fn(() => ({ id: "test" })), rsvpByInviteRef: vi.fn(() => ({})) }));
 vi.mock("../../lib/image-store", () => ({
   loadDecryptedField: mockLoadDecryptedField,
-  deleteGallery: vi.fn(() => Promise.resolve()),
+  deleteGallery: mockDeleteGallery,
   resolveAllConfigImages: mockResolveAllConfigImages,
   deleteAllConfigImages: vi.fn(() => Promise.resolve()),
   isConfigImageRef: vi.fn(() => false),
@@ -285,6 +286,23 @@ describe("ConfigProvider", () => {
     render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
     await waitFor(() => expect(screen.getByTestId("ss_hasConfig").textContent).toBe("true"));
     fireEvent.click(screen.getByTestId("ss_delete"));
+    mockLocation.pathname = "/test";
+  });
+
+  it("reports an error when deleting the invitation fails", async () => {
+    mockLocation.pathname = "/abcdefghij";
+    mockGetDoc.mockResolvedValue({
+      exists: () => true,
+      data: () => ({ firstName: "Fresh", secondName: "Pair" }),
+    });
+    window.confirm = vi.fn(() => true);
+    vi.mocked(mockDeleteGallery).mockRejectedValueOnce(new Error("denied"));
+    render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
+    await waitFor(() => expect(screen.getByTestId("ss_hasConfig").textContent).toBe("true"));
+    fireEvent.click(screen.getByTestId("ss_delete"));
+    await vi.waitFor(() => {
+      expect(mockSetSaveError).toHaveBeenCalledWith(expect.any(String));
+    });
     mockLocation.pathname = "/test";
   });
 

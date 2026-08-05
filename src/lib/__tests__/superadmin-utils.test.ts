@@ -33,6 +33,12 @@ describe("searchInvitations", () => {
     expect(searchInvitations(invs, "JUAN")).toHaveLength(1);
   });
 
+  it("searches invitations with missing fields using fallbacks", () => {
+    expect(searchInvitations([{ id: "tok123" }], "tok123")).toHaveLength(1);
+    expect(searchInvitations([{ firstName: "Solo" }], "solo")).toHaveLength(1);
+    expect(searchInvitations([{ adminUsername: "admin" }], "ADMIN")).toHaveLength(1);
+  });
+
   it("returns all for empty query", () => {
     expect(searchInvitations(invs, "")).toHaveLength(2);
   });
