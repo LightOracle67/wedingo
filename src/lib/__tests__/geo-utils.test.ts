@@ -124,4 +124,12 @@ describe("extractPlaceNameFromUrl", () => {
   it("returns null when no name can be found", () => {
     expect(extractPlaceNameFromUrl("https://www.google.com/maps?ll=40.4168,-3.7038")).toBeNull();
   });
+
+  it("returns null when the query parameter is only spaces", () => {
+    expect(extractPlaceNameFromUrl("https://www.google.com/maps?q=%20%20")).toBeNull();
+  });
+
+  it("returns null when there is no place match", () => {
+    expect(extractPlaceNameFromUrl("https://www.google.com/maps/@40.4168,-3.7038,15z")).toBeNull();
+  });
 });

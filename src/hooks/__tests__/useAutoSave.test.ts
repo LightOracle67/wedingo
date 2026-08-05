@@ -121,6 +121,20 @@ describe("useAutoSave", () => {
     expect(mockSetDoc).toHaveBeenCalledTimes(1);
   });
 
+  it("does not report saved when the debounced save fails", async () => {
+    const differentData = { ...sampleConfig, firstName: "Changed" };
+    const onSaveMessage = vi.fn();
+    mockSetDoc.mockRejectedValueOnce(new Error("net"));
+    renderHook(() =>
+      useAutoSave(true, "test-token", differentData, sampleConfig, onSaveMessage, { current: false }),
+    );
+
+    await vi.advanceTimersByTimeAsync(1500);
+
+    expect(onSaveMessage).not.toHaveBeenCalledWith("autosave.saved");
+    expect(onSaveMessage).toHaveBeenCalledWith("Error saving");
+  });
+
   it("does not save when formData equals config", () => {
     renderHook(() =>
       useAutoSave(true, "test-token", sampleConfig, sampleConfig, vi.fn(), { current: false }),

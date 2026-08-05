@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.54.0",
+    date: "2026-08-05",
+    changes: [
+      "CALIDAD: cobertura ampliada — 1812 tests; branches 92.5% (desde 90.2% al inicio de la sesión)",
+      "TESTS: ramas nuevas en useAutoSave (guardado automático con fallo), geo-utils (query vacía, sin placeMatch), MenuDishEditor, useSetupAuth, DashboardTab, AttendanceTab, DataTab y más",
+    ],
+  },
+  {
     version: "2.53.0",
     date: "2026-08-05",
     changes: [
